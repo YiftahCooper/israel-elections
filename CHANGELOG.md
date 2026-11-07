@@ -22,6 +22,8 @@
 - After the election: localise dates with RTL-safe ranges and numbers, use reading-direction arrows, attach help to its context, remove redundant event glyphs and avoid an unsupported coalition membership total.
 
 - After the election: reviewed recommendations, government formation, coalition and term history for all 26 elections, with sources and pending-event separation.
+- Locality map: add individually controlled armistice/frontier layers, historical no-man’s-land hatching, source dates and a reproducible disagreement atlas; keep unverified Golan sections out.
+
 - Localities: lazy OpenFreeMap light/dark vectors, CBS-only bilingual labels at every zoom; hide unverified boundaries with an explicit notice and retain geometry checks.
 
 - Mark custom bloc, coalition and family groupings locally as analysis while preserving official result identity and factual summaries.

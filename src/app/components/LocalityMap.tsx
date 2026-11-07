@@ -15,6 +15,8 @@ import { allocationOf, listLabel, seatBlocsOf } from '../derive.ts';
 import { localityTotals, localityWinner, matchesLocality, nearestLocality, normalizeLocalityName } from '../locality-map-model.ts';
 import { useL, useLang } from '../i18n.ts';
 import { useStore } from '../store.ts';
+import type { FeatureCollection } from 'geojson';
+import { MAP_LINES, MAP_LINE_SNAPSHOT, drawMapLines, mapLineSourceLabel } from '../locality-map-lines.ts';
 import { basemapAttribution } from '../locality-basemap-style.ts';
 import { fmtInt, fmtPct } from '../format.ts';
 
@@ -31,6 +33,7 @@ function useJson<T>(url: string | null, empty: T) {
   return { value, error };
 }
 const NO_LOCATIONS: LocalityLocations = {};
+const NO_LINES: FeatureCollection = { type:'FeatureCollection', features:[] };
 const NO_NAMES: LocalityNames = { names: [], project: [] };
 export function useLocalityLocations(id: string, available = true) {
   const { value: locations, error } = useJson(available ? `${import.meta.env.BASE_URL}data/${id}-locations.json` : null, NO_LOCATIONS);
@@ -71,6 +74,16 @@ const ZoomInPlace = Leaflet.Control.Zoom.extend({
   },
 });
 
+// Leaflet 1.9.4 can lose a queued frame ID when _updatePaths redraws synchronously.
+// Its onRemove cancels only the last ID, so an older callback can outlive the context.
+// Keep the guard on our renderer; do not change Leaflet's global prototype.
+type CanvasLifecycle = Leaflet.Canvas & { _map?: Leaflet.Map; _redraw(): void };
+const MountedCanvas = Leaflet.Canvas.extend({
+  _redraw(this: CanvasLifecycle) {
+    if (this._map) (Leaflet.Canvas.prototype as CanvasLifecycle)._redraw.call(this);
+  },
+});
+
 const photonCache = new Map<string, PhotonFeature[]>();
 let lastRequest = 0;
 interface PhotonFeature { geometry: { coordinates: [number, number] }; properties: Record<string, string> }
@@ -87,6 +100,8 @@ const textWidth = (text: string) => {
 export function LocalityMap({ s, data, historicalLists, locations, names, locationError }: { s: Scenario; data: LocalityDataset; historicalLists: (SimList | null)[]; locations: LocalityLocations; names: LocalityNames; locationError: boolean }) {
   const L = useL(), lang = useLang();
   const dark = useStore(st => st.theme === 'dark');
+  const [lineIds, setLineIds] = useState<ReadonlySet<string>>(() => new Set(MAP_LINES.map(x=>x.id)));
+  const { value: lineData, error: lineError } = useJson(`${import.meta.env.BASE_URL}data/map-lines.geojson`, NO_LINES);
   const container = useRef<HTMLDivElement>(null), map = useRef<Leaflet.Map | null>(null);
   const [mode, setMode] = useState<'bloc' | 'list'>('bloc');
   const [q, setQ] = useState(''), [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -111,7 +126,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   useEffect(() => {
     if (!container.current) return;
     // Tool tabs unmount immediately; Leaflet's delayed zoom completion can outlive the map pane.
-    const m = Leaflet.map(container.current, { preferCanvas:true, scrollWheelZoom:false, zoomAnimation:false, zoomControl:false, minZoom:2, maxZoom:19, maxBounds:[[-85,-180],[85,180]] }).setView([31.7,35],7);
+    const m = Leaflet.map(container.current, { renderer:new MountedCanvas(), scrollWheelZoom:false, zoomAnimation:false, zoomControl:false, minZoom:2, maxZoom:19, maxBounds:[[-85,-180],[85,180]] }).setView([31.7,35],7);
     new ZoomInPlace().addTo(m);
     map.current = m;
     // Leaflet's keyboard handler focuses the map on mousedown without preventScroll (it restores only the window's
@@ -132,6 +147,10 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     }).catch(() => { if (!controller.signal.aborted) setTilesFailed(true); });
     return () => controller.abort();
   }, [dark]);
+  useEffect(() => {
+    const m = map.current; if (!m || !lineData.features.length) return;
+    return drawMapLines(m, lineData, lineIds, dark);
+  }, [lineData, lineIds, dark]);
   useEffect(() => {
     const m = map.current; if (!m) return;
     const group = Leaflet.layerGroup().addTo(m);
@@ -253,7 +272,20 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     }}>{[f.properties.name,f.properties.street,f.properties.housenumber,f.properties.city,f.properties.country].filter(Boolean).join(', ')}</button>)}</div>}
     {data.id === 'k17' && <Locality2006Note />}
     <div className="locality-map-legend">{legend.map(x=><span key={x.id} title={x.title}><i style={{background:x.color}} />{x.label}</span>)}<span><i style={{background:GREY}}/>{L('Tie / unassigned / no votes','שוויון / ללא שיוך / ללא קולות')}</span></div>
-    <p className="small locality-map-line-notice"><span>{L('Boundary lines unavailable', 'קווי גבול אינם זמינים')}</span> <Info title={L('Boundary verification', 'אימות קווי הגבול')}>{L('Provider boundaries are hidden. Armistice lines, international borders and UN separation lines await independent geometry verification; their absence does not indicate a territorial claim.', 'קווי הגבול של ספק המפה מוסתרים. קווי שביתת הנשק, הגבולות הבין־לאומיים וקווי ההפרדה של האו״ם ממתינים לאימות גאומטרי עצמאי; היעדרם אינו מבטא עמדה טריטוריאלית.')}</Info></p>
+    <fieldset className="locality-boundary-legend"><legend>{L('Lines and areas', 'קווים ושטחים')}</legend>
+      {MAP_LINES.map(line => <span className="locality-boundary-entry" key={line.id}>
+        <label><input type="checkbox" checked={lineIds.has(line.id)} onChange={e => setLineIds(old => { const next = new Set(old); if (e.target.checked) next.add(line.id); else next.delete(line.id); return next; })} />
+          <svg width="28" height="14" viewBox="0 0 28 14" aria-hidden="true">{line.id === 'no-mans-land' ? <path d="M0 12L12 0 M8 14L22 0 M18 14L28 4" stroke={dark?line.dark:line.color} /> : <path d="M0 7H28" stroke={dark?line.dark:line.color} strokeWidth="2" strokeDasharray={line.dash} />}</svg>
+          {lang === 'he' ? line.he : line.en}</label>
+        <Info title={lang === 'he' ? line.he : line.en}>
+          <p>{lang === 'he' ? line.detailHe : line.detailEn}</p>
+          <p>{L('Geometry snapshot: ', 'תצלום מצב של הגאומטריה: ')}<bdi>{MAP_LINE_SNAPSHOT}</bdi></p>
+          <p>{L('Sources: ', 'מקורות: ')}{line.sources.map(([label,url],i)=><span key={url}>{i>0?' · ':''}<a href={url} target="_blank" rel="noreferrer">{mapLineSourceLabel(label,lang)}</a></span>)}</p>
+        </Info>
+      </span>)}
+      <p className="small locality-boundary-limit">{L('Golan: Bravo / separation area not shown', 'גולן: בראבו ואזור ההפרדה אינם מוצגים')} <Info title={L('Unverified Golan geometry', 'גאומטריה בגולן שטרם אומתה')}>{L('Bravo, Alpha-1 and the exact area of separation remain unverified and are not drawn. The Alpha line is shown independently. The larger areas of limitation and present military positions are not depicted.', 'קו בראבו, אלפא־1 והתחום המדויק של אזור ההפרדה טרם אומתו ואינם מצוירים. קו אלפא מוצג בנפרד. אזורי הגבלת הכוחות הרחבים יותר ועמדות צבאיות כיום אינם מוצגים.')}</Info></p>
+    </fieldset>
+    {lineError && <p className="small bad" role="status">{L('Boundary data could not load.', 'נתוני הקווים לא נטענו.')}</p>}
     <div ref={container} className="locality-map-canvas" role="region" aria-label={L('Locality results map; use search or table for keyboard selection','מפת תוצאות ביישובים; לבחירה במקלדת השתמשו בחיפוש או בטבלה')} />
     {tilesFailed && <p className="small bad">{L('The background map could not load; the locality dots still work.', 'מפת הרקע לא נטענה; נקודות היישובים עדיין פעילות.')}</p>}
     {selected && <section className="locality-map-results" aria-live="polite" aria-label={L('Selected locality results','תוצאות היישוב הנבחר')}>

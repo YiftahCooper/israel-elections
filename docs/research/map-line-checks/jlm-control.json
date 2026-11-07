@@ -1,0 +1,54 @@
+{
+  "source": "UN map 229, November 1949, retained 1400px image",
+  "controls": [
+    [
+      "Holy Sepulchre",
+      541,
+      813,
+      35.22958,
+      31.77845
+    ],
+    [
+      "Dome of the Rock",
+      671,
+      826,
+      35.2354,
+      31.778
+    ],
+    [
+      "David tomb",
+      533,
+      998,
+      35.2293,
+      31.7723
+    ],
+    [
+      "Western Wall",
+      652,
+      861,
+      35.2345,
+      31.7767
+    ]
+  ],
+  "pixelToUtm": [
+    [
+      4.213932447992051,
+      0.011343101448548394
+    ],
+    [
+      0.10981026582169306,
+      -3.700650968802165
+    ],
+    [
+      708755.6688414523,
+      3521046.0174934966
+    ]
+  ],
+  "residualMetres": [
+    0.5978765602615702,
+    8.007029293485019,
+    1.836116478755063,
+    9.245269220085486
+  ],
+  "limitation": "Approximate symbol-centre registration, not surveyed control; no geometry digitized or corrected from this fit."
+}

@@ -49,3 +49,10 @@
 
 /* Full data credits must wrap inside the phone map in either interface direction. */
 .locality-map-canvas .leaflet-control-attribution { max-width: 100%; white-space: normal; direction: ltr; text-align: end; }
+
+.locality-boundary-legend { margin: 8px 0; padding: 8px; border: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 6px 14px; min-width: 0; }
+.locality-boundary-legend legend { padding-inline: 4px; font-size: 13px; font-weight: 600; }
+.locality-boundary-entry { display: inline-flex; align-items: center; gap: 4px; max-width: 100%; font-size: 12px; }
+.locality-boundary-entry label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; min-height: 28px; }
+.locality-boundary-entry input, .locality-boundary-entry svg { flex-shrink: 0; }
+.locality-boundary-limit { flex-basis: 100%; margin: 2px 0 0; }
