@@ -21,8 +21,8 @@ for(const lang of ['he','en']) for(const theme of ['light','dark']) for(const ph
           const svg=el.querySelector('svg[role="img"]') as SVGSVGElement;
           const regions=[...svg.querySelectorAll<SVGGeometryElement>('[data-bloc-region]')];
           const errors:string[]=[];
-          // a hairline in the region's own colour only closes antialiasing seams; any other stroke is a stray outline
-          if([...el.querySelectorAll('.wedge')].some(region=>{const st=getComputedStyle(region);return st.stroke!=='none'&&st.stroke!==st.fill;})) errors.push('stroked region');
+          // Regions now have deliberate theme-aware borders, including the reference chamber.
+          if([...el.querySelectorAll('.wedge, .bloc-outline')].some(region=>{const st=getComputedStyle(region);return st.stroke==='none'||parseFloat(st.strokeWidth)<1.25||st.vectorEffect!=='non-scaling-stroke';})) errors.push('missing bloc border');
           if([...svg.querySelectorAll('path:not([data-bloc-boundary]):not([data-bloc-boundary-gap])')].some(path=>getComputedStyle(path).fill==='none' && getComputedStyle(path).stroke!=='none')) errors.push('stray outline');
           for(const seat of svg.querySelectorAll<SVGGeometryElement>('[data-seat]')) {
             const box=seat.getBBox();

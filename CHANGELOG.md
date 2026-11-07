@@ -2,6 +2,8 @@
 
 ## 6 November 2026 — data audit
 
+- Give bloc regions clean shared edges and contrast-checked borders in Arc, Blocks, reference chambers, legend keys and exports.
+
 - Mark custom bloc, coalition and family groupings locally as analysis while preserving official result identity and factual summaries.
 
 - Keep custom list, party and bloc colours and grouping display names separate from result identity; save/share appearance and reset colours independently of result edits.

@@ -101,7 +101,8 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   const total = s.rules.seats;
   const rtl = false; // Geometry is physically left-to-right in both languages, like the 61 marker.
   const { seats: pos, r: rad } = useMemo(() => arcLayout(total), [total]);
-  const W = 1000, H = layout === 'hemicycle' ? 490 : 0;
+  // Include the floor beneath baseline seats and the full outer border in the drawing bounds.
+  const W = 1000, H = Math.max(490, 470 + (rad + 0.015) * 400 + 2);
   const listOf = (id: string) => s.lists.find((l) => l.id === id) as SimList;
   // one region per run of seats in the same bloc (seats are ordered by angle); bandOf[i] is seat i's region
   const { bands, bandOf } = useMemo(() => {
@@ -134,10 +135,10 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     const originalNodes = [el, ...el.querySelectorAll('*')];
     [clone, ...clone.querySelectorAll('*')].forEach((node, i) => {
       const style = getComputedStyle(originalNodes[i]);
-      for (const prop of ['fill','stroke','stroke-width','stroke-dasharray','fill-opacity','stroke-opacity'])
+      for (const prop of ['fill','stroke','stroke-width','stroke-dasharray','fill-opacity','stroke-opacity','vector-effect','stroke-linejoin','stroke-linecap'])
         node.setAttribute(prop, style.getPropertyValue(prop));
       // regions carry their colour in an inline color-mix(var(...)) style; the resolved fill was just copied above
-      if (node instanceof SVGElement && node.classList.contains('wedge')) node.removeAttribute('style');
+      if (node instanceof SVGElement && (node.classList.contains('wedge') || node.classList.contains('bloc-cell'))) node.removeAttribute('style');
     });
     const vb = el.viewBox.baseVal;
     const NS = 'http://www.w3.org/2000/svg', ink = css.getPropertyValue('--ink'), rtlText = lang === 'he';
@@ -156,7 +157,8 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       const inset = mini.cloneNode(true) as SVGSVGElement;
       [inset, ...inset.querySelectorAll('*')].forEach((node,i) => {
         const style = getComputedStyle([mini,...mini.querySelectorAll('*')][i]);
-        for (const prop of ['fill','stroke','stroke-width','stroke-dasharray','opacity','fill-opacity','stroke-opacity']) node.setAttribute(prop,style.getPropertyValue(prop));
+        for (const prop of ['fill','stroke','stroke-width','stroke-dasharray','opacity','fill-opacity','stroke-opacity','vector-effect','stroke-linejoin','stroke-linecap']) node.setAttribute(prop,style.getPropertyValue(prop));
+        if (node instanceof SVGElement && node.classList.contains('wedge')) node.removeAttribute('style');
       });
       inset.setAttribute('x',String(rtlText ? vb.x + vb.width - 416 : vb.x+16)); inset.setAttribute('y',String(vb.y+vb.height+25));
       inset.setAttribute('width','400'); inset.setAttribute('height','230');
@@ -247,10 +249,9 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     body = (
       <svg ref={svgRef} viewBox={`40 30 920 ${H - 30}`} role="img" aria-label={`${title ?? L('Knesset seat diagram', 'תרשים מושבי הכנסת')}: ${summary}`}>
         {wedges.map(w => <g key={w.band}>
-          {/* opaque mix rather than fill-opacity: adjacent regions then meet without translucent seams, and a hairline
-              stroke in the same colour closes the antialiasing gap between them */}
-          <path data-bloc-region={bands[w.band].bloc} className="wedge solid" d={w.fill}
-            style={{ fill: `color-mix(in srgb, ${bands[w.band].color} var(--wedge-mix), var(--surface))`, stroke: `color-mix(in srgb, ${bands[w.band].color} var(--wedge-mix), var(--surface))` }} />
+          {/* Shared edges are covered by an opaque border, avoiding antialiasing seams. */}
+          <path data-bloc-region={bands[w.band].bloc} className={`wedge solid ${bands[w.band].bloc === '__none' ? 'unassigned' : ''}`} d={w.fill}
+            style={{ ['--bc' as string]: bands[w.band].color }} />
         </g>)}
         {seats.map((st, i) => {
           const p = pos[rtl ? pos.length - 1 - i : i]; if (!p) return null;
@@ -274,7 +275,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       {seats.map((st, i) => {
         const x = 24 + (rtl ? 19-i%20 : i%20)*48, y = 16+Math.floor(i/20)*48;
         const bc = s.blocs.find(b => b.id === st.bloc)?.color ?? 'var(--muted)';
-        return <g key={i}><rect data-bloc-region={st.bloc ?? '__none'} x={x-5} y={y-5} width={46} height={46} rx={8} fill={bc} stroke="none" className="wedge" />
+        return <g key={i}><rect data-bloc-region={st.bloc ?? '__none'} x={x-5} y={y-5} width={48} height={48} className="bloc-cell" style={{ ['--bc' as string]: bc }} />
           <rect data-seat="" className="seat" x={x} y={y} width={36} height={36} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--surface)'} strokeWidth={3}
             onMouseEnter={e => onSeat(st,e)} onMouseLeave={hoverBridge.leave} onClick={() => setState({selectedListId: st.listId})}><title>{seatLabel(st)}</title></rect>
           {st.innerColor && <circle data-component-seat={st.partyId} pointerEvents="none" cx={x+18} cy={y+18} r={12} fill={st.innerColor} />}
@@ -293,8 +294,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         ].join(' ');
         if (!d.trim()) return null;
         return <g key={`boundary-${i}`} aria-hidden="true" pointerEvents="none">
-          <path data-bloc-boundary-gap="" d={d} fill="none" stroke="var(--surface)" strokeWidth={8} />
-          <path data-bloc-boundary={st.bloc ?? '__none'} d={d} fill="none" stroke={s.blocs.find(b => b.id === st.bloc)?.color ?? 'var(--muted)'} strokeWidth={3} />
+          <path data-bloc-boundary={st.bloc ?? '__none'} className={`bloc-outline ${st.bloc === null ? 'unassigned' : ''}`} d={d} />
         </g>;
       })}
     </svg>;
@@ -320,10 +320,10 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       {body}
       {hasChanges && <div className="baseline-mini">
         <span className="small muted">{referenceLabel(labelReference,lang).name}</span>
-        <svg viewBox="40 30 920 460" role="img" aria-label={referenceLabel(labelReference,lang).name}>
+        <svg viewBox={`40 30 920 ${H - 30}`} role="img" aria-label={referenceLabel(labelReference,lang).name}>
           {annularRegions(pos, baselineSeats.map(st=>blocDisplayOrder(base).indexOf(st.bloc)),rad).map(w=>{
             const id=blocDisplayOrder(base)[w.band], color=base.blocs.find(b=>b.id===id)?.color ?? 'var(--muted)';
-            return <g key={w.band}><path className="wedge" d={w.fill} fill={color} stroke="none" /></g>;
+            return <g key={w.band}><path className={`wedge solid ${id === null ? 'unassigned' : ''}`} d={w.fill} style={{ ['--bc' as string]: color }} /></g>;
           })}
           {baselineSeats.map((st,i)=> <g key={i}><circle data-reference-seat="" data-lost={changes.lost.has(`${st.listId}:${st.idx}`) ? '' : undefined}
             cx={500+pos[i].x*400} cy={470+pos[i].y*400} r={rad*400} fill={st.color}
@@ -346,7 +346,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       )}
       {!compactProp && (
         <div className="legend" role="group" aria-label={L('Lists in the Knesset', 'הרשימות בכנסת')} style={{ marginTop: 6 }}>
-          {seats.some(st=>st.bloc===null) && <span className="row no-bloc-legend"><span className="swatch" style={{background:'color-mix(in srgb, var(--muted) 30%, var(--surface))',border:'1px dotted var(--muted)'}} />{L('No bloc','ללא גוש')}</span>}
+          {seats.some(st=>st.bloc===null) && <span className="row no-bloc-legend"><span className="swatch bloc-swatch unassigned" style={{['--bc' as string]:'var(--muted)'}} />{L('No bloc','ללא גוש')}</span>}
           {componentRows.map(({l,p,n}) => <button key={`${l.id}:${p.id}`} aria-pressed={selected === l.id} onClick={()=>setState({selectedListId:selected === l.id ? null : l.id})}><span className="component-key" style={{background:p.color ?? l.color,borderColor:l.color}} />{componentName(l,p)} <b>{n}</b></button>)}
           {legendRows.filter(({l})=>!componentRows.some(row=>row.l.id===l.id)).map(({ l, n }) => (
             <button key={l.id} aria-pressed={selected === l.id} onClick={() => setState({ selectedListId: selected === l.id ? null : l.id })}>
