@@ -3,7 +3,7 @@ export interface CbsNameRecord { code: number; year: number; nameHe: string; nam
 export type LocalityNameSource = 'cbs' | 'project';
 /** Index-aligned with the election's locality rows; '' for envelope rows. `project` lists rows whose English name
  * is not in any retained CBS list and was written by this project (labelled in the interface). */
-export interface LocalityNames { names: string[]; project: number[] }
+export interface LocalityNames { names: string[]; project: number[]; hebrew?: HebrewLocalityName[] }
 
 /** Spelling-insensitive Hebrew key: drops niqqud, CBS footnote asterisks, punctuation, spaces, and the
  * doubled yod/vav of full spelling (CBS writes הרצלייה where results write הרצליה). */
@@ -58,4 +58,40 @@ export function resolveLocalityCode(nameHe: string, records: CbsNameRecord[]): n
   const candidates = exact.length ? exact : key.length >= 8 ? records.filter(r => hebrewNameKey(r.nameHe).startsWith(key)) : [];
   const codes = new Set(candidates.map(r => r.code));
   return codes.size === 1 ? [...codes][0] : null;
+}
+
+export interface HebrewLocalityName {
+  name: string;
+  source: 'cbs' | 'cec';
+  /** CBS edition used, including when its proposed name was rejected. */
+  year?: number;
+  /** Different letters: retain CEC rather than assume these denote the same locality. */
+  conflict?: string;
+}
+
+/** Only repair whitespace in the CEC fallback; never reconstruct missing letters. */
+export function tidyCecHebrew(value: string): string {
+  return value.replace(/(\S)\(/g, '$1 (').replace(/\s+/g, ' ').trim();
+}
+const hebrewFormattingKey = (value: string) => value.replace(/[\s\p{P}]+/gu, '');
+
+/** Code-only Hebrew join to the nearest retained CBS edition (earlier edition on a tie).
+ * Punctuation/spacing changes are safe; letter changes are reported and never substituted.
+ * Uncoded rows keep CEC: the English resolver's prefix/spelling guesses are inappropriate here.
+ */
+export function resolveLocalityHebrew(row: { code: number | null; nameHe: string }, year: number, records: CbsNameRecord[]): HebrewLocalityName {
+  const name = tidyCecHebrew(row.nameHe);
+  const candidates = row.code !== null && row.code > 0 ? records.filter(r => r.code === row.code && r.nameHe.trim()) : [];
+  const best = [...candidates].sort((a, b) => Math.abs(a.year - year) - Math.abs(b.year - year) || a.year - b.year)[0];
+  if (!best) return { name, source: 'cec' };
+  // Asterisks are CBS footnote markers, not part of the locality's name.
+  const cbs = tidyCecHebrew(best.nameHe.replace(/\*/g, ''));
+  return hebrewFormattingKey(cbs) === hebrewFormattingKey(name)
+    ? { name: cbs, source: 'cbs', year: best.year }
+    : { name, source: 'cec', year: best.year, conflict: cbs };
+}
+
+/** Shared runtime Hebrew display name, also safe while the sidecar is loading. */
+export function localityHebrewName(names: LocalityNames, row: { nameHe: string }, index: number): string {
+  return names.hebrew?.[index]?.name ?? tidyCecHebrew(row.nameHe);
 }

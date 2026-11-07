@@ -59,5 +59,8 @@ for (const file of readdirSync('public/data').filter(f => /^k\d+-localities.json
   });
   writeFileSync(`public/data/${data.id}-locality-names.json`, JSON.stringify(names)+'\n');
 }
+// Keep Hebrew display sidecars in sync after rebuilding the English names.
+const hebrew = spawnSync(process.execPath, ['scripts/build-locality-hebrew-names.ts'], { stdio: 'inherit' });
+if (hebrew.status !== 0) throw new Error('Hebrew locality names build failed');
 writeFileSync('public/data/locality-map-coverage.json', JSON.stringify(coverage,null,2)+'\n');
 console.log(coverage);

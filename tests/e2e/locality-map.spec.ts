@@ -243,3 +243,63 @@ test('Hebrew map references remain isolated LTR and the phone legend is collapse
  await expect(pop.locator('bdi[dir="ltr"]').filter({hasText:'I(א) 2.A.7'})).toBeVisible();
  await expect(pop).toContainText('ומפות ההדמאה');await expect(pop).not.toContainText('Annex');
 });
+
+for (const election of ['k25', 'k26']) for (const width of [1500, 390]) for (const theme of ['light', 'dark']) {
+  test(`Hebrew CBS labels around Lakiya/Rahat ${election} ${width} ${theme}`, async ({page}) => {
+    await page.setViewportSize({width, height:1000});
+    await page.addInitScript(({theme}) => {
+      localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'he',level:'expert',hintDismissed:true}));
+      localStorage.setItem('israel-elections:settings', JSON.stringify({v:2,values:{theme,starterTip:false,decimals:1}}));
+    }, {theme});
+    await page.route('https://tiles.openfreemap.org/**', route => route.abort());
+    await page.goto('/');
+    await choose(page.getByRole('button', {name:'בחירות',exact:true}), election);
+    await page.getByRole('tab', {name:'יישובים',exact:true}).click();
+    const search = page.getByRole('searchbox', {name:'חיפוש יישוב',exact:true});
+    // Search by the original CEC alias and verify that results and map agree on the CBS spelling.
+    await search.fill(election === 'k25' ? 'קודייראת אצאנעשבט' : 'קודייראת א-צאנע(שבט)');
+    const result = page.locator('.locality-map-matches button').filter({hasText:'964'});
+    await expect(result).toContainText('קודייראת א-צאנע (שבט)');
+    await result.click();
+    await expect(page.locator('.locality-map-results h3')).toHaveText('קודייראת א-צאנע (שבט)');
+    await expect(page.locator('.locality-map-results h3 span')).toHaveAttribute('title', /ועדת הבחירות \(מקור\)/);
+    await expect(page.locator('.locality-map-label').filter({hasText:/^קודייראת א-צאנע \(שבט\)$/})).toBeVisible();
+    await page.locator('.locality-map-canvas').scrollIntoViewIfNeeded();
+    await page.screenshot({path:`.backup-scratch/hebrew-corrected-${election}-${width}-${theme}.png`});
+    await search.fill('לקיה');
+    await page.locator('.locality-map-matches button').filter({hasText:'(1060)'}).click();
+    await expect(page.locator('.locality-map-label').filter({hasText:/^לקיה$/})).toBeVisible();
+    const map = page.locator('.locality-map-canvas');
+    await map.scrollIntoViewIfNeeded();
+    await page.screenshot({path:`.backup-scratch/hebrew-labels-${election}-${width}-${theme}.png`});
+    await page.getByRole('button', {name:'טבלה',exact:true}).click();
+    await page.getByRole('searchbox', {name:'חיפוש יישוב',exact:true}).fill('קודייראת');
+    await expect(page.getByRole('region', {name:'טבלה נגללת'})).toContainText('קודייראת א-צאנע (שבט)');
+  });
+}
+
+test('Hebrew corrected names agree in nearest-locality messages and downloaded display data', async ({page}) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'he',level:'expert',hintDismissed:true}));
+    localStorage.setItem('israel-elections:settings', JSON.stringify({v:2,values:{starterTip:false}}));
+  });
+  await page.route('https://tiles.openfreemap.org/**', route => route.abort());
+  await page.route('https://photon.komoot.io/**', route => route.fulfill({json:{features:[{geometry:{coordinates:[35.1156242606379,31.293647189077692]},properties:{name:'כתובת בדיקה'}}]}}));
+  await page.goto('/');
+  await choose(page.getByRole('button', {name:'בחירות',exact:true}), 'k25');
+  await page.getByRole('tab', {name:'יישובים',exact:true}).click();
+  await page.getByRole('textbox', {name:'היישוב הקרוב לכתובת'}).fill('כתובת בדיקה');
+  await page.getByRole('button', {name:'חיפוש כתובת',exact:true}).click();
+  await page.getByRole('button', {name:'כתובת בדיקה',exact:true}).click();
+  await expect(page.locator('.locality-map-status')).toContainText('היישוב הממופה הקרוב: קודייראת א-צאנע (שבט)');
+  await page.getByRole('tab', {name:'מקורות',exact:true}).click();
+  const pending = page.waitForEvent('download');
+  await page.getByRole('button', {name:'יישובים',exact:true}).click();
+  const downloaded = await pending;
+  const {readFile} = await import('node:fs/promises');
+  const data = JSON.parse(await readFile((await downloaded.path())!, 'utf8'));
+  const row = data.rows.find((r: {code:number}) => r.code === 964);
+  expect(row.nameHe).toBe('קודייראת א-צאנע (שבט)');
+  expect(row.cecNameHe).toBe('קודייראת אצאנעשבט');
+  expect(row.nameSource.source).toBe('cbs');
+});

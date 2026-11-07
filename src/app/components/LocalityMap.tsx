@@ -11,7 +11,7 @@ import './locality-map.css';
 import { isEnvelopeRow, type LocalityDataset, type LocalityRow } from '../../data/schema.ts';
 import type { LocalityLocations } from '../../data/locality-coordinates.ts';
 import { localityLocationKey } from '../../data/locality-location-key.ts';
-import type { LocalityNames } from '../../data/locality-names.ts';
+import { localityHebrewName, type LocalityNames } from '../../data/locality-names.ts';
 import type { SimList, Scenario } from '../../model/scenario.ts';
 import { allocationOf, listLabel, seatBlocsOf } from '../derive.ts';
 import { localityTotals, localityWinner, matchesLocality, nearestLocality, normalizeLocalityName } from '../locality-map-model.ts';
@@ -42,22 +42,30 @@ export function useLocalityLocations(id: string, available = true) {
   const { value: locations, error } = useJson(available ? `${import.meta.env.BASE_URL}data/${id}-locations.json` : null, NO_LOCATIONS);
   return { locations, error };
 }
-/** English names index-aligned with the election's locality rows (CBS lists; a few labelled project transliterations). */
+/** Display names index-aligned with the election's locality rows (CBS lists; a few labelled project transliterations). */
 export function useLocalityNames(id: string, available = true) {
   return useJson(available ? `${import.meta.env.BASE_URL}data/${id}-locality-names.json` : null, NO_NAMES).value;
 }
 /** A row's name in the interface language; envelope batches get a translated label, never the Hebrew file text. */
 export function localityName(names: LocalityNames, row: LocalityRow, index: number, lang: 'he' | 'en'): string {
-  if (lang === 'he') return row.nameHe;
+  if (lang === 'he') return localityHebrewName(names, row, index);
   if (isEnvelopeRow(row)) return 'Double envelopes';
   return names.names[index] || (row.code ? `Locality ${row.code}` : 'Locality');
+}
+/** Provenance always includes the unmodified CEC name, including unresolved CBS conflicts. */
+export function localityNameSource(names: LocalityNames, row: LocalityRow, index: number, lang: 'he' | 'en'): string {
+  const he = names.hebrew?.[index];
+  const cec = `${lang === 'he' ? 'ועדת הבחירות (מקור)' : 'CEC (original)'}: ${row.nameHe}`;
+  if (!he?.year) return cec;
+  const cbs = `${lang === 'he' ? 'למ״ס' : 'CBS'} ${he.year}: ${he.conflict ?? he.name}`;
+  return `${cec} · ${cbs}${he.conflict ? (lang === 'he' ? ' — הבדל בשם; נשמר שם ועדת הבחירות' : ' — name differs; CEC retained') : ''}`;
 }
 /** The name, marked when its English is the project's own transliteration rather than a CBS name. */
 export function LocalityName({ names, row, index }: { names: LocalityNames; row: LocalityRow; index: number }) {
   const lang = useLang();
   const text = localityName(names, row, index, lang);
-  if (lang === 'en' && names.project.includes(index)) return <abbr className="locality-translit" title="Transliteration by this project; not in CBS locality lists">{text}</abbr>;
-  return <span dir="auto">{text}</span>;
+  if (lang === 'en' && names.project.includes(index)) return <abbr className="locality-translit" title={`Transliteration by this project; not in CBS locality lists · ${localityNameSource(names, row, index, lang)}`}>{text}</abbr>;
+  return <span dir="auto" title={localityNameSource(names, row, index, lang)}>{text}</span>;
 }
 
 /** Shared by the map and table: the source omits codes; this does not establish absence in every official edition. */
@@ -122,7 +130,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     const p = locations[localityLocationKey(row, index)];
     return !isEnvelopeRow(row) && p ? [{ ...p, row, index }] : [];
   }), [data, locations]);
-  const searchNames = (r: LocalityRow, i: number) => ({ ...locations[localityLocationKey(r, i)], nameHe: r.nameHe, code: r.code, aliases: [...(locations[localityLocationKey(r, i)]?.aliases ?? []), names.names[i] ?? ''] });
+  const searchNames = (r: LocalityRow, i: number) => ({ ...locations[localityLocationKey(r, i)], nameHe: localityHebrewName(names, r, i), code: r.code, aliases: [...(locations[localityLocationKey(r, i)]?.aliases ?? []), names.names[i] ?? '', r.nameHe] });
   const matches = useMemo(() => data.rows.flatMap((r, i) => matchesLocality(q, searchNames(r, i)) ? [i] : []), [data, locations, names, q]);
   const winners = useMemo(() => placed.map(p => localityWinner(s, data.listIds, p.row.votes, mode)), [placed,s,data.listIds,mode]);
   const groupName = (key: string | null) => key === null ? (mode === 'bloc' ? L('No bloc', 'ללא גוש') : L('Unassigned', 'ללא שיוך')) : mode === 'bloc'
@@ -169,7 +177,8 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       const why = document.createElement('span'); why.dir = 'auto';
       why.textContent = w.tied ? L('Tie', 'שוויון') : w.key === null ? L('Unassigned / no votes', 'ללא שיוך / ללא קולות')
         : `${groupName(w.key)} \u2066+${(w.margin / Math.max(1, p.row.valid) * 100).toFixed(digits)}\u2069${L(' pp', ' נק׳')}`;
-      tip.append(title, why);
+      const source = document.createElement('span'); source.dir = 'auto'; source.textContent = localityNameSource(names, p.row, p.index, lang);
+      tip.append(title, why, source);
       // a thin white outline separates neighbouring dots; a dark ring would darken every colour alike
       Leaflet.circleMarker([p.lat,p.lon], {radius:5, color:'#ffffff',weight:4,fill:false,interactive:false}).addTo(group);
       Leaflet.circleMarker([p.lat,p.lon], {radius:5, color:'#111418',weight:1,fillColor:w.color,fillOpacity:1}).bindTooltip(tip).on('click',()=>setSelectedIndex(p.index)).addTo(group);
@@ -185,7 +194,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   useEffect(() => {
     const m = map.current, rtl = lang === 'he'; if (!m || (!rtl && !names.names.length)) return;
     const layer = Leaflet.layerGroup().addTo(m);
-    const ranked = placed.map(p => ({ p, name: rtl ? p.row.nameHe : names.names[p.index], weight: p.row.registered ?? p.row.votesCast })).filter(x => x.name).sort((a, b) => b.weight - a.weight);
+    const ranked = placed.map(p => ({ p, name: localityName(names, p.row, p.index, lang), weight: p.row.registered ?? p.row.votesCast })).filter(x => x.name).sort((a, b) => b.weight - a.weight);
     const draw = () => {
       layer.clearLayers();
       const z = m.getZoom();
@@ -276,7 +285,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     <p className="small locality-map-status" role="status">{message}</p>
     {suggestions.length>0 && <div className="locality-map-matches">{suggestions.map((f,i)=><button className="btn small" key={i} dir="auto" onClick={()=>{
       const [lon,lat]=f.geometry.coordinates; const near=nearestLocality(placed,{lat,lon});
-      if (near) {choose(near.item.index);setMessage(L(`Nearest mapped locality: ${nameOf(near.item.index)}, ${near.km.toFixed(1)} km (straight line).`, `היישוב הממופה הקרוב: ${near.item.row.nameHe}, ${near.km.toFixed(1)} ק״מ בקו אווירי.`));}
+      if (near) {choose(near.item.index);setMessage(L(`Nearest mapped locality: ${nameOf(near.item.index)}, ${near.km.toFixed(1)} km (straight line).`, `היישוב הממופה הקרוב: ${nameOf(near.item.index)}, ${near.km.toFixed(1)} ק״מ בקו אווירי.`));}
     }}>{[f.properties.name,f.properties.street,f.properties.housenumber,f.properties.city,f.properties.country].filter(Boolean).join(', ')}</button>)}</div>}
     {data.id === 'k17' && <Locality2006Note />}
     <div className="locality-map-legend">{legend.map(x=><span key={x.id} title={x.title}><i style={{background:x.color}} />{x.label}</span>)}<span><i style={{background:GREY}}/>{L('Tie / unassigned / no votes','שוויון / ללא שיוך / ללא קולות')}</span></div>
@@ -317,7 +326,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
         <span>{L('Valid ', 'כשרים ')}<b className="tabnum">{fmtInt(selected.valid)}</b></span>
         <span>{L('Registered ', 'בעלי זכות ')}<b className="tabnum">{selected.registered === null ? '—' : fmtInt(selected.registered)}</b></span>
         <span>{L('Invalid ', 'פסולים ')}<b className="tabnum">{fmtInt(selected.invalid)}</b></span>
-        <Info title={L('Location and turnout', 'מיקום והצבעה')}>{L('Turnout excludes double-envelope votes. Coordinates are CBS locality reference points, not polling stations.', 'ההצבעה אינה כוללת מעטפות חיצוניות. המיקום הוא נקודת ייחוס של הלמ״ס ליישוב ולא מיקום קלפי.')}</Info>
+        <Info title={L('Location and turnout', 'מיקום והצבעה')}><p>{localityNameSource(names, selected, selectedIndex!, lang)}</p>{L('Turnout excludes double-envelope votes. Coordinates are CBS locality reference points, not polling stations.', 'ההצבעה אינה כוללת מעטפות חיצוניות. המיקום הוא נקודת ייחוס של הלמ״ס ליישוב ולא מיקום קלפי.')}</Info>
       </p>
       {/* each list's share drawn as a bar in its colour, scaled to the leader */}
       <div className="tablewrap"><table className="tbl"><thead><tr><th>{L('List','רשימה')}</th><th className="n">{L('Votes','קולות')}</th><th>{L('Share','שיעור')}</th></tr></thead><tbody>{(()=>{const rows=selected.votes.map((v,k)=>({v,k})).filter(x=>x.v>0).sort((a,b)=>b.v-a.v);const top=rows[0]?.v||1;return rows.map(({v,k})=>{
