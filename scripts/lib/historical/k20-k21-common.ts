@@ -222,8 +222,8 @@ export async function build(n: 20 | 21, national: National, expectedCounts: Reco
     sourceIds: [...ids, 'law-elections'], buildInfo: { builtAt: new Date().toISOString(), rawSha256 },
   };
   if (n === 20) {
-    ds.status.noteEn += ' Polling/locality counts describe retained results-table rows, not all physical polling places; see k20-resolution.md.';
-    ds.status.noteHe += ' מספרי הקלפיות והיישובים הם ספירת שורות בטבלאות התוצאות, ולא כלל אתרי ההצבעה; ראו k20-resolution.md.';
+    ds.status.noteEn += ' The 10,414 polling-result rows comprise 10,119 ordinary stations and 295 central double-envelope counting rows. CEC voter information lists 10,372 domestic voting stations (10,119 ordinary, 196 hospital, 57 prison), plus 98 overseas stations. Locality counts describe results-table rows. See data-puzzles-1107.md.';
+    ds.status.noteHe += ' 10,414 רשומות התוצאות כוללות 10,119 קלפיות רגילות ו־295 רשומות ספירה מרכזית של מעטפות חיצוניות. במידע לבוחר של ועדת הבחירות נמנו 10,372 קלפיות בארץ (10,119 רגילות, 196 בבתי חולים, 57 בבתי סוהר), ועוד 98 בנציגויות בחו״ל. מספר היישובים מונה שורות תוצאות. ראו data-puzzles-1107.md.';
   }
   checkReproducesOfficialSeats(check, ds);
   return { ds, loc: localityDataset(`k${n}`, geo.rows, lists) };

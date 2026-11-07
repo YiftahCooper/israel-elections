@@ -1242,7 +1242,7 @@
       "datasetSha256": "0c6fd6ecff5060e79ef9d3d6b47ad94947c032abb4c5cce0d4ecc0f6a86834a7",
       "datasetStatus": {
         "stage": "official-final",
-        "asOf": "2026-11-03",
+        "asOf": "2026-11-06",
         "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. ילקוט הפרסומים 1225 מחבר את המערך (את) לקדמה ופתוח (רא); התמלול הקודם יא היה שגוי. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0069a.",
         "noteEn": "Official national votes, agreements and all 120 seats verified. YP 1225 connects Alignment (את) to Progress and Development (רא); the earlier יא transcription was incorrect. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0069a."
       },
@@ -1979,7 +1979,7 @@
         "stage": "official-final",
         "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 196 transcribed ranks across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted except the complete 120-name K11 Alignment roster; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
         "noteHe": "תוצאות ארציות בלבד; כל המנדטים הרשמיים שוחזרו. 196 מועמדים תומללו מפרסום הרשימות הרשמי בכל 15 הרשימות הזוכות; שמות כל 120 הנבחרים הוצלבו עם הודעת התוצאות. דרגות מאוחרות לא תומללו למעט רשימת המערך המלאה בכנסת ה־11; רשימות חלקיות ורשימות לא זוכות שלא תומללו מסומנות במפורש. אין נתוני יישובים. שרשרת התיקונים המלאה למועד הבחירות ושינויים מאוחרים ברשימות טרם אומתו; אלה מגבלות מתועדות.",
-        "asOf": "2026-11-03"
+        "asOf": "2026-11-06"
       },
       "validVotes": 2073321,
       "voteSourceIds": [
@@ -2850,11 +2850,12 @@
       "electionId": "k15",
       "electionDate": "1999-05-17",
       "datasetPath": "public/data/k15.json",
-      "datasetSha256": "e483e3d91f48cd406551e26fab2d0a201b518e569cb8cfdbd8a572663cf07b95",
+      "datasetSha256": "1421231c90bc9209c8a65fd88b8e4b5de410a8e7f7d9d80426d4e5cb087342c7",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "Rosters: everyone elected is included and cross-checked; no full winning-list rosters; later ranks of winning lists not transcribed. Contesting zero-seat rosters unavailable; two withdrawn registrations retained. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. Complete 9-pair agreement notice verified; every published seat reproduced.",
-        "noteHe": "מועמדים: כל הנבחרים נכללו ונבדקו מול הודעת התוצאות; אין רשימות זוכות מלאות; מקומות מאוחרים בשאר הרשימות הזוכות לא תועתקו. רשימות שהתמודדו ולא זכו במנדטים אינן מתועתקות; נשמרו שתי רשימות שפרשו. סדר המועמדים הרשום נשמר וההשמטות בהודעת הנבחרים תועדו. אין נתוני יישובים. הודעת ההתקשרויות המלאה (9 זוגות) אומתה וכל המנדטים שוחזרו."
+        "noteHe": "מועמדים: כל הנבחרים נכללו ונבדקו מול הודעת התוצאות; אין רשימות זוכות מלאות; מקומות מאוחרים בשאר הרשימות הזוכות לא תועתקו. רשימות שהתמודדו ולא זכו במנדטים אינן מתועתקות; נשמרו שתי רשימות שפרשו. סדר המועמדים הרשום נשמר וההשמטות בהודעת הנבחרים תועדו. אין נתוני יישובים. הודעת ההתקשרויות המלאה (9 זוגות) אומתה וכל המנדטים שוחזרו.",
+        "asOf": "2026-11-03"
       },
       "validVotes": 3309416,
       "voteSourceIds": [
@@ -3877,8 +3878,8 @@
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2013-01-30",
-        "noteHe": "תוצאות סופיות רשמיות של ועדת הבחירות (אתר התוצאות והמאגר הממשלתי), המתואמות עם כל הקלפיות. בהודעה ברשומות (י\"פ 6540) מודפס סך כשרים 3,792,472, אך סכום הרשימות שבה הוא 3,792,742 — כמו בתוצאות הסופיות; ושלוש רשימות שונות במעט (הליכוד ביתנו 109+, קדימה 107−, הישראלים 2−). אותם מנדטים בדיוק בשתי הגרסאות. מעטפות חיצוניות (875) נגזרו מהקלפיות. המועמדים לפי הפרסום המקורי; שינויים מאוחרים אינם מוחלים. ראו החלטות 0041–0042.",
-        "noteEn": "Official final CEC results (results site and government datastore), reconciled with every polling station. The gazette notice (YP 6540) prints 3,792,472 valid votes, but its own list counts sum to 3,792,742, as in the final results; three list totals also differ slightly (Likud–Yisrael Beiteinu +109, Kadima −107, Hayisraelim −2). Both versions give exactly the same seats. External envelopes (code 875) are derived from polling rows. Candidate rosters are the original gazette snapshot; later changes are not applied. See decisions 0041–0042."
+        "noteHe": "תוצאות סופיות רשמיות של ועדת הבחירות (אתר התוצאות והמאגר הממשלתי), המתואמות עם כל הקלפיות. בהודעה ברשומות (י\"פ 6540) מודפס סך כשרים 3,792,472, סך שתוקן רשמית ל־3,792,742 בי\"פ 6546 (12 בפברואר 2013, עמ׳ 2874); ושלוש רשימות שונות במעט (הליכוד ביתנו 109+, קדימה 107−, הישראלים 2−). אותם מנדטים בדיוק בשתי הגרסאות. מעטפות חיצוניות (875) נגזרו מהקלפיות. המועמדים לפי הפרסום המקורי; שינויים מאוחרים אינם מוחלים. ראו החלטות 0041–0042.",
+        "noteEn": "Official final CEC results (results site and government datastore), reconciled with every polling station. The gazette notice (YP 6540) prints 3,792,472 valid votes, formally corrected to 3,792,742 by YP 6546 (12 February 2013, p.2874); three list totals also differ slightly (Likud–Yisrael Beiteinu +109, Kadima −107, Hayisraelim −2). Both versions give exactly the same seats. External envelopes (code 875) are derived from polling rows. Candidate rosters are the original gazette snapshot; later changes are not applied. See decisions 0041–0042."
       },
       "validVotes": 3792742,
       "voteSourceIds": [
@@ -4115,12 +4116,12 @@
       "electionId": "k20",
       "electionDate": "2015-03-17",
       "datasetPath": "public/data/k20.json",
-      "datasetSha256": "12649ae6dc0136205a17d6981781f1c57769a0130260e6b19c79e2ae3f0868ae",
+      "datasetSha256": "ede9e0b3a10796880b9ecbc6bbef70e190065053126bbd2498542e3b7a0e02d5",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2015-03-25",
-        "noteHe": "תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות. מספרי הקלפיות והיישובים הם ספירת שורות בטבלאות התוצאות, ולא כלל אתרי ההצבעה; ראו k20-resolution.md.",
-        "noteEn": "Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled. Polling/locality counts describe retained results-table rows, not all physical polling places; see k20-resolution.md."
+        "noteHe": "תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות. 10,414 רשומות התוצאות כוללות 10,119 קלפיות רגילות ו־295 רשומות ספירה מרכזית של מעטפות חיצוניות. במידע לבוחר של ועדת הבחירות נמנו 10,372 קלפיות בארץ (10,119 רגילות, 196 בבתי חולים, 57 בבתי סוהר), ועוד 98 בנציגויות בחו״ל. מספר היישובים מונה שורות תוצאות. ראו data-puzzles-1107.md.",
+        "noteEn": "Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled. The 10,414 polling-result rows comprise 10,119 ordinary stations and 295 central double-envelope counting rows. CEC voter information lists 10,372 domestic voting stations (10,119 ordinary, 196 hospital, 57 prison), plus 98 overseas stations. Locality counts describe results-table rows. See data-puzzles-1107.md."
       },
       "validVotes": 4210884,
       "voteSourceIds": [
@@ -5023,12 +5024,12 @@
       "electionId": "k24",
       "electionDate": "2021-03-23",
       "datasetPath": "public/data/k24.json",
-      "datasetSha256": "d53a91d1a7aaa05b93e362299c0bee14154f14a9091dd2ef4ed6160edeb27002",
+      "datasetSha256": "0502bfe9c40c7d932cb4c107f8fb3b9441d63d90c28a26e19bace6b8c26aa01c",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
-        "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. 38 lists contested; Demokratit withdrew (CEC protocol, 30 March 2021, p.4). The polling-station figure counts 12,926 result rows, not all physical stations; CEC history reports 13,685 stations with an unreconciled scope difference.",
-        "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. 38 רשימות התמודדו; דמוקרטית פרשה (זכרון דברים של ועדת הבחירות, 30 במרס 2021, עמ׳ 4). נתון הקלפיות מונה 12,926 רשומות תוצאות ולא את כלל הקלפיות הפיזיות; בסקירת ועדת הבחירות נמנו 13,685 קלפיות והבדל ההיקף טרם יושב."
+        "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. 38 lists contested; Demokratit withdrew (CEC protocol, 30 March 2021, p.4). The 12,926 polling-result rows comprise 12,127 ordinary stations and 799 central double-envelope counting rows. They are not a physical-station total. The CEC 2021 annual report counts 13,756 voting stations including overseas and excluding army bases; its history summary gives 13,685. See data-puzzles-1107.md.",
+        "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. 38 רשימות התמודדו; דמוקרטית פרשה (זכרון דברים של ועדת הבחירות, 30 במרס 2021, עמ׳ 4). 12,926 רשומות התוצאות כוללות 12,127 קלפיות רגילות ו־799 רשומות ספירה מרכזית של מעטפות חיצוניות; זה אינו מספר הקלפיות הפיזיות. בדוח השנתי של ועדת הבחירות לשנת 2021 נמנו 13,756 קלפיות, כולל נציגויות בחו״ל וללא מחנות צה״ל; בסקירה ההיסטורית מופיע 13,685. ראו data-puzzles-1107.md."
       },
       "validVotes": 4410052,
       "voteSourceIds": [

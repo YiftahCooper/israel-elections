@@ -177,7 +177,7 @@ export async function buildHistorical(config:BuildConfig){
   const {n}=config;
   const normalize = (s:string) => Object.entries(config.textReplacements ?? {}).reduce((s,[from,to])=>s.replaceAll(from,to),s);
   const ids=[`k${n}-national-html`,`k${n}-localities-datagov`,`k${n}-ballots-datagov`,`k${n}-candidates-gazette`,`k${n}-surplus-gazette`];
-  if(n===24) ids.push('k24-results-gazette','k24-cec-protocol');
+  if(n===24) ids.push('k24-results-gazette','k24-cec-protocol','k24-cec-station-breakdown');
   const rawSha256=verifySources(ids.filter(id=>!id.includes('-ballots-')),check);
   const national=nationalResults(n),letters=national.lists.map(l=>l.letters);
   const rows=readDatastoreRows(join(RAW,`k${n}/localities.datagov.json`),letters,check);nationalCheck(n,rows,national);

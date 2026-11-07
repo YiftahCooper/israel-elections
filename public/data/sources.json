@@ -6299,5 +6299,31 @@
   "retrievedAt": "2026-11-06",
   "sha256": "73da772795c054c9c3a25407256ad0e6b0a62746cb391f5c95075d5556afe31e",
   "bytes": 1751291
+ },
+ {
+  "id": "k24-cec-station-breakdown",
+  "file": "research/cec2021-polling-excerpt.txt",
+  "url": "https://www.gov.il/BlobFolder/generalpage/freedom-of-info-reports/he/freedom-of-info_free-of-info2021.pdf",
+  "publisher": "ועדת הבחירות המרכזית",
+  "publisherEn": "Central Elections Committee",
+  "official": true,
+  "description": "CEC annual report 2021 pp.7–8; retained text excerpt with parent PDF hash; physical-station categories and exclusions.",
+  "method": "http; retained excerpt",
+  "retrievedAt": "2026-11-07",
+  "bytes": 4228,
+  "sha256": "79a2399c8f8d7bb0e2925221775b7c0e209955cb32997978497f12c3790049f9"
+ },
+ {
+  "id": "k19-seat-allocation-appendix",
+  "file": "k19/seat-allocation-appendix.pdf",
+  "url": "https://www.gov.il/apps/elections/elections-knesset-19/heb/list/ResultsAppendix.pdf",
+  "publisher": "ועדת הבחירות המרכזית",
+  "publisherEn": "Central Elections Committee",
+  "official": true,
+  "description": "CEC seat-allocation appendix, form 30, pp.3–4 and 12; uses the gazetted list totals, not the differing results-table sums.",
+  "method": "http",
+  "retrievedAt": "2026-11-07",
+  "bytes": 143325,
+  "sha256": "c3711530c80fde4aa0e1601764c2651d3101c64aaba73db32b83a80aa4d81631"
  }
 ]
