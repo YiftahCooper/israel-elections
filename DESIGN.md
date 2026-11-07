@@ -381,6 +381,12 @@ two tests with ✓/✗ and words: more for than against (investiture, Basic Law:
 outside support as the list colour hatched with the surface, and abstentions hollow at the far
 end; a dotted line marks a confidence-vote bar below 61. The same marks key the totals line and
 partner lists. On phones the five roles sit on their own line under every name.
+For/against is written in words, never a dash (“67 for · 53 against”), since a dash between
+two quantities reads as a range. “Recorded first government” loads the roles from the reviewed
+research; its (i) keeps each role's certainty as recorded (a provisional role says so), and
+lists left Any (confidence vote only, unknown) are named. Where research records outside
+support or an arranged abstention, the sourced first-government grouping gives it its own
+group, checked by the data build.
 
 Session changes say “Since official result”; vote, agreement and grouping changes remain
 visible even without seat changes. Compare names its baseline and measures share changes

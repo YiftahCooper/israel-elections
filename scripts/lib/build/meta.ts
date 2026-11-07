@@ -108,6 +108,18 @@ export function applyMeta(ds: ElectionDataset): ElectionDataset {
       }),
     };
   });
+  // the first-government grouping follows the researched support roles (data/meta/aftermath, docs/source-policy.md):
+  // a list recorded as outside support, or as abstaining by arrangement, sits in its own group, never in
+  // "Opposition"; and such a group holds only lists the research records in that role
+  const research = join(META, 'aftermath', `${ds.id}.json`);
+  const government = existsSync(research) ? JSON.parse(readFileSync(research, 'utf8')).government as { firstGovernmentSchemeRef?: string; coalition?: { letters?: string; role: string }[] } | undefined : undefined;
+  const opening = government && schemes.find((s) => s.id === (government.firstGovernmentSchemeRef ?? 'first-government'));
+  if (opening) for (const [role, group] of [['outside-support', 'outside-support'], ['abstained-by-arrangement', 'abstained-by-arrangement']] as const) {
+    const recorded = (government!.coalition ?? []).filter((r) => r.role === role && r.letters).map((r) => listId(r.letters!));
+    const held = opening.blocs.find((b) => b.id === group)?.lists ?? [];
+    for (const id of recorded) if (!held.includes(id)) fail(`scheme ${opening.id}: ${id} is researched as ${role} but not in group ${group}`);
+    for (const id of held) if (!recorded.includes(id)) fail(`scheme ${opening.id}: ${id} is in group ${group} without that researched role`);
+  }
   // default (decision 0087): the first government formed after this election, else its pre-election blocs,
   // else any other sourced grouping (e.g. an outgoing government, or recommendations to the President)
   const pick = schemes.find((s) => s.id === 'first-government') ?? schemes.find((s) => s.kind === 'pre-election') ?? schemes.find((s) => s.kind === 'government') ?? schemes[0];

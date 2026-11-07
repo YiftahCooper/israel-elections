@@ -19,15 +19,17 @@ test('1992 recreated: 62 members + 5 outside support = 67, the recorded 67–53'
   for (const n of ['Hadash', 'Arab Democratic Party']) await role(page, n, 'Support');
   const now = page.locator('.coal-now');
   await expect(now.locator('.coal-sum')).toHaveText('62 members + 5 outside support = 67');
-  await expect(now.locator('.coal-test').first()).toContainText('More for than against 67–53');
+  await expect(now.locator('.coal-test').first()).toContainText('More for than against: 67 for · 53 against');
   await expect(now.locator('.coal-test').first()).toHaveAttribute('data-ok', 'true');
   await expect(now.locator('.majority-readout')).toHaveText('67 / 120 · 6 above 61');
   // outside support is drawn hatched after the members, in its own colours; no hollow abstention
   await expect(now.locator('.coal-bar i.coal-support')).toHaveCount(2);
   await expect(now.locator('.coal-bar i.coal-abstain')).toHaveCount(0);
   await expect(now.locator('.coal-partners[data-role="support"]')).toContainText('Hadash 3');
-  // members are compared with the recorded first government (Labor, Meretz, Shas)
-  await expect(now).toContainText('Matches the recorded first-government partners');
+  // compared with the recorded first government, outside support included; one bloc repeats no total
+  await expect(now).toContainText('Matches the recorded first government and its outside support');
+  await expect(now.locator('.coal-blocs')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Recorded first government', exact: true })).toHaveAttribute('aria-pressed', 'true');
   // the role change is a coalition choice: marked locally as analysis, named in Undo, never a result edit
   await expect(page.locator('.coal-head .analysis-edits')).toHaveCount(1);
   await expect(page.locator('.session')).toContainText('No changes');
@@ -53,7 +55,7 @@ test('an arranged abstention lowers the confidence-vote bar below 61, and the se
   await expect(now.locator('.coal-sum').first()).toHaveText('46 members + 5 outside support = 51');
   await expect(now.locator('.coal-sum').nth(1)).toHaveText('5 abstaining');
   await expect(now.locator('.coal-test').first()).toHaveAttribute('data-ok', 'false');
-  await expect(now.locator('.coal-test').first()).toContainText('51–64');
+  await expect(now.locator('.coal-test').first()).toContainText('51 for · 64 against');
   // 115 voting: 58 for is enough to form a government, though short of 61
   await expect(now.locator('.coal-bar .maj.conf em')).toHaveText('58');
   await expect(now.locator('.coal-bar i.coal-abstain')).toHaveCount(1);
@@ -69,9 +71,34 @@ for (const lang of ['en', 'he'] as const) test(`What if…: a minority governmen
   await page.getByRole('tab', { name: lang === 'he' ? 'מה אם…' : 'What if…', exact: true }).click();
   const q = page.locator('.wi-row').filter({ hasText: lang === 'he' ? 'ממשלת מיעוט בתמיכה מבחוץ' : 'A minority government with outside support' });
   await expect(q).toHaveCount(1);
-  await expect(q.locator('.wi-a')).toContainText(lang === 'he' ? '48 בקואליציה + 19 תמיכה מבחוץ = 67' : '48 members + 19 outside support = 67');
+  await expect(q.locator('.wi-a')).toContainText(lang === 'he' ? '48 בקואליציה + 19 תמיכה מבחוץ = 67 · 67 בעד · 53 נגד' : '48 members + 19 outside support = 67 · 67 for · 53 against');
   await q.getByRole('button', { name: lang === 'he' ? 'פתיחה כתרחיש' : 'Open as a scenario', exact: true }).click();
   await expect(page.getByRole('tab', { name: lang === 'he' ? 'קואליציות' : 'Coalitions', exact: true })).toHaveAttribute('aria-selected', 'true');
   await expect(page.locator('.coal-now .coal-sum')).toHaveText(lang === 'he' ? '48 בקואליציה + 19 תמיכה מבחוץ = 67' : '48 members + 19 outside support = 67');
   await expect(page.locator('.coal-now .majority-readout')).toHaveText(lang === 'he' ? '67 / 120 · 6 מעל 61' : '67 / 120 · 6 above 61');
+});
+
+for (const lang of ['en', 'he'] as const) test(`the recorded first government fills its roles, provisional outside support marked: ${lang}`, async ({ page }) => {
+  await start(page, lang, 390);
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k13');
+  await page.getByRole('tab', { name: lang === 'he' ? 'קואליציות' : 'Coalitions', exact: true }).click();
+  // the sourced grouping's outside-support group is not offered as a member fill
+  await expect(page.locator('.coal').getByRole('button', { name: lang === 'he' ? 'תמיכה מבחוץ' : 'Outside support', exact: true })).toHaveCount(0);
+  const fill = page.getByRole('button', { name: lang === 'he' ? 'הממשלה הראשונה המתועדת' : 'Recorded first government', exact: true });
+  await fill.click();
+  await expect(fill).toHaveAttribute('aria-pressed', 'true');
+  const now = page.locator('.coal-now');
+  await expect(now.locator('.coal-sum')).toHaveText(lang === 'he' ? '62 בקואליציה + 5 תמיכה מבחוץ = 67' : '62 members + 5 outside support = 67');
+  await expect(now.locator('.coal-test').first()).toContainText(lang === 'he' ? '67 בעד · 53 נגד' : '67 for · 53 against');
+  // Hebrew reads the count left to right, exactly as every majority count: 67 on the left of 120
+  const count = now.locator('.majority-readout bdi[dir="ltr"]');
+  await expect(count).toHaveText('67 / 120');
+  const [a, b] = await count.evaluate((el) => { const xs: Record<string, number> = {}; const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); let n: Node | null;
+    while ((n = w.nextNode())) for (const m of n.textContent!.matchAll(/\d+/g)) { const r = document.createRange(); r.setStart(n, m.index!); r.setEnd(n, m.index! + m[0].length); xs[m[0]] = r.getBoundingClientRect().x; }
+    return [xs['67'], xs['120']]; });
+  expect(a).toBeLessThan(b);
+  // the (i) shows each role's certainty as recorded, never upgraded
+  await page.locator('.coal-record .info > button').click();
+  await expect(page.getByRole('tooltip')).toContainText(lang === 'he' ? 'זמני' : 'provisional');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });

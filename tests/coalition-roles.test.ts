@@ -8,7 +8,8 @@ import { applyAction } from '../src/model/actions.ts';
 import { NO_COALITION, scenarioFromDataset, toEngineInput, validateScenario, withCoalitionRole, type Scenario } from '../src/model/scenario.ts';
 import { ACTION_CLASSIFICATION, isAnalysisAction, isFactAction } from '../src/model/actionClassification.ts';
 import { coalitionPieces, referenceChanges, resultChanges } from '../src/app/derive.ts';
-import { governmentVote, minimalWinning } from '../src/app/coalitions.ts';
+import { governmentVote, minimalWinning, recordedRoles } from '../src/app/coalitions.ts';
+import { aftermathRecords } from '../src/data/aftermath-runtime.ts';
 import { describe as describeAction } from '../src/app/actionDescription.ts';
 import { computeWhatIf } from '../src/app/whatIf.ts';
 
@@ -75,6 +76,35 @@ describe('roles in the model', () => {
     expect(describeAction(action, s, 'en')).toBe('Coalition: 3 in · 2 outside support');
     expect(describeAction(action, s, 'he')).toBe('קואליציה: 3 בפנים · 2 תמיכה מבחוץ');
     expect(describeAction({ type: 'setCoalition', coalition: NO_COALITION }, s, 'en')).toBe('Coalition choices cleared');
+  });
+});
+
+describe('the recorded first government as roles', () => {
+  const rolesFor = (id: string) => {
+    const s = scenarioFromDataset(load(id));
+    const pieces = coalitionPieces(s, allocate(toEngineInput(s)));
+    const out = recordedRoles(aftermathRecords[id as 'k13']!.government!.coalition, s.lists, pieces.map((p) => ({ id: p.id, listId: p.listId })));
+    const seats = (ids: string[]) => pieces.filter((p) => ids.includes(p.id)).reduce((n, p) => n + p.n, 0);
+    return { ...out, seats };
+  };
+  it('k13 loads members and the provisional outside support, never upgraded', () => {
+    const { recorded, choices, seats } = rolesFor('k13');
+    expect(seats(choices!.in)).toBe(62);
+    expect(seats(choices!.support)).toBe(5);
+    expect(recorded.filter((x) => x.role === 'support').map((x) => [x.r.letters, x.r.certainty])).toEqual([['ו', 'provisional'], ['ע', 'provisional']]);
+  });
+  it('a confidence vote alone or an unknown relationship stays Any', () => {
+    const k1 = rolesFor('k1');
+    expect(k1.recorded.filter((x) => x.r.role === 'confidence-vote-only').every((x) => x.role === null)).toBe(true);
+    const k20 = rolesFor('k20');
+    expect(k20.recorded.filter((x) => x.r.certainty === 'unknown').every((x) => x.role === null)).toBe(true);
+  });
+  it('is available for every election with a recorded government', () => {
+    for (let k = 1; k <= 26; k++) if (aftermathRecords[`k${k}` as 'k13']?.government) expect(rolesFor(`k${k}`).choices, `k${k}`).not.toBeNull();
+  });
+  it('the first-government grouping holds outside support as its own group', () => {
+    const g = load('k13').blocSchemes!.find((x) => x.id === 'first-government')!;
+    expect(g.blocs.map((b) => [b.id, b.lists.length])).toEqual([['coalition', 3], ['outside-support', 2], ['opposition', 5]]);
   });
 });
 

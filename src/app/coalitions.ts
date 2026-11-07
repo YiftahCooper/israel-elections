@@ -1,3 +1,5 @@
+import type { GovernmentParticipant } from '../data/aftermath.ts';
+import type { CoalitionChoices, CoalitionRole, SimList } from '../model/scenario.ts';
 /** Minimal winning coalitions: sets of lists with at least `majority` seats in which every member is
  *  needed (removing the smallest member drops below the majority). Every set must contain `required`.
  *
@@ -55,3 +57,21 @@ export function governmentVote({ members, support, abstain, total }: { members: 
   };
 }
 export type GovernmentVote = ReturnType<typeof governmentVote>;
+
+/** The researched government (data/meta/aftermath, docs/source-policy.md) as Coalitions roles: members In, outside
+ *  support Support, arranged abstention Abstain. A confidence vote alone, an "other" relationship or an unknown one
+ *  is not an arrangement and stays Any. Rows keep their recorded certainty; nothing is upgraded. `choices` is null
+ *  when a recorded partner has no seated unit in this scenario (an edit removed it, or the research names a
+ *  post-election faction without ballot letters). */
+export function recordedRoles(rows: readonly GovernmentParticipant[], lists: readonly SimList[], units: readonly { id: string; listId: string }[]) {
+  const recorded = rows.map((r) => {
+    const role: CoalitionRole | null = r.certainty === 'unknown' ? null : r.role === 'member-with-ministries' || r.role === 'member-without-ministries' ? 'in'
+      : r.role === 'outside-support' ? 'support' : r.role === 'abstained-by-arrangement' ? 'abstain' : null;
+    const list = r.letters ? lists.find((l) => l.letters === r.letters && l.originIds.length === 1 && l.originIds[0] === l.id) : undefined;
+    return { r, role, list, units: list ? units.filter((x) => x.listId === list.id).map((x) => x.id) : [] };
+  });
+  const pick = (k: CoalitionRole) => recorded.filter((x) => x.role === k).flatMap((x) => x.units);
+  const choices: CoalitionChoices | null = recorded.length && recorded.every((x) => !x.role || x.units.length)
+    ? { in: pick('in'), support: pick('support'), abstain: pick('abstain'), out: [] } : null;
+  return { recorded, choices };
+}

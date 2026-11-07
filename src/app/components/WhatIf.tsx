@@ -33,7 +33,7 @@ function Fact({ f, lang, full }: { f: WhatIfFact; lang: Lang; full?: boolean }):
     case 'quota': return <span>{he ? 'קולות למנדט' : 'Votes per seat'} {arrow(fmtInt(f.before), fmtInt(f.after))}</span>;
     case 'seatless': return <span>{he ? 'קולות ללא מנדט' : 'Votes with no seat'} {arrow(fmtInt(f.before), fmtInt(f.after))}</span>;
     // the Coalitions tool's totals line, then the confidence vote for–against
-    case 'government': { const v = f.vote; return <span>{v.support ? <bdi>{v.members} {he ? 'בקואליציה' : 'members'} + {v.support} {he ? 'תמיכה מבחוץ' : 'outside support'} = <b>{v.votesFor}</b></bdi> : <bdi><b>{v.members}</b> {he ? 'בקואליציה' : 'members'}</bdi>} · {he ? 'בעד–נגד' : 'for–against'} <bdi dir="ltr">{v.votesFor}–{v.against}</bdi></span>; }
+    case 'government': { const v = f.vote; return <span>{v.support ? <bdi>{v.members} {he ? 'בקואליציה' : 'members'} + {v.support} {he ? 'תמיכה מבחוץ' : 'outside support'} = <b>{v.votesFor}</b></bdi> : <bdi><b>{v.members}</b> {he ? 'בקואליציה' : 'members'}</bdi>} · {he ? `${v.votesFor} בעד · ${v.against} נגד` : `${v.votesFor} for · ${v.against} against`}</span>; }
   }
 }
 
