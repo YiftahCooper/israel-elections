@@ -5,9 +5,10 @@ import { syntheticIconUrl } from '../syntheticIcon.ts';
 import type { SyntheticIdentity } from '../../model/scenario.ts';
 import type { LogoRef } from '../../data/schema.ts';
 import { parseIntInput } from '../format.ts';
+import { useSetting } from '../store.ts';
 
 /** Accessible info popover: opens on hover, focus or click; Escape closes. */
-export function Info({ title, children, term }: { title?: string; children?: ReactNode; term?: string }) {
+export function Info({ title, children, term, label }: { title?: string; children?: ReactNode; term?: string; /** the button's name when the title alone would repeat a neighbouring control's */ label?: string }) {
   // 'hover' and 'focus' are transient; 'pinned' (a click or tap) stays open until Escape, an outside
   // press or a second click. A click used to toggle a popover that hover or focus had just opened,
   // so it closed at once, and touch users could never open it.
@@ -17,6 +18,8 @@ export function Info({ title, children, term }: { title?: string; children?: Rea
   const lang = useLang();
   const ref = useRef<HTMLSpanElement>(null);
   const g = term ? GLOSSARY.find((x) => x.id === term) : undefined;
+  // Settings → Popups on hover: off, a mouse resting on (i) opens nothing; click, keyboard and touch still do
+  const hoverPopups = useSetting('hoverPopups');
   useEffect(() => {
     if (!open) return;
     // Escape closes this popover only, not the panel or dialog around it
@@ -28,9 +31,9 @@ export function Info({ title, children, term }: { title?: string; children?: Rea
   const heading = title ?? (g ? (lang === 'he' ? g.nameHe : `${g.nameEn} (${g.nameHe})`) : '');
   return (
     <span className="info" ref={ref}
-      onPointerEnter={(e) => { if (e.pointerType === 'mouse') { bridge.cancel(); setOpen((o) => o || 'hover'); } }}
+      onPointerEnter={(e) => { if (e.pointerType === 'mouse' && hoverPopups) { bridge.cancel(); setOpen((o) => o || 'hover'); } }}
       onPointerLeave={(e) => { if (e.pointerType === 'mouse') bridge.leave(); }}>
-      <button type="button" aria-label={heading || 'info'} aria-expanded={!!open} aria-describedby={open ? id : undefined}
+      <button type="button" aria-label={label ?? (heading || 'info')} aria-expanded={!!open} aria-describedby={open ? id : undefined}
         onClick={() => setOpen((o) => (o === 'pinned' ? false : 'pinned'))}
         onFocus={(e) => { if (e.currentTarget.matches(':focus-visible')) setOpen((o) => o || 'focus'); }}
         onBlur={(e) => { if (!ref.current?.contains(e.relatedTarget as Node)) setOpen((o) => (o === 'hover' ? o : false)); }}>i</button>
@@ -46,8 +49,12 @@ export function Info({ title, children, term }: { title?: string; children?: Rea
   );
 }
 
-export function Slip({ letters, color, size, logo, name, synthetic }: { name?: string; letters: string; color: string; size?: 'sm' | 'lg'; logo?: LogoRef; synthetic?: SyntheticIdentity }) {
+export function Slip({ letters, color, size, logo: logoIn, name, synthetic }: { name?: string; letters: string; color: string; size?: 'sm' | 'lg'; logo?: LogoRef; synthetic?: SyntheticIdentity }) {
   const lang = useLang();
+  // Settings → List symbol: Ballot letters shows the letters wherever a list has them; a party without ballot
+  // letters of its own keeps its logo
+  const symbol = useSetting('listSymbol');
+  const logo = symbol === 'letters' && letters ? undefined : logoIn;
   const label = name ?? `${lang === 'he' ? 'אותיות הפתק' : 'ballot letters'} ${letters}`;
   const generated = syntheticIconUrl({ letters, color, synthetic });
   if (generated) {

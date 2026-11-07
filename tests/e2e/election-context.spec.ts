@@ -2,7 +2,7 @@ import { choose } from './choices.ts';
 import { expect, test } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
-  await page.addInitScript(() => { if (!sessionStorage.getItem('context-seeded')) { localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', hintDismissed: true })); sessionStorage.setItem('context-seeded', '1'); } });
+  await page.addInitScript(() => { if (!sessionStorage.getItem('context-seeded')) { localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', hintDismissed: true })); sessionStorage.setItem('context-seeded', '1'); } });
   await page.goto('/');
   await expect(page.getByRole('region', { name: 'Lists', exact: true })).toBeVisible();
 });
@@ -38,7 +38,7 @@ test('k1 explains the Constituent Assembly in expandable context', async ({ page
 for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) for (const size of ['desktop', 'phone']) {
   test(`context and PM layouts: ${lang} ${theme} ${size}`, async ({ page }) => {
     await page.setViewportSize(size === 'phone' ? { width: 390, height: 844 } : { width: 1500, height: 1000 });
-    await page.evaluate(({ lang, theme }) => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, theme, hintDismissed: true })), { lang, theme });
+    await page.evaluate(({ lang, theme }) => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, theme, hintDismissed: true })), { lang, theme });
     await page.reload();
     const picker = page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true });
     for (const id of ['k14', 'k15', 'pm2001', 'k1']) {

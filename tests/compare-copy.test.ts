@@ -147,7 +147,7 @@ describe('marking every copied value', () => {
     expect(p.result.log.at(-1)!.action.type).toBe('copyFrom');
     expect(p.result.log).toHaveLength(k26.log.length + 1);
     const origin = copyOriginOf(p.result, ['lists', '26-מחל', 'votes'])!;
-    expect(origin.provenance).toMatchObject({ electionId: 'k25', sourceName: '2022', official: true, field: 'votes', mode: 'share', policy: 'proportional', sourceListIds: ['25-מחל'], targetListIds: ['26-מחל'], value: '23.41%' });
+    expect(origin.provenance).toMatchObject({ electionId: 'k25', sourceName: '2022', official: true, field: 'votes', mode: 'share', policy: 'proportional', sourceListIds: ['25-מחל'], targetListIds: ['26-מחל'], value: '23.4%' }); // the share as shown: Max decimal places (1 at the default Simple level)
     expect(isFactAction(p.action)).toBe(true);
     expect(resultChanges(p.result, k26).length).toBeGreaterThan(0);
   });
@@ -221,6 +221,13 @@ describe('whole list', () => {
     expect(p.result.lists.find((l) => l.id === '26-מחל')!.candidates[0].importedFrom).toEqual({ electionId: 'k25', listId: '25-מחל' });
     expect(p.result.log).toHaveLength(k26.log.length + 1);
     expect(copyOriginOf(p.result, ['lists', '26-מחל', 'votes'])?.provenance.field).toBe('list');
+  });
+  it('copies over a joint list counted by its parties: the split is undone before the roster changes', () => {
+    const split = applyAction(k26, { type: 'setFactionSplit', listId: '26-מחל', split: true }, undefined, ctx);
+    expect(split.factionSplits).toContain('26-מחל');
+    const p = ok(planWholeList({ from: from25, to: split, ctx, srcId: '25-מחל', dstId: '26-מחל', opts }));
+    expect(p.result.factionSplits ?? []).not.toContain('26-מחל');
+    expect(seats(p.result, '26-מחל')).toBe(30);
   });
   it('adds a list beside the existing ones', () => {
     const p = ok(planWholeList({ from: from25, to: k26, ctx, srcId: '25-ב', dstId: null, opts }));

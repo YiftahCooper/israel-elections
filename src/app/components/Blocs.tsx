@@ -12,7 +12,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { blocPieces, groupingBaseline, allocationOf, referenceLabel, groupingLabel, majorityText } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { setState, useStore } from '../store.ts';
+import { setState, useSetting, useStore } from '../store.ts';
 import { Info } from './ui.tsx';
 
 
@@ -22,7 +22,7 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
   const previewing = useStore(st => st.preview) === s;
   const selected = useStore((st) => st.selectedListId);
   const panel = useStore((st) => st.blocPanel);
-  const showComponents = useStore(st=>st.showComponentSeats);
+  const showComponents = useSetting('partyColourInSeats');
   const pieces = useMemo(() => blocPieces(s, r), [s, r]);
   const { base, labelReference } = useGraphicReference(s);
   const grouped = groupingBaseline(s, base);

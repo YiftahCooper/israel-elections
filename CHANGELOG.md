@@ -1,5 +1,9 @@
 # Changelog
 
+## 7 November 2026 — Settings
+
+- Rebuilt Settings as one searchable bilingual popup (phone: full screen) with levels, group resets and Undo; every setting now applies wherever it is relevant, with new defaults (Device theme, joint lists by party, parties with no seats hidden) and accessibility options at every level; every percentage now shows at most 0–3 decimals (1 by default, 2 at Expert), never shown on the wrong side of the threshold (one more digit there, the exact share in the tooltip); Compare's shares, percentage-point changes and seatless rows follow Settings, its copy mode is a Settings row, and large text now takes the layout of the narrower page instead of wrapping.
+
 ## 6 November 2026 — data audit
 
 - Coalitions: outside support and arranged abstention as roles beside In/Out/Any, with “members + outside support = total”, both the confidence vote (more for than against) and 61, hatched/hollow bar marks, named undo, links and saves; What if… adds a 2026 minority government with outside support; “Recorded first government” fills roles from research with their certainty, and 1992’s grouping shows outside support as its own group.

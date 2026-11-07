@@ -8,7 +8,8 @@ async function start(page: Page, lang: 'en' | 'he' = 'en', election = 'k26', wid
   await page.addInitScript(([lang, level]) => {
     if (sessionStorage.getItem('started')) return;
     sessionStorage.setItem('started', '1');
-    localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, level, hintDismissed: true }));
+    localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, level }));
+    localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false, decimals: 2 } }));
     localStorage.setItem('israel-elections:preferences', JSON.stringify({ voteSource: 'proportional' }));
   }, [lang, level]);
   await page.goto('/');
@@ -227,7 +228,7 @@ test('k1 → k2: copying the 1949 threshold switches 1951 to experimental rules,
   await expect(values.first()).toHaveText(await values.last().innerText());
   await expect(page.locator('.cmp-band-row[data-key="thrvotes"] .cmp-band-v').last()).toHaveText('None');
   await expect(page.locator('.cmp-band-row[data-key="rules"] .cmp-band-v').last()).toContainText('experimental');
-  await page.getByRole('tab', { name: 'Rules & settings', exact: true }).click();
+  await page.getByRole('tab', { name: 'Rules', exact: true }).click();
   await expect(page.locator('[data-copied]').filter({ hasText: 'From 1949' })).toBeVisible();
 });
 

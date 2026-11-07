@@ -117,8 +117,8 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
   return (
     <div className="sec">
       <div className="sec-controls">
-        <span className="small ink2">{L('Votes from', 'הקולות מ')}</span>
-        <Seg label={L('Votes from', 'הקולות מ')} value={kind} onChange={setKind} options={[{ v: 'proportional', label: L('Other lists', 'שאר הרשימות') }, { v: 'new', label: L('New voters', 'מצביעים חדשים') }]} />
+        <span className="small ink2">{L('Votes come from', 'הקולות מגיעים מ־')}</span>
+        <Seg label={L('Votes come from', 'הקולות מגיעים מ־')} value={kind} onChange={setKind} options={[{ v: 'proportional', label: L('Other lists', 'שאר הרשימות') }, { v: 'new', label: L('New voters', 'מצביעים חדשים') }]} />
         <Info title={L('How this is computed', 'איך זה מחושב')}>
           {L('Each figure is the fewest votes a list must lose or gain to change its seats, found by recomputing the whole election.', 'כל מספר הוא הכי מעט קולות שרשימה צריכה לאבד או להוסיף כדי שמספר המנדטים שלה ישתנה, לפי חישוב מחדש של כל הבחירות.')}{' '}
           {L('Other lists: votes move to or from all other lists in proportion; turnout stays the same. New voters: votes come from new voters, or are lost to voters staying home, so the threshold moves too.', 'שאר הרשימות: הקולות עוברים מכל שאר הרשימות או אליהן, באופן יחסי; שיעור ההצבעה לא משתנה. מצביעים חדשים: הקולות באים ממצביעים חדשים, או הולכים לנמנעים, ולכן גם אחוז החסימה בקולות זז.')}{' '}

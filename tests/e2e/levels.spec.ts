@@ -1,4 +1,3 @@
-import { choose } from './choices.ts';
 import { TOOL_FEATURES } from '../../src/app/features.ts';
 // The three interface levels: Simple (minimal), Standard (common, consequential edits) and Expert
 // (every tool). A level changes what is shown, never what is computed.
@@ -50,7 +49,7 @@ test('Standard adds scenario management and consequential list edits, but not id
   await page.keyboard.press('Escape');
 
   await listCard(page, 'Likud').click();
-  await expect(details(page).getByRole('combobox', { name: /Take votes from \/ return votes to/ })).toBeVisible();
+  await expect(details(page).getByRole('combobox', { name: 'Votes come from' })).toBeVisible();
   await expect(details(page).getByRole('checkbox', { name: 'Withdrawn from the race' })).toBeVisible();
   await expect(details(page).getByRole('combobox', { name: 'Agreement partner' })).toHaveValue(/.+/);
   await expect(details(page).getByLabel('Short name (English)')).toHaveCount(0);
@@ -86,7 +85,7 @@ test('Simple balances vote edits proportionally even if another source was chose
   await start(page);
   await levelButton(page, 'Standard').click();
   await listCard(page, 'Likud').click();
-  await details(page).getByRole('combobox', { name: /Take votes from \/ return votes to/ }).selectOption('new');
+  await details(page).getByRole('combobox', { name: 'Votes come from' }).selectOption('new');
 
   const before = await listRow(page, 'Yashar!').locator('.lb-sub').innerText();
   await levelButton(page, 'Simple').click();
@@ -132,17 +131,16 @@ test('the bloc of a list can be changed in Standard', async ({ page }) => {
   await expect(page.getByRole('region', { name: 'Seats by bloc' }).getByRole('button', { name: /^Netanyahu bloc/ })).toContainText('26');
 });
 
-test('percentage precision chosen in Expert does not apply below Expert', async ({ page }) => {
+test('a chosen maximum of decimal places applies at every level', async ({ page }) => {
   await start(page);
   await levelButton(page, 'Expert').click();
-  await page.getByRole('tab', { name: 'Rules & settings', exact: true }).click();
-  await page.locator('.band').getByRole('button', { name: 'Your settings', exact: true }).click();
-  await choose(page.getByRole('button', { name: 'Decimal places for percentages' }), '8');
+  await page.locator('.band').getByRole('button', { name: 'Settings', exact: true }).click();
+  await page.getByRole('group', { name: 'Max decimal places', exact: true }).getByRole('button', { name: '3', exact: true }).click();
   await page.keyboard.press('Escape');
   await page.getByRole('tab', { name: 'Overview' }).click();
-  await expect(listRow(page, 'Likud').first()).toContainText('20.51491138%');
+  await expect(listRow(page, 'Likud').first()).toContainText('20.515%');
   await levelButton(page, 'Simple').click();
-  await expect(listRow(page, 'Likud').first()).toContainText('20.51%');
+  await expect(listRow(page, 'Likud').first()).toContainText('20.515%');
 });
 
 test('a failed election load keeps the open election and offers a retry', async ({ page }) => {
@@ -169,7 +167,7 @@ test('the picker labels the open election correctly even if the index omits it',
 });
 
 test('a tool opened from its tab shows at once at every level, with no second disclosure', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'standard', hintDismissed: true })));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'standard', hintDismissed: true })));
   await page.goto('/');
   // an Expert tool at Standard: its tab says so, and opening it shows the tool itself
   await page.getByRole('tab', { name: /^Rules/ }).click();

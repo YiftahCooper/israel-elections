@@ -9,7 +9,7 @@ for (const election of ['k26','k25','k1']) test(`${election}: synthetic icons in
  for(const lang of ['en','he']) for(const theme of ['light','dark']) for(const width of [1500,1024,390]) {
   const context=await browser.newContext({viewport:{width:1500,height:1000}});
   await context.addInitScript(({lang,theme})=>{
-   localStorage.setItem('israel-elections:v1',JSON.stringify({lang,theme,level:'expert',hintDismissed:true}));
+   localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang,theme,level:'expert',hintDismissed:true}));
    localStorage.setItem('israel-elections:preferences',JSON.stringify({voteSource:'proportional',comparison:'reference'}));
   },{lang,theme});
   const page=await context.newPage(); await page.goto('/');
@@ -34,7 +34,7 @@ for (const election of ['k26','k25','k1']) test(`${election}: synthetic icons in
 });
 
 test('Likud–Shas identity survives Compare and SVG/PNG export; splits and blank new lists use synthetic tiles',async({page})=>{
- await page.addInitScript(()=>localStorage.setItem('israel-elections:v1',JSON.stringify({lang:'en',theme:'light',level:'expert',hintDismissed:true})));
+ await page.addInitScript(()=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang:'en',theme:'light',level:'expert',hintDismissed:true})));
  await page.goto('/');await page.locator('#tab-structure').click();
  const panel=page.locator('#analysis-panel');
  for(const name of ['Likud','Shas'])await panel.getByRole('group',{name:'Lists',exact:true}).getByRole('button',{name,exact:true}).click();

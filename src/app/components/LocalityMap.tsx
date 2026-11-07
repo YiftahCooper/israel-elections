@@ -15,6 +15,7 @@ import { allocationOf, listLabel, seatBlocsOf } from '../derive.ts';
 import { localityTotals, localityWinner, matchesLocality, nearestLocality, normalizeLocalityName } from '../locality-map-model.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
+import { useDigits } from '../store.ts';
 
 function useJson<T>(url: string | null, empty: T) {
   const [value, setValue] = useState<T>(empty);
@@ -73,7 +74,7 @@ const photonCache = new Map<string, PhotonFeature[]>();
 let lastRequest = 0;
 interface PhotonFeature { geometry: { coordinates: [number, number] }; properties: Record<string, string> }
 const GREY = '#78838c';
-const share = (v: number, whole: number) => whole > 0 ? `${(v / whole * 100).toFixed(1)}%` : '—';
+const share = (v: number, whole: number, digits: number) => whole > 0 ? fmtPct(v, whole, digits) : '—';
 let measure: CanvasRenderingContext2D | null = null;
 const textWidth = (text: string) => {
   measure ??= document.createElement('canvas').getContext('2d');
@@ -84,6 +85,7 @@ const textWidth = (text: string) => {
 
 export function LocalityMap({ s, data, historicalLists, locations, names, locationError }: { s: Scenario; data: LocalityDataset; historicalLists: (SimList | null)[]; locations: LocalityLocations; names: LocalityNames; locationError: boolean }) {
   const L = useL(), lang = useLang();
+  const digits = useDigits();
   const container = useRef<HTMLDivElement>(null), map = useRef<Leaflet.Map | null>(null);
   const [mode, setMode] = useState<'bloc' | 'list'>('bloc');
   const [q, setQ] = useState(''), [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -135,7 +137,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       const title = document.createElement('strong'); title.dir = 'auto'; title.textContent = localityName(names, p.row, p.index, lang);
       const why = document.createElement('span'); why.dir = 'auto';
       why.textContent = w.tied ? L('Tie', 'שוויון') : w.key === null ? L('Unassigned / no votes', 'ללא שיוך / ללא קולות')
-        : `${groupName(w.key)} \u2066+${(w.margin / Math.max(1, p.row.valid) * 100).toFixed(1)}\u2069${L(' pp', ' נק׳')}`;
+        : `${groupName(w.key)} \u2066+${(w.margin / Math.max(1, p.row.valid) * 100).toFixed(digits)}\u2069${L(' pp', ' נק׳')}`;
       tip.append(title, why);
       // a thin white outline separates neighbouring dots; a dark ring would darken every colour alike
       Leaflet.circleMarker([p.lat,p.lon], {radius:5, color:'#ffffff',weight:1,fillColor:w.color,fillOpacity:0.95}).bindTooltip(tip).on('click',()=>setSelectedIndex(p.index)).addTo(group);
@@ -146,7 +148,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       fittedFor.current = data;
     }
     return () => { group.remove(); };
-  }, [placed,winners,lang,data,names]);
+  }, [placed,winners,lang,data,names,digits]);
   // Place names on the map in the interface language. OSM tiles label in the local script, so English gets CBS English
   // names at every zoom; Hebrew gets them only zoomed out (<= 9), where the tiles name almost no Israeli localities,
   // so they never duplicate the tiles' own Hebrew labels. Larger localities first, never overlapping each other.
@@ -223,7 +225,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   const unplaced = data.rows.flatMap((r, i) => !isEnvelopeRow(r) && !locations[localityLocationKey(r, i)] ? [i] : []);
   const legend = mode === 'bloc' ? s.blocs.map(b => ({ id: b.id, color: b.color, label: groupingName(b, lang), title: b.appDefined ? appGroupingExplanation(lang) : undefined }))
     : s.lists.filter(l => winners.some(w => w.key === l.id)).map(l => ({ id: l.id, color: l.color, label: listLabel(l, lang), title: undefined }));
-  const shareBar = (v: number, top: number, color: string) => <span className="locality-share"><span><i style={{ width: `${v / (top || 1) * 100}%`, background: color }} /></span><span className="tabnum">{share(v, selected!.valid)}</span></span>;
+  const shareBar = (v: number, top: number, color: string) => <span className="locality-share"><span><i style={{ width: `${v / (top || 1) * 100}%`, background: color }} /></span><span className="tabnum">{share(v, selected!.valid, digits)}</span></span>;
   return <div className="locality-map-tool">
     <p className="small ink2">{L('Historical votes · current grouping', 'קולות היסטוריים · חלוקה נוכחית')} <Info title={L('Map assumptions', 'הנחות המפה')}>{L('Historical local votes; colours follow your current scenario grouping. National vote edits are not distributed geographically. Split lists use national vote proportions; split blocs use elected-seat proportions, an estimate rather than measured party votes. English place names are CBS locality names; a few localities missing from CBS lists have this project’s transliteration (dotted underline).', 'קולות היסטוריים ביישובים; הצבעים לפי חלוקת הגושים הנוכחית. שינויי קולות ארציים אינם מחולקים גאוגרפית. רשימות שפוצלו מחולקות לפי יחס הקולות הארצי; גושים בתוך רשימה לפי יחס המושבים הנבחרים — אומדן ולא קולות מפלגתיים שנמדדו.')}</Info></p>
     {data.id !== 'k17' && (data.noteEn || data.noteHe) && <p className="small callout">{lang === 'he' ? data.noteHe ?? data.noteEn : data.noteEn ?? data.noteHe}</p>}
@@ -255,13 +257,13 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       {/* why the dot has its colour: the leader, and its lead over the runner-up in this locality */}
       <p className="locality-verdict">{selectedWinner!.tied ? L('Tie', 'שוויון') : selectedWinner!.key === null || !groups.length ? L('No assigned votes', 'אין קולות משויכים') : <>
         <span className="swatch" style={{ background: groupColor(selectedWinner!.key) }} /><strong dir="auto">{groupName(selectedWinner!.key)}</strong>
-        {groups.length > 1 && <span className="ink2"> · {L('ahead of ', 'ביתרון של ')}{lang === 'en' && <span dir="auto">{groupName(groups[1].key)} {L('by ', '')}</span>}<bdi dir="ltr">{(selectedWinner!.margin / Math.max(1, selected.valid) * 100).toFixed(1)}{L(' pp', ' נק׳')}</bdi> ({fmtInt(selectedWinner!.margin)} {L('votes', 'קולות')}){lang === 'he' && <span dir="auto"> על {groupName(groups[1].key)}</span>}</span>}
+        {groups.length > 1 && <span className="ink2"> · {L('ahead of ', 'ביתרון של ')}{lang === 'en' && <span dir="auto">{groupName(groups[1].key)} {L('by ', '')}</span>}<bdi dir="ltr">{(selectedWinner!.margin / Math.max(1, selected.valid) * 100).toFixed(digits)}{L(' pp', ' נק׳')}</bdi> ({fmtInt(selectedWinner!.margin)} {L('votes', 'קולות')}){lang === 'he' && <span dir="auto"> על {groupName(groups[1].key)}</span>}</span>}
       </>}</p>
       {mode === 'bloc' && groups.length > 0 && <div className="tablewrap"><table className="tbl"><thead><tr><th>{L('Bloc','גוש')}</th><th className="n">{L('Votes','קולות')}</th><th>{L('Share','שיעור')}</th></tr></thead><tbody>
         {groups.map(g => <tr key={g.key ?? 'none'} className={g.key === selectedWinner!.key ? 'sel' : undefined}><td><span className="row" style={{gap:6,flexWrap:'nowrap'}}><span className="swatch" style={{background:groupColor(g.key)}} />{groupName(g.key)}</span></td><td className="n">{fmtInt(g.votes)}</td><td>{shareBar(g.votes, groups[0].votes, groupColor(g.key))}</td></tr>)}
       </tbody></table></div>}
       <p className="small ink2 locality-map-facts">
-        <span>{L('Turnout ', 'הצבעה ')}<b className="tabnum">{selected.registered ? fmtPct(selected.votesCast, selected.registered, 1) : '—'}</b></span>
+        <span>{L('Turnout ', 'הצבעה ')}<b className="tabnum">{selected.registered ? fmtPct(selected.votesCast, selected.registered, digits) : '—'}</b></span>
         <span>{L('Valid ', 'כשרים ')}<b className="tabnum">{fmtInt(selected.valid)}</b></span>
         <span>{L('Registered ', 'בעלי זכות ')}<b className="tabnum">{selected.registered === null ? '—' : fmtInt(selected.registered)}</b></span>
         <span>{L('Invalid ', 'פסולים ')}<b className="tabnum">{fmtInt(selected.invalid)}</b></span>

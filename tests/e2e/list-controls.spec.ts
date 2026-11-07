@@ -2,7 +2,7 @@ import { expect, test, type Page } from '@playwright/test';
 import { choose } from './choices.ts';
 // Release-candidate audit of the lists column and a list's editing controls.
 async function start(page: Page, { lang = 'en', level = 'expert', election = 'k25' } = {}) {
-  await page.addInitScript(v => localStorage.setItem('israel-elections:v1', JSON.stringify(v)), { lang, theme: 'light', level, hintDismissed: true });
+  await page.addInitScript(v => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)), { lang, theme: 'light', level, hintDismissed: true });
   await page.goto('/');
   await expect(page.locator('.lb-row').first()).toBeVisible();
   await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
@@ -127,7 +127,7 @@ test('a list\'s seat count can be typed: the fewest votes that give it are moved
   await expect(seats).toHaveValue('32');
   await seats.fill('35'); await seats.press('Enter');
   // the first seat edit asks where the votes come from; Remember stops asking
-  const ask = page.getByRole('dialog', { name: 'Votes from' });
+  const ask = page.getByRole('dialog', { name: 'Votes come from' });
   await expect(ask).toContainText('Likud');
   await ask.getByRole('combobox').selectOption('proportional');
   await ask.getByRole('radio', { name: 'Always', exact: true }).check();
@@ -149,11 +149,11 @@ test('a list\'s seat count can be typed: the fewest votes that give it are moved
   await panel.screenshot({ path: '.backup-scratch/seat-target.png' });
   // the remembered answer is the setting in Rules → Display, and can go back to asking
   await page.reload();
-  await page.getByRole('tab', { name: 'Rules & settings', exact: true }).click();
-  await page.locator('.band').getByRole('button', { name: 'Your settings', exact: true }).click();
-  const setting = page.getByRole('button', { name: 'Votes come from' });
-  await expect(setting).toHaveAttribute('data-value', 'proportional');
-  await choose(setting, 'ask');
+  await page.getByRole('tab', { name: 'Rules', exact: true }).click();
+  await page.locator('.band').getByRole('button', { name: 'Settings', exact: true }).click();
+  const setting = page.getByRole('group', { name: 'Votes come from' });
+  await expect(setting.getByRole('button', { name: 'Other lists', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await setting.getByRole('button', { name: 'Ask', exact: true }).click();
   await page.keyboard.press('Escape');
   await page.getByRole('tab', { name: 'Overview', exact: true }).click();
   await open(page, 'Likud');

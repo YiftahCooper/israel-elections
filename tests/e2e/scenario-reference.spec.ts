@@ -1,7 +1,7 @@
 import { choose } from './choices.ts';
 import { expect, test, type Page } from '@playwright/test';
 async function start(page: Page, lang = 'en', theme = 'light') {
-  await page.addInitScript(v => { if (!localStorage.getItem('israel-elections:v1')) localStorage.setItem('israel-elections:v1', JSON.stringify(v)); }, { lang, theme, level: 'expert', hintDismissed: true });
+  await page.addInitScript(v => { if (!localStorage.getItem('israel-elections:v1')) localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)); }, { lang, theme, level: 'expert', hintDismissed: true });
   await page.goto('/');
   await expect(page.getByRole('region', { name: lang === 'he' ? 'הרשימות' : 'Lists', exact: true })).toBeVisible();
   await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k25');
@@ -45,8 +45,8 @@ test('save moves the reference, official setting restores markers, colour surviv
   await expect(panel.locator('.edit-marker')).not.toHaveCount(0);
   await page.getByRole('tab', { name: 'Scenarios', exact: true }).click();
   if (!await page.locator('.scn-options').evaluate(el => el.hasAttribute('open'))) await page.locator('.scn-options summary').click();
-    await page.locator('.scn-options').getByRole('button', { name: 'Your settings…', exact: true }).click();
-  await choose(page.getByRole('button', { name: 'Mark differences from', exact: true }), 'official');
+    await page.locator('.scn-options').getByRole('button', { name: 'Settings…', exact: true }).click();
+  await page.getByRole('group', { name: 'Mark changes since', exact: true }).getByRole('button', { name: 'Official result', exact: true }).click();
     await page.keyboard.press('Escape');
   await page.getByRole('tab', { name: 'Overview', exact: true }).click();
   expect(await panel.locator('.edit-marker').count()).toBe(2); // name and votes; colour is appearance

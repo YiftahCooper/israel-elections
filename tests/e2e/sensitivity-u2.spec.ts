@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('default analysis survives reload without starting workers; edits calculate automatically', async ({ page }) => {
   test.setTimeout(180_000);
-  await page.addInitScript(() => { localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'expert', hintDismissed: true })); });
+  await page.addInitScript(() => { localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'expert', hintDismissed: true })); });
   await page.goto('/'); await page.locator('#tab-sens').click();
   await expect(page.locator('.sens .callout')).toBeVisible({ timeout: 120_000 });
   await expect(page.locator('.sens .sweep-tbl tbody tr')).not.toHaveCount(0);
@@ -20,7 +20,7 @@ test('default analysis survives reload without starting workers; edits calculate
 });
 
 for (const theme of ['light', 'dark']) test(`${theme}: signed arrows contrast on result backgrounds, names use swatches, order and precision`, async ({ page }) => {
-  await page.addInitScript(theme => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', theme, level: 'standard', hintDismissed: true })), theme);
+  await page.addInitScript(theme => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', theme, level: 'standard', hintDismissed: true })), theme);
   await page.goto('/'); await page.locator('#tab-sens').click();
   await expect(page.locator('.sens .sweep-tbl .swatch').first()).toBeVisible({timeout:60000});
   expect(await page.locator('.sens h3').allTextContents()).toEqual(['Votes → seats i', 'Votes to flip a majority i', 'Threshold → seats i']);

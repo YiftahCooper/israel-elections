@@ -3,7 +3,7 @@ import { choose } from './choices.ts';
 for (const lang of ['en', 'he']) for (const width of [1500,1280,1024,768,390]) {
   test(`header hit targets ${lang} ${width}`, async ({ page }) => {
     await page.setViewportSize({ width, height: 1000 });
-    await page.addInitScript(lang => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, theme: 'dark', level: 'expert' })), lang);
+    await page.addInitScript(lang => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, theme: 'dark', level: 'expert' })), lang);
     await page.goto('/');
     const picker = page.locator('.election-navigation .choice-trigger');
     await expect(picker).toHaveAttribute('data-value', 'k26');
@@ -26,7 +26,7 @@ for (const lang of ['en', 'he']) for (const width of [1500,1280,1024,768,390]) {
   });
 }
 test('edited annotation keeps reference and scoped restore keyboard reachable', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'expert' })));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'expert' })));
   await page.goto('/');
   await choose(page.locator('.election-navigation .choice-trigger'), 'k25');
   await page.locator('.lb-row').first().click();

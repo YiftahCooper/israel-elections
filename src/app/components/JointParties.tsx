@@ -11,21 +11,26 @@ import { apportion } from '../../model/actions.ts';
 import type { Action, Scenario, SimList } from '../../model/scenario.ts';
 import { electedOf } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt } from '../format.ts';
-import { dispatch, dispatchMany, setPreference, setState, useStore, useLevel } from '../store.ts';
+import { fmtInt, fmtPctNum } from '../format.ts';
+import { dispatch, dispatchMany, setPreference, setState, useDigits, useStore, useLevel, useSetting } from '../store.ts';
+import { hiddenSeatlessParty } from '../seatlessParties.ts';
 import {JointFacts} from './JointFacts.tsx';
 import { PartyLinks } from './PartyLinks.tsx';
-import { Info, Slip } from './ui.tsx';
+import { DisclosureToggle, Info, Slip } from './ui.tsx';
 import { componentColours } from '../newListColour.ts';
 
 const newId = (k: number) => `sim-${Date.now().toString(36)}${k}${Math.floor(Math.random() * 1e4).toString(36)}`;
 
 export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l: SimList }) {
   const L = useL();
+  const digits = useDigits();
   const { shown: standard, control: standardControl } = useDisclosure('jointEditing');
   const lang = useLang();
   const { expert } = useLevel();
-  const defaultSplit = useStore(st => st.preferences.jointSeats === 'on');
+  // the same value as Settings → Joint lists by party (no answer means its default, On)
+  const defaultSplit = useStore(st => st.preferences.jointSeats !== 'off');
+  const seatlessParties = useSetting('seatlessParties');
+  const [showZero, setShowZero] = useState(false);
   const parties = l.parties ?? [];
   const seats = r.lists.find((x) => x.id === l.id)?.seats ?? 0;
   const elected = electedOf(l, seats);
@@ -85,7 +90,9 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
         {L('Use by default for joint lists', 'ברירת מחדל לרשימות משותפות')}
       </label>
       <div className="party-rows">
-        {parties.map((p) => (
+        {/* Settings → Parties with no seats: zero-seat parties fold behind one line here, never out of reach, so they
+            can still be given a bloc or split off */}
+        {parties.filter(p => seatlessParties || showZero || seats === 0 || !hiddenSeatlessParty(s, p.id, held(p.id))).map((p) => (
           <div key={p.id} className="party-row">
             <Slip letters="" name={lang === 'he' ? p.nameHe : p.nameEn} color={colourOf[p.id]} logo={p.logo} />
             <span style={{ minWidth: 0 }}>{name(p)}{l.candidates[0]?.partyId === p.id && <small className="muted"> · {L('Lead party', 'מפלגה מובילה')}</small>}<PartyLinks links={p.links} name={name(p)} /></span>
@@ -101,6 +108,8 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
           </div>
         ))}
       </div>
+      {!seatlessParties && seats > 0 && ((n) => n > 0 && <DisclosureToggle open={showZero} onToggle={() => setShowZero(x => !x)}
+        more={L(`+${n} with no seats`, `‏+${n} ללא מנדטים`)} fewer={L('Hide parties with no seats', 'הסתרת מפלגות ללא מנדטים')} />)(parties.filter(p => hiddenSeatlessParty(s, p.id, held(p.id))).length)}
       {unknownElected > 0 && <p className="tiny muted">{L(`${unknownElected} unassigned seats`, `${unknownElected} מנדטים ללא שיוך`)} <Info title={L('Unknown party', 'מפלגה לא ידועה')}>{L(`${unknownElected} elected member(s) have no recorded party; their seats stay with the list.`, `ל-${unknownElected} נבחרים לא תועדה מפלגה; מושביהם נשארים עם הרשימה.`)}</Info></p>}
       {standard && (
         <div style={{ marginTop: 6 }}>
@@ -120,7 +129,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
               </Fragment>
             ))}
           </div>
-          {Math.abs(sum - 100) > 0.05 && <p className="small" style={{ color: 'var(--warn-ink)' }}>{L(`The shares add up to ${sum}%; the votes are divided in these proportions.`, `החלקים מסתכמים ב-${sum}%; הקולות יחולקו ביחס הזה.`)}</p>}
+          {Math.abs(sum - 100) > 0.05 && <p className="small" style={{ color: 'var(--warn-ink)' }}>{L(`The shares add up to ${fmtPctNum(sum, digits)}; the votes are divided in these proportions.`, `החלקים מסתכמים ב-${fmtPctNum(sum, digits)}; הקולות יחולקו ביחס הזה.`)}</p>}
           {unassigned > 0 && <p className="tiny muted">{L(`${unassigned} candidates assigned to lead party`, `${unassigned} מועמדים צורפו למפלגת הראש`)} <Info title={L('Candidate assignment', 'שיוך מועמדים')}>{L(`${unassigned} candidate(s) without a recorded party go with ${name(parties.find((p) => p.id === lead)!)} (the party of the list’s leader).`, `${unassigned} מועמדים שמפלגתם לא תועדה יצורפו ${hebrewPrefix('ל', name(parties.find((p) => p.id === lead)!))} (מפלגת העומד בראש הרשימה).`)}</Info></p>}
           <div className="row" style={{ gap: 6 }}>
             <button className="btn small primary" onClick={run}>{L(`Run as ${parties.length} separate lists`, `ריצה ב-${parties.length} רשימות נפרדות`)}</button>
