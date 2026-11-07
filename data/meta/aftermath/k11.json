@@ -423,8 +423,8 @@
       {
         "date": "1984-09-13",
         "type": "confidence-vote",
-        "textEn": "The Knesset approved Peres’s 21st government, 89–18.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־21 בראשות פרס, ברוב של 89 מול 18.",
+        "textEn": "The Knesset approved Peres’s 21st government, 89 for · 18 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־21 בראשות פרס, 89 בעד · 18 נגד.",
         "cites": [
           {
             "source": "jta1984vote",

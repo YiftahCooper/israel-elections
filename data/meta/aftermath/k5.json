@@ -428,8 +428,8 @@
       {
         "date": "1961-11-02",
         "type": "confidence-vote",
-        "textEn": "The Knesset expressed confidence in government 10, headed by David Ben-Gurion, 63–46.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־10 בראשות דוד בן־גוריון, ברוב של 63 מול 46.",
+        "textEn": "The Knesset expressed confidence in government 10, headed by David Ben-Gurion, 63 for · 46 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־10 בראשות דוד בן־גוריון, 63 בעד · 46 נגד.",
         "cites": [
           {
             "source": "plenum-gov10",
@@ -459,8 +459,8 @@
       {
         "date": "1963-06-26",
         "type": "confidence-vote",
-        "textEn": "The Knesset expressed confidence in government 11, headed by Levi Eshkol, 64–43.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־11 בראשות לוי אשכול, ברוב של 64 מול 43.",
+        "textEn": "The Knesset expressed confidence in government 11, headed by Levi Eshkol, 64 for · 43 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־11 בראשות לוי אשכול, 64 בעד · 43 נגד.",
         "cites": [
           {
             "source": "plenum-gov11",
@@ -490,8 +490,8 @@
       {
         "date": "1964-12-22",
         "type": "confidence-vote",
-        "textEn": "The Knesset expressed confidence in government 12, headed by Levi Eshkol, 59–36, with 9 abstentions.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־12 בראשות לוי אשכול, ברוב של 59 מול 36, עם 9 נמנעים.",
+        "textEn": "The Knesset expressed confidence in government 12, headed by Levi Eshkol, 59 for · 36 against, with 9 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־12 בראשות לוי אשכול, 59 בעד · 36 נגד, עם 9 נמנעים.",
         "cites": [
           {
             "source": "plenum-gov12",

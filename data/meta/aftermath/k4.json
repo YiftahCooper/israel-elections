@@ -359,8 +359,8 @@
       {
         "date": "1959-12-17",
         "type": "confidence-vote",
-        "textEn": "The Knesset expressed confidence in government 9, headed by David Ben-Gurion, 78–33.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־9 בראשות דוד בן־גוריון, ברוב של 78 מול 33.",
+        "textEn": "The Knesset expressed confidence in government 9, headed by David Ben-Gurion, 78 for · 33 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־9 בראשות דוד בן־גוריון, 78 בעד · 33 נגד.",
         "cites": [
           {
             "source": "plenum-gov9",

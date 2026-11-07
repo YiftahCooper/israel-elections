@@ -202,8 +202,8 @@
   "blocSchemes": [
     {
       "id": "first-government",
-      "nameHe": "הממשלה הראשונה של הכנסת ה-13 (ממשלה 25) והאופוזיציה",
-      "nameEn": "First government of the 13th Knesset (government 25) and opposition",
+      "nameHe": "הממשלה הראשונה של הכנסת ה-13 (ממשלה 25), התמיכה מבחוץ והאופוזיציה",
+      "nameEn": "First government of the 13th Knesset (government 25), outside support and opposition",
       "kind": "government",
       "date": "1992-07-13",
       "blocs": [
@@ -226,11 +226,28 @@
           ]
         },
         {
+          "id": "outside-support",
+          "nameHe": "תמיכה מבחוץ",
+          "nameEn": "Outside support",
+          "color": "#1E88E5",
+          "seats": 5,
+          "members": [
+            {
+              "letters": "ו",
+              "note": "outside support, provisional (data/meta/aftermath/k13.json)"
+            },
+            {
+              "letters": "ע",
+              "note": "outside support, provisional (data/meta/aftermath/k13.json)"
+            }
+          ]
+        },
+        {
           "id": "opposition",
           "nameHe": "אופוזיציה",
           "nameEn": "Opposition",
           "color": "#9E9E9E",
-          "seats": 58,
+          "seats": 53,
           "members": [
             {
               "letters": "מחל"
@@ -245,20 +262,12 @@
               "letters": "ג"
             },
             {
-              "letters": "ו",
-              "note": "outside the coalition but part of the blocking bloc"
-            },
-            {
               "letters": "ט"
-            },
-            {
-              "letters": "ע",
-              "note": "outside the coalition but part of the blocking bloc"
             }
           ]
         }
       ],
-      "notes": "Opening coalition: Labor, Meretz and Shas (62 seats), checked against the official coalition agreements and first-sitting transcript; IDI independently confirms membership. Bloc colours are display suggestions.",
+      "notes": "Opening coalition: Labor, Meretz and Shas (62 seats), checked against the official coalition agreements and first-sitting transcript; IDI independently confirms membership. Bloc colours are display suggestions. Hadash and the Arab Democratic Party (5 seats) gave outside support without joining: a provisional classification in data/meta/aftermath/k13.json (government support roles, 7 November 2026).",
       "sources": [
         {
           "url": "https://main.knesset.gov.il/mk/government/documents/cagreement25.pdf",

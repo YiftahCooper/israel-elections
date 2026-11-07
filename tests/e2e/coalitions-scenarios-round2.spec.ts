@@ -11,13 +11,14 @@ for (const lang of ['en', 'he'] as const) for (const width of [1500, 390]) {
     await page.goto('/');
     await page.getByRole('tab', { name: lang === 'he' ? 'קואליציות' : 'Coalitions', exact: true }).click();
     await expect(page.locator('.coal-choice').first()).toBeVisible();
-    // Every party card keeps In/Out/Any beside its name, including the compact phone layout (QA2 CO1).
+    // Every party card lays out its roles the same way (QA2 CO1): beside its name, except on a phone, where
+    // the five roles (In, Support, Abstain, Out, Any) take their own line under every name alike.
     const layout = await page.locator('.coal-choice').evaluateAll((cards) => cards.map((c) => {
       const who = c.querySelector('.coal-who')!.getBoundingClientRect(), seg = c.querySelector('.seg')!.getBoundingClientRect();
       return seg.top >= who.bottom - 1 ? 'below' : 'beside';
     }));
     expect(new Set(layout).size).toBe(1);
-    expect(layout[0]).toBe('beside');
+    expect(layout[0]).toBe(width > 560 ? 'beside' : 'below');
     // the first In/Out adds its reset beside the instruction, not a new line above the cards
     const card = await top(page, '.coal-choice', 2);
     await page.locator('.coal-choice').first().getByRole('button', { name: lang === 'he' ? 'בפנים' : 'In', exact: true }).click();

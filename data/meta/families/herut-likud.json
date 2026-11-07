@@ -1602,7 +1602,7 @@
       "electionId": "k13",
       "electionDate": "1992-06-23",
       "datasetPath": "public/data/k13.json",
-      "datasetSha256": "e82c65939e64f0965d5b6936ccf9d7f77aa10c70084eacc574640e81ae6b535c",
+      "datasetSha256": "a4dd9103aa000dd051c4292f9fa01c5350ac5c1cdba8298287c6eb53cd9a2372",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "Rosters: everyone elected is included and cross-checked; no full rosters; later ranks of winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. The 1992 agreement notice was not found; agreements that did not affect seats may be missing. Empty agreements reproduce every published seat.",

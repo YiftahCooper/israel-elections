@@ -64,7 +64,7 @@ it('candidate ordering is a meaningful input; empty coalition equals the officia
   const l = base.lists.find(l => l.candidates.length > 1)!;
   const s = { ...base, lists: base.lists.map(x => x.id === l.id ? { ...l, candidates: [...l.candidates].reverse() } : x) };
   expect(referenceChanges(s, base)).toEqual([['lists', l.id, 'candidates']]);
-  expect(referenceChanges({ ...base, coalition: { in: [], out: [] } }, base)).toEqual([]);
+  expect(referenceChanges({ ...base, coalition: { in: [], support: [], abstain: [], out: [] } }, base)).toEqual([]);
 });
 
 it('blank candidates affects the selected list only and is one replayable action', () => {

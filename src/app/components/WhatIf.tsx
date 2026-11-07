@@ -32,6 +32,8 @@ function Fact({ f, lang, full }: { f: WhatIfFact; lang: Lang; full?: boolean }):
     case 'threshold': return <span>{he ? 'אחוז החסימה' : 'Threshold'} {arrow(fmtInt(f.before), f.after === 0n ? (he ? 'אין' : 'none') : fmtInt(f.after))} {f.after !== 0n && (he ? 'קולות' : 'votes')}</span>;
     case 'quota': return <span>{he ? 'קולות למנדט' : 'Votes per seat'} {arrow(fmtInt(f.before), fmtInt(f.after))}</span>;
     case 'seatless': return <span>{he ? 'קולות ללא מנדט' : 'Votes with no seat'} {arrow(fmtInt(f.before), fmtInt(f.after))}</span>;
+    // the Coalitions tool's totals line, then the confidence vote for–against
+    case 'government': { const v = f.vote; return <span>{v.support ? <bdi>{v.members} {he ? 'בקואליציה' : 'members'} + {v.support} {he ? 'תמיכה מבחוץ' : 'outside support'} = <b>{v.votesFor}</b></bdi> : <bdi><b>{v.members}</b> {he ? 'בקואליציה' : 'members'}</bdi>} · {he ? `${v.votesFor} בעד · ${v.against} נגד` : `${v.votesFor} for · ${v.against} against`}</span>; }
   }
 }
 
@@ -54,7 +56,8 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
     const st = getState();
     let s: Scenario = { ...freshScenario(ds, title), description };
     for (const a of actions) s = applyAction(s, a);
-    setState({ scenario: s, past: st.scenario ? [...st.past, st.scenario] : st.past, future: [], selectedListId: null, compareWith: 'historical', tool: 'board' });
+    // a coalition-role question opens where its roles are shown
+    setState({ scenario: s, past: st.scenario ? [...st.past, st.scenario] : st.past, future: [], selectedListId: null, compareWith: 'historical', tool: actions.some((a) => a.type === 'setCoalition') ? 'coal' : 'board' });
     window.scrollTo({ top: 0, behavior: motionReduced() ? 'instant' : 'smooth' });
   };
 

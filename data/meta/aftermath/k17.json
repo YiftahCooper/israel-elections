@@ -299,8 +299,8 @@
       {
         "date": "2006-05-04",
         "type": "confidence-vote",
-        "textEn": "The Knesset approved Olmert’s 31st government, 65–49.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־31 בראשות אולמרט, ברוב של 65 מול 49.",
+        "textEn": "The Knesset approved Olmert’s 31st government, 65 for · 49 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־31 בראשות אולמרט, 65 בעד · 49 נגד.",
         "cites": [
           {
             "source": "vote2006",

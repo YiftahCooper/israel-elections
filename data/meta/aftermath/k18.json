@@ -291,8 +291,8 @@
           "against": 45,
           "abstained": 5
         },
-        "textEn": "The Knesset approved the 32nd government, 69–45, with five abstentions; the ministers were sworn in.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־32 ברוב של 69 מול 45, וחמישה נמנעים; השרים הושבעו.",
+        "textEn": "The Knesset approved the 32nd government, 69 for · 45 against, with five abstentions; the ministers were sworn in.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־32, 69 בעד · 45 נגד, וחמישה נמנעים; השרים הושבעו.",
         "cites": [
           {
             "source": "jta-investiture",
@@ -427,8 +427,8 @@
       "type": "knesset-dissolved",
       "date": "2012-10-16",
       "nextElection": "k19",
-      "textEn": "The Knesset voted to dissolve itself, 100–0, and set an election for 22 January 2013.",
-      "textHe": "הכנסת הצביעה על התפזרותה ברוב של 100 ללא מתנגדים וקבעה בחירות ל־22 בינואר 2013.",
+      "textEn": "The Knesset voted to dissolve itself, 100 for · 0 against, and set an election for 22 January 2013.",
+      "textHe": "הכנסת הצביעה על התפזרותה, 100 בעד · 0 נגד, וקבעה בחירות ל־22 בינואר 2013.",
       "cites": [
         {
           "source": "ipu-2013",

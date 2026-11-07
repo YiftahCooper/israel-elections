@@ -110,10 +110,31 @@ export function applyMeta(ds: ElectionDataset, localities?:Pick<LocalityDataset,
       }),
     };
   });
+  // the first-government grouping follows the researched support roles (data/meta/aftermath, docs/source-policy.md):
+  // a list recorded as outside support, or as abstaining by arrangement, sits in its own group, never in
+  // "Opposition"; and such a group holds only lists the research records in that role
+  const research = join(META, 'aftermath', `${ds.id}.json`);
+  const government = existsSync(research) ? JSON.parse(readFileSync(research, 'utf8')).government as { firstGovernmentSchemeRef?: string; coalition?: { letters?: string; role: string }[] } | undefined : undefined;
+  const opening = government && schemes.find((s) => s.id === (government.firstGovernmentSchemeRef ?? 'first-government'));
+  if (opening) for (const [role, group] of [['outside-support', 'outside-support'], ['abstained-by-arrangement', 'abstained-by-arrangement']] as const) {
+    const recorded = (government!.coalition ?? []).filter((r) => r.role === role && r.letters).map((r) => listId(r.letters!));
+    const held = opening.blocs.find((b) => b.id === group)?.lists ?? [];
+    for (const id of recorded) if (!held.includes(id)) fail(`scheme ${opening.id}: ${id} is researched as ${role} but not in group ${group}`);
+    for (const id of held) if (!recorded.includes(id)) fail(`scheme ${opening.id}: ${id} is in group ${group} without that researched role`);
+  }
   // default (decision 0087): the first government formed after this election, else its pre-election blocs,
   // else any other sourced grouping (e.g. an outgoing government, or recommendations to the President)
   const pick = schemes.find((s) => s.id === 'first-government') ?? schemes.find((s) => s.kind === 'pre-election') ?? schemes.find((s) => s.kind === 'government') ?? schemes[0];
-  lists = distinctColours(ds, lists, schemes.find((s) => s.id === pick?.id),localities);
+  // a list's colour never follows a researched support role: lists in an outside-support or arranged-abstention
+  // group are separated in the place they hold without that group (the opposition side), so adding the group
+  // recolours no list (party colour stability itself is decided elsewhere; this only keeps bloc data out of it)
+  const roleGroups = new Set(['outside-support', 'abstained-by-arrangement']);
+  const colourScheme = pick && pick.blocs.some((b) => roleGroups.has(b.id)) ? (() => {
+    const rest = pick.blocs.filter((b) => !roleGroups.has(b.id)), moved = pick.blocs.filter((b) => roleGroups.has(b.id));
+    const side = rest.find((b) => b.id === 'opposition') ?? rest[rest.length - 1];
+    return { ...pick, blocs: rest.map((b) => (b === side ? { ...b, lists: [...b.lists, ...moved.flatMap((m) => m.lists)], parties: [...b.parties, ...moved.flatMap((m) => m.parties)], candidates: [...b.candidates, ...moved.flatMap((m) => m.candidates)] } : b)) };
+  })() : pick;
+  lists = distinctColours(ds, lists, colourScheme, localities);
   // bloc regions: each bloc's pale tint stands apart from the others' and from the neutral No bloc region
   for (const s of schemes) separateBlocColours(s.blocs.map((b) => b.color)).forEach((c, i) => { s.blocs[i].color = c; });
   return { ...ds, lists, ...(schemes.length ? { blocSchemes: schemes, defaultBlocScheme: pick!.id } : {}) };

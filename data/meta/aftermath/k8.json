@@ -281,8 +281,8 @@
       {
         "date": "1974-03-10",
         "type": "confidence-vote",
-        "textEn": "The Knesset expressed confidence in government 16, headed by Golda Meir, 62–46, with 9 abstentions.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־16 בראשות גולדה מאיר, ברוב של 62 מול 46, עם 9 נמנעים.",
+        "textEn": "The Knesset expressed confidence in government 16, headed by Golda Meir, 62 for · 46 against, with 9 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־16 בראשות גולדה מאיר, 62 בעד · 46 נגד, עם 9 נמנעים.",
         "cites": [
           {
             "source": "plenum-gov16",
@@ -300,8 +300,8 @@
       {
         "date": "1974-06-03",
         "type": "confidence-vote",
-        "textEn": "The Knesset expressed confidence in government 17, headed by Yitzhak Rabin, 61–51, with 5 abstentions.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־17 בראשות יצחק רבין, ברוב של 61 מול 51, עם 5 נמנעים.",
+        "textEn": "The Knesset expressed confidence in government 17, headed by Yitzhak Rabin, 61 for · 51 against, with 5 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־17 בראשות יצחק רבין, 61 בעד · 51 נגד, עם 5 נמנעים.",
         "cites": [
           {
             "source": "plenum-gov17",

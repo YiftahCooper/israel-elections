@@ -77,10 +77,10 @@ export function Slip({ letters, color, size, logo: logoIn, name, synthetic }: { 
   return <span title={fallbackLabel} className={`slip ${size ?? ''} ${letters.length > 4 ? 'long' : ''}`} style={{ ['--c' as string]: color }} aria-label={fallbackLabel} lang="he" dir="rtl">{letters || '—'}</span>;
 }
 
-export function Seg<T extends string>({ value, options, onChange, label }: { value: T; options: { v: T; label: string }[]; onChange: (v: T) => void; label: string }) {
+export function Seg<T extends string>({ value, options, onChange, label }: { value: T; options: { v: T; label: string; title?: string }[]; onChange: (v: T) => void; label: string }) {
   return (
     <span className="seg" role="group" aria-label={label}>
-      {options.map((o) => <button key={o.v} type="button" aria-pressed={o.v === value} onClick={() => onChange(o.v)}>{o.label}</button>)}
+      {options.map((o) => <button key={o.v} type="button" title={o.title} aria-pressed={o.v === value} onClick={() => onChange(o.v)}>{o.label}</button>)}
     </span>
   );
 }

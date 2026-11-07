@@ -309,8 +309,8 @@
       {
         "date": "1966-01-12",
         "type": "confidence-vote",
-        "textEn": "The Knesset expressed confidence in government 13, headed by Levi Eshkol, 71–41.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־13 בראשות לוי אשכול, ברוב של 71 מול 41.",
+        "textEn": "The Knesset expressed confidence in government 13, headed by Levi Eshkol, 71 for · 41 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־13 בראשות לוי אשכול, 71 בעד · 41 נגד.",
         "cites": [
           {
             "source": "plenum-gov13",
@@ -340,8 +340,8 @@
       {
         "date": "1969-03-17",
         "type": "confidence-vote",
-        "textEn": "The Knesset expressed confidence in government 14, headed by Golda Meir, 84–12, with 1 abstention.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־14 בראשות גולדה מאיר, ברוב של 84 מול 12, עם נמנע אחד.",
+        "textEn": "The Knesset expressed confidence in government 14, headed by Golda Meir, 84 for · 12 against, with 1 abstention.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־14 בראשות גולדה מאיר, 84 בעד · 12 נגד, עם נמנע אחד.",
         "cites": [
           {
             "source": "plenum-gov14",
@@ -508,8 +508,8 @@
       {
         "date": "1969-03-17",
         "number": 14,
-        "textEn": "The Knesset expressed confidence in government 14, headed by Golda Meir, 84–12, with 1 abstention.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־14 בראשות גולדה מאיר, ברוב של 84 מול 12, עם נמנע אחד.",
+        "textEn": "The Knesset expressed confidence in government 14, headed by Golda Meir, 84 for · 12 against, with 1 abstention.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־14 בראשות גולדה מאיר, 84 בעד · 12 נגד, עם נמנע אחד.",
         "coalition": [
           {
             "factionNameHe": "מערך",
