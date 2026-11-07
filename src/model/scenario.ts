@@ -1,6 +1,6 @@
 import { validFamily, type Family } from '../families/model.ts';
 import type { SourceChoice } from '../app/voteEdit.ts';
-import { SCENARIO_COLOURS } from './scenarioColors.ts';
+import {isHexColour} from '../data/colourGuard.ts';
 // Editable simulation state. A Scenario is a full, self-contained copy of an election's inputs;
 // the historical dataset it was created from is never modified. Every displayed figure is derived
 // from a Scenario through the engine — no totals are stored separately.
@@ -349,7 +349,7 @@ const partyLinks = array(shape({ kind: oneOf('partisan', 'neutral'), url: partyL
   sourceType: oneOf('party-site', 'platform', 'ephemera', 'party-newspaper', 'repo-scan', 'knesset', 'hewiki', 'cec', 'academic'),
   archivedAt: optional((x) => typeof x === 'string' && /^\d{4}-\d{2}-\d{2}(T.*Z)?$/.test(x) && Number.isFinite(Date.parse(x))),
   confidence: oneOf('high', 'medium') }));
-const party = shape({ id: string, nameHe: string, nameEn: string, color: optional(string), logo: optional(logo), links: optional(partyLinks) });
+const party = shape({ id: string, nameHe: string, nameEn: string, color: optional(string), customColor: optional(boolean), logo: optional(logo), links: optional(partyLinks) });
 const candidates: Check = (x) => array(candidate)(x) && new Set((x as SimCandidate[]).map((c) => c.id)).size === (x as SimCandidate[]).length;
 const bloc = shape({ id: string, nameHe: string, nameEn: string, appDefined: optional(boolean), color: string });
 const agreement = shape({ id: string, members: uniqueStrings, enabled: boolean });
@@ -389,7 +389,7 @@ const actionFields: Record<Action['type'], Check> = {
   setBlocAppearance: shape({ blocs: array(bloc), name: optional(string) }),
   setPartyColor: shape({ listId: string, partyId: string, color: string }),
   resetColors: shape({}),
-  setIdentityColor: shape({ color: oneOf(...SCENARIO_COLOURS) }),
+  setIdentityColor: shape({ color: isHexColour }),
   setCoalition: shape({ coalition }),
   startPart: shape({ part: oneOf('votes', 'identity', 'structure', 'agreements', 'blocs', 'coalitions', 'candidates', 'rules', 'totals'), source: oneOf('official', 'saved', 'blank', 'preset'), snapshot: optional(partSnapshotCheck), name: optional(string), presetId: optional(string), listId: optional(string) }),
   setVotes: shape({ listId: string, votes: whole }),
@@ -432,7 +432,7 @@ export function validateScenario(x: unknown): string[] {
   if (s.schema !== SCENARIO_SCHEMA) e.push('not a scenario file exported by this application');
   if (s.version !== SCENARIO_VERSION) e.push('unsupported scenario version');
   if (![s.id, s.name, s.baseBuiltAt].every(string)) e.push('missing scenario identity or build timestamp');
-  if (!optional(oneOf(...SCENARIO_COLOURS))(s.identityColor)) e.push('invalid scenario colour');
+  if (!optional(isHexColour)(s.identityColor)) e.push('invalid scenario colour');
   if (!optional(coalition)(s.coalition)) e.push('invalid coalition choices');
   if (!optional(validFamily)(s.familyDefinition)) e.push('invalid family definition');
   if (!optional(string)(s.customGroupingName)) e.push('invalid grouping name');

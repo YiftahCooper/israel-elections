@@ -8,22 +8,33 @@ import { deltaE2000 } from '../../src/data/colour.ts';
 for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) test(`all constituent dots, keys, hovers and exports: ${lang} ${theme}`, async ({page}) => {
   test.setTimeout(120000);
   await page.emulateMedia({reducedMotion:'reduce'});
-  await page.addInitScript(v => localStorage.setItem('israel-elections:v1', JSON.stringify(v)), {lang, theme, level:'expert', hintDismissed:true});
+  await page.addInitScript(v => {localStorage.setItem('israel-elections:v1',JSON.stringify({lang:v.lang,level:'expert'}));localStorage.setItem('israel-elections:settings',JSON.stringify({v:2,values:{theme:v.theme,decimals:2,starterTip:false}}));}, {lang, theme});
   for (const n of [25,24,19,16]) {
     const ds=dataset(n), joint=ds.lists.filter((l: {parties?: unknown[]})=>(l.parties?.length??0)>1);
     const payload={e:`k${n}`,n:'Party dots',b:ds.buildInfo.builtAt,l:joint.map((l:{id:string})=>({type:'setFactionSplit',listId:l.id,split:true}))};
     await page.goto('about:blank');
     await page.goto('/#s='+deflateRawSync(JSON.stringify(payload)).toString('base64url'));
     await expect(page.locator('.chamber [data-seat]')).toHaveCount(120, {timeout:30000});
+    await expect(page.locator('html')).toHaveAttribute('data-theme',theme);
+    if(n===25){
+      const fills=()=>page.locator('.chamber > svg [data-component-seat]').evaluateAll(nodes=>nodes.map(dot=>dot.getAttribute('fill')));
+      const before=await fills();expect(before.length).toBeGreaterThan(0);
+      await page.locator('.band').getByRole('button',{name:lang==='he'?'הגדרות':'Settings',exact:true}).click();
+      const toggle=page.locator('.personal-settings [data-setting="partyColourInSeats"]').getByRole('checkbox');
+      await toggle.uncheck();await expect(page.locator('.chamber > svg [data-component-seat]')).toHaveCount(0);
+      await toggle.check();await expect.poll(fills).toEqual(before);
+      await page.keyboard.press('Escape');
+    }
     for (const layout of ['hemicycle','blocks']) {
       await page.getByRole('group',{name:lang==='he'?'פריסה':'Chamber layout'}).getByRole('button',{name:layout==='hemicycle'?(lang==='he'?'קשת':'Arc'):(lang==='he'?'גושים':'Blocks'),exact:true}).click();
       const dots=page.locator('.chamber > svg [data-component-seat]');
-      const colours=await dots.evaluateAll(nodes=>nodes.map(dot=>({id:dot.getAttribute('data-component-seat')!,fill:dot.getAttribute('fill')!,ring:dot.parentElement!.querySelector('[data-seat]')!.getAttribute('fill')!, css:getComputedStyle(dot).fill, key:getComputedStyle(document.querySelector(`[data-party-key="${dot.getAttribute('data-component-seat')}"]`)!).backgroundColor})));
       const expected=ds.lists.reduce((sum:number,l:{id:string;parties?:{id:string}[];candidates:{partyId?:string}[]})=>sum+((l.parties?.length??0)>1?l.candidates.slice(0,ds.officialSeats?.[l.id]??0).filter(c=>l.parties!.some(p=>p.id===c.partyId)).length:0),0);
+      await expect(dots).toHaveCount(expected);
+      const colours=await dots.evaluateAll(nodes=>nodes.map(dot=>({id:dot.getAttribute('data-component-seat')!,fill:dot.getAttribute('fill')!,ring:dot.parentElement!.querySelector('[data-seat]')!.getAttribute('fill')!,stroke:dot.getAttribute('stroke')!,outer:dot.previousElementSibling?.hasAttribute('data-component-outline')?dot.previousElementSibling.getAttribute('stroke'):null, css:getComputedStyle(dot).fill, key:getComputedStyle(document.querySelector(`[data-party-key="${dot.getAttribute('data-component-seat')}"]`)!).backgroundColor})));
       expect(colours).toHaveLength(expected);
       for (const dot of colours) {
-        expect(colourContrast(dot.fill,dot.ring)).toBeGreaterThanOrEqual(3);
-        expect(deltaE2000(dot.fill,dot.ring)).toBeGreaterThanOrEqual(20);
+        expect(colourContrast(dot.stroke,dot.fill)).toBeGreaterThanOrEqual(3);
+        expect(colourContrast(dot.outer??dot.stroke,dot.ring)).toBeGreaterThanOrEqual(3);
         expect(dot.key).toBe(dot.css);
       }
       const partyIds=[...new Set(colours.map(c=>c.id))];

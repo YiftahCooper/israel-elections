@@ -1,3 +1,4 @@
+import{deltaE2000}from'../src/data/colour.ts';
 import {readFileSync} from 'node:fs';
 import {expect,it} from 'vitest';
 import {loadDataset} from './helpers.ts';
@@ -73,9 +74,10 @@ it('a turnout replacement absorbs its proportional vote side effects until a lis
  const next=applyAction(s,{type:'setVotes',listId:id,votes:s.lists[0].votes+1});
  expect(referenceChanges(next,base)).toEqual([['parts','totals'],['lists',id,'votes']]);
 });
-it('mixed family blocs have a distinct muted colour and everyone else stays neutral',()=>{
+it('generated family blocs keep their category names and pass the shared distinctness guard',()=>{
  const b=scenarioFromDataset(JSON.parse(readFileSync(new URL('../public/data/k1.json',import.meta.url),'utf8'))),f=parseFamily(JSON.stringify(family));
  const s=applyAction(b,groupingAction(f,b,'en'));
  expect(s.blocs).toHaveLength(3);expect(new Set(s.blocs.map(b=>b.color)).size).toBe(3);
- expect(s.blocs.find(b=>b.id==='other')!.color).toBe('#7d8791');
+ expect(s.blocs.find(b=>b.id==='other')!.nameEn).toBe('Everyone else');
+ s.blocs.forEach((a,i)=>s.blocs.slice(i+1).forEach(b=>expect(deltaE2000(a.color,b.color)).toBeGreaterThanOrEqual(20)));
 });

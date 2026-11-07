@@ -69,7 +69,7 @@ test('compact generated runtime is below 200 KB and matches all nine independent
  const ledVotes=e.members.filter(m=>m.scope==='led').reduce((n,m)=>n+BigInt(d.lists.find(l=>l.id===m.listId)!.votes),0n);
  expect(aggregate(f,d).votes).toBe(BigInt(row.computed.includedUnmixed.votes)+ledVotes);expect(aggregate(f,d).mixed).toBe(BigInt(row.computed.mixedWholeLists.votes)-ledVotes);}
 });
-test('family colours are stable, chromatic and distinct for the nine presets',async()=>{const {builtins,familyColor}=await import('../src/families/runtime.ts');expect(new Set(builtins.map(familyColor)).size).toBe(9);expect(familyColor(fork(f))).toBe(familyColor(f));});
+test('family colours are stable, chromatic and distinct for the nine presets',async()=>{const {builtins,familyColor}=await import('../src/families/runtime.ts');expect(new Set(builtins.map(familyColor)).size).toBe(9);const copy=fork(f);expect(familyColor(copy)).not.toBe(familyColor(f));expect(familyColor(copy)).toBe(familyColor(structuredClone(copy)));});
 
 test('short labels survive runtime and full-definition export, with full-name fallback when a label is absent',async()=>{
  const {builtins,shortFamilyName}=await import('../src/families/runtime.ts');const {familyLabel}=await import('../src/families/labels.ts');

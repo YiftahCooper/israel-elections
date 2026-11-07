@@ -1,3 +1,4 @@
+import {localityLeaderIds} from '../../../src/data/locality-leaders.ts';
 // Merges the sourced party/bloc/colour research (data/meta/kNN.json, decision 0087) into a dataset:
 //  - constituent parties of joint lists (ListRecord.parties) and each candidate's party (Candidate.partyId);
 //  - bloc schemes per election (ElectionDataset.blocSchemes, defaultBlocScheme), normalised to ids;
@@ -8,7 +9,7 @@
 // list, rank or party that does not exist, so a roster correction cannot silently misassign people.
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import type { BlocScheme, ElectionDataset } from '../../../src/data/schema.ts';
+import type { BlocScheme, ElectionDataset, LocalityDataset } from '../../../src/data/schema.ts';
 
 const META = join(import.meta.dirname, '..', '..', '..', 'data', 'meta');
 
@@ -23,10 +24,11 @@ interface Meta { electionId: string; lists: MetaList[]; blocSchemes?: MetaScheme
 const HEX = /^#[0-9a-fA-F]{6}$/;
 const KINDS = new Set(['government', 'parliamentary', 'pre-election']);
 
-import { hexToLab, separateBlocColours, separateColours } from '../../../src/data/colour.ts';
+import {hexToLab} from '../../../src/data/colour.ts';
+import {separateBlocColours,separateColours} from '../../../src/data/colourGuard.ts';
 
 
-export function applyMeta(ds: ElectionDataset): ElectionDataset {
+export function applyMeta(ds: ElectionDataset, localities?:Pick<LocalityDataset,'listIds'|'rows'>): ElectionDataset {
   const file = join(META, `${ds.id}.json`);
   if (!existsSync(file)) return ds;
   const meta: Meta = JSON.parse(readFileSync(file, 'utf8'));
@@ -111,7 +113,7 @@ export function applyMeta(ds: ElectionDataset): ElectionDataset {
   // default (decision 0087): the first government formed after this election, else its pre-election blocs,
   // else any other sourced grouping (e.g. an outgoing government, or recommendations to the President)
   const pick = schemes.find((s) => s.id === 'first-government') ?? schemes.find((s) => s.kind === 'pre-election') ?? schemes.find((s) => s.kind === 'government') ?? schemes[0];
-  lists = distinctColours(ds, lists, schemes.find((s) => s.id === pick?.id));
+  lists = distinctColours(ds, lists, schemes.find((s) => s.id === pick?.id),localities);
   // bloc regions: each bloc's pale tint stands apart from the others' and from the neutral No bloc region
   for (const s of schemes) separateBlocColours(s.blocs.map((b) => b.color)).forEach((c, i) => { s.blocs[i].color = c; });
   return { ...ds, lists, ...(schemes.length ? { blocSchemes: schemes, defaultBlocScheme: pick!.id } : {}) };
@@ -122,7 +124,7 @@ export function applyMeta(ds: ElectionDataset): ElectionDataset {
  *  stricter difference for lists drawn side by side — in the default grouping's chamber order (blocs left to right,
  *  unassigned lists between their halves) and in the list column (most seats first). Larger lists keep their colour;
  *  a smaller one that clashes moves by the least perceptible amount (src/data/colour.ts). */
-function distinctColours<T extends { id: string; votes: number; color: string; parties?: { id: string }[]; candidates: { id: string }[] }>(ds: ElectionDataset, lists: T[], scheme: BlocScheme | undefined): T[] {
+function distinctColours<T extends { id: string; votes: number; color: string; parties?: { id: string }[]; candidates: { id: string }[] }>(ds: ElectionDataset, lists: T[], scheme: BlocScheme | undefined,localities?:Pick<LocalityDataset,'listIds'|'rows'>): T[] {
   const thr = Number(ds.ruleSetId.split('-').pop()) / 100;
   const seats = (l: { id: string; votes: number }) => (ds.officialSeats ? ds.officialSeats[l.id] ?? 0 : l.votes >= thr * ds.totals.valid ? 1 : 0);
   const winners = lists.filter((l) => seats(l) > 0);
@@ -137,6 +139,10 @@ function distinctColours<T extends { id: string; votes: number; color: string; p
     link(order.flatMap((bloc) => winners.filter((l) => (bloc === null ? !blocsOf(l).length : blocsOf(l).includes(bloc))).map((l) => l.id)));
   }
   const appColour = new Map(ds.lists.map((l) => [l.id, l.color]));
-  const { colors } = separateColours([...winners].sort((a, b) => b.votes - a.votes).map((l) => ({ id: l.id, color: l.color, alternatives: appColour.get(l.id) === l.color ? [] : [appColour.get(l.id)!] })), neighbours);
+  // A national seat loser can still win a locality and appear beside the national winners on a map.
+  const localityFile=join(META,'..','..','public','data',`${ds.id}-localities.json`);
+  const localIds=localities?localityLeaderIds(localities):existsSync(localityFile)?localityLeaderIds(JSON.parse(readFileSync(localityFile,'utf8'))):new Set<string>();
+  const extra=lists.filter(l=>localIds.has(l.id)&&!winners.some(w=>w.id===l.id));
+  const { colors } = separateColours([...winners].sort((a, b) => b.votes - a.votes).concat(extra.sort((a,b)=>b.votes-a.votes)).map((l) => ({ id: l.id, color: l.color, alternatives: appColour.get(l.id) === l.color ? [] : [appColour.get(l.id)!] })), neighbours);
   return lists.map((l) => (colors.has(l.id) ? { ...l, color: colors.get(l.id)! } : l));
 }

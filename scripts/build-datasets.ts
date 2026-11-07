@@ -68,7 +68,7 @@ async function runBuilder(i: number): Promise<Result> {
     const outputs: Built[] = [];
     for (const job of jobs) {
       const built = await job();
-      outputs.push({ ...built, ds: finalizeDataset(built.ds) });
+      outputs.push({ ...built, ds: finalizeDataset(built.ds,built.loc??undefined) });
     }
     return { outputs, logs };
   } catch (e) {

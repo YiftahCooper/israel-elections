@@ -1,3 +1,5 @@
+import {PartyDot,PartyKey}from'./PartyDot.tsx';
+import{partySeparator}from'../../data/colourGuard.ts';
 import { partyDisplayColor } from '../partyDisplayColor.ts';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { Slip } from './ui.tsx';
@@ -182,7 +184,11 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       colors.forEach((c,k)=>{
         const dot = document.createElementNS(NS,'circle');
         dot.setAttribute('cx',String(x+dir*(7+k*16))); dot.setAttribute('cy',String(y-5)); dot.setAttribute('r','7'); dot.setAttribute('fill',c); clone.appendChild(dot);
-        if(inner) { const fill=dot.cloneNode() as SVGCircleElement; fill.setAttribute('r','4.5'); fill.setAttribute('fill',inner); clone.appendChild(fill); }
+        if(inner) {
+          const separator=partySeparator(inner,c),fill=dot.cloneNode() as SVGCircleElement;fill.setAttribute('r','4.5');fill.setAttribute('fill',inner);fill.setAttribute('vector-effect','non-scaling-stroke');
+          if(separator.outer){const outer=fill.cloneNode() as SVGCircleElement;outer.setAttribute('fill','none');outer.setAttribute('stroke',separator.outer);outer.setAttribute('stroke-width','2');clone.appendChild(outer);}
+          fill.setAttribute('stroke',separator.inner);fill.setAttribute('stroke-width',separator.outer?'1':'1.5');clone.appendChild(fill);
+        }
       });
       const artwork = syntheticIconSvg(l);
       if (artwork && !componentRows.some(row => row.l.id === l.id)) {
@@ -263,10 +269,10 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           const dim = dimOthers && selected && selected !== st.listId;
           return (
             <g key={i}><circle className={`seat ${dim ? 'dim' : ''}`} cx={cx + p.x * R} cy={cy + p.y * R} r={rad * R} fill={st.color}
-              data-seat="" data-bloc={st.bloc ?? "__none"} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? "var(--ink)" : "var(--surface)"} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`) ? 4 : 2}
+              data-seat="" data-bloc={st.bloc ?? "__none"} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? "var(--ink)" : "var(--ink-2)"} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`) ? 4 : 1}
               onMouseEnter={(e) => { if (hoverPopups) onSeat(st, e); }} onMouseLeave={hoverBridge.leave} onFocus={(e) => onSeat(st, e)} onBlur={() => setHover(null)}
               onClick={(e) => { if (!hoverPopups) onSeat(st, e); setState({ selectedListId: selected === st.listId ? null : st.listId }); }}><title>{seatLabel(st)}</title></circle>
-            {st.innerColor && <circle data-component-seat={st.partyId} pointerEvents="none" cx={cx + p.x * R} cy={cy + p.y * R} r={rad * R * .64} fill={st.innerColor} className={dim ? 'seat dim' : 'seat'} />}
+            {st.innerColor && <PartyDot partyId={st.partyId} x={cx+p.x*R} y={cy+p.y*R} r={rad*R*.64} color={st.innerColor} ring={st.color} className={dim?'seat dim':'seat'}/>}
             </g>
           );
         })}
@@ -282,9 +288,9 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         const x = 24 + (rtl ? 19-i%20 : i%20)*48, y = 16+Math.floor(i/20)*48;
         const bc = s.blocs.find(b => b.id === st.bloc)?.color ?? 'var(--muted)';
         return <g key={i}>{blocShading && <rect data-bloc-region={st.bloc ?? '__none'} x={x-5} y={y-5} width={48} height={48} className="bloc-cell" style={{ ['--bc' as string]: bc }} />}
-          <rect data-seat="" className="seat" x={x} y={y} width={36} height={36} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--surface)'} strokeWidth={3}
+          <rect data-seat="" className="seat" x={x} y={y} width={36} height={36} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--ink-2)'} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`)?4:1}
             onMouseEnter={e => { if (hoverPopups) onSeat(st,e); }} onMouseLeave={hoverBridge.leave} onClick={e => { if (!hoverPopups) onSeat(st,e); setState({selectedListId: st.listId}); }}><title>{seatLabel(st)}</title></rect>
-          {st.innerColor && <circle data-component-seat={st.partyId} pointerEvents="none" cx={x+18} cy={y+18} r={12} fill={st.innerColor} />}
+          {st.innerColor && <PartyDot partyId={st.partyId} x={x+18} y={y+18} r={12} color={st.innerColor} ring={st.color}/>}
         </g>;
       })}
       {/* Only the outside edge of each bloc is outlined; there are no per-seat frames. */}
@@ -333,7 +339,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           })}
           {baselineSeats.map((st,i)=> <g key={i}><circle data-reference-seat="" data-lost={changes.lost.has(`${st.listId}:${st.idx}`) ? '' : undefined}
             cx={500+pos[i].x*400} cy={470+pos[i].y*400} r={rad*400} fill={st.color}
-            stroke={changes.lost.has(`${st.listId}:${st.idx}`)?'var(--ink)':'var(--surface)'} strokeWidth={changes.lost.has(`${st.listId}:${st.idx}`)?5:2} strokeDasharray={changes.lost.has(`${st.listId}:${st.idx}`)?'4 3':undefined} />{st.innerColor && <circle cx={500+pos[i].x*400} cy={470+pos[i].y*400} r={rad*400*.64} fill={st.innerColor} />}</g>)}
+            stroke={changes.lost.has(`${st.listId}:${st.idx}`)?'var(--ink)':'var(--ink-2)'} strokeWidth={changes.lost.has(`${st.listId}:${st.idx}`)?5:1} strokeDasharray={changes.lost.has(`${st.listId}:${st.idx}`)?'4 3':undefined} />{st.innerColor && <PartyDot x={500+pos[i].x*400} y={470+pos[i].y*400} r={rad*400*.64} color={st.innerColor} ring={st.color}/>}</g>)}
           <text x={500} y={440} textAnchor="middle" fontSize={44} fill="var(--ink)">{br.seatsAllocated}</text>
         </svg>
       </div>}
@@ -346,14 +352,14 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           {cand ? <div><b><CandidateName candidate={cand} text={hoverCandidateName} /></b> · {L('rank', 'מקום')} {hover.seat.idx + 1}{cand.notes?.map((n, k) => <div key={k} className="muted small">{lang === 'he' ? n.he : n.en}</div>)}</div>
             : hv.rosterUnavailable || hv.rosterTruncated ? <div className="muted">{L(`Seat ${hover.seat.idx + 1} of the list; candidate names are not available for this election`, `מושב ${hover.seat.idx + 1} של הרשימה; שמות המועמדים אינם זמינים לבחירות אלה`)}</div>
             : <div className="bad">{L('Vacant — the list has too few candidates', 'מושב ריק — אין די מועמדים ברשימה')}</div>}
-          {(hover.seat.partyId || cand?.partyHe) && <div className="muted small row">{hover.seat.innerColor && <span className="component-key" data-hover-party={hover.seat.partyId} style={{ background: hover.seat.innerColor, borderColor: hv.color }} />}{seatLabel(hover.seat)}</div>}
+          {(hover.seat.partyId || cand?.partyHe) && <div className="muted small row">{hover.seat.innerColor && <PartyKey hover partyId={hover.seat.partyId} color={hover.seat.innerColor} ring={hv.color}/>}{seatLabel(hover.seat)}</div>}
           <div className="muted small">{hover.seat.remainder ? remainderHow : L('Seat won by whole quota', 'מנדט שהושג במודד שלם')}</div>
         </Floating>
       )}
       {!compactProp && (
         <div className="legend" data-key-off={chamberKey ? undefined : ''} role="group" aria-label={L('Lists in the Knesset', 'הרשימות בכנסת')} style={{ marginTop: 6 }}>
           {seats.some(st=>st.bloc===null) && <span className="row no-bloc-legend"><span className="swatch bloc-swatch unassigned" style={{['--bc' as string]:'var(--muted)'}} />{L('No bloc','ללא גוש')}</span>}
-          {componentRows.map(({l,p,n}) => <button key={`${l.id}:${p.id}`} aria-pressed={selected === l.id} onClick={()=>setState({selectedListId:selected === l.id ? null : l.id})}><span className="component-key" data-party-key={p.id} style={{background:partyDisplayColor(l, p.id),borderColor:l.color}} />{componentName(l,p)} <b>{n}</b></button>)}
+          {componentRows.map(({l,p,n}) => <button key={`${l.id}:${p.id}`} aria-pressed={selected === l.id} onClick={()=>setState({selectedListId:selected === l.id ? null : l.id})}><PartyKey partyId={p.id} color={partyDisplayColor(l,p.id)} ring={l.color}/>{componentName(l,p)} <b>{n}</b></button>)}
           {legendRows.filter(({l})=>!componentRows.some(row=>row.l.id===l.id)).map(({ l, n }) => (
             <button key={l.id} aria-pressed={selected === l.id} onClick={() => setState({ selectedListId: selected === l.id ? null : l.id })}>
               <span aria-hidden="true"><Slip {...l} name={listLabel(l, lang)} size="sm" /></span>{listLabel(l, lang)} <b className="tabnum">{n}</b>

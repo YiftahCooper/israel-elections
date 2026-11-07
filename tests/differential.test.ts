@@ -244,7 +244,9 @@ const EXPECTED: Record<Family, string> = {
   // Recursive diff: that note/builtAt only in k15; k20/k24 status and provenance only.
   // Substituting HEAD k15/k20/k24 with current code reproduces 39258ca0… exactly;
   // allocation, analysis, validation and rules digests remain unchanged.
-  model: '43ebe1df42087dad1a238a6afa032f5ef50adc586001af4f89cddb95c0c400b7',
+  // Main integration: retained V1c list/bloc display colours only; frozen 4edfdf0
+  // reproduces 43ebe1df…; all changed model-case paths end in color.
+  model: '33a3eb0c8e342bb903d7166e4fbbc07775466421bd83ce508fd55cc59f889156',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

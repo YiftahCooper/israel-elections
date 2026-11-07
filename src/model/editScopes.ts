@@ -1,5 +1,5 @@
 /** Appearance is saved separately from factual marker comparisons. */
-export const appearancePath=(p:readonly string[])=>p.includes('color')||p[0]==='blocs'&&p.length>2&&['nameHe','nameEn'].includes(p[2]);
+export const appearancePath=(p:readonly string[])=>(p.includes('color')||p.includes('customColor'))||p[0]==='blocs'&&p.length>2&&['nameHe','nameEn'].includes(p[2]);
 import { blocSchemeState, type Action, type CopyProvenance, type Scenario } from './scenario.ts';
 import type {Part} from './parts.ts';
 export type InputPath=readonly string[];

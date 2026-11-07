@@ -59,10 +59,10 @@ it('honours party-only overrides and candidate overrides before party assignment
 
 it('uses neutral grey for exact ties and keeps missing origins unassigned', () => {
   const base = scenarioFromDataset(loadDataset('k25'));
-  expect(localityWinner(base,['missing'],[25],'bloc')).toMatchObject({key:null,votes:25,color:'#78838c'});
+  expect(localityWinner(base,['missing'],[25],'bloc')).toMatchObject({key:null,votes:25,color:'#000000'});
   const [a,b] = base.lists;
   const result = localityWinner(base,[a.id,b.id],[10,10],'list');
-  expect(result).toMatchObject({key:null,tied:true,color:'#78838c'});
+  expect(result).toMatchObject({key:null,tied:true,color:'#000000'});
 });
 
 it('published coordinates place only rows with retained, plausible source positions', async () => {

@@ -68,88 +68,16 @@ export const SEAT_LIGHTNESS: [number, number] = [25, 80];
 export const MIN_LIST_DELTA_E = 15;
 export const MIN_NEIGHBOUR_DELTA_E = 20;
 
-/** Makes the colours distinguishable (an item's `alternatives`, such as the app's cross-election colour, are used as
- *  they are only when no allowed move of its own colour works): every pair at least `min` apart (CIEDE2000), pairs in `neighbours` (ids joined by
- *  a space, either order) at least `minNeighbour`. Items come in order of importance (most votes first): an item keeps
- *  its colour when it clears every item before it; otherwise it takes the nearest colour to its own that does,
- *  preferring a lightness change and allowing at most a 24° hue move, so a colour stays in its family (decision 0087: the less-associated party gives
- *  way). If nothing clears them, the candidate with the largest margin is used. */
-export function separateColours(items: { id: string; color: string; alternatives?: string[] }[], neighbours: Set<string> = new Set(), min = MIN_LIST_DELTA_E, minNeighbour = MIN_NEIGHBOUR_DELTA_E) {
-  const placed: { id: string; color: string }[] = [], out = new Map<string, string>(), adjusted = new Set<string>();
-  const need = (a: string, b: string) => (neighbours.has(`${a} ${b}`) || neighbours.has(`${b} ${a}`) ? minNeighbour : min);
-  // the smallest margin by which `c` clears every placed colour (negative: it fails one)
-  const margin = (id: string, c: string) => placed.reduce((m, p) => Math.min(m, deltaE2000(c, p.color) - need(id, p.id)), Infinity);
-  const readable = (c: string) => { const L = hexToLab(c)[0]; return L >= SEAT_LIGHTNESS[0] && L <= SEAT_LIGHTNESS[1]; };
-  const rad = Math.PI / 180;
-  for (const { id, color, alternatives = [] } of items) {
-    const own = color.toLowerCase();
-    let best = own;
-    if (margin(id, own) < 0 || !readable(own)) {
-      const [L0, C0, h0] = hexToOklch(own);
-      let bestCost = Infinity, fallback = own, fallbackM = -Infinity;
-      for (const dh of [0, 6, -6, 12, -12, 18, -18, 24, -24]) for (const cf of [1, 0.6, 0.8, 1.2, 1.4]) for (let dl = -0.3; dl <= 0.3001; dl += 0.01) {
-        const c = fromOklch(L0 + dl, Math.max(C0, 0.02) * cf, h0 + dh * rad);
-        if (!readable(c)) continue;
-        const m = margin(id, c);
-        if (m >= 0) { const cost = deltaE2000(own, c) + Math.abs(dh) * 0.4; if (cost < bestCost) { bestCost = cost; best = c; } }
-        else if (m > fallbackM) { fallbackM = m; fallback = c; }
-      }
-      // only when no small move of its own colour works: an alternative as it is, else the best available margin
-      if (bestCost === Infinity) best = alternatives.map((c) => c.toLowerCase()).find((c) => margin(id, c) >= 0 && readable(c)) ?? fallback;
-    }
-    if (best !== own) adjusted.add(id);
-    placed.push({ id, color: best }); out.set(id, best);
-  }
-  return { colors: out, adjusted };
-}
-
 /** sRGB mix of `a` over `b` at weight `t` (CSS color-mix in srgb). */
 export function mixHex(a: string, b: string, t: number): string {
   return '#' + [1, 3, 5].map((i) => Math.round(parseInt(a.slice(i, i + 2), 16) * t + parseInt(b.slice(i, i + 2), 16) * (1 - t)).toString(16).padStart(2, '0')).join('');
 }
 /** How bloc regions are drawn (src/app/styles.css `--wedge-mix` over `--surface`, No bloc from `--muted`), per theme. */
 export const BLOC_TINTS = [
-  { surface: '#ffffff', muted: '#5d656e', mix: 0.26 },
-  { surface: '#171b20', muted: '#9aa2ab', mix: 0.24 },
+  { surface: '#ffffff', muted: '#5d656e', mix: 0.14 },
+  { surface: '#171b20', muted: '#9aa2ab', mix: 0.22 },
 ] as const;
 /** Minimum CIEDE2000 difference between two bloc regions' tints, and between a bloc's tint and No bloc's. */
 export const MIN_BLOC_TINT_DELTA_E = 8;
 export const blocTints = (color: string) => BLOC_TINTS.map((t) => mixHex(color.toLowerCase(), t.surface, t.mix));
 export const noBlocTints = () => BLOC_TINTS.map((t) => mixHex(t.muted, t.surface, t.mix));
-
-/** Bloc colours whose pale regions can be told apart from each other and from the neutral No bloc region, in both
- *  themes. Blocs are taken in their declared order; a bloc keeps its colour when its tints clear every earlier bloc and
- *  No bloc, otherwise it takes the nearest colour (smallest CIEDE2000 change) whose tints do, trying hue and chroma. */
-export function separateBlocColours(colors: string[], min = MIN_BLOC_TINT_DELTA_E): string[] {
-  const placed: string[][] = [noBlocTints()], out: string[] = [];
-  const margin = (c: string) => {
-    const t = blocTints(c), h = hexToOklch(c)[2];
-    const solid = out.reduce((m, p) => {
-      const dh = Math.abs(h - hexToOklch(p)[2]);
-      return Math.min(m, deltaE2000(c, p) - 20, (Math.min(dh, Math.PI * 2 - dh) * 180 / Math.PI - (colors.length <= 3 ? 90 : colors.length <= 5 ? 50 : 25)) / 5);
-    }, Infinity);
-    return placed.reduce((m, p) => Math.min(m, ...t.map((x, i) => deltaE2000(x, p[i]) - min)), solid);
-  };
-  const rad = Math.PI / 180;
-  for (const color of colors) {
-    const own = color.toLowerCase();
-    let best = own;
-    if (margin(own) < 0) {
-      const [L0, C0, hue] = hexToOklch(own);
-      // a grey has no hue of its own: residual groupings (Opposition, No recommendation) become a warm sand, clearly
-      // apart from the cool grey reserved for No bloc
-      const h0 = C0 < 0.03 ? 75 * rad : hue;
-      let bestCost = Infinity, fallback = own, fallbackM = -Infinity;
-      for (let dh = -180; dh < 180; dh += 10) for (const C of [C0, 0.1, 0.13, 0.16]) for (let dl = -0.15; dl <= 0.1501; dl += 0.05) {
-        const c = fromOklch(L0 + dl, Math.max(C, 0.06), h0 + dh * rad);
-        const L = hexToLab(c)[0]; if (L < 30 || L > 70) continue;
-        const m = margin(c);
-        if (m >= 0) { const cost = deltaE2000(own, c) + Math.abs(dh) * 0.05; if (cost < bestCost) { bestCost = cost; best = c; } }
-        else if (m > fallbackM) { fallbackM = m; fallback = c; }
-      }
-      if (bestCost === Infinity) best = fallback;
-    }
-    placed.push(blocTints(best)); out.push(best);
-  }
-  return out;
-}

@@ -1,8 +1,10 @@
+import {assignColour,blocColourRules,separateBlocColours} from '../data/colourGuard.ts';
+import {BLOC_PALETTE} from './blocColors.ts';
 import {familyColor} from '../families/colors.ts';
 import {recordEditScope} from './editScopes.ts';
 import {familyLabel} from '../families/labels.ts';
 import { resolve, distribute } from '../families/model.ts';
-import { SCENARIO_COLOURS } from './scenarioColors.ts';
+import {isHexColour} from '../data/colourGuard.ts';
 import { RULESETS } from "../engine/rules.ts";
 import { PARTS, partSnapshot } from './parts.ts';
 // Pure scenario transitions. Each returns a new Scenario and never mutates its input.
@@ -112,6 +114,8 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         s = {...s, familyDefinition:definition, blocSchemeId:null, customGroupingName:!action.name||action.name===definition.nameHe?familyLabel(definition,'he'):action.name===definition.nameEn?familyLabel(definition,'en'):action.name, partyBlocs:{}, candidateBlocs:{},
           blocs:[{id:'selected',nameHe:familyLabel(definition,'he'),nameEn:familyLabel(definition,'en'),color:familyColor(definition)},...(Object.values(action.placements).includes('mixed')?[{id:'mixed',nameHe:'רשימות מעורבות',nameEn:'Mixed lists',color:'#b8a78a'}]:[]),{id:'other',nameHe:'כל השאר',nameEn:'Everyone else',color:'#7d8791'}],
           lists:s.lists.map(l=>({...l,bloc:action.placements[l.id]}))};
+        const colors=separateBlocColours(s.blocs.map(b=>b.color));
+        s={...s,blocs:s.blocs.map((b,i)=>({...b,color:colors[i]}))};
       } else {
         const ids = action.allocations.map(a=>a.listId);
         need(new Set(ids).size===ids.length, 'family','Duplicate allocations.');
@@ -139,15 +143,15 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       s={...s,blocs:s.blocs.map(b=>{const v=action.blocs.find(x=>x.id===b.id)!;return {...b,color:v.color,nameHe:v.nameHe,nameEn:v.nameEn};}),customGroupingName:action.name??s.customGroupingName,...(action.name!==undefined?{blocSchemeId:null}:{})};break;
     case 'setPartyColor':
       need(listById(s,action.listId).parties?.some(p=>p.id===action.partyId),'party','Unknown party.');
-      s=replaceList(s,action.listId,l=>({...l,parties:l.parties?.map(p=>p.id===action.partyId?{...p,color:action.color}:p)}));break;
+      s=replaceList(s,action.listId,l=>({...l,parties:l.parties?.map(p=>p.id===action.partyId?{...p,color:action.color,customColor:true}:p)}));break;
     case 'resetColors': {
       const base=ctx.base;
       need(base,'no-base','Historical colours are unavailable.');
       const scheme=s.blocSchemes?.find(g=>g.id===s.blocSchemeId);
-      s={...s,lists:s.lists.map(l=>{const b=base!.lists.find(x=>x.id===l.id);return {...l,color:b?.color??'#7d8791',parties:l.parties?.map(p=>({...p,color:base!.lists.flatMap(x=>x.parties??[]).find(x=>x.id===p.id)?.color}))};}),blocs:s.blocs.map(b=>({...b,color:(scheme?.blocs??base!.blocs).find(x=>x.id===b.id)?.color??'#7d8791'}))};break;
+      s={...s,lists:s.lists.map(l=>{const b=base!.lists.find(x=>x.id===l.id);return {...l,color:b?.color??'#7d8791',parties:l.parties?.map(p=>({...p,color:base!.lists.flatMap(x=>x.parties??[]).find(x=>x.id===p.id)?.color,customColor:undefined}))};}),blocs:s.blocs.map(b=>({...b,color:(scheme?.blocs??base!.blocs).find(x=>x.id===b.id)?.color??'#7d8791'}))};break;
     }
     case 'setIdentityColor':
-      need(/^#[0-9a-f]{6}$/i.test(action.color) && (SCENARIO_COLOURS as readonly string[]).includes(action.color), 'colour', 'Choose a scenario palette colour.');
+      need(isHexColour(action.color), 'colour', 'Choose a valid hex colour.');
       s = { ...s, identityColor: action.color }; break;
     case 'setCoalition':
       s = { ...s, coalition: { in: [...new Set(action.coalition.in)], out: [...new Set(action.coalition.out)].filter(id => !action.coalition.in.includes(id)) } }; break;
@@ -166,7 +170,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         else if (action.part === 'blocs') {
           need(action.name?.trim(), 'name', 'Name the grouping.');
           // two clearly different colours from the bloc palette: grey is reserved for No bloc
-          snapshot = { blocs: [0, 1].map(i => ({ id: `blank-${i}`, nameHe: `גוש ${i+1}`, nameEn: `Bloc ${i+1}`, color: ['#1f5aa5', '#d98c1f'][i] })), customGroupingName: action.name, blocSchemeId: null, partyBlocs: {}, candidateBlocs: {}, listBlocs: Object.fromEntries(s.lists.map(l => [l.id, null])) };
+          snapshot = { blocs: [0, 1].map(i => ({ id: `blank-${i}`, nameHe: `גוש ${i+1}`, nameEn: `Bloc ${i+1}`, color: assignColour(BLOC_PALETTE,i?[BLOC_PALETTE[0]]:[],blocColourRules(i?[BLOC_PALETTE[0]]:[])) })), customGroupingName: action.name, blocSchemeId: null, partyBlocs: {}, candidateBlocs: {}, listBlocs: Object.fromEntries(s.lists.map(l => [l.id, null])) };
         }
       }
       if (action.source === 'preset') {
@@ -533,7 +537,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
     }
   }
   if(action.type==='resetList'||action.type==='restore'||action.type==='startPart') {
-    s={...s,lists:s.lists.map(l=>{const old=s0.lists.find(x=>x.id===l.id);return old?{...l,color:old.color,...(l.parties?{parties:l.parties.map(p=>{const color=old.parties?.find(x=>x.id===p.id)?.color;return color?{...p,color}:p;})}:{})}:l;}),blocs:s.blocs.map(b=>({...b,color:s0.blocs.find(x=>x.id===b.id)?.color??b.color}))};
+    s={...s,lists:s.lists.map(l=>{const old=s0.lists.find(x=>x.id===l.id);return old?{...l,color:old.color,...(l.parties?{parties:l.parties.map(p=>{const color=old.parties?.find(x=>x.id===p.id)?.color;return color?{...p,color,customColor:old.parties?.find(x=>x.id===p.id)?.customColor}:p;})}:{})}:l;}),blocs:s.blocs.map(b=>({...b,color:s0.blocs.find(x=>x.id===b.id)?.color??b.color}))};
   }
   // All transitions, including resets/restores, must keep both counts and derived totals exact.
   need(isWhole(s.registered) && isWhole(s.invalid), 'votes', 'Totals must be safe integers ≥ 0.');

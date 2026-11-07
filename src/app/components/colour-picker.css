@@ -1,0 +1,6 @@
+.colour-picker { min-inline-size: 0; }
+.colour-advice { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; font-size: 12px; color: var(--ink-2); }
+.colour-advice .btn { display: inline-flex; align-items: center; gap: 5px; }
+.colour-advice i { display: inline-block; inline-size: 12px; block-size: 12px; border: 1px solid currentColor; border-radius: 2px; }
+
+.colour-advice-slot { display: block; min-block-size: 60px; }
