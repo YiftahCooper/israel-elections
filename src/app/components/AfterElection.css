@@ -17,10 +17,10 @@
 .after-breakdown th, .after-breakdown td { text-align: start; padding: 8px 4px; overflow-wrap: anywhere; }
 .after-breakdown th:last-child { width: 65px; }
 .after-party { border-inline-start: 5px solid var(--party); padding: 4px 7px; display: inline-flex; align-items: center; gap: 6px; }
-.after-party bdi { color: #15171a; background: #fff; padding: 0 3px; border: 1px solid var(--party); font-weight: 700; }
+.after-party > bdi[lang="he"] { color: #15171a; background: #fff; padding: 0 3px; border: 1px solid var(--party); font-weight: 700; }
 .after-coalition, .after-pms { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-bottom: 12px; }
 .after-events { padding: 0; margin: 10px 0; list-style: none; }
-.after-events li { display: grid; grid-template-columns: 190px 1fr; gap: 12px; padding-block: 9px; border-bottom: 1px solid var(--rule); }
+.after-events li { display: grid; grid-template-columns: minmax(0, 240px) minmax(0, 1fr); gap: 12px; padding-block: 9px; border-bottom: 1px solid var(--rule); }
 .after-events time { font-size: 12.5px; color: var(--muted); }
 .after-date-line { display: flex; justify-content: space-between; position: relative; padding-bottom: 10px; border-bottom: 1px solid var(--axis); font-size: 12px; }
 .after-date-line i { position: absolute; bottom: -4px; width: 7px; height: 7px; border-radius: 50%; background: var(--ink); transform: translateX(-50%); }
@@ -40,3 +40,12 @@
 .after-poll meter { width: 100%; align-self: center; }
 .after-poll meter::-webkit-meter-optimum-value { background: var(--muted); }
 .after-poll meter::-moz-meter-bar { background: var(--muted); }
+
+/* Keep chronological ranges LTR; each endpoint retains its local reading direction. */
+.after-date-run { display: inline-flex; direction: ltr; align-items: baseline; gap: .25em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.after-date-run time { unicode-bidi: isolate; }
+.after-events > li > .after-date-run { justify-self: start; font-size: 12.5px; color: var(--muted); }
+.after-help-anchor { display: inline-block; white-space: nowrap; }
+.after-forward { margin-inline: .2em; }
+.after-source-row { display: flex; align-items: baseline; gap: 6px; }
+.after-source-row > a { min-width: 0; overflow-wrap: anywhere; }
