@@ -120,6 +120,13 @@
       "publisher": "Knesset OData",
       "kind": "official",
       "accessed": "2026-11-06"
+    },
+    "lat1992mandate": {
+      "url": "https://www.latimes.com/archives/la-xpm-1992-07-03-mn-1517-story.html",
+      "publisher": "Daniel Williams / Los Angeles Times, 3 July 1992",
+      "kind": "archival",
+      "accessed": "2026-11-07",
+      "via": "Public archive page, bylined Times staff report; independent of JTA. Supports mandate date and duration only, not per-faction recommendations."
     }
   },
   "results": {
@@ -231,6 +238,10 @@
           {
             "source": "jta1992mandate",
             "quote": "President Chaim Herzog asked Labor Party leader Yitzhak Rabin on Thursday to form Israel’s next government."
+          },
+          {
+            "source": "lat1992mandate",
+            "quote": "Rabin was given the customary three weeks to form a government"
           }
         ],
         "person": "rabin",
