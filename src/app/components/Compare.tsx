@@ -153,7 +153,7 @@ function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult;
         <figure style={{ border: `2px solid ${resultChanges(a,base).length ? scenarioColor(a) : 'var(--rule)'}` }}><figcaption>{nameA}</figcaption><Hemicycle reference={groupedA ?? a} s={groupedA ?? a} r={ar} compact paired title={nameA} /></figure>
         <figure style={{ border: `2px solid ${resultChanges(s, base).length ? scenarioColor(s) : 'var(--rule)'}` }}><figcaption>{nameB}</figcaption><Hemicycle reference={groupedA ?? a} s={s} r={r} compact paired title={nameB} /></figure>
       </div>
-      {gainers.length > 0 && <p className="small muted cmp-key">{L(`Outlined: seats gained since ${nameA}`, `מתאר: מנדטים שנוספו מאז ${nameA}`)} <Info title={L('About these outlines', 'על המתארים')}>{L('Outlines compare list seat counts, not individual seats or voters moving between lists.', 'המתארים משווים את מספר המנדטים של הרשימות; אין משמעות של מנדט או בוחר שעבר בין רשימות.')}</Info></p>}
+      {gainers.length > 0 && <p className="small muted cmp-key">{L(`Outlined: seats gained compared with ${nameA}`, `מתאר: מנדטים שנוספו לעומת ${nameA}`)} <Info title={L('About these outlines', 'על המתארים')}>{L('Outlines compare list seat counts, not individual seats or voters moving between lists.', 'המתארים משווים את מספר המנדטים של הרשימות; אין משמעות של מנדט או בוחר שעבר בין רשימות.')}</Info></p>}
 
       {s.blocs.length > 0 && (
         <section className="cmp-section">
@@ -276,7 +276,7 @@ function EmptyCompare({ s, ds, base, compareWith, nameA, nameB }: { s: Scenario;
           <ChoicePicker className="cmp-other" label={L('Another election', 'בחירות אחרות')} placeholder={L('Another election…', 'בחירות אחרות…')} value="" options={choices.filter((c) => c.value.startsWith(ELECTION))} onChange={(v) => setState({ compareWith: v })} />
           <button type="button" className="btn" onClick={() => setState({ tool: 'whatif' })}>{L('A What-if question…', 'שאלת "מה אם"…')}</button>
         </div>
-        <p className="small muted">{nameA !== nameB && <>{L(`Same as ${nameA}. `, `זהה ל${nameA}. `)}</>}{L('Edits you make show here.', 'עריכות שתבצעו יוצגו כאן.')}</p>
+        <p className="small muted">{nameA !== nameB && <>{L(`Same as ${nameA}. `, `זהה ל${nameA}. `)}</>}{L('Your changes show here.', 'השינויים שלכם יוצגו כאן.')}</p>
       </section>
     </div>
   );

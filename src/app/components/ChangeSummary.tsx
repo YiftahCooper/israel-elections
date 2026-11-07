@@ -1,9 +1,9 @@
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { SeatDelta } from './SeatDelta.tsx';
-import { factLog } from '../../model/actionClassification.ts';
+import { Info } from './ui.tsx';
 import {isFamilyGrouping} from '../../families/labels.ts';
 import { useActiveReference } from '../useActiveReference.ts';
-import { referenceLabel, resultChanges } from '../derive.ts';
+import { changeCount, changesLabel, resultChanges } from '../derive.ts';
 import { allocationOf } from '../derive.ts';
 // "What changed": the session's net effect against the official result, kept to one line however many edits
 // were made (seats that moved, the blocs, the majority), with the full undoable history one click away.
@@ -42,7 +42,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
   if (reference) { base = reference; baseR = allocationOf(reference); }
   const L = useL();
   const lang = useLang();
-  const baseLabel = referenceLabel(reference, lang);
+  const label = changesLabel(changeCount(s, reference), reference, lang);
   const [open, setOpen] = useState(false);
   const historyId = useId();
   const pop = useRef<HTMLDivElement>(null);
@@ -76,7 +76,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
     if (b) was = blocTotals(b, allocationOf(b));
     return s.blocs.map((b) => ({ b, n: now.get(b.id) ?? 0, d: was ? (now.get(b.id) ?? 0) - (was.get(b.id) ?? 0) : null }));
   }, [s, r, base, baseR]);
-  const edits = factLog(s).length;
+  const edits = changeCount(s, null);
   const edited = resultChanges(s,base).length > 0;
   const familyGrouping = isFamilyGrouping(s);
   const majority = Math.floor(s.rules.seats / 2) + 1;
@@ -86,9 +86,10 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
 
   return (
     <div ref={line} className={`session ${edited ? '' : 'idle'}`} role="status" aria-live="polite">
-      <b title={baseLabel.since}>{baseLabel.since}</b>
+      <b title={label}>{label}</b>
       <span ref={changes} className="session-changes">
-        {!edited ? <span className="muted">{L('No changes yet', 'אין שינויים עדיין')}</span> : <>
+        <Info title={L('Your changes', 'השינויים שלכם')}>{L('Counts result-changing actions from the named reference, not individual fields. Colours and bloc groupings do not count. History shows all changes from the official result; undo, redo or return to an earlier change there.', 'סופר פעולות שמשנות את התוצאה ביחס לנקודת ההשוואה הנקובה, ולא שדות בודדים. צבעים וחלוקות לגושים אינם נספרים. בהיסטוריה מוצגים כל השינויים מהתוצאה הרשמית; אפשר לבטל, לבצע שוב או לחזור לשינוי קודם.')}</Info>
+        {edited && <>
           {moves.length === 0
             ? <span className="muted">{L('No seats changed', 'המנדטים לא השתנו')}</span>
             : <span className="moves">
@@ -105,7 +106,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
         </>}
       </span>
       {edited && <button ref={trigger} className="btn small ghost" aria-expanded={open} aria-controls={historyId} popoverTarget={historyId}>
-        {L(`History · ${edits} edit${edits === 1 ? '' : 's'}`, `היסטוריה · ${edits} שינויים`)}
+        {L(`History · ${edits} change${edits === 1 ? '' : 's'}`, `היסטוריה · ${edits} שינויים`)}
         {open ? <ChevronUp className="icon sm" aria-hidden /> : <ChevronDown className="icon sm" aria-hidden />}
       </button>}
       <div id={historyId} ref={pop} className="history" popover="auto" onToggle={(e) => setOpen(e.newState === 'open')}>

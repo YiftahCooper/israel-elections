@@ -241,7 +241,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       need(action.from !== action.to, 'transfer-self', 'Choose two different lists.');
       const from = listById(s, action.from); listById(s, action.to);
       notWithdrawn(s, action.from, action.to);
-      need(from.votes >= action.votes, 'transfer-exceeds', `${from.shortHe} has only ${from.votes.toLocaleString()} votes.`);
+      need(from.votes >= action.votes, 'transfer-exceeds', `${from.shortHe} has only ${from.votes.toLocaleString('en-US')} votes.`);
       s = replaceList(s, action.from, (l) => ({ ...l, votes: l.votes - action.votes }));
       s = replaceList(s, action.to, (l) => ({ ...l, votes: addVotes(l.votes, action.votes) }));
       break;
@@ -274,7 +274,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       const sources = action.from.map((id) => listById(s, id));
       notWithdrawn(s, ...action.from, ...action.to.map((t) => t.listId));
       const pool = sumVotes(sources.map((l) => l.votes));
-      need(pool >= action.votes, 'transfer-exceeds', `The selected lists hold only ${pool.toLocaleString()} votes.`);
+      need(pool >= action.votes, 'transfer-exceeds', `The selected lists hold only ${pool.toLocaleString('en-US')} votes.`);
       const take = apportion(action.votes, sources.map((l) => l.votes));
       sources.forEach((l, i) => { s = replaceList(s, l.id, (x) => ({ ...x, votes: x.votes - take[i] })); });
       const give = apportion(action.votes, action.to.map((t) => t.share));
@@ -322,7 +322,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       need(!action.parts.some((p) => s.lists.some((l) => l.id === p.newId && l.id !== action.id)), 'duplicate-id', 'A list with that id already exists.');
       const sum = sumVotes(action.parts.map((p) => p.votes));
       for (const p of action.parts) need(isWhole(p.votes), 'votes', 'Votes must be whole numbers ≥ 0.');
-      need(sum <= orig.votes, 'split-exceeds', `The parts total ${sum.toLocaleString()} votes, more than the original ${orig.votes.toLocaleString()}.`);
+      need(sum <= orig.votes, 'split-exceeds', `The parts total ${sum.toLocaleString('en-US')} votes, more than the original ${orig.votes.toLocaleString('en-US')}.`);
       need(sum === orig.votes, 'split-total', 'The parts must sum exactly to the original vote count.');
       const used = new Set<string>();
       const byId = new Map<string, SimCandidate>();

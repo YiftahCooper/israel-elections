@@ -26,13 +26,16 @@ test('B1 saved separate-run reference is named everywhere; B6 identity is not re
   await save(page);
   await expect(page.locator('.lb-group-comparison')).toContainText('together 4, in Review A 4');
   await expect(page.locator('.lb-group-comparison')).not.toContainText('official');
-  await expect(page.locator('.session')).toContainText('Since Review A');
+  await expect(page.locator('.session')).toContainText('No changes');
   await expect(page.locator('.session .scn-name')).toHaveCount(0);
   await page.getByRole('button', { name: 'Likud', exact: true }).click();
   const votes = page.getByRole('region', { name: 'List details' }).getByLabel('Votes', { exact: true });
   await votes.fill('1300000'); await votes.press('Enter');
+  await expect(page.locator('.session > b')).toHaveText('1 change from Review A');
+  // The split recorded three result-changing actions; History retains them after saving.
+  await expect(page.locator('.session')).toContainText('History · 4 changes');
   await expect(page.getByRole('button', { name: 'Likud', exact: true })).toHaveAccessibleDescription(/more than Review A/);
-  await expect(page.locator('.phone-result-strip')).toContainText('since Review A');
+  await expect(page.locator('.phone-result-strip')).toContainText('from Review A');
   await page.getByRole('button', { name: 'Expert', exact: true }).click();
   await expect(page.getByRole('region', { name: 'List details' })).toContainText('Seats in Review A');
 });
@@ -51,7 +54,7 @@ for (const separate of [false, true]) test(`B2 saved custom grouping draws paire
   const votes = page.getByRole('region', { name: 'List details' }).getByLabel('Votes', { exact: true });
   await votes.fill('1300000'); await votes.press('Enter'); await page.keyboard.press('Escape');
   await expect(page.locator('.session')).toContainText(separate ? '(▲ +2)' : '(▲ +5)');
-  if(!separate){await expect(page.locator('.session')).toContainText('Since official result');await expect(page.locator('.session')).not.toContainText('Review coalition');}
+  if(!separate){await expect(page.locator('.session')).toContainText('1 change from the official result');await expect(page.locator('.session')).not.toContainText('Review coalition');}
   await page.getByRole('tab', { name: 'Compare', exact: true }).click();
   await expect(page.locator('.cmp')).not.toContainText('no counterpart in');
   await expect(page.locator('.cmp-blocrow')).toHaveCount(2);
@@ -72,7 +75,7 @@ test('B5 prose commits are individually undoable and leave coalition selection a
   await expect(page.locator('.scn-form .edit-marker')).toHaveCount(0);
   await expect(page.locator('.scn-save')).toBeEnabled();
   await expect(page.getByRole('button', { name: 'Undo: Scenario description changed', exact: true })).toBeVisible();
-  await expect(page.locator('.session')).toContainText('No changes yet');
+  await expect(page.locator('.session')).toContainText('No changes');
   await page.locator('.band').getByRole('button', { name: 'Undo: Scenario description changed', exact: true }).click();
   await expect(description).toHaveValue('');
   await page.getByRole('tab', { name: 'Coalitions', exact: true }).click();

@@ -16,7 +16,7 @@ export function GraphicChanges({s,r,reference}: {s:Scenario;r:AllocationResult;r
     <span className="lb-bar"><i style={{width:`${g.seatsB/s.rules.seats*100}%`,background:s.lists.find(l=>l.id===g.bIds[0])?.color ?? 'var(--muted)'}} /><span className="was" style={{width:`${g.seatsA/s.rules.seats*100}%`}} /><span className="delta-segment" style={{insetInlineStart:`${Math.min(g.seatsA,g.seatsB)/s.rules.seats*100}%`,width:`${Math.abs(g.seatsB-g.seatsA)/s.rules.seats*100}%`}} /></span>
     <b dir="ltr">{g.seatsA} → {g.seatsB} (<SeatDelta value={g.seatsB-g.seatsA} />)</b>
   </span>);
-  return <div className="graphic-changes" aria-label={L(`Changes since ${labelReference?.name || 'Official result'}`,`שינויים מאז ${labelReference?.name || 'התוצאה הרשמית'}`)}>
+  return <div className="graphic-changes" aria-label={L(`Changes ${referenceLabel(labelReference, lang).since}`, `שינויים ${referenceLabel(labelReference, lang).since}`)}>
     <p className="small muted">{referenceLabel(labelReference,lang).since}</p>
     <div className="change-bars">{rows}</div>
   </div>;

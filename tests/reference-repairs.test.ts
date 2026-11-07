@@ -6,12 +6,12 @@ import { groupingBaseline, referenceLabel, differsFromReference } from '../src/a
 import { describe } from '../src/app/actionDescription.ts';
 const base = scenarioFromDataset(loadDataset('k25'));
 it('labels official and saved bases in both languages, including unnamed saves', () => {
-  expect(referenceLabel(null, 'en')).toMatchObject({ name: 'Official result', since: 'Since official result', at: 'officially' });
+  expect(referenceLabel(null, 'en')).toMatchObject({ name: 'Official result', since: 'from the official result', at: 'officially' });
   expect(referenceLabel(null, 'he').at).toBe('בפועל');
   for (const lang of ['en', 'he'] as const) {
     const label = referenceLabel({ ...base, name: 'Review A' }, lang);
     expect(label.name).toBe('Review A');
-    expect(label.since).toBe(lang === 'en' ? 'Since Review A' : 'מאז Review A');
+    expect(label.since).toBe(lang === 'en' ? 'from Review A' : 'מReview A');
     expect(label.at).toBe(lang === 'en' ? 'in Review A' : 'בתרחיש Review A');
     expect(JSON.stringify(label)).not.toMatch(/official|historical|בפועל|רשמי/);
     expect(referenceLabel(base, lang).name).toBe(lang === 'en' ? 'Saved scenario' : 'תרחיש שמור');

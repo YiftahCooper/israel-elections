@@ -54,7 +54,7 @@ test('the automatic comparison follows an edit and undo without storing an elect
   await editFirstList(page, '1300000');
   await compare(page);
   await expect(page.locator('.cmp-head .choice-trigger')).toHaveAttribute('data-value', 'historical');
-  await expect(page.locator('.cmp-key')).toContainText('Outlined: seats gained since Official result');
+  await expect(page.locator('.cmp-key')).toContainText('Outlined: seats gained compared with Official result');
   await page.getByRole('button', { name: /^Undo:/ }).click();
   await expect(page.locator('.cmp-head .choice-trigger')).toHaveAttribute('data-value', 'election:k24');
 });
@@ -83,7 +83,7 @@ test('the seats-by-list chart keeps tied lists apart and the chamber pair adds n
   await editFirstList(page, '1300000');
   await compare(page);
   await expect(page.locator('.cmp .baseline-mini, .cmp .compact-changes')).toHaveCount(0);
-  await expect(page.locator('.cmp-key')).toContainText('Outlined: seats gained since Official result');
+  await expect(page.locator('.cmp-key')).toContainText('Outlined: seats gained compared with Official result');
   const rows = page.locator('.cmp-dumbbell li');
   expect(await rows.count()).toBeGreaterThan(9);
   const boxes = await rows.locator('.cmp-label').evaluateAll(nodes => nodes.map(n => n.getBoundingClientRect()).map(r => [r.top, r.bottom]));
