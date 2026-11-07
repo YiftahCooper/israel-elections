@@ -9,10 +9,12 @@ import type { Lang } from './i18n.ts';
 import { listLabel, editPathLabel } from './derive.ts';
 import { fmtInt, fmtPctNum, signed } from './format.ts';
 import { getSetting } from './store.ts';
+import { describeCopy } from './compare/copyText.ts';
 export function describe(a: Action, s: Scenario, lang: Lang): string {
   const n = (id: string) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : (lang === 'he' ? 'רשימה שהוסרה' : 'Removed list'); };
   const he = lang === 'he';
   switch (a.type) {
+    case 'copyFrom': return describeCopy(a.provenance, (a.provenance.targetListIds ?? []).map(n), lang, s.electionId);
     case 'familyOperation': return (a.operation === 'group' ? (he ? 'קיבוץ לפי משפחה: ' : 'Family grouping: ') : (he ? 'שינוי קולות המשפחה: ' : 'Scaled family votes: ')) + familyLabel(a.definition,lang);
     case 'resetColors': return he ? 'הצבעים אופסו' : 'Colours reset';
     case 'setBlocAppearance': return he ? 'תצוגת הגושים השתנתה' : 'Bloc appearance changed';

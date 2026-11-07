@@ -53,6 +53,8 @@ Stopped. The challenge body identifies `api2.nli.org.il`; this does not establis
 
 **Update 6 November 2026 (keyed, owner's key read from a local file, never logged):** `api.nli.org.il/openlibrary/search` still returns **403 `cf-mitigated: challenge`** with the key, so that host's browser challenge sits in front of key checking. `api2.nli.org.il/openlibrary/search` (the host that issues keys) passed the request without a challenge but returned **HTTP 500 JSON “unsuccessfully to connect with nliWs”**, and a minimal `query=any,contains,davar` returned **HTTP 502**. These are server-side errors, not refusals. Next: retry api2 later at low volume; contact NLI only if it keeps failing or a challenge appears there.
 
+**Update 7 November 2026 (keyed, three requests):** `api2.nli.org.il/openlibrary/search?query=any,contains,davar` now returns **HTTP 200** JSON-LD catalogue records, so the key works on api2. `material_type=NEWSPAPER&query=title,exact,dav` and a Hebrew keyword query (`any,contains,התייעצויות הנשיא`) both returned **HTTP 502** (`error code: 502`). Newspaper-scoped and Hebrew queries are therefore still unproven. Next: one low-volume retry of those two later this week. If they still fail, ask NLI whether newspaper and Hebrew queries are supported on api2.
+
 After NLI confirms access, this is a **documentation-based, untested keyed example**, using shell variable `NLI_API_KEY` already supplied securely by the owner:
 
 ```bash

@@ -1,3 +1,4 @@
+import { partyDisplayColor } from '../partyDisplayColor.ts';
 import { AnalysisEdits } from './AnalysisEdits.tsx';
 import { appGroupingTag, appGroupingExplanation } from '../groupingName.ts';
 import { Slip } from './ui.tsx';
@@ -195,7 +196,7 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
                           <button type="button" className="bp-chip-main" aria-pressed={chosen} disabled={u.kind === 'member'}
                             title={u.kind === 'member' ? L('Placed member by member by the sourced grouping; moves with the list', 'שובצו חבר אחר חבר לפי החלוקה המתועדת; זזים עם הרשימה') : undefined}
                             onClick={() => setPicked(chosen ? null : u)} {...(u.kind === 'member' ? {} : dragProps(u))}>
-                            <Slip size="sm" letters={p ? '' : l.letters} name={p ? name(p) : listLabel(l,lang)} color={p?.color ?? l.color} logo={p ? p.logo : l.logo} synthetic={p ? undefined : l.synthetic} />
+                            <Slip size="sm" letters={p ? '' : l.letters} name={p ? name(p) : listLabel(l,lang)} color={p ? partyDisplayColor(l, p.id) : l.color} logo={p ? p.logo : l.logo} synthetic={p ? undefined : l.synthetic} />
                             <span className="bp-chip-name">{chipLabel(u)}<EditMarker s={s} path={u.kind === 'party' ? ['partyBlocs', u.partyId] : ['lists', u.listId, 'bloc']} /></span>
                             <b className="tabnum">{u.n}</b>
                           </button>
@@ -209,7 +210,7 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
                                   <button key={x.partyId} type="button" className={`bp-sub ${subChosen ? 'picked' : ''}`} aria-pressed={subChosen}
                                     aria-label={L(`${name(pp)}, ${x.n === 1 ? '1 seat' : `${x.n} seats`}: move this party on its own`, `${name(pp)}, ${x.n === 1 ? 'מנדט אחד' : `${x.n} מנדטים`}: העברת המפלגה לבדה`)}
                                     onClick={() => setPicked(subChosen ? null : unit)} {...dragProps(unit)}>
-                                    <Slip size="sm" letters="" name={name(pp)} color={pp.color ?? l.color} logo={pp.logo} />{name(pp)} <b className="tabnum">{x.n}</b>
+                                    <Slip size="sm" letters="" name={name(pp)} color={partyDisplayColor(l, pp.id)} logo={pp.logo} />{name(pp)} <b className="tabnum">{x.n}</b>
                                   </button>
                                 );
                               })}

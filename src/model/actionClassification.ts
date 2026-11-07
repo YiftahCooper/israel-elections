@@ -12,10 +12,13 @@ export const ACTION_CLASSIFICATION = {
   setListMeta: 'conditional', setAgreement: 'edit', removeAgreement: 'edit', candidates: 'edit',
   setRules: 'edit', setMode: 'edit', setTotals: 'edit', setBlocs: 'analysis', setPartyBloc: 'analysis',
   setLottery: 'edit', resetList: 'edit', resetVotes: 'edit', resetCandidates: 'edit',
-  setTurnout: 'edit', restore: 'conditional',
+  setTurnout: 'edit', restore: 'conditional', copyFrom: 'conditional',
 } as const satisfies Record<Action['type'], 'edit' | 'view' | 'metadata' | 'conditional' | 'appearance' | 'analysis'>;
 
+/** A Compare copy is classified by what it does: its inner steps. */
+const inner = (a: Action): Action[] => a.type === 'copyFrom' ? a.actions : [a];
 export function isFactAction(a: Action): boolean {
+  if (a.type === 'copyFrom') return a.actions.some(isFactAction);
   if (a.type === 'setListMeta') return Object.keys(a.patch).some(k => k !== 'color' && k !== 'bloc');
   if (a.type === 'familyOperation') return a.operation==='scale';
   if (a.type === 'restore') return a.what !== 'blocs';
@@ -24,7 +27,8 @@ export function isFactAction(a: Action): boolean {
 }
 export const factLog = (s: Pick<Scenario, 'log'>) => s.log.filter(e => isFactAction(e.action));
 /** Save checkpoint comparison ignores view steps and timestamps, while preserving author metadata. */
-export const saveLog = (s: Pick<Scenario, 'log'>) => s.log.filter(e => ACTION_CLASSIFICATION[e.action.type] === 'metadata' || ACTION_CLASSIFICATION[e.action.type] === 'appearance' || e.action.type==='setListMeta'&&'color' in e.action.patch || isAnalysisAction(e.action) || isFactAction(e.action)).map(e => e.action);
+export const saveLog = (s: Pick<Scenario, 'log'>) => s.log.filter(e => ACTION_CLASSIFICATION[e.action.type] === 'metadata' || isAppearanceAction(e.action) || isAnalysisAction(e.action) || isFactAction(e.action)).map(e => e.action);
+const isAppearanceAction = (a: Action): boolean => inner(a).some(x => ACTION_CLASSIFICATION[x.type] === 'appearance' || x.type === 'setListMeta' && 'color' in x.patch);
 
 /** Portable field inventory: A=result, B=analysis/view, C=appearance/document envelope.
  * Nested mixed objects are classified separately below. The owner's 6 November rule
@@ -39,16 +43,17 @@ export const LIST_FIELDS = {
  id:'A',originIds:'A',letters:'A',nameHe:'A',shortHe:'A',shortEn:'A',color:'C',bloc:'B',votes:'A',withdrawn:'A',heldVotes:'A',
  candidates:'A',sponsorsHe:'A',rosterUnavailable:'A',rosterTruncated:'A',parties:'A',logo:'C',synthetic:'C',links:'C',
 } as const satisfies Record<keyof import('./scenario.ts').SimList,'A'|'B'|'C'>;
-export const hasAppearance = (s:Pick<Scenario,'log'>) => s.log.some(e=>ACTION_CLASSIFICATION[e.action.type]==='appearance'||e.action.type==='setListMeta'&&'color' in e.action.patch);
+export const hasAppearance = (s:Pick<Scenario,'log'>) => s.log.some(e=>isAppearanceAction(e.action));
 
 /** Store containers inherit their contents; the UI choices themselves never edit results. */
 export const STORE_FIELDS = {
- familyView:'B',datasets:'A',elections:'A',electionId:'B',scenario:'A',preview:'A',reference:'A',past:'A',future:'A',saved:'A',sessions:'A',scenarioDrafts:'A',
+ familyView:'B',datasets:'A',elections:'A',electionId:'B',scenario:'A',preview:'A',reference:'A',past:'A',future:'A',saved:'A',sessions:'A',scenarioDrafts:'A',compare:'A',
  markOfficial:'B',selectedListId:'C',blocPanel:'C',tool:'C',compareWith:'B',lang:'C',theme:'C',level:'C',customFeatures:'C',settings:'B',
  toast:'C',loadError:'C',notice:'C',voteSource:'B',preferences:'B',settingsOpen:'C',settingsFocus:'C',preferenceAsk:'C',preferenceFor:'B',
 } as const satisfies Record<keyof import('../app/store.ts').State,'A'|'B'|'C'>;
 
 export function isAnalysisAction(a:Action):boolean {
+ if(a.type==='copyFrom')return a.actions.some(isAnalysisAction);
  return ACTION_CLASSIFICATION[a.type]==='analysis'||a.type==='setListMeta'&&'bloc' in a.patch||a.type==='familyOperation'&&a.operation==='group'||a.type==='startPart'&&(a.part==='blocs'||a.part==='coalitions')||a.type==='setBlocAppearance'&&a.name!==undefined;
 }
 export const hasAnalysis=(s:Pick<Scenario,'log'>)=>s.log.some(e=>isAnalysisAction(e.action));

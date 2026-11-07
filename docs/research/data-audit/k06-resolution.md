@@ -116,3 +116,7 @@ Final verification:
 
 The initial sandboxed suite had a gallery subprocess EPERM; the authorized unrestricted
 full run cleared it. No production code change was made for that environment failure.
+
+## 7 November 2026 — pre-release identity correction
+
+Owner direction supersedes the earlier stable-ID compatibility rule: internal list IDs now follow the corrected official ballot letters, with candidate IDs and all references updated and no aliases or migration. `6-כס` → `6-כנ`; `6-עס` → `6-ענ`; `6-סס` → `6-פש`. Votes and seats are unchanged.

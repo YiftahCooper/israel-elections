@@ -133,7 +133,7 @@
         "confidence": "high"
       }
     ],
-    "10-יש": [
+    "10-טי": [
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset10-results.pdf",
@@ -166,7 +166,7 @@
         "confidence": "high"
       }
     ],
-    "10-ים": [
+    "10-ימ": [
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset10-results.pdf",
@@ -210,7 +210,7 @@
         "confidence": "high"
       }
     ],
-    "10-קנ": [
+    "10-קז": [
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset10-results.pdf",
@@ -232,7 +232,7 @@
         "confidence": "high"
       }
     ],
-    "10-הם": [
+    "10-הס": [
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset10-results.pdf",
@@ -254,7 +254,7 @@
         "confidence": "high"
       }
     ],
-    "10-טן": [
+    "10-טז": [
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset10-results.pdf",
@@ -265,7 +265,7 @@
         "confidence": "high"
       }
     ],
-    "10-יפ": [
+    "10-יס": [
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset10-results.pdf",
@@ -309,7 +309,7 @@
         "confidence": "high"
       }
     ],
-    "10-נן": [
+    "10-נז": [
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset10-results.pdf",
@@ -320,7 +320,7 @@
         "confidence": "high"
       }
     ],
-    "10-נכ": [
+    "10-נס": [
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset10-results.pdf",
@@ -353,7 +353,7 @@
         "confidence": "high"
       }
     ],
-    "10-פז": [
+    "10-סז": [
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset10-results.pdf",
@@ -364,7 +364,7 @@
         "confidence": "high"
       }
     ],
-    "10-קן": [
+    "10-קי": [
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset10-results.pdf",
@@ -430,7 +430,7 @@
     "10-ט": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "10-יש": {
+    "10-טי": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
     "10-ני": {
@@ -439,7 +439,7 @@
     "10-לע": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "10-ים": {
+    "10-ימ": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
     "10-ש": {
@@ -451,22 +451,22 @@
     "10-ד": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "10-קנ": {
+    "10-קז": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
     "10-כן": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "10-הם": {
+    "10-הס": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
     "10-זה": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "10-טן": {
+    "10-טז": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "10-יפ": {
+    "10-יס": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
     "10-כה": {
@@ -478,10 +478,10 @@
     "10-כך": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "10-נן": {
+    "10-נז": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "10-נכ": {
+    "10-נס": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
     "10-נק": {
@@ -490,10 +490,10 @@
     "10-ס": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "10-פז": {
+    "10-סז": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "10-קן": {
+    "10-קי": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
     "herut": {

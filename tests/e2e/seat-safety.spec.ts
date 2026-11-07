@@ -75,8 +75,8 @@ test('lists below the threshold show how far each is from it; smaller ones open 
 
 test('the vote source is named before use and switches the figures', async ({ page }) => {
   await start(page);
-  await expect(panel(page).getByText('Votes from', { exact: true })).toBeVisible();
-  const source = panel(page).getByRole('group', { name: 'Votes from' });
+  await expect(panel(page).getByText('Votes come from', { exact: true })).toBeVisible();
+  const source = panel(page).getByRole('group', { name: 'Votes come from' });
   await done(page);
   const likud = panel(page).locator('.sec-row').filter({ hasText: 'Likud' }).locator('.sec-r');
   const before = await likud.innerText();

@@ -1283,7 +1283,7 @@
    "confidence": "high",
    "basis": "elected; Knesset 2 member, name identical (3)"
   },
-  "2-ה#1": {
+  "2-ו#1": {
    "knessetPersonId": 2661,
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/663",
@@ -1299,7 +1299,7 @@
    "confidence": "high",
    "basis": "elected; Knesset 2 member, name matches (2.5)"
   },
-  "2-ה#2": {
+  "2-ו#2": {
    "knessetPersonId": 2131,
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/245",
@@ -1315,7 +1315,7 @@
    "confidence": "high",
    "basis": "elected; Knesset 2 member, name identical (3)"
   },
-  "2-ה#3": {
+  "2-ו#3": {
    "knessetPersonId": 2615,
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/630",
@@ -1331,7 +1331,7 @@
    "confidence": "high",
    "basis": "elected; Knesset 2 member, name identical (3)"
   },
-  "2-ה#4": {
+  "2-ו#4": {
    "knessetPersonId": 2187,
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/288",
@@ -1347,7 +1347,7 @@
    "confidence": "high",
    "basis": "elected; Knesset 2 member, name identical (3)"
   },
-  "2-ה#5": {
+  "2-ו#5": {
    "knessetPersonId": 2325,
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/398",
@@ -1363,7 +1363,7 @@
    "confidence": "high",
    "basis": "elected; Knesset 2 member, name identical (3)"
   },
-  "2-ה#6": {
+  "2-ו#6": {
    "knessetPersonId": 2259,
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/344",
@@ -1379,7 +1379,7 @@
    "confidence": "high",
    "basis": "elected; Knesset 2 member, name matches (2)"
   },
-  "2-ה#7": {
+  "2-ו#7": {
    "knessetPersonId": 2586,
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/602",
@@ -1395,7 +1395,7 @@
    "confidence": "high",
    "basis": "elected; Knesset 2 member, name identical (3)"
   },
-  "2-ה#8": {
+  "2-ו#8": {
    "knessetPersonId": 2349,
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/417",

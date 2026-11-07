@@ -71,7 +71,8 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
   // 7–9. The chamber still has exactly 120 seats; compare with history; candidates entering/leaving listed
   await expect(page.locator('.chamber circle.seat')).toHaveCount(120);
   await page.getByRole('tab', { name: 'Compare' }).click();
-  await expect(page.getByText('Seats gained and lost')).toBeVisible();
+  await expect(page.locator('tr.cmp-row').first()).toBeVisible();
+  await page.locator('details.cmp-section > summary').click();
   await expect(page.getByText(/Entering the Knesset \(\d+\)/)).toBeVisible();
   await expect(page.getByText(/Leaving the Knesset \(\d+\)/)).toBeVisible();
 

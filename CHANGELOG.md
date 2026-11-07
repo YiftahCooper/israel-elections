@@ -2,9 +2,21 @@
 
 ## 7 November 2026 — Settings
 
-- Rebuilt Settings as one searchable bilingual popup (phone: full screen) with levels, group resets and Undo; every setting now applies wherever it is relevant, with new defaults (Device theme, joint lists by party, parties with no seats hidden) and accessibility options at every level; every percentage now shows at most 0–3 decimals (1 by default, 2 at Expert), never rounded across the threshold.
+- Rebuilt Settings as one searchable bilingual popup (phone: full screen) with levels, group resets and Undo; every setting now applies wherever it is relevant, with new defaults (Device theme, joint lists by party, parties with no seats hidden) and accessibility options at every level; every percentage now shows at most 0–3 decimals (1 by default, 2 at Expert), never rounded across the threshold (the exact share in the tooltip); Compare's shares, percentage-point changes and seatless rows follow Settings, its copy mode is a Settings row, and large text now takes the layout of the narrower page instead of wrapping.
 
 ## 6 November 2026 — data audit
+
+- Families: count Otzma Yehudit only in Radical right in 2015, as in 2019–2022; the national-religious family keeps Yachad.
+- Research: separate government membership, outside support, investiture votes and individual exceptions; validate explicit uncertainty across recorded governments and document unresolved historical authentication.
+
+- Label the Sources polling count as polling-station results and explain that it counts results-table rows, not physical stations.
+- Research: refresh the Learn/Play information-architecture brief with current map behaviour, every tab and post-election scope.
+- 7 November: replace 44 stale ballot-letter IDs and all references with corrected IDs; remove pre-release saved-format migrations. This supersedes the stable-ID wording in the audit entries below.
+- Share historical local votes consistently across split lists in Turnout, demographic adjustments and the map, dividing equally when all descendants have zero votes.
+- Give every joint-list party a visible seat dot and consistent, contrast-checked display colours across charts, keys, details and exports.
+
+- Give bloc regions clean shared edges and contrast-checked borders in Arc, Blocks, reference chambers, legend keys and exports.
+- Compare becomes a two-sided workbench: lists paired from party records, values copied either way with exact share/count/change rules and marked with their origin, per-side undo, swap, saved comparisons and share links.
 
 - Mark custom bloc, coalition and family groupings locally as analysis while preserving official result identity and factual summaries.
 

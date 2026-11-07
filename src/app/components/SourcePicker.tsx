@@ -23,10 +23,10 @@ export function SourcePicker({ s, l }: { s: Scenario; l: SimList }) {
   return (
     <div>
       <label className="field">
-        <span className="row" style={{ gap: 6 }}>{L('Take votes from / return votes to', 'לקיחת קולות מ־ / החזרתם אל')}
+        <span className="row" style={{ gap: 6 }}>{L('Votes come from', 'הקולות מגיעים מ־')}
           <Info title={L('Different counterfactuals', 'תרחישים שונים')}>{L('Taking votes from all other lists keeps turnout and the valid total fixed. New voters (or voters staying home) change the valid total, and so the threshold in votes. A transfer moves votes from or to one list — if that list is below the threshold, those votes stop being wasted. These give different seat results.', 'לקיחה מכל שאר הרשימות שומרת על ההצבעה ועל סך הכשרים. מצביעים חדשים (או נמנעים) משנים את סך הכשרים ולכן את אחוז החסימה בקולות. מעבר מזיז קולות מול רשימה אחת — אם היא מתחת לחסימה, הקולות מפסיקים להתבזבז. התוצאות שונות.')}</Info>
         </span>
-        <select aria-label={L('Take votes from / return votes to', 'לקיחת קולות מ־ / החזרתם אל')} value={src.kind === 'transfer' ? `t:${src.listId}` : src.kind} onChange={(e) => {
+        <select aria-label={L('Votes come from', 'הקולות מגיעים מ־')} value={src.kind === 'transfer' ? `t:${src.listId}` : src.kind} onChange={(e) => {
           const v = e.target.value;
           chooseSource(`list:${l.id}`, v === 'new' ? { kind: 'new' } : v === 'proportional' ? { kind: 'proportional' } : { kind: 'transfer', listId: v.slice(2) });
         }}>
@@ -106,14 +106,21 @@ export function RememberedAnswers({ id }: { id: PreferenceId }) {
   const [open, setOpen] = useState(false);
   const requested = useRef(new Set<string>());
   useEffect(() => {
-    for (const election of new Set(Object.keys(perItem ?? {}).filter(k => k.startsWith('voteSource:')).map(k => k.split(':')[1]))) {
+    for (const election of new Set(Object.keys(perItem ?? {}).filter(k => k.startsWith(`${id}:`)).map(k => k.split(':')[1]).filter(Boolean))) {
       if (!datasets[election as ElectionId] && !requested.current.has(election)) {
         requested.current.add(election);
         void loadDataset(election as ElectionId).catch(() => {});
       }
     }
-  }, [perItem, datasets]);
-  const listsOf = (election: string) => s?.electionId === election ? s.lists : datasets[election as ElectionId] ? baselineOf(datasets[election as ElectionId]!).lists : [];
+  }, [perItem, datasets, id]);
+  // a list is looked up wherever it can live: the open scenario, another election's session, a Compare side (a list
+  // copied in as new exists only there), then the election's official lists
+  const sessions = useStore(st => st.sessions), drafts = useStore(st => st.compare.drafts);
+  const listsOf = (election: string) => {
+    const scenarios = [s, sessions[election as ElectionId]?.scenario, ...Object.values(drafts).map(d => d.scenario)].filter(x => x?.electionId === election);
+    const base = datasets[election as ElectionId] ? baselineOf(datasets[election as ElectionId]!).lists : [];
+    return [...scenarios.flatMap(x => x!.lists), ...base];
+  };
   const blocsOf = (election: string) => s?.electionId === election ? s.blocs : datasets[election as ElectionId] ? baselineOf(datasets[election as ElectionId]!).blocs : [];
   const listName = (election: string, lid: string) => { const l = listsOf(election).find(x => x.id === lid); return l ? listLabel(l, lang) : (lang === 'he' ? 'רשימה לא ידועה' : 'Unknown list'); };
   const answerLabel = (v: string, election: string) => {
@@ -132,7 +139,7 @@ export function RememberedAnswers({ id }: { id: PreferenceId }) {
   const items = Object.entries(perItem ?? {}).filter(([k, v]) => {
     if (!k.startsWith(`${id}:`)) return false;
     const [, election, kind, ...rest] = k.split(':');
-    if (id !== 'voteSource') return true;
+    if (id === 'comparison') return true;
     if (v.startsWith('t:') && !listsOf(election).some(l => l.id === v.slice(2) && !l.withdrawn)) return false;
     const entity = rest.join(':');
     if (kind === 'list') return listsOf(election).some(l => l.id === entity);

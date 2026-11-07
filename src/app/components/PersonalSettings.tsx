@@ -10,7 +10,7 @@ import { Info, Seg } from './ui.tsx';
 import './personal-settings.css';
 
 /** The point-of-use questions behind three rows; their answers live in the PREFERENCES store. */
-const CHOICE: Partial<Record<RowId, PreferenceId>> = { jointByParty: 'jointSeats', voteSource: 'voteSource', markChanges: 'comparison' };
+const CHOICE: Partial<Record<RowId, PreferenceId>> = { jointByParty: 'jointSeats', voteSource: 'voteSource', markChanges: 'comparison', copyMode: 'copyMode' };
 type Snapshot = { settings: Partial<SettingValues>; preferences: Partial<Record<PreferenceId, string>> };
 const snapshot = (): Snapshot => ({ settings: getState().settings, preferences: { ...getState().preferences } });
 function restore(snap: Snapshot) {
@@ -149,7 +149,7 @@ function Row({ row, tag }: { row: SettingRow; tag?: Preset }) {
       : <span className="ps-label"><span className="ps-label-inner">{head}</span></span>}
     {info}
     {!isToggle && <span className="ps-control"><Control row={row} label={label} /></span>}
-    {(row.id === 'voteSource' || row.id === 'markChanges') && <RememberedAnswers id={CHOICE[row.id]!} />}
+    {row.control === 'choice' && <RememberedAnswers id={CHOICE[row.id]!} />}
   </div>;
 }
 
@@ -172,7 +172,7 @@ function Control({ row, label }: { row: SettingRow; label: string }) {
     <button type="button" className="link-btn" onClick={() => setState({ tool: 'custom', settingsOpen: false, settingsFocus: null })}>{L('Custom…', 'מותאם…')}</button>
   </span>;
   if (row.control === 'lang') return <Seg label={label} value={store.lang} onChange={v => setState({ lang: v as 'he' | 'en' })} options={row.options!.map(o => ({ v: o.value as 'he' | 'en', label: o.label[0] }))} />;
-  if (row.id === 'voteSource' || row.id === 'markChanges') {
+  if (row.control === 'choice') {
     const q = CHOICE[row.id]!;
     const value = store.preferences[q] ?? 'ask';
     const remembered = value.startsWith('t:') ? store.scenario?.lists.find(l => l.id === value.slice(2)) : undefined;

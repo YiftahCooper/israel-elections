@@ -1148,8 +1148,8 @@
   "description": "Released national evidence: six official agreements, exact inferred-cap reproduction, all 120 elected names checked; Ratz supplemented by official opening-date Knesset OData.",
   "method": "reviewed-transcription",
   "retrievedAt": "2026-11-03T16:58:39.222721+00:00",
-  "bytes": 10168,
-  "sha256": "9fcd7a343fab7ce167cf48e7d3b639d2bbfd6c898e5eecd9505837466648978d"
+  "bytes": 10000,
+  "sha256": "6d68d8f05771d4d5b23a7583ffbf1b3a04b69a9f47dfcf0fc0dcb47c144ab746"
  },
  {
   "id": "k9-candidates-reviewed",
@@ -1196,8 +1196,8 @@
   "description": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
   "method": "reviewed-transcription",
   "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
-  "bytes": 10580,
-  "sha256": "d7803b9a1ffb27787145edbee8a5857dd32833219e77e2ee556f347834629204"
+  "bytes": 10290,
+  "sha256": "0eeee03b5fa9673c7675a4c8e52776f9dabb242cf6c7e9e8e99a381109cbdf73"
  },
  {
   "id": "k11-results-gazette",
@@ -1232,8 +1232,8 @@
   "description": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
   "method": "reviewed-transcription",
   "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
-  "bytes": 10606,
-  "sha256": "6e3f7bdc3fb77b0d0008f5852ac56829385999d096fb4b64eb4bfca9c5b8ccc4"
+  "bytes": 10463,
+  "sha256": "2ee763c155b44091c63c7da0c17800e1dbec78d52b0df93fb8403959a6ffa09d"
  },
  {
   "id": "k11-candidates-reviewed",
@@ -1280,8 +1280,8 @@
   "description": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
   "method": "reviewed-transcription",
   "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
-  "bytes": 11334,
-  "sha256": "b2ff182c67843419bc8d0af86ab89de98410b1602f8f96fee432cd9567528453"
+  "bytes": 11127,
+  "sha256": "d06faaaea4d14b56364e90c7e458dc35b87056d292d7ae7dc62510f651a3c874"
  },
  {
   "id": "k8-k12-cbs-national-totals",
@@ -1902,8 +1902,8 @@
   "description": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
   "method": "manual-transcription",
   "retrievedAt": "2026-11-03T18:20:00Z",
-  "bytes": 4812,
-  "sha256": "8d8ae959d640b944be86a0428e8557612345952d14a46384488af9180e741842"
+  "bytes": 4758,
+  "sha256": "6a130c0e743c1b6272ad63da7907d5c0eb630b517be255db7430319bd69d4ee8"
  },
  {
   "id": "k3-results-gazette",
@@ -1938,8 +1938,8 @@
   "description": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
   "method": "manual-transcription",
   "retrievedAt": "2026-11-03T18:20:00Z",
-  "bytes": 5892,
-  "sha256": "e0f56dbe03cb914835b9f8848f60a554c328e762daf90dd220d0ea7227d138d5"
+  "bytes": 5864,
+  "sha256": "a855f937f232cf176b821ae174889f6681b21205a91314ede7b3946a164be150"
  },
  {
   "id": "k4-results-gazette",
@@ -1974,8 +1974,8 @@
   "description": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
   "method": "manual-transcription",
   "retrievedAt": "2026-11-03T18:20:00Z",
-  "bytes": 6066,
-  "sha256": "1312ae5d27e1c95ae559cd6c5e3d5bd16e6f56a31f22108186840ac8e90aaa78"
+  "bytes": 5982,
+  "sha256": "e6297ce2949fcbdba5ab66b27168dc447980cf5c8cc8486fed38ff05793154df"
  },
  {
   "id": "k5-results-gazette",
@@ -2010,8 +2010,8 @@
   "description": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
   "method": "manual-transcription",
   "retrievedAt": "2026-11-03T18:20:00Z",
-  "bytes": 4568,
-  "sha256": "4f1522f9c384043b2342794b1af6de21b1bb4d357970d3b0189bd16c1eb1e6dc"
+  "bytes": 4512,
+  "sha256": "1c03d9d606e2ea14359a23f39e737fe74cb03819c4f6f816ed712f6bff73117b"
  },
  {
   "id": "k6-results-gazette",
@@ -2046,8 +2046,8 @@
   "description": "Visually reviewed national votes and published seats; YP 1225 first partner corrected to רא after fresh primary-scan inspection (0069a). Winning-prefix and elected-name release requirements met; no inferred agreements.",
   "method": "manual-transcription",
   "retrievedAt": "2026-11-03T18:20:00Z",
-  "bytes": 5280,
-  "sha256": "76b7918edd48e964a644824749ed18f912e3e2e836c6ef8d20899b442dea3c23"
+  "bytes": 5196,
+  "sha256": "bc7ce308f04d017eaaf4319e55f2cdfbb57632a01f9bf807af12e2d3b24a0a32"
  },
  {
   "id": "k7-results-gazette",
@@ -3179,8 +3179,8 @@
   "description": "Reviewed decision (Knesset PersonID or left out, with the evidence) for every elected member whose dataset name the name rules of scripts/research/build-bios.py cannot match.",
   "method": "manual-review",
   "retrievedAt": "2026-11-04",
-  "bytes": 20175,
-  "sha256": "b93fa3321779003171962b9a8fd9f0e6f8c3936131f4fe40e26d2d6a5e4595b9"
+  "bytes": 20103,
+  "sha256": "217534b92ff515fd2903d8f8b37f04383a6c6d8ad48c62876b46f892e80dc43d"
  },
  {
   "id": "bios-party-sources",
@@ -6299,5 +6299,57 @@
   "retrievedAt": "2026-11-06",
   "sha256": "73da772795c054c9c3a25407256ad0e6b0a62746cb391f5c95075d5556afe31e",
   "bytes": 1751291
+ },
+ {
+  "id": "k24-cec-station-breakdown",
+  "file": "research/cec2021-polling-excerpt.txt",
+  "url": "https://www.gov.il/BlobFolder/generalpage/freedom-of-info-reports/he/freedom-of-info_free-of-info2021.pdf",
+  "publisher": "ועדת הבחירות המרכזית",
+  "publisherEn": "Central Elections Committee",
+  "official": true,
+  "description": "CEC annual report 2021 pp.7–8; retained text excerpt with parent PDF hash; physical-station categories and exclusions.",
+  "method": "http; retained excerpt",
+  "retrievedAt": "2026-11-07",
+  "bytes": 4228,
+  "sha256": "79a2399c8f8d7bb0e2925221775b7c0e209955cb32997978497f12c3790049f9"
+ },
+ {
+  "id": "k19-seat-allocation-appendix",
+  "file": "k19/seat-allocation-appendix.pdf",
+  "url": "https://www.gov.il/apps/elections/elections-knesset-19/heb/list/ResultsAppendix.pdf",
+  "publisher": "ועדת הבחירות המרכזית",
+  "publisherEn": "Central Elections Committee",
+  "official": true,
+  "description": "CEC seat-allocation appendix, form 30, pp.3–4 and 12; uses the gazetted list totals, not the differing results-table sums.",
+  "method": "http",
+  "retrievedAt": "2026-11-07",
+  "bytes": 143325,
+  "sha256": "c3711530c80fde4aa0e1601764c2651d3101c64aaba73db32b83a80aa4d81631"
+ },
+ {
+  "id": "d3-1992-consultations-review",
+  "file": "research/d3-1992-consultations.reviewed.json",
+  "url": "https://ufdcimages.uflib.ufl.edu/UF/00/10/14/47/16428/06-30-1992.pdf",
+  "publisher": "Amigoe / University of Florida; IDI and Knesset locators retained in reviewed extraction",
+  "publisherEn": "Amigoe / University of Florida; IDI and Knesset locators retained in reviewed extraction",
+  "official": false,
+  "description": "Reviewed minimal evidence extraction: 1992 Tsomet recommendation and original-source locators; sources are independently labelled in the file.",
+  "method": "reviewed-extraction",
+  "retrievedAt": "2026-11-07",
+  "bytes": 2553,
+  "sha256": "4913d6b7314fedf9b556022626b1b860e32e4cab7dd8bb3642e95bf6ef6f6107"
+ },
+ {
+  "id": "d3-event-corroboration-review",
+  "file": "research/d3-event-corroboration.reviewed.json",
+  "url": "https://www.washingtonpost.com/archive/politics/1981/08/06/knesset-returns-begin-coalition-to-power-by-3-votes/0451c65a-375a-4185-bb2e-0e0e81702f71/",
+  "publisher": "Independently authored contemporary reporting, per-source credits in the extraction",
+  "publisherEn": "Independently authored contemporary reporting, per-source credits in the extraction",
+  "official": false,
+  "description": "Reviewed minimal claim-level corroboration of government events; existing official parliamentary extractions retained and cited separately.",
+  "method": "reviewed-extraction",
+  "retrievedAt": "2026-11-07",
+  "bytes": 11954,
+  "sha256": "a74e67c9690d6d33bb451199175b0450fdb467ecb7565fecb559b04504fe2923"
  }
 ]

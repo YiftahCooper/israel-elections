@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import { GROUPS, SETTINGS, SETTING_IDS, DECIMAL_CHOICES, rowMatches, rowVisible, settingDefault, settingValue, validSettings } from '../src/app/settings.ts';
 import { PREFERENCES } from '../src/app/preferences.ts';
-import { fmtPct } from '../src/app/format.ts';
+import { fmtPct, fmtPp, pctExactNote } from '../src/app/format.ts';
 import { FEATURES } from '../src/app/features.ts';
 
 const he = /[֐-׿]/;
@@ -27,7 +27,7 @@ describe('the settings registry', () => {
     }
   });
   test('every point-of-use question has a row in Settings', () => {
-    const map = { jointSeats: 'jointByParty', voteSource: 'voteSource', comparison: 'markChanges' } as const;
+    const map = { jointSeats: 'jointByParty', voteSource: 'voteSource', comparison: 'markChanges', copyMode: 'copyMode' } as const;
     for (const id of Object.keys(PREFERENCES) as (keyof typeof PREFERENCES)[]) expect(SETTINGS.some(r => r.id === map[id])).toBe(true);
   });
   test('coordinator defaults are each one value', () => {
@@ -143,5 +143,25 @@ describe('threshold-safe rounding', () => {
     expect(fmtPct(3, W, 2)).toBe('<0.01%');
     expect(fmtPct(0, W, 1)).toBe('0.0%');
     expect(fmtPct(5, 0, 1)).toBe('—%');
+  });
+});
+
+describe('the exact share and percentage-point changes', () => {
+  const W = 1_000_000, votes = (p: number) => Math.round(p * W / 100);
+  test('a share rounded toward its side of the threshold carries the exact share for its tooltip', () => {
+    expect(pctExactNote(votes(1.46), W, 1, '1.5', 'en')).toBe('1.4600%: the exact share, rounded down to stay below the 1.5% threshold');
+    expect(pctExactNote(votes(3.4), W, 0, '3.25', 'en')).toMatch(/^3\.4000%: .*rounded up to stay above/);
+    expect(pctExactNote(votes(1.46), W, 1, '1.5', 'he')).toMatch(/^1\.4600%: השיעור המדויק/);
+    // ordinary rounding: nothing to explain
+    expect(pctExactNote(votes(10.84), W, 1, '3.25', 'en')).toBeUndefined();
+    expect(pctExactNote(votes(1.46), W, 2, '1.5', 'en')).toBeUndefined();
+  });
+  test('percentage points: signed, capped, never a non-zero change shown as zero', () => {
+    expect(fmtPp({ num: 1234n, den: 1000n }, 1)).toBe('+1.2');
+    expect(fmtPp({ num: -1234n, den: 1000n }, 0)).toBe('−1');
+    expect(fmtPp({ num: 3n, den: 1000n }, 1)).toBe('+<0.1');
+    expect(fmtPp({ num: -3n, den: 1000n }, 2)).toBe('−<0.01');
+    expect(fmtPp({ num: 0n, den: 1n }, 1)).toBe('0.0');
+    expect(fmtPp({ num: 123456789n, den: 1000000n }, 3)).toBe('+123.457');
   });
 });

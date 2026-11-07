@@ -174,7 +174,7 @@
         "confidence": "high"
       }
     ],
-    "5-סס": [
+    "5-סש": [
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset5-results.pdf",
@@ -185,7 +185,7 @@
         "confidence": "high"
       }
     ],
-    "5-עע": [
+    "5-עט": [
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset5-results.pdf",
@@ -231,10 +231,10 @@
     "5-נ": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "5-סס": {
+    "5-סש": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "5-עע": {
+    "5-עט": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
     "5-שו": {

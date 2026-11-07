@@ -25,6 +25,7 @@ import { Walkthrough } from './components/Walkthrough.tsx';
 import { ErrorBoundary } from './components/ErrorBoundary.tsx';
 import { WhatIf } from './components/WhatIf.tsx';
 import { SourceDialog } from './components/SourcePicker.tsx';
+import { openComparisonFromHash } from './compare/sides.ts';
 
 // The main area's props (scenario, its cached allocation, the dataset) only change with the
 // scenario, so a tab switch, toast or notice does not re-render the cards, chamber and details.
@@ -102,9 +103,9 @@ export function App() {
   useEffect(() => {
     loadElectionIndex();
     // the last visit's work first (so a share link opened now keeps it as a draft), then the link, then 2026
-    void restoreWorkspace().then(() => openSharedFromHash()).then((opened) => { if (!opened && !getState().scenario) openElection('k26'); });
+    void restoreWorkspace().then(async () => (await openComparisonFromHash()) || openSharedFromHash()).then((opened) => { if (!opened && !getState().scenario) openElection('k26'); });
     // a share link pasted into the address bar of an open tab only changes the hash
-    const onHash = () => { void openSharedFromHash(); };
+    const onHash = () => { void openComparisonFromHash().then((opened) => opened || openSharedFromHash()); };
     addEventListener('hashchange', onHash);
     const onKey = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement;
@@ -281,10 +282,19 @@ function Toast() {
   const L = useL();
   const t = useStore(st => st.toast);
   const keep = useSetting('keepMessages');
-  useStore(st => st.settingsOpen);
+  // a modal popup (Settings) makes the page behind it inert: the message goes inside the topmost one, so its Undo can
+  // be clicked. Popups open and close around a message (a copy dialog closes as it reports "Copied"), so the host is
+  // looked up again whenever the page's popups change while a message shows.
+  const [host, setHost] = useState<HTMLDialogElement | undefined>();
+  useLayoutEffect(() => {
+    if (!t) return;
+    const find = () => setHost([...document.querySelectorAll('dialog')].filter(d => d.isConnected && d.matches(':modal')).pop());
+    find();
+    const watch = new MutationObserver(find);
+    watch.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['open'] });
+    return () => watch.disconnect();
+  }, [t]);
   if (!t) return null;
-  // a modal popup (Settings) makes the page behind it inert: the message goes inside it, so its Undo can be clicked
-  const host = [...document.querySelectorAll('dialog')].filter(d => d.matches(':modal')).pop();
   const node = <div className={`toast toast-${t.kind}`} role={t.kind === 'error' ? 'alert' : 'status'}>{t.text}
     {t.action && <button type="button" className="btn small toast-action" onClick={() => { t.action!.run(); setState({ toast: null }); }}>{t.action.label}</button>}
     {(keep || t.action) && <button type="button" className="btn small ghost icon-only toast-close" aria-label={L('Close', 'סגירה')} onClick={() => setState({ toast: null })}><X className="icon sm" aria-hidden /></button>}

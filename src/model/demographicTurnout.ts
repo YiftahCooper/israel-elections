@@ -1,4 +1,5 @@
 import { isEnvelopeRow, type LocalityDataset } from '../data/schema.ts';
+import { historicalLocalVotes } from './historicalLocalVotes.ts';
 import { ActionError } from './actions.ts';
 import type { Action, Scenario } from './scenario.ts';
 
@@ -54,17 +55,11 @@ export function demographicTurnout(s: Scenario, data: LocalityDataset, adjustmen
     const historical=data.listIds.map((_,k)=>rows.reduce((t,r)=>t+count(r.votes[k]),0n));
     if(historical.reduce((a,b)=>a+b,0n)+inv!==cast)fail('Locality totals do not reconcile.');
     // Build rational mapped weights, then clear denominators before Hamilton rounding.
-    const mapped=s.lists.map(()=>[0n,1n]);
-    historical.forEach((v,k)=>{
-      if(!v)return;
-      const indices=s.lists.flatMap((l,i)=>l.originIds.includes(data.listIds[k])?[i]:[]);
-      if(!indices.length)fail(`Historical list ${data.listIds[k]} has no scenario destination.`);
-      const sum=indices.reduce((t,i)=>t+count(s.lists[i].votes),0n);
-      for(const i of indices){const weight=sum?count(s.lists[i].votes):1n,den=sum||BigInt(indices.length);
-        const [a,b]=mapped[i];const nn=a*den+v*weight*b,dd=b*den,div=gcd(nn,dd);mapped[i]=[nn/div,dd/div];}
-    });
-    const common=mapped.reduce((t,[,d])=>t/gcd(t,d)*d,1n);
-    const weights=[...mapped.map(([n,d])=>n*(common/d)),inv*common];
+    const totals=historicalLocalVotes(s.lists,data.listIds,historical);
+    if(totals.has(null))fail('Historical list has no scenario destination.');
+    const mapped=s.lists.map(l=>totals.get(l.id)!);
+    const common=mapped.reduce((t,{den})=>t/gcd(t,den)*den,1n);
+    const weights=[...mapped.map(({num,den})=>num*(common/den)),inv*common];
     const parts=split(delta<0n?-delta:delta,weights),sign=delta<0n?-1n:1n;
     parts.slice(0,-1).forEach((v,i)=>votes[i]+=sign*v);invalid+=sign*parts.at(-1)!;
   }

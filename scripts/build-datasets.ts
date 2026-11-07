@@ -1,4 +1,5 @@
 import { electionContext } from '../src/data/electionContext.ts';
+import { validateAftermathRecords } from './lib/build/aftermath.ts';
 import { verifySources } from './lib/build/sources.ts';
 // Builds the app datasets in public/data/ from the raw official sources in data/raw/.
 //   node scripts/build-datasets.ts            (BUILD_JOBS=1 builds serially in one thread)
@@ -80,6 +81,7 @@ async function runBuilder(i: number): Promise<Result> {
 if (!isMainThread) {
   parentPort!.on('message', async (i: number) => parentPort!.postMessage(await runBuilder(i)));
 } else {
+  console.log(`aftermath: ${validateAftermathRecords()} government snapshots validated`);
   const jobs = Math.max(1, Math.min(Number(process.env.BUILD_JOBS) || Math.min(availableParallelism(), 8), BUILDERS.length));
   const results: Promise<Result>[] = jobs === 1 ? [] : Array(BUILDERS.length);
   if (jobs > 1) {

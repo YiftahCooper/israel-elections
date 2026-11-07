@@ -1,3 +1,4 @@
+import { partyDisplayColor } from './partyDisplayColor.ts';
 import { groupingName } from './groupingName.ts';
 import { englishLabel } from '../data/names.ts';
 import {inputDiffs,analysisPart,inputPart,replacementScopes,scopeCovers} from '../model/editScopes.ts';
@@ -169,7 +170,7 @@ export function blocPieces(s: Scenario, r: AllocationResult): BlocPiece[] {
       const party = partyId ? l.parties?.find((p) => p.id === partyId) : undefined;
       const last = pieces[pieces.length - 1];
       if (last && last.listId === l.id && last.bloc === b && last.partyId === partyId) last.n++;
-      else pieces.push({ bloc: b, listId: l.id, partyId, color: party?.color ?? l.color, n: 1 });
+      else pieces.push({ bloc: b, listId: l.id, partyId, color: party ? partyDisplayColor(l, party.id) : l.color, n: 1 });
     });
   }
   const rank = (b: string | null) => { const i = s.blocs.findIndex((x) => x.id === b); return i < 0 ? s.blocs.length : i; };
@@ -196,7 +197,7 @@ export function seatHolders(s: Scenario, r: AllocationResult): SeatHolder[] {
       const n = elected.filter((c) => c.partyId === p.id).length;
       rest -= n;
       const bloc = s.partyBlocs && p.id in s.partyBlocs ? s.partyBlocs[p.id] : l.bloc;
-      out.push({ key: `${l.id}:${p.id}`, listId: l.id, partyId: p.id, nameHe: p.nameHe, nameEn: p.nameEn, color: p.color ?? l.color, logo: p.logo, seats: n, bloc });
+      out.push({ key: `${l.id}:${p.id}`, listId: l.id, partyId: p.id, nameHe: p.nameHe, nameEn: p.nameEn, color: partyDisplayColor(l, p.id), logo: p.logo, seats: n, bloc });
     }
     if (rest > 0) out.push({ ...whole, key: `${l.id}:rest`, seats: rest });
   }
@@ -314,6 +315,7 @@ function chosenVoteLists(s:Scenario,reference:Scenario):Set<string>|null{
    for(const x of a.allocations.slice(0,k<a.allocations.length?k+1:a.allocations.length))chosen.add(x.listId);}
   else if(a.type==='addVoters')for(const x of a.allocations)chosen.add(x.listId);
   else if(a.type==='scaleAll'||a.type==='setTurnout')return null;
+  else if(a.type==='copyFrom'){if(a.actions.some(x=>x.type==='setTurnout'))return null;for(const id of a.provenance.targetListIds??[])chosen.add(id);}
  }
  return chosen;
 }

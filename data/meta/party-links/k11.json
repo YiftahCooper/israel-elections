@@ -133,7 +133,7 @@
         "confidence": "high"
       }
     ],
-    "11-עי": [
+    "11-עד": [
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset11-results.pdf",
@@ -232,7 +232,7 @@
         "confidence": "high"
       }
     ],
-    "11-הם": [
+    "11-הס": [
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset11-results.pdf",
@@ -265,7 +265,7 @@
         "confidence": "high"
       }
     ],
-    "11-טן": [
+    "11-טס": [
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset11-results.pdf",
@@ -276,7 +276,7 @@
         "confidence": "high"
       }
     ],
-    "11-פט": [
+    "11-כט": [
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset11-results.pdf",
@@ -298,7 +298,7 @@
         "confidence": "high"
       }
     ],
-    "11-נ": [
+    "11-ס": [
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset11-results.pdf",
@@ -427,7 +427,7 @@
     "11-ת": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "11-עי": {
+    "11-עד": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
     "11-פ": {
@@ -454,7 +454,7 @@
     "11-דף": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "11-הם": {
+    "11-הס": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
     "11-זה": {
@@ -463,16 +463,16 @@
     "11-זך": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "11-טן": {
+    "11-טס": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "11-פט": {
+    "11-כט": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
     "11-כך": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "11-נ": {
+    "11-ס": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
     "11-פז": {

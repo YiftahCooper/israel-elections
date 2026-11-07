@@ -13,7 +13,9 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "data:build": "node scripts/build-datasets.ts",
     "test:e2e": "playwright test",
-    "data:fetch": "node scripts/fetch-sources.ts"
+    "data:fetch": "node scripts/fetch-sources.ts",
+    "data:gaps": "node scripts/gaps-register.ts",
+    "data:gaps:check": "node scripts/gaps-register.ts --check"
   },
   "devDependencies": {
     "@playwright/test": "^1.64.1",

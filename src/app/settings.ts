@@ -50,7 +50,7 @@ export interface SettingValues {
 }
 export type SettingId = keyof SettingValues;
 /** Rows backed by other stores: the language and level (app state) and the point-of-use questions (PREFERENCES). */
-export type ExternalId = 'level' | 'lang' | 'jointByParty' | 'voteSource' | 'markChanges';
+export type ExternalId = 'level' | 'lang' | 'jointByParty' | 'voteSource' | 'markChanges' | 'copyMode';
 export type RowId = SettingId | ExternalId;
 
 export type Control = 'toggle' | 'seg' | 'decimals';
@@ -134,6 +134,9 @@ export const SETTINGS: readonly SettingRow[] = [
   { id: 'markChanges', group: 'editing', control: 'choice', min: 'simple', label: ['Mark changes since', 'סימון שינויים מאז'],
     info: ['Opened scenario: only your newer changes are marked. Official result: every difference is marked.', 'התרחיש שנפתח: מסומנים רק השינויים החדשים. התוצאה הרשמית: מסומן כל הבדל.'],
     synonyms: 'differences markers reference ask default הבדלים סימונים ייחוס לשאול ברירת מחדל' },
+  { id: 'copyMode', group: 'editing', control: 'choice', min: 'standard', feature: 'compare', label: ['Copy votes between elections as', 'העתקת קולות בין בחירות לפי'],
+    info: ['Compare: a list’s votes copied from another election. Share of the vote keeps its strength; Number of votes copies the count. Ask: you choose at each copy.', 'השוואה: קולות של רשימה שמועתקים מבחירות אחרות. שיעור מהקולות שומר על כוחה; מספר הקולות מעתיק את המספר. לשאול: בוחרים בכל העתקה.'],
+    synonyms: 'copy compare share count elections ask default remember העתקה השוואה שיעור מספר בחירות לשאול ברירת מחדל זכירה' },
   { id: 'confirmStartOver', group: 'editing', control: 'toggle', min: 'simple', label: ['Confirm start over', 'אישור לפני התחלה מחדש'],
     info: ['Asks before clearing all changes. Undo can always restore them.', 'שאלה לפני מחיקת כל השינויים. תמיד אפשר לשחזר עם ביטול.'], synonyms: 'reset confirm start over dialog איפוס אישור התחלה' },
   { id: 'hoverPreviews', group: 'editing', control: 'toggle', min: 'standard', label: ['Hover previews', 'תצוגה מקדימה בריחוף'],
@@ -173,7 +176,7 @@ export function settingDefault<K extends SettingId>(id: K, level: Preset): Setti
   };
   return d[id];
 }
-const EXTERNAL: ReadonlySet<RowId> = new Set<ExternalId>(['level', 'lang', 'jointByParty', 'voteSource', 'markChanges']);
+const EXTERNAL: ReadonlySet<RowId> = new Set<ExternalId>(['level', 'lang', 'jointByParty', 'voteSource', 'markChanges', 'copyMode']);
 export const SETTING_IDS = SETTINGS.map(r => r.id).filter((id): id is SettingId => !EXTERNAL.has(id));
 
 /** Is a stored value acceptable for this setting? Anything else falls back to the default, silently. */

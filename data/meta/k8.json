@@ -1427,6 +1427,6 @@
   "datasetAvailable": true,
   "notes": [
     "All 96 named opening members of the four joint lists are matched to same-list candidate ranks in data/raw/k8/candidates.reviewed.json (YP 1954), cross-checked with public/data/k8.json and Knesset PersonIDs in data/raw/k8/knesset-odata-members.json. No unmatched members or unassigned elected ranks remain.",
-    "Internal list IDs and candidate IDs are opaque stable keys, not ballot-letter labels; displayed/exported letters come from the letters field. No IDs were changed in the k8 audit."
+    "7 November 2026: list and candidate IDs follow the corrected official ballot letters; no compatibility aliases are retained. No IDs were changed in the k8 audit."
   ]
 }

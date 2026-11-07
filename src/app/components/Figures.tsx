@@ -9,7 +9,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import { votesCast, type Scenario } from '../../model/scenario.ts';
 import { listLabel, methodOf, referenceLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtFrac, fmtInt, fmtPct, fmtRat } from '../format.ts';
+import { fmtFrac, fmtInt, fmtPct, fmtRat, pctExactNote } from '../format.ts';
 import { dispatch, setState, useDigits } from '../store.ts';
 import { DecimalInput, Info } from './ui.tsx';
 
@@ -73,7 +73,7 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
 
       <Fig k={L('Votes with no seat', 'קולות ללא מנדט')} term="unrepresented" v={fmtPct(seatlessVotes, r.totalValid, digits)} d={`${fmtInt(seatlessVotes)} ${L('votes', 'קולות')}`}>
         {seatless.length ? <div className="tablewrap" style={{ maxHeight: 300 }}><table className="tbl"><thead><tr><th>{L('List', 'רשימה')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('% of valid', '% מהכשרים')}</th></tr></thead>
-          <tbody>{seatless.map(({ l }) => <tr key={l.id} ><td><button className="table-action" onClick={() => select(l.id)}>{listLabel(l, lang)}</button></td><td className="n">{fmtInt(l.votes)}</td><td className="n">{fmtPct(l.votes, r.totalValid, digits, s.rules.thresholdPct)}</td></tr>)}
+          <tbody>{seatless.map(({ l }) => <tr key={l.id} ><td><button className="table-action" onClick={() => select(l.id)}>{listLabel(l, lang)}</button></td><td className="n">{fmtInt(l.votes)}</td><td className="n" title={pctExactNote(l.votes, r.totalValid, digits, s.rules.thresholdPct, lang)}>{fmtPct(l.votes, r.totalValid, digits, s.rules.thresholdPct)}</td></tr>)}
             <tr><td><b>{L('Total', 'סה״כ')}</b></td><td className="n"><b>{fmtInt(seatlessVotes)}</b></td><td className="n"><b>{fmtPct(seatlessVotes, r.totalValid, digits)}</b></td></tr></tbody></table></div>
           : <p className="small muted" style={{ margin: 0 }}>{L('Every list that ran won a seat.', 'כל הרשימות זכו במנדט.')}</p>}
       </Fig>

@@ -15,8 +15,8 @@ test('X1 analysis choices and settings use the shared picker', async ({ page }) 
   await choose(page.getByRole('button', { name: 'List', exact: true }), { label: 'Likud' });
   await expect(page.getByRole('button', { name: 'Bloc', exact: true })).toBeVisible();
   await page.locator('#tab-families').click();
-  await choose(page.getByRole('button', { name: 'Votes from', exact: true }), 'new');
-  await expect(page.getByRole('button', { name: 'Votes from', exact: true })).toContainText('New voters');
+  await choose(page.getByRole('button', { name: 'Votes come from', exact: true }), 'new');
+  await expect(page.getByRole('button', { name: 'Votes come from', exact: true })).toContainText('New voters');
   await page.locator('#tab-rules').click();
   await page.locator('.band').getByRole('button', { name: 'Settings', exact: true }).click();
   // Settings answers sit in segmented buttons (2–4 options), not the picker

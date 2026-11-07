@@ -133,3 +133,7 @@ k2 meta, bios and aftermath; parties and lineage; all nine family k2 records;
 generated k2 and election-index status; shared early verifier (roster coverage
 only); k02 and early-release tests; differential model digest; this resolution;
 one changelog line. The two auditor reports arrived via their merge commit.
+
+## 7 November 2026 — pre-release identity correction
+
+Owner direction supersedes the earlier stable-ID compatibility rule: internal list IDs now follow the corrected official ballot letters, with candidate IDs and all references updated and no aliases or migration. `2-ה` → `2-ו`; `2-טח` → `2-טת`. Votes and seats are unchanged.

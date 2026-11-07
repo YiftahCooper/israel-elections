@@ -68,7 +68,7 @@ The **Starter tip** row is the exception: it shows at Simple only, because the t
 | Lists & parties | List symbol, Joint lists by party, Party colour in seats, Parties with no seats, Lists with no seats, Vote counts | + Parties of seatless lists, Lists that withdrew, Order lists by, All candidates | same as Standard |
 | Seat chart | – | Layout, Colour seats by, Bloc backgrounds, Comparison chamber, List key, Dim other seats | same |
 | Numbers | Max decimal places 0·1·2·3 | same | same |
-| Editing | Mark changes since, Confirm start over | + Votes come from, Hover previews, Community scenarios | same |
+| Editing | Mark changes since, Confirm start over | + Votes come from, Copy votes between elections as, Hover previews, Community scenarios | same |
 | Analysis | – | Compare with, Option previews | same |
 | Accessibility | all 5, at every level **(coord.)** | all 5 | all 5 |
 
@@ -210,7 +210,9 @@ Where these settings apply:
   - an unknown affiliation.
 
   Compare (V3 lane) is to adopt the same rule.
-- **`seatlessLists` and `withdrawnLists`:** the list column only. Charts keep their own fixed filter (withdrawn lists out, lists under 1% with no seat dropped). They never apply to:
+- **`seatlessLists` and `withdrawnLists`:** the list column; `seatlessLists` also sets where Compare's table starts
+  (All: every seatless row; Over 0.5%: those with at least 0.5% on either side; Folded: none), and Compare's *Lists
+  with no seats* switch then shows or hides all of them for that visit. Charts keep their own fixed filter (withdrawn lists out, lists under 1% with no seat dropped). They never apply to:
   - Sources;
   - the "votes with no seat" figure;
   - exports;
@@ -280,14 +282,20 @@ Rules for `decimals`:
 - **Rounding never crosses the threshold, and never adds digits.** When ordinary rounding would land on the other
   side of the threshold, the share is rounded toward its true side instead. Against the 1.5 % threshold, 1.46 % at
   one decimal shows "1.4%", never "1.5%"; against 3.25 %, a list on 3.251 % shows "3.3%" at one decimal and a list on
-  3.4 % shows "4%" at none. (The earlier rule added digits, "1.46%", which a maximum cannot allow.)
+  3.4 % shows "4%" at none. (The earlier rule added digits, "1.46%", which a maximum cannot allow.) The owner kept
+  this on 7 November: one number style everywhere, on the correct side. Where a share was rounded this way, its
+  tooltip gives the exact share ("1.4600%: the exact share, rounded down to stay below the 1.5% threshold"): the
+  list column, the list page, the figures, the charts table, the walkthrough and both sides of Compare.
 - **Exact on purpose:** a threshold set in law (3.25 %, 1.5 %), a step size (0.1pp) and the waffle's "each square
   is 0.5%" are fixed values, not results, and are shown exactly (marked `data-exact`); so are the allocation
   quotients in How seats were allocated, and fractions in tooltips where a screen is about precision.
 - **A non-zero share is never shown as 0.** It is shown as "<0.1%" (or "<1%", "<0.01%", by the digits).
 - **The setting applies everywhere a percentage is shown:**
   - the list column, the list page, the figures and the charts table and tooltips;
-  - the walkthrough, Compare, Seat safety and Sensitivity;
+  - the walkthrough, Seat safety and Sensitivity;
+  - Compare: both sides' shares (threshold-safe), the Change column's percentage-point change ("+1.2 pp", never a
+    non-zero change shown as 0: "+<0.1 pp"), the key figures, the phone row sheet and the copied share or turnout
+    named on a copy's marker (recorded at the maximum in force when it was copied);
   - Localities: shares, margins and turnout;
   - Turnout, Merge & split shares and their sums, Sensitivity axis ends;
   - Party families: values and changes;
@@ -331,6 +339,18 @@ Rules for `decimals`:
 - Control: T. Default: On. Levels: Std+. The gallery stays visible by default at every level **(coord.)**.
 - (i) EN: "Loads the community list on the Scenarios page. Off: your own saves and links only."
 - (i) HE: "טעינת רשימת הקהילה בעמוד התרחישים. כבוי: רק השמירות והקישורים שלכם."
+
+**`copyMode`: Copy votes between elections as / העתקת קולות בין בחירות לפי** (choice `copyMode`, V3's Compare)
+
+- Control: G, Ask · Share of the vote · Number of votes / לשאול · שיעור מהקולות · מספר הקולות. Default: Ask.
+  Levels: Std+ (Custom: when Compare is shown). Within one election a copy is always the count.
+- (i) EN: "Compare: a list’s votes copied from another election. Share of the vote keeps its strength; Number of
+  votes copies the count. Ask: you choose at each copy."
+- (i) HE: "השוואה: קולות של רשימה שמועתקים מבחירות אחרות. שיעור מהקולות שומר על כוחה; מספר הקולות מעתיק את המספר.
+  לשאול: בוחרים בכל העתקה."
+- A copy asks only while this or *Votes come from* is unanswered. The copy question opens with the remembered mode
+  and links here (Change in Settings). Answers for one list are listed under the row by list name and election; a
+  list that exists only on a Compare side (added by a copy) is named from that side.
 
 **Remembered answers** are not a separate row. Each question shows its own, under the question (§5).
 
@@ -384,8 +404,13 @@ Rules for `decimals`:
 
 How each accessibility setting is implemented:
 
-- **`textSize`:** Large sets `zoom` on the root. Popups divide their coordinates by that zoom. Width breakpoints
-  still see the real screen, so under Large the top bar and its tools may wrap instead of running off the edge.
+- **`textSize`:** Large sets `zoom: 1.15` on the root. Popups divide their coordinates by that zoom, and measured
+  heights written back into CSS (the top bar's) use layout pixels. **Width breakpoints follow the effective width:**
+  media queries measure the real screen, so the build (scripts/scale-aware-media.ts, a PostCSS step) gives every
+  width `@media` rule a large-text copy with its breakpoints multiplied by 1.15, each copy scoped by a
+  zero-specificity root condition. At 1024 px Large lays out exactly as a 890 px page; at 1500 px as a 1304 px page.
+  The one breakpoint checked in script (Compare's phone row sheet) uses the same rule (src/app/textScale.ts). On a
+  very narrow page (a 340 px phone, or 390 px with Large) the top bar's last actions move to a second row.
 - **`reduceMotion`:** `data-motion="reduce"` on the root stops every transition and animation. The device's
   `prefers-reduced-motion` keeps working on its own, and smooth scrolling also checks the setting.
 - **`hoverPopups`:** it applies to all of these:
@@ -481,7 +506,8 @@ collapsed by default.
 
 The point-of-use questions and their Settings rows use the same words, in the ask dialog, in Settings and in its
 remembered-answers list: **Votes come from**, **Joint lists by party**, **Mark changes since** (Opened scenario ·
-Official result).
+Official result), **Copy votes between elections as** (Share of the vote · Number of votes). The per-edit chooser on
+the list page, in Seat safety and in Party families is also **Votes come from**.
 
 The popup is rendered outside the dark top bar, so the bar's own control colours never reach it.
 

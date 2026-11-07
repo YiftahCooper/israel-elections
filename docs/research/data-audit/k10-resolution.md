@@ -78,3 +78,7 @@ Final validation: build passed (2 files written, 36 unchanged); all 9 family pre
 - המחנה התורתי, פועלי אגודת ישראל ודתיים בלתי מפלגתיים → המחנה התורתי – פועלי אגודת ישראל ודתיים בלתי מפלגתיים.
 - אבו-חצירא אהרון → אבוחצירא אהרון.
 - Telem logo removed (source status verified→unresolved); Alignment internal-party evidence now labelled secondary. No bloc scheme name or dataset release-status label changed. Aftermath changes are research-only, not presently wired into the app.
+
+## 7 November 2026 — pre-release identity correction
+
+Owner direction supersedes the earlier stable-ID compatibility rule: internal list IDs now follow the corrected official ballot letters, with candidate IDs and all references updated and no aliases or migration. `10-הם` → `10-הס`; `10-טן` → `10-טז`; `10-יש` → `10-טי`; `10-ים` → `10-ימ`; `10-יפ` → `10-יס`; `10-נן` → `10-נז`; `10-נכ` → `10-נס`; `10-פז` → `10-סז`; `10-קנ` → `10-קז`; `10-קן` → `10-קי`. Votes and seats are unchanged.

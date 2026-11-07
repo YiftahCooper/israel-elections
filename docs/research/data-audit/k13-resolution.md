@@ -129,3 +129,7 @@ Differential proof: allocation returns to pre-audit `bf50217e327445c12941453eb13
 The initial follow-up test run found the expected two stale digest assertions and two unrelated 5-second timeouts (graphics/names coverage) under concurrent machine load. Digest expectations were updated after the field diff and baseline proof; the full suite was rerun with `--maxWorkers=2 --testTimeout=120000 --hookTimeout=120000`. No implementation change was made for the timing failures.
 
 Follow-up verification complete: **96 Vitest files / 906 tests passed**, including historical k13, all five differential families and the stable-ID rendering/serialization regression. Dataset rebuild, all nine family catalogues, logo validation (26 overlays / 184 source records / 131 assets), TypeScript and `git diff --check` passed. Corrected visible letters and names did not change in this follow-up. New test: `tests/k13-stable-identities.test.ts`; schema comment now documents opaque identity semantics. Commit remains local, with no rebase, push, main merge or Playwright.
+
+## 7 November 2026 — pre-release identity correction
+
+Owner direction supersedes the earlier stable-ID compatibility rule: internal list IDs now follow the corrected official ballot letters, with candidate IDs and all references updated and no aliases or migration. `13-נז` → `13-נד`; `13-נס` → `13-נכ`; `13-קנ` → `13-קן`. Votes and seats are unchanged.

@@ -24,11 +24,11 @@ for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) {
   });
 }
 
-test('comparison counts have readable contrast on pale bloc regions', async ({ page }) => {
+test('comparison seat counts have readable contrast', async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'expert' })));
   await page.goto('/'); await page.locator('#tab-compare').click();
-  await expect(page.locator('.cmp-head .choice-trigger')).toHaveAttribute('data-value', 'election:k25'); // unchanged result compares with 2022 automatically
-  const number = page.locator('.cmp-n').first();
+  await expect(page.getByRole('button', { name: 'Compare with', exact: true })).toHaveAttribute('data-value', 'election:k25'); // unchanged result compares with 2022 automatically
+  const number = page.locator('.cmp-table .cmp-seats b').first();
   await expect(number).toBeVisible();
   const contrast = await number.evaluate(el => {
     const canvas = document.createElement('canvas'); canvas.width = canvas.height = 1;
@@ -36,7 +36,8 @@ test('comparison counts have readable contrast on pale bloc regions', async ({ p
     const rgb = (color: string) => { ctx.clearRect(0, 0, 1, 1); ctx.fillStyle = color; ctx.fillRect(0, 0, 1, 1); return [...ctx.getImageData(0, 0, 1, 1).data]; };
     const light = (c: number[]) => c.slice(0, 3).map(v => { const x = v / 255; return x <= .04045 ? x / 12.92 : ((x + .055) / 1.055) ** 2.4; }).reduce((sum, v, i) => sum + v * [.2126, .7152, .0722][i], 0);
     const foreground = light(rgb(getComputedStyle(el).color));
-    const background = light(rgb(getComputedStyle(el.parentElement!).backgroundColor));
+    let bg = el.parentElement; while (bg && rgb(getComputedStyle(bg).backgroundColor)[3] < 255) bg = bg.parentElement; // the first opaque background
+    const background = light(rgb(getComputedStyle(bg ?? document.body).backgroundColor));
     return (Math.max(foreground, background) + .05) / (Math.min(foreground, background) + .05);
   });
   expect(contrast).toBeGreaterThanOrEqual(4.5);

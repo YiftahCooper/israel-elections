@@ -146,6 +146,30 @@ test.describe('every setting takes effect', () => {
     await expect(dialog(page)).toBeInViewport({ ratio: 0.95 });
   });
 
+  // breakpoints follow the zoomed page: at 1024 large text lays out as a 890px page would (1024 / 1.15), at 1500 as 1304
+  for (const [width, lang] of [[1024, 'en'], [1024, 'he'], [1500, 'en'], [1500, 'he']] as const) test(`large text: the top bar takes the layout of the narrower page · ${width} ${lang}`, async ({ page, browser }) => {
+    const bar = async (p: Page) => p.evaluate(() => {
+      const band = document.querySelector<HTMLElement>('.band')!, tabs = document.querySelector<HTMLElement>('[role="tablist"]')!;
+      return { height: band.offsetHeight, labels: [...document.querySelectorAll('.band .tool .label')].filter(e => getComputedStyle(e).display !== 'none').length, wraps: getComputedStyle(band).flexWrap,
+        gap: Math.round(tabs.getBoundingClientRect().top - band.getBoundingClientRect().bottom), sideways: document.documentElement.scrollWidth - innerWidth };
+    });
+    await page.setViewportSize({ width, height: 900 });
+    await open(page, { lang, settings: { textSize: 'large' } });
+    const large = await bar(page);
+    const ctx = await browser.newContext({ viewport: { width: Math.round(width / 1.15), height: 900 }, baseURL: test.info().project.use.baseURL });
+    const normal = await ctx.newPage();
+    await open(normal, { lang });
+    const plain = await bar(normal);
+    await ctx.close();
+    expect(large.sideways).toBeLessThanOrEqual(0);
+    // the same layout, only larger: the same rows (layout heights in the page's own pixels), labels and wrapping
+    expect(Math.abs(large.height - plain.height)).toBeLessThanOrEqual(2);
+    expect(large.labels).toBe(plain.labels);
+    expect(large.wraps).toBe(plain.wraps);
+    // the tabs sit right under the bar: no gap, no overlap
+    expect(Math.abs(large.gap)).toBeLessThanOrEqual(1);
+  });
+
   test('starter tip: shown at Simple until turned off', async ({ page }) => {
     await open(page, { level: 'simple' });
     const tip = page.locator('.banner.note').filter({ hasText: 'Pick a list' });
@@ -382,6 +406,63 @@ test.describe('every setting takes effect', () => {
     await dialog(page).locator('[data-group="general"] .ps-reset').click();
     await expect(page.locator('.toast')).toBeVisible();
     await expect(page.locator('.toast')).toHaveCount(0, { timeout: 9000 });
+  });
+});
+
+test.describe('Compare follows Settings', () => {
+  const compareRow = (page: Page, name: string) => page.locator('tr.cmp-row').filter({ has: page.locator('.cmp-rname', { hasText: name }) }).first();
+  test('Copy votes between elections as: answered in Settings, the copy no longer asks', async ({ page }) => {
+    await open(page, { preferences: { voteSource: 'proportional' } });
+    await gear(page).click();
+    const r = row(page, 'copyMode');
+    await expect(r.getByRole('group', { name: 'Copy votes between elections as' })).toBeVisible();
+    await r.getByRole('button', { name: 'Number of votes', exact: true }).click();
+    await page.keyboard.press('Escape');
+    await page.locator('#tab-compare').click();
+    const likud = compareRow(page, 'Likud');
+    await likud.hover();
+    await likud.getByRole('button', { name: 'Copy Likud’s votes to 2026' }).click();
+    await expect(page.locator('dialog[open].cmp-ask')).toHaveCount(0);
+    await expect(page.locator('.toast')).toContainText('Votes copied to 2026.');
+    await expect(likud.locator('.cmp-v').last()).toContainText('1,115,336');
+  });
+  test('an answer for one list is named by its list, and the copy question links to its row', async ({ page }) => {
+    await open(page, { preferences: { voteSource: 'proportional' } });
+    await page.locator('#tab-compare').click();
+    const likud = compareRow(page, 'Likud');
+    await likud.hover();
+    await likud.getByRole('button', { name: 'Copy Likud’s votes to 2026' }).click();
+    const ask = page.locator('dialog[open].cmp-ask');
+    await ask.getByRole('radio', { name: 'For this list' }).check();
+    await ask.getByRole('button', { name: 'Copy to 2026' }).click();
+    await gear(page).click();
+    const r = row(page, 'copyMode');
+    await r.getByRole('button', { name: /Remembered for 1/ }).click();
+    await expect(r.locator('.pref-items')).toContainText('Likud');
+    await expect(r.locator('.pref-items')).toContainText('Share of the vote');
+    await expect(r.locator('.pref-items')).not.toContainText('Unknown list');
+    await page.keyboard.press('Escape');
+    // Votes as… always asks; its link opens Settings at this row
+    await likud.hover();
+    await likud.getByRole('button', { name: 'More for Likud' }).click();
+    await page.locator('.cmp-menu').getByRole('button', { name: 'Votes as…' }).first().click();
+    await page.locator('dialog[open].cmp-ask').getByRole('button', { name: 'Change in Settings' }).click();
+    await expect(row(page, 'copyMode')).toBeInViewport();
+  });
+  for (const [mode, expectZero] of [['all', true], ['over', 'some'], ['folded', false]] as const) test(`Lists with no seats: ${mode} sets which seatless rows Compare starts with`, async ({ page }) => {
+    await open(page, { settings: { seatlessLists: mode } });
+    await page.locator('#tab-compare').click();
+    await expect(page.locator('tr.cmp-row').first()).toBeVisible();
+    const rows = await page.locator('tr.cmp-row').evaluateAll(trs => trs.map(tr => {
+      const n = (sel: string) => Number(tr.querySelector(sel)?.textContent || 0);
+      const share = (i: number) => Number((tr.querySelectorAll('.cmp-s')[i]?.textContent ?? '').replace(/[<%]/g, '') || 0);
+      return { seats: n('.cmp-ls') + n('.cmp-rs'), share: Math.max(share(0), share(1)), group: tr.querySelector('.cmp-delta .tiny') !== null };
+    }));
+    const seatless = rows.filter(r => r.seats === 0 && !r.group);
+    if (expectZero === true) expect(seatless.length).toBeGreaterThan(5);
+    if (expectZero === false) expect(seatless).toEqual([]);
+    if (expectZero === 'some') { expect(seatless.length).toBeGreaterThan(0); expect(seatless.every(r => r.share >= 0.5)).toBe(true); }
+    await expect(page.getByRole('checkbox', { name: 'Lists with no seats' })).toBeChecked({ checked: mode === 'all' });
   });
 });
 

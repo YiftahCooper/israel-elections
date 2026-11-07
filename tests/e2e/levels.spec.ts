@@ -48,7 +48,7 @@ test('Standard adds scenario management and consequential list edits, but not id
   await page.keyboard.press('Escape');
 
   await listCard(page, 'Likud').click();
-  await expect(details(page).getByRole('combobox', { name: /Take votes from \/ return votes to/ })).toBeVisible();
+  await expect(details(page).getByRole('combobox', { name: 'Votes come from' })).toBeVisible();
   await expect(details(page).getByRole('checkbox', { name: 'Withdrawn from the race' })).toBeVisible();
   await expect(details(page).getByRole('combobox', { name: 'Agreement partner' })).toHaveValue(/.+/);
   await expect(details(page).getByLabel('Short name (English)')).toHaveCount(0);
@@ -65,9 +65,9 @@ test('Expert shows every tool, including identity editing and chamber display op
   await expect(details(page).getByRole('button', { name: 'Move up' }).first()).toBeVisible();
 });
 
-test('settings saved by the two-level version open at the matching new level', async ({ page }) => {
+test('unsupported stored levels fall back to Simple without migration', async ({ page }) => {
   await start(page, { level: 'advanced' });
-  await expect(levelButton(page, 'Expert')).toHaveAttribute('aria-pressed', 'true');
+  await expect(levelButton(page, 'Simple')).toHaveAttribute('aria-pressed', 'true');
 });
 
 test('the chosen level and a dismissed hint survive a reload', async ({ page }) => {
@@ -84,7 +84,7 @@ test('Simple balances vote edits proportionally even if another source was chose
   await start(page);
   await levelButton(page, 'Standard').click();
   await listCard(page, 'Likud').click();
-  await details(page).getByRole('combobox', { name: /Take votes from \/ return votes to/ }).selectOption('new');
+  await details(page).getByRole('combobox', { name: 'Votes come from' }).selectOption('new');
 
   const before = await listRow(page, 'Yashar!').locator('.lb-sub').innerText();
   await levelButton(page, 'Simple').click();

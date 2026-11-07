@@ -37,7 +37,7 @@ describe.each([1,2,3,4,5,6,7])('k%i built national release',n=>{
     expect(ds.lists.reduce((s,l)=>s+l.votes,0)).toBe(ds.totals.valid);
     expect(ds.totals.valid+ds.totals.invalid).toBe(ds.totals.votesCast);
     expect(Object.fromEntries(ds.lists.map(l=>[l.letters,l.votes]))).toEqual(Object.fromEntries(reviewed.lists.map(l=>[l.letters,l.votes])));
-    expect(ds.officialSeats).toEqual(Object.fromEntries(reviewed.lists.map(l=>[l.legacyId??`${n}-${l.letters}`,l.officialSeats])));
+    expect(ds.officialSeats).toEqual(Object.fromEntries(reviewed.lists.map(l=>[`${n}-${l.letters}`,l.officialSeats])));
     expect(Object.fromEntries(result.lists.map(l=>[l.id,l.seats]))).toEqual(ds.officialSeats);
     expect(result.seatsAllocated).toBe(120);expect(result.quota).toEqual({num:BigInt(quotas[n]),den:1n});
     expect(validateScenario(scenarioFromDataset(ds))).toEqual([]);

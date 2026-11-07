@@ -136,10 +136,11 @@ for (const lang of ['en', 'he'] as const) for (const election of ['k24', 'k25'])
     }
     await page.getByRole('tab', {name: lang === 'en' ? 'Compare' : 'השוואה', exact:true}).click();
     await choose(page.getByRole('button', {name: lang === 'en' ? 'Compare with' : 'השוואה עם', exact:true}), `election:${election === 'k24' ? 'k23' : 'k24'}`);
-    const legend = page.locator('.cmp-bloclegend').filter({hasText:`· ${tag}`});
-    await expect(legend).toHaveCount(1);
+    // the open scenario's side names the app grouping once, never on each bloc
+    const legend = page.locator('.cmp-card[data-role="main"] .majority-context');
+    await expect(legend).toContainText(`· ${tag}`);
     expect((await legend.innerText()).split(`· ${tag}`).length - 1).toBe(1);
-    for (const row of await legend.locator('.row').all()) await expect(row).not.toContainText(`· ${tag}`);
+    for (const row of await legend.locator(':scope > span:not(:first-child)').all()) await expect(row).not.toContainText(`· ${tag}`);
   });
 }
 

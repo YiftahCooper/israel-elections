@@ -315,11 +315,22 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 /* ---------- chamber */
 .chamber { position: relative; }
 .chamber svg { display: block; width: 100%; height: auto; direction: ltr; }
-.chamber .wedge { transition: d .3s; fill-opacity: .26; stroke: none; }
-[data-theme="dark"] .chamber .wedge { fill-opacity: .24; }
-.chamber { --wedge-mix: 26%; }
-[data-theme="dark"] .chamber { --wedge-mix: 24%; }
-.chamber .wedge.solid { fill-opacity: 1; stroke-width: 1.5; stroke-linejoin: round; }
+/* Neutral, opaque borders remain distinct even for user-chosen very pale bloc colours. */
+.chamber, .blocs { --wedge-mix: 14%; --bloc-border: var(--ink-2); }
+[data-theme="dark"] .chamber, [data-theme="dark"] .blocs { --wedge-mix: 22%; }
+.chamber .wedge, .chamber .bloc-cell, .bloc-swatch {
+  fill: color-mix(in srgb, var(--bc) var(--wedge-mix), var(--surface));
+  fill-opacity: 1;
+}
+.chamber .wedge, .chamber .bloc-outline {
+  stroke: var(--bloc-border); stroke-width: 1.25; stroke-linejoin: round; vector-effect: non-scaling-stroke;
+}
+.chamber .bloc-outline { fill: none; }
+.chamber .bloc-cell { stroke: color-mix(in srgb, var(--bc) var(--wedge-mix), var(--surface)); stroke-width: .5; }
+.chamber .unassigned { stroke-dasharray: 1 3; stroke-linecap: round; }
+.bloc-swatch { background: color-mix(in srgb, var(--bc) var(--wedge-mix), var(--surface)); border: 1.25px solid var(--bloc-border); box-sizing: border-box; }
+.bloc-swatch.unassigned { border-style: dotted; }
+
 .chart { direction: ltr; }
 .seat { transition: fill .18s ease, opacity .15s; cursor: pointer; }
 .seat.dim { opacity: .22; }
@@ -1187,7 +1198,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
   .band .election { flex: 1 1 270px; max-inline-size: calc(100% - 66px); }
   .band .election-about summary { padding-inline: 4px; }
   .band .scenario-switcher .choice-trigger { min-block-size: 44px; }
-  .band-actions { inline-size: 100%; justify-content: space-between; gap: 0; }
+  /* a very narrow page (a 340px phone, or a phone with large text) puts the last actions on a second row */
+  .band-actions { inline-size: 100%; justify-content: space-between; gap: 4px 0; flex-wrap: wrap; }
   .band-actions .tool { padding-inline: 4px; }
 }
 
@@ -1195,8 +1207,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
    request; Large text zooms the root, and floating popups divide their coordinates by it (floating.tsx). */
 :root[data-motion="reduce"] *, :root[data-motion="reduce"] *::before, :root[data-motion="reduce"] *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
 :root[data-text="large"] { zoom: 1.15; --text-zoom: 1.15; } /* viewport-sized boxes divide by --text-zoom */
-/* width breakpoints see the real screen, not the zoomed one: the top bar may wrap rather than run off the edge */
-:root[data-text="large"] .band, :root[data-text="large"] .band-actions { flex-wrap: wrap; }
+/* width breakpoints follow the zoomed page, not the real screen: the build scales every width @media under large text
+   (scripts/scale-aware-media.ts; the same 1.15 there and in textScale.ts) */
 :root[data-density="comfortable"] .lb-row { padding-block: 11px; }
 :root[data-density="comfortable"] .panel .body { padding: 14px 16px; }
 :root[data-density="comfortable"] .kv { row-gap: 8px; }

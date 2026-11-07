@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "electionId": "k2",
   "status": "pilot",
-  "reviewedAt": "2026-11-06",
+  "reviewedAt": "2026-11-07",
   "notes": [
     "Research draft; not wired into the application. Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
     "The government card describes the first cabinet. Each replacement cabinet has a full-session confidence step and a numbered government.changes entry; available replacement coalition snapshots are attached to that entry.",
@@ -122,6 +122,30 @@
       "publisher": "Knesset OData; retained data/raw/k2/knesset-odata-members.json",
       "kind": "official",
       "accessed": "2026-11-06"
+    },
+    "role-roster-3": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%203%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
+    },
+    "role-roster-4": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%204%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
+    },
+    "role-roster-5": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%205%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
+    },
+    "role-roster-6": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%206%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
     }
   },
   "results": {
@@ -414,39 +438,91 @@
     "coalition": [
       {
         "letters": "א",
-        "seats": 45
+        "seats": 45,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-3",
+            "quote": "PersonToPositionID 3767; PersonID 2114; PositionID 39; StartDate 1951-10-08T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. משה שרת; faction join: מפלגת פועלי ארץ-ישראל"
+          }
+        ]
       },
       {
         "letters": "ו",
-        "seats": 8
+        "seats": 8,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-3",
+            "quote": "PersonToPositionID 3799; PersonID 2661; PositionID 39; StartDate 1951-10-08T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. חיים משה שפירא; faction join: הפועל המזרחי"
+          }
+        ]
       },
       {
         "letters": "ב",
-        "seats": 2
+        "seats": 2,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-3",
+            "quote": "PersonToPositionID 3799; PersonID 2661; PositionID 39; StartDate 1951-10-08T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. חיים משה שפירא; faction join: הפועל המזרחי"
+          }
+        ]
       },
       {
         "letters": "ג",
-        "seats": 3
+        "seats": 3,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-3",
+            "quote": "PersonToPositionID 3925; PersonID 2427; PositionID 39; StartDate 1951-10-08T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יצחק-מאיר לוין; faction join: אגודת ישראל"
+          }
+        ]
       },
       {
         "letters": "ד",
-        "seats": 2
+        "seats": 2,
+        "role": "other",
+        "certainty": "unknown",
+        "cites": [],
+        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
       },
       {
         "letters": "יד",
-        "seats": 3
+        "seats": 3,
+        "role": "other",
+        "certainty": "unknown",
+        "cites": [],
+        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
       },
       {
         "letters": "נ",
-        "seats": 1
+        "seats": 1,
+        "role": "other",
+        "certainty": "unknown",
+        "cites": [],
+        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
       },
       {
         "letters": "ע",
-        "seats": 1
+        "seats": 1,
+        "role": "other",
+        "certainty": "unknown",
+        "cites": [],
+        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
       }
     ],
-    "coalitionSeats": 65,
-    "coalitionSeatsNote": "Election-list seat totals, including support-only lists; not the confidence-vote tally. Reuses the existing overlay: ministerial factions are official; support-only membership is labelled secondary. Later government changes are listed separately.",
+    "coalitionSeats": null,
+    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
     "cites": [
       {
         "source": "coalition-1",
@@ -493,39 +569,108 @@
         "coalition": [
           {
             "letters": "א",
-            "seats": 45
+            "seats": 45,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-4",
+                "quote": "PersonToPositionID 3768; PersonID 2114; PositionID 39; StartDate 1952-12-24T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. משה שרת; faction join: מפלגת פועלי ארץ-ישראל"
+              }
+            ]
           },
           {
             "letters": "צ",
-            "seats": 20
+            "seats": 20,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-4",
+                "quote": "PersonToPositionID 3548; PersonID 2516; PositionID 39; StartDate 1952-12-24T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. יוסף סרלין; faction join: ציונים כלליים"
+              }
+            ]
           },
           {
             "letters": "ו",
-            "seats": 8
+            "seats": 8,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-4",
+                "quote": "PersonToPositionID 3381; PersonID 2661; PositionID 39; StartDate 1952-12-24T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. חיים משה שפירא; faction join: הפועל המזרחי"
+              }
+            ]
           },
           {
             "letters": "ב",
-            "seats": 2
+            "seats": 2,
+            "role": "other",
+            "certainty": "unknown",
+            "cites": [],
+            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
           },
           {
             "letters": "פ",
-            "seats": 4
+            "seats": 4,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-4",
+                "quote": "PersonToPositionID 3850; PersonID 2600; PositionID 39; StartDate 1952-12-24T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. פנחס רוזן; faction join: מפלגה פרוגרסיבית"
+              }
+            ]
           },
           {
             "letters": "יד",
-            "seats": 3
+            "seats": 3,
+            "role": "other",
+            "certainty": "unknown",
+            "cites": [],
+            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
           },
           {
             "letters": "נ",
-            "seats": 1
+            "seats": 1,
+            "role": "other",
+            "certainty": "unknown",
+            "cites": [],
+            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
           },
           {
             "letters": "ע",
-            "seats": 1
+            "seats": 1,
+            "role": "other",
+            "certainty": "unknown",
+            "cites": [],
+            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
           }
         ],
-        "coalitionSeats": 84,
-        "coalitionSeatsNote": "Election-list seat sum, including affiliated Arab support lists from the existing overlay. Not the vote tally. Snapshot after the religious ministers joined on 24 December, not the initial 23 December confidence vote."
+        "coalitionSeats": null,
+        "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
+        "confidenceVote": {
+          "for": 63,
+          "against": 24
+        },
+        "confidenceVoteCites": [
+          {
+            "source": "plenum-gov4",
+            "quote": "הצבעה ■ בעד הצעת סיעות הקואליציה לאשר את קתיהיסוד של הממשלה ולהביע לה 63 קולות אמון 24 קולות נגד הגעת סיעות הקואליציה נתקבלה. שפרינצק: היו\"ר י. על ב63 קולות נגד 24 הובע אמון לממשלה שהוצגה ידי ראשהממשלה דוד בןגוריון ואושרו קוויהיסוד של תכ ניתה. הוקמה ממשלת ישראל חדשה. הרא הנני לברך את הממשלה החדשה והישגי. החשוב"
+          }
+        ],
+        "membershipCoverage": "partial",
+        "supportSeats": null,
+        "reconciliation": {
+          "status": "unresolved",
+          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 77; full membership remains unknown. Investiture: 63 for, 24 against, not recorded abstaining."
+        },
+        "knownMemberSeats": 77
       },
       {
         "date": "1954-01-26",
@@ -551,35 +696,96 @@
         "coalition": [
           {
             "letters": "א",
-            "seats": 45
+            "seats": 45,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-5",
+                "quote": "PersonToPositionID 3573; PersonID 2493; PositionID 39; StartDate 1954-01-26T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. פרץ נפתלי; faction join: מפלגת פועלי ארץ-ישראל"
+              }
+            ]
           },
           {
             "letters": "צ",
-            "seats": 20
+            "seats": 20,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-5",
+                "quote": "PersonToPositionID 3859; PersonID 2605; PositionID 39; StartDate 1954-01-26T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. ישראל רוקח; faction join: ציונים כלליים"
+              }
+            ]
           },
           {
             "letters": "ו",
-            "seats": 8
+            "seats": 8,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-5",
+                "quote": "PersonToPositionID 3795; PersonID 2661; PositionID 39; StartDate 1954-01-26T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. חיים משה שפירא; faction join: הפועל המזרחי"
+              }
+            ]
           },
           {
             "letters": "ב",
-            "seats": 2
+            "seats": 2,
+            "role": "other",
+            "certainty": "unknown",
+            "cites": [],
+            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
           },
           {
             "letters": "יד",
-            "seats": 3
+            "seats": 3,
+            "role": "other",
+            "certainty": "unknown",
+            "cites": [],
+            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
           },
           {
             "letters": "נ",
-            "seats": 1
+            "seats": 1,
+            "role": "other",
+            "certainty": "unknown",
+            "cites": [],
+            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
           },
           {
             "letters": "ע",
-            "seats": 1
+            "seats": 1,
+            "role": "other",
+            "certainty": "unknown",
+            "cites": [],
+            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
           }
         ],
-        "coalitionSeats": 80,
-        "coalitionSeatsNote": "Election-list seat sum, including affiliated Arab support lists from the existing overlay. Not the vote tally."
+        "coalitionSeats": null,
+        "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
+        "confidenceVote": {
+          "for": 75,
+          "against": 23,
+          "abstain": 5
+        },
+        "confidenceVoteCites": [
+          {
+            "source": "plenum-gov5",
+            "quote": "הצבעה 7 5 לממשלה בעד ההצעה להביע אמון 23 איאמון לממשלה בעד ההצעה להביע 5 נמנעים היו\"ר ז. שפר: בזה החליטה הכנסת על הבעת אמון לממשלה. השרים של אמונים הצהרת .4 היו\"ר ז. שפר:"
+          }
+        ],
+        "membershipCoverage": "partial",
+        "supportSeats": null,
+        "reconciliation": {
+          "status": "unresolved",
+          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 73; full membership remains unknown. Investiture: 75 for, 23 against, 5 abstaining."
+        },
+        "knownMemberSeats": 73
       },
       {
         "date": "1955-06-29",
@@ -605,39 +811,109 @@
         "coalition": [
           {
             "letters": "א",
-            "seats": 45
+            "seats": 45,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-6",
+                "quote": "PersonToPositionID 3770; PersonID 2114; PositionID 39; StartDate 1955-06-29T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. משה שרת; faction join: מפלגת פועלי ארץ-ישראל"
+              }
+            ]
           },
           {
             "letters": "ו",
-            "seats": 8
+            "seats": 8,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-6",
+                "quote": "PersonToPositionID 3796; PersonID 2661; PositionID 39; StartDate 1955-06-29T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. חיים משה שפירא; faction join: הפועל המזרחי"
+              }
+            ]
           },
           {
             "letters": "ב",
-            "seats": 2
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "presentation-gov6",
+                "quote": "הממשלה החדשה, המורכבת מסיעות מפלגת פועלי ארץ ישראל, המזרחי והפועל המזרחי והמפלגה הפרוגרסיבית."
+              }
+            ],
+            "note": "Named in the governing presentation; no cabinet minister from this faction in the official formation-day roster. Deputy ministry is not a cabinet ministry."
           },
           {
             "letters": "פ",
-            "seats": 4
+            "seats": 4,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-6",
+                "quote": "PersonToPositionID 3852; PersonID 2600; PositionID 39; StartDate 1955-06-29T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. פנחס רוזן; faction join: מפלגה פרוגרסיבית"
+              }
+            ]
           },
           {
             "letters": "יד",
-            "seats": 3
+            "seats": 3,
+            "role": "other",
+            "certainty": "unknown",
+            "cites": [],
+            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
           },
           {
             "letters": "נ",
-            "seats": 1
+            "seats": 1,
+            "role": "other",
+            "certainty": "unknown",
+            "cites": [],
+            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
           },
           {
             "letters": "ע",
-            "seats": 1
+            "seats": 1,
+            "role": "other",
+            "certainty": "unknown",
+            "cites": [],
+            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
           },
           {
             "letters": "ל",
-            "seats": 1
+            "seats": 1,
+            "role": "other",
+            "certainty": "unknown",
+            "cites": [],
+            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
           }
         ],
-        "coalitionSeats": 65,
-        "coalitionSeatsNote": "Election-list seat sum, including affiliated Arab support lists from the existing overlay. Not the vote tally. The Yemenite representative explicitly announced joining; no additional seat is inferred from the 66 votes for confidence."
+        "coalitionSeats": null,
+        "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
+        "confidenceVote": {
+          "for": 66,
+          "against": 32,
+          "abstain": 3
+        },
+        "confidenceVoteCites": [
+          {
+            "source": "plenum-gov6",
+            "quote": "הצבעה בעד הבעת אמון לממשלה שהורכבה והוצגה 66 חברהכנסת משה שרת עלידי 32 נגד הבעת אמון לממשלה 3 נמנעו היו\"ר י. שפרינצק: שלושיםושנים אישרה הכנסת בשישיםוששה קולות נגד חברהכנסת עלידי את הממשלה של מדינת ישראל, שהוצגה שרת. משה הצהרת אמונים של השרים ג."
+          }
+        ],
+        "membershipCoverage": "partial",
+        "supportSeats": null,
+        "reconciliation": {
+          "status": "unresolved",
+          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 59; full membership remains unknown. Investiture: 66 for, 32 against, 3 abstaining."
+        },
+        "knownMemberSeats": 59
       },
       {
         "date": "1955-06-29",
@@ -656,7 +932,25 @@
         "source": "oath-gov4",
         "quote": "המאהוחמישיםותשע של הכנסת השניה הישיבה תשי\"ג )24 דצמבר 1952( יום רביעי, ו' טבת בנין הכנסת, שעה 11.08 ירושלים, הצהרת אמונים של חברי הממשלה א. היו\"ר י. שפרינצק: אני מתכבד לפתוח את ישיבת הכנסת המאהוחמישים לתשע. סעיף 11 לחוק המעבר, סעיףקטן )א( אומר: \"הממשלה, מיד לפני הכנסת ותיכון לאחר שתקבל תתייצב משהורכבה ימים שבעה \"תוך אומר: סעיףקטן )ב( אמון\"; הבעת בה ראש ויחתמו אמון יקראו הבעת מיום שהממשלה קיבלה אני הממשלה והשרים האחרים בפני הכנסת הצהרה זו: ולחו למדינתישראל כחברהממשלה לשמור אמונים מתחייב החלטות הכנסת\". את ולקיים קיה, ישראל לממשלת הנבחרים את מזמין בהתאם לזה אני"
       }
-    ]
+    ],
+    "confidenceVote": {
+      "for": 56,
+      "against": 40,
+      "abstain": 4
+    },
+    "confidenceVoteCites": [
+      {
+        "source": "plenum-gov3",
+        "quote": "הצבעה חברהכנסת ט. ארגוב בעד הצעת 56 )הבעת אמון לממשלה( 40 נגד 4 ~ נמנעים ההצעה נתקבלה. היו\"ר י. שפרינצק:"
+      }
+    ],
+    "membershipCoverage": "partial",
+    "supportSeats": null,
+    "reconciliation": {
+      "status": "unresolved",
+      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 58; full membership remains unknown. Investiture: 56 for, 40 against, 4 abstaining."
+    },
+    "knownMemberSeats": 58
   },
   "term": {
     "start": "1951-07-30",
@@ -754,5 +1048,6 @@
     "Closing date is the next election, not dissolution day. The governing dissolution/election-date law has not been retrieved; regular versus early termination is not inferred from term length.",
     "Replacement-coalition snapshots for governments 4–6 use election-list seat weights, not reconstructed current faction sizes after splits and defections.",
     "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
-  ]
+  ],
+  "supportSchemaVersion": 1
 }

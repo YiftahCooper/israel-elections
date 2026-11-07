@@ -6,7 +6,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtPct, isolate } from '../format.ts';
+import { fmtInt, fmtPct, isolate, pctExactNote } from '../format.ts';
 import { setState, useDigits, useSetting } from '../store.ts';
 import { apportion } from '../../model/actions.ts';
 import { Info, Seg } from './ui.tsx';
@@ -210,7 +210,7 @@ function ShareTable({ s, r, height }: { s: Scenario; r: AllocationResult; height
           {s.lists.filter((l) => !l.withdrawn).sort((a, b) => b.votes - a.votes).map((l) => { const lr = r.lists.find((x) => x.id === l.id)!; return (
             <tr key={l.id}>
               <td><button type="button" className="table-action row" style={{ gap: 6, flexWrap: 'nowrap' }} onClick={() => setState({ selectedListId: l.id })}><span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)}</button></td>
-              <td className="n">{fmtInt(l.votes)}</td><td className="n">{fmtPct(l.votes, total, digits, s.rules.thresholdPct)}</td>
+              <td className="n">{fmtInt(l.votes)}</td><td className="n" title={pctExactNote(l.votes, total, digits, s.rules.thresholdPct, lang)}>{fmtPct(l.votes, total, digits, s.rules.thresholdPct)}</td>
               <td className="n">{lr.qualified ? fmtPct(l.votes, r.qualifyingVotes, digits) : '—'}</td>
               <td className="n">{lr.seats}</td><td className="n">{fmtPct(lr.seats, s.rules.seats, digits)}</td>
               <td className="n"><bdi dir="ltr">{(() => { const v = (lr.seats / s.rules.seats - l.votes / Number(total)) * 100; return `${v < 0 ? '−' : v > 0 ? '+' : ''}${Math.abs(v).toFixed(digits)}`; })()}</bdi></td>

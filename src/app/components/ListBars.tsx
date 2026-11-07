@@ -1,3 +1,4 @@
+import { partyDisplayColor } from '../partyDisplayColor.ts';
 import { SeatDelta } from './SeatDelta.tsx';
 import { seatOrder } from './Hemicycle.tsx';
 import {familyLabel} from '../../families/labels.ts';
@@ -15,7 +16,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
 import { comparisonGroups, officialSeatsFor, electedOf, listLabel, resultChanges } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtPct } from '../format.ts';
+import { fmtInt, fmtPct, pctExactNote } from '../format.ts';
 import { setState, useDigits, useLevel, useSetting, useStore } from '../store.ts';
 import { blocDisplayOrder } from '../blocOrder.ts';
 import { hiddenSeatlessParty } from '../seatlessParties.ts';
@@ -121,7 +122,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
               <span className="delta-segment" style={{insetInlineStart:0,width:`${(was ?? 0)/scale*100}%`}} />
             </span>}
             <span className="lb-sub">
-              <span>{voteCounts && <>{fmtInt(l.votes)} · </>}{fmtPct(l.votes, total, digits, s.rules.thresholdPct)}
+              <span title={pctExactNote(l.votes, total, digits, s.rules.thresholdPct, lang)}>{voteCounts && <>{fmtInt(l.votes)} · </>}{fmtPct(l.votes, total, digits, s.rules.thresholdPct)}
               {out && thr > 0 && !l.withdrawn && <> · {L(`${fmtPct(l.votes, thr, 0)} of the threshold`, `${fmtPct(l.votes, thr, 0)} מאחוז החסימה`)}</>}
               {l.withdrawn && <> · {L('withdrew', 'פרשה')}</>}</span>
               {partner && <span className="lb-agr"><span aria-hidden>⇄ </span>{listLabel(partner, lang)}</span>}
@@ -141,9 +142,9 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
               if (lr.seats > 0 && !seatlessParties && hiddenSeatlessParty(s, p.id, n)) return null;
               return (
                 <li key={p.id}>
-                  <Slip letters="" name={lang === 'he' ? p.nameHe : p.nameEn} color={p.color ?? l.color} logo={p.logo} />
+                  <Slip letters="" name={lang === 'he' ? p.nameHe : p.nameEn} color={partyDisplayColor(l, p.id)} logo={p.logo} />
                   <span className="lb-pname">{lang === 'he' ? p.nameHe : p.nameEn}</span>
-                  <span className="lb-bar" aria-hidden><i style={{ width: `${(n / scale) * 100}%`, background: p.color ?? l.color }} /></span>
+                  <span className="lb-bar" aria-hidden><i style={{ width: `${(n / scale) * 100}%`, background: partyDisplayColor(l, p.id) }} /></span>
                   <b>{n}</b>
                 </li>
               );

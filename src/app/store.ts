@@ -1,10 +1,10 @@
-import { resultDiffs } from '../model/editScopes.ts';
+import { carryEditScopes, resultDiffs } from '../model/editScopes.ts';
 import { nextCopyName, scenarioDirty } from './scenarioDocument.ts';
 import { ACTION_CLASSIFICATION, isFactAction, hasAppearance, hasAnalysis, factLog } from '../model/actionClassification.ts';
 import { baselineOf, freshScenario, factionDefault, setFactionDefault } from './factionDefaults.ts';
 import { validItemAnswers, validAnswers, sourceChoice, sourceValue, type PreferenceAnswers, type PreferenceAsk, type PreferenceId } from './preferences.ts';
 import type { Family } from '../families/model.ts';
-import { migrateSavedColors, nextScenarioColor } from './scenarioIdentity.ts';
+import { nextScenarioColor } from './scenarioIdentity.ts';
 import { PRESETS, type FeatureId, type Visibility } from './features.ts';
 import { validSettings, settingValue, settingDefault, SETTINGS_KEY, SETTING_IDS, type RowId, type SettingId, type SettingValues } from './settings.ts';
 // Application state. Undo/redo keeps immutable scenario snapshots; saved scenarios remain action logs.
@@ -19,8 +19,6 @@ import type { SourceChoice } from './voteEdit.ts';
  * consequential edits; Expert = every tool. */
 export type Level = 'simple' | 'standard' | 'expert';
 const LEVELS: Level[] = ['simple', 'standard', 'expert'];
-/** settings saved by the two-level version ('explore' | 'advanced') map onto the three levels */
-const migrateLevel = (v: unknown): Level => (v === 'advanced' ? 'expert' : v === 'explore' ? 'simple' : LEVELS.includes(v as Level) ? (v as Level) : 'simple');
 
 export interface SavedScenario { id: string; name: string; description?: string; electionId: ElectionId; savedAt: string; baseBuiltAt: string; log: Action[]; factionSplitBaseline?: boolean }
 
@@ -69,6 +67,9 @@ export interface State {
   sessions: Partial<Record<ElectionId, ScenarioSession>>;
   /** Unsaved branches shared by the header and phone inspectors; deliberately session-only. */
   scenarioDrafts: Record<string, ScenarioSession>;
+  /** Compare's other side (session-only): its drafts by comparator, the orientation (null: earlier election on the left)
+   *  and the user's list pairings by election pair. See src/app/compare/sides.ts. */
+  compare: { drafts: Record<string, ScenarioSession>; swap: boolean | null; overrides: Record<string, import('./compare/match.ts').MatchOverride[]> };
 }
 
 const LS = 'israel-elections:v1';
@@ -99,7 +100,7 @@ const persisted = (() => { try { return JSON.parse(globalThis.localStorage?.getI
 const rememberedSettings = (() => { try { const raw = JSON.parse(globalThis.localStorage?.getItem(SETTINGS_KEY) ?? 'null'); return raw?.v === 2 ? validSettings(raw.values) : {}; } catch { return {}; } })();
 const deviceDark = () => globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches === true;
 const resolvedTheme = (pref: SettingValues['theme']): 'light' | 'dark' => pref === 'device' ? (deviceDark() ? 'dark' : 'light') : pref;
-const initialLevel = migrateLevel(persisted.level);
+const initialLevel: Level = LEVELS.includes(persisted.level) ? persisted.level : 'simple';
 const TOOL_IDS = new Set(['board', 'families', 'scenarios', 'whatif', 'coal', 'walk', 'structure', 'compare', 'security', 'charts', 'turnout', 'sens', 'loc', 'rules', 'sources']);
 const compareStart = (values: Partial<SettingValues>, level: Level) => settingValue(values, 'compareWith', level) === 'official' ? 'official' : 'auto';
 
@@ -108,7 +109,8 @@ let state: State = {
   tool: settingValue(rememberedSettings, 'openOn', initialLevel) === 'last' && TOOL_IDS.has(persisted.tool) ? persisted.tool : null, compareWith: compareStart(rememberedSettings, initialLevel),
   lang: persisted.lang ?? 'he', theme: resolvedTheme(settingValue(rememberedSettings, 'theme', initialLevel)),
   level: initialLevel, customFeatures: persisted.customFeatures ?? null, settings: rememberedSettings,
-  saved: migrateSavedColors(persisted.saved ?? []), toast: null, loadError: null, notice: null, voteSource: sourceChoice(rememberedPreferences.voteSource ?? 'proportional'), preferences: rememberedPreferences, preferenceAsk: null, preferenceFor: rememberedItems, sessions: {}, scenarioDrafts: {},
+  saved: persisted.saved ?? [], toast: null, loadError: null, notice: null, voteSource: sourceChoice(rememberedPreferences.voteSource ?? 'proportional'), preferences: rememberedPreferences, preferenceAsk: null, preferenceFor: rememberedItems, sessions: {}, scenarioDrafts: {},
+  compare: { drafts: {}, swap: null, overrides: {} },
 };
 const listeners = new Set<() => void>();
 const emit = () => { for (const l of listeners) l(); };
@@ -599,7 +601,7 @@ function rebuild(ds: ElectionDataset, x: Snap): { session: ScenarioSession; fail
     const steps: Scenario[] = [];
     for (const e of entries.slice(from ? from.log.length : 0)) {
       steps.push(s);
-      try { s = applyAction(s, e.action, undefined, ctx); s = { ...s, log: [...s.log.slice(0, -1), e] }; } catch { failed++; }
+      try { s = applyAction(s, e.action, undefined, ctx); const log = [...s.log.slice(0, -1), e]; carryEditScopes(s.log, log); s = { ...s, log }; } catch { failed++; }
     }
     return { s, steps };
   };

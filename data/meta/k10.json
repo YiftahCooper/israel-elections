@@ -1,6 +1,6 @@
 {
   "electionId": "k10",
-  "generatedNote": "Research metadata (joint-list composition, blocs, colours). See data/meta/README.md and docs/research/meta-1981-2006.md. Stable list/candidate IDs predate the 2026-11-06 ballot-letter corrections; use letters for display, never infer ballot letters from IDs. See docs/research/data-audit/k10-resolution.md.",
+  "generatedNote": "Research metadata (joint-list composition, blocs, colours). See data/meta/README.md and docs/research/meta-1981-2006.md. Internal list and candidate IDs follow the corrected ballot letters (7 November 2026; pre-release correction). See docs/research/data-audit/k10-resolution.md.",
   "lists": [
     {
       "letters": "מחל",

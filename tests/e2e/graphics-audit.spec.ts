@@ -21,8 +21,8 @@ for(const lang of ['he','en']) for(const theme of ['light','dark']) for(const ph
           const svg=el.querySelector('svg[role="img"]') as SVGSVGElement;
           const regions=[...svg.querySelectorAll<SVGGeometryElement>('[data-bloc-region]')];
           const errors:string[]=[];
-          // a hairline in the region's own colour only closes antialiasing seams; any other stroke is a stray outline
-          if([...el.querySelectorAll('.wedge')].some(region=>{const st=getComputedStyle(region);return st.stroke!=='none'&&st.stroke!==st.fill;})) errors.push('stroked region');
+          // Regions now have deliberate theme-aware borders, including the reference chamber.
+          if([...el.querySelectorAll('.wedge, .bloc-outline')].some(region=>{const st=getComputedStyle(region);return st.stroke==='none'||parseFloat(st.strokeWidth)<1.25||st.vectorEffect!=='non-scaling-stroke';})) errors.push('missing bloc border');
           if([...svg.querySelectorAll('path:not([data-bloc-boundary]):not([data-bloc-boundary-gap])')].some(path=>getComputedStyle(path).fill==='none' && getComputedStyle(path).stroke!=='none')) errors.push('stray outline');
           for(const seat of svg.querySelectorAll<SVGGeometryElement>('[data-seat]')) {
             const box=seat.getBBox();
@@ -130,9 +130,11 @@ test('summary, graphics and Compare default follow the same reference setting',a
     }
     await page.getByRole('tab',{name:'Compare',exact:true}).click();
     // With nothing to compare, the automatic target is the previous election.
-    if(changed) await expect(page.locator('.cmp-head .choice-trigger')).toHaveText(new RegExp(name));
-    else await expect(page.locator('.cmp-head .choice-trigger')).toHaveAttribute('data-value', 'election:k24');
-    if(changed) expect(await page.locator('.cmp-blocrow').last().locator('i').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('data-bloc')))).toEqual(expect.arrayContaining(['__none']));
+    const target=page.getByRole('button',{name:'Compare with',exact:true});
+    if(changed) await expect(target).toHaveText(new RegExp(name));
+    else await expect(target).toHaveAttribute('data-value', 'election:k24');
+    // the open scenario's chamber keeps the No bloc seats
+    if(changed) expect(await page.locator('.cmp-card[data-role="main"] [data-seat][data-bloc="__none"]').count()).toBeGreaterThan(0);
   }
 });
 
