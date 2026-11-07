@@ -1,0 +1,8 @@
+Map line geometry © OpenStreetMap contributors, ODbL 1.0.
+https://www.openstreetmap.org/copyright
+https://opendatacommons.org/licenses/odbl/1-0/
+Snapshot: 2026-11-07. Source relation IDs and original way IDs are retained in the data/research record.
+This is cartographic geometry, not boundary-pillar or cadastral survey data.
+Central Jerusalem corrected line coordinates: derived from UN map 229, November 1949; retain United Nations cartographic attribution. No UN endorsement is implied.
+
+Complete Blue Line: UN map 4143 Rev.1 (July 2000). Golan Alpha, Bravo and separation area: UNDOF map 2916 Rev.143 (September 2026). Local Ramadin segment: UN OCHA, checked against signed 1949 Map1. These derived coordinates retain their original UN/OCHA attribution and applicable source terms.

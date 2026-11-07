@@ -1,5 +1,6 @@
 import {MAP_UNASSIGNED_COLOUR} from '../locality-map-model.ts';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
+import {MapLineText} from './MapLineText.tsx';
 import { Info } from './ui.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { ResultPreview } from './ResultPreview.tsx';
@@ -15,6 +16,10 @@ import type { SimList, Scenario } from '../../model/scenario.ts';
 import { allocationOf, listLabel, seatBlocsOf } from '../derive.ts';
 import { localityTotals, localityWinner, matchesLocality, nearestLocality, normalizeLocalityName } from '../locality-map-model.ts';
 import { useL, useLang } from '../i18n.ts';
+import { useStore } from '../store.ts';
+import type { FeatureCollection } from 'geojson';
+import { MAP_LINES, MAP_LINE_SNAPSHOT, drawMapLines, mapLineSourceLabel } from '../locality-map-lines.ts';
+import { basemapAttribution } from '../locality-basemap-style.ts';
 import { fmtInt, fmtPct } from '../format.ts';
 import { useDigits } from '../store.ts';
 
@@ -31,6 +36,7 @@ function useJson<T>(url: string | null, empty: T) {
   return { value, error };
 }
 const NO_LOCATIONS: LocalityLocations = {};
+const NO_LINES: FeatureCollection = { type:'FeatureCollection', features:[] };
 const NO_NAMES: LocalityNames = { names: [], project: [] };
 export function useLocalityLocations(id: string, available = true) {
   const { value: locations, error } = useJson(available ? `${import.meta.env.BASE_URL}data/${id}-locations.json` : null, NO_LOCATIONS);
@@ -44,7 +50,7 @@ export function useLocalityNames(id: string, available = true) {
 export function localityName(names: LocalityNames, row: LocalityRow, index: number, lang: 'he' | 'en'): string {
   if (lang === 'he') return row.nameHe;
   if (isEnvelopeRow(row)) return 'Double envelopes';
-  return names.names[index] || row.nameHe;
+  return names.names[index] || (row.code ? `Locality ${row.code}` : 'Locality');
 }
 /** The name, marked when its English is the project's own transliteration rather than a CBS name. */
 export function LocalityName({ names, row, index }: { names: LocalityNames; row: LocalityRow; index: number }) {
@@ -71,6 +77,16 @@ const ZoomInPlace = Leaflet.Control.Zoom.extend({
   },
 });
 
+// Leaflet 1.9.4 can lose a queued frame ID when _updatePaths redraws synchronously.
+// Its onRemove cancels only the last ID, so an older callback can outlive the context.
+// Keep the guard on our renderer; do not change Leaflet's global prototype.
+type CanvasLifecycle = Leaflet.Canvas & { _map?: Leaflet.Map; _redraw(): void };
+const MountedCanvas = Leaflet.Canvas.extend({
+  _redraw(this: CanvasLifecycle) {
+    if (this._map) (Leaflet.Canvas.prototype as CanvasLifecycle)._redraw.call(this);
+  },
+});
+
 const photonCache = new Map<string, PhotonFeature[]>();
 let lastRequest = 0;
 interface PhotonFeature { geometry: { coordinates: [number, number] }; properties: Record<string, string> }
@@ -86,6 +102,12 @@ const textWidth = (text: string) => {
 
 export function LocalityMap({ s, data, historicalLists, locations, names, locationError }: { s: Scenario; data: LocalityDataset; historicalLists: (SimList | null)[]; locations: LocalityLocations; names: LocalityNames; locationError: boolean }) {
   const L = useL(), lang = useLang();
+  const dark = useStore(st => st.theme === 'dark');
+  const [legendOpen,setLegendOpen]=useState(()=>window.matchMedia('(min-width: 700px)').matches);
+  useEffect(()=>{const media=window.matchMedia('(min-width: 700px)');const update=()=>setLegendOpen(media.matches);media.addEventListener('change',update);return()=>media.removeEventListener('change',update);},[]);
+  const [lineIds, setLineIds] = useState<ReadonlySet<string>>(() => new Set(MAP_LINES.map(x=>x.id)));
+  const [hiddenLines, setHiddenLines] = useState(0);
+  const { value: lineData, error: lineError } = useJson(`${import.meta.env.BASE_URL}data/map-lines.geojson`, NO_LINES);
   const digits = useDigits();
   const container = useRef<HTMLDivElement>(null), map = useRef<Leaflet.Map | null>(null);
   const [mode, setMode] = useState<'bloc' | 'list'>('bloc');
@@ -111,7 +133,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   useEffect(() => {
     if (!container.current) return;
     // Tool tabs unmount immediately; Leaflet's delayed zoom completion can outlive the map pane.
-    const m = Leaflet.map(container.current, { preferCanvas:true, scrollWheelZoom:false, zoomAnimation:false, zoomControl:false }).setView([31.7,35],7);
+    const m = Leaflet.map(container.current, { renderer:new MountedCanvas(), scrollWheelZoom:false, zoomAnimation:false, zoomControl:false, minZoom:2, maxZoom:15, maxBounds:[[-85,-180],[85,180]] }).setView([31.7,35],7);
     new ZoomInPlace().addTo(m);
     map.current = m;
     // Leaflet's keyboard handler focuses the map on mousedown without preventScroll (it restores only the window's
@@ -119,15 +141,23 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     const el = container.current;
     const focusInPlace = () => { if (document.activeElement !== el) el.focus({ preventScroll: true }); };
     el.addEventListener('mousedown', focusInPlace, true);
-    let loaded = 0, failed = 0;
-    Leaflet.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:19, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>', referrerPolicy:'strict-origin-when-cross-origin' })
-      // a blocked tile server (e.g. a sandbox without a Referer) leaves a blank frame; say so instead
-      .on('tileload', () => { loaded++; if (mounted.current) setTilesFailed(false); })
-      .on('tileerror', () => { failed++; if (!loaded && failed >= 3 && mounted.current) setTilesFailed(true); })
-      .addTo(m);
+    m.attributionControl.addAttribution(basemapAttribution);
     const observer = new ResizeObserver(() => m.invalidateSize()); observer.observe(container.current);
     return () => { el.removeEventListener('mousedown', focusInPlace, true); observer.disconnect(); m.remove(); map.current = null; };
   }, []);
+  useEffect(() => {
+    const m = map.current; if (!m) return;
+    const controller = new AbortController();
+    setTilesFailed(false);
+    import('../locality-basemap.ts').then(({ addLocalityBasemap }) => {
+      if (!controller.signal.aborted) return addLocalityBasemap(m, dark, controller.signal, setTilesFailed);
+    }).catch(() => { if (!controller.signal.aborted) setTilesFailed(true); });
+    return () => controller.abort();
+  }, [dark]);
+  useEffect(() => {
+    const m = map.current; if (!m || !lineData.features.length) return;
+    return drawMapLines(m, lineData, lineIds, dark, setHiddenLines);
+  }, [lineData, lineIds, dark]);
   useEffect(() => {
     const m = map.current; if (!m) return;
     const group = Leaflet.layerGroup().addTo(m);
@@ -151,16 +181,14 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     }
     return () => { group.remove(); };
   }, [placed,winners,lang,data,names,digits]);
-  // Place names on the map in the interface language. OSM tiles label in the local script, so English gets CBS English
-  // names at every zoom; Hebrew gets them only zoomed out (<= 9), where the tiles name almost no Israeli localities,
-  // so they never duplicate the tiles' own Hebrew labels. Larger localities first, never overlapping each other.
+  // Same CBS/result keys as the table, both languages at every zoom. Larger localities first; no overlapping labels.
   useEffect(() => {
     const m = map.current, rtl = lang === 'he'; if (!m || (!rtl && !names.names.length)) return;
     const layer = Leaflet.layerGroup().addTo(m);
     const ranked = placed.map(p => ({ p, name: rtl ? p.row.nameHe : names.names[p.index], weight: p.row.registered ?? p.row.votesCast })).filter(x => x.name).sort((a, b) => b.weight - a.weight);
     const draw = () => {
       layer.clearLayers();
-      const z = m.getZoom(); if (rtl && z > 9) return;
+      const z = m.getZoom();
       const min = z <= 7 ? 150_000 : z === 8 ? 50_000 : z === 9 ? 15_000 : z === 10 ? 4_000 : z === 11 ? 1_000 : 0;
       const view = m.getBounds().pad(0.05), size = m.getSize(), taken: number[][] = [];
       for (const { p, name, weight } of ranked) {
@@ -252,10 +280,30 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     }}>{[f.properties.name,f.properties.street,f.properties.housenumber,f.properties.city,f.properties.country].filter(Boolean).join(', ')}</button>)}</div>}
     {data.id === 'k17' && <Locality2006Note />}
     <div className="locality-map-legend">{legend.map(x=><span key={x.id} title={x.title}><i style={{background:x.color}} />{x.label}</span>)}<span><i style={{background:GREY}}/>{L('Tie / unassigned / no votes','שוויון / ללא שיוך / ללא קולות')}</span></div>
+    <details className="locality-boundary-disclosure" open={legendOpen} onToggle={e=>setLegendOpen(e.currentTarget.open)}><summary>{L('Lines and areas', 'קווים ושטחים')}</summary>
+    <fieldset className="locality-boundary-legend"><legend className="sr-only">{L('Lines and areas', 'קווים ושטחים')}</legend>
+      {MAP_LINES.map(line => <span className="locality-boundary-entry" key={line.id}>
+        <label><input type="checkbox" checked={lineIds.has(line.id)} onChange={e => setLineIds(old => { const next = new Set(old); if (e.target.checked) next.add(line.id); else next.delete(line.id); return next; })} />
+          <svg width="28" height="14" viewBox="0 0 28 14" aria-hidden="true">{line.fill==='solid'?<rect width="28" height="14" fill={dark?line.dark:line.color} fillOpacity=".18"/>:line.fill?<>
+            <path d={line.fill==='cross'?'M0 0L8 8 M0 8L8 0 M8 0L16 8 M8 8L16 0 M16 0L24 8 M16 8L24 0 M24 0L32 8 M24 8L32 0 M0 8L8 16 M0 16L8 8 M8 8L16 16 M8 16L16 8 M16 8L24 16 M16 16L24 8 M24 8L32 16 M24 16L32 8':'M-14 14L0 0 M-6 14L8 0 M2 14L16 0 M10 14L24 0 M18 14L32 0 M26 14L40 0'} stroke={dark?line.dark:line.color} strokeWidth="1.4" strokeLinecap="butt"/>
+            {line.outline&&<path d="M0 13H28" stroke={dark?line.dark:line.color} strokeWidth="2" strokeLinecap="butt" strokeDasharray={line.dash}/>}
+          </>:<path d="M0 7H28" stroke={dark?line.dark:line.color} strokeWidth="2" strokeLinecap="butt" strokeDasharray={line.dash}/>}</svg>
+          {lang === 'he' ? line.he : line.en}</label>
+        <Info title={lang === 'he' ? line.he : line.en}>
+          <p><MapLineText lang={lang} text={lang==='he'?line.detailHe:line.detailEn}/></p>
+          {line.quotes?.map(quote=><div key={quote.reference}><p><MapLineText lang={lang} text={lang==='he'?quote.referenceHe??quote.reference:quote.reference}/>{lang==='he'&&quote.translatedHe?L('',' · תרגום מהמקור האנגלי'):''}</p><blockquote className="map-treaty-quote"><MapLineText lang={lang} text={lang==='he'?quote.he:quote.en}/></blockquote></div>)}
+          <p><MapLineText lang={lang} text={lang==='he'?line.uncertaintyHe:line.uncertaintyEn}/></p>
+          <p>{L('Geometry snapshot: ', 'תצלום מצב של הגאומטריה: ')}<bdi dir="ltr">{MAP_LINE_SNAPSHOT}</bdi></p>
+          <p>{L('Sources: ', 'מקורות: ')}{line.sources.map(([label,url],i)=><span key={url}>{i>0?' · ':''}<a href={url} target="_blank" rel="noreferrer"><MapLineText lang={lang} text={mapLineSourceLabel(label,lang)}/></a></span>)}</p>
+        </Info>
+      </span>)}
+    </fieldset></details>
+    {<p className="small locality-boundary-limit" style={{visibility:hiddenLines>0?'visible':'hidden'}} aria-hidden={hiddenLines===0} role={hiddenLines>0?'status':undefined}>{L('Some approximate lines are hidden at this zoom. Zoom out to see them.', 'חלק מהקווים המקורבים מוסתרים בהגדלה זו. להצגתם, הקטינו את המפה.')} <Info title={L('Line detail limits','מגבלות פירוט הקווים')}>{L('Each layer stops at its source precision. Measured source differences are limited to roughly 20 screen pixels; outlines whose precision is unknown are shown only at overview zooms. Locality dots and names remain available. Each layer’s explanation states its uncertainty.', 'כל שכבה נעצרת לפי דיוק המקור. פערי המקורות שנמדדו מוגבלים לכ־20 פיקסלים במסך; תוואים שדיוקם אינו ידוע מוצגים רק בקנה מידה כללי. נקודות ושמות היישובים ממשיכים להופיע. אי־הוודאות מצוינת בהסבר של כל שכבה.')}</Info></p>}
+    {lineError && <p className="small bad" role="status">{L('Boundary data could not load.', 'נתוני הקווים לא נטענו.')}</p>}
     <div ref={container} className="locality-map-canvas" role="region" aria-label={L('Locality results map; use search or table for keyboard selection','מפת תוצאות ביישובים; לבחירה במקלדת השתמשו בחיפוש או בטבלה')} />
     {tilesFailed && <p className="small bad">{L('The background map could not load; the locality dots still work.', 'מפת הרקע לא נטענה; נקודות היישובים עדיין פעילות.')}</p>}
     {selected && <section className="locality-map-results" aria-live="polite" aria-label={L('Selected locality results','תוצאות היישוב הנבחר')}>
-      <h3><LocalityName names={names} row={selected} index={selectedIndex!} />{lang === 'en' && !isEnvelopeRow(selected) && <span className="locality-map-subtitle" lang="he" dir="rtl">{selected.nameHe}</span>}</h3>
+      <h3><LocalityName names={names} row={selected} index={selectedIndex!} /></h3>
       {/* why the dot has its colour: the leader, and its lead over the runner-up in this locality */}
       <p className="locality-verdict">{selectedWinner!.tied ? L('Tie', 'שוויון') : selectedWinner!.key === null || !groups.length ? L('No assigned votes', 'אין קולות משויכים') : <>
         <span className="swatch" style={{ background: groupColor(selectedWinner!.key) }} /><strong dir="auto">{groupName(selectedWinner!.key)}</strong>

@@ -1,0 +1,669 @@
+{
+  "source": "S/1302/Rev.1 signed Map1 north/south sheets",
+  "url": "https://www.un.org/unispal/document/auto-insert-181069/",
+  "image": "scans/armistice-signed-1949.jpg",
+  "imageSize": [
+    3119,
+    8630
+  ],
+  "grid": "Palestine Belt EPSG:28191",
+  "pixelFormula": {
+    "x": "180+(E/1000-80)*19.70",
+    "y": "3707-(N/1000-120)*19.607"
+  },
+  "fittedGridAnchors": [
+    [
+      80,
+      120,
+      180,
+      3707
+    ],
+    [
+      220,
+      120,
+      2938,
+      3707
+    ],
+    [
+      80,
+      270,
+      180,
+      765.95
+    ]
+  ],
+  "registrationProvenance": "Reviewer printed-grid fit, independently visually read back against N110/120/130 at both map borders; about 1–4 source pixels discrepancy, not survey control.",
+  "limitations": "North-sheet grid fit; south-sheet offset about four pixels in reviewer check. Town symbols differ about 150–300m; ink about 100–200m wide. About 0.5km discrimination, not a survey. All 38 >300m JS cluster worst-point crops inspected; most cannot resolve a whole cluster.",
+  "ramadinReplacementBox": [
+    34.91,
+    31.33,
+    34.95,
+    31.365
+  ],
+  "ramadinSplice": {
+    "westWay": 95258495,
+    "westAnchor": [
+      34.909792,
+      31.3563778
+    ],
+    "eastWay": 87237529,
+    "eastAnchor": [
+      34.9503931,
+      31.3480643
+    ],
+    "removedWays": [
+      95258528,
+      95258529
+    ],
+    "method": "Retain the OCHA stroke; connect its ends to these existing OpenStreetMap vertices. Retain westWay only north of westAnchor and remove the replaced source ways, including box-cut stubs. Short cartographic transitions, not surveyed treaty coordinates; source precision and zoom limit unchanged."
+  },
+  "clusters": [
+    {
+      "id": 2,
+      "worst": [
+        35.1871259,
+        32.5236877
+      ],
+      "max_m": 640.057651860477,
+      "bbox": [
+        35.17023705265255,
+        32.513574989779876,
+        35.22424653665997,
+        32.553847828000066
+      ],
+      "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+      "crop": ".backup-scratch/v4-r2/signed-map/2.png"
+    },
+    {
+      "id": 4,
+      "worst": [
+        35.3490771,
+        32.51818000000001
+      ],
+      "max_m": 544.4457914007414,
+      "bbox": [
+        35.268938147585814,
+        32.509565,
+        35.364349930460904,
+        32.52317350500004
+      ],
+      "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+      "crop": ".backup-scratch/v4-r2/signed-map/4.png"
+    },
+    {
+      "id": 5,
+      "worst": [
+        35.3843387,
+        32.5050686
+      ],
+      "max_m": 438.6972144170807,
+      "bbox": [
+        35.37834569250421,
+        32.50137547096572,
+        35.40241779481223,
+        32.51153440965845
+      ],
+      "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+      "crop": ".backup-scratch/v4-r2/signed-map/5.png"
+    },
+    {
+      "id": 9,
+      "worst": [
+        35.4087304,
+        32.477645700000004
+      ],
+      "max_m": 606.0566844369812,
+      "bbox": [
+        35.4050953,
+        32.46231800875978,
+        35.420785110000054,
+        32.489961613607115
+      ],
+      "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+      "crop": ".backup-scratch/v4-r2/signed-map/9.png"
+    },
+    {
+      "id": 10,
+      "worst": [
+        35.09314274600007,
+        32.48050581200005
+      ],
+      "max_m": 445.93789085675576,
+      "bbox": [
+        35.075410696528216,
+        32.46232417774462,
+        35.1399595,
+        32.4953254438093
+      ],
+      "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+      "crop": ".backup-scratch/v4-r2/signed-map/10.png"
+    },
+    {
+      "id": 17,
+      "worst": [
+        35.4410057,
+        32.405941899999995
+      ],
+      "max_m": 792.5512094643957,
+      "bbox": [
+        35.4102977,
+        32.405941899999995,
+        35.45689654807456,
+        32.44080313163562
+      ],
+      "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+      "crop": ".backup-scratch/v4-r2/signed-map/17.png"
+    },
+    {
+      "id": 28,
+      "worst": [
+        35.5549603,
+        32.38901729999999
+      ],
+      "max_m": 392.5713482070712,
+      "bbox": [
+        35.53570489596345,
+        32.3870989,
+        35.5549603,
+        32.39180159600005
+      ],
+      "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+      "crop": ".backup-scratch/v4-r2/signed-map/28.png"
+    },
+    {
+      "id": 30,
+      "worst": [
+        35.041659,
+        32.377733199999994
+      ],
+      "max_m": 366.6843993171649,
+      "bbox": [
+        35.0401927,
+        32.37739446612391,
+        35.04590782014204,
+        32.38343330693528
+      ],
+      "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+      "crop": ".backup-scratch/v4-r2/signed-map/30.png"
+    },
+    {
+      "id": 32,
+      "worst": [
+        35.04794350000001,
+        32.3593916
+      ],
+      "max_m": 351.33689499284736,
+      "bbox": [
+        35.04067320900003,
+        32.356202992338964,
+        35.0516079,
+        32.369911431976554
+      ],
+      "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+      "crop": ".backup-scratch/v4-r2/signed-map/32.png"
+    },
+    {
+      "id": 33,
+      "worst": [
+        35.02637513600007,
+        32.350541655000036
+      ],
+      "max_m": 467.927373480042,
+      "bbox": [
+        35.025562587000024,
+        32.344059420240626,
+        35.042403577925064,
+        32.350808685000054
+      ],
+      "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+      "crop": ".backup-scratch/v4-r2/signed-map/33.png"
+    },
+    {
+      "id": 40,
+      "worst": [
+        35.028518,
+        32.26031869999999
+      ],
+      "max_m": 316.59567511012415,
+      "bbox": [
+        35.020916053000064,
+        32.246783990010734,
+        35.0306328,
+        32.26844880538567
+      ],
+      "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+      "crop": ".backup-scratch/v4-r2/signed-map/40.png"
+    },
+    {
+      "id": 44,
+      "worst": [
+        34.964224,
+        32.1689337
+      ],
+      "max_m": 443.2958754821649,
+      "bbox": [
+        34.958751235106455,
+        32.16278155353246,
+        34.97430911784156,
+        32.18056246070277
+      ],
+      "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+      "crop": ".backup-scratch/v4-r2/signed-map/44.png"
+    },
+    {
+      "id": 46,
+      "worst": [
+        34.9793852,
+        32.148735499999994
+      ],
+      "max_m": 338.3731088762929,
+      "bbox": [
+        34.9744174,
+        32.14853755676735,
+        34.98565531765842,
+        32.154240376148564
+      ],
+      "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+      "crop": ".backup-scratch/v4-r2/signed-map/46.png"
+    },
+    {
+      "id": 56,
+      "worst": [
+        34.992777595000064,
+        32.014604708000036
+      ],
+      "max_m": 648.682326419426,
+      "bbox": [
+        34.992777595000064,
+        32.000011846775415,
+        35.0051949,
+        32.033666837898245
+      ],
+      "decision": "OSM supported near Rantis/Qibya at the worst point; OCHA departs from the signed ink. Retain OSM. This does not certify every vertex across the whole cluster.",
+      "crop": ".backup-scratch/v4-r2/signed-map/56.png"
+    },
+    {
+      "id": 60,
+      "worst": [
+        35.004401434000044,
+        31.981092262000058
+      ],
+      "max_m": 739.4981978219799,
+      "bbox": [
+        34.98815741434598,
+        31.94688040974345,
+        35.00683988493646,
+        31.996864648911505
+      ],
+      "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+      "crop": ".backup-scratch/v4-r2/signed-map/60.png"
+    },
+    {
+      "id": 62,
+      "worst": [
+        34.9925972,
+        31.9397529
+      ],
+      "max_m": 613.9508537419341,
+      "bbox": [
+        34.98066310000001,
+        31.920838905133838,
+        35.0133963222644,
+        31.967559900023886
+      ],
+      "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+      "crop": ".backup-scratch/v4-r2/signed-map/62.png"
+    },
+    {
+      "id": 63,
+      "worst": [
+        35.04040596200008,
+        31.91935838300004
+      ],
+      "max_m": 517.3310686301719,
+      "bbox": [
+        35.0023435,
+        31.862403397586657,
+        35.04212645100006,
+        31.94069732356404
+      ],
+      "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+      "crop": ".backup-scratch/v4-r2/signed-map/63.png"
+    },
+    {
+      "id": 64,
+      "worst": [
+        35.022397,
+        31.8857478
+      ],
+      "max_m": 638.3653337063616,
+      "bbox": [
+        35.021542088832966,
+        31.877474985371787,
+        35.02988841800004,
+        31.916713009268317
+      ],
+      "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+      "crop": ".backup-scratch/v4-r2/signed-map/64.png"
+    },
+    {
+      "id": 65,
+      "worst": [
+        35.0253148,
+        31.86993979999999
+      ],
+      "max_m": 427.3182751192164,
+      "bbox": [
+        35.01769769576507,
+        31.8698868023529,
+        35.0257818,
+        31.874953633731508
+      ],
+      "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+      "crop": ".backup-scratch/v4-r2/signed-map/65.png"
+    },
+    {
+      "id": 71,
+      "worst": [
+        34.977965,
+        31.832387600000004
+      ],
+      "max_m": 690.0978685520151,
+      "bbox": [
+        34.9775764,
+        31.8303744,
+        34.99312034802541,
+        31.839595863208118
+      ],
+      "decision": "Paired Latrun truce lines agree in configuration; the eastern closure remains non-agreed. No change to detailed vertices justified by the coarse signed sheet.",
+      "crop": ".backup-scratch/v4-r2/signed-map/71.png"
+    },
+    {
+      "id": 72,
+      "worst": [
+        35.1071809,
+        31.823854799999992
+      ],
+      "max_m": 625.0972599449925,
+      "bbox": [
+        35.04806287708666,
+        31.809955509579083,
+        35.159181187685405,
+        31.85134529999999
+      ],
+      "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+      "crop": ".backup-scratch/v4-r2/signed-map/72.png"
+    },
+    {
+      "id": 74,
+      "worst": [
+        34.972357,
+        31.8177484
+      ],
+      "max_m": 737.8917620373539,
+      "bbox": [
+        34.9553582,
+        31.815870299999997,
+        35.03983096540424,
+        31.863466125224857
+      ],
+      "decision": "Paired Latrun truce lines agree in configuration; the eastern closure remains non-agreed. No change to detailed vertices justified by the coarse signed sheet.",
+      "crop": ".backup-scratch/v4-r2/signed-map/74.png"
+    },
+    {
+      "id": 75,
+      "worst": [
+        35.2098431,
+        31.805240800000004
+      ],
+      "max_m": 455.24872163662815,
+      "bbox": [
+        35.18923082259371,
+        31.801944764636485,
+        35.22284784193861,
+        31.81151384000003
+      ],
+      "decision": "Unresolved north Jerusalem continuation: this worst point is north of UN229 coverage. Retain qualified OSM; do not imply the central registered pair verifies this stretch.",
+      "crop": ".backup-scratch/v4-r2/signed-map/75.png"
+    },
+    {
+      "id": 77,
+      "worst": [
+        35.2511469,
+        31.784829999999992
+      ],
+      "max_m": 2370.482123596537,
+      "bbox": [
+        35.2374352,
+        31.784724000000004,
+        35.251211,
+        31.801609000000003
+      ],
+      "decision": "Scopus outline absent from OCHA, not a two-source positional error. Retain only the separately checked northern Israeli-enclave arc; no unsourced internal division.",
+      "crop": ".backup-scratch/v4-r2/signed-map/77.png"
+    },
+    {
+      "id": 78,
+      "worst": [
+        35.2303836,
+        31.7816464
+      ],
+      "max_m": 424.95886507646316,
+      "bbox": [
+        35.225818739716814,
+        31.7796298,
+        35.2303836,
+        31.791511384085833
+      ],
+      "decision": "Central Jerusalem uses the separately registered UN229 pair, not either modern product. The coarse signed sheet cannot refine the registered trace.",
+      "crop": ".backup-scratch/v4-r2/signed-map/78.png"
+    },
+    {
+      "id": 80,
+      "worst": [
+        35.2431085,
+        31.7512025
+      ],
+      "max_m": 1446.968652326075,
+      "bbox": [
+        35.214379205158316,
+        31.7338671,
+        35.2431085,
+        31.772980765609482
+      ],
+      "decision": "Government House has its own separate OSM zone and retained armistice edges. The mismatch with UN229 at N130 is disclosed; the coarse signed sheet cannot refine its outline.",
+      "crop": ".backup-scratch/v4-r2/signed-map/80.png"
+    },
+    {
+      "id": 82,
+      "worst": [
+        35.202467949884905,
+        31.74673870062908
+      ],
+      "max_m": 416.02480741903,
+      "bbox": [
+        35.19816111090387,
+        31.746674200000005,
+        35.20850036547963,
+        31.750617304000052
+      ],
+      "decision": "Unresolved southern Jerusalem continuation: this worst point is south of UN229 coverage and west of the Government House overlay. Retain qualified OSM; neither detailed overlay verifies this stretch.",
+      "crop": ".backup-scratch/v4-r2/signed-map/82.png"
+    },
+    {
+      "id": 85,
+      "worst": [
+        35.1748466,
+        31.7415575
+      ],
+      "max_m": 385.53839370699075,
+      "bbox": [
+        35.163543175672835,
+        31.741400800000008,
+        35.18330704128847,
+        31.745514208488242
+      ],
+      "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+      "crop": ".backup-scratch/v4-r2/signed-map/85.png"
+    },
+    {
+      "id": 86,
+      "worst": [
+        35.1584372,
+        31.74458920000001
+      ],
+      "max_m": 301.52618707695774,
+      "bbox": [
+        35.15644570425159,
+        31.7412631960125,
+        35.16192874927995,
+        31.745024099999995
+      ],
+      "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+      "crop": ".backup-scratch/v4-r2/signed-map/86.png"
+    },
+    {
+      "id": 88,
+      "worst": [
+        35.1396843,
+        31.728844000000002
+      ],
+      "max_m": 466.5784417697893,
+      "bbox": [
+        35.133337280907625,
+        31.728729299999998,
+        35.14571819096294,
+        31.734455700000005
+      ],
+      "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+      "crop": ".backup-scratch/v4-r2/signed-map/88.png"
+    },
+    {
+      "id": 89,
+      "worst": [
+        35.1205184,
+        31.715567600000004
+      ],
+      "max_m": 395.03829639269986,
+      "bbox": [
+        35.11313937602422,
+        31.713716499999993,
+        35.12273598263309,
+        31.72345650340202
+      ],
+      "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+      "crop": ".backup-scratch/v4-r2/signed-map/89.png"
+    },
+    {
+      "id": 91,
+      "worst": [
+        35.0852791,
+        31.690610600000003
+      ],
+      "max_m": 313.6503689361553,
+      "bbox": [
+        35.07956544035487,
+        31.6886413819796,
+        35.0853144,
+        31.693241559188742
+      ],
+      "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+      "crop": ".backup-scratch/v4-r2/signed-map/91.png"
+    },
+    {
+      "id": 93,
+      "worst": [
+        35.0284754,
+        31.659496299999994
+      ],
+      "max_m": 414.30365058912906,
+      "bbox": [
+        35.01068907862815,
+        31.654367966164532,
+        35.04633944072384,
+        31.670284250751298
+      ],
+      "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+      "crop": ".backup-scratch/v4-r2/signed-map/93.png"
+    },
+    {
+      "id": 94,
+      "worst": [
+        34.9523937,
+        31.594663399999995
+      ],
+      "max_m": 323.9495143112313,
+      "bbox": [
+        34.945948791989224,
+        31.572417157860468,
+        34.96088258743704,
+        31.602127373175787
+      ],
+      "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+      "crop": ".backup-scratch/v4-r2/signed-map/94.png"
+    },
+    {
+      "id": 95,
+      "worst": [
+        34.94762100000003,
+        31.535765716000064
+      ],
+      "max_m": 562.3793910557756,
+      "bbox": [
+        34.9403675,
+        31.49970122204813,
+        34.94834962600004,
+        31.566518938422625
+      ],
+      "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+      "crop": ".backup-scratch/v4-r2/signed-map/95.png"
+    },
+    {
+      "id": 101,
+      "worst": [
+        35.2879513,
+        31.4166259
+      ],
+      "max_m": 614.5385104636559,
+      "bbox": [
+        35.245457096205875,
+        31.388318420515102,
+        35.39563474786879,
+        31.491406120233815
+      ],
+      "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+      "crop": ".backup-scratch/v4-r2/signed-map/101.png"
+    },
+    {
+      "id": 103,
+      "worst": [
+        34.8800552,
+        31.392329300000004
+      ],
+      "max_m": 401.5114722404907,
+      "bbox": [
+        34.8800552,
+        31.357241783488092,
+        34.90896955373226,
+        31.400245171778955
+      ],
+      "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+      "crop": ".backup-scratch/v4-r2/signed-map/103.png"
+    },
+    {
+      "id": 104,
+      "worst": [
+        34.9246515,
+        31.342106799999993
+      ],
+      "max_m": 842.1379017756599,
+      "bbox": [
+        34.9099183,
+        31.342106799999993,
+        35.24273008468396,
+        31.385926454845094
+      ],
+      "decision": "OCHA supported at Arab er-Ramadin; OSM is about 0.8 km south of the signed ink. Substitute OCHA in the retained local box, with short cartographic transitions to the recorded exact OpenStreetMap nodes (authorised third-review correction); these joins are not surveyed treaty coordinates. The rest of this long cluster remains unresolved.",
+      "crop": ".backup-scratch/v4-r2/signed-map/104.png"
+    }
+  ]
+}

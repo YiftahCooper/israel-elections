@@ -1,0 +1,6788 @@
+[
+  {
+    "id": 1,
+    "bbox": [
+      35.22810095357335,
+      32.52965586152027,
+      35.243709655491216,
+      32.546302082793055
+    ],
+    "max_m": 171.18685982312235,
+    "worst": [
+      35.239610208000045,
+      32.531516364000026
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 477,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.22810095357335,
+          32.545950144251414
+        ],
+        "end": [
+          35.23031845049176,
+          32.54282470467702
+        ],
+        "max_m": 148.10043279124065
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.23071537895355,
+          32.54222493167272
+        ],
+        "end": [
+          35.243037544909626,
+          32.52965586152027
+        ],
+        "max_m": 171.18685982312235
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.229096509060795,
+          32.546302082793055
+        ],
+        "end": [
+          35.2312060921677,
+          32.543332594396
+        ],
+        "max_m": 142.0214411823488
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.23165666178485,
+          32.54264920387429
+        ],
+        "end": [
+          35.2409656,
+          32.5325519
+        ],
+        "max_m": 171.01287944374147
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.2409656,
+          32.5325519
+        ],
+        "end": [
+          35.243709655491216,
+          32.530357566872
+        ],
+        "max_m": 163.35208436692264
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-001.png"
+  },
+  {
+    "id": 2,
+    "bbox": [
+      35.17023705265255,
+      32.513574989779876,
+      35.22424653665997,
+      32.553847828000066
+    ],
+    "max_m": 640.057651860477,
+    "worst": [
+      35.1871259,
+      32.5236877
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 1506,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.17023705265255,
+          32.51408243621055
+        ],
+        "end": [
+          35.17663428601669,
+          32.52118168315435
+        ],
+        "max_m": 236.01800513422907
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.17113821095279,
+          32.513574989779876
+        ],
+        "end": [
+          35.17761896928667,
+          32.520752615148766
+        ],
+        "max_m": 236.43358553129514
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.178426075445486,
+          32.521850289364224
+        ],
+        "end": [
+          35.1892871,
+          32.5262341
+        ],
+        "max_m": 640.057651860477
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.17756426440369,
+          32.52240909151806
+        ],
+        "end": [
+          35.22424653665997,
+          32.55300675366952
+        ],
+        "max_m": 581.9018322598056
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.1892871,
+          32.5262341
+        ],
+        "end": [
+          35.2046865,
+          32.5410395
+        ],
+        "max_m": 576.7047392928213
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.2091551,
+          32.542520599999996
+        ],
+        "end": [
+          35.22386539358935,
+          32.5518434473597
+        ],
+        "max_m": 482.517482034025
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.2046865,
+          32.5410395
+        ],
+        "end": [
+          35.2091551,
+          32.542520599999996
+        ],
+        "max_m": 326.40000474154255
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+    "figure": "js-002.png"
+  },
+  {
+    "id": 3,
+    "bbox": [
+      35.248559558744546,
+      32.51920257827108,
+      35.263339403486434,
+      32.52699377596606
+    ],
+    "max_m": 216.5493504478155,
+    "worst": [
+      35.2525063,
+      32.5230593
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 329,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.2492108489909,
+          32.52699377596606
+        ],
+        "end": [
+          35.263339403486434,
+          32.51999427245994
+        ],
+        "max_m": 215.95755245744826
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.248559558744546,
+          32.526271590714906
+        ],
+        "end": [
+          35.26282228485086,
+          32.51920257827108
+        ],
+        "max_m": 216.5493504478155
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-003.png"
+  },
+  {
+    "id": 4,
+    "bbox": [
+      35.268938147585814,
+      32.509565,
+      35.364349930460904,
+      32.52317350500004
+    ],
+    "max_m": 544.4457914007414,
+    "worst": [
+      35.3490771,
+      32.51818000000001
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 1986,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.26926863946971,
+          32.517772357231536
+        ],
+        "end": [
+          35.364349930460904,
+          32.51800858433147
+        ],
+        "max_m": 536.6158699948195
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.3085243,
+          32.51051089999999
+        ],
+        "end": [
+          35.36398815503734,
+          32.517145898544406
+        ],
+        "max_m": 544.4457914007414
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.268938147585814,
+          32.51690551585354
+        ],
+        "end": [
+          35.3085243,
+          32.51051089999999
+        ],
+        "max_m": 316.1940816822559
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+    "figure": "js-004.png"
+  },
+  {
+    "id": 5,
+    "bbox": [
+      35.37834569250421,
+      32.50137547096572,
+      35.40241779481223,
+      32.51153440965845
+    ],
+    "max_m": 438.6972144170807,
+    "worst": [
+      35.3843387,
+      32.5050686
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 551,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.37879763985671,
+          32.51153440965845
+        ],
+        "end": [
+          35.40241779481223,
+          32.50226973313762
+        ],
+        "max_m": 384.3420598455959
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.37834569250421,
+          32.510710632094714
+        ],
+        "end": [
+          35.4018225295003,
+          32.50137547096572
+        ],
+        "max_m": 438.6972144170807
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+    "figure": "js-005.png"
+  },
+  {
+    "id": 6,
+    "bbox": [
+      35.15698131012034,
+      32.503281863176966,
+      35.16220283000536,
+      32.50687387378933
+    ],
+    "max_m": 177.18962481124262,
+    "worst": [
+      35.1606613,
+      32.504194299999995
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 131,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.15698131012034,
+          32.5041188563707
+        ],
+        "end": [
+          35.16136324221786,
+          32.50687387378933
+        ],
+        "max_m": 172.41334907997353
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.15738849061116,
+          32.503281863176966
+        ],
+        "end": [
+          35.16220283000536,
+          32.506300787489614
+        ],
+        "max_m": 177.18962481124262
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-006.png"
+  },
+  {
+    "id": 7,
+    "bbox": [
+      35.140876188275534,
+      32.4963075,
+      35.151870148240555,
+      32.501214730314985
+    ],
+    "max_m": 225.65747824348645,
+    "worst": [
+      35.1447483,
+      32.4963148
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 246,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.140876188275534,
+          32.497223203891956
+        ],
+        "end": [
+          35.15133069400057,
+          32.501214730314985
+        ],
+        "max_m": 221.5458587801552
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.141185322105045,
+          32.496320267158
+        ],
+        "end": [
+          35.151870148240555,
+          32.50043450578888
+        ],
+        "max_m": 225.65747824348645
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-007.png"
+  },
+  {
+    "id": 8,
+    "bbox": [
+      35.4041081,
+      32.491496771424686,
+      35.40641838400007,
+      32.49581116348641
+    ],
+    "max_m": 153.1293427929299,
+    "worst": [
+      35.40619712700004,
+      32.49475751300002
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 108,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.40520376381503,
+          32.49581116348641
+        ],
+        "end": [
+          35.40630424340283,
+          32.49354866161891
+        ],
+        "max_m": 153.1293427929299
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.406347372225,
+          32.49324580917986
+        ],
+        "end": [
+          35.40627274257228,
+          32.49153355417341
+        ],
+        "max_m": 113.75570404717024
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.40411130025608,
+          32.4954741982408
+        ],
+        "end": [
+          35.4052629458875,
+          32.49333664985284
+        ],
+        "max_m": 151.83534803149763
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.40527831630067,
+          32.49322872706485
+        ],
+        "end": [
+          35.40519909338163,
+          32.491496771424686
+        ],
+        "max_m": 114.81967970167057
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-008.png"
+  },
+  {
+    "id": 9,
+    "bbox": [
+      35.4050953,
+      32.46231800875978,
+      35.420785110000054,
+      32.489961613607115
+    ],
+    "max_m": 606.0566844369812,
+    "worst": [
+      35.4087304,
+      32.477645700000004
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 734,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.40679659279253,
+          32.489961613607115
+        ],
+        "end": [
+          35.42004731963819,
+          32.46242539171897
+        ],
+        "max_m": 605.3037811058534
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.4189469,
+          32.4623438
+        ],
+        "end": [
+          35.418958395785396,
+          32.46231800875978
+        ],
+        "max_m": 101.44193832017056
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.40578900985031,
+          32.48966599633264
+        ],
+        "end": [
+          35.4189469,
+          32.4623438
+        ],
+        "max_m": 606.0566844369812
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+    "figure": "js-009.png"
+  },
+  {
+    "id": 10,
+    "bbox": [
+      35.075410696528216,
+      32.46232417774462,
+      35.1399595,
+      32.4953254438093
+    ],
+    "max_m": 445.93789085675576,
+    "worst": [
+      35.09314274600007,
+      32.48050581200005
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 1774,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.075410696528216,
+          32.463046228737284
+        ],
+        "end": [
+          35.137107911898234,
+          32.4953254438093
+        ],
+        "max_m": 445.93789085675576
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.098968,
+          32.478098200000005
+        ],
+        "end": [
+          35.13793202746114,
+          32.4947322743411
+        ],
+        "max_m": 441.7100709424225
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.083155,
+          32.4681846
+        ],
+        "end": [
+          35.098968,
+          32.478098200000005
+        ],
+        "max_m": 431.3898772957528
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.0792625,
+          32.4650534
+        ],
+        "end": [
+          35.083155,
+          32.4681846
+        ],
+        "max_m": 258.7775881477077
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.07613530529831,
+          32.46232417774462
+        ],
+        "end": [
+          35.0792625,
+          32.4650534
+        ],
+        "max_m": 208.68602205279427
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+    "figure": "js-010.png"
+  },
+  {
+    "id": 11,
+    "bbox": [
+      35.42013917426447,
+      32.45870870135774,
+      35.4203042,
+      32.45901569239965
+    ],
+    "max_m": 110.55895110699555,
+    "worst": [
+      35.4202974,
+      32.4588294
+    ],
+    "directions": [
+      "OSM to OCHA"
+    ],
+    "samples": 14,
+    "pieces": [
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.42024425496027,
+          32.45901569239965
+        ],
+        "end": [
+          35.42013917426447,
+          32.45870870135774
+        ],
+        "max_m": 110.55895110699555
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-011.png"
+  },
+  {
+    "id": 12,
+    "bbox": [
+      35.4158149,
+      32.45370787000422,
+      35.41807738357329,
+      32.45677011325128
+    ],
+    "max_m": 174.76347788723422,
+    "worst": [
+      35.4160774,
+      32.4560795
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 72,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.41807738357329,
+          32.45614292834557
+        ],
+        "end": [
+          35.41705164597828,
+          32.45370787000422
+        ],
+        "max_m": 165.26298856562096
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.41721247091163,
+          32.45677011325128
+        ],
+        "end": [
+          35.41600984953513,
+          32.45389583704953
+        ],
+        "max_m": 174.76347788723422
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-012.png"
+  },
+  {
+    "id": 13,
+    "bbox": [
+      35.069173192464845,
+      32.452633064498585,
+      35.0734643,
+      32.45706362175685
+    ],
+    "max_m": 251.05941181269117,
+    "worst": [
+      35.0728119,
+      32.45444390000001
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 138,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.069173192464845,
+          32.45344288887974
+        ],
+        "end": [
+          35.07141516975739,
+          32.45706362175685
+        ],
+        "max_m": 250.47689156202514
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.06979795437804,
+          32.452633064498585
+        ],
+        "end": [
+          35.0734558,
+          32.45587150000001
+        ],
+        "max_m": 251.05941181269117
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.0734558,
+          32.45587150000001
+        ],
+        "end": [
+          35.07259396819789,
+          32.45702878255548
+        ],
+        "max_m": 231.30412862659995
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-013.png"
+  },
+  {
+    "id": 14,
+    "bbox": [
+      35.06302160073294,
+      32.440746655594104,
+      35.0658243,
+      32.447846462742376
+    ],
+    "max_m": 259.018034989579,
+    "worst": [
+      35.0658243,
+      32.443318000000005
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 173,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.06302160073294,
+          32.441122511174854
+        ],
+        "end": [
+          35.06444929536777,
+          32.447846462742376
+        ],
+        "max_m": 255.30733371937126
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.064076904904475,
+          32.440746655594104
+        ],
+        "end": [
+          35.06551321589,
+          32.44751104673657
+        ],
+        "max_m": 259.018034989579
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-014.png"
+  },
+  {
+    "id": 15,
+    "bbox": [
+      35.0600758247629,
+      32.43131847097867,
+      35.06300868159443,
+      32.43837142476967
+    ],
+    "max_m": 185.48106276972808,
+    "worst": [
+      35.0607079,
+      32.43666340000001
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 188,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.06110739210834,
+          32.43131847097867
+        ],
+        "end": [
+          35.06300868159443,
+          32.437595631500976
+        ],
+        "max_m": 149.63837356490785
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.0600758247629,
+          32.43155650723164
+        ],
+        "end": [
+          35.062009064945606,
+          32.43837142476967
+        ],
+        "max_m": 185.48106276972808
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-015.png"
+  },
+  {
+    "id": 16,
+    "bbox": [
+      35.05707984946884,
+      32.42414671200226,
+      35.06062045318089,
+      32.4287805355521
+    ],
+    "max_m": 196.4272939936878,
+    "worst": [
+      35.05922487000004,
+      32.42479545600003
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 120,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.05803493750714,
+          32.42414671200226
+        ],
+        "end": [
+          35.06062045318089,
+          32.42846433574435
+        ],
+        "max_m": 196.4272939936878
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.05707984946884,
+          32.424684014579114
+        ],
+        "end": [
+          35.05962165661415,
+          32.4287805355521
+        ],
+        "max_m": 186.6186387135768
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-016.png"
+  },
+  {
+    "id": 17,
+    "bbox": [
+      35.4102977,
+      32.405941899999995,
+      35.45689654807456,
+      32.44080313163562
+    ],
+    "max_m": 792.5512094643957,
+    "worst": [
+      35.4410057,
+      32.405941899999995
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 1432,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.41357449848266,
+          32.4404135417109
+        ],
+        "end": [
+          35.45271239646205,
+          32.41385995596844
+        ],
+        "max_m": 660.137968343961
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.453486023027274,
+          32.41390768516521
+        ],
+        "end": [
+          35.45675714238547,
+          32.41405252610051
+        ],
+        "max_m": 134.39694636238235
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.41250322202459,
+          32.44080313163562
+        ],
+        "end": [
+          35.4269024,
+          32.41204209999999
+        ],
+        "max_m": 307.46725440676386
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.4294166,
+          32.41018129999999
+        ],
+        "end": [
+          35.45288631745469,
+          32.41296677446602
+        ],
+        "max_m": 792.5512094643957
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.45350591007376,
+          32.41300500068129
+        ],
+        "end": [
+          35.45689654807456,
+          32.41313857851137
+        ],
+        "max_m": 136.11355078159048
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.4269024,
+          32.41204209999999
+        ],
+        "end": [
+          35.4294166,
+          32.41018129999999
+        ],
+        "max_m": 399.9770211058171
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+    "figure": "js-017.png"
+  },
+  {
+    "id": 18,
+    "bbox": [
+      35.45862768576488,
+      32.409368625467266,
+      35.48280444904836,
+      32.41390834912694
+    ],
+    "max_m": 236.11622370329772,
+    "worst": [
+      35.47780564400006,
+      32.412923817000035
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 520,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.45887060005893,
+          32.41390834912694
+        ],
+        "end": [
+          35.48280444904836,
+          32.41007301810848
+        ],
+        "max_m": 236.11622370329772
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.45862768576488,
+          32.41302048321252
+        ],
+        "end": [
+          35.4821278679338,
+          32.409368625467266
+        ],
+        "max_m": 230.14916573011664
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-018.png"
+  },
+  {
+    "id": 19,
+    "bbox": [
+      35.054465201594944,
+      32.41820696684157,
+      35.0572782,
+      32.42104126326331
+    ],
+    "max_m": 187.53198535925944,
+    "worst": [
+      35.057014,
+      32.4190955
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 79,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.054465201594944,
+          32.418885189090126
+        ],
+        "end": [
+          35.05604648938315,
+          32.42104126326331
+        ],
+        "max_m": 179.01398577880425
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.05520495421474,
+          32.41820696684157
+        ],
+        "end": [
+          35.057190638237806,
+          32.420896540702856
+        ],
+        "max_m": 187.53198535925944
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-019.png"
+  },
+  {
+    "id": 20,
+    "bbox": [
+      35.484688776085946,
+      32.406870056375695,
+      35.4867063668708,
+      32.40839088469701
+    ],
+    "max_m": 111.59249887624073,
+    "worst": [
+      35.48658361400004,
+      32.40765948900002
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 34,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.48538677619531,
+          32.40839088469701
+        ],
+        "end": [
+          35.4867063668708,
+          32.40743939292698
+        ],
+        "max_m": 111.59249887624073
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.484688776085946,
+          32.40770635669441
+        ],
+        "end": [
+          35.485848247784205,
+          32.406870056375695
+        ],
+        "max_m": 109.67669813432458
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-020.png"
+  },
+  {
+    "id": 21,
+    "bbox": [
+      35.05491020463398,
+      32.41150994367664,
+      35.055175,
+      32.412052896825216
+    ],
+    "max_m": 114.18863052225002,
+    "worst": [
+      35.0551408,
+      32.4119004
+    ],
+    "directions": [
+      "OSM to OCHA"
+    ],
+    "samples": 12,
+    "pieces": [
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.0551559916691,
+          32.41150994367664
+        ],
+        "end": [
+          35.05491020463398,
+          32.412052896825216
+        ],
+        "max_m": 114.18863052225002
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-021.png"
+  },
+  {
+    "id": 22,
+    "bbox": [
+      35.48985537245173,
+      32.40236520671455,
+      35.49318423342565,
+      32.40449896442111
+    ],
+    "max_m": 119.01327559503144,
+    "worst": [
+      35.4908101,
+      32.40304640000001
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 68,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.490452435083824,
+          32.40449896442111
+        ],
+        "end": [
+          35.49318423342565,
+          32.40318641224548
+        ],
+        "max_m": 116.37857222615003
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.48985537245173,
+          32.403742251878164
+        ],
+        "end": [
+          35.4927452142251,
+          32.40236520671455
+        ],
+        "max_m": 119.01327559503144
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-022.png"
+  },
+  {
+    "id": 23,
+    "bbox": [
+      35.49545698797527,
+      32.39999491165349,
+      35.50128947571433,
+      32.40221094025569
+    ],
+    "max_m": 125.56589625403849,
+    "worst": [
+      35.49958844500003,
+      32.40145672000005
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 122,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.49584225598404,
+          32.40221094025569
+        ],
+        "end": [
+          35.50128947571433,
+          32.400894449211656
+        ],
+        "max_m": 125.56589625403849
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.49545698797527,
+          32.401370400461886
+        ],
+        "end": [
+          35.50108380842746,
+          32.39999491165349
+        ],
+        "max_m": 125.00674930439592
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-023.png"
+  },
+  {
+    "id": 24,
+    "bbox": [
+      35.504667042506576,
+      32.398911302903706,
+      35.50632562681301,
+      32.40004058240414
+    ],
+    "max_m": 104.70051685758393,
+    "worst": [
+      35.50555869100003,
+      32.399968975000036
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 33,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.50495358448758,
+          32.40004058240414
+        ],
+        "end": [
+          35.50632562681301,
+          32.39978340210816
+        ],
+        "max_m": 104.70051685758393
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.504667042506576,
+          32.39916425612084
+        ],
+        "end": [
+          35.50605552359278,
+          32.398911302903706
+        ],
+        "max_m": 104.39676680257864
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-024.png"
+  },
+  {
+    "id": 25,
+    "bbox": [
+      35.05434259002646,
+      32.405189470464265,
+      35.05571900800004,
+      32.4072704749406
+    ],
+    "max_m": 121.8269700628237,
+    "worst": [
+      35.05563509500007,
+      32.405473829000066
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 51,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.05536355506218,
+          32.405189470464265
+        ],
+        "end": [
+          35.055622347956024,
+          32.4072704749406
+        ],
+        "max_m": 121.8269700628237
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.05434259002646,
+          32.40555280605029
+        ],
+        "end": [
+          35.05455413751837,
+          32.407234287590725
+        ],
+        "max_m": 121.02936146995762
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-025.png"
+  },
+  {
+    "id": 26,
+    "bbox": [
+      35.51109416639034,
+      32.391190468613026,
+      35.53492369171427,
+      32.39857746314224
+    ],
+    "max_m": 258.115822758292,
+    "worst": [
+      35.5202045,
+      32.394980899999986
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 518,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.511281538301525,
+          32.39857746314224
+        ],
+        "end": [
+          35.53492369171427,
+          32.39198705231403
+        ],
+        "max_m": 257.13088599071
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.51109416639034,
+          32.39768859152611
+        ],
+        "end": [
+          35.53438970888244,
+          32.391190468613026
+        ],
+        "max_m": 258.115822758292
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-026.png"
+  },
+  {
+    "id": 27,
+    "bbox": [
+      35.05246580318962,
+      32.4022473931796,
+      35.053446272974654,
+      32.402917193327816
+    ],
+    "max_m": 102.92922332636562,
+    "worst": [
+      35.052537415000074,
+      32.402826388000044
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 7,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.05246580318962,
+          32.40269451378351
+        ],
+        "end": [
+          35.052655802328744,
+          32.402917193327816
+        ],
+        "max_m": 102.92922332636562
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.053393252500776,
+          32.4022473931796
+        ],
+        "end": [
+          35.053446272974654,
+          32.40230788507954
+        ],
+        "max_m": 100.00000000001786
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-027.png"
+  },
+  {
+    "id": 28,
+    "bbox": [
+      35.53570489596345,
+      32.3870989,
+      35.5549603,
+      32.39180159600005
+    ],
+    "max_m": 392.5713482070712,
+    "worst": [
+      35.5549603,
+      32.38901729999999
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 418,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.53631075244982,
+          32.39113379310618
+        ],
+        "end": [
+          35.54583027763866,
+          32.38924993328016
+        ],
+        "max_m": 278.22705939991874
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.54626714342651,
+          32.38935522401552
+        ],
+        "end": [
+          35.55226772300006,
+          32.39180159600005
+        ],
+        "max_m": 333.5326559077169
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.53570489596345,
+          32.390370245647325
+        ],
+        "end": [
+          35.54611503984119,
+          32.38834762616579
+        ],
+        "max_m": 289.6246726552297
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.54651924204828,
+          32.38846797658538
+        ],
+        "end": [
+          35.5549603,
+          32.38901729999999
+        ],
+        "max_m": 392.5713482070712
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+    "figure": "js-028.png"
+  },
+  {
+    "id": 29,
+    "bbox": [
+      35.04482643538023,
+      32.389574682117384,
+      35.049761683771,
+      32.39790001481312
+    ],
+    "max_m": 211.27376327782883,
+    "worst": [
+      35.0489656,
+      32.3938354
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 218,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.04482643538023,
+          32.39038133916229
+        ],
+        "end": [
+          35.048453619834966,
+          32.397326159751785
+        ],
+        "max_m": 209.27202085850755
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.04853507008509,
+          32.397450817537006
+        ],
+        "end": [
+          35.04890773910729,
+          32.39790001481312
+        ],
+        "max_m": 104.04891399944023
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.04561622528422,
+          32.389574682117384
+        ],
+        "end": [
+          35.04785,
+          32.39163680000001
+        ],
+        "max_m": 207.98183203965863
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.04785,
+          32.39163680000001
+        ],
+        "end": [
+          35.0493944237095,
+          32.39690620081552
+        ],
+        "max_m": 211.27376327782883
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.04943838637216,
+          32.39697348369261
+        ],
+        "end": [
+          35.049761683771,
+          32.39735416906948
+        ],
+        "max_m": 103.0578632908505
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-029.png"
+  },
+  {
+    "id": 30,
+    "bbox": [
+      35.0401927,
+      32.37739446612391,
+      35.04590782014204,
+      32.38343330693528
+    ],
+    "max_m": 366.6843993171649,
+    "worst": [
+      35.041659,
+      32.377733199999994
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 203,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.04590782014204,
+          32.37826873460162
+        ],
+        "end": [
+          35.043108558105104,
+          32.38314930214361
+        ],
+        "max_m": 309.4355439596442
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.04531482483775,
+          32.37739446612391
+        ],
+        "end": [
+          35.0417232,
+          32.37769610000001
+        ],
+        "max_m": 364.26515828681016
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.0417232,
+          32.37769610000001
+        ],
+        "end": [
+          35.04199174827612,
+          32.38343330693528
+        ],
+        "max_m": 366.6843993171649
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+    "figure": "js-030.png"
+  },
+  {
+    "id": 31,
+    "bbox": [
+      35.047483757526464,
+      32.375181332132414,
+      35.04924016467649,
+      32.376803994830865
+    ],
+    "max_m": 151.81298928276493,
+    "worst": [
+      35.049042,
+      32.3765007
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 36,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.048259619437275,
+          32.375181332132414
+        ],
+        "end": [
+          35.047483757526464,
+          32.3761160827913
+        ],
+        "max_m": 135.1141682164865
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.04924016467649,
+          32.37559997166189
+        ],
+        "end": [
+          35.048362783196055,
+          32.376803994830865
+        ],
+        "max_m": 151.81298928276493
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-031.png"
+  },
+  {
+    "id": 32,
+    "bbox": [
+      35.04067320900003,
+      32.356202992338964,
+      35.0516079,
+      32.369911431976554
+    ],
+    "max_m": 351.33689499284736,
+    "worst": [
+      35.04794350000001,
+      32.3593916
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 457,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.040697055699994,
+          32.35629252446628
+        ],
+        "end": [
+          35.04964212555703,
+          32.36980550103999
+        ],
+        "max_m": 310.7100180702093
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.041867349538094,
+          32.356202992338964
+        ],
+        "end": [
+          35.05073061258561,
+          32.369911431976554
+        ],
+        "max_m": 351.33689499284736
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+    "figure": "js-032.png"
+  },
+  {
+    "id": 33,
+    "bbox": [
+      35.025562587000024,
+      32.344059420240626,
+      35.042403577925064,
+      32.350808685000054
+    ],
+    "max_m": 467.927373480042,
+    "worst": [
+      35.02637513600007,
+      32.350541655000036
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 487,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.02712937848383,
+          32.344059420240626
+        ],
+        "end": [
+          35.04119885051528,
+          32.34897107867791
+        ],
+        "max_m": 467.927373480042
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.028244568694085,
+          32.34433678182929
+        ],
+        "end": [
+          35.042403577925064,
+          32.348442133333634
+        ],
+        "max_m": 356.0937026599305
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+    "figure": "js-033.png"
+  },
+  {
+    "id": 34,
+    "bbox": [
+      35.01875972076302,
+      32.34051303672702,
+      35.02026714585708,
+      32.34187840000004
+    ],
+    "max_m": 155.47923889653833,
+    "worst": [
+      35.01924136700006,
+      32.34187840000004
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 29,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.01875972076302,
+          32.341060832953346
+        ],
+        "end": [
+          35.020078877322156,
+          32.341725461620534
+        ],
+        "max_m": 155.47923889653833
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.0197455375419,
+          32.34051303672702
+        ],
+        "end": [
+          35.02026714585708,
+          32.340768723572694
+        ],
+        "max_m": 119.17655626721138
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-034.png"
+  },
+  {
+    "id": 35,
+    "bbox": [
+      35.02551229969583,
+      32.33891816600004,
+      35.02637346634157,
+      32.34002139999999
+    ],
+    "max_m": 108.29735116431236,
+    "worst": [
+      35.02558927600006,
+      32.33891816600004
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 20,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.02551229969583,
+          32.33898567831587
+        ],
+        "end": [
+          35.0263664444876,
+          32.33908816479911
+        ],
+        "max_m": 108.29735116431236
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.025898799724246,
+          32.33994320591401
+        ],
+        "end": [
+          35.02615395288073,
+          32.3399728632639
+        ],
+        "max_m": 101.87249060494668
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.026227294340124,
+          32.339988905724866
+        ],
+        "end": [
+          35.02637346634157,
+          32.340020878744504
+        ],
+        "max_m": 101.00884240917121
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-035.png"
+  },
+  {
+    "id": 36,
+    "bbox": [
+      35.016432188501774,
+      32.332694726253514,
+      35.01802060500006,
+      32.33891769233162
+    ],
+    "max_m": 145.55522816921828,
+    "worst": [
+      35.01802060500006,
+      32.33524458400006
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 144,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.01749326298585,
+          32.332694726253514
+        ],
+        "end": [
+          35.01802040832994,
+          32.3384384576476
+        ],
+        "max_m": 145.55522816921828
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.016432188501774,
+          32.33277817034873
+        ],
+        "end": [
+          35.016967571164145,
+          32.33891769233162
+        ],
+        "max_m": 145.23515290281668
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-036.png"
+  },
+  {
+    "id": 37,
+    "bbox": [
+      35.011279761000026,
+      32.295697947862614,
+      35.01571,
+      32.31403386805247
+    ],
+    "max_m": 186.0704505834306,
+    "worst": [
+      35.01288580900007,
+      32.30270489600008
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 432,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.01189743501193,
+          32.295697947862614
+        ],
+        "end": [
+          35.014574228411746,
+          32.31403386805247
+        ],
+        "max_m": 186.0704505834306
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.01302870336986,
+          32.296047184485396
+        ],
+        "end": [
+          35.0156806,
+          32.3118048
+        ],
+        "max_m": 185.8425261282062
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.0156806,
+          32.3118048
+        ],
+        "end": [
+          35.01563793814901,
+          32.314006464405146
+        ],
+        "max_m": 140.21781585637933
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-037.png"
+  },
+  {
+    "id": 38,
+    "bbox": [
+      35.0101679721738,
+      32.284211078693545,
+      35.01472456800008,
+      32.29203351330109
+    ],
+    "max_m": 183.60321618404103,
+    "worst": [
+      35.01472456800008,
+      32.29075715100002
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 197,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.01107712272548,
+          32.284211078693545
+        ],
+        "end": [
+          35.01430036074587,
+          32.29201583506639
+        ],
+        "max_m": 183.60321618404103
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.0101679721738,
+          32.2846865703301
+        ],
+        "end": [
+          35.013190145765456,
+          32.29203351330109
+        ],
+        "max_m": 171.79426406898503
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-038.png"
+  },
+  {
+    "id": 39,
+    "bbox": [
+      35.0089851,
+      32.279441799999994,
+      35.01935221063492,
+      32.28209622607774
+    ],
+    "max_m": 228.0108513407374,
+    "worst": [
+      35.01291631300006,
+      32.28160941400006
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 240,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.01935221063492,
+          32.28059971054196
+        ],
+        "end": [
+          35.010601258928396,
+          32.28209622607774
+        ],
+        "max_m": 228.0108513407374
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.01867563498095,
+          32.27984357555216
+        ],
+        "end": [
+          35.009435971126514,
+          32.28180114804031
+        ],
+        "max_m": 214.68648828333372
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-039.png"
+  },
+  {
+    "id": 40,
+    "bbox": [
+      35.020916053000064,
+      32.246783990010734,
+      35.0306328,
+      32.26844880538567
+    ],
+    "max_m": 316.59567511012415,
+    "worst": [
+      35.028518,
+      32.26031869999999
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 559,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.021463119687084,
+          32.247001764454964
+        ],
+        "end": [
+          35.022842234717324,
+          32.255158091605836
+        ],
+        "max_m": 284.1889651454462
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.02303381602705,
+          32.255734874828455
+        ],
+        "end": [
+          35.02789901402797,
+          32.26823294033962
+        ],
+        "max_m": 300.7639981016479
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.0239033,
+          32.24866839999999
+        ],
+        "end": [
+          35.02384540975321,
+          32.25480523019154
+        ],
+        "max_m": 277.2259205701529
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.02419353942159,
+          32.25574857881123
+        ],
+        "end": [
+          35.02894396541769,
+          32.26844880538567
+        ],
+        "max_m": 316.59567511012415
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.0225383567022,
+          32.246783990010734
+        ],
+        "end": [
+          35.0239033,
+          32.24866839999999
+        ],
+        "max_m": 238.92051339071307
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+    "figure": "js-040.png"
+  },
+  {
+    "id": 41,
+    "bbox": [
+      35.0191643,
+      32.24121641658244,
+      35.02095214994267,
+      32.2434239999999
+    ],
+    "max_m": 151.6999780147711,
+    "worst": [
+      35.019186,
+      32.2423204
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 54,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.02062971273569,
+          32.24133335302162
+        ],
+        "end": [
+          35.02095214994267,
+          32.24308270105384
+        ],
+        "max_m": 145.46359643527336
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.01953301520328,
+          32.24121641658244
+        ],
+        "end": [
+          35.01992589432866,
+          32.2434239999999
+        ],
+        "max_m": 151.6999780147711
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-041.png"
+  },
+  {
+    "id": 42,
+    "bbox": [
+      35.011460818324295,
+      32.23338565276357,
+      35.0202103,
+      32.236687115000045
+    ],
+    "max_m": 274.8078114452999,
+    "worst": [
+      35.0177529,
+      32.2335243
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 228,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.011460818324295,
+          32.234099063553074
+        ],
+        "end": [
+          35.01875025452901,
+          32.236067487701696
+        ],
+        "max_m": 217.2114941378023
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.01229647727376,
+          32.23338565276357
+        ],
+        "end": [
+          35.01981348089226,
+          32.235554524121255
+        ],
+        "max_m": 274.8078114452999
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-042.png"
+  },
+  {
+    "id": 43,
+    "bbox": [
+      34.95833169286539,
+      32.193386515270916,
+      35.00868911747546,
+      32.22898725970425
+    ],
+    "max_m": 284.69101624465014,
+    "worst": [
+      34.96096181100006,
+      32.20108421100007
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 1418,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.95833169286539,
+          32.19353590801566
+        ],
+        "end": [
+          34.970035686769755,
+          32.20177344870407
+        ],
+        "max_m": 284.69101624465014
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.97112402506782,
+          32.20176236943163
+        ],
+        "end": [
+          35.00788646107038,
+          32.22898725970425
+        ],
+        "max_m": 258.31344701397825
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.9797431,
+          32.2034148
+        ],
+        "end": [
+          34.9877537,
+          32.206919
+        ],
+        "max_m": 232.76227388692624
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.9877537,
+          32.206919
+        ],
+        "end": [
+          35.0072087,
+          32.2266072
+        ],
+        "max_m": 244.46568506142248
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.959378219834406,
+          32.193386515270916
+        ],
+        "end": [
+          34.96999496551145,
+          32.20082371929898
+        ],
+        "max_m": 271.5802703506245
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.971072408451015,
+          32.20082601180316
+        ],
+        "end": [
+          34.9797431,
+          32.2034148
+        ],
+        "max_m": 268.67219548715497
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.0072087,
+          32.2266072
+        ],
+        "end": [
+          35.00868911747546,
+          32.228394162457995
+        ],
+        "max_m": 141.69326454981018
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-043.png"
+  },
+  {
+    "id": 44,
+    "bbox": [
+      34.958751235106455,
+      32.16278155353246,
+      34.97430911784156,
+      32.18056246070277
+    ],
+    "max_m": 443.2958754821649,
+    "worst": [
+      34.964224,
+      32.1689337
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 521,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.97430911784156,
+          32.1633429363082
+        ],
+        "end": [
+          34.96560374190149,
+          32.17336470368326
+        ],
+        "max_m": 297.11392351850117
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.97339966214198,
+          32.16278155353246
+        ],
+        "end": [
+          34.96454574917266,
+          32.17286316478264
+        ],
+        "max_m": 443.2958754821649
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.96315638863452,
+          32.173471238908434
+        ],
+        "end": [
+          34.958751235106455,
+          32.18027910182297
+        ],
+        "max_m": 182.88787201094047
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.96364949708288,
+          32.174322793658035
+        ],
+        "end": [
+          34.959775107074506,
+          32.18056246070277
+        ],
+        "max_m": 179.59464476574817
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+    "figure": "js-044.png"
+  },
+  {
+    "id": 45,
+    "bbox": [
+      34.97468763300003,
+      32.156599931895315,
+      34.9773437,
+      32.160476174273136
+    ],
+    "max_m": 248.41383957716786,
+    "worst": [
+      34.97734014999185,
+      32.15810185000228
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 100,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.97537536001581,
+          32.156599931895315
+        ],
+        "end": [
+          34.97474977780997,
+          32.160183015642005
+        ],
+        "max_m": 240.94162676869993
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.97668079124998,
+          32.156634848858715
+        ],
+        "end": [
+          34.97581615831053,
+          32.160476174273136
+        ],
+        "max_m": 248.41383957716786
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-045.png"
+  },
+  {
+    "id": 46,
+    "bbox": [
+      34.9744174,
+      32.14853755676735,
+      34.98565531765842,
+      32.154240376148564
+    ],
+    "max_m": 338.3731088762929,
+    "worst": [
+      34.9793852,
+      32.148735499999994
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 268,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.98565531765842,
+          32.14942859547904
+        ],
+        "end": [
+          34.976129880925974,
+          32.15412426437274
+        ],
+        "max_m": 315.09075406302037
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.98504284764041,
+          32.14853755676735
+        ],
+        "end": [
+          34.97501044638721,
+          32.154240376148564
+        ],
+        "max_m": 338.3731088762929
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: the signed line and modern products do not uniquely coincide at this scale. VI(3) staged establishment / VI(11) rectifications are possible explanations, not verified local adjustments.",
+    "figure": "js-046.png"
+  },
+  {
+    "id": 47,
+    "bbox": [
+      34.98744561173582,
+      32.14225561750581,
+      34.99006752787795,
+      32.14548239878646
+    ],
+    "max_m": 116.00591848601789,
+    "worst": [
+      34.98750172300004,
+      32.14480923900005
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 77,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.98918826238684,
+          32.14225561750581
+        ],
+        "end": [
+          34.988319982201254,
+          32.1437569603037
+        ],
+        "max_m": 108.05319054441868
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.98826950336193,
+          32.14384860917314
+        ],
+        "end": [
+          34.98744561173582,
+          32.145194665586814
+        ],
+        "max_m": 116.00591848601789
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.99006752787795,
+          32.1427710181913
+        ],
+        "end": [
+          34.989296905075776,
+          32.144108426107955
+        ],
+        "max_m": 107.51326694862617
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.98919731998658,
+          32.144289235255236
+        ],
+        "end": [
+          34.98847174084253,
+          32.14548239878646
+        ],
+        "max_m": 113.53964987761827
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-047.png"
+  },
+  {
+    "id": 48,
+    "bbox": [
+      34.9867646,
+      32.1357231243167,
+      34.98971883030712,
+      32.13861159999999
+    ],
+    "max_m": 217.82001861983528,
+    "worst": [
+      34.9875258,
+      32.13861159999999
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 83,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.98859257655714,
+          32.13580461875388
+        ],
+        "end": [
+          34.98971883030712,
+          32.13784337188856
+        ],
+        "max_m": 173.4443360305851
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.98745500651305,
+          32.1357231243167
+        ],
+        "end": [
+          34.9876269,
+          32.137729799999995
+        ],
+        "max_m": 207.41159337814523
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.9876269,
+          32.137729799999995
+        ],
+        "end": [
+          34.9875258,
+          32.13861159999999
+        ],
+        "max_m": 217.82001861983528
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.9875258,
+          32.13861159999999
+        ],
+        "end": [
+          34.98878602550444,
+          32.13858773973346
+        ],
+        "max_m": 217.82001861983528
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-048.png"
+  },
+  {
+    "id": 49,
+    "bbox": [
+      34.98754051485413,
+      32.11859638805277,
+      34.98893683381117,
+      32.11988837605328
+    ],
+    "max_m": 110.43058150610553,
+    "worst": [
+      34.98878680000001,
+      32.119456599999985
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 30,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.98790617874407,
+          32.11859638805277
+        ],
+        "end": [
+          34.98754051485413,
+          32.119490531374694
+        ],
+        "max_m": 109.34113499210001
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.9886263,
+          32.1197282
+        ],
+        "end": [
+          34.988501769186925,
+          32.11988837605328
+        ],
+        "max_m": 105.55248840075147
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.98893683381117,
+          32.118843661353544
+        ],
+        "end": [
+          34.9886263,
+          32.1197282
+        ],
+        "max_m": 110.43058150610553
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-049.png"
+  },
+  {
+    "id": 50,
+    "bbox": [
+      34.99093007308156,
+      32.10609787545542,
+      34.9938509,
+      32.113371300000004
+    ],
+    "max_m": 163.7117023402002,
+    "worst": [
+      34.9928023,
+      32.1125912
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 175,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.99180670174056,
+          32.10658560526358
+        ],
+        "end": [
+          34.99241952918009,
+          32.10990579306623
+        ],
+        "max_m": 137.59047718507395
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.992277588682356,
+          32.110405248423135
+        ],
+        "end": [
+          34.99093007308156,
+          32.112575726716194
+        ],
+        "max_m": 160.8499559093866
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.99322,
+          32.1064223
+        ],
+        "end": [
+          34.9935901,
+          32.1072909
+        ],
+        "max_m": 138.12975728371873
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.9935901,
+          32.1072909
+        ],
+        "end": [
+          34.993493575762535,
+          32.109988689804666
+        ],
+        "max_m": 142.55925667626886
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.99327365015665,
+          32.1107483629494
+        ],
+        "end": [
+          34.99178425346149,
+          32.113174932591384
+        ],
+        "max_m": 163.7117023402002
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.99272401059597,
+          32.10609787545542
+        ],
+        "end": [
+          34.99322,
+          32.1064223
+        ],
+        "max_m": 131.34998642194628
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-050.png"
+  },
+  {
+    "id": 51,
+    "bbox": [
+      34.990765741580034,
+      32.102255212548975,
+      34.9910617,
+      32.10255959430688
+    ],
+    "max_m": 116.74951102356096,
+    "worst": [
+      34.9910617,
+      32.10236170000001
+    ],
+    "directions": [
+      "OSM to OCHA"
+    ],
+    "samples": 8,
+    "pieces": [
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.990765741580034,
+          32.102255212548975
+        ],
+        "end": [
+          34.991003001772526,
+          32.10255959430688
+        ],
+        "max_m": 116.74951102356096
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-051.png"
+  },
+  {
+    "id": 52,
+    "bbox": [
+      34.9861573,
+      32.099483380928326,
+      34.98819642134937,
+      32.101106196590216
+    ],
+    "max_m": 153.81021323487946,
+    "worst": [
+      34.9861573,
+      32.100306499999995
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 39,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.987476348315624,
+          32.099483380928326
+        ],
+        "end": [
+          34.98819642134937,
+          32.10049125756691
+        ],
+        "max_m": 128.50467787009708
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.986383806544744,
+          32.09968965085427
+        ],
+        "end": [
+          34.98739583646166,
+          32.101106196590216
+        ],
+        "max_m": 153.81021323487946
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-052.png"
+  },
+  {
+    "id": 53,
+    "bbox": [
+      34.984947608207726,
+      32.08615781669369,
+      34.9874566345324,
+      32.08978299999999
+    ],
+    "max_m": 213.04990547670158,
+    "worst": [
+      34.9863064,
+      32.08978299999999
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 79,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.98647634673995,
+          32.08615781669369
+        ],
+        "end": [
+          34.984947608207726,
+          32.08816223234135
+        ],
+        "max_m": 156.13840253518202
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.9874566345324,
+          32.086525287794984
+        ],
+        "end": [
+          34.985301204175684,
+          32.08921911310761
+        ],
+        "max_m": 213.04990547670158
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-053.png"
+  },
+  {
+    "id": 54,
+    "bbox": [
+      34.98946788468846,
+      32.0475267918479,
+      35.002074409000045,
+      32.08064110310218
+    ],
+    "max_m": 273.55288005906317,
+    "worst": [
+      34.9912638,
+      32.074509
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 839,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.00197749115161,
+          32.04757592742684
+        ],
+        "end": [
+          34.99043539183724,
+          32.08064110310218
+        ],
+        "max_m": 273.50756413379605
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.99961600000001,
+          32.0518565
+        ],
+        "end": [
+          34.99526350000001,
+          32.063657500000005
+        ],
+        "max_m": 190.56499559584074
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.99526350000001,
+          32.063657500000005
+        ],
+        "end": [
+          34.9912371,
+          32.0746535
+        ],
+        "max_m": 273.55288005906317
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.9912371,
+          32.0746535
+        ],
+        "end": [
+          34.98946788468846,
+          32.08023383801537
+        ],
+        "max_m": 271.4117210939528
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.00090072780392,
+          32.0475267918479
+        ],
+        "end": [
+          34.99961600000001,
+          32.0518565
+        ],
+        "max_m": 173.92515038095996
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-054.png"
+  },
+  {
+    "id": 55,
+    "bbox": [
+      35.002368155000056,
+      32.03560648633382,
+      35.00351867794379,
+      32.0365123823448
+    ],
+    "max_m": 103.46386288882027,
+    "worst": [
+      35.002368155000056,
+      32.03624568700006
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 23,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.00246553295109,
+          32.03560648633382
+        ],
+        "end": [
+          35.002381213243844,
+          32.03649604806308
+        ],
+        "max_m": 103.46386288882027
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.00351867794379,
+          32.03570084991488
+        ],
+        "end": [
+          35.00344176384297,
+          32.0365123823448
+        ],
+        "max_m": 103.06275314911338
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-055.png"
+  },
+  {
+    "id": 56,
+    "bbox": [
+      34.992777595000064,
+      32.000011846775415,
+      35.0051949,
+      32.033666837898245
+    ],
+    "max_m": 648.682326419426,
+    "worst": [
+      34.992777595000064,
+      32.014604708000036
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 866,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.99820476201684,
+          32.000011846775415
+        ],
+        "end": [
+          35.00265207130335,
+          32.033638487792224
+        ],
+        "max_m": 648.682326419426
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.0038508,
+          32.0199891
+        ],
+        "end": [
+          35.00371144996879,
+          32.033666837898245
+        ],
+        "max_m": 391.86486991765145
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.99925486196039,
+          32.00027293896001
+        ],
+        "end": [
+          35.0038508,
+          32.0199891
+        ],
+        "max_m": 647.9600182464941
+      }
+    ],
+    "region": "West Bank",
+    "decision": "OSM supported near Rantis/Qibya at the worst point; OCHA departs from the signed ink. Retain OSM. This does not certify every vertex across the whole cluster.",
+    "figure": "js-056.png"
+  },
+  {
+    "id": 57,
+    "bbox": [
+      34.995902042966456,
+      31.97940895177167,
+      34.999106425000036,
+      31.987825747049577
+    ],
+    "max_m": 182.16912877471728,
+    "worst": [
+      34.99899960100004,
+      31.983615698000047
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 202,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.999021174431356,
+          31.98776599890224
+        ],
+        "end": [
+          34.99692603738989,
+          31.97940895177167
+        ],
+        "max_m": 182.16912877471728
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.995902042966456,
+          31.97965075652205
+        ],
+        "end": [
+          34.99795891072037,
+          31.987825747049577
+        ],
+        "max_m": 178.91941957246726
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-057.png"
+  },
+  {
+    "id": 58,
+    "bbox": [
+      34.99227603354384,
+      31.97231802029255,
+      34.99436001420667,
+      31.9741455231329
+    ],
+    "max_m": 146.96668112044657,
+    "worst": [
+      34.9940685,
+      31.972783399999994
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 42,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.99340222849878,
+          31.9741455231329
+        ],
+        "end": [
+          34.99227603354384,
+          31.97305162774632
+        ],
+        "max_m": 133.57571873042852
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.99292830576446,
+          31.97231802029255
+        ],
+        "end": [
+          34.99436001420667,
+          31.97370865586891
+        ],
+        "max_m": 146.96668112044657
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-058.png"
+  },
+  {
+    "id": 59,
+    "bbox": [
+      34.9868387,
+      31.969558675906008,
+      34.98850420570436,
+      31.97081355520422
+    ],
+    "max_m": 168.82411414574176,
+    "worst": [
+      34.9868387,
+      31.970600099999995
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 31,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.98850420570436,
+          31.969926146885378
+        ],
+        "end": [
+          34.988183041775095,
+          31.969558675906008
+        ],
+        "max_m": 117.94685977540212
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.98705930970456,
+          31.96972432670668
+        ],
+        "end": [
+          34.98806910435947,
+          31.97081355520422
+        ],
+        "max_m": 168.82411414574176
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-059.png"
+  },
+  {
+    "id": 60,
+    "bbox": [
+      34.98815741434598,
+      31.94688040974345,
+      35.00683988493646,
+      31.996864648911505
+    ],
+    "max_m": 739.4981978219799,
+    "worst": [
+      35.004401434000044,
+      31.981092262000058
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 942,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.00683988493646,
+          31.947198101763004
+        ],
+        "end": [
+          35.00045627786208,
+          31.996864648911505
+        ],
+        "max_m": 739.4981978219799
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.005785659873425,
+          31.94688040974345
+        ],
+        "end": [
+          34.98815741434598,
+          31.967697320140118
+        ],
+        "max_m": 433.7908926759021
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+    "figure": "js-060.png"
+  },
+  {
+    "id": 61,
+    "bbox": [
+      35.00617363787514,
+      31.94240306734136,
+      35.0087895,
+      31.94476901067864
+    ],
+    "max_m": 223.0719860835228,
+    "worst": [
+      35.0087895,
+      31.9436488
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 58,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.00617363787514,
+          31.94288554318104
+        ],
+        "end": [
+          35.00660654539857,
+          31.944545490798426
+        ],
+        "max_m": 161.64866533316578
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.00713121858983,
+          31.94240306734136
+        ],
+        "end": [
+          35.00774827407495,
+          31.94476901067864
+        ],
+        "max_m": 223.0719860835228
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-061.png"
+  },
+  {
+    "id": 62,
+    "bbox": [
+      34.98066310000001,
+      31.920838905133838,
+      35.0133963222644,
+      31.967559900023886
+    ],
+    "max_m": 613.9508537419341,
+    "worst": [
+      34.9925972,
+      31.9397529
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 1301,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.98695666184054,
+          31.96635707725819
+        ],
+        "end": [
+          35.0133963222644,
+          31.9216374787038
+        ],
+        "max_m": 578.861334102867
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.98593770117426,
+          31.966772490832184
+        ],
+        "end": [
+          35.012893183414896,
+          31.920838905133838
+        ],
+        "max_m": 613.9508537419341
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+    "figure": "js-062.png"
+  },
+  {
+    "id": 63,
+    "bbox": [
+      35.0023435,
+      31.862403397586657,
+      35.04212645100006,
+      31.94069732356404
+    ],
+    "max_m": 517.3310686301719,
+    "worst": [
+      35.04040596200008,
+      31.91935838300004
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 2232,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.03594044913071,
+          31.862403397586657
+        ],
+        "end": [
+          35.00600772680864,
+          31.940357188908635
+        ],
+        "max_m": 517.3310686301719
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.03495851225569,
+          31.86276041981888
+        ],
+        "end": [
+          35.0361929,
+          31.867233299999988
+        ],
+        "max_m": 224.38989038302915
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.0388726,
+          31.902803799999997
+        ],
+        "end": [
+          35.0361929,
+          31.867233299999988
+        ],
+        "max_m": 360.69768955926503
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.0388726,
+          31.902803799999997
+        ],
+        "end": [
+          35.00486070780278,
+          31.94069732356404
+        ],
+        "max_m": 508.0411437411132
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+    "figure": "js-063.png"
+  },
+  {
+    "id": 64,
+    "bbox": [
+      35.021542088832966,
+      31.877474985371787,
+      35.02988841800004,
+      31.916713009268317
+    ],
+    "max_m": 638.3653337063616,
+    "worst": [
+      35.022397,
+      31.8857478
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 927,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.02248862798063,
+          31.916713009268317
+        ],
+        "end": [
+          35.0267921851848,
+          31.877474985371787
+        ],
+        "max_m": 537.4697101408675
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.021542088832966,
+          31.916164416695572
+        ],
+        "end": [
+          35.0257327628966,
+          31.877758638385952
+        ],
+        "max_m": 638.3653337063616
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+    "figure": "js-064.png"
+  },
+  {
+    "id": 65,
+    "bbox": [
+      35.01769769576507,
+      31.8698868023529,
+      35.0257818,
+      31.874953633731508
+    ],
+    "max_m": 427.3182751192164,
+    "worst": [
+      35.0253148,
+      31.86993979999999
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 213,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.024701375845,
+          31.874953633731508
+        ],
+        "end": [
+          35.01769769576507,
+          31.870787806043275
+        ],
+        "max_m": 322.31633815039055
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.02576077014671,
+          31.874669990399575
+        ],
+        "end": [
+          35.017813544313604,
+          31.8698868023529
+        ],
+        "max_m": 427.3182751192164
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+    "figure": "js-065.png"
+  },
+  {
+    "id": 66,
+    "bbox": [
+      34.98455613141353,
+      31.867136129636872,
+      34.98769340516574,
+      31.8687383965028
+    ],
+    "max_m": 103.15949304389694,
+    "worst": [
+      34.987059068000065,
+      31.868672004000075
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 59,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.98743256036387,
+          31.8687383965028
+        ],
+        "end": [
+          34.98455613141353,
+          31.867997843541072
+        ],
+        "max_m": 103.15949304389694
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.98769340516574,
+          31.867863601365137
+        ],
+        "end": [
+          34.984867790326355,
+          31.867136129636872
+        ],
+        "max_m": 103.04531383863925
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-066.png"
+  },
+  {
+    "id": 67,
+    "bbox": [
+      35.066428443866066,
+      31.852999323036133,
+      35.082337229209216,
+      31.857614963000053
+    ],
+    "max_m": 146.90638298187147,
+    "worst": [
+      35.08061066000005,
+      31.854931300000036
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 305,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.082337229209216,
+          31.853767971798966
+        ],
+        "end": [
+          35.06960202559809,
+          31.857367490451207
+        ],
+        "max_m": 146.90638298187147
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.068496022580526,
+          31.857461993816656
+        ],
+        "end": [
+          35.066428443866066,
+          31.857556543598022
+        ],
+        "max_m": 108.00286372990665
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.0817728957976,
+          31.852999323036133
+        ],
+        "end": [
+          35.069467044902794,
+          31.856472741181072
+        ],
+        "max_m": 145.9218650583159
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.068421672296445,
+          31.85656206350474
+        ],
+        "end": [
+          35.066526398186774,
+          31.85664831304334
+        ],
+        "max_m": 107.16067792066424
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-067.png"
+  },
+  {
+    "id": 68,
+    "bbox": [
+      35.00009460141896,
+      31.854494598397814,
+      35.01267566426062,
+      31.857073489696212
+    ],
+    "max_m": 139.5991397104826,
+    "worst": [
+      35.00531694500006,
+      31.856728059000037
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 247,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.00009460141896,
+          31.85529179250689
+        ],
+        "end": [
+          35.01257868261202,
+          31.857073489696212
+        ],
+        "max_m": 139.5991397104826
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.00061724974059,
+          31.854494598397814
+        ],
+        "end": [
+          35.01267566426062,
+          31.856172946097345
+        ],
+        "max_m": 138.65380458757286
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-068.png"
+  },
+  {
+    "id": 69,
+    "bbox": [
+      34.99351997867444,
+      31.849236210910465,
+      34.99685373315231,
+      31.8531392443775
+    ],
+    "max_m": 152.58691117679626,
+    "worst": [
+      34.9945893,
+      31.851984900000005
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 102,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.994466501997564,
+          31.849236210910465
+        ],
+        "end": [
+          34.99685373315231,
+          31.852380239307873
+        ],
+        "max_m": 152.03004325182206
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.99351997867444,
+          31.849660678872002
+        ],
+        "end": [
+          34.99621497065089,
+          31.8531392443775
+        ],
+        "max_m": 152.58691117679626
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-069.png"
+  },
+  {
+    "id": 70,
+    "bbox": [
+      35.04521896922985,
+      31.84769797188205,
+      35.051268457084475,
+      31.85213582032641
+    ],
+    "max_m": 159.6805437645597,
+    "worst": [
+      35.0469346,
+      31.85022970000001
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 139,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.051268457084475,
+          31.85139763942983
+        ],
+        "end": [
+          35.04597529268616,
+          31.84769797188205
+        ],
+        "max_m": 155.51562938972802
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.05065700725969,
+          31.85213582032641
+        ],
+        "end": [
+          35.04521896922985,
+          31.84833487562105
+        ],
+        "max_m": 159.6805437645597
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-070.png"
+  },
+  {
+    "id": 71,
+    "bbox": [
+      34.9775764,
+      31.8303744,
+      34.99312034802541,
+      31.839595863208118
+    ],
+    "max_m": 690.0978685520151,
+    "worst": [
+      34.977965,
+      31.832387600000004
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 398,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.99312034802541,
+          31.831296358921055
+        ],
+        "end": [
+          34.98253576986725,
+          31.839102174044104
+        ],
+        "max_m": 530.2803802305706
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.992819630009215,
+          31.830406523298684
+        ],
+        "end": [
+          34.98156241368957,
+          31.839595863208118
+        ],
+        "max_m": 690.0978685520151
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Paired Latrun truce lines agree in configuration; the eastern closure remains non-agreed. No change to detailed vertices justified by the coarse signed sheet.",
+    "figure": "js-071.png"
+  },
+  {
+    "id": 72,
+    "bbox": [
+      35.04806287708666,
+      31.809955509579083,
+      35.159181187685405,
+      31.85134529999999
+    ],
+    "max_m": 625.0972599449925,
+    "worst": [
+      35.1071809,
+      31.823854799999992
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 3017,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.107886826000026,
+          31.829809349000072
+        ],
+        "end": [
+          35.0904536047917,
+          31.84585652577465
+        ],
+        "max_m": 403.59987860294143
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.10455257424921,
+          31.83040433583607
+        ],
+        "end": [
+          35.107886826000026,
+          31.829809349000072
+        ],
+        "max_m": 403.59987860294143
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.107886826000026,
+          31.829809349000072
+        ],
+        "end": [
+          35.159181187685405,
+          31.810829643660526
+        ],
+        "max_m": 594.3545484528153
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.15890740560508,
+          31.809955509579083
+        ],
+        "end": [
+          35.1483688,
+          31.81199109999999
+        ],
+        "max_m": 250.0750098301839
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.1483688,
+          31.81199109999999
+        ],
+        "end": [
+          35.128811000000006,
+          31.8203221
+        ],
+        "max_m": 422.57855004976966
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.105288200000004,
+          31.825127900000005
+        ],
+        "end": [
+          35.103612910785884,
+          31.829650751533272
+        ],
+        "max_m": 558.4994132978244
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.10322993267847,
+          31.831860135591498
+        ],
+        "end": [
+          35.10198346197189,
+          31.832673921615637
+        ],
+        "max_m": 157.7802377138853
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.101725592431876,
+          31.831707055314673
+        ],
+        "end": [
+          35.10224896065019,
+          31.83136536436625
+        ],
+        "max_m": 119.77215602260128
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.09403789566877,
+          31.837766905392623
+        ],
+        "end": [
+          35.08954598558169,
+          31.84537446057533
+        ],
+        "max_m": 261.6393198769781
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.06223268965256,
+          31.84967773626493
+        ],
+        "end": [
+          35.093242145932834,
+          31.83714849520526
+        ],
+        "max_m": 560.1110082352022
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.128811000000006,
+          31.8203221
+        ],
+        "end": [
+          35.1230755,
+          31.824259400000006
+        ],
+        "max_m": 303.7333023829355
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.1230755,
+          31.824259400000006
+        ],
+        "end": [
+          35.105288200000004,
+          31.825127900000005
+        ],
+        "max_m": 625.0972599449925
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.04806287708666,
+          31.83101655684223
+        ],
+        "end": [
+          35.06074158524364,
+          31.849418633261443
+        ],
+        "max_m": 485.9389095369509
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.04889271649551,
+          31.830455782805018
+        ],
+        "end": [
+          35.06105541542947,
+          31.848180048244984
+        ],
+        "max_m": 449.6661882790701
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.062513513253236,
+          31.848435043404155
+        ],
+        "end": [
+          35.105288200000004,
+          31.825127900000005
+        ],
+        "max_m": 618.2254091538232
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+    "figure": "js-072.png"
+  },
+  {
+    "id": 73,
+    "bbox": [
+      35.00877399250533,
+      31.82847159999999,
+      35.03335409377781,
+      31.837165536676984
+    ],
+    "max_m": 281.0886362295751,
+    "worst": [
+      35.0161731,
+      31.82847159999999
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 544,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.03264149426657,
+          31.837165536676984
+        ],
+        "end": [
+          35.00877399250533,
+          31.830110235082476
+        ],
+        "max_m": 277.2265047824082
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.03335409377781,
+          31.83648700842274
+        ],
+        "end": [
+          35.008797630728516,
+          31.829201449147526
+        ],
+        "max_m": 281.0886362295751
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-073.png"
+  },
+  {
+    "id": 74,
+    "bbox": [
+      34.9553582,
+      31.815870299999997,
+      35.03983096540424,
+      31.863466125224857
+    ],
+    "max_m": 737.8917620373539,
+    "worst": [
+      34.972357,
+      31.8177484
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 2449,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.96906705340638,
+          31.862655953796537
+        ],
+        "end": [
+          35.03912320020188,
+          31.822862357809985
+        ],
+        "max_m": 736.604647491036
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.96856531441861,
+          31.863466125224857
+        ],
+        "end": [
+          35.03983096540424,
+          31.822180220376694
+        ],
+        "max_m": 737.8917620373539
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Paired Latrun truce lines agree in configuration; the eastern closure remains non-agreed. No change to detailed vertices justified by the coarse signed sheet.",
+    "figure": "js-074.png"
+  },
+  {
+    "id": 75,
+    "bbox": [
+      35.18923082259371,
+      31.801944764636485,
+      35.22284784193861,
+      31.81151384000003
+    ],
+    "max_m": 455.24872163662815,
+    "worst": [
+      35.2098431,
+      31.805240800000004
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 760,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.18923082259371,
+          31.810324428270476
+        ],
+        "end": [
+          35.22284784193861,
+          31.802662057767517
+        ],
+        "max_m": 440.70915578439724
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.22220651645324,
+          31.801944764636485
+        ],
+        "end": [
+          35.18951169891117,
+          31.80942748124898
+        ],
+        "max_m": 455.24872163662815
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved north Jerusalem continuation: this worst point is north of UN229 coverage. Retain qualified OSM; do not imply the central registered pair verifies this stretch.",
+    "figure": "js-075.png"
+  },
+  {
+    "id": 76,
+    "bbox": [
+      35.2237533,
+      31.79363664856057,
+      35.22582543239455,
+      31.800525422150667
+    ],
+    "max_m": 206.03202881291952,
+    "worst": [
+      35.2237533,
+      31.796329599999996
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 153,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.22489053140563,
+          31.800525422150667
+        ],
+        "end": [
+          35.22582543239455,
+          31.796985928005217
+        ],
+        "max_m": 153.86702381023127
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.22516683756022,
+          31.79363664856057
+        ],
+        "end": [
+          35.224889359841264,
+          31.796335794511577
+        ],
+        "max_m": 206.03202881291952
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.22484440672906,
+          31.796549759199
+        ],
+        "end": [
+          35.22387047458139,
+          31.800218386014077
+        ],
+        "max_m": 154.02036092187305
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-076.png"
+  },
+  {
+    "id": 77,
+    "bbox": [
+      35.2374352,
+      31.784724000000004,
+      35.251211,
+      31.801609000000003
+    ],
+    "max_m": 2370.482123596537,
+    "worst": [
+      35.2511469,
+      31.784829999999992
+    ],
+    "directions": [
+      "OSM to OCHA"
+    ],
+    "samples": 627,
+    "pieces": [
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.2476276,
+          31.789395
+        ],
+        "end": [
+          35.2476276,
+          31.789395
+        ],
+        "max_m": 2370.482123596537
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Scopus outline absent from OCHA, not a two-source positional error. Retain only the separately checked northern Israeli-enclave arc; no unsourced internal division.",
+    "figure": "js-077.png"
+  },
+  {
+    "id": 78,
+    "bbox": [
+      35.225818739716814,
+      31.7796298,
+      35.2303836,
+      31.791511384085833
+    ],
+    "max_m": 424.95886507646316,
+    "worst": [
+      35.2303836,
+      31.7816464
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 260,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.226134907160585,
+          31.785592562479742
+        ],
+        "end": [
+          35.22605401946834,
+          31.78428183984306
+        ],
+        "max_m": 119.70564398735763
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.22707765918333,
+          31.783739356348224
+        ],
+        "end": [
+          35.227196600655994,
+          31.78566636924238
+        ],
+        "max_m": 127.40742715674018
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.22701895123983,
+          31.77969444001712
+        ],
+        "end": [
+          35.22725960328333,
+          31.78668704792162
+        ],
+        "max_m": 424.95886507646316
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.22585272551948,
+          31.781019782927082
+        ],
+        "end": [
+          35.225818739716814,
+          31.780468993733937
+        ],
+        "max_m": 121.50677811742786
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.22693336336304,
+          31.780032113024816
+        ],
+        "end": [
+          35.22692805885942,
+          31.781315456168198
+        ],
+        "max_m": 165.0848991174657
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.227314339961815,
+          31.787573785840557
+        ],
+        "end": [
+          35.227298478743435,
+          31.791511384085833
+        ],
+        "max_m": 237.24471622587916
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Central Jerusalem uses the separately registered UN229 pair, not either modern product. The coarse signed sheet cannot refine the registered trace.",
+    "figure": "js-078.png"
+  },
+  {
+    "id": 79,
+    "bbox": [
+      35.2254432,
+      31.776576523534693,
+      35.22562678202864,
+      31.777143810729516
+    ],
+    "max_m": 111.01724059281274,
+    "worst": [
+      35.225469000000004,
+      31.7768178
+    ],
+    "directions": [
+      "OSM to OCHA"
+    ],
+    "samples": 12,
+    "pieces": [
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.22562678202864,
+          31.776576523534693
+        ],
+        "end": [
+          35.2255053547514,
+          31.777143810729516
+        ],
+        "max_m": 111.01724059281274
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-079.png"
+  },
+  {
+    "id": 80,
+    "bbox": [
+      35.214379205158316,
+      31.7338671,
+      35.2431085,
+      31.772980765609482
+    ],
+    "max_m": 1446.968652326075,
+    "worst": [
+      35.2431085,
+      31.7512025
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 1587,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.22679236847703,
+          31.772235488784283
+        ],
+        "end": [
+          35.227103931573225,
+          31.758230158161105
+        ],
+        "max_m": 282.7042919488752
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.224582565468985,
+          31.744579872263483
+        ],
+        "end": [
+          35.226201970214774,
+          31.75726436001295
+        ],
+        "max_m": 327.9626631897078
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.227549887706274,
+          31.7555040363042
+        ],
+        "end": [
+          35.226113187360404,
+          31.74551427443493
+        ],
+        "max_m": 330.91398296017763
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.2275556,
+          31.744608400000004
+        ],
+        "end": [
+          35.2268465260705,
+          31.744610440410593
+        ],
+        "max_m": 163.08747688199904
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.225331964599256,
+          31.74371305705645
+        ],
+        "end": [
+          35.2152139493822,
+          31.738457883687804
+        ],
+        "max_m": 438.0880901633178
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.214379205158316,
+          31.73788969969115
+        ],
+        "end": [
+          35.2275556,
+          31.744608400000004
+        ],
+        "max_m": 508.08590646867395
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.228171265063644,
+          31.758225133854953
+        ],
+        "end": [
+          35.229721,
+          31.772613599999996
+        ],
+        "max_m": 304.58231812824897
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.229721,
+          31.772613599999996
+        ],
+        "end": [
+          35.22783529201604,
+          31.77274357515651
+        ],
+        "max_m": 278.2987443645653
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.2275556,
+          31.744608400000004
+        ],
+        "end": [
+          35.22782929689715,
+          31.772980765609482
+        ],
+        "max_m": 1446.968652326075
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Government House has its own separate OSM zone and retained armistice edges. The mismatch with UN229 at N130 is disclosed; the coarse signed sheet cannot refine its outline.",
+    "figure": "js-080.png"
+  },
+  {
+    "id": 81,
+    "bbox": [
+      35.19544127747378,
+      31.748971252029143,
+      35.19728577988768,
+      31.750409000000005
+    ],
+    "max_m": 153.78096036614855,
+    "worst": [
+      35.1963962,
+      31.750409000000005
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 35,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.19678710977538,
+          31.749059954272468
+        ],
+        "end": [
+          35.19609093695684,
+          31.748971252029143
+        ],
+        "max_m": 125.88288375041121
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.19544127747378,
+          31.749813423384882
+        ],
+        "end": [
+          35.19728577988768,
+          31.750051648326398
+        ],
+        "max_m": 153.78096036614855
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-081.png"
+  },
+  {
+    "id": 82,
+    "bbox": [
+      35.19816111090387,
+      31.746674200000005,
+      35.20850036547963,
+      31.750617304000052
+    ],
+    "max_m": 416.02480741903,
+    "worst": [
+      35.202467949884905,
+      31.74673870062908
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 221,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.20850036547963,
+          31.74932294768173
+        ],
+        "end": [
+          35.198847280009204,
+          31.74945662794267
+        ],
+        "max_m": 369.5213563550106
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.19816111090387,
+          31.748352920666775
+        ],
+        "end": [
+          35.20809252534054,
+          31.748439779817414
+        ],
+        "max_m": 416.02480741903
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved southern Jerusalem continuation: this worst point is south of UN229 coverage and west of the Government House overlay. Retain qualified OSM; neither detailed overlay verifies this stretch.",
+    "figure": "js-082.png"
+  },
+  {
+    "id": 83,
+    "bbox": [
+      35.18920989412065,
+      31.746092,
+      35.19433625687704,
+      31.748715526690553
+    ],
+    "max_m": 240.29033942425795,
+    "worst": [
+      35.1924388,
+      31.746374799999998
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 107,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.19356993509752,
+          31.748715526690553
+        ],
+        "end": [
+          35.18929053076699,
+          31.747571427212325
+        ],
+        "max_m": 239.64764837054585
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.18920989412065,
+          31.746554442600136
+        ],
+        "end": [
+          35.19433625687704,
+          31.7478851979493
+        ],
+        "max_m": 240.29033942425795
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-083.png"
+  },
+  {
+    "id": 84,
+    "bbox": [
+      35.18604619762664,
+      31.74655261427945,
+      35.18682491035262,
+      31.7476745
+    ],
+    "max_m": 120.74926633886757,
+    "worst": [
+      35.1864244,
+      31.7476745
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 17,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.18682491035262,
+          31.746635042245533
+        ],
+        "end": [
+          35.18660799747993,
+          31.74655261427945
+        ],
+        "max_m": 104.74927073919315
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.18604619762664,
+          31.74733448263943
+        ],
+        "end": [
+          35.18674958750906,
+          31.74759330086059
+        ],
+        "max_m": 120.74926633886757
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-084.png"
+  },
+  {
+    "id": 85,
+    "bbox": [
+      35.163543175672835,
+      31.741400800000008,
+      35.18330704128847,
+      31.745514208488242
+    ],
+    "max_m": 385.53839370699075,
+    "worst": [
+      35.1748466,
+      31.7415575
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 460,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.182480480514556,
+          31.745514208488242
+        ],
+        "end": [
+          35.1637835207158,
+          31.7431901930233
+        ],
+        "max_m": 380.63414305965125
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.163543175672835,
+          31.742203321237454
+        ],
+        "end": [
+          35.18330704128847,
+          31.744779845022887
+        ],
+        "max_m": 385.53839370699075
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+    "figure": "js-085.png"
+  },
+  {
+    "id": 86,
+    "bbox": [
+      35.15644570425159,
+      31.7412631960125,
+      35.16192874927995,
+      31.745024099999995
+    ],
+    "max_m": 301.52618707695774,
+    "worst": [
+      35.1584372,
+      31.74458920000001
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 141,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.16146824140222,
+          31.742667821106565
+        ],
+        "end": [
+          35.15721402352589,
+          31.7412631960125
+        ],
+        "max_m": 262.7809630156112
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.15644570425159,
+          31.741975052306348
+        ],
+        "end": [
+          35.16192874927995,
+          31.743704376254385
+        ],
+        "max_m": 301.52618707695774
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+    "figure": "js-086.png"
+  },
+  {
+    "id": 87,
+    "bbox": [
+      35.15076824920312,
+      31.736690620883408,
+      35.15460921328368,
+      31.739573012277802
+    ],
+    "max_m": 168.62628819861172,
+    "worst": [
+      35.1530018,
+      31.7370593
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 87,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.15378762844918,
+          31.739573012277802
+        ],
+        "end": [
+          35.15076824920312,
+          31.737563482212533
+        ],
+        "max_m": 164.75655522407797
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.15115405431693,
+          31.736690620883408
+        ],
+        "end": [
+          35.15460921328368,
+          31.738984953431213
+        ],
+        "max_m": 168.62628819861172
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-087.png"
+  },
+  {
+    "id": 88,
+    "bbox": [
+      35.133337280907625,
+      31.728729299999998,
+      35.14571819096294,
+      31.734455700000005
+    ],
+    "max_m": 466.5784417697893,
+    "worst": [
+      35.1396843,
+      31.728844000000002
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 287,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.145138450262486,
+          31.73434157168296
+        ],
+        "end": [
+          35.13741765489345,
+          31.732735489354575
+        ],
+        "max_m": 379.0225516439646
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.1364134,
+          31.7337553
+        ],
+        "end": [
+          35.13640156140184,
+          31.733551741044774
+        ],
+        "max_m": 122.2327545696544
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.135310895105995,
+          31.732844222106017
+        ],
+        "end": [
+          35.13368306995537,
+          31.733113969605043
+        ],
+        "max_m": 155.70696296894016
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.136385912142394,
+          31.7317029055703
+        ],
+        "end": [
+          35.14571819096294,
+          31.733548144717567
+        ],
+        "max_m": 466.5784417697893
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.133337280907625,
+          31.733981093224955
+        ],
+        "end": [
+          35.1364134,
+          31.7337553
+        ],
+        "max_m": 171.45981360891918
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+    "figure": "js-088.png"
+  },
+  {
+    "id": 89,
+    "bbox": [
+      35.11313937602422,
+      31.713716499999993,
+      35.12273598263309,
+      31.72345650340202
+    ],
+    "max_m": 395.03829639269986,
+    "worst": [
+      35.1205184,
+      31.715567600000004
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 318,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.121853102337724,
+          31.72345650340202
+        ],
+        "end": [
+          35.11313937602422,
+          31.715067448524387
+        ],
+        "max_m": 383.04124952538916
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.11320362185279,
+          31.71413017307132
+        ],
+        "end": [
+          35.1164331,
+          31.713716499999993
+        ],
+        "max_m": 249.20201967058227
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.1164331,
+          31.713716499999993
+        ],
+        "end": [
+          35.12273598263309,
+          31.72295117143481
+        ],
+        "max_m": 395.03829639269986
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+    "figure": "js-089.png"
+  },
+  {
+    "id": 90,
+    "bbox": [
+      35.10426061844831,
+      31.71211420145949,
+      35.10972995026222,
+      31.71528639999999
+    ],
+    "max_m": 212.03365090185966,
+    "worst": [
+      35.1067712,
+      31.715000899999993
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 127,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.10972995026222,
+          31.71403443415803
+        ],
+        "end": [
+          35.10491844850543,
+          31.71211420145949
+        ],
+        "max_m": 211.52039196434868
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.10426061844831,
+          31.712844165612765
+        ],
+        "end": [
+          35.10970353600638,
+          31.7149831830475
+        ],
+        "max_m": 212.03365090185966
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-090.png"
+  },
+  {
+    "id": 91,
+    "bbox": [
+      35.07956544035487,
+      31.6886413819796,
+      35.0853144,
+      31.693241559188742
+    ],
+    "max_m": 313.6503689361553,
+    "worst": [
+      35.0852791,
+      31.690610600000003
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 150,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.08359492381528,
+          31.693241559188742
+        ],
+        "end": [
+          35.07956544035487,
+          31.689378740313405
+        ],
+        "max_m": 248.07859638666542
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.08021785788496,
+          31.6886413819796
+        ],
+        "end": [
+          35.08464883248003,
+          31.69289575825108
+        ],
+        "max_m": 313.6503689361553
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+    "figure": "js-091.png"
+  },
+  {
+    "id": 92,
+    "bbox": [
+      35.06077398849622,
+      31.677393182792805,
+      35.0763075764573,
+      31.686791863183956
+    ],
+    "max_m": 197.7443710654078,
+    "worst": [
+      35.06656,
+      31.6824973
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 366,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.0763075764573,
+          31.68607456924299
+        ],
+        "end": [
+          35.061339001212005,
+          31.677393182792805
+        ],
+        "max_m": 197.37424864610557
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.06077398849622,
+          31.67815624707202
+        ],
+        "end": [
+          35.075635380371864,
+          31.686791863183956
+        ],
+        "max_m": 197.7443710654078
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-092.png"
+  },
+  {
+    "id": 93,
+    "bbox": [
+      35.01068907862815,
+      31.654367966164532,
+      35.04633944072384,
+      31.670284250751298
+    ],
+    "max_m": 414.30365058912906,
+    "worst": [
+      35.0284754,
+      31.659496299999994
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 814,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.0458601655938,
+          31.670284250751298
+        ],
+        "end": [
+          35.01068907862815,
+          31.655206821840938
+        ],
+        "max_m": 414.262957234967
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.0111593349814,
+          31.654367966164532
+        ],
+        "end": [
+          35.04633944072384,
+          31.66946883442014
+        ],
+        "max_m": 414.30365058912906
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+    "figure": "js-093.png"
+  },
+  {
+    "id": 94,
+    "bbox": [
+      34.945948791989224,
+      31.572417157860468,
+      34.96088258743704,
+      31.602127373175787
+    ],
+    "max_m": 323.9495143112313,
+    "worst": [
+      34.9523937,
+      31.594663399999995
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 763,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.96088258743704,
+          31.601607199390454
+        ],
+        "end": [
+          34.94699662717265,
+          31.572417157860468
+        ],
+        "max_m": 320.52058742741184
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.945948791989224,
+          31.57256212502539
+        ],
+        "end": [
+          34.960006839257254,
+          31.602127373175787
+        ],
+        "max_m": 323.9495143112313
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+    "figure": "js-094.png"
+  },
+  {
+    "id": 95,
+    "bbox": [
+      34.9403675,
+      31.49970122204813,
+      34.94834962600004,
+      31.566518938422625
+    ],
+    "max_m": 562.3793910557756,
+    "worst": [
+      34.94762100000003,
+      31.535765716000064
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 1587,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.94643779381985,
+          31.566518938422625
+        ],
+        "end": [
+          34.94336256193914,
+          31.49970122204813
+        ],
+        "max_m": 562.3793910557756
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.94234533330768,
+          31.49995399841441
+        ],
+        "end": [
+          34.94538329017063,
+          31.566507130395514
+        ],
+        "max_m": 556.5023710722114
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+    "figure": "js-095.png"
+  },
+  {
+    "id": 96,
+    "bbox": [
+      35.42796465440832,
+      31.4962799,
+      35.4432527064469,
+      31.49766776100006
+    ],
+    "max_m": 147.34165486887295,
+    "worst": [
+      35.43458279300006,
+      31.49766776100006
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 296,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.42796465440832,
+          31.4971946783132
+        ],
+        "end": [
+          35.4432527064469,
+          31.497385685281365
+        ],
+        "max_m": 147.34165486887295
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.443244454445,
+          31.49648364939493
+        ],
+        "end": [
+          35.42800582237871,
+          31.49629282660965
+        ],
+        "max_m": 146.99693819066388
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-096.png"
+  },
+  {
+    "id": 97,
+    "bbox": [
+      35.45512325015241,
+      31.493119999999998,
+      35.476012000000004,
+      31.49728910445832
+    ],
+    "max_m": 242.53881535385284,
+    "worst": [
+      35.476012000000004,
+      31.493119999999998
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 400,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.4551749664307,
+          31.49728910445832
+        ],
+        "end": [
+          35.47531014300006,
+          31.495222500000065
+        ],
+        "max_m": 233.4520586261334
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.476012000000004,
+          31.493119999999998
+        ],
+        "end": [
+          35.45512325015241,
+          31.496387746733117
+        ],
+        "max_m": 242.53881535385284
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-097.png"
+  },
+  {
+    "id": 98,
+    "bbox": [
+      35.398440978356454,
+      31.491891599999995,
+      35.410551616098786,
+      31.496072376256702
+    ],
+    "max_m": 176.1964330065269,
+    "worst": [
+      35.40339639300004,
+      31.494913542000067
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 243,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.398805253900925,
+          31.49313284745179
+        ],
+        "end": [
+          35.41037644335344,
+          31.496072376256702
+        ],
+        "max_m": 176.1964330065269
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.410551616098786,
+          31.495174705957936
+        ],
+        "end": [
+          35.398440978356454,
+          31.492001796143445
+        ],
+        "max_m": 175.08918845623361
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-098.png"
+  },
+  {
+    "id": 99,
+    "bbox": [
+      34.93913780699225,
+      31.490966162216328,
+      34.94028610568749,
+      31.49163535776974
+    ],
+    "max_m": 101.01007088844939,
+    "worst": [
+      34.94020491500004,
+      31.49112757500006
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 12,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.94028610568749,
+          31.49138678266865
+        ],
+        "end": [
+          34.940136320398764,
+          31.490966162216328
+        ],
+        "max_m": 101.01007088844939
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.93913780699225,
+          31.491252268058346
+        ],
+        "end": [
+          34.939274223352,
+          31.49163535776974
+        ],
+        "max_m": 100.90444389017918
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-099.png"
+  },
+  {
+    "id": 100,
+    "bbox": [
+      34.93182584460488,
+      31.476016308478002,
+      34.935472991506145,
+      31.48140281283406
+    ],
+    "max_m": 105.13936616582323,
+    "worst": [
+      34.93317797000003,
+      31.476660187000046
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 133,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.935472991506145,
+          31.481017996867394
+        ],
+        "end": [
+          34.932772434939345,
+          31.476016308478002
+        ],
+        "max_m": 105.13936616582323
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.93182584460488,
+          31.476412056122157
+        ],
+        "end": [
+          34.93452105561929,
+          31.48140281283406
+        ],
+        "max_m": 105.03028940774482
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-100.png"
+  },
+  {
+    "id": 101,
+    "bbox": [
+      35.245457096205875,
+      31.388318420515102,
+      35.39563474786879,
+      31.491406120233815
+    ],
+    "max_m": 614.5385104636559,
+    "worst": [
+      35.2879513,
+      31.4166259
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 3714,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          35.245457096205875,
+          31.388904399126538
+        ],
+        "end": [
+          35.395052687046366,
+          31.491406120233815
+        ],
+        "max_m": 614.022411197454
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.39563474786879,
+          31.490654006309647
+        ],
+        "end": [
+          35.3952076,
+          31.490388599999996
+        ],
+        "max_m": 104.18790325156266
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.3952076,
+          31.490388599999996
+        ],
+        "end": [
+          35.3558046,
+          31.4630977
+        ],
+        "max_m": 315.2735286279549
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.3558046,
+          31.4630977
+        ],
+        "end": [
+          35.2462613208543,
+          31.388318420515102
+        ],
+        "max_m": 614.5385104636559
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+    "figure": "js-101.png"
+  },
+  {
+    "id": 102,
+    "bbox": [
+      34.89608272879674,
+      31.43004734352979,
+      34.902814049228176,
+      31.439023188727322
+    ],
+    "max_m": 171.57095975672206,
+    "worst": [
+      34.8998166,
+      31.4371041
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 233,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.902814049228176,
+          31.438458764489535
+        ],
+        "end": [
+          34.89703680207391,
+          31.43004734352979
+        ],
+        "max_m": 171.11798528429668
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.9005102,
+          31.43782540000001
+        ],
+        "end": [
+          34.901979545072415,
+          31.439023188727322
+        ],
+        "max_m": 154.49370621978585
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.89608272879674,
+          31.430436853199318
+        ],
+        "end": [
+          34.9005102,
+          31.43782540000001
+        ],
+        "max_m": 171.57095975672206
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Source difference below 300m. Retain qualified OSM; see signed-map-check.json for the coarse map limitations.",
+    "figure": "js-102.png"
+  },
+  {
+    "id": 103,
+    "bbox": [
+      34.8800552,
+      31.357241783488092,
+      34.90896955373226,
+      31.400245171778955
+    ],
+    "max_m": 401.5114722404907,
+    "worst": [
+      34.8800552,
+      31.392329300000004
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 1147,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.883638295781445,
+          31.40010680158707
+        ],
+        "end": [
+          34.90896955373226,
+          31.357942242369074
+        ],
+        "max_m": 374.23092294706566
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.90827822778117,
+          31.357241783488092
+        ],
+        "end": [
+          34.88259026536892,
+          31.400245171778955
+        ],
+        "max_m": 401.5114722404907
+      }
+    ],
+    "region": "West Bank",
+    "decision": "Unresolved: signed ink width, source registration and/or differing historical establishment prevent a whole-cluster positional tie-break. Retain the qualified OSM cartography, not a claim of historical survey accuracy.",
+    "figure": "js-103.png"
+  },
+  {
+    "id": 104,
+    "bbox": [
+      34.9099183,
+      31.342106799999993,
+      35.24273008468396,
+      31.385926454845094
+    ],
+    "max_m": 842.1379017756599,
+    "worst": [
+      34.9246515,
+      31.342106799999993
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 6761,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.911333338931186,
+          31.355438761974536
+        ],
+        "end": [
+          35.242034864011764,
+          31.385926454845094
+        ],
+        "max_m": 820.0862698957819
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.2304749,
+          31.3747671
+        ],
+        "end": [
+          35.1105746,
+          31.3567764
+        ],
+        "max_m": 513.2829518098524
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.1105746,
+          31.3567764
+        ],
+        "end": [
+          35.0239793,
+          31.35917759999999
+        ],
+        "max_m": 628.0112625514496
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.0239793,
+          31.35917759999999
+        ],
+        "end": [
+          34.9503931,
+          31.348064300000008
+        ],
+        "max_m": 677.6914982987071
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.9176229,
+          31.344923000000005
+        ],
+        "end": [
+          34.910410969417214,
+          31.354983022059837
+        ],
+        "max_m": 647.9836446183286
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.9503931,
+          31.348064300000008
+        ],
+        "end": [
+          34.9329895,
+          31.3433952
+        ],
+        "max_m": 676.1643932898062
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.9329895,
+          31.3433952
+        ],
+        "end": [
+          34.9176229,
+          31.344923000000005
+        ],
+        "max_m": 842.1379017756599
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          35.24273008468396,
+          31.3852445503081
+        ],
+        "end": [
+          35.2304749,
+          31.3747671
+        ],
+        "max_m": 339.0636260489394
+      }
+    ],
+    "region": "West Bank",
+    "decision": "OCHA supported at Arab er-Ramadin; OSM is about 0.8 km south of the signed ink. Substitute OCHA in the retained local box, with short cartographic transitions to the recorded exact OpenStreetMap nodes (authorised third-review correction); these joins are not surveyed treaty coordinates. The rest of this long cluster remains unresolved.",
+    "figure": "js-104.png"
+  },
+  {
+    "id": 1,
+    "bbox": [
+      34.488477088000025,
+      31.595745950597315,
+      34.490451747125924,
+      31.597524500000077
+    ],
+    "max_m": 370.73727528342596,
+    "worst": [
+      34.488477088000025,
+      31.597524500000077
+    ],
+    "directions": [
+      "OCHA to OSM"
+    ],
+    "samples": 29,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.490451747125924,
+          31.595745950597315
+        ],
+        "end": [
+          34.488477088000025,
+          31.597524500000077
+        ],
+        "max_m": 370.73727528342596
+      }
+    ],
+    "region": "Gaza Strip",
+    "decision": "Present Israel–Gaza boundary comparison. The >100 m offset is not, by itself, evidence of a 1949/1950 change. Compare the preserved 1950 patrol-zone coordinates; the largest mismatch is south of the northern adjusted zone. The UN global boundary product independently cross-checks the present OSM Israel–Gaza line to a 372.9 m maximum over the full Israel–Gaza land segment (original-survey independence is unknown). Ship the explicitly labelled present OSM Israel–Gaza land boundary, not an original-1949 reconstruction.",
+    "figure": "gaza-001.png"
+  },
+  {
+    "id": 2,
+    "bbox": [
+      34.497293877314746,
+      31.586104624805262,
+      34.502973861461,
+      31.590245577165426
+    ],
+    "max_m": 140.71644188079955,
+    "worst": [
+      34.499574471000074,
+      31.58752798500007
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 128,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.50238716122833,
+          31.586104624805262
+        ],
+        "end": [
+          34.497293877314746,
+          31.589582590225316
+        ],
+        "max_m": 140.71644188079955
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.502973861461,
+          31.58685556773951
+        ],
+        "end": [
+          34.498011547919695,
+          31.590245577165426
+        ],
+        "max_m": 138.90319503795294
+      }
+    ],
+    "region": "Gaza Strip",
+    "decision": "Present Israel–Gaza boundary comparison. The >100 m offset is not, by itself, evidence of a 1949/1950 change. Compare the preserved 1950 patrol-zone coordinates; the largest mismatch is south of the northern adjusted zone. The UN global boundary product independently cross-checks the present OSM Israel–Gaza line to a 372.9 m maximum over the full Israel–Gaza land segment (original-survey independence is unknown). Ship the explicitly labelled present OSM Israel–Gaza land boundary, not an original-1949 reconstruction.",
+    "figure": "gaza-002.png"
+  },
+  {
+    "id": 3,
+    "bbox": [
+      34.54975908097442,
+      31.548480670369937,
+      34.555347366321705,
+      31.553104639833748
+    ],
+    "max_m": 119.38567291753733,
+    "worst": [
+      34.5525745,
+      31.551533799999998
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 131,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.554630217991416,
+          31.548480670369937
+        ],
+        "end": [
+          34.54975908097442,
+          31.55241692136266
+        ],
+        "max_m": 119.33404099135582
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.555347366321705,
+          31.549142331049307
+        ],
+        "end": [
+          34.550445451644975,
+          31.553104639833748
+        ],
+        "max_m": 119.38567291753733
+      }
+    ],
+    "region": "Gaza Strip",
+    "decision": "Present Israel–Gaza boundary comparison. The >100 m offset is not, by itself, evidence of a 1949/1950 change. Compare the preserved 1950 patrol-zone coordinates; the largest mismatch is south of the northern adjusted zone. The UN global boundary product independently cross-checks the present OSM Israel–Gaza line to a 372.9 m maximum over the full Israel–Gaza land segment (original-survey independence is unknown). Ship the explicitly labelled present OSM Israel–Gaza land boundary, not an original-1949 reconstruction.",
+    "figure": "gaza-003.png"
+  },
+  {
+    "id": 4,
+    "bbox": [
+      34.53865019231089,
+      31.510325165225247,
+      34.5673243,
+      31.547875759208985
+    ],
+    "max_m": 554.3216948366023,
+    "worst": [
+      34.5542243,
+      31.518741299999995
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 1117,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.53865019231089,
+          31.51111549035121
+        ],
+        "end": [
+          34.556410487902575,
+          31.54717716898407
+        ],
+        "max_m": 511.7888552012556
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.539194548882186,
+          31.510325165225247
+        ],
+        "end": [
+          34.55707718896759,
+          31.547875759208985
+        ],
+        "max_m": 554.3216948366023
+      }
+    ],
+    "region": "Gaza Strip",
+    "decision": "Present Israel–Gaza boundary comparison. The >100 m offset is not, by itself, evidence of a 1949/1950 change. Compare the preserved 1950 patrol-zone coordinates; the largest mismatch is south of the northern adjusted zone. The UN global boundary product independently cross-checks the present OSM Israel–Gaza line to a 372.9 m maximum over the full Israel–Gaza land segment (original-survey independence is unknown). Ship the explicitly labelled present OSM Israel–Gaza land boundary, not an original-1949 reconstruction.",
+    "figure": "gaza-004.png"
+  },
+  {
+    "id": 5,
+    "bbox": [
+      34.45806050669296,
+      31.45635008843936,
+      34.53253208341457,
+      31.508399131897843
+    ],
+    "max_m": 922.4993945236013,
+    "worst": [
+      34.49957446600007,
+      31.50256617300005
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 1935,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.45806050669296,
+          31.45695299913511
+        ],
+        "end": [
+          34.53211242251695,
+          31.508399131897843
+        ],
+        "max_m": 922.4993945236013
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.45884665645188,
+          31.45635008843936
+        ],
+        "end": [
+          34.4625343,
+          31.45935769999999
+        ],
+        "max_m": 172.30978399005096
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.4625343,
+          31.45935769999999
+        ],
+        "end": [
+          34.4673344,
+          31.464779700000012
+        ],
+        "max_m": 213.973689290628
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.5181367,
+          31.501716399999996
+        ],
+        "end": [
+          34.53253208341457,
+          31.507570588725528
+        ],
+        "max_m": 272.3848533883285
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.4924223,
+          31.4860848
+        ],
+        "end": [
+          34.5181367,
+          31.501716399999996
+        ],
+        "max_m": 781.2953869123806
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.4673344,
+          31.464779700000012
+        ],
+        "end": [
+          34.4865427,
+          31.480879400000006
+        ],
+        "max_m": 379.8034878128479
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.4924223,
+          31.4860848
+        ],
+        "end": [
+          34.4865427,
+          31.480879400000006
+        ],
+        "max_m": 369.74759272614983
+      }
+    ],
+    "region": "Gaza Strip",
+    "decision": "Present Israel–Gaza boundary comparison. The >100 m offset is not, by itself, evidence of a 1949/1950 change. Compare the preserved 1950 patrol-zone coordinates; the largest mismatch is south of the northern adjusted zone. The UN global boundary product independently cross-checks the present OSM Israel–Gaza line to a 372.9 m maximum over the full Israel–Gaza land segment (original-survey independence is unknown). Ship the explicitly labelled present OSM Israel–Gaza land boundary, not an original-1949 reconstruction.",
+    "figure": "gaza-005.png"
+  },
+  {
+    "id": 6,
+    "bbox": [
+      34.44241416477377,
+      31.443217712889197,
+      34.45271905452906,
+      31.452006525953063
+    ],
+    "max_m": 225.47673808880347,
+    "worst": [
+      34.4455503,
+      31.443787900000004
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 268,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.44241416477377,
+          31.44403304764912
+        ],
+        "end": [
+          34.45190276051845,
+          31.452006525953063
+        ],
+        "max_m": 223.25301986277944
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.4508791,
+          31.4490174
+        ],
+        "end": [
+          34.45271905452906,
+          31.45142490475149
+        ],
+        "max_m": 171.72772083608967
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.4508791,
+          31.4490174
+        ],
+        "end": [
+          34.442942776683395,
+          31.443217712889197
+        ],
+        "max_m": 225.47673808880347
+      }
+    ],
+    "region": "Gaza Strip",
+    "decision": "Present Israel–Gaza boundary comparison. The >100 m offset is not, by itself, evidence of a 1949/1950 change. Compare the preserved 1950 patrol-zone coordinates; the largest mismatch is south of the northern adjusted zone. The UN global boundary product independently cross-checks the present OSM Israel–Gaza line to a 372.9 m maximum over the full Israel–Gaza land segment (original-survey independence is unknown). Ship the explicitly labelled present OSM Israel–Gaza land boundary, not an original-1949 reconstruction.",
+    "figure": "gaza-006.png"
+  },
+  {
+    "id": 7,
+    "bbox": [
+      34.36598238410809,
+      31.369293657788972,
+      34.43446434743374,
+      31.437823376638548
+    ],
+    "max_m": 577.1078077104603,
+    "worst": [
+      34.4075179,
+      31.41158310000001
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 2084,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.36598238410809,
+          31.369612435360025
+        ],
+        "end": [
+          34.379242189301536,
+          31.389542591680836
+        ],
+        "max_m": 353.7127737351934
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.36697882851829,
+          31.369293657788972
+        ],
+        "end": [
+          34.3729818,
+          31.3737002
+        ],
+        "max_m": 490.85040916963925
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.38029279861629,
+          31.38926940479958
+        ],
+        "end": [
+          34.380287,
+          31.387627099999992
+        ],
+        "max_m": 200.16561989312953
+      },
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.380283935009295,
+          31.390890039847466
+        ],
+        "end": [
+          34.43369248897746,
+          31.437823376638548
+        ],
+        "max_m": 546.7637367982195
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.43446434743374,
+          31.43719934114405
+        ],
+        "end": [
+          34.4267264,
+          31.4271597
+        ],
+        "max_m": 397.01731842597496
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.38111126215496,
+          31.390328033648913
+        ],
+        "end": [
+          34.3950243,
+          31.401852700000006
+        ],
+        "max_m": 337.8506829810725
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.3950243,
+          31.401852700000006
+        ],
+        "end": [
+          34.3999697,
+          31.407118399999995
+        ],
+        "max_m": 353.0857970214592
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.4123532,
+          31.4156384
+        ],
+        "end": [
+          34.4267264,
+          31.4271597
+        ],
+        "max_m": 528.2779782711593
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.3731623,
+          31.3759741
+        ],
+        "end": [
+          34.380287,
+          31.387627099999992
+        ],
+        "max_m": 208.26884384069183
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.3731623,
+          31.3759741
+        ],
+        "end": [
+          34.3729818,
+          31.3737002
+        ],
+        "max_m": 325.3938908826274
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.3999697,
+          31.407118399999995
+        ],
+        "end": [
+          34.4027644,
+          31.410467100000005
+        ],
+        "max_m": 341.96855667029575
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.4027644,
+          31.410467100000005
+        ],
+        "end": [
+          34.4102694,
+          31.41429719999999
+        ],
+        "max_m": 577.1078077104603
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.4123532,
+          31.4156384
+        ],
+        "end": [
+          34.4102694,
+          31.41429719999999
+        ],
+        "max_m": 531.5791891188087
+      }
+    ],
+    "region": "Gaza Strip",
+    "decision": "Present Israel–Gaza boundary comparison. The >100 m offset is not, by itself, evidence of a 1949/1950 change. Compare the preserved 1950 patrol-zone coordinates; the largest mismatch is south of the northern adjusted zone. The UN global boundary product independently cross-checks the present OSM Israel–Gaza line to a 372.9 m maximum over the full Israel–Gaza land segment (original-survey independence is unknown). Ship the explicitly labelled present OSM Israel–Gaza land boundary, not an original-1949 reconstruction.",
+    "figure": "gaza-007.png"
+  },
+  {
+    "id": 8,
+    "bbox": [
+      34.3647238,
+      31.308757744006734,
+      34.37406586900005,
+      31.3631483691053
+    ],
+    "max_m": 172.21189317229613,
+    "worst": [
+      34.3683019,
+      31.3364855
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 1231,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.37389139700524,
+          31.308757744006734
+        ],
+        "end": [
+          34.366124556718766,
+          31.363119052854692
+        ],
+        "max_m": 172.19503202981738
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.3649888,
+          31.359955500000005
+        ],
+        "end": [
+          34.36506016191308,
+          31.3631483691053
+        ],
+        "max_m": 152.73936320573364
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.372824101216075,
+          31.308801976380387
+        ],
+        "end": [
+          34.3701349,
+          31.3258118
+        ],
+        "max_m": 150.56116038455912
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.3701349,
+          31.3258118
+        ],
+        "end": [
+          34.3686872,
+          31.334244199999993
+        ],
+        "max_m": 167.63072785048917
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.3686872,
+          31.334244199999993
+        ],
+        "end": [
+          34.3683019,
+          31.3364855
+        ],
+        "max_m": 172.21189317229613
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.3683019,
+          31.3364855
+        ],
+        "end": [
+          34.3649888,
+          31.359955500000005
+        ],
+        "max_m": 172.21189317229613
+      }
+    ],
+    "region": "Gaza Strip",
+    "decision": "Present Israel–Gaza boundary comparison. The >100 m offset is not, by itself, evidence of a 1949/1950 change. Compare the preserved 1950 patrol-zone coordinates; the largest mismatch is south of the northern adjusted zone. The UN global boundary product independently cross-checks the present OSM Israel–Gaza line to a 372.9 m maximum over the full Israel–Gaza land segment (original-survey independence is unknown). Ship the explicitly labelled present OSM Israel–Gaza land boundary, not an original-1949 reconstruction.",
+    "figure": "gaza-008.png"
+  },
+  {
+    "id": 9,
+    "bbox": [
+      34.341700942952585,
+      31.27843528511161,
+      34.368262905126194,
+      31.29419384470728
+    ],
+    "max_m": 348.7279300668175,
+    "worst": [
+      34.35815030800006,
+      31.29003001400003
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 617,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.341700942952585,
+          31.279054110317837
+        ],
+        "end": [
+          34.367378615574474,
+          31.29419384470728
+        ],
+        "max_m": 348.7279300668175
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.34250475684379,
+          31.27843528511161
+        ],
+        "end": [
+          34.3497076,
+          31.282207499999995
+        ],
+        "max_m": 347.7543545337024
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.3497076,
+          31.282207499999995
+        ],
+        "end": [
+          34.368262905126194,
+          31.29368775662464
+        ],
+        "max_m": 348.5579156274202
+      }
+    ],
+    "region": "Gaza Strip",
+    "decision": "Present Israel–Gaza boundary comparison. The >100 m offset is not, by itself, evidence of a 1949/1950 change. Compare the preserved 1950 patrol-zone coordinates; the largest mismatch is south of the northern adjusted zone. The UN global boundary product independently cross-checks the present OSM Israel–Gaza line to a 372.9 m maximum over the full Israel–Gaza land segment (original-survey independence is unknown). Ship the explicitly labelled present OSM Israel–Gaza land boundary, not an original-1949 reconstruction.",
+    "figure": "gaza-009.png"
+  },
+  {
+    "id": 10,
+    "bbox": [
+      34.2674994,
+      31.22012890000001,
+      34.34156078655261,
+      31.27721398062145
+    ],
+    "max_m": 333.12613515526675,
+    "worst": [
+      34.2674994,
+      31.22012890000001
+    ],
+    "directions": [
+      "OCHA to OSM",
+      "OSM to OCHA"
+    ],
+    "samples": 1930,
+    "pieces": [
+      {
+        "direction": "OCHA to OSM",
+        "start": [
+          34.26852040400007,
+          31.223003183000053
+        ],
+        "end": [
+          34.340598045714444,
+          31.27721398062145
+        ],
+        "max_m": 324.9520347416722
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.3287196,
+          31.260287800000008
+        ],
+        "end": [
+          34.34156078655261,
+          31.276851436909876
+        ],
+        "max_m": 273.6388201204328
+      },
+      {
+        "direction": "OSM to OCHA",
+        "start": [
+          34.2674994,
+          31.22012890000001
+        ],
+        "end": [
+          34.3287196,
+          31.260287800000008
+        ],
+        "max_m": 333.12613515526675
+      }
+    ],
+    "region": "Gaza Strip",
+    "decision": "Present Israel–Gaza boundary comparison. The >100 m offset is not, by itself, evidence of a 1949/1950 change. Compare the preserved 1950 patrol-zone coordinates; the largest mismatch is south of the northern adjusted zone. The UN global boundary product independently cross-checks the present OSM Israel–Gaza line to a 372.9 m maximum over the full Israel–Gaza land segment (original-survey independence is unknown). Ship the explicitly labelled present OSM Israel–Gaza land boundary, not an original-1949 reconstruction.",
+    "figure": "gaza-010.png"
+  }
+]

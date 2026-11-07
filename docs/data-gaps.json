@@ -1,11 +1,11 @@
 {
   "schemaVersion": 3,
-  "total": 11404,
+  "total": 11410,
   "counts": {
     "unknown": 6949,
     "missing-field": 283,
     "conflict": 17,
-    "single-source": 2378,
+    "single-source": 2384,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1164,
@@ -15,7 +15,7 @@
   "countsByStatus": {
     "inferred-not-verified": 1030,
     "needs-current-status-review": 312,
-    "open": 10062
+    "open": 10068
   },
   "countsByImportance": {
     "high": {
@@ -27,12 +27,12 @@
       "unknown": 240
     },
     "medium": {
-      "total": 3569,
+      "total": 3575,
       "confirmed": 561,
       "probable": 201,
       "provisional": 548,
       "disputed": 5,
-      "unknown": 2254
+      "unknown": 2260
     },
     "low": {
       "total": 7008,
@@ -576,15 +576,15 @@
     },
     {
       "election": "cross-election",
-      "total": 1393,
+      "total": 1399,
       "highOpen": 3,
-      "mediumOpen": 240,
+      "mediumOpen": 246,
       "low": 1042,
       "counts": {
         "unknown": 1041,
         "missing-field": 35,
         "conflict": 4,
-        "single-source": 234,
+        "single-source": 240,
         "low-confidence": 0,
         "release-hold": 0,
         "inferred": 4,
@@ -1059,7 +1059,13 @@
     {"election":"cross-election","area":"data/raw/demographics/cbs-2021-normalized.json religion","count":1,"certainty":{"unknown":1}},
     {"election":"cross-election","area":"data/raw/demographics/cbs-2022-normalized.json religion","count":1,"certainty":{"unknown":1}},
     {"election":"cross-election","area":"data/raw/demographics/cbs-2023-normalized.json religion","count":1,"certainty":{"unknown":1}},
-    {"election":"cross-election","area":"data/raw/demographics/cbs-2024-normalized.json religion","count":1,"certainty":{"unknown":1}}
+    {"election":"cross-election","area":"data/raw/demographics/cbs-2024-normalized.json religion","count":1,"certainty":{"unknown":1}},
+    {"election":"cross-election","area":"data/raw/map-lines/alpha-line-check.json record","count":1,"certainty":{"unknown":1}},
+    {"election":"cross-election","area":"data/raw/map-lines/blue-line-check.json record","count":1,"certainty":{"unknown":1}},
+    {"election":"cross-election","area":"data/raw/map-lines/jerusalem-registration.json record","count":1,"certainty":{"unknown":1}},
+    {"election":"cross-election","area":"data/raw/map-lines/jerusalem-un229-traces.json record","count":1,"certainty":{"unknown":1}},
+    {"election":"cross-election","area":"data/raw/map-lines/official-treaty-excerpts.json egyptArticleII","count":1,"certainty":{"unknown":1}},
+    {"election":"cross-election","area":"data/raw/map-lines/signed-map-check.json record","count":1,"certainty":{"unknown":1}}
   ],
   "low": [
     {"area":"data/meta/bios/kN.json candidates","count":4050,"open":4050},

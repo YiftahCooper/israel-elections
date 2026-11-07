@@ -1,0 +1,15 @@
+{
+  "scope": "WGS84 box 35.3–35.6E,31.47–31.53N; modern cartography only",
+  "endpoint": [
+    35.476012,
+    31.49312
+  ],
+  "endpoint_to_un_m": 4.8085012969893866,
+  "endpoint_to_ocha_m": 242.53881535385284,
+  "osm_ocha_max_m": 400.08889722471076,
+  "osm_un_max_m": 526.438818897903,
+  "sampling_m": 10,
+  "sampling_gap_bound_m": 5,
+  "primary_text": "1949 Jordan agreement V(1)(c) assigns the Hebron–Dead Sea sector to Annex I Map1 section B. V(1)(d) MR1925-0958 concerns the separate Dead Sea-to-southernmost-Palestine sector.",
+  "historical_validation": "Signed Map1 north/south sheets are retained in scans/armistice-signed-1949.jpg (UNISPAL S/1302/Rev.1). Grid-registered crossing agrees within about 0.5 km: shore MR1877-1005 vs modern MR1879-0999; turn MR1951-1000 vs modern MR1952-1003. The older UNTS PDF alone is incomplete; that does not mean the signed sheet is unavailable."
+}

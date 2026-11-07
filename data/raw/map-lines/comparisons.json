@@ -1,0 +1,51 @@
+[
+  {
+    "layer": "egypt",
+    "comparison": "UN 1:1m",
+    "max_m": 359.86360476975125,
+    "sampling_m": 10,
+    "scope": "Full Israel\u2013Egypt land boundary"
+  },
+  {
+    "layer": "egypt",
+    "comparison": "Natural Earth 1:10m",
+    "max_m": 3211.7337290304067,
+    "sampling_m": 10,
+    "scope": "Full source extents; includes coarse endpoints"
+  },
+  {
+    "layer": "jordan",
+    "comparison": "UN 1:1m",
+    "max_m": 763.2065602019226,
+    "sampling_m": 10,
+    "scope": "Matching full frontier; Golan\u2013Jordan excluded"
+  },
+  {
+    "layer": "jordan",
+    "comparison": "Natural Earth 1:10m",
+    "max_m": 5921.444141546508,
+    "sampling_m": 10,
+    "scope": "Full source extents; includes coarse endpoints"
+  },
+  {
+    "layer": "blue",
+    "comparison": "UN 1:1m",
+    "max_m": 373.56887344136464,
+    "sampling_m": 10,
+    "scope": "Common western sector, longitude <=35.6"
+  },
+  {
+    "layer": "gaza",
+    "comparison": "UN 1:1m",
+    "max_m": 372.8536554885696,
+    "sampling_m": 10,
+    "scope": "Israel\u2013Gaza land boundary only"
+  },
+  {
+    "layer": "golan-alpha",
+    "comparison": "Natural Earth 1974 line 1:10m",
+    "max_m": 1093.0126920852035,
+    "sampling_m": 10,
+    "scope": "Common latitude 32.75\u201333.3; differing northern extensions excluded"
+  }
+]

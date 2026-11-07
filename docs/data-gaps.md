@@ -1,9 +1,9 @@
 # Data gaps register
 
-11404 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
+11410 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
 
 - High importance: 827 (confirmed 377, probable 32, provisional 165, disputed 13, unknown 240).
-- Medium importance: 3569 (confirmed 561, probable 201, provisional 548, disputed 5, unknown 2254).
+- Medium importance: 3575 (confirmed 561, probable 201, provisional 548, disputed 5, unknown 2260).
 - Low importance: 7008 (confirmed 570, provisional 802, unknown 5636).
 
 ## High importance: open, by election
@@ -302,7 +302,7 @@ Shown in Standard/Expert views or the After-the-election tab. Grouped by record 
 - **k25**: data/raw/polls/kN/polls.json polls 159 (unknown 159); Family classifications 47 (probable 2, provisional 17, unknown 28); Party appearances 26 (unknown 26); List metadata 11 (probable 2, provisional 3, unknown 6); Term events 3 (probable 1, unknown 2); data/meta/election-context.json events 2 (probable 1, provisional 1); Formation 2 (provisional 2); aftermath results 1 (provisional 1); data/raw/polls/kN/cec-13-final-supplement.json record 1 (unknown 1); data/raw/polls/kN/cec-13-final-supplement.json undecidedOnlyPct 1 (unknown 1); Government 1 (unknown 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1).
 - **k26**: Family classifications 93 (probable 1, provisional 20, unknown 72); Party appearances 21 (unknown 21); data/meta/election-context.json events 8 (provisional 8); List metadata 3 (provisional 3); data/meta/README.md 1 (unknown 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1).
 - **[object Object]**: data/raw/polls/kN/schema.draft.json properties 1 (unknown 1).
-- **cross-election**: data/meta/party-lineage.json pending 88 (provisional 1, unknown 87); data/raw/demographics/cbs-2018.json result 15 (unknown 15); data/raw/demographics/cbs-2019.json result 15 (unknown 15); data/raw/demographics/cbs-2020.json result 15 (unknown 15); data/raw/demographics/cbs-2021.json result 15 (unknown 15); data/raw/demographics/cbs-2022.json result 15 (unknown 15); data/raw/demographics/cbs-2023.json result 15 (unknown 15); data/raw/demographics/cbs-2017.json result 14 (unknown 14); data/meta/parties.json conflicts 7 (provisional 1, disputed 4, unknown 2); data/meta/party-lineage.json edges 7 (probable 7); families 7 (provisional 3, unknown 4); data/meta/government-support-evidence.json government36Deputies 4 (unknown 4); data/meta/parties.json parties 3 (provisional 3); data/meta/README.md 2 (unknown 2); data/meta/candidate-notes.json notes 1 (unknown 1); data/meta/election-context.json ballotIndependence 1 (provisional 1); data/meta/joint-facts-name-aliases.json aliases 1 (provisional 1); data/raw/demographics/cbs-2003-normalized.json form 1 (unknown 1); data/raw/demographics/cbs-2003-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2006-normalized.json form 1 (unknown 1); data/raw/demographics/cbs-2006-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2009-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2013-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2015-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2017-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2018-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2019-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2020-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2021-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2022-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2023-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2024-normalized.json religion 1 (unknown 1).
+- **cross-election**: data/meta/party-lineage.json pending 88 (provisional 1, unknown 87); data/raw/demographics/cbs-2018.json result 15 (unknown 15); data/raw/demographics/cbs-2019.json result 15 (unknown 15); data/raw/demographics/cbs-2020.json result 15 (unknown 15); data/raw/demographics/cbs-2021.json result 15 (unknown 15); data/raw/demographics/cbs-2022.json result 15 (unknown 15); data/raw/demographics/cbs-2023.json result 15 (unknown 15); data/raw/demographics/cbs-2017.json result 14 (unknown 14); data/meta/parties.json conflicts 7 (provisional 1, disputed 4, unknown 2); data/meta/party-lineage.json edges 7 (probable 7); families 7 (provisional 3, unknown 4); data/meta/government-support-evidence.json government36Deputies 4 (unknown 4); data/meta/parties.json parties 3 (provisional 3); data/meta/README.md 2 (unknown 2); data/meta/candidate-notes.json notes 1 (unknown 1); data/meta/election-context.json ballotIndependence 1 (provisional 1); data/meta/joint-facts-name-aliases.json aliases 1 (provisional 1); data/raw/demographics/cbs-2003-normalized.json form 1 (unknown 1); data/raw/demographics/cbs-2003-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2006-normalized.json form 1 (unknown 1); data/raw/demographics/cbs-2006-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2009-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2013-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2015-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2017-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2018-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2019-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2020-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2021-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2022-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2023-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2024-normalized.json religion 1 (unknown 1); data/raw/map-lines/alpha-line-check.json record 1 (unknown 1); data/raw/map-lines/blue-line-check.json record 1 (unknown 1); data/raw/map-lines/jerusalem-registration.json record 1 (unknown 1); data/raw/map-lines/jerusalem-un229-traces.json record 1 (unknown 1); data/raw/map-lines/official-treaty-excerpts.json egyptArticleII 1 (unknown 1); data/raw/map-lines/signed-map-check.json record 1 (unknown 1).
 
 ## Low importance: counts only
 
@@ -325,9 +325,9 @@ Every claim in these families, not only gaps. Derived from each claim’s own so
 
 ## Counts
 
-By kind: unknown: 6949; missing-field: 283; conflict: 17; single-source: 2378; low-confidence: 101; release-hold: 0; inferred: 1164; pending: 422; unconfirmed: 90.
+By kind: unknown: 6949; missing-field: 283; conflict: 17; single-source: 2384; low-confidence: 101; release-hold: 0; inferred: 1164; pending: 422; unconfirmed: 90.
 
-By status: inferred-not-verified: 1030; needs-current-status-review: 312; open: 10062.
+By status: inferred-not-verified: 1030; needs-current-status-review: 312; open: 10068.
 
 | Election | High open | Medium open | Low | Total |
 | --- | ---: | ---: | ---: | ---: |
@@ -358,7 +358,7 @@ By status: inferred-not-verified: 1030; needs-current-status-review: 312; open: 
 | k25 | 8 | 256 | 392 | 686 |
 | k26 | 5 | 128 | 363 | 559 |
 | [object Object] | 0 | 1 | 0 | 1 |
-| cross-election | 3 | 240 | 1042 | 1393 |
+| cross-election | 3 | 246 | 1042 | 1399 |
 
 ## Maintenance and scope
 

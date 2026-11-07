@@ -1,0 +1,73 @@
+{
+  "controls": [
+    [
+      "Holy Sepulchre",
+      541,
+      813,
+      35.22958,
+      31.77845
+    ],
+    [
+      "Dome of the Rock",
+      671,
+      826,
+      35.2354,
+      31.778
+    ],
+    [
+      "David tomb",
+      533,
+      998,
+      35.2293,
+      31.7723
+    ],
+    [
+      "Western Wall",
+      652,
+      861,
+      35.2345,
+      31.7767
+    ],
+    [
+      "Simon the Just tomb (27)",
+      579,
+      453,
+      35.23095,
+      31.7919
+    ],
+    [
+      "Tomb of the Virgin (8)",
+      771,
+      764,
+      35.23966,
+      31.78043
+    ],
+    [
+      "Ascension (10)",
+      891,
+      820,
+      35.24504,
+      31.77891
+    ]
+  ],
+  "similarity": [
+    4.08527768776437,
+    0.16258097160607576,
+    708792.3115252187,
+    3521295.3533903016
+  ],
+  "residual_m": [
+    21.6,
+    27.1,
+    59.1,
+    25.5,
+    7.9,
+    19.3,
+    40.4
+  ],
+  "scale_m_per_px": 4.088511508908074,
+  "source": "UN map 229 (November 1949)",
+  "source_image": "data/raw/map-lines/scans/jerusalem-un-1949.jpg",
+  "method": "Seven-point similarity, common x/y scale, no affine shear",
+  "limitation": "Approximate map-symbol controls; residual maximum 59.1 m is not a surveyed boundary accuracy guarantee."
+}

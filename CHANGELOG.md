@@ -2,9 +2,14 @@
 
 ## 7 November 2026 — Settings
 
+- Map: keep Hebrew sentence punctuation outside Latin-reference isolation, join the Ramadin source splice exactly, and name OpenStreetMap in full.
+
+
 - Integrate Settings with the colour guard: preserve global party fills, dot separators and picker advice across display settings and large-text layouts.
 
 - Rebuilt Settings as one searchable bilingual popup (phone: full screen) with levels, group resets and Undo; every setting now applies wherever it is relevant, with new defaults (Device theme, joint lists by party, parties with no seats hidden) and accessibility options at every level; every percentage now shows at most 0–3 decimals (1 by default, 2 at Expert), never shown on the wrong side of the threshold (one more digit there, the exact share in the tooltip); Compare's shares, percentage-point changes and seatless rows follow Settings, its copy mode is a Settings row, and large text now takes the layout of the narrower page instead of wrapping.
+
+- Map review: restore Government House armistice edges, correct bilingual treaty text and references, complete the UN Blue Line, and add sourced Golan separation layers.
 
 ## 6 November 2026 — data audit
 
@@ -14,6 +19,8 @@
 
 - Coalitions: outside support and arranged abstention as roles beside In/Out/Any, with “members + outside support = total”, both the confidence vote (more for than against) and 61, hatched/hollow bar marks, named undo, links and saves; What if… adds a 2026 minority government with outside support; “Recorded first government” fills roles from research with their certainty and says where it differs from the recorded vote, and 1992’s grouping shows outside support as its own group without recolouring any list. Vote tallies read “67 for · 53 against” everywhere, including After the election.
 - After the election: distinguish government members, support roles and individual votes; show unknown totals honestly, explain vote reconciliation behind help, and keep localised date ranges in reading order.
+- Correct Jerusalem zone identities and paired lines; distinguish the treaty’s Jordan administrative sector, constrain source precision, and verify Blue/Alpha against explicit UN maps.
+
 - Sources: an enforced evidence policy (tiers, independence, certainty confirmed/probable/provisional/disputed/unknown); the gaps register now ranks gaps by importance and certainty.
 - Families: count Otzma Yehudit only in Radical right in 2015, as in 2019–2022; the national-religious family keeps Yachad.
 - Research: separate government membership, outside support, investiture votes and individual exceptions; validate explicit uncertainty across recorded governments and document unresolved historical authentication.
@@ -34,6 +41,9 @@
 - After the election: localise dates with RTL-safe ranges and numbers, use reading-direction arrows, attach help to its context, remove redundant event glyphs and avoid an unsupported coalition membership total.
 
 - After the election: reviewed recommendations, government formation, coalition and term history for all 26 elections, with sources and pending-event separation.
+- Locality map: add individually controlled armistice/frontier layers, historical no-man’s-land hatching, source dates and a reproducible disagreement atlas; keep unverified Golan sections out.
+
+- Localities: lazy OpenFreeMap light/dark vectors, CBS-only bilingual labels at every zoom; hide unverified boundaries with an explicit notice and retain geometry checks.
 - Compare: the open scenario always stays on the right with matching unchanged; an import that puts someone on two lists warns and offers a one-tap removal; saved comparisons are listed on Scenarios; the share change shows its unit (pp).
 
 - Mark custom bloc, coalition and family groupings locally as analysis while preserving official result identity and factual summaries.
