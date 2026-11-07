@@ -156,3 +156,7 @@ On-screen label/status changes for coordinator e2e maintenance:
 
 None. Missing verification coverage is retained as a research limitation rather
 than asking the owner to ratify technical unknowns.
+
+## 7 November 2026 — pre-release identity correction
+
+Owner direction supersedes the earlier stable-ID compatibility rule: internal list IDs now follow the corrected official ballot letters, with candidate IDs and all references updated and no aliases or migration. `11-הם` → `11-הס`; `11-טן` → `11-טס`; `11-פט` → `11-כט`; `11-נ` → `11-ס`; `11-עי` → `11-עד`. Votes and seats are unchanged.

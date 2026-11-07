@@ -49,9 +49,9 @@ it('preserves the former 44/2 diagnostic as a transcription-error counterfactual
     .map(l=>[l.id,l.seats])).toEqual([['6-את',44],['6-ש',2]]);
 });
 
-it('k6: corrects letters while preserving stable keys and the elected Don-Yihya identity',()=>{
+it('k6: corrects letters with corrected keys and the elected Don-Yihya identity',()=>{
   const ds=earlyResearchDataset(6);
-  expect(ds.lists.filter(l=>['6-כס','6-עס','6-סס'].includes(l.id)).map(l=>[l.id,l.letters])).toEqual([['6-כס','כנ'],['6-עס','ענ'],['6-סס','פש']]);
-  expect(ds.agreements[1].members).toEqual(['6-כא','6-כס']);
+  expect(ds.lists.filter(l=>['6-כנ','6-ענ','6-פש'].includes(l.id)).map(l=>[l.id,l.letters])).toEqual([['6-כנ','כנ'],['6-ענ','ענ'],['6-פש','פש']]);
+  expect(ds.agreements[1].members).toEqual(['6-כא','6-כנ']);
   expect(earlyReleasedDataset(6).lists.find(l=>l.letters==='ב')!.candidates[10]).toMatchObject({id:'6-ב#11',nameHe:'דון יחיא שבתאי'});
 });

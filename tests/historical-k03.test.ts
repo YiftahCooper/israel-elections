@@ -14,7 +14,7 @@ describe('k3: released national evidence', () => {
   });
   it('reproduces every gazetted seat with the complete sourced connections',()=>{
     const a=verifyEarlyProgress(3,{log:false});
-    expect(a.result.lists.map(l=>[l.id==='3-סא'?'סצ':l.id.slice(l.id.indexOf('-')+1),l.seats])).toEqual(Object.entries(published));
+    expect(a.result.lists.map(l=>[l.id==='3-סצ'?'סצ':l.id.slice(l.id.indexOf('-')+1),l.seats])).toEqual(Object.entries(published));
     expect(a.result.seatsAllocated).toBe(120);expect(a.result.warnings).toEqual([]);
     expect(a.review.agreements.complete).toBe(true);
   });
@@ -24,8 +24,8 @@ describe('k3: released national evidence', () => {
 it('preserves the Sephardim identity and records the withdrawn nineteenth list', async()=>{
   const { readFileSync }=await import('node:fs');
   const ds=JSON.parse(readFileSync('public/data/k3.json','utf8'));
-  expect(ds.lists.find((l:any)=>l.id==='3-סא')).toMatchObject({letters:'סצ',votes:6994});
-  expect(ds.agreements[3].members).toEqual(['3-סא','3-ל']);
+  expect(ds.lists.find((l:any)=>l.id==='3-סצ')).toMatchObject({letters:'סצ',votes:6994});
+  expect(ds.agreements[3].members).toEqual(['3-סצ','3-ל']);
   expect(ds.lists.find((l:any)=>l.letters==='יז')).toMatchObject({withdrawn:true,votes:0});
   expect(ds.lists.filter((l:any)=>!l.withdrawn)).toHaveLength(18);
   expect(ds.lists.find((l:any)=>l.id==='3-ב')).toMatchObject({shortHe:'חזית דתית לאומית',shortEn:'National Religious Front'});

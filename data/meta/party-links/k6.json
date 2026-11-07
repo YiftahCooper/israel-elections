@@ -161,7 +161,7 @@
         "confidence": "high"
       }
     ],
-    "6-עס": [
+    "6-ענ": [
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset6-results.pdf",
@@ -172,7 +172,7 @@
         "confidence": "high"
       }
     ],
-    "6-כס": [
+    "6-כנ": [
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset6-results.pdf",
@@ -194,7 +194,7 @@
         "confidence": "high"
       }
     ],
-    "6-סס": [
+    "6-פש": [
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset6-results.pdf",
@@ -266,16 +266,16 @@
     "6-ק": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "6-עס": {
+    "6-ענ": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "6-כס": {
+    "6-כנ": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
     "6-נס": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "6-סס": {
+    "6-פש": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
     "mapai": {

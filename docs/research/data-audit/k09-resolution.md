@@ -179,3 +179,7 @@ Full-name changes also apply to matching Gazette-link titles (suffix unchanged):
 Scheme names, status stage (`official-final`), unavailable flags, rules, totals and
 seat allocation remain unchanged. Aftermath is still an unwired pilot; its date,
 confidence and citation changes do not currently change on-screen labels.
+
+## 7 November 2026 — pre-release identity correction
+
+Owner direction supersedes the earlier stable-ID compatibility rule: internal list IDs now follow the corrected official ballot letters, with candidate IDs and all references updated and no aliases or migration. `9-הם` → `9-הפ`; `9-חך` → `9-זך`; `9-ים` → `9-ימ`; `9-סם` → `9-ספ`; `9-פז` → `9-פ`; `9-פח` → `9-פז`. Votes and seats are unchanged.

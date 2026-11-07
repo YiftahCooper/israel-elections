@@ -1,6 +1,6 @@
 {
   "electionId": "k15",
-  "generatedNote": "Research metadata (joint-list composition, blocs, colours). See data/meta/README.md and docs/research/meta-1981-2006.md. Stable list/candidate IDs 15-ט and 15-קף predate the ballot-letter correction; IDs are opaque keys. Display and export letters come from the corrected letters fields (יט and קפ).",
+  "generatedNote": "Research metadata (joint-list composition, blocs, colours). See data/meta/README.md and docs/research/meta-1981-2006.md. Internal list and candidate IDs follow the corrected ballot letters (7 November 2026; pre-release correction).",
   "lists": [
     {
       "letters": "אמת",

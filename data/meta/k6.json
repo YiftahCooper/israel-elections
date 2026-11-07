@@ -2378,6 +2378,6 @@
     }
   ],
   "notes": [
-    "Stable opaque list IDs 6-כס, 6-עס and 6-סס are preserved for saved references; ballot letters are כנ, ענ and פש respectively. Never derive a display label from those IDs."
+    "7 November 2026: list and candidate IDs follow the corrected official ballot letters; no compatibility aliases are retained. Corrected ballot letters are כנ, ענ and פש."
   ]
 }

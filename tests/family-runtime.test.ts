@@ -71,11 +71,11 @@ test('compact generated runtime is below 200 KB and matches all nine independent
 });
 test('family colours are stable, chromatic and distinct for the nine presets',async()=>{const {builtins,familyColor}=await import('../src/families/runtime.ts');expect(new Set(builtins.map(familyColor)).size).toBe(9);expect(familyColor(fork(f))).toBe(familyColor(f));});
 
-test('short labels survive runtime and full-definition export, with legacy snapshot fallback',async()=>{
+test('short labels survive runtime and full-definition export, with full-name fallback when a label is absent',async()=>{
  const {builtins,shortFamilyName}=await import('../src/families/runtime.ts');const {familyLabel}=await import('../src/families/labels.ts');
  expect(builtins.map(f=>f.labelEn)).toEqual(['Haredi','Arab & Arab–Jewish','Centre','Likud lineage','Labour & left','Religious Zionist','Radical right','Religious','Russian-speaking']);
  for(const p of builtins){expect(shortFamilyName(p,'he')).toBe(p.labelHe);expect(parseFamily(readFileSync(`data/meta/families/${p.id}.json`,'utf8')).labelEn).toBe(p.labelEn);}
- expect(familyLabel({...f,labelEn:undefined},'en')).toBe('Haredi');expect(()=>parseFamily(JSON.stringify({...f,labelEn:123}))).toThrow();
+ expect(familyLabel({...f,labelEn:undefined},'en')).toBe(f.nameEn);expect(()=>parseFamily(JSON.stringify({...f,labelEn:123}))).toThrow();
 });
 test('family grouping only creates a mixed bloc when whole mixed appearances remain separate',async()=>{
  const {isFamilyGrouping}=await import('../src/families/labels.ts');
@@ -96,7 +96,7 @@ test('heading a joint list is an explicit policy with per-list overrides',async(
 });
 test('hover facts come from the runtime: list names and mixed compositions with the family’s own parties (aliases resolved)',async()=>{
  const {builtins,mixedComposition,historyListName}=await import('../src/families/runtime.ts');const by=(id:string)=>builtins.find(x=>x.id===id)!;
- expect(historyListName('k12','12-זב','he')).toBe('אחדות – למען ויקטור תייר לכנסת');expect(historyListName('k12','12-unknown','en')).toBe('Unknown list');
+ expect(historyListName('k12','12-זכ','he')).toBe('אחדות – למען ויקטור תייר לכנסת');expect(historyListName('k12','12-unknown','en')).toBe('Unknown list');
  expect(historyListName('k20','20-קץ','en')).toBe('Yachad');expect(historyListName('k20','20-קץ','he')).toBe('יחד');
  expect(mixedComposition(by('haredi'),'k20','20-קץ','en')).toEqual([{name:'Yachad',own:true},{name:'Otzma Yehudit (Jewish National Front)',own:false}]);
  expect(mixedComposition(by('radical-right'),'k20','20-קץ','en').map(p=>p.own)).toEqual([false,true]);

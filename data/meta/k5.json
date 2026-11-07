@@ -358,7 +358,7 @@
   ],
   "notes": [
     "No list in this election was an alliance of separate parties. Mizrachi and Hapoel HaMizrachi ran separately in 1951; in 1961 the NRP and Liberal Party were already merged parties, while Agudat Yisrael and Poalei Agudat Yisrael ran separately.",
-    "Stable opaque IDs 5-סס and 5-עע are preserved for saved scenarios; their displayed ballot letters are סש and עט respectively (YP 869 p.1937).",
+    "7 November 2026: list and candidate IDs follow the corrected official ballot letters; no compatibility aliases are retained. Ballot letters סש and עט follow YP 869 p.1937.",
     "Electorate: CBS table 27.2 (CEC source) gives 1,271,285; the Knesset English history summary gives 1,274,280. CBS retained pending resolution; see k05-resolution.md owner question."
   ]
 }

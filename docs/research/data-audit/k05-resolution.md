@@ -72,3 +72,7 @@ Substituting baseline k5 into `scenarioFromDataset` with current engine/model re
 - `npx tsc -p tsconfig.json --noEmit`: passed.
 - `npx vitest run --maxWorkers=2`: **97 files, 923 tests passed**, including historical-k05, the early-release suite and all differential families. Initial run exposed intended new-list/digest expectations and missing English/link metadata (corrected); gallery subprocess test needed sandbox subprocess permission, then passed unchanged.
 - `git diff --check`: passed. No push, main integration or Playwright.
+
+## 7 November 2026 — pre-release identity correction
+
+Owner direction supersedes the earlier stable-ID compatibility rule: internal list IDs now follow the corrected official ballot letters, with candidate IDs and all references updated and no aliases or migration. `5-סס` → `5-סש`; `5-עע` → `5-עט`. Votes and seats are unchanged.
