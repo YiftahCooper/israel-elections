@@ -17,7 +17,7 @@ import { electionRuleSetId, historicalRules, type Scenario } from '../../model/s
 import { baselineOf, listLabel, methodOf } from '../derive.ts';
 import { GLOSSARY, useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
-import { dispatch, getState, redo, replay, setState, undo, useStore, useDigits } from '../store.ts';
+import { dispatch, getState, redo, replay, setState, undo, useStore, useDigits, useSetting } from '../store.ts';
 import { useLocalities } from './Turnout.tsx';
 import { GlossaryLink, Info, TextField } from './ui.tsx';
 
@@ -136,7 +136,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
           <button className="btn small" onClick={() => { setState({ tool: 'board', blocPanel: s.blocs[0]?.id ?? '__none', selectedListId: null }); window.scrollTo({ top: 0 }); }}>{L('Edit blocs', 'עריכת גושים')}</button>
         </div>
       </div>
-      <button className="btn" onClick={() => setState({ settingsOpen: true })}>{L('Your settings…', 'ההגדרות שלכם…')}</button>
+      <button className="btn" onClick={() => setState({ settingsOpen: true })}>{L('Settings…', 'הגדרות…')}</button>
     </div>
   );
 }
@@ -151,7 +151,8 @@ export function Localities({ s }: { s: Scenario }) {
   const { data, error } = useLocalities(s.electionId, hasLocalities);
   const { locations, error: locationError } = useLocalityLocations(s.electionId, hasLocalities);
   const names = useLocalityNames(s.electionId, hasLocalities);
-  const [view, setView] = useState<'map' | 'table'>('map');
+  const preferTables = useSetting('preferTables');
+  const [view, setView] = useState<'map' | 'table'>(preferTables ? 'table' : 'map');
   const [q, setQ] = useState('');
   const [sort, setSort] = useState<'registered' | 'turnout' | 'name'>('registered');
   const [open, setOpen] = useState<string | null>(null);
@@ -195,7 +196,7 @@ export function Localities({ s }: { s: Scenario }) {
                 <tr className={open === key ? 'sel' : ''}>
                   <td><button className="table-action" aria-expanded={open === key} onClick={() => setOpen(open === key ? null : key)} title={lang === 'en' ? r.nameHe : undefined}><LocalityName names={names} row={r} index={Number(key)} /></button> <span className="muted tiny">{r.code}</span></td>
                   <td className="n">{r.registered ? fmtInt(r.registered) : '—'}</td><td className="n">{fmtInt(r.votesCast)}</td>
-                  <td className="n">{r.registered ? fmtPct(r.votesCast, r.registered, 1) : '—'}</td><td className="n">{fmtInt(r.valid)}</td>
+                  <td className="n">{r.registered ? fmtPct(r.votesCast, r.registered, digits) : '—'}</td><td className="n">{fmtInt(r.valid)}</td>
                   <td className="small">{top.slice(0, 3).filter((x) => x.v > 0).map((x) => `${nameOf(x.k)} ${fmtPct(x.v, r.valid, 0)}`).join(' · ')}</td>
                 </tr>
                 {open === key && (

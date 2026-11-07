@@ -2,7 +2,7 @@ import { useFloating } from '../floating.tsx';
 import { electionContext, type ContextSource, type PMContest } from '../../data/electionContext.ts';
 import type { ElectionId } from '../../data/schema.ts';
 import { useL, useLang } from '../i18n.ts';
-import { useStore } from '../store.ts';
+import { useDigits, useStore } from '../store.ts';
 import { useEffect, useRef, useState } from 'react';
 import { listLabel } from '../derive.ts';
 
@@ -47,6 +47,8 @@ export function ElectionAbout({ electionId, listId }: { electionId: ElectionId; 
 }
 
 export function PMResult({ contest, onKnesset }: { contest: PMContest; onKnesset?: () => void }) {
+  // a published percentage is shown with at most its published two decimals, never invented precision
+  const digits = useDigits();
   const L = useL(); const lang = useLang();
   const num = (n: number) => n.toLocaleString(lang === 'he' ? 'he-IL' : 'en-US');
   const b = electionContext.ballotIndependence;
@@ -60,7 +62,7 @@ export function PMResult({ contest, onKnesset }: { contest: PMContest; onKnesset
         {contest.candidates.filter(c => c.status === 'final').map(c => {
           const share = c.votes!.value / contest.totals.valid.value * 100;
           return <div className="pm-candidate" key={c.id}>
-            <div>{lang === 'he' ? c.nameHe : c.nameEn} <strong>{num(c.votes!.value)}</strong> · {(c.publishedPercent?.value ?? share).toFixed(2)}%</div>
+            <div>{lang === 'he' ? c.nameHe : c.nameEn} <strong>{num(c.votes!.value)}</strong> · {(c.publishedPercent?.value ?? share).toFixed(Math.min(digits, 2))}%</div>
             <div className="pm-track" aria-hidden="true"><span style={{ width: `${share}%` }} /><i /></div>
           </div>;
         })}

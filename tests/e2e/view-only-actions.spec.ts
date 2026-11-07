@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { choose } from './choices.ts';
 
 test('sourced groupings stay official; moving a member is marked analysis; shares preserve the view', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'en',theme:'light',level:'expert',hintDismissed:true})));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang:'en',theme:'light',level:'expert',hintDismissed:true})));
   await page.goto('/');
   await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
   await page.getByRole('button', { name: 'Edit blocs', exact: true }).click();
@@ -31,7 +31,7 @@ test('sourced groupings stay official; moving a member is marked analysis; share
 });
 
 test('grouping keeps official and saved checkpoints free of stars; voting adds a star', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', theme: 'light', level: 'expert', hintDismissed: true })));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', theme: 'light', level: 'expert', hintDismissed: true })));
   await page.goto('/');
   await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
   const switcher = page.locator('.band .scenario-switcher .choice-trigger');
@@ -62,7 +62,7 @@ test('grouping keeps official and saved checkpoints free of stars; voting adds a
 });
 
 test('k26: a bloc move is locally marked analysis; only a vote changes result identity',async({page})=>{
- await page.addInitScript(()=>localStorage.setItem('israel-elections:v1',JSON.stringify({lang:'en',theme:'light',level:'expert',hintDismissed:true})));
+ await page.addInitScript(()=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang:'en',theme:'light',level:'expert',hintDismissed:true})));
  await page.goto('/');await choose(page.getByRole('button',{name:'Election',exact:true}),'k26');
  await page.getByRole('button',{name:'Edit blocs',exact:true}).click();
  const panel=page.locator('.bloc-panel'),cards=panel.locator('.bp-card');

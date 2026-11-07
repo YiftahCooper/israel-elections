@@ -2,7 +2,7 @@ import { Floating } from '../floating.tsx';
 import {Fragment,useEffect,useId,useRef,useState} from 'react';
 import {aggregate,membership,type Family} from '../../families/model.ts';
 import {familyColor,historyElections,historyListName,mixedComposition,shortFamilyName,type HistoryElection} from '../../families/runtime.ts';
-import {openElection,setState} from '../store.ts';
+import {openElection,setState,useDigits,useSetting} from '../store.ts';
 import {useL,useLang} from '../i18n.ts';
 import type {ElectionId} from '../../data/schema.ts';
 export const familyDate=(d:HistoryElection,lang:'he'|'en')=>new Date(d.electionDate+'T12:00:00').toLocaleDateString(lang==='he'?'he-IL':'en-GB',{year:'numeric',month:'short',day:'numeric'});
@@ -34,7 +34,7 @@ export function FamilyCharts({families,cursor,onCursor,onInspect}:{families:Fami
  })}</div>;
 }
 function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;metric:'share'|'votes';scale:{top:number;ticks:number[]};cursor:ElectionId;onCursor:(id:ElectionId)=>void;onInspect:(f:Family,id:ElectionId)=>void}) {
- const L=useL(),lang=useLang(),ref=useRef<HTMLDivElement>(null),id=useId().replace(/:/g,''),[width,setWidth]=useState(640),[hover,setHover]=useState(false);
+ const L=useL(),lang=useLang(),ref=useRef<HTMLDivElement>(null),id=useId().replace(/:/g,''),[width,setWidth]=useState(640),[hover,setHover]=useState(false),hoverPopups=useSetting('hoverPopups'),digits=useDigits();
  useEffect(()=>{const el=ref.current;if(!el)return;const o=new ResizeObserver(()=>setWidth(Math.max(270,el.clientWidth)));o.observe(el);setWidth(Math.max(270,el.clientWidth));return()=>o.disconnect();},[]);
  const narrow=width<500,height=narrow?240:300,left=narrow?44:50,right=narrow?78:110,bottom=height-38,top=20,max=scale.top;
  const t0=Date.parse(historyElections[0].electionDate),t1=Date.parse(historyElections[25].electionDate);
@@ -45,7 +45,7 @@ function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;m
  const data=historyElections.map(d=>aggregate(f,d));let path='';let connected=false;
  data.forEach((a,i)=>{if(!drawn(a)){connected=false;return;}path+=`${connected?'L':'M'}${x(historyElections[i])},${y(a.votes!,historyElections[i])} `;connected=true;});
  const at=historyElections.findIndex(d=>d.id===cursor),color=familyColor(f);
- const num=(v:bigint,e:HistoryElection)=>metric==='share'?`${value(v,e).toFixed(2)}% · ${Number(v).toLocaleString()} ${L('votes','קולות')}`:`${Number(v).toLocaleString()} ${L('votes','קולות')}`;
+ const num=(v:bigint,e:HistoryElection)=>metric==='share'?`${value(v,e).toFixed(digits)}% · ${Number(v).toLocaleString()} ${L('votes','קולות')}`:`${Number(v).toLocaleString()} ${L('votes','קולות')}`;
  const describe=(a:Agg,e:HistoryElection)=>{const status=familyStatus(a,L);const parts=[familyDate(e,lang)];
   if(status)parts.push(status);if(a.votes!==null&&a.status==='observed'&&!onlyMixed(a))parts.push(num(a.votes,e));
   if(a.mixed)parts.push(`${onlyMixed(a)?'':L('Mixed lists','רשימות מעורבות')+': '}${num(a.mixed,e)}`);
@@ -70,7 +70,7 @@ function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;m
    {historyElections.map((e,i)=>{const row=data[i];if(!row.mixed)return null;const base=row.votes??0n,h=y(base,e)-y(base+row.mixed,e);
     return <rect key={e.id} className="family-mixed" x={x(e)-3.5} y={y(base+row.mixed,e)} width="7" height={Math.max(1,h)} fill={`url(#hatch${id})`} stroke={color}/>;})}
    <path d={path} fill="none" stroke={color} strokeWidth="2.5" strokeLinejoin="round"/>
-   {historyElections.map((e,i)=>{const row=data[i],text=describe(row,e);return <g key={e.id} role="button" tabIndex={cursor===e.id?0:-1} aria-label={text} aria-haspopup="dialog" onFocus={()=>{onCursor(e.id);setHover(true);}} onPointerEnter={()=>{onCursor(e.id);setHover(true);}} onClick={()=>onInspect(f,e.id)} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();onInspect(f,e.id);}const step={ArrowRight:1,ArrowLeft:-1,Home:-99,End:99}[event.key];if(step){event.preventDefault();const next=Math.max(0,Math.min(25,i+step));onCursor(historyElections[next].id);(event.currentTarget.parentElement?.querySelectorAll('[role=button]')[next] as SVGElement )?.focus({preventScroll:true});}}}>
+   {historyElections.map((e,i)=>{const row=data[i],text=describe(row,e);return <g key={e.id} role="button" tabIndex={cursor===e.id?0:-1} aria-label={text} aria-haspopup="dialog" onFocus={()=>{onCursor(e.id);setHover(true);}} onPointerEnter={ev=>{if(ev.pointerType==='mouse'&&!hoverPopups)return;onCursor(e.id);setHover(true);}} onClick={()=>onInspect(f,e.id)} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();onInspect(f,e.id);}const step={ArrowRight:1,ArrowLeft:-1,Home:-99,End:99}[event.key];if(step){event.preventDefault();const next=Math.max(0,Math.min(25,i+step));onCursor(historyElections[next].id);(event.currentTarget.parentElement?.querySelectorAll('[role=button]')[next] as SVGElement )?.focus({preventScroll:true});}}}>
     <rect x={(mid(i-1)+x(e))/2} y={top} width={Math.max(4,(mid(i+1)-mid(i-1))/2)} height={bottom-top} fill="transparent"/>
     {drawn(row)&&<circle cx={x(e)} cy={y(row.votes!,e)} r={e.pending?4.5:3.5} fill={e.pending?'var(--surface)':color} stroke={color} strokeWidth="2"/>}
     <title>{text}</title>
@@ -85,6 +85,7 @@ function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;m
 /** What one point is made of, from the packed runtime (no loading, so the box never grows under the pointer):
  * the change since the previous election, the counted lists, and each hatched mixed list with the family's own parties in bold. */
 function PointFacts({f,at,metric,text}:{f:Family;at:number;metric:'share'|'votes';text:string}) {
+ const digits=useDigits();
  const L=useL(),lang=useLang(),e=historyElections[at],prev=historyElections[at-1],a=aggregate(f,e),pa=prev?aggregate(f,prev):null,m=membership(f,e.id);
  const votes=new Map(e.lists.map(l=>[l.id,l.votes])),byVotes=(ids:Set<string>)=>[...ids].filter(id=>votes.has(id)).sort((x,y)=>votes.get(y)!-votes.get(x)!);
  const name=(id:string)=>historyListName(e.id,id,lang);
@@ -93,7 +94,7 @@ function PointFacts({f,at,metric,text}:{f:Family;at:number;metric:'share'|'votes
  const sign=(n:number)=>n>0?'+':n<0?'−':'±';
  return <>
   <span>{text}</span>
-  {delta!==null&&<span className="ft-delta">{L('Since','מאז')} {familyDate(prev!,lang)}: <bdi dir="ltr">{sign(delta)}{metric==='share'?`${Math.abs(delta).toFixed(2)} ${L('points','נקודות אחוז')}`:Math.abs(delta).toLocaleString()}</bdi></span>}
+  {delta!==null&&<span className="ft-delta">{L('Since','מאז')} {familyDate(prev!,lang)}: <bdi dir="ltr">{sign(delta)}{metric==='share'?`${Math.abs(delta).toFixed(digits)} ${L('points','נקודות אחוז')}`:Math.abs(delta).toLocaleString()}</bdi></span>}
   {m.selected.size>0&&<span className="ft-row"><i className="family-key-line" aria-hidden/>{byVotes(m.selected).map(name).join(' · ')}</span>}
   {byVotes(m.mixed).map(id=>{const parts=mixedComposition(f,e.id,id,lang);return <span key={id} className="ft-row"><i className="family-key-mixed" aria-hidden/><span>{name(id)}{parts.length>1&&<>: {parts.map((p,i)=><Fragment key={i}>{i>0&&' + '}{p.own?<b>{p.name}</b>:p.name}</Fragment>)}</>}</span></span>;})}
   {m.excluded.size>0&&<span className="ft-row muted">{L('Left out','לא נספרו')}: {byVotes(m.excluded).map(name).join(' · ')}</span>}

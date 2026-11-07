@@ -4,7 +4,7 @@ import { choose } from './choices.ts';
 import { expect, test, type Page } from '@playwright/test';
 
 const start = async (page: Page, level: string) => {
-  await page.addInitScript((v) => { if (!sessionStorage.getItem('seeded')) { localStorage.setItem('israel-elections:v1', v); sessionStorage.setItem('seeded', '1'); } },
+  await page.addInitScript((v) => { if (!sessionStorage.getItem('seeded')) { localStorage.setItem('israel-elections:v1', v); const o = JSON.parse(v); localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); sessionStorage.setItem('seeded', '1'); } },
     JSON.stringify({ lang: 'en', hintDismissed: true, level }));
   await page.goto('/');
   await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
@@ -94,7 +94,7 @@ test('a joint list can run as separate lists, with the vote shares stated as an 
 
 for (const lang of ['en', 'he'] as const) for (const election of ['k24', 'k25']) {
   test(`${election} app-defined grouping labels retain provenance in ${lang}`, async ({ page }) => {
-    await page.addInitScript(({lang}) => localStorage.setItem('israel-elections:v1', JSON.stringify({lang, level:'standard', hintDismissed:true})), {lang});
+    await page.addInitScript(({lang}) => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang, level:'standard', hintDismissed:true})), {lang});
     await page.goto('/');
     await choose(page.getByRole('button', {name: lang === 'en' ? 'Election' : 'בחירות', exact:true}), election);
     const picker = page.getByRole('button', {name:lang === 'en' ? 'Grouping' : 'חלוקה לגושים', exact:true});

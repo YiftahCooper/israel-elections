@@ -1,7 +1,7 @@
 import {choose} from './choices.ts';
 import {test,expect,type Page} from '@playwright/test';
 async function start(page:Page,lang='en',theme='light') {
- await page.addInitScript(v=>localStorage.setItem('israel-elections:v1',JSON.stringify(v)),{lang,theme,level:'expert',hintDismissed:true});
+ await page.addInitScript(v=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)),{lang,theme,level:'expert',hintDismissed:true});
  await page.goto('/');await page.getByRole('tab',{name:lang==='he'?'משפחות מפלגות':'Party families',exact:true}).click();
  await expect(page.locator('.family-chip')).toHaveCount(9);await expect(page.locator('.family-plots svg')).toHaveCount(2);
 }
@@ -37,7 +37,7 @@ test('1988 grouping shows Overview bracket; 2022 +10% previews seats and undoes'
 });
 test('screen-reader table preference and reduced motion open exact figures',async({page})=>{
  await page.emulateMedia({reducedMotion:'reduce'});await start(page);await expect(page.locator('.family-exact')).toHaveAttribute('open');
- await page.getByRole('button',{name:'Manage',exact:true}).click();await page.getByRole('checkbox',{name:'Prefer exact figures (screen-reader/table view)',exact:true}).check();await page.getByRole('dialog').getByRole('button',{name:'Close',exact:true}).click();await page.emulateMedia({reducedMotion:'no-preference'});await page.reload();await page.getByRole('tab',{name:'Party families',exact:true}).click();await expect(page.locator('.family-exact')).toHaveAttribute('open');
+ await page.getByRole('button',{name:'Manage',exact:true}).click();await page.getByRole('checkbox',{name:'Tables instead of charts',exact:true}).check();await page.getByRole('dialog').getByRole('button',{name:'Close',exact:true}).click();await page.emulateMedia({reducedMotion:'no-preference'});await page.reload();await page.getByRole('tab',{name:'Party families',exact:true}).click();await expect(page.locator('.family-exact')).toHaveAttribute('open');
 });
 test('profile loads compact runtime without evidence or registry, suggestions only on request',async({page})=>{
  const requests:string[]=[];page.on('request',r=>requests.push(r.url()));await start(page);expect(requests.some(u=>/\/assets\/(haredi-|registry-|FamilyEditor-)/.test(u))).toBe(false);

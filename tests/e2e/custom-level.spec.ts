@@ -1,7 +1,7 @@
 import { choose } from './choices.ts';
 import { test, expect, type Page } from '@playwright/test';
 async function start(page: Page, level = 'simple') {
-  await page.addInitScript(level => { if (!localStorage.getItem('israel-elections:v1')) localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'en',theme:'light',level,hintDismissed:true})); },level);
+  await page.addInitScript(level => { if (!localStorage.getItem('israel-elections:v1')) localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang:'en',theme:'light',level,hintDismissed:true})); },level);
   await page.goto('/');
   await expect(page.getByRole('region',{name:'Lists',exact:true})).toBeVisible();
   await choose(page.getByRole('button', {name:'Election',exact:true}), 'k25');
@@ -49,7 +49,7 @@ test('blank candidates can be undone and chip changes are human wording', async 
 for (const lang of ['en','he']) for (const theme of ['light','dark']) for (const phone of [false,true]) {
   test(`human agreement explanations and rule eras: ${lang} ${theme} ${phone ? 'phone' : 'desktop'}`, async ({page}) => {
     await page.setViewportSize(phone ? {width:390,height:844} : {width:1440,height:900});
-    await page.addInitScript(v => localStorage.setItem('israel-elections:v1',JSON.stringify(v)), {lang,theme,level:'expert',hintDismissed:true});
+    await page.addInitScript(v => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)), {lang,theme,level:'expert',hintDismissed:true});
     await page.goto('/');
     await choose(page.getByRole('button', {name:lang === 'he' ? 'בחירות' : 'Election',exact:true}), 'k25');
     await expect(page.locator('.lb-row').filter({has:page.locator('.lb-name',{hasText:lang === 'he' ? 'ליכוד' : 'Likud'})}).locator('.lb-seats b')).toHaveText('32');
@@ -69,7 +69,7 @@ for (const lang of ['en','he']) for (const theme of ['light','dark']) for (const
     expect(box.x).toBeGreaterThanOrEqual(0);
     expect(box.x + box.width).toBeLessThanOrEqual(phone ? 390 : 1440);
     await page.screenshot({path:`.backup-scratch/custom-level/markers-${lang}-${theme}-${phone ? 'phone' : 'desktop'}.png`});
-    await page.getByRole('tab',{name:lang === 'he' ? 'כללים והגדרות' : 'Rules & settings',exact:true}).click();
+    await page.getByRole('tab',{name:lang === 'he' ? 'כללים' : 'Rules',exact:true}).click();
     await page.getByRole('button', {name:lang === 'he' ? 'העתקת כללים מ…' : 'Copy rules from…',exact:true}).click();
     const options = page.getByRole('dialog').locator('.choice-option');
     expect((await options.allTextContents()).join(' ')).not.toContain('il-');

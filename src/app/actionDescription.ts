@@ -7,7 +7,8 @@ import { PARTS } from '../model/parts.ts';
 import type { Action, Scenario } from '../model/scenario.ts';
 import type { Lang } from './i18n.ts';
 import { listLabel, editPathLabel } from './derive.ts';
-import { fmtInt, signed } from './format.ts';
+import { fmtInt, fmtPctNum, signed } from './format.ts';
+import { getSetting } from './store.ts';
 export function describe(a: Action, s: Scenario, lang: Lang): string {
   const n = (id: string) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : (lang === 'he' ? 'רשימה שהוסרה' : 'Removed list'); };
   const he = lang === 'he';
@@ -30,8 +31,8 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
       if (a.from.length === 1 && a.to.length === 1) return he ? `העברת ${fmtInt(a.votes)} קולות מ${n(a.from[0])} ל${n(a.to[0].listId)}` : `Moved ${fmtInt(a.votes)} votes from ${n(a.from[0])} to ${n(a.to[0].listId)}`;
       return he ? `חלוקה מחדש של ${fmtInt(a.votes)} קולות` : `Redistributed ${fmtInt(a.votes)} votes`;
     }
-    case 'scaleAll': return he ? `שינוי כל הקולות ל-${a.factorPct}%` : `Scaled all votes to ${a.factorPct}%`;
-    case 'merge': return he ? `איחוד: ${a.nameHe} (${a.ids.length} רשימות, שימור ${a.retentionPct}%)` : `Merged ${a.ids.length} lists into ${n(a.newId) === 'Removed list' ? englishLabel(null,a.nameHe) : n(a.newId)} (${a.retentionPct}% retained)`;
+    case 'scaleAll': return he ? `שינוי כל הקולות ל-${fmtPctNum(a.factorPct, getSetting('decimals'))}` : `Scaled all votes to ${fmtPctNum(a.factorPct, getSetting('decimals'))}`;
+    case 'merge': return he ? `איחוד: ${a.nameHe} (${a.ids.length} רשימות, שימור ${fmtPctNum(a.retentionPct, getSetting('decimals'))})` : `Merged ${a.ids.length} lists into ${n(a.newId) === 'Removed list' ? englishLabel(null,a.nameHe) : n(a.newId)} (${fmtPctNum(a.retentionPct, getSetting('decimals'))} retained)`;
     case 'split': return he ? `פיצול ל-${a.parts.map((p) => p.nameHe).join(' / ')}` : `Split into ${a.parts.map((p) => s.lists.some(l => l.id === p.newId) ? n(p.newId) : englishLabel(null,p.nameHe)).join(' / ')}`;
     case 'addList': return he ? `רשימה חדשה: ${a.nameHe}` : `New list: ${s.lists.some(l => l.id === a.newId) ? n(a.newId) : englishLabel(null,a.nameHe)}`;
     case 'removeList': return he ? `הוסרה רשימה` : `Removed a list`;
@@ -59,7 +60,7 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
     case 'rename': return he ? `שם התרחיש: ${a.name}` : `Renamed to ${a.name}`;
     case 'resetVotes': return he ? `${n(a.listId)}: הקולות אופסו` : `${n(a.listId)}: votes reset`;
     case 'resetCandidates': return he ? `${n(a.listId)}: רשימת המועמדים שוחזרה` : `${n(a.listId)}: candidate list restored`;
-    case 'setTurnout': return he ? `שיעור ההצבעה נקבע ל-${a.pct.toFixed(2)}%` : `Turnout set to ${a.pct.toFixed(2)}%`;
+    case 'setTurnout': { const d = getSetting('decimals'); return he ? `שיעור ההצבעה נקבע ל-${fmtPctNum(a.pct, d)}` : `Turnout set to ${fmtPctNum(a.pct, d)}`; }
     case 'restore': return he ? ({ agreements: 'שוחזרו הסכמי העודפים', totals: 'שוחזרו בעלי זכות הבחירה והפסולים', blocs: 'שוחזרו הגושים', lottery: 'בוטלו תוצאות ההגרלה' } as const)[a.what] : ({ agreements: 'Restored the historical agreements', totals: 'Restored electorate and invalid ballots', blocs: 'Restored the default blocs', lottery: 'Cleared lottery outcomes' } as const)[a.what];
   }
 }

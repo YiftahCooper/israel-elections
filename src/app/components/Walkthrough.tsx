@@ -199,7 +199,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
           <tr key={l.id} className={passes(l) ? '' : 'below'}>
             <td><ListName id={l.id} s={s} /> {statusChange(l)}{l.withdrawn ? <span className="chip">{L('withdrew', 'פרשה')}</span> : null}</td>
             <td className="n"><EditMarker s={s} path={['lists', sl.id, 'votes']} />{fmtInt(l.votes)}</td>
-            <td className="n">{fmtPct(l.votes, r.totalValid, digits)}</td>
+            <td className="n">{fmtPct(l.votes, r.totalValid, digits, s.rules.thresholdPct)}</td>
           </tr>
         ); };
         return (

@@ -9,7 +9,7 @@ import { useId, useLayoutEffect, useRef, useState, useSyncExternalStore } from '
 import { changeText, ChangeValue } from '../changeValue.tsx';
 import type { Scenario } from '../../model/scenario.ts';
 import { baselineOf, editPathLabel, markerPath, markerReference, type EditPath } from '../derive.ts';
-import { useStore } from '../store.ts';
+import { useSetting, useStore } from '../store.ts';
 import { useL, useLang } from '../i18n.ts';
 export function EditMarker({ s, path, summary = false, outlet = '' }: { s: Scenario; path: EditPath; summary?: boolean; outlet?: string }) {
   const L = useL(), lang = useLang(), id = useId();
@@ -25,6 +25,7 @@ export function EditMarker({ s, path, summary = false, outlet = '' }: { s: Scena
   const anchor = useRef<HTMLSpanElement>(null);
   const [open, setOpen] = useState(false);
   const hover = useHoverBridge(() => setOpen(false));
+  const hoverPopups = useSetting('hoverPopups');
   useLayoutEffect(()=>{if(!resolved||!anchor.current)return;return registerMarker(key,{id,node:anchor.current,priority:path[0]==='parts'||path[0]==='customGroupingName'?0:summary?2:1});},[key,id,!!resolved,path[0],summary]);
   if (!base || !resolved) return null;
   const before=markerReference(s,base,resolved);
@@ -35,7 +36,7 @@ export function EditMarker({ s, path, summary = false, outlet = '' }: { s: Scena
   const part = inputPart(logicalPath);
   const listId = logicalPath[0] === 'lists' ? logicalPath[1] : logicalPath[0] === 'parts' ? logicalPath[2] : undefined;
   return <span ref={anchor} className="edit-marker-slot" data-marker-path={logicalPath.join('/')}>{visible&&<span className="edit-marker" data-marker-kind={logicalPath[0]==='parts'?'part':'item'} role="button" tabIndex={visible?0:undefined} aria-expanded={open} aria-controls={open ? id : undefined} aria-label={label} aria-describedby={open&&visible ? id : undefined}
-    onMouseEnter={() => { hover.cancel(); setOpen(true); }} onMouseLeave={hover.leave} onClick={e => { e.stopPropagation(); setOpen(true); }} onFocus={() => setOpen(true)} onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget as Node) && !document.getElementById(id)?.contains(e.relatedTarget as Node)) setOpen(false); }}
+    onMouseEnter={() => { if (!hoverPopups) return; hover.cancel(); setOpen(true); }} onMouseLeave={hover.leave} onClick={e => { e.stopPropagation(); setOpen(true); }} onFocus={() => setOpen(true)} onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget as Node) && !document.getElementById(id)?.contains(e.relatedTarget as Node)) setOpen(false); }}
     onKeyDown={e => { if (e.key === 'Tab' && !e.shiftKey && e.target === e.currentTarget && open && part) { e.preventDefault(); document.getElementById(id)?.querySelector<HTMLButtonElement>('button')?.focus(); } if (e.target === e.currentTarget && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); e.stopPropagation(); setOpen(true); } if (e.key === 'Escape' && open) { e.stopPropagation(); setOpen(false); } }}>{L('Edited', 'נערך')}
     {open && visible && createPortal(<Floating id={id} role="dialog" label={label} onPointerEnter={hover.cancel} onPointerLeave={hover.leave} className="edit-tooltip" anchor={() => anchor.current?.getBoundingClientRect()}>
       {context} · {L('Edited: was ', 'נערך: קודם ')}<ChangeValue s={before} path={logicalPath} lang={lang} />

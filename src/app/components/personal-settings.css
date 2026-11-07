@@ -1,8 +1,57 @@
-.personal-settings { inline-size: min(36rem, calc(100vw - 24px)); max-block-size: calc(100dvh - 32px); box-sizing: border-box; overflow: auto; overscroll-behavior: contain; padding: 16px; border: 1px solid var(--rule-2); border-radius: 8px; background: var(--surface); color: var(--ink); }
+/* Settings popup (docs/design/settings.md §4). A fixed size per breakpoint, so filtering, searching or changing a
+   value never resizes it under the pointer; the header stays while the body scrolls on its own. */
+.personal-settings { inline-size: min(40rem, calc((100vw - 32px) / var(--text-zoom, 1))); block-size: min(46rem, calc((100dvh - 48px) / var(--text-zoom, 1))); box-sizing: border-box; padding: 0; overflow: hidden; border: 1px solid var(--rule-2); border-radius: 8px; background: var(--surface); color: var(--ink); }
+.personal-settings[open] { display: flex; flex-direction: column; }
 .personal-settings::backdrop { background: rgb(0 0 0 / .3); }
-.personal-settings > .row { justify-content: space-between; margin-block-end: 8px; }
-.personal-settings h2 { margin: 0; }
-.personal-settings .settings-card { border: 0; padding: 0; background: transparent; }
-.personal-settings .settings-card > h3 { display: none; }
-.personal-settings .pref-items { max-width: none; }
+.personal-settings .ps-head { flex: none; padding: 14px 16px 8px; border-block-end: 1px solid var(--rule); display: grid; gap: 8px; }
+.personal-settings .ps-title { gap: 6px; flex-wrap: nowrap; }
+.personal-settings h2 { margin: 0; font-size: 18px; }
+.personal-settings .ps-close { min-inline-size: 36px; min-block-size: 36px; }
+.personal-settings .ps-search { inline-size: 100%; box-sizing: border-box; }
+.personal-settings .ps-chips { display: flex; flex-wrap: wrap; gap: 2px 4px; }
+.personal-settings .ps-chips .btn { padding-inline: 8px; }
+.personal-settings .ps-body { flex: 1; min-block-size: 0; overflow: auto; overscroll-behavior: contain; padding: 4px 16px 16px; }
+.personal-settings .ps-group { padding-block: 6px 4px; border-block-end: 1px solid var(--rule); }
+.personal-settings .ps-group.ps-top { border-block-end-width: 2px; }
+.personal-settings .ps-group h3 { display: flex; align-items: baseline; gap: 8px; margin: 8px 0 2px; font-size: 13px; text-transform: none; color: var(--ink-2); }
+.personal-settings .ps-reset { margin-inline-start: auto; font-weight: 400; }
+/* every row: label, its (i) right after it, the control at the end; the same for toggles and segments */
+.personal-settings .ps-row { display: grid; grid-template-columns: auto auto minmax(0, 1fr) auto; grid-template-areas: "label info . control" "more more more more"; align-items: center; column-gap: 6px; min-block-size: 40px; padding-block: 2px; border-radius: 6px; }
+.personal-settings .ps-row > .ps-label { grid-area: label; min-inline-size: 0; }
+/* a toggle's label still wraps its text and switch (both toggle it), laid out on the row's grid */
+.personal-settings .ps-row.is-toggle > .switch-row { display: contents; }
+.personal-settings .ps-row.is-toggle > .switch-row > .ps-label-inner { grid-area: label; cursor: pointer; }
+.personal-settings .ps-row.is-toggle > .switch-row > .switch { grid-area: control; justify-self: end; }
+.personal-settings .ps-row > .info { grid-area: info; }
+.personal-settings .ps-row > .ps-control { grid-area: control; justify-self: end; max-inline-size: 26rem; }
+.personal-settings .ps-row > .pref-remembered { grid-area: more; }
+.personal-settings .ps-row[data-flash] { background: var(--open); outline: 2px solid var(--focus); }
+.personal-settings .ps-label-inner { display: inline-flex; align-items: baseline; gap: 4px; min-inline-size: 0; }
+.personal-settings .ps-dot { display: inline-block; inline-size: .6em; color: var(--focus); font-weight: 700; }
+.personal-settings .ps-tag { font-size: 11px; color: var(--muted); border: 1px solid var(--rule-2); border-radius: 999px; padding: 0 6px; margin-inline-start: 4px; }
+.personal-settings .ps-level { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: end; }
+.personal-settings .ps-control .seg button { min-block-size: 32px; }
+.personal-settings .ps-more { margin-block-start: 8px; }
+.personal-settings .ps-foot { display: flex; align-items: center; gap: 6px; padding-block-start: 12px; }
+.personal-settings .pref-remembered { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; padding-block-end: 4px; }
+.personal-settings .pref-items { flex-basis: 100%; max-width: none; margin: 4px 0; }
 .personal-settings .pref-items li { flex-wrap: wrap; }
+.link-btn { all: unset; color: var(--link, var(--focus)); text-decoration: underline; cursor: pointer; font-size: 13px; }
+.link-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.toast .toast-action { margin-inline-start: 10px; }
+.toast .toast-close { margin-inline-start: 4px; color: inherit; }
+
+/* Phone: a full-screen sheet. Segmented controls sit on their own line under the label (decided by width, not by
+   measuring text), with equal segments and 44px targets; a toggle row is one tap target. */
+@media (max-width: 600px) {
+  .personal-settings { inline-size: calc(100vw / var(--text-zoom, 1)); max-inline-size: none; block-size: calc(100dvh / var(--text-zoom, 1)); max-block-size: none; margin: 0; border-radius: 0; border: 0; padding-block: env(safe-area-inset-top) env(safe-area-inset-bottom); }
+  .personal-settings .ps-chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .personal-settings .ps-chips .btn { flex: none; }
+  .personal-settings .ps-close { min-inline-size: 44px; min-block-size: 44px; }
+  .personal-settings .ps-row.is-seg { grid-template-areas: "label info . ." "control control control control" "more more more more"; padding-block: 6px; }
+  .personal-settings .ps-row.is-seg > .ps-control { justify-self: stretch; max-inline-size: none; }
+  .personal-settings .ps-row.is-seg .seg, .personal-settings .ps-row.is-seg .ps-level { display: flex; inline-size: 100%; }
+  .personal-settings .ps-row.is-seg .seg button { flex: 1; min-block-size: 44px; }
+  .personal-settings .ps-row.is-seg .choice-picker, .personal-settings .ps-row.is-seg .choice-trigger { inline-size: 100%; }
+  .personal-settings .ps-row.is-toggle { min-block-size: 44px; }
+}

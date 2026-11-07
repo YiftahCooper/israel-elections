@@ -11,16 +11,17 @@ const start = async (page: Page, level = 'expert', lang = 'en') => {
   }, [level, lang]);
   await page.goto('/');
 };
-const openRules = (page: Page) => page.getByRole('tab', { name: 'Rules & settings', exact: true }).click();
+const openRules = (page: Page) => page.getByRole('tab', { name: 'Rules', exact: true }).click();
 const election = (page: Page, id: string) => choose(page.getByRole('button', { name: 'Election', exact: true }), id);
 
 test('settings sit in their own card, apart from the scenario rules', async ({ page }) => {
   await start(page); await openRules(page);
-  await page.getByRole('button', { name: 'Your settings…', exact: true }).click();
-  const settings = page.getByRole('region', { name: 'Settings', exact: true });
+  await page.getByRole('button', { name: 'Settings…', exact: true }).click();
+  const settings = page.getByRole('dialog', { name: 'Settings', exact: true });
   await expect(settings).toBeVisible();
-  for (const name of ['Votes come from', 'Mark differences from', 'Decimal places for percentages']) await expect(settings.getByRole('button', { name, exact: true })).toBeVisible();
-  await expect(settings.getByRole('checkbox', { name: 'Party colours in split joint lists', exact: true })).toBeChecked();
+  for (const name of ['Votes come from', 'Mark changes since']) await expect(settings.getByRole('group', { name, exact: true })).toBeVisible();
+  await expect(settings.getByRole('group', { name: 'Max decimal places', exact: true })).toBeVisible();
+  await expect(settings.getByRole('checkbox', { name: 'Party colour in seats', exact: true })).toBeChecked();
   // rules are not in the settings card, settings are not among the rules
   await expect(settings.getByRole('textbox', { name: 'Threshold %' })).toHaveCount(0);
   await expect(page.locator('.rules-fields').getByRole('button', { name: 'Votes come from' })).toHaveCount(0);
@@ -36,11 +37,12 @@ test('a "For this list" answer is listed in Settings and Ask again makes the edi
   await ask.getByRole('radio', { name: 'For this list', exact: true }).check();
   await ask.getByRole('button', { name: 'Apply', exact: true }).click();
   await inc.click(); await expect(ask).toBeHidden();
-  await page.locator('.band').getByRole('button', { name: 'Your settings', exact: true }).click();
+  await page.locator('.band').getByRole('button', { name: 'Settings', exact: true }).click();
+  await page.locator('[data-setting="voteSource"]').getByRole('button', { name: 'Remembered for 1' }).click();
   const items = page.getByRole('list', { name: 'Votes come from · For one list or bloc' });
   await expect(items.getByRole('listitem')).toHaveCount(1);
   await expect(items).toContainText('Likud (2026 · 26th Knesset): New voters');
-  await expect(page.getByRole('button', { name: 'Votes come from', exact: true })).toHaveAttribute('data-value', 'ask');
+  await expect(page.getByRole('group', { name: 'Votes come from', exact: true }).getByRole('button', { name: 'Ask', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await items.getByRole('button', { name: /^Ask again for Likud/ }).click();
   await expect(items).toHaveCount(0);
   await page.keyboard.press('Escape');
@@ -92,21 +94,23 @@ test('an experimental rule edit is marked at its own field, and the era timeline
   await expect(page.locator('.rules-page .part-edits .edit-marker')).toHaveCount(0);
 });
 
-test('below Expert the precision setting is shown fixed, not as a select that does nothing', async ({ page }) => {
+test('Max decimal places is 0·1·2·3 at every level and works (1 at Simple by default)', async ({ page }) => {
+  await page.addInitScript(() => localStorage.removeItem('israel-elections:settings'));
   await start(page, 'simple');
-  // below Expert the tab sits among the other levels' tools, named with its level
-  await page.getByRole('tab', { name: /^Rules & settings/ }).click();
-  await page.locator('.band').getByRole('button', { name: 'Your settings', exact: true }).click();
-  await expect(page.getByRole('button', { name: 'Decimal places for percentages' })).toHaveCount(0);
-  await expect(page.locator('.settings-card .field').filter({ hasText: 'Decimal places for percentages' }).locator('span').first()).toHaveText(/^[0-9]+$/);
-  await expect(page.getByRole('region', { name: 'Settings', exact: true })).toContainText('Expert level');
+  await page.locator('.band').getByRole('button', { name: 'Settings', exact: true }).click();
+  const decimals = page.getByRole('group', { name: 'Max decimal places', exact: true });
+  await expect(decimals.getByRole('button')).toHaveText(['0', '1', '2', '3']);
+  await expect(decimals.getByRole('button', { name: '1', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await decimals.getByRole('button', { name: '3', exact: true }).click();
+  await page.keyboard.press('Escape');
+  await expect(page.locator('.lb-row').first()).toContainText(/\d\.\d{3}%/);
 });
 
 test('Hebrew: the tab and settings are named in Hebrew and the era timeline still runs left to right', async ({ page }) => {
   await start(page, 'expert', 'he');
-  await page.getByRole('tab', { name: 'כללים והגדרות', exact: true }).click();
-  await page.getByRole('button', { name: 'ההגדרות שלכם…', exact: true }).click();
-  await expect(page.getByRole('region', { name: 'הגדרות', exact: true })).toBeVisible();
+  await page.getByRole('tab', { name: 'כללים', exact: true }).click();
+  await page.getByRole('button', { name: 'הגדרות…', exact: true }).click();
+  await expect(page.getByRole('dialog', { name: 'הגדרות', exact: true })).toBeVisible();
   await page.keyboard.press('Escape');
   const buttons = page.getByRole('group', { name: 'אחוזי חסימה לפי תקופה' }).getByRole('button');
   const first = (await buttons.first().boundingBox())!, last = (await buttons.last().boundingBox())!;

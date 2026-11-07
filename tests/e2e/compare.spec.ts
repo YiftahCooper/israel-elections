@@ -6,7 +6,7 @@ import { choose } from './choices.ts';
 async function start(page: Page, lang: 'en' | 'he' = 'en', election = 'k26', width = 1500) {
   await page.setViewportSize({ width, height: 1000 });
   await page.addInitScript((lang) => {
-    localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, level: 'expert', hintDismissed: true }));
+    localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, level: 'expert', hintDismissed: true }));
     localStorage.setItem('israel-elections:preferences', JSON.stringify({ voteSource: 'proportional' }));
   }, lang);
   await page.goto('/');

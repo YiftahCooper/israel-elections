@@ -3,7 +3,7 @@ import {choose} from './choices.ts';
 for(const lang of ['en','he']) for(const theme of ['light','dark']) for(const width of [1500,1024,390]) test(`component identities ${lang} ${theme} ${width}`,async({page})=>{
  test.setTimeout(120000);
  await page.setViewportSize({width,height:1000});
- await page.addInitScript(v=>{if(!localStorage.getItem('israel-elections:v1'))localStorage.setItem('israel-elections:v1',JSON.stringify(v))},{lang,theme,level:'expert',hintDismissed:true});
+ await page.addInitScript(v=>{if(!localStorage.getItem('israel-elections:v1'))localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v))},{lang,theme,level:'expert',hintDismissed:true});
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto('/');
  for(const election of ['k26','k25','k12','k1']){
@@ -46,9 +46,9 @@ for(const lang of ['en','he']) for(const theme of ['light','dark']) for(const wi
      const png=page.waitForEvent('download');await chamber.getByRole('button',{name:'Export PNG'}).click();await (await png).saveAs(`.backup-scratch/components/export-${layout}.png`);
     }
    }
-   await page.getByRole('tab',{name:lang==='en'?'Rules & settings':'כללים והגדרות',exact:true}).click();
-   await page.locator('.band').getByRole('button', { name: lang === 'en' ? 'Your settings' : 'ההגדרות שלכם', exact: true }).click();
-   await page.getByRole('checkbox',{name:lang==='en'?'Party colours in split joint lists':'צבעי מפלגות ברשימות משותפות שפוצלו',exact:true}).uncheck();
+   await page.getByRole('tab',{name:lang==='en'?'Rules':'כללים',exact:true}).click();
+   await page.locator('.band').getByRole('button', { name: lang === 'en' ? 'Settings' : 'הגדרות', exact: true }).click();
+   await page.getByRole('checkbox',{name:lang==='en'?'Party colour in seats':'צבע המפלגה במושבים',exact:true}).uncheck();
   await page.keyboard.press('Escape');
    await page.getByRole('tab',{name:lang==='en'?'Overview':'תמונת מצב',exact:true}).click();
    await expect(page.locator('.chamber [data-component-seat]')).toHaveCount(0);

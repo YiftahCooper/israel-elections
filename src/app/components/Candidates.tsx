@@ -10,7 +10,7 @@ import type { SimCandidate, SimList } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { candidateName, shownName } from '../derive.ts';
 import { Info } from './ui.tsx';
-import { dispatch, useLevel, useStore } from '../store.ts';
+import { dispatch, useLevel, useSetting, useStore } from '../store.ts';
 
 export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList; seats: number; baseSeats: number; baseCandidates?: SimCandidate[] }) {
   const L = useL();
@@ -18,7 +18,9 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
   const { simple } = useLevel();
   const { shown: advanced, control } = useDisclosure('candidateEdit');
   const s = useStore(st => st.scenario);
-  const [showAll, setShowAll] = useState(false);
+  // Settings → All candidates: the full roster first; the switch below still shortens it
+  const allCandidates = useSetting('allCandidates');
+  const [showAll, setShowAll] = useState(allCandidates);
   const [drag, setDrag] = useState<number | null>(null);
   const [editing, setEditing] = useState<string | null>(null);
   const [draft, setDraft] = useState('');

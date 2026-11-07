@@ -16,7 +16,9 @@ import type { Scenario, SimList } from '../../model/scenario.ts';
 import { comparisonGroups, officialSeatsFor, electedOf, listLabel, resultChanges } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
-import { setState, useDigits, useLevel, useStore } from '../store.ts';
+import { setState, useDigits, useLevel, useSetting, useStore } from '../store.ts';
+import { blocDisplayOrder } from '../blocOrder.ts';
+import { hiddenSeatlessParty } from '../seatlessParties.ts';
 import { DisclosureToggle, Slip } from './ui.tsx';
 
 
@@ -29,6 +31,9 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   const baseLabel = referenceLabel(reference, lang);
   const digits = useDigits();
   const { standard } = useLevel();
+  const voteCounts = useSetting('voteCounts'), seatlessLists = useSetting('seatlessLists'), withdrawnLists = useSetting('withdrawnLists');
+  const listOrder = useSetting('listOrder'), dimOthers = useSetting('dimUnselected');
+  const seatlessParties = useSetting('seatlessParties'), partiesInSeatlessLists = useSetting('partiesInSeatlessLists');
   const committed = useStore(st => st.scenario);
   const previewing = useStore(st => st.preview) === s;
   const markerScenario = previewing && committed ? committed : s;
@@ -51,21 +56,32 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   const rows = s.lists.map((l) => ({ l, lr: r.lists.find((x) => x.id === l.id)!, was: baseSeats(l) }));
   // a list is in the Knesset when it holds a seat; one that passed no threshold (1949 had none) but won no seat
   // sits with the other seatless lists rather than among the members
-  const inKnesset = rows.filter((x) => x.lr.seats > 0).sort((a, b) => b.lr.seats - a.lr.seats || b.l.votes - a.l.votes);
-  const outside = rows.filter((x) => x.lr.seats === 0).sort((a, b) => b.l.votes - a.l.votes);
+  // Settings → Order lists by: one comparator for both sections (seats, then votes, keep ties stable)
+  const blocRank = blocDisplayOrder(s);
+  const byOrder = (a: (typeof rows)[number], b: (typeof rows)[number]) =>
+    listOrder === 'votes' ? b.l.votes - a.l.votes || b.lr.seats - a.lr.seats
+    : listOrder === 'name' ? listLabel(a.l, lang).localeCompare(listLabel(b.l, lang), lang)
+    : listOrder === 'bloc' ? ((x, y) => (x < 0 ? 1e3 : x) - (y < 0 ? 1e3 : y))(blocRank.indexOf(a.l.bloc), blocRank.indexOf(b.l.bloc)) || b.lr.seats - a.lr.seats || b.l.votes - a.l.votes
+    : b.lr.seats - a.lr.seats || b.l.votes - a.l.votes;
+  const inKnesset = rows.filter((x) => x.lr.seats > 0).sort(byOrder);
+  const outside = rows.filter((x) => x.lr.seats === 0).sort(byOrder);
   // A list never folds away behind "Show all" because of an edit: one shown in the reference stays shown when its
   // votes fall (a withdrawal drops them to 0), and one edited beyond its votes (withdrawn, renamed) is shown too.
   // Small vote changes spread proportionally over every list do not unfold the long tail.
   const editedBeyondVotes = new Set(resultChanges(markerScenario, base).filter((p) => p[0] === 'lists' && p[2] !== 'votes').map((p) => p[1]));
   const baseTotal = base.lists.reduce((t, b) => t + b.votes, 0);
+  // Settings → Lists with no seats (Over 0.5% / All / Folded) and Lists that withdrew. A list you selected or edited
+  // is always shown, and "Show all" still opens the rest.
   const visibleOut = showAll ? outside : outside.filter(({ l }) => {
     const b = base.lists.find((x) => x.id === l.id);
-    return l.votes >= total * 0.005 || (b && b.votes >= baseTotal * 0.005) || !b || l.id === selected || editedBeyondVotes.has(l.id);
+    if (l.id === selected || editedBeyondVotes.has(l.id) || !b) return true;
+    if (l.withdrawn && !withdrawnLists) return false;
+    return seatlessLists === 'all' || seatlessLists === 'over' && (l.votes >= total * 0.005 || b.votes >= baseTotal * 0.005);
   });
   const belowThreshold = thr > 0 && outside.every((x) => !x.lr.qualified);
   const anyAgreement = standard && s.agreements.some((a) => a.enabled);
   const hidden = outside.length - visibleOut.length;
-  const showComponents = useStore(st=>st.showComponentSeats);
+  const showComponents = useSetting('partyColourInSeats');
   const componentSeats = seatOrder(s,r,'list',showComponents);
   const barFill = (l: SimList) => {
     const seats = componentSeats.filter(st=>st.listId===l.id);
@@ -87,7 +103,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
     const out = !lr.qualified;
     return (
       <li key={l.id} data-family={family}>
-        <button type="button" data-family={familyRows.find(x => x.id === l.id)?.family} ref={open ? selRef : undefined} className={`lb-row ${out ? 'out' : ''} ${selected && !open ? 'dim' : ''}`} aria-pressed={open}
+        <button type="button" data-family={familyRows.find(x => x.id === l.id)?.family} ref={open ? selRef : undefined} className={`lb-row ${out ? 'out' : ''} ${dimOthers && selected && !open ? 'dim' : ''}`} aria-pressed={open}
           aria-label={listLabel(l, lang)} aria-describedby={`lbd-${l.id}`}
           onClick={() => setState({ selectedListId: open ? null : l.id })}
           title={l.logo || l.synthetic ? listLabel(l, lang) : `${listLabel(l, lang)} — ${L('Ballot letters (no verified election logo)', 'אותיות הפתק (טרם נמצא סמל ממקור לבחירות אלה)')}`}>
@@ -105,22 +121,24 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
               <span className="delta-segment" style={{insetInlineStart:0,width:`${(was ?? 0)/scale*100}%`}} />
             </span>}
             <span className="lb-sub">
-              <span>{standard && <>{fmtInt(l.votes)} · </>}{fmtPct(l.votes, total, digits)}
+              <span>{voteCounts && <>{fmtInt(l.votes)} · </>}{fmtPct(l.votes, total, digits, s.rules.thresholdPct)}
               {out && thr > 0 && !l.withdrawn && <> · {L(`${fmtPct(l.votes, thr, 0)} of the threshold`, `${fmtPct(l.votes, thr, 0)} מאחוז החסימה`)}</>}
               {l.withdrawn && <> · {L('withdrew', 'פרשה')}</>}</span>
               {partner && <span className="lb-agr"><span aria-hidden>⇄ </span>{listLabel(partner, lang)}</span>}
             </span>
           </span>
-          <span className="sr-only" id={`lbd-${l.id}`}>{L(`${lr.seats} seats`, `${lr.seats} מנדטים`)}, {fmtPct(l.votes, total, digits)}{familyDefinition && family && family!=='other' && <> · {familyLabel(familyDefinition,lang)}{family==='mixed'?` · ${L('Mixed lists','רשימות מעורבות')}`:''}</>}{d !== 0 && <>, {Math.abs(d)}{d > 0 ? baseLabel.more : baseLabel.fewer}</>}{l.withdrawn && <>, {L('withdrew', 'פרשה')}</>}{partner && <>, {L(`surplus-vote agreement with ${listLabel(partner, lang)}`, `הסכם עודפים עם ${listLabel(partner, lang)}`)}</>}</span>
+          <span className="sr-only" id={`lbd-${l.id}`}>{L(`${lr.seats} seats`, `${lr.seats} מנדטים`)}, {fmtPct(l.votes, total, digits, s.rules.thresholdPct)}{familyDefinition && family && family!=='other' && <> · {familyLabel(familyDefinition,lang)}{family==='mixed'?` · ${L('Mixed lists','רשימות מעורבות')}`:''}</>}{d !== 0 && <>, {Math.abs(d)}{d > 0 ? baseLabel.more : baseLabel.fewer}</>}{l.withdrawn && <>, {L('withdrew', 'פרשה')}</>}{partner && <>, {L(`surplus-vote agreement with ${listLabel(partner, lang)}`, `הסכם עודפים עם ${listLabel(partner, lang)}`)}</>}</span>
           <span className="lb-seats">
             <b key={`s${lr.seats}`} className={previousSeats.current.election === s.electionId && previousSeats.current.seats.has(l.id) && previousSeats.current.seats.get(l.id) !== lr.seats ? 'tick' : ''}>{lr.seats}</b>
             {d !== 0 && <small dir="ltr"><SeatDelta value={d} /></small>}
           </span>
         </button>
-        {splitIds.has(l.id) && (l.parties?.length ?? 0) > 1 && (
+        {splitIds.has(l.id) && (l.parties?.length ?? 0) > 1 && (lr.seats > 0 || partiesInSeatlessLists) && (
           <ul className="lb-parties" aria-label={L(`${listLabel(l, lang)}: factions after the split`, `${listLabel(l, lang)}: הסיעות אחרי הפיצול`)}>
             {l.parties!.map((p) => {
               const n = electedOf(l, lr.seats).filter((c) => c.partyId === p.id).length;
+              // Settings → Parties with no seats: a zero-seat party is left out unless it was given its own bloc
+              if (lr.seats > 0 && !seatlessParties && hiddenSeatlessParty(s, p.id, n)) return null;
               return (
                 <li key={p.id}>
                   <Slip letters="" name={lang === 'he' ? p.nameHe : p.nameEn} color={p.color ?? l.color} logo={p.logo} />

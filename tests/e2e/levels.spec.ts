@@ -1,4 +1,3 @@
-import { choose } from './choices.ts';
 // The three interface levels: Simple (minimal), Standard (common, consequential edits) and Expert
 // (every tool). A level changes what is shown, never what is computed.
 import { readFileSync } from 'node:fs';
@@ -131,17 +130,16 @@ test('the bloc of a list can be changed in Standard', async ({ page }) => {
   await expect(page.getByRole('region', { name: 'Seats by bloc' }).getByRole('button', { name: /^Netanyahu bloc/ })).toContainText('26');
 });
 
-test('percentage precision chosen in Expert does not apply below Expert', async ({ page }) => {
+test('a chosen maximum of decimal places applies at every level', async ({ page }) => {
   await start(page);
   await levelButton(page, 'Expert').click();
-  await page.getByRole('tab', { name: 'Rules & settings', exact: true }).click();
-  await page.locator('.band').getByRole('button', { name: 'Your settings', exact: true }).click();
-  await choose(page.getByRole('button', { name: 'Decimal places for percentages' }), '8');
+  await page.locator('.band').getByRole('button', { name: 'Settings', exact: true }).click();
+  await page.getByRole('group', { name: 'Max decimal places', exact: true }).getByRole('button', { name: '3', exact: true }).click();
   await page.keyboard.press('Escape');
   await page.getByRole('tab', { name: 'Overview' }).click();
-  await expect(listRow(page, 'Likud').first()).toContainText('20.51491138%');
+  await expect(listRow(page, 'Likud').first()).toContainText('20.515%');
   await levelButton(page, 'Simple').click();
-  await expect(listRow(page, 'Likud').first()).toContainText('20.51%');
+  await expect(listRow(page, 'Likud').first()).toContainText('20.515%');
 });
 
 test('a failed election load keeps the open election and offers a retry', async ({ page }) => {
@@ -168,7 +166,7 @@ test('the picker labels the open election correctly even if the index omits it',
 });
 
 test('a tool opened from its tab shows at once at every level, with no second disclosure', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'standard', hintDismissed: true })));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'standard', hintDismissed: true })));
   await page.goto('/');
   // an Expert tool at Standard: its tab says so, and opening it shows the tool itself
   await page.getByRole('tab', { name: /^Rules/ }).click();

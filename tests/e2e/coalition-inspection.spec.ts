@@ -3,7 +3,7 @@ import { choose } from './choices.ts';
 for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (const width of [1500, 1024, 390]) {
   test(`coalition inspection and scenario flow ${lang} ${theme} ${width}`, async ({ page }) => {
     await page.setViewportSize({ width, height: 1000 });
-    await page.addInitScript(({lang, theme}) => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, theme, level: 'expert', hintDismissed: true })), {lang, theme});
+    await page.addInitScript(({lang, theme}) => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, theme, level: 'expert', hintDismissed: true })), {lang, theme});
     const errors: string[] = []; page.on('pageerror', error => errors.push(error.message));
     const api: string[] = []; page.on('request', r => { if (r.url().includes('api.github.com')) api.push(r.url()); });
     await page.goto('/');
@@ -50,7 +50,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
   });
 }
 test('filters remain unchanged when inspecting and community index drives search and publishing', async ({ page, baseURL }) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'expert', hintDismissed: true })));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'expert', hintDismissed: true })));
   await page.route('**/data/scenarios.json', route => route.fulfill({ json: { timestamp: Date.now(), entries: [{ name: 'Turnout trial', description: 'More voters', electionId: 'k25', year: '2022', tags: ['turnout'], shareLink: `${baseURL}/#s=abc`, issue: 1, author: 'example', date: '2026-01-01', likes: 2 }] } }));
   await page.goto('/');
   await page.getByRole('tab', { name: 'Coalitions', exact: true }).click();

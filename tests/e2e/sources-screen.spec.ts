@@ -4,7 +4,7 @@ import { expect, test, type Page } from '@playwright/test';
 // The Sources screen, the band's About and the footer: provenance complete and readable, secondary
 // evidence labelled, no dead links, downloads served.
 async function open(page: Page, lang: 'en' | 'he', election: string) {
-  await page.addInitScript(([lang]) => { if (!sessionStorage.getItem('sources-seeded')) { localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, hintDismissed: true })); sessionStorage.setItem('sources-seeded', '1'); } }, [lang]);
+  await page.addInitScript(([lang]) => { if (!sessionStorage.getItem('sources-seeded')) { localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, hintDismissed: true })); sessionStorage.setItem('sources-seeded', '1'); } }, [lang]);
   await page.goto('/');
   const picker = page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true });
   await choose(picker, election);

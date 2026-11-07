@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 for (const theme of ['light','dark']) for (const lang of ['en', 'he']) for (const width of [1500, 1024, 390]) test(`independent panels and stationary edits ${lang} ${theme} ${width}`, async ({ page }) => {
   await page.setViewportSize({ width, height: 900 });
-  await page.addInitScript(({lang,theme}) => localStorage.setItem('israel-elections:v1', JSON.stringify({lang,theme,level:'expert',hintDismissed:true})), {lang,theme});
+  await page.addInitScript(({lang,theme}) => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang,theme,level:'expert',hintDismissed:true})), {lang,theme});
   await page.goto('/');
   await page.locator('.lb-row').first().click();
   await page.evaluate(() => window.scrollTo(0, Math.min(120, document.body.scrollHeight-innerHeight)));
@@ -25,7 +25,7 @@ for (const theme of ['light','dark']) for (const lang of ['en', 'he']) for (cons
 });
 for (const theme of ['light','dark']) for (const width of [1500,1024,390]) for (const lang of ['en','he']) test(`figure popovers leave every sibling and page stationary ${lang} ${theme} ${width}`,async({page})=>{
   await page.setViewportSize({width,height:900});
-  await page.addInitScript(({lang,theme})=>localStorage.setItem('israel-elections:v1',JSON.stringify({lang,theme,level:'expert',hintDismissed:true})),{lang,theme});
+  await page.addInitScript(({lang,theme})=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang,theme,level:'expert',hintDismissed:true})),{lang,theme});
   await page.goto('/'); await expect(page.locator('.fig')).toHaveCount(7);
   await page.locator('.figures').scrollIntoViewIfNeeded();
   const positions=()=>page.locator('.fig').evaluateAll(els=>els.map(el=>{const r=el.getBoundingClientRect();return [r.x,r.y,r.width,r.height]}));
@@ -41,7 +41,7 @@ for (const theme of ['light','dark']) for (const width of [1500,1024,390]) for (
 });
 for (const theme of ['light','dark']) for (const lang of ['en','he']) for (const width of [1500,390]) test(`bottom info stays inside viewport without trailing space ${lang} ${theme} ${width}`,async({page})=>{
  await page.setViewportSize({width,height:844});
- await page.addInitScript(v=>localStorage.setItem('israel-elections:v1',JSON.stringify(v)),{lang,theme,level:'expert',hintDismissed:true});
+ await page.addInitScript(v=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)),{lang,theme,level:'expert',hintDismissed:true});
  await page.goto('/');await expect(page.locator('.chamber [data-seat]')).toHaveCount(120);
  const info=page.locator('.blocs-head .info > button');await info.scrollIntoViewIfNeeded();
  await page.evaluate(()=>{const r=document.querySelector('.blocs-head .info > button')!.getBoundingClientRect(); scrollBy(0,r.bottom-(innerHeight-28));});

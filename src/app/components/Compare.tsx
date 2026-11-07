@@ -231,7 +231,7 @@ function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult;
                     <td>{g.bIds.length ? g.bIds.map((id) => <button key={id} className="table-action" onClick={() => setState({ selectedListId: id })}>{gName([id], s)}</button>) : gName(g.aIds, a)}{g.aIds.join() !== g.bIds.join() && <small className="muted"> · {baseLabel.at} {gName(g.aIds, a)}</small>}</td>
                     <td className="n">{fmtInt(g.votesA)}</td><td className="n">{fmtInt(g.votesB)}</td>
                     <td className="n"><bdi dir="ltr">{dv === 0n ? '—' : fmtSigned(dv)}</bdi></td>
-                    <td className="n"><bdi dir="ltr">{ar.totalValid > 0n && r.totalValid > 0n && share.num !== 0n ? signedDecimal(fmtRat(share, 2)) : '—'}</bdi></td>
+                    <td className="n"><bdi dir="ltr">{ar.totalValid > 0n && r.totalValid > 0n && share.num !== 0n ? signedDecimal(fmtRat(share, digits)) : '—'}</bdi></td>
                     <td className="n">{g.seatsA}</td><td className="n"><b>{g.seatsB}</b></td>
                     <td className="n"><bdi dir="ltr"><SeatDelta value={ds_} /></bdi></td>
                   </tr>

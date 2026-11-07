@@ -8,9 +8,10 @@ import { createElement, memo, Suspense, use, useEffect, useLayoutEffect, useStat
 import { liveScenarioColor } from './scenarioIdentity.ts';
 import { resultChanges } from './derive.ts';
 import { X } from 'lucide-react';
+import { createPortal } from 'react-dom';
 import { allocationOf, baselineOf, ruleChanges, scenarioIssues, tieAffectsSeats, warningText } from './derive.ts';
 import { LangContext, useL } from './i18n.ts';
-import { dispatch, getState, loadElectionIndex, openElection, openSharedFromHash, redo, restoreWorkspace, setState, undo, useStore } from './store.ts';
+import { dispatch, getState, loadElectionIndex, openElection, openSharedFromHash, redo, restoreWorkspace, setSetting, setState, undo, useSetting, useStore } from './store.ts';
 import { Hemicycle as HemicycleView } from './components/Hemicycle.tsx';
 import { Figures as FiguresView } from './components/Figures.tsx';
 import { BlocBar as BlocBarView } from './components/Blocs.tsx';
@@ -85,12 +86,19 @@ const TOOLS = TOOL_FEATURES.map(([id,,,, level]) => ({ id, level: level as Prese
 export function App() {
   const lang = useStore((st) => st.lang);
   const theme = useStore((st) => st.theme);
+  const density = useSetting('density'), textSize = useSetting('textSize'), reduceMotion = useSetting('reduceMotion');
   useEffect(() => {
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
     document.documentElement.dataset.theme = theme;
     document.title = lang === 'he' ? 'סייר הבחירות לכנסת' : 'Israeli Elections Explorer';
   }, [lang, theme]);
+  // personal display settings act on the whole page through root attributes (styles.css)
+  useEffect(() => {
+    const root = document.documentElement.dataset;
+    root.density = density; root.text = textSize;
+    if (reduceMotion) root.motion = 'reduce'; else delete root.motion;
+  }, [density, textSize, reduceMotion]);
   useEffect(() => {
     loadElectionIndex();
     // the last visit's work first (so a share link opened now keeps it as a draft), then the link, then 2026
@@ -134,7 +142,7 @@ function Shell() {
   const toolNow = useStore((st) => st.tool);
   useEffect(() => { setDrawerFor(null); }, [toolNow]);
   useEffect(() => { if (toolNow && toolNow !== 'board') setDrawerFor(selectedListId); }, [selectedListId]); // eslint-disable-line react-hooks/exhaustive-deps
-  const hintDismissed = useStore((st) => st.hintDismissed);
+  const starterTip = useSetting('starterTip');
   const saved = useStore((st) => st.saved);
   const ready = !!(committed && ds);
   useLayoutEffect(() => {
@@ -252,7 +260,7 @@ function Shell() {
         {s.mode === 'experimental' && <div className="banner note" role="status">{L('Alternative electoral system', 'שיטת בחירות חלופית')} <Info title={L('Experimental rules', 'כללים ניסיוניים')}>{L('Experimental rules: this is an alternative electoral system, not a legally possible Israeli result.', 'כללים ניסיוניים: זוהי שיטת בחירות חלופית ולא תוצאה אפשרית לפי החוק בישראל.')}</Info>{(() => { const c = ruleChanges(s, lang); return c.length ? <> {L('Changed: ', 'שינויים: ')}<b>{c.join(' · ')}</b>.</> : null; })()} <button className="btn small" onClick={() => dispatch({ type: 'setMode', mode: 'historical' })}>{L('Back to the real rules', 'חזרה לכללים האמיתיים')}</button></div>}
       </main>
       <div className="app-notices">
-        {level === 'simple' && !hintDismissed && <div className="banner note" role="status"><span className="banner-text">{L('Pick a list. Try a change.', 'בחרו רשימה. נסו לשנות.')} <Info title={L('Explore the board', 'מגלים את תמונת המצב')}>{L('Click any list, seat, bloc or figure to see and change what is behind it. Every tool is named in the strip under the header.', 'לחצו על כל רשימה, מושב, גוש או נתון כדי לראות ולשנות את מה שמאחוריו. כל הכלים מופיעים בשורה שמתחת לכותרת.')}</Info></span> <button className="btn small ghost icon-only" onClick={() => setState({ hintDismissed: true })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
+        {level === 'simple' && starterTip && <div className="banner note" role="status"><span className="banner-text">{L('Pick a list. Try a change.', 'בחרו רשימה. נסו לשנות.')} <Info title={L('Explore the board', 'מגלים את תמונת המצב')}>{L('Click any list, seat, bloc or figure to see and change what is behind it. Every tool is named in the strip under the header.', 'לחצו על כל רשימה, מושב, גוש או נתון כדי לראות ולשנות את מה שמאחוריו. כל הכלים מופיעים בשורה שמתחת לכותרת.')}</Info></span> <button className="btn small ghost icon-only" onClick={() => setSetting('starterTip', false)} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
         {loadBanner}
 
         {notice && <div className="banner note" role="status"><span className="banner-text">{notice}</span> <button className="btn small ghost icon-only" onClick={() => setState({ notice: null })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
@@ -263,9 +271,25 @@ function Shell() {
       </div>
       </>}
       <SourceDialog />
-      {toast && <div className={`toast toast-${toast.kind}`} role={toast.kind === 'error' ? 'alert' : 'status'}>{toast.text}</div>}
+      {toast && <Toast />}
     </div>
   );
+}
+
+/** A short message; an action (Undo) and, when messages are kept open, a close button. */
+function Toast() {
+  const L = useL();
+  const t = useStore(st => st.toast);
+  const keep = useSetting('keepMessages');
+  useStore(st => st.settingsOpen);
+  if (!t) return null;
+  // a modal popup (Settings) makes the page behind it inert: the message goes inside it, so its Undo can be clicked
+  const host = [...document.querySelectorAll('dialog')].filter(d => d.matches(':modal')).pop();
+  const node = <div className={`toast toast-${t.kind}`} role={t.kind === 'error' ? 'alert' : 'status'}>{t.text}
+    {t.action && <button type="button" className="btn small toast-action" onClick={() => { t.action!.run(); setState({ toast: null }); }}>{t.action.label}</button>}
+    {(keep || t.action) && <button type="button" className="btn small ghost icon-only toast-close" aria-label={L('Close', 'סגירה')} onClick={() => setState({ toast: null })}><X className="icon sm" aria-hidden /></button>}
+  </div>;
+  return host ? createPortal(node, host) : node;
 }
 
 /** Keep the trailing fade only while more tools remain outside the visible strip. */

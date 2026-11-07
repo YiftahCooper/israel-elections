@@ -1,5 +1,9 @@
 # Changelog
 
+## 7 November 2026 — Settings
+
+- Rebuilt Settings as one searchable bilingual popup (phone: full screen) with levels, group resets and Undo; every setting now applies wherever it is relevant, with new defaults (Device theme, joint lists by party, parties with no seats hidden) and accessibility options at every level; every percentage now shows at most 0–3 decimals (1 by default, 2 at Expert), never rounded across the threshold.
+
 ## 6 November 2026 — data audit
 
 - Mark custom bloc, coalition and family groupings locally as analysis while preserving official result identity and factual summaries.

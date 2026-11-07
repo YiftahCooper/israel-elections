@@ -9,7 +9,7 @@ for(const lang of ['he','en']) for(const theme of ['light','dark']) for(const ph
     test.setTimeout(Number(process.env.PW_GRAPHICS_TIMEOUT ?? 180000));
     await page.emulateMedia({reducedMotion:'reduce'});
     await page.setViewportSize(phone?{width:390,height:844}:{width:1440,height:900});
-    await page.addInitScript(v=>localStorage.setItem('israel-elections:v1',JSON.stringify(v)),{lang,theme,level:'expert',hintDismissed:true,markOfficial:true});
+    await page.addInitScript(v=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)),{lang,theme,level:'expert',hintDismissed:true,markOfficial:true});
     for(const c of [...graphicsCases,...Array.from({length:26},(_,i)=>({name:`k${i+1}`,n:i+1,actions:[]}))]) {
       const payload={e:`k${c.n}`,n:'Graphics audit',b:dataset(c.n).buildInfo.builtAt,l:c.actions};
       await page.goto('about:blank');
@@ -77,7 +77,7 @@ for(const lang of ['he','en']) for(const theme of ['light','dark']) for(const ph
 
 
 test('chamber export retains labels and standalone comparison ink',async({page})=>{
-  await page.addInitScript(()=>localStorage.setItem('israel-elections:v1',JSON.stringify({lang:'en',theme:'dark',level:'expert',markOfficial:true})));
+  await page.addInitScript(()=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang:'en',theme:'dark',level:'expert',markOfficial:true})));
   const c=graphicsCases[0];
   await page.goto('/#s='+deflateRawSync(JSON.stringify({e:'k25',n:'Export audit',b:dataset(25).buildInfo.builtAt,l:c.actions})).toString('base64url'));
   await expect(page.locator('.chamber [data-seat]')).toHaveCount(120);
@@ -103,14 +103,14 @@ test('chamber export retains labels and standalone comparison ink',async({page})
 
 
 test('summary, graphics and Compare default follow the same reference setting',async({page})=>{
-  await page.addInitScript(()=>localStorage.setItem('israel-elections:v1',JSON.stringify({lang:'en',theme:'dark',level:'expert',markOfficial:true})));
+  await page.addInitScript(()=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang:'en',theme:'dark',level:'expert',markOfficial:true})));
   const c=graphicsCases[0];
   await page.goto('/#s='+deflateRawSync(JSON.stringify({e:'k25',n:'Graphics audit',b:dataset(25).buildInfo.builtAt,l:c.actions})).toString('base64url'));
   for(const [setting,name,changed] of [['official','Official result',true],['reference','Graphics audit',false],['official','Official result',true]] as const) {
     await page.getByRole('tab',{name:'Scenarios',exact:true}).click();
     if (!await page.locator('.scn-options').evaluate(el => el.hasAttribute('open'))) await page.locator('.scn-options summary').click();
-    await page.locator('.scn-options').getByRole('button', { name: 'Your settings…', exact: true }).click();
-    await choose(page.getByRole('button',{name:'Mark differences from'}), setting);
+    await page.locator('.scn-options').getByRole('button', { name: 'Settings…', exact: true }).click();
+    await page.getByRole('group',{name:'Mark changes since',exact:true}).getByRole('button',{name:setting==='official'?'Official result':'Opened scenario',exact:true}).click();
     await page.keyboard.press('Escape');
     await page.getByRole('tab',{name:'Overview',exact:true}).click();
     await expect(page.locator('.session > b')).toHaveText(`Since ${name==='Official result'?'official result':name}`);
@@ -137,7 +137,7 @@ test('summary, graphics and Compare default follow the same reference setting',a
 });
 
 test('election choice awaits committed data before opening a list',async({page})=>{
-  await page.addInitScript(()=>localStorage.setItem('israel-elections:v1',JSON.stringify({lang:'en',level:'simple',hintDismissed:true})));
+  await page.addInitScript(()=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang:'en',level:'simple',hintDismissed:true})));
   let requests=0;
   await page.route('**/data/k24.json',async route=>{
     requests++;

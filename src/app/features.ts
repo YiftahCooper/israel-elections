@@ -14,7 +14,7 @@ export const TOOL_FEATURES = [
   ['turnout', 'Edit', 'Turnout', 'שיעור הצבעה', 'expert'],
   ['sens', 'Analyse', 'Sensitivity', 'רגישות', 'expert'],
   ['loc', 'Analyse', 'Localities', 'יישובים', 'expert'],
-  ['rules', 'Edit', 'Rules & settings', 'כללים והגדרות', 'expert'],
+  ['rules', 'Edit', 'Rules', 'כללים', 'expert'],
   ['sources', 'Explore', 'Sources', 'מקורות', 'simple'],
 ] as const;
 export const FEATURES = [...TOOL_FEATURES,
@@ -63,7 +63,7 @@ export const FEATURE_PREVIEWS: Record<FeatureId, readonly [string, string]> = {
   turnout: ['Model participation and invalid ballots', 'הדמיית השתתפות ופתקים פסולים'],
   sens: ['Explore seats across a range of votes', 'מנדטים לאורך טווח קולות'],
   loc: ['Browse votes on a map', 'עיון בקולות על מפה'],
-  rules: ['Method, threshold, chamber size; app settings', 'שיטה, אחוז חסימה, גודל הכנסת; הגדרות'],
+  rules: ['Method, threshold, chamber size', 'שיטה, אחוז חסימה, גודל הכנסת'],
   sources: ['Official records and data coverage', 'מקורות רשמיים וכיסוי הנתונים'],
   splitIdentity: ['Name and colour of each new list', 'שם וצבע לכל רשימה חדשה'],
   voteStart: ['Restore or copy vote totals', 'שחזור או העתקת מספרי קולות'],

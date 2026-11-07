@@ -1,4 +1,5 @@
 import { ScenarioSave, UnsavedMark } from './ScenarioSave.tsx';
+import { createPortal } from 'react-dom';
 import { isFactAction } from '../../model/actionClassification.ts';
 import { listLabel } from '../derive.ts';
 import { useFloating } from '../floating.tsx';
@@ -17,7 +18,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { csvEscape, download } from '../format.ts';
-import { deleteSaved, dispatch, duplicateCurrent, importScenarioJson, openElection, openImported, openSaved, replay, redo, resetAll, scenarioKey, setState, shareLink, toast, undo, useStore } from '../store.ts';
+import { deleteSaved, dispatch, getSetting, setLevel, setSetting, duplicateCurrent, importScenarioJson, openElection, openImported, openSaved, replay, redo, resetAll, scenarioKey, setState, shareLink, toast, undo, useStore } from '../store.ts';
 import { ChevronDown, Copy, Download, FolderOpen, Link2, Moon, Redo2, RotateCcw, Save, Share2, Sun, Table2, Trash2, Undo2, Upload, Settings } from 'lucide-react';
 import { PersonalSettings } from './PersonalSettings.tsx';
 import { Seg } from './ui.tsx';
@@ -85,14 +86,14 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
       {ds && !pmContestId && <ElectionAbout electionId={ds.id} />}
       {s && ds && <ScenarioSwitcher s={s} ds={ds} />}
 
-      <span className="band-levels"><Seg<'simple' | 'standard' | 'expert' | 'custom'> label={L('Detail level', 'רמת פירוט')} value={custom ? 'custom' : level} onChange={(v) => { if (v === 'custom') return; setState({ level: v, customFeatures: null, ...(v === 'simple' ? { voteSource: { kind: 'proportional' as const } } : {}) }); }} options={(['simple', 'standard', 'expert'] as const).map(v => ({ v, label: L(...LEVEL_LABELS[v]) }))} /><button className="btn small band-custom" aria-label={custom ? L('Custom', 'מותאם') + ' · ' + L('based on ', 'על בסיס ') + L(...LEVEL_LABELS[level]) : L('Custom', 'מותאם')} aria-pressed={custom !== null} title={custom ? L('Custom · based on ', 'מותאם · על בסיס ') + L(...LEVEL_LABELS[level]) : L('Custom', 'מותאם')} onClick={() => setState({ tool: 'custom' })}>{L('Custom', 'מותאם')}{custom && <span className="band-custom-base"> · {L('based on ', 'על בסיס ')}{L(...LEVEL_LABELS[level])}</span>}</button></span>
+      <span className="band-levels"><Seg<'simple' | 'standard' | 'expert' | 'custom'> label={L('Detail level', 'רמת פירוט')} value={custom ? 'custom' : level} onChange={(v) => { if (v !== 'custom') setLevel(v); }} options={(['simple', 'standard', 'expert'] as const).map(v => ({ v, label: L(...LEVEL_LABELS[v]) }))} /><button className="btn small band-custom" aria-label={custom ? L('Custom', 'מותאם') + ' · ' + L('based on ', 'על בסיס ') + L(...LEVEL_LABELS[level]) : L('Custom', 'מותאם')} aria-pressed={custom !== null} title={custom ? L('Custom · based on ', 'מותאם · על בסיס ') + L(...LEVEL_LABELS[level]) : L('Custom', 'מותאם')} onClick={() => setState({ tool: 'custom' })}>{L('Custom', 'מותאם')}{custom && <span className="band-custom-base"> · {L('based on ', 'על בסיס ')}{L(...LEVEL_LABELS[level])}</span>}</button></span>
       <span className="spacer" />
       <div className="band-actions">
       {/* scenario tools need a scenario: hidden while an election loads or after it failed to load */}
       {!pmContestId && s && <>
       <button className="tool" onClick={undo} disabled={!canUndo} title={undoName + ' (Ctrl+Z)'} aria-label={undoName}><Undo2 className="icon rtl-mirror" aria-hidden /></button>
       <button className="tool" onClick={redo} disabled={!canRedo} title={redoName + ' (Ctrl+Y)'} aria-label={redoName}><Redo2 className="icon rtl-mirror" aria-hidden /></button>
-      <button className="tool" aria-label={L('Start over', 'התחלה מחדש')} title={L('Start over', 'התחלה מחדש')} onClick={() => { if (!s?.log.length || confirm(L('Start over from the official result? (Undo can restore it.)', 'להתחיל מחדש מהתוצאה הרשמית? (ניתן לבטל)'))) resetAll(); }} disabled={!s?.log.length}>
+      <button className="tool" aria-label={L('Start over', 'התחלה מחדש')} title={L('Start over', 'התחלה מחדש')} onClick={() => { if (!s?.log.length || !getSetting('confirmStartOver') || confirm(L('Start over from the official result? (Undo can restore it.)', 'להתחיל מחדש מהתוצאה הרשמית? (ניתן לבטל)'))) resetAll(); }} disabled={!s?.log.length}>
         <RotateCcw className="icon" aria-hidden /><span className="label">{L('Start over', 'התחלה מחדש')}</span></button>
       <div style={{ position: 'relative' }} ref={menuRef}>
         <button className="tool" aria-label={L('Save & share', 'שמירה ושיתוף')} title={L('Save & share', 'שמירה ושיתוף')} ref={menuButton} aria-expanded={menu} aria-controls="scenarios-menu" onClick={() => setMenu((m) => !m)}>
@@ -139,10 +140,11 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
         }} />
       </div>
       </>}
-      <button className="tool" aria-haspopup="dialog" title={L('Your settings', 'ההגדרות שלכם')} aria-label={L('Your settings', 'ההגדרות שלכם')} onClick={() => setState({ settingsOpen: true })}><Settings className="icon" aria-hidden /></button>
-      <PersonalSettings />
+      <button className="tool" aria-haspopup="dialog" title={L('Settings', 'הגדרות')} aria-label={L('Settings', 'הגדרות')} onClick={() => setState({ settingsOpen: true })}><Settings className="icon" aria-hidden /></button>
+      {/* outside the dark top bar, so none of the bar's own control styles reach the popup */}
+      {createPortal(<PersonalSettings />, document.body)}
       <Seg label={L('Language', 'שפה')} value={lang} onChange={(v) => setState({ lang: v })} options={[{ v: 'he', label: 'עב' }, { v: 'en', label: 'EN' }]} />
-      <button className="tool" title={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} aria-label={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} onClick={() => setState({ theme: theme === 'dark' ? 'light' : 'dark' })}>
+      <button className="tool" title={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} aria-label={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} onClick={() => setSetting('theme', theme === 'dark' ? 'light' : 'dark')}>
         {theme === 'dark' ? <Sun className="icon" aria-hidden /> : <Moon className="icon" aria-hidden />}</button>
       </div>
     </header>

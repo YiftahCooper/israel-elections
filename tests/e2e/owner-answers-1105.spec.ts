@@ -8,7 +8,7 @@ const dataset = (id: string) => JSON.parse(readFileSync(`public/data/${id}.json`
 for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (const width of [1440, 390]) {
   test(`owner answers: ${lang} ${theme} ${width}`, async ({ page }) => {
     await page.setViewportSize({ width, height: 1000 });
-    await page.addInitScript(({ lang, theme }) => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, theme, level: 'expert', hintDismissed: true })), { lang, theme });
+    await page.addInitScript(({ lang, theme }) => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, theme, level: 'expert', hintDismissed: true })), { lang, theme });
     mkdirSync('.backup-scratch/owner-answers/screenshots', { recursive: true });
     await page.goto('/');
     // A real list without a logo uses its own letters, in either UI language.
@@ -77,7 +77,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
 
 for (const lang of ['en', 'he']) test(`all 26 status notes retained in ${lang}`, async ({ page }) => {
   test.setTimeout(120_000);
-  await page.addInitScript(lang => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, level: 'expert', hintDismissed: true })), lang);
+  await page.addInitScript(lang => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, level: 'expert', hintDismissed: true })), lang);
   await page.goto('/');
   await page.locator('#tab-sources').click();
   for (let n = 1; n <= 26; n++) {

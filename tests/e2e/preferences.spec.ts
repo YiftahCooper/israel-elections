@@ -3,14 +3,14 @@ import { choose } from './choices.ts';
 
 test('first-use choices wait for an explicit scope; keyboard and cancellation preserve the edit', async ({ page }) => {
   await page.addInitScript(() => {
-    localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'expert', theme: 'dark', hintDismissed: true }));
+    localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'expert', theme: 'dark', hintDismissed: true }));
     localStorage.setItem('israel-elections:preferences', '{}');
   });
   await page.goto('/'); await page.locator('.lb-row').first().click();
   const votes = page.locator('.side-panel').getByRole('textbox', { name: 'Votes', exact: true });
   const before = await votes.inputValue();
   await votes.fill('1300000'); await votes.press('Enter');
-  const ask = page.getByRole('dialog', { name: 'Votes from', exact: true });
+  const ask = page.getByRole('dialog', { name: 'Votes come from', exact: true });
   await expect(ask).toBeVisible(); await expect(ask).toBeFocused();
   await page.keyboard.press('Enter'); await expect(ask).toBeVisible();
   await expect(ask.getByRole('button', { name: 'Apply', exact: true })).toBeDisabled();
@@ -28,7 +28,7 @@ test('first-use choices wait for an explicit scope; keyboard and cancellation pr
 
 test('opening a saved scenario asks about its comparison, persists Always, and Settings can reset it', async ({ page }) => {
   await page.addInitScript(() => {
-    if (!localStorage.getItem('israel-elections:v1')) localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'expert', theme: 'light', hintDismissed: true }));
+    if (!localStorage.getItem('israel-elections:v1')) localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'expert', theme: 'light', hintDismissed: true }));
     if (!sessionStorage.getItem('prefs-start')) { localStorage.setItem('israel-elections:preferences', JSON.stringify({ voteSource: 'proportional' })); sessionStorage.setItem('prefs-start', '1'); }
   });
   await page.goto('/'); await page.locator('.lb-row').first().click();
@@ -39,23 +39,24 @@ test('opening a saved scenario asks about its comparison, persists Always, and S
   const switcher = page.locator('.band .scenario-switcher .choice-trigger');
   await choose(switcher, 'official');
   await choose(switcher, saved!);
-  const ask = page.getByRole('dialog', { name: 'Mark differences from', exact: true });
+  const ask = page.getByRole('dialog', { name: 'Mark changes since', exact: true });
   await expect(ask).toBeVisible();
   await ask.getByRole('combobox').selectOption('official');
   await ask.getByRole('radio', { name: 'Always', exact: true }).check();
   await ask.getByRole('button', { name: 'Apply', exact: true }).click();
   await expect(switcher).toHaveAttribute('data-value', saved!);
   await page.reload();
-  await page.getByRole('tab', { name: 'Rules & settings', exact: true }).click();
-  await page.locator('.band').getByRole('button', { name: 'Your settings', exact: true }).click();
-  const setting = page.getByRole('button', { name: 'Mark differences from', exact: true });
-  await expect(setting).toHaveAttribute('data-value', 'official'); await choose(setting, 'ask');
-  await expect(setting).toHaveAttribute('data-value', 'ask');
+  await page.getByRole('tab', { name: 'Rules', exact: true }).click();
+  await page.locator('.band').getByRole('button', { name: 'Settings', exact: true }).click();
+  const setting = page.getByRole('group', { name: 'Mark changes since', exact: true });
+  await expect(setting.getByRole('button', { name: 'Official result', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await setting.getByRole('button', { name: 'Ask', exact: true }).click();
+  await expect(setting.getByRole('button', { name: 'Ask', exact: true })).toHaveAttribute('aria-pressed', 'true');
 });
 
 for (const scope of ['Just this once', 'For this scenario']) test(`comparison scope: ${scope}`, async ({ page }) => {
   await page.addInitScript(() => {
-    localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'expert', theme: 'light', hintDismissed: true }));
+    localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'expert', theme: 'light', hintDismissed: true }));
     localStorage.setItem('israel-elections:preferences', '{"voteSource":"proportional"}');
   });
   await page.goto('/'); await page.locator('.lb-row').first().click();

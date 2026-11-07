@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { choose } from './choices.ts';
 for (const lang of ['en', 'he'] as const) test(`${lang}: joint-list default is personal, unedited, persistent and individually overridable`, async ({ page }) => {
   await page.addInitScript(lang => {
-    if (!localStorage.getItem('israel-elections:v1')) localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, level: 'expert', hintDismissed: true }));
+    if (!localStorage.getItem('israel-elections:v1')) localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, level: 'expert', hintDismissed: true }));
     if (!localStorage.getItem('split-test-init')) {
       localStorage.setItem('israel-elections:preferences', JSON.stringify({ jointSeats: 'on', comparison: 'reference', voteSource: 'proportional' }));
       localStorage.setItem('split-test-init', 'yes');
@@ -35,11 +35,11 @@ for (const lang of ['en', 'he'] as const) test(`${lang}: joint-list default is p
   await row.click();
   await expect(toggle).not.toBeChecked();
   await expect(panel.getByRole('checkbox', { name: lang === 'en' ? 'Use by default for joint lists' : 'ברירת מחדל לרשימות משותפות' })).toBeChecked();
-  await page.getByRole('tab', { name: lang === 'en' ? 'Rules & settings' : 'כללים והגדרות', exact: true }).click();
-   await page.locator('.band').getByRole('button', { name: lang === 'en' ? 'Your settings' : 'ההגדרות שלכם', exact: true }).click();
-  const setting = page.getByRole('button', { name: lang === 'en' ? 'Count joint lists’ seats by party' : 'ספירת מנדטים ברשימות משותפות לפי מפלגה', exact: true });
-  await expect(setting).toHaveAttribute('data-value', 'on');
-  await choose(setting, 'off');
-  await expect(setting).toHaveAttribute('data-value', 'off');
+  await page.getByRole('tab', { name: lang === 'en' ? 'Rules' : 'כללים', exact: true }).click();
+   await page.locator('.band').getByRole('button', { name: lang === 'en' ? 'Settings' : 'הגדרות', exact: true }).click();
+  const setting = page.getByRole('checkbox', { name: lang === 'en' ? 'Joint lists by party' : 'רשימות משותפות לפי מפלגה', exact: true });
+  await expect(setting).toBeChecked();
+  await setting.uncheck();
+  await expect(setting).not.toBeChecked();
 
 });

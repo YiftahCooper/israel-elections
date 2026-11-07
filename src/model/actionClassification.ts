@@ -44,8 +44,8 @@ export const hasAppearance = (s:Pick<Scenario,'log'>) => s.log.some(e=>ACTION_CL
 /** Store containers inherit their contents; the UI choices themselves never edit results. */
 export const STORE_FIELDS = {
  familyView:'B',datasets:'A',elections:'A',electionId:'B',scenario:'A',preview:'A',reference:'A',past:'A',future:'A',saved:'A',sessions:'A',scenarioDrafts:'A',
- markOfficial:'B',selectedListId:'C',blocPanel:'C',tool:'C',compareWith:'B',lang:'C',theme:'C',level:'C',customFeatures:'C',hintDismissed:'C',digits:'C',layout:'C',showComponentSeats:'B',colorBy:'C',
- toast:'C',loadError:'C',notice:'C',voteSource:'B',preferences:'B',settingsOpen:'C',preferenceAsk:'C',preferenceFor:'B',
+ markOfficial:'B',selectedListId:'C',blocPanel:'C',tool:'C',compareWith:'B',lang:'C',theme:'C',level:'C',customFeatures:'C',settings:'B',
+ toast:'C',loadError:'C',notice:'C',voteSource:'B',preferences:'B',settingsOpen:'C',settingsFocus:'C',preferenceAsk:'C',preferenceFor:'B',
 } as const satisfies Record<keyof import('../app/store.ts').State,'A'|'B'|'C'>;
 
 export function isAnalysisAction(a:Action):boolean {

@@ -5,7 +5,37 @@ import { pct, rat, toDecimal, type Rational } from '../engine/rational.ts';
 const EN = new Intl.NumberFormat('en-US');
 export const fmtInt = (n: number | bigint) => (typeof n === 'bigint' ? EN.format(n) : EN.format(Math.round(n)));
 export const fmtSigned = (n: number | bigint) => (Number(n) > 0 ? '+' : Number(n) < 0 ? '−' : '±') + fmtInt(typeof n === 'bigint' ? (n < 0n ? -n : n) : Math.abs(n));
-export const fmtPct = (part: number | bigint, whole: number | bigint, digits = 2) => `${pct(BigInt(part), BigInt(whole), digits)}%`;
+/** A decimal string ("3.25") as an exact fraction, for comparisons without floating point. */
+const decimalParts = (t: string) => { const [a, b = ''] = t.split('.'); return { num: BigInt(a + b), den: 10n ** BigInt(b.length) }; };
+/** P/W as a percentage with exactly `d` decimals, rounded down (dir -1) or up (dir 1). P, W ≥ 0, W > 0. */
+const directed = (P: bigint, W: bigint, d: number, dir: -1 | 1) => {
+  const n = P * 100n * 10n ** BigInt(d);
+  const q = dir < 0 ? n / W : (n + W - 1n) / W;
+  const t = q.toString().padStart(d + 1, '0');
+  return d ? `${t.slice(0, -d)}.${t.slice(-d)}` : t;
+};
+/** A percentage of part in whole, for display, with at most `digits` decimals (Settings → Max decimal places).
+ *  Two rules keep a rounded share honest without ever adding digits:
+ *  - a non-zero share is never shown as zero ("<0.1%"), and
+ *  - with a threshold (an exact decimal string such as "3.25"), a share whose ordinary rounding would land on the
+ *    other side of it is rounded toward its true side instead: 1.46% against 1.5% at one decimal shows "1.4%". */
+export function fmtPct(part: number | bigint, whole: number | bigint, digits = 2, threshold?: string): string {
+  // estimates (a locality's share of a split list) are fractional: scaled to whole millionths, exact enough to show
+  const fractional = typeof part === 'number' && !Number.isInteger(part) || typeof whole === 'number' && !Number.isInteger(whole);
+  const P = fractional ? BigInt(Math.round(Number(part) * 1e6)) : BigInt(part), W = fractional ? BigInt(Math.round(Number(whole) * 1e6)) : BigInt(whole);
+  if (W === 0n) return '—%';
+  let shown = pct(P, W, digits);
+  if (threshold && P >= 0n && W > 0n && Number(threshold) > 0) {
+    const t = decimalParts(threshold), r = decimalParts(shown);
+    const below = P * 100n * t.den < t.num * W; // exact share < threshold
+    if ((r.num * t.den < t.num * r.den) !== below) shown = directed(P, W, digits, below ? -1 : 1);
+  }
+  if (P !== 0n && /^-?0(\.0*)?$/.test(shown)) return `<${digits === 0 ? '1' : `0.${'0'.repeat(digits - 1)}1`}%`;
+  return `${shown}%`;
+}
+/** A percentage that is already a number (an entered share, a sum of entered shares), with at most `digits`
+ *  decimals and no trailing zeros: 99.5%, 105%. Never an unbounded float. */
+export const fmtPctNum = (n: number, digits = 2) => Number.isFinite(n) ? `${Number(n.toFixed(digits)).toString()}%` : '—%';
 export const fmtRat = (r: Rational, digits = 2) => toDecimal(r, digits).replace(/^(-?)(\d+)/, (_, sg: string, d: string) => sg + EN.format(BigInt(d)));
 export const fmtFrac = (r: Rational) => `${fmtInt(r.num)} / ${fmtInt(r.den)}`;
 export const ratOf = (a: bigint | number, b: bigint | number) => rat(BigInt(a), BigInt(b));
