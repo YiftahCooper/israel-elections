@@ -2,6 +2,7 @@
 
 ## 7 November 2026 — Settings
 
+- Design: party identity across elections, party history and comparison with the previous election (docs/design/party-history.md).
 - Map: keep Hebrew sentence punctuation outside Latin-reference isolation, join the Ramadin source splice exactly, and name OpenStreetMap in full.
 
 
