@@ -2,6 +2,8 @@
 
 ## 7 November 2026 — Settings
 
+- Research: assess Hebrew editing tools and native review, with 25 source-linked copy proposals and a practical quality pipeline.
+
 - Map: keep Hebrew sentence punctuation outside Latin-reference isolation, join the Ramadin source splice exactly, and name OpenStreetMap in full.
 
 
