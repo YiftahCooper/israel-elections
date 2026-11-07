@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "electionId": "k15",
   "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "reviewedAt": "2026-11-07",
   "notes": [
     "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
     "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
@@ -114,6 +114,22 @@
       "publisher": "Government of Israel, government 28, p.120",
       "kind": "official",
       "accessed": "2026-11-06"
+    },
+    "lemonde1999-confidence": {
+      "url": "https://scholar.lib.vt.edu/InterNews/LeMonde/issues/1999/lm990708.pdf",
+      "publisher": "Georges Marion / Le Monde, 8 July 1999, p.5; Virginia Tech public archive",
+      "kind": "archival",
+      "accessed": "2026-11-07",
+      "evidenceFamily": "lemonde1999-confidence",
+      "via": "Original PDF p.5 visually inspected. Byline Georges Marion, Jerusalem correspondent. Independent of JTA. Vote on 6 July and office handover on 7 July are distinguished."
+    },
+    "twi2001-confidence": {
+      "url": "https://www.washingtoninstitute.org/policy-analysis/israels-new-sharon-government",
+      "publisher": "David Makovsky / Washington Institute for Near East Policy, 7 March 2001",
+      "kind": "academic",
+      "accessed": "2026-11-07",
+      "evidenceFamily": "twi2001-confidence",
+      "via": "Bylined contemporary policy analysis; public body opened. Independent of existing Associated Press report via Houston Chronicle. Used for tally/date only, not political interpretation."
     }
   },
   "results": {
@@ -155,6 +171,10 @@
           {
             "source": "jta1999vote",
             "quote": "the new Israeli government and policy guidelines were approved by the Knesset"
+          },
+          {
+            "source": "lemonde1999-confidence",
+            "quote": "par une majorité de 75 voix contre 29"
           }
         ]
       },
@@ -186,6 +206,10 @@
           {
             "source": "vote2001",
             "quote": "by a vote of 72-21, with 27 members absent"
+          },
+          {
+            "source": "twi2001-confidence",
+            "quote": "by a vote 72 to 21"
           }
         ],
         "votes": {

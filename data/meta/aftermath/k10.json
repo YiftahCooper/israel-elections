@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "electionId": "k10",
   "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "reviewedAt": "2026-11-07",
   "notes": [
     "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
     "The institutional Knesset term runs from the first sitting on 20 July 1981 to 13 August 1984. Election dates are recorded separately. Mid-term government succession is recorded in formation.events.",
@@ -125,6 +125,30 @@
       "publisher": "Knesset plenum, 5 August 1981, printed p. 82 (PDF p. 1)",
       "kind": "official",
       "accessed": "2026-11-06"
+    },
+    "wp1981-confidence": {
+      "url": "https://www.washingtonpost.com/archive/politics/1981/08/06/knesset-returns-begin-coalition-to-power-by-3-votes/0451c65a-375a-4185-bb2e-0e0e81702f71/",
+      "publisher": "William Claiborne / The Washington Post, 6 August 1981",
+      "kind": "archival",
+      "accessed": "2026-11-07",
+      "evidenceFamily": "wp1981-confidence",
+      "via": "Bylined contemporary reporting; body opened. Corroborates the existing official plenum extraction."
+    },
+    "wp1983-mandate": {
+      "url": "https://www.washingtonpost.com/archive/politics/1983/09/22/israels-president-asks-foreign-minister-shamir-to-form-a-government/ee12dd33-daef-41b8-98ca-548ffeb0f692/",
+      "publisher": "Edward Walsh / The Washington Post, 22 September 1983",
+      "kind": "archival",
+      "accessed": "2026-11-07",
+      "evidenceFamily": "wp1983-mandate",
+      "via": "Bylined contemporary reporting; body opened. Dateline 21 September; supports the existing official plenum extraction."
+    },
+    "wp1983-confidence": {
+      "url": "https://www.washingtonpost.com/archive/politics/1983/10/11/shamir-takes-office-as-economic-crisis-mounts/d10e3f0c-1c60-4a22-9b93-c9e12da74030/",
+      "publisher": "Edward Walsh / The Washington Post, 11 October 1983",
+      "kind": "archival",
+      "accessed": "2026-11-07",
+      "evidenceFamily": "wp1983-confidence",
+      "via": "Bylined contemporary reporting; body opened. Dateline 10 October; independently corroborates the official plenum extraction."
     }
   },
   "results": {
@@ -291,6 +315,10 @@
           {
             "source": "plenum10",
             "quote": "נגד 58"
+          },
+          {
+            "source": "wp1981-confidence",
+            "quote": "The 61-to-58 vote came shortly before midnight"
           }
         ],
         "votes": {
@@ -307,6 +335,10 @@
           {
             "source": "plenum1983",
             "quote": "כי הטלתי היום את התפקיד להרכיב ממשלה על חבר הכנסת יצחק שמיר"
+          },
+          {
+            "source": "wp1983-mandate",
+            "quote": "was formally asked by President Chaim Herzog"
           }
         ],
         "person": "shamir",
@@ -335,6 +367,10 @@
           {
             "source": "plenum1983",
             "quote": "ב60 קולות בעד ו53 נגד הוחלט להביע אמון בממשלה"
+          },
+          {
+            "source": "wp1983-confidence",
+            "quote": "was endorsed by a 60-to-53 vote"
           }
         ],
         "votes": {

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-07",
+  "electionId": "k13",
+  "scope": "Tsomet recommendation and official 1992 investiture vote",
+  "sources": {
+    "idi-parties-2023-tsomet": {
+      "url": "https://www.idi.org.il/media/20997/המפלגות-בישראל-2021-1992.pdf",
+      "publisher": "Ofer Kenig and Gideon Rahat / Israel Democracy Institute, Political Parties in Israel 1992–2021, 2023, p.599",
+      "kind": "academic",
+      "accessed": "2026-11-07",
+      "evidenceFamily": "idi-parties-2023",
+      "via": "Printed p.599 (PDF index 598); explicit Tsomet recommendation, not coalition membership."
+    },
+    "amigoe-19920630": {
+      "url": "https://ufdcimages.uflib.ufl.edu/UF/00/10/14/47/16428/06-30-1992.pdf",
+      "publisher": "Amigoe, 30 June 1992, p.4, Rechtse en linkse steun voor Rabin; University of Florida public archive",
+      "kind": "archival",
+      "accessed": "2026-11-07",
+      "evidenceFamily": "amigoe-19920630-consultations",
+      "via": "Original newspaper scan visually inspected; Gonen Segev explicitly recommends Rabin. Unbylined contemporary report; independent of the 2023 IDI authors. No wire credit visible; do not count another reprint of this dispatch as independent."
+    },
+    "first-sitting": {
+      "url": "https://main.knesset.gov.il/Documents/FB/rabin001-92jul13.pdf",
+      "publisher": "הכנסת, הישיבה הראשונה של הכנסת השלוש-עשרה, 13 ביולי 1992",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    }
+  },
+  "claims": [
+    {
+      "id": "tsomet-rabin",
+      "letters": "ץ",
+      "status": "documented",
+      "cites": [
+        {
+          "source": "idi-parties-2023-tsomet",
+          "quote": "צומת המליצה לנשיא המדינה להטיל על רבין את תפקיד הרכבת הממשלה"
+        },
+        {
+          "source": "amigoe-19920630",
+          "quote": "Dus bevelen wij hem aan",
+          "note": "Gonen Segev, explicitly identified as a Tsomet MK, speaks in the context of presidential consultations."
+        }
+      ]
+    }
+  ],
+  "originalPdfSha256": "c174555d139ee218639e5987bd203272582d998d1a4745dab1e9ab7eeb380468",
+  "inspection": "Amigoe original p.4 visually read; relevant IDI passage and official Knesset transcript passages read. No complete consultation table recovered.",
+  "regeneration": "Retrieve original public URL with required User-Agent, stop on 429/access restriction; node scripts/research/render-logo-pdf-page.mjs input.pdf 4 1.5 .backup-scratch/amigoe-p4.png"
+}
