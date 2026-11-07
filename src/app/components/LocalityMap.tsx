@@ -1,3 +1,4 @@
+import { percent, points } from './Percentage.tsx';
 import {MAP_UNASSIGNED_COLOUR} from '../locality-map-model.ts';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import {MapLineText} from './MapLineText.tsx';
@@ -20,7 +21,7 @@ import { useStore } from '../store.ts';
 import type { FeatureCollection } from 'geojson';
 import { MAP_LINES, MAP_LINE_SNAPSHOT, drawMapLines, mapLineSourceLabel } from '../locality-map-lines.ts';
 import { basemapAttribution } from '../locality-basemap-style.ts';
-import { fmtInt, fmtPct } from '../format.ts';
+import { fmtInt, trimDecimal } from '../format.ts';
 import { useDigits } from '../store.ts';
 
 function useJson<T>(url: string | null, empty: T) {
@@ -99,7 +100,7 @@ const photonCache = new Map<string, PhotonFeature[]>();
 let lastRequest = 0;
 interface PhotonFeature { geometry: { coordinates: [number, number] }; properties: Record<string, string> }
 const GREY = MAP_UNASSIGNED_COLOUR;
-const share = (v: number, whole: number, digits: number) => whole > 0 ? fmtPct(v, whole, digits) : '—';
+const share = (v: number, whole: number, digits: number) => whole > 0 ? percent(v, whole, digits) : '—';
 let measure: CanvasRenderingContext2D | null = null;
 const textWidth = (text: string) => {
   measure ??= document.createElement('canvas').getContext('2d');
@@ -176,7 +177,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       const title = document.createElement('strong'); title.dir = 'auto'; title.textContent = localityName(names, p.row, p.index, lang);
       const why = document.createElement('span'); why.dir = 'auto';
       why.textContent = w.tied ? L('Tie', 'שוויון') : w.key === null ? L('Unassigned / no votes', 'ללא שיוך / ללא קולות')
-        : `${groupName(w.key)} \u2066+${(w.margin / Math.max(1, p.row.valid) * 100).toFixed(digits)}\u2069${L(' pp', ' נק׳')}`;
+        : `${groupName(w.key)} \u2066+${trimDecimal((w.margin / Math.max(1, p.row.valid) * 100).toFixed(digits))}\u2069${L(' pp', ' נק׳')}`;
       const source = document.createElement('span'); source.dir = 'auto'; source.textContent = localityNameSource(names, p.row, p.index, lang);
       tip.append(title, why, source);
       // a thin white outline separates neighbouring dots; a dark ring would darken every colour alike
@@ -316,13 +317,13 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       {/* why the dot has its colour: the leader, and its lead over the runner-up in this locality */}
       <p className="locality-verdict">{selectedWinner!.tied ? L('Tie', 'שוויון') : selectedWinner!.key === null || !groups.length ? L('No assigned votes', 'אין קולות משויכים') : <>
         <span className="swatch" style={{ background: groupColor(selectedWinner!.key) }} /><strong dir="auto">{groupName(selectedWinner!.key)}</strong>
-        {groups.length > 1 && <span className="ink2"> · {L('ahead of ', 'ביתרון של ')}{lang === 'en' && <span dir="auto">{groupName(groups[1].key)} {L('by ', '')}</span>}<bdi dir="ltr">{(selectedWinner!.margin / Math.max(1, selected.valid) * 100).toFixed(digits)}{L(' pp', ' נק׳')}</bdi> ({fmtInt(selectedWinner!.margin)} {L('votes', 'קולות')}){lang === 'he' && <span dir="auto"> על {groupName(groups[1].key)}</span>}</span>}
+        {groups.length > 1 && <span className="ink2"> · {L('ahead of ', 'ביתרון של ')}{lang === 'en' && <span dir="auto">{groupName(groups[1].key)} {L('by ', '')}</span>}<bdi dir="ltr">{points(selectedWinner!.margin / Math.max(1, selected.valid) * 100, digits, true)}{L(' pp', ' נק׳')}</bdi> ({fmtInt(selectedWinner!.margin)} {L('votes', 'קולות')}){lang === 'he' && <span dir="auto"> על {groupName(groups[1].key)}</span>}</span>}
       </>}</p>
       {mode === 'bloc' && groups.length > 0 && <div className="tablewrap"><table className="tbl"><thead><tr><th>{L('Bloc','גוש')}</th><th className="n">{L('Votes','קולות')}</th><th>{L('Share','שיעור')}</th></tr></thead><tbody>
         {groups.map(g => <tr key={g.key ?? 'none'} className={g.key === selectedWinner!.key ? 'sel' : undefined}><td><span className="row" style={{gap:6,flexWrap:'nowrap'}}><span className="swatch" style={{background:groupColor(g.key)}} />{groupName(g.key)}</span></td><td className="n">{fmtInt(g.votes)}</td><td>{shareBar(g.votes, groups[0].votes, groupColor(g.key))}</td></tr>)}
       </tbody></table></div>}
       <p className="small ink2 locality-map-facts">
-        <span>{L('Turnout ', 'הצבעה ')}<b className="tabnum">{selected.registered ? fmtPct(selected.votesCast, selected.registered, digits) : '—'}</b></span>
+        <span>{L('Turnout ', 'הצבעה ')}<b className="tabnum">{selected.registered ? percent(selected.votesCast, selected.registered, digits) : '—'}</b></span>
         <span>{L('Valid ', 'כשרים ')}<b className="tabnum">{fmtInt(selected.valid)}</b></span>
         <span>{L('Registered ', 'בעלי זכות ')}<b className="tabnum">{selected.registered === null ? '—' : fmtInt(selected.registered)}</b></span>
         <span>{L('Invalid ', 'פסולים ')}<b className="tabnum">{fmtInt(selected.invalid)}</b></span>

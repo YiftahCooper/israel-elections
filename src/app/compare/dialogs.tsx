@@ -1,3 +1,4 @@
+import { percent } from '../components/Percentage.tsx';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
 // Compare's dialogs: the copy question, whole-list replacement, list matching, a side's vote editor, the phone row sheet
 // and saving a comparison. Every figure shown before committing is the engine's, computed on a scratch copy.
@@ -5,7 +6,7 @@ import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import type { Scenario, SimList } from '../../model/scenario.ts';
 import { allocationOf, electedOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtPct } from '../format.ts';
+import { fmtInt } from '../format.ts';
 import { setState, useDigits, useLevel, useStore } from '../store.ts';
 import { deltaAction, voteSourceLabel, type SourceChoice } from '../voteEdit.ts';
 import { sourceChoice, sourceValue } from '../preferences.ts';
@@ -255,7 +256,7 @@ export function RowSheet({ row, left, right, onClose, actions }: { row: MatchRow
   const side = (x: SideModel, ids: string[]) => { const c = cellsOf(x, ids), inside = inOf(row, x === left ? 'left' : 'right'); return <div className="cmp-sheet-side">
     <span className="muted small">{x.year} · {x.name}</span>
     <b><bdi>{c ? listName(x, ids, lang) : inside ? L(`in ${listName(x, [inside], 'en')}`, `בתוך ${listName(x, [inside], 'he')}`) : '—'}</bdi></b>
-    {c && <span className="small"><bdi dir="ltr">{fmtInt(c.votes)}</bdi> {L('votes', 'קולות')} · <bdi dir="ltr">{fmtPct(c.votes, c.total, digits, x.sc.rules.thresholdPct)}</bdi> · <b>{c.seats}</b> {L('seats', 'מנדטים')}</span>}
+    {c && <span className="small"><bdi dir="ltr">{fmtInt(c.votes)}</bdi> {L('votes', 'קולות')} · <bdi dir="ltr">{percent(c.votes, c.total, digits, x.sc.rules.thresholdPct)}</bdi> · <b>{c.seats}</b> {L('seats', 'מנדטים')}</span>}
   </div>; };
   return <Modal label={L('List details', 'פרטי הרשימה')} onClose={onClose} className="cmp-sheet">
     <div className="choice-head"><span className={`cmp-tag tag-${row.tag}`}>{tagText(row.tag, L)}</span><button className="btn" aria-label={L('Close', 'סגירה')} onClick={onClose}>×</button></div>

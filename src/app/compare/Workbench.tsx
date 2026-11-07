@@ -1,3 +1,4 @@
+import { percent, rationalPoints } from '../components/Percentage.tsx';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
 // The Compare workbench (docs/design/compare-workbench.md): two live sides pinned left → right in both languages,
 // their chambers and blocs, one head-to-head table of paired lists, and copies between the sides.
@@ -10,7 +11,7 @@ import { allocationOf, changeCount, editPathLabel, electedOf, listLabel, markerR
 import { baselineOf } from '../factionDefaults.ts';
 import { changeText } from '../changeValue.tsx';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtPct, fmtPp, fmtRat, pctExactNote } from '../format.ts';
+import { fmtInt, fmtRat } from '../format.ts';
 import { setState, toast, useDigits, useLevel, useSetting, useStore } from '../store.ts';
 import { Floating } from '../floating.tsx';
 import { Hemicycle } from '../components/Hemicycle.tsx';
@@ -265,21 +266,21 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
               {!simple && <td className="cmp-tick"><input type="checkbox" checked={isSel} onChange={() => toggle(row)} aria-label={L(`Select ${what}`, `בחירת ${what}`)} /></td>}
               <NameCell x={left} c={l} row={row} side="left" lang={lang} />
               <td className="n cmp-v">{l ? <VotesCell x={left} c={l} onEdit={(id) => setEditing({ side: left, listId: id })} /> : null}</td>
-              <td className="n cmp-s" title={l ? pctExactNote(l.votes, l.total, digits, left.sc.rules.thresholdPct, lang) : undefined}>{l && <bdi dir="ltr">{fmtPct(l.votes, l.total, digits, left.sc.rules.thresholdPct)}</bdi>}</td>
+              <td className="n cmp-s">{l && <bdi dir="ltr">{percent(l.votes, l.total, digits, left.sc.rules.thresholdPct, { pad: digits })}</bdi>}</td>
               <td className="n cmp-seats cmp-ls">{l ? <b>{l.seats}</b> : null}</td>
               <td className="cmp-mid">
                 <span className="cmp-mid-in">
                   {arrow(row, toL && !grouped ? [toL] : null, 'toLeft', what)}
                   <span className="cmp-delta">
                     {grouped ? <span className="tiny muted">{L('see group', 'ראו קבוצה')}</span> : d !== null ? <SeatDelta value={d} /> : <span className="muted">—</span>}
-                    {!simple && shareD && shareD.num !== 0n && <span className="tiny muted cmp-pp" dir={lang === 'he' ? 'rtl' : 'ltr'}><bdi dir="ltr">{fmtPp(shareD, digits)}</bdi> {L('pp', 'נק׳ אחוז')}</span>}
+                    {!simple && shareD && shareD.num !== 0n && <span className="tiny muted cmp-pp" dir={lang === 'he' ? 'rtl' : 'ltr'}><bdi dir="ltr">{rationalPoints(shareD, digits)}</bdi> {L('pp', 'נק׳ אחוז')}</span>}
                     <span className={`cmp-tag tag-${row.tag}`} title={L(...TAG_INFO[row.tag])}>{tagText(row.tag, L)}</span>
                   </span>
                   {arrow(row, toR && !grouped ? [toR] : null, 'toRight', what)}
                 </span>
               </td>
               <td className="n cmp-seats cmp-rs">{r ? <b>{r.seats}</b> : null}</td>
-              <td className="n cmp-s" title={r ? pctExactNote(r.votes, r.total, digits, right.sc.rules.thresholdPct, lang) : undefined}>{r && <bdi dir="ltr">{fmtPct(r.votes, r.total, digits, right.sc.rules.thresholdPct)}</bdi>}</td>
+              <td className="n cmp-s">{r && <bdi dir="ltr">{percent(r.votes, r.total, digits, right.sc.rules.thresholdPct, { pad: digits })}</bdi>}</td>
               <td className="n cmp-v">{r ? <VotesCell x={right} c={r} onEdit={(id) => setEditing({ side: right, listId: id })} /> : null}</td>
               <NameCell x={right} c={r} row={row} side="right" lang={lang} />
               <td className="cmp-more"><button type="button" className="btn small ghost cmp-more-btn" aria-label={L(`More for ${what}`, `עוד עבור ${what}`)} aria-haspopup="dialog" aria-expanded={menu?.row.key === row.key}
@@ -431,10 +432,10 @@ function GroupLine({ group, rows, left, right, simple, copy, nameOf }: { group: 
 /** Key numbers and rules, head to head. Inputs carry copy arrows; results never do. */
 function KeyBand({ left, right, simple, expert, copy, nameOf }: { left: SideModel; right: SideModel; simple: boolean; expert: boolean; copy: (f: 'turnout' | 'registered' | 'invalid' | 'threshold' | 'rules' | 'agreements', d: Dir) => void; nameOf: (x: SideModel) => string }) {
   const L = useL(), lang = useLang(), digits = useDigits();
-  const turnout = (x: SideModel) => x.sc.registered ? fmtPct(x.sc.lists.reduce((t, l) => t + l.votes, 0) + x.sc.invalid, x.sc.registered, digits) : '—';
+  const turnout = (x: SideModel) => x.sc.registered ? percent(x.sc.lists.reduce((t, l) => t + l.votes, 0) + x.sc.invalid, x.sc.registered, digits) : '—';
   const thrVotes = (x: SideModel) => Number(x.sc.rules.thresholdPct) === 0 ? L('None', 'אין') : fmtInt(x.r.thresholdVotes);
   const method = (x: SideModel) => `${METHODS[x.sc.rules.remainderMethod]?.[lang] ?? x.sc.rules.remainderMethod} · ${x.sc.rules.seats}${x.sc.mode === 'experimental' ? L(' · experimental', ' · ניסיוני') : ''}`;
-  type Row = { k: string; label: string; l: string; r: string; field?: 'turnout' | 'registered' | 'invalid' | 'threshold' | 'rules' | 'agreements'; show: boolean };
+  type Row = { k: string; label: string; l: React.ReactNode; r: React.ReactNode; field?: 'turnout' | 'registered' | 'invalid' | 'threshold' | 'rules' | 'agreements'; show: boolean };
   const rows: Row[] = [
     { k: 'valid', label: L('Valid votes', 'קולות כשרים'), l: fmtInt(left.r.totalValid), r: fmtInt(right.r.totalValid), show: true },
     { k: 'turnout', label: L('Turnout', 'שיעור הצבעה'), l: turnout(left), r: turnout(right), field: 'turnout', show: true },
@@ -446,7 +447,7 @@ function KeyBand({ left, right, simple, expert, copy, nameOf }: { left: SideMode
     { k: 'agreements', label: L('Surplus agreements', 'הסכמי עודפים'), l: String(left.sc.agreements.filter((a) => a.enabled).length), r: String(right.sc.agreements.filter((a) => a.enabled).length), field: 'agreements', show: !simple },
     { k: 'quota', label: L('Votes per seat', 'קולות למנדט'), l: fmtRat(left.r.quota, 0), r: fmtRat(right.r.quota, 0), show: true },
     { k: 'elected', label: L('Lists elected', 'רשימות שנבחרו'), l: String(left.r.lists.filter((x) => x.seats > 0).length), r: String(right.r.lists.filter((x) => x.seats > 0).length), show: true },
-    { k: 'unrep', label: L('Votes with no seat', 'קולות ללא מנדט'), l: fmtPct(left.r.unrepresentedVotes, left.r.totalValid, digits), r: fmtPct(right.r.unrepresentedVotes, right.r.totalValid, digits), show: true },
+    { k: 'unrep', label: L('Votes with no seat', 'קולות ללא מנדט'), l: percent(left.r.unrepresentedVotes, left.r.totalValid, digits), r: percent(right.r.unrepresentedVotes, right.r.totalValid, digits), show: true },
   ];
   const btn = (row: Row, d: Dir) => { const to = d === 'toRight' ? right : left; const label = L(`Copy ${row.label.toLowerCase()} to ${nameOf(to)}`, `העתקת ${row.label} ${hebrewPrefix('ל', nameOf(to))}`);
     return <button type="button" className="cmp-arrow" aria-label={label} title={label} disabled={row.l === row.r} onClick={() => copy(row.field!, d)}>{d === 'toRight' ? <ArrowRight size={16} /> : <ArrowLeft size={16} />}</button>; };

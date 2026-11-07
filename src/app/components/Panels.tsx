@@ -1,3 +1,5 @@
+import { percent } from './Percentage.tsx';
+import { k19StatusNote } from '../k19Note.ts';
 import { formatDate } from '../dateFormat.ts';
 import { AfterElectionSources } from './AfterElection.tsx';
 import { factLog, isFactAction } from '../../model/actionClassification.ts';
@@ -19,7 +21,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import { electionRuleSetId, historicalRules, type Scenario } from '../../model/scenario.ts';
 import { historyChangesLabels, baselineOf, listLabel, methodOf } from '../derive.ts';
 import { GLOSSARY, useL, useLang } from '../i18n.ts';
-import { download, fmtInt, fmtPct } from '../format.ts';
+import { download, fmtInt } from '../format.ts';
 import { dispatch, getState, redo, replay, setState, undo, useStore, useDigits, useSetting } from '../store.ts';
 import { useLocalities } from './Turnout.tsx';
 import { GlossaryLink, Info, TextField } from './ui.tsx';
@@ -199,12 +201,12 @@ export function Localities({ s }: { s: Scenario }) {
                 <tr className={open === key ? 'sel' : ''}>
                   <td><button className="table-action" aria-expanded={open === key} onClick={() => setOpen(open === key ? null : key)} title={localityNameSource(names, r, Number(key), lang)}><LocalityName names={names} row={r} index={Number(key)} showCbs /></button> <span className="muted tiny">{r.code}</span></td>
                   <td className="n">{r.registered ? fmtInt(r.registered) : '—'}</td><td className="n">{fmtInt(r.votesCast)}</td>
-                  <td className="n">{r.registered ? fmtPct(r.votesCast, r.registered, digits) : '—'}</td><td className="n">{fmtInt(r.valid)}</td>
-                  <td className="small">{top.slice(0, 3).filter((x) => x.v > 0).map((x) => `${nameOf(x.k)} ${fmtPct(x.v, r.valid, 0)}`).join(' · ')}</td>
+                  <td className="n">{r.registered ? percent(r.votesCast, r.registered, digits, undefined, { pad: digits }) : '—'}</td><td className="n">{fmtInt(r.valid)}</td>
+                  <td className="small">{top.slice(0, 3).filter((x) => x.v > 0).map((x, i) => <Fragment key={x.k}>{i ? ' · ' : ''}{nameOf(x.k)} {percent(x.v, r.valid, 0)}</Fragment>)}</td>
                 </tr>
                 {open === key && (
                   <tr><td colSpan={6}>
-                    <div className="grid2 small">{top.filter((x) => x.v > 0).slice(0, 16).map((x) => <span key={x.k}>{nameOf(x.k)}: {fmtInt(x.v)} ({fmtPct(x.v, r.valid, digits)})</span>)}</div>
+                    <div className="grid2 small">{top.filter((x) => x.v > 0).slice(0, 16).map((x) => <span key={x.k}>{nameOf(x.k)}: {fmtInt(x.v)} ({percent(x.v, r.valid, digits)})</span>)}</div>
                     {isEnvelopeRow(r) && <p className="small muted">{L('Double-envelope votes: cast away from home polling stations; not attributable to localities.', 'מעטפות חיצוניות: קולות שהוטלו מחוץ לקלפי הבית; אינם משויכים ליישובים.')}</p>}
                   </td></tr>
                 )}
@@ -275,7 +277,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
       <AfterElectionSources ds={ds} />
       <div>
         <h3>{L('Data status', 'מצב הנתונים')}</h3>
-        <p className="small" style={ds.status.stage === 'official-final' ? undefined : { color: 'var(--warn-ink)' }}>{ds.status.stage === 'official-final' ? L('Official final results', 'תוצאות סופיות רשמיות') : L('Gazette not yet verified', 'הפרסום ברשומות טרם אומת')} <Info title={L('Data status details', 'פירוט מצב הנתונים')}>{lang === 'he' ? ds.status.noteHe.replaceAll('הפרסום ברשומות לא אומת', 'הפרסום ברשומות טרם אומת') : ds.status.noteEn.replaceAll('Gazette publication unverified', 'Gazette publication not yet verified')}</Info></p>
+        <p className="small" style={ds.status.stage === 'official-final' ? undefined : { color: 'var(--warn-ink)' }}>{ds.status.stage === 'official-final' ? L('Official final results', 'תוצאות סופיות רשמיות') : L('Gazette not yet verified', 'הפרסום ברשומות טרם אומת')} <Info title={L('Data status details', 'פירוט מצב הנתונים')}>{lang === 'he' ? ds.status.noteHe.replaceAll('הפרסום ברשומות לא אומת', 'הפרסום ברשומות טרם אומת') : ds.status.noteEn.replaceAll('Gazette publication unverified', 'Gazette publication not yet verified')}{ds.id === 'k19' && <><br />{k19StatusNote(lang)}</>}</Info></p>
         <div className="kv small" style={{ maxWidth: 440 }}>
           <span>{L('Registered voters', 'בעלי זכות בחירה')}</span><span>{fmtInt(ds.totals.registered)}</span>
           <span>{L('Votes cast', 'מצביעים')}</span><span>{fmtInt(ds.totals.votesCast)}</span>

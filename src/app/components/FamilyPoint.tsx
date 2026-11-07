@@ -1,3 +1,4 @@
+import { percentNum, points } from './Percentage.tsx';
 import { partyDisplayColor } from '../partyDisplayColor.ts';
 import { formatDate } from '../dateFormat.ts';
 import { SeatDelta } from './SeatDelta.tsx';
@@ -40,7 +41,7 @@ export function FamilyPoint({family:f,electionId}:{family:Family;electionId:Elec
  const counted=a.votes!==null&&!(a.votes===0n&&a.mixed),prevCounted=!!prev&&prev.votes!==null&&!(prev.votes===0n&&prev.mixed);
  const share=(v:bigint,d:ElectionDataset)=>Number(v)*100/d.totals.valid;
  const status=familyStatus(a,L),mixedDelta=a.mixed!==null&&prev?.mixed!==null&&prev?.mixed!==undefined?a.mixed-prev.mixed:null;
- const signed=(n:number|bigint,digits?:number)=>{const x=Number(n);return <bdi dir="ltr">{x>0?'+':x<0?'−':'±'}{digits===undefined?Math.abs(x).toLocaleString('en-US'):Math.abs(x).toFixed(digits)}</bdi>;};
+ const signed=(n:number|bigint,digits?:number)=>{const x=Number(n);return <bdi dir="ltr">{digits===undefined?<>{x>0?'+':x<0?'−':'±'}{Math.abs(x).toLocaleString('en-US')}</>:points(x,digits)}</bdi>;};
  const relation=(s:string)=>({'merged-into':L('Merged','מיזוג'),'split-from':L('Split','פיצול'),'renamed-to':L('Renamed','שינוי שם')}[s]??s);
  const source=(id:string,s:Family['sources'][string])=><a key={id} href={s.url} target="_blank" rel="noreferrer">{s.kind==='secondary'?L('Secondary source','מקור משני'):L('Source','מקור')} · {s.publisher??id}</a>;
  // Counted lists first, then the hatched mixed lists, then lists named but not counted.
@@ -48,7 +49,7 @@ export function FamilyPoint({family:f,electionId}:{family:Family;electionId:Elec
  const lists=ds.lists.filter(l=>ids.has(l.id)).sort((x,y)=>rank(x.id)-rank(y.id)||y.votes-x.votes);
  return <div className="family-point" style={{['--family-color' as string]:familyColor(f)}}>
   <h3>{shortFamilyName(f,lang)} · {familyDate(historyElections[at],lang)}</h3>
-  <div className="family-point-total">{status&&<span>{status}</span>}{counted&&<span><b>{Number(a.votes).toLocaleString('en-US')} {L('votes','קולות')}</b> · <bdi dir="ltr">{share(a.votes!,ds).toFixed(digits)}%</bdi> · {familySeats(ds,m.selected)} {L('seats','מנדטים')}</span>}{!!a.mixed&&<span className="family-point-mixed"><i className="family-key-mixed" aria-hidden/><span>{L('Mixed lists','רשימות מעורבות')}: {Number(a.mixed).toLocaleString('en-US')} · <bdi dir="ltr">{share(a.mixed,ds).toFixed(digits)}%</bdi></span></span>}</div>
+  <div className="family-point-total">{status&&<span>{status}</span>}{counted&&<span><b>{Number(a.votes).toLocaleString('en-US')} {L('votes','קולות')}</b> · <bdi dir="ltr">{percentNum(share(a.votes!,ds),digits)}</bdi> · {familySeats(ds,m.selected)} {L('seats','מנדטים')}</span>}{!!a.mixed&&<span className="family-point-mixed"><i className="family-key-mixed" aria-hidden/><span>{L('Mixed lists','רשימות מעורבות')}: {Number(a.mixed).toLocaleString('en-US')} · <bdi dir="ltr">{percentNum(share(a.mixed,ds),digits)}</bdi></span></span>}</div>
   {before&&previous&&prev&&(counted&&prevCounted||mixedDelta!==null&&(!!a.mixed||!!prev.mixed))&&<p className="family-point-delta">{L('Since','מאז')} {familyDate(before,lang)}: {counted&&prevCounted&&<>{signed(a.votes!-prev.votes!)} {L('votes','קולות')} · {signed(share(a.votes!,ds)-share(prev.votes!,previous),digits)} {L('points','נקודות אחוז')} · <SeatDelta value={familySeats(ds,m.selected)-familySeats(previous,membership(f,previous.id).selected)} /> {L('seats','מנדטים')}</>}{!!(a.mixed||prev.mixed)&&mixedDelta!==null&&<>{counted&&prevCounted?' · ':''}{L('mixed lists','רשימות מעורבות')} {signed(mixedDelta)}</>}</p>}
   {!ds.officialSeats&&<p className="small muted">{L('Calculated seats · Gazette not yet verified','מנדטים מחושבים · הפרסום ברשומות טרם אומת')} <Info title={L('Seat counts','ספירת מנדטים')}>{L('Calculated from the published vote counts under this election’s rules. Gazetted seat counts are unavailable.','חושב מספירת הקולות שפורסמה לפי כללי הבחירות האלה. ספירת מנדטים שפורסמה ברשומות אינה זמינה.')}</Info></p>}
   <div className="family-point-lists">{lists.map(l=>{const member=row?.members.find(x=>x.listId===l.id),review=row?.reviewCandidates.find(x=>x.listId===l.id),mixed=member?.scope==='mixed',isCounted=m.selected.has(l.id),separate=m.mixed.has(l.id);

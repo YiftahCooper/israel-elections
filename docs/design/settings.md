@@ -68,7 +68,7 @@ The **Starter tip** row is the exception: it shows at Simple only, because the t
 | Lists & parties | List symbol, Joint lists by party, Party colour in seats, Parties with no seats, Lists with no seats, Vote counts | + Parties of seatless lists, Lists that withdrew, Order lists by, All candidates | same as Standard |
 | Seat chart | – | Layout, Colour seats by, Bloc backgrounds, Comparison chamber, List key, Dim other seats | same |
 | Numbers | Max decimal places 0·1·2·3 | same | same |
-| Editing | Mark changes since, Confirm start over | + Votes come from, Copy votes between elections as, Hover previews, Community scenarios | same |
+| Editing | Mark changes since, Confirm start over | + Joint-list split warning, Votes come from, Copy votes between elections as, Hover previews, Community scenarios | same |
 | Analysis | – | Compare with, Option previews | same |
 | Accessibility | all 5, at every level **(coord.)** | all 5 | all 5 |
 
@@ -268,13 +268,23 @@ before were lost on reload.
 **`decimals`: Max decimal places / ספרות אחרי הנקודה (מרבי)** (owner, 7 Nov)
 
 - Control: G, 0 · 1 · 2 · 3, at every level.
-- Default by level: **1 at Simple and Standard, 2 at Expert (owner)**. Levels: All.
-- (i) EN: "Percentages everywhere show at most this many. Results are still computed exactly. Next to the threshold
-  a share gets one more digit, so it never looks like it is on the other side."
-- (i) HE: "אחוזים בכל מקום מוצגים עם לכל היותר כמה ספרות. התוצאות עדיין מחושבות במדויק. ליד אחוז החסימה מוצגת ספרה
-  נוספת, כדי שהאחוז לא ייראה בצד השני שלו."
+- Default by level: **1 at Simple, 2 at Standard, 3 at Expert (owner)**. Levels: All.
+- (i) EN: "Percentages show at most this many, without trailing zeros. Tap, hover or focus one for its exact value.
+  Next to the threshold a share gets one more digit, so it never looks like it is on the other side."
+- (i) HE: "אחוזים מוצגים עם לכל היותר כמה ספרות, בלי אפסים בסוף. נגיעה, ריחוף או מיקוד מציגים את הערך המדויק. ליד
+  אחוז החסימה מוצגת ספרה נוספת, כדי שהאחוז לא ייראה בצד השני שלו."
 
 Rules for `decimals`:
+
+- **Trailing zeros are dropped** (owner, 7 Nov): "3.4%", never "3.400%". In a table column of shares, invisible
+  zeros keep the decimal points aligned; they are not read aloud or copied.
+- **Every rounded value discloses its exact value** (owner, 7 Nov: "regardless of decimal cap"). Hover (when *Popups
+  on hover* is on), keyboard focus or a tap shows it in a small popup in the top layer, so nothing moves. The value
+  is the exact decimal, or six decimals and "…" when it goes on ("33.333333…%"); it is never rounded. A value
+  already shown in full has no popup. Inside a row button the value is not a second tab stop: focusing the row
+  shows it. One component, `src/app/components/Percentage.tsx`, does this for shares and percentage-point changes
+  on every screen; `tests/percentage-boundary.test.ts` fails if a component renders a rounded percentage any other
+  way.
 
 - **It is a maximum.** No percentage or percentage-point figure on any screen has more decimals; no number anywhere
   has five or more (an unbounded float). An e2e audit (tests/e2e/decimals-audit.spec.ts) scans the overview and list
@@ -284,9 +294,8 @@ Rules for `decimals`:
   1.5 % threshold, 1.46 % at one decimal shows "1.46%", not "1.5%"; against 3.25 %, 3.4 % at no decimals shows
   "3.4%", not "3%". This is the only case in which the maximum is exceeded, and only by one digit. If even that digit
   would cross (1.4996 % shows "1.50%"), it is rounded toward the true side ("1.49%"). Where a share was shown this
-  way, its tooltip gives the exact share ("1.4600%: the exact share. One more decimal is shown so it doesn’t look
-  above the 1.5% threshold"): the list column, the list page, the figures, the charts table, the walkthrough and both
-  sides of Compare. The decimals audit allows that one extra digit only for a share within one last-digit step of a
+  way, its exact-value popup also says why ("1.46%: the exact share. One more decimal is shown so it doesn’t look
+  above the 1.5% threshold"). The decimals audit allows that one extra digit only for a share within one last-digit step of a
   threshold (1, 1.5, 2, 3.25).
   - *Owner choice:* 9.7a (this, recommended) or 9.7b (keep the maximum strictly and round toward the true side:
     "1.4%", "4%"). 9.7b is one line in `fmtPct` (src/app/format.ts) and was the rule until this change.
@@ -309,6 +318,16 @@ Rules for `decimals`:
   exact columns.
 
 ### E. Editing / עריכה
+
+**`splitWarning`: Joint-list split warning / אזהרה בפיצול רשימה משותפת**
+
+- Toggle, Standard+, default On. Both split entry points show the same reminder.
+- “Don't show again” at the split sets it Off; Settings turns it back On.
+- EN: “A vote is for the whole list. Election results do not show which party within it each voter preferred—this split is a scenario assumption.”
+- Hebrew lives once in `SplitWarning.tsx` for the separate editing pass.
+- (i) of the setting EN: "Show the scenario-assumption reminder when splitting a joint list. Turn on to see it again."
+- The reminder's own (i) quotes the Knesset Elections Law §5: “ההצבעה תהיה בעד רשימות מועמדים שפורסמו בהתאם לסעיף 65.” (in English mode followed
+  by a translation).
 
 **`voteSource`: Votes come from / הקולות מגיעים מ־** (choice)
 
@@ -544,7 +563,7 @@ Where the designs disagreed, this design chose as follows, with the reason for e
   must not override an operating-system accessibility request.
 - **Popups on hover as a toggle (Claude).** It is binary, so it is a toggle, not segmented Hover · Click.
 - **Decimals at every level, as a maximum (owner, 7 Nov).** Codex proposed a fixed 2 shown at Std+; the owner asked
-  for a 0–3 maximum, 1 by default (2 at Expert), applied to every percentage.
+  for a 0–3 maximum, 1 at Simple, 2 at Standard, 3 at Expert, applied to every percentage.
 - **Votes come from at Std+ (Claude).** ADR 0013 keeps Simple proportional. Codex proposed All.
 - **Mark changes at every level (Claude).** Saved scenarios open at Simple too. Codex proposed Std+.
 - **Withdrawn lists shown by default (Claude).** That is today's behaviour; Codex proposed Off.

@@ -1,3 +1,4 @@
+import { percentNum } from './Percentage.tsx';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { useFloating } from '../floating.tsx';
 import { electionContext, type ContextSource, type PMContest } from '../../data/electionContext.ts';
@@ -63,7 +64,7 @@ export function PMResult({ contest, onKnesset }: { contest: PMContest; onKnesset
         {contest.candidates.filter(c => c.status === 'final').map(c => {
           const share = c.votes!.value / contest.totals.valid.value * 100;
           return <div className="pm-candidate" key={c.id}>
-            <div>{lang === 'he' ? c.nameHe : c.nameEn} <strong>{num(c.votes!.value)}</strong> · {(c.publishedPercent?.value ?? share).toFixed(Math.min(digits, 2))}%</div>
+            <div>{lang === 'he' ? c.nameHe : c.nameEn} <strong>{num(c.votes!.value)}</strong> · {percentNum(c.publishedPercent?.value ?? share,digits)}</div>
             <div className="pm-track" aria-hidden="true"><span style={{ width: `${share}%` }} /><i /></div>
           </div>;
         })}

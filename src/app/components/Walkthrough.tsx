@@ -1,3 +1,4 @@
+import { percent } from './Percentage.tsx';
 import { SeatDelta } from './SeatDelta.tsx';
 import { GraphicChanges } from './GraphicChanges.tsx';
 import { EditMarker } from './EditMarker.tsx';
@@ -7,7 +8,7 @@ import type { Rational } from '../../engine/rational.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { listLabel, methodOf } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtFrac, fmtInt, fmtPct, fmtRat, pctExactNote } from '../format.ts';
+import { fmtFrac, fmtInt, fmtRat } from '../format.ts';
 import { dispatch, setState, useStore, useDigits } from '../store.ts';
 import { useGraphicReference } from '../useGraphicReference.ts';
 import { Info } from './ui.tsx';
@@ -199,7 +200,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
           <tr key={l.id} className={passes(l) ? '' : 'below'}>
             <td><ListName id={l.id} s={s} /> {statusChange(l)}{l.withdrawn ? <span className="chip">{L('withdrew', 'פרשה')}</span> : null}</td>
             <td className="n"><EditMarker s={s} path={['lists', sl.id, 'votes']} />{fmtInt(l.votes)}</td>
-            <td className="n" title={pctExactNote(l.votes, r.totalValid, digits, s.rules.thresholdPct, lang)}>{fmtPct(l.votes, r.totalValid, digits, s.rules.thresholdPct)}</td>
+            <td className="n">{percent(l.votes, r.totalValid, digits, s.rules.thresholdPct, { pad: digits })}</td>
           </tr>
         ); };
         return (
@@ -219,7 +220,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
                 </tbody>
               </table>
             </div>
-            {below.length > 0 && <p className="small">{quotaGate ? L(`Lists below one quota: ${fmtInt(belowVotes)} votes (${fmtPct(belowVotes, r.totalValid, digits)})`, `רשימות מתחת למודד אחד: ${fmtInt(belowVotes)} קולות (${fmtPct(belowVotes, r.totalValid, digits)})`) : L(`Wasted below the threshold: ${fmtInt(r.unrepresentedVotes)} votes (${fmtPct(r.unrepresentedVotes, r.totalValid, digits)})`, `קולות שלא השתתפו בחלוקה: ${fmtInt(r.unrepresentedVotes)} (${fmtPct(r.unrepresentedVotes, r.totalValid, digits)})`)} {!quotaGate && <Info term="unrepresented" />}</p>}
+            {below.length > 0 && <p className="small">{quotaGate ? (lang === 'he' ? <>{"רשימות מתחת למודד אחד: "}{fmtInt(belowVotes)}{" קולות ("}{percent(belowVotes, r.totalValid, digits)}{")"}</> : <>{"Lists below one quota: "}{fmtInt(belowVotes)}{" votes ("}{percent(belowVotes, r.totalValid, digits)}{")"}</>) : (lang === 'he' ? <>{"קולות שלא השתתפו בחלוקה: "}{fmtInt(r.unrepresentedVotes)}{" ("}{percent(r.unrepresentedVotes, r.totalValid, digits)}{")"}</> : <>{"Wasted below the threshold: "}{fmtInt(r.unrepresentedVotes)}{" votes ("}{percent(r.unrepresentedVotes, r.totalValid, digits)}{")"}</>)} {!quotaGate && <Info term="unrepresented" />}</p>}
           </div>
         );
       })()}

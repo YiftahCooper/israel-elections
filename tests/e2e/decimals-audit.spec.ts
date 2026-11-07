@@ -37,7 +37,7 @@ const offenders = (page: Page, max: number) => page.evaluate(([max, law, THRESHO
   return bad;
 }, [max, [...LAW], THRESHOLDS] as const);
 
-for (const max of [0, 1, 3]) for (const election of ['k26', 'k25', 'k1']) test(`overview and list page · ${election} · max ${max}`, async ({ page }) => {
+for (const max of [0, 1, 2, 3]) for (const election of ['k26', 'k25', 'k1']) test(`overview and list page · ${election} · max ${max}`, async ({ page }) => {
   await open(page, max, election);
   expect(await offenders(page, max)).toEqual([]);
   await page.locator('.lb-row').first().click();
@@ -45,7 +45,7 @@ for (const max of [0, 1, 3]) for (const election of ['k26', 'k25', 'k1']) test(`
   expect(await offenders(page, max)).toEqual([]);
 });
 
-for (const max of [0, 1, 2]) for (const tab of ['compare', 'security', 'structure', 'charts']) test(`${tab} · k25 with a change · max ${max}`, async ({ page }) => {
+for (const max of [0, 1, 2, 3]) for (const tab of ['compare', 'security', 'structure', 'charts']) test(`${tab} · k25 with a change · max ${max}`, async ({ page }) => {
   await open(page, max, 'k25');
   // a change gives Compare and the charts something to compare
   await page.locator('.lb-row').first().click();

@@ -1,3 +1,5 @@
+import { percentNum } from './Percentage.tsx';
+import { SplitWarning } from './SplitWarning.tsx';
 import { partyDisplayColor } from '../partyDisplayColor.ts';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
@@ -11,7 +13,7 @@ import { apportion } from '../../model/actions.ts';
 import type { Action, Scenario, SimList } from '../../model/scenario.ts';
 import { electedOf } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtPctNum } from '../format.ts';
+import { fmtInt } from '../format.ts';
 import { dispatch, dispatchMany, setPreference, setState, useDigits, useStore, useLevel, useSetting } from '../store.ts';
 import { hiddenSeatlessParty } from '../seatlessParties.ts';
 import {JointFacts} from './JointFacts.tsx';
@@ -114,7 +116,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
       {standard && (
         <div style={{ marginTop: 6 }}>
           <button className="btn small" aria-expanded={open} onClick={() => setOpen((o) => !o)}>{L('Split into separate lists', 'פיצול לרשימות נפרדות')}</button>
-          {open && <div className="joint-split">
+          {open && <div className="joint-split"><SplitWarning />
           <p className="small ink2">{L('Assumed vote shares', 'חלוקת קולות משוערת')} <Info title={L('Split assumptions', 'הנחות הפיצול')}>{L('What if these parties had run on their own? Nobody knows how the joint list’s votes would have divided, so the shares below are an assumption: by default, each party’s share of the list’s elected members. Each part must then pass the threshold on its own, and the joint list’s surplus-vote agreement is dropped. Undo restores the joint list.',
             'מה אילו המפלגות היו רצות לבד? איש אינו יודע כיצד היו מתחלקים הקולות, ולכן החלוקה שלהלן היא הנחה: כברירת מחדל, חלקה של כל מפלגה בנבחרי הרשימה. כל חלק יצטרך לעבור את אחוז החסימה בעצמו, והסכם העודפים של הרשימה יבוטל. ביטול מחזיר את הרשימה המשותפת.')}</Info></p>
           <div className="kv small">
@@ -129,7 +131,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
               </Fragment>
             ))}
           </div>
-          {Math.abs(sum - 100) > 0.05 && <p className="small" style={{ color: 'var(--warn-ink)' }}>{L(`The shares add up to ${fmtPctNum(sum, digits)}; the votes are divided in these proportions.`, `החלקים מסתכמים ב-${fmtPctNum(sum, digits)}; הקולות יחולקו ביחס הזה.`)}</p>}
+          {Math.abs(sum - 100) > 0.05 && <p className="small" style={{ color: 'var(--warn-ink)' }}>{(lang === 'he' ? <>{"החלקים מסתכמים ב-"}{percentNum(sum, digits)}{"; הקולות יחולקו ביחס הזה."}</> : <>{"The shares add up to "}{percentNum(sum, digits)}{"; the votes are divided in these proportions."}</>)}</p>}
           {unassigned > 0 && <p className="tiny muted">{L(`${unassigned} candidates assigned to lead party`, `${unassigned} מועמדים צורפו למפלגת הראש`)} <Info title={L('Candidate assignment', 'שיוך מועמדים')}>{L(`${unassigned} candidate(s) without a recorded party go with ${name(parties.find((p) => p.id === lead)!)} (the party of the list’s leader).`, `${unassigned} מועמדים שמפלגתם לא תועדה יצורפו ${hebrewPrefix('ל', name(parties.find((p) => p.id === lead)!))} (מפלגת העומד בראש הרשימה).`)}</Info></p>}
           <div className="row" style={{ gap: 6 }}>
             <button className="btn small primary" onClick={run}>{L(`Run as ${parties.length} separate lists`, `ריצה ב-${parties.length} רשימות נפרדות`)}</button>

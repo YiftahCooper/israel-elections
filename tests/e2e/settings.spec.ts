@@ -213,15 +213,16 @@ test.describe('every setting takes effect', () => {
     await expect(stats).toContainText(/\d{1,3},\d{3}.* · /);
   });
 
-  test('max decimal places: 1 at Simple and Standard, 2 at Expert, a choice at every level', async ({ page }) => {
+  test('max decimal places: 1 at Simple, 2 at Standard, 3 at Expert, a choice at every level', async ({ page }) => {
     await open(page, { level: 'simple' });
+    // k26 Likud is 20.515…%, so each cap shows its full number of digits
     const share = () => page.locator('.lb-row').first().innerText();
     await expect.poll(share).toMatch(/\d+\.\d%/);
     await gear(page).click();
     await row(page, 'level').getByRole('button', { name: 'Standard', exact: true }).click();
-    await expect.poll(share).toMatch(/\d+\.\d%/);
-    await row(page, 'level').getByRole('button', { name: 'Expert', exact: true }).click();
     await expect.poll(share).toMatch(/\d+\.\d\d%/);
+    await row(page, 'level').getByRole('button', { name: 'Expert', exact: true }).click();
+    await expect.poll(share).toMatch(/\d+\.\d\d\d%/);
     await row(page, 'decimals').getByRole('button', { name: '0', exact: true }).click();
     await row(page, 'level').getByRole('button', { name: 'Simple', exact: true }).click();
     await expect.poll(share).toMatch(/\d+%/);
