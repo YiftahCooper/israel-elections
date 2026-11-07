@@ -2,6 +2,8 @@ import { readFileSync } from 'node:fs';
 import { GOVERNMENT_SUPPORT_ROLES, type GovernmentSupport, type GovernmentParticipant, type GovernmentIndividual } from '../../../src/data/aftermath.ts';
 import { ELECTION_IDS } from '../../../src/data/schema.ts';
 import { checker, whole, type Check } from './validate.ts';
+import { CERTAINTIES } from '../../../src/data/evidence.ts';
+import { validateEvidenceDocument } from './evidence.ts';
 const member = (r: { role: string }) => r.role === 'member-with-ministries' || r.role === 'member-without-ministries';
 export function validateGovernmentSupport(value: unknown, sources: Record<string, unknown>, label: string) {
   const check: Check = checker(label);
@@ -11,7 +13,7 @@ export function validateGovernmentSupport(value: unknown, sources: Record<string
   const rows = [...g.coalition, ...individuals];
   for (const r of rows) {
     check(GOVERNMENT_SUPPORT_ROLES.includes(r.role), 'missing or invalid role');
-    check(['confirmed', 'provisional', 'unknown'].includes(r.certainty), 'missing role certainty');
+    check(CERTAINTIES.includes(r.certainty), 'missing role certainty');
     check(r.certainty === 'confirmed' || Boolean(r.note?.trim()), 'uncertain role needs explanation');
     check(r.role !== 'other' || Boolean(r.note?.trim()), 'other role needs explanation');
     check(Array.isArray(r.cites) && (r.certainty === 'unknown' || r.cites.length > 0), 'classification needs evidence');
@@ -55,6 +57,7 @@ export function validateAftermathRecords(root = 'data/meta/aftermath') {
   let governments = 0;
   for (const id of ELECTION_IDS) {
     const d = JSON.parse(readFileSync(`${root}/${id}.json`, 'utf8'));
+    validateEvidenceDocument(d, `${root}/${id}.json`);
     if (!d.government) continue;
     for (const g of [d.government, ...(d.government.changes ?? []).filter((c: any) => c.coalition)]) {
       validateGovernmentSupport(g, d.sources, `${id}/government-${g.number ?? 'change'}`); governments++;

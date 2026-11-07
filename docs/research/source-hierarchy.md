@@ -1,5 +1,9 @@
 # Source hierarchy (ranked)
 
+Evidence tiers, independence, certainty levels and conflict rules are now in
+[source-policy.md](../source-policy.md), which the data build enforces. This page keeps the language guidance,
+editorial stance and access etiquette.
+
 The order in which sources win when they disagree. It consolidates the source policy in
 [DATA.md](../DATA.md), the owner's editorial stance and the archive notes in
 [archive-access-routes.md](archive-access-routes.md). Retained sources are catalogued in

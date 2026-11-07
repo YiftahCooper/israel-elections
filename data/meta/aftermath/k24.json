@@ -818,7 +818,7 @@
         "fromLetters": "ב",
         "countedInFactionSeats": true,
         "role": "member-with-ministries",
-        "certainty": "confirmed",
+        "certainty": "provisional",
         "vote": "against",
         "cites": [
           {
@@ -826,7 +826,7 @@
             "quote": "ח\"כ עמיחי שיקלי מימינה הצביע נגד, וח\"כ סעיד אלחרומי מרע\"ם החליט ברגע האחרון להימנע"
           }
         ],
-        "note": "Faction membership role only; Chikli did not support this government and was not a minister."
+        "note": "Faction membership role only; Chikli did not support this government and was not a minister. Provisional under the source policy: one contemporary N12 roll-call report; the Knesset plenum vote record is the deciding record."
       },
       {
         "id": "said-al-harumi",
@@ -835,7 +835,7 @@
         "fromLetters": "עם",
         "countedInFactionSeats": true,
         "role": "member-without-ministries",
-        "certainty": "confirmed",
+        "certainty": "provisional",
         "vote": "abstain",
         "cites": [
           {
@@ -843,7 +843,7 @@
             "quote": "ח\"כ עמיחי שיקלי מימינה הצביע נגד, וח\"כ סעיד אלחרומי מרע\"ם החליט ברגע האחרון להימנע"
           }
         ],
-        "note": "An individual abstention is established; no prearranged abstention is inferred."
+        "note": "An individual abstention is established; no prearranged abstention is inferred. Provisional under the source policy: one contemporary N12 roll-call report; the Knesset plenum vote record is the deciding record."
       }
     ],
     "knownMemberSeats": 62
