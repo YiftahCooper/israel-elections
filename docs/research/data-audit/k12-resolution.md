@@ -83,3 +83,7 @@ On-screen/export changes for integration browser tests:
 - Reiser context: opening-day omission with unknown cause/date → documented death before polling, `1988-11-21 → 1988-10-27`.
 - Unknown-list fallback: stripped/full ID text → `Unknown list / רשימה לא ידועה` (family runtime, comparison/warnings/preferences/What if).
 - Mapam/Moledet logos: shown → withheld (`verified → unresolved` in source overlay). Unrelated 2020 Derech Eretz history link: shown → removed. Aftermath research source-kind/gap text is corrected, but aftermath remains unwired into the current UI.
+
+## 7 November 2026 — pre-release identity correction
+
+Owner direction supersedes the earlier stable-ID compatibility rule: internal list IDs now follow the corrected official ballot letters, with candidate IDs and all references updated and no aliases or migration. `12-זב` → `12-זכ`; `12-זפ` → `12-זעמ`; `12-טף` → `12-טיף`; `12-יע` → `12-יענ`; `12-מעם` → `12-מעש`; `12-קק` → `12-קם`; `12-קצץ` → `12-קמע`. Votes and seats are unchanged.

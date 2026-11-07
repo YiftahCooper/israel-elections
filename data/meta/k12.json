@@ -1,6 +1,6 @@
 {
   "electionId": "k12",
-  "generatedNote": "Research metadata (joint-list composition, blocs, colours). See data/meta/README.md and docs/research/meta-1981-2006.md. Internal list IDs predate the 6 November 2026 ballot-letter correction and remain opaque stable keys for saved scenarios, share links, candidate notes and lineage. Read letters for ballot text, never infer it from an ID.",
+  "generatedNote": "Research metadata (joint-list composition, blocs, colours). See data/meta/README.md and docs/research/meta-1981-2006.md. Internal list and candidate IDs follow the corrected ballot letters (7 November 2026; pre-release correction).",
   "lists": [
     {
       "letters": "ג",

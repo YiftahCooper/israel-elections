@@ -119,7 +119,7 @@ test('phone: the lists come straight after the chamber, before blocs and figures
 
 test('a list\'s seat count can be typed: the fewest votes that give it are moved, as one undoable edit', async ({ page }) => {
   // a first visit: nothing remembered, so the first vote edit asks where the votes come from
-  await page.addInitScript(() => { if (!sessionStorage.getItem('fresh')) { localStorage.removeItem('israel-elections:vote-source'); localStorage.removeItem('israel-elections:preferences'); sessionStorage.setItem('fresh', '1'); } });
+  await page.addInitScript(() => { if (!sessionStorage.getItem('fresh')) { localStorage.removeItem('israel-elections:preferences'); sessionStorage.setItem('fresh', '1'); } });
   await start(page); await open(page, 'Likud');
   const panel = page.locator('.side-panel');
   const seats = panel.getByRole('textbox', { name: 'Seats', exact: true });

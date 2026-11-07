@@ -81,11 +81,11 @@ it('retains all 120 Alignment candidates, contiguous ranks and the elected 44-ra
   expect(a.review.candidateChecks.completeWinningRostersVerified).toBe(true);
 });
 
-// Gazette YP 3073 pp.2829–2837; stable IDs must survive old saved/share actions.
-it('corrects ballot labels while preserving opaque list and candidate IDs', () => {
+// Gazette YP 3073 pp.2829–2837; IDs follow the corrected ballot letters.
+it('corrects ballot labels in both list and candidate IDs', () => {
   const ds = JSON.parse(readFileSync('public/data/k11.json', 'utf8'));
   const s = scenarioFromDataset(ds);
-  for (const [id, letters] of Object.entries({'11-הם':'הס','11-טן':'טס','11-פט':'כט','11-נ':'ס','11-עי':'עד'})) {
+  for (const [id, letters] of Object.entries({'11-הס':'הס','11-טס':'טס','11-כט':'כט','11-ס':'ס','11-עד':'עד'})) {
     const l = s.lists.find(x => x.id === id)!;
     expect(l.letters).toBe(letters);
     expect(l.candidates.every(c => c.id.startsWith(`${id}#`))).toBe(true);

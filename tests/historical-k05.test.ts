@@ -15,16 +15,16 @@ describe('k5: released national evidence', () => {
   });
   it('reproduces every gazetted seat with the complete sourced connections',()=>{
     const a=verifyEarlyProgress(5,{log:false});
-    expect(a.result.lists.map(l=>[a.review.lists.find(x=>(x.legacyId??`5-${x.letters}`)===l.id)!.letters,l.seats])).toEqual(Object.entries(published));
+    expect(a.result.lists.map(l=>[a.review.lists.find(x=>`5-${x.letters}`===l.id)!.letters,l.seats])).toEqual(Object.entries(published));
     expect(a.result.seatsAllocated).toBe(120);expect(a.result.warnings).toEqual([]);
     expect(a.review.agreements.complete).toBe(true);
   });
 });
 
-it('retains stable IDs while correcting gazetted letters and preserving the withdrawn roster',()=>{
+it('corrects IDs alongside gazetted letters and preserving the withdrawn roster',()=>{
   const ds=JSON.parse(readFileSync('public/data/k5.json','utf8'));
-  expect(ds.lists.find((l:any)=>l.id==='5-סס').letters).toBe('סש');
-  const democrats=ds.lists.find((l:any)=>l.id==='5-עע');
+  expect(ds.lists.find((l:any)=>l.id==='5-סש').letters).toBe('סש');
+  const democrats=ds.lists.find((l:any)=>l.id==='5-עט');
   expect([democrats.letters,democrats.nameHe,democrats.votes]).toEqual(['עט','שוחרי הדימוקרטיה',335]);
   const withdrawn=ds.lists.find((l:any)=>l.id==='5-שו');
   expect([withdrawn.withdrawn,withdrawn.votes,ds.officialSeats[withdrawn.id]]).toEqual([true,0,0]);

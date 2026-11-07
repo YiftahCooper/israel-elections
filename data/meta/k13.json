@@ -615,5 +615,5 @@
     }
   ],
   "datasetRosterConflicts": [],
-  "stableIdNote": "Internal list IDs 13-נז, 13-נס and 13-קנ predate the ballot-letter correction to נד, נכ and קן. They remain opaque stable keys for saved scenarios and references; display and export ballot letters from the letters field, never from an ID."
+  "identityNote": "7 November 2026: internal list and candidate IDs follow the corrected ballot letters; no saved-format compatibility is required before release."
 }

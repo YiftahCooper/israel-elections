@@ -26,3 +26,5 @@ Levels control visibility, not which allocation engine runs. Simple always balan
 - `src/app/store.ts`.
 - `tests/e2e/levels.spec.ts`.
 - Repository history: `98f4518, 2fd4152` (3 November 2026).
+
+7 November 2026: owner pre-release direction supersedes saved-format compatibility requirements. Corrected ballot letters now correct internal list/candidate IDs, and old browser level names are no longer migrated.

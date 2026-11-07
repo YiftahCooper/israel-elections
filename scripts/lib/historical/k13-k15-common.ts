@@ -103,16 +103,9 @@ export function verifyHistoricalProgress(id: 'k13' | 'k14' | 'k15', options: Ver
 const LIST_KEYS = ['id', 'letters', 'nameHe', 'shortHe', 'shortEn', 'sponsorsHe', 'partiesHe', 'votes', 'withdrawn', 'color', 'bloc', 'candidates',
   'candidatesSource', 'candidatesSecondary', 'candidatesTruncated', 'candidatesUnavailable', 'notesHe'];
 
-// k13 keys predate the corrected official letters; saved scenarios depend on these opaque IDs.
-// k13/k15 audits: corrected ballot letters keep their original list IDs (stable keys for saved scenarios and links).
-const LEGACY_ID_LETTERS: Record<number, Record<string, string>> = { 13: { נד: 'נז', נכ: 'נס', קן: 'קנ' }, 15: { יט: 'ט', קפ: 'קף' } };
-const keyLetters = (n: number, letters: string) => LEGACY_ID_LETTERS[n]?.[letters] ?? letters;
-
 export function historicalDataset({ review, rosters, rawSha256 }: Audit): ElectionDataset {
   const n = Number(review.id.slice(1));
   const elected = rawJson<ElectedReview>(`${review.id}/elected.reviewed.json`);
-  // Saved scenarios and links use opaque IDs established before the k15 letter correction.
-  const stableLetters = (letters: string) => keyLetters(n, letters);
   return {
     schemaVersion: 1, id: review.id, knesset: n,
     electionDate: n === 13 ? '1992-06-23' : n === 14 ? '1996-05-29' : '1999-05-17',
@@ -122,19 +115,19 @@ export function historicalDataset({ review, rosters, rawSha256 }: Audit): Electi
     // Zero geographic counts mean no geography supplied in this dataset, not an official count.
     totals: { ...review.gazetteTotals, registered: review.supplementalTotals.registered, votesCast: review.supplementalTotals.votesCast, ballotBoxes: 0, localities: 0 },
     lists: seatOrder(review.lists.map((l, i) => {
-      const id = `${n}-${stableLetters(l.letters)}`;
+      const id = `${n}-${l.letters}`;
       const roster = rosters.lists.find(r => r.letters === l.letters);
       // candidates ranked above the last elected member but absent from the notice's elected names
       const notSeated = notSeatedRanks(elected.lists.find(x => x.letters === l.letters)?.candidateRanks ?? [], (roster?.candidates ?? []).map(c => c.rank));
-      const record = listRecord(n, i, { letters: stableLetters(l.letters), nameHe: l.nameHe, votes: l.votes, withdrawn: l.withdrawn === true,
+      const record = listRecord(n, i, { letters: l.letters, nameHe: l.nameHe, votes: l.votes, withdrawn: l.withdrawn === true,
         candidates: roster?.candidates.map(c => ({ id: candidateId(id, c.rank), rank: c.rank, nameHe: c.nameHe, ...(notSeated.has(c.rank) ? { notSeated: true } : {}) })) ?? [],
         candidatesSource: roster ? (roster.sourceId ?? rosters.sourceId) : '',
         ...rosterFlags(!roster ? 'unavailable' : roster.complete ? 'complete' : 'truncated', 'explicit'),
         notesHe: [...(l.notesHe ?? []), ...(roster?.candidates ?? []).filter(c => notSeated.has(c.rank)).map(c => n === 14 && l.letters === 'אמת' && c.rank === 18 ? 'נמיר אורה (מקום 18) התפטרה ב־21 במאי 1996 (י״פ 4411 עמ׳ 3398); אינה מופיעה בין הנבחרים והדירוג המקורי נשמר.' : notSeatedNoteHe(c))] }, LIST_KEYS);
-      return { ...record, letters: l.letters };
+      return record;
     })),
-    agreements: agreementRecords(n, review.agreements.pairs.map(([a, b]) => [stableLetters(a), stableLetters(b)]), review.agreements.sourceId!),
-    blocs: [], officialSeats: officialSeatsOf(n, review.lists.map(l => ({ letters: stableLetters(l.letters), seats: l.officialSeats }))),
+    agreements: agreementRecords(n, review.agreements.pairs, review.agreements.sourceId!),
+    blocs: [], officialSeats: officialSeatsOf(n, review.lists.map(l => ({ letters: l.letters, seats: l.officialSeats }))),
     officialSeatsSourceId: review.resultsSourceId, sourceIds: Object.keys(rawSha256),
     buildInfo: { builtAt: new Date().toISOString(), rawSha256 },
   };

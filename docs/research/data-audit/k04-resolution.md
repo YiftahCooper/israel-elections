@@ -166,3 +166,7 @@ The aftermath is still a research draft, not wired into the app.
 | סיעת נכים נפגעי נאצים — הודעת התוצאות לכנסת 4 | סיעת נכים ונפגעי השואה — הודעת התוצאות לכנסת 4 |
 | רשומות — ילקוט הפרסומים 709, עמ׳ 125 | רשומות — ילקוט הפרסומים 709, עמ׳ 125–126 |
 | Reshumot — Yalkut HaPirsumim 709, p. 125 | Reshumot — Yalkut HaPirsumim 709, pp.125–126 |
+
+## 7 November 2026 — pre-release identity correction
+
+Owner direction supersedes the earlier stable-ID compatibility rule: internal list IDs now follow the corrected official ballot letters, with candidate IDs and all references updated and no aliases or migration. `4-טט` → `4-טש`; `4-סט` → `4-סש`; `4-רו` → `4-רנ`. Votes and seats are unchanged.

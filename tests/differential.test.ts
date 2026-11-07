@@ -1,3 +1,6 @@
+// 7 Nov 2026: corrected ballot-letter IDs and retired colour validation change ID-bearing
+// corpus outputs. All 708 lists retain identical votes/seats; datasets are recursively
+// identical after simultaneous ID replacement and omitting buildInfo. Rules unchanged.
 // k16 audit (6 Nov): only k16 dataset changes: two candidate spellings, first-government
 // date, logo URL, withdrawn Moreshet Avot with its approved roster and official link,
 // plus source hashes/timestamp. Zero-vote withdrawn list changes corpus allocation shape.
@@ -132,8 +135,8 @@ const EXPECTED: Record<Family, string> = {
   // merged with k3 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k4 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k5 audit fixes: combined digest = union of the separately reviewed changes.
-  allocation: '5832e3f84f7407dd38bc280e0e5c8513022db6e48566e464b44bcbc365357133',
-  analysis: '0b41ade19f938f415b693825f3600693a9e5f17e81ec7d12a6d16fb82177f30b',
+  allocation: '2bc949a3aaf91af20af8f4704c06b30fcfacf7d534d82c2bdc578d41023bf1a8',
+  analysis: 'e1e556de2f73c7ee52dbd64238835a04c50597e216baa6fdb9d2075b1be56f55',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
   // corrected names (0088 addendum: 1955 #24, 1959 #47, 2003 Shinui #14); src unchanged, other digests unchanged.
@@ -237,8 +240,8 @@ const EXPECTED: Record<Family, string> = {
   // Substituting pre-U8 k24/k25 datasets reproduces 7a7c40fc… exactly; other four digests unchanged.
   // U9: baseline comparison isolates 98 model cases to normalized appearance logs and
   // palette-preserving resets; allocation, analysis, validation and rules remain identical.
-  model: '39258ca0309ddf2702cc59f4dceb06be65e15640a41efedae3abbe8ea86d03a7',
-  validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
+  model: 'a76f9abb5642016b1ce83e0b314e6ed76538b5094ed714ea634e7ac08a5fa271',
+  validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };
 

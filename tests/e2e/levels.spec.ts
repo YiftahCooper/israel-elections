@@ -66,9 +66,9 @@ test('Expert shows every tool, including identity editing and chamber display op
   await expect(details(page).getByRole('button', { name: 'Move up' }).first()).toBeVisible();
 });
 
-test('settings saved by the two-level version open at the matching new level', async ({ page }) => {
+test('unsupported stored levels fall back to Simple without migration', async ({ page }) => {
   await start(page, { level: 'advanced' });
-  await expect(levelButton(page, 'Expert')).toHaveAttribute('aria-pressed', 'true');
+  await expect(levelButton(page, 'Simple')).toHaveAttribute('aria-pressed', 'true');
 });
 
 test('the chosen level and a dismissed hint survive a reload', async ({ page }) => {

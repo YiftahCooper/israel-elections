@@ -49,8 +49,7 @@
       "letters": "ו",
       "nameHe": "רשימת תורה ועבודה הפועל המזרחי ודתיים בלתי מפלגתיים",
       "votes": 46347,
-      "officialSeats": 8,
-      "legacyId": "2-ה"
+      "officialSeats": 8
     },
     {
       "letters": "ח",
@@ -62,8 +61,7 @@
       "letters": "טת",
       "nameHe": "אמוני ישראל אחוד ספרדים אשכנזים",
       "votes": 4038,
-      "officialSeats": 0,
-      "legacyId": "2-טח"
+      "officialSeats": 0
     },
     {
       "letters": "יד",
@@ -168,7 +166,7 @@
         "k2-results-gazette",
         "k2-candidates-gazette"
       ],
-      "evidence": "YP 181 p.1241 prints ו (46347 votes) and טת (4038 votes); YP 174 p.1145 prints \"אות הרשימה: ו\". YP 174 p.1147 heading appears טח; results-record טת controls displayed letters. Internal IDs remain 2-ה and 2-טח. YP 174 p.1142: \"המזרחי ודתיים בלתי מפלגתיים\"; p.1150: \"רשימת ספרדים ועדות המזרח ותיקים ועולים\". YP 181 table prints רשימה ספרדים, retained here as a printed variant rather than the registered name."
+      "evidence": "YP 181 p.1241 prints ו (46347 votes) and טת (4038 votes); YP 174 p.1145 prints \"אות הרשימה: ו\". YP 174 p.1147 heading appears טח; results-record טת controls displayed letters. Internal IDs remain 2-ו and 2-טת. YP 174 p.1142: \"המזרחי ודתיים בלתי מפלגתיים\"; p.1150: \"רשימת ספרדים ועדות המזרח ותיקים ועולים\". YP 181 table prints רשימה ספרדים, retained here as a printed variant rather than the registered name."
     }
   ]
 }

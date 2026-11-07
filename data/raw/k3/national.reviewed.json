@@ -79,8 +79,7 @@
       "letters": "סצ",
       "nameHe": "רשימת ספרדים ועדות המזרח, עולים, ותיקים ובלתי מפלגתיים",
       "votes": 6994,
-      "officialSeats": 0,
-      "legacyId": "3-סא"
+      "officialSeats": 0
     },
     {
       "letters": "ע",
@@ -194,7 +193,7 @@
       "sourceId": "k3-results-gazette",
       "quote": "סצ; רשימה דתית מקורית, תנועת בני תימן ודתיים בלתי מפלגתיים; ליכוד — תנועה כלכלית עממית; חקלאות ופיתוח; הרשימה הדימוקרטית לערביי ארץ-ישראל",
       "locator": "YP 432 pp.1137–1139; YP 425 pp.1013,1017,1025; YP 427 p.1053",
-      "note": "Opaque list ID 3-סא remains stable; displayed letters are סצ."
+      "note": "Opaque list ID 3-סצ remains stable; displayed letters are סצ."
     },
     {
       "sourceId": "k3-withdrawals-gazette",

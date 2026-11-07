@@ -52,3 +52,7 @@ Restoring only the baseline k3 dataset reproduced **all five original differenti
 Final check results are recorded below.
 
 Final validation: dataset build passed; nine family presets/registry/lineage passed; 26 logo overlays, 184 source records and 131 assets passed; TypeScript passed; **97 Vitest files / 923 tests passed**, including historical-k03 and all five differential families; `git diff --check` passed.
+
+## 7 November 2026 — pre-release identity correction
+
+Owner direction supersedes the earlier stable-ID compatibility rule: internal list IDs now follow the corrected official ballot letters, with candidate IDs and all references updated and no aliases or migration. `3-סא` → `3-סצ`. Votes and seats are unchanged.

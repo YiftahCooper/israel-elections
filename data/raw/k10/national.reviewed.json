@@ -54,8 +54,7 @@
       "letters": "הס",
       "nameHe": "ביטול חוק מס הכנסה",
       "gazetteVotes": 503,
-      "officialSeats": 0,
-      "legacyId": "10-הם"
+      "officialSeats": 0
     },
     {
       "letters": "ו",
@@ -79,29 +78,25 @@
       "letters": "טז",
       "nameHe": "המועצה להצלת המולדת – רשימה משותפת לכנסת",
       "gazetteVotes": 405,
-      "officialSeats": 0,
-      "legacyId": "10-טן"
+      "officialSeats": 0
     },
     {
       "letters": "טי",
       "nameHe": "תנועת הצעירים",
       "gazetteVotes": 412,
-      "officialSeats": 0,
-      "legacyId": "10-יש"
+      "officialSeats": 0
     },
     {
       "letters": "ימ",
       "nameHe": "הרשימה הערבית המאוחדת",
       "gazetteVotes": 11590,
-      "officialSeats": 0,
-      "legacyId": "10-ים"
+      "officialSeats": 0
     },
     {
       "letters": "יס",
       "nameHe": "יעד",
       "gazetteVotes": 1228,
-      "officialSeats": 0,
-      "legacyId": "10-יפ"
+      "officialSeats": 0
     },
     {
       "letters": "כה",
@@ -143,8 +138,7 @@
       "letters": "נז",
       "nameHe": "רשימת האחוה הערבית",
       "gazetteVotes": 8304,
-      "officialSeats": 0,
-      "legacyId": "10-נן"
+      "officialSeats": 0
     },
     {
       "letters": "ני",
@@ -156,8 +150,7 @@
       "letters": "נס",
       "nameHe": "הרשימה למען עליה",
       "gazetteVotes": 6992,
-      "officialSeats": 0,
-      "legacyId": "10-נכ"
+      "officialSeats": 0
     },
     {
       "letters": "נק",
@@ -175,8 +168,7 @@
       "letters": "סז",
       "nameHe": "תנועת האוהלים",
       "gazetteVotes": 545,
-      "officialSeats": 0,
-      "legacyId": "10-פז"
+      "officialSeats": 0
     },
     {
       "letters": "פש",
@@ -188,15 +180,13 @@
       "letters": "קז",
       "nameHe": "רשימת הגימלאים והקשישים בישראל",
       "gazetteVotes": 2404,
-      "officialSeats": 0,
-      "legacyId": "10-קנ"
+      "officialSeats": 0
     },
     {
       "letters": "קי",
       "nameHe": "עוצמה",
       "gazetteVotes": 839,
-      "officialSeats": 0,
-      "legacyId": "10-קן"
+      "officialSeats": 0
     },
     {
       "letters": "רצ",

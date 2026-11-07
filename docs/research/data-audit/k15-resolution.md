@@ -134,3 +134,7 @@ Recursive comparison with e543560 after canonicalizing only `15-יט` → `15-ט
 The differential harness substitutes e543560’s k15 dataset at scenarioFromDataset and reproduces all five prior digests: allocation 52d8f62f… and model 99089dfd…. The restored-key digests are allocation 5857d33b… and model 65183270…; analysis, validation and rules are unchanged. The fixture documents this narrow field diff.
 
 Follow-up verification: **95 files / 906 tests passed**, including 6 historical-k15 tests and all five differential checks. TypeScript passed after removing the now-unused ID-suffix helper variable. Family validation (9 presets), logo validation (26 overlays / 184 source records) and git diff --check passed. Final BUILD_JOBS=2 rebuild wrote **0 files, 38 unchanged**. No Playwright or push.
+
+## 7 November 2026 — pre-release identity correction
+
+Owner direction supersedes the earlier stable-ID compatibility rule: internal list IDs now follow the corrected official ballot letters, with candidate IDs and all references updated and no aliases or migration. `15-ט` → `15-יט`; `15-קף` → `15-קפ`. Votes and seats are unchanged.

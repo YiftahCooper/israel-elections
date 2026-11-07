@@ -4,7 +4,7 @@ import { ACTION_CLASSIFICATION, isFactAction, hasAppearance, hasAnalysis, factLo
 import { baselineOf, freshScenario, factionDefault, setFactionDefault } from './factionDefaults.ts';
 import { validItemAnswers, validAnswers, sourceChoice, sourceValue, type PreferenceAnswers, type PreferenceAsk, type PreferenceId } from './preferences.ts';
 import type { Family } from '../families/model.ts';
-import { migrateSavedColors, nextScenarioColor } from './scenarioIdentity.ts';
+import { nextScenarioColor } from './scenarioIdentity.ts';
 import { PRESETS, type FeatureId, type Visibility } from './features.ts';
 // Application state. Undo/redo keeps immutable scenario snapshots; saved scenarios remain action logs.
 import { useSyncExternalStore } from 'react';
@@ -18,8 +18,6 @@ import type { SourceChoice } from './voteEdit.ts';
  * consequential edits; Expert = every tool. */
 export type Level = 'simple' | 'standard' | 'expert';
 const LEVELS: Level[] = ['simple', 'standard', 'expert'];
-/** settings saved by the two-level version ('explore' | 'advanced') map onto the three levels */
-const migrateLevel = (v: unknown): Level => (v === 'advanced' ? 'expert' : v === 'explore' ? 'simple' : LEVELS.includes(v as Level) ? (v as Level) : 'simple');
 
 export interface SavedScenario { id: string; name: string; description?: string; electionId: ElectionId; savedAt: string; baseBuiltAt: string; log: Action[]; factionSplitBaseline?: boolean }
 
@@ -89,21 +87,18 @@ export async function loadElectionIndex() {
     setState({ elections: [...rows].sort((a, b) => b.date.localeCompare(a.date)) });
   } catch { /* keep the fallback */ }
 }
-/** where vote edits take their votes from: 'ask' (each time) or the remembered answer */
-const SOURCE = 'israel-elections:vote-source';
-const rememberedSource = (() => { try { return globalThis.localStorage?.getItem(SOURCE) ?? 'ask'; } catch { return 'ask'; } })();
 const ITEM_PREFERENCES_KEY = 'israel-elections:item-preferences';
 const rememberedItems = (() => { try { return validItemAnswers(JSON.parse(globalThis.localStorage?.getItem(ITEM_PREFERENCES_KEY) ?? '{}')); } catch { return {}; } })();
 const PREFERENCES_KEY = 'israel-elections:preferences';
-const rememberedPreferences = (() => { try { const raw = globalThis.localStorage?.getItem(PREFERENCES_KEY); return raw ? validAnswers(JSON.parse(raw)) : (rememberedSource === 'new' || rememberedSource === 'proportional' ? { voteSource: rememberedSource } : {}); } catch { return {}; } })();
+const rememberedPreferences = (() => { try { const raw = globalThis.localStorage?.getItem(PREFERENCES_KEY); return raw ? validAnswers(JSON.parse(raw)) : {}; } catch { return {}; } })();
 setFactionDefault(rememberedPreferences.jointSeats === 'on');
 const persisted = (() => { try { return JSON.parse(globalThis.localStorage?.getItem(LS) ?? '{}'); } catch { return {}; } })();
 
 let state: State = {
   datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, reference: null, markOfficial: persisted.markOfficial === true, past: [], future: [], selectedListId: null, blocPanel: null, tool: null, compareWith: 'auto',
   lang: persisted.lang ?? 'he', theme: persisted.theme ?? (globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
-  level: migrateLevel(persisted.level), customFeatures: persisted.customFeatures ?? null, hintDismissed: persisted.hintDismissed === true, digits: persisted.digits ?? 2, layout: 'hemicycle', colorBy: 'list', showComponentSeats: persisted.showComponentSeats !== false,
-  saved: migrateSavedColors(persisted.saved ?? []), toast: null, loadError: null, notice: null, voteSource: sourceChoice(rememberedPreferences.voteSource ?? 'proportional'), preferences: rememberedPreferences, preferenceAsk: null, preferenceFor: rememberedItems, sessions: {}, scenarioDrafts: {},
+  level: LEVELS.includes(persisted.level) ? persisted.level : 'simple', customFeatures: persisted.customFeatures ?? null, hintDismissed: persisted.hintDismissed === true, digits: persisted.digits ?? 2, layout: 'hemicycle', colorBy: 'list', showComponentSeats: persisted.showComponentSeats !== false,
+  saved: persisted.saved ?? [], toast: null, loadError: null, notice: null, voteSource: sourceChoice(rememberedPreferences.voteSource ?? 'proportional'), preferences: rememberedPreferences, preferenceAsk: null, preferenceFor: rememberedItems, sessions: {}, scenarioDrafts: {},
 };
 const listeners = new Set<() => void>();
 const emit = () => { for (const l of listeners) l(); };

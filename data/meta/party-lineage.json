@@ -1228,13 +1228,13 @@
       "listId": "11-ת"
     },
     {
-      "id": "partners-11-עי",
+      "id": "partners-11-עד",
       "from": [
         "matzad",
         "poalei-agudat-yisrael"
       ],
       "to": [
-        "vehicle-11-עי"
+        "vehicle-11-עד"
       ],
       "relation": "electoral-partner",
       "date": "1984-07-23",
@@ -1249,7 +1249,7 @@
         "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
       },
       "electionId": "k11",
-      "listId": "11-עי"
+      "listId": "11-עד"
     },
     {
       "id": "partners-12-ג",
@@ -1569,14 +1569,14 @@
       "listId": "15-עם"
     },
     {
-      "id": "partners-15-ט",
+      "id": "partners-15-יט",
       "from": [
         "herut-national-movement",
         "moledet",
         "tkuma"
       ],
       "to": [
-        "vehicle-15-ט"
+        "vehicle-15-יט"
       ],
       "relation": "electoral-partner",
       "date": "1999-05-17",
@@ -1591,7 +1591,7 @@
         "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
       },
       "electionId": "k15",
-      "listId": "15-ט"
+      "listId": "15-יט"
     },
     {
       "id": "partners-15-ד",
