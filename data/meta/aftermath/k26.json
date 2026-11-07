@@ -4,7 +4,7 @@
   "status": "reviewed",
   "reviewedAt": "2026-11-06",
   "notes": [
-    "Research record following docs/design/after-the-election.md; not wired into the app. Gaps remain explicit.",
+    "Research record following docs/design/after-the-election.md. Gaps remain explicit.",
     "Formation is in progress; no-government means no new government recorded as of the dated check, not a completed failed formation.",
     "The schema has no in-progress outcome; outcomeNote distinguishes an ongoing process. No government or term-end event is predicted."
   ],

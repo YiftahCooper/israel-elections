@@ -4,7 +4,7 @@
   "status": "reviewed",
   "reviewedAt": "2026-11-07",
   "notes": [
-    "Research draft; not wired into the application. Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
+    "Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
     "The government card describes the first cabinet. Each replacement cabinet has a full-session confidence step and a numbered government.changes entry; available replacement coalition snapshots are attached to that entry.",
     "New PDF quotations preserve the extracted text order (including OCR errors); whitespace is collapsed. Full-session sources identify the sitting; source excerpts are recoverable from the public PDF. Existing coalition OData quotes are labelled project tabulations in the source text, not purported verbatim minister lists.",
     "term.start/end delimit an election-cycle research window, not the institutional Knesset term; opening membership was 22 November 1965 and continued until 17 November 1969."
