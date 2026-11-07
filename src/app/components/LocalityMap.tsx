@@ -14,6 +14,8 @@ import type { SimList, Scenario } from '../../model/scenario.ts';
 import { allocationOf, listLabel, seatBlocsOf } from '../derive.ts';
 import { localityTotals, localityWinner, matchesLocality, nearestLocality, normalizeLocalityName } from '../locality-map-model.ts';
 import { useL, useLang } from '../i18n.ts';
+import { useStore } from '../store.ts';
+import { basemapAttribution } from '../locality-basemap-style.ts';
 import { fmtInt, fmtPct } from '../format.ts';
 
 function useJson<T>(url: string | null, empty: T) {
@@ -42,7 +44,7 @@ export function useLocalityNames(id: string, available = true) {
 export function localityName(names: LocalityNames, row: LocalityRow, index: number, lang: 'he' | 'en'): string {
   if (lang === 'he') return row.nameHe;
   if (isEnvelopeRow(row)) return 'Double envelopes';
-  return names.names[index] || row.nameHe;
+  return names.names[index] || (row.code ? `Locality ${row.code}` : 'Locality');
 }
 /** The name, marked when its English is the project's own transliteration rather than a CBS name. */
 export function LocalityName({ names, row, index }: { names: LocalityNames; row: LocalityRow; index: number }) {
@@ -84,6 +86,7 @@ const textWidth = (text: string) => {
 
 export function LocalityMap({ s, data, historicalLists, locations, names, locationError }: { s: Scenario; data: LocalityDataset; historicalLists: (SimList | null)[]; locations: LocalityLocations; names: LocalityNames; locationError: boolean }) {
   const L = useL(), lang = useLang();
+  const dark = useStore(st => st.theme === 'dark');
   const container = useRef<HTMLDivElement>(null), map = useRef<Leaflet.Map | null>(null);
   const [mode, setMode] = useState<'bloc' | 'list'>('bloc');
   const [q, setQ] = useState(''), [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -108,7 +111,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   useEffect(() => {
     if (!container.current) return;
     // Tool tabs unmount immediately; Leaflet's delayed zoom completion can outlive the map pane.
-    const m = Leaflet.map(container.current, { preferCanvas:true, scrollWheelZoom:false, zoomAnimation:false, zoomControl:false }).setView([31.7,35],7);
+    const m = Leaflet.map(container.current, { preferCanvas:true, scrollWheelZoom:false, zoomAnimation:false, zoomControl:false, minZoom:2, maxZoom:19, maxBounds:[[-85,-180],[85,180]] }).setView([31.7,35],7);
     new ZoomInPlace().addTo(m);
     map.current = m;
     // Leaflet's keyboard handler focuses the map on mousedown without preventScroll (it restores only the window's
@@ -116,15 +119,19 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     const el = container.current;
     const focusInPlace = () => { if (document.activeElement !== el) el.focus({ preventScroll: true }); };
     el.addEventListener('mousedown', focusInPlace, true);
-    let loaded = 0, failed = 0;
-    Leaflet.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:19, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>', referrerPolicy:'strict-origin-when-cross-origin' })
-      // a blocked tile server (e.g. a sandbox without a Referer) leaves a blank frame; say so instead
-      .on('tileload', () => { loaded++; if (mounted.current) setTilesFailed(false); })
-      .on('tileerror', () => { failed++; if (!loaded && failed >= 3 && mounted.current) setTilesFailed(true); })
-      .addTo(m);
+    m.attributionControl.addAttribution(basemapAttribution);
     const observer = new ResizeObserver(() => m.invalidateSize()); observer.observe(container.current);
     return () => { el.removeEventListener('mousedown', focusInPlace, true); observer.disconnect(); m.remove(); map.current = null; };
   }, []);
+  useEffect(() => {
+    const m = map.current; if (!m) return;
+    const controller = new AbortController();
+    setTilesFailed(false);
+    import('../locality-basemap.ts').then(({ addLocalityBasemap }) => {
+      if (!controller.signal.aborted) return addLocalityBasemap(m, dark, controller.signal, setTilesFailed);
+    }).catch(() => { if (!controller.signal.aborted) setTilesFailed(true); });
+    return () => controller.abort();
+  }, [dark]);
   useEffect(() => {
     const m = map.current; if (!m) return;
     const group = Leaflet.layerGroup().addTo(m);
@@ -147,16 +154,14 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     }
     return () => { group.remove(); };
   }, [placed,winners,lang,data,names]);
-  // Place names on the map in the interface language. OSM tiles label in the local script, so English gets CBS English
-  // names at every zoom; Hebrew gets them only zoomed out (<= 9), where the tiles name almost no Israeli localities,
-  // so they never duplicate the tiles' own Hebrew labels. Larger localities first, never overlapping each other.
+  // Same CBS/result keys as the table, both languages at every zoom. Larger localities first; no overlapping labels.
   useEffect(() => {
     const m = map.current, rtl = lang === 'he'; if (!m || (!rtl && !names.names.length)) return;
     const layer = Leaflet.layerGroup().addTo(m);
     const ranked = placed.map(p => ({ p, name: rtl ? p.row.nameHe : names.names[p.index], weight: p.row.registered ?? p.row.votesCast })).filter(x => x.name).sort((a, b) => b.weight - a.weight);
     const draw = () => {
       layer.clearLayers();
-      const z = m.getZoom(); if (rtl && z > 9) return;
+      const z = m.getZoom();
       const min = z <= 7 ? 150_000 : z === 8 ? 50_000 : z === 9 ? 15_000 : z === 10 ? 4_000 : z === 11 ? 1_000 : 0;
       const view = m.getBounds().pad(0.05), size = m.getSize(), taken: number[][] = [];
       for (const { p, name, weight } of ranked) {
@@ -248,10 +253,11 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     }}>{[f.properties.name,f.properties.street,f.properties.housenumber,f.properties.city,f.properties.country].filter(Boolean).join(', ')}</button>)}</div>}
     {data.id === 'k17' && <Locality2006Note />}
     <div className="locality-map-legend">{legend.map(x=><span key={x.id} title={x.title}><i style={{background:x.color}} />{x.label}</span>)}<span><i style={{background:GREY}}/>{L('Tie / unassigned / no votes','שוויון / ללא שיוך / ללא קולות')}</span></div>
+    <p className="small locality-map-line-notice"><span>{L('Boundary lines unavailable', 'קווי גבול אינם זמינים')}</span> <Info title={L('Boundary verification', 'אימות קווי הגבול')}>{L('Provider boundaries are hidden. Armistice lines, international borders and UN separation lines await independent geometry verification; their absence does not indicate a territorial claim.', 'קווי הגבול של ספק המפה מוסתרים. קווי שביתת הנשק, הגבולות הבין־לאומיים וקווי ההפרדה של האו״ם ממתינים לאימות גאומטרי עצמאי; היעדרם אינו מבטא עמדה טריטוריאלית.')}</Info></p>
     <div ref={container} className="locality-map-canvas" role="region" aria-label={L('Locality results map; use search or table for keyboard selection','מפת תוצאות ביישובים; לבחירה במקלדת השתמשו בחיפוש או בטבלה')} />
     {tilesFailed && <p className="small bad">{L('The background map could not load; the locality dots still work.', 'מפת הרקע לא נטענה; נקודות היישובים עדיין פעילות.')}</p>}
     {selected && <section className="locality-map-results" aria-live="polite" aria-label={L('Selected locality results','תוצאות היישוב הנבחר')}>
-      <h3><LocalityName names={names} row={selected} index={selectedIndex!} />{lang === 'en' && !isEnvelopeRow(selected) && <span className="locality-map-subtitle" lang="he" dir="rtl">{selected.nameHe}</span>}</h3>
+      <h3><LocalityName names={names} row={selected} index={selectedIndex!} /></h3>
       {/* why the dot has its colour: the leader, and its lead over the runner-up in this locality */}
       <p className="locality-verdict">{selectedWinner!.tied ? L('Tie', 'שוויון') : selectedWinner!.key === null || !groups.length ? L('No assigned votes', 'אין קולות משויכים') : <>
         <span className="swatch" style={{ background: groupColor(selectedWinner!.key) }} /><strong dir="auto">{groupName(selectedWinner!.key)}</strong>

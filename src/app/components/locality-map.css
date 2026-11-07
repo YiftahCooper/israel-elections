@@ -23,24 +23,18 @@
 /* data graphics read left to right in Hebrew too: share bars grow from the left */
 .locality-share { direction: ltr; }
 
-/* The basemap is context, not data: muted so party colours (greens especially) never sink into parks and forests,
-   and in dark theme inverted to a dark map instead of a bright panel inside a dark page. Only the tile pane is
-   filtered; the locality dots, labels and controls keep their true colours. */
-.locality-map-canvas.leaflet-container { background: var(--surface-2); font-family: var(--font); }
-.locality-map-canvas .leaflet-tile-pane { filter: saturate(.45); }
-[data-theme="dark"] .locality-map-canvas .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) saturate(.35) brightness(.88) contrast(.9); }
+.locality-map-canvas.leaflet-container { background: var(--surface); font-family: var(--font); }
 [data-theme="dark"] .locality-map-canvas .leaflet-bar a { background: var(--surface); color: var(--ink); border-bottom-color: var(--rule-2); }
 [data-theme="dark"] .locality-map-canvas .leaflet-bar a:hover { background: var(--surface-2); }
 [data-theme="dark"] .locality-map-canvas .leaflet-bar { border-color: var(--rule-2); }
 [data-theme="dark"] .locality-map-canvas .leaflet-control-attribution { background: rgba(23, 27, 32, .82); color: var(--ink-2); }
 [data-theme="dark"] .locality-map-canvas .leaflet-control-attribution a { color: var(--focus); }
 
-/* locality names drawn by the app in the interface language (the tiles' own labels are in the local script) */
+/* CBS/result names drawn by the app; provider symbols are removed. */
 .locality-map-label { color: var(--ink); font: 600 12px/16px var(--font); white-space: nowrap; direction: ltr; text-align: left;
   text-shadow: 0 0 2px var(--surface), 0 0 3px var(--surface), 0 0 5px var(--surface); }
 .locality-map-label.rtl { direction: rtl; text-align: right; }
 .locality-map-canvas .leaflet-tooltip .locality-map-tip { display: grid; gap: 1px; }
-.locality-map-subtitle { margin-left: 8px; /* English mode only, so always to the right */ font-size: .8em; font-weight: 400; color: var(--muted); }
 .locality-map-results h3 { margin-block: 0 4px; }
 .locality-verdict { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; margin-block: 0 8px; }
 .locality-map-facts { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; margin-block: 8px; }
@@ -52,3 +46,6 @@
 [data-theme="dark"] .locality-map-canvas .leaflet-tooltip-left::before { border-left-color: var(--surface); }
 .locality-map-tool details ul { list-style: none; padding: 0; margin-block: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
 .locality-map-tool details > summary { padding-block: 4px; min-height: 24px; cursor: pointer; }
+
+/* Full data credits must wrap inside the phone map in either interface direction. */
+.locality-map-canvas .leaflet-control-attribution { max-width: 100%; white-space: normal; direction: ltr; text-align: end; }

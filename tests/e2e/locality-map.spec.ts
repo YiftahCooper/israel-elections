@@ -4,7 +4,7 @@ import { expect, test } from '@playwright/test';
 test('locality map supports bilingual search, address lookup and table fallback', async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'en',level:'expert',hintDismissed:true})));
   // Keep this test independent of public tile/geocoding services and their traffic budgets.
-  await page.route('https://tile.openstreetmap.org/**', route => route.abort());
+  await page.route('https://tiles.openfreemap.org/**', route => route.abort());
   await page.route('https://photon.komoot.io/**', route => route.fulfill({json:{features:[{geometry:{coordinates:[34.78,32.08]},properties:{name:'Test address',city:'Tel Aviv'}}]}}));
   await page.goto('/');
   await choose(page.getByRole('button', {name:'Election',exact:true}), 'k25');
@@ -18,6 +18,9 @@ test('locality map supports bilingual search, address lookup and table fallback'
   await page.setViewportSize({width:390,height:844});
   const bounds = await page.getByRole('region', {name:/Locality results map/}).boundingBox();
   expect(bounds!.width).toBeLessThanOrEqual(390);
+  const credit = await page.locator('.leaflet-control-attribution').boundingBox();
+  expect(credit!.x).toBeGreaterThanOrEqual(bounds!.x);
+  expect(credit!.x + credit!.width).toBeLessThanOrEqual(bounds!.x + bounds!.width);
   await page.getByRole('searchbox', {name:'Find a locality'}).fill('תֵּל אָבִיב');
   await expect(page.getByRole('button', {name:/Tel Aviv.*5000/i})).toBeVisible();
   await choose(page.getByRole('button', {name:'Colour by', exact:true}), 'list');
@@ -41,12 +44,15 @@ test('locality map supports bilingual search, address lookup and table fallback'
 test('locality map explains a result, speaks English and fits the dark theme', async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'en',theme:'dark',level:'expert',hintDismissed:true})));
   // tiles blocked: the frame says the background map failed instead of staying silently blank
-  await page.route('https://tile.openstreetmap.org/**', route => route.abort());
+  await page.route('https://tiles.openfreemap.org/**', route => route.abort());
   await page.goto('/');
   await page.getByRole('tab', {name:'Localities',exact:true}).click();
   await expect(page.getByText('The background map could not load; the locality dots still work.')).toBeVisible();
-  // the basemap is darkened in dark theme; only the tiles are filtered
-  expect(await page.locator('.locality-map-canvas .leaflet-tile-pane').evaluate(e => getComputedStyle(e).filter)).toContain('invert(1)');
+  // A genuine dark vector style replaces the former inverted raster.
+  expect(await page.locator('.locality-map-canvas .leaflet-tile-pane').evaluate(e => getComputedStyle(e).filter)).toBe('none');
+  await expect(page.getByText('Boundary lines unavailable', {exact:true})).toBeVisible();
+  await expect(page.locator('.leaflet-control-attribution')).toContainText('OpenFreeMap');
+  await expect(page.locator('.leaflet-control-attribution')).toContainText('OpenMapTiles');
   // the address field is a normal input, not a grey bar
   const bg = (name: string) => page.getByRole(name === 'address' ? 'textbox' : 'searchbox', {name: name === 'address' ? 'Nearest locality to an address' : 'Find a locality'}).evaluate(e => getComputedStyle(e).backgroundColor);
   expect(await bg('address')).toBe(await bg('search'));
@@ -58,6 +64,7 @@ test('locality map explains a result, speaks English and fits the dark theme', a
   await page.getByRole('button', {name:/^Haifa \(4000\)$/}).click();
   const results = page.getByRole('region', {name:'Selected locality results'});
   await expect(results.getByRole('heading')).toContainText('Haifa');
+  expect(await results.getByRole('heading').innerText()).not.toMatch(/[\u0590-\u05ff]/);
   await expect(results.locator('.locality-verdict')).toContainText(/ahead of .+ by \d+\.\d pp \([\d,]+ votes\)/);
   await expect(results.getByRole('columnheader', {name:'Bloc'})).toBeVisible();
   await expect(results.locator('tr.sel')).toHaveCount(1);
@@ -70,7 +77,7 @@ test('locality map explains a result, speaks English and fits the dark theme', a
 
 test('zooming the locality map never scrolls the page', async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'en',level:'expert',hintDismissed:true})));
-  await page.route('https://tile.openstreetmap.org/**', route => route.abort());
+  await page.route('https://tiles.openfreemap.org/**', route => route.abort());
   await page.goto('/');
   await page.getByRole('tab', {name:'Localities',exact:true}).click();
   await expect(page.getByRole('region', {name:/Locality results map/})).toBeVisible();
@@ -90,7 +97,7 @@ test('zooming the locality map never scrolls the page', async ({ page }) => {
 
 test('2006 Hebrew map explains name placement and lists only the five unplaced localities', async ({page}) => {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'he',level:'expert',hintDismissed:true})));
-  await page.route('https://tile.openstreetmap.org/**', route => route.abort());
+  await page.route('https://tiles.openfreemap.org/**', route => route.abort());
   await page.goto('/');
   await choose(page.getByRole('button', {name:'בחירות',exact:true}), 'k17');
   await page.getByRole('tab', {name:'יישובים',exact:true}).click();
@@ -106,4 +113,42 @@ test('2006 Hebrew map explains name placement and lists only the five unplaced l
   await expect(missing).not.toContainText('מעטפות');
   await page.getByRole('button', {name:'טבלה',exact:true}).click();
   await expect(page.getByRole('button', {name:'התאמת מיקומים ב־2006',exact:true})).toBeVisible();
+});
+
+
+test('vector background loads after removing provider labels and boundaries', async ({page}) => {
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'en',level:'expert',hintDismissed:true})));
+  await page.route('https://tiles.openfreemap.org/styles/*', route => route.fulfill({json:{
+    version:8, sources:{}, layers:[{id:'background',type:'background',paint:{'background-color':'#dde2e7'}},
+      {id:'provider-place',type:'symbol',source:'missing'}, {id:'boundary_2',type:'line',source:'missing','source-layer':'boundary'}]
+  }}));
+  await page.goto('/');
+  await page.getByRole('tab', {name:'Localities',exact:true}).click();
+  await expect(page.locator('.maplibregl-canvas')).toBeVisible();
+  await expect(page.locator('.locality-map-label').filter({hasText:'Jerusalem'})).toHaveCount(1);
+  await expect(page.getByText('Boundary lines unavailable',{exact:true})).toBeVisible();
+  await expect(page.locator('.locality-map-legend')).toContainText('Tie / unassigned / no votes');
+  await expect(page.getByText('The background map could not load; the locality dots still work.')).toHaveCount(0);
+});
+
+
+test('WebGL unavailable leaves labels/search usable and cleans up when leaving the map', async ({page}) => {
+  const errors: string[] = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.addInitScript(() => {
+    localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'en',level:'expert',hintDismissed:true}));
+    const original = HTMLCanvasElement.prototype.getContext;
+    HTMLCanvasElement.prototype.getContext = function(this: HTMLCanvasElement, type: string, ...args: unknown[]) {
+      if (type.includes('webgl')) return null;
+      return original.apply(this, [type, ...args] as Parameters<typeof original>);
+    } as typeof original;
+  });
+  await page.route('https://tiles.openfreemap.org/styles/*', route => route.fulfill({json:{version:8,sources:{},layers:[{id:'bg',type:'background'}]}}));
+  await page.goto('/');
+  await page.getByRole('tab', {name:'Localities',exact:true}).click();
+  await expect(page.getByText('The background map could not load; the locality dots still work.')).toBeVisible();
+  await expect(page.locator('.locality-map-label').filter({hasText:'Jerusalem'})).toHaveCount(1);
+  await page.getByRole('tab', {name:'Overview',exact:true}).click();
+  await expect(page.locator('.locality-map-canvas')).toHaveCount(0);
+  expect(errors).toEqual([]);
 });
