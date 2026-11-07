@@ -20,6 +20,7 @@ import { useL, useLang } from '../i18n.ts';
 import { download } from '../format.ts';
 import { deleteSaved, duplicateCurrent, importScenarioJson, openImported, openSaved, replay, resetAll, scenarioKey, setState, shareLink, toast, useStore, type SavedScenario } from '../store.ts';
 import { ScenarioGallery } from './ScenarioGallery.tsx';
+import { SavedComparisons } from '../compare/SavedComparisons.tsx';
 import { electionLabel } from './TopBar.tsx';
 
 const fileName = (n: string) => (n || 'scenario').replace(/[^\p{L}\p{N}]+/gu, '_').replace(/^_+|_+$/g, '').slice(0, 60) || 'scenario';
@@ -141,6 +142,8 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
           })}
         </ul>
       </section>
+
+      <SavedComparisons />
 
       <section style={{ marginTop: 22 }}>
         <ScenarioGallery />

@@ -26,6 +26,7 @@
 - After the election: localise dates with RTL-safe ranges and numbers, use reading-direction arrows, attach help to its context, remove redundant event glyphs and avoid an unsupported coalition membership total.
 
 - After the election: reviewed recommendations, government formation, coalition and term history for all 26 elections, with sources and pending-event separation.
+- Compare: the open scenario always stays on the right with matching unchanged; an import that puts someone on two lists warns and offers a one-tap removal; saved comparisons are listed on Scenarios; the share change shows its unit (pp).
 
 - Mark custom bloc, coalition and family groupings locally as analysis while preserving official result identity and factual summaries.
 

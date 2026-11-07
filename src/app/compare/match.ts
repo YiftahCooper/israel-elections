@@ -4,7 +4,7 @@
 // their origin (originIds), as the scenario's merges, splits and added lists record it.
 import lineage from '../../../data/meta/party-lineage.json';
 import { appearances, canonicalParty } from '../../families/registry.ts';
-import type { Scenario, SimList } from '../../model/scenario.ts';
+import type { Scenario, SimCandidate, SimList } from '../../model/scenario.ts';
 
 export type MatchTag = 'same' | 'renamed' | 'joined' | 'merged' | 'split' | 'new' | 'ended' | 'check' | 'yours';
 /** Why two lists were paired (the matching panel's (i) shows the source). */
@@ -31,8 +31,9 @@ export interface MatchRow {
   tag: MatchTag;
   /** rows that came from one left list (a split): they share this id; the left numbers sit on the main row only */
   group?: string;
-  /** a split successor: its left list is shown on the group's main row ("in Religious Zionism") */
+  /** a split successor: its source list is shown on the group's main row ("in Religious Zionism"); inRight once mirrored */
   inLeft?: string;
+  inRight?: string;
   /** left lists whose relation to the right list is announced but unconfirmed (lineage pending) */
   check?: string[];
   reason: MatchReason;
@@ -196,21 +197,37 @@ export function matchRows(a: Scenario, b: Scenario, overrides: MatchOverride[] =
   return rows.map(({ leftSet: _, ...row }) => ({ ...row, key: rowKey(row.left.length ? row.left : row.inLeft ? [`in:${row.inLeft}`] : [], row.right) }));
 }
 
+/** Rows are matched from the earlier side to the later one; when the later one is drawn on the left they are mirrored.
+ *  Tags keep their historical meaning (a merger stays Merged whichever side it is drawn on). */
+export function mirrorRows(rows: MatchRow[]): MatchRow[] {
+  return rows.map(({ inLeft, inRight, ...r }) => ({ ...r, left: r.right, right: r.left, ...(inRight ? { inLeft: inRight } : {}), ...(inLeft ? { inRight: inLeft } : {}),
+    notes: r.notes.map((n) => ({ ...n, side: n.side === 'left' ? 'right' as const : 'left' as const })) }));
+}
+/** A split successor's source list on this side ("in Religious Zionism"), if any. */
+export const inOf = (row: MatchRow, side: 'left' | 'right') => side === 'left' ? row.inLeft : row.inRight;
+/** All lists of a row's group on one side, the source counted once. */
+export const groupIds = (g: MatchRow[], side: 'left' | 'right') => [...new Set(g.flatMap((x) => [...x[side], ...(inOf(x, side) ? [inOf(x, side)!] : [])]))];
+
 /** What one copy of a row moves: the source lists and the destination lists (null: this row cannot be copied alone). */
 export function copyUnit(row: MatchRow, rows: MatchRow[], direction: 'toRight' | 'toLeft'): { src: string[]; dst: string[] } | null {
   if (row.tag === 'check' || row.tag === 'new' || row.tag === 'ended') return null;
   if (row.group) {
     const g = rows.filter((x) => x.group === row.group);
-    const left = [...new Set(g.flatMap((x) => [...x.left, ...(x.inLeft ? [x.inLeft] : [])]))], right = g.flatMap((x) => x.right);
+    const left = groupIds(g, 'left'), right = groupIds(g, 'right');
     return direction === 'toRight' ? { src: left, dst: right } : { src: right, dst: left };
   }
   if (!row.left.length || !row.right.length) return null;
   return direction === 'toRight' ? { src: row.left, dst: row.right } : { src: row.right, dst: row.left };
 }
 
-/** Candidates two lists share, by Knesset member id (never by name alone): ranks "Map to…" suggestions. */
+/** A person's Knesset member record, when it is confirmed (a `probable` link is not proof of identity). Never a name. */
+export const memberKey = (c: Pick<SimCandidate, 'bio'>) => c.bio?.knesset && !c.bio.probable ? c.bio.knesset : undefined;
+/** One person: across elections by confirmed Knesset member record, otherwise by candidate id (same election). */
+export const personKey = (c: Pick<SimCandidate, 'bio' | 'id'>) => { const k = memberKey(c); return k ? `k:${k}` : `id:${c.id}`; };
+
+/** Candidates two lists share, by confirmed Knesset member record (never by name): ranks "Map to…" suggestions. */
 export function sharedCandidates(x: Pick<SimList, 'candidates'>, y: Pick<SimList, 'candidates'>): number {
-  const ids = (l: Pick<SimList, 'candidates'>) => new Set(l.candidates.map((c) => c.bio?.knesset).filter((u): u is string => !!u));
+  const ids = (l: Pick<SimList, 'candidates'>) => new Set(l.candidates.map(memberKey).filter((u): u is string => !!u));
   const a = ids(x), b = ids(y);
   let n = 0; for (const u of a) if (b.has(u)) n++;
   return n;
