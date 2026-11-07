@@ -609,3 +609,17 @@ encode their starting faction-counting choice separately from their action logs;
 opening them preserves that choice regardless of the viewer's preference. Legacy
 links/saves without it retain the previous off baseline. Workspace restore retains
 the same metadata. The preference itself never enters History.
+
+
+### Constituent display colours (7 November)
+
+With party colours enabled for a joint list counted by party, every seat with a recorded
+constituent identity has an inner dot, including the lead party. The outer ring retains
+the list colour. `partyDisplayColor` resolves the whole list deterministically, retaining
+supplied colours when distinguishable and deriving missing or colliding display colours.
+Opaque dots have at least 3:1 contrast and ΔE00 20 against their ring; sibling dots have
+ΔE00 20 separation. The same per-list colours appear in both themes, legends, hover keys,
+reference/Compare chambers, chart cells, list/party bars, candidate tints, family details,
+bloc-member pieces and exports. Colour research and confidence metadata remain unchanged;
+the display-colour explanation stays behind the existing settings (i) and in SVG descriptions.
+Creating separate ballot lists retains the existing whole-chamber colour policy.

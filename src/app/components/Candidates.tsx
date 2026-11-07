@@ -1,9 +1,9 @@
+import { partyDisplayColor } from '../partyDisplayColor.ts';
 import { CandidateName } from './CandidateName.tsx';
 import {romanize} from '../../data/names.ts';
 import { StartFrom } from './StartFrom.tsx';
 import { useDisclosure } from './Feature.tsx';
 import { useMemo, useState } from 'react';
-import { componentColours } from '../newListColour.ts';
 import { ArrowDown, ArrowUp, Pencil, Plus, X } from 'lucide-react';
 import type { CandidateBio } from '../../data/schema.ts';
 import type { SimCandidate, SimList } from '../../model/scenario.ts';
@@ -25,7 +25,7 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
   const c = l.candidates;
   const leadParty = c.find((x) => x.partyId)?.partyId;
   // component parties' rows take the colour that party has everywhere else (its own, or a distinguishable variant)
-  const colourOf = useMemo(() => (l.parties?.length ?? 0) > 1 ? componentColours(l.parties!, leadParty, l.color, (s?.lists ?? []).filter((x) => x.id !== l.id && !x.withdrawn).map((x) => x.color)) : {}, [l, leadParty, s?.lists]);
+  const colourOf = useMemo(() => Object.fromEntries((l.parties ?? []).map(p => [p.id, partyDisplayColor(l, p.id)])), [l]);
 
   const commit = (next: SimCandidate[], note: string) => dispatch({ type: 'candidates', listId: l.id, candidates: next, note });
   const move = (from: number, to: number) => {

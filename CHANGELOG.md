@@ -2,6 +2,8 @@
 
 ## 6 November 2026 — data audit
 
+- Give every joint-list party a visible seat dot and consistent, contrast-checked display colours across charts, keys, details and exports.
+
 - Give bloc regions clean shared edges and contrast-checked borders in Arc, Blocks, reference chambers, legend keys and exports.
 
 - Mark custom bloc, coalition and family groupings locally as analysis while preserving official result identity and factual summaries.

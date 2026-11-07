@@ -1,3 +1,4 @@
+import { partyDisplayColor } from '../partyDisplayColor.ts';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { SeatDelta, SeatEffects } from './SeatDelta.tsx';
 import { NumericStepper } from './NumericStepper.tsx';
@@ -353,7 +354,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
             <label className="field">{L('Short name (English)', 'שם באנגלית')}<TextField value={l.shortEn ?? ''} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { shortEn: v || null } })} /></label>
             <label className="field">{L('Ballot letters', 'אותיות הרשימה')}<EditMarker s={s} path={['lists', l.id, 'letters']} /><TextField value={l.letters} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { letters: v } })} /></label>
             <label className="field">{L('Colour', 'צבע')}<input type="color" value={l.color} onChange={(e) => dispatch({ type: 'setListMeta', listId: l.id, patch: { color: e.target.value } })} /></label>
-            {l.parties?.map(p=><label className="field" key={p.id}>{lang==='he'?p.nameHe:p.nameEn}<input aria-label={L('Party colour: ','צבע מפלגה: ')+(lang==='he'?p.nameHe:p.nameEn)} type="color" value={p.color??l.color} onChange={e=>dispatch({type:'setPartyColor',listId:l.id,partyId:p.id,color:e.target.value})}/></label>)}
+            {l.parties?.map(p=><label className="field" key={p.id}>{lang==='he'?p.nameHe:p.nameEn}<input aria-label={L('Party colour: ','צבע מפלגה: ')+(lang==='he'?p.nameHe:p.nameEn)} type="color" value={partyDisplayColor(l, p.id)} onChange={e=>dispatch({type:'setPartyColor',listId:l.id,partyId:p.id,color:e.target.value})}/></label>)}
             <button className="btn small" onClick={()=>dispatch({type:'resetColors'})}>{L('Reset colours','איפוס צבעים')}</button>
             <label className="field" style={{ gridColumn: '1 / -1' }}>{L('Full name', 'שם מלא')}<EditMarker s={s} path={['lists', l.id, 'nameHe']} /><TextField value={l.nameHe} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { nameHe: v } })} /></label>
           </div>

@@ -87,11 +87,18 @@ test('joint-list parties without a colour of their own are told apart on candida
   await expect(component).toBeVisible();
   const partyColour = await component.evaluate(e => getComputedStyle(e).getPropertyValue('--c').trim());
   expect(partyColour.toLowerCase()).not.toBe(listColour.toLowerCase());
+  const displayColours = await panel.locator('.party-row .slip').evaluateAll(els => els.map(el => getComputedStyle(el).getPropertyValue('--c').trim()));
+  expect(new Set(displayColours).size).toBe(2);
+  expect(displayColours).toContain(partyColour);
   await panel.getByRole('button', { name: 'Split into separate lists', exact: true }).click();
   await panel.getByRole('button', { name: 'Run as 2 separate lists', exact: true }).click();
-  const swatches = await page.getByRole('region', { name: 'Lists' }).locator('.lb-row').evaluateAll(rows => rows.map(r => r.querySelector('.slip')?.getAttribute('style') ?? ''));
-  const parts = swatches.filter(st => st.includes(listColour) || st.includes(partyColour));
-  expect(new Set(parts).size).toBe(2);
+  // New ballot lists retain the existing standalone palette policy; their fills are
+  // not dots backed by a list-colour ring. Both resulting parties remain distinct.
+  const parts = page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: /^(Agudat Yisrael|Degel HaTorah)$/, exact: true });
+  await expect(parts).toHaveCount(2);
+  const colours = await parts.evaluateAll(rows => rows.map(r => getComputedStyle(r.querySelector('.slip')!).getPropertyValue('--c').trim()));
+  expect(new Set(colours).size).toBe(2);
+  expect(colours).toContain(listColour);
 });
 
 test('a short picker has no search box; choosing the option in force is not an edit', async ({ page }) => {
