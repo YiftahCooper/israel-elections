@@ -63,7 +63,7 @@ export function scanDocument(file: string, doc: any, listLookup: Record<string, 
     if (typeof v.status === 'string' && /unknown|unresolved|missing|unavailable/.test(v.status)) addHere('unknown', `Status: ${v.status}`, '.status');
     if (typeof v.status === 'string' && /pending/.test(v.status)) addHere('pending', `Status: ${v.status}`, '.status');
     if (/classificationEvidence$/.test(path) && !['inferred', 'unverified'].includes(v.status)) addHere('inferred', 'Family placement is an editorial classification, even when party identity is documented');
-    if (/conflicts?\[\d+\]$/i.test(path) && !/^(resolved|closed|accepted)$/.test(v.status ?? '')) addHere('conflict', v.note ?? v.reason ?? v.description ?? compact(v));
+    if (/conflicts?\[\d+\]$/i.test(path) && !/\.resolved[^.\[]*conflicts?\[/i.test(path) && !/^(resolved|closed|accepted)$/.test(v.status ?? '')) addHere('conflict', v.note ?? v.reason ?? v.description ?? compact(v));
     if (/pending\[\d+\]|reviewCandidates\[\d+\]/.test(path)) addHere('pending', v.reason ?? v.note ?? 'Pending evidence review');
     // Count underlying URLs/families, never citation-array length. Aliased copies collapse.
     if ((v.cites || Array.isArray(v.sources) || v.sourceId || v.sourceIds || v.source) && sources.length === 1 && !/(?:sources|cites)\[\d+\]$|\.source$/.test(path))

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "electionId": "k14",
   "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "reviewedAt": "2026-11-07",
   "notes": [
     "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
     "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
@@ -84,6 +84,14 @@
       "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
       "kind": "archival",
       "accessed": "2026-11-05"
+    },
+    "lat1996-confidence": {
+      "url": "https://www.latimes.com/archives/la-xpm-1996-06-19-mn-16510-story.html",
+      "publisher": "Marjorie Miller / Los Angeles Times, 19 June 1996",
+      "kind": "archival",
+      "accessed": "2026-11-07",
+      "evidenceFamily": "lat1996-confidence",
+      "via": "Bylined Times staff reporting, distinct from existing Edward Cody / Washington Post account; public HTML fetched with stipulated User-Agent and body read."
     }
   },
   "results": {
@@ -125,6 +133,10 @@
           {
             "source": "vote1996",
             "quote": "The new government was endorsed by a vote of 62-50"
+          },
+          {
+            "source": "lat1996-confidence",
+            "quote": "a parliamentary vote of 62 to 50"
           }
         ],
         "votes": {

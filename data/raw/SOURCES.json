@@ -6338,5 +6338,18 @@
     "retrievedAt": "2026-11-07",
     "bytes": 2553,
     "sha256": "4913d6b7314fedf9b556022626b1b860e32e4cab7dd8bb3642e95bf6ef6f6107"
+  },
+  {
+    "id": "d3-event-corroboration-review",
+    "file": "research/d3-event-corroboration.reviewed.json",
+    "url": "https://www.washingtonpost.com/archive/politics/1981/08/06/knesset-returns-begin-coalition-to-power-by-3-votes/0451c65a-375a-4185-bb2e-0e0e81702f71/",
+    "publisher": "Independently authored contemporary reporting, per-source credits in the extraction",
+    "publisherEn": "Independently authored contemporary reporting, per-source credits in the extraction",
+    "official": false,
+    "description": "Reviewed minimal claim-level corroboration of government events; existing official parliamentary extractions retained and cited separately.",
+    "method": "reviewed-extraction",
+    "retrievedAt": "2026-11-07",
+    "bytes": 11954,
+    "sha256": "a74e67c9690d6d33bb451199175b0450fdb467ecb7565fecb559b04504fe2923"
   }
 ]

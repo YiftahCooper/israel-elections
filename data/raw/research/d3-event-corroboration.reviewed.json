@@ -1,0 +1,297 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-07",
+  "scope": "Eight independently corroborated government events; primary speech explicitly distinguished from its documentary mirror",
+  "claims": [
+    {
+      "id": "wp1981-confidence",
+      "electionId": "k10",
+      "date": "1981-08-05",
+      "eventType": "confidence-vote",
+      "status": "documented",
+      "sources": {
+        "plenum10": {
+          "url": "https://fs.knesset.gov.il/10/Plenum/10_ptm_529613.pdf",
+          "publisher": "Knesset, plenum 5 August 1981",
+          "kind": "official",
+          "accessed": "2026-11-05"
+        },
+        "wp1981-confidence": {
+          "url": "https://www.washingtonpost.com/archive/politics/1981/08/06/knesset-returns-begin-coalition-to-power-by-3-votes/0451c65a-375a-4185-bb2e-0e0e81702f71/",
+          "publisher": "William Claiborne / The Washington Post, 6 August 1981",
+          "kind": "archival",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "wp1981-confidence",
+          "via": "Bylined contemporary reporting; body opened. Corroborates the existing official plenum extraction."
+        }
+      },
+      "cites": [
+        {
+          "source": "plenum10",
+          "quote": "61 בעד הבעת אמון בממשלה החדשה"
+        },
+        {
+          "source": "plenum10",
+          "quote": "נגד 58"
+        },
+        {
+          "source": "wp1981-confidence",
+          "quote": "The 61-to-58 vote came shortly before midnight"
+        }
+      ]
+    },
+    {
+      "id": "wp1983-mandate",
+      "electionId": "k10",
+      "date": "1983-09-21",
+      "eventType": "mandate-given",
+      "status": "documented",
+      "sources": {
+        "plenum1983": {
+          "url": "https://fs.knesset.gov.il/10/Plenum/10_ptm_530067.pdf",
+          "publisher": "Knesset, plenum 10 October 1983",
+          "kind": "official",
+          "accessed": "2026-11-05"
+        },
+        "wp1983-mandate": {
+          "url": "https://www.washingtonpost.com/archive/politics/1983/09/22/israels-president-asks-foreign-minister-shamir-to-form-a-government/ee12dd33-daef-41b8-98ca-548ffeb0f692/",
+          "publisher": "Edward Walsh / The Washington Post, 22 September 1983",
+          "kind": "archival",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "wp1983-mandate",
+          "via": "Bylined contemporary reporting; body opened. Dateline 21 September; supports the existing official plenum extraction."
+        }
+      },
+      "cites": [
+        {
+          "source": "plenum1983",
+          "quote": "כי הטלתי היום את התפקיד להרכיב ממשלה על חבר הכנסת יצחק שמיר"
+        },
+        {
+          "source": "wp1983-mandate",
+          "quote": "was formally asked by President Chaim Herzog"
+        }
+      ]
+    },
+    {
+      "id": "wp1983-confidence",
+      "electionId": "k10",
+      "date": "1983-10-10",
+      "eventType": "confidence-vote",
+      "status": "documented",
+      "sources": {
+        "plenum1983": {
+          "url": "https://fs.knesset.gov.il/10/Plenum/10_ptm_530067.pdf",
+          "publisher": "Knesset, plenum 10 October 1983",
+          "kind": "official",
+          "accessed": "2026-11-05"
+        },
+        "wp1983-confidence": {
+          "url": "https://www.washingtonpost.com/archive/politics/1983/10/11/shamir-takes-office-as-economic-crisis-mounts/d10e3f0c-1c60-4a22-9b93-c9e12da74030/",
+          "publisher": "Edward Walsh / The Washington Post, 11 October 1983",
+          "kind": "archival",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "wp1983-confidence",
+          "via": "Bylined contemporary reporting; body opened. Dateline 10 October; independently corroborates the official plenum extraction."
+        }
+      },
+      "cites": [
+        {
+          "source": "plenum1983",
+          "quote": "ב60 קולות בעד ו53 נגד הוחלט להביע אמון בממשלה"
+        },
+        {
+          "source": "wp1983-confidence",
+          "quote": "was endorsed by a 60-to-53 vote"
+        }
+      ]
+    },
+    {
+      "id": "lat1996-confidence",
+      "electionId": "k14",
+      "date": "1996-06-18",
+      "eventType": "confidence-vote",
+      "status": "documented",
+      "sources": {
+        "vote1996": {
+          "url": "https://www.washingtonpost.com/archive/politics/1996/06/19/israeli-cabinet-is-forged-after-tense-wrangling/2302656f-2291-4a73-860a-5c4884dea8b7/",
+          "publisher": "The Washington Post, 19 June 1996",
+          "kind": "secondary",
+          "accessed": "2026-11-05",
+          "via": "Opened full article with web tool; local HTTP request timed out. Excerpt checked against article text."
+        },
+        "lat1996-confidence": {
+          "url": "https://www.latimes.com/archives/la-xpm-1996-06-19-mn-16510-story.html",
+          "publisher": "Marjorie Miller / Los Angeles Times, 19 June 1996",
+          "kind": "archival",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "lat1996-confidence",
+          "via": "Bylined Times staff reporting, distinct from existing Edward Cody / Washington Post account; public HTML fetched with stipulated User-Agent and body read."
+        }
+      },
+      "cites": [
+        {
+          "source": "vote1996",
+          "quote": "The new government was endorsed by a vote of 62-50"
+        },
+        {
+          "source": "lat1996-confidence",
+          "quote": "a parliamentary vote of 62 to 50"
+        }
+      ]
+    },
+    {
+      "id": "lemonde1999-confidence",
+      "electionId": "k15",
+      "date": "1999-07-06",
+      "eventType": "confidence-vote",
+      "status": "documented",
+      "sources": {
+        "jta1999vote": {
+          "url": "https://www.jta.org/1999/07/06/lifestyle/barak-pledges-to-be-peacemaker-as-he-takes-prime-ministers-oath",
+          "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
+          "kind": "archival",
+          "accessed": "2026-11-05"
+        },
+        "lemonde1999-confidence": {
+          "url": "https://scholar.lib.vt.edu/InterNews/LeMonde/issues/1999/lm990708.pdf",
+          "publisher": "Georges Marion / Le Monde, 8 July 1999, p.5; Virginia Tech public archive",
+          "kind": "archival",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "lemonde1999-confidence",
+          "via": "Original PDF p.5 visually inspected. Byline Georges Marion, Jerusalem correspondent. Independent of JTA. Vote on 6 July and office handover on 7 July are distinguished."
+        }
+      },
+      "cites": [
+        {
+          "source": "jta1999vote",
+          "quote": "the new Israeli government and policy guidelines were approved by the Knesset"
+        },
+        {
+          "source": "lemonde1999-confidence",
+          "quote": "par une majorité de 75 voix contre 29"
+        }
+      ]
+    },
+    {
+      "id": "twi2001-confidence",
+      "electionId": "k15",
+      "date": "2001-03-07",
+      "eventType": "confidence-vote",
+      "status": "documented",
+      "sources": {
+        "vote2001": {
+          "url": "https://www.chron.com/news/nation-world/article/sharon-takes-over-in-israel-2001027.php",
+          "publisher": "Houston Chronicle News Services, 8 March 2001",
+          "kind": "secondary",
+          "accessed": "2026-11-05",
+          "via": "Opened full article with web tool; local HTTP response was a JavaScript challenge and was not used."
+        },
+        "twi2001-confidence": {
+          "url": "https://www.washingtoninstitute.org/policy-analysis/israels-new-sharon-government",
+          "publisher": "David Makovsky / Washington Institute for Near East Policy, 7 March 2001",
+          "kind": "academic",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "twi2001-confidence",
+          "via": "Bylined contemporary policy analysis; public body opened. Independent of existing Associated Press report via Houston Chronicle. Used for tally/date only, not political interpretation."
+        }
+      },
+      "cites": [
+        {
+          "source": "vote2001",
+          "quote": "by a vote of 72-21, with 27 members absent"
+        },
+        {
+          "source": "twi2001-confidence",
+          "quote": "by a vote 72 to 21"
+        }
+      ]
+    },
+    {
+      "id": "wp2006-confidence",
+      "electionId": "k17",
+      "date": "2006-05-04",
+      "eventType": "confidence-vote",
+      "status": "documented",
+      "sources": {
+        "vote2006": {
+          "url": "https://www.ynet.co.il/articles/0,7340,L-3247196,00.html",
+          "publisher": "Ynet, אילן מרסיאנו, 5 May 2006",
+          "kind": "secondary",
+          "accessed": "2026-11-06"
+        },
+        "wp2006-confidence": {
+          "url": "https://www.washingtonpost.com/archive/politics/2006/05/05/olmert-sworn-in-restates-goal-span-classbankheadevacuation-of-west-bank-settlements-to-proceed-israeli-premier-confirmsspan/464722e2-2117-4829-ab53-94729342b0d9/",
+          "publisher": "Scott Wilson / The Washington Post, 5 May 2006",
+          "kind": "archival",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "wp2006-confidence",
+          "via": "Bylined contemporary staff reporting; public body opened. Dateline 4 May; independently corroborates the existing Ynet report."
+        }
+      },
+      "cites": [
+        {
+          "source": "vote2006",
+          "quote": "ברוב של 65 ח״כים מול 49 נגד ו-4 נעדרים אישרה אמש (יום ה׳) הכנסת את הממשלה ה-31"
+        },
+        {
+          "source": "wp2006-confidence",
+          "quote": "a vote of 65 to 49"
+        }
+      ]
+    },
+    {
+      "id": "olmert2006-primary-speech",
+      "electionId": "k17",
+      "date": "2006-04-06",
+      "eventType": "mandate-given",
+      "status": "documented",
+      "sources": {
+        "recommendations-research-1": {
+          "url": "https://www.globes.co.il/news/article.aspx?did=1000081213",
+          "publisher": "Globes",
+          "kind": "secondary",
+          "accessed": "2026-11-05"
+        },
+        "olmert2006-primary-speech": {
+          "url": "https://passia.org/media/filer_public/3a/d7/3ad74f64-2abf-405d-b4c2-a18da161b98c/cd_vol8.pdf",
+          "publisher": "Ehud Olmert, address to the Knesset, 4 May 2006; reproduced in PASSIA, Documents on Palestine VIII (2007), p.118",
+          "kind": "official",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "olmert20060504-speech",
+          "via": "Primary speech reproduced by an academic documentary collection; not an official host. Relevant passage at PDF page 136/index 135 read. Original PMO URL https://www.gov.il/en/pages/speechkness040506 returned 403; no bypass attempted. Mirror and original are one evidence family."
+        }
+      },
+      "cites": [
+        {
+          "source": "recommendations-research-1",
+          "quote": "78 מחברי הכנסת הבאה תמכו במועמדותו של אולמרט"
+        },
+        {
+          "source": "olmert2006-primary-speech",
+          "quote": "On April 6, 2006, the President assigned me the task of forming the Government."
+        }
+      ]
+    }
+  ],
+  "downloads": [
+    {
+      "scratchFile": "lemonde-19990708.pdf",
+      "sha256": "ae9ad5fcbed2cb8bebdff8c8f05741983bdc8a42b4fa491e24460abb481d85e6",
+      "bytes": 11333694,
+      "retention": "Working copy; source URL and selected evidence retained in this record"
+    },
+    {
+      "scratchFile": "lat-19960619.html",
+      "sha256": "79e4830361bfeba2c7cf702a574ee5754f66e08c07488ad98d14987efa13806e",
+      "bytes": 493455,
+      "retention": "Working copy; source URL and selected evidence retained in this record"
+    },
+    {
+      "scratchFile": "irish-20060406.html",
+      "sha256": "fdff0ff867e665fc91840307a6dea03c749cbcc9567b47d77fcc575543f286d4",
+      "bytes": 449453,
+      "retention": "Working copy; source URL and selected evidence retained in this record"
+    }
+  ]
+}

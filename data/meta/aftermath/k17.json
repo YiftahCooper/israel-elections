@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "electionId": "k17",
   "status": "pilot",
-  "reviewedAt": "2026-11-06",
+  "reviewedAt": "2026-11-07",
   "notes": [
     "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
     "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
@@ -119,6 +119,22 @@
       "publisher": "Knesset OData, PersonToPositionID 3385 / 4613 / 4622",
       "kind": "official",
       "accessed": "2026-11-06"
+    },
+    "wp2006-confidence": {
+      "url": "https://www.washingtonpost.com/archive/politics/2006/05/05/olmert-sworn-in-restates-goal-span-classbankheadevacuation-of-west-bank-settlements-to-proceed-israeli-premier-confirmsspan/464722e2-2117-4829-ab53-94729342b0d9/",
+      "publisher": "Scott Wilson / The Washington Post, 5 May 2006",
+      "kind": "archival",
+      "accessed": "2026-11-07",
+      "evidenceFamily": "wp2006-confidence",
+      "via": "Bylined contemporary staff reporting; public body opened. Dateline 4 May; independently corroborates the existing Ynet report."
+    },
+    "olmert2006-primary-speech": {
+      "url": "https://passia.org/media/filer_public/3a/d7/3ad74f64-2abf-405d-b4c2-a18da161b98c/cd_vol8.pdf",
+      "publisher": "Ehud Olmert, address to the Knesset, 4 May 2006; reproduced in PASSIA, Documents on Palestine VIII (2007), p.118",
+      "kind": "official",
+      "accessed": "2026-11-07",
+      "evidenceFamily": "olmert20060504-speech",
+      "via": "Primary speech reproduced by an academic documentary collection; not an official host. Relevant passage at PDF page 136/index 135 read. Original PMO URL https://www.gov.il/en/pages/speechkness040506 returned 403; no bypass attempted. Mirror and original are one evidence family."
     }
   },
   "results": {
@@ -266,6 +282,10 @@
           {
             "source": "recommendations-research-1",
             "quote": "78 מחברי הכנסת הבאה תמכו במועמדותו של אולמרט"
+          },
+          {
+            "source": "olmert2006-primary-speech",
+            "quote": "On April 6, 2006, the President assigned me the task of forming the Government."
           }
         ],
         "person": "olmert"
@@ -279,6 +299,10 @@
           {
             "source": "vote2006",
             "quote": "ברוב של 65 ח״כים מול 49 נגד ו-4 נעדרים אישרה אמש (יום ה׳) הכנסת את הממשלה ה-31"
+          },
+          {
+            "source": "wp2006-confidence",
+            "quote": "a vote of 65 to 49"
           }
         ],
         "votes": {

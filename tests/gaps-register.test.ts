@@ -66,3 +66,11 @@ it('does not flag each citation as a separate single-source event', () => {
   expect(rows).toHaveLength(1);
   expect(rows[0].item).toContain('consultations 1992-06-28');
 });
+it('keeps resolved roster corrections out of the open conflict queue', () => {
+  const rows = scanDocument('data/meta/k10.json', { electionId: 'k10',
+    resolvedRosterConflicts: [{ letters: 'אמת', rank: 17, resolution: 'transcription error corrected', resolvedOn: '2026-11-06' }],
+    conflicts: [{ id: 'open', status: 'unresolved' }, { id: 'closed', status: 'resolved' }],
+  }).filter(r => r.kind === 'conflict');
+  expect(rows).toHaveLength(1);
+  expect(rows[0].item).toContain('open');
+});

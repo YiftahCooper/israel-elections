@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "inputDigest": "994eb2152beea26c1dcc1e7ea276524f7fc6e981caec0d487dab13b6cf346ab3",
+  "inputDigest": "ca95eb181efbd2a8a789a2cf452a7884497540eb1a03186d8984526c9cd7b5ed",
   "inventory": [
     {
       "file": "data/meta/README.md",
@@ -12,7 +12,7 @@
     },
     {
       "file": "data/meta/aftermath/k10.json",
-      "sha256": "ed3befb44026d112d038427b203969a884aab78e5253beb08658c53d9bf1b94d"
+      "sha256": "5462958915a92bafc361e1dd2123a951b1e85b632651e50277058f4145ad0e9f"
     },
     {
       "file": "data/meta/aftermath/k11.json",
@@ -28,11 +28,11 @@
     },
     {
       "file": "data/meta/aftermath/k14.json",
-      "sha256": "7b9138d9b06eac5a63b38badff95a8a303ca8765d2a8dc78a1ef28d6be1fe5fb"
+      "sha256": "5aa47fc02ede6451856028fceeb290cf0852a18d62a6d61a3d249211cbd91983"
     },
     {
       "file": "data/meta/aftermath/k15.json",
-      "sha256": "2b85767eec700579a9f81fbf3b44b4efbbb124ce0a1663b365ab6e17eab6f7f0"
+      "sha256": "aa606b8e8d68bd8a44bb4af605bd5afabb7a1271353c10d366109cca78382cf3"
     },
     {
       "file": "data/meta/aftermath/k16.json",
@@ -40,7 +40,7 @@
     },
     {
       "file": "data/meta/aftermath/k17.json",
-      "sha256": "4adc4ba3cde517e06f6c45a002f2e7289ba13ad2f6ea6526a83010663f56cba6"
+      "sha256": "9f8b90fad5aadb4be74e68c0e1a2ca85657d0566fdfe0fba93894d645456243d"
     },
     {
       "file": "data/meta/aftermath/k18.json",
@@ -632,7 +632,7 @@
     },
     {
       "file": "data/raw/SOURCES.json",
-      "sha256": "5f26d98e1224011565307550aaf468f1bf35ea5a6f840729e5beba6b137a4945"
+      "sha256": "90bc822734044523e293ca6fb09dd6ffc6080ffe06c6401861e349d8ff82c745"
     },
     {
       "file": "data/raw/bios/hewiki-evidence.json",
@@ -2487,6 +2487,10 @@
       "sha256": "4913d6b7314fedf9b556022626b1b860e32e4cab7dd8bb3642e95bf6ef6f6107"
     },
     {
+      "file": "data/raw/research/d3-event-corroboration.reviewed.json",
+      "sha256": "a74e67c9690d6d33bb451199175b0450fdb467ecb7565fecb559b04504fe2923"
+    },
+    {
       "file": "data/raw/research/huji-election-catalog.html",
       "sha256": "7ef70851b823a5dfc84a913d87e6abd726d000578c31369cc1fa48481b61fbb3"
     },
@@ -3426,8 +3430,8 @@
   "counts": {
     "unknown": 6833,
     "missing-field": 283,
-    "conflict": 31,
-    "single-source": 2184,
+    "conflict": 15,
+    "single-source": 2176,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1164,
@@ -36909,23 +36913,6 @@
       "occurrences": 1
     },
     {
-      "key": "5c2e0a2e2a14452f51ac1501",
-      "election": "k7",
-      "letters": "אמת",
-      "name": "המערך — מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים",
-      "item": "rank 29 / $.resolvedRosterConflicts[*]",
-      "kind": "conflict",
-      "uncertainty": "{\"letters\":\"אמת\",\"rank\":29,\"previousDatasetName\":\"רייזר-ששון צבי\",\"datasetName\":\"דינשטיין צבי\",\"resolution\":\"transcription error corrected\",\"evidence\":\"YP 1563 p. 207; YP 1573 p. 434\",\"resolvedOn\":\"2026-11-04\",\"record\":\"docs/decisions/0088-roster-corrections-and-odata-audit.md\"}",
-      "sources": [],
-      "nextSource": "CEC approved candidate gazette and official elected-member notice",
-      "status": "open",
-      "file": "data/meta/k7.json",
-      "locations": [
-        "$.resolvedRosterConflicts[0]"
-      ],
-      "occurrences": 1
-    },
-    {
       "key": "f62985cec6c795476acce060",
       "election": "k7",
       "letters": "אמת",
@@ -50054,44 +50041,6 @@
       "occurrences": 1
     },
     {
-      "key": "9e5f59957f6acec9ef842d56",
-      "election": "k10",
-      "letters": "",
-      "name": "",
-      "item": "confidence-vote 1981-08-05 / $.formation.events[*]",
-      "kind": "single-source",
-      "uncertainty": "One recorded source family/locator; independence not established",
-      "sources": [
-        "https://fs.knesset.gov.il/10/Plenum/10_ptm_529613.pdf"
-      ],
-      "nextSource": "CEC / Knesset primary record for the field; independent dated corroboration",
-      "status": "open",
-      "file": "data/meta/aftermath/k10.json",
-      "locations": [
-        "$.formation.events[3]"
-      ],
-      "occurrences": 1
-    },
-    {
-      "key": "eb9c41325923da5f754a8ac1",
-      "election": "k10",
-      "letters": "",
-      "name": "",
-      "item": "confidence-vote 1983-10-10 / $.formation.events[*]",
-      "kind": "single-source",
-      "uncertainty": "One recorded source family/locator; independence not established",
-      "sources": [
-        "https://fs.knesset.gov.il/10/Plenum/10_ptm_530067.pdf"
-      ],
-      "nextSource": "CEC / Knesset primary record for the field; independent dated corroboration",
-      "status": "open",
-      "file": "data/meta/aftermath/k10.json",
-      "locations": [
-        "$.formation.events[6]"
-      ],
-      "occurrences": 1
-    },
-    {
       "key": "144a71f2a0af3bef043535f7",
       "election": "k10",
       "letters": "",
@@ -50183,25 +50132,6 @@
       "file": "data/meta/aftermath/k10.json",
       "locations": [
         "$.formation.events[1]"
-      ],
-      "occurrences": 1
-    },
-    {
-      "key": "c567b1e8b6b0df83ea4a93bd",
-      "election": "k10",
-      "letters": "",
-      "name": "",
-      "item": "mandate-given 1983-09-21 / $.formation.events[*]",
-      "kind": "single-source",
-      "uncertainty": "One recorded source family/locator; independence not established",
-      "sources": [
-        "https://fs.knesset.gov.il/10/Plenum/10_ptm_530067.pdf"
-      ],
-      "nextSource": "CEC / Knesset primary record for the field; independent dated corroboration",
-      "status": "open",
-      "file": "data/meta/aftermath/k10.json",
-      "locations": [
-        "$.formation.events[4]"
       ],
       "occurrences": 1
     },
@@ -53895,159 +53825,6 @@
       "file": "data/meta/k10.json",
       "locations": [
         "$.lists[0].parties[2]"
-      ],
-      "occurrences": 1
-    },
-    {
-      "key": "1089bf106f0ab364d6be483b",
-      "election": "k10",
-      "letters": "אמת",
-      "name": "המערך – מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים",
-      "item": "rank 17 / $.resolvedRosterConflicts[*]",
-      "kind": "conflict",
-      "uncertainty": "{\"letters\":\"אמת\",\"rank\":17,\"previousDatasetName\":\"חריש משה\",\"datasetName\":\"חריף משה\",\"resolution\":\"transcription error corrected\",\"evidence\":\"YP 2721 p. 2048; YP 2727 p. 2191\",\"resolvedOn\":\"2026-11-04\",\"record\":\"docs/decisions/0088-roster-corrections-and-odata-audit.md\"}",
-      "sources": [],
-      "nextSource": "CEC approved candidate gazette and official elected-member notice",
-      "status": "open",
-      "file": "data/meta/k10.json",
-      "locations": [
-        "$.resolvedRosterConflicts[4]"
-      ],
-      "occurrences": 1
-    },
-    {
-      "key": "3429bc8b4e0fcba6623e0cad",
-      "election": "k10",
-      "letters": "אמת",
-      "name": "המערך – מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים",
-      "item": "rank 30 / $.resolvedRosterConflicts[*]",
-      "kind": "conflict",
-      "uncertainty": "{\"letters\":\"אמת\",\"rank\":30,\"previousDatasetName\":\"בן-אהרן אברהם\",\"datasetName\":\"כץ-עוז אברהם\",\"resolution\":\"transcription error corrected\",\"evidence\":\"YP 2721 p. 2048; YP 2727 p. 2191\",\"resolvedOn\":\"2026-11-04\",\"record\":\"docs/decisions/0088-roster-corrections-and-odata-audit.md\"}",
-      "sources": [],
-      "nextSource": "CEC approved candidate gazette and official elected-member notice",
-      "status": "open",
-      "file": "data/meta/k10.json",
-      "locations": [
-        "$.resolvedRosterConflicts[5]"
-      ],
-      "occurrences": 1
-    },
-    {
-      "key": "b10c352d2b78faa44bfdf6ab",
-      "election": "k10",
-      "letters": "מחל",
-      "name": "הליכוד",
-      "item": "rank 31 / $.resolvedRosterConflicts[*]",
-      "kind": "conflict",
-      "uncertainty": "{\"letters\":\"מחל\",\"rank\":31,\"previousDatasetName\":\"דרורי שרה\",\"datasetName\":\"דורון שרה\",\"resolution\":\"transcription error corrected\",\"evidence\":\"YP 2721 p. 2059; YP 2727 p. 2192\",\"resolvedOn\":\"2026-11-04\",\"record\":\"docs/decisions/0088-roster-corrections-and-odata-audit.md\"}",
-      "sources": [],
-      "nextSource": "CEC approved candidate gazette and official elected-member notice",
-      "status": "open",
-      "file": "data/meta/k10.json",
-      "locations": [
-        "$.resolvedRosterConflicts[0]"
-      ],
-      "occurrences": 1
-    },
-    {
-      "key": "11cc0c8b9bd3d6429d336802",
-      "election": "k10",
-      "letters": "מחל",
-      "name": "הליכוד",
-      "item": "rank 32 / $.resolvedRosterConflicts[*]",
-      "kind": "conflict",
-      "uncertainty": "{\"letters\":\"מחל\",\"rank\":32,\"previousDatasetName\":\"וירג׳מן דרור\",\"datasetName\":\"זייגרמן דרור\",\"resolution\":\"transcription error corrected\",\"evidence\":\"YP 2721 p. 2059; YP 2727 p. 2192\",\"resolvedOn\":\"2026-11-04\",\"record\":\"docs/decisions/0088-roster-corrections-and-odata-audit.md\"}",
-      "sources": [],
-      "nextSource": "CEC approved candidate gazette and official elected-member notice",
-      "status": "open",
-      "file": "data/meta/k10.json",
-      "locations": [
-        "$.resolvedRosterConflicts[1]"
-      ],
-      "occurrences": 1
-    },
-    {
-      "key": "c22bf68a46c310a59eba547b",
-      "election": "k10",
-      "letters": "אמת",
-      "name": "המערך – מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים",
-      "item": "rank 33 / $.resolvedRosterConflicts[*]",
-      "kind": "conflict",
-      "uncertainty": "{\"letters\":\"אמת\",\"rank\":33,\"previousDatasetName\":\"ורד תמר\",\"datasetName\":\"ותד מחמד\",\"resolution\":\"transcription error corrected\",\"evidence\":\"YP 2721 p. 2048; YP 2727 p. 2191\",\"resolvedOn\":\"2026-11-04\",\"record\":\"docs/decisions/0088-roster-corrections-and-odata-audit.md\"}",
-      "sources": [],
-      "nextSource": "CEC approved candidate gazette and official elected-member notice",
-      "status": "open",
-      "file": "data/meta/k10.json",
-      "locations": [
-        "$.resolvedRosterConflicts[7]"
-      ],
-      "occurrences": 1
-    },
-    {
-      "key": "e99693dea3a159af9517b160",
-      "election": "k10",
-      "letters": "מחל",
-      "name": "הליכוד",
-      "item": "rank 38 / $.resolvedRosterConflicts[*]",
-      "kind": "conflict",
-      "uncertainty": "{\"letters\":\"מחל\",\"rank\":38,\"previousDatasetName\":\"רבי צבי\",\"datasetName\":\"רנר צבי\",\"resolution\":\"transcription error corrected\",\"evidence\":\"YP 2721 p. 2059; YP 2727 p. 2192\",\"resolvedOn\":\"2026-11-04\",\"record\":\"docs/decisions/0088-roster-corrections-and-odata-audit.md\"}",
-      "sources": [],
-      "nextSource": "CEC approved candidate gazette and official elected-member notice",
-      "status": "open",
-      "file": "data/meta/k10.json",
-      "locations": [
-        "$.resolvedRosterConflicts[2]"
-      ],
-      "occurrences": 1
-    },
-    {
-      "key": "3771ea674a6e5a1b08f66568",
-      "election": "k10",
-      "letters": "אמת",
-      "name": "המערך – מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים",
-      "item": "rank 40 / $.resolvedRosterConflicts[*]",
-      "kind": "conflict",
-      "uncertainty": "{\"letters\":\"אמת\",\"rank\":40,\"previousDatasetName\":\"רון אמיר\",\"datasetName\":\"רון אמרי\",\"resolution\":\"transcription error corrected\",\"evidence\":\"YP 2721 p. 2048; YP 2727 p. 2191\",\"resolvedOn\":\"2026-11-04\",\"record\":\"docs/decisions/0088-roster-corrections-and-odata-audit.md\"}",
-      "sources": [],
-      "nextSource": "CEC approved candidate gazette and official elected-member notice",
-      "status": "open",
-      "file": "data/meta/k10.json",
-      "locations": [
-        "$.resolvedRosterConflicts[8]"
-      ],
-      "occurrences": 1
-    },
-    {
-      "key": "8052b3782b0780cd7082c24e",
-      "election": "k10",
-      "letters": "אמת",
-      "name": "המערך – מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים",
-      "item": "rank 45 / $.resolvedRosterConflicts[*]",
-      "kind": "conflict",
-      "uncertainty": "{\"letters\":\"אמת\",\"rank\":45,\"previousDatasetName\":\"נעים עבד\",\"datasetName\":\"נעים רענן\",\"resolution\":\"transcription error corrected\",\"evidence\":\"YP 2721 p. 2048; YP 2727 p. 2191\",\"resolvedOn\":\"2026-11-04\",\"record\":\"docs/decisions/0088-roster-corrections-and-odata-audit.md\"}",
-      "sources": [],
-      "nextSource": "CEC approved candidate gazette and official elected-member notice",
-      "status": "open",
-      "file": "data/meta/k10.json",
-      "locations": [
-        "$.resolvedRosterConflicts[6]"
-      ],
-      "occurrences": 1
-    },
-    {
-      "key": "696d9fb4129b37d117e6e31b",
-      "election": "k10",
-      "letters": "מחל",
-      "name": "הליכוד",
-      "item": "rank 46 / $.resolvedRosterConflicts[*]",
-      "kind": "conflict",
-      "uncertainty": "{\"letters\":\"מחל\",\"rank\":46,\"previousDatasetName\":\"יגורי יצחק\",\"datasetName\":\"זיגר יצחק\",\"resolution\":\"transcription error corrected\",\"evidence\":\"YP 2721 p. 2059; YP 2727 p. 2192\",\"resolvedOn\":\"2026-11-04\",\"record\":\"docs/decisions/0088-roster-corrections-and-odata-audit.md\"}",
-      "sources": [],
-      "nextSource": "CEC approved candidate gazette and official elected-member notice",
-      "status": "open",
-      "file": "data/meta/k10.json",
-      "locations": [
-        "$.resolvedRosterConflicts[3]"
       ],
       "occurrences": 1
     },
@@ -60849,82 +60626,6 @@
       "file": "data/meta/k11.json",
       "locations": [
         "$.lists[3].parties[1]"
-      ],
-      "occurrences": 1
-    },
-    {
-      "key": "8cc9e3d537fcc5adf160d066",
-      "election": "k11",
-      "letters": "אמת",
-      "name": "המערך",
-      "item": "rank 16 / $.resolvedRosterConflicts[*]",
-      "kind": "conflict",
-      "uncertainty": "{\"letters\":\"אמת\",\"rank\":16,\"previousDatasetName\":\"שפירא אליהו\",\"datasetName\":\"שפירא אליהו\",\"resolution\":\"not a transcription error: gazette misprint, candidate-notice reading kept\",\"evidence\":\"Checked, unchanged: the candidate notice itself prints \\\"שפירא אליהו\\\" (YP 3073 p. 2826); the results notice prints \\\"שפייזר אליהו\\\" (YP 3081 p. 3007). The person is Eliyahu Speiser; the dataset keeps the candidate-notice reading with a recorded spelling variant.\",\"resolvedOn\":\"2026-11-04\",\"record\":\"docs/d",
-      "sources": [
-        "https://olaw.org.il/yalkut/yalkut-3073.pdf"
-      ],
-      "nextSource": "CEC approved candidate gazette and official elected-member notice",
-      "status": "open",
-      "file": "data/meta/k11.json",
-      "locations": [
-        "$.resolvedRosterConflicts[0]"
-      ],
-      "occurrences": 1
-    },
-    {
-      "key": "1791a64cd8d2342d6f408737",
-      "election": "k11",
-      "letters": "מחל",
-      "name": "הליכוד",
-      "item": "rank 19 / $.resolvedRosterConflicts[*]",
-      "kind": "conflict",
-      "uncertainty": "{\"letters\":\"מחל\",\"rank\":19,\"previousDatasetName\":\"יגר יצחק\",\"datasetName\":\"זיגר יצחק\",\"resolution\":\"transcription error corrected\",\"evidence\":\"YP 3073 p. 2832; YP 3081 p. 3008\",\"resolvedOn\":\"2026-11-04\",\"record\":\"docs/decisions/0088-roster-corrections-and-odata-audit.md\"}",
-      "sources": [
-        "https://olaw.org.il/yalkut/yalkut-3073.pdf"
-      ],
-      "nextSource": "CEC approved candidate gazette and official elected-member notice",
-      "status": "open",
-      "file": "data/meta/k11.json",
-      "locations": [
-        "$.resolvedRosterConflicts[3]"
-      ],
-      "occurrences": 1
-    },
-    {
-      "key": "117f3835f1e32930342bf19a",
-      "election": "k11",
-      "letters": "הן",
-      "name": "שינוי – מפלגת המרכז",
-      "item": "rank 3 / $.resolvedRosterConflicts[*]",
-      "kind": "conflict",
-      "uncertainty": "{\"letters\":\"הן\",\"rank\":3,\"previousDatasetName\":\"ששי וידאן\",\"datasetName\":\"עטשי זיידאן\",\"resolution\":\"transcription error corrected\",\"evidence\":\"YP 3073 p. 2828; YP 3081 p. 3007\",\"resolvedOn\":\"2026-11-04\",\"record\":\"docs/decisions/0088-roster-corrections-and-odata-audit.md\"}",
-      "sources": [
-        "https://olaw.org.il/yalkut/yalkut-3073.pdf"
-      ],
-      "nextSource": "CEC approved candidate gazette and official elected-member notice",
-      "status": "open",
-      "file": "data/meta/k11.json",
-      "locations": [
-        "$.resolvedRosterConflicts[2]"
-      ],
-      "occurrences": 1
-    },
-    {
-      "key": "92ca12e2025ee954087a1232",
-      "election": "k11",
-      "letters": "אמת",
-      "name": "המערך",
-      "item": "rank 37 / $.resolvedRosterConflicts[*]",
-      "kind": "conflict",
-      "uncertainty": "{\"letters\":\"אמת\",\"rank\":37,\"previousDatasetName\":\"רן נחמן\",\"datasetName\":\"רז נחמן\",\"resolution\":\"transcription error corrected\",\"evidence\":\"YP 3073 p. 2826; YP 3081 p. 3007\",\"resolvedOn\":\"2026-11-04\",\"record\":\"docs/decisions/0088-roster-corrections-and-odata-audit.md\"}",
-      "sources": [
-        "https://olaw.org.il/yalkut/yalkut-3073.pdf"
-      ],
-      "nextSource": "CEC approved candidate gazette and official elected-member notice",
-      "status": "open",
-      "file": "data/meta/k11.json",
-      "locations": [
-        "$.resolvedRosterConflicts[1]"
       ],
       "occurrences": 1
     },
@@ -74782,25 +74483,6 @@
       "occurrences": 1
     },
     {
-      "key": "b18fd67e2209146d0cd9d1c5",
-      "election": "k14",
-      "letters": "",
-      "name": "",
-      "item": "confidence-vote 1996-06-18 / $.formation.events[*]",
-      "kind": "single-source",
-      "uncertainty": "One recorded source family/locator; independence not established",
-      "sources": [
-        "https://www.washingtonpost.com/archive/politics/1996/06/19/israeli-cabinet-is-forged-after-tense-wrangling/2302656f-2291-4a73-860a-5c4884dea8b7/"
-      ],
-      "nextSource": "CEC / Knesset primary record for the field; independent dated corroboration",
-      "status": "open",
-      "file": "data/meta/aftermath/k14.json",
-      "locations": [
-        "$.formation.events[1]"
-      ],
-      "occurrences": 1
-    },
-    {
       "key": "4fc01cc24929c5b94a8c0ab8",
       "election": "k14",
       "letters": "",
@@ -78672,40 +78354,6 @@
       "occurrences": 1
     },
     {
-      "key": "a617a42851962a1a089d4136",
-      "election": "k14",
-      "letters": "מחל",
-      "name": "הליכוד גשר צומת",
-      "item": "rank 15 / $.resolvedRosterConflicts[*]",
-      "kind": "conflict",
-      "uncertainty": "{\"letters\":\"מחל\",\"rank\":15,\"previousDatasetName\":\"ריבלין חיים\",\"datasetName\":\"דיין חיים\",\"resolution\":\"transcription error corrected\",\"evidence\":\"YP 4408 p. 3290; YP 4414 p. 3483\",\"resolvedOn\":\"2026-11-04\",\"record\":\"docs/decisions/0088-roster-corrections-and-odata-audit.md\"}",
-      "sources": [],
-      "nextSource": "CEC approved candidate gazette and official elected-member notice",
-      "status": "open",
-      "file": "data/meta/k14.json",
-      "locations": [
-        "$.resolvedRosterConflicts[1]"
-      ],
-      "occurrences": 1
-    },
-    {
-      "key": "4746d5afe4c4096a9438e37b",
-      "election": "k14",
-      "letters": "מחל",
-      "name": "הליכוד גשר צומת",
-      "item": "rank 30 / $.resolvedRosterConflicts[*]",
-      "kind": "conflict",
-      "uncertainty": "{\"letters\":\"מחל\",\"rank\":30,\"previousDatasetName\":\"ליבני יהודה\",\"datasetName\":\"לנקרי יהודה\",\"resolution\":\"transcription error corrected\",\"evidence\":\"YP 4408 p. 3290; YP 4414 p. 3483\",\"resolvedOn\":\"2026-11-04\",\"record\":\"docs/decisions/0088-roster-corrections-and-odata-audit.md\"}",
-      "sources": [],
-      "nextSource": "CEC approved candidate gazette and official elected-member notice",
-      "status": "open",
-      "file": "data/meta/k14.json",
-      "locations": [
-        "$.resolvedRosterConflicts[0]"
-      ],
-      "occurrences": 1
-    },
-    {
       "key": "382909b0e5981fe04b8271d6",
       "election": "k14",
       "letters": "מחל",
@@ -80233,44 +79881,6 @@
       "file": "data/meta/aftermath/k15.json",
       "locations": [
         "$.recommendationsNotApplicable"
-      ],
-      "occurrences": 1
-    },
-    {
-      "key": "509d5c77f794ddf8e62a2cbf",
-      "election": "k15",
-      "letters": "",
-      "name": "",
-      "item": "confidence-vote 1999-07-06 / $.formation.events[*]",
-      "kind": "single-source",
-      "uncertainty": "One recorded source family/locator; independence not established",
-      "sources": [
-        "https://www.jta.org/1999/07/06/lifestyle/barak-pledges-to-be-peacemaker-as-he-takes-prime-ministers-oath"
-      ],
-      "nextSource": "CEC / Knesset primary record for the field; independent dated corroboration",
-      "status": "open",
-      "file": "data/meta/aftermath/k15.json",
-      "locations": [
-        "$.formation.events[1]"
-      ],
-      "occurrences": 1
-    },
-    {
-      "key": "e2666727f799a91f0a570f43",
-      "election": "k15",
-      "letters": "",
-      "name": "",
-      "item": "confidence-vote 2001-03-07 / $.formation.events[*]",
-      "kind": "single-source",
-      "uncertainty": "One recorded source family/locator; independence not established",
-      "sources": [
-        "https://www.chron.com/news/nation-world/article/sharon-takes-over-in-israel-2001027.php"
-      ],
-      "nextSource": "CEC / Knesset primary record for the field; independent dated corroboration",
-      "status": "open",
-      "file": "data/meta/aftermath/k15.json",
-      "locations": [
-        "$.formation.events[3]"
       ],
       "occurrences": 1
     },
@@ -94327,44 +93937,6 @@
       "file": "data/meta/aftermath/k17.json",
       "locations": [
         "$.government.changes[1]"
-      ],
-      "occurrences": 1
-    },
-    {
-      "key": "38518335571c5a9811050421",
-      "election": "k17",
-      "letters": "",
-      "name": "",
-      "item": "confidence-vote 2006-05-04 / $.formation.events[*]",
-      "kind": "single-source",
-      "uncertainty": "One recorded source family/locator; independence not established",
-      "sources": [
-        "https://www.ynet.co.il/articles/0,7340,L-3247196,00.html"
-      ],
-      "nextSource": "CEC / Knesset primary record for the field; independent dated corroboration",
-      "status": "open",
-      "file": "data/meta/aftermath/k17.json",
-      "locations": [
-        "$.formation.events[1]"
-      ],
-      "occurrences": 1
-    },
-    {
-      "key": "3d07d9734191e598e013e65b",
-      "election": "k17",
-      "letters": "",
-      "name": "",
-      "item": "mandate-given 2006-04-06 / $.formation.events[*]",
-      "kind": "single-source",
-      "uncertainty": "One recorded source family/locator; independence not established",
-      "sources": [
-        "https://www.globes.co.il/news/article.aspx?did=1000081213"
-      ],
-      "nextSource": "CEC / Knesset primary record for the field; independent dated corroboration",
-      "status": "open",
-      "file": "data/meta/aftermath/k17.json",
-      "locations": [
-        "$.formation.events[0]"
       ],
       "occurrences": 1
     },
