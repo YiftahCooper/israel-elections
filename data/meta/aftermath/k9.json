@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "electionId": "k9",
-  "status": "pilot",
+  "status": "reviewed",
   "reviewedAt": "2026-11-07",
   "notes": [
     "Pilot for docs/design/after-the-election.md. Not wired into the app.",

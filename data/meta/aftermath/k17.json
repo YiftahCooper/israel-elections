@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "electionId": "k17",
-  "status": "pilot",
+  "status": "reviewed",
   "reviewedAt": "2026-11-07",
   "notes": [
     "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",

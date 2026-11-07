@@ -2,6 +2,7 @@
 
 ## 6 November 2026 — data audit
 
+- After the election: distinguish government members, support roles and individual votes; show unknown totals honestly, explain vote reconciliation behind help, and keep localised date ranges in reading order.
 - Families: count Otzma Yehudit only in Radical right in 2015, as in 2019–2022; the national-religious family keeps Yachad.
 - Research: separate government membership, outside support, investiture votes and individual exceptions; validate explicit uncertainty across recorded governments and document unresolved historical authentication.
 
@@ -18,6 +19,9 @@
 - Show change counts once beside History, shorten whole labels by measured fit, and apply Hebrew maqaf prefixes consistently to foreign names.
 
 - Unify changes/שינויים against the official result or saved reference, explain action counts, and localise History times and calendar dates.
+- After the election: localise dates with RTL-safe ranges and numbers, use reading-direction arrows, attach help to its context, remove redundant event glyphs and avoid an unsupported coalition membership total.
+
+- After the election: reviewed recommendations, government formation, coalition and term history for all 26 elections, with sources and pending-event separation.
 
 - Mark custom bloc, coalition and family groupings locally as analysis while preserving official result identity and factual summaries.
 
