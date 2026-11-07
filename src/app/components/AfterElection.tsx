@@ -8,14 +8,15 @@ import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { openElection, setState } from '../store.ts';
 import { Info } from './ui.tsx';
-import { formatAfterDate } from '../afterDate.ts';
+import { formatDate } from '../dateFormat.ts';
+import { hebrewPrefix } from '../hebrewPrefix.ts';
 import './AfterElection.css';
 
 /** Ranges follow the reader: start on the right in Hebrew, on the left in English. */
 function DateRun({ date, end }: { date: string; end?: string }) {
   const lang = useLang();
   const dir = lang === 'he' ? 'rtl' : 'ltr';
-  return <bdi dir={dir} className="after-date-run"><bdi dir={dir}><time dateTime={date}>{formatAfterDate(date, lang)}</time></bdi>{end && <> – <bdi dir={dir}><time dateTime={end}>{formatAfterDate(end, lang)}</time></bdi></>}</bdi>;
+  return <bdi dir={dir} className="after-date-run"><bdi dir={dir}><time dateTime={date}>{formatDate(date, lang)}</time></bdi>{end && <> – <bdi dir={dir}><time dateTime={end}>{formatDate(end, lang)}</time></bdi></>}</bdi>;
 }
 
 /** Covers numbers and embedded ISO dates in all 26 records, including future prose additions.
@@ -74,12 +75,12 @@ function Formation({ data }: { data: Aftermath }) {
   const first = Date.parse(data.results.electionDate); const last = Date.parse(events.at(-1)!.date);
   const pos = (date: string) => (Date.parse(date) - first) / Math.max(last - first, 86400000) * 100;
   const mandates = events.filter(e => e.type === 'mandate-given');
-  return <section><h3><span className="after-help-anchor">{L('Government formation', 'הרכבת הממשלה')}{data.formation.conflicts?.length ? <> <Evidence data={data} notes={data.formation.conflicts.map(c => JSON.stringify(c))} /></> : null}</span></h3><div className="after-formation" dir="ltr" aria-hidden="true"><div className="after-date-line"><span><DateRun date={data.results.electionDate} /></span><span><DateRun date={events.at(-1)!.date} /></span>{events.map((e, i) => <i key={i} style={{ left: `${pos(e.date)}%` }} title={formatAfterDate(e.date, lang)} />)}</div>{mandates.map((e, i) => {
+  return <section><h3><span className="after-help-anchor">{L('Government formation', 'הרכבת הממשלה')}{data.formation.conflicts?.length ? <> <Evidence data={data} notes={data.formation.conflicts.map(c => JSON.stringify(c))} /></> : null}</span></h3><div className="after-formation" dir="ltr" aria-hidden="true"><div className="after-date-line"><span><DateRun date={data.results.electionDate} /></span><span><DateRun date={events.at(-1)!.date} /></span>{events.map((e, i) => <i key={i} style={{ left: `${pos(e.date)}%` }} title={formatDate(e.date, lang)} />)}</div>{mandates.map((e, i) => {
     const end = events.find(f => f.date > e.date && ['mandate-expired', 'mandate-returned', 'confidence-vote', 'informed-success'].includes(f.type ?? ''))?.date ?? events.at(-1)!.date;
     const nominee = e.person ? nominees[e.person] : undefined;
     const extension = events.find(f => f.type === 'extension' && f.date >= e.date && f.date < end);
     const boundary = extension ? (pos(extension.date) - pos(e.date)) / Math.max(1, pos(end) - pos(e.date)) * 100 : 100;
-    return <div key={i} className="after-mandate"><small><bdi>{nominee ? (lang === 'he' ? nominee.nameHe : nominee.nameEn) : L('Mandate', 'מנדט')}</bdi></small><span dir={lang === 'he' ? 'rtl' : 'ltr'} style={{ background: `linear-gradient(to right, var(--axis) ${boundary}%, var(--rule-2) ${boundary}%)`, marginLeft: `${pos(e.date)}%`, width: `${Math.max(1, pos(end) - pos(e.date))}%` }} title={`${formatAfterDate(e.date, lang)} – ${formatAfterDate(end, lang)}`} /></div>;
+    return <div key={i} className="after-mandate"><small><bdi>{nominee ? (lang === 'he' ? nominee.nameHe : nominee.nameEn) : L('Mandate', 'מנדט')}</bdi></small><span dir={lang === 'he' ? 'rtl' : 'ltr'} style={{ background: `linear-gradient(to right, var(--axis) ${boundary}%, var(--rule-2) ${boundary}%)`, marginLeft: `${pos(e.date)}%`, width: `${Math.max(1, pos(end) - pos(e.date))}%` }} title={`${formatDate(e.date, lang)} – ${formatDate(end, lang)}`} /></div>;
   })}</div><FactRows data={data} events={events} /></section>;
 }
 type SupportSnapshot = GovernmentSupport & { number?: number; cites?: Cite[]; coalitionSeatsNote?: string; roleGap?: string };
@@ -154,7 +155,7 @@ export function AfterElection({ ds }: { ds: ElectionDataset }) {
     <p className="muted small">{L('Recorded history · checked', 'היסטוריה מתועדת · נבדק')} <span className="after-help-anchor"><DateRun date={data.reviewedAt} /> <Info title={L('Recorded history', 'היסטוריה מתועדת')}>{L('These facts use the official election result. Editing votes does not change history. Unknown recommendations do not mean no recommendation.', 'העובדות מבוססות על תוצאות הבחירות הרשמיות. עריכת קולות אינה משנה את ההיסטוריה. המלצה שלא תועדה אינה זהה להיעדר המלצה.')}</Info></span></p>
     {direct ? <p><HelpText data={data} text={L('PM elected directly – no recommendations', 'ראש הממשלה נבחר ישירות – ללא המלצות')} cites={direct.cites} /></p> : data.recommendationRounds.length > 0 && <section><h3>{L('Recommendations to the President', 'המלצות לנשיא')}</h3>{data.recommendationRounds.map(round => <Recommendations key={round.id} data={data} ds={ds} round={round} />)}</section>}
     <Formation data={data} />
-    {government && <section><h3><bdi>{L('Government ', 'הממשלה ה־')}<bdi dir="ltr">{government.number}</bdi></bdi> · <span className="after-help-anchor"><DateRun date={government.startDate} end={government.endDate} /> <Evidence data={data} cites={[...government.cites, ...government.endDateCites ?? []]} notes={[...government.notes ?? [], ...government.coalitionSeatsNote ? [government.coalitionSeatsNote] : []]} /></span></h3>
+    {government && <section><h3><bdi>{L('Government ', 'הממשלה ')}<bdi dir={lang === 'he' ? 'rtl' : 'ltr'}>{lang === 'he' ? hebrewPrefix('ה', government.number) : government.number}</bdi></bdi> · <span className="after-help-anchor"><DateRun date={government.startDate} end={government.endDate} /> <Evidence data={data} cites={[...government.cites, ...government.endDateCites ?? []]} notes={[...government.notes ?? [], ...government.coalitionSeatsNote ? [government.coalitionSeatsNote] : []]} /></span></h3>
       <div className="after-pms">{government.primeMinisters.map((p, i) => <span key={i}>{i > 0 && <bdi className="after-forward" dir="ltr">{lang === 'he' ? '←' : '→'}</bdi>}<bdi>{lang === 'he' ? p.nameHe : p.nameEn}</bdi> · <DateRun date={p.from} /></span>)}</div>
       <GovernmentComposition data={data} ds={ds} government={government} />
       {!!government.changes?.length && <details><summary>{L('Government changes', 'שינויים בממשלה')}</summary>{government.changes.map((change, i) => <div className="after-government-change" key={i}><FactRows data={data} events={[change]} />{change.coalition && <GovernmentComposition data={data} ds={ds} government={change as SupportSnapshot} />}</div>)}</details>}

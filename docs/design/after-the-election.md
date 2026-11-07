@@ -203,9 +203,10 @@ preferred anchor, and multiple publications from the same institution do not bec
   without double-counting people included in faction seats. Changes use the same renderer and R4 validator.
 - Participant `seats` records only the participating portion; `electionListSeats` preserves its election
   envelope. In 1984, the Alignment portion is 37 of 44. Neither figure is a confidence-vote tally.
-- Every displayed date uses the local date helper, preserving available precision. Date endpoints are
+- Every displayed date uses shared `formatDate`, preserving available precision. Date endpoints are
   individually isolated with explicit locale direction; range containers follow reading direction, so
   Hebrew starts on the right. Chronological graphics remain LTR; their labels use the locale direction.
+  Attached Hebrew prefixes use shared `hebrewPrefix`, including numbered government headings.
 - Pending events and any single-source term entries are confined to Sources. Research notes remain in
   their original language behind labelled disclosures. The existing audit establishes independent
   chronology support; the runtime additionally rejects term entries with fewer than two distinct sources.
