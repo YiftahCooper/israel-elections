@@ -381,7 +381,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
 export function History({ s, r, ds, reference = null }: { s: Scenario; r: AllocationResult; ds: ElectionDataset; reference?: Scenario | null }) {
   const L = useL();
   const lang = useLang();
-  const counts = historyChangesLabels(s, reference, lang);
+  const counts = historyChangesLabels(s, reference, lang, baselineOf(ds));
   const past = useStore((st) => st.past.length), future = useStore((st) => st.future);
   const last = s.log.at(-1);
   const next = future.at(-1)?.log.at(-1);
@@ -397,7 +397,7 @@ export function History({ s, r, ds, reference = null }: { s: Scenario; r: Alloca
       <div className="row" style={{ marginBottom: 8 }}>
         <button className="btn small" onClick={undo} disabled={!past}>{undoName}</button>
         <button className="btn small" onClick={redo} disabled={!future.length}>{redoName}</button>
-        {(reference || factLog(s).length > 0) && <span className="muted small history-counts"><bdi>{counts.active}</bdi>{counts.official !== null && <>{' · '}<bdi>{counts.official}</bdi></>}</span>}
+        {(reference || factLog(s).length > 0) && <span className="muted small history-counts"><bdi>{counts.active}</bdi>{counts.official !== null && <>{' · '}<bdi>{counts.official}</bdi></>}{counts.note && <>{' · '}<span className="history-note">{counts.note}</span></>}</span>}
       </div>
       {factLog(s).length === 0 ? <p className="muted">{reference ? L('History is empty.', 'ההיסטוריה ריקה.') : L('No changes — this is the official result.', 'אין שינויים — זו התוצאה הרשמית.')}</p> : (
         <ol className="small" style={{ paddingInlineStart: 22 }}>

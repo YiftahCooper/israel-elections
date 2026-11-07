@@ -92,11 +92,12 @@ export function changesLabel(count: number, reference: Pick<Scenario, 'name'> | 
 }
 
 /** History keeps the bar's reference first, then explains its full official-result record. */
-export function historyChangesLabels(s: Scenario, reference: Scenario | null, lang: Lang) {
+export function historyChangesLabels(s: Scenario, reference: Scenario | null, lang: Lang, officialBase?: Scenario) {
   const count = changeCount(s, reference), official = factLog(s).length;
   return {
     active: changesLabel(count, reference, lang),
     official: reference && count !== official ? `${official} ${referenceLabel(null, lang).since}` : null,
+    note: count > 0 && (reference ?? officialBase) && groupingOnly(s, (reference ?? officialBase)!) ? unchangedResultNote(lang) : null,
   };
 }
 
@@ -286,6 +287,8 @@ export function nonSeatChanges(s: Scenario, base: Scenario, lang: Lang): string[
   const changes: string[] = [];
   if (JSON.stringify(s.lists.map(l => [l.id,l.votes,l.withdrawn])) !== JSON.stringify(base.lists.map(l => [l.id,l.votes,l.withdrawn]))) changes.push(he ? 'הקולות השתנו' : 'votes changed');
   if (JSON.stringify(s.agreements) !== JSON.stringify(base.agreements)) changes.push(he ? 'הסכמי העודפים השתנו' : 'agreements changed');
+  // the line already names the grouping and its blocs; a coalition change has nothing else to show it
+  if (inputDiffs(s, base).some(p => inputPart(p) === 'coalitions')) changes.push(he ? 'הקואליציה השתנתה' : 'coalition changed');
   return changes;
 }
 
@@ -396,5 +399,9 @@ export function editPathLabel(s: Scenario, path: EditPath, lang: Lang, fallback?
   }).join(' · ');
 }
 
-/** A-only comparison for chrome, identity and factual summaries. Marker scopes remain A/B. */
-export const resultChanges=(s:Scenario,reference:Scenario):EditPath[]=>referenceChanges(s,reference).filter(p=>!analysisPart(p));
+/** Every change that makes a scenario differ: result edits and grouping/coalition edits alike (owner,
+ *  7 November 2026). Only appearance is excluded, already by inputDiffs. Kept as the identity/tint name. */
+export const resultChanges=(s:Scenario,reference:Scenario):EditPath[]=>referenceChanges(s,reference);
+/** True when the only changes are groupings or coalition roles: the scenario differs, its votes and seats do not. */
+export const groupingOnly=(s:Scenario,reference:Scenario):boolean=>{const p=referenceChanges(s,reference);return p.length>0&&p.every(x=>!!analysisPart(x));};
+export const unchangedResultNote=(lang:Lang)=>lang==='he'?'הקולות והמנדטים לא השתנו':'Votes and seats unchanged';

@@ -5,7 +5,8 @@ import {useStore} from '../store.ts';
 import {useActiveReference} from '../useActiveReference.ts';
 import {EditMarker} from './EditMarker.tsx';
 
-/** A local outlet for the shared marker: analysis never belongs in the result summary. */
+/** The shared marker at a grouping or coalition panel: its changes are counted like any other, and
+ *  this places their marker where the grouping is shown (picker, bands, panel, Compare). */
 export function AnalysisEdits({s,part='blocs',outlet}:{s:Scenario;part?:'blocs'|'coalitions';outlet:string}) {
  const {markerReference}=useActiveReference();
  const ds=useStore(st=>st.datasets[s.electionId]);

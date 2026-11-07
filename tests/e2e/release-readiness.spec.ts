@@ -10,12 +10,12 @@ for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) {
     for (const name of ['A very long grouping name that must remain fully readable on a narrow phone screen', 'גושעםשםארוךללאמרווחים'.repeat(8)]) {
       await input.fill(name); await input.press('Enter');
       const summary = page.locator('.session');
-      await expect(summary).not.toContainText(name);
-      await expect(page.locator('.edit-marker')).toHaveCount(0);
+      // a rename is a change (7 November): the name joins the one-line summary, which scrolls rather than grows
+      await expect(summary).toContainText(name);
+      await expect(page.locator('.bloc-panel .edit-marker').first()).toBeVisible();
       expect(await summary.evaluate(el => el.scrollWidth)).toBeLessThanOrEqual(390);
-      // Appearance names stay out of the factual summary, which keeps its fixed height.
       expect(await summary.evaluate(el => el.getBoundingClientRect().height)).toBe(50);
-      await expect(summary).toHaveClass(/idle/);
+      await expect(summary).not.toHaveClass(/idle/);
       expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
     }
     await page.keyboard.press('Escape');

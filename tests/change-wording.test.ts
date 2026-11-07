@@ -5,16 +5,17 @@ import { applyAction } from '../src/model/actions.ts';
 import { changeCount, changesLabel, historyChangesLabels } from '../src/app/derive.ts';
 import { formatDate } from '../src/app/dateFormat.ts';
 const base = scenarioFromDataset(loadDataset('k25'));
-it('counts actions, not balanced vote fields, colours or bloc choices', () => {
+it('counts actions, not balanced vote fields or colours; a bloc move is a change', () => {
   let s = applyAction(base, { type: 'setVotes', listId: base.lists[0].id, votes: 1100000 });
   s = applyAction(s, { type: 'setListMeta', listId: base.lists[0].id, patch: { color: '#123456' } });
-  s = applyAction(s, { type: 'setPartyBloc', partyId: base.lists.flatMap(l => l.parties ?? [])[0].id, bloc: base.blocs[0].id });
   expect(changeCount(s, null)).toBe(1);
+  s = applyAction(s, { type: 'setPartyBloc', partyId: base.lists.flatMap(l => l.parties ?? [])[0].id, bloc: base.blocs[0].id });
+  expect(changeCount(s, null)).toBe(2);
   const saved = { ...s, name: 'Unity' };
   s = applyAction(saved, { type: 'setVotes', listId: base.lists[0].id, votes: 1100100 });
   expect(changeCount(s, saved)).toBe(1);
   expect(changeCount(saved, saved)).toBe(0);
-  expect(changeCount(base, saved)).toBe(1);
+  expect(changeCount(base, saved)).toBe(2);
   expect(changesLabel(2, saved, 'en')).toBe('2 changes from Unity');
   expect(changesLabel(2, saved, 'he')).toBe('2 שינויים מ־Unity');
 });
@@ -44,10 +45,10 @@ it('History explains differing reference counts and retains the active count', (
   const saved = {...applyAction(base, {type:'setVotes',listId:base.lists[0].id,votes:1100000}),name:'Unity'};
   let s = saved;
   for (let i=1;i<=3;i++) s=applyAction(s,{type:'setVotes',listId:base.lists[0].id,votes:1100000+i});
-  expect(historyChangesLabels(s,saved,'en')).toEqual({active:'3 changes from Unity',official:'4 from the official result'});
-  expect(historyChangesLabels(s,saved,'he')).toEqual({active:'3 שינויים מ־Unity',official:'4 מהתוצאה הרשמית'});
-  expect(historyChangesLabels(s,null,'en')).toEqual({active:'4 changes from the official result',official:null});
-  expect(historyChangesLabels(saved,saved,'en')).toEqual({active:'No changes from Unity',official:'1 from the official result'});
+  expect(historyChangesLabels(s,saved,'en')).toMatchObject({active:'3 changes from Unity',official:'4 from the official result'});
+  expect(historyChangesLabels(s,saved,'he')).toMatchObject({active:'3 שינויים מ־Unity',official:'4 מהתוצאה הרשמית'});
+  expect(historyChangesLabels(s,null,'en')).toMatchObject({active:'4 changes from the official result',official:null});
+  expect(historyChangesLabels(saved,saved,'en')).toMatchObject({active:'No changes from Unity',official:'1 from the official result'});
   const later=applyAction(saved,{type:'setVotes',listId:base.lists[0].id,votes:1100100});
-  expect(historyChangesLabels(saved,later,'en')).toEqual({active:'1 change from Unity',official:null});
+  expect(historyChangesLabels(saved,later,'en')).toMatchObject({active:'1 change from Unity',official:null});
 });

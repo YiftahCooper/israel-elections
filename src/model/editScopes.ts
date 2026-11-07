@@ -1,5 +1,6 @@
-/** Appearance is saved separately from factual marker comparisons. */
-export const appearancePath=(p:readonly string[])=>(p.includes('color')||p.includes('customColor'))||p[0]==='blocs'&&p.length>2&&['nameHe','nameEn'].includes(p[2]);
+/** Appearance (colours only) is saved separately from change comparisons. Names, including bloc and
+ * grouping names, change what the screen says and are changes. */
+export const appearancePath=(p:readonly string[])=>p.includes('color')||p.includes('customColor');
 import { blocSchemeState, NO_COALITION, type Action, type CopyProvenance, type Scenario } from './scenario.ts';
 import type {Part} from './parts.ts';
 export type InputPath=readonly string[];
@@ -85,9 +86,8 @@ export function scopeCovers(scope:ReplacementScope,path:InputPath){
  return (inputPart(path)===scope.part&&(!scope.listId||path[0]==='lists'&&path[1]===scope.listId))||scope.changed.some(p=>overlaps(p,path));
 }
 
-/** B changes have shared local markers, but never describe a different election result. */
+/** Grouping and coalition paths (B): counted, marked changes that leave votes and seats as they were. */
 export const analysisPart=(p:InputPath):'blocs'|'coalitions'|undefined => {
  const part=inputPart(p);
  return part==='blocs'||part==='coalitions'?part:undefined;
 };
-export const resultDiffs=(a:Scenario,b:Scenario)=>inputDiffs(a,b).filter(p=>!analysisPart(p));

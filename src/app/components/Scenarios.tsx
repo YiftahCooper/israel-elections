@@ -1,7 +1,7 @@
 import {ColourPicker} from './ColourPicker.tsx';
 import { scenarioDirty } from '../scenarioDocument.ts';
 import { ScenarioSave, UnsavedMark } from './ScenarioSave.tsx';
-import { hasAppearance, hasAnalysis, factLog } from '../../model/actionClassification.ts';
+import { hasAppearance, factLog } from '../../model/actionClassification.ts';
 import { Info } from './ui.tsx';
 import { EditMarker } from './EditMarker.tsx';
 import { exportAnnotations } from '../scenarioExport.ts';
@@ -15,7 +15,7 @@ import { Check, Copy, Download, FolderOpen, GitCompare, Link2, RotateCcw, Save, 
 import type { ElectionDataset } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
-import { allocationOf, listLabel, baselineOf, resultChanges } from '../derive.ts';
+import { allocationOf, listLabel, baselineOf, resultChanges, changesLabel, groupingOnly, unchangedResultNote } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { download } from '../format.ts';
 import { deleteSaved, duplicateCurrent, getSetting, useSetting, importScenarioJson, openImported, openSaved, replay, resetAll, scenarioKey, setState, shareLink, toast, useStore, type SavedScenario } from '../store.ts';
@@ -85,7 +85,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
     <div className="scn">
       <p className="small ink2" style={{ marginTop: 0 }}>{L('A scenario is your edited election. Save it here, or share a link.', 'תרחיש הוא הבחירות עם השינויים שלכם. שמרו כאן או שתפו קישור.')} <Info title={L('Using scenarios', 'שימוש בתרחישים')}>{L('Change votes, partners or rules in the other tabs, then name and save the result here. Saved scenarios stay in this browser; links and files can be opened on another device.', 'שנו קולות, שותפות או כללים בלשוניות האחרות, ואז תנו שם ושמרו כאן. תרחישים נשמרים בדפדפן זה; קישורים וקבצים נפתחים גם במכשיר אחר.')}</Info></p>
       <section className="scn-current">
-        <h3>{official ? L('Official result', 'התוצאה הרשמית') : L('This scenario', 'התרחיש הנוכחי')} <span className="muted" style={{ fontWeight: 400 }}>· {electionName(s.electionId)} · {official ? L('No changes', 'אין שינויים') : L(`${factLog(s).length} change${factLog(s).length === 1 ? '' : 's'}`, factLog(s).length === 1 ? 'שינוי אחד' : `${factLog(s).length} שינויים`)}</span></h3>
+        <h3>{official ? L('Official result', 'התוצאה הרשמית') : L('This scenario', 'התרחיש הנוכחי')} <span className="muted" style={{ fontWeight: 400 }}>· {electionName(s.electionId)} · {official ? L('No changes', 'אין שינויים') : changesLabel(factLog(s).length, null, lang, true)}{!official && groupingOnly(s, baselineOf(ds)) && ` · ${unchangedResultNote(lang)}`}</span></h3>
         <div className="scn-form">
           <label className="field"><span>{L('Name', 'שם')}{!official && !clean && <UnsavedMark />}</span>
             <ScenarioText value={s.name} label={L('Name', 'שם')} placeholder={L('e.g. “Arab turnout returns to 2015 levels”', 'למשל "שיעור ההצבעה בחברה הערבית חוזר לרמת 2015"')} onCommit={(name) => dispatch({ type: 'rename', name })} /></label>
@@ -98,8 +98,8 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
         </div></details>
         <ResultBar s={s} r={allocationOf(s)} />
         <div className="row" style={{ marginTop: 10 }}>
-          <ScenarioSave className="btn primary scn-save" disabled={clean || official && !(hasAppearance(s)||hasAnalysis(s))}>{clean ? <><Check className="icon sm" aria-hidden />{L('Saved', 'נשמר')}</> : <><Save className="icon sm" aria-hidden />{L('Save', 'שמירה')}</>}</ScenarioSave>
-          <ScenarioSave as disabled={official && !(hasAppearance(s)||hasAnalysis(s))}>{L('Save as…', 'שמירה בשם…')}</ScenarioSave>
+          <ScenarioSave className="btn primary scn-save" disabled={clean || official && !hasAppearance(s)}>{clean ? <><Check className="icon sm" aria-hidden />{L('Saved', 'נשמר')}</> : <><Save className="icon sm" aria-hidden />{L('Save', 'שמירה')}</>}</ScenarioSave>
+          <ScenarioSave as disabled={official && !hasAppearance(s)}>{L('Save as…', 'שמירה בשם…')}</ScenarioSave>
           {isSaved && !clean && <button className="btn" onClick={() => openSaved(saved.find(x => x.id === s.id)!)}>{L('Reopen saved version', 'פתיחת הגרסה השמורה')}</button>}
           <button className="btn" onClick={async () => {
             const url = await shareLink(); setLink(url);

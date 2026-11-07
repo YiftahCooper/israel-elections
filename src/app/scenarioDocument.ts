@@ -16,4 +16,4 @@ export function nextCopyName(name: string, names: readonly string[]): string {
   return `${base} (${n})`;
 }
 
-export const appearanceSignature=(s:Scenario, sameGrouping=true)=>JSON.stringify({lists:s.lists.map(l=>[l.id,l.color,l.parties?.map(p=>[p.id,p.color])]),blocs:sameGrouping?s.blocs.map(b=>[b.id,b.color,b.nameHe,b.nameEn]):[],name:sameGrouping?s.customGroupingName:undefined});
+export const appearanceSignature=(s:Scenario, sameGrouping=true)=>JSON.stringify({lists:s.lists.map(l=>[l.id,l.color,l.parties?.map(p=>[p.id,p.color])]),blocs:sameGrouping?s.blocs.map(b=>[b.id,b.color]):[]});

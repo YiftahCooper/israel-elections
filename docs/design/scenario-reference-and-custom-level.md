@@ -48,19 +48,19 @@ Details:
 - The grouping's name appears wherever sourced groupings show theirs: the dropdown, bloc summaries and Compare. It carries an **edited** marker, never a date or source.
 - It is an ordinary undoable action. Add a `name` to the custom grouping in the scenario, so `setBlocs` can carry it; `blocSchemeId: null` keeps meaning "not a sourced grouping".
 
-## 2. Three classes of change; the reference decides the local marker
+## 2. Three classes of change; only appearance is exempt
 
-The owner's 6 November 2026 rule supersedes this document's earlier treatment of colours and groupings as result edits. His words:
+**Owner decision, 7 November 2026** (supersedes the 6 November "analysis" class): bloc membership *is* a scenario change; only appearance is exempt. His 6 November words still set the test for appearance:
 
 > “It should only actually count as a new scenario and look like a different result from the official one if something tangible changes. If it's just things like changing the block colours, that's arbitrary and shouldn't confusingly render as different from the actual election results.”
 
-The binding 6 November coordinator clarification applies the same test to grouping membership: changing which lists or parties sit in a bloc, creating a grouping, and naming it do not change the election result.
+The colour fix is restricted to colours; anything that changes what the screen says is a change.
 
-- **A — result:** votes, turnout/totals, list topology and identities, candidate rosters/order, agreements, lottery outcomes and allocation rules. These change official figures or their calculation; retain result identity/tint, factual summaries and shared markers.
-- **B — analysis:** custom bloc topology, list/party/candidate membership, grouping names, coalition membership/constraints and family definitions used only for grouping. Save, share and undo these changes. Use the shared local “Edited: was X” marker at the grouping, bloc or coalition, including the picker, bands and Compare. They never change result identity/tint or enter “Since official result”. Sourced-view and faction-counting choices remain unmarked views. A family vote-scaling operation is A because it changes votes; freezing a family grouping is B.
-- **C — appearance:** list, party, bloc and family colours and purely visual display labels. Save/share appearance and retain it for the official result, with no Edited marker, factual summary or scenario tint. A grouping's own authored name is B; a bloc's purely visual display label is C.
+- **A — result:** votes, turnout/totals, list topology and identities, candidate rosters/order, agreements, lottery outcomes and allocation rules. Counted, listed in History, marked, scenario tint.
+- **B — grouping and coalition:** bloc membership of lists, parties and members; creating, renaming or deleting a bloc; custom and family groupings and their names; coalition roles (In / Support / Abstain / Out / Any). Counted, listed in History, marked and tinted exactly like A. Where a change summary appears (top-bar summary line, History, the scenario switcher, Scenarios), a scenario whose only changes are B adds “Votes and seats unchanged” / “הקולות והמנדטים לא השתנו”. Choosing a sourced grouping, and faction counting, remain unmarked views. A family vote-scaling operation is A.
+- **C — appearance:** list, party, bloc and family colours, display choices, sort order and view toggles. Never counted, marked or tinted; saved/shared with the scenario and retained for the official result. Recolouring a bloc is C; renaming it is B.
 
-Result identity uses A-only differences; shared marker/reference comparisons retain A and B. An otherwise-official result with custom analysis or appearance remains “Official result”. Saving/loading uses the document checkpoint for local markers and dirty state independently of the factual comparison. See [the complete field inventory](appearance-and-result-identity.md).
+Identity, tint, counts and markers all use the same A+B comparison (`referenceChanges`; `resultChanges` is the same set). See [the complete field inventory](appearance-and-result-identity.md).
 
 **Whole-part replacement.** A starting point, rule preset or family grouping replaces a part
 and receives one marker at that part. Its induced list, bloc or agreement changes receive no
@@ -82,7 +82,7 @@ of marker scopes.
 
 **Scenario colour, not repeated labels.** Revised 4 November 2026 after owner feedback: no repetitive "hypothetical" text.
 
-- **Identity colour (A only).** Every result-edited scenario has an identity colour, chosen from a scenario palette and editable. The colour is visible wherever scenarios are chosen (the saved list, the gallery, Compare's pickers), so a scenario is recognisable before it is opened.
+- **Identity colour (A and B).** Every changed scenario has an identity colour, chosen from a scenario palette and editable. The colour is visible wherever scenarios are chosen (the saved list, the gallery, Compare's pickers), so a scenario is recognisable before it is opened.
 - **Official result.** It always uses one reserved, untinted (neutral) treatment, and no scenario can choose it. An unsaved edited state gets the default scenario tint.
 - **Chrome only.** The colour tints the app chrome: the top-bar band, the board frame, and the frames of Compare's two sides. It never tints seats, lists or bloc regions, because those colours are data.
 - **One quiet text cue.** Colour alone fails for colour-blind readers and for cropped screenshots. So there is a single chip in the top bar: a swatch plus the scenario name. It expands on demand to list the changes from the official result.
@@ -92,7 +92,7 @@ of marker scopes.
 
 **Setting.** "Mark differences from: the loaded scenario (default) / always the official result". The second option keeps every per-item marker against the real election.
 
-A scenario is the existing `SavedScenario`: a name plus an action log replayed from the official data. Its parts retain result edits (A), analysis (B) and appearance (C) independently. No new storage model is needed. Add one piece of store state, `reference`: the replayed scenario at save or load time, or null for official. Also add one derive helper, `referenceChanges`, which supplies part/item markers, and `markerReference` for their previous values.
+A scenario is the existing `SavedScenario`: a name plus an action log replayed from the official data. Its parts retain result edits (A), grouping/coalition changes (B) and appearance (C) independently. No new storage model is needed. Add one piece of store state, `reference`: the replayed scenario at save or load time, or null for official. Also add one derive helper, `referenceChanges`, which supplies part/item markers, and `markerReference` for their previous values.
 
 ## 3. Levels: three presets plus Custom
 

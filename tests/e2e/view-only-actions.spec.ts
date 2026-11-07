@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { choose } from './choices.ts';
 
-test('sourced groupings stay official; moving a member is marked analysis; shares preserve the view', async ({ page }) => {
+test('sourced groupings stay official; moving a member is a change; shares preserve the view', async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang:'en',theme:'light',level:'expert',hintDismissed:true})));
   await page.goto('/');
   await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
@@ -24,8 +24,9 @@ test('sourced groupings stay official; moving a member is marked analysis; share
   const cards = panel.locator('.bp-card');
   await cards.first().locator('.bp-chip-main:not([disabled])').first().click();
   await cards.nth(1).getByRole('button', { name: /Move here/ }).click();
-  expect(await page.locator('.app').evaluate(el => (el as HTMLElement).style.getPropertyValue('--scenario-color'))).toBe('');
-  await expect(page.locator('.session')).toContainText('No changes');
+  expect(await page.locator('.app').evaluate(el => (el as HTMLElement).style.getPropertyValue('--scenario-color'))).not.toBe('');
+  await expect(page.locator('.session')).toContainText('1 change from the official result');
+  await expect(page.locator('.session')).toContainText('Votes and seats unchanged');
   await expect(page.locator('.edit-marker').first()).toBeVisible();
   await page.screenshot({ path: '.backup-scratch/u7/membership-edited.png' });
 });
@@ -59,40 +60,4 @@ test('grouping keeps official and saved checkpoints free of stars; voting adds a
   const votes = page.locator('.side-panel').getByRole('textbox', { name: 'Votes', exact: true });
   await votes.fill('1120000'); await votes.press('Enter');
   await expect(current).toContainText('*');
-});
-
-test('k26: a bloc move is locally marked analysis; only a vote changes result identity',async({page})=>{
- await page.addInitScript(()=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang:'en',theme:'light',level:'expert',hintDismissed:true})));
- await page.goto('/');await choose(page.getByRole('button',{name:'Election',exact:true}),'k26');
- await page.getByRole('button',{name:'Edit blocs',exact:true}).click();
- const panel=page.locator('.bloc-panel'),cards=panel.locator('.bp-card');
- await cards.first().locator('.bp-chip-main:not([disabled])').first().click();
- await cards.nth(1).getByRole('button',{name:/Move here/}).click();
- await expect(panel.locator('.analysis-edits .edit-marker')).toBeVisible();
- await panel.locator('.analysis-edits .edit-marker').focus();
- await expect(page.getByRole('dialog',{name:/Edited: was/})).toBeVisible();
- await page.keyboard.press('Escape');
- await expect(page.locator('.board-choices .analysis-edits .edit-marker')).toBeVisible();
- await expect(page.locator('.blocs-head .analysis-edits .edit-marker')).toBeVisible();
- await expect(page.locator('.band .scenario-switcher .choice-trigger')).toHaveAttribute('data-value','official');
- expect(await page.locator('.app').evaluate(el=>(el as HTMLElement).style.getPropertyValue('--scenario-color'))).toBe('');
- await expect(page.locator('.session')).toContainText('No changes');
- await page.getByRole('tab',{name:'Compare',exact:true}).click();
- await expect(page.locator('.cmp .analysis-edits .edit-marker')).toBeVisible();
- await page.getByRole('tab',{name:'Overview',exact:true}).click();
- await page.getByRole('tab',{name:'Scenarios',exact:true}).click();
- await page.locator('.scn-save').click();
- await expect(page.locator('.band .scenario-switcher .choice-trigger')).toHaveAttribute('data-value','official');
- await page.getByRole('button',{name:'Copy a share link',exact:true}).click();
- const link=await page.getByRole('textbox',{name:'Share link',exact:true}).inputValue();
- await page.goto(link);
- await expect(page.locator('.band .scenario-switcher .choice-trigger')).toHaveAttribute('data-value','official');
- await expect(page.locator('.session')).toContainText('No changes');
- await page.getByRole('tab',{name:'Overview',exact:true}).click();
- await page.getByRole('region',{name:'Lists',exact:true}).getByRole('button',{name:'Likud',exact:true}).click();
- const votes=page.locator('.side-panel').getByRole('textbox',{name:'Votes',exact:true});
- await votes.fill('1120000');await votes.press('Enter');
- expect(await page.locator('.app').evaluate(el=>(el as HTMLElement).style.getPropertyValue('--scenario-color'))).not.toBe('');
- await expect(page.locator('.band .scenario-switcher .choice-trigger')).not.toHaveAttribute('data-value','official');
- await expect(page.locator('.session')).not.toContainText('grouping changed');
 });
