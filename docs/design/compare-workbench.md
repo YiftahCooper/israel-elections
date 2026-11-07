@@ -569,6 +569,28 @@ The engine is unchanged.
 | **Map swipe / locality comparison** | National copies don't produce local results (§7.6). A swipe hides values. |
 | **Sync scroll** | Not needed: the head-to-head table is one scroll. |
 
+### Deferred from v1 (b87dd38, 7 Nov)
+
+Built in v1 except for these. Each stays in the spec above; none blocks v1.
+
+- **Grouping and coalition copies** (§7.5). Rows, totals, rules, agreements, candidates and colour copy; groupings and coalitions do not yet.
+- **Paste-special sheet** and **Copy all matched** as one control (§6). Bulk copy works through the row selection.
+- **One shared grouping picker** for both sides (§4). Each side shows its own scheme in its chamber.
+- **Level entries in `features.ts`** for the Compare controls. Levels are gated inside the workbench for now.
+- **Export as image** of the workbench.
+- **One part-level marker for a whole-list replace** ("Replaced from 2022", §8). v1 marks each copied field "From 2022" instead.
+- **Turnout copy markers.** A turnout copy marks invalid ballots only, not every scaled list.
+- **Entering/leaving people across elections.** v1 shows them only when both sides are the same election.
+
+### Decided after v1 (coordinator defaults, 7 Nov; the owner may veto)
+
+- **The main scenario always sits on the right** (`COMPARE_MAIN_SIDE`), whatever the years; the side labels carry the year order. This supersedes "the earlier election on the left" (consistent siblings, no jumps).
+- **"Lists with no seats"** follows the global Settings preference once it exists; until then it is off. Members of a merged or split group always show, including those with no seats (Balad 2022 in the Joint List row; Noam in the Religious Zionism group).
+- **A person on two lists after an import** (Whole list or Candidates) gets an inline warning naming the person and the other list, with a one-tap "Remove from *list*". It never blocks and never removes on its own. People are matched by Knesset member record, never by name.
+- **Saved comparisons are listed on the Scenarios page** too, with Open, Copy link and Delete.
+- **Share change** in the Change column carries its unit ("pp" / "נק׳ אחוז"), explained in the column header's (i). Its digits move to the shared percentage formatter and max-decimals setting with the Settings lane (V2c).
+- **Matching runs from the earlier side to the later one** and is mirrored when the later side is drawn on the left, so a merger or split reads the same whichever side the main scenario sits on. Your pairings are stored in that earlier → later order.
+
 ## 15. Test plan
 
 **Unit (vitest):**

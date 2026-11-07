@@ -13,6 +13,7 @@
 
 - Give bloc regions clean shared edges and contrast-checked borders in Arc, Blocks, reference chambers, legend keys and exports.
 - Compare becomes a two-sided workbench: lists paired from party records, values copied either way with exact share/count/change rules and marked with their origin, per-side undo, swap, saved comparisons and share links.
+- Compare: the open scenario always stays on the right with matching unchanged; an import that puts someone on two lists warns and offers a one-tap removal; saved comparisons are listed on Scenarios; the share change shows its unit (pp).
 
 - Mark custom bloc, coalition and family groupings locally as analysis while preserving official result identity and factual summaries.
 

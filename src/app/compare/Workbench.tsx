@@ -16,10 +16,10 @@ import { Hemicycle } from '../components/Hemicycle.tsx';
 import { SeatDelta } from '../components/SeatDelta.tsx';
 import { CandidateName } from '../components/CandidateName.tsx';
 import { Info, Slip } from '../components/ui.tsx';
-import { matchRows, copyUnit, type MatchRow } from './match.ts';
-import { planAgreements, planColour, planRoster, planRules, planTotals, planVotes, type CopyUnit, type Plan } from './copy.ts';
+import { matchRows, mirrorRows, copyUnit, groupIds, inOf, type MatchRow } from './match.ts';
+import { duplicatePeople, planAgreements, planColour, planRoster, planRules, planTotals, planVotes, type CopyUnit, type Plan } from './copy.ts';
 import { remembered } from './answers.ts';
-import { COPY_ARROWS, COMPARE_MAIN_SIDE, comparisonLink, comparisonOf, openComparison, pairKey, saveComparison, savedComparisons, setOverrides, setSwap } from './sides.ts';
+import { COPY_ARROWS, COMPARE_MAIN_SIDE, copyComparisonLink, comparisonOf, openComparison, pairKey, saveComparison, useSavedComparisons, setOverrides, setSwap } from './sides.ts';
 import { cellsOf, listMarks, sourceOf, unitsFor, type Cells, type SideModel } from './model.ts';
 import { CopyVotesDialog, MatchingPanel, RowSheet, SaveDialog, VotesEditor, WholeListDialog, tagText, TAG_INFO, type CopyRequest, type WholeRequest } from './dialogs.tsx';
 import { markerLead } from './copyText.ts';
@@ -38,16 +38,18 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
   const swapPref = useStore((st) => st.compare.swap);
   const pair = pairKey(main.sc.electionId, other.sc.electionId);
   const overrides = useStore((st) => st.compare.overrides[pair]) ?? [];
-  // the main scenario is on the right; between elections, the earlier one is on the left unless the user swapped
-  const otherLater = other.ds.electionDate > main.ds.electionDate;
-  const mainLeft = swapPref ?? (otherLater || COMPARE_MAIN_SIDE === 'left');
+  // the main scenario always sits on the same side (consistent siblings, no jumps); the side labels carry the year order
+  const mainLeft = swapPref ?? COMPARE_MAIN_SIDE === 'left';
   const [left, right] = mainLeft ? [main, other] : [other, main];
   const cross = left.sc.electionId !== right.sc.electionId;
   /** how a side is named in "Copy … to X": its year between elections, its own name within one */
   const nameOf = (x: SideModel) => cross ? x.year : x.name;
   const sideOf = (d: Dir) => d === 'toRight' ? { from: left, to: right } : { from: right, to: left };
 
-  const rows = useMemo(() => matchRows(left.sc, right.sc, overrides), [left.sc, right.sc, overrides]);
+  // matched from the earlier side to the later one (within one election: from the starting point to the open scenario),
+  // then mirrored when the later side is drawn on the left; user pairings are stored in that same earlier → later order
+  const flip = cross ? left.ds.electionDate > right.ds.electionDate : left.role === 'main';
+  const rows = useMemo(() => flip ? mirrorRows(matchRows(right.sc, left.sc, overrides)) : matchRows(left.sc, right.sc, overrides), [left.sc, right.sc, overrides, flip]);
   // a stable order: the starting points' seats, so rows never move while either side is edited
   const order = useMemo(() => {
     const rs = allocationOf(right.start), ls = allocationOf(left.start);
@@ -55,9 +57,9 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
     const vote = (sc: typeof right.start, ids: string[]) => ids.reduce((t, id) => t + (sc.lists.find((l) => l.id === id)?.votes ?? 0), 0);
     const score = (row: MatchRow) => row.right.length ? [1, seat(rs, row.right), vote(right.start, row.right)] : [0, seat(ls, row.left), vote(left.start, row.left)];
     const groupScore = new Map<string, number[]>();
-    for (const row of rows) if (row.group && row.left.length) groupScore.set(row.group, score(row));
+    for (const row of rows) if (row.group && row.left.length && row.right.length) groupScore.set(row.group, score(row));
     const keyOf = (row: MatchRow) => row.group ? groupScore.get(row.group) ?? score(row) : score(row);
-    return [...rows].sort((a, b) => { const x = keyOf(a), y = keyOf(b); for (let i = 0; i < 3; i++) if (x[i] !== y[i]) return y[i] - x[i]; if (a.group && a.group === b.group) return (b.left.length ? 1 : 0) - (a.left.length ? 1 : 0) || score(b)[1] - score(a)[1]; return a.key.localeCompare(b.key); });
+    return [...rows].sort((a, b) => { const x = keyOf(a), y = keyOf(b); for (let i = 0; i < 3; i++) if (x[i] !== y[i]) return y[i] - x[i]; if (a.group && a.group === b.group) return (b.left.length && b.right.length ? 1 : 0) - (a.left.length && a.right.length ? 1 : 0) || score(b)[1] - score(a)[1]; return a.key.localeCompare(b.key); });
   }, [rows, left.start, right.start]);
 
   const [filter, setFilter] = useState<Filter>('all');
@@ -157,7 +159,12 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
       }
       if (one && !simple) {
         items.push(btn(`w${d}`, L('Whole list…', 'הרשימה כולה…'), () => setWholeReq({ from, to, srcId: one.src[0], dstId: one.dst[0], cross })));
-        items.push(btn(`c${d}`, L('Candidates', 'מועמדים'), () => direct(planRoster({ from: sourceOf(from), to: to.sc, ctx: { base: to.start }, srcId: one.src[0], dstId: one.dst[0] }), to, L(`Candidates copied to ${nameOf(to)}.`, `המועמדים הועתקו ל${cross ? '־' : ''}${nameOf(to)}.`))));
+        items.push(btn(`c${d}`, L('Candidates', 'מועמדים'), () => {
+          const plan = planRoster({ from: sourceOf(from), to: to.sc, ctx: { base: to.start }, srcId: one.src[0], dstId: one.dst[0] });
+          // someone would stand on two lists: ask, with the warning, instead of copying at once
+          if (plan.ok && duplicatePeople(plan.result, one.dst[0]).length) setWholeReq({ from, to, srcId: one.src[0], dstId: one.dst[0], cross, candidatesOnly: true });
+          else direct(plan, to, L(`Candidates copied to ${nameOf(to)}.`, `המועמדים הועתקו ל${cross ? '־' : ''}${nameOf(to)}.`));
+        }));
         items.push(btn(`k${d}`, L('Colour', 'צבע'), () => direct(planColour({ from: sourceOf(from), to: to.sc, ctx: { base: to.start }, srcId: one.src[0], dstId: one.dst[0] }), to, L(`Colour copied to ${nameOf(to)}.`, `הצבע הועתק ל${cross ? '־' : ''}${nameOf(to)}.`))));
       }
       if (srcOnly && !simple) for (const id of d === 'toRight' ? row.left : row.right) items.push(btn(`a${d}${id}`, L('Add as a new list…', 'הוספה כרשימה חדשה…'), () => setWholeReq({ from, to, srcId: id, dstId: null, cross })));
@@ -181,12 +188,8 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
     keys.forEach((k) => on ? next.add(k) : next.delete(k)); setSelected(next);
   };
 
-  const share = async () => {
-    const link = await comparisonLink(comparisonOf(main.sc, other.sc, swapPref, overrides));
-    try { await navigator.clipboard.writeText(link); toast('info', L('Link copied. It opens both sides and your pairings.', 'הקישור הועתק. הוא פותח את שני הצדדים ואת ההתאמות שלכם.')); }
-    catch { toast('error', L('The browser refused to copy the link.', 'הדפדפן סירב להעתיק את הקישור.')); }
-  };
-  const savedList = savedComparisons();
+  const share = () => copyComparisonLink(comparisonOf(main.sc, other.sc, swapPref, overrides));
+  const savedList = useSavedComparisons();
 
   const onKey = (e: KeyboardEvent) => {
     // Ctrl/⌘ Z and Y act on the side last edited or focused; the main side is the board's own history
@@ -237,7 +240,7 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
         <thead><tr>
           {!simple && <th className="cmp-tick"><span className="sr-only">{L('Select', 'בחירה')}</span></th>}
           <th className="cmp-name cmp-lname" dir={lang === 'he' ? 'rtl' : 'ltr'}>{nameOf(left)}</th><th className="n cmp-v">{L('Votes', 'קולות')}</th><th className="n cmp-s">{L('Share', 'שיעור')}</th><th className="n">{L('Seats', 'מנדטים')}</th>
-          <th className="cmp-mid">{L('Change', 'שינוי')}</th>
+          <th className="cmp-mid">{L('Change', 'שינוי')} {!simple && <Info title={L('Change', 'שינוי')}>{L(`${nameOf(right)} minus ${nameOf(left)}: seats, then the share of valid votes in percentage points (pp).`, `${nameOf(right)} פחות ${nameOf(left)}: מנדטים, ואז שיעור הקולות הכשרים בנקודות אחוז (נק׳ אחוז).`)}</Info>}</th>
           <th className="n">{L('Seats', 'מנדטים')}</th><th className="n cmp-s">{L('Share', 'שיעור')}</th><th className="n cmp-v">{L('Votes', 'קולות')}</th><th className="cmp-name cmp-rname" dir={lang === 'he' ? 'rtl' : 'ltr'}>{nameOf(right)}</th>
           <th className="cmp-more"><span className="sr-only">{L('More', 'עוד')}</span></th>
         </tr></thead>
@@ -263,7 +266,7 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
                   {arrow(row, toL && !grouped ? [toL] : null, 'toLeft', what)}
                   <span className="cmp-delta">
                     {grouped ? <span className="tiny muted">{L('see group', 'ראו קבוצה')}</span> : d !== null ? <SeatDelta value={d} /> : <span className="muted">—</span>}
-                    {!simple && shareD && shareD.num !== 0n && <span className="tiny muted cmp-pp"><bdi dir="ltr">{signedDecimal(fmtRat(shareD, 2))}</bdi></span>}
+                    {!simple && shareD && shareD.num !== 0n && <span className="tiny muted cmp-pp" dir={lang === 'he' ? 'rtl' : 'ltr'}><bdi dir="ltr">{signedDecimal(fmtRat(shareD, 2))}</bdi> {L('pp', 'נק׳ אחוז')}</span>}
                     <span className={`cmp-tag tag-${row.tag}`} title={L(...TAG_INFO[row.tag])}>{tagText(row.tag, L)}</span>
                   </span>
                   {arrow(row, toR && !grouped ? [toR] : null, 'toRight', what)}
@@ -297,10 +300,10 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
     {copyReq && <CopyVotesDialog req={copyReq} onClose={() => setCopyReq(null)} onDone={(plan, req) => { if (commit(plan, req.to, L(`Votes copied to ${nameOf(req.to)}.`, `הקולות הועתקו ל${cross ? '־' : ''}${nameOf(req.to)}.`))) setCopyReq(null); }} />}
     {wholeReq && <WholeListDialog req={wholeReq} onClose={() => setWholeReq(null)} onDone={(plan, text) => { if (commit(plan, wholeReq.to, text + '.')) setWholeReq(null); }} />}
     {editing && <VotesEditor side={editing.side} listId={editing.listId} onClose={() => setEditing(null)} />}
-    {matching && <MatchingPanel rows={order} left={left} right={right} overrides={overrides} setOverrides={(o) => setOverrides(pair, o)} onClose={() => setMatching(false)} />}
+    {matching && <MatchingPanel rows={order} flip={flip} left={left} right={right} overrides={overrides} setOverrides={(o) => setOverrides(pair, o)} onClose={() => setMatching(false)} />}
     {sheet && <RowSheet row={sheet} left={left} right={right} onClose={() => setSheet(null)} actions={<>{menuItems(sheet, () => setSheet(null))}</>} />}
     {saving && <SaveDialog suggested={`${nameOf(left)} ↔ ${nameOf(right)}`} onClose={() => setSaving(false)} onSave={(name) => {
-      if (saveComparison(name, comparisonOf(main.sc, other.sc, swapPref, overrides))) { toast('info', L('Comparison saved in this browser.', 'ההשוואה נשמרה בדפדפן זה.')); setSaving(false); }
+      if (saveComparison(name, comparisonOf(main.sc, other.sc, swapPref, overrides))) { toast('info', L('Comparison saved in this browser (see Scenarios).', 'ההשוואה נשמרה בדפדפן זה (ראו תרחישים).')); setSaving(false); }
       else toast('error', L('The browser refused to save (storage full or blocked).', 'הדפדפן סירב לשמור (האחסון מלא או חסום).'));
     }} />}
   </div>;
@@ -340,7 +343,8 @@ function NameCell({ x, c, row, side, lang }: { x: SideModel; c: Cells | null; ro
   const L = useL();
   const notes = row.notes.filter((n) => n.side === side);
   const cls = `cmp-name cmp-${side === 'left' ? 'lname' : 'rname'}`;
-  if (!c) return <td className={cls} data-year={x.year} dir={lang === 'he' ? 'rtl' : 'ltr'}>{row.inLeft && side === 'left' ? <span className="muted small">{L(`in ${listLabel(x.sc.lists.find((l) => l.id === row.inLeft)!, 'en')}`, `בתוך ${listLabel(x.sc.lists.find((l) => l.id === row.inLeft)!, 'he')}`)}</span> : <span className="muted">—</span>}</td>;
+  const inside = inOf(row, side) && x.sc.lists.find((l) => l.id === inOf(row, side));
+  if (!c) return <td className={cls} data-year={x.year} dir={lang === 'he' ? 'rtl' : 'ltr'}>{inside ? <span className="muted small">{L(`in ${listLabel(inside, 'en')}`, `בתוך ${listLabel(inside, 'he')}`)}</span> : <span className="muted">—</span>}</td>;
   return <td className={cls} data-year={x.year} dir={lang === 'he' ? 'rtl' : 'ltr'}>
     {c.lists.map((l) => { const all = listMarks(x, l.id), isVotes = (m: { path: readonly string[] }) => m.path[0] === 'lists' && m.path[2] === 'votes';
       const marks = all.filter((m) => !isVotes(m)), votes = all.filter(isVotes);
@@ -398,14 +402,17 @@ function Mark({ x, path }: { x: SideModel; path: readonly string[] }) {
 function GroupLine({ group, rows, left, right, simple, copy, nameOf }: { group: string; rows: MatchRow[]; left: SideModel; right: SideModel; simple: boolean; copy: (u: CopyUnit, d: Dir) => void; nameOf: (x: SideModel) => string }) {
   const L = useL(), lang = useLang();
   const g = rows.filter((r) => r.group === group);
-  const lIds = [...new Set(g.flatMap((r) => [...r.left, ...(r.inLeft ? [r.inLeft] : [])]))], rIds = g.flatMap((r) => r.right);
+  const lIds = groupIds(g, 'left'), rIds = groupIds(g, 'right');
   const l = cellsOf(left, lIds)!, r = cellsOf(right, rIds)!;
-  const name = lIds.map((id) => listLabel(left.sc.lists.find((x) => x.id === id)!, lang)).join(' + ');
+  // named after the list that split, whichever side it is drawn on; the count is of its successors
+  const srcRight = g.some((x) => x.inRight);
+  const [src, srcIds, succ] = srcRight ? [right, rIds, lIds] : [left, lIds, rIds];
+  const name = srcIds.map((id) => listLabel(src.sc.lists.find((x) => x.id === id)!, lang)).join(' + ');
   const toR = copyUnit(g[0], rows, 'toRight')!, toL = copyUnit(g[0], rows, 'toLeft')!;
   const label = (d: Dir) => L(`Copy the group’s votes to ${nameOf(d === 'toRight' ? right : left)}`, `העתקת קולות הקבוצה ל${nameOf(d === 'toRight' ? right : left)}`);
   return <tr className="cmp-groupline">
     {!simple && <td />}
-    <td colSpan={4} dir={lang === 'he' ? 'rtl' : 'ltr'} className="small"><b><bdi>{name}</bdi></b> <span className="muted">{L(`${left.year} → ${rIds.length} lists`, `${left.year} ← ${rIds.length} רשימות`)}</span> <Info title={L('A split list', 'רשימה שהתפצלה')}>{L('Its voters can’t be divided among the new lists, so only the group is compared and copied. A group copy keeps the destination lists’ own balance.', 'אי אפשר לחלק את בוחריה בין הרשימות החדשות, ולכן רק הקבוצה כולה מושווית ומועתקת. העתקת קבוצה שומרת על האיזון בין רשימות היעד.')}</Info></td>
+    <td colSpan={4} dir={lang === 'he' ? 'rtl' : 'ltr'} className="small"><b><bdi>{name}</bdi></b> <span className="muted">{L(`${src.year} → ${succ.length} lists`, `${src.year} ← ${succ.length} רשימות`)}</span> <Info title={L('A split list', 'רשימה שהתפצלה')}>{L('Its voters can’t be divided among the new lists, so only the group is compared and copied. A group copy keeps the destination lists’ own balance.', 'אי אפשר לחלק את בוחריה בין הרשימות החדשות, ולכן רק הקבוצה כולה מושווית ומועתקת. העתקת קבוצה שומרת על האיזון בין רשימות היעד.')}</Info></td>
     <td className="cmp-mid"><span className="cmp-mid-in">
       <button type="button" className="cmp-arrow" aria-label={label('toLeft')} title={label('toLeft')} onClick={() => copy(toL, 'toLeft')}><ArrowLeft size={16} /></button>
       <span className="cmp-delta"><bdi dir="ltr">{l.seats} → {r.seats}</bdi> <SeatDelta value={r.seats - l.seats} /></span>
