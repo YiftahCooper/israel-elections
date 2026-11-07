@@ -12,6 +12,7 @@
 - Give every joint-list party a visible seat dot and consistent, contrast-checked display colours across charts, keys, details and exports.
 
 - Give bloc regions clean shared edges and contrast-checked borders in Arc, Blocks, reference chambers, legend keys and exports.
+- Compare becomes a two-sided workbench: lists paired from party records, values copied either way with exact share/count/change rules and marked with their origin, per-side undo, swap, saved comparisons and share links.
 
 - Mark custom bloc, coalition and family groupings locally as analysis while preserving official result identity and factual summaries.
 

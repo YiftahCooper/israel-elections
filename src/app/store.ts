@@ -1,4 +1,4 @@
-import { resultDiffs } from '../model/editScopes.ts';
+import { carryEditScopes, resultDiffs } from '../model/editScopes.ts';
 import { nextCopyName, scenarioDirty } from './scenarioDocument.ts';
 import { ACTION_CLASSIFICATION, isFactAction, hasAppearance, hasAnalysis, factLog } from '../model/actionClassification.ts';
 import { baselineOf, freshScenario, factionDefault, setFactionDefault } from './factionDefaults.ts';
@@ -68,6 +68,9 @@ export interface State {
   sessions: Partial<Record<ElectionId, ScenarioSession>>;
   /** Unsaved branches shared by the header and phone inspectors; deliberately session-only. */
   scenarioDrafts: Record<string, ScenarioSession>;
+  /** Compare's other side (session-only): its drafts by comparator, the orientation (null: earlier election on the left)
+   *  and the user's list pairings by election pair. See src/app/compare/sides.ts. */
+  compare: { drafts: Record<string, ScenarioSession>; swap: boolean | null; overrides: Record<string, import('./compare/match.ts').MatchOverride[]> };
 }
 
 const LS = 'israel-elections:v1';
@@ -99,6 +102,7 @@ let state: State = {
   lang: persisted.lang ?? 'he', theme: persisted.theme ?? (globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
   level: LEVELS.includes(persisted.level) ? persisted.level : 'simple', customFeatures: persisted.customFeatures ?? null, hintDismissed: persisted.hintDismissed === true, digits: persisted.digits ?? 2, layout: 'hemicycle', colorBy: 'list', showComponentSeats: persisted.showComponentSeats !== false,
   saved: persisted.saved ?? [], toast: null, loadError: null, notice: null, voteSource: sourceChoice(rememberedPreferences.voteSource ?? 'proportional'), preferences: rememberedPreferences, preferenceAsk: null, preferenceFor: rememberedItems, sessions: {}, scenarioDrafts: {},
+  compare: { drafts: {}, swap: null, overrides: {} },
 };
 const listeners = new Set<() => void>();
 const emit = () => { for (const l of listeners) l(); };
@@ -552,7 +556,7 @@ function rebuild(ds: ElectionDataset, x: Snap): { session: ScenarioSession; fail
     const steps: Scenario[] = [];
     for (const e of entries.slice(from ? from.log.length : 0)) {
       steps.push(s);
-      try { s = applyAction(s, e.action, undefined, ctx); s = { ...s, log: [...s.log.slice(0, -1), e] }; } catch { failed++; }
+      try { s = applyAction(s, e.action, undefined, ctx); const log = [...s.log.slice(0, -1), e]; carryEditScopes(s.log, log); s = { ...s, log }; } catch { failed++; }
     }
     return { s, steps };
   };

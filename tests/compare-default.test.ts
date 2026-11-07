@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { beforeEach, expect, it, vi } from 'vitest';
+import { beforeAll, beforeEach, expect, it, vi } from 'vitest';
 import type { ElectionDataset, ElectionIndexEntry } from '../src/data/schema.ts';
 import { Compare } from '../src/app/components/Compare.tsx';
 import { baselineOf, allocationOf } from '../src/app/derive.ts';
@@ -24,6 +24,13 @@ function render(id: keyof typeof datasets = 'k26', edited = false) {
   const s = edited ? { ...base, registered: base.registered + 1 } : base;
   return renderToStaticMarkup(createElement(LangContext.Provider, { value: 'en' }, createElement(Compare, { s, r: allocationOf(s), base, ds })));
 }
+// the workbench is its own lazy chunk: start loading it once, so server rendering returns the panel, not its fallback
+beforeAll(async () => {
+  setState({ datasets, elections, compareWith: 'auto', saved: [], reference: null, markOfficial: false });
+  render();
+  await import('../src/app/compare/Workbench.tsx');
+  await new Promise((r) => setTimeout(r, 0));
+});
 it('opens an unchanged result on the previous election without writing the target', () => {
   expect(render()).toContain('data-value="election:k25"');
   expect(getState().compareWith).toBe('auto');

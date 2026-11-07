@@ -18,7 +18,7 @@ test('grouping-only switches stay factual-neutral in Compare and keep named undo
     await page.getByRole('tab', {name:'Compare',exact:true}).click();
     // U7 makes both sourced schemes unchanged facts. Auto comparison therefore
     // opens the previous election (c4e7904); an explicit same-election choice stays empty.
-    if (scheme === 'pre-election-blocs') await expect(page.locator('.cmp-head .choice-trigger')).toHaveAttribute('data-value', 'election:k24');
+    if (scheme === 'pre-election-blocs') await expect(page.getByRole('button', { name: 'Compare with', exact: true })).toHaveAttribute('data-value', 'election:k24');
     await choose(page.getByRole('button', { name: 'Compare with', exact: true }), 'historical');
     await expect(page.locator('.cmp-empty')).toContainText('Edits you make show here.');
     await expect(page.locator('.cmp-diff')).toHaveCount(0);

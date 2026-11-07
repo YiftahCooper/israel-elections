@@ -315,6 +315,7 @@ function chosenVoteLists(s:Scenario,reference:Scenario):Set<string>|null{
    for(const x of a.allocations.slice(0,k<a.allocations.length?k+1:a.allocations.length))chosen.add(x.listId);}
   else if(a.type==='addVoters')for(const x of a.allocations)chosen.add(x.listId);
   else if(a.type==='scaleAll'||a.type==='setTurnout')return null;
+  else if(a.type==='copyFrom'){if(a.actions.some(x=>x.type==='setTurnout'))return null;for(const id of a.provenance.targetListIds??[])chosen.add(id);}
  }
  return chosen;
 }

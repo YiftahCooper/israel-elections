@@ -67,6 +67,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     await page.locator('.side-panel .cands').getByRole('button', { name: lang === 'en' ? 'Remove' : 'הסרה', exact: true }).first().click();
     await page.locator('.side-panel').getByRole('button', { name: lang === 'en' ? 'Close' : 'סגירה', exact: true }).click();
     await page.locator('#tab-compare').click();
+    await page.locator('details.cmp-section > summary').click();
     const compared = page.locator('.cmp-section li bdi[lang="he"][dir="rtl"]');
     await expect(compared.first()).toBeVisible();
     if (lang === 'en') await expect(compared.first()).toHaveAttribute('title', 'Hebrew name — no official English spelling recorded');
