@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "electionId": "k1",
   "status": "pilot",
-  "reviewedAt": "2026-11-06",
+  "reviewedAt": "2026-11-07",
   "notes": [
     "Research draft; not wired into the application. Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
     "The government card describes the first cabinet. Each replacement cabinet has a full-session confidence step and a numbered government.changes entry; available replacement coalition snapshots are attached to that entry.",
@@ -99,6 +99,18 @@
       "publisher": "JTA, 23 February 1949 follow-up",
       "kind": "secondary",
       "accessed": "2026-11-06"
+    },
+    "role-roster-1": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%201%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
+    },
+    "role-roster-2": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%202%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
     }
   },
   "results": {
@@ -367,35 +379,98 @@
     "coalition": [
       {
         "letters": "א",
-        "seats": 46
+        "seats": 46,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-1",
+            "quote": "PersonToPositionID 3569; PersonID 2448; PositionID 57; StartDate 1949-03-10T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. גולדה מאיר; faction join: מפלגת פועלי ארץ-ישראל"
+          }
+        ]
       },
       {
         "letters": "ב",
-        "seats": 16
+        "seats": 16,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-1",
+            "quote": "PersonToPositionID 3379; PersonID 2661; PositionID 39; StartDate 1949-03-10T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. חיים משה שפירא; faction join: חזית דתית מאוחדת"
+          }
+        ]
       },
       {
         "letters": "פ",
-        "seats": 5
+        "seats": 5,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-1",
+            "quote": "PersonToPositionID 3848; PersonID 2600; PositionID 39; StartDate 1949-03-10T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. פנחס רוזן; faction join: מפלגה פרוגרסיבית"
+          }
+        ]
       },
       {
         "letters": "ס",
-        "seats": 4
+        "seats": 4,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-1",
+            "quote": "PersonToPositionID 3814; PersonID 2639; PositionID 39; StartDate 1949-03-10T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. בכור-שלום שיטרית; faction join: ספרדים ועדות מזרח"
+          }
+        ]
       },
       {
         "letters": "יד",
-        "seats": 2
+        "seats": 2,
+        "role": "confidence-vote-only",
+        "certainty": "provisional",
+        "cites": [
+          {
+            "source": "coalition-2",
+            "quote": "גלוסקא זכריה (התימנים) בעד; כהן רחל (ויצ״ו) בעד; ג׳רגורה אמין סלים (הרשימה הדמוקראטית של נצרת) בעד. Project tabulation: 73 for, 45 against; Ben-Zvi and Granovsky absent."
+          }
+        ],
+        "note": "Investiture support is documented; no signed coalition membership or continuing support arrangement recovered. This category records the established vote, not proof that no arrangement ever existed."
       },
       {
         "letters": "נ",
-        "seats": 1
+        "seats": 1,
+        "role": "confidence-vote-only",
+        "certainty": "provisional",
+        "cites": [
+          {
+            "source": "coalition-2",
+            "quote": "גלוסקא זכריה (התימנים) בעד; כהן רחל (ויצ״ו) בעד; ג׳רגורה אמין סלים (הרשימה הדמוקראטית של נצרת) בעד. Project tabulation: 73 for, 45 against; Ben-Zvi and Granovsky absent."
+          }
+        ],
+        "note": "Investiture support is documented; no signed coalition membership or continuing support arrangement recovered. This category records the established vote, not proof that no arrangement ever existed."
       },
       {
         "letters": "ל",
-        "seats": 1
+        "seats": 1,
+        "role": "confidence-vote-only",
+        "certainty": "provisional",
+        "cites": [
+          {
+            "source": "coalition-2",
+            "quote": "גלוסקא זכריה (התימנים) בעד; כהן רחל (ויצ״ו) בעד; ג׳רגורה אמין סלים (הרשימה הדמוקראטית של נצרת) בעד. Project tabulation: 73 for, 45 against; Ben-Zvi and Granovsky absent."
+          }
+        ],
+        "note": "Investiture support is documented; no signed coalition membership or continuing support arrangement recovered. This category records the established vote, not proof that no arrangement ever existed."
       }
     ],
-    "coalitionSeats": 75,
-    "coalitionSeatsNote": "Election-list seats of lists joining or supporting the government at formation: 75. The roll call was 73–45, with Ben-Zvi (Mapai) and Granovsky (Progressives) absent. WIZO, Yemenites and Nazareth supported without ministers; later cabinets are listed separately.",
+    "coalitionSeats": 71,
+    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
     "cites": [
       {
         "source": "coalition-1",
@@ -438,27 +513,85 @@
         "coalition": [
           {
             "letters": "א",
-            "seats": 46
+            "seats": 46,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-2",
+                "quote": "PersonToPositionID 3785; PersonID 2114; PositionID 39; StartDate 1950-11-01T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. משה שרת; faction join: מפלגת פועלי ארץ-ישראל"
+              }
+            ]
           },
           {
             "letters": "ב",
-            "seats": 16
+            "seats": 16,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-2",
+                "quote": "PersonToPositionID 3791; PersonID 2661; PositionID 39; StartDate 1950-11-01T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. חיים משה שפירא; faction join: חזית דתית מאוחדת"
+              }
+            ]
           },
           {
             "letters": "פ",
-            "seats": 5
+            "seats": 5,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-2",
+                "quote": "PersonToPositionID 3849; PersonID 2600; PositionID 39; StartDate 1950-11-01T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. פנחס רוזן; faction join: מפלגה פרוגרסיבית"
+              }
+            ]
           },
           {
             "letters": "ס",
-            "seats": 4
+            "seats": 4,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-2",
+                "quote": "PersonToPositionID 3815; PersonID 2639; PositionID 39; StartDate 1950-11-01T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. בכור-שלום שיטרית; faction join: ספרדים ועדות מזרח"
+              }
+            ]
           },
           {
             "letters": "יד",
-            "seats": 2
+            "seats": 2,
+            "role": "other",
+            "certainty": "unknown",
+            "cites": [],
+            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
           }
         ],
-        "coalitionSeats": 73,
-        "coalitionSeatsNote": "Seats won by the component lists at this election; not the confidence-vote count. Affiliated Arab support lists retain the first-government overlay’s labelled secondary evidence unless named in the protocol."
+        "coalitionSeats": null,
+        "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
+        "confidenceVote": {
+          "for": 69,
+          "against": 42,
+          "abstain": 2
+        },
+        "confidenceVoteCites": [
+          {
+            "source": "plenum-gov2",
+            "quote": "הצבעה 69 חברהכנסת מ. גרבובסקי בעד הצעת 42 נגד 2 נמנעים ההצעה נתקבלה. היו\"ר י. שפרינצק: בזה נכונה הממשלה החדשה של מדינתישראל. הצהרתאמונים של השרים (4) היו\"ר י. שפרינצק: והשרים לעלות על הבמה ראשהממשלה אבקש את"
+          }
+        ],
+        "membershipCoverage": "partial",
+        "supportSeats": null,
+        "reconciliation": {
+          "status": "unresolved",
+          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 71; full membership remains unknown. Investiture: 69 for, 42 against, 2 abstaining."
+        },
+        "knownMemberSeats": 71
       },
       {
         "date": "1951-02-14",
@@ -477,7 +610,61 @@
         "source": "plenum-gov2",
         "quote": "הצבעה 69 חברהכנסת מ. גרבובסקי בעד הצעת 42 נגד 2 נמנעים ההצעה נתקבלה. היו\"ר י. שפרינצק: בזה נכונה הממשלה החדשה של מדינתישראל. הצהרתאמונים של השרים (4) היו\"ר י. שפרינצק: והשרים לעלות על הבמה ראשהממשלה אבקש את"
       }
-    ]
+    ],
+    "confidenceVote": {
+      "for": 73,
+      "against": 45
+    },
+    "confidenceVoteCites": [
+      {
+        "source": "plenum-gov1",
+        "quote": "הראשונה הביעה הכנסת ,45 נגד קולות ב73 שהורכבה ע\"י דוד בממשלה אמונה את ישראל לעם בןגוריון ואישרה את תכניתה. )מחיאות כפים ממושכות(."
+      }
+    ],
+    "membershipCoverage": "complete",
+    "supportSeats": 0,
+    "reconciliation": {
+      "status": "explained",
+      "expectedFor": 73,
+      "note": "71 member seats + 4 confidence-vote-only seats (Nazareth 2, WIZO 1, Yemenites 1) − absent Ben-Zvi (Mapai) and Granovsky (Progressives) = 73 for; 45 against. No continuing support agreement is inferred."
+    },
+    "individuals": [
+      {
+        "id": "ben-zvi",
+        "nameEn": "Yitzhak Ben-Zvi",
+        "nameHe": "יצחק בן־צבי",
+        "fromLetters": "א",
+        "countedInFactionSeats": true,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "vote": "absent",
+        "cites": [
+          {
+            "source": "coalition-2",
+            "quote": "גלוסקא זכריה (התימנים) בעד; כהן רחל (ויצ״ו) בעד; ג׳רגורה אמין סלים (הרשימה הדמוקראטית של נצרת) בעד. Project tabulation: 73 for, 45 against; Ben-Zvi and Granovsky absent."
+          }
+        ],
+        "note": "Absent, as recorded in the retained roll-call tabulation; individual inherits the faction participation role, not a personal ministerial appointment."
+      },
+      {
+        "id": "granovsky",
+        "nameEn": "Avraham Granovsky",
+        "nameHe": "אברהם גרנובסקי",
+        "fromLetters": "פ",
+        "countedInFactionSeats": true,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "vote": "absent",
+        "cites": [
+          {
+            "source": "coalition-2",
+            "quote": "גלוסקא זכריה (התימנים) בעד; כהן רחל (ויצ״ו) בעד; ג׳רגורה אמין סלים (הרשימה הדמוקראטית של נצרת) בעד. Project tabulation: 73 for, 45 against; Ben-Zvi and Granovsky absent."
+          }
+        ],
+        "note": "Absent, as recorded in the retained roll-call tabulation; role describes faction participation."
+      }
+    ],
+    "knownMemberSeats": 71
   },
   "term": {
     "start": "1949-01-25",
@@ -569,5 +756,6 @@
     "Closing date is the next election, not dissolution day. The governing dissolution/election-date law has not been retrieved; regular versus early termination is not inferred from term length.",
     "Individual days of the October 1950 Ben-Gurion–Rosen–Ben-Gurion tasking sequence have not been recovered.",
     "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
-  ]
+  ],
+  "supportSchemaVersion": 1
 }

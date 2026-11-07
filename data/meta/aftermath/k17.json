@@ -135,6 +135,12 @@
       "accessed": "2026-11-07",
       "evidenceFamily": "olmert20060504-speech",
       "via": "Primary speech reproduced by an academic documentary collection; not an official host. Relevant passage at PDF page 136/index 135 read. Original PMO URL https://www.gov.il/en/pages/speechkness040506 returned 403; no bypass attempted. Mirror and original are one evidence family."
+    },
+    "role-roster-31": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2031%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
     }
   },
   "results": {
@@ -479,23 +485,59 @@
     "coalition": [
       {
         "letters": "כן",
-        "seats": 29
+        "seats": 29,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-31",
+            "quote": "PersonToPositionID 3362; PersonID 458; PositionID 39; StartDate 2006-05-04T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. חיים רמון; faction join: קדימה-עם אהוד אולמרט לראשות הממשלה"
+          }
+        ]
       },
       {
         "letters": "אמת",
-        "seats": 19
+        "seats": 19,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-31",
+            "quote": "PersonToPositionID 3363; PersonID 455; PositionID 39; StartDate 2006-05-04T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אופיר פינס-פז; faction join: העבודה-מימד בראשות עמיר פרץ"
+          }
+        ]
       },
       {
         "letters": "שס",
-        "seats": 12
+        "seats": 12,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-31",
+            "quote": "PersonToPositionID 3500; PersonID 494; PositionID 50; StartDate 2006-05-04T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אליהו ישי; faction join: ש\"ס-התאחדות הספרדים העולמית שומרי תורה"
+          }
+        ]
       },
       {
         "letters": "זך",
-        "seats": 7
+        "seats": 7,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-31",
+            "quote": "PersonToPositionID 3611; PersonID 4298; PositionID 39; StartDate 2006-05-04T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. רפי איתן; faction join: גיל-גימלאי ישראל לכנסת"
+          }
+        ]
       }
     ],
     "coalitionSeats": 67,
-    "coalitionSeatsNote": "Election-list seat envelope, checked against officialSeats; not the confidence-vote tally or a reconstruction of later faction membership.",
+    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
     "cites": [
       {
         "source": "government-research-1",
@@ -583,6 +625,24 @@
         "scope": "mid-term",
         "formalStep": true
       }
-    ]
-  }
+    ],
+    "confidenceVote": {
+      "for": 65,
+      "against": 49
+    },
+    "confidenceVoteCites": [
+      {
+        "source": "vote2006",
+        "quote": "ברוב של 65 ח״כים מול 49 נגד ו-4 נעדרים אישרה אמש (יום ה׳) הכנסת את הממשלה ה-31"
+      }
+    ],
+    "membershipCoverage": "complete",
+    "supportSeats": 0,
+    "reconciliation": {
+      "status": "unresolved",
+      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Quantified gap: 67 identified member/support seats versus 65 votes for (+2); the named abstainers, absentees or dissenters needed to explain this gap have not been recovered. Do not infer that each member voted for."
+    },
+    "knownMemberSeats": 67
+  },
+  "supportSchemaVersion": 1
 }

@@ -1,142 +1,142 @@
 {
   "schemaVersion": 2,
-  "total": 10960,
+  "total": 11312,
   "counts": {
-    "unknown": 6833,
+    "unknown": 6952,
     "missing-field": 283,
     "conflict": 15,
-    "single-source": 2176,
+    "single-source": 2376,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1164,
-    "pending": 388
+    "pending": 421
   },
   "countsByStatus": {
     "inferred-not-verified": 1030,
     "needs-current-status-review": 312,
-    "open": 9618
+    "open": 9970
   },
   "elections": [
     {
       "election": "k1",
-      "total": 310,
+      "total": 330,
       "counts": {
-        "unknown": 188,
+        "unknown": 192,
+        "missing-field": 12,
+        "conflict": 0,
+        "single-source": 82,
+        "low-confidence": 4,
+        "release-hold": 0,
+        "inferred": 22,
+        "pending": 18
+      }
+    },
+    {
+      "election": "k2",
+      "total": 278,
+      "counts": {
+        "unknown": 183,
+        "missing-field": 15,
+        "conflict": 1,
+        "single-source": 49,
+        "low-confidence": 3,
+        "release-hold": 0,
+        "inferred": 19,
+        "pending": 8
+      }
+    },
+    {
+      "election": "k3",
+      "total": 286,
+      "counts": {
+        "unknown": 184,
+        "missing-field": 12,
+        "conflict": 0,
+        "single-source": 59,
+        "low-confidence": 4,
+        "release-hold": 0,
+        "inferred": 19,
+        "pending": 8
+      }
+    },
+    {
+      "election": "k4",
+      "total": 286,
+      "counts": {
+        "unknown": 176,
         "missing-field": 12,
         "conflict": 0,
         "single-source": 67,
         "low-confidence": 4,
         "release-hold": 0,
-        "inferred": 22,
-        "pending": 17
-      }
-    },
-    {
-      "election": "k2",
-      "total": 250,
-      "counts": {
-        "unknown": 168,
-        "missing-field": 15,
-        "conflict": 1,
-        "single-source": 38,
-        "low-confidence": 3,
-        "release-hold": 0,
-        "inferred": 19,
-        "pending": 6
-      }
-    },
-    {
-      "election": "k3",
-      "total": 260,
-      "counts": {
-        "unknown": 172,
-        "missing-field": 12,
-        "conflict": 0,
-        "single-source": 47,
-        "low-confidence": 4,
-        "release-hold": 0,
-        "inferred": 19,
-        "pending": 6
-      }
-    },
-    {
-      "election": "k4",
-      "total": 273,
-      "counts": {
-        "unknown": 170,
-        "missing-field": 12,
-        "conflict": 0,
-        "single-source": 61,
-        "low-confidence": 4,
-        "release-hold": 0,
         "inferred": 20,
-        "pending": 6
+        "pending": 7
       }
     },
     {
       "election": "k5",
-      "total": 253,
+      "total": 278,
       "counts": {
-        "unknown": 174,
+        "unknown": 186,
         "missing-field": 11,
         "conflict": 0,
-        "single-source": 40,
+        "single-source": 51,
         "low-confidence": 2,
         "release-hold": 0,
         "inferred": 19,
-        "pending": 7
-      }
-    },
-    {
-      "election": "k6",
-      "total": 255,
-      "counts": {
-        "unknown": 168,
-        "missing-field": 13,
-        "conflict": 0,
-        "single-source": 42,
-        "low-confidence": 5,
-        "release-hold": 0,
-        "inferred": 18,
         "pending": 9
       }
     },
     {
-      "election": "k7",
-      "total": 249,
+      "election": "k6",
+      "total": 274,
       "counts": {
-        "unknown": 164,
+        "unknown": 177,
         "missing-field": 13,
         "conflict": 0,
-        "single-source": 42,
+        "single-source": 50,
+        "low-confidence": 5,
+        "release-hold": 0,
+        "inferred": 18,
+        "pending": 11
+      }
+    },
+    {
+      "election": "k7",
+      "total": 266,
+      "counts": {
+        "unknown": 166,
+        "missing-field": 13,
+        "conflict": 0,
+        "single-source": 55,
         "low-confidence": 4,
         "release-hold": 0,
         "inferred": 19,
-        "pending": 7
+        "pending": 9
       }
     },
     {
       "election": "k8",
-      "total": 301,
+      "total": 317,
       "counts": {
-        "unknown": 181,
+        "unknown": 186,
         "missing-field": 9,
         "conflict": 1,
-        "single-source": 70,
+        "single-source": 80,
         "low-confidence": 7,
         "release-hold": 0,
         "inferred": 20,
-        "pending": 13
+        "pending": 14
       }
     },
     {
       "election": "k9",
-      "total": 332,
+      "total": 339,
       "counts": {
         "unknown": 184,
         "missing-field": 12,
         "conflict": 1,
-        "single-source": 80,
+        "single-source": 87,
         "low-confidence": 9,
         "release-hold": 0,
         "inferred": 35,
@@ -145,124 +145,124 @@
     },
     {
       "election": "k10",
-      "total": 317,
+      "total": 332,
       "counts": {
-        "unknown": 199,
+        "unknown": 203,
         "missing-field": 13,
         "conflict": 1,
-        "single-source": 73,
+        "single-source": 81,
         "low-confidence": 3,
         "release-hold": 0,
         "inferred": 18,
-        "pending": 10
+        "pending": 13
       }
     },
     {
       "election": "k11",
-      "total": 363,
+      "total": 402,
       "counts": {
-        "unknown": 198,
+        "unknown": 211,
         "missing-field": 18,
         "conflict": 1,
-        "single-source": 93,
+        "single-source": 111,
         "low-confidence": 6,
         "release-hold": 0,
         "inferred": 40,
-        "pending": 7
+        "pending": 15
       }
     },
     {
       "election": "k12",
-      "total": 326,
+      "total": 346,
       "counts": {
-        "unknown": 185,
+        "unknown": 194,
         "missing-field": 18,
         "conflict": 0,
-        "single-source": 76,
+        "single-source": 85,
         "low-confidence": 3,
         "release-hold": 0,
         "inferred": 31,
-        "pending": 13
+        "pending": 15
       }
     },
     {
       "election": "k13",
-      "total": 277,
+      "total": 289,
       "counts": {
-        "unknown": 192,
+        "unknown": 196,
         "missing-field": 12,
         "conflict": 0,
-        "single-source": 33,
+        "single-source": 40,
         "low-confidence": 2,
         "release-hold": 0,
         "inferred": 25,
-        "pending": 13
-      }
-    },
-    {
-      "election": "k14",
-      "total": 283,
-      "counts": {
-        "unknown": 173,
-        "missing-field": 16,
-        "conflict": 0,
-        "single-source": 57,
-        "low-confidence": 2,
-        "release-hold": 0,
-        "inferred": 22,
-        "pending": 13
-      }
-    },
-    {
-      "election": "k15",
-      "total": 340,
-      "counts": {
-        "unknown": 196,
-        "missing-field": 20,
-        "conflict": 1,
-        "single-source": 74,
-        "low-confidence": 4,
-        "release-hold": 0,
-        "inferred": 31,
         "pending": 14
       }
     },
     {
-      "election": "k16",
-      "total": 394,
+      "election": "k14",
+      "total": 294,
       "counts": {
-        "unknown": 211,
+        "unknown": 177,
+        "missing-field": 16,
+        "conflict": 0,
+        "single-source": 63,
+        "low-confidence": 2,
+        "release-hold": 0,
+        "inferred": 22,
+        "pending": 14
+      }
+    },
+    {
+      "election": "k15",
+      "total": 358,
+      "counts": {
+        "unknown": 202,
+        "missing-field": 20,
+        "conflict": 1,
+        "single-source": 85,
+        "low-confidence": 4,
+        "release-hold": 0,
+        "inferred": 31,
+        "pending": 15
+      }
+    },
+    {
+      "election": "k16",
+      "total": 404,
+      "counts": {
+        "unknown": 215,
         "missing-field": 25,
         "conflict": 1,
-        "single-source": 105,
+        "single-source": 110,
         "low-confidence": 2,
         "release-hold": 0,
         "inferred": 40,
-        "pending": 10
+        "pending": 11
       }
     },
     {
       "election": "k17",
-      "total": 385,
+      "total": 392,
       "counts": {
-        "unknown": 226,
+        "unknown": 227,
         "missing-field": 17,
         "conflict": 0,
-        "single-source": 99,
+        "single-source": 104,
         "low-confidence": 2,
         "release-hold": 0,
         "inferred": 31,
-        "pending": 10
+        "pending": 11
       }
     },
     {
       "election": "k18",
-      "total": 465,
+      "total": 471,
       "counts": {
         "unknown": 302,
         "missing-field": 0,
         "conflict": 1,
-        "single-source": 60,
+        "single-source": 66,
         "low-confidence": 5,
         "release-hold": 0,
         "inferred": 87,
@@ -271,12 +271,12 @@
     },
     {
       "election": "k19",
-      "total": 471,
+      "total": 476,
       "counts": {
         "unknown": 296,
         "missing-field": 0,
         "conflict": 0,
-        "single-source": 57,
+        "single-source": 62,
         "low-confidence": 4,
         "release-hold": 0,
         "inferred": 98,
@@ -285,16 +285,16 @@
     },
     {
       "election": "k20",
-      "total": 435,
+      "total": 445,
       "counts": {
-        "unknown": 285,
+        "unknown": 289,
         "missing-field": 0,
         "conflict": 1,
-        "single-source": 64,
+        "single-source": 69,
         "low-confidence": 3,
         "release-hold": 0,
         "inferred": 69,
-        "pending": 13
+        "pending": 14
       }
     },
     {
@@ -327,12 +327,12 @@
     },
     {
       "election": "k23",
-      "total": 384,
+      "total": 391,
       "counts": {
         "unknown": 222,
         "missing-field": 0,
         "conflict": 0,
-        "single-source": 104,
+        "single-source": 111,
         "low-confidence": 3,
         "release-hold": 0,
         "inferred": 54,
@@ -341,12 +341,12 @@
     },
     {
       "election": "k24",
-      "total": 422,
+      "total": 432,
       "counts": {
         "unknown": 251,
         "missing-field": 0,
         "conflict": 1,
-        "single-source": 103,
+        "single-source": 113,
         "low-confidence": 4,
         "release-hold": 0,
         "inferred": 51,
@@ -355,16 +355,16 @@
     },
     {
       "election": "k25",
-      "total": 678,
+      "total": 685,
       "counts": {
-        "unknown": 455,
+        "unknown": 456,
         "missing-field": 0,
         "conflict": 0,
-        "single-source": 126,
+        "single-source": 131,
         "low-confidence": 4,
         "release-hold": 0,
         "inferred": 84,
-        "pending": 9
+        "pending": 10
       }
     },
     {
@@ -383,9 +383,9 @@
     },
     {
       "election": "cross-election",
-      "total": 1389,
+      "total": 1393,
       "counts": {
-        "unknown": 1037,
+        "unknown": 1041,
         "missing-field": 35,
         "conflict": 4,
         "single-source": 234,
@@ -544,7 +544,7 @@
     {"election":"k9","letters":"רצ","name":"התנועה לזכויות האזרח","item":"$.colours[*].confidence","kind":"low-confidence","uncertainty":"Evidence confidence is low","status":"open","file":"data/meta/k9.json"},
     {"election":"k9","letters":"לע","name":"המפלגה הליברלית העצמאית","item":"$.colours[*].confidence","kind":"low-confidence","uncertainty":"Evidence confidence is low","status":"open","file":"data/meta/k9.json"},
     {"election":"k9","letters":"","name":"","item":"$.colours[*].confidence","kind":"low-confidence","uncertainty":"Evidence confidence is low","status":"open","file":"data/meta/k9.json"},
-    {"election":"k10","letters":"","name":"","item":"$.formation.conflicts[*]","kind":"conflict","uncertainty":"{\"about\":\"Begin tasking date\",\"values\":[{\"value\":\"15 July 1981 in the existing JTA/UPI research\",\"source\":\"jta1981task\"},{\"value\":\"16 July 1981 presidential letter in the State Archives account\",\"source\":\"recommendations-research-4\"}],\"resolution\":\"Unresolved: retain 15 July as the inherited press-based date, explicitly disputed against the State Archives account of a letter dated 16 July. Neither the original presidential letter nor original wire bulletin was inspected; the report-date offset i","status":"open","file":"data/meta/aftermath/k10.json"},
+    {"election":"k10","letters":"","name":"","item":"$.formation.conflicts[*]","kind":"conflict","uncertainty":"{\"about\":\"Begin tasking date\",\"values\":[{\"value\":\"15 July 1981 in the existing JTA/UPI research\",\"source\":\"jta1981task\"},{\"value\":\"16 July 1981 presidential letter in the State Archives account\",\"source\":\"recommendations-research-4\"}],\"resolution\":\"Unresolved after targeted primary-source retrieval. Contemporary press identifies 15 July, while the State Archives describes a letter of 16 July; the JTA 16 July publication date cannot determine its dispatch dateline. The original letter and Preside","status":"open","file":"data/meta/aftermath/k10.json"},
     {"election":"k10","letters":"אמת","name":"המערך – מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים","item":"r1 / $.recommendationRounds[*].entries[*].status","kind":"unknown","uncertainty":"Status: unknown","status":"open","file":"data/meta/aftermath/k10.json"},
     {"election":"k10","letters":"ו","name":"חזית דמוקרטית לשלום ולשוויון, המפלגה הקומוניסטית הישראלית (רק״ח), פנתרים שחורים וחוגי ציבור יהודים וערבים","item":"r1 / $.recommendationRounds[*].entries[*].status","kind":"unknown","uncertainty":"Status: unknown","status":"open","file":"data/meta/aftermath/k10.json"},
     {"election":"k10","letters":"ת","name":"התחיה","item":"r1 / $.recommendationRounds[*].entries[*].status","kind":"unknown","uncertainty":"Status: unknown","status":"open","file":"data/meta/aftermath/k10.json"},

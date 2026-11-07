@@ -43,7 +43,8 @@ describe('k1: reconciled 1949 source facts', () => {
     const blocs = meta.blocSchemes.find((s: { id: string }) => s.id === 'first-government').blocs;
     expect(blocs.map((b: { seats: number }) => b.seats)).toEqual([75, 45]);
     expect(blocs[0].members.map((m: { letters: string }) => m.letters)).toEqual(['א', 'ב', 'פ', 'ס', 'יד', 'נ', 'ל']);
-    expect(aftermath.government.coalitionSeats).toBe(75);
+    expect(aftermath.government.coalitionSeats).toBe(71);
+    expect(aftermath.government.coalition.filter((r: { role: string }) => r.role === 'confidence-vote-only').reduce((sum: number, r: { seats: number }) => sum + r.seats, 0)).toBe(4);
     expect(aftermath.formation.events.find((e: { type: string }) => e.type === 'confidence-vote').votes).toEqual({ for: 73, against: 45 });
     expect(aftermath.recommendationRounds[0].date).toBe('1949-02');
     expect(aftermath.results.certificationDate).toBe('1949-02-07');

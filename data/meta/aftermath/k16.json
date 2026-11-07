@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "electionId": "k16",
   "status": "pilot",
-  "reviewedAt": "2026-11-06",
+  "reviewedAt": "2026-11-07",
   "notes": [
     "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
     "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
@@ -107,6 +107,12 @@
       "publisher": "Reshumot YP 5467, 8 December 2005, p.728 (official document via mirror)",
       "kind": "official",
       "accessed": "2026-11-06"
+    },
+    "role-roster-30": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2030%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
     }
   },
   "results": {
@@ -472,29 +478,67 @@
     "coalition": [
       {
         "letters": "מחל",
-        "seats": 38
+        "seats": 38,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-30",
+            "quote": "PersonToPositionID 3692; PersonID 482; PositionID 45; StartDate 2003-02-27T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אריאל שרון; faction join: הליכוד"
+          }
+        ]
       },
       {
         "letters": "יש",
-        "seats": 15
+        "seats": 15,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-30",
+            "quote": "PersonToPositionID 3695; PersonID 517; PositionID 39; StartDate 2003-02-27T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יוסף (טומי) לפיד; faction join: שינוי התנועה החילונית"
+          }
+        ]
       },
       {
         "letters": "ל",
-        "seats": 7
+        "seats": 7,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-30",
+            "quote": "PersonToPositionID 3699; PersonID 405; PositionID 39; StartDate 2003-02-27T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. בנימין אלון; faction join: האיחוד הלאומי - ישראל ביתנו - מולדת - תקומה"
+          }
+        ]
       },
       {
         "letters": "ב",
         "seats": 6,
-        "note": "NRP ministers took office on 2003-03-03; the Knesset lexicon includes NRP in the initial coalition."
+        "note": "Formation snapshot 27 February: the NRP ministers took office 3 March, as already documented in this record.",
+        "role": "member-without-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "coalition-official",
+            "quote": "בהשתתפות הליכוד, שינוי, המפד״ל והאיחוד הלאומי"
+          }
+        ]
       },
       {
         "letters": "כן",
         "seats": 2,
-        "note": "Yisrael BaAliyah merged into the Likud faction on 2003-03-10; Sharansky took office 2003-03-03 (OData)"
+        "note": "Sharansky took office 3 March and his two-seat faction later merged; the official initial coalition names four factions and does not settle the two Yisrael BaAliyah seats on 27 February.",
+        "role": "other",
+        "certainty": "unknown",
+        "cites": []
       }
     ],
-    "coalitionSeats": 68,
-    "coalitionSeatsNote": "Election-list seat envelope, checked against officialSeats; not the confidence-vote tally or a reconstruction of later faction membership.",
+    "coalitionSeats": null,
+    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
     "cites": [
       {
         "source": "government-official",
@@ -538,6 +582,28 @@
           }
         ]
       }
-    ]
-  }
+    ],
+    "confidenceVote": {
+      "for": 66,
+      "against": 48
+    },
+    "confidenceVoteCites": [
+      {
+        "source": "vote2003",
+        "quote": "The 120-member Knesset voted 66-48 in favour"
+      },
+      {
+        "source": "ipu2003",
+        "quote": "On 27 February 2003, a new coalition government"
+      }
+    ],
+    "membershipCoverage": "partial",
+    "supportSeats": null,
+    "reconciliation": {
+      "status": "unresolved",
+      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 66; full membership remains unknown. Investiture: 66 for, 48 against, not recorded abstaining."
+    },
+    "knownMemberSeats": 66
+  },
+  "supportSchemaVersion": 1
 }

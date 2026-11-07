@@ -1,6 +1,6 @@
 # Data gaps register
 
-10960 review flags; categories may overlap and are not counts of historical errors. Bulk rows are grouped by field; these counts use grouped records, not occurrences.
+11312 review flags; categories may overlap and are not counts of historical errors. Bulk rows are grouped by field; these counts use grouped records, not occurrences.
 
 ## Most important open gaps
 
@@ -16,41 +16,41 @@
 
 ## Counts
 
-By kind: unknown: 6833; missing-field: 283; conflict: 15; single-source: 2176; low-confidence: 101; release-hold: 0; inferred: 1164; pending: 388.
+By kind: unknown: 6952; missing-field: 283; conflict: 15; single-source: 2376; low-confidence: 101; release-hold: 0; inferred: 1164; pending: 421.
 
-By status: inferred-not-verified: 1030; needs-current-status-review: 312; open: 9618.
+By status: inferred-not-verified: 1030; needs-current-status-review: 312; open: 9970.
 
 ## Per election
 
 | Election | Unknown | Missing field | Conflict | Single source | Low confidence | Release hold | Inferred | Pending | Total |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| k1 | 188 | 12 | 0 | 67 | 4 | 0 | 22 | 17 | 310 |
-| k2 | 168 | 15 | 1 | 38 | 3 | 0 | 19 | 6 | 250 |
-| k3 | 172 | 12 | 0 | 47 | 4 | 0 | 19 | 6 | 260 |
-| k4 | 170 | 12 | 0 | 61 | 4 | 0 | 20 | 6 | 273 |
-| k5 | 174 | 11 | 0 | 40 | 2 | 0 | 19 | 7 | 253 |
-| k6 | 168 | 13 | 0 | 42 | 5 | 0 | 18 | 9 | 255 |
-| k7 | 164 | 13 | 0 | 42 | 4 | 0 | 19 | 7 | 249 |
-| k8 | 181 | 9 | 1 | 70 | 7 | 0 | 20 | 13 | 301 |
-| k9 | 184 | 12 | 1 | 80 | 9 | 0 | 35 | 11 | 332 |
-| k10 | 199 | 13 | 1 | 73 | 3 | 0 | 18 | 10 | 317 |
-| k11 | 198 | 18 | 1 | 93 | 6 | 0 | 40 | 7 | 363 |
-| k12 | 185 | 18 | 0 | 76 | 3 | 0 | 31 | 13 | 326 |
-| k13 | 192 | 12 | 0 | 33 | 2 | 0 | 25 | 13 | 277 |
-| k14 | 173 | 16 | 0 | 57 | 2 | 0 | 22 | 13 | 283 |
-| k15 | 196 | 20 | 1 | 74 | 4 | 0 | 31 | 14 | 340 |
-| k16 | 211 | 25 | 1 | 105 | 2 | 0 | 40 | 10 | 394 |
-| k17 | 226 | 17 | 0 | 99 | 2 | 0 | 31 | 10 | 385 |
-| k18 | 302 | 0 | 1 | 60 | 5 | 0 | 87 | 10 | 465 |
-| k19 | 296 | 0 | 0 | 57 | 4 | 0 | 98 | 16 | 471 |
-| k20 | 285 | 0 | 1 | 64 | 3 | 0 | 69 | 13 | 435 |
+| k1 | 192 | 12 | 0 | 82 | 4 | 0 | 22 | 18 | 330 |
+| k2 | 183 | 15 | 1 | 49 | 3 | 0 | 19 | 8 | 278 |
+| k3 | 184 | 12 | 0 | 59 | 4 | 0 | 19 | 8 | 286 |
+| k4 | 176 | 12 | 0 | 67 | 4 | 0 | 20 | 7 | 286 |
+| k5 | 186 | 11 | 0 | 51 | 2 | 0 | 19 | 9 | 278 |
+| k6 | 177 | 13 | 0 | 50 | 5 | 0 | 18 | 11 | 274 |
+| k7 | 166 | 13 | 0 | 55 | 4 | 0 | 19 | 9 | 266 |
+| k8 | 186 | 9 | 1 | 80 | 7 | 0 | 20 | 14 | 317 |
+| k9 | 184 | 12 | 1 | 87 | 9 | 0 | 35 | 11 | 339 |
+| k10 | 203 | 13 | 1 | 81 | 3 | 0 | 18 | 13 | 332 |
+| k11 | 211 | 18 | 1 | 111 | 6 | 0 | 40 | 15 | 402 |
+| k12 | 194 | 18 | 0 | 85 | 3 | 0 | 31 | 15 | 346 |
+| k13 | 196 | 12 | 0 | 40 | 2 | 0 | 25 | 14 | 289 |
+| k14 | 177 | 16 | 0 | 63 | 2 | 0 | 22 | 14 | 294 |
+| k15 | 202 | 20 | 1 | 85 | 4 | 0 | 31 | 15 | 358 |
+| k16 | 215 | 25 | 1 | 110 | 2 | 0 | 40 | 11 | 404 |
+| k17 | 227 | 17 | 0 | 104 | 2 | 0 | 31 | 11 | 392 |
+| k18 | 302 | 0 | 1 | 66 | 5 | 0 | 87 | 10 | 471 |
+| k19 | 296 | 0 | 0 | 62 | 4 | 0 | 98 | 16 | 476 |
+| k20 | 289 | 0 | 1 | 69 | 3 | 0 | 69 | 14 | 445 |
 | k21 | 292 | 0 | 0 | 89 | 3 | 0 | 100 | 24 | 508 |
 | k22 | 273 | 0 | 1 | 103 | 3 | 0 | 88 | 12 | 480 |
-| k23 | 222 | 0 | 0 | 104 | 3 | 0 | 54 | 1 | 384 |
-| k24 | 251 | 0 | 1 | 103 | 4 | 0 | 51 | 12 | 422 |
-| k25 | 455 | 0 | 0 | 126 | 4 | 0 | 84 | 9 | 678 |
+| k23 | 222 | 0 | 0 | 111 | 3 | 0 | 54 | 1 | 391 |
+| k24 | 251 | 0 | 1 | 113 | 4 | 0 | 51 | 12 | 432 |
+| k25 | 456 | 0 | 0 | 131 | 4 | 0 | 84 | 10 | 685 |
 | k26 | 271 | 0 | 0 | 138 | 6 | 0 | 100 | 44 | 559 |
-| cross-election | 1037 | 35 | 4 | 234 | 0 | 0 | 4 | 75 | 1389 |
+| cross-election | 1041 | 35 | 4 | 234 | 0 | 0 | 4 | 75 | 1393 |
 | [object Object] | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 1 |
 
 ## Individually listed priorities
@@ -192,7 +192,7 @@ Every conflict, low-confidence item and unknown recommendation is listed below. 
 | k9 / low-confidence | רצ / התנועה לזכויות האזרח / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k9.json) |
 | k9 / low-confidence | לע / המפלגה הליברלית העצמאית / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k9.json) |
 | k9 / low-confidence | $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k9.json) |
-| k10 / conflict | $.formation.conflicts[*] | {"about":"Begin tasking date","values":[{"value":"15 July 1981 in the existing JTA/UPI research","source":"jta1981task"},{"value":"16 July 1981 presidential letter in the State Archives account","source":"recommendations-research-4"}],"resolution":"Unresolved: retain 15 July as the inherited press-based date, explicitly disputed against the State Archives account of a letter dated 16 July. Neither the original presidential letter nor original wire bulletin was inspected; the report-date offset i | open / [record](../data/meta/aftermath/k10.json) |
+| k10 / conflict | $.formation.conflicts[*] | {"about":"Begin tasking date","values":[{"value":"15 July 1981 in the existing JTA/UPI research","source":"jta1981task"},{"value":"16 July 1981 presidential letter in the State Archives account","source":"recommendations-research-4"}],"resolution":"Unresolved after targeted primary-source retrieval. Contemporary press identifies 15 July, while the State Archives describes a letter of 16 July; the JTA 16 July publication date cannot determine its dispatch dateline. The original letter and Preside | open / [record](../data/meta/aftermath/k10.json) |
 | k10 / unknown | אמת / המערך – מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k10.json) |
 | k10 / unknown | ו / חזית דמוקרטית לשלום ולשוויון, המפלגה הקומוניסטית הישראלית (רק״ח), פנתרים שחורים וחוגי ציבור יהודים וערבים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k10.json) |
 | k10 / unknown | ת / התחיה / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k10.json) |

@@ -149,6 +149,24 @@
       "accessed": "2026-11-07",
       "evidenceFamily": "wp1983-confidence",
       "via": "Bylined contemporary reporting; body opened. Dateline 10 October; independently corroborates the official plenum extraction."
+    },
+    "role-roster-19": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2019%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
+    },
+    "role-roster-20": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2020%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, formation-day cabinet appointments",
+      "kind": "official",
+      "accessed": "2026-11-07"
+    },
+    "jta1981announcement": {
+      "url": "https://www.jta.org/archive/navon-says-he-will-invite-begin-to-form-a-new-government",
+      "publisher": "JTA Daily Bulletin, 15 July 1981",
+      "kind": "archival",
+      "accessed": "2026-11-07"
     }
   },
   "results": {
@@ -287,7 +305,10 @@
             "quote": "formally summoned by President Yitzhak Navon today to form a new government"
           }
         ],
-        "person": "begin"
+        "person": "begin",
+        "notes": [
+          "Press-based event date 15 July retained with dispute. The JTA item is published 16 July and says today; its original dateline was not recovered. The State Archives describes the formal presidential letter as dated 16 July. Do not infer separate appointment events."
+        ]
       },
       {
         "date": "1981-08-04",
@@ -394,7 +415,7 @@
             "source": "recommendations-research-4"
           }
         ],
-        "resolution": "Unresolved: retain 15 July as the inherited press-based date, explicitly disputed against the State Archives account of a letter dated 16 July. Neither the original presidential letter nor original wire bulletin was inspected; the report-date offset is not established."
+        "resolution": "Unresolved after targeted primary-source retrieval. Contemporary press identifies 15 July, while the State Archives describes a letter of 16 July; the JTA 16 July publication date cannot determine its dispatch dateline. The original letter and President’s diary are the deciding records: Israel State Archives file נ-571/13 pp.5–7 (letter), and נ-224/4 (diary/consultations). Archive catalogue returned HTTP 403 and original JTA PDF transport failed; no second mandate event is invented."
       }
     ]
   },
@@ -540,24 +561,59 @@
     "coalition": [
       {
         "letters": "מחל",
-        "seats": 48
+        "seats": 48,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-19",
+            "quote": "PersonToPositionID 3888; PersonID 2573; PositionID 39; StartDate 1981-08-05T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. מרדכי צפורי-הנדין; faction join: הליכוד"
+          }
+        ]
       },
       {
         "letters": "ג",
         "seats": 4,
-        "note": "in the coalition without cabinet ministers"
+        "note": "Deposited coalition agreement; no Aguda cabinet minister at formation.",
+        "role": "member-without-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "plenum1981",
+            "quote": "ההסכם הקואליציוני לכנסת העשירית בין הסיעות: הליכוד, המפלגה הדתית לאומית, יהדות התורה — אגודת ישראל והתנועה למסורת ישראל"
+          }
+        ]
       },
       {
         "letters": "ב",
-        "seats": 6
+        "seats": 6,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-19",
+            "quote": "PersonToPositionID 4229; PersonID 2187; PositionID 39; StartDate 1981-08-05T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יוסף בורג; faction join: חזית דתית לאומית"
+          }
+        ]
       },
       {
         "letters": "ני",
-        "seats": 3
+        "seats": 3,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-19",
+            "quote": "PersonToPositionID 4354; PersonID 2119; PositionID 39; StartDate 1981-08-05T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אהרן אבוחצירא; faction join: תנועה למסורת ישראל"
+          }
+        ]
       }
     ],
     "coalitionSeats": 61,
-    "coalitionSeatsNote": "Election-list seat envelope, checked against officialSeats; not the confidence-vote tally or a reconstruction of later faction membership.",
+    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
     "cites": [
       {
         "source": "plenum1981",
@@ -610,7 +666,134 @@
         "person": "begin",
         "scope": "mid-term",
         "formalStep": true
+      },
+      {
+        "date": "1983-10-10",
+        "number": 20,
+        "textEn": "The Knesset approved Shamir’s 20th government, 60–53.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־20 בראשות שמיר, ברוב של 60 מול 53.",
+        "coalition": [
+          {
+            "factionNameHe": "תחייה",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-20",
+                "quote": "PersonToPositionID 3410; PersonID 2475; PositionID 39; StartDate 1983-10-10T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 27373. יובל נאמן"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          },
+          {
+            "factionNameHe": "הליכוד",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-20",
+                "quote": "PersonToPositionID 4175; PersonID 2451; PositionID 39; StartDate 1983-10-10T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 27368. יצחק מודעי"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          },
+          {
+            "factionNameHe": "תנועה למסורת ישראל",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-20",
+                "quote": "PersonToPositionID 4199; PersonID 2129; PositionID 39; StartDate 1983-10-10T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 27291. אהרן אוזן"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          },
+          {
+            "factionNameHe": "התנועה להתחדשות ציונית חברתית",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-20",
+                "quote": "PersonToPositionID 4542; PersonID 2206; PositionID 39; StartDate 1983-10-10T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 27314. מרדכי בן-פורת"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          },
+          {
+            "factionNameHe": "חזית דתית לאומית",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-20",
+                "quote": "PersonToPositionID 4582; PersonID 2300; PositionID 39; StartDate 1983-10-10T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 27336. זבולון המר"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          }
+        ],
+        "cites": [
+          {
+            "source": "plenum1983",
+            "quote": "ב60 קולות בעד ו53 נגד הוחלט להביע אמון בממשלה"
+          }
+        ],
+        "membershipCoverage": "partial",
+        "roleGap": "Only positively identified cabinet factions are recorded here. Factions without ministers, individual crossings, effective faction sizes and the complete roll call still need the investiture record and deposited agreements. An empty or incomplete row set is not zero support.",
+        "confidenceVote": {
+          "for": 60,
+          "against": 53
+        },
+        "confidenceVoteCites": [
+          {
+            "source": "plenum1983",
+            "quote": "ב60 קולות בעד ו53 נגד הוחלט להביע אמון בממשלה"
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
+        "reconciliation": {
+          "status": "unresolved",
+          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 0; full membership remains unknown. Investiture: 60 for, 53 against, not recorded abstaining."
+        },
+        "knownMemberSeats": 0
       }
-    ]
-  }
+    ],
+    "confidenceVote": {
+      "against": 58,
+      "for": 61
+    },
+    "confidenceVoteCites": [
+      {
+        "source": "plenum10",
+        "quote": "61 בעד הבעת אמון בממשלה החדשה"
+      },
+      {
+        "source": "plenum10",
+        "quote": "נגד 58"
+      }
+    ],
+    "membershipCoverage": "complete",
+    "supportSeats": 0,
+    "reconciliation": {
+      "status": "exact",
+      "expectedFor": 61,
+      "note": "61 member seats = 61 for; 58 against. One of 120 MKs did not vote; identity not recovered."
+    },
+    "knownMemberSeats": 61
+  },
+  "supportSchemaVersion": 1
 }
