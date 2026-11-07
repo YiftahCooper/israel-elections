@@ -1,0 +1,41 @@
+/* Coalition roles. Members are solid; outside support is the list colour hatched with the surface, so it
+   reads as "for, but not in" without relying on colour; an arranged abstention is a hollow outline. The
+   same three marks key the totals line, the partner lists and every seat bar. */
+.coal-bar > i.coal-support,
+.coal-key.coal-support {
+  background-color: var(--c, var(--ink-2));
+  background-image: repeating-linear-gradient(135deg, transparent 0 3px, color-mix(in srgb, var(--surface) 72%, transparent) 3px 6px);
+}
+.coal-bar > i.coal-abstain,
+.coal-key.coal-abstain {
+  background: color-mix(in srgb, var(--c, var(--ink-2)) 14%, transparent);
+  box-shadow: inset 0 0 0 2px var(--c, var(--ink-2));
+}
+.coal-bar > .coal-gap { flex: 1 1 auto; }
+.coal-bar > i.coal-abstain { border-inline-end: 0; border-inline-start: 1px solid var(--surface); }
+.coal-bar > i.coal-abstain:last-child { border-start-end-radius: inherit; border-end-end-radius: inherit; }
+/* the lower confidence-vote bar when arranged abstentions lower it: dotted, beside the 61 line */
+.coal-bar .maj.conf { border-inline-start-style: dotted; border-inline-start-color: var(--ink-2); }
+.coal-bar .maj.conf em { top: auto; bottom: -20px; background: var(--surface-2); color: var(--ink); box-shadow: inset 0 0 0 1px var(--rule-2); }
+.coal-bar.big:has(.maj.conf) { margin-bottom: 14px; }
+
+.coal-key { display: inline-block; width: 14px; height: 10px; border-radius: 2px; margin-inline-end: 4px; vertical-align: -1px; background: var(--ink-2); }
+.coal-vote { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+.coal-sum { font-weight: 600; }
+.coal-sum b { font-size: 18px; }
+.coal-term { white-space: nowrap; }
+.coal-tests { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+.coal-test { white-space: nowrap; font-weight: 600; }
+.coal-mark { display: inline-block; margin-inline-end: 4px; }
+.coal-test[data-ok="true"] .coal-mark { color: var(--seat-gain); }
+.coal-test[data-ok="false"] .coal-mark { color: var(--seat-loss); }
+.coal-partners[data-role] > li:first-child { gap: 0; }
+.coal-n small { font-size: 11px; font-weight: 600; color: var(--ink-2); }
+.coal-list > li > button { grid-template-columns: minmax(30px, auto) minmax(0, 1fr); }
+/* five roles do not fit beside a name on a phone: the role selector takes its own line */
+@media (max-width: 560px) {
+  .coal-choice { grid-template-columns: minmax(0, 1fr); }
+  .coal-choice > .seg { justify-self: start; }
+}
+/* the 61 badge sits above the big bar; keep it clear of the totals and tests line */
+.coal-now .coal-bar.big, .coal-detail .coal-bar.big { margin-top: 14px; }

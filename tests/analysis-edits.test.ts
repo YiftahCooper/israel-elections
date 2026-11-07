@@ -16,7 +16,7 @@ for(const action of [
  {type:'startPart',part:'blocs',source:'saved',snapshot:{...partSnapshot(base,'blocs'),candidateBlocs:{[base.lists[0].candidates[0].id]:base.blocs[1].id}}},
  {type:'setBlocs',blocs:[...base.blocs,{id:'custom',nameHe:'חדש',nameEn:'New',color:'#123456'}]},
  {type:'startPart',part:'blocs',source:'blank',name:'My analysis'},
- {type:'setCoalition',coalition:{in:[base.lists[0].id],out:[]}},
+ {type:'setCoalition',coalition:{in:[base.lists[0].id],support:[],abstain:[],out:[]}},
  {type:'setBlocAppearance',blocs:base.blocs,name:'Named analysis'},
 ] as const)it(`${action.type}: marked analysis is saved without result identity`,()=>{
  const s=applyAction(base,action as Parameters<typeof applyAction>[1]);

@@ -1,0 +1,1164 @@
+[
+  {
+    "context": "scenarios",
+    "id": "1",
+    "old": "#486b78",
+    "new": "#417182",
+    "reason": "small-mark separation / light and dark mark contrast"
+  },
+  {
+    "context": "scenarios",
+    "id": "2",
+    "old": "#ea7a00",
+    "new": "#da7205",
+    "reason": "small-mark separation / light and dark mark contrast"
+  },
+  {
+    "context": "scenarios",
+    "id": "5",
+    "old": "#2565d0",
+    "new": "#6b82fc",
+    "reason": "small-mark separation / light and dark mark contrast"
+  },
+  {
+    "context": "scenarios",
+    "id": "7",
+    "old": "#a89a00",
+    "new": "#9b8f00",
+    "reason": "small-mark separation / light and dark mark contrast"
+  },
+  {
+    "context": "families",
+    "id": "centre",
+    "old": "#ea7a00",
+    "new": "#da7205",
+    "reason": "small-mark separation / light and dark mark contrast"
+  },
+  {
+    "context": "families",
+    "id": "religious-parties",
+    "old": "#8b45c8",
+    "new": "#8e48ca",
+    "reason": "small-mark separation / light and dark mark contrast"
+  },
+  {
+    "context": "families",
+    "id": "national-religious",
+    "old": "#a89a00",
+    "new": "#9b8f00",
+    "reason": "small-mark separation / light and dark mark contrast"
+  },
+  {
+    "context": "families",
+    "id": "radical-right",
+    "old": "#8a5528",
+    "new": "#846641",
+    "reason": "small-mark separation / light and dark mark contrast"
+  },
+  {
+    "context": "k1 bloc first-government",
+    "id": "coalition",
+    "old": "#106dbd",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k1 bloc first-government",
+    "id": "opposition",
+    "old": "#b08341",
+    "new": "#00a0c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k2 bloc first-government",
+    "id": "coalition",
+    "old": "#106dbd",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k2 bloc first-government",
+    "id": "opposition",
+    "old": "#b08341",
+    "new": "#00a0c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k3 bloc first-government",
+    "id": "coalition",
+    "old": "#106dbd",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k3 bloc first-government",
+    "id": "opposition",
+    "old": "#b08341",
+    "new": "#00a0c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k4 bloc first-government",
+    "id": "coalition",
+    "old": "#106dbd",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k4 bloc first-government",
+    "id": "opposition",
+    "old": "#b08341",
+    "new": "#00a0c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k5 bloc first-government",
+    "id": "coalition",
+    "old": "#106dbd",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k5 bloc first-government",
+    "id": "opposition",
+    "old": "#b08341",
+    "new": "#00a0c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k6 bloc first-government",
+    "id": "coalition",
+    "old": "#106dbd",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k6 bloc first-government",
+    "id": "opposition",
+    "old": "#b08341",
+    "new": "#00a0c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k7 bloc first-government",
+    "id": "coalition",
+    "old": "#106dbd",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k7 bloc first-government",
+    "id": "opposition",
+    "old": "#b08341",
+    "new": "#00a0c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k7 bloc pm-recommendations",
+    "id": "unstated",
+    "old": "#8fa861",
+    "new": "#40e0ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k8 bloc first-government",
+    "id": "coalition",
+    "old": "#106dbd",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k8 bloc first-government",
+    "id": "opposition",
+    "old": "#b08341",
+    "new": "#00a0c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k8 bloc pm-recommendations",
+    "id": "none",
+    "old": "#90a963",
+    "new": "#00a0c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k8 bloc pm-recommendations",
+    "id": "unstated",
+    "old": "#a6a4e9",
+    "new": "#e0e080",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k9 bloc first-government",
+    "id": "coalition",
+    "old": "#106dbd",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k9 bloc first-government",
+    "id": "opposition",
+    "old": "#b08341",
+    "new": "#00a0c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k10 bloc first-government",
+    "id": "opposition",
+    "old": "#d09ea8",
+    "new": "#00a0e0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k10 bloc pm-recommendations",
+    "id": "begin",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k10 bloc pm-recommendations",
+    "id": "unstated",
+    "old": "#d89f67",
+    "new": "#40e0ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k11 bloc first-government",
+    "id": "opposition",
+    "old": "#d09ea8",
+    "new": "#00a0e0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k11 bloc pm-recommendations",
+    "id": "peres",
+    "old": "#2aa198",
+    "new": "#1ba197",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k11 bloc pm-recommendations",
+    "id": "shamir",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k11 bloc pm-recommendations",
+    "id": "none",
+    "old": "#d09ea8",
+    "new": "#e080c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k11 bloc pm-recommendations",
+    "id": "not-invited",
+    "old": "#c29553",
+    "new": "#e0e080",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k12 bloc first-government",
+    "id": "opposition",
+    "old": "#d09ea8",
+    "new": "#00a0e0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k12 bloc pm-recommendations",
+    "id": "shamir",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k12 bloc pm-recommendations",
+    "id": "peres",
+    "old": "#52a075",
+    "new": "#1ba197",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k12 bloc pm-recommendations",
+    "id": "unconfirmed",
+    "old": "#d09ea8",
+    "new": "#e080c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k13 bloc first-government",
+    "id": "opposition",
+    "old": "#d09ea8",
+    "new": "#00a0e0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k13 bloc blocking-bloc-1992",
+    "id": "rest",
+    "old": "#90a963",
+    "new": "#00a0c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k14 bloc first-government",
+    "id": "opposition",
+    "old": "#d09ea8",
+    "new": "#00a0e0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k15 bloc first-government",
+    "id": "opposition",
+    "old": "#d09ea8",
+    "new": "#00a0e0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k16 bloc first-government",
+    "id": "opposition",
+    "old": "#d09ea8",
+    "new": "#00a0e0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k16 bloc pm-recommendations",
+    "id": "sharon",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k16 bloc pm-recommendations",
+    "id": "none",
+    "old": "#d09ea8",
+    "new": "#00a0c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k17 bloc first-government",
+    "id": "opposition",
+    "old": "#d09ea8",
+    "new": "#00a0e0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k17 bloc pm-recommendations",
+    "id": "olmert",
+    "old": "#2aa198",
+    "new": "#1ba197",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k17 bloc pm-recommendations",
+    "id": "none",
+    "old": "#d09ea8",
+    "new": "#e080c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k18 bloc first-government",
+    "id": "coalition",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k18 bloc first-government",
+    "id": "opposition",
+    "old": "#a27633",
+    "new": "#00a0c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k18 bloc pm-recommendations",
+    "id": "netanyahu",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k18 bloc pm-recommendations",
+    "id": "livni",
+    "old": "#52a075",
+    "new": "#1ba197",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k18 bloc pm-recommendations",
+    "id": "none",
+    "old": "#d09ea8",
+    "new": "#e080c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k19 bloc first-government",
+    "id": "coalition",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k19 bloc first-government",
+    "id": "opposition",
+    "old": "#a27633",
+    "new": "#00a0c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k19 bloc pm-recommendations",
+    "id": "netanyahu",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k19 bloc pm-recommendations",
+    "id": "none",
+    "old": "#d09ea8",
+    "new": "#00a0c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k20 bloc first-government",
+    "id": "coalition",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k20 bloc first-government",
+    "id": "opposition",
+    "old": "#a27633",
+    "new": "#00a0c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k20 bloc pm-recommendations",
+    "id": "netanyahu",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k20 bloc pm-recommendations",
+    "id": "herzog",
+    "old": "#52a075",
+    "new": "#1ba197",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k20 bloc pm-recommendations",
+    "id": "none",
+    "old": "#d09ea8",
+    "new": "#e080c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k21 bloc pm-recommendations",
+    "id": "netanyahu",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k21 bloc pm-recommendations",
+    "id": "gantz",
+    "old": "#52a075",
+    "new": "#1ba197",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k21 bloc pm-recommendations",
+    "id": "none",
+    "old": "#d09ea8",
+    "new": "#e080c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k22 bloc pm-recommendations",
+    "id": "netanyahu",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k22 bloc pm-recommendations",
+    "id": "gantz",
+    "old": "#52a075",
+    "new": "#1ba197",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k22 bloc pm-recommendations",
+    "id": "none",
+    "old": "#d09ea8",
+    "new": "#e080c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k23 bloc first-government",
+    "id": "coalition",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k23 bloc first-government",
+    "id": "opposition",
+    "old": "#a27633",
+    "new": "#00a0c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k23 bloc pm-recommendations",
+    "id": "gantz",
+    "old": "#2aa198",
+    "new": "#1ba197",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k23 bloc pm-recommendations",
+    "id": "netanyahu",
+    "old": "#574ca0",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k23 bloc pm-recommendations",
+    "id": "none",
+    "old": "#c39553",
+    "new": "#e080c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k24 bloc first-government",
+    "id": "coalition",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k24 bloc first-government",
+    "id": "opposition",
+    "old": "#a27633",
+    "new": "#00a0c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k24 bloc pm-recommendations",
+    "id": "netanyahu",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k24 bloc pm-recommendations",
+    "id": "lapid",
+    "old": "#2aa198",
+    "new": "#1ba197",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k24 bloc pm-recommendations",
+    "id": "bennett",
+    "old": "#77a061",
+    "new": "#c080ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k24 bloc pm-recommendations",
+    "id": "none",
+    "old": "#d09ea8",
+    "new": "#e0a040",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k24 bloc knesset-blocs-2021",
+    "id": "netanyahu",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k24 bloc knesset-blocs-2021",
+    "id": "change",
+    "old": "#2aa198",
+    "new": "#1ba197",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k24 bloc knesset-blocs-2021",
+    "id": "kingmakers",
+    "old": "#77a061",
+    "new": "#c080ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k24 bloc knesset-blocs-2021",
+    "id": "other",
+    "old": "#d09ea8",
+    "new": "#e0a040",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k25 bloc first-government",
+    "id": "coalition",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k25 bloc first-government",
+    "id": "opposition",
+    "old": "#a27633",
+    "new": "#00a0c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k25 bloc pm-recommendations",
+    "id": "netanyahu",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k25 bloc pm-recommendations",
+    "id": "lapid",
+    "old": "#52a075",
+    "new": "#1ba197",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k25 bloc pm-recommendations",
+    "id": "none",
+    "old": "#d09ea8",
+    "new": "#e080c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k25 bloc pre-election-blocs",
+    "id": "netanyahu",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k25 bloc pre-election-blocs",
+    "id": "change",
+    "old": "#52a075",
+    "new": "#1ba197",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k25 bloc pre-election-blocs",
+    "id": "arab",
+    "old": "#9f6a30",
+    "new": "#00a000",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k26 bloc pre-election-blocs",
+    "id": "netanyahu",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k26 bloc pre-election-blocs",
+    "id": "opposition",
+    "old": "#52a075",
+    "new": "#1ba197",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k26 bloc pre-election-blocs",
+    "id": "arab",
+    "old": "#9f6a30",
+    "new": "#00a000",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k26 bloc outgoing-government",
+    "id": "outgoing-coalition",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k26 bloc pm-recommendations",
+    "id": "eisenkot",
+    "old": "#2aa198",
+    "new": "#1ba197",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k26 bloc pm-recommendations",
+    "id": "netanyahu",
+    "old": "#574ca0",
+    "new": "#0060ff",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "k26 bloc pm-recommendations",
+    "id": "none",
+    "old": "#c39553",
+    "new": "#e080c0",
+    "reason": "actual 14%/22% region tints including No bloc"
+  },
+  {
+    "context": "bloc editor",
+    "id": "0",
+    "old": "#1f5aa5",
+    "new": "#0060ff",
+    "reason": "small-mark separation / light and dark mark contrast"
+  },
+  {
+    "context": "bloc editor",
+    "id": "3",
+    "old": "#d98c1f",
+    "new": "#c67c03",
+    "reason": "small-mark separation / light and dark mark contrast"
+  },
+  {
+    "context": "bloc editor",
+    "id": "4",
+    "old": "#7b4fb0",
+    "new": "#9a42be",
+    "reason": "small-mark separation / light and dark mark contrast"
+  },
+  {
+    "context": "bloc editor",
+    "id": "5",
+    "old": "#1b8a9a",
+    "new": "#608000",
+    "reason": "small-mark separation / light and dark mark contrast"
+  },
+  {
+    "context": "bloc editor",
+    "id": "6",
+    "old": "#9a5b1e",
+    "new": "#ff4080",
+    "reason": "small-mark separation / light and dark mark contrast"
+  },
+  {
+    "context": "bloc editor",
+    "id": "7",
+    "old": "#c2477d",
+    "new": "removed",
+    "reason": "Seven separated options fit the solid and region-tint checks; additional automatic colours are derived on demand."
+  },
+  {
+    "context": "bloc editor",
+    "id": "8",
+    "old": "#5d7a2e",
+    "new": "removed",
+    "reason": "Seven separated options fit the solid and region-tint checks; additional automatic colours are derived on demand."
+  },
+  {
+    "context": "bloc editor",
+    "id": "9",
+    "old": "#e0b400",
+    "new": "removed",
+    "reason": "Seven separated options fit the solid and region-tint checks; additional automatic colours are derived on demand."
+  },
+  {
+    "context": "scenarios",
+    "id": "0",
+    "old": "#8b45c8",
+    "new": "#8e48cb",
+    "reason": "small-mark separation / light and dark mark contrast"
+  },
+  {
+    "context": "families",
+    "id": "herut-likud",
+    "old": "#2565d0",
+    "new": "#2969d4",
+    "reason": "small-mark separation / light and dark mark contrast"
+  },
+  {
+    "context": "families",
+    "id": "russian-speaking-immigrant",
+    "old": "#00a6a0",
+    "new": "#169d97",
+    "reason": "small-mark separation / light and dark mark contrast"
+  },
+  {
+    "context": "bloc editor",
+    "id": "2",
+    "old": "#c0392b",
+    "new": "#c23b2d",
+    "reason": "small-mark separation / light and dark mark contrast"
+  },
+  {
+    "context": "map",
+    "id": "tie / unassigned / no votes",
+    "old": "#78838c",
+    "new": "#000000",
+    "reason": "Neutral grey was only ΔE 5.15 from a shipped winning list. Black clears ΔE 20 for every shipped winning list and bloc; dual halos preserve its boundary on dark tiles."
+  },
+  {
+    "context": "k16 list",
+    "id": "16-נץ",
+    "old": "#b77b26",
+    "new": "#b08421",
+    "reason": "co-seated / neighbouring / locality-map leader separation"
+  },
+  {
+    "context": "k16 list",
+    "id": "16-צף",
+    "old": "#498466",
+    "new": "#639078",
+    "reason": "co-seated / neighbouring / locality-map leader separation"
+  },
+  {
+    "context": "k17 list",
+    "id": "17-רק",
+    "old": "#478a68",
+    "new": "#609377",
+    "reason": "co-seated / neighbouring / locality-map leader separation"
+  },
+  {
+    "context": "k17 list",
+    "id": "17-כ",
+    "old": "#ba643c",
+    "new": "#b17d66",
+    "reason": "co-seated / neighbouring / locality-map leader separation"
+  },
+  {
+    "context": "k18 list",
+    "id": "18-ה",
+    "old": "#5d8a58",
+    "new": "#648860",
+    "reason": "co-seated / neighbouring / locality-map leader separation"
+  },
+  {
+    "context": "k18 list",
+    "id": "18-חי",
+    "old": "#a4734c",
+    "new": "#9c7e68",
+    "reason": "co-seated / neighbouring / locality-map leader separation"
+  },
+  {
+    "context": "k19 list",
+    "id": "19-נץ",
+    "old": "#a4774d",
+    "new": "#ad8867",
+    "reason": "co-seated / neighbouring / locality-map leader separation"
+  },
+  {
+    "context": "k20 list",
+    "id": "20-קץ",
+    "old": "#997647",
+    "new": "#9a7e59",
+    "reason": "co-seated / neighbouring / locality-map leader separation"
+  },
+  {
+    "context": "k21 list",
+    "id": "21-נ",
+    "old": "#25abe4",
+    "new": "#095f74",
+    "reason": "co-seated / neighbouring / locality-map leader separation"
+  },
+  {
+    "context": "k22 list",
+    "id": "22-זץ",
+    "old": "#96834c",
+    "new": "#938049",
+    "reason": "co-seated / neighbouring / locality-map leader separation"
+  },
+  {
+    "context": "k25 list",
+    "id": "25-ב",
+    "old": "#7d9fc4",
+    "new": "#257c9c",
+    "reason": "co-seated / neighbouring / locality-map leader separation"
+  },
+  {
+    "context": "k26 list",
+    "id": "26-ך",
+    "old": "#9c7b5b",
+    "new": "#9a8066",
+    "reason": "co-seated / neighbouring / locality-map leader separation"
+  },
+  {
+    "context": "k26 list",
+    "id": "26-ני",
+    "old": "#a58d6a",
+    "new": "#ccae82",
+    "reason": "co-seated / neighbouring / locality-map leader separation"
+  },
+  {
+    "context": "family grouping herut-likud whole",
+    "id": "selected",
+    "old": "#2565d0",
+    "new": "#0067f8",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping herut-likud whole",
+    "id": "other",
+    "old": "#7d8791",
+    "new": "#c080ff",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping herut-likud mixed",
+    "id": "selected",
+    "old": "#2565d0",
+    "new": "#0067f8",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping herut-likud mixed",
+    "id": "mixed",
+    "old": "#b8a78a",
+    "new": "#e0a040",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping herut-likud mixed",
+    "id": "other",
+    "old": "#7d8791",
+    "new": "#c080ff",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping labour-zionist-left whole",
+    "id": "other",
+    "old": "#7d8791",
+    "new": "#a080ff",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping labour-zionist-left mixed",
+    "id": "mixed",
+    "old": "#b8a78a",
+    "new": "#e0a040",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping labour-zionist-left mixed",
+    "id": "other",
+    "old": "#7d8791",
+    "new": "#a080ff",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping arab-arab-jewish whole",
+    "id": "other",
+    "old": "#7d8791",
+    "new": "#a080ff",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping arab-arab-jewish mixed",
+    "id": "mixed",
+    "old": "#b8a78a",
+    "new": "#e0a040",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping arab-arab-jewish mixed",
+    "id": "other",
+    "old": "#7d8791",
+    "new": "#a080ff",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping centre whole",
+    "id": "selected",
+    "old": "#ea7a00",
+    "new": "#da7205",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping centre whole",
+    "id": "other",
+    "old": "#7d8791",
+    "new": "#a080ff",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping centre mixed",
+    "id": "selected",
+    "old": "#ea7a00",
+    "new": "#da7205",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping centre mixed",
+    "id": "mixed",
+    "old": "#b8a78a",
+    "new": "#a0c060",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping centre mixed",
+    "id": "other",
+    "old": "#7d8791",
+    "new": "#a080ff",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping religious-parties whole",
+    "id": "selected",
+    "old": "#8b45c8",
+    "new": "#8e48ca",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping religious-parties whole",
+    "id": "other",
+    "old": "#7d8791",
+    "new": "#0080ff",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping religious-parties mixed",
+    "id": "selected",
+    "old": "#8b45c8",
+    "new": "#8e48ca",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping religious-parties mixed",
+    "id": "mixed",
+    "old": "#b8a78a",
+    "new": "#e0a040",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping religious-parties mixed",
+    "id": "other",
+    "old": "#7d8791",
+    "new": "#0080ff",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping national-religious whole",
+    "id": "selected",
+    "old": "#a89a00",
+    "new": "#9b8f00",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping national-religious whole",
+    "id": "other",
+    "old": "#7d8791",
+    "new": "#a080ff",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping national-religious mixed",
+    "id": "selected",
+    "old": "#a89a00",
+    "new": "#9b8f00",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping national-religious mixed",
+    "id": "mixed",
+    "old": "#b8a78a",
+    "new": "#ff8040",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping national-religious mixed",
+    "id": "other",
+    "old": "#7d8791",
+    "new": "#a080ff",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping radical-right whole",
+    "id": "selected",
+    "old": "#8a5528",
+    "new": "#c06000",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping radical-right whole",
+    "id": "other",
+    "old": "#7d8791",
+    "new": "#a080ff",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping radical-right mixed",
+    "id": "selected",
+    "old": "#8a5528",
+    "new": "#c06000",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping radical-right mixed",
+    "id": "mixed",
+    "old": "#b8a78a",
+    "new": "#a0c060",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping radical-right mixed",
+    "id": "other",
+    "old": "#7d8791",
+    "new": "#a080ff",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping haredi whole",
+    "id": "other",
+    "old": "#7d8791",
+    "new": "#6060ff",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping haredi mixed",
+    "id": "mixed",
+    "old": "#b8a78a",
+    "new": "#e0a040",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping haredi mixed",
+    "id": "other",
+    "old": "#7d8791",
+    "new": "#6060ff",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping russian-speaking-immigrant whole",
+    "id": "selected",
+    "old": "#00a6a0",
+    "new": "#1da09a",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping russian-speaking-immigrant whole",
+    "id": "other",
+    "old": "#7d8791",
+    "new": "#a080ff",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping russian-speaking-immigrant mixed",
+    "id": "selected",
+    "old": "#00a6a0",
+    "new": "#1da09a",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping russian-speaking-immigrant mixed",
+    "id": "mixed",
+    "old": "#b8a78a",
+    "new": "#e0a040",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  },
+  {
+    "context": "family grouping russian-speaking-immigrant mixed",
+    "id": "other",
+    "old": "#7d8791",
+    "new": "#a080ff",
+    "reason": "Generated bloc identity / actual region tint separation, including No bloc"
+  }
+]

@@ -303,8 +303,8 @@
       {
         "date": "1951-10-08",
         "type": "confidence-vote",
-        "textEn": "The Knesset expressed confidence in government 3, headed by David Ben-Gurion, 56–40, with 4 abstentions.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־3 בראשות דוד בן־גוריון, ברוב של 56 מול 40, עם 4 נמנעים.",
+        "textEn": "The Knesset expressed confidence in government 3, headed by David Ben-Gurion, 56 for · 40 against, with 4 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־3 בראשות דוד בן־גוריון, 56 בעד · 40 נגד, עם 4 נמנעים.",
         "cites": [
           {
             "source": "plenum-gov3",
@@ -335,8 +335,8 @@
       {
         "date": "1952-12-23",
         "type": "confidence-vote",
-        "textEn": "The Knesset expressed confidence in government 4, headed by David Ben-Gurion, 63–24.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־4 בראשות דוד בן־גוריון, ברוב של 63 מול 24.",
+        "textEn": "The Knesset expressed confidence in government 4, headed by David Ben-Gurion, 63 for · 24 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־4 בראשות דוד בן־גוריון, 63 בעד · 24 נגד.",
         "cites": [
           {
             "source": "plenum-gov4",
@@ -353,8 +353,8 @@
       {
         "date": "1954-01-26",
         "type": "confidence-vote",
-        "textEn": "The Knesset expressed confidence in government 5, headed by Moshe Sharett, 75–23, with 5 abstentions.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־5 בראשות משה שרת, ברוב של 75 מול 23, עם 5 נמנעים.",
+        "textEn": "The Knesset expressed confidence in government 5, headed by Moshe Sharett, 75 for · 23 against, with 5 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־5 בראשות משה שרת, 75 בעד · 23 נגד, עם 5 נמנעים.",
         "cites": [
           {
             "source": "plenum-gov5",
@@ -372,8 +372,8 @@
       {
         "date": "1955-06-29",
         "type": "confidence-vote",
-        "textEn": "The Knesset expressed confidence in government 6, headed by Moshe Sharett, 66–32, with 3 abstentions.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־6 בראשות משה שרת, ברוב של 66 מול 32, עם 3 נמנעים.",
+        "textEn": "The Knesset expressed confidence in government 6, headed by Moshe Sharett, 66 for · 32 against, with 3 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־6 בראשות משה שרת, 66 בעד · 32 נגד, עם 3 נמנעים.",
         "cites": [
           {
             "source": "plenum-gov6",

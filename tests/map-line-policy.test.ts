@@ -20,7 +20,7 @@ it('presents the treaty administrative sector distinctly with the published bili
  expect(admin.quotes?.[0].en).toContain('Any treatment of this line shall be without prejudice to the status of the territory.');
  expect(admin.sources.some(([,u])=>u===treaty.sources.mfaAnnexEnglish)).toBe(true);
  expect(MAP_LINES.every(x=>x.detailHe&&x.uncertaintyHe&&x.uncertaintyEn)).toBe(true);
- expect(mapLineSourceLabel('OSM · Israel relation','he')).toBe('OSM · יחס ישראל');
+ expect(mapLineSourceLabel('OpenStreetMap · Israel relation','he')).toBe('OpenStreetMap · יחס ישראל');
 });
 it('uses the complete native UN withdrawal line, including Har Dov and Margaliot',()=>{
  const blue=fs.filter(f=>f.properties?.layer==='blue-line');expect(blue).toHaveLength(1);

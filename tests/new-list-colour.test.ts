@@ -29,11 +29,12 @@ describe('colours for lists the user creates', () => {
 });
 
 describe('component-party colours of a joint list', () => {
-  it('keep sourced colours, give the lead the list colour and every colourless party one that stands apart', () => {
+  it('keep sourced colours, use stable party bases and every colourless party one that stands apart', () => {
     const others = chamber.filter((c) => c !== '#a0601e');
     const parties = [{ id: 'degel', color: null }, { id: 'aguda', color: null }, { id: 'yesh', color: '#003aa7' }];
     const out = componentColours(parties, 'aguda', '#a0601e', others);
-    expect(out.aguda).toBe('#a0601e');
+    expect(out.aguda).not.toBe('#a0601e');
+    expect(out).toEqual(componentColours(parties,'aguda','#a0601e',others));
     expect(out.yesh).toBe('#003aa7');
     expect(clears(out.degel, [...others, '#a0601e'])).toBe(true);
   });

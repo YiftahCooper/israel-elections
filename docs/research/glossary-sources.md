@@ -1,6 +1,6 @@
 # Glossary sources (info-icon definitions)
 
-Source log for `src/app/glossary-data.ts` (`GLOSSARY_TERMS`, 47 terms). All checks: **4 November 2026**,
+Source log for `src/app/glossary-data.ts` (`GLOSSARY_TERMS`, 48 terms; `outside-support` added 7 November 2026). All checks: **4 November 2026**,
 from Israel, with `curl` (browser user agent). A check passes only when the URL returned **HTTP 200** and
 the page contained the supporting passage (for the Nevo statute page, also the cited section anchor).
 All **50** distinct URLs passed. The check script and its raw results are scratch
@@ -40,8 +40,9 @@ The English-language Knesset Elections Law translation could therefore not be li
   0.83% figure. The app's "No percentage threshold applies" is correct.
 * **Majority needed to form a government**. IDI's 2013 article 10248 says a new government needs "a majority
   of the Knesset (at least 61)". Basic Law: The Government s.13(d), and IDI's 2026 article 63976, say
-  confidence is enough: more votes for than against. `majority-61` follows the law; 10248 is cited only for
-  its coalition-type definitions.
+  confidence is enough: more votes for than against. `majority-61` follows the law. 10248 is not cited
+  anywhere (7 November 2026): `minimal-winning-coalition` rests on IDI 3417 (Hebrew), with 63976 as its
+  English learn-more link.
 * **Name of the surplus agreement**. The statute (s.67) calls it התקשרות בין רשימות מועמדים. IDI notes that
   הסכם עודפים is the popular name. `surplus` keeps the popular name and mentions the legal one.
 * **Double envelopes**. The statute's term is מעטפה חיצונית (outer envelope); IDI and the app say מעטפות
@@ -90,6 +91,7 @@ The English-language Knesset Elections Law translation could therefore not be li
 - `majority-61`: s.28(b): no confidence by a majority of members; s.13(d): government constituted on the Knesset’s confidence
 - `majority-61`: learn-more (he)
 - `government-formation`: s.7: President assigns the task after consulting factions; s.13: constitution by confidence
+- `outside-support`: s.13(d): the government is constituted when the Knesset expresses confidence; no special majority (checked 7 November 2026)
 
 ### חוק הבחירות לכנסת [נוסח משולב], התשכ"ט-1969, סעיף 61 (כינוי ואות של רשימה)
 
@@ -277,6 +279,8 @@ The English-language Knesset Elections Law translation could therefore not be li
 - `coalition`: learn-more (he)
 - `minimal-winning-coalition`: "קואליציה מזערית זוכה" definition; "ממשלה צרה"
 - `minimal-winning-coalition`: learn-more (he)
+- `outside-support`: "תמיכה מבחוץ של המפלגות הערביות" sustaining Rabin’s minority government after 1993 (checked 7 November 2026)
+- `outside-support`: learn-more (he)
 
 ### מי מנצח בבחירות? תלוי איך סופרים את הקולות
 
@@ -369,13 +373,6 @@ The English-language Knesset Elections Law translation could therefore not be li
 - `candidate-cap-1977`: published 1977 result: Flatto-Sharon 35,049 votes, 1 seat
 - `candidate-cap-1977`: learn-more (he)
 
-### Coalition Building in Israel: A Guide for the Perplexed
-
-Israel Democracy Institute · <https://en.idi.org.il/articles/10248> · HTTP 200, 2026-11-04
-
-- `minimal-winning-coalition`: "A minimal winning coalition" definition
-- `minimal-winning-coalition`: learn-more (en)
-
 ### Who Wins the Israeli Election? That Depends on How You Count the Votes
 
 Israel Democracy Institute · <https://en.idi.org.il/articles/3302> · HTTP 200, 2026-11-04
@@ -454,6 +451,9 @@ Israel Democracy Institute · <https://en.idi.org.il/articles/63976> · HTTP 200
 - `majority-61`: learn-more (en)
 - `government-formation`: process, time limits, investiture
 - `government-formation`: learn-more (en)
+- `minimal-winning-coalition`: learn-more (en; added 7 November 2026, replacing 10248)
+- `outside-support`: learn-more (en)
+- `outside-support`: "the law allows for the establishment of a minority government, if the relative majority that will support it is larger than the minority which opposes it" (checked 7 November 2026)
 
 ### Explainer: Running on joint lists in elections: who does it benefit?
 

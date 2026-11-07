@@ -365,8 +365,8 @@
           "for": 73,
           "against": 46
         },
-        "textEn": "The Knesset approved the 35th government, 73–46; Netanyahu became prime minister and Gantz alternate prime minister.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־35 ברוב של 73 מול 46; נתניהו נעשה ראש הממשלה וגנץ ראש הממשלה החלופי.",
+        "textEn": "The Knesset approved the 35th government, 73 for · 46 against; Netanyahu became prime minister and Gantz alternate prime minister.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־35, 73 בעד · 46 נגד; נתניהו נעשה ראש הממשלה וגנץ ראש הממשלה החלופי.",
         "cites": [
           {
             "source": "knesset-investiture",

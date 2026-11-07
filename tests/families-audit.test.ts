@@ -1,3 +1,4 @@
+import {deltaE2000} from '../src/data/colour.ts';
 import { expect, test } from 'vitest';
 import { readFileSync } from 'node:fs';
 import haredi from '../data/meta/families/haredi.json';
@@ -30,16 +31,9 @@ test('a family can be scaled down, to zero at most, and never to a negative shar
   expect(()=>scaleAction(H,s,'share','-1',src)).toThrow();
 });
 
-/** OKLab distance ×100 (normal vision). */
-function okDistance(a:string,b:string){
-  const lab=(h:string)=>{const [r,g,b]=[1,3,5].map(i=>{const c=parseInt(h.slice(i,i+2),16)/255;return c<=.04045?c/12.92:((c+.055)/1.055)**2.4;});
-    const l=Math.cbrt(.4122214708*r+.5363325363*g+.0514459929*b),m=Math.cbrt(.2119034982*r+.6806995451*g+.1073969566*b),s=Math.cbrt(.0883024619*r+.2817188376*g+.6299787005*b);
-    return [.2104542553*l+.793617785*m-.0040720468*s,1.9779984951*l-2.428592205*m+.4505937099*s,.0259040371*l+.7827717662*m-.808675766*s];};
-  const p=lab(a),q=lab(b);return 100*Math.hypot(p[0]-q[0],p[1]-q[1],p[2]-q[2]);
-}
 test('the nine family colours are mutually distinct and distinct from the grouping neutrals',()=>{
   const colours=Object.values(FAMILY_COLOURS);expect(colours).toHaveLength(9);
-  for(let i=0;i<colours.length;i++){for(let j=i+1;j<colours.length;j++)expect(okDistance(colours[i],colours[j]),`${colours[i]} vs ${colours[j]}`).toBeGreaterThanOrEqual(12.5);
-    for(const neutral of ['#7d8791','#b8a78a'])expect(okDistance(colours[i],neutral)).toBeGreaterThanOrEqual(10);}
-  expect(familyColor({...H,id:'personal-x',status:'personal',forkedFrom:{id:'haredi',revision:'r'}})).toBe(FAMILY_COLOURS.haredi);
+  for(let i=0;i<colours.length;i++){for(let j=i+1;j<colours.length;j++)expect(deltaE2000(colours[i],colours[j]),`${colours[i]} vs ${colours[j]}`).toBeGreaterThanOrEqual(20);
+    for(const neutral of ['#7d8791','#b8a78a'])expect(deltaE2000(colours[i],neutral)).toBeGreaterThanOrEqual(15);}
+  expect(familyColor({...H,id:'personal-x',status:'personal',forkedFrom:{id:'haredi',revision:'r'}})).not.toBe(FAMILY_COLOURS.haredi);
 });

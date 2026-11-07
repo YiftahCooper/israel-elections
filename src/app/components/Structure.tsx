@@ -1,3 +1,4 @@
+import {ColourPicker} from './ColourPicker.tsx';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { SeatDelta } from './SeatDelta.tsx';
 import { Slip } from './ui.tsx';
@@ -305,7 +306,7 @@ function Merge({ s, r }: { s: Scenario; r: AllocationResult }) {
                 <option value="interleave">{L('Alternating (1st of each, then 2nd…)', 'לסירוגין (הראשון מכל אחת, אחר כך השני…)')}</option>
                 <option value="concat">{L('One list after the other', 'רשימה אחר רשימה')}</option>
               </select></label>
-            <label className="field">{L('Colour', 'צבע')}<input type="color" value={color} onChange={(e) => setColor(e.target.value)} /></label>
+            <ColourPicker label={L('Colour','צבע')} value={color} onChange={setColor} others={s.lists.filter(l=>!ids.includes(l.id)&&!l.withdrawn).map(l=>({color:l.color,name:listLabel(l,lang)}))}/>
           </>}
         </div>
       )}

@@ -2,12 +2,22 @@
 
 ## 7 November 2026 — Settings
 
+- Map: keep Hebrew sentence punctuation outside Latin-reference isolation, join the Ramadin source splice exactly, and name OpenStreetMap in full.
+
+
+- Integrate Settings with the colour guard: preserve global party fills, dot separators and picker advice across display settings and large-text layouts.
+
 - Rebuilt Settings as one searchable bilingual popup (phone: full screen) with levels, group resets and Undo; every setting now applies wherever it is relevant, with new defaults (Device theme, joint lists by party, parties with no seats hidden) and accessibility options at every level; every percentage now shows at most 0–3 decimals (1 by default, 2 at Expert), never shown on the wrong side of the threshold (one more digit there, the exact share in the tooltip); Compare's shares, percentage-point changes and seatless rows follow Settings, its copy mode is a Settings row, and large text now takes the layout of the narrower page instead of wrapping.
 
 - Map review: restore Government House armistice edges, correct bilingual treaty text and references, complete the UN Blue Line, and add sourced Golan separation layers.
 
 ## 6 November 2026 — data audit
 
+- Keep party fills stable across elections with global sibling-colour checks and neutral dot separators.
+
+- Guard automatic colours and custom picker advice across the app; preserve researched party hues and test preset distinctness and contrast in both themes.
+
+- Coalitions: outside support and arranged abstention as roles beside In/Out/Any, with “members + outside support = total”, both the confidence vote (more for than against) and 61, hatched/hollow bar marks, named undo, links and saves; What if… adds a 2026 minority government with outside support; “Recorded first government” fills roles from research with their certainty and says where it differs from the recorded vote, and 1992’s grouping shows outside support as its own group without recolouring any list. Vote tallies read “67 for · 53 against” everywhere, including After the election.
 - After the election: distinguish government members, support roles and individual votes; show unknown totals honestly, explain vote reconciliation behind help, and keep localised date ranges in reading order.
 - Correct Jerusalem zone identities and paired lines; distinguish the treaty’s Jordan administrative sector, constrain source precision, and verify Blue/Alpha against explicit UN maps.
 

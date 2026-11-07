@@ -375,8 +375,8 @@
       {
         "date": "1988-12-22",
         "type": "confidence-vote",
-        "textEn": "The Knesset approved Shamir’s 23rd government, 84–19.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־23 בראשות שמיר, ברוב של 84 מול 19.",
+        "textEn": "The Knesset approved Shamir’s 23rd government, 84 for · 19 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־23 בראשות שמיר, 84 בעד · 19 נגד.",
         "cites": [
           {
             "source": "jta1988vote",
@@ -405,8 +405,8 @@
       {
         "date": "1990-06-11",
         "type": "confidence-vote",
-        "textEn": "The Knesset approved Shamir’s 24th government, 62–57.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־24 בראשות שמיר, ברוב של 62 מול 57.",
+        "textEn": "The Knesset approved Shamir’s 24th government, 62 for · 57 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־24 בראשות שמיר, 62 בעד · 57 נגד.",
         "cites": [
           {
             "source": "jta1990vote",
@@ -659,8 +659,8 @@
       {
         "date": "1990-03-15",
         "type": "no-confidence-vote",
-        "textEn": "The Knesset passed a no-confidence motion against Shamir’s government, 60–55; it continued as a caretaker government.",
-        "textHe": "הכנסת קיבלה הצעת אי־אמון בממשלת שמיר ברוב של 60 מול 55; הממשלה המשיכה לכהן כממשלת מעבר.",
+        "textEn": "The Knesset passed a no-confidence motion against Shamir’s government, 60 for · 55 against; it continued as a caretaker government.",
+        "textHe": "הכנסת קיבלה הצעת אי־אמון בממשלת שמיר, 60 בעד · 55 נגד; הממשלה המשיכה לכהן כממשלת מעבר.",
         "cites": [
           {
             "source": "jta1990fall",
@@ -682,8 +682,8 @@
       {
         "date": "1990-06-11",
         "number": 24,
-        "textEn": "The Knesset approved Shamir’s 24th government, 62–57.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־24 בראשות שמיר, ברוב של 62 מול 57.",
+        "textEn": "The Knesset approved Shamir’s 24th government, 62 for · 57 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־24 בראשות שמיר, 62 בעד · 57 נגד.",
         "coalition": [
           {
             "factionNameHe": "הליכוד",

@@ -273,8 +273,8 @@
       {
         "date": "1949-03-10",
         "type": "confidence-vote",
-        "textEn": "The Knesset expressed confidence in government 1, headed by David Ben-Gurion, 73–45.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־1 בראשות דוד בן־גוריון, ברוב של 73 מול 45.",
+        "textEn": "The Knesset expressed confidence in government 1, headed by David Ben-Gurion, 73 for · 45 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־1 בראשות דוד בן־גוריון, 73 בעד · 45 נגד.",
         "cites": [
           {
             "source": "plenum-gov1",
@@ -355,8 +355,8 @@
       {
         "date": "1950-11-01",
         "type": "confidence-vote",
-        "textEn": "The Knesset expressed confidence in government 2, headed by David Ben-Gurion, 69–42, with 2 abstentions.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־2 בראשות דוד בן־גוריון, ברוב של 69 מול 42, עם 2 נמנעים.",
+        "textEn": "The Knesset expressed confidence in government 2, headed by David Ben-Gurion, 69 for · 42 against, with 2 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־2 בראשות דוד בן־גוריון, 69 בעד · 42 נגד, עם 2 נמנעים.",
         "cites": [
           {
             "source": "plenum-gov2",

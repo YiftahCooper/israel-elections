@@ -65,3 +65,21 @@ it('keeps both Government House armistice edges throughout every permitted zoom,
     }
   }
 });
+
+it('joins the Ramadin replacement exactly to both retained source ways at every allowed zoom',()=>{
+ const replacement=layer('green-line').filter(f=>f.properties?.source.startsWith('OCHA;'));
+ expect(replacement).toHaveLength(1);
+ const f=replacement[0];expect(f.geometry.type).toBe('LineString');
+ if(f.geometry.type!=='LineString')return;
+ const ends=[f.geometry.coordinates[0],f.geometry.coordinates.at(-1)!];
+ expect(ends).toEqual([[34.909792,31.3563778],[34.9503931,31.3480643]]);
+ for(let zoom=3;zoom<=15;zoom++){
+  const visible=lineVisibleAtZoom(f.properties,zoom);expect(visible).toBe(zoom<=11);
+  for(const end of ends){
+   const neighbours=layer('green-line').filter(other=>other!==f&&other.geometry.type==='LineString'&&[other.geometry.coordinates[0],other.geometry.coordinates.at(-1)!].some(c=>c[0]===end[0]&&c[1]===end[1]));
+   expect(neighbours).toHaveLength(1);
+   expect(lineVisibleAtZoom(neighbours[0].properties,zoom)).toBe(visible);
+  }
+ }
+ expect(layer('green-line').some(f=>[95258528,95258529].includes(f.properties?.osmWay))).toBe(false);
+});

@@ -255,8 +255,8 @@
           "for": 74,
           "against": 45
         },
-        "textEn": "The Knesset passed the dissolution law, 74–45, setting the next election for 17 September 2019. No new government was formed.",
-        "textHe": "הכנסת קיבלה את חוק ההתפזרות ברוב של 74 מול 45 וקבעה בחירות ל־17 בספטמבר 2019. לא הוקמה ממשלה חדשה.",
+        "textEn": "The Knesset passed the dissolution law, 74 for · 45 against, setting the next election for 17 September 2019. No new government was formed.",
+        "textHe": "הכנסת קיבלה את חוק ההתפזרות, 74 בעד · 45 נגד, וקבעה בחירות ל־17 בספטמבר 2019. לא הוקמה ממשלה חדשה.",
         "cites": [
           {
             "source": "knesset-dissolution",

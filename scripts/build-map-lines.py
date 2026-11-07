@@ -34,6 +34,9 @@ jerusalem = next(p for p in polys if p!=scopus and p.centroid.x>35.17)
 latrun = next(p for p in polys if p!=scopus and p!=jerusalem)
 govt = jerusalem.intersection(band_128_130)
 features = []
+ramadin_check=read(ROOT/'signed-map-check.json')
+splice=ramadin_check['ramadinSplice']
+west_anchor=tuple(splice['westAnchor']);east_anchor=tuple(splice['eastAnchor'])
 
 def add(layer, geom, source, way=None, uncertainty=922, max_zoom=None, **extra):
     if geom.is_empty: return
@@ -50,15 +53,27 @@ for f in green:
     g = shape(f['geometry'])
     if g.difference(scopus.boundary).length<1e-10: continue
     # Remove the unverified central OSM pair; keep the independent zone overlay separate.
-    g = g.difference(coverage).difference(box(*read(ROOT/'signed-map-check.json')['ramadinReplacementBox']))
+    way=f['properties']['way']
+    if way in splice['removedWays']: continue
+    if way==splice['westWay']:
+        cs=list(g.coords);assert west_anchor in cs
+        g=LineString(cs[cs.index(west_anchor):])
+    g = g.difference(coverage)
     # Discard a one-metre extraction stub, never erase the zone’s armistice edges.
     if transform(project,g).length<2: continue
     add('green-line',g,'OSM relation 7304999; UN229 covers central Jerusalem only',f['properties']['way'])
-# Local signed-sheet tie-break only. Preserve the real OCHA stroke and leave
-# product joins open rather than manufacture a line between mismatched sources.
-ramadin=box(*read(ROOT/'signed-map-check.json')['ramadinReplacementBox'])
+# Exact topology at published OpenStreetMap vertices. Keep the accepted OCHA
+# stroke and document the short cartographic transitions; never call them surveys.
+ramadin=box(*ramadin_check['ramadinReplacementBox'])
 for f in read(ROOT/'ocha-green.geojson')['features']:
-    add('green-line',shape(f['geometry']).intersection(ramadin),'OCHA; signed 1949 Map1 Ramadin tie-break',uncertainty=922,sourceDate='2026-11-07')
+    g=shape(f['geometry']).intersection(ramadin)
+    if g.is_empty: continue
+    assert g.geom_type=='LineString'
+    cs=list(g.coords)
+    if cs[0][0]>cs[-1][0]: cs.reverse()
+    joins=[Point(project(*west_anchor)).distance(Point(project(*cs[0]))),Point(project(*east_anchor)).distance(Point(project(*cs[-1])))]
+    assert max(joins)<400
+    add('green-line',LineString([west_anchor,*cs,east_anchor]),'OCHA; signed 1949 Map1 Ramadin tie-break; exact OpenStreetMap-node cartographic splice',uncertainty=922,sourceDate='2026-11-07',ramadinJoinsM=joins,joinStatus='cartographic source splice, not surveyed treaty coordinates')
 for side,line in [('Israeli',israeli),('Jordanian',jordanian)]:
     add('green-line',line,'UN map 229 (Nov 1949), seven-control similarity digitization',uncertainty=60,side=side)
 add('no-mans-land',latrun,'OSM paired lines; undocumented eastern cartographic closure',uncertainty=740,closure='OSM cartographic closure, not an agreed eastern boundary')

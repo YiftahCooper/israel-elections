@@ -307,8 +307,8 @@
           "against": 48,
           "absent": 4
         },
-        "textEn": "The Knesset approved the 33rd government, 68–48; four MKs were absent. The ministers were sworn in.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־33 ברוב של 68 מול 48; ארבעה חברי כנסת נעדרו. השרים הושבעו.",
+        "textEn": "The Knesset approved the 33rd government, 68 for · 48 against; four MKs were absent. The ministers were sworn in.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־33, 68 בעד · 48 נגד; ארבעה חברי כנסת נעדרו. השרים הושבעו.",
         "cites": [
           {
             "source": "jta-investiture",
@@ -422,8 +422,8 @@
       "type": "knesset-dissolved",
       "date": "2014-12-08",
       "nextElection": "k20",
-      "textEn": "The Knesset passed the dissolution law, 93–0, setting an election for 17 March 2015.",
-      "textHe": "הכנסת קיבלה את חוק ההתפזרות ברוב של 93 ללא מתנגדים וקבעה בחירות ל־17 במרס 2015.",
+      "textEn": "The Knesset passed the dissolution law, 93 for · 0 against, setting an election for 17 March 2015.",
+      "textHe": "הכנסת קיבלה את חוק ההתפזרות, 93 בעד · 0 נגד, וקבעה בחירות ל־17 במרס 2015.",
       "cites": [
         {
           "source": "knesset-dissolution",

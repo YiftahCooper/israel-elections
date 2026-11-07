@@ -1,6 +1,7 @@
+import{contrastRatio,partySeparator}from'../src/data/colourGuard.ts';
 import { expect, test } from 'vitest';
 import { deltaE2000 } from '../src/data/colour.ts';
-import { partyDisplayColor, colourContrast } from '../src/app/partyDisplayColor.ts';
+import { partyDisplayColor } from '../src/app/partyDisplayColor.ts';
 import { seatOrder } from '../src/app/components/Hemicycle.tsx';
 import { blocPieces, seatHolders } from '../src/app/derive.ts';
 import { graphicScenario } from './graphics-cases.ts';
@@ -12,8 +13,9 @@ for (let n = 1; n <= 26; n++) test(`k${n}: every constituent has a deterministic
   for (const l of lists) {
     const colours = l.parties!.map(p => partyDisplayColor(l, p.id));
     l.parties!.forEach((p, i) => {
-      expect(colourContrast(colours[i], l.color), `${l.shortEn}: ${p.nameEn} / ring`).toBeGreaterThanOrEqual(3);
-      expect(deltaE2000(colours[i], l.color)).toBeGreaterThanOrEqual(20);
+      const separator=partySeparator(colours[i],l.color);
+      expect(contrastRatio(separator.inner,colours[i])).toBeGreaterThanOrEqual(3);
+      expect(contrastRatio(separator.outer??separator.inner,l.color)).toBeGreaterThanOrEqual(3);
       for (const sibling of colours.slice(i + 1)) expect(deltaE2000(colours[i], sibling), `${l.shortEn}: siblings`).toBeGreaterThanOrEqual(20);
       expect(partyDisplayColor({ ...l, parties: [...l.parties!].reverse() }, p.id)).toBe(colours[i]);
     });
@@ -32,13 +34,9 @@ for (let n = 1; n <= 26; n++) test(`k${n}: every constituent has a deterministic
   }
 });
 
-test('appearance changes recompute colours without changing researched inputs', () => {
- const {s}=graphicScenario(25,[]), l=s.lists.find(l=>l.shortEn==='Religious Zionism')!;
- const p=l.parties![0], before=JSON.stringify(l);
- partyDisplayColor(l,p.id);
- expect(JSON.stringify(l)).toBe(before);
- const custom={...l,color:'#ffffff',parties:l.parties!.map(p=>({...p,color:'#ffffff'}))};
- const colours=custom.parties.map(p=>partyDisplayColor(custom,p.id));
- expect(colours.every(c=>colourContrast(c,custom.color)>=3)).toBe(true);
- colours.forEach((a,i)=>colours.slice(i+1).forEach(b=>expect(deltaE2000(a,b)).toBeGreaterThanOrEqual(20)));
+test('ring edits preserve global fills without changing researched inputs',()=>{
+ const {s}=graphicScenario(25,[]),l=s.lists.find(l=>l.parties?.some(p=>p.id==='otzma-yehudit'))!;
+ const original=JSON.stringify(l),colors=l.parties!.map(p=>partyDisplayColor(l,p.id));
+ expect(JSON.stringify(l)).toBe(original);
+ for(const color of ['#ffffff','#000000','#ff0000'])expect(l.parties!.map(p=>partyDisplayColor({...l,color},p.id))).toEqual(colors);
 });

@@ -6039,7 +6039,7 @@
       }
     ],
     "region": "West Bank",
-    "decision": "OCHA supported at Arab er-Ramadin; OSM is about 0.8 km south of the signed ink. Substitute OCHA only in the retained local box, leave source joins open. The rest of this long cluster remains unresolved.",
+    "decision": "OCHA supported at Arab er-Ramadin; OSM is about 0.8 km south of the signed ink. Substitute OCHA in the retained local box, with short cartographic transitions to the recorded exact OpenStreetMap nodes (authorised third-review correction); these joins are not surveyed treaty coordinates. The rest of this long cluster remains unresolved.",
     "figure": "js-104.png"
   },
   {

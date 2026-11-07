@@ -235,6 +235,8 @@ test('Hebrew map references remain isolated LTR and the phone legend is collapse
  const pop=page.locator('.pop').last();
  await expect(pop.locator('bdi[dir="ltr"]').filter({hasText:'V(1)(b)'})).toBeVisible();
  await expect(pop.locator('bdi[dir="ltr"]').filter({hasText:'±60'})).toBeVisible();
+ expect(await pop.locator('bdi').evaluateAll(xs=>xs.every(x=>!/[.,:;]$/.test(x.textContent?.trimEnd()??'')))).toBe(true);
+ await expect(pop).not.toContainText('OSM');
  await page.keyboard.press('Escape');
  await page.getByRole('button',{name:'ירדן · הקו מול יהודה ושומרון',exact:true}).click();
  await expect(pop).toContainText('1994 · נספח I(א) 2.A.7');

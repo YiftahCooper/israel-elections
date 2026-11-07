@@ -384,7 +384,7 @@ export function resetAll() {
   const old=state.scenario;
   for(const l of fresh.lists){const from=old.lists.find(x=>x.id===l.id);if(!from)continue;
     if(from.color!==l.color)fresh=applyAction(fresh,{type:'setListMeta',listId:l.id,patch:{color:from.color}});
-    for(const p of from.parties??[])if(p.color&&l.parties?.some(x=>x.id===p.id))fresh=applyAction(fresh,{type:'setPartyColor',listId:l.id,partyId:p.id,color:p.color});
+    for(const p of from.parties??[])if(p.color&&l.parties?.some(x=>x.id===p.id&&(x.color!==p.color||p.customColor)))fresh=applyAction(fresh,{type:'setPartyColor',listId:l.id,partyId:p.id,color:p.color});
   }
   fresh=applyAction(fresh,{type:'setBlocAppearance',blocs:fresh.blocs.map(b=>({...b,color:old.blocs.find(x=>x.id===b.id)?.color??b.color}))});
   setState({ scenario: fresh, past: [...state.past, state.scenario], future: [] });
@@ -403,7 +403,7 @@ export function saveCurrent(name?: string, options?: { newIdentity?: boolean; ov
   let prepared = { ...original, id: targetId };
   const lastRename = [...prepared.log].reverse().map(e => e.action).find(a => a.type === 'rename');
   if (prepared.name !== wanted || lastRename?.name !== wanted) prepared = applyAction(prepared, { type: 'rename', name: wanted });
-  const s = prepared && !prepared.identityColor ? applyAction(prepared, { type: 'setIdentityColor', color: nextScenarioColor(state.saved.filter(x => x.id !== original.id), original.electionId) }) : prepared;
+  const s = (targetId !== original.id || !prepared.identityColor) ? applyAction(prepared, { type: 'setIdentityColor', color: nextScenarioColor(state.saved.filter(x => x.id !== targetId), original.electionId) }) : prepared;
   if (!s) return false;
   const he = state.lang === 'he';
   const entry: SavedScenario = { id: s.id, name: wanted || s.name || (he ? 'תרחיש' : 'Scenario'), ...(s.description ? { description: s.description } : {}), electionId: s.electionId, savedAt: new Date().toISOString(), baseBuiltAt: s.baseBuiltAt, factionSplitBaseline: s.factionSplitBaseline ?? false, log: s.log.map((e) => e.action) };

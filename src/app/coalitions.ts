@@ -1,3 +1,5 @@
+import type { GovernmentIndividual, GovernmentParticipant, GovernmentSupport } from '../data/aftermath.ts';
+import type { CoalitionChoices, CoalitionRole, SimList } from '../model/scenario.ts';
 /** Minimal winning coalitions: sets of lists with at least `majority` seats in which every member is
  *  needed (removing the smallest member drops below the majority). Every set must contain `required`.
  *
@@ -34,3 +36,67 @@ export function minimalWinning<T extends { id: string; n: number }>(items: reado
   out.sort((a, b) => a.ids.length - b.ids.length || a.n - b.n || (a.key < b.key ? -1 : a.key > b.key ? 1 : 0));
   return { coalitions: out.map(({ ids, n }) => ({ ids, n })), truncated };
 }
+
+/** The confidence vote that forms a government, from the seats of each coalition role. Members and outside
+ *  supporters vote for; lists abstaining by arrangement abstain; every other seat is assumed to vote against
+ *  (absences are not modelled). Basic Law: The Government §13(d) requires the Knesset's expression of
+ *  confidence, and with no special majority there, Basic Law: The Knesset §25 applies: a majority of those
+ *  voting, abstainers not counted, so investiture needs more for than against, not 61. `majority` (61 of
+ *  120) is a majority of all members, which a constructive no-confidence vote needs (The Government §28(b)):
+ *  a government with that many votes cannot be replaced while they hold. */
+export function governmentVote({ members, support, abstain, total }: { members: number; support: number; abstain: number; total: number }) {
+  const votesFor = members + support;
+  const against = total - votesFor - abstain;
+  const majority = Math.floor(total / 2) + 1;
+  return {
+    members, support, abstain, votesFor, against, majority,
+    /** fewest votes for that are more than the votes against */
+    forNeeded: Math.floor((total - abstain) / 2) + 1,
+    passes: votesFor > against,
+    stable: votesFor >= majority,
+  };
+}
+export type GovernmentVote = ReturnType<typeof governmentVote>;
+
+/** The researched government (data/meta/aftermath, docs/source-policy.md) as Coalitions roles: members In, outside
+ *  support Support, arranged abstention Abstain. A confidence vote alone, an "other" relationship or an unknown one
+ *  is not an arrangement and stays Any. Rows keep their recorded certainty; nothing is upgraded. `choices` is null
+ *  when a recorded partner has no seated unit in this scenario (an edit removed it, or the research names a
+ *  post-election faction without ballot letters). */
+export function recordedRoles(rows: readonly GovernmentParticipant[], lists: readonly SimList[], units: readonly { id: string; listId: string }[]) {
+  const recorded = rows.map((r) => {
+    const role: CoalitionRole | null = r.certainty === 'unknown' ? null : r.role === 'member-with-ministries' || r.role === 'member-without-ministries' ? 'in'
+      : r.role === 'outside-support' ? 'support' : r.role === 'abstained-by-arrangement' ? 'abstain' : null;
+    const list = r.letters ? lists.find((l) => l.letters === r.letters && l.originIds.length === 1 && l.originIds[0] === l.id) : undefined;
+    return { r, role, list, units: list ? units.filter((x) => x.listId === list.id).map((x) => x.id) : [] };
+  });
+  const pick = (k: CoalitionRole) => recorded.filter((x) => x.role === k).flatMap((x) => x.units);
+  const choices: CoalitionChoices | null = recorded.length && recorded.every((x) => !x.role || x.units.length)
+    ? { in: pick('in'), support: pick('support'), abstain: pick('abstain'), out: [] } : null;
+  return { recorded, choices };
+}
+
+/** Why the loaded roles' arithmetic differs from the recorded confidence vote, from the research itself
+ *  (data/meta/aftermath): individual MKs who voted apart from their list (individuals[]; modelled only in a
+ *  later stage, docs/design/individual-mks.md), roles left Any, partial participation counted whole, MKs who
+ *  voted neither way, and the research's own reconciliation status. null when there is no recorded vote or
+ *  the totals agree. */
+export type VoteGapReason =
+  | { kind: 'individual'; ind: GovernmentIndividual }
+  | { kind: 'unknown' | 'vote-only'; row: GovernmentParticipant }
+  | { kind: 'partial'; row: GovernmentParticipant; whole: number }
+  | { kind: 'not-voting'; n: number };
+export function recordedVoteGap(gov: Pick<GovernmentSupport, 'confidenceVote' | 'individuals' | 'reconciliation'>, vote: GovernmentVote,
+  recorded: ReturnType<typeof recordedRoles>['recorded'], seatsOf: (units: string[]) => number, total: number) {
+  const cv = gov.confidenceVote;
+  if (!cv || (vote.votesFor === cv.for && vote.against === cv.against)) return null;
+  const reasons: VoteGapReason[] = [
+    ...(gov.individuals ?? []).map((ind) => ({ kind: 'individual' as const, ind })),
+    ...recorded.filter((x) => x.role === null).map((x) => ({ kind: x.r.role === 'confidence-vote-only' && x.r.certainty !== 'unknown' ? 'vote-only' as const : 'unknown' as const, row: x.r })),
+    ...recorded.filter((x) => x.role !== null && x.r.seats !== null && x.units.length && x.r.seats < seatsOf(x.units)).map((x) => ({ kind: 'partial' as const, row: x.r, whole: seatsOf(x.units) })),
+  ];
+  const notVoting = total - cv.for - cv.against - vote.abstain;
+  if (notVoting > 0) reasons.push({ kind: 'not-voting', n: notVoting });
+  return { recorded: { for: cv.for, against: cv.against }, status: gov.reconciliation.status, reasons };
+}
+export type RecordedVoteGap = NonNullable<ReturnType<typeof recordedVoteGap>>;

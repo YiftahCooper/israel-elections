@@ -316,8 +316,8 @@
       {
         "date": "1969-12-15",
         "type": "confidence-vote",
-        "textEn": "The Knesset expressed confidence in government 15, headed by Golda Meir, 90–10, with 4 abstentions.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־15 בראשות גולדה מאיר, ברוב של 90 מול 10, עם 4 נמנעים.",
+        "textEn": "The Knesset expressed confidence in government 15, headed by Golda Meir, 90 for · 10 against, with 4 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־15 בראשות גולדה מאיר, 90 בעד · 10 נגד, עם 4 נמנעים.",
         "cites": [
           {
             "source": "plenum-gov15",

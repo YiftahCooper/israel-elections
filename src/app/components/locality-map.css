@@ -6,7 +6,7 @@
 .locality-map-address input { width: 100%; }
 .locality-map-address small { flex-basis: 100%; }
 .locality-map-legend span { display: inline-flex; gap: 5px; align-items: center; font-size: .8rem; }
-.locality-map-legend i { width: 12px; height: 12px; border: 1px solid #78838c; border-radius: 50%; }
+.locality-map-legend i { width: 12px; height: 12px; border: 1px solid var(--ink-2); border-radius: 50%; }
 .locality-map-results { margin-block: 14px; }
 .locality-map-tool button:not(.info button), .locality-map-tool select { min-height: 32px; }
 
@@ -61,3 +61,4 @@
 .locality-boundary-disclosure { margin-block: 8px; }
 .locality-boundary-disclosure > summary { cursor: pointer; font-size: 13px; font-weight: 600; min-height: 28px; }
 .locality-boundary-disclosure .locality-boundary-legend { margin-top: 0; }
+.locality-share i { box-shadow: inset 0 0 0 1px var(--ink-2); }

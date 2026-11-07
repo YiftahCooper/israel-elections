@@ -373,6 +373,25 @@ grouping and date, or its description when no date is recorded. Coalition member
 explicit In / Out / Any segmented choices, with constraints and minimal winning results
 preserved.
 
+Coalition roles (7 November): each unit takes In / Support / Abstain / Out / Any. Outside
+support counts toward the confidence vote but not membership; an arranged abstention is not
+counted among those voting. The totals line reads “56 members + 5 outside support = 61”, then
+two tests with ✓/✗ and words: more for than against (investiture, Basic Law: The Government
+§13(d) with Basic Law: The Knesset §25) and the usual 61 readout. Bars draw members solid,
+outside support as the list colour hatched with the surface, and abstentions hollow at the far
+end; a dotted line marks a confidence-vote bar below 61. The same marks key the totals line and
+partner lists. On phones the five roles sit on their own line under every name.
+For/against is written in words, never a dash (“67 for · 53 against”), since a dash between
+two quantities reads as a range. “Recorded first government” loads the roles from the reviewed
+research; its (i) keeps each role's certainty as recorded (a provisional role says so), and
+lists left Any (confidence vote only, unknown) are named. When the loaded roles do not add up
+to the recorded confidence vote, one line says so (“Recorded vote: 61 for · 59 against. Differs
+here because roles are unknown”) and its (i) names each reason from the research: individual
+MKs (disclosed, not modelled), roles left Any, partial participation, MKs who voted neither way.
+Every for/against tally in the app and its history text uses words, never a dash. Where research records outside
+support or an arranged abstention, the sourced first-government grouping gives it its own
+group, checked by the data build; that group never recolours a list.
+
 Session changes say “Since official result”; vote, agreement and grouping changes remain
 visible even without seat changes. Compare names its baseline and measures share changes
 in percentage points. Different sourced groupings are compared under the active scheme;

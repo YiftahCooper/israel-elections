@@ -34,9 +34,9 @@ test('save moves the reference, official setting restores markers, colour surviv
   await votes.fill('1150000'); await votes.press('Enter');
   await expect(panel.locator('.edit-marker')).not.toHaveCount(0);
   await page.getByRole('tab', { name: 'Scenarios', exact: true }).click();
-  await page.locator('.scn-form input').fill('Unity');
+  await page.locator('.scn-form input:not([type=color])').fill('Unity');
   if (!await page.locator('.scn-options').evaluate(el => el.hasAttribute('open'))) await page.locator('.scn-options summary').click();
-  await page.getByRole('combobox', { name: 'Scenario colour', exact: true }).selectOption('#486b78');
+  await page.getByRole('combobox', { name: 'Scenario colour', exact: true }).selectOption('#417182');
   await page.getByRole('button', { name: 'Save', exact: true }).click();
   await page.getByRole('tab', { name: 'Overview', exact: true }).click();
   await expect(page.locator('.edit-marker')).toHaveCount(0);
@@ -54,11 +54,11 @@ test('save moves the reference, official setting restores markers, colour surviv
   await expect.poll(() => page.evaluate(() => {
     const current = JSON.parse(localStorage.getItem('israel-elections:workspace:v1') ?? 'null')?.current;
     return { name: current?.name, color: current?.identityColor };
-  })).toEqual({ name: 'Unity', color: '#486b78' });
+  })).toEqual({ name: 'Unity', color: '#417182' });
   // a reload restores the work in progress (owner decision 2026-11-04): still Unity, with its colour
   await page.reload();
   await expect(page.locator('.band .election-status')).toContainText('Unity');
-  await expect(page.locator('.app')).toHaveCSS('--scenario-color', '#486b78');
+  await expect(page.locator('.app')).toHaveCSS('--scenario-color', '#417182');
 });
 for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (const phone of [false, true]) {
   test(`scenario chrome screenshot ${lang} ${theme} ${phone ? 'phone' : 'desktop'}`, async ({ page }) => {

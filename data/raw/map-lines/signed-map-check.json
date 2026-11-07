@@ -39,6 +39,23 @@
     34.95,
     31.365
   ],
+  "ramadinSplice": {
+    "westWay": 95258495,
+    "westAnchor": [
+      34.909792,
+      31.3563778
+    ],
+    "eastWay": 87237529,
+    "eastAnchor": [
+      34.9503931,
+      31.3480643
+    ],
+    "removedWays": [
+      95258528,
+      95258529
+    ],
+    "method": "Retain the OCHA stroke; connect its ends to these existing OpenStreetMap vertices. Retain westWay only north of westAnchor and remove the replaced source ways, including box-cut stubs. Short cartographic transitions, not surveyed treaty coordinates; source precision and zoom limit unchanged."
+  },
   "clusters": [
     {
       "id": 2,
@@ -645,7 +662,7 @@
         35.24273008468396,
         31.385926454845094
       ],
-      "decision": "OCHA supported at Arab er-Ramadin; OSM is about 0.8 km south of the signed ink. Substitute OCHA only in the retained local box, leave source joins open. The rest of this long cluster remains unresolved.",
+      "decision": "OCHA supported at Arab er-Ramadin; OSM is about 0.8 km south of the signed ink. Substitute OCHA in the retained local box, with short cartographic transitions to the recorded exact OpenStreetMap nodes (authorised third-review correction); these joins are not surveyed treaty coordinates. The rest of this long cluster remains unresolved.",
       "crop": ".backup-scratch/v4-r2/signed-map/104.png"
     }
   ]

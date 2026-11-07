@@ -133,8 +133,8 @@
       {
         "date": "1996-06-18",
         "type": "confidence-vote",
-        "textEn": "The Knesset approved Netanyahu’s 27th government, 62–50.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־27 בראשות נתניהו, ברוב של 62 מול 50.",
+        "textEn": "The Knesset approved Netanyahu’s 27th government, 62 for · 50 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־27 בראשות נתניהו, 62 בעד · 50 נגד.",
         "cites": [
           {
             "source": "vote1996",

@@ -113,7 +113,6 @@ const E = {
   electionDay: idiEn('66721', 'Election Day for the 26th Knesset: Everything Voters Need to Know'),
   joint: idiEn('64020', 'Explainer: Running on joint lists in elections: who does it benefit?'),
   knesset101: idiEn('64066', 'Knesset 101: How Parliament and National Elections Work in Israel'),
-  coalitions: idiEn('10248', 'Coalition Building in Israel: A Guide for the Perplexed'),
   formation: idiEn('63976', 'Everything You Need to Know About How a Government is Formed Following Elections'),
   president: idiEn('67022', 'The President’s Role in Assigning the Task of Forming a Government'),
   norwegian: idiEn('48367', 'The “Norwegian Law”: Problematic, Yes—But a Necessary Evil'),
@@ -471,10 +470,22 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     id: 'minimal-winning-coalition', nameHe: 'קואליציה מזערית זוכה', nameEn: 'Minimal winning coalition', level: 'simple', provenance: 'sourced',
     defHe: 'קואליציה שיש לה רוב, אך פרישה של כל אחת מהשותפות תבטל את הרוב. בישראל נהוג לכנות כזאת "ממשלה צרה". באפליקציה זהו חישוב אריתמטי של מנדטים בלבד, ולא תחזית פוליטית.',
     defEn: 'A coalition with a majority that would lose it if any single partner left. In Israel this is often called a “narrow government”. In the app it is pure seat arithmetic, not a political forecast.',
-    linkHe: H.coalitions, linkEn: E.coalitions,
+    linkHe: H.coalitions, linkEn: E.formation,
     sources: [
       src(H.coalitions, 'he', 'institute', '"קואליציה מזערית זוכה" definition; "ממשלה צרה"'),
-      src(E.coalitions, 'en', 'institute', '"A minimal winning coalition" definition'),
+    ],
+  },
+  {
+    // checked 7 November 2026; "arranged abstention" has no entry: no scholarship-tier source defines it
+    // (docs/source-policy.md) and the support-roles research records no case
+    id: 'outside-support', nameHe: 'תמיכה מבחוץ', nameEn: 'Outside support', level: 'standard', provenance: 'sourced',
+    defHe: 'תמיכה בממשלה בכנסת מצד סיעה שאינה חברה בקואליציה. הממשלה צריכה יותר תומכים ממתנגדים בהצבעת האמון, לא בהכרח 61, ולכן ממשלת מיעוט יכולה לכהן בתמיכה כזו: ממשלת רבין שרדה אחרי פרישת ש״ס ב־1993 בתמיכה מבחוץ של המפלגות הערביות.',
+    defEn: 'Support for the government in the Knesset from a faction that is not a coalition member. A government needs more votes for than against in its confidence vote, not necessarily 61, so a minority government can serve with such support: Rabin’s government survived Shas’s departure in 1993 with the outside support of the Arab parties.',
+    linkHe: H.coalitions, linkEn: E.formation,
+    sources: [
+      { ...src(H.coalitions, 'he', 'institute', '"תמיכה מבחוץ של המפלגות הערביות" sustaining Rabin’s minority government after 1993; Basic Law: The Government s.13(d) does not require a majority of members'), checked: '2026-11-07' },
+      { ...src(E.formation, 'en', 'institute', '"the law allows for the establishment of a minority government, if the relative majority that will support it is larger than the minority which opposes it"'), checked: '2026-11-07' },
+      { ...src(BL_GOV, 'he', 'law', 's.13(d): the government is constituted when the Knesset expresses confidence; no special majority'), checked: '2026-11-07' },
     ],
   },
   {

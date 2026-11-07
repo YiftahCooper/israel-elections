@@ -1,3 +1,4 @@
+import{deltaE2000}from'../src/data/colour.ts';
 import {readFileSync} from 'node:fs';
 import {expect,it} from 'vitest';
 import {loadDataset} from './helpers.ts';
@@ -16,11 +17,11 @@ const change:Record<Part,Action>={
  candidates:{type:'candidates',listId:id,candidates:[...base.lists[0].candidates].reverse(),note:'test'},
  agreements:{type:'removeAgreement',id:base.agreements[0].id},
  blocs:{type:'setListMeta',listId:id,patch:{bloc:null}},
- coalitions:{type:'setCoalition',coalition:{in:[id],out:[]}},
+ coalitions:{type:'setCoalition',coalition:{in:[id],support:[],abstain:[],out:[]}},
  rules:{type:'setRules',patch:{thresholdPct:'2'}},
  totals:{type:'setTotals',invalid:base.invalid+10},
 };
-const editAgain=(s:Scenario,p:Part):Action=>p==='votes'?{type:'setVotes',listId:id,votes:s.lists[0].votes+1}:p==='identity'?{type:'setListMeta',listId:id,patch:{nameHe:'Individual'}}:p==='structure'?{type:'setWithdrawn',listId:base.lists[1].id,withdrawn:true}:p==='candidates'?{type:'candidates',listId:id,candidates:[...s.lists[0].candidates].reverse(),note:'individual'}:p==='agreements'?{type:'setAgreement',agreement:{...s.agreements[0],enabled:false}}:p==='blocs'?{type:'setListMeta',listId:base.lists[1].id,patch:{bloc:null}}:p==='coalitions'?{type:'setCoalition',coalition:{in:[id,base.lists[1].id],out:[]}}:p==='rules'?{type:'setRules',patch:{thresholdPct:'1'}}:{type:'setTotals',invalid:s.invalid+1};
+const editAgain=(s:Scenario,p:Part):Action=>p==='votes'?{type:'setVotes',listId:id,votes:s.lists[0].votes+1}:p==='identity'?{type:'setListMeta',listId:id,patch:{nameHe:'Individual'}}:p==='structure'?{type:'setWithdrawn',listId:base.lists[1].id,withdrawn:true}:p==='candidates'?{type:'candidates',listId:id,candidates:[...s.lists[0].candidates].reverse(),note:'individual'}:p==='agreements'?{type:'setAgreement',agreement:{...s.agreements[0],enabled:false}}:p==='blocs'?{type:'setListMeta',listId:base.lists[1].id,patch:{bloc:null}}:p==='coalitions'?{type:'setCoalition',coalition:{in:[id,base.lists[1].id],support:[],abstain:[],out:[]}}:p==='rules'?{type:'setRules',patch:{thresholdPct:'1'}}:{type:'setTotals',invalid:s.invalid+1};
 for(const part of Object.keys(PARTS) as Part[])it(`${part}: whole replacement gives one part marker, then one item edit gives one item marker`,()=>{
  const source=applyAction(base,change[part]);
  const whole=applyAction(base,{type:'startPart',part,source:'saved',snapshot:partSnapshot(source,part),name:'Source'});
@@ -73,9 +74,10 @@ it('a turnout replacement absorbs its proportional vote side effects until a lis
  const next=applyAction(s,{type:'setVotes',listId:id,votes:s.lists[0].votes+1});
  expect(referenceChanges(next,base)).toEqual([['parts','totals'],['lists',id,'votes']]);
 });
-it('mixed family blocs have a distinct muted colour and everyone else stays neutral',()=>{
+it('generated family blocs keep their category names and pass the shared distinctness guard',()=>{
  const b=scenarioFromDataset(JSON.parse(readFileSync(new URL('../public/data/k1.json',import.meta.url),'utf8'))),f=parseFamily(JSON.stringify(family));
  const s=applyAction(b,groupingAction(f,b,'en'));
  expect(s.blocs).toHaveLength(3);expect(new Set(s.blocs.map(b=>b.color)).size).toBe(3);
- expect(s.blocs.find(b=>b.id==='other')!.color).toBe('#7d8791');
+ expect(s.blocs.find(b=>b.id==='other')!.nameEn).toBe('Everyone else');
+ s.blocs.forEach((a,i)=>s.blocs.slice(i+1).forEach(b=>expect(deltaE2000(a.color,b.color)).toBeGreaterThanOrEqual(20)));
 });

@@ -93,7 +93,7 @@ for (const lang of ['he', 'en'] as const) test(`localised history, isolated rang
   expect(orphans).toEqual([]);
   const summary = history.locator('.after-support-totals').first();
   await expect(summary.locator('.after-members-total')).toHaveText('62');
-  await expect(summary.locator('.after-confidence-vote')).toContainText('60–59');
+  await expect(summary.locator('.after-confidence-vote')).toContainText(lang === 'he' ? '60 בעד · 59 נגד' : '60 for · 59 against');
   await expect(history.locator('[data-individual="amichai-chikli"]')).toContainText(lang === 'he' ? 'נגד' : 'Against');
   await expect(history.locator('[data-individual="said-al-harumi"]')).toContainText(lang === 'he' ? 'נמנע' : 'Abstained');
   await summary.locator('.after-help-anchor').nth(1).locator('.info > button').click();
@@ -136,12 +136,12 @@ for (const lang of ['he', 'en'] as const) test(`support roles and honest unknown
   await expect(history.locator('[data-support-role="confidence-vote-only"]').first()).toContainText(lang === 'he' ? 'פלאטו' : 'Flatto');
   await expect(history.locator('[data-individual="moshe-dayan"]')).toContainText(lang === 'he' ? 'משה דיין' : 'Moshe Dayan');
   await expect(history.locator('.after-members-total').first()).toHaveText('62');
-  await expect(history.locator('.after-confidence-vote').first()).toContainText('63–53');
+  await expect(history.locator('.after-confidence-vote').first()).toContainText(lang === 'he' ? '63 בעד · 53 נגד' : '63 for · 53 against');
   await choose(election, 'k13');
   await expect(history.locator('[data-support-role="outside-support"]').first().locator('.after-party')).toHaveCount(2);
   await expect(history.locator('[data-support-role="outside-support"]').first()).toContainText(lang === 'he' ? 'זמני' : 'Provisional');
   await expect(history.locator('.after-support-total').first()).toHaveText('5');
-  await expect(history.locator('.after-confidence-vote').first()).toContainText('67–53');
+  await expect(history.locator('.after-confidence-vote').first()).toContainText(lang === 'he' ? '67 בעד · 53 נגד' : '67 for · 53 against');
   await history.getByText(lang === 'he' ? 'שינויים בממשלה' : 'Government changes', { exact: true }).click();
   await expect(history.locator('.after-government-change .after-members-total').first()).toHaveText(lang === 'he' ? 'לא ידוע' : 'Unknown');
   await choose(election, 'k2');
@@ -152,7 +152,7 @@ for (const lang of ['he', 'en'] as const) test(`support roles and honest unknown
   await expect(history.locator('.after-confidence-vote').first()).toHaveText(lang === 'he' ? 'לא ידוע' : 'Unknown');
   await choose(election, 'k25');
   await expect(history.locator('.after-members-total').first()).toHaveText('64');
-  await expect(history.locator('.after-confidence-vote').first()).toContainText('63–54');
+  await expect(history.locator('.after-confidence-vote').first()).toContainText(lang === 'he' ? '63 בעד · 54 נגד' : '63 for · 54 against');
   await history.locator('.after-support-totals').first().locator('.after-help-anchor').nth(1).locator('.info > button').click();
   await expect(history.locator('.after-support-totals .pop')).toContainText(lang === 'he' ? 'הפער טרם הוסבר' : 'The difference has not been reconciled');
 });
