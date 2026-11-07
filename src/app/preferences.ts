@@ -21,6 +21,14 @@ export const PREFERENCES = {
       { value: 'official', label: ['Official result', 'התוצאה הרשמית'] },
     ],
   },
+  /** Compare: how votes copied between elections are read (within one election a copy is always the count). */
+  copyMode: {
+    label: ['Copy votes between elections as', 'העתקת קולות בין בחירות לפי'],
+    options: [
+      { value: 'share', label: ['Share of the vote', 'שיעור מהקולות'] },
+      { value: 'count', label: ['Number of votes', 'מספר הקולות'] },
+    ],
+  },
 } as const;
 export type PreferenceId = keyof typeof PREFERENCES;
 export type PreferenceAnswers = Partial<Record<PreferenceId, string>>;
@@ -45,7 +53,7 @@ export function validAnswers(value: unknown): PreferenceAnswers {
 export function validItemAnswers(value: unknown): Record<string, string> {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
   return Object.fromEntries(Object.entries(value).filter(([key, answer]) => {
-    const match = /^voteSource:(k(?:[1-9]|1[0-9]|2[0-6])):(list|bloc):(.+)$/.exec(key);
-    return match && typeof answer === 'string' && validAnswers({ voteSource: answer }).voteSource === answer;
+    const match = /^(voteSource|copyMode):(k(?:[1-9]|1[0-9]|2[0-6])):(list|bloc):(.+)$/.exec(key);
+    return match && typeof answer === 'string' && validAnswers({ [match[1]]: answer })[match[1] as PreferenceId] === answer;
   }));
 }

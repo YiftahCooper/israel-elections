@@ -47,13 +47,11 @@ export function buildK9(options: VerifyOptions = {}) {
   const audit = verifyK9(options);
   return audit.releaseReady ? [() => {
     const ds = releasedDataset(audit);
-    // Stale-letter IDs stay opaque stable keys; display uses corrected letters/names.
-    const stable = Object.fromEntries((rawJson('k9/national.reviewed.json') as { lists: { letters: string; legacyId?: string }[] }).lists.filter(l => l.legacyId).map(l => [l.letters, l.legacyId!]));
     ds.lists.forEach(l => {
-      if (stable[l.letters]) {
-        const old = META[l.id];
-        if (old) { l.shortEn = old.en ?? null; l.color = old.color; l.bloc = old.bloc ?? null; }
-        l.shortHe = ['הפ', 'זך', 'פ', 'פז'].includes(l.letters) ? l.nameHe : (old?.he ?? l.nameHe);
+      if (['הפ', 'זך', 'ימ', 'ספ', 'פ', 'פז'].includes(l.letters)) {
+        const meta = META[l.id];
+        if (meta) { l.shortEn = meta.en ?? null; l.color = meta.color; l.bloc = meta.bloc ?? null; }
+        l.shortHe = ['הפ', 'זך', 'פ', 'פז'].includes(l.letters) ? l.nameHe : (meta?.he ?? l.nameHe);
       }
       if (l.letters === 'זה') l.shortHe = l.nameHe;
       if (l.candidatesUnavailable) l.notesHe = ['רשימת המועמדים פורסמה בילקוט הפרסומים 2319, אך טרם תומללה באפליקציה.'];

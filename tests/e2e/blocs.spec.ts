@@ -72,7 +72,7 @@ test('a joint list’s faction can split after the election, keeping votes and s
   // each party now has its own row of seats under the list, and its own place in the chamber
   await expect(page.getByRole('region', { name: 'Lists' }).getByRole('list', { name: /factions after the split/ }).getByText('New Hope')).toBeVisible();
   await expect(listRow(page, 'National Unity')).toContainText('12');
-  await expect(page.getByRole('status').filter({ hasText: 'Since official result' })).toContainText('No changes yet');
+  await expect(page.getByRole('status').filter({ hasText: 'No changes' })).toContainText('No changes');
 });
 
 test('a joint list can run as separate lists, with the vote shares stated as an assumption', async ({ page }) => {
@@ -136,10 +136,11 @@ for (const lang of ['en', 'he'] as const) for (const election of ['k24', 'k25'])
     }
     await page.getByRole('tab', {name: lang === 'en' ? 'Compare' : 'השוואה', exact:true}).click();
     await choose(page.getByRole('button', {name: lang === 'en' ? 'Compare with' : 'השוואה עם', exact:true}), `election:${election === 'k24' ? 'k23' : 'k24'}`);
-    const legend = page.locator('.cmp-bloclegend').filter({hasText:`· ${tag}`});
-    await expect(legend).toHaveCount(1);
+    // the open scenario's side names the app grouping once, never on each bloc
+    const legend = page.locator('.cmp-card[data-role="main"] .majority-context');
+    await expect(legend).toContainText(`· ${tag}`);
     expect((await legend.innerText()).split(`· ${tag}`).length - 1).toBe(1);
-    for (const row of await legend.locator('.row').all()) await expect(row).not.toContainText(`· ${tag}`);
+    for (const row of await legend.locator(':scope > span:not(:first-child)').all()) await expect(row).not.toContainText(`· ${tag}`);
   });
 }
 

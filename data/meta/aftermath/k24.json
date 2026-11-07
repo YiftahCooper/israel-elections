@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "electionId": "k24",
-  "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "status": "reviewed",
+  "reviewedAt": "2026-11-07",
   "notes": [
     "Pilot for docs/design/after-the-election.md. Not wired into the app.",
     "Every fact cites sources by id; each citation carries a short verbatim quote. Wording is descriptive and attributed; no evaluative adjectives."
@@ -210,6 +210,18 @@
       "title": "YP 9511, 31 March 2021, pp.4620–4629; retained data/raw/k24/results.pdf",
       "kind": "official",
       "accessed": "2026-11-06"
+    },
+    "role-roster-36": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2036%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
+    },
+    "deputies36": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2036%20and%20PositionID%20eq%2040&$format=json",
+      "publisher": "Knesset OData, all government 36 deputy-minister appointments",
+      "kind": "official",
+      "accessed": "2026-11-07"
     }
   },
   "results": {
@@ -653,35 +665,112 @@
     "coalition": [
       {
         "letters": "פה",
-        "seats": 17
+        "seats": 17,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-36",
+            "quote": "PersonToPositionID 24075; PersonID 23594; PositionID 39; StartDate 2021-06-13T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יאיר לפיד; faction join: יש עתיד"
+          }
+        ]
       },
       {
         "letters": "כן",
-        "seats": 8
+        "seats": 8,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-36",
+            "quote": "PersonToPositionID 24086; PersonID 30685; PositionID 57; StartDate 2021-06-13T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אורית פרקש הכהן; faction join: כחול לבן"
+          }
+        ]
       },
       {
         "letters": "ב",
-        "seats": 7
+        "seats": 7,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-36",
+            "quote": "PersonToPositionID 24071; PersonID 23511; PositionID 45; StartDate 2021-06-13T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. נפתלי בנט; faction join: ימינה בראשות נפתלי בנט"
+          }
+        ]
       },
       {
         "letters": "אמת",
-        "seats": 7
+        "seats": 7,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-36",
+            "quote": "PersonToPositionID 24097; PersonID 23565; PositionID 57; StartDate 2021-06-13T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. מרב מיכאלי; faction join: העבודה"
+          }
+        ]
       },
       {
         "letters": "ל",
-        "seats": 7
+        "seats": 7,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-36",
+            "quote": "PersonToPositionID 24085; PersonID 427; PositionID 39; StartDate 2021-06-13T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אביגדור ליברמן; faction join: ישראל ביתנו"
+          }
+        ]
       },
       {
         "letters": "ת",
-        "seats": 6
+        "seats": 6,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-36",
+            "quote": "PersonToPositionID 24077; PersonID 1027; PositionID 39; StartDate 2021-06-13T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. גדעון סער; faction join: תקווה חדשה"
+          }
+        ]
       },
       {
         "letters": "מרצ",
-        "seats": 6
+        "seats": 6,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-36",
+            "quote": "PersonToPositionID 24099; PersonID 12947; PositionID 39; StartDate 2021-06-13T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. ניצן הורוביץ; faction join: מרצ"
+          }
+        ]
       },
       {
         "letters": "עם",
-        "seats": 4
+        "seats": 4,
+        "role": "member-without-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "inn-2021-06-02",
+            "quote": "the government will comprise Yesh Atid, Blue and White, Yamina, Labor, Yisrael Beytenu, New Hope, Meretz and Ra'am."
+          },
+          {
+            "source": "deputies36",
+            "quote": "PositionID: 40",
+            "note": "Project tabulation: all 11 returned appointments, 7 distinct people, no Raam MK. See retained government36Deputies."
+          }
+        ],
+        "note": "Coalition member, no cabinet minister. Contrary to some reports, no Raam deputy-minister appointment appears anywhere in the complete official government-36 deputy roster. Proposed office and deputy speaker are different facts."
       }
     ],
     "coalitionSeats": 62,
@@ -697,7 +786,67 @@
     ],
     "notes": [
       "Seats are list seats at the election. Ra'am held no ministry; Yamina MK Amichai Chikli voted against (see k24.json first-government notes)."
-    ]
+    ],
+    "confidenceVote": {
+      "for": 60,
+      "against": 59,
+      "abstain": 1
+    },
+    "confidenceVoteCites": [
+      {
+        "source": "knesset-news-2021-06-14",
+        "quote": "By a vote of 60 to 59, with one abstention, the Knesset Plenum Sunday night confirmed the 36th Government of Israel headed by Prime Minister MK Naftali Bennett (Yemina). Following the vote, the government ministers were sworn in."
+      },
+      {
+        "source": "n12-2021-06-13",
+        "quote": "ח\"כ עמיחי שיקלי מימינה הצביע נגד, וח\"כ סעיד אלחרומי מרע\"ם החליט ברגע האחרון להימנע"
+      }
+    ],
+    "membershipCoverage": "complete",
+    "supportSeats": 0,
+    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
+    "reconciliation": {
+      "status": "explained",
+      "expectedFor": 60,
+      "note": "62 coalition-list member seats − Chikli voting against (Yamina) − al-Harumi abstaining (Raam) = 60 for; the 58 opposition seats plus Chikli = 59 against; al-Harumi = 1 abstention. No outside-support seats."
+    },
+    "individuals": [
+      {
+        "id": "amichai-chikli",
+        "nameEn": "Amichai Chikli",
+        "nameHe": "עמיחי שיקלי",
+        "fromLetters": "ב",
+        "countedInFactionSeats": true,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "vote": "against",
+        "cites": [
+          {
+            "source": "n12-2021-06-13",
+            "quote": "ח\"כ עמיחי שיקלי מימינה הצביע נגד, וח\"כ סעיד אלחרומי מרע\"ם החליט ברגע האחרון להימנע"
+          }
+        ],
+        "note": "Faction membership role only; Chikli did not support this government and was not a minister."
+      },
+      {
+        "id": "said-al-harumi",
+        "nameEn": "Said al-Harumi",
+        "nameHe": "סעיד אלחרומי",
+        "fromLetters": "עם",
+        "countedInFactionSeats": true,
+        "role": "member-without-ministries",
+        "certainty": "confirmed",
+        "vote": "abstain",
+        "cites": [
+          {
+            "source": "n12-2021-06-13",
+            "quote": "ח\"כ עמיחי שיקלי מימינה הצביע נגד, וח\"כ סעיד אלחרומי מרע\"ם החליט ברגע האחרון להימנע"
+          }
+        ],
+        "note": "An individual abstention is established; no prearranged abstention is inferred."
+      }
+    ],
+    "knownMemberSeats": 62
   },
   "term": {
     "start": "2021-06-13",
@@ -929,5 +1078,6 @@
     "CEC determined the final results on 30 March 2021 (retained protocol p.2); statutory notice published 31 March (YP 9511). Date of presentation to the President not established here.",
     "Reaction items not collected (all-or-none rule).",
     "Term events rely on an interim two-source rule; several candidate events are listed but not included."
-  ]
+  ],
+  "supportSchemaVersion": 1
 }

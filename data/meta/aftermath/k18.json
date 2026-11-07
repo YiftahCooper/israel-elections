@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "electionId": "k18",
-  "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "status": "reviewed",
+  "reviewedAt": "2026-11-07",
   "notes": [
-    "Research record following docs/design/after-the-election.md; not wired into the app. Gaps remain explicit."
+    "Research record following docs/design/after-the-election.md. Gaps remain explicit."
   ],
   "sources": {
     "recommendations-1": {
@@ -108,6 +108,12 @@
       "publisher": "Reshumot SH 2383 / Knesset",
       "kind": "official",
       "accessed": "2026-11-06"
+    },
+    "role-roster-32": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2032%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
     }
   },
   "results": {
@@ -471,23 +477,69 @@
     "coalition": [
       {
         "letters": "מחל",
-        "seats": 27
+        "seats": 27,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-32",
+            "quote": "PersonToPositionID 3371; PersonID 479; PositionID 39; StartDate 2009-03-31T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. סילבן שלום; faction join: הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+          }
+        ]
       },
       {
         "letters": "ל",
-        "seats": 15
+        "seats": 15,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-32",
+            "quote": "PersonToPositionID 3464; PersonID 471; PositionID 39; StartDate 2009-03-31T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. עוזי לנדאו; faction join: ישראל ביתנו בראשות אביגדור ליברמן"
+          }
+        ]
       },
       {
         "letters": "אמת",
-        "seats": 13
+        "seats": 13,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-32",
+            "quote": "PersonToPositionID 3372; PersonID 435; PositionID 39; StartDate 2009-03-31T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. בנימין בן-אליעזר; faction join: העבודה בראשות אהוד ברק"
+          }
+        ]
       },
       {
         "letters": "שס",
-        "seats": 11
+        "seats": 11,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-32",
+            "quote": "PersonToPositionID 3543; PersonID 4417; PositionID 39; StartDate 2009-03-31T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אריאל אטיאס; faction join: התאחדות הספרדים העולמית שומרי תורה"
+          }
+        ]
       },
       {
         "letters": "ב",
-        "seats": 3
+        "seats": 3,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-32",
+            "quote": "PersonToPositionID 23329; PersonID 12946; PositionID 39; StartDate 2009-03-31T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. דניאל הרשקוביץ; faction join: הבית היהודי - מפד\"ל החדשה"
+          }
+        ],
+        "note": "A ministry is expected from previous research, but its representing party has not been verified against the appointment; do not infer it."
       }
     ],
     "coalitionSeats": 69,
@@ -500,6 +552,27 @@
     "notes": [
       "Formation-day coalition is 69, matching the first-government scheme dated 31 March. UTJ signed on 1 April 2009 (74 seats after accession).",
       "Seat weights checked against public/data/k18.json. The 69-seat coalition weight is not a reconstructed individual roll-call vote: the JTA report separately records 69–45–5."
-    ]
-  }
+    ],
+    "confidenceVote": {
+      "for": 69,
+      "against": 45,
+      "abstained": 5
+    },
+    "confidenceVoteCites": [
+      {
+        "source": "jta-investiture",
+        "quote": "a vote of 69 to 45 with five abstentions."
+      }
+    ],
+    "membershipCoverage": "complete",
+    "supportSeats": 0,
+    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
+    "reconciliation": {
+      "status": "exact",
+      "expectedFor": 69,
+      "note": "69 member seats + 0 outside-support seats = 69 for, 45 against. Numerical equality alone does not certify every individual’s vote."
+    },
+    "knownMemberSeats": 69
+  },
+  "supportSchemaVersion": 1
 }

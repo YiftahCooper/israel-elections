@@ -68,12 +68,12 @@ describe('k12 — released national dataset', () => {
     }
     expect(a.rosters.reduce((sum, r) => sum + (r.electedCrossCheck?.namesHe?.length ?? 0), 0)).toBe(120);
   });
-  it('corrects ballot letters while preserving saved-scenario identities', () => {
+  it('corrects ballot letters in list and candidate identities', () => {
     const ds = JSON.parse(readFileSync('public/data/k12.json', 'utf8'));
-    for (const [old, letters] of Object.entries({זב:'זכ', זפ:'זעמ', טף:'טיף', יע:'יענ', מעם:'מעש', קק:'קם', קצץ:'קמע'})) {
-      expect(ds.lists.find((l: {id: string}) => l.id === `12-${old}`)?.letters).toBe(letters);
+    for (const letters of Object.values({זב:'זכ', זפ:'זעמ', טף:'טיף', יע:'יענ', מעם:'מעש', קק:'קם', קצץ:'קמע'})) {
+      expect(ds.lists.find((l: {id: string}) => l.id === `12-${letters}`)?.letters).toBe(letters);
     }
-    expect(ds.agreements[3].members).toEqual(['12-קז', '12-יע']);
+    expect(ds.agreements[3].members).toEqual(['12-קז', '12-יענ']);
     const opening = ds.blocSchemes.find((b: {id: string}) => b.id === 'first-government');
     expect(opening.blocs[0].lists).not.toContain('12-עץ');
     expect(opening.blocs[1].lists).toContain('12-עץ');

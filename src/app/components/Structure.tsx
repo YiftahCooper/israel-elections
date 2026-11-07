@@ -1,4 +1,5 @@
 import {ColourPicker} from './ColourPicker.tsx';
+import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { SeatDelta } from './SeatDelta.tsx';
 import { Slip } from './ui.tsx';
 import { EditMarker } from './EditMarker.tsx';
@@ -401,7 +402,7 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
             : Math.abs(sumPct - 100) > 0.05 && <p className="small st-full" style={{ margin: 0, color: 'var(--warn-ink)' }}>{L(`The shares add up to ${sumPct}%; the votes are divided in these proportions.`, `החלקים מסתכמים ב־${sumPct}%; הקולות יחולקו ביחס הזה.`)}</p>}
           {(shares || unassigned > 0) && <div className="row st-full" style={{ gap: 8 }}>
             {shares && <button type="button" className="btn small ghost" onClick={() => setShares(null)}>{L('Reset shares', 'איפוס החלוקה')}</button>}
-            {unassigned > 0 && <span className="tiny muted">{L(`${unassigned} candidates go with the lead party`, `${unassigned} מועמדים עם מפלגת הראש`)} <Info title={L('Candidate assignment', 'שיוך מועמדים')}>{L(`${unassigned} candidate(s) without a recorded party go with ${name(parties.find((p) => p.id === lead) ?? parties[0])} (the party of the list’s leader).`, `${unassigned} מועמדים שמפלגתם לא תועדה מצורפים ל${name(parties.find((p) => p.id === lead) ?? parties[0])} (מפלגת העומד בראש הרשימה).`)}</Info></span>}
+            {unassigned > 0 && <span className="tiny muted">{L(`${unassigned} candidates go with the lead party`, `${unassigned} מועמדים עם מפלגת הראש`)} <Info title={L('Candidate assignment', 'שיוך מועמדים')}>{L(`${unassigned} candidate(s) without a recorded party go with ${name(parties.find((p) => p.id === lead) ?? parties[0])} (the party of the list’s leader).`, `${unassigned} מועמדים שמפלגתם לא תועדה מצורפים ${hebrewPrefix('ל', name(parties.find((p) => p.id === lead) ?? parties[0]))} (מפלגת העומד בראש הרשימה).`)}</Info></span>}
           </div>}
         </div>
       )}
@@ -412,7 +413,7 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
               <option value="top">{L('Cut at a rank', 'חיתוך במקום ברשימה')}</option>
               <option value="alternate">{L('Alternating ranks', 'מקומות לסירוגין')}</option>
             </select></label>
-          {mode === 'top' && <label className="field">{L(`Candidates on ${plainNames[0][lang === 'he' ? 0 : 1]}`, `מועמדים ב${plainNames[0][0]}`)}<NumberInput value={n} onCommit={(v) => setTopN(Math.min(v, l.candidates.length))} label={L('Candidates on the first list', 'מועמדים ברשימה הראשונה')} width={90} /></label>}
+          {mode === 'top' && <label className="field">{L(`Candidates on ${plainNames[0][lang === 'he' ? 0 : 1]}`, `מועמדים ${hebrewPrefix('ב', plainNames[0][0])}`)}<NumberInput value={n} onCommit={(v) => setTopN(Math.min(v, l.candidates.length))} label={L('Candidates on the first list', 'מועמדים ברשימה הראשונה')} width={90} /></label>}
           <label className="field st-full">{L('Vote share', 'חלוקת הקולות')}
             <input type="range" min={0} max={100} value={shareA} aria-label={L(`Vote share of ${plainNames[0][1]} (%)`, `חלק הקולות של ${plainNames[0][0]} (%)`)} onChange={(e) => setShareA(Number(e.target.value))} /></label>
           <div className="st-full"><ShareBar parts={[{ key: 'a', color: colours[0], votes: plainVotes }, { key: 'b', color: colours[1], votes: l.votes - plainVotes }]} /></div>

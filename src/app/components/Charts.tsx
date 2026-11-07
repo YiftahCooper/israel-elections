@@ -1,3 +1,5 @@
+import{PartyDot}from'./PartyDot.tsx';
+import{partySeparator}from'../../data/colourGuard.ts';
 import { seatOrder } from './Hemicycle.tsx';
 import { Floating, useHoverBridge } from '../floating.tsx';
 import { GraphicChanges } from './GraphicChanges.tsx';
@@ -134,7 +136,7 @@ function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
               <text x={lx} y={stacked ? y + 9 : yb + barH + 3} textAnchor={he ? 'end' : 'start'} fill="var(--ink)" data-chart-label=""><title>{row.name}</title>{isolate(clip(row.name, stacked ? W - 8 : labelW - 12))}</text>
               <rect className="bar" x={x0} y={yb + 0.5} width={vw} height={barH - 1} rx={2} fill={row.color} fillOpacity={0.28} stroke={edge(row.color)} strokeWidth={1} />
               {list && <rect className="bar" x={x0} y={yb + barH + gap} width={sw} height={barH} rx={2} fill={row.color} />}
-              {componentSeats.filter(st=>st.listId===row.id).map((st,k)=>st.innerColor && <rect key={k} data-component-seat={st.partyId} x={x0+sw*k/row.seats} y={yb+barH+gap+2} width={sw/row.seats} height={barH-4} fill={st.innerColor}><title>{(lang==='he' ? s.lists.find(l=>l.id===row.id)?.parties?.find(p=>p.id===st.partyId)?.nameHe : s.lists.find(l=>l.id===row.id)?.parties?.find(p=>p.id===st.partyId)?.nameEn) ?? ''} · {row.name}</title></rect>)}
+              {componentSeats.filter(st=>st.listId===row.id).map((st,k)=>st.innerColor && <rect key={k} data-component-seat={st.partyId} x={x0+sw*k/row.seats} y={yb+barH+gap+2} width={sw/row.seats} height={barH-4} fill={st.innerColor} stroke={partySeparator(st.innerColor,row.color).inner} strokeWidth={.75} paintOrder="stroke fill"><title>{(lang==='he' ? s.lists.find(l=>l.id===row.id)?.parties?.find(p=>p.id===st.partyId)?.nameHe : s.lists.find(l=>l.id===row.id)?.parties?.find(p=>p.id===st.partyId)?.nameEn) ?? ''} · {row.name}</title></rect>)}
               <text x={x0 + Math.max(vw, sw) + 4} y={yb + barH + 3} textAnchor="start" className="tabnum">
                 {fmtPct(row.v, total, 1)}{list ? ` → ${fmtPct(row.seats, seats, 1)}` : ''}
               </text>
@@ -249,7 +251,7 @@ export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
         <figcaption className="small ink2" dir={lang === 'he' ? 'rtl' : 'ltr'} style={{ marginBottom: 4 }}>{title}</figcaption>
         <svg viewBox={`0 0 ${cols * pitch} ${rows * pitch}`} width="100%" style={{ maxWidth: cols * pitch }} role="img" aria-label={title}>
           <defs><pattern id={hatch} width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="4" height="4" fill="var(--grid)" /><line x1="0" y1="0" x2="0" y2="4" stroke="var(--muted)" strokeWidth="1.6" /></pattern></defs>
-          {items.map((c, i) => <g key={i}><rect x={(i % cols) * pitch} y={Math.floor(i / cols) * pitch} width={size} height={size} rx={3} fill={c.color} style={{ cursor: c.id ? 'pointer' : 'default' }} onClick={() => c.id && setState({ selectedListId: c.id })}><title>{c.partyId && (s.factionSplits ?? []).includes(c.id ?? '') ? ((lang==='he' ? s.lists.find(l=>l.id===c.id)?.parties?.find(p=>p.id===c.partyId)?.nameHe : s.lists.find(l=>l.id===c.id)?.parties?.find(p=>p.id===c.partyId)?.nameEn) ?? '') + ' · ' : ''}{c.id ? listLabel(s.lists.find((l) => l.id === c.id)!, lang) : L('Votes for lists that won no seat', 'קולות לרשימות שלא זכו במנדט')}</title></rect>{c.innerColor && <circle data-component-seat={c.partyId} pointerEvents="none" cx={(i%cols)*pitch+size/2} cy={Math.floor(i/cols)*pitch+size/2} r={size*.31} fill={c.innerColor} />}</g>)}
+          {items.map((c, i) => <g key={i}><rect x={(i % cols) * pitch} y={Math.floor(i / cols) * pitch} width={size} height={size} rx={3} fill={c.color} style={{ cursor: c.id ? 'pointer' : 'default' }} onClick={() => c.id && setState({ selectedListId: c.id })}><title>{c.partyId && (s.factionSplits ?? []).includes(c.id ?? '') ? ((lang==='he' ? s.lists.find(l=>l.id===c.id)?.parties?.find(p=>p.id===c.partyId)?.nameHe : s.lists.find(l=>l.id===c.id)?.parties?.find(p=>p.id===c.partyId)?.nameEn) ?? '') + ' · ' : ''}{c.id ? listLabel(s.lists.find((l) => l.id === c.id)!, lang) : L('Votes for lists that won no seat', 'קולות לרשימות שלא זכו במנדט')}</title></rect>{c.innerColor && <PartyDot partyId={c.partyId} x={(i%cols)*pitch+size/2} y={Math.floor(i/cols)*pitch+size/2} r={size*.31} color={c.innerColor} ring={c.color}/>}</g>)}
           <g className="waffle-edges" stroke="var(--ink)" strokeWidth={1.5} strokeLinecap="square" pointerEvents="none">
             {regionEdges(items.map((c) => c.id), cols, pitch, gap).map((e, k) => <line key={k} {...e} />)}
           </g>

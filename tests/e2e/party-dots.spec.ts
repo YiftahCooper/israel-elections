@@ -20,11 +20,11 @@ for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) test(`al
       const dots=page.locator('.chamber > svg [data-component-seat]');
       const expected=ds.lists.reduce((sum:number,l:{id:string;parties?:{id:string}[];candidates:{partyId?:string}[]})=>sum+((l.parties?.length??0)>1?l.candidates.slice(0,ds.officialSeats?.[l.id]??0).filter(c=>l.parties!.some(p=>p.id===c.partyId)).length:0),0);
       await expect(dots).toHaveCount(expected);
-      const colours=await dots.evaluateAll(nodes=>nodes.map(dot=>({id:dot.getAttribute('data-component-seat')!,fill:dot.getAttribute('fill')!,ring:dot.parentElement!.querySelector('[data-seat]')!.getAttribute('fill')!, css:getComputedStyle(dot).fill, key:getComputedStyle(document.querySelector(`[data-party-key="${dot.getAttribute('data-component-seat')}"]`)!).backgroundColor})));
+      const colours=await dots.evaluateAll(nodes=>nodes.map(dot=>({id:dot.getAttribute('data-component-seat')!,fill:dot.getAttribute('fill')!,ring:dot.parentElement!.querySelector('[data-seat]')!.getAttribute('fill')!,stroke:dot.getAttribute('stroke')!,outer:dot.previousElementSibling?.hasAttribute('data-component-outline')?dot.previousElementSibling.getAttribute('stroke'):null, css:getComputedStyle(dot).fill, key:getComputedStyle(document.querySelector(`[data-party-key="${dot.getAttribute('data-component-seat')}"]`)!).backgroundColor})));
       expect(colours).toHaveLength(expected);
       for (const dot of colours) {
-        expect(colourContrast(dot.fill,dot.ring)).toBeGreaterThanOrEqual(3);
-        expect(deltaE2000(dot.fill,dot.ring)).toBeGreaterThanOrEqual(20);
+        expect(colourContrast(dot.stroke,dot.fill)).toBeGreaterThanOrEqual(3);
+        expect(colourContrast(dot.outer??dot.stroke,dot.ring)).toBeGreaterThanOrEqual(3);
         expect(dot.key).toBe(dot.css);
       }
       const partyIds=[...new Set(colours.map(c=>c.id))];

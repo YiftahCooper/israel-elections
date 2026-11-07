@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "electionId": "k9",
-  "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "status": "reviewed",
+  "reviewedAt": "2026-11-07",
   "notes": [
     "Pilot for docs/design/after-the-election.md. Not wired into the app.",
     "Jerusalem Post 1977 citations use the OCR text of the Internet Archive item TheJerusalemPost1977IsraelEnglish (archival mirror of the printed paper). Quotes are copied from that OCR with obvious OCR errors corrected only inside [brackets]. The NLI JPress copies (Davar, Maariv, Haaretz) were behind a browser challenge and were not used.",
@@ -156,6 +156,12 @@
       "publisher": "Knesset, 27 September 1978 sitting, p.4194",
       "kind": "official",
       "accessed": "2026-11-06"
+    },
+    "role-roster-18": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2018%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
     }
   },
   "results": {
@@ -452,30 +458,74 @@
     "coalition": [
       {
         "letters": "מחל",
-        "seats": 43
+        "seats": 43,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-18",
+            "quote": "PersonToPositionID 4065; PersonID 2179; PositionID 45; StartDate 1977-06-20T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. מנחם בגין; faction join: הליכוד"
+          }
+        ]
       },
       {
         "letters": "כנ",
         "seats": 2,
-        "note": "Merged into the Likud faction after the election."
+        "note": "Merged into the Likud faction after the election.",
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-18",
+            "quote": "PersonToPositionID 4258; PersonID 482; PositionID 39; StartDate 1977-06-20T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אריאל שרון; faction join: שלומציון"
+          }
+        ]
       },
       {
         "letters": "ב",
-        "seats": 12
+        "seats": 12,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-18",
+            "quote": "PersonToPositionID 3506; PersonID 2119; PositionID 39; StartDate 1977-06-20T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אהרן אבוחצירא; faction join: מפלגה דתית לאומית"
+          }
+        ]
       },
       {
         "letters": "ג",
         "seats": 4,
-        "note": "Supported the coalition; held no ministry."
+        "note": "Aguda declares coalition accession; official formation-day roster contains no Aguda cabinet minister.",
+        "role": "member-without-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "knesset-plenum-1977-06-20",
+            "quote": "הצטרפנו לקואליציה אך לא",
+            "locator": "Agudat Yisrael speaker in the investiture debate; continuation concerns cabinet participation"
+          }
+        ]
       },
       {
         "letters": "פש",
         "seats": 1,
-        "note": "Supported the formation confidence vote; included under the project support-inclusive coalition definition."
+        "note": "Vote documented. No contemporary agreement, continuing pledge or promised office was recovered; not evidence that no arrangement existed. Extradition-law votes do not establish a formation agreement.",
+        "role": "confidence-vote-only",
+        "certainty": "provisional",
+        "cites": [
+          {
+            "source": "jta-1977-06-21",
+            "quote": "Voting for the government were Likud, the National Religious Party (NRP) and Aguda bloc, Moshe Dayan and Samuel Flatto-Sharon."
+          }
+        ]
       }
     ],
     "coalitionSeats": 62,
-    "coalitionSeatsNote": "Whole-list support at formation: 43+2+12+4+1=62; Dayan individually, elected on the opposition Alignment list, brings the confidence supporters to 63. Flatto-Sharon’s opposition label in Hebrew Wikipedia loses to the contemporary formation record under this support-inclusive definition.",
+    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
     "ministers": "Listed in knesset-plenum-1977-06-20 (13 ministers; the Prime Minister held Welfare, Justice, Transport and Communications pending the DMC).",
     "cites": [
       {
@@ -507,7 +557,48 @@
           "Official ministerial accession date wins over Hebrew Wikipedia’s 25 October; the disagreement is retained here."
         ]
       }
-    ]
+    ],
+    "confidenceVote": {
+      "for": 63,
+      "against": 53
+    },
+    "confidenceVoteCites": [
+      {
+        "source": "knesset-plenum-1977-06-20",
+        "quote": "בעד ההצעה להביע אמון בממשלה – 63 / נגד – 53 / ההצעה להביע אמון בממשלה נתקבלה."
+      },
+      {
+        "source": "jta-1977-06-21",
+        "quote": "his 63-53 margin was strictly along party lines. Voting for the government were Likud, the National Religious Party (NRP) and Aguda bloc, Moshe Dayan and Samuel Flatto-Sharon."
+      }
+    ],
+    "membershipCoverage": "complete",
+    "supportSeats": 0,
+    "reconciliation": {
+      "status": "explained",
+      "expectedFor": 63,
+      "note": "61 member faction seats + Dayan individually (1) + Flatto-Sharon confidence-vote-only (1) = 63 for; 53 against. The other four MKs did not vote; they are not assigned a motive."
+    },
+    "individuals": [
+      {
+        "id": "moshe-dayan",
+        "nameEn": "Moshe Dayan",
+        "nameHe": "משה דיין",
+        "fromLetters": "אמת",
+        "countedInFactionSeats": false,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "vote": "for",
+        "cites": [
+          {
+            "source": "knesset-plenum-1977-06-20",
+            "quote": "משה דיין – שר החוץ"
+          }
+        ],
+        "note": "Elected on Alignment; joined as Foreign Minister individually. Alignment is not counted as a coalition faction."
+      }
+    ],
+    "knownMemberSeats": 62
   },
   "term": {
     "start": "1977-05-17",
@@ -750,5 +841,6 @@
     "No official tally of 1977 recommendations; totals are computed from per-list reports.",
     "Hebrew press (Davar, Maariv, Haaretz on NLI JPress) not used: browser challenge; not circumvented.",
     "Reaction items and issue polling not filled."
-  ]
+  ],
+  "supportSchemaVersion": 1
 }

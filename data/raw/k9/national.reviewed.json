@@ -48,8 +48,7 @@
       "letters": "הפ",
       "nameHe": "דו קיום בצדק",
       "gazetteVotes": 1085,
-      "officialSeats": 0,
-      "legacyId": "9-הם"
+      "officialSeats": 0
     },
     {
       "letters": "ו",
@@ -67,15 +66,13 @@
       "letters": "זך",
       "nameHe": "בית ישראל, ברית יוצאי תימן ועדות ישראל",
       "gazetteVotes": 9505,
-      "officialSeats": 0,
-      "legacyId": "9-חך"
+      "officialSeats": 0
     },
     {
       "letters": "ימ",
       "nameHe": "הרשימה הערבית המאוחדת",
       "gazetteVotes": 24185,
-      "officialSeats": 1,
-      "legacyId": "9-ים"
+      "officialSeats": 1
     },
     {
       "letters": "יש",
@@ -123,22 +120,19 @@
       "letters": "ספ",
       "nameHe": "תנועת הרפורמה הערבית",
       "gazetteVotes": 5695,
-      "officialSeats": 0,
-      "legacyId": "9-סם"
+      "officialSeats": 0
     },
     {
       "letters": "פ",
       "nameHe": "הפנתרים הציוניים, רשימת עובדי ייצור וועדי עובדים",
       "gazetteVotes": 1798,
-      "officialSeats": 0,
-      "legacyId": "9-פז"
+      "officialSeats": 0
     },
     {
       "letters": "פז",
       "nameHe": "חופש, חזית פועלים, פנתרים שחורים, ישראל הצעירה, יוצאי עודד, ועדי שכונות עוני ובלתי מפלגתיים",
       "gazetteVotes": 2498,
-      "officialSeats": 0,
-      "legacyId": "9-פח"
+      "officialSeats": 0
     },
     {
       "letters": "פש",

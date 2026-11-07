@@ -1,3 +1,5 @@
+import { formatDate } from '../dateFormat.ts';
+import { AfterElectionSources } from './AfterElection.tsx';
 import { factLog, isFactAction } from '../../model/actionClassification.ts';
 import { Download } from 'lucide-react';
 import { NumericStepper } from './NumericStepper.tsx';
@@ -14,7 +16,7 @@ import { isEnvelopeRow, type ElectionDataset } from '../../data/schema.ts';
 import { RULESETS } from '../../engine/rules.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { electionRuleSetId, historicalRules, type Scenario } from '../../model/scenario.ts';
-import { baselineOf, listLabel, methodOf } from '../derive.ts';
+import { historyChangesLabels, baselineOf, listLabel, methodOf } from '../derive.ts';
 import { GLOSSARY, useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
 import { dispatch, getState, redo, replay, setState, undo, useStore, useDigits } from '../store.ts';
@@ -256,6 +258,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
   const noLocalities = !ds.totals.ballotBoxes && !ds.totals.localities;
   return (
     <div className="grid2 stack-sm" style={{ alignItems: 'start', gap: 18 }}>
+      <AfterElectionSources ds={ds} />
       <div>
         <h3>{L('Data status', 'מצב הנתונים')}</h3>
         <p className="small" style={ds.status.stage === 'official-final' ? undefined : { color: 'var(--warn-ink)' }}>{ds.status.stage === 'official-final' ? L('Official final results', 'תוצאות סופיות רשמיות') : L('Gazette not yet verified', 'הפרסום ברשומות טרם אומת')} <Info title={L('Data status details', 'פירוט מצב הנתונים')}>{lang === 'he' ? ds.status.noteHe.replaceAll('הפרסום ברשומות לא אומת', 'הפרסום ברשומות טרם אומת') : ds.status.noteEn.replaceAll('Gazette publication unverified', 'Gazette publication not yet verified')}</Info></p>
@@ -267,12 +270,12 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
           {/* elections without locality data have no counts here: "0" would read as a real figure */}
           {noLocalities
             ? <><span>{L('Polling stations and localities', 'קלפיות ויישובים')}</span><span className="muted">{L('Not in the data', 'אין בנתונים')}</span></>
-            : <><span>{L('Polling stations', 'קלפיות')} <Info term="polling-station" /></span><span>{fmtInt(ds.totals.ballotBoxes)}</span>
+            : <><span>{L('Polling-station results', 'תוצאות קלפי')} <Info term="polling-station"><span>{L('Rows in the official results table, which can include central double-envelope counts; not the number of physical polling stations.', 'שורות בטבלת התוצאות הרשמית, שעשויות לכלול ספירה מרכזית של מעטפות חיצוניות; אין זה מספר הקלפיות הפיזיות.')}</span></Info></span><span>{fmtInt(ds.totals.ballotBoxes)}</span>
               <span>{L('Localities', 'יישובים')}</span><span>{fmtInt(ds.totals.localities)}</span></>}
           {ds.totals.envelopeVotes !== undefined && <><span>{(ds.id === 'k16' ? L('Double-envelope voters (incl. invalid)', 'מצביעים במעטפות חיצוניות (כולל פסולים)') : L('Double-envelope votes', 'מעטפות חיצוניות'))} <Info term="envelopes" /></span><span>{fmtInt(ds.totals.envelopeVotes)}</span></>}
           <span>{L('Lists', 'רשימות')}</span><span>{ds.lists.length}</span>
           <span>{L('Candidates in the data', 'מועמדים בנתונים')}</span><span>{fmtInt(ds.lists.reduce((t, l) => t + l.candidates.length, 0))}</span>
-          <span>{L('Dataset built', 'נבנה')}</span><span><bdi dir="ltr">{ds.buildInfo.builtAt.slice(0, 10)}</bdi></span>
+          <span>{L('Dataset built', 'נבנה')}</span><span><bdi dir="ltr">{formatDate(ds.buildInfo.builtAt, lang)}</bdi></span>
         </div>
         <p className="small"><Download className="icon sm" aria-hidden style={{ verticalAlign: '-2px', marginInlineEnd: 4 }} />{L('Download', 'הורדה')}:{' '}
           <a href={`data/${ds.id}.json`} download>{L('election data', 'נתוני הבחירות')}</a>
@@ -289,7 +292,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
               <b dir="auto">{lang === 'en' ? x.publisherEn ?? x.publisher : x.publisher}</b> {x.official ? <span className="chip ok">{L('official', 'רשמי')}</span> : <span className="chip secondary">{L('secondary', 'משני')}</span>}<br />
               <span dir="auto" style={{ display: 'block' }}>{lang === 'en' ? englishSourceText(x.descriptionEn ?? x.description) : x.description}</span>
               <SourceAddress x={x} />
-              <div className="muted tiny">{x.retrievedAt && <>{L('Retrieved', 'נשלף')} <bdi dir="ltr">{x.retrievedAt.slice(0, 10)}</bdi></>}{x.sha256 && <>{x.retrievedAt ? ' · ' : ''}<bdi dir="ltr">SHA-256 {x.sha256.slice(0, 16)}…</bdi></>}{x.note ? <> · <bdi dir="auto">{x.note}</bdi></> : ''}</div>
+              <div className="muted tiny">{x.retrievedAt && <>{L('Retrieved', 'נשלף')} <bdi dir="ltr">{formatDate(x.retrievedAt, lang)}</bdi></>}{x.sha256 && <>{x.retrievedAt ? ' · ' : ''}<bdi dir="ltr">SHA-256 {x.sha256.slice(0, 16)}…</bdi></>}{x.note ? <> · <bdi dir="auto">{x.note}</bdi></> : ''}</div>
             </li>
           ))}
         </ul>}
@@ -360,9 +363,10 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
 
 // ------------------------------------------------------------------ history
 
-export function History({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: ElectionDataset }) {
+export function History({ s, r, ds, reference = null }: { s: Scenario; r: AllocationResult; ds: ElectionDataset; reference?: Scenario | null }) {
   const L = useL();
   const lang = useLang();
+  const counts = historyChangesLabels(s, reference, lang);
   const past = useStore((st) => st.past.length), future = useStore((st) => st.future);
   const last = s.log.at(-1);
   const next = future.at(-1)?.log.at(-1);
@@ -378,13 +382,13 @@ export function History({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
       <div className="row" style={{ marginBottom: 8 }}>
         <button className="btn small" onClick={undo} disabled={!past}>{undoName}</button>
         <button className="btn small" onClick={redo} disabled={!future.length}>{redoName}</button>
-        <span className="muted small">{L(`${factLog(s).length} changes from the historical result`, `${factLog(s).length} שינויים מהתוצאה ההיסטורית`)}</span>
+        {(reference || factLog(s).length > 0) && <span className="muted small history-counts"><bdi>{counts.active}</bdi>{counts.official !== null && <>{' · '}<bdi>{counts.official}</bdi></>}</span>}
       </div>
-      {factLog(s).length === 0 ? <p className="muted">{L('No changes yet — this is the historical result.', 'אין שינויים — זו התוצאה ההיסטורית.')}</p> : (
+      {factLog(s).length === 0 ? <p className="muted">{reference ? L('History is empty.', 'ההיסטוריה ריקה.') : L('No changes — this is the official result.', 'אין שינויים — זו התוצאה הרשמית.')}</p> : (
         <ol className="small" style={{ paddingInlineStart: 22 }}>
           {s.log.map((e, i) => !isFactAction(e.action) ? null : (
             <li key={i} style={{ marginBottom: 3 }}>
-              <span className="muted tiny">{new Date(e.at).toLocaleTimeString()}</span> {describe(e.action, s, lang)}{' '}
+              <span className="muted tiny">{new Date(e.at).toLocaleTimeString(lang === 'he' ? 'he-IL' : 'en-GB')}</span> {describe(e.action, s, lang)}{' '}
               <button className="btn small ghost" onClick={() => revertTo(i + 1)}>{L('revert to here', 'חזרה לכאן')}</button>
             </li>
           ))}

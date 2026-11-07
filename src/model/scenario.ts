@@ -31,6 +31,8 @@ export interface SimCandidate {
   partyId?: string;
   /** biography links (Candidate.bio) */
   bio?: CandidateBio;
+  /** copied from another election's list (Compare); `originListId` is then the list it now stands on */
+  importedFrom?: { electionId: string; listId: string };
 }
 
 export interface SyntheticIdentity {
@@ -127,8 +129,28 @@ export interface Scenario {
   log: ChangeEntry[];
 }
 
+/** Where a Compare copy came from. A snapshot: replay never needs the source, and later source edits never change it. */
+export interface CopyProvenance {
+  electionId: ElectionId;
+  sourceName: string;
+  /** the source side was that election's official result */
+  official: boolean;
+  field: 'votes' | 'list' | 'candidates' | 'turnout' | 'registered' | 'invalid' | 'threshold' | 'rules' | 'agreements' | 'colour';
+  mode?: 'count' | 'share' | 'change';
+  /** how the destination was balanced (preferences.sourceValue form) */
+  policy?: string;
+  sourceListIds?: string[];
+  targetListIds?: string[];
+  /** the exact copied value, as shown in the marker (for example "23.41%") */
+  value?: string;
+  /** the destination inputs this copy set; each carries the "From …" marker until edited again */
+  paths: string[][];
+}
+
 // Actions are plain data so they can be logged, replayed, shared and undone.
 export type Action =
+  /** One Compare copy: concrete inner actions applied as one step, with their origin. */
+  | { type: 'copyFrom'; provenance: CopyProvenance; actions: Action[] }
   | { type: 'familyOperation'; definition: Family; operation: 'group'; name?: string; placements: Record<string, string> }
   | { type: 'familyOperation'; definition: Family; operation: 'scale'; allocations: {listId:string; before:number; votes:number}[]; source: SourceChoice; target:number; registeredDelta:number }
   | { type: 'setBlocAppearance'; blocs: BlocDef[]; name?: string }
@@ -151,7 +173,8 @@ export type Action =
   | { type: 'setListMeta'; listId: string; patch: Partial<Pick<SimList, 'nameHe' | 'shortHe' | 'shortEn' | 'letters' | 'color' | 'bloc'>> }
   | { type: 'setAgreement'; agreement: SimAgreement }
   | { type: 'removeAgreement'; id: string }
-  | { type: 'candidates'; listId: string; candidates: SimCandidate[]; note: string }
+  /** parties/roster flags: set together with a roster imported from another list (Compare) */
+  | { type: 'candidates'; listId: string; candidates: SimCandidate[]; note: string; parties?: PartyDef[]; rosterUnavailable?: boolean; rosterTruncated?: boolean }
   | { type: 'setRules'; patch: Partial<SimRules> }
   | { type: 'setMode'; mode: Scenario['mode'] }
   | { type: 'setTotals'; registered?: number; invalid?: number }
@@ -309,7 +332,8 @@ const uniqueStrings: Check = (x) => array(string)(x) && new Set(x as string[]).s
 const candidate = shape({ id: string, nameHe: string, partyHe: optional(string), originListId: optional(string),
   displayNameHe: optional(string), nameEn: optional(string), notes: optional(array(shape({ en: string, he: string }))), partyId: optional(string),
   bio: optional(shape({ knesset: optional(httpsUrl), hewiki: optional(shape({ title: string, url: httpsUrl })),
-    party: optional(shape({ url: httpsUrl, publisher: optional(string), archivedAt: optional(string) })), probable: optional(boolean) })) });
+    party: optional(shape({ url: httpsUrl, publisher: optional(string), archivedAt: optional(string) })), probable: optional(boolean) })),
+  importedFrom: optional(shape({ electionId: string, listId: string })) });
 const logo = shape({ rights: optional(oneOf('free-licence', 'fair-use-identification')), file: string, licence: string, attribution: string, sourceUrl: string, background: optional(string) });
 const partyLinkUrl: Check = (x) => {
   if (!httpsUrl(x)) return false;
@@ -356,6 +380,10 @@ const blocScheme = shape({ appDefined: optional(boolean), id: string, kind: oneO
   blocs: array(shape({ id: string, nameHe: string, nameEn: string, appDefined: optional(boolean), color: string, lists: strings, parties: strings, candidates: strings })) });
 const coalition = shape({ in: uniqueStrings, out: uniqueStrings });
 const partSnapshotCheck = shape({ familyDefinition: optional(validFamily), validVotes: optional(whole), lists: optional(array(list)), registered: optional(whole), invalid: optional(whole), factionSplits: optional(uniqueStrings), blocs: optional(array(bloc)), blocSchemeId: optional(nullable(string)), customGroupingName: optional(string), partyBlocs: optional(stringMap(nullable(string))), candidateBlocs: optional(stringMap(nullable(string))), listBlocs: optional(stringMap(nullable(string))), agreements: optional(array(agreement)), rules: optional(rules), mode: optional(oneOf('historical', 'experimental')), coalition: optional(coalition) });
+const copyProvenance = shape({ electionId: oneOf(...ELECTION_IDS), sourceName: string, official: boolean,
+  field: oneOf('votes', 'list', 'candidates', 'turnout', 'registered', 'invalid', 'threshold', 'rules', 'agreements', 'colour'),
+  mode: optional(oneOf('count', 'share', 'change')), policy: optional(string), sourceListIds: optional(strings), targetListIds: optional(strings),
+  value: optional(string), paths: array(strings) });
 const actionFields: Record<Action['type'], Check> = {
   familyOperation: (x) => record(x) && validFamily(x.definition) && (x.operation === 'group' ? optional(string)(x.name) && record(x.placements) && Object.values(x.placements).every(v => ['selected','mixed','other'].includes(String(v))) : x.operation === 'scale' && array(shape({listId:string,before:whole,votes:whole}))(x.allocations) && signedWhole(x.registeredDelta) && whole(x.target) && shape({kind:oneOf('new','proportional','transfer'),listId:optional(string)})(x.source)),
   setBlocAppearance: shape({ blocs: array(bloc), name: optional(string) }),
@@ -377,7 +405,9 @@ const actionFields: Record<Action['type'], Check> = {
   removeList: shape({ listId: string }), setWithdrawn: shape({ listId: string, withdrawn: boolean }),
   setListMeta: shape({ listId: string, patch: partial({ nameHe: string, shortHe: string, shortEn: nullable(string), letters: string, color: string, bloc: nullable(string) }) }),
   setAgreement: shape({ agreement }), removeAgreement: shape({ id: string }),
-  candidates: shape({ listId: string, candidates, note: string }),
+  candidates: shape({ listId: string, candidates, note: string, parties: optional(array(party)), rosterUnavailable: optional(boolean), rosterTruncated: optional(boolean) }),
+  copyFrom: (x) => record(x) && copyProvenance(x.provenance) && Array.isArray(x.actions) && x.actions.length > 0
+    && x.actions.every((a) => validAction(a) && (a as { type: string }).type !== 'copyFrom'),
   setRules: shape({ patch: partial(ruleFields) }), setMode: shape({ mode: oneOf('historical', 'experimental') }),
   setTotals: shape({ registered: optional(whole), invalid: optional(whole) }), setBlocs: shape({ blocs: array(bloc), name: optional(string), unassignAll: optional(boolean) }), applyBlocScheme: shape({ schemeId: string }),
   setPartyBloc: shape({ partyId: string, bloc: nullable(string), inherit: optional(boolean) }),

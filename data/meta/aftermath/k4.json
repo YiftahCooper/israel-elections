@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "electionId": "k4",
-  "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "status": "reviewed",
+  "reviewedAt": "2026-11-07",
   "notes": [
-    "Research draft; not wired into the application. Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
+    "Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
     "The government card describes the first cabinet. Each replacement cabinet has a full-session confidence step and a numbered government.changes entry; available replacement coalition snapshots are attached to that entry.",
     "New PDF quotations preserve the extracted text order (including OCR errors); whitespace is collapsed. Full-session sources identify the sitting; source excerpts are recoverable from the public PDF. Existing coalition OData quotes are labelled project tabulations in the source text, not purported verbatim minister lists."
   ],
@@ -112,6 +112,12 @@
       "publisher": "Knesset OData plenum sessions",
       "kind": "official",
       "accessed": "2026-11-06"
+    },
+    "role-roster-9": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%209%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
     }
   },
   "results": {
@@ -389,39 +395,96 @@
     "coalition": [
       {
         "letters": "א",
-        "seats": 47
+        "seats": 47,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-9",
+            "quote": "PersonToPositionID 3820; PersonID 2639; PositionID 39; StartDate 1959-12-17T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. בכור-שלום שיטרית; faction join: מפלגת פועלי ארץ-ישראל"
+          }
+        ]
       },
       {
         "letters": "ב",
-        "seats": 12
+        "seats": 12,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-9",
+            "quote": "PersonToPositionID 3384; PersonID 2661; PositionID 39; StartDate 1959-12-17T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. חיים משה שפירא; faction join: מפלגה דתית לאומית"
+          }
+        ]
       },
       {
         "letters": "מ",
-        "seats": 9
+        "seats": 9,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-9",
+            "quote": "PersonToPositionID 3994; PersonID 2220; PositionID 39; StartDate 1959-12-17T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. ישראל ברזילי; faction join: מפלגת פועלים מאוחדת"
+          }
+        ]
       },
       {
         "letters": "תו",
-        "seats": 7
+        "seats": 7,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-9",
+            "quote": "PersonToPositionID 4018; PersonID 2194; PositionID 39; StartDate 1959-12-17T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יצחק בן-אהרן; faction join: אחדות העבודה - פועלי ציון"
+          }
+        ]
       },
       {
         "letters": "פ",
-        "seats": 6
+        "seats": 6,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-9",
+            "quote": "PersonToPositionID 3855; PersonID 2600; PositionID 39; StartDate 1959-12-17T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. פנחס רוזן; faction join: מפלגה פרוגרסיבית"
+          }
+        ]
       },
       {
         "letters": "רא",
-        "seats": 2
+        "seats": 2,
+        "role": "other",
+        "certainty": "unknown",
+        "cites": [],
+        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
       },
       {
         "letters": "יא",
-        "seats": 2
+        "seats": 2,
+        "role": "other",
+        "certainty": "unknown",
+        "cites": [],
+        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
       },
       {
         "letters": "ע",
-        "seats": 1
+        "seats": 1,
+        "role": "other",
+        "certainty": "unknown",
+        "cites": [],
+        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
       }
     ],
-    "coalitionSeats": 86,
-    "coalitionSeatsNote": "Initial election-list seats, including affiliated minority lists: Ben-Gurion explicitly described five factions with 86 members on 16 December 1959. Not the confidence-vote tally or a later coalition snapshot. Poalei Agudat Yisrael joined later; the whole גד list is not reassigned.",
+    "coalitionSeats": null,
+    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
     "cites": [
       {
         "source": "coalition-1",
@@ -489,7 +552,24 @@
         "source": "plenum-gov10",
         "quote": "אנו עוברים להצבעה על הבעת אמון לממשלה שהתייצבה לפני הכנסת. הצבעה 63 בעד הבעת אמון לממשלה 46 נגד לוז: ק. היו\"ר ושישה הביעה נגר ארבעים של שישים ושלושה ברוב הכנסת אמון לממשלה, בראשותו של דוד בןגוריון. אני מברך את הממשלה להתכוננותה, ומאחל לה הצלחה בניהול עניני המדינה."
       }
-    ]
+    ],
+    "confidenceVote": {
+      "for": 78,
+      "against": 33
+    },
+    "confidenceVoteCites": [
+      {
+        "source": "plenum-gov9",
+        "quote": "הצבעה 78 בעד הבעת אמון לממשלה 33 נגד היו\"ר ק. לוז: בן של דוד בראשותו אמונה לממשלה הכנסת הביעה גוריון. אני מברך את ממשלת ישראל ומאחל לה הצלחה בניהול"
+      }
+    ],
+    "membershipCoverage": "partial",
+    "supportSeats": null,
+    "reconciliation": {
+      "status": "unresolved",
+      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 81; full membership remains unknown. Investiture: 78 for, 33 against, not recorded abstaining."
+    },
+    "knownMemberSeats": 81
   },
   "term": {
     "start": "1959-11-03",
@@ -579,5 +659,6 @@
     "Term start/end delimit the election-to-election selection window; endedBy separately records the dissolution law passed on 28 March 1961.",
     "Government 9 changes record Poalei Agudat Yisrael joining and Mintz’s appointment, followed by resignation/caretaker status. Later coalition seat snapshots and mid-term member replacements are not modelled.",
     "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
-  ]
+  ],
+  "supportSchemaVersion": 1
 }

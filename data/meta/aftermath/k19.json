@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "electionId": "k19",
-  "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "status": "reviewed",
+  "reviewedAt": "2026-11-07",
   "notes": [
-    "Research record following docs/design/after-the-election.md; not wired into the app. Gaps remain explicit."
+    "Research record following docs/design/after-the-election.md. Gaps remain explicit."
   ],
   "sources": {
     "recommendations-1": {
@@ -114,6 +114,12 @@
       "publisher": "ynet",
       "kind": "secondary",
       "accessed": "2026-11-06"
+    },
+    "role-roster-33": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2033%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
     }
   },
   "results": {
@@ -458,19 +464,55 @@
     "coalition": [
       {
         "letters": "מחל",
-        "seats": 31
+        "seats": 31,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-33",
+            "quote": "PersonToPositionID 3421; PersonID 965; PositionID 45; StartDate 2013-03-18T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. בנימין נתניהו; faction join: הליכוד - ישראל ביתנו "
+          }
+        ]
       },
       {
         "letters": "פה",
-        "seats": 19
+        "seats": 19,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-33",
+            "quote": "PersonToPositionID 3552; PersonID 23594; PositionID 39; StartDate 2013-03-18T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יאיר לפיד; faction join: יש עתיד בראשות יאיר לפיד"
+          }
+        ]
       },
       {
         "letters": "טב",
-        "seats": 12
+        "seats": 12,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-33",
+            "quote": "PersonToPositionID 3477; PersonID 12956; PositionID 39; StartDate 2013-03-18T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אורי אורבך; faction join: הבית היהודי מייסודם של האיחוד הלאומי והמפד\"ל החדשה"
+          }
+        ]
       },
       {
         "letters": "צפ",
-        "seats": 6
+        "seats": 6,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-33",
+            "quote": "PersonToPositionID 3513; PersonID 557; PositionID 39; StartDate 2013-03-18T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. עמיר פרץ; faction join: התנועה בראשות ציפי לבני"
+          }
+        ]
       }
     ],
     "coalitionSeats": 68,
@@ -482,6 +524,31 @@
     ],
     "notes": [
       "Election-list seats at formation, checked against public/data/k19.json."
-    ]
-  }
+    ],
+    "confidenceVote": {
+      "for": 68,
+      "against": 48,
+      "absent": 4
+    },
+    "confidenceVoteCites": [
+      {
+        "source": "jta-investiture",
+        "quote": "by a vote of 68 to 48, with four absent."
+      },
+      {
+        "source": "ynet-investiture",
+        "quote": "ברוב של 68 תומכים מול 48 מתנגדים וארבעה חברי כנסת שנעדרו"
+      }
+    ],
+    "membershipCoverage": "complete",
+    "supportSeats": 0,
+    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
+    "reconciliation": {
+      "status": "exact",
+      "expectedFor": 68,
+      "note": "68 member seats + 0 outside-support seats = 68 for, 48 against. Numerical equality alone does not certify every individual’s vote."
+    },
+    "knownMemberSeats": 68
+  },
+  "supportSchemaVersion": 1
 }

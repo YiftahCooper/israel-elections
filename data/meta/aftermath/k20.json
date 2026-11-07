@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "electionId": "k20",
-  "status": "pilot",
-  "reviewedAt": "2026-11-06",
+  "status": "reviewed",
+  "reviewedAt": "2026-11-07",
   "notes": [
-    "Research record following docs/design/after-the-election.md; not wired into the app. Gaps remain explicit."
+    "Research record following docs/design/after-the-election.md. Gaps remain explicit."
   ],
   "sources": {
     "recommendations-1": {
@@ -96,6 +96,12 @@
       "publisher": "CEC / Reshumot, YP 7010",
       "kind": "official",
       "accessed": "2026-11-06"
+    },
+    "role-roster-34": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2034%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
     }
   },
   "results": {
@@ -402,26 +408,66 @@
     "coalition": [
       {
         "letters": "מחל",
-        "seats": 30
+        "seats": 30,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-34",
+            "quote": "PersonToPositionID 17248; PersonID 965; PositionID 45; StartDate 2015-05-14T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. בנימין נתניהו; faction join: הליכוד"
+          }
+        ]
       },
       {
         "letters": "כ",
-        "seats": 10
+        "seats": 10,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-34",
+            "quote": "PersonToPositionID 17256; PersonID 30077; PositionID 39; StartDate 2015-05-14T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יואב גלנט; faction join: כולנו בראשות משה כחלון"
+          }
+        ]
       },
       {
         "letters": "טב",
-        "seats": 8
+        "seats": 8,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-34",
+            "quote": "PersonToPositionID 17254; PersonID 713; PositionID 39; StartDate 2015-05-14T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אורי אריאל; faction join: הבית היהודי בראשות נפתלי בנט"
+          }
+        ]
       },
       {
         "letters": "שס",
-        "seats": 7
+        "seats": 7,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-34",
+            "quote": "PersonToPositionID 17252; PersonID 483; PositionID 39; StartDate 2015-05-14T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. דוד אזולאי; faction join: ש\"ס"
+          }
+        ]
       },
       {
         "letters": "ג",
-        "seats": 6
+        "seats": 6,
+        "role": "other",
+        "certainty": "unknown",
+        "cites": [],
+        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
       }
     ],
-    "coalitionSeats": 61,
+    "coalitionSeats": null,
     "cites": [
       {
         "source": "idi-coalition",
@@ -448,6 +494,25 @@
       "Election-list seats at formation; the five rows of the IDI table match public/data/k20.json.",
       "The EPRS prose omits Shas from its coalition list; use the five-party IDI table and the established first-government scheme for composition.",
       "The government continued through the two elections in 2019; its replacement date is 17 May 2020, not the April 2019 election."
-    ]
-  }
+    ],
+    "confidenceVote": {
+      "for": 61,
+      "against": 59
+    },
+    "confidenceVoteCites": [
+      {
+        "source": "eprs-investiture",
+        "quote": "The Israeli Parliament (Knesset) voted on Thursday 14 May 2015 61-59 in favour of Prime Minister Benjamin Netanyahu's cabinet"
+      }
+    ],
+    "membershipCoverage": "partial",
+    "supportSeats": null,
+    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
+    "reconciliation": {
+      "status": "unresolved",
+      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 55; full membership remains unknown. Investiture: 61 for, 59 against, not recorded abstaining."
+    },
+    "knownMemberSeats": 55
+  },
+  "supportSchemaVersion": 1
 }

@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "electionId": "k8",
-  "status": "pilot",
-  "reviewedAt": "2026-11-06",
+  "status": "reviewed",
+  "reviewedAt": "2026-11-07",
   "notes": [
-    "Research draft; not wired into the application. Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
+    "Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
     "The government card describes the first cabinet. Each replacement cabinet has a full-session confidence step and a numbered government.changes entry; available replacement coalition snapshots are attached to that entry.",
     "New PDF quotations preserve the extracted text order (including OCR errors); whitespace is collapsed. Full-session sources identify the sitting; source excerpts are recoverable from the public PDF. Existing coalition OData quotes are labelled project tabulations in the source text, not purported verbatim minister lists.",
     "Disengagement signing quotations added on 6 November are reading-order transcriptions from sitting 21 p.3 and sitting 53 p.1, with ellipsis and normalized punctuation; older PDF-extraction quotations remain explicitly labelled as extracted text."
@@ -110,6 +110,18 @@
       "publisher": "JTA Daily News Bulletin, 17 January 1974, p.3 (dateline 16 January)",
       "kind": "secondary",
       "accessed": "2026-11-06"
+    },
+    "role-roster-16": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2016%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
+    },
+    "role-roster-17": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2017%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
     }
   },
   "results": {
@@ -341,27 +353,62 @@
     "coalition": [
       {
         "letters": "אמת",
-        "seats": 51
+        "seats": 51,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-16",
+            "quote": "PersonToPositionID 3452; PersonID 2595; PositionID 39; StartDate 1974-03-10T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יצחק רבין; faction join: מערך"
+          }
+        ]
       },
       {
         "letters": "ב",
-        "seats": 10
+        "seats": 10,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-16",
+            "quote": "PersonToPositionID 3863; PersonID 2615; PositionID 39; StartDate 1974-03-10T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יצחק רפאל; faction join: מפלגה דתית לאומית"
+          }
+        ]
       },
       {
         "letters": "לע",
-        "seats": 4
+        "seats": 4,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-16",
+            "quote": "PersonToPositionID 3836; PersonID 2575; PositionID 39; StartDate 1974-03-10T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. משה קול; faction join: ליברלים עצמאיים"
+          }
+        ]
       },
       {
         "letters": "רא",
-        "seats": 2
+        "seats": 2,
+        "role": "other",
+        "certainty": "unknown",
+        "cites": [],
+        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
       },
       {
         "letters": "עא",
-        "seats": 1
+        "seats": 1,
+        "role": "other",
+        "certainty": "unknown",
+        "cites": [],
+        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
       }
     ],
-    "coalitionSeats": 68,
-    "coalitionSeatsNote": "Election-list seat totals, including support-only lists; not the confidence-vote tally. Reuses the existing overlay: ministerial factions are official; support-only membership is labelled secondary. Later government changes are listed separately.",
+    "coalitionSeats": null,
+    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
     "cites": [
       {
         "source": "coalition-1",
@@ -397,27 +444,93 @@
         "coalition": [
           {
             "letters": "אמת",
-            "seats": 51
+            "seats": 51,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-17",
+                "quote": "PersonToPositionID 3365; PersonID 2520; PositionID 39; StartDate 1974-06-03T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. אברהם עופר; faction join: מערך"
+              }
+            ]
           },
           {
             "letters": "לע",
-            "seats": 4
+            "seats": 4,
+            "role": "member-with-ministries",
+            "certainty": "provisional",
+            "cites": [
+              {
+                "source": "role-roster-17",
+                "quote": "PersonToPositionID 3837; PersonID 2575; PositionID 39; StartDate 1974-06-03T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. משה קול; faction join: "
+              }
+            ],
+            "note": "Official appointment established, but this minister was not a sitting MK at formation. Party attribution reuses the governing-faction research and needs an explicit contemporaneous affiliation source; the API does not supply it."
           },
           {
             "letters": "רצ",
-            "seats": 3
+            "seats": 3,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-17",
+                "quote": "PersonToPositionID 4392; PersonID 2143; PositionID 57; StartDate 1974-06-03T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. שולמית אלוני; faction join: ר\"ץ"
+              }
+            ],
+            "note": "A ministry is expected from previous research, but its representing party has not been verified against the appointment; do not infer it."
           },
           {
             "letters": "רא",
-            "seats": 2
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-gov17",
+                "quote": "המערך סיעות משתתפות הכנסת לאישור היום מפלגת העבודה, מפ\"ם והרשימות הערביות"
+              }
+            ],
+            "note": "Named in the governing presentation; no cabinet minister from this faction in the official formation-day roster. Deputy ministry is not a cabinet ministry."
           },
           {
             "letters": "עא",
-            "seats": 1
+            "seats": 1,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-gov17",
+                "quote": "המערך סיעות משתתפות הכנסת לאישור היום מפלגת העבודה, מפ\"ם והרשימות הערביות"
+              }
+            ],
+            "note": "Named in the governing presentation; no cabinet minister from this faction in the official formation-day roster. Deputy ministry is not a cabinet ministry."
           }
         ],
         "coalitionSeats": 61,
-        "coalitionSeatsNote": "Seats won by the component lists at this election; not the confidence-vote count. Affiliated Arab support lists retain the first-government overlay’s labelled secondary evidence unless named in the protocol."
+        "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
+        "confidenceVote": {
+          "for": 61,
+          "against": 51,
+          "abstain": 5
+        },
+        "confidenceVoteCites": [
+          {
+            "source": "plenum-gov17",
+            "quote": "הצבעה 61 החדשה לממשלה אמון הבעת בעד 51 נגד 4 ' נמנעים ההצעה להביע אמון לממשלה נתקבלה. אהרן אבוחצירא )חזית דתית לאומית(: מצביע נגד ז ואיננו מי נגד חמישה.( הוא הנמנעים מספר )קריאה: היו\"ר י. ישעיהו: נמנעים ההצבעה: תוצאות את מתקן אני חמישה. מנחם בגין )הליכוד(: בןפורת. חברהכנסת תשכח את נא אל היו\"ר י. ישעיהו: הסתכלתי לצד זה ולא ראיתי."
+          }
+        ],
+        "membershipCoverage": "complete",
+        "supportSeats": 0,
+        "reconciliation": {
+          "status": "exact",
+          "expectedFor": 61,
+          "note": "61 member seats + 0 outside-support seats = 61 for, 51 against. Numerical equality alone does not certify every individual’s vote."
+        },
+        "knownMemberSeats": 61
       }
     ],
     "endDateCites": [
@@ -425,7 +538,25 @@
         "source": "plenum-gov17",
         "quote": "הצבעה 61 החדשה לממשלה אמון הבעת בעד 51 נגד 4 ' נמנעים ההצעה להביע אמון לממשלה נתקבלה. אהרן אבוחצירא )חזית דתית לאומית(: מצביע נגד ז ואיננו מי נגד חמישה.( הוא הנמנעים מספר )קריאה: היו\"ר י. ישעיהו: נמנעים ההצבעה: תוצאות את מתקן אני חמישה. מנחם בגין )הליכוד(: בןפורת. חברהכנסת תשכח את נא אל היו\"ר י. ישעיהו: הסתכלתי לצד זה ולא ראיתי."
       }
-    ]
+    ],
+    "confidenceVote": {
+      "for": 62,
+      "against": 46,
+      "abstain": 9
+    },
+    "confidenceVoteCites": [
+      {
+        "source": "plenum-gov16",
+        "quote": "/ היו\"ר י. ישעיהו: תוצאות ההצבעה: בעד ההצעה להביע אמון לממשלה .9 46; נמנעים 62; נגד נתקבלה. לממשלה אמון להביע ההצעה ז. הצהרת אמונים של חברי הממשלה היו\"ר י. ישעיהו: את ראש הכנסת הביעה אמון לממשלה, ואני מזמין אמונים. להצהיר לדוכן הממשלה לעלות"
+      }
+    ],
+    "membershipCoverage": "partial",
+    "supportSeats": null,
+    "reconciliation": {
+      "status": "unresolved",
+      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 65; full membership remains unknown. Investiture: 62 for, 46 against, 9 abstaining."
+    },
+    "knownMemberSeats": 65
   },
   "term": {
     "start": "1973-12-31",
@@ -635,5 +766,6 @@
     "Replacement-coalition snapshots cover only the formation of governments 16 and 17, using election-list seats with stated support-list limitations. Later coalition changes within government 17 are not transcribed.",
     "Meir’s 1974 extensions, Rabin’s April assignment and May extensions, and the January 1977 uncompleted formation round still need full formal session evidence. Their absence here does not imply they did not occur.",
     "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
-  ]
+  ],
+  "supportSchemaVersion": 1
 }

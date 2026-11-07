@@ -2,6 +2,7 @@
 // Historical datasets are immutable inputs: the app never edits them, it derives scenarios.
 
 export const DATASET_SCHEMA_VERSION = 1;
+export type { GovernmentSupportRole, GovernmentParticipant, GovernmentIndividual, GovernmentSupport } from './aftermath.ts';
 
 export const ELECTION_IDS = ['k1', 'k2', 'k3', 'k4', 'k5', 'k6', 'k7', 'k8', 'k9', 'k10', 'k11', 'k12', 'k13', 'k14', 'k15', 'k16', 'k17', 'k18', 'k19', 'k20', 'k21', 'k22', 'k23', 'k24', 'k25', 'k26'] as const;
 export type ElectionId = (typeof ELECTION_IDS)[number];
@@ -54,7 +55,7 @@ export interface Candidate {
 }
 
 export interface ListRecord {
-  id: string; // Opaque stable key; ballot-letter corrections must not rename it.
+  id: string; // List key: `${knesset}-${letters}`; corrected ballot letters correct this key before release.
   letters: string; // ballot letters (אותיות הרשימה)
   nameHe: string; // full approved list name (כינוי הרשימה)
   shortHe: string;

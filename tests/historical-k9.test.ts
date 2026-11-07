@@ -115,16 +115,16 @@ it('requires official opening-date membership and Ratz affiliation for the same 
   expect(() => verifyRatzMembership(incomplete)).toThrow(/incomplete/);
 });
 
-it('corrects ballot identity without breaking saved-scenario keys or conflating פ with פז', () => {
+it('corrects ballot identity in list and candidate keys or conflating פ with פז', () => {
   const ds = finalizeDataset(buildK9({ log: false })[0]().ds);
-  const expected = { '9-הם': 'הפ', '9-חך': 'זך', '9-ים': 'ימ', '9-סם': 'ספ', '9-פז': 'פ', '9-פח': 'פז', '9-כך': 'כך' };
+  const expected = { '9-הפ': 'הפ', '9-זך': 'זך', '9-ימ': 'ימ', '9-ספ': 'ספ', '9-פ': 'פ', '9-פז': 'פז', '9-כך': 'כך' };
   for (const [id, letters] of Object.entries(expected)) expect(ds.lists.find(l => l.id === id)?.letters).toBe(letters);
   expect(new Set(ds.lists.map(l => l.id)).size).toBe(22);
-  expect(ds.agreements[0].members).toEqual(['9-אמת', '9-ים']);
-  expect(ds.agreements[5].members).toEqual(['9-רצ', '9-סם']);
+  expect(ds.agreements[0].members).toEqual(['9-אמת', '9-ימ']);
+  expect(ds.agreements[5].members).toEqual(['9-רצ', '9-ספ']);
   const s = scenarioFromDataset(ds);
   expect(validateScenario(s)).toEqual([]);
-  expect(s.lists.find(l => l.id === '9-ים')?.candidates[0].id).toBe('9-ים#1');
+  expect(s.lists.find(l => l.id === '9-ימ')?.candidates[0].id).toBe('9-ימ#1');
   expect(ds.blocSchemes?.[0].blocs[0].lists).toContain('9-פש');
   expect(ds.blocSchemes?.[0].blocs[1].lists).not.toContain('9-פש');
   expect(ds.lists.find(l => l.id === '9-מחל')?.candidates[20].nameEn).toBe('Yigal Cohen');

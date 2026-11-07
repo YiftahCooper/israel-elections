@@ -1,5 +1,7 @@
 # V1c colour guard — 7 November 2026
 
+The party-fill policy below is superseded by [the canonical-colour review fix](v1d-party-colours.md). The shared guard, scenarios, blocs, families, map and picker work remains in place.
+
 The shared policy is `src/data/colourGuard.ts`, built on the existing CIEDE2000/OKLab implementation in `src/data/colour.ts`. Assignment, display variants, picker advice, build-time separation and tests use it. Colour distance is a project readability rule, not a WCAG formula. Text contrast uses unrounded sRGB luminance: 4.5:1 for ordinary text; meaningful mark boundaries use 3:1. See [WCAG text contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html) and [non-text contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html).
 
 ## Inventory and policy
@@ -7,7 +9,7 @@ The shared policy is `src/data/colourGuard.ts`, built on the existing CIEDE2000/
 | Co-displayed context | Distinctness | Background/foreground treatment |
 | --- | --- | --- |
 | Winning lists: chamber, list column, chart legend, bloc strip, waffles and compare | Existing election policy: ΔE00 ≥15 for every pair, ≥20 for adjacent lists. National seat-winning list colours are unchanged; 13 clashing national-seat losers get display variants when they can win a locality. | Source fills retained; neutral outlines supply ≥3:1 boundaries in both themes. Labels accompany colour. |
-| Joint-list constituents: chamber/Blocks, hover, legend, list bars, bloc chips, family point sheets, compare and chart/PNG/SVG exports | ΔE00 ≥20 from ring and every sibling; opaque dot/ring contrast ≥3:1. All parties include the lead. | One resolver serves every outlet. Custom choices are exact and advisory. |
+| Joint-list constituents: chamber/Blocks, hover, legend, list bars, bloc chips, family point sheets, compare and chart/PNG/SVG exports | ΔE00 ≥20 between historical siblings globally; neutral separator contrasts ≥3:1 with dot and ring. All parties include the lead. | One resolver serves every outlet. Custom choices are exact and advisory. |
 | Bloc identities and bands | Solid identities ≥20; actual 14% light/22% dark region tints ≥8 from one another and No bloc. | Region border uses theme secondary ink, checked against each tint. Cards/chips/corridor text is checked on its actual mixtures. Geometry is unchanged. |
 | Families: chips, history lines, points, hatching, grouped views | Nine shipped identities ≥20; grouping neutrals ≥15. New personal copies receive a separate persisted display colour. | Marks checked on both panel and quiet plot surfaces. Numeric policy icon chooses black/white ink for ≥4.5:1. |
 | Saved scenarios, switchers, saved cards and compare sides | Global assignment across elections; farthest passing unused palette colour, then a derived colour. Shipped palette ≥20. | Chrome uses black/white foreground selected from its actual identity colour, including hover/selected states. Arbitrary valid hex identities survive replay, share and export. |
@@ -24,18 +26,7 @@ The sweep reads real CSS tokens and the renderer's tint mixtures. `party-colours
 
 The appearance index in `src/data/party-colour-research.json` includes retained low-confidence research. It does not promote confidence or add a factual dataset colour. An election's own recorded party colour wins; where that election has no record, the party's most frequently recorded colour is its stable canonical base (hex-order tie-break). A party with no recorded/supplied colour uses a hash of its party id, independent of election/list/theme/locale. Explicit scenario party edits override research exactly.
 
-A failing base is adjusted in OKLCH: search lightness first at its own hue/chroma, then chroma at that hue, and only then hue if the constraints cannot be satisfied. Selection is deterministic, with confidence and party id determining sibling priority, independent of input order. The same opaque colours satisfy both themes because dot and ring are the same pair in both.
-
-All 267 party/list appearances were checked. [Every forced adjustment](party-colour-adjustments.json) records base, display colour, ΔE, failed check, confidence and research file (231 appearances, including single-party definitions used by editors). The remaining 36 keep the base exactly. The regression test requires a failed check for every change beyond ΔE 2 and requires the complete exception record to remain current. [The full before/after table](party-colour-before-after.csv) is also listed (261 appearances).
-
-| Party | Research base | k24 V1b → V1c | k25 V1b → V1c |
-| --- | --- | --- | --- |
-| Noam | `#3f7b8d` | `#20a0c0` → `#5793a6` | `#004060` → `#044554` |
-| Otzma Yehudit | `#f0491c` (low confidence retained) | `#1eaa61` → `#fdcabd` | `#004000` → `#771e06` |
-| Tkuma / Religious Zionist Party | `#f47e49` | `#f47e49` → `#f47e49` | `#ffffe0` → `#ffeee7` |
-| Ta'al | `#f2cb06` | `#8020a0` → `#61510e` | `#ffa0ff` → `#f2cb06` |
-
-The remaining k24/k25 differences are forced: their list rings differ, and sibling colours also have to separate. For example, k24 Otzma must clear the ring and Tkuma; k25 Ta'al can now keep its exact yellow base. The full records distinguish these adjustments from genuine changes in per-election research.
+Party fills are now compiled once over the complete historical co-appearance graph. Ring colours never influence the fill. Lower-priority conflicting parties move by hue/chroma while keeping OKLCH lightness within .02 of the base. Genuine recorded-year variants are explicit; registry aliases share one party identity. Neutral separators provide the contrast boundary in both themes. See [the review-fix report](v1d-party-colours.md), [per-party stability counts](party-colour-stability.csv), [every global adjustment](party-colour-adjustments.json), and [the before/after table against 92aab28](party-colour-before-after.csv).
 
 ## Preset changes
 
@@ -43,7 +34,7 @@ The remaining k24/k25 differences are forced: their list rings differ, and sibli
 
 Family-generated groupings also pass their generated bloc identities through the shared guard, including the mixed/other categories. The bloc editor now offers seven mutually separated choices. Three redundant choices were removed; further automatic colours are derived against the currently displayed grouping. The light/dark corridor consequence label uses primary ink; chart boundaries use secondary ink; family mixed marks retain full opacity. These changes fix mark/text legibility without changing research artwork or election facts.
 
-Reproduce the research index with `node scripts/build-party-colour-research.ts`; regenerate party exception/before-after evidence with `node scripts/report-party-colours.ts` (V1b commit `f36a1f2` is the fixed baseline). `node scripts/repair-colour-presets.ts` is a read-only proposal; `--write` applies colour fields only and coalesces its change report. The final proposal is empty (idempotent).
+Reproduce the research index with `node scripts/build-party-colour-research.ts`; regenerate party exception/before-after evidence with `node scripts/report-party-colours.ts` (`92aab28` is the fixed review baseline). `node scripts/repair-colour-presets.ts` is a read-only proposal; `--write` applies colour fields only and coalesces its change report. The final proposal is empty (idempotent).
 
 ## Verification and limits
 

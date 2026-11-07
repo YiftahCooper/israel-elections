@@ -2,11 +2,30 @@
 
 ## 6 November 2026 — data audit
 
+- Keep party fills stable across elections with global sibling-colour checks and neutral dot separators.
+
 - Guard automatic colours and custom picker advice across the app; preserve researched party hues and test preset distinctness and contrast in both themes.
 
+- After the election: distinguish government members, support roles and individual votes; show unknown totals honestly, explain vote reconciliation behind help, and keep localised date ranges in reading order.
+- Families: count Otzma Yehudit only in Radical right in 2015, as in 2019–2022; the national-religious family keeps Yachad.
+- Research: separate government membership, outside support, investiture votes and individual exceptions; validate explicit uncertainty across recorded governments and document unresolved historical authentication.
+
+- Label the Sources polling count as polling-station results and explain that it counts results-table rows, not physical stations.
+- Research: refresh the Learn/Play information-architecture brief with current map behaviour, every tab and post-election scope.
+- 7 November: replace 44 stale ballot-letter IDs and all references with corrected IDs; remove pre-release saved-format migrations. This supersedes the stable-ID wording in the audit entries below.
+- Share historical local votes consistently across split lists in Turnout, demographic adjustments and the map, dividing equally when all descendants have zero votes.
 - Give every joint-list party a visible seat dot and consistent, contrast-checked display colours across charts, keys, details and exports.
 
 - Give bloc regions clean shared edges and contrast-checked borders in Arc, Blocks, reference chambers, legend keys and exports.
+- Compare becomes a two-sided workbench: lists paired from party records, values copied either way with exact share/count/change rules and marked with their origin, per-side undo, swap, saved comparisons and share links.
+- Retain saved references in compact change labels, ellipsise only names, and explain active-reference versus official counts together in History.
+
+- Show change counts once beside History, shorten whole labels by measured fit, and apply Hebrew maqaf prefixes consistently to foreign names.
+
+- Unify changes/שינויים against the official result or saved reference, explain action counts, and localise History times and calendar dates.
+- After the election: localise dates with RTL-safe ranges and numbers, use reading-direction arrows, attach help to its context, remove redundant event glyphs and avoid an unsupported coalition membership total.
+
+- After the election: reviewed recommendations, government formation, coalition and term history for all 26 elections, with sources and pending-event separation.
 
 - Mark custom bloc, coalition and family groupings locally as analysis while preserving official result identity and factual summaries.
 

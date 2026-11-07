@@ -1,4 +1,6 @@
 export const MAP_UNASSIGNED_COLOUR='#000000';
+import { historicalLocalVotes } from '../model/historicalLocalVotes.ts';
+import { toNumber } from '../engine/rational.ts';
 import type { Scenario } from '../model/scenario.ts';
 import type { Coordinate } from '../data/locality-coordinates.ts';
 import { allocationOf, seatBlocsOf } from './derive.ts';
@@ -16,21 +18,18 @@ export function matchesLocality(query: string, names: { nameHe: string; nameEn?:
 export function localityTotals(s: Scenario, listIds: string[], votes: number[], mode: 'bloc' | 'list'): { key: string | null; votes: number }[] {
   const totals = new Map<string | null, number>();
   const allocation = allocationOf(s);
-  for (let i = 0; i < listIds.length; i++) {
-    const amount = votes[i] ?? 0;
-    const sharers = s.lists.filter(l => l.originIds.includes(listIds[i]));
-    const totalWeight = sharers.reduce((n, l) => n + l.votes, 0);
-    if (!sharers.length) totals.set(null, (totals.get(null) ?? 0) + amount);
-    for (const l of sharers) {
-      const v = amount * (sharers.length === 1 ? 1 : totalWeight ? l.votes / totalWeight : 1 / sharers.length);
-      if (mode === 'list') totals.set(l.id, (totals.get(l.id) ?? 0) + v);
-      else {
-        const seats = allocation.lists.find(x => x.id === l.id)?.seats ?? 0;
-        const blocs = seats ? seatBlocsOf(s, l, seats) : [l.bloc];
-        for (const b of blocs) {
-          const key = s.blocs.some(x => x.id === b) ? b : null;
-          totals.set(key, (totals.get(key) ?? 0) + v / blocs.length);
-        }
+  const mapped = historicalLocalVotes(s.lists, listIds, votes);
+  if (mapped.has(null)) totals.set(null, toNumber(mapped.get(null)!));
+  for (const l of s.lists) {
+    const v = toNumber(mapped.get(l.id)!);
+    if (!l.originIds.some(o => listIds.includes(o))) continue;
+    if (mode === 'list') totals.set(l.id, v);
+    else {
+      const seats = allocation.lists.find(x => x.id === l.id)?.seats ?? 0;
+      const blocs = seats ? seatBlocsOf(s, l, seats) : [l.bloc];
+      for (const b of blocs) {
+        const key = s.blocs.some(x => x.id === b) ? b : null;
+        totals.set(key, (totals.get(key) ?? 0) + v / blocs.length);
       }
     }
   }

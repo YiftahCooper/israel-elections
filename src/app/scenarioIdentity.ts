@@ -21,13 +21,3 @@ export function nextScenarioColor(saved: SavedIdentity[], _electionId: string): 
 export function liveScenarioColor(s: Pick<Scenario, 'identityColor' | 'id' | 'electionId'>, saved: SavedIdentity[]): string {
   return isHexColour(s.identityColor) ? s.identityColor! : nextScenarioColor(saved.filter(x => x.id !== s.id), s.electionId);
 }
-/** Explicit colours win; missing identities are assigned oldest first, independent of storage order. */
-export function migrateSavedColors<T extends SavedIdentity>(saved: T[]): T[] {
-  const assigned = saved.filter(x => x.log.some(a => a.type === 'setIdentityColor'));
-  const replacements = new Map<string, T>();
-  for (const x of [...saved].filter(x => !assigned.includes(x)).sort((a, b) => a.savedAt.localeCompare(b.savedAt) || a.id.localeCompare(b.id))) {
-    const next = { ...x, log: [...x.log, { type: 'setIdentityColor' as const, color: nextScenarioColor(assigned, x.electionId) }] };
-    assigned.push(next); replacements.set(x.id, next);
-  }
-  return saved.map(x => replacements.get(x.id) ?? x);
-}

@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "electionId": "k11",
-  "status": "pilot",
-  "reviewedAt": "2026-11-06",
+  "status": "reviewed",
+  "reviewedAt": "2026-11-07",
   "notes": [
-    "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
+    "Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
     "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
     "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced."
   ],
@@ -125,6 +125,30 @@
       "publisher": "Christian Science Monitor, 27 August 1984 (contemporary foreign reporting)",
       "kind": "secondary",
       "accessed": "2026-11-06"
+    },
+    "role-roster-21": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2021%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
+    },
+    "pmo-role21": {
+      "url": "https://www.gov.il/BlobFolder/generalpage/gov21/he/part21.pdf",
+      "publisher": "Prime Minister’s Office, government 21 presentation, printed pp.95–96",
+      "kind": "official",
+      "accessed": "2026-11-07"
+    },
+    "role-roster-22": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2022%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, formation-day cabinet appointments",
+      "kind": "official",
+      "accessed": "2026-11-07"
+    },
+    "jta-opponents21": {
+      "url": "https://www.jta.org/archive/peres-defends-new-government",
+      "publisher": "JTA, 17 September 1984 (retained earlier research)",
+      "kind": "archival",
+      "accessed": "2026-11-07"
     }
   },
   "results": {
@@ -572,44 +596,126 @@
     "coalition": [
       {
         "letters": "מחל",
-        "seats": 41
+        "seats": 41,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-21",
+            "quote": "PersonToPositionID 3474; PersonID 2451; PositionID 39; StartDate 1984-09-13T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יצחק מודעי; faction join: הליכוד"
+          }
+        ]
       },
       {
         "letters": "אמת",
         "note": "Election-list envelope 44; actual coalition component 37 after excluding six Mapam MKs and Yossi Sarid.",
-        "seats": 44
+        "seats": 37,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-21",
+            "quote": "PersonToPositionID 4142; PersonID 2568; PositionID 39; StartDate 1984-09-13T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יעקב צור; faction join: מערך"
+          }
+        ],
+        "electionListSeats": 44
       },
       {
         "letters": "ג",
-        "seats": 2
+        "seats": 2,
+        "role": "member-without-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "pmo-role21",
+            "quote": "הכוללת את המערך, הליכוד, מפד”ל, ש”ס, שינוי, מורשה ואגודת ישראל"
+          }
+        ],
+        "note": "Named as governing parties in Peres’s declaration; no cabinet minister in the formation-day roster."
       },
       {
         "letters": "ב",
-        "seats": 4
+        "seats": 4,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-21",
+            "quote": "PersonToPositionID 22883; PersonID 2187; PositionID 39; StartDate 1984-09-13T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יוסף בורג; faction join: מפלגה דתית לאומית"
+          }
+        ]
       },
       {
         "letters": "הן",
-        "seats": 3
+        "seats": 3,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-21",
+            "quote": "PersonToPositionID 4253; PersonID 510; PositionID 39; StartDate 1984-09-13T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אמנון רובינשטיין; faction join: שינוי"
+          }
+        ]
       },
       {
         "letters": "שס",
-        "seats": 4
+        "seats": 4,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-21",
+            "quote": "PersonToPositionID 4188; PersonID 2559; PositionID 39; StartDate 1984-09-13T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יצחק-חיים פרץ; faction join: התאחדות הספרדים שומרי תורה - תנועת ש\"ס"
+          }
+        ]
       },
       {
         "letters": "עד",
-        "seats": 2
+        "seats": 2,
+        "role": "member-without-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "pmo-role21",
+            "quote": "הכוללת את המערך, הליכוד, מפד”ל, ש”ס, שינוי, מורשה ואגודת ישראל"
+          }
+        ],
+        "note": "Named as governing parties in Peres’s declaration; no cabinet minister in the formation-day roster."
       },
       {
         "letters": "ט",
         "seats": 3,
-        "note": "Yahad (Ezer Weizman) joined the Alignment faction; Weizman was a minister from the swearing-in"
+        "note": "Yahad (Ezer Weizman) joined the Alignment faction; Weizman was a minister from the swearing-in",
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-21",
+            "quote": "PersonToPositionID 4166; PersonID 2320; PositionID 39; StartDate 1984-09-13T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. עזר ויצמן; faction join: יחד"
+          }
+        ]
       },
       {
         "letters": "יש",
-        "seats": 1
+        "seats": 1,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-21",
+            "quote": "PersonToPositionID 4253; PersonID 510; PositionID 39; StartDate 1984-09-13T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אמנון רובינשטיין; faction join: שינוי"
+          }
+        ]
       }
     ],
-    "coalitionSeatsNote": "The primary formation speech states 97 coalition MKs. The election-list envelope is 104: six Mapam MKs and Yossi Sarid opposed the government; the scheme now represents these seven exceptions. Confidence voting (89–18) is a separate quantity.",
+    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
     "cites": [
       {
         "source": "government-research-1",
@@ -643,10 +749,247 @@
         "person": "shamir",
         "scope": "mid-term",
         "governmentNumber": 22,
-        "formalStep": true
+        "formalStep": true,
+        "number": 22,
+        "coalition": [
+          {
+            "factionNameHe": "הליכוד",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-22",
+                "quote": "PersonToPositionID 4171; PersonID 2451; PositionID 39; StartDate 1986-10-20T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 27512. יצחק מודעי"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          },
+          {
+            "factionNameHe": "מערך",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-22",
+                "quote": "PersonToPositionID 4181; PersonID 2595; PositionID 39; StartDate 1986-10-20T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 27548. יצחק רבין"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          },
+          {
+            "factionNameHe": "התאחדות הספרדים שומרי תורה - תנועת ש\"ס",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-22",
+                "quote": "PersonToPositionID 4518; PersonID 2559; PositionID 39; StartDate 1986-10-20T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 27537. יצחק-חיים פרץ"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          },
+          {
+            "factionNameHe": "מפלגה דתית לאומית",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-22",
+                "quote": "PersonToPositionID 4583; PersonID 2300; PositionID 39; StartDate 1986-10-20T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 27478. זבולון המר"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          },
+          {
+            "factionNameHe": "אומץ",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-22",
+                "quote": "PersonToPositionID 22884; PersonID 2294; PositionID 39; StartDate 1986-10-20T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 27474. יגאל הורביץ"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          },
+          {
+            "factionNameHe": "שינוי",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-22",
+                "quote": "PersonToPositionID 22902; PersonID 510; PositionID 39; StartDate 1986-10-20T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 27549. אמנון רובינשטיין"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "confidenceVote": null,
+        "confidenceVoteCites": [],
+        "membershipCoverage": "partial",
+        "roleGap": "Only positively identified cabinet factions are recorded here. Factions without ministers, individual crossings, effective faction sizes and the complete roll call still need the investiture record and deposited agreements. An empty or incomplete row set is not zero support.",
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No sourced 1986 investiture tally retained; predecessor membership is not copied."
+        },
+        "knownMemberSeats": 0
       }
     ],
     "coalitionElectionListSeats": 104,
-    "coalitionSeats": 97
-  }
+    "coalitionSeats": 97,
+    "confidenceVote": {
+      "for": 89,
+      "against": 18
+    },
+    "confidenceVoteCites": [
+      {
+        "source": "jta1984vote",
+        "quote": "The Knesset voted 89-18 to approve the new government."
+      }
+    ],
+    "membershipCoverage": "complete",
+    "supportSeats": 0,
+    "reconciliation": {
+      "status": "unresolved",
+      "note": "97 formal member seats, with only 37 of Alignment’s 44 included (six Mapam MKs and Yossi Sarid excluded). Recorded vote 89–18 leaves 13 non-voters. Their individual membership/absence distribution is not recovered; 97 must not be rendered as 89. Quantified gap: 97 identified member/support seats versus 89 votes for (+8); the named abstainers, absentees or dissenters needed to explain this gap have not been recovered. Do not infer that each member voted for."
+    },
+    "individuals": [
+      {
+        "id": "victor-shemtov",
+        "nameEn": "Victor Shem-Tov",
+        "nameHe": "ויקטור שם טוב",
+        "fromLetters": "אמת",
+        "countedInFactionSeats": false,
+        "role": "other",
+        "certainty": "confirmed",
+        "vote": "unknown",
+        "cites": [
+          {
+            "source": "jta-opponents21",
+            "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
+          }
+        ],
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again."
+      },
+      {
+        "id": "elazar-granot",
+        "nameEn": "Elazar Granot",
+        "nameHe": "אלעזר גרנות",
+        "fromLetters": "אמת",
+        "countedInFactionSeats": false,
+        "role": "other",
+        "certainty": "confirmed",
+        "vote": "unknown",
+        "cites": [
+          {
+            "source": "jta-opponents21",
+            "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
+          }
+        ],
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again."
+      },
+      {
+        "id": "yair-tsaban",
+        "nameEn": "Yair Tsaban",
+        "nameHe": "יאיר צבן",
+        "fromLetters": "אמת",
+        "countedInFactionSeats": false,
+        "role": "other",
+        "certainty": "confirmed",
+        "vote": "unknown",
+        "cites": [
+          {
+            "source": "jta-opponents21",
+            "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
+          }
+        ],
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again."
+      },
+      {
+        "id": "amira-sartani",
+        "nameEn": "Amira Sartani",
+        "nameHe": "אמירה סרטני",
+        "fromLetters": "אמת",
+        "countedInFactionSeats": false,
+        "role": "other",
+        "certainty": "confirmed",
+        "vote": "unknown",
+        "cites": [
+          {
+            "source": "jta-opponents21",
+            "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
+          }
+        ],
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again."
+      },
+      {
+        "id": "muhammad-wattad",
+        "nameEn": "Muhammad Wattad",
+        "nameHe": "מחמד ותד",
+        "fromLetters": "אמת",
+        "countedInFactionSeats": false,
+        "role": "other",
+        "certainty": "confirmed",
+        "vote": "unknown",
+        "cites": [
+          {
+            "source": "jta-opponents21",
+            "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
+          }
+        ],
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again."
+      },
+      {
+        "id": "haika-grossman",
+        "nameEn": "Haika Grossman",
+        "nameHe": "חייקה גרוסמן",
+        "fromLetters": "אמת",
+        "countedInFactionSeats": false,
+        "role": "other",
+        "certainty": "confirmed",
+        "vote": "unknown",
+        "cites": [
+          {
+            "source": "jta-opponents21",
+            "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
+          }
+        ],
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again."
+      },
+      {
+        "id": "yossi-sarid",
+        "nameEn": "Yossi Sarid",
+        "nameHe": "יוסי שריד",
+        "fromLetters": "אמת",
+        "countedInFactionSeats": false,
+        "role": "other",
+        "certainty": "confirmed",
+        "vote": "unknown",
+        "cites": [
+          {
+            "source": "jta-opponents21",
+            "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
+          }
+        ],
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again."
+      }
+    ],
+    "knownMemberSeats": 97
+  },
+  "supportSchemaVersion": 1
 }

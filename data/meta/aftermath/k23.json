@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "electionId": "k23",
-  "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "status": "reviewed",
+  "reviewedAt": "2026-11-07",
   "notes": [
-    "Research record following docs/design/after-the-election.md; not wired into the app. Gaps remain explicit."
+    "Research record following docs/design/after-the-election.md. Gaps remain explicit."
   ],
   "sources": {
     "recommendations-1": {
@@ -120,6 +120,12 @@
       "publisher": "Walla, 7 May 2020",
       "kind": "secondary",
       "accessed": "2026-11-06"
+    },
+    "role-roster-35": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2035%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
     }
   },
   "results": {
@@ -528,33 +534,87 @@
     "coalition": [
       {
         "letters": "מחל",
-        "seats": 36
+        "seats": 36,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-35",
+            "quote": "PersonToPositionID 21838; PersonID 965; PositionID 45; StartDate 2020-05-17T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. בנימין נתניהו; faction join: הליכוד"
+          }
+        ]
       },
       {
         "letters": "שס",
-        "seats": 9
+        "seats": 9,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-35",
+            "quote": "PersonToPositionID 21851; PersonID 2291; PositionID 39; StartDate 2020-05-17T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אריה מכלוף דרעי; faction join: ש\"ס"
+          }
+        ]
       },
       {
         "letters": "ג",
-        "seats": 7
+        "seats": 7,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-35",
+            "quote": "PersonToPositionID 21856; PersonID 528; PositionID 39; StartDate 2020-05-17T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יעקב ליצמן; faction join: יהדות התורה והשבת אגודת ישראל - דגל התורה"
+          }
+        ]
       },
       {
         "letters": "פה",
         "seats": 17,
         "electionSeats": 33,
-        "note": "15 Blue and White + 2 Derech Eretz; only part of the elected list joined."
+        "note": "15 Blue and White + 2 Derech Eretz; only part of the elected list joined.",
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-35",
+            "quote": "PersonToPositionID 21840; PersonID 30657; PositionID 39; StartDate 2020-05-17T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. בנימין גנץ; faction join: כחול לבן"
+          }
+        ]
       },
       {
         "letters": "אמת",
         "seats": 3,
         "electionSeats": 7,
-        "note": "2 Labor + 1 Gesher; only part of the elected list joined."
+        "note": "2 Labor + 1 Gesher; only part of the elected list joined.",
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-35",
+            "quote": "PersonToPositionID 21871; PersonID 557; PositionID 39; StartDate 2020-05-17T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. עמיר פרץ; faction join: העבודה הישראלית"
+          }
+        ]
       },
       {
         "letters": "טב",
         "seats": 1,
         "electionSeats": 6,
-        "note": "Rafi Peretz (Jewish Home); other five remained outside."
+        "note": "Rafi Peretz (Jewish Home); other five remained outside.",
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-35",
+            "quote": "PersonToPositionID 21858; PersonID 30716; PositionID 39; StartDate 2020-05-17T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. רפי פרץ; faction join: ימינה"
+          }
+        ]
       }
     ],
     "coalitionSeats": 73,
@@ -575,6 +635,26 @@
     "notes": [
       "Coalition portions reuse the rank-level first-government scheme, derived from Knesset faction membership. Election-list totals checked against public/data/k23.json.",
       "Gantz was alternate prime minister; the planned November 2021 rotation did not happen and is not recorded as an actual prime-minister tenure."
-    ]
-  }
+    ],
+    "confidenceVote": {
+      "for": 73,
+      "against": 46
+    },
+    "confidenceVoteCites": [
+      {
+        "source": "knesset-investiture",
+        "quote": "The vote of confidence in the new government passed with 73 in favor and 46 against."
+      }
+    ],
+    "membershipCoverage": "complete",
+    "supportSeats": 0,
+    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
+    "reconciliation": {
+      "status": "exact",
+      "expectedFor": 73,
+      "note": "73 member seats + 0 outside-support seats = 73 for, 46 against. Numerical equality alone does not certify every individual’s vote."
+    },
+    "knownMemberSeats": 73
+  },
+  "supportSchemaVersion": 1
 }

@@ -8,9 +8,8 @@ export default defineConfig({
   testDir: 'tests/e2e',
   timeout: 60_000,
   // Ordinary tests pre-answer action-time questions; preference tests clear these answers.
-  // The legacy source key also exercises migration for older browser saves.
   use: { baseURL: `http://localhost:${port}`, viewport: { width: 1500, height: 1000 },
-    storageState: { cookies: [], origins: [{ origin: `http://localhost:${port}`, localStorage: [{ name: 'israel-elections:vote-source', value: 'proportional' }, { name: 'israel-elections:preferences', value: '{"voteSource":"proportional","comparison":"reference"}' }] }] } },
+    storageState: { cookies: [], origins: [{ origin: `http://localhost:${port}`, localStorage: [{ name: 'israel-elections:preferences', value: '{"voteSource":"proportional","comparison":"reference"}' }] }] } },
   webServer: { command: `npx vite preview --port ${port} --strictPort`, url: `http://localhost:${port}`, reuseExistingServer: !process.env.CI && !process.env.PW_PORT },
   outputDir: '.backup-scratch/test-results',
 });

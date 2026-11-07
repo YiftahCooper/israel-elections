@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "electionId": "k17",
-  "status": "pilot",
-  "reviewedAt": "2026-11-06",
+  "status": "reviewed",
+  "reviewedAt": "2026-11-07",
   "notes": [
-    "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
+    "Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
     "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
     "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced.",
     "The endedBy date anchors the President’s 27 October notice, not the later statutory dissolution. IPU’s 10 November dissolution claim is rejected: the Basic Law route follows the 21-day period under sections 10–11, not a dissolution law. No exact later notice date is inferred from statutory arithmetic."
@@ -119,6 +119,28 @@
       "publisher": "Knesset OData, PersonToPositionID 3385 / 4613 / 4622",
       "kind": "official",
       "accessed": "2026-11-06"
+    },
+    "wp2006-confidence": {
+      "url": "https://www.washingtonpost.com/archive/politics/2006/05/05/olmert-sworn-in-restates-goal-span-classbankheadevacuation-of-west-bank-settlements-to-proceed-israeli-premier-confirmsspan/464722e2-2117-4829-ab53-94729342b0d9/",
+      "publisher": "Scott Wilson / The Washington Post, 5 May 2006",
+      "kind": "archival",
+      "accessed": "2026-11-07",
+      "evidenceFamily": "wp2006-confidence",
+      "via": "Bylined contemporary staff reporting; public body opened. Dateline 4 May; independently corroborates the existing Ynet report."
+    },
+    "olmert2006-primary-speech": {
+      "url": "https://passia.org/media/filer_public/3a/d7/3ad74f64-2abf-405d-b4c2-a18da161b98c/cd_vol8.pdf",
+      "publisher": "Ehud Olmert, address to the Knesset, 4 May 2006; reproduced in PASSIA, Documents on Palestine VIII (2007), p.118",
+      "kind": "official",
+      "accessed": "2026-11-07",
+      "evidenceFamily": "olmert20060504-speech",
+      "via": "Primary speech reproduced by an academic documentary collection; not an official host. Relevant passage at PDF page 136/index 135 read. Original PMO URL https://www.gov.il/en/pages/speechkness040506 returned 403; no bypass attempted. Mirror and original are one evidence family."
+    },
+    "role-roster-31": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2031%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
     }
   },
   "results": {
@@ -266,6 +288,10 @@
           {
             "source": "recommendations-research-1",
             "quote": "78 מחברי הכנסת הבאה תמכו במועמדותו של אולמרט"
+          },
+          {
+            "source": "olmert2006-primary-speech",
+            "quote": "On April 6, 2006, the President assigned me the task of forming the Government."
           }
         ],
         "person": "olmert"
@@ -279,6 +305,10 @@
           {
             "source": "vote2006",
             "quote": "ברוב של 65 ח״כים מול 49 נגד ו-4 נעדרים אישרה אמש (יום ה׳) הכנסת את הממשלה ה-31"
+          },
+          {
+            "source": "wp2006-confidence",
+            "quote": "a vote of 65 to 49"
           }
         ],
         "votes": {
@@ -455,23 +485,59 @@
     "coalition": [
       {
         "letters": "כן",
-        "seats": 29
+        "seats": 29,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-31",
+            "quote": "PersonToPositionID 3362; PersonID 458; PositionID 39; StartDate 2006-05-04T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. חיים רמון; faction join: קדימה-עם אהוד אולמרט לראשות הממשלה"
+          }
+        ]
       },
       {
         "letters": "אמת",
-        "seats": 19
+        "seats": 19,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-31",
+            "quote": "PersonToPositionID 3363; PersonID 455; PositionID 39; StartDate 2006-05-04T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אופיר פינס-פז; faction join: העבודה-מימד בראשות עמיר פרץ"
+          }
+        ]
       },
       {
         "letters": "שס",
-        "seats": 12
+        "seats": 12,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-31",
+            "quote": "PersonToPositionID 3500; PersonID 494; PositionID 50; StartDate 2006-05-04T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אליהו ישי; faction join: ש\"ס-התאחדות הספרדים העולמית שומרי תורה"
+          }
+        ]
       },
       {
         "letters": "זך",
-        "seats": 7
+        "seats": 7,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-31",
+            "quote": "PersonToPositionID 3611; PersonID 4298; PositionID 39; StartDate 2006-05-04T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. רפי איתן; faction join: גיל-גימלאי ישראל לכנסת"
+          }
+        ]
       }
     ],
     "coalitionSeats": 67,
-    "coalitionSeatsNote": "Election-list seat envelope, checked against officialSeats; not the confidence-vote tally or a reconstruction of later faction membership.",
+    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
     "cites": [
       {
         "source": "government-research-1",
@@ -559,6 +625,24 @@
         "scope": "mid-term",
         "formalStep": true
       }
-    ]
-  }
+    ],
+    "confidenceVote": {
+      "for": 65,
+      "against": 49
+    },
+    "confidenceVoteCites": [
+      {
+        "source": "vote2006",
+        "quote": "ברוב של 65 ח״כים מול 49 נגד ו-4 נעדרים אישרה אמש (יום ה׳) הכנסת את הממשלה ה-31"
+      }
+    ],
+    "membershipCoverage": "complete",
+    "supportSeats": 0,
+    "reconciliation": {
+      "status": "unresolved",
+      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Quantified gap: 67 identified member/support seats versus 65 votes for (+2); the named abstainers, absentees or dissenters needed to explain this gap have not been recovered. Do not infer that each member voted for."
+    },
+    "knownMemberSeats": 67
+  },
+  "supportSchemaVersion": 1
 }

@@ -14,17 +14,17 @@ describe('k2: released national evidence', () => {
   });
   it('preserves saved IDs while displaying corrected letters and complete losing rosters', () => {
     const ds=earlyReleasedDataset(2);
-    expect(ds.lists.find(l=>l.id==='2-ה')?.letters).toBe('ו');
-    const emunei=ds.lists.find(l=>l.id==='2-טח')!;
+    expect(ds.lists.find(l=>l.id==='2-ו')?.letters).toBe('ו');
+    const emunei=ds.lists.find(l=>l.id==='2-טת')!;
     expect(emunei.letters).toBe('טת');
     expect(emunei.candidates).toHaveLength(34);
-    expect(emunei.candidates[33]).toMatchObject({id:'2-טח#34',nameHe:'מגיד צבי'});
+    expect(emunei.candidates[33]).toMatchObject({id:'2-טת#34',nameHe:'מגיד צבי'});
     expect(emunei.candidatesUnavailable).toBeUndefined();
     expect(emunei.candidatesTruncated).toBe(false);
     const shin=ds.lists.find(l=>l.letters==='ש')!;
     expect(shin.candidates).toHaveLength(16);
     expect(shin.candidatesTruncated).toBe(false);
-    expect(ds.lists.find(l=>l.id==='2-ה')?.candidates[1]).toMatchObject({id:'2-ה#2',nameHe:'אונה משה'});
+    expect(ds.lists.find(l=>l.id==='2-ו')?.candidates[1]).toMatchObject({id:'2-ו#2',nameHe:'אונה משה'});
   });
   it('reproduces every gazetted seat with the complete sourced connections',()=>{
     const a=verifyEarlyProgress(2,{log:false});

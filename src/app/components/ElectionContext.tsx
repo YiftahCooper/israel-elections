@@ -1,8 +1,9 @@
+import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { useFloating } from '../floating.tsx';
 import { electionContext, type ContextSource, type PMContest } from '../../data/electionContext.ts';
 import type { ElectionId } from '../../data/schema.ts';
 import { useL, useLang } from '../i18n.ts';
-import { useStore } from '../store.ts';
+import { setState, useStore } from '../store.ts';
 import { useEffect, useRef, useState } from 'react';
 import { listLabel } from '../derive.ts';
 
@@ -39,7 +40,7 @@ export function ElectionAbout({ electionId, listId }: { electionId: ElectionId; 
   const listName = (id?: string) => { const l = !listId && id ? lists?.find(x => x.id === id) : undefined; return l ? <b><bdi>{listLabel(l, lang)}</bdi>: </b> : null; };
   return <details ref={ref} onToggle={e => setOpen(e.currentTarget.open)} className={`election-about ${pending ? 'publication-pending' : ''}`}>
     <summary>{L('About', 'אודות')}{pending && <><span className="publication-summary"> · {L('Gazette not yet verified', 'רשומות: טרם אומת')}</span><span className="publication-short" title={L('Gazette publication not yet verified', 'הפרסום ברשומות טרם אומת')}> · {L('Not yet verified', 'טרם אומת')}</span></>}</summary>
-    <ul ref={popup}>{events.map(e => <li key={e.id}>
+    <ul ref={popup}>{!listId && <li><button className="table-action" onClick={() => { setState({ tool: 'after' }); window.scrollTo({ top: 0 }); if (ref.current) ref.current.open = false; }}>{L('Government & term →', 'הממשלה והכהונה ←')}</button></li>}{events.map(e => <li key={e.id}>
       <time dateTime={e.effectiveDate}>{e.effectiveDate}</time> · {listName(e.listId)}{e.source.evidence === 'unresolved' && <strong>{L('Unresolved: ', 'טרם הוברר: ')}</strong>}{lang === 'he' ? e.textHe : e.textEn}{' '}
       <EvidenceLink source={e.source} />{e.relatedSources?.map(s => <span key={s.url}> · <EvidenceLink source={s} /></span>)}
     </li>)}{!listId && <li className="independence-note"><b>{L('Independent election simulator', 'סימולטור בחירות עצמאי')}</b><br />{L('Seats are computed by deterministic code from the official results (Central Elections Committee, Reshumot); secondary sources are labelled under Sources. Not affiliated with the CEC or any party.', 'המנדטים מחושבים בקוד דטרמיניסטי מהתוצאות הרשמיות (ועדת הבחירות המרכזית, רשומות); מקורות משניים מסומנים בלשונית מקורות. אין קשר לוועדת הבחירות או לאף מפלגה.')}</li>}</ul>
@@ -53,7 +54,7 @@ export function PMResult({ contest, onKnesset }: { contest: PMContest; onKnesset
   return <section className="panel pm-result" aria-label={L('Prime Minister result', 'תוצאות הבחירות לראש הממשלה')}>
     <header><h2>{L('Prime Minister', 'ראש הממשלה')} · {contest.effectiveDate}</h2></header>
     <div className="body">
-      {contest.contestType === 'prime-minister-only' && <p>{L(`No Knesset was elected in this election. Knesset ${contest.electionId.slice(1)} continued serving, with its seats unchanged.`, `בבחירות אלה לא נבחרה כנסת. הכנסת ה־${contest.electionId.slice(1)} המשיכה לכהן, ללא שינוי במנדטים.`)} <button className="btn small" onClick={onKnesset}>{L(`The ${ordinal(Number(contest.electionId.slice(1)))} Knesset`, `לכנסת ה־${contest.electionId.slice(1)}`)}</button></p>}
+      {contest.contestType === 'prime-minister-only' && <p>{L(`No Knesset was elected in this election. Knesset ${contest.electionId.slice(1)} continued serving, with its seats unchanged.`, `בבחירות אלה לא נבחרה כנסת. הכנסת ${hebrewPrefix('ה', contest.electionId.slice(1))} המשיכה לכהן, ללא שינוי במנדטים.`)} <button className="btn small" onClick={onKnesset}>{L(`The ${ordinal(Number(contest.electionId.slice(1)))} Knesset`, `לכנסת ${hebrewPrefix('ה', contest.electionId.slice(1))}`)}</button></p>}
       <p className="small muted">{L('Historical result · separate PM ballot · read only', 'תוצאה היסטורית · פתק נפרד לראש הממשלה · לקריאה בלבד')}</p>
       <div className="pm-bars">
         <div className="pm-majority-label">{L('50% of valid PM votes', '50% מהקולות הכשרים לראש הממשלה')}</div>

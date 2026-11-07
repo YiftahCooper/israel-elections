@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "electionId": "k13",
-  "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "status": "reviewed",
+  "reviewedAt": "2026-11-07",
   "notes": [
-    "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
+    "Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
     "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
     "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced."
   ],
@@ -120,6 +120,47 @@
       "publisher": "Knesset OData",
       "kind": "official",
       "accessed": "2026-11-06"
+    },
+    "lat1992mandate": {
+      "url": "https://www.latimes.com/archives/la-xpm-1992-07-03-mn-1517-story.html",
+      "publisher": "Daniel Williams / Los Angeles Times, 3 July 1992",
+      "kind": "archival",
+      "accessed": "2026-11-07",
+      "via": "Public archive page, bylined Times staff report; independent of JTA. Supports mandate date and duration only, not per-faction recommendations."
+    },
+    "idi-parties-2023-tsomet": {
+      "url": "https://www.idi.org.il/media/20997/המפלגות-בישראל-2021-1992.pdf",
+      "publisher": "Ofer Kenig and Gideon Rahat / Israel Democracy Institute, Political Parties in Israel 1992–2021, 2023, p.599",
+      "kind": "academic",
+      "accessed": "2026-11-07",
+      "evidenceFamily": "idi-parties-2023",
+      "via": "Printed p.599 (PDF index 598); explicit Tsomet recommendation, not coalition membership."
+    },
+    "amigoe-19920630": {
+      "url": "https://ufdcimages.uflib.ufl.edu/UF/00/10/14/47/16428/06-30-1992.pdf",
+      "publisher": "Amigoe, 30 June 1992, p.4, Rechtse en linkse steun voor Rabin; University of Florida public archive",
+      "kind": "archival",
+      "accessed": "2026-11-07",
+      "evidenceFamily": "amigoe-19920630-consultations",
+      "via": "Original newspaper scan visually inspected; Gonen Segev explicitly recommends Rabin. Unbylined contemporary report; independent of the 2023 IDI authors. No wire credit visible; do not count another reprint of this dispatch as independent."
+    },
+    "role-roster-25": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2025%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
+    },
+    "outside-support-history": {
+      "url": "https://www.972mag.com/palestinian-citizens-israel-coalition-elections/",
+      "publisher": "Wadea Awawdy, +972 / Local Call, 27 October 2022",
+      "kind": "secondary",
+      "accessed": "2026-11-07"
+    },
+    "role-roster-26": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2026%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, formation-day cabinet appointments",
+      "kind": "official",
+      "accessed": "2026-11-07"
     }
   },
   "results": {
@@ -140,7 +181,12 @@
         "nameEn": "Chaim Herzog",
         "nameHe": "חיים הרצוג"
       },
-      "nominees": {},
+      "nominees": {
+        "rabin": {
+          "nameEn": "Yitzhak Rabin",
+          "nameHe": "יצחק רבין"
+        }
+      },
       "entries": [
         {
           "letters": "אמת",
@@ -185,7 +231,19 @@
         {
           "letters": "ץ",
           "seats": 8,
-          "status": "unknown"
+          "status": "recommended",
+          "nominee": "rabin",
+          "cites": [
+            {
+              "source": "idi-parties-2023-tsomet",
+              "quote": "צומת המליצה לנשיא המדינה להטיל על רבין את תפקיד הרכבת הממשלה"
+            },
+            {
+              "source": "amigoe-19920630",
+              "quote": "Dus bevelen wij hem aan",
+              "note": "Gonen Segev, explicitly identified as a Tsomet MK, speaks in the context of presidential consultations."
+            }
+          ]
         },
         {
           "letters": "שס",
@@ -194,7 +252,8 @@
         }
       ],
       "totals": {
-        "unknown": 120
+        "rabin": 8,
+        "unknown": 112
       },
       "cites": [
         {
@@ -203,7 +262,8 @@
         }
       ],
       "notes": [
-        "No complete per-faction recommendation record was recovered by the existing research. A 61-seat blocking bloc is not a recommendation tally. Unknown is not an explicit decision to recommend nobody."
+        "No complete per-faction recommendation record was recovered by the existing research. A 61-seat blocking bloc is not a recommendation tally. Unknown is not an explicit decision to recommend nobody.",
+        "2026-11-07: Tsomet is now independently corroborated by IDI p.599 and a contemporary Amigoe scan. The other nine entries remain unknown; aggregate tally arithmetic is not per-faction evidence. Amigoe also reports Shas approval, while the later Walla account attributes discretion to the religious parties: Shas requires the original consultation record, not promotion from either alone."
       ]
     }
   ],
@@ -231,6 +291,10 @@
           {
             "source": "jta1992mandate",
             "quote": "President Chaim Herzog asked Labor Party leader Yitzhak Rabin on Thursday to form Israel’s next government."
+          },
+          {
+            "source": "lat1992mandate",
+            "quote": "Rabin was given the customary three weeks to form a government"
           }
         ],
         "person": "rabin",
@@ -245,6 +309,11 @@
           {
             "source": "jta1992vote",
             "quote": "won Knesset approval Monday evening, by a comfortable majority of 67-53"
+          },
+          {
+            "source": "first-sitting",
+            "quote": "67 - והרכבה הממשלה כינון על רבין",
+            "note": "PDF page 76 (index 75): official voting result, 67 for and 53 against. Hebrew extraction reverses word order; scan/result table checked against the transcript."
           }
         ],
         "votes": {
@@ -475,19 +544,80 @@
     "coalition": [
       {
         "letters": "אמת",
-        "seats": 44
+        "seats": 44,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-25",
+            "quote": "PersonToPositionID 4124; PersonID 2634; PositionID 39; StartDate 1992-07-13T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. שמעון שטרית; faction join: מפלגת העבודה הישראלית, מפלגת העבודה הישראלית"
+          }
+        ]
       },
       {
         "letters": "מרצ",
-        "seats": 12
+        "seats": 12,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-25",
+            "quote": "PersonToPositionID 4249; PersonID 510; PositionID 39; StartDate 1992-07-13T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אמנון רובינשטיין; faction join: מרצ, מרצ"
+          }
+        ]
       },
       {
         "letters": "שס",
-        "seats": 6
+        "seats": 6,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-25",
+            "quote": "PersonToPositionID 4076; PersonID 2291; PositionID 39; StartDate 1992-07-13T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אריה מכלוף דרעי; faction join: התאחדות הספרדים שומרי תורה - תנועת ש\"ס"
+          }
+        ]
+      },
+      {
+        "letters": "ו",
+        "seats": 3,
+        "role": "outside-support",
+        "certainty": "provisional",
+        "cites": [
+          {
+            "source": "jta1992vote",
+            "quote": "Darousha said his two-man faction had decided to support the government, rather than abstain"
+          },
+          {
+            "source": "outside-support-history",
+            "quote": "while not officially part of the coalition, voted with the government on most issues"
+          }
+        ],
+        "note": "JTA establishes both parties’ investiture support and ADP’s announced year of credit; retrospective reporting establishes the continuing blocking bloc. Original signed arrangement and its commencement date remain unrecovered."
+      },
+      {
+        "letters": "ע",
+        "seats": 2,
+        "role": "outside-support",
+        "certainty": "provisional",
+        "cites": [
+          {
+            "source": "jta1992vote",
+            "quote": "Darousha said his two-man faction had decided to support the government, rather than abstain"
+          },
+          {
+            "source": "outside-support-history",
+            "quote": "while not officially part of the coalition, voted with the government on most issues"
+          }
+        ],
+        "note": "JTA establishes both parties’ investiture support and ADP’s announced year of credit; retrospective reporting establishes the continuing blocking bloc. Original signed arrangement and its commencement date remain unrecovered."
       }
     ],
     "coalitionSeats": 62,
-    "coalitionSeatsNote": "Election-list seat envelope, checked against officialSeats; not the confidence-vote tally or a reconstruction of later faction membership.",
+    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
     "cites": [
       {
         "source": "government-research-3",
@@ -505,6 +635,104 @@
         "source": "coalition-agreements",
         "quote": "הסכם קואליציוני בין מפלגת העבודה הישראלית לבין"
       }
-    ]
-  }
+    ],
+    "changes": [
+      {
+        "date": "1995-11-22",
+        "number": 26,
+        "textEn": "The Knesset approved Peres’s 26th government, 62–8, with 38 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־26 בראשות פרס, ברוב של 62 מול 8, עם 38 נמנעים.",
+        "coalition": [
+          {
+            "factionNameHe": "יעוד",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-26",
+                "quote": "PersonToPositionID 3754; PersonID 2622; PositionID 39; StartDate 1995-11-22T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 27900. גונן שגב"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          },
+          {
+            "factionNameHe": "מפלגת העבודה הישראלית",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-26",
+                "quote": "PersonToPositionID 3784; PersonID 454; PositionID 39; StartDate 1995-11-22T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 27871. אפרים סנה"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          },
+          {
+            "factionNameHe": "מרצ",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-26",
+                "quote": "PersonToPositionID 4251; PersonID 510; PositionID 39; StartDate 1995-11-22T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 27895. אמנון רובינשטיין"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          }
+        ],
+        "cites": [
+          {
+            "source": "jta1995vote",
+            "quote": "The final vote was 62-8, with 38 abstentions."
+          }
+        ],
+        "membershipCoverage": "partial",
+        "roleGap": "Only positively identified cabinet factions are recorded here. Factions without ministers, individual crossings, effective faction sizes and the complete roll call still need the investiture record and deposited agreements. An empty or incomplete row set is not zero support.",
+        "confidenceVote": {
+          "for": 62,
+          "against": 8,
+          "abstain": 38
+        },
+        "confidenceVoteCites": [
+          {
+            "source": "jta1995vote",
+            "quote": "The final vote was 62-8, with 38 abstentions."
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
+        "reconciliation": {
+          "status": "unresolved",
+          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 0; full membership remains unknown. Investiture: 62 for, 8 against, 38 abstaining."
+        },
+        "knownMemberSeats": 0
+      }
+    ],
+    "confidenceVote": {
+      "for": 67,
+      "against": 53
+    },
+    "confidenceVoteCites": [
+      {
+        "source": "jta1992vote",
+        "quote": "won Knesset approval Monday evening, by a comfortable majority of 67-53"
+      }
+    ],
+    "membershipCoverage": "complete",
+    "supportSeats": 5,
+    "reconciliation": {
+      "status": "explained",
+      "expectedFor": 67,
+      "note": "62 coalition member seats + Hadash 3 + ADP 2 outside-support seats = 67 for; 53 against."
+    },
+    "knownMemberSeats": 62
+  },
+  "supportSchemaVersion": 1
 }

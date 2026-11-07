@@ -38,7 +38,7 @@ test('a tab whose code is still downloading shows a loading status, then its con
   await expect(panel(page).getByRole('status')).toHaveText('Loading…');
   await expect(page.getByRole('tab', { name: 'Compare' })).toHaveAttribute('aria-selected', 'true');
   release();
-  await expect(panel(page).locator('.cmp-chambers figure')).toHaveCount(2);
+  await expect(panel(page).locator('.cmp-card')).toHaveCount(2);
   await expect(panel(page).getByRole('button', { name: 'Compare with', exact: true })).toHaveAttribute('data-value', 'election:k25');
   await expect(panel(page).getByRole('status')).toHaveCount(0);
 });

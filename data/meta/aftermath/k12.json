@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "electionId": "k12",
-  "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "status": "reviewed",
+  "reviewedAt": "2026-11-07",
   "notes": [
-    "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
+    "Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
     "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
     "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced."
   ],
@@ -119,6 +119,18 @@
       "kind": "official",
       "quote": "נגזר עלינו לשרת את בוחרינו כאופוזיציה",
       "accessed": "2026-11-06"
+    },
+    "role-roster-23": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2023%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
+    },
+    "role-roster-24": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2024%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, formation-day cabinet appointments",
+      "kind": "official",
+      "accessed": "2026-11-07"
     }
   },
   "results": {
@@ -209,7 +221,8 @@
           "letters": "ו",
           "seats": 4,
           "status": "unconfirmed",
-          "noteEn": "Formal per-list recommendation not established by admissible evidence."
+          "noteEn": "Formal consultation position not authenticated. Retrieve the President’s House delegation minutes or received recommendation letter for Hadash in the November 1988 formation-consultation file (meetings 7–13 November; President Chaim Herzog records, Israel State Archives/President’s House). No catalogue shelfmark recovered.",
+          "noteHe": "העמדה הרשמית בהתייעצות טרם אומתה. נדרש פרוטוקול פגישת המשלחת או מכתב המלצתה בתיק התייעצויות נשיא המדינה חיים הרצוג, 7–13 בנובמבר 1988. מספר תיק לא אותר."
         },
         {
           "letters": "מפם",
@@ -227,19 +240,22 @@
           "letters": "פ",
           "seats": 1,
           "status": "unconfirmed",
-          "noteEn": "Formal per-list recommendation not established by admissible evidence."
+          "noteEn": "Formal consultation position not authenticated. Retrieve the President’s House delegation minutes or received recommendation letter for Progressive List for Peace in the November 1988 formation-consultation file (meetings 7–13 November; President Chaim Herzog records, Israel State Archives/President’s House). No catalogue shelfmark recovered.",
+          "noteHe": "העמדה הרשמית בהתייעצות טרם אומתה. נדרש פרוטוקול פגישת המשלחת או מכתב המלצתה בתיק התייעצויות נשיא המדינה חיים הרצוג, 7–13 בנובמבר 1988. מספר תיק לא אותר."
         },
         {
           "letters": "ע",
           "seats": 1,
           "status": "unconfirmed",
-          "noteEn": "Formal per-list recommendation not established by admissible evidence."
+          "noteEn": "Formal consultation position not authenticated. Retrieve the President’s House delegation minutes or received recommendation letter for Arab Democratic Party in the November 1988 formation-consultation file (meetings 7–13 November; President Chaim Herzog records, Israel State Archives/President’s House). No catalogue shelfmark recovered.",
+          "noteHe": "העמדה הרשמית בהתייעצות טרם אומתה. נדרש פרוטוקול פגישת המשלחת או מכתב המלצתה בתיק התייעצויות נשיא המדינה חיים הרצוג, 7–13 בנובמבר 1988. מספר תיק לא אותר."
         },
         {
           "letters": "עץ",
           "seats": 2,
           "status": "unconfirmed",
-          "noteEn": "Formal per-list recommendation not established by admissible evidence."
+          "noteEn": "Formal consultation position not authenticated. Retrieve the President’s House delegation minutes or received recommendation letter for Degel HaTorah in the November 1988 formation-consultation file (meetings 7–13 November; President Chaim Herzog records, Israel State Archives/President’s House). No catalogue shelfmark recovered.",
+          "noteHe": "העמדה הרשמית בהתייעצות טרם אומתה. נדרש פרוטוקול פגישת המשלחת או מכתב המלצתה בתיק התייעצויות נשיא המדינה חיים הרצוג, 7–13 בנובמבר 1988. מספר תיק לא אותר."
         }
       ],
       "totals": {
@@ -266,7 +282,8 @@
         }
       ],
       "notes": [
-        "Contemporary reporting gives aggregate support of 63 for Shamir and 55 for Peres. Only 49 Peres seats are assigned here from named-party reporting; Hadash, PLP and ADP (6 seats) are unconfirmed. Degel (2 seats) supported a broad government, but a formal presidential recommendation is unconfirmed. Arithmetic is not evidence of a per-list recommendation."
+        "Contemporary reporting gives aggregate support of 63 for Shamir and 55 for Peres. Only 49 Peres seats are assigned here from named-party reporting; Hadash, PLP and ADP (6 seats) are unconfirmed. Degel (2 seats) supported a broad government, but a formal presidential recommendation is unconfirmed. Arithmetic is not evidence of a per-list recommendation.",
+        "R4 recheck 7 November: JTA 9 November names non-Arab parties but does not authenticate these four final positions. +972/Local Call (27 October 2022) explicitly attributes conditional Peres recommendations to Hadash, PLP and ADP; this retrospective account is not a newly recovered President’s House record and does not close the existing authentication gap. Degel’s reported preference for unity does not by itself prove a formal recommendation. All four remain unconfirmed; no arithmetic reconstruction."
       ]
     }
   ],
@@ -506,27 +523,62 @@
     "coalition": [
       {
         "letters": "מחל",
-        "seats": 40
+        "seats": 40,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-23",
+            "quote": "PersonToPositionID 4176; PersonID 2451; PositionID 39; StartDate 1988-12-22T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יצחק מודעי; faction join: הליכוד"
+          }
+        ]
       },
       {
         "letters": "אמת",
-        "seats": 39
+        "seats": 39,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-23",
+            "quote": "PersonToPositionID 4145; PersonID 2568; PositionID 39; StartDate 1988-12-22T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יעקב צור; faction join: מערך"
+          }
+        ]
       },
       {
         "letters": "ג",
-        "seats": 5
+        "seats": 5,
+        "role": "other",
+        "certainty": "unknown",
+        "cites": [],
+        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
       },
       {
         "letters": "ב",
-        "seats": 5
+        "seats": 5,
+        "role": "other",
+        "certainty": "unknown",
+        "cites": [],
+        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
       },
       {
         "letters": "שס",
-        "seats": 6
+        "seats": 6,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-23",
+            "quote": "PersonToPositionID 4190; PersonID 2559; PositionID 39; StartDate 1988-12-22T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יצחק-חיים פרץ; faction join: התאחדות הספרדים שומרי תורה - תנועת ש\"ס"
+          }
+        ]
       }
     ],
-    "coalitionSeats": 95,
-    "coalitionSeatsNote": "Election-list seat envelope, checked against officialSeats; not the confidence-vote tally or a reconstruction of later faction membership.",
+    "coalitionSeats": null,
+    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
     "cites": [
       {
         "source": "government-research-1",
@@ -572,7 +624,165 @@
         "scope": "mid-term",
         "governmentNumber": 23,
         "formalStep": true
+      },
+      {
+        "date": "1990-06-11",
+        "number": 24,
+        "textEn": "The Knesset approved Shamir’s 24th government, 62–57.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־24 בראשות שמיר, ברוב של 62 מול 57.",
+        "coalition": [
+          {
+            "factionNameHe": "הליכוד",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-24",
+                "quote": "PersonToPositionID 3364; PersonID 546; PositionID 39; StartDate 1990-06-11T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 27695. דן מרידור"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          },
+          {
+            "factionNameHe": "מפלגה לקידום הרעיון הציוני",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-24",
+                "quote": "PersonToPositionID 4172; PersonID 2451; PositionID 39; StartDate 1990-06-11T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 27683. יצחק מודעי"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          },
+          {
+            "factionNameHe": "מפלגה דתית לאומית",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-24",
+                "quote": "PersonToPositionID 4343; PersonID 2300; PositionID 39; StartDate 1990-06-11T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 27641. זבולון המר"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          },
+          {
+            "factionNameHe": "צומת",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-24",
+                "quote": "PersonToPositionID 4384; PersonID 2138; PositionID 39; StartDate 1990-06-11T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 27580. רפאל איתן"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          },
+          {
+            "factionNameHe": "התאחדות הספרדים שומרי תורה - תנועת ש\"ס",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-24",
+                "quote": "PersonToPositionID 4388; PersonID 2545; PositionID 39; StartDate 1990-06-11T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 27715. רפאל פנחסי"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          }
+        ],
+        "cites": [
+          {
+            "source": "jta1990vote",
+            "quote": "late Monday by a vote of 62-57"
+          }
+        ],
+        "membershipCoverage": "partial",
+        "roleGap": "Only positively identified cabinet factions are recorded here. Factions without ministers, individual crossings, effective faction sizes and the complete roll call still need the investiture record and deposited agreements. An empty or incomplete row set is not zero support.",
+        "confidenceVote": {
+          "for": 62,
+          "against": 57
+        },
+        "confidenceVoteCites": [
+          {
+            "source": "jta1990vote",
+            "quote": "late Monday by a vote of 62-57"
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
+        "reconciliation": {
+          "status": "unresolved",
+          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 0; full membership remains unknown. Investiture: 62 for, 57 against, not recorded abstaining."
+        },
+        "individuals": [
+          {
+            "id": "eliezer-mizrachi",
+            "nameEn": "Eliezer Mizrachi",
+            "nameHe": "אליעזר מזרחי",
+            "fromLetters": "ג",
+            "countedInFactionSeats": false,
+            "role": "outside-support",
+            "certainty": "provisional",
+            "vote": "for",
+            "cites": [
+              {
+                "source": "jta1990vote",
+                "quote": "A fifth Agudah member, Eliezer Mizrachi, supported the government in a separate deal concluded several weeks ago."
+              }
+            ],
+            "note": "Separate personal support deal reported; Aguda as a faction is not counted as joining. Original agreement and whether it formally admitted Mizrachi individually remain unrecovered."
+          },
+          {
+            "id": "avraham-verdiger",
+            "nameEn": "Avraham Verdiger",
+            "nameHe": "אברהם ורדיגר",
+            "fromLetters": "ג",
+            "countedInFactionSeats": false,
+            "role": "other",
+            "certainty": "confirmed",
+            "vote": "abstain",
+            "cites": [
+              {
+                "source": "jta1990vote",
+                "quote": "Avraham Verdiger of the Agudat Yisrael party abstained from voting"
+              }
+            ],
+            "note": "Individual abstention established; no supporting arrangement inferred."
+          }
+        ],
+        "knownMemberSeats": 0
       }
-    ]
-  }
+    ],
+    "confidenceVote": {
+      "for": 84,
+      "against": 19
+    },
+    "confidenceVoteCites": [
+      {
+        "source": "jta1988vote",
+        "quote": "The lopsided 84-19 vote of confidence"
+      }
+    ],
+    "membershipCoverage": "partial",
+    "supportSeats": null,
+    "reconciliation": {
+      "status": "unresolved",
+      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 85; full membership remains unknown. Investiture: 84 for, 19 against, not recorded abstaining."
+    },
+    "knownMemberSeats": 85
+  },
+  "supportSchemaVersion": 1
 }

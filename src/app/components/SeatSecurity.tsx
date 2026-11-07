@@ -1,3 +1,4 @@
+import { formatDate } from '../dateFormat.ts';
 import { AnalysisEdits } from './AnalysisEdits.tsx';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { SeatDelta } from './SeatDelta.tsx';
@@ -246,7 +247,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
       })}{sayAllNeeded && pivotal.length === ids.length && pivotal.length > 1 && <span className="muted">{L('Each is needed for the majority', 'כל אחת נחוצה לרוב')}</span>}
         <Info title={L('Coalition breakdown', 'הרכב הקואליציה')}>{L('Uses the active grouping. Pivotal means this partner’s departure would remove the majority. Arithmetic does not establish political feasibility.', 'לפי החלוקה הפעילה. שותפה חיונית היא כזו שבלעדיה אין רוב. חשבון אינו מעיד על היתכנות פוליטית.')}</Info></div>
       {governmentBloc && <p className="small muted" style={{ margin: 0 }}>{!historicalIds ? L('First-government comparison unavailable', 'אין נתונים להשוואה לממשלה הראשונה') : historyMatches(ids) ? L('Matches the recorded first-government partners', 'תואמת לשותפות הממשלה הראשונה המתועדת') : L('Different from the recorded first-government partners', 'שונה משותפות הממשלה הראשונה המתועדת')}{' '}
-        <Info title={L('Historical comparison', 'השוואה היסטורית')}>{L('Compares partners with the recorded first government only, not every government during this Knesset. Scenario seats can differ from the historical result.', 'השוואת שותפות לממשלה הראשונה המתועדת בלבד, ולא לכל ממשלה במהלך הכנסת. המנדטים בתרחיש עשויים להיות שונים מהתוצאה ההיסטורית.')} {government && `${blocName(government)} · ${government.date ?? ''}`}</Info></p>}
+        <Info title={L('Historical comparison', 'השוואה היסטורית')}>{L('Compares partners with the recorded first government only, not every government during this Knesset. Scenario seats can differ from the official result.', 'השוואת שותפות לממשלה הראשונה המתועדת בלבד, ולא לכל ממשלה במהלך הכנסת. המנדטים בתרחיש עשויים להיות שונים מהתוצאה הרשמית.')} {government && `${blocName(government)} · ${government.date ? formatDate(government.date,lang) : ''}`}</Info></p>}
     </>;
   };
   return (

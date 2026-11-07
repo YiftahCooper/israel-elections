@@ -15,7 +15,7 @@ describe('k4: released national evidence', () => {
   });
   it('keeps saved IDs while displaying gazetted ballot letters and all three connections', () => {
     const ds = JSON.parse(readFileSync('public/data/k4.json', 'utf8'));
-    for (const [id, letters] of [['4-טט','טש'],['4-סט','סש'],['4-רו','רנ']]) expect(ds.lists.find((l: {id: string}) => l.id === id).letters).toBe(letters);
+    for (const [id, letters] of [['4-טש','טש'],['4-סש','סש'],['4-רנ','רנ']]) expect(ds.lists.find((l: {id: string}) => l.id === id).letters).toBe(letters);
     expect(ds.agreements.map((a: {members: string[]}) => a.members)).toContainEqual(['4-תו','4-שת']);
     expect(ds.lists.find((l: {id: string}) => l.id === '4-א').candidates[4]).toMatchObject({id:'4-א#5', nameHe:'שטרית בכור שלום'});
   });

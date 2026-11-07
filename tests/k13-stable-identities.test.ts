@@ -10,15 +10,15 @@ import { LangContext } from '../src/app/i18n.ts';
 import { listLabel } from '../src/app/derive.ts';
 
 const load = (): ElectionDataset => JSON.parse(readFileSync('public/data/k13.json', 'utf8'));
-it('keeps pre-correction keys across rebuilds and scenario serialization while exposing official letters', () => {
+it('uses corrected ballot-letter keys across rebuilds and scenario serialization', () => {
   const ds = load(), rebuilt = historicalDataset(verifyHistoricalProgress('k13', { log: false }));
   const s = scenarioFromDataset(ds);
   const restored = JSON.parse(JSON.stringify(s));
   expect(validateScenario(restored)).toEqual([]);
-  for (const [id, letters] of [['13-נז', 'נד'], ['13-נס', 'נכ'], ['13-קנ', 'קן']]) {
+  for (const [id, letters] of [['13-נד', 'נד'], ['13-נכ', 'נכ'], ['13-קן', 'קן']]) {
     for (const lists of [ds.lists, rebuilt.lists, restored.lists]) expect(lists.find((l: { id: string }) => l.id === id)).toMatchObject({ id, letters });
     expect(ds.officialSeats![id]).toBe(0);
-    expect(ds.lists.some(l => l.id === `13-${letters}`)).toBe(false);
+    expect(id).toBe(`13-${letters}`);
     const l = ds.lists.find(l => l.id === id)!;
     // The actual shared ballot component uses the field, including its accessible name.
     for (const lang of ['he', 'en'] as const) {
@@ -26,7 +26,6 @@ it('keeps pre-correction keys across rebuilds and scenario serialization while e
       expect(html).toContain(`>${letters}</span>`);
       expect(html).toContain(` ${letters} (`);
       expect(html).not.toContain(id);
-      expect(html).not.toContain(id.slice(3));
     }
   }
   // Unaffected candidate identities remain exactly as published before this follow-up.
