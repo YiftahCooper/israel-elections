@@ -1,3 +1,4 @@
+import { hebrewPrefix } from './hebrewPrefix.ts';
 // One-click counterfactuals for the What if… tool. Each preset is a list of ordinary scenario actions
 // replayed on the historical result, so it is reproducible, undoable and shareable like any manual
 // edit. Every number shown is computed here from the engine, never written by hand; the assumptions
@@ -145,7 +146,7 @@ export function computeWhatIf(ds: ElectionDataset, lang: Lang): WhatIfResult[] {
     if (seatless && r.unrepresentedVotes !== 0n) facts.push(seatless);
     const moved = actions.find((a) => a.type === 'transfer' || a.type === 'setVotes');
     const added = (listId: string, v: number) => v - base.lists.find((x) => x.id === listId)!.votes;
-    const votes = moved?.type === 'transfer' ? t(lang, `${fmtInt(moved.votes)} voters switch from ${nameOf(base, moved.from, lang)}`, `${fmtInt(moved.votes)} מצביעים עוברים מ${nameOf(base, moved.from, lang)}`)
+    const votes = moved?.type === 'transfer' ? t(lang, `${fmtInt(moved.votes)} voters switch from ${nameOf(base, moved.from, lang)}`, `${fmtInt(moved.votes)} מצביעים עוברים ${hebrewPrefix('מ', nameOf(base, moved.from, lang))}`)
       : moved?.type === 'setVotes' ? t(lang, `${fmtInt(added(moved.listId, moved.votes))} additional voters`, `${fmtInt(added(moved.listId, moved.votes))} מצביעים נוספים`)
       : '';
     return { p, actions, title, body, votes, changes, facts };

@@ -13,6 +13,11 @@
 
 - Give bloc regions clean shared edges and contrast-checked borders in Arc, Blocks, reference chambers, legend keys and exports.
 - Compare becomes a two-sided workbench: lists paired from party records, values copied either way with exact share/count/change rules and marked with their origin, per-side undo, swap, saved comparisons and share links.
+- Retain saved references in compact change labels, ellipsise only names, and explain active-reference versus official counts together in History.
+
+- Show change counts once beside History, shorten whole labels by measured fit, and apply Hebrew maqaf prefixes consistently to foreign names.
+
+- Unify changes/שינויים against the official result or saved reference, explain action counts, and localise History times and calendar dates.
 
 - Mark custom bloc, coalition and family groupings locally as analysis while preserving official result identity and factual summaries.
 

@@ -1,3 +1,4 @@
+import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { AnalysisEdits } from './AnalysisEdits.tsx';
 import { useActiveReference } from '../useActiveReference.ts';
 import { allocationOf as allocationOfCached, baselineOf, referenceLabel, resultChanges } from '../derive.ts';
@@ -140,7 +141,7 @@ function EmptyCompare({ s, ds, base, compareWith, nameA, nameB, choices, previou
           <ChoicePicker className="cmp-other" label={L('Another election', 'בחירות אחרות')} placeholder={L('Another election…', 'בחירות אחרות…')} value="" options={choices.filter((c) => c.value.startsWith(ELECTION))} onChange={(v) => setState({ compareWith: v })} />
           <button type="button" className="btn" onClick={() => setState({ tool: 'whatif' })}>{L('A What-if question…', 'שאלת "מה אם"…')}</button>
         </div>
-        <p className="small muted">{nameA !== nameB && <>{L(`Same as ${nameA}. `, `זהה ל${nameA}. `)}</>}{L('Edits you make show here.', 'עריכות שתבצעו יוצגו כאן.')}</p>
+        <p className="small muted">{nameA !== nameB && <>{L(`Same as ${nameA}. `, `זהה ${hebrewPrefix('ל', nameA)}. `)}</>}{L('Edits you make show here.', 'עריכות שתבצעו יוצגו כאן.')}</p>
       </section>
     </div>
   );

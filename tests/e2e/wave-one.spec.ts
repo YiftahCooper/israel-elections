@@ -13,14 +13,14 @@ test('grouping-only switches stay factual-neutral in Compare and keep named undo
     await choose(page.getByRole('button', {name:'Grouping',exact:true}), scheme);
     await expect(page.getByRole('button', {name:/^Undo: Bloc grouping:/})).toBeEnabled();
     // U7: a sourced grouping changes the view, not election facts.
-    await expect(page.getByRole('button', {name:/^History ·/})).toHaveCount(0);
-    await expect(page.locator('.session')).toContainText('No changes yet');
+    await expect(page.getByRole('button', {name:/^History$/})).toHaveCount(0);
+    await expect(page.locator('.session')).toContainText('No changes');
     await page.getByRole('tab', {name:'Compare',exact:true}).click();
     // U7 makes both sourced schemes unchanged facts. Auto comparison therefore
     // opens the previous election (c4e7904); an explicit same-election choice stays empty.
     if (scheme === 'pre-election-blocs') await expect(page.getByRole('button', { name: 'Compare with', exact: true })).toHaveAttribute('data-value', 'election:k24');
     await choose(page.getByRole('button', { name: 'Compare with', exact: true }), 'historical');
-    await expect(page.locator('.cmp-empty')).toContainText('Edits you make show here.');
+    await expect(page.locator('.cmp-empty')).toContainText('Your changes show here.');
     await expect(page.locator('.cmp-diff')).toHaveCount(0);
     await expect(page.locator('.cmp')).not.toContainText('0 → 64');
     await page.getByRole('tab', {name:'Overview',exact:true}).click();

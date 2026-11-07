@@ -45,11 +45,11 @@ function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;m
  const data=historyElections.map(d=>aggregate(f,d));let path='';let connected=false;
  data.forEach((a,i)=>{if(!drawn(a)){connected=false;return;}path+=`${connected?'L':'M'}${x(historyElections[i])},${y(a.votes!,historyElections[i])} `;connected=true;});
  const at=historyElections.findIndex(d=>d.id===cursor),color=familyColor(f);
- const num=(v:bigint,e:HistoryElection)=>metric==='share'?`${value(v,e).toFixed(2)}% · ${Number(v).toLocaleString()} ${L('votes','קולות')}`:`${Number(v).toLocaleString()} ${L('votes','קולות')}`;
+ const num=(v:bigint,e:HistoryElection)=>metric==='share'?`${value(v,e).toFixed(2)}% · ${Number(v).toLocaleString('en-US')} ${L('votes','קולות')}`:`${Number(v).toLocaleString('en-US')} ${L('votes','קולות')}`;
  const describe=(a:Agg,e:HistoryElection)=>{const status=familyStatus(a,L);const parts=[familyDate(e,lang)];
   if(status)parts.push(status);if(a.votes!==null&&a.status==='observed'&&!onlyMixed(a))parts.push(num(a.votes,e));
   if(a.mixed)parts.push(`${onlyMixed(a)?'':L('Mixed lists','רשימות מעורבות')+': '}${num(a.mixed,e)}`);
-  if(a.excluded&&a.status==='observed')parts.push(`${L('Mixed lists left out','רשימות מעורבות שהושמטו')}: ${Number(a.excluded).toLocaleString()}`);
+  if(a.excluded&&a.status==='observed')parts.push(`${L('Mixed lists left out','רשימות מעורבות שהושמטו')}: ${Number(a.excluded).toLocaleString('en-US')}`);
   if(e.pending)parts.push(L('Gazette not yet verified','הפרסום ברשומות טרם אומת'));return parts.join(' · ');};
  const years=historyElections.map(d=>+d.electionDate.slice(0,4)),every=narrow?20:10;
  const ticks:number[]=[];for(let yr=Math.ceil(years[0]/every)*every;yr<=years[25];yr+=every)ticks.push(yr);
@@ -93,7 +93,7 @@ function PointFacts({f,at,metric,text}:{f:Family;at:number;metric:'share'|'votes
  const sign=(n:number)=>n>0?'+':n<0?'−':'±';
  return <>
   <span>{text}</span>
-  {delta!==null&&<span className="ft-delta">{L('Since','מאז')} {familyDate(prev!,lang)}: <bdi dir="ltr">{sign(delta)}{metric==='share'?`${Math.abs(delta).toFixed(2)} ${L('points','נקודות אחוז')}`:Math.abs(delta).toLocaleString()}</bdi></span>}
+  {delta!==null&&<span className="ft-delta">{L('Since','מאז')} {familyDate(prev!,lang)}: <bdi dir="ltr">{sign(delta)}{metric==='share'?`${Math.abs(delta).toFixed(2)} ${L('points','נקודות אחוז')}`:Math.abs(delta).toLocaleString('en-US')}</bdi></span>}
   {m.selected.size>0&&<span className="ft-row"><i className="family-key-line" aria-hidden/>{byVotes(m.selected).map(name).join(' · ')}</span>}
   {byVotes(m.mixed).map(id=>{const parts=mixedComposition(f,e.id,id,lang);return <span key={id} className="ft-row"><i className="family-key-mixed" aria-hidden/><span>{name(id)}{parts.length>1&&<>: {parts.map((p,i)=><Fragment key={i}>{i>0&&' + '}{p.own?<b>{p.name}</b>:p.name}</Fragment>)}</>}</span></span>;})}
   {m.excluded.size>0&&<span className="ft-row muted">{L('Left out','לא נספרו')}: {byVotes(m.excluded).map(name).join(' · ')}</span>}
