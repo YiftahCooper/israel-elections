@@ -7,7 +7,7 @@ import { basemapStyleUrl, localityBasemapStyle } from './locality-basemap-style.
 export async function addLocalityBasemap(map: Leaflet.Map, dark: boolean, signal: AbortSignal, status: (failed: boolean) => void) {
   const response = await fetch(basemapStyleUrl(dark), { signal: AbortSignal.any([signal, AbortSignal.timeout(15000)]) });
   if (!response.ok) throw new Error(`Basemap style: ${response.status}`);
-  const style = localityBasemapStyle(await response.json());
+  const style = localityBasemapStyle(await response.json(), dark);
   if (signal.aborted) return;
   const layer = Leaflet.maplibreGL({ style, attributionControl: false });
   try { layer.addTo(map); }

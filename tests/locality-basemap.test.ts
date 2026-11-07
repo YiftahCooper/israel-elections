@@ -34,3 +34,14 @@ it('every placed result row uses the retained locality-name index, including the
     });
   }
 });
+
+it('keeps dark motorways and runways distinct from boundary overlays without changing light colors', () => {
+  const style: StyleSpecification = {version:8,sources:{},layers:[
+    {id:'highway_motorway_inner',type:'line',source:'osm',paint:{'line-color':'#000'}},
+    {id:'highway_motorway_bridge_inner',type:'line',source:'osm',paint:{'line-color':'#000'}},
+    {id:'aeroway-runway',type:'line',source:'osm',paint:{'line-color':'#000'}},
+  ]};
+  for(const layer of localityBasemapStyle(style,true).layers) if(layer.type==='line') expect(layer.paint?.['line-color']).toBe('#343b43');
+  for(const layer of localityBasemapStyle(style,false).layers) if(layer.type==='line') expect(layer.paint?.['line-color']).toBe('#000');
+  expect(style.layers[0].type==='line' && style.layers[0].paint?.['line-color']).toBe('#000');
+});

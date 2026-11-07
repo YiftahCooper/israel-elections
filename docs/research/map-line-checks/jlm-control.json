@@ -1,5 +1,4 @@
 {
-  "source": "UN map 229, November 1949, retained 1400px image",
   "controls": [
     [
       "Holy Sepulchre",
@@ -28,27 +27,47 @@
       861,
       35.2345,
       31.7767
-    ]
-  ],
-  "pixelToUtm": [
-    [
-      4.213932447992051,
-      0.011343101448548394
     ],
     [
-      0.10981026582169306,
-      -3.700650968802165
+      "Simon the Just tomb (27)",
+      579,
+      453,
+      35.23095,
+      31.7919
     ],
     [
-      708755.6688414523,
-      3521046.0174934966
+      "Tomb of the Virgin (8)",
+      771,
+      764,
+      35.23966,
+      31.78043
+    ],
+    [
+      "Ascension (10)",
+      891,
+      820,
+      35.24504,
+      31.77891
     ]
   ],
-  "residualMetres": [
-    0.5978765602615702,
-    8.007029293485019,
-    1.836116478755063,
-    9.245269220085486
+  "similarity": [
+    4.08527768776437,
+    0.16258097160607576,
+    708792.3115252187,
+    3521295.3533903016
   ],
-  "limitation": "Approximate symbol-centre registration, not surveyed control; no geometry digitized or corrected from this fit."
+  "residual_m": [
+    21.6,
+    27.1,
+    59.1,
+    25.5,
+    7.9,
+    19.3,
+    40.4
+  ],
+  "scale_m_per_px": 4.088511508908074,
+  "source": "UN map 229 (November 1949)",
+  "source_image": "data/raw/map-lines/scans/jerusalem-un-1949.jpg",
+  "method": "Seven-point similarity, common x/y scale, no affine shear",
+  "limitation": "Approximate map-symbol controls; residual maximum 59.1 m is not a surveyed boundary accuracy guarantee."
 }

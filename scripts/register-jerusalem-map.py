@@ -1,17 +1,26 @@
-import sys,json
+"""Seven-control similarity registration and corrected-line diagnostic; outputs in scratch."""
+import json
+from pathlib import Path
 import numpy as np
 from pyproj import Transformer
 from PIL import Image
 import matplotlib;matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-# Approximate symbol centres on the retained 1400px UN map; coordinates of the named monuments.
-gcps=[['Holy Sepulchre',541,813,35.22958,31.77845],['Dome of the Rock',671,826,35.2354,31.7780],['David tomb',533,998,35.2293,31.7723],['Western Wall',652,861,35.2345,31.7767]]
+root=Path('data/raw/map-lines');out=Path('.backup-scratch/v4/map-line-checks');out.mkdir(parents=True,exist_ok=True)
+r=json.loads((root/'jerusalem-registration.json').read_text());gcps=r['controls']
 p=Transformer.from_crs(4326,32636,always_xy=True).transform
-xy=np.array([[q[1],q[2],1] for q in gcps]);m=np.array([p(q[3],q[4]) for q in gcps]);coef=np.linalg.lstsq(xy,m,rcond=None)[0];inv=np.linalg.inv(np.vstack([coef.T,[0,0,1]]));res=np.linalg.norm(xy@coef-m,axis=1)
-print('Control residual metres',res.tolist())
-fig,ax=plt.subplots(figsize=(10,10));ax.imshow(Image.open('data/raw/map-lines/scans/jerusalem-un-1949.jpg'))
-for file,color,label in [('data/raw/map-lines/osm-green.geojson','#a000d0','OSM'),('data/raw/map-lines/ocha-green.geojson','#ff7f00','OCHA')]:
- for i,f in enumerate(json.load(open(file))['features']):
-  cs=f['geometry']['coordinates'];q=np.array([p(*c) for c in cs]);pixels=np.column_stack([q,np.ones(len(q))])@inv.T;ax.plot(pixels[:,0],pixels[:,1],color=color,lw=1,label=label if i==0 else None)
-ax.set(xlim=(360,800),ylim=(1200,250),title='UN map 229 (Nov 1949): approximate monument control registration');ax.legend();fig.tight_layout();fig.savefig('.backup-scratch/v4/jlm-georef.png',dpi=150)
-json.dump({'source':'UN map 229, November 1949, retained 1400px image','controls':gcps,'pixelToUtm':coef.tolist(),'residualMetres':res.tolist(),'limitation':'Approximate symbol-centre registration, not surveyed control; no geometry digitized or corrected from this fit.'},open('.backup-scratch/v4/jlm-control.json','w'),indent=2)
+# X=a*x+b*y+tx; Y=b*x-a*y+ty. One common scale; no affine shear.
+A=[];B=[]
+for _,x,y,lon,lat in gcps:A.extend([[x,y,1,0],[-y,x,0,1]]);B.extend(p(lon,lat))
+a,b,tx,ty=np.linalg.lstsq(A,B,rcond=None)[0]
+assert np.allclose([a,b,tx,ty],r['similarity'],atol=.001)
+inv=np.linalg.inv(np.array([[a,b,tx],[b,-a,ty],[0,0,1]]))
+fs=json.loads(Path('public/data/map-lines.geojson').read_text())['features']
+for name,bounds in [('jlm-georef',((330,980),(1267,229))),('jlm-abutor',((450,760),(1267,950))),('jlm-north',((330,650),(600,229)))]:
+ fig,ax=plt.subplots(figsize=(10,10));ax.imshow(Image.open(root/'scans/jerusalem-un-1949.jpg'))
+ for f in fs:
+  if f['properties']['layer']!='green-line':continue
+  q=np.array([p(*c[:2]) for c in f['geometry']['coordinates']]);xy=np.column_stack([q,np.ones(len(q))])@inv.T;ax.plot(xy[:,0],xy[:,1],color='#c1009d',lw=1)
+ ax.set(xlim=bounds[0],ylim=bounds[1],title='UN229 / corrected production lines; seven-control similarity');fig.tight_layout();fig.savefig(out/(name+'.png'),dpi=150);plt.close(fig)
+Path('docs/research/map-line-checks/jlm-control.json').write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n')
+print('Seven-control scale',np.hypot(a,b),'m/px; no affine shear')

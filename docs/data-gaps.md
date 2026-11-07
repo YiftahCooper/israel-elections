@@ -1,6 +1,6 @@
 # Data gaps register
 
-11312 review flags; categories may overlap and are not counts of historical errors. Bulk rows are grouped by field; these counts use grouped records, not occurrences.
+11316 review flags; categories may overlap and are not counts of historical errors. Bulk rows are grouped by field; these counts use grouped records, not occurrences.
 
 ## Most important open gaps
 
@@ -16,9 +16,9 @@
 
 ## Counts
 
-By kind: unknown: 6952; missing-field: 283; conflict: 15; single-source: 2376; low-confidence: 101; release-hold: 0; inferred: 1164; pending: 421.
+By kind: unknown: 6952; missing-field: 283; conflict: 15; single-source: 2380; low-confidence: 101; release-hold: 0; inferred: 1164; pending: 421.
 
-By status: inferred-not-verified: 1030; needs-current-status-review: 312; open: 9970.
+By status: inferred-not-verified: 1030; needs-current-status-review: 312; open: 9974.
 
 ## Per election
 
@@ -50,7 +50,7 @@ By status: inferred-not-verified: 1030; needs-current-status-review: 312; open: 
 | k24 | 251 | 0 | 1 | 113 | 4 | 0 | 51 | 12 | 432 |
 | k25 | 456 | 0 | 0 | 131 | 4 | 0 | 84 | 10 | 685 |
 | k26 | 271 | 0 | 0 | 138 | 6 | 0 | 100 | 44 | 559 |
-| cross-election | 1041 | 35 | 4 | 234 | 0 | 0 | 4 | 75 | 1393 |
+| cross-election | 1041 | 35 | 4 | 238 | 0 | 0 | 4 | 75 | 1397 |
 | [object Object] | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 1 |
 
 ## Individually listed priorities

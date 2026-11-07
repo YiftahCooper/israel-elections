@@ -2,8 +2,8 @@ import { expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import type { FeatureCollection, Position } from 'geojson';
 const data = JSON.parse(readFileSync('public/data/map-lines.geojson','utf8')) as FeatureCollection;
-it('ships the eight separately identified cartographic layers with dated provenance', () => {
-  expect([...new Set(data.features.map(f=>f.properties?.layer))].sort()).toEqual(['blue-line','egypt-border','gaza-perimeter','golan-alpha','green-line','jordan-border','no-mans-land','scopus']);
+it('ships the ten separately identified cartographic layers with dated provenance', () => {
+  expect([...new Set(data.features.map(f=>f.properties?.layer))].sort()).toEqual(['blue-line','egypt-border','gaza-perimeter','golan-alpha','govt-house-zone','green-line','jordan-1967-admin','jordan-border','no-mans-land','scopus']);
   for (const f of data.features) { expect(f.properties?.snapshot).toBe('2026-11-07'); expect(f.properties?.source).toBeTruthy(); }
 });
 it('keeps Mount Scopus separate from the two historical no-man’s-land polygons', () => {

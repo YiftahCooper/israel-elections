@@ -101,6 +101,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   const L = useL(), lang = useLang();
   const dark = useStore(st => st.theme === 'dark');
   const [lineIds, setLineIds] = useState<ReadonlySet<string>>(() => new Set(MAP_LINES.map(x=>x.id)));
+  const [hiddenLines, setHiddenLines] = useState(0);
   const { value: lineData, error: lineError } = useJson(`${import.meta.env.BASE_URL}data/map-lines.geojson`, NO_LINES);
   const container = useRef<HTMLDivElement>(null), map = useRef<Leaflet.Map | null>(null);
   const [mode, setMode] = useState<'bloc' | 'list'>('bloc');
@@ -126,7 +127,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   useEffect(() => {
     if (!container.current) return;
     // Tool tabs unmount immediately; Leaflet's delayed zoom completion can outlive the map pane.
-    const m = Leaflet.map(container.current, { renderer:new MountedCanvas(), scrollWheelZoom:false, zoomAnimation:false, zoomControl:false, minZoom:2, maxZoom:19, maxBounds:[[-85,-180],[85,180]] }).setView([31.7,35],7);
+    const m = Leaflet.map(container.current, { renderer:new MountedCanvas(), scrollWheelZoom:false, zoomAnimation:false, zoomControl:false, minZoom:2, maxZoom:15, maxBounds:[[-85,-180],[85,180]] }).setView([31.7,35],7);
     new ZoomInPlace().addTo(m);
     map.current = m;
     // Leaflet's keyboard handler focuses the map on mousedown without preventScroll (it restores only the window's
@@ -149,7 +150,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   }, [dark]);
   useEffect(() => {
     const m = map.current; if (!m || !lineData.features.length) return;
-    return drawMapLines(m, lineData, lineIds, dark);
+    return drawMapLines(m, lineData, lineIds, dark, setHiddenLines);
   }, [lineData, lineIds, dark]);
   useEffect(() => {
     const m = map.current; if (!m) return;
@@ -275,16 +276,19 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     <fieldset className="locality-boundary-legend"><legend>{L('Lines and areas', 'קווים ושטחים')}</legend>
       {MAP_LINES.map(line => <span className="locality-boundary-entry" key={line.id}>
         <label><input type="checkbox" checked={lineIds.has(line.id)} onChange={e => setLineIds(old => { const next = new Set(old); if (e.target.checked) next.add(line.id); else next.delete(line.id); return next; })} />
-          <svg width="28" height="14" viewBox="0 0 28 14" aria-hidden="true">{line.id === 'no-mans-land' ? <path d="M0 12L12 0 M8 14L22 0 M18 14L28 4" stroke={dark?line.dark:line.color} /> : <path d="M0 7H28" stroke={dark?line.dark:line.color} strokeWidth="2" strokeDasharray={line.dash} />}</svg>
+          <svg width="28" height="14" viewBox="0 0 28 14" aria-hidden="true">{line.fill ? <path d={line.fill==='cross'?'M0 0L14 14 M0 14L14 0 M14 0L28 14 M14 14L28 0':'M-14 14L0 0 M-6 14L8 0 M2 14L16 0 M10 14L24 0 M18 14L32 0 M26 14L40 0'} stroke={dark?line.dark:line.color} strokeWidth="1.4" strokeLinecap="butt" /> : <path d="M0 7H28" stroke={dark?line.dark:line.color} strokeWidth="2" strokeLinecap="butt" strokeDasharray={line.dash} />}</svg>
           {lang === 'he' ? line.he : line.en}</label>
         <Info title={lang === 'he' ? line.he : line.en}>
           <p>{lang === 'he' ? line.detailHe : line.detailEn}</p>
+          {line.quotes?.map(quote=><div key={quote.reference}><p><bdi>{quote.reference}</bdi>{lang==='he'&&quote.translatedHe?L('',' · תרגום מהמקור האנגלי'):''}</p><blockquote className="map-treaty-quote">{lang==='he'?quote.he:quote.en}</blockquote></div>)}
+          <p>{lang === 'he' ? line.uncertaintyHe : line.uncertaintyEn}</p>
           <p>{L('Geometry snapshot: ', 'תצלום מצב של הגאומטריה: ')}<bdi>{MAP_LINE_SNAPSHOT}</bdi></p>
           <p>{L('Sources: ', 'מקורות: ')}{line.sources.map(([label,url],i)=><span key={url}>{i>0?' · ':''}<a href={url} target="_blank" rel="noreferrer">{mapLineSourceLabel(label,lang)}</a></span>)}</p>
         </Info>
       </span>)}
       <p className="small locality-boundary-limit">{L('Golan: Bravo / separation area not shown', 'גולן: בראבו ואזור ההפרדה אינם מוצגים')} <Info title={L('Unverified Golan geometry', 'גאומטריה בגולן שטרם אומתה')}>{L('Bravo, Alpha-1 and the exact area of separation remain unverified and are not drawn. The Alpha line is shown independently. The larger areas of limitation and present military positions are not depicted.', 'קו בראבו, אלפא־1 והתחום המדויק של אזור ההפרדה טרם אומתו ואינם מצוירים. קו אלפא מוצג בנפרד. אזורי הגבלת הכוחות הרחבים יותר ועמדות צבאיות כיום אינם מוצגים.')}</Info></p>
     </fieldset>
+    {<p className="small locality-boundary-limit" style={{visibility:hiddenLines>0?'visible':'hidden'}} aria-hidden={hiddenLines===0} role={hiddenLines>0?'status':undefined}>{L('Some approximate lines are hidden at this zoom. Zoom out to see them.', 'חלק מהקווים המקורבים מוסתרים בהגדלה זו. להצגתם, הקטינו את המפה.')} <Info title={L('Line detail limits','מגבלות פירוט הקווים')}>{L('Each layer stops at its source precision. Measured source differences are limited to roughly 20 screen pixels; outlines whose precision is unknown are shown only at overview zooms. Locality dots and names remain available. Each layer’s explanation states its uncertainty.', 'כל שכבה נעצרת לפי דיוק המקור. פערי המקורות שנמדדו מוגבלים לכ־20 פיקסלים במסך; תוואים שדיוקם אינו ידוע מוצגים רק בקנה מידה כללי. נקודות ושמות היישובים ממשיכים להופיע. אי־הוודאות מצוינת בהסבר של כל שכבה.')}</Info></p>}
     {lineError && <p className="small bad" role="status">{L('Boundary data could not load.', 'נתוני הקווים לא נטענו.')}</p>}
     <div ref={container} className="locality-map-canvas" role="region" aria-label={L('Locality results map; use search or table for keyboard selection','מפת תוצאות ביישובים; לבחירה במקלדת השתמשו בחיפוש או בטבלה')} />
     {tilesFailed && <p className="small bad">{L('The background map could not load; the locality dots still work.', 'מפת הרקע לא נטענה; נקודות היישובים עדיין פעילות.')}</p>}

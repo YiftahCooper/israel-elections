@@ -3,6 +3,8 @@
 ## 6 November 2026 — data audit
 
 - After the election: distinguish government members, support roles and individual votes; show unknown totals honestly, explain vote reconciliation behind help, and keep localised date ranges in reading order.
+- Correct Jerusalem zone identities and paired lines; distinguish the treaty’s Jordan administrative sector, constrain source precision, and verify Blue/Alpha against explicit UN maps.
+
 - Families: count Otzma Yehudit only in Radical right in 2015, as in 2019–2022; the national-religious family keeps Yachad.
 - Research: separate government membership, outside support, investiture votes and individual exceptions; validate explicit uncertainty across recorded governments and document unresolved historical authentication.
 

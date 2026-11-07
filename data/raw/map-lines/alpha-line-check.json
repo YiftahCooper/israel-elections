@@ -1,0 +1,130 @@
+{
+  "source": "UNDOF map 2916 Rev.143, September 2026; native Alpha path 1742 (not Bravo or A-1)",
+  "pdf": "data/raw/map-lines/scans/undof-2916-r143-sep26.pdf",
+  "grid": "Palestine Belt Grid EPSG:28191",
+  "gridControlsX": [
+    [
+      94.33333333333333,
+      220000
+    ],
+    [
+      179.33333333333334,
+      230000
+    ],
+    [
+      265.3333333333333,
+      240000
+    ],
+    [
+      351.0,
+      250000
+    ],
+    [
+      436.3333333333333,
+      260000
+    ],
+    [
+      521.6666666666666,
+      270000
+    ]
+  ],
+  "gridControlsY": [
+    [
+      128.66666666666666,
+      310000
+    ],
+    [
+      214.33333333333334,
+      300000
+    ],
+    [
+      299.6666666666667,
+      290000
+    ],
+    [
+      385.6666666666667,
+      280000
+    ],
+    [
+      471.0,
+      270000
+    ],
+    [
+      556.3333333333334,
+      260000
+    ],
+    [
+      641.6666666666666,
+      250000
+    ],
+    [
+      726.6666666666666,
+      240000
+    ]
+  ],
+  "xFit": [
+    116.92627134533782,
+    208986.70842563605
+  ],
+  "yFit": [
+    -117.02404389243955,
+    325086.29078596405
+  ],
+  "gridFitResidualM": 48.81889079132816,
+  "sampling_m": 10,
+  "sampling_gap_bound_m": 5,
+  "perWay": [
+    {
+      "way": 95034190,
+      "max_m": 387.4094617243762,
+      "worst": [
+        35.816403861107425,
+        33.21246127561576
+      ],
+      "samples": 2479
+    },
+    {
+      "way": 793722585,
+      "max_m": 354.41051819876014,
+      "worst": [
+        35.8444429,
+        33.167612
+      ],
+      "samples": 1451
+    },
+    {
+      "way": 793722588,
+      "max_m": 301.78472879654726,
+      "worst": [
+        35.86810901151448,
+        33.00487386730469
+      ],
+      "samples": 1862
+    },
+    {
+      "way": 793722591,
+      "max_m": 460.07109373600656,
+      "worst": [
+        35.8003136,
+        32.7822758
+      ],
+      "samples": 1701
+    },
+    {
+      "way": 1194778776,
+      "max_m": 190.67635320463012,
+      "worst": [
+        35.8614552,
+        32.907827
+      ],
+      "samples": 504
+    }
+  ],
+  "osm_to_un_max_m": 460.07109373600656,
+  "un_to_osm_max_m": 429.84029026861725,
+  "un_to_osm_worst": [
+    35.79755789600876,
+    32.78598684193945
+  ],
+  "limitations": "Grid stroke registration residual about 49m; native UN stroke about157m wide. Source differences are not surveyed uncertainty. Native Alpha is visually identified as the west separation-area edge; Bravo/A-1 are separate paths. No current deployment claim."
+}

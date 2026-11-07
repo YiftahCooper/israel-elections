@@ -1,11 +1,11 @@
 {
   "schemaVersion": 2,
-  "total": 11312,
+  "total": 11316,
   "counts": {
     "unknown": 6952,
     "missing-field": 283,
     "conflict": 15,
-    "single-source": 2376,
+    "single-source": 2380,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1164,
@@ -14,7 +14,7 @@
   "countsByStatus": {
     "inferred-not-verified": 1030,
     "needs-current-status-review": 312,
-    "open": 9970
+    "open": 9974
   },
   "elections": [
     {
@@ -383,12 +383,12 @@
     },
     {
       "election": "cross-election",
-      "total": 1393,
+      "total": 1397,
       "counts": {
         "unknown": 1041,
         "missing-field": 35,
         "conflict": 4,
-        "single-source": 234,
+        "single-source": 238,
         "low-confidence": 0,
         "release-hold": 0,
         "inferred": 4,

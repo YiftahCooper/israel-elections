@@ -159,13 +159,13 @@ test('boundaries have independent controls, hatch geometry, source and snapshot 
   await page.route('https://tiles.openfreemap.org/**',route=>route.abort());
   await page.goto('/');await page.getByRole('tab',{name:'Localities',exact:true}).click();
   const legend=page.getByRole('group',{name:'Lines and areas',exact:true});
-  await expect(legend.getByRole('checkbox')).toHaveCount(8);
+  await expect(legend.getByRole('checkbox')).toHaveCount(10);
   await expect(page.locator('.leaflet-verified-lines-pane path')).not.toHaveCount(0);
-  await expect(page.locator('.leaflet-verified-lines-pane pattern')).toHaveCount(1);
+  await expect(page.locator('.leaflet-verified-lines-pane pattern')).toHaveCount(2);
   const before=await page.locator('.leaflet-verified-lines-pane path').count();
-  await legend.getByRole('checkbox',{name:'1949 armistice · Judea and Samaria',exact:true}).uncheck();
+  await legend.getByRole('checkbox',{name:'Armistice lines · Judea and Samaria',exact:true}).uncheck();
   await expect.poll(()=>page.locator('.leaflet-verified-lines-pane path').count()).toBeLessThan(before);
-  await expect(legend.getByRole('checkbox',{name:'Lebanon · Blue Line',exact:true})).toBeChecked();
+  await expect(legend.getByRole('checkbox',{name:'Lebanon · Blue Line (partial)',exact:true})).toBeChecked();
   await legend.getByRole('button',{name:'Israel–Gaza Strip boundary',exact:true}).click();
   await expect(page.getByText('Geometry snapshot:',{exact:false})).toBeVisible();
   await expect(page.getByRole('link',{name:'UN · S/1471 (1950)',exact:true})).toHaveAttribute('href','https://www.un.org/unispal/document/auto-insert-183322/');
@@ -190,7 +190,34 @@ test('selection and zoom can be followed immediately by leaving and remounting t
     await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
   }
   await page.getByRole('tab',{name:'Localities',exact:true}).click();
-  await expect(page.locator('.leaflet-verified-lines-pane pattern')).toHaveCount(1);
+  await expect(page.locator('.leaflet-verified-lines-pane pattern')).toHaveCount(2);
   await expect(page.locator('.locality-map-canvas')).toHaveCount(1);
   expect(errors).toEqual([]);
+});
+
+test('source precision hides approximate lines while locality detail and treaty disclaimers remain available',async({page})=>{
+ await page.addInitScript(()=>localStorage.setItem('israel-elections:v1',JSON.stringify({lang:'en',theme:'dark',level:'expert',hintDismissed:true})));
+ await page.route('https://tiles.openfreemap.org/**',route=>route.abort());
+ await page.goto('/');await page.getByRole('tab',{name:'Localities',exact:true}).click();
+ const paths=page.locator('.leaflet-verified-lines-pane svg > g path');await expect(paths.first()).toBeAttached();
+ expect(await paths.evaluateAll(xs=>xs.every(x=>x.getAttribute('stroke-linecap')==='butt'))).toBe(true);
+ const legend=page.getByRole('group',{name:'Lines and areas',exact:true});
+ await legend.getByRole('button',{name:'Jordan · line with Judea and Samaria',exact:true}).click();
+ await expect(page.getByText(/Any treatment of this line shall be without prejudice to the status of the territory/)).toBeVisible();
+ await expect(page.getByRole('link',{name:'Official Hebrew treaty record',exact:true})).toBeVisible();
+ await page.keyboard.press('Escape');
+ await page.getByRole('searchbox',{name:'Find a locality'}).fill('jerusalem');await page.locator('.locality-map-matches button').first().click();
+ await expect(page.getByText('Some approximate lines are hidden at this zoom. Zoom out to see them.',{exact:false})).toBeVisible();
+ await expect(page.locator('.locality-map-label').filter({hasText:'Jerusalem'})).toHaveCount(1);
+ await expect(legend.getByRole('checkbox',{name:'Government House zone · 1949–1967',exact:true})).toBeChecked();
+});
+
+test('crossing a source precision limit keeps the map and zoom control in place',async({page})=>{
+ await page.addInitScript(()=>localStorage.setItem('israel-elections:v1',JSON.stringify({lang:'en',level:'expert',hintDismissed:true})));
+ await page.route('https://tiles.openfreemap.org/**',route=>route.abort());await page.setViewportSize({width:390,height:1000});
+ await page.goto('/');await page.getByRole('tab',{name:'Localities',exact:true}).click();
+ const map=page.locator('.locality-map-canvas');await map.scrollIntoViewIfNeeded();
+ const y=(await map.boundingBox())!.y;const zoom=page.getByRole('button',{name:'Zoom in',exact:true});
+ for(let i=0;i<5;i++){await zoom.click();await expect.poll(async()=>(await map.boundingBox())!.y).toBe(y);}
+ await expect(page.getByText('Some approximate lines are hidden at this zoom. Zoom out to see them.',{exact:false})).toBeVisible();
 });
