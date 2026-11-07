@@ -1,10 +1,12 @@
 import type { ElectionDataset, ElectionId } from './schema.ts';
-export interface Cite { source: string; quote: string }
+import type { GovernmentSupport } from './aftermath.ts';
+export interface Cite { source: string; quote: string; locator?: string; note?: string }
 export interface HistorySource { url: string; publisher?: string; publisherHe?: string; title?: string; kind: string; accessed: string; via?: string }
 export interface DatedFact { date: string; endDate?: string; textEn: string; textHe: string; cites: Cite[]; notes?: string[]; type?: string; category?: string; person?: string; days?: number }
 export interface RecommendationEntry { letters: string; seats: number; status: string; nominee?: string; split?: { nominee?: string; status?: string; seats: number }[]; cites?: Cite[]; noteEn?: string; noteHe?: string }
 export interface RecommendationRound { id: string; date: string; endDate?: string; nominees: Record<string, { nameEn: string; nameHe: string }>; entries: RecommendationEntry[]; totals: Record<string, number>; cites: Cite[]; notes?: string[] }
-export interface Government { number: number; nameEn: string; nameHe: string; startDate: string; endDate?: string; primeMinisters: { nameEn: string; nameHe: string; from: string; to?: string }[]; coalition: { letters: string; seats: number; electionSeats?: number; coalitionSeats?: number; note?: string }[]; coalitionSeats: number; coalitionSeatsNote?: string; cites: Cite[]; endDateCites?: Cite[]; changes?: DatedFact[]; notes?: string[] }
+export type GovernmentChange = DatedFact & Partial<GovernmentSupport> & { number?: number; coalitionSeatsNote?: string; roleGap?: string };
+export interface Government extends GovernmentSupport { number: number; nameEn: string; nameHe: string; startDate: string; endDate?: string; primeMinisters: { nameEn: string; nameHe: string; from: string; to?: string }[]; coalitionSeatsNote?: string; roleGap?: string; cites: Cite[]; endDateCites?: Cite[]; changes?: GovernmentChange[]; notes?: string[] }
 export interface Poll { date?: string; timing?: string; sourceId: string; questionEn?: string; questionHe?: string; populationEn?: string; populationHe?: string; fieldDates?: { from: string; to: string }; answers: { labelEn: string; labelHe?: string; pct: number }[]; cites?: Cite[] }
 export interface Aftermath { schemaVersion: number; electionId: ElectionId; status: string; reviewedAt: string; sources: Record<string, HistorySource>; results: { electionDate: string }; recommendationRounds: RecommendationRound[]; formation: { events: DatedFact[]; conflicts?: unknown[] }; government?: Government; reaction?: { items: DatedFact[] }; term: { events: DatedFact[]; candidatesPending: { label: string; date?: string; why: string }[]; endedBy?: DatedFact & { nextElection?: ElectionId }; inclusionRule?: string }; issuePolling?: { status: string; items?: Poll[] } }
 export function recommendationPieces(round: RecommendationRound) {
@@ -28,9 +30,19 @@ export function validateAftermath(data: Aftermath, ds: ElectionDataset): string[
     for (const key of new Set([...Object.keys(totals), ...Object.keys(round.totals)])) if (totals[key] !== round.totals[key]) errors.push(`Total mismatch: ${round.id}/${key}`);
     if (Object.values(totals).reduce((a, b) => a + b, 0) !== 120) errors.push(`Not 120: ${round.id}`);
   }
-  if (data.government) {
-    data.government.coalition.forEach(e => checkSeats({ letters: e.letters, seats: e.electionSeats ?? e.seats }));
-    if (data.government.coalition.reduce((n, e) => n + (e.coalitionSeats ?? e.seats), 0) !== data.government.coalitionSeats) errors.push('Coalition total mismatch');
+  // R4 seat counts describe actual participation; an elected list is only the upper envelope.
+  // Role totals and confidence bridges are validated separately by R4's shared build validator.
+  if (data.government) for (const snapshot of [data.government, ...(data.government.changes ?? [])]) {
+    for (const entry of snapshot.coalition ?? []) {
+      if (!entry.letters) continue;
+      const list = ds.lists.find(l => l.letters === entry.letters);
+      if (!list) errors.push(`Unknown letters: ${entry.letters}`);
+      else {
+        const official = ds.officialSeats?.[list.id];
+        if (entry.electionListSeats !== undefined && entry.electionListSeats !== official) errors.push(`Election seat mismatch: ${entry.letters}`);
+        if (entry.seats !== null && (entry.seats < 0 || (official !== undefined && entry.seats > official))) errors.push(`Participation seat mismatch: ${entry.letters}`);
+      }
+    }
   }
   const walk = (v: unknown): void => {
     if (Array.isArray(v)) v.forEach(walk);

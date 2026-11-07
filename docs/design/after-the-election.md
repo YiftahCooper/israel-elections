@@ -191,12 +191,21 @@ preferred anchor, and multiple publications from the same institution do not bec
 - `AfterElection.tsx` accepts only the immutable election dataset. Tab registration, About navigation and
   Sources integration are the shell connections. Scenario tint, change summary, editing hints and drawers
   are suppressed on this page.
-- `aftermath-model.ts` validates reviewed records during Vite builds and unit tests; `aftermath.ts` loads
-  the separate history files. The audit tracker records all 26 audits completed; durable reconciliations
+- `aftermath-model.ts` validates reviewed records during Vite builds and unit tests; `aftermath-runtime.ts` loads
+  the separate history files. `aftermath.ts` retains the shared, runtime-independent support types.
+  The audit tracker records all 26 audits completed; durable reconciliations
   are in `docs/research/data-audit/kNN-resolution.md`.
-- Coalition counts retain their source meaning. In 1984, `coalitionSeats` on the Alignment entry is 37,
-  inside its 44 election seats; the government total is 97. In 2020, `electionSeats` preserves whole-list
-  results while `seats` records the portions joining the government. Neither is a confidence-vote tally.
+- Government participation follows `docs/research/government-support-roles.md`: group members with ministries,
+  members without ministries, outside support, confidence-only votes, arranged abstentions and other roles
+  separately. Unknown classifications have their own group. Preserve provisional badges and unknown totals;
+  never infer a role or membership from an investiture vote. The summary puts membership beside the vote,
+  with reconciliation and original research qualifications behind (i). Individual exceptions also appear,
+  without double-counting people included in faction seats. Changes use the same renderer and R4 validator.
+- Participant `seats` records only the participating portion; `electionListSeats` preserves its election
+  envelope. In 1984, the Alignment portion is 37 of 44. Neither figure is a confidence-vote tally.
+- Every displayed date uses the local date helper, preserving available precision. Date endpoints are
+  individually isolated with explicit locale direction; range containers follow reading direction, so
+  Hebrew starts on the right. Chronological graphics remain LTR; their labels use the locale direction.
 - Pending events and any single-source term entries are confined to Sources. Research notes remain in
   their original language behind labelled disclosures. The existing audit establishes independent
   chronology support; the runtime additionally rejects term entries with fewer than two distinct sources.

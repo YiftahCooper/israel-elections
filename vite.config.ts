@@ -1,3 +1,4 @@
+import { validateGovernmentSupport } from './scripts/lib/build/aftermath.ts';
 import { readFileSync } from 'node:fs';
 import { ELECTION_IDS, type ElectionDataset } from './src/data/schema.ts';
 import { validateAftermath, type Aftermath } from './src/data/aftermath-model.ts';
@@ -17,6 +18,9 @@ export default defineConfig({
         const ds = JSON.parse(readFileSync(`public/data/${id}.json`, 'utf8')) as ElectionDataset;
         const errors = validateAftermath(history, ds);
         if (errors.length) this.error(`${id} aftermath: ${errors.join('; ')}`);
+        if (history.government) for (const snapshot of [history.government, ...(history.government.changes ?? []).filter(c => c.coalition)]) {
+          validateGovernmentSupport(snapshot, history.sources, `${id}/government`);
+        }
       }
     },
   }, {
