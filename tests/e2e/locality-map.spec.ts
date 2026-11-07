@@ -1,8 +1,9 @@
 import { choose } from './choices.ts';
+// the figures below were drawn at one decimal place (Settings → Max decimal places)
 import { expect, test } from '@playwright/test';
 
 test('locality map supports bilingual search, address lookup and table fallback', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'en',level:'expert',hintDismissed:true})));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 1 } })); return JSON.stringify(o); })({lang:'en',level:'expert',hintDismissed:true})));
   // Keep this test independent of public tile/geocoding services and their traffic budgets.
   await page.route('https://tiles.openfreemap.org/**', route => route.abort());
   await page.route('https://photon.komoot.io/**', route => route.fulfill({json:{features:[{geometry:{coordinates:[34.78,32.08]},properties:{name:'Test address',city:'Tel Aviv'}}]}}));
@@ -42,7 +43,7 @@ test('locality map supports bilingual search, address lookup and table fallback'
 });
 
 test('locality map explains a result, speaks English and fits the dark theme', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'en',theme:'dark',level:'expert',hintDismissed:true})));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 1 } })); return JSON.stringify(o); })({lang:'en',theme:'dark',level:'expert',hintDismissed:true})));
   // tiles blocked: the frame says the background map failed instead of staying silently blank
   await page.route('https://tiles.openfreemap.org/**', route => route.abort());
   await page.goto('/');
@@ -50,7 +51,7 @@ test('locality map explains a result, speaks English and fits the dark theme', a
   await expect(page.getByText('The background map could not load; the locality dots still work.')).toBeVisible();
   // A genuine dark vector style replaces the former inverted raster.
   expect(await page.locator('.locality-map-canvas .leaflet-tile-pane').evaluate(e => getComputedStyle(e).filter)).toBe('none');
-  await expect(page.getByText('Lines and areas', {exact:true})).toBeVisible();
+  await expect(page.locator('.locality-boundary-disclosure > summary')).toBeVisible();
   await expect(page.locator('.leaflet-control-attribution')).toContainText('OpenFreeMap');
   await expect(page.locator('.leaflet-control-attribution')).toContainText('OpenMapTiles');
   // the address field is a normal input, not a grey bar
@@ -76,7 +77,7 @@ test('locality map explains a result, speaks English and fits the dark theme', a
 });
 
 test('zooming the locality map never scrolls the page', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'en',level:'expert',hintDismissed:true})));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 1 } })); return JSON.stringify(o); })({lang:'en',level:'expert',hintDismissed:true})));
   await page.route('https://tiles.openfreemap.org/**', route => route.abort());
   await page.goto('/');
   await page.getByRole('tab', {name:'Localities',exact:true}).click();
@@ -96,7 +97,7 @@ test('zooming the locality map never scrolls the page', async ({ page }) => {
 
 
 test('2006 Hebrew map explains name placement and lists only the five unplaced localities', async ({page}) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'he',level:'expert',hintDismissed:true})));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 1 } })); return JSON.stringify(o); })({lang:'he',level:'expert',hintDismissed:true})));
   await page.route('https://tiles.openfreemap.org/**', route => route.abort());
   await page.goto('/');
   await choose(page.getByRole('button', {name:'בחירות',exact:true}), 'k17');
@@ -106,7 +107,7 @@ test('2006 Hebrew map explains name placement and lists only the five unplaced l
   await page.getByRole('button', {name:'התאמת מיקומים ב־2006',exact:true}).click();
   await expect(page.getByText('מיקומי 2006 הותאמו לפי השם העברי לסמל יישוב יחיד של הלמ״ס. שורות ללא התאמה או עם התאמה עמומה אינן ממוקמות.')).toBeVisible();
   await page.keyboard.press('Escape');
-  const missing = page.locator('.locality-map-tool details');
+  const missing = page.locator('.locality-map-tool details').filter({has:page.getByText('שורות ללא מיקום במפה',{exact:true})});
   await missing.locator('summary').click();
   await expect(missing.locator('li')).toHaveCount(5);
   for(const name of ['דלתון','חברון','נווה אילן','סנסנה','שושנת העמקים']) await expect(missing).toContainText(name);
@@ -117,7 +118,7 @@ test('2006 Hebrew map explains name placement and lists only the five unplaced l
 
 
 test('vector background loads after removing provider labels and boundaries', async ({page}) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'en',level:'expert',hintDismissed:true})));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: {theme?:string;hintDismissed?:boolean;[k:string]:unknown})=>{if(!sessionStorage.getItem('seeded-settings')){sessionStorage.setItem('seeded-settings','1');localStorage.setItem('israel-elections:settings',JSON.stringify({v:2,values:{theme:o.theme??'light',starterTip:false,decimals:1}}));}return JSON.stringify(o);})({lang:'en',level:'expert',hintDismissed:true})));
   await page.route('https://tiles.openfreemap.org/styles/*', route => route.fulfill({json:{
     version:8, sources:{}, layers:[{id:'background',type:'background',paint:{'background-color':'#dde2e7'}},
       {id:'provider-place',type:'symbol',source:'missing'}, {id:'boundary_2',type:'line',source:'missing','source-layer':'boundary'}]
@@ -126,7 +127,7 @@ test('vector background loads after removing provider labels and boundaries', as
   await page.getByRole('tab', {name:'Localities',exact:true}).click();
   await expect(page.locator('.maplibregl-canvas')).toBeVisible();
   await expect(page.locator('.locality-map-label').filter({hasText:'Jerusalem'})).toHaveCount(1);
-  await expect(page.getByText('Lines and areas',{exact:true})).toBeVisible();
+  await expect(page.locator('.locality-boundary-disclosure > summary')).toBeVisible();
   await expect(page.locator('.locality-map-legend')).toContainText('Tie / unassigned / no votes');
   await expect(page.getByText('The background map could not load; the locality dots still work.')).toHaveCount(0);
 });
@@ -136,7 +137,7 @@ test('WebGL unavailable leaves labels/search usable and cleans up when leaving t
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.addInitScript(() => {
-    localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'en',level:'expert',hintDismissed:true}));
+    localStorage.setItem('israel-elections:v1', ((o: {theme?:string;hintDismissed?:boolean;[k:string]:unknown})=>{if(!sessionStorage.getItem('seeded-settings')){sessionStorage.setItem('seeded-settings','1');localStorage.setItem('israel-elections:settings',JSON.stringify({v:2,values:{theme:o.theme??'light',starterTip:false,decimals:1}}));}return JSON.stringify(o);})({lang:'en',level:'expert',hintDismissed:true}));
     const original = HTMLCanvasElement.prototype.getContext;
     HTMLCanvasElement.prototype.getContext = function(this: HTMLCanvasElement, type: string, ...args: unknown[]) {
       if (type.includes('webgl')) return null;
@@ -155,17 +156,17 @@ test('WebGL unavailable leaves labels/search usable and cleans up when leaving t
 
 
 test('boundaries have independent controls, hatch geometry, source and snapshot info', async ({page}) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'en',level:'expert',hintDismissed:true})));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: {theme?:string;hintDismissed?:boolean;[k:string]:unknown})=>{if(!sessionStorage.getItem('seeded-settings')){sessionStorage.setItem('seeded-settings','1');localStorage.setItem('israel-elections:settings',JSON.stringify({v:2,values:{theme:o.theme??'light',starterTip:false,decimals:1}}));}return JSON.stringify(o);})({lang:'en',level:'expert',hintDismissed:true})));
   await page.route('https://tiles.openfreemap.org/**',route=>route.abort());
   await page.goto('/');await page.getByRole('tab',{name:'Localities',exact:true}).click();
   const legend=page.getByRole('group',{name:'Lines and areas',exact:true});
-  await expect(legend.getByRole('checkbox')).toHaveCount(10);
+  await expect(legend.getByRole('checkbox')).toHaveCount(12);
   await expect(page.locator('.leaflet-verified-lines-pane path')).not.toHaveCount(0);
   await expect(page.locator('.leaflet-verified-lines-pane pattern')).toHaveCount(2);
   const before=await page.locator('.leaflet-verified-lines-pane path').count();
   await legend.getByRole('checkbox',{name:'Armistice lines · Judea and Samaria',exact:true}).uncheck();
   await expect.poll(()=>page.locator('.leaflet-verified-lines-pane path').count()).toBeLessThan(before);
-  await expect(legend.getByRole('checkbox',{name:'Lebanon · Blue Line (partial)',exact:true})).toBeChecked();
+  await expect(legend.getByRole('checkbox',{name:'Lebanon · Blue Line',exact:true})).toBeChecked();
   await legend.getByRole('button',{name:'Israel–Gaza Strip boundary',exact:true}).click();
   await expect(page.getByText('Geometry snapshot:',{exact:false})).toBeVisible();
   await expect(page.getByRole('link',{name:'UN · S/1471 (1950)',exact:true})).toHaveAttribute('href','https://www.un.org/unispal/document/auto-insert-183322/');
@@ -175,7 +176,7 @@ test('boundaries have independent controls, hatch geometry, source and snapshot 
 test('selection and zoom can be followed immediately by leaving and remounting the map', async ({page}) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'en',level:'expert',hintDismissed:true})));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: {theme?:string;hintDismissed?:boolean;[k:string]:unknown})=>{if(!sessionStorage.getItem('seeded-settings')){sessionStorage.setItem('seeded-settings','1');localStorage.setItem('israel-elections:settings',JSON.stringify({v:2,values:{theme:o.theme??'light',starterTip:false,decimals:1}}));}return JSON.stringify(o);})({lang:'en',level:'expert',hintDismissed:true})));
   await page.route('https://tiles.openfreemap.org/**', route => route.abort());
   await page.goto('/');
   for (const width of [1500,390,1024]) {
@@ -196,7 +197,7 @@ test('selection and zoom can be followed immediately by leaving and remounting t
 });
 
 test('source precision hides approximate lines while locality detail and treaty disclaimers remain available',async({page})=>{
- await page.addInitScript(()=>localStorage.setItem('israel-elections:v1',JSON.stringify({lang:'en',theme:'dark',level:'expert',hintDismissed:true})));
+ await page.addInitScript(()=>localStorage.setItem('israel-elections:v1',((o: {theme?:string;hintDismissed?:boolean;[k:string]:unknown})=>{if(!sessionStorage.getItem('seeded-settings')){sessionStorage.setItem('seeded-settings','1');localStorage.setItem('israel-elections:settings',JSON.stringify({v:2,values:{theme:o.theme??'light',starterTip:false,decimals:1}}));}return JSON.stringify(o);})({lang:'en',theme:'dark',level:'expert',hintDismissed:true})));
  await page.route('https://tiles.openfreemap.org/**',route=>route.abort());
  await page.goto('/');await page.getByRole('tab',{name:'Localities',exact:true}).click();
  const paths=page.locator('.leaflet-verified-lines-pane svg > g path');await expect(paths.first()).toBeAttached();
@@ -213,11 +214,30 @@ test('source precision hides approximate lines while locality detail and treaty 
 });
 
 test('crossing a source precision limit keeps the map and zoom control in place',async({page})=>{
- await page.addInitScript(()=>localStorage.setItem('israel-elections:v1',JSON.stringify({lang:'en',level:'expert',hintDismissed:true})));
+ await page.addInitScript(()=>localStorage.setItem('israel-elections:v1',((o: {theme?:string;hintDismissed?:boolean;[k:string]:unknown})=>{if(!sessionStorage.getItem('seeded-settings')){sessionStorage.setItem('seeded-settings','1');localStorage.setItem('israel-elections:settings',JSON.stringify({v:2,values:{theme:o.theme??'light',starterTip:false,decimals:1}}));}return JSON.stringify(o);})({lang:'en',level:'expert',hintDismissed:true})));
  await page.route('https://tiles.openfreemap.org/**',route=>route.abort());await page.setViewportSize({width:390,height:1000});
  await page.goto('/');await page.getByRole('tab',{name:'Localities',exact:true}).click();
  const map=page.locator('.locality-map-canvas');await map.scrollIntoViewIfNeeded();
  const y=(await map.boundingBox())!.y;const zoom=page.getByRole('button',{name:'Zoom in',exact:true});
  for(let i=0;i<5;i++){await zoom.click();await expect.poll(async()=>(await map.boundingBox())!.y).toBe(y);}
  await expect(page.getByText('Some approximate lines are hidden at this zoom. Zoom out to see them.',{exact:false})).toBeVisible();
+});
+
+
+test('Hebrew map references remain isolated LTR and the phone legend is collapsed',async({page})=>{
+ await page.addInitScript(()=>localStorage.setItem('israel-elections:v1',((o: {theme?:string;hintDismissed?:boolean;[k:string]:unknown})=>{if(!sessionStorage.getItem('seeded-settings')){sessionStorage.setItem('seeded-settings','1');localStorage.setItem('israel-elections:settings',JSON.stringify({v:2,values:{theme:o.theme??'light',starterTip:false,decimals:1}}));}return JSON.stringify(o);})({lang:'he',level:'expert',hintDismissed:true})));
+ await page.route('https://tiles.openfreemap.org/**',route=>route.abort());
+ await page.setViewportSize({width:390,height:1000});await page.goto('/');
+ await page.getByRole('tab',{name:'יישובים',exact:true}).click();
+ const disclosure=page.locator('.locality-boundary-disclosure');await expect(disclosure).not.toHaveAttribute('open');
+ await disclosure.locator('summary').click();
+ await page.getByRole('button',{name:'קווי שביתת הנשק · יהודה ושומרון',exact:true}).click();
+ const pop=page.locator('.pop').last();
+ await expect(pop.locator('bdi[dir="ltr"]').filter({hasText:'V(1)(b)'})).toBeVisible();
+ await expect(pop.locator('bdi[dir="ltr"]').filter({hasText:'±60'})).toBeVisible();
+ await page.keyboard.press('Escape');
+ await page.getByRole('button',{name:'ירדן · הקו מול יהודה ושומרון',exact:true}).click();
+ await expect(pop).toContainText('1994 · נספח I(א) 2.A.7');
+ await expect(pop.locator('bdi[dir="ltr"]').filter({hasText:'I(א) 2.A.7'})).toBeVisible();
+ await expect(pop).toContainText('ומפות ההדמאה');await expect(pop).not.toContainText('Annex');
 });

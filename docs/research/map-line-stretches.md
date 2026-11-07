@@ -16,7 +16,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 3, OSM to OCHA: `[35.229096509060795, 32.546302082793055]` → `[35.2312060921677, 32.543332594396]`; max 142.0 m.
   - Continuous portion 4, OSM to OCHA: `[35.23165666178485, 32.54264920387429]` → `[35.2409656, 32.5325519]`; max 171.0 m.
   - Continuous portion 5, OSM to OCHA: `[35.2409656, 32.5325519]` → `[35.243709655491216, 32.530357566872]`; max 163.4 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 2
@@ -31,7 +31,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 5, OSM to OCHA: `[35.1892871, 32.5262341]` → `[35.2046865, 32.5410395]`; max 576.7 m.
   - Continuous portion 6, OSM to OCHA: `[35.2091551, 32.542520599999996]` → `[35.22386539358935, 32.5518434473597]`; max 482.5 m.
   - Continuous portion 7, OSM to OCHA: `[35.2046865, 32.5410395]` → `[35.2091551, 32.542520599999996]`; max 326.4 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 3
@@ -41,7 +41,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.2492108489909, 32.52699377596606]` → `[35.263339403486434, 32.51999427245994]`; max 216.0 m.
   - Continuous portion 2, OSM to OCHA: `[35.248559558744546, 32.526271590714906]` → `[35.26282228485086, 32.51920257827108]`; max 216.5 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 4
@@ -52,7 +52,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 1, OCHA to OSM: `[35.26926863946971, 32.517772357231536]` → `[35.364349930460904, 32.51800858433147]`; max 536.6 m.
   - Continuous portion 2, OSM to OCHA: `[35.3085243, 32.51051089999999]` → `[35.36398815503734, 32.517145898544406]`; max 544.4 m.
   - Continuous portion 3, OSM to OCHA: `[35.268938147585814, 32.51690551585354]` → `[35.3085243, 32.51051089999999]`; max 316.2 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 5
@@ -62,7 +62,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.37879763985671, 32.51153440965845]` → `[35.40241779481223, 32.50226973313762]`; max 384.3 m.
   - Continuous portion 2, OSM to OCHA: `[35.37834569250421, 32.510710632094714]` → `[35.4018225295003, 32.50137547096572]`; max 438.7 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 6
@@ -72,7 +72,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.15698131012034, 32.5041188563707]` → `[35.16136324221786, 32.50687387378933]`; max 172.4 m.
   - Continuous portion 2, OSM to OCHA: `[35.15738849061116, 32.503281863176966]` → `[35.16220283000536, 32.506300787489614]`; max 177.2 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 7
@@ -82,7 +82,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.140876188275534, 32.497223203891956]` → `[35.15133069400057, 32.501214730314985]`; max 221.5 m.
   - Continuous portion 2, OSM to OCHA: `[35.141185322105045, 32.496320267158]` → `[35.151870148240555, 32.50043450578888]`; max 225.7 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 8
@@ -94,7 +94,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 2, OCHA to OSM: `[35.406347372225, 32.49324580917986]` → `[35.40627274257228, 32.49153355417341]`; max 113.8 m.
   - Continuous portion 3, OSM to OCHA: `[35.40411130025608, 32.4954741982408]` → `[35.4052629458875, 32.49333664985284]`; max 151.8 m.
   - Continuous portion 4, OSM to OCHA: `[35.40527831630067, 32.49322872706485]` → `[35.40519909338163, 32.491496771424686]`; max 114.8 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 9
@@ -105,7 +105,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 1, OCHA to OSM: `[35.40679659279253, 32.489961613607115]` → `[35.42004731963819, 32.46242539171897]`; max 605.3 m.
   - Continuous portion 2, OSM to OCHA: `[35.4189469, 32.4623438]` → `[35.418958395785396, 32.46231800875978]`; max 101.4 m.
   - Continuous portion 3, OSM to OCHA: `[35.40578900985031, 32.48966599633264]` → `[35.4189469, 32.4623438]`; max 606.1 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 10
@@ -118,7 +118,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 3, OSM to OCHA: `[35.083155, 32.4681846]` → `[35.098968, 32.478098200000005]`; max 431.4 m.
   - Continuous portion 4, OSM to OCHA: `[35.0792625, 32.4650534]` → `[35.083155, 32.4681846]`; max 258.8 m.
   - Continuous portion 5, OSM to OCHA: `[35.07613530529831, 32.46232417774462]` → `[35.0792625, 32.4650534]`; max 208.7 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 11
@@ -127,7 +127,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Maximum sampled deviation: **110.6 m** at `[35.4202974, 32.4588294]`.
 - Directions: OSM to OCHA.
   - Continuous portion 1, OSM to OCHA: `[35.42024425496027, 32.45901569239965]` → `[35.42013917426447, 32.45870870135774]`; max 110.6 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 12
@@ -137,7 +137,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.41807738357329, 32.45614292834557]` → `[35.41705164597828, 32.45370787000422]`; max 165.3 m.
   - Continuous portion 2, OSM to OCHA: `[35.41721247091163, 32.45677011325128]` → `[35.41600984953513, 32.45389583704953]`; max 174.8 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 13
@@ -148,7 +148,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 1, OCHA to OSM: `[35.069173192464845, 32.45344288887974]` → `[35.07141516975739, 32.45706362175685]`; max 250.5 m.
   - Continuous portion 2, OSM to OCHA: `[35.06979795437804, 32.452633064498585]` → `[35.0734558, 32.45587150000001]`; max 251.1 m.
   - Continuous portion 3, OSM to OCHA: `[35.0734558, 32.45587150000001]` → `[35.07259396819789, 32.45702878255548]`; max 231.3 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 14
@@ -158,7 +158,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.06302160073294, 32.441122511174854]` → `[35.06444929536777, 32.447846462742376]`; max 255.3 m.
   - Continuous portion 2, OSM to OCHA: `[35.064076904904475, 32.440746655594104]` → `[35.06551321589, 32.44751104673657]`; max 259.0 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 15
@@ -168,7 +168,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.06110739210834, 32.43131847097867]` → `[35.06300868159443, 32.437595631500976]`; max 149.6 m.
   - Continuous portion 2, OSM to OCHA: `[35.0600758247629, 32.43155650723164]` → `[35.062009064945606, 32.43837142476967]`; max 185.5 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 16
@@ -178,7 +178,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.05803493750714, 32.42414671200226]` → `[35.06062045318089, 32.42846433574435]`; max 196.4 m.
   - Continuous portion 2, OSM to OCHA: `[35.05707984946884, 32.424684014579114]` → `[35.05962165661415, 32.4287805355521]`; max 186.6 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 17
@@ -192,7 +192,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 4, OSM to OCHA: `[35.4294166, 32.41018129999999]` → `[35.45288631745469, 32.41296677446602]`; max 792.6 m.
   - Continuous portion 5, OSM to OCHA: `[35.45350591007376, 32.41300500068129]` → `[35.45689654807456, 32.41313857851137]`; max 136.1 m.
   - Continuous portion 6, OSM to OCHA: `[35.4269024, 32.41204209999999]` → `[35.4294166, 32.41018129999999]`; max 400.0 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 18
@@ -202,7 +202,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.45887060005893, 32.41390834912694]` → `[35.48280444904836, 32.41007301810848]`; max 236.1 m.
   - Continuous portion 2, OSM to OCHA: `[35.45862768576488, 32.41302048321252]` → `[35.4821278679338, 32.409368625467266]`; max 230.1 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 19
@@ -212,7 +212,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.054465201594944, 32.418885189090126]` → `[35.05604648938315, 32.42104126326331]`; max 179.0 m.
   - Continuous portion 2, OSM to OCHA: `[35.05520495421474, 32.41820696684157]` → `[35.057190638237806, 32.420896540702856]`; max 187.5 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 20
@@ -222,7 +222,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.48538677619531, 32.40839088469701]` → `[35.4867063668708, 32.40743939292698]`; max 111.6 m.
   - Continuous portion 2, OSM to OCHA: `[35.484688776085946, 32.40770635669441]` → `[35.485848247784205, 32.406870056375695]`; max 109.7 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 21
@@ -231,7 +231,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Maximum sampled deviation: **114.2 m** at `[35.0551408, 32.4119004]`.
 - Directions: OSM to OCHA.
   - Continuous portion 1, OSM to OCHA: `[35.0551559916691, 32.41150994367664]` → `[35.05491020463398, 32.412052896825216]`; max 114.2 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 22
@@ -241,7 +241,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.490452435083824, 32.40449896442111]` → `[35.49318423342565, 32.40318641224548]`; max 116.4 m.
   - Continuous portion 2, OSM to OCHA: `[35.48985537245173, 32.403742251878164]` → `[35.4927452142251, 32.40236520671455]`; max 119.0 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 23
@@ -251,7 +251,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.49584225598404, 32.40221094025569]` → `[35.50128947571433, 32.400894449211656]`; max 125.6 m.
   - Continuous portion 2, OSM to OCHA: `[35.49545698797527, 32.401370400461886]` → `[35.50108380842746, 32.39999491165349]`; max 125.0 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 24
@@ -261,7 +261,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.50495358448758, 32.40004058240414]` → `[35.50632562681301, 32.39978340210816]`; max 104.7 m.
   - Continuous portion 2, OSM to OCHA: `[35.504667042506576, 32.39916425612084]` → `[35.50605552359278, 32.398911302903706]`; max 104.4 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 25
@@ -271,7 +271,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.05536355506218, 32.405189470464265]` → `[35.055622347956024, 32.4072704749406]`; max 121.8 m.
   - Continuous portion 2, OSM to OCHA: `[35.05434259002646, 32.40555280605029]` → `[35.05455413751837, 32.407234287590725]`; max 121.0 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 26
@@ -281,7 +281,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.511281538301525, 32.39857746314224]` → `[35.53492369171427, 32.39198705231403]`; max 257.1 m.
   - Continuous portion 2, OSM to OCHA: `[35.51109416639034, 32.39768859152611]` → `[35.53438970888244, 32.391190468613026]`; max 258.1 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 27
@@ -291,7 +291,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.05246580318962, 32.40269451378351]` → `[35.052655802328744, 32.402917193327816]`; max 102.9 m.
   - Continuous portion 2, OSM to OCHA: `[35.053393252500776, 32.4022473931796]` → `[35.053446272974654, 32.40230788507954]`; max 100.0 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 28
@@ -303,7 +303,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 2, OCHA to OSM: `[35.54626714342651, 32.38935522401552]` → `[35.55226772300006, 32.39180159600005]`; max 333.5 m.
   - Continuous portion 3, OSM to OCHA: `[35.53570489596345, 32.390370245647325]` → `[35.54611503984119, 32.38834762616579]`; max 289.6 m.
   - Continuous portion 4, OSM to OCHA: `[35.54651924204828, 32.38846797658538]` → `[35.5549603, 32.38901729999999]`; max 392.6 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 29
@@ -316,7 +316,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 3, OSM to OCHA: `[35.04561622528422, 32.389574682117384]` → `[35.04785, 32.39163680000001]`; max 208.0 m.
   - Continuous portion 4, OSM to OCHA: `[35.04785, 32.39163680000001]` → `[35.0493944237095, 32.39690620081552]`; max 211.3 m.
   - Continuous portion 5, OSM to OCHA: `[35.04943838637216, 32.39697348369261]` → `[35.049761683771, 32.39735416906948]`; max 103.1 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 30
@@ -327,7 +327,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 1, OCHA to OSM: `[35.04590782014204, 32.37826873460162]` → `[35.043108558105104, 32.38314930214361]`; max 309.4 m.
   - Continuous portion 2, OSM to OCHA: `[35.04531482483775, 32.37739446612391]` → `[35.0417232, 32.37769610000001]`; max 364.3 m.
   - Continuous portion 3, OSM to OCHA: `[35.0417232, 32.37769610000001]` → `[35.04199174827612, 32.38343330693528]`; max 366.7 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 31
@@ -337,7 +337,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.048259619437275, 32.375181332132414]` → `[35.047483757526464, 32.3761160827913]`; max 135.1 m.
   - Continuous portion 2, OSM to OCHA: `[35.04924016467649, 32.37559997166189]` → `[35.048362783196055, 32.376803994830865]`; max 151.8 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 32
@@ -347,7 +347,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.040697055699994, 32.35629252446628]` → `[35.04964212555703, 32.36980550103999]`; max 310.7 m.
   - Continuous portion 2, OSM to OCHA: `[35.041867349538094, 32.356202992338964]` → `[35.05073061258561, 32.369911431976554]`; max 351.3 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 33
@@ -357,7 +357,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.02712937848383, 32.344059420240626]` → `[35.04119885051528, 32.34897107867791]`; max 467.9 m.
   - Continuous portion 2, OSM to OCHA: `[35.028244568694085, 32.34433678182929]` → `[35.042403577925064, 32.348442133333634]`; max 356.1 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 34
@@ -367,7 +367,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.01875972076302, 32.341060832953346]` → `[35.020078877322156, 32.341725461620534]`; max 155.5 m.
   - Continuous portion 2, OSM to OCHA: `[35.0197455375419, 32.34051303672702]` → `[35.02026714585708, 32.340768723572694]`; max 119.2 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 35
@@ -378,7 +378,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 1, OCHA to OSM: `[35.02551229969583, 32.33898567831587]` → `[35.0263664444876, 32.33908816479911]`; max 108.3 m.
   - Continuous portion 2, OSM to OCHA: `[35.025898799724246, 32.33994320591401]` → `[35.02615395288073, 32.3399728632639]`; max 101.9 m.
   - Continuous portion 3, OSM to OCHA: `[35.026227294340124, 32.339988905724866]` → `[35.02637346634157, 32.340020878744504]`; max 101.0 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 36
@@ -388,7 +388,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.01749326298585, 32.332694726253514]` → `[35.01802040832994, 32.3384384576476]`; max 145.6 m.
   - Continuous portion 2, OSM to OCHA: `[35.016432188501774, 32.33277817034873]` → `[35.016967571164145, 32.33891769233162]`; max 145.2 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 37
@@ -399,7 +399,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 1, OCHA to OSM: `[35.01189743501193, 32.295697947862614]` → `[35.014574228411746, 32.31403386805247]`; max 186.1 m.
   - Continuous portion 2, OSM to OCHA: `[35.01302870336986, 32.296047184485396]` → `[35.0156806, 32.3118048]`; max 185.8 m.
   - Continuous portion 3, OSM to OCHA: `[35.0156806, 32.3118048]` → `[35.01563793814901, 32.314006464405146]`; max 140.2 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 38
@@ -409,7 +409,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.01107712272548, 32.284211078693545]` → `[35.01430036074587, 32.29201583506639]`; max 183.6 m.
   - Continuous portion 2, OSM to OCHA: `[35.0101679721738, 32.2846865703301]` → `[35.013190145765456, 32.29203351330109]`; max 171.8 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 39
@@ -419,7 +419,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.01935221063492, 32.28059971054196]` → `[35.010601258928396, 32.28209622607774]`; max 228.0 m.
   - Continuous portion 2, OSM to OCHA: `[35.01867563498095, 32.27984357555216]` → `[35.009435971126514, 32.28180114804031]`; max 214.7 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 40
@@ -432,7 +432,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 3, OSM to OCHA: `[35.0239033, 32.24866839999999]` → `[35.02384540975321, 32.25480523019154]`; max 277.2 m.
   - Continuous portion 4, OSM to OCHA: `[35.02419353942159, 32.25574857881123]` → `[35.02894396541769, 32.26844880538567]`; max 316.6 m.
   - Continuous portion 5, OSM to OCHA: `[35.0225383567022, 32.246783990010734]` → `[35.0239033, 32.24866839999999]`; max 238.9 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 41
@@ -442,7 +442,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.02062971273569, 32.24133335302162]` → `[35.02095214994267, 32.24308270105384]`; max 145.5 m.
   - Continuous portion 2, OSM to OCHA: `[35.01953301520328, 32.24121641658244]` → `[35.01992589432866, 32.2434239999999]`; max 151.7 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 42
@@ -452,7 +452,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.011460818324295, 32.234099063553074]` → `[35.01875025452901, 32.236067487701696]`; max 217.2 m.
   - Continuous portion 2, OSM to OCHA: `[35.01229647727376, 32.23338565276357]` → `[35.01981348089226, 32.235554524121255]`; max 274.8 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 43
@@ -467,7 +467,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 5, OSM to OCHA: `[34.959378219834406, 32.193386515270916]` → `[34.96999496551145, 32.20082371929898]`; max 271.6 m.
   - Continuous portion 6, OSM to OCHA: `[34.971072408451015, 32.20082601180316]` → `[34.9797431, 32.2034148]`; max 268.7 m.
   - Continuous portion 7, OSM to OCHA: `[35.0072087, 32.2266072]` → `[35.00868911747546, 32.228394162457995]`; max 141.7 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 44
@@ -479,7 +479,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 2, OSM to OCHA: `[34.97339966214198, 32.16278155353246]` → `[34.96454574917266, 32.17286316478264]`; max 443.3 m.
   - Continuous portion 3, OSM to OCHA: `[34.96315638863452, 32.173471238908434]` → `[34.958751235106455, 32.18027910182297]`; max 182.9 m.
   - Continuous portion 4, OCHA to OSM: `[34.96364949708288, 32.174322793658035]` → `[34.959775107074506, 32.18056246070277]`; max 179.6 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 45
@@ -489,7 +489,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[34.97537536001581, 32.156599931895315]` → `[34.97474977780997, 32.160183015642005]`; max 240.9 m.
   - Continuous portion 2, OSM to OCHA: `[34.97668079124998, 32.156634848858715]` → `[34.97581615831053, 32.160476174273136]`; max 248.4 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 46
@@ -499,7 +499,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[34.98565531765842, 32.14942859547904]` → `[34.976129880925974, 32.15412426437274]`; max 315.1 m.
   - Continuous portion 2, OSM to OCHA: `[34.98504284764041, 32.14853755676735]` → `[34.97501044638721, 32.154240376148564]`; max 338.4 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 47
@@ -511,7 +511,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 2, OCHA to OSM: `[34.98826950336193, 32.14384860917314]` → `[34.98744561173582, 32.145194665586814]`; max 116.0 m.
   - Continuous portion 3, OSM to OCHA: `[34.99006752787795, 32.1427710181913]` → `[34.989296905075776, 32.144108426107955]`; max 107.5 m.
   - Continuous portion 4, OSM to OCHA: `[34.98919731998658, 32.144289235255236]` → `[34.98847174084253, 32.14548239878646]`; max 113.5 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 48
@@ -523,7 +523,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 2, OSM to OCHA: `[34.98745500651305, 32.1357231243167]` → `[34.9876269, 32.137729799999995]`; max 207.4 m.
   - Continuous portion 3, OSM to OCHA: `[34.9876269, 32.137729799999995]` → `[34.9875258, 32.13861159999999]`; max 217.8 m.
   - Continuous portion 4, OSM to OCHA: `[34.9875258, 32.13861159999999]` → `[34.98878602550444, 32.13858773973346]`; max 217.8 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 49
@@ -534,7 +534,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 1, OCHA to OSM: `[34.98790617874407, 32.11859638805277]` → `[34.98754051485413, 32.119490531374694]`; max 109.3 m.
   - Continuous portion 2, OSM to OCHA: `[34.9886263, 32.1197282]` → `[34.988501769186925, 32.11988837605328]`; max 105.6 m.
   - Continuous portion 3, OSM to OCHA: `[34.98893683381117, 32.118843661353544]` → `[34.9886263, 32.1197282]`; max 110.4 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 50
@@ -548,7 +548,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 4, OSM to OCHA: `[34.9935901, 32.1072909]` → `[34.993493575762535, 32.109988689804666]`; max 142.6 m.
   - Continuous portion 5, OSM to OCHA: `[34.99327365015665, 32.1107483629494]` → `[34.99178425346149, 32.113174932591384]`; max 163.7 m.
   - Continuous portion 6, OSM to OCHA: `[34.99272401059597, 32.10609787545542]` → `[34.99322, 32.1064223]`; max 131.3 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 51
@@ -557,7 +557,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Maximum sampled deviation: **116.7 m** at `[34.9910617, 32.10236170000001]`.
 - Directions: OSM to OCHA.
   - Continuous portion 1, OSM to OCHA: `[34.990765741580034, 32.102255212548975]` → `[34.991003001772526, 32.10255959430688]`; max 116.7 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 52
@@ -567,7 +567,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[34.987476348315624, 32.099483380928326]` → `[34.98819642134937, 32.10049125756691]`; max 128.5 m.
   - Continuous portion 2, OSM to OCHA: `[34.986383806544744, 32.09968965085427]` → `[34.98739583646166, 32.101106196590216]`; max 153.8 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 53
@@ -577,7 +577,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[34.98647634673995, 32.08615781669369]` → `[34.984947608207726, 32.08816223234135]`; max 156.1 m.
   - Continuous portion 2, OSM to OCHA: `[34.9874566345324, 32.086525287794984]` → `[34.985301204175684, 32.08921911310761]`; max 213.0 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 54
@@ -590,7 +590,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 3, OSM to OCHA: `[34.99526350000001, 32.063657500000005]` → `[34.9912371, 32.0746535]`; max 273.6 m.
   - Continuous portion 4, OSM to OCHA: `[34.9912371, 32.0746535]` → `[34.98946788468846, 32.08023383801537]`; max 271.4 m.
   - Continuous portion 5, OSM to OCHA: `[35.00090072780392, 32.0475267918479]` → `[34.99961600000001, 32.0518565]`; max 173.9 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 55
@@ -600,7 +600,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.00246553295109, 32.03560648633382]` → `[35.002381213243844, 32.03649604806308]`; max 103.5 m.
   - Continuous portion 2, OSM to OCHA: `[35.00351867794379, 32.03570084991488]` → `[35.00344176384297, 32.0365123823448]`; max 103.1 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 56
@@ -611,7 +611,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 1, OCHA to OSM: `[34.99820476201684, 32.000011846775415]` → `[35.00265207130335, 32.033638487792224]`; max 648.7 m.
   - Continuous portion 2, OSM to OCHA: `[35.0038508, 32.0199891]` → `[35.00371144996879, 32.033666837898245]`; max 391.9 m.
   - Continuous portion 3, OSM to OCHA: `[34.99925486196039, 32.00027293896001]` → `[35.0038508, 32.0199891]`; max 648.0 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 57
@@ -938,7 +938,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.16146824140222, 31.742667821106565]` → `[35.15721402352589, 31.7412631960125]`; max 262.8 m.
   - Continuous portion 2, OSM to OCHA: `[35.15644570425159, 31.741975052306348]` → `[35.16192874927995, 31.743704376254385]`; max 301.5 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 87
@@ -948,7 +948,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.15378762844918, 31.739573012277802]` → `[35.15076824920312, 31.737563482212533]`; max 164.8 m.
   - Continuous portion 2, OSM to OCHA: `[35.15115405431693, 31.736690620883408]` → `[35.15460921328368, 31.738984953431213]`; max 168.6 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 88
@@ -961,7 +961,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 3, OCHA to OSM: `[35.135310895105995, 31.732844222106017]` → `[35.13368306995537, 31.733113969605043]`; max 155.7 m.
   - Continuous portion 4, OSM to OCHA: `[35.136385912142394, 31.7317029055703]` → `[35.14571819096294, 31.733548144717567]`; max 466.6 m.
   - Continuous portion 5, OSM to OCHA: `[35.133337280907625, 31.733981093224955]` → `[35.1364134, 31.7337553]`; max 171.5 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 89
@@ -972,7 +972,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 1, OCHA to OSM: `[35.121853102337724, 31.72345650340202]` → `[35.11313937602422, 31.715067448524387]`; max 383.0 m.
   - Continuous portion 2, OSM to OCHA: `[35.11320362185279, 31.71413017307132]` → `[35.1164331, 31.713716499999993]`; max 249.2 m.
   - Continuous portion 3, OSM to OCHA: `[35.1164331, 31.713716499999993]` → `[35.12273598263309, 31.72295117143481]`; max 395.0 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 90
@@ -982,7 +982,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.10972995026222, 31.71403443415803]` → `[35.10491844850543, 31.71211420145949]`; max 211.5 m.
   - Continuous portion 2, OSM to OCHA: `[35.10426061844831, 31.712844165612765]` → `[35.10970353600638, 31.7149831830475]`; max 212.0 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 91
@@ -992,7 +992,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.08359492381528, 31.693241559188742]` → `[35.07956544035487, 31.689378740313405]`; max 248.1 m.
   - Continuous portion 2, OSM to OCHA: `[35.08021785788496, 31.6886413819796]` → `[35.08464883248003, 31.69289575825108]`; max 313.7 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 92
@@ -1002,7 +1002,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.0763075764573, 31.68607456924299]` → `[35.061339001212005, 31.677393182792805]`; max 197.4 m.
   - Continuous portion 2, OSM to OCHA: `[35.06077398849622, 31.67815624707202]` → `[35.075635380371864, 31.686791863183956]`; max 197.7 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 93
@@ -1012,7 +1012,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.0458601655938, 31.670284250751298]` → `[35.01068907862815, 31.655206821840938]`; max 414.3 m.
   - Continuous portion 2, OSM to OCHA: `[35.0111593349814, 31.654367966164532]` → `[35.04633944072384, 31.66946883442014]`; max 414.3 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 94
@@ -1022,7 +1022,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[34.96088258743704, 31.601607199390454]` → `[34.94699662717265, 31.572417157860468]`; max 320.5 m.
   - Continuous portion 2, OSM to OCHA: `[34.945948791989224, 31.57256212502539]` → `[34.960006839257254, 31.602127373175787]`; max 323.9 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 95
@@ -1032,7 +1032,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[34.94643779381985, 31.566518938422625]` → `[34.94336256193914, 31.49970122204813]`; max 562.4 m.
   - Continuous portion 2, OSM to OCHA: `[34.94234533330768, 31.49995399841441]` → `[34.94538329017063, 31.566507130395514]`; max 556.5 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 96
@@ -1042,7 +1042,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.42796465440832, 31.4971946783132]` → `[35.4432527064469, 31.497385685281365]`; max 147.3 m.
   - Continuous portion 2, OSM to OCHA: `[35.443244454445, 31.49648364939493]` → `[35.42800582237871, 31.49629282660965]`; max 147.0 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 97
@@ -1052,7 +1052,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.4551749664307, 31.49728910445832]` → `[35.47531014300006, 31.495222500000065]`; max 233.5 m.
   - Continuous portion 2, OSM to OCHA: `[35.476012000000004, 31.493119999999998]` → `[35.45512325015241, 31.496387746733117]`; max 242.5 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 98
@@ -1062,7 +1062,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[35.398805253900925, 31.49313284745179]` → `[35.41037644335344, 31.496072376256702]`; max 176.2 m.
   - Continuous portion 2, OSM to OCHA: `[35.410551616098786, 31.495174705957936]` → `[35.398440978356454, 31.492001796143445]`; max 175.1 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 99
@@ -1072,7 +1072,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[34.94028610568749, 31.49138678266865]` → `[34.940136320398764, 31.490966162216328]`; max 101.0 m.
   - Continuous portion 2, OSM to OCHA: `[34.93913780699225, 31.491252268058346]` → `[34.939274223352, 31.49163535776974]`; max 100.9 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 100
@@ -1082,7 +1082,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[34.935472991506145, 31.481017996867394]` → `[34.932772434939345, 31.476016308478002]`; max 105.1 m.
   - Continuous portion 2, OSM to OCHA: `[34.93182584460488, 31.476412056122157]` → `[34.93452105561929, 31.48140281283406]`; max 105.0 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 101
@@ -1094,7 +1094,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 2, OSM to OCHA: `[35.39563474786879, 31.490654006309647]` → `[35.3952076, 31.490388599999996]`; max 104.2 m.
   - Continuous portion 3, OSM to OCHA: `[35.3952076, 31.490388599999996]` → `[35.3558046, 31.4630977]`; max 315.3 m.
   - Continuous portion 4, OSM to OCHA: `[35.3558046, 31.4630977]` → `[35.2462613208543, 31.388318420515102]`; max 614.5 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 102
@@ -1105,7 +1105,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 1, OCHA to OSM: `[34.902814049228176, 31.438458764489535]` → `[34.89703680207391, 31.43004734352979]`; max 171.1 m.
   - Continuous portion 2, OSM to OCHA: `[34.9005102, 31.43782540000001]` → `[34.901979545072415, 31.439023188727322]`; max 154.5 m.
   - Continuous portion 3, OSM to OCHA: `[34.89608272879674, 31.430436853199318]` → `[34.9005102, 31.43782540000001]`; max 171.6 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 103
@@ -1115,7 +1115,7 @@ The historical interpretation is separated from the numerical observation. For o
 - Directions: OCHA to OSM, OSM to OCHA.
   - Continuous portion 1, OCHA to OSM: `[34.883638295781445, 31.40010680158707]` → `[34.90896955373226, 31.357942242369074]`; max 374.2 m.
   - Continuous portion 2, OSM to OCHA: `[34.90827822778117, 31.357241783488092]` → `[34.88259026536892, 31.400245171778955]`; max 401.5 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Judea and Samaria · 104
@@ -1131,7 +1131,7 @@ The historical interpretation is separated from the numerical observation. For o
   - Continuous portion 6, OSM to OCHA: `[34.9503931, 31.348064300000008]` → `[34.9329895, 31.3433952]`; max 676.2 m.
   - Continuous portion 7, OSM to OCHA: `[34.9329895, 31.3433952]` → `[34.9176229, 31.344923000000005]`; max 842.1 m.
   - Continuous portion 8, OSM to OCHA: `[35.24273008468396, 31.3852445503081]` → `[35.2304749, 31.3747671]`; max 339.1 m.
-- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The retained UNTS42 north sheet (1:250,000) is not a detailed positional tie-breaker; the southern sheet is missing.
+- Interpretation / depiction decision: Ordinary alignment/generalization mismatch: the products have different vertex density and local bends. No inspected evidence identifies this as a separate legal adjustment. Choose the retained detailed OSM cartographic alignment consistently; do not invent a historical explanation or interpolate between sources. The signed 1949 north/south sheets are now retained. The second-review tie-break decisions in signed-map-check.json supersede this first-pass interpretation.
 
 
 ## Gaza Strip · 1

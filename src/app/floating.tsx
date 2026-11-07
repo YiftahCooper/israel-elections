@@ -8,18 +8,20 @@ export function positionFloating(el: HTMLElement, anchor: FloatingAnchor, prefer
   const left = viewport?.offsetLeft ?? 0, top = viewport?.offsetTop ?? 0;
   const width = viewport?.width ?? innerWidth, height = viewport?.height ?? innerHeight;
   const pad = 8, gap = 6;
+  // Settings → Text size zooms the root: measurements are on screen, but lengths we set are scaled by the zoom
+  const z = parseFloat(getComputedStyle(document.documentElement).zoom) || 1, px = (v: number) => `${v / z}px`;
   Object.assign(el.style, { position: 'fixed', inset: 'auto', margin: '0', transform: 'none',
-    maxWidth: `${Math.max(0, width - pad * 2)}px`, maxHeight: `${Math.max(0, height - pad * 2)}px`, overflow: 'auto' });
+    maxWidth: px(Math.max(0, width - pad * 2)), maxHeight: px(Math.max(0, height - pad * 2)), overflow: 'auto' });
   const box = el.getBoundingClientRect();
   el.style.visibility = anchor.bottom < top || anchor.top > top + height ? 'hidden' : 'visible';
   const below = top + height - pad - anchor.bottom - gap, above = anchor.top - top - pad - gap;
   const up = preferAbove ? above >= box.height || above > below : below < box.height && above > below;
   // Tall content scrolls on its chosen side instead of covering the trigger or header controls.
-  el.style.maxHeight = `${Math.min(height - pad * 2, Math.max(80, up ? above : below))}px`;
+  el.style.maxHeight = px(Math.min(height - pad * 2, Math.max(80, up ? above : below)));
   const fitted = el.getBoundingClientRect();
   const rtl = getComputedStyle(el).direction === 'rtl';
-  el.style.left = `${Math.max(left + pad, Math.min(rtl ? anchor.right - fitted.width : anchor.left, left + width - pad - fitted.width))}px`;
-  el.style.top = `${Math.max(top + pad, Math.min(up ? anchor.top - gap - fitted.height : anchor.bottom + gap, top + height - pad - fitted.height))}px`;
+  el.style.left = px(Math.max(left + pad, Math.min(rtl ? anchor.right - fitted.width : anchor.left, left + width - pad - fitted.width)));
+  el.style.top = px(Math.max(top + pad, Math.min(up ? anchor.top - gap - fitted.height : anchor.bottom + gap, top + height - pad - fitted.height)));
 }
 
 export function useFloating(ref: RefObject<HTMLElement | null>, anchor: () => FloatingAnchor | null | undefined, open = true, managePopover = true, preferAbove = false) {

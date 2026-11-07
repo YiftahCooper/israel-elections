@@ -57,3 +57,7 @@
 .locality-boundary-entry input, .locality-boundary-entry svg { flex-shrink: 0; }
 .locality-boundary-limit { flex-basis: 100%; margin: 2px 0 0; }
 .map-treaty-quote { margin: 6px 0; padding-inline-start: 10px; border-inline-start: 2px solid var(--rule); }
+
+.locality-boundary-disclosure { margin-block: 8px; }
+.locality-boundary-disclosure > summary { cursor: pointer; font-size: 13px; font-weight: 600; min-height: 28px; }
+.locality-boundary-disclosure .locality-boundary-legend { margin-top: 0; }

@@ -1,4 +1,5 @@
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
+import {MapLineText} from './MapLineText.tsx';
 import { Info } from './ui.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { ResultPreview } from './ResultPreview.tsx';
@@ -19,6 +20,7 @@ import type { FeatureCollection } from 'geojson';
 import { MAP_LINES, MAP_LINE_SNAPSHOT, drawMapLines, mapLineSourceLabel } from '../locality-map-lines.ts';
 import { basemapAttribution } from '../locality-basemap-style.ts';
 import { fmtInt, fmtPct } from '../format.ts';
+import { useDigits } from '../store.ts';
 
 function useJson<T>(url: string | null, empty: T) {
   const [value, setValue] = useState<T>(empty);
@@ -88,7 +90,7 @@ const photonCache = new Map<string, PhotonFeature[]>();
 let lastRequest = 0;
 interface PhotonFeature { geometry: { coordinates: [number, number] }; properties: Record<string, string> }
 const GREY = '#78838c';
-const share = (v: number, whole: number) => whole > 0 ? `${(v / whole * 100).toFixed(1)}%` : '—';
+const share = (v: number, whole: number, digits: number) => whole > 0 ? fmtPct(v, whole, digits) : '—';
 let measure: CanvasRenderingContext2D | null = null;
 const textWidth = (text: string) => {
   measure ??= document.createElement('canvas').getContext('2d');
@@ -100,9 +102,12 @@ const textWidth = (text: string) => {
 export function LocalityMap({ s, data, historicalLists, locations, names, locationError }: { s: Scenario; data: LocalityDataset; historicalLists: (SimList | null)[]; locations: LocalityLocations; names: LocalityNames; locationError: boolean }) {
   const L = useL(), lang = useLang();
   const dark = useStore(st => st.theme === 'dark');
+  const [legendOpen,setLegendOpen]=useState(()=>window.matchMedia('(min-width: 700px)').matches);
+  useEffect(()=>{const media=window.matchMedia('(min-width: 700px)');const update=()=>setLegendOpen(media.matches);media.addEventListener('change',update);return()=>media.removeEventListener('change',update);},[]);
   const [lineIds, setLineIds] = useState<ReadonlySet<string>>(() => new Set(MAP_LINES.map(x=>x.id)));
   const [hiddenLines, setHiddenLines] = useState(0);
   const { value: lineData, error: lineError } = useJson(`${import.meta.env.BASE_URL}data/map-lines.geojson`, NO_LINES);
+  const digits = useDigits();
   const container = useRef<HTMLDivElement>(null), map = useRef<Leaflet.Map | null>(null);
   const [mode, setMode] = useState<'bloc' | 'list'>('bloc');
   const [q, setQ] = useState(''), [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -162,7 +167,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       const title = document.createElement('strong'); title.dir = 'auto'; title.textContent = localityName(names, p.row, p.index, lang);
       const why = document.createElement('span'); why.dir = 'auto';
       why.textContent = w.tied ? L('Tie', 'שוויון') : w.key === null ? L('Unassigned / no votes', 'ללא שיוך / ללא קולות')
-        : `${groupName(w.key)} \u2066+${(w.margin / Math.max(1, p.row.valid) * 100).toFixed(1)}\u2069${L(' pp', ' נק׳')}`;
+        : `${groupName(w.key)} \u2066+${(w.margin / Math.max(1, p.row.valid) * 100).toFixed(digits)}\u2069${L(' pp', ' נק׳')}`;
       tip.append(title, why);
       // a thin white outline separates neighbouring dots; a dark ring would darken every colour alike
       Leaflet.circleMarker([p.lat,p.lon], {radius:5, color:'#ffffff',weight:1,fillColor:w.color,fillOpacity:0.95}).bindTooltip(tip).on('click',()=>setSelectedIndex(p.index)).addTo(group);
@@ -173,7 +178,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       fittedFor.current = data;
     }
     return () => { group.remove(); };
-  }, [placed,winners,lang,data,names]);
+  }, [placed,winners,lang,data,names,digits]);
   // Same CBS/result keys as the table, both languages at every zoom. Larger localities first; no overlapping labels.
   useEffect(() => {
     const m = map.current, rtl = lang === 'he'; if (!m || (!rtl && !names.names.length)) return;
@@ -248,7 +253,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   const unplaced = data.rows.flatMap((r, i) => !isEnvelopeRow(r) && !locations[localityLocationKey(r, i)] ? [i] : []);
   const legend = mode === 'bloc' ? s.blocs.map(b => ({ id: b.id, color: b.color, label: groupingName(b, lang), title: b.appDefined ? appGroupingExplanation(lang) : undefined }))
     : s.lists.filter(l => winners.some(w => w.key === l.id)).map(l => ({ id: l.id, color: l.color, label: listLabel(l, lang), title: undefined }));
-  const shareBar = (v: number, top: number, color: string) => <span className="locality-share"><span><i style={{ width: `${v / (top || 1) * 100}%`, background: color }} /></span><span className="tabnum">{share(v, selected!.valid)}</span></span>;
+  const shareBar = (v: number, top: number, color: string) => <span className="locality-share"><span><i style={{ width: `${v / (top || 1) * 100}%`, background: color }} /></span><span className="tabnum">{share(v, selected!.valid, digits)}</span></span>;
   return <div className="locality-map-tool">
     <p className="small ink2">{L('Historical votes · current grouping', 'קולות היסטוריים · חלוקה נוכחית')} <Info title={L('Map assumptions', 'הנחות המפה')}>{L('Historical local votes; colours follow your current scenario grouping. National vote edits are not distributed geographically. Split lists use national vote proportions; split blocs use elected-seat proportions, an estimate rather than measured party votes. English place names are CBS locality names; a few localities missing from CBS lists have this project’s transliteration (dotted underline).', 'קולות היסטוריים ביישובים; הצבעים לפי חלוקת הגושים הנוכחית. שינויי קולות ארציים אינם מחולקים גאוגרפית. רשימות שפוצלו מחולקות לפי יחס הקולות הארצי; גושים בתוך רשימה לפי יחס המושבים הנבחרים — אומדן ולא קולות מפלגתיים שנמדדו.')}</Info></p>
     {data.id !== 'k17' && (data.noteEn || data.noteHe) && <p className="small callout">{lang === 'he' ? data.noteHe ?? data.noteEn : data.noteEn ?? data.noteHe}</p>}
@@ -273,21 +278,24 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     }}>{[f.properties.name,f.properties.street,f.properties.housenumber,f.properties.city,f.properties.country].filter(Boolean).join(', ')}</button>)}</div>}
     {data.id === 'k17' && <Locality2006Note />}
     <div className="locality-map-legend">{legend.map(x=><span key={x.id} title={x.title}><i style={{background:x.color}} />{x.label}</span>)}<span><i style={{background:GREY}}/>{L('Tie / unassigned / no votes','שוויון / ללא שיוך / ללא קולות')}</span></div>
-    <fieldset className="locality-boundary-legend"><legend>{L('Lines and areas', 'קווים ושטחים')}</legend>
+    <details className="locality-boundary-disclosure" open={legendOpen} onToggle={e=>setLegendOpen(e.currentTarget.open)}><summary>{L('Lines and areas', 'קווים ושטחים')}</summary>
+    <fieldset className="locality-boundary-legend"><legend className="sr-only">{L('Lines and areas', 'קווים ושטחים')}</legend>
       {MAP_LINES.map(line => <span className="locality-boundary-entry" key={line.id}>
         <label><input type="checkbox" checked={lineIds.has(line.id)} onChange={e => setLineIds(old => { const next = new Set(old); if (e.target.checked) next.add(line.id); else next.delete(line.id); return next; })} />
-          <svg width="28" height="14" viewBox="0 0 28 14" aria-hidden="true">{line.fill ? <path d={line.fill==='cross'?'M0 0L14 14 M0 14L14 0 M14 0L28 14 M14 14L28 0':'M-14 14L0 0 M-6 14L8 0 M2 14L16 0 M10 14L24 0 M18 14L32 0 M26 14L40 0'} stroke={dark?line.dark:line.color} strokeWidth="1.4" strokeLinecap="butt" /> : <path d="M0 7H28" stroke={dark?line.dark:line.color} strokeWidth="2" strokeLinecap="butt" strokeDasharray={line.dash} />}</svg>
+          <svg width="28" height="14" viewBox="0 0 28 14" aria-hidden="true">{line.fill==='solid'?<rect width="28" height="14" fill={dark?line.dark:line.color} fillOpacity=".18"/>:line.fill?<>
+            <path d={line.fill==='cross'?'M0 0L8 8 M0 8L8 0 M8 0L16 8 M8 8L16 0 M16 0L24 8 M16 8L24 0 M24 0L32 8 M24 8L32 0 M0 8L8 16 M0 16L8 8 M8 8L16 16 M8 16L16 8 M16 8L24 16 M16 16L24 8 M24 8L32 16 M24 16L32 8':'M-14 14L0 0 M-6 14L8 0 M2 14L16 0 M10 14L24 0 M18 14L32 0 M26 14L40 0'} stroke={dark?line.dark:line.color} strokeWidth="1.4" strokeLinecap="butt"/>
+            {line.outline&&<path d="M0 13H28" stroke={dark?line.dark:line.color} strokeWidth="2" strokeLinecap="butt" strokeDasharray={line.dash}/>}
+          </>:<path d="M0 7H28" stroke={dark?line.dark:line.color} strokeWidth="2" strokeLinecap="butt" strokeDasharray={line.dash}/>}</svg>
           {lang === 'he' ? line.he : line.en}</label>
         <Info title={lang === 'he' ? line.he : line.en}>
-          <p>{lang === 'he' ? line.detailHe : line.detailEn}</p>
-          {line.quotes?.map(quote=><div key={quote.reference}><p><bdi>{quote.reference}</bdi>{lang==='he'&&quote.translatedHe?L('',' · תרגום מהמקור האנגלי'):''}</p><blockquote className="map-treaty-quote">{lang==='he'?quote.he:quote.en}</blockquote></div>)}
-          <p>{lang === 'he' ? line.uncertaintyHe : line.uncertaintyEn}</p>
-          <p>{L('Geometry snapshot: ', 'תצלום מצב של הגאומטריה: ')}<bdi>{MAP_LINE_SNAPSHOT}</bdi></p>
-          <p>{L('Sources: ', 'מקורות: ')}{line.sources.map(([label,url],i)=><span key={url}>{i>0?' · ':''}<a href={url} target="_blank" rel="noreferrer">{mapLineSourceLabel(label,lang)}</a></span>)}</p>
+          <p><MapLineText lang={lang} text={lang==='he'?line.detailHe:line.detailEn}/></p>
+          {line.quotes?.map(quote=><div key={quote.reference}><p><MapLineText lang={lang} text={lang==='he'?quote.referenceHe??quote.reference:quote.reference}/>{lang==='he'&&quote.translatedHe?L('',' · תרגום מהמקור האנגלי'):''}</p><blockquote className="map-treaty-quote"><MapLineText lang={lang} text={lang==='he'?quote.he:quote.en}/></blockquote></div>)}
+          <p><MapLineText lang={lang} text={lang==='he'?line.uncertaintyHe:line.uncertaintyEn}/></p>
+          <p>{L('Geometry snapshot: ', 'תצלום מצב של הגאומטריה: ')}<bdi dir="ltr">{MAP_LINE_SNAPSHOT}</bdi></p>
+          <p>{L('Sources: ', 'מקורות: ')}{line.sources.map(([label,url],i)=><span key={url}>{i>0?' · ':''}<a href={url} target="_blank" rel="noreferrer"><MapLineText lang={lang} text={mapLineSourceLabel(label,lang)}/></a></span>)}</p>
         </Info>
       </span>)}
-      <p className="small locality-boundary-limit">{L('Golan: Bravo / separation area not shown', 'גולן: בראבו ואזור ההפרדה אינם מוצגים')} <Info title={L('Unverified Golan geometry', 'גאומטריה בגולן שטרם אומתה')}>{L('Bravo, Alpha-1 and the exact area of separation remain unverified and are not drawn. The Alpha line is shown independently. The larger areas of limitation and present military positions are not depicted.', 'קו בראבו, אלפא־1 והתחום המדויק של אזור ההפרדה טרם אומתו ואינם מצוירים. קו אלפא מוצג בנפרד. אזורי הגבלת הכוחות הרחבים יותר ועמדות צבאיות כיום אינם מוצגים.')}</Info></p>
-    </fieldset>
+    </fieldset></details>
     {<p className="small locality-boundary-limit" style={{visibility:hiddenLines>0?'visible':'hidden'}} aria-hidden={hiddenLines===0} role={hiddenLines>0?'status':undefined}>{L('Some approximate lines are hidden at this zoom. Zoom out to see them.', 'חלק מהקווים המקורבים מוסתרים בהגדלה זו. להצגתם, הקטינו את המפה.')} <Info title={L('Line detail limits','מגבלות פירוט הקווים')}>{L('Each layer stops at its source precision. Measured source differences are limited to roughly 20 screen pixels; outlines whose precision is unknown are shown only at overview zooms. Locality dots and names remain available. Each layer’s explanation states its uncertainty.', 'כל שכבה נעצרת לפי דיוק המקור. פערי המקורות שנמדדו מוגבלים לכ־20 פיקסלים במסך; תוואים שדיוקם אינו ידוע מוצגים רק בקנה מידה כללי. נקודות ושמות היישובים ממשיכים להופיע. אי־הוודאות מצוינת בהסבר של כל שכבה.')}</Info></p>}
     {lineError && <p className="small bad" role="status">{L('Boundary data could not load.', 'נתוני הקווים לא נטענו.')}</p>}
     <div ref={container} className="locality-map-canvas" role="region" aria-label={L('Locality results map; use search or table for keyboard selection','מפת תוצאות ביישובים; לבחירה במקלדת השתמשו בחיפוש או בטבלה')} />
@@ -297,13 +305,13 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       {/* why the dot has its colour: the leader, and its lead over the runner-up in this locality */}
       <p className="locality-verdict">{selectedWinner!.tied ? L('Tie', 'שוויון') : selectedWinner!.key === null || !groups.length ? L('No assigned votes', 'אין קולות משויכים') : <>
         <span className="swatch" style={{ background: groupColor(selectedWinner!.key) }} /><strong dir="auto">{groupName(selectedWinner!.key)}</strong>
-        {groups.length > 1 && <span className="ink2"> · {L('ahead of ', 'ביתרון של ')}{lang === 'en' && <span dir="auto">{groupName(groups[1].key)} {L('by ', '')}</span>}<bdi dir="ltr">{(selectedWinner!.margin / Math.max(1, selected.valid) * 100).toFixed(1)}{L(' pp', ' נק׳')}</bdi> ({fmtInt(selectedWinner!.margin)} {L('votes', 'קולות')}){lang === 'he' && <span dir="auto"> על {groupName(groups[1].key)}</span>}</span>}
+        {groups.length > 1 && <span className="ink2"> · {L('ahead of ', 'ביתרון של ')}{lang === 'en' && <span dir="auto">{groupName(groups[1].key)} {L('by ', '')}</span>}<bdi dir="ltr">{(selectedWinner!.margin / Math.max(1, selected.valid) * 100).toFixed(digits)}{L(' pp', ' נק׳')}</bdi> ({fmtInt(selectedWinner!.margin)} {L('votes', 'קולות')}){lang === 'he' && <span dir="auto"> על {groupName(groups[1].key)}</span>}</span>}
       </>}</p>
       {mode === 'bloc' && groups.length > 0 && <div className="tablewrap"><table className="tbl"><thead><tr><th>{L('Bloc','גוש')}</th><th className="n">{L('Votes','קולות')}</th><th>{L('Share','שיעור')}</th></tr></thead><tbody>
         {groups.map(g => <tr key={g.key ?? 'none'} className={g.key === selectedWinner!.key ? 'sel' : undefined}><td><span className="row" style={{gap:6,flexWrap:'nowrap'}}><span className="swatch" style={{background:groupColor(g.key)}} />{groupName(g.key)}</span></td><td className="n">{fmtInt(g.votes)}</td><td>{shareBar(g.votes, groups[0].votes, groupColor(g.key))}</td></tr>)}
       </tbody></table></div>}
       <p className="small ink2 locality-map-facts">
-        <span>{L('Turnout ', 'הצבעה ')}<b className="tabnum">{selected.registered ? fmtPct(selected.votesCast, selected.registered, 1) : '—'}</b></span>
+        <span>{L('Turnout ', 'הצבעה ')}<b className="tabnum">{selected.registered ? fmtPct(selected.votesCast, selected.registered, digits) : '—'}</b></span>
         <span>{L('Valid ', 'כשרים ')}<b className="tabnum">{fmtInt(selected.valid)}</b></span>
         <span>{L('Registered ', 'בעלי זכות ')}<b className="tabnum">{selected.registered === null ? '—' : fmtInt(selected.registered)}</b></span>
         <span>{L('Invalid ', 'פסולים ')}<b className="tabnum">{fmtInt(selected.invalid)}</b></span>

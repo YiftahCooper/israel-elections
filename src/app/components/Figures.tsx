@@ -10,7 +10,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import { votesCast, type Scenario } from '../../model/scenario.ts';
 import { listLabel, methodOf, referenceLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtFrac, fmtInt, fmtPct, fmtRat } from '../format.ts';
+import { fmtFrac, fmtInt, fmtPct, fmtRat, pctExactNote } from '../format.ts';
 import { dispatch, setState, useDigits } from '../store.ts';
 import { DecimalInput, Info } from './ui.tsx';
 
@@ -72,14 +72,14 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
         </Fig>
       )}
 
-      <Fig k={L('Votes with no seat', 'קולות ללא מנדט')} term="unrepresented" v={fmtPct(seatlessVotes, r.totalValid, 1)} d={`${fmtInt(seatlessVotes)} ${L('votes', 'קולות')}`}>
+      <Fig k={L('Votes with no seat', 'קולות ללא מנדט')} term="unrepresented" v={fmtPct(seatlessVotes, r.totalValid, digits)} d={`${fmtInt(seatlessVotes)} ${L('votes', 'קולות')}`}>
         {seatless.length ? <div className="tablewrap" style={{ maxHeight: 300 }}><table className="tbl"><thead><tr><th>{L('List', 'רשימה')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('% of valid', '% מהכשרים')}</th></tr></thead>
-          <tbody>{seatless.map(({ l }) => <tr key={l.id} ><td><button className="table-action" onClick={() => select(l.id)}>{listLabel(l, lang)}</button></td><td className="n">{fmtInt(l.votes)}</td><td className="n">{fmtPct(l.votes, r.totalValid, digits)}</td></tr>)}
+          <tbody>{seatless.map(({ l }) => <tr key={l.id} ><td><button className="table-action" onClick={() => select(l.id)}>{listLabel(l, lang)}</button></td><td className="n">{fmtInt(l.votes)}</td><td className="n" title={pctExactNote(l.votes, r.totalValid, digits, s.rules.thresholdPct, lang)}>{fmtPct(l.votes, r.totalValid, digits, s.rules.thresholdPct)}</td></tr>)}
             <tr><td><b>{L('Total', 'סה״כ')}</b></td><td className="n"><b>{fmtInt(seatlessVotes)}</b></td><td className="n"><b>{fmtPct(seatlessVotes, r.totalValid, digits)}</b></td></tr></tbody></table></div>
           : <p className="small muted" style={{ margin: 0 }}>{L('Every list that ran won a seat.', 'כל הרשימות זכו במנדט.')}</p>}
       </Fig>
 
-      <Fig k={L('Turnout', 'שיעור ההצבעה')} term="turnout" v={fmtPct(cast, s.registered, 2)} d={fmtPct(cast, s.registered, 2) === fmtPct(ds.totals.votesCast, ds.totals.registered, 2) ? `${fmtInt(cast)} ${L('ballots cast', 'מצביעים')}` : `${referenceLabel(null, lang).name} ${fmtPct(ds.totals.votesCast, ds.totals.registered, 2)}`}>
+      <Fig k={L('Turnout', 'שיעור ההצבעה')} term="turnout" v={fmtPct(cast, s.registered, digits)} d={fmtPct(cast, s.registered, digits) === fmtPct(ds.totals.votesCast, ds.totals.registered, digits) ? `${fmtInt(cast)} ${L('ballots cast', 'מצביעים')}` : `${referenceLabel(null, lang).name} ${fmtPct(ds.totals.votesCast, ds.totals.registered, digits)}`}>
         <div className="row">
           <label className="row small">{L('Set turnout to', 'קביעת שיעור ההצבעה ל-')}
             <DecimalInput value={s.registered ? (cast / s.registered) * 100 : 0} digits={2} width={86} label={L('Turnout %', 'שיעור הצבעה %')} onCommit={(p) => dispatch({ type: 'setTurnout', pct: p })} />% <Info title={L('Proportional turnout', 'הצבעה יחסית')}>{L('Every list, and the invalid ballots, grows or shrinks in proportion.', 'כל הרשימות, והקולות הפסולים, גדלים או קטנים באופן יחסי.')}</Info></label>

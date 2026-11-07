@@ -8,8 +8,8 @@ import { copyOriginOf } from '../src/model/editScopes.ts';
 import { percentToRational } from '../src/engine/rational.ts';
 import { votesCast, type Action, type Scenario } from '../src/model/scenario.ts';
 import { getState, replay, setState } from '../src/app/store.ts';
-import { planAgreements, planColour, planRoster, planRules, planTotals, planVotes, planWholeList, type CopySource, type Plan } from '../src/app/compare/copy.ts';
-import { matchRows } from '../src/app/compare/match.ts';
+import { duplicatePeople, planAgreements, planColour, planRoster, planRules, planTotals, planVotes, planWholeList, type CopySource, type Plan } from '../src/app/compare/copy.ts';
+import { matchRows, memberKey } from '../src/app/compare/match.ts';
 import { comparisonLink, comparisonOf, dispatchSide, readComparison, redoSide, startOverSide, undoSide } from '../src/app/compare/sides.ts';
 import { stayingHome } from '../src/app/voteEdit.ts';
 
@@ -147,7 +147,7 @@ describe('marking every copied value', () => {
     expect(p.result.log.at(-1)!.action.type).toBe('copyFrom');
     expect(p.result.log).toHaveLength(k26.log.length + 1);
     const origin = copyOriginOf(p.result, ['lists', '26-מחל', 'votes'])!;
-    expect(origin.provenance).toMatchObject({ electionId: 'k25', sourceName: '2022', official: true, field: 'votes', mode: 'share', policy: 'proportional', sourceListIds: ['25-מחל'], targetListIds: ['26-מחל'], value: '23.41%' });
+    expect(origin.provenance).toMatchObject({ electionId: 'k25', sourceName: '2022', official: true, field: 'votes', mode: 'share', policy: 'proportional', sourceListIds: ['25-מחל'], targetListIds: ['26-מחל'], value: '23.4%' }); // the share as shown: Max decimal places (1 at the default Simple level)
     expect(isFactAction(p.action)).toBe(true);
     expect(resultChanges(p.result, k26).length).toBeGreaterThan(0);
   });
@@ -222,6 +222,13 @@ describe('whole list', () => {
     expect(p.result.log).toHaveLength(k26.log.length + 1);
     expect(copyOriginOf(p.result, ['lists', '26-מחל', 'votes'])?.provenance.field).toBe('list');
   });
+  it('copies over a joint list counted by its parties: the split is undone before the roster changes', () => {
+    const split = applyAction(k26, { type: 'setFactionSplit', listId: '26-מחל', split: true }, undefined, ctx);
+    expect(split.factionSplits).toContain('26-מחל');
+    const p = ok(planWholeList({ from: from25, to: split, ctx, srcId: '25-מחל', dstId: '26-מחל', opts }));
+    expect(p.result.factionSplits ?? []).not.toContain('26-מחל');
+    expect(seats(p.result, '26-מחל')).toBe(30);
+  });
   it('adds a list beside the existing ones', () => {
     const p = ok(planWholeList({ from: from25, to: k26, ctx, srcId: '25-ב', dstId: null, opts }));
     const added = p.result.lists.find((l) => l.id === 'sim-k25-25-ב')!;
@@ -261,4 +268,38 @@ it('shares a comparison as a link that reads back both sides and the pairings', 
   const r = replay(ds26, back!.main.n, back!.main.l, back!.main.f);
   expect(r.scenario.lists.map((l) => l.votes)).toEqual(p.result.lists.map((l) => l.votes));
   vi.unstubAllGlobals();
+});
+
+describe('a person on two lists after an import', () => {
+  const names = (s: Scenario, id: string) => duplicatePeople(s, id).map((d) => [d.candidate.nameEn, d.otherListId]);
+  it('names each person and the other list, by confirmed Knesset record only', () => {
+    expect(names(ok(planRoster({ from: from25, to: k26, ctx, srcId: '25-מחל', dstId: '26-מחל' })).result, '26-מחל')).toEqual([['Tally Gotliv', '26-ב']]);
+    // National Unity 2022 into Yashar!: Sa'ar now on Likud, Ginzburg on Together. Probable links (Elkin, Haskel) are not identity.
+    expect(names(ok(planRoster({ from: from25, to: k26, ctx, srcId: '25-כן', dstId: '26-דרך' })).result, '26-דרך')).toEqual([['Gideon Sa\'ar', '26-מחל'], ['Eitan Ginzburg', '26-רק']]);
+    const probable = k26.lists.flatMap((l) => l.candidates).filter((c) => c.bio?.probable && c.bio.knesset);
+    expect(probable.length).toBeGreaterThan(0);
+    for (const c of probable) expect(memberKey(c)).toBeUndefined();
+  });
+  it('never removes anyone unless asked; a chosen removal is an ordinary, marked edit of the other list in the same step', () => {
+    const kept = ok(planRoster({ from: from25, to: k26, ctx, srcId: '25-מחל', dstId: '26-מחל' }));
+    expect(kept.result.lists.find((l) => l.id === '26-ב')!.candidates).toEqual(k26.lists.find((l) => l.id === '26-ב')!.candidates);
+    const [d] = duplicatePeople(kept.result, '26-מחל');
+    const p = ok(planRoster({ from: from25, to: k26, ctx, srcId: '25-מחל', dstId: '26-מחל', remove: [{ listId: d.otherListId, candidateId: d.otherCandidateId }] }));
+    const otzma = p.result.lists.find((l) => l.id === '26-ב')!;
+    expect(otzma.candidates.some((c) => c.id === d.otherCandidateId)).toBe(false);
+    expect(otzma.candidates).toHaveLength(k26.lists.find((l) => l.id === '26-ב')!.candidates.length - 1);
+    expect(duplicatePeople(p.result, '26-מחל')).toEqual([]);
+    expect(p.result.log).toHaveLength(k26.log.length + 1);
+    expect(resultChanges(p.result, k26).map((x) => x.join('/'))).toContain('lists/26-ב/candidates');
+    expect(copyOriginOf(p.result, ['lists', '26-ב', 'candidates'])).toBeUndefined(); // an edit, not a copy
+    expect(copyOriginOf(p.result, ['lists', '26-מחל', 'candidates'])).toBeDefined();
+  });
+  it('applies the same choice to a whole-list replacement', () => {
+    const opts = { votes: true, candidates: true, identity: false, appearance: false, mode: 'share' as const, policy: { kind: 'proportional' as const } };
+    const base = ok(planWholeList({ from: from25, to: k26, ctx, srcId: '25-מחל', dstId: '26-מחל', opts }));
+    const [d] = duplicatePeople(base.result, '26-מחל');
+    const p = ok(planWholeList({ from: from25, to: k26, ctx, srcId: '25-מחל', dstId: '26-מחל', opts, remove: [{ listId: d.otherListId, candidateId: d.otherCandidateId }] }));
+    expect(duplicatePeople(p.result, '26-מחל')).toEqual([]);
+    expect(seats(p.result, '26-מחל')).toBe(30);
+  });
 });

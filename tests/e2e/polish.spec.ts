@@ -7,7 +7,7 @@ import { expect, test } from '@playwright/test';
 for (const lang of ['he','en']) for (const phone of [false,true]) {
   test(`every election's chamber labels fit: ${lang} ${phone ? 'phone' : 'desktop'}`, async ({page}) => {
     await page.setViewportSize(phone ? {width:390,height:844} : {width:1440,height:900});
-    await page.addInitScript(lang => localStorage.setItem('israel-elections:v1', JSON.stringify({lang,theme:'light',hintDismissed:true})),lang);
+    await page.addInitScript(lang => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang,theme:'light',hintDismissed:true})),lang);
     await page.goto('/');
     const picker=page.getByRole('button', {name:lang==='he'?'בחירות':'Election',exact:true});
     for (let n=1;n<=26;n++) {
@@ -40,7 +40,7 @@ for (const lang of ['he','en']) for (const phone of [false,true]) {
 for (const lang of ['he','en']) for (const theme of ['light','dark']) for (const phone of [false,true]) {
   test(`polish screenshots: ${lang} ${theme} ${phone ? 'phone' : 'desktop'}`,async ({page})=>{
     await page.setViewportSize(phone ? {width:390,height:844} : {width:1440,height:900});
-    await page.addInitScript(v=>localStorage.setItem('israel-elections:v1',JSON.stringify(v)),{lang,theme,level:'standard',hintDismissed:true});
+    await page.addInitScript(v=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)),{lang,theme,level:'standard',hintDismissed:true});
     await page.goto('/');
     const picker=page.getByRole('button', {name:lang==='he'?'בחירות':'Election',exact:true});
     await choose(picker, 'k26');

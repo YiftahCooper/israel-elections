@@ -179,3 +179,10 @@
   .cmp-band .cmp-arrow { width: 36px; height: 36px; }
   .cmp-band .cmp-arrow-space { width: 36px; }
 }
+
+/* people an import puts on two lists: a warning, never a block */
+.cmp-dupes { background: var(--warn-bg); color: var(--warn-ink); border: 1px solid var(--warn-ink); border-radius: 6px; padding: 6px 8px; display: grid; gap: 4px; }
+.cmp-dupes p { margin: 0; }
+.cmp-dupes ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.cmp-dupes li { justify-content: space-between; gap: 6px; flex-wrap: wrap; }
+@media (max-width: 760px) { .cmp-dupes .btn { min-height: 44px; } }

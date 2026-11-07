@@ -1,6 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 const start = async (page: Page, lang = 'en') => {
-  await page.addInitScript(lang => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, level: 'expert', theme: lang === 'he' ? 'dark' : 'light', hintDismissed: true })), lang);
+  await page.addInitScript(lang => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, level: 'expert', theme: lang === 'he' ? 'dark' : 'light', hintDismissed: true })), lang);
   await page.goto('/');
 };
 const tab = (page: Page, name: string) => page.getByRole('tab', { name, exact: true }).click();
@@ -21,7 +21,7 @@ test('WI1: questions stay independently open', async ({ page }) => {
   await expect(questions.nth(1)).toHaveAttribute('aria-expanded', 'true');
 });
 test('R1 R2 R3 R4 T1 T2: explanations stay live, edits stay put and labels are readable', async ({ page }) => {
-  await start(page); await tab(page, 'Rules & settings');
+  await start(page); await tab(page, 'Rules');
   const fields = page.locator('.rules-fields');
   for (const info of await fields.locator('.info button').all()) { await expect(info).toBeEnabled(); }
   await expect(fields.getByRole('textbox', { name: 'Threshold %', exact: true })).toBeDisabled();
@@ -80,7 +80,7 @@ test('R1: withdrawn votes stay locked while source explanations remain available
 });
 for (const lang of ['en','he']) for (const theme of ['light','dark']) for (const width of [390,1024,1500]) test(`editing layout ${lang} ${theme} ${width}`, async ({ page }) => {
   await page.setViewportSize({width,height:1000});
-  await page.addInitScript(({lang,theme})=>localStorage.setItem('israel-elections:v1',JSON.stringify({lang,theme,level:'expert',hintDismissed:true})),{lang,theme});
+  await page.addInitScript(({lang,theme})=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang,theme,level:'expert',hintDismissed:true})),{lang,theme});
   await page.goto('/');
   for (const id of ['rules','families','loc','scenarios','structure','whatif','turnout']) {
     await page.locator('#tab-'+id).click();
@@ -93,7 +93,7 @@ for (const lang of ['en','he']) for (const theme of ['light','dark']) for (const
 
 test('R2: phone mode switch stays under the pointer when its reset appears', async ({ page }) => {
   await page.setViewportSize({width:390,height:844}); await start(page);
-  await tab(page,'Rules & settings');
+  await tab(page,'Rules');
   await steady(page.getByRole('button',{name:'Experimental',exact:true}));
 });
 

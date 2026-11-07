@@ -19,6 +19,10 @@ interface Entry {
 const knessetIdentitySure = (e: Entry) => /^(elected; Knesset \d+ member|not elected at the election; entered Knesset )/.test(e.basis ?? '')
   || (e.confidence === 'high' && /^elected; reviewed decision/.test(e.basis ?? ''));
 
+/** Identity certainty under docs/source-policy.md: an official Knesset identity is confirmed; a reviewed high match is
+ *  probable; a rule-based name match (`probable: true` in the published bio) is provisional. */
+export const bioIdentityCertainty = (e: Entry): 'confirmed' | 'probable' | 'provisional' => knessetIdentitySure(e) ? 'confirmed' : e.confidence === 'high' ? 'probable' : 'provisional';
+
 export function applyBios(ds: ElectionDataset): ElectionDataset {
   const file = join(ROOT, 'data', 'meta', 'bios', `${ds.id}.json`);
   if (!existsSync(file)) return ds;

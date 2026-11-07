@@ -1,10 +1,17 @@
 # Changelog
 
+## 7 November 2026 — Settings
+
+- Rebuilt Settings as one searchable bilingual popup (phone: full screen) with levels, group resets and Undo; every setting now applies wherever it is relevant, with new defaults (Device theme, joint lists by party, parties with no seats hidden) and accessibility options at every level; every percentage now shows at most 0–3 decimals (1 by default, 2 at Expert), never shown on the wrong side of the threshold (one more digit there, the exact share in the tooltip); Compare's shares, percentage-point changes and seatless rows follow Settings, its copy mode is a Settings row, and large text now takes the layout of the narrower page instead of wrapping.
+
+- Map review: restore Government House armistice edges, correct bilingual treaty text and references, complete the UN Blue Line, and add sourced Golan separation layers.
+
 ## 6 November 2026 — data audit
 
 - After the election: distinguish government members, support roles and individual votes; show unknown totals honestly, explain vote reconciliation behind help, and keep localised date ranges in reading order.
 - Correct Jerusalem zone identities and paired lines; distinguish the treaty’s Jordan administrative sector, constrain source precision, and verify Blue/Alpha against explicit UN maps.
 
+- Sources: an enforced evidence policy (tiers, independence, certainty confirmed/probable/provisional/disputed/unknown); the gaps register now ranks gaps by importance and certainty.
 - Families: count Otzma Yehudit only in Radical right in 2015, as in 2019–2022; the national-religious family keeps Yachad.
 - Research: separate government membership, outside support, investiture votes and individual exceptions; validate explicit uncertainty across recorded governments and document unresolved historical authentication.
 
@@ -27,6 +34,7 @@
 - Locality map: add individually controlled armistice/frontier layers, historical no-man’s-land hatching, source dates and a reproducible disagreement atlas; keep unverified Golan sections out.
 
 - Localities: lazy OpenFreeMap light/dark vectors, CBS-only bilingual labels at every zoom; hide unverified boundaries with an explicit notice and retain geometry checks.
+- Compare: the open scenario always stays on the right with matching unchanged; an import that puts someone on two lists warns and offers a one-tap removal; saved comparisons are listed on Scenarios; the share change shows its unit (pp).
 
 - Mark custom bloc, coalition and family groupings locally as analysis while preserving official result identity and factual summaries.
 

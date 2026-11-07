@@ -8,7 +8,8 @@ async function start(page: Page, lang: 'en' | 'he' = 'en', election = 'k26', wid
   await page.addInitScript(([lang, level]) => {
     if (sessionStorage.getItem('started')) return;
     sessionStorage.setItem('started', '1');
-    localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, level, hintDismissed: true }));
+    localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, level }));
+    localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false, decimals: 2 } }));
     localStorage.setItem('israel-elections:preferences', JSON.stringify({ voteSource: 'proportional' }));
   }, [lang, level]);
   await page.goto('/');
@@ -201,7 +202,7 @@ test('swap keeps the pairing and a saved comparison and its link reopen both sid
   expect(copied).not.toBe('32');
   await page.getByRole('button', { name: 'Save comparison' }).click();
   await page.locator('dialog[open]').getByRole('button', { name: 'Save', exact: true }).click();
-  await expect(page.locator('.toast')).toHaveText('Comparison saved in this browser.');
+  await expect(page.locator('.toast')).toContainText('Comparison saved');
   await page.getByRole('button', { name: 'Copy link' }).click();
   await expect(page.locator('.toast')).toContainText('Link copied');
   const link: string = await page.evaluate(() => navigator.clipboard.readText());
@@ -227,7 +228,7 @@ test('k1 → k2: copying the 1949 threshold switches 1951 to experimental rules,
   await expect(values.first()).toHaveText(await values.last().innerText());
   await expect(page.locator('.cmp-band-row[data-key="thrvotes"] .cmp-band-v').last()).toHaveText('None');
   await expect(page.locator('.cmp-band-row[data-key="rules"] .cmp-band-v').last()).toContainText('experimental');
-  await page.getByRole('tab', { name: 'Rules & settings', exact: true }).click();
+  await page.getByRole('tab', { name: 'Rules', exact: true }).click();
   await expect(page.locator('[data-copied]').filter({ hasText: 'From 1949' })).toBeVisible();
 });
 
@@ -284,4 +285,74 @@ for (const theme of ['light', 'dark'] as const) test(`tags and marks have readab
   });
   expect(ratios.length).toBeGreaterThan(5);
   for (const r of ratios) expect(r.ratio, r.text ?? '').toBeGreaterThanOrEqual(4.5);
+});
+
+test('the open scenario stays on the right even when the other election is later; groups keep their no-seat members', async ({ page }) => {
+  await start(page, 'en', 'k25');
+  await compare(page);
+  await choose(picker(page), 'election:k26');
+  await expect(card(page, 'right')).toHaveAttribute('data-role', 'main');
+  await expect(card(page, 'right')).toContainText('2022');
+  await expect(card(page, 'left')).toContainText('2026');
+  await expect(page.getByRole('checkbox', { name: 'Lists with no seats' })).not.toBeChecked();
+  // Balad 2022 (no seats) stays inside the Joint List row; Noam (no seats) inside the Religious Zionism group
+  const joint = page.locator('tr.cmp-row').filter({ has: page.locator('.cmp-lname', { hasText: 'Joint List' }) });
+  await expect(joint.locator('.cmp-rname')).toContainText('Balad');
+  await expect(page.locator('tr.cmp-row').filter({ has: page.locator('.cmp-lname', { hasText: 'Noam' }) })).toBeVisible();
+});
+
+test('the share change carries its unit', async ({ page }) => {
+  await start(page);
+  await compare(page);
+  await expect(row(page, 'Likud').locator('.cmp-pp')).toHaveText('−2.89 pp');
+  await page.locator('.cmp-table th.cmp-mid').getByRole('button').click();
+  await expect(page.getByText(/share of valid votes in percentage points/)).toBeVisible();
+});
+
+test('an import that puts someone on two lists warns, names both, and removes only on request', async ({ page }) => {
+  await start(page);
+  await compare(page);
+  await row(page, 'Likud').getByRole('button', { name: 'More for Likud' }).click();
+  await page.locator('.cmp-menu').getByRole('button', { name: 'Whole list…' }).first().click();
+  const dialog = page.locator('dialog[open].cmp-whole');
+  const warn = dialog.locator('.cmp-dupes');
+  await expect(warn).toContainText('1 on two lists');
+  await expect(warn).toContainText('Tally Gotliv · also on Otzma Yehudit');
+  await warn.getByRole('button', { name: 'Remove from Otzma Yehudit' }).click();
+  await expect(warn).toContainText('removed from Otzma Yehudit');
+  await warn.getByRole('button', { name: 'Undo' }).click();
+  await expect(warn).toContainText('also on Otzma Yehudit');
+  // never blocked: replace with the person still on both lists, then nothing on Otzma changed
+  await dialog.getByRole('button', { name: 'Replace', exact: true }).click();
+  await expect(row(page, 'Otzma Yehudit').locator('.cmp-mark')).toHaveCount(0);
+  await card(page, 'right').getByRole('button', { name: 'Undo on 2026' }).click();
+  // Candidates alone ask the same way; the removal is a marked edit of the other list
+  await row(page, 'Likud').getByRole('button', { name: 'More for Likud' }).click();
+  await page.locator('.cmp-menu').getByRole('button', { name: 'Candidates' }).first().click();
+  const ask = page.locator('dialog[open].cmp-whole');
+  await ask.locator('.cmp-dupes').getByRole('button', { name: 'Remove from Otzma Yehudit' }).click();
+  await ask.getByRole('button', { name: 'Copy candidates' }).click();
+  await expect(row(page, 'Otzma Yehudit').locator('.cmp-rname .cmp-mark')).toHaveText('Edited');
+  await expect(row(page, 'Likud').locator('.cmp-rname .cmp-mark[data-copied]')).toHaveText('From 2022');
+});
+
+test('saved comparisons are listed on the Scenarios page with Open, Copy link and Delete', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await start(page);
+  await compare(page);
+  await page.getByRole('button', { name: 'Save comparison' }).click();
+  await page.locator('dialog[open]').getByRole('button', { name: 'Save', exact: true }).click();
+  await expect(page.locator('.toast')).toContainText('see Scenarios');
+  await page.getByRole('tab', { name: 'Scenarios', exact: true }).click();
+  const saved = page.locator('.scn-comparisons .scn-card');
+  await expect(saved).toHaveCount(1);
+  await expect(saved).toContainText('2022 ↔ 2026');
+  await saved.getByRole('button', { name: 'Copy link' }).click();
+  await expect(page.locator('.toast')).toContainText('Link copied');
+  await saved.getByRole('button', { name: 'Open' }).click();
+  await expect(page.locator('.cmp-wb')).toBeVisible();
+  await page.getByRole('tab', { name: 'Scenarios', exact: true }).click();
+  page.once('dialog', (d) => d.accept());
+  await page.locator('.scn-comparisons .scn-card').getByRole('button', { name: /^Delete / }).click();
+  await expect(page.locator('.scn-comparisons')).toHaveCount(0);
 });

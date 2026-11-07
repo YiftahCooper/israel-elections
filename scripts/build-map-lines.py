@@ -1,7 +1,6 @@
 """Build the versioned cartographic overlays from retained source inputs; no network.
 
-Jerusalem is corrected from UN229 with a similarity registration. Other production
-coordinates remain OSM. Grid cuts/coverage limits do not create treaty boundaries.
+Jerusalem is corrected from UN229 with a similarity registration. Blue/Golan use native UN PDF paths; other coordinates remain OSM. Grid cuts/coverage limits do not create treaty boundaries.
 """
 import json, math
 from pathlib import Path
@@ -51,8 +50,15 @@ for f in green:
     g = shape(f['geometry'])
     if g.difference(scopus.boundary).length<1e-10: continue
     # Remove the unverified central OSM pair; keep the independent zone overlay separate.
-    g = g.difference(coverage).difference(govt.boundary)
+    g = g.difference(coverage).difference(box(*read(ROOT/'signed-map-check.json')['ramadinReplacementBox']))
+    # Discard a one-metre extraction stub, never erase the zone’s armistice edges.
+    if transform(project,g).length<2: continue
     add('green-line',g,'OSM relation 7304999; UN229 covers central Jerusalem only',f['properties']['way'])
+# Local signed-sheet tie-break only. Preserve the real OCHA stroke and leave
+# product joins open rather than manufacture a line between mismatched sources.
+ramadin=box(*read(ROOT/'signed-map-check.json')['ramadinReplacementBox'])
+for f in read(ROOT/'ocha-green.geojson')['features']:
+    add('green-line',shape(f['geometry']).intersection(ramadin),'OCHA; signed 1949 Map1 Ramadin tie-break',uncertainty=922,sourceDate='2026-11-07')
 for side,line in [('Israeli',israeli),('Jordanian',jordanian)]:
     add('green-line',line,'UN map 229 (Nov 1949), seven-control similarity digitization',uncertainty=60,side=side)
 add('no-mans-land',latrun,'OSM paired lines; undocumented eastern cartographic closure',uncertainty=740,closure='OSM cartographic closure, not an agreed eastern boundary')
@@ -62,7 +68,7 @@ add('govt-house-zone',govt,'OSM outlines clipped at Palestine-grid northings 128
 cs=list(scopus.exterior.coords)
 add('scopus',LineString(cs[12:]),'OSM northern outline; Israel State Archives / MFA status; southern Augusta Victoria portion omitted',uncertainty=None,max_zoom=10,outlineStatus='partial; internal division not drawn')
 
-for layer,file,u in [('gaza-perimeter','osm-gaza.geojson',922),('egypt-border','osm-egypt.geojson',360),('golan-alpha','osm-golan-a.geojson',1093)]:
+for layer,file,u in [('gaza-perimeter','osm-gaza.geojson',922),('egypt-border','osm-egypt.geojson',360)]:
     for f in read(ROOT/file)['features']:
         add(layer,shape(f['geometry']),'OSM '+file+'; retained UN comparison',f['properties'].get('way',f['properties'].get('id')),u)
 
@@ -75,15 +81,9 @@ for f in read(ROOT/'osm-jordan.geojson')['features']:
     admin=('Palestin' in str(tags) or 'فلسطين' in str(tags) or way==41850129)
     add('jordan-1967-admin' if admin else 'jordan-border',g,'OSM relation 184818; 1994 treaty Article 3 / Annex I(a)',way,763)
 
-# The independent 2000 withdrawal map comparison is retained per way; do not infer
-# Blue Line identity from the name:UN tag or the earlier CIA provenance alone.
-blue_check_path=ROOT/'blue-line-check.json'
-checks=read(blue_check_path)
-accepted=set(checks['acceptedWays'])
-for f in read(ROOT/'osm-blue.geojson')['features']:
-    way=f['properties']['id']
-    if way not in accepted: continue
-    add('blue-line',shape(f['geometry']),'OSM; UN withdrawal map 4143 Rev.1 (July 2000) point-to-segment check',way,200,
-        identity='2000 withdrawal-line-compatible at UN map resolution; common 1923/1949 alignment')
+# Explicitly identified UN PDF paths, with their source dates and scale bounds.
+for f in read(ROOT/'un-native-lines.geojson')['features']:
+    p=f['properties']
+    add(p['layer'],shape(f['geometry']),p['source'],uncertainty=p['uncertaintyM'],max_zoom=11 if p['layer'].startswith('golan-') else None,sourceDate=p['sourceDate'])
 Path('public/data/map-lines.geojson').write_text(json.dumps(dict(type='FeatureCollection',features=features),ensure_ascii=False,separators=(',',':'))+'\n')
 print('features',len(features),'layers',sorted(set(f['properties']['layer'] for f in features)))

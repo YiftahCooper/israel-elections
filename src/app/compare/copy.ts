@@ -2,12 +2,13 @@
 // already-computed actions for the destination side, wrapped in one `copyFrom` step. Inputs travel; results never do:
 // seats, quotas and elected members are recalculated by the engine on the destination.
 import { applyAction, ActionError, apportion } from '../../model/actions.ts';
-import { historicalRules, electionRuleSetId, votesCast, type Action, type CopyProvenance, type Scenario, type SimAgreement, type SimList } from '../../model/scenario.ts';
+import { historicalRules, electionRuleSetId, votesCast, type Action, type CopyProvenance, type Scenario, type SimAgreement, type SimCandidate, type SimList } from '../../model/scenario.ts';
 import { percentToRational } from '../../engine/rational.ts';
 import { sourceValue } from '../preferences.ts';
 import { stayingHome, type SourceChoice } from '../voteEdit.ts';
 import { fmtInt, fmtPct } from '../format.ts';
-import type { MatchRow } from './match.ts';
+import { getSetting } from '../store.ts';
+import { personKey, type MatchRow } from './match.ts';
 
 export type Msg = { en: string; he: string };
 export type CopyMode = 'count' | 'share' | 'change';
@@ -139,7 +140,7 @@ export function planVotes(o: { from: CopySource; to: Scenario; ctx?: { base?: Sc
     u.dst.forEach((id, k) => votes.set(id, BigInt(split[k])));
   });
   for (const l of w.lists) { const n = Number(votes.get(l.id)!); if (n !== l.votes) inner.push({ type: 'setVotes', listId: l.id, votes: n }); }
-  const value = mode === 'count' ? fmtInt(X.reduce((a, b) => a + b, 0n)) : mode === 'share' && units.length === 1 ? fmtPct(shares[0].num, shares[0].den) : undefined;
+  const value = mode === 'count' ? fmtInt(X.reduce((a, b) => a + b, 0n)) : mode === 'share' && units.length === 1 ? fmtPct(shares[0].num, shares[0].den, getSetting('decimals')) : undefined;
   const provenance = provenanceOf(from, o.fieldOverride ?? 'votes', {
     mode, policy: sourceValue(policy), sourceListIds: srcAll, targetListIds: dstAll, ...(value ? { value } : {}),
     paths: dstAll.map((id) => ['lists', id, 'votes']),
@@ -167,7 +168,7 @@ export function planTotals(o: { from: CopySource; to: Scenario; ctx?: { base?: S
   let pct = (votesCast(from.sc) / from.sc.registered) * 100;
   for (let i = 0; i < 4 && Math.round(to.registered * (pct / 100)) !== target; i++) pct += (target - to.registered * (pct / 100)) / to.registered * 100;
   if (Math.round(to.registered * (pct / 100)) !== target) return refuse('Turnout could not be copied exactly.', 'לא ניתן להעתיק את שיעור ההצבעה במדויק.');
-  return finish(to, o.ctx ?? {}, provenanceOf(from, 'turnout', { value: fmtPct(votesCast(from.sc), from.sc.registered), paths: [['invalid']] }), [{ type: 'setTurnout', pct }]);
+  return finish(to, o.ctx ?? {}, provenanceOf(from, 'turnout', { value: fmtPct(votesCast(from.sc), from.sc.registered, getSetting('decimals')), paths: [['invalid']] }), [{ type: 'setTurnout', pct }]);
 }
 
 /** The threshold (exact decimal string), or the whole rule set. Rules that differ from the destination's law switch it to
@@ -219,16 +220,41 @@ export function planAgreements(o: { from: CopySource; to: Scenario; ctx?: { base
 export function rosterActions(from: CopySource, src: SimList, to: Scenario, dstId: string): Action[] {
   const dst = to.lists.find((l) => l.id === dstId)!;
   const candidates = src.candidates.map((c) => ({ ...c, originListId: dstId, importedFrom: c.importedFrom ?? { electionId: from.sc.electionId, listId: src.id } }));
-  const out: Action[] = [{ type: 'candidates', listId: dstId, candidates, note: 'copy', parties: src.parties ?? [], rosterUnavailable: !!src.rosterUnavailable, rosterTruncated: !!src.rosterTruncated }];
-  // a faction split belongs to the old parties
+  const out: Action[] = [];
+  // a faction split belongs to the old parties: undone first, while the list still has them (counted by party is the
+  // default, so a joint list usually starts split)
   if (to.factionSplits?.includes(dstId) && JSON.stringify(dst.parties?.map((p) => p.id)) !== JSON.stringify(src.parties?.map((p) => p.id))) out.push({ type: 'setFactionSplit', listId: dstId, split: false });
+  out.push({ type: 'candidates', listId: dstId, candidates, note: 'copy', parties: src.parties ?? [], rosterUnavailable: !!src.rosterUnavailable, rosterTruncated: !!src.rosterTruncated });
   return out;
 }
-export function planRoster(o: { from: CopySource; to: Scenario; ctx?: { base?: Scenario }; srcId: string; dstId: string }): Plan {
+/** A candidate on `listId` who also stands on another list. */
+export interface Duplicate { candidate: SimCandidate; otherListId: string; otherCandidateId: string }
+/** People an imported roster puts on two lists. A person can sit for one list only; the app never decides which. */
+export function duplicatePeople(s: Scenario, listId: string): Duplicate[] {
+  const l = s.lists.find((x) => x.id === listId);
+  if (!l) return [];
+  const mine = new Map(l.candidates.map((c) => [personKey(c), c] as const));
+  return s.lists.filter((o) => o.id !== listId && !o.withdrawn).flatMap((o) => o.candidates.flatMap((c) => {
+    const m = mine.get(personKey(c));
+    return m ? [{ candidate: m, otherListId: o.id, otherCandidateId: c.id }] : [];
+  }));
+}
+/** Removing chosen duplicates from their other lists, in the same step (ordinary candidate edits there, marked as edits). */
+export type Removal = { listId: string; candidateId: string };
+function removalActions(w: Scenario, removals: Removal[]): Action[] {
+  return [...new Set(removals.map((r) => r.listId))].flatMap((id) => {
+    const l = w.lists.find((x) => x.id === id);
+    const gone = new Set(removals.filter((r) => r.listId === id).map((r) => r.candidateId));
+    return l && l.candidates.some((c) => gone.has(c.id)) ? [{ type: 'candidates', listId: id, candidates: l.candidates.filter((c) => !gone.has(c.id)), note: 'copy' } as Action] : [];
+  });
+}
+
+export function planRoster(o: { from: CopySource; to: Scenario; ctx?: { base?: Scenario }; srcId: string; dstId: string; remove?: Removal[] }): Plan {
   const src = o.from.sc.lists.find((l) => l.id === o.srcId), dst = o.to.lists.find((l) => l.id === o.dstId);
   if (!src || !dst) return refuse('The list no longer exists.', 'הרשימה כבר אינה קיימת.');
   if (JSON.stringify(src.candidates.map((c) => c.id)) === JSON.stringify(dst.candidates.map((c) => c.id))) return refuse('Already the same.', 'כבר זהה.');
-  return finish(o.to, o.ctx ?? {}, provenanceOf(o.from, 'candidates', { sourceListIds: [src.id], targetListIds: [dst.id], value: String(src.candidates.length), paths: [['lists', dst.id, 'candidates']] }), rosterActions(o.from, src, o.to, dst.id));
+  return finish(o.to, o.ctx ?? {}, provenanceOf(o.from, 'candidates', { sourceListIds: [src.id], targetListIds: [dst.id], value: String(src.candidates.length), paths: [['lists', dst.id, 'candidates']] }),
+    [...rosterActions(o.from, src, o.to, dst.id), ...removalActions(o.to, o.remove ?? [])]);
 }
 
 /** A list's colour: appearance only, so the copy carries no marker. */
@@ -242,7 +268,7 @@ export function planColour(o: { from: CopySource; to: Scenario; ctx?: { base?: S
 export interface WholeListOptions { votes: boolean; candidates: boolean; identity: boolean; appearance: boolean; mode: CopyMode; policy: SourceChoice }
 /** Replace a list with another side's list (votes, candidates, optionally name and letters, colour), or add it beside
  *  the existing lists. Rules, agreements and blocs stay with the destination: copying them is a separate act. */
-export function planWholeList(o: { from: CopySource; to: Scenario; ctx?: { base?: Scenario }; srcId: string; dstId: string | null; opts: WholeListOptions; newId?: string }): Plan {
+export function planWholeList(o: { from: CopySource; to: Scenario; ctx?: { base?: Scenario }; srcId: string; dstId: string | null; opts: WholeListOptions; newId?: string; remove?: Removal[] }): Plan {
   const ctx = o.ctx ?? {};
   const src = o.from.sc.lists.find((l) => l.id === o.srcId);
   if (!src) return refuse('The list no longer exists.', 'הרשימה כבר אינה קיימת.');
@@ -267,6 +293,7 @@ export function planWholeList(o: { from: CopySource; to: Scenario; ctx?: { base?
       if (o.opts.appearance && dst.color !== src.color) add({ type: 'setListMeta', listId: dstId, patch: { color: src.color } });
     }
     if (o.opts.candidates || !o.dstId) for (const a of rosterActions(o.from, src, w, dstId)) add(a);
+    for (const a of removalActions(w, (o.remove ?? []).filter((r) => r.listId !== dstId))) add(a);
   } catch (e) { return refuse(e instanceof Error ? e.message : String(e), e instanceof Error ? e.message : String(e)); }
   let votesPlan: Plan | null = null;
   if (o.opts.votes) {

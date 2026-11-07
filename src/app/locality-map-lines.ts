@@ -11,11 +11,11 @@ export function drawMapLines(map:Leaflet.Map,data:FeatureCollection,enabled:Read
   const svg=map.getPane('verified-lines')!.querySelector('svg')!,ns='http://www.w3.org/2000/svg';
   const defs=document.createElementNS(ns,'defs');
   const patterns=new Map<string,string>();
-  for(const line of MAP_LINES.filter(x=>x.fill)){
+  for(const line of MAP_LINES.filter(x=>x.fill&&x.fill!=='solid')){
     const pattern=document.createElementNS(ns,'pattern'),path=document.createElementNS(ns,'path');
-    const id=`map-hatch-${Leaflet.stamp(renderer)}-${line.id}`,cross=line.fill==='cross',size=cross?14:8;
+    const id=`map-hatch-${Leaflet.stamp(renderer)}-${line.id}`,cross=line.fill==='cross',size=8;
     pattern.setAttribute('id',id);pattern.setAttribute('patternUnits','userSpaceOnUse');pattern.setAttribute('width',String(size));pattern.setAttribute('height',String(size));
-    path.setAttribute('d',cross?'M0 0L14 14 M0 14L14 0':'M-2 2L2-2 M0 8L8 0 M6 10L10 6');
+    path.setAttribute('d',cross?'M0 0L8 8 M0 8L8 0':'M-2 2L2-2 M0 8L8 0 M6 10L10 6');
     path.setAttribute('stroke',dark?line.dark:line.color);path.setAttribute('stroke-width',String(LINE_STROKE.hatchWidth));path.setAttribute('stroke-linecap',LINE_STROKE.cap);
     pattern.append(path);defs.append(pattern);patterns.set(line.id,id);
   }
@@ -30,9 +30,9 @@ export function drawMapLines(map:Leaflet.Map,data:FeatureCollection,enabled:Read
       const visible:FeatureCollection={type:'FeatureCollection',features:own.filter(f=>lineVisibleAtZoom(f.properties,z))};
       return Leaflet.geoJSON(visible,{
         pane:'verified-lines',interactive:false,
-        style:{renderer,pane:'verified-lines',color:dark?line.dark:line.color,weight:line.fill?0:LINE_STROKE.width,
+        style:{renderer,pane:'verified-lines',color:dark?line.dark:line.color,weight:line.fill&&!line.outline?0:LINE_STROKE.width,
           lineCap:LINE_STROKE.cap,opacity:1,dashArray:line.dash||undefined,fill:!!line.fill,
-          fillColor:line.fill?`url(#${patterns.get(line.id)})`:undefined,fillOpacity:1},
+          fillColor:line.fill==='solid'?(dark?line.dark:line.color):line.fill?`url(#${patterns.get(line.id)})`:undefined,fillOpacity:line.fill==='solid'?.18:1},
       }).addTo(map);
     });
     onHidden?.(hidden);

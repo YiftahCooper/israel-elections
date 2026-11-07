@@ -6,6 +6,7 @@ import { validItemAnswers, validAnswers, sourceChoice, sourceValue, type Prefere
 import type { Family } from '../families/model.ts';
 import { nextScenarioColor } from './scenarioIdentity.ts';
 import { PRESETS, type FeatureId, type Visibility } from './features.ts';
+import { validSettings, settingValue, settingDefault, SETTINGS_KEY, SETTING_IDS, type RowId, type SettingId, type SettingValues } from './settings.ts';
 // Application state. Undo/redo keeps immutable scenario snapshots; saved scenarios remain action logs.
 import { useSyncExternalStore } from 'react';
 import type { ElectionDataset, ElectionId, ElectionIndexEntry } from '../data/schema.ts';
@@ -47,14 +48,10 @@ export interface State {
   theme: 'light' | 'dark';
   level: Level;
   customFeatures: Partial<Record<FeatureId, Visibility>> | null;
-  /** the one-line Simple-mode hint was dismissed (remembered across visits) */
-  hintDismissed: boolean;
-  digits: number;
-  layout: 'hemicycle' | 'blocks';
-  showComponentSeats: boolean;
-  colorBy: 'list' | 'bloc' | 'party';
+  /** personal settings the user set (settings.ts); the rest follow their defaults */
+  settings: Partial<SettingValues>;
   saved: SavedScenario[];
-  toast: { kind: 'error' | 'info'; text: string } | null;
+  toast: { kind: 'error' | 'info'; text: string; action?: { label: string; run: () => void } } | null;
   /** the last election that failed to load, and why (the previous election stays open) */
   loadError: { id: ElectionId; message: string } | null;
   notice: string | null;
@@ -62,6 +59,8 @@ export interface State {
   voteSource: SourceChoice;
   preferences: PreferenceAnswers;
   settingsOpen?: boolean;
+  /** a row to scroll to and highlight when Settings opens (a deep link from the point of use) */
+  settingsFocus?: RowId | null;
   preferenceAsk: PreferenceAsk | null;
   preferenceFor: Record<string, string> | null;
   /** per-election work kept while switching elections (scenario + undo history) */
@@ -94,13 +93,22 @@ const ITEM_PREFERENCES_KEY = 'israel-elections:item-preferences';
 const rememberedItems = (() => { try { return validItemAnswers(JSON.parse(globalThis.localStorage?.getItem(ITEM_PREFERENCES_KEY) ?? '{}')); } catch { return {}; } })();
 const PREFERENCES_KEY = 'israel-elections:preferences';
 const rememberedPreferences = (() => { try { const raw = globalThis.localStorage?.getItem(PREFERENCES_KEY); return raw ? validAnswers(JSON.parse(raw)) : {}; } catch { return {}; } })();
-setFactionDefault(rememberedPreferences.jointSeats === 'on');
+// Joint lists start counted by party unless the user turned it off (docs/design/settings.md)
+setFactionDefault(rememberedPreferences.jointSeats !== 'off');
 const persisted = (() => { try { return JSON.parse(globalThis.localStorage?.getItem(LS) ?? '{}'); } catch { return {}; } })();
+// pre-release: only the current key is read; nothing older is carried over (docs/design/settings.md)
+const rememberedSettings = (() => { try { const raw = JSON.parse(globalThis.localStorage?.getItem(SETTINGS_KEY) ?? 'null'); return raw?.v === 2 ? validSettings(raw.values) : {}; } catch { return {}; } })();
+const deviceDark = () => globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches === true;
+const resolvedTheme = (pref: SettingValues['theme']): 'light' | 'dark' => pref === 'device' ? (deviceDark() ? 'dark' : 'light') : pref;
+const initialLevel: Level = LEVELS.includes(persisted.level) ? persisted.level : 'simple';
+const TOOL_IDS = new Set(['board', 'families', 'scenarios', 'whatif', 'coal', 'walk', 'structure', 'compare', 'security', 'charts', 'turnout', 'sens', 'loc', 'rules', 'sources']);
+const compareStart = (values: Partial<SettingValues>, level: Level) => settingValue(values, 'compareWith', level) === 'official' ? 'official' : 'auto';
 
 let state: State = {
-  datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, reference: null, markOfficial: persisted.markOfficial === true, past: [], future: [], selectedListId: null, blocPanel: null, tool: null, compareWith: 'auto',
-  lang: persisted.lang ?? 'he', theme: persisted.theme ?? (globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
-  level: LEVELS.includes(persisted.level) ? persisted.level : 'simple', customFeatures: persisted.customFeatures ?? null, hintDismissed: persisted.hintDismissed === true, digits: persisted.digits ?? 2, layout: 'hemicycle', colorBy: 'list', showComponentSeats: persisted.showComponentSeats !== false,
+  datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, reference: null, markOfficial: persisted.markOfficial === true, past: [], future: [], selectedListId: null, blocPanel: null,
+  tool: settingValue(rememberedSettings, 'openOn', initialLevel) === 'last' && TOOL_IDS.has(persisted.tool) ? persisted.tool : null, compareWith: compareStart(rememberedSettings, initialLevel),
+  lang: persisted.lang ?? 'he', theme: resolvedTheme(settingValue(rememberedSettings, 'theme', initialLevel)),
+  level: initialLevel, customFeatures: persisted.customFeatures ?? null, settings: rememberedSettings,
   saved: persisted.saved ?? [], toast: null, loadError: null, notice: null, voteSource: sourceChoice(rememberedPreferences.voteSource ?? 'proportional'), preferences: rememberedPreferences, preferenceAsk: null, preferenceFor: rememberedItems, sessions: {}, scenarioDrafts: {},
   compare: { drafts: {}, swap: null, overrides: {} },
 };
@@ -108,7 +116,8 @@ const listeners = new Set<() => void>();
 const emit = () => { for (const l of listeners) l(); };
 /** Writes settings and saved scenarios; returns false if the browser refused (full or disabled). */
 const persist = (): boolean => {
-  try { localStorage.setItem(LS, JSON.stringify({ lang: state.lang, theme: state.theme, level: state.level, customFeatures: state.customFeatures, markOfficial: state.markOfficial, hintDismissed: state.hintDismissed, digits: state.digits, showComponentSeats: state.showComponentSeats, saved: state.saved}));
+  try { localStorage.setItem(LS, JSON.stringify({ lang: state.lang, level: state.level, customFeatures: state.customFeatures, markOfficial: state.markOfficial, tool: state.tool, saved: state.saved}));
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify({ v: 2, values: state.settings }));
     // its own key, so the answer survives independently of the other settings
     localStorage.setItem(PREFERENCES_KEY, JSON.stringify(state.preferences));
     localStorage.setItem(ITEM_PREFERENCES_KEY, JSON.stringify(validItemAnswers(state.preferenceFor))); return true; }
@@ -129,15 +138,45 @@ export function setState(patch: Partial<State> | ((s: State) => Partial<State>))
   emit();
 }
 export function useStore<T>(sel: (s: State) => T): T {
-  return useSyncExternalStore((l) => { listeners.add(l); return () => listeners.delete(l); }, () => sel(state));
+  const snap = () => sel(state);
+  return useSyncExternalStore((l) => { listeners.add(l); return () => listeners.delete(l); }, snap, snap);
 }
 
 let toastTimer: ReturnType<typeof setTimeout> | undefined;
-export function toast(kind: 'error' | 'info', text: string) {
-  setState({ toast: { kind, text } });
+/** A short message. With Keep messages open it stays until closed; one with an action (Undo) stays a little longer. */
+export function toast(kind: 'error' | 'info', text: string, action?: { label: string; run: () => void }) {
+  setState({ toast: { kind, text, ...(action ? { action } : {}) } });
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => setState({ toast: null }), kind === 'error' ? 7000 : 3500);
+  if (getSetting('keepMessages')) return;
+  toastTimer = setTimeout(() => setState({ toast: null }), kind === 'error' || action ? 7000 : 3500);
 }
+
+// ---- Personal settings (settings.ts): sparse values, defaults by level, never part of a scenario ----
+export function getSetting<K extends SettingId>(id: K): SettingValues[K] { return settingValue(state.settings, id, state.level); }
+export function useSetting<K extends SettingId>(id: K): SettingValues[K] { return useStore(st => settingValue(st.settings, id, st.level)); }
+/** Sets one setting. Choosing the value a default already gives still records it, so it stops following the level. */
+export function setSetting<K extends SettingId>(id: K, value: SettingValues[K]) {
+  setState(st => ({ settings: { ...st.settings, [id]: value }, ...(id === 'theme' ? { theme: resolvedTheme(value as SettingValues['theme']) } : {}) }));
+}
+/** Returns the given settings to their defaults; gives back what they were, for Undo. */
+export function resetSettings(ids: readonly SettingId[]): Partial<SettingValues> {
+  const before = state.settings;
+  const settings = Object.fromEntries(Object.entries(before).filter(([k]) => !ids.includes(k as SettingId))) as Partial<SettingValues>;
+  setState({ settings, theme: resolvedTheme(settingValue(settings, 'theme', state.level)) });
+  return before;
+}
+export function restoreSettings(values: Partial<SettingValues>) {
+  setState({ settings: values, theme: resolvedTheme(settingValue(values, 'theme', state.level)) });
+}
+/** A setting differs from its default when the user's value is not what the level would give anyway. */
+export const settingChanged = (st: Pick<State, 'settings' | 'level'>, id: SettingId) => st.settings[id] !== undefined && st.settings[id] !== settingDefault(id, st.level);
+export { SETTING_IDS };
+// "Device" follows the system theme live, also when it changes at night
+globalThis.matchMedia?.('(prefers-color-scheme: dark)').addEventListener?.('change', () => {
+  if (settingValue(state.settings, 'theme', state.level) === 'device') setState({ theme: resolvedTheme('device') });
+});
+/** The device's reduce-motion request always applies; the setting can only add to it. */
+export const motionReduced = () => getSetting('reduceMotion') || globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true;
 
 /** Resets use the same personal baseline as comparisons. */
 export function baseContext(ds: ElectionDataset | undefined, splitBaseline = factionDefault()): ActionContext {
@@ -239,7 +278,7 @@ export async function openElection(id: ElectionId, from?: { id?: string; name: s
       ({ scenario, past, future, reference } = sessions[id]!);
     }
     delete sessions[id];
-    setState({ electionId: id, scenario, reference, past, future, sessions, selectedListId: null, blocPanel: null, compareWith: 'auto', loadError: null, notice });
+    setState({ electionId: id, scenario, reference, past, future, sessions, selectedListId: null, blocPanel: null, compareWith: compareStart(state.settings, state.level), loadError: null, notice });
     return true;
   } catch (e) {
     if (seq === openSeq) setState({ loadError: { id, message: e instanceof Error ? e.message : String(e) } });
@@ -453,7 +492,7 @@ export function askPreference(ask: PreferenceAsk) {
 }
 export function setPreference(id: PreferenceId, value?: string) {
   if (id === 'jointSeats') {
-    const on = value === 'on';
+    const on = value !== 'off'; // no answer is the default, which is On
     setFactionDefault(on);
     const one = (s: Scenario): Scenario => {
       const ds = state.datasets[s.electionId];
@@ -474,7 +513,9 @@ export function setPreference(id: PreferenceId, value?: string) {
   }
   const preferences = { ...state.preferences };
   if (value) preferences[id] = value; else delete preferences[id];
-  setState({ preferences, preferenceFor: Object.fromEntries(Object.entries(state.preferenceFor ?? {}).filter(([key]) => !key.startsWith(`${id}:`))), ...(id === 'voteSource' && value ? { voteSource: sourceChoice(value) } : {}), ...(id === 'comparison' && value ? { markOfficial: value === 'official' } : {}) });
+  // Answers remembered for one list, bloc or scenario are kept: the more specific answer still wins, and they are
+  // cleared only by Ask again or Forget all (docs/design/settings.md §5), never silently.
+  setState({ preferences, ...(id === 'voteSource' && value ? { voteSource: sourceChoice(value) } : {}), ...(id === 'comparison' && value ? { markOfficial: value === 'official' } : {}) });
 }
 export function answerPreference(value: string, scope: 'once' | 'item' | 'always') {
   const ask = state.preferenceAsk; if (!ask) return;
@@ -498,9 +539,9 @@ export function chooseSource(key: string, src: SourceChoice) {
 export function useVoteSource(): SourceChoice {
   return useStore(st => st.voteSource);
 }
-/** Percentage precision in force: the precision setting is an Expert control, so other levels use 2. */
+/** Percentage precision in force at every level (a hidden setting keeps working); its default follows the level. */
 export function useDigits(): number {
-  return useStore((st) => (st.level === 'expert' ? st.digits : 2));
+  return useSetting('decimals');
 }
 /** Which interface level is on: `standard` is true for Standard and Expert. */
 export function useLevel() {
@@ -508,6 +549,10 @@ export function useLevel() {
   return { level, simple: level === 'simple', standard: level !== 'simple', expert: level === 'expert' };
 }
 
+/** Switches the interface level (top bar and Settings). Simple balances vote edits proportionally (ADR 0013). */
+export function setLevel(level: Level) {
+  setState({ level, customFeatures: null, ...(level === 'simple' ? { voteSource: { kind: 'proportional' as const } } : {}) });
+}
 export function featureVisibility(id: FeatureId): Visibility {
   return state.customFeatures?.[id] ?? PRESETS[state.level][id];
 }

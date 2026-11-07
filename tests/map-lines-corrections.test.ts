@@ -1,3 +1,4 @@
+import {lineVisibleAtZoom} from '../src/app/locality-map-line-policy';
 import {expect,it} from 'vitest';
 import {readFileSync} from 'node:fs';
 import type {Feature,FeatureCollection,Position} from 'geojson';
@@ -46,5 +47,21 @@ it('does not enclose Augusta Victoria in the Israeli Scopus fragment or invent a
   if(fs[0].geometry.type==='LineString'){
     expect(fs[0].geometry.coordinates.every(c=>c[1]>31.7893)).toBe(true);
     expect(fs[0].geometry.coordinates[0]).not.toEqual(fs[0].geometry.coordinates.at(-1));
+  }
+});
+
+it('keeps both Government House armistice edges throughout every permitted zoom, independently of the fill',()=>{
+  for(let zoom=3;zoom<=15;zoom++){
+    const edges=layer('green-line').filter(f=>[288825225,1042593026].includes(f.properties?.osmWay));
+    expect(edges).toHaveLength(2);
+    for(const f of edges){
+      expect(f.properties?.maxZoom).toBe(11);
+      // Every latitude in the former 2km hole crosses a retained source edge.
+      if(f.geometry.type==='LineString')for(let lat=31.745;lat<31.761;lat+=.0005){
+        const c=f.geometry.coordinates;
+        expect(c.some((p,i)=>i>0&&(p[1]>lat)!==(c[i-1][1]>lat))).toBe(true);
+      }
+      expect(lineVisibleAtZoom(f.properties,zoom)).toBe(zoom<=11);
+    }
   }
 });

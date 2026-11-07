@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import type { ElectionDataset, ElectionIndexEntry } from '../src/data/schema.ts';
 import { baselineOf } from '../src/app/derive.ts';
 import { applyAction } from '../src/model/actions.ts';
-import { copyUnit, matchRows, sharedCandidates, type MatchRow } from '../src/app/compare/match.ts';
+import { copyUnit, matchRows, mirrorRows, sharedCandidates, type MatchRow } from '../src/app/compare/match.ts';
 
 const load = (id: string): ElectionDataset => JSON.parse(readFileSync(`public/data/${id}.json`, 'utf8'));
 const elections: ElectionIndexEntry[] = JSON.parse(readFileSync('public/data/elections.json', 'utf8'));
@@ -118,4 +118,28 @@ it('ranks a hand mapping by candidates who ran on both lists', () => {
   };
   expect(sharedCandidates(yashar, l(k25, '25-כן'))).toBe(expected(l(k25, '25-כן')));
   expect(sharedCandidates(yashar, l(k25, '25-כן'))).toBeGreaterThan(sharedCandidates(yashar, l(k25, '25-פה')));
+});
+
+describe('the later election drawn on the left', () => {
+  // the open scenario stays on the right even when the other side is a later election: rows are matched earlier → later, then mirrored
+  const rows = mirrorRows(matchRows(k25, k26));
+  it('keeps the Joint List merger as one row, Balad included', () => {
+    const row = rowOf(rows, 'left', '26-ודם')!;
+    expect(row.tag).toBe('merged');
+    expect(new Set(row.right)).toEqual(new Set(['25-ום', '25-ד']));
+  });
+  it('keeps the split group, its source now on the right', () => {
+    const g = rows.filter((r) => r.group === 'split:25-ט');
+    expect(g.filter((r) => r.inRight === '25-ט')).toHaveLength(2);
+    expect(g.some((r) => r.inLeft)).toBe(false);
+    for (const r of g) expect(copyUnit(r, rows, 'toLeft')).toEqual({ src: ['25-ט'], dst: expect.arrayContaining(['26-ט', '26-ב', '26-ני']) });
+  });
+  it('moves notes to the side they describe', () => {
+    expect(rowOf(rows, 'right', '25-מחל')!.notes).toEqual([{ side: 'left', kind: 'with', partyIds: ['new-hope'] }]);
+  });
+  it('uses each list once', () => {
+    const left = rows.flatMap((r) => r.left), right = rows.flatMap((r) => r.right);
+    expect(new Set(left).size).toBe(left.length);
+    expect(new Set(right).size).toBe(right.length);
+  });
 });

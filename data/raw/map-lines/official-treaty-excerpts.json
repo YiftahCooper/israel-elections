@@ -12,6 +12,13 @@
   },
   "jordanAnnex1a2A7": {
     "en": "The orthophoto maps and image maps showing the line separating Jordan from the territory that came under Israeli Military government control in 1967 shall have that line indicated in a different presentation and the legend shall carry on it the following disclaimer: “This line is the administrative boundary between Jordan and the territory which came under Israeli military government control in 1967. Any treatment of this line shall be without prejudice to the status of the territory.”",
-    "he": "מפות האורתופוטו ומפות ההתאמה המראות את הקו המפריד בין ירדן לבין הגדה המערבית יכללו את הקו המצויין בצורה גרפית שונה, והמקרא יכלול את ההערה המסייגת הבאה: ״קו זה הוא הגבול המינהלי בין ירדן לבין השטח שבא לשליטת הממשל הצבאי הישראלי ב-1967. כל טיפול בקו זה יהיה בלא קביעה מוקדמת באשר למעמד שטח זה״."
+    "he": "מפות האורתופוטו ומפות ההדמאה המראות את הקו המפריד בין ירדן לבין הגדה המערבית יכללו את הקו המצויין בצורה גרפית שונה, והמקרא יכלול את ההערה המסייגת הבאה: ״קו זה הוא הגבול המינהלי בין ירדן לבין השטח שבא לשליטת הממשל הצבאי הישראלי ב-1967 כל טיפול בקו זה יהיה בלא קביעה מוקדמת באשר למעמד שטח זה״."
+  },
+  "egyptArticleII": {
+    "en": "The permanent boundary between Egypt and Israel is the recognized international boundary between Egypt and the former mandated territory of Palestine, as shown on the map at Annex II, without prejudice to the issue of the status of the Gaza Strip.",
+    "source": "UNTS 1136, I-17813, p.117 (PDF index134); retained one-page extract scans/egypt-treaty-article-II.pdf",
+    "url": "https://treaties.un.org/doc/Publication/UNTS/Volume%201136/v1136.pdf#page=135",
+    "downloadSha256": "2b6a8df7791544d9877ee32e337edc6eb8c5ef11cbae7cdb386d5737316fc8d2",
+    "note": "MFA embassy HTML mistypes is as in. English quotation checked against the original UNTS page instead; Hebrew is explicitly marked as a translation."
   }
 }

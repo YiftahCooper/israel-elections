@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { choose } from './choices.ts';
 for(const election of ['k26','k25']) test(`${election}: cosmetic colours stay official through save and share; reset keeps votes`,async({page})=>{
- await page.addInitScript(()=>localStorage.setItem('israel-elections:v1',JSON.stringify({lang:'en',theme:'light',level:'expert',hintDismissed:true})));
+ await page.addInitScript(()=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang:'en',theme:'light',level:'expert',hintDismissed:true})));
  await page.goto('/');await choose(page.getByRole('button',{name:'Election',exact:true}),election);
  const official=async()=>{
   await expect(page.locator('.band .scenario-switcher .choice-trigger')).toHaveAttribute('data-value','official');

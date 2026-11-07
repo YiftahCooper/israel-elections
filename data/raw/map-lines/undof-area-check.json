@@ -1,0 +1,20 @@
+{
+  "sourceFillPath": 900,
+  "alphaPath": 1742,
+  "bravoPaths": [
+    1743,
+    1744,
+    1745,
+    1746,
+    1747,
+    1748
+  ],
+  "operation": "Exact planar source-path split; largest resulting polygon, excluding the Quneitra A/A-1 strip and subpixel stroke slivers",
+  "sourceFillAreaPt2": 17114.416957032052,
+  "separationAreaPt2": 16982.009196522387,
+  "discardedAreaPt2": 132.4077605096645,
+  "uncertaintyM": 210,
+  "registration": "alpha-line-check.json",
+  "agreement": "S/11302/Add.1 Annex A B(3), C",
+  "joins": "Native Bravo pieces retained separately; no interpolated connectors"
+}

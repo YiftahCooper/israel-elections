@@ -1,13 +1,12 @@
 import { groupingName } from '../groupingName.ts';
 import { electionLabel } from '../electionLabel.ts';
-import { ChoicePicker } from './ChoicePicker.tsx';
 import { useEffect, useRef, useState } from 'react';
 import type { Scenario, SimList } from '../../model/scenario.ts';
 import type { ElectionId } from '../../data/schema.ts';
 import { baselineOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt } from '../format.ts';
-import { answerPreference, chooseSource, loadDataset, setPreference, setState, useStore, useVoteSource } from '../store.ts';
+import { answerPreference, chooseSource, loadDataset, setState, useStore, useVoteSource } from '../store.ts';
 import { PREFERENCES, sourceValue, type PreferenceId } from '../preferences.ts';
 import { Info } from './ui.tsx';
 
@@ -24,10 +23,10 @@ export function SourcePicker({ s, l }: { s: Scenario; l: SimList }) {
   return (
     <div>
       <label className="field">
-        <span className="row" style={{ gap: 6 }}>{L('Take votes from / return votes to', 'לקיחת קולות מ־ / החזרתם אל')}
+        <span className="row" style={{ gap: 6 }}>{L('Votes come from', 'הקולות מגיעים מ־')}
           <Info title={L('Different counterfactuals', 'תרחישים שונים')}>{L('Taking votes from all other lists keeps turnout and the valid total fixed. New voters (or voters staying home) change the valid total, and so the threshold in votes. A transfer moves votes from or to one list — if that list is below the threshold, those votes stop being wasted. These give different seat results.', 'לקיחה מכל שאר הרשימות שומרת על ההצבעה ועל סך הכשרים. מצביעים חדשים (או נמנעים) משנים את סך הכשרים ולכן את אחוז החסימה בקולות. מעבר מזיז קולות מול רשימה אחת — אם היא מתחת לחסימה, הקולות מפסיקים להתבזבז. התוצאות שונות.')}</Info>
         </span>
-        <select aria-label={L('Take votes from / return votes to', 'לקיחת קולות מ־ / החזרתם אל')} value={src.kind === 'transfer' ? `t:${src.listId}` : src.kind} onChange={(e) => {
+        <select aria-label={L('Votes come from', 'הקולות מגיעים מ־')} value={src.kind === 'transfer' ? `t:${src.listId}` : src.kind} onChange={(e) => {
           const v = e.target.value;
           chooseSource(`list:${l.id}`, v === 'new' ? { kind: 'new' } : v === 'proportional' ? { kind: 'proportional' } : { kind: 'transfer', listId: v.slice(2) });
         }}>
@@ -60,13 +59,13 @@ export function SourceDialog() {
   const others = (s?.lists ?? []).filter(x => !ask?.exclude?.includes(x.id) && !x.withdrawn).sort((a, b) => b.votes - a.votes);
   const id = ask?.id ?? 'voteSource';
   const label = L(PREFERENCES[id].label[0], PREFERENCES[id].label[1]);
-  return <dialog ref={dialog} tabIndex={-1} className="source-ask" aria-label={id === 'voteSource' ? L('Votes from', 'הקולות מגיעים מ') : label}
+  return <dialog ref={dialog} tabIndex={-1} className="source-ask" aria-label={label}
     onCancel={e => { e.preventDefault(); cancel(); }} onKeyDown={e => { if (e.key === 'Escape') e.stopPropagation(); }}
     onClick={e => { if (e.target === e.currentTarget) cancel(); }}>
     <p className="small" style={{ margin: 0 }}><b>{ask?.title}</b>{' '}
       <Info title={label}>{id === 'voteSource'
         ? L('Other lists: taken from all, in proportion; turnout unchanged. New voters: turnout changes. One list: only that list gives or takes. A remembered donor is asked again if unavailable or part of the edited group.', 'שאר הרשימות: מכולן, באופן יחסי; ההצבעה ללא שינוי. מצביעים חדשים: ההצבעה משתנה. רשימה אחת: רק היא נותנת או מקבלת. נשאל שוב אם הרשימה שנזכרה אינה זמינה או נכללת בקבוצה הנערכת.')
-        : L('Loaded scenario: highlight only your subsequent edits. Official result: highlight all changes from the election result.', 'התרחיש הטעון: סימון השינויים הבאים שלכם בלבד. התוצאה הרשמית: סימון כל השינויים מתוצאות הבחירות.')}</Info></p>
+        : L('Opened scenario: only your newer changes are marked. Official result: every difference is marked.', 'התרחיש שנפתח: מסומנים רק השינויים החדשים. התוצאה הרשמית: מסומן כל הבדל.')}</Info></p>
     <form onSubmit={e => { e.preventDefault(); if (value) answerPreference(value, scope); }}>
       <label className="field">{label}
         <select aria-label={label} value={value} onChange={e => setValue(e.target.value)}>
@@ -85,7 +84,7 @@ export function SourceDialog() {
           ['always', L('Always', 'תמיד')],
         ] as const).map(([v, text]) => <label key={v}><input type="radio" name="preference-scope" value={v} checked={scope === v} onChange={() => setScope(v)} />{text}</label>)}
       </fieldset>
-      <p className="tiny muted">{L('Manage answers in Your settings.', 'ניהול התשובות בהגדרות שלכם.')}</p>
+      <p className="tiny muted"><button type="button" className="link-btn" onClick={() => { cancel(); setState({ settingsOpen: true, settingsFocus: id === 'comparison' ? 'markChanges' : 'voteSource' }); }}>{L('Change in Settings', 'שינוי בהגדרות')}</button></p>
       <div className="row">
         <button type="submit" className="btn small primary" disabled={!value}>{L('Apply', 'החלה')}</button>
         <button type="button" className="btn small ghost" onClick={cancel}>{L('Cancel', 'ביטול')}</button>
@@ -94,69 +93,74 @@ export function SourceDialog() {
   </dialog>;
 }
 
-/** Registry-driven Settings: every question shows its Always answer and each item's remembered answer,
- *  and each can go back to asking ("Just this once" stores nothing, so it is the Ask each time state). */
-export function PreferenceSettings() {
+/** The answers remembered for one list, bloc or scenario under a question, shown under that question in Settings.
+ *  Collapsed by default; each can be asked again, or all forgotten at once. */
+export function RememberedAnswers({ id }: { id: PreferenceId }) {
   const L = useL();
   const lang = useLang();
-  const answers = useStore(st => st.preferences);
   const perItem = useStore(st => st.preferenceFor);
   const s = useStore(st => st.scenario);
   const datasets = useStore(st => st.datasets);
   const saved = useStore(st => st.saved);
   const elections = useStore(st => st.elections);
+  const [open, setOpen] = useState(false);
   const requested = useRef(new Set<string>());
   useEffect(() => {
-    for (const election of new Set(Object.keys(perItem ?? {}).filter(k => k.startsWith('voteSource:')).map(k => k.split(':')[1]))) {
+    for (const election of new Set(Object.keys(perItem ?? {}).filter(k => k.startsWith(`${id}:`)).map(k => k.split(':')[1]).filter(Boolean))) {
       if (!datasets[election as ElectionId] && !requested.current.has(election)) {
         requested.current.add(election);
         void loadDataset(election as ElectionId).catch(() => {});
       }
     }
-  }, [perItem, datasets]);
-  const listsOf = (election: string) => s?.electionId === election ? s.lists : datasets[election as ElectionId] ? baselineOf(datasets[election as ElectionId]!).lists : [];
+  }, [perItem, datasets, id]);
+  // a list is looked up wherever it can live: the open scenario, another election's session, a Compare side (a list
+  // copied in as new exists only there), then the election's official lists
+  const sessions = useStore(st => st.sessions), drafts = useStore(st => st.compare.drafts);
+  const listsOf = (election: string) => {
+    const scenarios = [s, sessions[election as ElectionId]?.scenario, ...Object.values(drafts).map(d => d.scenario)].filter(x => x?.electionId === election);
+    const base = datasets[election as ElectionId] ? baselineOf(datasets[election as ElectionId]!).lists : [];
+    return [...scenarios.flatMap(x => x!.lists), ...base];
+  };
   const blocsOf = (election: string) => s?.electionId === election ? s.blocs : datasets[election as ElectionId] ? baselineOf(datasets[election as ElectionId]!).blocs : [];
-  const listName = (election: string, id: string) => { const l = listsOf(election).find(x => x.id === id); return l ? listLabel(l, lang) : (lang === 'he' ? 'רשימה לא ידועה' : 'Unknown list'); };
-  const answerLabel = (id: PreferenceId, v: string, election: string) => {
+  const listName = (election: string, lid: string) => { const l = listsOf(election).find(x => x.id === lid); return l ? listLabel(l, lang) : (lang === 'he' ? 'רשימה לא ידועה' : 'Unknown list'); };
+  const answerLabel = (v: string, election: string) => {
     const o = PREFERENCES[id].options.find(x => x.value === v);
     return o ? L(o.label[0], o.label[1]) : v.startsWith('t:') ? listName(election, v.slice(2)) : v;
   };
   // keys are "<question>:<election or empty>:<item>" (store.ts preferenceKey)
   const itemLabel = (election: string, key: string) => {
-    const [kind, ...rest] = key.split(':'), id = rest.join(':');
-    const name = kind === 'list' ? listName(election, id)
-      : kind === 'bloc' && id === 'null' ? L('No bloc', 'ללא גוש') : kind === 'bloc' ? ((b) => b ? groupingName(b, lang) : id)(blocsOf(election).find(b => b.id === id))
+    const [kind, ...rest] = key.split(':'), item = rest.join(':');
+    const name = kind === 'list' ? listName(election, item)
+      : kind === 'bloc' && item === 'null' ? L('No bloc', 'ללא גוש') : kind === 'bloc' ? ((b) => b ? groupingName(b, lang) : item)(blocsOf(election).find(b => b.id === item))
       : saved.find(x => x.id === key)?.name ?? key;
     const e = election ? elections.find(x => x.id === election) : undefined;
     return e ? `${name} (${electionLabel(e, elections, lang)})` : name;
   };
-  const forget = (key: string) => setState({ preferenceFor: Object.fromEntries(Object.entries(perItem ?? {}).filter(([k]) => k !== key)) });
-  return <>{Object.keys(perItem ?? {}).length > 0 && <button className="btn small" onClick={e => { e.currentTarget.closest('dialog')?.focus({ preventScroll: true }); setState({ preferenceFor: {} }); }}>{L('Clear all answers', 'מחיקת כל התשובות')}</button>}{(Object.keys(PREFERENCES) as PreferenceId[]).map(id => {
-    const pref = PREFERENCES[id], value = answers[id] ?? (id === 'jointSeats' ? 'off' : 'ask');
-    const items = Object.entries(perItem ?? {}).filter(([k, v]) => {
-      if (!k.startsWith(`${id}:`)) return false;
-      const [, election, kind, ...rest] = k.split(':');
-      if (id !== 'voteSource') return true;
-      if (v.startsWith('t:') && !listsOf(election).some(l => l.id === v.slice(2) && !l.withdrawn)) return false;
-      const entity = rest.join(':');
-      if (kind === 'list') return listsOf(election).some(l => l.id === entity);
-      return kind === 'bloc' && (entity === 'null' || blocsOf(election).some(b => b.id === entity));
-    });
-    return <div className="pref-setting" key={id}>
-      <label className="field" style={{ maxWidth: 300 }}><span>{id === 'jointSeats' ? L('Joint-list seats by party', 'מנדטים משותפים לפי מפלגה') : L(pref.label[0], pref.label[1])}
-        {id === 'jointSeats' && <Info title={L('Joint-list default', 'ברירת מחדל לרשימות משותפות')}>{L('Starts joint lists as party factions without an edit. Votes and allocation stay unchanged; members without a recorded party stay with the list. Changing this keeps explicit list choices and other edits. Shared and saved scenarios retain their encoded starting choice.', 'רשימות משותפות מתחילות כסיעות מפלגתיות ללא עריכה. הקולות והחלוקה אינם משתנים; נבחרים ללא מפלגה מתועדת נשארים ברשימה. שינוי ההעדפה שומר בחירות מפורשות ועריכות אחרות. תרחישים שמורים ומשותפים שומרים את ברירת המחדל שקודדה בהם.')}</Info>}</span>
-        <ChoicePicker label={L(pref.label[0], pref.label[1])} value={value} onChange={v => setPreference(id, v === 'ask' ? undefined : v)} options={[
-          ...(id === 'jointSeats' ? [] : [{ value: 'ask', label: L('Ask each time', 'לשאול בכל פעם') }]),
-          ...pref.options.map(o => ({ value: o.value, label: L(o.label[0], o.label[1]) })),
-          ...(value.startsWith('t:') ? [{ value, label: s?.lists.find(l => l.id === value.slice(2)) ? listLabel(s.lists.find(l => l.id === value.slice(2))!, lang) : L('One list (when available)', 'רשימה אחת (כשזמינה)') }] : []),
-        ]} />
-      </label>
-      {items.length > 0 && <><p className="tiny muted pref-items-title">{id === 'comparison' ? L('For one scenario', 'לתרחיש אחד') : L('For one list or bloc', 'לרשימה או לגוש אחד')}</p>
-      <ul className="pref-items small" aria-label={L(pref.label[0], pref.label[1]) + ' · ' + (id === 'comparison' ? L('For one scenario', 'לתרחיש אחד') : L('For one list or bloc', 'לרשימה או לגוש אחד'))}>
+  const items = Object.entries(perItem ?? {}).filter(([k, v]) => {
+    if (!k.startsWith(`${id}:`)) return false;
+    const [, election, kind, ...rest] = k.split(':');
+    if (id === 'comparison') return true;
+    if (v.startsWith('t:') && !listsOf(election).some(l => l.id === v.slice(2) && !l.withdrawn)) return false;
+    const entity = rest.join(':');
+    if (kind === 'list') return listsOf(election).some(l => l.id === entity);
+    return kind === 'bloc' && (entity === 'null' || blocsOf(election).some(b => b.id === entity));
+  });
+  if (!items.length) return null;
+  const keep = (e: { currentTarget: Element }) => (e.currentTarget.closest('dialog') as HTMLElement | null)?.focus({ preventScroll: true });
+  const forget = (keys: string[]) => setState({ preferenceFor: Object.fromEntries(Object.entries(perItem ?? {}).filter(([k]) => !keys.includes(k))) });
+  const title = id === 'comparison' ? L('For one scenario', 'לתרחיש אחד') : L('For one list or bloc', 'לרשימה או לגוש אחד');
+  return <div className="pref-remembered">
+    <button type="button" className="btn small ghost pref-disclosure" aria-expanded={open} onClick={() => setOpen(o => !o)}>
+      {L(`Remembered for ${items.length}`, `נשמר ל־${items.length}`)} <span aria-hidden>{open ? '▾' : '▸'}</span></button>
+    <Info title={L('Remembered answers', 'תשובות שמורות')}>{L('An answer chosen with “For this list”, “For this bloc” or “For this scenario”. It wins over the default above, only for that item and election.', 'תשובה שנבחרה עם ״לרשימה זו״, ״לגוש זה״ או ״לתרחיש זה״. היא קודמת לברירת המחדל, רק לפריט ולבחירות האלה.')}</Info>
+    {open && <>
+      <ul className="pref-items small" aria-label={L(PREFERENCES[id].label[0], PREFERENCES[id].label[1]) + ' · ' + title}>
         {items.map(([k, v]) => { const [, election, ...rest] = k.split(':'); const name = itemLabel(election, rest.join(':'));
-          return <li key={k}><span><bdi>{name}</bdi>: <b><bdi>{answerLabel(id, v, election)}</bdi></b></span>
-            <button type="button" className="btn small ghost" aria-label={L(`Ask again for ${name}`, `לשאול שוב עבור ${name}`)} onClick={e => { e.currentTarget.closest('dialog')?.focus({ preventScroll: true }); forget(k); }}>{L('Ask again', 'לשאול שוב')}</button></li>; })}
-      </ul></>}
-    </div>;
-  })}</>;
+          return <li key={k}><span><bdi>{name}</bdi>{id === 'comparison' && <span className="muted"> {L('(this visit)', '(ביקור זה)')}</span>}: <b><bdi>{answerLabel(v, election)}</bdi></b></span>
+            <button type="button" className="btn small ghost" aria-label={L(`Ask again for ${name}`, `לשאול שוב עבור ${name}`)} onClick={e => { keep(e); forget([k]); }}>{L('Ask again', 'לשאול שוב')}</button></li>; })}
+      </ul>
+      {/* all of this question's answers, including any for a list no longer in its election */}
+      <button type="button" className="btn small" onClick={e => { keep(e); forget(Object.keys(perItem ?? {}).filter(k => k.startsWith(`${id}:`))); }}>{L('Forget all', 'מחיקת הכול')}</button>
+    </>}
+  </div>;
 }

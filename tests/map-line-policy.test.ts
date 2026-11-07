@@ -22,9 +22,32 @@ it('presents the treaty administrative sector distinctly with the published bili
  expect(MAP_LINES.every(x=>x.detailHe&&x.uncertaintyHe&&x.uncertaintyEn)).toBe(true);
  expect(mapLineSourceLabel('OSM · Israel relation','he')).toBe('OSM · יחס ישראל');
 });
-it('draws only the Blue Line ways checked against the actual 2000 withdrawal map',()=>{
+it('uses the complete native UN withdrawal line, including Har Dov and Margaliot',()=>{
+ const blue=fs.filter(f=>f.properties?.layer==='blue-line');expect(blue).toHaveLength(1);
  const check=JSON.parse(readFileSync('data/raw/map-lines/blue-line-check.json','utf8'));
- const ways=fs.filter(f=>f.properties?.layer==='blue-line').map(f=>f.properties?.osmWay).sort();
- expect(ways).toEqual([...check.acceptedWays].sort());expect(ways).toHaveLength(49);
- expect(check.excludedWays).toContain(1188316285);expect(check.accepted_max_m).toBeLessThan(200);
+ expect(blue[0].properties?.source).toContain('path 133');expect(blue[0].properties?.sourceDate).toBe('2000-07');
+ if(blue[0].geometry.type==='LineString'){
+  expect(blue[0].geometry.coordinates).toHaveLength(check.points_utm.length);
+  expect(Math.max(...blue[0].geometry.coordinates.map(c=>c[0]))).toBeGreaterThan(35.81);
+ }
+});
+it('pins the official Hebrew Annex wording against the retained government scan, PDF index 17',()=>{
+ expect(treaty.jordanAnnex1a2A7.he).toBe('מפות האורתופוטו ומפות ההדמאה המראות את הקו המפריד בין ירדן לבין הגדה המערבית יכללו את הקו המצויין בצורה גרפית שונה, והמקרא יכלול את ההערה המסייגת הבאה: ״קו זה הוא הגבול המינהלי בין ירדן לבין השטח שבא לשליטת הממשל הצבאי הישראלי ב-1967 כל טיפול בקו זה יהיה בלא קביעה מוקדמת באשר למעמד שטח זה״.');
+});
+it('keeps the Quneitra Alpha–Alpha-1 strip outside the A-to-B separation area',()=>{
+ const area=fs.find(f=>f.properties?.layer==='golan-separation')!;
+ expect(area.geometry.type).toBe('Polygon');expect(area.properties?.source).toContain('A/A-1 strip excluded');
+ // Interior of the separately printed Quneitra A/A-1 strip, from UN2916.
+ if(area.geometry.type==='Polygon'){
+  const [x,y]=[35.81182016,33.11959077],ring=area.geometry.coordinates[0];let inside=false;
+  for(let i=0,j=ring.length-1;i<ring.length;j=i++){
+   const a=ring[i],b=ring[j];if((a[1]>y)!==(b[1]>y)&&x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0])inside=!inside;
+  }
+  expect(inside).toBe(false);
+ }
+
+ const record=JSON.parse(readFileSync('data/raw/map-lines/undof-area-check.json','utf8'));
+ expect(record.sourceFillAreaPt2-record.separationAreaPt2).toBeGreaterThan(132);
+ expect(record.sourceFillAreaPt2-record.separationAreaPt2).toBeLessThan(133);
+ expect(fs.filter(f=>f.properties?.layer==='golan-bravo')).toHaveLength(6);
 });
