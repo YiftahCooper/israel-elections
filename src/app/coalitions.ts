@@ -1,4 +1,4 @@
-import type { GovernmentParticipant } from '../data/aftermath.ts';
+import type { GovernmentIndividual, GovernmentParticipant, GovernmentSupport } from '../data/aftermath.ts';
 import type { CoalitionChoices, CoalitionRole, SimList } from '../model/scenario.ts';
 /** Minimal winning coalitions: sets of lists with at least `majority` seats in which every member is
  *  needed (removing the smallest member drops below the majority). Every set must contain `required`.
@@ -75,3 +75,28 @@ export function recordedRoles(rows: readonly GovernmentParticipant[], lists: rea
     ? { in: pick('in'), support: pick('support'), abstain: pick('abstain'), out: [] } : null;
   return { recorded, choices };
 }
+
+/** Why the loaded roles' arithmetic differs from the recorded confidence vote, from the research itself
+ *  (data/meta/aftermath): individual MKs who voted apart from their list (individuals[]; modelled only in a
+ *  later stage, docs/design/individual-mks.md), roles left Any, partial participation counted whole, MKs who
+ *  voted neither way, and the research's own reconciliation status. null when there is no recorded vote or
+ *  the totals agree. */
+export type VoteGapReason =
+  | { kind: 'individual'; ind: GovernmentIndividual }
+  | { kind: 'unknown' | 'vote-only'; row: GovernmentParticipant }
+  | { kind: 'partial'; row: GovernmentParticipant; whole: number }
+  | { kind: 'not-voting'; n: number };
+export function recordedVoteGap(gov: Pick<GovernmentSupport, 'confidenceVote' | 'individuals' | 'reconciliation'>, vote: GovernmentVote,
+  recorded: ReturnType<typeof recordedRoles>['recorded'], seatsOf: (units: string[]) => number, total: number) {
+  const cv = gov.confidenceVote;
+  if (!cv || (vote.votesFor === cv.for && vote.against === cv.against)) return null;
+  const reasons: VoteGapReason[] = [
+    ...(gov.individuals ?? []).map((ind) => ({ kind: 'individual' as const, ind })),
+    ...recorded.filter((x) => x.role === null).map((x) => ({ kind: x.r.role === 'confidence-vote-only' && x.r.certainty !== 'unknown' ? 'vote-only' as const : 'unknown' as const, row: x.r })),
+    ...recorded.filter((x) => x.role !== null && x.r.seats !== null && x.units.length && x.r.seats < seatsOf(x.units)).map((x) => ({ kind: 'partial' as const, row: x.r, whole: seatsOf(x.units) })),
+  ];
+  const notVoting = total - cv.for - cv.against - vote.abstain;
+  if (notVoting > 0) reasons.push({ kind: 'not-voting', n: notVoting });
+  return { recorded: { for: cv.for, against: cv.against }, status: gov.reconciliation.status, reasons };
+}
+export type RecordedVoteGap = NonNullable<ReturnType<typeof recordedVoteGap>>;

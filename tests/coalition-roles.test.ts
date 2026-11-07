@@ -8,7 +8,7 @@ import { applyAction } from '../src/model/actions.ts';
 import { NO_COALITION, scenarioFromDataset, toEngineInput, validateScenario, withCoalitionRole, type Scenario } from '../src/model/scenario.ts';
 import { ACTION_CLASSIFICATION, isAnalysisAction, isFactAction } from '../src/model/actionClassification.ts';
 import { coalitionPieces, referenceChanges, resultChanges } from '../src/app/derive.ts';
-import { governmentVote, minimalWinning, recordedRoles } from '../src/app/coalitions.ts';
+import { governmentVote, minimalWinning, recordedRoles, recordedVoteGap } from '../src/app/coalitions.ts';
 import { aftermathRecords } from '../src/data/aftermath-runtime.ts';
 import { describe as describeAction } from '../src/app/actionDescription.ts';
 import { computeWhatIf } from '../src/app/whatIf.ts';
@@ -102,9 +102,40 @@ describe('the recorded first government as roles', () => {
   it('is available for every election with a recorded government', () => {
     for (let k = 1; k <= 26; k++) if (aftermathRecords[`k${k}` as 'k13']?.government) expect(rolesFor(`k${k}`).choices, `k${k}`).not.toBeNull();
   });
+  it('never silently disagrees with the record: the loaded roles match the recorded vote, or the gap is disclosed with reasons', () => {
+    let checked = 0;
+    for (let k = 1; k <= 26; k++) {
+      const g = aftermathRecords[`k${k}` as 'k13']?.government;
+      if (!g) continue;
+      const { recorded, choices, seats } = rolesFor(`k${k}`);
+      const v = governmentVote({ members: seats(choices!.in), support: seats(choices!.support), abstain: seats(choices!.abstain), total: 120 });
+      const gap = recordedVoteGap(g, v, recorded, seats, 120);
+      const cv = g.confidenceVote;
+      if (!cv || (v.votesFor === cv.for && v.against === cv.against)) expect(gap, `k${k}`).toBeNull();
+      else {
+        expect(gap?.recorded, `k${k}`).toEqual({ for: cv.for, against: cv.against });
+        expect(gap!.reasons.length, `k${k}`).toBeGreaterThan(0);
+        checked++;
+      }
+    }
+    expect(checked).toBeGreaterThan(15);
+    // 2015: 55 member seats with one role unknown, against the recorded 61 for · 59 against
+    const k20 = rolesFor('k20');
+    const v20 = governmentVote({ members: k20.seats(k20.choices!.in), support: 0, abstain: 0, total: 120 });
+    expect(recordedVoteGap(aftermathRecords.k20!.government!, v20, k20.recorded, k20.seats, 120)!.reasons.map((r) => r.kind)).toEqual(['unknown']);
+    // 1984: Alignment counted whole (37 of 44 took part) and seven individual MKs disclosed
+    const k11 = rolesFor('k11');
+    const v11 = governmentVote({ members: k11.seats(k11.choices!.in), support: 0, abstain: 0, total: 120 });
+    const kinds11 = recordedVoteGap(aftermathRecords.k11!.government!, v11, k11.recorded, k11.seats, 120)!.reasons.map((r) => r.kind);
+    expect(kinds11.filter((x) => x === 'individual')).toHaveLength(7);
+    expect(kinds11).toContain('partial');
+  });
   it('the first-government grouping holds outside support as its own group', () => {
     const g = load('k13').blocSchemes!.find((x) => x.id === 'first-government')!;
     expect(g.blocs.map((b) => [b.id, b.lists.length])).toEqual([['coalition', 3], ['outside-support', 2], ['opposition', 5]]);
+    // the support group recolours no list: Shas and Moledet keep the colours they had before it existed
+    const colour = (letters: string) => load('k13').lists.find((l) => l.letters === letters)!.color;
+    expect([colour('שס'), colour('ט')]).toEqual(['#773bf8', '#82764b']);
   });
 });
 

@@ -384,9 +384,13 @@ partner lists. On phones the five roles sit on their own line under every name.
 For/against is written in words, never a dash (“67 for · 53 against”), since a dash between
 two quantities reads as a range. “Recorded first government” loads the roles from the reviewed
 research; its (i) keeps each role's certainty as recorded (a provisional role says so), and
-lists left Any (confidence vote only, unknown) are named. Where research records outside
+lists left Any (confidence vote only, unknown) are named. When the loaded roles do not add up
+to the recorded confidence vote, one line says so (“Recorded vote: 61 for · 59 against. Differs
+here because roles are unknown”) and its (i) names each reason from the research: individual
+MKs (disclosed, not modelled), roles left Any, partial participation, MKs who voted neither way.
+Every for/against tally in the app and its history text uses words, never a dash. Where research records outside
 support or an arranged abstention, the sourced first-government grouping gives it its own
-group, checked by the data build.
+group, checked by the data build; that group never recolours a list.
 
 Session changes say “Since official result”; vote, agreement and grouping changes remain
 visible even without seat changes. Compare names its baseline and measures share changes

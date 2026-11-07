@@ -603,8 +603,8 @@
           "against": 59,
           "abstain": 1
         },
-        "textEn": "The Knesset approved the 36th government, 60–59 with one abstention; ministers were sworn in.",
-        "textHe": "הכנסת אישרה את הממשלה ה־36 ברוב של 60 מול 59 ונמנע אחד; השרים הושבעו.",
+        "textEn": "The Knesset approved the 36th government, 60 for · 59 against, with one abstention; ministers were sworn in.",
+        "textHe": "הכנסת אישרה את הממשלה ה־36, 60 בעד · 59 נגד, ונמנע אחד; השרים הושבעו.",
         "cites": [
           {
             "source": "knesset-news-2021-06-14",
@@ -858,8 +858,8 @@
         "id": "budget-2021",
         "date": "2021-11-04",
         "category": "governance",
-        "textEn": "The Knesset passed the 2021 state budget, 61–59, the first budget since 2018.",
-        "textHe": "הכנסת אישרה את תקציב המדינה ל־2021, ברוב של 61 מול 59 – התקציב הראשון מאז 2018.",
+        "textEn": "The Knesset passed the 2021 state budget, 61 for · 59 against, the first budget since 2018.",
+        "textHe": "הכנסת אישרה את תקציב המדינה ל־2021, 61 בעד · 59 נגד – התקציב הראשון מאז 2018.",
         "cites": [
           {
             "source": "reshumot-sh-2933",
@@ -915,8 +915,8 @@
         "id": "dissolution-2022",
         "date": "2022-06-30",
         "category": "politics",
-        "textEn": "The Knesset dissolved itself, 92–0, and set an election for 1 November 2022.",
-        "textHe": "הכנסת התפזרה ברוב של 92 ללא מתנגדים וקבעה בחירות ל־1 בנובמבר 2022.",
+        "textEn": "The Knesset dissolved itself, 92 for · 0 against, and set an election for 1 November 2022.",
+        "textHe": "הכנסת התפזרה, 92 בעד · 0 נגד, וקבעה בחירות ל־1 בנובמבר 2022.",
         "cites": [
           {
             "source": "knesset-news-2022-06-30",

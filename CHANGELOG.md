@@ -6,7 +6,7 @@
 
 ## 6 November 2026 — data audit
 
-- Coalitions: outside support and arranged abstention as roles beside In/Out/Any, with “members + outside support = total”, both the confidence vote (more for than against) and 61, hatched/hollow bar marks, named undo, links and saves; What if… adds a 2026 minority government with outside support; “Recorded first government” fills roles from research with their certainty, and 1992’s grouping shows outside support as its own group.
+- Coalitions: outside support and arranged abstention as roles beside In/Out/Any, with “members + outside support = total”, both the confidence vote (more for than against) and 61, hatched/hollow bar marks, named undo, links and saves; What if… adds a 2026 minority government with outside support; “Recorded first government” fills roles from research with their certainty and says where it differs from the recorded vote, and 1992’s grouping shows outside support as its own group without recolouring any list. Vote tallies read “67 for · 53 against” everywhere, including After the election.
 - After the election: distinguish government members, support roles and individual votes; show unknown totals honestly, explain vote reconciliation behind help, and keep localised date ranges in reading order.
 - Sources: an enforced evidence policy (tiers, independence, certainty confirmed/probable/provisional/disputed/unknown); the gaps register now ranks gaps by importance and certainty.
 - Families: count Otzma Yehudit only in Radical right in 2015, as in 2019–2022; the national-religious family keeps Yachad.

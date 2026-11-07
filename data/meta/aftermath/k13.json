@@ -346,8 +346,8 @@
       {
         "date": "1992-07-13",
         "type": "confidence-vote",
-        "textEn": "The Knesset approved Rabin’s 25th government, 67–53.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־25 בראשות רבין, ברוב של 67 מול 53.",
+        "textEn": "The Knesset approved Rabin’s 25th government, 67 for · 53 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־25 בראשות רבין, 67 בעד · 53 נגד.",
         "cites": [
           {
             "source": "jta1992vote",
@@ -367,8 +367,8 @@
       {
         "date": "1995-11-22",
         "type": "confidence-vote",
-        "textEn": "The Knesset approved Peres’s 26th government, 62–8, with 38 abstentions.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־26 בראשות פרס, ברוב של 62 מול 8, עם 38 נמנעים.",
+        "textEn": "The Knesset approved Peres’s 26th government, 62 for · 8 against, with 38 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־26 בראשות פרס, 62 בעד · 8 נגד, עם 38 נמנעים.",
         "cites": [
           {
             "source": "jta1995vote",
@@ -683,8 +683,8 @@
       {
         "date": "1995-11-22",
         "number": 26,
-        "textEn": "The Knesset approved Peres’s 26th government, 62–8, with 38 abstentions.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־26 בראשות פרס, ברוב של 62 מול 8, עם 38 נמנעים.",
+        "textEn": "The Knesset approved Peres’s 26th government, 62 for · 8 against, with 38 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־26 בראשות פרס, 62 בעד · 8 נגד, עם 38 נמנעים.",
         "coalition": [
           {
             "factionNameHe": "יעוד",

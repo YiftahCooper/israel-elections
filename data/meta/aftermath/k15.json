@@ -212,8 +212,8 @@
       {
         "date": "2001-03-07",
         "type": "confidence-vote",
-        "textEn": "The Knesset approved Sharon’s 29th government, 72–21.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־29 בראשות שרון, ברוב של 72 מול 21.",
+        "textEn": "The Knesset approved Sharon’s 29th government, 72 for · 21 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־29 בראשות שרון, 72 בעד · 21 נגד.",
         "cites": [
           {
             "source": "vote2001",
@@ -591,8 +591,8 @@
       {
         "date": "2001-03-07",
         "number": 29,
-        "textEn": "The Knesset approved Sharon’s 29th government, 72–21.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־29 בראשות שרון, ברוב של 72 מול 21.",
+        "textEn": "The Knesset approved Sharon’s 29th government, 72 for · 21 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־29 בראשות שרון, 72 בעד · 21 נגד.",
         "coalition": [
           {
             "factionNameHe": "ש\"ס",

@@ -244,8 +244,8 @@
       {
         "date": "1955-11-03",
         "type": "confidence-vote",
-        "textEn": "The Knesset expressed confidence in government 7, headed by David Ben-Gurion, 73–32, with 3 abstentions.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־7 בראשות דוד בן־גוריון, ברוב של 73 מול 32, עם 3 נמנעים.",
+        "textEn": "The Knesset expressed confidence in government 7, headed by David Ben-Gurion, 73 for · 32 against, with 3 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־7 בראשות דוד בן־גוריון, 73 בעד · 32 נגד, עם 3 נמנעים.",
         "cites": [
           {
             "source": "plenum-gov7",
@@ -276,8 +276,8 @@
       {
         "date": "1958-01-07",
         "type": "confidence-vote",
-        "textEn": "The Knesset expressed confidence in government 8, headed by David Ben-Gurion, 76–33.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־8 בראשות דוד בן־גוריון, ברוב של 76 מול 33.",
+        "textEn": "The Knesset expressed confidence in government 8, headed by David Ben-Gurion, 76 for · 33 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־8 בראשות דוד בן־גוריון, 76 בעד · 33 נגד.",
         "cites": [
           {
             "source": "plenum-gov8",

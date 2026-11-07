@@ -275,8 +275,8 @@
           "for": 61,
           "against": 59
         },
-        "textEn": "The Knesset approved the 34th government, 61–59.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־34 ברוב של 61 מול 59.",
+        "textEn": "The Knesset approved the 34th government, 61 for · 59 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־34, 61 בעד · 59 נגד.",
         "cites": [
           {
             "source": "eprs-investiture",
@@ -364,8 +364,8 @@
       "type": "knesset-dissolved",
       "date": "2018-12-26",
       "nextElection": "k21",
-      "textEn": "The Knesset passed the dissolution law, 102–2, setting an election for 9 April 2019.",
-      "textHe": "הכנסת קיבלה את חוק ההתפזרות ברוב של 102 מול 2 וקבעה בחירות ל־9 באפריל 2019.",
+      "textEn": "The Knesset passed the dissolution law, 102 for · 2 against, setting an election for 9 April 2019.",
+      "textHe": "הכנסת קיבלה את חוק ההתפזרות, 102 בעד · 2 נגד, וקבעה בחירות ל־9 באפריל 2019.",
       "cites": [
         {
           "source": "knesset-dissolution",

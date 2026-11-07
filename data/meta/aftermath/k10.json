@@ -344,8 +344,8 @@
       {
         "date": "1981-08-05",
         "type": "confidence-vote",
-        "textEn": "The Knesset approved Begin’s 19th government, 61–58.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־19 בראשות בגין, ברוב של 61 מול 58.",
+        "textEn": "The Knesset approved Begin’s 19th government, 61 for · 58 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־19 בראשות בגין, 61 בעד · 58 נגד.",
         "cites": [
           {
             "source": "plenum10",
@@ -400,8 +400,8 @@
       {
         "date": "1983-10-10",
         "type": "confidence-vote",
-        "textEn": "The Knesset approved Shamir’s 20th government, 60–53.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־20 בראשות שמיר, ברוב של 60 מול 53.",
+        "textEn": "The Knesset approved Shamir’s 20th government, 60 for · 53 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־20 בראשות שמיר, 60 בעד · 53 נגד.",
         "cites": [
           {
             "source": "plenum1983",
@@ -692,8 +692,8 @@
       {
         "date": "1983-10-10",
         "number": 20,
-        "textEn": "The Knesset approved Shamir’s 20th government, 60–53.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־20 בראשות שמיר, ברוב של 60 מול 53.",
+        "textEn": "The Knesset approved Shamir’s 20th government, 60 for · 53 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־20 בראשות שמיר, 60 בעד · 53 נגד.",
         "coalition": [
           {
             "factionNameHe": "תחייה",

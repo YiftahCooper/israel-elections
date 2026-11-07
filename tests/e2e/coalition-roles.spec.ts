@@ -102,3 +102,26 @@ for (const lang of ['en', 'he'] as const) test(`the recorded first government fi
   await expect(page.getByRole('tooltip')).toContainText(lang === 'he' ? 'זמני' : 'provisional');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
+
+for (const lang of ['en', 'he'] as const) test(`the recorded first government discloses where it differs from the recorded vote: ${lang}`, async ({ page }) => {
+  await start(page, lang);
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k20');
+  await page.getByRole('tab', { name: lang === 'he' ? 'קואליציות' : 'Coalitions', exact: true }).click();
+  await page.getByRole('button', { name: lang === 'he' ? 'הממשלה הראשונה המתועדת' : 'Recorded first government', exact: true }).click();
+  const line = page.locator('.coal-now .coal-recorded');
+  await expect(line).toHaveText(lang === 'he' ? 'ההצבעה המתועדת: 61 בעד · 59 נגד. כאן התוצאה שונה, כי תפקידים אינם ידועים i.' : 'Recorded vote: 61 for · 59 against. Differs here because roles are unknown i.');
+  await line.locator('.info > button').click();
+  await expect(page.getByRole('tooltip')).toContainText(lang === 'he' ? 'התפקיד לא ידוע' : 'role unknown');
+  // a choice of one's own is no longer the record: the line goes
+  await card(page, lang === 'he' ? 'הליכוד' : 'Likud').getByRole('button', { name: lang === 'he' ? 'כל אפשרות' : 'Any', exact: true }).click();
+  await expect(line).toHaveCount(0);
+});
+
+test('a loaded record that adds up shows no gap line', async ({ page }) => {
+  await start(page);
+  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k13');
+  await page.getByRole('tab', { name: 'Coalitions', exact: true }).click();
+  await page.getByRole('button', { name: 'Recorded first government', exact: true }).click();
+  await expect(page.locator('.coal-now .coal-sum')).toHaveText('62 members + 5 outside support = 67');
+  await expect(page.locator('.coal-recorded')).toHaveCount(0);
+});

@@ -18,7 +18,7 @@ import { partsOf, type SecurityFigure, type SecurityItem, type SecurityPart } fr
 import { setState } from '../store.ts';
 import { stayingHome, toVoteSource, type SourceChoice } from '../voteEdit.ts';
 import { DisclosureToggle, Info, Seg, Slip } from './ui.tsx';
-import { minimalWinning, governmentVote, recordedRoles } from '../coalitions.ts';
+import { minimalWinning, governmentVote, recordedRoles, recordedVoteGap, type VoteGapReason } from '../coalitions.ts';
 import { Majority } from './Majority.tsx';
 import './coalitions.css';
 
@@ -243,6 +243,8 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
   const { recorded: recordedRows, choices: recordedChoices } = recordedRoles(record?.coalition ?? [], s.lists, seated.map((x) => ({ id: x.l.id, listId: x.listId })));
   const recorded = recordedRows.map((x) => ({ ...x, name: x.list ? listLabel(x.list, lang) : x.r.factionNameHe ? (lang === 'he' ? x.r.factionNameHe : englishLabel(null, x.r.factionNameHe)) : (x.r.letters ?? '') }));
   const recordOn = !!recordedChoices && COALITION_ROLES.every((k) => sameSet(live(choices[k]), recordedChoices[k]));
+  /** loaded from the record but not adding up to it: one line names the recorded tally and why it differs */
+  const gap = recordOn && record ? recordedVoteGap(record, voteOf(live(choices.in)), recordedRows, sumOf, total) : null;
   const certaintyName = (c: Certainty) => ({ confirmed: L('confirmed', 'מאושר'), probable: L('probable', 'סביר'), provisional: L('provisional', 'זמני'), disputed: L('disputed', 'שנוי במחלוקת'), unknown: L('unknown', 'לא ידוע') })[c];
   const colorOf = (id: string) => seated.find(x => x.l.id === id)!.l.color;
   const roleNames: Record<CoalitionRole | 'any', [string, string, string]> = {
@@ -274,7 +276,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     const mark = (ok: boolean) => <><span className="coal-mark" aria-hidden>{ok ? '✓' : '✗'}</span><span className="sr-only">{ok ? L('Yes: ', 'כן: ') : L('No: ', 'לא: ')}</span></>;
     return <div className="coal-vote">
       {(support > 0 || abstain > 0) && <span className="coal-sum">{term('', v.members, roleNames.in[2])}{support > 0 && <> + {term('coal-support', support, roleNames.support[2])} = <b>{v.votesFor}</b></>}</span>}
-      {abstain > 0 && <span className="coal-sum">{term('coal-abstain', abstain, roleNames.abstain[2])}</span>}
+      {abstain > 0 && <span className="coal-sum">{term('coal-abstain', abstain, abstain === 1 ? L('abstaining', 'נמנע') : roleNames.abstain[2])}</span>}
       <span className="coal-tests">
         <span className="coal-test" data-ok={v.passes}>{mark(v.passes)}{L('More for than against', 'יותר תומכים ממתנגדים')}: <span className="coal-for">{L(`${v.votesFor} for`, `${v.votesFor} בעד`)}</span> · <span className="coal-against">{L(`${v.against} against`, `${v.against} נגד`)}</span></span>
         <span className="coal-test" data-ok={v.stable}>{mark(v.stable)}<Majority n={v.votesFor} total={total} /></span>
@@ -305,6 +307,41 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
       {governmentBloc && <p className="small muted" style={{ margin: 0 }}>{!historicalIds ? L('First-government comparison unavailable', 'אין נתונים להשוואה לממשלה הראשונה') : historyMatches(ids) ? (recordedChoices?.support.length && sameSet(supportIds, recordedChoices.support) ? L('Matches the recorded first government and its outside support', 'תואמת לממשלה הראשונה המתועדת ולתמיכה מבחוץ בה') : L('Matches the recorded first-government partners', 'תואמת לשותפות הממשלה הראשונה המתועדת')) : L('Different from the recorded first-government partners', 'שונה משותפות הממשלה הראשונה המתועדת')}{' '}
         <Info title={L('Historical comparison', 'השוואה היסטורית')}>{L('Compares members with the recorded first government only, not every government during this Knesset, and not its outside support. Scenario seats can differ from the official result.', 'השוואת החברות בקואליציה לממשלה הראשונה המתועדת בלבד, ולא לכל ממשלה במהלך הכנסת או לתמיכה מבחוץ בה. המנדטים בתרחיש עשויים להיות שונים מהתוצאה הרשמית.')} {government && `${blocName(government)} · ${government.date ? formatDate(government.date,lang) : ''}`}</Info></p>}
     </>;
+  };
+  /** "Recorded vote: 61 for · 59 against. Differs here because …" with the specific reasons from the research
+   *  in its (i). Individual MKs are disclosed, not modelled (docs/design/individual-mks.md, stage 3). */
+  const RecordGap = () => {
+    if (!gap) return null;
+    const why: Record<VoteGapReason['kind'], string> = {
+      individual: L('some MKs acted apart from their list', 'חברי כנסת פעלו בנפרד מרשימתם'),
+      unknown: L('roles are unknown', 'תפקידים אינם ידועים'),
+      'vote-only': L('some lists voted for without an arrangement', 'רשימות הצביעו בעד בלי הסדר'),
+      partial: L('only part of a list took part', 'רק חלק מרשימה השתתף'),
+      'not-voting': L('some MKs voted neither for nor against', 'חברי כנסת לא הצביעו בעד או נגד'),
+    };
+    const kinds = [...new Set(gap.reasons.map((r) => r.kind))];
+    const phrases = kinds.map((k) => why[k]);
+    const joined = phrases.length > 1 ? `${phrases.slice(0, -1).join(', ')}${L(', or ', ' או ')}${phrases[phrases.length - 1]}` : phrases[0];
+    const rowName = (r: { letters?: string; factionNameHe?: string }) => recorded.find((x) => x.r === r)?.name ?? r.letters ?? '';
+    const listOf = (letters: string) => { const l = s.lists.find((x) => x.letters === letters && x.originIds.length === 1 && x.originIds[0] === x.id); return l ? listLabel(l, lang) : letters; };
+    const voteWord = { for: L('for', 'בעד'), against: L('against', 'נגד'), abstain: L('abstained', 'הימנעות'), absent: L('absent', 'היעדרות'), unknown: L('vote not recorded', 'ההצבעה לא תועדה') };
+    const cert = (c: Certainty) => (c !== 'confirmed' ? ` (${certaintyName(c)})` : '');
+    const of = <K extends VoteGapReason['kind']>(k: K) => gap.reasons.filter((r): r is Extract<VoteGapReason, { kind: K }> => r.kind === k);
+    const people = of('individual');
+    // MKs with the same list, vote and certainty are named together
+    const groups = [...people.reduce((m, { ind }) => { const k = `${ind.fromLetters} ${ind.vote} ${ind.certainty}`; m.set(k, [...(m.get(k) ?? []), ind]); return m; }, new Map<string, (typeof people)[number]['ind'][]>())];
+    const anyRows = [...of('unknown'), ...of('vote-only')], partial = of('partial'), absent = of('not-voting')[0];
+    return <p className="small coal-recorded" style={{ margin: 0 }}>
+      {L('Recorded vote', 'ההצבעה המתועדת')}: <span className="coal-for">{L(`${gap.recorded.for} for`, `${gap.recorded.for} בעד`)}</span> · <span className="coal-against">{L(`${gap.recorded.against} against`, `${gap.recorded.against} נגד`)}</span>.{' '}
+      {joined ? L(`Differs here because ${joined}`, `כאן התוצאה שונה, כי ${joined}`) : L('Differs here', 'כאן התוצאה שונה')}{' '}
+      <Info title={L('Why the recorded vote differs', 'למה ההצבעה המתועדת שונה')}>
+        {people.length > 0 && <>{L('MKs recorded apart from their list (not modelled yet): ', 'חברי כנסת שתועדו בנפרד מרשימתם (עדיין לא ממודלים): ')}{groups.map(([key, inds], i) => <span key={key}>{i > 0 && '; '}{listOf(inds[0].fromLetters)}, {voteWord[inds[0].vote]}{cert(inds[0].certainty)}: {inds.map((x) => (lang === 'he' ? x.nameHe : x.nameEn)).join(', ')}</span>)}. </>}
+        {anyRows.length > 0 && <>{L('Left as Any: ', 'נשארות ב״כל אפשרות״: ')}{anyRows.map(({ kind, row }, i) => <span key={i}>{i > 0 && ', '}{rowName(row)} ({kind === 'vote-only' ? L('voted for at investiture only', 'הצביעה בעד באמון בלבד') : L('role unknown', 'התפקיד לא ידוע')})</span>)}. </>}
+        {partial.length > 0 && <>{partial.map(({ row, whole }, i) => <span key={i}>{i > 0 && '; '}{rowName(row)}: {L(`${row.seats} of its ${whole} seats took part, counted whole here`, `${row.seats} מתוך ${whole} מנדטיה השתתפו, נספרת כאן במלואה`)}</span>)}. </>}
+        {absent && <>{L(`${absent.n} MKs voted neither for nor against (absent or abstaining); here every seat votes.`, `${absent.n} חברי כנסת לא הצביעו בעד או נגד (נעדרו או נמנעו); כאן כל מנדט מצביע.`)} </>}
+        {({ exact: L('The research reconciles the recorded vote exactly.', 'המחקר מיישב את ההצבעה המתועדת במדויק.'), explained: L('The research explains the full difference.', 'המחקר מסביר את מלוא ההפרש.'), unresolved: L('The research has not fully reconciled it.', 'המחקר עדיין לא יישב את ההפרש במלואו.'), 'vote-unavailable': '' })[gap.status]}
+      </Info>.
+    </p>;
   };
   const already = voteOf(pickedIds);
   return (
@@ -344,6 +381,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
       {(pickedIds.length > 0 || supportIds.length > 0) && <section className="coal-now" aria-label={L('Coalition details', 'פרטי הקואליציה')}>
         <h3 style={{ margin: 0 }}>{L('Required partners', 'השותפות הנדרשות')}</h3>
         <Vote ids={pickedIds} />
+        {gap && <RecordGap />}
         <SeatBar ids={pickedIds} big />
         <Partners ids={pickedIds} sayAllNeeded />
       </section>}

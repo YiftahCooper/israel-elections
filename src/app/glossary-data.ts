@@ -113,7 +113,6 @@ const E = {
   electionDay: idiEn('66721', 'Election Day for the 26th Knesset: Everything Voters Need to Know'),
   joint: idiEn('64020', 'Explainer: Running on joint lists in elections: who does it benefit?'),
   knesset101: idiEn('64066', 'Knesset 101: How Parliament and National Elections Work in Israel'),
-  coalitions: idiEn('10248', 'Coalition Building in Israel: A Guide for the Perplexed'),
   formation: idiEn('63976', 'Everything You Need to Know About How a Government is Formed Following Elections'),
   president: idiEn('67022', 'The President’s Role in Assigning the Task of Forming a Government'),
   norwegian: idiEn('48367', 'The “Norwegian Law”: Problematic, Yes—But a Necessary Evil'),
@@ -471,10 +470,9 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     id: 'minimal-winning-coalition', nameHe: 'קואליציה מזערית זוכה', nameEn: 'Minimal winning coalition', level: 'simple', provenance: 'sourced',
     defHe: 'קואליציה שיש לה רוב, אך פרישה של כל אחת מהשותפות תבטל את הרוב. בישראל נהוג לכנות כזאת "ממשלה צרה". באפליקציה זהו חישוב אריתמטי של מנדטים בלבד, ולא תחזית פוליטית.',
     defEn: 'A coalition with a majority that would lose it if any single partner left. In Israel this is often called a “narrow government”. In the app it is pure seat arithmetic, not a political forecast.',
-    linkHe: H.coalitions, linkEn: E.coalitions,
+    linkHe: H.coalitions, linkEn: E.formation,
     sources: [
       src(H.coalitions, 'he', 'institute', '"קואליציה מזערית זוכה" definition; "ממשלה צרה"'),
-      src(E.coalitions, 'en', 'institute', '"A minimal winning coalition" definition'),
     ],
   },
   {

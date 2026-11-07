@@ -257,8 +257,8 @@
       {
         "date": "2003-02-27",
         "type": "confidence-vote",
-        "textEn": "The Knesset approved Sharon’s 30th government, 66–48.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־30 בראשות שרון, ברוב של 66 מול 48.",
+        "textEn": "The Knesset approved Sharon’s 30th government, 66 for · 48 against.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־30 בראשות שרון, 66 בעד · 48 נגד.",
         "cites": [
           {
             "source": "vote2003",
