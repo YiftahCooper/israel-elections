@@ -1,4 +1,6 @@
 import { isEnvelopeRow, type ElectionId, type LocalityDataset, type LocalityRow } from '../data/schema.ts';
+import { historicalLocalVotes } from './historicalLocalVotes.ts';
+import { toNumber } from '../engine/rational.ts';
 import { apportion } from './actions.ts';
 import type { Action, Scenario } from './scenario.ts';
 
@@ -31,12 +33,8 @@ export type GroupProblem = 'needs-localities' | 'no-registered' | 'unknown-group
 
 /** Maps historical-list vote columns onto the scenario's (possibly merged or split) lists. */
 export function mapToScenario(s: Scenario, listIds: string[], votes: number[]): number[] {
-  return s.lists.map((l) => l.originIds.reduce((t, o) => {
-    const k = listIds.indexOf(o); if (k < 0) return t;
-    const sharers = s.lists.filter((x) => x.originIds.includes(o));
-    const tot = sharers.reduce((u, x) => u + x.votes, 0);
-    return t + (sharers.length === 1 || tot === 0 ? votes[k] : (votes[k] * l.votes) / tot);
-  }, 0));
+  const totals = historicalLocalVotes(s.lists, listIds, votes);
+  return s.lists.map(l => toNumber(totals.get(l.id)!));
 }
 
 function measure(s: Scenario, data: LocalityDataset, rows: LocalityRow[]): GroupFacts | GroupProblem {

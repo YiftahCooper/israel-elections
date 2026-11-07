@@ -100,3 +100,38 @@ for (const lang of ['en', 'he'] as const) test(`groups start unchanged and a cus
   await choose(picker, 'src:arab');
   await expect(panel.locator('#vg-change')).toHaveValue('0');
 });
+
+test('zero-vote split descendants share observed local votes once when adding turnout', async ({ page }) => {
+  const { readFileSync } = await import('node:fs');
+  const ds = JSON.parse(readFileSync('public/data/k25.json', 'utf8'));
+  const local = JSON.parse(readFileSync('public/data/k25-localities.json', 'utf8'));
+  const [a, b] = ds.lists;
+  const actions = [
+    { type: 'setVotes', listId: a.id, votes: 0 },
+    { type: 'split', id: a.id, parts: ['child-a', 'child-b'].map(newId => ({ newId, nameHe: newId, letters: newId, color: '#123456', votes: 0, candidateIds: [] })) },
+  ];
+  await page.addInitScript(actions => {
+    localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'expert', hintDismissed: true }));
+    localStorage.setItem('israel-elections:workspace:v1', JSON.stringify({ v: 1, electionId: 'k25', current: {
+      id: 'split-test', name: 'Split test', electionId: 'k25', ref: null,
+      log: actions.map(action => ({ action, at: '2026-11-07T00:00:00Z' })),
+    }, sessions: [], drafts: [] }));
+  }, actions);
+  await page.route('**/data/k25-localities.json', route => route.fulfill({ json: {
+    ...local, listIds: [a.id, b.id],
+    rows: [{ ...local.rows[0], code: 1, registered: 1000, votesCast: 200, valid: 200, invalid: 0, votes: [100, 100] }],
+    groups: [{ ...local.groups[0], id: 'test', codes: [1], coverage: { localities: 1, registered: 1000, valid: 200, nationalValidShare: 0 } }],
+  } }));
+  await page.goto('/');
+  await expect(page.locator('.election .choice-trigger')).toHaveAttribute('data-value', 'k25');
+  await page.locator('#tab-turnout').click();
+  const panel = page.locator('#analysis-panel');
+  await choose(panel.getByRole('button', { name: 'Voter group', exact: true }), 'src:test');
+  const target = panel.getByLabel('New turnout %', { exact: true });
+  await target.fill('30'); await target.press('Enter');
+  await panel.getByRole('button', { name: 'Add 100 voters', exact: true }).click();
+  await expect.poll(() => page.evaluate(() => {
+    const last = JSON.parse(localStorage.getItem('israel-elections:workspace:v1') ?? 'null')?.current?.log.at(-1)?.action;
+    return last?.type === 'addVoters' ? last.allocations.map((x: { votes: number }) => x.votes) : null;
+  })).toEqual([25, 25, 50]);
+});

@@ -3,6 +3,7 @@
 ## 6 November 2026 — data audit
 
 - 7 November: replace 44 stale ballot-letter IDs and all references with corrected IDs; remove pre-release saved-format migrations. This supersedes the stable-ID wording in the audit entries below.
+- Share historical local votes consistently across split lists in Turnout, demographic adjustments and the map, dividing equally when all descendants have zero votes.
 
 - Mark custom bloc, coalition and family groupings locally as analysis while preserving official result identity and factual summaries.
 
