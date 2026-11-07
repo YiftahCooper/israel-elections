@@ -4,20 +4,8 @@ The Hebrew resolver preserves the CEC source row and accepts CBS replacements fo
 
 Native-size inspection: 1500×1000 and 390×1000, k16/k25/k26, light/dark. Each case captures the corrected code 964 name and Lakiya (1060) in the Negev. Labels are legible, RTL parentheses stay with the name, and corrected map/search/detail/table names agree. Background tiles are deliberately blocked to isolate this application's labels and avoid external map-service dependence. The screenshots verify labels, not the basemap.
 
-| Election | Width | Theme | Corrected Kudayrat label | Lakiya area |
-| --- | ---: | --- | --- | --- |
-| k16 | 1500 | light | [PNG](locality-hebrew-names/hebrew-corrected-k16-1500-light.png) | [PNG](locality-hebrew-names/hebrew-labels-k16-1500-light.png) |
-| k16 | 1500 | dark | [PNG](locality-hebrew-names/hebrew-corrected-k16-1500-dark.png) | [PNG](locality-hebrew-names/hebrew-labels-k16-1500-dark.png) |
-| k16 | 390 | light | [PNG](locality-hebrew-names/hebrew-corrected-k16-390-light.png) | [PNG](locality-hebrew-names/hebrew-labels-k16-390-light.png) |
-| k16 | 390 | dark | [PNG](locality-hebrew-names/hebrew-corrected-k16-390-dark.png) | [PNG](locality-hebrew-names/hebrew-labels-k16-390-dark.png) |
-| k25 | 1500 | light | [PNG](locality-hebrew-names/hebrew-corrected-k25-1500-light.png) | [PNG](locality-hebrew-names/hebrew-labels-k25-1500-light.png) |
-| k25 | 1500 | dark | [PNG](locality-hebrew-names/hebrew-corrected-k25-1500-dark.png) | [PNG](locality-hebrew-names/hebrew-labels-k25-1500-dark.png) |
-| k25 | 390 | light | [PNG](locality-hebrew-names/hebrew-corrected-k25-390-light.png) | [PNG](locality-hebrew-names/hebrew-labels-k25-390-light.png) |
-| k25 | 390 | dark | [PNG](locality-hebrew-names/hebrew-corrected-k25-390-dark.png) | [PNG](locality-hebrew-names/hebrew-labels-k25-390-dark.png) |
-| k26 | 1500 | light | [PNG](locality-hebrew-names/hebrew-corrected-k26-1500-light.png) | [PNG](locality-hebrew-names/hebrew-labels-k26-1500-light.png) |
-| k26 | 1500 | dark | [PNG](locality-hebrew-names/hebrew-corrected-k26-1500-dark.png) | [PNG](locality-hebrew-names/hebrew-labels-k26-1500-dark.png) |
-| k26 | 390 | light | [PNG](locality-hebrew-names/hebrew-corrected-k26-390-light.png) | [PNG](locality-hebrew-names/hebrew-labels-k26-390-light.png) |
-| k26 | 390 | dark | [PNG](locality-hebrew-names/hebrew-corrected-k26-390-dark.png) | [PNG](locality-hebrew-names/hebrew-labels-k26-390-dark.png) |
+
+The 24 captures (k16/k25/k26 × 1500/390 × light/dark × corrected label and Lakiya area) are routine evidence and are not kept in the repository; they are regenerated into `.backup-scratch/` by `tests/e2e/locality-map.spec.ts`.
 
 The browser tests also check original CEC alias search, corrected names in the nearest-locality message, and JSON downloads containing both displayed `nameHe` and original `cecNameHe` with source metadata. Tarabin remains CEC because the nearest CBS edition differs in letters.
 
