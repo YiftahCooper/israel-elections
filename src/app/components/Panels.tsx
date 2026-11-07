@@ -197,7 +197,7 @@ export function Localities({ s }: { s: Scenario }) {
             return (
               <Fragment key={key}>
                 <tr className={open === key ? 'sel' : ''}>
-                  <td><button className="table-action" aria-expanded={open === key} onClick={() => setOpen(open === key ? null : key)} title={localityNameSource(names, r, Number(key), lang)}><LocalityName names={names} row={r} index={Number(key)} /></button> <span className="muted tiny">{r.code}</span></td>
+                  <td><button className="table-action" aria-expanded={open === key} onClick={() => setOpen(open === key ? null : key)} title={localityNameSource(names, r, Number(key), lang)}><LocalityName names={names} row={r} index={Number(key)} showCbs /></button> <span className="muted tiny">{r.code}</span></td>
                   <td className="n">{r.registered ? fmtInt(r.registered) : '—'}</td><td className="n">{fmtInt(r.votesCast)}</td>
                   <td className="n">{r.registered ? fmtPct(r.votesCast, r.registered, digits) : '—'}</td><td className="n">{fmtInt(r.valid)}</td>
                   <td className="small">{top.slice(0, 3).filter((x) => x.v > 0).map((x) => `${nameOf(x.k)} ${fmtPct(x.v, r.valid, 0)}`).join(' · ')}</td>

@@ -60,35 +60,81 @@ export function resolveLocalityCode(nameHe: string, records: CbsNameRecord[]): n
   return codes.size === 1 ? [...codes][0] : null;
 }
 
+export type HebrewNameReason = 'formatting' | 'truncation' | 'spelling' | 'rename-merger' | 'other' | 'no-cbs';
 export interface HebrewLocalityName {
   name: string;
   source: 'cbs' | 'cec';
-  /** CBS edition used, including when its proposed name was rejected. */
   year?: number;
-  /** Different letters: retain CEC rather than assume these denote the same locality. */
   conflict?: string;
+  reason?: HebrewNameReason;
+  parenthesesRepaired?: boolean;
+  /** Unclosed source qualifier remains after a rejected substitution; disclose CBS separately. */
+  truncated?: boolean;
 }
 
-/** Only repair whitespace in the CEC fallback; never reconstruct missing letters. */
+/** Repair reversed pairs first, then unmatched closing brackets left by fixed-width truncation.
+ * Do not complete a cut-off word or invent its closing bracket. */
+export function repairCecParentheses(value: string): string {
+  const paired = value.replace(/\)([^()]*[\p{L}\p{N}][^()]*)\(/gu, '($1)');
+  let depth = 0;
+  return [...paired].map(c => {
+    if (c === '(') { depth++; return c; }
+    if (c === ')') { if (depth) { depth--; return c; } depth++; return '('; }
+    return c;
+  }).join('');
+}
 export function tidyCecHebrew(value: string): string {
-  return value.replace(/(\S)\(/g, '$1 (').replace(/\s+/g, ' ').trim();
+  return repairCecParentheses(value).replace(/(\S)\(/g, '$1 (').replace(/\s+/g, ' ').trim();
 }
 const hebrewFormattingKey = (value: string) => value.replace(/[\s\p{P}]+/gu, '');
+const spellingKey = (value: string) => hebrewNameKey(value.replace(/\(שבט\)\s*$/, '').replace(/חירות/g, 'חרות'));
 
-/** Code-only Hebrew join to the nearest retained CBS edition (earlier edition on a tie).
- * Punctuation/spacing changes are safe; letter changes are reported and never substituted.
- * Uncoded rows keep CEC: the English resolver's prefix/spelling guesses are inappropriate here.
- */
+/** Historical transitions visible in the retained same-code CEC/CBS records. These must precede
+ * prefix recovery: a merger can extend an otherwise complete historical name. This registry only
+ * blocks replacement; it never supplies a display name. Both directions stay historical. */
+const HISTORICAL_NAMES: Record<number, [string, string][]> = {
+  195: [['קדימה', 'צורן-קדימה']],
+  494: [['דאלית אל-כרמל', 'דאלית אל-כרמל-עספיא'], ['עיר כרמל', 'דאלית אל-כרמל']],
+  516: [["מג'ד אל-כרום", 'שגור']],
+  609: [['ספסופה', 'כפר חושן']],
+  917: [['שגב', 'עצמון שגב']],
+  1061: [['נצרת עילית', 'נוף הגליל']],
+  3573: [['חלמיש', 'נווה צוף']],
+  1200: [['מודיעין', 'מודיעין-מכבים-רעות']],
+  1224: [['כוכב יאיר-צור יגאל', 'כוכב יאיר']],
+  3652: [['בית אריה', 'בית אריה-עופרים']],
+  3796: [['מנורה', 'כפר האורנים']],
+  6000: [['באקה אל-גרביה', "באקה-ג'ת"]],
+  9400: [['יהוד', 'יהוד-נווה אפרים'], ['יהוד-מונוסון', 'יהוד']],
+  9800: [['בנימינה', 'בנימינה-גבעת עדה']],
+};
+function isHistoricalName(code: number | null, cec: string, cbs: string): boolean {
+  return (HISTORICAL_NAMES[code ?? 0] ?? []).some(pair => {
+    const [a, b] = pair.map(spellingKey), x = spellingKey(cec), y = spellingKey(cbs);
+    return (a === x && b === y) || (a === y && b === x);
+  });
+}
+
+/** Same code, nearest retained CBS year (earlier on ties). Recover export truncation and explicit
+ * spelling equivalences only; preserve historical transitions and all remaining letter differences. */
 export function resolveLocalityHebrew(row: { code: number | null; nameHe: string }, year: number, records: CbsNameRecord[]): HebrewLocalityName {
   const name = tidyCecHebrew(row.nameHe);
+  const repaired = repairCecParentheses(row.nameHe) !== row.nameHe;
+  const extra = repaired ? { parenthesesRepaired: true as const } : {};
   const candidates = row.code !== null && row.code > 0 ? records.filter(r => r.code === row.code && r.nameHe.trim()) : [];
   const best = [...candidates].sort((a, b) => Math.abs(a.year - year) - Math.abs(b.year - year) || a.year - b.year)[0];
-  if (!best) return { name, source: 'cec' };
-  // Asterisks are CBS footnote markers, not part of the locality's name.
+  if (!best) return { name, source: 'cec', reason: 'no-cbs', ...extra };
   const cbs = tidyCecHebrew(best.nameHe.replace(/\*/g, ''));
-  return hebrewFormattingKey(cbs) === hebrewFormattingKey(name)
-    ? { name: cbs, source: 'cbs', year: best.year }
-    : { name, source: 'cec', year: best.year, conflict: cbs };
+  const key = hebrewFormattingKey(name), target = hebrewFormattingKey(cbs);
+  const accept = (reason: HebrewNameReason): HebrewLocalityName => ({ name: cbs, source: 'cbs', year: best.year, reason, ...extra });
+  const reject = (reason: HebrewNameReason): HebrewLocalityName => ({ name, source: 'cec', year: best.year, conflict: cbs, reason, ...extra,
+    ...((name.match(/\(/g)?.length ?? 0) > (name.match(/\)/g)?.length ?? 0) ? { truncated: true } : {}) });
+  if (key === target) return accept('formatting');
+  if (isHistoricalName(row.code, name, cbs)) return reject('rename-merger');
+  // Strip a complete tribal qualifier only for spelling comparison, not for truncation recovery.
+  if (key && spellingKey(name) === spellingKey(cbs)) return accept('spelling');
+  if (key && target.startsWith(key)) return accept('truncation');
+  return reject('other');
 }
 
 /** Shared runtime Hebrew display name, also safe while the sidecar is loading. */

@@ -244,7 +244,7 @@ test('Hebrew map references remain isolated LTR and the phone legend is collapse
  await expect(pop).toContainText('ומפות ההדמאה');await expect(pop).not.toContainText('Annex');
 });
 
-for (const election of ['k25', 'k26']) for (const width of [1500, 390]) for (const theme of ['light', 'dark']) {
+for (const election of ['k16', 'k25', 'k26']) for (const width of [1500, 390]) for (const theme of ['light', 'dark']) {
   test(`Hebrew CBS labels around Lakiya/Rahat ${election} ${width} ${theme}`, async ({page}) => {
     await page.setViewportSize({width, height:1000});
     await page.addInitScript(({theme}) => {
@@ -257,7 +257,7 @@ for (const election of ['k25', 'k26']) for (const width of [1500, 390]) for (con
     await page.getByRole('tab', {name:'יישובים',exact:true}).click();
     const search = page.getByRole('searchbox', {name:'חיפוש יישוב',exact:true});
     // Search by the original CEC alias and verify that results and map agree on the CBS spelling.
-    await search.fill(election === 'k25' ? 'קודייראת אצאנעשבט' : 'קודייראת א-צאנע(שבט)');
+    await search.fill(election === 'k16' ? 'קודייראת א-צאנע)ש' : election === 'k25' ? 'קודייראת אצאנעשבט' : 'קודייראת א-צאנע(שבט)');
     const result = page.locator('.locality-map-matches button').filter({hasText:'964'});
     await expect(result).toContainText('קודייראת א-צאנע (שבט)');
     await result.click();
@@ -275,6 +275,13 @@ for (const election of ['k25', 'k26']) for (const width of [1500, 390]) for (con
     await page.getByRole('button', {name:'טבלה',exact:true}).click();
     await page.getByRole('searchbox', {name:'חיפוש יישוב',exact:true}).fill('קודייראת');
     await expect(page.getByRole('region', {name:'טבלה נגללת'})).toContainText('קודייראת א-צאנע (שבט)');
+    if (election === 'k16') {
+      await page.getByRole('searchbox', {name:'חיפוש יישוב',exact:true}).fill('942');
+      const row = page.getByRole('region', {name:'טבלה נגללת'}).locator('tbody tr').first();
+      await expect(row).toContainText('סואעד (חמרייה) (שב');
+      await expect(row).toContainText('(CBS: סואעד (חמרייה))');
+      await expect(row.locator('button.table-action')).toHaveAttribute('title', /\(CBS: סואעד \(חמרייה\)\)/);
+    }
   });
 }
 

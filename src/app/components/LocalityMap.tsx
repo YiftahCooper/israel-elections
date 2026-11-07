@@ -58,14 +58,14 @@ export function localityNameSource(names: LocalityNames, row: LocalityRow, index
   const cec = `${lang === 'he' ? 'ועדת הבחירות (מקור)' : 'CEC (original)'}: ${row.nameHe}`;
   if (!he?.year) return cec;
   const cbs = `${lang === 'he' ? 'למ״ס' : 'CBS'} ${he.year}: ${he.conflict ?? he.name}`;
-  return `${cec} · ${cbs}${he.conflict ? (lang === 'he' ? ' — הבדל בשם; נשמר שם ועדת הבחירות' : ' — name differs; CEC retained') : ''}`;
+  return `${cec} · ${cbs}${he.truncated && he.conflict ? ` · (CBS: ${he.conflict})` : ''}${he.conflict ? (lang === 'he' ? ' — הבדל בשם; נשמר שם ועדת הבחירות' : ' — name differs; CEC retained') : ''}`;
 }
 /** The name, marked when its English is the project's own transliteration rather than a CBS name. */
-export function LocalityName({ names, row, index }: { names: LocalityNames; row: LocalityRow; index: number }) {
+export function LocalityName({ names, row, index, showCbs = false }: { names: LocalityNames; row: LocalityRow; index: number; showCbs?: boolean }) {
   const lang = useLang();
   const text = localityName(names, row, index, lang);
   if (lang === 'en' && names.project.includes(index)) return <abbr className="locality-translit" title={`Transliteration by this project; not in CBS locality lists · ${localityNameSource(names, row, index, lang)}`}>{text}</abbr>;
-  return <span dir="auto" title={localityNameSource(names, row, index, lang)}>{text}</span>;
+  return <span dir="auto" title={localityNameSource(names, row, index, lang)}>{text}{showCbs && names.hebrew?.[index]?.truncated && <small className="muted"> <bdi>(CBS: {names.hebrew[index].conflict})</bdi></small>}</span>;
 }
 
 /** Shared by the map and table: the source omits codes; this does not establish absence in every official edition. */
