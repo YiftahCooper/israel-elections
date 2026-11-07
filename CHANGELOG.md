@@ -2,6 +2,8 @@
 
 ## 6 November 2026 — data audit
 
+- Share historical local votes consistently across split lists in Turnout, demographic adjustments and the map, dividing equally when all descendants have zero votes.
+
 - Mark custom bloc, coalition and family groupings locally as analysis while preserving official result identity and factual summaries.
 
 - Keep custom list, party and bloc colours and grouping display names separate from result identity; save/share appearance and reset colours independently of result edits.
