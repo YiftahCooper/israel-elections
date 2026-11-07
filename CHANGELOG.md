@@ -2,6 +2,8 @@
 
 ## 7 November 2026 — Settings
 
+- Research: assess lawful historical archive access, ranked alternatives and bilingual owner enquiry drafts.
+
 - Map: keep Hebrew sentence punctuation outside Latin-reference isolation, join the Ramadin source splice exactly, and name OpenStreetMap in full.
 
 
