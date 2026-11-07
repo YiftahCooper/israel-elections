@@ -6325,5 +6325,18 @@
     "retrievedAt": "2026-11-07",
     "bytes": 143325,
     "sha256": "c3711530c80fde4aa0e1601764c2651d3101c64aaba73db32b83a80aa4d81631"
+  },
+  {
+    "id": "d3-1992-consultations-review",
+    "file": "research/d3-1992-consultations.reviewed.json",
+    "url": "https://ufdcimages.uflib.ufl.edu/UF/00/10/14/47/16428/06-30-1992.pdf",
+    "publisher": "Amigoe / University of Florida; IDI and Knesset locators retained in reviewed extraction",
+    "publisherEn": "Amigoe / University of Florida; IDI and Knesset locators retained in reviewed extraction",
+    "official": false,
+    "description": "Reviewed minimal evidence extraction: 1992 Tsomet recommendation and original-source locators; sources are independently labelled in the file.",
+    "method": "reviewed-extraction",
+    "retrievedAt": "2026-11-07",
+    "bytes": 2553,
+    "sha256": "4913d6b7314fedf9b556022626b1b860e32e4cab7dd8bb3642e95bf6ef6f6107"
   }
 ]

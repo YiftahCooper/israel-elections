@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "inputDigest": "97f9bb29c11725847171d03ac2cf2e5c4f6ffaf2a9ee3a117d3a3d43cbc2c9ea",
+  "inputDigest": "994eb2152beea26c1dcc1e7ea276524f7fc6e981caec0d487dab13b6cf346ab3",
   "inventory": [
     {
       "file": "data/meta/README.md",
@@ -24,7 +24,7 @@
     },
     {
       "file": "data/meta/aftermath/k13.json",
-      "sha256": "7e07d86c3b323d42946fd8eaf96bddfbc02d62aa093e9b173997427625a3de7a"
+      "sha256": "9d71d57f2e7663614f939ba66c84aca67665968d4435766125e6eaa996216c54"
     },
     {
       "file": "data/meta/aftermath/k14.json",
@@ -632,7 +632,7 @@
     },
     {
       "file": "data/raw/SOURCES.json",
-      "sha256": "a334373d47900571e307e005424ce40b275203c48d79dbcf017e6437706db689"
+      "sha256": "5f26d98e1224011565307550aaf468f1bf35ea5a6f840729e5beba6b137a4945"
     },
     {
       "file": "data/raw/bios/hewiki-evidence.json",
@@ -2483,6 +2483,10 @@
       "sha256": "ae348223d79335929c79c1dfd86e4d71f1d2714510c056af467dc82ac4d5d8bd"
     },
     {
+      "file": "data/raw/research/d3-1992-consultations.reviewed.json",
+      "sha256": "4913d6b7314fedf9b556022626b1b860e32e4cab7dd8bb3642e95bf6ef6f6107"
+    },
+    {
       "file": "data/raw/research/huji-election-catalog.html",
       "sha256": "7ef70851b823a5dfc84a913d87e6abd726d000578c31369cc1fa48481b61fbb3"
     },
@@ -3420,10 +3424,10 @@
     }
   ],
   "counts": {
-    "unknown": 6834,
+    "unknown": 6833,
     "missing-field": 283,
     "conflict": 31,
-    "single-source": 2185,
+    "single-source": 2184,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1164,
@@ -69339,25 +69343,6 @@
       "occurrences": 1
     },
     {
-      "key": "17ff5f0bdbbf4033a238d1e4",
-      "election": "k13",
-      "letters": "",
-      "name": "",
-      "item": "confidence-vote 1992-07-13 / $.formation.events[*]",
-      "kind": "single-source",
-      "uncertainty": "One recorded source family/locator; independence not established",
-      "sources": [
-        "https://www.jta.org/archive/rabin-becomes-prime-minister-with-pledge-to-work-for-peace"
-      ],
-      "nextSource": "CEC / Knesset primary record for the field; independent dated corroboration",
-      "status": "open",
-      "file": "data/meta/aftermath/k13.json",
-      "locations": [
-        "$.formation.events[2]"
-      ],
-      "occurrences": 1
-    },
-    {
       "key": "415c79885022134a509c7145",
       "election": "k13",
       "letters": "",
@@ -69587,25 +69572,6 @@
       "occurrences": 1
     },
     {
-      "key": "c1f70808e3a180489acd3ba5",
-      "election": "k13",
-      "letters": "ץ",
-      "name": "צומת - התנועה להתחדשות ציונית ובלתי מפלגתיים",
-      "item": "r1 / $.recommendationRounds[*].entries[*].status",
-      "kind": "unknown",
-      "uncertainty": "Status: unknown",
-      "sources": [
-        "https://www.jta.org/archive/rabin-starts-building-coalition-with-haredi-parties-readay-to-talk"
-      ],
-      "nextSource": "President’s House / State Archives faction consultation minutes; contemporary independent reporting",
-      "status": "open",
-      "file": "data/meta/aftermath/k13.json",
-      "locations": [
-        "$.recommendationRounds[0].entries[8].status"
-      ],
-      "occurrences": 1
-    },
-    {
       "key": "2abf93d1562e35e89a489c44",
       "election": "k13",
       "letters": "שס",
@@ -69639,9 +69605,10 @@
       "status": "open",
       "file": "data/meta/aftermath/k13.json",
       "locations": [
-        "$.recommendationRounds[0].notes[0]"
+        "$.recommendationRounds[0].notes[0]",
+        "$.recommendationRounds[0].notes[1]"
       ],
-      "occurrences": 1
+      "occurrences": 2
     },
     {
       "key": "d1e1e07778f8126957dfa865",

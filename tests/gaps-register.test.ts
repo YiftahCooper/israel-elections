@@ -1,12 +1,14 @@
 import { readFileSync, mkdirSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 import { expect, it } from 'vitest';
-import { scanDocument, generateRegister, renderMarkdown, checkRegister } from '../scripts/gaps-register.ts';
+import { scanDocument, generateRegister, renderMarkdown, checkRegister, importantOpenGaps } from '../scripts/gaps-register.ts';
 
 it('the committed register and prose cannot drift from their inputs', () => {
   const register = generateRegister();
   expect(JSON.parse(readFileSync('docs/data-gaps.json', 'utf8'))).toEqual(register);
   expect(readFileSync('docs/data-gaps.md', 'utf8')).toBe(renderMarkdown(register));
+  expect(importantOpenGaps(register).length).toBeLessThanOrEqual(15);
+  expect(importantOpenGaps(register)[0]).toContain('k13');
 }, 30000);
 it('finds uncertainty, missing recommendations, conflicts and duplicate source families', () => {
   const rows = scanDocument('data/meta/aftermath/k13.json', {

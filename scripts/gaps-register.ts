@@ -158,10 +158,26 @@ export function generateRegister(root = ROOT) {
   gaps.sort((a, b) => (Number(a.election.slice(1)) || 999) - (Number(b.election.slice(1)) || 999) || a.file.localeCompare(b.file, 'en') || a.item.localeCompare(b.item, 'en') || a.kind.localeCompare(b.kind, 'en'));
   return { schemaVersion: 1, inputDigest: hash(JSON.stringify(inventory)), inventory, counts: Object.fromEntries(kinds.map(k => [k, gaps.filter(g => g.kind === k).length])), gaps };
 }
+/** A bounded human queue derived from current records, so closures remove themselves. */
+export function importantOpenGaps(register: ReturnType<typeof generateRegister>): string[] {
+  const recommendations = register.gaps.filter(g => g.kind === 'unknown' && /recommendationRounds.*entries/.test(g.item));
+  const counts = new Map<string, number>();
+  for (const g of recommendations) counts.set(g.election, (counts.get(g.election) ?? 0) + 1);
+  const elections = [...counts.keys()].sort((a, b) => (a === 'k13' ? -1 : b === 'k13' ? 1 : Number(b.slice(1)) - Number(a.slice(1))));
+  return [
+    ...elections.slice(0, 4).map(e => `- ${e}: ${counts.get(e)} unknown party recommendations; recover named consultation records.`),
+    ...(elections.length > 4 ? [`- Earlier elections: ${elections.slice(4).join(', ')} also have unknown recommendations.`] : []),
+    `- ${register.counts.conflict} conflict flags need primary-record review, starting with elected identities.`,
+    '- Missing or shortened candidate rosters affect what users can inspect; elected ranks come first.',
+    '- Unverified logos and low-confidence colours still need dated originals; placeholders are preferable to guesses.',
+    '- Family and lineage labels remain editorial; they must not imply verified organisational continuity.',
+  ];
+}
 export function renderMarkdown(register: ReturnType<typeof generateRegister>): string {
   const esc = (s: string) => s.replaceAll('|', '\\|').replaceAll('\n', ' ');
   const lines = ['# Data gaps register', '', `There are ${register.gaps.length} flagged records: ${Object.entries(register.counts).map(([k, n]) => `${n} ${k}`).join(', ')}. Counts overlap by evidence issue; they are not a count of historical errors. Repeated raw-record fields are grouped, with exact occurrence counts in JSON.`, '',
-    'This round establishes the generated register and stale-output gate, and closes one single-source mandate event by adding independent contemporary reporting. The 1992 research found a new archival lead but does not yet justify replacing all ten unknown recommendations. See [research and next ten](research/data-gaps-1992-followup.md).', '',
+    'Most important open gaps', '', ...importantOpenGaps(register), '',
+    'Research progress and blockers: [initial round](research/data-gaps-1992-followup.md), [closure batches](research/data-gaps-closure-batches.md). Counts reflect current declarations; research closures and newly discovered issues are logged separately.', '',
     'Regenerate with `npm run data:gaps`; check with `npm run data:gaps:check`. Both Vite build and Vitest reject stale committed output. This checks local evidence declarations on each run; it does not continuously browse or verify remote pages.', '',
     'Scope: every retained file under data/raw and data/meta is fingerprinted; JSON is recursively scanned, source manifests included. Published national datasets are checked against required fields extracted from src/data/schema.ts. PDFs, images, HTML and CSV are inventoried, not semantically interpreted. Optional nullable display/HTTP metadata is excluded; other nulls are review flags, including inapplicable values. Single-source means one recorded URL/family, not proof of independence; unknown shared provenance still needs human review. Decision/audit prose flags need current-status review; holds for elections now marked available are suppressed. Unrecorded contradictions and absent fields in formats without a declared schema require human review. Family classification remains editorial even with documented identity.', '',
     `Input digest: \`${register.inputDigest}\`. Full file hashes, occurrence counts, locations and stable ballot identities are in [JSON](data-gaps.json).`, ''];

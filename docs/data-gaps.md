@@ -1,14 +1,26 @@
 # Data gaps register
 
-There are 10987 flagged records: 6834 unknown, 283 missing-field, 31 conflict, 2185 single-source, 101 low-confidence, 0 release-hold, 1164 inferred, 389 pending. Counts overlap by evidence issue; they are not a count of historical errors. Repeated raw-record fields are grouped, with exact occurrence counts in JSON.
+There are 10985 flagged records: 6833 unknown, 283 missing-field, 31 conflict, 2184 single-source, 101 low-confidence, 0 release-hold, 1164 inferred, 389 pending. Counts overlap by evidence issue; they are not a count of historical errors. Repeated raw-record fields are grouped, with exact occurrence counts in JSON.
 
-This round establishes the generated register and stale-output gate, and closes one single-source mandate event by adding independent contemporary reporting. The 1992 research found a new archival lead but does not yet justify replacing all ten unknown recommendations. See [research and next ten](research/data-gaps-1992-followup.md).
+Most important open gaps
+
+- k13: 9 unknown party recommendations; recover named consultation records.
+- k10: 6 unknown party recommendations; recover named consultation records.
+- k9: 4 unknown party recommendations; recover named consultation records.
+- k8: 8 unknown party recommendations; recover named consultation records.
+- Earlier elections: k7, k6, k5, k3, k2, k1 also have unknown recommendations.
+- 31 conflict flags need primary-record review, starting with elected identities.
+- Missing or shortened candidate rosters affect what users can inspect; elected ranks come first.
+- Unverified logos and low-confidence colours still need dated originals; placeholders are preferable to guesses.
+- Family and lineage labels remain editorial; they must not imply verified organisational continuity.
+
+Research progress and blockers: [initial round](research/data-gaps-1992-followup.md), [closure batches](research/data-gaps-closure-batches.md). Counts reflect current declarations; research closures and newly discovered issues are logged separately.
 
 Regenerate with `npm run data:gaps`; check with `npm run data:gaps:check`. Both Vite build and Vitest reject stale committed output. This checks local evidence declarations on each run; it does not continuously browse or verify remote pages.
 
 Scope: every retained file under data/raw and data/meta is fingerprinted; JSON is recursively scanned, source manifests included. Published national datasets are checked against required fields extracted from src/data/schema.ts. PDFs, images, HTML and CSV are inventoried, not semantically interpreted. Optional nullable display/HTTP metadata is excluded; other nulls are review flags, including inapplicable values. Single-source means one recorded URL/family, not proof of independence; unknown shared provenance still needs human review. Decision/audit prose flags need current-status review; holds for elections now marked available are suppressed. Unrecorded contradictions and absent fields in formats without a declared schema require human review. Family classification remains editorial even with documented identity.
 
-Input digest: `97f9bb29c11725847171d03ac2cf2e5c4f6ffaf2a9ee3a117d3a3d43cbc2c9ea`. Full file hashes, occurrence counts, locations and stable ballot identities are in [JSON](data-gaps.json).
+Input digest: `994eb2152beea26c1dcc1e7ea276524f7fc6e981caec0d487dab13b6cf346ab3`. Full file hashes, occurrence counts, locations and stable ballot identities are in [JSON](data-gaps.json).
 
 ## k1
 
@@ -3852,7 +3864,6 @@ Input digest: `97f9bb29c11725847171d03ac2cf2e5c4f6ffaf2a9ee3a117d3a3d43cbc2c9ea`
 | $.issuePolling.gap ([record](../data/meta/aftermath/k13.json)) | unknown: INES instrument exists; no qualifying published topline verified for this election. No microdata analysis performed. | None recorded at this scope | CEC / Knesset primary record for the field; independent dated corroboration | open |
 | $.issuePolling.status ([record](../data/meta/aftermath/k13.json)) | pending: Status: pending | None recorded at this scope | CEC / Knesset primary record for the field; independent dated corroboration | open |
 | $.reaction.gap ([record](../data/meta/aftermath/k13.json)) | unknown: Comparably sourced reactions for every list were not collected. | None recorded at this scope | CEC / Knesset primary record for the field; independent dated corroboration | open |
-| confidence-vote 1992-07-13 / $.formation.events[*] ([record](../data/meta/aftermath/k13.json)) | single-source: One recorded source family/locator; independence not established | https://www.jta.org/archive/rabin-becomes-prime-minister-with-pledge-to-work-for-peace | CEC / Knesset primary record for the field; independent dated corroboration | open |
 | confidence-vote 1995-11-22 / $.formation.events[*] ([record](../data/meta/aftermath/k13.json)) | single-source: One recorded source family/locator; independence not established | https://www.jta.org/archive/news-analysis-peres-gives-prominent-roles-in-cabinet-to-next-generation | CEC / Knesset primary record for the field; independent dated corroboration | open |
 | consultations 1992-06-28 / $.formation.events[*] ([record](../data/meta/aftermath/k13.json)) | single-source: One recorded source family/locator; independence not established | https://www.jta.org/archive/rabin-starts-building-coalition-with-haredi-parties-readay-to-talk | CEC / Knesset primary record for the field; independent dated corroboration | open |
 | oslo-ii / $.term.events[*].notes[*] ([record](../data/meta/aftermath/k13.json)) | pending: Month precision preserves the unresolved difference between the Knesset narrative’s Taba date (27 September) and the Washington signing ceremony (28 September). No day is inferred. | https://www.gov.il/BlobFolder/generalpage/facts-about-israel-history/en/English_SiteTransfer_DOCUMENTS_History2010.pdf; https://www.jewishvirtuallibrary.org/highlights-of-the-thirteenth-knesset-1992-1996 | CEC / Knesset primary record for the field; independent dated corroboration | open |
@@ -3865,7 +3876,6 @@ Input digest: `97f9bb29c11725847171d03ac2cf2e5c4f6ffaf2a9ee3a117d3a3d43cbc2c9ea`
 | מחל / הליכוד / r1 / $.recommendationRounds[*].entries[*].status ([record](../data/meta/aftermath/k13.json)) | unknown: Status: unknown | https://www.jta.org/archive/rabin-starts-building-coalition-with-haredi-parties-readay-to-talk | President’s House / State Archives faction consultation minutes; contemporary independent reporting | open |
 | מרצ / מרצ - ישראל הדמוקרטית - רצ, מפם, שינוי / r1 / $.recommendationRounds[*].entries[*].status ([record](../data/meta/aftermath/k13.json)) | unknown: Status: unknown | https://www.jta.org/archive/rabin-starts-building-coalition-with-haredi-parties-readay-to-talk | President’s House / State Archives faction consultation minutes; contemporary independent reporting | open |
 | ע / המפלגה הדמוקרטית הערבית / r1 / $.recommendationRounds[*].entries[*].status ([record](../data/meta/aftermath/k13.json)) | unknown: Status: unknown | https://www.jta.org/archive/rabin-starts-building-coalition-with-haredi-parties-readay-to-talk | President’s House / State Archives faction consultation minutes; contemporary independent reporting | open |
-| ץ / צומת - התנועה להתחדשות ציונית ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status ([record](../data/meta/aftermath/k13.json)) | unknown: Status: unknown | https://www.jta.org/archive/rabin-starts-building-coalition-with-haredi-parties-readay-to-talk | President’s House / State Archives faction consultation minutes; contemporary independent reporting | open |
 | שס / ש״ס - התאחדות הספרדים שומרי תורה / r1 / $.recommendationRounds[*].entries[*].status ([record](../data/meta/aftermath/k13.json)) | unknown: Status: unknown | https://www.jta.org/archive/rabin-starts-building-coalition-with-haredi-parties-readay-to-talk | President’s House / State Archives faction consultation minutes; contemporary independent reporting | open |
 | r1 / $.recommendationRounds[*].notes[*] ([record](../data/meta/aftermath/k13.json)) | pending: No complete per-faction recommendation record was recovered by the existing research. A 61-seat blocking bloc is not a recommendation tally. Unknown is not an explicit decision to recommend nobody. | https://www.jta.org/archive/rabin-starts-building-coalition-with-haredi-parties-readay-to-talk | President’s House / State Archives faction consultation minutes; contemporary independent reporting | open |
 | $.candidates.13-אמת#1.party ([record](../data/meta/bios/k13.json)) | unknown: Explicit null: party (may be unavailable or inapplicable; review context) | None recorded at this scope | CEC approved candidate gazette and official elected-member notice | open |
