@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "electionId": "k20",
-  "status": "pilot",
+  "status": "reviewed",
   "reviewedAt": "2026-11-07",
   "notes": [
     "Research record following docs/design/after-the-election.md; not wired into the app. Gaps remain explicit."

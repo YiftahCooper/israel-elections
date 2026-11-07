@@ -18,6 +18,7 @@
 - Show change counts once beside History, shorten whole labels by measured fit, and apply Hebrew maqaf prefixes consistently to foreign names.
 
 - Unify changes/שינויים against the official result or saved reference, explain action counts, and localise History times and calendar dates.
+- After the election: reviewed recommendations, government formation, coalition and term history for all 26 elections, with sources and pending-event separation.
 
 - Mark custom bloc, coalition and family groupings locally as analysis while preserving official result identity and factual summaries.
 
