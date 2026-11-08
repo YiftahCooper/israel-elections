@@ -2,6 +2,8 @@
 
 ## 7 November 2026 — Settings
 
+- Research: rethink Compare with an audit of current behaviour, in-place comparison precedents, eligible-voter copying examples, history comparisons and ranked recommendations (docs/research/compare-rethink.md).
+
 - Docs: eight design and research documents (party history, individual MKs, source policy, trusted sources, archive access, Hebrew quality, Ra’am in 2021, map lines) rewritten in plain language, each opening with “In short”, recording the 8 November owner decisions and ending with technical notes for developers; no facts removed.
 - Research: add a partial, source-linked Knesset event history for 2021–2026: 83 classified records, explicit exclusions and hard cases, designated confidence votes, and membership-record references.
 - Party history: each list's panel shows its parties' history since 1949 (full sheet with seats or vote share, events and sources) and the comparison with the previous election; list rows show “2022: 5 ▲6” from Standard (Settings switch); Compare adds “Ran jointly”, a note under the later list and the evidence in Matching. Votes are never divided between parties.
