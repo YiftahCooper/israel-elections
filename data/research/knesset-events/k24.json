@@ -1,0 +1,1977 @@
+{
+  "schemaVersion": 1,
+  "knesset": 24,
+  "asOf": "2026-11-08",
+  "coverage": "partial",
+  "scope": "Dated parliamentary composition and government-support events. Votes are point-in-time observations, never continuing support assignments.",
+  "seatsAfterDefinition": "coalition = continuing supporters where established; opposition = all remaining seats, not a claim of a united opposition or how they will vote. Null means unresolved. Nominal faction membership and confidence-vote totals are distinct.",
+  "events": [
+    {
+      "id": "k24-term-start",
+      "date": "2021-04-06",
+      "kind": "term-start",
+      "who": {},
+      "summary": {
+        "en": "24th Knesset membership begins.",
+        "he": "תחילת כהונת הכנסת ה־24."
+      },
+      "classification": "counts",
+      "reason": "Official member-tenure start dates establish the parliamentary boundary; no new government is implied.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k24 initial member-tenure start dates",
+          "supportingNote": "Retained k24 initial member-tenure start dates",
+          "effectiveDate": "2021-04-06",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "Official membership boundary, distinct from government formation."
+    },
+    {
+      "id": "k24-government36",
+      "date": "2021-06-13",
+      "kind": "government-sworn-in",
+      "who": {
+        "personIds": [
+          30786,
+          30548
+        ],
+        "factionIds": [
+          966,
+          967,
+          968,
+          969,
+          970,
+          972,
+          973,
+          963
+        ]
+      },
+      "summary": {
+        "en": "Bennett–Lapid government sworn in; confidence vote 60–59, one abstention. Chikli opposed; Saeed Alharumi abstained.",
+        "he": "ממשלת בנט–לפיד הושבעה: 60 בעד, 59 נגד ונמנע אחד. שיקלי התנגד וסעיד אלחרומי נמנע."
+      },
+      "classification": "counts",
+      "reason": "Investiture establishes the government; the vote does not establish every member’s continuing support.",
+      "seatsAfter": {
+        "coalition": 61,
+        "opposition": 59
+      },
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2036%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Government 36 initial appointment rows; retained evidence /governments/36",
+          "supportingNote": "Government 36 initial appointment rows; retained evidence /governments/36",
+          "effectiveDate": "2021-06-13",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        },
+        {
+          "url": "https://www.timesofisrael.com/new-government-starts-process-of-taking-power-after-12-years-of-netanyahu/",
+          "publisher": "The Times of Israel",
+          "date": "2021-06-14",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "snippet-only",
+          "locator": "Opening government report: 60 affirmative votes; Yamina six of seven and Ra’am three of four",
+          "supportingNote": "Opening government report: 60 affirmative votes; Yamina six of seven and Ra’am three of four"
+        }
+      ],
+      "certainty": "provisional",
+      "vote": {
+        "for": 60,
+        "against": 59,
+        "abstain": 1,
+        "crossVotes": [
+          {
+            "personId": 30786,
+            "vote": "against"
+          },
+          {
+            "personId": 30548,
+            "vote": "abstain"
+          }
+        ]
+      },
+      "seatBasis": "62 nominal coalition seats minus Chikli; Alharumi’s abstention alone does not remove him.",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-faction-0",
+      "date": "2021-06-27",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          30717
+        ],
+        "factionIds": [
+          962,
+          974
+        ]
+      },
+      "summary": {
+        "en": "1 MK recorded moving from Likud to Atid Ehad.",
+        "he": "רישום החברות עבר מסיעת הליכוד בהנהגת בנימין נתניהו לראשות הממשלה לסיעת עתיד אחד (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k24 /factionChanges/0; position record IDs 23631, 24179",
+          "supportingNote": "Retained k24 /factionChanges/0; position record IDs 23631, 24179",
+          "effectiveDate": "2021-06-27",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/factionChanges/0"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-faction-1",
+      "date": "2021-06-27",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          30717
+        ],
+        "factionIds": [
+          974,
+          961
+        ]
+      },
+      "summary": {
+        "en": "1 MK recorded moving from Atid Ehad to Religious Zionism.",
+        "he": "רישום החברות עבר מסיעת עתיד אחד לסיעת הציונות הדתית (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k24 /factionChanges/1; position record IDs 24179, 24181",
+          "supportingNote": "Retained k24 /factionChanges/1; position record IDs 24179, 24181",
+          "effectiveDate": "2021-06-27",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/factionChanges/1"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-budget2021",
+      "date": "2021-11-04",
+      "kind": "budget-vote",
+      "who": {},
+      "summary": {
+        "en": "2021 budget approved",
+        "he": "אושר תקציב 2021"
+      },
+      "classification": "counts",
+      "reason": "A final budget vote is a dated survival test; it does not reset coalition membership.",
+      "seatsAfter": {
+        "coalition": 61,
+        "opposition": 59
+      },
+      "sources": [
+        {
+          "url": "https://main.knesset.gov.il/EN/News/PressReleases/Pages/press51121q.aspx",
+          "publisher": "Knesset",
+          "date": "2021-11-05",
+          "accessed": "2026-11-08",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "snippet-only",
+          "locator": "Knesset budget announcement: 2021 budget early Thursday; 2022 early Friday; full page inaccessible in this pass",
+          "supportingNote": "Knesset budget announcement: 2021 budget early Thursday; 2022 early Friday; full page inaccessible in this pass"
+        },
+        {
+          "url": "https://www.timesofisrael.com/coalition-passes-2021-budget-first-in-years-as-rest-of-vote-a-thon-awaits/amp/",
+          "publisher": "The Times of Israel",
+          "date": "2021-11-04",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening: final 2021 budget passes 61–59",
+          "supportingNote": "Opening: final 2021 budget passes 61–59"
+        }
+      ],
+      "certainty": "provisional",
+      "vote": {
+        "for": 61,
+        "against": 59,
+        "notes": "Individual roll call not recovered."
+      },
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-budget2022",
+      "date": "2021-11-05",
+      "kind": "budget-vote",
+      "who": {},
+      "summary": {
+        "en": "2022 budget approved",
+        "he": "אושר תקציב 2022"
+      },
+      "classification": "counts",
+      "reason": "A final budget vote is a dated survival test; it does not reset coalition membership.",
+      "seatsAfter": {
+        "coalition": 61,
+        "opposition": 59
+      },
+      "sources": [
+        {
+          "url": "https://main.knesset.gov.il/EN/News/PressReleases/Pages/press51121q.aspx",
+          "publisher": "Knesset",
+          "date": "2021-11-05",
+          "accessed": "2026-11-08",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "snippet-only",
+          "locator": "Knesset budget announcement: 2021 budget early Thursday; 2022 early Friday; full page inaccessible in this pass",
+          "supportingNote": "Knesset budget announcement: 2021 budget early Thursday; 2022 early Friday; full page inaccessible in this pass"
+        },
+        {
+          "url": "https://www.timesofisrael.com/knesset-passes-2022-budget-after-marathon-voting-session/",
+          "publisher": "The Times of Israel",
+          "date": "2021-11-05",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Headline and opening: final 2022 budget passes 59–56",
+          "supportingNote": "Headline and opening: final 2022 budget passes 59–56"
+        }
+      ],
+      "certainty": "provisional",
+      "vote": {
+        "for": 59,
+        "against": 56,
+        "notes": "Individual roll call not recovered."
+      },
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-silman-exit",
+      "date": "2022-04-06",
+      "kind": "coalition-exit-statement",
+      "who": {
+        "personIds": [
+          30718
+        ]
+      },
+      "summary": {
+        "en": "Idit Silman announces she is leaving the coalition.",
+        "he": "עידית סילמן הודיעה על פרישה מהקואליציה."
+      },
+      "classification": "counts",
+      "reason": "Her own announced exit changes continuing support, without moving her faction.",
+      "seatsAfter": {
+        "coalition": 60,
+        "opposition": 60
+      },
+      "sources": [
+        {
+          "url": "https://13tv.co.il/item/news/politics/politics/silman-letter-902978775/",
+          "publisher": "Reshet 13",
+          "date": "2022-04-06",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "reshet-13",
+          "inspection": "opened",
+          "locator": "Letter reproduced near end: explicit termination of coalition membership",
+          "supportingNote": "Letter reproduced near end: explicit termination of coalition membership"
+        },
+        {
+          "url": "https://www.timesofisrael.com/in-dramatic-move-whip-silman-quits-government-robbing-coalition-of-majority/",
+          "publisher": "The Times of Israel",
+          "date": "2022-04-06",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening paragraphs: Silman announces exit; coalition loses majority",
+          "supportingNote": "Opening paragraphs: Silman announces exit; coalition loses majority"
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Own statement (reported)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-raam-freeze",
+      "date": "2022-04-17",
+      "kind": "cooperation-freeze",
+      "who": {
+        "factionIds": [
+          973
+        ]
+      },
+      "summary": {
+        "en": "Ra’am freezes cooperation during the recess.",
+        "he": "רע״ם הקפיאה את שיתוף הפעולה בזמן הפגרה."
+      },
+      "classification": "does not count",
+      "reason": "A temporary freeze coordinated with Bennett; no announced permanent coalition exit.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/raam-mulls-coalition-membership-freeze-amid-temple-mount-tensions/amp/",
+          "publisher": "The Times of Israel",
+          "date": "2022-04-17",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Subheading and opening: coordinated temporary freeze to avoid permanent break",
+          "supportingNote": "Subheading and opening: coordinated temporary freeze to avoid permanent break"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Contemporary report",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-faction-2",
+      "date": "2022-04-25",
+      "kind": "declared-left-faction",
+      "who": {
+        "personIds": [
+          30786
+        ],
+        "factionIds": [
+          966,
+          1080
+        ]
+      },
+      "summary": {
+        "en": "House Committee declares Chikli to have left Yamina.",
+        "he": "ועדת הכנסת הכריזה על שיקלי כפורש מימינה."
+      },
+      "classification": "counts",
+      "reason": "Formal declaration changes faction status; it does not date his first opposition vote.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k24 /factionChanges/2; position record IDs 23676, 30063",
+          "supportingNote": "Retained k24 /factionChanges/2; position record IDs 23676, 30063",
+          "effectiveDate": "2022-04-25",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        },
+        {
+          "url": "https://m.knesset.gov.il/EN/mk/apps/faction/general/split-merge",
+          "publisher": "Knesset",
+          "date": "2022-04-25",
+          "accessed": "2026-11-08",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "snippet-only",
+          "locator": "Indexed official list: Chikli declared to have left Yamina on 25 April",
+          "supportingNote": "Indexed official list: Chikli declared to have left Yamina on 25 April"
+        }
+      ],
+      "certainty": "provisional",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/factionChanges/2"
+      },
+      "formalDecisionType": "declared-left-faction",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-no-confidence-haredi",
+      "date": "2022-05-09",
+      "kind": "no-confidence-vote",
+      "who": {},
+      "summary": {
+        "en": "Shas–UTJ no-confidence motion fails, 52–56.",
+        "he": "הצעת אי־האמון של ש״ס ויהדות התורה נדחתה: 52 בעד ו־56 נגד."
+      },
+      "classification": "counts",
+      "reason": "A no-confidence vote belongs in the vote history, even when no government changes.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/coalition-fends-off-no-confidence-challenges-as-knesset-gets-back-to-work/",
+          "publisher": "The Times of Israel",
+          "date": "2022-05-09",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening: two no-confidence results; both short of 61",
+          "supportingNote": "Opening: two no-confidence results; both short of 61"
+        }
+      ],
+      "certainty": "provisional",
+      "vote": {
+        "for": 52,
+        "against": 56,
+        "crossVotes": null
+      },
+      "timelineViews": [
+        "specific-vote"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-no-confidence-likud",
+      "date": "2022-05-09",
+      "kind": "no-confidence-vote",
+      "who": {},
+      "summary": {
+        "en": "Likud no-confidence motion fails, 52–61.",
+        "he": "הצעת אי־האמון של הליכוד נדחתה: 52 בעד ו־61 נגד."
+      },
+      "classification": "counts",
+      "reason": "A no-confidence vote belongs in the vote history, even when no government changes.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/coalition-fends-off-no-confidence-challenges-as-knesset-gets-back-to-work/",
+          "publisher": "The Times of Israel",
+          "date": "2022-05-09",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening: two no-confidence results; both short of 61",
+          "supportingNote": "Opening: two no-confidence results; both short of 61"
+        }
+      ],
+      "certainty": "provisional",
+      "vote": {
+        "for": 52,
+        "against": 61,
+        "crossVotes": null
+      },
+      "timelineViews": [
+        "specific-vote"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-raam-resumes",
+      "date": "2022-05-11",
+      "kind": "cooperation-resumed",
+      "who": {
+        "factionIds": [
+          973
+        ]
+      },
+      "summary": {
+        "en": "Ra’am announces renewed coalition cooperation; Likud withdraws dissolution proposal.",
+        "he": "רע״ם הודיעה על חידוש שיתוף הפעולה בקואליציה; הליכוד משך את הצעת הפיזור."
+      },
+      "classification": "does not count",
+      "reason": "Ends a temporary boycott; no dissolution vote took place.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/likud-pulls-bill-to-dissolve-knesset-after-raam-gives-coalition-another-chance/",
+          "publisher": "The Times of Israel",
+          "date": "2022-05-11",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening: Abbas announces return; Likud withdraws bill",
+          "supportingNote": "Opening: Abbas announces return; Likud withdraws bill"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Contemporary report",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-zoabi-exit",
+      "date": "2022-05-19",
+      "kind": "coalition-exit-statement",
+      "who": {
+        "personIds": [
+          30805
+        ]
+      },
+      "summary": {
+        "en": "Ghaida Rinawie Zoabi announces her coalition exit.",
+        "he": "ג׳ידא רינאוי־זועבי הודיעה על פרישה מהקואליציה."
+      },
+      "classification": "counts",
+      "reason": "Her dated letter explicitly withdraws coalition participation.",
+      "seatsAfter": {
+        "coalition": 59,
+        "opposition": 61
+      },
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/meretz-mk-rinawie-zoabi-quits-coalition-putting-it-in-minority/",
+          "publisher": "The Times of Israel",
+          "date": "2022-05-19",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening and letter to Bennett and Lapid: coalition exit",
+          "supportingNote": "Opening and letter to Bennett and Lapid: coalition exit"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Own statement (reported)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-zoabi-return",
+      "date": "2022-05-22",
+      "kind": "coalition-return-statement",
+      "who": {
+        "personIds": [
+          30805
+        ]
+      },
+      "summary": {
+        "en": "Rinawie Zoabi announces she will again vote with the coalition.",
+        "he": "רינאוי־זועבי הודיעה שתחזור להצביע עם הקואליציה."
+      },
+      "classification": "counts",
+      "reason": "Own public announcement reverses her earlier withdrawal.",
+      "seatsAfter": {
+        "coalition": 60,
+        "opposition": 60
+      },
+      "sources": [
+        {
+          "url": "https://www.globes.co.il/news/article.aspx?did=1001412687",
+          "publisher": "Globes",
+          "date": "2022-05-22",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "globes",
+          "inspection": "opened",
+          "locator": "Paragraphs after meeting: Zoabi explicitly says she will support coalition",
+          "supportingNote": "Paragraphs after meeting: Zoabi explicitly says she will support coalition"
+        },
+        {
+          "url": "https://www.timesofisrael.com/in-reversal-meretz-mk-to-stay-in-coalition-removing-immediate-election-threat/",
+          "publisher": "The Times of Israel",
+          "date": "2022-05-22",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening: renewed voting commitment and return to 60 seats",
+          "supportingNote": "Opening: renewed voting commitment and return to 60 seats"
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Own statement (reported)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-orbach-exit",
+      "date": "2022-06-13",
+      "kind": "coalition-exit-statement",
+      "who": {
+        "personIds": [
+          30787
+        ]
+      },
+      "summary": {
+        "en": "Nir Orbach says he is no longer in the coalition; will not support dissolution that week.",
+        "he": "ניר אורבך הודיע שאינו חלק מהקואליציה, אך לא יתמוך בפיזורה באותו שבוע."
+      },
+      "classification": "counts",
+      "reason": "Explicit exit counts; refusal to vote immediately for elections does not undo that statement.",
+      "seatsAfter": {
+        "coalition": 59,
+        "opposition": 61
+      },
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/yamina-mk-nir-orbach-quits-coalition-dropping-ruling-bloc-into-minority/",
+          "publisher": "The Times of Israel",
+          "date": "2022-06-13",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening and next paragraphs: 59 seats; no dissolution support that week",
+          "supportingNote": "Opening and next paragraphs: 59 seats; no dissolution support that week"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Own statement (reported)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-dissolution",
+      "date": "2022-06-30",
+      "kind": "dissolution-vote",
+      "who": {},
+      "summary": {
+        "en": "Knesset approves dissolution, 92–0; election set for 1 November.",
+        "he": "הכנסת אישרה את פיזורה ברוב של 92 ללא מתנגדים; הבחירות נקבעו ל־1 בנובמבר."
+      },
+      "classification": "counts",
+      "reason": "Final dissolution law changes the parliamentary timetable, not the membership end date.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.jpost.com/israel-news/politics-and-diplomacy/article-710787",
+          "publisher": "The Jerusalem Post",
+          "date": "2022-06-30",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "the-jerusalem-post",
+          "inspection": "opened",
+          "locator": "Opening: 92–0 final dissolution vote",
+          "supportingNote": "Opening: 92–0 final dissolution vote"
+        },
+        {
+          "url": "https://m.knesset.gov.il/en/news/pressreleases/pages/press300622e.aspx",
+          "publisher": "Knesset",
+          "date": "2022-06-30",
+          "accessed": "2026-11-08",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "snippet-only",
+          "locator": "Indexed official notice: 92–0; location restriction on opening",
+          "supportingNote": "Indexed official notice: 92–0; location restriction on opening"
+        }
+      ],
+      "certainty": "provisional",
+      "vote": {
+        "for": 92,
+        "against": 0,
+        "crossVotes": null
+      },
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-lapid-rotation",
+      "date": "2022-07-01",
+      "kind": "prime-minister-rotation",
+      "who": {
+        "personIds": [
+          23594
+        ]
+      },
+      "summary": {
+        "en": "Lapid becomes prime minister under the rotation arrangement after dissolution.",
+        "he": "לפיד נכנס לתפקיד ראש הממשלה במסגרת חילופי התפקידים לאחר הפיזור."
+      },
+      "classification": "counts",
+      "reason": "A formal change in head of government; not a newly numbered government or new coalition.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://news.walla.co.il/item/3515592",
+          "publisher": "Walla",
+          "date": "2022-07-01",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "walla",
+          "inspection": "snippet-only",
+          "locator": "Opening: staff enter with Lapid at midnight; handover from Bennett",
+          "supportingNote": "Opening: staff enter with Lapid at midnight; handover from Bennett"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Contemporary report",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-faction-3",
+      "date": "2022-07-03",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          30811
+        ],
+        "factionIds": [
+          961,
+          1081
+        ]
+      },
+      "summary": {
+        "en": "1 MK recorded moving from Religious Zionism to Otzma Yehudit.",
+        "he": "רישום החברות עבר מסיעת הציונות הדתית לסיעת עוצמה יהודית (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k24 /factionChanges/3; position record IDs 23633, 30116",
+          "supportingNote": "Retained k24 /factionChanges/3; position record IDs 23633, 30116",
+          "effectiveDate": "2022-07-03",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/factionChanges/3"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-faction-10",
+      "date": "2022-08-15",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2178,
+          30082,
+          30118,
+          30797,
+          30799
+        ],
+        "factionIds": [
+          972,
+          1088
+        ]
+      },
+      "summary": {
+        "en": "5 MKs recorded moving from New Hope to New Hope–Unity for Israel.",
+        "he": "רישום החברות עבר מסיעת תקווה חדשה לסיעת תקווה חדשה - אחדות לישראל (5 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k24 /factionChanges/10; position record IDs 23672, 30154, 23670, 30152, 23674, 30153, 24131, 30155, 30128, 30156",
+          "supportingNote": "Retained k24 /factionChanges/10; position record IDs 23672, 30154, 23670, 30152, 23674, 30153, 24131, 30155, 30128, 30156",
+          "effectiveDate": "2022-08-15",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/factionChanges/10"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-faction-11",
+      "date": "2022-08-15",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          23511
+        ],
+        "factionIds": [
+          1085,
+          1086
+        ]
+      },
+      "summary": {
+        "en": "1 MK recorded moving from National Unity to Beyahad.",
+        "he": "רישום החברות עבר מסיעת המחנה הממלכתי לסיעת ביחד (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k24 /factionChanges/11; position record IDs 30147, 30150",
+          "supportingNote": "Retained k24 /factionChanges/11; position record IDs 30147, 30150",
+          "effectiveDate": "2022-08-15",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/factionChanges/11"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-faction-4",
+      "date": "2022-08-15",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          30814
+        ],
+        "factionIds": [
+          961,
+          1084
+        ]
+      },
+      "summary": {
+        "en": "1 MK recorded moving from Religious Zionism to Noam.",
+        "he": "רישום החברות עבר מסיעת הציונות הדתית לסיעת נעם - בראשות חה\"כ אבי מעוז (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k24 /factionChanges/4; position record IDs 23679, 30142",
+          "supportingNote": "Retained k24 /factionChanges/4; position record IDs 23679, 30142",
+          "effectiveDate": "2022-08-15",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/factionChanges/4"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-faction-5",
+      "date": "2022-08-15",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          526,
+          11835,
+          23641,
+          30672
+        ],
+        "factionIds": [
+          965,
+          1082
+        ]
+      },
+      "summary": {
+        "en": "4 MKs recorded moving from United Torah Judaism to Degel HaTorah.",
+        "he": "רישום החברות עבר מסיעת יהדות התורה והשבת - אגודת ישראל דגל התורה לסיעת דגל התורה (4 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k24 /factionChanges/5; position record IDs 23579, 30135, 24189, 30136, 23578, 30137, 23583, 30138",
+          "supportingNote": "Retained k24 /factionChanges/5; position record IDs 23579, 30135, 24189, 30136, 23578, 30137, 23583, 30138",
+          "effectiveDate": "2022-08-15",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/factionChanges/5"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-faction-6",
+      "date": "2022-08-15",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          563,
+          1057,
+          30671
+        ],
+        "factionIds": [
+          965,
+          1083
+        ]
+      },
+      "summary": {
+        "en": "3 MKs recorded moving from United Torah Judaism to Agudat Yisrael.",
+        "he": "רישום החברות עבר מסיעת יהדות התורה והשבת - אגודת ישראל דגל התורה לסיעת אגודת ישראל (3 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k24 /factionChanges/6; position record IDs 23584, 30141, 23577, 30139, 30086, 30140",
+          "supportingNote": "Retained k24 /factionChanges/6; position record IDs 23584, 30141, 23577, 30139, 30086, 30140",
+          "effectiveDate": "2022-08-15",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/factionChanges/6"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-faction-7",
+      "date": "2022-08-15",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          23511,
+          30662,
+          30789
+        ],
+        "factionIds": [
+          966,
+          1085
+        ]
+      },
+      "summary": {
+        "en": "3 MKs recorded moving from Yamina to National Unity.",
+        "he": "רישום החברות עבר מסיעת ימינה בראשות נפתלי בנט לסיעת המחנה הממלכתי (3 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k24 /factionChanges/7; position record IDs 23586, 30147, 30065, 30148, 24135, 30149",
+          "supportingNote": "Retained k24 /factionChanges/7; position record IDs 23586, 30147, 30065, 30148, 24135, 30149",
+          "effectiveDate": "2022-08-15",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/factionChanges/7"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-faction-8",
+      "date": "2022-08-15",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          30787,
+          30788,
+          30791
+        ],
+        "factionIds": [
+          966,
+          1091
+        ]
+      },
+      "summary": {
+        "en": "3 MKs recorded moving from Yamina to Yamina.",
+        "he": "רישום החברות עבר מסיעת ימינה בראשות נפתלי בנט לסיעת ימינה (3 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k24 /factionChanges/8; position record IDs 23644, 30169, 23675, 30172, 30126, 30171",
+          "supportingNote": "Retained k24 /factionChanges/8; position record IDs 23644, 30169, 23675, 30172, 30126, 30171",
+          "effectiveDate": "2022-08-15",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/factionChanges/8"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-faction-9",
+      "date": "2022-08-15",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          30684
+        ],
+        "factionIds": [
+          972,
+          1087
+        ]
+      },
+      "summary": {
+        "en": "1 MK recorded moving from New Hope to Derekh Eretz.",
+        "he": "רישום החברות עבר מסיעת תקווה חדשה לסיעת דרך ארץ (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k24 /factionChanges/9; position record IDs 24140, 30151",
+          "supportingNote": "Retained k24 /factionChanges/9; position record IDs 24140, 30151",
+          "effectiveDate": "2022-08-15",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/factionChanges/9"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-faction-12",
+      "date": "2022-09-06",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          30066,
+          30067,
+          30719,
+          30751
+        ],
+        "factionIds": [
+          964,
+          1089
+        ]
+      },
+      "summary": {
+        "en": "4 MKs recorded moving from Joint List to Joint List (Hadash–Balad).",
+        "he": "רישום החברות עבר מסיעת הרשימה המשותפת (חד\"ש, תע\"ל, בל\"ד) לסיעת הרשימה המשותפת (חד\"ש, בל\"ד) (4 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k24 /factionChanges/12; position record IDs 23574, 30160, 23576, 30161, 23570, 30162, 23564, 30159",
+          "supportingNote": "Retained k24 /factionChanges/12; position record IDs 23574, 30160, 23576, 30161, 23570, 30162, 23564, 30159",
+          "effectiveDate": "2022-09-06",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/factionChanges/12"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-faction-13",
+      "date": "2022-09-06",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          560,
+          30070
+        ],
+        "factionIds": [
+          964,
+          1090
+        ]
+      },
+      "summary": {
+        "en": "2 MKs recorded moving from Joint List to Ta’al.",
+        "he": "רישום החברות עבר מסיעת הרשימה המשותפת (חד\"ש, תע\"ל, בל\"ד) לסיעת התנועה הערבית להתחדשות (תע\"ל) (2 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k24 /factionChanges/13; position record IDs 23568, 30163, 23572, 30164",
+          "supportingNote": "Retained k24 /factionChanges/13; position record IDs 23568, 30163, 23572, 30164",
+          "effectiveDate": "2022-09-06",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/factionChanges/13"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-faction-14",
+      "date": "2022-09-06",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          23511
+        ],
+        "factionIds": [
+          1086,
+          1091
+        ]
+      },
+      "summary": {
+        "en": "1 MK recorded moving from Beyahad to Yamina.",
+        "he": "רישום החברות עבר מסיעת ביחד לסיעת ימינה (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k24 /factionChanges/14; position record IDs 30150, 30170",
+          "supportingNote": "Retained k24 /factionChanges/14; position record IDs 30150, 30170",
+          "effectiveDate": "2022-09-06",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/factionChanges/14"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-faction-15",
+      "date": "2022-09-15",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          30788
+        ],
+        "factionIds": [
+          1091,
+          1092
+        ]
+      },
+      "summary": {
+        "en": "1 MK recorded moving from Yamina to Economic Freedom.",
+        "he": "רישום החברות עבר מסיעת ימינה לסיעת חופש כלכלי (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k24 /factionChanges/15; position record IDs 30172, 30174",
+          "supportingNote": "Retained k24 /factionChanges/15; position record IDs 30172, 30174",
+          "effectiveDate": "2022-09-15",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/factionChanges/15"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-term-end",
+      "date": "2022-11-15",
+      "kind": "term-end",
+      "who": {},
+      "summary": {
+        "en": "24th Knesset membership ends when the 25th Knesset begins.",
+        "he": "כהונת הכנסת ה־24 הסתיימה עם תחילת כהונת הכנסת ה־25."
+      },
+      "classification": "counts",
+      "reason": "The membership boundary is the new Knesset’s start, not the June dissolution vote.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained tenures end 2022-11-15; k25 initial tenures begin the same day",
+          "supportingNote": "Retained tenures end 2022-11-15; k25 initial tenures begin the same day",
+          "effectiveDate": "2022-11-15",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    }
+  ],
+  "membershipEventRefs": [
+    {
+      "date": "2021-04-08",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/0"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-04-08",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/1"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-04-08",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/2"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2021-06-13",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/3"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-13",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/4"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2021-06-13",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/5"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/6"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/7"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/8"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/9"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/10"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/11"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/12"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/13"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/14"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/15"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/16"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-16",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/17"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-16",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/18"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-22",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/19"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-23",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/20"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2021-06-25",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/21"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-07-09",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/22"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2021-07-09",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/23"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-07-09",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/24"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-07-18",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/25"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2021-08-05",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/26"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2021-08-25",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/27"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2022-01-25",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/28"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2022-02-24",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/29"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2022-05-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/30"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2022-06-03",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/31"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2022-07-14",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/32"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2022-08-02",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/33"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2022-08-04",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/34"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2022-08-17",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/35"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2022-09-13",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/36"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/37"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-04-08",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/38"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/39"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-04-08",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/40"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/41"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-16",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/42"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/43"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-25",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/44"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/45"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-16",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/46"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-22",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/47"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/48"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/49"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/50"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/51"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/52"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-07-09",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/53"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2022-09-13",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/54"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-07-09",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/55"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2022-07-14",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/56"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-13",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/57"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2021-06-13",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k24.json",
+        "pointer": "/replacements/58"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    }
+  ],
+  "gaps": [
+    "Not a complete roll-call census: all confidence/no-confidence motions, all budget readings/reservations and dissenters remain to be enumerated from official protocols.",
+    "Coalition agreements/signing dates and statutory effective dates of resignation letters have not been comprehensively recovered.",
+    "Official database membership transitions establish faction composition, not the exact legal decision type; committee protocols remain required.",
+    "Replacement reasons and candidate succession chains remain unknown in the referenced membership dataset; do not infer Norwegian-law exits, ordinary resignations or deaths from dates alone.",
+    "English contemporary reports predominate in this pass; Hebrew primary documents and trusted institutional scholarship remain to be added."
+  ],
+  "initialCabinetRef": {
+    "path": "data/meta/government-support-evidence.json",
+    "pointer": "/governments/36",
+    "date": "2021-06-13"
+  },
+  "method": {
+    "classification": "Editorial application of the brief, independent of factual certainty. counts includes faction-only and vote-only events; consult timelineViews and supportEffect before changing support colours.",
+    "sourceAccess": "Managed web search/open, plus retained official repository records. No access-control circumvention. Tool-controlled web User-Agent is not exposed; direct HTTP retrieval must use the project User-Agent.",
+    "sourceAccounting": "Distinct canonical URLs and publisher families can be counted from events[].sources. No claim of independent corroboration from repeated reports by one publisher.",
+    "membershipReferences": "All existing replacement rows indexed by JSON Pointer; no duplicated replacement pairings or invented reasons. Reference rows are excluded from classification totals."
+  }
+}

@@ -2,6 +2,7 @@
 
 ## 7 November 2026 — Settings
 
+- Research: add a partial, source-linked Knesset event history for 2021–2026, with explicit exclusions, hard cases and membership-record references.
 - Research: check Ra’am’s proposed deputy post against official appointments; add a practical scholarly and newspaper reading plan for unresolved coalition history.
 - Research: assess lawful historical archive access, ranked alternatives and bilingual owner enquiry drafts.
 - Research: assess Hebrew editing tools and native review, with 25 source-linked copy proposals and a practical quality pipeline.
