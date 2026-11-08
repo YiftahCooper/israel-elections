@@ -2,6 +2,7 @@ import { percentNum } from './Percentage.tsx';
 import { SeatDelta } from './SeatDelta.tsx';
 import './turnout.css';
 import { TurnoutSteps } from './TurnoutSteps.tsx';
+import { TurnoutFacts } from './TurnoutFacts.tsx';
 import { StartFrom } from './StartFrom.tsx';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Download, Save, Trash2, Upload } from 'lucide-react';
@@ -128,6 +129,8 @@ export function Turnout({ s }: { s: Scenario }) {
 
   return (
     <div className="turnout">
+      <TurnoutFacts s={s} />
+      <h3>{L('Change turnout', 'שינוי שיעור ההצבעה')}</h3>
       <div className="turnout-national"><TurnoutSteps s={s}><StartFrom s={s} part="totals" /></TurnoutSteps></div>
 
       <section className="vg" aria-label={L('Voter group', 'קבוצת מצביעים')}>

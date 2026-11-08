@@ -323,9 +323,10 @@ Rules for `decimals`:
 
 - Toggle, Standard+, default On. Both split entry points show the same reminder.
 - “Don't show again” at the split sets it Off; Settings turns it back On.
-- EN: “A vote is for the whole list. Election results do not show which party within it each voter preferred—this split is a scenario assumption.”
-- Hebrew lives once in `SplitWarning.tsx` for the separate editing pass.
-- (i) of the setting EN: "Show the scenario-assumption reminder when splitting a joint list. Turn on to see it again."
+- HE (the owner's own, 8 Nov): “הקול ניתן לרשימה כולה. תוצאות הבחירות אינן מצביעות על העדפת מפלגה ספציפית — הפיצול כאן הוא הנחה לתרחיש.”
+- EN: “The vote was cast for the whole list. The results don’t show a preference for any one party; the split here is an assumption for the scenario.”
+- Both live once in `SplitWarning.tsx`; the split (i)s beside it open with the same point.
+- (i) of the setting EN: "When splitting a joint list, remind that the split is an assumption for the scenario. Turn on to see it again."
 - The reminder's own (i) quotes the Knesset Elections Law §5: “ההצבעה תהיה בעד רשימות מועמדים שפורסמו בהתאם לסעיף 65.” (in English mode followed
   by a translation).
 

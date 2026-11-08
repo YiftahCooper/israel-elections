@@ -109,7 +109,7 @@ export const SETTINGS: readonly SettingRow[] = [
   { id: 'voteCounts', group: 'lists', control: 'toggle', min: 'simple', label: ['Vote counts', 'מספרי קולות'],
     info: ['The number of votes beside each list’s share.', 'מספר הקולות ליד אחוז הקולות של כל רשימה.'], synonyms: 'votes numbers totals count קולות מספרים' },
   { id: 'lastTimeRows', group: 'lists', control: 'toggle', min: 'standard', label: ['Compared with last time', 'השוואה לבחירות הקודמות'],
-    info: ['A line under each list: its seats at the previous election and the change (2022: 5 ▲6). The list panel always shows it.', 'שורה מתחת לכל רשימה: המנדטים בבחירות הקודמות והשינוי (2022: 5 ▲6). חלונית הרשימה מציגה זאת תמיד.'], synonyms: 'previous last election history since change predecessor קודמות היסטוריה שינוי' },
+    info: ['A line under each list: its seats at the previous election and the change (2022: 5 ▲6). Compare and the list panel always show the comparison.', 'שורה מתחת לכל רשימה: המנדטים בבחירות הקודמות והשינוי (2022: 5 ▲6). ההשוואה וחלונית הרשימה מציגות את ההשוואה תמיד.'], synonyms: 'previous last election history since change predecessor קודמות היסטוריה שינוי' },
   { id: 'allCandidates', group: 'lists', control: 'toggle', min: 'standard', label: ['All candidates', 'כל המועמדים'],
     info: ['Opens a list’s full roster. Off: the elected and the next few first.', 'פותח את רשימת המועמדים המלאה. כבוי: הנבחרים והבאים בתור תחילה.'], synonyms: 'candidates roster members names מועמדים חברים שמות' },
 
@@ -132,7 +132,7 @@ export const SETTINGS: readonly SettingRow[] = [
     info: ['Percentages show at most this many, without trailing zeros. Tap, hover or focus one for its exact value. Next to the threshold a share gets one more digit, so it never looks like it is on the other side.', 'אחוזים מוצגים עם לכל היותר כמה ספרות, בלי אפסים בסוף. נגיעה, ריחוף או מיקוד מציגים את הערך המדויק. ליד אחוז החסימה מוצגת ספרה נוספת, כדי שהאחוז לא ייראה בצד השני שלו.'],
     synonyms: 'decimal precision percent % digits rounding דיוק אחוז עשרוניות עיגול' },
 
-  { id: 'splitWarning', group: 'editing', control: 'toggle', min: 'standard', label: ['Joint-list split warning', 'אזהרה בפיצול רשימה משותפת'], info: ['Show the scenario-assumption reminder when splitting a joint list. Turn on to see it again.', 'הצגת תזכורת על הנחת התרחיש בפיצול רשימה משותפת. הפעילו כדי לראות אותה שוב.'], synonyms: 'split warning remember assumption פיצול אזהרה הנחה' },
+  { id: 'splitWarning', group: 'editing', control: 'toggle', min: 'standard', label: ['Joint-list split warning', 'אזהרה בפיצול רשימה משותפת'], info: ['When splitting a joint list, remind that the split is an assumption for the scenario. Turn on to see it again.', 'בפיצול רשימה משותפת, תזכורת שהפיצול הוא הנחה לתרחיש. הפעילו כדי לראות אותה שוב.'], synonyms: 'split warning remember assumption פיצול אזהרה הנחה' },
   { id: 'voteSource', group: 'editing', control: 'choice', min: 'standard', feature: 'voteSource', label: ['Votes come from', 'הקולות מגיעים מ־'],
     info: ['Other lists: from all, in proportion; turnout stays. New voters: turnout changes. Ask: you choose at each edit.', 'שאר הרשימות: מכולן, באופן יחסי; ההצבעה לא משתנה. מצביעים חדשים: ההצבעה משתנה. לשאול: בוחרים בכל עריכה.'],
     synonyms: 'source donor ask default remember balance מקור תורם לשאול ברירת מחדל זכירה' },
@@ -173,7 +173,7 @@ export function settingDefault<K extends SettingId>(id: K, level: Preset): Setti
   const d: SettingValues = {
     theme: 'device', density: 'compact', starterTip: true, openOn: 'overview',
     listSymbol: 'logo', partyColourInSeats: true, seatlessParties: false, partiesInSeatlessLists: false, seatlessLists: 'over', withdrawnLists: true,
-    listOrder: 'seats', voteCounts: level !== 'simple', lastTimeRows: true, allCandidates: false,
+    listOrder: 'seats', voteCounts: level !== 'simple', lastTimeRows: false, allCandidates: false,
     chamberLayout: 'hemicycle', seatColour: 'list', blocShading: true, referenceChamber: true, chamberKey: true, dimUnselected: true,
     decimals: level === 'expert' ? 3 : level === 'standard' ? 2 : 1, splitWarning: true,
     confirmStartOver: true, hoverPreviews: true, communityScenarios: true, compareWith: 'previous', optionPreviews: true,

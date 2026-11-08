@@ -41,3 +41,44 @@
   .vg-fields { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 }
 .vg-bar .vg-other { background: var(--muted); opacity: .5; }
+/* Election facts (TurnoutFacts.tsx): tiles, then the all-elections charts; graphics read left to right in Hebrew too */
+.tn-facts { margin-bottom: 14px; }
+.tn-facts h3 { margin: 0 0 6px; }
+.tn-first { margin: 0 0 6px; }
+.tn-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 8px; margin: 0; }
+.tn-fact { border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); padding: 8px 10px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.tn-fact dt { font-size: 13px; color: var(--ink-2); display: inline-flex; align-items: center; gap: 4px; }
+.tn-fact dd { margin: 0; }
+.tn-v { font-size: 20px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+.tn-d, .tn-since { font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.tn-delta { font-weight: 600; }
+.tn-history { margin-top: 12px; }
+.tn-history h4 { margin: 0; display: inline-flex; align-items: center; gap: 4px; }
+.tn-readout { margin: 4px 0 2px; min-height: 1.5em; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.tn-readout b { color: var(--ink); }
+.tn-charts { display: grid; gap: 6px; }
+.tn-cap { margin-bottom: 2px; }
+.tn-chart { display: block; overflow: visible; font-family: var(--font); }
+.tn-gl { stroke: var(--grid); stroke-width: 1; }
+.tn-axis { fill: var(--muted); font-size: 10.5px; }
+.tn-bar { fill: var(--ink-2); opacity: .7; }
+.tn-bar.cur { fill: var(--focus); opacity: 1; }
+.tn-line { fill: none; stroke: var(--ink-2); stroke-width: 2; stroke-linejoin: round; }
+.tn-dot { fill: var(--ink-2); stroke: var(--surface); stroke-width: 2; }
+.tn-dot.cur { fill: var(--focus); }
+.tn-cur { fill: var(--open); }
+.tn-hov { fill: var(--surface-2); }
+.tn-hit { fill: transparent; cursor: pointer; }
+.tn-col { outline: none; }
+.tn-col:focus-visible .tn-bar { stroke: var(--focus); stroke-width: 2; opacity: 1; }
+.tn-table { margin-top: 6px; }
+.tn-table summary { cursor: pointer; color: var(--ink-2); }
+.tn-table-wrap { overflow-x: auto; }
+.tn-table tr[aria-current="true"] td { background: var(--open); font-weight: 600; }
+@media (max-width: 520px) {
+  .tn-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .tn-fact { padding: 6px 8px; }
+  .tn-v { font-size: 17px; }
+  .tn-readout { min-height: 3em; } /* two lines reserved: hovering another election never moves the charts */
+}
+.turnout > h3 { margin: 0 0 6px; }

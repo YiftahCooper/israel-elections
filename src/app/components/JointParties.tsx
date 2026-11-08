@@ -1,5 +1,5 @@
 import { percentNum } from './Percentage.tsx';
-import { SplitWarning } from './SplitWarning.tsx';
+import { SplitPartNote, SplitWarning } from './SplitWarning.tsx';
 import { partyDisplayColor } from '../partyDisplayColor.ts';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
@@ -10,6 +10,7 @@ import { useDisclosure } from './Feature.tsx';
 import { Fragment, useMemo, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
 import { apportion } from '../../model/actions.ts';
+import { hasOwnCandidates, planPartySplit } from '../../model/jointSplit.ts';
 import type { Action, Scenario, SimList } from '../../model/scenario.ts';
 import { electedOf } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
@@ -60,17 +61,18 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
   const pct = shares ?? defaults;
   const sum = Math.round(pct.reduce((a, b) => a + b, 0) * 10) / 10;
   const votes = apportion(l.votes, pct.map((x) => Math.max(0, Math.round(x * 10))));
-  // candidates without a recorded party go with the party of the list's first-ranked candidate
-  const lead = l.candidates.find((c) => c.partyId)?.partyId ?? parties[0].id;
+  // only parties given votes run on their own; the rest, and candidates without a recorded party, stay with the lead's part
+  const plan = planPartySplit(l, votes);
+  const home = parties[plan.home];
   const unassigned = l.candidates.filter((c) => !c.partyId || !parties.some((p) => p.id === c.partyId)).length;
 
   const run = () => {
-    const parts = parties.map((p, i) => ({
-      newId: newId(i), nameHe: p.nameHe, letters: i === 0 ? l.letters : `${l.letters}${i + 1}`, color: separateListColours[p.id], votes: votes[i],
-      candidateIds: l.candidates.filter((c) => (c.partyId && parties.some((x) => x.id === c.partyId) ? c.partyId : lead) === p.id).map((c) => c.id),
+    if (plan.parts.length < 2) return;
+    const parts = plan.parts.map((pt, k) => ({
+      newId: newId(k), nameHe: parties[pt.index].nameHe, letters: k === 0 ? l.letters : `${l.letters}${k + 1}`, color: separateListColours[parties[pt.index].id], votes: pt.votes, candidateIds: pt.candidateIds,
     }));
     const actions: Action[] = [{ type: 'split', id: l.id, parts },
-      ...parts.map((p, i) => ({ type: 'setListMeta', listId: p.newId, patch: { shortEn: parties[i].nameEn } }) as Action)];
+      ...parts.map((p, k) => ({ type: 'setListMeta', listId: p.newId, patch: { shortEn: parties[plan.parts[k].index].nameEn } }) as Action)];
     if (dispatchMany(actions)) setState({ selectedListId: parts[0].newId });
   };
 
@@ -117,8 +119,8 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
         <div style={{ marginTop: 6 }}>
           <button className="btn small" aria-expanded={open} onClick={() => setOpen((o) => !o)}>{L('Split into separate lists', 'פיצול לרשימות נפרדות')}</button>
           {open && <div className="joint-split"><SplitWarning />
-          <p className="small ink2">{L('Assumed vote shares', 'חלוקת קולות משוערת')} <Info title={L('Split assumptions', 'הנחות הפיצול')}>{L('What if these parties had run on their own? Nobody knows how the joint list’s votes would have divided, so the shares below are an assumption: by default, each party’s share of the list’s elected members. Each part must then pass the threshold on its own, and the joint list’s surplus-vote agreement is dropped. Undo restores the joint list.',
-            'מה אילו המפלגות היו רצות לבד? איש אינו יודע כיצד היו מתחלקים הקולות, ולכן החלוקה שלהלן היא הנחה: כברירת מחדל, חלקה של כל מפלגה בנבחרי הרשימה. כל חלק יצטרך לעבור את אחוז החסימה בעצמו, והסכם העודפים של הרשימה יבוטל. ביטול מחזיר את הרשימה המשותפת.')}</Info></p>
+          <p className="small ink2">{L('Assumed vote shares', 'חלוקת קולות משוערת')} <Info title={L('Split assumptions', 'הנחות הפיצול')}>{L('What if these parties had run on their own? The vote was cast for the whole list, so the shares below are an assumption for the scenario: by default, each party’s share of the list’s elected members. Each part must then pass the threshold on its own, and the joint list’s surplus-vote agreement is dropped. Undo restores the joint list.',
+            'מה אילו המפלגות היו רצות לבד? הקול ניתן לרשימה כולה, ולכן החלוקה שלהלן היא הנחה לתרחיש: כברירת מחדל, חלקה של כל מפלגה בנבחרי הרשימה. כל חלק יצטרך לעבור את אחוז החסימה בעצמו, והסכם העודפים של הרשימה יבוטל. ביטול מחזיר את הרשימה המשותפת.')}</Info></p>
           <div className="kv small">
             {parties.map((p, i) => (
               <Fragment key={p.id}>
@@ -127,14 +129,17 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
                   <input type="number" min={0} max={100} step={0.1} value={pct[i]} aria-label={L(`Vote share of ${p.nameEn} (%)`, `חלק הקולות של ${p.nameHe} (%)`)} style={{ width: 72 }}
                     onChange={(e) => { const next = [...pct]; next[i] = Math.max(0, Number(e.target.value) || 0); setShares(next); }} />%
                   {expert && <span className="muted tabnum">{fmtInt(votes[i])}</span>}
+                  {votes[i] === 0 ? <SplitPartNote own={hasOwnCandidates(l, p.id)} home={home && home !== p ? name(home) : null} />
+                    : !hasOwnCandidates(l, p.id) && p.id !== parties[plan.home]?.id && <span className="tiny muted">{L('No recorded candidates', 'אין מועמדים מתועדים')}</span>}
                 </span>
               </Fragment>
             ))}
           </div>
           {Math.abs(sum - 100) > 0.05 && <p className="small" style={{ color: 'var(--warn-ink)' }}>{(lang === 'he' ? <>{"החלקים מסתכמים ב-"}{percentNum(sum, digits)}{"; הקולות יחולקו ביחס הזה."}</> : <>{"The shares add up to "}{percentNum(sum, digits)}{"; the votes are divided in these proportions."}</>)}</p>}
-          {unassigned > 0 && <p className="tiny muted">{L(`${unassigned} candidates assigned to lead party`, `${unassigned} מועמדים צורפו למפלגת הראש`)} <Info title={L('Candidate assignment', 'שיוך מועמדים')}>{L(`${unassigned} candidate(s) without a recorded party go with ${name(parties.find((p) => p.id === lead)!)} (the party of the list’s leader).`, `${unassigned} מועמדים שמפלגתם לא תועדה יצורפו ${hebrewPrefix('ל', name(parties.find((p) => p.id === lead)!))} (מפלגת העומד בראש הרשימה).`)}</Info></p>}
+          {unassigned > 0 && home && <p className="tiny muted">{L(`${unassigned} candidates assigned to lead party`, `${unassigned} מועמדים צורפו למפלגת הראש`)} <Info title={L('Candidate assignment', 'שיוך מועמדים')}>{L(`${unassigned} candidate(s) without a recorded party go with ${name(home)} (the party of the list’s leader).`, `${unassigned} מועמדים שמפלגתם לא תועדה יצורפו ${hebrewPrefix('ל', name(home))} (מפלגת העומד בראש הרשימה).`)}</Info></p>}
+          {plan.parts.length < 2 && <p className="small" style={{ color: 'var(--warn-ink)' }}>{L('Give at least two parties a share.', 'תנו חלק לשתי מפלגות לפחות.')}</p>}
           <div className="row" style={{ gap: 6 }}>
-            <button className="btn small primary" onClick={run}>{L(`Run as ${parties.length} separate lists`, `ריצה ב-${parties.length} רשימות נפרדות`)}</button>
+            <button className="btn small primary" disabled={plan.parts.length < 2} onClick={run}>{L(`Run as ${plan.parts.length} separate lists`, `ריצה ב-${plan.parts.length} רשימות נפרדות`)}</button>
             {shares && <button className="btn small ghost" onClick={() => setShares(null)}>{L('Reset shares', 'איפוס החלוקה')}</button>}
           </div>
           </div>}
@@ -143,3 +148,4 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
     </section>
   );
 }
+

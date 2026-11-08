@@ -63,8 +63,8 @@ test('Expert opens the exact figures; a joint list without a recorded link is co
   await expect(sheet(page).locator('.ph-table tbody tr')).toHaveCount(18);
 });
 
-test('the row line shows from Standard', async ({ page }) => {
-  await start(page);
+test('the row line shows from Standard once its Settings switch is on', async ({ page }) => {
+  await start(page, { values: { lastTimeRows: true } });
   await expect(listRow(page, 'Joint List').locator('.ph-rowline')).toHaveText(/^2022: 5 ▲ \+6 · Hadash–Ta'al \+ Balad$/);
   await expect(listRow(page, 'Yashar!').locator('.ph-rowline')).toHaveText('New · no 2022 list');
   await expect(listRow(page, 'Otzma Yehudit').locator('.ph-rowline')).toContainText('Religious Zionism → 3 lists');
@@ -73,7 +73,7 @@ test('the row line shows from Standard', async ({ page }) => {
   const described = await listRow(page, 'Joint List').getAttribute('aria-describedby');
   await expect(page.locator(`[id="${described}"]`)).toContainText('2022: 5 seats (6 more)');
 });
-for (const [what, level, values] of [['its Settings switch is off', 'standard', { lastTimeRows: false }], ['at Simple', 'simple', {}]] as const)
+for (const [what, level, values] of [['by default', 'standard', {}], ['by default at Expert', 'expert', {}], ['at Simple even when switched on', 'simple', { lastTimeRows: true }]] as const)
   test(`no row line when ${what}`, async ({ page }) => {
     await start(page, { level, values });
     await expect(listRow(page, 'Joint List')).toBeVisible();

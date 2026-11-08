@@ -4,6 +4,7 @@ import { ELECTION_IDS, type ElectionDataset } from './src/data/schema.ts';
 import { validateAftermath, type Aftermath } from './src/data/aftermath-model.ts';
 import { compileFamilyRuntime } from './scripts/family-runtime.ts';
 import { compileHistoryRuntime } from './scripts/party-history-runtime.ts';
+import { compileElectionTotals } from './scripts/election-totals-runtime.ts';
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import { scaleAwareMedia } from './scripts/scale-aware-media.ts';
@@ -36,6 +37,10 @@ export default defineConfig({
     name: 'party-history-runtime',
     resolveId(id) { if (id === 'virtual:party-history') return '\0party-history'; },
     load(id) { if (id === '\0party-history') return `export default ${JSON.stringify(compileHistoryRuntime())}`; },
+  }, {
+    name: 'election-totals',
+    resolveId(id) { if (id === 'virtual:election-totals') return '\0election-totals'; },
+    load(id) { if (id === '\0election-totals') return `export default ${JSON.stringify(compileElectionTotals())}`; },
   }],
   test: { include: ['tests/**/*.test.ts'], environment: 'node' },
 });
