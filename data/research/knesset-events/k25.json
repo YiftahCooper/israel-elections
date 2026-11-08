@@ -1,0 +1,2250 @@
+{
+  "schemaVersion": 1,
+  "knesset": 25,
+  "asOf": "2026-11-08",
+  "coverage": "partial",
+  "scope": "Dated parliamentary composition and government-support events. Votes are point-in-time observations, never continuing support assignments.",
+  "seatsAfterDefinition": "coalition = continuing supporters where established; opposition = all remaining seats, not a claim of a united opposition or how they will vote. Null means unresolved. Nominal faction membership and confidence-vote totals are distinct.",
+  "events": [
+    {
+      "id": "k25-term-start",
+      "date": "2022-11-15",
+      "kind": "term-start",
+      "who": {},
+      "summary": {
+        "en": "25th Knesset membership begins.",
+        "he": "תחילת כהונת הכנסת ה־25."
+      },
+      "classification": "counts",
+      "reason": "Official member-tenure start dates establish the parliamentary boundary; no new government is implied.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k25 initial member-tenure start dates",
+          "supportingNote": "Retained k25 initial member-tenure start dates",
+          "effectiveDate": "2022-11-15",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "Official membership boundary, distinct from government formation."
+    },
+    {
+      "id": "k25-faction-0",
+      "date": "2022-11-20",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          23551,
+          30055,
+          30717,
+          30810,
+          30812,
+          30830,
+          30852
+        ],
+        "factionIds": [
+          1097,
+          1105
+        ]
+      },
+      "summary": {
+        "en": "7 MKs recorded moving from Religious Zionism joint faction to Religious Zionism.",
+        "he": "רישום החברות עבר מסיעת הציונות הדתית לסיעת הציונות הדתית בראשות בצלאל סמוטריץ' (7 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k25 /factionChanges/0; position record IDs 30213, 30534, 30214, 30532, 30285, 30533, 30211, 30536, 30215, 30535, 30280, 30537, 30282, 30538",
+          "supportingNote": "Retained k25 /factionChanges/0; position record IDs 30213, 30534, 30214, 30532, 30285, 30533, 30211, 30536, 30215, 30535, 30280, 30537, 30282, 30538",
+          "effectiveDate": "2022-11-20",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/factionChanges/0"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-faction-1",
+      "date": "2022-11-20",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          30811,
+          30833,
+          30847,
+          30849,
+          30857,
+          30859
+        ],
+        "factionIds": [
+          1097,
+          1106
+        ]
+      },
+      "summary": {
+        "en": "6 MKs recorded moving from Religious Zionism joint faction to Otzma Yehudit.",
+        "he": "רישום החברות עבר מסיעת הציונות הדתית לסיעת עוצמה יהודית בראשות איתמר בן גביר (6 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k25 /factionChanges/1; position record IDs 30210, 30525, 30281, 30527, 30279, 30526, 30283, 30530, 30278, 30528, 30284, 30529",
+          "supportingNote": "Retained k25 /factionChanges/1; position record IDs 30210, 30525, 30281, 30527, 30279, 30526, 30283, 30530, 30278, 30528, 30284, 30529",
+          "effectiveDate": "2022-11-20",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/factionChanges/1"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-faction-2",
+      "date": "2022-11-20",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          30814
+        ],
+        "factionIds": [
+          1097,
+          1107
+        ]
+      },
+      "summary": {
+        "en": "1 MK recorded moving from Religious Zionism joint faction to Noam.",
+        "he": "רישום החברות עבר מסיעת הציונות הדתית לסיעת נעם - בראשות אבי מעוז (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k25 /factionChanges/2; position record IDs 30212, 30531",
+          "supportingNote": "Retained k25 /factionChanges/2; position record IDs 30212, 30531",
+          "effectiveDate": "2022-11-20",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/factionChanges/2"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-government37",
+      "date": "2022-12-29",
+      "kind": "government-sworn-in",
+      "who": {
+        "factionIds": [
+          1095,
+          1096,
+          1101,
+          1105,
+          1106,
+          1107
+        ]
+      },
+      "summary": {
+        "en": "Netanyahu’s 37th government sworn in; confidence vote reported as 63–54.",
+        "he": "ממשלת נתניהו ה־37 הושבעה; הצבעת האמון דווחה כ־63 בעד ו־54 נגד."
+      },
+      "classification": "counts",
+      "reason": "New government and formal coalition; membership total differs from attendance at the vote.",
+      "seatsAfter": {
+        "coalition": 64,
+        "opposition": 56
+      },
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2037%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained initial cabinet appointment rows /governments/37",
+          "supportingNote": "Retained initial cabinet appointment rows /governments/37",
+          "effectiveDate": "2022-12-29",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        },
+        {
+          "url": "https://www.timesofisrael.com/the-daily-edition/2022-12-29/",
+          "publisher": "The Times of Israel",
+          "date": "2022-12-29",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "snippet-only",
+          "locator": "Lead story summary: investiture approved 63–54",
+          "supportingNote": "Lead story summary: investiture approved 63–54"
+        }
+      ],
+      "certainty": "provisional",
+      "vote": {
+        "for": 63,
+        "against": 54,
+        "crossVotes": null
+      },
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-boycott-feb",
+      "date": "2023-02-27",
+      "kind": "vote-boycott",
+      "who": {
+        "factionIds": [
+          1106,
+          1101
+        ]
+      },
+      "summary": {
+        "en": "Otzma Yehudit and UTJ boycott a plenum session.",
+        "he": "עוצמה יהודית ויהדות התורה החרימו ישיבת מליאה."
+      },
+      "classification": "does not count",
+      "reason": "Conditional voting pressure while remaining in the coalition; no formal exit or qualifying survival vote established.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.jpost.com/israel-news/article-732847",
+          "publisher": "The Jerusalem Post",
+          "date": "2023-02-27",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "the-jerusalem-post",
+          "inspection": "opened",
+          "locator": "Paragraphs on two parties’ session boycott and UTJ returning for closing vote",
+          "supportingNote": "Paragraphs on two parties’ session boycott and UTJ returning for closing vote"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-maoz-first-resignation",
+      "date": "2023-02-27",
+      "kind": "deputy-minister-resignation",
+      "who": {
+        "personIds": [
+          30814
+        ]
+      },
+      "summary": {
+        "en": "Avi Maoz resigns as deputy minister but says he remains a coalition MK.",
+        "he": "אבי מעוז התפטר מתפקיד סגן השר והודיע שימשיך כחבר קואליציה."
+      },
+      "classification": "hard case",
+      "reason": "Office changes, but his stated coalition membership continues.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/liveblog_entry/far-rights-anti-lgbt-mk-avi-maoz-resigns-from-government-role/",
+          "publisher": "The Times of Israel",
+          "date": "2023-02-27",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Resignation letter and explicit continuing coalition membership",
+          "supportingNote": "Resignation letter and explicit continuing coalition membership"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Contemporary report",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-boycott-may",
+      "date": "2023-05-03",
+      "kind": "vote-boycott",
+      "who": {
+        "factionIds": [
+          1106
+        ]
+      },
+      "summary": {
+        "en": "Otzma Yehudit boycotts votes over security policy.",
+        "he": "עוצמה יהודית החרימה הצבעות במחאה על מדיניות הביטחון."
+      },
+      "classification": "does not count",
+      "reason": "Conditional voting pressure while remaining in the coalition; no formal exit or qualifying survival vote established.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/coalition-tensions-rise-as-otzma-yehudit-boycotts-knesset-over-feeble-gaza-response/amp/",
+          "publisher": "The Times of Israel",
+          "date": "2023-05-03",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening: boycott over response to rocket attacks",
+          "supportingNote": "Opening: boycott over response to rocket attacks"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-boycott-budget",
+      "date": "2023-05-17",
+      "kind": "vote-boycott",
+      "who": {
+        "factionIds": [
+          1106
+        ]
+      },
+      "summary": {
+        "en": "Otzma Yehudit walks out of votes to demand more ministry funding.",
+        "he": "עוצמה יהודית יצאה מהצבעות בדרישה לתוספת תקציב למשרדה."
+      },
+      "classification": "does not count",
+      "reason": "Conditional voting pressure while remaining in the coalition; no formal exit or qualifying survival vote established.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/in-latest-coalition-upheaval-otzma-yehudit-boycotts-knesset-votes-over-budget-dispute/",
+          "publisher": "The Times of Israel",
+          "date": "2023-05-17",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening: walkout to obtain Negev and Galilee funding",
+          "supportingNote": "Opening: walkout to obtain Negev and Galilee funding"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-budget2023",
+      "date": "2023-05-24",
+      "kind": "budget-vote",
+      "who": {},
+      "summary": {
+        "en": "2023 state budget approved with 64 for and 55 against (reported jointly).",
+        "he": "תקציב 2023 אושר; הדיווח המשותף מציין 64 בעד ו־55 נגד."
+      },
+      "classification": "counts",
+      "reason": "Final budget approval is a survival vote; separate roll-call IDs still needed.",
+      "seatsAfter": {
+        "coalition": 64,
+        "opposition": 56
+      },
+      "sources": [
+        {
+          "url": "https://en.globes.co.il/en/article-knesset-passes-2023-2024-state-budget-1001447387",
+          "publisher": "Globes",
+          "date": "2023-05-24",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "globes",
+          "inspection": "opened",
+          "locator": "Opening: two annual budgets and arrangements law passed 64–55",
+          "supportingNote": "Opening: two annual budgets and arrangements law passed 64–55"
+        }
+      ],
+      "certainty": "provisional",
+      "vote": {
+        "for": 64,
+        "against": 55,
+        "crossVotes": null
+      },
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-budget2024",
+      "date": "2023-05-24",
+      "kind": "budget-vote",
+      "who": {},
+      "summary": {
+        "en": "2024 state budget approved with 64 for and 55 against (reported jointly).",
+        "he": "תקציב 2024 אושר; הדיווח המשותף מציין 64 בעד ו־55 נגד."
+      },
+      "classification": "counts",
+      "reason": "Final budget approval is a survival vote; separate roll-call IDs still needed.",
+      "seatsAfter": {
+        "coalition": 64,
+        "opposition": 56
+      },
+      "sources": [
+        {
+          "url": "https://en.globes.co.il/en/article-knesset-passes-2023-2024-state-budget-1001447387",
+          "publisher": "Globes",
+          "date": "2023-05-24",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "globes",
+          "inspection": "opened",
+          "locator": "Opening: two annual budgets and arrangements law passed 64–55",
+          "supportingNote": "Opening: two annual budgets and arrangements law passed 64–55"
+        }
+      ],
+      "certainty": "provisional",
+      "vote": {
+        "for": 64,
+        "against": 55,
+        "crossVotes": null
+      },
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-unity-approval",
+      "date": "2023-10-12",
+      "kind": "party-ministers-approved",
+      "who": {
+        "factionIds": [
+          1098
+        ]
+      },
+      "summary": {
+        "en": "Knesset approves five National Unity ministers; coalition expands to 76. Reports differ on opposition votes: 66–4 or 66–0.",
+        "he": "הכנסת אישרה חמישה שרים מהמחנה הממלכתי; הקואליציה התרחבה ל־76. הדיווחים חלוקים: 66–4 או 66–0."
+      },
+      "classification": "counts",
+      "reason": "Approval of a new party’s ministers establishes formal government participation.",
+      "seatsAfter": {
+        "coalition": 76,
+        "opposition": 44
+      },
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/liveblog_entry/lawmakers-approve-new-emergency-cabinet-after-jewish-and-arab-mks-spar-in-plenum/",
+          "publisher": "The Times of Israel",
+          "date": "2023-10-12",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "66–4 approval of five ministers",
+          "supportingNote": "66–4 approval of five ministers"
+        },
+        {
+          "url": "https://www.jpost.com/breaking-news/article-768007",
+          "publisher": "The Jerusalem Post",
+          "date": "2023-10-12",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "the-jerusalem-post",
+          "inspection": "snippet-only",
+          "locator": "Opening: emergency government approved 66–0",
+          "supportingNote": "Opening: emergency government approved 66–0"
+        }
+      ],
+      "certainty": "disputed",
+      "vote": {
+        "for": 66,
+        "against": null,
+        "reportedAgainst": [
+          0,
+          4
+        ],
+        "crossVotes": null
+      },
+      "seatBasis": "64 existing members plus National Unity’s 12; membership expansion is separate from disputed tally.",
+      "evidenceClass": "Contemporary report",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-budget2023-revised",
+      "date": "2023-12-14",
+      "kind": "budget-vote",
+      "who": {},
+      "summary": {
+        "en": "Revised 2023 budget passes, reported 59–44.",
+        "he": "התקציב המתוקן ל־2023 אושר; דווח על 59 בעד ו־44 נגד."
+      },
+      "classification": "counts",
+      "reason": "A dated budget vote; the tally does not establish a new continuing-support count.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://en.globes.co.il/en/article-knesset-approves-revised-2023-budget-1001465179",
+          "publisher": "Globes",
+          "date": "2023-12-14",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "globes",
+          "inspection": "opened",
+          "locator": "Opening: 59–44 final vote",
+          "supportingNote": "Opening: 59–44 final vote"
+        },
+        {
+          "url": "https://www.jpost.com/israel-news/politics-and-diplomacy/article-777993",
+          "publisher": "The Jerusalem Post",
+          "date": "2023-12-14",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "the-jerusalem-post",
+          "inspection": "opened",
+          "locator": "Opening confirms 59–44",
+          "supportingNote": "Opening confirms 59–44"
+        },
+        {
+          "url": "https://www.thenationalnews.com/mena/palestine-israel/2023/12/14/israel-approves-7-billion-addition-to-wartime-budget/",
+          "publisher": "The National",
+          "date": "2023-12-14",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "the-national",
+          "inspection": "snippet-only",
+          "locator": "Indexed contemporary report gives 59–45",
+          "supportingNote": "Indexed contemporary report gives 59–45"
+        }
+      ],
+      "certainty": "disputed",
+      "vote": {
+        "for": 59,
+        "against": null,
+        "crossVotes": null,
+        "reportedAgainst": [
+          44,
+          45
+        ]
+      },
+      "timelineViews": [
+        "specific-vote"
+      ],
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-budget2024-revised",
+      "date": "2024-03-13",
+      "kind": "budget-vote",
+      "who": {},
+      "summary": {
+        "en": "Amended 2024 wartime budget passes 62–55.",
+        "he": "תקציב המלחמה המתוקן ל־2024 אושר ברוב של 62–55."
+      },
+      "classification": "counts",
+      "reason": "A dated budget vote; the tally does not establish a new continuing-support count.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/following-rancorous-debate-knesset-passes-amended-wartime-budget/",
+          "publisher": "The Times of Israel",
+          "date": "2024-03-13",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening: 62–55 final amended budget vote",
+          "supportingNote": "Opening: 62–55 final amended budget vote"
+        }
+      ],
+      "certainty": "provisional",
+      "vote": {
+        "for": 62,
+        "against": 55,
+        "crossVotes": null
+      },
+      "timelineViews": [
+        "specific-vote"
+      ],
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-faction-3",
+      "date": "2024-03-13",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          1027,
+          4397,
+          30082,
+          30118
+        ],
+        "factionIds": [
+          1098,
+          1108
+        ]
+      },
+      "summary": {
+        "en": "4 MKs recorded moving from National Unity to New Hope / United Right.",
+        "he": "רישום החברות עבר מסיעת המחנה הממלכתי לסיעת הימין הממלכתי  (4 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k25 /factionChanges/3; position record IDs 30256, 31847, 30255, 31845, 30259, 31848, 30264, 31846",
+          "supportingNote": "Retained k25 /factionChanges/3; position record IDs 30256, 31847, 30255, 31845, 30259, 31848, 30264, 31846",
+          "effectiveDate": "2024-03-13",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/factionChanges/3"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-new-hope-exit",
+      "date": "2024-03-25",
+      "kind": "party-coalition-exit",
+      "who": {
+        "factionIds": [
+          1108
+        ]
+      },
+      "summary": {
+        "en": "New Hope leaves the coalition; Sa’ar resigns.",
+        "he": "תקווה חדשה פרשה מהקואליציה; סער התפטר."
+      },
+      "classification": "counts",
+      "reason": "Explicit four-MK party exit, distinct from its earlier faction split.",
+      "seatsAfter": {
+        "coalition": 72,
+        "opposition": 48
+      },
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/gideon-saar-quits-coalition-after-netanyahu-fails-to-appoint-him-to-war-cabinet/",
+          "publisher": "The Times of Israel",
+          "date": "2024-03-25",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening: four-seat party leaves; coalition shrinks 76 to 72",
+          "supportingNote": "Opening: four-seat party leaves; coalition shrinks 76 to 72"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Own statement (reported)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-boycott-june",
+      "date": "2024-06-05",
+      "kind": "vote-boycott",
+      "who": {
+        "factionIds": [
+          1106
+        ]
+      },
+      "summary": {
+        "en": "Otzma Yehudit suspends voting discipline pending details of hostage deal.",
+        "he": "עוצמה יהודית השעתה את המשמעת הקואליציונית בדרישה לפרטי עסקת החטופים."
+      },
+      "classification": "does not count",
+      "reason": "Conditional voting pressure while remaining in the coalition; no formal exit or qualifying survival vote established.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/otzma-yehudit-halts-coalition-support-accuses-pm-of-hiding-details-of-hostage-deal/",
+          "publisher": "The Times of Israel",
+          "date": "2024-06-05",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Party statement reserves right to vote independently until proposal disclosed",
+          "supportingNote": "Party statement reserves right to vote independently until proposal disclosed"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-unity-exit",
+      "date": "2024-06-09",
+      "kind": "party-coalition-exit",
+      "who": {
+        "factionIds": [
+          1098
+        ]
+      },
+      "summary": {
+        "en": "National Unity leaves government; Gantz and colleagues submit resignations.",
+        "he": "המחנה הממלכתי פרש מהממשלה; גנץ ועמיתיו הגישו התפטרויות."
+      },
+      "classification": "counts",
+      "reason": "Party exit ends the eight remaining National Unity MKs’ participation.",
+      "seatsAfter": {
+        "coalition": 64,
+        "opposition": 56
+      },
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/urging-elections-gantz-quits-wartime-government-accuses-pm-of-botching-war-effort/",
+          "publisher": "The Times of Israel",
+          "date": "2024-06-09",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening and resignation letters: party withdraws from coalition",
+          "supportingNote": "Opening and resignation letters: party withdraws from coalition"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Own statement (reported)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-budget2024-second-first",
+      "date": "2024-09-12",
+      "kind": "budget-vote",
+      "who": {},
+      "summary": {
+        "en": "Second additional 2024 budget passes first reading, 57–51.",
+        "he": "התקציב הנוסף השני ל־2024 אושר בקריאה ראשונה ברוב של 57–51."
+      },
+      "classification": "counts",
+      "reason": "A dated budget vote; the tally does not establish a new continuing-support count.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.jpost.com/breaking-news/article-819921",
+          "publisher": "The Jerusalem Post",
+          "date": "2024-09-12",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "the-jerusalem-post",
+          "inspection": "opened",
+          "locator": "Opening explicitly says first reading, despite broad headline",
+          "supportingNote": "Opening explicitly says first reading, despite broad headline"
+        }
+      ],
+      "certainty": "provisional",
+      "vote": {
+        "for": 57,
+        "against": 51,
+        "crossVotes": null
+      },
+      "timelineViews": [
+        "specific-vote"
+      ],
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-new-hope-return",
+      "date": "2024-09-30",
+      "kind": "party-ministers-approved",
+      "who": {
+        "factionIds": [
+          1108
+        ]
+      },
+      "summary": {
+        "en": "Knesset approves Sa’ar as minister, 57–40; New Hope returns and coalition reaches 68.",
+        "he": "הכנסת אישרה את מינוי סער לשר ברוב של 57–40; תקווה חדשה חזרה והקואליציה גדלה ל־68."
+      },
+      "classification": "counts",
+      "reason": "Ministerial approval completes the four-MK party’s return.",
+      "seatsAfter": {
+        "coalition": 68,
+        "opposition": 52
+      },
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/as-he-officially-rejoins-government-saar-blasts-opposition-for-living-in-oct-6/",
+          "publisher": "The Times of Israel",
+          "date": "2024-09-30",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening: appointment 57–40 and four additional coalition members",
+          "supportingNote": "Opening: appointment 57–40 and four additional coalition members"
+        }
+      ],
+      "certainty": "provisional",
+      "vote": {
+        "for": 57,
+        "against": 40,
+        "crossVotes": null
+      },
+      "evidenceClass": "Contemporary report",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-faction-4",
+      "date": "2025-01-14",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          30721
+        ],
+        "factionIds": [
+          1102,
+          1109
+        ]
+      },
+      "summary": {
+        "en": "1 MK recorded moving from Yesh Atid to Idan Roll’s single-member faction.",
+        "he": "רישום החברות עבר מסיעת יש עתיד לסיעת חה\"כ עידן רול (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k25 /factionChanges/4; position record IDs 30249, 32078",
+          "supportingNote": "Retained k25 /factionChanges/4; position record IDs 30249, 32078",
+          "effectiveDate": "2025-01-14",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/factionChanges/4"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-otzma-exit",
+      "date": "2025-01-19",
+      "kind": "party-coalition-exit",
+      "who": {
+        "factionIds": [
+          1106
+        ]
+      },
+      "summary": {
+        "en": "Otzma Yehudit announces coalition exit and submits three ministers’ resignations.",
+        "he": "עוצמה יהודית הודיעה על פרישה מהקואליציה ושלושת שריה הגישו התפטרויות."
+      },
+      "classification": "counts",
+      "reason": "An actual announced party exit; later return does not make it a mere threat.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/otzma-yehudit-exits-coalition-over-gaza-deal-blasting-it-as-victory-for-terrorism/",
+          "publisher": "The Times of Israel",
+          "date": "2025-01-19",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening and party statement: no longer a coalition member; 62 or 63 pending seat replacements",
+          "supportingNote": "Opening and party statement: no longer a coalition member; 62 or 63 pending seat replacements"
+        }
+      ],
+      "certainty": "provisional",
+      "effectiveDateNote": "Coalition declaration on 19 January; ministerial resignations have a statutory delay. Norwegian-law effects are referenced separately.",
+      "evidenceClass": "Own statement (reported)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-otzma-return",
+      "date": "2025-03-19",
+      "kind": "party-ministers-approved",
+      "who": {
+        "factionIds": [
+          1106
+        ]
+      },
+      "summary": {
+        "en": "Knesset reinstates three Otzma Yehudit ministers, 65–46.",
+        "he": "הכנסת אישרה מחדש את מינוי שלושת שרי עוצמה יהודית ברוב של 65–46."
+      },
+      "classification": "counts",
+      "reason": "Completed ministerial approval marks return, distinct from agreement on 18 March.",
+      "seatsAfter": {
+        "coalition": 68,
+        "opposition": 52
+      },
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/liveblog-march-19-2025/amp/",
+          "publisher": "The Times of Israel",
+          "date": "2025-03-19",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "21:33 live entry: reappointments approved 65–46",
+          "supportingNote": "21:33 live entry: reappointments approved 65–46"
+        }
+      ],
+      "certainty": "provisional",
+      "vote": {
+        "for": 65,
+        "against": 46,
+        "crossVotes": null
+      },
+      "seatBasis": "All six original coalition parties plus four New Hope MKs; subsequent Noam status is unresolved.",
+      "evidenceClass": "Contemporary report",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-maoz-second-resignation",
+      "date": "2025-03-24",
+      "kind": "deputy-minister-resignation",
+      "who": {
+        "personIds": [
+          30814
+        ]
+      },
+      "summary": {
+        "en": "Maoz submits another resignation from his deputy-minister post.",
+        "he": "מעוז הגיש שוב התפטרות מתפקיד סגן השר."
+      },
+      "classification": "hard case",
+      "reason": "Resignation is documented; the inspected letter report does not settle continuing coalition support.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/liveblog_entry/deputy-minister-avi-maoz-quits-government-railing-against-pressure-of-deep-state/",
+          "publisher": "The Times of Israel",
+          "date": "2025-03-24",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening: resignation letter submitted; coalition agreement said unfulfilled",
+          "supportingNote": "Opening: resignation letter submitted; coalition agreement said unfulfilled"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Contemporary report",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-budget2025",
+      "date": "2025-03-25",
+      "kind": "budget-vote",
+      "who": {},
+      "summary": {
+        "en": "2025 state budget passes 66–52.",
+        "he": "תקציב המדינה ל־2025 אושר ברוב של 66–52."
+      },
+      "classification": "counts",
+      "reason": "A dated budget vote; the tally does not establish a new continuing-support count.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://en.globes.co.il/en/article-knesset-approves-2025-state-budget-1001505836",
+          "publisher": "Globes",
+          "date": "2025-03-25",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "globes",
+          "inspection": "opened",
+          "locator": "Opening: final approval 66–52",
+          "supportingNote": "Opening: final approval 66–52"
+        }
+      ],
+      "certainty": "provisional",
+      "vote": {
+        "for": 66,
+        "against": 52,
+        "crossVotes": null
+      },
+      "timelineViews": [
+        "specific-vote"
+      ],
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-dissolution-fails",
+      "date": "2025-06-12",
+      "kind": "dissolution-vote",
+      "who": {
+        "personIds": [
+          30671,
+          30870,
+          1057
+        ]
+      },
+      "summary": {
+        "en": "Dissolution proposal fails, 53–61. UTJ’s Tesler and Roth vote for dissolution; Eichler votes against.",
+        "he": "הצעת הפיזור נדחתה: 53 בעד ו־61 נגד. טסלר ורוט תמכו בפיזור; אייכלר התנגד."
+      },
+      "classification": "counts",
+      "reason": "Actual dissolution votes against the coalition meet the draft test, regardless of assumed motives.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.jpost.com/israel-news/article-857429",
+          "publisher": "The Jerusalem Post",
+          "date": "2025-06-12",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "the-jerusalem-post",
+          "inspection": "opened",
+          "locator": "Opening tally; Agudat Yisrael paragraph names Tesler, Roth and Eichler",
+          "supportingNote": "Opening tally; Agudat Yisrael paragraph names Tesler, Roth and Eichler"
+        }
+      ],
+      "certainty": "provisional",
+      "vote": {
+        "for": 53,
+        "against": 61,
+        "crossVotes": [
+          {
+            "personId": 30671,
+            "vote": "for"
+          },
+          {
+            "personId": 30870,
+            "vote": "for"
+          }
+        ]
+      },
+      "timelineViews": [
+        "specific-vote"
+      ],
+      "supportEffect": "Do not remove two continuing coalition members solely on this vote.",
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-goldknopf-resigns",
+      "date": "2025-06-12",
+      "kind": "party-minister-resignation",
+      "who": {
+        "personIds": [
+          30846
+        ]
+      },
+      "summary": {
+        "en": "Goldknopf resigns as housing minister after the failed dissolution vote.",
+        "he": "גולדקנופף התפטר מתפקיד שר הבינוי והשיכון אחרי דחיית הצעת הפיזור."
+      },
+      "classification": "hard case",
+      "reason": "A party leader resigns, but the whole UTJ coalition exit occurs later.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.jpost.com/israel-news/article-857429",
+          "publisher": "The Jerusalem Post",
+          "date": "2025-06-12",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "the-jerusalem-post",
+          "inspection": "opened",
+          "locator": "Paragraph after dissolution vote: Goldknopf resignation letter",
+          "supportingNote": "Paragraph after dissolution vote: Goldknopf resignation letter"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Contemporary report",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-faction-5",
+      "date": "2025-07-08",
+      "kind": "faction-record-rename",
+      "who": {
+        "personIds": [
+          23635,
+          30657,
+          30682,
+          30683,
+          30685,
+          30693,
+          30694,
+          30775
+        ],
+        "factionIds": [
+          1098,
+          1110
+        ]
+      },
+      "summary": {
+        "en": "National Unity’s official faction record changes to Blue and White–National Unity.",
+        "he": "רישום החברות עבר מסיעת המחנה הממלכתי לסיעת כחול לבן - המחנה הממלכתי (8 ח״כים)."
+      },
+      "classification": "does not count",
+      "reason": "A changed faction name/ID alone does not establish a change in parliamentary support.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "Retained k25 /factionChanges/5; position record IDs 30258, 33769, 30254, 33764, 30261, 33762, 30260, 33765, 30263, 33766, 32272, 33763, 30265, 33768, 32278, 33767",
+          "supportingNote": "Retained k25 /factionChanges/5; position record IDs 30258, 33769, 30254, 33764, 30261, 33762, 30260, 33765, 30263, 33766, 32272, 33763, 30265, 33768, 32278, 33767",
+          "effectiveDate": "2025-07-08",
+          "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        }
+      ],
+      "certainty": "confirmed",
+      "memberChangesRef": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/factionChanges/5"
+      },
+      "formalDecisionType": "unknown",
+      "timelineViews": [
+        "factions"
+      ],
+      "supportEffect": "none-established",
+      "evidenceClass": "Official",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-degel-exit",
+      "date": "2025-07-14",
+      "kind": "party-coalition-exit",
+      "who": {
+        "factionIds": [
+          1101
+        ]
+      },
+      "summary": {
+        "en": "Degel HaTorah announces its coalition exit.",
+        "he": "דגל התורה הודיעה על פרישה מהקואליציה."
+      },
+      "classification": "counts",
+      "reason": "A formal component-party exit, before all UTJ officeholders follow.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.jpost.com/israel-news/politics-and-diplomacy/article-860978",
+          "publisher": "The Jerusalem Post",
+          "date": "2025-07-15",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "the-jerusalem-post",
+          "inspection": "opened",
+          "locator": "Retrospective within next-day report: Degel announcement Monday 14 July",
+          "supportingNote": "Retrospective within next-day report: Degel announcement Monday 14 July"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Own statement (reported)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-utj-exit",
+      "date": "2025-07-15",
+      "kind": "party-coalition-exit",
+      "who": {
+        "factionIds": [
+          1101
+        ]
+      },
+      "summary": {
+        "en": "Both UTJ components confirm exit; officeholders submit resignations.",
+        "he": "שני מרכיבי יהדות התורה אישרו פרישה; בעלי תפקידים הגישו התפטרויות."
+      },
+      "classification": "counts",
+      "reason": "Actual party exit and resignations, beyond earlier bargaining boycotts.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.jpost.com/israel-news/politics-and-diplomacy/article-860978",
+          "publisher": "The Jerusalem Post",
+          "date": "2025-07-15",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "the-jerusalem-post",
+          "inspection": "opened",
+          "locator": "Opening: both components leave government and coalition; Maklev, Gafni and Asher resign posts",
+          "supportingNote": "Opening: both components leave government and coalition; Maklev, Gafni and Asher resign posts"
+        }
+      ],
+      "certainty": "provisional",
+      "seatBasis": "Do not subtract seven again after Degel exit. Published 60/61 totals depend on Maoz’s unresolved coalition status.",
+      "evidenceClass": "Own statement (reported)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-shas-cabinet-exit",
+      "date": "2025-07-16",
+      "kind": "party-announces-cabinet-exit",
+      "who": {
+        "factionIds": [
+          1095
+        ]
+      },
+      "summary": {
+        "en": "Shas decides to leave government but says it remains in the coalition; ministerial letters expected next morning.",
+        "he": "ש״ס החליטה לעזוב את הממשלה אך הודיעה שתישאר בקואליציה; מכתבי ההתפטרות צפויים למחרת."
+      },
+      "classification": "hard case",
+      "reason": "Cabinet participation and parliamentary coalition membership diverge; do not automatically remove eleven coalition seats.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/liveblog_entry/shas-decided-to-quit-government-leaving-netanyahu-with-minority-coalition/",
+          "publisher": "The Times of Israel",
+          "date": "2025-07-16",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "18:13 entry: remains in coalition; ministers expected to resign next morning",
+          "supportingNote": "18:13 entry: remains in coalition; ministers expected to resign next morning"
+        },
+        {
+          "url": "https://apnews.com/article/b58b8705277f27fa41f664c341e5a93e",
+          "publisher": "AP",
+          "date": "2025-07-16",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "ap",
+          "inspection": "snippet-only",
+          "locator": "Report describes minority government and selective outside support",
+          "supportingNote": "Report describes minority government and selective outside support"
+        }
+      ],
+      "certainty": "disputed",
+      "disputeScope": "Role description and seat arithmetic, not whether Shas announced cabinet withdrawal.",
+      "evidenceClass": "Own statement (reported)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-arbel-rescinds",
+      "date": "2025-07-17",
+      "kind": "minister-rescinds-resignation",
+      "who": {
+        "personIds": [
+          30660
+        ]
+      },
+      "summary": {
+        "en": "Arbel withdraws his resignation temporarily; Shas reiterates continuing coalition membership.",
+        "he": "ארבל משך זמנית את התפטרותו; ש״ס חזרה והבהירה שהיא נשארת בקואליציה."
+      },
+      "classification": "hard case",
+      "reason": "An exception to the collective ministerial exit; no new whole-party support assignment follows.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.jpost.com/israel-news/politics-and-diplomacy/article-861387",
+          "publisher": "The Jerusalem Post",
+          "date": "2025-07-17",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "the-jerusalem-post",
+          "inspection": "opened",
+          "locator": "Arbel paragraph: rescinds to complete urgent tasks; council directed MKs to stay in coalition",
+          "supportingNote": "Arbel paragraph: rescinds to complete urgent tasks; council directed MKs to stay in coalition"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Contemporary report",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-shas-letters",
+      "date": "2025-07-17",
+      "kind": "party-minister-resignations",
+      "who": {
+        "personIds": [
+          30660,
+          1056,
+          30470
+        ]
+      },
+      "summary": {
+        "en": "Shas ministers begin submitting resignation letters, with effect after 48 hours.",
+        "he": "שרי ש״ס החלו להגיש מכתבי התפטרות, שייכנסו לתוקף אחרי 48 שעות."
+      },
+      "classification": "hard case",
+      "reason": "Actual letters implement cabinet withdrawal but do not establish withdrawal of parliamentary support.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/liveblog_entry/shas-ministers-file-resignations-as-party-withdraws-from-government/",
+          "publisher": "The Times of Israel",
+          "date": "2025-07-17",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening names Arbel, Margi and Malkieli; statutory 48-hour delay",
+          "supportingNote": "Opening names Arbel, Margi and Malkieli; statutory 48-hour delay"
+        },
+        {
+          "url": "https://www.jpost.com/israel-news/politics-and-diplomacy/article-861387",
+          "publisher": "The Jerusalem Post",
+          "date": "2025-07-17",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "the-jerusalem-post",
+          "inspection": "opened",
+          "locator": "Opening lists six ministers and deputy; Arbel later rescinds",
+          "supportingNote": "Opening lists six ministers and deputy; Arbel later rescinds"
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Contemporary report",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-budget2025-additional",
+      "date": "2025-09-29",
+      "kind": "budget-vote",
+      "who": {},
+      "summary": {
+        "en": "Additional 2025 budget passes 55–50; UTJ factions oppose it.",
+        "he": "התקציב הנוסף ל־2025 אושר ברוב של 55–50; חברים ביהדות התורה התנגדו."
+      },
+      "classification": "counts",
+      "reason": "A dated budget vote; the tally does not establish a new continuing-support count.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/knesset-narrowly-approves-further-nis-30-8-billion-in-defense-spending/amp/",
+          "publisher": "The Times of Israel",
+          "date": "2025-09-29",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening tally and paragraphs on Degel HaTorah and Agudat Yisrael opposition",
+          "supportingNote": "Opening tally and paragraphs on Degel HaTorah and Agudat Yisrael opposition"
+        }
+      ],
+      "certainty": "provisional",
+      "vote": {
+        "for": 55,
+        "against": 50,
+        "crossVotes": null,
+        "notes": "UTJ had already announced exit; opposition vote is not a fresh departure."
+      },
+      "timelineViews": [
+        "specific-vote"
+      ],
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-eichler-arrangement",
+      "date": "2026-01-15",
+      "kind": "deputy-minister-arrangement",
+      "who": {
+        "personIds": [
+          1057,
+          30672
+        ]
+      },
+      "summary": {
+        "en": "Eichler agrees to a deputy-minister appointment and Norwegian-law replacement by Pindrus.",
+        "he": "אייכלר הסכים למינוי לסגן שר ולהחלפתו בפינדרוס במסגרת החוק הנורווגי."
+      },
+      "classification": "hard case",
+      "reason": "An individual arrangement does not prove all UTJ rejoined; appointment was still prospective in this report.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/utjs-eichler-to-be-appointed-deputy-minister-preventing-him-voting-against-draft-bill/amp/",
+          "publisher": "The Times of Israel",
+          "date": "2026-01-15",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Agreement and planned appointment; Pindrus to replace Eichler; report explicitly prospective",
+          "supportingNote": "Agreement and planned appointment; Pindrus to replace Eichler; report explicitly prospective"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Contemporary report",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-budget2026",
+      "date": "2026-03-30",
+      "kind": "budget-vote",
+      "who": {},
+      "summary": {
+        "en": "2026 state budget passes 62–55.",
+        "he": "תקציב המדינה ל־2026 אושר ברוב של 62–55."
+      },
+      "classification": "counts",
+      "reason": "A dated budget vote; the tally does not establish a new continuing-support count.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://apnews.com/article/israel-war-iran-budget-netanyahu-elections-bc75b11a9d1d833733c6f9e56a15aeda",
+          "publisher": "AP",
+          "date": "2026-03-30",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "ap",
+          "inspection": "opened",
+          "locator": "Budget vote paragraph: 62–55",
+          "supportingNote": "Budget vote paragraph: 62–55"
+        }
+      ],
+      "certainty": "provisional",
+      "vote": {
+        "for": 62,
+        "against": 55,
+        "crossVotes": null
+      },
+      "timelineViews": [
+        "specific-vote"
+      ],
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-dissolution-final",
+      "date": "2026-07-17",
+      "kind": "dissolution-vote",
+      "who": {},
+      "summary": {
+        "en": "Knesset approves dispersal motion 62–0 ahead of 27 October election.",
+        "he": "הכנסת אישרה את הפיזור ברוב של 62 ללא מתנגדים לקראת הבחירות ב־27 באוקטובר."
+      },
+      "classification": "counts",
+      "reason": "Final parliamentary dispersal vote; does not end MK tenures immediately.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/knesset-votes-on-official-dispersal-of-parliament-wrapping-up-final-legislative-blitz/",
+          "publisher": "The Times of Israel",
+          "date": "2026-07-17",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening: 62–0 motion attached to party financing bill; recess until next Knesset",
+          "supportingNote": "Opening: 62–0 motion attached to party financing bill; recess until next Knesset"
+        },
+        {
+          "url": "https://apnews.com/article/israel-knesset-elections-netanyahu-644a8927076eb4089257a38909a0f0f6",
+          "publisher": "AP",
+          "date": "2026-07-17",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "ap",
+          "inspection": "opened",
+          "locator": "Opening: parliament disperses Friday ahead of 27 October election",
+          "supportingNote": "Opening: parliament disperses Friday ahead of 27 October election"
+        }
+      ],
+      "certainty": "probable",
+      "vote": {
+        "for": 62,
+        "against": 0,
+        "crossVotes": null
+      },
+      "legalInstrumentStatus": "Gazetted law/protocol not recovered; press terminology of dissolution/dispersal retained without asserting immediate end of term.",
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    }
+  ],
+  "membershipEventRefs": [
+    {
+      "date": "2023-01-01",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/0"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2023-01-03",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/1"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2023-01-06",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/2"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2023-01-06",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/3"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2023-01-06",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/4"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2023-01-07",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/5"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2023-01-17",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/6"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2023-01-25",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/7"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2023-01-25",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/8"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2023-02-01",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/9"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2023-02-02",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/10"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2023-02-02",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/11"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2023-02-07",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/12"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2023-02-10",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/13"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2023-02-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/14"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2023-02-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/15"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2023-03-12",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/16"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2023-03-26",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/17"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2023-03-31",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/18"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2023-08-01",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/19"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2023-10-14",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/20"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2024-06-30",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/21"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2024-07-05",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/22"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2025-01-05",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/23"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2025-01-21",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/24"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2025-04-06",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/25"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2025-06-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/26"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2025-06-20",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/27"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2025-07-02",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/28"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2025-07-04",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/29"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2025-07-08",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/30"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2025-07-10",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/31"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2025-07-16",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/32"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2025-07-17",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/33"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2025-07-17",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/34"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2025-07-20",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/35"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2025-07-20",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/36"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2025-07-20",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/37"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2025-07-20",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/38"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2025-08-13",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/39"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2026-01-21",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/40"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional",
+      "additionalSources": [
+        {
+          "url": "https://www.timesofisrael.com/liveblog_entry/utjs-yitzhak-pindrus-reenters-knesset-under-norwegian-law/",
+          "publisher": "The Times of Israel",
+          "date": "2026-01-21",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening: Pindrus actually returns after Eichler’s Norwegian-law resignation",
+          "supportingNote": "Opening: Pindrus actually returns after Eichler’s Norwegian-law resignation"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-19",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/41"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2026-06-07",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/42"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2026-07-28",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/43"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2026-08-11",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/44"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2026-08-13",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/45"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2026-09-09",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/46"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "probable"
+    },
+    {
+      "date": "2023-01-06",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/47"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2023-01-25",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/48"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2023-02-02",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/49"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2026-01-21",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/50"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional",
+      "additionalSources": [
+        {
+          "url": "https://www.timesofisrael.com/liveblog_entry/utjs-yitzhak-pindrus-reenters-knesset-under-norwegian-law/",
+          "publisher": "The Times of Israel",
+          "date": "2026-01-21",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening: Pindrus actually returns after Eichler’s Norwegian-law resignation",
+          "supportingNote": "Opening: Pindrus actually returns after Eichler’s Norwegian-law resignation"
+        }
+      ]
+    },
+    {
+      "date": "2023-01-25",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/51"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2023-02-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/52"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2023-01-06",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/53"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2023-02-15",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/54"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2025-07-20",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/55"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2025-07-08",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/56"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2025-08-13",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/57"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2023-02-02",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/58"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2025-04-06",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/59"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2025-07-17",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/60"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2025-07-17",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/61"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2025-07-20",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/62"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2025-07-20",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/63"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2025-01-21",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/64"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2023-10-14",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/65"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    },
+    {
+      "date": "2025-07-20",
+      "ref": {
+        "path": "data/research/knesset-member-changes/k25.json",
+        "pointer": "/replacements/66"
+      },
+      "reasonStatus": "unknown",
+      "certainty": "provisional"
+    }
+  ],
+  "gaps": [
+    "Not a complete roll-call census: all confidence/no-confidence motions, all budget readings/reservations and dissenters remain to be enumerated from official protocols.",
+    "Coalition agreements/signing dates and statutory effective dates of resignation letters have not been comprehensively recovered.",
+    "Official database membership transitions establish faction composition, not the exact legal decision type; committee protocols remain required.",
+    "Replacement reasons and candidate succession chains remain unknown in the referenced membership dataset; do not infer Norwegian-law exits, ordinary resignations or deaths from dates alone.",
+    "English contemporary reports predominate in this pass; Hebrew primary documents and trusted institutional scholarship remain to be added.",
+    "2023 emergency-government approval: 66–4 versus 66–0 reports; official roll call required.",
+    "2023 revised budget opposition tally: Globes/Jerusalem Post 44 versus another contemporary report 45; verify official tally.",
+    "2024 second supplementary budget final vote and 24 December supplementary budget: official notice indexed but page blocked; not yet promoted as verified event.",
+    "20 May 2026 preliminary dissolution: 110–0 indexed in i24 report, but full text not recovered; final legal instrument also needed.",
+    "Maoz return to deputy-minister role in May 2023: prospective report located, completed appointment not authenticated.",
+    "Full Shas ministerial resignation chronology (announcement, submission, effective date, Arbel exception) and later formal coalition status unresolved.",
+    "2026 election day is 27 October in inspected dissolution reports. The 26th Knesset inaugural sitting is announced for 10 November (future as of this report); do not mark 25th Knesset membership ended on election day.",
+    "No exhaustive proof of no further party exits/returns after July 2025; Eichler arrangement shows why ordinary vote support cannot prove a whole-party return."
+  ],
+  "initialCabinetRef": {
+    "path": "data/meta/government-support-evidence.json",
+    "pointer": "/governments/37",
+    "date": "2022-12-29"
+  },
+  "method": {
+    "classification": "Editorial application of the brief, independent of factual certainty. counts includes faction-only and vote-only events; consult timelineViews and supportEffect before changing support colours.",
+    "sourceAccess": "Managed web search/open, plus retained official repository records. No access-control circumvention. Tool-controlled web User-Agent is not exposed; direct HTTP retrieval must use the project User-Agent.",
+    "sourceAccounting": "Distinct canonical URLs and publisher families can be counted from events[].sources. No claim of independent corroboration from repeated reports by one publisher.",
+    "membershipReferences": "All existing replacement rows indexed by JSON Pointer; no duplicated replacement pairings or invented reasons. Reference rows are excluded from classification totals."
+  },
+  "unconfirmedCandidates": [
+    {
+      "date": "2024-09-30",
+      "kind": "budget-final-vote",
+      "summary": "Second supplementary 2024 budget final approval; exact calendar date conflicts with derived 29 September record.",
+      "sources": [
+        {
+          "url": "https://m.knesset.gov.il/EN/News/PressReleases/Pages/press30924q.aspx",
+          "publisher": "Knesset",
+          "date": "2024-09-30",
+          "accessed": "2026-11-08",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "snippet-only",
+          "locator": "Official final-approval announcement indexed; opening blocked",
+          "supportingNote": "Official final-approval announcement indexed; opening blocked"
+        }
+      ],
+      "certainty": "provisional"
+    },
+    {
+      "date": "2024-12-24",
+      "kind": "budget-final-vote",
+      "summary": "Third supplementary 2024 budget reportedly passes 62–52.",
+      "sources": [
+        {
+          "url": "https://m.knesset.gov.il/en/news/pressreleases/pages/press241224q.aspx",
+          "publisher": "Knesset",
+          "date": "2024-12-24",
+          "accessed": "2026-11-08",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "snippet-only",
+          "locator": "Indexed final-approval notice: 62–52; opening blocked",
+          "supportingNote": "Indexed final-approval notice: 62–52; opening blocked"
+        }
+      ],
+      "certainty": "provisional"
+    },
+    {
+      "date": "2026-05-20",
+      "kind": "dissolution-preliminary-vote",
+      "summary": "Preliminary dissolution vote reportedly passes 110–0.",
+      "sources": [
+        {
+          "url": "https://www.i24news.tv/en/news/israel/politics/artc-israeli-knesset-passes-preliminary-vote-to-dissolve-itself-setting-the-stage-for-early-elections",
+          "publisher": "i24NEWS",
+          "date": "2026-05-20",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "i24news",
+          "inspection": "snippet-only",
+          "locator": "Indexed report: coalition dissolution bill passes 110–0; opened page had no readable body",
+          "supportingNote": "Indexed report: coalition dissolution bill passes 110–0; opened page had no readable body"
+        }
+      ],
+      "certainty": "provisional"
+    }
+  ]
+}
