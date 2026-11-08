@@ -3,7 +3,7 @@
 ## 7 November 2026 — Settings
 
 - Docs: eight design and research documents (party history, individual MKs, source policy, trusted sources, archive access, Hebrew quality, Ra’am in 2021, map lines) rewritten in plain language, each opening with “In short”, recording the 8 November owner decisions and ending with technical notes for developers; no facts removed.
-- Research: add a partial, source-linked Knesset event history for 2021–2026, with explicit exclusions, hard cases and membership-record references.
+- Research: add a partial, source-linked Knesset event history for 2021–2026: 83 classified records, explicit exclusions and hard cases, designated confidence votes, and membership-record references.
 - Research: check Ra’am’s proposed deputy post against official appointments; add a practical scholarly and newspaper reading plan for unresolved coalition history.
 - Research: assess lawful historical archive access, ranked alternatives and bilingual owner enquiry drafts.
 - Research: assess Hebrew editing tools and native review, with 25 source-linked copy proposals and a practical quality pipeline.

@@ -319,6 +319,88 @@
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
     },
     {
+      "id": "k25-no-confidence-20230327-1",
+      "date": "2023-03-27",
+      "kind": "no-confidence-vote",
+      "who": {},
+      "summary": {
+        "en": "No-confidence motion rejected; Reuters reports a 59–53 tally.",
+        "he": "הצעת אי־אמון נדחתה; רויטרס דיווחה על תוצאה של 59–53."
+      },
+      "classification": "counts",
+      "reason": "A reported no-confidence vote; no continuing coalition change is established.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://today.lorientlejour.com/article/1332811/netanyahu-government-survives-no-confidence-votes-in-israeli-parliament.html",
+          "publisher": "Reuters",
+          "date": "2023-03-27",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "reuters",
+          "inspection": "opened",
+          "locator": "Public opening before subscription boundary: two rejected motions, raw tallies 59–53 and 60–51. Motion identities and direction not specified.",
+          "supportingNote": "Public opening before subscription boundary: two rejected motions, raw tallies 59–53 and 60–51. Motion identities and direction not specified."
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "vote": {
+        "for": null,
+        "against": null,
+        "reportedTally": "59–53",
+        "result": "rejected",
+        "crossVotes": null,
+        "notes": "Do not assign the raw report’s first number to the for/against column without an identified motion/official record."
+      },
+      "timelineViews": [
+        "specific-vote"
+      ],
+      "supportEffect": "none-established"
+    },
+    {
+      "id": "k25-no-confidence-20230327-2",
+      "date": "2023-03-27",
+      "kind": "no-confidence-vote",
+      "who": {},
+      "summary": {
+        "en": "No-confidence motion rejected; Reuters reports a 60–51 tally.",
+        "he": "הצעת אי־אמון נדחתה; רויטרס דיווחה על תוצאה של 60–51."
+      },
+      "classification": "counts",
+      "reason": "A reported no-confidence vote; no continuing coalition change is established.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://today.lorientlejour.com/article/1332811/netanyahu-government-survives-no-confidence-votes-in-israeli-parliament.html",
+          "publisher": "Reuters",
+          "date": "2023-03-27",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "reuters",
+          "inspection": "opened",
+          "locator": "Public opening before subscription boundary: two rejected motions, raw tallies 59–53 and 60–51. Motion identities and direction not specified.",
+          "supportingNote": "Public opening before subscription boundary: two rejected motions, raw tallies 59–53 and 60–51. Motion identities and direction not specified."
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "vote": {
+        "for": null,
+        "against": null,
+        "reportedTally": "60–51",
+        "result": "rejected",
+        "crossVotes": null,
+        "notes": "Do not assign the raw report’s first number to the for/against column without an identified motion/official record."
+      },
+      "timelineViews": [
+        "specific-vote"
+      ],
+      "supportEffect": "none-established"
+    },
+    {
       "id": "k25-boycott-may",
       "date": "2023-05-03",
       "kind": "vote-boycott",
@@ -459,6 +541,77 @@
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
     },
     {
+      "id": "k25-maoz-reinstatement",
+      "date": "2023-05-28",
+      "kind": "deputy-minister-reinstatement",
+      "who": {
+        "personIds": [
+          30814
+        ]
+      },
+      "summary": {
+        "en": "Cabinet approves Maoz’s return as deputy minister and authority for his Jewish identity office.",
+        "he": "הממשלה אישרה את חזרת מעוז לתפקיד סגן שר ואת סמכויות הרשות לזהות יהודית."
+      },
+      "classification": "does not count",
+      "reason": "Completed office reinstatement is documented, but his February statement already retained coalition membership; no returning coalition seat is established.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/cabinet-approves-maozs-return-to-role-overseeing-school-programing-jewish-identity/",
+          "publisher": "The Times of Israel",
+          "date": "2023-05-28",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening: cabinet decision reinstates deputy minister; distinct from earlier prospective report",
+          "supportingNote": "Opening: cabinet decision reinstates deputy minister; distinct from earlier prospective report"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Contemporary report",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-unity-agreement",
+      "date": "2023-10-11",
+      "kind": "emergency-government-agreement",
+      "who": {
+        "personIds": [
+          965,
+          30657
+        ],
+        "factionIds": [
+          1098
+        ]
+      },
+      "summary": {
+        "en": "Netanyahu and Gantz announce agreement to bring National Unity into an emergency government.",
+        "he": "נתניהו וגנץ הודיעו על הסכם לצירוף המחנה הממלכתי לממשלת חירום."
+      },
+      "classification": "counts",
+      "reason": "Joint public accession agreement precedes ministerial approval on 12 October; do not count the same twelve seats twice.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/liveblog_entry/netanyahu-gantz-agree-to-form-emergency-unity-government/",
+          "publisher": "The Times of Israel",
+          "date": "2023-10-11",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "16:54 report of joint statement: emergency agreement and war cabinet membership",
+          "supportingNote": "16:54 report of joint statement: emergency agreement and war cabinet membership"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Own statement (reported)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "supportEffect": "Accession commitment; ministerial approval follows next day."
+    },
+    {
       "id": "k25-unity-approval",
       "date": "2023-10-12",
       "kind": "party-ministers-approved",
@@ -521,8 +674,8 @@
       "kind": "budget-vote",
       "who": {},
       "summary": {
-        "en": "Revised 2023 budget passes, reported 59–44.",
-        "he": "התקציב המתוקן ל־2023 אושר; דווח על 59 בעד ו־44 נגד."
+        "en": "Revised 2023 budget passes; contemporary tallies conflict (59–44, 59–45, 58–45).",
+        "he": "התקציב המתוקן ל־2023 אושר; הדיווחים חלוקים: 59–44, 59–45 או 58–45."
       },
       "classification": "counts",
       "reason": "A dated budget vote; the tally does not establish a new continuing-support count.",
@@ -560,23 +713,108 @@
           "inspection": "snippet-only",
           "locator": "Indexed contemporary report gives 59–45",
           "supportingNote": "Indexed contemporary report gives 59–45"
+        },
+        {
+          "url": "https://13tv.co.il/item/news/politics/politics/msyen-903849038/",
+          "publisher": "Reshet 13",
+          "date": "2023-12-14",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "reshet-13",
+          "inspection": "opened",
+          "locator": "Headline reports 58–45; later paragraph reports some National Unity ministers missed the accelerated vote.",
+          "supportingNote": "Headline reports 58–45; later paragraph reports some National Unity ministers missed the accelerated vote."
         }
       ],
       "certainty": "disputed",
       "vote": {
-        "for": 59,
+        "for": null,
         "against": null,
         "crossVotes": null,
         "reportedAgainst": [
           44,
           45
-        ]
+        ],
+        "reportedTallies": [
+          {
+            "publisher": "Globes / Jerusalem Post",
+            "for": 59,
+            "against": 44
+          },
+          {
+            "publisher": "The National",
+            "for": 59,
+            "against": 45
+          },
+          {
+            "publisher": "Reshet 13",
+            "for": 58,
+            "against": 45
+          }
+        ],
+        "notes": "Conflicting aggregate results; intended opposition and missed attendance do not prove a recorded vote against. Roll call required."
       },
       "timelineViews": [
         "specific-vote"
       ],
       "evidenceClass": "Recorded vote (press report; roll call outstanding)",
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-no-confidence-labor-20240122",
+      "date": "2024-01-22",
+      "kind": "no-confidence-vote",
+      "who": {
+        "factionIds": [
+          1100
+        ]
+      },
+      "summary": {
+        "en": "Labor’s no-confidence motion on the hostages fails with 18 supporters.",
+        "he": "הצעת אי־האמון של העבודה בנושא החטופים נדחתה לאחר שזכתה ל־18 תומכים."
+      },
+      "classification": "counts",
+      "reason": "An actual vote, distinct from preceding threats or planned motions.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/liveblog_entry/no-confidence-motion-against-netanyahu-falls-winning-just-18-votes/",
+          "publisher": "The Times of Israel",
+          "date": "2024-01-22",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "17:29 report: Labor motion received 18 votes; other voting categories not stated",
+          "supportingNote": "17:29 report: Labor motion received 18 votes; other voting categories not stated"
+        },
+        {
+          "url": "https://www.idi.org.il/articles/53598",
+          "publisher": "Israel Democracy Institute",
+          "date": "2024-04-15",
+          "accessed": "2026-11-08",
+          "type": "secondary",
+          "evidenceFamily": "israel-democracy-institute",
+          "inspection": "opened",
+          "locator": "Section הצעות אי אמון: first winter motion was Labor’s on 22 January; session total nine",
+          "supportingNote": "Section הצעות אי אמון: first winter motion was Labor’s on 22 January; session total nine"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "vote": {
+        "for": 18,
+        "against": null,
+        "abstain": null,
+        "result": "rejected",
+        "crossVotes": null
+      },
+      "timelineViews": [
+        "specific-vote"
+      ],
+      "supportEffect": "none-established",
+      "certaintyNote": "Scholarship corroborates date and motion, but not the 18-vote tally; do not upgrade all fields to confirmed."
     },
     {
       "id": "k25-budget2024-revised",
@@ -636,7 +874,7 @@
         "he": "רישום החברות עבר מסיעת המחנה הממלכתי לסיעת הימין הממלכתי  (4 ח״כים)."
       },
       "classification": "counts",
-      "reason": "Official dated faction composition change; legal split/merger type remains unverified unless separately noted.",
+      "reason": "Official membership transition plus contemporary report of House Committee approval; support unchanged by the split alone.",
       "seatsAfter": null,
       "sources": [
         {
@@ -651,6 +889,17 @@
           "supportingNote": "Retained k25 /factionChanges/3; position record IDs 30256, 31847, 30255, 31845, 30259, 31848, 30264, 31846",
           "effectiveDate": "2024-03-13",
           "accessNote": "Official record retrieved in earlier research; retained extraction inspected on 2026-11-08."
+        },
+        {
+          "url": "https://www.israelhayom.co.il/news/politics/article/15419646",
+          "publisher": "Israel Hayom",
+          "date": "2024-03-13",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "inspection": "opened",
+          "evidenceFamily": "Israel Hayom",
+          "locator": "Opening reports House Committee approval of United Right faction.",
+          "supportingNote": "Opening reports House Committee approval of United Right faction."
         }
       ],
       "certainty": "confirmed",
@@ -658,13 +907,14 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/factionChanges/3"
       },
-      "formalDecisionType": "unknown",
+      "formalDecisionType": "faction-split (contemporary report)",
       "timelineViews": [
         "factions"
       ],
       "supportEffect": "none-established",
       "evidenceClass": "Official",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "formalDecisionCertainty": "provisional"
     },
     {
       "id": "k25-new-hope-exit",
@@ -809,6 +1059,47 @@
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
     },
     {
+      "id": "k25-new-hope-return-announcement",
+      "date": "2024-09-29",
+      "kind": "coalition-return-statement",
+      "who": {
+        "personIds": [
+          1027,
+          965
+        ],
+        "factionIds": [
+          1108
+        ]
+      },
+      "summary": {
+        "en": "Sa’ar and Netanyahu jointly announce New Hope’s return to the coalition.",
+        "he": "סער ונתניהו הודיעו יחד על חזרת תקווה חדשה לקואליציה."
+      },
+      "classification": "counts",
+      "reason": "Public commitment to rejoin precedes 30 September approval; it is one accession with two milestones.",
+      "seatsAfter": {
+        "coalition": 68,
+        "opposition": 52
+      },
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/liveblog-september-29-2024/",
+          "publisher": "The Times of Israel",
+          "date": "2024-09-29",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "20:00 joint statement: four-seat New Hope returns; coalition reported as 68",
+          "supportingNote": "20:00 joint statement: four-seat New Hope returns; coalition reported as 68"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Own statement (reported)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "supportEffect": "Commitment announced on 29 September; do not add another four seats on approval next day."
+    },
+    {
       "id": "k25-new-hope-return",
       "date": "2024-09-30",
       "kind": "party-ministers-approved",
@@ -848,6 +1139,56 @@
       },
       "evidenceClass": "Contemporary report",
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-budget2024-third-additional",
+      "date": "2024-12-24",
+      "kind": "budget-vote",
+      "who": {},
+      "summary": {
+        "en": "Budget expansion and deficit-cap legislation receive final approval, reported 62–52.",
+        "he": "הרחבת התקציב והעלאת תקרת הגירעון אושרו סופית; דווח על 62 בעד ו־52 נגד."
+      },
+      "classification": "counts",
+      "reason": "Readable contemporary reporting now corroborates the indexed final-budget notice; exact vote ID and dissenters remain unverified.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/knesset-approves-2024-budget-expansion-to-pay-for-wartime-costs/",
+          "publisher": "The Times of Israel",
+          "date": "2024-12-24",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Opening: second and third readings, 62–52; says Monday night",
+          "supportingNote": "Opening: second and third readings, 62–52; says Monday night"
+        },
+        {
+          "url": "https://m.knesset.gov.il/en/news/pressreleases/pages/press241224q.aspx",
+          "publisher": "Knesset",
+          "date": "2024-12-24",
+          "accessed": "2026-11-08",
+          "type": "official",
+          "evidenceFamily": "knesset",
+          "inspection": "snippet-only",
+          "locator": "Indexed additional-budget final reading, 62–52; full body location-blocked",
+          "supportingNote": "Indexed additional-budget final reading, 62–52; full body location-blocked"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "vote": {
+        "for": 62,
+        "against": 52,
+        "crossVotes": null,
+        "notes": "Press report combines deficit cap and budget expansion; separate vote IDs needed."
+      },
+      "dateBasis": "Official indexed notice dated 24 December says early Tuesday; press describes Monday night.",
+      "timelineViews": [
+        "specific-vote"
+      ]
     },
     {
       "id": "k25-faction-4",
@@ -930,6 +1271,41 @@
       "effectiveDateNote": "Coalition declaration on 19 January; ministerial resignations have a statutory delay. Norwegian-law effects are referenced separately.",
       "evidenceClass": "Own statement (reported)",
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-otzma-return-agreement",
+      "date": "2025-03-18",
+      "kind": "coalition-return-agreement",
+      "who": {
+        "factionIds": [
+          1096,
+          1106
+        ]
+      },
+      "summary": {
+        "en": "Likud and Otzma Yehudit announce an agreement for Otzma’s return; Knesset approval is due the next day.",
+        "he": "הליכוד ועוצמה יהודית הודיעו על הסכם לחזרת עוצמה לממשלה; אישור הכנסת צפוי למחרת."
+      },
+      "classification": "counts",
+      "reason": "Joint accession agreement counts, while completed ministerial approval remains a separate milestone.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://en.globes.co.il/en/article-otzma-yehudit-rejoins-government-1001505143",
+          "publisher": "Globes",
+          "date": "2025-03-18",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "globes",
+          "inspection": "opened",
+          "locator": "Joint release says party will return; cabinet vote due today and Knesset vote tomorrow",
+          "supportingNote": "Joint release says party will return; cabinet vote due today and Knesset vote tomorrow"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Own statement (reported)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "supportEffect": "Agreement only at this date; ministerial offices require later approval."
     },
     {
       "id": "k25-otzma-return",
@@ -1042,6 +1418,41 @@
       ],
       "evidenceClass": "Recorded vote (press report; roll call outstanding)",
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-haredi-boycott-observed",
+      "date": "2025-05-14",
+      "kind": "vote-boycott",
+      "who": {
+        "factionIds": [
+          1095,
+          1101
+        ]
+      },
+      "summary": {
+        "en": "Haredi factions continue boycotting coalition bills over the conscription dispute; bills are removed from the agenda.",
+        "he": "הסיעות החרדיות המשיכו להחרים הצבעות על חוקי הקואליציה בשל משבר הגיוס; הצעות הוסרו מסדר היום."
+      },
+      "classification": "does not count",
+      "reason": "Voting pressure while remaining in the coalition; a conditional threat to leave later is not the July exit.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/coalition-bills-removed-from-agenda-as-haredi-boycott-continues-for-second-week/",
+          "publisher": "The Times of Israel",
+          "date": "2025-05-14",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Dated report: boycott continuing for second week; not a claim it began on 14 May",
+          "supportingNote": "Dated report: boycott continuing for second week; not a claim it began on 14 May"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "dateBasis": "Observation date, not verified boycott start date."
     },
     {
       "id": "k25-dissolution-fails",
@@ -1372,6 +1783,42 @@
         }
       ],
       "certainty": "probable",
+      "evidenceClass": "Contemporary report",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-arbel-resigns-again",
+      "date": "2025-07-20",
+      "kind": "minister-resignation",
+      "who": {
+        "personIds": [
+          30660
+        ],
+        "factionIds": [
+          1095
+        ]
+      },
+      "summary": {
+        "en": "Arbel formally submits his resignation again; Shas remains outside the cabinet but in the coalition.",
+        "he": "ארבל הגיש שוב את התפטרותו; ש״ס נותרה מחוץ לממשלה אך בקואליציה."
+      },
+      "classification": "hard case",
+      "reason": "Completed resubmission after the 17 July reversal; cabinet exit does not establish a parliamentary support exit.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/government-tries-to-contain-fallout-after-haredi-exit-with-knesset-recess-days-away/",
+          "publisher": "The Times of Israel",
+          "date": "2025-07-20",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Paragraphs on Arbel: formally resigned Sunday for second time; party exits government, not coalition",
+          "supportingNote": "Paragraphs on Arbel: formally resigned Sunday for second time; party exits government, not coalition"
+        }
+      ],
+      "certainty": "provisional",
       "evidenceClass": "Contemporary report",
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
     },
@@ -2170,12 +2617,14 @@
     "English contemporary reports predominate in this pass; Hebrew primary documents and trusted institutional scholarship remain to be added.",
     "2023 emergency-government approval: 66–4 versus 66–0 reports; official roll call required.",
     "2023 revised budget opposition tally: Globes/Jerusalem Post 44 versus another contemporary report 45; verify official tally.",
-    "2024 second supplementary budget final vote and 24 December supplementary budget: official notice indexed but page blocked; not yet promoted as verified event.",
+    "2024 second supplementary budget final vote remains an indexed lead; the third supplementary budget on 24 December is now corroborated by a readable contemporary report, with separate framework/budget vote IDs still needed.",
     "20 May 2026 preliminary dissolution: 110–0 indexed in i24 report, but full text not recovered; final legal instrument also needed.",
-    "Maoz return to deputy-minister role in May 2023: prospective report located, completed appointment not authenticated.",
     "Full Shas ministerial resignation chronology (announcement, submission, effective date, Arbel exception) and later formal coalition status unresolved.",
     "2026 election day is 27 October in inspected dissolution reports. The 26th Knesset inaugural sitting is announced for 10 November (future as of this report); do not mark 25th Knesset membership ended on election day.",
-    "No exhaustive proof of no further party exits/returns after July 2025; Eichler arrangement shows why ordinary vote support cannot prove a whole-party return."
+    "No exhaustive proof of no further party exits/returns after July 2025; Eichler arrangement shows why ordinary vote support cannot prove a whole-party return.",
+    "Maoz completed reinstatement authenticated in 28 May 2023 press report. Arbel second resignation authenticated in 20 July 2025 report; statutory effective dates still need primary notices.",
+    "IDI winter-session review establishes nine no-confidence motions in winter 2023–24 and 26 in summer 2023. These totals demonstrate that this dataset is incomplete; do not treat the collected subset as the complete vote universe.",
+    "Revised 2023 budget: Reshet 13 gives 58–45, alongside 59–44 and 59–45 reports. Both for and against totals remain unresolved."
   ],
   "initialCabinetRef": {
     "path": "data/meta/government-support-evidence.json",
@@ -2186,7 +2635,8 @@
     "classification": "Editorial application of the brief, independent of factual certainty. counts includes faction-only and vote-only events; consult timelineViews and supportEffect before changing support colours.",
     "sourceAccess": "Managed web search/open, plus retained official repository records. No access-control circumvention. Tool-controlled web User-Agent is not exposed; direct HTTP retrieval must use the project User-Agent.",
     "sourceAccounting": "Distinct canonical URLs and publisher families can be counted from events[].sources. No claim of independent corroboration from repeated reports by one publisher.",
-    "membershipReferences": "All existing replacement rows indexed by JSON Pointer; no duplicated replacement pairings or invented reasons. Reference rows are excluded from classification totals."
+    "membershipReferences": "All existing replacement rows indexed by JSON Pointer; no duplicated replacement pairings or invented reasons. Reference rows are excluded from classification totals.",
+    "resumeNote": "Post-restart pass preserved original commit; added completed office/accord milestones and vote evidence. Official indexed session leads remain outside counted events."
   },
   "unconfirmedCandidates": [
     {
@@ -2209,25 +2659,6 @@
       "certainty": "provisional"
     },
     {
-      "date": "2024-12-24",
-      "kind": "budget-final-vote",
-      "summary": "Third supplementary 2024 budget reportedly passes 62–52.",
-      "sources": [
-        {
-          "url": "https://m.knesset.gov.il/en/news/pressreleases/pages/press241224q.aspx",
-          "publisher": "Knesset",
-          "date": "2024-12-24",
-          "accessed": "2026-11-08",
-          "type": "official",
-          "evidenceFamily": "knesset-parliament-info",
-          "inspection": "snippet-only",
-          "locator": "Indexed final-approval notice: 62–52; opening blocked",
-          "supportingNote": "Indexed final-approval notice: 62–52; opening blocked"
-        }
-      ],
-      "certainty": "provisional"
-    },
-    {
       "date": "2026-05-20",
       "kind": "dissolution-preliminary-vote",
       "summary": "Preliminary dissolution vote reportedly passes 110–0.",
@@ -2245,6 +2676,126 @@
         }
       ],
       "certainty": "provisional"
+    },
+    {
+      "date": "2023-01-16",
+      "kind": "no-confidence-session-lead",
+      "summary": "National Unity no-confidence motion reportedly 53 for, 62 against.",
+      "sources": [
+        {
+          "url": "https://m.knesset.gov.il/EN/News/PressReleases/Pages/press16123f.aspx",
+          "publisher": "Knesset",
+          "date": "2023-01-16",
+          "accessed": "2026-11-08",
+          "type": "official",
+          "evidenceFamily": "knesset",
+          "inspection": "snippet-only",
+          "locator": "Indexed official announcement; source body/roll call not authenticated in this pass.",
+          "supportingNote": "Indexed official announcement; source body/roll call not authenticated in this pass."
+        }
+      ],
+      "certainty": "provisional",
+      "dateBasis": "Announcement date; verify sitting date against protocol before creating one record per vote."
+    },
+    {
+      "date": "2024-01-29",
+      "kind": "no-confidence-session-lead",
+      "summary": "Two rejected no-confidence motions: Yesh Atid 25–0; Hadash–Ta’al 10–1.",
+      "sources": [
+        {
+          "url": "https://m.knesset.gov.il/EN/News/PressReleases/Pages/press29124e.aspx",
+          "publisher": "Knesset",
+          "date": "2024-01-29",
+          "accessed": "2026-11-08",
+          "type": "official",
+          "evidenceFamily": "knesset",
+          "inspection": "snippet-only",
+          "locator": "Indexed official announcement; source body/roll call not authenticated in this pass.",
+          "supportingNote": "Indexed official announcement; source body/roll call not authenticated in this pass."
+        }
+      ],
+      "certainty": "provisional",
+      "dateBasis": "Announcement date; verify sitting date against protocol before creating one record per vote."
+    },
+    {
+      "date": "2024-07-01",
+      "kind": "no-confidence-session-lead",
+      "summary": "Three rejected motions: Yesh Atid 42–3; Yisrael Beytenu/New Hope 37–0; National Unity 36–0.",
+      "sources": [
+        {
+          "url": "https://m.knesset.gov.il/EN/News/PressReleases/Pages/press01072024r.aspx",
+          "publisher": "Knesset",
+          "date": "2024-07-01",
+          "accessed": "2026-11-08",
+          "type": "official",
+          "evidenceFamily": "knesset",
+          "inspection": "snippet-only",
+          "locator": "Indexed official announcement; source body/roll call not authenticated in this pass.",
+          "supportingNote": "Indexed official announcement; source body/roll call not authenticated in this pass."
+        }
+      ],
+      "certainty": "provisional",
+      "dateBasis": "Announcement date; verify sitting date against protocol before creating one record per vote."
+    },
+    {
+      "date": "2024-11-04",
+      "kind": "no-confidence-session-lead",
+      "summary": "Three rejected motions: Yesh Atid 37–1; Ra’am 39–0; Hadash–Ta’al 12–0.",
+      "sources": [
+        {
+          "url": "https://m.knesset.gov.il/EN/News/PressReleases/Pages/press411224o.aspx",
+          "publisher": "Knesset",
+          "date": "2024-11-04",
+          "accessed": "2026-11-08",
+          "type": "official",
+          "evidenceFamily": "knesset",
+          "inspection": "snippet-only",
+          "locator": "Indexed official announcement; source body/roll call not authenticated in this pass.",
+          "supportingNote": "Indexed official announcement; source body/roll call not authenticated in this pass."
+        }
+      ],
+      "certainty": "provisional",
+      "dateBasis": "Announcement date; verify sitting date against protocol before creating one record per vote."
+    },
+    {
+      "date": "2025-07-14",
+      "kind": "no-confidence-session-lead",
+      "summary": "Five rejected motions: Yesh Atid 42–0; Hadash–Ta’al/Ra’am 38–0; Blue and White–National Unity 37–0; Yisrael Beytenu 38–0; Labor 45–0.",
+      "sources": [
+        {
+          "url": "https://m.knesset.gov.il/EN/News/PressReleases/Pages/press14725y.aspx",
+          "publisher": "Knesset",
+          "date": "2025-07-14",
+          "accessed": "2026-11-08",
+          "type": "official",
+          "evidenceFamily": "knesset",
+          "inspection": "snippet-only",
+          "locator": "Indexed official announcement; source body/roll call not authenticated in this pass.",
+          "supportingNote": "Indexed official announcement; source body/roll call not authenticated in this pass."
+        }
+      ],
+      "certainty": "provisional",
+      "dateBasis": "Announcement date; verify sitting date against protocol before creating one record per vote."
+    },
+    {
+      "date": "2026-01-12",
+      "kind": "no-confidence-session-lead",
+      "summary": "Joint Blue and White–National Unity/Yisrael Beytenu/Labor no-confidence motion reported with 31 supporters and no opposing votes.",
+      "sources": [
+        {
+          "url": "https://m.knesset.gov.il/EN/News/PressReleases/Pages/press12126r.aspx",
+          "publisher": "Knesset",
+          "date": "2026-01-12",
+          "accessed": "2026-11-08",
+          "type": "official",
+          "evidenceFamily": "knesset",
+          "inspection": "snippet-only",
+          "locator": "Indexed official announcement; source body/roll call not authenticated in this pass.",
+          "supportingNote": "Indexed official announcement; source body/roll call not authenticated in this pass."
+        }
+      ],
+      "certainty": "provisional",
+      "dateBasis": "Announcement date; verify sitting date against protocol before creating one record per vote."
     }
   ]
 }
