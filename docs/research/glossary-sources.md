@@ -3,7 +3,8 @@
 Source log for `src/app/glossary-data.ts` (`GLOSSARY_TERMS`, 48 terms; `outside-support` added 7 November 2026). All checks: **4 November 2026**,
 from Israel, with `curl` (browser user agent). A check passes only when the URL returned **HTTP 200** and
 the page contained the supporting passage (for the Nevo statute page, also the cited section anchor).
-All **50** distinct URLs passed. The check script and its raw results are scratch
+All **50** distinct URLs passed. The 1977 Knesset transcript cited for `candidate-cap-1977` was added on
+6 November and rechecked on 8 November 2026 (logged below). The check script and its raw results are scratch
 (`.backup-scratch/verify.py`, `verify/results.json`); rerun it to re-verify.
 
 ## Source policy applied
@@ -54,8 +55,6 @@ The English-language Knesset Elections Law translation could therefore not be li
 
 * `withdrawn-list`: no statutory provision or CEC text was located for how a withdrawn list's ballots
   are treated. The definition describes the app's model. The link is background on invalid votes.
-* `candidate-cap-1977`: the procedure is **inferred** from the published result. The statutory text was
-  not located (see docs/decisions/0073). IDI's 1977 page confirms only the result (Flatto-Sharon 1 seat).
 * `historical-rules`, `experimental-rules`, `seat-security`, `sensitivity`: these are the app's own modes
   and tools (`provenance: 'app'`). Their links are background, not authority.
 * `cap` and `tie-lottery`: sourced to the Hebrew statute only. No English trusted source explains
@@ -63,6 +62,17 @@ The English-language Knesset Elections Law translation could therefore not be li
 * `rules-1949`, `largest-remainder` (1951–1969 era), `tie-lottery` (1949/1951 notes): the primary PDFs load
   (HTTP 200, valid PDF). Their clause-level reading is the one recorded in docs/ELECTORAL-LAW.md and
   decisions 0060/0063, not re-read in this task.
+
+## The 1977 candidate cap: procedure documented (corrected 8 November 2026)
+
+`candidate-cap-1977` was first logged here as an **inferred** procedure whose source was not located (decision
+0073). It now rests on an official record of the procedure itself: the Knesset's determination of Ya'akov
+Gross's appeal against the 1977 result, plenum of **1 November 1977**, printed p.237 (PDF p.26), retained as
+`data/raw/k9/cap-appeal-protocol.pdf` (SHA-256 `1cf2999f…5bb110c`; see docs/research/data-audit/k09-resolution.md).
+The House Committee found that in the first stage the Central Elections Committee gave Flatto-Sharon's list
+the maximum it could take, one seat; 114 seats were allocated that way, and the six remaining surplus seats
+under s.81(d). The appeal was rejected. A fresh capture on 8 November 2026 (HTTP 200, same SHA-256) contains
+the passage. Still not located: a statutory clause that sets the cap; s.83 only names members in list order.
 
 ## Per-URL log
 
@@ -372,6 +382,12 @@ The English-language Knesset Elections Law translation could therefore not be li
 
 - `candidate-cap-1977`: published 1977 result: Flatto-Sharon 35,049 votes, 1 seat
 - `candidate-cap-1977`: learn-more (he)
+
+### הכרעת הכנסת בערעור יעקב גרוס, 1 בנובמבר 1977, עמ׳ 237
+
+הכנסת · <https://fs.knesset.gov.il/9/Plenum/9_ptm_253927.pdf> · HTTP 200, 2026-11-06; rechecked 2026-11-08
+
+- `candidate-cap-1977`: appeal rejected; the CEC capped the list at one seat in the first stage (114 seats), then six surplus seats under s.81(d)
 
 ### Who Wins the Israeli Election? That Depends on How You Count the Votes
 

@@ -24,7 +24,23 @@
   "cdx": [
    "live/beytenu-members.cdx"
   ],
-  "kind": "party-site"
+  "kind": "party-site",
+  "archived": {
+   "26-ל#8": "20261026200127",
+   "26-ל#9": "20261026200047",
+   "26-ל#10": "20261026200024",
+   "26-ל#11": "20261026200059",
+   "26-ל#12": "20261026200037",
+   "26-ל#13": "20261026200056",
+   "26-ל#14": "20261026200108",
+   "26-ל#15": "20261026200021",
+   "26-ל#16": "20261026200136",
+   "26-ל#17": "20261026200011",
+   "26-ל#18": "20261026200102",
+   "26-ל#19": "20261026200148",
+   "26-ל#20": "20261026200030"
+  },
+  "archivedNote": "Yisrael Beytenu's page of its 2026 candidate, captured the day before the election; the live page redirects to the party homepage (checked 2026-11-08)."
  },
  {
   "id": "yeshatid-2026-members",

@@ -185,7 +185,7 @@
     "election": "k13",
     "year": 1992,
     "lists": {
-      "partisan": 9,
+      "partisan": 8,
       "neutral": 25
     },
     "listTotal": 25,
@@ -199,7 +199,7 @@
     "election": "k12",
     "year": 1988,
     "lists": {
-      "partisan": 9,
+      "partisan": 10,
       "neutral": 27
     },
     "listTotal": 27,

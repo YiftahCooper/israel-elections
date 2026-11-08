@@ -53,7 +53,7 @@ Party sources (`data/raw/bios/party-sources.reviewed.json`):
 | Source | Election, list | Publisher | Kind | Pattern / page | Links |
 |---|---|---|---|---|---:|
 | `likud-2026-list` | k26 מחל | הליכוד | party-site (live, 2026-11-04) | `https://www.likud.org.il/#leadership` | 30 |
-| `beytenu-2026-members` | k26 ל | ישראל ביתנו | party-site (live, 2026-11-04) | `beytenu\.org\.il/kneset-member/(?P<slug>[^/]+)/$` | 20 |
+| `beytenu-2026-members` | k26 ל | ישראל ביתנו | party-site (live, 2026-11-04) for #1–7; archive (2026-10-26) for #8–20 | `beytenu\.org\.il/kneset-member/(?P<slug>[^/]+)/$` | 20 |
 | `yeshatid-2026-members` | k26 רק | יש עתיד | party-site (live, 2026-11-04) | `https://yeshatid.org.il/members/{slug} (from the live site menu)` | 13 |
 | `hadash-2026-list` | k26 ודם | חד"ש | party-site (live, 2026-11-04) | `https://hadash.org.il/list` | 6 |
 | `rz-2026-team` | k26 ט | הציונות הדתית | party-site (live, 2026-11-04) | `https://zionutdatit.org.il/moamadim/` | 7 |
@@ -62,6 +62,8 @@ Party sources (`data/raw/bios/party-sources.reviewed.json`):
 | `likud-2019a-faction` | k21 מחל | הליכוד | archive | `likud\.org\.il(:80)?/חברי-סיעת-הליכוד/(?P<slug>[^/?]+)$` | 23 |
 | `yeshatid-2013-team` | k19 פה | יש עתיד | archive | `yeshatid.org.il/team/{name} (Wayback, 2012-11 to 2012-12)` | 24 |
 | `labor-2019a-team` | k21 אמת | מפלגת העבודה | archive | `havoda\.org\.il(:80)?/הנבחרת/(?P<slug>[^/?]+)/$` | 15 |
+
+Recheck of 8 November 2026: the Yisrael Beytenu pages of candidates #8–20 now redirect to the party homepage. Each is linked instead through the Wayback capture of its exact URL from 26 October 2026, the day before the election (`archived` in the source; the build refuses a link that is neither the live page nor an exact capture). All 13 captures returned HTTP 200 and show the candidate's name as title and heading and "מקום N ברשימת ישראל ביתנו" with the candidate's rank. The pages of #1–7 still load.
 
 ## Sources and URL patterns
 

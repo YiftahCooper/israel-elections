@@ -72,7 +72,9 @@ for src in sources:
     if src['method'] == 'slug':
         for r in run(['tools/slugmatch.py', k, letters, src['until'], src['regex']] + src['cdx']):
             if len(r['hits']) == 1:
-                found.append((r['hits'][0][0], r['url'], None if src.get('live') else r['ts']))
+                cid = r['hits'][0][0]
+                # A live page that later stopped resolving is linked through its reviewed capture (src['archived']).
+                found.append((cid, r['url'], src.get('archived', {}).get(cid) if src.get('live') else r['ts']))
             else:
                 report.append(f"{src['id']}: slug {r['slug']} -> {r['hits']}")
     elif src['method'] == 'page':
@@ -118,6 +120,8 @@ for src in sources:
                         'retrieved': src['retrieved']})
         if src.get('note'):
             rec['note'] = src['note']
+        if ts and src.get('archivedNote'):
+            rec['note'] = src['archivedNote']
         links.append(rec)
     print(src['id'], k, letters, 'links', len(seen), file=sys.stderr)
 

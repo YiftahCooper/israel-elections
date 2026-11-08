@@ -248,7 +248,10 @@ const EXPECTED: Record<Family, string> = {
   // reproduces 43ebe1df…; all changed model-case paths end in color.
   // C1 (7 Nov): k13 first-government grouping gains its researched outside-support group; list colours
   // unchanged (a support group never recolours a list). Substituting main's k13 reproduces 33a3eb0c… exactly.
-  model: '6aed7fa13bc34abe2df53a2db9ae64cf51f245e38a3cafde7c2f1a7f86812aa7',
+  // 8 Nov evidence fixes: k26 Yisrael Beytenu #8–20 bio.party url/archivedAt (Wayback captures), the 6559 leaflet
+  // link moved from 13-ג to 12-עץ, and those three builtAt values (recursive field diff). Substituting HEAD's
+  // k12/k13/k26 reproduces 6aed7fa1… and all five digests; the other four are unchanged.
+  model: 'c850387b849375903262d717e3174882c72dfe68b0b7969f930b162a7b71681a',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

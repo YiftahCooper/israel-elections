@@ -44,6 +44,9 @@ for batch in checks:
 url_checks = load(RAW/'url-checks.json') + load(RAW/'more-url-checks.json') + load(RAW/'small-list-url-checks.json')
 ok_urls = {c['url']:c for c in url_checks if c.get('status') == 200}
 platform_checks = {c['url']:c for c in load(RAW/'idi-platform-checks.json') if 'error' not in c and c.get('bytes',0)>100}
+# Reviewed corrections of the IDI index: a platform whose own text places it in another election or list
+# is attached there (never also to the indexed row); see docs/research/party-links.md.
+reassigned = {r['url']:r for r in load(RAW/'platform-reassignments.reviewed.json')}
 cec = {}
 for s in load(ROOT/'data/raw/SOURCES.json'):
  if re.match(r'k\d+-(national-html|results-gazette)$',s['id']) and s['url'] in ok_urls:
@@ -75,7 +78,7 @@ def platforms(name,k):
  if not p:return []
  result=[]
  for e in p.get('platforms',[]):
-  if platform_year(e['row'],k) and e['url'] in platform_checks:
+  if platform_year(e['row'],k) and e['url'] in platform_checks and e['url'] not in reassigned:
    result.append({'kind':'partisan','url':e['url'],'titleHe':f"{p['name']} — מצע {YEARS[k]}",'publisher':f"{p['name']} (עותק באירוח המכון הישראלי לדמוקרטיה)",'sourceType':'platform','confidence':'medium'})
  return result
 live = {
@@ -120,6 +123,10 @@ for k in range(26,0,-1):
    if k==26 and p['id'] in party_live:links=live_link(party_live[p['id']])+[e for e in links if e['kind']=='neutral']
    if k==25 and p['id']=='hadash':links=archive_link('hadash.org.il/','חד"ש')+[e for e in links if e['kind']=='neutral']
    parties[p['id']]=links
+ for r in reassigned.values():
+  if r['assignTo']['election']==ds['id']:
+   assert r['url'] in platform_checks and r['assignTo']['list'] in lists, r['url']
+   lists[r['assignTo']['list']].insert(0,{'kind':'partisan','url':r['url'],'titleHe':r['titleHe'],'publisher':r['publisher'],'sourceType':'platform','confidence':'medium'})
  for table in [lists,parties]:
   for id,links in table.items():
    missing={}

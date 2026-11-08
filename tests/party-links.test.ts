@@ -32,6 +32,13 @@ describe('election-specific party links', () => {
       expect(maki.links?.some((e) => e.sourceType === 'hewiki' && e.titleHe === 'המפלגה הקומוניסטית הישראלית')).toBe(false);
     }
   });
+  it('links the Degel HaTorah leaflet (ballot letters עץ) to its 1988 list, not the 1992 joint list', () => {
+    const url = 'https://www.idi.org.il/media/6559/degel-hatora-13.doc';
+    const at = ELECTION_IDS.flatMap((id) => load(id).lists.flatMap((l) => [l, ...(l.parties ?? [])])
+      .filter((x) => x.links?.some((e) => e.url === url)).map((x) => x.id));
+    expect(at).toEqual(['12-עץ']);
+    expect(load('k12').lists.find((l) => l.id === '12-עץ')!.links![0]).toMatchObject({ kind: 'partisan', sourceType: 'platform', titleHe: 'דגל התורה — מצע 1988' });
+  });
   it('rejects unknown list and party ids and wrong election', () => {
     const ds = load('k25');
     expect(() => applyPartyLinks(ds, { ...overlay(ds), lists: { unknown: [link] } })).toThrow(/unknown id/);

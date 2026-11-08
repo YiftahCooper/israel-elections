@@ -501,7 +501,30 @@ for s in party_sources.get('spotChecks', {}).get('knesset', []):
                 e['knesset']['verified'] = s['verified']
 
 # ---------------------------------------------------------------- party sites
+WAYBACK = re.compile(r'https://web\.archive\.org/web/(\d{14})/(.+)$')
+archived_by_source = {s['id']: s.get('archived', {}) for s in party_sources['sources']}
+
+
+def check_party_link(src):
+    """A party link is the live page itself, or an exact Wayback capture of the page the party published.
+
+    A live page that later stops resolving (for example a redirect to the party homepage) is replaced in the
+    retained input by its reviewed capture, listed in the source's `archived` map; the build refuses any
+    other shape, so a rebuild cannot silently reintroduce the dead live URL.
+    """
+    cid, ts = src['candidateId'], archived_by_source.get(src['source'], {}).get(src['candidateId'])
+    if src['kind'] == 'archive':
+        m = WAYBACK.match(src['url'])
+        if not m or m[2] != src['original'] or src.get('archivedAt') != f'{m[1][:4]}-{m[1][4:6]}-{m[1][6:8]}':
+            sys.exit(f'party link {cid}: an archive url must be web.archive.org/web/<timestamp>/<original>, dated by archivedAt')
+        if ts and ts != m[1]:
+            sys.exit(f'party link {cid}: capture {m[1]} differs from the reviewed capture {ts}')
+    elif ts or src['url'] != src['original'] or src.get('archivedAt') is not None:
+        sys.exit(f'party link {cid}: a live link must be its original url, with no capture date or reviewed capture')
+
+
 for src in party_sources['links']:
+    check_party_link(src)
     k = 'k' + src['candidateId'].split('-', 1)[0]
     e = result[k].setdefault(src['candidateId'], {'knessetPersonId': None, 'knesset': None, 'confidence': src['confidence'],
                                                   'basis': 'party site only: the page is the party\'s own page of this candidate'})

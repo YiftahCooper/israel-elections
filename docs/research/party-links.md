@@ -39,7 +39,19 @@ claiming that the newer-election acquisition programme is complete.
   is medium: this pass checked the index attribution and document availability, not every
   clause of every platform. Publishers explicitly distinguish the originating party and
   **IDI as host**. The platform remains partisan. April/September 2019 rows are separated;
-  an undifferentiated 2019 row is not silently reused for both elections.
+  an undifferentiated 2019 row is not silently reused for both elections. Where a document's
+  own text contradicts its IDI row, `platform-reassignments.reviewed.json` attaches it to the
+  election and list the document establishes, and never to the indexed row (below).
+- **Correction, 8 November 2026 — `degel-hatora-13.doc`:** IDI indexes
+  `https://www.idi.org.il/media/6559/degel-hatora-13.doc` as the 1992 platform of United Torah
+  Judaism (list 13-ג), and its Word cover says "כנסת 13, 1992". The leaflet scanned inside it
+  (SHA-256 `9247e6bd…a4ae9d`) is the standalone platform of **אגודת החרדים – דגל התורה**: "מצע
+  המפלגה", "הצבע עץ", ballot box **עץ**. The official 1988 gazettes list exactly that name under
+  the letters עץ (list 12-עץ); in 1992 Degel HaTorah ran inside the joint list ג and no list
+  had the letters עץ. Hebrew Wikipedia (secondary, revision 44114316) agrees that 1988 was the
+  only election Degel HaTorah contested alone. The leaflet carries no year of its own, but its
+  name and ballot letters fit only 1988, so it is linked as **דגל התורה — מצע 1988** on 12-עץ
+  and removed from 13-ג, which now has no partisan link.
 - **Hebrew Wikipedia:** API queries checked exact titles, redirects and introduction text.
   `hewiki-title-checks.json`, `hewiki-more-*.json` and `approved-hewiki-titles.json` retain the
   evidence and accepted identity set. Explicit aliases are retained; no fuzzy name matches.
@@ -121,8 +133,8 @@ files contain each missing identity's full reason; below is the complete id inve
 | k16 2003 | 7 | 27 | 27 | 3 | 9 | 14 |
 | k15 1999 | 16 | 31 | 31 | 1 | 6 | 12 |
 | k14 1996 | 7 | 20 | 20 | 1 | 7 | 12 |
-| k13 1992 | 9 | 25 | 25 | 0 | 3 | 6 |
-| k12 1988 | 9 | 27 | 27 | 2 | 5 | 6 |
+| k13 1992 | 8 | 25 | 25 | 0 | 3 | 6 |
+| k12 1988 | 10 | 27 | 27 | 2 | 5 | 6 |
 | k11 1984 | 4 | 26 | 26 | 1 | 7 | 11 |
 | k10 1981 | 4 | 31 | 31 | 0 | 3 | 7 |
 | k9 1977 | 5 | 22 | 22 | 0 | 4 | 11 |
@@ -230,14 +242,14 @@ files contain each missing identity's full reason; below is the complete id inve
 
 ### k13 1992
 
-- Lists missing partisan: `13-שס`, `13-ע`, `13-פ`, `13-קנ`, `13-קל`, `13-ד`, `13-ק`, `13-נז`, `13-דף`, `13-יז`, `13-נ`, `13-נס`, `13-יד`, `13-ים`, `13-כי`, `13-זה`.
+- Lists missing partisan: `13-שס`, `13-ג`, `13-ע`, `13-פ`, `13-קנ`, `13-קל`, `13-ד`, `13-ק`, `13-נז`, `13-דף`, `13-יז`, `13-נ`, `13-נס`, `13-יד`, `13-ים`, `13-כי`, `13-זה`.
 - Lists missing neutral: none.
 - Constituents missing partisan: `ratz`, `mapam`, `shinui`, `agudat-yisrael`, `moria`, `degel-hatorah`.
 - Constituents missing neutral: `ratz`, `mapam`, `moria`.
 
 ### k12 1988
 
-- Lists missing partisan: `12-אמת`, `12-שס`, `12-פ`, `12-ט`, `12-עץ`, `12-ע`, `12-ז`, `12-זב`, `12-זפ`, `12-טף`, `12-טע`, `12-יע`, `12-מי`, `12-מעם`, `12-ענף`, `12-קז`, `12-קק`, `12-קצץ`.
+- Lists missing partisan: `12-אמת`, `12-שס`, `12-פ`, `12-ט`, `12-ע`, `12-ז`, `12-זב`, `12-זפ`, `12-טף`, `12-טע`, `12-יע`, `12-מי`, `12-מעם`, `12-ענף`, `12-קז`, `12-קק`, `12-קצץ`.
 - Lists missing neutral: none.
 - Constituents missing partisan: `poalei-agudat-yisrael`, `israeli-communist-party`, `black-panthers`, `independent-liberals`.
 - Constituents missing neutral: `israeli-communist-party`.

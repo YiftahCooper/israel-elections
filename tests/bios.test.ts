@@ -23,6 +23,32 @@ describe('candidate biography links', () => {
     }
   });
 
+  it('link a party page live, or through an exact Wayback capture of the page the party published', () => {
+    type Party = { url: string; original: string; archivedAt: string | null; kind: string };
+    let archived = 0;
+    for (const e of index.filter((x) => x.available)) {
+      const meta = JSON.parse(readFileSync(`data/meta/bios/${e.id}.json`, 'utf8')).candidates as Record<string, { party: Party | null }>;
+      for (const [id, { party }] of Object.entries(meta)) {
+        if (!party) continue;
+        if (party.kind !== 'archive') { expect(party.url, id).toBe(party.original); expect(party.archivedAt, id).toBeNull(); continue; }
+        const m = party.url.match(/^https:\/\/web\.archive\.org\/web\/(\d{14})\/(.+)$/);
+        expect(m?.[2], id).toBe(party.original);
+        expect(party.archivedAt, id).toBe(`${m![1].slice(0, 4)}-${m![1].slice(4, 6)}-${m![1].slice(6, 8)}`);
+        archived++;
+      }
+    }
+    expect(archived).toBeGreaterThan(0);
+    // Yisrael Beytenu 2026, ranks 8–20: the live pages redirect to the party homepage (8 Nov 2026), so each is
+    // linked through its capture of 26 October 2026, which shows that candidate at that rank.
+    const k26 = JSON.parse(readFileSync('data/meta/bios/k26.json', 'utf8')).candidates as Record<string, { party: Party | null }>;
+    for (let n = 8; n <= 20; n++) {
+      const p = k26[`26-ל#${n}`].party!;
+      expect(p.kind, `26-ל#${n}`).toBe('archive');
+      expect(p.url).toBe(`https://web.archive.org/web/${p.url.split('/')[4]}/${p.original}`);
+      expect(p.archivedAt).toBe('2026-10-26');
+    }
+  });
+
   it('reach the scenario, which still validates', () => {
     const s = scenarioFromDataset(load('k25'));
     const leader = s.lists.flatMap((l) => l.candidates).find((c) => c.id === '25-מחל#1');

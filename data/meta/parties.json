@@ -343,14 +343,14 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k12.json",
-      "sha256": "f0ad657f6f0653b3ba139ae53660c226a1e93139b63968d24abc835701fe9011",
+      "sha256": "203bd0f99d0a5ecab64f0c1c49e4f62b4731c92f4928e0daea209252ba8fa49f",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k13": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k13.json",
-      "sha256": "a4dd9103aa000dd051c4292f9fa01c5350ac5c1cdba8298287c6eb53cd9a2372",
+      "sha256": "f10b9175776c59f802104c2a368be9d79ff06f98a5539d696cf5d7ef9d6d7ece",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k14": {
@@ -441,7 +441,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k26.json",
-      "sha256": "9f823484a214e67e27d0c8654690f7ee5135033386a16db8268cd6be6f3e800e",
+      "sha256": "0c6ae8eadf7fd152e422195e89c328df53dab589c40e49d82c55c313f44788a8",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "independent-liberals-profile": {
