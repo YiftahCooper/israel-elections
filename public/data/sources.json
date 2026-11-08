@@ -6351,5 +6351,37 @@
   "retrievedAt": "2026-11-07",
   "bytes": 11954,
   "sha256": "a74e67c9690d6d33bb451199175b0450fdb467ecb7565fecb559b04504fe2923"
+ },
+ {
+  "id": "registrar-parties-2026-11-08-json",
+  "file": "registrar/parties-2026-11-08.json",
+  "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=1dbfc053-e92f-4354-92d6-1b99aadb20d7&limit=500",
+  "publisher": "Ministry of Justice – Registrar of Parties via data.gov.il",
+  "official": true,
+  "description": "Complete 170-row official register, privacy-filtered API projection",
+  "method": "http; allowlisted-column projection",
+  "retrievedAt": "2026-11-08T12:47:04.973966+00:00",
+  "datasetModified": "2026-11-08T09:13:02.559224",
+  "license": null,
+  "licenseNote": "Package metadata has empty license_id/title and no license_url; no licence inferred.",
+  "privacy": "Only party name, number, registration date and objectives retained; address, email and internal _id columns omitted. Contact phone/email prefix in objectives for 59-900147-6 removed up to מטרות המפלגה:. All other retained cells verbatim, including source tildes and anomalous dates.",
+  "bytes": 208914,
+  "sha256": "8919b7cf44e8e252cd16b210ea2af1e0d090d0bb98059b77bbecbc6e464be51d"
+ },
+ {
+  "id": "registrar-parties-2026-11-08-csv",
+  "file": "registrar/parties-2026-11-08.csv",
+  "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=1dbfc053-e92f-4354-92d6-1b99aadb20d7&limit=500",
+  "publisher": "Ministry of Justice – Registrar of Parties via data.gov.il",
+  "official": true,
+  "description": "Complete 170-row official register, privacy-filtered CSV derived from API; source CSV returned HTTP 403",
+  "method": "http; allowlisted-column projection",
+  "retrievedAt": "2026-11-08T12:47:04.973966+00:00",
+  "datasetModified": "2026-11-08T09:13:02.559224",
+  "license": null,
+  "licenseNote": "Package metadata has empty license_id/title and no license_url; no licence inferred.",
+  "privacy": "Only party name, number, registration date and objectives retained; address, email and internal _id columns omitted. Contact phone/email prefix in objectives for 59-900147-6 removed up to מטרות המפלגה:. All other retained cells verbatim, including source tildes and anomalous dates.",
+  "bytes": 185954,
+  "sha256": "72dac93445723e35b5d8bdbe962f7eeed0c0f1d4de18eaf5484cbe6c0ef2d4da"
  }
 ]
