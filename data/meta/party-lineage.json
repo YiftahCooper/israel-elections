@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "research-2026-11-08-stage1",
+  "revision": "research-2026-11-08-registrar",
   "direction": "from predecessor to successor; split-from points parent to departing organisation; electoral-partner points constituents to election-specific alliance vehicle",
   "sources": {
     "aguda": {
@@ -1023,6 +1023,21 @@
         "status": 200,
         "sha256": "0fe1f3784c781787831e5c8a6c61868371b1309cdc274edeee2fdead12e8e2b6"
       }
+    },
+    "registrar-2026-11-08": {
+      "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=1dbfc053-e92f-4354-92d6-1b99aadb20d7&limit=500",
+      "locator": "data/raw/registrar/parties-2026-11-08.json#/records",
+      "publisher": "Ministry of Justice – Registrar of Parties via data.gov.il",
+      "kind": "official",
+      "tier": "primary",
+      "evidenceFamily": "justice-registrar-parties",
+      "accessed": "2026-11-08",
+      "support": "Complete 170-party current register; match records by מספר מפלגה. Labor 59-900001-5 remains מפלגת העבודה הישראלית, no Democrats name; Meretz 59-900065-0 separate. Jewish Home explicitly retains NRP origin, 59-900008-0. Ahi 59-900067-6; one Koach Lehashpia 59-900087-4, disability objectives. Current snapshot does not establish historical effective dates or absence of legal succession.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "8919b7cf44e8e252cd16b210ea2af1e0d090d0bb98059b77bbecbc6e464be51d",
+        "transformation": "Only party name, number, registration date and objectives retained; address, email and internal _id columns omitted. Contact phone/email prefix in objectives for 59-900147-6 removed up to מטרות המפלגה:. All other retained cells verbatim, including source tildes and anomalous dates."
+      }
     }
   },
   "edges": [
@@ -1167,12 +1182,14 @@
       "datePrecision": "year",
       "effectiveFor": "organisation",
       "sources": [
-        "mergers"
+        "mergers",
+        "registrar-2026-11-08"
       ],
       "evidence": {
         "status": "documented",
-        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
-      }
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation. The 8 November 2026 register still lists Ratz 59-900003-1, Mapam 59-900004-9 and Meretz 59-900065-0 separately. This qualifies a reading of this edge as extinguishing both predecessor registrations; the snapshot alone neither dates nor disproves the historical organisational merger. Certainty remains probable: the Registrar citation qualifies the scope only and supplies no primary evidence for the historical merger date."
+      },
+      "certainty": "probable"
     },
     {
       "id": "baaliyah-likud-2003",
@@ -1187,12 +1204,14 @@
       "datePrecision": "year",
       "effectiveFor": "organisation",
       "sources": [
-        "mergers"
+        "mergers",
+        "registrar-2026-11-08"
       ],
       "evidence": {
         "status": "documented",
-        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
-      }
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation. The 8 November 2026 register separately retains Yisrael Baaliyah 59-900017-1 and Likud 59-900002-3. This organisational absorption edge must not be read as proof that the predecessor registration was deleted. Certainty remains probable: the Registrar citation qualifies the scope only and supplies no primary evidence for the historical merger date."
+      },
+      "certainty": "probable"
     },
     {
       "id": "partners-1-ב",
@@ -3708,11 +3727,12 @@
       "effectiveFor": "election",
       "sources": [
         "k26",
-        "cec26"
+        "cec26",
+        "registrar-2026-11-08"
       ],
       "evidence": {
         "status": "documented",
-        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation. Meretz remains separately named as a submitting party alongside Democrats of Labor origin; not a completed legal merger."
+        "interpretation": "CEC 2026 separately names Democrats of Labor origin and Meretz as submitting parties; the Registrar snapshot separately lists Labor 59-900001-5 and Meretz 59-900065-0. Two registered parties ran jointly on one list, consistent with IDI 4 July 2024; no completed legal merger established. The Labor/Democrats name disagreement is retained on labor-democrats-rename."
       },
       "electionId": "k26",
       "listId": "26-אמת",
@@ -3854,12 +3874,13 @@
       "effectiveFor": "organisation",
       "sources": [
         "democrats-identity",
-        "k26"
+        "k26",
+        "registrar-2026-11-08"
       ],
-      "certainty": "probable",
+      "certainty": "disputed",
       "evidence": {
         "status": "documented",
-        "interpretation": "Political name change planned in 2024; the 2026 submitting-party name preserves Labor origin. Probable organisational continuation. The year dates the political agreement, not a verified Registrar effective date; legal date remains pending."
+        "interpretation": "The 2026 CEC submission names הדמוקרטים מיסודה של תנועת העבודה, but the Registrar snapshot modified 8 November 2026 still names 59-900001-5 מפלגת העבודה הישראלית; the dataset may lag or the list uses a different name, so the legal rename remains disputed. IDI supports organisational continuation; 2024 dates the political agreement, not a verified legal effective date."
       }
     },
     {
@@ -4099,12 +4120,13 @@
       "datePrecision": "year",
       "effectiveFor": "organisation",
       "sources": [
-        "nrp-continuity"
+        "nrp-continuity",
+        "registrar-2026-11-08"
       ],
-      "certainty": "probable",
+      "certainty": "confirmed",
       "evidence": {
         "status": "documented",
-        "interpretation": "Electoral organisational continuation after the wider unification failed. Registrar act and exact legal rename date not inspected; no completed National Union merger asserted."
+        "interpretation": "Official register 59-900008-0 names הבית היהודי, מיסודה של המפד~ל – המפלגה הדתית לאומית המזרחי הפועל המזרחי בארץ ישראל: confirmed organisational continuity, consistent with IDI. 2008 remains the scholarly political year; the empty registration-date cell does not establish an exact legal rename date or a National Union merger."
       }
     },
     {
@@ -5122,12 +5144,13 @@
       "sources": [
         "democrats-identity",
         "democrats-approval",
-        "k26"
+        "k26",
+        "registrar-2026-11-08"
       ],
-      "certainty": "unknown",
+      "certainty": "disputed",
       "evidence": {
         "status": "unresolved",
-        "interpretation": "Registrar public collection returned HTTP 403 on 8 November 2026. Need the Labor/Democrats rename entry and Meretz current entry. 2024 is the political agreement year, not a verified legal rename date. Meretz approval date and completed legal merger remain unasserted."
+        "interpretation": "The accessible official register was inspected: Labor 59-900001-5 and Meretz 59-900065-0 are separate; Labor name conflicts with the 2026 CEC submitting-party name. Legal rename date remains unknown (empty date); no completed legal merger established. Meretz convention approval date is not a registration field and remains unverified."
       }
     },
     {
@@ -5139,12 +5162,13 @@
       "sources": [
         "power2009",
         "k18",
-        "k19"
+        "k19",
+        "registrar-2026-11-08"
       ],
       "certainty": "unknown",
       "evidence": {
         "status": "unresolved",
-        "interpretation": "2009 disability campaign and 2013 Amnon Yitzhak list are distinct electoral appearances; differing leaders/platforms alone do not prove different legal organisations. Need party registration numbers before promoting a not-same-organisation edge."
+        "interpretation": "Register has only כח להשפיע 59-900087-4, with disability-rights objectives consistent with the 2009 campaign, but no second entry naming Amnon Yitzhak. It cannot assign different numbers to the 2009 and 2013 appearances or exclude reuse of a legal platform; legal identity remains unknown."
       }
     },
     {
@@ -5155,12 +5179,13 @@
       ],
       "sources": [
         "k26",
-        "odata-k17-factions"
+        "odata-k17-factions",
+        "registrar-2026-11-08"
       ],
       "certainty": "unknown",
       "evidence": {
         "status": "unresolved",
-        "interpretation": "2026 submission names Rabbi Yoram Abergel movement; historic Ahi is Land, Society, Judaism (faction 1040). Different names and leadership are not a legal identity test; registration numbers remain required."
+        "interpretation": "Register identifies historic אח~י - ארץ חברה יהדות (former name ציונות לאומית דתית מתחדשת), 59-900067-6. CEC 2026 list 26-צבי submits through חוזרים לשורשים, absent from this 170-row snapshot. אחי ישראלי 59-900115-3 is a third name, not evidence for that vehicle. No pair of registration numbers can be established; identity remains unknown."
       }
     },
     {
@@ -5170,12 +5195,13 @@
         "jewish-home"
       ],
       "sources": [
-        "nrp-continuity"
+        "nrp-continuity",
+        "registrar-2026-11-08"
       ],
       "certainty": "unknown",
       "evidence": {
         "status": "unresolved",
-        "interpretation": "Electoral continuation established by scholarship; Registrar dissolution/rename entries and exact legal effective date not inspected."
+        "interpretation": "Continuity now confirmed by registered name and number 59-900008-0; only exact legal effective date remains open because the registration-date cell is empty. Do not treat 2008 as a Registrar date."
       }
     }
   ]

@@ -1,21 +1,21 @@
 {
   "schemaVersion": 3,
-  "total": 11444,
+  "total": 11445,
   "counts": {
-    "unknown": 6952,
+    "unknown": 6954,
     "missing-field": 283,
-    "conflict": 17,
-    "single-source": 2410,
+    "conflict": 19,
+    "single-source": 2406,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1164,
     "pending": 420,
-    "unconfirmed": 97
+    "unconfirmed": 98
   },
   "countsByStatus": {
     "inferred-not-verified": 1030,
     "needs-current-status-review": 312,
-    "open": 10102
+    "open": 10103
   },
   "countsByImportance": {
     "high": {
@@ -27,20 +27,20 @@
       "unknown": 240
     },
     "medium": {
-      "total": 3609,
+      "total": 3608,
       "confirmed": 575,
-      "probable": 217,
+      "probable": 215,
       "provisional": 550,
-      "disputed": 5,
-      "unknown": 2262
+      "disputed": 8,
+      "unknown": 2260
     },
     "low": {
-      "total": 7008,
+      "total": 7010,
       "confirmed": 570,
       "probable": 0,
       "provisional": 802,
       "disputed": 0,
-      "unknown": 5636
+      "unknown": 5638
     }
   },
   "claimCertainty": {
@@ -576,20 +576,20 @@
     },
     {
       "election": "cross-election",
-      "total": 1433,
+      "total": 1434,
       "highOpen": 3,
-      "mediumOpen": 266,
-      "low": 1042,
+      "mediumOpen": 265,
+      "low": 1044,
       "counts": {
-        "unknown": 1044,
+        "unknown": 1046,
         "missing-field": 35,
-        "conflict": 4,
-        "single-source": 266,
+        "conflict": 6,
+        "single-source": 262,
         "low-confidence": 0,
         "release-hold": 0,
         "inferred": 4,
         "pending": 73,
-        "unconfirmed": 7
+        "unconfirmed": 8
       }
     }
   ],
@@ -1028,8 +1028,8 @@
     {"election":"k26","area":"Issue polling","count":1,"certainty":{"unknown":1}},
     {"election":"k26","area":"Reactions","count":1,"certainty":{"unknown":1}},
     {"election":"[object Object]","area":"data/raw/polls/kN/schema.draft.json properties","count":1,"certainty":{"unknown":1}},
-    {"election":"cross-election","area":"data/meta/party-lineage.json pending","count":90,"certainty":{"provisional":1,"unknown":89}},
-    {"election":"cross-election","area":"data/meta/party-lineage.json edges","count":25,"certainty":{"probable":23,"provisional":2}},
+    {"election":"cross-election","area":"data/meta/party-lineage.json pending","count":89,"certainty":{"provisional":1,"disputed":2,"unknown":86}},
+    {"election":"cross-election","area":"data/meta/party-lineage.json edges","count":24,"certainty":{"probable":21,"provisional":2,"disputed":1}},
     {"election":"cross-election","area":"data/raw/demographics/cbs-2018.json result","count":15,"certainty":{"unknown":15}},
     {"election":"cross-election","area":"data/raw/demographics/cbs-2019.json result","count":15,"certainty":{"unknown":15}},
     {"election":"cross-election","area":"data/raw/demographics/cbs-2020.json result","count":15,"certainty":{"unknown":15}},
@@ -1065,7 +1065,8 @@
     {"election":"cross-election","area":"data/raw/map-lines/jerusalem-registration.json record","count":1,"certainty":{"unknown":1}},
     {"election":"cross-election","area":"data/raw/map-lines/jerusalem-un229-traces.json record","count":1,"certainty":{"unknown":1}},
     {"election":"cross-election","area":"data/raw/map-lines/official-treaty-excerpts.json egyptArticleII","count":1,"certainty":{"unknown":1}},
-    {"election":"cross-election","area":"data/raw/map-lines/signed-map-check.json record","count":1,"certainty":{"unknown":1}}
+    {"election":"cross-election","area":"data/raw/map-lines/signed-map-check.json record","count":1,"certainty":{"unknown":1}},
+    {"election":"cross-election","area":"data/raw/registrar/parties-2026-11-08.json metadata","count":1,"certainty":{"unknown":1}}
   ],
   "low": [
     {"area":"data/meta/bios/kN.json candidates","count":4050,"open":4050},
@@ -1092,6 +1093,7 @@
     {"area":"data/raw/bios/identity-decisions.reviewed.json decisions","count":2,"open":2},
     {"area":"data/raw/kN/knesset-odata-factions.json record","count":2,"open":2},
     {"area":"data/raw/kN/knesset-odata-members.json factionMemberships","count":2,"open":2},
+    {"area":"data/raw/SOURCES.json license","count":2,"open":2},
     {"area":"data/raw/SOURCES.json url","count":2,"open":2},
     {"area":"data/raw/bios/knesset-odata-faction-positions.json FinishDate","count":1,"open":1},
     {"area":"data/raw/bios/knesset-odata-mk-positions.json FactionID","count":1,"open":1},

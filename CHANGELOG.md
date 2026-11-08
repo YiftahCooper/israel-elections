@@ -2,6 +2,8 @@
 
 ## 7 November 2026 — Settings
 
+- Research: retain the privacy-filtered official party register; confirm NRP–Jewish Home continuity and separate Labor/Meretz registrations, and record the disputed Labor/Democrats name.
+
 - Research: rethink Compare with an audit of current behaviour, in-place comparison precedents, eligible-voter copying examples, history comparisons and ranked recommendations (docs/research/compare-rethink.md).
 
 - Docs: eight design and research documents (party history, individual MKs, source policy, trusted sources, archive access, Hebrew quality, Ra’am in 2021, map lines) rewritten in plain language, each opening with “In short”, recording the 8 November owner decisions and ending with technical notes for developers; no facts removed.
