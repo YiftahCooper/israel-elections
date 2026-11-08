@@ -40,6 +40,8 @@ describe('the settings registry', () => {
     expect(settingDefault('decimals', 'expert')).toBe(3);
     expect(settingDefault('voteCounts', 'simple')).toBe(false);
     expect(settingDefault('voteCounts', 'standard')).toBe(true);
+    // the "compared with last time" row line is opt-in at every level (owner, 8 Nov): Compare shows the change
+    for (const level of ['simple', 'standard', 'expert'] as const) expect(settingDefault('lastTimeRows', level)).toBe(false);
   });
   test('a value the user set wins at every level; defaults follow the level', () => {
     expect(settingValue({}, 'decimals', 'simple')).toBe(1);

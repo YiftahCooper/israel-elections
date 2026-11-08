@@ -1,5 +1,5 @@
 import { percent, percentNum } from './Percentage.tsx';
-import { SplitWarning } from './SplitWarning.tsx';
+import { SplitPartNote, SplitWarning } from './SplitWarning.tsx';
 import {ColourPicker} from './ColourPicker.tsx';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { SeatDelta } from './SeatDelta.tsx';
@@ -15,6 +15,7 @@ import { allocate } from '../../engine/allocate.ts';
 import { compareAllocations } from '../../engine/analysis.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { applyAction, apportion } from '../../model/actions.ts';
+import { hasOwnCandidates, planPartySplit } from '../../model/jointSplit.ts';
 import { toEngineInput, type Action, type Scenario, type SimList, type SimRules } from '../../model/scenario.ts';
 import { allocationOf, listLabel, referenceLabel } from '../derive.ts';
 import { useL, useLang, type Lang } from '../i18n.ts';
@@ -360,7 +361,9 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
     if (byParty) return partColours(parties.map((p) => p.color), l.color, taken);
     return [l.color, distinctColour(l.color, [...taken, l.color])];
   }, [s, r, l, byParty, parties]);
-  const lead = l?.candidates.find((c) => c.partyId)?.partyId ?? parties[0]?.id;
+  // only parties given votes run on their own; the rest, and candidates without a recorded party, stay with the lead's part
+  const plan = useMemo(() => (l && byParty && partyVotes.length ? planPartySplit(l, partyVotes) : null), [l, byParty, partyVotes]);
+  const home = plan ? parties[plan.home] : undefined;
   const unassigned = l && byParty ? l.candidates.filter((c) => !c.partyId || !parties.some((p) => p.id === c.partyId)).length : 0;
   const n = l ? Math.min(Math.max(0, topN ?? Math.ceil(l.candidates.length / 2)), l.candidates.length) : 0;
   const plainVotes = l ? Math.round((l.votes * shareA) / 100) : 0;
@@ -368,28 +371,29 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
   const actions: Action[] | null = useMemo(() => {
     if (!l) return null;
     if (byParty) {
-      if (!partyVotes.length) return null;
-      const parts = parties.map((p, i) => ({ newId: ids[i], nameHe: p.nameHe, letters: i === 0 ? l.letters : `${l.letters}${i + 1}`, color: colours[i], votes: partyVotes[i],
-        candidateIds: l.candidates.filter((c) => (c.partyId && parties.some((x) => x.id === c.partyId) ? c.partyId : lead) === p.id).map((c) => c.id) }));
-      return [{ type: 'split', id: l.id, parts }, ...parts.map((pt, i) => ({ type: 'setListMeta', listId: pt.newId, patch: { shortEn: parties[i].nameEn } }) as Action)];
+      if (!plan || plan.parts.length < 2) return null;
+      const parts = plan.parts.map((pt, k) => ({ newId: ids[k], nameHe: parties[pt.index].nameHe, letters: k === 0 ? l.letters : `${l.letters}${k + 1}`, color: colours[pt.index], votes: pt.votes, candidateIds: pt.candidateIds }));
+      return [{ type: 'split', id: l.id, parts }, ...parts.map((pt, k) => ({ type: 'setListMeta', listId: pt.newId, patch: { shortEn: parties[plan.parts[k].index].nameEn } }) as Action)];
     }
+    // a part with no votes would be an empty list: each side needs some
+    if (plainVotes === 0 || plainVotes === l.votes) return null;
     const c = l.candidates;
     const [ca, cb] = mode === 'top' ? [c.slice(0, n), c.slice(n)] : [c.filter((_, i) => i % 2 === 0), c.filter((_, i) => i % 2 === 1)];
     return [{ type: 'split', id: l.id, parts: [
       { newId: ids[0], nameHe: plainNames[0][0], letters: l.letters, color: colours[0], votes: plainVotes, candidateIds: ca.map((x) => x.id) },
       { newId: ids[1], nameHe: plainNames[1][0], letters: `${l.letters}2`, color: colours[1], votes: l.votes - plainVotes, candidateIds: cb.map((x) => x.id) }] },
       { type: 'setListMeta', listId: ids[0], patch: { shortEn: plainNames[0][1] } }, { type: 'setListMeta', listId: ids[1], patch: { shortEn: plainNames[1][1] } }];
-  }, [l, byParty, parties, partyVotes, colours, lead, mode, n, plainVotes, plainNames, ids]);
+  }, [l, byParty, parties, plan, colours, mode, n, plainVotes, plainNames, ids]);
   const go = () => { if (actions && dispatchMany(actions)) { setId(''); setIds(splitIds()); focusApplied(); } };
   const name = (p: { nameHe: string; nameEn: string }) => (lang === 'he' ? p.nameHe : p.nameEn);
   return (
     <div className="st-task">
-      <p className="small ink2" style={{ marginTop: 0 }}>{L('Choose a list to split', 'בחירת רשימה לפיצול')} <Info title={L('Split assumptions', 'הנחות הפיצול')}>{L('What if a list had run as separate lists? Joint lists split into their own parties; any other list splits in two. Each part must pass the threshold on its own, and the list’s surplus agreement is dropped. How its votes would have divided is an assumption you can see and change.', 'מה אילו רשימה הייתה רצה כרשימות נפרדות? רשימה משותפת מתפצלת למפלגותיה; כל רשימה אחרת — לשתיים. כל חלק צריך לעבור את אחוז החסימה בעצמו, והסכם העודפים של הרשימה מבוטל. חלוקת הקולות היא הנחה גלויה שאפשר לשנות.')}</Info></p>
+      <p className="small ink2" style={{ marginTop: 0 }}>{L('Choose a list to split', 'בחירת רשימה לפיצול')} <Info title={L('Split assumptions', 'הנחות הפיצול')}>{L('What if a list had run as separate lists? Joint lists split into their own parties; any other list splits in two. Each part must pass the threshold on its own, and the list’s surplus agreement is dropped. How its votes would have divided is an assumption for the scenario, which you can change.', 'מה אילו רשימה הייתה רצה כרשימות נפרדות? רשימה משותפת מתפצלת למפלגותיה; כל רשימה אחרת — לשתיים. כל חלק צריך לעבור את אחוז החסימה בעצמו, והסכם העודפים של הרשימה מבוטל. חלוקת הקולות היא הנחה לתרחיש, ואפשר לשנות אותה.')}</Info></p>
       <ListPicker s={s} picked={id ? [id] : []} single onToggle={(x) => setId(id === x ? '' : x)} />
       {l && byParty && (
         <div className="st-options">
           <SplitWarning />
-          <p className="small ink2 st-full" style={{ margin: 0 }}>{L('Assumed vote shares', 'חלוקת קולות משוערת')} <Info title={L('Vote shares', 'חלוקת הקולות')}>{L('Nobody knows how the joint list’s votes would have divided. By default each party gets its share of the list’s elected members (of its candidates if none was elected). Change the shares to try other assumptions.', 'איש אינו יודע כיצד היו מתחלקים קולות הרשימה המשותפת. כברירת מחדל כל מפלגה מקבלת את חלקה בנבחרי הרשימה (או במועמדיה, אם לא נבחר איש). שנו את החלוקה כדי לבדוק הנחות אחרות.')}</Info></p>
+          <p className="small ink2 st-full" style={{ margin: 0 }}>{L('Assumed vote shares', 'חלוקת קולות משוערת')} <Info title={L('Vote shares', 'חלוקת הקולות')}>{L('The vote was cast for the whole list, so how it would have divided is an assumption for the scenario. By default each party gets its share of the list’s elected members (of its candidates if none was elected). Change the shares to try other assumptions.', 'הקול ניתן לרשימה כולה, ולכן חלוקת הקולות היא הנחה לתרחיש. כברירת מחדל כל מפלגה מקבלת את חלקה בנבחרי הרשימה (או במועמדיה, אם לא נבחר איש). שנו את החלוקה כדי לבדוק הנחות אחרות.')}</Info></p>
           <div className="st-full"><ShareBar parts={parties.map((p, i) => ({ key: p.id, color: colours[i], votes: partyVotes[i] ?? 0 }))} /></div>
           {parties.map((p, i) => (
             <div key={p.id} className="st-share st-full">
@@ -398,14 +402,15 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
               <span className="row" style={{ gap: 4, flexWrap: 'nowrap' }}>
                 <input type="number" min={0} max={100} step={0.1} value={pct[i]} style={{ width: 76 }} aria-label={L(`Vote share of ${p.nameEn} (%)`, `חלק הקולות של ${p.nameHe} (%)`)}
                   onChange={(e) => { const next = [...pct]; next[i] = Math.max(0, Number(e.target.value) || 0); setShares(next); }} />%</span>
-              <span className="small muted tabnum">{L(`${fmtInt(partyVotes[i] ?? 0)} votes`, `${fmtInt(partyVotes[i] ?? 0)} קולות`)}</span>
+              <span className="small muted tabnum">{(partyVotes[i] ?? 0) === 0 && sumPct > 0 ? <SplitPartNote own={hasOwnCandidates(l, p.id)} home={home && home !== p ? name(home) : null} />
+                : <>{L(`${fmtInt(partyVotes[i] ?? 0)} votes`, `${fmtInt(partyVotes[i] ?? 0)} קולות`)}{!hasOwnCandidates(l, p.id) && p !== home && <> · {L('No recorded candidates', 'אין מועמדים מתועדים')}</>}</>}</span>
             </div>
           ))}
-          {sumPct === 0 ? <p className="small st-full" style={{ margin: 0, color: 'var(--warn-ink)' }}>{L('Give at least one party a share.', 'תנו לפחות למפלגה אחת חלק מהקולות.')}</p>
+          {plan && plan.parts.length < 2 || sumPct === 0 ? <p className="small st-full" style={{ margin: 0, color: 'var(--warn-ink)' }}>{L('Give at least two parties a share.', 'תנו חלק לשתי מפלגות לפחות.')}</p>
             : Math.abs(sumPct - 100) > 0.05 && <p className="small st-full" style={{ margin: 0, color: 'var(--warn-ink)' }}>{(lang === 'he' ? <>{"החלקים מסתכמים ב־"}{percentNum(sumPct, digits)}{"; הקולות יחולקו ביחס הזה."}</> : <>{"The shares add up to "}{percentNum(sumPct, digits)}{"; the votes are divided in these proportions."}</>)}</p>}
           {(shares || unassigned > 0) && <div className="row st-full" style={{ gap: 8 }}>
             {shares && <button type="button" className="btn small ghost" onClick={() => setShares(null)}>{L('Reset shares', 'איפוס החלוקה')}</button>}
-            {unassigned > 0 && <span className="tiny muted">{L(`${unassigned} candidates go with the lead party`, `${unassigned} מועמדים עם מפלגת הראש`)} <Info title={L('Candidate assignment', 'שיוך מועמדים')}>{L(`${unassigned} candidate(s) without a recorded party go with ${name(parties.find((p) => p.id === lead) ?? parties[0])} (the party of the list’s leader).`, `${unassigned} מועמדים שמפלגתם לא תועדה מצורפים ${hebrewPrefix('ל', name(parties.find((p) => p.id === lead) ?? parties[0]))} (מפלגת העומד בראש הרשימה).`)}</Info></span>}
+            {unassigned > 0 && home && <span className="tiny muted">{L(`${unassigned} candidates go with the lead party`, `${unassigned} מועמדים עם מפלגת הראש`)} <Info title={L('Candidate assignment', 'שיוך מועמדים')}>{L(`${unassigned} candidate(s) without a recorded party go with ${name(home)} (the party of the list’s leader).`, `${unassigned} מועמדים שמפלגתם לא תועדה מצורפים ${hebrewPrefix('ל', name(home))} (מפלגת העומד בראש הרשימה).`)}</Info></span>}
           </div>}
         </div>
       )}
@@ -420,6 +425,7 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
           <label className="field st-full">{L('Vote share', 'חלוקת הקולות')}
             <input type="range" min={0} max={100} value={shareA} aria-label={L(`Vote share of ${plainNames[0][1]} (%)`, `חלק הקולות של ${plainNames[0][0]} (%)`)} onChange={(e) => setShareA(Number(e.target.value))} /></label>
           <div className="st-full"><ShareBar parts={[{ key: 'a', color: colours[0], votes: plainVotes }, { key: 'b', color: colours[1], votes: l.votes - plainVotes }]} /></div>
+          {(plainVotes === 0 || plainVotes === l.votes) && <p className="small st-full" style={{ margin: 0, color: 'var(--warn-ink)' }}>{L('Give each part some votes.', 'תנו קולות לכל חלק.')}</p>}
           {[plainVotes, l.votes - plainVotes].map((v, i) => (
             <span key={i} className="small st-eff"><span className="swatch" style={{ background: colours[i] }} /><bdi>{plainNames[i][lang === 'he' ? 0 : 1]}</bdi> <b className="tabnum">{percent(v, l.votes, digits)}</b> <span className="muted tabnum">{L(`${fmtInt(v)} votes`, `${fmtInt(v)} קולות`)}</span></span>
           ))}

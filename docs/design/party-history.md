@@ -283,7 +283,8 @@ table.
 
 ### 5.2 "Compared with last time"
 
-- **In the results list** (mock-up M5), from the Standard level up: one line under each list, for example
+- **In the results list** (mock-up M5), from the Standard level up and **off by default** (owner, 8 November: a
+  feature of Compare, not shown by default; Settings → Lists → “Compared with last time” turns it on): one line under each list, for example
   "2022: 5 ▲6 · Hadash–Ta'al + Balad". The name is left out when it is unchanged ("2022: 6 ▲1"). A partial
   comparison carries a "*". Rises are a green ▲ and falls a red ▼, always with a sign, as everywhere in the app. The
   year at the start keeps it apart from the edit change shown beside the seat count, which compares with the

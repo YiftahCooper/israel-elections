@@ -41,7 +41,8 @@ test('split vote shares are stated, editable and conserve the list’s votes; pa
   await share('Degel HaTorah').fill('50');
   await share('Agudat Yisrael').fill('50');
   await share('Homat Torat Yisrael').fill('0');
-  await expect(panel(page).locator('.st-share .tabnum').last()).toHaveText('0 votes');
+  // a party given no share runs no list of its own (no empty 0-vote list)
+  await expect(panel(page).locator('.st-share .tabnum').last()).toContainText('No list of its own');
   expect(await total()).toBe(before);
   await expect(panel(page).getByRole('button', { name: 'Reset shares' })).toBeVisible();
 });
@@ -98,4 +99,32 @@ test('the "All lists" toggle is a chip aligned with the list chips', async ({ pa
   await expect(more.locator('svg')).toHaveCount(1);
   await more.click();
   await expect(more).toHaveCount(0);
+});
+
+// owner, 8 Nov: splitting Religious Zionism (2022) showed Atid Ehad and Eretz Yisrael Shelanu as lists with 0 votes
+for (const lang of ['en', 'he'] as const) test(`a party with no vote share runs no list of its own · ${lang}`, async ({ page }) => {
+  await start(page, lang, 'k25');
+  await task(page, 1);
+  await panel(page).getByRole('group', { name: lang === 'en' ? 'List' : 'רשימה' }).getByRole('button', { name: lang === 'en' ? 'Religious Zionism' : 'הציונות הדתית', exact: true }).click();
+  await expect(panel(page).locator('.st-options .split-part-note')).toHaveCount(2);
+  await expect(panel(page).locator('.st-options .split-part-note').first()).toContainText(lang === 'en' ? 'No list of its own' : 'ללא רשימה משלה');
+  await panel(page).getByRole('button', { name: lang === 'en' ? 'Split' : 'פיצול', exact: true }).click();
+  // three parts with votes; no list with 0 votes appears
+  await page.locator('#tab-board').click();
+  await page.locator('.lb-row').first().waitFor();
+  const zero = await page.locator('.lb-row').evaluateAll((rows) => rows.map((r) => r.getAttribute('aria-label') ?? '').filter((n) => /Atid Ehad|Eretz Yisrael Shelanu|עתיד אחד|ארץ ישראל שלנו/.test(n)));
+  expect(zero).toEqual([]);
+});
+
+test('the joint list page splits only the parties given votes, and says so', async ({ page }) => {
+  await start(page, 'en', 'k25');
+  await page.locator('#tab-board').click();
+  await page.locator('.lb-row[aria-label="Religious Zionism"]').click();
+  await page.getByRole('button', { name: 'Split into separate lists' }).click();
+  await expect(page.locator('.joint-split .split-part-note')).toHaveCount(2);
+  await expect(page.getByRole('button', { name: 'Run as 3 separate lists', exact: true })).toBeEnabled();
+  // giving Atid Ehad a share runs it too, marked as having no recorded candidates
+  await page.getByLabel('Vote share of Atid Ehad (%)').fill('5');
+  await expect(page.getByRole('button', { name: 'Run as 4 separate lists', exact: true })).toBeVisible();
+  await expect(page.locator('.joint-split')).toContainText('No recorded candidates');
 });

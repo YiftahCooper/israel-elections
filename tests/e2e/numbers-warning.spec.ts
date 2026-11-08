@@ -61,7 +61,7 @@ for (const [width, lang] of [[1500, 'en'], [1500, 'he'], [390, 'en']] as const) 
   await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), 'k25');
   await mergeSplit(page, lang);
   const warning = page.locator('.split-warning');
-  await expect(warning).toContainText(lang === 'en' ? 'A vote is for the whole list.' : 'ההצבעה היא לרשימה כולה.');
+  await expect(warning).toContainText(lang === 'en' ? 'The vote was cast for the whole list. The results don’t show a preference for any one party; the split here is an assumption for the scenario.' : 'הקול ניתן לרשימה כולה. תוצאות הבחירות אינן מצביעות על העדפת מפלגה ספציפית — הפיצול כאן הוא הנחה לתרחיש.');
   const box = await warning.boundingBox();
   await warning.getByRole('checkbox', { name: lang === 'en' ? "Don't show again" : 'לא להציג שוב' }).check();
   // it stays until the user leaves, so nothing moves under the pointer
@@ -84,7 +84,7 @@ test('the joint list page shows the same reminder', async ({ page }) => {
   await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
   await page.locator('.lb-row[aria-label="United Torah Judaism"]').click();
   await page.getByRole('button', { name: 'Split into separate lists' }).click();
-  await expect(page.locator('.joint-split .split-warning')).toContainText('scenario assumption');
+  await expect(page.locator('.joint-split .split-warning')).toContainText('the split here is an assumption for the scenario');
 });
 
 test('2013: declared and detailed results behind (i), seats unchanged', async ({ page }) => {
