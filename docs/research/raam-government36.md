@@ -1,54 +1,139 @@
-# Ra’am: coalition membership and office in government 36
+# Ra’am in the Bennett–Lapid government (2021–2022): coalition member, but no ministry
 
-Research check: 7 November 2026. Scope: 13 June 2021–29 December 2022; appointment, coalition membership, parliamentary office and budget commitments are separate claims.
+*Written 7 November 2026; rewritten in plain language on 8 November 2026. Nothing was removed: every fact, date, number and source of the earlier version is kept.*
 
-**Keep the app’s classification.** Ra’am was a coalition member without cabinet ministries. The retained official records show no Ra’am minister at formation and no Ra’am deputy minister anywhere in government 36. The report that Mansour Abbas became deputy minister for Arab affairs is contradicted by that deputy roster. No effective appointment date, government appointment decision, parliamentary notification or ministerial oath for Abbas was established. Do not invent dates for those steps.
+## In short
 
-The strongest evidence is the existing Knesset extraction, not a fresh successful API retrieval. A fresh whole-term minister roster and the deposited signed agreement were inaccessible in this pass. Accordingly, the negative deputy finding is directly supported across the term; the negative cabinet finding is directly supported at formation and corroborated by scholarship, rather than independently re-authenticated for every later date.
+- **What this is about.** Ra’am is an Arab Islamist party led by Mansour Abbas. In June 2021 it became the first Arab party to join an Israeli governing coalition, in the government led by Naftali Bennett and Yair Lapid. That was the 36th government of Israel. It served from 13 June 2021 to 29 December 2022.
+- **Why this check exists.** Some people remember Ra’am holding a ministry or a deputy-minister post in that government. Some news reports said so at the time. The app currently shows Ra’am as a **coalition member without ministries**: a party that is formally part of the government’s coalition but has no minister in the cabinet. This document checks whether that is right.
+- **What was found.** The app is right. The official Knesset list of that government’s deputy ministers has no Ra’am member at any point in the term. The official list of ministers on the day the government was formed has no Ra’am minister either. No appointment date, government decision, Knesset notification or oath of office was found for Abbas as a deputy minister.
+- **Why the confusion.** The coalition deal did include an optional deputy-minister post in the Prime Minister’s Office for Arab affairs. Ra’am’s religious council never decided to take it up. Two other deputy posts were also offered (one for housing, one for Mazen Ghanaim). None of these offers became an appointment. One news site, The National (24 June 2021), wrote that Abbas took the post. That report is contradicted by the official record.
+- **What Ra’am did have.** Abbas was a Deputy Speaker of the Knesset and chaired its Special Committee for Arab Society Affairs. Ra’am MK Said al-Harumi chaired the Interior and Environmental Protection Committee for part of the term. The cabinet also approved large spending plans for Arab society and the Negev Bedouin. None of this makes someone a minister.
+- **What stays the same.** No data was changed. Even if Abbas had become a deputy minister, the app’s rules would still class Ra’am as a coalition member without ministries, because only a cabinet minister counts as a “member with ministries”.
+- **What you need to decide.** Only whether to add one short explanatory line. See question 19, “Ra’am in 2021: did it hold a ministry?”, on the [questions page](https://claude.ai/artifact/VNauxmRhqwnzvx8JYsxqCu). Option 19a adds one line to Ra’am’s (i) for 2021: “A deputy-minister post was offered in the coalition deal but never taken up.” Option 19b leaves it as it is. The recommendation is 19a. Nothing has been decided yet.
 
-## What the reports actually establish
+## The finding in more detail
 
-- **3 June 2021:** Raoul Wootliff’s [Times of Israel report](https://www.timesofisrael.com/judicial-reforms-recognition-of-bedouin-villages-details-from-coalition-deals/), section “Ra’am”, describes an optional deputy post in the PM’s Office. The Shura Council had not decided to activate it; powers were unsettled. This is reporting of negotiations, not an appointment record.
-- **3 June:** [Zman Israel’s report of Abbas’s Kan interview](https://www.zman.co.il/live/226663/), paragraph beginning “וטרם”, records his saying the deputy-post decision had not yet been made. Zman and Times of Israel belong to the same publication family; do not count them as two independent corroborations.
-- **23 June:** [Zman Israel](https://www.zman.co.il/live/232071/), opening paragraph, reports an offer of a deputy **housing** post to Ra’am. **28 July:** [Times of Israel](https://www.timesofisrael.com/raam-mk-offered-deputy-minister-post-on-condition-he-quits-knesset-report/), opening three paragraphs, identifies Mazen Ghanaim as the proposed appointee, conditional on leaving the Knesset under the Norwegian arrangement. Both describe proposals; neither proves acceptance or entry into office.
-- **24 June:** Nada AlTaher’s [The National explainer](https://www.thenationalnews.com/mena/ra-am-who-are-israel-s-first-arab-party-in-government-1.1248411), opening section, states that Abbas opted for the deputy Arab-affairs post. This is genuine contemporary counterevidence, but supplies no appointment instrument or date and loses to the official roster. We cannot establish why the report made the error.
+The research check was done on 7 November 2026. It covers the whole life of the 36th government, from 13 June 2021 to 29 December 2022.
 
-## Formal roles and budgets
+Four different things are easy to mix up, so this document keeps them apart:
 
-Kenig and Rahat, [*Political Parties in Israel, 1992–2021*](https://www.idi.org.il/media/20997/המפלגות-בישראל-2021-1992.pdf), printed p.391 (PDF p.391), distinguishes the June 2 formation announcement from the agreement signed nine days later, and records Ra’am’s formal inclusion without cabinet representation. It identifies Abbas’s deputy-speaker and Arab Society Affairs committee roles and Said al-Harumi’s Interior and Environmental Protection chairmanship. This is scholarship, not the signed instrument. Al-Harumi’s chairmanship must not be projected across the whole term.
+1. **An appointment**: someone formally becomes a minister or deputy minister.
+2. **Coalition membership**: a party is formally part of the coalition that backs the government.
+3. **A parliamentary office**: for example Deputy Speaker of the Knesset, or chair of a Knesset committee. These are posts in the parliament, not in the government.
+4. **Budget commitments**: money the government promises or approves for a purpose.
 
-The [Knesset announcement of 26 April 2021](https://m.knesset.gov.il/EN/News/PressReleases/Pages/press26421w.aspx) describes the proposed special committee and deputy-speaker recommendation, before government formation. The [11 October committee report](https://m.knesset.gov.il/en/news/pressreleases/pages/press111021h.aspx) identifies Abbas as chair overseeing the five-year plan, alongside Social Equality Minister Meirav Cohen. Those are parliamentary oversight roles, not an Arab-affairs ministry. In this pass these two pages were available as search excerpts only; the latter’s opened page was geoblocked. They are contextual leads; the opened scholarly passage supports the roles.
+**Keep the app’s classification.** Ra’am was a coalition member without cabinet ministries. The official records kept in this project show:
 
-Do not collapse coalition promises, approved plans and actual expenditure into one budget figure. The formal instruments to consult are [decision 550, 24 October 2021](https://www.gov.il/he/pages/dec550_2021), the Arab-society economic programme through 2026, and [decision 1297, 14 March 2022](https://www.gov.il/he/pages/dec1297_2022), the Negev Bedouin development programme. Their pages returned no readable decision text here. A later [Agriculture Ministry implementation notice](https://www.gov.il/ar/pages/support_development_of_agricultural_infrastructure_in_negev), opening “background” section, explicitly identifies both decisions and their dates. The notice was available in search text, not independently opened in full; exact allocations and execution are not certified by this pass. Neither a budget commitment nor a government decision funding Arab society appoints Abbas to office.
+- no Ra’am minister on the day the government was formed;
+- no Ra’am deputy minister at any time during the 36th government.
 
-For readable contemporary budget reporting, [Aaron Boxerman, Times of Israel, 24 October 2021](https://www.timesofisrael.com/cabinet-okays-over-nis-32-billion-to-develop-arab-israeli-economy-fight-crime/), opening section and paragraphs beginning “This time” and “The government also”, reports cabinet approval of a NIS 29.5 billion five-year economic plan and a separate NIS 2.4 billion crime plan. It says budget legislation was still ahead. These are reported allocations, not audited expenditure; they must not be added again to overlapping coalition promises.
+Several reports said Mansour Abbas became deputy minister for Arab affairs. The official deputy-minister list contradicts this. We also found no date he took office, no government decision appointing him, no notification to the Knesset and no oath of office. We will not invent dates for any of those steps.
 
-## Appointment test
+**How strong is the evidence?** The strongest evidence is a copy of official Knesset data already stored in the project. It was not freshly downloaded again in this check. Two things could not be reached this time: a fresh list of all ministers for the whole term, and the signed coalition agreement as filed. So:
 
-[Basic Law: The Government, section 25(a), (a1), (b)](https://main.knesset.gov.il/Activity/Legislation/Documents/yesod6.pdf#page=21), printed pp.20–21 of the Knesset compilation (2001 law; **not** the repealed laws later in that PDF): a minister appoints with the PM’s consent and government approval; entry into office follows government notification in the Knesset. A deputy declares allegiance shortly after appointment. **Notification is not a Knesset approval vote.** Section 25(b) specifies delegated work for the appointing minister. The compilation is updated to May 2025 and labels amendments; the allegiance provision dates to 2015. The oath is not the statutory entry-into-office trigger.
+- “No Ra’am deputy minister” is directly supported for the whole term.
+- “No Ra’am cabinet minister” is directly supported on the day of formation, and backed by academic research for the rest of the term. It was not checked again, date by date, against the official record.
 
-## Evidence ledger and conclusion map
+## What the news reports actually say
 
-All local paths below are retained repository objects inspected directly. Web pages above were opened through the hosted web tool except where explicitly marked otherwise. Source families count once per origin; no quantitative review-volume claim is made.
+All of these were published at the time. They describe negotiations and offers, not appointments.
 
-| ID | Claim / direction | Evidence, tier, locator and limits |
+- **3 June 2021.** Raoul Wootliff’s [Times of Israel report](https://www.timesofisrael.com/judicial-reforms-recognition-of-bedouin-villages-details-from-coalition-deals/), section “Ra’am”, describes an *optional* deputy-minister post in the Prime Minister’s Office. Ra’am’s Shura Council (the movement’s religious leadership council) had not decided whether to take it up. Its powers were not yet settled. This is a report on negotiations, not a record of an appointment.
+- **3 June 2021.** [Zman Israel’s report of Abbas’s interview on Kan](https://www.zman.co.il/live/226663/) (Kan is Israel’s public broadcaster), in the paragraph beginning “וטרם”, records him saying the decision on the deputy post had not yet been made. Zman Israel and the Times of Israel belong to the same publishing group. So they count as one source, not as two independent confirmations.
+- **23 June 2021.** [Zman Israel](https://www.zman.co.il/live/232071/), opening paragraph, reports that Ra’am was offered a deputy **housing** minister post.
+- **28 July 2021.** The [Times of Israel](https://www.timesofisrael.com/raam-mk-offered-deputy-minister-post-on-condition-he-quits-knesset-report/), first three paragraphs, names Mazen Ghanaim as the proposed deputy minister. The condition was that he leave the Knesset under the **Norwegian arrangement**. (Under this arrangement a member of the Knesset, an MK, who becomes a minister or deputy minister can give up their seat so the next person on the party’s list enters the Knesset.) Both the June and July reports describe proposals. Neither shows that anyone accepted or took office.
+- **24 June 2021.** Nada AlTaher’s [explainer in The National](https://www.thenationalnews.com/mena/ra-am-who-are-israel-s-first-arab-party-in-government-1.1248411), opening section, says Abbas chose the deputy Arab-affairs post. This is real evidence from the time that points the other way. But it gives no appointment document and no date. It loses to the official deputy-minister list. We cannot tell why the report made the mistake.
+
+## What roles Ra’am did hold, and the budget plans
+
+**Academic account.** Ofer Kenig and Gideon Rahat, [*Political Parties in Israel, 1992–2021*](https://www.idi.org.il/media/20997/המפלגות-בישראל-2021-1992.pdf) (published by the Israel Democracy Institute, IDI, a non-partisan research institute), printed page 391 (also PDF page 391), says:
+
+- the government’s formation was announced on 2 June, and the agreement was signed nine days later;
+- Ra’am was formally included in the coalition without a seat in the cabinet;
+- Abbas was a Deputy Speaker of the Knesset and chaired the committee on Arab society affairs;
+- Said al-Harumi chaired the Interior and Environmental Protection Committee.
+
+This is academic research, not the signed agreement itself. Al-Harumi did not chair that committee for the whole term, so we must not show it as if he did.
+
+**Knesset announcements.**
+
+- The [Knesset announcement of 26 April 2021](https://m.knesset.gov.il/EN/News/PressReleases/Pages/press26421w.aspx) describes the planned special committee and the recommendation to make Abbas a Deputy Speaker. This was before the government was formed.
+- The [Knesset committee report of 11 October 2021](https://m.knesset.gov.il/en/news/pressreleases/pages/press111021h.aspx) names Abbas as the committee chair overseeing the five-year plan, alongside the Minister for Social Equality, Meirav Cohen.
+
+These are posts that oversee the government from inside the parliament. They are not an Arab-affairs ministry. In this check both pages were seen only as search-result extracts; when the second one was opened, it was blocked for our location. So they are background leads. The academic passage, which was opened and read, is what supports the roles.
+
+**Budget plans.** Coalition promises, government-approved plans and money actually spent are three different things. They must not be merged into one budget figure. The formal government decisions to consult are:
+
+- [Government decision 550, 24 October 2021](https://www.gov.il/he/pages/dec550_2021): the economic programme for Arab society, running to 2026;
+- [Government decision 1297, 14 March 2022](https://www.gov.il/he/pages/dec1297_2022): the development programme for the Negev Bedouin.
+
+The pages for both decisions showed no readable decision text in this check. A later [notice from the Agriculture Ministry on carrying out the plans](https://www.gov.il/ar/pages/support_development_of_agricultural_infrastructure_in_negev), in its opening “background” section, names both decisions and their dates. That notice was seen only in search-result text, not opened in full. So the exact amounts and how much was spent are not confirmed here. In any case, a budget commitment, or a government decision funding Arab society, does not appoint Abbas to anything.
+
+**News report on the budget.** [Aaron Boxerman, Times of Israel, 24 October 2021](https://www.timesofisrael.com/cabinet-okays-over-nis-32-billion-to-develop-arab-israeli-economy-fight-crime/), in the opening section and the paragraphs beginning “This time” and “The government also”, reports that the cabinet approved:
+
+- a five-year economic plan of NIS 29.5 billion;
+- a separate NIS 2.4 billion plan against crime.
+
+It says the budget law still had to pass. These are reported allocations, not audited spending. They must not be added on top of coalition promises that cover the same money.
+
+## How someone legally becomes a minister or deputy minister
+
+The rules are in [Basic Law: The Government, section 25(a), (a1) and (b)](https://main.knesset.gov.il/Activity/Legislation/Documents/yesod6.pdf#page=21), printed pages 20–21 of the Knesset’s compilation. This is the 2001 law, **not** the repealed older laws later in that same PDF.
+
+- A minister appoints a deputy minister, with the Prime Minister’s consent and the government’s approval.
+- The deputy takes office once the government notifies the Knesset.
+- A deputy then declares allegiance (takes an oath) shortly after being appointed.
+- **Notifying the Knesset is not a Knesset vote of approval.**
+- Section 25(b) sets out that the deputy does work delegated by the minister who appointed them.
+
+The compilation is updated to May 2025 and marks amendments. The oath rule dates from 2015. The oath is not what legally starts the term of office; the notification is.
+
+## The evidence, one item at a time
+
+Each item below is one piece of evidence. Sources from the same publisher or origin count only once. No claim is made about how much material was reviewed in total.
+
+| Item | What it says about Ra’am | Kind of source and limits |
 |---|---|---|
-| R1 | Supports no Ra’am deputy during government 36 | Primary: `data/meta/government-support-evidence.json`, `government36Deputies`: 11 appointment rows, seven distinct PersonIDs. Names checked against `data/raw/bios/knesset-odata-persons.json`: Abir Kara, Idan Roll, Alon Schuster, Yoav Segalovitz, Yair Golan, Meir Yitzhak Halevi, Matan Kahana. Origin: Knesset OData; same family as R2. |
-| R2 | Supports no Ra’am cabinet minister at formation | Primary: same evidence file, `governments["36"].rows`, snapshot 2021-06-13; faction joins retained there. This is a formation snapshot, not an all-term minister extract. |
-| R3 | Supports formal coalition membership and parliamentary offices; contextual on later cabinet absence | Scholarship: Kenig/Rahat, printed p.391, opened passage. IDI family. Does not provide the appointment instruments for individual committee chairs. |
-| R4 | Supports proposed, still optional deputy post | Contemporary: Wootliff, 3 June, “Ra’am”; Ghanaim report, 28 July, opening paragraphs; Zman, 3/23 June. One Times of Israel/Zman family; July report attributes Channel 12, not a separately inspected broadcast. |
-| R5 | Contradicts no-deputy finding | Contemporary: AlTaher, 24 June, opening section. Independent National family. No formal instrument cited. |
-| R6 | Contextual: defines legal appointment threshold | Primary: Basic Law compilation pp.20–21; Knesset legislative record family. Opened and read. Does not itself prove an appointment happened or failed. |
-| R7 | Contextual: cabinet approved Arab-society plans on 24 October 2021 | Contemporary: Boxerman, 24 October, opening/economic-plan paragraphs, opened and read. Times of Israel family, not independent of R4. Does not establish spending or appoint anyone. |
+| R1 | No Ra’am deputy minister in the 36th government | Official record: the Knesset’s own data, already stored in the project. It lists 11 deputy-minister appointments, held by seven different people: Abir Kara, Idan Roll, Alon Schuster, Yoav Segalovitz, Yair Golan, Meir Yitzhak Halevi and Matan Kahana. None is from Ra’am. Same origin as R2. |
+| R2 | No Ra’am cabinet minister when the government was formed | Official record: the same stored Knesset data, a snapshot of the government on 13 June 2021 (2021-06-13) with each minister’s party. It is a snapshot of formation day, not a list of all ministers over the whole term. |
+| R3 | Ra’am was formally in the coalition and held parliamentary posts; supports, as background, that it had no cabinet minister later either | Academic research: Kenig and Rahat, printed page 391, opened and read. IDI publication. It does not provide the formal appointment documents for each committee chair. |
+| R4 | A deputy post was proposed but was still optional | News at the time: Wootliff, 3 June (“Ra’am” section); the Ghanaim report, 28 July (opening paragraphs); Zman Israel, 3 and 23 June. All one publishing group (Times of Israel / Zman Israel). The July report credits Channel 12; we did not check that broadcast separately. |
+| R5 | Says Abbas did become deputy minister (contradicts the finding) | News at the time: AlTaher, The National, 24 June, opening section. Independent of the others. Cites no formal document. |
+| R6 | Background: what legally counts as an appointment | Official record: the Basic Law compilation, pages 20–21, opened and read. It does not by itself show that an appointment did or did not happen. |
+| R7 | Background: the cabinet approved Arab-society plans on 24 October 2021 | News at the time: Boxerman, 24 October, opening and economic-plan paragraphs, opened and read. Times of Israel, so not independent of R4. Does not show spending, and appoints no one. |
 
-**C1 — Retain N, confirmed at the formation snapshot:** supported by R1–R3 under the existing source policy; R5 contradicts the deputy claim but is outweighed by R1, with R4 explaining the proposal/appointment distinction. High confidence for no deputy across the retained term roster; whole-term cabinet re-authentication remains limited as described above. An authentic appointment decision plus Knesset notification would require reconsideration.
+**Conclusion 1: keep the app as it is.** Ra’am stays a coalition member without ministries, **confirmed** for the day of formation. This rests on R1, R2 and R3 under the project’s [source policy](../source-policy.md). R5 contradicts the deputy-minister claim but is outweighed by the official record in R1. R4 explains the difference between a proposal and an appointment. Confidence is high that there was no Ra’am deputy minister across the stored term list. Re-checking every later date for cabinet ministers remains limited, as described above. Only a genuine appointment decision plus a Knesset notification would reopen this.
 
-**C2 — No appointment dates to populate:** R1 and R4 support “not established”; R6 defines the required act. No exhaustive Gazette/plenum search was completed, so do not describe those archives as proving a negative. The absent appointment date is not an unknown election recommendation or an inferred vote.
+**Conclusion 2: there are no appointment dates to fill in.** R1 and R4 support “not established”; R6 defines what act would be needed. We did not search the whole Official Gazette or every Knesset session, so we do not claim those archives prove a negative. A missing appointment date is a different thing from an unknown recommendation to the President or a guessed vote.
 
-The C1 role contract in [government-support-roles.md](government-support-roles.md) requires a **cabinet** appointment for `member-with-ministries`; even a real deputy-only post would remain `member-without-ministries`. A minister without portfolio would count as a cabinet member. Coalition membership is not outside support and cannot be inferred merely from a confidence vote.
+**How the app’s rule works.** The rule set out in the [support-roles research](government-support-roles.md) says a party counts as a “member with ministries” only if it has a **cabinet** minister. So even a real deputy-minister post would leave Ra’am as a “member without ministries”. A minister without portfolio would count as a cabinet member. Coalition membership is also different from outside support (backing a government from outside the coalition), and it cannot be worked out just from how a party voted in a confidence vote.
 
-## Repository disposition and access
+## What was checked in the project, and access limits
 
-Checked `data/meta/k24.json` (`first-government` grouping notes/source) and `data/meta/aftermath/k24.json` (`governmentFormation.membership`, Ra’am’s `member-without-ministries` row and its `deputies36` cite). No incorrect role was found; no data, certainty, generated dataset or source hash was changed. See the earlier [support-roles investigation](government-support-roles.md#raam-membership-and-office-are-separate).
+The project’s current data for the 2021 election was checked: the grouping used for the first government, and the record of how that government was formed, including Ra’am’s role and its citation of the deputy-minister list. No wrong role was found. No data, certainty level, generated file or source fingerprint was changed. See also the earlier [support-roles investigation](government-support-roles.md#raam-membership-and-office-are-separate).
 
-Direct Python retrieval used `israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections)` and failed DNS; hosted web tools do not expose a configurable User-Agent. Knesset government/member/API access was unavailable/geoblocked; gov.il decisions had no readable text; NLI title pages returned 403. No workaround was attempted. English Wikipedia and its mirrors were excluded, including unsolicited search hits; none supplied claims or leads. No owner action is necessary to retain the current role.
+Some sources could not be reached:
+
+- A direct automated download from the project failed (the network lookup failed).
+- The Knesset’s government, member and data services were unavailable or blocked for our location.
+- The gov.il decision pages had no readable text.
+- The National Library of Israel’s newspaper title pages refused access.
+
+No attempt was made to get around any block. English Wikipedia and copies of it were excluded, including results that came up in searches without being asked for; none supplied any claim or lead. **No action from you is needed to keep the current role.**
+
+## Technical notes (for developers)
+
+**Repository records checked**
+
+- `data/meta/government-support-evidence.json`:
+  - `government36Deputies`: 11 appointment rows, seven distinct PersonIDs. Names checked against `data/raw/bios/knesset-odata-persons.json`. Origin: Knesset OData (the Knesset’s public data service). This is evidence item R1.
+  - `governments["36"].rows`: formation snapshot dated 2021-06-13, with faction joins retained there. Evidence item R2. It is not an all-term minister extract.
+- `data/meta/k24.json`: the `first-government` grouping, its notes and source.
+- `data/meta/aftermath/k24.json`: `governmentFormation.membership`, Ra’am’s `member-without-ministries` row and its `deputies36` cite.
+- Role contract: [government-support-roles.md](government-support-roles.md) (its C1 role contract) requires a cabinet appointment for `member-with-ministries`; a deputy-only post stays `member-without-ministries`.
+- Result: no incorrect role; no data, certainty, generated dataset or source hash changed.
+
+**Evidence-ledger IDs.** R1–R7 as in the table above; conclusions C1 (retain the role, confirmed at the formation snapshot) and C2 (no appointment dates to populate). Source families count once per origin: R1/R2 share the Knesset OData family; R4/R7 share the Times of Israel / Zman Israel family; R3 is the IDI family; R5 is The National; R6 is the Knesset legislative-record family.
+
+**Access method.** All local paths above were inspected directly. Web pages were opened through the hosted web tool, except where marked as search-excerpt only (the two Knesset press pages and the Agriculture Ministry notice). Direct Python retrieval used the user agent `israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections)` and failed at DNS. Hosted web tools do not expose a configurable user agent. The Knesset government/member/API endpoints were unavailable or geoblocked; gov.il decision pages returned no readable text; NLI title pages returned HTTP 403. No workaround was attempted.
