@@ -2,6 +2,8 @@
 
 ## 7 November 2026 — Settings
 
+- Research: cite party continuity and faction splits; distinguish Democrats political union from legal registration and keep unverified identity checks open.
+
 - Research: check Ra’am’s proposed deputy post against official appointments; add a practical scholarly and newspaper reading plan for unresolved coalition history.
 - Research: assess lawful historical archive access, ranked alternatives and bilingual owner enquiry drafts.
 - Research: assess Hebrew editing tools and native review, with 25 source-linked copy proposals and a practical quality pipeline.

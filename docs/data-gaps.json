@@ -1,21 +1,21 @@
 {
   "schemaVersion": 3,
-  "total": 11410,
+  "total": 11444,
   "counts": {
-    "unknown": 6949,
+    "unknown": 6952,
     "missing-field": 283,
     "conflict": 17,
-    "single-source": 2384,
+    "single-source": 2410,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1164,
-    "pending": 422,
-    "unconfirmed": 90
+    "pending": 420,
+    "unconfirmed": 97
   },
   "countsByStatus": {
     "inferred-not-verified": 1030,
     "needs-current-status-review": 312,
-    "open": 10068
+    "open": 10102
   },
   "countsByImportance": {
     "high": {
@@ -27,12 +27,12 @@
       "unknown": 240
     },
     "medium": {
-      "total": 3575,
-      "confirmed": 561,
-      "probable": 201,
-      "provisional": 548,
+      "total": 3609,
+      "confirmed": 575,
+      "probable": 217,
+      "provisional": 550,
       "disputed": 5,
-      "unknown": 2260
+      "unknown": 2262
     },
     "low": {
       "total": 7008,
@@ -576,20 +576,20 @@
     },
     {
       "election": "cross-election",
-      "total": 1399,
+      "total": 1433,
       "highOpen": 3,
-      "mediumOpen": 246,
+      "mediumOpen": 266,
       "low": 1042,
       "counts": {
-        "unknown": 1041,
+        "unknown": 1044,
         "missing-field": 35,
         "conflict": 4,
-        "single-source": 240,
+        "single-source": 266,
         "low-confidence": 0,
         "release-hold": 0,
         "inferred": 4,
-        "pending": 75,
-        "unconfirmed": 0
+        "pending": 73,
+        "unconfirmed": 7
       }
     }
   ],
@@ -1028,7 +1028,8 @@
     {"election":"k26","area":"Issue polling","count":1,"certainty":{"unknown":1}},
     {"election":"k26","area":"Reactions","count":1,"certainty":{"unknown":1}},
     {"election":"[object Object]","area":"data/raw/polls/kN/schema.draft.json properties","count":1,"certainty":{"unknown":1}},
-    {"election":"cross-election","area":"data/meta/party-lineage.json pending","count":88,"certainty":{"provisional":1,"unknown":87}},
+    {"election":"cross-election","area":"data/meta/party-lineage.json pending","count":90,"certainty":{"provisional":1,"unknown":89}},
+    {"election":"cross-election","area":"data/meta/party-lineage.json edges","count":25,"certainty":{"probable":23,"provisional":2}},
     {"election":"cross-election","area":"data/raw/demographics/cbs-2018.json result","count":15,"certainty":{"unknown":15}},
     {"election":"cross-election","area":"data/raw/demographics/cbs-2019.json result","count":15,"certainty":{"unknown":15}},
     {"election":"cross-election","area":"data/raw/demographics/cbs-2020.json result","count":15,"certainty":{"unknown":15}},
@@ -1037,7 +1038,6 @@
     {"election":"cross-election","area":"data/raw/demographics/cbs-2023.json result","count":15,"certainty":{"unknown":15}},
     {"election":"cross-election","area":"data/raw/demographics/cbs-2017.json result","count":14,"certainty":{"unknown":14}},
     {"election":"cross-election","area":"data/meta/parties.json conflicts","count":7,"certainty":{"provisional":1,"disputed":4,"unknown":2}},
-    {"election":"cross-election","area":"data/meta/party-lineage.json edges","count":7,"certainty":{"probable":7}},
     {"election":"cross-election","area":"families","count":7,"certainty":{"provisional":3,"unknown":4}},
     {"election":"cross-election","area":"data/meta/government-support-evidence.json government36Deputies","count":4,"certainty":{"unknown":4}},
     {"election":"cross-election","area":"data/meta/parties.json parties","count":3,"certainty":{"provisional":3}},
