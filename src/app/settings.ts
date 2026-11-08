@@ -29,6 +29,7 @@ export interface SettingValues {
   withdrawnLists: boolean;
   listOrder: 'seats' | 'votes' | 'bloc' | 'name';
   voteCounts: boolean;
+  lastTimeRows: boolean;
   allCandidates: boolean;
   chamberLayout: 'hemicycle' | 'blocks';
   seatColour: 'list' | 'bloc' | 'party';
@@ -107,6 +108,8 @@ export const SETTINGS: readonly SettingRow[] = [
     options: [o('seats', 'Seats', 'מנדטים'), o('votes', 'Votes', 'קולות'), o('bloc', 'Bloc', 'גוש'), o('name', 'Name', 'שם')], synonyms: 'sort order ranking מיון סדר' },
   { id: 'voteCounts', group: 'lists', control: 'toggle', min: 'simple', label: ['Vote counts', 'מספרי קולות'],
     info: ['The number of votes beside each list’s share.', 'מספר הקולות ליד אחוז הקולות של כל רשימה.'], synonyms: 'votes numbers totals count קולות מספרים' },
+  { id: 'lastTimeRows', group: 'lists', control: 'toggle', min: 'standard', label: ['Compared with last time', 'השוואה לבחירות הקודמות'],
+    info: ['A line under each list: its seats at the previous election and the change (2022: 5 ▲6). The list panel always shows it.', 'שורה מתחת לכל רשימה: המנדטים בבחירות הקודמות והשינוי (2022: 5 ▲6). חלונית הרשימה מציגה זאת תמיד.'], synonyms: 'previous last election history since change predecessor קודמות היסטוריה שינוי' },
   { id: 'allCandidates', group: 'lists', control: 'toggle', min: 'standard', label: ['All candidates', 'כל המועמדים'],
     info: ['Opens a list’s full roster. Off: the elected and the next few first.', 'פותח את רשימת המועמדים המלאה. כבוי: הנבחרים והבאים בתור תחילה.'], synonyms: 'candidates roster members names מועמדים חברים שמות' },
 
@@ -170,7 +173,7 @@ export function settingDefault<K extends SettingId>(id: K, level: Preset): Setti
   const d: SettingValues = {
     theme: 'device', density: 'compact', starterTip: true, openOn: 'overview',
     listSymbol: 'logo', partyColourInSeats: true, seatlessParties: false, partiesInSeatlessLists: false, seatlessLists: 'over', withdrawnLists: true,
-    listOrder: 'seats', voteCounts: level !== 'simple', allCandidates: false,
+    listOrder: 'seats', voteCounts: level !== 'simple', lastTimeRows: true, allCandidates: false,
     chamberLayout: 'hemicycle', seatColour: 'list', blocShading: true, referenceChamber: true, chamberKey: true, dimUnselected: true,
     decimals: level === 'expert' ? 3 : level === 'standard' ? 2 : 1, splitWarning: true,
     confirmStartOver: true, hoverPreviews: true, communityScenarios: true, compareWith: 'previous', optionPreviews: true,

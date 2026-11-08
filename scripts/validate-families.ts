@@ -4,6 +4,8 @@ import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { ElectionDataset } from '../src/data/schema.ts';
+import { certaintyAllowed, certaintyCeiling, CERTAINTIES, type Certainty } from '../src/data/evidence.ts';
+import { evidenceOf } from '../src/history/evidence-of.ts';
 
 type Sources = Record<string, { url?: string; locator?: string; support?: string }>;
 interface Registry {
@@ -27,6 +29,8 @@ export interface Family { id: string; sources: Sources; elections: Row[] }
 interface Edge {
   id: string; from: string[]; to: string[]; relation: string; date: string; datePrecision: string;
   sources: string[]; electionId?: string; listId?: string; evidence: { status: string; interpretation: string };
+  /** merger progress (party-history design §6); only a registered merger carries identity */
+  stage?: string; certainty?: string; continues?: string;
 }
 export interface FamilyBundle {
   registry: Registry; lineage: { sources: Sources; edges: Edge[] }; families: Family[];
@@ -124,12 +128,16 @@ export function validateFamilies(bundle: FamilyBundle): void {
   const successors = new Map<string, { to: string; date: string }[]>();
   for (const e of lineage.edges) {
     check(!edgeIds.has(e.id), `duplicate edge ${e.id}`); edgeIds.add(e.id);
-    check(['split-from', 'merged-into', 'renamed-to', 'electoral-partner', 'leader-moved-to'].includes(e.relation), 'unknown relation');
+    check(['split-from', 'merged-into', 'absorbed-into', 'renamed-to', 'faction-split', 'same-organisation', 'not-same-organisation', 'electoral-partner', 'leader-moved-to'].includes(e.relation), `unknown relation ${e.relation}`);
+    check(e.stage === undefined || e.relation === 'merged-into' && ['announced', 'approved', 'registered'].includes(e.stage), `${e.id}: stage`);
+    if (e.continues !== undefined) { check(e.relation === 'merged-into' && e.from.includes(e.continues), `${e.id}: continues`); }
+    // a recorded certainty may never exceed what its cited sources support (src/data/evidence.ts)
+    if (e.certainty !== undefined) check((CERTAINTIES as readonly string[]).includes(e.certainty) && certaintyAllowed(e.certainty as Certainty, certaintyCeiling(e.sources.map((id) => ({ id, source: evidenceOf(lineage.sources[id] as Parameters<typeof evidenceOf>[0]) })))), `${e.id}: certainty above its sources`);
     check(e.from.length && e.to.length && e.evidence.status && e.evidence.interpretation, 'empty edge evidence');
     for (const p of [...e.from, ...e.to]) party(p); refs(e.sources, lineage.sources);
     check(e.datePrecision === 'year' ? /^\d{4}$/.test(e.date) : e.datePrecision === 'day' && /^\d{4}-\d{2}-\d{2}$/.test(e.date), `edge date ${e.id}`);
     if (e.relation === 'electoral-partner') check(datasets[e.electionId ?? '']?.lists.some(l => l.id === e.listId) && datasets[e.electionId!].electionDate === e.date, 'partnership election');
-    if (['split-from', 'merged-into', 'renamed-to'].includes(e.relation)) for (const from of e.from) for (const to of e.to) {
+    if (['split-from', 'merged-into', 'absorbed-into', 'renamed-to'].includes(e.relation) && (!e.stage || e.stage === 'registered')) for (const from of e.from) for (const to of e.to) {
       const id = canonical(from); if (!successors.has(id)) successors.set(id, []); successors.get(id)!.push({ to: canonical(to), date: e.date });
     }
   }

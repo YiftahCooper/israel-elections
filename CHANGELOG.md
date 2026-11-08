@@ -2,6 +2,7 @@
 
 ## 7 November 2026 — Settings
 
+- Party history: each list's panel shows its parties' history since 1949 (full sheet with seats or vote share, events and sources) and the comparison with the previous election; list rows show “2022: 5 ▲6” from Standard (Settings switch); Compare adds “Ran jointly”, a note under the later list and the evidence in Matching. Votes are never divided between parties.
 - Research: cite party continuity and faction splits; distinguish Democrats political union from legal registration and keep unverified identity checks open.
 
 - Research: check Ra’am’s proposed deputy post against official appointments; add a practical scholarly and newspaper reading plan for unresolved coalition history.

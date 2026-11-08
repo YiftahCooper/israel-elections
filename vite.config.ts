@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { ELECTION_IDS, type ElectionDataset } from './src/data/schema.ts';
 import { validateAftermath, type Aftermath } from './src/data/aftermath-model.ts';
 import { compileFamilyRuntime } from './scripts/family-runtime.ts';
+import { compileHistoryRuntime } from './scripts/party-history-runtime.ts';
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import { scaleAwareMedia } from './scripts/scale-aware-media.ts';
@@ -31,6 +32,10 @@ export default defineConfig({
     resolveId(id) { if (id === 'virtual:family-runtime') return '\0family-runtime'; },
     load(id) { if (id === '\0family-runtime') return `export default ${JSON.stringify(compileFamilyRuntime())}`; },
     generateBundle() { this.emitFile({ type:'asset', fileName:'data/families-runtime.json', source:JSON.stringify(compileFamilyRuntime()) }); },
+  }, {
+    name: 'party-history-runtime',
+    resolveId(id) { if (id === 'virtual:party-history') return '\0party-history'; },
+    load(id) { if (id === '\0party-history') return `export default ${JSON.stringify(compileHistoryRuntime())}`; },
   }],
   test: { include: ['tests/**/*.test.ts'], environment: 'node' },
 });

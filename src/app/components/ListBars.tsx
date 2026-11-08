@@ -9,6 +9,7 @@ import { useActiveReference } from '../useActiveReference.ts';
 import { referenceLabel } from '../derive.ts';
 import { allocationOf } from '../derive.ts';
 import { PartEdits } from './PartEdits.tsx';
+import { LazyRowComparison } from './PartyHistoryLazy.tsx';
 // The lists as a visual column: each list is a row with its logo, name and a seat bar (its official seats shown
 // as a faint outline when they differ). Lists that won no seat show how far they are from the threshold instead.
 // Choosing a row opens the list in the side panel.
@@ -33,6 +34,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   const baseLabel = referenceLabel(reference, lang);
   const digits = useDigits();
   const { standard } = useLevel();
+  const lastTime = useSetting('lastTimeRows') && standard;
   const voteCounts = useSetting('voteCounts'), seatlessLists = useSetting('seatlessLists'), withdrawnLists = useSetting('withdrawnLists');
   const listOrder = useSetting('listOrder'), dimOthers = useSetting('dimUnselected');
   const seatlessParties = useSetting('seatlessParties'), partiesInSeatlessLists = useSetting('partiesInSeatlessLists');
@@ -127,9 +129,10 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
               {out && thr > 0 && !l.withdrawn && <> · {(lang === 'he' ? <>{percent(l.votes, thr, 0)}{" מאחוז החסימה"}</> : <>{percent(l.votes, thr, 0)}{" of the threshold"}</>)}</>}
               {l.withdrawn && <> · {L('withdrew', 'פרשה')}</>}</span>
               {partner && <span className="lb-agr"><span aria-hidden>⇄ </span>{listLabel(partner, lang)}</span>}
+              {lastTime && lr.seats > 0 && <LazyRowComparison s={s} r={r} listId={l.id} currentName={listLabel(l, lang)} />}
             </span>
           </span>
-          <span className="sr-only" id={`lbd-${l.id}`}>{L(`${lr.seats} seats`, `${lr.seats} מנדטים`)}, {fmtPct(l.votes, total, digits, s.rules.thresholdPct)}{familyDefinition && family && family!=='other' && <> · {familyLabel(familyDefinition,lang)}{family==='mixed'?` · ${L('Mixed lists','רשימות מעורבות')}`:''}</>}{d !== 0 && <>, {Math.abs(d)}{d > 0 ? baseLabel.more : baseLabel.fewer}</>}{l.withdrawn && <>, {L('withdrew', 'פרשה')}</>}{partner && <>, {L(`surplus-vote agreement with ${listLabel(partner, lang)}`, `הסכם עודפים עם ${listLabel(partner, lang)}`)}</>}</span>
+          <span className="sr-only" id={`lbd-${l.id}`}>{L(`${lr.seats} seats`, `${lr.seats} מנדטים`)}, {fmtPct(l.votes, total, digits, s.rules.thresholdPct)}{familyDefinition && family && family!=='other' && <> · {familyLabel(familyDefinition,lang)}{family==='mixed'?` · ${L('Mixed lists','רשימות מעורבות')}`:''}</>}{d !== 0 && <>, {Math.abs(d)}{d > 0 ? baseLabel.more : baseLabel.fewer}</>}{l.withdrawn && <>, {L('withdrew', 'פרשה')}</>}{partner && <>, {L(`surplus-vote agreement with ${listLabel(partner, lang)}`, `הסכם עודפים עם ${listLabel(partner, lang)}`)}</>}{lastTime && lr.seats > 0 && <LazyRowComparison sr s={s} r={r} listId={l.id} currentName={listLabel(l, lang)} />}</span>
           <span className="lb-seats">
             <b key={`s${lr.seats}`} className={previousSeats.current.election === s.electionId && previousSeats.current.seats.has(l.id) && previousSeats.current.seats.get(l.id) !== lr.seats ? 'tick' : ''}>{lr.seats}</b>
             {d !== 0 && <small dir="ltr"><SeatDelta value={d} /></small>}

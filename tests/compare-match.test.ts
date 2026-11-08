@@ -24,9 +24,9 @@ describe('matching k25 → k26 from party records only', () => {
     expect(rowOf(rows, 'left', '25-מחל')!.notes).toEqual([{ side: 'right', kind: 'with', partyIds: ['new-hope'] }]);
     expect(rowOf(rows, 'left', '25-כן')!.notes).toEqual([{ side: 'left', kind: 'moved', partyIds: ['new-hope'], listId: '26-מחל' }]);
   });
-  it('merges Hadash–Ta’al and Balad into the Joint List', () => {
+  it('Hadash–Ta’al and Balad ran jointly as the Joint List (no recorded merger)', () => {
     const row = rowOf(rows, 'right', '26-ודם')!;
-    expect(row.tag).toBe('merged');
+    expect(row.tag).toBe('ran-jointly');
     expect(new Set(row.left)).toEqual(new Set(['25-ום', '25-ד']));
   });
   it('groups Religious Zionism’s successors as one split, copied only as a group', () => {
@@ -37,11 +37,12 @@ describe('matching k25 → k26 from party records only', () => {
     for (const r of g) expect(copyUnit(r, rows, 'toRight')).toEqual({ src: ['25-ט'], dst: expect.arrayContaining(['26-ט', '26-ב', '26-ני']) });
     expect(copyUnit(g[0], rows, 'toLeft')!.dst).toEqual(['25-ט']);
   });
-  it('asks to check the announced Democrats merger instead of asserting it', () => {
+  it('pairs Labor, renamed The Democrats (probable), and Meretz, which ran jointly with it; the political union is not a merger', () => {
     const row = rowOf(rows, 'right', '26-אמת')!;
-    expect(row.tag).toBe('check');
-    expect(row.check).toEqual(['25-אמת']);
-    expect(copyUnit(row, rows, 'toRight')).toBeNull();
+    expect(row.tag).toBe('ran-jointly');
+    expect(new Set(row.left)).toEqual(new Set(['25-אמת', '25-מרצ']));
+    expect(row.check).toBeUndefined();
+    expect(rowOf(rows, 'left', '25-אמת')!.reason).toMatchObject({ kind: 'lineage', edgeId: 'labor-democrats-rename' });
   });
   it('marks lists that joined another list', () => {
     expect(rowOf(rows, 'left', '25-פה')).toMatchObject({ tag: 'joined', right: ['26-רק'] });
@@ -123,9 +124,9 @@ it('ranks a hand mapping by candidates who ran on both lists', () => {
 describe('the later election drawn on the left', () => {
   // the open scenario stays on the right even when the other side is a later election: rows are matched earlier → later, then mirrored
   const rows = mirrorRows(matchRows(k25, k26));
-  it('keeps the Joint List merger as one row, Balad included', () => {
+  it('keeps the Joint List as one row, Balad included', () => {
     const row = rowOf(rows, 'left', '26-ודם')!;
-    expect(row.tag).toBe('merged');
+    expect(row.tag).toBe('ran-jointly');
     expect(new Set(row.right)).toEqual(new Set(['25-ום', '25-ד']));
   });
   it('keeps the split group, its source now on the right', () => {
@@ -141,5 +142,44 @@ describe('the later election drawn on the left', () => {
     const left = rows.flatMap((r) => r.left), right = rows.flatMap((r) => r.right);
     expect(new Set(left).size).toBe(left.length);
     expect(new Set(right).size).toBe(right.length);
+  });
+});
+
+// docs/design/party-history.md §2.3: the three matcher behaviours fixed with the shared relations
+describe('matcher fixes', () => {
+  const pair = (x: string, y: string) => matchRows(baselineOf(load(x)), baselineOf(load(y)));
+  it('1. a documented split stays linked when its parent list joined a merged row (Independent Liberals 1965)', () => {
+    const rows = pair('k5', 'k6');
+    const il = rows.find((r) => r.right.some((id) => /^6-/.test(id)) && r.reason.kind === 'lineage' && r.reason.edgeId === 'independent-liberals-1965')!;
+    expect(il).toBeDefined();
+    expect(il.tag).toBe('split');
+    const parent = rows.find((r) => r.left.includes(il.inLeft!))!;
+    expect(parent.group).toBe(il.group);
+    expect(parent.left.length).toBeGreaterThan(1); // Herut + Liberals ran as Gahal
+  });
+  it('2. a joint run is "Ran jointly", not Merged (Likud Beiteinu 2013)', () => {
+    const rows = pair('k18', 'k19');
+    const row = rows.find((r) => r.right.includes('19-מחל'))!;
+    expect(row.tag).toBe('ran-jointly');
+    expect(row.left.sort()).toEqual(['18-ל', '18-מחל'].sort());
+  });
+  it('2. a recorded merger is Merged (Likud 1988: Herut and the Liberals)', () => {
+    const row = pair('k11', 'k12').find((r) => r.right.includes('12-מחל'))!;
+    expect(row).toMatchObject({ tag: 'merged', left: ['11-מחל'], reason: { kind: 'lineage', edgeId: 'likud-party-1988' } });
+  });
+  it('2. a merger that also ran with a partner is "Ran jointly" (Alignment 1969: Labor’s merger, with Mapam)', () => {
+    const row = pair('k6', 'k7').find((r) => r.right.includes('7-אמת'))!;
+    expect(row.tag).toBe('ran-jointly');
+    expect(new Set(row.left)).toEqual(new Set(['6-את', '6-כא', '6-מ']));
+    expect(row.reason).toMatchObject({ kind: 'lineage', edgeId: 'labor-1968' });
+  });
+  it('3. Religious Zionism 2021 is grouped with Yamina 2020 (its leader’s list), not joined from Otzma’s 0-seat list', () => {
+    const rows = pair('k23', 'k24');
+    const rz = rows.find((r) => r.right.includes('24-ט'))!;
+    expect(rz.tag).toBe('split');
+    expect(rz.group).toMatch(/^split:23-/);
+    const home = rows.filter((r) => r.group === rz.group).flatMap((r) => [...r.left, ...(r.inLeft ? [r.inLeft] : [])]);
+    expect(home).toContain(rz.group!.slice(6));
+    expect(rz.tag).not.toBe('joined');
   });
 });

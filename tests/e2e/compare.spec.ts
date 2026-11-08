@@ -157,7 +157,7 @@ test('copy a whole list, then several rows at once', async ({ page }) => {
   await expect(row(page, 'Shas').locator('.cmp-mark')).toHaveCount(0);
 });
 
-test('a split copies only as a group; a pairing to check is accepted in Matching; a new list can be mapped by hand', async ({ page }) => {
+test('a split copies only as a group; nothing is left to check in 2022 → 2026; a new list can be mapped by hand', async ({ page }) => {
   await start(page);
   await compare(page);
   const rz = row(page, 'Religious Zionism–Zehut');
@@ -167,13 +167,13 @@ test('a split copies only as a group; a pairing to check is accepted in Matching
   const line = page.locator('tr.cmp-groupline');
   await expect(line).toContainText('Religious Zionism');
   await expect(line).toContainText('3 lists');
-  // the Democrats need a decision: no copy until then
+  // the Democrats: Labor renamed (probable, research of 8 Nov) with Meretz on the list, so no decision is needed
   const dem = row(page, 'The Democrats');
-  await expect(dem.locator('.cmp-tag')).toHaveText('Check');
+  await expect(dem.locator('.cmp-tag')).toHaveText('Ran jointly');
   await page.locator('.cmp-toolbar').getByRole('button', { name: /Matching/ }).click();
   const panel = page.locator('dialog[open].cmp-matching');
   await panel.getByRole('button', { name: 'To check', exact: true }).click();
-  await panel.getByRole('button', { name: 'Accept Labor' }).click();
+  await expect(panel.locator('.cmp-match-list')).toHaveText('Nothing here.');
   await panel.getByRole('button', { name: 'All', exact: true }).click();
   const yashar = panel.locator('li').filter({ hasText: 'Yashar!' }).first();
   await yashar.getByRole('button', { name: 'Map to…' }).click();
