@@ -37,12 +37,12 @@ describe('matching k25 → k26 from party records only', () => {
     for (const r of g) expect(copyUnit(r, rows, 'toRight')).toEqual({ src: ['25-ט'], dst: expect.arrayContaining(['26-ט', '26-ב', '26-ני']) });
     expect(copyUnit(g[0], rows, 'toLeft')!.dst).toEqual(['25-ט']);
   });
-  it('requires checking Labor’s disputed rename while retaining Meretz on the joint list', () => {
+  it('pairs Labor, renamed The Democrats (probable), and Meretz, which ran jointly with it; the political union is not a merger', () => {
     const row = rowOf(rows, 'right', '26-אמת')!;
-    expect(row.tag).toBe('check');
+    expect(row.tag).toBe('ran-jointly');
     expect(new Set(row.left)).toEqual(new Set(['25-אמת', '25-מרצ']));
-    expect(row.check).toEqual(['25-אמת']);
-    expect(copyUnit(row, rows, 'toRight')).toBeNull();
+    expect(row.check).toBeUndefined();
+    expect(rowOf(rows, 'left', '25-אמת')!.reason).toMatchObject({ kind: 'lineage', edgeId: 'labor-democrats-rename' });
   });
   it('marks lists that joined another list', () => {
     expect(rowOf(rows, 'left', '25-פה')).toMatchObject({ tag: 'joined', right: ['26-רק'] });

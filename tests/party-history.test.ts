@@ -25,13 +25,13 @@ describe('the 2026 comparison table (§3.4)', () => {
     expect([c.before.votes, c.after.votes]).toEqual([317352, 500755]);
     expect(c.certainty).toBe('confirmed');
   });
-  it('The Democrats: the Registrar/CEC name conflict keeps the Labor comparison to verify', () => {
+  it('The Democrats: Labor + Meretz, 4 → 8, probable (the rename)', () => {
     const c = k26('אמת');
-    expect(c.kind).toBe('verify');
-    expect(c.certainty).toBe('unknown');
-    expect(c.toVerify).toEqual(expect.arrayContaining([
-      expect.objectContaining({ id: 'labor-democrats-rename', certainty: 'disputed' }),
-    ]));
+    expect(c.kind).toBe('combined');
+    expect(c.counted.map((l) => l.id).sort()).toEqual(['25-אמת', '25-מרצ'].sort());
+    expect([c.before.seats, c.after.seats]).toEqual([4, 8]);
+    expect(c.certainty).toBe('probable');
+    expect(c.relations.map((r) => r.id)).toEqual(['labor-democrats-rename']);
   });
   it('The Democrats with only the political union (announced, approved): To verify, never Meretz alone', () => {
     const c = k26('אמת', RELATIONS.filter((r) => r.id !== 'labor-democrats-rename'));
@@ -90,9 +90,9 @@ describe('relations', () => {
     expect(k26('אמת', merger('announced')).kind).toBe('verify');
     expect(k26('אמת', merger('registered')).kind).toBe('combined');
   });
-  it('certainty follows the source policy, retaining the official name dispute', () => {
+  it('certainty follows the source policy: IDI scholarship is probable, a pending item unknown', () => {
     expect(RELATIONS.find((r) => r.id === 'labor-1968')!.certainty).toBe('probable');
-    expect(RELATIONS.find((r) => r.id === 'labor-democrats-rename')!.certainty).toBe('disputed');
+    expect(RELATIONS.find((r) => r.id === 'labor-democrats-rename')!.certainty).toBe('probable');
     expect(RELATIONS.find((r) => r.id === 'democrats-announced')!).toMatchObject({ certainty: 'provisional', stage: 'announced' });
     expect(RELATIONS.find((r) => r.id === 'kadima-faction-2005')!.certainty).toBe('confirmed'); // Knesset records
     const parsed = readRelations({ sources: { cec: { kind: 'repository-dataset' }, note: { kind: 'secondary', publisher: 'internal' } }, pending: [],
@@ -153,13 +153,12 @@ const electionIdxOf = (id: string) => HISTORY.findIndex((e) => e.id === id);
 describe('party histories (identity series)', () => {
   const series = (id: string) => partySeries(identityOf(id));
   const ran = (id: string) => series(id).filter((p) => p.list).map((p) => HISTORY[p.i].date.slice(0, 4) + (p.role === 'alone' ? '' : `:${p.role}`));
-  it('keeps Labor’s earlier history separate from the disputed Democrats rename', () => {
-    expect(identityOf('democrats').ids).not.toContain('labor');
-    expect(series('democrats').filter((p) => p.list)).toHaveLength(1);
-    expect(series('democrats')[25]).toMatchObject({ role: 'led', seats: 8, own: 7 });
-    const labor = series('labor');
-    expect(erasOf(labor, 'en').map((e) => e.name)).toEqual(['Mapai', 'Labor']);
-    expect(labor.find((p) => HISTORY[p.i].date.startsWith('1969'))!).toMatchObject({ role: 'led', seats: 56 });
+  it('Labor: Mapai → Labor → The Democrats, every election from 1949', () => {
+    const s = series('democrats');
+    expect(s.every((p) => p.list)).toBe(true);
+    expect(erasOf(s, 'en').map((e) => e.name)).toEqual(['Mapai', 'Labor', 'The Democrats']);
+    expect(s[25]).toMatchObject({ role: 'led', seats: 8, own: 7 }); // Meretz's 1 elected member is hatched
+    expect(s.find((p) => HISTORY[p.i].date.startsWith('1969'))!).toMatchObject({ role: 'led', seats: 56 });
   });
   it('Likud: Herut → Likud from 1949; Likud Beiteinu 2013 is 20 own + 11 partners', () => {
     const s = series('likud');

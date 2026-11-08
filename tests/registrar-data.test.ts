@@ -35,10 +35,11 @@ describe('retained Registrar snapshot', () => {
       .map((r: string[]) => r.map(cell).join(',')).join('\r\n') + '\r\n';
     expect(readFileSync('data/raw/registrar/parties-2026-11-08.csv', 'utf8')).toBe(csv);
   });
-  it('records the Labor name conflict and separate Meretz registration without resolving it', () => {
+  it('records the Labor name conflict (disputed name, probable continuity) and separate Meretz registration', () => {
     expect(row('59-900001-5')['שם מפלגה']).toBe('מפלגת העבודה הישראלית');
     expect(row('59-900065-0')['שם מפלגה']).toBe('מרצ');
-    expect(edge('labor-democrats-rename').certainty).toBe('disputed');
+    expect(edge('labor-democrats-rename').certainty).toBe('probable');
+    expect(lineage.pending.find((p: { id: string }) => p.id === 'democrats-registrar-date').certainty).toBe('disputed');
     expect(edge('partners-26-אמת')).toMatchObject({ relation: 'electoral-partner', certainty: 'confirmed' });
     expect(edge('nrp-jewish-home-2008').certainty).toBe('confirmed');
     // A current register is not primary proof of these historical merger dates.

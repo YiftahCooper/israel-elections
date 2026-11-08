@@ -3877,10 +3877,10 @@
         "k26",
         "registrar-2026-11-08"
       ],
-      "certainty": "disputed",
+      "certainty": "probable",
       "evidence": {
         "status": "documented",
-        "interpretation": "The 2026 CEC submission names הדמוקרטים מיסודה של תנועת העבודה, but the Registrar snapshot modified 8 November 2026 still names 59-900001-5 מפלגת העבודה הישראלית; the dataset may lag or the list uses a different name, so the legal rename remains disputed. IDI supports organisational continuation; 2024 dates the political agreement, not a verified legal effective date."
+        "interpretation": "Organisational continuity: IDI describes Labor as the legal platform of the Democrats, and the 2026 CEC submitting party is named הדמוקרטים מיסודה של תנועת העבודה. The Registrar snapshot modified 8 November 2026 still names 59-900001-5 מפלגת העבודה הישראלית and has no other entry the Democrats could be. The two official records disagree only on the current legal name, which is recorded as disputed in democrats-registrar-date; they do not disagree on continuity. 2024 dates the political agreement, not a verified legal effective date."
       }
     },
     {
