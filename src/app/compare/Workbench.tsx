@@ -28,6 +28,8 @@ import { markerLead } from './copyText.ts';
 import { ChoicePicker } from '../components/ChoicePicker.tsx';
 import { partyLabel as partyName } from '../../families/registry.ts';
 import { narrowerThan } from '../textScale.ts';
+import { CompareNote, useCrossComparison } from '../components/PartyHistory.tsx';
+import type { Comparison } from '../../history/compare.ts';
 import './compare.css';
 
 type Dir = 'toRight' | 'toLeft';
@@ -52,6 +54,9 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
   // then mirrored when the later side is drawn on the left; user pairings are stored in that same earlier → later order
   const flip = cross ? left.ds.electionDate > right.ds.electionDate : left.role === 'main';
   const rows = useMemo(() => flip ? mirrorRows(matchRows(right.sc, left.sc, overrides)) : matchRows(left.sc, right.sc, overrides), [left.sc, right.sc, overrides, flip]);
+  // the later side's lists against the earlier side's whole lists (the shared comparable-predecessor rule)
+  const lineage = useCrossComparison(cross ? (flip ? left : right) : null, cross ? (flip ? right : left) : null);
+  const laterSide: 'left' | 'right' | null = cross ? (flip ? 'left' : 'right') : null;
   // a stable order: the starting points' seats, so rows never move while either side is edited
   const order = useMemo(() => {
     const rs = allocationOf(right.start), ls = allocationOf(left.start);
@@ -264,7 +269,7 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
             return [<tr key={row.key} className={`cmp-row ${isSel ? 'selected' : ''}`} data-tag={row.tag} data-row={row.key}
               onClick={(e) => { if (narrow() && !(e.target as HTMLElement).closest('button,input,a')) setSheet(row); }}>
               {!simple && <td className="cmp-tick"><input type="checkbox" checked={isSel} onChange={() => toggle(row)} aria-label={L(`Select ${what}`, `בחירת ${what}`)} /></td>}
-              <NameCell x={left} c={l} row={row} side="left" lang={lang} />
+              <NameCell x={left} c={l} row={row} side="left" lang={lang} cmp={!simple && laterSide === 'left' ? lineage : undefined} />
               <td className="n cmp-v">{l ? <VotesCell x={left} c={l} onEdit={(id) => setEditing({ side: left, listId: id })} /> : null}</td>
               <td className="n cmp-s">{l && <bdi dir="ltr">{percent(l.votes, l.total, digits, left.sc.rules.thresholdPct, { pad: digits })}</bdi>}</td>
               <td className="n cmp-seats cmp-ls">{l ? <b>{l.seats}</b> : null}</td>
@@ -282,7 +287,7 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
               <td className="n cmp-seats cmp-rs">{r ? <b>{r.seats}</b> : null}</td>
               <td className="n cmp-s">{r && <bdi dir="ltr">{percent(r.votes, r.total, digits, right.sc.rules.thresholdPct, { pad: digits })}</bdi>}</td>
               <td className="n cmp-v">{r ? <VotesCell x={right} c={r} onEdit={(id) => setEditing({ side: right, listId: id })} /> : null}</td>
-              <NameCell x={right} c={r} row={row} side="right" lang={lang} />
+              <NameCell x={right} c={r} row={row} side="right" lang={lang} cmp={!simple && laterSide === 'right' ? lineage : undefined} />
               <td className="cmp-more"><button type="button" className="btn small ghost cmp-more-btn" aria-label={L(`More for ${what}`, `עוד עבור ${what}`)} aria-haspopup="dialog" aria-expanded={menu?.row.key === row.key}
                 onClick={(e) => { e.stopPropagation(); if (narrow()) setSheet(row); else setMenu(menu?.row.key === row.key ? null : { row, anchor: e.currentTarget }); }}><MoreHorizontal size={16} /></button></td>
             </tr>,
@@ -346,7 +351,7 @@ function SideCard({ x, picker, focused, onFocus, align }: { x: SideModel; picker
 }
 
 /** The list name, slip, note and its marks (a copied value says where it came from). */
-function NameCell({ x, c, row, side, lang }: { x: SideModel; c: Cells | null; row: MatchRow; side: 'left' | 'right'; lang: 'he' | 'en' }) {
+function NameCell({ x, c, row, side, lang, cmp }: { x: SideModel; c: Cells | null; row: MatchRow; side: 'left' | 'right'; lang: 'he' | 'en'; cmp?: (listId: string) => Comparison | null }) {
   const L = useL();
   const notes = row.notes.filter((n) => n.side === side);
   const cls = `cmp-name cmp-${side === 'left' ? 'lname' : 'rname'}`;
@@ -368,6 +373,7 @@ function NameCell({ x, c, row, side, lang }: { x: SideModel; c: Cells | null; ro
     {notes.map((n, i) => <span key={i} className="tiny muted cmp-note">{n.kind === 'with'
       ? L(`with ${n.partyIds.map((p) => partyName(p, 'en')).join(', ')}`, `עם ${n.partyIds.map((p) => partyName(p, 'he')).join(', ')}`)
       : L(`${n.partyIds.map((p) => partyName(p, 'en')).join(', ')} moved on`, `${n.partyIds.map((p) => partyName(p, 'he')).join(', ')} עברה`)}</span>)}
+    {cmp && c.lists.length === 1 && !row.group && <CompareNote c={cmp(c.lists[0].id)} currentName={listLabel(c.lists[0], lang)} />}
   </td>;
 }
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "draft-2026-11-04",
+  "revision": "research-2026-11-08-stage1",
   "direction": "from predecessor to successor; split-from points parent to departing organisation; electoral-partner points constituents to election-specific alliance vehicle",
   "sources": {
     "aguda": {
@@ -469,6 +469,560 @@
       "accessed": "2026-11-06",
       "support": "Printed p.534 (PDF p.536): new party registered December 2018; reused the old name, not organisational continuity.",
       "quote": "המפלגה החדשה (עם השם הישן) כדין אצל רשם המפלגות."
+    },
+    "democrats-identity": {
+      "url": "https://www.idi.org.il/articles/54838",
+      "publisher": "IDI / Assaf Shapira, 4 July 2024",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-08",
+      "evidenceFamily": "idi",
+      "support": "Sections on institutions and legal status: Labor supplies the legal platform and is to change its name; Meretz remains a separate corporate and financial entity. This is a plan as of July 2024, not a dated Registrar act.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "7e033f389a3967cf153abd75cf43cee631d505f308a5fa90cc2c6e0755258b0c"
+      }
+    },
+    "democrats-approval": {
+      "url": "https://news.walla.co.il/item/3677233",
+      "publisher": "Walla / Tal Shalev, 12 July 2024",
+      "kind": "secondary",
+      "tier": "contemporary",
+      "accessed": "2026-11-08",
+      "evidenceFamily": "walla",
+      "support": "Opening paragraphs: Labor convention approved the agreement on 12 July 2024. The agreement retains separate corporate and financial entities; this is political approval, not registered legal merger.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "55d9a5c8838af4aff79bd5873bad454e6c999a2e511181b3148a9d4874274c9e"
+      }
+    },
+    "communist-history": {
+      "url": "https://www.idi.org.il/media/20997/%D7%94%D7%9E%D7%A4%D7%9C%D7%92%D7%95%D7%AA-%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C-2021-1992.pdf",
+      "publisher": "IDI / Ofer Kenig and Gideon Rahat, 2023",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-08",
+      "evidenceFamily": "idi",
+      "support": "PDF/printed p.363: 1965 Maki split; Rakah is the principal component of Hadash from 1977, a front rather than a single party; Rakah changed its name to Maki in 1989 after the older Maki ceased to exist. PDF/printed p.536: Orly Levy used the Gesher name for a new party registered in December 2018.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "7e23484b949649305bf37dd85cc9e826a2453c80f50a681def34e2a3cbfb339b"
+      }
+    },
+    "nrp-continuity": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/mafdal/",
+      "publisher": "IDI party profile",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-08",
+      "evidenceFamily": "idi",
+      "support": "Final historical paragraph before results: intended dissolution in late 2008 failed to unite all religious-Zionist parties; NRP contested 2009 as Jewish Home. Formal registration date remains unverified.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "c444665895de08a5c95c84efbe8b3221eb8f38b753c3ba2a5fb4271078c2f0b4"
+      }
+    },
+    "rafi-history": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/rafi/",
+      "publisher": "IDI party profile",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-08",
+      "evidenceFamily": "idi",
+      "support": "History paragraphs: Rafi arose from the 1965 departure from Mapai; most members joined Labor in 1968, while others established successor lists including the State List.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "0d87e15ff2a4cf956163bc8de0b020ccac45ee58b317b17148e9ec0eb10fd8a0"
+      }
+    },
+    "maki-history": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/maki/",
+      "publisher": "IDI party profile",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-08",
+      "evidenceFamily": "idi",
+      "support": "History paragraphs: Rakah departed in 1965; the residual Maki continued. Rakah later reused the Maki name, and is the principal component of Hadash.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "58ab1aad608e583f1d72a5867e8bf440014f29cd3a0ece2734d4517ce01a60ac"
+      }
+    },
+    "shinui-history": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/shinui/",
+      "publisher": "IDI party profile",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-08",
+      "evidenceFamily": "idi",
+      "support": "History paragraphs: Shinui was founded in 1974, joined Dash in 1976, and re-emerged as a separate parliamentary group when Dash disintegrated. This is not a first foundation in 1978.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "03a81f92922022430a8f12bf753cde71fde983b4b2c7d48c12bc30705253dfe5"
+      }
+    },
+    "tehiya-history": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/tehiya/",
+      "publisher": "IDI party profile",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-08",
+      "evidenceFamily": "idi",
+      "support": "History paragraphs: founded in 1979 by departing Likud MKs and other activists.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "fb36f6295bb776df9f4162d10759905ad94ffe6979386bfb6a73ac1967b0ebfa"
+      }
+    },
+    "mada-history": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/arab-democratic-party/",
+      "publisher": "IDI party profile",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-08",
+      "evidenceFamily": "idi",
+      "support": "History paragraphs: founded in 1988 by Darawshe after leaving Labor.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "f7c74593e2bdbfcd544c3c84c34108cea9b9ebe247eca4080ffc52a369f3a906"
+      }
+    },
+    "third-way-history": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/third-way/",
+      "publisher": "IDI party profile",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-08",
+      "evidenceFamily": "idi",
+      "support": "History paragraphs: movement began in 1994, party in early 1996; Kahalani and Zussman subsequently left Labor to join it. Parliamentary split does not date the original movement.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "de23f1336ea065a0b959074f4919efeb4c594d6bbcc095af2baac1c273fba27d"
+      }
+    },
+    "am-ehad-history": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/am-ehad/",
+      "publisher": "IDI party profile",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-08",
+      "evidenceFamily": "idi",
+      "support": "Opening paragraph: founded in early 1999 by three departing Labor MKs.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "3a91a880a0821f73c96d4857beb0caaea4d40987fa7951376699e4244587b819"
+      }
+    },
+    "kadima-history": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/kadima/",
+      "publisher": "IDI party profile",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-08",
+      "evidenceFamily": "idi",
+      "support": "History paragraphs: Sharon left Likud in November 2005 and established Kadima; Livni departed in 2012.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "79d7c29d5879278d7cc2342b6b01560d75ef8405855042f54c67088b3ee79a33"
+      }
+    },
+    "tami-continuity": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/tami/",
+      "publisher": "IDI party profile",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-08",
+      "evidenceFamily": "idi",
+      "support": "History and results: one Tami organisation contested in 1981 and 1984.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "4926fc5825a21158b0bd28b2093a06d3bbcec64220165b2fafa545c820fb0c84"
+      }
+    },
+    "haolam-continuity": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/haolam-hazeh/",
+      "publisher": "IDI party profile",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-08",
+      "evidenceFamily": "idi",
+      "support": "History and results: one movement founded in 1965 contested both 1965 and 1969.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "a416d9171c1d90dedca27e6cb946fb68809a4c75377c473ccdf6bd8b06a832f5"
+      }
+    },
+    "yemenite-continuity": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/yemenite-association/",
+      "publisher": "IDI party profile",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-08",
+      "evidenceFamily": "idi",
+      "support": "Opening paragraph: the association contested both the first and second Knesset elections.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "f9a2eb439ab966a26d86f6bf62c0dff64901928b1d9e33e988f02a8767d0753a"
+      }
+    },
+    "sephardi-continuity": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/sephardim-and-oriental-communities/",
+      "publisher": "IDI party profile",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-08",
+      "evidenceFamily": "idi",
+      "support": "Opening paragraph and results: the same organisation served in the first and second Knessets.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "6288d5e0db3bca22190bd976920763f70b5e447ef2a007e92adacf85fa7ee21e"
+      }
+    },
+    "hadash-continuity": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/hadash/",
+      "publisher": "IDI party profile",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-08",
+      "evidenceFamily": "idi",
+      "support": "History and results: Hadash contested every election since 1977. The profile loosely says merger; the detailed 2023 book p.363 explicitly distinguishes the front from its component party.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "4b66023cb69086042c10583190cf8132a24a55990041beed499fe69d31db3873"
+      }
+    },
+    "odata-k2-positions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+2+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k2.json",
+      "support": "Official Knesset OData fields retained in k2: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+    },
+    "odata-k2-factions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+2&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k2.json",
+      "support": "Official Knesset OData fields retained in k2: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+    },
+    "odata-k5-positions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+5+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k5.json",
+      "support": "Official Knesset OData fields retained in k5: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+    },
+    "odata-k5-factions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+5&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k5.json",
+      "support": "Official Knesset OData fields retained in k5: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+    },
+    "odata-k6-positions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+6+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k6.json",
+      "support": "Official Knesset OData fields retained in k6: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+    },
+    "odata-k6-factions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+6&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k6.json",
+      "support": "Official Knesset OData fields retained in k6: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+    },
+    "odata-k9-positions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k9.json",
+      "support": "Official Knesset OData fields retained in k9: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+    },
+    "odata-k9-factions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+9&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k9.json",
+      "support": "Official Knesset OData fields retained in k9: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+    },
+    "odata-k11-positions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+11+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k11.json",
+      "support": "Official Knesset OData fields retained in k11: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+    },
+    "odata-k11-factions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+11&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k11.json",
+      "support": "Official Knesset OData fields retained in k11: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+    },
+    "odata-k13-positions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+13+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k13.json",
+      "support": "Official Knesset OData fields retained in k13: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+    },
+    "odata-k13-factions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+13&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k13.json",
+      "support": "Official Knesset OData fields retained in k13: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+    },
+    "odata-k14-positions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+14+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k14.json",
+      "support": "Official Knesset OData fields retained in k14: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+    },
+    "odata-k14-factions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+14&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k14.json",
+      "support": "Official Knesset OData fields retained in k14: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+    },
+    "odata-k16-positions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+16+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k16.json",
+      "support": "Official Knesset OData fields retained in k16: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+    },
+    "odata-k16-factions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+16&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k16.json",
+      "support": "Official Knesset OData fields retained in k16: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+    },
+    "odata-k17-positions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+17+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k17.json",
+      "support": "Official Knesset OData fields retained in k17: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+    },
+    "odata-k17-factions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+17&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k17.json",
+      "support": "Official Knesset OData fields retained in k17: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+    },
+    "odata-k18-positions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+18+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k18.json",
+      "support": "Official Knesset OData fields retained in k18: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+    },
+    "odata-k18-factions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+18&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k18.json",
+      "support": "Official Knesset OData fields retained in k18: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+    },
+    "odata-k19-positions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+19+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k19.json",
+      "support": "Official Knesset OData fields retained in k19: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+    },
+    "odata-k19-factions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+19&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k19.json",
+      "support": "Official Knesset OData fields retained in k19: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+    },
+    "odata-k20-positions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+20+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k20.json",
+      "support": "Official Knesset OData fields retained in k20: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+    },
+    "odata-k20-factions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+20&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k20.json",
+      "support": "Official Knesset OData fields retained in k20: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+    },
+    "odata-k21-positions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+21+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k21.json",
+      "support": "Official Knesset OData fields retained in k21: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+    },
+    "odata-k21-factions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+21&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k21.json",
+      "support": "Official Knesset OData fields retained in k21: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+    },
+    "odata-k22-positions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+22+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k22.json",
+      "support": "Official Knesset OData fields retained in k22: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+    },
+    "odata-k22-factions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+22&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k22.json",
+      "support": "Official Knesset OData fields retained in k22: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+    },
+    "odata-k23-positions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k23.json",
+      "support": "Official Knesset OData fields retained in k23: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+    },
+    "odata-k23-factions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+23&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k23.json",
+      "support": "Official Knesset OData fields retained in k23: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+    },
+    "odata-k24-positions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k24.json",
+      "support": "Official Knesset OData fields retained in k24: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+    },
+    "odata-k24-factions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+24&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k24.json",
+      "support": "Official Knesset OData fields retained in k24: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+    },
+    "democrats-announcement": {
+      "url": "https://www.walla.co.il/news/politics/3674415",
+      "publisher": "Walla / Tal Shalev, 30 June 2024",
+      "kind": "secondary",
+      "tier": "contemporary",
+      "evidenceFamily": "walla",
+      "accessed": "2026-11-08",
+      "support": "Opening report: both parties announced an agreement on 30 June 2024; conventions still had to approve it. Announcement is not registered completion.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "0fe1f3784c781787831e5c8a6c61868371b1309cdc274edeee2fdead12e8e2b6"
+      }
     }
   },
   "edges": [
@@ -533,8 +1087,9 @@
       ],
       "evidence": {
         "status": "documented",
-        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
-      }
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation. Already present; the missing comparison is a reader issue, not missing evidence."
+      },
+      "certainty": "probable"
     },
     {
       "id": "likud-party-1988",
@@ -2985,10 +3540,11 @@
       ],
       "evidence": {
         "status": "documented",
-        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation. Constituency verified in the cited retained CEC compilation; electoral cooperation only. The 2026 Joint List contains the whole 2022 Hadash–Taal list and Balad; no vote division or legal merger implied."
       },
       "electionId": "k25",
-      "listId": "25-ום"
+      "listId": "25-ום",
+      "certainty": "confirmed"
     },
     {
       "id": "partners-25-ב",
@@ -3156,10 +3712,11 @@
       ],
       "evidence": {
         "status": "documented",
-        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation. Meretz remains separately named as a submitting party alongside Democrats of Labor origin; not a completed legal merger."
       },
       "electionId": "k26",
-      "listId": "26-אמת"
+      "listId": "26-אמת",
+      "certainty": "confirmed"
     },
     {
       "id": "partners-26-רק",
@@ -3205,10 +3762,11 @@
       ],
       "evidence": {
         "status": "documented",
-        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation. Constituency verified in the cited retained CEC compilation; electoral cooperation only. The 2026 Joint List contains the whole 2022 Hadash–Taal list and Balad; no vote division or legal merger implied."
       },
       "electionId": "k26",
-      "listId": "26-ודם"
+      "listId": "26-ודם",
+      "certainty": "confirmed"
     },
     {
       "id": "partners-26-די",
@@ -3281,11 +3839,31 @@
       },
       "electionId": "k26",
       "listId": "26-בי"
-    }
-  ],
-  "pending": [
+    },
     {
-      "id": "democrats-2024",
+      "id": "labor-democrats-rename",
+      "from": [
+        "labor"
+      ],
+      "to": [
+        "democrats"
+      ],
+      "relation": "renamed-to",
+      "date": "2024",
+      "datePrecision": "year",
+      "effectiveFor": "organisation",
+      "sources": [
+        "democrats-identity",
+        "k26"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Political name change planned in 2024; the 2026 submitting-party name preserves Labor origin. Probable organisational continuation. The year dates the political agreement, not a verified Registrar effective date; legal date remains pending."
+      }
+    },
+    {
+      "id": "democrats-announced",
       "from": [
         "labor",
         "meretz"
@@ -3294,17 +3872,874 @@
         "democrats"
       ],
       "relation": "merged-into",
-      "date": "2024",
-      "datePrecision": "year",
+      "date": "2024-06-30",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
       "sources": [
-        "mergers",
-        "k26"
+        "democrats-announcement"
       ],
+      "certainty": "provisional",
       "evidence": {
-        "status": "unresolved",
-        "interpretation": "July 2024 source establishes announcement, explicitly defers legal completion. 2026 local data still lists Meretz separately. Do not assert completed legal merger."
+        "status": "documented",
+        "interpretation": "Both parties announced their agreement on 30 June 2024. Single contemporary report; not a registered legal merger."
+      },
+      "stage": "announced"
+    },
+    {
+      "id": "democrats-approved",
+      "from": [
+        "labor",
+        "meretz"
+      ],
+      "to": [
+        "democrats"
+      ],
+      "relation": "merged-into",
+      "date": "2024-07-12",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "democrats-approval"
+      ],
+      "certainty": "provisional",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Labor convention approved the agreement. This does not establish a Meretz approval date or a registered merger."
+      },
+      "stage": "approved"
+    },
+    {
+      "id": "rakah-local-id",
+      "from": [
+        "rakah"
+      ],
+      "to": [
+        "israeli-communist-party"
+      ],
+      "relation": "same-organisation",
+      "date": "1981",
+      "datePrecision": "year",
+      "effectiveFor": "organisation",
+      "sources": [
+        "communist-history",
+        "k10"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Local constituent ID records the same Rakah organisation under a descriptive Communist Party name in 1981; this is not the 1989 formal name-change date."
       }
     },
+    {
+      "id": "rakah-name-1989",
+      "from": [
+        "rakah"
+      ],
+      "to": [
+        "israeli-communist-party"
+      ],
+      "relation": "renamed-to",
+      "date": "1989",
+      "datePrecision": "year",
+      "effectiveFor": "organisation",
+      "sources": [
+        "communist-history"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Rakah adopted the Maki name in 1989; not the residual 1965 Maki organisation."
+      }
+    },
+    {
+      "id": "maki-residual-1965",
+      "from": [
+        "pre-split-maki"
+      ],
+      "to": [
+        "maki"
+      ],
+      "relation": "same-organisation",
+      "date": "1965",
+      "datePrecision": "year",
+      "effectiveFor": "organisation",
+      "sources": [
+        "maki-history"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Residual Maki continued after Rakah departed; separate local IDs do not imply a second foundation. No identity equivalence with Rakah or the later Communist Party."
+      }
+    },
+    {
+      "id": "maki-not-rakah",
+      "from": [
+        "maki"
+      ],
+      "to": [
+        "rakah"
+      ],
+      "relation": "not-same-organisation",
+      "date": "1965",
+      "datePrecision": "year",
+      "effectiveFor": "organisation",
+      "sources": [
+        "maki-history",
+        "communist-history"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "The two organisations contested separately after the 1965 split; later reuse of the Maki name does not join the residual Maki to Rakah."
+      }
+    },
+    {
+      "id": "hadash-front-id-k9",
+      "from": [
+        "vehicle-9-ו"
+      ],
+      "to": [
+        "hadash"
+      ],
+      "relation": "same-organisation",
+      "date": "1977-05-17",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "hadash-continuity",
+        "communist-history",
+        "k9"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "The electoral vehicle is an appearance of the Hadash front founded in 1977. It is not an assertion that the front and its Communist Party component are the same organisation."
+      }
+    },
+    {
+      "id": "hadash-front-id-k10",
+      "from": [
+        "vehicle-10-ו"
+      ],
+      "to": [
+        "hadash"
+      ],
+      "relation": "same-organisation",
+      "date": "1981-06-30",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "hadash-continuity",
+        "communist-history",
+        "k10"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "The electoral vehicle is an appearance of the Hadash front founded in 1977. It is not an assertion that the front and its Communist Party component are the same organisation."
+      }
+    },
+    {
+      "id": "hadash-front-id-k11",
+      "from": [
+        "vehicle-11-ו"
+      ],
+      "to": [
+        "hadash"
+      ],
+      "relation": "same-organisation",
+      "date": "1984-07-23",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "hadash-continuity",
+        "communist-history",
+        "k11"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "The electoral vehicle is an appearance of the Hadash front founded in 1977. It is not an assertion that the front and its Communist Party component are the same organisation."
+      }
+    },
+    {
+      "id": "hadash-front-id-k12",
+      "from": [
+        "vehicle-12-ו"
+      ],
+      "to": [
+        "hadash"
+      ],
+      "relation": "same-organisation",
+      "date": "1988-11-01",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "hadash-continuity",
+        "communist-history",
+        "k12"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "The electoral vehicle is an appearance of the Hadash front founded in 1977. It is not an assertion that the front and its Communist Party component are the same organisation."
+      }
+    },
+    {
+      "id": "nrp-jewish-home-2008",
+      "from": [
+        "nrp"
+      ],
+      "to": [
+        "jewish-home"
+      ],
+      "relation": "renamed-to",
+      "date": "2008",
+      "datePrecision": "year",
+      "effectiveFor": "organisation",
+      "sources": [
+        "nrp-continuity"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Electoral organisational continuation after the wider unification failed. Registrar act and exact legal rename date not inspected; no completed National Union merger asserted."
+      }
+    },
+    {
+      "id": "tami-recurring",
+      "from": [
+        "vehicle-10-ני"
+      ],
+      "to": [
+        "vehicle-11-ני"
+      ],
+      "relation": "same-organisation",
+      "date": "1984-07-23",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "tami-continuity"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Same Tami organisation in the 1981 and 1984 elections."
+      }
+    },
+    {
+      "id": "haolam-recurring",
+      "from": [
+        "vehicle-6-ש"
+      ],
+      "to": [
+        "vehicle-7-ש"
+      ],
+      "relation": "same-organisation",
+      "date": "1969-10-28",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "haolam-continuity"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Same HaOlam HaZeh movement in the 1965 and 1969 elections."
+      }
+    },
+    {
+      "id": "sephardi-recurring",
+      "from": [
+        "vehicle-1-ס"
+      ],
+      "to": [
+        "vehicle-2-סצ"
+      ],
+      "relation": "same-organisation",
+      "date": "1951-07-30",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "sephardi-continuity"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Same Sephardim and Oriental Communities party in the first two elections."
+      }
+    },
+    {
+      "id": "yemenite-recurring",
+      "from": [
+        "vehicle-1-ל"
+      ],
+      "to": [
+        "vehicle-2-ל"
+      ],
+      "relation": "same-organisation",
+      "date": "1951-07-30",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "yemenite-continuity"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Same Yemenite Association in the first two elections."
+      }
+    },
+    {
+      "id": "ahdut-split-1954",
+      "from": [
+        "mapam"
+      ],
+      "to": [
+        "ahdut-haavoda"
+      ],
+      "relation": "split-from",
+      "date": "1954-08-23",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k2-positions",
+        "odata-k2-factions"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Mapam to Ahdut HaAvoda; Moshe Aram membership records 25867–25868; faction 163."
+      }
+    },
+    {
+      "id": "rafi-split-1965",
+      "from": [
+        "mapai"
+      ],
+      "to": [
+        "rafi"
+      ],
+      "relation": "split-from",
+      "date": "1965-07-14",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k5-positions",
+        "odata-k5-factions",
+        "rafi-history"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Mapai to Rafi; Ben-Gurion membership records 26343 and 29874; faction 257. Parliamentary recognition date, not foundation-day claim."
+      }
+    },
+    {
+      "id": "rakah-split-1965",
+      "from": [
+        "pre-split-maki"
+      ],
+      "to": [
+        "rakah"
+      ],
+      "relation": "split-from",
+      "date": "1965-09-01",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k5-positions",
+        "odata-k5-factions",
+        "maki-history"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Maki to Rakah; Toubi membership records 26385–26386; faction 275. Parliamentary date, not the party congress date."
+      }
+    },
+    {
+      "id": "free-centre-split-1967",
+      "from": [
+        "vehicle-6-חל"
+      ],
+      "to": [
+        "free-centre"
+      ],
+      "relation": "faction-split",
+      "date": "1967-03-29",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k6-positions",
+        "odata-k6-factions"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Gahal faction to Free Centre; Tamir records 26745–26746; faction 307. Gahal was a joint faction, not a unified party."
+      }
+    },
+    {
+      "id": "shinui-faction-1978",
+      "from": [
+        "dash"
+      ],
+      "to": [
+        "shinui"
+      ],
+      "relation": "faction-split",
+      "date": "1978-09-14",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k9-positions",
+        "odata-k9-factions",
+        "shinui-history"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Dash to Movement for Change and Initiative, later Shinui; Rubinstein records 27254–27256, factions 423→413→407. Shinui already existed before joining Dash."
+      }
+    },
+    {
+      "id": "tehiya-faction-1979",
+      "from": [
+        "vehicle-9-מחל"
+      ],
+      "to": [
+        "tehiya"
+      ],
+      "relation": "faction-split",
+      "date": "1979-07-17",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k9-positions",
+        "odata-k9-factions",
+        "tehiya-history"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Likud joint faction to Banai, subsequently Tehiya-Banai; Geula Cohen records 27192, 29882, 27193, factions 397→688→689. Party foundation and faction recognition are distinct."
+      }
+    },
+    {
+      "id": "mada-faction-1988",
+      "from": [
+        "vehicle-11-אמת"
+      ],
+      "to": [
+        "arab-democratic-party"
+      ],
+      "relation": "faction-split",
+      "date": "1988-02-15",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k11-positions",
+        "odata-k11-factions",
+        "mada-history"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Darawshe left Alignment as a single MK (records 27469–27470); Mada faction began 7 March (27471, faction 509). Labor was his party; Alignment was the parliamentary parent."
+      }
+    },
+    {
+      "id": "third-way-faction-1996",
+      "from": [
+        "labor"
+      ],
+      "to": [
+        "third-way"
+      ],
+      "relation": "faction-split",
+      "date": "1996-03-07",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k13-positions",
+        "odata-k13-factions",
+        "third-way-history"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Kahalani left Labor for Third Way; records 27887–27888, faction 599. Movement existed from 1994; this dates the parliamentary split."
+      }
+    },
+    {
+      "id": "am-ehad-faction-1999",
+      "from": [
+        "labor"
+      ],
+      "to": [
+        "am-ehad"
+      ],
+      "relation": "faction-split",
+      "date": "1999-03-25",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k14-positions",
+        "odata-k14-factions",
+        "am-ehad-history"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Peretz left Labor for Am Ehad; records 28042–28043, faction 665."
+      }
+    },
+    {
+      "id": "kadima-faction-2005",
+      "from": [
+        "likud"
+      ],
+      "to": [
+        "kadima"
+      ],
+      "relation": "faction-split",
+      "date": "2005-11-23",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k16-positions",
+        "odata-k16-factions",
+        "kadima-history"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Sharon left Likud for National Responsibility (28517–28518, faction 542), renamed Kadima on 17 January 2006 (28519, faction 562). Kadima did not inherit Likud votes."
+      }
+    },
+    {
+      "id": "hatnua-faction-2012",
+      "from": [
+        "kadima"
+      ],
+      "to": [
+        "hatnua"
+      ],
+      "relation": "faction-split",
+      "date": "2012-12-03",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k18-positions",
+        "odata-k18-factions"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Kadima to Hatnua; Meir Sheetrit records 28856–28857, faction 1048. Livni was not a sitting MK at this split."
+      }
+    },
+    {
+      "id": "national-list-rafi-departure",
+      "from": [
+        "rafi"
+      ],
+      "to": [
+        "vehicle-7-עמ"
+      ],
+      "relation": "split-from",
+      "date": "1968",
+      "datePrecision": "year",
+      "effectiveFor": "organisation",
+      "sources": [
+        "rafi-history",
+        "odata-k6-positions"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Ben-Gurion did not join the 1968 Labor merger; his Rafi membership ended 23 January 1968 (26542–26543). The later State/National List contested 1969. Year dates the departure, not registration of the later list."
+      }
+    },
+    {
+      "id": "likud-beiteinu-faction-2014",
+      "from": [
+        "vehicle-19-מחל"
+      ],
+      "to": [
+        "likud",
+        "yisrael-beiteinu"
+      ],
+      "relation": "faction-split",
+      "date": "2014-07-09",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k19-positions",
+        "odata-k19-factions"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Joint faction divided; Lieberman records 28959–28960, factions 804→843. Does not assert a prior legal merger."
+      }
+    },
+    {
+      "id": "blue-white-faction-2020",
+      "from": [
+        "vehicle-23-פה"
+      ],
+      "to": [
+        "israel-resilience",
+        "yesh-atid",
+        "telem"
+      ],
+      "relation": "faction-split",
+      "date": "2020-03-29",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k23-positions",
+        "odata-k23-factions"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Blue and White divided. Lapid records 29905, 29945, 29778; factions 1079→950→955. Yesh Atid and Telem briefly appear separately and combine as Yesh Atid–Telem the same day; not two newly founded parties."
+      }
+    },
+    {
+      "id": "utj-faction-k13",
+      "from": [
+        "vehicle-13-ג"
+      ],
+      "to": [
+        "agudat-yisrael",
+        "degel-hatorah"
+      ],
+      "relation": "faction-split",
+      "date": "1996-04-08",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k13-factions",
+        "odata-k13-positions"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "UTJ joint faction divided into Agudat Yisrael and Degel HaTorah; KNS_Faction IDs [589, 1028, 1029]. This dates faction separation, not dissolution of either party or allocation of joint-list votes."
+      }
+    },
+    {
+      "id": "utj-faction-k14",
+      "from": [
+        "vehicle-14-ג"
+      ],
+      "to": [
+        "agudat-yisrael",
+        "degel-hatorah"
+      ],
+      "relation": "faction-split",
+      "date": "1999-02-23",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k14-factions",
+        "odata-k14-positions"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "UTJ joint faction divided into Agudat Yisrael and Degel HaTorah; KNS_Faction IDs [631, 1034, 625]. This dates faction separation, not dissolution of either party or allocation of joint-list votes."
+      }
+    },
+    {
+      "id": "utj-faction-k16",
+      "from": [
+        "vehicle-16-ג"
+      ],
+      "to": [
+        "agudat-yisrael",
+        "degel-hatorah"
+      ],
+      "relation": "faction-split",
+      "date": "2005-01-12",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k16-factions",
+        "odata-k16-positions"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "UTJ joint faction divided into Agudat Yisrael and Degel HaTorah; KNS_Faction IDs [48, 424, 422]. This dates faction separation, not dissolution of either party or allocation of joint-list votes."
+      }
+    },
+    {
+      "id": "utj-faction-k17",
+      "from": [
+        "vehicle-17-ג"
+      ],
+      "to": [
+        "agudat-yisrael",
+        "degel-hatorah"
+      ],
+      "relation": "faction-split",
+      "date": "2008-12-18",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k17-factions",
+        "odata-k17-positions"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "UTJ joint faction divided into Agudat Yisrael and Degel HaTorah; KNS_Faction IDs [632, 1039, 1041]. This dates faction separation, not dissolution of either party or allocation of joint-list votes."
+      }
+    },
+    {
+      "id": "utj-faction-k20",
+      "from": [
+        "vehicle-20-ג"
+      ],
+      "to": [
+        "agudat-yisrael",
+        "degel-hatorah"
+      ],
+      "relation": "faction-split",
+      "date": "2019-01-09",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k20-factions",
+        "odata-k20-positions"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "UTJ joint faction divided into Agudat Yisrael and Degel HaTorah; KNS_Faction IDs [908, 1056, 1055]. This dates faction separation, not dissolution of either party or allocation of joint-list votes."
+      }
+    },
+    {
+      "id": "utj-faction-k21",
+      "from": [
+        "vehicle-21-ג"
+      ],
+      "to": [
+        "agudat-yisrael",
+        "degel-hatorah"
+      ],
+      "relation": "faction-split",
+      "date": "2019-07-10",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k21-factions",
+        "odata-k21-positions"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "UTJ joint faction divided into Agudat Yisrael and Degel HaTorah; KNS_Faction IDs [928, 1063, 1064]. This dates faction separation, not dissolution of either party or allocation of joint-list votes."
+      }
+    },
+    {
+      "id": "utj-faction-k22",
+      "from": [
+        "vehicle-22-ג"
+      ],
+      "to": [
+        "agudat-yisrael",
+        "degel-hatorah"
+      ],
+      "relation": "faction-split",
+      "date": "2019-12-30",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k22-factions",
+        "odata-k22-positions"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "UTJ joint faction divided into Agudat Yisrael and Degel HaTorah; KNS_Faction IDs [936, 1065, 1066]. This dates faction separation, not dissolution of either party or allocation of joint-list votes."
+      }
+    },
+    {
+      "id": "utj-faction-k23",
+      "from": [
+        "vehicle-23-ג"
+      ],
+      "to": [
+        "agudat-yisrael",
+        "degel-hatorah"
+      ],
+      "relation": "faction-split",
+      "date": "2020-12-28",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k23-factions",
+        "odata-k23-positions"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "UTJ joint faction divided into Agudat Yisrael and Degel HaTorah; KNS_Faction IDs [944, 1071, 1072]. This dates faction separation, not dissolution of either party or allocation of joint-list votes."
+      }
+    },
+    {
+      "id": "utj-faction-k24",
+      "from": [
+        "vehicle-24-ג"
+      ],
+      "to": [
+        "agudat-yisrael",
+        "degel-hatorah"
+      ],
+      "relation": "faction-split",
+      "date": "2022-08-15",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "odata-k24-factions",
+        "odata-k24-positions"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "UTJ joint faction divided into Agudat Yisrael and Degel HaTorah; KNS_Faction IDs [965, 1083, 1082]. This dates faction separation, not dissolution of either party or allocation of joint-list votes."
+      }
+    },
+    {
+      "id": "gesher-distinct",
+      "from": [
+        "gesher"
+      ],
+      "to": [
+        "gesher-2019"
+      ],
+      "relation": "not-same-organisation",
+      "date": "2018",
+      "datePrecision": "year",
+      "effectiveFor": "organisation",
+      "sources": [
+        "communist-history"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "IDI 2023 p.536 explicitly calls Orly Levy-Abekasis organisation a new party, registered in December 2018, reusing the older Gesher name. No parent-child identity asserted."
+      }
+    }
+  ],
+  "pending": [
     {
       "id": "remaining-succession",
       "sources": [
@@ -3313,24 +4748,6 @@
       "evidence": {
         "status": "unresolved",
         "interpretation": "Party-specific split/rename/leader moves beyond curated events require individually inspected dated register/profile evidence. Partnership coverage is not complete organisational genealogy."
-      }
-    },
-    {
-      "id": "history-pre-split-maki",
-      "partyIds": [
-        "pre-split-maki"
-      ],
-      "sources": [
-        "k1",
-        "k2",
-        "k3",
-        "k4",
-        "k5",
-        "proposal"
-      ],
-      "evidence": {
-        "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
       }
     },
     {
@@ -3577,21 +4994,6 @@
       }
     },
     {
-      "id": "history-third-way",
-      "partyIds": [
-        "third-way"
-      ],
-      "sources": [
-        "k14",
-        "k15",
-        "proposal"
-      ],
-      "evidence": {
-        "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
-    },
-    {
       "id": "history-telem-emuna",
       "partyIds": [
         "telem-emuna"
@@ -3641,43 +5043,12 @@
       }
     },
     {
-      "id": "history-am-ehad",
-      "partyIds": [
-        "am-ehad"
-      ],
-      "sources": [
-        "k15",
-        "k16",
-        "proposal"
-      ],
-      "evidence": {
-        "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
-    },
-    {
       "id": "history-ahavat-yisrael",
       "partyIds": [
         "ahavat-yisrael"
       ],
       "sources": [
         "k16",
-        "proposal"
-      ],
-      "evidence": {
-        "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
-    },
-    {
-      "id": "history-kadima",
-      "partyIds": [
-        "kadima"
-      ],
-      "sources": [
-        "k17",
-        "k18",
-        "k19",
         "proposal"
       ],
       "evidence": {
@@ -3739,6 +5110,72 @@
       "evidence": {
         "status": "unresolved",
         "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "democrats-registrar-date",
+      "partyIds": [
+        "labor",
+        "democrats",
+        "meretz"
+      ],
+      "sources": [
+        "democrats-identity",
+        "democrats-approval",
+        "k26"
+      ],
+      "certainty": "unknown",
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Registrar public collection returned HTTP 403 on 8 November 2026. Need the Labor/Democrats rename entry and Meretz current entry. 2024 is the political agreement year, not a verified legal rename date. Meretz approval date and completed legal merger remain unasserted."
+      }
+    },
+    {
+      "id": "koach-distinct-registration",
+      "partyIds": [
+        "vehicle-18-פ",
+        "koach-lehashpia-2013"
+      ],
+      "sources": [
+        "power2009",
+        "k18",
+        "k19"
+      ],
+      "certainty": "unknown",
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "2009 disability campaign and 2013 Amnon Yitzhak list are distinct electoral appearances; differing leaders/platforms alone do not prove different legal organisations. Need party registration numbers before promoting a not-same-organisation edge."
+      }
+    },
+    {
+      "id": "achi-distinct-registration",
+      "partyIds": [
+        "ahi",
+        "vehicle-26-צבי"
+      ],
+      "sources": [
+        "k26",
+        "odata-k17-factions"
+      ],
+      "certainty": "unknown",
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "2026 submission names Rabbi Yoram Abergel movement; historic Ahi is Land, Society, Judaism (faction 1040). Different names and leadership are not a legal identity test; registration numbers remain required."
+      }
+    },
+    {
+      "id": "nrp-registrar-date",
+      "partyIds": [
+        "nrp",
+        "jewish-home"
+      ],
+      "sources": [
+        "nrp-continuity"
+      ],
+      "certainty": "unknown",
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Electoral continuation established by scholarship; Registrar dissolution/rename entries and exact legal effective date not inspected."
       }
     }
   ]

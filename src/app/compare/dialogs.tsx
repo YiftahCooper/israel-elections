@@ -18,21 +18,24 @@ import { remember } from './answers.ts';
 import { inOf, personKey, sharedCandidates, type MatchOverride, type MatchRow, type MatchTag } from './match.ts';
 import { cellsOf, sourceOf, type SideModel } from './model.ts';
 import { partyLabel } from '../../families/registry.ts';
+import { ComparisonReason, eventText, useCrossComparison } from '../components/PartyHistory.tsx';
+import { RELATIONS } from '../../history/relations.ts';
 
 type L = (en: string, he: string) => string;
 export const TAGS: Record<MatchTag, [string, string]> = {
-  same: ['Same', 'אותה'], renamed: ['Renamed', 'שם חדש'], joined: ['Joined', 'הצטרפה'], merged: ['Merged', 'אוחדו'], split: ['Split', 'פוצלה'],
+  same: ['Same', 'אותה'], renamed: ['Renamed', 'שם חדש'], joined: ['Joined', 'הצטרפה'], 'ran-jointly': ['Ran jointly', 'רצו יחד'], merged: ['Merged', 'אוחדו'], split: ['Split', 'פוצלה'],
   new: ['New', 'חדשה'], ended: ['Ended', 'הסתיימה'], check: ['Check', 'לבדיקה'], yours: ['Yours', 'שלכם'],
 };
 export const TAG_INFO: Record<MatchTag, [string, string]> = {
   same: ['The same party ran, alone or leading the list (party registry).', 'אותה מפלגה התמודדה, לבדה או בראש הרשימה (מרשם המפלגות).'],
-  renamed: ['The party is unchanged but renamed (documented lineage).', 'המפלגה לא השתנתה אך שינתה את שמה (שושלת מתועדת).'],
+  renamed: ['The same party under a new name (recorded rename).', 'אותה מפלגה בשם חדש (שינוי שם מתועד).'],
   joined: ['The party now runs inside a joint list led by another party (party registry).', 'המפלגה רצה כעת בתוך רשימה משותפת בראשות מפלגה אחרת (מרשם המפלגות).'],
-  merged: ['Several lists are one list now (shared constituent parties or documented lineage).', 'כמה רשימות הן כעת רשימה אחת (מפלגות משותפות או שושלת מתועדת).'],
+  'ran-jointly': ['Several parties shared one list at this election; they did not merge (party registry).', 'כמה מפלגות התמודדו ברשימה אחת בבחירות אלה; הן לא התאחדו (מרשם המפלגות).'],
+  merged: ['Parties merged into one party (recorded merger).', 'מפלגות התאחדו למפלגה אחת (איחוד מתועד).'],
   split: ['Its parties now run on several lists. Its votes cannot be divided by list.', 'מפלגותיה רצות כעת בכמה רשימות. אין לחלק את קולותיה לפי רשימה.'],
   new: ['No sourced predecessor. Lists are never matched by name, letters or rank.', 'אין קודמת מתועדת. רשימות אינן מותאמות לפי שם, אותיות או דירוג.'],
   ended: ['No sourced successor.', 'אין ממשיכה מתועדת.'],
-  check: ['A relation that was announced but is not confirmed. Accept it to copy along it.', 'קשר שהוכרז אך לא אושר. אשרו אותו כדי להעתיק לפיו.'],
+  check: ['A recorded link that is not yet established (To verify). Accept it to copy along it.', 'קשר מתועד שטרם אומת (לבדיקה). אשרו אותו כדי להעתיק לפיו.'],
   yours: ['Paired by you, for this comparison only.', 'הותאם על ידיכם, להשוואה זו בלבד.'],
 };
 export const tagText = (t: MatchTag, L: L) => L(...TAGS[t]);
@@ -193,7 +196,7 @@ const reasonText = (row: MatchRow, L: L, lang: 'he' | 'en') => {
   const r = row.reason;
   if (r.kind === 'leading-party') return L(`Same leading party: ${partyLabel(r.partyId, 'en')}`, `אותה מפלגה מובילה: ${partyLabel(r.partyId, 'he')}`);
   if (r.kind === 'constituent') return L(`Shared party: ${r.partyIds.map((p) => partyLabel(p, 'en')).join(', ')}`, `מפלגה משותפת: ${r.partyIds.map((p) => partyLabel(p, 'he')).join(', ')}`);
-  if (r.kind === 'lineage') return L(`Documented lineage (${r.relation})`, `שושלת מתועדת (${r.relation})`);
+  if (r.kind === 'lineage') { const rel = RELATIONS.find((x) => x.id === r.edgeId); return rel ? eventText(rel, lang) : L('Documented lineage', 'שושלת מתועדת'); }
   if (r.kind === 'pending') return L('Announced merger, not legally completed', 'איחוד שהוכרז, טרם הושלם כחוק');
   if (r.kind === 'origin') return L('Same origin in this election', 'אותו מקור בבחירות אלה');
   if (r.kind === 'user') return L('Paired by you', 'הותאם על ידיכם');
@@ -213,6 +216,8 @@ export function MatchingPanel({ rows, flip, left, right, overrides, setOverrides
   const earlyIds = (row: MatchRow) => flip ? row.right : row.left, lateIds = (row: MatchRow) => flip ? row.left : row.right;
   const shown1 = (x: SideModel, row: MatchRow, side: 'left' | 'right') => inOf(row, side) ? L(`in ${name(x, [inOf(row, side)!])}`, `בתוך ${name(x, [inOf(row, side)!])}`) : name(x, row[side]);
   const mine = (row: MatchRow) => overrides.some((o) => earlyIds(row).includes(o.left) && lateIds(row).includes(o.right ?? ''));
+  const { standard } = useLevel();
+  const lineage = useCrossComparison(early.sc.electionId !== late.sc.electionId ? late : null, early.sc.electionId !== late.sc.electionId ? early : null);
   return <Modal label={L('Matching', 'התאמת רשימות')} onClose={onClose} className="cmp-matching">
     <div className="choice-head"><b>{L('Matching', 'התאמת רשימות')}</b> <Info title={L('How lists are matched', 'כיצד רשימות מותאמות')}>{L('From the party registry and documented lineage only: the leading party, shared constituent parties, renames, mergers and splits. Never by name, ballot letters or rank. Your pairings stay with this comparison and never change a result.', 'רק לפי מרשם המפלגות והשושלת המתועדת: המפלגה המובילה, מפלגות מרכיבות משותפות, שינויי שם, איחודים ופיצולים. לעולם לא לפי שם, אותיות או דירוג. ההתאמות שלכם נשמרות להשוואה זו בלבד ואינן משנות תוצאה.')}</Info><button className="btn" aria-label={L('Close', 'סגירה')} onClick={onClose}>×</button></div>
     <div className="seg-row" role="group" aria-label={L('Show', 'הצגה')}>{([['all', L('All', 'הכול')], ['check', L('To check', 'לבדיקה')], ['unmatched', L('Unmatched', 'ללא התאמה')]] as const).map(([v, t]) =>
@@ -220,7 +225,15 @@ export function MatchingPanel({ rows, flip, left, right, overrides, setOverrides
     <ul className="cmp-match-list">{shown.map((row) => <li key={row.key}>
       <div className="row cmp-match-names" dir="ltr"><bdi>{shown1(left, row, 'left')}</bdi><span aria-hidden>{flip ? '←' : '→'}</span><bdi>{shown1(right, row, 'right')}</bdi>
         <span className={`cmp-tag tag-${row.tag}`}>{tagText(row.tag, L)}</span></div>
-      <div className="small muted">{reasonText(row, L, lang)}{row.check?.length ? ` · ${L('to check', 'לבדיקה')}: ${name(early, row.check)}` : ''}</div>
+      {(() => {
+        const c = standard && lateIds(row).length === 1 && !row.group ? lineage(lateIds(row)[0]) : null;
+        // the comparison lists the same relation with its certainty and evidence: the reason is not repeated above it
+        const shown = row.reason.kind === 'lineage' && c?.relations.some((x) => row.reason.kind === 'lineage' && x.id === row.reason.edgeId);
+        return <>
+          {(!shown || row.check?.length) && <div className="small muted">{shown ? '' : reasonText(row, L, lang)}{row.check?.length ? `${shown ? '' : ' · '}${L('to check', 'לבדיקה')}: ${name(early, row.check)}` : ''}</div>}
+          <ComparisonReason c={c} />
+        </>;
+      })()}
       <div className="row cmp-match-actions">
         {row.tag === 'check' && row.check?.map((id) => <span key={id} className="row">
           <button type="button" className="btn small" onClick={() => setOverrides([...without((o) => o.left === id), { left: id, right: lateIds(row)[0], status: 'accepted' }])}>{L(`Accept ${name(early, [id])}`, `אישור ${name(early, [id])}`)}</button>

@@ -19,6 +19,7 @@ import { setState, useStore } from '../store.ts';
 import { ListDetail } from './ListDetail.tsx';
 import { PartyLinks } from './PartyLinks.tsx';
 import { Slip } from './ui.tsx';
+import { LazyHistorySection } from './PartyHistoryLazy.tsx';
 
 export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; r: AllocationResult; ds: ElectionDataset; base: Scenario; baseR: AllocationResult; listId: string }) {
   const { reference } = useActiveReference();
@@ -66,7 +67,7 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
         {blocs.map(b => <span key={b.id} title={b.appDefined ? appGroupingExplanation(lang) : undefined}>{groupingName(b, lang, s.blocSchemes?.find(g => g.id === s.blocSchemeId))}: <Majority n={pieces.filter(p => p.bloc === b.id).reduce((n,p) => n+p.n,0)} total={s.rules.seats} /></span>)}
         {!assignedBlocs.length && <span>{L('No bloc assigned', 'ללא שיוך לגוש')}</span>}
       </div>
-      <div className="sp-body"><ElectionAbout electionId={ds.id} listId={listId} /><ListDetail s={s} r={r} ds={ds} base={base} baseR={baseR} l={l} /></div>
+      <div className="sp-body"><LazyHistorySection s={s} r={r} listId={listId} /><ElectionAbout electionId={ds.id} listId={listId} /><ListDetail s={s} r={r} ds={ds} base={base} baseR={baseR} l={l} /></div>
     </aside>
   );
 }

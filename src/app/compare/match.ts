@@ -2,11 +2,13 @@
 // Across elections, lists are paired only from sourced party records (data/meta/parties.json appearances and the
 // documented lineage edges), never by name, ballot letters or vote rank. Within one election, lists are paired by
 // their origin (originIds), as the scenario's merges, splits and added lists record it.
-import lineage from '../../../data/meta/party-lineage.json';
-import { appearances, canonicalParty } from '../../families/registry.ts';
+import { continuations, decides, RELATIONS, usable, type Relation } from '../../history/relations.ts';
+import { HISTORY } from '../../history/runtime.ts';
+import { leadOf, partiesOf } from '../../history/compare.ts';
 import type { Scenario, SimCandidate, SimList } from '../../model/scenario.ts';
+export { leadOf, partiesOf };
 
-export type MatchTag = 'same' | 'renamed' | 'joined' | 'merged' | 'split' | 'new' | 'ended' | 'check' | 'yours';
+export type MatchTag = 'same' | 'renamed' | 'joined' | 'ran-jointly' | 'merged' | 'split' | 'new' | 'ended' | 'check' | 'yours';
 /** Why two lists were paired (the matching panel's (i) shows the source). */
 export type MatchReason =
   | { kind: 'leading-party'; partyId: string }
@@ -42,29 +44,9 @@ export interface MatchRow {
 /** A user decision about a pairing; analysis only (kept with the comparison, never in either scenario). */
 export interface MatchOverride { left: string; right: string | null; status: 'accepted' | 'rejected' | 'user' }
 
-type Edge = { id: string; from: string[]; to: string[]; relation: string };
-const documented: Edge[] = (lineage.edges as { id: string; from?: string[]; to?: string[]; relation?: string; evidence?: { status?: string } }[])
-  .filter((e) => e.from && e.to && ['merged-into', 'split-from', 'renamed-to'].includes(e.relation ?? '') && e.evidence?.status !== 'unresolved')
-  .map((e) => ({ id: e.id, from: e.from!.map(canonicalParty), to: e.to!.map(canonicalParty), relation: e.relation! }));
-const pending: Edge[] = (lineage.pending as { id: string; from?: string[]; to?: string[]; relation?: string }[])
-  .filter((e) => e.from && e.to).map((e) => ({ id: e.id, from: e.from!.map(canonicalParty), to: e.to!.map(canonicalParty), relation: e.relation ?? 'merged-into' }));
-
-/** Registered parties of a list (alliance vehicles excluded); a scenario-made list takes its origin lists' parties. */
-export function partiesOf(electionId: string, l: Pick<SimList, 'id' | 'originIds' | 'parties' | 'candidates'>): string[] {
-  const of = (id: string) => appearances.filter((a) => a.electionId === electionId && a.listId === id && a.role !== 'alliance').map((a) => a.partyId);
-  let ids = of(l.id);
-  if (!ids.length) ids = l.originIds.flatMap(of);
-  // a split part keeps only the parties its candidates still represent
-  if (l.parties?.length && ids.length > 1) { const kept = new Set(l.parties.map((p) => canonicalParty(p.id))); const narrowed = ids.filter((p) => kept.has(p)); if (narrowed.length) ids = narrowed; }
-  return [...new Set(ids)];
-}
-/** The leading party: the singleton, or candidate #1's party, or the first constituent. */
-export function leadOf(electionId: string, l: Pick<SimList, 'id' | 'originIds' | 'parties' | 'candidates'>): string | null {
-  const ps = partiesOf(electionId, l);
-  if (ps.length <= 1) return ps[0] ?? null;
-  const first = l.candidates.find((c) => !c.notSeated)?.partyId;
-  return first && ps.includes(canonicalParty(first)) ? canonicalParty(first) : ps[0];
-}
+const dateOf = (electionId: string) => HISTORY.find((e) => e.id === electionId)?.date ?? '';
+/** An organisational merger or absorption (the only links that make a row "Merged" rather than "Ran jointly"). */
+const merger = (via: Relation[]) => via.some((r) => r.kind === 'merged-into' || r.kind === 'absorbed-into');
 
 const rowKey = (left: string[], right: string[]) => `${left.join('+')}>${right.join('+')}`;
 
@@ -84,11 +66,19 @@ function sameElection(a: Scenario, b: Scenario): MatchRow[] {
   }));
 }
 
-/** Pairs the lists of `a` (left) and `b` (right). Every list appears in exactly one row; each left list leads at most one. */
+/** Pairs the lists of `a` (left) and `b` (right). Every list appears in exactly one row; each left list leads at most one.
+ *  Across elections a party is followed only along recorded relations (src/history/relations.ts), the same ones the
+ *  "compared with last time" rule uses: renames, registered mergers and absorptions, same organisation. */
 export function matchRows(a: Scenario, b: Scenario, overrides: MatchOverride[] = []): MatchRow[] {
   if (a.electionId === b.electionId) return sameElection(a, b);
   const A = a.lists.map((l) => ({ l, ps: partiesOf(a.electionId, l), lead: leadOf(a.electionId, l) }));
   const B = b.lists.map((l) => ({ l, ps: partiesOf(b.electionId, l), lead: leadOf(b.electionId, l) }));
+  const from = dateOf(a.electionId), to = dateOf(b.electionId);
+  const present = new Set(B.flatMap((x) => x.ps));
+  const contCache = new Map<string, Map<string, Relation[]>>();
+  /** what an earlier party became by the later election (itself included), with the relations it took */
+  const cont = (q: string) => { if (!contCache.has(q)) contCache.set(q, new Map(continuations(q, from, to, RELATIONS, false, present).map((c) => [c.partyId, c.via]))); return contCache.get(q)!; };
+  const into = (q: string | null, ps: string[]) => q ? ps.find((p) => cont(q).has(p)) : undefined;
   type Row = MatchRow & { leftSet: Set<string> };
   const rows: Row[] = [];
   const rowOfRight = new Map<string, Row>();
@@ -100,8 +90,7 @@ export function matchRows(a: Scenario, b: Scenario, overrides: MatchOverride[] =
     rows.push(row); rowOfRight.set(r.l.id, row); left.forEach((x) => used.add(x));
     return row;
   };
-  const renamed = (from: string | null, to: string | null) => from && to ? documented.find((e) => e.relation === 'renamed-to' && e.from.includes(from) && e.to.includes(to)) : undefined;
-  const lineageTo = (from: string | null, r: (typeof B)[number], relation: string) => from ? documented.find((e) => e.relation === relation && e.from.includes(from) && e.to.some((p) => r.ps.includes(p))) : undefined;
+  const splitEdge = (lead: string | null, r: (typeof B)[number]) => lead ? RELATIONS.find((e) => e.kind === 'split-from' && usable(e) && e.from.includes(lead) && e.to.some((p) => r.ps.includes(p))) : undefined;
 
   // 0. the user's own mappings come first
   for (const o of overrides.filter((o) => o.status === 'user' && o.right)) {
@@ -111,61 +100,75 @@ export function matchRows(a: Scenario, b: Scenario, overrides: MatchOverride[] =
     if (row) { row.left.push(l.l.id); row.leftSet.add(l.l.id); used.add(l.l.id); row.tag = 'yours'; }
     else open(r, [l.l.id], 'yours', { kind: 'user' });
   }
-  // 1. the same leading party (or one alliance led by another of its parties), or a documented rename
+  // 1. the same leading party (or one alliance led by another of its parties), also through a recorded rename or merger
   for (const r of B) {
     if (rowOfRight.has(r.l.id)) continue;
-    const l = A.find((x) => !used.has(x.l.id) && !rejected(x.l.id, r.l.id) && x.lead && (x.lead === r.lead || r.ps.includes(x.lead) && !!r.lead && x.ps.includes(r.lead)));
-    if (l) { open(r, [l.l.id], 'same', { kind: 'leading-party', partyId: l.lead! }); continue; }
-    const n = A.find((x) => !used.has(x.l.id) && !rejected(x.l.id, r.l.id) && renamed(x.lead, r.lead));
-    if (n) open(r, [n.l.id], 'renamed', { kind: 'lineage', edgeId: renamed(n.lead, r.lead)!.id, relation: 'renamed-to' });
+    const l = A.find((x) => !used.has(x.l.id) && !rejected(x.l.id, r.l.id) && x.lead && r.lead && (cont(x.lead).has(r.lead) || !!into(x.lead, r.ps) && x.ps.some((q) => cont(q).has(r.lead!))));
+    if (!l) continue;
+    const via = cont(l.lead!).get(r.lead!) ?? cont(l.lead!).get(into(l.lead, r.ps)!) ?? [];
+    if (!via.length) open(r, [l.l.id], 'same', { kind: 'leading-party', partyId: l.lead! });
+    else open(r, [l.l.id], merger(via) ? 'merged' : 'renamed', { kind: 'lineage', edgeId: via[0].id, relation: via[0].kind });
   }
-  // 2. a left list whose leading party now runs inside a right list led by another party: joined, or merged with others
+  // 2. a left list whose leading party now runs inside a right list led by another party: joined, or ran jointly with
+  //    others (Merged only along a recorded merger). When the right list's own leader ran inside a third list, the
+  //    right list is that list's split successor and the joiners are kept for it (step 4).
+  const deferred = new Map<string, string[]>();
   for (const r of B) {
-    const joiners = A.filter((x) => !used.has(x.l.id) && !rejected(x.l.id, r.l.id) && x.lead && (r.ps.includes(x.lead) || lineageTo(x.lead, r, 'merged-into')));
+    const joiners = A.filter((x) => !used.has(x.l.id) && !rejected(x.l.id, r.l.id) && !!into(x.lead, r.ps));
     if (!joiners.length) continue;
     const row = rowOfRight.get(r.l.id);
     const ids = joiners.map((x) => x.l.id);
-    if (row) { row.left.push(...ids); ids.forEach((x) => { row.leftSet.add(x); used.add(x); }); if (row.tag !== 'yours') row.tag = 'merged'; }
-    else {
-      const edge = lineageTo(joiners[0].lead, r, 'merged-into');
-      open(r, ids, ids.length > 1 ? 'merged' : 'joined', edge ? { kind: 'lineage', edgeId: edge.id, relation: edge.relation } : { kind: 'constituent', partyIds: [joiners[0].lead!] });
+    const viaOf = (x: (typeof A)[number]) => cont(x.lead!).get(into(x.lead, r.ps)!) ?? [];
+    const leaderHome = !row && r.lead ? A.find((x) => x.ps.some((q) => cont(q).has(r.lead!))) : undefined;
+    if (leaderHome && !joiners.includes(leaderHome) && !(leaderHome.lead && cont(leaderHome.lead).has(r.lead!))) {
+      deferred.set(r.l.id, ids); ids.forEach((x) => used.add(x)); continue;
+    }
+    if (row) {
+      row.left.push(...ids); ids.forEach((x) => { row.leftSet.add(x); used.add(x); });
+      if (row.tag !== 'yours') row.tag = joiners.every((x) => merger(viaOf(x))) ? 'merged' : 'ran-jointly';
+    } else {
+      const via = viaOf(joiners[0]);
+      open(r, ids, ids.length > 1 ? (joiners.every((x) => merger(viaOf(x))) ? 'merged' : 'ran-jointly') : merger(via) ? 'merged' : 'joined',
+        via.length ? { kind: 'lineage', edgeId: via[0].id, relation: via[0].kind } : { kind: 'constituent', partyIds: [joiners[0].lead!] });
     }
   }
-  // 3. announced but unconfirmed relations (lineage pending): shown as Check until the user accepts or rejects them
-  for (const e of pending) for (const r of B) {
-    if (!e.to.some((p) => r.ps.includes(p))) continue;
-    for (const x of A) {
-      if (used.has(x.l.id) || !x.lead || !e.from.includes(x.lead) || rejected(x.l.id, r.l.id)) continue;
-      const ok = accepted(x.l.id, r.l.id);
-      const row = rowOfRight.get(r.l.id) ?? open(r, [], ok ? 'merged' : 'check', { kind: 'pending', edgeId: e.id });
-      row.left.push(x.l.id); row.leftSet.add(x.l.id); used.add(x.l.id);
-      if (ok) row.tag = row.left.length > 1 ? 'merged' : 'yours';
-      else { row.check = [...row.check ?? [], x.l.id]; row.tag = 'check'; }
-    }
+  // 3. links that are recorded but not established (pending, below probable, or a merger not yet registered): shown
+  //    as Check until the user accepts or rejects them; never asserted
+  for (const r of B) for (const x of A) {
+    if (used.has(x.l.id) || !x.lead || rejected(x.l.id, r.l.id)) continue;
+    const link = continuations(x.lead, from, to, RELATIONS, true, present).find((c) => r.ps.includes(c.partyId) && c.via.some((e) => !decides(e)));
+    if (!link) continue;
+    const ok = accepted(x.l.id, r.l.id);
+    const row = rowOfRight.get(r.l.id) ?? open(r, [], ok ? 'merged' : 'check', { kind: 'pending', edgeId: link.via.find((e) => !decides(e))!.id });
+    row.left.push(x.l.id); row.leftSet.add(x.l.id); used.add(x.l.id);
+    if (ok) { if (row.tag === 'check' && !row.check?.length) row.tag = row.left.length > 1 ? 'ran-jointly' : 'yours'; }
+    else { row.check = [...row.check ?? [], x.l.id]; row.tag = 'check'; }
   }
   // 4. a right list led by a party that ran inside a left list: a split from it (grouped with that list's row)
   for (const r of B) {
     if (rowOfRight.has(r.l.id)) continue;
-    let best: (typeof A)[number] | undefined, bestShared = 0, edge: Edge | undefined;
+    let best: (typeof A)[number] | undefined, bestShared = 0, edge: Relation | undefined;
     for (const x of A) {
       if (rejected(x.l.id, r.l.id)) continue;
-      const shared = r.ps.filter((p) => x.ps.includes(p)).length + (r.lead && x.ps.includes(r.lead) ? 10 : 0);
-      const e = x.lead ? lineageTo(x.lead, r, 'split-from') : undefined;
+      const shared = r.ps.filter((p) => x.ps.some((q) => cont(q).has(p))).length + (r.lead && x.ps.some((q) => cont(q).has(r.lead!)) ? 10 : 0);
+      const e = splitEdge(x.lead, r);
       if (shared + (e ? 20 : 0) > bestShared) { best = x; bestShared = shared + (e ? 20 : 0); edge = e; }
     }
-    if (!best) continue;
+    const extra = deferred.get(r.l.id) ?? [];
+    if (!best) { if (extra.length) open(r, extra, extra.length > 1 ? 'ran-jointly' : 'joined', { kind: 'constituent', partyIds: [] }); continue; }
     const g = `split:${best.l.id}`;
-    const main = rows.find((x) => x.left.length === 1 && x.left[0] === best!.l.id);
+    const reason: MatchReason = edge ? { kind: 'lineage', edgeId: edge.id, relation: 'split-from' } : { kind: 'constituent', partyIds: r.ps.filter((p) => best!.ps.some((q) => cont(q).has(p))) };
+    const main = rows.find((x) => x.left.length === 1 && x.left[0] === best!.l.id) ?? rows.find((x) => x.left.includes(best!.l.id));
     if (main) {
-      main.group = g; main.tag = 'split';
-      const row = open(r, [], 'split', edge ? { kind: 'lineage', edgeId: edge.id, relation: 'split-from' } : { kind: 'constituent', partyIds: r.ps.filter((p) => best!.ps.includes(p)) });
-      row.group = g; row.inLeft = best.l.id;
+      // the source list may itself be part of a merged row (the Liberals of 1961 in Gahal, 1965): the split still groups with it
+      main.group ??= g; if (main.left.length === 1) main.tag = 'split';
+      const row = open(r, extra, 'split', reason);
+      row.group = main.group; row.inLeft = best.l.id;
     } else if (!used.has(best.l.id)) {
-      const row = open(r, [best.l.id], 'split', edge ? { kind: 'lineage', edgeId: edge.id, relation: 'split-from' } : { kind: 'constituent', partyIds: r.ps.filter((p) => best!.ps.includes(p)) });
+      const row = open(r, [best.l.id, ...extra], 'split', reason);
       row.group = g;
     } else {
-      // its left list is already part of a merged row: a split from one of several, so only noted
-      open(r, [], 'new', { kind: 'none' });
+      open(r, extra, extra.length ? 'joined' : 'new', { kind: 'none' });
     }
   }
   // 5. everything else is New or Ended: never matched by name, letters or rank
@@ -180,19 +183,19 @@ export function matchRows(a: Scenario, b: Scenario, overrides: MatchOverride[] =
     const lefts = groupLeft(row), rights = groupRight(row);
     for (const id of row.right) {
       const r = B.find((x) => x.l.id === id)!;
-      const from = r.ps.filter((p) => A.some((x) => !lefts.has(x.l.id) && x.ps.includes(p)));
+      const from = r.ps.filter((p) => A.some((x) => !lefts.has(x.l.id) && x.ps.some((q) => cont(q).has(p))));
       if (from.length && row.tag !== 'new') row.notes.push({ side: 'right', kind: 'with', partyIds: from });
     }
     for (const id of row.left) {
       const l = A.find((x) => x.l.id === id)!;
       for (const r of B) {
         if (rights.has(r.l.id)) continue;
-        const moved = l.ps.filter((p) => p !== l.lead && r.ps.includes(p));
+        const moved = l.ps.filter((p) => p !== l.lead && !!into(p, r.ps));
         if (moved.length) row.notes.push({ side: 'left', kind: 'moved', partyIds: moved, listId: r.l.id });
       }
     }
     // a party of the left list moved to an unrelated list: the left list was split, though the rows stay apart
-    if (row.tag === 'same' && row.notes.some((n) => n.kind === 'moved')) row.tag = 'split';
+    if ((row.tag === 'same' || row.tag === 'renamed') && row.notes.some((n) => n.kind === 'moved')) row.tag = 'split';
   }
   return rows.map(({ leftSet: _, ...row }) => ({ ...row, key: rowKey(row.left.length ? row.left : row.inLeft ? [`in:${row.inLeft}`] : [], row.right) }));
 }
