@@ -38,6 +38,48 @@
       "classificationBasis": "Official membership boundary, distinct from government formation."
     },
     {
+      "id": "k24-formation-agreements-completed",
+      "date": "2021-06-11",
+      "kind": "coalition-agreements-completed",
+      "who": {
+        "factionIds": [
+          963,
+          966,
+          967,
+          968,
+          969,
+          970,
+          972,
+          973
+        ]
+      },
+      "summary": {
+        "en": "Yesh Atid completes the incoming coalition’s agreements; Yamina’s agreement is signed.",
+        "he": "יש עתיד השלימה את ההסכמים לכינון הקואליציה; נחתם ההסכם עם ימינה."
+      },
+      "classification": "counts",
+      "reason": "Completion of signed formation agreements is distinct from the later investiture; earlier individual signature dates remain to be checked.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.jpost.com/israel-news/politics-and-diplomacy/raam-and-yisrael-beytenu-signed-coalition-agreement-with-yesh-atid-670753",
+          "publisher": "The Jerusalem Post",
+          "date": "2021-06-11",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "evidenceFamily": "the-jerusalem-post",
+          "inspection": "opened",
+          "locator": "Opening: signing process completed Friday; Yamina–Yesh Atid agreement signed",
+          "supportingNote": "Opening: signing process completed Friday; Yamina–Yesh Atid agreement signed"
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Contemporary report",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "seatBasis": "Incoming-government commitments; do not apply these to support for the still-incumbent government.",
+      "agreementScope": "Completion milestone, not a claim all seven bilateral agreements were signed on this date."
+    },
+    {
       "id": "k24-government36",
       "date": "2021-06-13",
       "kind": "government-sworn-in",
@@ -88,9 +130,20 @@
           "accessed": "2026-11-08",
           "type": "press",
           "evidenceFamily": "times-of-israel",
-          "inspection": "snippet-only",
+          "inspection": "opened",
           "locator": "Opening government report: 60 affirmative votes; Yamina six of seven and Ra’am three of four",
           "supportingNote": "Opening government report: 60 affirmative votes; Yamina six of seven and Ra’am three of four"
+        },
+        {
+          "url": "https://www.gov.il/BlobFolder/generalpage/pm3_25-4_25/he/candidates_disqualification_pm1_25_pm_1-25_2-25_4-25.pdf",
+          "publisher": "Central Elections Committee chair",
+          "date": "2022-09-28",
+          "accessed": "2026-11-08",
+          "type": "official",
+          "inspection": "opened",
+          "evidenceFamily": "Central Elections Committee chair",
+          "locator": "§39, p.24: nominal 62 reduced to 61 by Chikli opposition.",
+          "supportingNote": "§39, p.24: nominal 62 reduced to 61 by Chikli opposition."
         }
       ],
       "certainty": "provisional",
@@ -210,6 +263,59 @@
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
     },
     {
+      "id": "k24-citizenship-confidence",
+      "date": "2021-07-06",
+      "kind": "confidence-vote",
+      "who": {
+        "personIds": [
+          30786
+        ],
+        "factionIds": [
+          966,
+          973
+        ]
+      },
+      "summary": {
+        "en": "Citizenship-law extension, designated a confidence vote, fails 59–59; two Ra’am MKs abstain.",
+        "he": "הארכת חוק האזרחות, שהוגדרה כהצבעת אמון, נדחתה בתיקו 59–59; שני חברי רע״ם נמנעו."
+      },
+      "classification": "counts",
+      "reason": "Actual confidence/no-confidence vote; retain vote-only outcome without reassigning continuing support.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.jpost.com/breaking-news/debate-ahead-of-citizenship-law-vote-begins-in-knesset-672976",
+          "publisher": "The Jerusalem Post",
+          "date": "2021-07-06",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "inspection": "opened",
+          "evidenceFamily": "The Jerusalem Post",
+          "locator": "Opening: 59–59; two Ra’am abstentions; Chikli opposed; Bennett designated confidence vote.",
+          "supportingNote": "Opening: 59–59; two Ra’am abstentions; Chikli opposed; Bennett designated confidence vote."
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "The brief includes explicit confidence votes even when attached to another parliamentary question.",
+      "vote": {
+        "for": 59,
+        "against": 59,
+        "abstain": 2,
+        "crossVotes": [
+          {
+            "personId": 30786,
+            "vote": "against"
+          }
+        ],
+        "notes": "Two Ra’am abstainers reported without individual identification in the inspected passage."
+      },
+      "timelineViews": [
+        "specific-vote"
+      ],
+      "supportEffect": "none-established"
+    },
+    {
       "id": "k24-budget2021",
       "date": "2021-11-04",
       "kind": "budget-vote",
@@ -237,7 +343,7 @@
           "supportingNote": "Knesset budget announcement: 2021 budget early Thursday; 2022 early Friday; full page inaccessible in this pass"
         },
         {
-          "url": "https://www.timesofisrael.com/coalition-passes-2021-budget-first-in-years-as-rest-of-vote-a-thon-awaits/amp/",
+          "url": "https://www.timesofisrael.com/coalition-passes-2021-budget-first-in-years-as-rest-of-vote-a-thon-awaits/",
           "publisher": "The Times of Israel",
           "date": "2021-11-04",
           "accessed": "2026-11-08",
@@ -429,9 +535,20 @@
           "inspection": "snippet-only",
           "locator": "Indexed official list: Chikli declared to have left Yamina on 25 April",
           "supportingNote": "Indexed official list: Chikli declared to have left Yamina on 25 April"
+        },
+        {
+          "url": "https://www.gov.il/BlobFolder/generalpage/pm3_25-4_25/he/candidates_disqualification_pm1_25_pm_1-25_2-25_4-25.pdf",
+          "publisher": "Central Elections Committee chair",
+          "date": "2022-09-28",
+          "accessed": "2026-11-08",
+          "type": "official",
+          "inspection": "opened",
+          "evidenceFamily": "Central Elections Committee chair",
+          "locator": "§§39–41, pp.24–26",
+          "supportingNote": "Dated factual findings."
         }
       ],
-      "certainty": "provisional",
+      "certainty": "confirmed",
       "memberChangesRef": {
         "path": "data/research/knesset-member-changes/k24.json",
         "pointer": "/factionChanges/2"
@@ -442,7 +559,13 @@
       ],
       "supportEffect": "none-established",
       "evidenceClass": "Official",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "certaintyNote": "Official adjudicative factual record corroborates declaration date and unanimity; this is not reliance on its later-overturned candidacy outcome.",
+      "committeeVote": {
+        "for": 7,
+        "against": 0,
+        "abstain": 0
+      }
     },
     {
       "id": "k24-no-confidence-haredi",
@@ -635,6 +758,139 @@
       "certainty": "probable",
       "evidenceClass": "Own statement (reported)",
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-no-confidence-20220523-likud",
+      "date": "2022-05-23",
+      "kind": "no-confidence-vote",
+      "who": {
+        "factionIds": [
+          962
+        ]
+      },
+      "summary": {
+        "en": "Likud no-confidence motion fails, 52–59.",
+        "he": "הצעת אי־האמון של הליכוד נדחתה: 52 בעד ו־59 נגד."
+      },
+      "classification": "counts",
+      "reason": "Actual confidence/no-confidence vote; retain vote-only outcome without reassigning continuing support.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/liveblog-may-23-2022/",
+          "publisher": "The Times of Israel",
+          "date": "2022-05-23",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "inspection": "opened",
+          "evidenceFamily": "times-of-israel",
+          "locator": "19:03 entry: Likud 52–59; Shas 51–59, both rejected.",
+          "supportingNote": "19:03 entry: Likud 52–59; Shas 51–59, both rejected."
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "The brief includes explicit confidence votes even when attached to another parliamentary question.",
+      "vote": {
+        "for": 52,
+        "against": 59,
+        "crossVotes": null
+      },
+      "timelineViews": [
+        "specific-vote"
+      ],
+      "supportEffect": "none-established"
+    },
+    {
+      "id": "k24-no-confidence-20220523-shas",
+      "date": "2022-05-23",
+      "kind": "no-confidence-vote",
+      "who": {
+        "factionIds": [
+          971
+        ]
+      },
+      "summary": {
+        "en": "Shas no-confidence motion fails, 51–59.",
+        "he": "הצעת אי־האמון של ש״ס נדחתה: 51 בעד ו־59 נגד."
+      },
+      "classification": "counts",
+      "reason": "Actual confidence/no-confidence vote; retain vote-only outcome without reassigning continuing support.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/liveblog-may-23-2022/",
+          "publisher": "The Times of Israel",
+          "date": "2022-05-23",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "inspection": "opened",
+          "evidenceFamily": "times-of-israel",
+          "locator": "19:03 entry: Likud 52–59; Shas 51–59, both rejected.",
+          "supportingNote": "19:03 entry: Likud 52–59; Shas 51–59, both rejected."
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "The brief includes explicit confidence votes even when attached to another parliamentary question.",
+      "vote": {
+        "for": 51,
+        "against": 59,
+        "crossVotes": null
+      },
+      "timelineViews": [
+        "specific-vote"
+      ],
+      "supportEffect": "none-established"
+    },
+    {
+      "id": "k24-kahana-confidence",
+      "date": "2022-06-07",
+      "kind": "confidence-vote",
+      "who": {
+        "personIds": [
+          30662,
+          30718
+        ]
+      },
+      "summary": {
+        "en": "Kahana’s reappointment fails 55–55 in a designated confidence vote; Silman opposes.",
+        "he": "מינוי כהנא מחדש נכשל בתיקו 55–55 בהצבעה שהוגדרה כהצבעת אמון; סילמן התנגדה."
+      },
+      "classification": "counts",
+      "reason": "Actual confidence/no-confidence vote; retain vote-only outcome without reassigning continuing support.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/rebel-yamina-mk-torpedoes-ministerial-nomination-handing-coalition-2nd-knesset-loss/",
+          "publisher": "The Times of Israel",
+          "date": "2022-06-07",
+          "accessed": "2026-11-08",
+          "type": "press",
+          "inspection": "opened",
+          "evidenceFamily": "times-of-israel",
+          "locator": "Opening: early Tuesday vote, 55–55, Silman opposed; designated confidence vote; failed motion did not itself replace government.",
+          "supportingNote": "Opening: early Tuesday vote, 55–55, Silman opposed; designated confidence vote; failed motion did not itself replace government."
+        }
+      ],
+      "certainty": "provisional",
+      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "classificationBasis": "The brief includes explicit confidence votes even when attached to another parliamentary question.",
+      "vote": {
+        "for": 55,
+        "against": 55,
+        "crossVotes": [
+          {
+            "personId": 30718,
+            "vote": "against"
+          }
+        ]
+      },
+      "timelineViews": [
+        "specific-vote"
+      ],
+      "supportEffect": "none-established",
+      "dateBasis": "Civil date early Tuesday 7 June; parliamentary sitting began 6 June. Do not silently substitute the sitting date."
     },
     {
       "id": "k24-orbach-exit",
@@ -1972,6 +2228,59 @@
     "classification": "Editorial application of the brief, independent of factual certainty. counts includes faction-only and vote-only events; consult timelineViews and supportEffect before changing support colours.",
     "sourceAccess": "Managed web search/open, plus retained official repository records. No access-control circumvention. Tool-controlled web User-Agent is not exposed; direct HTTP retrieval must use the project User-Agent.",
     "sourceAccounting": "Distinct canonical URLs and publisher families can be counted from events[].sources. No claim of independent corroboration from repeated reports by one publisher.",
-    "membershipReferences": "All existing replacement rows indexed by JSON Pointer; no duplicated replacement pairings or invented reasons. Reference rows are excluded from classification totals."
-  }
+    "membershipReferences": "All existing replacement rows indexed by JSON Pointer; no duplicated replacement pairings or invented reasons. Reference rows are excluded from classification totals.",
+    "resumeNote": "Post-restart pass preserved original commit; added completed office/accord milestones and vote evidence. Official indexed session leads remain outside counted events."
+  },
+  "unconfirmedCandidates": [
+    {
+      "date": "2022-05-30",
+      "kind": "no-confidence-votes",
+      "summary": "CEC factual record says Chikli supported three motions; motion identities and tallies outstanding.",
+      "who": {
+        "personIds": [
+          30786
+        ]
+      },
+      "sources": [
+        {
+          "url": "https://www.gov.il/BlobFolder/generalpage/pm3_25-4_25/he/candidates_disqualification_pm1_25_pm_1-25_2-25_4-25.pdf",
+          "publisher": "Central Elections Committee chair",
+          "date": "2022-09-28",
+          "accessed": "2026-11-08",
+          "type": "official",
+          "inspection": "opened",
+          "evidenceFamily": "Central Elections Committee chair",
+          "locator": "§§39–41, pp.24–26",
+          "supportingNote": "Dated factual findings."
+        }
+      ],
+      "certainty": "confirmed",
+      "certaintyScope": "Existence/date of three votes and Chikli position only; not their identities or totals."
+    },
+    {
+      "date": "2022-06-06",
+      "kind": "no-confidence-vote",
+      "summary": "CEC records Chikli support for Shas no-confidence motion; tally outstanding.",
+      "who": {
+        "personIds": [
+          30786
+        ]
+      },
+      "sources": [
+        {
+          "url": "https://www.gov.il/BlobFolder/generalpage/pm3_25-4_25/he/candidates_disqualification_pm1_25_pm_1-25_2-25_4-25.pdf",
+          "publisher": "Central Elections Committee chair",
+          "date": "2022-09-28",
+          "accessed": "2026-11-08",
+          "type": "official",
+          "inspection": "opened",
+          "evidenceFamily": "Central Elections Committee chair",
+          "locator": "§§39–41, pp.24–26",
+          "supportingNote": "Dated factual findings."
+        }
+      ],
+      "certainty": "confirmed",
+      "certaintyScope": "Dated act only; result/roll call not retrieved."
+    }
+  ]
 }
