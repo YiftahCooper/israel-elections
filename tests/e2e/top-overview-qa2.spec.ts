@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { barLanguage, closeBarMenu, openBarMenu } from './barMenu.ts';
 import { choose } from './choices.ts';
 
 test.beforeEach(async ({ page }) => {
@@ -13,12 +14,15 @@ for (const width of [390, 1024, 1500]) test(`scenario and header slots stay usab
   const heights: number[] = [];
   for (const id of ['k26', 'k25', 'k12', 'k1']) {
     await choose(page.getByRole('button', { name: 'Election', exact: true }), id);
-    const scenario = page.locator('.band .scenario-switcher');
+    heights.push((await page.locator('.band').boundingBox())!.height);
+    // phones (owner, 9 Nov 2026): a one-row bar whose status label stands for the scenario; level and switcher in its Menu
+    if (width === 390) { await expect(page.locator('.band .band-status')).toBeVisible(); await openBarMenu(page); }
+    const scenario = page.locator(width === 390 ? '#phone-menu .scenario-switcher' : '.band .scenario-switcher');
     expect((await scenario.boundingBox())!.width).toBeGreaterThan(200);
     expect(await scenario.locator('.choice-current').evaluate(e => e.scrollWidth <= e.clientWidth + 1)).toBeTruthy();
-    heights.push((await page.locator('.band').boundingBox())!.height);
     const levels = page.locator('.band-levels');
     expect(await levels.evaluate(e => [...e.children].every(x => Math.abs(x.getBoundingClientRect().top - e.firstElementChild!.getBoundingClientRect().top) < 5))).toBeTruthy();
+    await closeBarMenu(page);
   }
   expect(Math.max(...heights) - Math.min(...heights)).toBeLessThan(2);
 });
@@ -70,9 +74,9 @@ test('fallback slips use the same identity in the list and inspector', async ({ 
 
 
 test('Hebrew phone values, names, grouping and shared name wrapping stay readable', async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 1000 });
   await page.getByRole('button', { name: 'עב', exact: true }).click();
   await page.getByRole('button', { name: 'מצב כהה', exact: true }).click();
+  await page.setViewportSize({ width: 390, height: 1000 });
   const sum = page.locator('.fig .v bdi').last();
   await expect(sum).toHaveAttribute('dir', 'ltr');
   await expect(page.locator('.session')).toHaveCSS('height', '50px');
@@ -117,7 +121,7 @@ test('unsaved status stays readable without growing the band after an edit', asy
 
 for (const width of [390, 1024, 1500]) test(`Hebrew header stays stable across elections at ${width}`, async ({ page }) => {
   await page.setViewportSize({ width, height: 1000 });
-  await page.getByRole('button', { name: 'עב', exact: true }).click();
+  await barLanguage(page, 'he');
   const heights: number[] = [];
   for (const id of ['k26', 'k25', 'k12', 'k1']) {
     await choose(page.getByRole('button', { name: 'בחירות', exact: true }), id);
@@ -131,8 +135,11 @@ for (const width of [390, 1024, 1500]) test(`Hebrew header stays stable across e
 test('active Custom keeps its phone label compact and its base accessible', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 1000 });
   const before = (await page.locator('.band').boundingBox())!.height;
+  // phones (owner, 9 Nov 2026): Custom is in the bar's Menu, named with its base there too
+  await openBarMenu(page);
   await page.getByRole('button', { name: 'Custom', exact: true }).click();
   await page.getByRole('group', { name: 'Charts', exact: true }).getByRole('button', { name: 'Hidden', exact: true }).click();
+  await openBarMenu(page);
   await expect(page.getByRole('button', { name: 'Custom · based on Expert', exact: true })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
   expect((await page.locator('.band').boundingBox())!.height).toBe(before);

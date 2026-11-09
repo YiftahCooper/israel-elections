@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useL, useLang } from '../i18n.ts';
 import { getState, resetSettings, restoreSettings, setLevel, setPreference, setSetting, setState, settingChanged, toast, useStore } from '../store.ts';
-import { DECIMAL_CHOICES, GROUPS, SETTINGS, isExternal, rowMatches, rowVisible, settingValue, type GroupId, type RowId, type SettingId, type SettingRow, type SettingValues } from '../settings.ts';
+import { DECIMAL_CHOICES, GROUPS, SETTINGS, TIERS, isExternal, rowMatches, rowTier, rowVisible, settingValue, type GroupId, type RowId, type SettingId, type SettingRow, type SettingValues } from '../settings.ts';
 import { LEVEL_LABELS, type Preset } from '../features.ts';
 import { PREFERENCES, type PreferenceId } from '../preferences.ts';
 import { listLabel } from '../derive.ts';
@@ -55,17 +55,16 @@ export function PersonalSettings() {
 function SettingsContent({ close }: { close: () => void }) {
   const L = useL();
   const level = useStore(st => st.level);
-  const custom = useStore(st => st.customFeatures);
   const focusRow = useStore(st => st.settingsFocus);
   const [query, setQuery] = useState('');
-  const [more, setMore] = useState(false);
   const body = useRef<HTMLDivElement>(null);
   const searching = query.trim() !== '';
-  // what this level shows; Search finds every setting, with a level tag on those this level hides
-  const shown = useMemo(() => SETTINGS.filter(r => searching ? rowMatches(r, query) : rowVisible(r, level, custom)), [searching, query, level, custom]);
-  const hiddenHere = SETTINGS.filter(r => !rowVisible(r, level, custom) && !r.only && rowVisible(r, 'standard', null));
-  const extra = level === 'simple' && !searching && more ? hiddenHere : [];
-  const groups = GROUPS.filter(g => shown.some(r => r.group === g.id));
+  // every level shows every setting (owner, 9 Nov 2026), ordered by complexity: the Detail level row, then the Simple
+  // settings, then a "Standard" separator and its settings, then "Expert". Search filters within the same layout.
+  const shown = useMemo(() => SETTINGS.filter(r => rowVisible(r, level) && rowMatches(r, query)), [query, level]);
+  const top = shown.filter(r => r.group === 'top');
+  const tiers = TIERS.map(tier => ({ tier, rows: shown.filter(r => r.group !== 'top' && rowTier(r) === tier) })).filter(t => t.rows.length);
+  const groups = GROUPS.filter(g => g.id !== 'top' && shown.some(r => r.group === g.id));
   // a deep link from the point of use: scroll the popup body (never the page) to the row and mark it briefly
   useLayoutEffect(() => {
     if (!focusRow || !body.current) return;
@@ -80,7 +79,8 @@ function SettingsContent({ close }: { close: () => void }) {
     const t = setTimeout(() => { delete el.dataset.flash; setState({ settingsFocus: null }); }, 1200);
     return () => { cancelAnimationFrame(frame); clearTimeout(t); };
   }, [focusRow]);
-  const toGroup = (id: GroupId) => { const el = body.current?.querySelector<HTMLElement>(`[data-group="${id}"]`); if (el && body.current) body.current.scrollTop = el.offsetTop - body.current.offsetTop; };
+  // a group can appear in several tiers: its chip goes to the first
+  const toGroup = (id: GroupId) => { const el = body.current?.querySelector<HTMLElement>(`[data-group="${id}"]`); if (el && body.current) body.current.scrollTop = el.getBoundingClientRect().top - body.current.getBoundingClientRect().top + body.current.scrollTop; };
   const resetAll = () => {
     const before = snapshot();
     resetRows(SETTINGS.filter(r => r.id !== 'lang' && r.id !== 'level'));
@@ -93,19 +93,18 @@ function SettingsContent({ close }: { close: () => void }) {
         <span className="spacer" /><button className="btn ps-close" aria-label={L('Close', 'סגירה')} onClick={close}>×</button></div>
       <input type="search" className="ps-search" value={query} onChange={e => setQuery(e.target.value)} placeholder={L('Find a setting', 'חיפוש הגדרה')} aria-label={L('Find a setting', 'חיפוש הגדרה')} />
       <nav className="ps-chips" aria-label={L('Setting groups', 'קבוצות הגדרות')}>
-        {groups.filter(g => g.id !== 'top').map(g => <button key={g.id} type="button" className="btn small ghost" onClick={() => toGroup(g.id)}>{L(...g.label)}</button>)}
+        {groups.map(g => <button key={g.id} type="button" className="btn small ghost" onClick={() => toGroup(g.id)}>{L(...g.label)}</button>)}
       </nav>
     </header>
     <div className="ps-body" ref={body}>
       {searching && <p className="sr-only" role="status">{L(`${shown.length} settings`, `${shown.length} הגדרות`)}</p>}
       {!shown.length && <p className="muted">{L('No setting matches', 'לא נמצאה הגדרה')}</p>}
-      {groups.map(g => <Group key={g.id} id={g.id} rows={shown.filter(r => r.group === g.id)} tagged={searching} level={level} custom={custom} />)}
-      {level === 'simple' && !searching && hiddenHere.length > 0 && <>
-        <button type="button" className="btn small ghost ps-more" aria-expanded={more} onClick={() => setMore(m => !m)}>
-          {L(`${hiddenHere.length} more settings in Standard`, `עוד ${hiddenHere.length} הגדרות ברמת רגיל`)} <span aria-hidden>{more ? '▾' : '▸'}</span></button>
-        {more && <section className="ps-group" aria-label={L('More settings', 'הגדרות נוספות')}><h3>{L('More settings', 'הגדרות נוספות')}</h3>
-          {extra.map(r => <Row key={r.id} row={r} tag="standard" />)}</section>}
-      </>}
+      {top.length > 0 && <Group id="top" tier="simple" rows={top} />}
+      {tiers.map(({ tier, rows }) => <div key={tier} className="ps-tier" data-tier={tier} role="group" aria-labelledby={`ps-t-${tier}`}>
+        {/* the Simple tier needs no separator when it opens the list; any tier after it is named by its level */}
+        <h3 id={`ps-t-${tier}`} className={tier === 'simple' && tiers[0].tier === 'simple' ? 'sr-only' : 'ps-tier-sep'}><span>{L(...LEVEL_LABELS[tier])}</span></h3>
+        {GROUPS.filter(g => g.id !== 'top' && rows.some(r => r.group === g.id)).map(g => <Group key={g.id} id={g.id} tier={tier} first={!tiers.slice(0, tiers.findIndex(t => t.tier === tier)).some(t => t.rows.some(r => r.group === g.id))} rows={rows.filter(r => r.group === g.id)} />)}
+      </div>)}
       <footer className="ps-foot">
         <button type="button" className="btn small" onClick={resetAll}>{L('Reset all settings', 'איפוס כל ההגדרות')}</button>
         <Info title={L('Reset all settings', 'איפוס כל ההגדרות')}>{L('Back to the defaults, with Undo. Language, detail level and remembered answers stay.', 'חזרה לברירות המחדל, עם ביטול. השפה, רמת הפירוט והתשובות השמורות נשארות.')}</Info>
@@ -114,23 +113,25 @@ function SettingsContent({ close }: { close: () => void }) {
   </>;
 }
 
-function Group({ id, rows, tagged, level, custom }: { id: GroupId; rows: SettingRow[]; tagged: boolean; level: Preset; custom: ReturnType<typeof getState>['customFeatures'] }) {
+function Group({ id, tier, rows, first = true }: { id: GroupId; tier: Preset; rows: SettingRow[]; first?: boolean }) {
   const L = useL();
   const g = GROUPS.find(x => x.id === id)!;
   const resettable = rows.filter(r => r.id !== 'lang' && r.id !== 'level');
   const anyChanged = useStore(st => resettable.some(r => { const q = CHOICE[r.id]; return q === 'jointSeats' ? st.preferences.jointSeats === 'off' : q ? st.preferences[q] !== undefined : !isExternal(r.id) && settingChanged(st, r.id as SettingId); }));
   const reset = () => { const before = snapshot(); resetRows(resettable); toast('info', L(`${g.label[0]} reset`, `${g.label[1]}: אופס`), { label: L('Undo', 'ביטול'), run: () => restore(before) }); };
-  return <section className={`ps-group ${id === 'top' ? 'ps-top' : ''}`} data-group={id} aria-labelledby={`ps-g-${id}`}>
-    {id !== 'top' && <h3 id={`ps-g-${id}`}>{L(...g.label)}
+  const hid = `ps-g-${tier}-${id}`;
+  // data-group marks a group's first appearance (the chips scroll there); data-tier-group names each one
+  return <section className={`ps-group ${id === 'top' ? 'ps-top' : ''}`} data-group={first ? id : undefined} data-tier-group={`${tier}:${id}`} aria-labelledby={hid}>
+    {id !== 'top' && <h4 id={hid}>{L(...g.label)}
       {/* the reset link always keeps its room, so the heading never shifts when it appears */}
-      {resettable.length > 0 && <button type="button" className="link-btn ps-reset" style={{ visibility: anyChanged ? undefined : 'hidden' }} aria-hidden={!anyChanged} tabIndex={anyChanged ? 0 : -1} onClick={reset}>{L('Reset', 'איפוס')}</button>}</h3>}
-    {id === 'top' && <h3 id={`ps-g-${id}`} className="sr-only">{L(...g.label)}</h3>}
-    {rows.map(r => <Row key={r.id} row={r} tag={tagged && !rowVisible(r, level, custom) ? (r.only ?? r.min) : undefined} />)}
+      {resettable.length > 0 && <button type="button" className="link-btn ps-reset" style={{ visibility: anyChanged ? undefined : 'hidden' }} aria-hidden={!anyChanged} tabIndex={anyChanged ? 0 : -1} onClick={reset}>{L('Reset', 'איפוס')}</button>}</h4>}
+    {id === 'top' && <h4 id={hid} className="sr-only">{L(...g.label)}</h4>}
+    {rows.map(r => <Row key={r.id} row={r} />)}
   </section>;
 }
 
 /** One setting: label and (i) at the start, its control at the end (on a phone, segments go under the label). */
-function Row({ row, tag }: { row: SettingRow; tag?: Preset }) {
+function Row({ row }: { row: SettingRow }) {
   const L = useL();
   const changed = useChanged(row);
   const label = L(...row.label);
@@ -139,7 +140,6 @@ function Row({ row, tag }: { row: SettingRow; tag?: Preset }) {
     <span className="ps-dot" aria-hidden={!changed} title={changed ? L('Changed from the default', 'שונה מברירת המחדל') : undefined}>{changed ? '•' : ''}</span>
     {changed && <span className="sr-only">{L('Changed: ', 'שונה: ')}</span>}
     <span className="ps-label-text">{label}</span>
-    {tag && <span className="ps-tag">{L(...LEVEL_LABELS[tag])}</span>}
   </>;
   // named apart from the control it explains, so the two never share a name
   const info = row.info && <Info title={label} label={L(`About ${label}`, `הסבר: ${label}`)}>{L(...row.info)}</Info>;

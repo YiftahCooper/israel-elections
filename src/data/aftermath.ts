@@ -14,6 +14,9 @@ export interface GovernmentParticipant {
   certainty: Certainty;
   cites: SupportCitation[];
   note?: string;
+  /** One reader-facing sentence for the (i), in both languages (`note` is the research note, original language). */
+  noteEn?: string;
+  noteHe?: string;
 }
 export interface GovernmentIndividual extends Omit<GovernmentParticipant, 'letters' | 'seats'> {
   id: string;

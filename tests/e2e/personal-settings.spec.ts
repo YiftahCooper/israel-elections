@@ -47,19 +47,25 @@ for (const [width, election] of [[1500, 'k26'], [1024, 'k25'], [390, 'k1']] as c
     await page.addInitScript(({ lang, theme }) => { localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, level: 'expert' })); localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { theme, decimals: 2 } })); }, { lang, theme });
     await page.goto('/');
     await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), election);
+    // phones (one-row bar, owner 9 Nov): level, Custom and Settings are in the bar's Menu, which Settings
+    // gives focus back to
+    const phone = width === 390, menuBtn = page.locator('.band .band-menu-btn');
     for (const [level, tab] of [['simple', 'board'], ['standard', 'coal'], ['expert', 'rules'], ['custom', 'compare']]) {
+      if (phone) await menuBtn.click();
       if (level !== 'custom') await page.getByRole('group', { name: lang === 'en' ? 'Detail level' : 'רמת פירוט' }).getByRole('button', { name: lang === 'en' ? ({ simple: 'Simple', standard: 'Standard', expert: 'Expert' }[level]!) : ({ simple: 'פשוט', standard: 'רגיל', expert: 'מומחה' }[level]!), exact: true }).click();
       else {
         await page.getByRole('button', { name: lang === 'en' ? 'Custom' : 'מותאם', exact: true }).click();
         await page.locator('.custom-feature').nth(1).getByRole('button', { name: lang === 'en' ? 'Hidden' : 'מוסתר', exact: true }).click();
       }
+      if (phone && level !== 'custom') { await page.keyboard.press('Escape'); await expect(page.locator('#phone-menu')).toHaveCount(0); }
       const target = page.locator(`#tab-${tab}`); if (await target.count()) await target.click();
-      const gear = page.locator('.band').getByRole('button', { name: lang === 'en' ? 'Settings' : 'הגדרות', exact: true });
+      const gear = phone ? menuBtn : page.locator('.band').getByRole('button', { name: lang === 'en' ? 'Settings' : 'הגדרות', exact: true });
+      const fromMenu = async () => { if (phone) await page.locator('#phone-menu').getByRole('button', { name: lang === 'en' ? 'Settings' : 'הגדרות', exact: true }).click(); };
       // Focus with preventScroll so opening from a scrolled page cannot hide a jump.
       await gear.evaluate(e => (e as HTMLElement).focus({ preventScroll: true }));
       await page.evaluate(() => window.scrollTo(0, 150));
       const before = await page.evaluate(() => ({ y: scrollY, hash: location.hash, tab: document.querySelector('[role="tab"][aria-selected="true"]')?.id }));
-      await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter'); await fromMenu();
       const dialog = page.locator('.personal-settings'); await expect(dialog).toBeVisible(); await expect(dialog).toBeFocused();
       const contrast = await dialog.locator('.ps-label-text').first().evaluate(e => {
         const luminance = (v: string) => { const c = v.match(/[\d.]+/g)!.slice(0, 3).map(Number).map(x => { x /= 255; return x <= .04045 ? x / 12.92 : ((x + .055) / 1.055) ** 2.4; }); return c[0] * .2126 + c[1] * .7152 + c[2] * .0722; };
@@ -71,7 +77,7 @@ for (const [width, election] of [[1500, 'k26'], [1024, 'k25'], [390, 'k1']] as c
       if (level === 'expert') await page.screenshot({ path: `.backup-scratch/u3/settings-${election}-${lang}-${theme}-${width}.png` });
       await page.keyboard.press('Escape'); await expect(dialog).toBeHidden(); await expect(gear).toBeFocused();
       expect(await page.evaluate(() => ({ y: scrollY, hash: location.hash, tab: document.querySelector('[role="tab"][aria-selected="true"]')?.id }))).toEqual(before);
-      await gear.press('Enter'); await dialog.getByRole('button', { name: lang === 'en' ? 'Close' : 'סגירה', exact: true }).click(); await expect(gear).toBeFocused();
+      await gear.press('Enter'); await fromMenu(); await dialog.getByRole('button', { name: lang === 'en' ? 'Close' : 'סגירה', exact: true }).click(); await expect(gear).toBeFocused();
     }
   });
 }

@@ -14,7 +14,7 @@ import { liveScenarioColor } from '../scenarioIdentity.ts';
 import { ChoicePicker, type Choice } from './ChoicePicker.tsx';
 import { ResultPreview } from './ResultPreview.tsx';
 
-export function ScenarioSwitcher({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
+export function ScenarioSwitcher({ s, ds, onPicked }: { s: Scenario; ds: ElectionDataset; /** after another scenario is picked (the phone menu closes) */ onPicked?: () => void }) {
   const lang = useLang();
   const L = useL(), saved = useStore(st => st.saved);
   const { reference, loadedReference: checkpointReference } = useActiveReference();
@@ -43,6 +43,7 @@ export function ScenarioSwitcher({ s, ds }: { s: Scenario; ds: ElectionDataset }
   if (!options.some(x => x.value === current)) options.push({ value: current, label: `${s.name || L('Untitled scenario', 'תרחיש ללא שם')} *`, detail: details(s, s.log.at(-1)?.at ?? ds.electionDate, L('Session draft · undo kept', 'טיוטת מפגש · הביטול נשמר')), preview: preview(s) });
   return <ChoicePicker description={current !== 'official' && current !== s.id ? L('unsaved changes', 'שינויים שלא נשמרו') : undefined} className="scenario-switcher election-status" label={L('Switch scenario', 'החלפת תרחיש')} value={current} options={options} onChange={key => {
     if (key === current) return;
+    onPicked?.();
     requestAnimationFrame(() => document.querySelector<HTMLButtonElement>('.band .scenario-switcher .choice-trigger')?.focus());
     // every path keeps unsaved work as a session draft before replacing it (store.stashCurrent)
     if (key === 'official') openOfficial();

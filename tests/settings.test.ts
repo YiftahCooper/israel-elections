@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { GROUPS, SETTINGS, SETTING_IDS, DECIMAL_CHOICES, rowMatches, rowVisible, settingDefault, settingValue, validSettings } from '../src/app/settings.ts';
+import { GROUPS, SETTINGS, SETTING_IDS, DECIMAL_CHOICES, TIERS, rowMatches, rowTier, rowVisible, settingDefault, settingValue, validSettings } from '../src/app/settings.ts';
 import { PREFERENCES } from '../src/app/preferences.ts';
 import { exactDecimal, fmtPct, fmtPp, pctExactNote } from '../src/app/format.ts';
 import { FEATURES } from '../src/app/features.ts';
@@ -33,7 +33,13 @@ describe('the settings registry', () => {
   test('coordinator defaults are each one value', () => {
     expect(settingDefault('theme', 'simple')).toBe('device');
     expect(settingDefault('density', 'simple')).toBe('compact');
-    expect(settingDefault('seatlessParties', 'simple')).toBe(false);
+    // parties under joint lists (owner, 9 Nov): Simple lists only, Standard parties with seats, Expert all
+    expect(settingDefault('jointListParties', 'simple')).toBe('none');
+    expect(settingDefault('jointListParties', 'standard')).toBe('seated');
+    expect(settingDefault('jointListParties', 'expert')).toBe('all');
+    // Simple shows lists only, so its seats carry no party colour by default either
+    expect(settingDefault('partyColourInSeats', 'simple')).toBe(false);
+    expect(settingDefault('partyColourInSeats', 'standard')).toBe(true);
     expect(settingDefault('hoverPopups', 'simple')).toBe(true);
     expect(settingDefault('decimals', 'simple')).toBe(1);
     expect(settingDefault('decimals', 'standard')).toBe(2);
@@ -55,23 +61,19 @@ describe('the settings registry', () => {
   });
 });
 
-describe('visibility by level', () => {
-  const ids = (level: 'simple' | 'standard' | 'expert', custom: Record<string, 'show'> | null = null) => SETTINGS.filter(r => rowVisible(r, level, custom)).map(r => r.id);
-  test('Simple shows the basics, the starter tip and every accessibility row; not the advanced rows', () => {
-    const s = ids('simple');
-    for (const id of ['level', 'lang', 'theme', 'starterTip', 'jointByParty', 'seatlessParties', 'seatlessLists', 'decimals', 'markChanges', 'textSize', 'reduceMotion', 'hoverPopups', 'preferTables', 'keepMessages']) expect(s).toContain(id);
-    for (const id of ['voteSource', 'chamberLayout', 'compareWith', 'listOrder', 'withdrawnLists']) expect(s).not.toContain(id);
-  });
-  test('Standard adds the rest and drops the Simple-only tip; Expert shows the same rows', () => {
-    expect(ids('standard')).not.toContain('starterTip');
-    expect(ids('standard')).toContain('voteSource');
+describe('every setting at every level, in tiers (owner, 9 Nov)', () => {
+  const ids = (level: 'simple' | 'standard' | 'expert') => SETTINGS.filter(r => rowVisible(r, level)).map(r => r.id);
+  test('every level shows every row; only the Simple starter tip is Simple-only', () => {
+    expect(ids('simple').length).toBe(SETTINGS.length);
+    expect(ids('standard')).toEqual(SETTINGS.filter(r => r.id !== 'starterTip').map(r => r.id));
     expect(ids('expert')).toEqual(ids('standard'));
-    expect(ids('standard').length).toBe(SETTINGS.length - 1);
   });
-  test('Custom shows a row whose owning feature is shown', () => {
-    expect(ids('simple', { chamberOptions: 'show' })).toContain('chamberLayout');
-    expect(ids('simple', { compare: 'show' })).toContain('compareWith');
-    expect(ids('simple', { compare: 'show' })).not.toContain('chamberLayout');
+  test('each tier has rows, in Simple, Standard, Expert order', () => {
+    expect(TIERS).toEqual(['simple', 'standard', 'expert']);
+    for (const t of TIERS) expect(SETTINGS.some(r => r.group !== 'top' && rowTier(r) === t), t).toBe(true);
+    // the point-of-use question for votes is asked at every level, so its setting is a Simple one
+    expect(rowTier(SETTINGS.find(r => r.id === 'voteSource')!)).toBe('simple');
+    expect(rowTier(SETTINGS.find(r => r.id === 'jointListParties')!)).toBe('simple');
   });
 });
 
@@ -85,8 +87,8 @@ describe('bilingual search', () => {
     expect(find('כהה')).toContain('theme');
   });
   test('synonyms reach zero-seat rows, decimals and motion', () => {
-    expect(find('0 seats')).toEqual(expect.arrayContaining(['seatlessParties', 'seatlessLists']));
-    expect(find('אפס')).toEqual(expect.arrayContaining(['seatlessParties']));
+    expect(find('0 seats')).toEqual(expect.arrayContaining(['jointListParties', 'seatlessLists']));
+    expect(find('אפס')).toEqual(expect.arrayContaining(['jointListParties']));
     expect(find('%')).toContain('decimals');
     expect(find('animation')).toContain('reduceMotion');
     expect(find('tooltip')).toContain('hoverPopups');

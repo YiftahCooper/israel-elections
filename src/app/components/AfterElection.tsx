@@ -125,7 +125,7 @@ function GovernmentComposition({ data, ds, government: g }: { data: Aftermath; d
         return <span key={i} className="after-party" style={{ '--party': list?.color ?? 'var(--axis)' } as CSSProperties}>
           {entry.letters && <bdi lang="he">{entry.letters}</bdi>}<bdi>{name}</bdi> <b><SupportCount value={entry.seats} /></b>
           {entry.certainty === 'provisional' && <span className="small muted">{L('Provisional', 'זמני')}</span>}
-          <Evidence data={data} cites={entry.cites} notes={entry.note ? [entry.note] : []} explanation={qualification(entry)} />
+          <Evidence data={data} cites={entry.cites} notes={entry.note ? [entry.note] : []} explanation={[qualification(entry), lang === 'he' ? entry.noteHe : entry.noteEn].filter(Boolean).join(' ') || undefined} />
         </span>;
       })}</div>
     </div>)}

@@ -21,7 +21,7 @@ import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
 import { setState, useDigits, useLevel, useSetting, useStore } from '../store.ts';
 import { blocDisplayOrder } from '../blocOrder.ts';
-import { hiddenSeatlessParty } from '../seatlessParties.ts';
+import { partyListed } from '../seatlessParties.ts';
 import { DisclosureToggle, Slip } from './ui.tsx';
 
 
@@ -37,7 +37,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   const lastTime = useSetting('lastTimeRows') && standard;
   const voteCounts = useSetting('voteCounts'), seatlessLists = useSetting('seatlessLists'), withdrawnLists = useSetting('withdrawnLists');
   const listOrder = useSetting('listOrder'), dimOthers = useSetting('dimUnselected');
-  const seatlessParties = useSetting('seatlessParties'), partiesInSeatlessLists = useSetting('partiesInSeatlessLists');
+  const jointListParties = useSetting('jointListParties');
   const committed = useStore(st => st.scenario);
   const previewing = useStore(st => st.preview) === s;
   const markerScenario = previewing && committed ? committed : s;
@@ -138,12 +138,12 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
             {d !== 0 && <small dir="ltr"><SeatDelta value={d} /></small>}
           </span>
         </button>
-        {splitIds.has(l.id) && (l.parties?.length ?? 0) > 1 && (lr.seats > 0 || partiesInSeatlessLists) && (
+        {splitIds.has(l.id) && (l.parties?.length ?? 0) > 1 && l.parties!.some(p => partyListed(jointListParties, s, p.id, electedOf(l, lr.seats).filter((c) => c.partyId === p.id).length, lr.seats)) && (
           <ul className="lb-parties" aria-label={L(`${listLabel(l, lang)}: factions after the split`, `${listLabel(l, lang)}: הסיעות אחרי הפיצול`)}>
             {l.parties!.map((p) => {
               const n = electedOf(l, lr.seats).filter((c) => c.partyId === p.id).length;
-              // Settings → Parties with no seats: a zero-seat party is left out unless it was given its own bloc
-              if (lr.seats > 0 && !seatlessParties && hiddenSeatlessParty(s, p.id, n)) return null;
+              // Settings → Parties under joint lists (seatlessParties.ts): one rule with the bloc panel
+              if (!partyListed(jointListParties, s, p.id, n, lr.seats)) return null;
               return (
                 <li key={p.id}>
                   <Slip letters="" name={lang === 'he' ? p.nameHe : p.nameEn} color={partyDisplayColor(l, p.id)} logo={p.logo} />

@@ -23,14 +23,15 @@ export function ElectionAbout({ electionId, listId }: { electionId: ElectionId; 
   const events = electionContext.events.filter(e => e.electionId === electionId && (!listId || e.listId === listId))
     .sort((a, b) => Number(b.type === 'publication-status') - Number(a.type === 'publication-status') || a.effectiveDate.localeCompare(b.effectiveDate));
   const lists = useStore(st => st.datasets[electionId]?.lists);
-  // the band's About is a popover: like the other menus it closes on Escape or a press outside it
+  // the band's About is a popover: like the other menus it closes on Escape or a press outside it (Escape closes it
+  // only, not the phone menu around it)
   const ref = useRef<HTMLDetailsElement>(null);
   const popup = useRef<HTMLUListElement>(null);
   const [open, setOpen] = useState(false);
   useFloating(popup, () => ref.current?.querySelector('summary')?.getBoundingClientRect(), open && !listId);
   useEffect(() => {
     if (listId) return;
-    const onKey = (e: KeyboardEvent) => { const d = ref.current; if (e.key === 'Escape' && d?.open) { d.open = false; d.querySelector('summary')?.focus({preventScroll:true}); } };
+    const onKey = (e: KeyboardEvent) => { const d = ref.current; if (e.key === 'Escape' && d?.open) { e.stopImmediatePropagation(); d.open = false; d.querySelector('summary')?.focus({preventScroll:true}); } };
     const onDown = (e: PointerEvent) => { const d = ref.current; if (d?.open && !d.contains(e.target as Node)) d.open = false; };
     document.addEventListener('keydown', onKey); document.addEventListener('pointerdown', onDown);
     return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onDown); };

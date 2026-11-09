@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, type ReactNode, type RefObject } from 'react';
+import { useLayoutEffect, useRef, type ReactNode, type RefObject } from 'react';
 
 export type FloatingAnchor = Pick<DOMRect, 'left' | 'right' | 'top' | 'bottom'>;
 /** Place floating content in viewport coordinates, preferring the side with enough room.
@@ -52,12 +52,4 @@ export function Floating({ anchor, className, id, children, preferAbove = false,
   const ref = useRef<HTMLSpanElement>(null);
   useFloating(ref, anchor, true, true, preferAbove);
   return <span ref={ref} id={id} onPointerEnter={onPointerEnter} onPointerLeave={onPointerLeave} role={role} aria-label={label} className={className}>{children}</span>;
-}
-
-/** Let a pointer cross the small gap from its trigger into scrollable floating content. */
-export function useHoverBridge(close: () => void) {
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const cancel = () => { if (timer.current !== null) clearTimeout(timer.current); };
-  useEffect(() => cancel, []);
-  return { cancel, leave: () => { cancel(); timer.current = setTimeout(close, 180); } };
 }

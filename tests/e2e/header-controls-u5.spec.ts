@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { closeBarMenu, openBarMenu } from './barMenu.ts';
 import { choose } from './choices.ts';
 for (const lang of ['en', 'he']) for (const width of [1500,1280,1024,768,390]) {
   test(`header hit targets ${lang} ${width}`, async ({ page }) => {
@@ -9,7 +10,9 @@ for (const lang of ['en', 'he']) for (const width of [1500,1280,1024,768,390]) {
     await expect(picker).toHaveAttribute('data-value', 'k26');
     for (const election of ['k26','k25','k1']) {
       await choose(picker, election);
-      for (const target of await page.locator('.band .election-arrow, .band .election-about summary, .band-actions > .tool, .band-levels button').all()) {
+      // phones (owner, 9 Nov 2026): one-row bar; About, level and the rest are in its Menu, with the same targets
+      if (width === 390) await openBarMenu(page);
+      for (const target of await page.locator(width === 390 ? '.band .tool:visible, .band .band-status, .band .choice-trigger, #phone-menu button:visible, #phone-menu summary:visible' : '.band .election-arrow, .band .election-about summary, .band-actions > .tool, .band-levels button').all()) {
         const box = await target.boundingBox();
         expect(box).not.toBeNull();
         expect(box!.height).toBeGreaterThanOrEqual(width === 390 ? 44 : 32);
@@ -17,6 +20,7 @@ for (const lang of ['en', 'he']) for (const width of [1500,1280,1024,768,390]) {
         expect(box!.x).toBeGreaterThanOrEqual(0);
         expect(box!.x + box!.width).toBeLessThanOrEqual(width);
       }
+      if (width === 390) { await closeBarMenu(page); continue; }
       const about = page.locator('.band .election-about');
       expect((await about.boundingBox())!.width).toBeCloseTo((await about.locator('summary').boundingBox())!.width, 0);
     }

@@ -1,7 +1,8 @@
-import { RANK, type FeatureId, type Preset, type Visibility } from './features.ts';
+import type { FeatureId, Preset } from './features.ts';
 
-/** Personal display settings (docs/design/settings.md). One registry drives the popup, its search, the resets,
- *  the Simple hint and the tests. Values are sparse: only what the user set is stored, so level-dependent and later
+/** Personal display settings (docs/design/settings.md). One registry drives the popup, its search, the resets
+ *  and the tests. Every level shows every setting, in tiers by `min`: Simple first, then Standard, then Expert (owner,
+ *  9 Nov 2026). Values are sparse: only what the user set is stored, so level-dependent and later
  *  defaults reach untouched settings. Settings are never scenario edits. */
 type Bi = readonly [string, string];
 export type GroupId = 'top' | 'general' | 'lists' | 'chamber' | 'numbers' | 'editing' | 'analysis' | 'access';
@@ -23,8 +24,7 @@ export interface SettingValues {
   openOn: 'overview' | 'last';
   listSymbol: 'logo' | 'letters';
   partyColourInSeats: boolean;
-  seatlessParties: boolean;
-  partiesInSeatlessLists: boolean;
+  jointListParties: 'none' | 'seated' | 'all';
   seatlessLists: 'over' | 'all' | 'folded';
   withdrawnLists: boolean;
   listOrder: 'seats' | 'votes' | 'bloc' | 'name';
@@ -59,7 +59,7 @@ export type Control = 'toggle' | 'seg' | 'decimals';
 export interface SettingRow {
   id: RowId; group: GroupId; label: Bi; info?: Bi; control: Control | 'level' | 'lang' | 'choice';
   options?: readonly { value: string; label: Bi }[];
-  /** the lowest level that shows the row (Custom: or its owning feature shown) */
+  /** the row's tier in Settings (Simple, Standard or Expert); every level shows every tier */
   min: Preset; only?: Preset; feature?: FeatureId;
   synonyms: string;
 }
@@ -93,11 +93,10 @@ export const SETTINGS: readonly SettingRow[] = [
     synonyms: 'joint list split faction party seats default משותפת פיצול סיעה מפלגה ברירת מחדל' },
   { id: 'partyColourInSeats', group: 'lists', control: 'toggle', min: 'simple', label: ['Party colour in seats', 'צבע המפלגה במושבים'],
     info: ['For a list counted by party, each seat shows the party colour inside the list colour.', 'ברשימה שנספרת לפי מפלגה, כל מושב מציג את צבע המפלגה בתוך צבע הרשימה.'], synonyms: 'colour color inner component split צבע פנימי' },
-  { id: 'seatlessParties', group: 'lists', control: 'toggle', min: 'simple', label: ['Parties with no seats', 'מפלגות ללא מנדטים'],
-    info: ['Parties on a joint list that won seats but had no one elected, e.g. Atid Ehad (2022). They stay one press away on the list’s page.', 'מפלגות ברשימה משותפת שזכתה במנדטים, שלא נבחר מטעמן איש, למשל עתיד אחד (2022). הן במרחק לחיצה בעמוד הרשימה.'],
-    synonyms: 'zero 0 seats empty constituent hidden אפס 0 מנדטים ריק מרכיבות' },
-  { id: 'partiesInSeatlessLists', group: 'lists', control: 'toggle', min: 'standard', label: ['Parties of seatless lists', 'מפלגות ברשימות ללא מנדטים'],
-    info: ['The parties of a joint list that won no seat, when that list is counted by party.', 'המפלגות של רשימה משותפת שלא זכתה במנדט, כשהרשימה נספרת לפי מפלגה.'], synonyms: 'zero 0 seats constituent below threshold אפס 0 מנדטים מרכיבות חסימה' },
+  { id: 'jointListParties', group: 'lists', control: 'seg', min: 'simple', label: ['Parties under joint lists', 'מפלגות ברשימה משותפת'],
+    info: ['The parties listed under a joint list counted by party. With seats: only parties that had someone elected, e.g. not Atid Ehad (2022). All: also those with no seats. A party you gave its own bloc always shows; every party stays on the list’s own page.', 'המפלגות שמוצגות מתחת לרשימה משותפת שנספרת לפי מפלגה. עם מנדטים: רק מפלגות שנבחר מטעמן מישהו, למשל לא עתיד אחד (2022). כולן: גם אלה ללא מנדטים. מפלגה ששייכתם לגוש משלה מוצגת תמיד; כל המפלגות מופיעות בעמוד הרשימה.'],
+    options: [o('none', 'Lists only', 'רשימות בלבד'), o('seated', 'With seats', 'עם מנדטים'), o('all', 'All', 'כולן')],
+    synonyms: 'parties constituent factions zero 0 seats empty hidden below threshold מפלגות מרכיבות סיעות אפס 0 מנדטים ריק חסימה' },
   { id: 'seatlessLists', group: 'lists', control: 'seg', min: 'simple', label: ['Lists with no seats', 'רשימות ללא מנדטים'],
     info: ['How many lists that won no seat show at first. ‘Show all’ still opens the rest; a list you changed always shows.', 'כמה רשימות שלא זכו במנדט מוצגות בהתחלה. ‘הצגת הכול’ עדיין פותח את השאר; רשימה ששיניתם מוצגת תמיד.'],
     options: [o('over', 'Over 0.5%', 'מעל 0.5%'), o('all', 'All', 'כולן'), o('folded', 'Folded', 'מקופלות')], synonyms: 'zero 0 seats below threshold small tail אפס 0 מנדטים חסימה קטנות' },
@@ -113,10 +112,10 @@ export const SETTINGS: readonly SettingRow[] = [
   { id: 'allCandidates', group: 'lists', control: 'toggle', min: 'standard', label: ['All candidates', 'כל המועמדים'],
     info: ['Opens a list’s full roster. Off: the elected and the next few first.', 'פותח את רשימת המועמדים המלאה. כבוי: הנבחרים והבאים בתור תחילה.'], synonyms: 'candidates roster members names מועמדים חברים שמות' },
 
-  { id: 'chamberLayout', group: 'chamber', control: 'seg', min: 'standard', feature: 'chamberOptions', label: ['Layout', 'פריסה'],
+  { id: 'chamberLayout', group: 'chamber', control: 'seg', min: 'expert', feature: 'chamberOptions', label: ['Layout', 'פריסה'],
     info: ['The shape only; every seat stays the same.', 'הצורה בלבד; כל מושב נשאר אותו מושב.'],
     options: [o('hemicycle', 'Arc', 'קשת'), o('blocks', 'Blocks', 'גושים')], synonyms: 'arc hemicycle blocks chamber shape קשת חצי עיגול מליאה צורה' },
-  { id: 'seatColour', group: 'chamber', control: 'seg', min: 'standard', feature: 'chamberOptions', label: ['Colour seats by', 'צביעת מושבים לפי'],
+  { id: 'seatColour', group: 'chamber', control: 'seg', min: 'expert', feature: 'chamberOptions', label: ['Colour seats by', 'צביעת מושבים לפי'],
     info: ['Party: each seat by its member’s party, also inside joint lists.', 'מפלגה: כל מושב לפי מפלגת חבר הכנסת, גם ברשימות משותפות.'],
     options: [o('list', 'List', 'רשימה'), o('bloc', 'Bloc', 'גוש'), o('party', 'Party', 'מפלגה')], synonyms: 'colour color seats צבע מושבים' },
   { id: 'blocShading', group: 'chamber', control: 'toggle', min: 'standard', feature: 'chamberOptions', label: ['Bloc backgrounds', 'רקע לגושים'],
@@ -133,7 +132,7 @@ export const SETTINGS: readonly SettingRow[] = [
     synonyms: 'decimal precision percent % digits rounding דיוק אחוז עשרוניות עיגול' },
 
   { id: 'splitWarning', group: 'editing', control: 'toggle', min: 'standard', label: ['Joint-list split warning', 'אזהרה בפיצול רשימה משותפת'], info: ['When splitting a joint list, remind that the split is an assumption for the scenario. Turn on to see it again.', 'בפיצול רשימה משותפת, תזכורת שהפיצול הוא הנחה לתרחיש. הפעילו כדי לראות אותה שוב.'], synonyms: 'split warning remember assumption פיצול אזהרה הנחה' },
-  { id: 'voteSource', group: 'editing', control: 'choice', min: 'standard', feature: 'voteSource', label: ['Votes come from', 'הקולות מגיעים מ־'],
+  { id: 'voteSource', group: 'editing', control: 'choice', min: 'simple', label: ['Votes come from', 'הקולות מגיעים מ־'],
     info: ['Other lists: from all, in proportion; turnout stays. New voters: turnout changes. Ask: you choose at each edit.', 'שאר הרשימות: מכולן, באופן יחסי; ההצבעה לא משתנה. מצביעים חדשים: ההצבעה משתנה. לשאול: בוחרים בכל עריכה.'],
     synonyms: 'source donor ask default remember balance מקור תורם לשאול ברירת מחדל זכירה' },
   { id: 'markChanges', group: 'editing', control: 'choice', min: 'simple', label: ['Mark changes since', 'סימון שינויים מאז'],
@@ -172,7 +171,7 @@ export const SETTINGS: readonly SettingRow[] = [
 export function settingDefault<K extends SettingId>(id: K, level: Preset): SettingValues[K] {
   const d: SettingValues = {
     theme: 'device', density: 'compact', starterTip: true, openOn: 'overview',
-    listSymbol: 'logo', partyColourInSeats: true, seatlessParties: false, partiesInSeatlessLists: false, seatlessLists: 'over', withdrawnLists: true,
+    listSymbol: 'logo', partyColourInSeats: level !== 'simple', jointListParties: level === 'simple' ? 'none' : level === 'standard' ? 'seated' : 'all', seatlessLists: 'over', withdrawnLists: true,
     listOrder: 'seats', voteCounts: level !== 'simple', lastTimeRows: false, allCandidates: false,
     chamberLayout: 'hemicycle', seatColour: 'list', blocShading: true, referenceChamber: true, chamberKey: true, dimUnselected: true,
     decimals: level === 'expert' ? 3 : level === 'standard' ? 2 : 1, splitWarning: true,
@@ -203,12 +202,14 @@ export const settingValue = <K extends SettingId>(values: Partial<SettingValues>
 
 export const SETTINGS_KEY = 'israel-elections:settings';
 export type SettingsRecord = { v: 2; values: Partial<SettingValues> };
-/** Which rows a level shows. Custom: its base level's rows plus rows whose owning feature is set to Show. */
-export function rowVisible(row: SettingRow, level: Preset, custom: Partial<Record<FeatureId, Visibility>> | null): boolean {
-  if (row.only) return row.only === level;
-  if (RANK[level] >= RANK[row.min]) return true;
-  return !!(row.feature && custom?.[row.feature] === 'show');
+/** Which rows a level shows: all of them (owner, 9 Nov 2026), except a row that exists only at one level (the
+ *  Simple starter tip). Custom shows its base level's rows. */
+export function rowVisible(row: SettingRow, level: Preset): boolean {
+  return !row.only || row.only === level;
 }
+/** Settings tiers, in display order: the rows of each tier sit under its own separator. */
+export const TIERS: readonly Preset[] = ['simple', 'standard', 'expert'];
+export const rowTier = (row: SettingRow): Preset => row.only ?? row.min;
 
 const fold = (t: string) => t.toLowerCase().normalize('NFKD').replace(/[֑-ׇ]/g, '').replace(/[‘’'"״׳]/g, '');
 /** Bilingual search: labels, options, (i) text and synonyms in both languages, whatever the interface language. */

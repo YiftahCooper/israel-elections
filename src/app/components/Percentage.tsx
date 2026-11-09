@@ -5,6 +5,7 @@ import { useEffect, useId, useRef, useState } from 'react';
 import { exactDecimal, fmtPct, fmtPp, pctExactNote, trimDecimal } from '../format.ts';
 import { useLang } from '../i18n.ts';
 import { Floating } from '../floating.tsx';
+import { useHoverIntent } from '../hoverIntent.ts';
 import { useSetting } from '../store.ts';
 
 // The one way a rounded percentage reaches the screen (tests/percentage-boundary.test.ts enforces it). A rounded
@@ -30,6 +31,7 @@ export function ExactValue({ text, note, svg = false, pad }: { text: string; not
   // 'hover' is transient; 'held' (focus or tap) was asked for, so Escape closes it and goes no further
   const [open, setOpen] = useState<false | 'hover' | 'held'>(false);
   const [nested, setNested] = useState(false);
+  const intent = useHoverIntent(() => setOpen(o => o === 'hover' ? false : o), !!open);
   const ref = useRef<HTMLSpanElement | SVGTSpanElement | null>(null), id = useId();
   // inside a control: show on that control's keyboard focus, for its first rounded value only
   useEffect(() => {
@@ -60,8 +62,8 @@ export function ExactValue({ text, note, svg = false, pad }: { text: string; not
     ref: (el: HTMLSpanElement | SVGTSpanElement | null) => { ref.current = el; },
     className: 'percentage', 'data-rounded': '', 'aria-describedby': open ? id : undefined,
     tabIndex: nested ? undefined : 0,
-    onPointerEnter: (e: React.PointerEvent) => { if (hover && e.pointerType === 'mouse') setOpen(o => o || 'hover'); },
-    onPointerLeave: (e: React.PointerEvent) => { if (e.pointerType === 'mouse') setOpen(o => o === 'hover' ? false : o); },
+    onPointerEnter: (e: React.PointerEvent) => { if (hover && e.pointerType === 'mouse') intent.enter(() => setOpen(o => o || 'hover')); },
+    onPointerLeave: (e: React.PointerEvent) => { if (e.pointerType === 'mouse') intent.leave(); },
     onFocus: () => { if (!nested) setOpen('held'); }, onBlur: () => { if (!nested) setOpen(false); },
     // a tap shows the value (and does not also activate a row it sits in); a mouse click passes through
     onClick: (e: React.MouseEvent) => { const p = (e.nativeEvent as PointerEvent).pointerType; if (p === 'touch' || p === 'pen') { e.stopPropagation(); e.preventDefault(); setOpen('held'); } },

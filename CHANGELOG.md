@@ -2,6 +2,8 @@
 
 ## 7 November 2026 — Settings
 
+- Owner 9 Nov: Settings lists every setting at every level, Simple ones first, then Standard and Expert; parties under a joint list follow the level (Simple lists only, Standard parties with seats, Expert all); a first visit follows the device theme from the first paint; (i)s, seat details and chart values open after a short rest and close after a short grace; Simple asks where added votes come from, with each answer's effect; phones get a one-row top bar with a Menu; Ra'am 2021's (i) notes the deputy-minister post offered but never taken up.
+
 - Data (8 Nov recheck): Yisrael Beytenu 2026 #8–20 biographies link their 26 October Wayback captures (the live pages now redirect home); the Degel HaTorah leaflet (letters עץ) moves from UTJ 1992 to Degel HaTorah 1988; the 1977 candidate-cap note cites the 1 November 1977 transcript.
 
 - Research: retain the privacy-filtered official party register; confirm NRP–Jewish Home continuity and separate Labor/Meretz registrations, and record the disputed Labor/Democrats name.
