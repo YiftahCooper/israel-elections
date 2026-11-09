@@ -4,6 +4,7 @@ import { ELECTION_IDS, type ElectionDataset } from './src/data/schema.ts';
 import { validateAftermath, type Aftermath } from './src/data/aftermath-model.ts';
 import { compileFamilyRuntime } from './scripts/family-runtime.ts';
 import { compileHistoryRuntime } from './scripts/party-history-runtime.ts';
+import { compileMkHistory } from './scripts/mk-history-runtime.ts';
 import { compileElectionTotals } from './scripts/election-totals-runtime.ts';
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
@@ -37,6 +38,11 @@ export default defineConfig({
     name: 'party-history-runtime',
     resolveId(id) { if (id === 'virtual:party-history') return '\0party-history'; },
     load(id) { if (id === '\0party-history') return `export default ${JSON.stringify(compileHistoryRuntime())}`; },
+  }, {
+    // each MK's own history: its own chunk, loaded the first time a name or seat could open one
+    name: 'mk-history-runtime',
+    resolveId(id) { if (id === 'virtual:mk-history') return '\0mk-history'; },
+    load(id) { if (id === '\0mk-history') return `export default ${JSON.stringify(compileMkHistory())}`; },
   }, {
     name: 'election-totals',
     resolveId(id) { if (id === 'virtual:election-totals') return '\0election-totals'; },

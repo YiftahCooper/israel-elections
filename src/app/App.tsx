@@ -24,6 +24,7 @@ import { Scenarios } from './components/Scenarios.tsx';
 import { TopBar as TopBarView, electionLabel } from './components/TopBar.tsx';
 import { Walkthrough } from './components/Walkthrough.tsx';
 import { ErrorBoundary } from './components/ErrorBoundary.tsx';
+import { MkHistoryHost } from './components/MkHistory.tsx';
 import { WhatIf } from './components/WhatIf.tsx';
 import { SourceDialog } from './components/SourcePicker.tsx';
 import { openComparisonFromHash } from './compare/sides.ts';
@@ -276,6 +277,7 @@ function Shell() {
       </div>
       </>}
       <SourceDialog />
+      <MkHistoryHost />
       {toast && <Toast />}
     </div>
   );
