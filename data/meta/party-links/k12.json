@@ -291,7 +291,17 @@
         "confidence": "high"
       }
     ],
-    "12-טע": [],
+    "12-טע": [
+      {
+        "kind": "neutral",
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset12-results.pdf",
+        "titleHe": "דרך ארץ — הודעת התוצאות לכנסת 12",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-12",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
     "12-יענ": [
       {
         "kind": "neutral",
@@ -471,8 +481,7 @@
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
     "12-טע": {
-      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
-      "neutral": "1988 list is unrelated to the 2020 party of the same name. No verified neutral history link retained."
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
     "12-יענ": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."

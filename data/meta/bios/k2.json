@@ -1313,7 +1313,7 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 2 member, name identical (3)"
+   "basis": "elected; reviewed decision: The 1951 gazette prints אונה משה (C p.1145, R p.1242); the Knesset records the same member as משה אונא (2131), Knesset 2, HaPoel HaMizrachi. One-letter spelling variant (ה/א); the gazetted spelling is kept in the roster (k2 audit, commit 3b10457; docs/research/data-audit/k02-resolution.md, Opus 9)."
   },
   "2-ו#3": {
    "knessetPersonId": 2615,
@@ -1809,7 +1809,7 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 2 member, name matches (1)"
+   "basis": "elected; Knesset 2 member, name identical (3)"
   },
   "2-ב#1": {
    "knessetPersonId": 2546,

@@ -1,0 +1,38 @@
+{
+ "reviewedAt": "2026-11-09",
+ "scope": "Reviewed corrections that scripts/research/build-bios.py applies to the entries it builds. \"knessetVerified\": for one election, the text that replaces the default \"pattern\" marker of every Knesset link (spot-checked archive markers are kept). \"displayNames\": a reviewed English display name for one candidate whose official Knesset English header is misspelt; the raw header stays in knesset-site-mk-names-en.json. Each item gives its reason and source.",
+ "knessetVerified": [
+  {
+   "election": "k2",
+   "verified": "official OData SiteId mapping checked 2026-11-06; live destination not verified",
+   "reason": "All 120 (knessetPersonId, siteId) pairs of k2 match the retained official data/raw/bios/knesset-odata-mk-site-codes.json; the live pages were not swept (route 684 unreachable).",
+   "source": "commit 3b10457; docs/research/data-audit/k02-resolution.md, Codex N9"
+  },
+  {
+   "election": "k3",
+   "verified": "official KNS_MkSiteCode PersonID/SiteId mapping checked 2026-11-06; destination page not verified",
+   "reason": "All 120 (PersonID, SiteId) pairs of k3 match the retained official KNS_MkSiteCode; destination pages were not swept.",
+   "source": "commit d6736a5; docs/research/data-audit/k03-resolution.md, U01"
+  },
+  {
+   "election": "k24",
+   "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)",
+   "reason": "All 162 pattern links of k24 match the retained official KNS_MkSiteCode; the representative live route returned the Knesset location denial.",
+   "source": "commit 9ffa0f6; docs/research/data-audit/k24-resolution.md, Opus V1 / Codex N5"
+  }
+ ],
+ "displayNames": [
+  {
+   "candidateId": "12-ג#1",
+   "displayNameEn": "Moshe Zeev Feldman",
+   "displayNameEnNote": "Reviewed app transliteration of משה זאב פלדמן (YP 3588/3591); corrects the Knesset English header typo. Not claimed as a new official English spelling; original header remains in data/raw/bios/knesset-site-mk-names-en.json.",
+   "source": "k12 audit, commit bd2532b; docs/research/data-audit/k12-resolution.md O15"
+  },
+  {
+   "candidateId": "12-מחל#41",
+   "displayNameEn": "Yehoshua Sagi",
+   "displayNameEnNote": "Reviewed app transliteration of יהושע שגיא (YP 3588/3591); corrects the Knesset English header typo. Not claimed as a new official English spelling; original header remains in data/raw/bios/knesset-site-mk-names-en.json.",
+   "source": "k12 audit, commit bd2532b; docs/research/data-audit/k12-resolution.md O15"
+  }
+ ]
+}

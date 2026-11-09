@@ -28,7 +28,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "ש״ס — הודעת התוצאות לכנסת 24",
+        "titleHe": "ש״ס — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -110,7 +110,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "הציונות הדתית — הודעת התוצאות לכנסת 24",
+        "titleHe": "הציונות הדתית — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -164,11 +164,11 @@
     "24-יז": [
       {
         "kind": "neutral",
-        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9E%D7%99%D7%9C%D7%95%D7%90%D7%99%D7%9E%D7%A0%D7%99%D7%A7%D7%99%D7%9D_%D7%95%D7%94%D7%9B%D7%9C%D7%9B%D7%9C%D7%99%D7%AA",
-        "titleHe": "המילואימניקים והכלכלית",
-        "titleEn": "Hebrew Wikipedia (secondary)",
-        "publisher": "ויקיפדיה העברית (מקור משני)",
-        "sourceType": "hewiki",
+        "url": "https://votes24.bechirot.gov.il/nationalresults",
+        "titleHe": "הכלכלית החדשה — תוצאות ועדת הבחירות לכנסת 24",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
+        "sourceType": "cec",
         "confidence": "high"
       }
     ],
@@ -176,7 +176,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "רפא – רק בריאות בראשות דוקטור אריה אבני — הודעת התוצאות לכנסת 24",
+        "titleHe": "רפא – רק בריאות בראשות דוקטור אריה אבני — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -187,7 +187,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "הפיראטים — הודעת התוצאות לכנסת 24",
+        "titleHe": "הפיראטים — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -198,7 +198,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "אני ואתה – מפלגת העם הישראלית — הודעת התוצאות לכנסת 24",
+        "titleHe": "אני ואתה – מפלגת העם הישראלית — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -209,7 +209,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "התקווה לשינוי — הודעת התוצאות לכנסת 24",
+        "titleHe": "התקווה לשינוי — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -220,7 +220,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "המפץ החברתי – גימלאים — הודעת התוצאות לכנסת 24",
+        "titleHe": "המפץ החברתי – גימלאים — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -231,7 +231,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "משפט צדק בראשות ד\"ר לריסה עמיר טרימבובלר — הודעת התוצאות לכנסת 24",
+        "titleHe": "משפט צדק בראשות ד\"ר לריסה עמיר טרימבובלר — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -253,7 +253,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "מפלגת עם שלם – בראשות הרב חיים אמסלם — הודעת התוצאות לכנסת 24",
+        "titleHe": "מפלגת עם שלם – בראשות הרב חיים אמסלם — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -264,7 +264,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "סדר חדש לשינוי שיטת הבחירות והממשל בישראל בראשות עו\"ד אביטל אופק — הודעת התוצאות לכנסת 24",
+        "titleHe": "סדר חדש לשינוי שיטת הבחירות והממשל בישראל בראשות עו\"ד אביטל אופק — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -275,7 +275,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "קמ\"ה – קידום מעמד הפרט — הודעת התוצאות לכנסת 24",
+        "titleHe": "קמ\"ה – קידום מעמד הפרט — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -286,7 +286,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "נועם קולמן, לירון עופרי וסולי וולף הבלתי אפשרי, אפשרי — הודעת התוצאות לכנסת 24",
+        "titleHe": "נועם קולמן, לירון עופרי וסולי וולף הבלתי אפשרי, אפשרי — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -297,7 +297,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "הלב היהודי בראשות אלי יוסף — הודעת התוצאות לכנסת 24",
+        "titleHe": "הלב היהודי בראשות אלי יוסף — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -308,7 +308,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "עצמנו עצמאים וליברלים — הודעת התוצאות לכנסת 24",
+        "titleHe": "עצמנו עצמאים וליברלים — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -319,7 +319,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "מפלגת הגוש התנ\"כי — הודעת התוצאות לכנסת 24",
+        "titleHe": "מפלגת הגוש התנ\"כי — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -330,7 +330,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "עולם חדש בראשות יורם אדרי — הודעת התוצאות לכנסת 24",
+        "titleHe": "עולם חדש בראשות יורם אדרי — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -341,7 +341,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "ברית השותפות לאיחוד לאומי בהנהגת רב חובל ב. שליאן — הודעת התוצאות לכנסת 24",
+        "titleHe": "ברית השותפות לאיחוד לאומי בהנהגת רב חובל ב. שליאן — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -352,7 +352,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "הישראלים — הודעת התוצאות לכנסת 24",
+        "titleHe": "הישראלים — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -363,7 +363,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "מפלגת שמע בראשות נפתלי גולדמן — הודעת התוצאות לכנסת 24",
+        "titleHe": "מפלגת שמע בראשות נפתלי גולדמן — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -374,7 +374,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "דעם – כלכלה ירוקה מדינה אחת — הודעת התוצאות לכנסת 24",
+        "titleHe": "דעם – כלכלה ירוקה מדינה אחת — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -385,7 +385,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "מנהיגות חברתית — הודעת התוצאות לכנסת 24",
+        "titleHe": "מנהיגות חברתית — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -396,7 +396,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "מען (יחד) לעידן חדש — הודעת התוצאות לכנסת 24",
+        "titleHe": "מען (יחד) לעידן חדש — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -407,7 +407,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "חץ — הודעת התוצאות לכנסת 24",
+        "titleHe": "חץ — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -418,7 +418,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "\"אנחנו\" – בראשות עו\"ד מוש חוג'ה — הודעת התוצאות לכנסת 24",
+        "titleHe": "\"אנחנו\" – בראשות עו\"ד מוש חוג'ה — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -429,7 +429,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "כבוד האדם, בראשות עו\"ד ארקדי פוגץ' — הודעת התוצאות לכנסת 24",
+        "titleHe": "כבוד האדם, בראשות עו\"ד ארקדי פוגץ' — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",
@@ -440,7 +440,7 @@
       {
         "kind": "neutral",
         "url": "https://votes24.bechirot.gov.il/nationalresults",
-        "titleHe": "דמוקרטית – חירות, שיוויון וערבות הדדית — הודעת התוצאות לכנסת 24",
+        "titleHe": "דמוקרטית – חירות, שיוויון וערבות הדדית — תוצאות ועדת הבחירות לכנסת 24",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-24",
         "sourceType": "cec",

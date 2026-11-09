@@ -50,7 +50,8 @@ the OData `PersonID`: it uses its own member id, which OData publishes in `KNS_M
 (`KnsID` = PersonID, `SiteId` = website id). The pattern is confirmed by archived official pages
 (see the research note). `verified` is `"pattern"` (built from the official id mapping) or
 `"archive YYYY-MM-DD"` when that member's page was itself loaded from a Wayback capture and showed
-the member's name. knesset.gov.il serves a bot challenge (HTTP 247) to scripts, so live pages were
+the member's name. For k2, k3 and k24 the audits checked every (PersonID, SiteId) pair against the
+official mapping, and `verified` says so in words (`data/raw/bios/entry-corrections.reviewed.json`). knesset.gov.il serves a bot challenge (HTTP 247) to scripts, so live pages were
 not loaded. Members of the 26th Knesset elected for the first time have a `knessetPersonId` but no
 site id yet (OData has not published one before the 10 November 2026 opening), so they have no
 Knesset link; they appear only if another link exists.
@@ -70,6 +71,10 @@ Knesset link; they appear only if another link exists.
   Wikipedia article places them in this election; or a reviewed decision with an unexplained
   given-name difference. An entry is medium if any of its links rests on such a rule.
 
-`basis` states the rule that produced the entry, in English, for audit.
+`basis` states the rule that produced the entry, in English, for audit. Two optional fields,
+`displayNameEn` and `displayNameEnNote`, carry a reviewed English display name where the official
+Knesset English header is misspelt (k12 only). Every file here is generated: rebuild with
+`python3 -I scripts/research/build-bios.py`; `--check` (run by the test suite) fails if a file
+differs from a rebuild, so corrections go into `data/raw/bios/*.reviewed.json`, never here.
 
 K25 audit correction (6 November 2026): repeated spaces in the 21 English names emitted for k25 were collapsed in the shared English-header input. Each changed row preserves the exact retrieved string in `nameEnRaw`; `nameEn` is its whitespace-normalized display form. The site id and API route above identify the rank-1 source for each name. This also corrects the same people wherever that shared input is reused; no spelling or identity changed.

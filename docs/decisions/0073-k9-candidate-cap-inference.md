@@ -60,3 +60,66 @@ knowledge that Shulamit Aloni served in the Knesset.
 לסמכות משפטית מסוימת. הכנסת התשיעית עדיין אינה זמינה: בהודעת הנבחרים י״פ 2326
 חסרה פסקת רצ, ולכן רק 119 מתוך 120 שמות הוצלבו. שם אלוני ברשימת המועמדים
 תומלל, אך לא הומצאה לו הצלבה עם פסקה שאינה בפרסום.
+
+## Addendum, 9 Nov 2026
+
+The record above is unchanged. This addendum adds a primary source found after it was written.
+
+**Source.** Knesset plenum, 1 November 1977 (כ׳ חשון תשל״ח), printed p.237 (PDF p.26):
+<https://fs.knesset.gov.il/9/Plenum/9_ptm_253927.pdf>, retained as `data/raw/k9/cap-appeal-protocol.pdf`
+(SHA-256 `1cf2999f7a715175d5d722a910a8fefd637361ac2de00d844d93a84d45bb110c`; fresh capture on 8 November
+2026 with the same hash; see docs/research/glossary-sources.md and docs/research/data-audit/k09-resolution.md).
+The item is the House Committee's proposal to reject Ya'akov Gross's appeal against the result of the
+election to the ninth Knesset. The passage below was read from the page image (9 November 2026); spelling
+as printed.
+
+> הוועדה מצאה שוועדת הבחירות המרכזית נהגה, בשעה שבאה לחלק את המאנדאטים, בהתאם להוראות סעיף 81 לחוק
+> הבחירות לכנסת (נוסח משולב), תשכ"ט—1969. בשלב החלוקה הראשון נתנה ועדת הבחירות לרשימת פ"ש את מאקסימום
+> המאנדאטים שיכלה לקבל, דהיינו מאנדאט אחד. בדרך זו חולקו 114 מאנדאטים. שישה מאנדאטים עודפים, שנותרו
+> לחלוקה לאחר השלב הראשון, חולקו בהתאם להוראות סעיף 81(ד), המכונה חוק בדר־עופר. לא היתה דרך אחרת לחלק
+> את המאנדאטים בהתאם להוראות החוק. לכן ועדת הבחירות, שעליה מוטלת החובה שיהיו בכנסת 120 חברי כנסת ביום
+> היבחרה, פעלה כשורה. הקולות העודפים של רשימת פ"ש לא "הלכו לאיבוד": התחשבו בהם בשעה שקבעו את אחוז
+> החסימה, סעיף 81(א), ובשעה שקבעו את "המודד" לחלוקת הקולות, סעיף 81(ב).
+>
+> הוועדה קיבלה את עמדת ועדת הבחירות המרכזית, שלפיה גם רשימה שיש בה מועמד אחד, אם אין סיבות אחרות
+> לפסילתה, כשרה. לאור עובדות אלה החליטה הוועדה להציע לכנסת לדחות את עירעורו של מר יעקב גרוס.
+
+The plenum then voted: "הצעת ההחלטה של ועדת הכנסת נתקבלה".
+
+**In English (summary).** Gross argued that the Central Elections Committee (CEC) should not have approved
+Flatto-Sharon as the only candidate of his list: the list won enough votes for at least two seats, so the
+last member seated from the surplus distribution should be removed. The House Committee found that the CEC
+had acted under section 81 of the 1969 Elections Law: in the first stage it gave the Flatto-Sharon list
+the most seats it could take, one; 114 seats were distributed that way; the six seats left over were
+distributed under section 81(d) (Bader–Ofer). There was no other lawful way, and the CEC must seat 120
+members. The list's extra votes were not lost: they counted for the threshold (81(a)) and the quota
+(81(b)). A one-candidate list is valid. The Knesset adopted the proposal and rejected the appeal.
+
+**What it settles.**
+- The procedure this decision implements is the one the CEC actually used in 1977, not only a hypothesis
+  that happens to reproduce the result: cap the list at its one candidate in the first stage, then give
+  the remaining seats by the section 81(d) remainder procedure. The Knesset accepted it as lawful when it
+  rejected the appeal.
+- The capped list's votes stay in the threshold and quota calculation, as in the implementation (no vote
+  is changed).
+- The sentence above, "the procedure is inferred from the officially published result because the
+  statutory text was not located", is therefore outdated for 1977: the procedure is documented. The
+  Hebrew paragraph above is outdated in the same way.
+
+**What it does not settle.**
+- No statutory clause that sets the cap was located. The committee rests the result on section 81 and the
+  duty to seat 120 members; section 83 only seats candidates in list order.
+- The stage counts do not match the app exactly. The transcript says 114 seats in the first stage and six
+  remainder seats. With the cap, the app's first stage counts whole quotas list by list and gives 113, then
+  7 remainder seats (quota 14,173). Counting each surplus-agreement pair as one unit with its combined votes
+  gives 114, as does a first stage with no cap. Final seats are identical for every list, so the published
+  result and decision 0075 are unaffected. Which first-stage reading the 1973 law intends is open; the
+  engine was not changed here.
+- How the cap applies inside a surplus-agreement pair (internal re-division) and in counterfactuals with
+  unknown full roster sizes: the 1977 case had only a single-candidate list, so this source says nothing
+  about them.
+
+A separate change, not from this source: the record above says K9 stays unavailable because YP 2326 omits
+the Ratz elected-member paragraph. Since the k9 audit (6 November 2026) K9 is available: Shulamit Aloni,
+Ratz rank 1, is confirmed by official Knesset OData membership and faction records from the first sitting
+(docs/research/data-audit/k09-resolution.md; status note in public/data/elections.json).

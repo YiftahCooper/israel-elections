@@ -497,9 +497,6 @@
     "arab-democratic-party": []
   },
   "gaps": {
-    "17-כן": {},
-    "17-אמת": {},
-    "17-טב": {},
     "17-ג": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },

@@ -1,0 +1,327 @@
+{
+  "reviewedAt": "2026-11-09",
+  "scope": "Reviewed corrections that scripts/research/build-party-links.py applies on top of its automatic matching. \"aliases\": extra Hebrew Wikipedia title aliases valid only in the named election. \"overlayReviewedAt\": an election whose overlay was re-reviewed after 2026-11-04. \"entries\": the links and/or gap reasons of one list or constituent, replacing what the rules compute (links first; gaps must then name exactly the missing kinds). The build fails if an entry no longer changes anything. Each item gives its reason and source (commit and audit record).",
+  "aliases": [
+    {
+      "election": "k3",
+      "name": "חזית דתית לאומית",
+      "title": "מפד\"ל",
+      "reason": "The 1955 joint list of HaMizrachi and HaPoel HaMizrachi, which merged as the NRP (מפד\"ל) in 1956; linked on 4 Nov 2026 when the list was labelled מפד״ל. The k3 audit corrected the label and kept the link.",
+      "source": "commit 4eded1e; commit d6736a5; docs/research/data-audit/k03-resolution.md"
+    },
+    {
+      "election": "k4",
+      "name": "סיעת תימנים",
+      "title": "התאחדות התימנים בישראל",
+      "reason": "The 1959 Yemenite list. Hebrew Wikipedia redirects סיעת התימנים to התאחדות התימנים בישראל (data/raw/party-links/hewiki-title-checks.json). The k4 audit corrected the label to the gazetted סיעת תימנים and kept the link.",
+      "source": "commit 4eded1e; commit a76498e; docs/research/data-audit/k04-resolution.md O4"
+    }
+  ],
+  "overlayReviewedAt": {
+    "k17": {
+      "date": "2026-11-06",
+      "source": "commit 9f3167c (k17 audit re-reviewed the overlay)"
+    }
+  },
+  "entries": [
+    {
+      "election": "k3",
+      "table": "lists",
+      "id": "3-יז",
+      "links": [],
+      "gaps": {
+        "neutral": "Approved in YP 425 p.1013; all candidates withdrew per YP 429 p.1087. No independent party profile retrieved.",
+        "partisan": "No contemporaneous party-owned page retrieved."
+      },
+      "reason": "Withdrawn list: approved in YP 425 p.1013, all candidates withdrew per YP 429 p.1087. It is not in the results record, so the whole-election results link does not apply.",
+      "source": "commit d6736a5; docs/research/data-audit/k03-resolution.md"
+    },
+    {
+      "election": "k5",
+      "table": "lists",
+      "id": "5-שו",
+      "links": [
+        {
+          "kind": "neutral",
+          "url": "https://olaw.org.il/yalkut/yalkut-0866.pdf",
+          "titleHe": "רשימת יוצאי תימן — הודעות התפטרות",
+          "titleEn": "Official withdrawal notices",
+          "publisher": "רשומות, ילקוט הפרסומים 866 עמ׳ 1847",
+          "sourceType": "cec",
+          "confidence": "high"
+        }
+      ],
+      "gaps": {
+        "partisan": "No retained campaign platform."
+      },
+      "reason": "Withdrawn list: the official withdrawal notices (YP 866 p.1847, retained as data/raw/k5/withdrawals.pdf) name it; the results record does not.",
+      "source": "commit 83f0a57; docs/research/data-audit/k05-resolution.md"
+    },
+    {
+      "election": "k6",
+      "table": "lists",
+      "id": "6-יא",
+      "links": [
+        {
+          "kind": "neutral",
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset6-results.pdf",
+          "titleHe": "השיתוף והאחוה — הודעת התוצאות לכנסת 6",
+          "titleEn": "Official election results record (whole-election document)",
+          "publisher": "ועדת הבחירות המרכזית לכנסת ה-6",
+          "sourceType": "cec",
+          "confidence": "high"
+        }
+      ],
+      "reason": "Results-link title uses the official printed list name השיתוף והאחוה (results gazette pp.311–313); the short display label stays separate.",
+      "source": "commit 8947be8; docs/research/data-audit/k06-resolution.md finding 3"
+    },
+    {
+      "election": "k10",
+      "table": "lists",
+      "id": "10-קז",
+      "links": [
+        {
+          "kind": "neutral",
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset10-results.pdf",
+          "titleHe": "רשימת הגימלאים והקשישים בישראל — הודעת התוצאות לכנסת 10",
+          "titleEn": "Official election results record (whole-election document)",
+          "publisher": "ועדת הבחירות המרכזית לכנסת ה-10",
+          "sourceType": "cec",
+          "confidence": "high"
+        }
+      ],
+      "reason": "Results-link title uses the full gazetted list name רשימת הגימלאים והקשישים בישראל (YP 2727 p.2190).",
+      "source": "commit 67cd08b; docs/research/data-audit/k10-resolution.md"
+    },
+    {
+      "election": "k14",
+      "table": "lists",
+      "id": "14-זך",
+      "links": [],
+      "gaps": {
+        "partisan": "No verified campaign-period source retained for the withdrawn Moreshet Avot list.",
+        "neutral": "Registered identity and withdrawal are documented in YP 4408 p.3289 and YP 4411 p.3398; no separate party profile verified."
+      },
+      "reason": "Withdrawn list (Moreshet Avot): registration and withdrawal are in YP 4408 p.3289 and YP 4411 p.3398; it is not in the results record.",
+      "source": "commit 278bbfd; docs/research/data-audit/k14-resolution.md"
+    },
+    {
+      "election": "k15",
+      "table": "lists",
+      "id": "15-ני",
+      "links": [
+        {
+          "kind": "neutral",
+          "url": "https://olaw.org.il/yalkut/yalkut-4754.pdf",
+          "publisher": "CEC / Reshumot, YP 4754 (third-party mirror)",
+          "sourceType": "cec",
+          "confidence": "high",
+          "titleEn": "Official candidate resignation notice",
+          "titleHe": "הודעת התפטרות כל מועמדי הרשימה"
+        }
+      ],
+      "gaps": {
+        "partisan": "No verified 1999 campaign source acquired; registration and resignation are established by the gazette."
+      },
+      "reason": "Withdrawn list: every candidate resigned (YP 4754 p.3269, retained research/yp4754-candidate-changes-1999.pdf); the resignation notice is its official record.",
+      "source": "commit e543560; docs/research/data-audit/k15-resolution.md W2"
+    },
+    {
+      "election": "k15",
+      "table": "lists",
+      "id": "15-ק",
+      "links": [
+        {
+          "kind": "neutral",
+          "url": "https://olaw.org.il/yalkut/yalkut-4751.pdf",
+          "publisher": "CEC / Reshumot, YP 4751 (third-party mirror)",
+          "sourceType": "cec",
+          "confidence": "high",
+          "titleEn": "Official candidate resignation notice",
+          "titleHe": "הודעת התפטרות כל מועמדי הרשימה"
+        }
+      ],
+      "gaps": {
+        "partisan": "No verified 1999 campaign source acquired; registration and resignation are established by the gazette."
+      },
+      "reason": "Withdrawn list: every candidate resigned (YP 4751 p.3184, retained research/yp4751-candidate-changes-1999.pdf); the resignation notice is its official record.",
+      "source": "commit e543560; docs/research/data-audit/k15-resolution.md W1"
+    },
+    {
+      "election": "k16",
+      "table": "lists",
+      "id": "16-זך",
+      "links": [
+        {
+          "kind": "neutral",
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset16-results.pdf",
+          "titleHe": "מורשת אבות — הודעת התוצאות ופרישת כל המועמדים",
+          "titleEn": "Official notice: all candidates withdrew",
+          "publisher": "ועדת הבחירות המרכזית לכנסת ה-16",
+          "sourceType": "cec",
+          "confidence": "high"
+        }
+      ],
+      "gaps": {
+        "partisan": "No verified election-period party site or platform retrieved."
+      },
+      "reason": "Withdrawn list: the 2003 results notice records that all its candidates withdrew; title says so.",
+      "source": "commit e3965d1; docs/research/data-audit/k16-resolution.md"
+    },
+    {
+      "election": "k17",
+      "table": "lists",
+      "id": "17-כן",
+      "links": [
+        {
+          "kind": "partisan",
+          "url": "https://en.idi.org.il/media/6739/kadima-17.pdf",
+          "titleHe": "קדימה — מצע 2006",
+          "publisher": "קדימה (עותק באירוח המכון הישראלי לדמוקרטיה)",
+          "sourceType": "platform",
+          "confidence": "medium"
+        },
+        {
+          "kind": "neutral",
+          "url": "https://he.wikipedia.org/wiki/%D7%A7%D7%93%D7%99%D7%9E%D7%94_(%D7%9E%D7%A4%D7%9C%D7%92%D7%94)",
+          "titleHe": "קדימה (מפלגה)",
+          "titleEn": "Hebrew Wikipedia (secondary)",
+          "publisher": "ויקיפדיה העברית (מקור משני)",
+          "sourceType": "hewiki",
+          "confidence": "high"
+        }
+      ],
+      "reason": "IDI hosts the 2006 Kadima platform (/media/6739/kadima-17.pdf) on its 2006 elections page; the IDI profile rows did not match it automatically.",
+      "source": "commit 9f3167c; docs/research/data-audit/k17-opus.md finding 12"
+    },
+    {
+      "election": "k17",
+      "table": "lists",
+      "id": "17-אמת",
+      "links": [
+        {
+          "kind": "partisan",
+          "url": "https://en.idi.org.il/media/6670/עבודה-17.pdf",
+          "titleHe": "העבודה — מצע 2006",
+          "publisher": "העבודה (עותק באירוח המכון הישראלי לדמוקרטיה)",
+          "sourceType": "platform",
+          "confidence": "medium"
+        },
+        {
+          "kind": "neutral",
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset17-results.pdf",
+          "titleHe": "העבודה–מימד — הודעת התוצאות לכנסת 17",
+          "titleEn": "Official election results record (whole-election document)",
+          "publisher": "ועדת הבחירות המרכזית לכנסת ה-17",
+          "sourceType": "cec",
+          "confidence": "high"
+        }
+      ],
+      "reason": "IDI hosts the 2006 Labor platform (/media/6670/עבודה-17.pdf) on its 2006 elections page; the IDI profile rows did not match it automatically.",
+      "source": "commit 9f3167c; docs/research/data-audit/k17-opus.md finding 12"
+    },
+    {
+      "election": "k17",
+      "table": "lists",
+      "id": "17-טב",
+      "links": [
+        {
+          "kind": "partisan",
+          "url": "https://en.idi.org.il/media/6434/ihud-mafdal_2006.doc",
+          "titleHe": "האיחוד הלאומי–מפד״ל — מצע 2006",
+          "publisher": "האיחוד הלאומי–מפד״ל (עותק באירוח המכון הישראלי לדמוקרטיה)",
+          "sourceType": "platform",
+          "confidence": "medium"
+        },
+        {
+          "kind": "neutral",
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset17-results.pdf",
+          "titleHe": "האיחוד הלאומי–מפד״ל — הודעת התוצאות לכנסת 17",
+          "titleEn": "Official election results record (whole-election document)",
+          "publisher": "ועדת הבחירות המרכזית לכנסת ה-17",
+          "sourceType": "cec",
+          "confidence": "high"
+        }
+      ],
+      "reason": "IDI hosts the 2006 National Union–NRP platform (/media/6434/ihud-mafdal_2006.doc) on its 2006 elections page; the IDI profile rows did not match it automatically.",
+      "source": "commit 9f3167c; docs/research/data-audit/k17-opus.md finding 12"
+    },
+    {
+      "election": "k18",
+      "table": "lists",
+      "id": "18-ו",
+      "links": [
+        {
+          "kind": "partisan",
+          "url": "https://www.idi.org.il/media/6525/hadash-2009org.pdf",
+          "titleHe": "חד\"ש — מצע מהאתר (הודפס בנובמבר 2012; שנת הבחירות לא אומתה)",
+          "publisher": "חד\"ש (עותק באירוח המכון הישראלי לדמוקרטיה)",
+          "sourceType": "platform",
+          "confidence": "medium"
+        },
+        {
+          "kind": "neutral",
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset18-results.pdf",
+          "titleHe": "חד״ש — הודעת התוצאות לכנסת 18",
+          "titleEn": "Official election results record (whole-election document)",
+          "publisher": "ועדת הבחירות המרכזית לכנסת ה-18",
+          "sourceType": "cec",
+          "confidence": "high"
+        }
+      ],
+      "reason": "The IDI-hosted Hadash file was printed in November 2012 and does not state its election year; the title discloses this instead of claiming a 2009 platform.",
+      "source": "commit b5c7029; docs/research/data-audit/k18-resolution.md O12"
+    },
+    {
+      "election": "k18",
+      "table": "lists",
+      "id": "18-פח",
+      "links": [],
+      "gaps": {
+        "partisan": "No verified campaign-period profile/platform acquired for the withdrawn list.",
+        "neutral": "Approved roster and withdrawal established by YP 5909 and YP 5912; no identity-specific neutral profile acquired."
+      },
+      "reason": "Withdrawn list: approved roster and withdrawal are in YP 5909 and YP 5912; it is not in the results record.",
+      "source": "commit b5c7029; docs/research/data-audit/k18-resolution.md O1"
+    },
+    {
+      "election": "k18",
+      "table": "parties",
+      "id": "taal",
+      "gaps": {
+        "partisan": "Campaign-period homepage and logo evidence retained in data/meta/logos/k18.json; an identity-specific profile/platform has not been verified.",
+        "neutral": "No verified identity-specific neutral article acquired; dictionary articles and joint-list sources excluded; further research required."
+      },
+      "reason": "Campaign-period homepage and logo evidence is retained in data/meta/logos/k18.json, so the gap is narrowed to a missing profile/platform.",
+      "source": "commit b5c7029; docs/research/data-audit/k18-resolution.md F12"
+    },
+    {
+      "election": "k18",
+      "table": "parties",
+      "id": "moledet",
+      "gaps": {
+        "partisan": "Campaign-period homepage and logo evidence retained in data/meta/logos/k18.json; an identity-specific profile/platform has not been verified."
+      },
+      "reason": "Campaign-period homepage and logo evidence is retained in data/meta/logos/k18.json, so the gap is narrowed to a missing profile/platform.",
+      "source": "commit b5c7029; docs/research/data-audit/k18-resolution.md F12"
+    },
+    {
+      "election": "k25",
+      "table": "lists",
+      "id": "25-יז",
+      "links": [
+        {
+          "kind": "neutral",
+          "url": "https://votes25.bechirot.gov.il/nationalresults",
+          "titleHe": "הכלכלית החדשה בראשות פרופסור ירון זליכה — תוצאות 2022",
+          "titleEn": "New Economic Party — official 2022 results",
+          "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+          "sourceType": "cec",
+          "confidence": "high"
+        }
+      ],
+      "reason": "The Hebrew Wikipedia title reached through the alias is the 2026 joint list המילואימניקים והכלכלית, not the 2022 list; the CEC 2022 results page names the list in full and is labelled as such.",
+      "source": "commit bc397d3; docs/research/data-audit/k25-resolution.md Opus W3"
+    }
+  ]
+}

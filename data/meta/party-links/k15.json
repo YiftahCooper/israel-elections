@@ -379,7 +379,7 @@
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
-        "titleHe": "מפלגת הנגב — הודעת התוצאות לכנסת 15",
+        "titleHe": "מפלגת נגב — הודעת התוצאות לכנסת 15",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-15",
         "sourceType": "cec",
@@ -442,7 +442,7 @@
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
-        "titleHe": "ערבי חדש — הודעת התוצאות לכנסת 15",
+        "titleHe": "הערבי החדש — הודעת התוצאות לכנסת 15",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-15",
         "sourceType": "cec",
@@ -621,6 +621,12 @@
     "15-זך": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
+    "15-ני": {
+      "partisan": "No verified 1999 campaign source acquired; registration and resignation are established by the gazette."
+    },
+    "15-ק": {
+      "partisan": "No verified 1999 campaign source acquired; registration and resignation are established by the gazette."
+    },
     "labor": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
@@ -659,12 +665,6 @@
     "taal": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
       "neutral": "No verified identity-specific neutral article acquired; dictionary articles and joint-list sources excluded; further research required."
-    },
-    "15-ני": {
-      "partisan": "No verified 1999 campaign source acquired; registration and resignation are established by the gazette."
-    },
-    "15-ק": {
-      "partisan": "No verified 1999 campaign source acquired; registration and resignation are established by the gazette."
     }
   }
 }

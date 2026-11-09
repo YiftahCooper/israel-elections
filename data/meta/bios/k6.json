@@ -1313,7 +1313,7 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 6 member, name matches (2)"
+   "basis": "elected; Knesset 6 member, name identical (3)"
   },
   "6-כא#1": {
    "knessetPersonId": 2198,

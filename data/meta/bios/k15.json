@@ -1009,7 +1009,7 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 15 member, name identical (3)"
+   "basis": "elected; reviewed decision: The 1999 candidate and elected notices print גאגולה איסק (surname first; YP 4757 p.3378); the Knesset records the same member as יצחק גאגולה (485), Shas, Knesset 15. The gazetted form is kept in the roster with a candidate note (k15 audit, commit e543560; docs/research/data-audit/k15-resolution.md)."
   },
   "15-מרצ#1": {
    "knessetPersonId": 512,

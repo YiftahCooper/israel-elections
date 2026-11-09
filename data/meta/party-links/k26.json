@@ -248,8 +248,8 @@
     "26-נף": [],
     "26-ז": [],
     "26-נץ": [],
-    "26-ה": [],
     "26-יק": [],
+    "26-ה": [],
     "26-זץ": [
       {
         "kind": "neutral",
@@ -659,11 +659,11 @@
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
       "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
     },
-    "26-ה": {
+    "26-יק": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
       "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
     },
-    "26-יק": {
+    "26-ה": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
       "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
     },

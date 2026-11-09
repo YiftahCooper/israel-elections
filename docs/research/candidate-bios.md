@@ -18,23 +18,23 @@ doubtful cases are listed here.
 | Election | Candidates | With a link | Elected: Knesset page | Other MKs: Knesset page | Hebrew Wikipedia (of which non-MK) | Party page | Medium |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | k1 1949 | 128 | 122 | 120/120 | 2 | 122 (0) | 0 | 2 |
-| k2 1951 | 120 | 120 | 120/120 | 0 | 120 (0) | 0 | 0 |
+| k2 1951 | 170 | 120 | 120/120 | 0 | 120 (0) | 0 | 0 |
 | k3 1955 | 120 | 120 | 120/120 | 0 | 120 (0) | 0 | 0 |
 | k4 1959 | 120 | 120 | 120/120 | 0 | 120 (0) | 0 | 0 |
-| k5 1961 | 122 | 120 | 120/120 | 0 | 120 (0) | 0 | 0 |
+| k5 1961 | 128 | 120 | 120/120 | 0 | 120 (0) | 0 | 0 |
 | k6 1965 | 120 | 120 | 120/120 | 0 | 120 (0) | 0 | 0 |
 | k7 1969 | 120 | 120 | 120/120 | 0 | 120 (0) | 0 | 0 |
 | k8 1973 | 125 | 120 | 120/120 | 0 | 120 (0) | 0 | 0 |
-| k9 1977 | 120 | 118 | 118/120 | 0 | 118 (0) | 0 | 0 |
+| k9 1977 | 120 | 120 | 120/120 | 0 | 120 (0) | 0 | 2 |
 | k10 1981 | 120 | 120 | 120/120 | 0 | 120 (0) | 0 | 0 |
 | k11 1984 | 196 | 139 | 120/120 | 19 | 139 (0) | 0 | 16 |
 | k12 1988 | 121 | 121 | 120/120 | 1 | 121 (0) | 0 | 1 |
 | k13 1992 | 121 | 121 | 120/120 | 1 | 121 (0) | 0 | 1 |
 | k14 1996 | 129 | 121 | 120/120 | 1 | 121 (0) | 0 | 1 |
-| k15 1999 | 122 | 122 | 120/120 | 2 | 122 (0) | 0 | 2 |
-| k16 2003 | 368 | 135 | 120/120 | 13 | 135 (2) | 0 | 11 |
+| k15 1999 | 127 | 122 | 120/120 | 2 | 122 (0) | 0 | 2 |
+| k16 2003 | 372 | 136 | 120/120 | 14 | 136 (2) | 0 | 12 |
 | k17 2006 | 719 | 137 | 120/120 | 12 | 137 (5) | 0 | 11 |
-| k18 2009 | 1,613 | 192 | 120/120 | 47 | 192 (25) | 0 | 61 |
+| k18 2009 | 1,625 | 193 | 120/120 | 48 | 193 (25) | 0 | 62 |
 | k19 2013 | 1,595 | 204 | 120/120 | 50 | 199 (29) | 47 | 74 |
 | k20 2015 | 1,284 | 193 | 119/120 | 55 | 193 (19) | 3 | 44 |
 | k21 2019 | 1,580 | 201 | 120/120 | 53 | 197 (24) | 38 | 76 |
@@ -43,10 +43,10 @@ doubtful cases are listed here.
 | k24 2021 | 1,406 | 176 | 119/120 | 50 | 171 (7) | 0 | 30 |
 | k25 2022 | 1,420 | 191 | 120/120 | 59 | 182 (12) | 0 | 64 |
 | k26 2026 | 1,352 | 163 | 73/120 | 45 | 121 (9) | 76 | 66 |
-| **all** | 15,543 | 3,774 | 3,069/3,120 | 512 | 3,704 (148) | 164 | 564 |
+| **all** | 15,620 | 3,778 | 3,071/3,120 | 514 | 3,708 (148) | 164 | 568 |
 <!-- coverage:end -->
 
-Elected members: 3,116 of 3,120 are tied to a Knesset PersonID and 3,069 have a Knesset page link. The gap is the 47 new members of the 26th Knesset (PersonID known, no website id yet) and the four members left out below. "Other MKs" are non-elected candidates who served as MKs (replacements, or MKs of other Knessets). "Medium" counts entries with at least one medium-confidence link.
+Elected members: 3,118 of 3,120 are tied to a Knesset PersonID and 3,071 have a Knesset page link. The gap is the 47 new members of the 26th Knesset (PersonID known, no website id yet) and the two members left out below. "Other MKs" are non-elected candidates who served as MKs (replacements, or MKs of other Knessets). "Medium" counts entries with at least one medium-confidence link.
 
 Party sources (`data/raw/bios/party-sources.reviewed.json`):
 
@@ -159,8 +159,6 @@ campaign period (about five months before the election day at most).
 
 | Candidate | Why |
 |---|---|
-| `9-מחל#21` | Ranks 21 and 24 of the 1977 Likud list are both printed כהן יגאל; the ninth Knesset has יגאל כהן (2394) and יגאל כהן-אורגד (2399), both Likud from the opening. Which rank is which is not established. |
-| `9-מחל#24` | see 9-מחל#21. |
 | `20-ל#4` | אילן שוחט (Ilan Shohat) is named elected in the results notice but was replaced by Robert Ilatov before the opening (decision 0088 item 4); he never served, so he has no Knesset record. |
 | `24-ב#3` | Alon Davidi (#3) was replaced by Idit Silman before the opening (decision 0088 item 4); he has no Knesset record. |
 | 47 new members of the 26th Knesset | PersonID known (provisional faction rows), no `SiteId` in `KNS_MkSiteCode` yet; no Knesset link until the site codes are published. The entries keep `knessetPersonId` when another link exists. |
@@ -169,6 +167,8 @@ campaign period (about five months before the election day at most).
 
 | Candidate | Dataset name | Knesset record | Note |
 |---|---|---|---|
+| `9-מחל#21` | כהן יגאל | כהן יגאל (2394) | Ranks 21 and 24 of the 1977 Likud list are both printed כהן יגאל; the ninth Knesset has יגאל כהן (2394) and יגאל כהן-אורגד (2399), both Likud from the opening. The k9 audit (6 November 2026) assigned the ranks by the medium-confidence constituent evidence in `data/meta/k9.json`; both links show as probable. |
+| `9-מחל#24` | כהן יגאל | כהן-אורגד יגאל (2399) | See 9-מחל#21. |
 | `17-שס#11` | אמסלם אמיל | אמסלם חיים (4418) | Re-read at high zoom on 4 November 2026: the candidate notice clearly prints אמיל, so the dataset keeps it. The given-name difference is not explained by an official source. |
 
 Three names this review flagged were transcription errors, confirmed in both official notices on 4 November 2026
@@ -271,7 +271,22 @@ never sat in the Knesset have no official English name and appear in Hebrew as r
 node scripts/research/elected-ids.ts > /dev/null          # sanity check (the builder calls it)
 python3 -I scripts/research/build-bios.py --report        # rebuild data/meta/bios from data/raw/bios
 python3 -I scripts/research/build-bios.py --fetch-hewiki  # fetch missing Hebrew Wikipedia evidence, then rebuild
+python3 -I scripts/research/build-bios.py --check         # offline: exit 1 if a rebuild would change any output
 ```
+
+The rebuild is offline and reproduces the committed files exactly; `tests/research-builders.test.ts`
+runs `--check` for this builder and for `build-party-links.py`. The builder also rewrites the summary
+table above. Hand corrections are never made in `data/meta/bios/`; they go into reviewed inputs the
+builder applies, each with its reason and source:
+
+- `data/raw/bios/identity-decisions.reviewed.json`: the Knesset member for each elected candidate the
+  name rules cannot settle (an optional `basis` keeps an audit's wording), and reviewed links for
+  candidates who were not elected (since 9 November 2026: `18-עם#13`, whose party-word match stopped
+  firing after the k18 audit corrected the constituent's name).
+- `data/raw/bios/entry-corrections.reviewed.json`: the Knesset-link marker that the k2, k3 and k24 audits
+  wrote after checking every PersonID/SiteId pair against the official mapping, and the two reviewed
+  English display names of the k12 audit.
+- `data/raw/bios/party-sources.reviewed.json`: party pages, as before.
 
 The OData snapshots were fetched with curl from `https://knesset.gov.il/Odata/ParliamentInfo.svc/`
 (`KNS_Person`, `KNS_PersonToPosition?$filter=PositionID eq 43 or PositionID eq 61`,

@@ -556,6 +556,9 @@
     "16-ף": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
+    "16-זך": {
+      "partisan": "No verified election-period party site or platform retrieved."
+    },
     "meimad": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
@@ -593,9 +596,6 @@
     "arab-democratic-party": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
       "neutral": "No verified identity-specific neutral article acquired; dictionary articles and joint-list sources excluded; further research required."
-    },
-    "16-זך": {
-      "partisan": "No verified election-period party site or platform retrieved."
     }
   }
 }

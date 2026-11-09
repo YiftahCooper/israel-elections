@@ -3,7 +3,7 @@
 Research as of **4 November 2026**. **Partial coverage**, not completion of the owner's
 all-lists/all-constituents goal. The data/build/scenario contract is implemented; sources
 are attached only where the retained evidence supports the identity and URL. No UI files
-were changed. All 701 lists and all constituent identities have an overlay entry, including
+were changed. All 708 lists and all constituent identities have an overlay entry, including
 withdrawn lists and lists below the threshold. Empty arrays and kind-specific reasons
 are intentional gaps, not findings that sources do not exist.
 
@@ -80,11 +80,25 @@ API introductions are discovery/identity evidence, not policy claims about the p
 ## Reproduction and safeguards
 
 Python 3.10+ standard library, Node 24.18.0, TypeScript 7.0.2, Vitest 5.1.0. Offline overlays:
-`python3 -I scripts/research/build-party-links.py`; dataset build:
+`python3 -I scripts/research/build-party-links.py` (it also rewrites `coverage.json` and the two
+tables below; `--check` writes nothing and exits 1 if any of them would change, and
+`tests/research-builders.test.ts` runs it); dataset build:
 `npx tsx scripts/build-datasets.ts`. The build attaches after constituent metadata and validates
 both id tables, kind/type/confidence/publisher/date/URL fields. HTTPS only; English Wikipedia,
 including archive-wrapped URLs, throws. Scenario conversion clones list/constituent links and
 import validation checks them. No network calls occur during dataset building.
+
+Hand corrections are never made in `data/meta/party-links/`. Since 9 November 2026 the election
+audits' corrections are inputs the builder applies, each with its reason, commit and audit record:
+`platform-reassignments.reviewed.json` (documents whose own text places them elsewhere) and
+`overlay-corrections.reviewed.json`: aliases valid in one election only (k3 חזית דתית לאומית →
+מפד"ל, k4 סיעת תימנים → התאחדות התימנים בישראל), per-identity links and gap reasons (withdrawn lists'
+official withdrawal notices, the three IDI 2006 platforms, audited titles), and re-review dates. The
+build fails if an entry no longer changes anything. Rules in the builder, not hand corrections: later
+namesakes are not linked to older lists (One Israel 1999 only on k15; the 2020 Derekh Eretz party not
+before k24; the New Economic Party title, which now redirects to the 2026 joint list, not before
+k26), and from 2019 (k21–k25) the official record is the CEC results web page, titled "… — תוצאות
+ועדת הבחירות לכנסת N" rather than "הודעת התוצאות" (a gazetted notice).
 
 Optional network recheck: `python3 -I scripts/research/check-party-link-urls.py`, with
 `--include-archive` to opt into paced CDX/capture checks. It writes only scratch results and
@@ -128,11 +142,11 @@ files contain each missing identity's full reason; below is the complete id inve
 | k21 2019 | 3 | 43 | 43 | 0 | 12 | 18 |
 | k20 2015 | 2 | 26 | 26 | 0 | 10 | 15 |
 | k19 2013 | 5 | 32 | 32 | 0 | 6 | 9 |
-| k18 2009 | 5 | 33 | 33 | 2 | 10 | 14 |
-| k17 2006 | 6 | 31 | 31 | 1 | 6 | 11 |
-| k16 2003 | 7 | 27 | 27 | 3 | 9 | 14 |
-| k15 1999 | 16 | 31 | 31 | 1 | 6 | 12 |
-| k14 1996 | 7 | 20 | 20 | 1 | 7 | 12 |
+| k18 2009 | 5 | 33 | 34 | 2 | 10 | 14 |
+| k17 2006 | 9 | 31 | 31 | 1 | 6 | 11 |
+| k16 2003 | 7 | 28 | 28 | 3 | 9 | 14 |
+| k15 1999 | 16 | 33 | 33 | 1 | 6 | 12 |
+| k14 1996 | 7 | 20 | 21 | 1 | 7 | 12 |
 | k13 1992 | 8 | 25 | 25 | 0 | 3 | 6 |
 | k12 1988 | 10 | 27 | 27 | 2 | 5 | 6 |
 | k11 1984 | 4 | 26 | 26 | 1 | 7 | 11 |
@@ -141,9 +155,9 @@ files contain each missing identity's full reason; below is the complete id inve
 | k8 1973 | 2 | 21 | 21 | 0 | 6 | 11 |
 | k7 1969 | 2 | 16 | 16 | 0 | 2 | 4 |
 | k6 1965 | 2 | 17 | 17 | 0 | 2 | 4 |
-| k5 1961 | 5 | 14 | 14 | 0 | 0 | 0 |
+| k5 1961 | 5 | 15 | 15 | 0 | 0 | 0 |
 | k4 1959 | 3 | 24 | 24 | 0 | 2 | 2 |
-| k3 1955 | 2 | 18 | 18 | 0 | 4 | 4 |
+| k3 1955 | 2 | 18 | 19 | 0 | 4 | 4 |
 | k2 1951 | 1 | 17 | 17 | 0 | 0 | 0 |
 | k1 1949 | 0 | 21 | 21 | 0 | 6 | 7 |
 <!-- coverage:end -->
@@ -151,8 +165,8 @@ files contain each missing identity's full reason; below is the complete id inve
 <!-- gaps:start -->
 ### k26 2026
 
-- Lists missing partisan: `26-שס`, `26-ג`, `26-ט`, `26-עם`, `26-די`, `26-ך`, `26-נר`, `26-זך`, `26-ני`, `26-בי`, `26-ד`, `26-צדק`, `26-בד`, `26-י`, `26-קך`, `26-פה`, `26-קץ`, `26-נקי`, `26-קה`, `26-רץ`, `26-ק`, `26-נף`, `26-ז`, `26-נץ`, `26-ה`, `26-יק`, `26-זץ`, `26-כן`, `26-צבי`.
-- Lists missing neutral: `26-רק`, `26-נר`, `26-זך`, `26-בי`, `26-ד`, `26-צדק`, `26-בד`, `26-צף`, `26-י`, `26-קך`, `26-פה`, `26-קץ`, `26-נקי`, `26-בקר`, `26-קה`, `26-רץ`, `26-ק`, `26-נף`, `26-ז`, `26-נץ`, `26-ה`, `26-יק`, `26-צבי`.
+- Lists missing partisan: `26-שס`, `26-ג`, `26-ט`, `26-עם`, `26-די`, `26-ך`, `26-נר`, `26-זך`, `26-ני`, `26-בי`, `26-ד`, `26-צדק`, `26-בד`, `26-י`, `26-קך`, `26-פה`, `26-קץ`, `26-נקי`, `26-קה`, `26-רץ`, `26-ק`, `26-נף`, `26-ז`, `26-נץ`, `26-יק`, `26-ה`, `26-זץ`, `26-כן`, `26-צבי`.
+- Lists missing neutral: `26-רק`, `26-נר`, `26-זך`, `26-בי`, `26-ד`, `26-צדק`, `26-בד`, `26-צף`, `26-י`, `26-קך`, `26-פה`, `26-קץ`, `26-נקי`, `26-בקר`, `26-קה`, `26-רץ`, `26-ק`, `26-נף`, `26-ז`, `26-נץ`, `26-יק`, `26-ה`, `26-צבי`.
 - Constituents missing partisan: `eretz-yisrael-shelanu`, `degel-hatorah`, `agudat-yisrael`, `homat-torat-yisrael`, `atid-ehad`, `yesodot-yisrael`, `meretz`, `taal`, `balad`, `reservists`, `new-economic`, `national-responsibility`, `beit-yemini`, `tzomet`.
 - Constituents missing neutral: `homat-torat-yisrael`, `atid-ehad`, `yashar`, `yesodot-yisrael`, `taal`, `reservists`, `noam`, `national-responsibility`, `beit-yemini`.
 
@@ -174,15 +188,15 @@ files contain each missing identity's full reason; below is the complete id inve
 
 - Lists missing partisan: `23-מחל`, `23-פה`, `23-ודעם`, `23-שס`, `23-ג`, `23-אמת`, `23-טב`, `23-ז`, `23-נ`, `23-ףז`, `23-קץ`, `23-ק`, `23-כן`, `23-ינ`, `23-קך`, `23-נז`, `23-נק`, `23-ץ`, `23-כ`, `23-קי`, `23-יק`, `23-ני`, `23-יז`, `23-י`, `23-יר`, `23-יף`, `23-זך`, `23-זץ`.
 - Lists missing neutral: none.
-- Constituents missing partisan: `likud`, `kulanu`, `israel-resilience`, `yesh-atid`, `telem`, `hadash`, `balad`, `taal`, `raam`, `agudat-yisrael`, `degel-hatorah`, `labor`, `gesher`, `meretz`, `new-right`, `jewish-home`, `tkuma`, `ahi`.
-- Constituents missing neutral: `taal`, `raam`, `gesher`, `new-right`, `ahi`.
+- Constituents missing partisan: `likud`, `kulanu`, `israel-resilience`, `yesh-atid`, `telem`, `hadash`, `balad`, `taal`, `raam`, `agudat-yisrael`, `degel-hatorah`, `labor`, `gesher-2019`, `meretz`, `new-right`, `jewish-home`, `tkuma`, `ahi`.
+- Constituents missing neutral: `taal`, `raam`, `gesher-2019`, `new-right`, `ahi`.
 
 ### k22 2019
 
 - Lists missing partisan: `22-פה`, `22-מחל`, `22-ודעם`, `22-שס`, `22-ג`, `22-טב`, `22-אמת`, `22-מרצ`, `22-כי`, `22-יז`, `22-צ`, `22-רק`, `22-נך`, `22-ק`, `22-ףז`, `22-ז`, `22-נ`, `22-קץ`, `22-קך`, `22-זכ`, `22-צן`, `22-ינ`, `22-ץ`, `22-יף`, `22-יק`, `22-י`, `22-זן`, `22-נץ`, `22-כ`.
 - Lists missing neutral: none.
-- Constituents missing partisan: `israel-resilience`, `yesh-atid`, `telem`, `likud`, `kulanu`, `hadash`, `balad`, `taal`, `raam`, `agudat-yisrael`, `degel-hatorah`, `new-right`, `jewish-home`, `tkuma`, `labor`, `gesher`, `meretz`, `green-movement`, `independence`.
-- Constituents missing neutral: `taal`, `raam`, `new-right`, `gesher`, `independence`.
+- Constituents missing partisan: `israel-resilience`, `yesh-atid`, `telem`, `likud`, `kulanu`, `hadash`, `balad`, `taal`, `raam`, `agudat-yisrael`, `degel-hatorah`, `new-right`, `jewish-home`, `tkuma`, `labor`, `gesher-2019`, `meretz`, `green-movement`, `independence`.
+- Constituents missing neutral: `taal`, `raam`, `new-right`, `gesher-2019`, `independence`.
 
 ### k21 2019
 
@@ -207,70 +221,70 @@ files contain each missing identity's full reason; below is the complete id inve
 
 ### k18 2009
 
-- Lists missing partisan: `18-כן`, `18-שס`, `18-ג`, `18-עם`, `18-ט`, `18-ב`, `18-ד`, `18-ה`, `18-זך`, `18-קנ`, `18-רק`, `18-חי`, `18-צי`, `18-פ`, `18-ק`, `18-נ`, `18-יק`, `18-קץ`, `18-ץ`, `18-קפ`, `18-פק`, `18-ים`, `18-אר`, `18-נפ`, `18-פי`, `18-ינ`, `18-נץ`, `18-נר`.
-- Lists missing neutral: none.
+- Lists missing partisan: `18-כן`, `18-שס`, `18-ג`, `18-עם`, `18-ט`, `18-ב`, `18-ד`, `18-ה`, `18-זך`, `18-קנ`, `18-רק`, `18-חי`, `18-צי`, `18-פ`, `18-ק`, `18-נ`, `18-יק`, `18-קץ`, `18-ץ`, `18-קפ`, `18-פק`, `18-ים`, `18-אר`, `18-נפ`, `18-פי`, `18-ינ`, `18-נץ`, `18-נר`, `18-פח`.
+- Lists missing neutral: `18-פח`.
 - Constituents missing partisan: `ahi`, `agudat-yisrael`, `degel-hatorah`, `raam`, `taal`, `tkuma`, `hatikva`, `eretz-yisrael-shelanu`, `moledet`, `new-movement`, `meimad`, `green-movement`.
 - Constituents missing neutral: `ahi`, `raam`, `taal`, `hatikva`.
 
 ### k17 2006
 
-- Lists missing partisan: `17-כן`, `17-אמת`, `17-טב`, `17-ג`, `17-עם`, `17-ד`, `17-רק`, `17-קנ`, `17-כ`, `17-פ`, `17-זה`, `17-חץ`, `17-יש`, `17-קז`, `17-ק`, `17-נץ`, `17-פץ`, `17-ה`, `17-פז`, `17-ז`, `17-כץ`, `17-צה`, `17-פכ`, `17-קפ`, `17-ף`.
+- Lists missing partisan: `17-ג`, `17-עם`, `17-ד`, `17-רק`, `17-קנ`, `17-כ`, `17-פ`, `17-זה`, `17-חץ`, `17-יש`, `17-קז`, `17-ק`, `17-נץ`, `17-פץ`, `17-ה`, `17-פז`, `17-ז`, `17-כץ`, `17-צה`, `17-פכ`, `17-קפ`, `17-ף`.
 - Lists missing neutral: none.
 - Constituents missing partisan: `meimad`, `moledet`, `tkuma`, `ahi`, `nrp`, `agudat-yisrael`, `degel-hatorah`, `ram`, `taal`, `arab-democratic-party`.
 - Constituents missing neutral: `tkuma`, `ahi`, `ram`, `taal`, `arab-democratic-party`.
 
 ### k16 2003
 
-- Lists missing partisan: `16-אמת`, `16-שס`, `16-ל`, `16-ג`, `16-ו`, `16-כן`, `16-עם`, `16-קנ`, `16-נץ`, `16-צף`, `16-נ`, `16-זנ`, `16-צ`, `16-פה`, `16-ק`, `16-קך`, `16-ט`, `16-קץ`, `16-ז`, `16-ף`.
+- Lists missing partisan: `16-אמת`, `16-שס`, `16-ל`, `16-ג`, `16-ו`, `16-כן`, `16-עם`, `16-קנ`, `16-נץ`, `16-צף`, `16-נ`, `16-זנ`, `16-צ`, `16-פה`, `16-ק`, `16-קך`, `16-ט`, `16-קץ`, `16-ז`, `16-ף`, `16-זך`.
 - Lists missing neutral: none.
 - Constituents missing partisan: `meimad`, `yisrael-beiteinu`, `tkuma`, `moledet`, `democratic-choice`, `shahar`, `agudat-yisrael`, `degel-hatorah`, `taal`, `ram`, `arab-democratic-party`.
 - Constituents missing neutral: `tkuma`, `shahar`, `taal`, `ram`, `arab-democratic-party`.
 
 ### k15 1999
 
-- Lists missing partisan: `15-שס`, `15-עם`, `15-ט`, `15-פ`, `15-פז`, `15-קץ`, `15-קז`, `15-ים`, `15-נץ`, `15-רם`, `15-נ`, `15-קם`, `15-קף`, `15-ז`, `15-זך`.
+- Lists missing partisan: `15-שס`, `15-עם`, `15-יט`, `15-פ`, `15-פז`, `15-קץ`, `15-קז`, `15-ים`, `15-נץ`, `15-רם`, `15-נ`, `15-קם`, `15-קפ`, `15-ז`, `15-זך`, `15-ני`, `15-ק`.
 - Lists missing neutral: none.
 - Constituents missing partisan: `labor`, `gesher`, `meimad`, `agudat-yisrael`, `degel-hatorah`, `ram`, `arab-democratic-party`, `herut-national-movement`, `moledet`, `tkuma`, `taal`.
 - Constituents missing neutral: `gesher`, `ram`, `arab-democratic-party`, `herut-national-movement`, `tkuma`, `taal`.
 
 ### k14 1996
 
-- Lists missing partisan: `14-שס`, `14-ו`, `14-ע`, `14-ט`, `14-ק`, `14-פ`, `14-פא`, `14-ת`, `14-דן`, `14-יד`, `14-ז`, `14-נ`, `14-ד`.
-- Lists missing neutral: none.
+- Lists missing partisan: `14-שס`, `14-ו`, `14-ע`, `14-ט`, `14-ק`, `14-פ`, `14-פא`, `14-ת`, `14-דן`, `14-יד`, `14-ז`, `14-נ`, `14-ד`, `14-זך`.
+- Lists missing neutral: `14-זך`.
 - Constituents missing partisan: `likud`, `gesher`, `tzomet`, `ratz`, `mapam`, `shinui`, `balad`, `agudat-yisrael`, `degel-hatorah`, `arab-democratic-party`, `ram`.
 - Constituents missing neutral: `gesher`, `ratz`, `mapam`, `arab-democratic-party`, `ram`.
 
 ### k13 1992
 
-- Lists missing partisan: `13-שס`, `13-ג`, `13-ע`, `13-פ`, `13-קנ`, `13-קל`, `13-ד`, `13-ק`, `13-נז`, `13-דף`, `13-יז`, `13-נ`, `13-נס`, `13-יד`, `13-ים`, `13-כי`, `13-זה`.
+- Lists missing partisan: `13-שס`, `13-ג`, `13-ע`, `13-פ`, `13-קן`, `13-קל`, `13-ד`, `13-ק`, `13-נד`, `13-דף`, `13-יז`, `13-נ`, `13-נכ`, `13-יד`, `13-ים`, `13-כי`, `13-זה`.
 - Lists missing neutral: none.
 - Constituents missing partisan: `ratz`, `mapam`, `shinui`, `agudat-yisrael`, `moria`, `degel-hatorah`.
 - Constituents missing neutral: `ratz`, `mapam`, `moria`.
 
 ### k12 1988
 
-- Lists missing partisan: `12-אמת`, `12-שס`, `12-פ`, `12-ט`, `12-ע`, `12-ז`, `12-זב`, `12-זפ`, `12-טף`, `12-טע`, `12-יע`, `12-מי`, `12-מעם`, `12-ענף`, `12-קז`, `12-קק`, `12-קצץ`.
+- Lists missing partisan: `12-אמת`, `12-שס`, `12-פ`, `12-ט`, `12-ע`, `12-ז`, `12-זכ`, `12-זעמ`, `12-טיף`, `12-טע`, `12-יענ`, `12-מי`, `12-מעש`, `12-ענף`, `12-קז`, `12-קם`, `12-קמע`.
 - Lists missing neutral: none.
 - Constituents missing partisan: `poalei-agudat-yisrael`, `israeli-communist-party`, `black-panthers`, `independent-liberals`.
 - Constituents missing neutral: `israeli-communist-party`.
 
 ### k11 1984
 
-- Lists missing partisan: `11-מחל`, `11-אמת`, `11-ב`, `11-שס`, `11-ת`, `11-עי`, `11-פ`, `11-ט`, `11-יש`, `11-ני`, `11-ע`, `11-ש`, `11-פש`, `11-דף`, `11-הם`, `11-זה`, `11-זך`, `11-טן`, `11-פט`, `11-כך`, `11-נ`, `11-פז`.
+- Lists missing partisan: `11-מחל`, `11-אמת`, `11-ב`, `11-שס`, `11-ת`, `11-עד`, `11-פ`, `11-ט`, `11-יש`, `11-ני`, `11-ע`, `11-ש`, `11-פש`, `11-דף`, `11-הס`, `11-זה`, `11-זך`, `11-טס`, `11-כט`, `11-כך`, `11-ס`, `11-פז`.
 - Lists missing neutral: none.
 - Constituents missing partisan: `herut`, `liberal-party`, `labor`, `mapam`, `independent-liberals`, `israeli-communist-party`, `black-panthers`, `tzomet`, `matzad`, `poalei-agudat-yisrael`.
 - Constituents missing neutral: `herut`, `mapam`, `israeli-communist-party`, `matzad`.
 
 ### k10 1981
 
-- Lists missing partisan: `10-מחל`, `10-אמת`, `10-ג`, `10-ב`, `10-ט`, `10-יש`, `10-ני`, `10-לע`, `10-ים`, `10-ש`, `10-פש`, `10-ד`, `10-קנ`, `10-כן`, `10-הם`, `10-זה`, `10-טן`, `10-יפ`, `10-כה`, `10-כט`, `10-כך`, `10-נן`, `10-נכ`, `10-נק`, `10-ס`, `10-פז`, `10-קן`.
+- Lists missing partisan: `10-מחל`, `10-אמת`, `10-ג`, `10-ב`, `10-ט`, `10-טי`, `10-ני`, `10-לע`, `10-ימ`, `10-ש`, `10-פש`, `10-ד`, `10-קז`, `10-כן`, `10-הס`, `10-זה`, `10-טז`, `10-יס`, `10-כה`, `10-כט`, `10-כך`, `10-נז`, `10-נס`, `10-נק`, `10-ס`, `10-סז`, `10-קי`.
 - Lists missing neutral: none.
 - Constituents missing partisan: `herut`, `liberal-party`, `laam`, `labor`, `mapam`, `israeli-communist-party`, `black-panthers`.
 - Constituents missing neutral: `herut`, `laam`, `mapam`, `israeli-communist-party`.
 
 ### k9 1977
 
-- Lists missing partisan: `9-אמת`, `9-ו`, `9-לע`, `9-ים`, `9-ש`, `9-כנ`, `9-פש`, `9-ד`, `9-הם`, `9-זה`, `9-חך`, `9-כה`, `9-כך`, `9-נס`, `9-סם`, `9-פז`, `9-פח`.
+- Lists missing partisan: `9-אמת`, `9-ו`, `9-לע`, `9-ימ`, `9-ש`, `9-כנ`, `9-פש`, `9-ד`, `9-הפ`, `9-זה`, `9-זך`, `9-כה`, `9-כך`, `9-נס`, `9-ספ`, `9-פ`, `9-פז`.
 - Lists missing neutral: none.
 - Constituents missing partisan: `herut`, `liberal-party`, `laam`, `ahdut-seidel-1977`, `israeli-labor-party`, `mapam`, `rakah`, `black-panthers`, `independent-socialists`, `moked`, `meri`.
 - Constituents missing neutral: `herut`, `laam`, `ahdut-seidel-1977`, `mapam`, `rakah`, `independent-socialists`, `meri`.
@@ -291,35 +305,35 @@ files contain each missing identity's full reason; below is the complete id inve
 
 ### k6 1965
 
-- Lists missing partisan: `6-את`, `6-ב`, `6-כא`, `6-לע`, `6-ג`, `6-ו`, `6-רא`, `6-ד`, `6-יא`, `6-ש`, `6-ק`, `6-עס`, `6-כס`, `6-נס`, `6-סס`.
+- Lists missing partisan: `6-את`, `6-ב`, `6-כא`, `6-לע`, `6-ג`, `6-ו`, `6-רא`, `6-ד`, `6-יא`, `6-ש`, `6-ק`, `6-ענ`, `6-כנ`, `6-נס`, `6-פש`.
 - Lists missing neutral: none.
 - Constituents missing partisan: `mapai`, `ahdut-haavoda`, `herut`, `liberal-party`.
 - Constituents missing neutral: `mapai`, `herut`.
 
 ### k5 1961
 
-- Lists missing partisan: `5-א`, `5-ל`, `5-ק`, `5-יא`, `5-ד`, `5-רא`, `5-נ`, `5-סס`, `5-עע`.
+- Lists missing partisan: `5-א`, `5-ל`, `5-ק`, `5-יא`, `5-ד`, `5-רא`, `5-נ`, `5-סש`, `5-עט`, `5-שו`.
 - Lists missing neutral: none.
 - Constituents missing partisan: none.
 - Constituents missing neutral: none.
 
 ### k4 1959
 
-- Lists missing partisan: `4-א`, `4-ב`, `4-צ`, `4-גד`, `4-רא`, `4-פ`, `4-יא`, `4-ק`, `4-ע`, `4-יס`, `4-נ`, `4-יד`, `4-שת`, `4-סט`, `4-סר`, `4-ש`, `4-לש`, `4-רט`, `4-רו`, `4-רי`, `4-טט`.
+- Lists missing partisan: `4-א`, `4-ב`, `4-צ`, `4-גד`, `4-רא`, `4-פ`, `4-יא`, `4-ק`, `4-ע`, `4-יס`, `4-נ`, `4-יד`, `4-שת`, `4-סש`, `4-סר`, `4-ש`, `4-לש`, `4-רט`, `4-רנ`, `4-רי`, `4-טש`.
 - Lists missing neutral: none.
 - Constituents missing partisan: `agudat-yisrael`, `poalei-agudat-yisrael`.
 - Constituents missing neutral: none.
 
 ### k3 1955
 
-- Lists missing partisan: `3-א`, `3-ח`, `3-צ`, `3-ב`, `3-גד`, `3-יד`, `3-ק`, `3-נ`, `3-פ`, `3-ע`, `3-סא`, `3-צח`, `3-ש`, `3-ל`, `3-יט`, `3-רי`.
-- Lists missing neutral: none.
+- Lists missing partisan: `3-א`, `3-ח`, `3-צ`, `3-ב`, `3-גד`, `3-יד`, `3-ק`, `3-נ`, `3-פ`, `3-ע`, `3-סצ`, `3-צח`, `3-ש`, `3-ל`, `3-יט`, `3-רי`, `3-יז`.
+- Lists missing neutral: `3-יז`.
 - Constituents missing partisan: `hapoel-hamizrachi`, `mizrachi`, `agudat-yisrael`, `poalei-agudat-yisrael`.
 - Constituents missing neutral: none.
 
 ### k2 1951
 
-- Lists missing partisan: `2-א`, `2-צ`, `2-ה`, `2-ח`, `2-ק`, `2-פ`, `2-יד`, `2-ג`, `2-סצ`, `2-ב`, `2-ד`, `2-נ`, `2-ל`, `2-ע`, `2-טח`, `2-ש`.
+- Lists missing partisan: `2-א`, `2-צ`, `2-ו`, `2-ח`, `2-ק`, `2-פ`, `2-יד`, `2-ג`, `2-סצ`, `2-ב`, `2-ד`, `2-נ`, `2-ל`, `2-ע`, `2-טת`, `2-ש`.
 - Lists missing neutral: none.
 - Constituents missing partisan: none.
 - Constituents missing neutral: none.

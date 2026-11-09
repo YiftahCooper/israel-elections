@@ -323,6 +323,22 @@
    "confidence": "high",
    "basis": "elected; Knesset 9 member, name identical (3)"
   },
+  "9-מחל#21": {
+   "knessetPersonId": 2394,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/446",
+    "siteId": 446,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יגאל כהן (פוליטיקאי)",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%92%D7%90%D7%9C_%D7%9B%D7%94%D7%9F_(%D7%A4%D7%95%D7%9C%D7%99%D7%98%D7%99%D7%A7%D7%90%D7%99)",
+    "via": "wikidata Q2902039"
+   },
+   "party": null,
+   "confidence": "medium",
+   "basis": "elected; Knesset 9 member; official PersonID identity, rank assignment follows the separately labelled medium-confidence constituent evidence in data/meta/k9.json (identical registered names at ranks 21 and 24)."
+  },
   "9-מחל#22": {
    "knessetPersonId": 2419,
    "knesset": {
@@ -354,6 +370,22 @@
    "party": null,
    "confidence": "high",
    "basis": "elected; Knesset 9 member, name identical (3)"
+  },
+  "9-מחל#24": {
+   "knessetPersonId": 2399,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/451",
+    "siteId": 451,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יגאל כהן-אורגד",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%92%D7%90%D7%9C_%D7%9B%D7%94%D7%9F-%D7%90%D7%95%D7%A8%D7%92%D7%93",
+    "via": "wikidata Q504126"
+   },
+   "party": null,
+   "confidence": "medium",
+   "basis": "elected; Knesset 9 member; official PersonID identity, rank assignment follows the separately labelled medium-confidence constituent evidence in data/meta/k9.json (identical registered names at ranks 21 and 24)."
   },
   "9-מחל#25": {
    "knessetPersonId": 2222,
@@ -1890,38 +1922,6 @@
    "party": null,
    "confidence": "high",
    "basis": "elected; Knesset 9 member, name identical (3)"
-  },
-  "9-מחל#21": {
-   "knessetPersonId": 2394,
-   "knesset": {
-    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/446",
-    "siteId": 446,
-    "verified": "pattern"
-   },
-   "hewiki": {
-    "title": "יגאל כהן",
-    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%92%D7%90%D7%9C_%D7%9B%D7%94%D7%9F_(%D7%A4%D7%95%D7%9C%D7%99%D7%98%D7%99%D7%A7%D7%90%D7%99)",
-    "via": "wikidata Q2902039"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "elected; Knesset 9 member; official PersonID identity, rank assignment follows the separately labelled medium-confidence constituent evidence in data/meta/k9.json (identical registered names at ranks 21 and 24)."
-  },
-  "9-מחל#24": {
-   "knessetPersonId": 2399,
-   "knesset": {
-    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/451",
-    "siteId": 451,
-    "verified": "pattern"
-   },
-   "hewiki": {
-    "title": "יגאל כהן-אורגד",
-    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%92%D7%90%D7%9C_%D7%9B%D7%94%D7%9F-%D7%90%D7%95%D7%A8%D7%92%D7%93",
-    "via": "wikidata Q504126"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "elected; Knesset 9 member; official PersonID identity, rank assignment follows the separately labelled medium-confidence constituent evidence in data/meta/k9.json (identical registered names at ranks 21 and 24)."
   }
  }
 }

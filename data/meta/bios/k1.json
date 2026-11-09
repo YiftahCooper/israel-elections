@@ -17,7 +17,7 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 1 member, name matches (2.5)"
+   "basis": "elected; Knesset 1 member, name identical (3)"
   },
   "1-א#2": {
    "knessetPersonId": 2114,
@@ -1377,7 +1377,7 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 1 member, name matches (2.5)"
+   "basis": "elected; Knesset 1 member, name identical (3)"
   },
   "1-ח#5": {
    "knessetPersonId": 2618,
@@ -1761,7 +1761,7 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 1 member, name identical (3)"
+   "basis": "elected; Knesset 1 member, name matches (2)"
   },
   "1-ס#2": {
    "knessetPersonId": 2149,

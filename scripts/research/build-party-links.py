@@ -2,17 +2,22 @@
 """Rebuild election-specific source overlays and coverage from retained reviewed evidence.
 
 Python 3.10+, standard library; no network. Run from repository root:
-  python3 -I scripts/research/build-party-links.py
+  python3 -I scripts/research/build-party-links.py           # write the overlays, coverage.json and the doc tables
+  python3 -I scripts/research/build-party-links.py --check   # write nothing; exit 1 if any output differs
+Reviewed hand corrections live in data/raw/party-links/*.reviewed.json, never in the outputs.
 See docs/research/party-links.md for identity rules, limitations and retrieval workflow.
 """
 import json
 import re
+import sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 RAW = ROOT / 'data/raw/party-links'
 OUT = ROOT / 'data/meta/party-links'
 def load(p): return json.loads(p.read_text('utf8'))
-def save(p, x): p.write_text(json.dumps(x, ensure_ascii=False, indent=2) + '\n', 'utf8')
+CHECK = '--check' in sys.argv
+outputs = {}   # path -> text; written (or compared with --check) at the end
+def save(p, x): outputs[p] = json.dumps(x, ensure_ascii=False, indent=2) + '\n'
 def norm(s): return re.sub(r'[\s\-–—־"״\'׳!(),]', '', s)
 # Explicit aliases only: no fuzzy matching, no English Wikipedia or person articles.
 aliases = {**load(RAW/'title-aliases.json'), **load(RAW/'more-title-aliases.json')}
@@ -47,6 +52,10 @@ platform_checks = {c['url']:c for c in load(RAW/'idi-platform-checks.json') if '
 # Reviewed corrections of the IDI index: a platform whose own text places it in another election or list
 # is attached there (never also to the indexed row); see docs/research/party-links.md.
 reassigned = {r['url']:r for r in load(RAW/'platform-reassignments.reviewed.json')}
+# Reviewed corrections from the election audits (aliases scoped to one election, per-identity links/gaps,
+# re-review dates); each item carries its reason and source.
+corrections = load(RAW/'overlay-corrections.reviewed.json')
+scoped_aliases = {(a['election'], a['name']): a['title'] for a in corrections['aliases']}
 cec = {}
 for s in load(ROOT/'data/raw/SOURCES.json'):
  if re.match(r'k\d+-(national-html|results-gazette)$',s['id']) and s['url'] in ok_urls:
@@ -66,7 +75,12 @@ def wiki_of(name,k):
  if name=='הרשימה הערבית המאוחדת' and k<14:return None
  if name=='יחד' and k<20:return None
  if norm(name)=='ישר' and k<26:return None
- return wiki.get(norm(aliases.get(name,name)))
+ # Later namesakes: the 1999 One Israel alliance, the 2020 Derekh Eretz party (the 1988 list is unrelated) and
+ # the 2026 joint list that the New Economic Party title now redirects to.
+ if norm(name)==norm('ישראל אחת') and k!=15:return None
+ if norm(name)==norm('דרך ארץ') and k<24:return None
+ if norm(name)==norm('הכלכלית החדשה') and k<26:return None
+ return wiki.get(norm(scoped_aliases.get((f'k{k}',name)) or aliases.get(name,name)))
 def neutral(name,k):
  p=wiki_of(name,k)
  if p:return [{'kind':'neutral','url':p['fullurl'],'titleHe':p['title'],'titleEn':'Hebrew Wikipedia (secondary)','publisher':'ויקיפדיה העברית (מקור משני)','sourceType':'hewiki','confidence':'high'}]
@@ -116,7 +130,9 @@ for k in range(26,0,-1):
   # Whole-election official record names this list. Never count it as a party's own voice.
   if not any(e['kind']=='neutral' and e['sourceType']=='hewiki' for e in links) and ds['id'] in cec:
    links=[e for e in links if e['kind']!='neutral']
-   links.append({'kind':'neutral','url':cec[ds['id']],'titleHe':f"{l['shortHe']} — הודעת התוצאות לכנסת {k}",'titleEn':'Official election results record (whole-election document)','publisher':f'ועדת הבחירות המרכזית לכנסת ה-{k}'+(' (עותק באירוח אתר אוסף חוק ומשפט)' if k==7 else ''),'sourceType':'cec','confidence':'high'})
+   # From 2019 the official record is the CEC results web page, not a gazetted results notice (audits k21–k23).
+   webpage=re.match(r'https://votes\d+\.bechirot\.gov\.il/',cec[ds['id']])
+   links.append({'kind':'neutral','url':cec[ds['id']],'titleHe':f"{l['shortHe']} — "+(f'תוצאות ועדת הבחירות לכנסת {k}' if webpage else f'הודעת התוצאות לכנסת {k}'),'titleEn':'Official election results record (whole-election document)','publisher':f'ועדת הבחירות המרכזית לכנסת ה-{k}'+(' (עותק באירוח אתר אוסף חוק ומשפט)' if k==7 else ''),'sourceType':'cec','confidence':'high'})
   lists[l['id']]=links
   for p in l.get('parties',[]):
    name=p['nameHe'];links=platforms(name,k)+neutral(name,k)
@@ -127,17 +143,32 @@ for k in range(26,0,-1):
   if r['assignTo']['election']==ds['id']:
    assert r['url'] in platform_checks and r['assignTo']['list'] in lists, r['url']
    lists[r['assignTo']['list']].insert(0,{'kind':'partisan','url':r['url'],'titleHe':r['titleHe'],'publisher':r['publisher'],'sourceType':'platform','confidence':'medium'})
+ tables={'lists':lists,'parties':parties}; reviewed_gaps={}
+ for c in corrections['entries']:
+  if c['election']!=ds['id']:continue
+  table=tables[c['table']]
+  assert c['id'] in table, f"overlay correction: unknown {c['table']} id {c['id']} in {ds['id']}"
+  if 'links' in c:
+   assert c['links']!=table[c['id']], f"overlay correction {c['id']}: the rules already produce these links; remove the entry"
+   table[c['id']]=c['links']
+  if 'gaps' in c:reviewed_gaps[c['id']]=c['gaps']
  for table in [lists,parties]:
   for id,links in table.items():
    missing={}
    for kind in ['partisan','neutral']:
     if not any(e['kind']==kind for e in links):
      missing[kind]=('No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.' if kind=='partisan' else 'No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out.' if k==26 else 'No verified identity-specific neutral article acquired; dictionary articles and joint-list sources excluded; further research required.')
+   if id in reviewed_gaps:
+    assert set(reviewed_gaps[id])==set(missing), f"overlay correction {id}: gaps must name exactly the missing kinds {sorted(missing)}"
+    assert reviewed_gaps[id]!=missing, f"overlay correction {id}: the rules already produce these gaps; remove them"
+    missing=reviewed_gaps[id]
    if missing:gaps[id]=missing
- save(OUT/f'k{k}.json',{'electionId':ds['id'],'reviewedAt':'2026-11-04','lists':lists,'parties':parties,'gaps':gaps})
+ reviewed=corrections['overlayReviewedAt'].get(ds['id'],{}).get('date','2026-11-04')
+ save(OUT/f'k{k}.json',{'electionId':ds['id'],'reviewedAt':reviewed,'lists':lists,'parties':parties,'gaps':gaps})
  report.append({'election':ds['id'],'year':YEARS[k], 'lists':{kind:sum(any(e['kind']==kind for e in a) for a in lists.values()) for kind in ['partisan','neutral']},'listTotal':len(lists),'parties':{kind:sum(any(e['kind']==kind for e in a) for a in parties.values()) for kind in ['partisan','neutral']},'partyTotal':len(parties)})
 save(RAW/'coverage.json',report)
-for r in report:print(r)
+if not CHECK:
+ for r in report:print(r)
 # Keep the durable report aligned with overlays; no timestamps or network access.
 doc = ROOT/'docs/research/party-links.md'
 if doc.exists():
@@ -147,7 +178,7 @@ if doc.exists():
  text=re.sub(r'<!-- coverage:start -->.*?<!-- coverage:end -->','<!-- coverage:start -->\n'+'\n'.join(rows)+'\n<!-- coverage:end -->',text,flags=re.S)
  rows=[]
  for r in report:
-  meta=load(OUT/f"{r['election']}.json")
+  meta=json.loads(outputs[OUT/f"{r['election']}.json"])
   rows.append(f"### {r['election']} {r['year']}\n")
   for table,label in [('lists','Lists'),('parties','Constituents')]:
    for kind in ['partisan','neutral']:
@@ -155,4 +186,9 @@ if doc.exists():
     rows.append(f"- {label} missing {kind}: "+(', '.join(f'`{id}`' for id in ids) if ids else 'none')+'.')
   rows.append('')
  text=re.sub(r'<!-- gaps:start -->.*?<!-- gaps:end -->','<!-- gaps:start -->\n'+'\n'.join(rows)+'\n<!-- gaps:end -->',text,flags=re.S)
- doc.write_text(text,'utf8')
+ outputs[doc]=text
+stale=[p for p,text in outputs.items() if not p.exists() or p.read_text('utf8')!=text]
+if CHECK:
+ for p in stale:print('differs from a rebuild:',p.relative_to(ROOT))
+ sys.exit(1 if stale else 0)
+for p in stale:p.write_text(outputs[p],'utf8')

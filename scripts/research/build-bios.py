@@ -4,13 +4,16 @@
 Usage (from the repository root, Python 3.10+, standard library only):
     python3 -I scripts/research/build-bios.py            # build from retained snapshots
     python3 -I scripts/research/build-bios.py --report   # also print every residual case
+    python3 -I scripts/research/build-bios.py --check    # write nothing; exit 1 if an output differs from a rebuild
 
 Inputs (all retained in the repository):
   public/data/kNN.json                         candidate rosters (ids such as "25-מחל#3")
   scripts/research/elected-ids.ts              the candidates the app shows as elected (run with node)
   data/raw/bios/knesset-odata-*.json           Knesset OData snapshots (persons, MK and faction positions, site codes)
   data/raw/bios/wikidata-*.json                Wikidata snapshots (P9770 Knesset member ID, party members)
-  data/raw/bios/identity-decisions.reviewed.json  reviewed decisions for every elected member the name rules cannot settle
+  data/raw/bios/identity-decisions.reviewed.json  reviewed decisions for every elected member the name rules cannot settle,
+                                                  and reviewed links for a few candidates who were not elected
+  data/raw/bios/entry-corrections.reviewed.json   reviewed per-election Knesset link markers and English display names
   data/raw/bios/party-sources.reviewed.json    reviewed party-site biography links (Wayback Machine captures)
 
 Method and the meaning of each field: data/meta/bios/README.md and docs/research/candidate-bios.md.
@@ -30,6 +33,7 @@ ROOT = Path(__file__).resolve().parents[2]
 RAW = ROOT / 'data/raw/bios'
 OUT = ROOT / 'data/meta/bios'
 REPORT = '--report' in sys.argv
+CHECK = '--check' in sys.argv
 KNESSET_URL = 'https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/{}'
 
 
@@ -162,6 +166,7 @@ for r in load('wikidata-israeli-parties.json'):
     if r['labelHe']:
         wd_parties[r['qid']].add(r['labelHe'])
 decisions = {d['candidateId']: d for d in load('identity-decisions.reviewed.json')['decisions']}
+entry_corrections = load('entry-corrections.reviewed.json')
 
 # Hebrew Wikipedia sentences that mention a Knesset election, per article (fetched with --fetch-hewiki;
 # used only to confirm candidacies that no official identifier ties to the person).
@@ -308,7 +313,8 @@ for k in ELECTIONS:
         if d is None:
             continue
         if d.get('personId'):
-            result[k][cid] = {'knessetPersonId': d['personId'], 'confidence': d['confidence'], 'basis': 'elected; reviewed decision: ' + d['reason']}
+            result[k][cid] = {'knessetPersonId': d['personId'], 'confidence': d['confidence'],
+                              'basis': d.get('basis') or 'elected; reviewed decision: ' + d['reason']}
         else:
             residual.append(f'LEFT OUT {cid} {cands[cid][0]["nameHe"]}: {d["reason"]}')
 
@@ -329,6 +335,12 @@ for pid in served:
 for k in ELECTIONS:
     n = knesset_num(k)
     ds = datasets[k]
+    # reviewed decisions for candidates who were not elected come before the name rules
+    for c in (c for l in ds['lists'] for c in l['candidates']):
+        d = decisions.get(c['id'])
+        if d and d.get('personId') and c['id'] not in elected[k]:
+            result[k][c['id']] = {'knessetPersonId': d['personId'], 'confidence': d['confidence'],
+                                  'basis': d.get('basis') or 'not elected; reviewed decision: ' + d['reason']}
     taken = {e['knessetPersonId'] for e in result[k].values()}
     keys = collections.Counter(name_key(c['nameHe']) for l in ds['lists'] for c in l['candidates'])
     for lst in ds['lists']:
@@ -499,6 +511,16 @@ for s in party_sources.get('spotChecks', {}).get('knesset', []):
         for e in result[k].values():
             if e['knesset'] and e['knesset']['siteId'] == s['siteId']:
                 e['knesset']['verified'] = s['verified']
+# election audits that checked every (PersonID, SiteId) pair against the official mapping
+for v in entry_corrections['knessetVerified']:
+    marked = [e for e in result[v['election']].values() if e['knesset'] and e['knesset']['verified'] == 'pattern']
+    assert marked, f"knessetVerified {v['election']}: no pattern links left to mark"
+    for e in marked:
+        e['knesset']['verified'] = v['verified']
+for v in entry_corrections['displayNames']:
+    e = result['k' + v['candidateId'].split('-', 1)[0]].get(v['candidateId'])
+    assert e and e.get('knesset'), f"displayNames {v['candidateId']}: no Knesset link to name"
+    e['displayNameEn'], e['displayNameEnNote'] = v['displayNameEn'], v['displayNameEnNote']
 
 # ---------------------------------------------------------------- party sites
 WAYBACK = re.compile(r'https://web\.archive\.org/web/(\d{14})/(.+)$')
@@ -537,14 +559,17 @@ for src in party_sources['links']:
 
 # ---------------------------------------------------------------- write
 FIELDS = ('knessetPersonId', 'knesset', 'hewiki', 'party', 'confidence', 'basis')
+OPTIONAL = ('displayNameEn', 'displayNameEnNote')
 summary = {}
+outputs = {}   # path -> text; written (or compared with --check) at the end
 for k in ELECTIONS:
     order = {c['id']: i for i, c in enumerate(c for l in datasets[k]['lists'] for c in l['candidates'])}
-    entries = {cid: {f: e.get(f) for f in FIELDS} for cid, e in sorted(result[k].items(), key=lambda x: order[x[0]])
+    entries = {cid: {**{f: e.get(f) for f in FIELDS}, **{f: e[f] for f in OPTIONAL if f in e}}
+               for cid, e in sorted(result[k].items(), key=lambda x: order[x[0]])
                if e.get('knesset') or e.get('hewiki') or e.get('party')}
     doc = {'electionId': k, 'generatedBy': 'scripts/research/build-bios.py', 'format': 'data/meta/bios/README.md',
            'candidates': entries}
-    (OUT / f'{k}.json').write_text(json.dumps(doc, ensure_ascii=False, indent=1) + '\n', 'utf8')
+    outputs[OUT / f'{k}.json'] = json.dumps(doc, ensure_ascii=False, indent=1) + '\n'
     el = set(elected[k])
     summary[k] = {
         'candidates': sum(len(l['candidates']) for l in datasets[k]['lists']),
@@ -558,7 +583,27 @@ for k in ELECTIONS:
         'party': sum(1 for e in entries.values() if e['party']),
         'medium': sum(1 for e in entries.values() if e['confidence'] == 'medium'),
     }
-(OUT / 'summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=1) + '\n', 'utf8')
+outputs[OUT / 'summary.json'] = json.dumps(summary, ensure_ascii=False, indent=1) + '\n'
+# Keep the coverage table of the research note aligned with the outputs.
+DOC = ROOT / 'docs/research/candidate-bios.md'
+if DOC.exists():
+    def row(label, s):
+        n = lambda x: f'{x:,}'
+        return (f"| {label} | {n(s['candidates'])} | {n(s['withLink'])} | {n(s['electedKnesset'])}/{n(s['elected'])} | {n(s['otherKnesset'])} | "
+                f"{n(s['hewiki'])} ({n(s['hewikiNonMk'])}) | {n(s['party'])} | {n(s['medium'])} |")
+    total = {f: sum(v[f] for v in summary.values()) for f in next(iter(summary.values()))}
+    rows = ['| Election | Candidates | With a link | Elected: Knesset page | Other MKs: Knesset page | Hebrew Wikipedia (of which non-MK) | Party page | Medium |',
+            '|---|---:|---:|---:|---:|---:|---:|---:|']
+    rows += [row(f"{k} {datasets[k]['electionDate'][:4]}", summary[k]) for k in sorted(summary, key=knesset_num)] + [row('**all**', total)]
+    outputs[DOC] = re.sub(r'<!-- coverage:start -->.*?<!-- coverage:end -->', lambda m: '<!-- coverage:start -->\n' + '\n'.join(rows) + '\n<!-- coverage:end -->',
+                          DOC.read_text('utf8'), flags=re.S)
+stale = [p for p, text in outputs.items() if not p.exists() or p.read_text('utf8') != text]
+if CHECK:
+    for p in stale:
+        print('differs from a rebuild:', p.relative_to(ROOT))
+    sys.exit(1 if stale else 0)
+for p in stale:
+    p.write_text(outputs[p], 'utf8')
 for k, s in summary.items():
     print(k, s)
 if REPORT:

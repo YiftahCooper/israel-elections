@@ -251,7 +251,10 @@ const EXPECTED: Record<Family, string> = {
   // 8 Nov evidence fixes: k26 Yisrael Beytenu #8–20 bio.party url/archivedAt (Wayback captures), the 6559 leaflet
   // link moved from 13-ג to 12-עץ, and those three builtAt values (recursive field diff). Substituting HEAD's
   // k12/k13/k26 reproduces 6aed7fa1… and all five digests; the other four are unchanged.
-  model: 'c850387b849375903262d717e3174882c72dfe68b0b7969f930b162a7b71681a',
+  // 9 Nov builders reproduce committed data: link titles (k15 two stale names; k22–k25 CEC results web pages), the
+  // k12 Derekh Eretz results link, k24 New Economic link (not the 2026 joint list), k9 hewiki title, two new k16/k18
+  // bios. Substituting HEAD's k9/k12/k15/k16/k18/k22–k25 reproduces c850387b…; the other four are unchanged.
+  model: 'ae60848d86e24be0f325e63cbc4936777692dbedf694e0cd787850195cddd521',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

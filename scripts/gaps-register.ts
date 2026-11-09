@@ -43,7 +43,7 @@ const HIGH_RULES: [RegExp, RegExp][] = [
   [/^data\/meta\/k\d+\.json$/, /blocSchemes/],
   [/^data\/meta\/election-context\.json$/, /pmContests/],
 ];
-const LOW_FILES = /^(data\/meta\/(bios|logos|party-links)\/|data\/raw\/(SOURCES\.json|research\/|polls\/[^/]+\/coverage|bios\/|logos\/)|data\/raw\/[^/]*catalog|data\/raw\/k\d+\/[^/]*(odata|positions)[^/]*\.json$|docs\/|src\/)/;
+const LOW_FILES = /^(data\/meta\/(bios|logos|party-links)\/|data\/raw\/(SOURCES\.json|research\/|polls\/[^/]+\/coverage|bios\/|logos\/|party-links\/)|data\/raw\/[^/]*catalog|data\/raw\/k\d+\/[^/]*(odata|positions)[^/]*\.json$|docs\/|src\/)/;
 const LOW_ITEMS = /colou?rs?|logo|englishName|nameEn|\.names\b|shortEn|displayName|\.bio\b|\.probable$/;
 const PROSE = /\.(notes?|reason|limitation|gap|noteEn|noteHe)(\[\*\])?$/;
 export function importanceOf(g: Pick<Gap, 'file' | 'item' | 'kind'>): Importance {

@@ -312,6 +312,10 @@
     "3-רי": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
+    "3-יז": {
+      "neutral": "Approved in YP 425 p.1013; all candidates withdrew per YP 429 p.1087. No independent party profile retrieved.",
+      "partisan": "No contemporaneous party-owned page retrieved."
+    },
     "hapoel-hamizrachi": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
@@ -323,10 +327,6 @@
     },
     "poalei-agudat-yisrael": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
-    },
-    "3-יז": {
-      "neutral": "Approved in YP 425 p.1013; all candidates withdrew per YP 429 p.1087. No independent party profile retrieved.",
-      "partisan": "No contemporaneous party-owned page retrieved."
     }
   }
 }

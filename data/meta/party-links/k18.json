@@ -623,6 +623,10 @@
     "18-נר": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
+    "18-פח": {
+      "partisan": "No verified campaign-period profile/platform acquired for the withdrawn list.",
+      "neutral": "Approved roster and withdrawal established by YP 5909 and YP 5912; no identity-specific neutral profile acquired."
+    },
     "ahi": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
       "neutral": "No verified identity-specific neutral article acquired; dictionary articles and joint-list sources excluded; further research required."
@@ -662,10 +666,6 @@
     },
     "green-movement": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
-    },
-    "18-פח": {
-      "partisan": "No verified campaign-period profile/platform acquired for the withdrawn list.",
-      "neutral": "Approved roster and withdrawal established by YP 5909 and YP 5912; no identity-specific neutral profile acquired."
     }
   }
 }

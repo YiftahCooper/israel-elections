@@ -31,6 +31,23 @@ describe('election-specific party links', () => {
       const maki = load(id).lists.find((l) => l.shortHe.replaceAll('״', '"') === 'מק"י')!;
       expect(maki.links?.some((e) => e.sourceType === 'hewiki' && e.titleHe === 'המפלגה הקומוניסטית הישראלית')).toBe(false);
     }
+    // later namesakes: One Israel (1999), Derekh Eretz (2020), the 2026 joint list the New Economic title redirects to
+    const hewikiOf = (id: string, list: string) => load(id).lists.find((l) => l.id === list)!.links!.filter((e) => e.sourceType === 'hewiki').map((e) => e.titleHe);
+    expect(hewikiOf('k10', '10-ט')).toEqual([]);
+    expect(hewikiOf('k12', '12-טע')).toEqual([]);
+    expect(hewikiOf('k24', '24-יז')).toEqual([]);
+    expect(hewikiOf('k25', '25-יז')).toEqual([]);
+    expect(hewikiOf('k15', '15-אמת')).toContain('ישראל אחת');
+  });
+  it('labels the 2019–2022 CEC results web pages as results, not as a gazetted results notice', () => {
+    for (const id of ['k21', 'k22', 'k23', 'k24', 'k25']) {
+      const cec = load(id).lists.flatMap((l) => l.links ?? []).filter((e) => e.sourceType === 'cec');
+      expect(cec.length).toBeGreaterThan(0);
+      for (const e of cec) {
+        expect(e.url).toMatch(/^https:\/\/votes\d+\.bechirot\.gov\.il\//);
+        expect(e.titleHe).not.toMatch(/הודעת/);
+      }
+    }
   });
   it('links the Degel HaTorah leaflet (ballot letters עץ) to its 1988 list, not the 1992 joint list', () => {
     const url = 'https://www.idi.org.il/media/6559/degel-hatora-13.doc';

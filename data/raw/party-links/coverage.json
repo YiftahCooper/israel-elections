@@ -118,7 +118,7 @@
       "partisan": 5,
       "neutral": 33
     },
-    "listTotal": 33,
+    "listTotal": 34,
     "parties": {
       "partisan": 2,
       "neutral": 10
@@ -129,7 +129,7 @@
     "election": "k17",
     "year": 2006,
     "lists": {
-      "partisan": 6,
+      "partisan": 9,
       "neutral": 31
     },
     "listTotal": 31,
@@ -144,9 +144,9 @@
     "year": 2003,
     "lists": {
       "partisan": 7,
-      "neutral": 27
+      "neutral": 28
     },
-    "listTotal": 27,
+    "listTotal": 28,
     "parties": {
       "partisan": 3,
       "neutral": 9
@@ -158,9 +158,9 @@
     "year": 1999,
     "lists": {
       "partisan": 16,
-      "neutral": 31
+      "neutral": 33
     },
-    "listTotal": 31,
+    "listTotal": 33,
     "parties": {
       "partisan": 1,
       "neutral": 6
@@ -174,7 +174,7 @@
       "partisan": 7,
       "neutral": 20
     },
-    "listTotal": 20,
+    "listTotal": 21,
     "parties": {
       "partisan": 1,
       "neutral": 7
@@ -298,9 +298,9 @@
     "year": 1961,
     "lists": {
       "partisan": 5,
-      "neutral": 14
+      "neutral": 15
     },
-    "listTotal": 14,
+    "listTotal": 15,
     "parties": {
       "partisan": 0,
       "neutral": 0
@@ -328,7 +328,7 @@
       "partisan": 2,
       "neutral": 18
     },
-    "listTotal": 18,
+    "listTotal": 19,
     "parties": {
       "partisan": 0,
       "neutral": 4

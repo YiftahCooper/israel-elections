@@ -410,6 +410,10 @@
     "14-ד": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
+    "14-זך": {
+      "partisan": "No verified campaign-period source retained for the withdrawn Moreshet Avot list.",
+      "neutral": "Registered identity and withdrawal are documented in YP 4408 p.3289 and YP 4411 p.3398; no separate party profile verified."
+    },
     "likud": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
@@ -447,10 +451,6 @@
     "ram": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
       "neutral": "No verified identity-specific neutral article acquired; dictionary articles and joint-list sources excluded; further research required."
-    },
-    "14-זך": {
-      "partisan": "No verified campaign-period source retained for the withdrawn Moreshet Avot list.",
-      "neutral": "Registered identity and withdrawal are documented in YP 4408 p.3289 and YP 4411 p.3398; no separate party profile verified."
     }
   }
 }

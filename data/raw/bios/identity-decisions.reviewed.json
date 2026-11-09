@@ -1,6 +1,6 @@
 {
  "reviewedAt": "2026-11-04",
- "scope": "Every elected member (electedOf) whose dataset name the name rules of scripts/research/build-bios.py cannot match to exactly one member of that Knesset in the list's factions. Each decision names the Knesset OData PersonID or leaves the candidate out.",
+ "scope": "Every elected member (electedOf) whose dataset name the name rules of scripts/research/build-bios.py cannot match to exactly one member of that Knesset in the list's factions, plus reviewed links for candidates who were not elected. Each decision names the Knesset OData PersonID or leaves the candidate out; an optional basis replaces the generated basis text verbatim.",
  "decisions": [
   {
    "candidateId": "1-א#2",
@@ -244,15 +244,17 @@
   },
   {
    "candidateId": "9-מחל#21",
-   "personId": null,
-   "confidence": null,
-   "reason": "Left out. Ranks 21 and 24 of the 1977 Likud list are both printed כהן יגאל; the ninth Knesset has יגאל כהן (2394) and יגאל כהן-אורגד (2399), both Likud from the opening. Which rank is which is not established."
+   "personId": 2394,
+   "confidence": "medium",
+   "reason": "Both ranks 21 and 24 of the 1977 Likud list are printed כהן יגאל; the ninth Knesset has יגאל כהן (2394) and יגאל כהן-אורגד (2399), both Likud from the opening. Both are official members (OData PersonID); which rank is which follows the medium-confidence constituent evidence in data/meta/k9.json, so the links are marked probable. k9 audit, commit 1d955cd; docs/research/data-audit/k09-resolution.md.",
+   "basis": "elected; Knesset 9 member; official PersonID identity, rank assignment follows the separately labelled medium-confidence constituent evidence in data/meta/k9.json (identical registered names at ranks 21 and 24)."
   },
   {
    "candidateId": "9-מחל#24",
-   "personId": null,
-   "confidence": null,
-   "reason": "Left out; see 9-מחל#21."
+   "personId": 2399,
+   "confidence": "medium",
+   "reason": "See 9-מחל#21 (rank 24 = יגאל כהן-אורגד, 2399).",
+   "basis": "elected; Knesset 9 member; official PersonID identity, rank assignment follows the separately labelled medium-confidence constituent evidence in data/meta/k9.json (identical registered names at ranks 21 and 24)."
   },
   {
    "candidateId": "9-מחל#35",
@@ -487,6 +489,24 @@
    "personId": 30928,
    "confidence": "high",
    "reason": "שלו יונתן = שלו יהונתן; spelling variant (provisional 26th Knesset faction row)."
+  },
+  {
+   "candidateId": "2-ו#2",
+   "personId": 2131,
+   "confidence": "high",
+   "reason": "The 1951 gazette prints אונה משה (C p.1145, R p.1242); the Knesset records the same member as משה אונא (2131), Knesset 2, HaPoel HaMizrachi. One-letter spelling variant (ה/א); the gazetted spelling is kept in the roster (k2 audit, commit 3b10457; docs/research/data-audit/k02-resolution.md, Opus 9)."
+  },
+  {
+   "candidateId": "15-שס#18",
+   "personId": 485,
+   "confidence": "high",
+   "reason": "The 1999 candidate and elected notices print גאגולה איסק (surname first; YP 4757 p.3378); the Knesset records the same member as יצחק גאגולה (485), Shas, Knesset 15. The gazetted form is kept in the roster with a candidate note (k15 audit, commit e543560; docs/research/data-audit/k15-resolution.md)."
+  },
+  {
+   "candidateId": "18-עם#13",
+   "personId": 30068,
+   "confidence": "medium",
+   "reason": "Not elected in 2009. Identical name: the only person named עבד אל-חכים חאג' יחיא who served as an MK (Ra'am, Knesset 21 faction רע\"ם - בל\"ד); his surname is unique among MKs. Linked on 4 Nov 2026 by the name rule when the k18 metadata named the constituent רשימת האיחוד הערבי; the k18 audit corrected that name, after which the party-word rule no longer fires, so the link is kept as a reviewed decision."
   }
  ]
 }

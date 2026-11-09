@@ -3,6 +3,7 @@
 ## 7 November 2026 — Settings
 
 - Data (8 Nov recheck): Yisrael Beytenu 2026 #8–20 biographies link their 26 October Wayback captures (the live pages now redirect home); the Degel HaTorah leaflet (letters עץ) moves from UTJ 1992 to Degel HaTorah 1988; the 1977 candidate-cap note cites the 1 November 1977 transcript.
+- Data (9 Nov): the biography and party-link builders reproduce the committed data offline (audit corrections moved into reviewed inputs; a test fails on drift); 2019–2022 results links say “results”, not “results notice”; older lists no longer link later namesakes (One Israel 1999, Derekh Eretz 2020, the 2026 Reservists–Economic list); two stale k15 list names in link titles corrected; decision 0073 gains a dated addendum on the 1977 transcript.
 
 - Research: retain the privacy-filtered official party register; confirm NRP–Jewish Home continuity and separate Labor/Meretz registrations, and record the disputed Labor/Democrats name.
 

@@ -12,7 +12,7 @@
   "medium": 2
  },
  "k2": {
-  "candidates": 120,
+  "candidates": 170,
   "withLink": 120,
   "elected": 120,
   "electedKnesset": 120,
@@ -48,7 +48,7 @@
   "medium": 0
  },
  "k5": {
-  "candidates": 122,
+  "candidates": 128,
   "withLink": 120,
   "elected": 120,
   "electedKnesset": 120,
@@ -97,15 +97,15 @@
  },
  "k9": {
   "candidates": 120,
-  "withLink": 118,
+  "withLink": 120,
   "elected": 120,
-  "electedKnesset": 118,
-  "electedPersonId": 118,
+  "electedKnesset": 120,
+  "electedPersonId": 120,
   "otherKnesset": 0,
-  "hewiki": 118,
+  "hewiki": 120,
   "hewikiNonMk": 0,
   "party": 0,
-  "medium": 0
+  "medium": 2
  },
  "k10": {
   "candidates": 120,
@@ -168,7 +168,7 @@
   "medium": 1
  },
  "k15": {
-  "candidates": 122,
+  "candidates": 127,
   "withLink": 122,
   "elected": 120,
   "electedKnesset": 120,
@@ -180,16 +180,16 @@
   "medium": 2
  },
  "k16": {
-  "candidates": 368,
-  "withLink": 135,
+  "candidates": 372,
+  "withLink": 136,
   "elected": 120,
   "electedKnesset": 120,
   "electedPersonId": 120,
-  "otherKnesset": 13,
-  "hewiki": 135,
+  "otherKnesset": 14,
+  "hewiki": 136,
   "hewikiNonMk": 2,
   "party": 0,
-  "medium": 11
+  "medium": 12
  },
  "k17": {
   "candidates": 719,
@@ -204,16 +204,16 @@
   "medium": 11
  },
  "k18": {
-  "candidates": 1613,
-  "withLink": 192,
+  "candidates": 1625,
+  "withLink": 193,
   "elected": 120,
   "electedKnesset": 120,
   "electedPersonId": 120,
-  "otherKnesset": 47,
-  "hewiki": 192,
+  "otherKnesset": 48,
+  "hewiki": 193,
   "hewikiNonMk": 25,
   "party": 0,
-  "medium": 61
+  "medium": 62
  },
  "k19": {
   "candidates": 1595,

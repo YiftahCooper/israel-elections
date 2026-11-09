@@ -13,4 +13,7 @@ is secondary. CEC results are whole-election records naming the list, not indivi
 party histories. Constituents do not inherit their joint list's links.
 
 Rebuild offline: `python3 -I scripts/research/build-party-links.py`, then
-`npx tsx scripts/build-datasets.ts`. See `docs/research/party-links.md` for scope and gaps.
+`npm run data:build`. These files are generated: `--check` (run by the test suite) fails if a
+file differs from a rebuild, so corrections go into `data/raw/party-links/*.reviewed.json`
+(`overlay-corrections.reviewed.json`, `platform-reassignments.reviewed.json`), never here.
+See `docs/research/party-links.md` for scope and gaps.
