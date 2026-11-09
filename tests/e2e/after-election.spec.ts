@@ -1,6 +1,19 @@
 import { expect, test } from '@playwright/test';
 import { choose } from './choices.ts';
 
+for (const lang of ['he', 'en'] as const) test(`k26 distinguishes the completed mandate from a new government: ${lang}`, async ({ page }) => {
+  await page.goto('/');
+  if (lang === 'en') await page.getByRole('button', { name: 'EN', exact: true }).click();
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k26');
+  await page.getByRole('tab', { name: lang === 'he' ? 'אחרי הבחירות' : 'After the election', exact: true }).click();
+  const history = page.locator('.after-election');
+  await expect(history).toContainText(lang === 'he' ? 'הרצוג הטיל על גדי איזנקוט' : 'Herzog tasked Gadi Eisenkot');
+  await expect(history.locator('.after-events time[datetime="2026-11-08"]')).toHaveCount(1);
+  await expect(history.locator('.after-mandate')).toHaveCount(1);
+  await expect(history.locator('.after-round')).toHaveCount(1);
+  await expect(history.locator('.after-coalition')).toHaveCount(0);
+});
+
 test('history, split recommendations, direct elections and next-election navigation', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('button', { name: 'EN', exact: true }).click();

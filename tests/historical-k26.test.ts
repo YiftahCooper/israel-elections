@@ -39,7 +39,7 @@ describe('k26 audit corrections', () => {
     }
     expect(electionContext.events.find(e => e.id === 'candidate-eligibility-k26-ד')).toBeUndefined();
   });
-  it('records the completed consultation tally consistently without a completed tasking', () => {
+  it('records the completed consultation tally and the later official tasking consistently', () => {
     const aftermath = JSON.parse(readFileSync('data/meta/aftermath/k26.json', 'utf8'));
     const round = aftermath.recommendationRounds[0];
     expect(round.totals).toEqual({ eisenkot: 67, netanyahu: 46, none: 7 });
@@ -47,6 +47,8 @@ describe('k26 audit corrections', () => {
     const ds = JSON.parse(readFileSync('public/data/k26.json', 'utf8'));
     const scheme = ds.blocSchemes.find((s: { id: string }) => s.id === 'pm-recommendations');
     expect(Object.fromEntries(scheme.blocs.map((b: { id: string; lists: string[] }) => [b.id, b.lists.reduce((sum, id) => sum + ds.officialSeats[id], 0)]))).toEqual(round.totals);
-    expect(aftermath.formation.events.every((e: { type: string }) => e.type === 'consultations')).toBe(true);
+    expect(aftermath.formation.events.filter((e: { type: string }) => e.type === 'mandate-given')).toMatchObject([
+      { date: '2026-11-08', person: 'eisenkot' },
+    ]);
   });
 });

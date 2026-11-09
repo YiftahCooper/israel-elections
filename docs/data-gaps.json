@@ -1,11 +1,11 @@
 {
   "schemaVersion": 3,
-  "total": 11452,
+  "total": 11453,
   "counts": {
     "unknown": 6948,
     "missing-field": 283,
     "conflict": 18,
-    "single-source": 2449,
+    "single-source": 2450,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1167,
@@ -15,20 +15,20 @@
   "countsByStatus": {
     "inferred-not-verified": 1032,
     "needs-current-status-review": 313,
-    "open": 10107
+    "open": 10108
   },
   "countsByImportance": {
     "high": {
       "total": 827,
-      "confirmed": 377,
+      "confirmed": 380,
       "probable": 32,
-      "provisional": 165,
+      "provisional": 162,
       "disputed": 13,
       "unknown": 240
     },
     "medium": {
-      "total": 3590,
-      "confirmed": 577,
+      "total": 3591,
+      "confirmed": 578,
       "probable": 235,
       "provisional": 549,
       "disputed": 7,
@@ -45,9 +45,9 @@
   },
   "claimCertainty": {
     "Recommendations": {
-      "confirmed": 74,
+      "confirmed": 77,
       "probable": 56,
-      "provisional": 76,
+      "provisional": 73,
       "disputed": 0,
       "unknown": 100
     },
@@ -59,7 +59,7 @@
       "unknown": 41
     },
     "Formation events": {
-      "confirmed": 58,
+      "confirmed": 60,
       "probable": 17,
       "provisional": 46,
       "disputed": 1,
@@ -540,15 +540,15 @@
     },
     {
       "election": "k26",
-      "total": 559,
-      "highOpen": 5,
+      "total": 560,
+      "highOpen": 2,
       "mediumOpen": 128,
       "low": 363,
       "counts": {
         "unknown": 271,
         "missing-field": 0,
         "conflict": 0,
-        "single-source": 138,
+        "single-source": 139,
         "low-confidence": 6,
         "release-hold": 0,
         "inferred": 100,
@@ -769,7 +769,6 @@
     {"election":"k25","area":"Investiture reconciliation","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k25.json"},
     {"election":"k25","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k25.json"},
     {"election":"k25","area":"Recommendation rounds","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":["r1"],"file":"data/meta/aftermath/k25.json"},
-    {"election":"k26","area":"Recommendations","count":3,"certainty":{"provisional":3},"kinds":{"single-source":3},"labels":["דרך","רק","ודם"],"file":"data/meta/aftermath/k26.json"},
     {"election":"k26","area":"Bloc schemes","count":2,"certainty":{"provisional":2},"kinds":{"single-source":2},"labels":["outgoing-government","pre-election-blocs"],"file":"data/meta/k26.json"},
     {"election":"cross-election","area":"data/meta/joint-facts.json openingDate","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/joint-facts.json"},
     {"election":"cross-election","area":"data/meta/joint-facts.json record","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/joint-facts.json"},

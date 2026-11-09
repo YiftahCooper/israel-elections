@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "electionId": "k26",
   "status": "reviewed",
-  "reviewedAt": "2026-11-06",
+  "reviewedAt": "2026-11-09",
   "notes": [
     "Research record following docs/design/after-the-election.md. Gaps remain explicit.",
     "Formation is in progress; no-government means no new government recorded as of the dated check, not a completed failed formation.",
@@ -55,31 +55,31 @@
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%94%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99%D7%9D-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98-%D7%9C/",
       "publisher": "President's Residence",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-09"
     },
     "president-faction-2": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%A8%D7%A2%D7%B4%D7%9E-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98-%D7%9C%D7%94%D7%A8%D7%9B%D7%91%D7%AA/",
       "publisher": "President's Residence",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-09"
     },
     "president-faction-3": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%99%D7%94%D7%93%D7%95%D7%AA-%D7%94%D7%AA%D7%95%D7%A8%D7%94-%D7%94%D7%97%D7%9C%D7%99%D7%98%D7%94-%D7%A9%D7%9C%D7%90-%D7%9C%D7%94%D7%9E%D7%9C%D7%99%D7%A5-%D7%A2%D7%9C-%D7%90/",
       "publisher": "President's Residence",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-09"
     },
     "president-faction-4": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%99%D7%AA%D7%A0%D7%95-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98/",
       "publisher": "President's Residence",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-09"
     },
     "president-faction-5": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%A9%D7%B4%D7%A1-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%97%D7%B4%D7%9B-%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F-%D7%A0%D7%AA%D7%A0%D7%99%D7%94%D7%95-%D7%9C%D7%94/",
       "publisher": "President's Residence",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-09"
     },
     "maariv-consultations": {
       "url": "https://www.maariv.co.il/news/elections-2026/article-1384980",
@@ -88,16 +88,16 @@
       "accessed": "2026-11-05"
     },
     "president-round-complete": {
-      "url": "https://www.president.gov.il/תם-סבב-ההתייעצויות-עם-כלל-סיעות-הכנסת-ב/",
+      "url": "https://www.president.gov.il/%D7%AA%D7%9D-%D7%A1%D7%91%D7%91-%D7%94%D7%94%D7%AA%D7%99%D7%99%D7%A2%D7%A6%D7%95%D7%99%D7%95%D7%AA-%D7%A2%D7%9D-%D7%9B%D7%9C%D7%9C-%D7%A1%D7%99%D7%A2%D7%95%D7%AA-%D7%94%D7%9B%D7%A0%D7%A1%D7%AA-%D7%91/",
       "publisher": "President's Residence",
       "kind": "official",
-      "accessed": "2026-11-06"
+      "accessed": "2026-11-09"
     },
     "president-likud": {
-      "url": "https://www.president.gov.il/סיעת-הליכוד-המליצה-על-ח״כ-בנימין-נתניהו/",
+      "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%97%D7%B4%D7%9B-%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F-%D7%A0%D7%AA%D7%A0%D7%99%D7%94/",
       "publisher": "President's Residence",
       "kind": "official",
-      "accessed": "2026-11-06"
+      "accessed": "2026-11-09"
     },
     "cec-plenary-approval": {
       "url": "https://www.israelhayom.co.il/news/law/article/21776989",
@@ -106,10 +106,52 @@
       "accessed": "2026-11-06"
     },
     "president-otzma": {
-      "url": "https://www.president.gov.il/סיעת-עוצמה-יהודית-המליצה-על-ח״כ-בנימין/",
+      "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%A2%D7%95%D7%A6%D7%9E%D7%94-%D7%99%D7%94%D7%95%D7%93%D7%99%D7%AA-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%97%D7%B4%D7%9B-%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F/",
       "publisher": "President's Residence",
       "kind": "official",
-      "accessed": "2026-11-06"
+      "accessed": "2026-11-09"
+    },
+    "president-joint-list": {
+      "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94-%D7%94%D7%9E%D7%A9%D7%95%D7%AA%D7%A4%D7%AA-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0/",
+      "publisher": "President's Residence",
+      "kind": "official",
+      "accessed": "2026-11-09"
+    },
+    "president-religious-zionism": {
+      "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%94%D7%A6%D7%99%D7%95%D7%A0%D7%95%D7%AA-%D7%94%D7%93%D7%AA%D7%99%D7%AA-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%97%D7%B4%D7%9B-%D7%91%D7%A0%D7%99%D7%9E%D7%99/",
+      "publisher": "President's Residence",
+      "kind": "official",
+      "accessed": "2026-11-09"
+    },
+    "president-summary": {
+      "url": "https://www.president.gov.il/%D7%A0%D7%A9%D7%99%D7%90-%D7%94%D7%9E%D7%93%D7%99%D7%A0%D7%94-%D7%A1%D7%99%D7%99%D7%9D-%D7%90%D7%AA-%D7%A1%D7%91%D7%91-%D7%94%D7%94%D7%AA%D7%99%D7%99%D7%A2%D7%A6%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%94/",
+      "publisher": "President's Residence",
+      "kind": "official",
+      "accessed": "2026-11-09"
+    },
+    "president-tasking": {
+      "url": "https://www.president.gov.il/%D7%A0%D7%A9%D7%99%D7%90-%D7%94%D7%9E%D7%93%D7%99%D7%A0%D7%94-%D7%94%D7%98%D7%99%D7%9C-%D7%90%D7%AA-%D7%9E%D7%9C%D7%90%D7%9B%D7%AA-%D7%94%D7%A8%D7%9B%D7%91%D7%AA-%D7%94%D7%9E%D7%9E%D7%A9%D7%9C%D7%94/",
+      "publisher": "President's Residence",
+      "kind": "official",
+      "accessed": "2026-11-09"
+    },
+    "president-together": {
+      "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%91%D7%99%D7%97%D7%93-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98-%D7%9C%D7%94%D7%A8%D7%9B%D7%91%D7%AA/",
+      "publisher": "President's Residence",
+      "kind": "official",
+      "accessed": "2026-11-09"
+    },
+    "president-yashar": {
+      "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%99%D7%A9%D7%A8-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98-%D7%9C%D7%94%D7%A8%D7%9B%D7%91%D7%AA-%D7%94/",
+      "publisher": "President's Residence",
+      "kind": "official",
+      "accessed": "2026-11-09"
+    },
+    "president-zehut": {
+      "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%96%D7%94%D7%95%D7%AA-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%97%D7%B4%D7%9B-%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F-%D7%A0%D7%AA%D7%A0%D7%99%D7%94%D7%95-%D7%9C/",
+      "publisher": "President's Residence",
+      "kind": "official",
+      "accessed": "2026-11-09"
     }
   },
   "results": {
@@ -167,8 +209,9 @@
           "nominee": "eisenkot",
           "cites": [
             {
-              "source": "maariv-consultations",
-              "quote": "ישר! ממליצים על גדי איזנקוט"
+              "source": "president-yashar",
+              "quote": "סיעת ישר! הגיעה להתייעצויות בבית הנשיא היום, יום חמישי, כ״ה בחשוון, 5 בנובמבר, והמליצה לנשיא המדינה יצחק הרצוג על גדי איזנקוט להרכבת הממשלה.",
+              "locator": "Opening paragraph"
             }
           ]
         },
@@ -179,8 +222,9 @@
           "nominee": "eisenkot",
           "cites": [
             {
-              "source": "maariv-consultations",
-              "quote": "ביחד: ממליצים על גדי איזנקוט"
+              "source": "president-together",
+              "quote": "סיעת ביחד הגיעה להתייעצויות בבית הנשיא היום, יום חמישי, כ״ה בחשוון, 5 בנובמבר, והמליצה לנשיא המדינה יצחק הרצוג על גדי איזנקוט להרכבת הממשלה.",
+              "locator": "Opening paragraph"
             }
           ]
         },
@@ -191,8 +235,9 @@
           "nominee": "eisenkot",
           "cites": [
             {
-              "source": "maariv-consultations",
-              "quote": "הרשימה המשותפת: ממליצים על גדי איזנקוט"
+              "source": "president-joint-list",
+              "quote": "סיעת הרשימה המשותפת הגיעה להתייעצויות בבית הנשיא היום, יום חמישי, כ״ה בחשוון, 5 בנובמבר, והמליצה לנשיא המדינה יצחק הרצוג על גדי איזנקוט להרכבת הממשלה.",
+              "locator": "Opening paragraph"
             }
           ]
         },
@@ -204,7 +249,8 @@
           "cites": [
             {
               "source": "president-faction-1",
-              "quote": "סיעת הדמוקרטים המליצה על גדי איזנקוט להרכבת הממשלה בסבב ההתייעצויות בבית הנשיא"
+              "quote": "סיעת הדמוקרטים הגיעה להתייעצויות בבית הנשיא היום, יום חמישי, כ״ה בחשוון, 5 בנובמבר, והמליצה לנשיא המדינה יצחק הרצוג על גדי אייזנקוט להרכבת הממשלה.",
+              "locator": "Opening paragraph"
             }
           ]
         },
@@ -216,7 +262,8 @@
           "cites": [
             {
               "source": "president-faction-2",
-              "quote": "סיעת רע״מ המליצה על גדי איזנקוט להרכבת הממשלה בסבב ההתייעצויות בבית הנשיא"
+              "quote": "סיעת רע״מ הגיעה להתייעצויות בבית הנשיא היום, יום חמישי, כ״ה בחשוון, 5 בנובמבר, והמליצה לנשיא המדינה יצחק הרצוג על גדי איזנקוט להרכבת הממשלה.",
+              "locator": "Opening paragraph"
             }
           ]
         },
@@ -228,7 +275,8 @@
           "cites": [
             {
               "source": "president-faction-4",
-              "quote": "סיעת ישראל ביתנו המליצה על גדי איזנקוט להרכבת הממשלה בסבב ההתייעצויות בבית הנשיא"
+              "quote": "סיעת ישראל ביתנו הגיעה להתייעצויות בבית הנשיא היום, יום רביעי, כ״ד בחשוון, 4 בנובמבר, והמליצה לנשיא המדינה יצחק הרצוג על גדי איזנקוט להרכבת הממשלה.",
+              "locator": "Opening paragraph"
             }
           ]
         },
@@ -240,7 +288,8 @@
           "cites": [
             {
               "source": "president-otzma",
-              "quote": "והמליצה לנשיא המדינה יצחק הרצוג על ח\"כ בנימין נתניהו להרכבת הממשלה"
+              "quote": "סיעת עוצמה יהודית הגיעה להתייעצויות בבית הנשיא היום, יום חמישי, כ״ה בחשוון, 5 בנובמבר, והמליצה לנשיא המדינה יצחק הרצוג על ח\"כ בנימין נתניהו להרכבת הממשלה.",
+              "locator": "Opening paragraph"
             }
           ]
         },
@@ -252,7 +301,8 @@
           "cites": [
             {
               "source": "president-faction-5",
-              "quote": "סיעת ש״ס המליצה על ח״כ בנימין נתניהו להרכבת הממשלה בסבב ההתייעצויות בבית הנשיא"
+              "quote": "סיעת ש״ס הגיעה להתייעצויות בבית הנשיא היום, יום רביעי, כ״ד בחשוון, 4 בנובמבר, והמליצה לנשיא המדינה יצחק הרצוג על ח\"כ בנימין נתניהו להרכבת הממשלה.",
+              "locator": "Opening paragraph"
             }
           ]
         },
@@ -261,7 +311,20 @@
           "seats": 6,
           "status": "recommended",
           "nominee": "netanyahu",
-          "noteEn": "Consulted as two factions, Religious Zionism and Zehut; both recommended Netanyahu."
+          "noteEn": "Consulted as two factions, Religious Zionism and Zehut; both recommended Netanyahu.",
+          "cites": [
+            {
+              "source": "president-religious-zionism",
+              "quote": "סיעת הציונות הדתית הגיעה להתייעצויות בבית הנשיא היום, יום רביעי, כ״ד בחשוון, 4 בנובמבר, והמליצה לנשיא המדינה יצחק הרצוג על ח\"כ בנימין נתניהו להרכבת הממשלה. משלחת הציונות הדתית לבית הנשיא כללה את השרה אורית סטרוק, איתמר איתם וצביקה מור",
+              "locator": "Opening paragraph"
+            },
+            {
+              "source": "president-zehut",
+              "quote": "סיעת זהות הגיעה להתייעצויות בבית הנשיא היום, יום רביעי, כ״ד בחשוון, 4 בנובמבר, והמליצה לנשיא המדינה יצחק הרצוג על ח\"כ בנימין נתניהו להרכבת הממשלה.",
+              "locator": "Opening paragraph"
+            }
+          ],
+          "noteHe": "הציונות הדתית וזהות התייעצו כשתי סיעות; שתיהן המליצו על נתניהו."
         },
         {
           "letters": "ג",
@@ -270,7 +333,8 @@
           "cites": [
             {
               "source": "president-faction-3",
-              "quote": "סיעת יהדות התורה החליטה שלא להמליץ על אף חבר כנסת להרכבת הממשלה בסבב ההתייעצויות בבית הנשיא"
+              "quote": "סיעת יהדות התורה הגיעה להתייעצויות בבית הנשיא היום, יום חמישי, כ״ה בחשוון, 5 בנובמבר, והחליטה שלא להמליץ לנשיא המדינה המדינה יצחק הרצוג על אף חבר כנסת להרכבת הממשלה.",
+              "locator": "Opening paragraph"
             }
           ]
         },
@@ -282,7 +346,8 @@
           "cites": [
             {
               "source": "president-likud",
-              "quote": "והמליצה לנשיא המדינה יצחק הרצוג על ח\"כ בנימין נתניהו להרכבת הממשלה"
+              "quote": "סיעת הליכוד הגיעה להתייעצויות בבית הנשיא היום, יום חמישי, כ״ה בחשוון, 5 בנובמבר, והמליצה לנשיא המדינה יצחק הרצוג על ח\"כ בנימין נתניהו להרכבת הממשלה.",
+              "locator": "Opening paragraph"
             }
           ]
         }
@@ -294,39 +359,20 @@
       },
       "cites": [
         {
-          "source": "recommendations-1",
-          "quote": "The Religious Zionist Party, Shas, and Zehut all recommended Netanyahu. Meanwhile, Yisrael Beytenu, led by Avigdor Liberman, recommended chairman of the Yashar party Gadi Eisenkot as the candidate to form the next government."
-        },
-        {
-          "source": "recommendations-2",
-          "quote": "The United Arab List (Ra’am) recommended that Herzog task Yashar Party leader Gadi Eisenkot with forming a government, the President’s Residence said. ... The Democrats faction recommended that Herzog task Eisenkot with forming a government. ... Otzma Yehudit faction recommended that Herzog task Netanyahu with forming a new government, the President’s Residence said. ... United Torah Judaism told Herzog that it would not recommend any Knesset member to form the next government."
-        },
-        {
-          "source": "recommendations-3",
-          "quote": "ביחד: ממליצים על גדי איזנקוט ... הרשימה המשותפת: ממליצים על גדי איזנקוט ... רע\"ם: ממליצים על גדי איזנקוט ... הדמוקרטים: ממליצים על גדי איזנקוט ... עוצמה יהודית: ממליצים על בנימין נתניהו ... יהדות התורה: לא נמליץ על אף מועמד ... בשעה 19:15 נציגי ישר! בראשות גדי איזנקוט, ובשעה 20:30 יגיעו נציגי הליכוד, שיחתמו את סבב ההתייעצויות המתוכנן"
-        },
-        {
-          "source": "recommendations-4",
-          "quote": "The Together party, led by Naftali Bennett and Yair Lapid, recommended Gadi Eisenkot to form Israel's next government during consultations with President Isaac Herzog at the President's Residence on Thursday. ... The Joint List, an alliance of Arab-majority parties, recommended Yashar party leader Gadi Eisenkot to form Israel's next government"
-        },
-        {
-          "source": "recommendations-5",
-          "quote": "שידור חי מבית הנשיא: ישר! ממליצים על גדי איזנקוט סיעת ישר! הגיעה להתייעצויות בבית הנשיא הערב, והמליצה לנשיא המדינה יצחק הרצוג על גדי איזנקוט להרכבת הממשלה."
-        },
-        {
-          "source": "recommendations-6",
-          "quote": "Later, Yashar's delegation called on the president to award Herzog the mandate ... After Herzog met with every party except the largest two, Eisenkot had secured the support of Yisrael Beytenu, the Democrats, Ra'am, the Joint List, and B'Yachad."
+          "source": "president-summary",
+          "quote": "בתום סבב ההתייעצויות המליצו בפני נשיא המדינה סיעות הכוללות 67 חברי כנסת על יו״ר מפלגת ׳ישר׳, גדי איזנקוט, להרכבת הממשלה. סיעות הכוללות 46 חברי כנסת המליצו על ראש הממשלה ויו״ר ׳הליכוד׳, ח״כ בנימין נתניהו, וסיעה שכוללת שבעה חברי כנסת בחרו שלא להמליץ על אף אחד.",
+          "locator": "Statement"
         },
         {
           "source": "president-round-complete",
-          "quote": "סיעות המונות 46 חברי כנסת"
+          "quote": "תמונת המצב היא כזו שנציגיהן של סיעות המונות 67 חברי כנסת המליצו על יו\"ר מפלגת ׳ישר!׳ – גדי איזנקוט ואילו נציגיהן של סיעות המונות 46 חברי כנסת, המליצו על ראש הממשלה ויו\"ר מפלגת ׳הליכוד׳ בנימין נתניהו.",
+          "locator": "Statement"
         }
       ],
       "notes": [
-        "Consultations completed on 5 November 2026. The President confirmed 67 recommendations for Eisenkot and 46 for Netanyahu; UTJ (7 seats) recommended nobody. Checked 6 November.",
-        "Seats match the CEC official final results. Gazette publication remains unverified as of 6 November.",
-        "Official President notices supersede the earlier 5 November 20:51 retrieval gap. No tasking is recorded: Herzog announced his intention to assign the mandate on Sunday 8 November.",
-        "Recommendation dates: Religious Zionism–Zehut, Shas and Yisrael Beiteinu on 4 November; remaining factions on 5 November."
+        "Consultations took place on 4–5 November 2026. All 12 consulted factions are documented by their own official notices; Religious Zionism and Zehut share the six-seat election list ט.",
+        "The 7 November notice confirms 67 recommendations for Eisenkot, 46 for Netanyahu and seven for nobody. These sum to 120 and reconcile with the official CEC election-list seats.",
+        "Herzog announced his choice on 7 November and formally tasked Eisenkot on 8 November. Recommendations do not establish government membership."
       ]
     }
   ],
@@ -348,17 +394,67 @@
       {
         "date": "2026-11-05",
         "type": "consultations",
-        "textEn": "Herzog completed consultations and announced 67 recommendations for Eisenkot and 46 for Netanyahu. He intends to assign the mandate on Sunday 8 November.",
-        "textHe": "הרצוג סיים את ההתייעצויות: 67 המליצו על איזנקוט ו־46 על נתניהו. הודיע שבכוונתו להטיל את המנדט ביום ראשון, 8 בנובמבר.",
+        "textEn": "Herzog completed consultations: 67 MKs recommended Eisenkot, 46 recommended Netanyahu and seven made no recommendation. Further talks would precede tasking.",
+        "textHe": "הרצוג סיים את ההתייעצויות: 67 המליצו על איזנקוט, 46 על נתניהו ושבעה לא המליצו. הודיע שיקיים בירורים נוספים לפני הטלת המנדט.",
         "cites": [
           {
             "source": "president-round-complete",
-            "quote": "בכוונתי להטיל את המנדט להרכבת ממשלה ביום ראשון הקרוב"
+            "quote": "תמונת המצב היא כזו שנציגיהן של סיעות המונות 67 חברי כנסת המליצו על יו\"ר מפלגת ׳ישר!׳ – גדי איזנקוט ואילו נציגיהן של סיעות המונות 46 חברי כנסת, המליצו על ראש הממשלה ויו\"ר מפלגת ׳הליכוד׳ בנימין נתניהו.",
+            "locator": "Statement"
+          },
+          {
+            "source": "president-round-complete",
+            "quote": "את היכולת הזו אנסה לברר ישירות ובמהירות עם חלק ממנהיגי המפלגות, בשיחות אישיות.",
+            "locator": "President’s statement, following the recommendation totals"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-07",
+        "type": "announcement",
+        "person": "eisenkot",
+        "textEn": "Herzog announced his intention to task Gadi Eisenkot; the ceremony was scheduled for 8 November at 17:00.",
+        "textHe": "הרצוג הודיע על כוונתו להטיל על גדי איזנקוט את הרכבת הממשלה; המעמד נקבע ל־8 בנובמבר בשעה 17:00.",
+        "cites": [
+          {
+            "source": "president-summary",
+            "quote": "בהמשך להודעת נשיא המדינה בתום סבב ההתייעצויות ביום חמישי האחרון, בדבר קיום בירורים נוספים במהלך סוף השבוע, הודיע נשיא המדינה הערב, מוצאי שבת, כ״ז בחשוון, 7 בנובמבר, ליו״ר מפלגת ‘ישר׳, גדי איזנקוט, כי בכוונתו להטיל עליו את מלאכת הרכבת הממשלה.",
+            "locator": "Statement"
+          },
+          {
+            "source": "president-summary",
+            "quote": "נשיא המדינה הזמין את גדי איזנקוט לבית הנשיא למעמד הטלת המנדט, שיתקיים מחר, יום ראשון, כ״ח בחשוון, 8 בנובמבר, בשעה 17:00.",
+            "locator": "Statement"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-08",
+        "type": "mandate-given",
+        "person": "eisenkot",
+        "days": 28,
+        "textEn": "Herzog tasked Gadi Eisenkot with forming a government at the President’s House.",
+        "textHe": "הרצוג הטיל על גדי איזנקוט את הרכבת הממשלה במעמד רשמי בבית הנשיא.",
+        "cites": [
+          {
+            "source": "president-tasking",
+            "quote": "מכובדי גדי איזנקוט, אני מטיל עליך בזאת את התפקיד להרכבת הממשלה",
+            "locator": "Statement"
+          },
+          {
+            "source": "president-tasking",
+            "quote": "נשיא המדינה יצחק הרצוג, הטיל היום, יום ראשון, כ״ח בחשון, 8 בנובמבר, את תפקיד מלאכת הרכבת הממשלה על יו״ר מפלגת ״ישר״, גדי איזנקוט, במעמד רשמי בבית הנשיא.",
+            "locator": "Opening paragraph"
+          },
+          {
+            "source": "president-summary",
+            "quote": "מרגע הטלת מלאכת הרכבת הממשלה על חבר הכנסת הנבחר, יעמדו לרשותו, על פי חוק יסוד: הממשלה, 28 ימים להרכיב ממשלה חדשה בישראל. במצב שבו תידרש ארכה לתהליך, בסמכות נשיא המדינה להעניק ארכה של עד 14 ימים נוספים על פי החוק.",
+            "locator": "Statement"
           }
         ]
       }
     ],
-    "outcomeNote": "Formation in progress as of 6 November 2026; consultations completed 5 November, with tasking announced for 8 November. No completed tasking or new government is recorded."
+    "outcomeNote": "Formation in progress: Herzog tasked Eisenkot on 8 November 2026. No new government is verified as of 9 November; tasking is not investiture."
   },
   "term": {
     "inclusionRule": "two-independent-chronologies-one-official-or-academic",
@@ -372,9 +468,9 @@
     "note": "IDI August 2026 Q7 is vote influence, a separate construct. No most-important-problem card is populated; see issue-polling-sources.md."
   },
   "gaps": [
-    "No mandate, new government, Knesset inauguration or term end verified; future scheduled steps are not completed events.",
+    "No new government, Knesset inauguration or term end verified as of 9 November 2026; tasking on 8 November is confirmed.",
     "Gazette publication not independently verified as of 6 November; official CEC seats verified.",
     "No qualifying general-problem survey topline; vote-influence percentages are not substituted."
   ],
-  "asOf": "2026-11-06"
+  "asOf": "2026-11-09"
 }

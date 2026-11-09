@@ -1,6 +1,6 @@
 # Recommendations to the President, 2009–2026
 
-Research pass of 5 November 2026. It covers the `pm-recommendations` bloc scheme in `data/meta/k18.json` … `k26.json`:
+Research pass of 5 November 2026; 2026 consultations and mandate rechecked against official notices on 9 November. It covers the `pm-recommendations` bloc scheme in `data/meta/k18.json` … `k26.json`:
 who each Knesset faction recommended to the President for forming the government, the later rounds, and what is still
 unverified. The bloc scheme always records the **first round of consultations** after the election. Later rounds are
 listed here only.
@@ -12,7 +12,7 @@ premiership then (see [era-specific-rules.md](era-specific-rules.md)). Elections
 
 - No English Wikipedia. Hebrew Wikipedia appears only as a labelled `secondary` source next to a stronger one.
 - The President's Residence publishes on gov.il. Its pages returned **HTTP 403** to the project client (5 November 2026),
-  so no official page was read. This is a retrieval limit, not evidence that no statement exists. No block was bypassed.
+  so no official page was read in that pass. The 9 November update below uses retrieved official President’s House text. This is a retrieval limit, not evidence that no statement exists. No block was bypassed.
   Statements by the President or his office are cited **as quoted** by news reports.
 - Every quote below was read in the article body on 5 November 2026, unless marked:
   - **[S]**: known only from a search-engine summary or headline. The body was not read, so treat the fact as unverified.
@@ -25,7 +25,7 @@ premiership then (see [era-specific-rules.md](era-specific-rules.md)). Elections
 
 | Election | Change | Evidence |
 |---|---|---|
-| 2026 (k26) | New scheme. It is partial: 11 of 12 factions were confirmed, and Likud is `pending`. | JPost, JNS (President's Residence statements), Maariv, Haaretz |
+| 2026 (k26) | Complete: 67 Eisenkot, 46 Netanyahu, 7 no recommendation; Eisenkot tasked 8 Nov. | President’s House faction notices, 5/7/8 Nov statements |
 | 2009 (k18) | 14 "not stated" seats resolved: Labor, Meretz, Hadash, Ra'am–Ta'al and Balad made **no recommendation** (27). Date 20 → **19 Feb 2009**, the last consultation day. | JPost 19 Feb 2009, JTA |
 | 2013 (k19) | **Kadima (2) recommended Netanyahu**: 80 → **82**. Balad (3) is now in "no recommendation", with a note. | Walla, Behadrei Haredim |
 | 2015 (k20) | The Joint List and Yesh Atid are now quoted as making no recommendation. The bloc label no longer says "not stated". | Ynetnews, JPost |
@@ -36,35 +36,38 @@ premiership then (see [era-specific-rules.md](era-specific-rules.md)). Elections
 
 ## 2026 — 26th Knesset (consultations 4–5 November 2026)
 
-**Status: partial.** The second and last day was still under way when last checked (about 20:10 Israel time,
-5 November 2026). No mandate had been given. Maariv published the schedule: Yashar at 19:15 and Likud at 20:30, which
-ends the planned round. Yashar's recommendation was confirmed by then. Likud's is **not recorded**, because nothing
-confirmed it before the check.
-The President "does not rule out another round of consultations if needed" (Maariv). The new Knesset is due to be
-sworn in on 10 November 2026.
+**Status: consultations complete; government formation in progress (checked 9 November 2026).**
+The election was held on 27 October. Consultations took place on 4–5 November, not 7 November.
+The President’s 7 November notice announced his intention to task Gadi Eisenkot and scheduled a ceremony
+for 8 November at 17:00. The separate 8 November notice confirms that the tasking took place at the
+President’s House: “מכובדי גדי איזנקוט, אני מטיל עליך בזאת את התפקיד להרכבת הממשלה”.
+This records a mandate, not a new government or a confidence vote. No new government is verified.
 
-| Faction (list) | Seats* | Recommended | Date | Source |
+All 12 consulted factions are covered below. The app groups Religious Zionism and Zehut by their common
+six-seat election list, without counting those seats twice. Every recommendation has primary evidence;
+the existing evidence policy therefore derives `confirmed` certainty.
+
+| Election list | Seats | Recommendation | Consultation date | Official notices |
 |---|---:|---|---|---|
-| Religious Zionism (ט, with Zehut) | 6 (list) | Netanyahu | 4 Nov | JPost 913842 |
-| Shas (שס) | 6 | Netanyahu | 4 Nov | JPost 913842; C14 |
-| Yisrael Beiteinu (ל) | 7 | Eisenkot | 4 Nov | JPost 913842; C14 |
-| Zehut (ט, with Religious Zionism) | (list) | Netanyahu | 4 Nov | JPost 913842; C14 |
-| United Torah Judaism (ג) | 7 | No one | 5 Nov | JNS; Maariv |
-| Otzma Yehudit (ב) | 7 | Netanyahu | 5 Nov | JNS (President's Residence) |
-| The Democrats (אמת) | 8 | Eisenkot | 5 Nov | JNS; Maariv |
-| Ra'am (עם) | 8 | Eisenkot | 5 Nov | JNS (President's Residence); Haaretz |
-| Joint List (ודם) | 11 | Eisenkot | 5 Nov | Haaretz; Maariv; Arutz 7 |
-| B'Yachad (רק) | 12 | Eisenkot | 5 Nov | Haaretz; Maariv; i24NEWS |
-| Yashar (דרך) | 21 | Eisenkot | 5 Nov | Maariv (later update); JPost 913989 (see conflict) |
-| Likud (מחל) | 27 | **pending** | 5 Nov 20:30 (scheduled) | Maariv schedule |
+| Yashar (דרך) | 21 | Eisenkot | 5 Nov | [Notice](https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%99%D7%A9%D7%A8-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98-%D7%9C%D7%94%D7%A8%D7%9B%D7%91%D7%AA-%D7%94/) |
+| B’Yachad (רק) | 12 | Eisenkot | 5 Nov | [Notice](https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%91%D7%99%D7%97%D7%93-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98-%D7%9C%D7%94%D7%A8%D7%9B%D7%91%D7%AA/) |
+| Joint List (ודם) | 11 | Eisenkot | 5 Nov | [Notice](https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94-%D7%94%D7%9E%D7%A9%D7%95%D7%AA%D7%A4%D7%AA-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0/) |
+| The Democrats (אמת) | 8 | Eisenkot | 5 Nov | [Notice](https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%94%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99%D7%9D-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98-%D7%9C/) |
+| Ra’am (עם) | 8 | Eisenkot | 5 Nov | [Notice](https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%A8%D7%A2%D7%B4%D7%9E-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98-%D7%9C%D7%94%D7%A8%D7%9B%D7%91%D7%AA/) |
+| Yisrael Beiteinu (ל) | 7 | Eisenkot | 4 Nov | [Notice](https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%99%D7%AA%D7%A0%D7%95-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98/) |
+| Otzma Yehudit (ב) | 7 | Netanyahu | 5 Nov | [Notice](https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%A2%D7%95%D7%A6%D7%9E%D7%94-%D7%99%D7%94%D7%95%D7%93%D7%99%D7%AA-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%97%D7%B4%D7%9B-%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F/) |
+| Shas (שס) | 6 | Netanyahu | 4 Nov | [Notice](https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%A9%D7%B4%D7%A1-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%97%D7%B4%D7%9B-%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F-%D7%A0%D7%AA%D7%A0%D7%99%D7%94%D7%95-%D7%9C%D7%94/) |
+| Religious Zionism–Zehut (ט) | 6 | Netanyahu | 4 Nov | [Notice 1](https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%94%D7%A6%D7%99%D7%95%D7%A0%D7%95%D7%AA-%D7%94%D7%93%D7%AA%D7%99%D7%AA-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%97%D7%B4%D7%9B-%D7%91%D7%A0%D7%99%D7%9E%D7%99/), [Notice 2](https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%96%D7%94%D7%95%D7%AA-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%97%D7%B4%D7%9B-%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F-%D7%A0%D7%AA%D7%A0%D7%99%D7%94%D7%95-%D7%9C/) |
+| United Torah Judaism (ג) | 7 | No one | 5 Nov | [Notice](https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%99%D7%94%D7%93%D7%95%D7%AA-%D7%94%D7%AA%D7%95%D7%A8%D7%94-%D7%94%D7%97%D7%9C%D7%99%D7%98%D7%94-%D7%A9%D7%9C%D7%90-%D7%9C%D7%94%D7%9E%D7%9C%D7%99%D7%A5-%D7%A2%D7%9C-%D7%90/) |
+| Likud (מחל) | 27 | Netanyahu | 5 Nov | [Notice](https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%97%D7%B4%D7%9B-%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F-%D7%A0%D7%AA%D7%A0%D7%99%D7%94/) |
 
-*The seats are those Maariv reported on 5 November: "ישר! … 21 מנדטים, ביחד … 12, הדמוקרטים … שמונה וישראל ביתנו …
-שבעה", and "27 מהליכוד, שבעה מעוצמה יהודית, שישה מש"ס ושישה מרשימת הציונות הדתית-זהות". These match the app's
-calculated seats.
+Totals: **67 Eisenkot + 46 Netanyahu + 7 no recommendation = 120**. Seats reconcile with the CEC official final allocation in `public/data/k26.json`; Gazette publication remains unverified.
 
-Confirmed totals in the scheme: Eisenkot **67**, Netanyahu **19**, no recommendation **7**, pending **27** (Likud)
-(120). Reporters projected 46 for Netanyahu, assuming Likud backs its own leader. That projection is **not** recorded
-as fact.
+- [5 November: consultation round completed](https://www.president.gov.il/%D7%AA%D7%9D-%D7%A1%D7%91%D7%91-%D7%94%D7%94%D7%AA%D7%99%D7%99%D7%A2%D7%A6%D7%95%D7%99%D7%95%D7%AA-%D7%A2%D7%9D-%D7%9B%D7%9C%D7%9C-%D7%A1%D7%99%D7%A2%D7%95%D7%AA-%D7%94%D7%9B%D7%A0%D7%A1%D7%AA-%D7%91/).
+- [7 November: choice and scheduled ceremony](https://www.president.gov.il/%D7%A0%D7%A9%D7%99%D7%90-%D7%94%D7%9E%D7%93%D7%99%D7%A0%D7%94-%D7%A1%D7%99%D7%99%D7%9D-%D7%90%D7%AA-%D7%A1%D7%91%D7%91-%D7%94%D7%94%D7%AA%D7%99%D7%99%D7%A2%D7%A6%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%94/).
+- [8 November: completed tasking](https://www.president.gov.il/%D7%A0%D7%A9%D7%99%D7%90-%D7%94%D7%9E%D7%93%D7%99%D7%A0%D7%94-%D7%94%D7%98%D7%99%D7%9C-%D7%90%D7%AA-%D7%9E%D7%9C%D7%90%D7%9B%D7%AA-%D7%94%D7%A8%D7%9B%D7%91%D7%AA-%D7%94%D7%9E%D7%9E%D7%A9%D7%9C%D7%94/).
+
+The following quotations document the earlier reporting pass; the official notices above now provide the recommendation evidence.
 
 Quotes:
 - JPost, 4 Nov 2026 (https://www.jpost.com/israel-news/article-913842): "The Religious Zionist Party, Shas, and Zehut
@@ -93,13 +96,12 @@ Conflicts and nuances (recorded, not resolved):
   whole list sits in one bloc. The split of its 6 seats between the two factions was not checked.
 - **Yashar:** JPost (https://www.jpost.com/israel-election-2026/article-913989) wrote "Yashar's delegation called on
   the president to award Herzog the mandate". This is an evident slip for Eisenkot, since the same article says
-  "Meridor insisted that Eisenkot would form a government". Maariv states the recommendation directly. The scheme
-  follows Maariv.
+  "Meridor insisted that Eisenkot would form a government". Maariv states the recommendation directly. The original scheme
+  followed Maariv; the official faction notice above now resolves the recommendation.
 - Reports on 4 November (C14) said Ra'am "announced separately" its support for Eisenkot. Its formal consultation was on
   5 November.
 
-Gaps: Likud's recommendation; the mandate decision; any President's Residence page (gov.il returned 403).
-**Update the scheme** when these are confirmed: move מחל out of `pending`, and add the mandate date here.
+The earlier Likud and mandate gaps are resolved by the official notices above. Government formation, the Knesset inauguration and any later term events remain unverified as of 9 November; scheduled steps are not completed events.
 
 ## 2022 — 25th Knesset (consultations 9–11 November 2022)
 
@@ -249,9 +251,8 @@ Rounds: on 20 Feb 2009 Peres met Netanyahu and Livni and tasked Netanyahu [S] (s
 
 ## Remaining gaps and next steps
 
-1. **2026:** record Likud's recommendation and the mandate (who, date) once reported. Try the President's
-   Residence page again if gov.il becomes reachable.
-2. **No official President's Residence text** for any year. The old president.gov.il archive, the MFA/embassy mirrors
+1. **2026:** consultations and the 8 November mandate are verified. A new government and subsequent institutional steps remain pending.
+2. **Earlier elections:** no official President's Residence text was retrieved in the original 5 November pass. The old president.gov.il archive, the MFA/embassy mirrors
    (one returned 404) and Knesset News were not reached in the time box.
 3. **April 2019:** the two Arab lists' positions are not quoted.
 4. **The [S] round dates** above (2015, 2019b, 2020, 2021, 2022 extension) need an article body or an official notice.

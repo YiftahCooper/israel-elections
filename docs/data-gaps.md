@@ -1,9 +1,9 @@
 # Data gaps register
 
-11452 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
+11453 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
 
-- High importance: 827 (confirmed 377, probable 32, provisional 165, disputed 13, unknown 240).
-- Medium importance: 3590 (confirmed 577, probable 235, provisional 549, disputed 7, unknown 2222).
+- High importance: 827 (confirmed 380, probable 32, provisional 162, disputed 13, unknown 240).
+- Medium importance: 3591 (confirmed 578, probable 235, provisional 549, disputed 7, unknown 2222).
 - Low importance: 7035 (confirmed 570, provisional 805, unknown 5660).
 
 ## High importance: open, by election
@@ -262,7 +262,6 @@ Could change seats, votes, a government’s composition, recommendation totals o
 
 ### k26
 
-- [Recommendations](../data/meta/aftermath/k26.json) ×3: provisional 3. דרך, רק, ודם
 - [Bloc schemes](../data/meta/k26.json) ×2: provisional 2. outgoing-government, pre-election-blocs
 
 ### cross-election
@@ -316,18 +315,18 @@ Every claim in these families, not only gaps. Derived from each claim’s own so
 
 | Claims | confirmed | probable | provisional | disputed | unknown | Total |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Recommendations | 74 | 56 | 76 | 0 | 100 | 306 |
+| Recommendations | 77 | 56 | 73 | 0 | 100 | 306 |
 | Government roles | 173 | 2 | 19 | 1 | 41 | 236 |
-| Formation events | 58 | 17 | 46 | 1 | 0 | 122 |
+| Formation events | 60 | 17 | 46 | 1 | 0 | 124 |
 | Term events | 29 | 54 | 0 | 0 | 0 | 83 |
 | Family classifications | 0 | 55 | 409 | 0 | 0 | 464 |
 | Candidate identity links | 3217 | 27 | 534 | 0 | 0 | 3778 |
 
 ## Counts
 
-By kind: unknown: 6948; missing-field: 283; conflict: 18; single-source: 2449; low-confidence: 101; release-hold: 0; inferred: 1167; pending: 388; unconfirmed: 98.
+By kind: unknown: 6948; missing-field: 283; conflict: 18; single-source: 2450; low-confidence: 101; release-hold: 0; inferred: 1167; pending: 388; unconfirmed: 98.
 
-By status: inferred-not-verified: 1032; needs-current-status-review: 313; open: 10107.
+By status: inferred-not-verified: 1032; needs-current-status-review: 313; open: 10108.
 
 | Election | High open | Medium open | Low | Total |
 | --- | ---: | ---: | ---: | ---: |
@@ -356,7 +355,7 @@ By status: inferred-not-verified: 1032; needs-current-status-review: 313; open: 
 | k23 | 4 | 75 | 269 | 395 |
 | k24 | 12 | 88 | 303 | 438 |
 | k25 | 8 | 256 | 392 | 686 |
-| k26 | 5 | 128 | 363 | 559 |
+| k26 | 2 | 128 | 363 | 560 |
 | [object Object] | 0 | 1 | 0 | 1 |
 | cross-election | 3 | 245 | 1064 | 1436 |
 
