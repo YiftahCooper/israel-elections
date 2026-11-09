@@ -171,22 +171,6 @@
       }
     },
     {
-      "id": "pending-gazette",
-      "electionId": "k26",
-      "effectiveDate": "2026-11-06",
-      "contestType": "knesset",
-      "type": "publication-status",
-      "textEn": "CEC official final results; plenary approved results and seats on 4 Nov 2026. Gazette publication unverified as of 6 Nov.",
-      "textHe": "תוצאות סופיות רשמיות של הוועדה; המליאה אישרה את התוצאות והמנדטים ב־4.11.2026. הפרסום ברשומות לא אומת נכון ל־6.11.",
-      "source": {
-        "url": "https://votes26.bechirot.gov.il/nationalresults?lang=he",
-        "publisher": "Central Elections Committee for the 26th Knesset",
-        "publisherHe": "ועדת הבחירות המרכזית לכנסת ה-26",
-        "evidence": "official",
-        "sourceId": "k26-official-results"
-      }
-    },
-    {
       "id": "eligibility-final-k6-0",
       "electionId": "k6",
       "effectiveDate": "1965-11-02",

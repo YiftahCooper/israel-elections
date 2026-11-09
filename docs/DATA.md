@@ -101,7 +101,7 @@ link, and imported scenarios may carry only `https:` links. Method and coverage:
 | k23 | 2020-03-02 | CEC national HTML; data.gov.il localities and fully reconciled polling stations; candidate gazette YP 8698; complete agreement notice YP 8708 (mirror) | None | Released: all seats reproduced; gazetted rosters, including explicitly withdrawn Tzomet |
 | k24 | 2021-03-23 | CEC national HTML; data.gov.il localities and fully reconciled polling stations; candidate gazette YP 9476; complete agreement notice YP 9478 (mirror) | None | Released: all seats reproduced; rosters are gazette snapshots |
 | k25 | 2022-11-01 | CEC HTML, data.gov.il localities and polling stations, candidate gazette and CEC agreement press release | None | No extension-specific gap; existing engine reproduction test passes |
-| k26 | 2026-10-27 | CEC locality/polling CSVs, captured official candidate pages, agreement gazette | Two rosters: bechirot.fyi, explicitly marked secondary | Gazetted final seats remain unavailable in the existing dataset |
+| k26 | 2026-10-27 | CEC locality/polling CSVs, captured official candidate pages, agreement gazette YP 15045, results notice YP 15100 | Two rosters: bechirot.fyi, explicitly marked secondary | Released: every list total, valid/invalid votes and seats checked against YP 15100 (4 Nov 2026) |
 
 The three historical agreement PDFs are **primary statutory publications retrieved from
 an olaw.org.il mirror**, not independent secondary descriptions. Their manifest publisher,
@@ -677,7 +677,7 @@ build after HTTP 403; 1999 uses the labelled secondary IDI introductory chapter 
 The 1999 withdrawn nominees are secondary IDI history, with no invented zero-vote results.
 
 Seeded context covers the Constituent Assembly, the 1973 postponement, the 1977
-Flatto-Sharon capacity qualification, separate 2019–2022 elections and k26's existing pending
-publication status. This is not a complete historical event register. Redistribution authority
+Flatto-Sharon capacity qualification and separate 2019–2022 elections (k26's pending-publication
+note was removed on 9 November 2026, once YP 15100 was found). This is not a complete historical event register. Redistribution authority
 in 1977, primary 1999 PM invalid/cast totals, 1999 printed-slip withdrawal instructions and
 a government-hosted 2001 download remain unresolved.

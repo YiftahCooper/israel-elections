@@ -1,9 +1,9 @@
 # Data gaps register
 
-11473 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
+11472 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
 
 - High importance: 827 (confirmed 380, probable 32, provisional 162, disputed 13, unknown 240).
-- Medium importance: 3592 (confirmed 580, probable 235, provisional 549, disputed 7, unknown 2221).
+- Medium importance: 3591 (confirmed 580, probable 235, provisional 548, disputed 7, unknown 2221).
 - Low importance: 7054 (confirmed 570, provisional 805, unknown 5679).
 
 ## High importance: open, by election
@@ -299,7 +299,7 @@ Shown in Standard/Expert views or the After-the-election tab. Grouped by record 
 - **k23**: Family classifications 41 (probable 2, provisional 14, unknown 25); Party appearances 19 (unknown 19); data/meta/election-context.json events 5 (probable 2, provisional 3); Formation 5 (probable 1, provisional 4); Term events 3 (probable 3); Issue polling 1 (unknown 1); Reactions 1 (unknown 1).
 - **k24**: Family classifications 56 (probable 4, provisional 15, unknown 37); Party appearances 23 (unknown 23); data/meta/election-context.json events 4 (provisional 4); Formation 2 (probable 2); aftermath results 1 (provisional 1); Issue polling 1 (probable 1); Reactions 1 (unknown 1).
 - **k25**: data/raw/polls/kN/polls.json polls 159 (unknown 159); Family classifications 47 (probable 2, provisional 17, unknown 28); Party appearances 26 (unknown 26); List metadata 11 (probable 2, provisional 3, unknown 6); Term events 3 (probable 1, unknown 2); data/meta/election-context.json events 2 (probable 1, provisional 1); Formation 2 (provisional 2); aftermath results 1 (provisional 1); data/raw/polls/kN/cec-13-final-supplement.json record 1 (unknown 1); data/raw/polls/kN/cec-13-final-supplement.json undecidedOnlyPct 1 (unknown 1); Government 1 (unknown 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1).
-- **k26**: Family classifications 93 (probable 1, provisional 20, unknown 72); Party appearances 21 (unknown 21); data/meta/election-context.json events 8 (provisional 8); List metadata 3 (provisional 3); data/meta/README.md 1 (unknown 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1).
+- **k26**: Family classifications 93 (probable 1, provisional 20, unknown 72); Party appearances 21 (unknown 21); data/meta/election-context.json events 7 (provisional 7); List metadata 3 (provisional 3); data/meta/README.md 1 (unknown 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1).
 - **[object Object]**: data/raw/polls/kN/schema.draft.json properties 1 (unknown 1).
 - **cross-election**: data/meta/party-lineage.json pending 50 (disputed 2, unknown 48); data/meta/party-lineage.json edges 27 (probable 25, provisional 2); data/meta/party-lineage.json settledChecks 16 (probable 16); data/raw/demographics/cbs-2018.json result 15 (unknown 15); data/raw/demographics/cbs-2019.json result 15 (unknown 15); data/raw/demographics/cbs-2020.json result 15 (unknown 15); data/raw/demographics/cbs-2021.json result 15 (unknown 15); data/raw/demographics/cbs-2022.json result 15 (unknown 15); data/raw/demographics/cbs-2023.json result 15 (unknown 15); data/raw/demographics/cbs-2017.json result 14 (unknown 14); data/meta/parties.json conflicts 7 (provisional 1, disputed 4, unknown 2); families 7 (provisional 3, unknown 4); data/meta/government-support-evidence.json government36Deputies 4 (unknown 4); data/meta/parties.json parties 3 (provisional 3); data/meta/README.md 2 (unknown 2); data/meta/candidate-notes.json notes 1 (unknown 1); data/meta/election-context.json ballotIndependence 1 (provisional 1); data/meta/joint-facts-name-aliases.json aliases 1 (provisional 1); data/raw/demographics/cbs-2003-normalized.json form 1 (unknown 1); data/raw/demographics/cbs-2003-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2006-normalized.json form 1 (unknown 1); data/raw/demographics/cbs-2006-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2009-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2013-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2015-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2017-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2018-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2019-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2020-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2021-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2022-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2023-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2024-normalized.json religion 1 (unknown 1); data/raw/map-lines/alpha-line-check.json record 1 (unknown 1); data/raw/map-lines/blue-line-check.json record 1 (unknown 1); data/raw/map-lines/jerusalem-registration.json record 1 (unknown 1); data/raw/map-lines/jerusalem-un229-traces.json record 1 (unknown 1); data/raw/map-lines/official-treaty-excerpts.json egyptArticleII 1 (unknown 1); data/raw/map-lines/signed-map-check.json record 1 (unknown 1); data/raw/registrar/parties-2026-11-08.json metadata 1 (unknown 1).
 
@@ -324,9 +324,9 @@ Every claim in these families, not only gaps. Derived from each claim’s own so
 
 ## Counts
 
-By kind: unknown: 6963; missing-field: 283; conflict: 18; single-source: 2453; low-confidence: 101; release-hold: 0; inferred: 1167; pending: 390; unconfirmed: 98.
+By kind: unknown: 6963; missing-field: 283; conflict: 18; single-source: 2452; low-confidence: 101; release-hold: 0; inferred: 1167; pending: 390; unconfirmed: 98.
 
-By status: inferred-not-verified: 1032; needs-current-status-review: 313; open: 10128.
+By status: inferred-not-verified: 1032; needs-current-status-review: 313; open: 10127.
 
 | Election | High open | Medium open | Low | Total |
 | --- | ---: | ---: | ---: | ---: |
@@ -355,7 +355,7 @@ By status: inferred-not-verified: 1032; needs-current-status-review: 313; open: 
 | k23 | 4 | 75 | 269 | 395 |
 | k24 | 12 | 88 | 304 | 439 |
 | k25 | 8 | 256 | 393 | 687 |
-| k26 | 2 | 128 | 365 | 562 |
+| k26 | 2 | 127 | 365 | 561 |
 | [object Object] | 0 | 1 | 0 | 1 |
 | cross-election | 3 | 245 | 1069 | 1441 |
 

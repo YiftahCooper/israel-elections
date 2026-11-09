@@ -117,7 +117,32 @@ async function agreementPairs(letters: string[]): Promise<[string, string][]> {
   return pairs;
 }
 
-const SOURCE_IDS = ['k26-localities-csv', 'k26-ballots-csv', 'k26-list-pages', 'k26-surplus-gazette', 'k26-official-results'];
+/** Results notice: Yalkut HaPirsumim 15100 (4 Nov 2026), pp. 1634–1645, section 84(a). Section 1 prints one row per
+ *  list ("<letters> <name …> <votes>"), then the valid total; section 2 the invalid votes; section 3 the seats per
+ *  list and their total; section 4 one heading per seat-winning list ("(n) מרשימת <letters> – …"). The text layer of
+ *  page 9 (section 3) overprints page 8's rows on its own, so a seat row there can repeat or be unreadable; every
+ *  row that does read must agree, and section 4 names exactly the seat-winning lists. */
+async function resultsNotice(letters: string[]) {
+  const pages = await pdfLines(join(RAW, 'k26/yp15100-results.pdf'));
+  const lines = pages.flat().map(l => l.text);
+  const at = (re: RegExp) => { const i = lines.findIndex(l => re.test(l)); check(i >= 0, `k26 results notice: ${re} not found`); return i; };
+  const s1 = at(/^1\. מספר הקולות הכשרים/), valid = at(/^סך כל הקולות הכשרים/), invalid = at(/^2\. מספר הקולות שנמצאו פסולים/);
+  const s3 = at(/^3\. מספר המנדטים/), seatsTotal = at(/^סך המנדטים/), s4 = at(/^4\. שמות האנשים שנבחרו/);
+  const num = (l: string) => Number(l.match(/([\d,]+)$/)?.[1].replaceAll(',', '') ?? NaN);
+  const rows = (from: number, to: number) => {
+    const out = new Map<string, number>();
+    for (const l of lines.slice(from + 1, to)) {
+      // the ק row reads "נ ק תקומה …": a stray one-letter glyph (not a ballot letter) precedes the letters cell
+      const [a, b] = l.split(' '), first = !letters.includes(a) && a.length === 1 && letters.includes(b) ? b : a;
+      if (letters.includes(first) && /\s[\d,]+$/.test(l)) { check(!out.has(first) || out.get(first) === num(l), `k26 results notice: ${first} appears twice with different counts`); out.set(first, num(l)); }
+    }
+    return out;
+  };
+  const winners = new Set(lines.slice(s4 + 1).map(l => l.match(/^\([א-ת]+\) מרשימת (\S+) –/)?.[1]).filter((x): x is string => !!x));
+  return { votes: rows(s1, valid), valid: num(lines[valid]), invalid: num(lines[invalid]), seats: rows(s3, seatsTotal), seatsTotal: num(lines[seatsTotal]), winners };
+}
+
+const SOURCE_IDS = ['k26-localities-csv', 'k26-ballots-csv', 'k26-list-pages', 'k26-surplus-gazette', 'k26-official-results', 'k26-results-gazette'];
 
 export async function buildK26() {
   const rawSha256 = verifySources(SOURCE_IDS, check);
@@ -185,19 +210,28 @@ export async function buildK26() {
     check(row && row.votes === l.votes, `k26 official results: vote mismatch for ${l.letters}`);
   }
   check(official.lists.reduce((sum, l) => sum + l.seats, 0) === 120, 'k26 official results: seats do not sum to 120');
+  // The gazetted notice must state the same counts: every list that received votes, both totals, every readable seat row.
+  const notice = await resultsNotice(letters);
+  for (const l of lists) check(l.votes === 0 ? !notice.votes.has(l.letters) : notice.votes.get(l.letters) === l.votes, `k26 results notice: votes for ${l.letters} differ (${notice.votes.get(l.letters)} vs ${l.votes})`);
+  check(notice.votes.size === lists.filter(l => l.votes > 0).length, 'k26 results notice: list count differs');
+  check(notice.valid === locTot.valid && notice.invalid === locTot.invalid, `k26 results notice: totals differ (${notice.valid}/${notice.invalid} vs ${locTot.valid}/${locTot.invalid})`);
+  for (const [L, n] of notice.seats) check(official.lists.find(r => r.letters === L)?.seats === n, `k26 results notice: seats for ${L} differ`);
+  check(notice.seats.size >= 30 && notice.seatsTotal === 120, `k26 results notice: seat table unreadable (${notice.seats.size} rows, total ${notice.seatsTotal})`);
+  const winners = official.lists.filter(r => r.seats > 0).map(r => r.letters);
+  check(winners.length === notice.winners.size && winners.every(L => notice.winners.has(L)), `k26 results notice: elected lists differ (${[...notice.winners].join(',')})`);
   const ds: ElectionDataset = {
     schemaVersion: DATASET_SCHEMA_VERSION, id: 'k26', knesset: 26, electionDate: '2026-10-27',
     nameHe: 'הבחירות לכנסת ה-26', nameEn: 'Election to the 26th Knesset',
     status: {
-      stage: 'official-final', asOf: '2026-11-06',
-      noteHe: 'תוצאות סופיות רשמיות של הוועדה; המליאה אישרה את התוצאות והמנדטים ב־4.11.2026. הפרסום ברשומות לא אומת נכון ל־6.11.',
-      noteEn: 'CEC official final results; plenary approved results and seats on 4 Nov 2026. Gazette publication unverified as of 6 Nov.',
+      stage: 'official-final', asOf: '2026-11-09',
+      noteHe: 'תוצאות סופיות רשמיות: ההודעה בדבר תוצאות הבחירות, ילקוט הפרסומים 15100 (4.11.2026). כל סיכומי הקולות והמנדטים תואמים את נתוני הוועדה.',
+      noteEn: 'Official final results: the results notice, Yalkut HaPirsumim 15100 (4 Nov 2026). Every vote and seat total agrees with the CEC count.',
     },
     ruleSetId: 'il-2014-bader-ofer-3.25',
     totals: { registered: locTot.registered, votesCast: locTot.votesCast, invalid: locTot.invalid, valid: locTot.valid, ballotBoxes: ballotRows.length, ...geographyTotals(locRows) },
     lists, agreements: agreementRecords(26, await agreementPairs(letters), 'k26-surplus-gazette'), blocs: BLOCS.k26,
-    officialSeats: Object.fromEntries(official.lists.map(l => [`26-${l.letters}`, l.seats])), officialSeatsSourceId: 'k26-official-results',
-    sourceIds: ['k26-localities-csv', 'k26-ballots-csv', 'k26-list-pages', 'k26-secondary-fyi', 'k26-surplus-gazette', 'k26-national-snapshot', 'k26-official-results', 'law-elections'],
+    officialSeats: Object.fromEntries(official.lists.map(l => [`26-${l.letters}`, l.seats])), officialSeatsSourceId: 'k26-results-gazette',
+    sourceIds: ['k26-localities-csv', 'k26-ballots-csv', 'k26-list-pages', 'k26-secondary-fyi', 'k26-surplus-gazette', 'k26-national-snapshot', 'k26-official-results', 'k26-results-gazette', 'law-elections'],
     buildInfo: { builtAt: new Date().toISOString(), rawSha256 },
   };
   const warnings = unrecognised.length ? [`k26: ${unrecognised.length} unrecognised line(s) on list pages were not published as notes:\n  ${unrecognised.join('\n  ')}`] : [];

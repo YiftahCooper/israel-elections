@@ -1,5 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
-import { barPart } from './barMenu.ts';
+import { barPart, closeBarMenu } from './barMenu.ts';
 import { readFileSync } from 'node:fs';
 import { deflateRawSync } from 'node:zlib';
 const ds = JSON.parse(readFileSync('public/data/k25.json', 'utf8'));
@@ -79,6 +79,8 @@ for (const lang of ['en', 'he'] as const) for (const width of [390, 1024, 1500])
       await (await barPart(page, '.scenario-switcher .choice-trigger')).click();
       await expect(page.locator('.scenario-changes summary')).toContainText(full);
       await page.keyboard.press('Escape');
+      // phones: the switcher lives in the Menu, which stays open (and in view under the pinned bar) until closed
+      await closeBarMenu(page);
       await page.locator('.session').getByRole('button', {name:lang === 'he' ? 'השינויים שלכם' : 'Your changes',exact:true}).click();
       await expect(page.locator('.session .info .pop bdi')).toHaveText(name);
       await page.keyboard.press('Escape');

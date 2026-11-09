@@ -45,12 +45,13 @@ for (const lang of ['he','en']) for (const theme of ['light','dark']) for (const
     await page.goto('/');
     const picker=page.getByRole('button', {name:lang==='he'?'בחירות':'Election',exact:true});
     await choose(picker, 'k26');
-    // phones (owner, 9 Nov 2026): one-row bar; its Menu button carries the mark and About is in the Menu
-    if (phone) await expect(page.locator('.band .band-menu-btn')).toHaveAttribute('aria-label', new RegExp(lang==='he'?'הפרסום ברשומות טרם אומת':'Gazette not yet verified'));
+    // phones (owner, 9 Nov 2026): one-row bar with About in the Menu. 2026 is gazetted (YP 15100), so neither the
+    // Menu button nor About carries a "not yet verified" mark any more.
+    if (phone) { await expect(page.locator('.band .band-menu-btn')).toHaveAttribute('aria-label', lang==='he'?'תפריט':'Menu'); await expect(page.locator('.band-menu-flag')).toHaveCount(0); }
     expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(60);
     await openBarMenu(page);
-    await expect(page.locator('.election-about summary')).toContainText(lang==='he'?'רשומות: טרם אומת':'Gazette not yet verified');
-    await expect(page.locator('.publication-pending')).toHaveCount(1);
+    await expect(page.locator('.election-about summary')).not.toContainText(lang==='he'?'טרם אומת':'verified');
+    await expect(page.locator('.publication-pending')).toHaveCount(0);
     await page.locator('.election-about summary').click();
     await expect(page.locator('.election-about ul')).toBeVisible();
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth), await page.evaluate(() => [...document.querySelectorAll('body *')].filter(el => { const r = el.getBoundingClientRect(); return r.width > 0 && r.right > innerWidth + 1; }).slice(0, 8).map(el => `${el.tagName}.${el.className}: ${Math.round(el.getBoundingClientRect().width)}px`).join(', '))).toBe(true);
