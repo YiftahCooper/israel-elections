@@ -1,4 +1,4 @@
-// A party's history across elections (docs/design/party-history.md §5.1): which recorded ids are one organisation,
+// A party's history across elections (docs/features/party-history.md): which recorded ids are one organisation,
 // and the whole list it ran in at each election. Only usable identity relations join ids (renames, the same
 // organisation, and a merger's continuing predecessor); a party absorbed by another ends, a split-off starts anew, and
 // "not the same party" facts are never crossed. The series is generic enough to describe a person later (MK history):

@@ -5,8 +5,7 @@ Evidence tiers, independence, certainty levels and conflict rules are now in
 editorial stance and access etiquette.
 
 The order in which sources win when they disagree. It consolidates the source policy in
-[DATA.md](../DATA.md), the owner's editorial stance and the archive notes in
-[archive-access-routes.md](archive-access-routes.md). Retained sources are catalogued in
+[DATA.md](../DATA.md) and the project's editorial stance. Retained sources are catalogued in
 `data/raw/SOURCES.json`; party sites and profiles in `data/meta/party-links/`.
 
 ## Language
@@ -51,7 +50,7 @@ official pages are often shorter or later, and the Hebrew original wins if they 
 - Record a disagreement; never resolve it silently. In the data, keep the winning value and add a note naming the
   other source. Show it in the app only when it matters to the reader.
 - If two sources of the same rank disagree and no higher-ranked source settles it, the item is **disputed**. Present
-  both, with sources, to the owner.
+  both, with sources, and leave the decision to the maintainer.
 
 ## Editorial stance (binding)
 
@@ -72,7 +71,5 @@ official pages are often shorter or later, and the Hebrew original wins if they 
 - User-Agent: `israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections)`. Never send an
   email address.
 - JPress (National Library) shows a bot challenge to scripts. Use only what loads normally.
-- The owner's NLI API key is stored outside the repository at `~/.config/israel-elections/nli_api_key` (mode 600).
-  Read it into a shell variable; never print, log or commit it, and never put it in a URL that gets logged. On
-  6 Nov 2026 a keyed search still received the same browser challenge (HTTP 403), so the key alone does not grant
-  machine access until NLI confirms it.
+- API keys are kept outside the repository; never print, log or commit them, and never put them in a URL that
+  gets logged.

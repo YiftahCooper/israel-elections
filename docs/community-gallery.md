@@ -28,3 +28,30 @@ Reproduce the deployed index using Node 24:
 `GITHUB_TOKEN=<provided securely in environment> node scripts/build-gallery.ts`,
 then the ordinary build. For an offline deterministic fixture, pass a JSON file
 containing the API pages as the script's first argument. Never commit credentials.
+
+## Publishing and the issue template
+
+Publishing opens a prefilled GitHub issue in a new tab; the visitor signs in and submits it. Everything published,
+including scenario edits, description, tags and GitHub identity, is public, so it must never include private
+information. No token is requested or stored. Likes happen on GitHub. Issue content is untrusted text: React renders
+it without HTML or Markdown interpretation. Metadata and likes are community content, not verified election facts.
+
+Template v1: the exact body is `Scenario gallery v1`, a blank line, and one fenced `json` block. The JSON object has
+required string fields `name`, `description`, `electionId` (`k1`–`k26`), `year` (four digits), `shareLink` (this
+site's exact origin/path plus a base64url `#s=` fragment), and `tags` (array of strings). `buildBody` and
+`parseBody` in `src/app/gallery/gallery.ts` are authoritative. Malformed issues and pull requests are skipped.
+URL validation does not certify scenario content.
+
+## Maintainer setup
+
+Labels, created once on the repository (per-election labels tell apart two elections in the same year):
+
+```bash
+gh label create scenario --repo YiftahCooper/israel-elections --color 1D76DB --description 'Community shared scenario'
+for n in {26..1}; do
+  gh label create "k$n" --repo YiftahCooper/israel-elections --color C5DEF5 --description "Knesset $n election"
+done
+```
+
+Issue submission must be enabled on the repository. Maintainers remove an inappropriate entry by closing or
+unlabelling its issue; it disappears after the next deployment.

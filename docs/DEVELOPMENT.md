@@ -125,9 +125,9 @@ source inputs, accepted outputs and the provenance needed to reproduce them outs
 scratch. The lockfile pins npm dependencies; with unchanged inputs a rebuild leaves every
 generated file byte-for-byte identical. Do not create a second data ledger.
 
-Design review findings are archived in [`.impeccable/critique/`](../.impeccable/critique/),
-including the 4 November 2026 critique. [PRODUCT.md](../PRODUCT.md) records the intended
-audience and product principles, with inferences marked for owner review.
+Design reviews, acceptance reports and design specs are kept in the project's private archive, not here.
+[PRODUCT.md](../PRODUCT.md) records the intended audience and product principles, and
+[DESIGN.md](../DESIGN.md) the design system.
 
 ## Test scope and current limits
 

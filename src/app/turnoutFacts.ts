@@ -1,5 +1,5 @@
-// The Turnout tab's election facts (owner, 8 Nov: "total possible votes ... growth since last election as a percentage
-// and a number"). Official national totals of every election come from the build (virtual:election-totals); the
+// The Turnout tab's election facts (8 Nov): eligible voters and the growth since the last election, as a percentage
+// and a number. Official national totals of every election come from the build (virtual:election-totals); the
 // selected election's figures come from the open scenario, so a what-if turnout shows here at once.
 import TOTALS from 'virtual:election-totals';
 import type { ElectionTotalsRow } from '../../scripts/election-totals-runtime.ts';

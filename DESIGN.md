@@ -538,8 +538,8 @@ Hatching means below threshold, not simply zero seats. A threshold-progress bar
 and seat-change track have different denominators and remain separate. Majority
 markers remain labelled (61 of 120); the independent PM vote uses its labelled
 50% marker. Historical local votes receive no invented geographic scenario delta.
-The complete findings and verification scope are in
-`docs/acceptance/graphics-audit-2026-11-04.md`.
+The complete findings and verification scope are in the 4 November 2026 graphics audit
+(private archive, `docs/reviews/acceptance/graphics-audit-2026-11-04.md`).
 
 ## Primary pickers and precision controls
 
@@ -589,7 +589,7 @@ specs after building; outputs belong in `.backup-scratch/controls/`.
 
 ## Party families
 
-The [family profile design](docs/design/party-families.md) uses separate dated vote-share and absolute-count charts, shared scales and cursor, an exact table and a separate hatched mixed-list segment. Family interpretations retain a quiet sourced-draft label. Personal edits fork definitions; scenario grouping and scaling freeze them in atomic undoable actions. Pale list regions use neutral ink and patterns, and phones stack the charts. A “Seats won” bar chart leads the page: own seats solid in the family colour, every joint-list partner above it striped (partner colour with white), smallest first; the scale is the family's own seats plus a fixed headroom, and taller bars fade out at the top instead of stretching the chart, with every partner keeping a visible slice in the fade's lower half (`src/families/seatBars.ts`).
+The [family profile design](docs/features/party-families.md) uses separate dated vote-share and absolute-count charts, shared scales and cursor, an exact table and a separate hatched mixed-list segment. Family interpretations retain a quiet sourced-draft label. Personal edits fork definitions; scenario grouping and scaling freeze them in atomic undoable actions. Pale list regions use neutral ink and patterns, and phones stack the charts. A “Seats won” bar chart leads the page: own seats solid in the family colour, every joint-list partner above it striped (partner colour with white), smallest first; the scale is the family's own seats plus a fixed headroom, and taller bars fade out at the top instead of stretching the chart, with every partner keeping a visible slice in the fade's lower half (`src/families/seatBars.ts`).
 
 The summary, graphics, edit markers, list details and Compare defaults share
 `useActiveReference`: official when pinned, otherwise the loaded/saved reference.
@@ -602,7 +602,7 @@ hidden duplicate selectors or rely on CSS to conceal them.
 
 ### Family profiles: visual pass
 
-Family chips are selection and comparison. Full-width 300px charts (240px on phones) lead; the exact table is disclosed. Mixed lists (family + other parties) has four named options — Show hatched, Count if family heads it, Count all, Leave out — each with an icon of its chart mark; 2026 points are hollow with pending-publication tooltips. Edit membership is an independent-election sheet; scaling previews before/after seat strips. Overview adds labelled brackets to family list runs without changing seat ordering. See [the built design](docs/design/party-families.md) for runtime/evidence loading and the explicit exact-figures preference.
+Family chips are selection and comparison. Full-width 300px charts (240px on phones) lead; the exact table is disclosed. Mixed lists (family + other parties) has four named options — Show hatched, Count if family heads it, Count all, Leave out — each with an icon of its chart mark; 2026 points are hollow with pending-publication tooltips. Edit membership is an independent-election sheet; scaling previews before/after seat strips. Overview adds labelled brackets to family list runs without changing seat ordering. See [the built design](docs/features/party-families.md) for runtime/evidence loading and the explicit exact-figures preference.
 
 
 Small blocs at either end use the same bordered regions as all other blocs;

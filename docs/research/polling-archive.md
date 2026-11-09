@@ -159,23 +159,6 @@ Some sources are HTTP 403, some timeout/503, and two N12 HTTP-200 bodies are acc
 
 The draft deliberately leaves missing fieldwork dates null and keeps literal below-threshold percentages without inventing seat zeroes. All records have `scenarioEligible:false`. These are research transcriptions, not final independently double-entered data. Source names, metadata conflicts, five partial tables, 15 acquisitions and archive captures need review before ingestion.
 
-## 7. Proposed implementation plan and effort
-
-Engineering estimates below are **inferred person-days**, excluding licensed archive access, permission waits and unbounded historical discovery. No implementation or new package is included in this commit.
-
-| Step | Files/components | Deliverable and acceptance | Effort |
-|---|---|---|---:|
-| Finish k25 evidence | `data/raw/polls/k25/`, reviewed crosswalk under `data/meta/` | Resolve 15 acquisitions, full chart names, methods/null reasons, variants and both inconsistent totals; two-person or independent double transcription; stable captures/rights decision | 3–6 days if access works; otherwise unresolved |
-| Schema + build | Separate polling types alongside `src/data/schema.ts`; proposed `scripts/build-polls.ts`; extend data build orchestration | Validate schema, IDs/source hashes, dates, duplicates, variant families, bounds, sums only when complete; quarantine rather than normalize; generate `public/data/polls/index.json` and per-election shards | 2–3 |
-| Election browse/details | `TopBar.tsx`, `Panels.tsx`; proposed `PollArchive.tsx`, `PollDetail.tsx`; existing `i18n.ts` | One “סקרים לפני הבחירות” entry, election/date/outlet filters, Hebrew-first table, source/method drawer, obvious incomplete/archived labels. Simple signposts existence; detailed exploration in Standard/Expert | 2–3 |
-| List history | `ListDetail.tsx`, `Charts.tsx`; proposed `PollTrend.tsx` | Per-list seats/share series, outlet toggles, entity breaks, fieldwork tooltip, gaps and matching data table; no chart made from zero-filled missing values | 2–3 |
-| Optional scenario import | `Scenarios.tsx`, `Compare.tsx`, `ChangeSummary.tsx`, `src/app/store.ts`, model validation; proposed `PollScenarioDialog.tsx` | Atomic undoable import using existing scenario validation; source + synthetic-input method/version carried through save/share/export; observed seats alongside computed seats; no backwards filling from election result | 3–5 |
-| Release checks | Existing tests plus focused new build/import/chart coverage | Source-figure checks, malformed/repeated poll rejection, split-list breaks, threshold/share denominator cases, synthetic forward-check/mismatch, save/share replay; actual keyboard/RTL/mobile/chart-table verification before accessibility claims | 2–3 |
-
-Browse/trends plus source completion: roughly **11–18 person-days**. Optional synthetic import adds **3–5**. These are rough estimates, not a commitment. Historical backfill is a separate evidence programme: budget a trial day per early election and stop to report access limitations rather than promising a full 1949–2026 time series.
-
-Keep the current exact engine and static deployment. Poll data is loaded only for the selected election; official result remains the baseline until a user explicitly loads a scenario. Do not insert polling source documents into the official-results manifest as if they were CEC-certified returns. Retain this research and raw draft separately; production adoption should record its chosen mapping/method as a reviewed project decision.
-
 ## Evidence map, reusable source cards and research limits
 
 This report is the compact source archive for this objective; no parallel research ledger is needed. The JSON source manifest contains individual pilot document locators/captures/hashes. Each source below is journalism unless described otherwise; access was public, inspected through a custom-UA HTTP capture unless marked discovery-only. Shared polling waves and the same mutable page do not count as independent evidence.
@@ -282,13 +265,3 @@ This report is the compact source archive for this objective; no parallel resear
 Search streams were source identity/era coverage, early archival counterexamples, statutory/rights texts, k25 acquisition, and inverse-method failure modes. Hebrew/English searches excluded English Wikipedia where filters were specified; incidental search results pointing there were discarded, never opened, cited or followed. Direct source/archival requests used the required User-Agent; search-provider internal transport headers are not exposed. No paywall, CAPTCHA or login was bypassed. Network DNS initially failed in the sandbox; authorized network execution enabled custom-UA fetching. No source-status failure was treated as a recovered article.
 
 The deliberate challenge pass found pre-1980s academic data, old statutory wording, shared outlet producers, partial HTTP-200 bodies, 119/121-seat prose, and unweighted raw shares; these changed the recommendation. Source independence is bounded above; news citations across every era, archive coverage and earliest dates remain explicitly unresolved. Search-engine total recall, citation prevalence in the whole Israeli news universe, audience expectations and microdata accuracy were **not measured**. Source retrieval counts are not page-depth metrics. No chart or trend forecast was generated, and no application tests/build are claimed for this research-only change.
-
-## Owner decisions (4 November 2026)
-
-1. **Polling is its own window.** It covers only elections with wide, reliable polling that a serious project can stand behind. Earlier elections stay unsupported unless a sound way to include them is found. The work is deferred until the core app works well.
-2. **Pollsters.** Support the established outlets, plus other reputable ones (for example i24). In settings, users can turn individual pollsters on or off. Any average or chart uses only the pollsters a user has enabled. The app never ranks or scores pollsters itself.
-3. **The publication ban is explained in the window's information (i) section.** It is not treated as a problem.
-4. **Evidence storage.**
-   - A **private** collection holds pollsters, findings, method details, relevant graphics and article copies.
-   - The public repository holds the transcribed figures and links to the articles used.
-   - The 22 k25 article copies stay on local branch `t3/5f8b5a14` until that private collection exists.

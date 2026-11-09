@@ -10,7 +10,6 @@
 - **Why the confusion.** The coalition deal did include an optional deputy-minister post in the Prime Minister’s Office for Arab affairs. Ra’am’s religious council never decided to take it up. Two other deputy posts were also offered (one for housing, one for Mazen Ghanaim). None of these offers became an appointment. One news site, The National (24 June 2021), wrote that Abbas took the post. That report is contradicted by the official record.
 - **What Ra’am did have.** Abbas was a Deputy Speaker of the Knesset and chaired its Special Committee for Arab Society Affairs. Ra’am MK Said al-Harumi chaired the Interior and Environmental Protection Committee for part of the term. The cabinet also approved large spending plans for Arab society and the Negev Bedouin. None of this makes someone a minister.
 - **What stays the same.** No data was changed. Even if Abbas had become a deputy minister, the app’s rules would still class Ra’am as a coalition member without ministries, because only a cabinet minister counts as a “member with ministries”.
-- **What you need to decide.** Only whether to add one short explanatory line. See question 19, “Ra’am in 2021: did it hold a ministry?”, on the [questions page](https://claude.ai/artifact/VNauxmRhqwnzvx8JYsxqCu). Option 19a adds one line to Ra’am’s (i) for 2021: “A deputy-minister post was offered in the coalition deal but never taken up.” Option 19b leaves it as it is. The recommendation is 19a. Nothing has been decided yet.
 
 ## The finding in more detail
 

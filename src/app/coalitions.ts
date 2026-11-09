@@ -78,7 +78,7 @@ export function recordedRoles(rows: readonly GovernmentParticipant[], lists: rea
 
 /** Why the loaded roles' arithmetic differs from the recorded confidence vote, from the research itself
  *  (data/meta/aftermath): individual MKs who voted apart from their list (individuals[]; modelled only in a
- *  later stage, docs/design/individual-mks.md), roles left Any, partial participation counted whole, MKs who
+ *  later stage, israel-elections-private docs/design/individual-mks.md), roles left Any, partial participation counted whole, MKs who
  *  voted neither way, and the research's own reconciliation status. null when there is no recorded vote or
  *  the totals agree. */
 export type VoteGapReason =

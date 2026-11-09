@@ -13,6 +13,7 @@
 
 - Owner 9 Nov: party-history charts name each event (a solid line with a label, or a number matching the list when labels don't fit), explain in an (i) why events sit between elections, and shade the selected election instead of a dashed box; no “?” or letter marks; each Compare pairing explains what is compared with what, why and how sure behind an (i) by its tag.
 - Owner 9 Nov: Settings lists every setting at every level, Simple ones first, then Standard and Expert; parties under a joint list follow the level (Simple lists only, Standard parties with seats, Expert all); a first visit follows the device theme from the first paint; (i)s, seat details and chart values open after a short rest and close after a short grace; Simple asks where added votes come from, with each answer's effect; phones get a one-row top bar with a Menu; Ra'am 2021's (i) notes the deputy-minister post offered but never taken up.
+- Docs (9 Nov): the repository keeps what is needed to build the app and check its numbers. Design specs, review and acceptance reports, prior-art studies and other working notes moved to the private archive; new `docs/features/` notes explain how After the election, party history and party families work; `docs/README.md` and `docs/research/README.md` index what is where.
 
 - Data (8 Nov recheck): Yisrael Beytenu 2026 #8–20 biographies link their 26 October Wayback captures (the live pages now redirect home); the Degel HaTorah leaflet (letters עץ) moves from UTJ 1992 to Degel HaTorah 1988; the 1977 candidate-cap note cites the 1 November 1977 transcript.
 - Data (9 Nov): the biography and party-link builders reproduce the committed data offline (audit corrections moved into reviewed inputs; a test fails on drift); 2019–2022 results links say “results”, not “results notice”; older lists no longer link later namesakes (One Israel 1999, Derekh Eretz 2020, the 2026 Reservists–Economic list); two stale k15 list names in link titles corrected; decision 0073 gains a dated addendum on the 1977 transcript.
@@ -20,7 +21,7 @@
 
 - Research: retain the privacy-filtered official party register; confirm NRP–Jewish Home continuity and separate Labor/Meretz registrations, and record the disputed Labor/Democrats name.
 
-- Research: rethink Compare with an audit of current behaviour, in-place comparison precedents, eligible-voter copying examples, history comparisons and ranked recommendations (docs/research/compare-rethink.md).
+- Research: rethink Compare with an audit of current behaviour, in-place comparison precedents, eligible-voter copying examples, history comparisons and ranked recommendations (israel-elections-private docs/research-internal/compare-rethink.md).
 
 - Owner 8 Nov: the “compared with last time” line under each list is off by default (Settings switch; Compare and the list panel keep it); the joint-list split reminder and its (i)s use the owner’s Hebrew and a matching English; Turnout opens with the election’s facts (eligible voters, turnout, votes cast, valid, invalid, threshold, Expert ballot boxes and envelopes) with the change since the previous election, and a 26-election chart and table. Splitting a joint list runs only the parties given votes: a party with no share (17 cases in 13 elections, such as Atid Ehad in 2022) shows “No list of its own” instead of becoming an empty 0-vote list.
 - Docs: eight design and research documents (party history, individual MKs, source policy, trusted sources, archive access, Hebrew quality, Ra’am in 2021, map lines) rewritten in plain language, each opening with “In short”, recording the 8 November owner decisions and ending with technical notes for developers; no facts removed.
@@ -33,7 +34,7 @@
 - Research: assess Hebrew editing tools and native review, with 25 source-linked copy proposals and a practical quality pipeline.
 
 - Grouping and coalition edits count as changes again: moving lists or parties between blocs, creating, renaming or deleting a bloc, custom groupings and coalition roles appear in “N changes”, History, markers and the scenario tint, with “Votes and seats unchanged” when nothing else changed; only colours are exempt (a bloc recolour is still no change).
-- Design: party identity across elections, party history and comparison with the previous election (docs/design/party-history.md).
+- Design: party identity across elections, party history and comparison with the previous election (israel-elections-private docs/design/party-history.md; public summary docs/features/party-history.md).
 - Numbers: Max decimal places defaults to 1/2/3 by level and drops trailing zeros; every rounded percentage and percentage-point change shows its exact value on hover, focus or tap. The joint-list split reminder has “Don’t show again” (back in Settings → Editing), and 2013’s declared versus detailed totals are noted behind (i).
 
 - Map: keep Hebrew sentence punctuation outside Latin-reference isolation, join the Ramadin source splice exactly, and name OpenStreetMap in full.

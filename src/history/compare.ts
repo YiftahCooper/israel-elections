@@ -1,4 +1,4 @@
-// "Comparable predecessor" (docs/design/party-history.md §3.4): the one rule every comparison of a list with an
+// "Comparable predecessor" (docs/features/party-history.md §1.4): the one rule every comparison of a list with an
 // earlier election uses (the results rows, the list panel, Compare's notes and reasons).
 // - Counted: an earlier list counts WHOLE when all its parties are on this list (following renames and mergers).
 // - Not counted: an earlier list that also held parties now elsewhere is named and left out; its votes cannot be divided.

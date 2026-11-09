@@ -21,7 +21,7 @@ for(let n=1;n<=26;n++){
 }
 // Generated family groupings have two shapes: whole/other, or whole/mixed/other.
 // The persisted preset-change evidence supplies the original family seed for a before/after comparison.
-let previousFamilies:typeof report=[];try{previousFamilies=JSON.parse(readFileSync('docs/acceptance/colour-preset-changes.json','utf8'));}catch{}
+let previousFamilies:typeof report=[];try{previousFamilies=JSON.parse(readFileSync('docs/colour-reports/colour-preset-changes.json','utf8'));}catch{}
 for(const[id,color]of Object.entries(FAMILY_COLOURS))for(const mixed of [false,true]){
  const oldFamily=previousFamilies.find(r=>r.context==='families'&&r.id===id)?.old??color;
  const ids=['selected',...(mixed?['mixed']:[]),'other'],seeds=[color,...(mixed?['#b8a78a']:[]),'#7d8791'],old=[oldFamily,...(mixed?['#b8a78a']:[]),'#7d8791'];
@@ -30,4 +30,4 @@ for(const[id,color]of Object.entries(FAMILY_COLOURS))for(const mixed of [false,t
 }
 const recorded=new Map(previousFamilies.map(r=>[r.context+'|'+r.id,r.new]));
 console.log(JSON.stringify(report.filter(r=>recorded.get(r.context+'|'+r.id)!==r.new),null,2));
-if(write){mkdirSync('docs/acceptance',{recursive:true});const path='docs/acceptance/colour-preset-changes.json';let previous:typeof report=[];try{previous=JSON.parse(readFileSync(path,'utf8'));}catch{}const merged=new Map<string,typeof report[number]>();for(const r of [...previous,...report]){const k=r.context+'|'+r.id;merged.set(k,{...r,old:merged.get(k)?.old??r.old});}writeFileSync(path,JSON.stringify([...merged.values()].filter(r=>r.old!==r.new),null,2)+'\n');}
+if(write){mkdirSync('docs/colour-reports',{recursive:true});const path='docs/colour-reports/colour-preset-changes.json';let previous:typeof report=[];try{previous=JSON.parse(readFileSync(path,'utf8'));}catch{}const merged=new Map<string,typeof report[number]>();for(const r of [...previous,...report]){const k=r.context+'|'+r.id;merged.set(k,{...r,old:merged.get(k)?.old??r.old});}writeFileSync(path,JSON.stringify([...merged.values()].filter(r=>r.old!==r.new),null,2)+'\n');}

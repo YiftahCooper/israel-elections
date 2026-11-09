@@ -19,8 +19,7 @@ classifications deterministically and verifies source hashes; it requires no net
 
 Official sources come first: the law, the Central Elections Committee, Reshumot, the Knesset (including its
 OData service), the Central Bureau of Statistics and gov.il. Secondary sources are labelled as such in
-`SOURCES.json` and in the app. **English-language Wikipedia is never used, cited or linked**: the owner
-considers it unreliable on Israel-related information. Hebrew Wikipedia may serve only as a lead to an
+`SOURCES.json` and in the app. **English-language Wikipedia is never used, cited or linked**. Hebrew Wikipedia may serve only as a lead to an
 official document or as a labelled secondary source. Evidence tiers, corroboration and the certainty of
 historical claims follow [source-policy.md](source-policy.md).
 

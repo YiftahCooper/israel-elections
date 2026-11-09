@@ -1,6 +1,6 @@
 import { percent, rationalPoints } from '../components/Percentage.tsx';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
-// The Compare workbench (docs/design/compare-workbench.md): two live sides pinned left → right in both languages,
+// The Compare workbench (israel-elections-private docs/design/compare-workbench.md): two live sides pinned left → right in both languages,
 // their chambers and blocs, one head-to-head table of paired lists, and copies between the sides.
 import { useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';

@@ -10,8 +10,7 @@
 - **How accurate it is.** These are approximate historical and map-scale lines, not land surveys. Lines taken straight from UN maps are as precise as those maps' printed scale allows (about ±200 m for the Blue Line, ±210 m on the Golan); the traced Jerusalem lines fit their UN map's control points within 8–59 m. Where sources disagree (some armistice stretches, by up to about 843 m), the (i) says so, and the line disappears when you zoom in so far that the uncertainty would show.
 - **How it was checked.** A separate reviewer checked the lines three times, re-measuring them against the 1949 maps signed by both sides, UN maps and the treaty texts. Every problem found was fixed or openly disclosed. The details are below.
 - **Sources used.** Shapes come from the signed 1949 maps, UN maps, treaty texts, Israeli official records and scholarship. OpenStreetMap (a free, volunteer-made world map) is used only where it agrees with those, and the difference is stated. No advocacy-group maps were used, from any side. No English Wikipedia was used.
-- **Already decided by the owner (7 Nov).** Keep the armistice lines, UN zones and similar lines, each with a correct explanation. The security barrier is optional and not urgent. Official non-partisan Israeli sources (Survey of Israel, govmap, IDF/COGAT, MFA) are acceptable primary sources for map lines.
-- **What the owner needs to do.** Nothing needs a decision. On the [questions page](https://claude.ai/artifact/VNauxmRhqwnzvx8JYsxqCu), question 15 ("Map lines: how the review went") summarises the review; if any line looks wrong, say where. Question 16 ("The Jordan line along Judea and Samaria: what the treaty says") explains why one stretch of the Jordan line is drawn differently.
+- **Scope (7 Nov).** The armistice lines, UN zones and similar lines are shown, each with a correct explanation. Official non-partisan Israeli sources (Survey of Israel, govmap, IDF/COGAT, MFA) are acceptable primary sources for map lines.
 
 ## Terms used in this document
 
@@ -105,7 +104,7 @@ Each layer has its own switch and (i). The table gives the overview; the details
 - **What it is:** the stretch of the Jordan line that faces Judea and Samaria. The 1994 treaty (Annex I(a), section 2.A.7) requires it to be shown differently on maps, with a fixed sentence saying that it is an administrative line and settles nothing about the territory's status.
 - **Sources:** the same OpenStreetMap data; the MFA's English Annex I(a) 2.A.7; the official government Hebrew text.
 - **What is drawn:** a separate dash style, with the treaty's own disclaimer quoted. The stretch is identified from the source map's labels and the connecting river line. Its northern end is at 35.5549603 E, 32.3890173 N, where the Green Line meets the Jordan. It is not cut at an arbitrary latitude.
-- **Shown:** yes. Question 16 on the questions page explains this in more detail.
+- **Shown:** yes.
 
 ### Lebanon · Blue Line
 
@@ -141,7 +140,7 @@ Why this map and not others: an earlier comparison with the UN's 1:1 million int
 
 ### Security barrier (not shown)
 
-Sources looked at: OpenStreetMap and a candidate OCHA status list. No dated, independently defensible split between built and planned sections was found, so the layer is not shown. The owner has said it is optional and not urgent.
+Sources looked at: OpenStreetMap and a candidate OCHA status list. No dated, independently defensible split between built and planned sections was found, so the layer is not shown. It is optional.
 
 ## Jerusalem: lining up the UN map, and where the lines stop
 
@@ -154,7 +153,7 @@ To use UN map 229, its scan had to be lined up with real coordinates. The kept [
 ## Official texts, and exactly what each source covers
 
 - [MFA, *Jerusalem — Legal and Political Background*](https://www.gov.il/en/pages/jerusalem-legal-and-political-background), by Ruth Lapidoth, 30 June 1998. Read directly. It describes separately the Government House civilian zone, the no-entry no-man's-land, and Mount Scopus and Augusta Victoria under UN protection.
-- [Israel State Archives, סיפורו של הקו העירוני ("the story of the city line")](https://catalog.archives.gov.il/site/chapter/the-urban-line-2/). Quotations from it in the owner-supplied review support the Government House and Mount Scopus status and the Isawiya distinction. During this correction, normal browser access returned "Forbidden", and the reviewer's saved copy also contains only "Forbidden". These are quotations credited to the review; we do not claim to have read the page or a map from it directly. No way around the block was attempted.
+- [Israel State Archives, סיפורו של הקו העירוני ("the story of the city line")](https://catalog.archives.gov.il/site/chapter/the-urban-line-2/). Quotations from it in the review supplied to the project support the Government House and Mount Scopus status and the Isawiya distinction. During this correction, normal browser access returned "Forbidden", and the reviewer's saved copy also contains only "Forbidden". These are quotations credited to the review; we do not claim to have read the page or a map from it directly. No way around the block was attempted.
 - [Yoram Frid, Tel Aviv University, *Israel* 31–32 (2024)](https://humanities.tau.ac.il/sites/humanities.tau.ac.il/files/media_server/humanities/zionism/%D7%99%D7%A9%D7%A8%D7%90%D7%9C/31-32/yoram_frid.pdf), pp. 463–484, especially 470–473. The kept PDF was read, and the publisher's issue page confirms the link. Grid lines 128 and 130, the civilian arrangement and the Latrun closure are sourced here.
 - [MFA, 1994 Israel–Jordan peace treaty](https://www.gov.il/en/pages/israel-jordan-peace-treaty) and [Annex I](https://www.gov.il/en/pages/israel-jordan-peace-treaty-annex-1). The English Article 3(2) and section 2.A.7 were read directly. The exact quotations in both languages, with their locations, are in [official-treaty-excerpts.json](../../data/raw/map-lines/official-treaty-excerpts.json).
 - **Where the Hebrew treaty text comes from.** The MFA's Hebrew page could not be opened normally (it was blocked by Cloudflare). So the Hebrew is copied word for word from the **official government Hebrew record, State Archives file 9628/5**, from [the scanned original](https://commons.wikimedia.org/wiki/File:Israeli_government_original_hebrew_copy_of_the_peace_agreement.pdf), kept locally. PDF pages 5 and 18 were checked by eye. It is **not our translation, and we do not claim it was read from the MFA's Hebrew page**. One wording difference: the archive's Annex introduction says "הגדה המערבית" and its English counterpart says "West Bank", whereas the MFA's English version says "territory that came under…1967". The required disclaimer agrees in substance. The app keeps each published version as it is and never silently changes words inside a quotation. The app's own label remains "Judea and Samaria".

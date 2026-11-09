@@ -1,8 +1,8 @@
 # Aftermath editorial review, k1–k26
 
 Reviewed 5 November 2026 on `t3/3b034f25`, after the requested fast-forward merge
-of `integ-1105` to `5b9e667`. Read COMMON.md (including the binding owner stance),
-PROMOTE.md, the design and aftermath research handoffs. This report supersedes the
+of `integ-1105` to `5b9e667`. Read the project editorial stance
+([source hierarchy](source-hierarchy.md#editorial-stance-binding)), the design and aftermath research handoffs. This report supersedes the
 previous handoffs’ editorial descriptions where the copy or source hierarchy below
 has changed. These remain research pilots, not wired into the application.
 
@@ -13,7 +13,7 @@ policy; no selective political reactions were added. Event counts and pending
 candidates are unchanged. Results, formation, governments, recommendations, coalitions,
 issue polling and government/term boundaries are unchanged.
 
-The owner's Israeli, Zionist civic stance is now in the design's copy rules.
+The project's editorial stance is now in the [copy rules](../features/after-the-election.md#copy-rules).
 Israeli official/academic accounts anchor terminology; domestic political disputes
 remain factual and attributed. Neither approval nor criticism of Israeli parties,
 proposals, protests, Oslo or disengagement is adopted. The short bilingual text is

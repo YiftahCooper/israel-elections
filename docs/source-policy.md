@@ -9,9 +9,8 @@ fact, date, number and source of the earlier version is kept.*
   whom to the President after an election, which parties were in a government or supported it from outside, when a
   government was formed or fell, which "family" a party belongs to, and whether a candidate in our data is the same
   person as a Knesset member.
-- **Why it exists.** On 7 November the owner asked for a source-reliability policy: official records first, then
-  reliable historians and journalists, with a way to rank them when the official record is missing. This document is
-  that policy.
+- **Why it exists.** The app needs one source-reliability rule: official records first, then reliable historians
+  and journalists, with a way to rank them when the official record is missing. This document is that policy.
 - **The ladder of sources.** Five levels, from strongest to weakest: the official record made at the time; news
   reports from the time; academic and institutional history; later journalism; and "pointers" that only help us find
   evidence (Hebrew Wikipedia is one; English Wikipedia is never used at all).
@@ -25,9 +24,6 @@ fact, date, number and source of the earlier version is kept.*
   later.
 - **Neutral means not partisan within Israeli politics.** Israeli and Hebrew sources are welcome and are the main
   body of evidence. Opinion columns and advocacy groups from any camp are not evidence.
-- **Nothing to decide here.** A related open question, question 5 "After the election: two sourcing rules" (how
-  polls are sourced, and whether to publish partial context), is on the
-  [questions page](https://claude.ai/artifact/VNauxmRhqwnzvx8JYsxqCu).
 
 ## What the policy covers
 

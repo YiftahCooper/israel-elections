@@ -145,7 +145,7 @@ describe('the later election drawn on the left', () => {
   });
 });
 
-// docs/design/party-history.md §2.3: the three matcher behaviours fixed with the shared relations
+// The three matcher behaviours (party-history design audit, israel-elections-private docs/design/party-history.md §2.3) fixed with the shared relations
 describe('matcher fixes', () => {
   const pair = (x: string, y: string) => matchRows(baselineOf(load(x)), baselineOf(load(y)));
   it('1. a documented split stays linked when its parent list joined a merged row (Independent Liberals 1965)', () => {

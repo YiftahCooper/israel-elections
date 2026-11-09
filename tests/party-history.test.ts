@@ -16,7 +16,7 @@ const withoutDemocrats = RELATIONS.filter((r) => !DEMOCRATS.includes(r.id));
 const names = (ids: string[]) => ids.map((id) => historyList('k25', id)?.shortEn ?? historyList('k26', id)?.shortEn);
 const k26 = (id: string, rels = withDemocrats) => comparableFor('k26', `26-${id}`, rels)!;
 
-describe('the 2026 comparison table (§3.4)', () => {
+describe('the 2026 comparison table (docs/features/party-history.md §1.4)', () => {
   it('Joint List: Hadash–Ta’al + Balad, combined 5 → 11', () => {
     const c = k26('ודם');
     expect(c.kind).toBe('combined');

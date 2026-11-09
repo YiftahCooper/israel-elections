@@ -1,4 +1,4 @@
-// Pairs the lists of two sides of a comparison (design: docs/design/compare-workbench.md §5).
+// Pairs the lists of two sides of a comparison (design: israel-elections-private docs/design/compare-workbench.md §5).
 // Across elections, lists are paired only from sourced party records (data/meta/parties.json appearances and the
 // documented lineage edges), never by name, ballot letters or vote rank. Within one election, lists are paired by
 // their origin (originIds), as the scenario's merges, splits and added lists record it.
