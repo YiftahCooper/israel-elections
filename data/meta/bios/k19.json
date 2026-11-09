@@ -1756,6 +1756,22 @@
    "confidence": "medium",
    "basis": "not elected; identical name, the only person with it who served as MK; Knesset 17 faction \"העבודה בראשות אהוד ברק\" shares \"העבודה\"; surname unique among MKs"
   },
+  "19-אמת#19": {
+   "knessetPersonId": 17630,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/850",
+    "siteId": 850,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "נינו אבסדזה",
+    "url": "https://he.wikipedia.org/wiki/%D7%A0%D7%99%D7%A0%D7%95_%D7%90%D7%91%D7%A1%D7%93%D7%96%D7%94",
+    "via": "wikidata Q2330582"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected; reviewed decision: Election-specific identity reviewed 9 Nov 2026: Identifies incumbent MK Nino Abesadze as No. 19 on Labor’s 2013 list, connecting candidacy directly to service. Source: https://www.mako.co.il/news-elections-2013/articles/Article-32768de6a97ab31006.htm (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
   "19-אמת#21": {
    "knessetPersonId": 12966,
    "knesset": {
@@ -2591,6 +2607,22 @@
    "party": null,
    "confidence": "medium",
    "basis": "not elected; identical name, the only person with it who served as MK; Knesset 18 faction \"התנועה בראשות ציפי לבני\" shares \"לבני\""
+  },
+  "19-צפ#9": {
+   "knessetPersonId": 30686,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1006",
+    "siteId": 1006,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מירב כהן",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%99%D7%A8%D7%91_%D7%9B%D7%94%D7%9F",
+    "via": "wikidata Q7030786"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected; reviewed decision: Election-specific identity reviewed 9 Nov 2026: 22 Jan 2013 identifies Hatnua No. 9 as Jerusalem councillor Merav Cohen, with spouse and age, the later MK. Source: https://www.mako.co.il/news-elections-2013/articles/Article-fcbc3fb19e06c31006.htm (data/raw/research/mk-runs-1109.reviewed.json)."
   },
   "19-צפ#10": {
    "knessetPersonId": 12965,

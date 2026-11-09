@@ -2,6 +2,7 @@
 
 ## 7 November 2026 — Settings
 
+- MK histories: add 14 source-confirmed candidate runs and complete official rosters for Lider (2003) and the Jewish National Front (2006); retain unresolved identity exclusions.
 - Data: audit every elected joint-list member’s missing party (1977 Mwais; 1999 Mahameed), retain explicit evidence gaps and strengthen four 1999 UAL attributions with Knesset and IDI sources.
 
 - Party families: a new “Seats won” chart (above the vote charts, every level) draws the family’s own seats solid and every party elected with it on a joint list striped above, smallest first, from the elected members’ parties (nothing estimated); bars taller than the chart fade out at the top while every partner keeps a visible slice, the label reads “7 +28”, hover, tap or arrow keys give each segment’s party, seats, list and year, and “Show partners” (on by default) is remembered.

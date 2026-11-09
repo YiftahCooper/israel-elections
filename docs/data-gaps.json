@@ -1,11 +1,11 @@
 {
   "schemaVersion": 3,
-  "total": 11458,
+  "total": 11473,
   "counts": {
-    "unknown": 6950,
+    "unknown": 6963,
     "missing-field": 283,
     "conflict": 18,
-    "single-source": 2451,
+    "single-source": 2453,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1167,
@@ -15,7 +15,7 @@
   "countsByStatus": {
     "inferred-not-verified": 1032,
     "needs-current-status-review": 313,
-    "open": 10113
+    "open": 10128
   },
   "countsByImportance": {
     "high": {
@@ -27,20 +27,20 @@
       "unknown": 240
     },
     "medium": {
-      "total": 3596,
+      "total": 3592,
       "confirmed": 580,
       "probable": 235,
       "provisional": 549,
       "disputed": 7,
-      "unknown": 2225
+      "unknown": 2221
     },
     "low": {
-      "total": 7035,
+      "total": 7054,
       "confirmed": 570,
       "probable": 0,
       "provisional": 805,
       "disputed": 0,
-      "unknown": 5660
+      "unknown": 5679
     }
   },
   "claimCertainty": {
@@ -81,7 +81,7 @@
     },
     "Candidate identity links": {
       "confirmed": 3217,
-      "probable": 27,
+      "probable": 41,
       "provisional": 534,
       "disputed": 0,
       "unknown": 0
@@ -362,8 +362,8 @@
       "election": "k16",
       "total": 409,
       "highOpen": 12,
-      "mediumOpen": 145,
-      "low": 216,
+      "mediumOpen": 143,
+      "low": 218,
       "counts": {
         "unknown": 216,
         "missing-field": 25,
@@ -378,12 +378,12 @@
     },
     {
       "election": "k17",
-      "total": 397,
+      "total": 396,
       "highOpen": 7,
-      "mediumOpen": 131,
-      "low": 228,
+      "mediumOpen": 129,
+      "low": 229,
       "counts": {
-        "unknown": 227,
+        "unknown": 226,
         "missing-field": 17,
         "conflict": 0,
         "single-source": 104,
@@ -396,12 +396,12 @@
     },
     {
       "election": "k18",
-      "total": 475,
+      "total": 476,
       "highOpen": 7,
       "mediumOpen": 99,
-      "low": 344,
+      "low": 345,
       "counts": {
-        "unknown": 303,
+        "unknown": 304,
         "missing-field": 0,
         "conflict": 1,
         "single-source": 66,
@@ -414,12 +414,12 @@
     },
     {
       "election": "k19",
-      "total": 478,
+      "total": 480,
       "highOpen": 5,
       "mediumOpen": 99,
-      "low": 344,
+      "low": 346,
       "counts": {
-        "unknown": 296,
+        "unknown": 298,
         "missing-field": 0,
         "conflict": 0,
         "single-source": 62,
@@ -432,12 +432,12 @@
     },
     {
       "election": "k20",
-      "total": 446,
+      "total": 448,
       "highOpen": 11,
       "mediumOpen": 105,
-      "low": 307,
+      "low": 309,
       "counts": {
-        "unknown": 289,
+        "unknown": 291,
         "missing-field": 0,
         "conflict": 1,
         "single-source": 69,
@@ -450,12 +450,12 @@
     },
     {
       "election": "k21",
-      "total": 509,
+      "total": 510,
       "highOpen": 2,
       "mediumOpen": 117,
-      "low": 338,
+      "low": 339,
       "counts": {
-        "unknown": 292,
+        "unknown": 293,
         "missing-field": 0,
         "conflict": 0,
         "single-source": 89,
@@ -468,12 +468,12 @@
     },
     {
       "election": "k22",
-      "total": 483,
+      "total": 484,
       "highOpen": 5,
       "mediumOpen": 88,
-      "low": 351,
+      "low": 352,
       "counts": {
-        "unknown": 273,
+        "unknown": 274,
         "missing-field": 0,
         "conflict": 1,
         "single-source": 103,
@@ -504,12 +504,12 @@
     },
     {
       "election": "k24",
-      "total": 438,
+      "total": 439,
       "highOpen": 12,
       "mediumOpen": 88,
-      "low": 303,
+      "low": 304,
       "counts": {
-        "unknown": 251,
+        "unknown": 252,
         "missing-field": 0,
         "conflict": 1,
         "single-source": 113,
@@ -522,12 +522,12 @@
     },
     {
       "election": "k25",
-      "total": 686,
+      "total": 687,
       "highOpen": 8,
       "mediumOpen": 256,
-      "low": 392,
+      "low": 393,
       "counts": {
-        "unknown": 456,
+        "unknown": 457,
         "missing-field": 0,
         "conflict": 0,
         "single-source": 131,
@@ -540,12 +540,12 @@
     },
     {
       "election": "k26",
-      "total": 560,
+      "total": 562,
       "highOpen": 2,
       "mediumOpen": 128,
-      "low": 363,
+      "low": 365,
       "counts": {
-        "unknown": 271,
+        "unknown": 273,
         "missing-field": 0,
         "conflict": 0,
         "single-source": 139,
@@ -576,15 +576,15 @@
     },
     {
       "election": "cross-election",
-      "total": 1436,
+      "total": 1441,
       "highOpen": 3,
       "mediumOpen": 245,
-      "low": 1064,
+      "low": 1069,
       "counts": {
-        "unknown": 1038,
+        "unknown": 1041,
         "missing-field": 35,
         "conflict": 5,
-        "single-source": 305,
+        "single-source": 307,
         "low-confidence": 0,
         "release-hold": 0,
         "inferred": 4,
@@ -924,10 +924,10 @@
     {"election":"k15","area":"Government","count":1,"certainty":{"unknown":1}},
     {"election":"k15","area":"Reactions","count":1,"certainty":{"unknown":1}},
     {"election":"k16","area":"Family classifications","count":58,"certainty":{"probable":4,"provisional":21,"unknown":33}},
-    {"election":"k16","area":"data/raw/kN/candidates.reviewed.json lists","count":27,"certainty":{"unknown":27}},
-    {"election":"k16","area":"Published lists","count":14,"certainty":{"unknown":14}},
+    {"election":"k16","area":"data/raw/kN/candidates.reviewed.json lists","count":26,"certainty":{"unknown":26}},
     {"election":"k16","area":"List metadata","count":13,"certainty":{"probable":2,"unknown":11}},
     {"election":"k16","area":"Party appearances","count":13,"certainty":{"unknown":13}},
+    {"election":"k16","area":"Published lists","count":13,"certainty":{"unknown":13}},
     {"election":"k16","area":"data/meta/election-context.json events","count":9,"certainty":{"probable":2,"provisional":5,"unknown":2}},
     {"election":"k16","area":"Term events","count":4,"certainty":{"probable":4}},
     {"election":"k16","area":"data/raw/kN/localities.reviewed.json rows","count":2,"certainty":{"unknown":2}},
@@ -936,9 +936,9 @@
     {"election":"k16","area":"Government","count":1,"certainty":{"unknown":1}},
     {"election":"k16","area":"Reactions","count":1,"certainty":{"unknown":1}},
     {"election":"k17","area":"Family classifications","count":45,"certainty":{"probable":2,"provisional":16,"unknown":27}},
-    {"election":"k17","area":"data/raw/kN/candidates.reviewed.json lists","count":33,"certainty":{"provisional":8,"unknown":25}},
+    {"election":"k17","area":"data/raw/kN/candidates.reviewed.json lists","count":32,"certainty":{"provisional":8,"unknown":24}},
     {"election":"k17","area":"Party appearances","count":20,"certainty":{"unknown":20}},
-    {"election":"k17","area":"Published lists","count":13,"certainty":{"unknown":13}},
+    {"election":"k17","area":"Published lists","count":12,"certainty":{"unknown":12}},
     {"election":"k17","area":"List metadata","count":4,"certainty":{"unknown":4}},
     {"election":"k17","area":"Term events","count":4,"certainty":{"probable":4}},
     {"election":"k17","area":"data/meta/election-context.json events","count":3,"certainty":{"provisional":2,"unknown":1}},
@@ -1069,7 +1069,7 @@
     {"election":"cross-election","area":"data/raw/registrar/parties-2026-11-08.json metadata","count":1,"certainty":{"unknown":1}}
   ],
   "low": [
-    {"area":"data/meta/bios/kN.json candidates","count":4052,"open":4052},
+    {"area":"data/meta/bios/kN.json candidates","count":4066,"open":4066},
     {"area":"Published lists","count":800,"open":569},
     {"area":"data/meta/parties.json parties","count":567,"open":459},
     {"area":"data/meta/kN.json colours","count":442,"open":442},
@@ -1090,6 +1090,7 @@
     {"area":"data/raw/kN/ratz-odata.json value","count":9,"open":9},
     {"area":"data/raw/bios/party-sources.reviewed.json sources","count":5,"open":5},
     {"area":"data/raw/kN/government-15-positions.json value","count":4,"open":4},
+    {"area":"data/raw/research/mk-runs-1109.reviewed.json runs","count":4,"open":4},
     {"area":"data/meta/logos/README.md","count":3,"open":3},
     {"area":"data/raw/bios/identity-decisions.reviewed.json decisions","count":2,"open":2},
     {"area":"data/raw/kN/knesset-odata-factions.json record","count":2,"open":2},
@@ -1112,6 +1113,7 @@
     {"area":"data/raw/bios/wikidata-israeli-party-members.json knessetSiteId","count":1,"open":1},
     {"area":"data/raw/party-links/overlay-corrections.reviewed.json aliases","count":1,"open":1},
     {"area":"data/raw/party-links/overlay-corrections.reviewed.json overlayReviewedAt","count":1,"open":1},
-    {"area":"data/raw/research/MANIFEST.json note","count":1,"open":1}
+    {"area":"data/raw/research/MANIFEST.json note","count":1,"open":1},
+    {"area":"data/raw/research/mk-runs-1109.reviewed.json coverageReview","count":1,"open":1}
   ]
 }

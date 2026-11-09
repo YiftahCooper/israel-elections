@@ -2268,6 +2268,22 @@
    "confidence": "high",
    "basis": "party site only: the page is the party's own page of this candidate"
   },
+  "21-אמת#10": {
+   "knessetPersonId": 30074,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/927",
+    "siteId": 927,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "חיים ילין (פוליטיקאי)",
+    "url": "https://he.wikipedia.org/wiki/%D7%97%D7%99%D7%99%D7%9D_%D7%99%D7%9C%D7%99%D7%9F_(%D7%A4%D7%95%D7%9C%D7%99%D7%98%D7%99%D7%A7%D7%90%D7%99)",
+    "via": "wikidata Q18120856"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected; reviewed decision: Election-specific identity reviewed 9 Nov 2026: Biography explicitly connects former Yesh Atid MK Haim Yellin to Labor No. 10 in April 2019; confirms no seat and subsequent retirement. N12 contemporaneous report was discovered but opening failed. Source: https://he.wikipedia.org/wiki/חיים_ילין_(פוליטיקאי) (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
   "21-אמת#13": {
    "knessetPersonId": 23570,
    "knesset": {

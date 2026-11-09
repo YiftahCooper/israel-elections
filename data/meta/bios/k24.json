@@ -2770,6 +2770,22 @@
    "party": null,
    "confidence": "medium",
    "basis": "not elected; identical name, the only person with it who served as MK; Knesset 25 faction of list עם"
+  },
+  "24-רף#1": {
+   "knessetPersonId": 4418,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/795",
+    "siteId": 795,
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
+   },
+   "hewiki": {
+    "title": "חיים אמסלם",
+    "url": "https://he.wikipedia.org/wiki/%D7%97%D7%99%D7%99%D7%9D_%D7%90%D7%9E%D7%A1%D7%9C%D7%9D",
+    "via": "wikidata Q84093"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected; reviewed decision: Election-specific identity reviewed 9 Nov 2026: Am Shalem founded by Haim Amsalem, elected for Shas in 2009; stood again in 2021. Retained 2021 list names him first. Source: https://www.idi.org.il/policy/parties-and-elections/parties/am-shalem/ (data/raw/research/mk-runs-1109.reviewed.json)."
   }
  }
 }

@@ -2775,6 +2775,38 @@
    "confidence": "medium",
    "basis": "not elected; identical name, the only person with it who served as MK; Knesset 23 faction \"הרשימה המשותפת\" shares \"המשותפת\"; surname unique among MKs"
   },
+  "26-די#1": {
+   "knessetPersonId": 30680,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/997",
+    "siteId": 997,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יועז הנדל",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%95%D7%A2%D7%96_%D7%94%D7%A0%D7%93%D7%9C",
+    "via": "wikidata Q8054214"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected; reviewed decision: Election-specific identity reviewed 9 Nov 2026: 7 Sep 2026 submission report names Hendel first, Zelekha second, Wilf third and explicitly describes Wilf’s earlier Knesset service. Later official retained list preserves these three places. Source: https://www.israelhayom.co.il/news/politics/article/21371188 (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
+  "26-די#3": {
+   "knessetPersonId": 14470,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/849",
+    "siteId": 849,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "עינת וילף",
+    "url": "https://he.wikipedia.org/wiki/%D7%A2%D7%99%D7%A0%D7%AA_%D7%95%D7%99%D7%9C%D7%A3",
+    "via": "wikidata Q2612852"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected; reviewed decision: Election-specific identity reviewed 9 Nov 2026: 7 Sep 2026 submission report names Hendel first, Zelekha second, Wilf third and explicitly describes Wilf’s earlier Knesset service. Later official retained list preserves these three places. Source: https://www.israelhayom.co.il/news/politics/article/21371188 (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
   "26-י#1": {
    "knessetPersonId": 30118,
    "knesset": {

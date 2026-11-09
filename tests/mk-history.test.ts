@@ -36,6 +36,42 @@ describe('who gets a history', () => {
 });
 
 describe('runs that did not win a seat', () => {
+  it('adds only the 14 source-confirmed identities from the November research review', () => {
+    const audit = JSON.parse(readFileSync('data/raw/research/mk-runs-1109.reviewed.json', 'utf8'));
+    expect(audit.runs).toHaveLength(123);
+    expect(new Set(audit.runs.map((r: { candidateId: string }) => r.candidateId)).size).toBe(123);
+    expect(audit.counts).toEqual({ confirmed: 14, 'ruled out': 17, unknown: 92 });
+    for (const r of audit.runs) {
+      if (r.status === 'confirmed') {
+        expect(personOfCandidate(rt, r.candidateId), r.candidateId).toBe(r.personId);
+        expect(rt.people[r.personId].runs.find((run) => `${run[1]}#${run[2]}` === r.candidateId)?.[4]).toBe('id');
+        expect(r.sourceIds.length).toBeGreaterThan(0);
+      } else {
+        expect(personOfCandidate(rt, r.candidateId), r.candidateId).toBeNull();
+        expect(review.leftOut.some((x) => x.candidateId === r.candidateId)).toBe(true);
+      }
+      expect(r.queries.length, r.candidateId).toBeGreaterThan(0);
+      for (const source of r.sourceIds) expect(audit.sources[source]).toBeDefined();
+    }
+    // The two David Azoulais are different people; the MK was still alive in 2009,
+    // but already stood for Shas. In 2026 his death separately rules the identity out.
+    expect(personOfCandidate(rt, '18-שס#7')).toBe(483);
+    expect(personOfCandidate(rt, '18-כן#79')).toBeNull();
+    expect(personOfCandidate(rt, '26-ל#13')).toBeNull();
+  });
+  it('widens official roster coverage only after reading all ranks in the gazette', () => {
+    for (const [k, id, count] of [[16, '16-ף', 11], [17, '17-כ', 10]] as const) {
+      const l = ds(k).lists.find((l) => l.id === id)!;
+      expect(l.candidates).toHaveLength(count);
+      expect(l.candidates.map((c) => c.rank)).toEqual(Array.from({ length: count }, (_, i) => i + 1));
+      expect(l.candidatesUnavailable).toBeFalsy();
+      expect(l.candidatesTruncated).toBeFalsy();
+      expect(rt.failedRunCoverage.partial[k]).toContain(id);
+    }
+    expect(ds(17).lists.find((l) => l.id === '17-כ')!.candidates[2].nameHe).toBe('בן ארי מיכאל');
+    expect(rt.failedRunCoverage.partial[16]).toHaveLength(14);
+    expect(rt.failedRunCoverage.partial[17]).toHaveLength(19);
+  });
   it('are shown from 2009 on, and in 2003 and 2006 only on the lists we hold in full', () => {
     expect(rt.failedRunCoverage.full).toEqual([18, 19, 20, 21, 22, 23, 24, 25, 26]);
     expect(Object.keys(rt.failedRunCoverage.partial)).toEqual(['16', '17']);

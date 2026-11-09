@@ -1339,9 +1339,9 @@
   "official": false,
   "description": "Reviewed manual candidate-scan transcription with complete or elected-prefix coverage, page references, independent section 4 results-notice names and explicit printed-name variants; non-winning unavailable rosters and prior membership/reserve checks retained",
   "method": "manual-capture",
-  "retrievedAt": "2026-11-03",
-  "bytes": 102222,
-  "sha256": "5c963df363b538b89f4614bbe295315a11167d5fd5b8abfd7a4d6373630054d0"
+  "retrievedAt": "2026-11-09",
+  "bytes": 102992,
+  "sha256": "995f6edbc83a4112e0bbafc86ff1a7c902537f7f341fe7eba478cfbe3bd158dc"
  },
  {
   "id": "k16-localities-reviewed",
@@ -1376,9 +1376,9 @@
   "official": false,
   "description": "Reviewed manual candidate-scan transcription with complete or elected-prefix coverage, page references, independent section 4 results-notice names and explicit printed-name variants; non-winning unavailable rosters and prior membership/reserve checks retained",
   "method": "manual-capture",
-  "retrievedAt": "2026-11-03",
-  "bytes": 141433,
-  "sha256": "70848ca0256f77f7e5ef77cc0cd7b4255367a3a9b4f57c23cbd665a7c5517335"
+  "retrievedAt": "2026-11-09",
+  "bytes": 142118,
+  "sha256": "cde7489fce69f8cd3b39c97ad0dba05d103438e32d0ee193cbc7ac2be0d4af3d"
  },
  {
   "id": "k17-localities-reviewed",

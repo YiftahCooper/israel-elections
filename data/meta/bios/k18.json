@@ -2963,6 +2963,22 @@
    "confidence": "medium",
    "basis": "not an MK; Wikidata Q6682920: identical Hebrew label, party \"עלה ירוק\" (shares \"ירוק\"), born 1972; the article places the person in this election"
   },
+  "18-צי#1": {
+   "knessetPersonId": 23639,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/872",
+    "siteId": 872,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "בועז טופורובסקי",
+    "url": "https://he.wikipedia.org/wiki/%D7%91%D7%95%D7%A2%D7%96_%D7%98%D7%95%D7%A4%D7%95%D7%A8%D7%95%D7%91%D7%A1%D7%A7%D7%99",
+    "via": "wikidata Q3818024"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected; reviewed decision: Election-specific identity reviewed 9 Nov 2026: 11 Jan 2009 identifies Boaz Toporovsky as Tzabar leader and former student leader, the later MK. Source: https://news.walla.co.il/item/1415449 (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
   "18-צי#2": {
    "knessetPersonId": null,
    "knesset": null,

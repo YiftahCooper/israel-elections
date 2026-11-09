@@ -254,7 +254,9 @@ const EXPECTED: Record<Family, string> = {
   // 9 Nov builders reproduce committed data: link titles (k15 two stale names; k22–k25 CEC results web pages), the
   // k12 Derekh Eretz results link, k24 New Economic link (not the 2026 joint list), k9 hewiki title, two new k16/k18
   // bios. Substituting HEAD's k9/k12/k15/k16/k18/k22–k25 reproduces c850387b…; the other four are unchanged.
-  model: 'ae60848d86e24be0f325e63cbc4936777692dbedf694e0cd787850195cddd521',
+  // MQ (9 Nov): 14 reviewed identity links and 21 gazette-transcribed candidates only.
+  // Votes, seats, agreements, rules and the other four differential digests are unchanged.
+  model: '26acbc3b23770851b01c9739f1ce6c5356422b7b7dd58b1a734ea97d5015a99b',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

@@ -1,7 +1,7 @@
 {
   "id": "k17",
   "sourceId": "k17-candidates-gazette",
-  "reviewedOn": "2026-11-06",
+  "reviewedOn": "2026-11-09",
   "method": "Manual visual reading of pdfjs PNG renderings; wasmUrl=node_modules/pdfjs-dist/wasm/. Ranks are printed ranks, page is the gazette page number. Uncertain complete rosters omitted under the owner-approved per-list fallback; no guessed names published. Punctuation in confirmed names follows the scan. Archived primary CEC candidate HTML additionally resolved UTJ/Shas spellings and Kadima line wrapping; all consulted URLs and captured names are retained in candidates-archive.crosscheck.json. Elected-rank review: candidate and section 4 results scans rendered at scale 4 with pdfjs-dist 6.5.438 and local wasmUrl; visually compared name by name. Every winning list retains at least ranks 1..seats. Later unresolved ranks do not suppress a verified prefix. Results spellings and explicit variants are retained separately in electedCrossCheck; no secondary transcription supplies the new published names.",
   "lists": [
     {
@@ -1972,13 +1972,60 @@
       "pages": [
         2192
       ],
-      "candidatesUnavailable": true,
-      "candidates": [],
-      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 2. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
-      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 2. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
-      "unresolvedRanks": [
-        2
-      ]
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "מרזל ברוך מאיר",
+          "page": 2192
+        },
+        {
+          "rank": 2,
+          "nameHe": "חנוקוגלו ישראל",
+          "page": 2192
+        },
+        {
+          "rank": 3,
+          "nameHe": "בן ארי מיכאל",
+          "page": 2192
+        },
+        {
+          "rank": 4,
+          "nameHe": "כהן רחמים",
+          "page": 2192
+        },
+        {
+          "rank": 5,
+          "nameHe": "בן-אליהו חן",
+          "page": 2192
+        },
+        {
+          "rank": 6,
+          "nameHe": "שיפרין אליונור",
+          "page": 2192
+        },
+        {
+          "rank": 7,
+          "nameHe": "אידלברג פול",
+          "page": 2192
+        },
+        {
+          "rank": 8,
+          "nameHe": "ליינסקי שלמה",
+          "page": 2192
+        },
+        {
+          "rank": 9,
+          "nameHe": "גפשטיין בן ציון",
+          "page": 2192
+        },
+        {
+          "rank": 10,
+          "nameHe": "פינטו מיכאל",
+          "page": 2192
+        }
+      ],
+      "reviewNote": "9 November 2026: complete roster visually read at scales 2 and 4 from retained official candidate gazette, printed page 2192; original spelling retained."
     },
     {
       "letters": "כן",
