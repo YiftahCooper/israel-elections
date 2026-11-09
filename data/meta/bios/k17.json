@@ -2174,6 +2174,22 @@
    "party": null,
    "confidence": "high",
    "basis": "elected; Knesset 17 member, name identical (3)"
+  },
+  "17-פ#1": {
+   "knessetPersonId": 30709,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1010",
+    "siteId": 1010,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "עוזי דיין",
+    "url": "https://he.wikipedia.org/wiki/%D7%A2%D7%95%D7%96%D7%99_%D7%93%D7%99%D7%99%D7%9F",
+    "via": "wikidata Q2909767"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected; reviewed decision: Election-specific identity reviewed 9 Nov 2026: 2006 interview identifies Tafnit leader as Major-General Uzi Dayan; same public biography as the later MK. Source: https://www.ynet.co.il/articles/0,7340,L-3225810,00.html (data/raw/research/mk-runs-1109.reviewed.json)."
   }
  }
 }

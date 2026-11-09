@@ -1,0 +1,2734 @@
+{
+  "reviewedAt": "2026-11-09",
+  "scope": "The original 123 left-out runs from the MK history review. Additional roster coverage is reported separately. No identity is inferred from a name alone.",
+  "criterion": "Confirm only an election-specific source identifying the MK; rule out only positive contradictory evidence; otherwise unknown.",
+  "counts": {
+    "confirmed": 14,
+    "ruled out": 17,
+    "unknown": 92
+  },
+  "sources": {
+    "tzinker-2003": {
+      "url": "https://news.walla.co.il/item/332608",
+      "publisher": "Walla",
+      "sourceType": "contemporary report",
+      "accessMethod": "web search and opened source; retained local gazette for roster rank",
+      "inspected": "opened",
+      "evidenceFamily": "tzinker-2003",
+      "note": "7 Jan 2003 interview: the 15th-Knesset MK describes founding Citizen and State and standing for the next Knesset."
+    },
+    "dayan-2006": {
+      "url": "https://www.ynet.co.il/articles/0,7340,L-3225810,00.html",
+      "publisher": "Ynet",
+      "sourceType": "contemporary report",
+      "accessMethod": "web search and opened source; retained local gazette for roster rank",
+      "inspected": "opened",
+      "evidenceFamily": "dayan-2006",
+      "note": "2006 interview identifies Tafnit leader as Major-General Uzi Dayan; same public biography as the later MK."
+    },
+    "toporovsky-2009": {
+      "url": "https://news.walla.co.il/item/1415449",
+      "publisher": "Walla",
+      "sourceType": "contemporary report",
+      "accessMethod": "web search and opened source; retained local gazette for roster rank",
+      "inspected": "opened",
+      "evidenceFamily": "toporovsky-2009",
+      "note": "11 Jan 2009 identifies Boaz Toporovsky as Tzabar leader and former student leader, the later MK.",
+      "corroboration": {
+        "url": "https://he.wikipedia.org/wiki/בועז_טופורובסקי",
+        "sourceType": "labelled secondary",
+        "inspected": "opened, political activity section",
+        "note": "The MK biography explicitly records founding Tzabar in November 2008 and heading its unsuccessful 2009 list; connects the contemporary leader to the later MK. Not counted as independent corroboration."
+      }
+    },
+    "cohen-2013": {
+      "url": "https://www.mako.co.il/news-elections-2013/articles/Article-fcbc3fb19e06c31006.htm",
+      "publisher": "N12",
+      "sourceType": "contemporary report",
+      "accessMethod": "web search and opened source; retained local gazette for roster rank",
+      "inspected": "opened",
+      "evidenceFamily": "cohen-2013",
+      "note": "22 Jan 2013 identifies Hatnua No. 9 as Jerusalem councillor Merav Cohen, with spouse and age, the later MK."
+    },
+    "yachad-2015": {
+      "url": "https://www.israelhayom.co.il/article/254479",
+      "publisher": "Israel Hayom",
+      "sourceType": "contemporary report",
+      "accessMethod": "web search and opened source; retained local gazette for roster rank",
+      "inspected": "opened",
+      "evidenceFamily": "yachad-2015",
+      "note": "30 Jan 2015 describes submission of Eli Yishai and Yoni Chetboun’s Yachad list, Chetboun remaining at No. 2; identifies the incumbent politicians."
+    },
+    "barak-2019": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/democratic-union/",
+      "publisher": "Israel Democracy Institute",
+      "sourceType": "research",
+      "accessMethod": "web search and opened source; retained local gazette for roster rank",
+      "inspected": "opened",
+      "evidenceFamily": "barak-2019",
+      "note": "Identifies Democratic Union as Meretz, Israel Democratic under Ehud Barak, and the Green Movement; former prime minister identity is explicit in contemporary N12 coverage."
+    },
+    "amsalem-2021": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/am-shalem/",
+      "publisher": "Israel Democracy Institute",
+      "sourceType": "research",
+      "accessMethod": "web search and opened source; retained local gazette for roster rank",
+      "inspected": "opened",
+      "evidenceFamily": "amsalem-2021",
+      "note": "Am Shalem founded by Haim Amsalem, elected for Shas in 2009; stood again in 2021. Retained 2021 list names him first."
+    },
+    "avidar-2022": {
+      "url": "https://elections.walla.co.il/item/3530266",
+      "publisher": "Walla",
+      "sourceType": "contemporary report",
+      "accessMethod": "web search and opened source; retained local gazette for roster rank",
+      "inspected": "opened",
+      "evidenceFamily": "avidar-2022",
+      "note": "14 Sep 2022: Eli Avidar submits Israel Free Democratic’s list, with his CEC appearance photographed; same former MK."
+    },
+    "hendel-wilf-2026": {
+      "url": "https://www.israelhayom.co.il/news/politics/article/21371188",
+      "publisher": "Israel Hayom",
+      "sourceType": "contemporary report",
+      "accessMethod": "web search and opened source; retained local gazette for roster rank",
+      "inspected": "opened",
+      "evidenceFamily": "hendel-wilf-2026",
+      "note": "7 Sep 2026 submission report names Hendel first, Zelekha second, Wilf third and explicitly describes Wilf’s earlier Knesset service. Later official retained list preserves these three places."
+    },
+    "nino-2013": {
+      "url": "https://www.mako.co.il/news-elections-2013/articles/Article-32768de6a97ab31006.htm",
+      "publisher": "N12",
+      "sourceType": "contemporary report",
+      "accessMethod": "web search and opened source; retained local gazette for roster rank",
+      "inspected": "opened",
+      "evidenceFamily": "nino-2013",
+      "note": "Identifies incumbent MK Nino Abesadze as No. 19 on Labor’s 2013 list, connecting candidacy directly to service."
+    },
+    "kahalani-2003": {
+      "url": "https://he.wikipedia.org/wiki/אביגדור_קהלני",
+      "publisher": "Hebrew Wikipedia",
+      "sourceType": "labelled secondary",
+      "accessMethod": "web search and opened source; retained local gazette for roster rank",
+      "inspected": "opened",
+      "evidenceFamily": "kahalani-2003",
+      "note": "Biography explicitly records Likud No. 41 in 2003 and refusal to enter in January 2006. Corroborating CEC capture held by IDI: https://www.idi.org.il/media/5993/הליכוד-16.pdf ."
+    },
+    "yellin-2019": {
+      "url": "https://he.wikipedia.org/wiki/חיים_ילין_(פוליטיקאי)",
+      "publisher": "Hebrew Wikipedia",
+      "sourceType": "labelled secondary",
+      "accessMethod": "web search and opened source; retained local gazette for roster rank",
+      "inspected": "opened",
+      "evidenceFamily": "yellin-2019",
+      "note": "Biography explicitly connects former Yesh Atid MK Haim Yellin to Labor No. 10 in April 2019; confirms no seat and subsequent retirement. N12 contemporaneous report was discovered but opening failed.",
+      "corroboration": {
+        "url": "https://www.ynet.co.il/articles/0,7340,L-5467351,00.html",
+        "sourceType": "contemporary report",
+        "inspected": "opened",
+        "note": "21 February 2019 report explicitly identifies the incumbent Yesh Atid MK as Labor’s reserved No. 10."
+      }
+    },
+    "biton-death": {
+      "url": "https://he.wikipedia.org/wiki/אברהם_ביטון",
+      "publisher": "Hebrew Wikipedia",
+      "sourceType": "labelled secondary",
+      "accessMethod": "web search and opened source; retained local gazette for roster rank",
+      "inspected": "opened",
+      "evidenceFamily": "biton-death",
+      "note": "MK biography records death in 2005, before this election. This excludes only the proposed MK identity."
+    },
+    "yehuda-death": {
+      "url": "https://he.wikipedia.org/wiki/חיים_יהודה",
+      "publisher": "Hebrew Wikipedia",
+      "sourceType": "labelled secondary",
+      "accessMethod": "web search and opened source; retained local gazette for roster rank",
+      "inspected": "opened",
+      "evidenceFamily": "yehuda-death",
+      "note": "MK biography records death in 1985, before this election. This excludes only the proposed MK identity."
+    },
+    "efrati-death": {
+      "url": "https://he.wikipedia.org/wiki/יוסף_אפרתי",
+      "publisher": "Hebrew Wikipedia",
+      "sourceType": "labelled secondary",
+      "accessMethod": "web search and opened source; retained local gazette for roster rank",
+      "inspected": "opened",
+      "evidenceFamily": "efrati-death",
+      "note": "MK biography records death in 1975, before this election. This excludes only the proposed MK identity."
+    },
+    "levy-death": {
+      "url": "https://he.wikipedia.org/wiki/דוד_לוי",
+      "publisher": "Hebrew Wikipedia",
+      "sourceType": "labelled secondary",
+      "accessMethod": "web search and opened source; retained local gazette for roster rank",
+      "inspected": "opened",
+      "evidenceFamily": "levy-death",
+      "note": "MK biography records death in 2024, before this election. This excludes only the proposed MK identity."
+    },
+    "azoulay-death": {
+      "url": "https://he.wikipedia.org/wiki/דוד_אזולאי",
+      "publisher": "Hebrew Wikipedia",
+      "sourceType": "labelled secondary",
+      "accessMethod": "web search and opened source; retained local gazette for roster rank",
+      "inspected": "opened",
+      "evidenceFamily": "azoulay-death",
+      "note": "MK biography records death in 2018, before this election. This excludes only the proposed MK identity."
+    },
+    "hazan-death": {
+      "url": "https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL990039415170205171/NLI",
+      "publisher": "National Library of Israel",
+      "sourceType": "archive",
+      "accessMethod": "web search and opened source; retained local gazette for roster rank",
+      "inspected": "opened",
+      "evidenceFamily": "hazan-death",
+      "note": "Authority identifies Yaakov Hazan as 1899–1992; cannot be the 2009 Shas candidate."
+    },
+    "eitan-death": {
+      "url": "https://he.wikipedia.org/wiki/רפאל_איתן",
+      "publisher": "Hebrew Wikipedia",
+      "sourceType": "labelled secondary",
+      "accessMethod": "web search and opened source; retained local gazette for roster rank",
+      "inspected": "opened",
+      "evidenceFamily": "eitan-death",
+      "note": "MK biography explicitly records death on 23 Nov 2004, before the 2009 election; Ministry of Defence indexed biography corroborates this date."
+    },
+    "same-election-id": {
+      "url": "data/meta/bios/",
+      "publisher": "Retained Knesset ID reconciliation",
+      "sourceType": "repository evidence",
+      "accessMethod": "web search and opened source; retained local gazette for roster rank",
+      "inspected": "opened",
+      "evidenceFamily": "same-election-id",
+      "note": "High-confidence ties to an already elected candidate in the same election; a candidate cannot stand twice. See the exact candidate id recorded per conclusion. Source rosters and membership ties are already retained in this repository."
+    }
+  },
+  "runs": [
+    {
+      "candidateId": "16-מחל#41",
+      "nameHe": "קהלני אביגדור",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2574
+      ],
+      "queries": [
+        "\"אביגדור קהלני\" (2003) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "confirmed",
+      "sourceIds": [
+        "kahalani-2003"
+      ],
+      "needed": null,
+      "personId": 2574,
+      "finding": "Biography explicitly records Likud No. 41 in 2003 and refusal to enter in January 2006. Corroborating CEC capture held by IDI: https://www.idi.org.il/media/5993/הליכוד-16.pdf .",
+      "confidence": "high",
+      "confidenceRationale": "Election-specific biography/report ties the candidate to the MK.",
+      "supportingSourceIds": [
+        "kahalani-2003"
+      ],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "16-מחל#75",
+      "nameHe": "סויסה אליהו",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        500
+      ],
+      "queries": [
+        "\"אליהו סויסה\" (2003) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "16-מחל#90",
+      "nameHe": "מזרחי אליעזר",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2457
+      ],
+      "queries": [
+        "\"אליעזר מזרחי\" (2003) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "16-מחל#100",
+      "nameHe": "נוף עקיבא",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2477
+      ],
+      "queries": [
+        "\"עקיבא נוף\" (2003) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "16-נ#2",
+      "nameHe": "גינזבורג איתן",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        30693
+      ],
+      "queries": [
+        "\"איתן גינזבורג\" (2003) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "16-קך#1",
+      "nameHe": "צינקר אלכסנדר",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        553
+      ],
+      "queries": [
+        "\"אלכסנדר צינקר\" (2003) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "confirmed",
+      "sourceIds": [
+        "tzinker-2003"
+      ],
+      "needed": null,
+      "personId": 553,
+      "finding": "7 Jan 2003 interview: the 15th-Knesset MK describes founding Citizen and State and standing for the next Knesset.",
+      "confidence": "high",
+      "confidenceRationale": "Election-specific biography/report ties the candidate to the MK.",
+      "supportingSourceIds": [
+        "tzinker-2003"
+      ],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "16-קך#8",
+      "nameHe": "מלינובסקי יוליה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        23560
+      ],
+      "queries": [
+        "\"יוליה מלינובסקי\" (2003) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "17-כן#47",
+      "nameHe": "אלול רפאל",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2141
+      ],
+      "queries": [
+        "\"רפאל אלול\" (2006 OR 2009) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "17-כן#66",
+      "nameHe": "זמיר אסף",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        30687
+      ],
+      "queries": [
+        "\"אסף זמיר\" (2006) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "17-כן#67",
+      "nameHe": "פרץ יצחק",
+      "reason": "the listed name is tied by ID to more than one person",
+      "personIds": [
+        2558,
+        2559
+      ],
+      "queries": [
+        "\"יצחק פרץ\" (2006 OR 2009 OR 2015) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il",
+        "\"יצחק-חיים פרץ\" (2006 OR 2009 OR 2015) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: the listed name is tied by ID to more than one person",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "17-כן#90",
+      "nameHe": "כחלון משה",
+      "reason": "two candidates with this name in the same election",
+      "personIds": [
+        1034
+      ],
+      "queries": [
+        "\"משה כחלון\" (2006) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "ruled out",
+      "sourceIds": [
+        "same-election-id"
+      ],
+      "needed": null,
+      "finding": "The MK is already tied by official membership to 17-מחל#3. The second candidate is not that MK.",
+      "confidence": "high",
+      "confidenceRationale": "Positive contradiction: death before the election or an official-ID-tied candidacy elsewhere in that same election.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [
+        "same-election-id"
+      ]
+    },
+    {
+      "candidateId": "17-כן#118",
+      "nameHe": "יהב יונה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2371
+      ],
+      "queries": [
+        "\"יונה יהב\" (2006 OR 2009) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "17-פ#1",
+      "nameHe": "דיין עוזי",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        30709
+      ],
+      "queries": [
+        "\"עוזי דיין\" (2006) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "confirmed",
+      "sourceIds": [
+        "dayan-2006"
+      ],
+      "needed": null,
+      "personId": 30709,
+      "finding": "2006 interview identifies Tafnit leader as Major-General Uzi Dayan; same public biography as the later MK.",
+      "confidence": "high",
+      "confidenceRationale": "Election-specific biography/report ties the candidate to the MK.",
+      "supportingSourceIds": [
+        "dayan-2006"
+      ],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "17-זה#1",
+      "nameHe": "נגוסה אברהם",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        30095
+      ],
+      "queries": [
+        "\"אברהם נגוסה\" (2006 OR 2009) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "17-ז#15",
+      "nameHe": "כהן אליהו",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        30083
+      ],
+      "queries": [
+        "\"אלי כהן\" (2006 OR 2022) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "17-פכ#14",
+      "nameHe": "שלמה שמעון",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2209
+      ],
+      "queries": [
+        "\"שמעון בן-שלמה\" (2006) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-כן#79",
+      "nameHe": "אזולאי דוד",
+      "reason": "two candidates with this name in the same election",
+      "personIds": [
+        483
+      ],
+      "queries": [
+        "\"דוד אזולאי\" (2009 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "ruled out",
+      "sourceIds": [
+        "same-election-id"
+      ],
+      "needed": null,
+      "finding": "The MK is already tied by official membership to 18-שס#7. The second candidate is not that MK.",
+      "confidence": "high",
+      "confidenceRationale": "Positive contradiction: death before the election or an official-ID-tied candidacy elsewhere in that same election.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [
+        "same-election-id"
+      ]
+    },
+    {
+      "candidateId": "18-כן#104",
+      "nameHe": "פרץ יצחק",
+      "reason": "the listed name is tied by ID to more than one person",
+      "personIds": [
+        2558,
+        2559
+      ],
+      "queries": [
+        "\"יצחק פרץ\" (2006 OR 2009 OR 2015) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il",
+        "\"יצחק-חיים פרץ\" (2006 OR 2009 OR 2015) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: the listed name is tied by ID to more than one person",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-כן#106",
+      "nameHe": "אלול רפאל",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2141
+      ],
+      "queries": [
+        "\"רפאל אלול\" (2006 OR 2009) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-כן#119",
+      "nameHe": "יהב יונה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2371
+      ],
+      "queries": [
+        "\"יונה יהב\" (2006 OR 2009) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-מחל#57",
+      "nameHe": "אבידר אלי",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        30723
+      ],
+      "queries": [
+        "\"אלי אבידר\" (2009 OR 2022) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-מחל#110",
+      "nameHe": "פורר עודד",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        30121
+      ],
+      "queries": [
+        "\"עודד פורר\" (2009) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-מחל#118",
+      "nameHe": "לוי דוד",
+      "reason": "two candidates with this name in the same election",
+      "personIds": [
+        536
+      ],
+      "queries": [
+        "\"דוד לוי\" (2009 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: two candidates with this name in the same election",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-שס#29",
+      "nameHe": "ביטון אברהם",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2190
+      ],
+      "queries": [
+        "\"אברהם ביטון\" (2009 OR 2013 OR 2015 OR 2019 OR 2021) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "ruled out",
+      "sourceIds": [
+        "biton-death"
+      ],
+      "needed": null,
+      "finding": "The MK died in 2005.",
+      "confidence": "high",
+      "confidenceRationale": "Positive contradiction: death before the election or an official-ID-tied candidacy elsewhere in that same election.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [
+        "biton-death"
+      ]
+    },
+    {
+      "candidateId": "18-שס#77",
+      "nameHe": "חזן יעקב",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2348
+      ],
+      "queries": [
+        "\"יעקב חזן\" (2009) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "ruled out",
+      "sourceIds": [
+        "hazan-death"
+      ],
+      "needed": null,
+      "finding": "The MK died in 1992.",
+      "confidence": "high",
+      "confidenceRationale": "Positive contradiction: death before the election or an official-ID-tied candidacy elsewhere in that same election.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [
+        "hazan-death"
+      ]
+    },
+    {
+      "candidateId": "18-ו#119",
+      "nameHe": "טובי תופיק",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2363
+      ],
+      "queries": [
+        "\"תופיק טובי\" (2009) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-מרצ#12",
+      "nameHe": "מראענה אבתיסאם",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        30813
+      ],
+      "queries": [
+        "\"אבתיסאם מראענה\" (2009) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-מרצ#108",
+      "nameHe": "סרטני אמירה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2515
+      ],
+      "queries": [
+        "\"אמירה סרטני\" (2009 OR 2013 OR 2015 OR 2019 OR 2021 OR 2022 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-מרצ#110",
+      "nameHe": "גרמן יעל",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        23596
+      ],
+      "queries": [
+        "\"יעל גרמן\" (2009) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-מרצ#116",
+      "nameHe": "צבן יאיר",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2563
+      ],
+      "queries": [
+        "\"יאיר צבן\" (2009 OR 2013 OR 2015) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-מרצ#120",
+      "nameHe": "אלוני שולמית",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2143
+      ],
+      "queries": [
+        "\"שולמית אלוני\" (2009 OR 2013) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-ב#8",
+      "nameHe": "נגוסה אברהם",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        30095
+      ],
+      "queries": [
+        "\"אברהם נגוסה\" (2006 OR 2009) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-ב#12",
+      "nameHe": "אוחיון שמעון",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        23557
+      ],
+      "queries": [
+        "\"שמעון אוחיון\" (2009) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-ד#4",
+      "nameHe": "זכור עבאס",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        4415
+      ],
+      "queries": [
+        "\"עבאס זכור\" (2009) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-ד#82",
+      "nameHe": "כנעאן מוחמד",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        555
+      ],
+      "queries": [
+        "\"מוחמד כנעאן\" (2009 OR 2019 OR 2022) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-ד#102",
+      "nameHe": "מיעארי מוחמד",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2463
+      ],
+      "queries": [
+        "\"מוחמד מיעארי\" (2009) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-ה#119",
+      "nameHe": "תמיר יוסף",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2675
+      ],
+      "queries": [
+        "\"יוסף תמיר\" (2009) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-זך#1",
+      "nameHe": "איתן רפאל",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2138
+      ],
+      "queries": [
+        "\"רפאל איתן\" (2009) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "ruled out",
+      "sourceIds": [
+        "eitan-death"
+      ],
+      "needed": null,
+      "finding": "The MK died in 2004.",
+      "confidence": "high",
+      "confidenceRationale": "Positive contradiction: death before the election or an official-ID-tied candidacy elsewhere in that same election.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [
+        "eitan-death"
+      ]
+    },
+    {
+      "candidateId": "18-זך#3",
+      "nameHe": "כץ יוסי",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        447
+      ],
+      "queries": [
+        "\"יוסי כץ\" (2009) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-זך#25",
+      "nameHe": "ארד נאוה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2164
+      ],
+      "queries": [
+        "\"נאוה ארד\" (2009) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-חי#1",
+      "nameHe": "סנה אפרים",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        454
+      ],
+      "queries": [
+        "\"אפרים סנה\" (2009 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-חי#19",
+      "nameHe": "לוי דוד",
+      "reason": "two candidates with this name in the same election",
+      "personIds": [
+        536
+      ],
+      "queries": [
+        "\"דוד לוי\" (2009 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: two candidates with this name in the same election",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-צי#1",
+      "nameHe": "טופורובסקי בועז",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        23639
+      ],
+      "queries": [
+        "\"בועז טופורובסקי\" (2009) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "confirmed",
+      "sourceIds": [
+        "toporovsky-2009"
+      ],
+      "needed": null,
+      "personId": 23639,
+      "finding": "11 Jan 2009 identifies Boaz Toporovsky as Tzabar leader and former student leader, the later MK.",
+      "confidence": "high",
+      "confidenceRationale": "Election-specific biography/report ties the candidate to the MK.",
+      "supportingSourceIds": [
+        "toporovsky-2009"
+      ],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "18-ץ#2",
+      "nameHe": "גלזר אלחנן",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        4303
+      ],
+      "queries": [
+        "\"אלחנן גלזר\" (2009 OR 2013) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "19-מחל#63",
+      "nameHe": "ביבי אריה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        12943
+      ],
+      "queries": [
+        "\"אריה ביבי\" (2013) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "19-אמת#19",
+      "nameHe": "אבסדזה נינו",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        17630
+      ],
+      "queries": [
+        "\"נינו אבסדזה\" (2013) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "confirmed",
+      "sourceIds": [
+        "nino-2013"
+      ],
+      "needed": null,
+      "personId": 17630,
+      "finding": "Identifies incumbent MK Nino Abesadze as No. 19 on Labor’s 2013 list, connecting candidacy directly to service.",
+      "confidence": "high",
+      "confidenceRationale": "Election-specific biography/report ties the candidate to the MK.",
+      "supportingSourceIds": [
+        "nino-2013"
+      ],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "19-טב#18",
+      "nameHe": "פינקלשטיין גילה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        1059
+      ],
+      "queries": [
+        "\"גילה פינקלשטיין\" (2013) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "19-טב#21",
+      "nameHe": "איפראימוב מרק",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        30746
+      ],
+      "queries": [
+        "\"מרק איפראימוב\" (2013) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "19-שס#22",
+      "nameHe": "כהן אמנון",
+      "reason": "two candidates with this name in the same election",
+      "personIds": [
+        495
+      ],
+      "queries": [
+        "\"אמנון כהן\" (2013) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "ruled out",
+      "sourceIds": [
+        "same-election-id"
+      ],
+      "needed": null,
+      "finding": "The MK is already tied by official membership to 19-שס#6. The second candidate is not that MK.",
+      "confidence": "high",
+      "confidenceRationale": "Positive contradiction: death before the election or an official-ID-tied candidacy elsewhere in that same election.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [
+        "same-election-id"
+      ]
+    },
+    {
+      "candidateId": "19-שס#28",
+      "nameHe": "ביטון אברהם",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2190
+      ],
+      "queries": [
+        "\"אברהם ביטון\" (2009 OR 2013 OR 2015 OR 2019 OR 2021) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "ruled out",
+      "sourceIds": [
+        "biton-death"
+      ],
+      "needed": null,
+      "finding": "The MK died in 2005.",
+      "confidence": "high",
+      "confidenceRationale": "Positive contradiction: death before the election or an official-ID-tied candidacy elsewhere in that same election.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [
+        "biton-death"
+      ]
+    },
+    {
+      "candidateId": "19-צפ#9",
+      "nameHe": "כהן מירב",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        30686
+      ],
+      "queries": [
+        "\"מירב כהן\" (2013) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "confirmed",
+      "sourceIds": [
+        "cohen-2013"
+      ],
+      "needed": null,
+      "personId": 30686,
+      "finding": "22 Jan 2013 identifies Hatnua No. 9 as Jerusalem councillor Merav Cohen, with spouse and age, the later MK.",
+      "confidence": "high",
+      "confidenceRationale": "Election-specific biography/report ties the candidate to the MK.",
+      "supportingSourceIds": [
+        "cohen-2013"
+      ],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "19-מרצ#111",
+      "nameHe": "סרטני אמירה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2515
+      ],
+      "queries": [
+        "\"אמירה סרטני\" (2009 OR 2013 OR 2015 OR 2019 OR 2021 OR 2022 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "19-מרצ#116",
+      "nameHe": "צבן יאיר",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2563
+      ],
+      "queries": [
+        "\"יאיר צבן\" (2009 OR 2013 OR 2015) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "19-מרצ#120",
+      "nameHe": "אלוני שולמית",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2143
+      ],
+      "queries": [
+        "\"שולמית אלוני\" (2009 OR 2013) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "19-כן#22",
+      "nameHe": "גלזר אלחנן",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        4303
+      ],
+      "queries": [
+        "\"אלחנן גלזר\" (2009 OR 2013) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "20-מחל#55",
+      "nameHe": "בוסקילה מישל",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        30799
+      ],
+      "queries": [
+        "\"מישל בוסקילה\" (2015) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "20-מחל#57",
+      "nameHe": "שטרית שמעון",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2634
+      ],
+      "queries": [
+        "\"שמעון שטרית\" (2015) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "20-מחל#98",
+      "nameHe": "פרץ רפאל",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        30716
+      ],
+      "queries": [
+        "\"רפי פרץ\" (2015) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "20-פה#93",
+      "nameHe": "פרץ יצחק",
+      "reason": "the listed name is tied by ID to more than one person",
+      "personIds": [
+        2558,
+        2559
+      ],
+      "queries": [
+        "\"יצחק פרץ\" (2006 OR 2009 OR 2015) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il",
+        "\"יצחק-חיים פרץ\" (2006 OR 2009 OR 2015) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: the listed name is tied by ID to more than one person",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "20-טב#11",
+      "nameHe": "אורבך ניר",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        30787
+      ],
+      "queries": [
+        "\"ניר אורבך\" (2015) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "20-שס#21",
+      "nameHe": "ביטון אברהם",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2190
+      ],
+      "queries": [
+        "\"אברהם ביטון\" (2009 OR 2013 OR 2015 OR 2019 OR 2021) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "ruled out",
+      "sourceIds": [
+        "biton-death"
+      ],
+      "needed": null,
+      "finding": "The MK died in 2005.",
+      "confidence": "high",
+      "confidenceRationale": "Positive contradiction: death before the election or an official-ID-tied candidacy elsewhere in that same election.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [
+        "biton-death"
+      ]
+    },
+    {
+      "candidateId": "20-ג#62",
+      "nameHe": "מושיאשוילי סימיון",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        30872
+      ],
+      "queries": [
+        "\"סימון מושיאשוילי\" (2015) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "20-מרצ#105",
+      "nameHe": "סרטני אמירה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2515
+      ],
+      "queries": [
+        "\"אמירה סרטני\" (2009 OR 2013 OR 2015 OR 2019 OR 2021 OR 2022 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "20-מרצ#109",
+      "nameHe": "אביטל קולט",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        431
+      ],
+      "queries": [
+        "\"קולט אביטל\" (2015 OR 2019 OR 2021 OR 2022 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "20-מרצ#115",
+      "nameHe": "צבן יאיר",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2563
+      ],
+      "queries": [
+        "\"יאיר צבן\" (2009 OR 2013 OR 2015) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "20-קץ#1",
+      "nameHe": "ישי אליהו",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        494
+      ],
+      "queries": [
+        "\"אליהו ישי\" (2015 OR 2019) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "confirmed",
+      "sourceIds": [
+        "yachad-2015"
+      ],
+      "needed": null,
+      "personId": 494,
+      "finding": "30 Jan 2015 describes submission of Eli Yishai and Yoni Chetboun’s Yachad list, Chetboun remaining at No. 2; identifies the incumbent politicians.",
+      "confidence": "high",
+      "confidenceRationale": "Election-specific biography/report ties the candidate to the MK.",
+      "supportingSourceIds": [
+        "yachad-2015"
+      ],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "20-קץ#2",
+      "nameHe": "שטבון יונתן",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        23552
+      ],
+      "queries": [
+        "\"יוני שטבון\" (2015) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "confirmed",
+      "sourceIds": [
+        "yachad-2015"
+      ],
+      "needed": null,
+      "personId": 23552,
+      "finding": "30 Jan 2015 describes submission of Eli Yishai and Yoni Chetboun’s Yachad list, Chetboun remaining at No. 2; identifies the incumbent politicians.",
+      "confidence": "high",
+      "confidenceRationale": "Election-specific biography/report ties the candidate to the MK.",
+      "supportingSourceIds": [
+        "yachad-2015"
+      ],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "21-שס#90",
+      "nameHe": "כהן גבריאל",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2393
+      ],
+      "queries": [
+        "\"גבריאל כהן\" (2019) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "21-אמת#10",
+      "nameHe": "ילין חיים",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        30074
+      ],
+      "queries": [
+        "\"חיים ילין\" (2019) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "confirmed",
+      "sourceIds": [
+        "yellin-2019"
+      ],
+      "needed": null,
+      "personId": 30074,
+      "finding": "Biography explicitly connects former Yesh Atid MK Haim Yellin to Labor No. 10 in April 2019; confirms no seat and subsequent retirement. N12 contemporaneous report was discovered but opening failed.",
+      "confidence": "high",
+      "confidenceRationale": "Election-specific biography/report ties the candidate to the MK.",
+      "supportingSourceIds": [
+        "yellin-2019"
+      ],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "21-מרצ#110",
+      "nameHe": "אביטל קולט",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        431
+      ],
+      "queries": [
+        "\"קולט אביטל\" (2015 OR 2019 OR 2021 OR 2022 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "21-מרצ#112",
+      "nameHe": "סרטני אמירה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2515
+      ],
+      "queries": [
+        "\"אמירה סרטני\" (2009 OR 2013 OR 2015 OR 2019 OR 2021 OR 2022 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "21-מרצ#113",
+      "nameHe": "צוקר דוד",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2566
+      ],
+      "queries": [
+        "\"דוד צוקר\" (2019 OR 2020 OR 2022 OR 2026) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "21-נ#14",
+      "nameHe": "פלד משה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2538
+      ],
+      "queries": [
+        "\"משה פלד\" (2019 OR 2021 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "21-ז#2",
+      "nameHe": "אמסלם חיים",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        4418
+      ],
+      "queries": [
+        "\"חיים אמסלם\" (2019 OR 2021) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "21-ר#1",
+      "nameHe": "כנעאן מוחמד",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        555
+      ],
+      "queries": [
+        "\"מוחמד כנעאן\" (2009 OR 2019 OR 2022) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "21-זי#6",
+      "nameHe": "זיו יצחק",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        4301
+      ],
+      "queries": [
+        "\"יצחק זיו\" (2019 OR 2021) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "21-קף#1",
+      "nameHe": "אדמסו אללי",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        22911
+      ],
+      "queries": [
+        "\"אללי אדמסו\" (2019) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "21-יץ#1",
+      "nameHe": "דיין חיים",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2276
+      ],
+      "queries": [
+        "\"חיים דיין\" (2019) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "21-ףנ#2",
+      "nameHe": "גוטליב רויטל",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        30860
+      ],
+      "queries": [
+        "\"טלי גוטליב\" (2019) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "21-זנ#1",
+      "nameHe": "ישי אליהו",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        494
+      ],
+      "queries": [
+        "\"אליהו ישי\" (2015 OR 2019) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "22-שס#49",
+      "nameHe": "ביטון אברהם",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2190
+      ],
+      "queries": [
+        "\"אברהם ביטון\" (2009 OR 2013 OR 2015 OR 2019 OR 2021) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "ruled out",
+      "sourceIds": [
+        "biton-death"
+      ],
+      "needed": null,
+      "finding": "The MK died in 2005.",
+      "confidence": "high",
+      "confidenceRationale": "Positive contradiction: death before the election or an official-ID-tied candidacy elsewhere in that same election.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [
+        "biton-death"
+      ]
+    },
+    {
+      "candidateId": "22-טב#19",
+      "nameHe": "פלד משה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2538
+      ],
+      "queries": [
+        "\"משה פלד\" (2019 OR 2021 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "22-מרצ#10",
+      "nameHe": "ברק אהוד",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2226
+      ],
+      "queries": [
+        "\"אהוד ברק\" (2019) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "confirmed",
+      "sourceIds": [
+        "barak-2019"
+      ],
+      "needed": null,
+      "personId": 2226,
+      "finding": "Identifies Democratic Union as Meretz, Israel Democratic under Ehud Barak, and the Green Movement; former prime minister identity is explicit in contemporary N12 coverage.",
+      "confidence": "high",
+      "confidenceRationale": "Election-specific biography/report ties the candidate to the MK.",
+      "supportingSourceIds": [
+        "barak-2019"
+      ],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "22-מרצ#110",
+      "nameHe": "אביטל קולט",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        431
+      ],
+      "queries": [
+        "\"קולט אביטל\" (2015 OR 2019 OR 2021 OR 2022 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "22-מרצ#112",
+      "nameHe": "סרטני אמירה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2515
+      ],
+      "queries": [
+        "\"אמירה סרטני\" (2009 OR 2013 OR 2015 OR 2019 OR 2021 OR 2022 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "22-מרצ#113",
+      "nameHe": "צוקר דוד",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2566
+      ],
+      "queries": [
+        "\"דוד צוקר\" (2019 OR 2020 OR 2022 OR 2026) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "22-נץ#1",
+      "nameHe": "אדמסו אללי",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        22911
+      ],
+      "queries": [
+        "\"אללי אדמסו\" (2019) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "23-אמת#99",
+      "nameHe": "צוקר דוד",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2566
+      ],
+      "queries": [
+        "\"דוד צוקר\" (2019 OR 2020 OR 2022 OR 2026) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "24-שס#44",
+      "nameHe": "ביטון אברהם",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2190
+      ],
+      "queries": [
+        "\"אברהם ביטון\" (2009 OR 2013 OR 2015 OR 2019 OR 2021) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "ruled out",
+      "sourceIds": [
+        "biton-death"
+      ],
+      "needed": null,
+      "finding": "The MK died in 2005.",
+      "confidence": "high",
+      "confidenceRationale": "Positive contradiction: death before the election or an official-ID-tied candidacy elsewhere in that same election.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [
+        "biton-death"
+      ]
+    },
+    {
+      "candidateId": "24-ב#38",
+      "nameHe": "פלד משה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2538
+      ],
+      "queries": [
+        "\"משה פלד\" (2019 OR 2021 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "24-מרצ#106",
+      "nameHe": "אביטל קולט",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        431
+      ],
+      "queries": [
+        "\"קולט אביטל\" (2015 OR 2019 OR 2021 OR 2022 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "24-מרצ#114",
+      "nameHe": "סרטני אמירה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2515
+      ],
+      "queries": [
+        "\"אמירה סרטני\" (2009 OR 2013 OR 2015 OR 2019 OR 2021 OR 2022 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "24-רף#1",
+      "nameHe": "אמסלם חיים",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        4418
+      ],
+      "queries": [
+        "\"חיים אמסלם\" (2019 OR 2021) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "confirmed",
+      "sourceIds": [
+        "amsalem-2021"
+      ],
+      "needed": null,
+      "personId": 4418,
+      "finding": "Am Shalem founded by Haim Amsalem, elected for Shas in 2009; stood again in 2021. Retained 2021 list names him first.",
+      "confidence": "high",
+      "confidenceRationale": "Election-specific biography/report ties the candidate to the MK.",
+      "supportingSourceIds": [
+        "amsalem-2021"
+      ],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "24-ני#40",
+      "nameHe": "זיו יצחק",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        4301
+      ],
+      "queries": [
+        "\"יצחק זיו\" (2019 OR 2021) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "25-שס#41",
+      "nameHe": "חיים יהודה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2372
+      ],
+      "queries": [
+        "\"חיים יהודה\" (2022 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "ruled out",
+      "sourceIds": [
+        "yehuda-death"
+      ],
+      "needed": null,
+      "finding": "The MK died in 1985.",
+      "confidence": "high",
+      "confidenceRationale": "Positive contradiction: death before the election or an official-ID-tied candidacy elsewhere in that same election.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [
+        "yehuda-death"
+      ]
+    },
+    {
+      "candidateId": "25-שס#80",
+      "nameHe": "כהן אליהו",
+      "reason": "two candidates with this name in the same election",
+      "personIds": [
+        30083
+      ],
+      "queries": [
+        "\"אלי כהן\" (2006 OR 2022) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "ruled out",
+      "sourceIds": [
+        "same-election-id"
+      ],
+      "needed": null,
+      "finding": "The MK is already tied by official membership to 25-מחל#3. The second candidate is not that MK.",
+      "confidence": "high",
+      "confidenceRationale": "Positive contradiction: death before the election or an official-ID-tied candidacy elsewhere in that same election.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [
+        "same-election-id"
+      ]
+    },
+    {
+      "candidateId": "25-כן#16",
+      "nameHe": "חסון אכרם",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        22151
+      ],
+      "queries": [
+        "\"אכרם חסון\" (2022) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "25-ום#48",
+      "nameHe": "כנעאן מוחמד",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        555
+      ],
+      "queries": [
+        "\"מוחמד כנעאן\" (2009 OR 2019 OR 2022) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "25-מרצ#107",
+      "nameHe": "סרטני אמירה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2515
+      ],
+      "queries": [
+        "\"אמירה סרטני\" (2009 OR 2013 OR 2015 OR 2019 OR 2021 OR 2022 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "25-מרצ#109",
+      "nameHe": "אביטל קולט",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        431
+      ],
+      "queries": [
+        "\"קולט אביטל\" (2015 OR 2019 OR 2021 OR 2022 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "25-מרצ#110",
+      "nameHe": "צוקר דוד",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2566
+      ],
+      "queries": [
+        "\"דוד צוקר\" (2019 OR 2020 OR 2022 OR 2026) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "25-י#1",
+      "nameHe": "אבידר אלי",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        30723
+      ],
+      "queries": [
+        "\"אלי אבידר\" (2009 OR 2022) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "confirmed",
+      "sourceIds": [
+        "avidar-2022"
+      ],
+      "needed": null,
+      "personId": 30723,
+      "finding": "14 Sep 2022: Eli Avidar submits Israel Free Democratic’s list, with his CEC appearance photographed; same former MK.",
+      "confidence": "high",
+      "confidenceRationale": "Election-specific biography/report ties the candidate to the MK.",
+      "supportingSourceIds": [
+        "avidar-2022"
+      ],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "25-קי#2",
+      "nameHe": "כהן אליהו",
+      "reason": "two candidates with this name in the same election",
+      "personIds": [
+        30083
+      ],
+      "queries": [
+        "\"אלי כהן\" (2006 OR 2022) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "ruled out",
+      "sourceIds": [
+        "same-election-id"
+      ],
+      "needed": null,
+      "finding": "The MK is already tied by official membership to 25-מחל#3. The second candidate is not that MK.",
+      "confidence": "high",
+      "confidenceRationale": "Positive contradiction: death before the election or an official-ID-tied candidacy elsewhere in that same election.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [
+        "same-election-id"
+      ]
+    },
+    {
+      "candidateId": "26-שס#81",
+      "nameHe": "חיים יהודה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2372
+      ],
+      "queries": [
+        "\"חיים יהודה\" (2022 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "ruled out",
+      "sourceIds": [
+        "yehuda-death"
+      ],
+      "needed": null,
+      "finding": "The MK died in 1985.",
+      "confidence": "high",
+      "confidenceRationale": "Positive contradiction: death before the election or an official-ID-tied candidacy elsewhere in that same election.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [
+        "yehuda-death"
+      ]
+    },
+    {
+      "candidateId": "26-ג#83",
+      "nameHe": "שטרן אברהם",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2635
+      ],
+      "queries": [
+        "\"אברהם שטרן\" (2026) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "26-ט#22",
+      "nameHe": "פלד משה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2538
+      ],
+      "queries": [
+        "\"משה פלד\" (2019 OR 2021 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "26-דרך#109",
+      "nameHe": "מרידור דן",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        546
+      ],
+      "queries": [
+        "\"דן מרידור\" (2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "26-דרך#114",
+      "nameHe": "טרכטנברג מנואל",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        30060
+      ],
+      "queries": [
+        "\"מנואל טרכטנברג\" (2026) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "26-אמת#69",
+      "nameHe": "אפרתי יוסף",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2161
+      ],
+      "queries": [
+        "\"יוסף אפרתי\" (2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "ruled out",
+      "sourceIds": [
+        "efrati-death"
+      ],
+      "needed": null,
+      "finding": "The MK died in 1975.",
+      "confidence": "high",
+      "confidenceRationale": "Positive contradiction: death before the election or an official-ID-tied candidacy elsewhere in that same election.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [
+        "efrati-death"
+      ]
+    },
+    {
+      "candidateId": "26-אמת#97",
+      "nameHe": "צוקר דוד",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2566
+      ],
+      "queries": [
+        "\"דוד צוקר\" (2019 OR 2020 OR 2022 OR 2026) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "26-אמת#101",
+      "nameHe": "בירן מיכל",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        23570
+      ],
+      "queries": [
+        "\"מיכל בירן\" (2026) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "26-אמת#104",
+      "nameHe": "לובלסקי מאשה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2421
+      ],
+      "queries": [
+        "\"מאשה לובלסקי\" (2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "26-אמת#105",
+      "nameHe": "סרטני אמירה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2515
+      ],
+      "queries": [
+        "\"אמירה סרטני\" (2009 OR 2013 OR 2015 OR 2019 OR 2021 OR 2022 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "26-אמת#109",
+      "nameHe": "מצנע עמרם",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        1042
+      ],
+      "queries": [
+        "\"עמרם מצנע\" (2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "26-אמת#110",
+      "nameHe": "גולדמן מיכה",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        2238
+      ],
+      "queries": [
+        "\"מיכה גולדמן\" (2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "26-אמת#112",
+      "nameHe": "כהן רענן",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        446
+      ],
+      "queries": [
+        "\"רענן כהן\" (2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "26-אמת#116",
+      "nameHe": "אביטל קולט",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        431
+      ],
+      "queries": [
+        "\"קולט אביטל\" (2015 OR 2019 OR 2021 OR 2022 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "26-אמת#118",
+      "nameHe": "סנה אפרים",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        454
+      ],
+      "queries": [
+        "\"אפרים סנה\" (2009 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "26-ל#13",
+      "nameHe": "אזולאי דוד",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        483
+      ],
+      "queries": [
+        "\"דוד אזולאי\" (2009 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "ruled out",
+      "sourceIds": [
+        "azoulay-death"
+      ],
+      "needed": null,
+      "finding": "The MK died in 2018.",
+      "confidence": "high",
+      "confidenceRationale": "Positive contradiction: death before the election or an official-ID-tied candidacy elsewhere in that same election.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [
+        "azoulay-death"
+      ]
+    },
+    {
+      "candidateId": "26-די#1",
+      "nameHe": "הנדל יועז",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        30680
+      ],
+      "queries": [
+        "\"יועז הנדל\" (2026) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "confirmed",
+      "sourceIds": [
+        "hendel-wilf-2026"
+      ],
+      "needed": null,
+      "personId": 30680,
+      "finding": "7 Sep 2026 submission report names Hendel first, Zelekha second, Wilf third and explicitly describes Wilf’s earlier Knesset service. Later official retained list preserves these three places.",
+      "confidence": "high",
+      "confidenceRationale": "Election-specific biography/report ties the candidate to the MK.",
+      "supportingSourceIds": [
+        "hendel-wilf-2026"
+      ],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "26-די#3",
+      "nameHe": "וילף עינת",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        14470
+      ],
+      "queries": [
+        "\"עינת וילף\" (2026) -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "confirmed",
+      "sourceIds": [
+        "hendel-wilf-2026"
+      ],
+      "needed": null,
+      "personId": 14470,
+      "finding": "7 Sep 2026 submission report names Hendel first, Zelekha second, Wilf third and explicitly describes Wilf’s earlier Knesset service. Later official retained list preserves these three places.",
+      "confidence": "high",
+      "confidenceRationale": "Election-specific biography/report ties the candidate to the MK.",
+      "supportingSourceIds": [
+        "hendel-wilf-2026"
+      ],
+      "contradictingSourceIds": []
+    },
+    {
+      "candidateId": "26-די#17",
+      "nameHe": "לוי דוד",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        536
+      ],
+      "queries": [
+        "\"דוד לוי\" (2009 OR 2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "ruled out",
+      "sourceIds": [
+        "levy-death"
+      ],
+      "needed": null,
+      "finding": "The MK died in 2024.",
+      "confidence": "high",
+      "confidenceRationale": "Positive contradiction: death before the election or an official-ID-tied candidacy elsewhere in that same election.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [
+        "levy-death"
+      ]
+    },
+    {
+      "candidateId": "26-קץ#4",
+      "nameHe": "כהן יצחק",
+      "reason": "a two-word name on a list of another party, with no other evidence",
+      "personIds": [
+        580
+      ],
+      "queries": [
+        "\"יצחק כהן\" (2026) \"רשימה\" -site:en.wikipedia.org -site:hamichlol.org.il"
+      ],
+      "status": "unknown",
+      "sourceIds": [],
+      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
+      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
+      "confidence": "unresolved",
+      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
+      "supportingSourceIds": [],
+      "contradictingSourceIds": []
+    }
+  ],
+  "coverageReview": {
+    "tzomet2026": {
+      "listId": "26-בי",
+      "status": "official roster not retrieved; secondary flag and exclusion retained",
+      "officialPage": "https://www.gov.il/he/pages/tzomet-beit-israel_list33",
+      "attempts": [
+        "Official page: web retrieval and direct request with prescribed User-Agent both returned HTTP 403; no bypass attempted.",
+        "CEC candidate index https://www.gov.il/he/pages/candidates-lists-26 returned HTTP 403.",
+        "Targeted Reshumot/official-site searches found no usable 2026 candidate-list publication. The retained YP15045 is a surplus-agreement notice, not a candidate list.",
+        "data.gov.il CKAN package_search: בחירות returned 6 packages; מועמדים returned 1 unrelated package. Inspected the resources of the CEC results package; no candidate-list resource found."
+      ],
+      "needed": "A readable official CEC list page, gazette publication or official open-data resource containing the full roster, including terminal rank; then compare all 12 retained secondary names and ranks before removing the flag."
+    },
+    "additionalOfficialRosters": [
+      {
+        "k": 16,
+        "listId": "16-ף",
+        "candidates": 11,
+        "source": "data/raw/k16/candidates.pdf",
+        "gazette": "YP5148, 19 January 2003, printed p.1201 (PDF page 11)",
+        "method": "Visual reading at scales 2 and 4; original spelling retained.",
+        "completeListsBefore": 13,
+        "completeListsAfter": 14
+      },
+      {
+        "k": 17,
+        "listId": "17-כ",
+        "candidates": 10,
+        "source": "data/raw/k17/candidates.pdf",
+        "gazette": "YP5504, 12 March 2006, printed p.2192 (PDF page 10)",
+        "method": "Visual reading at scales 2 and 4; checked against official CEC capture held by IDI https://www.idi.org.il/media/6037/חזית-יהודית-לאומית-17.pdf . Gazette spellings retained.",
+        "completeListsBefore": 18,
+        "completeListsAfter": 19
+      }
+    ],
+    "remainingHistoricalGaps": {
+      "k16": 13,
+      "k17": 12,
+      "needed": "Complete visual transcription and verification of the remaining retained gazette lists, especially long winning-party lists. The official PDFs are already held; they are not missing sources."
+    },
+    "newRunOutsideOriginal123": {
+      "candidateId": "17-כ#3",
+      "personId": 12942,
+      "basis": "existing strict name rule",
+      "note": "The now-complete Jewish National Front list adds Michael Ben-Ari’s unsuccessful 2006 run. This is separate from the 14 confirmations of the original 123 and brings out-runs from 746 to 761."
+    }
+  }
+}

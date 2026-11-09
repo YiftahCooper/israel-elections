@@ -2212,7 +2212,7 @@
       "electionId": "k16",
       "electionDate": "2003-01-28",
       "datasetPath": "public/data/k16.json",
-      "datasetSha256": "b9442bbf25f9cb35f89bf6639c6bbf5c96b407ce49bf80f677031db896737142",
+      "datasetSha256": "9ecaff6b9a352c088d01cabca922def50557fde731af5bb8b047a19e7eaf5c2d",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -2307,7 +2307,7 @@
       "electionId": "k17",
       "electionDate": "2006-03-28",
       "datasetPath": "public/data/k17.json",
-      "datasetSha256": "9788f53708d40902cc3a6a4f727cdb258249dd82581815db5e20a68c5148e844",
+      "datasetSha256": "da891a33a84a26a61012b3f5e9bfdcc24407df37e8f3e9a65c7f628e89ff053b",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -2401,7 +2401,7 @@
       "electionId": "k18",
       "electionDate": "2009-02-10",
       "datasetPath": "public/data/k18.json",
-      "datasetSha256": "e4ce7870120316f7f5dc5afd32a7ed1a5ffb284c3b2290836598c575ec238b56",
+      "datasetSha256": "fa5adf553d200e92e26f0385e20f43a54025303372f05d2a776db98a53cc0666",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2009-02-17",
@@ -2489,7 +2489,7 @@
       "electionId": "k19",
       "electionDate": "2013-01-22",
       "datasetPath": "public/data/k19.json",
-      "datasetSha256": "aff243b0ff0321a4bf09ada55e83f2419effcc28a33dfc538ad54f1e6adea537",
+      "datasetSha256": "6b7eab3b0370fb7c262559a86dd30c401a121bfc1c262bacf7b86a2794148375",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2013-01-30",
@@ -2636,7 +2636,7 @@
       "electionId": "k20",
       "electionDate": "2015-03-17",
       "datasetPath": "public/data/k20.json",
-      "datasetSha256": "a04b4b017b7a3846894c6451a6ee557eac88633f1d2f08c45f04ade540a4d898",
+      "datasetSha256": "1dc3b314d95741f0be45b8b61c92206f1a327d125867116a0d4c4fc781ea1f8d",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2015-03-25",
@@ -2785,7 +2785,7 @@
       "electionId": "k21",
       "electionDate": "2019-04-09",
       "datasetPath": "public/data/k21.json",
-      "datasetSha256": "a4f107fe5dabcd12a68202f31ee4bd96bc1ceefa689f1b22088b58c75ee155f1",
+      "datasetSha256": "f9b4c5079852c4a4b55406154637896bb33ba1db9e2cbfea151937343a13fc21",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -2924,7 +2924,7 @@
       "electionId": "k22",
       "electionDate": "2019-09-17",
       "datasetPath": "public/data/k22.json",
-      "datasetSha256": "6863b6e7bd93e34b25c49853f2bbe9790449fce960bbb228b4d302728287ceb6",
+      "datasetSha256": "a30eff5019cf9b319b5093f327a85c3eee6298e10c00f81d655dfdf9fa10932d",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -3171,7 +3171,7 @@
       "electionId": "k24",
       "electionDate": "2021-03-23",
       "datasetPath": "public/data/k24.json",
-      "datasetSha256": "4ec5f20bfe3c47a6dcb5824b688c83d080ceea410173ee45178028cd3a9cfc2d",
+      "datasetSha256": "b93903666d3c5b3179a0ff84c87ad93e90236394dfa86bf74650b2e979faa799",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -3307,7 +3307,7 @@
       "electionId": "k25",
       "electionDate": "2022-11-01",
       "datasetPath": "public/data/k25.json",
-      "datasetSha256": "5fd1b1c34a4b1cf1b99b51e57c02f998eac51cb928d4568dd635b03d8f2e66cd",
+      "datasetSha256": "0b7c3641236194978339f360c4fc8d65d3717f6e8e32d5fce940837ce23ee696",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2022-11-10",
@@ -3426,7 +3426,7 @@
       "electionId": "k26",
       "electionDate": "2026-10-27",
       "datasetPath": "public/data/k26.json",
-      "datasetSha256": "0c6ae8eadf7fd152e422195e89c328df53dab589c40e49d82c55c313f44788a8",
+      "datasetSha256": "895a88c3006958f13c7105fa75ed9ef2f5cfc416c3acdab54c86a9e4a42f4319",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-06",

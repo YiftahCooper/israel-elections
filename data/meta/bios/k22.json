@@ -2791,6 +2791,22 @@
    "confidence": "medium",
    "basis": "not elected; identical name, the only person with it who served as MK; Knesset 20 faction \"המחנה הציוני\" shares \"המחנה\"; Hebrew Wikipedia places the person in this election"
   },
+  "22-מרצ#10": {
+   "knessetPersonId": 2226,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/28",
+    "siteId": 28,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אהוד ברק",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%94%D7%95%D7%93_%D7%91%D7%A8%D7%A7",
+    "via": "wikidata Q125731"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected; reviewed decision: Election-specific identity reviewed 9 Nov 2026: Identifies Democratic Union as Meretz, Israel Democratic under Ehud Barak, and the Green Movement; former prime minister identity is explicit in contemporary N12 coverage. Source: https://www.idi.org.il/policy/parties-and-elections/parties/democratic-union/ (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
   "22-מרצ#13": {
    "knessetPersonId": 23653,
    "knesset": {

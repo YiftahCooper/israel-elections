@@ -507,6 +507,90 @@
    "personId": 30068,
    "confidence": "medium",
    "reason": "Not elected in 2009. Identical name: the only person named עבד אל-חכים חאג' יחיא who served as an MK (Ra'am, Knesset 21 faction רע\"ם - בל\"ד); his surname is unique among MKs. Linked on 4 Nov 2026 by the name rule when the k18 metadata named the constituent רשימת האיחוד הערבי; the k18 audit corrected that name, after which the party-word rule no longer fires, so the link is kept as a reviewed decision."
+  },
+  {
+   "candidateId": "16-מחל#41",
+   "personId": 2574,
+   "confidence": "high",
+   "reason": "Election-specific identity reviewed 9 Nov 2026: Biography explicitly records Likud No. 41 in 2003 and refusal to enter in January 2006. Corroborating CEC capture held by IDI: https://www.idi.org.il/media/5993/הליכוד-16.pdf . Source: https://he.wikipedia.org/wiki/אביגדור_קהלני (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
+  {
+   "candidateId": "16-קך#1",
+   "personId": 553,
+   "confidence": "high",
+   "reason": "Election-specific identity reviewed 9 Nov 2026: 7 Jan 2003 interview: the 15th-Knesset MK describes founding Citizen and State and standing for the next Knesset. Source: https://news.walla.co.il/item/332608 (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
+  {
+   "candidateId": "17-פ#1",
+   "personId": 30709,
+   "confidence": "high",
+   "reason": "Election-specific identity reviewed 9 Nov 2026: 2006 interview identifies Tafnit leader as Major-General Uzi Dayan; same public biography as the later MK. Source: https://www.ynet.co.il/articles/0,7340,L-3225810,00.html (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
+  {
+   "candidateId": "18-צי#1",
+   "personId": 23639,
+   "confidence": "high",
+   "reason": "Election-specific identity reviewed 9 Nov 2026: 11 Jan 2009 identifies Boaz Toporovsky as Tzabar leader and former student leader, the later MK. Source: https://news.walla.co.il/item/1415449 (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
+  {
+   "candidateId": "19-צפ#9",
+   "personId": 30686,
+   "confidence": "high",
+   "reason": "Election-specific identity reviewed 9 Nov 2026: 22 Jan 2013 identifies Hatnua No. 9 as Jerusalem councillor Merav Cohen, with spouse and age, the later MK. Source: https://www.mako.co.il/news-elections-2013/articles/Article-fcbc3fb19e06c31006.htm (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
+  {
+   "candidateId": "19-אמת#19",
+   "personId": 17630,
+   "confidence": "high",
+   "reason": "Election-specific identity reviewed 9 Nov 2026: Identifies incumbent MK Nino Abesadze as No. 19 on Labor’s 2013 list, connecting candidacy directly to service. Source: https://www.mako.co.il/news-elections-2013/articles/Article-32768de6a97ab31006.htm (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
+  {
+   "candidateId": "20-קץ#1",
+   "personId": 494,
+   "confidence": "high",
+   "reason": "Election-specific identity reviewed 9 Nov 2026: 30 Jan 2015 describes submission of Eli Yishai and Yoni Chetboun’s Yachad list, Chetboun remaining at No. 2; identifies the incumbent politicians. Source: https://www.israelhayom.co.il/article/254479 (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
+  {
+   "candidateId": "20-קץ#2",
+   "personId": 23552,
+   "confidence": "high",
+   "reason": "Election-specific identity reviewed 9 Nov 2026: 30 Jan 2015 describes submission of Eli Yishai and Yoni Chetboun’s Yachad list, Chetboun remaining at No. 2; identifies the incumbent politicians. Source: https://www.israelhayom.co.il/article/254479 (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
+  {
+   "candidateId": "21-אמת#10",
+   "personId": 30074,
+   "confidence": "high",
+   "reason": "Election-specific identity reviewed 9 Nov 2026: Biography explicitly connects former Yesh Atid MK Haim Yellin to Labor No. 10 in April 2019; confirms no seat and subsequent retirement. N12 contemporaneous report was discovered but opening failed. Source: https://he.wikipedia.org/wiki/חיים_ילין_(פוליטיקאי) (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
+  {
+   "candidateId": "22-מרצ#10",
+   "personId": 2226,
+   "confidence": "high",
+   "reason": "Election-specific identity reviewed 9 Nov 2026: Identifies Democratic Union as Meretz, Israel Democratic under Ehud Barak, and the Green Movement; former prime minister identity is explicit in contemporary N12 coverage. Source: https://www.idi.org.il/policy/parties-and-elections/parties/democratic-union/ (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
+  {
+   "candidateId": "24-רף#1",
+   "personId": 4418,
+   "confidence": "high",
+   "reason": "Election-specific identity reviewed 9 Nov 2026: Am Shalem founded by Haim Amsalem, elected for Shas in 2009; stood again in 2021. Retained 2021 list names him first. Source: https://www.idi.org.il/policy/parties-and-elections/parties/am-shalem/ (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
+  {
+   "candidateId": "25-י#1",
+   "personId": 30723,
+   "confidence": "high",
+   "reason": "Election-specific identity reviewed 9 Nov 2026: 14 Sep 2022: Eli Avidar submits Israel Free Democratic’s list, with his CEC appearance photographed; same former MK. Source: https://elections.walla.co.il/item/3530266 (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
+  {
+   "candidateId": "26-די#1",
+   "personId": 30680,
+   "confidence": "high",
+   "reason": "Election-specific identity reviewed 9 Nov 2026: 7 Sep 2026 submission report names Hendel first, Zelekha second, Wilf third and explicitly describes Wilf’s earlier Knesset service. Later official retained list preserves these three places. Source: https://www.israelhayom.co.il/news/politics/article/21371188 (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
+  {
+   "candidateId": "26-די#3",
+   "personId": 14470,
+   "confidence": "high",
+   "reason": "Election-specific identity reviewed 9 Nov 2026: 7 Sep 2026 submission report names Hendel first, Zelekha second, Wilf third and explicitly describes Wilf’s earlier Knesset service. Later official retained list preserves these three places. Source: https://www.israelhayom.co.il/news/politics/article/21371188 (data/raw/research/mk-runs-1109.reviewed.json)."
   }
  ]
 }

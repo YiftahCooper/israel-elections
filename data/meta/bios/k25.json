@@ -2974,6 +2974,22 @@
    "party": null,
    "confidence": "medium",
    "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"חופש כלכלי\" shares \"חופש\""
+  },
+  "25-י#1": {
+   "knessetPersonId": 30723,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/983",
+    "siteId": 983,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אלי אבידר",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%9C%D7%99_%D7%90%D7%91%D7%99%D7%93%D7%A8",
+    "via": "wikidata Q5360165"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected; reviewed decision: Election-specific identity reviewed 9 Nov 2026: 14 Sep 2022: Eli Avidar submits Israel Free Democratic’s list, with his CEC appearance photographed; same former MK. Source: https://elections.walla.co.il/item/3530266 (data/raw/research/mk-runs-1109.reviewed.json)."
   }
  }
 }
