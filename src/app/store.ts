@@ -158,6 +158,8 @@ export function useSetting<K extends SettingId>(id: K): SettingValues[K] { retur
 export function setSetting<K extends SettingId>(id: K, value: SettingValues[K]) {
   setState(st => ({ settings: { ...st.settings, [id]: value }, ...(id === 'theme' ? { theme: resolvedTheme(value as SettingValues['theme']) } : {}) }));
 }
+/** The bar's sun/moon button flips the theme; landing on the device's own theme goes back to following the device. */
+export function toggleTheme() { const next = state.theme === 'dark' ? 'light' : 'dark'; setSetting('theme', next === resolvedTheme('device') ? 'device' : next); }
 /** Returns the given settings to their defaults; gives back what they were, for Undo. */
 export function resetSettings(ids: readonly SettingId[]): Partial<SettingValues> {
   const before = state.settings;

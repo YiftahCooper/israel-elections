@@ -9,6 +9,7 @@ import { allocationOf, referenceLabel } from '../derive.ts';
 import { fmtInt, fmtPct, trimDecimal } from '../format.ts';
 import { useL, useLang } from '../i18n.ts';
 import { openElection, useDigits, useLevel, useSetting, useStore } from '../store.ts';
+import { useHoverIntent } from '../hoverIntent.ts';
 import { countChange, ELECTION_TOTALS, electionWhen, officialThreshold, previousTotals, totalsOf, turnoutPct, type ElectionTotalsRow } from '../turnoutFacts.ts';
 import { EditMarker } from './EditMarker.tsx';
 import { percent, percentNum, points } from './Percentage.tsx';
@@ -110,6 +111,8 @@ function TurnoutHistory({ current }: { current: ElectionId }) {
   const index = useStore((st) => st.elections);
   const [ref, width] = useWidth<HTMLDivElement>(720);
   const [hover, setHover] = useState<number | null>(null);
+  // shared hover timing (hoverIntent.ts): a resting mouse names a column; keys and touch at once
+  const intent = useHoverIntent(() => setHover(null), hover !== null);
   const rows = ELECTION_TOTALS;
   const cur = rows.findIndex((t) => t.id === current);
   const shown = rows[hover ?? cur] ?? rows[rows.length - 1];
@@ -128,7 +131,7 @@ function TurnoutHistory({ current }: { current: ElectionId }) {
   const name = (t: ElectionTotalsRow) => { const e = index.find((x) => x.id === t.id); return e ? `${electionWhen(t, lang)} · ${lang === 'he' ? `הכנסת ה-${e.knesset}` : `Knesset ${e.knesset}`}` : electionWhen(t, lang); };
   const label = (i: number) => `${name(rows[i])}: ${L('eligible voters', 'בעלי זכות בחירה')} ${fmtInt(rows[i].registered)}, ${L('turnout', 'הצבעה')} ${fmtPct(rows[i].votesCast, rows[i].registered, digits)}`;
   const columns = (chart: 'reg' | 'pct') => rows.map((t, i) => <rect key={t.id} className="tn-hit" x={ml + i * slot} y={0} width={slot} height={top + H + axisH}
-    onPointerEnter={() => setHover(i)} onPointerLeave={() => setHover((h) => (h === i ? null : h))} onClick={() => go(i)} data-chart={chart} />);
+    onPointerEnter={(e) => { if (e.pointerType === 'touch') setHover(i); else intent.enter(() => setHover(i)); }} onPointerLeave={(e) => { if (e.pointerType !== 'touch') intent.leave(); if (!intent.isShown) setHover((h) => (h === i ? null : h)); }} onClick={() => go(i)} data-chart={chart} />);
   // the open election's year is always shown, in bold; regular ticks too close to it give way
   const years = rows.map((t, i) => (i === cur || tick(i) && !(cur >= 0 && Math.abs(i - cur) * slot < 24)) && <text key={t.id} x={x(i)} y={top + H + 13} className={`tn-axis ${i === cur ? 'cur' : ''}`} textAnchor="middle">{`’${t.date.slice(2, 4)}`}</text>);
   const band = (i: number) => <rect x={ml + i * slot + 0.5} y={top - 4} width={Math.max(1, slot - 1)} height={H + axisH + 4} rx={3} className={i === cur ? 'tn-cur' : 'tn-hov'} />;

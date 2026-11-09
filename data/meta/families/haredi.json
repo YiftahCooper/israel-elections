@@ -3406,15 +3406,16 @@
       "electionId": "k26",
       "electionDate": "2026-10-27",
       "datasetPath": "public/data/k26.json",
-      "datasetSha256": "895a88c3006958f13c7105fa75ed9ef2f5cfc416c3acdab54c86a9e4a42f4319",
+      "datasetSha256": "947464727dd8edd4dc4b78a1b362c5a2106121c6d5ff257d0324f493ba4b6ab7",
       "datasetStatus": {
         "stage": "official-final",
-        "asOf": "2026-11-06",
-        "noteHe": "תוצאות סופיות רשמיות של הוועדה; המליאה אישרה את התוצאות והמנדטים ב־4.11.2026. הפרסום ברשומות לא אומת נכון ל־6.11.",
-        "noteEn": "CEC official final results; plenary approved results and seats on 4 Nov 2026. Gazette publication unverified as of 6 Nov."
+        "asOf": "2026-11-09",
+        "noteHe": "תוצאות סופיות רשמיות: ההודעה בדבר תוצאות הבחירות, ילקוט הפרסומים 15100 (4.11.2026). כל סיכומי הקולות והמנדטים תואמים את נתוני הוועדה.",
+        "noteEn": "Official final results: the results notice, Yalkut HaPirsumim 15100 (4 Nov 2026). Every vote and seat total agrees with the CEC count."
       },
       "validVotes": 5691426,
       "voteSourceIds": [
+        "k26-results-gazette",
         "k26-localities-csv",
         "k26-ballots-csv",
         "k26-list-pages",
@@ -3619,7 +3620,7 @@
   "limitations": [
     "All k1–k26 files inspected; no assertion of exhaustive ideological classification of every minor list. Candidates requiring more evidence are explicitly recorded, not silently included.",
     "1949 has no separable vote total for Aguda/Poalei Aguda; core-only votes are null, not zero.",
-    "k26 uses CEC official final results; Gazette publication remains unverified as of 6 November 2026.",
+    "k26 uses the CEC official final results, gazetted in Yalkut HaPirsumim 15100 (4 November 2026).",
     "Existing constituent ids are preserved even where roster completeness is uncertain. Proposed singleton ids do not yet exist in public datasets.",
     "proposedPartyIds means ids requiring a list appearance mapping, including existing canonical ids missing from this singleton list; it does not mean every id is new to the project."
   ],

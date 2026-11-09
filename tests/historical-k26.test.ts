@@ -5,21 +5,23 @@ import { finalizeDataset } from '../scripts/lib/build/finalize.ts';
 import { attachDemographics } from '../scripts/lib/build/demographics.ts';
 import { electionContext } from '../src/data/electionContext.ts';
 
-describe('k26: refreshed CEC count without inferred gazettal', () => {
+describe('k26: CEC count, gazetted in the results notice YP 15100', () => {
   const ds = JSON.parse(readFileSync('public/data/k26.json', 'utf8'));
-  it('retains the 4 November totals and keeps unverified publication explicit', () => {
+  it('retains the 4 November totals and records the results notice as the official source', () => {
     expect(ds.totals).toMatchObject({ registered: 7331981, votesCast: 5717397, valid: 5691426, invalid: 25971 });
-    expect(ds.status.asOf).toBe('2026-11-06');
+    expect(ds.status.asOf).toBe('2026-11-09');
     expect(ds.status.stage).toBe('official-final');
     expect(ds.officialSeats['26-מחל']).toBe(27);
     expect(Object.values(ds.officialSeats).reduce((a: number, b) => a + Number(b), 0)).toBe(120);
-    expect(ds.officialSeatsSourceId).toBe('k26-official-results');
-    expect(ds.status.noteEn).toContain('unverified');
-    expect(ds.status.noteHe).toContain('לא אומת');
-    const about = electionContext.events.find(e => e.id === 'pending-gazette')!;
-    expect(about.effectiveDate).toBe(ds.status.asOf);
-    expect(about.textEn).toBe(ds.status.noteEn);
-    expect(about.textHe).toBe(ds.status.noteHe);
+    expect(ds.officialSeatsSourceId).toBe('k26-results-gazette');
+    expect(ds.sourceIds).toContain('k26-results-gazette');
+    expect(ds.status.noteEn).toContain('Yalkut HaPirsumim 15100');
+    expect(ds.status.noteHe).toContain('ילקוט הפרסומים 15100');
+    // nothing describes 2026 as awaiting publication any more
+    expect(`${ds.status.noteEn} ${ds.status.noteHe}`).not.toMatch(/unverified|not yet verified|לא אומת|טרם אומת/);
+    expect(electionContext.events.filter(e => e.electionId === 'k26' && e.type === 'publication-status')).toEqual([]);
+    const index = JSON.parse(readFileSync('public/data/elections.json', 'utf8')) as { id: string; status: object }[];
+    expect(index.find(e => e.id === 'k26')!.status).toEqual(ds.status);
   });
   it('reconciles every updated locality with polling rows and reproduces released data', async () => {
     const built = await buildK26();

@@ -20,7 +20,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { csvEscape, download } from '../format.ts';
-import { deleteSaved, dispatch, getSetting, setLevel, setSetting, duplicateCurrent, importScenarioJson, openElection, openImported, openSaved, replay, redo, resetAll, scenarioKey, setState, shareLink, toast, undo, useStore } from '../store.ts';
+import { deleteSaved, dispatch, getSetting, setLevel, setSetting, toggleTheme, useSetting, duplicateCurrent, importScenarioJson, openElection, openImported, openSaved, replay, redo, resetAll, scenarioKey, setState, shareLink, toast, undo, useStore } from '../store.ts';
 import { ChevronDown, Copy, Download, FolderOpen, Link2, Menu, Moon, Redo2, RotateCcw, Save, Share2, Sun, Table2, Trash2, Undo2, Upload, Settings, X } from 'lucide-react';
 import { PersonalSettings } from './PersonalSettings.tsx';
 import { Seg } from './ui.tsx';
@@ -48,6 +48,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
     : index;
   const { markerReference: reference } = useActiveReference();
   const theme = useStore((st) => st.theme);
+  const themeChoice = useSetting('theme');
   const custom = useStore(st => st.customFeatures);
   const level = useStore((st) => st.level);
   const canUndo = useStore((st) => st.past.length > 0);
@@ -164,7 +165,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
           <div className="phone-menu-field"><span>{L('Language', 'שפה')}</span>
             <Seg label={L('Language', 'שפה')} value={lang} onChange={(v) => setState({ lang: v })} options={[{ v: 'he', label: 'עברית' }, { v: 'en', label: 'English' }]} /></div>
           <div className="phone-menu-field"><span>{L('Theme', 'ערכת צבעים')}</span>
-            <Seg label={L('Theme', 'ערכת צבעים')} value={theme} onChange={(v) => setSetting('theme', v)} options={[{ v: 'light', label: L('Light', 'בהיר') }, { v: 'dark', label: L('Dark', 'כהה') }]} /></div>
+            <Seg label={L('Theme', 'ערכת צבעים')} value={themeChoice} onChange={(v) => setSetting('theme', v)} options={[{ v: 'device', label: L('Device', 'לפי המכשיר') }, { v: 'light', label: L('Light', 'בהיר') }, { v: 'dark', label: L('Dark', 'כהה') }]} /></div>
           {/* Settings gives focus back to its opener on closing; the menu is gone by then, so that is the Menu button */}
           <button className="btn small" aria-haspopup="dialog" onClick={() => { document.querySelector<HTMLElement>('.band-menu-btn')?.focus({ preventScroll: true }); setPhoneMenu(false); setState({ settingsOpen: true }); }}><Settings className="icon sm" aria-hidden />{L('Settings', 'הגדרות')}</button>
         </section>
@@ -205,7 +206,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
       {/* outside the dark top bar, so none of the bar's own control styles reach the popup */}
       {settingsPortal}
       <Seg label={L('Language', 'שפה')} value={lang} onChange={(v) => setState({ lang: v })} options={[{ v: 'he', label: 'עב' }, { v: 'en', label: 'EN' }]} />
-      <button className="tool" title={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} aria-label={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} onClick={() => setSetting('theme', theme === 'dark' ? 'light' : 'dark')}>
+      <button className="tool" title={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} aria-label={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} onClick={toggleTheme}>
         {theme === 'dark' ? <Sun className="icon" aria-hidden /> : <Moon className="icon" aria-hidden />}</button>
       </div>
     </header>

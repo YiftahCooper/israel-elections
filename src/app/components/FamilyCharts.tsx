@@ -3,6 +3,7 @@ import { percent, points } from './Percentage.tsx';
 import { Floating } from '../floating.tsx';
 import {Fragment,useEffect,useId,useRef,useState,type ReactNode} from 'react';
 import {Info} from './ui.tsx';
+import {useHoverIntent} from '../hoverIntent.ts';
 import {aggregate,membership,type Family} from '../../families/model.ts';
 import {familyColor,historyElections,historyListName,mixedComposition,shortFamilyName,type HistoryElection} from '../../families/runtime.ts';
 import {openElection,setState,useDigits,useSetting} from '../store.ts';
@@ -41,6 +42,8 @@ export function FamilyCharts({families,cursor,onCursor,onInspect,policy}:{famili
 }
 function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;metric:'share'|'votes';scale:{top:number;ticks:number[]};cursor:ElectionId;onCursor:(id:ElectionId)=>void;onInspect:(f:Family,id:ElectionId)=>void}) {
  const L=useL(),lang=useLang(),ref=useRef<HTMLDivElement>(null),id=useId().replace(/:/g,''),[width,setWidth]=useState(640),[hover,setHover]=useState(false),hoverPopups=useSetting('hoverPopups'),digits=useDigits();
+ // shared hover timing (hoverIntent.ts): a resting mouse moves the selection and opens the facts; touch and keys at once
+ const intent=useHoverIntent(()=>setHover(false),hover);
  useEffect(()=>{const el=ref.current;if(!el)return;const o=new ResizeObserver(()=>setWidth(Math.max(270,el.clientWidth)));o.observe(el);setWidth(Math.max(270,el.clientWidth));return()=>o.disconnect();},[]);
  const narrow=width<500,height=narrow?240:300,left=narrow?44:50,right=narrow?78:110,bottom=height-38,top=20,max=scale.top;
  const t0=Date.parse(historyElections[0].electionDate),t1=Date.parse(historyElections[25].electionDate);
@@ -79,7 +82,7 @@ function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;m
  const band=(()=>{if(at<0)return {x:0,w:0};const cx=x(historyElections[at]),a=(mid(at-1)+cx)/2,b=(cx+mid(at+1))/2;return b-a>=12?{x:a,w:b-a}:{x:cx-6,w:12};})();
  const fmtTick=(v:number)=>metric==='share'?`${+v.toFixed(1)}%`:v>=1000000?`${+(v/1000000).toFixed(2)}m`:v>=1000?`${Math.round(v/1000)}k`:String(v);
 
- return <div ref={ref} className="family-plot" style={{['--family-color' as string]:color}} onPointerLeave={()=>setHover(false)}>
+ return <div ref={ref} className="family-plot" style={{['--family-color' as string]:color}} onPointerLeave={ev=>{if(ev.pointerType!=='touch')intent.leave();if(!intent.isShown)setHover(false);}}>
   <svg viewBox={`0 0 ${width} ${height}`} height={height} role="group" aria-label={`${label} — ${metric==='share'?L('Vote share','שיעור קולות'):L('Votes','קולות')}`}>
    <defs><pattern id={`hatch${id}`} width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V5" stroke={color} strokeWidth="1.6"/></pattern></defs>
    {scale.ticks.map(t=><g key={t} className="family-axis"><path d={`M${left} ${bottom-t/max*(bottom-top)}H${width-right+8}`} className="family-grid"/><text x={left-8} y={bottom-t/max*(bottom-top)+4} textAnchor="end">{fmtTick(t)}</text></g>)}
@@ -90,7 +93,7 @@ function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;m
    {historyElections.map((e,i)=>{const row=data[i];if(!row.mixed)return null;const base=row.votes??0n,h=y(base,e)-y(base+row.mixed,e);
     return <rect key={e.id} className="family-mixed" x={x(e)-3.5} y={y(base+row.mixed,e)} width="7" height={Math.max(1,h)} fill={`url(#hatch${id})`} stroke={color}/>;})}
    <path d={path} fill="none" stroke={color} strokeWidth="2.5" strokeLinejoin="round"/>
-   {historyElections.map((e,i)=>{const row=data[i],text=describe(row,e);return <g key={e.id} role="button" tabIndex={cursor===e.id?0:-1} aria-label={text} aria-haspopup="dialog" onFocus={()=>{onCursor(e.id);setHover(true);}} onPointerEnter={ev=>{if(ev.pointerType==='mouse'&&!hoverPopups)return;onCursor(e.id);setHover(true);}} onClick={()=>onInspect(f,e.id)} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();onInspect(f,e.id);}const step={ArrowRight:1,ArrowLeft:-1,Home:-99,End:99}[event.key];if(step){event.preventDefault();const next=Math.max(0,Math.min(25,i+step));onCursor(historyElections[next].id);(event.currentTarget.parentElement?.querySelectorAll('[role=button]')[next] as SVGElement )?.focus({preventScroll:true});}}}>
+   {historyElections.map((e,i)=>{const row=data[i],text=describe(row,e);return <g key={e.id} role="button" tabIndex={cursor===e.id?0:-1} aria-label={text} aria-haspopup="dialog" onFocus={()=>{intent.keep();onCursor(e.id);setHover(true);}} onPointerEnter={ev=>{if(ev.pointerType==='mouse'&&!hoverPopups)return;const show=()=>{onCursor(e.id);setHover(true);};if(ev.pointerType==='touch')show();else intent.enter(show);}} onClick={()=>onInspect(f,e.id)} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();onInspect(f,e.id);}const step={ArrowRight:1,ArrowLeft:-1,Home:-99,End:99}[event.key];if(step){event.preventDefault();const next=Math.max(0,Math.min(25,i+step));onCursor(historyElections[next].id);(event.currentTarget.parentElement?.querySelectorAll('[role=button]')[next] as SVGElement )?.focus({preventScroll:true});}}}>
     <rect x={(mid(i-1)+x(e))/2} y={top} width={Math.max(4,(mid(i+1)-mid(i-1))/2)} height={bottom-top} fill="transparent"/>
     {drawn(row)&&<circle cx={x(e)} cy={y(row.votes!,e)} r={e.pending?4.5:3.5} fill={e.pending?'var(--surface)':color} stroke={color} strokeWidth="2"/>}
     <title>{text}</title>

@@ -2,6 +2,11 @@
    the scenario and its change count) and undo/redo. Everything else is in the Menu panel. Desktop and tablet bars are
    unchanged: TopBar renders this layout only at 600px and below. Phone hit targets stay 44px. */
 .band.band-phone { flex-wrap: nowrap; gap: 4px; padding: 6px 8px; min-height: 0; }
+/* pinned at the top while the page scrolls (owner, 9 Nov 2026), so the scenario colour stays in view. The tools strip
+   sticks under it, and in-page scrolling and focused fields land below both. */
+.band.band-phone { position: sticky; top: 0; z-index: 30; box-sizing: border-box; block-size: 56px; }
+:root:has(.band-phone) { scroll-padding-block-start: calc(var(--band-h, 56px) + var(--toolbar-h) + 8px); }
+:root:has(.band-phone) .toolbar { top: var(--band-h, 56px); }
 .band.band-phone .tool { min-block-size: 44px; min-inline-size: 44px; padding-inline: 6px; }
 .band.band-phone .election { flex: 1 1 auto; min-inline-size: 0; max-inline-size: none; }
 .band.band-phone .election .choice-trigger { inline-size: 100%; min-inline-size: 0; min-block-size: 44px; padding-inline: 8px; gap: 4px; justify-content: space-between; }

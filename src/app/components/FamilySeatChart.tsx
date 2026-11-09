@@ -1,5 +1,6 @@
 import {Fragment,useEffect,useId,useRef,useState} from 'react';
 import {Floating} from '../floating.tsx';
+import {useHoverIntent} from '../hoverIntent.ts';
 import {englishLabel} from '../../data/names.ts';
 import {aggregate,type Family} from '../../families/model.ts';
 import {familyColor,historyElections,historyListName,shortFamilyName,type HistoryElection} from '../../families/runtime.ts';
@@ -42,6 +43,8 @@ type Active={bar:number;seg:number|null};
 function SeatPlot({family:f,rows,axis,partners:show,named,cursor,onCursor,onInspect}:{family:Family;rows:FamilySeatRow[];axis:{top:number;ticks:number[]};partners:boolean;named:boolean;cursor:ElectionId;onCursor:(id:ElectionId)=>void;onInspect:(f:Family,id:ElectionId)=>void}) {
  const L=useL(),lang=useLang(),ref=useRef<HTMLDivElement>(null),svg=useRef<SVGSVGElement>(null),id=useId().replace(/:/g,''),hoverPopups=useSetting('hoverPopups');
  const [width,setWidth]=useState(640),[active,setActive]=useState<Active|null>(null),touch=useRef(false),shown=useRef(false);
+ // shared hover timing (hoverIntent.ts): a resting mouse opens the facts; tap, click and keys open them at once
+ const intent=useHoverIntent(()=>setActive(null),!!active);
  useEffect(()=>{const el=ref.current;if(!el)return;const o=new ResizeObserver(()=>setWidth(Math.max(270,el.clientWidth)));o.observe(el);setWidth(Math.max(270,el.clientWidth));return()=>o.disconnect();},[]);
  const narrow=width<500,height=narrow?240:300,left=narrow?30:38,right=10,top=narrow?28:30,bottom=height-(narrow?34:38),plot=bottom-top;
  const headroom=narrow?44:56,fade=narrow?30:40,color=familyColor(f),n=historyElections.length;
@@ -67,15 +70,15 @@ function SeatPlot({family:f,rows,axis,partners:show,named,cursor,onCursor,onInsp
   const step={ArrowRight:1,ArrowLeft:-1,Home:-99,End:99}[event.key];
   if(step){event.preventDefault();const next=Math.max(0,Math.min(n-1,i+step));onCursor(historyElections[next].id);focusAt(next,null);}
  };
- const enter=(i:number,seg:number|null)=>(ev:React.PointerEvent)=>{touch.current=ev.pointerType==='touch';if(ev.pointerType==='touch'||ev.pointerType==='mouse'&&!hoverPopups)return;onCursor(historyElections[i].id);setActive({bar:i,seg});};
+ const enter=(i:number,seg:number|null)=>(ev:React.PointerEvent)=>{touch.current=ev.pointerType==='touch';if(ev.pointerType==='touch'||ev.pointerType==='mouse'&&!hoverPopups)return;intent.enter(()=>{onCursor(historyElections[i].id);setActive({bar:i,seg});});};
  // Touch: the first tap shows the facts, a second tap on the same place opens the election's details.
  const click=(i:number,seg:number|null)=>()=>{if(touch.current&&!shown.current){setActive({bar:i,seg});onCursor(historyElections[i].id);return;}onInspect(f,historyElections[i].id);};
- const focus=(i:number,seg:number|null)=>()=>{onCursor(historyElections[i].id);setActive({bar:i,seg});};
+ const focus=(i:number,seg:number|null)=>()=>{intent.keep();onCursor(historyElections[i].id);setActive({bar:i,seg});};
  const handlers=(i:number,seg:number|null)=>({onPointerEnter:enter(i,seg),onPointerDown:(ev:React.PointerEvent)=>{touch.current=ev.pointerType==='touch';shown.current=!!active&&active.bar===i&&active.seg===seg;},onClick:click(i,seg),onFocus:focus(i,seg),onKeyDown:keys(i,seg),'aria-haspopup':'dialog' as const});
  const fmtYear=(i:number)=>{const e=historyElections[i],y=e.electionDate.slice(0,4);return y;};
  const month=(e:HistoryElection)=>historyElections.filter(d=>d.electionDate.slice(0,4)===e.electionDate.slice(0,4)).length>1?new Date(e.electionDate+'T12:00:00').toLocaleDateString(lang==='he'?'he-IL':'en-GB',{month:'short'}):'';
  const anchor=()=>{if(!active)return ref.current?.getBoundingClientRect();const el=svg.current?.querySelector(active.seg===null?`[data-bar="${active.bar}"]`:`[data-bar="${active.bar}"][data-seg="${active.seg}"]`);return el?.getBoundingClientRect()??ref.current?.getBoundingClientRect();};
- return <div ref={ref} className="family-plot family-seat-plot" style={{['--family-color' as string]:color}} onPointerLeave={()=>setActive(null)}>
+ return <div ref={ref} className="family-plot family-seat-plot" style={{['--family-color' as string]:color}} onPointerLeave={ev=>{if(ev.pointerType!=='touch')intent.leave();if(!intent.isShown)setActive(null);}}>
   {named&&<p className="family-seat-name"><i aria-hidden/>{label}</p>}
   <svg ref={svg} viewBox={`0 0 ${width} ${height}`} height={height} role="group" aria-label={`${label} — ${L('Seats won','מנדטים')}`} onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget as Node))setActive(null);}}>
    <defs>

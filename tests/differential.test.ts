@@ -256,7 +256,9 @@ const EXPECTED: Record<Family, string> = {
   // bios. Substituting HEAD's k9/k12/k15/k16/k18/k22–k25 reproduces c850387b…; the other four are unchanged.
   // MQ (9 Nov): 14 reviewed identity links and 21 gazette-transcribed candidates only.
   // Votes, seats, agreements, rules and the other four differential digests are unchanged.
-  model: '26acbc3b23770851b01c9739f1ce6c5356422b7b7dd58b1a734ea97d5015a99b',
+  // P2 (9 Nov): k26 gazetted (YP 15100): status note/asOf, officialSeatsSourceId and one more source id only.
+  // Substituting HEAD's k26 reproduces 26acbc3b… exactly; the other four digests are unchanged.
+  model: '6550c2ddd1d7599cb989634792e7e02e512117961c1115b710f879c17096fed0',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };
