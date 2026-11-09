@@ -1,4 +1,5 @@
-import { Floating, useHoverBridge } from '../floating.tsx';
+import { Floating } from '../floating.tsx';
+import { useHoverIntent } from '../hoverIntent.ts';
 import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { GLOSSARY, useL, useLang, type GlossaryTerm } from '../i18n.ts';
 import { syntheticIconUrl } from '../syntheticIcon.ts';
@@ -7,13 +8,14 @@ import type { LogoRef } from '../../data/schema.ts';
 import { parseIntInput } from '../format.ts';
 import { useSetting } from '../store.ts';
 
-/** Accessible info popover: opens on hover, focus or click; Escape closes. */
+/** Accessible info popover: opens on hover (after the shared hover delay), focus or click; Escape closes. */
 export function Info({ title, children, term, label }: { title?: string; children?: ReactNode; term?: string; /** the button's name when the title alone would repeat a neighbouring control's */ label?: string }) {
   // 'hover' and 'focus' are transient; 'pinned' (a click or tap) stays open until Escape, an outside
   // press or a second click. A click used to toggle a popover that hover or focus had just opened,
   // so it closed at once, and touch users could never open it.
   const [open, setOpen] = useState<false | 'hover' | 'focus' | 'pinned'>(false);
-  const bridge = useHoverBridge(() => setOpen(o => o === 'hover' ? false : o));
+  // one hover timing for every popup (hoverIntent.ts): opens after a short rest, closes after a short grace
+  const bridge = useHoverIntent(() => setOpen(o => o === 'hover' ? false : o), !!open);
   const id = useId();
   const lang = useLang();
   const ref = useRef<HTMLSpanElement>(null);
@@ -31,14 +33,14 @@ export function Info({ title, children, term, label }: { title?: string; childre
   const heading = title ?? (g ? (lang === 'he' ? g.nameHe : `${g.nameEn} (${g.nameHe})`) : '');
   return (
     <span className="info" ref={ref}
-      onPointerEnter={(e) => { if (e.pointerType === 'mouse' && hoverPopups) { bridge.cancel(); setOpen((o) => o || 'hover'); } }}
+      onPointerEnter={(e) => { if (e.pointerType === 'mouse' && hoverPopups) bridge.enter(() => setOpen((o) => o || 'hover')); }}
       onPointerLeave={(e) => { if (e.pointerType === 'mouse') bridge.leave(); }}>
       <button type="button" aria-label={label ?? (heading || 'info')} aria-expanded={!!open} aria-describedby={open ? id : undefined}
         onClick={() => setOpen((o) => (o === 'pinned' ? false : 'pinned'))}
         onFocus={(e) => { if (e.currentTarget.matches(':focus-visible')) setOpen((o) => o || 'focus'); }}
         onBlur={(e) => { if (!ref.current?.contains(e.relatedTarget as Node)) setOpen((o) => (o === 'hover' ? o : false)); }}>i</button>
       {open && (
-        <Floating onPointerEnter={bridge.cancel} onPointerLeave={bridge.leave} className="pop" id={id} anchor={() => ref.current?.querySelector('button')?.getBoundingClientRect()}>
+        <Floating onPointerEnter={bridge.keep} onPointerLeave={bridge.leave} className="pop" id={id} anchor={() => ref.current?.querySelector('button')?.getBoundingClientRect()}>
           {heading && <b>{heading}</b>}
           {g && <span>{lang === 'he' ? g.defHe : g.defEn}</span>}
           {g && <GlossaryLink g={g} lang={lang} />}

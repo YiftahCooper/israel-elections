@@ -9,6 +9,9 @@
     <!-- Download the default election (openElection('k26') in src/app/App.tsx) alongside the script
          instead of after it runs. crossorigin matches fetch()'s defaults, so the response is reused. -->
     <link rel="preload" href="data/k26.json" as="fetch" crossorigin />
+    <!-- The theme before the first paint (store.ts resolves it the same way): a stored choice, else the device's.
+         Without this, a dark device would flash the light page until the app starts. -->
+    <script>try { var v = JSON.parse(localStorage.getItem('israel-elections:settings') || 'null'), t = v && v.v === 2 && v.values && v.values.theme; if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; document.documentElement.dataset.theme = t; } catch (e) {}</script>
   </head>
   <body>
     <div id="root"></div>

@@ -8,7 +8,7 @@ import { BlocVoteStepper } from './BlocVoteStepper.tsx';
 import { ScenarioSwitcher } from './ScenarioSwitcher.tsx';
 import { voteSourceLabel } from '../voteEdit.ts';
 import { useSetting, useVoteSource, useStore } from '../store.ts';
-import { hiddenSeatlessParty } from '../seatlessParties.ts';
+import { partyListed } from '../seatlessParties.ts';
 import { FamilyGroupingLink } from './FamilyTreatment.tsx';
 import { StartFrom } from './StartFrom.tsx';
 // Blocs, edited where they are drawn: a panel beside the chamber with one tinted card per bloc. A bloc's name is
@@ -44,7 +44,7 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
   const ds = useStore(st => st.datasets[s.electionId]);
   const lang = useLang();
   const [picked, setPicked] = useState<Unit | null>(null);
-  const seatlessParties = useSetting('seatlessParties'), partiesInSeatlessLists = useSetting('partiesInSeatlessLists');
+  const jointListParties = useSetting('jointListParties');
   const [over, setOver] = useState<string | null>(null);
   const [paletteFor, setPaletteFor] = useState<string | null>(null);
   const [fresh, setFresh] = useState<string | null>(null);
@@ -204,9 +204,9 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
                             <span className="bp-chip-name">{chipLabel(u)}<EditMarker s={s} path={u.kind === 'party' ? ['partyBlocs', u.partyId] : ['lists', u.listId, 'bloc']} /></span>
                             <b className="tabnum">{u.n}</b>
                           </button>
-                          {u.kind === 'list' && u.parties.length > 1 && (
+                          {u.kind === 'list' && u.parties.length > 1 && u.parties.some(x => partyListed(jointListParties, s, x.partyId, x.n, u.n)) && (
                             <span className="bp-subchips">
-                              {u.parties.filter(x => u.n > 0 ? seatlessParties || !hiddenSeatlessParty(s, x.partyId, x.n) : partiesInSeatlessLists).map((x) => {
+                              {u.parties.filter(x => partyListed(jointListParties, s, x.partyId, x.n, u.n)).map((x) => {
                                 const pp = partyOf(u.listId, x.partyId)!;
                                 const unit = moveParty(u.listId, x.partyId, u.home);
                                 const subChosen = picked?.key === unit.key;

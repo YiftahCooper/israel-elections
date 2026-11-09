@@ -1,4 +1,5 @@
 import { choose } from './choices.ts';
+import { barLanguage, closeBarMenu, openBarMenu } from './barMenu.ts';
 import { expect, test, type Page } from '@playwright/test';
 async function start(page: Page) {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang:'en', level:'standard', hintDismissed:true})));
@@ -44,13 +45,15 @@ test('E3 separated lists compare once as a group', async ({page}) => {
 });
 for (const lang of ['en','he']) test(`E5 E6 phone election and named tools ${lang}`, async ({page}) => {
   await page.setViewportSize({width:390,height:844}); await start(page);
-  if(lang==='he') await page.getByRole('button',{name:'עב',exact:true}).click();
+  if(lang==='he') await barLanguage(page,'he');
+  // the one-row phone bar (owner, 9 Nov 2026): level, Save & share and Start over are named in full in its Menu
   for(const level of (lang==='en'?['Simple','Standard','Expert']:['פשוט','רגיל','מומחה'])) {
-    await page.getByRole('button',{name:level,exact:true}).click();
-    expect.soft((await page.locator('.election .choice-trigger').boundingBox())!.width).toBeGreaterThan(180); // leaves room for two 44px election arrows in the compact phone row
+    await openBarMenu(page); await page.locator('#phone-menu').getByRole('button',{name:level,exact:true}).click(); await closeBarMenu(page);
+    expect.soft((await page.locator('.election .choice-trigger').boundingBox())!.width).toBeGreaterThan(110);
   }
+  await openBarMenu(page);
   for (const name of (lang==='en'?['Save & share','Start over']:['שמירה ושיתוף','התחלה מחדש'])) {
-    await expect.soft(page.getByRole('button',{name,exact:true})).toHaveAttribute('title',name);
+    await expect.soft(page.locator('#phone-menu').getByText(name,{exact:true})).toBeVisible();
   }
 });
 test('E7 native list controls in Compare and Seat safety open with Enter', async ({page}) => {

@@ -12,7 +12,8 @@ function OfficialPreview({ ds }: { ds: ElectionDataset }) {
   const s = useMemo(() => scenarioFromDataset(ds), [ds]);
   return <ResultPreview s={s} blocs={false} />;
 }
-export function ElectionPicker({ elections, value, onChange }: { elections: ElectionIndexEntry[]; value: string; onChange: (value: string) => void }) {
+/** `arrows`: the ‹ › previous/next buttons beside the picker (not on the phone bar, owner 9 Nov 2026). */
+export function ElectionPicker({ elections, value, onChange, arrows = true }: { elections: ElectionIndexEntry[]; value: string; onChange: (value: string) => void; arrows?: boolean }) {
   const L = useL(), lang = useLang(), datasets = useStore(st => st.datasets);
   const dialog = useRef<HTMLDialogElement>(null), trigger = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false), [query, setQuery] = useState('');
@@ -33,9 +34,9 @@ export function ElectionPicker({ elections, value, onChange }: { elections: Elec
     return () => { live = false; };
   }, [open, previewKey]); // the opened timeline keeps its election snapshot while previews arrive
   return <span className="election choice-picker election-navigation">
-    <button className="tool election-arrow" aria-label={L('Previous election', 'הבחירות הקודמות')} disabled={at < 0 || at >= options.length - 1 || options[at + 1]?.disabled} onClick={() => onChange(options[at + 1].value)}><span aria-hidden>‹</span></button>
+    {arrows && <button className="tool election-arrow" aria-label={L('Previous election', 'הבחירות הקודמות')} disabled={at < 0 || at >= options.length - 1 || options[at + 1]?.disabled} onClick={() => onChange(options[at + 1].value)}><span aria-hidden>‹</span></button>}
     <button ref={trigger} className="btn choice-trigger" aria-label={L('Election', 'בחירות')} aria-haspopup="dialog" data-value={value} onClick={() => { setQuery(''); setOpen(true); dialog.current?.showModal(); dialog.current?.querySelector<HTMLInputElement>('input')?.focus(); requestAnimationFrame(() => dialog.current?.querySelector<HTMLElement>(`[data-choice-value="${value}"]`)?.scrollIntoView({ block: 'nearest' })); }}><span className="choice-current">{options[at]?.label}</span><ChevronsUpDown className="icon sm picker-affordance" aria-hidden /></button>
-    <button className="tool election-arrow" aria-label={L('Next election', 'הבחירות הבאות')} disabled={at <= 0 || options[at - 1]?.disabled} onClick={() => onChange(options[at - 1].value)}><span aria-hidden>›</span></button>
+    {arrows && <button className="tool election-arrow" aria-label={L('Next election', 'הבחירות הבאות')} disabled={at <= 0 || options[at - 1]?.disabled} onClick={() => onChange(options[at - 1].value)}><span aria-hidden>›</span></button>}
     <dialog ref={dialog} className="choice-dialog election-dialog" aria-label={L('Election', 'בחירות')} onKeyDown={e => { if (e.key === 'Escape') e.stopPropagation(); }} onCancel={e => { e.preventDefault(); close(); }} onClick={e => { if (e.target === e.currentTarget) close(); }}>
       <div className="timeline-search"><input autoFocus type="search" value={query} aria-label={L('Search choices', 'חיפוש אפשרויות')} placeholder={L('Year, Knesset or date…', 'שנה, כנסת או תאריך…')} onChange={e => setQuery(e.target.value)} onKeyDown={e => { if (e.key === 'ArrowDown') { e.preventDefault(); dialog.current?.querySelector<HTMLButtonElement>('.choice-option:not(:disabled)')?.focus(); } }} /><button className="btn" aria-label={L('Close', 'סגירה')} onClick={close}>×</button></div>
       <div className="choice-options" onKeyDown={e => {

@@ -1,0 +1,39 @@
+/* Phone top bar (owner, 9 Nov 2026): one row with the Menu button, the election, a status label (official result or
+   the scenario and its change count) and undo/redo. Everything else is in the Menu panel. Desktop and tablet bars are
+   unchanged: TopBar renders this layout only at 600px and below. Phone hit targets stay 44px. */
+.band.band-phone { flex-wrap: nowrap; gap: 4px; padding: 6px 8px; min-height: 0; }
+.band.band-phone .tool { min-block-size: 44px; min-inline-size: 44px; padding-inline: 6px; }
+.band.band-phone .election { flex: 1 1 auto; min-inline-size: 0; max-inline-size: none; }
+.band.band-phone .election .choice-trigger { inline-size: 100%; min-inline-size: 0; min-block-size: 44px; padding-inline: 8px; gap: 4px; justify-content: space-between; }
+.band.band-phone .election .choice-current { min-inline-size: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.band-menu-btn { position: relative; flex: none; }
+/* the result's publication is not yet verified: the About line is in the menu, so the button carries a mark */
+.band-menu-flag { position: absolute; inset-block-start: 2px; inset-inline-end: 0; display: grid; place-items: center; inline-size: 14px; block-size: 14px; border-radius: 50%; background: var(--warn-bg); color: var(--warn-ink); font-size: 10px; font-weight: 700; line-height: 1; }
+.band-status { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 5px; min-inline-size: 0; max-inline-size: 40%; min-block-size: 44px; padding: 2px 8px; border: 1px solid color-mix(in srgb, var(--shell-ink) 55%, transparent); border-radius: 5px; background: transparent; color: var(--shell-ink); font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+.band-status:hover { background: var(--shell-2); }
+.band-status .swatch { flex: none; }
+.band-status-name { min-inline-size: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.band-status-count { flex: none; min-inline-size: 18px; padding: 0 5px; border-radius: 999px; background: var(--shell-ink); color: var(--shell); font-size: 12px; line-height: 18px; text-align: center; }
+.app[data-coloured] .band .band-status-count { background: var(--scenario-ink); color: var(--scenario-color); }
+.band-undo { display: inline-flex; flex: none; }
+.band.band-phone .band-undo .tool { padding-inline: 4px; }
+
+/* the menu panel, in the top layer under the bar */
+.phone-menu { box-sizing: border-box; inline-size: calc(100vw - 16px); padding: 10px 12px 14px; display: grid; gap: 4px; background: var(--surface); color: var(--ink); border: 1px solid var(--rule-2); border-radius: 8px; box-shadow: var(--shadow-pop); }
+.phone-menu:focus { outline: none; }
+.phone-menu-brand { margin: 0 0 4px; font-size: 14px; font-weight: 700; color: var(--ink-2); }
+.phone-menu section { display: grid; gap: 8px; padding-block: 10px 6px; border-block-start: 1px solid var(--rule); }
+.phone-menu h2 { margin: 0; font-size: 12.5px; font-weight: 600; color: var(--ink-2); }
+.phone-menu-field { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 10px; }
+.phone-menu-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.phone-menu .seg button { min-block-size: 44px; min-inline-size: 44px; }
+.phone-menu .btn, .phone-menu .btn.small { min-block-size: 44px; justify-content: flex-start; }
+.phone-menu .band-levels { flex-wrap: wrap; align-items: stretch; } /* Custom as tall as the level buttons, on their row */
+.phone-menu .scenario-switcher, .phone-menu .scenario-switcher .choice-trigger { inline-size: 100%; }
+.phone-menu .scenario-switcher .choice-trigger > .result-preview { display: none; }
+.phone-menu-share summary { display: flex; align-items: center; gap: 6px; min-block-size: 44px; font-weight: 600; cursor: pointer; }
+.phone-menu-share-items { display: grid; gap: 4px; padding-block-start: 4px; }
+.phone-menu-share-items .btn { inline-size: 100%; }
+.phone-menu .election-about { margin: 0; padding: 0; border: 0; background: transparent; }
+.phone-menu .election-about summary { padding-block: 12px; min-block-size: 44px; box-sizing: border-box; cursor: pointer; }
+.phone-menu .election-about ul { margin: 6px 0 0; padding: 14px 22px; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); color: var(--ink); box-shadow: 0 8px 24px #0003; white-space: normal; }

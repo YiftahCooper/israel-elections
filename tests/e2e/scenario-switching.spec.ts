@@ -115,13 +115,19 @@ test('tablet: the strip stays one line and stays visible under the wrapped band'
 
 test('phone: About opens on screen, names each list, and closes on Escape', async ({ page }) => {
   await start(page, 'he', 'simple', { width: 390, height: 844 });
-  const about = page.locator('.band .election-about');
+  // phones: About is in the bar's Menu (one-row bar, owner 9 Nov)
+  await page.locator('.band .band-menu-btn').click();
+  const about = page.locator('#phone-menu .election-about');
   await about.locator('summary').click();
   const list = about.locator('ul');
   await expect(list).toBeInViewport();
   await expect(list).toContainText('הרשימה המשותפת:');
   await page.keyboard.press('Escape');
   await expect(list).toBeHidden();
+  // the first Escape closes About only; the next closes the menu
+  await expect(page.locator('#phone-menu')).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(page.locator('#phone-menu')).toHaveCount(0);
 });
 
 test('a failed election load keeps the open election and a plain message', async ({ page }) => {

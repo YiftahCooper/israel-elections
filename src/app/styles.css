@@ -1069,6 +1069,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .source-ask::backdrop { background: rgb(0 0 0 / .25); }
 .source-ask .row { gap: 6px; align-items: center; }
 .source-ask select { max-inline-size: 11rem; }
+.source-ask .source-consequences { margin: 6px 0 0; padding-inline-start: 18px; display: grid; gap: 3px; color: var(--ink-2); max-inline-size: 24rem; }
+.source-ask .source-consequences [data-chosen] { color: var(--ink); list-style-type: '✓ '; }
 .vote-goals > button, .vote-goals > div > button { text-align: start; justify-content: space-between; inline-size: 100%; min-block-size: 32px; }
 .more-trigger { justify-self: start; }
 .vote-more { display: grid; gap: 10px; padding: 10px 0; border-block-start: 1px solid var(--rule); }

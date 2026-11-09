@@ -1,6 +1,8 @@
 import { expect, type Locator } from '@playwright/test';
 export async function choose(picker: Locator, value: string | { label: string }) {
   const dialogId = await picker.getAttribute('aria-controls');
+  // read before choosing: a picker inside the phone menu goes away with the menu once a choice is made
+  const pickerLabel = await picker.getAttribute('aria-label');
   await picker.click();
   const dialog = dialogId ? picker.page().locator(`[id="${dialogId}"]`) : picker.page().getByRole('dialog').last();
   const option = typeof value === 'string' ? dialog.locator(`[data-choice-value="${value}"]`) : dialog.locator('.choice-option').filter({ has: dialog.page().getByText(value.label, { exact: true }) });
@@ -10,6 +12,6 @@ export async function choose(picker: Locator, value: string | { label: string })
   if (await open.count()) await open.click();
   await expect(dialog).not.toBeVisible();
   // Closing the election dialog starts an async load; wait for the committed election.
-  if (selectedValue && ['Election','בחירות'].includes(await picker.getAttribute('aria-label') ?? ''))
+  if (selectedValue && ['Election','בחירות'].includes(pickerLabel ?? ''))
     await expect(picker).toHaveAttribute('data-value', selectedValue);
 }

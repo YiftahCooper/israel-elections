@@ -79,6 +79,12 @@
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
+    "toi-2021-06-03-deals": {
+      "url": "https://www.timesofisrael.com/judicial-reforms-recognition-of-bedouin-villages-details-from-coalition-deals/",
+      "publisher": "The Times of Israel",
+      "kind": "secondary",
+      "accessed": "2026-11-09"
+    },
     "inn-2021-06-02": {
       "url": "https://www.israelnationalnews.com/news/307378",
       "publisher": "Israel National News",
@@ -765,12 +771,20 @@
             "quote": "the government will comprise Yesh Atid, Blue and White, Yamina, Labor, Yisrael Beytenu, New Hope, Meretz and Ra'am."
           },
           {
+            "source": "toi-2021-06-03-deals",
+            "quote": "The deal between Ra’am and Yesh Atid includes a deputy ministerial post for Ra’am in the Prime Minister’s Office, according to Hebrew media reports Thursday.",
+            "locator": "Section “Ra’am”",
+            "note": "A report on the agreement, not an appointment. The same section: the Shura Council “has yet to decide if the party will activate that article in the agreement and appoint such a deputy minister”. That no appointment followed rests on the official deputy-minister roster (deputies36)."
+          },
+          {
             "source": "deputies36",
             "quote": "PositionID: 40",
             "note": "Project tabulation: all 11 returned appointments, 7 distinct people, no Raam MK. See retained government36Deputies."
           }
         ],
-        "note": "Coalition member, no cabinet minister. Contrary to some reports, no Raam deputy-minister appointment appears anywhere in the complete official government-36 deputy roster. Proposed office and deputy speaker are different facts."
+        "note": "Coalition member, no cabinet minister. Contrary to some reports, no Raam deputy-minister appointment appears anywhere in the complete official government-36 deputy roster. Proposed office and deputy speaker are different facts.",
+        "noteEn": "A deputy-minister post was offered in the coalition deal but never taken up.",
+        "noteHe": "בהסכם הקואליציוני הוצע תפקיד של סגן שר, אך הוא לא מומש."
       }
     ],
     "coalitionSeats": 62,

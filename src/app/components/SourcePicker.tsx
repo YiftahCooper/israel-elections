@@ -6,7 +6,7 @@ import type { ElectionId } from '../../data/schema.ts';
 import { baselineOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt } from '../format.ts';
-import { answerPreference, chooseSource, loadDataset, setState, useStore, useVoteSource } from '../store.ts';
+import { answerPreference, chooseSource, loadDataset, setState, useLevel, useStore, useVoteSource } from '../store.ts';
 import { PREFERENCES, sourceValue, type PreferenceId } from '../preferences.ts';
 import { Info } from './ui.tsx';
 
@@ -47,6 +47,8 @@ export function SourceDialog() {
   const lang = useLang();
   const ask = useStore(st => st.preferenceAsk);
   const s = useStore(st => st.scenario);
+  // asked at every level (owner, 9 Nov 2026); Simple offers the two main answers, the higher levels also one list
+  const { simple } = useLevel();
   const [value, setValue] = useState('');
   const [scope, setScope] = useState<'once' | 'item' | 'always'>('once');
   const dialog = useRef<HTMLDialogElement>(null);
@@ -71,11 +73,17 @@ export function SourceDialog() {
         <select aria-label={label} value={value} onChange={e => setValue(e.target.value)}>
           <option value="" disabled>{L('Choose…', 'בחירה…')}</option>
           {PREFERENCES[id].options.map(o => <option key={o.value} value={o.value}>{L(o.label[0], o.label[1])}</option>)}
-          {id === 'voteSource' && <optgroup label={L('One list', 'רשימה אחת')}>
+          {id === 'voteSource' && !simple && <optgroup label={L('One list', 'רשימה אחת')}>
             {others.map(x => <option key={x.id} value={sourceValue({ kind: 'transfer', listId: x.id })}>{listLabel(x, lang)}</option>)}
           </optgroup>}
         </select>
       </label>
+      {/* what each answer does, always in view (the chosen one in bold), so the dialog never changes height */}
+      {id === 'voteSource' && <ul className="tiny source-consequences">
+        <li data-chosen={value === 'proportional' || undefined}><b>{L('Other lists', 'שאר הרשימות')}:</b> {L('taken from all of them, by size. Turnout stays the same.', 'נלקחים מכולן, לפי גודלן. שיעור ההצבעה לא משתנה.')}</li>
+        <li data-chosen={value === 'new' || undefined}><b>{L('New voters', 'מצביעים חדשים')}:</b> {L('more people vote (or fewer). Turnout changes; other lists keep their votes.', 'יותר אנשים מצביעים (או פחות). שיעור ההצבעה משתנה; לשאר הרשימות אותם קולות.')}</li>
+        {!simple && <li data-chosen={value.startsWith('t:') || undefined}><b>{L('One list', 'רשימה אחת')}:</b> {L('only that list gives or takes the votes.', 'רק היא נותנת או מקבלת את הקולות.')}</li>}
+      </ul>}
       <fieldset className="preference-scope">
         <legend>{L('Use this choice', 'שימוש בבחירה')}</legend>
         {([

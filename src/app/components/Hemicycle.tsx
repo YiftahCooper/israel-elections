@@ -8,7 +8,8 @@ import { factLog } from '../../model/actionClassification.ts';
 import { CandidateName } from './CandidateName.tsx';
 import { MkSeatLink } from './MkHistory.tsx';
 import memberNames from '../../data/candidate-display-names.json';
-import { Floating, useHoverBridge } from '../floating.tsx';
+import { Floating } from '../floating.tsx';
+import { useHoverIntent } from '../hoverIntent.ts';
 import { blocDisplayOrder } from '../blocOrder.ts';
 import { changedSeatKeys } from '../graphics.ts';
 import { useGraphicReference } from '../useGraphicReference.ts';
@@ -125,11 +126,13 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     return { bands: out, bandOf };
   }, [seats, s.blocs, layout]);
 
-  const hoverBridge = useHoverBridge(() => setHover(null));
+  const hoverBridge = useHoverIntent(() => setHover(null), !!hover);
+  /** focus and click open the seat card at once; a resting mouse opens it after the shared hover delay */
   const onSeat = (st: SeatInfo, evt: React.MouseEvent | React.FocusEvent) => {
-    hoverBridge.cancel();
+    hoverBridge.keep();
     setHover({ seat: st, anchor: evt.currentTarget });
   };
+  const onSeatHover = (st: SeatInfo, evt: React.MouseEvent) => { const anchor = evt.currentTarget; hoverBridge.enter(() => setHover({ seat: st, anchor })); };
 
   const exportSvg = (kind: 'svg' | 'png') => {
     const el = svgRef.current; if (!el) return;
@@ -271,7 +274,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           return (
             <g key={i}><circle className={`seat ${dim ? 'dim' : ''}`} cx={cx + p.x * R} cy={cy + p.y * R} r={rad * R} fill={st.color}
               data-seat="" data-bloc={st.bloc ?? "__none"} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? "var(--ink)" : "var(--ink-2)"} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`) ? 4 : 1}
-              onMouseEnter={(e) => { if (hoverPopups) onSeat(st, e); }} onMouseLeave={hoverBridge.leave} onFocus={(e) => onSeat(st, e)} onBlur={() => setHover(null)}
+              onMouseEnter={(e) => { if (hoverPopups) onSeatHover(st, e); }} onMouseLeave={hoverBridge.leave} onFocus={(e) => onSeat(st, e)} onBlur={() => setHover(null)}
               onClick={(e) => { if (!hoverPopups) onSeat(st, e); setState({ selectedListId: selected === st.listId ? null : st.listId }); }}><title>{seatLabel(st)}</title></circle>
             {st.innerColor && <PartyDot partyId={st.partyId} x={cx+p.x*R} y={cy+p.y*R} r={rad*R*.64} color={st.innerColor} ring={st.color} className={dim?'seat dim':'seat'}/>}
             </g>
@@ -290,7 +293,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         const bc = s.blocs.find(b => b.id === st.bloc)?.color ?? 'var(--muted)';
         return <g key={i}>{blocShading && <rect data-bloc-region={st.bloc ?? '__none'} x={x-5} y={y-5} width={48} height={48} className="bloc-cell" style={{ ['--bc' as string]: bc }} />}
           <rect data-seat="" className="seat" x={x} y={y} width={36} height={36} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--ink-2)'} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`)?4:1}
-            onMouseEnter={e => { if (hoverPopups) onSeat(st,e); }} onMouseLeave={hoverBridge.leave} onClick={e => { if (!hoverPopups) onSeat(st,e); setState({selectedListId: st.listId}); }}><title>{seatLabel(st)}</title></rect>
+            onMouseEnter={e => { if (hoverPopups) onSeatHover(st,e); }} onMouseLeave={hoverBridge.leave} onClick={e => { if (!hoverPopups) onSeat(st,e); setState({selectedListId: st.listId}); }}><title>{seatLabel(st)}</title></rect>
           {st.innerColor && <PartyDot partyId={st.partyId} x={x+18} y={y+18} r={12} color={st.innerColor} ring={st.color}/>}
         </g>;
       })}
@@ -348,7 +351,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       {hasChanges && <p className="small muted graphic-key">{L('Seat changes', 'שינויי מנדטים')} · {referenceLabel(labelReference,lang).name} <Info title={L('About these outlines','על המתארים')}>{L(`Outlined: seats gained compared with ${referenceLabel(labelReference,lang).name}. Dashed, in the small chamber: seats lost. Outlines compare list seat counts, not individual seats or voters moving between lists. Dashed bars show the reference; neutral ink shows the difference.`, `מתאר: מנדטים שנוספו לעומת ${referenceLabel(labelReference,lang).name}. מקווקו, בכנסת הקטנה: מנדטים שאבדו. המתארים משווים את מספר המנדטים של הרשימות; אין משמעות של מנדט או בוחר שעבר בין רשימות. מתארי העמודות המקווקווים מציינים את הבסיס; דיו ניטרלי מציין שינוי.`)}</Info></p>}
       {/* the per-list seat changes are said once, in the change line under the tools strip */}
       {hover && hv && (
-        <Floating onPointerEnter={hoverBridge.cancel} onPointerLeave={hoverBridge.leave} className="tip" preferAbove anchor={() => hover.anchor.getBoundingClientRect()}>
+        <Floating onPointerEnter={hoverBridge.keep} onPointerLeave={hoverBridge.leave} className="tip" preferAbove anchor={() => hover.anchor.getBoundingClientRect()}>
           <div className="row"><Slip {...hv} name={listLabel(hv, lang)} size="sm" /><b>{listLabel(hv, lang)}</b> <span className="muted">({hv.letters})</span></div>
           {cand ? <div><b><CandidateName candidate={cand} text={hoverCandidateName} /></b> · {L('rank', 'מקום')} {hover.seat.idx + 1}{cand.notes?.map((n, k) => <div key={k} className="muted small">{lang === 'he' ? n.he : n.en}</div>)}</div>
             : hv.rosterUnavailable || hv.rosterTruncated ? <div className="muted">{L(`Seat ${hover.seat.idx + 1} of the list; candidate names are not available for this election`, `מושב ${hover.seat.idx + 1} של הרשימה; שמות המועמדים אינם זמינים לבחירות אלה`)}</div>

@@ -1,4 +1,5 @@
 import { choose } from './choices.ts';
+import { closeBarMenu, openBarMenu } from './barMenu.ts';
 import { allocate } from '../../src/engine/allocate.ts';
 import { scenarioFromDataset, toEngineInput } from '../../src/model/scenario.ts';
 import { readFileSync } from 'node:fs';
@@ -44,19 +45,24 @@ for (const lang of ['he','en']) for (const theme of ['light','dark']) for (const
     await page.goto('/');
     const picker=page.getByRole('button', {name:lang==='he'?'בחירות':'Election',exact:true});
     await choose(picker, 'k26');
+    // phones (owner, 9 Nov 2026): one-row bar; its Menu button carries the mark and About is in the Menu
+    if (phone) await expect(page.locator('.band .band-menu-btn')).toHaveAttribute('aria-label', new RegExp(lang==='he'?'הפרסום ברשומות טרם אומת':'Gazette not yet verified'));
+    expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(60);
+    await openBarMenu(page);
     await expect(page.locator('.election-about summary')).toContainText(lang==='he'?'רשומות: טרם אומת':'Gazette not yet verified');
     await expect(page.locator('.publication-pending')).toHaveCount(1);
-    if (!phone) expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(60);
     await page.locator('.election-about summary').click();
     await expect(page.locator('.election-about ul')).toBeVisible();
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth), await page.evaluate(() => [...document.querySelectorAll('body *')].filter(el => { const r = el.getBoundingClientRect(); return r.width > 0 && r.right > innerWidth + 1; }).slice(0, 8).map(el => `${el.tagName}.${el.className}: ${Math.round(el.getBoundingClientRect().width)}px`).join(', '))).toBe(true);
     await page.screenshot({path:`.backup-scratch/polish/about-${lang}-${theme}-${phone?'phone':'desktop'}.png`});
+    if (phone) { await page.keyboard.press('Escape'); await closeBarMenu(page); }
     await choose(picker, 'k15');
     await expect(page.locator('.lb-row').first()).toBeVisible();
     await page.evaluate(()=>document.fonts.ready);
-    if (!phone) expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(60);
+    expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(60);
     const suffix=`${lang}-${theme}-${phone?'phone':'desktop'}`;
     await page.screenshot({path:`.backup-scratch/polish/chamber-${suffix}.png`});
+    await openBarMenu(page);
     await page.getByRole('button',{name:lang==='he'?'מותאם':'Custom',exact:true}).click();
     await expect(page.getByRole('tab',{selected:true})).toHaveCount(0);
     await expect(page.locator('.custom-grid')).toHaveCount(3);

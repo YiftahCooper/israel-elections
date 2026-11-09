@@ -81,22 +81,32 @@ test('the chosen level and a dismissed hint survive a reload', async ({ page }) 
   await expect(page.getByRole('status').filter({ hasText: 'Pick a list. Try a change.' })).toHaveCount(0);
 });
 
-test('Simple balances vote edits proportionally even if another source was chosen in Standard', async ({ page }) => {
+test('Simple asks where added votes come from too, with each answer’s effect in view (owner, 9 Nov)', async ({ page }) => {
+  await page.addInitScript(() => { if (!sessionStorage.getItem('ask-simple')) { localStorage.setItem('israel-elections:preferences', '{}'); sessionStorage.setItem('ask-simple', '1'); } });
   await start(page);
-  await levelButton(page, 'Standard').click();
-  await listCard(page, 'Likud').click();
-  await details(page).getByRole('combobox', { name: 'Votes come from' }).selectOption('new');
-
-  const before = await listRow(page, 'Yashar!').locator('.lb-sub').innerText();
   await levelButton(page, 'Simple').click();
-  await expect(details(page).getByText('other lists proportionally', { exact: true })).toBeVisible();
+  // Simple rows show shares, not vote counts: read Yashar!'s votes in its details first
+  await listCard(page, 'Yashar!').click();
   const votes = details(page).getByLabel('Votes', { exact: true });
+  const yashar = await votes.inputValue();
+  await listCard(page, 'Likud').click();
   await votes.fill('1300000');
   await votes.press('Enter');
-  await levelButton(page, 'Standard').click();
-  await expect(listRow(page, 'Likud').first()).toContainText('1,300,000');
-  // proportional balancing takes votes from every other list; "new voters" would leave Yashar! unchanged
-  await expect(listRow(page, 'Yashar!').locator('.lb-sub')).not.toHaveText(before);
+  const ask = page.getByRole('dialog', { name: 'Votes come from', exact: true });
+  await expect(ask).toBeVisible();
+  // the two answers Simple offers, each with its consequence; no single-list transfers at Simple
+  await expect(ask.locator('.source-consequences li')).toHaveCount(2);
+  await expect(ask.locator('.source-consequences')).toContainText('Turnout stays the same');
+  await expect(ask.locator('.source-consequences')).toContainText('Turnout changes');
+  await expect(ask.getByRole('combobox').locator('optgroup')).toHaveCount(0);
+  for (const scope of ['Just this once', 'For this list', 'Always']) await expect(ask.getByRole('radio', { name: scope, exact: true })).toBeVisible();
+  await ask.getByRole('combobox').selectOption('new');
+  await expect(ask.locator('.source-consequences li[data-chosen]')).toContainText('New voters');
+  await ask.getByRole('button', { name: 'Apply', exact: true }).click();
+  await expect(votes).toHaveValue('1,300,000');
+  // new voters leave the other lists' votes alone
+  await listCard(page, 'Yashar!').click();
+  await expect(votes).toHaveValue(yashar);
 });
 
 // ---- review findings: nothing that changes the result may vanish when switching to a lower level

@@ -549,9 +549,10 @@ export function useLevel() {
   return { level, simple: level === 'simple', standard: level !== 'simple', expert: level === 'expert' };
 }
 
-/** Switches the interface level (top bar and Settings). Simple balances vote edits proportionally (ADR 0013). */
+/** Switches the interface level (top bar and Settings). Where added votes come from is asked at every level, so a
+ *  level change keeps the answer in force (owner, 9 Nov 2026; ADR 0013 addendum). */
 export function setLevel(level: Level) {
-  setState({ level, customFeatures: null, ...(level === 'simple' ? { voteSource: { kind: 'proportional' as const } } : {}) });
+  setState({ level, customFeatures: null });
 }
 export function featureVisibility(id: FeatureId): Visibility {
   return state.customFeatures?.[id] ?? PRESETS[state.level][id];

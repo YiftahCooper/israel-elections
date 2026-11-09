@@ -32,7 +32,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
   const { expert } = useLevel();
   // the same value as Settings → Joint lists by party (no answer means its default, On)
   const defaultSplit = useStore(st => st.preferences.jointSeats !== 'off');
-  const seatlessParties = useSetting('seatlessParties');
+  const seatlessParties = useSetting('jointListParties') === 'all';
   const [showZero, setShowZero] = useState(false);
   const parties = l.parties ?? [];
   const seats = r.lists.find((x) => x.id === l.id)?.seats ?? 0;
@@ -94,7 +94,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
         {L('Use by default for joint lists', 'ברירת מחדל לרשימות משותפות')}
       </label>
       <div className="party-rows">
-        {/* Settings → Parties with no seats: zero-seat parties fold behind one line here, never out of reach, so they
+        {/* Settings → Parties under joint lists (All): zero-seat parties fold behind one line here otherwise, never out of reach, so they
             can still be given a bloc or split off */}
         {parties.filter(p => seatlessParties || showZero || seats === 0 || !hiddenSeatlessParty(s, p.id, held(p.id))).map((p) => (
           <div key={p.id} className="party-row">

@@ -2,7 +2,8 @@ import { percent, rationalPoints } from './Percentage.tsx';
 import{PartyDot}from'./PartyDot.tsx';
 import{partySeparator}from'../../data/colourGuard.ts';
 import { seatOrder } from './Hemicycle.tsx';
-import { Floating, useHoverBridge } from '../floating.tsx';
+import { Floating } from '../floating.tsx';
+import { useHoverIntent } from '../hoverIntent.ts';
 import { GraphicChanges } from './GraphicChanges.tsx';
 import { useEffect, useId, useLayoutEffect, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
@@ -102,7 +103,7 @@ function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
   const digits = useDigits();
   const [tip, setTip] = useState<Tip>(null);
   const hoverPopups = useSetting('hoverPopups');
-  const bridge = useHoverBridge(() => setTip(null));
+  const bridge = useHoverIntent(() => setTip(null), !!tip);
   const [box, W] = useChartWidth(600);
   const rows = rowsFor(s, r);
   const total = Number(r.totalValid), seats = s.rules.seats;
@@ -133,8 +134,8 @@ function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
           // start in English; stacked above the bars (phone), they start where the bars start
           const lx = stacked ? (he ? W - 4 : x0) : he ? labelW - 8 : 4;
           return (
-            <g key={row.id} onMouseMove={(e) => { if (!hoverPopups) return; bridge.cancel(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{row.name}</b><div>{L('Votes', 'קולות')}: {fmtInt(row.v)} ({percent(row.v, total, digits, s.rules.thresholdPct)})</div>{list && <div>{L('Seats', 'מנדטים')}: {row.seats} ({percent(row.seats, seats, digits)})</div>}</> }); }}
-              onMouseLeave={bridge.leave} onClick={(e) => { if (!hoverPopups) { bridge.cancel(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{row.name}</b><div>{L('Votes', 'קולות')}: {fmtInt(row.v)} ({percent(row.v, total, digits, s.rules.thresholdPct)})</div>{list && <div>{L('Seats', 'מנדטים')}: {row.seats} ({percent(row.seats, seats, digits)})</div>}</> }); } if (list) setState({ selectedListId: row.id }); }} style={{ cursor: list ? 'pointer' : 'default' }}>
+            <g key={row.id} onMouseMove={(e) => { if (!hoverPopups) return; bridge.enter(() => setTip({ x: e.clientX, y: e.clientY, html: <><b>{row.name}</b><div>{L('Votes', 'קולות')}: {fmtInt(row.v)} ({percent(row.v, total, digits, s.rules.thresholdPct)})</div>{list && <div>{L('Seats', 'מנדטים')}: {row.seats} ({percent(row.seats, seats, digits)})</div>}</> })); }}
+              onMouseLeave={bridge.leave} onClick={(e) => { if (!hoverPopups) { bridge.keep(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{row.name}</b><div>{L('Votes', 'קולות')}: {fmtInt(row.v)} ({percent(row.v, total, digits, s.rules.thresholdPct)})</div>{list && <div>{L('Seats', 'מנדטים')}: {row.seats} ({percent(row.seats, seats, digits)})</div>}</> }); } if (list) setState({ selectedListId: row.id }); }} style={{ cursor: list ? 'pointer' : 'default' }}>
               <rect x={0} y={y - 2} width={W} height={rowH - 4} fill="transparent" />
               <text x={lx} y={stacked ? y + 9 : yb + barH + 3} textAnchor={he ? 'end' : 'start'} fill="var(--ink)" data-chart-label=""><title>{row.name}</title>{isolate(clip(row.name, stacked ? W - 8 : labelW - 12))}</text>
               <rect className="bar" x={x0} y={yb + 0.5} width={vw} height={barH - 1} rx={2} fill={row.color} fillOpacity={0.28} stroke={edge(row.color)} strokeWidth={1} />
@@ -148,7 +149,7 @@ function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
         })}
         <line x1={x0} x2={x0} y1={4} y2={H - 4} stroke="var(--axis)" />
       </svg>
-      {tip && <Floating onPointerEnter={bridge.cancel} onPointerLeave={bridge.leave} className="chart-tooltip" anchor={() => ({left: tip.x, right: tip.x, top: tip.y, bottom: tip.y})}>{tip.html}</Floating>}
+      {tip && <Floating onPointerEnter={bridge.keep} onPointerLeave={bridge.leave} className="chart-tooltip" anchor={() => ({left: tip.x, right: tip.x, top: tip.y, bottom: tip.y})}>{tip.html}</Floating>}
     </figure>
   );
 }
@@ -158,7 +159,7 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
   const lang = useLang();
   const [tip, setTip] = useState<Tip>(null);
   const hoverPopups = useSetting('hoverPopups');
-  const bridge = useHoverBridge(() => setTip(null));
+  const bridge = useHoverIntent(() => setTip(null), !!tip);
   const [box, W] = useChartWidth(600);
   const thr = Number(r.thresholdVotes);
   if (thr === 0) return <p className="small muted">{L('No percentage threshold in this election.', 'בבחירות אלה אין אחוז חסימה.')}</p>;
@@ -182,8 +183,8 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
           const x = d >= 0 ? mid : mid - w;
           const lx = stacked ? (he ? W - 4 : 4) : mid + (d >= 0 ? 4 : -4);
           return (
-            <g key={l.id} onMouseMove={(e) => { if (!hoverPopups) return; bridge.cancel(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{name}</b><div>{fmtInt(l.votes)} {L('votes', 'קולות')}</div><div>{d >= 0 ? '+' : '−'}{fmtInt(Math.abs(d))} {L('vs threshold', 'מול החסימה')}</div></> }); }}
-              onMouseLeave={bridge.leave} onClick={(e) => { if (!hoverPopups) { bridge.cancel(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{name}</b><div>{fmtInt(l.votes)} {L('votes', 'קולות')}</div><div>{d >= 0 ? '+' : '−'}{fmtInt(Math.abs(d))} {L('vs threshold', 'מול החסימה')}</div></> }); } setState({ selectedListId: l.id }); }} style={{ cursor: 'pointer' }}>
+            <g key={l.id} onMouseMove={(e) => { if (!hoverPopups) return; bridge.enter(() => setTip({ x: e.clientX, y: e.clientY, html: <><b>{name}</b><div>{fmtInt(l.votes)} {L('votes', 'קולות')}</div><div>{d >= 0 ? '+' : '−'}{fmtInt(Math.abs(d))} {L('vs threshold', 'מול החסימה')}</div></> })); }}
+              onMouseLeave={bridge.leave} onClick={(e) => { if (!hoverPopups) { bridge.keep(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{name}</b><div>{fmtInt(l.votes)} {L('votes', 'קולות')}</div><div>{d >= 0 ? '+' : '−'}{fmtInt(Math.abs(d))} {L('vs threshold', 'מול החסימה')}</div></> }); } setState({ selectedListId: l.id }); }} style={{ cursor: 'pointer' }}>
               <rect x={0} y={y - 3} width={W} height={rowH - 2} fill="transparent" />
               <text x={lx} y={y + 9} textAnchor={stacked ? (he ? 'end' : 'start') : (d >= 0 ? 'start' : 'end')} fill="var(--ink)" data-chart-label=""><title>{name}</title>{isolate(name)}</text>
               <rect className="bar" x={x} y={yb + 2} width={Math.max(1, w)} height={12} rx={2} fill={l.color} stroke={edge(l.color)} strokeWidth={1} />
@@ -193,7 +194,7 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
         })}
         <line x1={mid} x2={mid} y1={2} y2={H - 4} stroke="var(--ink)" strokeWidth={1.5} />
       </svg>
-      {tip && <Floating onPointerEnter={bridge.cancel} onPointerLeave={bridge.leave} className="chart-tooltip" anchor={() => ({left: tip.x, right: tip.x, top: tip.y, bottom: tip.y})}>{tip.html}</Floating>}
+      {tip && <Floating onPointerEnter={bridge.keep} onPointerLeave={bridge.leave} className="chart-tooltip" anchor={() => ({left: tip.x, right: tip.x, top: tip.y, bottom: tip.y})}>{tip.html}</Floating>}
     </figure>
   );
 }

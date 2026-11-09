@@ -3,7 +3,8 @@ import { PARTS, partSnapshot } from '../../model/parts.ts';
 import { copyOriginOf, inputPart } from '../../model/editScopes.ts';
 import { fromLabel, markerLead } from '../compare/copyText.ts';
 import { dispatch } from '../store.ts';
-import { Floating, useHoverBridge } from '../floating.tsx';
+import { Floating } from '../floating.tsx';
+import { useHoverIntent } from '../hoverIntent.ts';
 import {markerOwner,registerMarker,subscribeMarkers} from '../markerOwners.ts';
 import { useActiveReference } from '../useActiveReference.ts';
 import { useId, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
@@ -25,7 +26,7 @@ export function EditMarker({ s, path, summary = false, outlet = '' }: { s: Scena
   const owner=useSyncExternalStore(subscribeMarkers,()=>markerOwner(key),()=> '');
   const anchor = useRef<HTMLSpanElement>(null);
   const [open, setOpen] = useState(false);
-  const hover = useHoverBridge(() => setOpen(false));
+  const hover = useHoverIntent(() => setOpen(false), open);
   const hoverPopups = useSetting('hoverPopups');
   useLayoutEffect(()=>{if(!resolved||!anchor.current)return;return registerMarker(key,{id,node:anchor.current,priority:path[0]==='parts'||path[0]==='customGroupingName'?0:summary?2:1});},[key,id,!!resolved,path[0],summary]);
   if (!base || !resolved) return null;
@@ -41,9 +42,9 @@ export function EditMarker({ s, path, summary = false, outlet = '' }: { s: Scena
   const part = inputPart(logicalPath);
   const listId = logicalPath[0] === 'lists' ? logicalPath[1] : logicalPath[0] === 'parts' ? logicalPath[2] : undefined;
   return <span ref={anchor} className="edit-marker-slot" data-marker-path={logicalPath.join('/')}>{visible&&<span className="edit-marker" data-marker-kind={logicalPath[0]==='parts'?'part':'item'} role="button" tabIndex={visible?0:undefined} aria-expanded={open} aria-controls={open ? id : undefined} aria-label={label} aria-describedby={open&&visible ? id : undefined}
-    onMouseEnter={() => { if (!hoverPopups) return; hover.cancel(); setOpen(true); }} onMouseLeave={hover.leave} onClick={e => { e.stopPropagation(); setOpen(true); }} onFocus={() => setOpen(true)} onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget as Node) && !document.getElementById(id)?.contains(e.relatedTarget as Node)) setOpen(false); }}
+    onMouseEnter={() => { if (hoverPopups) hover.enter(() => setOpen(true)); }} onMouseLeave={hover.leave} onClick={e => { e.stopPropagation(); hover.keep(); setOpen(true); }} onFocus={() => setOpen(true)} onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget as Node) && !document.getElementById(id)?.contains(e.relatedTarget as Node)) setOpen(false); }}
     onKeyDown={e => { if (e.key === 'Tab' && !e.shiftKey && e.target === e.currentTarget && open && part) { e.preventDefault(); document.getElementById(id)?.querySelector<HTMLButtonElement>('button')?.focus(); } if (e.target === e.currentTarget && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); e.stopPropagation(); setOpen(true); } if (e.key === 'Escape' && open) { e.stopPropagation(); setOpen(false); } }} data-copied={origin ? 'true' : undefined}>{word}
-    {open && visible && createPortal(<Floating id={id} role="dialog" label={label} onPointerEnter={hover.cancel} onPointerLeave={hover.leave} className="edit-tooltip" anchor={() => anchor.current?.getBoundingClientRect()}>
+    {open && visible && createPortal(<Floating id={id} role="dialog" label={label} onPointerEnter={hover.keep} onPointerLeave={hover.leave} className="edit-tooltip" anchor={() => anchor.current?.getBoundingClientRect()}>
       {context} · {lead}<ChangeValue s={before} path={logicalPath} lang={lang} />
       {part && <button type="button" className="btn small marker-restore" onBlur={e => { if (!anchor.current?.contains(e.relatedTarget as Node)) setOpen(false); }} onKeyDown={e => { if (e.key === 'Tab' && e.shiftKey || e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); anchor.current?.querySelector<HTMLElement>('.edit-marker')?.focus(); if(e.key === 'Escape') setOpen(false); } }} onClick={e => { e.stopPropagation(); dispatch({ type: 'startPart', part, source: 'saved', snapshot: partSnapshot(before, part), name: L('Reference', 'נקודת הייחוס'), ...(listId ? { listId } : {}) }); setOpen(false); }}>{L('Restore ', 'שחזור ')}{PARTS[part][lang]}</button>}
     </Floating>, document.body)}

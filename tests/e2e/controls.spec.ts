@@ -1,5 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 import { choose } from './choices.ts';
+import { openBarMenu } from './barMenu.ts';
 async function start(page: Page, lang = 'en', theme = 'light') {
   await page.addInitScript(v => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)), { lang, theme, level: 'expert', hintDismissed: true });
   await page.goto('/');
@@ -11,10 +12,14 @@ async function detail(page: Page) {
   await page.getByRole('region', { name: 'Lists', exact: true }).getByRole('button', { name: 'Likud', exact: true }).click();
   return page.locator('.side-panel').getByRole('textbox', { name: 'Votes', exact: true });
 }
+// on a phone the switcher is in the bar's Menu, or at the top of an open list sheet (which covers the bar)
+const switcher = async (page: Page) => { const button = page.getByRole('button', { name: 'Switch scenario', exact: true }); if (!await button.count()) await openBarMenu(page); return button; };
 async function save(page: Page, name: string) {
   const close = page.locator('.side-panel').getByRole('button', { name: 'Close', exact: true });
   if (await close.count()) await close.click();
-  await page.getByRole('button', { name: 'Save & share', exact: true }).click();
+  // phones (one-row bar, owner 9 Nov): Save & share is in the bar's Menu
+  if (await openBarMenu(page)) await page.locator('#phone-menu summary', { hasText: 'Save & share' }).click();
+  else await page.getByRole('button', { name: 'Save & share', exact: true }).click();
   const input = page.getByRole('textbox', { name: 'Scenario name', exact: true });
   await input.fill(name); await input.press('Enter');
   await page.getByRole('button', { name: 'Save in this browser', exact: true }).click();
@@ -23,20 +28,19 @@ for (const phone of [false, true]) test(`Official → A → B → Official retai
   if (phone) await page.setViewportSize({ width: 390, height: 844 });
   await start(page); let votes = await detail(page);
   await votes.fill('1120000'); await votes.press('Enter'); await save(page, 'A');
-  const switcher = page.getByRole('button', { name: 'Switch scenario', exact: true });
-  await choose(switcher, 'official'); votes = await detail(page);
+  await choose(await switcher(page), 'official'); votes = await detail(page);
   await votes.fill('1130000'); await votes.press('Enter'); await save(page, 'B');
-  await choose(switcher, 'official'); votes = await detail(page);
+  await choose(await switcher(page), 'official'); votes = await detail(page);
   await votes.fill('1140000'); await votes.press('Enter'); await save(page, 'C');
-  await switcher.click();
+  await (await switcher(page)).click();
   await page.screenshot({ path: `.backup-scratch/controls/scenarios-en-light-${phone ? 'phone' : 'desktop'}.png` });
-  await page.getByRole('dialog').getByRole('button', { name: 'A', exact: true }).click();
+  await page.getByRole('dialog').last().getByRole('button', { name: 'A', exact: true }).click();
   votes = await detail(page); await expect(votes).toHaveValue('1,120,000');
   await page.getByRole('group', { name: 'Votes step size', exact: true }).getByRole('button', { name: '10k', exact: true }).click();
   await page.getByRole('button', { name: 'Increase Votes', exact: true }).click();
-  await switcher.click(); await page.getByRole('dialog').getByRole('button', { name: 'B', exact: true }).click();
-  await choose(switcher, 'official'); await expect(switcher).toContainText('Official result');
-  await switcher.click(); await page.getByRole('dialog').getByRole('button', { name: 'A *', exact: true }).click();
+  await (await switcher(page)).click(); await page.getByRole('dialog').last().getByRole('button', { name: 'B', exact: true }).click();
+  await choose(await switcher(page), 'official'); await expect(await switcher(page)).toContainText('Official result');
+  await (await switcher(page)).click(); await page.getByRole('dialog').last().getByRole('button', { name: 'A *', exact: true }).click();
   votes = await detail(page); await expect(votes).toHaveValue('1,130,000');
   if (phone) await page.locator('.side-panel').getByRole('button', { name: 'Close', exact: true }).click();
   await page.getByRole('button', { name: /^Undo:/ }).click();

@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { openSettings } from './barMenu.ts';
 import { choose } from './choices.ts';
 
 // Owner, 7 Nov: every rounded percentage shows its exact value on hover, keyboard focus or tap, at any decimal cap,
@@ -73,7 +74,7 @@ for (const [width, lang] of [[1500, 'en'], [1500, 'he'], [390, 'en']] as const) 
   await expect(page.locator('.st-options')).toBeVisible();
   await expect(warning).toHaveCount(0);
   // Settings → Editing → Joint-list split warning brings it back
-  await page.locator('.band').getByRole('button', { name: lang === 'en' ? 'Settings' : 'הגדרות', exact: true }).click();
+  await openSettings(page, lang);
   await page.locator('.personal-settings [data-setting="splitWarning"]').getByRole('checkbox').check();
   await page.keyboard.press('Escape');
   await expect(warning).toBeVisible();

@@ -28,3 +28,5 @@ Levels control visibility, not which allocation engine runs. Simple always balan
 - Repository history: `98f4518, 2fd4152` (3 November 2026).
 
 7 November 2026: owner pre-release direction supersedes saved-format compatibility requirements. Corrected ballot letters now correct internal list/candidate IDs, and old browser level names are no longer migrated.
+
+9 November 2026: the owner decided that where added votes come from is asked at every level, Simple included, with the same Just this once / For this list / Always choices. The consequence above ("Simple always balances vote edits proportionally") is superseded: changing level no longer resets the vote source, and Simple's question offers Other lists or New voters (the higher levels also offer one named list). Settings now shows every setting at every level, ordered Simple, Standard, Expert.

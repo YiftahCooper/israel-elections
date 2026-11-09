@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { barLanguage, openBarMenu } from './barMenu.ts';
 import { choose } from './choices.ts';
 
 test.describe.configure({ mode: 'parallel' });
@@ -28,7 +29,8 @@ test('X1 analysis choices and settings use the shared picker', async ({ page }) 
 for (const width of [1500, 1024, 390]) test(`notices and experimental rules leave the board fixed at ${width}`, async ({ page }) => {
   await page.setViewportSize({ width, height: 1000 });
   const before = (await page.locator('.board').boundingBox())!.y;
-  await choose(page.locator('.band').getByRole('button', { name: 'Switch scenario' }), 'qa2-old');
+  await openBarMenu(page); // phones: the switcher is in the bar's Menu
+  await choose(page.getByRole('button', { name: 'Switch scenario' }), 'qa2-old');
   await expect(page.locator('.banner').filter({ hasText: 'rebuilt' })).toContainText('rebuilt');
   await page.locator('#tab-rules').click();
   await page.getByRole('button', { name: 'Experimental', exact: true }).click();
@@ -39,15 +41,15 @@ for (const width of [1500, 1024, 390]) test(`notices and experimental rules leav
   await expect(page.locator('.banner').filter({ hasText: 'Alternative electoral system' })).toBeVisible();
 });
 
-for (const lang of ['en', 'he']) test(`phone band is compact with direct controls in ${lang}`, async ({ page }) => {
+for (const lang of ['en', 'he'] as const) test(`phone band is one row; level and scenario are in its menu in ${lang}`, async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 1000 });
-  if (lang === 'he') await page.getByRole('button', { name: 'עב', exact: true }).click();
-  // Four rows: 44 + 44 + 46 + 46px targets, 12px gaps, 12px padding.
-  // Three rows cannot fit the directly available controls at 390px (see integration notes).
-  expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(204);
+  if (lang === 'he') await barLanguage(page, 'he');
+  // owner, 9 Nov 2026: one row of 44px targets (was four rows, 204px)
+  expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(60);
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
-  await expect(page.locator('.band-levels')).toBeVisible();
-  await expect(page.locator('.band .scenario-switcher')).toBeVisible();
+  await openBarMenu(page);
+  await expect(page.locator('#phone-menu .band-levels')).toBeVisible();
+  await expect(page.locator('#phone-menu .scenario-switcher')).toBeVisible();
 });
 
 test('list panel gaps are tight and asynchronous results leave the slider fixed', async ({ page }) => {

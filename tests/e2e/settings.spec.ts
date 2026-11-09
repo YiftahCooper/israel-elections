@@ -16,33 +16,31 @@ async function open(page: Page, seed: Seed = {}, election?: string) {
   await expect(page.locator('.lb-row').first()).toBeVisible();
   if (election) await choose(page.getByRole('button', { name: seed.lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
 }
-const gear = (page: Page, lang: 'en' | 'he' = 'en') => page.locator('.band').getByRole('button', { name: lang === 'en' ? 'Settings' : 'הגדרות', exact: true });
+// on a phone, Settings is in the bar's Menu (owner, 9 Nov 2026): the helper opens the menu first
+const gear = (page: Page, lang: 'en' | 'he' = 'en') => ({ click: async () => {
+  if (await page.locator('.band .band-menu-btn').count()) { await page.locator('.band .band-menu-btn').click(); await page.locator('#phone-menu').getByRole('button', { name: lang === 'en' ? 'Settings' : 'הגדרות', exact: true }).click(); }
+  else await page.locator('.band').getByRole('button', { name: lang === 'en' ? 'Settings' : 'הגדרות', exact: true }).click();
+} });
 const dialog = (page: Page) => page.locator('.personal-settings');
 const row = (page: Page, id: string) => dialog(page).locator(`[data-setting="${id}"]`);
 const stored = (page: Page) => page.evaluate(() => JSON.parse(localStorage.getItem('israel-elections:settings') ?? 'null'));
 
 test.describe('the Settings popup', () => {
-  test('rows by level; Simple names how many more Standard has; Custom shows a feature’s rows', async ({ page }) => {
+  test('every level shows every setting, Simple first, then Standard and Expert under their separators', async ({ page }) => {
     await open(page, { level: 'simple' });
     await gear(page).click();
     await expect(dialog(page)).toBeVisible();
     await expect(row(page, 'starterTip')).toBeVisible();
-    await expect(row(page, 'voteSource')).toHaveCount(0);
-    const more = dialog(page).locator('.ps-more');
-    await expect(more).toHaveText(/\d+ more settings in Standard/);
-    await more.click();
-    await expect(row(page, 'voteSource')).toBeVisible();
-    await row(page, 'level').getByRole('button', { name: 'Standard', exact: true }).click();
-    await expect(row(page, 'starterTip')).toHaveCount(0);
-    await expect(row(page, 'chamberLayout')).toBeVisible();
+    await expect(dialog(page).locator('[data-tier="simple"] [data-setting="voteSource"]')).toBeVisible();
+    await expect(dialog(page).locator('[data-tier="expert"] [data-setting="chamberLayout"]')).toBeAttached();
     await expect(dialog(page).locator('.ps-more')).toHaveCount(0);
-    await row(page, 'level').getByRole('button', { name: 'Simple', exact: true }).click();
-    // Custom… opens the feature list; showing the seat chart options brings their rows
+    await row(page, 'level').getByRole('button', { name: 'Standard', exact: true }).click();
+    // the starter tip exists only at Simple
+    await expect(row(page, 'starterTip')).toHaveCount(0);
+    await expect(row(page, 'chamberLayout')).toBeAttached();
+    // Custom… still opens the feature list
     await row(page, 'level').getByRole('button', { name: 'Custom…', exact: true }).click();
-    const feature = page.locator('.custom-feature').filter({ hasText: 'Chamber options' }).first();
-    await feature.getByRole('button', { name: 'Show', exact: true }).click();
-    await gear(page).click();
-    await expect(row(page, 'chamberLayout')).toBeVisible();
+    await expect(page.locator('.custom-feature').first()).toBeVisible();
   });
 
   for (const lang of ['en', 'he'] as const) test(`search finds rows in both languages, from every level · ${lang}`, async ({ page }) => {
@@ -53,10 +51,10 @@ test.describe('the Settings popup', () => {
     await expect(row(page, 'listSymbol')).toBeVisible();
     await search.fill('סמל');
     await expect(row(page, 'listSymbol')).toBeVisible();
-    // a Standard row found from Simple carries its level tag
+    // a Standard row found from Simple sits under the Standard separator
     await search.fill(lang === 'en' ? 'withdrew' : 'פרשו');
     await expect(row(page, 'withdrawnLists')).toBeVisible();
-    await expect(row(page, 'withdrawnLists').locator('.ps-tag')).toHaveText(lang === 'en' ? 'Standard' : 'רגיל');
+    await expect(dialog(page).locator('.ps-tier-sep')).toHaveText([lang === 'en' ? 'Standard' : 'רגיל']);
     await search.fill('zzzz');
     await expect(dialog(page).locator('[data-setting]')).toHaveCount(0);
   });
@@ -66,6 +64,8 @@ test.describe('the Settings popup', () => {
     await gear(page).click();
     const target = row(page, 'withdrawnLists');
     const below = row(page, 'listOrder');
+    // Standard settings sit below the Simple ones now: bring the row into view before measuring
+    await target.scrollIntoViewIfNeeded();
     const before = [await target.boundingBox(), await below.boundingBox()];
     await target.getByRole('checkbox').click();
     await expect(target.locator('.ps-dot')).toHaveText('•');
@@ -142,7 +142,7 @@ test.describe('every setting takes effect', () => {
     await page.setViewportSize({ width, height: 844 });
     await open(page, { lang, settings: { textSize: 'large' } });
     expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(0);
-    await page.locator('.band').getByRole('button', { name: lang === 'en' ? 'Settings' : 'הגדרות', exact: true }).click();
+    await gear(page, lang).click();
     await expect(dialog(page)).toBeInViewport({ ratio: 0.95 });
   });
 
@@ -379,13 +379,13 @@ test.describe('every setting takes effect', () => {
     await expect(pop.locator('.result-preview')).toHaveCount(0);
   });
 
-  test('parties of seatless lists: off by default, on shows them under the list (2022, Jewish Home)', async ({ page }) => {
-    await open(page, { settings: { seatlessLists: 'all' }, preferences: { voteSource: 'proportional', comparison: 'reference', jointSeats: 'on' } }, 'k25');
+  test('parties of seatless lists: hidden at Standard, All shows them under the list (2022, Jewish Home)', async ({ page }) => {
+    await open(page, { level: 'standard', settings: { seatlessLists: 'all' }, preferences: { voteSource: 'proportional', comparison: 'reference', jointSeats: 'on' } }, 'k25');
     const parties = page.getByRole('list', { name: /The Jewish Home/ });
     await expect(page.getByRole('button', { name: 'The Jewish Home', exact: true })).toBeVisible();
     await expect(parties).toHaveCount(0);
     await gear(page).click();
-    await row(page, 'partiesInSeatlessLists').getByRole('checkbox').check();
+    await row(page, 'jointListParties').getByRole('button', { name: 'All', exact: true }).click();
     await page.keyboard.press('Escape');
     await expect(parties.getByText(/New Right/)).toBeVisible();
   });
@@ -468,8 +468,8 @@ test.describe('Compare follows Settings', () => {
 });
 
 test.describe('parties with no seats (2022, Religious Zionism)', () => {
-  test('hidden by default in the list column, the joint list page and the bloc editor; one click shows them', async ({ page }) => {
-    await open(page, { preferences: { voteSource: 'proportional', comparison: 'reference', jointSeats: 'on' } }, 'k25');
+  test('hidden at Standard in the list column, the joint list page and the bloc editor; one click shows them', async ({ page }) => {
+    await open(page, { level: 'standard', preferences: { voteSource: 'proportional', comparison: 'reference', jointSeats: 'on' } }, 'k25');
     const rz = page.getByRole('button', { name: 'Religious Zionism', exact: true });
     await expect(rz).toBeVisible();
     const partyRows = page.locator('.lb-parties, .lb-party').filter({ hasText: /Atid Ehad|Eretz Yisrael Shelanu/ });
@@ -488,7 +488,7 @@ test.describe('parties with no seats (2022, Religious Zionism)', () => {
     await expect(editor.locator('.bp-sub').filter({ hasText: /Otzma/ })).toBeVisible();
     await expect(zeroSub).toHaveCount(0);
     await gear(page).click();
-    await row(page, 'seatlessParties').getByRole('checkbox').check();
+    await row(page, 'jointListParties').getByRole('button', { name: 'All', exact: true }).click();
     await page.keyboard.press('Escape');
     await expect(zeroSub.first()).toBeVisible();
     await expect(page.getByRole('list', { name: /Religious Zionism/ }).getByText(/Atid Ehad|Eretz Yisrael Shelanu/).first()).toBeVisible();
