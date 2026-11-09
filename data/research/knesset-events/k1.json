@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "knesset": 1,
+  "asOf": "2026-11-09",
+  "coverage": "partial",
+  "scope": "Observed dated faction membership transitions, not a complete register of House Committee decisions.",
+  "seatsAfterDefinition": "Null means no government-support assignment is established by these records.",
+  "events": [
+    {
+      "id": "k1-observed-faction-0",
+      "date": "1949-06-08",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2555
+        ],
+        "factionIds": [
+          129,
+          977
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 129 and 977.",
+        "he": "רישום החברות עבר מסיעת מפלגה קומוניסטית ישראלית לסיעת הקומוניסטים העברים (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+1+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k1.json factionChanges[0], KNS_PersonToPosition records 25824, 25825",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1949-06-08"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k1-observed-faction-1",
+      "date": "1949-08-15",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2555
+        ],
+        "factionIds": [
+          977,
+          105
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 977 and 105.",
+        "he": "רישום החברות עבר מסיעת הקומוניסטים העברים לסיעת מפלגת פועלים מאוחדת (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+1+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k1.json factionChanges[1], KNS_PersonToPosition records 25825, 25826",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1949-08-15"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    }
+  ]
+}

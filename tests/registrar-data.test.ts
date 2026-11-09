@@ -43,7 +43,7 @@ describe('retained Registrar snapshot', () => {
     expect(edge('partners-26-אמת')).toMatchObject({ relation: 'electoral-partner', certainty: 'confirmed' });
     expect(edge('nrp-jewish-home-2008').certainty).toBe('confirmed');
     // A current register is not primary proof of these historical merger dates.
-    expect(edge('meretz-legal-2003').certainty).toBe('probable');
+    expect(edge('meretz-unification-1997').certainty).toBe('probable');
     expect(edge('baaliyah-likud-2003').certainty).toBe('probable');
     expect(row('59-900008-0')['שם מפלגה']).toContain('מיסודה של המפד~ל');
   });

@@ -1,0 +1,1321 @@
+{
+  "schemaVersion": 1,
+  "knesset": 9,
+  "asOf": "2026-11-09",
+  "coverage": "partial",
+  "scope": "Observed dated faction membership transitions, not a complete register of House Committee decisions.",
+  "seatsAfterDefinition": "Null means no government-support assignment is established by these records.",
+  "events": [
+    {
+      "id": "k9-observed-faction-0",
+      "date": "1977-06-19",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2277
+        ],
+        "factionIds": [
+          431,
+          1011
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 431 and 1011.",
+        "he": "רישום החברות עבר מסיעת מערך לסיעת חה\"כ משה דיין (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[0], KNS_PersonToPosition records 27143, 27144",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1977-06-19"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-1",
+      "date": "1977-07-05",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          482,
+          2385
+        ],
+        "factionIds": [
+          393,
+          397
+        ]
+      },
+      "summary": {
+        "en": "2 MKs recorded moving between factions 393 and 397.",
+        "he": "רישום החברות עבר מסיעת שלומציון לסיעת הליכוד (2 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[1], KNS_PersonToPosition records 27275, 27276, 27187, 27188",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1977-07-05"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-2",
+      "date": "1978-02-28",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2537
+        ],
+        "factionIds": [
+          383,
+          1015
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 383 and 1015.",
+        "he": "רישום החברות עבר מסיעת פלאטו שרון לסיעת פיתוח ושלום (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[2], KNS_PersonToPosition records 27235, 27236",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1978-02-28"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-3",
+      "date": "1978-09-14",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          510,
+          2244,
+          2321,
+          2326,
+          2364,
+          2523,
+          2527
+        ],
+        "factionIds": [
+          423,
+          413
+        ]
+      },
+      "summary": {
+        "en": "7 MKs recorded moving between factions 423 and 413.",
+        "he": "רישום החברות עבר מסיעת התנועה הדמוקרטית לשינוי לסיעת תנועה לשינוי ויוזמה (7 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[3], KNS_PersonToPosition records 27254, 27255, 27135, 27136, 27162, 27163, 27166, 27167, 27177, 27178, 27227, 27228, 27231, 27232",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1978-09-14"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-4",
+      "date": "1978-09-14",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2139,
+          2147,
+          2158,
+          2298,
+          2369,
+          2477,
+          2676
+        ],
+        "factionIds": [
+          423,
+          425
+        ]
+      },
+      "summary": {
+        "en": "7 MKs recorded moving between factions 423 and 425.",
+        "he": "רישום החברות עבר מסיעת התנועה הדמוקרטית לשינוי לסיעת התנועה הדמוקרטית (7 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[4], KNS_PersonToPosition records 27106, 27107, 27113, 27114, 27118, 27119, 27154, 27155, 27182, 27183, 27219, 27220, 27280, 27281",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1978-09-14"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-5",
+      "date": "1978-09-14",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2367
+        ],
+        "factionIds": [
+          423,
+          439
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 423 and 439.",
+        "he": "רישום החברות עבר מסיעת התנועה הדמוקרטית לשינוי לסיעת יעד (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[5], KNS_PersonToPosition records 27180, 27181",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1978-09-14"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-6",
+      "date": "1979-05-15",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2653
+        ],
+        "factionIds": [
+          397,
+          1012
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 397 and 1012.",
+        "he": "רישום החברות עבר מסיעת הליכוד לסיעת חה\"כ משה שמיר (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[6], KNS_PersonToPosition records 27271, 27272",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1979-05-15"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-7",
+      "date": "1979-07-17",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2392
+        ],
+        "factionIds": [
+          397,
+          688
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 397 and 688.",
+        "he": "רישום החברות עבר מסיעת הליכוד לסיעת בנא\"י (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[7], KNS_PersonToPosition records 27192, 29882",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1979-07-17"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-8",
+      "date": "1979-07-17",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2653
+        ],
+        "factionIds": [
+          1012,
+          688
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 1012 and 688.",
+        "he": "רישום החברות עבר מסיעת חה\"כ משה שמיר לסיעת בנא\"י (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[8], KNS_PersonToPosition records 27272, 29881",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1979-07-17"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-9",
+      "date": "1979-11-20",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2392,
+          2653
+        ],
+        "factionIds": [
+          688,
+          689
+        ]
+      },
+      "summary": {
+        "en": "2 MKs recorded moving between factions 688 and 689.",
+        "he": "רישום החברות עבר מסיעת בנא\"י לסיעת תחייה - בנא\"י (2 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[9], KNS_PersonToPosition records 29882, 27193, 29881, 27273",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1979-11-20"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-10",
+      "date": "1979-12-31",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2675
+        ],
+        "factionIds": [
+          397,
+          413
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 397 and 413.",
+        "he": "רישום החברות עבר מסיעת הליכוד לסיעת תנועה לשינוי ויוזמה (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[10], KNS_PersonToPosition records 27283, 27284",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1979-12-31"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-11",
+      "date": "1980-02-05",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2139
+        ],
+        "factionIds": [
+          425,
+          1010
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 425 and 1010.",
+        "he": "רישום החברות עבר מסיעת התנועה הדמוקרטית לסיעת חה\"כ מרדכי אלגרבלי (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[11], KNS_PersonToPosition records 27107, 27108",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1980-02-05"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-12",
+      "date": "1980-05-13",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2244,
+          2527
+        ],
+        "factionIds": [
+          413,
+          431
+        ]
+      },
+      "summary": {
+        "en": "2 MKs recorded moving between factions 413 and 431.",
+        "he": "רישום החברות עבר מסיעת תנועה לשינוי ויוזמה לסיעת מערך (2 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[12], KNS_PersonToPosition records 27136, 27137, 27232, 27233",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1980-05-13"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-13",
+      "date": "1980-07-08",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2147,
+          2158
+        ],
+        "factionIds": [
+          425,
+          437
+        ]
+      },
+      "summary": {
+        "en": "2 MKs recorded moving between factions 425 and 437.",
+        "he": "רישום החברות עבר מסיעת התנועה הדמוקרטית לסיעת אחווה (2 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[13], KNS_PersonToPosition records 27114, 27115, 27119, 27120",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1980-07-08"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-14",
+      "date": "1980-07-29",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          510,
+          2321,
+          2326,
+          2364,
+          2523,
+          2675
+        ],
+        "factionIds": [
+          413,
+          407
+        ]
+      },
+      "summary": {
+        "en": "6 MKs recorded moving between factions 413 and 407.",
+        "he": "רישום החברות עבר מסיעת תנועה לשינוי ויוזמה לסיעת שינוי - מפלגת המרכז (6 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[14], KNS_PersonToPosition records 27255, 27256, 27163, 27164, 27167, 27168, 27178, 27179, 27228, 27229, 27284, 27285",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1980-07-29"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-15",
+      "date": "1980-09-17",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2477
+        ],
+        "factionIds": [
+          425,
+          437
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 425 and 437.",
+        "he": "רישום החברות עבר מסיעת התנועה הדמוקרטית לסיעת אחווה (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[15], KNS_PersonToPosition records 27220, 27221",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1980-09-17"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-16",
+      "date": "1980-10-14",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2385
+        ],
+        "factionIds": [
+          397,
+          1009
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 397 and 1009.",
+        "he": "רישום החברות עבר מסיעת הליכוד לסיעת חה\"כ יצחק יצחקי (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[16], KNS_PersonToPosition records 27188, 27189",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1980-10-14"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-17",
+      "date": "1980-11-11",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2473
+        ],
+        "factionIds": [
+          433,
+          395
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 433 and 395.",
+        "he": "רישום החברות עבר מסיעת מחנה של\"י לסיעת חה\"כ סעדיה מרציאנו (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[17], KNS_PersonToPosition records 27213, 27214",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1980-11-11"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-18",
+      "date": "1980-11-11",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2385
+        ],
+        "factionIds": [
+          1009,
+          427
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 1009 and 427.",
+        "he": "רישום החברות עבר מסיעת חה\"כ יצחק יצחקי לסיעת ישראל אחת (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[18], KNS_PersonToPosition records 27189, 27190",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1980-11-11"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-19",
+      "date": "1980-12-30",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2473
+        ],
+        "factionIds": [
+          395,
+          1018
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 395 and 1018.",
+        "he": "רישום החברות עבר מסיעת חה\"כ סעדיה מרציאנו לסיעת שוויון בישראל-פנתרים (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[19], KNS_PersonToPosition records 27214, 27215",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1980-12-30"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-20",
+      "date": "1981-01-26",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2294,
+          2558,
+          2625
+        ],
+        "factionIds": [
+          397,
+          1017
+        ]
+      },
+      "summary": {
+        "en": "3 MKs recorded moving between factions 397 and 1017.",
+        "he": "רישום החברות עבר מסיעת הליכוד לסיעת רפ\"י - הרשימה הממלכתית (3 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[20], KNS_PersonToPosition records 27150, 27151, 27241, 27242, 27261, 27262",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1981-01-26"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-21",
+      "date": "1981-01-28",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2477
+        ],
+        "factionIds": [
+          437,
+          397
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 437 and 397.",
+        "he": "רישום החברות עבר מסיעת אחווה לסיעת הליכוד (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[21], KNS_PersonToPosition records 27221, 27222",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1981-01-28"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-22",
+      "date": "1981-03-10",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2298
+        ],
+        "factionIds": [
+          425,
+          1006
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 425 and 1006.",
+        "he": "רישום החברות עבר מסיעת התנועה הדמוקרטית לסיעת חה\"כ בנימין הלוי (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[22], KNS_PersonToPosition records 27155, 27156",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1981-03-10"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-23",
+      "date": "1981-03-10",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2369
+        ],
+        "factionIds": [
+          425,
+          1007
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 425 and 1007.",
+        "he": "רישום החברות עבר מסיעת התנועה הדמוקרטית לסיעת חה\"כ יגאל ידין (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[23], KNS_PersonToPosition records 27183, 27184",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1981-03-10"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-24",
+      "date": "1981-03-10",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2676
+        ],
+        "factionIds": [
+          425,
+          1013
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 425 and 1013.",
+        "he": "רישום החברות עבר מסיעת התנועה הדמוקרטית לסיעת חה\"כ שמואל תמיר (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[24], KNS_PersonToPosition records 27281, 27282",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1981-03-10"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-25",
+      "date": "1981-05-11",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2675
+        ],
+        "factionIds": [
+          407,
+          1008
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 407 and 1008.",
+        "he": "רישום החברות עבר מסיעת שינוי - מפלגת המרכז לסיעת חה\"כ יוסף תמיר (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[25], KNS_PersonToPosition records 27285, 27286",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1981-05-11"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-26",
+      "date": "1981-05-19",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2139
+        ],
+        "factionIds": [
+          1010,
+          1014
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 1010 and 1014.",
+        "he": "רישום החברות עבר מסיעת חה\"כ מרדכי אלגרבלי לסיעת מפלגת האיחוד לקידום ולחינוך החברה בישראל (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[26], KNS_PersonToPosition records 27108, 27109",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1981-05-19"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-27",
+      "date": "1981-05-19",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2277
+        ],
+        "factionIds": [
+          1011,
+          421
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 1011 and 421.",
+        "he": "רישום החברות עבר מסיעת חה\"כ משה דיין לסיעת תל\"ם - התנועה להתחדשות ממלכתית (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[27], KNS_PersonToPosition records 27144, 27145",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1981-05-19"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-28",
+      "date": "1981-05-19",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2294,
+          2625
+        ],
+        "factionIds": [
+          1017,
+          421
+        ]
+      },
+      "summary": {
+        "en": "2 MKs recorded moving between factions 1017 and 421.",
+        "he": "רישום החברות עבר מסיעת רפ\"י - הרשימה הממלכתית לסיעת תל\"ם - התנועה להתחדשות ממלכתית (2 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[28], KNS_PersonToPosition records 27151, 27152, 27262, 27263",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1981-05-19"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-29",
+      "date": "1981-05-19",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2558
+        ],
+        "factionIds": [
+          1017,
+          1016
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 1017 and 1016.",
+        "he": "רישום החברות עבר מסיעת רפ\"י - הרשימה הממלכתית לסיעת רשימה ממלכתית (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[29], KNS_PersonToPosition records 27242, 27243",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1981-05-19"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-30",
+      "date": "1981-05-19",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2473
+        ],
+        "factionIds": [
+          1018,
+          1014
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 1018 and 1014.",
+        "he": "רישום החברות עבר מסיעת שוויון בישראל-פנתרים לסיעת מפלגת האיחוד לקידום ולחינוך החברה בישראל (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[30], KNS_PersonToPosition records 27215, 27216",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1981-05-19"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-31",
+      "date": "1981-05-27",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2558
+        ],
+        "factionIds": [
+          1016,
+          397
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 1016 and 397.",
+        "he": "רישום החברות עבר מסיעת רשימה ממלכתית לסיעת הליכוד (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[31], KNS_PersonToPosition records 27243, 27244",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1981-05-27"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k9-observed-faction-32",
+      "date": "1981-06-15",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          2158
+        ],
+        "factionIds": [
+          437,
+          421
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 437 and 421.",
+        "he": "רישום החברות עבר מסיעת אחווה לסיעת תל\"ם - התנועה להתחדשות ממלכתית (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k9.json factionChanges[32], KNS_PersonToPosition records 27120, 27121",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "1981-06-15"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    }
+  ]
+}

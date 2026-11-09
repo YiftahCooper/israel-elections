@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "knesset": 25,
-  "asOf": "2026-11-08",
+  "asOf": "2026-11-09",
   "coverage": "partial",
   "scope": "Dated parliamentary composition and government-support events. Votes are point-in-time observations, never continuing support assignments.",
   "seatsAfterDefinition": "coalition = continuing supporters where established; opposition = all remaining seats, not a claim of a united opposition or how they will vote. Null means unresolved. Nominal faction membership and confidence-vote totals are distinct.",
@@ -1594,6 +1594,52 @@
       "supportEffect": "none-established",
       "evidenceClass": "Official",
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k25-observed-faction-5",
+      "date": "2025-07-08",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          23635,
+          30657,
+          30682,
+          30683,
+          30685,
+          30693,
+          30694,
+          30775
+        ],
+        "factionIds": [
+          1098,
+          1110
+        ]
+      },
+      "summary": {
+        "en": "8 MKs recorded moving between factions 1098 and 1110.",
+        "he": "רישום החברות עבר מסיעת המחנה הממלכתי לסיעת כחול לבן - המחנה הממלכתי (8 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k25.json factionChanges[5], KNS_PersonToPosition records 30258, 33769, 30254, 33764, 30261, 33762, 30260, 33765, 30263, 33766, 32272, 33763, 30265, 33768, 32278, 33767",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2025-07-08"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
     },
     {
       "id": "k25-degel-exit",
