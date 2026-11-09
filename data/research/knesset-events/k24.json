@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "knesset": 24,
-  "asOf": "2026-11-08",
+  "asOf": "2026-11-09",
   "coverage": "partial",
   "scope": "Dated parliamentary composition and government-support events. Votes are point-in-time observations, never continuing support assignments.",
   "seatsAfterDefinition": "coalition = continuing supporters where established; opposition = all remaining seats, not a claim of a united opposition or how they will vote. Null means unresolved. Nominal faction membership and confidence-vote totals are distinct.",
@@ -546,6 +546,19 @@
           "evidenceFamily": "Central Elections Committee chair",
           "locator": "§§39–41, pp.24–26",
           "supportingNote": "Dated factual findings."
+        },
+        {
+          "url": "https://www.knesset.gov.il/committees/heb/docs/knesset24.pdf",
+          "publisher": "Knesset House Committee",
+          "date": "2022-04-25",
+          "accessed": "2026-11-09",
+          "type": "official",
+          "evidenceFamily": "knesset-house-committee",
+          "inspection": "page-image",
+          "locator": "PDF page 103",
+          "supportingNote": "Committee declares Chikli to have departed Yamina under section 6A. This records that decision only, not its later judicial outcome.",
+          "effectiveDate": "2022-04-25",
+          "sha256": "9dd94ab02a64354b05bf395634afc220c397df7ae76b90b72a0e1fd8630c136b"
         }
       ],
       "certainty": "confirmed",
@@ -559,13 +572,52 @@
       ],
       "supportEffect": "none-established",
       "evidenceClass": "Official",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty. The House Committee decision has now been inspected directly (PDF p.103). This records the committee act only, not its later judicial outcome.",
       "certaintyNote": "Official adjudicative factual record corroborates declaration date and unanimity; this is not reliance on its later-overturned candidacy outcome.",
       "committeeVote": {
         "for": 7,
         "against": 0,
         "abstain": 0
       }
+    },
+    {
+      "id": "k24-observed-faction-2",
+      "date": "2022-04-25",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          30786
+        ],
+        "factionIds": [
+          966,
+          1080
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 966 and 1080.",
+        "he": "רישום החברות עבר מסיעת ימינה בראשות נפתלי בנט לסיעת חה\"כ עמיחי שיקלי (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k24.json factionChanges[2], KNS_PersonToPosition records 23676, 30063",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2022-04-25"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
     },
     {
       "id": "k24-no-confidence-haredi",
@@ -1007,6 +1059,42 @@
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
     },
     {
+      "id": "k24-committee-2022-07-03-15",
+      "date": "2022-07-03",
+      "kind": "faction-split",
+      "who": {
+        "partyIds": [
+          "tkuma",
+          "otzma-yehudit"
+        ]
+      },
+      "summary": {
+        "en": "Religious Zionism joint faction splits into Religious Zionism and Otzma Yehudit.",
+        "he": "אושרה התפלגות סיעת הציונות הדתית לסיעות הציונות הדתית ועוצמה יהודית."
+      },
+      "classification": "counts",
+      "reason": "Formal House Committee decision, limited to the parliamentary act it records. No party registration or government-support status inferred.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.knesset.gov.il/committees/heb/docs/knesset24.pdf",
+          "publisher": "Knesset House Committee",
+          "date": "2022-07-03",
+          "accessed": "2026-11-09",
+          "type": "official",
+          "evidenceFamily": "knesset-house-committee",
+          "inspection": "page-image",
+          "locator": "PDF page 104",
+          "supportingNote": "Religious Zionism joint faction splits into Religious Zionism and Otzma Yehudit.",
+          "effectiveDate": "2022-07-03",
+          "sha256": "9dd94ab02a64354b05bf395634afc220c397df7ae76b90b72a0e1fd8630c136b"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "Explicit parliamentary decision; distinct from a legal party merger or registration."
+    },
+    {
       "id": "k24-faction-3",
       "date": "2022-07-03",
       "kind": "faction-membership-change",
@@ -1053,6 +1141,115 @@
       "supportEffect": "none-established",
       "evidenceClass": "Official",
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-committee-2022-08-15-16",
+      "date": "2022-08-15",
+      "kind": "faction-split",
+      "who": {
+        "partyIds": [
+          "agudat-yisrael",
+          "degel-hatorah"
+        ]
+      },
+      "summary": {
+        "en": "UTJ faction splits into Degel HaTorah and Agudat Yisrael.",
+        "he": "אושרה התפלגות סיעת יהדות התורה לדגל התורה ולאגודת ישראל."
+      },
+      "classification": "counts",
+      "reason": "Formal House Committee decision, limited to the parliamentary act it records. No party registration or government-support status inferred.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.knesset.gov.il/committees/heb/docs/knesset24.pdf",
+          "publisher": "Knesset House Committee",
+          "date": "2022-08-15",
+          "accessed": "2026-11-09",
+          "type": "official",
+          "evidenceFamily": "knesset-house-committee",
+          "inspection": "page-image",
+          "locator": "PDF page 105",
+          "supportingNote": "UTJ faction splits into Degel HaTorah and Agudat Yisrael.",
+          "effectiveDate": "2022-08-15",
+          "sha256": "9dd94ab02a64354b05bf395634afc220c397df7ae76b90b72a0e1fd8630c136b"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "Explicit parliamentary decision; distinct from a legal party merger or registration."
+    },
+    {
+      "id": "k24-committee-2022-08-15-17",
+      "date": "2022-08-15",
+      "kind": "faction-split",
+      "who": {
+        "partyIds": [
+          "tkuma",
+          "noam"
+        ]
+      },
+      "summary": {
+        "en": "Religious Zionism faction splits into Religious Zionism and Noam.",
+        "he": "אושרה התפלגות סיעת הציונות הדתית לסיעות הציונות הדתית ונעם."
+      },
+      "classification": "counts",
+      "reason": "Formal House Committee decision, limited to the parliamentary act it records. No party registration or government-support status inferred.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.knesset.gov.il/committees/heb/docs/knesset24.pdf",
+          "publisher": "Knesset House Committee",
+          "date": "2022-08-15",
+          "accessed": "2026-11-09",
+          "type": "official",
+          "evidenceFamily": "knesset-house-committee",
+          "inspection": "page-image",
+          "locator": "PDF page 105",
+          "supportingNote": "Religious Zionism faction splits into Religious Zionism and Noam.",
+          "effectiveDate": "2022-08-15",
+          "sha256": "9dd94ab02a64354b05bf395634afc220c397df7ae76b90b72a0e1fd8630c136b"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "Explicit parliamentary decision; distinct from a legal party merger or registration."
+    },
+    {
+      "id": "k24-committee-2022-08-15-18",
+      "date": "2022-08-15",
+      "kind": "faction-split",
+      "who": {
+        "partyIds": [
+          "new-right",
+          "new-hope",
+          "derech-eretz"
+        ]
+      },
+      "summary": {
+        "en": "Yamina splits into Yamina and National Camp; National Camp then splits into National Camp and Beyachad (Bennett); New Hope splits into New Hope and Derech Eretz.",
+        "he": "אושרו התפלגויות ימינה, המחנה הממלכתי ותקווה חדשה."
+      },
+      "classification": "counts",
+      "reason": "Formal House Committee decision, limited to the parliamentary act it records. No party registration or government-support status inferred.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.knesset.gov.il/committees/heb/docs/knesset24.pdf",
+          "publisher": "Knesset House Committee",
+          "date": "2022-08-15",
+          "accessed": "2026-11-09",
+          "type": "official",
+          "evidenceFamily": "knesset-house-committee",
+          "inspection": "page-image",
+          "locator": "PDF page 106",
+          "supportingNote": "Yamina splits into Yamina and National Camp; National Camp then splits into National Camp and Beyachad (Bennett); New Hope splits into New Hope and Derech Eretz.",
+          "effectiveDate": "2022-08-15",
+          "sha256": "9dd94ab02a64354b05bf395634afc220c397df7ae76b90b72a0e1fd8630c136b"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "Explicit parliamentary decision; distinct from a legal party merger or registration."
     },
     {
       "id": "k24-faction-10",
@@ -1452,6 +1649,78 @@
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
     },
     {
+      "id": "k24-committee-2022-09-06-19",
+      "date": "2022-09-06",
+      "kind": "faction-split",
+      "who": {
+        "partyIds": [
+          "hadash",
+          "balad",
+          "taal"
+        ]
+      },
+      "summary": {
+        "en": "Joint List faction splits into Joint List (Hadash and Balad) and Ta’al.",
+        "he": "אושרה התפלגות הרשימה המשותפת לסיעות הרשימה המשותפת ותע״ל."
+      },
+      "classification": "counts",
+      "reason": "Formal House Committee decision, limited to the parliamentary act it records. No party registration or government-support status inferred.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.knesset.gov.il/committees/heb/docs/knesset24.pdf",
+          "publisher": "Knesset House Committee",
+          "date": "2022-09-06",
+          "accessed": "2026-11-09",
+          "type": "official",
+          "evidenceFamily": "knesset-house-committee",
+          "inspection": "page-image",
+          "locator": "PDF page 107",
+          "supportingNote": "Joint List faction splits into Joint List (Hadash and Balad) and Ta’al.",
+          "effectiveDate": "2022-09-06",
+          "sha256": "9dd94ab02a64354b05bf395634afc220c397df7ae76b90b72a0e1fd8630c136b"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "Explicit parliamentary decision; distinct from a legal party merger or registration."
+    },
+    {
+      "id": "k24-committee-2022-09-06-20",
+      "date": "2022-09-06",
+      "kind": "faction-merger",
+      "who": {
+        "partyIds": [
+          "new-right"
+        ]
+      },
+      "summary": {
+        "en": "Yamina and Beyachad factions merge as Yamina, representing Tzalash; no party merger inferred.",
+        "he": "אושר מיזוג סיעות ימינה וביחד לסיעת ימינה המייצגת את מפלגת צל״ש."
+      },
+      "classification": "counts",
+      "reason": "Formal House Committee decision, limited to the parliamentary act it records. No party registration or government-support status inferred.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.knesset.gov.il/committees/heb/docs/knesset24.pdf",
+          "publisher": "Knesset House Committee",
+          "date": "2022-09-06",
+          "accessed": "2026-11-09",
+          "type": "official",
+          "evidenceFamily": "knesset-house-committee",
+          "inspection": "page-image",
+          "locator": "PDF page 107",
+          "supportingNote": "Yamina and Beyachad factions merge as Yamina, representing Tzalash; no party merger inferred.",
+          "effectiveDate": "2022-09-06",
+          "sha256": "9dd94ab02a64354b05bf395634afc220c397df7ae76b90b72a0e1fd8630c136b"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "Explicit parliamentary decision; distinct from a legal party merger or registration."
+    },
+    {
       "id": "k24-faction-12",
       "date": "2022-09-06",
       "kind": "faction-membership-change",
@@ -1598,6 +1867,41 @@
       "supportEffect": "none-established",
       "evidenceClass": "Official",
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+    },
+    {
+      "id": "k24-committee-2022-09-15-21",
+      "date": "2022-09-15",
+      "kind": "faction-split",
+      "who": {
+        "partyIds": [
+          "new-right"
+        ]
+      },
+      "summary": {
+        "en": "Yamina faction splits into Yamina and Economic Freedom (Abir Kara).",
+        "he": "אושרה התפלגות סיעת ימינה לסיעות ימינה וחופש כלכלי."
+      },
+      "classification": "counts",
+      "reason": "Formal House Committee decision, limited to the parliamentary act it records. No party registration or government-support status inferred.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.knesset.gov.il/committees/heb/docs/knesset24.pdf",
+          "publisher": "Knesset House Committee",
+          "date": "2022-09-15",
+          "accessed": "2026-11-09",
+          "type": "official",
+          "evidenceFamily": "knesset-house-committee",
+          "inspection": "page-image",
+          "locator": "PDF page 108",
+          "supportingNote": "Yamina faction splits into Yamina and Economic Freedom (Abir Kara).",
+          "effectiveDate": "2022-09-15",
+          "sha256": "9dd94ab02a64354b05bf395634afc220c397df7ae76b90b72a0e1fd8630c136b"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "Explicit parliamentary decision; distinct from a legal party merger or registration."
     },
     {
       "id": "k24-faction-15",

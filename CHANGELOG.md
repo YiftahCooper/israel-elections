@@ -2,6 +2,8 @@
 
 ## 7 November 2026 — Settings
 
+- Research (9 Nov): record every retained faction transition across Knessets 1–25, correct Meretz’s organisational unification to 1997, and source further party-history settlements.
+
 - Data (8 Nov recheck): Yisrael Beytenu 2026 #8–20 biographies link their 26 October Wayback captures (the live pages now redirect home); the Degel HaTorah leaflet (letters עץ) moves from UTJ 1992 to Degel HaTorah 1988; the 1977 candidate-cap note cites the 1 November 1977 transcript.
 
 - Research: retain the privacy-filtered official party register; confirm NRP–Jewish Home continuity and separate Labor/Meretz registrations, and record the disputed Labor/Democrats name.

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "research-2026-11-08-registrar",
+  "revision": "2026-11-09",
   "direction": "from predecessor to successor; split-from points parent to departing organisation; electoral-partner points constituents to election-specific alliance vehicle",
   "sources": {
     "aguda": {
@@ -1038,6 +1038,219 @@
         "sha256": "8919b7cf44e8e252cd16b210ea2af1e0d090d0bb98059b77bbecbc6e464be51d",
         "transformation": "Only party name, number, registration date and objectives retained; address, email and internal _id columns omitted. Contact phone/email prefix in objectives for 59-900147-6 removed up to מטרות המפלגה:. All other retained cells verbatim, including source tildes and anomalous dates."
       }
+    },
+    "meretz-unification-book": {
+      "url": "https://www.idi.org.il/media/20997/%D7%94%D7%9E%D7%A4%D7%9C%D7%92%D7%95%D7%AA-%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C-2021-1992.pdf",
+      "publisher": "IDI / Ofer Kenig and Gideon Rahat, 2023",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-08",
+      "evidenceFamily": "idi",
+      "support": "Kenig and Rahat 2023, PDF/printed pp.262–263: Ratz and Mapam institutions replaced by Meretz institutions at founding convention, 12 February 1997; Shinui continued independently. Organisational unification, not a verified Registrar filing date.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "7e23484b949649305bf37dd85cc9e826a2453c80f50a681def34e2a3cbfb339b"
+      }
+    },
+    "sheli-continuity": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/sheli/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "academic",
+      "tier": "scholarship",
+      "evidenceFamily": "idi",
+      "accessed": "2026-11-09",
+      "support": "History and election table: Sheli formed in 1977 as a front; the same front contested 1981 and failed to cross the threshold. Does not establish a legal merger of its components."
+    },
+    "settle-democratic-list-nazareth": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/democratic-list-of-nazareth/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-09",
+      "evidenceFamily": "idi",
+      "support": "Party profile history and election table. Founded in 1948; Mapai satellite electoral organisation, not an appearance of Mapai itself.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "ee8204041ce696d146758c0669bac79153f41a04b515f689527de75ca02176fe"
+      }
+    },
+    "settle-democratic-list-israeli-arabs": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/hareshima-hademocratit/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-09",
+      "evidenceFamily": "idi",
+      "support": "Party profile history and election table. Satellite electoral organisation represented in the second and third Knessets. Shared satellite status does not establish identity with the Nazareth list.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "21166a386ba3b37d52d38009a182f566820a40c37c9f5aebc74726555f733aab"
+      }
+    },
+    "settle-progress-and-work": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/progress-and-work/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-09",
+      "evidenceFamily": "idi",
+      "support": "Party profile history and election table. Founded in 1951; continuous electoral history through 1961. Satellite relationship is not organisational identity with Mapai.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "a2084a3c4c12371434424695c7b7a014c545c61b6460ce05ad236299e358bfe2"
+      }
+    },
+    "settle-agriculture-and-development": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/agriculture-and-development/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-09",
+      "evidenceFamily": "idi",
+      "support": "Party profile history and election table. One satellite list contested 1951, 1955 and 1959. No merger with Mapai is asserted.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "ecd162ef76feea7308ddd8513975f32ac6329350e57fd3829e5798fa55e7817e"
+      }
+    },
+    "settle-progress-and-development": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/progress-and-development/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-09",
+      "evidenceFamily": "idi",
+      "support": "Party profile history and election table. One satellite list contested 1959 through 1973. No inheritance of another satellite list is established.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "f08ceb7faeb93b3af3dbfd16412ef87234e90208dc9bd87d28730b4bcbc7c5bb"
+      }
+    },
+    "settle-cooperation-and-brotherhood": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/shituf-ve-ahva/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-09",
+      "evidenceFamily": "idi",
+      "support": "Party profile history and election table. One satellite list contested 1959 through 1973. No identity with Mapai or the other satellite lists is asserted.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "9d0a0b8b26392624b303df83ec465207ef99a93d24d296c6a586b2e20dbfe75b"
+      }
+    },
+    "settle-kach": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/kach/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-09",
+      "evidenceFamily": "idi",
+      "support": "Party profile history and election table. Founded in 1971 by Kahane and the Jewish Defence League; continuous electoral history from 1973. No succession from a Knesset party is established.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "dc49162be2ff84a9d05c5867b0dbf8bbf98d56da29c9284f7e3997f5107940a3"
+      }
+    },
+    "settle-dash": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/dash/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-09",
+      "evidenceFamily": "idi",
+      "support": "Party profile history and election table. Democratic Movement formed in November 1976 and joined Shinui two weeks later as Dash; dissolved into its components in 1978. Joining an electoral formation does not establish that Shinui ceased to exist.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "cdd9212c06a343073cb59cc4f578b940c529138b2e6395dc50e31ee9abc7f93d"
+      }
+    },
+    "settle-sheli": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/sheli/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-09",
+      "evidenceFamily": "idi",
+      "support": "Party profile history and election table. The 1977 front continued in the 1981 contest. Component participation does not establish a completed legal merger.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "0afc938e8eae4aad49b2e35837ae9571c2717a867a9ed8b46e165f488034369e"
+      }
+    },
+    "settle-shas": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/shas/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-09",
+      "evidenceFamily": "idi",
+      "support": "Party profile history and election table. Formed nationally in 1984 after municipal organising; distinct party with continuing electoral results. No inheritance of Agudat Yisrael votes is established.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "739ccca71ea2ff83062c7aed9961b3a3bfab218e65ea34d7ec59649ae6a145ff"
+      }
+    },
+    "settle-progressive-list-peace": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/hareshima-hamitkademet-leshalom/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-09",
+      "evidenceFamily": "idi",
+      "support": "Party profile history and election table. Began in local politics in 1983; expanded before 1984, contested 1984, 1988 and 1992. No automatic inheritance of an earlier Knesset party is established.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "4622e526362e7bff11b3d6809668102d915ade0bf2dea1069c7a1d79b5912f56"
+      }
+    },
+    "settle-centre-party": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/center-party/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-09",
+      "evidenceFamily": "idi",
+      "support": "Party profile history and election table. New 1999 organisation involving politicians from several parties; this does not make it their organisational successor.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "0c4d44dcf6f692a66c0cbd5e313ce142588ff1743825525f9f2050b4132c1ae8"
+      }
+    },
+    "shas-departures-book": {
+      "url": "https://www.idi.org.il/media/20997/%D7%94%D7%9E%D7%A4%D7%9C%D7%92%D7%95%D7%AA-%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C-2021-1992.pdf",
+      "publisher": "IDI / Ofer Kenig and Gideon Rahat, 2023",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-08",
+      "evidenceFamily": "idi",
+      "support": "Kenig/Rahat 2023, PDF/printed pp.231–232: Ben Shlomo left Shas, formed a singleton faction and contested Yishai in 1988; Peretz left in 1990 and sat as Moria; Azran departed before 1996 and contested Telem Emuna. Ahavat Israel was organised by Kaduri; intended leader Gamliel ultimately did not join. These are explicit departures, not inference from a founder biography.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "7e23484b949649305bf37dd85cc9e826a2453c80f50a681def34e2a3cbfb339b"
+      }
+    },
+    "house-committee-k12-departures": {
+      "url": "https://www.knesset.gov.il/committees/heb/docs/knesset12.pdf",
+      "publisher": "Knesset House Committee",
+      "kind": "official",
+      "tier": "primary",
+      "evidenceFamily": "knesset-house-committee",
+      "accessed": "2026-11-09",
+      "support": "PDF pp.33–34 (printed 27–28): 25 December 1990 approval of Peretz departure from Shas and Mizrahi departure from Agudat Yisrael, recognising singleton factions Moria and Geulat Yisrael. Inspected page images and text.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "7b4e06fcd146705a92c1506333ee972c422d4c10a70edb0ae2d7fc4ea8c95659"
+      }
+    },
+    "yahad-absorption": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/yahad-1984/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "academic",
+      "tier": "scholarship",
+      "evidenceFamily": "idi",
+      "accessed": "2026-11-09",
+      "support": "Profile: Yahad founded before 1984, joined Alignment faction shortly after election, and merged into Labor during the 11th Knesset. No exact party-merger effective date supplied."
     }
   },
   "edges": [
@@ -1169,7 +1382,7 @@
       }
     },
     {
-      "id": "meretz-legal-2003",
+      "id": "meretz-unification-1997",
       "from": [
         "ratz",
         "mapam"
@@ -1178,16 +1391,15 @@
         "meretz"
       ],
       "relation": "merged-into",
-      "date": "2003",
-      "datePrecision": "year",
+      "date": "1997-02-12",
+      "datePrecision": "day",
       "effectiveFor": "organisation",
       "sources": [
-        "mergers",
-        "registrar-2026-11-08"
+        "meretz-unification-book"
       ],
       "evidence": {
         "status": "documented",
-        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation. The 8 November 2026 register still lists Ratz 59-900003-1, Mapam 59-900004-9 and Meretz 59-900065-0 separately. This qualifies a reading of this edge as extinguishing both predecessor registrations; the snapshot alone neither dates nor disproves the historical organisational merger. Certainty remains probable: the Registrar citation qualifies the scope only and supplies no primary evidence for the historical merger date."
+        "interpretation": "Ratz and Mapam organisational unification at the 12 February 1997 founding convention. Shinui remained independent. The former 2003 date was contradicted by the detailed institutional history; no exact Registrar filing date is asserted."
       },
       "certainty": "probable"
     },
@@ -4759,6 +4971,111 @@
         "status": "documented",
         "interpretation": "IDI 2023 p.536 explicitly calls Orly Levy-Abekasis organisation a new party, registered in December 2018, reusing the older Gesher name. No parent-child identity asserted."
       }
+    },
+    {
+      "id": "sheli-front-continuity",
+      "from": [
+        "vehicle-9-ש"
+      ],
+      "to": [
+        "sheli"
+      ],
+      "relation": "same-organisation",
+      "date": "1981-06-30",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "certainty": "probable",
+      "sources": [
+        "sheli-continuity"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "The 1977 front and the 1981 Sheli appearance belong to the same electoral organisation. Its constituent organisations are not thereby merged."
+      }
+    },
+    {
+      "id": "yishai-shas-departure",
+      "from": [
+        "shas"
+      ],
+      "to": [
+        "yishai-1988"
+      ],
+      "relation": "split-from",
+      "date": "1988",
+      "datePrecision": "year",
+      "effectiveFor": "organisation",
+      "certainty": "probable",
+      "sources": [
+        "shas-departures-book"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Institutional history explicitly records departure from Shas into this separate parliamentary/electoral organisation. Year identifies the documented departure/contest period, not an exact foundation or registration day. No inheritance of votes."
+      }
+    },
+    {
+      "id": "moria-shas-departure",
+      "from": [
+        "shas"
+      ],
+      "to": [
+        "moria"
+      ],
+      "relation": "split-from",
+      "date": "1990-12-25",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "certainty": "confirmed",
+      "sources": [
+        "house-committee-k12-departures"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "House Committee approval of departure and recognition as Moria singleton faction. Not a legal party foundation date."
+      }
+    },
+    {
+      "id": "telem-emuna-shas-departure",
+      "from": [
+        "shas"
+      ],
+      "to": [
+        "telem-emuna"
+      ],
+      "relation": "split-from",
+      "date": "1996",
+      "datePrecision": "year",
+      "effectiveFor": "organisation",
+      "certainty": "probable",
+      "sources": [
+        "shas-departures-book"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Institutional history explicitly records departure from Shas into this separate parliamentary/electoral organisation. Year identifies the documented departure/contest period, not an exact foundation or registration day. No inheritance of votes."
+      }
+    },
+    {
+      "id": "geulat-aguda-departure",
+      "from": [
+        "agudat-yisrael"
+      ],
+      "to": [
+        "geulat-yisrael"
+      ],
+      "relation": "faction-split",
+      "date": "1990-12-25",
+      "datePrecision": "day",
+      "effectiveFor": "parliamentary-faction",
+      "certainty": "confirmed",
+      "sources": [
+        "house-committee-k12-departures"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "House Committee approved Mizrahi departure and recognised Geulat Yisrael singleton. Not inferred from his biography; no inherited votes."
+      }
     }
   ],
   "pending": [
@@ -4770,21 +5087,8 @@
       "evidence": {
         "status": "unresolved",
         "interpretation": "Party-specific split/rename/leader moves beyond curated events require individually inspected dated register/profile evidence. Partnership coverage is not complete organisational genealogy."
-      }
-    },
-    {
-      "id": "history-democratic-list-nazareth",
-      "partyIds": [
-        "democratic-list-nazareth"
-      ],
-      "sources": [
-        "k1",
-        "proposal"
-      ],
-      "evidence": {
-        "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
+      },
+      "certainty": "unknown"
     },
     {
       "id": "history-haredim-list-1949",
@@ -4798,180 +5102,8 @@
       "evidence": {
         "status": "unresolved",
         "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
-    },
-    {
-      "id": "history-democratic-list-israeli-arabs",
-      "partyIds": [
-        "democratic-list-israeli-arabs"
-      ],
-      "sources": [
-        "k2",
-        "k3",
-        "proposal"
-      ],
-      "evidence": {
-        "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
-    },
-    {
-      "id": "history-progress-and-work",
-      "partyIds": [
-        "progress-and-work"
-      ],
-      "sources": [
-        "k2",
-        "k3",
-        "k4",
-        "k5",
-        "proposal"
-      ],
-      "evidence": {
-        "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
-    },
-    {
-      "id": "history-agriculture-and-development",
-      "partyIds": [
-        "agriculture-and-development"
-      ],
-      "sources": [
-        "k2",
-        "k3",
-        "k4",
-        "proposal"
-      ],
-      "evidence": {
-        "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
-    },
-    {
-      "id": "history-progress-and-development",
-      "partyIds": [
-        "progress-and-development"
-      ],
-      "sources": [
-        "k4",
-        "k5",
-        "k6",
-        "k7",
-        "k8",
-        "proposal"
-      ],
-      "evidence": {
-        "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
-    },
-    {
-      "id": "history-cooperation-and-brotherhood",
-      "partyIds": [
-        "cooperation-and-brotherhood"
-      ],
-      "sources": [
-        "k4",
-        "k5",
-        "k6",
-        "k7",
-        "proposal"
-      ],
-      "evidence": {
-        "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
-    },
-    {
-      "id": "history-kach",
-      "partyIds": [
-        "kach"
-      ],
-      "sources": [
-        "k10",
-        "k11",
-        "k8",
-        "k9",
-        "proposal"
-      ],
-      "evidence": {
-        "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
-    },
-    {
-      "id": "history-dash",
-      "partyIds": [
-        "dash"
-      ],
-      "sources": [
-        "k9",
-        "proposal"
-      ],
-      "evidence": {
-        "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
-    },
-    {
-      "id": "history-sheli",
-      "partyIds": [
-        "sheli"
-      ],
-      "sources": [
-        "k10",
-        "proposal"
-      ],
-      "evidence": {
-        "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
-    },
-    {
-      "id": "history-shas",
-      "partyIds": [
-        "shas"
-      ],
-      "sources": [
-        "k11",
-        "k12",
-        "k13",
-        "k14",
-        "k15",
-        "k16",
-        "k17",
-        "k18",
-        "k19",
-        "k20",
-        "k21",
-        "k22",
-        "k23",
-        "k24",
-        "k25",
-        "k26",
-        "proposal"
-      ],
-      "evidence": {
-        "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
-    },
-    {
-      "id": "history-progressive-list-peace",
-      "partyIds": [
-        "progressive-list-peace"
-      ],
-      "sources": [
-        "k11",
-        "k12",
-        "k13",
-        "proposal"
-      ],
-      "evidence": {
-        "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
+      },
+      "certainty": "unknown"
     },
     {
       "id": "history-yahad-1984",
@@ -4979,55 +5111,13 @@
         "yahad-1984"
       ],
       "sources": [
-        "k11",
-        "proposal"
+        "yahad-absorption"
       ],
       "evidence": {
         "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
-    },
-    {
-      "id": "history-yishai-1988",
-      "partyIds": [
-        "yishai-1988"
-      ],
-      "sources": [
-        "k12",
-        "proposal"
-      ],
-      "evidence": {
-        "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
-    },
-    {
-      "id": "history-geulat-yisrael",
-      "partyIds": [
-        "geulat-yisrael"
-      ],
-      "sources": [
-        "k13",
-        "proposal"
-      ],
-      "evidence": {
-        "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
-    },
-    {
-      "id": "history-telem-emuna",
-      "partyIds": [
-        "telem-emuna"
-      ],
-      "sources": [
-        "k14",
-        "proposal"
-      ],
-      "evidence": {
-        "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
+        "interpretation": "Absorption into Labor during the 11th Knesset is probable from IDI; its exact date is not supplied. Joining the Alignment faction is a separate parliamentary act. Need the Labor/Yahad merger resolution or a dated Registrar instrument to place the party absorption on the timeline."
+      },
+      "certainty": "unknown"
     },
     {
       "id": "history-daam",
@@ -5048,35 +5138,8 @@
       "evidence": {
         "status": "unresolved",
         "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
-    },
-    {
-      "id": "history-centre-party",
-      "partyIds": [
-        "centre-party"
-      ],
-      "sources": [
-        "k15",
-        "proposal"
-      ],
-      "evidence": {
-        "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
-    },
-    {
-      "id": "history-ahavat-yisrael",
-      "partyIds": [
-        "ahavat-yisrael"
-      ],
-      "sources": [
-        "k16",
-        "proposal"
-      ],
-      "evidence": {
-        "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
+      },
+      "certainty": "unknown"
     },
     {
       "id": "history-koach-lehashpia-2013",
@@ -5090,7 +5153,8 @@
       "evidence": {
         "status": "unresolved",
         "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
+      },
+      "certainty": "unknown"
     },
     {
       "id": "history-uvizchutan",
@@ -5104,7 +5168,8 @@
       "evidence": {
         "status": "unresolved",
         "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
+      },
+      "certainty": "unknown"
     },
     {
       "id": "history-hatzibur-haharedi",
@@ -5118,7 +5183,8 @@
       "evidence": {
         "status": "unresolved",
         "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
+      },
+      "certainty": "unknown"
     },
     {
       "id": "history-hakel-2026",
@@ -5132,7 +5198,8 @@
       "evidence": {
         "status": "unresolved",
         "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
-      }
+      },
+      "certainty": "unknown"
     },
     {
       "id": "democrats-registrar-date",
@@ -5203,6 +5270,201 @@
         "status": "unresolved",
         "interpretation": "Continuity now confirmed by registered name and number 59-900008-0; only exact legal effective date remains open because the registration-date cell is empty. Do not treat 2008 as a Registrar date."
       }
+    }
+  ],
+  "settledChecks": [
+    {
+      "id": "history-democratic-list-nazareth",
+      "partyIds": [
+        "democratic-list-nazareth"
+      ],
+      "certainty": "probable",
+      "sources": [
+        "settle-democratic-list-nazareth"
+      ],
+      "conclusion": "Founded in 1948; Mapai satellite electoral organisation, not an appearance of Mapai itself.",
+      "scope": "Electoral history and the specific organisational claim only; no exhaustive legal genealogy asserted."
+    },
+    {
+      "id": "history-democratic-list-israeli-arabs",
+      "partyIds": [
+        "democratic-list-israeli-arabs"
+      ],
+      "certainty": "probable",
+      "sources": [
+        "settle-democratic-list-israeli-arabs"
+      ],
+      "conclusion": "Satellite electoral organisation represented in the second and third Knessets. Shared satellite status does not establish identity with the Nazareth list.",
+      "scope": "Electoral history and the specific organisational claim only; no exhaustive legal genealogy asserted."
+    },
+    {
+      "id": "history-progress-and-work",
+      "partyIds": [
+        "progress-and-work"
+      ],
+      "certainty": "probable",
+      "sources": [
+        "settle-progress-and-work"
+      ],
+      "conclusion": "Founded in 1951; continuous electoral history through 1961. Satellite relationship is not organisational identity with Mapai.",
+      "scope": "Electoral history and the specific organisational claim only; no exhaustive legal genealogy asserted."
+    },
+    {
+      "id": "history-agriculture-and-development",
+      "partyIds": [
+        "agriculture-and-development"
+      ],
+      "certainty": "probable",
+      "sources": [
+        "settle-agriculture-and-development"
+      ],
+      "conclusion": "One satellite list contested 1951, 1955 and 1959. No merger with Mapai is asserted.",
+      "scope": "Electoral history and the specific organisational claim only; no exhaustive legal genealogy asserted."
+    },
+    {
+      "id": "history-progress-and-development",
+      "partyIds": [
+        "progress-and-development"
+      ],
+      "certainty": "probable",
+      "sources": [
+        "settle-progress-and-development"
+      ],
+      "conclusion": "One satellite list contested 1959 through 1973. No inheritance of another satellite list is established.",
+      "scope": "Electoral history and the specific organisational claim only; no exhaustive legal genealogy asserted."
+    },
+    {
+      "id": "history-cooperation-and-brotherhood",
+      "partyIds": [
+        "cooperation-and-brotherhood"
+      ],
+      "certainty": "probable",
+      "sources": [
+        "settle-cooperation-and-brotherhood"
+      ],
+      "conclusion": "One satellite list contested 1959 through 1973. No identity with Mapai or the other satellite lists is asserted.",
+      "scope": "Electoral history and the specific organisational claim only; no exhaustive legal genealogy asserted."
+    },
+    {
+      "id": "history-kach",
+      "partyIds": [
+        "kach"
+      ],
+      "certainty": "probable",
+      "sources": [
+        "settle-kach"
+      ],
+      "conclusion": "Founded in 1971 by Kahane and the Jewish Defence League; continuous electoral history from 1973. No succession from a Knesset party is established.",
+      "scope": "Electoral history and the specific organisational claim only; no exhaustive legal genealogy asserted."
+    },
+    {
+      "id": "history-dash",
+      "partyIds": [
+        "dash"
+      ],
+      "certainty": "probable",
+      "sources": [
+        "settle-dash"
+      ],
+      "conclusion": "Democratic Movement formed in November 1976 and joined Shinui two weeks later as Dash; dissolved into its components in 1978. Joining an electoral formation does not establish that Shinui ceased to exist.",
+      "scope": "Electoral history and the specific organisational claim only; no exhaustive legal genealogy asserted."
+    },
+    {
+      "id": "history-sheli",
+      "partyIds": [
+        "sheli"
+      ],
+      "certainty": "probable",
+      "sources": [
+        "settle-sheli"
+      ],
+      "conclusion": "The 1977 front continued in the 1981 contest. Component participation does not establish a completed legal merger.",
+      "scope": "Electoral history and the specific organisational claim only; no exhaustive legal genealogy asserted."
+    },
+    {
+      "id": "history-shas",
+      "partyIds": [
+        "shas"
+      ],
+      "certainty": "probable",
+      "sources": [
+        "settle-shas"
+      ],
+      "conclusion": "Formed nationally in 1984 after municipal organising; distinct party with continuing electoral results. No inheritance of Agudat Yisrael votes is established.",
+      "scope": "Electoral history and the specific organisational claim only; no exhaustive legal genealogy asserted."
+    },
+    {
+      "id": "history-progressive-list-peace",
+      "partyIds": [
+        "progressive-list-peace"
+      ],
+      "certainty": "probable",
+      "sources": [
+        "settle-progressive-list-peace"
+      ],
+      "conclusion": "Began in local politics in 1983; expanded before 1984, contested 1984, 1988 and 1992. No automatic inheritance of an earlier Knesset party is established.",
+      "scope": "Electoral history and the specific organisational claim only; no exhaustive legal genealogy asserted."
+    },
+    {
+      "id": "history-yishai-1988",
+      "partyIds": [
+        "yishai-1988"
+      ],
+      "certainty": "probable",
+      "sources": [
+        "shas-departures-book"
+      ],
+      "conclusion": "Explicit departure from Shas is recorded in the lineage edges; no inherited votes.",
+      "scope": "Electoral history and the specific organisational claim only; no exhaustive legal genealogy asserted."
+    },
+    {
+      "id": "history-telem-emuna",
+      "partyIds": [
+        "telem-emuna"
+      ],
+      "certainty": "probable",
+      "sources": [
+        "shas-departures-book"
+      ],
+      "conclusion": "Explicit departure from Shas is recorded in the lineage edges; no inherited votes.",
+      "scope": "Electoral history and the specific organisational claim only; no exhaustive legal genealogy asserted."
+    },
+    {
+      "id": "history-centre-party",
+      "partyIds": [
+        "centre-party"
+      ],
+      "certainty": "probable",
+      "sources": [
+        "settle-centre-party"
+      ],
+      "conclusion": "New 1999 organisation involving politicians from several parties; this does not make it their organisational successor.",
+      "scope": "Electoral history and the specific organisational claim only; no exhaustive legal genealogy asserted."
+    },
+    {
+      "id": "history-ahavat-yisrael",
+      "partyIds": [
+        "ahavat-yisrael"
+      ],
+      "certainty": "probable",
+      "sources": [
+        "shas-departures-book"
+      ],
+      "conclusion": "Kaduri electoral organisation; proposed Shas leader Gamliel ultimately declined. A Shas organisational split is not established by the proposed candidacy.",
+      "scope": "Electoral history and the specific organisational claim only; no exhaustive legal genealogy asserted."
+    },
+    {
+      "id": "yahad-absorption-known",
+      "partyIds": [
+        "yahad-1984",
+        "labor"
+      ],
+      "certainty": "probable",
+      "sources": [
+        "yahad-absorption"
+      ],
+      "conclusion": "Yahad merged into Labor during the 11th Knesset, 1984–1988. Exact date unknown; no invented point-date edge added.",
+      "scope": "Organisational absorption, distinct from joining the Alignment faction."
     }
   ]
 }

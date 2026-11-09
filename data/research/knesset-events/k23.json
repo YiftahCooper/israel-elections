@@ -1,0 +1,1023 @@
+{
+  "schemaVersion": 1,
+  "knesset": 23,
+  "asOf": "2026-11-09",
+  "coverage": "partial",
+  "scope": "Observed dated faction membership transitions, not a complete register of House Committee decisions.",
+  "seatsAfterDefinition": "Null means no government-support assignment is established by these records.",
+  "events": [
+    {
+      "id": "k23-observed-faction-0",
+      "date": "2020-03-23",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          557,
+          12947,
+          23565,
+          23568,
+          23651,
+          30743
+        ],
+        "factionIds": [
+          949,
+          956
+        ]
+      },
+      "summary": {
+        "en": "6 MKs recorded moving between factions 949 and 956.",
+        "he": "רישום החברות עבר מסיעת העבודה - גשר - מרצ לסיעת העבודה - מרצ (6 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k23.json factionChanges[0], KNS_PersonToPosition records 29909, 29928, 29897, 29925, 29906, 29927, 29915, 29929, 29899, 29926, 29895, 29924",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2020-03-23"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k23-observed-faction-1",
+      "date": "2020-03-23",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          12952
+        ],
+        "factionIds": [
+          949,
+          957
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 949 and 957.",
+        "he": "רישום החברות עבר מסיעת העבודה - גשר - מרצ לסיעת גשר (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k23.json factionChanges[1], KNS_PersonToPosition records 29771, 29772",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2020-03-23"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k23-observed-faction-2",
+      "date": "2020-03-29",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          30690
+        ],
+        "factionIds": [
+          946,
+          952
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 946 and 952.",
+        "he": "רישום החברות עבר מסיעת כחול לבן לסיעת חה\"כ ע'דיר כמאל מריח (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k23.json factionChanges[2], KNS_PersonToPosition records 29941, 29963",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2020-03-29"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k23-observed-faction-3",
+      "date": "2020-03-29",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          23635
+        ],
+        "factionIds": [
+          950,
+          953
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 950 and 953.",
+        "he": "רישום החברות עבר מסיעת יש עתיד לסיעת חה\"כ פנינה תמנו (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k23.json factionChanges[3], KNS_PersonToPosition records 29953, 29964",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2020-03-29"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k23-observed-faction-4",
+      "date": "2020-03-29",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          30690
+        ],
+        "factionIds": [
+          952,
+          950
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 952 and 950.",
+        "he": "רישום החברות עבר מסיעת חה\"כ ע'דיר כמאל מריח לסיעת יש עתיד (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k23.json factionChanges[4], KNS_PersonToPosition records 29963, 29965",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2020-03-29"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k23-observed-faction-5",
+      "date": "2020-03-29",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          23635
+        ],
+        "factionIds": [
+          953,
+          946
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 953 and 946.",
+        "he": "רישום החברות עבר מסיעת חה\"כ פנינה תמנו לסיעת כחול לבן (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k23.json factionChanges[5], KNS_PersonToPosition records 29964, 29966",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2020-03-29"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k23-observed-faction-6",
+      "date": "2020-03-29",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          30657,
+          30677,
+          30678,
+          30679,
+          30682,
+          30683,
+          30685,
+          30686,
+          30687,
+          30688,
+          30689,
+          30693,
+          30694,
+          30696
+        ],
+        "factionIds": [
+          1079,
+          946
+        ]
+      },
+      "summary": {
+        "en": "14 MKs recorded moving between factions 1079 and 946.",
+        "he": "רישום החברות עבר מסיעת כחול לבן בראשות בנימין גנץ לסיעת כחול לבן (14 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k23.json factionChanges[6], KNS_PersonToPosition records 29716, 29930, 29692, 29931, 29787, 29932, 29739, 29933, 29696, 29934, 29750, 29935, 29818, 29936, 29760, 29937, 29733, 29938, 29838, 29939, 29755, 29940, 29713, 29944, 29831, 29942, 29844, 29943",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2020-03-29"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k23-observed-faction-7",
+      "date": "2020-03-29",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          23635
+        ],
+        "factionIds": [
+          1079,
+          950
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 1079 and 950.",
+        "he": "רישום החברות עבר מסיעת כחול לבן בראשות בנימין גנץ לסיעת יש עתיד (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k23.json factionChanges[7], KNS_PersonToPosition records 29848, 29953",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2020-03-29"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k23-observed-faction-8",
+      "date": "2020-03-29",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          30680,
+          30684
+        ],
+        "factionIds": [
+          1079,
+          954
+        ]
+      },
+      "summary": {
+        "en": "2 MKs recorded moving between factions 1079 and 954.",
+        "he": "רישום החברות עבר מסיעת כחול לבן בראשות בנימין גנץ לסיעת דרך ארץ (2 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k23.json factionChanges[8], KNS_PersonToPosition records 29898, 29726, 29896, 29722",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2020-03-29"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k23-observed-faction-9",
+      "date": "2020-03-29",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          12963,
+          23591,
+          23594,
+          23597,
+          23600,
+          23601,
+          23631,
+          23632,
+          23639,
+          30681,
+          30690,
+          30691,
+          30692,
+          30695,
+          30721,
+          30760
+        ],
+        "factionIds": [
+          1079,
+          955
+        ]
+      },
+      "summary": {
+        "en": "16 MKs recorded moving between factions 1079 and 955.",
+        "he": "רישום החברות עבר מסיעת כחול לבן בראשות בנימין גנץ לסיעת יש עתיד - תל\"ם (16 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k23.json factionChanges[9], KNS_PersonToPosition records 29901, 29756, 29913, 29836, 29905, 29778, 29902, 29759, 29914, 29842, 29912, 29829, 29892, 29684, 29904, 29770, 29900, 29743, 29894, 29702, 29903, 29762, 29893, 29699, 29908, 29812, 29907, 29791, 29911, 29827, 29910, 29820",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2020-03-29"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k23-observed-faction-10",
+      "date": "2020-04-06",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          557,
+          23565,
+          23568
+        ],
+        "factionIds": [
+          956,
+          958
+        ]
+      },
+      "summary": {
+        "en": "3 MKs recorded moving between factions 956 and 958.",
+        "he": "רישום החברות עבר מסיעת העבודה - מרצ לסיעת העבודה הישראלית (3 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k23.json factionChanges[10], KNS_PersonToPosition records 29928, 29815, 29927, 29781, 29929, 29843",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2020-04-06"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k23-observed-faction-11",
+      "date": "2020-04-06",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          12947,
+          23651,
+          30743
+        ],
+        "factionIds": [
+          956,
+          959
+        ]
+      },
+      "summary": {
+        "en": "3 MKs recorded moving between factions 956 and 959.",
+        "he": "רישום החברות עבר מסיעת העבודה - מרצ לסיעת מרצ (3 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k23.json factionChanges[11], KNS_PersonToPosition records 29925, 29723, 29926, 29735, 29924, 29710",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2020-04-06"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k23-committee-2020-07-14-8",
+      "date": "2020-07-14",
+      "kind": "faction-split",
+      "who": {
+        "partyIds": [
+          "new-right",
+          "jewish-home"
+        ]
+      },
+      "summary": {
+        "en": "Yamina faction splits into Yamina and Jewish Home (Rafi Peretz).",
+        "he": "אושרה התפלגות סיעת ימינה לסיעות ימינה והבית היהודי."
+      },
+      "classification": "counts",
+      "reason": "Formal House Committee decision, limited to the parliamentary act it records. No party registration or government-support status inferred.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.knesset.gov.il/committees/heb/docs/knesset23.pdf",
+          "publisher": "Knesset House Committee",
+          "date": "2020-07-14",
+          "accessed": "2026-11-09",
+          "type": "official",
+          "evidenceFamily": "knesset-house-committee",
+          "inspection": "page-image",
+          "locator": "PDF page 101",
+          "supportingNote": "Yamina faction splits into Yamina and Jewish Home (Rafi Peretz).",
+          "effectiveDate": "2020-07-14",
+          "sha256": "eb93998a6548f6395d575717c532bf38d40d045e9c8a0a2dd393e01c3a41e75d"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "Explicit parliamentary decision; distinct from a legal party merger or registration."
+    },
+    {
+      "id": "k23-observed-faction-12",
+      "date": "2020-07-14",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          30716
+        ],
+        "factionIds": [
+          948,
+          960
+        ]
+      },
+      "summary": {
+        "en": "1 MKs recorded moving between factions 948 and 960.",
+        "he": "רישום החברות עבר מסיעת ימינה לסיעת הבית היהודי (1 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k23.json factionChanges[12], KNS_PersonToPosition records 29816, 29817",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2020-07-14"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k23-committee-2020-09-07-9",
+      "date": "2020-09-07",
+      "kind": "faction-representation",
+      "who": {
+        "partyIds": [
+          "derech-eretz"
+        ]
+      },
+      "summary": {
+        "en": "Derech Eretz faction recognised as representing the Derech Eretz party.",
+        "he": "הוכרה סיעת דרך ארץ כנציגת מפלגת דרך ארץ בכנסת."
+      },
+      "classification": "counts",
+      "reason": "Formal House Committee decision, limited to the parliamentary act it records. No party registration or government-support status inferred.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.knesset.gov.il/committees/heb/docs/knesset23.pdf",
+          "publisher": "Knesset House Committee",
+          "date": "2020-09-07",
+          "accessed": "2026-11-09",
+          "type": "official",
+          "evidenceFamily": "knesset-house-committee",
+          "inspection": "page-image",
+          "locator": "PDF page 102",
+          "supportingNote": "Derech Eretz faction recognised as representing the Derech Eretz party.",
+          "effectiveDate": "2020-09-07",
+          "sha256": "eb93998a6548f6395d575717c532bf38d40d045e9c8a0a2dd393e01c3a41e75d"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "Explicit parliamentary decision; distinct from a legal party merger or registration."
+    },
+    {
+      "id": "k23-committee-2020-12-28-10",
+      "date": "2020-12-28",
+      "kind": "faction-split",
+      "who": {
+        "partyIds": [
+          "agudat-yisrael",
+          "degel-hatorah"
+        ]
+      },
+      "summary": {
+        "en": "UTJ faction splits into Agudat Yisrael and Degel HaTorah.",
+        "he": "אושרה התפלגות סיעת יהדות התורה לאגודת ישראל ולדגל התורה."
+      },
+      "classification": "counts",
+      "reason": "Formal House Committee decision, limited to the parliamentary act it records. No party registration or government-support status inferred.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.knesset.gov.il/committees/heb/docs/knesset23.pdf",
+          "publisher": "Knesset House Committee",
+          "date": "2020-12-28",
+          "accessed": "2026-11-09",
+          "type": "official",
+          "evidenceFamily": "knesset-house-committee",
+          "inspection": "page-image",
+          "locator": "PDF page 103",
+          "supportingNote": "UTJ faction splits into Agudat Yisrael and Degel HaTorah.",
+          "effectiveDate": "2020-12-28",
+          "sha256": "eb93998a6548f6395d575717c532bf38d40d045e9c8a0a2dd393e01c3a41e75d"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "Explicit parliamentary decision; distinct from a legal party merger or registration."
+    },
+    {
+      "id": "k23-committee-2020-12-28-13",
+      "date": "2020-12-28",
+      "kind": "faction-request-withdrawn",
+      "who": {
+        "partyIds": [
+          "likud"
+        ]
+      },
+      "summary": {
+        "en": "Likud’s request to declare Shasha-Biton a faction defector is withdrawn; no decision made.",
+        "he": "הבקשה להכריז על יפעת שאשא־ביטון כפורשת נמשכה ולא התקבלה החלטה."
+      },
+      "classification": "counts",
+      "reason": "Formal House Committee decision, limited to the parliamentary act it records. No party registration or government-support status inferred.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.knesset.gov.il/committees/heb/docs/knesset23.pdf",
+          "publisher": "Knesset House Committee",
+          "date": "2020-12-28",
+          "accessed": "2026-11-09",
+          "type": "official",
+          "evidenceFamily": "knesset-house-committee",
+          "inspection": "page-image",
+          "locator": "PDF page 106",
+          "supportingNote": "Likud’s request to declare Shasha-Biton a faction defector is withdrawn; no decision made.",
+          "effectiveDate": "2020-12-28",
+          "sha256": "eb93998a6548f6395d575717c532bf38d40d045e9c8a0a2dd393e01c3a41e75d"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "Explicit parliamentary decision; distinct from a legal party merger or registration."
+    },
+    {
+      "id": "k23-observed-faction-13",
+      "date": "2020-12-28",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          528,
+          1057,
+          30671
+        ],
+        "factionIds": [
+          944,
+          1071
+        ]
+      },
+      "summary": {
+        "en": "3 MKs recorded moving between factions 944 and 1071.",
+        "he": "רישום החברות עבר מסיעת יהדות התורה והשבת אגודת ישראל - דגל התורה לסיעת אגודת ישראל (3 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k23.json factionChanges[13], KNS_PersonToPosition records 29776, 29777, 29682, 29683, 29748, 29749",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2020-12-28"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k23-observed-faction-14",
+      "date": "2020-12-28",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          526,
+          23641,
+          30672,
+          30768
+        ],
+        "factionIds": [
+          944,
+          1072
+        ]
+      },
+      "summary": {
+        "en": "4 MKs recorded moving between factions 944 and 1072.",
+        "he": "רישום החברות עבר מסיעת יהדות התורה והשבת אגודת ישראל - דגל התורה לסיעת דגל התורה (4 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k23.json factionChanges[14], KNS_PersonToPosition records 29717, 29718, 29693, 29694, 29809, 29810, 29704, 29705",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2020-12-28"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k23-committee-2021-01-20-11",
+      "date": "2021-01-20",
+      "kind": "faction-split",
+      "who": {
+        "partyIds": [
+          "new-right",
+          "tkuma"
+        ]
+      },
+      "summary": {
+        "en": "Yamina faction splits into Yamina and National Union (Smotrich and Sofer).",
+        "he": "אושרה התפלגות סיעת ימינה לסיעות ימינה והאיחוד הלאומי."
+      },
+      "classification": "counts",
+      "reason": "Formal House Committee decision, limited to the parliamentary act it records. No party registration or government-support status inferred.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.knesset.gov.il/committees/heb/docs/knesset23.pdf",
+          "publisher": "Knesset House Committee",
+          "date": "2021-01-20",
+          "accessed": "2026-11-09",
+          "type": "official",
+          "evidenceFamily": "knesset-house-committee",
+          "inspection": "page-image",
+          "locator": "PDF page 104",
+          "supportingNote": "Yamina faction splits into Yamina and National Union (Smotrich and Sofer).",
+          "effectiveDate": "2021-01-20",
+          "sha256": "eb93998a6548f6395d575717c532bf38d40d045e9c8a0a2dd393e01c3a41e75d"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "Explicit parliamentary decision; distinct from a legal party merger or registration."
+    },
+    {
+      "id": "k23-observed-faction-15",
+      "date": "2021-01-20",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          30055,
+          30717
+        ],
+        "factionIds": [
+          948,
+          1073
+        ]
+      },
+      "summary": {
+        "en": "2 MKs recorded moving between factions 948 and 1073.",
+        "he": "רישום החברות עבר מסיעת ימינה לסיעת האיחוד הלאומי (2 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k23.json factionChanges[15], KNS_PersonToPosition records 29795, 29796, 29793, 29794",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2021-01-20"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k23-committee-2021-01-28-12",
+      "date": "2021-01-28",
+      "kind": "faction-split",
+      "who": {
+        "partyIds": [
+          "hadash",
+          "balad",
+          "raam",
+          "taal"
+        ]
+      },
+      "summary": {
+        "en": "Joint List faction splits into Joint List, Ra’am and Ta’al.",
+        "he": "אושרה התפלגות סיעת הרשימה המשותפת לסיעות הרשימה המשותפת, רע״ם ותע״ל."
+      },
+      "classification": "counts",
+      "reason": "Formal House Committee decision, limited to the parliamentary act it records. No party registration or government-support status inferred.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.knesset.gov.il/committees/heb/docs/knesset23.pdf",
+          "publisher": "Knesset House Committee",
+          "date": "2021-01-28",
+          "accessed": "2026-11-09",
+          "type": "official",
+          "evidenceFamily": "knesset-house-committee",
+          "inspection": "page-image",
+          "locator": "PDF page 105",
+          "supportingNote": "Joint List faction splits into Joint List, Ra’am and Ta’al.",
+          "effectiveDate": "2021-01-28",
+          "sha256": "eb93998a6548f6395d575717c532bf38d40d045e9c8a0a2dd393e01c3a41e75d"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "Explicit parliamentary decision; distinct from a legal party merger or registration."
+    },
+    {
+      "id": "k23-observed-faction-16",
+      "date": "2021-01-28",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          30066,
+          30067,
+          30069,
+          30714,
+          30715,
+          30719,
+          30750,
+          30751
+        ],
+        "factionIds": [
+          943,
+          1074
+        ]
+      },
+      "summary": {
+        "en": "8 MKs recorded moving between factions 943 and 1074.",
+        "he": "רישום החברות עבר מסיעת הרשימה המשותפת חד\"ש, רע\"מ, תע\"ל, בל\"ד לסיעת הרשימה המשותפת (8 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k23.json factionChanges[16], KNS_PersonToPosition records 29802, 29803, 29846, 29847, 29708, 29709, 29832, 29833, 29753, 29754, 29764, 29765, 29806, 29807, 29675, 29676",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2021-01-28"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k23-observed-faction-17",
+      "date": "2021-01-28",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          30548,
+          30713,
+          30752,
+          30758
+        ],
+        "factionIds": [
+          943,
+          1075
+        ]
+      },
+      "summary": {
+        "en": "4 MKs recorded moving between factions 943 and 1075.",
+        "he": "רישום החברות עבר מסיעת הרשימה המשותפת חד\"ש, רע\"מ, תע\"ל, בל\"ד לסיעת רע\"מ – רשימת האיחוד הערבי (4 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k23.json factionChanges[17], KNS_PersonToPosition records 29685, 29686, 29800, 29801, 29741, 29742, 29737, 29738",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2021-01-28"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    },
+    {
+      "id": "k23-observed-faction-18",
+      "date": "2021-01-28",
+      "kind": "faction-membership-change",
+      "who": {
+        "personIds": [
+          560,
+          30070,
+          30759
+        ],
+        "factionIds": [
+          943,
+          1076
+        ]
+      },
+      "summary": {
+        "en": "3 MKs recorded moving between factions 943 and 1076.",
+        "he": "רישום החברות עבר מסיעת הרשימה המשותפת חד\"ש, רע\"מ, תע\"ל, בל\"ד לסיעת תע\"ל – התנועה הערבית להתחדשות (3 ח״כים)."
+      },
+      "classification": "counts",
+      "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "date": null,
+          "type": "official",
+          "inspection": "retained-record",
+          "locator": "data/research/knesset-member-changes/k23.json factionChanges[18], KNS_PersonToPosition records 29745, 29746, 29797, 29798, 29789, 29790",
+          "supportingNote": "The cited official membership fields establish the date, faction IDs and people only.",
+          "effectiveDate": "2021-01-28"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
+      "formalDecisionType": "unknown"
+    }
+  ]
+}
