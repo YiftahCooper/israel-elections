@@ -31,7 +31,7 @@ export function FamilySeatCharts({families,cursor,onCursor,onInspect}:{families:
  const anyPartners=rows.flat().some(r=>r.partners.length>0);
  const toggle=(on:boolean)=>{setShow(on);try{localStorage.setItem(PARTNERS,on?'on':'off');}catch{/* a view preference only */}};
  return <section className="family-seat-section" style={families.length===1?{['--family-color' as string]:familyColor(families[0])}:undefined}>
-  <div className="family-plot-head"><h3>{L('Seats won','מנדטים')} <Info title={L('Seats and partners','מנדטים ומפלגות שותפות')}>{L('Counted from each elected member’s party, so nothing is estimated. Solid: the family’s own seats. Striped, above: the other parties elected on the same joint list, smallest first, in their own colours. A bar taller than the chart fades out at the top; the numbers above it are exact (own seats, then +partners).','נספר לפי המפלגה של כל נבחר ונבחרת, כך ששום דבר אינו מוערך. מלא: המנדטים של המשפחה עצמה. מפוספס, מעל: המפלגות האחרות שנבחרו באותה רשימה משותפת, מהקטנה לגדולה, כל אחת בצבעה. עמודה גבוהה מהתרשים נמוגה למעלה; המספרים שמעליה מדויקים (מנדטי המשפחה, ואחריהם +השותפות).')}</Info></h3>
+  <div className="family-plot-head"><h3>{L('Seats won','מנדטים')} <Info title={L('Seats and partners','מנדטים ומפלגות שותפות')}>{L('Counted from each elected member’s party, so nothing is estimated. Solid: the family’s own seats. Striped, above: the other parties elected on the same joint list, smallest first, in their own colours. A bar taller than the chart fades out at the top; the numbers above it are exact (own seats, then +partners). Bars are elections, evenly spaced: this is not a time scale, since Knessets last different lengths. The shaded column is the election you are looking at.','נספר לפי המפלגה של כל נבחר ונבחרת, כך ששום דבר אינו מוערך. מלא: המנדטים של המשפחה עצמה. מפוספס, מעל: המפלגות האחרות שנבחרו באותה רשימה משותפת, מהקטנה לגדולה, כל אחת בצבעה. עמודה גבוהה מהתרשים נמוגה למעלה; המספרים שמעליה מדויקים (מנדטי המשפחה, ואחריהם +השותפות). העמודות הן מערכות בחירות, במרווחים שווים: זה אינו ציר זמן, כי משך כל כנסת שונה. העמודה המוצללת היא הבחירות שבהן אתם צופים.')}</Info></h3>
    <div className="family-seat-tools">{show&&anyPartners&&<p className="family-legend" aria-hidden><span><i className="family-key-own"/>{L('Own seats','מנדטי המשפחה')}</span><span><i className="family-key-partner"/>{L('Partners on a joint list','שותפות ברשימה משותפת')}</span></p>}
     <label className="switch small"><input type="checkbox" role="switch" checked={show} onChange={e=>toggle(e.target.checked)}/>{L('Show partners','הצגת מפלגות שותפות')}</label></div></div>
   {families.map((f,i)=><SeatPlot key={f.id} family={f} rows={rows[i]} axis={axis} partners={show} named={families.length>1} cursor={cursor} onCursor={onCursor} onInspect={onInspect}/>)}
@@ -84,8 +84,11 @@ function SeatPlot({family:f,rows,axis,partners:show,named,cursor,onCursor,onInsp
     <mask id={`${id}mask`} maskUnits="userSpaceOnUse" x="0" y="0" width={width} height={height}><rect x="0" y={top} width={width} height={height-top} fill={`url(#${id}fade)`}/></mask>
    </defs>
    {axis.ticks.map(t=>{const y=Y(t/axis.top*(plot-headroom));return <g key={t} className="family-axis"><path d={`M${left} ${y}H${width-right}`} className="family-grid"/><text x={left-6} y={y+4} textAnchor="end">{t}</text></g>;})}
-   {at>=0&&<rect className="family-seat-cursor" x={cx(at)-slot/2} y={top} width={slot} height={plot}/>}
-   {historyElections.map((e,i)=>(i%yearEvery===0||i===n-1&&(n-1)%yearEvery>=yearEvery/2)&&<g key={e.id} className="family-axis"><text x={cx(i)} y={bottom+15} textAnchor="middle">{fmtYear(i)}</text>{labels&&month(e)&&<text x={cx(i)} y={bottom+27} textAnchor="middle" className="family-seat-month">{month(e)}</text>}</g>)}
+   {/* the selected election: a soft band behind its column and its year; its value and year in bold */}
+   {at>=0&&<rect className="family-selband" x={cx(at)-slot/2+0.5} y={top-6} width={Math.max(1,slot-1)} height={plot+6+(labels&&month(historyElections[at])?31:20)} rx={3}/>}
+   {historyElections.map((e,i)=>{const sel=i===at,regular=i%yearEvery===0||i===n-1&&(n-1)%yearEvery>=yearEvery/2;
+    if(!sel&&(!regular||at>=0&&Math.abs(i-at)*slot<30))return null;
+    return <g key={e.id} className="family-axis"><text x={cx(i)} y={bottom+15} textAnchor="middle" className={sel?'family-sel-year':undefined}>{fmtYear(i)}</text>{labels&&month(e)&&<text x={cx(i)} y={bottom+27} textAnchor="middle" className={`family-seat-month ${sel?'family-sel-year':''}`}>{month(e)}</text>}</g>;})}
    {historyElections.map((e,i)=>{
     const r=rows[i],parts=show?r.partners:[],lay=stackBar(r.own,parts.map(p=>p.seats),geometry),x=cx(i)-barW/2,s=status(r,e);
     const drawnTop=Math.max(lay.own,...lay.parts.map(p=>p.y1)),p=partnerTotal(r),isActive=active?.bar===i;
@@ -96,8 +99,8 @@ function SeatPlot({family:f,rows,axis,partners:show,named,cursor,onCursor,onInsp
      {segs.length>0&&<g mask={lay.clipped?`url(#${id}mask)`:undefined} className="family-seat-partners">{segs.map(({pt,box},j)=><rect key={j} data-bar={i} data-seg={j+1} role="button" tabIndex={-1} aria-label={segmentText(pt,e,lang,L)} className="family-seat-partner" x={x} y={Y(box.y1)} width={barW} height={Math.max(0,box.y1-box.y0)} fill={`url(#${pattern(partnerColor(pt))})`} data-on={isActive&&active?.seg===j+1||undefined} {...handlers(i,j+1)}/>)}</g>}
      {/* hairlines between partners keep two partners of the same colour apart, without taking from either */}
      {segs.slice(1).map(({box},j)=>box.y1-box.y0>=4&&segs[j].box.y1-segs[j].box.y0>=4?<path key={j} d={`M${x} ${Y(box.y0)}h${barW}`} className="family-seat-gap" mask={lay.clipped?`url(#${id}mask)`:undefined}/>:null)}
-     {(labels||isActive||cursor===e.id&&!!active)&&<text className="family-seat-label" data-status={s?"":undefined} x={cx(i)} y={Y(Math.min(drawnTop,plot))-(show&&p?16:5)} textAnchor="middle" aria-hidden>{s?(r.status==='unknown'?'?':'–'):r.own}</text>}
-     {(labels||isActive||cursor===e.id&&!!active)&&!s&&show&&p>0&&<text className="family-seat-plus" x={cx(i)} y={Y(Math.min(drawnTop,plot))-4} textAnchor="middle" aria-hidden>+{p}</text>}
+     {(labels||isActive||cursor===e.id)&&<text className={`family-seat-label ${cursor===e.id?'sel':''}`} data-status={s?"":undefined} x={cx(i)} y={Y(Math.min(drawnTop,plot))-(show&&p?16:5)} textAnchor="middle" aria-hidden>{s?(r.status==='unknown'?'?':'–'):r.own}</text>}
+     {(labels||isActive||cursor===e.id)&&!s&&show&&p>0&&<text className="family-seat-plus" x={cx(i)} y={Y(Math.min(drawnTop,plot))-4} textAnchor="middle" aria-hidden>+{p}</text>}
     </g>;})}
    <path d={`M${left} ${bottom}H${width-right}`} className="family-seat-base"/>
   </svg>

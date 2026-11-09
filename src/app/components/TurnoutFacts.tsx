@@ -129,11 +129,12 @@ function TurnoutHistory({ current }: { current: ElectionId }) {
   const label = (i: number) => `${name(rows[i])}: ${L('eligible voters', 'בעלי זכות בחירה')} ${fmtInt(rows[i].registered)}, ${L('turnout', 'הצבעה')} ${fmtPct(rows[i].votesCast, rows[i].registered, digits)}`;
   const columns = (chart: 'reg' | 'pct') => rows.map((t, i) => <rect key={t.id} className="tn-hit" x={ml + i * slot} y={0} width={slot} height={top + H + axisH}
     onPointerEnter={() => setHover(i)} onPointerLeave={() => setHover((h) => (h === i ? null : h))} onClick={() => go(i)} data-chart={chart} />);
-  const years = rows.map((t, i) => tick(i) && <text key={t.id} x={x(i)} y={top + H + 13} className="tn-axis" textAnchor="middle">{`’${t.date.slice(2, 4)}`}</text>);
-  const band = (i: number) => <rect x={ml + i * slot} y={top - 4} width={slot} height={H + 4} className={i === cur ? 'tn-cur' : 'tn-hov'} />;
+  // the open election's year is always shown, in bold; regular ticks too close to it give way
+  const years = rows.map((t, i) => (i === cur || tick(i) && !(cur >= 0 && Math.abs(i - cur) * slot < 24)) && <text key={t.id} x={x(i)} y={top + H + 13} className={`tn-axis ${i === cur ? 'cur' : ''}`} textAnchor="middle">{`’${t.date.slice(2, 4)}`}</text>);
+  const band = (i: number) => <rect x={ml + i * slot + 0.5} y={top - 4} width={Math.max(1, slot - 1)} height={H + axisH + 4} rx={3} className={i === cur ? 'tn-cur' : 'tn-hov'} />;
 
   return <div className="tn-history">
-    <h4>{L('All elections', 'כל הבחירות')} <Info title={L('All elections', 'כל הבחירות')}>{L('Official national totals of each election. Choose an election to open it.', 'הסיכומים הארציים הרשמיים של כל בחירות. בחירה בבחירות פותחת אותן.')}</Info></h4>
+    <h4>{L('All elections', 'כל הבחירות')} <Info title={L('All elections', 'כל הבחירות')}>{L('Official national totals of each election. Choose an election to open it. Columns are elections, evenly spaced: this is not a time scale, since Knessets last different lengths. The shaded column is the open election.', 'הסיכומים הארציים הרשמיים של כל בחירות. בחירה בבחירות פותחת אותן. העמודות הן מערכות בחירות, במרווחים שווים: זה אינו ציר זמן, כי משך כל כנסת שונה. העמודה המוצללת היא הבחירות הפתוחות.')}</Info></h4>
     <p className="tn-readout small" aria-live="polite">
       <b>{name(shown)}</b> · {L('Eligible', 'בעלי זכות')} <bdi dir="ltr">{fmtInt(shown.registered)}</bdi> · {L('Turnout', 'הצבעה')} {percentNum(pcts[rows.indexOf(shown)], digits)}
     </p>

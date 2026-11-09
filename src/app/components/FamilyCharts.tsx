@@ -1,7 +1,8 @@
 import { fmtPct } from '../format.ts';
 import { percent, points } from './Percentage.tsx';
 import { Floating } from '../floating.tsx';
-import {Fragment,useEffect,useId,useRef,useState} from 'react';
+import {Fragment,useEffect,useId,useRef,useState,type ReactNode} from 'react';
+import {Info} from './ui.tsx';
 import {aggregate,membership,type Family} from '../../families/model.ts';
 import {familyColor,historyElections,historyListName,mixedComposition,shortFamilyName,type HistoryElection} from '../../families/runtime.ts';
 import {openElection,setState,useDigits,useSetting} from '../store.ts';
@@ -24,13 +25,16 @@ export function familyStatus(a:Agg,L:Tr):string|null {
 }
 /** Round axis steps (1, 2, 2.5, 5 × 10ⁿ) so gridlines read 5/10/15/20 %, never 11/23/34 %. */
 function niceScale(max:number){const raw=max/4,mag=10**Math.floor(Math.log10(raw)),step=[1,2,2.5,5,10].map(m=>m*mag).find(s=>s>=raw)!;const top=Math.ceil(max*1.04/step)*step;return {top,ticks:Array.from({length:Math.round(top/step)+1},(_,i)=>i*step)};}
-export function FamilyCharts({families,cursor,onCursor,onInspect}:{families:Family[];cursor:ElectionId;onCursor:(id:ElectionId)=>void;onInspect:(f:Family,id:ElectionId)=>void}) {
+/** "2019" or, in a year with two elections, "Apr 2019". */
+export const electionYear=(e:HistoryElection,lang:'he'|'en')=>{const y=e.electionDate.slice(0,4),twice=historyElections.filter(d=>d.electionDate.startsWith(y)).length>1;return twice?new Date(e.electionDate+'T12:00:00').toLocaleDateString(lang==='he'?'he-IL':'en-GB',{year:'numeric',month:'short'}):y;};
+/** The vote charts: how mixed lists count (`policy`, which changes these two charts only), then share and votes. */
+export function FamilyCharts({families,cursor,onCursor,onInspect,policy}:{families:Family[];cursor:ElectionId;onCursor:(id:ElectionId)=>void;onInspect:(f:Family,id:ElectionId)=>void;policy?:ReactNode}) {
  const L=useL();
  const anyMixed=families.some(f=>historyElections.some(d=>!!aggregate(f,d).mixed));
- return <div className="family-plots">{(['share','votes'] as const).map(metric=>{
+ return <div className="family-plots">{policy&&<div className="family-vote-tools">{policy}</div>}{(['share','votes'] as const).map(metric=>{
   const max=Math.max(metric==='share'?1:1000,...families.flatMap(f=>historyElections.map(d=>{const a=aggregate(f,d),n=Number(a.votes??0n)+Number(a.mixed??0n);return metric==='share'?n*100/d.totals.valid:n;})));
   const scale=niceScale(max);
-  return <section key={metric}><div className="family-plot-head"><h3>{metric==='share'?L('Share of valid votes','שיעור הקולות הכשרים'):L('Absolute votes','מספר קולות')}</h3>
+  return <section key={metric}><div className="family-plot-head"><h3>{metric==='share'?L('Share of valid votes','שיעור הקולות הכשרים'):L('Absolute votes','מספר קולות')} <Info title={L('Time axis','ציר הזמן')}>{L('A true time scale: each point sits on its election day, so the gaps show the time between elections (April and September 2019 almost touch). The shaded column is the election you are looking at.','ציר זמן אמיתי: כל נקודה נמצאת ביום הבחירות שלה, כך שהמרווחים מראים את הזמן שעבר בין מערכות הבחירות (אפריל וספטמבר 2019 כמעט נוגעות זו בזו). העמודה המוצללת היא הבחירות שבהן אתם צופים.')}</Info></h3>
    {anyMixed&&metric==='share'&&<p className="family-legend" aria-hidden><span><i className="family-key-line"/>{L('Whole lists','רשימות שלמות')}</span><span><i className="family-key-mixed"/>{L('Mixed lists (up to)','רשימות מעורבות (עד)')}</span></p>}</div>
    {families.map(f=><Plot key={f.id} family={f} metric={metric} scale={scale} cursor={cursor} onCursor={onCursor} onInspect={onInspect}/>)}</section>;
  })}</div>;
@@ -71,14 +75,18 @@ function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;m
  const lastAt=data.map((a,i)=>drawn(a)?i:-1).filter(i=>i>=0).pop();
  const endY=lastAt===undefined?top+10:Math.max(top+5,Math.min(bottom-10-13*(Math.min(3,labelLines.length)-1),y(data[lastAt].votes!,historyElections[lastAt])+4));
  const mid=(i:number)=>i<0?left-6:i>25?width-right+6:x(historyElections[i]);
+ // the selected election's band covers its own stretch of time: halfway to the elections either side (at least 12px)
+ const band=(()=>{if(at<0)return {x:0,w:0};const cx=x(historyElections[at]),a=(mid(at-1)+cx)/2,b=(cx+mid(at+1))/2;return b-a>=12?{x:a,w:b-a}:{x:cx-6,w:12};})();
  const fmtTick=(v:number)=>metric==='share'?`${+v.toFixed(1)}%`:v>=1000000?`${+(v/1000000).toFixed(2)}m`:v>=1000?`${Math.round(v/1000)}k`:String(v);
 
  return <div ref={ref} className="family-plot" style={{['--family-color' as string]:color}} onPointerLeave={()=>setHover(false)}>
   <svg viewBox={`0 0 ${width} ${height}`} height={height} role="group" aria-label={`${label} — ${metric==='share'?L('Vote share','שיעור קולות'):L('Votes','קולות')}`}>
    <defs><pattern id={`hatch${id}`} width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V5" stroke={color} strokeWidth="1.6"/></pattern></defs>
    {scale.ticks.map(t=><g key={t} className="family-axis"><path d={`M${left} ${bottom-t/max*(bottom-top)}H${width-right+8}`} className="family-grid"/><text x={left-8} y={bottom-t/max*(bottom-top)+4} textAnchor="end">{fmtTick(t)}</text></g>)}
-   {ticks.map(yr=><g key={yr} className="family-axis"><path d={`M${xAt(Date.parse(`${yr}-01-01`))} ${bottom}v5`} stroke="currentColor"/><text x={xAt(Date.parse(`${yr}-01-01`))} y={height-13} textAnchor="middle">{yr}</text></g>)}
-   {at>=0&&<path d={`M${x(historyElections[at])} ${top}V${bottom}`} className="family-cursor"/>}
+   {/* the selected election: a soft band over its stretch of time and its year; its value and year in bold */}
+   {at>=0&&<rect className="family-selband" x={band.x} y={top-6} width={band.w} height={height-6-top} rx={3}/>}
+   {ticks.map(yr=>{const tx=xAt(Date.parse(`${yr}-01-01`)),hidden=at>=0&&Math.abs(tx-x(historyElections[at]))<(narrow?34:40);return <g key={yr} className="family-axis"><path d={`M${tx} ${bottom}v5`} stroke="currentColor"/>{!hidden&&<text x={tx} y={height-13} textAnchor="middle">{yr}</text>}</g>;})}
+   {at>=0&&<text className="family-axis family-sel-year" x={Math.min(width-right,Math.max(left,x(historyElections[at])))} y={height-13} textAnchor="middle">{electionYear(historyElections[at],lang)}</text>}
    {historyElections.map((e,i)=>{const row=data[i];if(!row.mixed)return null;const base=row.votes??0n,h=y(base,e)-y(base+row.mixed,e);
     return <rect key={e.id} className="family-mixed" x={x(e)-3.5} y={y(base+row.mixed,e)} width="7" height={Math.max(1,h)} fill={`url(#hatch${id})`} stroke={color}/>;})}
    <path d={path} fill="none" stroke={color} strokeWidth="2.5" strokeLinejoin="round"/>
@@ -87,6 +95,13 @@ function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;m
     {drawn(row)&&<circle cx={x(e)} cy={y(row.votes!,e)} r={e.pending?4.5:3.5} fill={e.pending?'var(--surface)':color} stroke={color} strokeWidth="2"/>}
     <title>{text}</title>
    </g>;})}
+   {at>=0&&drawn(data[at])&&(()=>{const e=historyElections[at],py=y(data[at].votes!,e),text=metric==='share'?percent(data[at].votes!,e.totals.valid,digits,undefined,{svg:true}):Number(data[at].votes).toLocaleString('en-US');
+     // the last point: under the family's name in the right margin, where no line runs
+     if(at===lastAt)return <text className="family-sel-value" x={width-right+12} y={endY+13*(Math.min(3,labelLines.length)-1)+15} textAnchor="start" aria-hidden>{text}</text>;
+     const near=[at-1,at+1].filter(i=>i>=0&&i<26&&drawn(data[i])).map(i=>y(data[i].votes!,historyElections[i]));
+     // elsewhere on the side away from the line: below a point that sits lower than its neighbours, else above
+     const below=py-top<18||(near.length>0&&near.reduce((t,v)=>t+v,0)/near.length<py&&bottom-py>22);
+     return <text className="family-sel-value" x={Math.min(width-right-4,Math.max(left+4,x(e)))} y={below?py+18:py-9} textAnchor={x(e)<left+30?'start':'middle'} aria-hidden>{text}</text>;})()}
    {!path&&!data.some(a=>a.mixed)&&<text className="family-empty" x={(left+width-right)/2} y={(top+bottom)/2} textAnchor="middle">{L('No lists counted in any election','לא נספרו רשימות באף מערכת בחירות')}</text>}
    {lastAt!==undefined&&<text className="family-end-label" x={width-right+12} y={endY} textAnchor="start">{labelLines.slice(0,3).map((line,i)=><tspan key={i} x={width-right+12} dy={i?13:0}>{line.length>(narrow?11:17)?line.slice(0,narrow?10:16)+'…':line}{i===2&&labelLines.length>3?'…':''}</tspan>)}</text>}
   </svg>

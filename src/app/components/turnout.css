@@ -66,7 +66,9 @@
 .tn-line { fill: none; stroke: var(--ink-2); stroke-width: 2; stroke-linejoin: round; }
 .tn-dot { fill: var(--ink-2); stroke: var(--surface); stroke-width: 2; }
 .tn-dot.cur { fill: var(--focus); }
-.tn-cur { fill: var(--open); }
+/* the open election, as in the party-history and party-family charts: a soft band behind its column and year */
+.tn-cur { fill: color-mix(in srgb, var(--focus) 13%, transparent); }
+.tn-axis.cur { fill: var(--ink); font-weight: 700; }
 .tn-hov { fill: var(--surface-2); }
 .tn-hit { fill: transparent; cursor: pointer; }
 .tn-col { outline: none; }

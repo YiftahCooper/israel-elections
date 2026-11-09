@@ -111,3 +111,15 @@ for (const theme of ['light', 'dark'] as const) test(`facts text has readable co
   expect(ratios.length).toBeGreaterThan(15);
   for (const r of ratios) expect(r.ratio, r.text ?? '').toBeGreaterThanOrEqual(4.5);
 });
+
+// 9 Nov 2026: as in the party-history and party-family charts, the open election is a soft shaded column with its
+// year in bold, and the (i) says the columns are evenly spaced elections, not a time scale.
+test('All elections: the open election is shaded with its year in bold; the (i) explains the even spacing', async ({ page }) => {
+  const facts = await open(page, { level: 'expert', election: 'k20' });
+  const history = facts.locator('.tn-history');
+  await expect(history.locator('.tn-cur')).toHaveCount(2);
+  await expect(history.locator('.tn-axis.cur')).toHaveText(['’15', '’15']);
+  expect(await history.locator('.tn-axis.cur').first().evaluate((e) => getComputedStyle(e).fontWeight)).toBe('700');
+  await history.locator('h4').getByRole('button').click();
+  await expect(page.locator('.info .pop')).toContainText('evenly spaced: this is not a time scale');
+});
