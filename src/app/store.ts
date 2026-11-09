@@ -93,10 +93,10 @@ const ITEM_PREFERENCES_KEY = 'israel-elections:item-preferences';
 const rememberedItems = (() => { try { return validItemAnswers(JSON.parse(globalThis.localStorage?.getItem(ITEM_PREFERENCES_KEY) ?? '{}')); } catch { return {}; } })();
 const PREFERENCES_KEY = 'israel-elections:preferences';
 const rememberedPreferences = (() => { try { const raw = globalThis.localStorage?.getItem(PREFERENCES_KEY); return raw ? validAnswers(JSON.parse(raw)) : {}; } catch { return {}; } })();
-// Joint lists start counted by party unless the user turned it off (docs/design/settings.md)
+// Joint lists start counted by party unless the user turned it off (israel-elections-private docs/design/settings.md)
 setFactionDefault(rememberedPreferences.jointSeats !== 'off');
 const persisted = (() => { try { return JSON.parse(globalThis.localStorage?.getItem(LS) ?? '{}'); } catch { return {}; } })();
-// pre-release: only the current key is read; nothing older is carried over (docs/design/settings.md)
+// pre-release: only the current key is read; nothing older is carried over (israel-elections-private docs/design/settings.md)
 const rememberedSettings = (() => { try { const raw = JSON.parse(globalThis.localStorage?.getItem(SETTINGS_KEY) ?? 'null'); return raw?.v === 2 ? validSettings(raw.values) : {}; } catch { return {}; } })();
 const deviceDark = () => globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches === true;
 const resolvedTheme = (pref: SettingValues['theme']): 'light' | 'dark' => pref === 'device' ? (deviceDark() ? 'dark' : 'light') : pref;
@@ -514,7 +514,7 @@ export function setPreference(id: PreferenceId, value?: string) {
   const preferences = { ...state.preferences };
   if (value) preferences[id] = value; else delete preferences[id];
   // Answers remembered for one list, bloc or scenario are kept: the more specific answer still wins, and they are
-  // cleared only by Ask again or Forget all (docs/design/settings.md §5), never silently.
+  // cleared only by Ask again or Forget all (israel-elections-private docs/design/settings.md §5), never silently.
   setState({ preferences, ...(id === 'voteSource' && value ? { voteSource: sourceChoice(value) } : {}), ...(id === 'comparison' && value ? { markOfficial: value === 'official' } : {}) });
 }
 export function answerPreference(value: string, scope: 'once' | 'item' | 'always') {

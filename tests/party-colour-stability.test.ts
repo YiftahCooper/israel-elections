@@ -15,7 +15,7 @@ test('all retained research, including low-confidence colours, is indexed withou
 test('every election stays near its recorded base unless a failed check forces a reported adjustment',()=>{
  const rows=partyDecisions();
  for(const r of rows){if(r.deltaE>2)expect(r.reasons.length,`${r.election} ${r.party}`).toBeGreaterThan(0);if(!r.forced)expect(r.deltaE).toBe(0);}
- expect(rows.filter(r=>r.forced)).toEqual(JSON.parse(readFileSync('docs/acceptance/party-colour-adjustments.json','utf8')));
+ expect(rows.filter(r=>r.forced)).toEqual(JSON.parse(readFileSync('docs/colour-reports/party-colour-adjustments.json','utf8')));
  const a={id:'a',color:'#ffffff',parties:[{id:'unresearched-party'}]},b={...a,id:'b'};
  expect(partyColourBase(a,'unresearched-party').color).toBe(idColour('unresearched-party'));
  expect(partyDisplayColor(a,'unresearched-party')).toBe(partyDisplayColor(b,'unresearched-party'));

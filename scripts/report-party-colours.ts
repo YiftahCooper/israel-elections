@@ -35,9 +35,9 @@ if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)){
   const list=oldDatasets.get(r.election).lists.find((l:{id:string;letters:string})=>l.id===r.list||l.letters===r.letters),before=list?old.partyDisplayColor(list,r.party):'';
   beforeAfter.push({...r,before});
  }
- writeFileSync('docs/acceptance/party-colour-adjustments.json',JSON.stringify(rows.filter(r=>r.forced),null,2)+'\n');
- writeFileSync('docs/acceptance/party-colour-before-after.csv',[['Election','List','Party','Name','Research / id base',`${revision} fill`,'Canonical fill','Delta E from base','Reason'],...beforeAfter.map(r=>[r.election,r.list,r.party,r.name,r.base,r.before,r.color,r.deltaE,r.reasons.join('; ')])].map(row=>row.map(csv).join(',')).join('\n')+'\n');
+ writeFileSync('docs/colour-reports/party-colour-adjustments.json',JSON.stringify(rows.filter(r=>r.forced),null,2)+'\n');
+ writeFileSync('docs/colour-reports/party-colour-before-after.csv',[['Election','List','Party','Name','Research / id base',`${revision} fill`,'Canonical fill','Delta E from base','Reason'],...beforeAfter.map(r=>[r.election,r.list,r.party,r.name,r.base,r.before,r.color,r.deltaE,r.reasons.join('; ')])].map(row=>row.map(csv).join(',')).join('\n')+'\n');
  const summary=partyStability();
- writeFileSync('docs/acceptance/party-colour-stability.csv',[['Party','Name','Elections','Appearances','Distinct display colours (target 1)','Display colours','Recorded bases','Exact base appearances','Recorded variation reasons'],...summary.multipleElectionParties.map(p=>[p.party,p.name,p.elections,p.appearances,p.distinctColours,p.colours.join('; '),p.bases.join('; '),p.exactBase,p.recordedReasons.join('; ')])].map(row=>row.map(csv).join(',')).join('\n')+'\n');
+ writeFileSync('docs/colour-reports/party-colour-stability.csv',[['Party','Name','Elections','Appearances','Distinct display colours (target 1)','Display colours','Recorded bases','Exact base appearances','Recorded variation reasons'],...summary.multipleElectionParties.map(p=>[p.party,p.name,p.elections,p.appearances,p.distinctColours,p.colours.join('; '),p.bases.join('; '),p.exactBase,p.recordedReasons.join('; ')])].map(row=>row.map(csv).join(',')).join('\n')+'\n');
  console.log(JSON.stringify(summary,null,2));
 }

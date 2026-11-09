@@ -1,4 +1,4 @@
-// Party history and "compared with last time" (docs/design/party-history.md §5). Facts, not edits: nothing here
+// Party history and "compared with last time" (docs/features/party-history.md). Facts, not edits: nothing here
 // changes a result or marks a scenario. Graphics are always drawn left to right, in Hebrew too.
 import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react';
 import type { Scenario } from '../../model/scenario.ts';

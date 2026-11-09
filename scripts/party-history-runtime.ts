@@ -1,4 +1,4 @@
-/** Build-only compiler for party history and "compared with last time" (docs/design/party-history.md §6).
+/** Build-only compiler for party history and "compared with last time" (docs/features/party-history.md).
  *  Per election: whole-list votes and seats, colours, short names, the registered parties of each list, its leading
  *  party and the elected members per party (joint facts). No constituent vote figure exists anywhere: votes belong to
  *  the whole list. Logos and sources stay in the datasets and metadata. */

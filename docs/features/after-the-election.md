@@ -1,6 +1,7 @@
-# After the election: design
+# After the election
 
-Status: implemented, 7 November 2026 (design approved through the V5 task brief). Research and sourcing rules: [docs/research/after-the-election.md](../research/after-the-election.md).
+How the After-the-election tab works and what its data must satisfy. Implemented 7 November 2026. Research and
+sourcing rules: [research/after-the-election.md](../research/after-the-election.md).
 Reviewed data is wired for k1–k26 after the completed election audits; examples: [`data/meta/aftermath/k24.json`](../../data/meta/aftermath/k24.json) (2021) and
 [`data/meta/aftermath/k9.json`](../../data/meta/aftermath/k9.json) (1977).
 
@@ -21,11 +22,9 @@ commentator's characterisation; only dated acts and attributed words.
 
 - **Now:** a new Explore tab, `after` — "After the election" / "אחרי הבחירות", level *simple*, placed after
   *Overview*. It reads the election chosen in the band, like every tab.
-- **If the Learn/Play split is adopted:** it moves to Learn as that area's first per-election page. The data
-  file and component are the same; only the tab registration changes.
 - **Overview link:** the band's About popover gets one line, "Government 36 · Bennett–Lapid →", that opens the tab.
 - **1996, 1999, 2001 (direct PM election):** the recommendations block is replaced by a one-line notice,
-  "PM elected directly – no recommendations" (i), per `docs/research/era-specific-rules.md`. No round is invented.
+  "PM elected directly – no recommendations" (i), per [era-specific rules](../research/era-specific-rules.md). No round is invented.
 - **2026 (k26):** shows only what has happened so far, with the date of the last check.
 
 ## Data schema
@@ -86,7 +85,7 @@ same seats; `totals` equals the entry sums and 120; dates fall between the elect
 
 ### 1. Recommendations bar (reuses the blocs idea)
 
-A single 120-seat bar, left to right in both languages (owner rule: Hebrew graphics do not mirror; only text does).
+A single 120-seat bar, left to right in both languages (Hebrew graphics do not mirror; only text does).
 Segments are grouped by nominee, largest group first, then *other*, then *no recommendation*, then *unknown*.
 Within a group, lists keep their own colours, separated by thin gaps, so the bar reads both "who" and "which lists".
 A 61 tick marks the majority line. Labels sit under the bar; list names appear on hover/focus and in the table.
@@ -178,7 +177,7 @@ preferred anchor, and multiple publications from the same institution do not bec
 
 - Each term-event short text is one concise sentence (about 25 words maximum); keep extra chronology,
   source attribution and caveats in the existing event `notes` and `cites` behind (i), not new detail fields.
-- Labels only on screen; dates, provenance, conflicts and caveats behind (i) (owner rule: concise copy).
+- Labels only on screen; dates, provenance, conflicts and caveats behind (i).
 - Sentences follow one pattern: actor, verb, object, figure. "The Knesset approved the 36th government, 60–59."
 - No evaluative adjectives (historic, narrow, dramatic, controversial), no motives, no consequences unless a cited
   source attributes them, and then in quotation with the speaker named.
@@ -215,11 +214,3 @@ preferred anchor, and multiple publications from the same institution do not bec
   is withheld. Empty reaction and polling sections render nothing; future records slot into them.
 - Next-election references accept either an election ID or the older date form. The 2001 direct PM
   election is a dated event within k15, since it did not elect a new Knesset.
-
-## Original design questions (superseded where answered in the V5 brief)
-
-1. Tab now vs. wait for the Learn/Play split. (Recommendation: tab now; moving it later is cheap.)
-2. Whether to show the *reaction* block at all. The neutral version is thin (dates, all-or-none statements).
-   Recommendation: omit it from the first release and keep the field.
-3. Whether to show *candidate* (pending) events, greyed, for transparency. Recommendation: no; list them only in
-   the Sources tab.

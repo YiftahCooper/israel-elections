@@ -4,7 +4,7 @@
   "status": "reviewed",
   "reviewedAt": "2026-11-07",
   "notes": [
-    "Pilot for docs/design/after-the-election.md. Not wired into the app.",
+    "Pilot for docs/features/after-the-election.md. Not wired into the app.",
     "Every fact cites sources by id; each citation carries a short verbatim quote. Wording is descriptive and attributed; no evaluative adjectives."
   ],
   "sources": {

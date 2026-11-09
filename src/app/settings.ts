@@ -1,6 +1,6 @@
 import type { FeatureId, Preset } from './features.ts';
 
-/** Personal display settings (docs/design/settings.md). One registry drives the popup, its search, the resets
+/** Personal display settings (israel-elections-private docs/design/settings.md). One registry drives the popup, its search, the resets
  *  and the tests. Every level shows every setting, in tiers by `min`: Simple first, then Standard, then Expert (owner,
  *  9 Nov 2026). Values are sparse: only what the user set is stored, so level-dependent and later
  *  defaults reach untouched settings. Settings are never scenario edits. */

@@ -1,5 +1,5 @@
-// The Turnout tab's facts (owner, 8 Nov: "total possible votes ... growth since last election as a percentage and a
-// number"): key numbers at Simple, the full block and the all-elections chart from Standard, missing early figures
+// The Turnout tab's facts (8 Nov: eligible voters and their growth since the last election, as a percentage and a
+// number): key numbers at Simple, the full block and the all-elections chart from Standard, missing early figures
 // said in words, edits marked against the official result, Hebrew charts left to right, and readable contrast.
 import { expect, test, type Page } from '@playwright/test';
 import { choose } from './choices.ts';

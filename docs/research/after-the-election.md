@@ -1,6 +1,6 @@
 # After the election: prior art, sourcing plan and feasibility
 
-Research checked **5 November 2026**. Companion design: [docs/design/after-the-election.md](../design/after-the-election.md).
+Research checked **5 November 2026**. How the tab works: [features/after-the-election.md](../features/after-the-election.md).
 Pilot data: `data/meta/aftermath/k9.json` (1977) and `data/meta/aftermath/k24.json` (2021).
 
 Source rules are those of the project brief: no English Wikipedia; Hebrew Wikipedia only as a labelled secondary
@@ -26,7 +26,7 @@ Findings checked directly in this session are marked ✔. Items from the paralle
 
 ### 1.2 Wider prior art
 
-Full source-by-source ledger (S01–S28, with retrieval failures): [prior-art-after-the-election.md](prior-art-after-the-election.md).
+The full source-by-source ledger of this prior-art survey (S01–S28, with retrieval failures) is kept in the project's private archive.
 Summary:
 
 - **IDI** ([2021 profile](https://en.idi.org.il/israeli-elections-and-parties/elections/2021/), [Hebrew 2022 profile](https://www.idi.org.il/policy/parties-and-elections/elections/2022-1/))
@@ -96,7 +96,7 @@ Neutral options, in order of safety:
    no quotes at all. Selecting some leaders' quotes is itself a judgement.
 3. **Never:** commentary, "winners and losers", market reactions, foreign-leader congratulations.
 
-Recommendation: ship option 1; keep the field for option 2 if the owner wants it.
+Recommendation: ship option 1; keep the field for option 2 if it is wanted later.
 
 ### (c) Government formed, or why none
 

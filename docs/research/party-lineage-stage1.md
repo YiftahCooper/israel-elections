@@ -85,7 +85,7 @@ This is the set found in the retained records, not a claim to cover every histor
 
 The Registrar check below adds one number for each case, but cannot settle either pair. The last two are stricter than the old registry’s prose conflicts, which simply call them different. The prose was not independently verified, so it has not been promoted into usable relations. Shared founders, ideology, surnames, abbreviations and ballot letters likewise produce no new lineage edges. Kulanu and Yashar do not inherit earlier parties’ votes merely because their founders previously belonged elsewhere.
 
-### The owner’s Joint List example
+### The Joint List example
 
 Already present and checked: `partners-25-ום` records Hadash and Ta’al in 2022; Balad is the separate 2022 singleton list `25-ד`; `partners-26-ודם` records Hadash, Ta’al and Balad in 2026. Sources are `k25`, `k26` and `cec26`, with retained submissions in `public/data/k25.json` and `public/data/k26.json` and elected-member detail in `data/meta/joint-facts.json`.
 

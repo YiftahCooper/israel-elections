@@ -309,7 +309,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     </>;
   };
   /** "Recorded vote: 61 for · 59 against. Differs here because …" with the specific reasons from the research
-   *  in its (i). Individual MKs are disclosed, not modelled (docs/design/individual-mks.md, stage 3). */
+   *  in its (i). Individual MKs are disclosed, not modelled (israel-elections-private docs/design/individual-mks.md, stage 3). */
   const RecordGap = () => {
     if (!gap) return null;
     const why: Record<VoteGapReason['kind'], string> = {

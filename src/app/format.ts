@@ -26,7 +26,7 @@ const exactParts = (part: number | bigint, whole: number | bigint) => {
  *  - with a threshold (an exact decimal string such as "3.25"), a share whose ordinary rounding would land on the
  *    other side of it gets one more decimal instead: 1.46% against 1.5% at one decimal shows "1.46%", and 3.4%
  *    against 3.25% at none shows "3.4%". This is the only time the maximum is exceeded, by one digit. If even that
- *    digit would cross (1.4996%), it is rounded toward the true side: "1.49%" (docs/design/settings.md, 9.7a). */
+ *    digit would cross (1.4996%), it is rounded toward the true side: "1.49%" (israel-elections-private docs/design/settings.md, 9.7a). */
 export function fmtPct(part: number | bigint, whole: number | bigint, digits = 2, threshold?: string): string {
   const { P, W } = exactParts(part, whole);
   if (W === 0n) return '—%';

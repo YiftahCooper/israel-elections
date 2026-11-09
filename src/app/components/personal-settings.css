@@ -1,4 +1,4 @@
-/* Settings popup (docs/design/settings.md §4). A fixed size per breakpoint, so filtering, searching or changing a
+/* Settings popup (israel-elections-private docs/design/settings.md §4). A fixed size per breakpoint, so filtering, searching or changing a
    value never resizes it under the pointer; the header stays while the body scrolls on its own. */
 .personal-settings { inline-size: min(40rem, calc((100vw - 32px) / var(--text-zoom, 1))); block-size: min(46rem, calc((100dvh - 48px) / var(--text-zoom, 1))); box-sizing: border-box; padding: 0; overflow: hidden; border: 1px solid var(--rule-2); border-radius: 8px; background: var(--surface); color: var(--ink); }
 .personal-settings[open] { display: flex; flex-direction: column; }

@@ -4,7 +4,7 @@
   "status": "reviewed",
   "reviewedAt": "2026-11-07",
   "notes": [
-    "Pilot for docs/design/after-the-election.md. Not wired into the app.",
+    "Pilot for docs/features/after-the-election.md. Not wired into the app.",
     "Jerusalem Post 1977 citations use the OCR text of the Internet Archive item TheJerusalemPost1977IsraelEnglish (archival mirror of the printed paper). Quotes are copied from that OCR with obvious OCR errors corrected only inside [brackets]. The NLI JPress copies (Davar, Maariv, Haaretz) were behind a browser challenge and were not used.",
     "Promotion audit: term window corrected from first-government tenure to the election-to-next-election window (17 May 1977–30 June 1981), using results.electionDate and the already cited IPU 1981 election record. Government dates and formation data are unchanged."
   ],

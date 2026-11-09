@@ -8,7 +8,7 @@ The extraction contains **3,378 tenure records**, **378 entry episodes after ope
 
 The question is who served, when, with which factions, and which official decisions explain changes. Research streams were tenure/faction extraction, replacement/candidate validation, formal faction-decision discovery, and investiture roll calls. Qualifying evidence is the official record; indexed pages and repository identity crosswalks remain leads. This snapshot uses the reported source dates without silently repairing them.
 
-Read first: [archive access routes](archive-access-routes.md), [opening-membership audit](elected-names-odata-audit.md), and `scripts/research/bios-party/knesset_spot.py`. No repository-local AGENTS.md or CLAUDE.md was present in this worktree; the supplied workspace governance applies. Existing main-checkout scratch was inspected for available research; new responses are confined to this worktree's `.backup-scratch/m2/`.
+Related: [opening-membership audit](elected-names-odata-audit.md) and `scripts/research/bios-party/knesset_spot.py`.
 
 - `KNS_PersonToPosition`: PositionID 43/61 identifies MK tenures; 54 identifies faction membership. Retrieved all pages for KnessetNum 1–26, ordered by PersonToPositionID. **7,945 records: 3,378 MK and 4,567 faction-position records**, including 120 future faction positions for K26.
 - `KNS_Faction`: 530 registry records; names and dates are retained, without assuming a new ID necessarily means a legally recognized split. Historical renames under an unchanged ID cannot be reconstructed from the current name alone.

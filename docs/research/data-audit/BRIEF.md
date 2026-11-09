@@ -1,10 +1,7 @@
 # Per-election data audit: method
 
-The owner, 6 Nov 2026:
-
-> "Mistakes in the data like this are really worrying … making sure all data we have is real, reliable, correct, and
-> completely factual. I can forgive bugs in the software, but mistakes in the data are actual misinformation. Take this
-> seriously."
+The method behind the per-election audits in this folder (6 November 2026). Data mistakes are misinformation, so
+every fact the app shows about an election was checked twice, independently, and then reconciled.
 
 Each election gets three agents:
 - two **independent auditors** (one Claude Opus, one Codex) that only check and report;
@@ -70,12 +67,11 @@ Find all of it. These are the known places; `grep -rl` for the id to catch the r
    update the digest with a comment. Do not run Playwright; the coordinator runs it at integration.
 5. Write `docs/research/data-audit/kNN-resolution.md`:
    - each finding → decision → source → files changed;
-   - **"Owner questions"**: only genuine disputes no source can settle. For each, give the competing values, the best
+   - **"Owner questions"**: only genuine disputes no source can settle, for the project maintainer to decide. For each, give the competing values, the best
      source for each with its rank, and your recommendation.
 6. Commit on your branch with the identity given in your task. No push, no merge into main. Add one CHANGELOG line
    per election at most.
 
-## Etiquette and identity
+## Access etiquette
 
-Everything in source-hierarchy.md "Access etiquette" applies. Commit as
-`git -c user.name="Yiftah Cooper" -c user.email=yiftah.cooper@gmail.com commit`, with the trailer lines your task gives.
+Everything in [source-hierarchy.md](../source-hierarchy.md#access-etiquette) "Access etiquette" applies.

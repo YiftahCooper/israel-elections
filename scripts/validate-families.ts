@@ -29,7 +29,7 @@ export interface Family { id: string; sources: Sources; elections: Row[] }
 interface Edge {
   id: string; from: string[]; to: string[]; relation: string; date: string; datePrecision: string;
   sources: string[]; electionId?: string; listId?: string; evidence: { status: string; interpretation: string };
-  /** merger progress (party-history design §6); only a registered merger carries identity */
+  /** merger progress (docs/features/party-history.md, data contract); only a registered merger carries identity */
   stage?: string; certainty?: string; continues?: string;
 }
 export interface FamilyBundle {

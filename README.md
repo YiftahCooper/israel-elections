@@ -107,7 +107,7 @@ Read [Data coverage](docs/DATA.md) before changing sources or publishing rebuilt
 | `data/meta/` | Party, bloc and colour research and sourced candidate notes |
 | `public/data/` | Generated datasets loaded by the app |
 | `tests/` | Unit, property and browser tests |
-| `docs/` | Data, law, development and decision records |
+| `docs/` | Data, law, development, decision records, feature notes and source research |
 
 ## Documentation
 
@@ -116,6 +116,8 @@ Read [Data coverage](docs/DATA.md) before changing sources or publishing rebuilt
 - [Electoral law and validation](docs/ELECTORAL-LAW.md)
 - [Development](docs/DEVELOPMENT.md)
 - [Decision records](docs/decisions/README.md)
+- [How features work](docs/README.md#how-features-work)
+- [Research notes by topic](docs/research/README.md)
 - [Contributing](CONTRIBUTING.md)
 - [Changelog](CHANGELOG.md)
 

@@ -1,7 +1,7 @@
-// Recorded organisational relations between parties (docs/design/party-history.md §3), read from
+// Recorded organisational relations between parties (docs/features/party-history.md §1), read from
 // data/meta/party-lineage.json. Each relation carries the certainty its cited sources allow under the source policy
 // (src/data/evidence.ts); a pending item is "To verify" (unknown) and is shown, never used to compare or to join a
-// party's history. Ideology, founders, names and ballot letters never make a relation (§3.3).
+// party's history. Ideology, founders, names and ballot letters never make a relation (§1.3).
 import lineage from '../../data/meta/party-lineage.json';
 import { canonicalParty } from './runtime.ts';
 import { certaintyAllowed, certaintyCeiling, certaintyRank, type Certainty } from '../data/evidence.ts';

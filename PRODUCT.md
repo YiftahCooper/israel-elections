@@ -2,8 +2,7 @@
 
 <!-- impeccable:product-schema 1 -->
 
-> Written on 4 November 2026 from the owner's stated requirements across the build sessions and reviewed by
-> the owner the same day ("it seems about right").
+> Written on 4 November 2026 from the project's stated requirements across the build sessions.
 
 ## Platform
 
@@ -48,8 +47,7 @@ official sources, in Hebrew and English, at three levels of depth.
   lists, which may sit in different blocs and can be run as separate lists.
 - Correctness is non-negotiable: never invent candidates, agreements, votes, affiliations or colours; label
   secondary sources; say clearly what is unavailable.
-- Source policy: official sources first; English-language Wikipedia is never used or linked (the owner considers
-  it unreliable on Israel); Hebrew Wikipedia only as a labelled secondary source.
+- Source policy: official sources first; English-language Wikipedia is never used or linked; Hebrew Wikipedia only as a labelled secondary source.
 
 ## Brand Commitments
 
@@ -73,7 +71,7 @@ official sources, in Hebrew and English, at three levels of depth.
 
 ## Interaction Principles
 
-Stated by the owner on 4 November 2026 as general rules drawn from specific complaints. Every screen is checked
+Adopted on 4 November 2026 as general rules drawn from specific problems. Every screen is checked
 against all of them, not only the example that prompted each.
 
 1. **Every visible thing is its own control.** A figure, bar, bloc, seat or label that summarises something opens

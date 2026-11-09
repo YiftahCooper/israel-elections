@@ -1,6 +1,6 @@
 # Corrected pre-release list identities — 7 November 2026
 
-The owner's pre-release instruction supersedes the earlier compatibility policy: internal list IDs follow `${knesset}-${correct ballot letters}`. Candidate IDs retain registered ranks under the corrected list ID. No aliases or ID migration remain.
+A pre-release decision (7 November 2026) supersedes the earlier compatibility policy: internal list IDs follow `${knesset}-${correct ballot letters}`. Candidate IDs retain registered ranks under the corrected list ID. No aliases or ID migration remain.
 
 ## Changed IDs
 

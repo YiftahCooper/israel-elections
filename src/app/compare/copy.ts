@@ -1,4 +1,4 @@
-// Plans Compare copies (design: docs/design/compare-workbench.md §7). Pure: each plan is a list of concrete,
+// Plans Compare copies (design: israel-elections-private docs/design/compare-workbench.md §7). Pure: each plan is a list of concrete,
 // already-computed actions for the destination side, wrapped in one `copyFrom` step. Inputs travel; results never do:
 // seats, quotas and elected members are recalculated by the engine on the destination.
 import { applyAction, ActionError, apportion } from '../../model/actions.ts';

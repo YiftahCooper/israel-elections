@@ -1,4 +1,4 @@
-// Party history and "compared with last time" (docs/design/party-history.md §5): the panel section and full sheet at
+// Party history and "compared with last time" (docs/features/party-history.md): the panel section and full sheet at
 // every level, the row line from Standard (with its Settings switch), Compare's notes and reasons, Hebrew charts drawn
 // left to right, the phone sheet, contrast, and that viewing history is never an edit.
 import { expect, test, type Page } from '@playwright/test';
