@@ -21,6 +21,13 @@ const num = (r: Rational, digits: number) => (r.den === 1n || r.num % r.den === 
 /** "was → now" for a value that differs from the active reference; numbers read left to right in Hebrew too. */
 const delta = (now: number, was: number | undefined): ReactNode => (was === undefined || was === now ? String(now) : <bdi dir="ltr" className="walk-delta">{was} → {now} (<SeatDelta value={now - was} />)</bdi>);
 const DIVISOR = ['sainte-lague', 'dhondt', 'modified-sainte-lague'];
+/** 1973 and 1977: the Elections Committee's calculation sheet counted each surplus-agreement pair together in the
+ *  first stage; the law (§81(c), §82(a)) gives each list its own whole quotas first, as the app does. Final seats are
+ *  identical. Decision 0073, note of 9 November 2026. */
+const CEC_JOINT_SHEET: Record<string, { year: number; app: number; sheet: number; url: string; page: number; laterPages: boolean }> = {
+  k8: { year: 1973, app: 114, sheet: 117, page: 5, laterPages: false, url: 'https://www.gov.il/BlobFolder/dynamiccollectorresultitem/memorandum-knesset8/he/archive_knesset8_memorandum-apdx.pdf#page=5' },
+  k9: { year: 1977, app: 113, sheet: 114, page: 6, laterPages: true, url: 'https://www.gov.il/BlobFolder/dynamiccollectorresultitem/memorandum-knesset9/he/archive_knesset9_memorandum-apdx9.pdf#page=6' },
+};
 
 export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
@@ -238,6 +245,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
           {heading(L('Seats by whole quota', 'מנדטים לפי מודד שלם'), <Info term="whole-quota-seats" />)}
           {tray(initialCells)}
           <p>{L(`${r.initialSeatsTotal} seats allocated; ${s.rules.seats - r.initialSeatsTotal} remain.`, `חולקו ${r.initialSeatsTotal} מנדטים; נותרו ${s.rules.seats - r.initialSeatsTotal}.`)} <Info term="remainder-seats" /></p>
+          {advanced && <CecJointSheet s={s} r={r} />}
           {r.quota.num > 0n && <WalkTable s={s} rows={r.lists.filter((l) => l.qualified).sort((a, b) => Number(b.votes - a.votes))}
             heads={[L('Votes', 'קולות'), L('Votes ÷ quota', 'קולות ÷ מודד'), L('Seats', 'מנדטים')]}
             cols={(l) => [fmtInt(l.votes), fmtRat({ num: l.votes * r.quota.den, den: r.quota.num }, 3), delta(l.initialSeats, refList(l.id)?.initialSeats)]} />}
@@ -377,6 +385,31 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
         </div>
       )}
     </div>
+  );
+}
+
+/** Expert: where the Elections Committee's own 1973/1977 sheet counted the first stage differently. Shown only while
+ *  the law's method, the pairs and the official first-stage count are in place, so its figures describe the screen. */
+function CecJointSheet({ s, r }: { s: Scenario; r: AllocationResult }) {
+  const L = useL(), he = useLang() === 'he';
+  const x = CEC_JOINT_SHEET[s.electionId];
+  if (!x || r.initialSeatsTotal !== x.app || s.rules.remainderMethod !== 'bader-ofer' || !r.agreements.some((a) => a.active)) return null;
+  const seats = s.rules.seats;
+  // "117 + 3" stays in that order inside Hebrew text
+  const sum = (a: number) => <bdi dir="ltr">{a} + {seats - a}</bdi>;
+  return (
+    <p className="small ink2 walk-cec-note">
+      {he ? <>בדף החישוב של ועדת הבחירות: {sum(x.sheet)}, כשכל צמד בהסכם עודפים נספר יחד.</> : <>Elections Committee sheet: {sum(x.sheet)}, counting each surplus-agreement pair together.</>}{' '}
+      <Info title={L('Why the Committee’s sheet differs', 'למה דף הוועדה שונה')} label={L(`Elections Committee sheet, ${x.year}`, `דף החישוב של ועדת הבחירות, ${x.year}`)}>
+        <span>{L(`The Elections Committee’s calculation sheet counted each surplus-agreement pair together in this stage: ${x.sheet} seats, ${seats - x.sheet} left. The law gives each list its own whole quotas first (§81(c)); a pair counts as one list only for the remainder seats (§82(a)).`,
+          `בדף החישוב של ועדת הבחירות המרכזית נספר כל צמד בהסכם עודפים יחד בשלב זה: ${x.sheet} מנדטים, ונותרו ${seats - x.sheet}. לפי החוק כל רשימה מקבלת תחילה את המודדים השלמים שלה (סעיף 81(ג)), וצמד נחשב לרשימה אחת רק בחלוקת העודפים (סעיף 82(א)).`)}{' '}
+          {x.laterPages
+            ? L(`The sheet’s own later pages also start from ${x.app} and hand out ${seats - x.app} seats, as here.`, `גם בעמודים הבאים של אותו דף החלוקה מתחילה מ־${x.app} ומחולקים ${seats - x.app} מנדטים, כמו כאן.`)
+            : he ? <>היישום פועל לפי החוק: {sum(x.app)}.</> : <>The app follows the law: {sum(x.app)}.</>}{' '}
+          {L('Final seats are identical.', 'התוצאה הסופית זהה.')}</span>
+        <span className="glossary-link"><a href={x.url} target="_blank" rel="noreferrer">{L(`Source: Elections Committee calculation sheet, ${x.year}, p. ${x.page}`, `מקור: דף החישוב של ועדת הבחירות, ${x.year}, עמ׳ ${x.page}`)}</a><span className="muted"> · gov.il</span></span>
+      </Info>
+    </p>
   );
 }
 

@@ -173,3 +173,34 @@ test('Hebrew quick percentages read left to right like the stepper',async({page}
  await start(page,'he');const q=page.locator('.family-scale .quick-actions button');
  const xs=await q.evaluateAll(es=>es.map(e=>[e.textContent,e.getBoundingClientRect().left] as const));expect([...xs].sort((a,b)=>a[1]-b[1]).map(x=>x[0])).toEqual(['−10%','−5%','+5%','+10%']);
 });
+// 9 Nov 2026: the mixed-list switch changes the two vote charts only, so it sits with them, below Seats won;
+// Edit membership and Apply grouping stay at the top. Same order on a phone.
+for(const width of [1500,390])test(`mixed-list switch sits with the vote charts it controls (${width}px)`,async({page})=>{
+ await page.setViewportSize({width,height:900});await start(page);
+ const box=async(sel:string)=>(await page.locator(sel).first().boundingBox())!;
+ const edit=(await page.getByRole('button',{name:'Edit membership',exact:true}).boundingBox())!,seats=await box('.family-seat-section'),policy=await box('.family-policy'),votes=await box('.family-plots .family-plot');
+ expect(edit.y+edit.height).toBeLessThanOrEqual(seats.y);
+ expect(seats.y+seats.height).toBeLessThanOrEqual(policy.y);
+ expect(policy.y+policy.height).toBeLessThanOrEqual(votes.y);
+ await expect(page.locator('.family-plots .family-vote-tools').getByRole('group',{name:'Mixed-list policy',exact:true})).toHaveCount(1);
+ await expect(page.locator('.family-seat-section .family-policy')).toHaveCount(0);
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+});
+// The selected election is a soft shaded column with its value and year in bold (as in the party-history chart);
+// each chart says what its x-axis is.
+test('the selected election is a shaded column with its value and year in bold; the (i) says what the x-axis is',async({page})=>{
+ await start(page);
+ await expect(page.locator('.family-cursor')).toHaveCount(0);
+ await expect(page.locator('.family-seat-section .family-selband')).toHaveCount(1);
+ await expect(page.locator('.family-plots .family-selband')).toHaveCount(2);
+ await expect(page.locator('.family-seat-section .family-sel-year')).toHaveText('2026');
+ await expect(page.locator('.family-seat-label.sel')).toHaveText('13');
+ await expect(page.locator('.family-plots .family-sel-year')).toHaveText(['2026','2026']);
+ await expect(page.locator('.family-plots .family-sel-value')).toHaveText(['10.95%','623,349']);
+ expect(await page.locator('.family-plots .family-sel-value').first().evaluate(e=>getComputedStyle(e).fontWeight)).toBe('700');
+ await page.locator('.family-seat-section h3').getByRole('button').click();
+ await expect(page.locator('.info .pop')).toContainText('Bars are elections, evenly spaced: this is not a time scale');
+ await page.keyboard.press('Escape');
+ await page.locator('.family-plots h3').first().getByRole('button',{name:'Time axis',exact:true}).click();
+ await expect(page.locator('.info .pop')).toContainText('A true time scale: each point sits on its election day');
+});

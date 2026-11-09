@@ -128,3 +128,56 @@ for (const lang of ['en', 'he'] as const) test(`manual walkthrough navigation on
   await stage(page, lang === 'en' ? 'Result' : 'התוצאה');
   await expect(next).toBeDisabled();
 });
+
+// 9 Nov 2026 (decision 0073 note): in 1973 and 1977 the Elections Committee's sheet counted surplus-agreement pairs
+// together in the first stage; the app follows the law. Expert sees one short note with its source; others do not.
+test('1973 and 1977: Expert notes the Committee sheet’s joint first-stage count, with its source', async ({ page }) => {
+  await start(page, 'k9');
+  await walk(page);
+  await stage(page, 'Whole quotas');
+  await expect(panel(page)).toContainText('113 seats allocated; 7 remain.');
+  const note = panel(page).locator('.walk-cec-note');
+  await expect(note).toContainText('Elections Committee sheet: 114 + 6, counting each surplus-agreement pair together.');
+  await note.getByRole('button', { name: 'Elections Committee sheet, 1977', exact: true }).click();
+  const pop = page.locator('.info .pop');
+  await expect(pop).toContainText('§81(c)');
+  await expect(pop).toContainText('§82(a)');
+  await expect(pop).toContainText('later pages also start from 113 and hand out 7 seats');
+  await expect(pop).toContainText('Final seats are identical.');
+  await expect(pop.getByRole('link')).toHaveAttribute('href', /memorandum-knesset9\/he\/archive_knesset9_memorandum-apdx9\.pdf#page=6$/);
+
+  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k8');
+  await walk(page);
+  await stage(page, 'Whole quotas');
+  await expect(panel(page).locator('.walk-cec-note')).toContainText('Elections Committee sheet: 117 + 3, counting each surplus-agreement pair together.');
+  await panel(page).locator('.walk-cec-note').getByRole('button').click();
+  await expect(page.locator('.info .pop')).toContainText('The app follows the law: 114 + 6.');
+  await expect(page.locator('.info .pop').getByRole('link')).toHaveAttribute('href', /memorandum-knesset8\/he\/archive_knesset8_memorandum-apdx\.pdf#page=5$/);
+
+  // no other election has the note
+  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k10');
+  await walk(page);
+  await stage(page, 'Whole quotas');
+  await expect(panel(page).locator('.walk-cec-note')).toHaveCount(0);
+});
+
+test('the Committee-sheet note keeps "114 + 6" in order in Hebrew', async ({ page }) => {
+  await start(page, 'k9', 'he');
+  await walk(page);
+  await stage(page, 'מודדים שלמים');
+  const sum = panel(page).locator('.walk-cec-note bdi[dir="ltr"]');
+  await expect(sum).toHaveText('114 + 6');
+  // 114 is drawn left of 6 (without the isolate, right-to-left text shows "6 + 114")
+  const order = await sum.evaluate((b) => { const left = (n: Node) => { const r = document.createRange(); r.selectNodeContents(n); return r.getBoundingClientRect().left; }; return left(b.firstChild!) < left(b.lastChild!); });
+  expect(order).toBe(true);
+});
+
+test('Standard does not show the Committee-sheet note', async ({ page }) => {
+  await page.addInitScript(() => { localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'standard', hintDismissed: true })); localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false, decimals: 2 } })); });
+  await page.goto('/');
+  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k9');
+  await walk(page);
+  await stage(page, 'Whole quotas');
+  await expect(panel(page)).toContainText('113 seats allocated; 7 remain.');
+  await expect(panel(page).locator('.walk-cec-note')).toHaveCount(0);
+});
