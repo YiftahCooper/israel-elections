@@ -288,7 +288,7 @@
       "seats": 5,
       "rosterRanks": 5,
       "candidatesTruncated": true,
-      "notes": "United Arab List: Arab Democratic Party with the Islamic Movement (southern branch). Rank 3 (Hashem Mahameed, formerly Hadash) is left unassigned: no source states which component he represented.",
+      "notes": "United Arab List: Islamic Movement (southern branch) and Mada. Four elected members have sourced constituent attributions. Rank 3 Hashem Mahameed remains unknown after the 9 November 2026 audit: joining the UAL list is established, but an election-date constituent-party attribution is not. The National Unity faction dates from December 2002; retrospective claims of a 1999 National Unity Front need contemporary confirmation.",
       "parties": [
         {
           "id": "ram",
@@ -312,14 +312,62 @@
               "kind": "secondary",
               "quote": "בשנת 1996 נבחר לכנסת הארבע עשרה וכיהן כחבר הכנסת במשך שתי קדנציות",
               "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=36&languageKey=he",
+              "publisher": "Knesset website, member biography (public activity)",
+              "kind": "official",
+              "quote": "פעילות בתחומי זכויות הפרט וחברות בתנועה האיסלאמית",
+              "accessed": "2026-11-09"
+            },
+            {
+              "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=57&languageKey=he",
+              "publisher": "Knesset website, member biography (public activity)",
+              "kind": "official",
+              "quote": "חבר התנועה האסלאמית",
+              "accessed": "2026-11-09"
             }
           ],
-          "confidence": "medium",
+          "confidence": "high",
           "rankNotes": [
             {
               "rank": 4,
               "datasetName": "חטיב תאופיק",
               "note": "roster form \"חטיב תאופיק\" = Tawfik Khatib (Islamic Movement member, per his article)"
+            }
+          ],
+          "evidenceGroups": [
+            {
+              "candidateRanks": [
+                1
+              ],
+              "sources": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=36&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "פעילות בתחומי זכויות הפרט וחברות בתנועה האיסלאמית",
+                  "accessed": "2026-11-09"
+                }
+              ],
+              "confidence": "high",
+              "note": "Official biography identifies Islamic Movement membership; southern-branch electoral context comes from the list research."
+            },
+            {
+              "candidateRanks": [
+                4
+              ],
+              "sources": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=57&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "חבר התנועה האסלאמית",
+                  "accessed": "2026-11-09"
+                }
+              ],
+              "confidence": "high",
+              "note": "Official biography identifies Islamic Movement membership. Later faction changes do not rewrite the election-date attribution."
             }
           ]
         },
@@ -338,6 +386,14 @@
               "kind": "secondary",
               "quote": "שני מנדטים (מתוך 5 לרשימה כולה): טלב א-סאנע, מוחמד כנעאן",
               "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://www.idi.org.il/policy/parties-and-elections/parties/arab-democratic-party/",
+              "publisher": "Israel Democracy Institute",
+              "kind": "secondary",
+              "quote": "The Mada profile names Talab El-Sana among its prominent figures.",
+              "accessed": "2026-11-09",
+              "quoteNote": "Research summary, not a verbatim quotation."
             }
           ],
           "confidence": "medium",
@@ -347,11 +403,125 @@
               "datasetName": "סאנע טלב",
               "note": "Roster corrected on 2026-11-04 from the misreading \"צאנע טלב\" to \"סאנע טלב\" as printed (YP 4748 p. 3044; YP 4757 p. 3378); see docs/decisions/0088-roster-corrections-and-odata-audit.md."
             }
-          ]
+          ],
+          "evidenceGroups": [
+            {
+              "candidateRanks": [
+                2
+              ],
+              "sources": [
+                {
+                  "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%94_%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99%D7%AA_%D7%A2%D7%A8%D7%91%D7%99%D7%AA",
+                  "publisher": "Hebrew Wikipedia",
+                  "kind": "secondary",
+                  "quote": "שני מנדטים (מתוך 5 לרשימה כולה): טלב א-סאנע, מוחמד כנעאן",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://www.idi.org.il/policy/parties-and-elections/parties/arab-democratic-party/",
+                  "publisher": "Israel Democracy Institute",
+                  "kind": "secondary",
+                  "quote": "The Mada profile names Talab El-Sana among its prominent figures.",
+                  "accessed": "2026-11-09",
+                  "quoteNote": "Research summary, not a verbatim quotation."
+                }
+              ],
+              "confidence": "medium",
+              "note": "Secondary attribution retained; IDI identifies El-Sana with Mada but gives no individual 1999 party declaration."
+            },
+            {
+              "candidateRanks": [
+                5
+              ],
+              "sources": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=211&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "מזכ”ל מד”ע, 1990–1999",
+                  "accessed": "2026-11-09"
+                }
+              ],
+              "confidence": "high",
+              "note": "Official biography dates Kanan’s Mada secretary-general service to 1990–1999; his later National Arab Party affiliation is not backdated."
+            }
+          ],
+          "note": "Evidence differs by candidate: the official Kanan biography is scoped to rank 5 in evidenceGroups. Rank 2 remains secondary, so the party-wide source set and confidence retain that limitation."
         }
       ],
       "unassignedRanks": [
         3
+      ],
+      "sources": [
+        {
+          "url": "https://en.idi.org.il/media/6756/הרשימה-הערבית-המאוחדת-עם-15.pdf",
+          "publisher": "Knesset election website, 24 February 2009 capture retained by IDI",
+          "kind": "official",
+          "quote": "הרכב הרשימה: הרשימה הערבית המאוחדת | המפלגה הדמוקרטית הערבית",
+          "accessed": "2026-11-09",
+          "note": "Lists Mahameed at rank 3 but does not attribute individual candidates to either constituent."
+        },
+        {
+          "url": "https://www.sarahozacky.com/1681/ההצבעה-הערבית-בבחירות-לכנסת-ה-15-מאי-1999/",
+          "publisher": "Asad Ghanem and Sarah Ozacky-Lazar, Givat Haviva, October 1999; author-hosted republication",
+          "kind": "secondary",
+          "quote": "The UAL section describes the Islamic Movement–Mada alliance adding Mahameed personally at rank 3; it does not name a constituent party for him.",
+          "accessed": "2026-11-09",
+          "quoteNote": "Research summary, not a verbatim quotation."
+        }
+      ],
+      "unassignedEvidence": [
+        {
+          "rank": 3,
+          "nameHe": "מחאמיד האשם",
+          "status": "unknown",
+          "reviewed": "2026-11-09",
+          "sources": [
+            {
+              "url": "https://en.idi.org.il/media/6756/הרשימה-הערבית-המאוחדת-עם-15.pdf",
+              "publisher": "Knesset election website, 24 February 2009 capture retained by IDI",
+              "kind": "official",
+              "quote": "הרכב הרשימה: הרשימה הערבית המאוחדת | המפלגה הדמוקרטית הערבית",
+              "accessed": "2026-11-09",
+              "note": "Lists Mahameed at rank 3 but does not attribute individual candidates to either constituent."
+            },
+            {
+              "url": "https://www.idi.org.il/media/20997/המפלגות-בישראל-2021-1992.pdf",
+              "publisher": "Israel Democracy Institute — Ofer Kenig and Gideon Rahat, 2023",
+              "kind": "secondary",
+              "quote": "Chapter 7, pp. 369 and 386: Mahameed left Hadash and entered the 1999 UAL list at rank 3; the separate Progressive National Alliance list is discussed for 2003.",
+              "accessed": "2026-11-09",
+              "quoteNote": "Research summary, not a verbatim quotation."
+            },
+            {
+              "url": "https://www.sarahozacky.com/1681/ההצבעה-הערבית-בבחירות-לכנסת-ה-15-מאי-1999/",
+              "publisher": "Asad Ghanem and Sarah Ozacky-Lazar, Givat Haviva, October 1999; author-hosted republication",
+              "kind": "secondary",
+              "quote": "The UAL section describes the Islamic Movement–Mada alliance adding Mahameed personally at rank 3; it does not name a constituent party for him.",
+              "accessed": "2026-11-09",
+              "quoteNote": "Research summary, not a verbatim quotation."
+            },
+            {
+              "url": "https://main.knesset.gov.il/mk/apps/faction/faction-lobby?FactionID=687&KnessetID=15",
+              "publisher": "Knesset faction records",
+              "kind": "official",
+              "quote": "אחדות לאומית - הברית הלאומית המתקדמת: 10/12/2002–17/02/2003; האשם מחאמיד",
+              "accessed": "2026-11-09",
+              "note": "Corroborated by retained data/research/knesset-member-changes/k15.json, PersonID 551. This is a later faction, not evidence of his May 1999 party."
+            },
+            {
+              "url": "https://abrahaminitiatives.org.il/wp-content/uploads/2020/04/פרק-8-הפוליטיקה-הערבית-בישראל.pdf",
+              "publisher": "The Abraham Initiatives — The Arab Political System in Israel, chapter 8, p. 13",
+              "kind": "secondary",
+              "quote": "Retrospective account names a National Unity Front led by Mahameed in the 1999 alliance, but also places Kanan’s National Arab Party there before the 2001 faction split.",
+              "accessed": "2026-11-09",
+              "quoteNote": "Research summary, not a verbatim quotation.",
+              "note": "Unresolved chronology: not promoted to a candidate party assignment. Direct download returned 403; text inspected through web PDF extraction. Sponsoring parties and individual membership remain different claims."
+            }
+          ],
+          "reason": "No inspected contemporary source assigns him to a named constituent party in May 1999. List/faction membership is established; independent status and National Unity Front membership remain competing interpretations.",
+          "evidenceNeeded": "A 1999 UAL submission or constituent agreement naming his affiliation; alternatively a dated party membership record or contemporary interview explicitly identifying his party or independent status. The current Registrar entry for National Unity (59-900052-8) has no registration date and no individual membership data."
+        }
       ]
     },
     {

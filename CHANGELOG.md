@@ -2,6 +2,8 @@
 
 ## 7 November 2026 — Settings
 
+- Data: audit every elected joint-list member’s missing party (1977 Mwais; 1999 Mahameed), retain explicit evidence gaps and strengthen four 1999 UAL attributions with Knesset and IDI sources.
+
 - Party families: a new “Seats won” chart (above the vote charts, every level) draws the family’s own seats solid and every party elected with it on a joint list striped above, smallest first, from the elected members’ parties (nothing estimated); bars taller than the chart fade out at the top while every partner keeps a visible slice, the label reads “7 +28”, hover, tap or arrow keys give each segment’s party, seats, list and year, and “Show partners” (on by default) is remembered.
 
 - Data (8 Nov recheck): Yisrael Beytenu 2026 #8–20 biographies link their 26 October Wayback captures (the live pages now redirect home); the Degel HaTorah leaflet (letters עץ) moves from UTJ 1992 to Degel HaTorah 1988; the 1977 candidate-cap note cites the 1 November 1977 transcript.
