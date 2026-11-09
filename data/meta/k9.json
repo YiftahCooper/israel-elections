@@ -1480,6 +1480,33 @@
       ],
       "notes": [
         "Rank 5 Hanna Mwais: no source states a constituent party (Hebrew Wikipedia gives only Hadash); Hadash also included Arab local office-holders and other groups."
+      ],
+      "unassignedEvidence": [
+        {
+          "rank": 5,
+          "nameHe": "מואיס חנא",
+          "status": "unknown",
+          "reviewed": "2026-11-09",
+          "sources": [
+            {
+              "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=495&languageKey=he",
+              "publisher": "Knesset website, member biography (public activity)",
+              "kind": "official",
+              "quote": "חבר סיעת החזית הדמוקרטית לשלום ושוויון.",
+              "accessed": "2026-11-09"
+            },
+            {
+              "url": "https://fs.knesset.gov.il/9/Plenum/9_ptm_254033.pdf",
+              "publisher": "Knesset plenary transcript, 23 February 1981, PDF pp. 1–2",
+              "kind": "official",
+              "quote": "Memorial speeches identify Mwais as a Hadash founder and Arab local-authority leader; Toubi describes him as a guest at the Communist Party congress.",
+              "accessed": "2026-11-09",
+              "quoteNote": "Research summary, not a verbatim quotation."
+            }
+          ],
+          "reason": "The official biography and memorial establish Hadash membership and civic leadership, but neither names a constituent party. Guest status at a party congress does not prove either membership or non-membership in 1977.",
+          "evidenceNeeded": "The 1977 Hadash constituent agreement, a party membership register, or an explicit contemporary account distinguishing Rakah membership from the non-party civic component."
+        }
       ]
     },
     {
