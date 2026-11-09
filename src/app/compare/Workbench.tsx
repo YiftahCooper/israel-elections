@@ -17,6 +17,7 @@ import { Floating } from '../floating.tsx';
 import { Hemicycle } from '../components/Hemicycle.tsx';
 import { SeatDelta } from '../components/SeatDelta.tsx';
 import { CandidateName } from '../components/CandidateName.tsx';
+import { MkName } from '../components/MkHistory.tsx';
 import { Info, Slip } from '../components/ui.tsx';
 import { matchRows, mirrorRows, copyUnit, groupIds, inOf, type MatchRow } from './match.ts';
 import { duplicatePeople, planAgreements, planColour, planRoster, planRules, planTotals, planVotes, type CopyUnit, type Plan } from './copy.ts';
@@ -479,8 +480,8 @@ function People({ left, right }: { left: SideModel; right: SideModel }) {
   return <details className="cmp-section">
     <summary className="small">{L(`Entering ${entering.length} · leaving ${leaving.length}`, `נכנסים ${entering.length} · יוצאים ${leaving.length}`)}</summary>
     <div className="grid2 stack-sm">
-      <div><h3>{L(`Entering the Knesset (${entering.length})`, `נכנסים לכנסת (${entering.length})`)}</h3><ul className="small">{entering.map(({ c, l }) => <li key={c.id}><CandidateName candidate={c} /> <span className="muted">· {listLabel(l, lang)} #{l.candidates.indexOf(c) + 1}</span></li>)}</ul></div>
-      <div><h3>{L(`Leaving the Knesset (${leaving.length})`, `יוצאים מהכנסת (${leaving.length})`)}</h3><ul className="small">{leaving.map(({ c, l }) => <li key={c.id}><CandidateName candidate={c} /> <span className="muted">· {listLabel(l, lang)} #{l.candidates.indexOf(c) + 1}</span></li>)}</ul></div>
+      <div><h3>{L(`Entering the Knesset (${entering.length})`, `נכנסים לכנסת (${entering.length})`)}</h3><ul className="small">{entering.map(({ c, l }) => <li key={c.id}><MkName candidate={c}><CandidateName candidate={c} /></MkName> <span className="muted">· {listLabel(l, lang)} #{l.candidates.indexOf(c) + 1}</span></li>)}</ul></div>
+      <div><h3>{L(`Leaving the Knesset (${leaving.length})`, `יוצאים מהכנסת (${leaving.length})`)}</h3><ul className="small">{leaving.map(({ c, l }) => <li key={c.id}><MkName candidate={c}><CandidateName candidate={c} /></MkName> <span className="muted">· {listLabel(l, lang)} #{l.candidates.indexOf(c) + 1}</span></li>)}</ul></div>
     </div>
     <p className="small muted">{L('Election-night candidates', 'מועמדים בליל הבחירות')} <Info title={L('Candidate coverage', 'כיסוי המועמדים')}>{L('Elected candidates are the first names on each list as registered (election night). Later changes in membership are not modelled.', 'הנבחרים הם המועמדים הראשונים בכל רשימה כפי שנרשמה (ליל הבחירות). שינויים מאוחרים בהרכב אינם מוצגים.')}</Info></p>
   </details>;

@@ -6,6 +6,7 @@ import { Slip } from './ui.tsx';
 import { syntheticIconSvg } from '../syntheticIcon.ts';
 import { factLog } from '../../model/actionClassification.ts';
 import { CandidateName } from './CandidateName.tsx';
+import { MkSeatLink } from './MkHistory.tsx';
 import memberNames from '../../data/candidate-display-names.json';
 import { Floating, useHoverBridge } from '../floating.tsx';
 import { blocDisplayOrder } from '../blocOrder.ts';
@@ -354,6 +355,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
             : <div className="bad">{L('Vacant — the list has too few candidates', 'מושב ריק — אין די מועמדים ברשימה')}</div>}
           {(hover.seat.partyId || cand?.partyHe) && <div className="muted small row">{hover.seat.innerColor && <PartyKey hover partyId={hover.seat.partyId} color={hover.seat.innerColor} ring={hv.color}/>}{seatLabel(hover.seat)}</div>}
           <div className="muted small">{hover.seat.remainder ? remainderHow : L('Seat won by whole quota', 'מנדט שהושג במודד שלם')}</div>
+          <MkSeatLink candidate={cand} />
         </Floating>
       )}
       {!compactProp && (

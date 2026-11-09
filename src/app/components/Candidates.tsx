@@ -1,5 +1,6 @@
 import { partyDisplayColor } from '../partyDisplayColor.ts';
 import { CandidateName } from './CandidateName.tsx';
+import { MkName } from './MkHistory.tsx';
 import {romanize} from '../../data/names.ts';
 import { StartFrom } from './StartFrom.tsx';
 import { useDisclosure } from './Feature.tsx';
@@ -52,8 +53,8 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
       {l.rosterTruncated && !l.rosterUnavailable && <p className="small callout">{L(`Only the first ${c.length} candidates of this list’s official roster are available here (everyone elected is included); later names were not transcribed.`, `כאן זמינים רק ${c.length} המועמדים הראשונים ברשימה הרשמית (כולל כל הנבחרים); השמות שאחריהם לא הוקלדו.`)}</p>}
       {!simple && !l.rosterUnavailable && <div className="kv small" style={{ marginBottom: 8 }}>
         <span>{l.rosterTruncated ? L('Candidates available', 'מועמדים זמינים') : L('Registered candidates', 'מועמדים ברשימה')}</span><span>{c.length}</span>
-        <span>{L('Last elected', 'האחרון שנבחר')}</span><span>{lastIn ? <><CandidateName candidate={lastIn} note={false} /> <span className="muted">(#{c.indexOf(lastIn) + 1})</span></> : '—'}</span>
-        <span>{L('Next in line', 'הבא בתור')}</span><span>{nextIn ? <><CandidateName candidate={nextIn} note={false} /> <span className="muted">(#{c.indexOf(nextIn) + 1})</span></> : l.rosterTruncated ? L('not available', 'לא זמין') : L('none', 'אין')}</span>
+        <span>{L('Last elected', 'האחרון שנבחר')}</span><span>{lastIn ? <><MkName candidate={lastIn}><CandidateName candidate={lastIn} note={false} /></MkName> <span className="muted">(#{c.indexOf(lastIn) + 1})</span></> : '—'}</span>
+        <span>{L('Next in line', 'הבא בתור')}</span><span>{nextIn ? <><MkName candidate={nextIn}><CandidateName candidate={nextIn} note={false} /></MkName> <span className="muted">(#{c.indexOf(nextIn) + 1})</span></> : l.rosterTruncated ? L('not available', 'לא זמין') : L('none', 'אין')}</span>
       </div>}
       {baseCandidates && JSON.stringify(baseCandidates) !== JSON.stringify(c) && <button className="btn small" style={{ marginBottom: 6 }} onClick={() => dispatch({ type: 'resetCandidates', listId: l.id })}>{L('Restore the registered candidate list', 'שחזור רשימת המועמדים הרשומה')}</button>}
       {seats > seated.length && !l.rosterUnavailable && !l.rosterTruncated && <p className="bad small">{L(`The list has only ${seated.length} candidates for ${seats} seats.`, `ברשימה רק ${seated.length} מועמדים ל-${seats} מנדטים.`)}</p>}
@@ -80,7 +81,7 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
                     onBlur={() => { if (draft.trim() && draft !== x.nameHe) commit(c.map((y) => (y.id === x.id ? { ...y, nameHe: draft.trim(), displayNameHe: undefined, nameEn: undefined } : y)), `rename ${shownName(x)}`); setEditing(null); }}
                     onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape') { if (draft !== x.nameHe) { e.preventDefault(); e.stopPropagation(); } setDraft(x.nameHe); setEditing(null); } }} />
                 ) : (
-                  lang === 'en' && x.nameEn ? <><CandidateName candidate={x} note={false} /> <bdi className="muted tiny" lang="he" dir="rtl">{shownName(x)}</bdi></> : <CandidateName candidate={x} note={false} />
+                  lang === 'en' && x.nameEn ? <><MkName candidate={x}><CandidateName candidate={x} note={false} /></MkName> <bdi className="muted tiny" lang="he" dir="rtl">{shownName(x)}</bdi></> : <MkName candidate={x}><CandidateName candidate={x} note={false} /></MkName>
                 )}
                 {x.notes?.map((n, k) => <span key={k} className="muted tiny cand-note"> · {lang === 'he' ? n.he : n.en}</span>)}
                 {(() => { const p = x.partyId ? l.parties?.find((q) => q.id === x.partyId) : undefined;

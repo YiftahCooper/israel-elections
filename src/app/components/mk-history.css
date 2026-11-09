@@ -1,0 +1,53 @@
+/* An MK's own history (MkHistory.tsx). The same sheet as the party history; graphics run left to right in both languages. */
+.mk-sheet[open] { display: grid; grid-auto-rows: max-content; align-content: start; gap: 10px; padding: 14px 18px 12px; border: 1px solid var(--rule-2); border-radius: 8px; background: var(--surface); color: var(--ink); inline-size: 980px; max-inline-size: min(96vw, 980px); max-block-size: 90dvh; overflow: auto; box-shadow: var(--shadow-pop); font-variant-numeric: tabular-nums; }
+.mk-sheet::backdrop { background: rgb(0 0 0 / .25); }
+.mk-head { display: flex; gap: 12px; align-items: flex-start; justify-content: space-between; }
+.mk-who { display: grid; gap: 2px; min-inline-size: 0; }
+.mk-head h2 { margin: 0; font-size: 18px; line-height: 1.3; }
+.mk-sub { color: var(--muted); font-weight: 500; font-size: 15px; }
+.mk-acts { display: flex; gap: 12px; align-items: center; white-space: nowrap; font-size: 13px; }
+.mk-name { all: unset; cursor: pointer; text-decoration: underline; text-decoration-color: var(--rule-2); text-underline-offset: 3px; }
+.mk-name:hover { text-decoration-color: currentColor; }
+.mk-name:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 2px; }
+.mk-seatlink { margin-block-start: 4px; display: inline-flex; gap: 4px; align-items: center; }
+
+/* one Knesset per row */
+.mk-rows { list-style: none; margin: 0; padding: 0; border-block-start: 1px solid var(--rule); }
+.mk-row { display: grid; grid-template-columns: 96px minmax(0, 230px) minmax(0, 1fr) minmax(0, 210px); gap: 4px 14px; align-items: start; padding: 8px 2px; border-block-end: 1px solid var(--rule); }
+.mk-when { display: grid; gap: 1px; white-space: nowrap; }
+.mk-list { display: grid; gap: 2px; justify-items: start; min-inline-size: 0; }
+.mk-lname { display: inline-flex; gap: 6px; align-items: center; min-inline-size: 0; }
+.mk-sw { inline-size: 10px; block-size: 10px; border-radius: 2px; flex: none; }
+.mk-places { display: block; max-inline-size: 100%; }
+.mk-places .mk-empty { fill: none; stroke: var(--rule-2); stroke-width: 1; }
+.mk-places .mk-pin { fill: var(--ink); }
+.mk-term { min-inline-size: 0; display: grid; gap: 3px; }
+.mk-bar { position: relative; block-size: 20px; background: var(--surface-2); border: 1px solid var(--rule-2); border-radius: 3px; box-sizing: border-box; min-inline-size: 6px; }
+.mk-seg { position: absolute; inset-block: -1px; display: flex; align-items: center; overflow: hidden; border-radius: 2px; }
+.mk-segname { font-size: 11px; font-weight: 600; padding-inline: 5px; white-space: nowrap; overflow: hidden; text-overflow: clip; }
+.mk-mark { position: absolute; inset-block-start: -6px; inline-size: 0; block-size: 0; border-inline: 4px solid transparent; border-block-start: 6px solid var(--ink); transform: translateX(-4px); }
+.mk-res { min-inline-size: 0; }
+.mk-row.out .mk-res, .mk-row.out .mk-list b { color: var(--ink-2); }
+.mk-block { display: block; }
+.mk-events { grid-column: 2 / -1; list-style: none; margin: 2px 0 0; padding: 0; display: grid; gap: 2px; font-size: 12.5px; color: var(--ink-2); }
+.mk-events li { display: flex; flex-wrap: wrap; gap: 2px 8px; align-items: baseline; }
+.mk-edate { white-space: nowrap; color: var(--ink); min-inline-size: 84px; }
+.mk-src { display: grid; gap: 2px; font-size: 12px; }
+.mk-why { display: block; }
+.mk-note { margin: 2px 0 0; }
+
+@media (max-width: 760px) {
+  .mk-sheet[open] { inset: 0; inline-size: 100%; max-inline-size: none; block-size: 100dvh; max-block-size: none; border-radius: 0; padding: 12px 14px; }
+  .mk-head { flex-wrap: wrap; }
+  .mk-acts { order: -1; inline-size: 100%; justify-content: flex-end; }
+  .mk-row { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "when res" "list list" "term term" "ev ev"; gap: 4px 10px; padding: 10px 0; }
+  .mk-when { grid-area: when; display: flex; gap: 8px; align-items: baseline; }
+  .mk-res { grid-area: res; text-align: end; }
+  .mk-list { grid-area: list; }
+  .mk-term { grid-area: term; }
+  .mk-events { grid-area: ev; }
+}
+/* a faction change inside one term: a thin gap, so similar colours still show the change */
+.mk-seg + .mk-seg { box-shadow: inset 2px 0 0 var(--surface); }
+/* the time scale starts at the left in both languages, so every Knesset's opening lines up (Hebrew graphics stay LTR) */
+.mk-term > * { justify-self: left; }
