@@ -18,7 +18,8 @@ import { remember } from './answers.ts';
 import { inOf, personKey, sharedCandidates, type MatchOverride, type MatchRow, type MatchTag } from './match.ts';
 import { cellsOf, sourceOf, type SideModel } from './model.ts';
 import { partyLabel } from '../../families/registry.ts';
-import { ComparisonReason, eventText, useCrossComparison } from '../components/PartyHistory.tsx';
+import { CertChip, CERT_INFO, countedText, EvidenceLinks, eventText, relationYear, useCrossComparison } from '../components/PartyHistory.tsx';
+import type { Comparison } from '../../history/compare.ts';
 import { RELATIONS } from '../../history/relations.ts';
 
 type L = (en: string, he: string) => string;
@@ -203,6 +204,37 @@ const reasonText = (row: MatchRow, L: L, lang: 'he' | 'en') => {
   return lang === 'he' ? 'אין קשר מתועד' : 'No sourced relation';
 };
 
+/**
+ * One pairing in plain words: what is compared with what, why, how sure, and the evidence. The same text sits behind
+ * the (i) by each row's tag, in Matching and in the phone row sheet. `c`: the shared comparison rule's answer for the
+ * later list (between elections, one later list), or null.
+ */
+export function PairingWhy({ row, early, late, earlyIds, lateIds, c }: { row: MatchRow; early: SideModel; late: SideModel; earlyIds: string[]; lateIds: string[]; c: Comparison | null }) {
+  const L = useL(), lang = useLang();
+  const cross = early.sc.electionId !== late.sc.electionId;
+  const at = (x: SideModel) => cross ? x.year : x.name;
+  const lateN = lateIds.length ? listName(late, lateIds, lang) : '', earlyN = earlyIds.length ? listName(early, earlyIds, lang) : '';
+  const used = c && c.kind !== 'first' && c.kind !== 'new' && c.kind !== 'verify' && c.counted.length > 0 ? c : null;
+  const head = !lateN ? L(`${earlyN} (${at(early)}): no list continues it in ${at(late)}.`, `${earlyN} (${at(early)}): אין רשימה שממשיכה אותה ב־${at(late)}.`)
+    : !earlyN ? L(`${lateN} (${at(late)}): no earlier list to compare with, so it is shown as new.`, `${lateN} (${at(late)}): אין רשימה קודמת להשוות אליה, ולכן היא מוצגת כחדשה.`)
+    : used ? L(`${lateN} (${at(late)}) is compared with ${countedText(used, 'en')} in ${at(early)}${used.counted.length > 1 ? ', taken together' : ''}.`, `${lateN} (${at(late)}) מול ${countedText(used, 'he')} ב־${at(early)}${used.counted.length > 1 ? ', יחד' : ''}.`)
+    : L(`${lateN} (${at(late)}) is compared with ${earlyN} (${at(early)}).`, `${lateN} (${at(late)}) מול ${earlyN} (${at(early)}).`);
+  // the reason the lists were paired; a recorded relation is listed below with its certainty instead
+  const listed = row.reason.kind === 'lineage' && used?.relations.some((x) => row.reason.kind === 'lineage' && x.id === row.reason.edgeId);
+  const why = row.reason.kind === 'none' || listed ? null : reasonText(row, L, lang);
+  const joint = (used?.counted.length ?? 0) > 1 || row.tag === 'ran-jointly' || row.tag === 'joined' || row.tag === 'split';
+  return <span className="ph-why cmp-why">
+    <span>{head}</span>
+    <span><span className="cmp-why-k">{L('Why', 'למה')}:</span> {why ? <>{why}. </> : null}{L(...TAG_INFO[row.tag])}</span>
+    {used?.relations.map((r) => <span key={r.id} className="cmp-why-rel"><span>{eventText(r, lang)} ({relationYear(r.date)}) <CertChip c={r.certainty} /></span><EvidenceLinks r={r} /></span>)}
+    {used?.notCounted.map((n) => <span key={n.partyId + n.listId} className="muted">{L(`Not counted: ${partyLabel(n.partyId, 'en')} ran inside another list in ${at(early)}, and that list's votes cannot be divided.`, `לא נספרה: ${partyLabel(n.partyId, 'he')} רצה ב־${at(early)} בתוך רשימה אחרת, ואת קולות הרשימה ההיא אי אפשר לחלק.`)}</span>)}
+    {used?.left.map((n) => <span key={`l${n.partyId}`} className="muted">{L(`${partyLabel(n.partyId, 'en')} has since left for another list.`, `${partyLabel(n.partyId, 'he')} עברה מאז לרשימה אחרת.`)}</span>)}
+    {c?.kind === 'verify' && <span>{L('Not compared yet: the link that decides it is not established.', 'טרם הושווה: הקשר שמכריע זאת טרם בוסס.')} {c.toVerify.map((r) => <span key={r.id} className="cmp-why-rel"><span>{eventText(r, lang)} ({relationYear(r.date)}) <CertChip c={r.certainty} /></span><EvidenceLinks r={r} /></span>)}</span>}
+    {used && <span><span className="cmp-why-k">{L('How sure', 'מידת הוודאות')}:</span> <CertChip c={used.certainty} /> <span className="tiny muted">{L(...CERT_INFO[used.certainty])}</span></span>}
+    {joint && <span className="tiny muted">{L('A joint list’s votes are never divided among its parties.', 'קולות של רשימה משותפת אינם מחולקים בין מפלגותיה.')}</span>}
+  </span>;
+}
+
 /** Every pairing with its tag and reason; Check pairs can be accepted, unmatched lists mapped by hand. */
 export function MatchingPanel({ rows, flip, left, right, overrides, setOverrides, onClose }: { rows: MatchRow[]; flip: boolean; left: SideModel; right: SideModel; overrides: MatchOverride[]; setOverrides: (o: MatchOverride[]) => void; onClose: () => void }) {
   const L = useL(), lang = useLang();
@@ -216,7 +248,6 @@ export function MatchingPanel({ rows, flip, left, right, overrides, setOverrides
   const earlyIds = (row: MatchRow) => flip ? row.right : row.left, lateIds = (row: MatchRow) => flip ? row.left : row.right;
   const shown1 = (x: SideModel, row: MatchRow, side: 'left' | 'right') => inOf(row, side) ? L(`in ${name(x, [inOf(row, side)!])}`, `בתוך ${name(x, [inOf(row, side)!])}`) : name(x, row[side]);
   const mine = (row: MatchRow) => overrides.some((o) => earlyIds(row).includes(o.left) && lateIds(row).includes(o.right ?? ''));
-  const { standard } = useLevel();
   const lineage = useCrossComparison(early.sc.electionId !== late.sc.electionId ? late : null, early.sc.electionId !== late.sc.electionId ? early : null);
   return <Modal label={L('Matching', 'התאמת רשימות')} onClose={onClose} className="cmp-matching">
     <div className="choice-head"><b>{L('Matching', 'התאמת רשימות')}</b> <Info title={L('How lists are matched', 'כיצד רשימות מותאמות')}>{L('From the party registry and documented lineage only: the leading party, shared constituent parties, renames, mergers and splits. Never by name, ballot letters or rank. Your pairings stay with this comparison and never change a result.', 'רק לפי מרשם המפלגות והשושלת המתועדת: המפלגה המובילה, מפלגות מרכיבות משותפות, שינויי שם, איחודים ופיצולים. לעולם לא לפי שם, אותיות או דירוג. ההתאמות שלכם נשמרות להשוואה זו בלבד ואינן משנות תוצאה.')}</Info><button className="btn" aria-label={L('Close', 'סגירה')} onClick={onClose}>×</button></div>
@@ -225,15 +256,8 @@ export function MatchingPanel({ rows, flip, left, right, overrides, setOverrides
     <ul className="cmp-match-list">{shown.map((row) => <li key={row.key}>
       <div className="row cmp-match-names" dir="ltr"><bdi>{shown1(left, row, 'left')}</bdi><span aria-hidden>{flip ? '←' : '→'}</span><bdi>{shown1(right, row, 'right')}</bdi>
         <span className={`cmp-tag tag-${row.tag}`}>{tagText(row.tag, L)}</span></div>
-      {(() => {
-        const c = standard && lateIds(row).length === 1 && !row.group ? lineage(lateIds(row)[0]) : null;
-        // the comparison lists the same relation with its certainty and evidence: the reason is not repeated above it
-        const shown = row.reason.kind === 'lineage' && c?.relations.some((x) => row.reason.kind === 'lineage' && x.id === row.reason.edgeId);
-        return <>
-          {(!shown || row.check?.length) && <div className="small muted">{shown ? '' : reasonText(row, L, lang)}{row.check?.length ? `${shown ? '' : ' · '}${L('to check', 'לבדיקה')}: ${name(early, row.check)}` : ''}</div>}
-          <ComparisonReason c={c} />
-        </>;
-      })()}
+      <PairingWhy row={row} early={early} late={late} earlyIds={earlyIds(row)} lateIds={lateIds(row)} c={lateIds(row).length === 1 && !row.group ? lineage(lateIds(row)[0]) : null} />
+      {row.check?.length ? <div className="small muted">{L('to check', 'לבדיקה')}: {name(early, row.check)}</div> : null}
       <div className="row cmp-match-actions">
         {row.tag === 'check' && row.check?.map((id) => <span key={id} className="row">
           <button type="button" className="btn small" onClick={() => setOverrides([...without((o) => o.left === id), { left: id, right: lateIds(row)[0], status: 'accepted' }])}>{L(`Accept ${name(early, [id])}`, `אישור ${name(early, [id])}`)}</button>
@@ -264,7 +288,7 @@ function MapTo({ row, early, late, earlyIds, lateIds, onPick }: { row: MatchRow;
 }
 
 /** Phone: one row's figures on both sides and big copy buttons with their outcomes. */
-export function RowSheet({ row, left, right, onClose, actions }: { row: MatchRow; left: SideModel; right: SideModel; onClose: () => void; actions: ReactNode }) {
+export function RowSheet({ row, left, right, why, onClose, actions }: { row: MatchRow; left: SideModel; right: SideModel; why: ReactNode; onClose: () => void; actions: ReactNode }) {
   const L = useL(), lang = useLang(), digits = useDigits();
   const side = (x: SideModel, ids: string[]) => { const c = cellsOf(x, ids), inside = inOf(row, x === left ? 'left' : 'right'); return <div className="cmp-sheet-side">
     <span className="muted small">{x.year} · {x.name}</span>
@@ -274,6 +298,7 @@ export function RowSheet({ row, left, right, onClose, actions }: { row: MatchRow
   return <Modal label={L('List details', 'פרטי הרשימה')} onClose={onClose} className="cmp-sheet">
     <div className="choice-head"><span className={`cmp-tag tag-${row.tag}`}>{tagText(row.tag, L)}</span><button className="btn" aria-label={L('Close', 'סגירה')} onClick={onClose}>×</button></div>
     <div className="cmp-sheet-sides" dir="ltr">{side(left, row.left)}{side(right, row.right)}</div>
+    <div className="small cmp-sheet-why">{why}</div>
     <div className="cmp-sheet-actions">{actions}</div>
   </Modal>;
 }

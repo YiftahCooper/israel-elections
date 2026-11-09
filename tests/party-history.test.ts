@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { comparableFor, comparablePredecessor, officialFacts } from '../src/history/compare.ts';
 import { RELATIONS, readRelations, type Relation } from '../src/history/relations.ts';
-import { HISTORY, historyList } from '../src/history/runtime.ts';
+import { HISTORY, electionPosition, historyList } from '../src/history/runtime.ts';
 import { erasOf, eventsOf, identityOf, partySeries } from '../src/history/identity.ts';
 import { compileHistoryRuntime } from '../scripts/party-history-runtime.ts';
 import { certaintyCeiling } from '../src/data/evidence.ts';
@@ -181,5 +181,24 @@ describe('party histories (identity series)', () => {
   });
   it('the series never holds a party vote figure: votes are the whole list’s', () => {
     for (const p of series('hadash')) if (p.list) expect(p.votes).toBe(p.list.votes);
+  });
+});
+
+describe('where an event is drawn between elections (charts are evenly spaced, not a time scale)', () => {
+  const at = (id: string) => HISTORY.findIndex((e) => e.id === id);
+  it('the Kadima split (23 Nov 2005) sits 89% of the way from the 2003 election to the 2006 one', () => {
+    const p = electionPosition('2005-11-23');
+    expect(Math.floor(p)).toBe(at('k16'));
+    expect(p - at('k16')).toBeCloseTo(1030 / 1155, 3);
+  });
+  it('an election day sits on its own bar; a year-only date sits mid-year', () => {
+    expect(electionPosition(HISTORY[at('k19')].date)).toBe(at('k19'));
+    const p = electionPosition('2024');
+    expect(p).toBeGreaterThan(at('k25')); expect(p).toBeLessThan(at('k26'));
+    expect(electionPosition('2024')).toBeCloseTo(electionPosition('2024-07-01'), 9);
+  });
+  it('before the first election and after the last stay on the chart', () => {
+    expect(electionPosition('1948')).toBe(0);
+    expect(electionPosition('2030')).toBe(HISTORY.length - 1);
   });
 });
