@@ -589,7 +589,7 @@ specs after building; outputs belong in `.backup-scratch/controls/`.
 
 ## Party families
 
-The [family profile design](docs/design/party-families.md) uses separate dated vote-share and absolute-count charts, shared scales and cursor, an exact table and a separate hatched mixed-list segment. Family interpretations retain a quiet sourced-draft label. Personal edits fork definitions; scenario grouping and scaling freeze them in atomic undoable actions. Pale list regions use neutral ink and patterns, and phones stack the charts.
+The [family profile design](docs/design/party-families.md) uses separate dated vote-share and absolute-count charts, shared scales and cursor, an exact table and a separate hatched mixed-list segment. Family interpretations retain a quiet sourced-draft label. Personal edits fork definitions; scenario grouping and scaling freeze them in atomic undoable actions. Pale list regions use neutral ink and patterns, and phones stack the charts. A “Seats won” bar chart leads the page: own seats solid in the family colour, every joint-list partner above it striped (partner colour with white), smallest first; the scale is the family's own seats plus a fixed headroom, and taller bars fade out at the top instead of stretching the chart, with every partner keeping a visible slice in the fade's lower half (`src/families/seatBars.ts`).
 
 The summary, graphics, edit markers, list details and Compare defaults share
 `useActiveReference`: official when pinned, otherwise the loaded/saved reference.

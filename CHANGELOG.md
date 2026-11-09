@@ -2,6 +2,8 @@
 
 ## 7 November 2026 — Settings
 
+- Party families: a new “Seats won” chart (above the vote charts, every level) draws the family’s own seats solid and every party elected with it on a joint list striped above, smallest first, from the elected members’ parties (nothing estimated); bars taller than the chart fade out at the top while every partner keeps a visible slice, the label reads “7 +28”, hover, tap or arrow keys give each segment’s party, seats, list and year, and “Show partners” (on by default) is remembered.
+
 - Data (8 Nov recheck): Yisrael Beytenu 2026 #8–20 biographies link their 26 October Wayback captures (the live pages now redirect home); the Degel HaTorah leaflet (letters עץ) moves from UTJ 1992 to Degel HaTorah 1988; the 1977 candidate-cap note cites the 1 November 1977 transcript.
 - Data (9 Nov): the biography and party-link builders reproduce the committed data offline (audit corrections moved into reviewed inputs; a test fails on drift); 2019–2022 results links say “results”, not “results notice”; older lists no longer link later namesakes (One Israel 1999, Derekh Eretz 2020, the 2026 Reservists–Economic list); two stale k15 list names in link titles corrected; decision 0073 gains a dated addendum on the 1977 transcript.
 

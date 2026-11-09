@@ -7,7 +7,9 @@ export function compileFamilyRuntime(root = process.cwd()) {
   const byId = new Map<string, ElectionDataset>();
   const elections = Array.from({ length: 26 }, (_, i) => {
     const d = read(`public/data/k${i+1}.json`) as ElectionDataset; byId.set(d.id, d);
-    return { id: d.id, date: d.electionDate, valid: d.totals.valid, pending: d.status.stage !== 'official-final', lists: d.lists.map(l => [l.id, l.votes] as const),
+    // Seats are the gazetted counts only (never recomputed or estimated); null when none are published.
+    const seats = d.officialSeats ? Object.fromEntries(Object.entries(d.officialSeats).filter(([, n]) => n > 0)) : null;
+    return { id: d.id, date: d.electionDate, valid: d.totals.valid, pending: d.status.stage !== 'official-final', lists: d.lists.map(l => [l.id, l.votes] as const), seats,
       // Short names let chart hover name the lists behind a point without loading the election dataset.
       names: Object.fromEntries(d.lists.map(l => [l.id, [l.shortHe, l.shortEn ?? null] as const])) };
   });
@@ -24,9 +26,12 @@ export function compileFamilyRuntime(root = process.cwd()) {
     return owners.length === 1 && m.partyIds.some(id => (canonical.get(id) ?? id) === (canonical.get(owners[0].id) ?? owners[0].id));
   };
   // A mixed list names its constituent parties; the family's own parties are flagged so a hatched bar can say who is meant.
+  // Each party also carries its elected members on the list (the seated candidates the list's gazetted seats reach,
+  // by the party each candidate represented) and its dataset colour, so the seats chart can draw partners exactly.
   const composition = (electionId: string, m: Family['elections'][number]['members'][number]) => {
-    const own = new Set(m.partyIds.map(id => canonical.get(id) ?? id));
-    return (dataset(electionId).lists.find(l => l.id === m.listId)?.parties ?? []).map(p => [p.id, canonical.get(p.id) ?? p.id, p.nameHe, p.nameEn ?? null, own.has(canonical.get(p.id) ?? p.id) ? 1 : 0] as const);
+    const own = new Set(m.partyIds.map(id => canonical.get(id) ?? id)), d = dataset(electionId), list = d.lists.find(l => l.id === m.listId);
+    const elected = list ? list.candidates.filter(c => !c.notSeated).slice(0, d.officialSeats?.[list.id] ?? 0) : [];
+    return (list?.parties ?? []).map(p => [p.id, canonical.get(p.id) ?? p.id, p.nameHe, p.nameEn ?? null, own.has(canonical.get(p.id) ?? p.id) ? 1 : 0, elected.filter(c => c.partyId === p.id).length, p.color ?? null] as const);
   };
   const families = readdirSync(`${root}/data/meta/families`).filter(p => p.endsWith('.json')).map(path => {
     const f = read(`data/meta/families/${path}`) as Family;

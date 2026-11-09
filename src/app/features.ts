@@ -48,7 +48,7 @@ export const TRUTH_LABELS = ['editMarkers', 'scenarioChip', 'searchQualifiers', 
 
 /** Short previews for the visibility cards, in the same order as their bilingual labels. */
 export const FEATURE_PREVIEWS: Record<FeatureId, readonly [string, string]> = {
-  families: ['Votes across elections, with sourced membership', 'קולות לאורך הבחירות עם חברות מנומקת'],
+  families: ['Seats and votes across elections, with sourced membership', 'מנדטים וקולות לאורך הבחירות עם חברות מנומקת'],
   familyEdit: ['Select lists, link partners and save a personal preset', 'בחירת רשימות, קישור שותפים ושמירת תבנית אישית'],
   familyScale: ['Proportional vote changes in one election', 'שינוי יחסי בקולות בבחירות אחת'],
   familyGrouping: ['Family, mixed lists and everyone else', 'משפחה, רשימות מעורבות וכל השאר'],

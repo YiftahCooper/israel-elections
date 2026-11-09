@@ -64,7 +64,7 @@ test('mixed-only elections are not plotted as zero; mixed policy is a persistent
  // 2013: Likud ran jointly with Yisrael Beiteinu (20 of 31 seats), a real partnership, so Likud lineage is mixed-only there
  await start(page);await choose(page.getByRole('button',{name:'Election',exact:true}),'k19');await page.getByRole('tab',{name:'Party families',exact:true}).click();
  await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
- await expect(page.locator('.family-legend')).toHaveCount(1);await expect(page.locator('.family-legend')).toContainText('Mixed lists (up to)');
+ await expect(page.locator('.family-plots .family-legend')).toHaveCount(1);await expect(page.locator('.family-plots .family-legend')).toContainText('Mixed lists (up to)');
  const share=page.locator('.family-plots section').first();await share.locator('[role=button]').nth(18).focus();
  await expect(page.getByRole('tooltip')).toContainText('Only in mixed lists');await expect(page.getByRole('tooltip')).not.toContainText('0 votes');
  await expect(page.locator('.family-scale')).toContainText('only mixed lists in this election');
@@ -111,6 +111,8 @@ test('head-party counting is explicit, remembered and one-list overrides keep th
 test('family aggregates open details without navigating; hover never moves plots',async({page})=>{
  await start(page);await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
  const marks=page.locator('.family-plots section').first().locator('g[role=button]');
+ // the seats chart sits above: bring the line charts into view first, so only a hover could move them
+ await page.locator('.family-plots').evaluate(e=>e.scrollIntoView({block:'start'}));
  const top=await page.locator('.family-plots').evaluate(e=>e.getBoundingClientRect().top);
  for(const i of [0,18,25]){await marks.nth(i).hover();expect(await page.locator('.family-plots').evaluate(e=>e.getBoundingClientRect().top)).toBe(top);}
  await marks.nth(18).focus();await page.keyboard.press('Enter');
@@ -145,7 +147,7 @@ test('hover box names hatched lists’ parties, states the change, never grows o
  await page.locator('.family-plots section').first().locator('g[role=button]').nth(22).hover();await expect(page.getByRole('tooltip')).toContainText('Likud: Likud + Kulanu');
 });
 test('breakdown marks the family’s own parties in a mixed list and only they count as represented',async({page})=>{
- await start(page);const y=await page.evaluate(()=>scrollY);
+ await start(page);await page.locator('.family-plots section').first().locator('g[role=button]').nth(19).scrollIntoViewIfNeeded();const y=await page.evaluate(()=>scrollY);
  await page.locator('.family-plots section').first().locator('g[role=button]').nth(19).click();
  const d=page.getByRole('dialog',{name:'Election breakdown',exact:true});await expect(d.locator('.family-point-delta')).toContainText('Since 22 Jan 2013: −102,251 votes · −3.88 points · ▼ −5 seats');
  const mixed=d.locator('article[data-state=mixed]');await expect(mixed).toHaveCount(1);await expect(mixed.locator('[data-own] b')).toHaveText('Yachad');await expect(mixed).toContainText('Shown hatched, not counted');
