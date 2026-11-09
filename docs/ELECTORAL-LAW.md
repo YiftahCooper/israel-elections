@@ -48,6 +48,7 @@ Notes on interpretation, each covered by tests (`tests/engine.test.ts`):
 
 * 25th Knesset (2022): every list's seats equal the official CEC result; quota 36,227; 113 whole-quota seats and 7 remainder seats; threshold 154,855 votes.
 * 26th Knesset (2026): the result equals the seat counts reported from the CEC final count (Likud 27, Yashar! 21, Together 12, Joint List 11, Democrats 8, Ra'am 8, Otzma Yehudit 7, UTJ 7, Yisrael Beiteinu 7, Religious Zionism–Zehut 6, Shas 6); quota 44,873; 5 remainder seats.
+* First-stage and remainder counts equal the CEC's printed calculation sheets for 1981–2021 (`tests/official-stage-counts.test.ts`). The 1973 sheet and one page of the 1977 sheet count agreement pairs jointly in the first stage (117 + 3, 114 + 6); §82(a) joins a pair only for 81(d), so the engine gives 114 + 6 and 113 + 7, with the same final seats. Decision 0073, note of 9 November 2026.
 * Without agreements and with an exact quota, Bader–Ofer equals D'Hondt; 200 random elections are cross-checked against an independent D'Hondt implementation.
 
 ## Earlier statutory eras (Knessets 16–24)

@@ -114,7 +114,7 @@ members. The list's extra votes were not lost: they counted for the threshold (8
   7 remainder seats (quota 14,173). Counting each surplus-agreement pair as one unit with its combined votes
   gives 114, as does a first stage with no cap. Final seats are identical for every list, so the published
   result and decision 0075 are unaffected. Which first-stage reading the 1973 law intends is open; the
-  engine was not changed here.
+  engine was not changed here. (Settled by the note below, 9 November 2026: the law gives 113 + 7.)
 - How the cap applies inside a surplus-agreement pair (internal re-division) and in counterfactuals with
   unknown full roster sizes: the 1977 case had only a single-candidate list, so this source says nothing
   about them.
@@ -123,3 +123,91 @@ A separate change, not from this source: the record above says K9 stays unavaila
 the Ratz elected-member paragraph. Since the k9 audit (6 November 2026) K9 is available: Shulamit Aloni,
 Ratz rank 1, is confirmed by official Knesset OData membership and faction records from the first sitting
 (docs/research/data-audit/k09-resolution.md; status note in public/data/elections.json).
+
+## Note, 9 Nov 2026: why the transcript says 114 and the app 113
+
+**Result.** The law gives the app's split, 113 whole-quota seats and 7 remainder seats. The transcript's
+114 + 6 copies one page of the Central Elections Committee's own calculation sheet, which counted each
+surplus-agreement pair jointly in the first stage. The same sheet then hands out the 7 remaining seats
+from 113, exactly as the app does. No code was changed. Every list's final seats are the same under
+both counts.
+
+**The law in 1977.** The 1969 consolidated law, SH 556 p.116 (retained as `data/raw/k8-k12/law-1969.pdf`,
+PDF p.14). Amendment 4 (SH 692 p.108, `data/raw/research/law-bader-ofer-1973.pdf`) replaced only §81(d);
+§81(c) and §82 kept their 1969 wording, which is word for word the wording in force today. Amendments 1–3
+(1969–1973) were not re-read for this note.
+
+> **81.** (ג) כל רשימה המשתתפת בחלוקת המנדטים תזכה במספר מנדטים כמספר השלם היוצא מחילוק קולותיה הכשרים במודד.
+>
+> (ד) [1973] המנדטים שנותרו אחרי חלוקת המנדטים לפי סעיף קטן (ג) יחולקו בין הרשימות המשתתפות בחלוקת המנדטים
+> באופן זה: (1) לכל רשימה ייקבע "מודד רשימה" על ידי חילוק מספר הקולות הכשרים שקיבלה למספר המנדטים שזכתה בהם
+> לפי סעיף קטן (ג) נוסף אחד; …
+>
+> **82.** (א) שתי רשימות מועמדים שהתקשרו ביניהן ייחשבו לענין חלוקת המנדטים לפי סעיף 81(ד) כרשימה אחת בעלת
+> מספר הקולות הכשרים שקיבלו שתיהן יחד ובעלת המנדטים שזכו בהם שתיהן יחד, ובלבד שכל אחת מהן בפני עצמה קיבלה
+> את אחוז הקולות הקבוע בסעיף 81(א).
+
+In English: each list gets its own whole quotas (81(c)); a pair counts as one list only for the remainder
+stage (81(d)), holding "the seats that both won together". So in 1977 the Alignment (430,023 votes) gets
+30 and the Yemenite list (24,185) gets 1; the pair enters the remainder stage with 31, not with the 32 that
+its combined 454,208 votes would give. With Flatto-Sharon capped at 1, the first stage totals 113.
+
+**The CEC's calculation sheets.** Form 30 appendices, "פרטי חישוב של חלוקת המנדטים", on gov.il
+(`https://www.gov.il/BlobFolder/dynamiccollectorresultitem/memorandum-knesset<N>/he/<file>`), read by eye
+on 9 November 2026. Copies, hashes and page images are kept outside the repository in the project's
+working notes (`sc-1977-1109`).
+
+| Election | Sheet (file, PDF page) | Printed first stage + remainder | App |
+|---|---|---|---|
+| 1973 | `archive_knesset8_memorandum-apdx.pdf` p.5 | 117 + 3 (pairs jointly) | 114 + 6 |
+| 1977 | `archive_knesset9_memorandum-apdx9.pdf` p.6 (section ו) | 114 + 6 (pairs jointly) | 113 + 7 |
+| 1977 | same file pp.8–10 (sections ח, ט) | 7 seats handed out, Alignment+Yemenite starting at 31 | 113 + 7 |
+| 1981 | `archive_knesset10_memorandum-apdx10.pdf` p.6 | 113 + 7 | same |
+| 1984 | `archive_knesset11_memorandum11.pdf` p.5 | 112 + 8 | same |
+| 1988 | `archive_knesset12_memorandum-apdx1.pdf` p.5 | 112 + 8 | same |
+| 1992 | `archive_knesset13_memorandum-apdx13.pdf` p.5 | 117 + 3 | same |
+| 1996 | `archive_knesset14_memorandum-apdx14.pdf` p.5 | 114 + 6 | same |
+| 1999 | `archive_knesset15_memorandum-apdx15.pdf` p.6 | 112 + 8 | same |
+| 2003 | `archive_knesset16_memorandum-apdx16.pdf` p.5 | 113 + 7 | same |
+| 2006 | `archive_knesset17_memorandum-apdx17.pdf` p.5 | 114 + 6 | same |
+| 2009 | `data/raw/k18/allocation.pdf` p.5 | 115 + 5 | same |
+| 2013 | `data/raw/k19/seat-allocation-appendix.pdf` p.5 | 113 + 7 | same |
+| 2015 | `archive_knesset20_memorandum-apdx20.pdf` p.6 | 116 + 4 | same |
+| April 2019 | `archive_knesset21_memorandum-apdx21.pdf` p.6 | 113 + 7 | same |
+| Sept. 2019 | `archive_knesset22_memorandum-apdx22.pdf` p.6 | 117 + 3 | same |
+| 2020 | `archive_knesset23_memorandum-apdx23.pdf` p.6 | 117 + 3 | same |
+| 2021 | `archive_knesset24_memorandum-apdx24.pdf` p.6 | 112 + 8 | same |
+
+Each sheet's quota also matches the app. Counting pairs jointly would differ from the printed figure in
+every one of these elections from 1981 except 1992 and 2020, so from 1981 the CEC clearly counts list by
+list. No sheet was found for 2022 or 2026 (four file-name patterns tried); those stage counts remain the
+app's own arithmetic.
+
+- **1973.** The sheet floors each pair's combined votes (ב+גד 15, לע+רצ 7, רא+עא 3), prints 117, and
+  hands out 3 seats from there. That is the other reading; final seats are the same.
+- **1977.** Section ו (p.6, printed p.9) is a printed form with the pairs already named on it ("אמת + ימ");
+  it gives אמת+ימ 32 (454,208 : 14,173), פש 1 with the handwritten note "לרשימה "פש" מועמד אחד בלבד",
+  "ס"ה חולקו 114" and "נותרו לחלוקה 6". Section ח (pp.8–9, printed pp.12–13), handwritten and headed
+  "חלוקת 7 המנדטים הנותרים", starts אמת+ימ at 31 and awards seven seats in this order, with these
+  quotients: אמת+ימ 14,194; מחל+כנ 14,043; לע+יש 13,915; אמת+ימ 13,763; מחל+כנ 13,731; ב+ג 13,714;
+  ש 13,640. Section ט (p.10, printed p.14) totals "7 מנדטים". The app's remainder walk is the same seven seats in the
+  same order with the same quotients. The House Committee's 114 + 6 is section ו.
+- Section ז of the 1977 sheet (p.7) writes the Independent Liberals (לע) as 21,277 votes and the pair
+  as 223,542; sections ו and ח use 222,649, which is the gazette's 20,384 + 202,265. The app uses the
+  gazette.
+
+**Why both counts give the same seats.** Bader–Ofer gives each remaining seat to the highest
+votes ÷ (seats + 1). A pair whose combined votes hold one more whole quota than its members' separate
+quotas has a quotient above the quota (454,208 ÷ 32 = 14,194 > 14,173), so it wins that seat first in the
+remainder stage. The seat moves between the two stages; the result does not.
+
+**Tests.** `tests/official-stage-counts.test.ts` checks the printed quota and stage counts for 1981–2021,
+the 1973 and 1977 joint counts (117 and 114) beside the app's statutory 114 and 113, and the 1977
+section ח order and quotients.
+
+**בקצרה (עברית).** לפי סעיפים 81(ג) ו־82(א) לחוק, כל רשימה מקבלת תחילה את המנדטים השלמים שלה בנפרד, וזוג
+רשימות בהסכם עודפים נחשב לרשימה אחת רק בחלוקת העודפים, "בעלת המנדטים שזכו בהם שתיהן יחד". לכן ב־1977 חולקו
+בשלב הראשון 113 מנדטים ו־7 עודפים, כמו באפליקציה. בדף החישוב של ועדת הבחירות המרכזית (סעיף ו) נספרו הזוגות
+יחד ונרשמו 114 ו־6, ומשם המספר שבפרוטוקול הכנסת; אבל באותו דף (סעיף ח) חולקו 7 המנדטים הנותרים מ־113, באותו
+סדר ובאותם מודדים כמו באפליקציה. מ־1981 ועד 2021 כל דפי החישוב סופרים רשימה־רשימה ותואמים את האפליקציה.
+התוצאה הסופית זהה בשתי הספירות.
