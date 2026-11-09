@@ -106,9 +106,70 @@ test('Compare tags the Democrats as ran jointly, notes the comparison under the 
   const panel = page.locator('dialog[open].cmp-matching');
   await panel.getByRole('button', { name: 'All', exact: true }).click();
   const dem = panel.locator('li').filter({ hasText: 'Labor + Meretz' });
-  await expect(dem).toContainText('Compared with the whole 2022 lists: Labor (4) + Meretz (0)');
+  await expect(dem).toContainText('The Democrats (2026) is compared with Labor (4 seats) and Meretz (0 seats) in 2022, taken together.');
+  await expect(dem).toContainText('How sure: Probable');
   await expect(dem).toContainText('Labor renamed The Democrats (2024)');
   await expect(dem).not.toContainText('labor-democrats-rename');
+});
+
+test('each pairing in Compare says what is compared with what, why and how sure, behind the (i) by its tag', async ({ page }) => {
+  await start(page);
+  await page.locator('#tab-compare').click();
+  const row = (name: string) => page.locator('tr.cmp-row').filter({ has: page.locator('.cmp-rname', { hasText: name }) }).first();
+  await row('Joint List').getByRole('button', { name: 'Why this pairing: Joint List' }).click();
+  const pop = page.locator('.pop').filter({ hasText: 'This pairing' });
+  await expect(pop).toContainText('Joint List (2026) is compared with Hadash–Ta\'al (5 seats) and Balad (0 seats) in 2022, taken together.');
+  await expect(pop).toContainText('Why: Same leading party: Hadash.');
+  await expect(pop).toContainText('How sure: Confirmed');
+  await expect(pop).toContainText('A joint list’s votes are never divided among its parties.');
+  await page.keyboard.press('Escape');
+  await row('Likud').getByRole('button', { name: 'Why this pairing: Likud' }).click();
+  await expect(page.locator('.pop').filter({ hasText: 'This pairing' })).toContainText('Not counted: New Hope');
+  await page.keyboard.press('Escape');
+  await row('The Democrats').getByRole('button', { name: /^Why this pairing/ }).click();
+  const dem = page.locator('.pop').filter({ hasText: 'This pairing' });
+  await expect(dem).toContainText('Labor renamed The Democrats (2024)');
+  await expect(dem.getByRole('link', { name: /IDI/ })).toBeVisible();
+});
+
+test('the chart names its events, explains where they sit, and marks the chosen election without a dashed box', async ({ page }) => {
+  await start(page);
+  await listRow(page, 'Likud').click();
+  const sec = page.locator('aside .ph-sec');
+  // the panel chart's lines have a key in words
+  await expect(sec.locator('.ph-legend')).toContainText('Merger, split or new name');
+  await sec.getByRole('button', { name: 'Full history', exact: true }).click();
+  const chart = sheet(page).locator('.ph-chart');
+  await expect(chart.locator('.ph-flag text')).toHaveText(['Merged (probable)', 'Merged (probable)', 'Faction split', 'Faction split']);
+  await expect(chart).not.toContainText('?');
+  await expect(chart.locator('.ph-selband')).toHaveCount(1);
+  await expect(chart.locator('.ph-axis.sel')).toHaveText('’26');
+  // the list below numbers the same events; no "?" or letter glyphs
+  await expect(sheet(page).locator('.ph-events .ph-evdot')).toHaveText(['1', '2', '3', '4']);
+  await sheet(page).getByRole('button', { name: 'Where events are drawn' }).click();
+  await expect(page.locator('.pop').filter({ hasText: 'Where events are drawn' })).toContainText('89% of the way from the 2003 election to the 2006 one');
+  // a weak link is dashed and says so in words
+  await page.keyboard.press('Escape'); await page.keyboard.press('Escape');
+  await listRow(page, 'The Democrats').click();
+  await sec.getByRole('button', { name: 'Full history', exact: true }).click();
+  await expect(sheet(page).locator('.ph-ev.weak .ph-flag text')).toContainText('Union agreed (provisional)');
+  await expect(sheet(page).locator('.ph-legend')).toContainText('Dashed: not yet established');
+});
+
+test('in Hebrew the event flags and the event key are Hebrew', async ({ page }) => {
+  await start(page, { lang: 'he' });
+  await listRow(page, 'הליכוד').click();
+  await page.locator('aside .ph-sec').getByRole('button', { name: 'היסטוריה מלאה', exact: true }).click();
+  await expect(sheet(page).locator('.ph-flag text').first()).toHaveText('איחוד (סביר)');
+  await expect(sheet(page).locator('.ph-legend')).toContainText('איחוד, פילוג או שם חדש');
+});
+
+test('on a phone a crowded chart numbers its events, matching the list below', async ({ page }) => {
+  await start(page, { width: 390 });
+  await listRow(page, 'The Democrats').click();
+  await page.locator('aside .ph-sec').getByRole('button', { name: 'Full history', exact: true }).click();
+  await expect(sheet(page).locator('.ph-evnum text')).toHaveText(['1', '2', '3', '4', '5,6,7']);
+  await expect(sheet(page).locator('.ph-flag')).toHaveCount(0);
 });
 
 test('on a phone the full history fills the screen', async ({ page }) => {

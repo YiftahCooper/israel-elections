@@ -44,7 +44,7 @@
 .cmp-tick { width: 28px; text-align: center; }
 .cmp-more { width: 34px; text-align: center; }
 .cmp-more-btn { min-height: 30px; padding: 2px 6px; }
-.cmp-mid { width: 150px; text-align: center; }
+.cmp-mid { width: 172px; text-align: center; }
 .cmp-mid-in { display: grid; grid-template-columns: 28px minmax(0, 1fr) 28px; align-items: center; gap: 2px; }
 .cmp-delta { display: inline-flex; flex-direction: column; align-items: center; gap: 1px; line-height: 1.15; }
 .cmp-pp { font-variant-numeric: tabular-nums; }
@@ -186,3 +186,11 @@
 .cmp-dupes ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
 .cmp-dupes li { justify-content: space-between; gap: 6px; flex-wrap: wrap; }
 @media (max-width: 760px) { .cmp-dupes .btn { min-height: 44px; } }
+/* each pairing's tag with its (i): what is compared with what, why, how sure */
+.cmp-tagwhy { display: inline-flex; gap: 2px; align-items: center; }
+.cmp-why { display: grid; gap: 4px; max-inline-size: 46ch; }
+.cmp-why-rel { display: grid; gap: 1px; }
+.cmp-why .ph-cert { font-size: 10.5px; line-height: 15px; }
+.cmp-sheet-why { padding-block: 4px; }
+.cmp-match-list .cmp-why { max-inline-size: none; }
+.cmp-why-k { font-weight: 700; }

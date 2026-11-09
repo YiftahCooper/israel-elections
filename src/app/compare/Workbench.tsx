@@ -23,7 +23,7 @@ import { duplicatePeople, planAgreements, planColour, planRoster, planRules, pla
 import { remembered } from './answers.ts';
 import { COPY_ARROWS, COMPARE_MAIN_SIDE, copyComparisonLink, comparisonOf, openComparison, pairKey, saveComparison, useSavedComparisons, setOverrides, setSwap } from './sides.ts';
 import { cellsOf, listMarks, sourceOf, unitsFor, type Cells, type SideModel } from './model.ts';
-import { CopyVotesDialog, MatchingPanel, RowSheet, SaveDialog, VotesEditor, WholeListDialog, tagText, TAG_INFO, type CopyRequest, type WholeRequest } from './dialogs.tsx';
+import { CopyVotesDialog, MatchingPanel, PairingWhy, RowSheet, SaveDialog, VotesEditor, WholeListDialog, tagText, type CopyRequest, type WholeRequest } from './dialogs.tsx';
 import { markerLead } from './copyText.ts';
 import { ChoicePicker } from '../components/ChoicePicker.tsx';
 import { partyLabel as partyName } from '../../families/registry.ts';
@@ -57,6 +57,9 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
   // the later side's lists against the earlier side's whole lists (the shared comparable-predecessor rule)
   const lineage = useCrossComparison(cross ? (flip ? left : right) : null, cross ? (flip ? right : left) : null);
   const laterSide: 'left' | 'right' | null = cross ? (flip ? 'left' : 'right') : null;
+  // one pairing in plain words (behind the (i) by its tag, and in the phone sheet); pairings run earlier → later
+  const why = (row: MatchRow) => { const early = flip ? right : left, late = flip ? left : right, e = flip ? row.right : row.left, l = flip ? row.left : row.right;
+    return <PairingWhy row={row} early={early} late={late} earlyIds={e} lateIds={l} c={cross && l.length === 1 && !row.group ? lineage(l[0]) : null} />; };
   // a stable order: the starting points' seats, so rows never move while either side is edited
   const order = useMemo(() => {
     const rs = allocationOf(right.start), ls = allocationOf(left.start);
@@ -279,7 +282,7 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
                   <span className="cmp-delta">
                     {grouped ? <span className="tiny muted">{L('see group', 'ראו קבוצה')}</span> : d !== null ? <SeatDelta value={d} /> : <span className="muted">—</span>}
                     {!simple && shareD && shareD.num !== 0n && <span className="tiny muted cmp-pp" dir={lang === 'he' ? 'rtl' : 'ltr'}><bdi dir="ltr">{rationalPoints(shareD, digits)}</bdi> {L('pp', 'נק׳ אחוז')}</span>}
-                    <span className={`cmp-tag tag-${row.tag}`} title={L(...TAG_INFO[row.tag])}>{tagText(row.tag, L)}</span>
+                    <span className="cmp-tagwhy"><span className={`cmp-tag tag-${row.tag}`}>{tagText(row.tag, L)}</span><Info title={L('This pairing', 'ההתאמה הזו')} label={L(`Why this pairing: ${what}`, `למה ההתאמה הזו: ${what}`)}>{why(row)}</Info></span>
                   </span>
                   {arrow(row, toR && !grouped ? [toR] : null, 'toRight', what)}
                 </span>
@@ -313,7 +316,7 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
     {wholeReq && <WholeListDialog req={wholeReq} onClose={() => setWholeReq(null)} onDone={(plan, text) => { if (commit(plan, wholeReq.to, text + '.')) setWholeReq(null); }} />}
     {editing && <VotesEditor side={editing.side} listId={editing.listId} onClose={() => setEditing(null)} />}
     {matching && <MatchingPanel rows={order} flip={flip} left={left} right={right} overrides={overrides} setOverrides={(o) => setOverrides(pair, o)} onClose={() => setMatching(false)} />}
-    {sheet && <RowSheet row={sheet} left={left} right={right} onClose={() => setSheet(null)} actions={<>{menuItems(sheet, () => setSheet(null))}</>} />}
+    {sheet && <RowSheet row={sheet} left={left} right={right} why={why(sheet)} onClose={() => setSheet(null)} actions={<>{menuItems(sheet, () => setSheet(null))}</>} />}
     {saving && <SaveDialog suggested={`${nameOf(left)} ↔ ${nameOf(right)}`} onClose={() => setSaving(false)} onSave={(name) => {
       if (saveComparison(name, comparisonOf(main.sc, other.sc, swapPref, overrides))) { toast('info', L('Comparison saved in this browser (see Scenarios).', 'ההשוואה נשמרה בדפדפן זה (ראו תרחישים).')); setSaving(false); }
       else toast('error', L('The browser refused to save (storage full or blocked).', 'הדפדפן סירב לשמור (האחסון מלא או חסום).'));

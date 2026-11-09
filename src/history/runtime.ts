@@ -52,3 +52,15 @@ export function yearLabel(i: number, lang: 'he' | 'en', short = false): string {
   const m = Number(e.date.slice(5, 7)) - 1;
   return `${(lang === 'he' ? MONTH_HE : MONTH_EN)[m]} ${y}`;
 }
+
+/** Where a dated event sits among the elections, as a fractional election index: between the two elections around it,
+ *  at the same fraction of that gap as in time (charts space elections evenly, so this is not a time scale). A date
+ *  known only to the year sits mid-year, one known to the month mid-month. Before the first election: 0; after the
+ *  last: the last index. */
+export function electionPosition(date: string): number {
+  const t = Date.parse(date.length === 4 ? `${date}-07-01` : date.length === 7 ? `${date}-15` : date);
+  const k = HISTORY.findIndex((e) => Date.parse(e.date) > t);
+  if (k <= 0) return k === 0 ? 0 : HISTORY.length - 1;
+  const a = Date.parse(HISTORY[k - 1].date), b = Date.parse(HISTORY[k].date);
+  return k - 1 + (t - a) / (b - a);
+}

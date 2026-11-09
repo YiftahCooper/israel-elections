@@ -2,6 +2,7 @@
 
 ## 7 November 2026 — Settings
 
+- Owner 9 Nov: party-history charts name each event (a solid line with a label, or a number matching the list when labels don't fit), explain in an (i) why events sit between elections, and shade the selected election instead of a dashed box; no “?” or letter marks; each Compare pairing explains what is compared with what, why and how sure behind an (i) by its tag.
 - Data (8 Nov recheck): Yisrael Beytenu 2026 #8–20 biographies link their 26 October Wayback captures (the live pages now redirect home); the Degel HaTorah leaflet (letters עץ) moves from UTJ 1992 to Degel HaTorah 1988; the 1977 candidate-cap note cites the 1 November 1977 transcript.
 
 - Research: retain the privacy-filtered official party register; confirm NRP–Jewish Home continuity and separate Labor/Meretz registrations, and record the disputed Labor/Democrats name.

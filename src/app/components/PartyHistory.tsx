@@ -7,7 +7,7 @@ import type { Certainty } from '../../data/evidence.ts';
 import { comparablePredecessor, leadOf, officialFacts, partiesOf, scenarioFacts, type Comparison } from '../../history/compare.ts';
 import { erasOf, eventsOf, identityOf, partySeries, type Identity, type SeriesPoint } from '../../history/identity.ts';
 import { OPEN_CHECKS, type Relation } from '../../history/relations.ts';
-import { HISTORY, electionIndex, historyList, listShort, partyShort, yearLabel, type HList } from '../../history/runtime.ts';
+import { HISTORY, electionIndex, electionPosition, historyList, listShort, partyShort, yearLabel, type HList } from '../../history/runtime.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
 import { hebrewPrefix as attach } from '../hebrewPrefix.ts';
@@ -63,7 +63,6 @@ const KIND_WORD: Partial<Record<Relation['kind'], [string, string]>> = {
   'renamed-to': ['Renamed', 'שם חדש'], 'merged-into': ['Merged', 'איחוד'], 'absorbed-into': ['Joined', 'הצטרפות'], 'split-from': ['Split', 'פילוג'], 'faction-split': ['Faction split', 'פילוג סיעה'],
 };
 const kindWord = (r: Relation, L: (en: string, he: string) => string) => r.kind === 'merged-into' && (r.stage === 'announced' || r.stage === 'approved') ? L('Union agreed', 'הסכם איחוד') : L(...(KIND_WORD[r.kind] ?? ['Event', 'אירוע']));
-const GLYPH: Partial<Record<Relation['kind'], string>> = { 'renamed-to': 'R', 'merged-into': '+', 'absorbed-into': '+', 'split-from': '−', 'faction-split': '−' };
 const year = (d: string) => d.slice(0, 4);
 const dateText = (r: Relation) => r.dateTo ? `${year(r.date)}–${year(r.dateTo).slice(2)}` : year(r.date);
 
@@ -79,6 +78,20 @@ function Evidence({ r }: { r: Relation }) {
     </span>
   </Info>;
 }
+
+/** A relation's sources as links (the same evidence as its (i)), for places that are already inside a popover. */
+export function EvidenceLinks({ r }: { r: Relation }) {
+  const L = useL();
+  if (!r.sources.length) return <span className="tiny muted">{L('Recorded in this project’s data files.', 'רשום בקובצי הנתונים של הפרויקט.')}</span>;
+  return <span className="tiny ph-srcline">{L('Sources: ', 'מקורות: ')}{r.sources.map((s, k) => <span key={s.id}>{k ? '; ' : ''}{s.url ? <a href={s.url} target="_blank" rel="noreferrer">{s.publisher ?? s.url}</a> : (s.publisher ?? s.locator ?? s.id)}</span>)}</span>;
+}
+/** "Labor (4 seats) and Meretz (0 seats)": the whole earlier lists a comparison counts, with their seats. */
+export function countedText(c: Comparison, lang: Lang): string {
+  const n = c.counted.map((M) => { const h = prevList(c, M.id); return `${h ? listShort(h, lang) : M.id} (${lang === 'he' ? M.seats === 1 ? 'מנדט אחד' : `${M.seats} מנדטים` : `${M.seats} seat${M.seats === 1 ? '' : 's'}`})`; });
+  if (n.length < 2) return n.join('');
+  return lang === 'he' ? `${n.slice(0, -1).join(', ')} ${hebrewPrefix('ו', n[n.length - 1])}` : `${n.slice(0, -1).join(', ')} and ${n[n.length - 1]}`;
+}
+export { CERT_INFO, year as relationYear };
 
 /** Measures an element's width for the SVG charts (they are drawn at real size, so text never scales). */
 function useWidth<T extends HTMLElement>(fallback: number) {
@@ -107,57 +120,87 @@ export interface Bar {
   /** for a share: the exact part and whole, so the label discloses its exact value */
   part?: [number, number];
 }
-export interface ChartEvent { key: string; date: string; certainty: Certainty; glyph: string; word: string }
+/** A dated event drawn on the chart: `word` is its kind ("Merged"), `text` the whole sentence, `n` its number in the list. */
+export interface ChartEvent { key: string; date: string; certainty: Certainty; word: string; text: string; n: number }
 
-/** x of a date: between the two elections around it, proportionally. */
-const dateX = (d: string, x: (i: number) => number) => {
-  const t = Date.parse(d.length === 4 ? `${d}-07-01` : d);
-  const k = HISTORY.findIndex((e) => Date.parse(e.date) > t);
-  if (k <= 0) return x(k === 0 ? 0 : HISTORY.length - 1);
-  const a = Date.parse(HISTORY[k - 1].date), b = Date.parse(HISTORY[k].date);
-  return x(k - 1) + ((t - a) / (b - a)) * (x(k) - x(k - 1));
-};
+const certRank: Record<Certainty, number> = { confirmed: 4, probable: 3, provisional: 2, disputed: 1, unknown: 0 };
+/** "Merged", "Merged (probable)": the certainty word whenever it is not Confirmed, as in the comparison line. */
+const flagWord = (e: ChartEvent, L: (en: string, he: string) => string) => e.certainty === 'confirmed' ? e.word : `${e.word} (${L(...CERT[e.certainty]).toLocaleLowerCase()})`;
+/** Rough text width at the chart's 10.5px font (Hebrew and Latin alike). */
+const textW = (s: string) => s.length * 5.9 + 4;
 
 export function HistoryChart({ bars, eras, events, selected, onSelect, compact, width, height, label, unit, phone }: {
   bars: Bar[]; eras: { from: number; to: number; name: string }[]; events: ChartEvent[]; selected: number | null; onSelect: (i: number) => void;
   compact?: boolean; width: number; height: number; label: string; unit: 'seats' | 'share'; phone?: boolean;
 }) {
-  const lang = useLang(), digits = Math.min(1, useDigits());
-  const ml = compact ? 4 : 30, mr = 8, mt = compact ? 14 : 18;
-  const strip = compact ? 0 : 20, lane = compact ? 12 : events.length ? (phone ? 26 : 46) : 4, xl = 15;
-  const W = width - ml - mr, H = height - mt - xl - strip - lane;
-  const n = bars.length, slot = W / n, bw = Math.max(3, Math.min(26, slot * 0.68));
+  const lang = useLang(), L = useL(), digits = Math.min(1, useDigits());
+  const ml = compact ? 4 : 30, mr = 8;
+  const n = bars.length, slotW = (width - ml - mr) / n;
+  const x = (i: number) => ml + i * slotW + slotW / 2;
+  // events that would touch are drawn as one (Merged · Faction split)
+  const groups = useMemo(() => {
+    const g: { x: number; items: ChartEvent[] }[] = [];
+    for (const e of [...events].sort((a, b) => a.date.localeCompare(b.date))) {
+      const ex = Math.min(width - mr - 2, Math.max(ml + 2, ml + electionPosition(e.date) * slotW + slotW / 2));
+      const last = g[g.length - 1];
+      if (last && ex - last.x < (compact ? 4 : 7)) last.items.push(e); else g.push({ x: ex, items: [e] });
+    }
+    return g.map((gr) => {
+      const words = [...new Set(gr.items.map((e) => flagWord(e, L)))];
+      const worst = gr.items.reduce((w, e) => certRank[e.certainty] < certRank[w.certainty] ? e : w, gr.items[0]);
+      return { ...gr, worst, words: words.join(' · '), nums: gr.items.map((e) => e.n).join(','), title: gr.items.map((e) => `${year(e.date)} · ${e.text} · ${L(...CERT[e.certainty])}`).join('\n') };
+    });
+  }, [events, width, compact, L]); // eslint-disable-line react-hooks/exhaustive-deps
+  // flags: each on the first row where it touches nothing (A, B: words; C: numbers)
+  // words when every flag fits in three rows; otherwise each event's number in the list below (phones, busy histories)
+  const place = (nums: boolean) => {
+    const ends: number[] = []; let fits = true;
+    const out = groups.map((g) => {
+      const text = nums ? g.nums : g.words;
+      const w = nums ? Math.max(16, textW(text) + 4) : textW(text) + 6;
+      const right = !nums && g.x + w > width - mr;
+      const x0 = nums ? g.x - w / 2 : right ? g.x - w : g.x, x1 = x0 + w;
+      let row = ends.findIndex((e) => x0 > e + 3);
+      if (row < 0) { if (ends.length < 3) row = ends.length; else { fits = false; row = ends.indexOf(Math.min(...ends)); } }
+      ends[row] = x1;
+      return { ...g, text, w, x0, row };
+    });
+    return { out, fits };
+  };
+  const words = useMemo(() => place(false), [groups, width]); // eslint-disable-line react-hooks/exhaustive-deps
+  const nums = !words.fits;
+  const placed = useMemo(() => nums ? place(true).out : words.out, [nums, words, groups, width]); // eslint-disable-line react-hooks/exhaustive-deps
+  const rows = compact || !groups.length ? 0 : Math.max(...placed.map((p) => p.row)) + 1;
+  const rowH = nums ? 19 : 16;
+  const mt = compact ? 14 : 18 + rows * rowH;
+  const strip = compact ? 0 : 20, xl = 15;
+  const H = height - mt - xl - strip - 4;
+  const bw = Math.max(3, Math.min(26, slotW * 0.68));
   const top = (() => { const m = Math.max(1, ...bars.map((b) => b.value)); const step = unit === 'seats' ? (m > 40 ? 20 : m > 16 ? 10 : 5) : (m > 30 ? 10 : 5); return { max: Math.ceil(m / step) * step || step, step }; })();
-  const y = (v: number) => mt + H - (v / top.max) * H;
-  const x = (i: number) => ml + i * slot + slot / 2;
+  const y = (val: number) => mt + H - (val / top.max) * H;
   const present = bars.filter((b) => !b.absent);
   const first = present[0]?.i ?? 0, last = present[present.length - 1]?.i ?? n - 1;
   const best = present.reduce<Bar | undefined>((m, b) => !m || b.value > m.value ? b : m, undefined);
   const labelled = (b: Bar) => compact || phone ? b === best || b.i === last || b.i === selected : true;
   const every = compact ? 6 : phone ? 4 : 1;
-  const grouped = useMemo(() => { const g: ChartEvent[][] = []; for (const e of events) { const h = g.find((x) => year(x[0].date) === year(e.date)); if (h) h.push(e); else g.push([e]); } return g; }, [events]);
-  const wordOf = (g: ChartEvent[]) => g.length > 1 ? [...new Set(g.map((x) => x.word))].join(' · ') : g[0].word;
-  // a word that would touch its neighbour's drops to a second line
-  const rows = useMemo(() => {
-    const out: number[] = [], lastEnd = [-1e9, -1e9];
-    for (const g of grouped) {
-      const cx = dateX(g[0].date, (i) => ml + i * (W / n) + W / n / 2), half = wordOf(g).length * 3.1 + 4;
-      const r = cx - half > lastEnd[0] ? 0 : cx - half > lastEnd[1] ? 1 : 0;
-      out.push(r); lastEnd[r] = cx + half;
-    }
-    return out;
-  }, [grouped, W, n, ml]); // eslint-disable-line react-hooks/exhaustive-deps
-  const worst = (g: ChartEvent[]) => g.find((e) => e.certainty !== 'confirmed' && e.certainty !== 'probable') ?? g.find((e) => e.certainty === 'probable') ?? g[0];
-  const pid = `ph${useId().replace(/[^a-zA-Z0-9]/g, "")}`;
+  const pid = `ph${useId().replace(/[^a-zA-Z0-9]/g, '')}`;
   const move = (d: number) => { const order = present.map((b) => b.i); const at = order.indexOf(selected ?? -1); const next = order[Math.min(order.length - 1, Math.max(0, (at < 0 ? 0 : at) + d))]; if (next !== undefined) onSelect(next); };
+  const yearShown = (i: number) => i === selected || (i % every === 0 || i === n - 1) && !(i !== n - 1 && n - 1 - i < every && every > 1) && !(selected !== null && (compact || phone) && Math.abs(i - selected) * slotW < 26 && i !== selected);
+  const lineTop = (p: typeof placed[number]) => compact ? mt - 6 : 18 + p.row * rowH + (nums ? 7 : 6);
   return (
     <svg className={`ph-chart ${compact ? 'compact' : ''}`} width={width} height={height} viewBox={`0 0 ${width} ${height}`} direction="ltr" role={compact ? 'img' : 'group'} aria-label={label}
       onKeyDown={compact ? undefined : (e) => { if (e.key === 'ArrowRight') { e.preventDefault(); move(1); } else if (e.key === 'ArrowLeft') { e.preventDefault(); move(-1); } else if (e.key === 'Home') { e.preventDefault(); onSelect(first); } else if (e.key === 'End') { e.preventDefault(); onSelect(last); } }}>
       <defs>{present.map((b) => <pattern key={b.i} id={`${pid}-${b.i}`} patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><rect width="5" height="5" fill={b.color} opacity=".18" /><path d="M0 0V5" stroke={b.color} strokeWidth="2.2" /></pattern>)}</defs>
-      {!compact && Array.from({ length: top.max / top.step + 1 }, (_, k) => k * top.step).map((v) => <g key={v}>
-        <line x1={ml} x2={width - mr} y1={y(v)} y2={y(v)} className="ph-grid" />
-        <text x={ml - 4} y={y(v) + 3.5} className="ph-axis" textAnchor="end">{unit === 'share' ? `${v}%` : v}</text></g>)}
+      {/* the selected election: a soft band behind its column and its year; its value and year in bold */}
+      {selected !== null && bars[selected] && <rect className="ph-selband" x={x(selected) - slotW / 2 + 0.5} y={compact ? mt - 4 : mt - 6} width={slotW - 1} height={H + (compact ? 4 : 6) + xl + 1} rx={3} />}
+      {!compact && Array.from({ length: top.max / top.step + 1 }, (_, k) => k * top.step).map((val) => <g key={val}>
+        <line x1={ml} x2={width - mr} y1={y(val)} y2={y(val)} className="ph-grid" />
+        <text x={ml - 4} y={y(val) + 3.5} className="ph-axis" textAnchor="end">{unit === 'share' ? `${val}%` : val}</text></g>)}
       {compact && <line x1={ml} x2={width - mr} y1={y(0)} y2={y(0)} className="ph-grid" />}
+      {/* events behind the bars: a line at the event's place between two elections */}
+      {placed.map((p) => { const weak = certRank[p.worst.certainty] < certRank.probable;
+        return <g key={p.items[0].key} className={`ph-evmark ${weak ? 'weak' : ''}`}><line x1={p.x} x2={p.x} y1={lineTop(p)} y2={y(0)} className="ph-evline" />
+          {compact && <circle cx={p.x} cy={lineTop(p)} r={2.4} className="ph-evcap" />}</g>; })}
       {bars.map((b) => {
         const h = Math.max(0, y(0) - y(b.value)), sh = Math.max(0, Math.min(h, y(0) - y(b.solid)));
         const sel = b.i === selected;
@@ -165,31 +208,34 @@ export function HistoryChart({ bars, eras, events, selected, onSelect, compact, 
           role={compact ? undefined : 'button'} aria-pressed={compact ? undefined : sel} aria-label={compact ? undefined : b.label} data-i={b.i}
           onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect(b.i); } }}>
           <title>{b.label}</title>
-          <rect x={x(b.i) - slot / 2} y={mt} width={slot} height={H} fill="transparent" />
-          {!b.absent && b.value > 0 && <>
+          <rect x={x(b.i) - slotW / 2} y={mt} width={slotW} height={H} fill="transparent" />
+          {!b.absent && b.value > 0 && <g className="ph-barbody">
             {h - sh > 0.5 && <rect x={x(b.i) - bw / 2 + 0.6} y={y(b.value) + 0.6} width={bw - 1.2} height={Math.max(0, h - sh - 0.6)} fill={`url(#${pid}-${b.i})`} stroke={b.color} strokeWidth={1.2} strokeDasharray={b.inside ? '3 2' : undefined} />}
             {sh > 0 && <rect x={x(b.i) - bw / 2} y={y(0) - sh} width={bw} height={sh} fill={b.color} />}
-          </>}
+          </g>}
           {!b.absent && b.value === 0 && <rect x={x(b.i) - bw / 2} y={y(0) - 2} width={bw} height={2} className="ph-zero" />}
           {b.absent && b.i > first && b.i < last && <text x={x(b.i)} y={y(0) - 2} className="ph-gap" textAnchor="middle">·</text>}
-          {!b.absent && labelled(b) && <text x={x(b.i)} y={y(b.value) - 3} className="ph-val" textAnchor="middle">{unit === 'seats' || !b.part ? b.value : percent(b.part[0], b.part[1], digits, undefined, { svg: true })}</text>}
-          {sel && <rect x={x(b.i) - slot / 2 + 0.5} y={mt - 3} width={slot - 1} height={H + 3} className="ph-selbox" />}
+          {!b.absent && labelled(b) && <text x={x(b.i)} y={y(b.value) - 3} className={`ph-val ${sel ? 'sel' : ''}`} textAnchor="middle">{unit === 'seats' || !b.part ? b.value : percent(b.part[0], b.part[1], digits, undefined, { svg: true })}</text>}
+          {sel && !compact && <rect className="ph-focusring" x={x(b.i) - slotW / 2 + 1} y={mt - 5} width={slotW - 2} height={H + 5} rx={3} />}
         </g>;
       })}
-      {bars.map((b) => (b.i % every === 0 || b.i === n - 1) && !(b.i !== n - 1 && n - 1 - b.i < every && every > 1) &&
-        <text key={b.i} x={x(b.i)} y={mt + H + xl - 3} className="ph-axis" textAnchor="middle">{compact || phone ? yearLabel(b.i, lang).slice(-4) : yearLabel(b.i, lang, true)}</text>)}
-      {!compact && eras.map((e, k) => { const w = (e.to - e.from + 1) * slot - 2, fits = w > e.name.length * 6.4 + 8; return <g key={k}>
-        <rect x={x(e.from) - slot / 2 + 1} y={mt + H + xl + 1} width={w} height={strip - 5} rx={3} className="ph-era"><title>{e.name}</title></rect>
+      {bars.map((b) => yearShown(b.i) &&
+        <text key={b.i} x={x(b.i) < 14 ? x(b.i) - bw / 2 : x(b.i) > width - 14 ? x(b.i) + bw / 2 : x(b.i)} y={mt + H + xl - 3} className={`ph-axis ${b.i === selected ? 'sel' : ''}`} textAnchor={x(b.i) < 14 ? 'start' : x(b.i) > width - 14 ? 'end' : 'middle'}>{compact || phone ? yearLabel(b.i, lang).slice(-4) : yearLabel(b.i, lang, true)}</text>)}
+      {!compact && eras.map((e, k) => { const w = (e.to - e.from + 1) * slotW - 2, fits = w > e.name.length * 6.4 + 8; return <g key={k}>
+        <rect x={x(e.from) - slotW / 2 + 1} y={mt + H + xl + 1} width={w} height={strip - 5} rx={3} className="ph-era"><title>{e.name}</title></rect>
         {fits && <text x={(x(e.from) + x(e.to)) / 2} y={mt + H + xl + strip - 8} className="ph-era-t" textAnchor="middle">{e.name}</text>}</g>; })}
-      {grouped.map((g, gi) => { const e = worst(g), cx = Math.min(width - mr - 6, Math.max(ml + 6, dateX(g[0].date, x))), cy = mt + H + xl + strip + (compact ? 5 : 9);
-        const row = rows[gi];
-        return <g key={e.key} className={`ph-ev ph-ev-${e.certainty}`}>
-          <line x1={cx} x2={cx} y1={mt} y2={mt + H} className="ph-evline" />
-          <circle cx={cx} cy={cy} r={compact ? 4 : 7} />
-          {!compact && <text x={cx} y={cy + 3.5} textAnchor="middle" className="ph-evg">{g.length > 1 ? g.length : e.certainty === 'confirmed' || e.certainty === 'probable' ? e.glyph : '?'}</text>}
-          {!compact && !phone && <text x={cx} y={cy + 19 + row * 12} textAnchor={cx > width - 50 ? 'end' : cx < 50 ? 'start' : 'middle'} className="ph-evw">{wordOf(g)}</text>}
-          <title>{g.map((x) => `${year(x.date)} · ${x.word}`).join('\n')}</title>
-        </g>; })}
+      {/* each event's flag names it (or gives its number in the list below when the words do not fit) */}
+      {placed.map((p) => {
+        const weak = certRank[p.worst.certainty] < certRank.probable;
+        const y1 = lineTop(p);
+        return <g key={p.items[0].key} className={`ph-ev ${weak ? 'weak' : ''}`} data-certainty={p.worst.certainty}>
+          <title>{p.title}</title>
+          {!compact && nums && <g className="ph-evnum"><rect x={p.x0} y={y1 - 8} width={p.w} height={15} rx={7.5} /><text x={p.x} y={y1 + 3.5} textAnchor="middle">{p.text}</text></g>}
+          {!compact && !nums && (() => { const right = p.x0 < p.x - 1;
+            return <g className="ph-flag"><rect x={p.x0} y={y1 - 12} width={p.w} height={13} rx={2} />
+              <text x={right ? p.x - 4 : p.x + 4} y={y1 - 2.5} textAnchor={right ? 'end' : 'start'}>{p.text}</text></g>; })()}
+        </g>;
+      })}
     </svg>
   );
 }
@@ -213,7 +259,7 @@ function useHistory(partyId: string, metric: 'seats' | 'share') {
       return { i: p.i, absent: false, value, solid, inside: p.role === 'inside', color: ownColour,
         label: `${yearLabel(p.i, lang)} · ${listShort(p.list, lang)}: ${metric === 'seats' ? L(`${p.seats} seats`, `${p.seats} מנדטים`) : fmtPct(p.votes, p.valid, digits)}${own}`, part: [p.votes, p.valid] };
     });
-    const chartEvents: ChartEvent[] = events.filter((r) => r.date).map((r) => ({ key: r.id, date: r.date, certainty: r.certainty, glyph: GLYPH[r.kind] ?? '•', word: kindWord(r, L) }));
+    const chartEvents: ChartEvent[] = events.map((r, k) => ({ key: r.id, date: r.date, certainty: r.certainty, word: kindWord(r, L), text: eventText(r, lang), n: k + 1 })).filter((e) => e.date);
     return { identity, points, events, bars, chartEvents, eras: erasOf(points, lang), firstRun };
   }, [partyId, metric, L, lang, digits]);
 }
@@ -262,7 +308,7 @@ export function ComparisonRowLine({ c, currentName }: { c: Comparison | null; cu
   if (c.kind === 'verify') return <span className="ph-rowline">{py}: <span className="ph-cert ph-cert-unknown">{L('To verify', 'לבדיקה')}</span></span>;
   const name = comparedName(c, lang);
   const same = c.kind === 'same' && name === currentName;
-  return <span className="ph-rowline">{py}: {c.before.seats} <SeatDelta value={c.after.seats - c.before.seats} />{!same && <span className="muted"> · <bdi>{name}</bdi>{c.kind === 'partial' ? ' *' : ''}</span>}</span>;
+  return <span className="ph-rowline">{py}: {c.before.seats} <SeatDelta value={c.after.seats - c.before.seats} />{!same && <span className="muted"> · <bdi>{name}</bdi>{c.kind === 'partial' ? L(' (partly)', ' (בחלקה)') : ''}</span>}</span>;
 }
 
 /** The row line for screen readers: ", 2022: 5 seats, 6 more, compared with Hadash–Ta'al and Balad". */
@@ -295,7 +341,7 @@ export function ComparisonLine({ c }: { c: Comparison | null }) {
     {c.certainty !== 'confirmed' && <CertChip c={c.certainty} />}
     <Info title={L('Compared with', 'מושווה ל')}><ComparisonWhy c={c} /></Info>
     {(c.notCounted.length > 0 || c.left.length > 0) && <div className="tiny muted ph-notcounted">
-      {c.notCounted.map((n) => { const h = prevList(c, n.listId); return <span key={`${n.partyId}${n.listId}`}>{L(`${partyShort(n.partyId, 'en')} not counted: it ran inside ${h ? listShort(h, 'en') : '?'} in ${py}.`, `${partyShort(n.partyId, 'he')} לא נספרה: ${hebrewPrefix('ב', py)} רצה בתוך ${h ? listShort(h, 'he') : '?'}.`)} </span>; })}
+      {c.notCounted.map((n) => { const h = prevList(c, n.listId); return <span key={`${n.partyId}${n.listId}`}>{L(`${partyShort(n.partyId, 'en')} not counted: it ran inside ${h ? listShort(h, 'en') : 'another list'} in ${py}.`, `${partyShort(n.partyId, 'he')} לא נספרה: ${hebrewPrefix('ב', py)} רצה בתוך ${h ? listShort(h, 'he') : 'רשימה אחרת'}.`)} </span>; })}
       {c.left.map((n) => <span key={`l${n.partyId}`}>{L(`${partyShort(n.partyId, 'en')} has since left.`, `${partyShort(n.partyId, 'he')} עזבה מאז.`)} </span>)}
     </div>}
   </div>;
@@ -337,23 +383,8 @@ export function CompareNote({ c, currentName }: { c: Comparison | null; currentN
   return <span className="tiny muted cmp-note ph-cmpnote">
     {c.kind === 'group' ? <>= <bdi>{comparedName(c, lang)}</bdi> ({py})</> : !plain && <>= <bdi>{countedWithHow(c, lang)}</bdi> {py}</>}
     {!plain && c.certainty !== 'confirmed' && <> <CertChip c={c.certainty} /></>}
-    {c.notCounted.map((n, k) => { const h = prevList(c, n.listId); return <span key={n.partyId + n.listId} className="ph-cmpnote-nc">{plain && k === 0 ? '' : ' · '}{L(`not counted: ${partyShort(n.partyId, 'en')} ran inside ${h ? listShort(h, 'en') : '?'} in ${py}`, `לא נספרה: ${partyShort(n.partyId, 'he')} רצה בתוך ${h ? listShort(h, 'he') : '?'} ${hebrewPrefix('ב', py)}`)}</span>; })}
+    {c.notCounted.map((n, k) => { const h = prevList(c, n.listId); return <span key={n.partyId + n.listId} className="ph-cmpnote-nc">{plain && k === 0 ? '' : ' · '}{L(`not counted: ${partyShort(n.partyId, 'en')} ran inside ${h ? listShort(h, 'en') : 'another list'} in ${py}`, `לא נספרה: ${partyShort(n.partyId, 'he')} רצה בתוך ${h ? listShort(h, 'he') : 'רשימה אחרת'} ${hebrewPrefix('ב', py)}`)}</span>; })}
   </span>;
-}
-
-/** Compare's Matching panel: "Compared with the whole 2022 lists: Labor (4) + Meretz (0)", each relation with its chip and evidence. */
-export function ComparisonReason({ c }: { c: Comparison | null }) {
-  const L = useL(), lang = useLang();
-  if (!c || c.kind === 'first' || c.kind === 'new') return null;
-  const py = prevYear(c, lang);
-  if (c.kind === 'verify') return <div className="small ph-reason"><span>{L('Not compared yet: a deciding link is to verify.', 'טרם הושווה: קשר מכריע ממתין לבדיקה.')}</span>
-    {c.toVerify.map((r) => <span key={r.id} className="ph-reason-rel">{eventText(r, lang)} ({year(r.date)}) <CertChip c={r.certainty} /> <Evidence r={r} /></span>)}</div>;
-  const lists = c.counted.map((M) => { const h = prevList(c, M.id); return `${h ? listShort(h, lang) : M.id} (${M.seats})`; }).join(' + ');
-  return <div className="small ph-reason">
-    <span>{L(`Compared with the whole ${py} lists: `, `מושווה לרשימות ${hebrewPrefix('מ', py)} במלואן: `)}<bdi>{lists}</bdi>{c.kind === 'group' ? L(` (together with ${c.group.length} lists now)`, ` (יחד עם ${c.group.length} רשימות כיום)`) : ''}</span>
-    {c.relations.map((r) => <span key={r.id} className="ph-reason-rel">{eventText(r, lang)} ({year(r.date)}) <CertChip c={r.certainty} /> <Evidence r={r} /></span>)}
-    {c.notCounted.map((n) => { const h = prevList(c, n.listId); return <span key={n.partyId + n.listId} className="tiny muted">{L(`Not counted: ${partyShort(n.partyId, 'en')} ran inside ${h ? listShort(h, 'en') : '?'} in ${py}; its votes cannot be divided.`, `לא נספרה: ${partyShort(n.partyId, 'he')} רצה בתוך ${h ? listShort(h, 'he') : '?'} ${hebrewPrefix('ב', py)}; אי אפשר לחלק את קולותיה.`)}</span>; })}
-  </div>;
 }
 
 /** The evidence behind a comparison: the earlier lists, why, how sure. Used in the panel and in Compare. */
@@ -412,7 +443,7 @@ export function PartyHistorySection({ s, r, listId }: { s: Scenario; r: Allocati
         <HistoryChart compact bars={h.bars} eras={h.eras} events={h.chartEvents} selected={k} onSelect={() => setOpen(true)} width={width} height={96} unit="seats"
           label={L(`${partyShort(active, 'en')}: seats at each election`, `${partyShort(active, 'he')}: מנדטים בכל בחירות`)} />
       </button>
-      <Legend compact />
+      <Legend compact events={h.chartEvents} />
     </div>}
     <ComparisonLine c={c} />
     <button type="button" className="btn small ph-full" onClick={() => setOpen(true)}>{L('Full history', 'היסטוריה מלאה')} <span aria-hidden>{lang === 'he' ? '‹' : '›'}</span></button>
@@ -420,8 +451,10 @@ export function PartyHistorySection({ s, r, listId }: { s: Scenario; r: Allocati
   </section>;
 }
 
-function Legend({ compact, metric = 'seats' }: { compact?: boolean; metric?: 'seats' | 'share' }) {
+/** What the chart's marks mean, in words: bars, partners' share, gaps, event lines (and why they sit between bars). */
+function Legend({ compact, metric = 'seats', events = [] }: { compact?: boolean; metric?: 'seats' | 'share'; events?: ChartEvent[] }) {
   const L = useL();
+  const weak = events.some((e) => certRank[e.certainty] < certRank.probable);
   return <div className={`ph-legend ${compact ? 'tiny' : 'small'}`}>
     {metric === 'seats' ? <>
       <span><i className="ph-sw solid" />{L('Own members', 'חברי המפלגה')}</span>
@@ -431,8 +464,10 @@ function Legend({ compact, metric = 'seats' }: { compact?: boolean; metric?: 'se
       <span><i className="ph-sw hatch" />{L('Joint list (whole list)', 'רשימה משותפת (כולה)')}</span>
       <span><i className="ph-sw dash" />{L('Inside another’s list', 'בתוך רשימה אחרת')}</span>
     </>}
-    <span><b className="ph-gapkey" aria-hidden>·</b> {L('Did not run', 'לא התמודדה')}</span>
-    {!compact && <Info title={L('Party history', 'היסטוריית מפלגה')}>{L('Each bar is the whole list the party ran in. Seats: solid is the party’s own elected members, hatched its partners’ (official candidate lists and Knesset records). Vote share: a joint list’s votes belong to the whole list and are never divided. Markers below are dated events; a dashed ring is probable, “?” is to verify.', 'כל עמודה היא הרשימה כולה שבה רצה המפלגה. מנדטים: החלק המלא הוא חברי המפלגה שנבחרו, המקווקו – חברי השותפות (רשימות המועמדים ורשומות הכנסת). שיעור קולות: קולות רשימה משותפת שייכים לרשימה כולה ואינם מחולקים. הסימונים מתחת הם אירועים מתוארכים; טבעת מקווקוות – סביר, ״?״ – לבדיקה.')}</Info>}
+    <span><b className="ph-gapkey" aria-hidden>·</b> {L('Did not run', 'לא התמודדה')}{!compact && <Info title={L('Party history', 'היסטוריית מפלגה')}>{L('Each bar is the whole list the party ran in. Seats: solid is the party’s own elected members, hatched its partners’ (official candidate lists and Knesset records). Vote share: a joint list’s votes belong to the whole list and are never divided. The shaded column is the election you are looking at.', 'כל עמודה היא הרשימה כולה שבה רצה המפלגה. מנדטים: החלק המלא הוא חברי המפלגה שנבחרו, המקווקו – חברי השותפות (רשימות המועמדים ורשומות הכנסת). שיעור קולות: קולות רשימה משותפת שייכים לרשימה כולה ואינם מחולקים. העמודה המוצללת היא הבחירות שבהן אתם צופים.')}</Info>}</span>
+    {events.length > 0 && <span className="ph-evkey"><i className="ph-sw evline" />{L('Merger, split or new name', 'איחוד, פילוג או שם חדש')}
+      {!compact && <Info title={L('Where events are drawn', 'היכן מסומנים אירועים')}>{L('Bars are elections, evenly spaced. This is not a time scale: Knessets last different lengths. Each line sits between the two elections the event fell between, at the same point of that gap as in time. Example: Kadima split from Likud on 23 Nov 2005, 89% of the way from the 2003 election to the 2006 one. A date known only by its year is placed in mid-year.', 'העמודות הן מערכות בחירות, במרווחים שווים. זה אינו ציר זמן: משך כל כנסת שונה. כל קו נמצא בין שתי הבחירות שביניהן אירע האירוע, באותה נקודה בפער כמו בזמן. לדוגמה: קדימה התפצלה מהליכוד ב־23 בנובמבר 2005, 89% מהדרך בין בחירות 2003 לבחירות 2006. תאריך שידועה בו רק השנה מסומן באמצע השנה.')}</Info>}</span>}
+    {weak && <span><i className="ph-sw evline weak" />{L('Dashed: not yet established', 'מקווקו: טרם בוסס')}</span>}
   </div>;
 }
 
@@ -446,7 +481,7 @@ function PointCard({ p, identity }: { p: SeriesPoint; identity: Identity }) {
     <div><b>{yearLabel(p.i, lang)} · <bdi>{listShort(p.list, lang)}</bdi></b></div>
     <div>{L(`${p.seats} seats`, `${p.seats} מנדטים`)} · <bdi dir="ltr">{percent(p.votes, p.valid, digits)}</bdi> · <bdi dir="ltr">{fmtInt(p.votes)}</bdi> {L('votes', 'קולות')}</div>
     {joint && <div className="small">{p.role === 'led' ? L(`Led a joint list with ${partners}`, `הובילה רשימה משותפת עם ${partners}`) : L(`Ran inside a list led by ${partyShort(p.list.lead ?? p.partners[0], 'en')}`, `רצה ברשימה בראשות ${partyShort(p.list.lead ?? p.partners[0], 'he')}`)}</div>}
-    {joint && <div className="small">{L('Elected: ', 'נבחרו: ')}{[...p.members, ...p.partners].map((q) => { const n = p.list!.elected[q]; return `${partyShort(q, lang)} ${n ?? '?'}`; }).join(' · ')}{p.list.unknownElected > 0 ? L(` · unknown ${p.list.unknownElected}`, ` · לא ידוע ${p.list.unknownElected}`) : ''}</div>}
+    {joint && <div className="small">{L('Elected: ', 'נבחרו: ')}{[...p.members, ...p.partners].map((q) => { const n = p.list!.elected[q]; return `${partyShort(q, lang)} ${n ?? L('unknown', 'לא ידוע')}`; }).join(' · ')}{p.list.unknownElected > 0 ? L(` · unknown ${p.list.unknownElected}`, ` · לא ידוע ${p.list.unknownElected}`) : ''}</div>}
     {joint && <div className="tiny muted">{L('Votes are for the whole list', 'הקולות ניתנו לרשימה כולה')}</div>}
     {p.era && partyShort(p.era, lang) !== listShort(p.list, lang) && <div className="tiny muted">{L(`As ${partyShort(p.era, 'en')}`, `בשם ${partyShort(p.era, 'he')}`)}</div>}
   </div>;
@@ -490,19 +525,19 @@ export function HistorySheet({ parties, initial, electionIdx, onClose }: { parti
       <HistoryChart bars={h.bars} eras={h.eras} events={h.chartEvents} selected={sel} onSelect={setSel} width={width} height={phone ? 230 : 290} unit={metric} phone={phone}
         label={L(`${partyShort(pid, 'en')}: ${metric === 'seats' ? 'seats' : 'vote share'} at each election. Arrow keys move between elections.`, `${partyShort(pid, 'he')}: ${metric === 'seats' ? 'מנדטים' : 'שיעור קולות'} בכל בחירות. מקשי החצים עוברים בין בחירות.`)} />
     </div>
-    <Legend metric={metric} />
+    <Legend metric={metric} events={h.chartEvents} />
     {cur && <PointCard p={cur} identity={h.identity} />}
     {(h.events.length > 0 || open.length > 0) && <>
       <h3>{L('Events', 'אירועים')}</h3>
       <ul className="ph-events">
-        {h.events.map((r) => <li key={r.id}>
-          <span className={`ph-evdot ph-ev-${r.certainty}`} aria-hidden>{r.certainty === 'confirmed' || r.certainty === 'probable' ? GLYPH[r.kind] ?? '•' : '?'}</span>
+        {h.events.map((r, k) => <li key={r.id}>
+          <span className={`ph-evdot ${certRank[r.certainty] < certRank.probable ? 'weak' : ''}`} aria-hidden>{r.date ? k + 1 : ''}</span>
           <span className="ph-evyear"><bdi dir="ltr">{dateText(r)}</bdi></span>
           <span>{eventText(r, lang)}</span>
           <span className="ph-evmeta"><CertChip c={r.certainty} /><Evidence r={r} /></span>
         </li>)}
         {open.map((o) => <li key={o.id}>
-          <span className="ph-evdot ph-ev-unknown" aria-hidden>?</span><span className="ph-evyear">—</span>
+          <span className="ph-evdot weak" aria-hidden /><span className="ph-evyear">—</span>
           <span>{L(`Registration record not yet checked: ${names(o.partyIds.filter((p) => !p.startsWith('vehicle-')), 'en')}`, `רישום המפלגות טרם נבדק: ${names(o.partyIds.filter((p) => !p.startsWith('vehicle-')), 'he')}`)}</span>
           <span className="ph-evmeta"><CertChip c="unknown" /></span>
         </li>)}
@@ -515,7 +550,7 @@ export function HistorySheet({ parties, initial, electionIdx, onClose }: { parti
         <tbody>{ran.map((p) => <tr key={p.i} className={p.i === sel ? 'sel' : ''}>
           <td><button type="button" className="table-action" onClick={() => setSel(p.i)}>{yearLabel(p.i, lang)}</button></td>
           <td><bdi>{listShort(p.list!, lang)}</bdi>{p.role !== 'alone' && <span className="tiny muted"> · {p.role === 'led' ? L('joint, led', 'משותפת, בראשה') : L('joint, inside', 'משותפת, בתוכה')}</span>}</td>
-          <td className="n">{p.seats}</td><td className="n">{p.role === 'alone' ? '—' : p.own ?? '?'}</td>
+          <td className="n">{p.seats}</td><td className="n">{p.role === 'alone' ? '—' : p.own ?? L('unknown', 'לא ידוע')}</td>
           <td className="n"><bdi dir="ltr">{fmtInt(p.votes)}</bdi></td><td className="n"><bdi dir="ltr">{percent(p.votes, p.valid, digits)}</bdi></td>
         </tr>)}</tbody>
       </table></div>
