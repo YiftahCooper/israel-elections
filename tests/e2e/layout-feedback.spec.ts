@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { barPart } from './barMenu.ts';
 for (const theme of ['light','dark']) for (const lang of ['en', 'he']) for (const width of [1500, 1024, 390]) test(`independent panels and stationary edits ${lang} ${theme} ${width}`, async ({ page }) => {
   await page.setViewportSize({ width, height: 900 });
   await page.addInitScript(({lang,theme}) => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang,theme,level:'expert',hintDismissed:true})), {lang,theme});
@@ -59,8 +60,8 @@ for (const theme of ['light','dark']) for (const lang of ['en','he']) for (const
  await expect(page.locator('.work > p')).toHaveCount(0);
  const end=await page.locator('.board').evaluate(el=>el.getBoundingClientRect().bottom);
  expect(844-end).toBeLessThanOrEqual(29);
- await page.locator('.band .election-about summary').click();
- await expect(page.locator('.band .independence-note')).toContainText(lang==='en'?'Independent election simulator':'סימולטור בחירות עצמאי');
+ await (await barPart(page, '.election-about summary')).click();
+ await expect(page.locator('.band .independence-note, #phone-menu .independence-note')).toContainText(lang==='en'?'Independent election simulator':'סימולטור בחירות עצמאי');
 });
 
 for(const width of [1500,390]) test(`chamber hover card stays inside a short viewport ${width}`,async({page})=>{

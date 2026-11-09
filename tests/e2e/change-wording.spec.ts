@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { barPart } from './barMenu.ts';
 import { readFileSync } from 'node:fs';
 import { deflateRawSync } from 'node:zlib';
 const ds = JSON.parse(readFileSync('public/data/k25.json', 'utf8'));
@@ -42,7 +43,7 @@ for (const lang of ['en', 'he'] as const) for (const width of [390, 1024, 1500])
     await session.getByRole('button', { name: lang === 'he' ? 'השינויים שלכם' : 'Your changes', exact: true }).click();
     await expect(session.locator('.info .pop')).toContainText(lang === 'he' ? 'מהתוצאה הרשמית' : 'from the official result');
     await page.keyboard.press('Escape');
-    await page.locator('.band .scenario-switcher .choice-trigger').click();
+    await (await barPart(page, '.scenario-switcher .choice-trigger')).click();
     await expect(page.locator('.scenario-changes summary')).toContainText(full);
     await page.keyboard.press('Escape');
   });
@@ -75,7 +76,7 @@ for (const lang of ['en', 'he'] as const) for (const width of [390, 1024, 1500])
       await expect(heading).toHaveText(full + (lang === 'he' ? ' · 4 מהתוצאה הרשמית' : ' · 4 from the official result'));
       await expect(page.locator('.session .history li')).toHaveCount(4);
       await page.keyboard.press('Escape');
-      await page.locator('.band .scenario-switcher .choice-trigger').click();
+      await (await barPart(page, '.scenario-switcher .choice-trigger')).click();
       await expect(page.locator('.scenario-changes summary')).toContainText(full);
       await page.keyboard.press('Escape');
       await page.locator('.session').getByRole('button', {name:lang === 'he' ? 'השינויים שלכם' : 'Your changes',exact:true}).click();

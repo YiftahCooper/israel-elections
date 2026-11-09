@@ -21,3 +21,15 @@ export async function barLanguage(page: Page, lang: 'en' | 'he') {
   if (await openBarMenu(page)) { await page.locator('#phone-menu').getByRole('button', { name: lang === 'he' ? 'עברית' : 'English', exact: true }).click(); await closeBarMenu(page); }
   else await page.getByRole('button', { name: lang === 'he' ? 'עב' : 'EN', exact: true }).click();
 }
+
+/** Settings from the bar's gear (desktop, tablet) or its Menu (phone). */
+export async function openSettings(page: Page, lang: 'en' | 'he' | string = 'en') {
+  const name = lang === 'he' ? 'הגדרות' : 'Settings';
+  if (await openBarMenu(page)) await page.locator('#phone-menu').getByRole('button', { name, exact: true }).click();
+  else await page.locator('.band').getByRole('button', { name, exact: true }).click();
+}
+
+/** Where the bar's scenario switcher and About are at this width: the bar itself, or its open Menu on a phone. */
+export async function barPart(page: Page, selector: string) {
+  return page.locator(await openBarMenu(page) ? `#phone-menu ${selector}` : `.band ${selector}`);
+}

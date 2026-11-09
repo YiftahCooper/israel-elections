@@ -1,4 +1,5 @@
 import {expect,test} from '@playwright/test';
+import { openSettings } from './barMenu.ts';
 import {choose} from './choices.ts';
 for(const lang of ['en','he']) for(const theme of ['light','dark']) for(const width of [1500,1024,390]) test(`component identities ${lang} ${theme} ${width}`,async({page})=>{
  test.setTimeout(120000);
@@ -47,7 +48,7 @@ for(const lang of ['en','he']) for(const theme of ['light','dark']) for(const wi
     }
    }
    await page.getByRole('tab',{name:lang==='en'?'Rules':'כללים',exact:true}).click();
-   await page.locator('.band').getByRole('button', { name: lang === 'en' ? 'Settings' : 'הגדרות', exact: true }).click();
+   await openSettings(page, lang);
    await page.getByRole('checkbox',{name:lang==='en'?'Party colour in seats':'צבע המפלגה במושבים',exact:true}).uncheck();
   await page.keyboard.press('Escape');
    await page.getByRole('tab',{name:lang==='en'?'Overview':'תמונת מצב',exact:true}).click();
