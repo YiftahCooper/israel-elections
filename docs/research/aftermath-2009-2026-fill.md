@@ -1,5 +1,10 @@
 # After-election research handoff: k18–k26 (except pilot k24)
 
+**9 November 2026 update:** the k26 retrieval gaps below are superseded. Official President’s House
+notices confirm every consulted faction, the 67/46/7 totals, and Eisenkot’s completed tasking on
+8 November. No new government is verified. See [the updated recommendation record](pm-recommendations-2009-2026.md#2026--26th-knesset-consultations-45-november-2026).
+The remainder preserves the original 5 November research handoff.
+
 Checked 5 November 2026; k26 retrieval cutoff **20:36 Israel time**. Local branch
 `t3/fd6ac3d1`, based on `integ-1105` at `3122385`. No push or integration merge.
 
