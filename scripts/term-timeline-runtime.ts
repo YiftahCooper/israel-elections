@@ -302,15 +302,17 @@ function compileSteps(k: number, opening: string, end: string, seats: SeatRuntim
         if (partyLevel && !(marker === 'D2')) {
           for (const x of current()) if (factions.includes(factionAt(x.t, d) ?? -1) && !rebels.has(x.t.personId)) {
             const target = dir ?? (side.get(x.t.personId) === 'c' ? 'o' : 'c');
-            if (move(x.t.personId, target)) marks.push([x.seat, target === 'c' ? 'D4c' : 'D4o']);
+            // a graded D4 draws its arrows even when an announcement the day before already moved the party (the research counts
+            // New Hope in the coalition from Sa'ar's 29 Sep 2024 announcement; the D4 is the 30 Sep approval)
+            if (move(x.t.personId, target) || (fromData && marker === 'D4' && side.get(x.t.personId) === target)) marks.push([x.seat, target === 'c' ? 'D4c' : 'D4o']);
           }
           if (!fromData) marker = marks.length ? 'D4' : null;
         } else {
           for (const p of persons) {
             const target = dir ?? (side.get(p) === 'c' ? 'o' : 'c');
-            if (!move(p, target)) continue;
-            if (target === 'o') rebels.set(p, e.id); else rebels.delete(p);
-            if (marker === 'D4') { const s = seatOfPerson(p, d); if (s >= 0) marks.push([s, target === 'c' ? 'D4c' : 'D4o']); }
+            const moved1 = move(p, target);
+            if (moved1) { if (target === 'o') rebels.set(p, e.id); else rebels.delete(p); }
+            if (marker === 'D4' && (moved1 || (fromData && side.get(p) === target))) { const s = seatOfPerson(p, d); if (s >= 0) marks.push([s, target === 'c' ? 'D4c' : 'D4o']); }
           }
           if (!fromData) marker = e.kind === 'coalition-exit-statement' ? 'D2' : null;
           if (marker !== 'D2') for (const p of persons) if (rebels.get(p) === e.id) rebels.delete(p);

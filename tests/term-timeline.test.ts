@@ -133,6 +133,15 @@ describe('markers (owner, 11 Nov)', () => {
     const v = view(k24, '2021-04-08');
     expect(stepMarks(v).get(k24.openingSeat[DERI])).toBe('rep');
   });
+  test('every party move graded D4 draws its arrows, even when an announcement the day before already moved the party', () => {
+    for (const k of [24, 25] as const) {
+      const d4 = rt.terms[k].timeline!.steps.flatMap((s) => s.items).filter((it) => it.marker === 'D4');
+      expect(d4.length).toBeGreaterThan(0);
+      for (const it of d4) expect(it.marks.length, it.id).toBeGreaterThan(0);
+    }
+    const newHope = rt.terms[25].timeline!.steps.flatMap((s) => s.items).find((it) => it.id === 'k25-new-hope-return')!;
+    expect(newHope.marks.map((m) => m[1])).toEqual(['D4c', 'D4c', 'D4c', 'D4c']);
+  });
   test('hidden items draw no marks; rebels always show', () => {
     const v = visibleSteps(k24, at('simple')).find((s) => s.step.date === '2022-06-30')!;
     expect([...stepMarks(v).values()].every((m) => m === 'D2')).toBe(true);
