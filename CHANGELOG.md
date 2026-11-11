@@ -2,6 +2,7 @@
 
 ## 7 November 2026 — Settings
 
+- After the election (12 Nov): the Knesset-on-a-date arrows stop at every event the bar shows at the level, votes and faction changes included (locked by tests); the 21st and 22nd Knessets, which formed no government, get the timeline too, with the formation attempts and the dissolution; faction moves are named in English.
 - Logos (12 Nov): add eight campaign-confirmed list/party assignments from official archived sites (2013, 2015, 2021 and 2022), with original-byte checks; keep a conflicting 2020 header unassigned.
 
 - After the election (11 Nov): the 2021 and 2022 Knessets get “The Knesset on a date”: ◀ ▶ steps through the term (Simple the government and the term, Standard also votes and single MKs, Expert everything, with seat changes chosen in Settings), the seat chart as it stood after each step with coalition seats on the left, rebels marked “!” and drawn on the side they moved to, “voted against/abstained but stayed”, side-change arrows and replaced seats; any seat opens a card of everyone who held it during the term (also on the election chart).

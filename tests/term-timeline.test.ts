@@ -4,8 +4,8 @@ import { describe, expect, test } from 'vitest';
 import { mkdtempSync, mkdirSync, readFileSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { compileTermTimeline, type TermRuntime } from '../scripts/term-timeline-runtime.ts';
-import { chamberOrder, holderAt, stepMarks, visibleSteps, type TimelineChoice } from '../src/history/termTimeline.ts';
+import { compileTermTimeline, fixOrdinals, type TermRuntime } from '../scripts/term-timeline-runtime.ts';
+import { chamberOrder, holderAt, stepMarks, visibleItem, visibleSteps, type TimelineChoice } from '../src/history/termTimeline.ts';
 import { settingDefault } from '../src/app/settings.ts';
 
 const rt = compileTermTimeline();
@@ -36,8 +36,9 @@ describe('seats and who held them', () => {
     expect(h.slice(1).map((x) => x[4])).toEqual(['record', 'record', 'record']);
     expect(k24.seats[seat].list).toBe('24-שס');
   });
-  test('only terms whose research establishes the government’s support have a timeline', () => {
-    expect(Object.values(rt.terms).filter((t) => t.timeline).map((t) => t.k)).toEqual([24, 25]);
+  test('a timeline only where the sides can be derived: the 24th and 25th, and the two Knessets in which no government was formed', () => {
+    expect(Object.values(rt.terms).filter((t) => t.timeline).map((t) => t.k)).toEqual([21, 22, 24, 25]);
+    expect(Object.values(rt.terms).filter((t) => t.timeline?.noGovernment).map((t) => t.k)).toEqual([21, 22]);
   });
 });
 
@@ -98,6 +99,91 @@ describe('levels (owner, 11 Nov): Simple fewest, Standard more, Expert all', () 
     expect(settingDefault('timelineSeatChanges', 'simple')).toBe('off');
     expect(settingDefault('timelineSeatChanges', 'standard')).toBe('important');
     expect(settingDefault('timelineSeatChanges', 'expert')).toBe('all');
+  });
+});
+
+describe('stepping (owner, 12 Nov): the arrows stop at every event the bar shows, and nowhere else', () => {
+  const LEVELS = ['simple', 'standard', 'expert'] as const, SEATS = ['off', 'important', 'all'] as const;
+  const KINDS = [ALL, { norwegian: false, left: true, unknown: true }, { norwegian: true, left: false, unknown: false }];
+  const timelines = Object.values(rt.terms).filter((t) => t.timeline);
+  test('every level and setting: one step per date in date order, each holding exactly the items shown that date', () => {
+    for (const t of timelines) for (const level of LEVELS) for (const seats of SEATS) for (const kinds of KINDS) {
+      const c = at(level, seats, kinds), steps = visibleSteps(t, c);
+      const dates = steps.map((s) => s.step.date);
+      expect(dates, `k${t.k} ${level} ${seats}`).toEqual([...new Set(dates)].sort());
+      // nothing shown is unreachable: every item the level shows is in the step of its date, and only there
+      const shown = t.timeline!.steps.flatMap((s) => s.items.filter((it) => visibleItem(it, c.level, c.seatChanges, c.kinds)).map((it) => `${s.date} ${it.id}`));
+      expect(steps.flatMap((s) => s.items.map((it) => `${s.step.date} ${it.id}`)), `k${t.k} ${level} ${seats}`).toEqual(shown);
+      // and the arrows never stop where nothing is shown
+      expect(steps.every((s) => s.items.length > 0)).toBe(true);
+    }
+  });
+  test('a higher level keeps every stop of the level below', () => {
+    for (const t of timelines) {
+      const d = (level: (typeof LEVELS)[number]) => new Set(visibleSteps(t, at(level, settingDefault('timelineSeatChanges', level))).map((s) => s.step.date));
+      const [simple, standard, expert] = LEVELS.map(d);
+      for (const x of simple) expect(standard.has(x), `k${t.k} ${x}`).toBe(true);
+      for (const x of standard) expect(expert.has(x), `k${t.k} ${x}`).toBe(true);
+    }
+  });
+  test('events that move no seat are steps too (budget votes, votes, faction changes), and the chart stays as it was', () => {
+    const kinds = (t: TermRuntime) => new Set(visibleSteps(t, at('standard', 'important')).flatMap((s) => s.items.map((it) => it.kind)));
+    for (const kind of ['budget-vote', 'legislative-vote', 'confidence-vote', 'faction-split']) expect(kinds(k24).has(kind), kind).toBe(true);
+    expect(kinds(k25).has('faction-membership-change')).toBe(true);
+    let checked = 0;
+    for (const t of [k24, k25]) {
+      const all = t.timeline!.steps;
+      for (const [i, s] of all.entries()) {
+        if (i === 0 || !s.items.every((it) => it.type === 'event' && it.kind !== 'government-sworn-in' && !it.moved.length && !it.marks.some((m) => m[1] === 'D4c' || m[1] === 'D4o'))) continue;
+        // a step of events only, none moving anyone: the same sides as the day before, the same people in the seats
+        checked++;
+        expect(new Set(s.coalition), `k${t.k} ${s.date}`).toEqual(new Set(all[i - 1].coalition));
+        for (let seat = 0; seat < 120; seat++) expect(holderAt(t, seat, s.date), `k${t.k} ${s.date} seat ${seat}`).toBe(holderAt(t, seat, all[i - 1].date));
+      }
+    }
+    expect(checked).toBeGreaterThan(30);
+    // the first budget vote of the 24th Knesset: a step at Standard, 61 as before, with its line and sources
+    const budget = visibleSteps(k24, at('standard', 'important')).find((s) => s.step.date === '2021-11-04')!;
+    expect(budget.items.map((it) => it.kind)).toEqual(['budget-vote']);
+    expect(budget.step.coalition).toHaveLength(61);
+    expect(budget.items[0].en).toBeTruthy(); expect(budget.items[0].sources.length).toBeGreaterThan(0);
+  });
+  test('events sharing a timeline group share a date, so they are one step', () => {
+    expect(rt.anomalies.filter((a) => a.includes('timeline group'))).toEqual([]);
+    const ev = JSON.parse(readFileSync('data/research/knesset-events/k24.json', 'utf8')) as { events: { id: string; timelineGroup?: string }[] };
+    const group = ev.events.filter((e) => e.timelineGroup === 'k24-government36').map((e) => e.id);
+    expect(group).toHaveLength(2);
+    const step24 = k24.timeline!.steps.filter((s) => s.items.some((it) => group.includes(it.id)));
+    expect(step24).toHaveLength(1);
+  });
+  test('a faction move carries its factions and head count, so the app can name them', () => {
+    const it = k25.timeline!.steps.flatMap((s) => s.items).find((x) => x.id === 'k25-observed-faction-5')!;
+    expect(it.factions).toEqual([1098, 1110]); expect(it.count).toBe(8);
+  });
+  test('ordinals in the research’s generated English are corrected', () => {
+    expect(fixOrdinals('21th Knesset membership ends as the 22th Knesset begins.')).toBe('21st Knesset membership ends as the 22nd Knesset begins.');
+    expect(fixOrdinals('1th, 2th, 3th, 11th, 12th, 13th, 111th, 24th')).toBe('1st, 2nd, 3rd, 11th, 12th, 13th, 111th, 24th');
+  });
+});
+
+describe('Knessets in which no government was formed (21st, 22nd)', () => {
+  const k21 = rt.terms[21], k22 = rt.terms[22];
+  test('no sides at any step; the formation attempts and the dissolution are steps, with their sources', () => {
+    for (const t of [k21, k22]) expect(t.timeline!.steps.every((s) => s.coalition === null)).toBe(true);
+    expect(visibleSteps(k21, at('simple')).map((s) => s.step.date)).toEqual(['2019-04-30', '2019-05-30', '2019-10-03']);
+    expect(visibleSteps(k22, at('simple')).map((s) => s.step.date)).toEqual(['2019-10-03', '2019-12-12', '2020-03-16']);
+    const kinds22 = visibleSteps(k22, at('standard', 'important')).flatMap((s) => s.items.map((it) => it.kind));
+    expect(kinds22.filter((k) => k === 'formation-mandate-returned')).toHaveLength(2); // Netanyahu, then Gantz
+    const dissolved = k21.timeline!.steps.flatMap((s) => s.items).find((it) => it.kind === 'formation-knesset-dissolved')!;
+    expect(dissolved.importanceFrom).toBe('rule');
+    expect(dissolved.en).toContain('74 for · 45 against');
+    expect(dissolved.sources.length).toBeGreaterThan(0);
+    // one dissolution, though the After the election data records it twice (formation and term end)
+    expect(k21.timeline!.steps.flatMap((s) => s.items).filter((it) => it.kind === 'formation-knesset-dissolved')).toHaveLength(1);
+  });
+  test('formation events before the first sitting are not on the bar', () => {
+    expect(k22.timeline!.steps[0].date).toBe(k22.opening);
+    expect(k22.timeline!.steps.flatMap((s) => s.items).some((it) => it.en?.includes('tasked Benjamin Netanyahu'))).toBe(false);
   });
 });
 

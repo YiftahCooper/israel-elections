@@ -96,8 +96,11 @@ export function TermTimeline({ ds }: { ds: ElectionDataset }) {
   const go = (i: number) => setDate(steps[Math.max(0, Math.min(steps.length - 1, i))].step.date);
   return <section className="tl" data-term={term.k} aria-labelledby="tl-title">
     <h3 id="tl-title"><span className="after-help-anchor">{L('The Knesset on ', 'הכנסת ב־')}<bdi>{formatDate(view.step.date, lang)}</bdi> <Info title={L('The Knesset on a date', 'הכנסת בתאריך')}>
-      {L('Step through the term: the chart shows every seat as it stood after that date. Coalition seats are on the left. Graphics run left to right in Hebrew too. A newcomer counts with their faction. The (i) beside each event gives its sources and how sure it is.',
-        'צעד אחר צעד לאורך הכהונה: התרשים מציג כל מושב כפי שהיה אחרי התאריך. מושבי הקואליציה משמאל. גם בעברית התרשימים משמאל לימין. מי שנכנס לכנסת נספר עם סיעתו. ה־(i) ליד כל אירוע מציג את מקורותיו ואת מידת הוודאות.')}</Info></span></h3>
+      {term.timeline.noGovernment
+        ? L('Step through the term: the chart shows every seat as it stood after that date. No government was formed in this Knesset, so the chart has no coalition side. Graphics run left to right in Hebrew too. The (i) beside each event gives its sources.',
+          'צעד אחר צעד לאורך הכהונה: התרשים מציג כל מושב כפי שהיה אחרי התאריך. בכנסת הזאת לא הוקמה ממשלה, ולכן אין בתרשים צד של קואליציה. גם בעברית התרשימים משמאל לימין. ה־(i) ליד כל אירוע מציג את מקורותיו.')
+        : L('Step through the term: the chart shows every seat as it stood after that date. Coalition seats are on the left. Graphics run left to right in Hebrew too. A newcomer counts with their faction. The (i) beside each event gives its sources and how sure it is.',
+          'צעד אחר צעד לאורך הכהונה: התרשים מציג כל מושב כפי שהיה אחרי התאריך. מושבי הקואליציה משמאל. גם בעברית התרשימים משמאל לימין. מי שנכנס לכנסת נספר עם סיעתו. ה־(i) ליד כל אירוע מציג את מקורותיו ואת מידת הוודאות.')}</Info></span></h3>
     <TimelineBar term={term} steps={steps} index={index} go={go} />
     <StepLines term={term} view={view} index={index} total={steps.length} ds={ds} mk={mk} />
     <Chamber key={term.k} term={term} view={view} ds={ds} mk={mk} />
@@ -118,6 +121,9 @@ function TimelineBar({ term, steps, index, go }: { term: TermRuntime; steps: Ste
   const prev = steps[index - 1], next = steps[index + 1], cur = steps[index];
   const tall = (s: StepView) => s.items.some((it) => it.moved.length || ['government-sworn-in', 'term-start', 'term-end'].includes(it.kind));
   const gov = steps.find((s) => s.items.some((it) => it.kind === 'government-sworn-in'));
+  // the bar's ends are named only where a step is there: a term whose records stop before its end has no "End"
+  const hasStart = steps.some((s) => s.items.some((it) => it.kind === 'term-start'));
+  const hasEnd = steps.some((s) => s.items.some((it) => it.kind === 'term-end'));
   const label = (s: StepView) => `${formatDate(s.step.date, lang)} · ${s.items.length} ${L(s.items.length === 1 ? 'event' : 'events', s.items.length === 1 ? 'אירוע' : 'אירועים')}`;
   // graphics run left to right in Hebrew too: earlier is always on the left, so ◀ means "earlier" in both languages
   return <div className="tl-bar" dir="ltr">
@@ -137,9 +143,9 @@ function TimelineBar({ term, steps, index, go }: { term: TermRuntime; steps: Ste
       <span className="tl-line" />
       {steps.map((s, i) => <i key={s.step.date} className={`tl-tick ${tall(s) ? 'tall' : ''}`} style={{ left: `${pos(term, s.step.date)}%` }} data-date={s.step.date} data-current={i === index ? '' : undefined} />)}
       <b className="tl-knob" style={{ left: `${pos(term, cur.step.date)}%` }} />
-      <span className="tl-end-label start">{L('Start', 'תחילה')}</span>
+      {hasStart && <span className="tl-end-label start">{L('Start', 'תחילה')}</span>}
       {gov && pos(term, gov.step.date) > 14 && pos(term, gov.step.date) < 86 && <span className="tl-end-label" style={{ left: `${pos(term, gov.step.date)}%` }}>{L('Sworn in', 'השבעה')}</span>}
-      <span className="tl-end-label end">{L('End', 'סוף')}</span>
+      {hasEnd && <span className="tl-end-label end">{L('End', 'סוף')}</span>}
     </div>
     <button type="button" className="btn tl-step" disabled={!next} onClick={() => go(index + 1)} aria-label={next ? L(`Next step: ${formatDate(next.step.date, lang)}`, `הצעד הבא: ${formatDate(next.step.date, lang)}`) : L('Next step', 'הצעד הבא')}>
       <span aria-hidden="true">▶</span>{next && <span className="tl-step-date"><bdi>{formatDate(next.step.date, lang)}</bdi></span>}</button>
@@ -147,6 +153,11 @@ function TimelineBar({ term, steps, index, go }: { term: TermRuntime; steps: Ste
 }
 
 function itemText(it: TimelineItem, term: TermRuntime, ds: ElectionDataset, mk: MkRuntime | null, lang: Lang, L: (en: string, he: string) => string): string {
+  // the research's generated English for a faction move names the factions by number: name them (the Hebrew already does)
+  if (lang === 'en' && it.factions && it.count && /factions \d+ and \d+/.test(it.en ?? '')) {
+    const name = (f: number) => { const x = mk?.factions[f]; return x ? englishLabel(x[1], x[0]) : '…'; };
+    return `${it.count} ${it.count === 1 ? 'MK' : 'MKs'} recorded moving from ${name(it.factions[0])} to ${name(it.factions[1])}.`;
+  }
   if (it.type === 'event' || it.en) return (lang === 'he' ? it.he : it.en) ?? '';
   const list = ds.lists.find((l) => l.id === term.seats[it.seat!].list);
   const where = list ? ` · ${listLabel(list, lang)}` : '';
@@ -249,7 +260,7 @@ function Chamber({ term, view, ds, mk }: { term: TermRuntime; view: StepView; ds
     <div className="tl-sides">{sides ? <>
       <span><i className="swatch bloc-swatch" style={{ ['--bc' as string]: COAL } as CSSProperties} />{L('Coalition', 'קואליציה')} <b><bdi dir="ltr">{coal}</bdi></b></span>
       <span><i className="swatch bloc-swatch" style={{ ['--bc' as string]: REST } as CSSProperties} />{L('Not in the coalition', 'לא בקואליציה')} <b><bdi dir="ltr">{filled - coal}</bdi></b></span>
-    </> : <span className="muted">{L('Before the government is sworn in', 'לפני השבעת הממשלה')}</span>}</div>
+    </> : <span className="muted">{term.timeline!.noGovernment ? L('No government was formed in this Knesset', 'בכנסת הזאת לא הוקמה ממשלה') : L('Before the government is sworn in', 'לפני השבעת הממשלה')}</span>}</div>
     {(rebels.length > 0 || keyKinds.length > 0) && <div className="tl-key">
       {rebels.length > 0 && <div className="tl-rebels"><div className="row"><MarkIcon kind="D2" /><b>{L('Rebel', 'מורד')} <bdi dir="ltr">{rebels.length}</bdi></b> <Info title={L('Rebel', 'מורד')}>{L('An MK who left the side their party is on. The seat moves to that side and keeps the party colour.', 'חבר כנסת שעזב את הצד שבו נמצאת מפלגתו. המושב עובר לצד הזה ושומר על צבע המפלגה.')}</Info></div>
         <ul>{rebels.map(([seat, p, item]) => { const src = itemById.get(item); const l = listOf(term.seats[seat].list); const f = female(mk, p);
