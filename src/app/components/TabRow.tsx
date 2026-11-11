@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import { LEVEL_LABELS, RANK, type Preset } from '../features.ts';
 import { useL, useLang } from '../i18n.ts';
 import { groupTabs } from '../tabGroups.ts';
@@ -16,6 +16,8 @@ export function TabRow({ tools, level, selected, label, onOpen, onKey, onPrefetc
 }) {
   const L = useL(), lang = useLang();
   const strip = useRef<HTMLDivElement>(null);
+  // one stable callback: a new function each render would tear down and rebuild the observers on every render
+  const stripRef = useCallback((el: HTMLDivElement | null) => { strip.current = el; return trackTabOverflow(el); }, []);
   const locked = (t: Tool) => RANK[t.level] > RANK[level];
   // this level's tools first under each heading, then the others (never hidden)
   const groups = groupTabs(tools).map(g => ({ ...g, tabs: [...g.tabs.filter(t => !locked(t)), ...g.tabs.filter(locked)] }));
@@ -31,7 +33,7 @@ export function TabRow({ tools, level, selected, label, onOpen, onKey, onPrefetc
   return <nav className="toolbar" aria-label={L('Tools', 'כלים')}>
     <div className="tab-jumps">{groups.map(g => <button key={g.id} type="button" data-current={g.tabs.some(t => t.id === selected) ? '' : undefined}
       onClick={() => jump(g.id)}>{L(...g.label)}</button>)}</div>
-    <div ref={el => { strip.current = el; return trackTabOverflow(el); }} className="tabs tab-strip">
+    <div ref={stripRef} className="tabs tab-strip">
       {groups.map(g => {
         const firstLocked = g.tabs.findIndex(locked);
         return <div key={g.id} className="tab-group" data-tab-group={g.id}>
