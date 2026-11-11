@@ -20,24 +20,6 @@
       "bytes": 4108
     },
     {
-      "file": "logos/new-hope-2021.png",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:New_Hope_party_logo.png",
-      "licence": "CC BY-SA 4.0",
-      "attribution": "Dmitry Pechenkov; File:New Hope party logo.png; CC BY-SA 4.0. Resized to at most 256 px; converted to PNG where necessary.",
-      "hosted": true,
-      "inUseEvidence": "Commons dates this community reconstruction to 1 March 2021, during the campaign before the 23 March election; official-source derivation is not supplied.",
-      "confidence": "medium",
-      "letters": "ת",
-      "evidenceId": "commons-100640724",
-      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/72/New_Hope_party_logo.png",
-      "status": "unresolved",
-      "sha256": "39fd2b7c50acd40048bca32abc7cf25986383984cc25eca8e9f528c0191246b1",
-      "originalSha256": "120850e33b5296398d10da4abec5d74ebce3dc48b7a2ed89a63e59e0589cd680",
-      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas.",
-      "rights": "free-licence",
-      "bytes": 12641
-    },
-    {
       "file": "logos/raam-2021.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Raam_logo_2021.svg",
       "licence": "Public domain (PD-textlogo)",
@@ -357,6 +339,114 @@
         "rawIndex": "logo-k24-religious-zionism-index"
       },
       "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "letters": "מרצ",
+      "file": "logos/meretz-2021-k24.png",
+      "sourceUrl": "https://meretz.org.il/",
+      "assetSourceUrl": "https://meretz.org.il/wp-content/uploads/2020/08/logo.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "meretz — official campaign website logo; proportionally resized only.",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "lg-meretz-k24-20210301125632",
+      "inUseDate": "2021-03-01",
+      "archiveUrl": "https://web.archive.org/web/20210301125632id_/https://meretz.org.il/",
+      "archiveTimestamp": "20210301125632",
+      "inUseEvidence": "Official campaign homepage captured 2021-03-01 references this exact logo asset. Inspected original image; downloaded bytes match pre-election CDX SHA-1 RD45CGGJ4F6IXF4BSHXI6OTULHPA4DCY. Campaign HTML also matches its own CDX digest. No cross-election inference or redrawing.",
+      "retrievedAt": "2026-11-12",
+      "sha256": "c24b1912770fa17f5c764771ea1c646a9e42005403699822b130cec4880d69cc",
+      "originalSha256": "de65c04bc70721b077f7d950e5e4458835bbfb656be0af6ec2518bbf282d2588",
+      "bytes": 8717,
+      "rawEvidence": {
+        "page": "logo-lg-k24-meretz-page",
+        "asset": "logo-lg-k24-meretz-asset"
+      },
+      "assetArchiveTimestamp": "20210215023335",
+      "assetArchiveUrl": "https://web.archive.org/web/20210215023335id_/https://meretz.org.il/wp-content/uploads/2020/08/logo.png",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "RD45CGGJ4F6IXF4BSHXI6OTULHPA4DCY",
+        "computedDigest": "RD45CGGJ4F6IXF4BSHXI6OTULHPA4DCY",
+        "assetCaptureTimestamp": "20210215023335",
+        "cdxCaptureTimestamp": "20210215023335",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fmeretz.org.il%2Fwp-content%2Fuploads%2F2020%2F08%2Flogo.png&from=2020&to=20210301&output=json&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-lg-k24-meretz-index"
+      }
+    },
+    {
+      "letters": "ת",
+      "file": "logos/new-hope-2021-k24.png",
+      "sourceUrl": "https://www.newhope.org.il/",
+      "assetSourceUrl": "https://www.newhope.org.il/wp-content/uploads/2021/01/cropped-GS-logo-pos.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "new-hope — official campaign website logo; proportionally resized only.",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "lg-new-hope-k24-20210309181012",
+      "inUseDate": "2021-03-09",
+      "archiveUrl": "https://web.archive.org/web/20210309181012id_/https://www.newhope.org.il/",
+      "archiveTimestamp": "20210309181012",
+      "inUseEvidence": "Official campaign homepage captured 2021-03-09 references this exact logo asset. Inspected original image; downloaded bytes match pre-election CDX SHA-1 F4BYGS35D43E3FINIYJGVUOZNJQWBFKX. Campaign HTML also matches its own CDX digest. No cross-election inference or redrawing.",
+      "retrievedAt": "2026-11-12",
+      "sha256": "5912d229cbe0412dba3296f88c06f33c787fff5a5497889ed6057cb5a75b0780",
+      "originalSha256": "003bb0b0541fab19b4478664726f06396785ebf29e2c7a27b411c8bd1c58d1ea",
+      "bytes": 18409,
+      "rawEvidence": {
+        "page": "logo-lg-k24-new-hope-page",
+        "asset": "logo-lg-k24-new-hope-asset"
+      },
+      "assetArchiveTimestamp": "20210203011032",
+      "assetArchiveUrl": "https://web.archive.org/web/20210203011032id_/https://www.newhope.org.il/wp-content/uploads/2021/01/cropped-GS-logo-pos.png",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "F4BYGS35D43E3FINIYJGVUOZNJQWBFKX",
+        "computedDigest": "F4BYGS35D43E3FINIYJGVUOZNJQWBFKX",
+        "assetCaptureTimestamp": "20210203011032",
+        "cdxCaptureTimestamp": "20210203011032",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fwww.newhope.org.il%2Fwp-content%2Fuploads%2F2021%2F01%2Fcropped-GS-logo-pos.png&from=2020&to=20210309&output=json&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-lg-k24-new-hope-index"
+      }
+    },
+    {
+      "file": "logos/new-hope-2021-k24.png",
+      "sourceUrl": "https://www.newhope.org.il/",
+      "assetSourceUrl": "https://www.newhope.org.il/wp-content/uploads/2021/01/cropped-GS-logo-pos.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "new-hope — official campaign website logo; proportionally resized only.",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "lg-new-hope-k24-20210309181012",
+      "inUseDate": "2021-03-09",
+      "archiveUrl": "https://web.archive.org/web/20210309181012id_/https://www.newhope.org.il/",
+      "archiveTimestamp": "20210309181012",
+      "inUseEvidence": "Official campaign homepage captured 2021-03-09 references this exact logo asset. Inspected original image; downloaded bytes match pre-election CDX SHA-1 F4BYGS35D43E3FINIYJGVUOZNJQWBFKX. Campaign HTML also matches its own CDX digest. No cross-election inference or redrawing.",
+      "retrievedAt": "2026-11-12",
+      "sha256": "5912d229cbe0412dba3296f88c06f33c787fff5a5497889ed6057cb5a75b0780",
+      "originalSha256": "003bb0b0541fab19b4478664726f06396785ebf29e2c7a27b411c8bd1c58d1ea",
+      "bytes": 18409,
+      "rawEvidence": {
+        "page": "logo-lg-k24-new-hope-page",
+        "asset": "logo-lg-k24-new-hope-asset"
+      },
+      "assetArchiveTimestamp": "20210203011032",
+      "assetArchiveUrl": "https://web.archive.org/web/20210203011032id_/https://www.newhope.org.il/wp-content/uploads/2021/01/cropped-GS-logo-pos.png",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "F4BYGS35D43E3FINIYJGVUOZNJQWBFKX",
+        "computedDigest": "F4BYGS35D43E3FINIYJGVUOZNJQWBFKX",
+        "assetCaptureTimestamp": "20210203011032",
+        "cdxCaptureTimestamp": "20210203011032",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fwww.newhope.org.il%2Fwp-content%2Fuploads%2F2021%2F01%2Fcropped-GS-logo-pos.png&from=2020&to=20210309&output=json&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-lg-k24-new-hope-index"
+      },
+      "party": "new-hope"
     }
   ]
 }

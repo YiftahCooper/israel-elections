@@ -43,37 +43,11 @@
       "licence": "Copyright retained by rights holder; fair-use identification proposed",
       "attribution": "www.ynet.co.il; underlying logo designer/rights holder not verified",
       "hosted": false,
-      "inUseEvidence": "Secondary 2022 campaign review illustrates Shas branding; official-origin file and campaign-date evidence still required.",
-      "confidence": "medium",
-      "status": "unresolved",
-      "evidenceId": "ynet-2022-typography",
-      "letters": "שס",
-      "rights": "fair-use-identification"
-    },
-    {
-      "file": null,
-      "sourceUrl": "https://www.ynet.co.il/news/article/syrrbq9jj",
-      "licence": "Copyright retained by rights holder; fair-use identification proposed",
-      "attribution": "www.ynet.co.il; underlying logo designer/rights holder not verified",
-      "hosted": false,
       "inUseEvidence": "Secondary 2022 campaign review illustrates UTJ branding; official-origin file and campaign-date evidence still required.",
       "confidence": "medium",
       "status": "unresolved",
       "evidenceId": "ynet-2022-typography",
       "letters": "ג",
-      "rights": "fair-use-identification"
-    },
-    {
-      "file": null,
-      "sourceUrl": "https://www.ynet.co.il/news/article/syrrbq9jj",
-      "licence": "Copyright retained by rights holder; fair-use identification proposed",
-      "attribution": "www.ynet.co.il; underlying logo designer/rights holder not verified",
-      "hosted": false,
-      "inUseEvidence": "Secondary 2022 campaign review illustrates Meretz branding; official-origin file and campaign-date evidence still required.",
-      "confidence": "medium",
-      "status": "unresolved",
-      "evidenceId": "ynet-2022-typography",
-      "letters": "מרצ",
       "rights": "fair-use-identification"
     },
     {
@@ -290,6 +264,114 @@
         "renderer": "scripts/research/render-logo-pdf-page.mjs"
       },
       "retrieval": "Node 24.18.0 and locked pdfjs-dist/@napi-rs/canvas: node scripts/research/render-logo-pdf-page.mjs data/raw/logos/k25/hadash-taal-20221026.pdf 1 4 .backup-scratch/ht2022-page.png; Pillow 13.0.0 RGBA crop([500, 805, 1210, 1195]), thumbnail((256,256), LANCZOS), optimized PNG."
+    },
+    {
+      "letters": "שס",
+      "file": "logos/shas-2022-k25.png",
+      "sourceUrl": "https://shas.org.il/",
+      "assetSourceUrl": "https://shas.org.il/wp-content/uploads/2021/05/לוגו.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "shas — official campaign website logo; proportionally resized only.",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "lg-shas-k25-20221101094956",
+      "inUseDate": "2022-11-01",
+      "archiveUrl": "https://web.archive.org/web/20221101094956id_/https://shas.org.il/",
+      "archiveTimestamp": "20221101094956",
+      "inUseEvidence": "Official campaign homepage captured 2022-11-01 references this exact logo asset. Inspected original image; downloaded bytes match pre-election CDX SHA-1 JXKJV7TMPGJUHQPNELGDZN3L6EAAHTWQ. Campaign HTML also matches its own CDX digest. No cross-election inference or redrawing.",
+      "retrievedAt": "2026-11-12",
+      "sha256": "6103405d76d32eaed4f0d72bca2848fc71ba58fa385036e13a9bad62608b979d",
+      "originalSha256": "40e7bfa66314f27b92137ca22bacef2d61dadbd0d8735bbbf73956b4b3700739",
+      "bytes": 20431,
+      "rawEvidence": {
+        "page": "logo-lg-k25-shas-page",
+        "asset": "logo-lg-k25-shas-asset"
+      },
+      "assetArchiveTimestamp": "20210604170254",
+      "assetArchiveUrl": "https://web.archive.org/web/20210604170254id_/https://shas.org.il/wp-content/uploads/2021/05/%D7%9C%D7%95%D7%92%D7%95.png",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "JXKJV7TMPGJUHQPNELGDZN3L6EAAHTWQ",
+        "computedDigest": "JXKJV7TMPGJUHQPNELGDZN3L6EAAHTWQ",
+        "assetCaptureTimestamp": "20210604170254",
+        "cdxCaptureTimestamp": "20210604170254",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fshas.org.il%2Fwp-content%2Fuploads%2F2021%2F05%2F%D7%9C%D7%95%D7%92%D7%95.png&from=2021&to=20221101&output=json&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-lg-k25-shas-index"
+      }
+    },
+    {
+      "letters": "מרצ",
+      "file": "logos/meretz-2022-k25.png",
+      "sourceUrl": "https://meretz.org.il/",
+      "assetSourceUrl": "https://meretz.org.il/wp-content/uploads/2020/08/logo-1.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "meretz — official campaign website logo; proportionally resized only.",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "lg-meretz-k25-20221101095119",
+      "inUseDate": "2022-11-01",
+      "archiveUrl": "https://web.archive.org/web/20221101095119id_/https://meretz.org.il/",
+      "archiveTimestamp": "20221101095119",
+      "inUseEvidence": "Official campaign homepage captured 2022-11-01 references this exact logo asset. Inspected original image; downloaded bytes match pre-election CDX SHA-1 PJ5CK6OC56UWNSWFWIFHQFFKZOWM44PN. Campaign HTML also matches its own CDX digest. No cross-election inference or redrawing.",
+      "retrievedAt": "2026-11-12",
+      "sha256": "6df2d232f0eaf16f934d81e01f22ebaef91f0ab3eb0cce28be0d524fb2b2c497",
+      "originalSha256": "18016552d4f9e84566f5ea839f26f4780fd748b7ffcbba7fb8971c6991da5320",
+      "bytes": 11307,
+      "rawEvidence": {
+        "page": "logo-lg-k25-meretz-page",
+        "asset": "logo-lg-k25-meretz-asset"
+      },
+      "assetArchiveTimestamp": "20221018195952",
+      "assetArchiveUrl": "https://web.archive.org/web/20221018195952id_/https://meretz.org.il/wp-content/uploads/2020/08/logo-1.png",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "PJ5CK6OC56UWNSWFWIFHQFFKZOWM44PN",
+        "computedDigest": "PJ5CK6OC56UWNSWFWIFHQFFKZOWM44PN",
+        "assetCaptureTimestamp": "20221018195952",
+        "cdxCaptureTimestamp": "20221018195952",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fmeretz.org.il%2Fwp-content%2Fuploads%2F2020%2F08%2Flogo-1.png&from=2021&to=20221101&output=json&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-lg-k25-meretz-index"
+      }
+    },
+    {
+      "party": "new-hope",
+      "file": "logos/new-hope-2022-k25.png",
+      "sourceUrl": "https://www.newhope.org.il/",
+      "assetSourceUrl": "https://www.newhope.org.il/wp-content/uploads/2022/03/תקווה-חדשה-כחול-1.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "new-hope — official campaign website logo; proportionally resized only.",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "lg-new-hope-k25-20221101111322",
+      "inUseDate": "2022-11-01",
+      "archiveUrl": "https://web.archive.org/web/20221101111322id_/https://www.newhope.org.il/",
+      "archiveTimestamp": "20221101111322",
+      "inUseEvidence": "Official campaign homepage captured 2022-11-01 references this exact logo asset. Inspected original image; downloaded bytes match pre-election CDX SHA-1 4HL7XQCMN6YVDSMRRAAY3XBGDJ3GMCXD. Campaign HTML also matches its own CDX digest. No cross-election inference or redrawing.",
+      "retrievedAt": "2026-11-12",
+      "sha256": "2caf6e43fa84d37d5186f2f2107997763cb22c1ca8fbb435a3330b65c11a5227",
+      "originalSha256": "09563ca1c882fd87f49fac351ed62dfbf68b46371fcd300c3951666c266169e6",
+      "bytes": 13658,
+      "rawEvidence": {
+        "page": "logo-lg-k25-new-hope-page",
+        "asset": "logo-lg-k25-new-hope-asset"
+      },
+      "assetArchiveTimestamp": "20220310180749",
+      "assetArchiveUrl": "https://web.archive.org/web/20220310180749id_/https://www.newhope.org.il/wp-content/uploads/2022/03/%D7%AA%D7%A7%D7%95%D7%95%D7%94-%D7%97%D7%93%D7%A9%D7%94-%D7%9B%D7%97%D7%95%D7%9C-1.png",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "4HL7XQCMN6YVDSMRRAAY3XBGDJ3GMCXD",
+        "computedDigest": "4HL7XQCMN6YVDSMRRAAY3XBGDJ3GMCXD",
+        "assetCaptureTimestamp": "20220310180749",
+        "cdxCaptureTimestamp": "20220310180749",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fwww.newhope.org.il%2Fwp-content%2Fuploads%2F2022%2F03%2F%D7%AA%D7%A7%D7%95%D7%95%D7%94-%D7%97%D7%93%D7%A9%D7%94-%D7%9B%D7%97%D7%95%D7%9C-1.png&from=2021&to=20221101&output=json&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-lg-k25-new-hope-index"
+      }
     }
   ]
 }

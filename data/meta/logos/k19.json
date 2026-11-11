@@ -293,6 +293,43 @@
         "decoder": "scripts/research/extract-swf-bitmap.py",
         "recipe": "Original JPEG pixels plus original alpha; RGBA optimized PNG"
       }
+    },
+    {
+      "letters": "פה",
+      "file": "logos/yesh-atid-2013-k19.png",
+      "sourceUrl": "http://yeshatid.org.il:80/",
+      "assetSourceUrl": "https://web.archive.org/web/20121205123652id_/http://yeshatid.org.il/wp-content/themes/yair/images/logo.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "yesh-atid — official campaign website logo; proportionally resized only.",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "lg-yesh-atid-k19-20130105004003",
+      "inUseDate": "2013-01-05",
+      "archiveUrl": "https://web.archive.org/web/20130105004003id_/http://yeshatid.org.il:80/",
+      "archiveTimestamp": "20130105004003",
+      "inUseEvidence": "Official campaign homepage captured 2013-01-05 references this exact logo asset. Inspected original image; downloaded bytes match pre-election CDX SHA-1 LYQX5LWI4VO7ZL5O77VMHZFP4B53R7RP. Campaign HTML also matches its own CDX digest. No cross-election inference or redrawing.",
+      "retrievedAt": "2026-11-12",
+      "sha256": "e91778775f270dc4fbe165be211527071ea8282fe524595c9b7864e3eb2c957b",
+      "originalSha256": "91d779298018847cbb29d628654c902b43760afa215f58393e89e76dd2fc85bd",
+      "bytes": 23721,
+      "rawEvidence": {
+        "page": "logo-lg-k19-yesh-atid-page",
+        "asset": "logo-lg-k19-yesh-atid-asset"
+      },
+      "assetArchiveTimestamp": "20121205123652",
+      "assetArchiveUrl": "https://web.archive.org/web/20121205123652id_/http://yeshatid.org.il/wp-content/themes/yair/images/logo.png",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "LYQX5LWI4VO7ZL5O77VMHZFP4B53R7RP",
+        "computedDigest": "LYQX5LWI4VO7ZL5O77VMHZFP4B53R7RP",
+        "assetCaptureTimestamp": "20121205123652",
+        "cdxCaptureTimestamp": "20121205123652",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=http%3A%2F%2Fyeshatid.org.il%2Fwp-content%2Fthemes%2Fyair%2Fimages%2Flogo.png&from=2012&to=20130105&output=json&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-lg-k19-yesh-atid-index"
+      },
+      "originalAssetUrl": "http://yeshatid.org.il/wp-content/themes/yair/images/logo.png"
     }
   ]
 }

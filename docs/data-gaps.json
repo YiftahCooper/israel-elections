@@ -1,8 +1,8 @@
 {
   "schemaVersion": 3,
-  "total": 11472,
+  "total": 11467,
   "counts": {
-    "unknown": 6963,
+    "unknown": 6958,
     "missing-field": 283,
     "conflict": 18,
     "single-source": 2452,
@@ -15,7 +15,7 @@
   "countsByStatus": {
     "inferred-not-verified": 1032,
     "needs-current-status-review": 313,
-    "open": 10127
+    "open": 10122
   },
   "countsByImportance": {
     "high": {
@@ -35,12 +35,12 @@
       "unknown": 2221
     },
     "low": {
-      "total": 7054,
+      "total": 7049,
       "confirmed": 570,
       "probable": 0,
       "provisional": 805,
       "disputed": 0,
-      "unknown": 5679
+      "unknown": 5674
     }
   },
   "claimCertainty": {
@@ -504,12 +504,12 @@
     },
     {
       "election": "k24",
-      "total": 439,
+      "total": 438,
       "highOpen": 12,
       "mediumOpen": 88,
-      "low": 304,
+      "low": 303,
       "counts": {
-        "unknown": 252,
+        "unknown": 251,
         "missing-field": 0,
         "conflict": 1,
         "single-source": 113,
@@ -522,12 +522,12 @@
     },
     {
       "election": "k25",
-      "total": 687,
+      "total": 683,
       "highOpen": 8,
       "mediumOpen": 256,
-      "low": 393,
+      "low": 389,
       "counts": {
-        "unknown": 457,
+        "unknown": 453,
         "missing-field": 0,
         "conflict": 0,
         "single-source": 131,
@@ -1080,8 +1080,8 @@
     {"area":"data/raw/votes-knesset.catalogue.json result","count":102,"open":102},
     {"area":"data/raw/kN/knesset-odata-members.json positions","count":51,"open":51},
     {"area":"data/raw/research/odata-elections-catalog.json result","count":41,"open":41},
-    {"area":"data/meta/logos/kN.json logos","count":29,"open":29},
     {"area":"data/raw/kN/knesset-odata-members.json record","count":26,"open":26},
+    {"area":"data/meta/logos/kN.json logos","count":24,"open":24},
     {"area":"data/raw/polls/kN/coverage.json candidates","count":18,"open":18},
     {"area":"data/raw/SOURCES.json sha256","count":17,"open":17},
     {"area":"data/raw/party-links/overlay-corrections.reviewed.json entries","count":16,"open":16},

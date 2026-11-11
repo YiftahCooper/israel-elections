@@ -1,0 +1,1116 @@
+<!doctype html>
+<html dir="rtl" lang="he-IL">
+<head>
+<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"NRJS-1669bb49f2b8a23d3bf",applicationID:"614093411"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(6),c=e(7),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(8);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(5),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],4:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],5:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],6:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],7:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],8:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(6),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!x++){var e=b.info=NREUM.info,t=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(y,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+b.offset],null,"api"),c("timing",["load",n]);var r=p.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===p.readyState&&o()}function o(){c("mark",["domContent",a()+b.offset],null,"api")}var a=e(2),c=e("handle"),f=e(6),u=e("ee"),s=e(4),d=window,p=d.document,l="addEventListener",m="attachEvent",v=d.XMLHttpRequest,g=v&&v.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:v,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var w=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1198.min.js"},h=v&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),b=t.exports={offset:a.getLastTimestamp(),now:a,origin:w,features:{},xhrWrappable:h,userAgent:s};e(1),e(3),p[l]?(p[l]("DOMContentLoaded",o,!1),d[l]("load",r,!1)):(p[m]("onreadystatechange",i),d[m]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var x=0},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(7),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="https://gmpg.org/xfn/11">
+
+<title>בית - מפלגת מרצ</title>
+<meta name="description" content="האתר הרשמי של מפלגת מרצ. הצטרפו אלינו" />
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+<link rel="canonical" href="https://meretz.org.il/" />
+<meta property="og:locale" content="he_IL" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="בית - מפלגת מרצ" />
+<meta property="og:description" content="האתר הרשמי של מפלגת מרצ. הצטרפו אלינו" />
+<meta property="og:url" content="https://meretz.org.il/" />
+<meta property="og:site_name" content="מפלגת מרצ" />
+<meta property="article:modified_time" content="2021-02-16T08:34:19+00:00" />
+<meta property="og:image" content="https://meretz.org.il/wp-content/uploads/2020/08/97136622_10159915920763128_2515774379212668928_o-1.png" />
+<meta property="og:image:width" content="1920" />
+<meta property="og:image:height" content="1920" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:label1" content="זמן קריאה מוערך">
+<meta name="twitter:data1" content="0 דקות">
+<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://meretz.org.il/#website","url":"https://meretz.org.il/","name":"\u05de\u05e4\u05dc\u05d2\u05ea \u05de\u05e8\u05e6","description":"","potentialAction":[{"@type":"SearchAction","target":"https://meretz.org.il/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"he-IL"},{"@type":"ImageObject","@id":"https://meretz.org.il/#primaryimage","inLanguage":"he-IL","url":"https://meretz.org.il/wp-content/uploads/2020/08/97136622_10159915920763128_2515774379212668928_o.png","width":1920,"height":1920},{"@type":"WebPage","@id":"https://meretz.org.il/#webpage","url":"https://meretz.org.il/","name":"\u05d1\u05d9\u05ea - \u05de\u05e4\u05dc\u05d2\u05ea \u05de\u05e8\u05e6","isPartOf":{"@id":"https://meretz.org.il/#website"},"primaryImageOfPage":{"@id":"https://meretz.org.il/#primaryimage"},"datePublished":"2020-08-10T16:13:03+00:00","dateModified":"2021-02-16T08:34:19+00:00","description":"\u05d4\u05d0\u05ea\u05e8 \u05d4\u05e8\u05e9\u05de\u05d9 \u05e9\u05dc \u05de\u05e4\u05dc\u05d2\u05ea \u05de\u05e8\u05e6. \u05d4\u05e6\u05d8\u05e8\u05e4\u05d5 \u05d0\u05dc\u05d9\u05e0\u05d5","inLanguage":"he-IL","potentialAction":[{"@type":"ReadAction","target":["https://meretz.org.il/"]}]}]}</script>
+
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="מפלגת מרצ &laquo; פיד‏" href="https://meretz.org.il/feed/" />
+<link rel="alternate" type="application/rss+xml" title="מפלגת מרצ &laquo; פיד תגובות‏" href="https://meretz.org.il/comments/feed/" />
+<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/meretz.org.il\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.6.2"}};
+			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='wp-block-library-rtl-css' href='https://meretz.org.il/wp-includes/css/dist/block-library/style-rtl.min.css?ver=5.6.2' type='text/css' media='all' />
+<link rel='stylesheet' id='hello-elementor-css' href='https://meretz.org.il/wp-content/themes/hello-elementor/style.min.css?ver=2.3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='hello-elementor-theme-style-css' href='https://meretz.org.il/wp-content/themes/hello-elementor/theme.min.css?ver=2.3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='jet-popup-frontend-css' href='https://meretz.org.il/wp-content/plugins/jet-popup/assets/css/jet-popup-frontend.css?ver=1.4.0' type='text/css' media='all' />
+<link rel='stylesheet' id='jet-elements-css' href='https://meretz.org.il/wp-content/plugins/jet-elements/assets/css/jet-elements.css?ver=2.2.17' type='text/css' media='all' />
+<link rel='stylesheet' id='jet-elements-rtl-css' href='https://meretz.org.il/wp-content/plugins/jet-elements/assets/css/jet-elements-rtl.css?ver=2.2.17' type='text/css' media='all' />
+<link rel='stylesheet' id='jet-elements-skin-css' href='https://meretz.org.il/wp-content/plugins/jet-elements/assets/css/jet-elements-skin.css?ver=2.2.17' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-icons-css' href='https://meretz.org.il/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=5.9.1' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-animations-css' href='https://meretz.org.il/wp-content/plugins/elementor/assets/lib/animations/animations.min.css?ver=3.0.15' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-frontend-legacy-css' href='https://meretz.org.il/wp-content/plugins/elementor/assets/css/frontend-legacy-rtl.min.css?ver=3.0.15' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-frontend-css' href='https://meretz.org.il/wp-content/plugins/elementor/assets/css/frontend-rtl.min.css?ver=3.0.15' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-1030-css' href='https://meretz.org.il/wp-content/uploads/elementor/css/post-1030.css?ver=1614332811' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-pro-css' href='https://meretz.org.il/wp-content/plugins/elementor-pro/assets/css/frontend-rtl.min.css?ver=3.0.9' type='text/css' media='all' />
+<link rel='stylesheet' id='namogo-icons-css' href='https://meretz.org.il/wp-content/plugins/elementor-extras/assets/lib/nicons/css/nicons.css?ver=2.2.44' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-extras-frontend-css' href='https://meretz.org.il/wp-content/plugins/elementor-extras/assets/css/frontend-rtl.min.css?ver=2.2.44' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-global-css' href='https://meretz.org.il/wp-content/uploads/elementor/css/global.css?ver=1609577370' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-8-css' href='https://meretz.org.il/wp-content/uploads/elementor/css/post-8.css?ver=1613464522' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-104-css' href='https://meretz.org.il/wp-content/uploads/elementor/css/post-104.css?ver=1612894050' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-115-css' href='https://meretz.org.il/wp-content/uploads/elementor/css/post-115.css?ver=1613668705' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-361-css' href='https://meretz.org.il/wp-content/uploads/elementor/css/post-361.css?ver=1609577370' type='text/css' media='all' />
+<link rel='stylesheet' id='pojo-a11y-css' href='https://meretz.org.il/wp-content/plugins/pojo-accessibility/assets/css/style.min.css?ver=1.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='google-fonts-1-css' href='https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;subset=hebrew&#038;ver=5.6.2' type='text/css' media='all' />
+<link rel='stylesheet' id='google-earlyaccess-2-css' href='https://fonts.googleapis.com/earlyaccess/opensanshebrewcondensed.css?ver=5.6.2' type='text/css' media='all' />
+<link rel='stylesheet' id='google-earlyaccess-3-css' href='https://fonts.googleapis.com/earlyaccess/opensanshebrew.css?ver=5.6.2' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-icons-shared-0-css' href='https://meretz.org.il/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min.css?ver=5.12.0' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-icons-fa-brands-css' href='https://meretz.org.il/wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.min.css?ver=5.12.0' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-icons-fa-solid-css' href='https://meretz.org.il/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min.css?ver=5.12.0' type='text/css' media='all' />
+<script type='text/javascript' src='https://meretz.org.il/wp-includes/js/jquery/jquery.min.js?ver=3.5.1' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://meretz.org.il/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<link rel="https://api.w.org/" href="https://meretz.org.il/wp-json/" /><link rel="alternate" type="application/json" href="https://meretz.org.il/wp-json/wp/v2/pages/8" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://meretz.org.il/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://meretz.org.il/wp-includes/wlwmanifest.xml" />
+<meta name="generator" content="WordPress 5.6.2" />
+<link rel='shortlink' href='https://meretz.org.il/' />
+<link rel="alternate" type="application/json+oembed" href="https://meretz.org.il/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmeretz.org.il%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://meretz.org.il/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmeretz.org.il%2F&#038;format=xml" />
+<link rel="apple-touch-icon" sizes="180x180" href="/wp-content/uploads/fbrfg/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/wp-content/uploads/fbrfg/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/wp-content/uploads/fbrfg/favicon-16x16.png">
+<link rel="manifest" href="/wp-content/uploads/fbrfg/site.webmanifest">
+<link rel="shortcut icon" href="/wp-content/uploads/fbrfg/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/wp-content/uploads/fbrfg/browserconfig.xml">
+<meta name="theme-color" content="#ffffff"><style type="text/css">
+#pojo-a11y-toolbar .pojo-a11y-toolbar-toggle a{ background-color: #4054b2;	color: #ffffff;}
+#pojo-a11y-toolbar .pojo-a11y-toolbar-overlay, #pojo-a11y-toolbar .pojo-a11y-toolbar-overlay ul.pojo-a11y-toolbar-items.pojo-a11y-links{ border-color: #4054b2;}
+body.pojo-a11y-focusable a:focus{ outline-style: solid !important;	outline-width: 1px !important;	outline-color: #FF0000 !important;}
+#pojo-a11y-toolbar{ top: 600px !important;}
+#pojo-a11y-toolbar .pojo-a11y-toolbar-overlay{ background-color: #ffffff;}
+#pojo-a11y-toolbar .pojo-a11y-toolbar-overlay ul.pojo-a11y-toolbar-items li.pojo-a11y-toolbar-item a, #pojo-a11y-toolbar .pojo-a11y-toolbar-overlay p.pojo-a11y-toolbar-title{ color: #333333;}
+#pojo-a11y-toolbar .pojo-a11y-toolbar-overlay ul.pojo-a11y-toolbar-items li.pojo-a11y-toolbar-item a.active{ background-color: #4054b2;	color: #ffffff;}
+@media (max-width: 767px) { #pojo-a11y-toolbar { top: 450px !important; } }</style>
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '316076938785206');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=316076938785206&ev=PageView&noscript=1"
+/></noscript>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-181001196-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-181001196-1');
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-176757298-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-176757298-1');
+</script>
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KXBLW7H');</script>
+</head>
+<body class="rtl home page-template page-template-elementor_header_footer page page-id-8 elementor-default elementor-template-full-width elementor-kit-1030 elementor-page elementor-page-8">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KXBLW7H"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div data-elementor-type="header" data-elementor-id="104" class="elementor elementor-104 elementor-location-header" data-elementor-settings="[]">
+<div class="elementor-section-wrap">
+<section class="elementor-section elementor-top-section elementor-element elementor-element-3fe79f93 elementor-section-full_width elementor-section-height-min-height elementor-section-items-stretch elementor-section-content-middle elementor-hidden-phone elementor-section-height-default" data-id="3fe79f93" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+<div class="elementor-container elementor-column-gap-no">
+<div class="elementor-row">
+<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-49f0c1ad" data-id="49f0c1ad" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-376aa165 elementor-widget__width-initial elementor-fixed elementor-widget-mobile__width-initial elementor-hidden-phone elementor-widget elementor-widget-image" data-id="376aa165" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;fixed&quot;}" data-widget_type="image.default">
+<div class="elementor-widget-container">
+<div class="elementor-image">
+<a href="https://meretz.org.il/">
+<img width="318" height="153" src="https://meretz.org.il/wp-content/uploads/2020/08/logo.png" class="attachment-large size-large" alt="" loading="lazy" srcset="https://meretz.org.il/wp-content/uploads/2020/08/logo.png 318w, https://meretz.org.il/wp-content/uploads/2020/08/logo-300x144.png 300w" sizes="(max-width: 318px) 100vw, 318px" /> </a>
+</div>
+</div>
+</div>
+<div class="elementor-element elementor-element-a061d8b elementor-align-left elementor-widget__width-initial elementor-widget-mobile__width-initial elementor-fixed elementor-hidden-phone elementor-widget elementor-widget-button" data-id="a061d8b" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;fixed&quot;}" data-widget_type="button.default">
+<div class="elementor-widget-container">
+<div class="elementor-button-wrapper">
+<a href="https://21.meretz.org.il/hitpakdut/" target="_blank" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+<span class="elementor-button-content-wrapper">
+<span class="elementor-button-icon elementor-align-icon-left">
+<i aria-hidden="true" class="fas fa-angle-double-left"></i> </span>
+<span class="elementor-button-text">להתפקדות</span>
+</span>
+</a>
+</div>
+</div>
+</div>
+<div class="elementor-element elementor-element-b4506cc elementor-align-left elementor-widget__width-initial elementor-widget-mobile__width-initial elementor-fixed elementor-hidden-phone elementor-widget elementor-widget-button" data-id="b4506cc" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;fixed&quot;}" data-widget_type="button.default">
+<div class="elementor-widget-container">
+<div class="elementor-button-wrapper">
+<a href="https://21.meretz.org.il/" target="_blank" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+<span class="elementor-button-content-wrapper">
+<span class="elementor-button-icon elementor-align-icon-left">
+<i aria-hidden="true" class="fas fa-angle-double-left"></i> </span>
+<span class="elementor-button-text">לתרומה</span>
+</span>
+</a>
+</div>
+</div>
+</div>
+<div class="elementor-element elementor-element-47d289ed elementor-widget__width-auto elementor-fixed elementor-hidden-phone elementor-invisible elementor-widget elementor-widget-ee-offcanvas" data-id="47d289ed" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;fixed&quot;,&quot;position&quot;:&quot;right&quot;,&quot;animation&quot;:&quot;reveal&quot;,&quot;anchor_navigation&quot;:&quot;yes&quot;,&quot;anchor_navigation_speed&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:500,&quot;sizes&quot;:[]},&quot;anchor_navigation_close&quot;:&quot;yes&quot;,&quot;refresh_widgets&quot;:&quot;yes&quot;,&quot;trigger_source&quot;:&quot;burger&quot;}" data-widget_type="ee-offcanvas.classic">
+<div class="elementor-widget-container">
+<div class="ee-button-wrapper ee-offcanvas-position--inline">
+<div class="ee-button ee-hamburger ee-hamburger--arrow ee-offcanvas__trigger ee-offcanvas__trigger--inline" id="slidebar-trigger_47d289ed" data-slidebar-id="47d289ed" aria-label="Menu" aria-controls="navigation">
+<span class="ee-button-content-wrapper">
+<span class="ee-button-icon ee-icon--left ee-hamburger-box">
+<span class="ee-hamburger-inner"></span>
+</span>
+</span>
+</div>
+</div><div class="ee-offcanvas__content ee-offcanvas__content-47d289ed">
+<div class="ee-offcanvas__header ee-offcanvas__header-close--after">
+<div class="ee-offcanvas__header__close"><i class="eicon-close"></i></div>
+</div>
+<div class="ee-offcanvas__content__item elementor-repeater-item-2ea7bce"><div class="elementor-template"> <div data-elementor-type="widget" data-elementor-id="343" class="elementor elementor-343" data-elementor-settings="[]">
+<div class="elementor-inner">
+<div class="elementor-section-wrap">
+<div class="elementor-element elementor-element-343 elementor-widget elementor-widget-image" data-id="343" data-element_type="widget" data-widget_type="image.default">
+<div class="elementor-widget-container">
+<div class="elementor-image">
+<img width="318" height="153" src="https://meretz.org.il/wp-content/uploads/2020/08/logo.png" class="attachment-large size-large" alt="" loading="lazy" srcset="https://meretz.org.il/wp-content/uploads/2020/08/logo.png 318w, https://meretz.org.il/wp-content/uploads/2020/08/logo-300x144.png 300w" sizes="(max-width: 318px) 100vw, 318px" /> </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div class="ee-offcanvas__content__item elementor-repeater-item-6fd7f7a"><div class="elementor-template"> <div data-elementor-type="widget" data-elementor-id="328" class="elementor elementor-328" data-elementor-settings="[]">
+<div class="elementor-inner">
+<div class="elementor-section-wrap">
+<div class="elementor-element elementor-element-328 ee-slide-menu-effect--overlay ee-slide-menu-direction--left elementor-widget elementor-widget-ee-slide-menu" data-id="328" data-element_type="widget" data-settings="{&quot;back_text&quot;:&quot;Back&quot;}" data-widget_type="ee-slide-menu.classic">
+<div class="elementor-widget-container">
+<div class="ee-menu ee-slide-menu">
+<ul id="menu-1-328" class="ee-menu__menu ee-slide-menu__menu"><li id="menu-item-324" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-8 current_page_item menu-item-324 ee-menu__item ee-menu__item--current"><span class="ee-menu__arrow"><i class="fa fa-angle-right"></i></span><a href="https://meretz.org.il/" aria-current="page" class="ee-menu__item__link  ee-menu__item__link--current">בית</a></li>
+<li id="menu-item-872" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-872 ee-menu__item"><span class="ee-menu__arrow"><i class="fa fa-angle-right"></i></span><a href="https://meretz.org.il/%D7%90%D7%95%D7%93%D7%95%D7%AA/#3" class="ee-menu__item__link">רשימה</a></li>
+<li id="menu-item-822" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-822 ee-menu__item"><span class="ee-menu__arrow"><i class="fa fa-angle-right"></i></span><a href="https://meretz.org.il/%D7%90%D7%95%D7%93%D7%95%D7%AA/#2" class="ee-menu__item__link">מצע</a></li>
+<li id="menu-item-326" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-326 ee-menu__item"><span class="ee-menu__arrow"><i class="fa fa-angle-right"></i></span><a href="https://meretz.org.il/%d7%99%d7%a6%d7%99%d7%a8%d7%aa-%d7%a7%d7%a9%d7%a8/" class="ee-menu__item__link">יצירת קשר</a></li>
+</ul> </div> </div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div class="ee-offcanvas__content__item elementor-repeater-item-7ec37d8"><div class="elementor-template"> <div data-elementor-type="widget" data-elementor-id="336" class="elementor elementor-336" data-elementor-settings="[]">
+<div class="elementor-inner">
+<div class="elementor-section-wrap">
+<div class="elementor-element elementor-element-336 elementor-widget elementor-widget-button" data-id="336" data-element_type="widget" data-widget_type="button.default">
+<div class="elementor-widget-container">
+<div class="elementor-button-wrapper">
+<a href="https://meretz.org.il/5reasons/" target="_blank" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+<span class="elementor-button-content-wrapper">
+<span class="elementor-button-text">תמכו במרצ</span>
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div> </div> </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="elementor-section elementor-top-section elementor-element elementor-element-50020526 elementor-section-full_width elementor-section-height-min-height elementor-section-items-stretch elementor-section-content-middle elementor-hidden-desktop elementor-hidden-tablet elementor-section-height-default" data-id="50020526" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+<div class="elementor-container elementor-column-gap-no">
+<div class="elementor-row">
+<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-afa5b08" data-id="afa5b08" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-2c503a0d elementor-widget elementor-widget-image" data-id="2c503a0d" data-element_type="widget" data-widget_type="image.default">
+<div class="elementor-widget-container">
+<div class="elementor-image">
+<a href="https://meretz.org.il/">
+<img width="318" height="153" src="https://meretz.org.il/wp-content/uploads/2020/08/logo.png" class="attachment-large size-large" alt="" loading="lazy" srcset="https://meretz.org.il/wp-content/uploads/2020/08/logo.png 318w, https://meretz.org.il/wp-content/uploads/2020/08/logo-300x144.png 300w" sizes="(max-width: 318px) 100vw, 318px" /> </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-1f6a74b8" data-id="1f6a74b8" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-f5dfd63 elementor-invisible elementor-widget elementor-widget-ee-offcanvas" data-id="f5dfd63" data-element_type="widget" data-settings="{&quot;position&quot;:&quot;left&quot;,&quot;animation&quot;:&quot;reveal&quot;,&quot;anchor_navigation&quot;:&quot;yes&quot;,&quot;anchor_navigation_speed&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:500,&quot;sizes&quot;:[]},&quot;anchor_navigation_close&quot;:&quot;yes&quot;,&quot;refresh_widgets&quot;:&quot;yes&quot;,&quot;trigger_source&quot;:&quot;burger&quot;}" data-widget_type="ee-offcanvas.classic">
+<div class="elementor-widget-container">
+<div class="ee-button-wrapper ee-offcanvas-position--inline">
+<div class="ee-button ee-hamburger ee-hamburger--arrow ee-offcanvas__trigger ee-offcanvas__trigger--inline" id="slidebar-trigger_f5dfd63" data-slidebar-id="f5dfd63" aria-label="Menu" aria-controls="navigation">
+<span class="ee-button-content-wrapper">
+<span class="ee-button-icon ee-icon--left ee-hamburger-box">
+<span class="ee-hamburger-inner"></span>
+</span>
+</span>
+</div>
+</div><div class="ee-offcanvas__content ee-offcanvas__content-f5dfd63">
+<div class="ee-offcanvas__header ee-offcanvas__header-close--after">
+<div class="ee-offcanvas__header__close"><i class="eicon-close"></i></div>
+</div>
+<div class="ee-offcanvas__content__item elementor-repeater-item-a31b4b4"><div class="elementor-template"> <div data-elementor-type="widget" data-elementor-id="343" class="elementor elementor-343" data-elementor-settings="[]">
+<div class="elementor-inner">
+<div class="elementor-section-wrap">
+<div class="elementor-element elementor-element-343 elementor-widget elementor-widget-image" data-id="343" data-element_type="widget" data-widget_type="image.default">
+<div class="elementor-widget-container">
+<div class="elementor-image">
+<img width="318" height="153" src="https://meretz.org.il/wp-content/uploads/2020/08/logo.png" class="attachment-large size-large" alt="" loading="lazy" srcset="https://meretz.org.il/wp-content/uploads/2020/08/logo.png 318w, https://meretz.org.il/wp-content/uploads/2020/08/logo-300x144.png 300w" sizes="(max-width: 318px) 100vw, 318px" /> </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div class="ee-offcanvas__content__item elementor-repeater-item-13476e4"><div class="elementor-template"> <div data-elementor-type="widget" data-elementor-id="328" class="elementor elementor-328" data-elementor-settings="[]">
+<div class="elementor-inner">
+<div class="elementor-section-wrap">
+<div class="elementor-element elementor-element-328 ee-slide-menu-effect--overlay ee-slide-menu-direction--left elementor-widget elementor-widget-ee-slide-menu" data-id="328" data-element_type="widget" data-settings="{&quot;back_text&quot;:&quot;Back&quot;}" data-widget_type="ee-slide-menu.classic">
+<div class="elementor-widget-container">
+<div class="ee-menu ee-slide-menu">
+<ul id="menu-1-328" class="ee-menu__menu ee-slide-menu__menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-8 current_page_item menu-item-324 ee-menu__item ee-menu__item--current"><span class="ee-menu__arrow"><i class="fa fa-angle-right"></i></span><a href="https://meretz.org.il/" aria-current="page" class="ee-menu__item__link  ee-menu__item__link--current">בית</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-872 ee-menu__item"><span class="ee-menu__arrow"><i class="fa fa-angle-right"></i></span><a href="https://meretz.org.il/%D7%90%D7%95%D7%93%D7%95%D7%AA/#3" class="ee-menu__item__link">רשימה</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-822 ee-menu__item"><span class="ee-menu__arrow"><i class="fa fa-angle-right"></i></span><a href="https://meretz.org.il/%D7%90%D7%95%D7%93%D7%95%D7%AA/#2" class="ee-menu__item__link">מצע</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-326 ee-menu__item"><span class="ee-menu__arrow"><i class="fa fa-angle-right"></i></span><a href="https://meretz.org.il/%d7%99%d7%a6%d7%99%d7%a8%d7%aa-%d7%a7%d7%a9%d7%a8/" class="ee-menu__item__link">יצירת קשר</a></li>
+</ul> </div> </div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div class="ee-offcanvas__content__item elementor-repeater-item-80d7ef7"><div class="elementor-template"> <div data-elementor-type="widget" data-elementor-id="336" class="elementor elementor-336" data-elementor-settings="[]">
+<div class="elementor-inner">
+<div class="elementor-section-wrap">
+<div class="elementor-element elementor-element-336 elementor-widget elementor-widget-button" data-id="336" data-element_type="widget" data-widget_type="button.default">
+<div class="elementor-widget-container">
+<div class="elementor-button-wrapper">
+<a href="https://meretz.org.il/5reasons/" target="_blank" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+<span class="elementor-button-content-wrapper">
+<span class="elementor-button-text">תמכו במרצ</span>
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div> </div> </div>
+</div>
+<section class="elementor-section elementor-inner-section elementor-element elementor-element-f5ee253 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="f5ee253" data-element_type="section">
+<div class="elementor-container elementor-column-gap-no">
+<div class="elementor-row">
+<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-0014118" data-id="0014118" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-ecbf482 elementor-mobile-align-left elementor-widget elementor-widget-button" data-id="ecbf482" data-element_type="widget" data-widget_type="button.default">
+<div class="elementor-widget-container">
+<div class="elementor-button-wrapper">
+<a href="https://21.meretz.org.il/" target="_blank" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+<span class="elementor-button-content-wrapper">
+<span class="elementor-button-text">תרומה</span>
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-855c5fd" data-id="855c5fd" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-cbe078d elementor-mobile-align-left elementor-widget elementor-widget-button" data-id="cbe078d" data-element_type="widget" data-widget_type="button.default">
+<div class="elementor-widget-container">
+<div class="elementor-button-wrapper">
+<a href="https://21.meretz.org.il/hitpakdut/" target="_blank" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+<span class="elementor-button-content-wrapper">
+<span class="elementor-button-text">התפקדות</span>
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<div data-elementor-type="wp-page" data-elementor-id="8" class="elementor elementor-8" data-elementor-settings="[]">
+<div class="elementor-inner">
+<div class="elementor-section-wrap">
+<section class="elementor-section elementor-top-section elementor-element elementor-element-995b040 elementor-section-stretched elementor-section-height-min-height section_1 elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="995b040" data-element_type="section" id="section_1" data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;slideshow&quot;,&quot;background_slideshow_gallery&quot;:[{&quot;id&quot;:249,&quot;url&quot;:&quot;https:\/\/meretz.org.il\/wp-content\/uploads\/2020\/08\/bg1.jpeg&quot;},{&quot;id&quot;:558,&quot;url&quot;:&quot;https:\/\/meretz.org.il\/wp-content\/uploads\/2020\/09\/22859765_1591571454219015_9202993276048437663_o.jpg&quot;},{&quot;id&quot;:318,&quot;url&quot;:&quot;https:\/\/meretz.org.il\/wp-content\/uploads\/2020\/08\/65373656_10158847362538128_7493482363918221312_o.jpg&quot;},{&quot;id&quot;:319,&quot;url&quot;:&quot;https:\/\/meretz.org.il\/wp-content\/uploads\/2020\/08\/64706285_10158887999603128_6537413096116322304_o.jpg&quot;},{&quot;id&quot;:499,&quot;url&quot;:&quot;https:\/\/meretz.org.il\/wp-content\/uploads\/2020\/08\/62600309_1591279841002177_1945136460101320704_o.jpg&quot;},{&quot;id&quot;:502,&quot;url&quot;:&quot;https:\/\/meretz.org.il\/wp-content\/uploads\/2020\/08\/34646808_1817531031623055_5350122241004666880_o.jpg&quot;},{&quot;id&quot;:248,&quot;url&quot;:&quot;https:\/\/meretz.org.il\/wp-content\/uploads\/2020\/08\/bg2.jpeg&quot;},{&quot;id&quot;:464,&quot;url&quot;:&quot;https:\/\/meretz.org.il\/wp-content\/uploads\/2020\/08\/F160721NS09.jpg&quot;}],&quot;background_slideshow_slide_duration&quot;:2500,&quot;background_slideshow_loop&quot;:&quot;yes&quot;,&quot;background_slideshow_slide_transition&quot;:&quot;fade&quot;,&quot;background_slideshow_transition_duration&quot;:500}">
+<div class="elementor-container elementor-column-gap-default">
+<div class="elementor-row">
+<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-6d0cf58" data-id="6d0cf58" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-0a04c5c elementor-align-center elementor-widget elementor-widget-button" data-id="0a04c5c" data-element_type="widget" data-widget_type="button.default">
+<div class="elementor-widget-container">
+<div class="elementor-button-wrapper">
+<a href="https://meretz.org.il/7reasons/" target="_blank" class="elementor-button-link elementor-button elementor-size-sm elementor-animation-grow" role="button">
+<span class="elementor-button-content-wrapper">
+<span class="elementor-button-text">תמכו במרצ</span>
+</span>
+</a>
+</div>
+</div>
+</div>
+<div class="elementor-element elementor-element-0164551 elementor-widget elementor-widget-global elementor-global-62 elementor-widget-jet-scroll-navigation" data-id="0164551" data-element_type="widget" data-widget_type="jet-scroll-navigation.default">
+<div class="elementor-widget-container">
+<div class="elementor-jet-scroll-navigation jet-elements"><div class="jet-scroll-navigation jet-scroll-navigation--position-right jet-scroll-navigation--show-hint-on-hover" data-settings='{"position":"right","speed":500,"offset":0,"sectionSwitch":true,"sectionSwitchOnMobile":false,"hintShowType":"show-hint-on-hover"}'><div class="jet-scroll-navigation__inner">
+<div class="jet-scroll-navigation__item" data-anchor="section_1" data-invert="no">
+<div class="jet-scroll-navigation__dot"> </div>
+<div class="jet-scroll-navigation__item-hint"><span class="jet-scroll-navigation__label">תמכו במרצ</span> </div>
+</div>
+<div class="jet-scroll-navigation__item" data-anchor="section_2" data-invert="no">
+<div class="jet-scroll-navigation__dot"> </div>
+<div class="jet-scroll-navigation__item-hint"><span class="jet-scroll-navigation__label">עקבו אחרינו</span> </div>
+</div>
+<div class="jet-scroll-navigation__item" data-anchor="section_3" data-invert="yes">
+<div class="jet-scroll-navigation__dot"> </div>
+<div class="jet-scroll-navigation__item-hint"><span class="jet-scroll-navigation__label">איך אפשר לעזור</span> </div>
+</div>
+</div>
+</div>
+</div> </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="elementor-section elementor-top-section elementor-element elementor-element-a736cc3 elementor-section-height-full section_2 elementor-reverse-mobile elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="a736cc3" data-element_type="section" id="section_2" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+<div class="elementor-container elementor-column-gap-default">
+<div class="elementor-row">
+<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4f7a8bf" data-id="4f7a8bf" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<section class="elementor-section elementor-inner-section elementor-element elementor-element-bd36845 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="bd36845" data-element_type="section">
+<div class="elementor-container elementor-column-gap-default">
+<div class="elementor-row">
+<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-cb7b2ee" data-id="cb7b2ee" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-d5768dc elementor-shape-rounded elementor-grid-0 elementor-widget elementor-widget-social-icons" data-id="d5768dc" data-element_type="widget" data-widget_type="social-icons.default">
+<div class="elementor-widget-container">
+<div class="elementor-social-icons-wrapper elementor-grid">
+<div class="elementor-grid-item">
+<a class="elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-repeater-item-3c03123" href="https://twitter.com/meretzparty" target="_blank">
+<span class="elementor-screen-only">Twitter</span>
+<i class="fab fa-twitter"></i> </a>
+</div>
+<div class="elementor-grid-item">
+<a class="elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-repeater-item-37430f9" href="https://www.instagram.com/meretz_party/" target="_blank">
+<span class="elementor-screen-only">Instagram</span>
+<i class="fab fa-instagram"></i> </a>
+</div>
+<div class="elementor-grid-item">
+<a class="elementor-icon elementor-social-icon elementor-social-icon-facebook elementor-repeater-item-f194500" href="https://www.facebook.com/Meretz/" target="_blank">
+<span class="elementor-screen-only">Facebook</span>
+<i class="fab fa-facebook"></i> </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-b561ba0" data-id="b561ba0" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-1e34fef elementor-widget elementor-widget-heading" data-id="1e34fef" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default"><a href="http://o-r.co/p/meretz_signup">הרשמה לניוזלטר</a></h2> </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="elementor-element elementor-element-3ce30eb elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="3ce30eb" data-element_type="widget" data-widget_type="divider.default">
+<div class="elementor-widget-container">
+<div class="elementor-divider">
+<span class="elementor-divider-separator">
+</span>
+</div>
+</div>
+</div>
+<div class="elementor-element elementor-element-a0cb4dd elementor-hidden-phone elementor-widget elementor-widget-heading" data-id="a0cb4dd" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default">עקבו אחרינו</h2> </div>
+</div>
+</div>
+</div>
+</div>
+<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-20abfbb" data-id="20abfbb" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-6b28a68 elementor-hidden-phone elementor-widget elementor-widget-facebook-page" data-id="6b28a68" data-element_type="widget" data-widget_type="facebook-page.default">
+<div class="elementor-widget-container">
+<div class="elementor-facebook-widget fb-page" data-href="https://www.facebook.com/Meretz/" data-tabs="timeline" data-height="450px" data-width="500px" data-small-header="false" data-hide-cover="false" data-show-facepile="true" data-hide-cta="false" style="min-height: 1px;height:450px"></div> </div>
+</div>
+<div class="elementor-element elementor-element-8dd0558 elementor-hidden-desktop elementor-hidden-tablet elementor-widget elementor-widget-heading" data-id="8dd0558" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default">עקבו אחרינו</h2> </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="elementor-section elementor-top-section elementor-element elementor-element-046dfca elementor-hidden-desktop elementor-hidden-tablet elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="046dfca" data-element_type="section">
+<div class="elementor-container elementor-column-gap-no">
+<div class="elementor-row">
+<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-8e010d6" data-id="8e010d6" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-ad698e3 elementor-widget elementor-widget-image" data-id="ad698e3" data-element_type="widget" data-widget_type="image.default">
+<div class="elementor-widget-container">
+<div class="elementor-image">
+<img width="800" height="394" src="https://meretz.org.il/wp-content/uploads/2020/08/F150130BK09.jpg" class="attachment-large size-large" alt="" loading="lazy" srcset="https://meretz.org.il/wp-content/uploads/2020/08/F150130BK09.jpg 1000w, https://meretz.org.il/wp-content/uploads/2020/08/F150130BK09-300x148.jpg 300w, https://meretz.org.il/wp-content/uploads/2020/08/F150130BK09-768x379.jpg 768w" sizes="(max-width: 800px) 100vw, 800px" /> </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="elementor-section elementor-top-section elementor-element elementor-element-3a08f31 elementor-section-height-full section_3 elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="3a08f31" data-element_type="section" id="section_3" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+<div class="elementor-container elementor-column-gap-default">
+<div class="elementor-row">
+<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-8304fe1" data-id="8304fe1" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-c494caf elementor-widget elementor-widget-menu-anchor" data-id="c494caf" data-element_type="widget" data-widget_type="menu-anchor.default">
+<div class="elementor-widget-container">
+<div id="join" class="elementor-menu-anchor"></div>
+</div>
+</div>
+<div class="elementor-element elementor-element-b3182f0 elementor-widget elementor-widget-heading" data-id="b3182f0" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default">איך אפשר לעזור</h2> </div>
+</div>
+</div>
+</div>
+</div>
+<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4bc8cab" data-id="4bc8cab" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-b206170 elementor-widget elementor-widget-button" data-id="b206170" data-element_type="widget" data-widget_type="button.default">
+<div class="elementor-widget-container">
+<div class="elementor-button-wrapper">
+<a href="https://meretz.org.il/map/" target="_blank" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+<span class="elementor-button-content-wrapper">
+<span class="elementor-button-text">מרצ בגשרים</span>
+</span>
+</a>
+</div>
+</div>
+</div>
+<div class="elementor-element elementor-element-e7924ce elementor-widget elementor-widget-button" data-id="e7924ce" data-element_type="widget" data-widget_type="button.default">
+<div class="elementor-widget-container">
+<div class="elementor-button-wrapper">
+<a href="https://21.meretz.org.il/hitpakdut/" target="_blank" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+<span class="elementor-button-content-wrapper">
+<span class="elementor-button-text">התפקדות</span>
+</span>
+</a>
+</div>
+</div>
+</div>
+<div class="elementor-element elementor-element-4ac57ea elementor-widget elementor-widget-button" data-id="4ac57ea" data-element_type="widget" data-widget_type="button.default">
+<div class="elementor-widget-container">
+<div class="elementor-button-wrapper">
+<a href="https://21.meretz.org.il/" target="_blank" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+<span class="elementor-button-content-wrapper">
+<span class="elementor-button-text">תרומה</span>
+</span>
+</a>
+</div>
+</div>
+</div>
+<div class="elementor-element elementor-element-4284f24 elementor-widget elementor-widget-button" data-id="4284f24" data-element_type="widget" data-widget_type="button.default">
+<div class="elementor-widget-container">
+<div class="elementor-button-wrapper">
+<a href="https://meretz.org.il/%d7%99%d7%a6%d7%99%d7%a8%d7%aa-%d7%a7%d7%a9%d7%a8/" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+<span class="elementor-button-content-wrapper">
+<span class="elementor-button-text">צרו קשר</span>
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<div data-elementor-type="footer" data-elementor-id="115" class="elementor elementor-115 elementor-location-footer" data-elementor-settings="[]">
+<div class="elementor-section-wrap">
+<section class="elementor-section elementor-top-section elementor-element elementor-element-48ba7193 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="48ba7193" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+<div class="elementor-container elementor-column-gap-default">
+<div class="elementor-row">
+<div class="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-e960a4a" data-id="e960a4a" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-3363d7c5 elementor-widget elementor-widget-heading" data-id="3363d7c5" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default">מי אנחנו?</h2> </div>
+</div>
+<div class="elementor-element elementor-element-5863f91c elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="5863f91c" data-element_type="widget" data-widget_type="icon-list.default">
+<div class="elementor-widget-container">
+<ul class="elementor-icon-list-items">
+<li class="elementor-icon-list-item">
+<a href="https://meretz.org.il/%D7%90%D7%95%D7%93%D7%95%D7%AA/#1"> <span class="elementor-icon-list-text">אודות</span>
+</a>
+</li>
+<li class="elementor-icon-list-item">
+<a href="https://meretz.org.il/%D7%90%D7%95%D7%93%D7%95%D7%AA/#2"> <span class="elementor-icon-list-text">מצע ותוכניות</span>
+</a>
+</li>
+<li class="elementor-icon-list-item">
+<a href="https://meretz.org.il/%D7%90%D7%95%D7%93%D7%95%D7%AA/#3"> <span class="elementor-icon-list-text">הנציגים שלנו</span>
+</a>
+</li>
+<li class="elementor-icon-list-item">
+<a href="https://meretz.org.il/%D7%90%D7%95%D7%93%D7%95%D7%AA/#4"> <span class="elementor-icon-list-text">פעילים במרצ</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="elementor-element elementor-element-18ac99a elementor-widget elementor-widget-button" data-id="18ac99a" data-element_type="widget" data-widget_type="button.default">
+<div class="elementor-widget-container">
+<div class="elementor-button-wrapper">
+<a href="https://21.meretz.org.il/" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+<span class="elementor-button-content-wrapper">
+<span class="elementor-button-text">לתרומה</span>
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-3188b8b3" data-id="3188b8b3" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-4cec7368 elementor-widget elementor-widget-heading" data-id="4cec7368" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default">מוסדות מרצ</h2> </div>
+</div>
+<div class="elementor-element elementor-element-1e7a5dfe elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="1e7a5dfe" data-element_type="widget" data-widget_type="icon-list.default">
+<div class="elementor-widget-container">
+<ul class="elementor-icon-list-items">
+<li class="elementor-icon-list-item">
+<a href="https://meretz.org.il/%d7%97%d7%95%d7%a7%d7%94-%d7%95%d7%aa%d7%a7%d7%a0%d7%95%d7%9f/"> <span class="elementor-icon-list-text">חוקה ותקנון</span>
+</a>
+</li>
+<li class="elementor-icon-list-item">
+<a href="https://meretz.org.il/%d7%97%d7%95%d7%a7%d7%94-%d7%95%d7%aa%d7%a7%d7%a0%d7%95%d7%9f/"> <span class="elementor-icon-list-text">הודעות, החלטות ופרוטוקולים</span>
+</a>
+</li>
+<li class="elementor-icon-list-item">
+<a href="https://meretz.org.il/wp-content/uploads/2020/10/מדיניות-הפרטיות.pdf"> <span class="elementor-icon-list-text">מדיניות הפרטיות</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="elementor-element elementor-element-c9326e5 elementor-widget elementor-widget-heading" data-id="c9326e5" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default"><a href="https://meretz.org.il/%D7%90%D7%95%D7%93%D7%95%D7%AA/#51">Meretz Platform</a></h2> </div>
+</div>
+</div>
+</div>
+</div>
+<div class="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-d325504" data-id="d325504" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-ea83f08 elementor-widget elementor-widget-heading" data-id="ea83f08" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default"> הנציגים שלנו</h2> </div>
+</div>
+<div class="elementor-element elementor-element-1e174e4 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="1e174e4" data-element_type="widget" data-widget_type="icon-list.default">
+<div class="elementor-widget-container">
+<ul class="elementor-icon-list-items">
+<li class="elementor-icon-list-item">
+<a href="https://www.facebook.com/Horowitz.Nitzan/"> <span class="elementor-icon-list-icon">
+<i aria-hidden="true" class="fab fa-facebook-f"></i> </span>
+<span class="elementor-icon-list-text">יו"ר מרצ ח"כ ניצן הורוביץ</span>
+</a>
+</li>
+<li class="elementor-icon-list-item">
+<a href="https://www.facebook.com/tamarzandberg/"> <span class="elementor-icon-list-icon">
+<i aria-hidden="true" class="fab fa-facebook-f"></i> </span>
+<span class="elementor-icon-list-text">ח"כ תמר זנדברג</span>
+</a>
+</li>
+<li class="elementor-icon-list-item">
+<a href="https://www.facebook.com/MK.YairGolan/"> <span class="elementor-icon-list-icon">
+<i aria-hidden="true" class="fab fa-facebook-f"></i> </span>
+<span class="elementor-icon-list-text">ח"כ יאיר גולן</span>
+</a>
+</li>
+<li class="elementor-icon-list-item">
+<a href="https://twitter.com/tomereznik" target="_blank"> <span class="elementor-icon-list-icon">
+<i aria-hidden="true" class="fab fa-twitter"></i> </span>
+<span class="elementor-icon-list-text">מזכ"ל מרצ תומר רזניק</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-5864627b" data-id="5864627b" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-390f01ad elementor-widget elementor-widget-heading" data-id="390f01ad" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default">מייל ליצירת קשר</h2> </div>
+</div>
+<div class="elementor-element elementor-element-27e5ba2a elementor-widget elementor-widget-heading" data-id="27e5ba2a" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a1c8cfc7cee1ccc4d3c4d5db8fced3c68fc8cd">[email&#160;protected]</a></h2> </div>
+</div>
+<div class="elementor-element elementor-element-224b010c elementor-widget elementor-widget-heading" data-id="224b010c" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default">טלפון</h2> </div>
+</div>
+<div class="elementor-element elementor-element-60b42fe6 elementor-widget elementor-widget-heading" data-id="60b42fe6" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default"><a href="tel:03-6098998">03-6098998</a></h2> </div>
+</div>
+<div class="elementor-element elementor-element-9e13b61 elementor-widget elementor-widget-heading" data-id="9e13b61" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default">פקס</h2> </div>
+</div>
+<div class="elementor-element elementor-element-5672b03 elementor-widget elementor-widget-heading" data-id="5672b03" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default"><a href="tel:03-6098998">03-729-4757</a></h2> </div>
+</div>
+<div class="elementor-element elementor-element-3c578bd elementor-widget elementor-widget-heading" data-id="3c578bd" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default">משלוח דואר:</h2> </div>
+</div>
+<div class="elementor-element elementor-element-bd7e7d1 elementor-widget elementor-widget-heading" data-id="bd7e7d1" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default"><a href="tel:03-6098998">ת.ד 20177
+תל אביב
+6120101</a></h2> </div>
+</div>
+</div>
+</div>
+</div>
+<div class="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-38a0a3b8" data-id="38a0a3b8" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<section class="elementor-section elementor-inner-section elementor-element elementor-element-19686fa elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="19686fa" data-element_type="section">
+<div class="elementor-container elementor-column-gap-no">
+<div class="elementor-row">
+<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-3e5aa523" data-id="3e5aa523" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-3c454de7 elementor-shape-rounded elementor-grid-0 elementor-widget elementor-widget-social-icons" data-id="3c454de7" data-element_type="widget" data-widget_type="social-icons.default">
+<div class="elementor-widget-container">
+<div class="elementor-social-icons-wrapper elementor-grid">
+<div class="elementor-grid-item">
+<a class="elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-repeater-item-3c03123" href="https://twitter.com/meretzparty" target="_blank">
+<span class="elementor-screen-only">Twitter</span>
+<i class="fab fa-twitter"></i> </a>
+</div>
+<div class="elementor-grid-item">
+<a class="elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-repeater-item-37430f9" href="https://www.instagram.com/meretz_party/" target="_blank">
+<span class="elementor-screen-only">Instagram</span>
+<i class="fab fa-instagram"></i> </a>
+</div>
+<div class="elementor-grid-item">
+<a class="elementor-icon elementor-social-icon elementor-social-icon-facebook elementor-repeater-item-f194500" href="https://www.facebook.com/Meretz/" target="_blank">
+<span class="elementor-screen-only">Facebook</span>
+<i class="fab fa-facebook"></i> </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-3c8de9fe" data-id="3c8de9fe" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-421dbc39 elementor-widget elementor-widget-heading" data-id="421dbc39" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default"><a href="http://o-r.co/p/meretz_signup">הרשמה לניוזלטר</a></h2> </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="elementor-element elementor-element-58e7b16d elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="58e7b16d" data-element_type="widget" data-widget_type="divider.default">
+<div class="elementor-widget-container">
+<div class="elementor-divider">
+<span class="elementor-divider-separator">
+</span>
+</div>
+</div>
+</div>
+<div class="elementor-element elementor-element-62d2898d elementor-widget elementor-widget-heading" data-id="62d2898d" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default">עקבו אחרינו</h2> </div>
+</div>
+</div>
+</div>
+</div>
+<div class="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-6d200709" data-id="6d200709" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-7a0ca18e elementor-widget elementor-widget-image" data-id="7a0ca18e" data-element_type="widget" data-widget_type="image.default">
+<div class="elementor-widget-container">
+<div class="elementor-image">
+<a href="https://meretz.org.il/%d7%91%d7%99%d7%aa/">
+<img width="318" height="153" src="https://meretz.org.il/wp-content/uploads/2020/08/logo.png" class="attachment-large size-large" alt="" loading="lazy" srcset="https://meretz.org.il/wp-content/uploads/2020/08/logo.png 318w, https://meretz.org.il/wp-content/uploads/2020/08/logo-300x144.png 300w" sizes="(max-width: 318px) 100vw, 318px" /> </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<div id="jet-popup-440" class="jet-popup jet-popup--front-mode jet-popup--hide-state jet-popup--animation-fade" data-settings="{&quot;id&quot;:440,&quot;jet-popup-id&quot;:&quot;jet-popup-440&quot;,&quot;type&quot;:&quot;default&quot;,&quot;animation&quot;:&quot;fade&quot;,&quot;open-trigger&quot;:&quot;custom-selector&quot;,&quot;page-load-delay&quot;:1,&quot;user-inactivity-time&quot;:3,&quot;scrolled-to&quot;:10,&quot;on-date&quot;:&quot;&quot;,&quot;custom-selector&quot;:&quot;nitzanpop&quot;,&quot;show-once&quot;:false,&quot;show-again-delay&quot;:&quot;none&quot;,&quot;use-ajax&quot;:false,&quot;force-ajax&quot;:false,&quot;close-on-overlay-click&quot;:true}">
+<div class="jet-popup__inner">
+<div class="jet-popup__overlay"></div> <div class="jet-popup__container">
+<div class="jet-popup__container-inner">
+<div class="jet-popup__container-overlay"></div>
+<div class="jet-popup__container-content"> <div data-elementor-type="jet-popup" data-elementor-id="440" class="elementor elementor-440" data-elementor-settings="[]">
+<div class="elementor-inner">
+<div class="elementor-section-wrap">
+<section class="elementor-section elementor-top-section elementor-element elementor-element-6de71958 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="6de71958" data-element_type="section">
+<div class="elementor-container elementor-column-gap-default">
+<div class="elementor-row">
+<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-bdee384" data-id="bdee384" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-1d92cdb4 elementor-widget elementor-widget-heading" data-id="1d92cdb4" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default">ניצן הורוביץ</h2> </div>
+</div>
+<section class="elementor-section elementor-inner-section elementor-element elementor-element-133a12f6 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="133a12f6" data-element_type="section">
+<div class="elementor-container elementor-column-gap-default">
+<div class="elementor-row">
+<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-5f05b6b4" data-id="5f05b6b4" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-75310495 elementor-widget elementor-widget-text-editor" data-id="75310495" data-element_type="widget" data-widget_type="text-editor.default">
+<div class="elementor-widget-container">
+<div class="elementor-text-editor elementor-clearfix"><p>יו&quot;ר מרצ ח&quot;כ ניצן הורוביץ, נבחר לראשות המפלגה ביוני 2019. קודם לכן כיהן כח&quot;כ מטעם מרצ בין השנים 2009-2015. ב-2013 התמודד לראשות העיר תל אביב-יפו מטעם מרצ. הורוביץ הוא חבר הכנסת ההומו המוצהר הראשון שעומד בראש מפלגה בישראל. הוא הקים את תנועת ישראל חופשית למאבק בכפייה דתית, הוביל את המאבק לשוויון הקהילה הגאה בישראל ופעל רבות למען הפרדת דת ומדינה ולקידום עירוניות מקיימת, תחבורה ציבורית והגנת הסביבה.<br />ח&quot;כ הורוביץ הוא בעל רקע עיתונאי עשיר מזה 30 שנה, ועסק רבות בסיקור עניינים בינלאומיים. הוא היה פעיל בארגונים לזכויות אדם וארגוני סביבה, חבר במכון מיתווים ובגופים נוספים לקידום השלום ויחסי החוץ של ישראל. הוא בוגר הפקולטה למשפטים ועורך-דין. גר בתל אביב עם עידו, בן זוגו מזה שנים רבות.</p></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-738352aa" data-id="738352aa" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-51f605f0 elementor-widget elementor-widget-text-editor" data-id="51f605f0" data-element_type="widget" data-widget_type="text-editor.default">
+<div class="elementor-widget-container">
+<div class="elementor-text-editor elementor-clearfix"><p>02-6408216<br /><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c7a9aeb3bda6a987aaa2b5a2b3bde9a8b5a0e9aeab">[email&#160;protected]</a></p></div>
+</div>
+</div>
+<div class="elementor-element elementor-element-c203dbf elementor-shape-square elementor-grid-0 elementor-widget elementor-widget-social-icons" data-id="c203dbf" data-element_type="widget" data-widget_type="social-icons.default">
+<div class="elementor-widget-container">
+<div class="elementor-social-icons-wrapper elementor-grid">
+<div class="elementor-grid-item">
+<a class="elementor-icon elementor-social-icon elementor-social-icon-facebook elementor-repeater-item-fa852da" href="https://www.facebook.com/Horowitz.Nitzan" target="_blank">
+<span class="elementor-screen-only">Facebook</span>
+<i class="fab fa-facebook"></i> </a>
+</div>
+<div class="elementor-grid-item">
+<a class="elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-repeater-item-d3db057" href="https://twitter.com/NitzanHorowitz" target="_blank">
+<span class="elementor-screen-only">Twitter</span>
+<i class="fab fa-twitter"></i> </a>
+</div>
+<div class="elementor-grid-item">
+<a class="elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-repeater-item-ddf45de" href="https://www.youtube.com/user/MKNitzanHorowitz" target="_blank">
+<span class="elementor-screen-only">Youtube</span>
+<i class="fab fa-youtube"></i> </a>
+</div>
+<div class="elementor-grid-item">
+<a class="elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-repeater-item-9f9701f" href="https://www.instagram.com/nitzanho/" target="_blank">
+<span class="elementor-screen-only">Instagram</span>
+<i class="fab fa-instagram"></i> </a>
+</div>
+<div class="elementor-grid-item">
+<a class="elementor-icon elementor-social-icon elementor-social-icon-whatsapp elementor-repeater-item-26c34da" href="https://chat.whatsapp.com/KPLQ0lnNfM3LTkoSCFLKo0" target="_blank">
+<span class="elementor-screen-only">Whatsapp</span>
+<i class="fab fa-whatsapp"></i> </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jet-popup__close-button"><i class="fa fa-times" aria-hidden="true"></i></div> </div>
+</div>
+</div>
+<main data-elementor-type="popup" data-elementor-id="361" class="elementor elementor-361 elementor-location-popup" data-elementor-settings="{&quot;entrance_animation_mobile&quot;:&quot;fadeInLeft&quot;,&quot;exit_animation_mobile&quot;:&quot;fadeInLeft&quot;,&quot;close_button_position&quot;:&quot;outside&quot;,&quot;avoid_multiple_popups&quot;:&quot;yes&quot;,&quot;triggers&quot;:[],&quot;timing&quot;:[]}">
+<div class="elementor-section-wrap">
+<section class="elementor-section elementor-top-section elementor-element elementor-element-99a207a elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="99a207a" data-element_type="section">
+<div class="elementor-container elementor-column-gap-default">
+<div class="elementor-row">
+<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-8c459d1" data-id="8c459d1" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-26a708a elementor-widget elementor-widget-heading" data-id="26a708a" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default">ניצן הורוביץ</h2> </div>
+</div>
+<section class="elementor-section elementor-inner-section elementor-element elementor-element-6a01da3 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="6a01da3" data-element_type="section">
+<div class="elementor-container elementor-column-gap-default">
+<div class="elementor-row">
+<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-22a0463" data-id="22a0463" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-847f9c7 elementor-widget elementor-widget-text-editor" data-id="847f9c7" data-element_type="widget" data-widget_type="text-editor.default">
+<div class="elementor-widget-container">
+<div class="elementor-text-editor elementor-clearfix"><p>יו&quot;ר מרצ ח&quot;כ ניצן הורוביץ, נבחר לתפקיד ביוני 2019 וכיהן בח&quot;כ מטעם מרצ בין השנים 2009-2015. חבר הכנסת ההומו המוצהר הראשון שעומד בראשות מפלגה בישראל, הקים את תנועת ישראל חופשית ועמד בראשה, הוביל את המאבק לשוויון הקהילה הגאה בישראל ופעל רבות למען הפרדת דת ומדינה ובנושאים עירוניים, תחבורתיים וסביבתיים. בעל רקע עיתונאי עשיר מזה 30 שנה, עסק רבות בסיקור ענייני חוץ, היה חבר במכון מיתווים, בעל תעודת עו&quot;ד מוסמך ובוגר הפקולטה למשפטים והתמודד לראשות העיר תל אביב ב-2013. גר בתל אביב עם בן זוגו.</p></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-7249e60" data-id="7249e60" data-element_type="column">
+<div class="elementor-column-wrap elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-a803dee elementor-widget elementor-widget-text-editor" data-id="a803dee" data-element_type="widget" data-widget_type="text-editor.default">
+<div class="elementor-widget-container">
+<div class="elementor-text-editor elementor-clearfix"><p>02-6408216<br /><a class="contact_email" href="/cdn-cgi/l/email-protection#680600071a071f011c122803060d1b1b0d1c460f071e460104" target="_blank" rel="noopener"><span class="__cf_email__" data-cfemail="197771766b766e706d635972777c6a6a7c6d377e766f377075">[email&#160;protected]</span></a><br /><br /></p></div>
+</div>
+</div>
+<div class="elementor-element elementor-element-9045bf8 elementor-shape-square elementor-grid-0 elementor-widget elementor-widget-social-icons" data-id="9045bf8" data-element_type="widget" data-widget_type="social-icons.default">
+<div class="elementor-widget-container">
+<div class="elementor-social-icons-wrapper elementor-grid">
+<div class="elementor-grid-item">
+<a class="elementor-icon elementor-social-icon elementor-social-icon-facebook elementor-repeater-item-fa852da" href="https://www.facebook.com/Horowitz.Nitzan" target="_blank">
+<span class="elementor-screen-only">Facebook</span>
+<i class="fab fa-facebook"></i> </a>
+</div>
+<div class="elementor-grid-item">
+<a class="elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-repeater-item-d3db057" href="https://twitter.com/NitzanHorowitz" target="_blank">
+<span class="elementor-screen-only">Twitter</span>
+<i class="fab fa-twitter"></i> </a>
+</div>
+<div class="elementor-grid-item">
+<a class="elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-repeater-item-ddf45de" href="https://www.youtube.com/user/MKNitzanHorowitz" target="_blank">
+<span class="elementor-screen-only">Youtube</span>
+<i class="fab fa-youtube"></i> </a>
+</div>
+<div class="elementor-grid-item">
+<a class="elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-repeater-item-9f9701f" href="https://www.instagram.com/nitzanho/" target="_blank">
+<span class="elementor-screen-only">Instagram</span>
+<i class="fab fa-instagram"></i> </a>
+</div>
+<div class="elementor-grid-item">
+<a class="elementor-icon elementor-social-icon elementor-social-icon-whatsapp elementor-repeater-item-26c34da" href="https://chat.whatsapp.com/KPLQ0lnNfM3LTkoSCFLKo0" target="_blank">
+<span class="elementor-screen-only">Whatsapp</span>
+<i class="fab fa-whatsapp"></i> </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<link rel='stylesheet' id='elementor-post-343-css' href='https://meretz.org.il/wp-content/uploads/elementor/css/post-343.css?ver=1609577371' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-328-css' href='https://meretz.org.il/wp-content/uploads/elementor/css/post-328.css?ver=1609577371' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-336-css' href='https://meretz.org.il/wp-content/uploads/elementor/css/post-336.css?ver=1611579839' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-440-css' href='https://meretz.org.il/wp-content/uploads/elementor/css/post-440.css?ver=1609577371' type='text/css' media='all' />
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type='text/javascript' id='pojo-a11y-js-extra'>
+/* <![CDATA[ */
+var PojoA11yOptions = {"focusable":"","remove_link_target":"","add_role_links":"","enable_save":"","save_expiration":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://meretz.org.il/wp-content/plugins/pojo-accessibility/assets/js/app.min.js?ver=1.0.0' id='pojo-a11y-js'></script>
+<script type='text/javascript' src='https://meretz.org.il/wp-includes/js/wp-embed.min.js?ver=5.6.2' id='wp-embed-js'></script>
+<script type='text/javascript' src='https://meretz.org.il/wp-content/plugins/elementor-extras/assets/lib/slide-menu/slide-menu.min.js?ver=1.0.1' id='slide-menu-js'></script>
+<script type='text/javascript' src='https://meretz.org.il/wp-content/plugins/elementor-extras/assets/lib/slidebars/js/slidebars.min.js?ver=1.2.7' id='slidebars-js'></script>
+<script type='text/javascript' src='https://meretz.org.il/wp-content/plugins/elementor-extras/assets/lib/jquery-resize/jquery.resize.min.js?ver=3.0.2' id='jquery-resize-ee-js'></script>
+<script type='text/javascript' src='https://meretz.org.il/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.0.15' id='elementor-frontend-modules-js'></script>
+<script type='text/javascript' src='https://meretz.org.il/wp-content/plugins/elementor-pro/assets/lib/sticky/jquery.sticky.min.js?ver=3.0.9' id='elementor-sticky-js'></script>
+<script type='text/javascript' id='elementor-pro-frontend-js-before'>
+var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/meretz.org.il\/wp-admin\/admin-ajax.php","nonce":"590dbf6f5b","i18n":{"toc_no_headings_found":"\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0\u05d5 \u05db\u05d5\u05ea\u05e8\u05d5\u05ea \u05d1\u05e2\u05de\u05d5\u05d3 \u05d6\u05d4"},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"google":{"title":"Google+","has_counter":true},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"}},"facebook_sdk":{"lang":"he_IL","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/meretz.org.il\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json"}};
+</script>
+<script type='text/javascript' src='https://meretz.org.il/wp-content/plugins/elementor-pro/assets/js/frontend.min.js?ver=3.0.9' id='elementor-pro-frontend-js'></script>
+<script type='text/javascript' src='https://meretz.org.il/wp-includes/js/jquery/ui/core.min.js?ver=1.12.1' id='jquery-ui-core-js'></script>
+<script type='text/javascript' src='https://meretz.org.il/wp-content/plugins/elementor/assets/lib/dialog/dialog.min.js?ver=4.8.1' id='elementor-dialog-js'></script>
+<script type='text/javascript' src='https://meretz.org.il/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js?ver=4.0.2' id='elementor-waypoints-js'></script>
+<script type='text/javascript' src='https://meretz.org.il/wp-content/plugins/elementor/assets/lib/swiper/swiper.min.js?ver=5.3.6' id='swiper-js'></script>
+<script type='text/javascript' src='https://meretz.org.il/wp-content/plugins/elementor/assets/lib/share-link/share-link.min.js?ver=3.0.15' id='share-link-js'></script>
+<script type='text/javascript' id='elementor-frontend-js-before'>
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false},"i18n":{"shareOnFacebook":"\u05e9\u05ea\u05e3 \u05d1\u05e4\u05d9\u05d9\u05e1\u05d1\u05d5\u05e7","shareOnTwitter":"\u05e9\u05ea\u05e3 \u05d1\u05d8\u05d5\u05d5\u05d9\u05d8\u05e8","pinIt":"\u05dc\u05e0\u05e2\u05d5\u05e5 \u05d1\u05e4\u05d9\u05e0\u05d8\u05e8\u05e1\u05d8","download":"\u05d4\u05d5\u05e8\u05d3\u05d4","downloadImage":"\u05d4\u05d5\u05e8\u05d3\u05ea \u05ea\u05de\u05d5\u05e0\u05d4","fullscreen":"\u05de\u05e1\u05da \u05de\u05dc\u05d0","zoom":"\u05de\u05d9\u05e7\u05d5\u05d3","share":"\u05e9\u05ea\u05e3","playVideo":"\u05e0\u05d2\u05df \u05d5\u05d9\u05d3\u05d0\u05d5","previous":"\u05e7\u05d5\u05d3\u05dd","next":"\u05d4\u05d1\u05d0","close":"\u05e1\u05d2\u05d5\u05e8"},"is_rtl":true,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"version":"3.0.15","is_static":false,"legacyMode":{"elementWrappers":true},"urls":{"assets":"https:\/\/meretz.org.il\/wp-content\/plugins\/elementor\/assets\/"},"settings":{"page":[],"editorPreferences":[]},"kit":{"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description"},"post":{"id":8,"title":"%D7%91%D7%99%D7%AA%20-%20%D7%9E%D7%A4%D7%9C%D7%92%D7%AA%20%D7%9E%D7%A8%D7%A6","excerpt":"","featuredImage":"https:\/\/meretz.org.il\/wp-content\/uploads\/2020\/08\/97136622_10159915920763128_2515774379212668928_o-1024x1024.png"}};
+</script>
+<script type='text/javascript' src='https://meretz.org.il/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.0.15' id='elementor-frontend-js'></script>
+<script type='text/javascript' id='jet-elements-js-extra'>
+/* <![CDATA[ */
+var jetElements = {"ajaxUrl":"https:\/\/meretz.org.il\/wp-admin\/admin-ajax.php","isMobile":"false","templateApiUrl":"https:\/\/meretz.org.il\/wp-json\/jet-elements-api\/v1\/elementor-template","devMode":"false","messages":{"invalidMail":"Please specify a valid e-mail"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://meretz.org.il/wp-content/plugins/jet-elements/assets/js/jet-elements.min.js?ver=2.2.17' id='jet-elements-js'></script>
+<script type='text/javascript' src='https://meretz.org.il/wp-content/plugins/jet-elements/assets/js/lib/anime-js/anime.min.js?ver=2.2.0' id='jet-anime-js-js'></script>
+<script type='text/javascript' id='jet-popup-frontend-js-extra'>
+/* <![CDATA[ */
+var jetPopupData = {"elements_data":{"sections":[],"columns":[],"widgets":[]},"version":"1.4.0","ajax_url":"https:\/\/meretz.org.il\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://meretz.org.il/wp-content/plugins/jet-popup/assets/js/jet-popup-frontend.min.js?ver=1.4.0' id='jet-popup-frontend-js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js' id='gsap-js-js'></script>
+<script type='text/javascript' id='elementor-extras-frontend-js-extra'>
+/* <![CDATA[ */
+var elementorExtrasFrontendConfig = {"urls":{"assets":"https:\/\/meretz.org.il\/wp-content\/plugins\/elementor-extras\/assets\/"},"refreshableWidgets":["ee-offcanvas.classic","ee-popup.classic","gallery-slider.default","media-carousel.default","image-carousel.default","slides.default"]};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://meretz.org.il/wp-content/plugins/elementor-extras/assets/js/frontend.min.js?ver=2.2.44' id='elementor-extras-frontend-js'></script>
+<script type='text/javascript' src='https://meretz.org.il/wp-content/plugins/elementor-extras/assets/lib/parallax-gallery/parallax-gallery.min.js?ver=1.0.0' id='parallax-gallery-js'></script>
+<script type='text/javascript' src='https://meretz.org.il/wp-content/plugins/elementor-extras/assets/lib/hotips/hotips.min.js?ver=1.1.0' id='hotips-js'></script>
+<a id="pojo-a11y-skip-content" class="pojo-skip-link pojo-skip-content" tabindex="1" accesskey="s" href="#content">דילוג לתוכן</a>
+<nav id="pojo-a11y-toolbar" class="pojo-a11y-toolbar-left pojo-a11y-" role="navigation">
+<div class="pojo-a11y-toolbar-toggle">
+<a class="pojo-a11y-toolbar-link pojo-a11y-toolbar-toggle-link" href="javascript:void(0);" title="כלי נגישות">
+<span class="pojo-sr-only sr-only">פתח סרגל נגישות</span>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor" width="1em">
+<g><path d="M60.4,78.9c-2.2,4.1-5.3,7.4-9.2,9.8c-4,2.4-8.3,3.6-13,3.6c-6.9,0-12.8-2.4-17.7-7.3c-4.9-4.9-7.3-10.8-7.3-17.7c0-5,1.4-9.5,4.1-13.7c2.7-4.2,6.4-7.2,10.9-9.2l-0.9-7.3c-6.3,2.3-11.4,6.2-15.3,11.8C7.9,54.4,6,60.6,6,67.3c0,5.8,1.4,11.2,4.3,16.1s6.8,8.8,11.7,11.7c4.9,2.9,10.3,4.3,16.1,4.3c7,0,13.3-2.1,18.9-6.2c5.7-4.1,9.6-9.5,11.7-16.2l-5.7-11.4C63.5,70.4,62.5,74.8,60.4,78.9z" /><path d="M93.8,71.3l-11.1,5.5L70,51.4c-0.6-1.3-1.7-2-3.2-2H41.3l-0.9-7.2h22.7v-7.2H39.6L37.5,19c2.5,0.3,4.8-0.5,6.7-2.3c1.9-1.8,2.9-4,2.9-6.6c0-2.5-0.9-4.6-2.6-6.3c-1.8-1.8-3.9-2.6-6.3-2.6c-2,0-3.8,0.6-5.4,1.8c-1.6,1.2-2.7,2.7-3.2,4.6c-0.3,1-0.4,1.8-0.3,2.3l5.4,43.5c0.1,0.9,0.5,1.6,1.2,2.3c0.7,0.6,1.5,0.9,2.4,0.9h26.4l13.4,26.7c0.6,1.3,1.7,2,3.2,2c0.6,0,1.1-0.1,1.6-0.4L97,77.7L93.8,71.3z" /></g> </svg>
+</a>
+</div>
+<div class="pojo-a11y-toolbar-overlay">
+<div class="pojo-a11y-toolbar-inner">
+<p class="pojo-a11y-toolbar-title">כלי נגישות</p>
+<ul class="pojo-a11y-toolbar-items pojo-a11y-tools">
+<li class="pojo-a11y-toolbar-item">
+<a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-resize-font pojo-a11y-btn-resize-plus" data-action="resize-plus" data-action-group="resize" tabindex="-1">
+<span class="pojo-a11y-toolbar-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 448"><path fill="currentColor" d="M256 200v16c0 4.25-3.75 8-8 8h-56v56c0 4.25-3.75 8-8 8h-16c-4.25 0-8-3.75-8-8v-56h-56c-4.25 0-8-3.75-8-8v-16c0-4.25 3.75-8 8-8h56v-56c0-4.25 3.75-8 8-8h16c4.25 0 8 3.75 8 8v56h56c4.25 0 8 3.75 8 8zM288 208c0-61.75-50.25-112-112-112s-112 50.25-112 112 50.25 112 112 112 112-50.25 112-112zM416 416c0 17.75-14.25 32-32 32-8.5 0-16.75-3.5-22.5-9.5l-85.75-85.5c-29.25 20.25-64.25 31-99.75 31-97.25 0-176-78.75-176-176s78.75-176 176-176 176 78.75 176 176c0 35.5-10.75 70.5-31 99.75l85.75 85.75c5.75 5.75 9.25 14 9.25 22.5z" "></path></svg></span><span class="pojo-a11y-toolbar-text">הגדל טקסט</span> </a>
+</li>
+<li class="pojo-a11y-toolbar-item">
+<a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-resize-font pojo-a11y-btn-resize-minus" data-action="resize-minus" data-action-group="resize" tabindex="-1">
+<span class="pojo-a11y-toolbar-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 448"><path fill="currentColor" d="M256 200v16c0 4.25-3.75 8-8 8h-144c-4.25 0-8-3.75-8-8v-16c0-4.25 3.75-8 8-8h144c4.25 0 8 3.75 8 8zM288 208c0-61.75-50.25-112-112-112s-112 50.25-112 112 50.25 112 112 112 112-50.25 112-112zM416 416c0 17.75-14.25 32-32 32-8.5 0-16.75-3.5-22.5-9.5l-85.75-85.5c-29.25 20.25-64.25 31-99.75 31-97.25 0-176-78.75-176-176s78.75-176 176-176 176 78.75 176 176c0 35.5-10.75 70.5-31 99.75l85.75 85.75c5.75 5.75 9.25 14 9.25 22.5z"></path></svg></span><span class="pojo-a11y-toolbar-text">הקטן טקסט</span> </a>
+</li>
+<li class="pojo-a11y-toolbar-item">
+<a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-background-group pojo-a11y-btn-grayscale" data-action="grayscale" data-action-group="schema" tabindex="-1">
+<span class="pojo-a11y-toolbar-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 448"><path fill="currentColor" d="M15.75 384h-15.75v-352h15.75v352zM31.5 383.75h-8v-351.75h8v351.75zM55 383.75h-7.75v-351.75h7.75v351.75zM94.25 383.75h-7.75v-351.75h7.75v351.75zM133.5 383.75h-15.5v-351.75h15.5v351.75zM165 383.75h-7.75v-351.75h7.75v351.75zM180.75 383.75h-7.75v-351.75h7.75v351.75zM196.5 383.75h-7.75v-351.75h7.75v351.75zM235.75 383.75h-15.75v-351.75h15.75v351.75zM275 383.75h-15.75v-351.75h15.75v351.75zM306.5 383.75h-15.75v-351.75h15.75v351.75zM338 383.75h-15.75v-351.75h15.75v351.75zM361.5 383.75h-15.75v-351.75h15.75v351.75zM408.75 383.75h-23.5v-351.75h23.5v351.75zM424.5 383.75h-8v-351.75h8v351.75zM448 384h-15.75v-352h15.75v352z"></path></svg></span><span class="pojo-a11y-toolbar-text">גווני אפור</span> </a>
+</li>
+<li class="pojo-a11y-toolbar-item">
+<a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-background-group pojo-a11y-btn-high-contrast" data-action="high-contrast" data-action-group="schema" tabindex="-1">
+<span class="pojo-a11y-toolbar-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 448"><path fill="currentColor" d="M192 360v-272c-75 0-136 61-136 136s61 136 136 136zM384 224c0 106-86 192-192 192s-192-86-192-192 86-192 192-192 192 86 192 192z" "></path></svg></span><span class="pojo-a11y-toolbar-text">ניגודיות גבוהה</span> </a>
+</li>
+<li class="pojo-a11y-toolbar-item">
+<a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-background-group pojo-a11y-btn-negative-contrast" data-action="negative-contrast" data-action-group="schema" tabindex="-1">
+<span class="pojo-a11y-toolbar-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 448"><path fill="currentColor" d="M416 240c-23.75-36.75-56.25-68.25-95.25-88.25 10 17 15.25 36.5 15.25 56.25 0 61.75-50.25 112-112 112s-112-50.25-112-112c0-19.75 5.25-39.25 15.25-56.25-39 20-71.5 51.5-95.25 88.25 42.75 66 111.75 112 192 112s149.25-46 192-112zM236 144c0-6.5-5.5-12-12-12-41.75 0-76 34.25-76 76 0 6.5 5.5 12 12 12s12-5.5 12-12c0-28.5 23.5-52 52-52 6.5 0 12-5.5 12-12zM448 240c0 6.25-2 12-5 17.25-46 75.75-130.25 126.75-219 126.75s-173-51.25-219-126.75c-3-5.25-5-11-5-17.25s2-12 5-17.25c46-75.5 130.25-126.75 219-126.75s173 51.25 219 126.75c3 5.25 5 11 5 17.25z"></path></svg></span><span class="pojo-a11y-toolbar-text">ניגודיות הפוכה</span> </a>
+</li>
+<li class="pojo-a11y-toolbar-item">
+<a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-background-group pojo-a11y-btn-light-background" data-action="light-background" data-action-group="schema" tabindex="-1">
+<span class="pojo-a11y-toolbar-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 448"><path fill="currentColor" d="M184 144c0 4.25-3.75 8-8 8s-8-3.75-8-8c0-17.25-26.75-24-40-24-4.25 0-8-3.75-8-8s3.75-8 8-8c23.25 0 56 12.25 56 40zM224 144c0-50-50.75-80-96-80s-96 30-96 80c0 16 6.5 32.75 17 45 4.75 5.5 10.25 10.75 15.25 16.5 17.75 21.25 32.75 46.25 35.25 74.5h57c2.5-28.25 17.5-53.25 35.25-74.5 5-5.75 10.5-11 15.25-16.5 10.5-12.25 17-29 17-45zM256 144c0 25.75-8.5 48-25.75 67s-40 45.75-42 72.5c7.25 4.25 11.75 12.25 11.75 20.5 0 6-2.25 11.75-6.25 16 4 4.25 6.25 10 6.25 16 0 8.25-4.25 15.75-11.25 20.25 2 3.5 3.25 7.75 3.25 11.75 0 16.25-12.75 24-27.25 24-6.5 14.5-21 24-36.75 24s-30.25-9.5-36.75-24c-14.5 0-27.25-7.75-27.25-24 0-4 1.25-8.25 3.25-11.75-7-4.5-11.25-12-11.25-20.25 0-6 2.25-11.75 6.25-16-4-4.25-6.25-10-6.25-16 0-8.25 4.5-16.25 11.75-20.5-2-26.75-24.75-53.5-42-72.5s-25.75-41.25-25.75-67c0-68 64.75-112 128-112s128 44 128 112z"></path></svg></span><span class="pojo-a11y-toolbar-text">רקע בהיר</span> </a>
+</li>
+<li class="pojo-a11y-toolbar-item">
+<a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-links-underline" data-action="links-underline" data-action-group="toggle" tabindex="-1">
+<span class="pojo-a11y-toolbar-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 448"><path fill="currentColor" d="M364 304c0-6.5-2.5-12.5-7-17l-52-52c-4.5-4.5-10.75-7-17-7-7.25 0-13 2.75-18 8 8.25 8.25 18 15.25 18 28 0 13.25-10.75 24-24 24-12.75 0-19.75-9.75-28-18-5.25 5-8.25 10.75-8.25 18.25 0 6.25 2.5 12.5 7 17l51.5 51.75c4.5 4.5 10.75 6.75 17 6.75s12.5-2.25 17-6.5l36.75-36.5c4.5-4.5 7-10.5 7-16.75zM188.25 127.75c0-6.25-2.5-12.5-7-17l-51.5-51.75c-4.5-4.5-10.75-7-17-7s-12.5 2.5-17 6.75l-36.75 36.5c-4.5 4.5-7 10.5-7 16.75 0 6.5 2.5 12.5 7 17l52 52c4.5 4.5 10.75 6.75 17 6.75 7.25 0 13-2.5 18-7.75-8.25-8.25-18-15.25-18-28 0-13.25 10.75-24 24-24 12.75 0 19.75 9.75 28 18 5.25-5 8.25-10.75 8.25-18.25zM412 304c0 19-7.75 37.5-21.25 50.75l-36.75 36.5c-13.5 13.5-31.75 20.75-50.75 20.75-19.25 0-37.5-7.5-51-21.25l-51.5-51.75c-13.5-13.5-20.75-31.75-20.75-50.75 0-19.75 8-38.5 22-52.25l-22-22c-13.75 14-32.25 22-52 22-19 0-37.5-7.5-51-21l-52-52c-13.75-13.75-21-31.75-21-51 0-19 7.75-37.5 21.25-50.75l36.75-36.5c13.5-13.5 31.75-20.75 50.75-20.75 19.25 0 37.5 7.5 51 21.25l51.5 51.75c13.5 13.5 20.75 31.75 20.75 50.75 0 19.75-8 38.5-22 52.25l22 22c13.75-14 32.25-22 52-22 19 0 37.5 7.5 51 21l52 52c13.75 13.75 21 31.75 21 51z"></path></svg></span><span class="pojo-a11y-toolbar-text">הדגשת קישורים</span> </a>
+</li>
+<li class="pojo-a11y-toolbar-item">
+<a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-readable-font" data-action="readable-font" data-action-group="toggle" tabindex="-1">
+<span class="pojo-a11y-toolbar-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 448"><path fill="currentColor" d="M181.25 139.75l-42.5 112.5c24.75 0.25 49.5 1 74.25 1 4.75 0 9.5-0.25 14.25-0.5-13-38-28.25-76.75-46-113zM0 416l0.5-19.75c23.5-7.25 49-2.25 59.5-29.25l59.25-154 70-181h32c1 1.75 2 3.5 2.75 5.25l51.25 120c18.75 44.25 36 89 55 133 11.25 26 20 52.75 32.5 78.25 1.75 4 5.25 11.5 8.75 14.25 8.25 6.5 31.25 8 43 12.5 0.75 4.75 1.5 9.5 1.5 14.25 0 2.25-0.25 4.25-0.25 6.5-31.75 0-63.5-4-95.25-4-32.75 0-65.5 2.75-98.25 3.75 0-6.5 0.25-13 1-19.5l32.75-7c6.75-1.5 20-3.25 20-12.5 0-9-32.25-83.25-36.25-93.5l-112.5-0.5c-6.5 14.5-31.75 80-31.75 89.5 0 19.25 36.75 20 51 22 0.25 4.75 0.25 9.5 0.25 14.5 0 2.25-0.25 4.5-0.5 6.75-29 0-58.25-5-87.25-5-3.5 0-8.5 1.5-12 2-15.75 2.75-31.25 3.5-47 3.5z"></path></svg></span><span class="pojo-a11y-toolbar-text">פונט קריא</span> </a>
+</li>
+<li class="pojo-a11y-toolbar-item">
+<a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-reset" data-action="reset" tabindex="-1">
+<span class="pojo-a11y-toolbar-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 448"><path fill="currentColor" d="M384 224c0 105.75-86.25 192-192 192-57.25 0-111.25-25.25-147.75-69.25-2.5-3.25-2.25-8 0.5-10.75l34.25-34.5c1.75-1.5 4-2.25 6.25-2.25 2.25 0.25 4.5 1.25 5.75 3 24.5 31.75 61.25 49.75 101 49.75 70.5 0 128-57.5 128-128s-57.5-128-128-128c-32.75 0-63.75 12.5-87 34.25l34.25 34.5c4.75 4.5 6 11.5 3.5 17.25-2.5 6-8.25 10-14.75 10h-112c-8.75 0-16-7.25-16-16v-112c0-6.5 4-12.25 10-14.75 5.75-2.5 12.75-1.25 17.25 3.5l32.5 32.25c35.25-33.25 83-53 132.25-53 105.75 0 192 86.25 192 192z"></path></svg></span>
+<span class="pojo-a11y-toolbar-text">איפוס</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"NRJS-1669bb49f2b8a23d3bf","applicationID":"614093411","transactionName":"YwNXZ0FTWEFSUE1fWlpJdFBHW1lcHFtcV1FRFBhVXF1CV0E=","queueTime":0,"applicationTime":462,"atts":"T0RUEQlJS08=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
