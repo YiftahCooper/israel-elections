@@ -44,3 +44,9 @@
 .cmpm-only li { display: grid; grid-template-columns: minmax(0, 1fr) auto 34px; gap: 10px; align-items: baseline; padding: 3px 0; }
 .cmpm-only li b { text-align: end; }
 .cmpm-only-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* the seat chart's switch (owner, 12 Nov 2026, C6a): in the chamber's top corner, one chamber at full size at a time */
+.cmpm-chamber { position: relative; }
+.cmpm-chamber-switch { display: flex; justify-content: flex-end; margin-block-end: 4px; }
+.cmpm-chamber-switch .seg button { min-block-size: 28px; }
+.cmpm-chamber-note { margin: 0 0 4px; text-align: center; }

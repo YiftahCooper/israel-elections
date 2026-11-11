@@ -13,7 +13,6 @@ import { createPortal } from 'react-dom';
 import { allocationOf, baselineOf, ruleChanges, scenarioIssues, tieAffectsSeats, warningText } from './derive.ts';
 import { LangContext, useL } from './i18n.ts';
 import { dispatch, getState, loadElectionIndex, openElection, openSharedFromHash, redo, restoreWorkspace, setSetting, setState, undo, useSetting, useStore } from './store.ts';
-import { Hemicycle as HemicycleView } from './components/Hemicycle.tsx';
 import { Figures as FiguresView } from './components/Figures.tsx';
 import { BlocBar as BlocBarView } from './components/Blocs.tsx';
 import { ListBars as ListBarsView } from './components/ListBars.tsx';
@@ -29,6 +28,7 @@ import { WhatIf } from './components/WhatIf.tsx';
 import { SourceDialog } from './components/SourcePicker.tsx';
 import { openComparisonFromHash } from './compare/sides.ts';
 import { CompareStrip } from './compare/CompareStrip.tsx';
+import { ComparedChamber } from './compare/ChamberSwitch.tsx';
 import './compare/mode.css';
 
 // The main area's props (scenario, its cached allocation, the dataset) only change with the
@@ -36,7 +36,6 @@ import './compare/mode.css';
 // Each panel still re-renders on its own store subscriptions (selection, level, language…).
 const TopBar = memo(TopBarView);
 const ListBars = memo(ListBarsView);
-const Hemicycle = memo(HemicycleView);
 const BlocBar = memo(BlocBarView);
 const Figures = memo(FiguresView);
 
@@ -226,7 +225,7 @@ function Shell() {
             <ErrorBoundary label={L('Lists', 'רשימות')} resetKey={s}><ListBars s={s} r={r} base={base} baseR={baseR} /></ErrorBoundary>
             <div className="center"><BoardChoices s={s} />
               <section className="panel chamber-panel" aria-label={L('The Knesset', 'הכנסת')}>
-                <div className="body"><ErrorBoundary label={L('Chamber', 'המליאה')} resetKey={s}><Hemicycle s={s} r={r} /></ErrorBoundary></div>
+                <div className="body"><ErrorBoundary label={L('Chamber', 'המליאה')} resetKey={s}><ComparedChamber s={s} r={r} /></ErrorBoundary></div>
               </section>
               {r.warnings.filter((w) => w.code !== 'internal-loss').map((w, i) => tieAffectsSeats(s, w)
                 ? <div key={`w${i}`} className="banner warn" role="alert">{warningText(w, s, lang)}</div>

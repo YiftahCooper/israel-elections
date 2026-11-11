@@ -116,3 +116,21 @@ test('Settings can turn the striped bars off; the line stays', async ({ page }) 
   await expect(page.locator('.cmpm-refbar')).toHaveCount(0);
   await expect(page.locator('.cmpm-legend')).toHaveCount(0);
 });
+
+test('the seat chart switch shows the 2022 chamber in the same place; its seats open no list', async ({ page }) => {
+  await start(page);
+  await turnOn(page);
+  const sw = page.getByRole('group', { name: 'The seat chart shows' });
+  await expect(sw.getByRole('button', { name: '2026' })).toHaveAttribute('aria-pressed', 'true');
+  await sw.getByRole('button', { name: '2022' }).click();
+  await expect(page.locator('.cmpm-chamber-note')).toContainText('Showing 2022');
+  await expect(page.locator('.chamber-panel')).toContainText('Yesh Atid');
+  await page.locator('.chamber-panel .chamber circle').first().click();
+  await expect(page.locator('.panel-slot')).toHaveCount(0);
+  await sw.getByRole('button', { name: '2026' }).click();
+  await expect(page.locator('.cmpm-chamber-note')).toHaveCount(0);
+  await expect(page.locator('.chamber-panel')).toContainText('Yashar!');
+  // stopping the comparison takes the switch away
+  await strip(page).getByRole('button', { name: 'Stop comparing' }).click();
+  await expect(sw).toHaveCount(0);
+});
