@@ -270,6 +270,42 @@
         150
       ],
       "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA crop, thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "letters": "פה",
+      "file": "logos/yesh-atid-2015-k20.png",
+      "sourceUrl": "http://www.yeshatid.org.il",
+      "assetSourceUrl": "https://www.yeshatid.org.il/content/images/logo_he-IL.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "yesh-atid — official campaign website logo; proportionally resized only.",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "lg-yesh-atid-k20-20150301060107",
+      "inUseDate": "2015-03-01",
+      "archiveUrl": "https://web.archive.org/web/20150301060107id_/http://www.yeshatid.org.il",
+      "archiveTimestamp": "20150301060107",
+      "inUseEvidence": "Official campaign homepage captured 2015-03-01 references this exact logo asset. Inspected original image; downloaded bytes match pre-election CDX SHA-1 YN5Y7DCOZJ2J5KS33DGCZIOHTNRQV7O7. Campaign HTML also matches its own CDX digest. No cross-election inference or redrawing.",
+      "retrievedAt": "2026-11-12",
+      "sha256": "2ae09774445f6710b5ce9239f4573661782dee5ee95ee0fa9716796094d6b847",
+      "originalSha256": "83fd46c64cbad269e2e4fb57337a1243226e375289b73c6bd1f4fbcabfa41d9c",
+      "bytes": 15848,
+      "rawEvidence": {
+        "page": "logo-lg-k20-yesh-atid-page",
+        "asset": "logo-lg-k20-yesh-atid-asset"
+      },
+      "assetArchiveTimestamp": "20150301060112",
+      "assetArchiveUrl": "https://web.archive.org/web/20150301060112id_/https://www.yeshatid.org.il/content/images/logo_he-IL.png",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "YN5Y7DCOZJ2J5KS33DGCZIOHTNRQV7O7",
+        "computedDigest": "YN5Y7DCOZJ2J5KS33DGCZIOHTNRQV7O7",
+        "assetCaptureTimestamp": "20150301060112",
+        "cdxCaptureTimestamp": "20150301060112",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fwww.yeshatid.org.il%2Fcontent%2Fimages%2Flogo_he-IL.png&from=2014&to=20150301&output=json&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-lg-k20-yesh-atid-index"
+      }
     }
   ]
 }

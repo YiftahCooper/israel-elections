@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-11-05",
+  "asOf": "2026-11-12",
   "sources": [
     {
       "id": "commons-146621440",
@@ -4874,6 +4874,251 @@
         776,
         150
       ]
+    },
+    {
+      "id": "lg-shas-k25-20221101094956",
+      "title": "shas official campaign homepage, 2022-11-01",
+      "sourceUrl": "https://shas.org.il/",
+      "publisher": "shas",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-12",
+      "accessMethod": "Plain HTTP with descriptive project User-Agent; serial requests",
+      "inspectionDepth": "Full dated homepage HTML, exact logo image and CDX byte digests inspected",
+      "date": "2022-11-01",
+      "electionId": "k25",
+      "evidenceFamily": "shas-campaign-k25",
+      "independenceNote": "Official party self-identification; archive is preservation, not independent corroboration.",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-lg-k25-shas-page",
+        "asset": "logo-lg-k25-shas-asset"
+      },
+      "archiveUrl": "https://web.archive.org/web/20221101094956id_/https://shas.org.il/",
+      "archiveTimestamp": "20221101094956",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "JXKJV7TMPGJUHQPNELGDZN3L6EAAHTWQ",
+        "computedDigest": "JXKJV7TMPGJUHQPNELGDZN3L6EAAHTWQ",
+        "assetCaptureTimestamp": "20210604170254",
+        "cdxCaptureTimestamp": "20210604170254",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fshas.org.il%2Fwp-content%2Fuploads%2F2021%2F05%2F%D7%9C%D7%95%D7%92%D7%95.png&from=2021&to=20221101&output=json&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-lg-k25-shas-index"
+      },
+      "pageDigest": {
+        "cdx": "JZAKDF6QMTRYXUDPNJCWMBRJF6JMXGBT",
+        "computed": "JZAKDF6QMTRYXUDPNJCWMBRJF6JMXGBT",
+        "rawIndex": "logo-lg-k25-shas-page-index"
+      }
+    },
+    {
+      "id": "lg-meretz-k25-20221101095119",
+      "title": "meretz official campaign homepage, 2022-11-01",
+      "sourceUrl": "https://meretz.org.il/",
+      "publisher": "meretz",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-12",
+      "accessMethod": "Plain HTTP with descriptive project User-Agent; serial requests",
+      "inspectionDepth": "Full dated homepage HTML, exact logo image and CDX byte digests inspected",
+      "date": "2022-11-01",
+      "electionId": "k25",
+      "evidenceFamily": "meretz-campaign-k25",
+      "independenceNote": "Official party self-identification; archive is preservation, not independent corroboration.",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-lg-k25-meretz-page",
+        "asset": "logo-lg-k25-meretz-asset"
+      },
+      "archiveUrl": "https://web.archive.org/web/20221101095119id_/https://meretz.org.il/",
+      "archiveTimestamp": "20221101095119",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "PJ5CK6OC56UWNSWFWIFHQFFKZOWM44PN",
+        "computedDigest": "PJ5CK6OC56UWNSWFWIFHQFFKZOWM44PN",
+        "assetCaptureTimestamp": "20221018195952",
+        "cdxCaptureTimestamp": "20221018195952",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fmeretz.org.il%2Fwp-content%2Fuploads%2F2020%2F08%2Flogo-1.png&from=2021&to=20221101&output=json&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-lg-k25-meretz-index"
+      },
+      "pageDigest": {
+        "cdx": "2U4OQC6OEYOGMSGM2ELEZER773FNRFUW",
+        "computed": "2U4OQC6OEYOGMSGM2ELEZER773FNRFUW",
+        "rawIndex": "logo-lg-k25-meretz-page-index"
+      }
+    },
+    {
+      "id": "lg-new-hope-k25-20221101111322",
+      "title": "new-hope official campaign homepage, 2022-11-01",
+      "sourceUrl": "https://www.newhope.org.il/",
+      "publisher": "new-hope",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-12",
+      "accessMethod": "Plain HTTP with descriptive project User-Agent; serial requests",
+      "inspectionDepth": "Full dated homepage HTML, exact logo image and CDX byte digests inspected",
+      "date": "2022-11-01",
+      "electionId": "k25",
+      "evidenceFamily": "new-hope-campaign-k25",
+      "independenceNote": "Official party self-identification; archive is preservation, not independent corroboration.",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-lg-k25-new-hope-page",
+        "asset": "logo-lg-k25-new-hope-asset"
+      },
+      "archiveUrl": "https://web.archive.org/web/20221101111322id_/https://www.newhope.org.il/",
+      "archiveTimestamp": "20221101111322",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "4HL7XQCMN6YVDSMRRAAY3XBGDJ3GMCXD",
+        "computedDigest": "4HL7XQCMN6YVDSMRRAAY3XBGDJ3GMCXD",
+        "assetCaptureTimestamp": "20220310180749",
+        "cdxCaptureTimestamp": "20220310180749",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fwww.newhope.org.il%2Fwp-content%2Fuploads%2F2022%2F03%2F%D7%AA%D7%A7%D7%95%D7%95%D7%94-%D7%97%D7%93%D7%A9%D7%94-%D7%9B%D7%97%D7%95%D7%9C-1.png&from=2021&to=20221101&output=json&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-lg-k25-new-hope-index"
+      },
+      "pageDigest": {
+        "cdx": "53RYP5UJ7YWSCSR5UOVJQIHITSLYDY7Q",
+        "computed": "53RYP5UJ7YWSCSR5UOVJQIHITSLYDY7Q",
+        "rawIndex": "logo-lg-k25-new-hope-page-index"
+      }
+    },
+    {
+      "id": "lg-meretz-k24-20210301125632",
+      "title": "meretz official campaign homepage, 2021-03-01",
+      "sourceUrl": "https://meretz.org.il/",
+      "publisher": "meretz",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-12",
+      "accessMethod": "Plain HTTP with descriptive project User-Agent; serial requests",
+      "inspectionDepth": "Full dated homepage HTML, exact logo image and CDX byte digests inspected",
+      "date": "2021-03-01",
+      "electionId": "k24",
+      "evidenceFamily": "meretz-campaign-k24",
+      "independenceNote": "Official party self-identification; archive is preservation, not independent corroboration.",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-lg-k24-meretz-page",
+        "asset": "logo-lg-k24-meretz-asset"
+      },
+      "archiveUrl": "https://web.archive.org/web/20210301125632id_/https://meretz.org.il/",
+      "archiveTimestamp": "20210301125632",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "RD45CGGJ4F6IXF4BSHXI6OTULHPA4DCY",
+        "computedDigest": "RD45CGGJ4F6IXF4BSHXI6OTULHPA4DCY",
+        "assetCaptureTimestamp": "20210215023335",
+        "cdxCaptureTimestamp": "20210215023335",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fmeretz.org.il%2Fwp-content%2Fuploads%2F2020%2F08%2Flogo.png&from=2020&to=20210301&output=json&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-lg-k24-meretz-index"
+      },
+      "pageDigest": {
+        "cdx": "CDJVOIDPHI663WTCTVWYKVZPUN2ORCVZ",
+        "computed": "CDJVOIDPHI663WTCTVWYKVZPUN2ORCVZ",
+        "rawIndex": "logo-lg-k24-meretz-page-index"
+      }
+    },
+    {
+      "id": "lg-new-hope-k24-20210309181012",
+      "title": "new-hope official campaign homepage, 2021-03-09",
+      "sourceUrl": "https://www.newhope.org.il/",
+      "publisher": "new-hope",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-12",
+      "accessMethod": "Plain HTTP with descriptive project User-Agent; serial requests",
+      "inspectionDepth": "Full dated homepage HTML, exact logo image and CDX byte digests inspected",
+      "date": "2021-03-09",
+      "electionId": "k24",
+      "evidenceFamily": "new-hope-campaign-k24",
+      "independenceNote": "Official party self-identification; archive is preservation, not independent corroboration.",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-lg-k24-new-hope-page",
+        "asset": "logo-lg-k24-new-hope-asset"
+      },
+      "archiveUrl": "https://web.archive.org/web/20210309181012id_/https://www.newhope.org.il/",
+      "archiveTimestamp": "20210309181012",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "F4BYGS35D43E3FINIYJGVUOZNJQWBFKX",
+        "computedDigest": "F4BYGS35D43E3FINIYJGVUOZNJQWBFKX",
+        "assetCaptureTimestamp": "20210203011032",
+        "cdxCaptureTimestamp": "20210203011032",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fwww.newhope.org.il%2Fwp-content%2Fuploads%2F2021%2F01%2Fcropped-GS-logo-pos.png&from=2020&to=20210309&output=json&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-lg-k24-new-hope-index"
+      },
+      "pageDigest": {
+        "cdx": "RYICC2RZYDAJZ4RR44K7NH2KIPLB6IMO",
+        "computed": "RYICC2RZYDAJZ4RR44K7NH2KIPLB6IMO",
+        "rawIndex": "logo-lg-k24-new-hope-page-index"
+      }
+    },
+    {
+      "id": "lg-yesh-atid-k20-20150301060107",
+      "title": "yesh-atid official campaign homepage, 2015-03-01",
+      "sourceUrl": "http://www.yeshatid.org.il",
+      "publisher": "yesh-atid",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-12",
+      "accessMethod": "Plain HTTP with descriptive project User-Agent; serial requests",
+      "inspectionDepth": "Full dated homepage HTML, exact logo image and CDX byte digests inspected",
+      "date": "2015-03-01",
+      "electionId": "k20",
+      "evidenceFamily": "yesh-atid-campaign-k20",
+      "independenceNote": "Official party self-identification; archive is preservation, not independent corroboration.",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-lg-k20-yesh-atid-page",
+        "asset": "logo-lg-k20-yesh-atid-asset"
+      },
+      "archiveUrl": "https://web.archive.org/web/20150301060107id_/http://www.yeshatid.org.il",
+      "archiveTimestamp": "20150301060107",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "YN5Y7DCOZJ2J5KS33DGCZIOHTNRQV7O7",
+        "computedDigest": "YN5Y7DCOZJ2J5KS33DGCZIOHTNRQV7O7",
+        "assetCaptureTimestamp": "20150301060112",
+        "cdxCaptureTimestamp": "20150301060112",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fwww.yeshatid.org.il%2Fcontent%2Fimages%2Flogo_he-IL.png&from=2014&to=20150301&output=json&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-lg-k20-yesh-atid-index"
+      },
+      "pageDigest": {
+        "cdx": "J2GF5B5ABGOT655AH2NEHTVK3YH6LN6H",
+        "computed": "J2GF5B5ABGOT655AH2NEHTVK3YH6LN6H",
+        "rawIndex": "logo-lg-k20-yesh-atid-page-index"
+      }
+    },
+    {
+      "id": "lg-yesh-atid-k19-20130105004003",
+      "title": "yesh-atid official campaign homepage, 2013-01-05",
+      "sourceUrl": "http://yeshatid.org.il:80/",
+      "publisher": "yesh-atid",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-12",
+      "accessMethod": "Plain HTTP with descriptive project User-Agent; serial requests",
+      "inspectionDepth": "Full dated homepage HTML, exact logo image and CDX byte digests inspected",
+      "date": "2013-01-05",
+      "electionId": "k19",
+      "evidenceFamily": "yesh-atid-campaign-k19",
+      "independenceNote": "Official party self-identification; archive is preservation, not independent corroboration.",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-lg-k19-yesh-atid-page",
+        "asset": "logo-lg-k19-yesh-atid-asset"
+      },
+      "archiveUrl": "https://web.archive.org/web/20130105004003id_/http://yeshatid.org.il:80/",
+      "archiveTimestamp": "20130105004003",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "LYQX5LWI4VO7ZL5O77VMHZFP4B53R7RP",
+        "computedDigest": "LYQX5LWI4VO7ZL5O77VMHZFP4B53R7RP",
+        "assetCaptureTimestamp": "20121205123652",
+        "cdxCaptureTimestamp": "20121205123652",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=http%3A%2F%2Fyeshatid.org.il%2Fwp-content%2Fthemes%2Fyair%2Fimages%2Flogo.png&from=2012&to=20130105&output=json&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-lg-k19-yesh-atid-index"
+      },
+      "pageDigest": {
+        "cdx": "JB3TSWUSVMYZUO5LVSOKKOG4XS4AKH7S",
+        "computed": "JB3TSWUSVMYZUO5LVSOKKOG4XS4AKH7S",
+        "rawIndex": "logo-lg-k19-yesh-atid-page-index"
+      }
     }
   ]
 }

@@ -2003,3 +2003,21 @@ Final verification for all **17 additions** (14 distinct final byte hashes):
 - Work is committed locally in batches; no push or subsequent merge. Unaccepted
   candidates remain scratch; no rejected artwork is displayed. Backup exclusion
   beyond the existing repository ignore rule was not independently verified.
+
+## 12 November 2026 — official archived campaign headers
+
+Added eight same-election assignments from seven original images: Yesh Atid lists
+in 2013 and 2015; Meretz and New Hope lists in 2021, plus New Hope’s own
+constituent identity; Shas and Meretz lists in 2022, plus New Hope’s constituent
+identity. Full campaign HTML and original asset bytes independently match retained
+pre-election CDX digests; originals, indexes and image transformations are recorded
+in the logo overlays, source cards and raw manifest. No designs were redrawn.
+The unverified New Hope community reconstruction is superseded by official artwork.
+
+Current same-election coverage: 77/308 seat-winning lists, 42/247 constituent
+identities in winning joint lists, and 15/400 other lists (previously 72, 40 and 14).
+Meretz’s 2022 addition belongs to the nonwinning category. A February 2020 Yesh Atid
+header visibly marked 2019 remains unassigned; a dated page alone cannot resolve
+that conflict. The 2026 Meretz capture is a browser-check page; Degel’s inspected
+2019 and 2026 captures show a default web-server page. These are retrieval/evidence
+limits, not findings that no logo existed. Earlier gaps remain open.
