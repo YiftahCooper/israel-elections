@@ -22,7 +22,7 @@ import { Info, Slip } from '../components/ui.tsx';
 import { matchRows, mirrorRows, copyUnit, groupIds, inOf, type MatchRow } from './match.ts';
 import { duplicatePeople, planAgreements, planColour, planRoster, planRules, planTotals, planVotes, type CopyUnit, type Plan } from './copy.ts';
 import { remembered } from './answers.ts';
-import { COPY_ARROWS, COMPARE_MAIN_SIDE, copyComparisonLink, comparisonOf, openComparison, pairKey, saveComparison, useSavedComparisons, setOverrides, setSwap } from './sides.ts';
+import { COPY_ARROWS, copyComparisonLink, comparisonOf, openComparison, pairKey, saveComparison, useSavedComparisons, setOverrides } from './sides.ts';
 import { cellsOf, listMarks, sourceOf, unitsFor, type Cells, type SideModel } from './model.ts';
 import { CopyVotesDialog, MatchingPanel, PairingWhy, RowSheet, SaveDialog, VotesEditor, WholeListDialog, tagText, type CopyRequest, type WholeRequest } from './dialogs.tsx';
 import { markerLead } from './copyText.ts';
@@ -37,14 +37,14 @@ type Dir = 'toRight' | 'toLeft';
 type Filter = 'all' | 'different' | 'edited' | 'unmatched';
 const narrow = () => narrowerThan(760);
 
-export function Workbench({ main, other, picker }: { main: SideModel; other: SideModel; picker: ReactNode }) {
+export function Workbench({ main, other, picker, onSwap }: { main: SideModel; other: SideModel; picker: ReactNode; onSwap: () => void }) {
   const L = useL(), lang = useLang(), digits = useDigits();
   const { simple, expert } = useLevel();
-  const swapPref = useStore((st) => st.compare.swap);
   const pair = pairKey(main.sc.electionId, other.sc.electionId);
   const overrides = useStore((st) => st.compare.overrides[pair]) ?? [];
-  // the main scenario always sits on the same side (consistent siblings, no jumps); the side labels carry the year order
-  const mainLeft = swapPref ?? COMPARE_MAIN_SIDE === 'left';
+  // your work is where reading starts: on the left in English, on the right in Hebrew (owner, 12 Nov 2026, C3a); the
+  // side labels carry the year order. Charts inside each side still run left to right.
+  const mainLeft = lang !== 'he';
   const [left, right] = mainLeft ? [main, other] : [other, main];
   const cross = left.sc.electionId !== right.sc.electionId;
   /** how a side is named in "Copy … to X": its year between elections, its own name within one */
@@ -204,7 +204,7 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
     keys.forEach((k) => on ? next.add(k) : next.delete(k)); setSelected(next);
   };
 
-  const share = () => copyComparisonLink(comparisonOf(main.sc, other.sc, swapPref, overrides));
+  const share = () => copyComparisonLink(comparisonOf(main.sc, other.sc, overrides));
   const savedList = useSavedComparisons();
 
   const onKey = (e: KeyboardEvent) => {
@@ -229,7 +229,7 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
     <div className="cmp-sides" dir="ltr">
       {[left, right].map((x, i) => <SideCard key={x.role} x={x} picker={x.role === 'other' ? picker : null} focused={focusSide === x.role} onFocus={() => setFocusSide(x.role)} align={i === 0 ? 'left' : 'right'} />)}
       <div className="cmp-centre">
-        <button type="button" className="btn small cmp-swap" onClick={() => { setSwap(!mainLeft); setCopyReq(null); setWholeReq(null); setMenu(null); }} aria-label={L('Swap sides', 'החלפת הצדדים')} title={L('Swap sides', 'החלפת הצדדים')}><ArrowLeftRight size={16} /><span>{L('Swap', 'החלפה')}</span></button>
+        <button type="button" className="btn small cmp-swap" onClick={() => { setCopyReq(null); setWholeReq(null); setMenu(null); onSwap(); }} aria-label={L('Swap: make the other result your work', 'החלפה: התוצאה השנייה הופכת לעבודה שלכם')} title={L('Swap: make the other result your work', 'החלפה: התוצאה השנייה הופכת לעבודה שלכם')}><ArrowLeftRight size={16} /><span>{L('Swap', 'החלפה')}</span></button>
         <span className="tiny muted cmp-centre-key" dir={lang === 'he' ? 'rtl' : 'ltr'}>{L('Change:', 'שינוי:')} <bdi dir="ltr">{nameOf(right)} − {nameOf(left)}</bdi></span>
       </div>
     </div>
@@ -319,7 +319,7 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
     {matching && <MatchingPanel rows={order} flip={flip} left={left} right={right} overrides={overrides} setOverrides={(o) => setOverrides(pair, o)} onClose={() => setMatching(false)} />}
     {sheet && <RowSheet row={sheet} left={left} right={right} why={why(sheet)} onClose={() => setSheet(null)} actions={<>{menuItems(sheet, () => setSheet(null))}</>} />}
     {saving && <SaveDialog suggested={`${nameOf(left)} ↔ ${nameOf(right)}`} onClose={() => setSaving(false)} onSave={(name) => {
-      if (saveComparison(name, comparisonOf(main.sc, other.sc, swapPref, overrides))) { toast('info', L('Comparison saved in this browser (see Scenarios).', 'ההשוואה נשמרה בדפדפן זה (ראו תרחישים).')); setSaving(false); }
+      if (saveComparison(name, comparisonOf(main.sc, other.sc, overrides))) { toast('info', L('Comparison saved in this browser (see Scenarios).', 'ההשוואה נשמרה בדפדפן זה (ראו תרחישים).')); setSaving(false); }
       else toast('error', L('The browser refused to save (storage full or blocked).', 'הדפדפן סירב לשמור (האחסון מלא או חסום).'));
     }} />}
   </div>;

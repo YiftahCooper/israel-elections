@@ -28,6 +28,8 @@ import { MkHistoryHost } from './components/MkHistory.tsx';
 import { WhatIf } from './components/WhatIf.tsx';
 import { SourceDialog } from './components/SourcePicker.tsx';
 import { openComparisonFromHash } from './compare/sides.ts';
+import { CompareStrip } from './compare/CompareStrip.tsx';
+import './compare/mode.css';
 
 // The main area's props (scenario, its cached allocation, the dataset) only change with the
 // scenario, so a tab switch, toast or notice does not re-render the cards, chamber and details.
@@ -217,6 +219,7 @@ function Shell() {
                 ])}
               </div></nav>
       {tool !== 'after' && <ChangeSummary s={committed} r={cr} base={base} baseR={baseR} ds={ds} />}
+      {!customPage && <CompareStrip s={committed} />}
       <main className="work">
         {customPage ? <CustomPage /> : tool === 'board' ? (
           <div className={`board ${selected || blocPanel ? 'with-panel' : ''}`}>

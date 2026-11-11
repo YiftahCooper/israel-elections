@@ -8,14 +8,10 @@ import { baselineOf } from '../factionDefaults.ts';
 import { getState, loadDataset, openElection, replay, setState, toast } from '../store.ts';
 import type { MatchOverride } from './match.ts';
 
-/** Owner default (7 Nov): the main scenario is the right-hand side; Swap only changes which side is drawn where. */
-export const COMPARE_MAIN_SIDE: 'left' | 'right' = 'right';
 /** Owner default (7 Nov): copy arrows show on hover, focus or selection; on touch screens (no hover) always. */
 export const COPY_ARROWS: 'hover' | 'always' = 'hover';
 
 const ELECTION = 'election:';
-/** The draft key of a comparator: another election is the same draft whatever is open; this election's choices are per election. */
-export const sideKey = (mainElection: ElectionId, value: string) => value.startsWith(ELECTION) ? value : `${mainElection}:${value}`;
 export const pairKey = (a: ElectionId, b: ElectionId) => [a, b].sort().join('|');
 
 /** Undo, redo and Start over for the other side; each copy into it is one step. */
@@ -47,7 +43,6 @@ export function startOverSide(key: string) {
   if (!d || d.scenario === d.reference) return;
   setState({ compare: { ...st.compare, drafts: { ...st.compare.drafts, [key]: { ...d, scenario: d.reference!, past: [...d.past, d.scenario], future: [] } } } });
 }
-export function setSwap(swap: boolean) { const st = getState(); setState({ compare: { ...st.compare, swap } }); }
 export function setOverrides(pair: string, list: MatchOverride[]) { const st = getState(); setState({ compare: { ...st.compare, overrides: { ...st.compare.overrides, [pair]: list } } }); }
 
 // ---- share link (#c=): both sides as their change logs, plus the pairings. Same encoding as the scenario link (#s=).
@@ -57,9 +52,9 @@ async function pipe(bytes: Uint8Array, stream: CompressionStream | Decompression
 
 /** One side of a shared or saved comparison: the election, a name and the change log (empty: the official result). */
 export interface SideLink { e: ElectionId; n: string; f: boolean; l: Action[] }
-export interface ComparisonLink { v: 1; main: SideLink; other: SideLink; swap: boolean | null; m: MatchOverride[] }
+export interface ComparisonLink { v: 1; main: SideLink; other: SideLink; m: MatchOverride[] }
 const sideOf = (s: Scenario): SideLink => ({ e: s.electionId, n: s.name, f: s.factionSplitBaseline ?? false, l: s.log.map((x) => x.action) });
-export const comparisonOf = (main: Scenario, other: Scenario, swap: boolean | null, m: MatchOverride[]): ComparisonLink => ({ v: 1, main: sideOf(main), other: sideOf(other), swap, m });
+export const comparisonOf = (main: Scenario, other: Scenario, m: MatchOverride[]): ComparisonLink => ({ v: 1, main: sideOf(main), other: sideOf(other), m });
 
 export async function comparisonLink(c: ComparisonLink): Promise<string> {
   const z = await pipe(new TextEncoder().encode(JSON.stringify(c)), new CompressionStream('deflate-raw'));
@@ -81,14 +76,15 @@ export async function readComparison(hash: string): Promise<ComparisonLink | nul
   } catch { return null; }
 }
 
-/** Opens a comparison: the main side as the open scenario (unsaved, named as shared), the other side as Compare's draft. */
+/** Opens a comparison: the main side as the open scenario (unsaved, named as shared), the other side as the reference
+ *  (its changes as the reference's Side by side draft), on the Side by side page. */
 export async function openComparison(c: ComparisonLink): Promise<boolean> {
   const he = getState().lang === 'he';
   if (!(await openElection(c.main.e, { name: c.main.n || (he ? 'תרחיש משותף' : 'Shared scenario'), log: c.main.l, factionSplitBaseline: c.main.f }))) return false;
   let ods: ElectionDataset;
   try { ods = await loadDataset(c.other.e); } catch { return false; }
   const value = c.other.e === c.main.e ? 'official' : `${ELECTION}${c.other.e}`;
-  const key = sideKey(c.main.e, value);
+  const key = c.other.e === c.main.e ? `official:${c.other.e}` : value;
   const start = baselineOf(ods);
   const drafts = { ...getState().compare.drafts };
   if (c.other.l.length) {
@@ -96,7 +92,7 @@ export async function openComparison(c: ComparisonLink): Promise<boolean> {
     drafts[key] = { scenario: r.scenario, past: [], future: [], reference: start };
   } else delete drafts[key];
   const st = getState();
-  setState({ tool: 'compare', compareWith: value, compare: { drafts, swap: c.swap, overrides: c.m.length ? { ...st.compare.overrides, [pairKey(c.main.e, c.other.e)]: c.m } : st.compare.overrides } });
+  setState({ tool: 'compare', comparing: value, compare: { ...st.compare, drafts, back: st.tool === 'compare' ? st.compare.back : st.tool, overrides: c.m.length ? { ...st.compare.overrides, [pairKey(c.main.e, c.other.e)]: c.m } : st.compare.overrides } });
   return true;
 }
 

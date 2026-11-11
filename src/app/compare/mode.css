@@ -1,0 +1,27 @@
+/* Comparing as a mode: the strip under the change line, the reference bars in the Lists panel and the chamber switch. */
+.cmpm-strip { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 4px 16px; min-block-size: 38px; box-sizing: border-box;
+  background: var(--open); border-block-end: 1px solid var(--rule); border-inline-start: 3px solid var(--focus); font-size: 13.5px; }
+.cmpm-strip .cmpm-icon { color: var(--focus); flex: none; }
+.cmpm-what { display: inline-flex; align-items: center; gap: 6px; min-inline-size: 0; flex: 0 1 auto; }
+.cmpm-label { font-weight: 600; white-space: nowrap; }
+.cmpm-none { color: var(--ink-2); }
+.cmpm-picker .choice-trigger { min-height: 28px; padding-block: 2px; font-weight: 600; }
+.cmpm-stop { margin-inline-start: auto; }
+@media (min-width: 1101px) { .cmpm-strip { position: sticky; top: calc(var(--band-h, 52px) + var(--toolbar-h) + var(--session-h)); z-index: 23; } }
+@media (max-width: 760px) {
+  .cmpm-strip { position: sticky; top: var(--toolbar-h); z-index: 23; padding-inline: 10px; gap: 6px; flex-wrap: nowrap; }
+  .cmpm-label, .cmpm-swap > span, .cmpm-side > span, .cmpm-stop-t, .cmpm-strip > .info { display: none; }
+  .cmpm-what { flex: 1 1 auto; }
+  .cmpm-picker { min-inline-size: 0; }
+  .cmpm-picker .choice-trigger { max-inline-size: 100%; }
+  .cmpm-picker .choice-current { overflow: hidden; text-overflow: ellipsis; }
+}
+.compare-on { flex: none; }
+/* beside History in the change line: History keeps its place at the end */
+.session > .compare-on { margin-inline-start: auto; }
+.session > .compare-on + .btn { margin-inline-start: 0; }
+@media (max-width: 600px) {
+  .session:has(> .compare-on) { grid-template-columns: minmax(0, 1fr) auto auto; }
+  .session > .compare-on { grid-area: 1 / 2; }
+  .session > .compare-on + .btn { grid-area: 1 / 3; }
+}

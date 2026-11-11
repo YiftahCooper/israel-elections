@@ -149,9 +149,9 @@ input, textarea { caret-color: var(--focus); }
 
 /* Edits change content above the viewport; browser anchoring must not move the editing surface. */
 html, body { overflow-anchor: none; }
-:root { --toolbar-h: 40px; --session-h: 0px; --board-top: calc(var(--band-h, 52px) + var(--toolbar-h) + var(--session-h) + 12px); }
+:root { --toolbar-h: 40px; --session-h: 0px; --compare-h: 0px; --board-top: calc(var(--band-h, 52px) + var(--toolbar-h) + var(--session-h) + var(--compare-h) + 12px); }
 /* keyboard focus and in-page scrolling land below the sticky band, tools strip and change line */
-html { scroll-padding-block-start: calc(var(--band-h, 52px) + var(--toolbar-h) + var(--session-h) + 8px); }
+html { scroll-padding-block-start: calc(var(--band-h, 52px) + var(--toolbar-h) + var(--session-h) + var(--compare-h) + 8px); }
 @media (max-width: 1100px) { html { scroll-padding-block-start: calc(var(--band-h, 52px) + var(--toolbar-h) + 8px); } }
 @media (max-width: 760px) { html { scroll-padding-block-start: calc(var(--toolbar-h) + 8px); } }
 

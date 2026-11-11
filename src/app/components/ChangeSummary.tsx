@@ -21,6 +21,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { blocPieces, groupingBaseline, groupingLabel, nonSeatChanges, comparisonGroups, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
+import { CompareButton } from '../compare/CompareStrip.tsx';
 
 const History = lazy(() => import('./Panels.tsx').then((m) => ({ default: m.History })));
 const MAX_MOVES = 5;
@@ -112,6 +113,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
           {s.mode === 'experimental' && <span className="chip exp">{L('Experimental rules', 'כללים ניסיוניים')}</span>}
         </>}
       </span>
+      <CompareButton />
       {edited && <button ref={trigger} className="btn small ghost" aria-expanded={open} aria-controls={historyId} popoverTarget={historyId}>
         {L('History', 'היסטוריה')}
         {open ? <ChevronUp className="icon sm" aria-hidden /> : <ChevronDown className="icon sm" aria-hidden />}
