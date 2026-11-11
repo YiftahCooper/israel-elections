@@ -243,7 +243,7 @@ Pages dropped by the matching rules (no candidate or more than one) are listed p
 
 English mode shows a candidate's **official English name from the Knesset website** (the `Name` field of
 `https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkDetailsHeader?mkId={siteId}&languageKey=en`), retained in
-`data/raw/bios/knesset-site-mk-names-en.json` (1,050 members, fetched by `scripts/research/fetch-mk-names-en.py`) and
+`data/raw/bios/knesset-site-mk-names-en.json` (1,050 members on 5 Nov; 1,116 since 11 Nov, when the fetch also took every member in the OData site codes, so members who entered as replacements, such as Orna Starkmann, have their names; fetched by `scripts/research/fetch-mk-names-en.py`) and
 attached by `scripts/lib/build/bios.ts` as `Candidate.nameEn`. Only a certain Knesset identity takes one: a candidate matched
 as an elected member or as one who entered the Knesset in the list's faction (official OData), or a high reviewed decision —
 3,197 of 15,543 candidates. A name-only match of a candidate who never sat ("not elected; identical name…") does not. The site

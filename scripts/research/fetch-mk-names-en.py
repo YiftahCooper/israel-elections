@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Fetch the official English name of every Knesset member the candidate bios link to.
+"""Fetch the official English name of every Knesset member (the candidate bios' links and the OData site codes).
 
 Source: the Knesset website's English member header (official), one request per member site id:
   https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkDetailsHeader?mkId={siteId}&languageKey=en
 Only the id and the "Name" field are retained, in data/raw/bios/knesset-site-mk-names-en.json
 (sorted by id). The name is the member's current English name on the Knesset site, which can differ
 from the name on an old ballot (the Hebrew registered name is always shown beside it).
-Usage: python3 scripts/research/fetch-mk-names-en.py   (serial, ~3 requests a second)
+Usage: python3 scripts/research/fetch-mk-names-en.py   (serial, at most one request a second; only ids without a name are fetched)
 """
 import glob, json, os, time, urllib.request
 
@@ -19,6 +19,9 @@ for f in glob.glob(os.path.join(ROOT, 'data/meta/bios/k*.json')):
     for e in json.load(open(f, encoding='utf8'))['candidates'].values():
         if e.get('knesset') and e['knesset'].get('siteId'):
             ids.add(int(e['knesset']['siteId']))
+# every member who ever sat (members who entered as replacements may have no ballot bio)
+for r in json.load(open(os.path.join(ROOT, 'data/raw/bios/knesset-odata-mk-site-codes.json'), encoding='utf8')):
+    if r.get('SiteId'): ids.add(int(r['SiteId']))
 def save(rows):
     # written as it goes, so an interrupted run resumes where it stopped; unanswered ids (null) are retried next run
     with open(OUT, 'w', encoding='utf8') as f:
@@ -28,7 +31,7 @@ rows = []
 for sid in sorted(ids):
     if sid in have and have[sid]['nameEn']:
         rows.append(have[sid]); continue
-    req = urllib.request.Request(URL.format(sid), headers={'User-Agent': 'israel-elections-explorer research script', 'Accept': 'application/json'})
+    req = urllib.request.Request(URL.format(sid), headers={'User-Agent': 'israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections)', 'Accept': 'application/json'})
     for attempt in range(3):
         try:
             with urllib.request.urlopen(req, timeout=30) as r:
@@ -39,6 +42,6 @@ for sid in sorted(ids):
     name = (d or {}).get('Name')
     rows.append({'siteId': sid, 'nameEn': name.strip() if isinstance(name, str) and name.strip() else None})
     if len(rows) % 25 == 0: save(rows + [have[i] for i in sorted(have) if i not in {r['siteId'] for r in rows}])
-    time.sleep(0.3)
+    time.sleep(1.0)
 save(rows)
 print(len(rows), 'members,', sum(1 for r in rows if r['nameEn']), 'with an English name')

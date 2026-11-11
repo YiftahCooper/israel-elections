@@ -21,7 +21,8 @@ const LTR_SVG = { dir: 'ltr' } as object;
 const personName = (mk: MkRuntime | null, p: number | null | undefined, lang: Lang) => {
   if (p == null) return '';
   const x = mk?.people[p];
-  return x ? (lang === 'he' ? x.he : englishLabel(x.en, x.he)) : '…';
+  // no official English name: the registered Hebrew name, never an invented transliteration (as in MK history)
+  return x ? (lang === 'he' || !x.en ? x.he : x.en) : '…';
 };
 const female = (mk: MkRuntime | null, p: number | null | undefined) => p != null && !!mk?.people[p]?.female;
 
