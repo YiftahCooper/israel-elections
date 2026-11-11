@@ -13,6 +13,8 @@ import { LazyRowComparison } from './PartyHistoryLazy.tsx';
 import { useRefRows } from '../compare/useRefRows.ts';
 import { RefLegend, RefLine, RefOnly, refLineText } from '../compare/RefLine.tsx';
 import { yearOf } from '../compare/mode.ts';
+import { askCopy } from '../compare/copyAsk.ts';
+import { hebrewPrefix } from '../hebrewPrefix.ts';
 // The lists as a visual column: each list is a row with its logo, name and a seat bar (its official seats shown
 // as a faint outline when they differ). Lists that won no seat show how far they are from the threshold instead.
 // Choosing a row opens the list in the side panel.
@@ -147,6 +149,9 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
             {d !== 0 && <small dir="ltr"><SeatDelta value={d} /></small>}
           </span>
         </button>
+        {/* while comparing: copy this list's votes from the compared result (shown on hover, focus or when chosen) */}
+        {line?.kind === 'pair' && <div className="cmpm-copy-row"><button type="button" className="btn small cmpm-copy-btn" onClick={() => askCopy({ lists: [l.id] })}
+          aria-label={L(`Copy votes from ${cmp!.label}: ${listLabel(l, lang)}`, `העתקת קולות ${hebrewPrefix('מ', cmp!.label)}: ${listLabel(l, lang)}`)}>{L('Copy votes…', 'העתקת קולות…')}</button></div>}
         {splitIds.has(l.id) && (l.parties?.length ?? 0) > 1 && l.parties!.some(p => partyListed(jointListParties, s, p.id, electedOf(l, lr.seats).filter((c) => c.partyId === p.id).length, lr.seats)) && (
           <ul className="lb-parties" aria-label={L(`${listLabel(l, lang)}: factions after the split`, `${listLabel(l, lang)}: הסיעות אחרי הפיצול`)}>
             {l.parties!.map((p) => {
@@ -175,7 +180,10 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
         {/* the partner mark is explained once, not on every row */}
         {anyAgreement && <span className="tiny muted lb-key" aria-hidden>⇄ {L('surplus-vote partner', 'שותפה להסכם עודפים')}</span>}
         <span className="spacer" /><span className="small muted">{L('seats', 'מנדטים')}</span></header>
-      {refBars && <RefLegend work={cmp!.ref.same ? L('Your work', 'העבודה שלכם') : yearOf(elections, s.electionId, lang)} label={cmp!.label} />}
+      {cmp && (refBars || standard) && <div className="cmpm-listbar">
+        {refBars && <RefLegend work={cmp.ref.same ? L('Your work', 'העבודה שלכם') : yearOf(elections, s.electionId, lang)} label={cmp.label} />}
+        {standard && <button type="button" className="btn small cmpm-copy-all" onClick={() => askCopy({ lists: null })}>{L('Copy votes…', 'העתקת קולות…')}</button>}
+      </div>}
       {groups.map(g => <p key={g.key} className="lb-group-comparison small ink2">{L(`Ran separately: together ${g.seatsB}, ${baseLabel.at} ${g.seatsA} as `, `רצו בנפרד: יחד ${g.seatsB}, ${baseLabel.at} ${g.seatsA} בתור `)}{g.aIds.map(id => listLabel(base.lists.find(l => l.id === id)!, lang)).join(' + ')}</p>)}
       <ol className="lb">
         {inKnesset.map(row)}

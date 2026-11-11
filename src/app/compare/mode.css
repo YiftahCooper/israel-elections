@@ -1,6 +1,6 @@
 /* Comparing as a mode: the strip under the change line, the reference bars in the Lists panel and the chamber switch. */
 .cmpm-strip { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 4px 16px; min-block-size: 38px; box-sizing: border-box;
-  background: var(--open); border-block-end: 1px solid var(--rule); border-inline-start: 3px solid var(--focus); font-size: 13.5px; }
+  background: var(--open); border-block: 1px solid color-mix(in srgb, var(--focus) 35%, var(--rule)); font-size: 13.5px; }
 .cmpm-strip .cmpm-icon { color: var(--focus); flex: none; }
 .cmpm-what { display: inline-flex; align-items: center; gap: 6px; min-inline-size: 0; flex: 0 1 auto; }
 .cmpm-label { font-weight: 600; white-space: nowrap; }
@@ -50,3 +50,19 @@
 .cmpm-chamber-switch { display: flex; justify-content: flex-end; margin-block-end: 4px; }
 .cmpm-chamber-switch .seg button { min-block-size: 28px; }
 .cmpm-chamber-note { margin: 0 0 4px; text-align: center; }
+
+/* "Copy votes…" while comparing: under a list's line when it is pointed at, focused or chosen; at the top of the Lists
+   panel for every list (Standard and Expert); and in the list's panel */
+.cmpm-listbar { display: flex; align-items: center; gap: 8px; padding: 0 12px 6px; flex-wrap: wrap; }
+.cmpm-listbar .cmpm-legend { padding: 0; }
+.cmpm-copy-all { margin-inline-start: auto; }
+.cmpm-copy-row { display: none; padding: 0 12px 6px calc(12px + var(--slip-w, 58px) + 10px); }
+.lb > li:hover > .cmpm-copy-row, .lb > li:focus-within > .cmpm-copy-row, .lb > li:has(> .lb-row[aria-pressed="true"]) > .cmpm-copy-row { display: block; }
+@media (hover: none) { .lb > li:hover:not(:has(> .lb-row[aria-pressed="true"])) > .cmpm-copy-row { display: none; } }
+.cmpm-sp { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; padding: 6px 14px; border-block-end: 1px solid var(--rule); font-size: 13px; }
+.cmpm-sp > .cmpm-line { flex: 1 1 14rem; }
+.cmpm-copy .cmpm-copy-ticks { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 2px 12px; max-block-size: 12rem; overflow: auto; }
+.cmpm-copy .cmpm-copy-ticks label { display: flex; gap: 6px; align-items: center; min-block-size: 28px; }
+.cmpm-copy .cmpm-copy-lists .row { display: flex; gap: 12px; }
+.cmpm-copy-sentence { margin: 0; line-height: 1.5; }
+.cmpm-copy-from { margin: 0; color: var(--ink-2); }

@@ -4,7 +4,7 @@ import { getState, setPreference, setState } from '../store.ts';
 import { sourceChoice, sourceValue } from '../preferences.ts';
 import type { SourceChoice } from '../voteEdit.ts';
 import type { Scenario } from '../../model/scenario.ts';
-import type { CopyMode } from './copy.ts';
+import { isDefaultCopyMode, type CopyMode } from './copy.ts';
 
 const itemKey = (id: 'voteSource' | 'copyMode', dest: Scenario, listId: string) => `${id}:${dest.electionId}:list:${listId}`;
 
@@ -16,17 +16,17 @@ export function remembered(dest: Scenario, listId: string | null, cross: boolean
   const v = item('voteSource');
   // a remembered donor is asked again when it is absent, withdrawn or the destination itself
   const ok = v && (!v.startsWith('t:') || dest.lists.some((l) => l.id === v.slice(2) && !l.withdrawn && l.id !== listId));
-  return { mode: m === 'share' || m === 'count' ? m : null, source: ok ? sourceChoice(v!) : null };
+  return { mode: isDefaultCopyMode(m) ? m : null, source: ok ? sourceChoice(v!) : null };
 }
 
 export function remember(dest: Scenario, listId: string | null, cross: boolean, mode: CopyMode, source: SourceChoice, scope: 'once' | 'item' | 'always') {
   if (scope === 'once') { setState({ voteSource: source }); return; }
   if (scope === 'always') {
     setPreference('voteSource', sourceValue(source));
-    if (cross && mode !== 'change') setPreference('copyMode', mode);
+    if (cross && isDefaultCopyMode(mode)) setPreference('copyMode', mode);
     return;
   }
   if (!listId) return;
   const st = getState();
-  setState({ voteSource: source, preferenceFor: { ...st.preferenceFor, [itemKey('voteSource', dest, listId)]: sourceValue(source), ...(cross && mode !== 'change' ? { [itemKey('copyMode', dest, listId)]: mode } : {}) } });
+  setState({ voteSource: source, preferenceFor: { ...st.preferenceFor, [itemKey('voteSource', dest, listId)]: sourceValue(source), ...(cross && isDefaultCopyMode(mode) ? { [itemKey('copyMode', dest, listId)]: mode } : {}) } });
 }

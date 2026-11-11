@@ -11,9 +11,14 @@ import { getSetting } from '../store.ts';
 import { personKey, type MatchRow } from './match.ts';
 
 export type Msg = { en: string; he: string };
-export type CopyMode = 'count' | 'share' | 'change';
-/** The owner's default for copies between elections (one constant; Settings can override it per person). */
-export const COPY_MODE_DEFAULT: Exclude<CopyMode, 'change'> = 'share';
+/** eligible: the same share of everyone entitled to vote; share: of the valid votes; count: the same number; change: the
+ *  source's change in share since its start; ratio: the source's growth since its start, as a ratio. */
+export type CopyMode = 'eligible' | 'share' | 'count' | 'change' | 'ratio';
+/** The methods a person can make their default (the other two copy an edit, so they depend on the source). */
+export type DefaultCopyMode = 'eligible' | 'share' | 'count';
+export const isDefaultCopyMode = (m: unknown): m is DefaultCopyMode => m === 'eligible' || m === 'share' || m === 'count';
+/** The owner's default for copies between elections (12 Nov 2026: the share of eligible voters; Settings can change it). */
+export const COPY_MODE_DEFAULT: DefaultCopyMode = 'eligible';
 export interface CopySource { sc: Scenario; /** the side's starting point, for As change */ start: Scenario; name: string; official: boolean }
 export interface CopyUnit { src: string[]; dst: string[] }
 export type Plan = { ok: true; action: Action; result: Scenario; targets: { listId: string; before: number; after: number }[]; capped?: number } | { ok: false; reason: Msg };
@@ -49,6 +54,9 @@ const provenanceOf = (from: CopySource, field: CopyProvenance['field'], rest: Pa
  *  count:  x = s (exact).
  *  share:  p = s/S exactly; fixed total (other lists, one list): x = p·V; new voters: x = p·O/(1−P), O the other lists' votes.
  *  change: the source's change in share since its starting point, added to the destination's share.
+ *  eligible: x = s/R·R', R and R' the registered voters of source and destination (the same share of everyone entitled
+ *            to vote); like count, the difference is balanced as the policy says.
+ *  ratio:  x = v·s/s0, the destination's votes grown as the source grew since its starting point.
  * Rounded to the nearest vote, except that a list never lands on the other side of the threshold from its exact share.
  */
 export function planVotes(o: { from: CopySource; to: Scenario; ctx?: { base?: Scenario }; units: CopyUnit[]; mode: CopyMode; policy: SourceChoice; fieldOverride?: CopyProvenance['field'] }): Plan {
@@ -71,7 +79,10 @@ export function planVotes(o: { from: CopySource; to: Scenario; ctx?: { base?: Sc
     if (!d || d.withdrawn || dstAll.includes(d.id)) return refuse('The chosen list cannot give these votes.', 'הרשימה שנבחרה אינה יכולה לתת את הקולות.');
   }
   const S = BigInt(valid(from.sc)), V = BigInt(valid(w));
-  if (mode !== 'count' && S === 0n) return refuse('The source has no valid votes.', 'אין קולות כשרים במקור.');
+  const countLike = mode === 'count' || mode === 'eligible' || mode === 'ratio';
+  if (!countLike && S === 0n) return refuse('The source has no valid votes.', 'אין קולות כשרים במקור.');
+  const R = BigInt(from.sc.registered), R2 = BigInt(w.registered);
+  if (mode === 'eligible' && (R === 0n || R2 === 0n)) return refuse('The number of eligible voters is not known for both elections.', 'מספר בעלי זכות הבחירה אינו ידוע בשתי הבחירות.');
   const v = units.map((u) => BigInt(sum(w, u.dst)));
   const fixed = dstAll.length ? w.lists.filter((l) => !dstAll.includes(l.id)).reduce((t, l) => t + BigInt(l.votes), 0n) : V; // O: everyone else
   // target shares as exact rationals (share and change)
@@ -88,16 +99,22 @@ export function planVotes(o: { from: CopySource; to: Scenario; ctx?: { base?: Sc
     if (shares.some((p) => p.num < 0n)) return refuse('Not possible: the list would need negative votes.', 'לא אפשרי: הרשימה הייתה צריכה מספר קולות שלילי.');
   }
   const P = shares.reduce<Rat>((t, p) => ({ num: t.num * p.den + p.num * t.den, den: t.den * p.den }), { num: 0n, den: 1n });
-  if (mode !== 'count' && P.num >= P.den) return refuse('Not possible: the other lists would need negative votes.', 'לא אפשרי: שאר הרשימות היו צריכות מספר קולות שלילי.');
+  if (!countLike && P.num >= P.den) return refuse('Not possible: the other lists would need negative votes.', 'לא אפשרי: שאר הרשימות היו צריכות מספר קולות שלילי.');
   let capped: number | undefined;
   let X: bigint[];
   if (mode === 'count') X = units.map((u) => BigInt(sum(from.sc, u.src)));
+  else if (mode === 'eligible') X = units.map((u) => nearest(BigInt(sum(from.sc, u.src)) * R2, R));
+  else if (mode === 'ratio') {
+    const s0 = units.map((u) => BigInt(sum(from.start, u.src)));
+    if (s0.some((x) => x === 0n)) return refuse('Not possible: the list had no votes at its starting point.', 'לא אפשרי: לרשימה לא היו קולות בנקודת ההתחלה.');
+    X = units.map((u, i) => nearest(v[i] * BigInt(sum(from.sc, u.src)), s0[i]));
+  }
   else if (policy.kind === 'new') {
     // x_i = p_i · O / (1 − P)
     X = shares.map((p) => nearest(p.num * fixed * P.den, p.den * (P.den - P.num)));
   } else X = shares.map((p) => nearest(p.num * V, p.den));
   // the threshold guard: rounding never moves a list across the threshold its exact share is on
-  if (mode !== 'count') {
+  if (!countLike) {
     const t = percentToRational(w.rules.thresholdPct);
     for (let pass = 0; pass < 3; pass++) {
       const total = policy.kind === 'new' ? fixed + X.reduce((a, b) => a + b, 0n) : V;
@@ -140,13 +157,21 @@ export function planVotes(o: { from: CopySource; to: Scenario; ctx?: { base?: Sc
     u.dst.forEach((id, k) => votes.set(id, BigInt(split[k])));
   });
   for (const l of w.lists) { const n = Number(votes.get(l.id)!); if (n !== l.votes) inner.push({ type: 'setVotes', listId: l.id, votes: n }); }
-  const value = mode === 'count' ? fmtInt(X.reduce((a, b) => a + b, 0n)) : mode === 'share' && units.length === 1 ? fmtPct(shares[0].num, shares[0].den, getSetting('decimals')) : undefined;
+  const one = units.length === 1;
+  const value = mode === 'count' ? fmtInt(X.reduce((a, b) => a + b, 0n))
+    : mode === 'share' && one ? fmtPct(shares[0].num, shares[0].den, getSetting('decimals'))
+    : mode === 'eligible' && one ? fmtPct(BigInt(sum(from.sc, units[0].src)), R, getSetting('decimals'))
+    : mode === 'ratio' && one ? ratioText(sum(from.sc, units[0].src), sum(from.start, units[0].src))
+    : undefined;
   const provenance = provenanceOf(from, o.fieldOverride ?? 'votes', {
     mode, policy: sourceValue(policy), sourceListIds: srcAll, targetListIds: dstAll, ...(value ? { value } : {}),
     paths: dstAll.map((id) => ['lists', id, 'votes']),
   });
   return finish(o.to, ctx, provenance, inner, capped !== undefined ? { capped } : {});
 }
+
+/** "×1.10": the source's growth since its start (three decimals, trailing zeros dropped, at least two). */
+export const ratioText = (s: number, s0: number) => `×${(s / s0).toFixed(3).replace(/0$/, '')}`;
 
 /** Turnout (copied as the percentage: lists and invalid ballots scale, shares stay), registered voters, invalid ballots. */
 export function planTotals(o: { from: CopySource; to: Scenario; ctx?: { base?: Scenario }; field: 'turnout' | 'registered' | 'invalid' }): Plan {

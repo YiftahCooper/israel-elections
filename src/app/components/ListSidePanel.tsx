@@ -20,6 +20,19 @@ import { ListDetail } from './ListDetail.tsx';
 import { PartyLinks } from './PartyLinks.tsx';
 import { Slip } from './ui.tsx';
 import { LazyHistorySection } from './PartyHistoryLazy.tsx';
+import { useRefRows } from '../compare/useRefRows.ts';
+import { RefLine } from '../compare/RefLine.tsx';
+import { askCopy } from '../compare/copyAsk.ts';
+
+/** While comparing: the list's line in the compared result and its Copy votes… button. */
+function SidePanelCompare({ s, r, listId }: { s: Scenario; r: AllocationResult; listId: string }) {
+  const L = useL();
+  const cmp = useRefRows(s);
+  const line = cmp?.rows.byList.get(listId);
+  if (!cmp || !line) return null;
+  return <div className="cmpm-sp"><RefLine line={line} label={cmp.label} r={r} />
+    {line.kind === 'pair' && <button type="button" className="btn small cmpm-copy-btn" onClick={() => askCopy({ lists: [listId] })}>{L('Copy votes…', 'העתקת קולות…')}</button>}</div>;
+}
 
 export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; r: AllocationResult; ds: ElectionDataset; base: Scenario; baseR: AllocationResult; listId: string }) {
   const { reference } = useActiveReference();
@@ -67,6 +80,7 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
         {blocs.map(b => <span key={b.id} title={b.appDefined ? appGroupingExplanation(lang) : undefined}>{groupingName(b, lang, s.blocSchemes?.find(g => g.id === s.blocSchemeId))}: <Majority n={pieces.filter(p => p.bloc === b.id).reduce((n,p) => n+p.n,0)} total={s.rules.seats} /></span>)}
         {!assignedBlocs.length && <span>{L('No bloc assigned', 'ללא שיוך לגוש')}</span>}
       </div>
+      <SidePanelCompare s={s} r={r} listId={listId} />
       <div className="sp-body"><LazyHistorySection s={s} r={r} listId={listId} /><ElectionAbout electionId={ds.id} listId={listId} /><ListDetail s={s} r={r} ds={ds} base={base} baseR={baseR} l={l} /></div>
     </aside>
   );

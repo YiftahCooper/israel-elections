@@ -29,6 +29,7 @@ import { SourceDialog } from './components/SourcePicker.tsx';
 import { openComparisonFromHash } from './compare/sides.ts';
 import { CompareStrip } from './compare/CompareStrip.tsx';
 import { ComparedChamber } from './compare/ChamberSwitch.tsx';
+import { CopyHost } from './compare/CopyHost.tsx';
 import './compare/mode.css';
 
 // The main area's props (scenario, its cached allocation, the dataset) only change with the
@@ -219,6 +220,7 @@ function Shell() {
               </div></nav>
       {tool !== 'after' && <ChangeSummary s={committed} r={cr} base={base} baseR={baseR} ds={ds} />}
       {!customPage && <CompareStrip s={committed} />}
+      <CopyHost />
       <main className="work">
         {customPage ? <CustomPage /> : tool === 'board' ? (
           <div className={`board ${selected || blocPanel ? 'with-panel' : ''}`}>

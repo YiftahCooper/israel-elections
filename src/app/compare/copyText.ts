@@ -19,8 +19,11 @@ export function fromLabel(p: Pick<CopyProvenance, 'official' | 'sourceName' | 'e
   const name = copySourceName(p, lang, destElectionId);
   return lang === 'he' ? (/^\d/.test(name) ? `מ־${name}` : `מ${name}`) : `From ${name}`;
 }
-export const copyModeLabel = (m: CopyProvenance['mode'], lang: Lang) =>
-  m === 'share' ? (lang === 'he' ? 'שיעור' : 'share') : m === 'change' ? (lang === 'he' ? 'שינוי' : 'change') : (lang === 'he' ? 'מספר' : 'count');
+const MODES: Record<NonNullable<CopyProvenance['mode']>, [string, string]> = {
+  share: ['share of valid votes', 'חלק מהקולות הכשרים'], eligible: ['share of eligible voters', 'חלק מבעלי זכות הבחירה'],
+  count: ['count', 'מספר'], change: ['change', 'שינוי'], ratio: ['growth', 'יחס גידול'],
+};
+export const copyModeLabel = (m: CopyProvenance['mode'], lang: Lang) => MODES[m ?? 'count'][lang === 'he' ? 1 : 0];
 
 export function describeCopy(p: CopyProvenance, names: string[], lang: Lang, destElectionId?: string) {
   const he = lang === 'he', what = copyFieldLabel(p.field, lang), from = copySourceName(p, lang, destElectionId);

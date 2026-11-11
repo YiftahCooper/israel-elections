@@ -149,7 +149,7 @@ export interface CopyProvenance {
   /** the source side was that election's official result */
   official: boolean;
   field: 'votes' | 'list' | 'candidates' | 'turnout' | 'registered' | 'invalid' | 'threshold' | 'rules' | 'agreements' | 'colour';
-  mode?: 'count' | 'share' | 'change';
+  mode?: 'count' | 'share' | 'change' | 'eligible' | 'ratio';
   /** how the destination was balanced (preferences.sourceValue form) */
   policy?: string;
   sourceListIds?: string[];
@@ -397,7 +397,7 @@ const coalition: Check = (x) => shape({ in: uniqueStrings, support: uniqueString
 const partSnapshotCheck = shape({ familyDefinition: optional(validFamily), validVotes: optional(whole), lists: optional(array(list)), registered: optional(whole), invalid: optional(whole), factionSplits: optional(uniqueStrings), blocs: optional(array(bloc)), blocSchemeId: optional(nullable(string)), customGroupingName: optional(string), partyBlocs: optional(stringMap(nullable(string))), candidateBlocs: optional(stringMap(nullable(string))), listBlocs: optional(stringMap(nullable(string))), agreements: optional(array(agreement)), rules: optional(rules), mode: optional(oneOf('historical', 'experimental')), coalition: optional(coalition) });
 const copyProvenance = shape({ electionId: oneOf(...ELECTION_IDS), sourceName: string, official: boolean,
   field: oneOf('votes', 'list', 'candidates', 'turnout', 'registered', 'invalid', 'threshold', 'rules', 'agreements', 'colour'),
-  mode: optional(oneOf('count', 'share', 'change')), policy: optional(string), sourceListIds: optional(strings), targetListIds: optional(strings),
+  mode: optional(oneOf('count', 'share', 'change', 'eligible', 'ratio')), policy: optional(string), sourceListIds: optional(strings), targetListIds: optional(strings),
   value: optional(string), paths: array(strings) });
 const actionFields: Record<Action['type'], Check> = {
   familyOperation: (x) => record(x) && validFamily(x.definition) && (x.operation === 'group' ? optional(string)(x.name) && record(x.placements) && Object.values(x.placements).every(v => ['selected','mixed','other'].includes(String(v))) : x.operation === 'scale' && array(shape({listId:string,before:whole,votes:whole}))(x.allocations) && signedWhole(x.registeredDelta) && whole(x.target) && shape({kind:oneOf('new','proportional','transfer'),listId:optional(string)})(x.source)),

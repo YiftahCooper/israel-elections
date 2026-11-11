@@ -20,11 +20,11 @@ import { CandidateName } from '../components/CandidateName.tsx';
 import { MkName } from '../components/MkHistory.tsx';
 import { Info, Slip } from '../components/ui.tsx';
 import { matchRows, mirrorRows, copyUnit, groupIds, inOf, type MatchRow } from './match.ts';
-import { duplicatePeople, planAgreements, planColour, planRoster, planRules, planTotals, planVotes, type CopyUnit, type Plan } from './copy.ts';
-import { remembered } from './answers.ts';
+import { duplicatePeople, planAgreements, planColour, planRoster, planRules, planTotals, type CopyUnit, type Plan } from './copy.ts';
 import { COPY_ARROWS, copyComparisonLink, comparisonOf, openComparison, pairKey, saveComparison, useSavedComparisons, setOverrides } from './sides.ts';
 import { cellsOf, listMarks, sourceOf, unitsFor, type Cells, type SideModel } from './model.ts';
-import { CopyVotesDialog, MatchingPanel, PairingWhy, RowSheet, SaveDialog, VotesEditor, WholeListDialog, tagText, type CopyRequest, type WholeRequest } from './dialogs.tsx';
+import { MatchingPanel, PairingWhy, RowSheet, SaveDialog, VotesEditor, WholeListDialog, tagText, type WholeRequest } from './dialogs.tsx';
+import { CopyVotesBox, type CopyRequest } from './CopyVotesBox.tsx';
 import { markerLead } from './copyText.ts';
 import { ChoicePicker } from '../components/ChoicePicker.tsx';
 import { partyLabel as partyName } from '../../families/registry.ts';
@@ -124,17 +124,10 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
     const names = units.map((u) => u.src.map((id) => { const l = from.sc.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : id; }).join(' + '));
     return names.length === 1 ? L(`Copy ${names[0]}’s votes to ${nameOf(to)}`, `העתקת הקולות של ${names[0]} ${hebrewPrefix('ל', nameOf(to))}`) : L(`Copy the votes of ${names.length} rows to ${nameOf(to)}`, `העתקת הקולות של ${names.length} שורות ${hebrewPrefix('ל', nameOf(to))}`);
   };
-  const copyVotes = (units: CopyUnit[], d: Dir, ask = false) => {
+  const copyVotes = (units: CopyUnit[], d: Dir) => {
     const { from, to } = sideOf(d);
-    const one = units.length === 1 && units[0].dst.length === 1 ? units[0].dst[0] : null;
     const title = votesTitle(units, from, to);
-    const rem = remembered(to.sc, one, cross);
-    if (!ask && rem.mode && rem.source) {
-      const plan = planVotes({ from: sourceOf(from), to: to.sc, ctx: { base: to.start }, units, mode: rem.mode, policy: rem.source });
-      if (!plan.ok) { toast('error', lang === 'he' ? plan.reason.he : plan.reason.en); return; }
-      commit(plan, to, L(`Votes copied to ${nameOf(to)}.`, `הקולות הועתקו ${hebrewPrefix('ל', nameOf(to))}.`));
-      return;
-    }
+    // the box always opens, starting on the remembered method (owner, 12 Nov 2026): every method shows its result first
     setCopyReq({ from, to, units, title, cross });
   };
   const direct = (plan: Plan, to: SideModel, text: string) => {
@@ -170,8 +163,7 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
       const srcOnly = d === 'toRight' ? row.left.length && !row.right.length : row.right.length && !row.left.length;
       items.push(<p key={`h${d}`} className="cmp-menu-head">{L(`To ${nameOf(to)}`, `אל ${nameOf(to)}`)} <span aria-hidden>{d === 'toRight' ? '→' : '←'}</span></p>);
       if (u) {
-        items.push(btn(`v${d}`, L('Votes', 'קולות'), () => copyVotes([u], d)));
-        items.push(btn(`va${d}`, L('Votes as…', 'קולות לפי…'), () => copyVotes([u], d, true)));
+        items.push(btn(`v${d}`, L('Votes…', 'קולות…'), () => copyVotes([u], d)));
       }
       if (one && !simple) {
         items.push(btn(`w${d}`, L('Whole list…', 'הרשימה כולה…'), () => setWholeReq({ from, to, srcId: one.src[0], dstId: one.dst[0], cross })));
@@ -313,7 +305,7 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
         <button type="button" className="btn small ghost cmp-menu-item" onClick={() => setMenu(null)}>{L('Close', 'סגירה')}</button>
       </span>
     </Floating>, document.body)}
-    {copyReq && <CopyVotesDialog req={copyReq} onClose={() => setCopyReq(null)} onDone={(plan, req) => { if (commit(plan, req.to, L(`Votes copied to ${nameOf(req.to)}.`, `הקולות הועתקו ${hebrewPrefix('ל', nameOf(req.to))}.`))) setCopyReq(null); }} />}
+    {copyReq && <CopyVotesBox req={copyReq} onClose={() => setCopyReq(null)} onDone={(plan, req) => { if (commit(plan, req.to, L(`Votes copied to ${nameOf(req.to)}.`, `הקולות הועתקו ${hebrewPrefix('ל', nameOf(req.to))}.`))) setCopyReq(null); }} />}
     {wholeReq && <WholeListDialog req={wholeReq} onClose={() => setWholeReq(null)} onDone={(plan, text) => { if (commit(plan, wholeReq.to, text + '.')) setWholeReq(null); }} />}
     {editing && <VotesEditor side={editing.side} listId={editing.listId} onClose={() => setEditing(null)} />}
     {matching && <MatchingPanel rows={order} flip={flip} left={left} right={right} overrides={overrides} setOverrides={(o) => setOverrides(pair, o)} onClose={() => setMatching(false)} />}

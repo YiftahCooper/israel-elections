@@ -7,14 +7,13 @@ import type { Scenario, SimList } from '../../model/scenario.ts';
 import { allocationOf, electedOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt } from '../format.ts';
-import { setState, useDigits, useLevel, useStore } from '../store.ts';
+import { useDigits, useStore } from '../store.ts';
 import { deltaAction, voteSourceLabel, type SourceChoice } from '../voteEdit.ts';
 import { sourceChoice, sourceValue } from '../preferences.ts';
 import { Info, Slip } from '../components/ui.tsx';
 import { SeatDelta } from '../components/SeatDelta.tsx';
-import { COPY_MODE_DEFAULT, duplicatePeople, planRoster, planVotes, planWholeList, type CopyMode, type CopyUnit, type Plan, type Removal } from './copy.ts';
+import { COPY_MODE_DEFAULT, duplicatePeople, isDefaultCopyMode, planRoster, planWholeList, type CopyMode, type Plan, type Removal } from './copy.ts';
 import { CandidateName } from '../components/CandidateName.tsx';
-import { remember } from './answers.ts';
 import { inOf, personKey, sharedCandidates, type MatchOverride, type MatchRow, type MatchTag } from './match.ts';
 import { cellsOf, sourceOf, type SideModel } from './model.ts';
 import { partyLabel } from '../../families/registry.ts';
@@ -65,7 +64,7 @@ export function SourceSelect({ dest, exclude, value, onChange, label }: { dest: 
 }
 
 /** What a plan does to the destination, in seats: "Likud 27 → 30 ▲ +3 · Yashar! 21 → 19 ▼ −2". */
-function Outcome({ plan, to, focus }: { plan: Plan; to: SideModel; focus?: string[] }) {
+export function Outcome({ plan, to, focus }: { plan: Plan; to: SideModel; focus?: string[] }) {
   const L = useL(), lang = useLang();
   if (!plan.ok) return <span className="cmp-refused">{lang === 'he' ? plan.reason.he : plan.reason.en}</span>;
   const after = allocationOf(plan.result);
@@ -73,45 +72,6 @@ function Outcome({ plan, to, focus }: { plan: Plan; to: SideModel; focus?: strin
     .filter((x) => x.a !== x.b || focus?.includes(x.l.id)).sort((x, y) => Number(focus?.includes(y.l.id)) - Number(focus?.includes(x.l.id)) || Math.abs(y.b - y.a) - Math.abs(x.b - x.a));
   return <span className="cmp-outcome">{changed.length ? changed.slice(0, 4).map(({ l, a, b }) => <span key={l.id}><bdi>{listLabel(l, lang)}</bdi> <bdi dir="ltr">{a} → {b}</bdi> {a !== b && <SeatDelta value={b - a} />}</span>) : L('Seats unchanged', 'המנדטים ללא שינוי')}
     {plan.capped !== undefined && <span className="cmp-capped">{L(`Capped at ${fmtInt(plan.capped)} voters staying home`, `מוגבל ל־${fmtInt(plan.capped)} הנמנעים`)}</span>}</span>;
-}
-
-export interface CopyRequest { from: SideModel; to: SideModel; units: CopyUnit[]; title: string; cross: boolean; direct?: { mode: CopyMode; source: SourceChoice } }
-
-/** The copy question at the point of use: copy as share, count or change, and where the balance comes from. */
-export function CopyVotesDialog({ req, onClose, onDone }: { req: CopyRequest; onClose: () => void; onDone: (plan: Plan & { ok: true }, req: CopyRequest) => void }) {
-  const L = useL(), { expert } = useLevel();
-  const voteSource = useStore((st) => st.voteSource);
-  const one = req.units.length === 1 && req.units[0].dst.length === 1 ? req.units[0].dst[0] : null;
-  const dst = req.units.flatMap((u) => u.dst);
-  const savedMode = useStore((st) => st.preferences.copyMode);
-  const [mode, setMode] = useState<CopyMode>(req.cross ? (savedMode === 'share' || savedMode === 'count' ? savedMode : COPY_MODE_DEFAULT) : 'count');
-  const [source, setSource] = useState<SourceChoice>(voteSource.kind === 'transfer' && dst.includes(voteSource.listId) ? { kind: 'proportional' } : voteSource);
-  const [scope, setScope] = useState<'once' | 'item' | 'always'>('once');
-  const changed = req.units.some((u) => u.src.some((id) => JSON.stringify(req.from.sc.lists.find((l) => l.id === id)?.votes) !== JSON.stringify(req.from.start.lists.find((l) => l.id === id)?.votes)));
-  const modes: CopyMode[] = req.cross ? ['share', 'count', ...(expert && changed ? ['change' as const] : [])] : ['count', ...(expert && changed ? ['change' as const] : [])];
-  const plans = useMemo(() => Object.fromEntries(modes.map((m) => [m, planVotes({ from: sourceOf(req.from), to: req.to.sc, ctx: { base: req.to.start }, units: req.units, mode: m, policy: source })])) as Record<CopyMode, Plan>, [mode, source, req]); // eslint-disable-line react-hooks/exhaustive-deps
-  const plan = plans[mode];
-  const modeText: Record<CopyMode, [string, string]> = { share: ['Share of the vote', 'שיעור מהקולות'], count: ['Number of votes', 'מספר הקולות'], change: ['Change from its starting point', 'השינוי מנקודת ההתחלה'] };
-  const target = (p: Plan) => p.ok ? p.targets.reduce((t, x) => t + x.after, 0) : null;
-  return <Modal label={req.title} onClose={onClose} className="cmp-ask">
-    <form onSubmit={(e) => { e.preventDefault(); if (!plan?.ok) return; remember(req.to.sc, one, req.cross, mode, source, scope); onDone(plan, req); }}>
-      <p className="cmp-ask-title"><b>{req.title}</b> <Info title={L('Copying votes', 'העתקת קולות')}>{L('Share keeps the list’s strength: its share of all valid votes. Count copies the number of votes, so a larger or smaller electorate changes its strength. Seats are always recalculated.', 'שיעור שומר על כוח הרשימה: חלקה מכלל הקולות הכשרים. מספר מעתיק את מספר הקולות, ולכן ציבור בוחרים גדול או קטן יותר משנה את כוחה. המנדטים תמיד מחושבים מחדש.')}</Info></p>
-      <fieldset className="cmp-modes"><legend>{L('Copy as', 'העתקה לפי')}</legend>
-        {modes.map((m) => { const p = plans[m], n = target(p); return <label key={m} className={`cmp-mode ${p.ok ? '' : 'refused'}`}>
-          <input type="radio" name="cmp-mode" value={m} checked={mode === m} onChange={() => setMode(m)} />
-          <span><b>{L(...modeText[m])}</b>{p.ok && n !== null && <span className="muted"> · <bdi dir="ltr">{fmtInt(n)}</bdi> {L('votes', 'קולות')}{m === 'share' && p.ok && (p.action as { provenance?: { value?: string } }).provenance?.value ? <> · <bdi dir="ltr">{(p.action as { provenance: { value?: string } }).provenance.value}</bdi></> : null}</span>}
-            <br /><Outcome plan={p} to={req.to} focus={dst} /></span>
-        </label>; })}
-      </fieldset>
-      <SourceSelect dest={req.to.sc} exclude={dst} value={source} onChange={setSource} label={L('Balance with', 'איזון מול')} />
-      <fieldset className="preference-scope"><legend>{L('Use this choice', 'שימוש בבחירה')}</legend>
-        {([['once', L('Just this once', 'רק הפעם')], ...(one ? [['item', L('For this list', 'לרשימה זו')]] : []), ['always', L('Always', 'תמיד')]] as [typeof scope, string][]).map(([v, t]) =>
-          <label key={v}><input type="radio" name="cmp-scope" value={v} checked={scope === v} onChange={() => setScope(v)} />{t}</label>)}
-      </fieldset>
-      <p className="tiny muted"><button type="button" className="link-btn" onClick={() => { onClose(); setState({ settingsOpen: true, settingsFocus: req.cross ? 'copyMode' : 'voteSource' }); }}>{L('Change in Settings', 'שינוי בהגדרות')}</button></p>
-      <div className="row"><button type="submit" className="btn small primary" disabled={!plan?.ok}>{L(`Copy to ${req.to.year}`, `העתקה ל־${req.to.year}`)}</button><button type="button" className="btn small ghost" onClick={onClose}>{L('Cancel', 'ביטול')}</button></div>
-    </form>
-  </Modal>;
 }
 
 /** candidatesOnly: the Candidates copy, asked here only when it would put someone on two lists */
@@ -124,7 +84,7 @@ export function WholeListDialog({ req, onClose, onDone }: { req: WholeRequest; o
   const [opts, setOpts] = useState({ votes: !only, candidates: true, identity: false, appearance: false });
   const [remove, setRemove] = useState<Removal[]>([]);
   const savedMode = useStore((st) => st.preferences.copyMode);
-  const [mode, setMode] = useState<CopyMode>(req.cross ? (savedMode === 'share' || savedMode === 'count' ? savedMode : COPY_MODE_DEFAULT) : 'count');
+  const [mode, setMode] = useState<CopyMode>(req.cross ? (isDefaultCopyMode(savedMode) ? savedMode : COPY_MODE_DEFAULT) : 'count');
   const [source, setSource] = useState<SourceChoice>(voteSource.kind === 'transfer' && voteSource.listId === req.dstId ? { kind: 'proportional' } : voteSource);
   const [adding, setAdding] = useState(req.dstId === null);
   const src = req.from.sc.lists.find((l) => l.id === req.srcId)!, dst = req.dstId ? req.to.sc.lists.find((l) => l.id === req.dstId) : undefined;
