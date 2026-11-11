@@ -11,6 +11,8 @@ test('drag previews follow the pointer, capture release outside, and commit one 
   const row = page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: 'Likud', exact: true });
   const before = await row.locator('.lb-seats b').textContent();
   const slider = page.getByRole('slider', { name: 'Votes slider' });
+  // the raw pointer needs the slider on screen (a two-line tools strip can push it below the fold)
+  await slider.scrollIntoViewIfNeeded();
   const box = (await slider.boundingBox())!;
   await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
   await page.mouse.down();

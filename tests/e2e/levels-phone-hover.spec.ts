@@ -26,7 +26,7 @@ test.describe('Settings: every setting at every level, by complexity', () => {
     await expect(settings(page).locator('.ps-tier-sep')).toHaveText(['Standard', 'Expert']);
     // the same settings at every level (only the Simple starter tip is Simple's alone); no "more settings" line
     const rows = await settings(page).locator('[data-setting]').count();
-    expect(rows).toBe(level === 'simple' ? 41 : 40);
+    expect(rows).toBe(level === 'simple' ? 42 : 41);   // 12 Nov: + the Localities map's lines switch
     await expect(settings(page).getByText(/more settings in Standard/)).toHaveCount(0);
     await expect(settings(page).locator('[data-tier="simple"] [data-setting="voteSource"]')).toHaveCount(1);
     await expect(settings(page).locator('[data-tier="expert"] [data-setting="chamberLayout"]')).toHaveCount(1);
@@ -38,7 +38,8 @@ test.describe('Settings: every setting at every level, by complexity', () => {
     await settings(page).locator('[data-setting="listOrder"]').getByRole('button', { name: 'Name', exact: true }).click();
     const names = await page.locator('.lb-row .lb-name').allInnerTexts();
     expect(names.slice(0, 5)).toEqual([...names.slice(0, 5)].sort((a, b) => a.localeCompare(b, 'en')));
-    await settings(page).getByRole('searchbox').fill('order');
+    // two words: "order" alone is also inside "borders", a search word of the map-lines switch
+    await settings(page).getByRole('searchbox').fill('list order');
     await expect(settings(page).locator('[data-setting]')).toHaveCount(1);
     await expect(settings(page).locator('.ps-tier-sep')).toHaveText(['Standard']);
     await settings(page).getByRole('searchbox').fill('');

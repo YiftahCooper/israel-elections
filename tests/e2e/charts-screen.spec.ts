@@ -79,7 +79,9 @@ test('switching between charts and table keeps the page height and the switch un
     await expect(panel(page).locator('[data-waffle]').first()).toBeVisible();
     // scroll as far as the page allows while the switch stays visible below the sticky bars
     const seg = panel(page).getByRole('group', { name: 'View', exact: true });
-    await page.evaluate((d) => window.scrollBy(0, d), (await seg.boundingBox())!.y - 160);
+    // the sticky bars end where the tools strip ends (one or two lines, by width)
+    const bars = await page.locator('.toolbar').evaluate(e => e.getBoundingClientRect().bottom);
+    await page.evaluate((d) => window.scrollBy(0, d), (await seg.boundingBox())!.y - bars - 60);
     for (const name of ['Table', 'Charts', 'Table']) {
       const button = panel(page).getByRole('button', { name, exact: true });
       const b = (await button.boundingBox())!;

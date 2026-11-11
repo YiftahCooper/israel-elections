@@ -89,11 +89,15 @@ test('Hebrew phone values, names, grouping and shared name wrapping stay readabl
 });
 
 
-test('sources translate fallback-list names and retain original credits second', async ({ page }) => {
+// The two 2026 rosters that once came from a fallback transcription now rest on the official gazette; its credit is
+// written in English, so an English page shows no Hebrew in the description.
+test('sources: the 2026 candidate gazette is credited as official, in English on an English page', async ({ page }) => {
   await page.locator('#tab-sources').click();
-  const fallback = page.locator('.credits li').filter({ hasText: 'Fallback rosters' });
-  await expect(fallback).toBeVisible();
-  expect(await fallback.locator(':scope > span[dir="auto"]').innerText()).not.toMatch(/[א-ת]/);
+  const gazette = page.locator('.credits li').filter({ hasText: 'Yalkut HaPirsumim 15023 (13 Oct 2026)' });
+  await expect(gazette).toBeVisible();
+  await expect(gazette.locator('.chip.ok')).toHaveText('official');
+  expect(await gazette.locator(':scope > span[dir="auto"]').innerText()).not.toMatch(/[א-ת]/);
+  await expect(page.locator('.credits li').filter({ hasText: 'bechirot.fyi' })).toHaveCount(0);
 });
 
 test('shared selected labels keep their weights and positions', async ({ page }) => {
