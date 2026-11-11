@@ -118,6 +118,9 @@ function TimelineBar({ term, steps, index, go }: { term: TermRuntime; steps: Ste
   const prev = steps[index - 1], next = steps[index + 1], cur = steps[index];
   const tall = (s: StepView) => s.items.some((it) => it.moved.length || ['government-sworn-in', 'term-start', 'term-end'].includes(it.kind));
   const gov = steps.find((s) => s.items.some((it) => it.kind === 'government-sworn-in'));
+  // the bar's ends are named only where a step is there: a term whose records stop before its end has no "End"
+  const hasStart = steps.some((s) => s.items.some((it) => it.kind === 'term-start'));
+  const hasEnd = steps.some((s) => s.items.some((it) => it.kind === 'term-end'));
   const label = (s: StepView) => `${formatDate(s.step.date, lang)} · ${s.items.length} ${L(s.items.length === 1 ? 'event' : 'events', s.items.length === 1 ? 'אירוע' : 'אירועים')}`;
   // graphics run left to right in Hebrew too: earlier is always on the left, so ◀ means "earlier" in both languages
   return <div className="tl-bar" dir="ltr">
@@ -137,9 +140,9 @@ function TimelineBar({ term, steps, index, go }: { term: TermRuntime; steps: Ste
       <span className="tl-line" />
       {steps.map((s, i) => <i key={s.step.date} className={`tl-tick ${tall(s) ? 'tall' : ''}`} style={{ left: `${pos(term, s.step.date)}%` }} data-date={s.step.date} data-current={i === index ? '' : undefined} />)}
       <b className="tl-knob" style={{ left: `${pos(term, cur.step.date)}%` }} />
-      <span className="tl-end-label start">{L('Start', 'תחילה')}</span>
+      {hasStart && <span className="tl-end-label start">{L('Start', 'תחילה')}</span>}
       {gov && pos(term, gov.step.date) > 14 && pos(term, gov.step.date) < 86 && <span className="tl-end-label" style={{ left: `${pos(term, gov.step.date)}%` }}>{L('Sworn in', 'השבעה')}</span>}
-      <span className="tl-end-label end">{L('End', 'סוף')}</span>
+      {hasEnd && <span className="tl-end-label end">{L('End', 'סוף')}</span>}
     </div>
     <button type="button" className="btn tl-step" disabled={!next} onClick={() => go(index + 1)} aria-label={next ? L(`Next step: ${formatDate(next.step.date, lang)}`, `הצעד הבא: ${formatDate(next.step.date, lang)}`) : L('Next step', 'הצעד הבא')}>
       <span aria-hidden="true">▶</span>{next && <span className="tl-step-date"><bdi>{formatDate(next.step.date, lang)}</bdi></span>}</button>

@@ -3,7 +3,7 @@
 import { expect, test, type Page } from '@playwright/test';
 import { choose } from './choices.ts';
 
-async function start(page: Page, { lang = 'en', level = 'standard', width = 1500, settings = {} }: { lang?: 'en' | 'he'; level?: string; width?: number; settings?: Record<string, unknown> } = {}) {
+async function start(page: Page, { lang = 'en', level = 'standard', width = 1500, settings = {}, election = 'k24' }: { lang?: 'en' | 'he'; level?: string; width?: number; settings?: Record<string, unknown>; election?: string } = {}) {
   await page.setViewportSize({ width, height: width < 800 ? 844 : 1000 });
   await page.addInitScript(([lang, level, settings]) => {
     if (sessionStorage.getItem('started')) return;
@@ -12,7 +12,7 @@ async function start(page: Page, { lang = 'en', level = 'standard', width = 1500
     localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false, decimals: 2, ...settings } }));
   }, [lang, level, settings] as const);
   await page.goto('/');
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k24');
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
 }
 async function openTimeline(page: Page, lang: 'en' | 'he' = 'en') {
   await page.getByRole('tab', { name: lang === 'he' ? 'אחרי הבחירות' : 'After the election', exact: true }).click();
@@ -125,4 +125,44 @@ test('the election chart’s seat card names who else held the seat', async ({ p
   await expect(tip).toContainText('Who sat here');
   await expect(tip.locator('.tl-holders > li')).toHaveCount(4);
   await expect(tip).toContainText('Yosef Taieb');
+});
+
+// Owner, 12 Nov 2026: the arrows go through every event on the timeline. The ticks on the bar are the steps.
+for (const [election, level, total] of [['k24', 'simple', 9], ['k24', 'standard', 33], ['k24', 'expert', 44], ['k25', 'standard', 39]] as const) {
+  test(`${election} ${level}: ▶ stops at every tick on the bar, in order, and ◀ comes back the same way`, async ({ page }) => {
+    await start(page, { level, election });
+    const tl = await openTimeline(page);
+    const ticks = await tl.locator('.tl-tick').evaluateAll((els) => els.map((e) => e.getAttribute('data-date')));
+    expect(ticks).toHaveLength(total);
+    const next = tl.getByRole('button', { name: /^Next step/ }), prev = tl.getByRole('button', { name: /^Previous step/ });
+    const seen = [await current(tl).getAttribute('data-date')];
+    while (await next.isEnabled()) { await next.click(); seen.push(await current(tl).getAttribute('data-date')); }
+    expect(seen).toEqual(ticks);
+    await expect(tl.locator('.tl-count')).toHaveText(`Step ${total} of ${total}`);
+    const back = [await current(tl).getAttribute('data-date')];
+    while (await prev.isEnabled()) { await prev.click(); back.push(await current(tl).getAttribute('data-date')); }
+    expect(back.reverse()).toEqual(ticks);
+  });
+}
+
+test('a step that moves no seat keeps the chart and says what happened, with its sources', async ({ page }) => {
+  await start(page, { level: 'standard' });
+  const tl = await openTimeline(page);
+  await stepTo(tl, '2021-08-25');
+  const sides = () => tl.locator('[data-tl-seat]').evaluateAll((els) => els.map((e) => `${e.getAttribute('data-tl-seat')}:${e.getAttribute('data-side')}`));
+  const before = await sides();
+  await tl.getByRole('button', { name: 'Next step: 4 Nov 2021' }).click();
+  await expect(tl.locator('.tl-lines li[data-kind="budget-vote"]')).toHaveCount(1);
+  expect(await sides()).toEqual(before);
+  await expect(tl.locator('.tl-sides')).toContainText('Coalition 61');
+  await expect(tl.locator('.tl-glow')).toHaveCount(0);
+  await tl.locator('.tl-lines li[data-kind="budget-vote"] button').click();
+  await expect(page.locator(".pop a[href^=\"https://\"]").first()).toBeVisible();
+});
+
+test('the bar says "End" only when a step is there', async ({ page }) => {
+  await start(page, { level: 'standard', election: 'k25' });
+  const tl = await openTimeline(page);
+  await expect(tl.locator('.tl-end-label.start')).toHaveText('Start');
+  await expect(tl.locator('.tl-end-label.end')).toHaveCount(0); // the 25th Knesset's records stop before its end
 });

@@ -91,6 +91,8 @@ type KEvent = {
   /** the people a mixed event's marker applies to */
   markerPersonIds?: number[];
   replacement?: { reason?: string; memberChangesRefs?: { path: string; pointer: string }[] };
+  /** events sharing a group are one step (they must share a date) */
+  timelineGroup?: string;
 };
 type Events = { events: KEvent[]; membershipEventRefs?: { date: string; ref: { pointer: string }; importance?: Importance; reason?: string }[] };
 
@@ -229,6 +231,10 @@ function compileSteps(k: number, opening: string, end: string, seats: SeatRuntim
   const holderAt = (seat: number, day: string) => { const d = day >= end ? last : day; return holderTenure[seat].find((t) => t.start <= d && (t.end === null || d < t.end)) ?? null; };
   const seatOfPerson = (p: number, d: string) => seats.findIndex((_, i) => holderAt(i, d)?.personId === p);
   const events = ev.events.filter((e) => e.date >= opening && e.date <= end);
+  // events sharing a timelineGroup are one step: they must share a date
+  const groupDates = new Map<string, Set<string>>();
+  for (const e of events) if (e.timelineGroup) (groupDates.get(e.timelineGroup) ?? groupDates.set(e.timelineGroup, new Set()).get(e.timelineGroup)!).add(e.date);
+  for (const [g, ds] of groupDates) if (ds.size > 1) anomalies.push(`k${k}: timeline group ${g} spans ${[...ds].sort().join(', ')}`);
   // ---- seat changes: one per seat and date ----
   type SeatChange = { seat: number; date: string; in: number | null; out: number | null; reason: string | null };
   const changes: SeatChange[] = [];
