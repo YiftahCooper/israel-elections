@@ -1,11 +1,517 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "knesset": 20,
-  "asOf": "2026-11-09",
+  "asOf": "2026-11-11",
   "coverage": "partial",
   "scope": "Observed dated faction membership transitions, not a complete register of House Committee decisions.",
   "seatsAfterDefinition": "Null means no government-support assignment is established by these records.",
   "events": [
+    {
+      "id": "k20-term-start",
+      "date": "2015-03-31",
+      "kind": "term-start",
+      "who": {},
+      "summary": {
+        "en": "20th Knesset membership begins.",
+        "he": "תחילת כהונת הכנסת ה־20."
+      },
+      "classification": "counts",
+      "reason": "The membership boundary defines the parliamentary term, independently of election day or government formation.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+20+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Initial/terminal member-tenure boundary; tenure record IDs 1127, 3335, 1129, 3308, 3301, 3328, 3326, 3309, 3303, 962, 964, 960, 954, 953, 1185, 1168, 3300, 3313, 3333, 1324, 1192, 959, 1314, 3297, 3310, 3350, 3299, 1312, 961, 1202, 1323, 1317, 3325, 958, 1304, 3327, 3305, 3329, 17102, 1328, 1295, 1196, 3311, 1132, 3306, 1322, 3316, 3307, 1128, 1201, 3302, 1307, 3304, 1327, 1313, 1315, 1316, 1319, 3312, 3317, 3334, 3330, 1299, 3331, 1300, 1306, 1302, 1310, 3339, 3340, 3341, 3342, 3343, 3348, 3344, 3347, 3346, 3349, 1329, 3336, 957, 955, 956, 3332, 963, 1318, 1320, 3314, 3315, 3318, 3319, 1298, 1301, 1303, 1305, 1308, 1309, 1321, 1325, 1326, 1330, 3337, 3338, 3345, 1131, 3351, 3352, 3353, 3354, 3355, 3356, 950, 951, 3320, 3321, 3322, 3323, 3324, 1311, 952",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2015-03-31"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "supportEffect": "none-established",
+      "importance": "simple",
+      "importanceReason": "The membership boundary defines the parliamentary term, independently of election day or government formation.",
+      "marker": null
+    },
+    {
+      "id": "k20-government34-appointments",
+      "date": "2015-05-14",
+      "kind": "government-appointments-begin",
+      "who": {},
+      "summary": {
+        "en": "Initial appointments to government 34 begin.",
+        "he": "תחילת המינויים לממשלה ה־34."
+      },
+      "classification": "counts",
+      "reason": "Initial government appointments establish a new governing administration; the investiture roll call is not supplied by this record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2034%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "inspection": "retained-record",
+          "evidenceFamily": "knesset-parliament-info",
+          "locator": "data/meta/government-support-evidence.json /governments/34",
+          "supportingNote": "First appointment dates only; no roll-call or support total inferred.",
+          "effectiveDate": "2015-05-14"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "supportEffect": "none-established",
+      "governmentRef": {
+        "path": "data/meta/government-support-evidence.json",
+        "pointer": "/governments/34"
+      },
+      "importance": "simple",
+      "importanceReason": "Initial government appointments establish a new governing administration; the investiture roll call is not supplied by this record.",
+      "marker": null
+    },
+    {
+      "id": "k20-norwegian-2016-01-24",
+      "date": "2016-01-24",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          498,
+          30328
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Meshulam Nahari; entering: Yigal Guetta.",
+        "he": "חילופי חברי הכנסת: משולם נהרי; נכנסו: יגאל גואטה."
+      },
+      "classification": "counts",
+      "reason": "Routine Norwegian-law substitutions change seat holders without an established change of governing side.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+20+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 960, 18165",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2016-01-24"
+        },
+        {
+          "url": "https://www.idi.org.il/articles/38757",
+          "publisher": "Israel Democracy Institute",
+          "date": "2022-04-12",
+          "accessed": "2026-11-11",
+          "type": "institutional",
+          "evidenceFamily": "Israel Democracy Institute",
+          "inspection": "opened",
+          "locator": "Table 1 names the 21 government-36 Norwegian-law leavers, and the three government-35 ministers who left at the start of K24; legal overview explains returns.",
+          "supportingNote": "Table 1 names the 21 government-36 Norwegian-law leavers, and the three government-35 ministers who left at the start of K24; legal overview explains returns."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k20.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k20.json",
+            "public/data/k20.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          498
+        ],
+        "enteringPersonIds": [
+          30328
+        ],
+        "namesHe": {
+          "498": "משולם נהרי",
+          "30328": "יגאל גואטה"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "sourced",
+        "listIds": [
+          "20-שס"
+        ],
+        "factionSets": [
+          {
+            "factionId": 910,
+            "leavingPersonIds": [
+              498
+            ],
+            "enteringPersonIds": [
+              30328
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k20.json",
+            "pointer": "/replacements/8"
+          }
+        ],
+        "namesEn": {
+          "498": "Meshulam Nahari",
+          "30328": "Yigal Guetta"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "Routine Norwegian-law substitutions change seat holders without an established change of governing side."
+      },
+      "importance": "expert",
+      "importanceReason": "Routine Norwegian-law substitutions change seat holders without an established change of governing side.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        498,
+        30328
+      ]
+    },
+    {
+      "id": "k20-norwegian-2016-01-29",
+      "date": "2016-01-29",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          1034,
+          22151
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Moshe Kahlon; entering: Akram Hasson.",
+        "he": "חילופי חברי הכנסת: משה כחלון; נכנסו: אכרם חסון."
+      },
+      "classification": "counts",
+      "reason": "A party or faction leader leaves parliamentary voting under the Norwegian law while retaining executive office.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+20+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 3350, 18193",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2016-01-29"
+        },
+        {
+          "url": "https://www.idi.org.il/articles/38757",
+          "publisher": "Israel Democracy Institute",
+          "date": "2022-04-12",
+          "accessed": "2026-11-11",
+          "type": "institutional",
+          "evidenceFamily": "Israel Democracy Institute",
+          "inspection": "opened",
+          "locator": "Table 1 names the 21 government-36 Norwegian-law leavers, and the three government-35 ministers who left at the start of K24; legal overview explains returns.",
+          "supportingNote": "Table 1 names the 21 government-36 Norwegian-law leavers, and the three government-35 ministers who left at the start of K24; legal overview explains returns."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k20.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k20.json",
+            "public/data/k20.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          1034
+        ],
+        "enteringPersonIds": [
+          22151
+        ],
+        "namesHe": {
+          "1034": "משה כחלון",
+          "22151": "אכרם חסון"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "sourced",
+        "listIds": [
+          "20-כ"
+        ],
+        "factionSets": [
+          {
+            "factionId": 906,
+            "leavingPersonIds": [
+              1034
+            ],
+            "enteringPersonIds": [
+              22151
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k20.json",
+            "pointer": "/replacements/9"
+          }
+        ],
+        "namesEn": {
+          "1034": "Moshe Kahlon",
+          "22151": "Akram Hasson"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "A party or faction leader leaves parliamentary voting under the Norwegian law while retaining executive office."
+      },
+      "importance": "standard",
+      "importanceReason": "A party or faction leader leaves parliamentary voting under the Norwegian law while retaining executive office.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        1034,
+        22151
+      ]
+    },
+    {
+      "id": "k20-norwegian-2016-05-24",
+      "date": "2016-05-24",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          563,
+          23641
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Meir Porush; entering: Yaakov Asher.",
+        "he": "חילופי חברי הכנסת: מאיר פרוש; נכנסו: יעקב אשר."
+      },
+      "classification": "counts",
+      "reason": "Routine Norwegian-law substitutions change seat holders without an established change of governing side.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+20+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 1192, 18416",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2016-05-24"
+        },
+        {
+          "url": "https://www.idi.org.il/articles/38757",
+          "publisher": "Israel Democracy Institute",
+          "date": "2022-04-12",
+          "accessed": "2026-11-11",
+          "type": "institutional",
+          "evidenceFamily": "Israel Democracy Institute",
+          "inspection": "opened",
+          "locator": "Table 1 names the 21 government-36 Norwegian-law leavers, and the three government-35 ministers who left at the start of K24; legal overview explains returns.",
+          "supportingNote": "Table 1 names the 21 government-36 Norwegian-law leavers, and the three government-35 ministers who left at the start of K24; legal overview explains returns."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k20.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k20.json",
+            "public/data/k20.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          563
+        ],
+        "enteringPersonIds": [
+          23641
+        ],
+        "namesHe": {
+          "563": "מאיר פרוש",
+          "23641": "יעקב אשר"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "sourced",
+        "listIds": [
+          "20-ג"
+        ],
+        "factionSets": [
+          {
+            "factionId": 908,
+            "leavingPersonIds": [
+              563
+            ],
+            "enteringPersonIds": [
+              23641
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k20.json",
+            "pointer": "/replacements/11"
+          }
+        ],
+        "namesEn": {
+          "563": "Meir Porush",
+          "23641": "Yaakov Asher"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "Routine Norwegian-law substitutions change seat holders without an established change of governing side."
+      },
+      "importance": "expert",
+      "importanceReason": "Routine Norwegian-law substitutions change seat holders without an established change of governing side.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        563,
+        23641
+      ]
+    },
+    {
+      "id": "k20-norwegian-2016-06-01",
+      "date": "2016-06-01",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          427,
+          23560
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Avigdor Liberman; entering: Yulia Malinovsky.",
+        "he": "חילופי חברי הכנסת: אביגדור ליברמן; נכנסו: יוליה מלינובסקי."
+      },
+      "classification": "counts",
+      "reason": "A party or faction leader leaves parliamentary voting under the Norwegian law while retaining executive office.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+20+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 1127, 18443",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2016-06-01"
+        },
+        {
+          "url": "https://www.idi.org.il/articles/38757",
+          "publisher": "Israel Democracy Institute",
+          "date": "2022-04-12",
+          "accessed": "2026-11-11",
+          "type": "institutional",
+          "evidenceFamily": "Israel Democracy Institute",
+          "inspection": "opened",
+          "locator": "Table 1 names the 21 government-36 Norwegian-law leavers, and the three government-35 ministers who left at the start of K24; legal overview explains returns.",
+          "supportingNote": "Table 1 names the 21 government-36 Norwegian-law leavers, and the three government-35 ministers who left at the start of K24; legal overview explains returns."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k20.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k20.json",
+            "public/data/k20.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          427
+        ],
+        "enteringPersonIds": [
+          23560
+        ],
+        "namesHe": {
+          "427": "אביגדור ליברמן",
+          "23560": "יוליה מלינובסקי"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "sourced",
+        "listIds": [
+          "20-ל"
+        ],
+        "factionSets": [
+          {
+            "factionId": 905,
+            "leavingPersonIds": [
+              427
+            ],
+            "enteringPersonIds": [
+              23560
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k20.json",
+            "pointer": "/replacements/12"
+          }
+        ],
+        "namesEn": {
+          "427": "Avigdor Liberman",
+          "23560": "Yulia Malinovsky"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "A party or faction leader leaves parliamentary voting under the Norwegian law while retaining executive office."
+      },
+      "importance": "standard",
+      "importanceReason": "A party or faction leader leaves parliamentary voting under the Norwegian law while retaining executive office.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        427,
+        23560
+      ]
+    },
     {
       "id": "k20-observed-faction-0",
       "date": "2017-03-15",
@@ -43,7 +549,119 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A dated faction transfer materially changes parliamentary political affiliation, but the membership rows alone do not establish a change of governing side."
+    },
+    {
+      "id": "k20-norwegian-2018-02-22",
+      "date": "2018-02-22",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          580,
+          30549
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Yitzhak Cohen; entering: Dan Saida.",
+        "he": "חילופי חברי הכנסת: יצחק כהן; נכנסו: דן סיידה."
+      },
+      "classification": "counts",
+      "reason": "Routine Norwegian-law substitutions change seat holders without an established change of governing side.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+20+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 959, 19717",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2018-02-22"
+        },
+        {
+          "url": "https://www.idi.org.il/articles/38757",
+          "publisher": "Israel Democracy Institute",
+          "date": "2022-04-12",
+          "accessed": "2026-11-11",
+          "type": "institutional",
+          "evidenceFamily": "Israel Democracy Institute",
+          "inspection": "opened",
+          "locator": "Table 1 names the 21 government-36 Norwegian-law leavers, and the three government-35 ministers who left at the start of K24; legal overview explains returns.",
+          "supportingNote": "Table 1 names the 21 government-36 Norwegian-law leavers, and the three government-35 ministers who left at the start of K24; legal overview explains returns."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k20.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k20.json",
+            "public/data/k20.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          580
+        ],
+        "enteringPersonIds": [
+          30549
+        ],
+        "namesHe": {
+          "580": "יצחק כהן",
+          "30549": "דן סיידה"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "sourced",
+        "listIds": [
+          "20-שס"
+        ],
+        "factionSets": [
+          {
+            "factionId": 910,
+            "leavingPersonIds": [
+              580
+            ],
+            "enteringPersonIds": [
+              30549
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k20.json",
+            "pointer": "/replacements/25"
+          }
+        ],
+        "namesEn": {
+          "580": "Yitzhak Cohen",
+          "30549": "Dan Saida"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "Routine Norwegian-law substitutions change seat holders without an established change of governing side."
+      },
+      "importance": "expert",
+      "importanceReason": "Routine Norwegian-law substitutions change seat holders without an established change of governing side.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        580,
+        30549
+      ]
     },
     {
       "id": "k20-observed-faction-1",
@@ -84,7 +702,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A dated faction transfer materially changes parliamentary political affiliation, but the membership rows alone do not establish a change of governing side."
     },
     {
       "id": "k20-observed-faction-2",
@@ -140,7 +761,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A dated faction transfer materially changes parliamentary political affiliation, but the membership rows alone do not establish a change of governing side."
     },
     {
       "id": "k20-observed-faction-3",
@@ -184,7 +808,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A dated faction transfer materially changes parliamentary political affiliation, but the membership rows alone do not establish a change of governing side."
     },
     {
       "id": "k20-observed-faction-4",
@@ -223,7 +850,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
     },
     {
       "id": "k20-observed-faction-5",
@@ -264,7 +894,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
     },
     {
       "id": "k20-observed-faction-6",
@@ -305,7 +938,60 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
+    },
+    {
+      "id": "k20-term-end",
+      "date": "2019-04-30",
+      "kind": "term-end",
+      "who": {},
+      "summary": {
+        "en": "20th Knesset membership ends as the 21th Knesset begins.",
+        "he": "סיום כהונת הכנסת ה־20."
+      },
+      "classification": "counts",
+      "reason": "The membership boundary defines the parliamentary term, independently of election day or government formation.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+20+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Initial/terminal member-tenure boundary; tenure record IDs 3335, 1129, 3308, 3301, 3328, 3326, 3309, 964, 954, 1185, 1168, 3300, 3313, 3333, 1324, 1314, 3297, 3310, 3299, 961, 1202, 1323, 1317, 3325, 1304, 3327, 3305, 3329, 17102, 1328, 1295, 1196, 3311, 1132, 1322, 3316, 3307, 1128, 1201, 3302, 1307, 1327, 1315, 1316, 1319, 3312, 3317, 3334, 3330, 3331, 1300, 1306, 1310, 3339, 3341, 3342, 3348, 3344, 3347, 3346, 3349, 1329, 957, 955, 956, 3332, 963, 1320, 3315, 3318, 3319, 1301, 1305, 1308, 1309, 1321, 1325, 1326, 1330, 3345, 3352, 3353, 3354, 3355, 3356, 950, 951, 3320, 3321, 3322, 3323, 3324, 1311, 952, 17698, 17702, 17704, 17733, 18047, 18068, 18085, 18193, 18411, 18416, 18817, 19093, 19323, 19337, 19363, 19365, 19369, 19652, 19717, 19740, 19919, 19925, 19973, 20012, 20014, 20146",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2019-04-30"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "supportEffect": "none-established",
+      "importance": "simple",
+      "importanceReason": "The membership boundary defines the parliamentary term, independently of election day or government formation.",
+      "marker": null
     }
+  ],
+  "method": {
+    "legacyClassification": "The inherited counts/does-not-count/hard-case field addresses the earlier continuing-support test; expert protest events may remain visible despite does-not-count. Use importance, marker scope and verification status separately.",
+    "importance": "Lowest display level; cumulative simple < standard < expert. Editorial judgement, separate from factual certainty.",
+    "marker": "D2 = individual left governing side; D3 = named continuing-coalition dissent on a specific vote; D4 = sourced party/individual move between government and opposition; replacement = sourced seat-holder change; null = no supported marker.",
+    "markerScope": "markerPersonIds restricts a marker on mixed events; factionIds are not an inferred roll call. No ideological left/right direction inferred.",
+    "timelineEligibility": "timelineEligible=false marks duplicate evidence, routine unsuccessful motions or unconfirmed leads; importance does not override verification. Coalesce related official-decision and membership evidence.",
+    "replacement": "Same-date list-level sets avoid arbitrary simultaneous pairings; candidatePositionHints are not a proved succession chain. Inferred reasons are labelled inferred-cohort.",
+    "gradingCoverage": "All inherited events graded; additions and remaining research gaps are described separately in REPORT.md."
+  },
+  "gradingCoverage": {
+    "existingEventsGraded": 7,
+    "newEvents": 8,
+    "historicalCompleteness": "partial; not an exhaustive census of qualifying votes, support changes or replacements"
+  },
+  "gaps": [
+    "RB-IMP: all retained events have editorial grades; unrecorded historical events are not proved absent, and null markers mean evidence does not establish the requested marker."
   ]
 }

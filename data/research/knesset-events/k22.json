@@ -1,11 +1,44 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "knesset": 22,
-  "asOf": "2026-11-09",
+  "asOf": "2026-11-11",
   "coverage": "partial",
   "scope": "Observed dated faction membership transitions, not a complete register of House Committee decisions.",
   "seatsAfterDefinition": "Null means no government-support assignment is established by these records.",
   "events": [
+    {
+      "id": "k22-term-start",
+      "date": "2019-10-03",
+      "kind": "term-start",
+      "who": {},
+      "summary": {
+        "en": "22th Knesset membership begins.",
+        "he": "תחילת כהונת הכנסת ה־22."
+      },
+      "classification": "counts",
+      "reason": "The membership boundary defines the parliamentary term, independently of election day or government formation.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+22+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Initial/terminal member-tenure boundary; tenure record IDs 20975, 20944, 20950, 20958, 20931, 21009, 20968, 20970, 20932, 20949, 20960, 21012, 20973, 20928, 20952, 20942, 20953, 21024, 20937, 20930, 20966, 20927, 20943, 20934, 20971, 20936, 21026, 21039, 20947, 20951, 21030, 20957, 20993, 21021, 21023, 20962, 20938, 20976, 20935, 21031, 21029, 20961, 21004, 20997, 20985, 20994, 21006, 21002, 20979, 20996, 21008, 20990, 20967, 21010, 21032, 20926, 20964, 20955, 20946, 21033, 21015, 21016, 21011, 21014, 20941, 21038, 21037, 20945, 20978, 20933, 20929, 21020, 20924, 20984, 20925, 21022, 20969, 20980, 20998, 20989, 20987, 20983, 20981, 20991, 20986, 21001, 20995, 20988, 21005, 20992, 21036, 20982, 21000, 21034, 21003, 20999, 21007, 20940, 20948, 20954, 20939, 20956, 20959, 21044, 21018, 21017, 21019, 20965, 20963, 21013, 20977, 20974, 21035, 21027, 21028, 21025, 21040, 21043, 21041, 21042",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2019-10-03"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "supportEffect": "none-established",
+      "importance": "simple",
+      "importanceReason": "The membership boundary defines the parliamentary term, independently of election day or government formation.",
+      "marker": null
+    },
     {
       "id": "k22-observed-faction-0",
       "date": "2019-10-10",
@@ -46,7 +79,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
     },
     {
       "id": "k22-observed-faction-1",
@@ -87,7 +123,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
     },
     {
       "id": "k22-observed-faction-2",
@@ -129,7 +168,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
     },
     {
       "id": "k22-observed-faction-3",
@@ -170,7 +212,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
     },
     {
       "id": "k22-observed-faction-4",
@@ -213,7 +258,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
     },
     {
       "id": "k22-observed-faction-5",
@@ -254,7 +302,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
     },
     {
       "id": "k22-observed-faction-6",
@@ -295,7 +346,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
     },
     {
       "id": "k22-observed-faction-7",
@@ -335,7 +389,60 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
+    },
+    {
+      "id": "k22-term-end",
+      "date": "2020-03-16",
+      "kind": "term-end",
+      "who": {},
+      "summary": {
+        "en": "22th Knesset membership ends as the 23th Knesset begins.",
+        "he": "סיום כהונת הכנסת ה־22."
+      },
+      "classification": "counts",
+      "reason": "The membership boundary defines the parliamentary term, independently of election day or government formation.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+22+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Initial/terminal member-tenure boundary; tenure record IDs 20975, 20944, 20950, 20958, 20931, 21009, 20968, 20970, 20932, 20949, 20960, 21012, 20973, 20928, 20952, 20942, 20953, 21024, 20937, 20930, 20966, 20927, 20943, 20934, 20971, 20936, 21026, 21039, 20947, 20951, 21030, 20957, 20993, 21021, 21023, 20962, 20938, 20976, 20935, 21031, 21029, 20961, 21004, 20997, 20985, 20994, 21006, 21002, 20979, 20996, 21008, 20990, 20967, 21010, 21032, 20926, 20964, 20955, 20946, 21033, 21015, 21016, 21011, 21014, 20941, 21038, 21037, 20945, 20978, 20933, 20929, 21020, 20924, 20984, 20925, 21022, 20969, 20980, 20998, 20989, 20987, 20983, 20981, 20991, 20986, 21001, 20995, 20988, 21005, 20992, 21036, 20982, 21000, 21034, 21003, 20999, 21007, 20940, 20948, 20954, 20939, 20956, 20959, 21044, 21018, 21017, 21019, 20965, 20963, 21013, 20977, 20974, 21027, 21028, 21025, 21040, 21043, 21041, 21042, 21286",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2020-03-16"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "supportEffect": "none-established",
+      "importance": "simple",
+      "importanceReason": "The membership boundary defines the parliamentary term, independently of election day or government formation.",
+      "marker": null
     }
+  ],
+  "method": {
+    "legacyClassification": "The inherited counts/does-not-count/hard-case field addresses the earlier continuing-support test; expert protest events may remain visible despite does-not-count. Use importance, marker scope and verification status separately.",
+    "importance": "Lowest display level; cumulative simple < standard < expert. Editorial judgement, separate from factual certainty.",
+    "marker": "D2 = individual left governing side; D3 = named continuing-coalition dissent on a specific vote; D4 = sourced party/individual move between government and opposition; replacement = sourced seat-holder change; null = no supported marker.",
+    "markerScope": "markerPersonIds restricts a marker on mixed events; factionIds are not an inferred roll call. No ideological left/right direction inferred.",
+    "timelineEligibility": "timelineEligible=false marks duplicate evidence, routine unsuccessful motions or unconfirmed leads; importance does not override verification. Coalesce related official-decision and membership evidence.",
+    "replacement": "Same-date list-level sets avoid arbitrary simultaneous pairings; candidatePositionHints are not a proved succession chain. Inferred reasons are labelled inferred-cohort.",
+    "gradingCoverage": "All inherited events graded; additions and remaining research gaps are described separately in REPORT.md."
+  },
+  "gradingCoverage": {
+    "existingEventsGraded": 8,
+    "newEvents": 2,
+    "historicalCompleteness": "partial; not an exhaustive census of qualifying votes, support changes or replacements"
+  },
+  "gaps": [
+    "RB-IMP: all retained events have editorial grades; unrecorded historical events are not proved absent, and null markers mean evidence does not establish the requested marker."
   ]
 }

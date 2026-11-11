@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "knesset": 25,
-  "asOf": "2026-11-09",
+  "asOf": "2026-11-11",
   "coverage": "partial",
   "scope": "Dated parliamentary composition and government-support events. Votes are point-in-time observations, never continuing support assignments.",
   "seatsAfterDefinition": "coalition = continuing supporters where established; opposition = all remaining seats, not a claim of a united opposition or how they will vote. Null means unresolved. Nominal faction membership and confidence-vote totals are distinct.",
@@ -35,7 +35,10 @@
       ],
       "certainty": "confirmed",
       "evidenceClass": "Official",
-      "classificationBasis": "Official membership boundary, distinct from government formation."
+      "classificationBasis": "Official membership boundary, distinct from government formation.",
+      "marker": null,
+      "importance": "simple",
+      "importanceReason": "This establishes a parliamentary term boundary or changes who holds the premiership."
     },
     {
       "id": "k25-faction-0",
@@ -89,7 +92,10 @@
       ],
       "supportEffect": "none-established",
       "evidenceClass": "Official",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
     },
     {
       "id": "k25-faction-1",
@@ -142,7 +148,10 @@
       ],
       "supportEffect": "none-established",
       "evidenceClass": "Official",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
     },
     {
       "id": "k25-faction-2",
@@ -190,7 +199,10 @@
       ],
       "supportEffect": "none-established",
       "evidenceClass": "Official",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
     },
     {
       "id": "k25-government37",
@@ -249,7 +261,1412 @@
         "crossVotes": null
       },
       "evidenceClass": "Official",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "simple",
+      "importanceReason": "This establishes a parliamentary term boundary or changes who holds the premiership."
+    },
+    {
+      "id": "k25-norwegian-2023-01-01-1106",
+      "date": "2023-01-01",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30857,
+          30867
+        ]
+      },
+      "summary": {
+        "en": "Membership changes: 1 leaving, 1 entering; see the named list-level replacement sets.",
+        "he": "חילופי חברי הכנסת: עמיחי אליהו; נכנסו: יצחק קרויזר."
+      },
+      "classification": "counts",
+      "reason": "A routine replacement changes the seat holder without an established change of government support.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 30440, 30715",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2023-01-01"
+        },
+        {
+          "url": "https://www.idi.org.il/articles/48945",
+          "publisher": "Israel Democracy Institute",
+          "date": "2023-04-02",
+          "accessed": "2026-11-11",
+          "type": "institutional",
+          "evidenceFamily": "Israel Democracy Institute",
+          "inspection": "opened",
+          "locator": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns.",
+          "supportingNote": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30857
+        ],
+        "enteringPersonIds": [
+          30867
+        ],
+        "namesHe": {
+          "30857": "עמיחי אליהו",
+          "30867": "יצחק קרויזר"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "inferred-cohort",
+        "listIds": [
+          "25-ט"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1106,
+            "leavingPersonIds": [
+              30857
+            ],
+            "enteringPersonIds": [
+              30867
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/0"
+          }
+        ],
+        "namesEn": {
+          "30857": "Amichay Eliyahu"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "IDI names Razvozov as the sole non-Norwegian departure and counts 18 Norwegian departures; official rows exhaust that bounded 19-person cohort, but individual resignation notices have not all been inspected."
+      },
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30857,
+        30867
+      ]
+    },
+    {
+      "id": "k25-norwegian-2023-01-03-1095",
+      "date": "2023-01-03",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          28513,
+          30868
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Yoav Ben Tzur; entering: Yonatan Mashriki.",
+        "he": "חילופי חברי הכנסת: יואב בן צור; נכנסו: יונתן מישרקי."
+      },
+      "classification": "counts",
+      "reason": "A routine replacement changes the seat holder without an established change of government support.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 30351, 30729",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2023-01-03"
+        },
+        {
+          "url": "https://www.idi.org.il/articles/48945",
+          "publisher": "Israel Democracy Institute",
+          "date": "2023-04-02",
+          "accessed": "2026-11-11",
+          "type": "institutional",
+          "evidenceFamily": "Israel Democracy Institute",
+          "inspection": "opened",
+          "locator": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns.",
+          "supportingNote": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          28513
+        ],
+        "enteringPersonIds": [
+          30868
+        ],
+        "namesHe": {
+          "28513": "יואב בן צור",
+          "30868": "יונתן מישרקי"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "inferred-cohort",
+        "listIds": [
+          "25-שס"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1095,
+            "leavingPersonIds": [
+              28513
+            ],
+            "enteringPersonIds": [
+              30868
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/1"
+          }
+        ],
+        "namesEn": {
+          "28513": "Yoav Ben Tzur",
+          "30868": "Yonatan Mashriki"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "IDI names Razvozov as the sole non-Norwegian departure and counts 18 Norwegian departures; official rows exhaust that bounded 19-person cohort, but individual resignation notices have not all been inspected."
+      },
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        28513,
+        30868
+      ]
+    },
+    {
+      "id": "k25-norwegian-2023-01-06-1096",
+      "date": "2023-01-06",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          556,
+          30058,
+          30710,
+          30839
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Haim Katz, Makhluf Miki Zohar; entering: Ariel Kallner, Dan Illouz.",
+        "he": "חילופי חברי הכנסת: חיים כץ, מכלוף מיקי זוהר; נכנסו: אריאל קלנר, דן אילוז."
+      },
+      "classification": "counts",
+      "reason": "A routine replacement changes the seat holder without an established change of government support.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 30369, 30366, 30810, 30808",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2023-01-06"
+        },
+        {
+          "url": "https://www.idi.org.il/articles/48945",
+          "publisher": "Israel Democracy Institute",
+          "date": "2023-04-02",
+          "accessed": "2026-11-11",
+          "type": "institutional",
+          "evidenceFamily": "Israel Democracy Institute",
+          "inspection": "opened",
+          "locator": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns.",
+          "supportingNote": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          556,
+          30058
+        ],
+        "enteringPersonIds": [
+          30710,
+          30839
+        ],
+        "namesHe": {
+          "556": "חיים כץ",
+          "30058": "מכלוף מיקי זוהר",
+          "30710": "אריאל קלנר",
+          "30839": "דן אילוז"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "inferred-cohort",
+        "listIds": [
+          "25-מחל"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1096,
+            "leavingPersonIds": [
+              556,
+              30058
+            ],
+            "enteringPersonIds": [
+              30710,
+              30839
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/3"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/4"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/47"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/53"
+          }
+        ],
+        "namesEn": {
+          "556": "Haim Katz",
+          "30058": "Makhluf Miki Zohar",
+          "30710": "Ariel Kallner",
+          "30839": "Dan Illouz"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "IDI names Razvozov as the sole non-Norwegian departure and counts 18 Norwegian departures; official rows exhaust that bounded 19-person cohort, but individual resignation notices have not all been inspected."
+      },
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        556,
+        30058,
+        30710,
+        30839
+      ]
+    },
+    {
+      "id": "k25-norwegian-2023-01-06-1101",
+      "date": "2023-01-06",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30846,
+          30672
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Yitshak Goldknop; entering: Yitzhak Ze'ev Pindrus.",
+        "he": "חילופי חברי הכנסת: יצחק גולדקנופ; נכנסו: יצחק פינדרוס."
+      },
+      "classification": "counts",
+      "reason": "A party leader gives up a Knesset vote under the Norwegian law while remaining a minister.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 30416, 30806",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2023-01-06"
+        },
+        {
+          "url": "https://www.ynet.co.il/news/article/hj4xtj79j",
+          "publisher": "Ynet",
+          "date": null,
+          "accessed": "2026-11-11",
+          "type": "press",
+          "evidenceFamily": "yedioth",
+          "inspection": "opened",
+          "locator": "Short report names Goldknopf’s Norwegian-law resignation and Pindrus as successor; effective date comes from retained membership rows.",
+          "supportingNote": "Short report names Goldknopf’s Norwegian-law resignation and Pindrus as successor; effective date comes from retained membership rows."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30846
+        ],
+        "enteringPersonIds": [
+          30672
+        ],
+        "namesHe": {
+          "30846": "יצחק גולדקנופ",
+          "30672": "יצחק פינדרוס"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "sourced",
+        "listIds": [
+          "25-ג"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1101,
+            "leavingPersonIds": [
+              30846
+            ],
+            "enteringPersonIds": [
+              30672
+            ]
+          }
+        ],
+        "pairingBasis": "Source-named successor",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/2"
+          }
+        ],
+        "namesEn": {
+          "30846": "Yitshak Goldknop",
+          "30672": "Yitzhak Ze'ev Pindrus"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "A party leader gives up a Knesset vote under the Norwegian law while remaining a minister."
+      },
+      "importance": "standard",
+      "importanceReason": "A party leader gives up a Knesset vote under the Norwegian law while remaining a minister.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30846,
+        30672
+      ]
+    },
+    {
+      "id": "k25-norwegian-2023-01-07-1096",
+      "date": "2023-01-07",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30718,
+          30702
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Idit Silman; entering: Etty Hava Atia.",
+        "he": "חילופי חברי הכנסת: עידית סילמן; נכנסו: חוה אתי עטייה."
+      },
+      "classification": "counts",
+      "reason": "A routine replacement changes the seat holder without an established change of government support.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 30436, 30812",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2023-01-07"
+        },
+        {
+          "url": "https://www.idi.org.il/articles/48945",
+          "publisher": "Israel Democracy Institute",
+          "date": "2023-04-02",
+          "accessed": "2026-11-11",
+          "type": "institutional",
+          "evidenceFamily": "Israel Democracy Institute",
+          "inspection": "opened",
+          "locator": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns.",
+          "supportingNote": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30718
+        ],
+        "enteringPersonIds": [
+          30702
+        ],
+        "namesHe": {
+          "30718": "עידית סילמן",
+          "30702": "חוה אתי עטייה"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "inferred-cohort",
+        "listIds": [
+          "25-מחל"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1096,
+            "leavingPersonIds": [
+              30718
+            ],
+            "enteringPersonIds": [
+              30702
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/5"
+          }
+        ],
+        "namesEn": {
+          "30718": "Idit Silman",
+          "30702": "Etty Hava Atia"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "IDI names Razvozov as the sole non-Norwegian departure and counts 18 Norwegian departures; official rows exhaust that bounded 19-person cohort, but individual resignation notices have not all been inspected."
+      },
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30718,
+        30702
+      ]
+    },
+    {
+      "id": "k25-norwegian-2023-01-17-1096",
+      "date": "2023-01-17",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30786,
+          30711
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Amichai Chikli; entering: Amit Halevi.",
+        "he": "חילופי חברי הכנסת: עמיחי שיקלי; נכנסו: עמית הלוי."
+      },
+      "classification": "counts",
+      "reason": "A routine replacement changes the seat holder without an established change of government support.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 30439, 30967",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2023-01-17"
+        },
+        {
+          "url": "https://www.idi.org.il/articles/48945",
+          "publisher": "Israel Democracy Institute",
+          "date": "2023-04-02",
+          "accessed": "2026-11-11",
+          "type": "institutional",
+          "evidenceFamily": "Israel Democracy Institute",
+          "inspection": "opened",
+          "locator": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns.",
+          "supportingNote": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30786
+        ],
+        "enteringPersonIds": [
+          30711
+        ],
+        "namesHe": {
+          "30786": "עמיחי שיקלי",
+          "30711": "עמית הלוי"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "inferred-cohort",
+        "listIds": [
+          "25-מחל"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1096,
+            "leavingPersonIds": [
+              30786
+            ],
+            "enteringPersonIds": [
+              30711
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/6"
+          }
+        ],
+        "namesEn": {
+          "30786": "Amichai Chikli",
+          "30711": "Amit Halevi"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "IDI names Razvozov as the sole non-Norwegian departure and counts 18 Norwegian departures; official rows exhaust that bounded 19-person cohort, but individual resignation notices have not all been inspected."
+      },
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30786,
+        30711
+      ]
+    },
+    {
+      "id": "k25-norwegian-2023-01-25-1101",
+      "date": "2023-01-25",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          563,
+          11835,
+          30768,
+          30870
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Meir Porush, Uri Maklev; entering: Eliyahu Baruchi, Moshe Roth.",
+        "he": "חילופי חברי הכנסת: מאיר פרוש, אורי מקלב; נכנסו: אליהו ברוכי, משה רוט."
+      },
+      "classification": "counts",
+      "reason": "A routine replacement changes the seat holder without an established change of government support.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 30395, 30394, 31017, 31015",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2023-01-25"
+        },
+        {
+          "url": "https://www.idi.org.il/articles/48945",
+          "publisher": "Israel Democracy Institute",
+          "date": "2023-04-02",
+          "accessed": "2026-11-11",
+          "type": "institutional",
+          "evidenceFamily": "Israel Democracy Institute",
+          "inspection": "opened",
+          "locator": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns.",
+          "supportingNote": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          563,
+          11835
+        ],
+        "enteringPersonIds": [
+          30768,
+          30870
+        ],
+        "namesHe": {
+          "563": "מאיר פרוש",
+          "11835": "אורי מקלב",
+          "30768": "אליהו ברוכי",
+          "30870": "משה רוט"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "inferred-cohort",
+        "listIds": [
+          "25-ג"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1101,
+            "leavingPersonIds": [
+              563,
+              11835
+            ],
+            "enteringPersonIds": [
+              30768,
+              30870
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/7"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/8"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/48"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/51"
+          }
+        ],
+        "namesEn": {
+          "563": "Meir Porush",
+          "11835": "Uri Maklev",
+          "30768": "Eliyahu Baruchi",
+          "30870": "Moshe Roth"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "IDI names Razvozov as the sole non-Norwegian departure and counts 18 Norwegian departures; official rows exhaust that bounded 19-person cohort, but individual resignation notices have not all been inspected."
+      },
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        563,
+        11835,
+        30768,
+        30870
+      ]
+    },
+    {
+      "id": "k25-razvozov-tal-miron",
+      "date": "2023-02-01",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          23601,
+          30871
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Yoel Razvozov; entering: Shelly Tal Meron.",
+        "he": "חילופי חברי הכנסת: יואל רזבוזוב; נכנסו: שלי טל מירון."
+      },
+      "classification": "counts",
+      "reason": "A routine replacement changes the seat holder without an established change of government support.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 30414, 31053",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2023-02-01"
+        },
+        {
+          "url": "https://www.idi.org.il/articles/48945",
+          "publisher": "Israel Democracy Institute",
+          "date": "2023-04-02",
+          "accessed": "2026-11-11",
+          "type": "institutional",
+          "evidenceFamily": "Israel Democracy Institute",
+          "inspection": "opened",
+          "locator": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns.",
+          "supportingNote": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          23601
+        ],
+        "enteringPersonIds": [
+          30871
+        ],
+        "namesHe": {
+          "23601": "יואל רזבוזוב",
+          "30871": "שלי טל מירון"
+        },
+        "reason": "ordinary-resignation",
+        "reasonStatus": "sourced",
+        "listIds": [
+          "25-פה"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1102,
+            "leavingPersonIds": [
+              23601
+            ],
+            "enteringPersonIds": [
+              30871
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/9"
+          }
+        ],
+        "namesEn": {
+          "23601": "Yoel Razvozov",
+          "30871": "Shelly Tal Meron"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "IDI names Razvozov as the sole non-Norwegian departure and counts 18 Norwegian departures; official rows exhaust that bounded 19-person cohort, but individual resignation notices have not all been inspected."
+      },
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        23601,
+        30871
+      ]
+    },
+    {
+      "id": "k25-norwegian-2023-02-02-1095",
+      "date": "2023-02-02",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          1056,
+          30804,
+          30872,
+          30873
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Yakov Margi, Haim Biton; entering: Simon Moshiashvili, Erez Malul.",
+        "he": "חילופי חברי הכנסת: יעקב מרגי, חיים ביטון; נכנסו: סימון מושיאשוילי, ארז מלול."
+      },
+      "classification": "counts",
+      "reason": "A routine replacement changes the seat holder without an established change of government support.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 30355, 30350, 31095, 31097",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2023-02-02"
+        },
+        {
+          "url": "https://www.idi.org.il/articles/48945",
+          "publisher": "Israel Democracy Institute",
+          "date": "2023-04-02",
+          "accessed": "2026-11-11",
+          "type": "institutional",
+          "evidenceFamily": "Israel Democracy Institute",
+          "inspection": "opened",
+          "locator": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns.",
+          "supportingNote": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          1056,
+          30804
+        ],
+        "enteringPersonIds": [
+          30872,
+          30873
+        ],
+        "namesHe": {
+          "1056": "יעקב מרגי",
+          "30804": "חיים ביטון",
+          "30872": "סימון מושיאשוילי",
+          "30873": "ארז מלול"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "inferred-cohort",
+        "listIds": [
+          "25-שס"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1095,
+            "leavingPersonIds": [
+              1056,
+              30804
+            ],
+            "enteringPersonIds": [
+              30872,
+              30873
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/10"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/11"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/49"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/58"
+          }
+        ],
+        "namesEn": {
+          "1056": "Yakov Margi",
+          "30804": "Haim Biton",
+          "30872": "Simon Moshiashvili",
+          "30873": "Erez Malul"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "IDI names Razvozov as the sole non-Norwegian departure and counts 18 Norwegian departures; official rows exhaust that bounded 19-person cohort, but individual resignation notices have not all been inspected."
+      },
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        1056,
+        30804,
+        30872,
+        30873
+      ]
+    },
+    {
+      "id": "k25-norwegian-2023-02-07-1105",
+      "date": "2023-02-07",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30055,
+          30874
+        ]
+      },
+      "summary": {
+        "en": "Membership changes: 1 leaving, 1 entering; see the named list-level replacement sets.",
+        "he": "חילופי חברי הכנסת: בצלאל סמוטריץ'; נכנסו: צבי ידידיה סוכות."
+      },
+      "classification": "counts",
+      "reason": "A party leader gives up a Knesset vote under the Norwegian law while remaining a minister.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 30380, 31213",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2023-02-07"
+        },
+        {
+          "url": "https://www.zman.co.il/live/370934/",
+          "publisher": "Zman Yisrael",
+          "date": "2023-02-07",
+          "accessed": "2026-11-11",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Entry: Smotrich resignation takes effect and Sukkot membership begins; oath on 8 February is a separate act.",
+          "supportingNote": "Entry: Smotrich resignation takes effect and Sukkot membership begins; oath on 8 February is a separate act."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30055
+        ],
+        "enteringPersonIds": [
+          30874
+        ],
+        "namesHe": {
+          "30055": "בצלאל סמוטריץ'",
+          "30874": "צבי ידידיה סוכות"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "sourced",
+        "listIds": [
+          "25-ט"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1105,
+            "leavingPersonIds": [
+              30055
+            ],
+            "enteringPersonIds": [
+              30874
+            ]
+          }
+        ],
+        "pairingBasis": "Source-named successor",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/12"
+          }
+        ],
+        "namesEn": {
+          "30055": "Bezalel Smotrich"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "A party leader gives up a Knesset vote under the Norwegian law while remaining a minister."
+      },
+      "importance": "standard",
+      "importanceReason": "A party leader gives up a Knesset vote under the Norwegian law while remaining a minister.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30055,
+        30874
+      ]
+    },
+    {
+      "id": "k25-norwegian-2023-02-10-1096",
+      "date": "2023-02-10",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          12937,
+          30875
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Ofir Akunis; entering: Tsega Melaku.",
+        "he": "חילופי חברי הכנסת: אופיר אקוניס; נכנסו: צגה מלקו."
+      },
+      "classification": "counts",
+      "reason": "A routine replacement changes the seat holder without an established change of government support.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 30359, 31240",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2023-02-10"
+        },
+        {
+          "url": "https://www.idi.org.il/articles/48945",
+          "publisher": "Israel Democracy Institute",
+          "date": "2023-04-02",
+          "accessed": "2026-11-11",
+          "type": "institutional",
+          "evidenceFamily": "Israel Democracy Institute",
+          "inspection": "opened",
+          "locator": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns.",
+          "supportingNote": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          12937
+        ],
+        "enteringPersonIds": [
+          30875
+        ],
+        "namesHe": {
+          "12937": "אופיר אקוניס",
+          "30875": "צגה מלקו"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "inferred-cohort",
+        "listIds": [
+          "25-מחל"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1096,
+            "leavingPersonIds": [
+              12937
+            ],
+            "enteringPersonIds": [
+              30875
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/13"
+          }
+        ],
+        "namesEn": {
+          "12937": "Ofir Akunis",
+          "30875": "Tsega Melaku"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "IDI names Razvozov as the sole non-Norwegian departure and counts 18 Norwegian departures; official rows exhaust that bounded 19-person cohort, but individual resignation notices have not all been inspected."
+      },
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        12937,
+        30875
+      ]
+    },
+    {
+      "id": "k25-norwegian-2023-02-15-1096",
+      "date": "2023-02-15",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          12959,
+          30083,
+          30706,
+          30876
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Miri Miriam Regev, Eli Cohen; entering: Kathrin Shitrit, Osher Shkalim.",
+        "he": "חילופי חברי הכנסת: מירי מרים רגב, אלי כהן; נכנסו: קטי קטרין שטרית, אושר שקלים."
+      },
+      "classification": "counts",
+      "reason": "A routine replacement changes the seat holder without an established change of government support.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 30375, 30367, 31325, 31323",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2023-02-15"
+        },
+        {
+          "url": "https://www.idi.org.il/articles/48945",
+          "publisher": "Israel Democracy Institute",
+          "date": "2023-04-02",
+          "accessed": "2026-11-11",
+          "type": "institutional",
+          "evidenceFamily": "Israel Democracy Institute",
+          "inspection": "opened",
+          "locator": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns.",
+          "supportingNote": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          12959,
+          30083
+        ],
+        "enteringPersonIds": [
+          30706,
+          30876
+        ],
+        "namesHe": {
+          "12959": "מירי מרים רגב",
+          "30083": "אלי כהן",
+          "30706": "קטי קטרין שטרית",
+          "30876": "אושר שקלים"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "inferred-cohort",
+        "listIds": [
+          "25-מחל"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1096,
+            "leavingPersonIds": [
+              12959,
+              30083
+            ],
+            "enteringPersonIds": [
+              30706,
+              30876
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/14"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/15"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/52"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/54"
+          }
+        ],
+        "namesEn": {
+          "12959": "Miri Miriam Regev",
+          "30083": "Eli Cohen",
+          "30706": "Kathrin Shitrit",
+          "30876": "Osher Shkalim"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "IDI names Razvozov as the sole non-Norwegian departure and counts 18 Norwegian departures; official rows exhaust that bounded 19-person cohort, but individual resignation notices have not all been inspected."
+      },
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        12959,
+        30083,
+        30706,
+        30876
+      ]
     },
     {
       "id": "k25-boycott-feb",
@@ -283,7 +1700,10 @@
       ],
       "certainty": "provisional",
       "evidenceClass": "Recorded vote (press report; roll call outstanding)",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A temporary boycott or cooperation pause is relevant protest detail, without an established lasting change of governing side."
     },
     {
       "id": "k25-maoz-first-resignation",
@@ -316,7 +1736,228 @@
       ],
       "certainty": "provisional",
       "evidenceClass": "Contemporary report",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A party leader or minister changes executive participation, but resignation from office alone does not establish a coalition departure."
+    },
+    {
+      "id": "k25-norwegian-2023-03-12-1096",
+      "date": "2023-03-12",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30809,
+          30877
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Galit Distel Atbaryan; entering: Moshe Passal.",
+        "he": "חילופי חברי הכנסת: גלית דיסטל אטבריאן; נכנסו: משה פסל."
+      },
+      "classification": "counts",
+      "reason": "A routine replacement changes the seat holder without an established change of government support.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 30365, 31409",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2023-03-12"
+        },
+        {
+          "url": "https://www.idi.org.il/articles/48945",
+          "publisher": "Israel Democracy Institute",
+          "date": "2023-04-02",
+          "accessed": "2026-11-11",
+          "type": "institutional",
+          "evidenceFamily": "Israel Democracy Institute",
+          "inspection": "opened",
+          "locator": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns.",
+          "supportingNote": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30809
+        ],
+        "enteringPersonIds": [
+          30877
+        ],
+        "namesHe": {
+          "30809": "גלית דיסטל אטבריאן",
+          "30877": "משה פסל"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "inferred-cohort",
+        "listIds": [
+          "25-מחל"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1096,
+            "leavingPersonIds": [
+              30809
+            ],
+            "enteringPersonIds": [
+              30877
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/16"
+          }
+        ],
+        "namesEn": {
+          "30809": "Galit Distel Atbaryan",
+          "30877": "Moshe Passal"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "IDI names Razvozov as the sole non-Norwegian departure and counts 18 Norwegian departures; official rows exhaust that bounded 19-person cohort, but individual resignation notices have not all been inspected."
+      },
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30809,
+        30877
+      ]
+    },
+    {
+      "id": "k25-norwegian-2023-03-26-1096",
+      "date": "2023-03-26",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30057,
+          30879
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Yoav Kisch; entering: Sasson Sassi Guetta.",
+        "he": "חילופי חברי הכנסת: יואב קיש; נכנסו: ששון ששי גואטה."
+      },
+      "classification": "counts",
+      "reason": "A routine replacement changes the seat holder without an established change of government support.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 30373, 31453",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2023-03-26"
+        },
+        {
+          "url": "https://www.idi.org.il/articles/48945",
+          "publisher": "Israel Democracy Institute",
+          "date": "2023-04-02",
+          "accessed": "2026-11-11",
+          "type": "institutional",
+          "evidenceFamily": "Israel Democracy Institute",
+          "inspection": "opened",
+          "locator": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns.",
+          "supportingNote": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30057
+        ],
+        "enteringPersonIds": [
+          30879
+        ],
+        "namesHe": {
+          "30057": "יואב קיש",
+          "30879": "ששון ששי גואטה"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "inferred-cohort",
+        "listIds": [
+          "25-מחל"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1096,
+            "leavingPersonIds": [
+              30057
+            ],
+            "enteringPersonIds": [
+              30879
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/17"
+          }
+        ],
+        "namesEn": {
+          "30057": "Yoav Kisch",
+          "30879": "Sasson Sassi Guetta"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "IDI names Razvozov as the sole non-Norwegian departure and counts 18 Norwegian departures; official rows exhaust that bounded 19-person cohort, but individual resignation notices have not all been inspected."
+      },
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30057,
+        30879
+      ]
     },
     {
       "id": "k25-no-confidence-20230327-1",
@@ -357,7 +1998,11 @@
       "timelineViews": [
         "specific-vote"
       ],
-      "supportEffect": "none-established"
+      "supportEffect": "none-established",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "An unsuccessful motion with no verified named coalition dissent is retained as evidence rather than a separate important timeline step.",
+      "timelineEligible": false
     },
     {
       "id": "k25-no-confidence-20230327-2",
@@ -398,7 +2043,120 @@
       "timelineViews": [
         "specific-vote"
       ],
-      "supportEffect": "none-established"
+      "supportEffect": "none-established",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "An unsuccessful motion with no verified named coalition dissent is retained as evidence rather than a separate important timeline step.",
+      "timelineEligible": false
+    },
+    {
+      "id": "k25-norwegian-2023-03-31-1096",
+      "date": "2023-03-31",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          23564,
+          30880
+        ]
+      },
+      "summary": {
+        "en": "Leaving: David Amsalem; entering: Avichay Avraham Buaron.",
+        "he": "חילופי חברי הכנסת: דוד אמסלם; נכנסו: אביחי אברהם בוארון."
+      },
+      "classification": "counts",
+      "reason": "A routine replacement changes the seat holder without an established change of government support.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 30358, 31459",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2023-03-31"
+        },
+        {
+          "url": "https://www.idi.org.il/articles/48945",
+          "publisher": "Israel Democracy Institute",
+          "date": "2023-04-02",
+          "accessed": "2026-11-11",
+          "type": "institutional",
+          "evidenceFamily": "Israel Democracy Institute",
+          "inspection": "opened",
+          "locator": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns.",
+          "supportingNote": "Opening: 18 Norwegian-law departures and Razvozov as the only other departing MK in first 20 weeks; K24 comparison also identifies three early ministerial exits and returns."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          23564
+        ],
+        "enteringPersonIds": [
+          30880
+        ],
+        "namesHe": {
+          "23564": "דוד אמסלם",
+          "30880": "אביחי אברהם בוארון"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "inferred-cohort",
+        "listIds": [
+          "25-מחל"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1096,
+            "leavingPersonIds": [
+              23564
+            ],
+            "enteringPersonIds": [
+              30880
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/18"
+          }
+        ],
+        "namesEn": {
+          "23564": "David Amsalem",
+          "30880": "Avichay Avraham Buaron"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "IDI names Razvozov as the sole non-Norwegian departure and counts 18 Norwegian departures; official rows exhaust that bounded 19-person cohort, but individual resignation notices have not all been inspected."
+      },
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        23564,
+        30880
+      ]
     },
     {
       "id": "k25-boycott-may",
@@ -431,7 +2189,10 @@
       ],
       "certainty": "provisional",
       "evidenceClass": "Recorded vote (press report; roll call outstanding)",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A temporary boycott or cooperation pause is relevant protest detail, without an established lasting change of governing side."
     },
     {
       "id": "k25-boycott-budget",
@@ -464,7 +2225,10 @@
       ],
       "certainty": "provisional",
       "evidenceClass": "Recorded vote (press report; roll call outstanding)",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A temporary boycott or cooperation pause is relevant protest detail, without an established lasting change of governing side."
     },
     {
       "id": "k25-budget2023",
@@ -501,7 +2265,10 @@
         "crossVotes": null
       },
       "evidenceClass": "Recorded vote (press report; roll call outstanding)",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A budget or designated confidence decision is a significant parliamentary survival test, but does not by itself change continuing coalition membership."
     },
     {
       "id": "k25-budget2024",
@@ -538,7 +2305,10 @@
         "crossVotes": null
       },
       "evidenceClass": "Recorded vote (press report; roll call outstanding)",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A budget or designated confidence decision is a significant parliamentary survival test, but does not by itself change continuing coalition membership."
     },
     {
       "id": "k25-maoz-reinstatement",
@@ -571,7 +2341,10 @@
       ],
       "certainty": "provisional",
       "evidenceClass": "Contemporary report",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A party leader or minister changes executive participation, but resignation from office alone does not establish a coalition departure."
     },
     {
       "id": "k25-unity-agreement",
@@ -609,7 +2382,10 @@
       "certainty": "provisional",
       "evidenceClass": "Own statement (reported)",
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
-      "supportEffect": "Accession commitment; ministerial approval follows next day."
+      "supportEffect": "Accession commitment; ministerial approval follows next day.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A documented formation or return agreement is important preparation, while completed government participation is recorded separately."
     },
     {
       "id": "k25-unity-approval",
@@ -666,7 +2442,124 @@
       },
       "seatBasis": "64 existing members plus National Unity’s 12; membership expansion is separate from disputed tally.",
       "evidenceClass": "Contemporary report",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": "D4",
+      "importance": "simple",
+      "importanceReason": "Completed ministerial approval brings a party into government and changes the governing coalition.",
+      "direction": "toCoalition"
+    },
+    {
+      "id": "k25-distal-boaron",
+      "date": "2023-10-14",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30880,
+          30809
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Avichay Avraham Buaron; entering: Galit Distel Atbaryan.",
+        "he": "חילופי חברי הכנסת: אביחי אברהם בוארון; נכנסו: גלית דיסטל אטבריאן."
+      },
+      "classification": "counts",
+      "reason": "A minister’s Norwegian-law return changes the seat holder, while continuing government support is not shown to change.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 31459, 31723",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2023-10-14"
+        },
+        {
+          "url": "https://www.kipa.co.il/חדשות/1167940-0/",
+          "publisher": "Kipa",
+          "date": "2023-10-12",
+          "accessed": "2026-11-11",
+          "type": "press",
+          "evidenceFamily": "Kipa",
+          "inspection": "opened",
+          "locator": "Report names Distal’s ministerial resignation and Boaron as the MK who will leave when she returns; actual effective date is established by retained official tenures.",
+          "supportingNote": "Report names Distal’s ministerial resignation and Boaron as the MK who will leave when she returns; actual effective date is established by retained official tenures."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30880
+        ],
+        "enteringPersonIds": [
+          30809
+        ],
+        "namesHe": {
+          "30880": "אביחי אברהם בוארון",
+          "30809": "גלית דיסטל אטבריאן"
+        },
+        "reason": "norwegian-return",
+        "reasonStatus": "sourced",
+        "listIds": [
+          "25-מחל"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1096,
+            "leavingPersonIds": [
+              30880
+            ],
+            "enteringPersonIds": [
+              30809
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/20"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/65"
+          }
+        ],
+        "namesEn": {
+          "30880": "Avichay Avraham Buaron",
+          "30809": "Galit Distel Atbaryan"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "A minister’s Norwegian-law return changes the seat holder, while continuing government support is not shown to change."
+      },
+      "importance": "expert",
+      "importanceReason": "A minister’s Norwegian-law return changes the seat holder, while continuing government support is not shown to change.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30880,
+        30809
+      ]
     },
     {
       "id": "k25-budget2023-revised",
@@ -724,6 +2617,17 @@
           "inspection": "opened",
           "locator": "Headline reports 58–45; later paragraph reports some National Unity ministers missed the accelerated vote.",
           "supportingNote": "Headline reports 58–45; later paragraph reports some National Unity ministers missed the accelerated vote."
+        },
+        {
+          "url": "https://www.ynet.co.il/news/article/sjqe6nd8t",
+          "publisher": "Ynet",
+          "date": "2023-12-14",
+          "accessed": "2026-11-11",
+          "type": "press",
+          "evidenceFamily": "yedioth",
+          "inspection": "opened",
+          "locator": "Body: Edelstein actually voted for but requested abstention in protocol; several National Unity MKs missed the vote, so intention to oppose is not a roll call.",
+          "supportingNote": "Body: Edelstein actually voted for but requested abstention in protocol; several National Unity MKs missed the vote, so intention to oppose is not a roll call."
         }
       ],
       "certainty": "disputed",
@@ -750,15 +2654,23 @@
             "publisher": "Reshet 13",
             "for": 58,
             "against": 45
+          },
+          {
+            "publisher": "Ynet",
+            "for": 58,
+            "against": 45
           }
         ],
-        "notes": "Conflicting aggregate results; intended opposition and missed attendance do not prove a recorded vote against. Roll call required."
+        "notes": "Conflicting aggregate results; intended opposition and missed attendance do not prove a recorded vote against. Roll call required. Ynet distinguishes Edelstein’s electronic vote for from his request to record abstention; no D3 is assigned without the official corrected record."
       },
       "timelineViews": [
         "specific-vote"
       ],
       "evidenceClass": "Recorded vote (press report; roll call outstanding)",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A budget or designated confidence decision is a significant parliamentary survival test, but does not by itself change continuing coalition membership."
     },
     {
       "id": "k25-no-confidence-labor-20240122",
@@ -814,7 +2726,11 @@
         "specific-vote"
       ],
       "supportEffect": "none-established",
-      "certaintyNote": "Scholarship corroborates date and motion, but not the 18-vote tally; do not upgrade all fields to confirmed."
+      "certaintyNote": "Scholarship corroborates date and motion, but not the 18-vote tally; do not upgrade all fields to confirmed.",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "An unsuccessful motion with no verified named coalition dissent is retained as evidence rather than a separate important timeline step.",
+      "timelineEligible": false
     },
     {
       "id": "k25-budget2024-revised",
@@ -851,7 +2767,10 @@
         "specific-vote"
       ],
       "evidenceClass": "Recorded vote (press report; roll call outstanding)",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A budget or designated confidence decision is a significant parliamentary survival test, but does not by itself change continuing coalition membership."
     },
     {
       "id": "k25-faction-3",
@@ -914,7 +2833,10 @@
       "supportEffect": "none-established",
       "evidenceClass": "Official",
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
-      "formalDecisionCertainty": "provisional"
+      "formalDecisionCertainty": "provisional",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A dated faction transfer materially changes parliamentary political affiliation, but the membership rows alone do not establish a change of governing side."
     },
     {
       "id": "k25-new-hope-exit",
@@ -950,7 +2872,11 @@
       ],
       "certainty": "provisional",
       "evidenceClass": "Own statement (reported)",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": "D4",
+      "importance": "simple",
+      "importanceReason": "An explicit exit changes continuing coalition support, even if the party or legal faction membership is unchanged.",
+      "direction": "toOpposition"
     },
     {
       "id": "k25-boycott-june",
@@ -983,7 +2909,10 @@
       ],
       "certainty": "provisional",
       "evidenceClass": "Recorded vote (press report; roll call outstanding)",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A temporary boycott or cooperation pause is relevant protest detail, without an established lasting change of governing side."
     },
     {
       "id": "k25-unity-exit",
@@ -1019,7 +2948,61 @@
       ],
       "certainty": "provisional",
       "evidenceClass": "Own statement (reported)",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": "D4",
+      "importance": "simple",
+      "importanceReason": "An explicit exit changes continuing coalition support, even if the party or legal faction membership is unchanged.",
+      "direction": "toOpposition"
+    },
+    {
+      "id": "k25-conscription-continuity",
+      "date": "2024-06-11",
+      "kind": "legislative-vote",
+      "who": {
+        "personIds": [
+          30077
+        ]
+      },
+      "summary": {
+        "en": "Conscription-bill continuity motion passes 63–57; defence minister Gallant votes against.",
+        "he": "החלת דין הרציפות על הצעת חוק הגיוס אושרה: 63 בעד ו־57 נגד; שר הביטחון גלנט התנגד."
+      },
+      "classification": "counts",
+      "reason": "The defence minister opposes a major government conscription measure but remains in office and in the governing side.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.13tv.co.il/item/news/politics/politics/gaqfo-904097081/?pid=94359",
+          "publisher": "Reshet 13",
+          "date": "2024-06-11",
+          "accessed": "2026-11-11",
+          "type": "press",
+          "evidenceFamily": "Reshet 13",
+          "inspection": "opened",
+          "locator": "Opening: early Tuesday vote on applying continuity to the conscription bill, 63–57; Gallant opposed and remained defence minister.",
+          "supportingNote": "Opening: early Tuesday vote on applying continuity to the conscription bill, 63–57; Gallant opposed and remained defence minister."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Contemporary report",
+      "supportEffect": "none-established",
+      "vote": {
+        "for": 63,
+        "against": 57,
+        "crossVotes": [
+          {
+            "personId": 30077,
+            "vote": "against"
+          }
+        ]
+      },
+      "dateBasis": "Early Tuesday 11 June, despite the sitting and original story starting Monday 10 June.",
+      "importance": "standard",
+      "importanceReason": "The defence minister opposes a major government conscription measure but remains in office and in the governing side.",
+      "marker": "D3",
+      "markerPersonIds": [
+        30077
+      ]
     },
     {
       "id": "k25-budget2024-second-first",
@@ -1056,7 +3039,10 @@
         "specific-vote"
       ],
       "evidenceClass": "Recorded vote (press report; roll call outstanding)",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A budget or designated confidence decision is a significant parliamentary survival test, but does not by itself change continuing coalition membership."
     },
     {
       "id": "k25-new-hope-return-announcement",
@@ -1097,7 +3083,10 @@
       "certainty": "provisional",
       "evidenceClass": "Own statement (reported)",
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
-      "supportEffect": "Commitment announced on 29 September; do not add another four seats on approval next day."
+      "supportEffect": "Commitment announced on 29 September; do not add another four seats on approval next day.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A documented formation or return agreement is important preparation, while completed government participation is recorded separately."
     },
     {
       "id": "k25-new-hope-return",
@@ -1138,7 +3127,11 @@
         "crossVotes": null
       },
       "evidenceClass": "Contemporary report",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": "D4",
+      "importance": "simple",
+      "importanceReason": "Completed ministerial approval brings a party into government and changes the governing coalition.",
+      "direction": "toCoalition"
     },
     {
       "id": "k25-budget2024-third-additional",
@@ -1188,6 +3181,168 @@
       "dateBasis": "Official indexed notice dated 24 December says early Tuesday; press describes Monday night.",
       "timelineViews": [
         "specific-vote"
+      ],
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A budget or designated confidence decision is a significant parliamentary survival test, but does not by itself change continuing coalition membership."
+    },
+    {
+      "id": "k25-retained-profits-tax",
+      "date": "2024-12-31",
+      "kind": "legislative-vote",
+      "who": {
+        "personIds": [
+          30811
+        ]
+      },
+      "summary": {
+        "en": "Retained-profits tax passes 60–58 despite Ben Gvir’s opposition; Almog Cohen supports it.",
+        "he": "חוק מיסוי הרווחים הלא־מחולקים אושר ברוב של 60–58 למרות התנגדות בן גביר; אלמוג כהן תמך."
+      },
+      "classification": "counts",
+      "reason": "Named dissent on a critical budget-financing law merits a Standard vote step even though the dispute does not yet constitute a coalition exit.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://www.mako.co.il/news-politics/2024_q4/Article-5ac97c72eab1491027.htm",
+          "publisher": "N12",
+          "date": "2024-12-31",
+          "accessed": "2026-11-11",
+          "type": "press",
+          "evidenceFamily": "N12",
+          "inspection": "opened",
+          "locator": "Vote section: retained-profits tax approved 60–58; Ben Gvir opposed; Almog Cohen supported; non-participation is not abstention.",
+          "supportingNote": "Vote section: retained-profits tax approved 60–58; Ben Gvir opposed; Almog Cohen supported; non-participation is not abstention."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Contemporary report",
+      "supportEffect": "none-established",
+      "vote": {
+        "for": 60,
+        "against": 58,
+        "crossVotes": [
+          {
+            "personId": 30811,
+            "vote": "against"
+          }
+        ],
+        "notes": "Only Ben Gvir is individually assigned a dissent marker; the faction stance is not expanded into an unverified personal roll call."
+      },
+      "importance": "standard",
+      "importanceReason": "Named dissent on a critical budget-financing law merits a Standard vote step even though the dispute does not yet constitute a coalition exit.",
+      "marker": "D3",
+      "markerPersonIds": [
+        30811
+      ]
+    },
+    {
+      "id": "k25-gallant-abed",
+      "date": "2025-01-05",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30077,
+          30893
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Yoav Gallant; entering: Afef Abed.",
+        "he": "חילופי חברי הכנסת: יואב גלנט; נכנסו: עפיף עבד."
+      },
+      "classification": "counts",
+      "reason": "The former defence minister leaves the chamber after a major policy dispute; his successor is a notable parliamentary change.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 30362, 32074",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2025-01-05"
+        },
+        {
+          "url": "https://www.walla.co.il/news/politics/3717351",
+          "publisher": "Walla",
+          "date": "2025-01-06",
+          "accessed": "2026-11-11",
+          "type": "press",
+          "evidenceFamily": "Walla",
+          "inspection": "opened",
+          "locator": "Report of Afif Abed taking oath following Gallant’s resignation; membership begins on 5 January in retained official rows.",
+          "supportingNote": "Report of Afif Abed taking oath following Gallant’s resignation; membership begins on 5 January in retained official rows."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30077
+        ],
+        "enteringPersonIds": [
+          30893
+        ],
+        "namesHe": {
+          "30077": "יואב גלנט",
+          "30893": "עפיף עבד"
+        },
+        "reason": "ordinary-resignation",
+        "reasonStatus": "sourced",
+        "listIds": [
+          "25-מחל"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1096,
+            "leavingPersonIds": [
+              30077
+            ],
+            "enteringPersonIds": [
+              30893
+            ]
+          }
+        ],
+        "pairingBasis": "Source-named successor",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/23"
+          }
+        ],
+        "namesEn": {
+          "30077": "Yoav Gallant",
+          "30893": "Afef Abed"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "The former defence minister leaves the chamber after a major policy dispute; his successor is a notable parliamentary change."
+      },
+      "importance": "standard",
+      "importanceReason": "The former defence minister leaves the chamber after a major policy dispute; his successor is a notable parliamentary change.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30077,
+        30893
       ]
     },
     {
@@ -1236,7 +3391,10 @@
       ],
       "supportEffect": "none-established",
       "evidenceClass": "Official",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A dated faction transfer materially changes parliamentary political affiliation, but the membership rows alone do not establish a change of governing side."
     },
     {
       "id": "k25-otzma-exit",
@@ -1270,7 +3428,128 @@
       "certainty": "provisional",
       "effectiveDateNote": "Coalition declaration on 19 January; ministerial resignations have a statutory delay. Norwegian-law effects are referenced separately.",
       "evidenceClass": "Own statement (reported)",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": "D4",
+      "importance": "simple",
+      "importanceReason": "An explicit exit changes continuing coalition support, even if the party or legal faction membership is unchanged.",
+      "direction": "toOpposition"
+    },
+    {
+      "id": "k25-eliyahu-sukkot",
+      "date": "2025-01-21",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30874,
+          30857
+        ]
+      },
+      "summary": {
+        "en": "Membership changes: 1 leaving, 1 entering; see the named list-level replacement sets.",
+        "he": "חילופי חברי הכנסת: צבי ידידיה סוכות; נכנסו: עמיחי אליהו."
+      },
+      "classification": "counts",
+      "reason": "A minister’s Norwegian-law return following his party’s government exit removes an MK from another constituent party on their shared election list.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 31213, 32085",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2025-01-21"
+        },
+        {
+          "url": "https://www.ynet.co.il/news/article/bj9ibwdaye",
+          "publisher": "Ynet",
+          "date": null,
+          "accessed": "2026-11-11",
+          "type": "press",
+          "evidenceFamily": "yedioth",
+          "inspection": "opened",
+          "locator": "Retrospective body identifies Eliyahu’s January return and Sukkot’s consequent loss of membership; subsequent prospective manoeuvres are not treated as completed.",
+          "supportingNote": "Retrospective body identifies Eliyahu’s January return and Sukkot’s consequent loss of membership; subsequent prospective manoeuvres are not treated as completed."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30874
+        ],
+        "enteringPersonIds": [
+          30857
+        ],
+        "namesHe": {
+          "30874": "צבי ידידיה סוכות",
+          "30857": "עמיחי אליהו"
+        },
+        "reason": "norwegian-return",
+        "reasonStatus": "sourced",
+        "listIds": [
+          "25-ט"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1105,
+            "leavingPersonIds": [
+              30874
+            ],
+            "enteringPersonIds": []
+          },
+          {
+            "factionId": 1106,
+            "leavingPersonIds": [],
+            "enteringPersonIds": [
+              30857
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/24"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/64"
+          }
+        ],
+        "namesEn": {
+          "30857": "Amichay Eliyahu"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "A minister’s Norwegian-law return following his party’s government exit removes an MK from another constituent party on their shared election list."
+      },
+      "importance": "standard",
+      "importanceReason": "A minister’s Norwegian-law return following his party’s government exit removes an MK from another constituent party on their shared election list.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30874,
+        30857
+      ]
     },
     {
       "id": "k25-otzma-return-agreement",
@@ -1305,7 +3584,10 @@
       "certainty": "provisional",
       "evidenceClass": "Own statement (reported)",
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
-      "supportEffect": "Agreement only at this date; ministerial offices require later approval."
+      "supportEffect": "Agreement only at this date; ministerial offices require later approval.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A documented formation or return agreement is important preparation, while completed government participation is recorded separately."
     },
     {
       "id": "k25-otzma-return",
@@ -1347,7 +3629,11 @@
       },
       "seatBasis": "All six original coalition parties plus four New Hope MKs; subsequent Noam status is unresolved.",
       "evidenceClass": "Contemporary report",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": "D4",
+      "importance": "simple",
+      "importanceReason": "Completed ministerial approval brings a party into government and changes the governing coalition.",
+      "direction": "toCoalition"
     },
     {
       "id": "k25-maoz-second-resignation",
@@ -1380,7 +3666,10 @@
       ],
       "certainty": "provisional",
       "evidenceClass": "Contemporary report",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A party leader or minister changes executive participation, but resignation from office alone does not establish a coalition departure."
     },
     {
       "id": "k25-budget2025",
@@ -1417,7 +3706,10 @@
         "specific-vote"
       ],
       "evidenceClass": "Recorded vote (press report; roll call outstanding)",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A budget or designated confidence decision is a significant parliamentary survival test, but does not by itself change continuing coalition membership."
     },
     {
       "id": "k25-haredi-boycott-observed",
@@ -1452,7 +3744,10 @@
       "certainty": "provisional",
       "evidenceClass": "Recorded vote (press report; roll call outstanding)",
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
-      "dateBasis": "Observation date, not verified boycott start date."
+      "dateBasis": "Observation date, not verified boycott start date.",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A temporary boycott or cooperation pause is relevant protest detail, without an established lasting change of governing side."
     },
     {
       "id": "k25-dissolution-fails",
@@ -1483,6 +3778,17 @@
           "inspection": "opened",
           "locator": "Opening tally; Agudat Yisrael paragraph names Tesler, Roth and Eichler",
           "supportingNote": "Opening tally; Agudat Yisrael paragraph names Tesler, Roth and Eichler"
+        },
+        {
+          "url": "https://www.jpost.com/israel-news/article-857429",
+          "publisher": "The Jerusalem Post",
+          "date": "2025-06-12",
+          "accessed": "2026-11-11",
+          "type": "press",
+          "evidenceFamily": "The Jerusalem Post",
+          "inspection": "opened",
+          "locator": "Opening and Agudat Yisrael paragraph: Tesler and Roth voted for preliminary dissolution; Eichler opposed; 53–61.",
+          "supportingNote": "Opening and Agudat Yisrael paragraph: Tesler and Roth voted for preliminary dissolution; Eichler opposed; 53–61."
         }
       ],
       "certainty": "provisional",
@@ -1505,7 +3811,14 @@
       ],
       "supportEffect": "Do not remove two continuing coalition members solely on this vote.",
       "evidenceClass": "Recorded vote (press report; roll call outstanding)",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": "D3",
+      "importance": "standard",
+      "importanceReason": "Named coalition MKs support a real dissolution proposal, a significant survival test even though it is defeated.",
+      "markerPersonIds": [
+        30671,
+        30870
+      ]
     },
     {
       "id": "k25-goldknopf-resigns",
@@ -1538,7 +3851,119 @@
       ],
       "certainty": "provisional",
       "evidenceClass": "Contemporary report",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A party leader or minister changes executive participation, but resignation from office alone does not establish a coalition departure."
+    },
+    {
+      "id": "k25-goldknopf-return",
+      "date": "2025-06-15",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30768,
+          30846
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Eliyahu Baruchi; entering: Yitshak Goldknop.",
+        "he": "חילופי חברי הכנסת: אליהו ברוכי; נכנסו: יצחק גולדקנופ."
+      },
+      "classification": "counts",
+      "reason": "A party leader’s ministerial resignation brings him back to the chamber under the Norwegian law.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 31017, 32254",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2025-06-15"
+        },
+        {
+          "url": "https://www.jpost.com/israel-news/article-857429",
+          "publisher": "The Jerusalem Post",
+          "date": "2025-06-12",
+          "accessed": "2026-11-11",
+          "type": "press",
+          "evidenceFamily": "The Jerusalem Post",
+          "inspection": "opened",
+          "locator": "Opening and Agudat Yisrael paragraph: Tesler and Roth voted for preliminary dissolution; Eichler opposed; 53–61.",
+          "supportingNote": "Opening and Agudat Yisrael paragraph: Tesler and Roth voted for preliminary dissolution; Eichler opposed; 53–61."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30768
+        ],
+        "enteringPersonIds": [
+          30846
+        ],
+        "namesHe": {
+          "30768": "אליהו ברוכי",
+          "30846": "יצחק גולדקנופ"
+        },
+        "reason": "norwegian-return",
+        "reasonStatus": "sourced-effective-date-from-membership",
+        "listIds": [
+          "25-ג"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1101,
+            "leavingPersonIds": [
+              30768
+            ],
+            "enteringPersonIds": [
+              30846
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date list-level set; no one-to-one pairing asserted",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/26"
+          }
+        ],
+        "namesEn": {
+          "30768": "Eliyahu Baruchi",
+          "30846": "Yitshak Goldknop"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "A party leader’s ministerial resignation brings him back to the chamber under the Norwegian law."
+      },
+      "importance": "standard",
+      "importanceReason": "A party leader’s ministerial resignation brings him back to the chamber under the Norwegian law.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30768,
+        30846
+      ]
     },
     {
       "id": "k25-faction-5",
@@ -1593,7 +4018,10 @@
       ],
       "supportEffect": "none-established",
       "evidenceClass": "Official",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "This records a name, representational or procedural change without an established change of governing side."
     },
     {
       "id": "k25-observed-faction-5",
@@ -1639,7 +4067,122 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "The membership observation is retained as underlying evidence for the separately recorded decision on this date, avoiding a duplicate timeline move.",
+      "relatedEventIds": [
+        "k25-faction-5"
+      ],
+      "timelineEligible": false
+    },
+    {
+      "id": "k25-saar-hasson",
+      "date": "2025-07-10",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          1027,
+          22151
+        ]
+      },
+      "summary": {
+        "en": "Membership changes: 1 leaving, 1 entering; see the named list-level replacement sets.",
+        "he": "חילופי חברי הכנסת: גדעון סער; נכנסו: אכרם חסון."
+      },
+      "classification": "counts",
+      "reason": "A party leader and foreign minister leaves parliamentary voting under the Norwegian law; the list successor does not imply a new party defection.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 30419, 32284",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2025-07-10"
+        },
+        {
+          "url": "https://www.news1.co.il/Archive/001-D-504814-00.html",
+          "publisher": "News1",
+          "date": "2025-07-08",
+          "accessed": "2026-11-11",
+          "type": "press",
+          "evidenceFamily": "News1",
+          "inspection": "opened",
+          "locator": "Report names Sa’ar’s Norwegian resignation, taking effect in 48 hours, and Akram Hasson as successor.",
+          "supportingNote": "Report names Sa’ar’s Norwegian resignation, taking effect in 48 hours, and Akram Hasson as successor."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          1027
+        ],
+        "enteringPersonIds": [
+          22151
+        ],
+        "namesHe": {
+          "1027": "גדעון סער",
+          "22151": "אכרם חסון"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "sourced",
+        "listIds": [
+          "25-כן"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1108,
+            "leavingPersonIds": [
+              1027
+            ],
+            "enteringPersonIds": [
+              22151
+            ]
+          }
+        ],
+        "pairingBasis": "Source-named successor",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/31"
+          }
+        ],
+        "namesEn": {
+          "1027": "Gideon Sa'ar"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "A party leader and foreign minister leaves parliamentary voting under the Norwegian law; the list successor does not imply a new party defection."
+      },
+      "importance": "standard",
+      "importanceReason": "A party leader and foreign minister leaves parliamentary voting under the Norwegian law; the list successor does not imply a new party defection.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        1027,
+        22151
+      ]
     },
     {
       "id": "k25-degel-exit",
@@ -1672,7 +4215,11 @@
       ],
       "certainty": "provisional",
       "evidenceClass": "Own statement (reported)",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": "D4",
+      "importance": "simple",
+      "importanceReason": "An explicit exit changes continuing coalition support, even if the party or legal faction membership is unchanged.",
+      "direction": "toOpposition"
     },
     {
       "id": "k25-utj-exit",
@@ -1706,7 +4253,11 @@
       "certainty": "provisional",
       "seatBasis": "Do not subtract seven again after Degel exit. Published 60/61 totals depend on Maoz’s unresolved coalition status.",
       "evidenceClass": "Own statement (reported)",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": "D4",
+      "importance": "simple",
+      "importanceReason": "An explicit exit changes continuing coalition support, even if the party or legal faction membership is unchanged.",
+      "direction": "toOpposition"
     },
     {
       "id": "k25-shas-cabinet-exit",
@@ -1751,7 +4302,10 @@
       "certainty": "disputed",
       "disputeScope": "Role description and seat arithmetic, not whether Shas announced cabinet withdrawal.",
       "evidenceClass": "Own statement (reported)",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A party leader or minister changes executive participation, but resignation from office alone does not establish a coalition departure."
     },
     {
       "id": "k25-arbel-rescinds",
@@ -1784,7 +4338,10 @@
       ],
       "certainty": "provisional",
       "evidenceClass": "Contemporary report",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A party leader or minister changes executive participation, but resignation from office alone does not establish a coalition departure."
     },
     {
       "id": "k25-shas-letters",
@@ -1830,7 +4387,10 @@
       ],
       "certainty": "probable",
       "evidenceClass": "Contemporary report",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A party leader or minister changes executive participation, but resignation from office alone does not establish a coalition departure."
     },
     {
       "id": "k25-arbel-resigns-again",
@@ -1866,7 +4426,10 @@
       ],
       "certainty": "provisional",
       "evidenceClass": "Contemporary report",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A party leader or minister changes executive participation, but resignation from office alone does not establish a coalition departure."
     },
     {
       "id": "k25-budget2025-additional",
@@ -1904,7 +4467,10 @@
         "specific-vote"
       ],
       "evidenceClass": "Recorded vote (press report; roll call outstanding)",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A budget or designated confidence decision is a significant parliamentary survival test, but does not by itself change continuing coalition membership."
     },
     {
       "id": "k25-eichler-arrangement",
@@ -1938,7 +4504,123 @@
       ],
       "certainty": "provisional",
       "evidenceClass": "Contemporary report",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A party leader or minister changes executive participation, but resignation from office alone does not establish a coalition departure."
+    },
+    {
+      "id": "k25-eichler-pindrus",
+      "date": "2026-01-21",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          1057,
+          30672
+        ]
+      },
+      "summary": {
+        "en": "Leaving: Israel Eichler; entering: Yitzhak Ze'ev Pindrus.",
+        "he": "חילופי חברי הכנסת: ישראל אייכלר; נכנסו: יצחק פינדרוס."
+      },
+      "classification": "counts",
+      "reason": "A deputy minister’s Norwegian replacement changes who can vote on the conscription dispute while his party remains formally outside the coalition.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Replacement endpoints; tenure record IDs 30390, 33679",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2026-01-21"
+        },
+        {
+          "url": "https://www.timesofisrael.com/liveblog_entry/utjs-yitzhak-pindrus-reenters-knesset-under-norwegian-law/",
+          "publisher": "The Times of Israel",
+          "date": "2026-01-21",
+          "accessed": "2026-11-11",
+          "type": "press",
+          "evidenceFamily": "The Times of Israel",
+          "inspection": "opened",
+          "locator": "Live entry identifies Pindrus replacing Eichler under the Norwegian law while UTJ officially remains in opposition.",
+          "supportingNote": "Live entry identifies Pindrus replacing Eichler under the Norwegian law while UTJ officially remains in opposition."
+        },
+        {
+          "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k25.json",
+          "publisher": "israel-elections repository",
+          "accessed": "2026-11-07",
+          "kind": "repository-derived",
+          "artifacts": [
+            "data/meta/bios/k25.json",
+            "public/data/k25.json"
+          ],
+          "note": "Identity crosswalk only; rank must be rechecked against original list and eligibility chain.",
+          "type": "repository-derived",
+          "inspection": "retained-record",
+          "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official dates and identities; sourced or explicitly inferred reason",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          1057
+        ],
+        "enteringPersonIds": [
+          30672
+        ],
+        "namesHe": {
+          "1057": "ישראל אייכלר",
+          "30672": "יצחק פינדרוס"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "sourced",
+        "listIds": [
+          "25-ג"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1101,
+            "leavingPersonIds": [
+              1057
+            ],
+            "enteringPersonIds": [
+              30672
+            ]
+          }
+        ],
+        "pairingBasis": "Source-named successor",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/40"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/50"
+          }
+        ],
+        "namesEn": {
+          "1057": "Israel Eichler",
+          "30672": "Yitzhak Ze'ev Pindrus"
+        },
+        "listIdBasis": "Retained candidate/list identity crosswalk, not proof of the next eligible candidate.",
+        "reasonNote": "A deputy minister’s Norwegian replacement changes who can vote on the conscription dispute while his party remains formally outside the coalition."
+      },
+      "importance": "standard",
+      "importanceReason": "A deputy minister’s Norwegian replacement changes who can vote on the conscription dispute while his party remains formally outside the coalition.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        1057,
+        30672
+      ]
     },
     {
       "id": "k25-budget2026",
@@ -1975,7 +4657,10 @@
         "specific-vote"
       ],
       "evidenceClass": "Recorded vote (press report; roll call outstanding)",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A budget or designated confidence decision is a significant parliamentary survival test, but does not by itself change continuing coalition membership."
     },
     {
       "id": "k25-dissolution-final",
@@ -2011,6 +4696,28 @@
           "inspection": "opened",
           "locator": "Opening: parliament disperses Friday ahead of 27 October election",
           "supportingNote": "Opening: parliament disperses Friday ahead of 27 October election"
+        },
+        {
+          "url": "https://m.knesset.gov.il/News/PressReleases/Documents/141026.pdf",
+          "publisher": "Knesset Research and Information Center",
+          "date": "2026-10-12",
+          "accessed": "2026-11-11",
+          "type": "official",
+          "evidenceFamily": "Knesset Research and Information Center",
+          "inspection": "opened",
+          "locator": "PDF page 1 states K25 completes its regular term, in contrast with prior early dissolutions; PDF itself is dated 12 October, irrespective of filename.",
+          "supportingNote": "PDF page 1 states K25 completes its regular term, in contrast with prior early dissolutions; PDF itself is dated 12 October, irrespective of filename."
+        },
+        {
+          "url": "https://www.timesofisrael.com/knesset-votes-on-official-dispersal-of-parliament-wrapping-up-final-legislative-blitz/",
+          "publisher": "The Times of Israel",
+          "date": "2026-07-17",
+          "accessed": "2026-11-11",
+          "type": "press",
+          "evidenceFamily": "The Times of Israel",
+          "inspection": "opened",
+          "locator": "Opening reports a 62–0 motion attached to party financing and recess, with committees able to meet and plenum recall available; exact legal instrument outstanding.",
+          "supportingNote": "Opening reports a 62–0 motion attached to party financing and recess, with committees able to meet and plenum recall available; exact legal instrument outstanding."
         }
       ],
       "certainty": "probable",
@@ -2019,9 +4726,14 @@
         "against": 0,
         "crossVotes": null
       },
-      "legalInstrumentStatus": "Gazetted law/protocol not recovered; press terminology of dissolution/dispersal retained without asserting immediate end of term.",
+      "legalInstrumentStatus": "Do not treat the July motion as an established early-dissolution law; Knesset Research and Information Center says the 25th Knesset completes its regular term.",
       "evidenceClass": "Recorded vote (press report; roll call outstanding)",
-      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty."
+      "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
+      "marker": null,
+      "importance": "simple",
+      "importanceReason": "A genuine dissolution would be a Simple milestone, but official full-term evidence and the report’s recess description leave this legal interpretation unresolved.",
+      "timelineEligible": false,
+      "verificationStatus": "legal-meaning-unresolved"
     }
   ],
   "membershipEventRefs": [
@@ -2031,8 +4743,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/0"
       },
-      "reasonStatus": "unknown",
-      "certainty": "probable"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "probable",
+      "eventId": "k25-norwegian-2023-01-01-1106",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-01-03",
@@ -2040,8 +4759,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/1"
       },
-      "reasonStatus": "unknown",
-      "certainty": "probable"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "probable",
+      "eventId": "k25-norwegian-2023-01-03-1095",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-01-06",
@@ -2049,8 +4775,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/2"
       },
-      "reasonStatus": "unknown",
-      "certainty": "probable"
+      "reasonStatus": "sourced",
+      "certainty": "probable",
+      "eventId": "k25-norwegian-2023-01-06-1101",
+      "reason": "norwegian-law",
+      "importance": "standard",
+      "importanceReason": "A party leader gives up a Knesset vote under the Norwegian law while remaining a minister.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-01-06",
@@ -2058,8 +4791,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/3"
       },
-      "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "provisional",
+      "eventId": "k25-norwegian-2023-01-06-1096",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-01-06",
@@ -2067,8 +4807,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/4"
       },
-      "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "provisional",
+      "eventId": "k25-norwegian-2023-01-06-1096",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-01-07",
@@ -2076,8 +4823,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/5"
       },
-      "reasonStatus": "unknown",
-      "certainty": "probable"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "probable",
+      "eventId": "k25-norwegian-2023-01-07-1096",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-01-17",
@@ -2085,8 +4839,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/6"
       },
-      "reasonStatus": "unknown",
-      "certainty": "probable"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "probable",
+      "eventId": "k25-norwegian-2023-01-17-1096",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-01-25",
@@ -2094,8 +4855,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/7"
       },
-      "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "provisional",
+      "eventId": "k25-norwegian-2023-01-25-1101",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-01-25",
@@ -2103,8 +4871,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/8"
       },
-      "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "provisional",
+      "eventId": "k25-norwegian-2023-01-25-1101",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-02-01",
@@ -2112,8 +4887,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/9"
       },
-      "reasonStatus": "unknown",
-      "certainty": "probable"
+      "reasonStatus": "sourced",
+      "certainty": "probable",
+      "eventId": "k25-razvozov-tal-miron",
+      "reason": "ordinary-resignation",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-02-02",
@@ -2121,8 +4903,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/10"
       },
-      "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "provisional",
+      "eventId": "k25-norwegian-2023-02-02-1095",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-02-02",
@@ -2130,8 +4919,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/11"
       },
-      "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "provisional",
+      "eventId": "k25-norwegian-2023-02-02-1095",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-02-07",
@@ -2139,8 +4935,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/12"
       },
-      "reasonStatus": "unknown",
-      "certainty": "probable"
+      "reasonStatus": "sourced",
+      "certainty": "probable",
+      "eventId": "k25-norwegian-2023-02-07-1105",
+      "reason": "norwegian-law",
+      "importance": "standard",
+      "importanceReason": "A party leader gives up a Knesset vote under the Norwegian law while remaining a minister.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-02-10",
@@ -2148,8 +4951,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/13"
       },
-      "reasonStatus": "unknown",
-      "certainty": "probable"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "probable",
+      "eventId": "k25-norwegian-2023-02-10-1096",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-02-15",
@@ -2157,8 +4967,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/14"
       },
-      "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "provisional",
+      "eventId": "k25-norwegian-2023-02-15-1096",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-02-15",
@@ -2166,8 +4983,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/15"
       },
-      "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "provisional",
+      "eventId": "k25-norwegian-2023-02-15-1096",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-03-12",
@@ -2175,8 +4999,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/16"
       },
-      "reasonStatus": "unknown",
-      "certainty": "probable"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "probable",
+      "eventId": "k25-norwegian-2023-03-12-1096",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-03-26",
@@ -2184,8 +5015,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/17"
       },
-      "reasonStatus": "unknown",
-      "certainty": "probable"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "probable",
+      "eventId": "k25-norwegian-2023-03-26-1096",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-03-31",
@@ -2193,8 +5031,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/18"
       },
-      "reasonStatus": "unknown",
-      "certainty": "probable"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "probable",
+      "eventId": "k25-norwegian-2023-03-31-1096",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-08-01",
@@ -2203,7 +5048,12 @@
         "pointer": "/replacements/19"
       },
       "reasonStatus": "unknown",
-      "certainty": "probable"
+      "certainty": "probable",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-10-14",
@@ -2211,8 +5061,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/20"
       },
-      "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "reasonStatus": "sourced",
+      "certainty": "provisional",
+      "eventId": "k25-distal-boaron",
+      "reason": "norwegian-return",
+      "importance": "expert",
+      "importanceReason": "A minister’s Norwegian-law return changes the seat holder, while continuing government support is not shown to change.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2024-06-30",
@@ -2221,7 +5078,12 @@
         "pointer": "/replacements/21"
       },
       "reasonStatus": "unknown",
-      "certainty": "probable"
+      "certainty": "probable",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2024-07-05",
@@ -2230,7 +5092,12 @@
         "pointer": "/replacements/22"
       },
       "reasonStatus": "unknown",
-      "certainty": "probable"
+      "certainty": "probable",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-01-05",
@@ -2238,8 +5105,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/23"
       },
-      "reasonStatus": "unknown",
-      "certainty": "probable"
+      "reasonStatus": "sourced",
+      "certainty": "probable",
+      "eventId": "k25-gallant-abed",
+      "reason": "ordinary-resignation",
+      "importance": "standard",
+      "importanceReason": "The former defence minister leaves the chamber after a major policy dispute; his successor is a notable parliamentary change.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-01-21",
@@ -2247,8 +5121,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/24"
       },
-      "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "reasonStatus": "sourced",
+      "certainty": "provisional",
+      "eventId": "k25-eliyahu-sukkot",
+      "reason": "norwegian-return",
+      "importance": "standard",
+      "importanceReason": "A minister’s Norwegian-law return following his party’s government exit removes an MK from another constituent party on their shared election list.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-04-06",
@@ -2257,7 +5138,12 @@
         "pointer": "/replacements/25"
       },
       "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "certainty": "provisional",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-06-15",
@@ -2265,8 +5151,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/26"
       },
-      "reasonStatus": "unknown",
-      "certainty": "probable"
+      "reasonStatus": "sourced-effective-date-from-membership",
+      "certainty": "probable",
+      "eventId": "k25-goldknopf-return",
+      "reason": "norwegian-return",
+      "importance": "standard",
+      "importanceReason": "A party leader’s ministerial resignation brings him back to the chamber under the Norwegian law.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-06-20",
@@ -2275,7 +5168,12 @@
         "pointer": "/replacements/27"
       },
       "reasonStatus": "unknown",
-      "certainty": "probable"
+      "certainty": "probable",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-07-02",
@@ -2284,7 +5182,12 @@
         "pointer": "/replacements/28"
       },
       "reasonStatus": "unknown",
-      "certainty": "probable"
+      "certainty": "probable",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-07-04",
@@ -2293,7 +5196,12 @@
         "pointer": "/replacements/29"
       },
       "reasonStatus": "unknown",
-      "certainty": "probable"
+      "certainty": "probable",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-07-08",
@@ -2302,7 +5210,12 @@
         "pointer": "/replacements/30"
       },
       "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "certainty": "provisional",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-07-10",
@@ -2310,8 +5223,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/31"
       },
-      "reasonStatus": "unknown",
-      "certainty": "probable"
+      "reasonStatus": "sourced",
+      "certainty": "probable",
+      "eventId": "k25-saar-hasson",
+      "reason": "norwegian-law",
+      "importance": "standard",
+      "importanceReason": "A party leader and foreign minister leaves parliamentary voting under the Norwegian law; the list successor does not imply a new party defection.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-07-16",
@@ -2320,7 +5240,12 @@
         "pointer": "/replacements/32"
       },
       "reasonStatus": "unknown",
-      "certainty": "probable"
+      "certainty": "probable",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-07-17",
@@ -2329,7 +5254,12 @@
         "pointer": "/replacements/33"
       },
       "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "certainty": "provisional",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-07-17",
@@ -2338,7 +5268,12 @@
         "pointer": "/replacements/34"
       },
       "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "certainty": "provisional",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-07-20",
@@ -2347,7 +5282,12 @@
         "pointer": "/replacements/35"
       },
       "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "certainty": "provisional",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-07-20",
@@ -2356,7 +5296,12 @@
         "pointer": "/replacements/36"
       },
       "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "certainty": "provisional",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-07-20",
@@ -2365,7 +5310,12 @@
         "pointer": "/replacements/37"
       },
       "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "certainty": "provisional",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-07-20",
@@ -2374,7 +5324,12 @@
         "pointer": "/replacements/38"
       },
       "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "certainty": "provisional",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-08-13",
@@ -2383,7 +5338,12 @@
         "pointer": "/replacements/39"
       },
       "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "certainty": "provisional",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2026-01-21",
@@ -2391,7 +5351,7 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/40"
       },
-      "reasonStatus": "unknown",
+      "reasonStatus": "sourced",
       "certainty": "provisional",
       "additionalSources": [
         {
@@ -2405,7 +5365,14 @@
           "locator": "Opening: Pindrus actually returns after Eichler’s Norwegian-law resignation",
           "supportingNote": "Opening: Pindrus actually returns after Eichler’s Norwegian-law resignation"
         }
-      ]
+      ],
+      "eventId": "k25-eichler-pindrus",
+      "reason": "norwegian-law",
+      "importance": "standard",
+      "importanceReason": "A deputy minister’s Norwegian replacement changes who can vote on the conscription dispute while his party remains formally outside the coalition.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2026-05-19",
@@ -2414,7 +5381,12 @@
         "pointer": "/replacements/41"
       },
       "reasonStatus": "unknown",
-      "certainty": "probable"
+      "certainty": "probable",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2026-06-07",
@@ -2423,7 +5395,12 @@
         "pointer": "/replacements/42"
       },
       "reasonStatus": "unknown",
-      "certainty": "probable"
+      "certainty": "probable",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2026-07-28",
@@ -2432,7 +5409,12 @@
         "pointer": "/replacements/43"
       },
       "reasonStatus": "unknown",
-      "certainty": "probable"
+      "certainty": "probable",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2026-08-11",
@@ -2441,7 +5423,12 @@
         "pointer": "/replacements/44"
       },
       "reasonStatus": "unknown",
-      "certainty": "probable"
+      "certainty": "probable",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2026-08-13",
@@ -2450,7 +5437,12 @@
         "pointer": "/replacements/45"
       },
       "reasonStatus": "unknown",
-      "certainty": "probable"
+      "certainty": "probable",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2026-09-09",
@@ -2459,7 +5451,12 @@
         "pointer": "/replacements/46"
       },
       "reasonStatus": "unknown",
-      "certainty": "probable"
+      "certainty": "probable",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-01-06",
@@ -2467,8 +5464,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/47"
       },
-      "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "provisional",
+      "eventId": "k25-norwegian-2023-01-06-1096",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-01-25",
@@ -2476,8 +5480,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/48"
       },
-      "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "provisional",
+      "eventId": "k25-norwegian-2023-01-25-1101",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-02-02",
@@ -2485,8 +5496,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/49"
       },
-      "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "provisional",
+      "eventId": "k25-norwegian-2023-02-02-1095",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2026-01-21",
@@ -2494,7 +5512,7 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/50"
       },
-      "reasonStatus": "unknown",
+      "reasonStatus": "sourced",
       "certainty": "provisional",
       "additionalSources": [
         {
@@ -2508,7 +5526,14 @@
           "locator": "Opening: Pindrus actually returns after Eichler’s Norwegian-law resignation",
           "supportingNote": "Opening: Pindrus actually returns after Eichler’s Norwegian-law resignation"
         }
-      ]
+      ],
+      "eventId": "k25-eichler-pindrus",
+      "reason": "norwegian-law",
+      "importance": "standard",
+      "importanceReason": "A deputy minister’s Norwegian replacement changes who can vote on the conscription dispute while his party remains formally outside the coalition.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-01-25",
@@ -2516,8 +5541,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/51"
       },
-      "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "provisional",
+      "eventId": "k25-norwegian-2023-01-25-1101",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-02-15",
@@ -2525,8 +5557,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/52"
       },
-      "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "provisional",
+      "eventId": "k25-norwegian-2023-02-15-1096",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-01-06",
@@ -2534,8 +5573,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/53"
       },
-      "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "provisional",
+      "eventId": "k25-norwegian-2023-01-06-1096",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-02-15",
@@ -2543,8 +5589,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/54"
       },
-      "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "provisional",
+      "eventId": "k25-norwegian-2023-02-15-1096",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-07-20",
@@ -2553,7 +5606,12 @@
         "pointer": "/replacements/55"
       },
       "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "certainty": "provisional",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-07-08",
@@ -2562,7 +5620,12 @@
         "pointer": "/replacements/56"
       },
       "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "certainty": "provisional",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-08-13",
@@ -2571,7 +5634,12 @@
         "pointer": "/replacements/57"
       },
       "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "certainty": "provisional",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-02-02",
@@ -2579,8 +5647,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/58"
       },
-      "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "reasonStatus": "inferred-cohort",
+      "certainty": "provisional",
+      "eventId": "k25-norwegian-2023-02-02-1095",
+      "reason": "norwegian-law",
+      "importance": "expert",
+      "importanceReason": "A routine replacement changes the seat holder without an established change of government support.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-04-06",
@@ -2589,7 +5664,12 @@
         "pointer": "/replacements/59"
       },
       "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "certainty": "provisional",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-07-17",
@@ -2598,7 +5678,12 @@
         "pointer": "/replacements/60"
       },
       "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "certainty": "provisional",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-07-17",
@@ -2607,7 +5692,12 @@
         "pointer": "/replacements/61"
       },
       "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "certainty": "provisional",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-07-20",
@@ -2616,7 +5706,12 @@
         "pointer": "/replacements/62"
       },
       "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "certainty": "provisional",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-07-20",
@@ -2625,7 +5720,12 @@
         "pointer": "/replacements/63"
       },
       "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "certainty": "provisional",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-01-21",
@@ -2633,8 +5733,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/64"
       },
-      "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "reasonStatus": "sourced",
+      "certainty": "provisional",
+      "eventId": "k25-eliyahu-sukkot",
+      "reason": "norwegian-return",
+      "importance": "standard",
+      "importanceReason": "A minister’s Norwegian-law return following his party’s government exit removes an MK from another constituent party on their shared election list.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2023-10-14",
@@ -2642,8 +5749,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/65"
       },
-      "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "reasonStatus": "sourced",
+      "certainty": "provisional",
+      "eventId": "k25-distal-boaron",
+      "reason": "norwegian-return",
+      "importance": "expert",
+      "importanceReason": "A minister’s Norwegian-law return changes the seat holder, while continuing government support is not shown to change.",
+      "marker": "replacement",
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     },
     {
       "date": "2025-07-20",
@@ -2652,7 +5766,12 @@
         "pointer": "/replacements/66"
       },
       "reasonStatus": "unknown",
-      "certainty": "provisional"
+      "certainty": "provisional",
+      "importance": "expert",
+      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
+      "marker": null,
+      "timelineEligible": false,
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
     }
   ],
   "gaps": [
@@ -2670,7 +5789,9 @@
     "No exhaustive proof of no further party exits/returns after July 2025; Eichler arrangement shows why ordinary vote support cannot prove a whole-party return.",
     "Maoz completed reinstatement authenticated in 28 May 2023 press report. Arbel second resignation authenticated in 20 July 2025 report; statutory effective dates still need primary notices.",
     "IDI winter-session review establishes nine no-confidence motions in winter 2023–24 and 26 in summer 2023. These totals demonstrate that this dataset is incomplete; do not treat the collected subset as the complete vote universe.",
-    "Revised 2023 budget: Reshet 13 gives 58–45, alongside 59–44 and 59–45 reports. Both for and against totals remain unresolved."
+    "Revised 2023 budget: Reshet 13 gives 58–45, alongside 59–44 and 59–45 reports. Both for and against totals remain unresolved.",
+    "RB-IMP challenge: the 12 October 2026 Knesset election brief says the term completes its regular duration, whereas July press uses dissolution/dispersal terminology for a financing-linked recess motion; retain the record but exclude it pending the legal instrument.",
+    "RB-IMP: all retained events have editorial grades; unrecorded historical events are not proved absent, and null markers mean evidence does not establish the requested marker."
   ],
   "initialCabinetRef": {
     "path": "data/meta/government-support-evidence.json",
@@ -2682,7 +5803,14 @@
     "sourceAccess": "Managed web search/open, plus retained official repository records. No access-control circumvention. Tool-controlled web User-Agent is not exposed; direct HTTP retrieval must use the project User-Agent.",
     "sourceAccounting": "Distinct canonical URLs and publisher families can be counted from events[].sources. No claim of independent corroboration from repeated reports by one publisher.",
     "membershipReferences": "All existing replacement rows indexed by JSON Pointer; no duplicated replacement pairings or invented reasons. Reference rows are excluded from classification totals.",
-    "resumeNote": "Post-restart pass preserved original commit; added completed office/accord milestones and vote evidence. Official indexed session leads remain outside counted events."
+    "resumeNote": "Post-restart pass preserved original commit; added completed office/accord milestones and vote evidence. Official indexed session leads remain outside counted events.",
+    "legacyClassification": "The inherited counts/does-not-count/hard-case field addresses the earlier continuing-support test; expert protest events may remain visible despite does-not-count. Use importance, marker scope and verification status separately.",
+    "importance": "Lowest display level; cumulative simple < standard < expert. Editorial judgement, separate from factual certainty.",
+    "marker": "D2 = individual left governing side; D3 = named continuing-coalition dissent on a specific vote; D4 = sourced party/individual move between government and opposition; replacement = sourced seat-holder change; null = no supported marker.",
+    "markerScope": "markerPersonIds restricts a marker on mixed events; factionIds are not an inferred roll call. No ideological left/right direction inferred.",
+    "timelineEligibility": "timelineEligible=false marks duplicate evidence, routine unsuccessful motions or unconfirmed leads; importance does not override verification. Coalesce related official-decision and membership evidence.",
+    "replacement": "Same-date list-level sets avoid arbitrary simultaneous pairings; candidatePositionHints are not a proved succession chain. Inferred reasons are labelled inferred-cohort.",
+    "gradingCoverage": "All inherited events graded; additions and remaining research gaps are described separately in REPORT.md."
   },
   "unconfirmedCandidates": [
     {
@@ -2702,7 +5830,11 @@
           "supportingNote": "Official final-approval announcement indexed; opening blocked"
         }
       ],
-      "certainty": "provisional"
+      "certainty": "provisional",
+      "importance": "standard",
+      "importanceReason": "This is a research lead only; the proposed importance does not verify its date, tally or individual votes.",
+      "marker": null,
+      "timelineEligible": false
     },
     {
       "date": "2026-05-20",
@@ -2721,7 +5853,11 @@
           "supportingNote": "Indexed report: coalition dissolution bill passes 110–0; opened page had no readable body"
         }
       ],
-      "certainty": "provisional"
+      "certainty": "provisional",
+      "importance": "standard",
+      "importanceReason": "This is a research lead only; the proposed importance does not verify its date, tally or individual votes.",
+      "marker": null,
+      "timelineEligible": false
     },
     {
       "date": "2023-01-16",
@@ -2741,7 +5877,11 @@
         }
       ],
       "certainty": "provisional",
-      "dateBasis": "Announcement date; verify sitting date against protocol before creating one record per vote."
+      "dateBasis": "Announcement date; verify sitting date against protocol before creating one record per vote.",
+      "importance": "expert",
+      "importanceReason": "This is a research lead only; the proposed importance does not verify its date, tally or individual votes.",
+      "marker": null,
+      "timelineEligible": false
     },
     {
       "date": "2024-01-29",
@@ -2761,7 +5901,11 @@
         }
       ],
       "certainty": "provisional",
-      "dateBasis": "Announcement date; verify sitting date against protocol before creating one record per vote."
+      "dateBasis": "Announcement date; verify sitting date against protocol before creating one record per vote.",
+      "importance": "expert",
+      "importanceReason": "This is a research lead only; the proposed importance does not verify its date, tally or individual votes.",
+      "marker": null,
+      "timelineEligible": false
     },
     {
       "date": "2024-07-01",
@@ -2781,7 +5925,11 @@
         }
       ],
       "certainty": "provisional",
-      "dateBasis": "Announcement date; verify sitting date against protocol before creating one record per vote."
+      "dateBasis": "Announcement date; verify sitting date against protocol before creating one record per vote.",
+      "importance": "expert",
+      "importanceReason": "This is a research lead only; the proposed importance does not verify its date, tally or individual votes.",
+      "marker": null,
+      "timelineEligible": false
     },
     {
       "date": "2024-11-04",
@@ -2801,7 +5949,11 @@
         }
       ],
       "certainty": "provisional",
-      "dateBasis": "Announcement date; verify sitting date against protocol before creating one record per vote."
+      "dateBasis": "Announcement date; verify sitting date against protocol before creating one record per vote.",
+      "importance": "expert",
+      "importanceReason": "This is a research lead only; the proposed importance does not verify its date, tally or individual votes.",
+      "marker": null,
+      "timelineEligible": false
     },
     {
       "date": "2025-07-14",
@@ -2821,7 +5973,11 @@
         }
       ],
       "certainty": "provisional",
-      "dateBasis": "Announcement date; verify sitting date against protocol before creating one record per vote."
+      "dateBasis": "Announcement date; verify sitting date against protocol before creating one record per vote.",
+      "importance": "expert",
+      "importanceReason": "This is a research lead only; the proposed importance does not verify its date, tally or individual votes.",
+      "marker": null,
+      "timelineEligible": false
     },
     {
       "date": "2026-01-12",
@@ -2841,7 +5997,16 @@
         }
       ],
       "certainty": "provisional",
-      "dateBasis": "Announcement date; verify sitting date against protocol before creating one record per vote."
+      "dateBasis": "Announcement date; verify sitting date against protocol before creating one record per vote.",
+      "importance": "expert",
+      "importanceReason": "This is a research lead only; the proposed importance does not verify its date, tally or individual votes.",
+      "marker": null,
+      "timelineEligible": false
     }
-  ]
+  ],
+  "gradingCoverage": {
+    "existingEventsGraded": 48,
+    "newEvents": 23,
+    "historicalCompleteness": "partial; not an exhaustive census of qualifying votes, support changes or replacements"
+  }
 }
