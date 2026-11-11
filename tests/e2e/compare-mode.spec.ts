@@ -88,3 +88,31 @@ test('a saved scenario of another election can be the reference', async ({ page 
   await choose(picker(page), 'saved:sv22');
   await expect(picker(page)).toContainText('My 2022');
 });
+
+const row = (page: Page, name: string) => page.locator('.lb li').filter({ has: page.getByRole('button', { name, exact: true }) });
+test('the Lists panel shows each list in 2022: a striped bar and a line; new and gone lists say so', async ({ page }) => {
+  await start(page);
+  await expect(page.locator('.cmpm-refbar')).toHaveCount(0);
+  await turnOn(page);
+  await expect(page.locator('.cmpm-legend')).toContainText('2026');
+  await expect(row(page, 'Likud')).toContainText(/2022: 32 ▼ [−-]5 · Likud/);
+  await expect(row(page, 'Likud').locator('.cmpm-refbar')).toHaveCount(1);
+  await expect(row(page, 'Together (Bennett)')).toContainText('Yesh Atid (joined)');
+  await expect(row(page, 'Yashar!')).toContainText('2022: no list of its own (new)');
+  await expect(row(page, 'Yashar!').locator('.cmpm-refbar')).toHaveCount(0);
+  const only = page.locator('.cmpm-only');
+  await expect(only.locator('summary')).toContainText('In 2022 only');
+  await only.locator('summary').click();
+  await expect(only).toContainText('The Jewish Home');
+  // stopping takes the comparison away again
+  await strip(page).getByRole('button', { name: 'Stop comparing' }).click();
+  await expect(page.locator('.cmpm-line')).toHaveCount(0);
+});
+
+test('Settings can turn the striped bars off; the line stays', async ({ page }) => {
+  await start(page, 'en', 'simple', 1500, { compareBars: false });
+  await turnOn(page);
+  await expect(row(page, 'Likud')).toContainText(/2022: 32 ▼ [−-]5/);
+  await expect(page.locator('.cmpm-refbar')).toHaveCount(0);
+  await expect(page.locator('.cmpm-legend')).toHaveCount(0);
+});

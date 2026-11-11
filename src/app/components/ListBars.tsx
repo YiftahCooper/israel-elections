@@ -10,6 +10,9 @@ import { referenceLabel } from '../derive.ts';
 import { allocationOf } from '../derive.ts';
 import { PartEdits } from './PartEdits.tsx';
 import { LazyRowComparison } from './PartyHistoryLazy.tsx';
+import { useRefRows } from '../compare/useRefRows.ts';
+import { RefLegend, RefLine, RefOnly, refLineText } from '../compare/RefLine.tsx';
+import { yearOf } from '../compare/mode.ts';
 // The lists as a visual column: each list is a row with its logo, name and a seat bar (its official seats shown
 // as a faint outline when they differ). Lists that won no seat show how far they are from the threshold instead.
 // Choosing a row opens the list in the side panel.
@@ -38,6 +41,10 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   const voteCounts = useSetting('voteCounts'), seatlessLists = useSetting('seatlessLists'), withdrawnLists = useSetting('withdrawnLists');
   const listOrder = useSetting('listOrder'), dimOthers = useSetting('dimUnselected');
   const jointListParties = useSetting('jointListParties');
+  // while comparing (compare/mode.ts): every list's line in the reference, and its striped bar unless Settings turns it off
+  const cmp = useRefRows(s);
+  const refBars = useSetting('compareBars') && !!cmp;
+  const elections = useStore((st) => st.elections);
   const committed = useStore(st => st.scenario);
   const previewing = useStore(st => st.preview) === s;
   const markerScenario = previewing && committed ? committed : s;
@@ -93,7 +100,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   };
   const splitIds = new Set(s.factionSplits ?? []);
   // one scale for every bar: the largest list now or in the official result
-  const scale = Math.max(1, ...rows.map((x) => Math.max(x.lr.seats, x.was ?? 0)));
+  const scale = Math.max(1, ...rows.map((x) => Math.max(x.lr.seats, x.was ?? 0)), refBars ? cmp!.rows.maxSeats : 0);
 
   const viewedFamily = useStore(st=>st.familyView);
   const familyDefinition = viewedFamily ?? s.familyDefinition;
@@ -105,6 +112,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
     const agr = standard ? s.agreements.find((a) => a.members.includes(l.id) && a.enabled) : undefined;
     const partner = agr ? s.lists.find((x) => x.id === agr.members.find((m) => m !== l.id)) : undefined;
     const out = !lr.qualified;
+    const line = cmp?.rows.byList.get(l.id);
     return (
       <li key={l.id} data-family={family}>
         <button type="button" data-family={familyRows.find(x => x.id === l.id)?.family} ref={open ? selRef : undefined} className={`lb-row ${out ? 'out' : ''} ${dimOthers && selected && !open ? 'dim' : ''}`} aria-pressed={open}
@@ -124,15 +132,16 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
               <span className="was" style={{width:`${(was ?? 0)/scale*100}%`}} />
               <span className="delta-segment" style={{insetInlineStart:0,width:`${(was ?? 0)/scale*100}%`}} />
             </span>}
+            {refBars && line?.bar && <span className="lb-bar cmpm-refbar" aria-hidden title={`${cmp!.label}: ${line.seats}`}><i style={{ width: `${(line.seats / scale) * 100}%` }} /></span>}
             <span className="lb-sub">
               <span>{voteCounts && <>{fmtInt(l.votes)} · </>}{percent(l.votes, total, digits, s.rules.thresholdPct)}
               {out && thr > 0 && !l.withdrawn && <> · {(lang === 'he' ? <>{percent(l.votes, thr, 0)}{" מאחוז החסימה"}</> : <>{percent(l.votes, thr, 0)}{" of the threshold"}</>)}</>}
               {l.withdrawn && <> · {L('withdrew', 'פרשה')}</>}</span>
               {partner && <span className="lb-agr"><span aria-hidden>⇄ </span>{listLabel(partner, lang)}</span>}
-              {lastTime && lr.seats > 0 && <LazyRowComparison s={s} r={r} listId={l.id} currentName={listLabel(l, lang)} />}
+              {cmp ? line && <RefLine line={line} label={cmp.label} r={r} /> : lastTime && lr.seats > 0 && <LazyRowComparison s={s} r={r} listId={l.id} currentName={listLabel(l, lang)} />}
             </span>
           </span>
-          <span className="sr-only" id={`lbd-${l.id}`}>{L(`${lr.seats} seats`, `${lr.seats} מנדטים`)}, {fmtPct(l.votes, total, digits, s.rules.thresholdPct)}{familyDefinition && family && family!=='other' && <> · {familyLabel(familyDefinition,lang)}{family==='mixed'?` · ${L('Mixed lists','רשימות מעורבות')}`:''}</>}{d !== 0 && <>, {Math.abs(d)}{d > 0 ? baseLabel.more : baseLabel.fewer}</>}{l.withdrawn && <>, {L('withdrew', 'פרשה')}</>}{partner && <>, {L(`surplus-vote agreement with ${listLabel(partner, lang)}`, `הסכם עודפים עם ${listLabel(partner, lang)}`)}</>}{lastTime && lr.seats > 0 && <LazyRowComparison sr s={s} r={r} listId={l.id} currentName={listLabel(l, lang)} />}</span>
+          <span className="sr-only" id={`lbd-${l.id}`}>{L(`${lr.seats} seats`, `${lr.seats} מנדטים`)}, {fmtPct(l.votes, total, digits, s.rules.thresholdPct)}{familyDefinition && family && family!=='other' && <> · {familyLabel(familyDefinition,lang)}{family==='mixed'?` · ${L('Mixed lists','רשימות מעורבות')}`:''}</>}{d !== 0 && <>, {Math.abs(d)}{d > 0 ? baseLabel.more : baseLabel.fewer}</>}{l.withdrawn && <>, {L('withdrew', 'פרשה')}</>}{partner && <>, {L(`surplus-vote agreement with ${listLabel(partner, lang)}`, `הסכם עודפים עם ${listLabel(partner, lang)}`)}</>}{cmp ? line && refLineText(line, cmp.label, r, lang) : lastTime && lr.seats > 0 && <LazyRowComparison sr s={s} r={r} listId={l.id} currentName={listLabel(l, lang)} />}</span>
           <span className="lb-seats">
             <b key={`s${lr.seats}`} className={previousSeats.current.election === s.electionId && previousSeats.current.seats.has(l.id) && previousSeats.current.seats.get(l.id) !== lr.seats ? 'tick' : ''}>{lr.seats}</b>
             {d !== 0 && <small dir="ltr"><SeatDelta value={d} /></small>}
@@ -166,6 +175,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
         {/* the partner mark is explained once, not on every row */}
         {anyAgreement && <span className="tiny muted lb-key" aria-hidden>⇄ {L('surplus-vote partner', 'שותפה להסכם עודפים')}</span>}
         <span className="spacer" /><span className="small muted">{L('seats', 'מנדטים')}</span></header>
+      {refBars && <RefLegend work={cmp!.ref.same ? L('Your work', 'העבודה שלכם') : yearOf(elections, s.electionId, lang)} label={cmp!.label} />}
       {groups.map(g => <p key={g.key} className="lb-group-comparison small ink2">{L(`Ran separately: together ${g.seatsB}, ${baseLabel.at} ${g.seatsA} as `, `רצו בנפרד: יחד ${g.seatsB}, ${baseLabel.at} ${g.seatsA} בתור `)}{g.aIds.map(id => listLabel(base.lists.find(l => l.id === id)!, lang)).join(' + ')}</p>)}
       <ol className="lb">
         {inKnesset.map(row)}
@@ -177,6 +187,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
         )}
         {visibleOut.map(row)}
       </ol>
+      {cmp && <RefOnly rows={cmp.rows} label={cmp.label} />}
     </section>
   );
 }
