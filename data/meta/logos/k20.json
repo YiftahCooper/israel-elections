@@ -350,6 +350,42 @@
         "campaignIdentity": "explicit-election",
         "campaignEvidence": "Cover explicitly prints 2015 and מצע מרצ. The lower campaign wordmark שמאל זה מרצ is cropped intact; textured paper and original colours are preserved."
       }
+    },
+    {
+      "letters": "ל",
+      "file": "logos/beiteinu-2015-k20-lg2.png",
+      "sourceUrl": "http://www.beytenu.org.il/",
+      "assetSourceUrl": "https://web.archive.org/web/20150227081840id_/http://www.beytenu.org.il/wp-content/themes/beitenu/images/logo.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "beiteinu — official campaign website logo; proportionally resized only.",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "lg2-beiteinu-k20-20150315021149",
+      "inUseDate": "2015-03-15",
+      "archiveUrl": "https://web.archive.org/web/20150315021149id_/http://www.beytenu.org.il/",
+      "archiveTimestamp": "20150315021149",
+      "inUseEvidence": "Inspected official campaign page references this exact original asset. Both page and image payloads match their independently retained CDX SHA-1 digests. ",
+      "retrievedAt": "2026-11-12",
+      "sha256": "83422fec10d835a2fff52f226f418e0db60ec2f0f2cf8e7a7359aa946e02c529",
+      "originalSha256": "648d37dc281592c9dde6957fbf8b082457f12bb51e91928d0061990f90e5daa5",
+      "bytes": 20399,
+      "rawEvidence": {
+        "page": "lg2-beiteinu-k20-20150315021149-page",
+        "asset": "lg2-beiteinu-k20-20150315021149-asset"
+      },
+      "assetArchiveTimestamp": "20150227081840",
+      "assetArchiveUrl": "https://web.archive.org/web/20150227081840id_/http://www.beytenu.org.il/wp-content/themes/beitenu/images/logo.png",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "OTNUT4O2FP3SFQXKSHS3QMDORIG6WA3G",
+        "computedDigest": "OTNUT4O2FP3SFQXKSHS3QMDORIG6WA3G",
+        "assetCaptureTimestamp": "20150227081840",
+        "cdxCaptureTimestamp": "20150227081840",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=http%3A%2F%2Fwww.beytenu.org.il%2Fwp-content%2Fthemes%2Fbeitenu%2Fimages%2Flogo.png&from=1995&to=20150315&output=json&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "lg2-beiteinu-k20-20150315021149-index"
+      }
     }
   ]
 }

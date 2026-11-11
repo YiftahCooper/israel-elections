@@ -260,7 +260,8 @@ const EXPECTED: Record<Family, string> = {
   // Substituting HEAD's k26 reproduces 26acbc3b… exactly; the other four digests are unchanged.
   // 12 Nov logos: all 26 datasets match HEAD outside logo/builtAt; only this digest changes.
   // Wider print-logo collection: all 26 datasets match the preceding commit outside logo/builtAt.
-  model: '4346f916415438549b0b7d370d882e465f780336fc2ca316420469e2a79824f9',
+  // Further archive-confirmed k20/k21 marks change logos only; other four digests stay fixed.
+  model: '9a302962b3fb35039aec27af9ae95ecea36f77066218e81fbe721a2aed33e96f',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

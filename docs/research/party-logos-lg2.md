@@ -1,5 +1,10 @@
 # Party logos: wider collection, 12 November 2026
 
+Winning-list coverage rises from **77 to 87 of 308**, winning-list constituent
+coverage from **42 to 43 of 247**. Other-list coverage stays **15 of 400**.
+The remaining 221 winning-list gaps are unresolved research, not evidence that
+those lists had no emblem. No election totals or app behaviour changed.
+
 Only artwork tied to the particular election is assigned. An unsuccessful retrieval
 does not establish that a party had no logo. Lists and their constituent parties
 are separate identities under decision 0089.
@@ -53,3 +58,37 @@ The fresh CEC and NLI requests returned HTTP 403; requests to each host stopped.
 Catalogue-number leads and newspaper acquisition targets remain research leads,
 not proof that a particular uninspected scan contains a usable logo. No English
 Wikipedia source was used.
+
+## Further confirmed originals
+
+- **Blue and White, April 2019 (k21):** the original platform at
+  `bg19.co.il/wp-content/uploads/2019/03/blueandwhiteplatform.pdf` prints March
+  2019. Its complete Gantz/Lapid lockup is retained as an unaltered rectangular
+  crop. The PDF payload matches the CDX digest of capture **20190327091028**,
+  inside the April campaign. The full observed-use date is 27 March; it is not
+  presented as an invented publication day. Neither a year-only assumption nor
+  a September-campaign substitution is used. The exact original and its archive
+  index are committed, with raster coordinates and render parameters.
+- **Yisrael Beiteinu, 2015 (k20):** inspected official homepage capture
+  **20150315021149** references its original header PNG. Both HTML and original
+  PNG match their retained CDX digests. The whole list receives its own mark;
+  it is not borrowed from the joint Likud–Yisrael Beiteinu list in 2013.
+
+The collection checked 55 initial domain addresses, ten corrected historical
+addresses, and further targeted domains and paths. Address discovery is separate
+from establishing official ownership: a student union at `aguda.org.il`, care
+services at `telem.org.il`, a youth organisation at `derecheretz.org.il`, and
+repurposed domains are rejected. A website supplier logo and a Facebook button
+are also rejected even where their image bytes are correctly archived.
+
+Some archive payloads are gzip-compressed. Exact downloaded bytes are retained
+and hashed before lossless decompression for inspection. Empty titles in an
+undecoded compressed payload are not evidence of an empty page. Browser-check,
+security-check, login-only and default-server responses provide no campaign
+artwork evidence. No access challenge was bypassed.
+
+The dated 2022 National Unity mark shown on the Blue and White website does not
+identify the Israel Resilience constituent separately. Likewise, the 2026
+Religious Zionism mark does not fill the missing combined Religious
+Zionism–Zehut list mark. A 2019 Union of Right-Wing Parties design still served
+in 2021 is a stale campaign candidate, not a 2021 Yamina assignment.

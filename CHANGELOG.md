@@ -2,7 +2,7 @@
 
 ## 7 November 2026 — Settings
 
-- Logos (12 Nov, wider pass): add nine election-confirmed assignments from original party platforms, preserving dated originals and exact crops.
+- Logos (12 Nov, wider pass): add eleven election-confirmed assignments from original party platforms and archives, preserving dated originals, exact crops and byte checks.
 
 - Logos (12 Nov): add eight campaign-confirmed list/party assignments from official archived sites (2013, 2015, 2021 and 2022), with original-byte checks; keep a conflicting 2020 header unassigned.
 

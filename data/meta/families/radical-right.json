@@ -2303,7 +2303,7 @@
       "electionId": "k20",
       "electionDate": "2015-03-17",
       "datasetPath": "public/data/k20.json",
-      "datasetSha256": "1551be3d8866e89b860b71e5e5e380f9f3d880160a3315defbe2060688176353",
+      "datasetSha256": "b5b08d4418643d77166201a46794ac446a957ddce3e191b37080e9a40881f418",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2015-03-25",
@@ -2413,7 +2413,7 @@
       "electionId": "k21",
       "electionDate": "2019-04-09",
       "datasetPath": "public/data/k21.json",
-      "datasetSha256": "f9b4c5079852c4a4b55406154637896bb33ba1db9e2cbfea151937343a13fc21",
+      "datasetSha256": "aef9c5a4d0e26c51d5d50fafb83fac041191d0b16236b2046c1de6f3cc5a0631",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",

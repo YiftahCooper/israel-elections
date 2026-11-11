@@ -278,6 +278,47 @@
         "decoder": "scripts/research/extract-pdf-bitmap.mjs"
       },
       "retrieval": "Node 24.18.0, locked pdfjs-dist and @napi-rs/canvas: node scripts/research/extract-pdf-bitmap.mjs data/raw/logos/k21/hadash-taal-20190320.pdf 1 img_p0_8 .backup-scratch/hadash-taal-ad.png; Pillow 13.0.0 RGBA crop((63,593,324,660)), thumbnail((256,256), LANCZOS), optimized PNG."
+    },
+    {
+      "letters": "פה",
+      "file": "logos/blue-white-2019-k21-print.png",
+      "sourceUrl": "https://web.archive.org/web/20190327091028/https://bg19.co.il/wp-content/uploads/2019/03/blueandwhiteplatform.pdf",
+      "assetSourceUrl": "https://web.archive.org/web/20190327091028id_/https://bg19.co.il/wp-content/uploads/2019/03/blueandwhiteplatform.pdf",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "Blue and White — original March 2019 campaign platform; complete lockup crop and proportional resize only.",
+      "hosted": true,
+      "status": "verified",
+      "rights": "fair-use-identification",
+      "confidence": "high",
+      "evidenceId": "lg2-blue-white-k21-platform",
+      "inUseDate": "2019-03-27",
+      "inUseEvidence": "Original official-domain platform prints March 2019 and shows the complete Blue and White Gantz/Lapid lockup. PDF payload exactly matches its retained CDX SHA-1 at the 27 March 2019 capture, inside the April campaign and before either 2019 polling day. Capture date proves observed campaign use, not the publication day. Full platform and index preserved. No September-2019 inference, redrawing or recolouring.",
+      "publicationEvidence": {
+        "page": "lg2-blue-white-k21-platform-page",
+        "asset": "lg2-blue-white-k21-platform-asset",
+        "publicationDate": "2019-03-27",
+        "cropBox": [
+          365,
+          826,
+          718,
+          899
+        ],
+        "originalDimensions": [
+          774,
+          1095
+        ],
+        "pdfPage": 1,
+        "renderScale": 1.3,
+        "coordinateSpace": "PDF page 1 rendered at scale 1.3; crop coordinates refer to this raster.",
+        "dateMeaning": "Date original publication was observed in the archive, not an invented publication day; PDF prints March 2019.",
+        "cdxDigest": "52LI3FKUAIRGKZVTXN37PUREFSO6Q5J7",
+        "computedDigest": "52LI3FKUAIRGKZVTXN37PUREFSO6Q5J7",
+        "archiveTimestamp": "20190327091028"
+      },
+      "originalSha256": "bf1dbbbd6fa91147f8d0a8d1951a3e0e4af76880d49200e936680158be502221",
+      "sha256": "d9634ef891a43ae927c4430708c355449bb7002fe262b789bce1d82b385333ab",
+      "bytes": 23906,
+      "retrievedAt": "2026-11-12"
     }
   ]
 }
