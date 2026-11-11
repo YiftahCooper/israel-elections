@@ -370,35 +370,35 @@
       "confidence": "medium",
       "evidenceId": "lg2-print-meretz-k19",
       "inUseDate": "2013",
-      "inUseEvidence": "Cover explicitly says מצע מרצ בחירות 2013. Full lower campaign lockup includes the contemporary blue slogan and white party mark. Original publication and catalogue page retained. No cross-election inference, recolouring or redrawing.",
+      "inUseEvidence": "Cover explicitly says מצע מרצ בחירות 2013. Rectangular crop retains only the מרצ wordmark; the adjacent rival-directed slogan and the separately placed השמאל של ישראל tagline are omitted. The original wordmark bounding rectangle intersects a tiny blue edge of the adjacent box; those original background pixels are preserved, with no slogan letters retained and no cleaning or recolouring. Original publication and catalogue page retained. No cross-election inference or redrawing.",
       "publicationEvidence": {
         "page": "lg2-print-meretz-k19-page",
         "asset": "lg2-print-meretz-k19-asset",
         "publicationDate": "2013",
         "cropBox": [
-          103,
-          827,
-          659,
-          1015
+          974,
+          2605,
+          2008,
+          2995
         ],
         "originalDimensions": [
-          774,
-          1095
+          2382,
+          3368
         ],
         "pdfPage": 1,
-        "renderScale": 1.3,
-        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist; dimensions and crop coordinates are in this rendered raster."
+        "renderScale": 4,
+        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist at scale 4; dimensions and crop coordinates are in this rendered raster."
       },
       "originalSha256": "85d5bc6727ae1eeed908c0c2646c2429297ef67e664dd3aa23d9d26b58dfba6b",
-      "sha256": "b5231addc282022e4d3e81add1829365d48fcd0343f52ad31a3e31afea234534",
-      "bytes": 40147,
+      "sha256": "8d5e1ec88850545a2b9e16f51e91a97cd6c35c4b507598057c88e8b2411fb427",
+      "bytes": 38350,
       "retrievedAt": "2026-11-12",
       "dateBasis": "year-single-election",
       "dateEvidence": {
         "yearSource": "printed-year",
         "yearEvidence": "Original cover prints 2013.",
         "campaignIdentity": "explicit-election",
-        "campaignEvidence": "Cover explicitly says מצע מרצ בחירות 2013. Full lower campaign lockup includes the contemporary blue slogan and white party mark."
+        "campaignEvidence": "Cover explicitly says מצע מרצ בחירות 2013. Rectangular crop retains only the מרצ wordmark; the adjacent rival-directed slogan and the separately placed השמאל של ישראל tagline are omitted. The original wordmark bounding rectangle intersects a tiny blue edge of the adjacent box; those original background pixels are preserved, with no slogan letters retained and no cleaning or recolouring."
       }
     }
   ]

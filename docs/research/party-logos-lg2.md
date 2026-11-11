@@ -20,9 +20,9 @@ retain the complete PDFs, catalogue HTML, hashes and crop coordinates.
 | Election | Identity | Date evidence |
 |---|---|---|
 | 2022 (k25) | Yisrael Beiteinu | Platform explicitly names k25 and prints 14 August 2022. |
-| 2015 (k20) | Meretz | Cover prints 2015; complete lower campaign wordmark. |
+| 2015 (k20) | Meretz | Cover prints 2015; only the מרצ word is retained from the lower lockup. |
 | 2013 (k19) | Labor | Cover names k19; catalogue row is 2013. |
-| 2013 (k19) | Meretz | Cover prints “elections 2013”; complete lower campaign lockup. |
+| 2013 (k19) | Meretz | Cover prints “elections 2013”; wordmark only, without the slogan box or separate tagline. |
 | 2009 (k18) | Labor | Platform names k18; catalogue row is 2009. |
 | 2009 (k18) | New Movement–Meretz | Cover prints 2009; combined mark belongs to the whole list. |
 | 2006 (k17) | Labor constituent | Convention platform names k17 and prints 22 January 2006; no whole-list substitution. |
@@ -36,8 +36,9 @@ an assertion of a website capture in the final campaign window. Confidence is
 medium: these are preserved originals, without independent historical byte
 attestation. IDI is the custodian, not the creator of the artwork.
 
-PDF page 1 was rendered at scale 1.3 with the locked pdfjs-dist and
-@napi-rs/canvas dependencies. Crop coordinates refer to that rendered raster,
+PDF page 1 was rendered at scale 4 for the two corrected Meretz crops and at
+scale 1.3 for the other PDF crops, with the locked pdfjs-dist and
+@napi-rs/canvas dependencies. Crop coordinates refer to the recorded rendered raster,
 as stated in each publicationEvidence record. Pillow 13.0.0 converts to RGBA,
 crops the recorded rectangle, proportionally thumbnails to at most 256 × 256,
 and saves optimised PNG. Original colours, paper texture and backdrops remain;
@@ -92,3 +93,36 @@ identify the Israel Resilience constituent separately. Likewise, the 2026
 Religious Zionism mark does not fill the missing combined Religious
 Zionism–Zehut list mark. A 2019 Union of Right-Wing Parties design still served
 in 2021 is a stale campaign candidate, not a 2021 Yamina assignment.
+
+## Review correction: isolate the two Meretz wordmarks
+
+The first crops mistakenly retained campaign messages. Standing practice in
+party-logos.md requires cropping adjacent slogan or notice text out of an emblem.
+Both assignments remain verified; only their displayed rectangles changed.
+
+- **2013:** retain the white מרצ wordmark. Omit the rival-directed slogan box and
+  השמאל של ישראל, which is separately placed below the wordmark and can be
+  separated from it. The tight wordmark rectangle intersects a tiny blue edge
+  of the adjacent box; these original background pixels remain, without any
+  slogan letters. No background cleaning or recolouring was used.
+- **2015:** all 81 pages of the retained publication were rendered and visually
+  reviewed. No standalone emblem was found; the interior headers repeat the
+  slogan lockup. Retain only the green מרצ word from the cover lockup, with the
+  original paper texture, omitting the other words.
+
+Both use PDF page 1 at scale 4, raster dimensions **2382 × 3368**. Rectangles use
+exclusive right/bottom coordinates. RGBA, LANCZOS thumbnail to 256 pixels on the
+long side, and optimised PNG remain unchanged.
+
+| Asset | Crop rectangle | Final dimensions | Final SHA-256 |
+|---|---|---|---|
+| meretz-2013-k19-print.png | [974, 2605, 2008, 2995] | 256 × 97 | 8d5e1ec88850545a2b9e16f51e91a97cd6c35c4b507598057c88e8b2411fb427 |
+| meretz-2015-k20-print.png | [262, 2983, 868, 3210] | 256 × 96 | 0395338985816ba4b5a5c5df08bb4918f225625e8cdb84c5123fc8056d350636 |
+
+The other nine final images were re-inspected. The four Labor marks and
+Yisrael Beiteinu 2015 contain party names only. Yisrael BaAliyah 1996 includes
+the party name in Hebrew and Russian; New Movement–Meretz 2009 includes the
+combined party name. Blue and White 2019 and Yisrael Beiteinu 2022 retain their
+leaders' names as part of the identifying ballot name. No other slogan or notice
+text was found. No original PDF, rights basis, date assignment or coverage count
+changed.

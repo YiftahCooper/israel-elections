@@ -320,35 +320,35 @@
       "confidence": "medium",
       "evidenceId": "lg2-print-meretz-k20",
       "inUseDate": "2015",
-      "inUseEvidence": "Cover explicitly prints 2015 and מצע מרצ. The lower campaign wordmark שמאל זה מרצ is cropped intact; textured paper and original colours are preserved. Original publication and catalogue page retained. No cross-election inference, recolouring or redrawing.",
+      "inUseEvidence": "Cover explicitly prints 2015 and מצע מרצ. All 81 original pages were visually reviewed: no standalone emblem was found; interior headers repeat the slogan lockup. The cover’s green מרצ word is isolated by a rectangular crop, omitting שמאל זה; original paper texture and colours are preserved. Original publication and catalogue page retained. No cross-election inference or redrawing.",
       "publicationEvidence": {
         "page": "lg2-print-meretz-k20-page",
         "asset": "lg2-print-meretz-k20-asset",
         "publicationDate": "2015",
         "cropBox": [
-          75,
-          947,
-          690,
-          1050
+          262,
+          2983,
+          868,
+          3210
         ],
         "originalDimensions": [
-          774,
-          1095
+          2382,
+          3368
         ],
         "pdfPage": 1,
-        "renderScale": 1.3,
-        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist; dimensions and crop coordinates are in this rendered raster."
+        "renderScale": 4,
+        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist at scale 4; dimensions and crop coordinates are in this rendered raster."
       },
       "originalSha256": "0b81c3798ae89125e64059ede03a7605e026d0ad57d5b15c8768220a046b0c3e",
-      "sha256": "55ef1b849bd0d458e1daf0c9016fd3786e072d7773469171eee27fb22deccfe9",
-      "bytes": 19931,
+      "sha256": "0395338985816ba4b5a5c5df08bb4918f225625e8cdb84c5123fc8056d350636",
+      "bytes": 41016,
       "retrievedAt": "2026-11-12",
       "dateBasis": "year-single-election",
       "dateEvidence": {
         "yearSource": "printed-year",
         "yearEvidence": "Original cover prints 2015.",
         "campaignIdentity": "explicit-election",
-        "campaignEvidence": "Cover explicitly prints 2015 and מצע מרצ. The lower campaign wordmark שמאל זה מרצ is cropped intact; textured paper and original colours are preserved."
+        "campaignEvidence": "Cover explicitly prints 2015 and מצע מרצ. All 81 original pages were visually reviewed: no standalone emblem was found; interior headers repeat the slogan lockup. The cover’s green מרצ word is isolated by a rectangular crop, omitting שמאל זה; original paper texture and colours are preserved."
       }
     },
     {
