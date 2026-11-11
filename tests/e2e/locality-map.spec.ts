@@ -160,7 +160,8 @@ test('boundaries have independent controls, hatch geometry, source and snapshot 
   await page.route('https://tiles.openfreemap.org/**',route=>route.abort());
   await page.goto('/');await page.getByRole('tab',{name:'Localities',exact:true}).click();
   const legend=page.getByRole('group',{name:'Lines and areas',exact:true});
-  await expect(legend.getByRole('checkbox')).toHaveCount(12);
+  // 12 lines and areas, under one "All lines and areas" box
+  await expect(legend.getByRole('checkbox')).toHaveCount(13);
   await expect(page.locator('.leaflet-verified-lines-pane path')).not.toHaveCount(0);
   await expect(page.locator('.leaflet-verified-lines-pane pattern')).toHaveCount(2);
   const before=await page.locator('.leaflet-verified-lines-pane path').count();

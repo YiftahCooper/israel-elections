@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useL, useLang } from '../i18n.ts';
-import { getState, resetSettings, restoreSettings, setLevel, setPreference, setSetting, setState, settingChanged, toast, useStore } from '../store.ts';
+import { getState, resetSettings, restoreSettings, setLevel, setMapLines, setPreference, setSetting, setState, settingChanged, toast, useStore } from '../store.ts';
 import { DECIMAL_CHOICES, GROUPS, SETTINGS, TIERS, isExternal, rowMatches, rowTier, rowVisible, settingValue, type GroupId, type RowId, type SettingId, type SettingRow, type SettingValues } from '../settings.ts';
 import { LEVEL_LABELS, type Preset } from '../features.ts';
 import { PREFERENCES, type PreferenceId } from '../preferences.ts';
@@ -158,6 +158,7 @@ function ToggleControl({ row, label }: { row: SettingRow; label: string }) {
   const on = useStore(st => id === 'jointByParty' ? st.preferences.jointSeats !== 'off' : settingValue(st.settings, id as SettingId, st.level) as boolean);
   return <span className="switch"><input type="checkbox" aria-label={label} checked={on} onChange={e => {
     if (id === 'jointByParty') setPreference('jointSeats', e.target.checked ? 'on' : 'off');
+    else if (id === 'mapLines') setMapLines(e.target.checked);
     else setSetting(id as SettingId, e.target.checked as never);
   }} /></span>;
 }

@@ -17,7 +17,8 @@ import type { SimList, Scenario } from '../../model/scenario.ts';
 import { allocationOf, listLabel, seatBlocsOf } from '../derive.ts';
 import { localityTotals, localityWinner, matchesLocality, nearestLocality, normalizeLocalityName } from '../locality-map-model.ts';
 import { useL, useLang } from '../i18n.ts';
-import { useStore } from '../store.ts';
+import { setMapLineChoice, setMapLines, useSetting, useStore } from '../store.ts';
+import { allLines, shownLines, tickLine } from '../mapLineChoice.ts';
 import type { FeatureCollection } from 'geojson';
 import { MAP_LINES, MAP_LINE_SNAPSHOT, drawMapLines, mapLineSourceLabel } from '../locality-map-lines.ts';
 import { basemapAttribution } from '../locality-basemap-style.ts';
@@ -39,6 +40,7 @@ function useJson<T>(url: string | null, empty: T) {
 const NO_LOCATIONS: LocalityLocations = {};
 const NO_LINES: FeatureCollection = { type:'FeatureCollection', features:[] };
 const NO_NAMES: LocalityNames = { names: [], project: [] };
+const LINE_IDS = MAP_LINES.map(x => x.id);
 export function useLocalityLocations(id: string, available = true) {
   const { value: locations, error } = useJson(available ? `${import.meta.env.BASE_URL}data/${id}-locations.json` : null, NO_LOCATIONS);
   return { locations, error };
@@ -114,7 +116,12 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   const dark = useStore(st => st.theme === 'dark');
   const [legendOpen,setLegendOpen]=useState(()=>window.matchMedia('(min-width: 700px)').matches);
   useEffect(()=>{const media=window.matchMedia('(min-width: 700px)');const update=()=>setLegendOpen(media.matches);media.addEventListener('change',update);return()=>media.removeEventListener('change',update);},[]);
-  const [lineIds, setLineIds] = useState<ReadonlySet<string>>(() => new Set(MAP_LINES.map(x=>x.id)));
+  // remembered on this device (Settings → Analysis has the same switch as "All lines and areas")
+  const linesOn = useSetting('mapLines'), linesOff = useSetting('mapLinesOff');
+  const lineChoice = useMemo(() => ({ on: linesOn, off: linesOff }), [linesOn, linesOff]);
+  const lineIds = useMemo<ReadonlySet<string>>(() => new Set(shownLines(LINE_IDS, lineChoice)), [lineChoice]);
+  const every = allLines(LINE_IDS, lineChoice);
+  const tick = (id: string, show: boolean) => setMapLineChoice(tickLine(LINE_IDS, lineChoice, id, show));
   const [hiddenLines, setHiddenLines] = useState(0);
   const { value: lineData, error: lineError } = useJson(`${import.meta.env.BASE_URL}data/map-lines.geojson`, NO_LINES);
   const digits = useDigits();
@@ -292,8 +299,10 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     <div className="locality-map-legend">{legend.map(x=><span key={x.id} title={x.title}><i style={{background:x.color}} />{x.label}</span>)}<span><i style={{background:GREY}}/>{L('Tie / unassigned / no votes','שוויון / ללא שיוך / ללא קולות')}</span></div>
     <details className="locality-boundary-disclosure" open={legendOpen} onToggle={e=>setLegendOpen(e.currentTarget.open)}><summary>{L('Lines and areas', 'קווים ושטחים')}</summary>
     <fieldset className="locality-boundary-legend"><legend className="sr-only">{L('Lines and areas', 'קווים ושטחים')}</legend>
+      <label className="locality-boundary-all"><input type="checkbox" checked={every === 'all'} ref={el => { if (el) el.indeterminate = every === 'some'; }}
+        onChange={e => setMapLines(e.target.checked)} />{L('All lines and areas', 'כל הקווים והשטחים')}</label>
       {MAP_LINES.map(line => <span className="locality-boundary-entry" key={line.id}>
-        <label><input type="checkbox" checked={lineIds.has(line.id)} onChange={e => setLineIds(old => { const next = new Set(old); if (e.target.checked) next.add(line.id); else next.delete(line.id); return next; })} />
+        <label><input type="checkbox" checked={lineIds.has(line.id)} onChange={e => tick(line.id, e.target.checked)} />
           <svg width="28" height="14" viewBox="0 0 28 14" aria-hidden="true">{line.fill==='solid'?<rect width="28" height="14" fill={dark?line.dark:line.color} fillOpacity=".18"/>:line.fill?<>
             <path d={line.fill==='cross'?'M0 0L8 8 M0 8L8 0 M8 0L16 8 M8 8L16 0 M16 0L24 8 M16 8L24 0 M24 0L32 8 M24 8L32 0 M0 8L8 16 M0 16L8 8 M8 8L16 16 M8 16L16 8 M16 8L24 16 M16 16L24 8 M24 8L32 16 M24 16L32 8':'M-14 14L0 0 M-6 14L8 0 M2 14L16 0 M10 14L24 0 M18 14L32 0 M26 14L40 0'} stroke={dark?line.dark:line.color} strokeWidth="1.4" strokeLinecap="butt"/>
             {line.outline&&<path d="M0 13H28" stroke={dark?line.dark:line.color} strokeWidth="2" strokeLinecap="butt" strokeDasharray={line.dash}/>}
