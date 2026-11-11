@@ -6,7 +6,7 @@ import { validItemAnswers, validAnswers, sourceChoice, sourceValue, type Prefere
 import type { Family } from '../families/model.ts';
 import { nextScenarioColor } from './scenarioIdentity.ts';
 import { PRESETS, type FeatureId, type Visibility } from './features.ts';
-import { validSettings, settingValue, settingDefault, SETTINGS_KEY, SETTING_IDS, type RowId, type SettingId, type SettingValues } from './settings.ts';
+import { validSettings, settingValue, settingDefault, withLinked, LINKED, SETTINGS_KEY, SETTING_IDS, type RowId, type SettingId, type SettingValues } from './settings.ts';
 // Application state. Undo/redo keeps immutable scenario snapshots; saved scenarios remain action logs.
 import { useSyncExternalStore } from 'react';
 import type { ElectionDataset, ElectionId, ElectionIndexEntry } from '../data/schema.ts';
@@ -164,8 +164,8 @@ export function setSetting<K extends SettingId>(id: K, value: SettingValues[K]) 
 export function toggleTheme() { const next = state.theme === 'dark' ? 'light' : 'dark'; setSetting('theme', next === resolvedTheme('device') ? 'device' : next); }
 /** Returns the given settings to their defaults; gives back what they were, for Undo. */
 export function resetSettings(ids: readonly SettingId[]): Partial<SettingValues> {
-  const before = state.settings;
-  const settings = Object.fromEntries(Object.entries(before).filter(([k]) => !ids.includes(k as SettingId))) as Partial<SettingValues>;
+  const before = state.settings, all = withLinked(ids);
+  const settings = Object.fromEntries(Object.entries(before).filter(([k]) => !all.includes(k as SettingId))) as Partial<SettingValues>;
   setState({ settings, theme: resolvedTheme(settingValue(settings, 'theme', state.level)) });
   return before;
 }
@@ -173,7 +173,12 @@ export function restoreSettings(values: Partial<SettingValues>) {
   setState({ settings: values, theme: resolvedTheme(settingValue(values, 'theme', state.level)) });
 }
 /** A setting differs from its default when the user's value is not what the level would give anyway. */
-export const settingChanged = (st: Pick<State, 'settings' | 'level'>, id: SettingId) => st.settings[id] !== undefined && st.settings[id] !== settingDefault(id, st.level);
+const differs = (st: Pick<State, 'settings' | 'level'>, id: SettingId) => st.settings[id] !== undefined && JSON.stringify(st.settings[id]) !== JSON.stringify(settingDefault(id, st.level));
+/** Differs from its default, or one of the settings its row also resets does (settings.ts LINKED). */
+export const settingChanged = (st: Pick<State, 'settings' | 'level'>, id: SettingId) => differs(st, id) || (LINKED[id] ?? []).some(x => differs(st, x));
+/** The Localities map's "All lines and areas" switch, in the map's key and in Settings: all on or all off. */
+export function setMapLines(on: boolean) { setMapLineChoice({ on, off: [] }); }
+export function setMapLineChoice(c: { on: boolean; off: readonly string[] }) { setState(st => ({ settings: { ...st.settings, mapLines: c.on, mapLinesOff: c.off } })); }
 export { SETTING_IDS };
 // "Device" follows the system theme live, also when it changes at night
 globalThis.matchMedia?.('(prefers-color-scheme: dark)').addEventListener?.('change', () => {

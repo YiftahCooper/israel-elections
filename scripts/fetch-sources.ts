@@ -36,6 +36,7 @@ export interface SourceRecord {
 }
 
 const HTTP_SOURCES: Omit<SourceRecord, 'method'>[] = [
+  {"id": "k26-candidates-gazette", "file": "k26/yp15023-candidates.pdf", "url": "https://olaw.org.il/yalkut/yalkut-15023.pdf", "publisher": "רשומות / ועדת הבחירות המרכזית — ילקוט הפרסומים 15023 (13.10.2026)", "publisherEn": "Reshumot / Central Elections Committee — Yalkut HaPirsumim 15023 (13 Oct 2026)", "official": true, "description": "Official published candidate lists; reviewed בי p.834, כן p.851; submitting parties זך p.848, רץ p.862, צבי p.859.", "note": "Official publication retrieved from the public mirror olaw.org.il, not a government host. Government-path attempt returned HTTP 404; no official-host byte comparison. PDF pages 8, 25, 22, 36, 33 respectively."},
   { id: 'pm2001-gazette', file: 'pm/yp4960.pdf', url: 'https://olaw.org.il/yalkut/yalkut-4960.pdf', publisher: 'CEC / Reshumot, YP 4960 p.1628 (public mirror)', official: true, description: '2001 PM-only official notice on a disclosed non-government mirror' },
   { id: 'pm1999-idi-totals', file: 'pm/1999-idi.pdf', url: 'https://www.idi.org.il/media/5026/%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9E%D7%91%D7%95%D7%90.pdf', publisher: 'Israel Democracy Institute', official: false, description: 'Secondary PM invalid/cast totals, printed p.8 / PDF p.7' },
   {
@@ -93,13 +94,13 @@ export const MANUAL_SOURCES: SourceRecord[] = [
     url: 'https://www.gov.il/he/pages/candidates-lists-26 (38 per-list pages)',
     publisher: 'ועדת הבחירות המרכזית לכנסת ה-26 (gov.il)', publisherEn: 'Central Elections Committee for the 26th Knesset (gov.il)', official: true,
     description: 'Official per-list pages: list name, letters, sponsoring parties, full ranked roster, per-candidate party, resignations',
-    note: 'gov.il returns HTTP 403 to scripted clients; captured on 2026-11-03 through the Exa page-fetch service, whose text extraction is stored verbatim. Each page carries its own "תאריך עדכון". Two pages (בי, כן) failed to render and come from the secondary source below.',
+    note: 'gov.il returns HTTP 403 to scripted clients; captured on 2026-11-03 through the Exa page-fetch service, whose text extraction is stored verbatim. Each page carries its own "תאריך עדכון". Two pages (בי, כן) failed to render; their rosters now use the reviewed official publication k26-candidates-gazette.',
   },
   {
     id: 'k26-secondary-fyi', file: 'k26/secondary/', method: 'manual-capture',
     url: 'https://bechirot.fyi/lists/26/בי and /lists/26/כן',
     publisher: 'bechirot.fyi (independent; transcribes the official CEC pages)', official: false,
-    description: 'Fallback rosters for צומת בית ישראל (בי) and כחול לבן (כן) only; marked secondary in the dataset',
+    description: 'Retained former fallback transcriptions for צומת בית ישראל (בי) and כחול לבן (כן); superseded as roster evidence by k26-candidates-gazette',
   },
   {
     id: 'k26-national-snapshot', file: '', method: 'manual-capture',

@@ -239,3 +239,15 @@ Knessets. Code: `scripts/term-timeline-runtime.ts` (build-time compiler, virtual
 - **Temporary fallback.** Until the research lane adds `importance` and `marker` to the event files,
   `FALLBACK_IMPORTANCE` and the kind rules in the compiler supply them, and each item records whether it came from
   the data or the fallback. Data always wins.
+- **Stepping (12 November 2026).** ◀ ▶, the bar's ticks, a drag and the arrow keys all use one list: every date with
+  an event or seat change shown at the reader's level and settings, in date order, including events that move no one
+  (votes, budget votes, faction changes; the chart stays as it was and the line says what happened, with sources).
+  Events on one date are one step; events sharing a `timelineGroup` must share a date (a build anomaly otherwise).
+  The bar names its ends only where a step is there.
+- **Knessets with no government (12 November 2026).** The 21st and 22nd Knessets formed no government, so there are no
+  sides to derive: the chart shows one block, “No government was formed in this Knesset”, and the steps add the
+  formation attempts and the dissolution from `data/meta/aftermath/kN.json` (graded by `FORMATION_IMPORTANCE`:
+  dissolution Simple, a mandate given, returned or expired Standard, extensions and the Knesset's 21 days Expert).
+- **Other earlier Knessets.** Left off: their files record when each government's appointments began, not who was
+  on its side member by member, and no complete list of later moves between the sides. A faction move alone never
+  sets a side.

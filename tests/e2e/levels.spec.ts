@@ -15,7 +15,7 @@ const levelButton = (page: Page, name: string) => page.getByRole('group', { name
 const listCard = (page: Page, name: string) => page.getByRole('region', { name: 'Lists' }).getByRole('button', { name, exact: true });
 // a list's row is the button itself (its numbers are its description)
 const listRow = (page: Page, name: string) => listCard(page, name);
-const analysisTabs = (page: Page) => page.getByRole('tablist', { name: 'Tools' }).getByRole('tab');
+const analysisTabs = (page: Page) => page.getByRole('navigation', { name: 'Tools' }).getByRole('tab');
 const TOOL_COUNT = TOOL_FEATURES.length; // the Overview, Scenarios and every tool, listed at every level
 const details = (page: Page) => page.getByRole('region', { name: 'List details' });
 

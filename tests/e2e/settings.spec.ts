@@ -149,7 +149,7 @@ test.describe('every setting takes effect', () => {
   // breakpoints follow the zoomed page: at 1024 large text lays out as a 890px page would (1024 / 1.15), at 1500 as 1304
   for (const [width, lang] of [[1024, 'en'], [1024, 'he'], [1500, 'en'], [1500, 'he']] as const) test(`large text: the top bar takes the layout of the narrower page · ${width} ${lang}`, async ({ page, browser }) => {
     const bar = async (p: Page) => p.evaluate(() => {
-      const band = document.querySelector<HTMLElement>('.band')!, tabs = document.querySelector<HTMLElement>('[role="tablist"]')!;
+      const band = document.querySelector<HTMLElement>('.band')!, tabs = document.querySelector<HTMLElement>('.toolbar')!;
       return { height: band.offsetHeight, labels: [...document.querySelectorAll('.band .tool .label')].filter(e => getComputedStyle(e).display !== 'none').length, wraps: getComputedStyle(band).flexWrap,
         gap: Math.round(tabs.getBoundingClientRect().top - band.getBoundingClientRect().bottom), sideways: document.documentElement.scrollWidth - innerWidth };
     });

@@ -3029,7 +3029,7 @@
       "electionId": "k19",
       "electionDate": "2013-01-22",
       "datasetPath": "public/data/k19.json",
-      "datasetSha256": "6b7eab3b0370fb7c262559a86dd30c401a121bfc1c262bacf7b86a2794148375",
+      "datasetSha256": "e45d01c75649e3f2ffc25def7feebd384be3aca8a6ff2a0a4fe03606a2e3ca54",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2013-01-30",
@@ -3149,7 +3149,7 @@
       "electionId": "k20",
       "electionDate": "2015-03-17",
       "datasetPath": "public/data/k20.json",
-      "datasetSha256": "1dc3b314d95741f0be45b8b61c92206f1a327d125867116a0d4c4fc781ea1f8d",
+      "datasetSha256": "6229c7ed5fd6253ab43c6ff13125b9ce02de21286b07a41f31c321809abcca08",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2015-03-25",
@@ -3611,7 +3611,7 @@
       "electionId": "k24",
       "electionDate": "2021-03-23",
       "datasetPath": "public/data/k24.json",
-      "datasetSha256": "b93903666d3c5b3179a0ff84c87ad93e90236394dfa86bf74650b2e979faa799",
+      "datasetSha256": "6c15192c03b259e4f5b25073a784fe098eda6b1fc5734e18983a7d3b615db280",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -3731,7 +3731,7 @@
       "electionId": "k25",
       "electionDate": "2022-11-01",
       "datasetPath": "public/data/k25.json",
-      "datasetSha256": "0b7c3641236194978339f360c4fc8d65d3717f6e8e32d5fce940837ce23ee696",
+      "datasetSha256": "26de53381c952038d80e63df9013d59026f42b7b432261f327879d823ede8a47",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2022-11-10",
@@ -3851,7 +3851,7 @@
       "electionId": "k26",
       "electionDate": "2026-10-27",
       "datasetPath": "public/data/k26.json",
-      "datasetSha256": "947464727dd8edd4dc4b78a1b362c5a2106121c6d5ff257d0324f493ba4b6ab7",
+      "datasetSha256": "47a166664f3e066be0a2e201e3e6882f5759be91fa22d1372bb3a1c9f3db3fff",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-09",
