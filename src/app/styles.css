@@ -326,15 +326,13 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 /* Neutral, opaque borders remain distinct even for user-chosen very pale bloc colours. */
 .chamber, .blocs { --wedge-mix: 14%; --bloc-border: var(--ink-2); }
 [data-theme="dark"] .chamber, [data-theme="dark"] .blocs { --wedge-mix: 22%; }
-.chamber .wedge, .chamber .bloc-cell, .bloc-swatch {
+.chamber .wedge, .bloc-swatch {
   fill: color-mix(in srgb, var(--bc) var(--wedge-mix), var(--surface));
   fill-opacity: 1;
 }
-.chamber .wedge, .chamber .bloc-outline {
+.chamber .wedge {
   stroke: var(--bloc-border); stroke-width: 1.25; stroke-linejoin: round; vector-effect: non-scaling-stroke;
 }
-.chamber .bloc-outline { fill: none; }
-.chamber .bloc-cell { stroke: color-mix(in srgb, var(--bc) var(--wedge-mix), var(--surface)); stroke-width: .5; }
 .chamber .unassigned { stroke-dasharray: 1 3; stroke-linecap: round; }
 .bloc-swatch { background: color-mix(in srgb, var(--bc) var(--wedge-mix), var(--surface)); border: 1.25px solid var(--bloc-border); box-sizing: border-box; }
 .bloc-swatch.unassigned { border-style: dotted; }

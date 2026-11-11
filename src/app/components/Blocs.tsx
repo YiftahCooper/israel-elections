@@ -22,7 +22,7 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
   const previewing = useStore(st => st.preview) === s;
   const selected = useStore((st) => st.selectedListId);
   const panel = useStore((st) => st.blocPanel);
-  const showComponents = useSetting('partyColourInSeats');
+  const jointLook = useSetting('jointListSeats');
   const pieces = useMemo(() => blocPieces(s, r), [s, r]);
   const { base, labelReference } = useGraphicReference(s);
   const grouped = groupingBaseline(s, base);
@@ -75,7 +75,7 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
           <button key={g.key} type="button" className={`corridor ${g.id === null ? "no-bloc" : ""}`} style={{ flexGrow: g.n, flexBasis: 0, ['--bc' as string]: g.color }}
             aria-pressed={panel === g.key} title={(g.appDefined ? appGroupingExplanation(lang) + " " : "") + L(`${g.label}: ${g.n}${g.id !== null ? ` (${consequence(g.n)})` : ''}. Edit this bloc`, `${g.label}: ${g.n}${g.id !== null ? ` (${consequence(g.n)})` : ''}. עריכת הגוש`)} onClick={() => openPanel(g.key)}>
             <span className="pieces" aria-hidden>
-              {g.pieces.map((p, i) => <i key={i} className={selected && selected !== p.listId ? 'dim' : ''} style={{ flexGrow: p.n, background: showComponents && (s.factionSplits ?? []).includes(p.listId) ? p.color : s.lists.find(l=>l.id===p.listId)?.color ?? p.color, borderBlock: showComponents && (s.factionSplits ?? []).includes(p.listId) ? `3px solid ${s.lists.find(l=>l.id===p.listId)?.color}` : undefined, boxSizing: 'border-box' }} />)}
+              {g.pieces.map((p, i) => <i key={i} className={selected && selected !== p.listId ? 'dim' : ''} style={{ flexGrow: p.n, background: jointLook !== 'list' && (s.factionSplits ?? []).includes(p.listId) ? p.color : s.lists.find(l=>l.id===p.listId)?.color ?? p.color, borderBlock: jointLook === 'both' && (s.factionSplits ?? []).includes(p.listId) ? `3px solid ${s.lists.find(l=>l.id===p.listId)?.color}` : undefined, boxSizing: 'border-box' }} />)}
             </span>
             <span className="label"><span className="clip">{g.shortLabel}</span>{g.showMarker && <small className="app-grouping-tag">· {appGroupingTag(lang)}</small>} <b key={g.n >= majority ? 'majority' : 'minority'} className={g.id !== null && previous.current.election === s.electionId && previous.current.scheme === s.blocSchemeId && previous.current.seats.has(g.id) && ((previous.current.seats.get(g.id)! >= majority) !== (g.n >= majority)) ? 'tick' : ''}>{g.n}</b>{g.id !== null && <> <bdi className="consequence">{consequence(g.n)}</bdi></>}{g.n >= majority && <span className="sr-only">{L(' (majority)', ' (רוב)')}</span>}</span>
           </button>

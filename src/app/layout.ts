@@ -1,4 +1,5 @@
 // Pure geometry for the chamber diagram (no DOM), unit-tested.
+import { arcBlocRegions } from './blocLine.ts';
 
 export interface SeatPos { x: number; y: number; a: number }
 
@@ -80,82 +81,9 @@ export function placeLabels(items: { id: string; n: number; a: number; text: str
   return placed;
 }
 
-/** Shared annular row sectors. Prefer a radial cut when the whole seat discs allow it;
- * otherwise step only in the empty space halfway between rows. Never trace seat circles.
- * Angle sorting follows the standard parliament-chart approach (d3-parliament); retaining
- * fixed seat positions also handles one-seat blocs and ties at the baseline honestly.
- * Adjacent regions reuse exactly the same cuts, including the extensions below the baseline. */
+/** Bloc regions of the half circle: one closed shape per run of seats in the same region, meeting along the bloc line
+ *  routed by blocLine.ts (straight where it can be, smooth where seats force a bend). `seats[i]` is where seat i sits
+ *  and `bands[i]` its region, in seat order. Neighbouring regions share exactly the same line. */
 export function annularRegions(seats: SeatPos[], bands: number[], seatRadius: number, cx = 500, cy = 470, scale = 400) {
-  const ids = [...new Set(bands)];
-  if (!seats.length) return [] as { band: number; fill: string; polygon: [number, number][]; leftAngles: number[]; rightAngles: number[] }[];
-  const { radii, cuts } = bandCuts(seats, bands.map(b => ids.indexOf(b)), ids.length, true);
-  const inner = radii[0] - seatRadius - 0.015, outer = radii.at(-1)! + seatRadius + 0.015;
-  const floor = (seatRadius + 0.015) * scale;
-  const phi = floor / (inner * scale) + 0.02;
-  const edges = [inner, ...radii.slice(1).map((r, i) => (r + radii[i]) / 2), outer];
-  cuts.forEach((cut, j) => {
-    let lo = -phi, hi = Math.PI + phi;
-    seats.forEach((p, i) => {
-      const width = Math.asin((seatRadius + 0.003) / Math.hypot(p.x, p.y));
-      if (ids.indexOf(bands[i]) <= j) hi = Math.min(hi, p.a - width);
-      else lo = Math.max(lo, p.a + width);
-    });
-    if (j > 0) hi = Math.min(hi, ...cuts[j-1]);
-    if (lo <= hi) cut.fill((lo + hi) / 2);
-    else {
-      // Merge the longest consecutive run of rows that admits one radial cut. A
-      // step is necessary only when the next row's seat envelopes truly conflict.
-      const intervals = radii.map((radius, ri) => {
-        let low = -phi, high = Math.PI + phi;
-        seats.forEach((p, i) => {
-          if (Math.abs(Math.hypot(p.x, p.y) - radius) > 1e-6) return;
-          const width = Math.asin((seatRadius + 0.003) / radius);
-          if (ids.indexOf(bands[i]) <= j) high = Math.min(high, p.a - width);
-          else low = Math.max(low, p.a + width);
-        });
-        if (j > 0) high = Math.min(high, cuts[j-1][ri]);
-        return [low, high];
-      });
-      let start = 0;
-      while (start < radii.length) {
-        let end = start + 1, low = intervals[start][0], high = intervals[start][1];
-        while (end < radii.length && Math.max(low, intervals[end][0]) <= Math.min(high, intervals[end][1])) {
-          low = Math.max(low, intervals[end][0]); high = Math.min(high, intervals[end][1]); end++;
-        }
-        cut.fill((low + high) / 2, start, end);
-        start = end;
-      }
-    }
-  });
-  const at = (a: number, q: number): [number, number] => {
-    if (a > Math.PI) return [cx - q * scale, cy + Math.min((a - Math.PI) * q * scale, floor)];
-    if (a < 0) return [cx + q * scale, cy + Math.min(-a * q * scale, floor)];
-    return [cx + Math.cos(a) * q * scale, cy - Math.sin(a) * q * scale];
-  };
-  const f = (v: number) => Number(v.toFixed(6));
-  return ids.map((band, j) => {
-    const left = j === 0 ? radii.map(() => Math.PI + phi) : cuts[j - 1];
-    const right = j === ids.length - 1 ? radii.map(() => -phi) : cuts[j];
-    const polygon: [number, number][] = [];
-    let d = '';
-    const move = (a: number, q: number) => { const p = at(a, q); polygon.push(p); d += `${d ? ' L' : 'M'} ${f(p[0])} ${f(p[1])}`; };
-    const edge = (a: number, b: number, q: number) => {
-      if (a === b) return;
-      const stops = [a, ...[Math.PI, 0].filter(t => (a - t) * (b - t) < 0).sort((x,y) => a > b ? y-x : x-y), b];
-      for (let i = 1; i < stops.length; i++) {
-        const s0 = stops[i - 1], s1 = stops[i], mid = (s0 + s1) / 2;
-        if (mid > Math.PI || mid < 0) { move(s1, q); continue; }
-        const steps = Math.max(1, Math.ceil(Math.abs(s1 - s0) / 0.01));
-        for (let t = 1; t <= steps; t++) polygon.push(at(s0 + ((s1 - s0) * t) / steps, q));
-        const p = at(s1, q);
-        d += ` A ${f(q * scale)} ${f(q * scale)} 0 0 ${s1 < s0 ? 1 : 0} ${f(p[0])} ${f(p[1])}`;
-      }
-    };
-    move(left[0], inner);
-    radii.forEach((_, i) => { move(left[i], edges[i+1]); if (i+1 < radii.length) edge(left[i], left[i+1], edges[i+1]); });
-    edge(left.at(-1)!, right.at(-1)!, outer);
-    for (let i = radii.length-1; i >= 0; i--) { move(right[i], edges[i]); if (i > 0) edge(right[i], right[i-1], edges[i]); }
-    edge(right[0], left[0], inner);
-    return { band, fill: d + ' Z', polygon, leftAngles: left, rightAngles: right };
-  });
+  return arcBlocRegions(seats, bands, seatRadius, cx, cy, scale).regions;
 }

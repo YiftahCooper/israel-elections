@@ -2,7 +2,6 @@ import { expect, test } from '@playwright/test';
 import { deflateRawSync } from 'node:zlib';
 import { readFile } from 'node:fs/promises';
 import { dataset } from '../graphics-cases.ts';
-import { colourContrast } from '../../src/app/partyDisplayColor.ts';
 import { deltaE2000 } from '../../src/data/colour.ts';
 
 for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) test(`all constituent dots, keys, hovers and exports: ${lang} ${theme}`, async ({page}) => {
@@ -20,9 +19,15 @@ for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) test(`al
       const fills=()=>page.locator('.chamber > svg [data-component-seat]').evaluateAll(nodes=>nodes.map(dot=>dot.getAttribute('fill')));
       const before=await fills();expect(before.length).toBeGreaterThan(0);
       await page.locator('.band').getByRole('button',{name:lang==='he'?'הגדרות':'Settings',exact:true}).click();
-      const toggle=page.locator('.personal-settings [data-setting="partyColourInSeats"]').getByRole('checkbox');
-      await toggle.uncheck();await expect(page.locator('.chamber > svg [data-component-seat]')).toHaveCount(0);
-      await toggle.check();await expect.poll(fills).toEqual(before);
+      const look=(en:string,he:string)=>page.locator('.personal-settings [data-setting="jointListSeats"]').getByRole('button',{name:lang==='he'?he:en,exact:true}).click();
+      const seatFills=()=>page.locator('.chamber > svg [data-seat]').evaluateAll(nodes=>nodes.map(seat=>seat.getAttribute('fill')));
+      // list colour only: no party dots, and every party colour is gone from the seats
+      await look('List','רשימה');await expect(page.locator('.chamber > svg [data-component-seat]')).toHaveCount(0);
+      expect((await seatFills()).some(f=>before.includes(f))).toBe(false);
+      // party colour only: no ring, the seats themselves carry exactly the party colours the dots had
+      await look('Party','מפלגה');await expect(page.locator('.chamber > svg [data-component-seat]')).toHaveCount(0);
+      expect((await seatFills()).filter(f=>before.includes(f)).length).toBe(before.length);
+      await look('Both','שניהם');await expect.poll(fills).toEqual(before);
       await page.keyboard.press('Escape');
     }
     for (const layout of ['hemicycle','blocks']) {
@@ -30,11 +35,17 @@ for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) test(`al
       const dots=page.locator('.chamber > svg [data-component-seat]');
       const expected=ds.lists.reduce((sum:number,l:{id:string;parties?:{id:string}[];candidates:{partyId?:string}[]})=>sum+((l.parties?.length??0)>1?l.candidates.slice(0,ds.officialSeats?.[l.id]??0).filter(c=>l.parties!.some(p=>p.id===c.partyId)).length:0),0);
       await expect(dots).toHaveCount(expected);
-      const colours=await dots.evaluateAll(nodes=>nodes.map(dot=>({id:dot.getAttribute('data-component-seat')!,fill:dot.getAttribute('fill')!,ring:dot.parentElement!.querySelector('[data-seat]')!.getAttribute('fill')!,stroke:dot.getAttribute('stroke')!,outer:dot.previousElementSibling?.hasAttribute('data-component-outline')?dot.previousElementSibling.getAttribute('stroke'):null, css:getComputedStyle(dot).fill, key:getComputedStyle(document.querySelector(`[data-party-key="${dot.getAttribute('data-component-seat')}"]`)!).backgroundColor})));
+      const colours=await dots.evaluateAll(nodes=>nodes.map(dot=>{
+        const seat=dot.parentElement!.querySelector('[data-seat]')! as SVGGraphicsElement, a=seat.getBBox(), b=(dot as SVGGraphicsElement).getBBox();
+        return {id:dot.getAttribute('data-component-seat')!,fill:dot.getAttribute('fill')!,ring:seat.getAttribute('fill')!,stroke:dot.getAttribute('stroke'),share:b.width/a.width,centred:Math.abs(a.x+a.width/2-b.x-b.width/2)<0.01&&Math.abs(a.y+a.height/2-b.y-b.height/2)<0.01,
+          css:getComputedStyle(dot).fill, key:getComputedStyle(document.querySelector(`[data-party-key="${dot.getAttribute('data-component-seat')}"]`)!).backgroundColor};
+      }));
       expect(colours).toHaveLength(expected);
       for (const dot of colours) {
-        expect(colourContrast(dot.stroke,dot.fill)).toBeGreaterThanOrEqual(3);
-        expect(colourContrast(dot.outer??dot.stroke,dot.ring)).toBeGreaterThanOrEqual(3);
+        // B4: the party fills most of the seat, the list colour is a thin ring at its edge, no outline between them
+        expect(dot.share).toBeCloseTo(0.8,2);
+        expect(dot.centred).toBe(true);
+        expect(dot.stroke).toBeNull();
         expect(dot.key).toBe(dot.css);
       }
       const partyIds=[...new Set(colours.map(c=>c.id))];
