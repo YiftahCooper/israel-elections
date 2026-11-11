@@ -1,11 +1,81 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "knesset": 1,
-  "asOf": "2026-11-09",
+  "asOf": "2026-11-11",
   "coverage": "partial",
   "scope": "Observed dated faction membership transitions, not a complete register of House Committee decisions.",
   "seatsAfterDefinition": "Null means no government-support assignment is established by these records.",
   "events": [
+    {
+      "id": "k1-term-start",
+      "date": "1949-02-14",
+      "kind": "term-start",
+      "who": {},
+      "summary": {
+        "en": "1th Knesset membership begins.",
+        "he": "תחילת כהונת הכנסת ה־1."
+      },
+      "classification": "counts",
+      "reason": "The membership boundary defines the parliamentary term, independently of election day or government formation.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+1+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Initial/terminal member-tenure boundary; tenure record IDs 2274, 2323, 2339, 2366, 2384, 2392, 2407, 2413, 2425, 2448, 2453, 2473, 2482, 2490, 2493, 2498, 2523, 2530, 2542, 2545, 2565, 2572, 2577, 2591, 2599, 2600, 2616, 2626, 2634, 2640, 2652, 2672, 2677, 2682, 2687, 2690, 2697, 2712, 2716, 2717, 2727, 2746, 2749, 2765, 2778, 2787, 2820, 2822, 2827, 2848, 2874, 2886, 2927, 2928, 2964, 2965, 2971, 2997, 3000, 3008, 3014, 3036, 3064, 3066, 3075, 3085, 3098, 3109, 3113, 3121, 3131, 3156, 3170, 3171, 3176, 3184, 1366, 1392, 1393, 1395, 1401, 1420, 1427, 1439, 1458, 1484, 1487, 1510, 1515, 1525, 1541, 1571, 1578, 1598, 1601, 1613, 1622, 1624, 1670, 1692, 1708, 1714, 1723, 1742, 1749, 1760, 383, 399, 406, 416, 418, 419, 451, 470, 498, 511, 519, 531, 534, 544",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "1949-02-14"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "supportEffect": "none-established",
+      "importance": "simple",
+      "importanceReason": "The membership boundary defines the parliamentary term, independently of election day or government formation.",
+      "marker": null
+    },
+    {
+      "id": "k1-government1-appointments",
+      "date": "1949-03-10",
+      "kind": "government-appointments-begin",
+      "who": {},
+      "summary": {
+        "en": "Initial appointments to government 1 begin.",
+        "he": "תחילת המינויים לממשלה ה־1."
+      },
+      "classification": "counts",
+      "reason": "Initial government appointments establish a new governing administration; the investiture roll call is not supplied by this record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%201%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "inspection": "retained-record",
+          "evidenceFamily": "knesset-parliament-info",
+          "locator": "data/meta/government-support-evidence.json /governments/1",
+          "supportingNote": "First appointment dates only; no roll-call or support total inferred.",
+          "effectiveDate": "1949-03-10"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "supportEffect": "none-established",
+      "governmentRef": {
+        "path": "data/meta/government-support-evidence.json",
+        "pointer": "/governments/1"
+      },
+      "importance": "simple",
+      "importanceReason": "Initial government appointments establish a new governing administration; the investiture roll call is not supplied by this record.",
+      "marker": null
+    },
     {
       "id": "k1-observed-faction-0",
       "date": "1949-06-08",
@@ -43,7 +113,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A dated faction transfer materially changes parliamentary political affiliation, but the membership rows alone do not establish a change of governing side."
     },
     {
       "id": "k1-observed-faction-1",
@@ -82,7 +155,97 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A dated faction transfer materially changes parliamentary political affiliation, but the membership rows alone do not establish a change of governing side."
+    },
+    {
+      "id": "k1-government2-appointments",
+      "date": "1950-11-01",
+      "kind": "government-appointments-begin",
+      "who": {},
+      "summary": {
+        "en": "Initial appointments to government 2 begin.",
+        "he": "תחילת המינויים לממשלה ה־2."
+      },
+      "classification": "counts",
+      "reason": "Initial government appointments establish a new governing administration; the investiture roll call is not supplied by this record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%202%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "inspection": "retained-record",
+          "evidenceFamily": "knesset-parliament-info",
+          "locator": "data/meta/government-support-evidence.json /governments/2",
+          "supportingNote": "First appointment dates only; no roll-call or support total inferred.",
+          "effectiveDate": "1950-11-01"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "supportEffect": "none-established",
+      "governmentRef": {
+        "path": "data/meta/government-support-evidence.json",
+        "pointer": "/governments/2"
+      },
+      "importance": "simple",
+      "importanceReason": "Initial government appointments establish a new governing administration; the investiture roll call is not supplied by this record.",
+      "marker": null
+    },
+    {
+      "id": "k1-term-end",
+      "date": "1951-08-20",
+      "kind": "term-end",
+      "who": {},
+      "summary": {
+        "en": "1th Knesset membership ends as the 2th Knesset begins.",
+        "he": "סיום כהונת הכנסת ה־1."
+      },
+      "classification": "counts",
+      "reason": "The membership boundary defines the parliamentary term, independently of election day or government formation.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+1+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Initial/terminal member-tenure boundary; tenure record IDs 2274, 2323, 2339, 2366, 2384, 2392, 2407, 2413, 2425, 2448, 2453, 2473, 2482, 2490, 2493, 2498, 2523, 2530, 2542, 2545, 2565, 2572, 2577, 2591, 2600, 2616, 2626, 2634, 2640, 2652, 2672, 2677, 2682, 2687, 2690, 2697, 2712, 2716, 2717, 2727, 2746, 2749, 2765, 2778, 2787, 2820, 2822, 2827, 2848, 2874, 2886, 2928, 2971, 2997, 3000, 3008, 3014, 3036, 3064, 3066, 3075, 3085, 3098, 3109, 3113, 3121, 3131, 3156, 3171, 3176, 3184, 1366, 1392, 1393, 1395, 1401, 1420, 1427, 1439, 1458, 1484, 1487, 1510, 1515, 1525, 1541, 1571, 1578, 1598, 1613, 1622, 1624, 1670, 1692, 1708, 1723, 1742, 1749, 1760, 383, 399, 416, 418, 419, 451, 470, 519, 531, 534, 544, 1388, 1719, 2605, 2967, 2332, 3028, 417, 3158, 3052, 2631",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "1951-08-20"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "supportEffect": "none-established",
+      "importance": "simple",
+      "importanceReason": "The membership boundary defines the parliamentary term, independently of election day or government formation.",
+      "marker": null
     }
+  ],
+  "method": {
+    "legacyClassification": "The inherited counts/does-not-count/hard-case field addresses the earlier continuing-support test; expert protest events may remain visible despite does-not-count. Use importance, marker scope and verification status separately.",
+    "importance": "Lowest display level; cumulative simple < standard < expert. Editorial judgement, separate from factual certainty.",
+    "marker": "D2 = individual left governing side; D3 = named continuing-coalition dissent on a specific vote; D4 = sourced party/individual move between government and opposition; replacement = sourced seat-holder change; null = no supported marker.",
+    "markerScope": "markerPersonIds restricts a marker on mixed events; factionIds are not an inferred roll call. No ideological left/right direction inferred.",
+    "timelineEligibility": "timelineEligible=false marks duplicate evidence, routine unsuccessful motions or unconfirmed leads; importance does not override verification. Coalesce related official-decision and membership evidence.",
+    "replacement": "Same-date list-level sets avoid arbitrary simultaneous pairings; candidatePositionHints are not a proved succession chain. Inferred reasons are labelled inferred-cohort.",
+    "gradingCoverage": "All inherited events graded; additions and remaining research gaps are described separately in REPORT.md."
+  },
+  "gradingCoverage": {
+    "existingEventsGraded": 2,
+    "newEvents": 4,
+    "historicalCompleteness": "partial; not an exhaustive census of qualifying votes, support changes or replacements"
+  },
+  "gaps": [
+    "RB-IMP: all retained events have editorial grades; unrecorded historical events are not proved absent, and null markers mean evidence does not establish the requested marker."
   ]
 }

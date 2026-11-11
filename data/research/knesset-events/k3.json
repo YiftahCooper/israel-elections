@@ -1,11 +1,44 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "knesset": 3,
-  "asOf": "2026-11-09",
+  "asOf": "2026-11-11",
   "coverage": "partial",
   "scope": "Observed dated faction membership transitions, not a complete register of House Committee decisions.",
   "seatsAfterDefinition": "Null means no government-support assignment is established by these records.",
   "events": [
+    {
+      "id": "k3-term-start",
+      "date": "1955-08-15",
+      "kind": "term-start",
+      "who": {},
+      "summary": {
+        "en": "3th Knesset membership begins.",
+        "he": "תחילת כהונת הכנסת ה־3."
+      },
+      "classification": "counts",
+      "reason": "The membership boundary defines the parliamentary term, independently of election day or government formation.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+3+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Initial/terminal member-tenure boundary; tenure record IDs 2276, 2300, 2306, 2321, 2325, 2334, 2341, 2345, 2354, 2368, 2374, 2386, 2409, 2415, 2427, 2434, 2440, 2450, 2455, 2461, 2469, 2475, 2484, 2494, 2500, 2509, 2525, 2532, 2547, 2553, 2560, 2579, 2583, 2593, 2607, 2610, 2618, 2642, 2674, 2691, 2713, 2748, 2780, 2792, 2807, 2815, 2824, 2829, 2845, 2850, 2876, 2887, 2921, 2930, 2936, 2946, 2951, 2966, 2973, 2995, 2998, 3002, 3006, 3016, 3025, 3030, 3038, 3068, 3077, 3087, 3091, 3094, 3111, 3123, 3133, 3138, 3143, 3145, 3160, 3178, 1368, 1397, 1403, 1422, 1441, 1468, 1486, 1489, 1499, 1508, 1517, 1527, 1543, 1548, 1572, 1619, 1626, 1648, 1662, 1716, 1721, 1744, 1751, 380, 385, 393, 401, 404, 409, 434, 442, 446, 447, 453, 472, 521, 527, 533, 551, 830",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "1955-08-15"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "supportEffect": "none-established",
+      "importance": "simple",
+      "importanceReason": "The membership boundary defines the parliamentary term, independently of election day or government formation.",
+      "marker": null
+    },
     {
       "id": "k3-observed-faction-0",
       "date": "1955-10-31",
@@ -53,7 +86,47 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
+    },
+    {
+      "id": "k3-government7-appointments",
+      "date": "1955-11-03",
+      "kind": "government-appointments-begin",
+      "who": {},
+      "summary": {
+        "en": "Initial appointments to government 7 begin.",
+        "he": "תחילת המינויים לממשלה ה־7."
+      },
+      "classification": "counts",
+      "reason": "Initial government appointments establish a new governing administration; the investiture roll call is not supplied by this record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%207%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "inspection": "retained-record",
+          "evidenceFamily": "knesset-parliament-info",
+          "locator": "data/meta/government-support-evidence.json /governments/7",
+          "supportingNote": "First appointment dates only; no roll-call or support total inferred.",
+          "effectiveDate": "1955-11-03"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "supportEffect": "none-established",
+      "governmentRef": {
+        "path": "data/meta/government-support-evidence.json",
+        "pointer": "/governments/7"
+      },
+      "importance": "simple",
+      "importanceReason": "Initial government appointments establish a new governing administration; the investiture roll call is not supplied by this record.",
+      "marker": null
     },
     {
       "id": "k3-observed-faction-1",
@@ -97,7 +170,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
     },
     {
       "id": "k3-observed-faction-2",
@@ -146,7 +222,97 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
+    },
+    {
+      "id": "k3-government8-appointments",
+      "date": "1958-01-07",
+      "kind": "government-appointments-begin",
+      "who": {},
+      "summary": {
+        "en": "Initial appointments to government 8 begin.",
+        "he": "תחילת המינויים לממשלה ה־8."
+      },
+      "classification": "counts",
+      "reason": "Initial government appointments establish a new governing administration; the investiture roll call is not supplied by this record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%208%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "inspection": "retained-record",
+          "evidenceFamily": "knesset-parliament-info",
+          "locator": "data/meta/government-support-evidence.json /governments/8",
+          "supportingNote": "First appointment dates only; no roll-call or support total inferred.",
+          "effectiveDate": "1958-01-07"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "supportEffect": "none-established",
+      "governmentRef": {
+        "path": "data/meta/government-support-evidence.json",
+        "pointer": "/governments/8"
+      },
+      "importance": "simple",
+      "importanceReason": "Initial government appointments establish a new governing administration; the investiture roll call is not supplied by this record.",
+      "marker": null
+    },
+    {
+      "id": "k3-term-end",
+      "date": "1959-11-30",
+      "kind": "term-end",
+      "who": {},
+      "summary": {
+        "en": "3th Knesset membership ends as the 4th Knesset begins.",
+        "he": "סיום כהונת הכנסת ה־3."
+      },
+      "classification": "counts",
+      "reason": "The membership boundary defines the parliamentary term, independently of election day or government formation.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+3+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Initial/terminal member-tenure boundary; tenure record IDs 2276, 2300, 2321, 2325, 2334, 2341, 2345, 2354, 2374, 2386, 2409, 2415, 2427, 2434, 2450, 2455, 2461, 2469, 2475, 2484, 2494, 2500, 2509, 2525, 2532, 2547, 2560, 2579, 2593, 2607, 2610, 2618, 2642, 2674, 2691, 2713, 2748, 2780, 2807, 2815, 2824, 2829, 2845, 2850, 2876, 2887, 2921, 2930, 2936, 2946, 2951, 2973, 2995, 2998, 3002, 3016, 3030, 3038, 3068, 3077, 3087, 3091, 3094, 3111, 3123, 3133, 3138, 3143, 3145, 3160, 3178, 1368, 1397, 1403, 1422, 1441, 1468, 1486, 1489, 1499, 1508, 1517, 1527, 1543, 1619, 1626, 1648, 1662, 1716, 1721, 1744, 1751, 385, 393, 401, 409, 434, 442, 446, 447, 472, 521, 551, 2947, 1459, 1455, 1382, 1250, 1726, 2602, 1710, 3173, 3051, 2723, 706, 2405, 1652, 2699, 2969",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "1959-11-30"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "supportEffect": "none-established",
+      "importance": "simple",
+      "importanceReason": "The membership boundary defines the parliamentary term, independently of election day or government formation.",
+      "marker": null
     }
+  ],
+  "method": {
+    "legacyClassification": "The inherited counts/does-not-count/hard-case field addresses the earlier continuing-support test; expert protest events may remain visible despite does-not-count. Use importance, marker scope and verification status separately.",
+    "importance": "Lowest display level; cumulative simple < standard < expert. Editorial judgement, separate from factual certainty.",
+    "marker": "D2 = individual left governing side; D3 = named continuing-coalition dissent on a specific vote; D4 = sourced party/individual move between government and opposition; replacement = sourced seat-holder change; null = no supported marker.",
+    "markerScope": "markerPersonIds restricts a marker on mixed events; factionIds are not an inferred roll call. No ideological left/right direction inferred.",
+    "timelineEligibility": "timelineEligible=false marks duplicate evidence, routine unsuccessful motions or unconfirmed leads; importance does not override verification. Coalesce related official-decision and membership evidence.",
+    "replacement": "Same-date list-level sets avoid arbitrary simultaneous pairings; candidatePositionHints are not a proved succession chain. Inferred reasons are labelled inferred-cohort.",
+    "gradingCoverage": "All inherited events graded; additions and remaining research gaps are described separately in REPORT.md."
+  },
+  "gradingCoverage": {
+    "existingEventsGraded": 3,
+    "newEvents": 4,
+    "historicalCompleteness": "partial; not an exhaustive census of qualifying votes, support changes or replacements"
+  },
+  "gaps": [
+    "RB-IMP: all retained events have editorial grades; unrecorded historical events are not proved absent, and null markers mean evidence does not establish the requested marker."
   ]
 }

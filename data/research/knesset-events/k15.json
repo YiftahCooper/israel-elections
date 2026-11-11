@@ -1,11 +1,81 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "knesset": 15,
-  "asOf": "2026-11-09",
+  "asOf": "2026-11-11",
   "coverage": "partial",
   "scope": "Observed dated faction membership transitions, not a complete register of House Committee decisions.",
   "seatsAfterDefinition": "Null means no government-support assignment is established by these records.",
   "events": [
+    {
+      "id": "k15-term-start",
+      "date": "1999-06-07",
+      "kind": "term-start",
+      "who": {},
+      "summary": {
+        "en": "15th Knesset membership begins.",
+        "he": "תחילת כהונת הכנסת ה־15."
+      },
+      "classification": "counts",
+      "reason": "The membership boundary defines the parliamentary term, independently of election day or government formation.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+15+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Initial/terminal member-tenure boundary; tenure record IDs 2065, 1761, 2084, 2092, 2118, 1763, 677, 2069, 679, 2076, 680, 691, 686, 1966, 1769, 2098, 2099, 687, 688, 1770, 1965, 2117, 2119, 2120, 2064, 1771, 2068, 1963, 1773, 1774, 2089, 1964, 1775, 1776, 1777, 2105, 1778, 1779, 1781, 1782, 1960, 2063, 1784, 2072, 2074, 1961, 1962, 1783, 2080, 1785, 1786, 2085, 2101, 1788, 1789, 1958, 1790, 2090, 1791, 1959, 1787, 2096, 1793, 1955, 1792, 2095, 1794, 1956, 2108, 2062, 2067, 2077, 2083, 2075, 1795, 2093, 2112, 2060, 1796, 1797, 1798, 1799, 1800, 681, 1801, 1802, 1953, 684, 1805, 2066, 1806, 2097, 2070, 2110, 1807, 1808, 2088, 2109, 2071, 1809, 2081, 1951, 1810, 2102, 2079, 2086, 2242, 692, 2055, 2056, 2259, 2270, 2271, 2521, 2628, 2632, 3169, 1416, 1496, 1577",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "1999-06-07"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "supportEffect": "none-established",
+      "importance": "simple",
+      "importanceReason": "The membership boundary defines the parliamentary term, independently of election day or government formation.",
+      "marker": null
+    },
+    {
+      "id": "k15-government28-appointments",
+      "date": "1999-07-06",
+      "kind": "government-appointments-begin",
+      "who": {},
+      "summary": {
+        "en": "Initial appointments to government 28 begin.",
+        "he": "תחילת המינויים לממשלה ה־28."
+      },
+      "classification": "counts",
+      "reason": "Initial government appointments establish a new governing administration; the investiture roll call is not supplied by this record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2028%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "inspection": "retained-record",
+          "evidenceFamily": "knesset-parliament-info",
+          "locator": "data/meta/government-support-evidence.json /governments/28",
+          "supportingNote": "First appointment dates only; no roll-call or support total inferred.",
+          "effectiveDate": "1999-07-06"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "supportEffect": "none-established",
+      "governmentRef": {
+        "path": "data/meta/government-support-evidence.json",
+        "pointer": "/governments/28"
+      },
+      "importance": "simple",
+      "importanceReason": "Initial government appointments establish a new governing administration; the investiture roll call is not supplied by this record.",
+      "marker": null
+    },
     {
       "id": "k15-observed-faction-0",
       "date": "1999-07-20",
@@ -44,7 +114,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A dated faction transfer materially changes parliamentary political affiliation, but the membership rows alone do not establish a change of governing side."
     },
     {
       "id": "k15-observed-faction-1",
@@ -84,7 +157,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
     },
     {
       "id": "k15-observed-faction-2",
@@ -124,7 +200,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
     },
     {
       "id": "k15-observed-faction-3",
@@ -163,7 +242,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A dated faction transfer materially changes parliamentary political affiliation, but the membership rows alone do not establish a change of governing side."
     },
     {
       "id": "k15-observed-faction-4",
@@ -204,7 +286,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A dated faction transfer materially changes parliamentary political affiliation, but the membership rows alone do not establish a change of governing side."
     },
     {
       "id": "k15-observed-faction-5",
@@ -243,7 +328,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A dated faction transfer materially changes parliamentary political affiliation, but the membership rows alone do not establish a change of governing side."
     },
     {
       "id": "k15-observed-faction-6",
@@ -285,7 +373,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A dated faction transfer materially changes parliamentary political affiliation, but the membership rows alone do not establish a change of governing side."
     },
     {
       "id": "k15-observed-faction-7",
@@ -325,7 +416,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A dated faction transfer materially changes parliamentary political affiliation, but the membership rows alone do not establish a change of governing side."
     },
     {
       "id": "k15-observed-faction-8",
@@ -366,7 +460,47 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A dated faction transfer materially changes parliamentary political affiliation, but the membership rows alone do not establish a change of governing side."
+    },
+    {
+      "id": "k15-government29-appointments",
+      "date": "2001-03-07",
+      "kind": "government-appointments-begin",
+      "who": {},
+      "summary": {
+        "en": "Initial appointments to government 29 begin.",
+        "he": "תחילת המינויים לממשלה ה־29."
+      },
+      "classification": "counts",
+      "reason": "Initial government appointments establish a new governing administration; the investiture roll call is not supplied by this record.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2029%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-07",
+          "type": "official",
+          "inspection": "retained-record",
+          "evidenceFamily": "knesset-parliament-info",
+          "locator": "data/meta/government-support-evidence.json /governments/29",
+          "supportingNote": "First appointment dates only; no roll-call or support total inferred.",
+          "effectiveDate": "2001-03-07"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "supportEffect": "none-established",
+      "governmentRef": {
+        "path": "data/meta/government-support-evidence.json",
+        "pointer": "/governments/29"
+      },
+      "importance": "simple",
+      "importanceReason": "Initial government appointments establish a new governing administration; the investiture roll call is not supplied by this record.",
+      "marker": null
     },
     {
       "id": "k15-observed-faction-9",
@@ -407,7 +541,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A dated faction transfer materially changes parliamentary political affiliation, but the membership rows alone do not establish a change of governing side."
     },
     {
       "id": "k15-observed-faction-10",
@@ -446,7 +583,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
     },
     {
       "id": "k15-observed-faction-11",
@@ -508,7 +648,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
     },
     {
       "id": "k15-observed-faction-12",
@@ -548,7 +691,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
     },
     {
       "id": "k15-observed-faction-13",
@@ -588,7 +734,10 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "standard",
+      "importanceReason": "A dated faction transfer materially changes parliamentary political affiliation, but the membership rows alone do not establish a change of governing side."
     },
     {
       "id": "k15-observed-faction-14",
@@ -627,7 +776,60 @@
       "certainty": "confirmed",
       "evidenceClass": "Official",
       "classificationBasis": "confirmed means an official database field or directly observed transition, not independent verification of legal effect or completeness",
-      "formalDecisionType": "unknown"
+      "formalDecisionType": "unknown",
+      "marker": null,
+      "importance": "expert",
+      "importanceReason": "A minor, constituent-party or record-name transition adds detail without an established change of government support."
+    },
+    {
+      "id": "k15-term-end",
+      "date": "2003-02-17",
+      "kind": "term-end",
+      "who": {},
+      "summary": {
+        "en": "15th Knesset membership ends as the 16th Knesset begins.",
+        "he": "סיום כהונת הכנסת ה־15."
+      },
+      "classification": "counts",
+      "reason": "The membership boundary defines the parliamentary term, independently of election day or government formation.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+15+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+          "publisher": "Knesset",
+          "accessed": "2026-11-07",
+          "evidenceFamily": "knesset-parliament-info",
+          "type": "official",
+          "date": null,
+          "inspection": "retained-record",
+          "locator": "Initial/terminal member-tenure boundary; tenure record IDs 2065, 2084, 2092, 2118, 1763, 677, 2069, 2076, 680, 691, 1966, 1769, 2098, 2099, 687, 688, 1770, 1965, 2117, 2119, 2120, 2064, 1771, 2068, 1963, 1773, 1774, 2089, 1964, 1775, 1777, 2105, 1778, 1779, 1781, 1782, 1960, 2063, 1784, 2072, 2074, 1961, 1962, 1783, 2080, 1786, 2085, 2101, 1788, 1789, 1958, 1790, 2090, 1791, 1959, 1787, 2096, 1955, 1792, 2095, 1794, 1956, 2108, 2062, 2067, 2077, 2083, 2075, 1795, 2093, 2112, 2060, 1796, 1797, 1798, 1799, 681, 1801, 1802, 1953, 684, 1805, 2066, 1806, 2097, 2070, 2110, 1807, 1808, 2088, 2109, 2071, 1809, 2081, 1951, 1810, 2102, 2079, 2086, 2632, 1780, 1957, 2078, 1762, 678, 1954, 1772, 1297, 1952, 1803, 2114, 685, 683, 2049, 2051, 2052, 2103, 2116, 2061, 2133",
+          "supportingNote": "Retained official membership rows establish identities and effective dates; reasons require the separately cited source.",
+          "effectiveDate": "2003-02-17"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "supportEffect": "none-established",
+      "importance": "simple",
+      "importanceReason": "The membership boundary defines the parliamentary term, independently of election day or government formation.",
+      "marker": null
     }
+  ],
+  "method": {
+    "legacyClassification": "The inherited counts/does-not-count/hard-case field addresses the earlier continuing-support test; expert protest events may remain visible despite does-not-count. Use importance, marker scope and verification status separately.",
+    "importance": "Lowest display level; cumulative simple < standard < expert. Editorial judgement, separate from factual certainty.",
+    "marker": "D2 = individual left governing side; D3 = named continuing-coalition dissent on a specific vote; D4 = sourced party/individual move between government and opposition; replacement = sourced seat-holder change; null = no supported marker.",
+    "markerScope": "markerPersonIds restricts a marker on mixed events; factionIds are not an inferred roll call. No ideological left/right direction inferred.",
+    "timelineEligibility": "timelineEligible=false marks duplicate evidence, routine unsuccessful motions or unconfirmed leads; importance does not override verification. Coalesce related official-decision and membership evidence.",
+    "replacement": "Same-date list-level sets avoid arbitrary simultaneous pairings; candidatePositionHints are not a proved succession chain. Inferred reasons are labelled inferred-cohort.",
+    "gradingCoverage": "All inherited events graded; additions and remaining research gaps are described separately in REPORT.md."
+  },
+  "gradingCoverage": {
+    "existingEventsGraded": 15,
+    "newEvents": 4,
+    "historicalCompleteness": "partial; not an exhaustive census of qualifying votes, support changes or replacements"
+  },
+  "gaps": [
+    "RB-IMP: all retained events have editorial grades; unrecorded historical events are not proved absent, and null markers mean evidence does not establish the requested marker."
   ]
 }
