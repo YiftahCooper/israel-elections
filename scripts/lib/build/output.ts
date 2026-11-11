@@ -10,7 +10,8 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 type WithBuildInfo = { buildInfo?: { builtAt: string } };
 
 export function writeIfChanged(path: string, value: object, serialize: (v: object) => string = v => JSON.stringify(v)): 'written' | 'unchanged' {
-  const previous = existsSync(path) ? readFileSync(path, 'utf8') : null;
+  // A trailing newline (added by editors and some tools) is not a content change.
+  const previous = existsSync(path) ? readFileSync(path, 'utf8').replace(/\n$/, '') : null;
   const next = serialize(value);
   if (previous !== null) {
     if (previous === next) return 'unchanged';

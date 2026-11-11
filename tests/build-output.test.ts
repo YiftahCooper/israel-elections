@@ -22,6 +22,11 @@ describe('dataset writer keeps unchanged files and their builtAt', () => {
     expect(readFileSync(file, 'utf8')).toBe(JSON.stringify(ds(1, 'T1')));
     expect(statSync(file).mtimeMs).toBe(before);
   });
+  it('treats a trailing newline on disk as unchanged (CI rebuilds before the fingerprint tests)', () => {
+    writeFileSync(file, JSON.stringify(ds(1, 'T1')) + '\n');
+    expect(writeIfChanged(file, ds(1, 'T2'))).toBe('unchanged');
+    expect(readFileSync(file, 'utf8')).toBe(JSON.stringify(ds(1, 'T1')) + '\n');
+  });
   it('rewrites with the new builtAt when any content changes', () => {
     writeFileSync(file, JSON.stringify(ds(1, 'T1')));
     expect(writeIfChanged(file, ds(2, 'T2'))).toBe('written');
