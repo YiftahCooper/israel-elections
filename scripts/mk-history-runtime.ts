@@ -255,8 +255,8 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
     if (!existsSync(`${root}/${path}`)) continue;
     for (const e of (read(path) as { events: KEvent[] }).events) {
       const who = e.who.personIds ?? [];
-      // person-specific acts only; faction moves come from the membership records; votes are point-in-time
-      if (!who.length || who.length > 3 || e.kind === 'faction-membership-change' || /vote|sworn|term-|rotation/.test(e.kind)) continue;
+      // person-specific acts only; faction moves and seat replacements come from the membership records; votes are point-in-time
+      if (!who.length || who.length > 3 || e.kind === 'faction-membership-change' || e.kind === 'member-replacement' || /vote|sworn|term-|rotation/.test(e.kind)) continue;
       if (e.classification === 'does not count' || !['confirmed', 'probable', 'provisional'].includes(e.certainty)) continue;
       const src = e.sources.filter((s) => s.url && /^https:\/\//.test(s.url)).map((s) => [s.publisher ?? new URL(s.url!).hostname, s.url!] as const);
       for (const p of who) if (terms.has(p)) (events.get(p) ?? events.set(p, []).get(p)!).push([e.date, e.kind, k, e.summary.en, e.summary.he, e.evidenceClass ?? '', src]);
