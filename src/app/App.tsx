@@ -2,7 +2,8 @@ import {inkOn} from '../data/colourGuard.ts';
 import { Info } from './components/ui.tsx';
 import { BoardChoices } from './components/BoardChoices.tsx';
 import { CustomPage } from './components/Feature.tsx';
-import { TOOL_FEATURES, RANK, LEVEL_LABELS, featureLabel, type Preset } from './features.ts';
+import { TabRow } from './components/TabRow.tsx';
+import { TOOL_FEATURES, RANK, featureLabel, type Preset } from './features.ts';
 import { electionContext } from '../data/electionContext.ts';
 import { PMResult } from './components/ElectionContext.tsx';
 import { createElement, memo, Suspense, use, useEffect, useLayoutEffect, useState, type ReactNode } from 'react';
@@ -185,10 +186,8 @@ function Shell() {
   const label = (id: Tab) => L(...featureLabel(id));
   const customPage = toolNow === 'custom';
   const tool: Tab = toolPick && TOOLS.some((t) => t.id === toolPick) ? toolPick : 'board';
-  // tools of this level first, then the others under a quiet label (never hidden)
+  // every tool, under its heading; this level's first, then the others under a quiet label (never hidden)
   const availableTools = TOOLS.filter(t => t.id === 'board' || customFeatures?.[t.id] !== 'hidden');
-  const ordered = [...availableTools.filter((t) => RANK[t.level] <= RANK[level]), ...availableTools.filter((t) => RANK[t.level] > RANK[level])];
-  const firstLocked = ordered.findIndex((t) => RANK[t.level] > RANK[level]);
   // a tool is a page of its own; the board keeps its state (selection, open figures) when you come back
   const openTool = (id: Tab) => { setState({ tool: id }); window.scrollTo({ top: 0 }); };
   const selected = selectedListId && s.lists.some((l) => l.id === selectedListId) ? selectedListId : null;
@@ -199,23 +198,8 @@ function Shell() {
     <div className={`app ${preview ? 'board-preview' : ''}`} data-coloured={tool !== 'after' && resultChanges(committed, base).length ? '' : undefined} style={{ ['--scenario-color' as string]: tool !== 'after' && resultChanges(committed, base).length ? liveScenarioColor(committed, saved) : undefined, ['--scenario-ink' as string]:inkOn(liveScenarioColor(committed,saved)) }}>
       <TopBar s={pmOnly ? null : committed} r={cr} ds={ds} baseR={baseR} pmContestId={pmContestId} onContestChange={setPMContestId} />
       {pmOnly ? <main className="work"><PMResult contest={pmOnly} onKnesset={() => setPMContestId(null)} /></main> : <>
-      <nav className="toolbar" aria-label={L('Tools', 'כלים')}><div ref={trackTabOverflow} className="tabs" role="tablist" aria-label={L('Tools', 'כלים')}>
-                {ordered.map((t, i) => [
-                  i === firstLocked ? <span key="more" className="more-label" aria-hidden>{L('More in other levels', 'עוד ברמות אחרות')}</span> : null,
-                  <button key={t.id} id={`tab-${t.id}`} role="tab" aria-selected={!customPage && tool === t.id} aria-controls="analysis-panel" tabIndex={tool === t.id ? 0 : -1}
-                  className={RANK[t.level] > RANK[level] ? 'locked' : ''}
-                  onClick={() => openTool(t.id)} onPointerEnter={() => prefetchTab(t.id)} onFocus={() => prefetchTab(t.id)}
-                  onKeyDown={(e) => {
-                    const rtl = lang === 'he';
-                    const next = e.key === 'Home' ? 0 : e.key === 'End' ? ordered.length - 1
-                      : e.key === (rtl ? 'ArrowLeft' : 'ArrowRight') ? (i + 1) % ordered.length
-                      : e.key === (rtl ? 'ArrowRight' : 'ArrowLeft') ? (i - 1 + ordered.length) % ordered.length : -1;
-                    if (next < 0) return;
-                    e.preventDefault(); setState({ tool: ordered[next].id });
-                    (document.getElementById(`tab-${ordered[next].id}`) as HTMLElement | null)?.focus();
-                  }}>{label(t.id)}{RANK[t.level] > RANK[level] && <span className="sr-only"> ({L(...LEVEL_LABELS[t.level])})</span>}</button>,
-                ])}
-              </div></nav>
+      <TabRow tools={availableTools} level={level} selected={customPage ? null : tool} label={(id) => label(id as Tab)}
+        onOpen={(id) => openTool(id as Tab)} onKey={(id) => setState({ tool: id as Tab })} onPrefetch={(id) => prefetchTab(id as Tab)} />
       {tool !== 'after' && <ChangeSummary s={committed} r={cr} base={base} baseR={baseR} ds={ds} />}
       <main className="work">
         {customPage ? <CustomPage /> : tool === 'board' ? (
@@ -306,16 +290,4 @@ function Toast() {
     {(keep || t.action) && <button type="button" className="btn small ghost icon-only toast-close" aria-label={L('Close', 'סגירה')} onClick={() => setState({ toast: null })}><X className="icon sm" aria-hidden /></button>}
   </div>;
   return host ? createPortal(node, host) : node;
-}
-
-/** Keep the trailing fade only while more tools remain outside the visible strip. */
-function trackTabOverflow(el: HTMLDivElement | null) {
-  if (!el) return;
-  const update = () => el.toggleAttribute('data-more', el.scrollWidth - el.clientWidth - Math.abs(el.scrollLeft) > 1);
-  const observer = new ResizeObserver(update);
-  observer.observe(el); el.addEventListener('scroll', update, { passive: true });
-  const content = new MutationObserver(update);
-  content.observe(el, { childList: true, subtree: true, characterData: true });
-  void document.fonts.ready.then(update);
-  return () => { observer.disconnect(); content.disconnect(); el.removeEventListener('scroll', update); };
 }
