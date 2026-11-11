@@ -197,3 +197,43 @@ test('Copy votes for every list from the top of the Lists panel; Always makes th
   await copyLikud(page);
   await expect(box(page).getByRole('radio', { name: /Same number of votes/ })).toBeChecked();
 });
+
+test('Turnout follows the compared result and copies eligible voters and turnout from it', async ({ page }) => {
+  await start(page, 'en', 'expert');
+  await turnOn(page);
+  await page.getByRole('tab', { name: 'Turnout', exact: true }).click();
+  const fact = (id: string) => page.locator(`.tn-fact[data-fact="${id}"]`);
+  await expect(fact('registered').locator('.tn-since')).toContainText('since 2022');
+  await fact('registered').getByRole('button', { name: 'Copy 2022\'s eligible voters' }).click();
+  await expect(page.locator('.toast').filter({ hasText: 'Eligible voters copied from 2022.' })).toBeVisible();
+  await expect(fact('registered').locator('.tn-v')).toContainText('6,788,804');
+  await expect(fact('registered').locator('.tn-since')).toContainText('±0');
+  await fact('turnout').getByRole('button', { name: 'Copy 2022\'s turnout' }).click();
+  await expect(page.locator('.toast').filter({ hasText: 'Turnout copied from 2022.' })).toBeVisible();
+  await expect(fact('turnout').locator('.tn-since')).toHaveText(/^0 pp since 2022/);
+  // invalid ballots too, at Expert
+  await expect(fact('invalid').getByRole('button', { name: 'Copy 2022\'s invalid ballots' })).toBeVisible();
+  await page.getByRole('button', { name: /^Undo:/ }).click();
+  await expect(fact('registered').locator('.tn-v')).toContainText('6,788,804');
+});
+
+test('Rules (Expert) copies the threshold, the rules or the surplus agreements; Blocs and Coalitions show 2022 beside yours', async ({ page }) => {
+  await start(page, 'en', 'expert');
+  await turnOn(page);
+  // Blocs on the Overview: 2022's own grouping under yours
+  await expect(page.locator('.cmpm-refblocs')).toContainText('2022');
+  await expect(page.locator('.cmpm-refblocs .corridor').first()).toContainText('64');
+  await page.getByRole('tab', { name: 'Rules', exact: true }).click();
+  const row = page.locator('.cmpm-rules-copy');
+  await expect(row).toContainText('The threshold 3.25%');
+  await row.getByRole('button', { name: 'Copy 2022\'s threshold' }).click();
+  await expect(page.locator('.toast').filter({ hasText: 'Already the same.' })).toBeVisible();
+  await row.getByRole('button', { name: 'Copy 2022\'s surplus agreements' }).click();
+  await expect(page.locator('.toast').filter({ hasText: /Surplus agreements copied from 2022\. \d+ not copied: no counterpart\./ })).toBeVisible();
+  await expect(page.getByRole('button', { name: /^Undo:/ })).toBeVisible();
+  // Coalitions: each partner's 2022 seats and their lists' 2022 total
+  await page.getByRole('tab', { name: 'Coalitions', exact: true }).click();
+  await page.locator('.coal-choice').first().getByRole('button', { name: 'In', exact: true }).click();
+  await expect(page.locator('.coal-partners li').filter({ hasText: 'Likud' }).locator('.cmpm-coal-ref')).toHaveText('2022: 32');
+  await expect(page.locator('.cmpm-coal-total').first()).toContainText('Their lists in 2022: 32');
+});

@@ -71,3 +71,15 @@
 .cmpm-side-head { display: flex; align-items: center; gap: 10px; margin-block-end: 8px; }
 .cmpm-side-head h2 { margin: 0; font-size: 18px; }
 .cmpm-side-close { margin-inline-start: auto; }
+
+/* "Copy 2022's" beside a key number (Turnout, Rules) */
+.tn-copy { margin: 4px 0 0; }
+.cmpm-copy-other { font-size: 12px; padding: 2px 8px; }
+.cmpm-rules-copy { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 4px 0 8px; }
+
+/* Blocs while comparing: the compared result's bloc bar under yours, same scale and majority line */
+.cmpm-refblocs { margin-top: 8px; }
+.cmpm-refblocs-head { margin: 0 0 2px; }
+.cmpm-refblocs .corridor { cursor: default; background-image: repeating-linear-gradient(135deg, transparent 0 5px, color-mix(in srgb, var(--bc) 18%, transparent) 5px 7px); }
+.cmpm-refblocs .corridor:hover { border-color: color-mix(in srgb, var(--bc) 35%, transparent); }
+.cmpm-refblocs .milestone { height: 30px; }
