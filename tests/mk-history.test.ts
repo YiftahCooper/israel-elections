@@ -77,7 +77,7 @@ describe('runs that did not win a seat', () => {
     expect(Object.keys(rt.failedRunCoverage.partial)).toEqual(['16', '17']);
     expect(rt.failedRunCoverage.partial[16]).toContain('16-מחל'); // Likud 2003: the whole list
     expect(rt.failedRunCoverage.partial[16]).not.toContain('16-אמת'); // Labor–Meimad 2003: only those elected
-    expect(rt.failedRunCoverage.excluded[26]).toEqual(['26-בי']); // a roster copied from a secondary site
+    expect(rt.failedRunCoverage.excluded[26] ?? []).toEqual([]); // both formerly secondary rosters verified against YP 15023
     for (const p of Object.values(rt.people)) for (const r of p.runs) if (r[3] === 'out') {
       const k = r[0];
       const ok = rt.failedRunCoverage.full.includes(k) ? !(rt.failedRunCoverage.excluded[k] ?? []).includes(r[1]) : (rt.failedRunCoverage.partial[k] ?? []).includes(r[1]);

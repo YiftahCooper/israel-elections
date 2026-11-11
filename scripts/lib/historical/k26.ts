@@ -1,12 +1,11 @@
 // 26th Knesset (2026): CEC result CSVs (final count), the CEC list pages captured from gov.il,
-// two secondary bechirot.fyi rosters for pages that failed to render, and the surplus gazette.
+// the reviewed candidate gazette for two missing pages, and the surplus gazette.
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Candidate, ElectionDataset } from '../../../src/data/schema.ts';
 import { DATASET_SCHEMA_VERSION } from '../../../src/data/schema.ts';
 import { joinItems, pdfLines } from '../pdf-text.ts';
 import { BLOCS } from '../list-meta.ts';
-import { htmlCells } from '../build/cec-html.ts';
 import { checkLocalitiesMatchPolling, geographyTotals, localityDataset, readCsvRows, sumRows } from '../build/locality.ts';
 import { agreementRecords, listRecord } from '../build/records.ts';
 import { candidateId, sortAndCheckRanks } from '../build/roster.ts';
@@ -70,28 +69,6 @@ function parseGovilPages(unrecognised: string[]): PageList[] {
   return out;
 }
 
-/** Secondary roster (bechirot.fyi) for an official page the capture could not render. */
-function parseFyi(letters: string): { nameHe: string; sponsors: string[]; candidates: PageCandidate[]; updated: string } {
-  const tok = htmlCells(readFileSync(join(RAW, `k26/secondary/bechirot-fyi-list-${letters}.html`), 'utf8'), { dropStyles: true, collapse: false });
-  const iCount = tok.findIndex(x => x.startsWith('מועמדים ברשימה'));
-  const nameHe = tok[iCount - 3].replace(/\s*–\s*הרשימה אינה מתמודדת.*$/, '');
-  const sponsorLine = tok[iCount + 1].startsWith('מטעם') ? tok[iCount + 1] : '';
-  const sponsors = sponsorLine.replace(/\.$/, '').replace(/^מטעם /, '').split(/ ומטעם /).map(s => s.replace(/^מפלגת /, '').trim()).filter(Boolean);
-  const candidates: PageCandidate[] = [];
-  for (let k = iCount + 1; k < tok.length; k++) {
-    if (tok[k].startsWith('הסדר הוא')) break;
-    if (/^\d+$/.test(tok[k]) && !/^שאר הרשימה/.test(tok[k - 1] ?? '') && tok[k + 1] && !/^\d+$/.test(tok[k + 1]) && !/^מועמדים$/.test(tok[k + 1])) {
-      const name = tok[k + 1];
-      const maybeParty = tok[k + 2];
-      const party = maybeParty && !/^\d+$/.test(maybeParty) && !/^שאר הרשימה|^הסדר/.test(maybeParty) ? maybeParty : undefined;
-      candidates.push({ rank: Number(tok[k]), name, party });
-      k += party ? 2 : 1;
-    }
-  }
-  const updated = tok[tok.findIndex(x => x.startsWith(', עודכן')) + 1] ?? '';
-  return { nameHe, sponsors, candidates, updated };
-}
-
 /** Agreements: Yalkut HaPirsumim 15045, p. 1098. The notice sits in the right-hand column of page 4;
  *  each numbered item reads "(n) <list> - <letters> / עם / <list> - <letters>;". Pairs are parsed
  *  from the gazette itself, and must name existing ballot letters. */
@@ -142,7 +119,7 @@ async function resultsNotice(letters: string[]) {
   return { votes: rows(s1, valid), valid: num(lines[valid]), invalid: num(lines[invalid]), seats: rows(s3, seatsTotal), seatsTotal: num(lines[seatsTotal]), winners };
 }
 
-const SOURCE_IDS = ['k26-localities-csv', 'k26-ballots-csv', 'k26-list-pages', 'k26-surplus-gazette', 'k26-official-results', 'k26-results-gazette'];
+const SOURCE_IDS = ['k26-localities-csv', 'k26-ballots-csv', 'k26-list-pages', 'k26-candidates-gazette', 'k26-surplus-gazette', 'k26-official-results', 'k26-results-gazette'];
 
 export async function buildK26() {
   const rawSha256 = verifySources(SOURCE_IDS, check);
@@ -171,21 +148,24 @@ export async function buildK26() {
     if (fb && !p.letters) { check(p.nameHe.startsWith(fb.nameStarts), `k26: guide fallback name mismatch for ${p.url}`); p.letters = fb.letters; }
   }
   const unmatchedPages = pages.filter(p => !p.letters);
-  const fyiLetters = ['בי', 'כן']; // official pages that failed to render (see SOURCES.json)
-  const unmatchedLetters = letters.filter(L => !pages.some(p => p.letters === L) && !fyiLetters.includes(L));
+  const reviewed = JSON.parse(readFileSync(join(RAW, 'k26/candidates-gazette.reviewed.json'), 'utf8')) as { lists: { letters: string; nameHe: string; sponsors: string[]; candidates: PageCandidate[] }[] };
+  const gazetteLetters = ['בי', 'כן']; // missing page captures, now visually checked against YP 15023
+  check(reviewed.lists.length === 2 && gazetteLetters.every(L => reviewed.lists.some(l => l.letters === L)), 'k26: reviewed gazette coverage changed');
+  const unmatchedLetters = letters.filter(L => !pages.some(p => p.letters === L) && !gazetteLetters.includes(L));
   check(unmatchedPages.length === unmatchedLetters.length && unmatchedPages.length <= 1, `k26: cannot resolve ballot letters for ${unmatchedPages.map(p => p.url).join(', ')} / ${unmatchedLetters.join(',')}`);
   if (unmatchedPages.length === 1) unmatchedPages[0].letters = unmatchedLetters[0];
   check(pages.find(p => p.letters === 'י')?.nameHe.startsWith('ישראל תחילה'), 'k26: list י did not resolve to ישראל תחילה');
   const byLetters = new Map(pages.map(p => [p.letters, p]));
   const lists = letters.map((L, i) => {
     const id = `26-${L}`;
-    const p = byLetters.get(L);
-    let nameHe: string; let sponsors: string[]; let cands: PageCandidate[]; let notes: string[] = []; let secondary = false;
+    const p = gazetteLetters.includes(L) ? undefined : byLetters.get(L);
+    let nameHe: string; let sponsors: string[]; let cands: PageCandidate[]; let notes: string[] = []; const gazetted = gazetteLetters.includes(L);
     if (p) { nameHe = p.nameHe; sponsors = p.sponsors; cands = p.candidates; notes = p.notes; }
     else {
-      const f = parseFyi(L); // only for pages the official capture could not render
-      nameHe = f.nameHe; sponsors = f.sponsors; cands = f.candidates; secondary = true;
-      notes = [`רשימת המועמדים נלקחה ממקור משני (bechirot.fyi, עדכון ${f.updated}) משום שעמוד ועדת הבחירות לא נטען.`];
+      const f = reviewed.lists.find(l => l.letters === L);
+      check(f, `k26 ${L}: no reviewed official roster`);
+      nameHe = f!.nameHe; sponsors = f!.sponsors; cands = f!.candidates;
+      notes = [`רשימת המועמדים: רשומות, ילקוט הפרסומים 15023 (13.10.2026), עמ׳ ${L === 'בי' ? '834' : '851'}; הפרסום הרשמי נקרא מעותק באתר olaw.org.il (אתר מראה).`];
     }
     if (L === 'ק') notes.push('שם הרשימה בעמוד המועמדים: דרך חזון ותקומה; בטבלת התוצאות הסופיות של הוועדה: תקומה (k26-official-results).');
     if (L === 'קך') notes.push('בעמוד המועמדים: ולבחירות אישיות; בטבלת התוצאות הסופיות של הוועדה: ובחירות אישיות (k26-official-results).');
@@ -197,7 +177,7 @@ export async function buildK26() {
     const candidates: Candidate[] = cands.map(c => ({ id: candidateId(id, c.rank), rank: c.rank, nameHe: c.name, partyHe: c.party ?? singleSponsor }));
     return listRecord(26, i, {
       letters: L, nameHe, votes: locTot.votes[i], sponsorsHe: sponsors.join('; '), partiesHe: sponsors, withdrawn, candidates,
-      candidatesSource: secondary ? 'k26-secondary-fyi' : 'k26-list-pages', candidatesSecondary: secondary, notesHe: notes,
+      candidatesSource: gazetted ? 'k26-candidates-gazette' : 'k26-list-pages', candidatesSecondary: false, notesHe: notes,
     });
   });
 
@@ -231,7 +211,7 @@ export async function buildK26() {
     totals: { registered: locTot.registered, votesCast: locTot.votesCast, invalid: locTot.invalid, valid: locTot.valid, ballotBoxes: ballotRows.length, ...geographyTotals(locRows) },
     lists, agreements: agreementRecords(26, await agreementPairs(letters), 'k26-surplus-gazette'), blocs: BLOCS.k26,
     officialSeats: Object.fromEntries(official.lists.map(l => [`26-${l.letters}`, l.seats])), officialSeatsSourceId: 'k26-results-gazette',
-    sourceIds: ['k26-localities-csv', 'k26-ballots-csv', 'k26-list-pages', 'k26-secondary-fyi', 'k26-surplus-gazette', 'k26-national-snapshot', 'k26-official-results', 'k26-results-gazette', 'law-elections'],
+    sourceIds: ['k26-localities-csv', 'k26-ballots-csv', 'k26-list-pages', 'k26-candidates-gazette', 'k26-surplus-gazette', 'k26-national-snapshot', 'k26-official-results', 'k26-results-gazette', 'law-elections'],
     buildInfo: { builtAt: new Date().toISOString(), rawSha256 },
   };
   const warnings = unrecognised.length ? [`k26: ${unrecognised.length} unrecognised line(s) on list pages were not published as notes:\n  ${unrecognised.join('\n  ')}`] : [];

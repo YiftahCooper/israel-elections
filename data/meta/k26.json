@@ -1294,17 +1294,17 @@
    "seats": 0,
    "sources": [
     {
-     "url": "https://bechirot.fyi/lists/26/בי",
-     "publisher": "bechirot.fyi (independent transcription of the CEC list page)",
-     "kind": "secondary",
-     "quote": "מטעם המפלגות: צומת - התנועה לציונות מתחדשת; בית ימני חברתי ציוני לכלל עם ישראל",
-     "accessed": "2026-11-04"
+     "url": "https://olaw.org.il/yalkut/yalkut-15023.pdf#page=8",
+     "publisher": "Reshumot / CEC, YP 15023 (13 October 2026), p.834; retrieved from olaw.org.il (public mirror)",
+     "kind": "official",
+     "quote": "מטעם המפלגות: בית ימני חברתי ציוני לכלל ישראל, צומת - התנועה לציונות מתחדשת",
+     "accessed": "2026-11-12"
     }
    ],
    "parties": [
     {
      "id": "beit-yemini",
-     "nameHe": "בית ימני חברתי ציוני לכלל עם ישראל",
+     "nameHe": "בית ימני חברתי ציוני לכלל ישראל",
      "nameEn": "Beit Yemini",
      "candidateRanks": [
       1,
@@ -1316,14 +1316,14 @@
      ],
      "sources": [
       {
-       "url": "https://bechirot.fyi/lists/26/בי",
-       "publisher": "bechirot.fyi (independent transcription of the CEC list page)",
-       "kind": "secondary",
-       "quote": "מטעם המפלגות: צומת - התנועה לציונות מתחדשת; בית ימני חברתי ציוני לכלל עם ישראל — party column for these candidates: בית ימני חברתי ציוני לכלל עם ישראל",
-       "accessed": "2026-11-04"
+       "url": "https://olaw.org.il/yalkut/yalkut-15023.pdf#page=8",
+       "publisher": "Reshumot / CEC, YP 15023 (13 October 2026), p.834; retrieved from olaw.org.il (public mirror)",
+       "kind": "official",
+       "quote": "מטעם המפלגות: בית ימני חברתי ציוני לכלל ישראל, צומת - התנועה לציונות מתחדשת — party column for these candidates: בית ימני חברתי ציוני לכלל ישראל",
+       "accessed": "2026-11-12"
       }
      ],
-     "confidence": "medium"
+     "confidence": "high"
     },
     {
      "id": "tzomet",
@@ -1339,14 +1339,14 @@
      ],
      "sources": [
       {
-       "url": "https://bechirot.fyi/lists/26/בי",
-       "publisher": "bechirot.fyi (independent transcription of the CEC list page)",
-       "kind": "secondary",
-       "quote": "מטעם המפלגות: צומת - התנועה לציונות מתחדשת; בית ימני חברתי ציוני לכלל עם ישראל — party column for these candidates: צומת - התנועה לציונות מתחדשת",
-       "accessed": "2026-11-04"
+       "url": "https://olaw.org.il/yalkut/yalkut-15023.pdf#page=8",
+       "publisher": "Reshumot / CEC, YP 15023 (13 October 2026), p.834; retrieved from olaw.org.il (public mirror)",
+       "kind": "official",
+       "quote": "מטעם המפלגות: בית ימני חברתי ציוני לכלל ישראל, צומת - התנועה לציונות מתחדשת — party column for these candidates: צומת - התנועה לציונות מתחדשת",
+       "accessed": "2026-11-12"
       }
      ],
-     "confidence": "medium"
+     "confidence": "high"
     }
    ],
    "unassignedRanks": [],
@@ -1359,7 +1359,7 @@
       "englishName": {
         "label": "Tzomet Beit Yisrael",
         "kind": "transliteration",
-        "sourceId": "k26-secondary-fyi",
+        "sourceId": "k26-candidates-gazette",
         "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
       }
     },
@@ -1542,6 +1542,15 @@
     {
       "letters": "זך",
       "nameHe": "הציבור החרדי בראשות מוטי ליטנר",
+      "sources": [
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-15023.pdf#page=22",
+          "publisher": "Reshumot / CEC, YP 15023 (13 October 2026), p.848; retrieved from olaw.org.il (public mirror)",
+          "kind": "official",
+          "quote": "מטעם המפלגה: למען אחיי מפלגת כלל ישראל",
+          "accessed": "2026-11-12"
+        }
+      ],
       "englishName": {
         "label": "HaTzibur HaHaredi",
         "kind": "transliteration",
@@ -1662,6 +1671,15 @@
     {
       "letters": "רץ",
       "nameHe": "הקהל – מפלגה כלל חרדית שנציגיה נבחרים על ידי הציבור בראשות הרב שלמה אלבוים",
+      "sources": [
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-15023.pdf#page=36",
+          "publisher": "Reshumot / CEC, YP 15023 (13 October 2026), p.862; retrieved from olaw.org.il (public mirror)",
+          "kind": "official",
+          "quote": "מטעם המפלגה: מחנה ישראל",
+          "accessed": "2026-11-12"
+        }
+      ],
       "englishName": {
         "label": "HaKahal",
         "kind": "transliteration",
@@ -1742,6 +1760,15 @@
     {
       "letters": "צבי",
       "nameHe": "תנועת אחי תנועתו של הרב יורם אברג'ל זצ\"ל",
+      "sources": [
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-15023.pdf#page=33",
+          "publisher": "Reshumot / CEC, YP 15023 (13 October 2026), p.859; retrieved from olaw.org.il (public mirror)",
+          "kind": "official",
+          "quote": "מטעם המפלגה: חוזרים לשורשים",
+          "accessed": "2026-11-12"
+        }
+      ],
       "englishName": {
         "label": "Tnuat Ahi",
         "kind": "transliteration",

@@ -54,3 +54,31 @@ describe('k26 audit corrections', () => {
     ]);
   });
 });
+
+describe('k26 candidate gazette YP 15023, read from a disclosed mirror', () => {
+  const ds = JSON.parse(readFileSync('public/data/k26.json', 'utf8'));
+  it('retains the reviewed ranks and party assignments as primary evidence', () => {
+    const review = JSON.parse(readFileSync('data/raw/k26/candidates-gazette.reviewed.json', 'utf8'));
+    for (const r of review.lists) {
+      const l = ds.lists.find((l: { letters: string }) => l.letters === r.letters);
+      expect(l.candidatesSource).toBe('k26-candidates-gazette');
+      expect(l.candidatesSecondary).toBe(false);
+      expect(l.notesHe[0]).toContain('olaw.org.il');
+      expect(l.candidates.map((c: { rank: number; nameHe: string; partyHe: string }) => [c.rank, c.nameHe, c.partyHe]))
+        .toEqual(r.candidates.map((c: { rank: number; name: string; party: string }) => [c.rank, c.name, c.party]));
+    }
+    const tzomet = ds.lists.find((l: { letters: string }) => l.letters === 'בי');
+    expect(tzomet.candidates.filter((c: { partyId: string }) => c.partyId === 'beit-yemini').map((c: { rank: number }) => c.rank)).toEqual([1, 3, 4, 5, 8, 9]);
+    expect(tzomet.parties.find((p: { id: string }) => p.id === 'beit-yemini').nameHe).toBe('בית ימני חברתי ציוני לכלל ישראל');
+  });
+  it('preserves both withdrawals and the already matching submitting-party names', () => {
+    for (const [letters, name] of [['זך', 'למען אחיי מפלגת כלל ישראל'], ['רץ', 'מחנה ישראל'], ['צבי', 'חוזרים לשורשים']]) {
+      expect(ds.lists.find((l: { letters: string }) => l.letters === letters).sponsorsHe).toBe(name);
+    }
+    const blue = ds.lists.find((l: { letters: string }) => l.letters === 'כן');
+    expect(blue).toMatchObject({ withdrawn: true, votes: 0 });
+    expect(blue.candidates).toHaveLength(39);
+    expect(blue.notesHe).toContain('ועדת הבחירות המרכזית: "הרשימה אינה מתמודדת בבחירות לכנסת ה-26".');
+    expect(ds.lists.find((l: { letters: string }) => l.letters === 'צבי')).toMatchObject({ withdrawn: true, candidates: [], votes: 0 });
+  });
+});
