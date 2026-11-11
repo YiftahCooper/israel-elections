@@ -4,7 +4,7 @@ import { describe, expect, test } from 'vitest';
 import { mkdtempSync, mkdirSync, readFileSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { compileTermTimeline, type TermRuntime } from '../scripts/term-timeline-runtime.ts';
+import { compileTermTimeline, fixOrdinals, type TermRuntime } from '../scripts/term-timeline-runtime.ts';
 import { chamberOrder, holderAt, stepMarks, visibleItem, visibleSteps, type TimelineChoice } from '../src/history/termTimeline.ts';
 import { settingDefault } from '../src/app/settings.ts';
 
@@ -36,8 +36,9 @@ describe('seats and who held them', () => {
     expect(h.slice(1).map((x) => x[4])).toEqual(['record', 'record', 'record']);
     expect(k24.seats[seat].list).toBe('24-שס');
   });
-  test('only terms whose research establishes the government’s support have a timeline', () => {
-    expect(Object.values(rt.terms).filter((t) => t.timeline).map((t) => t.k)).toEqual([24, 25]);
+  test('a timeline only where the sides can be derived: the 24th and 25th, and the two Knessets in which no government was formed', () => {
+    expect(Object.values(rt.terms).filter((t) => t.timeline).map((t) => t.k)).toEqual([21, 22, 24, 25]);
+    expect(Object.values(rt.terms).filter((t) => t.timeline?.noGovernment).map((t) => t.k)).toEqual([21, 22]);
   });
 });
 
@@ -154,6 +155,35 @@ describe('stepping (owner, 12 Nov): the arrows stop at every event the bar shows
     expect(group).toHaveLength(2);
     const step24 = k24.timeline!.steps.filter((s) => s.items.some((it) => group.includes(it.id)));
     expect(step24).toHaveLength(1);
+  });
+  test('a faction move carries its factions and head count, so the app can name them', () => {
+    const it = k25.timeline!.steps.flatMap((s) => s.items).find((x) => x.id === 'k25-observed-faction-5')!;
+    expect(it.factions).toEqual([1098, 1110]); expect(it.count).toBe(8);
+  });
+  test('ordinals in the research’s generated English are corrected', () => {
+    expect(fixOrdinals('21th Knesset membership ends as the 22th Knesset begins.')).toBe('21st Knesset membership ends as the 22nd Knesset begins.');
+    expect(fixOrdinals('1th, 2th, 3th, 11th, 12th, 13th, 111th, 24th')).toBe('1st, 2nd, 3rd, 11th, 12th, 13th, 111th, 24th');
+  });
+});
+
+describe('Knessets in which no government was formed (21st, 22nd)', () => {
+  const k21 = rt.terms[21], k22 = rt.terms[22];
+  test('no sides at any step; the formation attempts and the dissolution are steps, with their sources', () => {
+    for (const t of [k21, k22]) expect(t.timeline!.steps.every((s) => s.coalition === null)).toBe(true);
+    expect(visibleSteps(k21, at('simple')).map((s) => s.step.date)).toEqual(['2019-04-30', '2019-05-30', '2019-10-03']);
+    expect(visibleSteps(k22, at('simple')).map((s) => s.step.date)).toEqual(['2019-10-03', '2019-12-12', '2020-03-16']);
+    const kinds22 = visibleSteps(k22, at('standard', 'important')).flatMap((s) => s.items.map((it) => it.kind));
+    expect(kinds22.filter((k) => k === 'formation-mandate-returned')).toHaveLength(2); // Netanyahu, then Gantz
+    const dissolved = k21.timeline!.steps.flatMap((s) => s.items).find((it) => it.kind === 'formation-knesset-dissolved')!;
+    expect(dissolved.importanceFrom).toBe('rule');
+    expect(dissolved.en).toContain('74 for · 45 against');
+    expect(dissolved.sources.length).toBeGreaterThan(0);
+    // one dissolution, though the After the election data records it twice (formation and term end)
+    expect(k21.timeline!.steps.flatMap((s) => s.items).filter((it) => it.kind === 'formation-knesset-dissolved')).toHaveLength(1);
+  });
+  test('formation events before the first sitting are not on the bar', () => {
+    expect(k22.timeline!.steps[0].date).toBe(k22.opening);
+    expect(k22.timeline!.steps.flatMap((s) => s.items).some((it) => it.en?.includes('tasked Benjamin Netanyahu'))).toBe(false);
   });
 });
 

@@ -43,7 +43,9 @@ export interface TimelineItem {
   type: 'event' | 'seat';
   kind: string;
   importance: Importance;
-  importanceFrom: 'data' | 'fallback';
+  /** data: graded by the research lane; fallback: the temporary mapping below; rule: FORMATION_IMPORTANCE (events from the
+   *  After the election data, which the research lane does not grade) */
+  importanceFrom: 'data' | 'fallback' | 'rule';
   marker: Marker | null;
   markerFrom: 'data' | 'fallback';
   /** short text; null for seat changes (the app writes them from the names) */
@@ -58,6 +60,8 @@ export interface TimelineItem {
   seat?: number; in?: number | null; out?: number | null; change?: SeatChangeKind; reason?: string | null;
   /** the research holds this event out of the steps; it still shapes the chamber */
   held?: true;
+  /** faction-membership changes: the factions [from, to] and how many members moved (the app names them) */
+  factions?: readonly [number, number]; count?: number;
 }
 export interface TimelineStep {
   date: string;
@@ -72,8 +76,8 @@ export interface TermRuntime {
   seats: SeatRuntime[];
   /** person id → the seat they held from the first sitting */
   openingSeat: Record<number, number>;
-  /** present only for terms whose events establish a government's support */
-  timeline: { steps: TimelineStep[]; firstGovernment: string } | null;
+  /** present only for terms whose events establish a government's support, or in which no government was formed */
+  timeline: { steps: TimelineStep[]; firstGovernment: string | null; noGovernment?: true } | null;
 }
 export interface TermTimelineRuntime { version: 1; terms: Record<number, TermRuntime>; anomalies: string[] }
 
@@ -93,6 +97,8 @@ type KEvent = {
   replacement?: { reason?: string; memberChangesRefs?: { path: string; pointer: string }[] };
   /** events sharing a group are one step (they must share a date) */
   timelineGroup?: string;
+  /** set on events taken from the After the election data (graded by FORMATION_IMPORTANCE) */
+  byRule?: true;
 };
 type Events = { events: KEvent[]; membershipEventRefs?: { date: string; ref: { pointer: string }; importance?: Importance; reason?: string }[] };
 
@@ -110,6 +116,34 @@ export const FALLBACK_IMPORTANCE: Record<string, Importance> = {
   'coalition-return-agreement': 'standard', 'coalition-agreements-completed': 'standard', 'party-announces-cabinet-exit': 'standard',
 };
 // ---------------------------------------------------------------------------------------------------------------
+
+// Events from the After the election data (data/meta/aftermath/kN.json), used for terms in which no government was formed.
+// The research lane does not grade them, so this rule does: the dissolution ends the term (Simple, as the research grades a
+// dissolution); a mandate given, returned or expired is Standard; extensions and the Knesset's 21 days are Expert.
+export const FORMATION_IMPORTANCE: Record<string, Importance> = {
+  'knesset-dissolved': 'simple', 'mandate-given': 'standard', 'mandate-returned': 'standard', 'mandate-expired': 'standard',
+  'extension': 'expert', 'mandate-extended': 'expert', 'knesset-21-days': 'expert', 'consultations': 'expert',
+};
+type AftermathFact = { date: string; type: string; textEn: string; textHe: string; cites?: { source: string }[] };
+type Aftermath = { formation?: { outcome?: string; events?: AftermathFact[] }; term?: { endedBy?: AftermathFact }; sources?: Record<string, { url?: string; publisher?: string }> };
+
+/** The formation steps and the dissolution from the After the election data, as timeline events (each with its sources). */
+function aftermathEvents(k: number, a: Aftermath): KEvent[] {
+  const facts = [...a.formation?.events ?? []];
+  const end = a.term?.endedBy;
+  if (end && !facts.some((f) => f.type === end.type && f.date === end.date)) facts.push(end);
+  return facts.filter((f) => FORMATION_IMPORTANCE[f.type]).map((f, i) => ({
+    id: `k${k}-aftermath-${i}`, date: f.date, kind: `formation-${f.type}`, who: {}, summary: { en: f.textEn, he: f.textHe },
+    importance: FORMATION_IMPORTANCE[f.type], marker: null, byRule: true,
+    sources: [...new Set((f.cites ?? []).map((c) => c.source))].map((s) => a.sources?.[s]).filter((s): s is { url?: string; publisher?: string } => !!s),
+  }));
+}
+
+/** "21th Knesset" → "21st Knesset" (the research's generated English for the term boundaries). */
+export const fixOrdinals = (s: string) => s.replace(/\b(\d+)th\b/g, (_, n: string) => {
+  const t = Number(n) % 100, u = Number(n) % 10;
+  return n + (t >= 11 && t <= 13 ? 'th' : u === 1 ? 'st' : u === 2 ? 'nd' : u === 3 ? 'rd' : 'th');
+});
 
 const JOIN = new Set(['party-ministers-approved', 'coalition-return-statement']);
 const EXIT = new Set(['party-coalition-exit', 'coalition-exit-statement']);
@@ -221,11 +255,19 @@ function compileTerm(root: string, k: number, opening: string, end: string, ch: 
   const eventsPath = `data/research/knesset-events/k${k}.json`;
   const ev = existsSync(`${root}/${eventsPath}`) ? read<Events>(eventsPath) : null;
   const sworn = ev?.events.find((e) => e.kind === 'government-sworn-in');
-  return { k, opening, end, seats, openingSeat, timeline: ev && sworn ? compileSteps(k, opening, end, seats, holderTenure, ev, ch.replacements, factionAt, anomalies) : null };
+  // a term in which no government was formed has no sides to derive: its timeline shows the chamber, the formation attempts
+  // and the dissolution (After the election data). Other terms need a recorded swearing-in and coalition (see REPORT).
+  const aftermathPath = `data/meta/aftermath/k${k}.json`;
+  const aftermath = !sworn && existsSync(`${root}/${aftermathPath}`) ? read<Aftermath>(aftermathPath) : null;
+  const noGovernment = aftermath?.formation?.outcome === 'no-government';
+  const timeline = ev && (sworn || noGovernment)
+    ? compileSteps(k, opening, end, seats, holderTenure, noGovernment ? { ...ev, events: [...ev.events, ...aftermathEvents(k, aftermath!)] } : ev, ch.replacements, factionAt, anomalies)
+    : null;
+  return { k, opening, end, seats, openingSeat, timeline: timeline && noGovernment ? { ...timeline, noGovernment: true } : timeline };
 }
 
 function compileSteps(k: number, opening: string, end: string, seats: SeatRuntime[], holderTenure: Tenure[][], ev: Events, replacements: Replacement[],
-  factionAt: (t: Tenure, d: string) => number | null, anomalies: string[]): { steps: TimelineStep[]; firstGovernment: string } {
+  factionAt: (t: Tenure, d: string) => number | null, anomalies: string[]): { steps: TimelineStep[]; firstGovernment: string | null } {
   // on the day the term ends, the chart shows the Knesset as it was on its last day
   const last = new Date(Date.parse(`${end}T00:00:00Z`) - 86400000).toISOString().slice(0, 10);
   const holderAt = (seat: number, day: string) => { const d = day >= end ? last : day; return holderTenure[seat].find((t) => t.start <= d && (t.end === null || d < t.end)) ?? null; };
@@ -259,7 +301,7 @@ function compileSteps(k: number, opening: string, end: string, seats: SeatRuntim
   const rebels = new Map<number, string>(); // person → the item that made them a rebel
   let sides = false;
   const steps: TimelineStep[] = [];
-  const firstGovernment = events.find((e) => e.kind === 'government-sworn-in')!.date;
+  const firstGovernment = events.find((e) => e.kind === 'government-sworn-in')?.date ?? null;
   for (const d of dates) {
     const items: TimelineItem[] = [];
     const current = () => seats.map((_, i) => holderAt(i, d)).map((t, i) => ({ seat: i, t })).filter((x): x is { seat: number; t: Tenure } => !!x.t);
@@ -339,8 +381,9 @@ function compileSteps(k: number, opening: string, end: string, seats: SeatRuntim
       if (!e.importance && e.kind === 'dissolution-vote' && (e.vote?.for ?? 0) > (e.vote?.against ?? 0)) importance = 'simple';
       // a whole party joining or leaving is Simple; a second record of a move already made is Standard
       if (!e.importance && (JOIN.has(e.kind) || EXIT.has(e.kind)) && partyLevel) importance = moved.length ? 'simple' : 'standard';
-      items.push({ id: e.id, type: 'event', kind: e.kind, importance, importanceFrom: e.importance ? 'data' : 'fallback', marker, markerFrom: fromData ? 'data' : 'fallback',
-        en: e.summary.en, he: e.summary.he, certainty: e.certainty ?? null, evidenceClass: e.evidenceClass ?? null, sources: srcs(e), marks, moved, ...(e.timelineEligible === false ? { held: true as const } : {}) });
+      const fm = e.kind === 'faction-membership-change' && factions.length === 2 ? { factions: [factions[0], factions[1]] as const, count: e.who.personIds?.length ?? 0 } : {};
+      items.push({ id: e.id, type: 'event', kind: e.kind, importance, importanceFrom: e.byRule ? 'rule' : e.importance ? 'data' : 'fallback', marker, markerFrom: fromData ? 'data' : 'fallback',
+        en: fixOrdinals(e.summary.en), he: e.summary.he, certainty: e.certainty ?? null, evidenceClass: e.evidenceClass ?? null, sources: srcs(e), marks, moved, ...(e.timelineEligible === false ? { held: true as const } : {}), ...fm });
       (items[items.length - 1] as TimelineItem & { _e?: KEvent })._e = e;
     }
     const coalition = sides ? current().filter((x) => side.get(x.t.personId) === 'c').map((x) => x.seat) : null;

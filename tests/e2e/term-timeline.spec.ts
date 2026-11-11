@@ -128,7 +128,7 @@ test('the election chart’s seat card names who else held the seat', async ({ p
 });
 
 // Owner, 12 Nov 2026: the arrows go through every event on the timeline. The ticks on the bar are the steps.
-for (const [election, level, total] of [['k24', 'simple', 9], ['k24', 'standard', 33], ['k24', 'expert', 44], ['k25', 'standard', 39]] as const) {
+for (const [election, level, total] of [['k24', 'simple', 9], ['k24', 'standard', 33], ['k24', 'expert', 44], ['k25', 'standard', 39], ['k21', 'expert', 9]] as const) {
   test(`${election} ${level}: ▶ stops at every tick on the bar, in order, and ◀ comes back the same way`, async ({ page }) => {
     await start(page, { level, election });
     const tl = await openTimeline(page);
@@ -165,4 +165,25 @@ test('the bar says "End" only when a step is there', async ({ page }) => {
   const tl = await openTimeline(page);
   await expect(tl.locator('.tl-end-label.start')).toHaveText('Start');
   await expect(tl.locator('.tl-end-label.end')).toHaveCount(0); // the 25th Knesset's records stop before its end
+});
+
+test('a faction move recorded by number is named in English', async ({ page }) => {
+  await start(page, { level: 'expert', election: 'k21' });
+  const tl = await openTimeline(page);
+  await stepTo(tl, '2019-06-02');
+  await expect(tl.locator('.tl-lines')).toContainText('2 MKs recorded moving from Ra’am–Balad to Balad.');
+  await expect(tl.locator('.tl-lines')).toContainText('1 MK recorded moving from Likud to Ahi.');
+  await expect(tl.locator('.tl-lines')).not.toContainText('between factions');
+});
+
+test('the 21st Knesset: no government formed, so no sides; the dissolution is a step', async ({ page }) => {
+  await start(page, { level: 'simple', election: 'k21' });
+  const tl = await openTimeline(page);
+  await expect(tl.locator('.tl-count')).toHaveText('Step 1 of 3');
+  await expect(tl.locator('.tl-sides')).toHaveText('No government was formed in this Knesset');
+  await expect(tl.locator('.tl-lines')).toContainText('21st Knesset membership begins.');
+  await tl.getByRole('button', { name: 'Next step: 30 May 2019' }).click();
+  await expect(tl.locator('.tl-lines')).toContainText('The Knesset passed the dissolution law, 74 for · 45 against');
+  await expect(tl.locator('[data-side="coalition"]')).toHaveCount(0);
+  await expect(tl.locator('.tl-end-label.end')).toHaveText('End');
 });
