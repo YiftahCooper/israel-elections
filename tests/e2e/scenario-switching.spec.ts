@@ -103,7 +103,7 @@ test('every tool has one name: the tab strip and the Custom page agree', async (
 
 test('tablet: the strip stays one line and stays visible under the wrapped band', async ({ page }) => {
   await start(page, 'en', 'standard', { width: 1024, height: 800 });
-  const label = page.locator('.toolbar .more-label');
+  const label = page.locator('.toolbar .more-label').first();
   expect((await label.boundingBox())!.height).toBeLessThan(24);
   await page.mouse.wheel(0, 900);
   await page.waitForTimeout(200);

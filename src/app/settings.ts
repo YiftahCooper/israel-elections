@@ -54,6 +54,9 @@ export interface SettingValues {
   seatStepsNorwegian: boolean;
   seatStepsLeft: boolean;
   seatStepsUnrecorded: boolean;
+  /** the Localities map's historical lines: the "All lines and areas" switch, and the single lines unticked while it is on */
+  mapLines: boolean;
+  mapLinesOff: readonly string[];
 }
 export type SettingId = keyof SettingValues;
 /** Rows backed by other stores: the language and level (app state) and the point-of-use questions (PREFERENCES). */
@@ -158,6 +161,10 @@ export const SETTINGS: readonly SettingRow[] = [
     options: [o('previous', 'Previous election', 'הבחירות הקודמות'), o('official', 'Official result', 'התוצאה הרשמית')], synonyms: 'compare comparison previous official השוואה קודמות רשמית' },
   { id: 'optionPreviews', group: 'analysis', control: 'toggle', min: 'standard', label: ['Option previews', 'תצוגה מקדימה באפשרויות'],
     info: ['Small seat charts beside choices such as groupings. Off: names only, faster on slow phones.', 'תרשימי מושבים קטנים ליד אפשרויות כמו חלוקות. כבוי: שמות בלבד, מהיר יותר בטלפונים איטיים.'], synonyms: 'thumbnails mini charts previews תמונות ממוזערות תרשימים' },
+  // the same switch as "All lines and areas" in the map's key; single lines are ticked in the key only
+  { id: 'mapLines', group: 'analysis', control: 'toggle', min: 'expert', feature: 'loc', label: ['Map lines and areas', 'קווים ושטחים במפה'],
+    info: ['Historical lines and areas on the Localities map. Each one can also be turned off in the map’s key.', 'קווים ושטחים היסטוריים במפת היישובים. אפשר לכבות כל אחד מהם גם במקרא המפה.'],
+    synonyms: 'map lines areas borders boundaries armistice green line blue line golan localities מפה קווים שטחים גבולות שביתת נשק הקו הירוק הקו הכחול גולן יישובים' },
 
   // the Knesset-term timeline (owner, 11 Nov 2026): Simple no seat changes, Standard the important ones, Expert all of
   // the kinds chosen here
@@ -184,6 +191,7 @@ export const SETTINGS: readonly SettingRow[] = [
     info: ['Short messages, such as ‘Saved’, stay until you close them.', 'הודעות קצרות, כמו ‘נשמר’, נשארות עד שסוגרים אותן.'], synonyms: 'toast notification message timeout הודעה התראה' },
 ];
 
+const NO_LINES_OFF: readonly string[] = Object.freeze([]);
 /** Factory defaults; a function of the level where noted. Each is one value here, so the owner can change it. */
 export function settingDefault<K extends SettingId>(id: K, level: Preset): SettingValues[K] {
   const d: SettingValues = {
@@ -195,16 +203,23 @@ export function settingDefault<K extends SettingId>(id: K, level: Preset): Setti
     confirmStartOver: true, hoverPreviews: true, communityScenarios: true, compareWith: 'previous', optionPreviews: true,
     textSize: 'normal', reduceMotion: false, hoverPopups: true, preferTables: false, keepMessages: false,
     timelineSeatChanges: level === 'simple' ? 'off' : level === 'standard' ? 'important' : 'all', seatStepsNorwegian: true, seatStepsLeft: true, seatStepsUnrecorded: true,
+    mapLines: true, mapLinesOff: NO_LINES_OFF,
   };
   return d[id];
 }
 const EXTERNAL: ReadonlySet<RowId> = new Set<ExternalId>(['level', 'lang', 'jointByParty', 'voteSource', 'markChanges', 'copyMode']);
-export const SETTING_IDS = SETTINGS.map(r => r.id).filter((id): id is SettingId => !EXTERNAL.has(id));
+/** Stored settings without a row of their own: each belongs to the row that resets it (LINKED). */
+const ROWLESS: readonly SettingId[] = ['mapLinesOff'];
+export const SETTING_IDS = [...SETTINGS.map(r => r.id).filter((id): id is SettingId => !EXTERNAL.has(id)), ...ROWLESS];
+/** A row's reset and its "changed" dot also cover these settings. */
+export const LINKED: Partial<Record<SettingId, readonly SettingId[]>> = { mapLines: ['mapLinesOff'] };
+export const withLinked = (ids: readonly SettingId[]): SettingId[] => [...new Set(ids.flatMap(id => [id, ...(LINKED[id] ?? [])]))];
 
 /** Is a stored value acceptable for this setting? Anything else falls back to the default, silently. */
 export function validSetting(id: SettingId, v: unknown): boolean {
   const def = settingDefault(id, 'standard');
   if (id === 'decimals') return typeof v === 'number' && (DECIMAL_CHOICES as readonly number[]).includes(v);
+  if (Array.isArray(def)) return Array.isArray(v) && v.every(x => typeof x === 'string');
   if (typeof def === 'boolean') return typeof v === 'boolean';
   const row = SETTINGS.find(r => r.id === id);
   return typeof v === 'string' && !!row?.options?.some(x => x.value === v);

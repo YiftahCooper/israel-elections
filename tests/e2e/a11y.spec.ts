@@ -43,7 +43,7 @@ test.describe('on a touch phone', () => {
     await start(page, { level: 'expert' });
     for (const id of ['k3', 'k8', 'k25']) {
       await choose(page.getByRole('button', { name: 'Election', exact: true }), id);
-      const tabs = page.getByRole('tablist', { name: 'Tools' }).getByRole('tab');
+      const tabs = page.getByRole('navigation', { name: 'Tools' }).getByRole('tab');
       for (let i = 0; i < await tabs.count(); i++) {
         await tabs.nth(i).click();
         const { sw, cw } = await page.evaluate(() => ({ sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth }));
@@ -59,7 +59,7 @@ test.describe('on a touch phone', () => {
 
 test('analysis tabs follow the arrow-key pattern', async ({ page }) => {
   await start(page, { level: 'standard' });
-  const tabs = page.getByRole('tablist', { name: 'Tools' }).getByRole('tab');
+  const tabs = page.getByRole('navigation', { name: 'Tools' }).getByRole('tab');
   await tabs.first().focus();
   await page.keyboard.press('ArrowRight');
   await expect(tabs.nth(1)).toBeFocused();
