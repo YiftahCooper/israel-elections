@@ -23,6 +23,7 @@ import type { Scenario, SimList } from '../../model/scenario.ts';
 import { allocationOf, listLabel, methodOf, seatBlocsOf, seatedOrder, candidateName, referenceLabel, comparisonGroups } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { arcLayout, annularRegions } from '../layout.ts';
+import { arcSeatSlots, trayBlocRegions, trayCell, TRAY } from '../blocLine.ts';
 import { download, isolate, seatDeltaText } from '../format.ts';
 import { electionLabel } from '../electionLabel.ts';
 import { setSetting, setState, useSetting, useStore } from '../store.ts';
@@ -107,9 +108,10 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   const evidenceChanges = useMemo(() => changedSeatKeys(evidenceScenario, evidenceResult, base, br), [evidenceScenario, evidenceResult, base, br]);
   const hasChanges = !paired && (evidenceChanges.gained.size > 0 || evidenceChanges.lost.size > 0);
   const baselineSeats = useMemo(() => seatOrder(base, br, colorBy, showComponents), [base, br, colorBy, showComponents]);
+  const baselineBands = useMemo(() => baselineSeats.map(st => blocDisplayOrder(base).indexOf(st.bloc)), [baselineSeats, base]);
   const componentDescription = L('Constituent display colours distinguish every party, including the lead. Missing or similar colours are adjusted for display, without changing researched colours.', 'צבעי התצוגה מבחינים בין כל המפלגות, כולל המפלגה המובילה. צבעים חסרים או דומים מותאמים לתצוגה בלי לשנות את הצבעים שנחקרו.');
   const total = s.rules.seats;
-  const rtl = false; // Geometry is physically left-to-right in both languages, like the 61 marker.
+  // Geometry is physically left-to-right in both languages, like the 61 marker.
   const { seats: pos, r: rad } = useMemo(() => arcLayout(total), [total]);
   // Include the floor beneath baseline seats and the full outer border in the drawing bounds.
   const W = 1000, H = Math.max(490, 470 + (rad + 0.015) * 400 + 2);
@@ -118,7 +120,6 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   const { bands, bandOf } = useMemo(() => {
     const out: { bloc: string; color: string }[] = [];
     const bandOf: number[] = [];
-    if (layout !== 'hemicycle') return { bands: out, bandOf };
     seats.forEach((st) => {
       // seats in no bloc keep an untinted region of their own, so neighbouring regions never claim them
       const bloc = st.bloc ?? '__none';
@@ -126,7 +127,10 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       bandOf.push(out.length - 1);
     });
     return { bands: out, bandOf };
-  }, [seats, s.blocs, layout]);
+  }, [seats, s.blocs]);
+  // where each seat sits: blocs are placed so the line between them can run as straight as the seats allow
+  const placed = useMemo(() => { const slot = arcSeatSlots(pos, bandOf, rad); return slot.map((k) => pos[k]); }, [pos, bandOf, rad]);
+  const baselinePlaced = useMemo(() => arcSeatSlots(pos, baselineBands, rad).map((k) => pos[k]), [pos, baselineBands, rad]);
 
   const hoverBridge = useHoverIntent(() => setHover(null), !!hover);
   /** focus and click open the seat card at once; a resting mouse opens it after the shared hover delay */
@@ -152,7 +156,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       for (const prop of ['fill','stroke','stroke-width','stroke-dasharray','fill-opacity','stroke-opacity','vector-effect','stroke-linejoin','stroke-linecap'])
         node.setAttribute(prop, style.getPropertyValue(prop));
       // regions carry their colour in an inline color-mix(var(...)) style; the resolved fill was just copied above
-      if (node instanceof SVGElement && (node.classList.contains('wedge') || node.classList.contains('bloc-cell'))) node.removeAttribute('style');
+      if (node instanceof SVGElement && node.classList.contains('wedge')) node.removeAttribute('style');
     });
     const vb = el.viewBox.baseVal;
     const NS = 'http://www.w3.org/2000/svg', ink = css.getPropertyValue('--ink'), rtlText = lang === 'he';
@@ -263,7 +267,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   let body: React.ReactNode;
   if (layout === 'hemicycle') {
     const cx = W / 2, cy = 470, R = 400;
-    const wedges = annularRegions(pos, bandOf, rad, cx, cy, R);
+    const wedges = annularRegions(placed, bandOf, rad, cx, cy, R);
     body = (
       <svg ref={svgRef} viewBox={`40 30 920 ${H - 30}`} role="img" aria-label={`${title ?? L('Knesset seat diagram', 'תרשים מושבי הכנסת')}: ${summary}`}>
         {seats.some(st => st.innerColor) && <desc>{componentDescription}</desc>}
@@ -273,7 +277,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
             style={{ ['--bc' as string]: bands[w.band].color }} />
         </g>)}
         {seats.map((st, i) => {
-          const p = pos[rtl ? pos.length - 1 - i : i]; if (!p) return null;
+          const p = placed[i]; if (!p) return null;
           const dim = dimOthers && selected && selected !== st.listId;
           return (
             <g key={i}><circle className={`seat ${dim ? 'dim' : ''}`} cx={cx + p.x * R} cy={cy + p.y * R} r={rad * R} fill={st.color}
@@ -289,32 +293,20 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       </svg>
     );
   } else {
-    // Fixed 20 × 6 tray: topology and number of lists never change the geometry.
+    // Fixed 20 × 6 tray, filled column by column so each bloc is a band read left to right, as in the half circle;
+    // topology and number of lists never change the geometry.
+    const tray = trayBlocRegions(bandOf);
     body = <svg ref={svgRef} viewBox="0 0 1000 320" role="img" aria-label={summary}>
       {seats.some(st => st.innerColor) && <desc>{componentDescription}</desc>}
+      {/* one shape per bloc, meeting along the bloc line: a straight edge with at most one rounded step */}
+      {blocShading && tray.regions.map(w => <path key={w.band} data-bloc-region={bands[w.band].bloc} aria-hidden="true" pointerEvents="none"
+        className={`wedge solid ${bands[w.band].bloc === '__none' ? 'unassigned' : ''}`} d={w.fill} style={{ ['--bc' as string]: bands[w.band].color }} />)}
       {seats.map((st, i) => {
-        const x = 24 + (rtl ? 19-i%20 : i%20)*48, y = 16+Math.floor(i/20)*48;
-        const bc = s.blocs.find(b => b.id === st.bloc)?.color ?? 'var(--muted)';
-        return <g key={i}>{blocShading && <rect data-bloc-region={st.bloc ?? '__none'} x={x-5} y={y-5} width={48} height={48} className="bloc-cell" style={{ ['--bc' as string]: bc }} />}
-          <rect data-seat="" className="seat" x={x} y={y} width={36} height={36} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--ink-2)'} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`)?4:1}
+        const [x, y] = trayCell(i), c = TRAY.cell;
+        return <g key={i}>
+          <rect data-seat="" className="seat" x={x} y={y} width={c} height={c} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--ink-2)'} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`)?4:1}
             onMouseEnter={e => { if (hoverPopups) onSeatHover(st,e); }} onMouseLeave={hoverBridge.leave} onClick={e => { if (!hoverPopups) onSeat(st,e); setState({selectedListId: st.listId}); }}><title>{seatLabel(st)}</title></rect>
-          {st.innerColor && <PartyDot partyId={st.partyId} x={x+18} y={y+18} r={12} color={st.innerColor} ring={st.color}/>}
-        </g>;
-      })}
-      {/* Only the outside edge of each bloc is outlined; there are no per-seat frames. */}
-      {blocShading && seats.map((st, i) => {
-        const col = i % 20, row = Math.floor(i / 20);
-        const x = 19 + col * 48, y = 11 + row * 48;
-        const same = (n: number) => n >= 0 && n < seats.length && seats[n].bloc === st.bloc;
-        const d = [
-          (row === 0 || !same(i - 20)) ? `M${x} ${y}h48` : '',
-          (col === 19 || !same(i + 1)) ? `M${x + 48} ${y}v48` : '',
-          (row === Math.ceil(seats.length / 20) - 1 || !same(i + 20)) ? `M${x} ${y + 48}h48` : '',
-          (col === 0 || !same(i - 1)) ? `M${x} ${y}v48` : '',
-        ].join(' ');
-        if (!d.trim()) return null;
-        return <g key={`boundary-${i}`} aria-hidden="true" pointerEvents="none">
-          <path data-bloc-boundary={st.bloc ?? '__none'} className={`bloc-outline ${st.bloc === null ? 'unassigned' : ''}`} d={d} />
+          {st.innerColor && <PartyDot partyId={st.partyId} x={x+c/2} y={y+c/2} r={12} color={st.innerColor} ring={st.color}/>}
         </g>;
       })}
     </svg>;
@@ -341,13 +333,13 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       {hasChanges && referenceChamber && <div className="baseline-mini">
         <span className="small muted">{referenceLabel(labelReference,lang).name}</span>
         <svg viewBox={`40 30 920 ${H - 30}`} role="img" aria-label={referenceLabel(labelReference,lang).name}>
-          {annularRegions(pos, baselineSeats.map(st=>blocDisplayOrder(base).indexOf(st.bloc)),rad).map(w=>{
+          {annularRegions(baselinePlaced, baselineBands,rad).map(w=>{
             const id=blocDisplayOrder(base)[w.band], color=base.blocs.find(b=>b.id===id)?.color ?? 'var(--muted)';
             return <g key={w.band}><path className={`wedge solid ${id === null ? 'unassigned' : ''}`} d={w.fill} style={{ ['--bc' as string]: color }} /></g>;
           })}
           {baselineSeats.map((st,i)=> <g key={i}><circle data-reference-seat="" data-lost={changes.lost.has(`${st.listId}:${st.idx}`) ? '' : undefined}
-            cx={500+pos[i].x*400} cy={470+pos[i].y*400} r={rad*400} fill={st.color}
-            stroke={changes.lost.has(`${st.listId}:${st.idx}`)?'var(--ink)':'var(--ink-2)'} strokeWidth={changes.lost.has(`${st.listId}:${st.idx}`)?5:1} strokeDasharray={changes.lost.has(`${st.listId}:${st.idx}`)?'4 3':undefined} />{st.innerColor && <PartyDot x={500+pos[i].x*400} y={470+pos[i].y*400} r={rad*400*.64} color={st.innerColor} ring={st.color}/>}</g>)}
+            cx={500+baselinePlaced[i].x*400} cy={470+baselinePlaced[i].y*400} r={rad*400} fill={st.color}
+            stroke={changes.lost.has(`${st.listId}:${st.idx}`)?'var(--ink)':'var(--ink-2)'} strokeWidth={changes.lost.has(`${st.listId}:${st.idx}`)?5:1} strokeDasharray={changes.lost.has(`${st.listId}:${st.idx}`)?'4 3':undefined} />{st.innerColor && <PartyDot x={500+baselinePlaced[i].x*400} y={470+baselinePlaced[i].y*400} r={rad*400*.64} color={st.innerColor} ring={st.color}/>}</g>)}
           <text x={500} y={440} textAnchor="middle" fontSize={44} fill="var(--ink)">{br.seatsAllocated}</text>
         </svg>
       </div>}

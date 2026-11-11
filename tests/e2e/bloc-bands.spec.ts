@@ -11,7 +11,7 @@ for (const lang of ['he', 'en'] as const) for (const theme of ['light', 'dark'])
       await expect(page.locator('.chamber').first().locator('[data-seat]')).toHaveCount(120);
       for (const layout of ['hemicycle', 'blocks']) {
         await page.getByRole('group', { name: lang === 'he' ? 'פריסה' : 'Chamber layout' }).getByRole('button', { name: layout === 'blocks' ? (lang === 'he' ? 'גושים' : 'Blocks') : (lang === 'he' ? 'קשת' : 'Arc'), exact: true }).click();
-        const borders = page.locator(layout === 'hemicycle' ? '.chamber > svg .wedge' : '.chamber > svg .bloc-outline');
+        const borders = page.locator('.chamber > svg .wedge');
         expect(await borders.count()).toBeGreaterThan(0);
         for (const border of await borders.all()) {
           const style = await border.evaluate(el => {
@@ -24,7 +24,7 @@ for (const lang of ['he', 'en'] as const) for (const theme of ['light', 'dark'])
           expect(style.vector).toBe('non-scaling-stroke');
         }
         // Resolve real browser colours, including color-mix(), into sRGB before checking contrast.
-        const contrasts = await page.locator(layout === 'hemicycle' ? '.chamber > svg .wedge' : '.chamber > svg .bloc-cell').evaluateAll(nodes => nodes.map(el => {
+        const contrasts = await page.locator('.chamber > svg .wedge').evaluateAll(nodes => nodes.map(el => {
           const css = getComputedStyle(el), canvas = document.createElement('canvas'); canvas.width = canvas.height = 1;
           const ctx = canvas.getContext('2d')!;
           const luminance = (color: string) => {
