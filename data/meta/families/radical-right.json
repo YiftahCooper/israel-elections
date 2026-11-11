@@ -1660,7 +1660,7 @@
       "electionId": "k14",
       "electionDate": "1996-05-29",
       "datasetPath": "public/data/k14.json",
-      "datasetSha256": "670384c1ab40448f7c0723d50734c323b4e2f66f3f4cbb6675235207132e175f",
+      "datasetSha256": "3d0bd286fc558e038f340b0ef60daa6f8d30ad636a141cda6bccbeb408696f61",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "Rosters: everyone elected is included and cross-checked; no full rosters; Third Way retains 12 of 52 registered candidates; later ranks of winning lists not transcribed. Zero-seat rosters unavailable; registered Moreshet Avot withdrew before polling (21 registered lists, 20 contested). Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. Complete 6-pair agreement notice verified; every published seat reproduced.",
@@ -2000,7 +2000,7 @@
       "electionId": "k17",
       "electionDate": "2006-03-28",
       "datasetPath": "public/data/k17.json",
-      "datasetSha256": "da891a33a84a26a61012b3f5e9bfdcc24407df37e8f3e9a65c7f628e89ff053b",
+      "datasetSha256": "6395ba8bab3b6e46414c8c2ea85a2b789cb4b4fd1704f4efec1976634c39050f",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -2099,7 +2099,7 @@
       "electionId": "k18",
       "electionDate": "2009-02-10",
       "datasetPath": "public/data/k18.json",
-      "datasetSha256": "fa5adf553d200e92e26f0385e20f43a54025303372f05d2a776db98a53cc0666",
+      "datasetSha256": "7e1c9215ee1698f81a0fb97c28ab3db5e519da3384b3308e380f805ac1e4eca3",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2009-02-17",
@@ -2194,7 +2194,7 @@
       "electionId": "k19",
       "electionDate": "2013-01-22",
       "datasetPath": "public/data/k19.json",
-      "datasetSha256": "e45d01c75649e3f2ffc25def7feebd384be3aca8a6ff2a0a4fe03606a2e3ca54",
+      "datasetSha256": "915413ae5839ad66a5ed98df75205bd9e3161d8ee3e32f9290f61055c7b3fdde",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2013-01-30",
@@ -2303,7 +2303,7 @@
       "electionId": "k20",
       "electionDate": "2015-03-17",
       "datasetPath": "public/data/k20.json",
-      "datasetSha256": "6229c7ed5fd6253ab43c6ff13125b9ce02de21286b07a41f31c321809abcca08",
+      "datasetSha256": "1551be3d8866e89b860b71e5e5e380f9f3d880160a3315defbe2060688176353",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2015-03-25",
@@ -2912,7 +2912,7 @@
       "electionId": "k25",
       "electionDate": "2022-11-01",
       "datasetPath": "public/data/k25.json",
-      "datasetSha256": "26de53381c952038d80e63df9013d59026f42b7b432261f327879d823ede8a47",
+      "datasetSha256": "c978e287ef67a79ef9155a73ef5fb0eb466a50c542a82d301cda02e5d0378e5a",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2022-11-10",

@@ -372,6 +372,43 @@
         "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fwww.newhope.org.il%2Fwp-content%2Fuploads%2F2022%2F03%2F%D7%AA%D7%A7%D7%95%D7%95%D7%94-%D7%97%D7%93%D7%A9%D7%94-%D7%9B%D7%97%D7%95%D7%9C-1.png&from=2021&to=20221101&output=json&filter=statuscode%3A200&collapse=digest",
         "rawIndex": "logo-lg-k25-new-hope-index"
       }
+    },
+    {
+      "letters": "ל",
+      "file": "logos/beiteinu-2022-k25-print.png",
+      "sourceUrl": "https://www.idi.org.il/policy/parties-and-elections/parties/yisrael-beytenu/",
+      "assetSourceUrl": "https://www.idi.org.il/media/18470/ישראל-ביתנו.pdf",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "beiteinu — original campaign platform, preserved by IDI; unaltered rectangular crop and proportional resize only.",
+      "hosted": true,
+      "status": "verified",
+      "rights": "fair-use-identification",
+      "confidence": "medium",
+      "evidenceId": "lg2-print-beiteinu-k25",
+      "inUseDate": "2022-08-14",
+      "inUseEvidence": "The original official-site print explicitly labels the 25th-Knesset platform and prints publication date 14.08.2022. This is dated campaign-publication evidence, not a claim of an archived capture after list filing. Original publication and catalogue page retained. No cross-election inference, recolouring or redrawing.",
+      "publicationEvidence": {
+        "page": "lg2-print-beiteinu-k25-page",
+        "asset": "lg2-print-beiteinu-k25-asset",
+        "publicationDate": "2022-08-14",
+        "cropBox": [
+          770,
+          120,
+          1021,
+          218
+        ],
+        "originalDimensions": [
+          1096,
+          1550
+        ],
+        "pdfPage": 1,
+        "renderScale": 1.3,
+        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist; dimensions and crop coordinates are in this rendered raster."
+      },
+      "originalSha256": "fa46335a85ad8a1b39f88a8956a6fc80e8f27299adfa1d2396988074e0f6d14a",
+      "sha256": "335d639e54a08fc1016e28cb6728ad6872954b94b01aba6e985e54b3cf176622",
+      "bytes": 38468,
+      "retrievedAt": "2026-11-12"
     }
   ]
 }

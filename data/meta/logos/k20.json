@@ -306,6 +306,50 @@
         "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fwww.yeshatid.org.il%2Fcontent%2Fimages%2Flogo_he-IL.png&from=2014&to=20150301&output=json&filter=statuscode%3A200&collapse=digest",
         "rawIndex": "logo-lg-k20-yesh-atid-index"
       }
+    },
+    {
+      "letters": "מרצ",
+      "file": "logos/meretz-2015-k20-print.png",
+      "sourceUrl": "https://www.idi.org.il/policy/parties-and-elections/parties/meretz/",
+      "assetSourceUrl": "https://www.idi.org.il/media/6685/מרצ-2015.pdf",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "meretz — original campaign platform, preserved by IDI; unaltered rectangular crop and proportional resize only.",
+      "hosted": true,
+      "status": "verified",
+      "rights": "fair-use-identification",
+      "confidence": "medium",
+      "evidenceId": "lg2-print-meretz-k20",
+      "inUseDate": "2015",
+      "inUseEvidence": "Cover explicitly prints 2015 and מצע מרצ. The lower campaign wordmark שמאל זה מרצ is cropped intact; textured paper and original colours are preserved. Original publication and catalogue page retained. No cross-election inference, recolouring or redrawing.",
+      "publicationEvidence": {
+        "page": "lg2-print-meretz-k20-page",
+        "asset": "lg2-print-meretz-k20-asset",
+        "publicationDate": "2015",
+        "cropBox": [
+          75,
+          947,
+          690,
+          1050
+        ],
+        "originalDimensions": [
+          774,
+          1095
+        ],
+        "pdfPage": 1,
+        "renderScale": 1.3,
+        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist; dimensions and crop coordinates are in this rendered raster."
+      },
+      "originalSha256": "0b81c3798ae89125e64059ede03a7605e026d0ad57d5b15c8768220a046b0c3e",
+      "sha256": "55ef1b849bd0d458e1daf0c9016fd3786e072d7773469171eee27fb22deccfe9",
+      "bytes": 19931,
+      "retrievedAt": "2026-11-12",
+      "dateBasis": "year-single-election",
+      "dateEvidence": {
+        "yearSource": "printed-year",
+        "yearEvidence": "Original cover prints 2015.",
+        "campaignIdentity": "explicit-election",
+        "campaignEvidence": "Cover explicitly prints 2015 and מצע מרצ. The lower campaign wordmark שמאל זה מרצ is cropped intact; textured paper and original colours are preserved."
+      }
     }
   ]
 }

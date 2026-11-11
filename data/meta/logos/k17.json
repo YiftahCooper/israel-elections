@@ -35,6 +35,43 @@
       "originalSha256": "e029fb5fd2b0ab53c50382ca155459e6d9720c35b238c231c4cfb7d713091bc0",
       "rights": "free-licence",
       "bytes": 9715
+    },
+    {
+      "party": "labor",
+      "file": "logos/labor-2006-k17-print.png",
+      "sourceUrl": "https://www.idi.org.il/policy/parties-and-elections/parties/haavoda/",
+      "assetSourceUrl": "https://en.idi.org.il/media/6670/עבודה-17.pdf",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "labor — original campaign platform, preserved by IDI; unaltered rectangular crop and proportional resize only.",
+      "hosted": true,
+      "status": "verified",
+      "rights": "fair-use-identification",
+      "confidence": "medium",
+      "evidenceId": "lg2-print-labor-k17",
+      "inUseDate": "2006-01-22",
+      "inUseEvidence": "Labor convention platform explicitly names the 17th Knesset and prints 22.1.06. Own-party wordmark only, not assigned to Labor–Meimad as a whole. Original publication and catalogue page retained. No cross-election inference, recolouring or redrawing.",
+      "publicationEvidence": {
+        "page": "lg2-print-labor-k17-page",
+        "asset": "lg2-print-labor-k17-asset",
+        "publicationDate": "2006-01-22",
+        "cropBox": [
+          39,
+          648,
+          278,
+          706
+        ],
+        "originalDimensions": [
+          742,
+          738
+        ],
+        "pdfPage": 1,
+        "renderScale": 1.3,
+        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist; dimensions and crop coordinates are in this rendered raster."
+      },
+      "originalSha256": "8250d60a92f1036d23fd8b5b596c62258ec2f5d21ec75ad17fd721739e5e8c09",
+      "sha256": "b3beb1f21d0d6d2f76737aa8d39178397e6d11e0309b47de9e6975177b10c6de",
+      "bytes": 37857,
+      "retrievedAt": "2026-11-12"
     }
   ]
 }

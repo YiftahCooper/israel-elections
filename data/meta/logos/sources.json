@@ -5119,6 +5119,343 @@
         "computed": "JB3TSWUSVMYZUO5LVSOKKOG4XS4AKH7S",
         "rawIndex": "logo-lg-k19-yesh-atid-page-index"
       }
+    },
+    {
+      "id": "lg2-print-beiteinu-k25",
+      "title": "beiteinu original campaign platform, k25",
+      "sourceUrl": "https://www.idi.org.il/policy/parties-and-elections/parties/yisrael-beytenu/",
+      "publisher": "beiteinu; preserved by Israel Democracy Institute",
+      "sourceType": "official party campaign publication",
+      "accessed": "2026-11-12",
+      "inspectionDepth": "Original cover / first page visually inspected in full, internal election identifier and catalogue election-year row checked.",
+      "electionId": "k25",
+      "date": "2022-08-14",
+      "evidenceFamily": "beiteinu-campaign-k25",
+      "independenceNote": "Party self-identification; IDI preserves and catalogues the original, not independent artwork.",
+      "publicationEvidence": {
+        "page": "lg2-print-beiteinu-k25-page",
+        "asset": "lg2-print-beiteinu-k25-asset",
+        "publicationDate": "2022-08-14",
+        "cropBox": [
+          770,
+          120,
+          1021,
+          218
+        ],
+        "originalDimensions": [
+          1096,
+          1550
+        ],
+        "pdfPage": 1,
+        "renderScale": 1.3,
+        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist; dimensions and crop coordinates are in this rendered raster."
+      },
+      "selected": true
+    },
+    {
+      "id": "lg2-print-meretz-k20",
+      "title": "meretz original campaign platform, k20",
+      "sourceUrl": "https://www.idi.org.il/policy/parties-and-elections/parties/meretz/",
+      "publisher": "meretz; preserved by Israel Democracy Institute",
+      "sourceType": "official party campaign publication",
+      "accessed": "2026-11-12",
+      "inspectionDepth": "Original cover / first page visually inspected in full, internal election identifier and catalogue election-year row checked.",
+      "electionId": "k20",
+      "date": "2015",
+      "evidenceFamily": "meretz-campaign-k20",
+      "independenceNote": "Party self-identification; IDI preserves and catalogues the original, not independent artwork.",
+      "publicationEvidence": {
+        "page": "lg2-print-meretz-k20-page",
+        "asset": "lg2-print-meretz-k20-asset",
+        "publicationDate": "2015",
+        "cropBox": [
+          75,
+          947,
+          690,
+          1050
+        ],
+        "originalDimensions": [
+          774,
+          1095
+        ],
+        "pdfPage": 1,
+        "renderScale": 1.3,
+        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist; dimensions and crop coordinates are in this rendered raster."
+      },
+      "selected": true,
+      "dateBasis": "year-single-election",
+      "dateEvidence": {
+        "yearSource": "printed-year",
+        "yearEvidence": "Original cover prints 2015.",
+        "campaignIdentity": "explicit-election",
+        "campaignEvidence": "Cover explicitly prints 2015 and מצע מרצ. The lower campaign wordmark שמאל זה מרצ is cropped intact; textured paper and original colours are preserved."
+      }
+    },
+    {
+      "id": "lg2-print-labor-k19",
+      "title": "labor original campaign platform, k19",
+      "sourceUrl": "https://www.idi.org.il/policy/parties-and-elections/parties/haavoda/",
+      "publisher": "labor; preserved by Israel Democracy Institute",
+      "sourceType": "official party campaign publication",
+      "accessed": "2026-11-12",
+      "inspectionDepth": "Original cover / first page visually inspected in full, internal election identifier and catalogue election-year row checked.",
+      "electionId": "k19",
+      "date": "2013",
+      "evidenceFamily": "labor-campaign-k19",
+      "independenceNote": "Party self-identification; IDI preserves and catalogues the original, not independent artwork.",
+      "publicationEvidence": {
+        "page": "lg2-print-labor-k19-page",
+        "asset": "lg2-print-labor-k19-asset",
+        "publicationDate": "2013",
+        "cropBox": [
+          280,
+          1010,
+          497,
+          1064
+        ],
+        "originalDimensions": [
+          774,
+          1095
+        ],
+        "pdfPage": 1,
+        "renderScale": 1.3,
+        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist; dimensions and crop coordinates are in this rendered raster."
+      },
+      "selected": true,
+      "dateBasis": "year-single-election",
+      "dateEvidence": {
+        "yearSource": "exact-catalogue-year",
+        "yearEvidence": "Inspected IDI table row labelled 2013 links this exact PDF; retained HTML source page.",
+        "campaignIdentity": "explicit-election",
+        "campaignEvidence": "Official cover explicitly names the 19th Knesset. IDI attaches this exact PDF to its 2013 row; white Labor wordmark on the original red strip."
+      }
+    },
+    {
+      "id": "lg2-print-meretz-k19",
+      "title": "meretz original campaign platform, k19",
+      "sourceUrl": "https://www.idi.org.il/policy/parties-and-elections/parties/meretz/",
+      "publisher": "meretz; preserved by Israel Democracy Institute",
+      "sourceType": "official party campaign publication",
+      "accessed": "2026-11-12",
+      "inspectionDepth": "Original cover / first page visually inspected in full, internal election identifier and catalogue election-year row checked.",
+      "electionId": "k19",
+      "date": "2013",
+      "evidenceFamily": "meretz-campaign-k19",
+      "independenceNote": "Party self-identification; IDI preserves and catalogues the original, not independent artwork.",
+      "publicationEvidence": {
+        "page": "lg2-print-meretz-k19-page",
+        "asset": "lg2-print-meretz-k19-asset",
+        "publicationDate": "2013",
+        "cropBox": [
+          103,
+          827,
+          659,
+          1015
+        ],
+        "originalDimensions": [
+          774,
+          1095
+        ],
+        "pdfPage": 1,
+        "renderScale": 1.3,
+        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist; dimensions and crop coordinates are in this rendered raster."
+      },
+      "selected": true,
+      "dateBasis": "year-single-election",
+      "dateEvidence": {
+        "yearSource": "printed-year",
+        "yearEvidence": "Original cover prints 2013.",
+        "campaignIdentity": "explicit-election",
+        "campaignEvidence": "Cover explicitly says מצע מרצ בחירות 2013. Full lower campaign lockup includes the contemporary blue slogan and white party mark."
+      }
+    },
+    {
+      "id": "lg2-print-labor-k18",
+      "title": "labor original campaign platform, k18",
+      "sourceUrl": "https://www.idi.org.il/policy/parties-and-elections/parties/haavoda/",
+      "publisher": "labor; preserved by Israel Democracy Institute",
+      "sourceType": "official party campaign publication",
+      "accessed": "2026-11-12",
+      "inspectionDepth": "Original cover / first page visually inspected in full, internal election identifier and catalogue election-year row checked.",
+      "electionId": "k18",
+      "date": "2009",
+      "evidenceFamily": "labor-campaign-k18",
+      "independenceNote": "Party self-identification; IDI preserves and catalogues the original, not independent artwork.",
+      "publicationEvidence": {
+        "page": "lg2-print-labor-k18-page",
+        "asset": "lg2-print-labor-k18-asset",
+        "publicationDate": "2009",
+        "cropBox": [
+          106,
+          1005,
+          259,
+          1048
+        ],
+        "originalDimensions": [
+          774,
+          1095
+        ],
+        "pdfPage": 1,
+        "renderScale": 1.3,
+        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist; dimensions and crop coordinates are in this rendered raster."
+      },
+      "selected": true,
+      "dateBasis": "year-single-election",
+      "dateEvidence": {
+        "yearSource": "exact-catalogue-year",
+        "yearEvidence": "Inspected IDI table row labelled 2009 links this exact PDF; retained HTML source page.",
+        "campaignIdentity": "explicit-election",
+        "campaignEvidence": "Official platform header explicitly names the 18th Knesset. IDI attaches this exact PDF to its 2009 row; crop excludes the adjacent page number."
+      }
+    },
+    {
+      "id": "lg2-print-new-movement-meretz-k18",
+      "title": "new-movement-meretz original campaign platform, k18",
+      "sourceUrl": "https://www.idi.org.il/policy/parties-and-elections/parties/meretz/",
+      "publisher": "new-movement-meretz; preserved by Israel Democracy Institute",
+      "sourceType": "official party campaign publication",
+      "accessed": "2026-11-12",
+      "inspectionDepth": "Original cover / first page visually inspected in full, internal election identifier and catalogue election-year row checked.",
+      "electionId": "k18",
+      "date": "2009",
+      "evidenceFamily": "new-movement-meretz-campaign-k18",
+      "independenceNote": "Party self-identification; IDI preserves and catalogues the original, not independent artwork.",
+      "publicationEvidence": {
+        "page": "lg2-print-new-movement-meretz-k18-page",
+        "asset": "lg2-print-new-movement-meretz-k18-asset",
+        "publicationDate": "2009",
+        "cropBox": [
+          78,
+          217,
+          452,
+          329
+        ],
+        "originalDimensions": [
+          546,
+          774
+        ],
+        "pdfPage": 1,
+        "renderScale": 1.3,
+        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist; dimensions and crop coordinates are in this rendered raster."
+      },
+      "selected": true,
+      "dateBasis": "year-single-election",
+      "dateEvidence": {
+        "yearSource": "printed-year",
+        "yearEvidence": "Original cover prints 2009.",
+        "campaignIdentity": "explicit-election",
+        "campaignEvidence": "Cover explicitly says מצע בחירות 2009 and shows the combined התנועה החדשה מרצ mark. Whole-list use only; neither constituent receives this combined logo."
+      }
+    },
+    {
+      "id": "lg2-print-labor-k17",
+      "title": "labor original campaign platform, k17",
+      "sourceUrl": "https://www.idi.org.il/policy/parties-and-elections/parties/haavoda/",
+      "publisher": "labor; preserved by Israel Democracy Institute",
+      "sourceType": "official party campaign publication",
+      "accessed": "2026-11-12",
+      "inspectionDepth": "Original cover / first page visually inspected in full, internal election identifier and catalogue election-year row checked.",
+      "electionId": "k17",
+      "date": "2006-01-22",
+      "evidenceFamily": "labor-campaign-k17",
+      "independenceNote": "Party self-identification; IDI preserves and catalogues the original, not independent artwork.",
+      "publicationEvidence": {
+        "page": "lg2-print-labor-k17-page",
+        "asset": "lg2-print-labor-k17-asset",
+        "publicationDate": "2006-01-22",
+        "cropBox": [
+          39,
+          648,
+          278,
+          706
+        ],
+        "originalDimensions": [
+          742,
+          738
+        ],
+        "pdfPage": 1,
+        "renderScale": 1.3,
+        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist; dimensions and crop coordinates are in this rendered raster."
+      },
+      "selected": true
+    },
+    {
+      "id": "lg2-print-labor-k14",
+      "title": "labor original campaign platform, k14",
+      "sourceUrl": "https://www.idi.org.il/policy/parties-and-elections/parties/haavoda/",
+      "publisher": "labor; preserved by Israel Democracy Institute",
+      "sourceType": "official party campaign publication",
+      "accessed": "2026-11-12",
+      "inspectionDepth": "Original cover / first page visually inspected in full, internal election identifier and catalogue election-year row checked.",
+      "electionId": "k14",
+      "date": "1996",
+      "evidenceFamily": "labor-campaign-k14",
+      "independenceNote": "Party self-identification; IDI preserves and catalogues the original, not independent artwork.",
+      "publicationEvidence": {
+        "page": "lg2-print-labor-k14-page",
+        "asset": "lg2-print-labor-k14-asset",
+        "publicationDate": "1996",
+        "cropBox": [
+          320,
+          805,
+          558,
+          865
+        ],
+        "originalDimensions": [
+          774,
+          1095
+        ],
+        "pdfPage": 1,
+        "renderScale": 1.3,
+        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist; dimensions and crop coordinates are in this rendered raster."
+      },
+      "selected": true,
+      "dateBasis": "year-single-election",
+      "dateEvidence": {
+        "yearSource": "exact-catalogue-year",
+        "yearEvidence": "Inspected IDI table row labelled 1996 links this exact PDF; retained HTML source page.",
+        "campaignIdentity": "explicit-election",
+        "campaignEvidence": "Official platform cover explicitly names the 14th Knesset; IDI catalogue row is 1996. Blue/red Labor wordmark at the foot of the original cover."
+      }
+    },
+    {
+      "id": "lg2-print-yisrael-baaliya-k14",
+      "title": "yisrael-baaliya original campaign platform, k14",
+      "sourceUrl": "https://www.idi.org.il/policy/parties-and-elections/parties/yisrael-ba-aliya/",
+      "publisher": "yisrael-baaliya; preserved by Israel Democracy Institute",
+      "sourceType": "official party campaign publication",
+      "accessed": "2026-11-12",
+      "inspectionDepth": "Original cover / first page visually inspected in full, internal election identifier and catalogue election-year row checked.",
+      "electionId": "k14",
+      "date": "1996",
+      "evidenceFamily": "yisrael-baaliya-campaign-k14",
+      "independenceNote": "Party self-identification; IDI preserves and catalogues the original, not independent artwork.",
+      "publicationEvidence": {
+        "page": "lg2-print-yisrael-baaliya-k14-page",
+        "asset": "lg2-print-yisrael-baaliya-k14-asset",
+        "publicationDate": "1996",
+        "cropBox": [
+          63,
+          100,
+          701,
+          213
+        ],
+        "originalDimensions": [
+          760,
+          1079
+        ],
+        "pdfPage": 1,
+        "renderScale": 1.3,
+        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist; dimensions and crop coordinates are in this rendered raster."
+      },
+      "selected": true,
+      "dateBasis": "year-single-election",
+      "dateEvidence": {
+        "yearSource": "exact-catalogue-year",
+        "yearEvidence": "Inspected IDI table row labelled 1996 links this exact PDF; retained HTML source page.",
+        "campaignIdentity": "exact-list-name",
+        "campaignEvidence": "IDI attaches this exact original platform scan to its 1996 row. Full black header retains Hebrew name, Russian subtitle and star; no handwriting is included in the crop."
+      }
     }
   ]
 }
