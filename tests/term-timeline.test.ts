@@ -1,0 +1,185 @@
+// The Knesset-term timeline and seat cards (owner decisions 8 and 11 Nov 2026): seat holders, sides after each date,
+// levels, markers, and the research lane's fields winning over the temporary fallback.
+import { describe, expect, test } from 'vitest';
+import { mkdtempSync, mkdirSync, readFileSync, symlinkSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { compileTermTimeline, type TermRuntime } from '../scripts/term-timeline-runtime.ts';
+import { chamberOrder, holderAt, stepMarks, visibleSteps, type TimelineChoice } from '../src/history/termTimeline.ts';
+import { settingDefault } from '../src/app/settings.ts';
+
+const rt = compileTermTimeline();
+const k24 = rt.terms[24], k25 = rt.terms[25];
+const ALL = { norwegian: true, left: true, unknown: true };
+const at = (level: TimelineChoice['level'], seatChanges: TimelineChoice['seatChanges'] = 'off', kinds = ALL): TimelineChoice => ({ level, seatChanges, kinds });
+const step = (t: TermRuntime, date: string) => t.timeline!.steps.find((s) => s.date === date)!;
+const personSeat = (t: TermRuntime, p: number, date: string) => t.seats.findIndex((_, i) => holderAt(t, i, date)?.[0] === p);
+const CHIKLI = 30786, ALHARUMI = 30548, SILMAN = 30718, RINAWIE = 30805, ORBACH = 30787, DERI = 2291, TAIEB = 30770;
+
+describe('seats and who held them', () => {
+  test('every term opens with 120 seats and the compiler reports nothing odd', () => {
+    expect(rt.anomalies).toEqual([]);
+    for (const t of Object.values(rt.terms)) expect(t.seats, `k${t.k}`).toHaveLength(120);
+  });
+  test('each seat has one holder at a time, in date order', () => {
+    for (const t of Object.values(rt.terms)) for (const s of t.seats) s.holders.forEach((h, i) => {
+      if (h[2]) expect(h[2] > h[1], `k${t.k} ${h[0]}`).toBe(true);
+      if (i > 0) expect(s.holders[i - 1][2]! <= h[1], `k${t.k} ${h[0]}`).toBe(true);
+    });
+  });
+  test('the Shas seat: Deri → Taieb → Deri → Taieb, paired by the Knesset’s own records', () => {
+    const seat = k24.openingSeat[DERI];
+    const h = k24.seats[seat].holders;
+    expect(h.map((x) => x[0])).toEqual([DERI, TAIEB, DERI, TAIEB]);
+    expect(h.map((x) => x[1])).toEqual(['2021-04-06', '2021-04-08', '2021-06-13', '2022-01-25']);
+    expect(h.map((x) => x[3])).toEqual(['o', 'e', 'r', 'r']);
+    expect(h.slice(1).map((x) => x[4])).toEqual(['record', 'record', 'record']);
+    expect(k24.seats[seat].list).toBe('24-שס');
+  });
+  test('only terms whose research establishes the government’s support have a timeline', () => {
+    expect(Object.values(rt.terms).filter((t) => t.timeline).map((t) => t.k)).toEqual([24, 25]);
+  });
+});
+
+describe('sides after each date (they match every count the research gives)', () => {
+  const coal = (t: TermRuntime, d: string) => step(t, d).coalition?.length ?? null;
+  test('24th Knesset', () => {
+    expect(coal(k24, '2021-04-06')).toBe(null); // before the new government: no sides
+    expect(coal(k24, '2021-06-13')).toBe(61);
+    expect(coal(k24, '2022-04-06')).toBe(60);
+    expect(coal(k24, '2022-05-19')).toBe(59);
+    expect(coal(k24, '2022-05-22')).toBe(60);
+    expect(coal(k24, '2022-06-13')).toBe(59);
+  });
+  test('25th Knesset', () => {
+    expect(coal(k25, '2022-12-29')).toBe(64);
+    expect(coal(k25, '2023-10-12')).toBe(76);
+    expect(coal(k25, '2024-03-25')).toBe(72);
+    expect(coal(k25, '2024-06-09')).toBe(64);
+    expect(coal(k25, '2024-09-29')).toBe(68);
+    expect(coal(k25, '2025-01-19')).toBe(62);
+    expect(coal(k25, '2025-03-19')).toBe(68);
+  });
+  test('the last day shows the Knesset as it stood, not an empty chamber', () => {
+    expect(step(k24, '2022-11-15').coalition!.length).toBeGreaterThan(50);
+  });
+});
+
+describe('levels (owner, 11 Nov): Simple fewest, Standard more, Expert all', () => {
+  test('Simple: the term, the government and the moves that changed its majority; no seat changes', () => {
+    // as the research grades them: start, swearing-in, Silman, Rinawie Zoabi out and back, Orbach, dissolution, rotation, end
+    expect(visibleSteps(k24, at('simple')).map((s) => s.step.date)).toEqual(['2021-04-06', '2021-06-13', '2022-04-06', '2022-05-19', '2022-05-22', '2022-06-13', '2022-06-30', '2022-07-01', '2022-11-15']);
+    expect(visibleSteps(k24, at('simple')).every((s) => s.items.every((it) => it.type === 'event'))).toBe(true);
+  });
+  test('Standard adds votes and single MKs leaving; Expert adds membership records', () => {
+    // each level with its default seat-change setting (Off, Important, All)
+    const simple = visibleSteps(k24, at('simple')).length, standard = visibleSteps(k24, at('standard', 'important')).length, expert = visibleSteps(k24, at('expert', 'all')).length;
+    expect(simple).toBeLessThan(standard); expect(standard).toBeLessThan(expert);
+    expect(visibleSteps(k24, at('standard', 'important')).some((s) => s.step.date === '2022-05-19')).toBe(true);
+  });
+  test('seat changes: none at Off; at Important only those the research rates; at All, by the kinds chosen', () => {
+    const seatSteps = (c: TimelineChoice) => visibleSteps(k24, c).filter((s) => s.items.some((it) => it.type === 'seat')).length;
+    expect(seatSteps(at('standard', 'off'))).toBe(0);
+    expect(seatSteps(at('standard', 'important'))).toBe(13); // the dates with a replacement the research rates Standard
+    expect(visibleSteps(k24, at('standard', 'important')).flatMap((s) => s.items).filter((it) => it.type === 'seat').every((it) => it.importance !== 'expert')).toBe(true);
+    expect(seatSteps(at('expert', 'all'))).toBe(20); // the dates in the 24th Knesset on which someone left or entered
+    // every 24th-Knesset replacement has a recorded reason, so hiding Norwegian-law ones leaves only resignations and deaths
+    const expertOnly = (kinds: typeof ALL) => visibleSteps(k24, at('expert', 'all', kinds)).flatMap((s) => s.items).filter((it) => it.type === 'seat' && it.importance === 'expert');
+    expect(expertOnly({ norwegian: false, left: true, unknown: true }).every((it) => it.change === 'left')).toBe(true);
+    expect(expertOnly(ALL).some((it) => it.change === 'norwegian')).toBe(true);
+  });
+  test('events the research holds out (timelineEligible: false) are never steps, even at Expert', () => {
+    const shown = new Set(visibleSteps(k24, at('expert', 'all')).flatMap((s) => s.items.map((it) => it.id)));
+    const held = k24.timeline!.steps.flatMap((s) => s.items).filter((it) => it.held);
+    expect(held.length).toBeGreaterThan(0);
+    expect(held.some((it) => shown.has(it.id))).toBe(false);
+  });
+  test('the setting’s default follows the level', () => {
+    expect(settingDefault('timelineSeatChanges', 'simple')).toBe('off');
+    expect(settingDefault('timelineSeatChanges', 'standard')).toBe('important');
+    expect(settingDefault('timelineSeatChanges', 'expert')).toBe('all');
+  });
+});
+
+describe('markers (owner, 11 Nov)', () => {
+  const view = (t: TermRuntime, d: string, level: TimelineChoice['level'] = 'expert') => visibleSteps(t, at(level, 'all')).find((s) => s.step.date === d)!;
+  test('swearing-in: Chikli voted against and is a rebel (D2) on the other side; Alharumi abstained and stayed (D3)', () => {
+    const v = view(k24, '2021-06-13');
+    const marks = stepMarks(v);
+    const chikli = personSeat(k24, CHIKLI, '2021-06-13'), alharumi = personSeat(k24, ALHARUMI, '2021-06-13');
+    expect(marks.get(chikli)).toBe('D2');
+    expect(marks.get(alharumi)).toBe('D3a');
+    expect(v.step.coalition).not.toContain(chikli);
+    expect(v.step.coalition).toContain(alharumi);
+  });
+  test('Silman leaves (D2), stays marked; Rinawie Zoabi leaves (D2) and returns (D4 towards the coalition), no rebel after', () => {
+    expect(stepMarks(view(k24, '2022-04-06')).get(personSeat(k24, SILMAN, '2022-04-06'))).toBe('D2');
+    expect(stepMarks(view(k24, '2022-05-19')).get(personSeat(k24, RINAWIE, '2022-05-19'))).toBe('D2');
+    expect(stepMarks(view(k24, '2022-05-22')).get(personSeat(k24, RINAWIE, '2022-05-22'))).toBe('D4c');
+    expect(step(k24, '2022-05-22').rebels.map((r) => r[1])).not.toContain(RINAWIE);
+    // Chikli's later declaration (D2 again) keeps him a rebel rather than toggling him back
+    expect(step(k24, '2022-04-25').rebels.map((r) => r[1])).toContain(CHIKLI);
+    expect(step(k24, '2022-06-13').rebels.map((r) => r[1]).sort()).toEqual([CHIKLI, SILMAN, ORBACH].sort());
+  });
+  test('a party changing sides gets a D4 arrow pointing where it went', () => {
+    const join = stepMarks(view(k25, '2023-10-12'));
+    expect([...join.values()].filter((m) => m === 'D4c')).toHaveLength(12);
+    expect([...stepMarks(view(k25, '2024-06-09')).values()].filter((m) => m === 'D4o')).toHaveLength(8);
+  });
+  test('coalition members who voted for dissolution and stayed get D3', () => {
+    expect([...stepMarks(view(k25, '2025-06-12')).values()].filter((m) => m === 'D3x')).toHaveLength(2);
+  });
+  test('a replacement is marked on the seat that changed hands', () => {
+    const v = view(k24, '2021-04-08');
+    expect(stepMarks(v).get(k24.openingSeat[DERI])).toBe('rep');
+  });
+  test('hidden items draw no marks; rebels always show', () => {
+    const v = visibleSteps(k24, at('simple')).find((s) => s.step.date === '2022-06-30')!;
+    expect([...stepMarks(v).values()].every((m) => m === 'D2')).toBe(true);
+  });
+});
+
+describe('chamber order', () => {
+  test('coalition on the left; a rebel sits next to the middle, out of the list’s block', () => {
+    const s = step(k24, '2022-04-06');
+    const { order, left } = chamberOrder(k24, s, (l) => ['24-מחל', '24-פה'].indexOf(l ?? ''));
+    expect(left).toBe(60);
+    expect(order.slice(0, left).every((i) => s.coalition!.includes(i))).toBe(true);
+    const rebels = new Set([personSeat(k24, CHIKLI, s.date), personSeat(k24, SILMAN, s.date)]);
+    expect(new Set(order.slice(left, left + 2))).toEqual(rebels);
+  });
+  test('before the first government: one block', () => {
+    expect(chamberOrder(k24, step(k24, '2021-04-08'), () => 0).left).toBe(0);
+  });
+});
+
+describe('the research lane’s fields win over the temporary fallback', () => {
+  // a copy of the repository's inputs with the 24th Knesset's events graded by hand
+  const root = mkdtempSync(join(tmpdir(), 'tl-'));
+  for (const d of ['public', 'data/meta', 'data/research/knesset-member-changes']) { mkdirSync(join(root, d, '..'), { recursive: true }); symlinkSync(join(process.cwd(), d), join(root, d)); }
+  mkdirSync(join(root, 'data/research/knesset-events'), { recursive: true });
+  const ev = JSON.parse(readFileSync('data/research/knesset-events/k24.json', 'utf8'));
+  // the research's own replacement grades are dropped here, so the hand-graded one below is the only Standard one
+  ev.events = ev.events.filter((e: { marker?: string }) => e.marker !== 'replacement');
+  ev.membershipEventRefs = [];
+  for (const e of ev.events) {
+    if (e.kind === 'coalition-exit-statement' && e.who.personIds?.[0] === SILMAN) { e.importance = 'expert'; e.marker = 'D2'; }
+    if (e.kind === 'budget-vote') { e.importance = 'simple'; e.marker = null; }
+  }
+  // a replacement event naming Deri and Taieb, graded Standard
+  ev.events.push({ id: 'k24-deri-out', date: '2022-01-25', kind: 'replacement', who: { personIds: [DERI, TAIEB] }, summary: { en: 'Aryeh Deri resigns; Yosef Taieb returns.', he: 'אריה דרעי מתפטר; יוסף טייב חוזר.' }, certainty: 'confirmed', importance: 'standard', marker: 'replacement', sources: [] });
+  writeFileSync(join(root, 'data/research/knesset-events/k24.json'), JSON.stringify(ev));
+  const t = compileTermTimeline(root).terms[24];
+  test('importance from the data', () => {
+    const items = t.timeline!.steps.flatMap((s) => s.items);
+    const silman = items.find((it) => it.kind === 'coalition-exit-statement' && it.en?.includes('Silman'))!;
+    expect(silman.importance).toBe('expert'); expect(silman.importanceFrom).toBe('data');
+    expect(items.filter((it) => it.kind === 'budget-vote').every((it) => it.importance === 'simple' && it.marker === null && it.markerFrom === 'data')).toBe(true);
+  });
+  test('a graded replacement shows at Standard, and only that one; the app writes its line', () => {
+    const steps = visibleSteps(t, at('standard', 'important')).filter((s) => s.items.some((it) => it.type === 'seat'));
+    expect(steps.map((s) => s.step.date)).toEqual(['2022-01-25']);
+    const seat = steps[0].items.find((it) => it.type === 'seat')!;
+    expect(seat.importanceFrom).toBe('data'); expect(seat.certainty).toBe('confirmed'); expect(seat.en).toBe(null);
+  });
+});

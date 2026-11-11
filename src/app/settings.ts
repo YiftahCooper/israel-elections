@@ -5,7 +5,7 @@ import type { FeatureId, Preset } from './features.ts';
  *  9 Nov 2026). Values are sparse: only what the user set is stored, so level-dependent and later
  *  defaults reach untouched settings. Settings are never scenario edits. */
 type Bi = readonly [string, string];
-export type GroupId = 'top' | 'general' | 'lists' | 'chamber' | 'numbers' | 'editing' | 'analysis' | 'access';
+export type GroupId = 'top' | 'general' | 'lists' | 'chamber' | 'numbers' | 'editing' | 'analysis' | 'history' | 'access';
 export const GROUPS: { id: GroupId; label: Bi }[] = [
   { id: 'top', label: ['Detail level', 'רמת פירוט'] },
   { id: 'general', label: ['General', 'כללי'] },
@@ -14,6 +14,7 @@ export const GROUPS: { id: GroupId; label: Bi }[] = [
   { id: 'numbers', label: ['Numbers', 'מספרים'] },
   { id: 'editing', label: ['Editing', 'עריכה'] },
   { id: 'analysis', label: ['Analysis', 'ניתוח'] },
+  { id: 'history', label: ['After the election', 'אחרי הבחירות'] },
   { id: 'access', label: ['Accessibility', 'נגישות'] },
 ];
 
@@ -49,6 +50,10 @@ export interface SettingValues {
   hoverPopups: boolean;
   preferTables: boolean;
   keepMessages: boolean;
+  timelineSeatChanges: 'off' | 'important' | 'all';
+  seatStepsNorwegian: boolean;
+  seatStepsLeft: boolean;
+  seatStepsUnrecorded: boolean;
 }
 export type SettingId = keyof SettingValues;
 /** Rows backed by other stores: the language and level (app state) and the point-of-use questions (PREFERENCES). */
@@ -154,6 +159,18 @@ export const SETTINGS: readonly SettingRow[] = [
   { id: 'optionPreviews', group: 'analysis', control: 'toggle', min: 'standard', label: ['Option previews', 'תצוגה מקדימה באפשרויות'],
     info: ['Small seat charts beside choices such as groupings. Off: names only, faster on slow phones.', 'תרשימי מושבים קטנים ליד אפשרויות כמו חלוקות. כבוי: שמות בלבד, מהיר יותר בטלפונים איטיים.'], synonyms: 'thumbnails mini charts previews תמונות ממוזערות תרשימים' },
 
+  // the Knesset-term timeline (owner, 11 Nov 2026): Simple no seat changes, Standard the important ones, Expert all of
+  // the kinds chosen here
+  { id: 'timelineSeatChanges', group: 'history', control: 'seg', min: 'expert', feature: 'after', label: ['Seat changes on the timeline', 'חילופי מושבים בציר הזמן'],
+    info: ['Steps where one MK replaced another. Important: party heads and others the research rates important, as at Standard.', 'צעדים שבהם חבר כנסת החליף אחר. חשובים: ראשי מפלגות ואחרים שהמחקר מדרג כחשובים, כמו ברמה רגילה.'],
+    options: [o('off', 'Off', 'כבוי'), o('important', 'Important', 'חשובים'), o('all', 'All', 'כולם')], synonyms: 'timeline seat changes replacement norwegian steps ציר זמן חילופים מחליף נורבגי צעדים' },
+  { id: 'seatStepsNorwegian', group: 'history', control: 'toggle', min: 'expert', feature: 'after', label: ['Norwegian law', 'החוק הנורבגי'],
+    info: ['With All: ministers who give up their seat to the next on the list, and their return.', 'במצב ״כולם״: שרים שמפנים את מקומם לבא בתור ברשימה, וחזרתם.'], synonyms: 'norwegian law minister replacement timeline נורבגי שר מחליף ציר זמן' },
+  { id: 'seatStepsLeft', group: 'history', control: 'toggle', min: 'expert', feature: 'after', label: ['Resignations and deaths', 'התפטרות ופטירה'],
+    info: ['With All: MKs who resigned or died, and who replaced them.', 'במצב ״כולם״: חברי כנסת שהתפטרו או נפטרו, ומי שבא במקומם.'], synonyms: 'resigned resignation died death replacement timeline התפטרות פטירה מחליף ציר זמן' },
+  { id: 'seatStepsUnrecorded', group: 'history', control: 'toggle', min: 'expert', feature: 'after', label: ['Reason not recorded', 'סיבה שלא תועדה'],
+    info: ['With All: changes whose reason the research has not recorded yet. Today that is most of them.', 'במצב ״כולם״: חילופים שסיבתם טרם תועדה במחקר. כיום רובם.'], synonyms: 'unknown reason replacement timeline סיבה לא ידועה מחליף ציר זמן' },
+
   { id: 'textSize', group: 'access', control: 'seg', min: 'simple', label: ['Text size', 'גודל טקסט'],
     info: ['Large makes all text and controls about 15% bigger.', 'גדול מגדיל את כל הטקסט והבקרים בכ־15%.'],
     options: [o('normal', 'Normal', 'רגיל'), o('large', 'Large', 'גדול')], synonyms: 'font bigger zoom size readability גופן גדול הגדלה קריאות' },
@@ -177,6 +194,7 @@ export function settingDefault<K extends SettingId>(id: K, level: Preset): Setti
     decimals: level === 'expert' ? 3 : level === 'standard' ? 2 : 1, splitWarning: true,
     confirmStartOver: true, hoverPreviews: true, communityScenarios: true, compareWith: 'previous', optionPreviews: true,
     textSize: 'normal', reduceMotion: false, hoverPopups: true, preferTables: false, keepMessages: false,
+    timelineSeatChanges: level === 'simple' ? 'off' : level === 'standard' ? 'important' : 'all', seatStepsNorwegian: true, seatStepsLeft: true, seatStepsUnrecorded: true,
   };
   return d[id];
 }

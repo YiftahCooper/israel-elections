@@ -214,3 +214,28 @@ preferred anchor, and multiple publications from the same institution do not bec
   is withheld. Empty reaction and polling sections render nothing; future records slot into them.
 - Next-election references accept either an election ID or the older date form. The 2001 direct PM
   election is a dated event within k15, since it did not elect a new Knesset.
+
+## The Knesset on a date (11 November 2026)
+
+For terms whose research file (`data/research/knesset-events/kN.json`) records a government's swearing-in, a
+section after the government card shows the Knesset as it stood after each dated event. Today: the 24th and 25th
+Knessets. Code: `scripts/term-timeline-runtime.ts` (build-time compiler, virtual module `virtual:term-timeline`),
+`src/history/termTimeline.ts` (pure helpers), `src/app/components/TermTimeline.tsx` (bar, lines, chart, seat card).
+
+- **Seats.** The 120 members of the first sitting, ordered by list and rank; a newcomer takes the seat of the member
+  they replaced. The Knesset records who left and who entered, not which seat, so the pairing comes from the
+  replacement record where it names the pair, else from the same list, the same faction or any open seat; the seat
+  card says the pairing is ours.
+- **Sides.** From the first swearing-in of the term: coalition factions on the left, the rest on the right; party
+  joins and exits move every member of the faction; a personal exit or return moves the person. A newcomer counts with
+  most of their faction. The computed counts are checked against every `seatsAfter` the research gives (a build
+  anomaly and a unit test otherwise). The state after each date uses every event; the reader's level only chooses
+  which dates are steps.
+- **Levels.** Events show from the level in their `importance`; seat changes are off at Simple, the research-graded
+  ones at Standard, all of the kinds chosen in Settings → After the election at Expert.
+- **Marks.** D2 rebel (red “!”, persistent until they return or leave the Knesset), D3 voted against (×) or abstained
+  (–) and stayed, D4 arrow towards the side a party moved to, and a neutral bent arrow on a seat that changed hands.
+  Shapes carry the meaning without colour; graphics run left to right in Hebrew too.
+- **Temporary fallback.** Until the research lane adds `importance` and `marker` to the event files,
+  `FALLBACK_IMPORTANCE` and the kind rules in the compiler supply them, and each item records whether it came from
+  the data or the fallback. Data always wins.
