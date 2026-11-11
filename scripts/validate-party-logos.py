@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 """Validate the research overlays and committed logo assets (standard library only)."""
+import sys
+from pathlib import Path as _P
+sys.path.insert(0, str(_P(__file__).resolve().parent))  # CI runs with python3 -I, which leaves the script folder off the path
 from logo_dates import valid_campaign_date
 import hashlib
 import re
