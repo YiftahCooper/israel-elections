@@ -8,6 +8,7 @@ import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { openElection, setState } from '../store.ts';
 import { Info } from './ui.tsx';
+import { TermTimeline } from './TermTimeline.tsx';
 import { formatDate } from '../dateFormat.ts';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
 import './AfterElection.css';
@@ -160,6 +161,7 @@ export function AfterElection({ ds }: { ds: ElectionDataset }) {
       <GovernmentComposition data={data} ds={ds} government={government} />
       {!!government.changes?.length && <details><summary>{L('Government changes', 'שינויים בממשלה')}</summary>{government.changes.map((change, i) => <div className="after-government-change" key={i}><FactRows data={data} events={[change]} />{change.coalition && <GovernmentComposition data={data} ds={ds} government={change as SupportSnapshot} />}</div>)}</details>}
     </section>}
+    <TermTimeline ds={ds} />
     {!!data.reaction?.items.length && <section><h3>{L('Statements & institutional steps', 'הצהרות וצעדים מוסדיים')}</h3><FactRows data={data} events={data.reaction.items} /></section>}
     {polls.map((p, i) => <section key={i}><h3>{p.timing === 'after-election' ? L('After-election polling', 'סקרים לאחר הבחירות') : L('Issue polling', 'סקרי סדר יום')} · <span className="after-help-anchor"><DateRun date={p.date ?? p.fieldDates!.to} /> <Evidence data={data} cites={[...p.cites ?? [], { source: p.sourceId, quote: lang === 'he' ? p.questionHe! : p.questionEn! }]} /></span></h3><p className="small muted"><HistoryText text={(lang === 'he' ? p.populationHe : p.populationEn)!} /> · <DateRun date={p.fieldDates!.from} end={p.fieldDates!.to} /></p>{p.answers.map((a, j) => <div className="after-poll" key={j}><span><HistoryText text={(lang === 'he' ? a.labelHe : a.labelEn)!} /></span><meter dir="ltr" min="0" max="100" value={a.pct} /><b><bdi dir="ltr">{a.pct}%</bdi></b></div>)}</section>)}
     {termEvents.length > 0 && <section><h3>{L('During the term', 'במהלך הכהונה')}</h3><FactRows data={data} events={termEvents} /></section>}

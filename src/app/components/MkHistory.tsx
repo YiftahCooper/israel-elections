@@ -28,7 +28,7 @@ const g = (female: boolean, m: string, f: string) => female ? f : m;
 
 // ---------- entry points ----------
 /** True when this candidacy is shown on someone's history and the scenario still has the official name. */
-function usePersonOf(candidate: { id: string; nameHe: string } | null | undefined): number | null {
+export function usePersonOf(candidate: { id: string; nameHe: string } | null | undefined): number | null {
   const rt = useMkRuntime();
   const electionId = (candidate ? `k${candidate.id.split('-')[0]}` : 'k1') as ElectionId;
   const official = useStore((st) => st.datasets[electionId]);

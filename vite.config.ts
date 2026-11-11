@@ -5,6 +5,7 @@ import { validateAftermath, type Aftermath } from './src/data/aftermath-model.ts
 import { compileFamilyRuntime } from './scripts/family-runtime.ts';
 import { compileHistoryRuntime } from './scripts/party-history-runtime.ts';
 import { compileMkHistory } from './scripts/mk-history-runtime.ts';
+import { compileTermTimeline } from './scripts/term-timeline-runtime.ts';
 import { compileElectionTotals } from './scripts/election-totals-runtime.ts';
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
@@ -43,6 +44,11 @@ export default defineConfig({
     name: 'mk-history-runtime',
     resolveId(id) { if (id === 'virtual:mk-history') return '\0mk-history'; },
     load(id) { if (id === '\0mk-history') return `export default ${JSON.stringify(compileMkHistory())}`; },
+  }, {
+    // the Knesset-term timeline and seat cards: their own chunk, loaded by After the election and the seat card
+    name: 'term-timeline-runtime',
+    resolveId(id) { if (id === 'virtual:term-timeline') return '\0term-timeline'; },
+    load(id) { if (id === '\0term-timeline') return `export default ${JSON.stringify(compileTermTimeline())}`; },
   }, {
     name: 'election-totals',
     resolveId(id) { if (id === 'virtual:election-totals') return '\0election-totals'; },

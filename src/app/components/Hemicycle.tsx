@@ -6,7 +6,9 @@ import { Slip } from './ui.tsx';
 import { syntheticIconSvg } from '../syntheticIcon.ts';
 import { factLog } from '../../model/actionClassification.ts';
 import { CandidateName } from './CandidateName.tsx';
-import { MkSeatLink } from './MkHistory.tsx';
+import { MkSeatLink, usePersonOf } from './MkHistory.tsx';
+import { SeatHoldersNote } from './TermTimeline.tsx';
+import { loadTermRuntime } from '../../history/termTimeline.ts';
 import memberNames from '../../data/candidate-display-names.json';
 import { Floating } from '../floating.tsx';
 import { useHoverIntent } from '../hoverIntent.ts';
@@ -132,7 +134,9 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     hoverBridge.keep();
     setHover({ seat: st, anchor: evt.currentTarget });
   };
-  const onSeatHover = (st: SeatInfo, evt: React.MouseEvent) => { const anchor = evt.currentTarget; hoverBridge.enter(() => setHover({ seat: st, anchor })); };
+  // the seat card's "Who sat here" starts loading as the mouse arrives, so the card opens at its full size: a card
+  // that grew after opening could slide under the resting pointer and close itself
+  const onSeatHover = (st: SeatInfo, evt: React.MouseEvent) => { const anchor = evt.currentTarget; void loadTermRuntime(); hoverBridge.enter(() => setHover({ seat: st, anchor })); };
 
   const exportSvg = (kind: 'svg' | 'png') => {
     const el = svgRef.current; if (!el) return;
@@ -359,6 +363,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           {(hover.seat.partyId || cand?.partyHe) && <div className="muted small row">{hover.seat.innerColor && <PartyKey hover partyId={hover.seat.partyId} color={hover.seat.innerColor} ring={hv.color}/>}{seatLabel(hover.seat)}</div>}
           <div className="muted small">{hover.seat.remainder ? remainderHow : L('Seat won by whole quota', 'מנדט שהושג במודד שלם')}</div>
           <MkSeatLink candidate={cand} />
+          {!factLog(s).length && <SeatHolders electionId={s.electionId} candidate={cand} />}
         </Floating>
       )}
       {!compactProp && (
@@ -380,4 +385,9 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       )}
     </div>
   );
+}
+
+/** Who else held this seat during the term (owner decision F1, 11 Nov 2026): the official result only. */
+function SeatHolders({ electionId, candidate }: { electionId: string; candidate: { id: string; nameHe: string } | null }) {
+  return <SeatHoldersNote electionId={electionId} personId={usePersonOf(candidate)} />;
 }

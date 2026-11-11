@@ -47,6 +47,7 @@ test('history remains official after editing votes', async ({ page }) => {
   await page.getByRole('button', { name: 'EN', exact: true }).click();
   await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
   await page.getByRole('tab', { name: 'After the election', exact: true }).click();
+  await page.locator('section.tl .tl-chamber circle.seat').first().waitFor(); // the term timeline loads its own data
   const original = await page.locator('.after-election').textContent();
   await page.getByRole('tab', { name: 'Overview', exact: true }).click();
   await page.getByRole('region', { name: 'Lists', exact: true }).getByRole('button', { name: 'Likud', exact: true }).click();
