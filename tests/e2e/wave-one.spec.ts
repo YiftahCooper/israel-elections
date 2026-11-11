@@ -1,4 +1,5 @@
 import { choose } from './choices.ts';
+import { openSideBySide } from './sideBySide.ts';
 import { expect, test, type Page } from '@playwright/test';
 async function start(page: Page, lang = 'en', theme = 'light', level = 'standard') {
   await page.addInitScript(v => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)), {lang, theme, level, hintDismissed:true});
@@ -15,13 +16,14 @@ test('grouping-only switches stay factual-neutral in Compare and keep named undo
     // U7: a sourced grouping changes the view, not election facts.
     await expect(page.getByRole('button', {name:/^History$/})).toHaveCount(0);
     await expect(page.locator('.session')).toContainText('No changes');
-    await page.getByRole('tab', {name:'Compare',exact:true}).click();
-    // U7 makes both sourced schemes unchanged facts. Auto comparison therefore
-    // opens the previous election (c4e7904); an explicit same-election choice stays empty.
-    if (scheme === 'pre-election-blocs') await expect(page.getByRole('button', { name: 'Compare with', exact: true })).toHaveAttribute('data-value', 'election:k24');
-    await choose(page.getByRole('button', { name: 'Compare with', exact: true }), 'historical');
-    await expect(page.locator('.cmp-empty')).toContainText('Your changes show here.');
-    await expect(page.locator('.cmp-diff')).toHaveCount(0);
+    await openSideBySide(page);
+    // U7 makes both sourced schemes unchanged facts: comparing opens the previous election, and this election's
+    // official result is not offered, since nothing has changed
+    const picker = page.locator('.side-by-side').getByRole('button', { name: 'Compare with', exact: true });
+    await expect(picker).toHaveAttribute('data-value', 'prev');
+    await picker.click();
+    await expect(page.getByRole('dialog').last().locator('[data-choice-value="official"]')).toHaveCount(0);
+    await page.keyboard.press('Escape');
     await expect(page.locator('.cmp')).not.toContainText('0 → 64');
     await page.getByRole('tab', {name:'Overview',exact:true}).click();
   }

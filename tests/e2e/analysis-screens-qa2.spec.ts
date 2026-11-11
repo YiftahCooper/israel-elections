@@ -1,5 +1,5 @@
-import { choose } from './choices.ts';
 import { expect, test, type Page } from '@playwright/test';
+import { openSideBySide } from './sideBySide.ts';
 
 async function start(page: Page, lang: 'en' | 'he', width: number) {
   await page.setViewportSize({ width, height: 1000 });
@@ -86,13 +86,9 @@ for (const lang of ['en', 'he'] as const) for (const width of [390, 1500]) {
     expect(Math.abs(info.y - parent.y)).toBeLessThanOrEqual(6);
     expect(await lastNumber.evaluate(el => el.getClientRects().length)).toBe(1);
     expect((await page.getByRole('region', { name: lang === 'en' ? 'Lists by votes' : 'רשימות לפי קולות' }).boundingBox())!.width).toBeLessThanOrEqual(720);
-    await page.locator('#tab-compare').click();
-    // Explicitly return to the identical official result to audit the chooser controls.
-    await choose(page.getByRole('button', { name: lang === 'en' ? 'Compare with' : 'השוואה עם', exact: true }), 'historical');
-    await expect(page.locator('.cmp-empty')).toBeVisible();
-    const heights = await page.locator('.cmp-picks > button, .cmp-picks .choice-trigger').evaluateAll(nodes => nodes.map(e => e.getBoundingClientRect().height));
-    expect(heights.length).toBeGreaterThan(1);
-    expect(Math.max(...heights) - Math.min(...heights)).toBeLessThanOrEqual(1);
+    await openSideBySide(page);
+    // the two-sided page opens from the comparison strip with both results
+    await expect(page.locator('.side-by-side .cmp-card')).toHaveCount(2);
     await page.locator('#tab-coal').click();
     const row = page.locator('.coal-list > li > button').first();
     const [count, track] = [(await row.locator('.coal-n').boundingBox())!, (await row.locator('.coal-bar').boundingBox())!];

@@ -73,9 +73,12 @@ export type ReferenceState =
   | { status: 'ready'; ref: Reference };
 
 const L = (lang: 'he' | 'en', en: string, he: string) => lang === 'he' ? he : en;
+// a roster edit alone is something to compare too (Side by side lists the candidates entering and leaving)
+const sameRoster = (a: Scenario['lists'][number]['candidates'], b: Scenario['lists'][number]['candidates']) =>
+  a === b || (a.length === b.length && a.every((c, i) => c.id === b[i].id));
 const sameVotes = (a: Scenario, b: Scenario) => a.electionId === b.electionId && a.lists.length === b.lists.length
   && a.lists.every((l, i) => b.lists[i]?.id === l.id && b.lists[i].votes === l.votes && !!b.lists[i].withdrawn === !!l.withdrawn)
-  && a.lists.every((l, i) => b.lists[i].bloc === l.bloc) && a.registered === b.registered && a.invalid === b.invalid && JSON.stringify(a.rules) === JSON.stringify(b.rules) && JSON.stringify(a.agreements) === JSON.stringify(b.agreements);
+  && a.lists.every((l, i) => b.lists[i].bloc === l.bloc && sameRoster(l.candidates, b.lists[i].candidates)) && a.registered === b.registered && a.invalid === b.invalid && JSON.stringify(a.rules) === JSON.stringify(b.rules) && JSON.stringify(a.agreements) === JSON.stringify(b.agreements);
 
 // one replayed saved scenario per log, so every reader (strip, lists, chamber) shares it and memoised views stay stable
 const replayed = new WeakMap<SavedScenario, WeakMap<ElectionDataset, Scenario>>();

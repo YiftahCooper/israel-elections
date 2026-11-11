@@ -104,7 +104,7 @@ const rememberedSettings = (() => { try { const raw = JSON.parse(globalThis.loca
 const deviceDark = () => globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches === true;
 const resolvedTheme = (pref: SettingValues['theme']): 'light' | 'dark' => pref === 'device' ? (deviceDark() ? 'dark' : 'light') : pref;
 const initialLevel: Level = LEVELS.includes(persisted.level) ? persisted.level : 'simple';
-const TOOL_IDS = new Set(['board', 'families', 'scenarios', 'whatif', 'coal', 'walk', 'structure', 'compare', 'security', 'charts', 'turnout', 'sens', 'loc', 'rules', 'sources']);
+const TOOL_IDS = new Set(['board', 'families', 'scenarios', 'whatif', 'coal', 'walk', 'structure', 'security', 'charts', 'turnout', 'sens', 'loc', 'rules', 'sources']);
 
 let state: State = {
   datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, reference: null, markOfficial: persisted.markOfficial === true, past: [], future: [], selectedListId: null, blocPanel: null,

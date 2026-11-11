@@ -1,5 +1,6 @@
 import { choose } from './choices.ts';
 import { expect, test, type Page } from '@playwright/test';
+import { openSideBySide } from './sideBySide.ts';
 async function start(page: Page, lang = 'en', theme = 'light') {
   await page.addInitScript(v => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)), { lang, theme, level: 'standard', hintDismissed: true });
   await page.goto('/');
@@ -58,7 +59,9 @@ for (const separate of [false, true]) test(`B2 saved custom grouping draws paire
   await expect(page.locator('.session')).toContainText(separate ? '(▲ +2)' : '(▲ +5)');
   // a saved grouping is a saved scenario: it becomes the reference, and its blocs are compared with the vote edit
   if(!separate){await expect(page.locator('.session')).toContainText('1 change from Review A');await expect(page.locator('.session')).toContainText('Review coalition 72 (▲ +4)');}
-  await page.getByRole('tab', { name: 'Compare', exact: true }).click();
+  await openSideBySide(page);
+  // comparing starts on the previous election: compare with the saved grouping instead
+  await choose(page.locator('.side-by-side').getByRole('button', { name: 'Compare with', exact: true }), { label: 'Review A' });
   await expect(page.locator('.cmp')).not.toContainText('no counterpart in');
   // the reference and the scenario side by side, each with its blocs
   await expect(page.locator('.cmp-card .majority-context')).toHaveCount(2);

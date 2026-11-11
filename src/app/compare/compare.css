@@ -194,3 +194,11 @@
 .cmp-sheet-why { padding-block: 4px; }
 .cmp-match-list .cmp-why { max-inline-size: none; }
 .cmp-why-k { font-weight: 700; }
+
+/* Side by side (owner, 12 Nov 2026, C5b): the sides say which is your work; one worded copy button per row */
+.cmp-card-role { flex-basis: 100%; font-size: 12px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; color: var(--ink-2); }
+.cmp-card[data-role="main"] .cmp-card-role { color: var(--focus); }
+.cmp-copy-votes { white-space: nowrap; padding-inline: 8px; min-block-size: 28px; }
+.cmp-wb[data-arrows="hover"] .cmp-row .cmp-copy-votes { opacity: 0; }
+.cmp-wb[data-arrows="hover"] .cmp-row:is(:hover, :focus-within, .selected) .cmp-copy-votes:not(:disabled) { opacity: 1; }
+@media (hover: none) { .cmp-wb[data-arrows="hover"] .cmp-row .cmp-copy-votes:not(:disabled) { opacity: 1; } }

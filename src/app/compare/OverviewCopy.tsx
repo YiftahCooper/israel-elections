@@ -69,7 +69,10 @@ export function OverviewCopy({ ask }: { ask: CopyAsk }) {
   const close = () => askCopy(null);
   const names = unit ? unit.dst.map((id) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : id; }).join(' + ') : '';
   const title = unit ? L(`Copy votes from ${where}: ${names}`, `העתקת קולות ${hebrewPrefix('מ', where)}: ${names}`) : L(`Copy votes from ${where}`, `העתקת קולות ${hebrewPrefix('מ', where)}`);
-  return <CopyVotesBox req={{ from, to, units: unit ? [unit] : [], title, cross: !ref.same, ...(unit ? {} : { choices: offer.choices }) }} onClose={close}
+  // every list with a meaningful result that the compared result has no list for is named as not copied
+  const valid = s.lists.reduce((n, l) => n + l.votes, 0);
+  const notCopied = unit ? [] : s.lists.filter((l) => !l.withdrawn && l.votes >= valid * 0.005 && !offer.unitOf(l.id)).sort((a, b) => b.votes - a.votes).map((l) => listLabel(l, lang));
+  return <CopyVotesBox req={{ from, to, units: unit ? [unit] : [], title, cross: !ref.same, ...(unit ? {} : { choices: offer.choices, notCopied }) }} onClose={close}
     onDone={(plan) => {
       dispatch(plan.action);
       const after = allocationOf(plan.result);

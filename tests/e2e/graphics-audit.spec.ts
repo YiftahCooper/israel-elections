@@ -1,4 +1,5 @@
 import { choose } from './choices.ts';
+import { openSideBySide } from './sideBySide.ts';
 import {expect,test} from '@playwright/test';
 import {readFileSync} from 'node:fs';
 import {deflateRawSync} from 'node:zlib';
@@ -128,11 +129,10 @@ test('summary, graphics and Compare default follow the same reference setting',a
       expect(Math.min(...x)).toBeGreaterThan(350);
       expect(Math.max(...x)).toBeLessThan(650);
     }
-    await page.getByRole('tab',{name:'Compare',exact:true}).click();
-    // With nothing to compare, the automatic target is the previous election.
-    const target=page.getByRole('button',{name:'Compare with',exact:true});
-    if(changed) await expect(target).toHaveText(new RegExp(name));
-    else await expect(target).toHaveAttribute('data-value', 'election:k24');
+    await openSideBySide(page);
+    // comparing starts on the previous election whichever reference marks the changes
+    const target=page.locator('.side-by-side').getByRole('button',{name:'Compare with',exact:true});
+    await expect(target).toHaveAttribute('data-value', 'prev');
     // the open scenario's chamber keeps the No bloc seats
     if(changed) expect(await page.locator('.cmp-card[data-role="main"] [data-seat][data-bloc="__none"]').count()).toBeGreaterThan(0);
   }

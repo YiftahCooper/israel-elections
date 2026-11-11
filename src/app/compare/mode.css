@@ -66,3 +66,8 @@
 .cmpm-copy .cmpm-copy-lists .row { display: flex; gap: 12px; }
 .cmpm-copy-sentence { margin: 0; line-height: 1.5; }
 .cmpm-copy-from { margin: 0; color: var(--ink-2); }
+
+/* the Side by side page: its name and Close, which returns to the screen you came from, still comparing */
+.cmpm-side-head { display: flex; align-items: center; gap: 10px; margin-block-end: 8px; }
+.cmpm-side-head h2 { margin: 0; font-size: 18px; }
+.cmpm-side-close { margin-inline-start: auto; }

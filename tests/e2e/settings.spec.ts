@@ -1,5 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 import { choose } from './choices.ts';
+import { openSideBySide } from './sideBySide.ts';
 
 // Each setting is seeded the way a returning visitor has it (the sparse `israel-elections:settings` record), then its
 // effect is checked where it applies. Seeds run once per test, so a reload sees what the app itself stored.
@@ -326,10 +327,13 @@ test.describe('every setting takes effect', () => {
     await expect(page.getByText('Community scenarios are off', { exact: false })).toBeVisible();
   });
 
-  test('compare with: the official result', async ({ page }) => {
+  test('compare with: the official result, once something is changed', async ({ page }) => {
     await open(page, { settings: { compareWith: 'official' } });
-    await page.locator('#tab-compare').click();
-    await expect(page.locator('#tabpanel-compare, [role="tabpanel"]').first()).toContainText(/official/i);
+    await page.getByRole('button', { name: 'Likud', exact: true }).click();
+    const votes = page.locator('.side-panel').getByRole('textbox', { name: 'Votes', exact: true });
+    await votes.fill('1300000'); await votes.press('Enter'); await page.keyboard.press('Escape');
+    await page.locator('.compare-on').click();
+    await expect(page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true })).toHaveAttribute('data-value', 'official');
   });
 
   test('popups on hover: off waits for a click', async ({ page }) => {
@@ -412,47 +416,48 @@ test.describe('every setting takes effect', () => {
 
 test.describe('Compare follows Settings', () => {
   const compareRow = (page: Page, name: string) => page.locator('tr.cmp-row').filter({ has: page.locator('.cmp-rname', { hasText: name }) }).first();
-  test('Copy votes between elections as: answered in Settings, the copy no longer asks', async ({ page }) => {
+  test('Copy votes: default method, set in Settings, is where the box starts', async ({ page }) => {
     await open(page, { preferences: { voteSource: 'proportional' } });
     await gear(page).click();
     const r = row(page, 'copyMode');
-    await expect(r.getByRole('group', { name: 'Copy votes between elections as' })).toBeVisible();
-    await r.getByRole('button', { name: 'Number of votes', exact: true }).click();
+    await expect(r.getByRole('group', { name: 'Copy votes: default method' })).toBeVisible();
+    await r.getByRole('button', { name: 'Same number of votes', exact: true }).click();
     await page.keyboard.press('Escape');
-    await page.locator('#tab-compare').click();
+    await openSideBySide(page);
     const likud = compareRow(page, 'Likud');
     await likud.hover();
-    await likud.getByRole('button', { name: 'Copy Likud’s votes to 2026' }).click();
-    await expect(page.locator('dialog[open].cmp-ask')).toHaveCount(0);
+    await likud.getByRole('button', { name: 'Copy Likud’s votes into 2026' }).click();
+    // the box always opens, starting on the default
+    const ask = page.locator('dialog[open].cmp-ask');
+    await expect(ask.getByRole('radio', { name: /Same number of votes/ })).toBeChecked();
+    await ask.getByRole('button', { name: 'Copy into 2026' }).click();
     await expect(page.locator('.toast')).toContainText('Votes copied to 2026.');
-    await expect(likud.locator('.cmp-v').last()).toContainText('1,115,336');
+    await expect(likud.locator('.cmp-v').first()).toContainText('1,115,336');
   });
-  test('an answer for one list is named by its list, and the copy question links to its row', async ({ page }) => {
+  test('an answer for one list is named by its list, and the box links to its row in Settings', async ({ page }) => {
     await open(page, { preferences: { voteSource: 'proportional' } });
-    await page.locator('#tab-compare').click();
+    await openSideBySide(page);
     const likud = compareRow(page, 'Likud');
     await likud.hover();
-    await likud.getByRole('button', { name: 'Copy Likud’s votes to 2026' }).click();
+    await likud.getByRole('button', { name: 'Copy Likud’s votes into 2026' }).click();
     const ask = page.locator('dialog[open].cmp-ask');
     await ask.getByRole('radio', { name: 'For this list' }).check();
-    await ask.getByRole('button', { name: 'Copy to 2026' }).click();
+    await ask.getByRole('button', { name: 'Copy into 2026' }).click();
     await gear(page).click();
     const r = row(page, 'copyMode');
     await r.getByRole('button', { name: /Remembered for 1/ }).click();
     await expect(r.locator('.pref-items')).toContainText('Likud');
-    await expect(r.locator('.pref-items')).toContainText('Share of the vote');
+    await expect(r.locator('.pref-items')).toContainText('Same share of eligible voters');
     await expect(r.locator('.pref-items')).not.toContainText('Unknown list');
     await page.keyboard.press('Escape');
-    // Votes as… always asks; its link opens Settings at this row
     await likud.hover();
-    await likud.getByRole('button', { name: 'More for Likud' }).click();
-    await page.locator('.cmp-menu').getByRole('button', { name: 'Votes as…' }).first().click();
-    await page.locator('dialog[open].cmp-ask').getByRole('button', { name: 'Change in Settings' }).click();
+    await likud.getByRole('button', { name: 'Copy Likud’s votes into 2026' }).click();
+    await page.locator('dialog[open].cmp-ask').getByRole('button', { name: 'Change the default in Settings' }).click();
     await expect(row(page, 'copyMode')).toBeInViewport();
   });
   for (const [mode, expectZero] of [['all', true], ['over', 'some'], ['folded', false]] as const) test(`Lists with no seats: ${mode} sets which seatless rows Compare starts with`, async ({ page }) => {
     await open(page, { settings: { seatlessLists: mode } });
-    await page.locator('#tab-compare').click();
+    await openSideBySide(page);
     await expect(page.locator('tr.cmp-row').first()).toBeVisible();
     const rows = await page.locator('tr.cmp-row').evaluateAll(trs => trs.map(tr => {
       const n = (sel: string) => Number(tr.querySelector(sel)?.textContent || 0);

@@ -55,6 +55,8 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
     apply: (a: Action) => dispatchSide(ref.id, ref.initial, ref.start, a),
   };
   return <div className="cmp">
+    <div className="cmpm-side-head"><h2>{L('Side by side', 'זו לצד זו')}</h2>
+      <button type="button" className="btn small cmpm-side-close" onClick={closeSideBySide}>{L('Close side by side', 'סגירת זו לצד זו')}</button></div>
     <AnalysisEdits s={s} outlet="compare-grouping" />
     <Suspense fallback={<p className="small muted">{L('Loading…', 'טוען…')}</p>}>
       <Workbench main={main} other={other} onSwap={() => swapWithReference(ref)}

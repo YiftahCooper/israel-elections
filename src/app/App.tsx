@@ -82,7 +82,7 @@ const Rules = lazyPanel(loaders.panels, 'Rules');
 const Localities = lazyPanel(loaders.panels, 'Localities');
 const Sources = lazyPanel(loaders.panels, 'Sources');
 const TAB_PANEL: Partial<Record<Tab, { preload: () => Promise<void> }>> = {
-  after: AfterElection, families: Families, coal: Coalitions, security: SeatSecurity, compare: Compare, charts: Charts, structure: Structure,
+  after: AfterElection, families: Families, coal: Coalitions, security: SeatSecurity, charts: Charts, structure: Structure,
   turnout: Turnout, sens: Sensitivity, rules: Rules, loc: Localities, sources: Sources,
 };
 /** Starts fetching a tab's code ahead of its first use (a no-op once loaded). */
@@ -187,6 +187,8 @@ function Shell() {
   const issues = scenarioIssues(s, r);
   const label = (id: Tab) => L(...featureLabel(id));
   const customPage = toolNow === 'custom';
+  // Side by side is a page opened from the comparison strip, not a tab (owner, 12 Nov 2026, C5b)
+  const sideBySide = toolNow === 'compare';
   const tool: Tab = toolPick && TOOLS.some((t) => t.id === toolPick) ? toolPick : 'board';
   // every tool, under its heading; this level's first, then the others under a quiet label (never hidden)
   const availableTools = TOOLS.filter(t => t.id === 'board' || customFeatures?.[t.id] !== 'hidden');
@@ -200,13 +202,13 @@ function Shell() {
     <div className={`app ${preview ? 'board-preview' : ''}`} data-coloured={tool !== 'after' && resultChanges(committed, base).length ? '' : undefined} style={{ ['--scenario-color' as string]: tool !== 'after' && resultChanges(committed, base).length ? liveScenarioColor(committed, saved) : undefined, ['--scenario-ink' as string]:inkOn(liveScenarioColor(committed,saved)) }}>
       <TopBar s={pmOnly ? null : committed} r={cr} ds={ds} baseR={baseR} pmContestId={pmContestId} onContestChange={setPMContestId} />
       {pmOnly ? <main className="work"><PMResult contest={pmOnly} onKnesset={() => setPMContestId(null)} /></main> : <>
-      <TabRow tools={availableTools} level={level} selected={customPage ? null : tool} label={(id) => label(id as Tab)}
+      <TabRow tools={availableTools} level={level} selected={customPage || sideBySide ? null : tool} label={(id) => label(id as Tab)}
         onOpen={(id) => openTool(id as Tab)} onKey={(id) => setState({ tool: id as Tab })} onPrefetch={(id) => prefetchTab(id as Tab)} />
       {tool !== 'after' && <ChangeSummary s={committed} r={cr} base={base} baseR={baseR} ds={ds} />}
       {!customPage && <CompareStrip s={committed} />}
       <CopyHost />
       <main className="work">
-        {customPage ? <CustomPage /> : tool === 'board' ? (
+        {customPage ? <CustomPage /> : !sideBySide && tool === 'board' ? (
           <div className={`board ${selected || blocPanel ? 'with-panel' : ''}`}>
             <ErrorBoundary label={L('Lists', 'רשימות')} resetKey={s}><ListBars s={s} r={r} base={base} baseR={baseR} /></ErrorBoundary>
             <div className="center"><BoardChoices s={s} />
@@ -224,6 +226,12 @@ function Shell() {
             {selected && <div className="panel-slot"><ErrorBoundary label={L('List details', 'פרטי רשימה')} resetKey={selected}><ListSidePanel s={s} r={r} ds={ds} base={base} baseR={baseR} listId={selected} /></ErrorBoundary></div>}
             {!selected && blocPanel && <div className="panel-slot"><ErrorBoundary label={L('Blocs', 'גושים')} resetKey={s}><BlocPanel s={s} r={r} focus={blocPanel} /></ErrorBoundary></div>}
           </div>
+        ) : sideBySide ? (
+          <section className="panel tool-page side-by-side" id="tool-panel" aria-label={L('Side by side', 'זו לצד זו')}>
+            <div className="body" id="analysis-panel"><ErrorBoundary label={L('Side by side', 'זו לצד זו')} resetKey={`compare|${committed.id}`}><Suspense fallback={<p className="muted" role="status">{L('Loading…', 'טוען…')}</p>}>
+              <Compare s={committed} r={cr} base={base} ds={ds} />
+            </Suspense></ErrorBoundary></div>
+          </section>
         ) : (
           <section className="panel tool-page" id="tool-panel" aria-label={label(tool)}>
             <header><h2>{label(tool)}</h2></header>
@@ -237,7 +245,6 @@ function Shell() {
                 {tool === 'coal' && <Coalitions s={committed} r={cr} />}
                 {tool === 'security' && <SeatSecurity s={committed} r={cr} />}
                 {tool === 'walk' && <Walkthrough s={committed} r={cr} />}
-                {tool === 'compare' && <Compare s={committed} r={cr} base={base} ds={ds} />}
                 {tool === 'charts' && <Charts s={committed} r={cr} />}
                 {tool === 'structure' && <Structure s={committed} r={cr} base={base} />}
                 {tool === 'turnout' && <Turnout key={committed.electionId} s={committed} />}

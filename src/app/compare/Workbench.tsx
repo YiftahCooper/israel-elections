@@ -147,17 +147,19 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
   };
   const oneToOne = (row: MatchRow, d: Dir) => { const u = copyUnit(row, rows, d); return u && u.src.length === 1 && u.dst.length === 1 ? u : null; };
 
-  const arrow = (row: MatchRow | null, units: CopyUnit[] | null, d: Dir, what: string) => {
-    const { to } = sideOf(d);
-    const label = units ? L(`Copy ${what}’s votes to ${nameOf(to)}`, `העתקת הקולות של ${what} ${hebrewPrefix('ל', nameOf(to))}`) : row?.tag === 'check' ? L('Accept or reject this match first', 'אשרו או דחו קודם את ההתאמה') : row?.group ? L('Votes of a split list can’t be divided by list: copy the group', 'אין לחלק קולות של רשימה מפוצלת לפי רשימה: העתיקו את הקבוצה') : L('No counterpart to copy', 'אין מקבילה להעתקה');
-    return <button type="button" className="cmp-arrow" aria-label={label} title={label} disabled={!units} onClick={(e) => { e.stopPropagation(); if (units) copyVotes(units, d); }}>{d === 'toRight' ? <ArrowRight size={16} /> : <ArrowLeft size={16} />}</button>;
+  /** into your work, from the compared result (owner, 12 Nov 2026: one worded button instead of the two arrows); the other
+   *  direction stays in the row's menu */
+  const toWork: Dir = mainLeft ? 'toLeft' : 'toRight';
+  const copyButton = (row: MatchRow | null, units: CopyUnit[] | null, what: string) => {
+    const label = units ? L(`Copy ${what}’s votes into ${nameOf(main)}`, `העתקת הקולות של ${what} ${hebrewPrefix('ל', nameOf(main))}`) : row?.tag === 'check' ? L('Accept or reject this match first', 'אשרו או דחו קודם את ההתאמה') : row?.group ? L('Votes of a split list can’t be divided by list: copy the group', 'אין לחלק קולות של רשימה מפוצלת לפי רשימה: העתיקו את הקבוצה') : L('No counterpart to copy', 'אין מקבילה להעתקה');
+    return <button type="button" className="btn small cmp-copy-votes" aria-label={label} title={label} disabled={!units} onClick={(e) => { e.stopPropagation(); if (units) copyVotes(units, toWork); }}>{L('Copy votes…', 'העתקת קולות…')}</button>;
   };
 
   // ---- the row menu (both directions, every field); on a phone the row sheet instead
   const menuItems = (row: MatchRow, close: () => void) => {
     const items: ReactNode[] = [];
     const btn = (k: string, text: string, run: () => void, disabled = false) => <button key={k} type="button" className="btn small ghost cmp-menu-item" disabled={disabled} onClick={() => { close(); run(); }}>{text}</button>;
-    for (const d of ['toRight', 'toLeft'] as Dir[]) {
+    for (const d of [toWork, toWork === 'toRight' ? 'toLeft' : 'toRight'] as Dir[]) { // into your work first
       const { from, to } = sideOf(d);
       const u = copyUnit(row, rows, d), one = oneToOne(row, d);
       const srcOnly = d === 'toRight' ? row.left.length && !row.right.length : row.right.length && !row.left.length;
@@ -238,8 +240,9 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
     {selected.size > 0 && !simple && (() => { const r = unitSel('toRight'), l = unitSel('toLeft'); return <div className="cmp-selbar row" role="region" aria-label={L('Selected rows', 'שורות שנבחרו')}>
       <b>{L(`${selected.size} selected`, `${selected.size} נבחרו`)}</b>
       {r.skipped > 0 && <span className="small cmp-refused">{L(`${r.skipped} need a decision (no counterpart or to check)`, `${r.skipped} דורשות החלטה (אין מקבילה או לבדיקה)`)}</span>}
-      <button type="button" className="btn small" disabled={!r.units.length || r.skipped > 0} onClick={() => copyVotes(r.units, 'toRight')}>{L(`Copy votes → ${nameOf(right)}`, `העתקת קולות ← ${nameOf(right)}`)}</button>
-      <button type="button" className="btn small" disabled={!l.units.length || l.skipped > 0} onClick={() => copyVotes(l.units, 'toLeft')}>{L(`← ${nameOf(left)}`, `${nameOf(left)} →`)}</button>
+      {/* into your work first; into the compared result (its own draft) second */}
+      {([toWork, toWork === 'toLeft' ? 'toRight' : 'toLeft'] as Dir[]).map((d) => { const x = d === 'toRight' ? r : l, to = d === 'toRight' ? right : left;
+        return <button key={d} type="button" className={`btn small ${to.role === 'main' ? '' : 'ghost'}`} disabled={!x.units.length || x.skipped > 0} onClick={() => copyVotes(x.units, d)}>{L(`Copy votes into ${nameOf(to)}`, `העתקת קולות ${hebrewPrefix('ל', nameOf(to))}`)}</button>; })}
       <button type="button" className="btn small ghost" onClick={() => setSelected(new Set())}>{L('Clear', 'ניקוי')}</button>
     </div>; })()}
 
@@ -257,9 +260,11 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
             const { l, r } = view(row);
             const toR = copyUnit(row, rows, 'toRight'), toL = copyUnit(row, rows, 'toLeft');
             const grouped = !!row.group;
-            const d = !grouped && l && r ? r.seats - l.seats : null;
-            const shareD = !grouped && l && r && l.total && r.total ? { num: 100n * (BigInt(r.votes) * BigInt(l.total) - BigInt(l.votes) * BigInt(r.total)), den: BigInt(l.total) * BigInt(r.total) } : null;
-            const what = (r ?? l)?.lists.map((x) => listLabel(x, lang)).join(' + ') ?? '';
+            // the change is always your work against the compared result, whichever side your work is on
+            const d = !grouped && l && r ? (mainLeft ? l.seats - r.seats : r.seats - l.seats) : null;
+            const shareD = !grouped && l && r && l.total && r.total ? { num: (mainLeft ? -100n : 100n) * (BigInt(r.votes) * BigInt(l.total) - BigInt(l.votes) * BigInt(r.total)), den: BigInt(l.total) * BigInt(r.total) } : null;
+            // a row is named by your work's lists (the compared result's when your work has none)
+            const what = ((mainLeft ? l : r) ?? (mainLeft ? r : l))?.lists.map((x) => listLabel(x, lang)).join(' + ') ?? '';
             const last = row.group && groupLines.get(row.group) === row;
             const isSel = selected.has(row.key);
             return [<tr key={row.key} className={`cmp-row ${isSel ? 'selected' : ''}`} data-tag={row.tag} data-row={row.key}
@@ -271,13 +276,12 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
               <td className="n cmp-seats cmp-ls">{l ? <b>{l.seats}</b> : null}</td>
               <td className="cmp-mid">
                 <span className="cmp-mid-in">
-                  {arrow(row, toL && !grouped ? [toL] : null, 'toLeft', what)}
                   <span className="cmp-delta">
                     {grouped ? <span className="tiny muted">{L('see group', 'ראו קבוצה')}</span> : d !== null ? <SeatDelta value={d} /> : <span className="muted">—</span>}
                     {!simple && shareD && shareD.num !== 0n && <span className="tiny muted cmp-pp" dir={lang === 'he' ? 'rtl' : 'ltr'}><bdi dir="ltr">{rationalPoints(shareD, digits)}</bdi> {L('pp', 'נק׳ אחוז')}</span>}
                     <span className="cmp-tagwhy"><span className={`cmp-tag tag-${row.tag}`}>{tagText(row.tag, L)}</span><Info title={L('This pairing', 'ההתאמה הזו')} label={L(`Why this pairing: ${what}`, `למה ההתאמה הזו: ${what}`)}>{why(row)}</Info></span>
                   </span>
-                  {arrow(row, toR && !grouped ? [toR] : null, 'toRight', what)}
+                  {copyButton(row, toWork === 'toLeft' ? (toL && !grouped ? [toL] : null) : (toR && !grouped ? [toR] : null), what)}
                 </span>
               </td>
               <td className="n cmp-seats cmp-rs">{r ? <b>{r.seats}</b> : null}</td>
@@ -326,6 +330,7 @@ function SideCard({ x, picker, focused, onFocus, align }: { x: SideModel; picker
   const title = `${x.year} · ${x.name}`;
   return <section className={`cmp-card ${focused ? 'focused' : ''}`} data-side={align} data-role={x.role} style={{ borderColor: x.frame }} dir={lang === 'he' ? 'rtl' : 'ltr'} onPointerDown={onFocus} onFocus={onFocus} aria-label={title}>
     <div className="cmp-card-head">
+      <span className="cmp-card-role">{x.role === 'main' ? L('Your work', 'העבודה שלכם') : L('Compared with', 'מושווה עם')}</span>
       <span className="cmp-card-election"><b>{e ? x.year : x.sc.electionId}</b> <span className="muted small">{e ? (lang === 'he' ? `הכנסת ה־${e.knesset}` : `${e.knesset}th Knesset`.replace(/^(\d*1)th/, '$1st').replace(/^(\d*2)th/, '$2nd').replace(/^(\d*3)th/, '$3rd').replace(/^1([123])(st|nd|rd)/, '1$1th')) : ''}</span></span>
       {picker}
     </div>
@@ -423,9 +428,10 @@ function GroupLine({ group, rows, left, right, simple, copy, nameOf }: { group: 
     {!simple && <td />}
     <td colSpan={4} dir={lang === 'he' ? 'rtl' : 'ltr'} className="small"><b><bdi>{name}</bdi></b> <span className="muted">{L(`${src.year} → ${succ.length} lists`, `${src.year} ← ${succ.length} רשימות`)}</span> <Info title={L('A split list', 'רשימה שהתפצלה')}>{L('Its voters can’t be divided among the new lists, so only the group is compared and copied. A group copy keeps the destination lists’ own balance.', 'אי אפשר לחלק את בוחריה בין הרשימות החדשות, ולכן רק הקבוצה כולה מושווית ומועתקת. העתקת קבוצה שומרת על האיזון בין רשימות היעד.')}</Info></td>
     <td className="cmp-mid"><span className="cmp-mid-in">
-      <button type="button" className="cmp-arrow" aria-label={label('toLeft')} title={label('toLeft')} onClick={() => copy(toL, 'toLeft')}><ArrowLeft size={16} /></button>
-      <span className="cmp-delta"><bdi dir="ltr">{l.seats} → {r.seats}</bdi> <SeatDelta value={r.seats - l.seats} /></span>
-      <button type="button" className="cmp-arrow" aria-label={label('toRight')} title={label('toRight')} onClick={() => copy(toR, 'toRight')}><ArrowRight size={16} /></button>
+      {/* compared result → your work, as on every row (the change is your work against it) */}
+      <span className="cmp-delta">{(() => { const [was, now] = left.role === 'main' ? [r.seats, l.seats] : [l.seats, r.seats]; return <><bdi dir="ltr">{was} → {now}</bdi> <SeatDelta value={now - was} /></>; })()}</span>
+      {/* one worded button into your work, as on every row; the other direction is in the row's menu */}
+      {(() => { const d: Dir = left.role === 'main' ? 'toLeft' : 'toRight'; return <button type="button" className="btn small cmp-copy-votes" aria-label={label(d)} title={label(d)} onClick={() => copy(d === 'toLeft' ? toL : toR, d)}>{L('Copy votes…', 'העתקת קולות…')}</button>; })()}
     </span></td>
     <td colSpan={5} />
   </tr>;

@@ -1,4 +1,5 @@
 import { choose } from './choices.ts';
+import { openSideBySide } from './sideBySide.ts';
 import { barLanguage, closeBarMenu, openBarMenu } from './barMenu.ts';
 import { expect, test, type Page } from '@playwright/test';
 async function start(page: Page) {
@@ -20,7 +21,7 @@ test('E1 Compare and E2 coalition shortcuts use the moved party seats', async ({
   await editor.getByRole('button', {name:/^New Hope, 4 seats/}).click();
   await editor.locator('.bp-card').first().getByRole('button', {name:'Move here'}).click();
   await page.keyboard.press('Escape');
-  await page.getByRole('tab', {name:'Compare', exact:true}).click();
+  await openSideBySide(page);
   await expect(page.locator('.cmp-card[data-role="main"] .majority-context')).toContainText('68'); // Current election; analysis-only edits retain the previous-election comparison.
   await page.getByRole('tab', {name:'Coalitions', exact:true}).click();
   await page.locator('.coal').getByRole('button', {name:'Coalition', exact:true}).click();
@@ -36,12 +37,14 @@ test('E3 separated lists compare once as a group', async ({page}) => {
   }
   await expect(page.locator('.lb-group-comparison')).toContainText('together 4, officially 7');
   await expect(page.locator('.session')).not.toContainText('−7');
-  await page.getByRole('tab',{name:'Compare',exact:true}).click();
+  await openSideBySide(page);
+  await choose(page.locator('.side-by-side').getByRole('button', { name: 'Compare with', exact: true }), 'official');
   const row=page.locator('tr.cmp-row').filter({hasText:'Agudat Yisrael'});
   await expect(row).toHaveCount(1);
   await expect(row).toContainText('Degel HaTorah');
-  await expect(row.locator('.cmp-ls')).toHaveText('7');
-  await expect(row.locator('.cmp-rs')).toHaveText('4');
+  // your work on the left in English, the official result on the right
+  await expect(row.locator('.cmp-ls')).toHaveText('4');
+  await expect(row.locator('.cmp-rs')).toHaveText('7');
 });
 for (const lang of ['en','he']) test(`E5 E6 phone election and named tools ${lang}`, async ({page}) => {
   await page.setViewportSize({width:390,height:844}); await start(page);
@@ -96,9 +99,10 @@ test('E10 Compare rows carry list identity tiles and signed seat changes', async
   await start(page); await page.getByRole('button',{name:'Likud',exact:true}).click();
   const votes=page.getByRole('region',{name:'List details'}).getByLabel('Votes',{exact:true});
   await votes.fill('1300000'); await votes.press('Enter'); await page.keyboard.press('Escape');
-  await page.getByRole('tab',{name:'Compare',exact:true}).click();
-  const likud=page.locator('tr.cmp-row').filter({has:page.locator('.cmp-rname',{hasText:'Likud'})});
-  await expect(likud.locator('.cmp-rname .slip')).toBeVisible();
+  await openSideBySide(page);
+  await choose(page.locator('.side-by-side').getByRole('button', { name: 'Compare with', exact: true }), 'official');
+  const likud=page.locator('tr.cmp-row').filter({has:page.locator('.cmp-lname',{hasText:'Likud'})});
+  await expect(likud.locator('.cmp-lname .slip')).toBeVisible();
   await expect(likud.locator('.cmp-delta bdi').first()).toHaveText(/^▲\s*\+\d+$/);
 });
 

@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { mkdirSync, readFileSync } from 'node:fs';
 import { choose } from './choices.ts';
+import { openSideBySide } from './sideBySide.ts';
 
 test.describe.configure({ mode: 'parallel' });
 
@@ -66,7 +67,9 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     await page.locator('.lb-row').first().click();
     await page.locator('.side-panel .cands').getByRole('button', { name: lang === 'en' ? 'Remove' : 'הסרה', exact: true }).first().click();
     await page.locator('.side-panel').getByRole('button', { name: lang === 'en' ? 'Close' : 'סגירה', exact: true }).click();
-    await page.locator('#tab-compare').click();
+    await openSideBySide(page);
+    // candidates entering and leaving are listed within one election: compare with this election's official result
+    await choose(page.locator('.side-by-side').getByRole('button', { name: lang === 'en' ? 'Compare with' : 'השוואה עם', exact: true }), 'official');
     await page.locator('details.cmp-section > summary').click();
     const compared = page.locator('.cmp-section li bdi[lang="he"][dir="rtl"]');
     await expect(compared.first()).toBeVisible();

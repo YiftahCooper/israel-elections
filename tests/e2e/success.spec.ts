@@ -2,6 +2,7 @@ import { choose } from './choices.ts';
 // The "definition of success" sequence from the product specification (§16), run in a real browser
 // against the 2022 election. Each step asserts the engine-backed result, not just that a control exists.
 import { expect, test, type Page } from '@playwright/test';
+import { openSideBySide } from './sideBySide.ts';
 
 const lists = (page: Page) => page.getByRole('region', { name: 'Lists' });
 const listButton = (page: Page, name: string) => lists(page).getByRole('button', { name, exact: true });
@@ -70,7 +71,9 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
 
   // 7–9. The chamber still has exactly 120 seats; compare with history; candidates entering/leaving listed
   await expect(page.locator('.chamber circle.seat')).toHaveCount(120);
-  await page.getByRole('tab', { name: 'Compare' }).click();
+  await openSideBySide(page);
+  // comparing starts on the previous election; the candidates entering and leaving are listed within one election
+  await choose(page.locator('.side-by-side').getByRole('button', { name: 'Compare with', exact: true }), 'official');
   await expect(page.locator('tr.cmp-row').first()).toBeVisible();
   await page.locator('details.cmp-section > summary').click();
   await expect(page.getByText(/Entering the Knesset \(\d+\)/)).toBeVisible();

@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
 import { choose } from './choices.ts';
+import { openSideBySide } from './sideBySide.ts';
 test.use({ actionTimeout: 20_000 });
 
 for (const election of ['k26','k25','k1']) test(`${election}: synthetic icons in both languages, themes and widths`, async ({ browser }) => {
@@ -47,7 +48,7 @@ test('Likud–Shas identity survives Compare and SVG/PNG export; splits and blan
  const [png]=await Promise.all([page.waitForEvent('download'),page.getByRole('button',{name:'Export PNG',exact:true}).click()]);
  expect(readFileSync((await png.path())!).subarray(1,4).toString()).toBe('PNG');
  await png.saveAs('.backup-scratch/u6/final/chamber-export.png');
- await page.locator('#tab-compare').click();await expect(page.locator('.cmp .synthetic').first()).toBeVisible();
+ await openSideBySide(page);await expect(page.locator('.cmp .synthetic').first()).toBeVisible();
  await page.screenshot({path:'.backup-scratch/u6/final/compare.png',fullPage:true});
  await page.locator('#tab-structure').click();await page.locator('.st-head > .seg button').nth(1).click();
  await panel.getByRole('group',{name:'List',exact:true}).getByRole('button',{name:'Likud–Shas',exact:true}).click();

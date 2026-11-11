@@ -7,7 +7,7 @@ import { baselineOf } from '../factionDefaults.ts';
 import { resultChanges } from '../derive.ts';
 import { electionLabel } from '../electionLabel.ts';
 import { useL, useLang } from '../i18n.ts';
-import { useLevel, useStore } from '../store.ts';
+import { useStore } from '../store.ts';
 import { ChoicePicker, type Choice } from '../components/ChoicePicker.tsx';
 import { Info } from '../components/ui.tsx';
 import { closeSideBySide, compareWith, openSideBySide, previousElection, startComparing, stopComparing, swapWithReference, useReference } from './mode.ts';
@@ -45,7 +45,8 @@ export function useReferenceChoices(s: Scenario): Choice[] {
 /** The strip itself; nothing while comparing is off. */
 export function CompareStrip({ s }: { s: Scenario }) {
   const L = useL(), lang = useLang();
-  const { standard } = useLevel();
+  // Side by side at every level, as the Compare tab was (owner, 12 Nov 2026: it must be part of the app); Custom can hide it
+  const sideShown = useStore((st) => st.customFeatures?.compare) !== 'hidden';
   const comparing = useStore((st) => st.comparing);
   const tool = useStore((st) => st.tool);
   const state = useReference(s);
@@ -77,7 +78,7 @@ export function CompareStrip({ s }: { s: Scenario }) {
     {ready && <Info title={L('Swap', 'החלפה')} label={L('About Swap', 'הסבר: החלפה')}>{he
       ? `${ready.year} (${ready.name}) הופכת לעבודה שלכם, והעבודה הנוכחית הופכת לנקודת ההשוואה ונשמרת כטיוטה שלא נשמרה, עם היסטוריית הביטולים שלה. החלפה נוספת מחזירה. מה שמשווים אליו אינו נערך כאן; כדי לשנות אותו, מחליפים.`
       : `${ready.year} (${ready.name}) becomes your work, and your current work becomes the reference, kept as an unsaved draft with its own undo history. Swap again to go back. The reference is never edited here; to change it, swap.`}</Info>}
-    {ready && standard && (side
+    {ready && sideShown && (side
       ? <button type="button" className="btn small cmpm-side" aria-pressed onClick={closeSideBySide}><Columns2 className="icon sm" aria-hidden /><span>{L('Close side by side', 'סגירת זו לצד זו')}</span></button>
       : <button type="button" className="btn small cmpm-side" onClick={openSideBySide}><Columns2 className="icon sm" aria-hidden /><span>{L('Side by side', 'זו לצד זו')}</span></button>)}
     <button type="button" className="btn small ghost cmpm-stop" onClick={stopComparing} aria-label={L('Stop comparing', 'סיום ההשוואה')}><span className="cmpm-stop-t">{L('Stop comparing', 'סיום ההשוואה')}</span><X className="icon sm" aria-hidden /></button>

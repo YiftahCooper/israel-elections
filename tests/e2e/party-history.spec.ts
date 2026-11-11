@@ -2,6 +2,7 @@
 // every level, the row line from Standard (with its Settings switch), Compare's notes and reasons, Hebrew charts drawn
 // left to right, the phone sheet, contrast, and that viewing history is never an edit.
 import { expect, test, type Page } from '@playwright/test';
+import { openSideBySide } from './sideBySide.ts';
 
 async function start(page: Page, { lang = 'en', level = 'standard', width = 1500, values = {} }: { lang?: 'en' | 'he'; level?: string; width?: number; values?: Record<string, unknown> } = {}) {
   await page.setViewportSize({ width, height: width < 800 ? 844 : 1000 });
@@ -96,8 +97,8 @@ test('in Hebrew the chart is drawn left to right and every word is Hebrew', asyn
 
 test('Compare tags the Democrats as ran jointly, notes the comparison under the later list and explains it', async ({ page }) => {
   await start(page);
-  await page.locator('#tab-compare').click();
-  const row = (name: string) => page.locator('tr.cmp-row').filter({ has: page.locator('.cmp-rname', { hasText: name }) }).first();
+  await openSideBySide(page);
+  const row = (name: string) => page.locator('tr.cmp-row').filter({ has: page.locator('.cmp-lname, .cmp-rname', { hasText: name }) }).first();
   await expect(row('The Democrats').locator('.cmp-tag')).toHaveText('Ran jointly');
   await expect(row('The Democrats').locator('.ph-cmpnote')).toHaveText(/^= Labor, renamed \+ Meretz 2022\s*Probable$/);
   await expect(row('Likud').locator('.ph-cmpnote')).toHaveText(/^not counted: New Hope.* ran inside National Unity in 2022$/);
@@ -114,8 +115,8 @@ test('Compare tags the Democrats as ran jointly, notes the comparison under the 
 
 test('each pairing in Compare says what is compared with what, why and how sure, behind the (i) by its tag', async ({ page }) => {
   await start(page);
-  await page.locator('#tab-compare').click();
-  const row = (name: string) => page.locator('tr.cmp-row').filter({ has: page.locator('.cmp-rname', { hasText: name }) }).first();
+  await openSideBySide(page);
+  const row = (name: string) => page.locator('tr.cmp-row').filter({ has: page.locator('.cmp-lname, .cmp-rname', { hasText: name }) }).first();
   await row('Joint List').getByRole('button', { name: 'Why this pairing: Joint List' }).click();
   const pop = page.locator('.pop').filter({ hasText: 'This pairing' });
   await expect(pop).toContainText('Joint List (2026) is compared with Hadash–Ta\'al (5 seats) and Balad (0 seats) in 2022, taken together.');
