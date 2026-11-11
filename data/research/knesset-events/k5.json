@@ -164,8 +164,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 251 and 983.",
-        "he": "רישום החברות עבר מסיעת מפלגת פועלי ארץ-ישראל לסיעת חה\"כ יונה כסה (1 ח״כים)."
+        "en": "1 MK recorded moving from Mapai to MK Yona Kesse.",
+        "he": "רישום החברות עבר מסיעת מפלגת פועלי ארץ-ישראל לסיעת חה\"כ יונה כסה (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -212,7 +212,7 @@
         ]
       },
       "summary": {
-        "en": "7 MKs recorded moving between factions 271 and 273.",
+        "en": "7 MKs recorded moving from Israeli Liberal Party to Independent Liberals.",
         "he": "רישום החברות עבר מסיעת מפלגה ליברלית ישראלית לסיעת ליברלים עצמאיים (7 ח״כים)."
       },
       "classification": "counts",
@@ -270,7 +270,7 @@
         ]
       },
       "summary": {
-        "en": "17 MKs recorded moving between factions 253 and 255.",
+        "en": "17 MKs recorded moving from Herut to Gahal.",
         "he": "רישום החברות עבר מסיעת תנועת החרות לסיעת גוש חרות ליברלים (17 ח״כים)."
       },
       "classification": "counts",
@@ -321,7 +321,7 @@
         ]
       },
       "summary": {
-        "en": "10 MKs recorded moving between factions 271 and 255.",
+        "en": "10 MKs recorded moving from Israeli Liberal Party to Gahal.",
         "he": "רישום החברות עבר מסיעת מפלגה ליברלית ישראלית לסיעת גוש חרות ליברלים (10 ח״כים)."
       },
       "classification": "counts",
@@ -370,7 +370,7 @@
         ]
       },
       "summary": {
-        "en": "8 MKs recorded moving between factions 251 and 257.",
+        "en": "8 MKs recorded moving from Mapai to Rafi.",
         "he": "רישום החברות עבר מסיעת מפלגת פועלי ארץ-ישראל לסיעת רשימת פועלים ישראלית (8 ח״כים)."
       },
       "classification": "counts",
@@ -413,7 +413,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 265 and 275.",
+        "en": "2 MKs recorded moving from Maki to Rakah.",
         "he": "רישום החברות עבר מסיעת מפלגה קומוניסטית ישראלית לסיעת רשימה קומוניסטית חדשה (2 ח״כים)."
       },
       "classification": "counts",

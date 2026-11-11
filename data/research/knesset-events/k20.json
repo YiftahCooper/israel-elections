@@ -526,8 +526,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 905 and 913.",
-        "he": "רישום החברות עבר מסיעת ישראל ביתנו לסיעת חה\"כ אורלי לוי-אבקסיס (1 ח״כים)."
+        "en": "1 MK recorded moving from Yisrael Beiteinu to MK Orly Levi-Abekasis.",
+        "he": "רישום החברות עבר מסיעת ישראל ביתנו לסיעת חה\"כ אורלי לוי-אבקסיס (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -679,7 +679,7 @@
         ]
       },
       "summary": {
-        "en": "3 MKs recorded moving between factions 907 and 916.",
+        "en": "3 MKs recorded moving from Jewish Home to New Right.",
         "he": "רישום החברות עבר מסיעת הבית היהודי בראשות נפתלי בנט לסיעת הימין החדש (3 ח״כים)."
       },
       "classification": "counts",
@@ -738,7 +738,7 @@
         ]
       },
       "summary": {
-        "en": "18 MKs recorded moving between factions 902 and 914.",
+        "en": "18 MKs recorded moving from Zionist Union to Israeli Labor.",
         "he": "רישום החברות עבר מסיעת המחנה הציוני לסיעת העבודה הישראלית (18 ח״כים)."
       },
       "classification": "counts",
@@ -785,7 +785,7 @@
         ]
       },
       "summary": {
-        "en": "6 MKs recorded moving between factions 902 and 915.",
+        "en": "6 MKs recorded moving from Zionist Union to Hatnuah.",
         "he": "רישום החברות עבר מסיעת המחנה הציוני לסיעת התנועה (6 ח״כים)."
       },
       "classification": "counts",
@@ -827,8 +827,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 903 and 1057.",
-        "he": "רישום החברות עבר מסיעת הרשימה המשותפת (חד\"ש, רע\"ם, בל\"ד ותע\"ל) לסיעת תע\"ל – בראשות אחמד טיבי (1 ח״כים)."
+        "en": "1 MK recorded moving from Joint List to Ta'al.",
+        "he": "רישום החברות עבר מסיעת הרשימה המשותפת (חד\"ש, רע\"ם, בל\"ד ותע\"ל) לסיעת תע\"ל – בראשות אחמד טיבי (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -871,7 +871,7 @@
         ]
       },
       "summary": {
-        "en": "3 MKs recorded moving between factions 908 and 1055.",
+        "en": "3 MKs recorded moving from United Torah Judaism to Degel HaTorah.",
         "he": "רישום החברות עבר מסיעת יהדות התורה לסיעת דגל התורה (3 ח״כים)."
       },
       "classification": "counts",
@@ -915,7 +915,7 @@
         ]
       },
       "summary": {
-        "en": "3 MKs recorded moving between factions 908 and 1056.",
+        "en": "3 MKs recorded moving from United Torah Judaism to Agudat Yisrael.",
         "he": "רישום החברות עבר מסיעת יהדות התורה לסיעת אגודת ישראל (3 ח״כים)."
       },
       "classification": "counts",

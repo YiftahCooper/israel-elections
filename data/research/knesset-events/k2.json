@@ -12,7 +12,7 @@
       "kind": "term-start",
       "who": {},
       "summary": {
-        "en": "2th Knesset membership begins.",
+        "en": "2nd Knesset membership begins.",
         "he": "תחילת כהונת הכנסת ה־2."
       },
       "classification": "counts",
@@ -53,8 +53,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 179 and 155.",
-        "he": "רישום החברות עבר מסיעת התאחדות התימנים בישראל לסיעת ציונים כלליים (1 ח״כים)."
+        "en": "1 MK recorded moving from Yemenite Association to General Zionists.",
+        "he": "רישום החברות עבר מסיעת התאחדות התימנים בישראל לסיעת ציונים כלליים (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -96,7 +96,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 183 and 155.",
+        "en": "2 MKs recorded moving from Sephardim and Oriental Communities to General Zionists.",
         "he": "רישום החברות עבר מסיעת ספרדים ועדות מזרח לסיעת ציונים כלליים (2 ח״כים)."
       },
       "classification": "counts",
@@ -177,7 +177,7 @@
         ]
       },
       "summary": {
-        "en": "3 MKs recorded moving between factions 147 and 979.",
+        "en": "3 MKs recorded moving from Mapam to Left Faction.",
         "he": "רישום החברות עבר מסיעת מפלגת פועלים מאוחדת לסיעת סיעת השמאל (3 ח״כים)."
       },
       "classification": "counts",
@@ -257,7 +257,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 147 and 978.",
+        "en": "2 MKs recorded moving from Mapam to Independent Ahdut HaAvoda Faction.",
         "he": "רישום החברות עבר מסיעת מפלגת פועלים מאוחדת לסיעת סיעה בלתי תלויה באחדות העבודה (2 ח״כים)."
       },
       "classification": "counts",
@@ -300,7 +300,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 978 and 149.",
+        "en": "2 MKs recorded moving from Independent Ahdut HaAvoda Faction to Mapai.",
         "he": "רישום החברות עבר מסיעת סיעה בלתי תלויה באחדות העבודה לסיעת מפלגת פועלי ארץ-ישראל (2 ח״כים)."
       },
       "classification": "counts",
@@ -382,7 +382,7 @@
         ]
       },
       "summary": {
-        "en": "4 MKs recorded moving between factions 147 and 163.",
+        "en": "4 MKs recorded moving from Mapam to Ahdut HaAvoda.",
         "he": "רישום החברות עבר מסיעת מפלגת פועלים מאוחדת לסיעת אחדות העבודה - פועלי ציון (4 ח״כים)."
       },
       "classification": "counts",
@@ -424,8 +424,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 979 and 147.",
-        "he": "רישום החברות עבר מסיעת סיעת השמאל לסיעת מפלגת פועלים מאוחדת (1 ח״כים)."
+        "en": "1 MK recorded moving from Left Faction to Mapam.",
+        "he": "רישום החברות עבר מסיעת סיעת השמאל לסיעת מפלגת פועלים מאוחדת (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -467,7 +467,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 979 and 167.",
+        "en": "2 MKs recorded moving from Left Faction to Maki.",
         "he": "רישום החברות עבר מסיעת סיעת השמאל לסיעת מפלגה קומוניסטית ישראלית (2 ח״כים)."
       },
       "classification": "counts",
@@ -546,8 +546,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 155 and 179.",
-        "he": "רישום החברות עבר מסיעת ציונים כלליים לסיעת התאחדות התימנים בישראל (1 ח״כים)."
+        "en": "1 MK recorded moving from General Zionists to Yemenite Association.",
+        "he": "רישום החברות עבר מסיעת ציונים כלליים לסיעת התאחדות התימנים בישראל (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -580,7 +580,7 @@
       "kind": "term-end",
       "who": {},
       "summary": {
-        "en": "2th Knesset membership ends as the 3th Knesset begins.",
+        "en": "2nd Knesset membership ends as the 3th Knesset begins.",
         "he": "סיום כהונת הכנסת ה־2."
       },
       "classification": "counts",

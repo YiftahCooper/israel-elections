@@ -186,7 +186,7 @@
         ]
       },
       "summary": {
-        "en": "20 MKs recorded moving between factions 804 and 842.",
+        "en": "20 MKs recorded moving from Likud–Yisrael Beiteinu to Likud.",
         "he": "רישום החברות עבר מסיעת הליכוד - ישראל ביתנו  לסיעת הליכוד - תנועה לאומית ליברלית (20 ח״כים)."
       },
       "classification": "counts",
@@ -242,7 +242,7 @@
         ]
       },
       "summary": {
-        "en": "11 MKs recorded moving between factions 804 and 843.",
+        "en": "11 MKs recorded moving from Likud–Yisrael Beiteinu to Yisrael Beiteinu.",
         "he": "רישום החברות עבר מסיעת הליכוד - ישראל ביתנו  לסיעת ישראל ביתנו (11 ח״כים)."
       },
       "classification": "counts",
@@ -331,7 +331,7 @@
         ]
       },
       "summary": {
-        "en": "4 MKs recorded moving between factions 810 and 1052.",
+        "en": "4 MKs recorded moving from Ra'am–Ta'al–Mada to Ra'am–Ta'al.",
         "he": "רישום החברות עבר מסיעת רע\"מ-תע\"ל-מד\"ע לסיעת רע\"מ-תע\"ל (4 ח״כים)."
       },
       "classification": "counts",
@@ -418,7 +418,7 @@
         ]
       },
       "summary": {
-        "en": "3 MKs recorded moving between factions 1052 and 1053.",
+        "en": "3 MKs recorded moving from Ra'am–Ta'al to United Arab List.",
         "he": "רישום החברות עבר מסיעת רע\"מ-תע\"ל לסיעת רע\"מ - רשימת האיחוד הערבי (3 ח״כים)."
       },
       "classification": "counts",
@@ -464,8 +464,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 1052 and 1054.",
-        "he": "רישום החברות עבר מסיעת רע\"מ-תע\"ל לסיעת תע\"ל - התנועה הערבית להתחדשות (1 ח״כים)."
+        "en": "1 MK recorded moving from Ra'am–Ta'al to Ta'al.",
+        "he": "רישום החברות עבר מסיעת רע\"מ-תע\"ל לסיעת תע\"ל - התנועה הערבית להתחדשות (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",

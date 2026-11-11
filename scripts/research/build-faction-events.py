@@ -6,13 +6,29 @@ a legal split, merger, rename or party foundation. Retains the source's partial
 coverage and unknown formal decision type. Existing researched events win.
 """
 import json
+import re
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / 'data/research/knesset-events'
 
 
+def ordinal(n):
+    return str(n) + ('th' if 10 <= n % 100 <= 20 else {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th'))
+
+
 def build():
+    # Reuse the app's reviewed English display names; never publish raw faction IDs
+    # or guess translations from a faction's elected list.
+    faction_names = json.loads(subprocess.check_output([
+        'node', '--input-type=module', '-e',
+        "import {compileMkHistory} from './scripts/mk-history-runtime.ts'; "
+        "process.stdout.write(JSON.stringify(compileMkHistory().factions));"
+    ], cwd=ROOT, text=True))
+    curated = json.loads((ROOT / 'data/meta/knesset-faction-names-en.json').read_text())['names']
+    norm = lambda s: s.replace('\"', '״').replace("'", '׳')
+    curated = {norm(k): v for k, v in curated.items()}
     counts = {}
     for n in range(1, 26):
         retained = f'data/research/knesset-member-changes/k{n}.json'
@@ -24,7 +40,26 @@ def build():
             'seatsAfterDefinition': 'Null means no government-support assignment is established by these records.',
             'events': []}
         names = {f['id']: f['nameHe'] for f in source['factionRegistry']}
+        for fid, he in names.items():
+            faction_names[str(fid)][1] = curated.get(norm(he), faction_names[str(fid)][1])
+        before = json.dumps(doc, ensure_ascii=False)
+        def english(fid):
+            value = faction_names[str(fid)][1]
+            if not value:
+                raise ValueError(f'Missing English faction name: {fid}')
+            return value
+
         count = 0
+        for event in doc['events']:
+            if event['kind'] in ('term-start', 'term-end'):
+                event['summary']['en'] = re.sub(r'^\d+(?:st|nd|rd|th) Knesset', ordinal(n) + ' Knesset', event['summary']['en'])
+            if event['kind'] == 'faction-membership-change':
+                event['summary']['he'] = event['summary']['he'].replace('(1 ח״כים)', '(ח״כ אחד)')
+                if re.fullmatch(r'\d+ MKs recorded moving between factions \d+ and \d+\.', event['summary']['en']):
+                    old, new = event['who']['factionIds']
+                    size = len(event['who']['personIds'])
+                    old_en, new_en = english(old), english(new)
+                    event['summary']['en'] = f"{size} {'MK' if size == 1 else 'MKs'} recorded moving from {old_en} to {new_en}."
         for i, change in enumerate(source['factionChanges']):
             old, new = change['fromFactionId'], change['toFactionId']
             # Respect earlier manually researched records instead of duplicating them.
@@ -40,8 +75,8 @@ def build():
                 'kind': 'faction-membership-change',
                 'who': {'personIds': change['personIds'], 'factionIds': [old, new]},
                 'summary': {
-                    'en': f"{len(change['personIds'])} MKs recorded moving between factions {old} and {new}.",
-                    'he': f"רישום החברות עבר מסיעת {names.get(old, str(old))} לסיעת {names.get(new, str(new))} ({len(change['personIds'])} ח״כים)."},
+                    'en': f"{len(change['personIds'])} {'MK' if len(change['personIds']) == 1 else 'MKs'} recorded moving from {english(old)} to {english(new)}.",
+                    'he': f"רישום החברות עבר מסיעת {names.get(old, str(old))} לסיעת {names.get(new, str(new))} ({'ח״כ אחד' if len(change['personIds']) == 1 else str(len(change['personIds'])) + ' ח״כים'})."},
                 'classification': 'counts',
                 'reason': 'Official dated membership transition. Formal split, merger or rename requires a separate decision record.',
                 'seatsAfter': None,
@@ -54,9 +89,10 @@ def build():
                 'formalDecisionType': 'unknown',
             })
             count += 1
-        doc['events'].sort(key=lambda e: (e['date'], e['id']))
         if count:
+            doc['events'].sort(key=lambda e: (e['date'], e['id']))
             doc['asOf'] = '2026-11-09'
+        if json.dumps(doc, ensure_ascii=False) != before:
             target.write_text(json.dumps(doc, ensure_ascii=False, indent=2) + '\n')
         counts[n] = count
     return counts

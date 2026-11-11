@@ -92,7 +92,7 @@
         ]
       },
       "summary": {
-        "en": "3 MKs recorded moving between factions 634 and 702.",
+        "en": "3 MKs recorded moving from Gil (Pensioners) to Justice for the Elderly.",
         "he": "רישום החברות עבר מסיעת גיל-גימלאי ישראל לכנסת לסיעת צדק לזקן (3 ח״כים)."
       },
       "classification": "counts",
@@ -135,7 +135,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 702 and 634.",
+        "en": "2 MKs recorded moving from Justice for the Elderly to Gil (Pensioners).",
         "he": "רישום החברות עבר מסיעת צדק לזקן לסיעת גיל-גימלאי ישראל לכנסת (2 ח״כים)."
       },
       "classification": "counts",
@@ -177,8 +177,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 702 and 722.",
-        "he": "רישום החברות עבר מסיעת צדק לזקן לסיעת הדרך הטובה (1 ח״כים)."
+        "en": "1 MK recorded moving from Justice for the Elderly to The Good Way.",
+        "he": "רישום החברות עבר מסיעת צדק לזקן לסיעת הדרך הטובה (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -227,7 +227,7 @@
         ]
       },
       "summary": {
-        "en": "9 MKs recorded moving between factions 642 and 1043.",
+        "en": "9 MKs recorded moving from National Union–NRP to Jewish Home.",
         "he": "רישום החברות עבר מסיעת איחוד לאומי-מפד\"ל רשימה יהודית לאומית מאוחדת לסיעת הבית היהודי מיסודם של המפד\"ל והאיחוד הלאומי (9 ח״כים)."
       },
       "classification": "counts",
@@ -286,7 +286,7 @@
         ]
       },
       "summary": {
-        "en": "18 MKs recorded moving between factions 624 and 1044.",
+        "en": "18 MKs recorded moving from Labor–Meimad to Labor.",
         "he": "רישום החברות עבר מסיעת העבודה-מימד בראשות עמיר פרץ לסיעת העבודה בראשות אהוד ברק (18 ח״כים)."
       },
       "classification": "counts",
@@ -328,8 +328,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 624 and 1046.",
-        "he": "רישום החברות עבר מסיעת העבודה-מימד בראשות עמיר פרץ לסיעת מימד (1 ח״כים)."
+        "en": "1 MK recorded moving from Labor–Meimad to Meimad.",
+        "he": "רישום החברות עבר מסיעת העבודה-מימד בראשות עמיר פרץ לסיעת מימד (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -372,7 +372,7 @@
         ]
       },
       "summary": {
-        "en": "3 MKs recorded moving between factions 632 and 1039.",
+        "en": "3 MKs recorded moving from United Torah Judaism to Agudat Yisrael.",
         "he": "רישום החברות עבר מסיעת יהדות התורה והשבת אגודת ישראל-דגל התורה לסיעת אגודת ישראל (3 ח״כים)."
       },
       "classification": "counts",
@@ -416,7 +416,7 @@
         ]
       },
       "summary": {
-        "en": "3 MKs recorded moving between factions 632 and 1041.",
+        "en": "3 MKs recorded moving from United Torah Judaism to Degel HaTorah.",
         "he": "רישום החברות עבר מסיעת יהדות התורה והשבת אגודת ישראל-דגל התורה לסיעת דגל התורה (3 ח״כים)."
       },
       "classification": "counts",
@@ -459,7 +459,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 1043 and 1045.",
+        "en": "2 MKs recorded moving from Jewish Home to Moledet National Union.",
         "he": "רישום החברות עבר מסיעת הבית היהודי מיסודם של המפד\"ל והאיחוד הלאומי לסיעת מולדת האיחוד הלאומי (2 ח״כים)."
       },
       "classification": "counts",
@@ -502,7 +502,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 1043 and 1040.",
+        "en": "2 MKs recorded moving from Jewish Home to Ahi.",
         "he": "רישום החברות עבר מסיעת הבית היהודי מיסודם של המפד\"ל והאיחוד הלאומי לסיעת אח\"י - ארץ, חברה, יהדות (2 ח״כים)."
       },
       "classification": "counts",
@@ -548,7 +548,7 @@
         ]
       },
       "summary": {
-        "en": "5 MKs recorded moving between factions 1043 and 1042.",
+        "en": "5 MKs recorded moving from Jewish Home to Jewish Home.",
         "he": "רישום החברות עבר מסיעת הבית היהודי מיסודם של המפד\"ל והאיחוד הלאומי לסיעת הבית היהודי מיסודם של המפד\"ל (5 ח״כים)."
       },
       "classification": "counts",

@@ -92,7 +92,7 @@
         ]
       },
       "summary": {
-        "en": "3 MKs recorded moving between factions 581 and 593.",
+        "en": "3 MKs recorded moving from Tzomet to Yi'ud.",
         "he": "רישום החברות עבר מסיעת צומת לסיעת יעוד (3 ח״כים)."
       },
       "classification": "counts",
@@ -134,8 +134,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 585 and 595.",
-        "he": "רישום החברות עבר מסיעת מולדת לסיעת ימין ישראל (1 ח״כים)."
+        "en": "1 MK recorded moving from Moledet to Yamin Yisrael.",
+        "he": "רישום החברות עבר מסיעת מולדת לסיעת ימין ישראל (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -214,7 +214,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 593 and 597.",
+        "en": "2 MKs recorded moving from Yi'ud to Atid.",
         "he": "רישום החברות עבר מסיעת יעוד לסיעת עתיד (2 ח״כים)."
       },
       "classification": "counts",
@@ -256,8 +256,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 577 and 1032.",
-        "he": "רישום החברות עבר מסיעת התאחדות הספרדים שומרי תורה - תנועת ש\"ס לסיעת חה\"כ יוסף עזרן (1 ח״כים)."
+        "en": "1 MK recorded moving from Shas to MK Joseph Azran.",
+        "he": "רישום החברות עבר מסיעת התאחדות הספרדים שומרי תורה - תנועת ש\"ס לסיעת חה\"כ יוסף עזרן (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -299,7 +299,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 571 and 599.",
+        "en": "2 MKs recorded moving from Labor to Third Way.",
         "he": "רישום החברות עבר מסיעת מפלגת העבודה הישראלית לסיעת הדרך השלישית (2 ח״כים)."
       },
       "classification": "counts",
@@ -341,8 +341,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 571 and 1033.",
-        "he": "רישום החברות עבר מסיעת מפלגת העבודה הישראלית לסיעת חה\"כ נאוה ארד (1 ח״כים)."
+        "en": "1 MK recorded moving from Labor to MK Nava Arad.",
+        "he": "רישום החברות עבר מסיעת מפלגת העבודה הישראלית לסיעת חה\"כ נאוה ארד (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -383,8 +383,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 573 and 1030.",
-        "he": "רישום החברות עבר מסיעת הליכוד לסיעת חה\"כ אפרים גור (1 ח״כים)."
+        "en": "1 MK recorded moving from Likud to MK Efraim Gur.",
+        "he": "רישום החברות עבר מסיעת הליכוד לסיעת חה\"כ אפרים גור (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -426,7 +426,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 573 and 601.",
+        "en": "2 MKs recorded moving from Likud to Gesher.",
         "he": "רישום החברות עבר מסיעת הליכוד לסיעת גשר (2 ח״כים)."
       },
       "classification": "counts",
@@ -468,8 +468,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 585 and 1031.",
-        "he": "רישום החברות עבר מסיעת מולדת לסיעת חה\"כ יוסף בא-גד (1 ח״כים)."
+        "en": "1 MK recorded moving from Moledet to MK Joseph Bagad.",
+        "he": "רישום החברות עבר מסיעת מולדת לסיעת חה\"כ יוסף בא-גד (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -511,7 +511,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 589 and 1029.",
+        "en": "2 MKs recorded moving from UTJ to Degel HaTorah.",
         "he": "רישום החברות עבר מסיעת יהדות התורה לסיעת דגל התורה (2 ח״כים)."
       },
       "classification": "counts",
@@ -554,7 +554,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 589 and 1028.",
+        "en": "2 MKs recorded moving from UTJ to Agudat Yisrael.",
         "he": "רישום החברות עבר מסיעת יהדות התורה לסיעת אגודת ישראל (2 ח״כים)."
       },
       "classification": "counts",
