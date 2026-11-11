@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "knesset": 24,
-  "asOf": "2026-11-11",
+  "asOf": "2026-11-12",
   "coverage": "partial",
   "scope": "Dated parliamentary composition and government-support events. Votes are point-in-time observations, never continuing support assignments.",
   "seatsAfterDefinition": "coalition = continuing supporters where established; opposition = all remaining seats, not a claim of a united opposition or how they will vote. Null means unresolved. Nominal faction membership and confidence-vote totals are distinct.",
@@ -3016,9 +3016,21 @@
         "he": "חוק האזרחות אושר בקריאה שלישית ברוב של 45–15, למרות התנגדות מרצ ורע״ם."
       },
       "classification": "counts",
-      "reason": "A major government law passes with opposition help despite dissenting coalition factions, while individual vote markers await a named roll call.",
+      "reason": "A significant law passes with opposition support and nine individually recorded coalition opponents; this vote does not establish a departure from continuing support.",
       "seatsAfter": null,
       "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PlenumVoteResult?%24filter=VoteID+eq+37006",
+          "publisher": "Knesset",
+          "date": "2022-03-10",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "KNS_PlenumVoteResult / VoteID 37006; all returned pages inspected",
+          "supportingNote": "Full 60-person roll call: 45 for, 15 against. Nine named coalition members from Meretz and Ra’am voted against; the other six opponents are not assigned D3.",
+          "effectiveDate": "2022-03-10"
+        },
         {
           "url": "https://www.mako.co.il/news-politics/2022_q1/Article-5b139482f247f71026.htm",
           "publisher": "N12",
@@ -3031,18 +3043,75 @@
           "supportingNote": "Opening: citizenship law passes final readings 45–15; Meretz and Ra’am oppose. The report does not supply a complete named roll call."
         }
       ],
-      "certainty": "probable",
-      "evidenceClass": "Contemporary report",
+      "certainty": "confirmed",
+      "evidenceClass": "Official named roll call",
       "supportEffect": "none-established",
       "vote": {
         "for": 45,
         "against": 15,
-        "crossVotes": null,
-        "notes": "Faction-level report only; do not infer each MK’s recorded vote from faction membership."
+        "crossVotes": [
+          {
+            "personId": 30713,
+            "vote": "against",
+            "certainty": "confirmed"
+          },
+          {
+            "personId": 30758,
+            "vote": "against",
+            "certainty": "confirmed"
+          },
+          {
+            "personId": 30752,
+            "vote": "against",
+            "certainty": "confirmed"
+          },
+          {
+            "personId": 23653,
+            "vote": "against",
+            "certainty": "confirmed"
+          },
+          {
+            "personId": 30821,
+            "vote": "against",
+            "certainty": "confirmed"
+          },
+          {
+            "personId": 30805,
+            "vote": "against",
+            "certainty": "confirmed"
+          },
+          {
+            "personId": 30818,
+            "vote": "against",
+            "certainty": "confirmed"
+          },
+          {
+            "personId": 30803,
+            "vote": "against",
+            "certainty": "confirmed"
+          },
+          {
+            "personId": 511,
+            "vote": "against",
+            "certainty": "confirmed"
+          }
+        ],
+        "notes": "Named dissent only: all nine marked members have an individual official result against. No departure from continuing support is inferred, nor is a breach of party voting discipline asserted."
       },
       "importance": "standard",
       "importanceReason": "A major government law passes with opposition help despite dissenting coalition factions, while individual vote markers await a named roll call.",
-      "marker": null
+      "marker": "D3",
+      "markerPersonIds": [
+        511,
+        23653,
+        30713,
+        30752,
+        30758,
+        30803,
+        30805,
+        30818,
+        30821
+      ]
     },
     {
       "id": "k24-silman-exit",
@@ -4182,6 +4251,18 @@
           "type": "repository-derived",
           "inspection": "retained-record",
           "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        },
+        {
+          "url": "https://fs.knesset.gov.il/24/plenum/24_st_815166.doc",
+          "publisher": "Knesset",
+          "date": "2022-09-19",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Sitting 153 opening oath announcement",
+          "supportingNote": "Chair names Kalfon replacing Chikli effective 14 July, Rofe Ofir replacing Avidar effective 17 August, and Strockman replacing Silman effective 13 September. Oath on 19 September does not alter membership dates; no personal government-support declaration is established.",
+          "effectiveDate": "2022-07-14"
         }
       ],
       "certainty": "probable",
@@ -5105,6 +5186,18 @@
           "type": "repository-derived",
           "inspection": "retained-record",
           "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        },
+        {
+          "url": "https://fs.knesset.gov.il/24/plenum/24_st_815166.doc",
+          "publisher": "Knesset",
+          "date": "2022-09-19",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Sitting 153 opening oath announcement",
+          "supportingNote": "Chair names Kalfon replacing Chikli effective 14 July, Rofe Ofir replacing Avidar effective 17 August, and Strockman replacing Silman effective 13 September. Oath on 19 September does not alter membership dates; no personal government-support declaration is established.",
+          "effectiveDate": "2022-08-17"
         }
       ],
       "certainty": "probable",
@@ -5464,6 +5557,18 @@
           "type": "repository-derived",
           "inspection": "retained-record",
           "supportingNote": "List and bilingual identity crosswalk only; full eligibility chain not verified."
+        },
+        {
+          "url": "https://fs.knesset.gov.il/24/plenum/24_st_815166.doc",
+          "publisher": "Knesset",
+          "date": "2022-09-19",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Sitting 153 opening oath announcement",
+          "supportingNote": "Chair names Kalfon replacing Chikli effective 14 July, Rofe Ofir replacing Avidar effective 17 August, and Strockman replacing Silman effective 13 September. Oath on 19 September does not alter membership dates; no personal government-support declaration is established.",
+          "effectiveDate": "2022-09-13"
         }
       ],
       "certainty": "probable",

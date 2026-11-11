@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "knesset": 25,
-  "asOf": "2026-11-11",
+  "asOf": "2026-11-12",
   "coverage": "partial",
   "scope": "Dated parliamentary composition and government-support events. Votes are point-in-time observations, never continuing support assignments.",
   "seatsAfterDefinition": "coalition = continuing supporters where established; opposition = all remaining seats, not a claim of a united opposition or how they will vote. Null means unresolved. Nominal faction membership and confidence-vote totals are distinct.",
@@ -2347,6 +2347,109 @@
       "importanceReason": "A party leader or minister changes executive participation, but resignation from office alone does not establish a coalition departure."
     },
     {
+      "id": "k25-replacement-2023-08-01-פה",
+      "date": "2023-08-01",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30681,
+          30881
+        ]
+      },
+      "summary": {
+        "en": "Recorded seat-holder changes.",
+        "he": "חילופי חברי הכנסת."
+      },
+      "classification": "counts",
+      "reason": "Barbivai submitted her Knesset resignation to contest the Tel Aviv mayoralty; Yaron Levi is the named successor.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61%29",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Tenure IDs 30400, 31677",
+          "supportingNote": "All 167 returned MK-tenure rows compared with retained inventory. Dates and identities only; reasons are separate.",
+          "effectiveDate": "2023-08-01"
+        },
+        {
+          "url": "https://fs.knesset.gov.il/25/plenum/25_st_3122314.doc",
+          "publisher": "Knesset",
+          "date": "2023-08-16",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Chair names the outgoing and incoming MK and the effective membership date in the oath announcement.",
+          "supportingNote": "Chair names the outgoing and incoming MK and the effective membership date in the oath announcement.",
+          "effectiveDate": "2023-08-01"
+        },
+        {
+          "url": "https://www.makorrishon.co.il/news/article/289936",
+          "publisher": "Makor Rishon",
+          "date": "2023-07-30",
+          "accessed": "2026-11-12",
+          "type": "press",
+          "evidenceFamily": "Makor Rishon",
+          "inspection": "opened",
+          "locator": "Barbivai submitted her Knesset resignation to contest the Tel Aviv mayoralty; Yaron Levi is the named successor.",
+          "supportingNote": "Barbivai submitted her Knesset resignation to contest the Tel Aviv mayoralty; Yaron Levi is the named successor."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official membership endpoints; reason separately qualified",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30681
+        ],
+        "enteringPersonIds": [
+          30881
+        ],
+        "namesHe": {
+          "30681": "אורנה ברביבאי",
+          "30881": "ירון לוי"
+        },
+        "reason": "ordinary-resignation",
+        "reasonStatus": "sourced",
+        "reasonNote": "Barbivai submitted her Knesset resignation to contest the Tel Aviv mayoralty; Yaron Levi is the named successor.",
+        "listIds": [
+          "25-פה"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1102,
+            "leavingPersonIds": [
+              30681
+            ],
+            "enteringPersonIds": [
+              30881
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date election-list sets; no individual pairing asserted unless separately cited",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/19"
+          }
+        ],
+        "listIdBasis": "Retained candidate/list identity crosswalk, with the official faction-to-election-list correspondence where the person has no candidate hint. This establishes list sets only, not an eligibility chain."
+      },
+      "importance": "expert",
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30681,
+        30881
+      ]
+    },
+    {
       "id": "k25-unity-agreement",
       "date": "2023-10-11",
       "kind": "emergency-government-agreement",
@@ -2567,13 +2670,37 @@
       "kind": "budget-vote",
       "who": {},
       "summary": {
-        "en": "Revised 2023 budget passes; contemporary tallies conflict (59–44, 59–45, 58–45).",
-        "he": "התקציב המתוקן ל־2023 אושר; הדיווחים חלוקים: 59–44, 59–45 או 58–45."
+        "en": "Revised 2023 budget passes, 59–45; Edelstein’s intended abstention is noted in the protocol.",
+        "he": "התקציב המתוקן ל־2023 אושר ברוב של 59–45; כוונת אדלשטיין להימנע נרשמה בפרוטוקול."
       },
       "classification": "counts",
       "reason": "A dated budget vote; the tally does not establish a new continuing-support count.",
       "seatsAfter": null,
       "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PlenumVoteResult?%24filter=VoteID+eq+40081",
+          "publisher": "Knesset",
+          "date": "2023-12-14",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "KNS_PlenumVoteResult / VoteID 40081; all returned pages inspected",
+          "supportingNote": "104 individual results: 59 for, 45 against; Edelstein (532) recorded for. Full continuation inspected.",
+          "effectiveDate": "2023-12-14"
+        },
+        {
+          "url": "https://fs.knesset.gov.il/25/plenum/25_st_3714731.doc",
+          "publisher": "Knesset",
+          "date": "2023-12-14",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Sitting 127, third reading of the additional 2023 budget: chair announces 59–44, adds Forer against for a technical fault, and records Edelstein intended abstention but actually voted for. Late National Unity names are protocol additions without changing the result.",
+          "supportingNote": "Sitting 127, third reading of the additional 2023 budget: chair announces 59–44, adds Forer against for a technical fault, and records Edelstein intended abstention but actually voted for. Late National Unity names are protocol additions without changing the result.",
+          "effectiveDate": "2023-12-14"
+        },
         {
           "url": "https://en.globes.co.il/en/article-knesset-approves-revised-2023-budget-1001465179",
           "publisher": "Globes",
@@ -2630,11 +2757,11 @@
           "supportingNote": "Body: Edelstein actually voted for but requested abstention in protocol; several National Unity MKs missed the vote, so intention to oppose is not a roll call."
         }
       ],
-      "certainty": "disputed",
+      "certainty": "confirmed",
       "vote": {
-        "for": null,
-        "against": null,
-        "crossVotes": null,
+        "for": 59,
+        "against": 45,
+        "crossVotes": [],
         "reportedAgainst": [
           44,
           45
@@ -2661,12 +2788,13 @@
             "against": 45
           }
         ],
-        "notes": "Conflicting aggregate results; intended opposition and missed attendance do not prove a recorded vote against. Roll call required. Ynet distinguishes Edelstein’s electronic vote for from his request to record abstention; no D3 is assigned without the official corrected record."
+        "notes": "Official database: 59–45, no abstentions. Protocol confirms adding Forer against for a technical fault. Edelstein’s intended abstention is recorded as intention, while his actual electronic vote remains for; no D3. Late arrivals added to protocol are not counted as actual opponents. Earlier reported tallies below are retained as superseded source observations.",
+        "abstain": 0
       },
       "timelineViews": [
         "specific-vote"
       ],
-      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "evidenceClass": "Official roll call and plenum protocol",
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
       "marker": null,
       "importance": "standard",
@@ -2972,6 +3100,18 @@
       "seatsAfter": null,
       "sources": [
         {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PlenumVoteResult?%24filter=VoteID+eq+41074",
+          "publisher": "Knesset",
+          "date": "2024-06-11",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "VoteID 41074, full paginated individual results",
+          "supportingNote": "All 120 individual results: 63 for, 57 against; Gallant against. Vote time is after midnight on 11 June in Israel.",
+          "effectiveDate": "2024-06-11"
+        },
+        {
           "url": "https://www.13tv.co.il/item/news/politics/politics/gaqfo-904097081/?pid=94359",
           "publisher": "Reshet 13",
           "date": "2024-06-11",
@@ -2983,8 +3123,8 @@
           "supportingNote": "Opening: early Tuesday vote on applying continuity to the conscription bill, 63–57; Gallant opposed and remained defence minister."
         }
       ],
-      "certainty": "probable",
-      "evidenceClass": "Contemporary report",
+      "certainty": "confirmed",
+      "evidenceClass": "Official named roll call",
       "supportEffect": "none-established",
       "vote": {
         "for": 63,
@@ -3002,6 +3142,201 @@
       "marker": "D3",
       "markerPersonIds": [
         30077
+      ]
+    },
+    {
+      "id": "k25-replacement-2024-06-30-מחל",
+      "date": "2024-06-30",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          12944,
+          30880
+        ]
+      },
+      "summary": {
+        "en": "Recorded seat-holder changes.",
+        "he": "חילופי חברי הכנסת."
+      },
+      "classification": "counts",
+      "reason": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61%29",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Tenure IDs 30432, 31897",
+          "supportingNote": "All 167 returned MK-tenure rows compared with retained inventory. Dates and identities only; reasons are separate.",
+          "effectiveDate": "2024-06-30"
+        },
+        {
+          "url": "https://fs.knesset.gov.il/25/plenum/25_st_4615740.doc",
+          "publisher": "Knesset",
+          "date": "2024-07-01",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Chair names the outgoing and incoming MK and the effective membership date in the oath announcement.",
+          "supportingNote": "Chair names the outgoing and incoming MK and the effective membership date in the oath announcement.",
+          "effectiveDate": "2024-06-30"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official membership endpoints; reason separately qualified",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          12944
+        ],
+        "enteringPersonIds": [
+          30880
+        ],
+        "namesHe": {
+          "12944": "דני דנון",
+          "30880": "אביחי אברהם בוארון"
+        },
+        "reason": "unknown",
+        "reasonStatus": "unknown",
+        "reasonNote": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+        "listIds": [
+          "25-מחל"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1096,
+            "leavingPersonIds": [
+              12944
+            ],
+            "enteringPersonIds": [
+              30880
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date election-list sets; no individual pairing asserted unless separately cited",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/21"
+          }
+        ],
+        "listIdBasis": "Retained candidate/list identity crosswalk, with the official faction-to-election-list correspondence where the person has no candidate hint. This establishes list sets only, not an eligibility chain."
+      },
+      "importance": "expert",
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        12944,
+        30880
+      ]
+    },
+    {
+      "id": "k25-replacement-2024-07-05-כן",
+      "date": "2024-07-05",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30082,
+          30799
+        ]
+      },
+      "summary": {
+        "en": "Recorded seat-holder changes.",
+        "he": "חילופי חברי הכנסת."
+      },
+      "classification": "counts",
+      "reason": "Shasha Biton announces her resignation from the Knesset and a pause from political life; Buskila is the named successor.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61%29",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Tenure IDs 30422, 31909",
+          "supportingNote": "All 167 returned MK-tenure rows compared with retained inventory. Dates and identities only; reasons are separate.",
+          "effectiveDate": "2024-07-05"
+        },
+        {
+          "url": "https://fs.knesset.gov.il/25/plenum/25_st_4648935.doc",
+          "publisher": "Knesset",
+          "date": "2024-07-08",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Chair names the outgoing and incoming MK and the effective membership date in the oath announcement.",
+          "supportingNote": "Chair names the outgoing and incoming MK and the effective membership date in the oath announcement.",
+          "effectiveDate": "2024-07-05"
+        },
+        {
+          "url": "https://www.walla.co.il/news/politics/3674880",
+          "publisher": "Walla",
+          "date": "2024-07-03",
+          "accessed": "2026-11-12",
+          "type": "press",
+          "evidenceFamily": "Walla",
+          "inspection": "opened",
+          "locator": "Shasha Biton announces her resignation from the Knesset and a pause from political life; Buskila is the named successor.",
+          "supportingNote": "Shasha Biton announces her resignation from the Knesset and a pause from political life; Buskila is the named successor."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official membership endpoints; reason separately qualified",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30082
+        ],
+        "enteringPersonIds": [
+          30799
+        ],
+        "namesHe": {
+          "30082": "יפעת שאשא ביטון",
+          "30799": "מישל בוסקילה"
+        },
+        "reason": "ordinary-resignation",
+        "reasonStatus": "sourced",
+        "reasonNote": "Shasha Biton announces her resignation from the Knesset and a pause from political life; Buskila is the named successor.",
+        "listIds": [
+          "25-כן"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1108,
+            "leavingPersonIds": [
+              30082
+            ],
+            "enteringPersonIds": [
+              30799
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date election-list sets; no individual pairing asserted unless separately cited",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/22"
+          }
+        ],
+        "listIdBasis": "Retained candidate/list identity crosswalk, with the official faction-to-election-list correspondence where the person has no candidate hint. This establishes list sets only, not an eligibility chain."
+      },
+      "importance": "expert",
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30082,
+        30799
       ]
     },
     {
@@ -3196,13 +3531,37 @@
         ]
       },
       "summary": {
-        "en": "Retained-profits tax passes 60–58 despite Ben Gvir’s opposition; Almog Cohen supports it.",
-        "he": "חוק מיסוי הרווחים הלא־מחולקים אושר ברוב של 60–58 למרות התנגדות בן גביר; אלמוג כהן תמך."
+        "en": "Retained-profits tax passes 59–58; five Otzma Yehudit MKs and Tesler vote against; Almog Cohen supports it.",
+        "he": "חוק מיסוי הרווחים הלא־מחולקים אושר ברוב של 59–58; חמישה ח״כים מעוצמה יהודית וטסלר התנגדו; אלמוג כהן תמך."
       },
       "classification": "counts",
       "reason": "Named dissent on a critical budget-financing law merits a Standard vote step even though the dispute does not yet constitute a coalition exit.",
       "seatsAfter": null,
       "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PlenumVoteResult?%24filter=VoteID+eq+42651",
+          "publisher": "Knesset",
+          "date": "2024-12-31",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "VoteID 42651, full paginated individual results",
+          "supportingNote": "118 individual results: 59 for, 58 against, Eichler present/non-participating. Six named coalition opponents; Almog Cohen for.",
+          "effectiveDate": "2024-12-31"
+        },
+        {
+          "url": "https://fs.knesset.gov.il/25/plenum/25_st_5393963.doc",
+          "publisher": "Knesset",
+          "date": "2024-12-31",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Final named division and chair’s final announcement: 59 for, 58 against. Eichler explicitly does not participate.",
+          "supportingNote": "Final named division and chair’s final announcement: 59 for, 58 against. Eichler explicitly does not participate.",
+          "effectiveDate": "2024-12-31"
+        },
         {
           "url": "https://www.mako.co.il/news-politics/2024_q4/Article-5ac97c72eab1491027.htm",
           "publisher": "N12",
@@ -3215,25 +3574,56 @@
           "supportingNote": "Vote section: retained-profits tax approved 60–58; Ben Gvir opposed; Almog Cohen supported; non-participation is not abstention."
         }
       ],
-      "certainty": "probable",
-      "evidenceClass": "Contemporary report",
+      "certainty": "confirmed",
+      "evidenceClass": "Official named vote and plenum protocol",
       "supportEffect": "none-established",
       "vote": {
-        "for": 60,
+        "for": 59,
         "against": 58,
         "crossVotes": [
           {
             "personId": 30811,
-            "vote": "against"
+            "vote": "against",
+            "certainty": "confirmed"
+          },
+          {
+            "personId": 30847,
+            "vote": "against",
+            "certainty": "confirmed"
+          },
+          {
+            "personId": 30671,
+            "vote": "against",
+            "certainty": "confirmed"
+          },
+          {
+            "personId": 30849,
+            "vote": "against",
+            "certainty": "confirmed"
+          },
+          {
+            "personId": 30859,
+            "vote": "against",
+            "certainty": "confirmed"
+          },
+          {
+            "personId": 30867,
+            "vote": "against",
+            "certainty": "confirmed"
           }
         ],
-        "notes": "Only Ben Gvir is individually assigned a dissent marker; the faction stance is not expanded into an unverified personal roll call."
+        "notes": "Protocol and full official database agree: 59 for, 58 against; Eichler did not participate, not an abstention. All five named Otzma Yehudit opponents and Tesler are individually recorded against. Almog Cohen supported. This supersedes the press-reported 60–58 tally."
       },
       "importance": "standard",
       "importanceReason": "Named dissent on a critical budget-financing law merits a Standard vote step even though the dispute does not yet constitute a coalition exit.",
       "marker": "D3",
       "markerPersonIds": [
-        30811
+        30671,
+        30811,
+        30847,
+        30849,
+        30859,
+        30867
       ]
     },
     {
@@ -3712,6 +4102,118 @@
       "importanceReason": "A budget or designated confidence decision is a significant parliamentary survival test, but does not by itself change continuing coalition membership."
     },
     {
+      "id": "k25-replacement-2025-04-06-ט",
+      "date": "2025-04-06",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30833,
+          30874
+        ]
+      },
+      "summary": {
+        "en": "Recorded seat-holder changes.",
+        "he": "חילופי חברי הכנסת."
+      },
+      "classification": "counts",
+      "reason": "Almog Cohen submitted his Norwegian-law resignation after becoming deputy minister; Sukkot is the named successor. Effective date is from official tenures.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61%29",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Tenure IDs 30443, 32185",
+          "supportingNote": "All 167 returned MK-tenure rows compared with retained inventory. Dates and identities only; reasons are separate.",
+          "effectiveDate": "2025-04-06"
+        },
+        {
+          "url": "https://fs.knesset.gov.il/25/plenum/25_st_6686831.doc",
+          "publisher": "Knesset",
+          "date": "2025-05-05",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Chair names the outgoing and incoming MK and the effective membership date in the oath announcement.",
+          "supportingNote": "Chair names the outgoing and incoming MK and the effective membership date in the oath announcement.",
+          "effectiveDate": "2025-04-06"
+        },
+        {
+          "url": "https://www.zman.co.il/live/577598/",
+          "publisher": "Zman Yisrael",
+          "date": "2025-04-02",
+          "accessed": "2026-11-12",
+          "type": "press",
+          "evidenceFamily": "times-of-israel",
+          "inspection": "opened",
+          "locator": "Almog Cohen submitted his Norwegian-law resignation after becoming deputy minister; Sukkot is the named successor. Effective date is from official tenures.",
+          "supportingNote": "Almog Cohen submitted his Norwegian-law resignation after becoming deputy minister; Sukkot is the named successor. Effective date is from official tenures."
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official membership endpoints; reason separately qualified",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30833
+        ],
+        "enteringPersonIds": [
+          30874
+        ],
+        "namesHe": {
+          "30833": "אלמוג כהן",
+          "30874": "צבי ידידיה סוכות"
+        },
+        "reason": "norwegian-law",
+        "reasonStatus": "sourced",
+        "reasonNote": "Almog Cohen submitted his Norwegian-law resignation after becoming deputy minister; Sukkot is the named successor. Effective date is from official tenures.",
+        "listIds": [
+          "25-ט"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1106,
+            "leavingPersonIds": [
+              30833
+            ],
+            "enteringPersonIds": []
+          },
+          {
+            "factionId": 1105,
+            "leavingPersonIds": [],
+            "enteringPersonIds": [
+              30874
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date election-list sets; no individual pairing asserted unless separately cited",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/25"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/59"
+          }
+        ],
+        "listIdBasis": "Retained candidate/list identity crosswalk, with the official faction-to-election-list correspondence where the person has no candidate hint. This establishes list sets only, not an eligibility chain."
+      },
+      "importance": "expert",
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30833,
+        30874
+      ]
+    },
+    {
       "id": "k25-haredi-boycott-observed",
       "date": "2025-05-14",
       "kind": "vote-boycott",
@@ -3769,6 +4271,30 @@
       "seatsAfter": null,
       "sources": [
         {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PlenumVoteResult?%24filter=VoteID+eq+44209",
+          "publisher": "Knesset",
+          "date": "2025-06-12",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "VoteID 44209, full paginated individual results",
+          "supportingNote": "Electronic first dissolution division: 52 for, 61 against; Tesler and Roth for; Eichler against. Later chair’s correction adds Yasmin Fridman for a technical fault.",
+          "effectiveDate": "2025-06-12"
+        },
+        {
+          "url": "https://fs.knesset.gov.il/25/plenum/25_st_7268242.doc",
+          "publisher": "Knesset",
+          "date": "2025-06-11",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Preliminary dissolution divisions 3–8: initial 52–61 becomes 53–61 after the chair adds Yasmin Fridman’s vote for a technical fault during division 4; subsequent divisions announced 53–61.",
+          "supportingNote": "Preliminary dissolution divisions 3–8: initial 52–61 becomes 53–61 after the chair adds Yasmin Fridman’s vote for a technical fault during division 4; subsequent divisions announced 53–61.",
+          "effectiveDate": "2025-06-12"
+        },
+        {
           "url": "https://www.jpost.com/israel-news/article-857429",
           "publisher": "The Jerusalem Post",
           "date": "2025-06-12",
@@ -3791,7 +4317,7 @@
           "supportingNote": "Opening and Agudat Yisrael paragraph: Tesler and Roth voted for preliminary dissolution; Eichler opposed; 53–61."
         }
       ],
-      "certainty": "provisional",
+      "certainty": "confirmed",
       "vote": {
         "for": 53,
         "against": 61,
@@ -3804,13 +4330,14 @@
             "personId": 30870,
             "vote": "for"
           }
-        ]
+        ],
+        "notes": "Headline 53–61 follows the chair’s technical correction adding Yasmin Fridman. First electronic division (44209) has 52–61. Tesler/Roth dissent is individually verified; no change of continuing support inferred."
       },
       "timelineViews": [
         "specific-vote"
       ],
       "supportEffect": "Do not remove two continuing coalition members solely on this vote.",
-      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "evidenceClass": "Official roll call with oral technical correction",
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
       "marker": "D3",
       "importance": "standard",
@@ -3966,6 +4493,282 @@
       ]
     },
     {
+      "id": "k25-replacement-2025-06-20-ום",
+      "date": "2025-06-20",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30558,
+          30894
+        ]
+      },
+      "summary": {
+        "en": "Recorded seat-holder changes.",
+        "he": "חילופי חברי הכנסת."
+      },
+      "classification": "counts",
+      "reason": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61%29",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Tenure IDs 30454, 32260",
+          "supportingNote": "All 167 returned MK-tenure rows compared with retained inventory. Dates and identities only; reasons are separate.",
+          "effectiveDate": "2025-06-20"
+        },
+        {
+          "url": "https://fs.knesset.gov.il/25/plenum/25_st_7389679.doc",
+          "publisher": "Knesset",
+          "date": "2025-06-23",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Chair names the outgoing and incoming MK and the effective membership date in the oath announcement.",
+          "supportingNote": "Chair names the outgoing and incoming MK and the effective membership date in the oath announcement.",
+          "effectiveDate": "2025-06-20"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official membership endpoints; reason separately qualified",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30558
+        ],
+        "enteringPersonIds": [
+          30894
+        ],
+        "namesHe": {
+          "30558": "יוסף עטאונה",
+          "30894": "סמיר בן סעיד"
+        },
+        "reason": "unknown",
+        "reasonStatus": "unknown",
+        "reasonNote": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+        "listIds": [
+          "25-ום"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1103,
+            "leavingPersonIds": [
+              30558
+            ],
+            "enteringPersonIds": [
+              30894
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date election-list sets; no individual pairing asserted unless separately cited",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/27"
+          }
+        ],
+        "listIdBasis": "Retained candidate/list identity crosswalk, with the official faction-to-election-list correspondence where the person has no candidate hint. This establishes list sets only, not an eligibility chain."
+      },
+      "importance": "expert",
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30558,
+        30894
+      ]
+    },
+    {
+      "id": "k25-replacement-2025-07-02-ג",
+      "date": "2025-07-02",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30671,
+          30768
+        ]
+      },
+      "summary": {
+        "en": "Recorded seat-holder changes.",
+        "he": "חילופי חברי הכנסת."
+      },
+      "classification": "counts",
+      "reason": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61%29",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Tenure IDs 30393, 32266",
+          "supportingNote": "All 167 returned MK-tenure rows compared with retained inventory. Dates and identities only; reasons are separate.",
+          "effectiveDate": "2025-07-02"
+        },
+        {
+          "url": "https://fs.knesset.gov.il/25/plenum/25_st_7507794.doc",
+          "publisher": "Knesset",
+          "date": "2025-07-02",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Chair names the outgoing and incoming MK and the effective membership date in the oath announcement.",
+          "supportingNote": "Chair names the outgoing and incoming MK and the effective membership date in the oath announcement.",
+          "effectiveDate": "2025-07-02"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official membership endpoints; reason separately qualified",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30671
+        ],
+        "enteringPersonIds": [
+          30768
+        ],
+        "namesHe": {
+          "30671": "יעקב טסלר",
+          "30768": "אליהו ברוכי"
+        },
+        "reason": "unknown",
+        "reasonStatus": "unknown",
+        "reasonNote": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+        "listIds": [
+          "25-ג"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1101,
+            "leavingPersonIds": [
+              30671
+            ],
+            "enteringPersonIds": [
+              30768
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date election-list sets; no individual pairing asserted unless separately cited",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/28"
+          }
+        ],
+        "listIdBasis": "Retained candidate/list identity crosswalk, with the official faction-to-election-list correspondence where the person has no candidate hint. This establishes list sets only, not an eligibility chain."
+      },
+      "importance": "expert",
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30671,
+        30768
+      ]
+    },
+    {
+      "id": "k25-replacement-2025-07-04-כן",
+      "date": "2025-07-04",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30836,
+          30693
+        ]
+      },
+      "summary": {
+        "en": "Recorded seat-holder changes.",
+        "he": "חילופי חברי הכנסת."
+      },
+      "classification": "counts",
+      "reason": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61%29",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Tenure IDs 30420, 32271",
+          "supportingNote": "All 167 returned MK-tenure rows compared with retained inventory. Dates and identities only; reasons are separate.",
+          "effectiveDate": "2025-07-04"
+        },
+        {
+          "url": "https://fs.knesset.gov.il/25/plenum/25_st_7588498.doc",
+          "publisher": "Knesset",
+          "date": "2025-07-07",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Chair names the outgoing and incoming MK and the effective membership date in the oath announcement.",
+          "supportingNote": "Chair names the outgoing and incoming MK and the effective membership date in the oath announcement.",
+          "effectiveDate": "2025-07-04"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official membership endpoints; reason separately qualified",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30836
+        ],
+        "enteringPersonIds": [
+          30693
+        ],
+        "namesHe": {
+          "30836": "גדי איזנקוט",
+          "30693": "איתן גינזבורג"
+        },
+        "reason": "unknown",
+        "reasonStatus": "unknown",
+        "reasonNote": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+        "listIds": [
+          "25-כן"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1098,
+            "leavingPersonIds": [
+              30836
+            ],
+            "enteringPersonIds": [
+              30693
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date election-list sets; no individual pairing asserted unless separately cited",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/29"
+          }
+        ],
+        "listIdBasis": "Retained candidate/list identity crosswalk, with the official faction-to-election-list correspondence where the person has no candidate hint. This establishes list sets only, not an eligibility chain."
+      },
+      "importance": "expert",
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30836,
+        30693
+      ]
+    },
+    {
       "id": "k25-faction-5",
       "date": "2025-07-08",
       "kind": "faction-record-rename",
@@ -4075,6 +4878,95 @@
         "k25-faction-5"
       ],
       "timelineEligible": false
+    },
+    {
+      "id": "k25-replacement-2025-07-08-כן",
+      "date": "2025-07-08",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30662,
+          30775
+        ]
+      },
+      "summary": {
+        "en": "Recorded seat-holder changes.",
+        "he": "חילופי חברי הכנסת."
+      },
+      "classification": "counts",
+      "reason": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61%29",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Tenure IDs 30382, 32277",
+          "supportingNote": "All 167 returned MK-tenure rows compared with retained inventory. Dates and identities only; reasons are separate.",
+          "effectiveDate": "2025-07-08"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official membership endpoints; reason separately qualified",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30662
+        ],
+        "enteringPersonIds": [
+          30775
+        ],
+        "namesHe": {
+          "30662": "מתן כהנא",
+          "30775": "יעל רון בן משה"
+        },
+        "reason": "unknown",
+        "reasonStatus": "unknown",
+        "reasonNote": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+        "listIds": [
+          "25-כן"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1098,
+            "leavingPersonIds": [
+              30662
+            ],
+            "enteringPersonIds": []
+          },
+          {
+            "factionId": 1110,
+            "leavingPersonIds": [],
+            "enteringPersonIds": [
+              30775
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date election-list sets; no individual pairing asserted unless separately cited",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/30"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/56"
+          }
+        ],
+        "listIdBasis": "Retained candidate/list identity crosswalk, with the official faction-to-election-list correspondence where the person has no candidate hint. This establishes list sets only, not an eligibility chain."
+      },
+      "importance": "expert",
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30662,
+        30775
+      ]
     },
     {
       "id": "k25-saar-hasson",
@@ -4308,6 +5200,98 @@
       "importanceReason": "A party leader or minister changes executive participation, but resignation from office alone does not establish a coalition departure."
     },
     {
+      "id": "k25-replacement-2025-07-16-ג",
+      "date": "2025-07-16",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30768,
+          11835
+        ]
+      },
+      "summary": {
+        "en": "Recorded seat-holder changes.",
+        "he": "חילופי חברי הכנסת."
+      },
+      "classification": "counts",
+      "reason": "The named ministerial exit and returned MK tenure support a Norwegian-law return; the individual statutory notice remains uninspected.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61%29",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Tenure IDs 32266, 32292",
+          "supportingNote": "All 167 returned MK-tenure rows compared with retained inventory. Dates and identities only; reasons are separate.",
+          "effectiveDate": "2025-07-16"
+        },
+        {
+          "url": "https://fs.knesset.gov.il/25/plenum/25_st_7822676.doc",
+          "publisher": "Knesset",
+          "date": "2025-07-21",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Government notice gives Maklev’s deputy-minister exit on 16 July 2025 at 23:56, Porush’s ministerial exit on 17 July at 00:07 and Tesler’s deputy-minister exit on 17 July at 13:00. Combined with their returned MK tenures, this supports Norwegian returns; individual replacement letters remain uninspected.",
+          "supportingNote": "Government notice gives Maklev’s deputy-minister exit on 16 July 2025 at 23:56, Porush’s ministerial exit on 17 July at 00:07 and Tesler’s deputy-minister exit on 17 July at 13:00. Combined with their returned MK tenures, this supports Norwegian returns; individual replacement letters remain uninspected.",
+          "effectiveDate": "2025-07-16"
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official membership endpoints; reason separately qualified",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30768
+        ],
+        "enteringPersonIds": [
+          11835
+        ],
+        "namesHe": {
+          "30768": "אליהו ברוכי",
+          "11835": "אורי מקלב"
+        },
+        "reason": "norwegian-return",
+        "reasonStatus": "inferred-from-official-office-and-tenure-dates",
+        "reasonNote": "The named ministerial exit and returned MK tenure support a Norwegian-law return; the individual statutory notice remains uninspected.",
+        "listIds": [
+          "25-ג"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1101,
+            "leavingPersonIds": [
+              30768
+            ],
+            "enteringPersonIds": [
+              11835
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date election-list sets; no individual pairing asserted unless separately cited",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/32"
+          }
+        ],
+        "listIdBasis": "Retained candidate/list identity crosswalk, with the official faction-to-election-list correspondence where the person has no candidate hint. This establishes list sets only, not an eligibility chain."
+      },
+      "importance": "expert",
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30768,
+        11835
+      ]
+    },
+    {
       "id": "k25-arbel-rescinds",
       "date": "2025-07-17",
       "kind": "minister-rescinds-resignation",
@@ -4393,6 +5377,120 @@
       "importanceReason": "A party leader or minister changes executive participation, but resignation from office alone does not establish a coalition departure."
     },
     {
+      "id": "k25-replacement-2025-07-17-ג",
+      "date": "2025-07-17",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30672,
+          30870,
+          563,
+          30671
+        ]
+      },
+      "summary": {
+        "en": "Recorded seat-holder changes.",
+        "he": "חילופי חברי הכנסת."
+      },
+      "classification": "counts",
+      "reason": "The named ministerial exit and returned MK tenure support a Norwegian-law return; the individual statutory notice remains uninspected.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61%29",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Tenure IDs 30806, 31015, 32294, 32296",
+          "supportingNote": "All 167 returned MK-tenure rows compared with retained inventory. Dates and identities only; reasons are separate.",
+          "effectiveDate": "2025-07-17"
+        },
+        {
+          "url": "https://fs.knesset.gov.il/25/plenum/25_st_7822676.doc",
+          "publisher": "Knesset",
+          "date": "2025-07-21",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Government notice gives Maklev’s deputy-minister exit on 16 July 2025 at 23:56, Porush’s ministerial exit on 17 July at 00:07 and Tesler’s deputy-minister exit on 17 July at 13:00. Combined with their returned MK tenures, this supports Norwegian returns; individual replacement letters remain uninspected.",
+          "supportingNote": "Government notice gives Maklev’s deputy-minister exit on 16 July 2025 at 23:56, Porush’s ministerial exit on 17 July at 00:07 and Tesler’s deputy-minister exit on 17 July at 13:00. Combined with their returned MK tenures, this supports Norwegian returns; individual replacement letters remain uninspected.",
+          "effectiveDate": "2025-07-17"
+        }
+      ],
+      "certainty": "probable",
+      "evidenceClass": "Official membership endpoints; reason separately qualified",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30672,
+          30870
+        ],
+        "enteringPersonIds": [
+          563,
+          30671
+        ],
+        "namesHe": {
+          "30672": "יצחק פינדרוס",
+          "30870": "משה רוט",
+          "563": "מאיר פרוש",
+          "30671": "יעקב טסלר"
+        },
+        "reason": "norwegian-return",
+        "reasonStatus": "inferred-from-official-office-and-tenure-dates",
+        "reasonNote": "The named ministerial exit and returned MK tenure support a Norwegian-law return; the individual statutory notice remains uninspected.",
+        "listIds": [
+          "25-ג"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1101,
+            "leavingPersonIds": [
+              30672,
+              30870
+            ],
+            "enteringPersonIds": [
+              563,
+              30671
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date election-list sets; no individual pairing asserted unless separately cited",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/33"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/34"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/60"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/61"
+          }
+        ],
+        "listIdBasis": "Retained candidate/list identity crosswalk, with the official faction-to-election-list correspondence where the person has no candidate hint. This establishes list sets only, not an eligibility chain."
+      },
+      "importance": "expert",
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30672,
+        30870,
+        563,
+        30671
+      ]
+    },
+    {
       "id": "k25-arbel-resigns-again",
       "date": "2025-07-20",
       "kind": "minister-resignation",
@@ -4430,6 +5528,239 @@
       "marker": null,
       "importance": "standard",
       "importanceReason": "A party leader or minister changes executive participation, but resignation from office alone does not establish a coalition departure."
+    },
+    {
+      "id": "k25-replacement-2025-07-20-שס",
+      "date": "2025-07-20",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30480,
+          30872,
+          30873,
+          1056,
+          30804,
+          28513
+        ]
+      },
+      "summary": {
+        "en": "Recorded seat-holder changes.",
+        "he": "חילופי חברי הכנסת."
+      },
+      "classification": "counts",
+      "reason": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61%29",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Tenure IDs 30459, 31095, 31097, 32307, 32306, 32308, 32311",
+          "supportingNote": "All 167 returned MK-tenure rows compared with retained inventory. Dates and identities only; reasons are separate.",
+          "effectiveDate": "2025-07-20"
+        },
+        {
+          "url": "https://fs.knesset.gov.il/25/plenum/25_st_7822676.doc",
+          "publisher": "Knesset",
+          "date": "2025-07-21",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Official government notice establishes Margi, Ben Tzur and Biton leaving the government on 20 July at 10:00. The membership rows show their returns, two Norwegian substitutes leaving and Bezalel leaving. Do not assign a single reason or individual pairings to this mixed group.",
+          "supportingNote": "Official government notice establishes Margi, Ben Tzur and Biton leaving the government on 20 July at 10:00. The membership rows show their returns, two Norwegian substitutes leaving and Bezalel leaving. Do not assign a single reason or individual pairings to this mixed group.",
+          "effectiveDate": "2025-07-20"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official membership endpoints; reason separately qualified",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30480,
+          30872,
+          30873
+        ],
+        "enteringPersonIds": [
+          1056,
+          30804,
+          28513
+        ],
+        "namesHe": {
+          "30480": "אברהם בצלאל",
+          "30872": "סימון מושיאשוילי",
+          "30873": "ארז מלול",
+          "1056": "יעקב מרגי",
+          "30804": "חיים ביטון",
+          "28513": "יואב בן צור"
+        },
+        "reason": "unknown",
+        "reasonStatus": "unknown",
+        "reasonNote": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+        "listIds": [
+          "25-שס"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1095,
+            "leavingPersonIds": [
+              30480,
+              30872,
+              30873
+            ],
+            "enteringPersonIds": [
+              1056,
+              30804,
+              28513
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date election-list sets; no individual pairing asserted unless separately cited",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/35"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/36"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/38"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/55"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/62"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/63"
+          }
+        ],
+        "listIdBasis": "Retained candidate/list identity crosswalk, with the official faction-to-election-list correspondence where the person has no candidate hint. This establishes list sets only, not an eligibility chain."
+      },
+      "importance": "expert",
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30480,
+        30872,
+        30873,
+        1056,
+        30804,
+        28513
+      ]
+    },
+    {
+      "id": "k25-replacement-2025-08-13-פה",
+      "date": "2025-08-13",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30721,
+          30895
+        ]
+      },
+      "summary": {
+        "en": "Recorded seat-holder changes.",
+        "he": "חילופי חברי הכנסת."
+      },
+      "classification": "counts",
+      "reason": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61%29",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Tenure IDs 30413, 32394",
+          "supportingNote": "All 167 returned MK-tenure rows compared with retained inventory. Dates and identities only; reasons are separate.",
+          "effectiveDate": "2025-08-13"
+        },
+        {
+          "url": "https://fs.knesset.gov.il/25/plenum/25_st_8131656.doc",
+          "publisher": "Knesset",
+          "date": "2025-08-13",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Chair names the outgoing and incoming MK and the effective membership date in the oath announcement.",
+          "supportingNote": "Chair names the outgoing and incoming MK and the effective membership date in the oath announcement.",
+          "effectiveDate": "2025-08-13"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official membership endpoints; reason separately qualified",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30721
+        ],
+        "enteringPersonIds": [
+          30895
+        ],
+        "namesHe": {
+          "30721": "עידן רול",
+          "30895": "עדי עזוז"
+        },
+        "reason": "unknown",
+        "reasonStatus": "unknown",
+        "reasonNote": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+        "listIds": [
+          "25-פה"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1109,
+            "leavingPersonIds": [
+              30721
+            ],
+            "enteringPersonIds": []
+          },
+          {
+            "factionId": 1102,
+            "leavingPersonIds": [],
+            "enteringPersonIds": [
+              30895
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date election-list sets; no individual pairing asserted unless separately cited",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/39"
+          },
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/57"
+          }
+        ],
+        "listIdBasis": "Retained candidate/list identity crosswalk, with the official faction-to-election-list correspondence where the person has no candidate hint. This establishes list sets only, not an eligibility chain."
+      },
+      "importance": "expert",
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30721,
+        30895
+      ]
     },
     {
       "id": "k25-budget2025-additional",
@@ -4663,6 +5994,178 @@
       "importanceReason": "A budget or designated confidence decision is a significant parliamentary survival test, but does not by itself change continuing coalition membership."
     },
     {
+      "id": "k25-replacement-2026-05-19-שס",
+      "date": "2026-05-19",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30660,
+          30873
+        ]
+      },
+      "summary": {
+        "en": "Recorded seat-holder changes.",
+        "he": "חילופי חברי הכנסת."
+      },
+      "classification": "counts",
+      "reason": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61%29",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Tenure IDs 30348, 33788",
+          "supportingNote": "All 167 returned MK-tenure rows compared with retained inventory. Dates and identities only; reasons are separate.",
+          "effectiveDate": "2026-05-19"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official membership endpoints; reason separately qualified",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30660
+        ],
+        "enteringPersonIds": [
+          30873
+        ],
+        "namesHe": {
+          "30660": "משה ארבל",
+          "30873": "ארז מלול"
+        },
+        "reason": "unknown",
+        "reasonStatus": "unknown",
+        "reasonNote": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+        "listIds": [
+          "25-שס"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1095,
+            "leavingPersonIds": [
+              30660
+            ],
+            "enteringPersonIds": [
+              30873
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date election-list sets; no individual pairing asserted unless separately cited",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/41"
+          }
+        ],
+        "listIdBasis": "Retained candidate/list identity crosswalk, with the official faction-to-election-list correspondence where the person has no candidate hint. This establishes list sets only, not an eligibility chain."
+      },
+      "importance": "expert",
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30660,
+        30873
+      ]
+    },
+    {
+      "id": "k25-replacement-2026-06-07-פה",
+      "date": "2026-06-07",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          23639,
+          30916
+        ]
+      },
+      "summary": {
+        "en": "Recorded seat-holder changes.",
+        "he": "חילופי חברי הכנסת."
+      },
+      "classification": "counts",
+      "reason": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61%29",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Tenure IDs 30402, 33812",
+          "supportingNote": "All 167 returned MK-tenure rows compared with retained inventory. Dates and identities only; reasons are separate.",
+          "effectiveDate": "2026-06-07"
+        },
+        {
+          "url": "https://fs.knesset.gov.il/25/plenum/25_st_13476187.doc",
+          "publisher": "Knesset",
+          "date": "2026-06-08",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Chair names the outgoing and incoming MK and the effective membership date in the oath announcement.",
+          "supportingNote": "Chair names the outgoing and incoming MK and the effective membership date in the oath announcement.",
+          "effectiveDate": "2026-06-07"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official membership endpoints; reason separately qualified",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          23639
+        ],
+        "enteringPersonIds": [
+          30916
+        ],
+        "namesHe": {
+          "23639": "בועז טופורובסקי",
+          "30916": "עוז חיים"
+        },
+        "reason": "unknown",
+        "reasonStatus": "unknown",
+        "reasonNote": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+        "listIds": [
+          "25-פה"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1102,
+            "leavingPersonIds": [
+              23639
+            ],
+            "enteringPersonIds": [
+              30916
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date election-list sets; no individual pairing asserted unless separately cited",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/42"
+          }
+        ],
+        "listIdBasis": "Retained candidate/list identity crosswalk, with the official faction-to-election-list correspondence where the person has no candidate hint. This establishes list sets only, not an eligibility chain."
+      },
+      "importance": "expert",
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        23639,
+        30916
+      ]
+    },
+    {
       "id": "k25-dissolution-final",
       "date": "2026-07-17",
       "kind": "dissolution-vote",
@@ -4734,6 +6237,338 @@
       "importanceReason": "A genuine dissolution would be a Simple milestone, but official full-term evidence and the report’s recess description leave this legal interpretation unresolved.",
       "timelineEligible": false,
       "verificationStatus": "legal-meaning-unresolved"
+    },
+    {
+      "id": "k25-replacement-2026-07-28-פה",
+      "date": "2026-07-28",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30780,
+          30917
+        ]
+      },
+      "summary": {
+        "en": "Recorded seat-holder changes.",
+        "he": "חילופי חברי הכנסת."
+      },
+      "classification": "counts",
+      "reason": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61%29",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Tenure IDs 30406, 33882",
+          "supportingNote": "All 167 returned MK-tenure rows compared with retained inventory. Dates and identities only; reasons are separate.",
+          "effectiveDate": "2026-07-28"
+        },
+        {
+          "url": "https://fs.knesset.gov.il/25/plenum/25_st_14304306.doc",
+          "publisher": "Knesset",
+          "date": "2026-07-28",
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Chair names the outgoing and incoming MK and the effective membership date in the oath announcement.",
+          "supportingNote": "Chair names the outgoing and incoming MK and the effective membership date in the oath announcement.",
+          "effectiveDate": "2026-07-28"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official membership endpoints; reason separately qualified",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30780
+        ],
+        "enteringPersonIds": [
+          30917
+        ],
+        "namesHe": {
+          "30780": "רון כץ",
+          "30917": "מוחמד אבו אל היג'א"
+        },
+        "reason": "unknown",
+        "reasonStatus": "unknown",
+        "reasonNote": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+        "listIds": [
+          "25-פה"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1102,
+            "leavingPersonIds": [
+              30780
+            ],
+            "enteringPersonIds": [
+              30917
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date election-list sets; no individual pairing asserted unless separately cited",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/43"
+          }
+        ],
+        "listIdBasis": "Retained candidate/list identity crosswalk, with the official faction-to-election-list correspondence where the person has no candidate hint. This establishes list sets only, not an eligibility chain."
+      },
+      "importance": "expert",
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30780,
+        30917
+      ]
+    },
+    {
+      "id": "k25-replacement-2026-08-11-פה",
+      "date": "2026-08-11",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30695,
+          30921
+        ]
+      },
+      "summary": {
+        "en": "Recorded seat-holder changes.",
+        "he": "חילופי חברי הכנסת."
+      },
+      "classification": "counts",
+      "reason": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61%29",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Tenure IDs 30411, 33889",
+          "supportingNote": "All 167 returned MK-tenure rows compared with retained inventory. Dates and identities only; reasons are separate.",
+          "effectiveDate": "2026-08-11"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official membership endpoints; reason separately qualified",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30695
+        ],
+        "enteringPersonIds": [
+          30921
+        ],
+        "namesHe": {
+          "30695": "יואב סגלוביץ'",
+          "30921": "מיכל סלבני כבביה"
+        },
+        "reason": "unknown",
+        "reasonStatus": "unknown",
+        "reasonNote": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+        "listIds": [
+          "25-פה"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1102,
+            "leavingPersonIds": [
+              30695
+            ],
+            "enteringPersonIds": [
+              30921
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date election-list sets; no individual pairing asserted unless separately cited",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/44"
+          }
+        ],
+        "listIdBasis": "Retained candidate/list identity crosswalk, with the official faction-to-election-list correspondence where the person has no candidate hint. This establishes list sets only, not an eligibility chain."
+      },
+      "importance": "expert",
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30695,
+        30921
+      ]
+    },
+    {
+      "id": "k25-replacement-2026-08-13-מחל",
+      "date": "2026-08-13",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          30839,
+          30922
+        ]
+      },
+      "summary": {
+        "en": "Recorded seat-holder changes.",
+        "he": "חילופי חברי הכנסת."
+      },
+      "classification": "counts",
+      "reason": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61%29",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Tenure IDs 30808, 33891",
+          "supportingNote": "All 167 returned MK-tenure rows compared with retained inventory. Dates and identities only; reasons are separate.",
+          "effectiveDate": "2026-08-13"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official membership endpoints; reason separately qualified",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          30839
+        ],
+        "enteringPersonIds": [
+          30922
+        ],
+        "namesHe": {
+          "30839": "דן אילוז",
+          "30922": "שבתאי קטש"
+        },
+        "reason": "unknown",
+        "reasonStatus": "unknown",
+        "reasonNote": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+        "listIds": [
+          "25-מחל"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1096,
+            "leavingPersonIds": [
+              30839
+            ],
+            "enteringPersonIds": [
+              30922
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date election-list sets; no individual pairing asserted unless separately cited",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/45"
+          }
+        ],
+        "listIdBasis": "Retained candidate/list identity crosswalk, with the official faction-to-election-list correspondence where the person has no candidate hint. This establishes list sets only, not an eligibility chain."
+      },
+      "importance": "expert",
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        30839,
+        30922
+      ]
+    },
+    {
+      "id": "k25-replacement-2026-09-09-פה",
+      "date": "2026-09-09",
+      "kind": "member-replacement",
+      "who": {
+        "personIds": [
+          23591,
+          30923
+        ]
+      },
+      "summary": {
+        "en": "Recorded seat-holder changes.",
+        "he": "חילופי חברי הכנסת."
+      },
+      "classification": "counts",
+      "reason": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61%29",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "opened",
+          "locator": "Tenure IDs 30415, 33893",
+          "supportingNote": "All 167 returned MK-tenure rows compared with retained inventory. Dates and identities only; reasons are separate.",
+          "effectiveDate": "2026-09-09"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official membership endpoints; reason separately qualified",
+      "supportEffect": "none-established",
+      "replacement": {
+        "leavingPersonIds": [
+          23591
+        ],
+        "enteringPersonIds": [
+          30923
+        ],
+        "namesHe": {
+          "23591": "אלעזר שטרן",
+          "30923": "רוני מלכאי"
+        },
+        "reason": "unknown",
+        "reasonStatus": "unknown",
+        "reasonNote": "Official membership endpoints establish this seat-holder change; the individual legal reason remains unverified.",
+        "listIds": [
+          "25-פה"
+        ],
+        "factionSets": [
+          {
+            "factionId": 1102,
+            "leavingPersonIds": [
+              23591
+            ],
+            "enteringPersonIds": [
+              30923
+            ]
+          }
+        ],
+        "pairingBasis": "Same-date election-list sets; no individual pairing asserted unless separately cited",
+        "nextEligibleCandidateCheck": "not independently enumerated",
+        "memberChangesRefs": [
+          {
+            "path": "data/research/knesset-member-changes/k25.json",
+            "pointer": "/replacements/46"
+          }
+        ],
+        "listIdBasis": "Retained candidate/list identity crosswalk, with the official faction-to-election-list correspondence where the person has no candidate hint. This establishes list sets only, not an eligibility chain."
+      },
+      "importance": "expert",
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
+      "markerPersonIds": [
+        23591,
+        30923
+      ]
     }
   ],
   "membershipEventRefs": [
@@ -5047,13 +6882,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/19"
       },
-      "reasonStatus": "unknown",
+      "reasonStatus": "sourced",
       "certainty": "probable",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2023-08-01-פה",
+      "reason": "ordinary-resignation"
     },
     {
       "date": "2023-10-14",
@@ -5080,10 +6917,12 @@
       "reasonStatus": "unknown",
       "certainty": "probable",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2024-06-30-מחל",
+      "reason": "unknown"
     },
     {
       "date": "2024-07-05",
@@ -5091,13 +6930,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/22"
       },
-      "reasonStatus": "unknown",
+      "reasonStatus": "sourced",
       "certainty": "probable",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2024-07-05-כן",
+      "reason": "ordinary-resignation"
     },
     {
       "date": "2025-01-05",
@@ -5137,13 +6978,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/25"
       },
-      "reasonStatus": "unknown",
+      "reasonStatus": "sourced",
       "certainty": "provisional",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2025-04-06-ט",
+      "reason": "norwegian-law"
     },
     {
       "date": "2025-06-15",
@@ -5170,10 +7013,12 @@
       "reasonStatus": "unknown",
       "certainty": "probable",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2025-06-20-ום",
+      "reason": "unknown"
     },
     {
       "date": "2025-07-02",
@@ -5184,10 +7029,12 @@
       "reasonStatus": "unknown",
       "certainty": "probable",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2025-07-02-ג",
+      "reason": "unknown"
     },
     {
       "date": "2025-07-04",
@@ -5198,10 +7045,12 @@
       "reasonStatus": "unknown",
       "certainty": "probable",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2025-07-04-כן",
+      "reason": "unknown"
     },
     {
       "date": "2025-07-08",
@@ -5212,10 +7061,12 @@
       "reasonStatus": "unknown",
       "certainty": "provisional",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2025-07-08-כן",
+      "reason": "unknown"
     },
     {
       "date": "2025-07-10",
@@ -5239,13 +7090,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/32"
       },
-      "reasonStatus": "unknown",
+      "reasonStatus": "inferred-from-official-office-and-tenure-dates",
       "certainty": "probable",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2025-07-16-ג",
+      "reason": "norwegian-return"
     },
     {
       "date": "2025-07-17",
@@ -5253,13 +7106,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/33"
       },
-      "reasonStatus": "unknown",
+      "reasonStatus": "inferred-from-official-office-and-tenure-dates",
       "certainty": "provisional",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2025-07-17-ג",
+      "reason": "norwegian-return"
     },
     {
       "date": "2025-07-17",
@@ -5267,13 +7122,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/34"
       },
-      "reasonStatus": "unknown",
+      "reasonStatus": "inferred-from-official-office-and-tenure-dates",
       "certainty": "provisional",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2025-07-17-ג",
+      "reason": "norwegian-return"
     },
     {
       "date": "2025-07-20",
@@ -5284,10 +7141,12 @@
       "reasonStatus": "unknown",
       "certainty": "provisional",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2025-07-20-שס",
+      "reason": "unknown"
     },
     {
       "date": "2025-07-20",
@@ -5298,10 +7157,12 @@
       "reasonStatus": "unknown",
       "certainty": "provisional",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2025-07-20-שס",
+      "reason": "unknown"
     },
     {
       "date": "2025-07-20",
@@ -5326,10 +7187,12 @@
       "reasonStatus": "unknown",
       "certainty": "provisional",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2025-07-20-שס",
+      "reason": "unknown"
     },
     {
       "date": "2025-08-13",
@@ -5340,10 +7203,12 @@
       "reasonStatus": "unknown",
       "certainty": "provisional",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2025-08-13-פה",
+      "reason": "unknown"
     },
     {
       "date": "2026-01-21",
@@ -5383,10 +7248,12 @@
       "reasonStatus": "unknown",
       "certainty": "probable",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2026-05-19-שס",
+      "reason": "unknown"
     },
     {
       "date": "2026-06-07",
@@ -5397,10 +7264,12 @@
       "reasonStatus": "unknown",
       "certainty": "probable",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2026-06-07-פה",
+      "reason": "unknown"
     },
     {
       "date": "2026-07-28",
@@ -5411,10 +7280,12 @@
       "reasonStatus": "unknown",
       "certainty": "probable",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2026-07-28-פה",
+      "reason": "unknown"
     },
     {
       "date": "2026-08-11",
@@ -5425,10 +7296,12 @@
       "reasonStatus": "unknown",
       "certainty": "probable",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2026-08-11-פה",
+      "reason": "unknown"
     },
     {
       "date": "2026-08-13",
@@ -5439,10 +7312,12 @@
       "reasonStatus": "unknown",
       "certainty": "probable",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2026-08-13-מחל",
+      "reason": "unknown"
     },
     {
       "date": "2026-09-09",
@@ -5453,10 +7328,12 @@
       "reasonStatus": "unknown",
       "certainty": "probable",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2026-09-09-פה",
+      "reason": "unknown"
     },
     {
       "date": "2023-01-06",
@@ -5608,10 +7485,12 @@
       "reasonStatus": "unknown",
       "certainty": "provisional",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2025-07-20-שס",
+      "reason": "unknown"
     },
     {
       "date": "2025-07-08",
@@ -5622,10 +7501,12 @@
       "reasonStatus": "unknown",
       "certainty": "provisional",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2025-07-08-כן",
+      "reason": "unknown"
     },
     {
       "date": "2025-08-13",
@@ -5636,10 +7517,12 @@
       "reasonStatus": "unknown",
       "certainty": "provisional",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2025-08-13-פה",
+      "reason": "unknown"
     },
     {
       "date": "2023-02-02",
@@ -5663,13 +7546,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/59"
       },
-      "reasonStatus": "unknown",
+      "reasonStatus": "sourced",
       "certainty": "provisional",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2025-04-06-ט",
+      "reason": "norwegian-law"
     },
     {
       "date": "2025-07-17",
@@ -5677,13 +7562,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/60"
       },
-      "reasonStatus": "unknown",
+      "reasonStatus": "inferred-from-official-office-and-tenure-dates",
       "certainty": "provisional",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2025-07-17-ג",
+      "reason": "norwegian-return"
     },
     {
       "date": "2025-07-17",
@@ -5691,13 +7578,15 @@
         "path": "data/research/knesset-member-changes/k25.json",
         "pointer": "/replacements/61"
       },
-      "reasonStatus": "unknown",
+      "reasonStatus": "inferred-from-official-office-and-tenure-dates",
       "certainty": "provisional",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2025-07-17-ג",
+      "reason": "norwegian-return"
     },
     {
       "date": "2025-07-20",
@@ -5708,10 +7597,12 @@
       "reasonStatus": "unknown",
       "certainty": "provisional",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2025-07-20-שס",
+      "reason": "unknown"
     },
     {
       "date": "2025-07-20",
@@ -5722,10 +7613,12 @@
       "reasonStatus": "unknown",
       "certainty": "provisional",
       "importance": "expert",
-      "importanceReason": "A retained membership episode adds seat-holder detail, but its replacement pairing or reason remains unresolved.",
-      "marker": null,
+      "importanceReason": "A seat-holder change adds parliamentary detail without an independently established change of continuing government support.",
+      "marker": "replacement",
       "timelineEligible": false,
-      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement."
+      "timelineNote": "Use eventId when present; otherwise inspect the referenced episode before drawing a paired replacement.",
+      "eventId": "k25-replacement-2025-07-20-שס",
+      "reason": "unknown"
     },
     {
       "date": "2025-01-21",
@@ -5781,7 +7674,6 @@
     "Replacement reasons and candidate succession chains remain unknown in the referenced membership dataset; do not infer Norwegian-law exits, ordinary resignations or deaths from dates alone.",
     "English contemporary reports predominate in this pass; Hebrew primary documents and trusted institutional scholarship remain to be added.",
     "2023 emergency-government approval: 66–4 versus 66–0 reports; official roll call required.",
-    "2023 revised budget opposition tally: Globes/Jerusalem Post 44 versus another contemporary report 45; verify official tally.",
     "2024 second supplementary budget final vote remains an indexed lead; the third supplementary budget on 24 December is now corroborated by a readable contemporary report, with separate framework/budget vote IDs still needed.",
     "20 May 2026 preliminary dissolution: 110–0 indexed in i24 report, but full text not recovered; final legal instrument also needed.",
     "Full Shas ministerial resignation chronology (announcement, submission, effective date, Arbel exception) and later formal coalition status unresolved.",
@@ -5789,9 +7681,9 @@
     "No exhaustive proof of no further party exits/returns after July 2025; Eichler arrangement shows why ordinary vote support cannot prove a whole-party return.",
     "Maoz completed reinstatement authenticated in 28 May 2023 press report. Arbel second resignation authenticated in 20 July 2025 report; statutory effective dates still need primary notices.",
     "IDI winter-session review establishes nine no-confidence motions in winter 2023–24 and 26 in summer 2023. These totals demonstrate that this dataset is incomplete; do not treat the collected subset as the complete vote universe.",
-    "Revised 2023 budget: Reshet 13 gives 58–45, alongside 59–44 and 59–45 reports. Both for and against totals remain unresolved.",
     "RB-IMP challenge: the 12 October 2026 Knesset election brief says the term completes its regular duration, whereas July press uses dissolution/dispersal terminology for a financing-linked recess motion; retain the record but exclude it pending the legal instrument.",
-    "RB-IMP: all retained events have editorial grades; unrecorded historical events are not proved absent, and null markers mean evidence does not establish the requested marker."
+    "RB-IMP: all retained events have editorial grades; unrecorded historical events are not proved absent, and null markers mean evidence does not establish the requested marker.",
+    "RV 12 November: every positive-duration entry in the retained K25 inventory now has a replacement event; reasons, full eligibility chains and individual mixed-group pairings remain partial. Zero-length tenure 32308 is not an extra seat."
   ],
   "initialCabinetRef": {
     "path": "data/meta/government-support-evidence.json",
@@ -6006,7 +7898,7 @@
   ],
   "gradingCoverage": {
     "existingEventsGraded": 48,
-    "newEvents": 23,
+    "newEvents": 41,
     "historicalCompleteness": "partial; not an exhaustive census of qualifying votes, support changes or replacements"
   }
 }
