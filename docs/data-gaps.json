@@ -1,11 +1,11 @@
 {
   "schemaVersion": 3,
-  "total": 11467,
+  "total": 11471,
   "counts": {
     "unknown": 6958,
     "missing-field": 283,
     "conflict": 18,
-    "single-source": 2452,
+    "single-source": 2456,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1167,
@@ -15,7 +15,7 @@
   "countsByStatus": {
     "inferred-not-verified": 1032,
     "needs-current-status-review": 313,
-    "open": 10122
+    "open": 10126
   },
   "countsByImportance": {
     "high": {
@@ -27,18 +27,18 @@
       "unknown": 240
     },
     "medium": {
-      "total": 3591,
-      "confirmed": 580,
-      "probable": 235,
-      "provisional": 548,
+      "total": 3595,
+      "confirmed": 581,
+      "probable": 241,
+      "provisional": 545,
       "disputed": 7,
       "unknown": 2221
     },
     "low": {
       "total": 7049,
-      "confirmed": 570,
+      "confirmed": 572,
       "probable": 0,
-      "provisional": 805,
+      "provisional": 803,
       "disputed": 0,
       "unknown": 5674
     }
@@ -540,15 +540,15 @@
     },
     {
       "election": "k26",
-      "total": 561,
+      "total": 565,
       "highOpen": 2,
-      "mediumOpen": 127,
+      "mediumOpen": 130,
       "low": 365,
       "counts": {
         "unknown": 273,
         "missing-field": 0,
         "conflict": 0,
-        "single-source": 138,
+        "single-source": 142,
         "low-confidence": 6,
         "release-hold": 0,
         "inferred": 100,
@@ -1022,7 +1022,7 @@
     {"election":"k26","area":"Family classifications","count":93,"certainty":{"probable":1,"provisional":20,"unknown":72}},
     {"election":"k26","area":"Party appearances","count":21,"certainty":{"unknown":21}},
     {"election":"k26","area":"data/meta/election-context.json events","count":7,"certainty":{"provisional":7}},
-    {"election":"k26","area":"List metadata","count":3,"certainty":{"provisional":3}},
+    {"election":"k26","area":"List metadata","count":6,"certainty":{"probable":6}},
     {"election":"k26","area":"data/meta/README.md","count":1,"certainty":{"unknown":1}},
     {"election":"k26","area":"Issue polling","count":1,"certainty":{"unknown":1}},
     {"election":"k26","area":"Reactions","count":1,"certainty":{"unknown":1}},
@@ -1070,11 +1070,11 @@
   ],
   "low": [
     {"area":"data/meta/bios/kN.json candidates","count":4066,"open":4066},
-    {"area":"Published lists","count":800,"open":569},
+    {"area":"Published lists","count":800,"open":568},
     {"area":"data/meta/parties.json parties","count":567,"open":459},
     {"area":"data/meta/kN.json colours","count":442,"open":442},
     {"area":"docs (prose)","count":300,"open":300},
-    {"area":"List metadata","count":232,"open":1},
+    {"area":"List metadata","count":232,"open":0},
     {"area":"data/raw/research/ckan-election-search.json result","count":164,"open":164},
     {"area":"data/raw/research/ckan-votes-knesset.json result","count":102,"open":102},
     {"area":"data/raw/votes-knesset.catalogue.json result","count":102,"open":102},

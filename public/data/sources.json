@@ -1,5 +1,19 @@
 [
  {
+  "id": "k26-candidates-gazette",
+  "file": "k26/yp15023-candidates.pdf",
+  "url": "https://olaw.org.il/yalkut/yalkut-15023.pdf",
+  "publisher": "רשומות / ועדת הבחירות המרכזית — ילקוט הפרסומים 15023 (13.10.2026)",
+  "publisherEn": "Reshumot / Central Elections Committee — Yalkut HaPirsumim 15023 (13 Oct 2026)",
+  "official": true,
+  "description": "Official published candidate lists; reviewed בי p.834, כן p.851; submitting parties זך p.848, רץ p.862, צבי p.859.",
+  "note": "Official publication retrieved from the public mirror olaw.org.il, not a government host. Government-path attempt returned HTTP 404; no official-host byte comparison. PDF pages 8, 25, 22, 36, 33 respectively.",
+  "method": "http",
+  "retrievedAt": "2026-11-11T22:54:22.312622+00:00",
+  "bytes": 556370,
+  "sha256": "ab9f431dd593925bf464df3b323be97033b0db8347cbe0d32366dab9293a1e0b"
+ },
+ {
   "id": "k26-ballots-csv",
   "file": "k26/expb.csv",
   "url": "https://media26.bechirot.gov.il/files/expb.csv",
@@ -120,7 +134,7 @@
   "publisherEn": "Central Elections Committee for the 26th Knesset (gov.il)",
   "official": true,
   "description": "Official per-list pages: list name, letters, sponsoring parties, full ranked roster, per-candidate party, resignations",
-  "note": "gov.il returns HTTP 403 to scripted clients; captured on 2026-11-03 through the Exa page-fetch service, whose text extraction is stored verbatim. Each page carries its own \"תאריך עדכון\". Two pages (בי, כן) failed to render and come from the secondary source below.",
+  "note": "gov.il returns HTTP 403 to scripted clients; captured on 2026-11-03 through the Exa page-fetch service, whose text extraction is stored verbatim. Each page carries its own \"תאריך עדכון\". Two pages (בי, כן) failed to render; their rosters now use the reviewed official publication k26-candidates-gazette.",
   "retrievedAt": "2026-11-03",
   "bytes": 132406,
   "sha256": "e788fbe0d2d83661b3897946f13ce91eb72abfc81534f2944e0ac7e21ffbc3af"
@@ -132,7 +146,7 @@
   "url": "https://bechirot.fyi/lists/26/בי and /lists/26/כן",
   "publisher": "bechirot.fyi (independent; transcribes the official CEC pages)",
   "official": false,
-  "description": "Fallback rosters for צומת בית ישראל (בי) and כחול לבן (כן) only; marked secondary in the dataset",
+  "description": "Retained former fallback transcriptions for צומת בית ישראל (בי) and כחול לבן (כן); superseded as roster evidence by k26-candidates-gazette",
   "retrievedAt": "2026-11-03"
  },
  {

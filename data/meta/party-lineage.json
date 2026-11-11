@@ -441,7 +441,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k26.json",
-      "sha256": "947464727dd8edd4dc4b78a1b362c5a2106121c6d5ff257d0324f493ba4b6ab7",
+      "sha256": "47a166664f3e066be0a2e201e3e6882f5759be91fa22d1372bb3a1c9f3db3fff",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "religious-islamist": {
