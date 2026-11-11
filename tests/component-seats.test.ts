@@ -14,7 +14,13 @@ test('counting component parties preserves list rings, grouped component seats a
  expect(seats.every(st=>st.color===l.color)).toBe(true);
  expect(seats.every(st=>st.innerColor)).toBe(true);
  expect(seats.find(st=>st.innerColor===partyDisplayColor(l,meretz.id))?.idx).toBe(5);
- expect(seatOrder(s,r,'list',false).every(st=>!st.innerColor)).toBe(true);
+ // list colour only: no party anywhere
+ expect(seatOrder(s,r,'list','list').every(st=>!st.innerColor && !st.partyColor && (st.listId!==l.id || st.color===l.color))).toBe(true);
+ // party colour only: the seat itself takes the party's colour, with no list ring
+ const party=seatOrder(s,r,'list','party').filter(st=>st.listId===l.id);
+ expect(party.every(st=>!st.innerColor && st.color===st.partyColor && st.color===partyDisplayColor(l,st.partyId!))).toBe(true);
+ // in bloc colours the seat keeps its bloc colour
+ expect(seatOrder(s,r,'bloc','party').filter(st=>st.listId===l.id).every(st=>st.color!==st.partyColor)).toBe(true);
  s.factionSplits=[];
  expect(seatOrder(s,r,'list').every(st=>!st.innerColor)).toBe(true);
 });

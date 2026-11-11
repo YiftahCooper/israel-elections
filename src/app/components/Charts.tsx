@@ -1,6 +1,5 @@
 import { percent, rationalPoints } from './Percentage.tsx';
 import{PartyDot}from'./PartyDot.tsx';
-import{partySeparator}from'../../data/colourGuard.ts';
 import { seatOrder } from './Hemicycle.tsx';
 import { Floating } from '../floating.tsx';
 import { useHoverIntent } from '../hoverIntent.ts';
@@ -96,8 +95,8 @@ function rowsFor(s: Scenario, r: AllocationResult) {
 const NO_SEAT = '__noseat';
 
 function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
-  const showComponents = useSetting('partyColourInSeats');
-  const componentSeats = seatOrder(s,r,'list',showComponents);
+  const jointLook = useSetting('jointListSeats');
+  const componentSeats = seatOrder(s,r,'list',jointLook);
   const L = useL();
   const lang = useLang();
   const digits = useDigits();
@@ -140,7 +139,7 @@ function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
               <text x={lx} y={stacked ? y + 9 : yb + barH + 3} textAnchor={he ? 'end' : 'start'} fill="var(--ink)" data-chart-label=""><title>{row.name}</title>{isolate(clip(row.name, stacked ? W - 8 : labelW - 12))}</text>
               <rect className="bar" x={x0} y={yb + 0.5} width={vw} height={barH - 1} rx={2} fill={row.color} fillOpacity={0.28} stroke={edge(row.color)} strokeWidth={1} />
               {list && <rect className="bar" x={x0} y={yb + barH + gap} width={sw} height={barH} rx={2} fill={row.color} />}
-              {componentSeats.filter(st=>st.listId===row.id).map((st,k)=>st.innerColor && <rect key={k} data-component-seat={st.partyId} x={x0+sw*k/row.seats} y={yb+barH+gap+2} width={sw/row.seats} height={barH-4} fill={st.innerColor} stroke={partySeparator(st.innerColor,row.color).inner} strokeWidth={.75} paintOrder="stroke fill"><title>{(lang==='he' ? s.lists.find(l=>l.id===row.id)?.parties?.find(p=>p.id===st.partyId)?.nameHe : s.lists.find(l=>l.id===row.id)?.parties?.find(p=>p.id===st.partyId)?.nameEn) ?? ''} · {row.name}</title></rect>)}
+              {componentSeats.filter(st=>st.listId===row.id).map((st,k)=>st.partyColor && <rect key={k} data-component-seat={st.partyId} x={x0+sw*k/row.seats} y={yb+barH+gap+(st.innerColor?2:0)} width={sw/row.seats} height={barH-(st.innerColor?4:0)} fill={st.partyColor}><title>{(lang==='he' ? s.lists.find(l=>l.id===row.id)?.parties?.find(p=>p.id===st.partyId)?.nameHe : s.lists.find(l=>l.id===row.id)?.parties?.find(p=>p.id===st.partyId)?.nameEn) ?? ''} · {row.name}</title></rect>)}
               <text x={x0 + Math.max(vw, sw) + 4} y={yb + barH + 3} textAnchor="start" className="tabnum">
                 {percent(row.v, total, digits, undefined, { svg: true })}{list && <> → {percent(row.seats, seats, digits, undefined, { svg: true })}</>}
               </text>
@@ -231,13 +230,13 @@ function ShareTable({ s, r, height }: { s: Scenario; r: AllocationResult; height
  *  Votes for lists that won no seat are drawn hatched grey, so wasted votes stay visible; a line runs
  *  between every two lists, so neighbours of similar colour stay apart. */
 export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
-  const showComponents = useSetting('partyColourInSeats');
+  const jointLook = useSetting('jointListSeats');
   const digits = useDigits();
   const L = useL();
   const lang = useLang();
   const hatch = useId();
   const cells = 200;
-  const seatCells = seatOrder(s,r,'list',showComponents).map(st=>({color:st.color,id:st.listId,innerColor:st.innerColor,partyId:st.partyId}));
+  const seatCells = seatOrder(s,r,'list',jointLook).map(st=>({color:st.color,id:st.listId,innerColor:st.innerColor,partyId:st.partyId}));
   // vote squares follow the seat squares' list order, so each list sits in the same place in both waffles
   const order = [...new Set(seatCells.map((c) => c.id))];
   const lists = s.lists.filter((l) => !l.withdrawn).map((l) => ({ l, lr: r.lists.find((x) => x.id === l.id)! }));
@@ -257,7 +256,7 @@ export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
         <figcaption className="small ink2" dir={lang === 'he' ? 'rtl' : 'ltr'} style={{ marginBottom: 4 }} data-exact>{title}</figcaption>
         <svg viewBox={`0 0 ${cols * pitch} ${rows * pitch}`} width="100%" style={{ maxWidth: cols * pitch }} role="img" aria-label={title}>
           <defs><pattern id={hatch} width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="4" height="4" fill="var(--grid)" /><line x1="0" y1="0" x2="0" y2="4" stroke="var(--muted)" strokeWidth="1.6" /></pattern></defs>
-          {items.map((c, i) => <g key={i}><rect x={(i % cols) * pitch} y={Math.floor(i / cols) * pitch} width={size} height={size} rx={3} fill={c.color} style={{ cursor: c.id ? 'pointer' : 'default' }} onClick={() => c.id && setState({ selectedListId: c.id })}><title>{c.partyId && (s.factionSplits ?? []).includes(c.id ?? '') ? ((lang==='he' ? s.lists.find(l=>l.id===c.id)?.parties?.find(p=>p.id===c.partyId)?.nameHe : s.lists.find(l=>l.id===c.id)?.parties?.find(p=>p.id===c.partyId)?.nameEn) ?? '') + ' · ' : ''}{c.id ? listLabel(s.lists.find((l) => l.id === c.id)!, lang) : L('Votes for lists that won no seat', 'קולות לרשימות שלא זכו במנדט')}</title></rect>{c.innerColor && <PartyDot partyId={c.partyId} x={(i%cols)*pitch+size/2} y={Math.floor(i/cols)*pitch+size/2} r={size*.31} color={c.innerColor} ring={c.color}/>}</g>)}
+          {items.map((c, i) => <g key={i}><rect x={(i % cols) * pitch} y={Math.floor(i / cols) * pitch} width={size} height={size} rx={3} fill={c.color} style={{ cursor: c.id ? 'pointer' : 'default' }} onClick={() => c.id && setState({ selectedListId: c.id })}><title>{c.partyId && (s.factionSplits ?? []).includes(c.id ?? '') ? ((lang==='he' ? s.lists.find(l=>l.id===c.id)?.parties?.find(p=>p.id===c.partyId)?.nameHe : s.lists.find(l=>l.id===c.id)?.parties?.find(p=>p.id===c.partyId)?.nameEn) ?? '') + ' · ' : ''}{c.id ? listLabel(s.lists.find((l) => l.id === c.id)!, lang) : L('Votes for lists that won no seat', 'קולות לרשימות שלא זכו במנדט')}</title></rect>{c.innerColor && <PartyDot partyId={c.partyId} x={(i%cols)*pitch+size/2} y={Math.floor(i/cols)*pitch+size/2} r={size/2} square={{rx:3}} color={c.innerColor}/>}</g>)}
           <g className="waffle-edges" stroke="var(--ink)" strokeWidth={1.5} strokeLinecap="square" pointerEvents="none">
             {regionEdges(items.map((c) => c.id), cols, pitch, gap).map((e, k) => <line key={k} {...e} />)}
           </g>

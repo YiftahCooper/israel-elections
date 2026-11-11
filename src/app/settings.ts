@@ -24,7 +24,7 @@ export interface SettingValues {
   starterTip: boolean;
   openOn: 'overview' | 'last';
   listSymbol: 'logo' | 'letters';
-  partyColourInSeats: boolean;
+  jointListSeats: 'both' | 'party' | 'list';
   jointListParties: 'none' | 'seated' | 'all';
   seatlessLists: 'over' | 'all' | 'folded';
   withdrawnLists: boolean;
@@ -96,8 +96,9 @@ export const SETTINGS: readonly SettingRow[] = [
   { id: 'jointByParty', group: 'lists', control: 'choice', min: 'simple', label: ['Joint lists by party', 'רשימות משותפות לפי מפלגה'],
     info: ['Each party on a joint list shows as its own faction. Votes and seats don’t change. Saved scenarios keep their choice.', 'כל מפלגה ברשימה משותפת מוצגת כסיעה נפרדת. הקולות והמנדטים אינם משתנים. תרחישים שמורים שומרים את הבחירה שלהם.'],
     synonyms: 'joint list split faction party seats default משותפת פיצול סיעה מפלגה ברירת מחדל' },
-  { id: 'partyColourInSeats', group: 'lists', control: 'toggle', min: 'simple', label: ['Party colour in seats', 'צבע המפלגה במושבים'],
-    info: ['For a list counted by party, each seat shows the party colour inside the list colour.', 'ברשימה שנספרת לפי מפלגה, כל מושב מציג את צבע המפלגה בתוך צבע הרשימה.'], synonyms: 'colour color inner component split צבע פנימי' },
+  { id: 'jointListSeats', group: 'lists', control: 'seg', min: 'simple', label: ['Joint-list seats', 'מושבים ברשימה משותפת'],
+    info: ['For a joint list counted by party. Both: the party colour with a thin ring in the list colour. Party: the party colour only. List: the list colour only.', 'ברשימה משותפת שנספרת לפי מפלגה. שניהם: צבע המפלגה עם טבעת דקה בצבע הרשימה. מפלגה: צבע המפלגה בלבד. רשימה: צבע הרשימה בלבד.'],
+    options: [o('both', 'Both', 'שניהם'), o('party', 'Party', 'מפלגה'), o('list', 'List', 'רשימה')], synonyms: 'party colour color in seats inner ring component split joint list צבע המפלגה במושבים פנימי טבעת משותפת' },
   { id: 'jointListParties', group: 'lists', control: 'seg', min: 'simple', label: ['Parties under joint lists', 'מפלגות ברשימה משותפת'],
     info: ['The parties listed under a joint list counted by party. With seats: only parties that had someone elected, e.g. not Atid Ehad (2022). All: also those with no seats. A party you gave its own bloc always shows; every party stays on the list’s own page.', 'המפלגות שמוצגות מתחת לרשימה משותפת שנספרת לפי מפלגה. עם מנדטים: רק מפלגות שנבחר מטעמן מישהו, למשל לא עתיד אחד (2022). כולן: גם אלה ללא מנדטים. מפלגה ששייכתם לגוש משלה מוצגת תמיד; כל המפלגות מופיעות בעמוד הרשימה.'],
     options: [o('none', 'Lists only', 'רשימות בלבד'), o('seated', 'With seats', 'עם מנדטים'), o('all', 'All', 'כולן')],
@@ -188,7 +189,7 @@ export const SETTINGS: readonly SettingRow[] = [
 export function settingDefault<K extends SettingId>(id: K, level: Preset): SettingValues[K] {
   const d: SettingValues = {
     theme: 'device', density: 'compact', starterTip: true, openOn: 'overview',
-    listSymbol: 'logo', partyColourInSeats: level !== 'simple', jointListParties: level === 'simple' ? 'none' : level === 'standard' ? 'seated' : 'all', seatlessLists: 'over', withdrawnLists: true,
+    listSymbol: 'logo', jointListSeats: level === 'simple' ? 'list' : 'both', jointListParties: level === 'simple' ? 'none' : level === 'standard' ? 'seated' : 'all', seatlessLists: 'over', withdrawnLists: true,
     listOrder: 'seats', voteCounts: level !== 'simple', lastTimeRows: false, allCandidates: false,
     chamberLayout: 'hemicycle', seatColour: 'list', blocShading: true, referenceChamber: true, chamberKey: true, dimUnselected: true,
     decimals: level === 'expert' ? 3 : level === 'standard' ? 2 : 1, splitWarning: true,

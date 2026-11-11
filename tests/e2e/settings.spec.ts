@@ -291,7 +291,7 @@ test.describe('every setting takes effect', () => {
     const fills = () => page.locator('.chamber circle').evaluateAll(cs => new Set(cs.map(c => getComputedStyle(c).fill)).size);
     const byList = await fills();
     await gear(page).click();
-    await row(page, 'partyColourInSeats').getByRole('checkbox').uncheck();
+    await row(page, 'jointListSeats').getByRole('button', { name: 'List', exact: true }).click();
     await expect.poll(fills).toBeLessThan(byList);
     await row(page, 'seatColour').getByRole('button', { name: 'Bloc', exact: true }).click();
     await expect.poll(fills).toBeLessThanOrEqual(4);

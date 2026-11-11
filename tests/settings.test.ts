@@ -38,8 +38,9 @@ describe('the settings registry', () => {
     expect(settingDefault('jointListParties', 'standard')).toBe('seated');
     expect(settingDefault('jointListParties', 'expert')).toBe('all');
     // Simple shows lists only, so its seats carry no party colour by default either
-    expect(settingDefault('partyColourInSeats', 'simple')).toBe(false);
-    expect(settingDefault('partyColourInSeats', 'standard')).toBe(true);
+    expect(settingDefault('jointListSeats', 'simple')).toBe('list');
+    expect(settingDefault('jointListSeats', 'standard')).toBe('both');
+    expect(settingDefault('jointListSeats', 'expert')).toBe('both');
     expect(settingDefault('hoverPopups', 'simple')).toBe(true);
     expect(settingDefault('decimals', 'simple')).toBe(1);
     expect(settingDefault('decimals', 'standard')).toBe(2);
