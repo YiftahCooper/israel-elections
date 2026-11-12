@@ -23,6 +23,7 @@ import { LazyHistorySection } from './PartyHistoryLazy.tsx';
 import { useRefRows } from '../compare/useRefRows.ts';
 import { RefLine } from '../compare/RefLine.tsx';
 import { askCopy } from '../compare/copyAsk.ts';
+import { usePanelFocus } from '../focusReturn.ts';
 
 /** While comparing: the list's line in the compared result and its Copy votes… button. */
 function SidePanelCompare({ s, r, listId }: { s: Scenario; r: AllocationResult; listId: string }) {
@@ -48,6 +49,8 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
   useEffect(() => { if (!previewing) previousSeats.current = { id: listId, seats: lr?.seats }; }, [listId, lr?.seats, previewing]);
   // a newly opened list starts at the top of the panel
   useEffect(() => { ref.current?.querySelector('.sp-body')?.scrollTo({ top: 0 }); }, [listId]);
+  // keyboard focus comes in at the heading and, on closing, goes back to what opened it (else the list's row)
+  usePanelFocus(ref, listId, () => document.querySelector<HTMLElement>(`.lb-row[data-list-id="${CSS.escape(listId)}"]`));
   if (!l || !lr) return null;
   const was = officialSeatsFor(l.id, s, r, base, baseR);
   const d = was === null ? 0 : lr.seats - was;
@@ -64,7 +67,7 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
       <header className="sp-head">
         <Slip name={listLabel(l, lang)} letters={l.letters} color={l.color} logo={l.logo} synthetic={l.synthetic} size="lg" />
         <div style={{ minWidth: 0, flex: 1 }}>
-          <h2 style={{ margin: 0 }}>{listLabel(l, lang)}</h2>
+          <h2 style={{ margin: 0 }} tabIndex={-1} data-panel-heading>{listLabel(l, lang)}</h2>
           <div className="small ink2" lang="he">{l.nameHe}</div>
           <PartyLinks links={l.links} name={listLabel(l, lang)} />
         </div>

@@ -16,6 +16,7 @@ import { Info, Slip } from './ui.tsx';
 import { SeatDelta } from './SeatDelta.tsx';
 import { percent, rationalPoints } from './Percentage.tsx';
 import './party-history.css';
+import { openModal } from '../focusReturn.ts';
 
 type Lang = 'he' | 'en';
 /** A Hebrew prefix on a name: after ל, ב or כ the definite article ה is absorbed (לדמוקרטים, לעבודה); מ and ו keep it. */
@@ -407,7 +408,8 @@ export function ComparisonWhy({ c }: { c: Comparison }) {
 /** A modal sheet (the same behaviour as Compare's dialogs, without loading Compare). */
 function Sheet({ label, onClose, children }: { label: string; onClose: () => void; children: ReactNode }) {
   const ref = useRef<HTMLDialogElement>(null);
-  useEffect(() => { const d = ref.current; if (d && !d.open) d.showModal(); return () => { if (d?.open) d.close(); }; }, []);
+  // closing gives focus back to what opened it
+  useEffect(() => openModal(ref.current), []);
   return <dialog ref={ref} className="ph-sheet" aria-label={label} onCancel={(e) => { e.preventDefault(); onClose(); }}
     onKeyDown={(e) => { if (e.key === 'Escape') e.stopPropagation(); }} onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>{children}</dialog>;
 }
