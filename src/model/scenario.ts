@@ -345,7 +345,7 @@ const uniqueStrings: Check = (x) => array(string)(x) && new Set(x as string[]).s
 const candidate = shape({ id: string, nameHe: string, partyHe: optional(string), originListId: optional(string),
   displayNameHe: optional(string), nameEn: optional(string), notes: optional(array(shape({ en: string, he: string }))), partyId: optional(string),
   bio: optional(shape({ knesset: optional(httpsUrl), hewiki: optional(shape({ title: string, url: httpsUrl })),
-    party: optional(shape({ url: httpsUrl, publisher: optional(string), archivedAt: optional(string) })), probable: optional(boolean) })),
+    party: optional(shape({ url: httpsUrl, publisher: optional(string), archivedAt: optional(string) })), probable: optional(boolean), memberConfirmed: optional(boolean) })),
   importedFrom: optional(shape({ electionId: string, listId: string })) });
 const logo = shape({ rights: optional(oneOf('free-licence', 'fair-use-identification')), file: string, licence: string, attribution: string, sourceUrl: string, background: optional(string) });
 const partyLinkUrl: Check = (x) => {

@@ -103,12 +103,14 @@ export interface BlocScheme {
   blocs: (BlocDef & { lists: string[]; parties: string[]; candidates: string[] })[];
 }
 
-/** Where to read about a candidate. `probable`: matched by name under the stated rules, not by an official id. */
+/** Where to read about a candidate. `probable`: matched by name under the stated rules, not by an official id.
+ *  `memberConfirmed`: with `probable`, the Knesset member link is still by official record; only the others are probable. */
 export interface CandidateBio {
   knesset?: string;
   hewiki?: { title: string; url: string };
   party?: { url: string; publisher?: string; archivedAt?: string };
   probable?: boolean;
+  memberConfirmed?: boolean;
 }
 
 /** A verified source about a list or constituent, scoped to this election. */

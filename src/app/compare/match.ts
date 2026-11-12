@@ -223,8 +223,9 @@ export function copyUnit(row: MatchRow, rows: MatchRow[], direction: 'toRight' |
   return direction === 'toRight' ? { src: row.left, dst: row.right } : { src: row.right, dst: row.left };
 }
 
-/** A person's Knesset member record, when it is confirmed (a `probable` link is not proof of identity). Never a name. */
-export const memberKey = (c: Pick<SimCandidate, 'bio'>) => c.bio?.knesset && !c.bio.probable ? c.bio.knesset : undefined;
+/** A person's Knesset member record, when it is confirmed (a `probable` link is not proof of identity, unless the build
+ *  marks the member record itself as official: `memberConfirmed`). Never a name. */
+export const memberKey = (c: Pick<SimCandidate, 'bio'>) => c.bio?.knesset && (!c.bio.probable || c.bio.memberConfirmed) ? c.bio.knesset : undefined;
 /** One person: across elections by confirmed Knesset member record, otherwise by candidate id (same election). */
 export const personKey = (c: Pick<SimCandidate, 'bio' | 'id'>) => { const k = memberKey(c); return k ? `k:${k}` : `id:${c.id}`; };
 
