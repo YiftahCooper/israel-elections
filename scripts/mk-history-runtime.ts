@@ -47,8 +47,9 @@ export interface MkRuntime {
   elections: Record<number, { date: string; opening: string | null; end: string | null; threshold: number }>;
   /** per list id: [short Hebrew, short English or null, colour, seats, valid-vote share in percent (2 decimals)] */
   lists: Record<string, readonly [string, string | null, string, number, number]>;
-  /** faction id → [Hebrew, English or null, colour or null] */
-  factions: Record<number, readonly [string, string | null, string | null]>;
+  /** faction id → [Hebrew, English or null, colour or null], and for a faction shown under its list's name whose recorded
+   *  name differs: [.., the recorded Hebrew name, its English or null] */
+  factions: Record<number, readonly [string, string | null, string | null] | readonly [string, string | null, string | null, string, string | null]>;
   /** elections whose runs that did not win a seat are shown: every list (full), or only these lists (partial) */
   failedRunCoverage: { full: number[]; partial: Record<number, string[]>; excluded: Record<number, string[]> };
   /** person id → history. A run's candidate id is `${list id}#${rank}`. */
@@ -194,11 +195,7 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
   for (const k of K) for (const l of ds.get(k)!.lists) for (const n of [l.shortHe, l.nameHe]) {
     const key = nameKey(n); (listsByName.get(key) ?? listsByName.set(key, []).get(key)!).push({ k, id: l.id });
   }
-  const partyByName = new Map<string, string>();
-  for (const p of (read('data/meta/parties.json') as { parties: { nameHe: string; nameEn?: string | null; names?: { nameHe?: string; nameEn?: string | null }[] }[] }).parties) {
-    for (const n of [{ nameHe: p.nameHe, nameEn: p.nameEn }, ...(p.names ?? [])]) if (n.nameHe && n.nameEn) for (const x of factionKeys(n.nameHe)) if (!partyByName.has(x)) partyByName.set(x, n.nameEn);
-  }
-  // English display names for factions that match nothing above (data/meta/knesset-faction-names-en.json)
+  // English display names for factions not formed by a list (data/meta/knesset-faction-names-en.json)
   const curated = read('data/meta/knesset-faction-names-en.json') as { names: Record<string, string>; sameName?: Record<string, string> };
   const curatedEn = new Map(Object.entries(curated.names).map(([he, en]) => [normName(he), en]));
   // one English name for a Hebrew faction name, in every Knesset, whatever rule named it (cx-factions-07)
@@ -245,26 +242,33 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
     }
     for (const f of ch.factionRegistry) {
       const formed = formedBy(f);
-      let list = formed && namesake.get(formed.list)?.id === f.id ? formed.list : undefined;
-      // a faction whose Hebrew name (or its first part, its abbreviation, or its name without "led by …") is a list's name:
-      // the nearest election's list
-      const keys = factionKeys(f.nameHe);
-      if (!list) {
-        const hits = keys.flatMap((x) => listsByName.get(x) ?? []);
-        const near = hits.sort((a, b) => Math.abs(a.k - k - 0.4) - Math.abs(b.k - k - 0.4))[0];
-        list = near?.id;
+      const list = formed && namesake.get(formed.list)?.id === f.id ? formed.list : undefined;
+      const he = normName(f.nameHe);
+      // the list's own faction (formed by its elected members at the opening): the list's short name and colour
+      // (its recorded name is kept, to tell it from another faction of the same shown name: Labor led by Ehud Barak → Labor)
+      if (list) {
+        const L = out.lists[list], en = sameNameEn.get(he) ?? L[1];
+        out.factions[f.id] = nameKey(L[0]) === nameKey(he) ? [L[0], en, L[2]] : [L[0], en, L[2], he, sameNameEn.get(he) ?? curatedEn.get(he) ?? null];
+        continue;
       }
-      const L = list ? out.lists[list] : undefined;
-      if (L) { out.factions[f.id] = [L[0], sameNameEn.get(normName(f.nameHe)) ?? L[1], L[2]]; continue; }
-      // a registered party of that name; a one-member faction ("חה״כ <name>") is named after its member
-      const party = keys.map((x) => partyByName.get(x)).find(Boolean);
-      const member = /^חה״כ /.test(normName(f.nameHe)) ? memberByName.get(nameKey(normName(f.nameHe).slice(5))) : undefined;
-      const en = sameNameEn.get(normName(f.nameHe)) ?? party ?? (member ? `MK ${member}` : null) ?? curatedEn.get(normName(f.nameHe)) ?? null;
-      // the colour of the nearest list with that English name (Hadash, Ta'al, Mapam ...), else none
-      const twin = en ? (listsByEn.get(en) ?? []).sort((a, b) => Math.abs(a.k - k) - Math.abs(b.k - k))[0] : undefined;
+      // any other faction: the name the Knesset recorded for it, with an English form of that same name (audit 12 Nov
+      // 2026, fx-names). Never a later party's name, nor a list's that only shares a word with it: a faction formed
+      // during a term is not that list (1955 Agudat Yisrael–Poalei Agudat Yisrael, 2000 National Union–Yisrael Beiteinu,
+      // 2005 Tzalash, 1978 Development and Peace).
+      // English: the reviewed map; else a list with this very short name, of this or an earlier election or of the next
+      // one (a faction formed during a term that then ran under its own name: New Right 2018, Kadima 2005); else, for a
+      // one-member faction ("חה״כ <name>"), its member.
+      const near = (hs: { k: number; id: string }[]) => hs.filter((h) => h.k <= k + 1).sort((a, b) => Number(a.k > k) - Number(b.k > k) || b.k - a.k)[0];
+      const named = (field: 'shortHe' | 'nameHe') => near((listsByName.get(nameKey(he)) ?? []).filter((h) => nameKey(ds.get(h.k)!.lists.find((l) => l.id === h.id)![field]) === nameKey(he)));
+      const short = named('shortHe');
+      const member = /^חה״כ /.test(he) ? memberByName.get(nameKey(he.slice(5))) : undefined;
+      const en = sameNameEn.get(he) ?? curatedEn.get(he) ?? (short ? out.lists[short.id][1] : null) ?? (member ? `MK ${member}` : null) ?? null;
+      // the colour of that list, else of the latest list up to this election (or the next) with this very full name or
+      // that same English name (Otzma Yehudit led by Itamar Ben Gvir, Hadash, Ta'al, Mapam ...)
+      const twin = short ?? named('nameHe') ?? (en ? near(listsByEn.get(en) ?? []) : undefined);
       // else a lighter shade of the list most of its members were elected on, so the change still shows on the bar
       const home = [...(members.get(f.id)?.entries() ?? [])].sort((a, b) => b[1] - a[1])[0]?.[0];
-      out.factions[f.id] = [normName(f.nameHe), en, twin ? out.lists[twin.id][2] : home ? mixHex(out.lists[home][2], '#ffffff', 0.45) : null];
+      out.factions[f.id] = [he, en, twin ? out.lists[twin.id][2] : home ? mixHex(out.lists[home][2], '#ffffff', 0.45) : null];
     }
   }
 
