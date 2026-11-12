@@ -19,11 +19,17 @@ Outside CI, without `PW_PORT`, an existing server on 4174 is reused, which may s
 another checkout's build. Set `PW_PORT` (for example `PW_PORT=4190 npm run test:e2e`)
 to require a fresh server on that port; an occupied port fails.
 
-[CI](../.github/workflows/ci.yml) runs dependency installation, TypeScript checking,
-a dataset rebuild, unit tests, the production build and Chromium end-to-end tests.
+[CI](../.github/workflows/ci.yml) runs on every push and pull request. It installs the
+dependencies, checks TypeScript, rebuilds the datasets (`node scripts/build-datasets.ts`), checks
+that neighbouring seat-winning lists have distinguishable colours (`node scripts/check-colours.ts`),
+checks each hosted party logo's licence, hash and SVG safety (`python3 -I scripts/validate-party-logos.py`),
+then runs the unit tests, the production build and the Chromium end-to-end tests.
 It has no separate lint command. Do not substitute a successful Vite build for type checking.
 
-[Pages](../.github/workflows/pages.yml) publishes `dist/` to GitHub Pages on every push to `main`.
+[Pages](../.github/workflows/pages.yml) publishes `dist/` to GitHub Pages on every push to `main`,
+every 30 minutes (at 17 and 47 minutes past the hour), when an issue changes, and on a manual run.
+The repeated runs refresh the community gallery: `node scripts/build-gallery.ts` reads the open issues
+labelled `scenario` before the build.
 The site is at <https://yiftahcooper.github.io/israel-elections/>; Settings → Pages → Source is GitHub Actions.
 The job runs the type check and unit tests before deploying, and is skipped if the repository is ever made private again
 (free plans serve Pages from public repositories only).
@@ -40,8 +46,8 @@ scenario states without changing its inputs. `src/app/store.ts` holds the active
 undo/redo snapshots and per-election sessions. All interface levels use the same engine.
 
 Every list vote control uses `src/app/voteEdit.ts`. Proportional redistribution, transfers
-and new voters are different counterfactuals. Simple always uses proportional balancing;
-Standard and Expert expose the choice. Percentage entry and turnout modelling use numeric
+and new voters are different counterfactuals. Every level asks where added votes come from:
+Simple offers the other lists or new voters; Standard and Expert also offer one named list. Percentage entry and turnout modelling use numeric
 rounding before integer votes reach the engine; the whole interface is not bigint arithmetic.
 
 `src/engine/analysis.ts` reruns allocation to test counterfactuals. Threshold searches use
@@ -113,7 +119,8 @@ differs between eras; `records.ts` keeps each era's order so that rebuilt files 
 
 Before writing each dataset, `finalizeDataset` in `scripts/lib/build/finalize.ts` sorts
 lists into seat order, applies candidate notes (`notes.ts`), merges party, bloc and colour
-metadata (`meta.ts`), and attaches party logos (`logos.ts`) and candidate biography links (`bios.ts`). Release tests use the same step when comparing a builder's output to
+metadata (`meta.ts`), and attaches party logos (`logos.ts`), candidate biography links (`bios.ts`)
+and party links (`party-links.ts`). Release tests use the same step when comparing a builder's output to
 the published dataset; testing the bare builder would omit these fields. See [metadata](DATA.md#party-bloc-colour-and-candidate-metadata).
 
 `scripts/lib/parse-historical-gazette.ts` is an unfinished prototype outside the build. Historical polling-station working copies
@@ -131,10 +138,10 @@ Design reviews, acceptance reports and design specs are kept in the project's pr
 
 ## Test scope and current limits
 
-Vitest covers official 2022 seats, reported 2026 final-count seats, exact threshold and
+Vitest covers the official 2022 and 2026 seats (`tests/engine.test.ts`), exact threshold and
 agreement cases, randomised D’Hondt comparisons, scenario actions, vote edits and analysis.
-The 2026 comparison is explicitly secondary; `officialSeats` remains null in that dataset.
-Per-election tests (`tests/historical-kNN.test.ts`) reproduce the official seats of 2009–2021.
+Per-election tests (`tests/historical-kNN.test.ts`, one or more for every election except 2022)
+reproduce every list's official seats for all 26 elections, 1949–2026.
 
 `tests/differential.test.ts` locks full serialised outputs with digests for allocation,
 analysis, model actions, validation and rules. Its seeded corpus includes every dataset
@@ -157,9 +164,9 @@ Playwright covers the election picker, interface levels and a scenario involving
 added voters, an agreement change, boundary tools, comparison, saving and share-link replay.
 These tests do not certify all possible scenarios or constitute an accessibility audit.
 
-All 26 elections are available. Not implemented: complete 1949–2006 rosters, English candidate transliterations,
-candidate portraits, later membership replacements and polling-station-level
-simulation. Locality results can seed a hypothetical turnout model; that model is not
+All 26 elections are available. Not implemented: complete 1949–2006 rosters, English names for
+every candidate (almost every member elected up to 2022 has one; many members elected in 2026 do not
+yet), candidate portraits and polling-station-level simulation. Locality results can seed a hypothetical turnout model; that model is not
 an official forecast.
 
 ## Election circumstances and direct PM results
