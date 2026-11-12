@@ -1,11 +1,11 @@
 {
   "schemaVersion": 3,
-  "total": 11468,
+  "total": 11467,
   "counts": {
     "unknown": 6955,
     "missing-field": 283,
     "conflict": 18,
-    "single-source": 2456,
+    "single-source": 2455,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1167,
@@ -15,7 +15,7 @@
   "countsByStatus": {
     "inferred-not-verified": 1032,
     "needs-current-status-review": 313,
-    "open": 10123
+    "open": 10122
   },
   "countsByImportance": {
     "high": {
@@ -27,12 +27,12 @@
       "unknown": 240
     },
     "medium": {
-      "total": 3595,
+      "total": 3594,
       "confirmed": 581,
       "probable": 241,
       "provisional": 545,
       "disputed": 7,
-      "unknown": 2221
+      "unknown": 2220
     },
     "low": {
       "total": 7046,
@@ -557,24 +557,6 @@
       }
     },
     {
-      "election": "[object Object]",
-      "total": 1,
-      "highOpen": 0,
-      "mediumOpen": 1,
-      "low": 0,
-      "counts": {
-        "unknown": 0,
-        "missing-field": 0,
-        "conflict": 0,
-        "single-source": 1,
-        "low-confidence": 0,
-        "release-hold": 0,
-        "inferred": 0,
-        "pending": 0,
-        "unconfirmed": 0
-      }
-    },
-    {
       "election": "cross-election",
       "total": 1441,
       "highOpen": 3,
@@ -1026,7 +1008,6 @@
     {"election":"k26","area":"data/meta/README.md","count":1,"certainty":{"unknown":1}},
     {"election":"k26","area":"Issue polling","count":1,"certainty":{"unknown":1}},
     {"election":"k26","area":"Reactions","count":1,"certainty":{"unknown":1}},
-    {"election":"[object Object]","area":"data/raw/polls/kN/schema.draft.json properties","count":1,"certainty":{"unknown":1}},
     {"election":"cross-election","area":"data/meta/party-lineage.json pending","count":50,"certainty":{"disputed":2,"unknown":48}},
     {"election":"cross-election","area":"data/meta/party-lineage.json edges","count":27,"certainty":{"probable":25,"provisional":2}},
     {"election":"cross-election","area":"data/meta/party-lineage.json settledChecks","count":16,"certainty":{"probable":16}},

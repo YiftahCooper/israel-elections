@@ -84,6 +84,17 @@ it('finds uncertainty, missing recommendations, conflicts and duplicate source f
     expect(rows.some(r => r.kind === kind), kind).toBe(true);
   expect(rows.find(r => r.kind === 'unknown')?.letters).toBe('ג');
 });
+it('never names an election or record by an object, and skips JSON Schema files', () => {
+  // A JSON Schema describes fields; `electionId: { const: 'k25' }` is not an election id and `sourceIds` is not a citation.
+  expect(scanDocument('data/raw/polls/k25/schema.draft.json', { $schema: 'https://json-schema.org/draft/2020-12/schema',
+    properties: { polls: { items: { properties: { id: { type: 'string' }, electionId: { const: 'k25' }, sourceIds: { type: 'array' } } } } } })).toEqual([]);
+  // Any other record whose ids are objects falls back to the file's election and its own path.
+  const rows = scanDocument('data/raw/polls/k25/other.json', { items: [{ id: { x: 1 }, electionId: { const: 'k25' }, sourceIds: ['a'], status: 'unknown' }] });
+  expect(rows.length).toBeGreaterThan(0);
+  for (const r of rows) { expect(r.election).toBe('k25'); expect(r.item).not.toContain('[object Object]'); }
+  expect(readFileSync('docs/data-gaps.md', 'utf8')).not.toContain('[object Object]');
+  expect(readFileSync('docs/data-gaps.json', 'utf8')).not.toContain('[object Object]');
+});
 it('does not turn documented none or optional display fields into missing data', () => {
   expect(scanDocument('data/meta/aftermath/k13.json', {
     electionId: 'k13', recommendationRounds: [{ entries: [{ letters: 'ג', seats: 4, status: 'none', cites: [{ source: 'a' }, { source: 'b' }] }] }],

@@ -1,4 +1,3 @@
-import{contrastRatio,partySeparator}from'../src/data/colourGuard.ts';
 import { expect, test } from 'vitest';
 import { deltaE2000 } from '../src/data/colour.ts';
 import { partyDisplayColor } from '../src/app/partyDisplayColor.ts';
@@ -13,9 +12,6 @@ for (let n = 1; n <= 26; n++) test(`k${n}: every constituent has a deterministic
   for (const l of lists) {
     const colours = l.parties!.map(p => partyDisplayColor(l, p.id));
     l.parties!.forEach((p, i) => {
-      const separator=partySeparator(colours[i],l.color);
-      expect(contrastRatio(separator.inner,colours[i])).toBeGreaterThanOrEqual(3);
-      expect(contrastRatio(separator.outer??separator.inner,l.color)).toBeGreaterThanOrEqual(3);
       for (const sibling of colours.slice(i + 1)) expect(deltaE2000(colours[i], sibling), `${l.shortEn}: siblings`).toBeGreaterThanOrEqual(20);
       expect(partyDisplayColor({ ...l, parties: [...l.parties!].reverse() }, p.id)).toBe(colours[i]);
     });

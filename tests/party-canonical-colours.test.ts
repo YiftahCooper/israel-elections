@@ -29,12 +29,6 @@ test('an impossible global separation is reported rather than varied locally',as
  expect(p.unresolved.length).toBeGreaterThan(0);expect(p.unresolved.every(e=>e.lists.includes('one')&&e.lists.includes('two'))).toBe(true);
  expect(Object.values(p.colours).every(c=>c.color===c.base)).toBe(true);
 },30000);
-test('single or dual neutral boundaries clear dot and ring without recolouring',async()=>{
- const{partySeparator,contrastRatio}=await import('../src/data/colourGuard.ts');
- for(const fill of ['#000000','#ffffff','#f0491c','#f2cb06','#f47e49','#3f7b8d'])for(const ring of ['#000000','#ffffff','#f0491c','#738cb4','#3e3e68']){
-  const s=partySeparator(fill,ring);expect(contrastRatio(s.inner,fill)).toBeGreaterThanOrEqual(3);expect(contrastRatio(s.outer??s.inner,ring)).toBeGreaterThanOrEqual(3);
- }
-});
 
 test('registry aliases share the same canonical research and display identity',async()=>{
  const{partyColourBase}=await import('../src/app/partyDisplayColor.ts');

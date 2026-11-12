@@ -167,7 +167,7 @@ test('the bar says "End" only when a step is there', async ({ page }) => {
   await expect(tl.locator('.tl-end-label.end')).toHaveCount(0); // the 25th Knesset's records stop before its end
 });
 
-test('a faction move recorded by number is named in English', async ({ page }) => {
+test('a faction move names its factions in English', async ({ page }) => {
   await start(page, { level: 'expert', election: 'k21' });
   const tl = await openTimeline(page);
   await stepTo(tl, '2019-06-02');

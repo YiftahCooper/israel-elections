@@ -88,11 +88,3 @@ export function blocColourRules(used:readonly string[],min=8):ColourRules{
 export function separateBlocColours(colors:readonly string[],min=8){
  const out:string[]=[];for(const seed of colors){out.push(assignColour([seed],out,{...blocColourRules(out,min),variantOf:seed}));}return out;
 }
-
-/** A neutral separator carries contrast; neither the party fill nor the list ring is adjusted.
- * If no single neutral clears both, inner/outer hairlines contrast with their respective fills. */
-export function partySeparator(fill:string,ring:string):{inner:string;outer:string|null}{
- const neutrals=['#000000','#ffffff'];
- const single=neutrals.filter(c=>contrastRatio(c,fill)>=3&&contrastRatio(c,ring)>=3).sort((a,b)=>Math.min(contrastRatio(b,fill),contrastRatio(b,ring))-Math.min(contrastRatio(a,fill),contrastRatio(a,ring)))[0];
- return single?{inner:single,outer:null}:{inner:inkOn(fill),outer:inkOn(ring)};
-}

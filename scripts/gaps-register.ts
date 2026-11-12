@@ -59,6 +59,8 @@ const weaker = (a: Certainty, b: Certainty) => certaintyRank(a) <= certaintyRank
 
 /** Pure scanner also used by fixture tests. locations are bounded examples, occurrences is exact. */
 export function scanDocument(file: string, doc: any, listLookup: Record<string, Obj> = {}, sourceLookup: Record<string, EvidenceSource> = {}): Gap[] {
+  // A JSON Schema describes the shape of records; its `electionId: { const: 'k25' }` or `sourceIds: { type: 'array' }` are not claims.
+  if (typeof doc?.$schema === 'string' && /json-schema\.org/.test(doc.$schema)) return [];
   const rows = new Map<string, Gap>();
   const sourceMap = !Array.isArray(doc?.sources) && doc?.sources && typeof doc.sources === 'object' ? doc.sources : {};
   const resolveSource = (s: any): string => {
@@ -88,14 +90,15 @@ export function scanDocument(file: string, doc: any, listLookup: Record<string, 
   const visit = (v: any, path: string, ctx: Obj, inherited: string[], inheritedRefs?: unknown) => {
     if (Array.isArray(v)) { v.forEach((x, i) => visit(x, `${path}[${i}]`, ctx, inherited, inheritedRefs)); return; }
     if (!v || typeof v !== 'object') return;
-    const rawElection = v.electionId ?? ctx.election;
+    // Only a plain id names an election or entity; anything else would print as "[object Object]".
+    const rawElection = typeof v.electionId === 'string' || typeof v.electionId === 'number' ? v.electionId : ctx.election;
     const election = typeof rawElection === 'number' ? `k${rawElection}` : String(rawElection);
     const linked = listLookup[`${election}:${v.listId ?? v.id ?? v.letters}`];
     const letters = v.letters ?? linked?.letters;
     ctx = { ...ctx, election: /^k\d+$/.test(v.id ?? '') ? v.id : election,
       ...(letters ? { letters, name: v.nameHe ?? linked?.nameHe ?? ctx.name } : {}),
       ...(/recommendationRounds\[\d+\]$/.test(path) ? { round: v.id ?? path } : {}),
-      ...(v.id && !v.listId && !linked && !/^k\d+$/.test(v.id) && !/recommendationRounds\[\d+\]$/.test(path) ? { entity: v.id } : {}),
+      ...((typeof v.id === 'string' || typeof v.id === 'number') && v.id && !v.listId && !linked && !/^k\d+$/.test(v.id) && !/recommendationRounds\[\d+\]$/.test(path) ? { entity: v.id } : {}),
       ...(v.rank ? { entity: `rank ${v.rank}` } : {}),
       ...(v.type && v.date ? { entity: `${v.type} ${v.date}` } : {}) };
     const sources = refs(v, inherited);
@@ -149,7 +152,7 @@ export function scanDocument(file: string, doc: any, listLookup: Record<string, 
       if (k !== 'sources' || Array.isArray(x)) visit(x, `${path}.${k}`, ctx, sources, /recommendationRounds\[\d+\]$/.test(path) && k === 'entries' ? v.cites : undefined);
     }
   };
-  visit(doc, '$', { election: (typeof doc?.electionId === 'number' ? `k${doc.electionId}` : doc?.electionId) ?? file.match(/(?:^|\/)(k\d+)(?:[/.\-]|$)/)?.[1] ?? 'cross-election' }, []);
+  visit(doc, '$', { election: (typeof doc?.electionId === 'number' ? `k${doc.electionId}` : typeof doc?.electionId === 'string' ? doc.electionId : undefined) ?? file.match(/(?:^|\/)(k\d+)(?:[/.\-]|$)/)?.[1] ?? 'cross-election' }, []);
   return [...rows.values()];
 }
 
