@@ -127,6 +127,12 @@
       "publisherHe": "המכון הישראלי לדמוקרטיה",
       "kind": "academic",
       "accessed": "2026-11-12"
+    },
+    "dr-events-jta-lavon": {
+      "url": "https://www.jta.org/archive/ben-gurion-resigns-premiership-disagrees-with-cabinet-on-lavon",
+      "publisher": "JTA, Ben-Gurion Resigns Premiership; Disagrees with Cabinet on Lavon",
+      "kind": "archival",
+      "accessed": "2026-11-13"
     }
   },
   "results": {
@@ -559,6 +565,11 @@
             "source": "idi-lavon-1961",
             "quote": "לא היה כמעט מוסד פוליטי שלא נקלע לתוך סבך המשבר",
             "locator": "opening paragraph"
+          },
+          {
+            "source": "dr-events-jta-lavon",
+            "quote": "My understanding of my obligations forbid me to bear responsibility for the Cabinet decision on December 25",
+            "note": "Resignation letter quoted in contemporary report; following paragraph identifies the December 25 decision as the committee report exonerating Lavon."
           }
         ],
         "scope": "mid-term",

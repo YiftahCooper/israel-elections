@@ -120,10 +120,15 @@ describe('the recorded first government as roles', () => {
       }
     }
     expect(checked).toBeGreaterThan(15);
-    // 2015: 55 member seats with one role unknown, against the recorded 61 for · 59 against
+    // 2015: United Torah Judaism's membership is recorded (13 Nov 2026), so 61 member seats equal the recorded
+    // 61 for · 59 against and there is no gap to disclose
     const k20 = rolesFor('k20');
     const v20 = governmentVote({ members: k20.seats(k20.choices!.in), support: 0, abstain: 0, total: 120 });
-    expect(recordedVoteGap(aftermathRecords.k20!.government!, v20, k20.recorded, k20.seats, 120)!.reasons.map((r) => r.kind)).toEqual(['unknown']);
+    expect(recordedVoteGap(aftermathRecords.k20!.government!, v20, k20.recorded, k20.seats, 120)).toBeNull();
+    // 2003: one role is still unknown, and the gap says so
+    const k16 = rolesFor('k16');
+    const v16 = governmentVote({ members: k16.seats(k16.choices!.in), support: 0, abstain: 0, total: 120 });
+    expect(recordedVoteGap(aftermathRecords.k16!.government!, v16, k16.recorded, k16.seats, 120)!.reasons.map((r) => r.kind)).toContain('unknown');
     // 1984: Alignment counted whole (37 of 44 took part) and seven individual MKs disclosed
     const k11 = rolesFor('k11');
     const v11 = governmentVote({ members: k11.seats(k11.choices!.in), support: 0, abstain: 0, total: 120 });

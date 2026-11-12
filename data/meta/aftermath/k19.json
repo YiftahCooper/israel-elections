@@ -123,6 +123,14 @@
       "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
       "kind": "official",
       "accessed": "2026-11-07"
+    },
+    "appointments-33": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=GovernmentNum%20eq%2033&%24format=json&%24top=1000",
+      "publisher": "Knesset OData, government 33 appointment register",
+      "publisherHe": "הכנסת, מאגר המינויים של הממשלה ה־33",
+      "kind": "official",
+      "accessed": "2026-11-12",
+      "via": "The service returns 100 rows per page (odata.nextLink continues); every row quoted here is on the first page."
     }
   },
   "results": {
@@ -551,7 +559,57 @@
       "expectedFor": 68,
       "note": "68 member seats + 0 outside-support seats = 68 for, 48 against. Numerical equality alone does not certify every individual’s vote."
     },
-    "knownMemberSeats": 68
+    "knownMemberSeats": 68,
+    "changes": [
+      {
+        "date": "2014-12-04",
+        "type": "coalition-change",
+        "textEn": "The terms of Yesh Atid ministers Yair Lapid, Shai Piron, Yael German and Yaakov Perry and of Hatnuah’s Tzipi Livni ended, two days after Netanyahu dismissed Lapid and Livni; Meir Cohen’s term ended the next day. Neither party had a minister left.",
+        "textHe": "כהונת שרי יש עתיד יאיר לפיד, שי פירון, יעל גרמן ויעקב פרי וכהונת ציפי לבני מהתנועה הסתיימו, יומיים לאחר שנתניהו פיטר את לפיד ולבני; כהונת מאיר כהן הסתיימה למחרת. לשתי המפלגות לא נותרו שרים בממשלה.",
+        "cites": [
+          {
+            "source": "appointments-33",
+            "quote": "{\"PersonToPositionID\":3552,\"PersonID\":23594,\"PositionID\":39,\"KnessetNum\":19,\"StartDate\":\"2013-03-18T00:00:00\",\"FinishDate\":\"2014-12-04T00:00:00\",\"GovMinistryID\":1233,\"GovMinistryName\":\"משרד האוצר\",\"DutyDesc\":\"שר האוצר\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":33,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2019-02-04T14:29:20.55\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 23594 is יאיר לפיד, יש עתיד (data/research/knesset-member-changes/k19.json)."
+          },
+          {
+            "source": "appointments-33",
+            "quote": "{\"PersonToPositionID\":4635,\"PersonID\":23595,\"PositionID\":39,\"KnessetNum\":19,\"StartDate\":\"2013-03-18T00:00:00\",\"FinishDate\":\"2014-12-04T00:00:00\",\"GovMinistryID\":1000,\"GovMinistryName\":\"משרד החינוך\",\"DutyDesc\":\"שר החינוך\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":33,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-19T16:12:37.9\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 23595 is שי פירון, יש עתיד (data/research/knesset-member-changes/k19.json)."
+          },
+          {
+            "source": "appointments-33",
+            "quote": "{\"PersonToPositionID\":4637,\"PersonID\":23596,\"PositionID\":57,\"KnessetNum\":19,\"StartDate\":\"2013-03-18T00:00:00\",\"FinishDate\":\"2014-12-04T00:00:00\",\"GovMinistryID\":1108,\"GovMinistryName\":\"משרד הבריאות\",\"DutyDesc\":\"שרת הבריאות\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":33,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-19T15:59:06.963\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 23596 is יעל גרמן, יש עתיד (data/research/knesset-member-changes/k19.json)."
+          },
+          {
+            "source": "appointments-33",
+            "quote": "{\"PersonToPositionID\":23374,\"PersonID\":23598,\"PositionID\":39,\"KnessetNum\":19,\"StartDate\":\"2013-03-18T00:00:00\",\"FinishDate\":\"2014-12-04T00:00:00\",\"GovMinistryID\":1063,\"GovMinistryName\":\"משרד המדע, הטכנולוגיה והחלל\",\"DutyDesc\":\"שר המדע, הטכנולוגיה והחלל\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":33,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-10-18T19:45:02.44\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 23598 is יעקב פרי, יש עתיד (data/research/knesset-member-changes/k19.json)."
+          },
+          {
+            "source": "appointments-33",
+            "quote": "{\"PersonToPositionID\":4636,\"PersonID\":469,\"PositionID\":57,\"KnessetNum\":19,\"StartDate\":\"2013-03-18T00:00:00\",\"FinishDate\":\"2014-12-04T00:00:00\",\"GovMinistryID\":872,\"GovMinistryName\":\"משרד המשפטים\",\"DutyDesc\":\"שרת המשפטים\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":33,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-19T16:31:45.077\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 469 is ציפי לבני, התנועה (data/research/knesset-member-changes/k19.json)."
+          },
+          {
+            "source": "appointments-33",
+            "quote": "{\"PersonToPositionID\":4638,\"PersonID\":23597,\"PositionID\":39,\"KnessetNum\":19,\"StartDate\":\"2013-03-18T00:00:00\",\"FinishDate\":\"2014-12-05T00:00:00\",\"GovMinistryID\":709,\"GovMinistryName\":\"משרד הרווחה והשירותים החברתיים\",\"DutyDesc\":\"שר הרווחה והשירותים החברתיים\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":33,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-19T17:27:29.6\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 23597 is מאיר כהן, יש עתיד (data/research/knesset-member-changes/k19.json)."
+          },
+          {
+            "source": "idi-dismissal-date",
+            "quote": "On December 2, 2014, Prime Minister Benjamin Netanyahu fired Finance Minister Yair Lapid and Justice Minister Tzipi Livni."
+          }
+        ],
+        "scope": "mid-term",
+        "governmentNumber": 33,
+        "formalStep": true,
+        "notes": [
+          "Checked against all 105 rows of the register: Hatnuah’s other minister, Amir Peretz, had left office on 11 November 2014."
+        ]
+      }
+    ]
   },
   "supportSchemaVersion": 1
 }

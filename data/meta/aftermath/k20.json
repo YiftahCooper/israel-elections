@@ -104,6 +104,27 @@
       "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
       "kind": "official",
       "accessed": "2026-11-07"
+    },
+    "appointments-34": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=GovernmentNum%20eq%2034&%24format=json&%24top=1000",
+      "publisher": "Knesset OData, government 34 appointment register",
+      "publisherHe": "הכנסת, מאגר המינויים של הממשלה ה־34",
+      "kind": "official",
+      "accessed": "2026-11-12",
+      "via": "The service returns 100 rows per page (odata.nextLink continues); every row quoted here is on the first page."
+    },
+    "dr-events-nation-plenum": {
+      "url": "https://fs.knesset.gov.il//20/Plenum/20_ptm_504071.doc",
+      "publisher": "Knesset plenum, session 359, vote 917",
+      "publisherHe": "הכנסת, דברי הכנסת, ישיבה 359, הצבעה 917",
+      "kind": "official",
+      "accessed": "2026-11-13"
+    },
+    "dr-events-nation-jta": {
+      "url": "https://www.jta.org/2018/07/19/israel/israel-passes-controversial-law-cements-country-jews",
+      "publisher": "JTA, Israel passes controversial law that cements it as country for Jews",
+      "kind": "archival",
+      "accessed": "2026-11-13"
     }
   },
   "results": {
@@ -336,6 +357,27 @@
           }
         ],
         "confidence": "high"
+      },
+      {
+        "id": "nation-state-basic-law",
+        "date": "2018-07-19",
+        "category": "governance",
+        "textEn": "The Knesset passed Basic Law: Israel – the Nation State of the Jewish People, 62 for · 55 against · 2 abstentions.",
+        "textHe": "הכנסת קיבלה את חוק־יסוד: ישראל – מדינת הלאום של העם היהודי, 62 בעד · 55 נגד · 2 נמנעים.",
+        "cites": [
+          {
+            "source": "dr-events-nation-plenum",
+            "quote": "הצבעה מס' 917\n\nבעד החוק – 62\nנגד – 55\nנמנעים – 2\nחוק-יסוד: ישראל – מדינת הלאום של העם היהודי נתקבל."
+          },
+          {
+            "source": "dr-events-nation-jta",
+            "quote": "It passed early Thursday morning after hours of contentious debate by a vote of 62-55, with two abstentions."
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "Uses the recent-term interim inclusion rule: two independent contemporaneous sources, one official; no claim of two retrospective chronologies."
+        ]
       }
     ],
     "candidatesPending": [
@@ -348,11 +390,6 @@
         "label": "UN Security Council Resolution 2334",
         "date": "2016-12",
         "why": "The inspected CFR timeline does not select Resolution 2334; a second qualifying chronology is missing."
-      },
-      {
-        "label": "Nation-State Basic Law",
-        "date": "2018-07",
-        "why": "The inspected SIPRI 2018 chronology and CFR timeline do not supply a verified pair selecting this law; retain pending rather than infer selection from its prominence."
       },
       {
         "label": "Gaza fighting and Lieberman’s resignation",
@@ -463,13 +500,33 @@
       {
         "letters": "ג",
         "seats": 6,
-        "role": "other",
-        "certainty": "unknown",
-        "cites": [],
-        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+        "role": "member-without-ministries",
+        "certainty": "probable",
+        "cites": [
+          {
+            "source": "idi-coalition",
+            "quote": "United Torah Judaism (UTJ)*"
+          },
+          {
+            "source": "idi-coalition",
+            "quote": "UTJ does not accept ministerial positions, but one of its members is serving as Deputy-Minister of Health"
+          },
+          {
+            "source": "idi-coalition",
+            "quote": "The first parties to sign a coalition agreement with Likud were Moshe Kachlon's Kulanu and United Torah Judaism (UTJ)."
+          },
+          {
+            "source": "appointments-34",
+            "quote": "{\"PersonToPositionID\":17283,\"PersonID\":528,\"PositionID\":40,\"KnessetNum\":20,\"StartDate\":\"2015-05-19T00:00:00\",\"FinishDate\":\"2015-09-02T00:00:00\",\"GovMinistryID\":1109,\"GovMinistryName\":\"משרד הבריאות\",\"DutyDesc\":\"סגן שר הבריאות\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":34,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-12-01T10:51:57.933\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 528 is יעקב ליצמן, יהדות התורה (data/research/knesset-member-changes/k20.json)."
+          }
+        ],
+        "note": "The Israel Democracy Institute’s profile of the government lists United Torah Judaism among the five coalition parties, with a signed coalition agreement and no cabinet minister. Scholarship supports “probable” under docs/source-policy.md; the deposited agreement itself was not inspected. Yakov Litzman’s deputy health post starts on 19 May 2015, not on the investiture day.",
+        "noteEn": "United Torah Judaism does not take ministerial posts; Yakov Litzman became Deputy Health Minister on 19 May 2015.",
+        "noteHe": "יהדות התורה אינה מקבלת תפקידי שרים; יעקב ליצמן מונה לסגן שר הבריאות ב־19 במאי 2015."
       }
     ],
-    "coalitionSeats": null,
+    "coalitionSeats": 61,
     "cites": [
       {
         "source": "idi-coalition",
@@ -507,14 +564,62 @@
         "quote": "The Israeli Parliament (Knesset) voted on Thursday 14 May 2015 61-59 in favour of Prime Minister Benjamin Netanyahu's cabinet"
       }
     ],
-    "membershipCoverage": "partial",
-    "supportSeats": null,
+    "membershipCoverage": "complete",
+    "supportSeats": 0,
     "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
     "reconciliation": {
-      "status": "unresolved",
-      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 55; full membership remains unknown. Investiture: 61 for, 59 against, not recorded abstaining."
+      "status": "exact",
+      "expectedFor": 61,
+      "note": "61 member seats (United Torah Judaism’s 6 probable) + 0 outside-support seats = 61 for, 59 against. Numerical equality alone does not certify every individual’s vote."
     },
-    "knownMemberSeats": 55
+    "knownMemberSeats": 61,
+    "changes": [
+      {
+        "date": "2016-05-30",
+        "type": "coalition-change",
+        "textEn": "Yisrael Beiteinu joined the government; Avigdor Liberman became Defense Minister and Sofa Landver Immigration and Absorption Minister.",
+        "textHe": "ישראל ביתנו הצטרפה לממשלה; אביגדור ליברמן מונה לשר הביטחון וסופה לנדבר לשרת העלייה והקליטה.",
+        "cites": [
+          {
+            "source": "appointments-34",
+            "quote": "{\"PersonToPositionID\":18442,\"PersonID\":427,\"PositionID\":39,\"KnessetNum\":20,\"StartDate\":\"2016-05-30T00:00:00\",\"FinishDate\":\"2018-11-18T00:00:00\",\"GovMinistryID\":1175,\"GovMinistryName\":\"משרד הביטחון\",\"DutyDesc\":\"שר הביטחון\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":34,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-18T14:24:03.307\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 427 is אביגדור ליברמן, ישראל ביתנו (data/research/knesset-member-changes/k20.json)."
+          },
+          {
+            "source": "appointments-34",
+            "quote": "{\"PersonToPositionID\":18451,\"PersonID\":448,\"PositionID\":57,\"KnessetNum\":20,\"StartDate\":\"2016-05-30T00:00:00\",\"FinishDate\":\"2018-11-18T00:00:00\",\"GovMinistryID\":800,\"GovMinistryName\":\"משרד העלייה והקליטה\",\"DutyDesc\":\"שרת העלייה והקליטה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":34,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2019-01-14T08:16:06.807\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 448 is סופה לנדבר, ישראל ביתנו (data/research/knesset-member-changes/k20.json)."
+          }
+        ],
+        "scope": "mid-term",
+        "governmentNumber": 34,
+        "formalStep": true
+      },
+      {
+        "date": "2018-11-18",
+        "type": "coalition-change",
+        "textEn": "The terms of Avigdor Liberman and Sofa Landver ended, leaving Yisrael Beiteinu with no minister in the government.",
+        "textHe": "כהונת אביגדור ליברמן וסופה לנדבר הסתיימה, ולישראל ביתנו לא נותר שר בממשלה.",
+        "cites": [
+          {
+            "source": "appointments-34",
+            "quote": "{\"PersonToPositionID\":18442,\"PersonID\":427,\"PositionID\":39,\"KnessetNum\":20,\"StartDate\":\"2016-05-30T00:00:00\",\"FinishDate\":\"2018-11-18T00:00:00\",\"GovMinistryID\":1175,\"GovMinistryName\":\"משרד הביטחון\",\"DutyDesc\":\"שר הביטחון\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":34,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-18T14:24:03.307\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 427 is אביגדור ליברמן, ישראל ביתנו (data/research/knesset-member-changes/k20.json)."
+          },
+          {
+            "source": "appointments-34",
+            "quote": "{\"PersonToPositionID\":18451,\"PersonID\":448,\"PositionID\":57,\"KnessetNum\":20,\"StartDate\":\"2016-05-30T00:00:00\",\"FinishDate\":\"2018-11-18T00:00:00\",\"GovMinistryID\":800,\"GovMinistryName\":\"משרד העלייה והקליטה\",\"DutyDesc\":\"שרת העלייה והקליטה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":34,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2019-01-14T08:16:06.807\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 448 is סופה לנדבר, ישראל ביתנו (data/research/knesset-member-changes/k20.json)."
+          }
+        ],
+        "scope": "mid-term",
+        "governmentNumber": 34,
+        "formalStep": true,
+        "notes": [
+          "Checked against all 221 rows of the register: these were Yisrael Beiteinu’s only offices in this government."
+        ]
+      }
+    ]
   },
   "supportSchemaVersion": 1
 }

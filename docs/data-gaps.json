@@ -1,38 +1,38 @@
 {
   "schemaVersion": 3,
-  "total": 11511,
+  "total": 11510,
   "counts": {
-    "unknown": 6971,
+    "unknown": 6962,
     "missing-field": 283,
     "conflict": 18,
-    "single-source": 2481,
+    "single-source": 2489,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1167,
-    "pending": 389,
-    "unconfirmed": 101
+    "pending": 387,
+    "unconfirmed": 103
   },
   "countsByStatus": {
     "inferred-not-verified": 1032,
     "needs-current-status-review": 313,
-    "open": 10166
+    "open": 10165
   },
   "countsByImportance": {
     "high": {
-      "total": 865,
-      "confirmed": 405,
-      "probable": 32,
-      "provisional": 162,
+      "total": 866,
+      "confirmed": 413,
+      "probable": 33,
+      "provisional": 163,
       "disputed": 13,
-      "unknown": 253
+      "unknown": 244
     },
     "medium": {
-      "total": 3596,
+      "total": 3594,
       "confirmed": 582,
       "probable": 244,
       "provisional": 544,
       "disputed": 7,
-      "unknown": 2219
+      "unknown": 2217
     },
     "low": {
       "total": 7050,
@@ -52,21 +52,21 @@
       "unknown": 100
     },
     "Government roles": {
-      "confirmed": 173,
-      "probable": 2,
-      "provisional": 19,
+      "confirmed": 175,
+      "probable": 3,
+      "provisional": 20,
       "disputed": 1,
-      "unknown": 41
+      "unknown": 37
     },
     "Formation events": {
-      "confirmed": 60,
+      "confirmed": 61,
       "probable": 18,
       "provisional": 45,
       "disputed": 1,
       "unknown": 0
     },
     "Term events": {
-      "confirmed": 29,
+      "confirmed": 31,
       "probable": 54,
       "provisional": 0,
       "disputed": 0,
@@ -288,12 +288,12 @@
     },
     {
       "election": "k12",
-      "total": 358,
-      "highOpen": 26,
+      "total": 357,
+      "highOpen": 25,
       "mediumOpen": 116,
       "low": 183,
       "counts": {
-        "unknown": 196,
+        "unknown": 194,
         "missing-field": 18,
         "conflict": 0,
         "single-source": 90,
@@ -301,7 +301,7 @@
         "release-hold": 0,
         "inferred": 31,
         "pending": 15,
-        "unconfirmed": 5
+        "unconfirmed": 6
       }
     },
     {
@@ -324,19 +324,19 @@
     },
     {
       "election": "k14",
-      "total": 297,
-      "highOpen": 14,
-      "mediumOpen": 113,
+      "total": 293,
+      "highOpen": 11,
+      "mediumOpen": 112,
       "low": 148,
       "counts": {
-        "unknown": 177,
+        "unknown": 174,
         "missing-field": 16,
         "conflict": 0,
         "single-source": 63,
         "low-confidence": 2,
         "release-hold": 0,
         "inferred": 22,
-        "pending": 14,
+        "pending": 13,
         "unconfirmed": 3
       }
     },
@@ -396,7 +396,7 @@
     },
     {
       "election": "k18",
-      "total": 475,
+      "total": 478,
       "highOpen": 7,
       "mediumOpen": 99,
       "low": 344,
@@ -404,7 +404,7 @@
         "unknown": 303,
         "missing-field": 0,
         "conflict": 1,
-        "single-source": 66,
+        "single-source": 69,
         "low-confidence": 5,
         "release-hold": 0,
         "inferred": 88,
@@ -432,20 +432,20 @@
     },
     {
       "election": "k20",
-      "total": 448,
-      "highOpen": 11,
-      "mediumOpen": 105,
+      "total": 446,
+      "highOpen": 8,
+      "mediumOpen": 104,
       "low": 309,
       "counts": {
-        "unknown": 291,
+        "unknown": 287,
         "missing-field": 0,
         "conflict": 1,
-        "single-source": 69,
+        "single-source": 71,
         "low-confidence": 3,
         "release-hold": 0,
         "inferred": 69,
-        "pending": 14,
-        "unconfirmed": 1
+        "pending": 13,
+        "unconfirmed": 2
       }
     },
     {
@@ -522,7 +522,7 @@
     },
     {
       "election": "k25",
-      "total": 699,
+      "total": 702,
       "highOpen": 8,
       "mediumOpen": 256,
       "low": 393,
@@ -530,7 +530,7 @@
         "unknown": 456,
         "missing-field": 0,
         "conflict": 0,
-        "single-source": 144,
+        "single-source": 147,
         "low-confidence": 4,
         "release-hold": 0,
         "inferred": 84,
@@ -662,10 +662,10 @@
     {"election":"k12","area":"Later governments","count":11,"certainty":{"provisional":5,"unknown":6},"kinds":{"unknown":6,"single-source":5},"labels":["ב","שס","avraham-verdiger","eliezer-mizrachi","no-confidence-vote 1990-03-15"],"file":"data/meta/aftermath/k12.json"},
     {"election":"k12","area":"Recommendations","count":4,"certainty":{"probable":1,"provisional":3},"kinds":{"single-source":3,"unconfirmed":1},"labels":["ו","פ","ע","עץ"],"file":"data/meta/aftermath/k12.json"},
     {"election":"k12","area":"Formation events","count":3,"certainty":{"provisional":3},"kinds":{"single-source":3},"labels":["confidence-vote 1988-12-22","confidence-vote 1990-06-11","mandate-given 1988-11-14"],"file":"data/meta/aftermath/k12.json"},
-    {"election":"k12","area":"Government roles","count":2,"certainty":{"unknown":2},"kinds":{"unknown":2},"labels":["ג","ב"],"file":"data/meta/aftermath/k12.json"},
     {"election":"k12","area":"Coalition seat total","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k12.json"},
     {"election":"k12","area":"data/raw/kN/national.reviewed.json gazetteTotals.registered","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k12/national.reviewed.json"},
     {"election":"k12","area":"data/raw/kN/national.reviewed.json gazetteTotals.votesCast","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k12/national.reviewed.json"},
+    {"election":"k12","area":"Government roles","count":1,"certainty":{"provisional":1},"kinds":{"unconfirmed":1},"labels":["ג"],"file":"data/meta/aftermath/k12.json"},
     {"election":"k12","area":"Investiture reconciliation","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k12.json"},
     {"election":"k12","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k12.json"},
     {"election":"k12","area":"Outside-support seat total","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k12.json"},
@@ -678,13 +678,10 @@
     {"election":"k13","area":"Recommendation rounds","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":["r1"],"file":"data/meta/aftermath/k13.json"},
     {"election":"k14","area":"data/meta/election-context.json pmContests.candidates","count":4,"certainty":{"provisional":4},"kinds":{"single-source":4},"labels":["netanyahu","peres"],"file":"data/meta/election-context.json"},
     {"election":"k14","area":"data/meta/election-context.json pmContests.totals","count":3,"certainty":{"provisional":3},"kinds":{"single-source":3},"labels":["pm1996"],"file":"data/meta/election-context.json"},
-    {"election":"k14","area":"Coalition seat total","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k14.json"},
     {"election":"k14","area":"data/meta/election-context.json pmContests","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":["pm1996"],"file":"data/meta/election-context.json"},
     {"election":"k14","area":"Formation events","count":1,"certainty":{"probable":1},"kinds":{"unconfirmed":1},"labels":["confidence-vote 1996-06-18"],"file":"data/meta/aftermath/k14.json"},
-    {"election":"k14","area":"Government roles","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":["ג"],"file":"data/meta/aftermath/k14.json"},
     {"election":"k14","area":"Investiture reconciliation","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k14.json"},
     {"election":"k14","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k14.json"},
-    {"election":"k14","area":"Outside-support seat total","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k14.json"},
     {"election":"k15","area":"Later governments","count":8,"certainty":{"provisional":2,"unknown":6},"kinds":{"unknown":6,"single-source":2},"labels":["שס","כן"],"file":"data/meta/aftermath/k15.json"},
     {"election":"k15","area":"data/meta/election-context.json pmContests.candidates","count":6,"certainty":{"provisional":6},"kinds":{"single-source":6},"labels":["barak","begin","bishara","mordechai","netanyahu","sharon"],"file":"data/meta/election-context.json"},
     {"election":"k15","area":"data/meta/election-context.json pmContests.totals","count":6,"certainty":{"probable":2,"provisional":4},"kinds":{"single-source":6},"labels":["pm1999","pm2001"],"file":"data/meta/election-context.json"},
@@ -724,12 +721,9 @@
     {"election":"k19","area":"Recommendations","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":["ד"],"file":"data/meta/aftermath/k19.json"},
     {"election":"k20","area":"Formation conflicts","count":2,"certainty":{"probable":1,"disputed":1},"kinds":{"conflict":1,"single-source":1},"labels":[],"disputed":["Investiture vote tally"],"file":"data/meta/aftermath/k20.json"},
     {"election":"k20","area":"Formation events","count":2,"certainty":{"probable":1,"provisional":1},"kinds":{"single-source":2},"labels":["confidence-vote 2015-05-14","mandate-given 2015-03-25"],"file":"data/meta/aftermath/k20.json"},
-    {"election":"k20","area":"Coalition seat total","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k20.json"},
     {"election":"k20","area":"Government","count":1,"certainty":{"probable":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k20.json"},
-    {"election":"k20","area":"Government roles","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":["ג"],"file":"data/meta/aftermath/k20.json"},
-    {"election":"k20","area":"Investiture reconciliation","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k20.json"},
+    {"election":"k20","area":"Government roles","count":1,"certainty":{"probable":1},"kinds":{"unconfirmed":1},"labels":["ג"],"file":"data/meta/aftermath/k20.json"},
     {"election":"k20","area":"Investiture vote","count":1,"certainty":{"probable":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k20.json"},
-    {"election":"k20","area":"Outside-support seat total","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k20.json"},
     {"election":"k20","area":"Recommendation rounds","count":1,"certainty":{"probable":1},"kinds":{"unconfirmed":1},"labels":["r1"],"file":"data/meta/aftermath/k20.json"},
     {"election":"k21","area":"Formation events","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":["mandate-given 2019-04-17"],"file":"data/meta/aftermath/k21.json"},
     {"election":"k21","area":"Recommendation rounds","count":1,"certainty":{"probable":1},"kinds":{"unconfirmed":1},"labels":["r1"],"file":"data/meta/aftermath/k21.json"},
@@ -890,7 +884,6 @@
     {"election":"k14","area":"List metadata","count":7,"certainty":{"unknown":7}},
     {"election":"k14","area":"data/meta/election-context.json events","count":6,"certainty":{"provisional":6}},
     {"election":"k14","area":"Term events","count":3,"certainty":{"probable":3}},
-    {"election":"k14","area":"Government","count":1,"certainty":{"unknown":1}},
     {"election":"k14","area":"Issue polling","count":1,"certainty":{"probable":1}},
     {"election":"k14","area":"Reactions","count":1,"certainty":{"unknown":1}},
     {"election":"k15","area":"Family classifications","count":65,"certainty":{"probable":2,"provisional":23,"unknown":40}},
@@ -954,7 +947,6 @@
     {"election":"k20","area":"data/meta/election-context.json events","count":5,"certainty":{"probable":2,"provisional":3}},
     {"election":"k20","area":"Formation","count":2,"certainty":{"provisional":2}},
     {"election":"k20","area":"data/raw/kN/localities.datagov.json records","count":1,"certainty":{"unknown":1}},
-    {"election":"k20","area":"Government","count":1,"certainty":{"unknown":1}},
     {"election":"k20","area":"Issue polling","count":1,"certainty":{"unknown":1}},
     {"election":"k20","area":"Reactions","count":1,"certainty":{"unknown":1}},
     {"election":"k21","area":"Family classifications","count":78,"certainty":{"probable":2,"provisional":17,"unknown":59}},

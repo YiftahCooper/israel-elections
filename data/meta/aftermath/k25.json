@@ -286,7 +286,15 @@
       "publisher": "Knesset OData, government 37 appointment register",
       "kind": "official",
       "accessed": "2026-11-12",
-      "publisherHe": "הכנסת, מאגר המינויים של הממשלה ה־37"
+      "publisherHe": "הכנסת, מאגר המינויים של הממשלה ה־37",
+      "via": "The register has 133 rows on two pages (odata.nextLink continues; the second page is served as Atom XML)."
+    },
+    "plenum-2026-01-19": {
+      "url": "https://fs.knesset.gov.il/25/plenum/25_st_10938331.doc",
+      "publisher": "Knesset, plenum record, sitting 358, 19 January 2026",
+      "publisherHe": "הכנסת, דברי הכנסת, הישיבה ה־358, 19 בינואר 2026",
+      "kind": "official",
+      "accessed": "2026-11-12"
     }
   },
   "results": {
@@ -981,6 +989,38 @@
     "knownMemberSeats": 64,
     "changes": [
       {
+        "date": "2023-03-01",
+        "type": "ministerial-change",
+        "textEn": "Avi Maoz’s first term as deputy minister in the Prime Minister’s Office ended.",
+        "textHe": "כהונתו הראשונה של אבי מעוז כסגן שר במשרד ראש הממשלה הסתיימה.",
+        "cites": [
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":30798,\"PersonID\":30814,\"PositionID\":40,\"KnessetNum\":25,\"StartDate\":\"2023-01-03T00:00:00\",\"FinishDate\":\"2023-03-01T00:00:00\",\"GovMinistryID\":568,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"סגן שר במשרד ראש הממשלה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-03-03T05:45:34.657\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30814 is אבי מעוז (data/research/knesset-member-changes/k25.json)."
+          }
+        ],
+        "notes": [
+          "An office date for Noam’s only MK, from the register. It is not a coalition entry or exit; the announcements were made a few days earlier and are recorded with the term’s events."
+        ]
+      },
+      {
+        "date": "2023-06-05",
+        "type": "ministerial-change",
+        "textEn": "Avi Maoz returned as deputy minister in the Prime Minister’s Office.",
+        "textHe": "אבי מעוז שב לכהן כסגן שר במשרד ראש הממשלה.",
+        "cites": [
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":31626,\"PersonID\":30814,\"PositionID\":40,\"KnessetNum\":25,\"StartDate\":\"2023-06-05T00:00:00\",\"FinishDate\":\"2025-03-26T00:00:00\",\"GovMinistryID\":568,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"סגן שר במשרד ראש הממשלה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-03-27T13:01:50.76\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30814 is אבי מעוז (data/research/knesset-member-changes/k25.json)."
+          }
+        ],
+        "notes": [
+          "An office date for Noam’s only MK, from the register. It is not a coalition entry or exit; the announcements were made a few days earlier and are recorded with the term’s events."
+        ]
+      },
+      {
         "date": "2023-10-12",
         "type": "ministerial-change",
         "textEn": "Benny Gantz, Gadi Eisenkot, Gideon Sa’ar, Hili Tropper and Yifat Shasha-Biton joined the government as ministers.",
@@ -1126,6 +1166,22 @@
         ]
       },
       {
+        "date": "2025-03-26",
+        "type": "ministerial-change",
+        "textEn": "Avi Maoz’s second term as deputy minister in the Prime Minister’s Office ended.",
+        "textHe": "כהונתו השנייה של אבי מעוז כסגן שר במשרד ראש הממשלה הסתיימה.",
+        "cites": [
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":31626,\"PersonID\":30814,\"PositionID\":40,\"KnessetNum\":25,\"StartDate\":\"2023-06-05T00:00:00\",\"FinishDate\":\"2025-03-26T00:00:00\",\"GovMinistryID\":568,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"סגן שר במשרד ראש הממשלה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-03-27T13:01:50.76\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30814 is אבי מעוז (data/research/knesset-member-changes/k25.json)."
+          }
+        ],
+        "notes": [
+          "An office date for Noam’s only MK, from the register. It is not a coalition entry or exit; the announcements were made a few days earlier and are recorded with the term’s events."
+        ]
+      },
+      {
         "date": "2025-06-15",
         "type": "ministerial-change",
         "textEn": "Yitzhak Goldknopf’s term as Housing Minister ended.",
@@ -1186,8 +1242,8 @@
       {
         "date": "2025-07-20",
         "type": "ministerial-change",
-        "textEn": "The ministerial terms of Haim Biton, Michael Malkieli, Yaakov Margi, Yoav Ben Tzur and Uriel Busso ended.",
-        "textHe": "כהונתם של השרים חיים ביטון, מיכאל מלכיאלי, יעקב מרגי, יואב בן צור ואוריאל בוסו הסתיימה.",
+        "textEn": "The ministerial terms of Haim Biton, Michael Malkieli, Yaakov Margi, Yoav Ben Tzur and Uriel Busso ended. Moshe Abutbul’s term as deputy minister in the Agriculture Ministry ended the same day.",
+        "textHe": "כהונתם של השרים חיים ביטון, מיכאל מלכיאלי, יעקב מרגי, יואב בן צור ואוריאל בוסו הסתיימה. כהונת משה אבוטבול כסגן שר במשרד החקלאות וביטחון המזון הסתיימה באותו יום.",
         "cites": [
           {
             "source": "odata-government37",
@@ -1213,6 +1269,11 @@
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31712,\"PersonID\":30765,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2025-07-20T00:00:00\",\"GovMinistryID\":1112,\"GovMinistryName\":\"משרד הבריאות\",\"DutyDesc\":\"שר הבריאות\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-20T14:36:49.72\"}",
             "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30765 is אוריאל בוסו (data/research/knesset-member-changes/k25.json)."
+          },
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":30801,\"PersonID\":30749,\"PositionID\":40,\"KnessetNum\":25,\"StartDate\":\"2023-01-03T00:00:00\",\"FinishDate\":\"2025-07-20T00:00:00\",\"GovMinistryID\":967,\"GovMinistryName\":\"משרד החקלאות וביטחון המזון\",\"DutyDesc\":\"סגן שר במשרד החקלאות וביטחון המזון\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-20T14:35:58.843\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30749 is משה אבוטבול (data/research/knesset-member-changes/k25.json)."
           }
         ],
         "notes": [
@@ -1230,6 +1291,27 @@
             "quote": "{\"PersonToPositionID\":31464,\"PersonID\":30660,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-04-19T00:00:00\",\"FinishDate\":\"2025-07-22T00:00:00\",\"GovMinistryID\":754,\"GovMinistryName\":\"משרד הפנים\",\"DutyDesc\":\"שר הפנים\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-23T10:40:03.003\"}",
             "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30660 is משה ארבל (data/research/knesset-member-changes/k25.json)."
           }
+        ]
+      },
+      {
+        "date": "2026-01-19",
+        "type": "ministerial-change",
+        "textEn": "Israel Eichler of United Torah Judaism became deputy minister in the Communications Ministry.",
+        "textHe": "ישראל אייכלר מיהדות התורה מונה לסגן שר במשרד התקשורת.",
+        "cites": [
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":33678,\"PersonID\":1057,\"PositionID\":40,\"KnessetNum\":25,\"StartDate\":\"2026-01-19T00:00:00\",\"FinishDate\":\"2026-11-10T00:00:00\",\"GovMinistryID\":618,\"GovMinistryName\":\"משרד התקשורת\",\"DutyDesc\":\"סגן שר במשרד התקשורת\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2026-11-11T14:34:30.607\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 1057 is ישראל אייכלר (data/research/knesset-member-changes/k25.json)."
+          },
+          {
+            "source": "plenum-2026-01-19",
+            "quote": "הממשלה החליטה לאשר את מינויו של חבר הכנסת ישראל אייכלר לסגן שר במשרד התקשורת על ידי שר התקשורת.",
+            "note": "Communications Minister Shlomo Karhi, giving the government’s notice under section 25(a) of Basic Law: The Government; Eichler then made his declaration of allegiance."
+          }
+        ],
+        "notes": [
+          "One person’s appointment. No inspected record shows Agudat Yisrael, Degel HaTorah or United Torah Judaism as a whole returning to the coalition after July 2025; the term timeline keeps the faction outside it."
         ]
       }
     ]

@@ -145,6 +145,13 @@
       "publisher": "Knesset OData, formation-day cabinet appointments",
       "kind": "official",
       "accessed": "2026-11-07"
+    },
+    "plenum-2001-10-17": {
+      "url": "https://fs.knesset.gov.il//15/Plenum/15_ptm_532934.docx",
+      "publisher": "Knesset, plenum record, 17 October 2001",
+      "publisherHe": "הכנסת, דברי הכנסת, 17 באוקטובר 2001",
+      "kind": "official",
+      "accessed": "2026-11-12"
     }
   },
   "results": {
@@ -375,6 +382,34 @@
         "confidence": "high"
       },
       {
+        "id": "zeevi-assassination",
+        "date": "2001-10-17",
+        "category": "governance",
+        "textEn": "Tourism Minister Rehavam Ze’evi was assassinated in Jerusalem by Palestinian terrorists.",
+        "textHe": "שר התיירות רחבעם זאבי נרצח בירושלים בידי טרוריסטים פלסטינים.",
+        "cites": [
+          {
+            "source": "plenum-2001-10-17",
+            "quote": "הבוקר נרצח בירושלים על-ידי טרוריסטים פלסטינים חברנו לממשלה ולכנסת, השר רחבעם זאבי, גנדי, השם ייקום דמו.",
+            "note": "Prime Minister Ariel Sharon, at the Knesset’s memorial sitting on the day of the murder."
+          },
+          {
+            "source": "knesset-history",
+            "quote": "Revhavam Ze'evi, a Minister in the Israeli Government, was murdered at the Hyatt Hotel in Jerusalem by Palestinian terrorists.",
+            "note": "The page dates this to 23 October 2000, which is wrong; the day here follows the Knesset record of 17 October 2001."
+          },
+          {
+            "source": "mfa-history",
+            "quote": "Rechavam Ze’evy, minister of tourism, assassinated by Palestinian terrorists",
+            "note": "Listed under 2001. Read on 13 November 2026 through a text extraction of the official PDF; a direct request returned 403."
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "Selected by both chronologies (Knesset history, which misdates it to 23 October 2000, and the Foreign Ministry history, under 2001). The day and the description of the perpetrators follow the Knesset record of 17 October 2001; his Knesset membership ends that day in the official register (data/research/knesset-member-changes/k15.json). No person or organisation is named beyond what that record says."
+        ]
+      },
+      {
         "id": "defensive-shield",
         "date": "2002-03-29",
         "category": "security",
@@ -407,11 +442,6 @@
       }
     ],
     "candidatesPending": [
-      {
-        "label": "Rehavam Ze’evi assassination",
-        "date": "2001-10",
-        "why": "Knesset history selects the assassination but misdates it to 23 October 2000; MFA selects it under 2001. Exact day requires a direct record before promotion."
-      },
       {
         "label": "Barak resignation and calling the special election",
         "date": "2000-12",

@@ -101,6 +101,21 @@
       "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
       "kind": "official",
       "accessed": "2026-11-07"
+    },
+    "plenum-1996-06-18": {
+      "url": "https://fs.knesset.gov.il//14/Plenum/14_ptm_532496.docx",
+      "publisher": "Knesset, plenum record, 18 June 1996",
+      "publisherHe": "הכנסת, דברי הכנסת, 18 ביוני 1996",
+      "kind": "official",
+      "accessed": "2026-11-12"
+    },
+    "appointments-27": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=GovernmentNum%20eq%2027&%24format=json&%24top=1000",
+      "publisher": "Knesset OData, government 27 appointment register",
+      "publisherHe": "הכנסת, מאגר המינויים של הממשלה ה־27",
+      "kind": "official",
+      "accessed": "2026-11-12",
+      "via": "The service returns 100 rows per page (odata.nextLink continues); every row quoted here is on the first page."
     }
   },
   "results": {
@@ -383,10 +398,23 @@
       {
         "letters": "ג",
         "seats": 4,
-        "role": "other",
-        "certainty": "unknown",
-        "cites": [],
-        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+        "role": "member-without-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "plenum-1996-06-18",
+            "quote": "שבהסכם עם יהדות התורה, ההסכם הקואליציוני, נאמר שראש הממשלה יחזיק בתיק הבינוי והשיכון במהלך כל הקדנציה. נציג יהדות התורה יכהן כסגן השר היחידי במשרד זה",
+            "note": "David Libai (Labor, the outgoing justice minister), reading in the investiture debate from the agreements laid before the Knesset."
+          },
+          {
+            "source": "appointments-27",
+            "quote": "{\"PersonToPositionID\":3763,\"PersonID\":563,\"PositionID\":40,\"KnessetNum\":14,\"StartDate\":\"1996-06-24T00:00:00\",\"FinishDate\":\"1999-06-07T00:00:00\",\"GovMinistryID\":1136,\"GovMinistryName\":\"משרד הבינוי והשיכון\",\"DutyDesc\":\"סגן שר הבינוי והשיכון\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":27,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2020-10-27T18:40:24.317\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 563 is מאיר פרוש, יהדות התורה (data/research/knesset-member-changes/k14.json)."
+          }
+        ],
+        "note": "The coalition agreement with United Torah Judaism was laid before the Knesset and read out in the investiture debate: no minister, one deputy minister in the Housing Ministry. Meir Porush’s appointment as deputy minister starts on 24 June 1996, not on 18 June. No individual confidence vote is inferred.",
+        "noteEn": "Its coalition agreement gave it a deputy minister in the Housing Ministry and no minister; Meir Porush took that post on 24 June 1996.",
+        "noteHe": "ההסכם הקואליציוני העניק לה סגן שר במשרד הבינוי והשיכון, ללא שר; מאיר פרוש נכנס לתפקיד ב־24 ביוני 1996."
       },
       {
         "letters": "הד",
@@ -402,7 +430,7 @@
         ]
       }
     ],
-    "coalitionSeats": null,
+    "coalitionSeats": 66,
     "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
     "cites": [
       {
@@ -436,13 +464,16 @@
         "quote": "The new government was endorsed by a vote of 62-50"
       }
     ],
-    "membershipCoverage": "partial",
-    "supportSeats": null,
+    "membershipCoverage": "complete",
+    "supportSeats": 0,
     "reconciliation": {
       "status": "unresolved",
-      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 62; full membership remains unknown. Investiture: 62 for, 50 against, not recorded abstaining."
+      "note": "Individual voting/absence detail prevents an exact bridge to the recorded investiture tally. Quantified gap: 66 identified member/support seats versus 62 votes for (+4); the named abstainers, absentees or dissenters needed to explain this gap have not been recovered. Do not infer that each member voted for."
     },
-    "knownMemberSeats": 62
+    "knownMemberSeats": 66,
+    "notes": [
+      "All six founding factions are classified; their election seats total 66, the majority the contemporary JTA report gives (“a 66-seat majority”, jta1996coalition)."
+    ]
   },
   "recommendationsNotApplicable": {
     "reason": "direct-pm-election",

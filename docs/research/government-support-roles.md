@@ -52,18 +52,18 @@ All role entries below map directly to `data/meta/aftermath/kN.json`, `governmen
 | k10 | 20 | תחייה ? M; הליכוד ? M; תנועה למסורת ישראל ? M; התנועה להתחדשות ציונית חברתית ? M; חזית דתית לאומית ? M | ? members / ? outside; 60–53 |
 | k11 | 21 | Likud 41 M; Alignment 37 M; Agudat Yisrael 2 N; National Religious Party 4 M; Shinui 3 M; Shas 4 M; Morasha 2 N; Yahad 3 M; Ometz 1 M | 97 members / 0 outside; 89–18 |
 | k11 | 22 | הליכוד ? M; מערך ? M; התאחדות הספרדים שומרי תורה - תנועת ש"ס ? M; מפלגה דתית לאומית ? M; אומץ ? M; שינוי ? M | ? members / ? outside; not recovered |
-| k12 | 23 | Likud 40 M; Alignment 39 M; Agudat Yisrael 5 U; National Religious Party 5 U; Shas 6 M | ? members / ? outside; 84–19 |
+| k12 | 23 | Likud 40 M; Alignment 39 M; Agudat Yisrael 5 N†; National Religious Party 5 N; Shas 6 M | ? members / ? outside; 84–19 |
 | k12 | 24 | הליכוד ? M; מפלגה לקידום הרעיון הציוני ? M; מפלגה דתית לאומית ? M; צומת ? M; התאחדות הספרדים שומרי תורה - תנועת ש"ס ? M | ? members / ? outside; 62–57 |
 | k13 | 25 | Labor 44 M; Meretz 12 M; Shas 6 M; Hadash 3 O†; Arab Democratic Party 2 O† | 62 members / 5 outside; 67–53 |
 | k13 | 26 | יעוד ? M; מפלגת העבודה הישראלית ? M; מרצ ? M | ? members / ? outside; 62–8; 38 abstain |
-| k14 | 27 | Likud–Gesher–Tzomet 32 M; Shas 10 M; NRP 9 M; Yisrael BaAliyah 7 M; UTJ 4 U; Third Way 4 M | ? members / ? outside; 62–50 |
+| k14 | 27 | Likud–Gesher–Tzomet 32 M; Shas 10 M; NRP 9 M; Yisrael BaAliyah 7 M; UTJ 4 N; Third Way 4 M | 66 members / 0 outside; 62–50 |
 | k15 | 28 | One Israel 26 M; Shas 17 M; Meretz 10 M; Yisrael BaAliyah 6 M; Centre Party 6 M; NRP 5 M; UTJ 5 N† | 75 members / 0 outside; not recovered |
 | k15 | 29 | ש"ס ? M; ישראל אחת ? M; הליכוד ? M; האיחוד הלאומי - ישראל ביתנו ? M; ישראל בעלייה ? M | ? members / ? outside; 72–21 |
 | k16 | 30 | Likud 38 M; Shinui 15 M; National Union 7 M; National Religious Party 6 N; Yisrael BaAliyah 2 U | ? members / ? outside; 66–48 |
 | k17 | 31 | Kadima 29 M; Labor–Meimad 19 M; Shas 12 M; Gil (Pensioners) 7 M | 67 members / 0 outside; 65–49 |
 | k18 | 32 | Likud 27 M; Yisrael Beiteinu 15 M; Labor 13 M; Shas 11 M; Jewish Home 3 M | 69 members / 0 outside; 69–45 |
 | k19 | 33 | Likud–Yisrael Beiteinu 31 M; Yesh Atid 19 M; Jewish Home 12 M; Hatnuah 6 M | 68 members / 0 outside; 68–48 |
-| k20 | 34 | Likud 30 M; Kulanu 10 M; Jewish Home 8 M; Shas 7 M; United Torah Judaism 6 U | ? members / ? outside; 61–59 |
+| k20 | 34 | Likud 30 M; Kulanu 10 M; Jewish Home 8 M; Shas 7 M; United Torah Judaism 6 N (probable) | 61 members / 0 outside; 61–59 |
 | k21 | — | No new government recorded | — |
 | k22 | — | No new government recorded | — |
 | k23 | 35 | Likud 36 M; Shas 9 M; United Torah Judaism 7 M; Blue and White 17 M; Labor–Gesher–Meretz 3 M; Yamina 1 M | 73 members / 0 outside; 73–46 |

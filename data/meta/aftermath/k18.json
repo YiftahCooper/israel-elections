@@ -116,6 +116,21 @@
       "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
       "kind": "official",
       "accessed": "2026-11-07"
+    },
+    "appointments-32": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=GovernmentNum%20eq%2032&%24format=json&%24top=1000",
+      "publisher": "Knesset OData, government 32 appointment register",
+      "publisherHe": "הכנסת, מאגר המינויים של הממשלה ה־32",
+      "kind": "official",
+      "accessed": "2026-11-12",
+      "via": "The service returns 100 rows per page (odata.nextLink continues); every row quoted here is on the first page."
+    },
+    "dr-events-idi2013": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/2013/",
+      "publisher": "Israel Democracy Institute, 2013 election retrospective",
+      "publisherHe": "המכון הישראלי לדמוקרטיה, סיכום בחירות 2013",
+      "kind": "academic",
+      "accessed": "2026-11-13"
     }
   },
   "results": {
@@ -410,7 +425,7 @@
       {
         "label": "Social protests",
         "date": "2011-07",
-        "why": "The IDI English 2013 page supplied results, not a retrospective event narrative; the Knesset/JVL history was not readable. Two qualifying protest chronologies were not inspected."
+        "why": "IDI’s Hebrew 2013 election retrospective explicitly selects the social protests of summer 2011. The credited Knesset/JVL 18th-term URL returned no history body. A second independent qualifying chronology and direct launch-date source remain unverified."
       },
       {
         "label": "Kadima entered the coalition",
@@ -574,7 +589,98 @@
       "expectedFor": 69,
       "note": "69 member seats + 0 outside-support seats = 69 for, 45 against. Numerical equality alone does not certify every individual’s vote."
     },
-    "knownMemberSeats": 69
+    "knownMemberSeats": 69,
+    "changes": [
+      {
+        "date": "2011-01-19",
+        "type": "coalition-change",
+        "textEn": "The terms of Labor ministers Binyamin Ben-Eliezer, Isaac Herzog and Avishay Braverman ended; ministers of the Independence faction, which had split from Labor, stayed in the government.",
+        "textHe": "כהונת שרי העבודה בנימין בן־אליעזר, יצחק הרצוג ואבישי ברוורמן הסתיימה; שרי סיעת העצמאות, שהתפלגה מהעבודה, נשארו בממשלה.",
+        "cites": [
+          {
+            "source": "appointments-32",
+            "quote": "{\"PersonToPositionID\":3372,\"PersonID\":435,\"PositionID\":39,\"KnessetNum\":18,\"StartDate\":\"2009-03-31T00:00:00\",\"FinishDate\":\"2011-01-19T00:00:00\",\"GovMinistryID\":917,\"GovMinistryName\":\"משרד התעשיה, המסחר והתעסוקה\",\"DutyDesc\":\"שר התעשיה המסחר והתעסוקה \",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-03-20T12:03:09\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 435 is בנימין בן-אליעזר, העבודה (data/research/knesset-member-changes/k18.json)."
+          },
+          {
+            "source": "appointments-32",
+            "quote": "{\"PersonToPositionID\":3373,\"PersonID\":1044,\"PositionID\":39,\"KnessetNum\":18,\"StartDate\":\"2009-03-31T00:00:00\",\"FinishDate\":\"2011-01-19T00:00:00\",\"GovMinistryID\":708,\"GovMinistryName\":\"משרד הרווחה והשירותים החברתיים\",\"DutyDesc\":\"שר הרווחה והשירותים החברתיים \",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-03-20T12:03:09\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 1044 is יצחק הרצוג, העבודה (data/research/knesset-member-changes/k18.json)."
+          },
+          {
+            "source": "appointments-32",
+            "quote": "{\"PersonToPositionID\":3374,\"PersonID\":4407,\"PositionID\":39,\"KnessetNum\":18,\"StartDate\":\"2009-03-31T00:00:00\",\"FinishDate\":\"2011-01-19T00:00:00\",\"GovMinistryID\":563,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"השר המופקד על ענייני המיעוטים \",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-19T17:48:22.727\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 4407 is אבישי ברוורמן, העבודה (data/research/knesset-member-changes/k18.json)."
+          },
+          {
+            "source": "appointments-32",
+            "quote": "{\"PersonToPositionID\":3510,\"PersonID\":461,\"PositionID\":39,\"KnessetNum\":18,\"StartDate\":\"2011-01-19T00:00:00\",\"FinishDate\":\"2013-02-05T00:00:00\",\"GovMinistryID\":917,\"GovMinistryName\":\"משרד התעשיה, המסחר והתעסוקה\",\"DutyDesc\":\"שר התעשיה, המסחר והתעסוקה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2020-11-26T11:17:46.517\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 461 is שלום שמחון, העצמאות מ־17 בינואר 2011 (data/research/knesset-member-changes/k18.json)."
+          },
+          {
+            "source": "appointments-32",
+            "quote": "{\"PersonToPositionID\":3581,\"PersonID\":865,\"PositionID\":57,\"KnessetNum\":18,\"StartDate\":\"2011-01-19T00:00:00\",\"FinishDate\":\"2013-02-05T00:00:00\",\"GovMinistryID\":962,\"GovMinistryName\":\"משרד החקלאות ופיתוח הכפר\",\"DutyDesc\":\"שרת החקלאות ופיתוח הכפר\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2020-11-26T11:07:14.08\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 865 is אורית נוקד, העצמאות מ־17 בינואר 2011 (data/research/knesset-member-changes/k18.json)."
+          },
+          {
+            "source": "appointments-32",
+            "quote": "{\"PersonToPositionID\":3582,\"PersonID\":1067,\"PositionID\":39,\"KnessetNum\":18,\"StartDate\":\"2011-01-19T00:00:00\",\"FinishDate\":\"2012-08-15T00:00:00\",\"GovMinistryID\":1315,\"GovMinistryName\":\"המשרד להגנת העורף\",\"DutyDesc\":\"השר להגנת העורף\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2020-11-26T09:15:04.28\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 1067 is מתן וילנאי, העצמאות מ־17 בינואר 2011 (data/research/knesset-member-changes/k18.json)."
+          }
+        ],
+        "scope": "mid-term",
+        "governmentNumber": 32,
+        "formalStep": true,
+        "notes": [
+          "The day the offices ended, two days after the faction split of 17 January 2011 recorded in the membership data. No seat total is derived."
+        ]
+      },
+      {
+        "date": "2012-05-09",
+        "type": "coalition-change",
+        "textEn": "Kadima joined the government; Shaul Mofaz became Vice Prime Minister.",
+        "textHe": "קדימה הצטרפה לממשלה; שאול מופז מונה למשנה לראש הממשלה.",
+        "cites": [
+          {
+            "source": "appointments-32",
+            "quote": "{\"PersonToPositionID\":3430,\"PersonID\":949,\"PositionID\":31,\"KnessetNum\":18,\"StartDate\":\"2012-05-09T00:00:00\",\"FinishDate\":\"2012-07-19T00:00:00\",\"GovMinistryID\":563,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"המשנה לראש הממשלה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-19T17:42:08.14\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 949 is שאול מופז, קדימה (data/research/knesset-member-changes/k18.json)."
+          },
+          {
+            "source": "appointments-32",
+            "quote": "{\"PersonToPositionID\":3560,\"PersonID\":949,\"PositionID\":39,\"KnessetNum\":18,\"StartDate\":\"2012-05-09T00:00:00\",\"FinishDate\":\"2012-07-19T00:00:00\",\"GovMinistryID\":563,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"שר במשרד ראש הממשלה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-19T17:45:34.343\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 949 is שאול מופז, קדימה (data/research/knesset-member-changes/k18.json)."
+          }
+        ],
+        "scope": "mid-term",
+        "governmentNumber": 32,
+        "formalStep": true
+      },
+      {
+        "date": "2012-07-19",
+        "type": "coalition-change",
+        "textEn": "Shaul Mofaz’s term ended, leaving Kadima with no minister in the government.",
+        "textHe": "כהונת שאול מופז הסתיימה, ולקדימה לא נותר שר בממשלה.",
+        "cites": [
+          {
+            "source": "appointments-32",
+            "quote": "{\"PersonToPositionID\":3430,\"PersonID\":949,\"PositionID\":31,\"KnessetNum\":18,\"StartDate\":\"2012-05-09T00:00:00\",\"FinishDate\":\"2012-07-19T00:00:00\",\"GovMinistryID\":563,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"המשנה לראש הממשלה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-19T17:42:08.14\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 949 is שאול מופז, קדימה (data/research/knesset-member-changes/k18.json)."
+          },
+          {
+            "source": "appointments-32",
+            "quote": "{\"PersonToPositionID\":3560,\"PersonID\":949,\"PositionID\":39,\"KnessetNum\":18,\"StartDate\":\"2012-05-09T00:00:00\",\"FinishDate\":\"2012-07-19T00:00:00\",\"GovMinistryID\":563,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"שר במשרד ראש הממשלה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-19T17:45:34.343\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 949 is שאול מופז, קדימה (data/research/knesset-member-changes/k18.json)."
+          }
+        ],
+        "scope": "mid-term",
+        "governmentNumber": 32,
+        "formalStep": true,
+        "notes": [
+          "Checked against all 110 rows of the register: Mofaz held Kadima’s only offices in this government at that date."
+        ]
+      }
+    ]
   },
   "supportSchemaVersion": 1
 }

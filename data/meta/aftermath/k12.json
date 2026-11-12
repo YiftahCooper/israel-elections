@@ -150,6 +150,34 @@
       "kind": "archival",
       "accessed": "2026-11-07",
       "via": "Bylined Jerusalem dispatch (dal nostro inviato); PDF text layer read 7 November. Independent of UPI."
+    },
+    "plenum-1988-12-22": {
+      "url": "https://fs.knesset.gov.il//12/Plenum/12_ptm_236815.DOC",
+      "publisher": "Knesset, plenum record, 22 December 1988",
+      "publisherHe": "הכנסת, דברי הכנסת, 22 בדצמבר 1988",
+      "kind": "official",
+      "accessed": "2026-11-12"
+    },
+    "appointments-23": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=GovernmentNum%20eq%2023&%24format=json&%24top=1000",
+      "publisher": "Knesset OData, government 23 appointment register",
+      "publisherHe": "הכנסת, מאגר המינויים של הממשלה ה־23",
+      "kind": "official",
+      "accessed": "2026-11-12",
+      "via": "All 50 rows are on one page."
+    },
+    "dr-events-shamir-mandate": {
+      "url": "https://fs.knesset.gov.il//12/Plenum/12_ptm_236866.DOC",
+      "publisher": "Knesset plenum, Speaker reading Shamir’s presentation letter, 11 June 1990",
+      "publisherHe": "הכנסת, דברי הכנסת, 11 ביוני 1990: יושב ראש הכנסת קורא את מכתב שמיר",
+      "kind": "official",
+      "accessed": "2026-11-13"
+    },
+    "dr-events-jta-shamir": {
+      "url": "https://www.jta.org/archive/shamir-given-turn-to-form-coalition-says-he-would-not-accept-baker-plan",
+      "publisher": "JTA, Shamir, Given Turn to Form Coalition, Says He Would Not Accept Baker Plan",
+      "kind": "archival",
+      "accessed": "2026-11-13"
     }
   },
   "results": {
@@ -405,7 +433,26 @@
         "person": "peres",
         "scope": "mid-term",
         "notes": [
-          "Not yet recorded: the dates Herzog tasked Peres (March 1990, after the no-confidence vote) and Shamir (late April 1990). The New York Times of 21 March 1990 reports Peres’s tasking “this evening” without a dateline; no source checked on 12 November 2026 settles either date, so neither tasking is drawn."
+          "Not yet recorded: the date Herzog tasked Peres after the March 1990 no-confidence vote. The JTA article dated 21 March has no readable body; its linked original bulletin failed to fetch. Shamir’s 27 April tasking is separately established by his primary presentation letter."
+        ]
+      },
+      {
+        "date": "1990-04-27",
+        "type": "mandate-given",
+        "person": "shamir",
+        "days": 21,
+        "scope": "mid-term",
+        "textEn": "Herzog tasked Shamir with forming a government within 21 days.",
+        "textHe": "הרצוג הטיל על שמיר להרכיב ממשלה בתוך 21 ימים.",
+        "cites": [
+          {
+            "source": "dr-events-shamir-mandate",
+            "quote": "ביום ב' באייר התש\"ן, 27 באפריל 1990,\nהטיל עלי כבוד נשיא המרינה, בהתאם לסעיף 8 בחוק-יסוד:\nהממשלה את התפקיד להרכיב ממשלה."
+          },
+          {
+            "source": "dr-events-jta-shamir",
+            "quote": "Shamir on Friday received a 21-day mandate from President Chaim Herzog to try to form a governing coalition."
+          }
         ]
       },
       {
@@ -610,18 +657,54 @@
       {
         "letters": "ג",
         "seats": 5,
-        "role": "other",
-        "certainty": "unknown",
-        "cites": [],
-        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+        "role": "member-without-ministries",
+        "certainty": "provisional",
+        "cites": [
+          {
+            "source": "plenum-1988-12-22",
+            "quote": "שסיעת אגודת ישראל החליטה עקרונית להצטרף לקואליציה. אני מברך אותה.",
+            "note": "Prime Minister Yitzhak Shamir, during his speech presenting the government. Line break of the printed record removed."
+          },
+          {
+            "source": "plenum-1988-12-22",
+            "quote": "כפי שעוגן בהתחייבותו לנו, הכתובה והחתומה. אנחנו נצביע אמון בממשלה הזאת.",
+            "note": "Moshe Zeev Feldman (Agudat Yisrael), in the same debate. Line break of the printed record removed."
+          },
+          {
+            "source": "appointments-23",
+            "quote": "{\"PersonToPositionID\":4089,\"PersonID\":2541,\"PositionID\":40,\"KnessetNum\":12,\"StartDate\":\"1988-12-26T00:00:00\",\"FinishDate\":\"1989-10-15T00:00:00\",\"GovMinistryID\":820,\"GovMinistryName\":\"משרד העבודה והרווחה\",\"DutyDesc\":\"סגן שר העבודה והרווחה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":23,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2020-09-22T18:18:53.1\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 2541 is משה-זאב פלדמן, אגודת ישראל (data/research/knesset-member-changes/k12.json)."
+          }
+        ],
+        "note": "Provisional: on 22 December 1988 Shamir announced that Agudat Yisrael had decided \"in principle\" to join the coalition, and its MK Feldman cited a written, signed commitment and announced a confidence vote; the agreement itself was not inspected. Feldman took office as a deputy minister on 26 December 1988. A deputy minister is not a cabinet minister.",
+        "noteEn": "Decided “in principle” to join during the investiture debate; its deputy minister took office on 26 December 1988.",
+        "noteHe": "החליטה \"עקרונית\" להצטרף במהלך הדיון על הצגת הממשלה; סגן השר מטעמה נכנס לתפקידו ב־26 בדצמבר 1988."
       },
       {
         "letters": "ב",
         "seats": 5,
-        "role": "other",
-        "certainty": "unknown",
-        "cites": [],
-        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+        "role": "member-without-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "plenum-1988-12-22",
+            "quote": "תנועות ש\"ס והמפד\"ל החליטו בינתיים להצטרף לממשלה ולקואליציה. המפד\"ל תקבע את השרים מטעמה בימים הקרובים, ואז יובאו שמותיהם לידיעת הכנסת.",
+            "note": "Prime Minister Yitzhak Shamir, presenting the government. Line breaks of the printed record removed."
+          },
+          {
+            "source": "appointments-23",
+            "quote": "{\"PersonToPositionID\":4340,\"PersonID\":2300,\"PositionID\":39,\"KnessetNum\":12,\"StartDate\":\"1988-12-27T00:00:00\",\"FinishDate\":\"1990-06-11T00:00:00\",\"GovMinistryID\":1268,\"GovMinistryName\":\"המשרד לענייני דתות\",\"DutyDesc\":\"השר לענייני דתות\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":23,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2020-09-22T17:33:16.01\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 2300 is זבולון המר, מפלגה דתית לאומית (data/research/knesset-member-changes/k12.json)."
+          },
+          {
+            "source": "appointments-23",
+            "quote": "{\"PersonToPositionID\":4591,\"PersonID\":2620,\"PositionID\":39,\"KnessetNum\":12,\"StartDate\":\"1988-12-27T00:00:00\",\"FinishDate\":\"1990-06-11T00:00:00\",\"GovMinistryID\":553,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"שר בלי תיק\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":23,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2020-09-22T17:44:45.993\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 2620 is אבנר-חי שאקי, מפלגה דתית לאומית (data/research/knesset-member-changes/k12.json)."
+          }
+        ],
+        "note": "Role on the investiture day, 22 December 1988: Shamir told the Knesset the NRP had joined the government and the coalition and would name its ministers within days. Its two ministers took office on 27 December 1988.",
+        "noteEn": "Joined on the day of the vote; its two ministers took office five days later, on 27 December 1988.",
+        "noteHe": "הצטרפה ביום הצבעת האמון; שני שריה נכנסו לתפקידם חמישה ימים לאחר מכן, ב־27 בדצמבר 1988."
       },
       {
         "letters": "שס",
@@ -843,9 +926,9 @@
     "supportSeats": null,
     "reconciliation": {
       "status": "unresolved",
-      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 85; full membership remains unknown. Investiture: 84 for, 19 against, not recorded abstaining."
+      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 95 (Agudat Yisrael’s 5 provisional); whether any other faction was a member is not established. Investiture: 84 for, 19 against, not recorded abstaining."
     },
-    "knownMemberSeats": 85
+    "knownMemberSeats": 95
   },
   "supportSchemaVersion": 1
 }
