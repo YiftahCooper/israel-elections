@@ -236,6 +236,22 @@ for (const lang of ['en', 'he'] as const) {
   });
 }
 
+// One fact, one wording: MK history says "Membership ended" where the Knesset records no reason (fx-tlnames)
+test('a seat card says "Membership ended", with the reason only where one is recorded', async ({ page }) => {
+  await start(page, { level: 'simple', election: 'k25' });
+  const tl = await openTimeline(page);
+  await tl.locator('[data-person="12944"] circle.seat').click();
+  const card = page.locator('.tl-card');
+  await expect(card.locator('.tl-holders > li').first()).toContainText('Membership ended');
+  await expect(card).not.toContainText('reason not yet recorded');
+  await expect(card).not.toContainText('Left the Knesset');
+  await page.keyboard.press('Escape');
+  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k24');
+  const tl24 = await openTimeline(page);
+  await tl24.locator('[data-person="2291"] circle.seat').click();
+  await expect(page.locator('.tl-card .tl-holders > li').first()).toContainText('Membership ended · Norwegian law');
+});
+
 test('the 21st Knesset: no government formed, so no sides; the dissolution is a step', async ({ page }) => {
   await start(page, { level: 'simple', election: 'k21' });
   const tl = await openTimeline(page);

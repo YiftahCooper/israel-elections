@@ -157,10 +157,10 @@ function itemText(it: TimelineItem, term: TermRuntime, ds: ElectionDataset, mk: 
   const list = ds.lists.find((l) => l.id === term.seats[it.seat!].list);
   const where = list ? ` · ${listLabel(list, lang)}` : '';
   const why = reasonWords(it.reason, female(mk, it.out ?? it.in), L);
-  const inN = personName(mk, it.in, lang), outN = personName(mk, it.out, lang), fIn = female(mk, it.in), fOut = female(mk, it.out);
+  const inN = personName(mk, it.in, lang), outN = personName(mk, it.out, lang), fIn = female(mk, it.in);
   const text = it.in != null && it.out != null ? L(`${inN} replaces ${outN}`, `${inN} ${fIn ? 'נכנסת' : 'נכנס'} במקום ${outN}`)
     : it.in != null ? L(`${inN} enters the Knesset`, `${inN} ${fIn ? 'נכנסת' : 'נכנס'} לכנסת`)
-    : L(`${outN} leaves the Knesset`, `${outN} ${fOut ? 'עוזבת' : 'עוזב'} את הכנסת`);
+    : L(`${outN}: membership ended`, `${outN}: הכהונה הסתיימה`); // MK history's words: no reason claimed
   return `${text}${where}${why ? ` · ${why}` : ''}`;
 }
 
@@ -297,7 +297,9 @@ function SeatHolderList({ term, holders, now, mk }: { term: TermRuntime; holders
     const came = h[3] === 'o' ? L('From the first sitting', 'מהישיבה הראשונה') : h[3] === 'r' ? L('Returned', fem ? 'חזרה לכנסת' : 'חזר לכנסת') : L('Entered', fem ? 'נכנסה לכנסת' : 'נכנס לכנסת');
     const why = entryWords(h[5], L);
     const ended = h[2] !== null && h[2] < term.end;
-    const out = ended ? `${L('Left the Knesset', fem ? 'עזבה את הכנסת' : 'עזב את הכנסת')} · ${reasonWords(h[6], fem, L) ?? L('reason not yet recorded', 'הסיבה טרם תועדה')}` : L('Until the end of the term', 'עד סוף הכהונה');
+    // as MK history words it: the Knesset records no reason for most ends, and the words claim none (fx-tlnames)
+    const reason = ended ? reasonWords(h[6], fem, L) : null;
+    const out = ended ? `${L('Membership ended', 'הכהונה הסתיימה')}${reason ? ` · ${reason}` : ''}` : L('Until the end of the term', 'עד סוף הכהונה');
     return <>{came}{why ? ` (${why})` : ''} · {out}</>;
   };
   return <>
