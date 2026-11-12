@@ -45,11 +45,13 @@
 .cmp-more { width: 34px; text-align: center; }
 .cmp-more-btn { min-height: 30px; padding: 2px 6px; }
 .cmp-mid { width: 172px; text-align: center; }
-.cmp-mid-in { display: grid; grid-template-columns: 28px minmax(0, 1fr) 28px; align-items: center; gap: 2px; }
+/* the change, then the row's one copy button: beside it when the cell is wide enough, else on the line below (never drawn over it) */
+.cmp-mid-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 8px; }
 .cmp-delta { display: inline-flex; flex-direction: column; align-items: center; gap: 1px; line-height: 1.15; }
 .cmp-pp { font-variant-numeric: tabular-nums; }
 .cmp-row.selected > td { background: var(--open); }
 .cmp-groupline > td { background: var(--surface-2); border-block-start: 1px dashed var(--rule-2); }
+.cmp-groupline .cmp-delta { flex-direction: row; gap: 4px; white-space: nowrap; }
 .cmp-none { text-align: center; padding: 14px; }
 
 /* copy arrows: space always reserved (no jumps); shown on hover, focus or selection; always on touch screens */
@@ -95,7 +97,7 @@
 .cmp-band-k { color: var(--ink-2); font-size: 13px; }
 .cmp-band .cmp-arrow:disabled { opacity: .35; }
 
-.cmp-dialog[open] { display: grid; gap: 10px; padding: 14px 16px; border: 1px solid var(--rule-2); border-radius: 8px; background: var(--surface); color: var(--ink); max-inline-size: min(94vw, 34rem); max-block-size: 88dvh; overflow: auto; box-shadow: var(--shadow-pop); }
+.cmp-dialog[open] { display: grid; gap: 10px; padding: 14px 16px; border: 1px solid var(--rule-2); border-radius: 8px; background: var(--surface); color: var(--ink); max-inline-size: min(calc(94vw / var(--text-zoom, 1)), 34rem); max-block-size: calc(88dvh / var(--text-zoom, 1)); overflow: auto; box-shadow: var(--shadow-pop); }
 .cmp-dialog::backdrop { background: rgb(0 0 0 / .25); }
 .cmp-dialog form { display: grid; gap: 10px; }
 .cmp-dialog fieldset { border: 1px solid var(--rule); border-radius: 6px; padding: 6px 10px 8px; margin: 0; display: grid; gap: 4px; }
@@ -109,7 +111,7 @@
 .cmp-whole-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 .cmp-takes label, .preference-scope label { display: flex; gap: 6px; align-items: center; }
 .cmp-whole-votes { gap: 10px; flex-wrap: wrap; }
-.cmp-matching[open] { max-inline-size: min(96vw, 40rem); }
+.cmp-matching[open] { max-inline-size: min(calc(96vw / var(--text-zoom, 1)), 40rem); }
 .cmp-match-list { list-style: none; margin: 0; padding: 0; display: grid; }
 .cmp-match-list > li { border-block-end: 1px solid var(--rule); padding: 8px 0; display: grid; gap: 3px; }
 .cmp-match-names { gap: 6px; align-items: center; flex-wrap: wrap; }
@@ -149,8 +151,9 @@
   .cmp-table .cmp-open { pointer-events: none; }
   .cmp-table thead { display: none; }
   .cmp-table, .cmp-table tbody { display: block; }
-  .cmp-table tr.cmp-row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto auto 44px; grid-template-areas: "rn ls mid rs more" "ln ln ln ln more"; align-items: center; column-gap: 6px; padding: 6px 4px; border-block-end: 1px solid var(--rule); cursor: pointer; min-height: 44px; }
-  [dir="rtl"] .cmp-table tr.cmp-row { grid-template-columns: 44px auto auto auto minmax(0, 1fr); grid-template-areas: "more ls mid rs rn" "more ln ln ln ln"; }
+  /* the name keeps a readable floor; the change cell wraps instead of taking the name's space */
+  .cmp-table tr.cmp-row { display: grid; grid-template-columns: minmax(7rem, 1fr) auto auto auto 44px; grid-template-areas: "rn ls mid rs more" "ln ln ln ln more"; align-items: center; column-gap: 6px; padding: 6px 4px; border-block-end: 1px solid var(--rule); cursor: pointer; min-height: 44px; }
+  [dir="rtl"] .cmp-table tr.cmp-row { grid-template-columns: 44px auto auto auto minmax(7rem, 1fr); grid-template-areas: "more ls mid rs rn" "more ln ln ln ln"; }
   .cmp-table tr.cmp-row > td { border: 0; padding: 0; min-width: 0; }
   .cmp-table tr.cmp-row > .cmp-rname, .cmp-table tr.cmp-row > .cmp-lname { overflow: hidden; }
   .cmp-table tr.cmp-row > .cmp-tick, .cmp-table tr.cmp-row > .cmp-v, .cmp-table tr.cmp-row > .cmp-s, .cmp-table .cmp-arrow, .cmp-table .cmp-pp { display: none; }
@@ -160,9 +163,10 @@
   .cmp-table tr.cmp-row > .cmp-lname .slip { display: none; }
   .cmp-table tr.cmp-row > .cmp-ls { grid-area: ls; }
   .cmp-table tr.cmp-row > .cmp-rs { grid-area: rs; }
-  .cmp-table tr.cmp-row > .cmp-mid { grid-area: mid; width: auto; }
+  .cmp-table tr.cmp-row > .cmp-mid { grid-area: mid; width: auto; min-width: min-content; }
+  .cmp-table tr.cmp-row .cmp-copy-votes { white-space: normal; }
   .cmp-table tr.cmp-row > .cmp-mid .cmp-mid-in { display: flex; gap: 4px; }
-  .cmp-table tr.cmp-row > .cmp-mid .cmp-delta { flex-direction: row; gap: 4px; }
+  .cmp-table tr.cmp-row > .cmp-mid .cmp-delta { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 4px; }
   .cmp-table tr.cmp-row > .cmp-more { grid-area: more; width: auto; }
   .cmp-table .cmp-more-btn { min-height: 44px; min-width: 44px; }
   .cmp-table .cmp-name { max-width: none; min-width: 0; }
