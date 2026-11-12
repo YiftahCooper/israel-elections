@@ -67,3 +67,14 @@ For further visual transcription, render retained PDF pages using pdfjs-dist's N
 canvas factory, with the wasm path above, and keep PNGs in `.backup-scratch/k13-k15/`.
 Those images are disposable derivatives of the retained source bytes. New reviewed
 names belong in durable JSON only after checking the printed rank, name and page.
+
+## Addendum, 12 November 2026: the negative-search PDFs are now retained
+
+The nine negative-search issues (YP 4014, 4015, 4016, 4018, 4019, 4020 and 4022 for 1992; YP 4750 and 4756 for
+1999) were kept in ignored scratch, as above. Scratch was later wiped, so their manifest records pointed at files
+that no longer existed, while still carrying a hash and size as if retained (audit 12 Nov, ax-screens-d-03). All
+nine were fetched again from the same olaw.org.il URLs and are byte-identical to the recorded SHA-256 and byte
+counts. They are now retained in `data/raw/k13/` and `data/raw/k15/` beside the other gazette PDFs of those
+elections (16,646,732 bytes together), as decision 0004 keeps PDFs out of scratch, and the build now checks every
+manifest record that names a file (`verifyManifest` in `scripts/lib/build/sources.ts`). What the search covered
+and its limits, recorded above and in `agreement-search.reviewed.json`, are unchanged.
