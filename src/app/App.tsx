@@ -23,7 +23,7 @@ import { ChangeSummary } from './components/ChangeSummary.tsx';
 import { Scenarios } from './components/Scenarios.tsx';
 import { TopBar as TopBarView, electionLabel } from './components/TopBar.tsx';
 import { Walkthrough } from './components/Walkthrough.tsx';
-import { ErrorBoundary } from './components/ErrorBoundary.tsx';
+import { ErrorBoundary, forgetFailedCode, rememberFailedCode } from './components/ErrorBoundary.tsx';
 import { MkHistoryHost } from './components/MkHistory.tsx';
 import { WhatIf } from './components/WhatIf.tsx';
 import { SourceDialog } from './components/SourcePicker.tsx';
@@ -61,9 +61,10 @@ const loaders = {
 function lazyPanel<M extends Record<K, (props: any) => ReactNode>, K extends keyof M>(load: () => Promise<M>, name: K) {
   let loaded: M[K] | null = null;
   let pending: Promise<void> | null = null;
-  // one retry for a dropped request; a second failure reaches the panel's error boundary and is forgotten, so its Try
-  // again (or opening the tab again) asks for the code once more (audit 12 Nov 2026, c-robustness-09)
-  const preload = () => (pending ??= load().catch(load).then((m) => { loaded = m[name]; }, (e) => { pending = null; throw e; }));
+  // one retry for a dropped request; a second failure reaches the panel's error boundary and stays failed (forgetting
+  // it at once would ask again on every render, never showing the message) until Try again or opening the tab asks for
+  // the code once more (audit 12 Nov 2026, c-robustness-09; browsers fetch a failed module again when asked)
+  const preload = () => (pending ??= load().catch(load).then((m) => { loaded = m[name]; }, (e) => { rememberFailedCode(() => { pending = null; }); throw e; }));
   const Panel = (props: Parameters<M[K]>[0]) => {
     if (!loaded) use(preload());
     return createElement(loaded!, props);
@@ -182,7 +183,7 @@ function Shell() {
         <bdi dir="ltr" className="tiny muted">{loadError.message}</bdi></span>
       {loadError.kind === 'version'
         ? <button className="btn small" onClick={() => location.reload()}>{L('Reload', 'טעינה מחדש')}</button>
-        : <button className="btn small" onClick={() => (loadError.retry ?? (() => void openElection(loadError.id)))()}>{L('Try again', 'ניסיון נוסף')}</button>}
+        : <button className="btn small" onClick={() => (loadError.retry ?? (() => void openElection(loadError.id)))()}>{L('Try again', 'נסו שוב')}</button>}
       <button className="btn small ghost icon-only" onClick={() => { setState({ loadError: null }); if (!getState().scenario) void openElection('k26'); }} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button>
     </div>
   ))(((x) => x ? electionLabel(x, elections, lang) : loadError.id)(elections.find((x) => x.id === loadError.id)));
@@ -217,7 +218,7 @@ function Shell() {
       <TopBar s={pmOnly ? null : committed} r={cr} ds={ds} baseR={baseR} pmContestId={pmContestId} onContestChange={setPMContestId} />
       {pmOnly ? <main className="work"><PMResult contest={pmOnly} onKnesset={() => setPMContestId(null)} /></main> : <>
       <TabRow tools={availableTools} level={level} selected={customPage || sideBySide ? null : tool} label={(id) => label(id as Tab)}
-        onOpen={(id) => openTool(id as Tab)} onKey={(id) => setState({ tool: id as Tab })} onPrefetch={(id) => prefetchTab(id as Tab)} />
+        onOpen={(id) => { forgetFailedCode(); openTool(id as Tab); }} onKey={(id) => setState({ tool: id as Tab })} onPrefetch={(id) => prefetchTab(id as Tab)} />
       {tool !== 'after' && <ChangeSummary s={committed} r={cr} base={base} baseR={baseR} ds={ds} />}
       {!customPage && <CompareStrip s={committed} />}
       <CopyHost />

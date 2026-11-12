@@ -246,19 +246,22 @@ const persist = (): boolean => {
   const mine = keptOf(state);
   if ((Object.keys(mine) as (keyof Kept)[]).every((k) => mine[k] === synced[k])) return true; // nothing of it changed here
   const kept = mergeKept(mine, synced, storedKept());
-  try {
-    setRoomy(LS, JSON.stringify({ lang: kept.lang, level: kept.level, customFeatures: kept.customFeatures, markOfficial: kept.markOfficial, tool: kept.tool, saved: kept.saved }));
-    setRoomy(SETTINGS_KEY, JSON.stringify({ v: 2, values: kept.settings }));
-    // its own key, so the answer survives independently of the other settings
-    setRoomy(PREFERENCES_KEY, JSON.stringify(kept.preferences));
-    setRoomy(ITEM_PREFERENCES_KEY, JSON.stringify(validItemAnswers(kept.preferenceFor)));
-  } catch { return false; }
+  try { writeKept(kept); } catch { return false; }
   // the language and the open tool are not taken in, so this tab's own value stays the one its changes are measured from
   synced = { ...kept, lang: mine.lang, tool: mine.tool };
   // what another tab stored meanwhile is now shown here too (the language and open tool stay as this tab shows them)
   takeIn(kept);
   return true;
 };
+function writeKept(kept: Kept) {
+  setRoomy(LS, JSON.stringify({ lang: kept.lang, level: kept.level, customFeatures: kept.customFeatures, markOfficial: kept.markOfficial, tool: kept.tool, saved: kept.saved }));
+  setRoomy(SETTINGS_KEY, JSON.stringify({ v: 2, values: kept.settings }));
+  // its own key, so the answer survives independently of the other settings
+  setRoomy(PREFERENCES_KEY, JSON.stringify(kept.preferences));
+  setRoomy(ITEM_PREFERENCES_KEY, JSON.stringify(validItemAnswers(kept.preferenceFor)));
+}
+// What could not be read at start-up is left out of storage at once, so the line that says so is said only once.
+if (Object.keys(startupLoss).length) try { writeKept(synced); } catch { /* storage refused: said again next visit */ }
 /** Shows what another tab stored (merged with this tab's own changes, which win), without writing anything. */
 function takeIn(kept: Kept) {
   const patch: Partial<State> = {};

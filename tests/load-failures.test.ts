@@ -183,3 +183,11 @@ test('c-analysis-code-04: saving work in a browser whose storage the analysis ca
   expect(store.saveCurrent('Bigger', { newIdentity: true })).toBe(false);
   expect(store.getState().toast?.text).toMatch(/refused to save/);
 });
+
+test('what could not be read is left out of storage at start-up, so the line saying so comes once (kept by the two-tab change)', async () => {
+  const store = await visit({ 'israel-elections:v1': JSON.stringify({ lang: 'en', saved: [null, { id: 1 }] }) });
+  expect(store.getState().storageLoss).toMatchObject({ saved: 2 });
+  expect(JSON.parse(mem.get('israel-elections:v1')!).saved).toEqual([]);
+  const next = await visit(Object.fromEntries(mem));
+  expect(next.getState().storageLoss).toBeNull();
+});
