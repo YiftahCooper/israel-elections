@@ -64,7 +64,8 @@ is labelled. Suggested alternatives are not evidence of a past design discussion
 | [0086](0086-k13-k15-release-verification.md) | K13–K15: released artifacts and verification |
 | [0087](0087-constituent-parties-blocs-and-colours.md) | Constituent parties, per-election blocs and per-election colours |
 | [0088](0088-roster-corrections-and-odata-audit.md) | Roster corrections from re-read scans and an official membership audit of every election |
-
 | [0089](0089-party-logos-fair-use.md) | Official campaign logos under fair use for identification; separate constituent emblems |
+| [0090: Sourced locality groups and exact demographic turnout deltas](0090-demographic-turnout.md) | Locality groups from retained CBS tables and dated cohorts; a group's turnout change becomes an exact signed vote delta. Implemented. |
+| [0093: Election-specific partisan and neutral party links](0093-party-links.md) | Optional party and list links per election from `data/meta/party-links/`, with a stated order of preferred sources. Implemented. |
 
 Records 0020–0086 are grouped by election era; numbers in between are left free for that era. Records from 0087 on are product and design decisions.
