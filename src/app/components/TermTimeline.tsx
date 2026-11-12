@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import type { ElectionDataset } from '../../data/schema.ts';
-import { factionLabel, useMkRuntime, openMkHistory, type MkRuntime } from '../../history/mk.ts';
+import { factionLabel, useMkRuntime, openMkHistory, unrecordedFaction, type MkRuntime } from '../../history/mk.ts';
 import { chamberOrder, eventLine, holderAt, stepGlow, stepMarks, useTermRuntime, visibleSteps, type MarkKind, type PackedHolder, type StepView, type TermRuntime, type TimelineItem } from '../../history/termTimeline.ts';
 import { arcLayout, annularRegions } from '../layout.ts';
 import { listLabel } from '../derive.ts';
@@ -302,6 +302,11 @@ function SeatHolderList({ term, holders, now, mk }: { term: TermRuntime; holders
     const out = ended ? `${L('Membership ended', 'הכהונה הסתיימה')}${reason ? ` · ${reason}` : ''}` : L('Until the end of the term', 'עד סוף הכהונה');
     return <>{came}{why ? ` (${why})` : ''} · {out}</>;
   };
+  // days the Knesset's record gives no faction for (the member's own record, as on their history card; audit 12 Nov 2026, cx-factions-05)
+  const unrecorded = (h: PackedHolder) => {
+    const t = mk?.people[h[0]]?.terms.find((x) => x[0] === term.k && x[1] === h[1]);
+    return t ? unrecordedFaction(t[3], h[1], h[2] && h[2] < term.end ? h[2] : term.end) : [];
+  };
   return <>
     <div className="tl-holders-head row"><span>{L('Who sat here', 'מי ישב כאן')}</span>{ours && <Info title={L('Who sat here', 'מי ישב כאן')}>{L('The Knesset records who left and who entered, not which seat. A newcomer is shown in the seat of the member they replaced, within the same list.', 'הכנסת רושמת מי עזב ומי נכנס, לא באיזה מושב. מי שנכנס מוצג במושבו של מי שהחליף, באותה רשימה.')}</Info>}</div>
     <ol className="tl-holders">{holders.map((h, i) => <li key={i} aria-current={now === h ? 'true' : undefined}>
@@ -309,6 +314,7 @@ function SeatHolderList({ term, holders, now, mk }: { term: TermRuntime; holders
         {' '}<span className="muted small"><bdi dir={lang === 'he' ? 'rtl' : 'ltr'}><bdi>{formatDate(h[1], lang)}</bdi> – <bdi>{formatDate(h[2] && h[2] < term.end ? h[2] : term.end, lang)}</bdi></bdi></span></div>
       <div className="small">{line(h)}</div>
       {h[7].slice(1).map(([f, from, time], j) => <div key={j} className="small muted">{L('Faction', 'סיעה')}: <bdi>{factionName(f)}</bdi> · <bdi>{formatDate(from, lang)}{time ? `, ${time}` : ''}</bdi></div>)}
+      {unrecorded(h).map((g, j) => <div key={`u${j}`} className="small muted tl-unrec">{L('Faction not recorded', 'הסיעה לא תועדה')} · <bdi dir={lang === 'he' ? 'rtl' : 'ltr'}><bdi>{formatDate(g.start, lang)}</bdi> – <bdi>{formatDate(g.end, lang)}</bdi></bdi></div>)}
     </li>)}</ol>
   </>;
 }

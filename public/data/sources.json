@@ -7097,5 +7097,42 @@
   "retrievedAt": "2026-11-12",
   "bytes": 29890,
   "sha256": "4d9e3a4dbbeaf14fc154e5f31972aa15431810c09441edab5e1a838b0f925636"
+ },
+ {
+  "id": "law-elections-consolidated-extract",
+  "file": "law/elections-law-consolidated-extract.txt",
+  "url": "https://www.nevo.co.il/law_html/law01/190_026.htm",
+  "publisher": "נבו (מאגר החקיקה) — חוק הבחירות לכנסת [נוסח משולב], התשכ\"ט-1969",
+  "publisherEn": "Nevo (commercial consolidated-law database) — Knesset Elections Law [Consolidated Version], 5729-1969",
+  "official": false,
+  "description": "Short plain-text extract of sections 9–11 (polling areas; at most 800 voters, up to 900 with the committee's approval), 61(a)–(b) (a list's letters: up to three; a joint list of represented parties may exceed that), 68(a) (one ballot box per polling area) and 70(b) (a second box), as in force on the retrieval date. An extract from a consolidated copy, not an official publication; the whole page (2.6 MB) is not retained.",
+  "method": "http; retained excerpt",
+  "retrievedAt": "2026-11-12",
+  "bytes": 4285,
+  "sha256": "3f56d45d3f933c1d40c8b89b3b966f095792fe71403f8c8bffe1640a889b0649"
+ },
+ {
+  "id": "law-basic-law-government-1992",
+  "file": "law/basic-law-government-1992.pdf",
+  "url": "https://fs.knesset.gov.il/12/law/12_lsr_210707.pdf",
+  "publisher": "Knesset / Reshumot primary legislation",
+  "official": true,
+  "description": "Basic Law: The Government (1992) as enacted, passed 18 March 1992 (the Knesset legislation archive's file of the Sefer HaChukim text). Section 3(b): the Prime Minister is elected in general, national, direct, equal and secret elections; section 63(a): it applies to the election of the Prime Minister and the forming of the government from the elections to the 14th Knesset.",
+  "method": "http",
+  "retrievedAt": "2026-11-12",
+  "bytes": 750931,
+  "sha256": "170bee912e8c4c20794ed789b19c2b0beaa76d57fabcf51016eaa7dc2179f987"
+ },
+ {
+  "id": "law-sweden-seat-allocation-extract",
+  "file": "law/sweden-seat-allocation-extract.txt",
+  "url": "https://www.val.se/det-svenska-valsystemet/rostrakning-och-mandatfordelning/sa-fordelas-mandaten",
+  "publisher": "Valmyndigheten (Swedish Election Authority)",
+  "official": true,
+  "description": "Short text extract of the page \"Så fördelas mandaten\": the modified odd-number (Sainte-Laguë) method, first divisor 1.2, then 3, 5, 7, 9, 11. Not the whole page.",
+  "method": "http; retained excerpt",
+  "retrievedAt": "2026-11-12",
+  "bytes": 1375,
+  "sha256": "f61562d7d71c9f0ec6e5969ffc8edb4226afd738d27486253e9404f2a6ef6004"
  }
 ]

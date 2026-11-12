@@ -143,9 +143,26 @@ describe('the owner’s examples', () => {
   });
   it('Israel Eichler: the recorded Norwegian-law report, then leaving, without an invented reason', () => {
     const k25 = mkView(rt, EICHLER)!.rows.find((r) => r.k === 25)!;
-    expect(k25.events.map((e) => e.kind)).toEqual(['recorded', 'left']);
+    // his last faction row ends on 20 Jan 2026, the membership on the 21st: that day is flagged, not filled in
+    expect(k25.events.map((e) => e.kind)).toEqual(['recorded', 'unrecorded', 'left']);
     expect(k25.events[0].text!.en).toMatch(/Norwegian-law/);
     expect(k25.events[0].evidence).toBe('Contemporary report');
+  });
+});
+
+describe('days the official rows leave open (audit 12 Nov, cx-factions-05)', () => {
+  it('Yaakov Litzman, 6–8 April 2021: the faction is said to be unrecorded, not left blank', () => {
+    const k24 = mkView(rt, 528)!.rows.find((r) => r.k === 24)!;
+    expect(k24.terms[0]).toMatchObject({ start: '2021-04-06', end: '2021-04-08', unrecorded: [{ start: '2021-04-06', end: '2021-04-08' }] });
+    expect(k24.events[0]).toMatchObject({ date: '2021-04-06', kind: 'unrecorded', until: '2021-04-08' });
+  });
+  it('Malul, 20 July 2025: a membership that ends before it starts is flagged, not merged into time served', () => {
+    const k25 = mkView(rt, 30873)!.rows.find((r) => r.k === 25)!;
+    expect(k25.terms.map((t) => [t.start, t.end])).toEqual([['2023-02-02', '2025-07-20'], ['2026-05-19', '2026-11-10']]);
+    expect(k25.events.filter((e) => e.date === '2025-07-20').map((e) => e.kind)).toEqual(['left', 'unsettled']);
+  });
+  it('a member whose rows cover every day shows no such flag', () => {
+    expect(mkView(rt, SILMAN)!.rows.flatMap((r) => [...r.terms.flatMap((t) => t.unrecorded), ...r.events.filter((e) => e.kind === 'unrecorded' || e.kind === 'unsettled')])).toEqual([]);
   });
 });
 

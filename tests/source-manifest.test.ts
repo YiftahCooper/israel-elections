@@ -17,6 +17,13 @@ describe('source manifest integrity', () => {
       expect(() => verifyManifest(check, [{ ...rec(id), bytes: rec(id).bytes! + 1 }]), id).toThrow(/byte count differs/);
     }
   });
+  it('covers the stored law texts the glossary cites (audit 12 Nov, the law texts were only in scratch)', () => {
+    for (const id of ['law-elections-consolidated-extract', 'law-basic-law-government-1992', 'law-sweden-seat-allocation-extract']) {
+      expect(rec(id).file, id).toMatch(/^law\//);
+      expect(() => verifyManifest(check, [{ ...rec(id), sha256: '0'.repeat(64) }]), id).toThrow(/SHA-256 differs/);
+      expect(() => verifyManifest(check, [{ ...rec(id), bytes: rec(id).bytes! + 1 }]), id).toThrow(/byte count differs/);
+    }
+  });
   it('refuses a retained file that is missing or stored outside data/raw', () => {
     expect(() => verifyManifest(check, [{ ...rec('k13-agreement-search-yp4014'), file: 'k13/missing.pdf' }])).toThrow(/retained file missing/);
     expect(() => verifyManifest(check, [{ ...rec('k13-agreement-search-yp4014'), file: '../../.backup-scratch/k13-k15/yp4014.pdf' }])).toThrow(/outside data\/raw/);

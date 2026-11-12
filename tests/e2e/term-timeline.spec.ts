@@ -59,6 +59,20 @@ test('Standard adds votes and single MKs; Expert adds seat changes, chosen by ki
   await expect(tl.locator('[data-mark="rep"]')).toHaveCount(3);
 });
 
+// the Knesset's rows give Yaakov Litzman no faction for 6–8 April 2021 (audit 12 Nov, cx-factions-05): the seat card and
+// his history say so instead of leaving the faction blank
+for (const lang of ['en', 'he'] as const) test(`Litzman's first two days: the faction is said to be unrecorded (${lang})`, async ({ page }) => {
+  await start(page, { lang });
+  const tl = await openTimeline(page, lang);
+  await tl.locator('[data-person="528"] circle.seat').click();
+  const first = page.locator('.tl-card .tl-holders > li').first();
+  await expect(first.locator('.tl-unrec')).toHaveText(lang === 'he' ? 'הסיעה לא תועדה · 6 באפר׳ 2021 – 8 באפר׳ 2021' : 'Faction not recorded · 6 Apr 2021 – 8 Apr 2021');
+  await first.getByRole('button').first().click();
+  const row = page.locator('dialog[open].mk-sheet .mk-rows > li').filter({ hasText: lang === 'he' ? 'הכנסת ה־24' : '24th Knesset' });
+  await expect(row).toContainText(lang === 'he' ? 'הסיעה לא תועדה עד 8 באפר׳ 2021' : 'Faction not recorded until 8 Apr 2021');
+  await expect(row.locator('.mk-unrec')).toHaveCount(1);
+});
+
 test('Expert with seat changes off steps only through events', async ({ page }) => {
   await start(page, { level: 'expert', settings: { timelineSeatChanges: 'off' } });
   const tl = await openTimeline(page);

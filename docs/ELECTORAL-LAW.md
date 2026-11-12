@@ -273,3 +273,28 @@ establish agreement completeness; the dataset's status note says so. Rosters lis
 elected; later ranks are not transcribed (decisions [0083](decisions/0083-k13-k15-elected-prefix-release-standard.md)
 and [0086](decisions/0086-k13-k15-release-verification.md)). Tests also exercise historical rule reset and
 scenario import for ids k13–k15, independently of the real-seat checks.
+
+## Other rules the glossary quotes, and where their texts are kept
+
+These rules do not change how seats are allocated. The glossary states them, and each glossary source names its stored copy
+(`retained` in `src/app/glossary-data.ts`); every file below is listed with its hash in `data/raw/SOURCES.json`.
+
+* **Polling areas and ballot boxes, today.** Sections 9–11 (at most 800 voters; the Central Elections Committee may approve
+  up to 900), 68(a) (one ballot box per polling area) and 70(b) (a second box where an area has more than 900 voters or a
+  long queue is expected); **ballot letters**, section 61(a) as amended in July 2026 (up to three letters) and 61(b) (a joint
+  list of parties in the outgoing Knesset may exceed that). Kept as a short extract,
+  [`data/raw/law/elections-law-consolidated-extract.txt`](../data/raw/law/elections-law-consolidated-extract.txt): it comes
+  from Nevo's consolidated copy, a commercial database, and is not an official publication.
+* **Polling areas in 1949.** The Constituent Assembly Elections Ordinance, 1948, s.16(c): at most 1,000 voters on a
+  polling area's list, up to 1,200 with the committee's approval
+  ([`data/raw/k1/law-1948.pdf`](../data/raw/k1/law-1948.pdf), PDF p. 3); Amendment No. 29, published in the Official
+  Gazette on 31 December 1948, replaced 1,200 by 1,500 before the vote of 25 January 1949
+  ([`data/raw/k1/law-1948-312720.pdf`](../data/raw/k1/law-1948-312720.pdf), s.1(c)).
+* **Direct election of the Prime Minister.** Basic Law: The Government (1992) as enacted, s.3(b) (the Prime Minister is
+  elected in general, national, direct, equal and secret elections) and s.63(a) (from the elections to the 14th Knesset):
+  [`data/raw/law/basic-law-government-1992.pdf`](../data/raw/law/basic-law-government-1992.pdf), the Knesset legislation
+  archive's file.
+* **Sweden's first divisor.** The Swedish Election Authority's page "Så fördelas mandaten": the first divisor is 1.2, then
+  3, 5, 7…; kept as a short extract,
+  [`data/raw/law/sweden-seat-allocation-extract.txt`](../data/raw/law/sweden-seat-allocation-extract.txt). The app's
+  modified Sainte-Laguë uses 1.4, as its glossary entry says.

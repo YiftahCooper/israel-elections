@@ -149,7 +149,7 @@ function Row({ r, v }: { r: MkRow; v: MkView }) {
     <div className="mk-term"><TermBar r={r} v={v} /></div>
     <div className="mk-res"><Result r={r} v={v} /></div>
     {events.length > 0 && <ul className="mk-events">{events.map((e, i) => <li key={i}><span className="mk-edate">{formatDate(e.date, lang)}{e.time ? `, ${e.time}` : ''}</span><span>{eventText(e, v, L, lang)}</span>
-      {e.kind === 'recorded' && <EventSource e={e} />}</li>)}</ul>}
+      {e.kind === 'recorded' && <EventSource e={e} />}{e.kind === 'unsettled' && <Unsettled />}</li>)}</ul>}
   </li>;
 }
 
@@ -160,8 +160,17 @@ function eventText(e: MkEvent, v: MkView, L: T, lang: Lang): ReactNode {
     // (audit 12 Nov 2026, c-famous-late-07: Rabin and Ze'evi read "Left the Knesset")
     case 'left': return L('Membership ended', 'הכהונה הסתיימה');
     case 'faction': return L(`Faction: ${factionName(e.faction!.now, lang)} (until then ${factionName(e.faction!.was, lang)})`, `סיעה: ${factionName(e.faction!.now, lang)} (עד אז ${factionName(e.faction!.was, lang)})`);
+    // the Knesset's record gives no faction for these days: none is shown, and the line says so (audit 12 Nov 2026, cx-factions-05)
+    case 'unrecorded': return L(`Faction not recorded until ${formatDate(e.until!, 'en')}`, `הסיעה לא תועדה עד ${formatDate(e.until!, 'he')}`);
+    case 'unsettled': return L('A second membership record: dates not settled', 'רשומת כהונה נוספת: המועדים אינם ברורים');
     default: return lang === 'he' ? e.text!.he : e.text!.en;
   }
+}
+/** Why a membership record is not drawn as time served. */
+function Unsettled() {
+  const L = useL();
+  return <Info title={L('Dates not settled', 'המועדים אינם ברורים')}>{L('The Knesset’s record has another membership on this day that ends no later than it starts. It is not counted as time in the Knesset.',
+    'ברישומי הכנסת יש ביום זה כהונה נוספת שמסתיימת לא יאוחר משהיא מתחילה. היא אינה נספרת כזמן בכנסת.')}</Info>;
 }
 function EventSource({ e }: { e: MkEvent }) {
   const L = useL();
@@ -226,6 +235,8 @@ function TermBar({ r, v }: { r: MkRow; v: MkView }) {
   const marks = r.events.filter((e) => e.kind === 'recorded');
   return <>
     <div className="mk-bar" dir="ltr" ref={ref} style={{ inlineSize: `${W}%` }} role="img" aria-label={caption}>
+      {r.terms.flatMap((t) => t.unrecorded).map((g, i) => <span key={`u${i}`} className="mk-seg mk-unrec" title={L('Faction not recorded', 'הסיעה לא תועדה')}
+        style={{ insetInlineStart: `${(x(g.start) / W) * 100}%`, inlineSize: `${Math.max(0.6, ((x(g.end) - x(g.start)) / W) * 100)}%` }} />)}
       {r.terms.flatMap((t) => t.segments).map((s, i) => {
         const a = x(s.start), b = x(s.end), name = factionName(s, lang);
         // the faction is named inside its part of the bar only where the whole name fits
