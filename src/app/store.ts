@@ -10,7 +10,9 @@ import { validSettings, settingValue, settingDefault, withLinked, LINKED, SETTIN
 // Application state. Undo/redo keeps immutable scenario snapshots; saved scenarios remain action logs.
 import { useSyncExternalStore } from 'react';
 import { DATASET_SCHEMA_VERSION, ELECTION_IDS, type ElectionDataset, type ElectionId, type ElectionIndexEntry } from '../data/schema.ts';
-import { ActionError, applyAction } from '../model/actions.ts';
+import { ActionError, applyAction, collectSwitchedOff } from '../model/actions.ts';
+import { listLabel } from './derive.ts';
+import type { SimAgreement } from '../model/scenario.ts';
 import { errorText, M, type StorageLoss } from '../model/messages.ts';
 import { dropAnalysisCache } from './analysisCache.ts';
 import { validAction, scenarioFromDataset, validateScenario, type Action, type ActionContext, type ChangeEntry, type Scenario } from '../model/scenario.ts';
@@ -372,14 +374,29 @@ export function dispatch(action: Action): boolean {
   const s = state.scenario;
   if (!s) return false;
   try {
-    const next = applyAction(s, action, undefined, baseContext(state.datasets[s.electionId], s.factionSplitBaseline ?? false));
+    const { value: next, off } = collectSwitchedOff(() => applyAction(s, action, undefined, baseContext(state.datasets[s.electionId], s.factionSplitBaseline ?? false)));
     setState({ scenario: next, past: [...state.past.slice(-199), s], future: [] });
     keepOfficialPalette();
+    sayLawfulAgreements(next, off);
     return true;
   } catch (e) {
     toast('error', errorText(e, state.lang));
     return false;
   }
+}
+
+/** Names the agreements that returning to the law's rules switched off (one list, one agreement of two lists: section
+ *  67(a)), with Undo, which brings back the whole change (audit 12 Nov 2026, c-screens-compare-03). */
+function sayLawfulAgreements(s: Scenario, off: SimAgreement[]) {
+  const shown = off.filter((a) => !s.agreements.some((x) => x.id === a.id && x.enabled));
+  if (!shown.length) return;
+  const he = state.lang === 'he';
+  const name = (id: string) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, state.lang) : id; };
+  const names = shown.map((a) => a.members.map(name).join(' ⇄ ')).join(', ');
+  toast('info', shown.length === 1
+    ? (he ? `הסכם העודפים ${names} כובה: לפי החוק, לכל רשימה הסכם אחד עם רשימה אחת.` : `Surplus agreement ${names} switched off: by law, each list may have one agreement, with one other list.`)
+    : (he ? `הסכמי העודפים ${names} כובו: לפי החוק, לכל רשימה הסכם אחד עם רשימה אחת.` : `Surplus agreements ${names} switched off: by law, each list may have one agreement, with one other list.`),
+    { label: he ? 'ביטול' : 'Undo', run: undo });
 }
 
 /** Applies several actions as one undoable step (all or nothing). */
@@ -388,9 +405,10 @@ export function dispatchMany(actions: Action[]): boolean {
   if (!s || !actions.length) return false;
   try {
     const ctx = baseContext(state.datasets[s.electionId], s.factionSplitBaseline ?? false);
-    const next = actions.reduce((x, a) => applyAction(x, a, undefined, ctx), s);
+    const { value: next, off } = collectSwitchedOff(() => actions.reduce((x, a) => applyAction(x, a, undefined, ctx), s));
     setState({ scenario: next, past: [...state.past.slice(-199), s], future: [] });
     keepOfficialPalette();
+    sayLawfulAgreements(next, off);
     return true;
   } catch (e) {
     toast('error', errorText(e, state.lang));
