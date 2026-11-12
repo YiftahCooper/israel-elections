@@ -18,7 +18,7 @@ is labelled. Suggested alternatives are not evidence of a past design discussion
 | [0010: Hebrew and English with Hebrew as default](0010-hebrew-english-and-rtl.md) | Default to Hebrew. |
 | [0011: Separate historical and experimental rule modes](0011-historical-and-experimental-rules.md) | Historical mode fixes the election-specific rules and rejects setRules actions. |
 | [0012: Informal, editable blocs](0012-informal-editable-blocs.md) | Provide app-defined default blocs and allow bloc definitions and list assignments to change. |
-| [0013: Three interface levels over one engine](0013-three-interface-levels.md) | Default to Simple: vote editing, candidates, What if, coalitions, walkthrough and sources. |
+| [0013: Three interface levels over one engine](0013-three-interface-levels.md) | Default to Simple; the split in force is `src/app/features.ts` (addendum 12 Nov 2026). |
 | [0014: Explicit sources for changed votes](0014-explicit-vote-balancing.md) | Use a shared vote-edit helper for numeric fields, sliders, percentages and quick tools. |
 | [0015: Allocation tests and browser journeys](0015-layered-tests-and-ci.md) | Use Vitest for engine, model, vote-edit and analysis tests, including exact official 2022 seat reproduction and reported 2026 final-count seat reproduction. |
 | [0016: Expose exactness limits in counterfactual analysis](0016-analysis-proof-status.md) | Rerun the full allocation for candidate changes. |
