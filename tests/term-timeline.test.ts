@@ -68,9 +68,50 @@ describe('sides after each date (they match every count the research gives)', ()
     expect(coal(k25, '2024-09-29')).toBe(68);
     expect(coal(k25, '2025-01-19')).toBe(62);
     expect(coal(k25, '2025-03-19')).toBe(68);
+    expect(coal(k25, '2025-07-14')).toBe(64);
+    expect(coal(k25, '2025-07-15')).toBe(61);
+  });
+  // audit c-screens-people-01: United Torah Judaism is one faction of two parties. Degel HaTorah's four sitting MKs left on
+  // 14 Jul 2025, Agudat Yisrael's three on 15 Jul (list 25-ג's partyIds; the faction's members in the membership records)
+  test('a party leaving a shared faction moves only its own members', () => {
+    const DEGEL = [526, 23641, 30672, 30768], AGUDAT = [1057, 30846, 30870];
+    const arrows = (d: string, id: string) => step(k25, d).items.find((it) => it.id === id)!.marks.map(([s, m]) => [holderAt(k25, s, d)![0], m]);
+    expect(arrows('2025-07-14', 'k25-degel-exit').sort()).toEqual(DEGEL.map((p) => [p, 'D4o']).sort());
+    expect(arrows('2025-07-15', 'k25-utj-exit').sort()).toEqual(AGUDAT.map((p) => [p, 'D4o']).sort());
+    for (const p of AGUDAT) expect(step(k25, '2025-07-14').coalition).toContain(personSeat(k25, p, '2025-07-14'));
   });
   test('the last day shows the Knesset as it stood, not an empty chamber', () => {
     expect(step(k24, '2022-11-15').coalition!.length).toBeGreaterThan(50);
+  });
+});
+
+// audit of 12 Nov 2026: the 25th Knesset's records closed on 10 Nov 2026, the day the 26th opened. A term that ended
+// ends the same way whether or not the next term's records are in the repository.
+describe('the end of a term', () => {
+  test('one closing line, the chamber as it stood on its last day, and the bar ends that day', () => {
+    for (const t of Object.values(rt.terms)) {
+      if (!t.timeline) continue;
+      const [prev, last] = t.timeline.steps.slice(-2);
+      expect(last.date, `k${t.k}`).toBe(t.end);
+      expect(last.items.map((it) => it.kind), `k${t.k}`).toEqual(['term-end']);
+      expect(last.coalition, `k${t.k}`).toEqual(prev.coalition);
+      expect(t.seats.every((_, i) => holderAt(t, i, t.end)), `k${t.k}`).toBe(true);
+    }
+  });
+  test('the 25th ends on 10 Nov 2026, not on the 12 Nov snapshot, with coalition 61 and nobody shown leaving', () => {
+    expect(k25.end).toBe('2026-11-10');
+    const last = k25.timeline!.steps.at(-1)!;
+    expect(last.coalition).toHaveLength(61);
+    expect(last.items.some((it) => it.type === 'seat')).toBe(false);
+  });
+  test('a term still sitting runs to the snapshot date', () => {
+    const root = mkdtempSync(join(tmpdir(), 'tl-open-'));
+    for (const d of ['public', 'data/meta', 'data/research/knesset-events']) { mkdirSync(join(root, d, '..'), { recursive: true }); symlinkSync(join(process.cwd(), d), join(root, d)); }
+    mkdirSync(join(root, 'data/research/knesset-member-changes'), { recursive: true });
+    const ch = JSON.parse(readFileSync('data/research/knesset-member-changes/k25.json', 'utf8'));
+    for (const t of ch.tenures) if (t.end === '2026-11-10') { t.end = null; for (const f of t.factions) if (f.end === '2026-11-10') f.end = null; }
+    writeFileSync(join(root, 'data/research/knesset-member-changes/k25.json'), JSON.stringify(ch));
+    expect(compileTermTimeline(root).terms[25].end).toBe(ch.asOf);
   });
 });
 

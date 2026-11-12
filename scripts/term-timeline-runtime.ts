@@ -159,8 +159,11 @@ export function compileTermTimeline(root = process.cwd()): TermTimelineRuntime {
     const ch = changes.get(k)!;
     const opening = ch.checks.openingDateReported;
     if (!opening || !existsSync(`${root}/public/data/k${k}.json`)) continue;
+    // the term ends when the next one opens; failing that record, when every membership has closed (all on the last
+    // membership end: the next Knesset's opening day, as for every earlier term); only a term still sitting runs to asOf
     const next = changes.get(k + 1)?.checks.openingDateReported;
-    const end = next ?? ch.asOf ?? opening;
+    const closed = ch.tenures.length > 0 && ch.tenures.every((t) => t.end !== null) ? ch.tenures.reduce((m, t) => (t.end! > m ? t.end! : m), '') : null;
+    const end = next ?? closed ?? ch.asOf ?? opening;
     // the research lane's replacement events carry the reason the membership records leave "unknown"
     const evPath = `data/research/knesset-events/k${k}.json`;
     if (existsSync(`${root}/${evPath}`)) for (const e of read<Events>(evPath).events) {
@@ -271,6 +274,7 @@ function compileSteps(k: number, opening: string, end: string, seats: SeatRuntim
   const holderAt = (seat: number, day: string) => { const d = day >= end ? last : day; return holderTenure[seat].find((t) => t.start <= d && (t.end === null || d < t.end)) ?? null; };
   const seatOfPerson = (p: number, d: string) => seats.findIndex((_, i) => holderAt(i, d)?.personId === p);
   const events = ev.events.filter((e) => e.date >= opening && e.date <= end);
+  for (const e of ev.events) if (e.kind === 'term-end' && e.date !== end) anomalies.push(`k${k} ${e.id}: term ends ${e.date} in the events, ${end} in the membership records`);
   // events sharing a timelineGroup are one step: they must share a date
   const groupDates = new Map<string, Set<string>>();
   for (const e of events) if (e.timelineGroup) (groupDates.get(e.timelineGroup) ?? groupDates.set(e.timelineGroup, new Set()).get(e.timelineGroup)!).add(e.date);
@@ -346,7 +350,12 @@ function compileSteps(k: number, opening: string, end: string, seats: SeatRuntim
         const dir: 'c' | 'o' | undefined = dirText ? (/coalition/i.test(dirText) && !/opposition/i.test(dirText) ? 'c' : 'o')
           : JOIN.has(e.kind) ? 'c' : EXIT.has(e.kind) || marker === 'D2' ? 'o' : undefined;
         if (partyLevel && !(marker === 'D2')) {
-          for (const x of current()) if (factions.includes(factionAt(x.t, d) ?? -1) && !rebels.has(x.t.personId)) {
+          // a faction can hold more than one party (United Torah Judaism: Degel HaTorah and Agudat Yisrael); when the event
+          // names its people, only they move
+          const only = e.markerPersonIds?.length ? new Set(e.markerPersonIds) : null;
+          const members = current().filter((x) => factions.includes(factionAt(x.t, d) ?? -1));
+          for (const p of only ?? []) if (!members.some((x) => x.t.personId === p)) anomalies.push(`k${k} ${e.id}: ${p} is not in the event's factions on ${d}`);
+          for (const x of members) if ((!only || only.has(x.t.personId)) && !rebels.has(x.t.personId)) {
             const target = dir ?? (side.get(x.t.personId) === 'c' ? 'o' : 'c');
             // a graded D4 draws its arrows even when an announcement the day before already moved the party (the research counts
             // New Hope in the coalition from Sa'ar's 29 Sep 2024 announcement; the D4 is the 30 Sep approval)

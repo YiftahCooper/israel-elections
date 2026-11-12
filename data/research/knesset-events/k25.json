@@ -5109,6 +5109,12 @@
       "evidenceClass": "Own statement (reported)",
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
       "marker": "D4",
+      "markerPersonIds": [
+        526,
+        23641,
+        30672,
+        30768
+      ],
       "importance": "simple",
       "importanceReason": "An explicit exit changes continuing coalition support, even if the party or legal faction membership is unchanged.",
       "direction": "toOpposition"
@@ -5147,6 +5153,11 @@
       "evidenceClass": "Own statement (reported)",
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
       "marker": "D4",
+      "markerPersonIds": [
+        1057,
+        30846,
+        30870
+      ],
       "importance": "simple",
       "importanceReason": "An explicit exit changes continuing coalition support, even if the party or legal faction membership is unchanged.",
       "direction": "toOpposition"
