@@ -36,3 +36,13 @@ decisions bound a range with the same outcome. `tests/analysis-regions.test.ts` 
 count on random elections under every rule set. Proportional redistribution uses largest-remainder
 splitting, which is not monotone, so it gets no skipping. Results are identical to the exhaustive
 search (`tests/differential.test.ts`).
+
+## Correction, 12 November 2026: Seat safety keeps the exactness flag
+
+The Consequences paragraph describes the code of 3 November 2026. It is no longer true that SeatSecurity drops the
+exactness flag. Since `84c71777` (4 November) the worker carries each search's qualification (exact, sampled, or
+not found within the limit) into the rows, and since `337c77b0` (5 November) the table shows it: an exact minimum
+as a plain number, a figure found by sampling as "≤ n" (the smallest may be lower), "> limit" when an exact search
+found none within the limit, and "?" when sampling found none, with a key below the table; the tightest-seats
+summary uses only exact figures. `tests/security-qualification.test.ts` checks that the qualifications reach the
+rows. The original reasoning above is unchanged (audit 12 Nov, ax-screens-d-05).
