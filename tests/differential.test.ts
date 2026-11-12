@@ -280,7 +280,10 @@ const EXPECTED: Record<Family, string> = {
   // (scripts/lib/build/finalize.ts): only shortEn fields with ’ change (k9, k11, k13–k17, k20, k21). Other digests unchanged.
   // Merged with fx-after's k12 change (12 Nov): the datasets differ from the previous commit only in the fields named
   // above (field-by-field diff of all 26 published datasets), so the digest is the two changes together.
-  model: '07cf0bddd7d77f41e1b41641dd3a7d69e17f7d8cda87d545489ca0d38f6ae9d4',
+  // fx-names2 (13 Nov, c-famous-late-06): the 1999 Shas rank 1 (15-שס#1) has a reviewed identity, Aryeh Deri, from the
+  // results notice that records his resignation (YP 4757 p.3378). Recursive diff of k15 shows only that candidate's nameEn
+  // (added) and bio.probable (removed), and builtAt; HEAD's k15 with HEAD's dataset pins reproduces 07cf0bdd…. Others unchanged.
+  model: 'f548f39ec017b9e70c59f07563f53751ca183dece6c9d2173533024603a77808',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

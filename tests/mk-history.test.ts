@@ -353,11 +353,15 @@ describe('every elected member has their run', () => {
       expect(runs(p).find((r) => r.k === 25), `${p}`).toMatchObject({ list, rank, outcome: 'elected', basis: 'id' });
     for (const p of [30831, 30837, 30849, 30854, 30863]) expect(runs(p).find((r) => r.k === 25)?.basis, `${p}`).toBe('id');
   });
-  it('Deri and Benny Begin 1999, Arens 1992: elected, did not take the seat; linked by the name rule', () => {
-    expect(runs(2291).find((r) => r.k === 15)).toMatchObject({ list: '15-שס', rank: 1, outcome: 'declined', basis: 'name', via: 14 });
+  it('Deri 1999: elected, did not take the seat; tied by ID through the reviewed decision (YP 4757 p.3378 records his resignation)', () => {
+    const r = runs(2291).find((x) => x.k === 15);
+    expect(r).toMatchObject({ list: '15-שס', rank: 1, outcome: 'declined', basis: 'id' });
+    expect(ds(15).lists.find((l) => l.id === '15-שס')!.candidates.find((c) => c.id === '15-שס#1')!.nameEn).toBe('Aryeh Machluf Deri');
+    expect(mkView(rt, 2291)!.runs).toBe(11);
+  });
+  it('Benny Begin 1999, Arens 1992: elected, did not take the seat; no stored record names them, so linked by the name rule', () => {
     expect(runs(2178).find((r) => r.k === 15)).toMatchObject({ list: '15-יט', rank: 1, outcome: 'declined', basis: 'name', via: 14 });
     expect(runs(463).find((r) => r.k === 13)).toMatchObject({ list: '13-מחל', rank: 2, outcome: 'declined', basis: 'name', via: 12 });
-    expect(mkView(rt, 2291)!.runs).toBe(11);
   });
   it('one notion of a certain Knesset identity: the comparison match, the MK history and the English name agree', () => {
     // the 14 identities of candidates who were not elected, confirmed by the November research review: tied by ID and

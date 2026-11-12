@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "total": 11511,
+  "total": 11510,
   "counts": {
     "unknown": 6969,
     "missing-field": 283,
@@ -8,12 +8,12 @@
     "single-source": 2483,
     "low-confidence": 101,
     "release-hold": 0,
-    "inferred": 1167,
+    "inferred": 1166,
     "pending": 389,
     "unconfirmed": 101
   },
   "countsByStatus": {
-    "inferred-not-verified": 1032,
+    "inferred-not-verified": 1031,
     "needs-current-status-review": 313,
     "open": 10166
   },
@@ -35,10 +35,10 @@
       "unknown": 2217
     },
     "low": {
-      "total": 7050,
+      "total": 7049,
       "confirmed": 572,
       "probable": 0,
-      "provisional": 803,
+      "provisional": 802,
       "disputed": 0,
       "unknown": 5675
     }
@@ -80,9 +80,9 @@
       "unknown": 0
     },
     "Candidate identity links": {
-      "confirmed": 3215,
+      "confirmed": 3216,
       "probable": 41,
-      "provisional": 536,
+      "provisional": 535,
       "disputed": 0,
       "unknown": 0
     }
@@ -342,10 +342,10 @@
     },
     {
       "election": "k15",
-      "total": 373,
+      "total": 372,
       "highOpen": 30,
       "mediumOpen": 150,
-      "low": 161,
+      "low": 160,
       "counts": {
         "unknown": 205,
         "missing-field": 20,
@@ -353,7 +353,7 @@
         "single-source": 88,
         "low-confidence": 4,
         "release-hold": 0,
-        "inferred": 31,
+        "inferred": 30,
         "pending": 17,
         "unconfirmed": 7
       }
@@ -1051,7 +1051,7 @@
   ],
   "low": [
     {"area":"data/meta/bios/kN.json candidates","count":4066,"open":4066},
-    {"area":"Published lists","count":800,"open":568},
+    {"area":"Published lists","count":799,"open":567},
     {"area":"data/meta/parties.json parties","count":567,"open":459},
     {"area":"data/meta/kN.json colours","count":442,"open":442},
     {"area":"docs (prose)","count":300,"open":300},

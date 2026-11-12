@@ -591,6 +591,13 @@
    "personId": 14470,
    "confidence": "high",
    "reason": "Election-specific identity reviewed 9 Nov 2026: 7 Sep 2026 submission report names Hendel first, Zelekha second, Wilf third and explicitly describes Wilf’s earlier Knesset service. Later official retained list preserves these three places. Source: https://www.israelhayom.co.il/news/politics/article/21371188 (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
+  {
+   "candidateId": "15-שס#1",
+   "personId": 2291,
+   "confidence": "high",
+   "reason": "The 1999 results notice names the Shas list's rank 1 as the elected candidate who gave up the seat: YP 4757 p.3378 (data/raw/research/k15-results.pdf, PDF page 4), \"הודעה בדבר התפטרות מועמדים לכנסת החמש-עשרה … אות הרשימה: שס … המועמד: מס' 1. אריה מכלוף דרעי, ברשימה זו התפטר ביום ד' בסיון התשנ\"ט (19 במאי 1999)\". The same name, given and middle names included, is Knesset member PersonID 2291 (Aryeh Machluf Deri), tied by ID to Shas rank 1 in 1996 (14-שס#1); no other member has it. Audit 13 Nov 2026 (c-famous-late-06).",
+   "basis": "elected; reviewed decision: rank 1 of the Shas list, elected; resigned on 19 May 1999, before the results were published, as the results notice records (YP 4757 p.3378, \"מס' 1. אריה מכלוף דרעי … התפטר\"); Knesset member PersonID 2291."
   }
  ]
 }
