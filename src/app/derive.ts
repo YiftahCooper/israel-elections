@@ -416,7 +416,9 @@ export function editPathLabel(s: Scenario, path: EditPath, lang: Lang, fallback?
     if (agreement) return agreement.members.map(id => listName(id) ?? (lang === 'he' ? 'רשימה שהוסרה' : 'Removed list')).join(' + ');
     const entity = [...s.blocs, ...(s.blocSchemes ?? []), ...s.lists.flatMap(l => [...l.candidates, ...(l.parties ?? [])]),
       ...(fallback ? [...fallback.blocs, ...(fallback.blocSchemes ?? []), ...fallback.lists.flatMap(l => [...l.candidates, ...(l.parties ?? [])])] : [])].find(x => x.id === k);
-    return listName(k) ?? (entity ? (lang === 'he' ? entity.nameHe : englishLabel('nameEn' in entity ? entity.nameEn : null,entity.nameHe)) : (lang === 'he' ? 'פרט' : 'Detail'));
+    // a candidate is named as everywhere else (official English name, else the Hebrew), never letter by letter
+    const person = entity && [s, ...(fallback ? [fallback] : [])].some(x => x.lists.some(l => l.candidates.some(c => c.id === k)));
+    return listName(k) ?? (entity ? (person ? candidateName(entity as { nameHe: string; nameEn?: string }, lang) : lang === 'he' ? entity.nameHe : englishLabel('nameEn' in entity ? entity.nameEn : null,entity.nameHe)) : (lang === 'he' ? 'פרט' : 'Detail'));
   }).join(' · ');
 }
 
