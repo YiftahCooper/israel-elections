@@ -25,7 +25,10 @@
 .coal-sum b { font-size: 18px; }
 .coal-term { white-space: nowrap; }
 .coal-tests { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
-.coal-test { white-space: nowrap; font-weight: 600; }
+.coal-test { font-weight: 600; }
+/* a narrow card (a phone, large text) wraps a test line between its parts, never inside one:
+   the mark stays with its label, a number with its word, the "·" with the part before it, "=" with the total */
+.coal-part, .coal-for, .coal-against { white-space: nowrap; }
 .coal-mark { display: inline-block; margin-inline-end: 4px; }
 .coal-test[data-ok="true"] .coal-mark { color: var(--seat-gain); }
 .coal-test[data-ok="false"] .coal-mark { color: var(--seat-loss); }

@@ -126,3 +126,38 @@ test('a loaded record that adds up shows no gap line', async ({ page }) => {
   await expect(page.locator('.coal-now .coal-sum')).toHaveText('62 members + 5 outside support = 67');
   await expect(page.locator('.coal-recorded')).toHaveCount(0);
 });
+
+// On a phone with large text, the test line "✗ More for than against: 51 for · 64 against" is wider than the card;
+// it wraps between its parts and stays inside the card, never splitting a mark from its label or a number from its word;
+// the totals line above keeps "= 51" together.
+for (const lang of ['en', 'he'] as const) test(`the confidence-vote tests wrap inside the card on a phone with large text: ${lang}`, async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 1000 });
+  await page.addInitScript((lang) => { if (!sessionStorage.getItem('seeded')) {
+    localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, level: 'standard', hintDismissed: true }));
+    localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false, textSize: 'large' } }));
+    sessionStorage.setItem('seeded', '1'); } }, lang);
+  await page.goto('/');
+  await expect(page.locator('html')).toHaveAttribute('data-text', 'large');
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k25');
+  await page.getByRole('tab', { name: lang === 'he' ? 'קואליציות' : 'Coalitions', exact: true }).click();
+  const he = lang === 'he';
+  for (const n of he ? ['יש עתיד', 'המחנה הממלכתי', 'ישראל ביתנו', 'העבודה'] : ['Yesh Atid', 'National Unity', 'Yisrael Beiteinu', 'Labor']) await role(page, n, he ? 'בפנים' : 'In');
+  await role(page, he ? 'רע״ם' : "Ra'am", he ? 'תומכת' : 'Support');
+  await role(page, he ? 'חד״ש–תע״ל' : "Hadash–Ta'al", he ? 'נמנעת' : 'Abstain');
+  const now = page.locator('.coal-now');
+  await expect(now.locator('.coal-test').first()).toContainText(he ? '51 בעד · 64 נגד' : 'More for than against: 51 for · 64 against');
+  const m = await now.evaluate((card) => {
+    const cs = getComputedStyle(card), r = card.getBoundingClientRect(), z = (card as Element & { currentCSSZoom?: number }).currentCSSZoom ?? 1;
+    const left = r.left + (parseFloat(cs.borderLeftWidth) + parseFloat(cs.paddingLeft)) * z, right = r.right - (parseFloat(cs.borderRightWidth) + parseFloat(cs.paddingRight)) * z;
+    return { left, right, overflow: document.documentElement.scrollWidth - innerWidth,
+      tests: [...card.querySelectorAll('.coal-test')].map((t) => { const b = t.getBoundingClientRect(); return { text: t.textContent, left: b.left, right: b.right }; }),
+      // a part on one line has all its boxes at one height (Hebrew gives one box per direction run: digits, word)
+      split: [...card.querySelectorAll('.coal-part, .coal-term, .coal-test .coal-for, .coal-test .coal-against')].filter((p) => { const tops = [...p.getClientRects()].map((x) => x.top); return Math.max(...tops) - Math.min(...tops) > 4; }).map((p) => p.textContent) };
+  });
+  expect(m.overflow).toBeLessThanOrEqual(0);
+  for (const t of m.tests) {
+    expect(t.right, t.text!).toBeLessThanOrEqual(m.right + 0.5);
+    expect(t.left, t.text!).toBeGreaterThanOrEqual(m.left - 0.5);
+  }
+  expect(m.split).toEqual([]);
+});
