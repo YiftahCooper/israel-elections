@@ -2408,7 +2408,7 @@
       "electionId": "k18",
       "electionDate": "2009-02-10",
       "datasetPath": "public/data/k18.json",
-      "datasetSha256": "d80dac2beb2bb16d063272316afcedefca4ec7187a35445ac96c3db92db255a2",
+      "datasetSha256": "86d33a558e9a4ee20c7a9ed9a1c4bea4781d71daaf24fdf04d629ae487073b9d",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2009-02-17",
@@ -2496,7 +2496,7 @@
       "electionId": "k19",
       "electionDate": "2013-01-22",
       "datasetPath": "public/data/k19.json",
-      "datasetSha256": "29dac46e6d1e15b29c21eee9206cb5d03cddbf2a689ede3fee93d9f3412daf22",
+      "datasetSha256": "e7fb17e565bea9697b2236ca67f5f7ae593ae23baf68ac31590513db7e821dcc",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2013-01-30",
