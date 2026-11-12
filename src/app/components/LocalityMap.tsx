@@ -22,7 +22,7 @@ import { allLines, shownLines, tickLine } from '../mapLineChoice.ts';
 import type { FeatureCollection } from 'geojson';
 import { MAP_LINES, MAP_LINE_SNAPSHOT, drawMapLines, mapLineSourceLabel } from '../locality-map-lines.ts';
 import { basemapAttribution } from '../locality-basemap-style.ts';
-import { fmtInt, trimDecimal } from '../format.ts';
+import { fmtInt, fmtPoints } from '../format.ts';
 import { useDigits } from '../store.ts';
 
 function useJson<T>(url: string | null, empty: T) {
@@ -184,7 +184,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       const title = document.createElement('strong'); title.dir = 'auto'; title.textContent = localityName(names, p.row, p.index, lang);
       const why = document.createElement('span'); why.dir = 'auto';
       why.textContent = w.tied ? L('Tie', 'שוויון') : w.key === null ? L('Unassigned / no votes', 'ללא שיוך / ללא קולות')
-        : `${groupName(w.key)} \u2066+${trimDecimal((w.margin / Math.max(1, p.row.valid) * 100).toFixed(digits))}\u2069${L(' pp', ' נק׳')}`;
+        : `${groupName(w.key)} \u2066+${fmtPoints(w.margin / Math.max(1, p.row.valid) * 100, digits, true)}\u2069${L(' pp', ' נק׳')}`;
       const source = document.createElement('span'); source.dir = 'auto'; source.textContent = localityNameSource(names, p.row, p.index, lang);
       tip.append(title, why, source);
       // a thin white outline separates neighbouring dots; a dark ring would darken every colour alike

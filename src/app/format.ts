@@ -74,7 +74,14 @@ export function fmtPp(r: Rational, digits = 2): string {
 }
 /** A percentage that is already a number (an entered share, a sum of entered shares), with at most `digits`
  *  decimals and no trailing zeros: 99.5%, 105%. Never an unbounded float. */
-export const fmtPctNum = (n: number, digits = 2) => Number.isFinite(n) ? `${Number(n.toFixed(digits)).toString()}%` : '—%';
+/** A size held as a float, with at most `digits` decimals, never a non-zero value as 0: "<0.01" (or "<1" with none). */
+export function nonZeroFixed(size: number, digits = 2): string {
+  const text = trimDecimal(size.toFixed(digits));
+  return size !== 0 && Number(text) === 0 ? `<${digits === 0 ? '1' : `0.${'0'.repeat(digits - 1)}1`}` : text;
+}
+/** A change in percentage points held as a float, as plain text (tooltips, labels): signed unless `unsigned`. */
+export const fmtPoints = (value: number, digits = 2, unsigned = false) => (unsigned ? '' : value > 0 ? '+' : value < 0 ? '−' : '') + nonZeroFixed(Math.abs(value), digits);
+export const fmtPctNum = (n: number, digits = 2) => Number.isFinite(n) ? `${n < 0 ? '-' : ''}${nonZeroFixed(Math.abs(n), digits)}%` : '—%';
 export const fmtRat = (r: Rational, digits = 2) => toDecimal(r, digits).replace(/^(-?)(\d+)/, (_, sg: string, d: string) => sg + EN.format(BigInt(d)));
 export const fmtFrac = (r: Rational) => `${fmtInt(r.num)} / ${fmtInt(r.den)}`;
 export const ratOf = (a: bigint | number, b: bigint | number) => rat(BigInt(a), BigInt(b));
