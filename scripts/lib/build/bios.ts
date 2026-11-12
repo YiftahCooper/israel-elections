@@ -37,6 +37,12 @@ export const knessetMemberSure = (e: Graded) => e.confidence === 'high' || membe
  *  probable; a rule-based name match (`probable: true` in the published bio) is provisional. */
 export const bioIdentityCertainty = (e: Entry): 'confirmed' | 'probable' | 'provisional' => memberIdentitySure(e) ? 'confirmed' : e.confidence === 'high' ? 'probable' : 'provisional';
 
+/** The display form of an official English name from the Knesset website: backticks become apostrophes and repeated
+ *  whitespace collapses (audits k7, k9, k13, k18). Spelling is never changed here; the raw site value stays in data/raw/bios
+ *  as evidence. One function for the lists and MK history, so a person reads the same on both (audit 12 Nov 2026,
+ *  ax-names-rosters-05). */
+export const displayNameEn = (raw: string) => raw.replaceAll('`', "'").replace(/\s+/g, ' ').trim();
+
 export function applyBios(ds: ElectionDataset): ElectionDataset {
   const file = join(ROOT, 'data', 'meta', 'bios', `${ds.id}.json`);
   if (!existsSync(file)) return ds;
@@ -67,7 +73,5 @@ export function applyBios(ds: ElectionDataset): ElectionDataset {
     if (/en\.wikipedia/.test(JSON.stringify(b))) throw new Error(`data/meta/bios/${ds.id}.json: English Wikipedia is never linked`);
     return b.knesset || b.hewiki || b.party ? b : null;
   };
-  // Display form of official site names: backticks become apostrophes and repeated whitespace collapses (audits k7, k9, k13, k18).
-  // The raw site value stays in data/raw/bios as evidence; spelling is never changed here.
-  return { ...ds, lists: ds.lists.map((l) => ({ ...l, candidates: l.candidates.map((c) => { const e = bios[c.id]; const b = e ? bioOf(e) : null; const en = e ? nameEnOf(e) : undefined; const displayEn = en?.replaceAll('`', "'").replace(/\s+/g, ' ').trim(); return b || displayEn ? { ...c, ...(displayEn ? { nameEn: displayEn } : {}), ...(b ? { bio: b } : {}) } : c; }) })) };
+  return { ...ds, lists: ds.lists.map((l) => ({ ...l, candidates: l.candidates.map((c) => { const e = bios[c.id]; const b = e ? bioOf(e) : null; const en = e ? nameEnOf(e) : undefined; const displayEn = en ? displayNameEn(en) : undefined; return b || displayEn ? { ...c, ...(displayEn ? { nameEn: displayEn } : {}), ...(b ? { bio: b } : {}) } : c; }) })) };
 }

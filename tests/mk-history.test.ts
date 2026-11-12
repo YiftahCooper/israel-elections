@@ -391,3 +391,27 @@ describe('a list that withdrew before the election is not a run', () => {
     }
   });
 });
+
+// audit 12 Nov 2026, ax-build-guesses-01, ax-names-rosters-04/05, c-famous-early-07: MK history took the Knesset site's
+// raw English names ("Moseh Zeev Feldman", "Yeushua Sagi", "Meir Pa`il") while the lists show the reviewed display form
+describe('a person has one English name on every screen', () => {
+  it('the reviewed spellings: Moshe Zeev Feldman, Yehoshua Sagi', () => {
+    expect(rt.people[2541].en).toBe('Moshe Zeev Feldman');
+    expect(rt.people[2624].en).toBe('Yehoshua Sagi');
+  });
+  it('no backtick for an apostrophe', () => {
+    expect(Object.entries(rt.people).filter(([, p]) => p.en?.includes('`')).map(([id, p]) => `${id} ${p.en}`)).toEqual([]);
+    expect(Object.values(rt.factions).filter((f) => f[1]?.includes('`'))).toEqual([]);
+  });
+  it('equals the name on the list of the same election, for every candidacy that has one', () => {
+    const differ: string[] = [];
+    for (let k = 1; k <= 26; k++) {
+      const byPlace = new Map(ds(k).lists.flatMap((l) => l.candidates.map((c) => [`${l.id}#${c.rank}`, c.nameEn] as const)));
+      for (const [id, p] of Object.entries(rt.people)) for (const r of p.runs) {
+        const en = r[0] === k ? byPlace.get(`${r[1]}#${r[2]}`) : undefined;
+        if (en && en !== p.en) differ.push(`${id} ${r[1]}#${r[2]}: list ${en}, history ${p.en}`);
+      }
+    }
+    expect(differ).toEqual([]);
+  });
+});

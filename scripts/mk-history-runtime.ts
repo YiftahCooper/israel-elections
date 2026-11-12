@@ -14,7 +14,7 @@ import { RULESETS } from '../src/engine/rules.ts';
 import { mixHex } from '../src/data/colour.ts';
 import { compileHistoryRuntime } from './party-history-runtime.ts';
 import { shownRows } from './lib/faction-rows.ts';
-import { knessetMemberSure } from './lib/build/bios.ts';
+import { displayNameEn, knessetMemberSure } from './lib/build/bios.ts';
 
 /** How a run ended. elected: within the list's seats at the election. first: not within the seats but sat from the
  *  first sitting. later: entered during that Knesset. out: did not enter that Knesset. declined: within the seats but
@@ -61,7 +61,7 @@ export interface MkRuntime {
 /** Review output: matches left out and why (written by scripts/research/mk-history-review.ts, not shipped). */
 export interface MkReview { leftOut: { candidateId: string; nameHe: string; reason: string; personIds: number[] }[]; anomalies: string[] }
 
-type Bio = { knessetPersonId?: number | null; confidence?: string; knesset?: { siteId?: number } | null; hewiki?: { title?: string } | null; basis?: string };
+type Bio = { knessetPersonId?: number | null; confidence?: string; knesset?: { siteId?: number } | null; hewiki?: { title?: string } | null; basis?: string; displayNameEn?: string };
 type Tenure = { personId: number; nameHe: string; start: string; end: string | null; factions: { factionId: number; nameHe: string; start: string; end: string | null; startTime?: string; endTime?: string }[] };
 type Changes = { tenures: Tenure[]; factionRegistry: { id: number; nameHe: string; start: string; end: string | null }[]; checks: { openingDateReported?: string | null } };
 type KEvent = { id: string; date: string; kind: string; who: { personIds?: number[] }; summary: { en: string; he: string }; classification: string; certainty: string; evidenceClass?: string; sources: { url?: string; publisher?: string }[] };
@@ -90,12 +90,15 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
   const read = (path: string) => JSON.parse(readFileSync(`${root}/${path}`, 'utf8'));
   const persons = new Map((read('data/raw/bios/knesset-odata-persons.json') as { PersonID: number; FirstName: string; LastName: string; GenderDesc: string }[]).map((p) => [p.PersonID, p]));
   const siteOf = new Map((read('data/raw/bios/knesset-odata-mk-site-codes.json') as { KnsID: number; SiteId: number }[]).map((s) => [s.KnsID, s.SiteId]));
-  const enOfSite = new Map((read('data/raw/bios/knesset-site-mk-names-en.json') as { siteId: number; nameEn: string }[]).map((s) => [s.siteId, s.nameEn.replace(/\s+/g, ' ').trim()]));
+  // English names as the lists show them (scripts/lib/build/bios.ts): the site's, in display form, or a reviewed spelling
+  // where the site misprints it (data/meta/bios displayNameEn: "Moseh Zeev Feldman" → Moshe, "Yeushua Sagi" → Yehoshua)
+  const enOfSite = new Map((read('data/raw/bios/knesset-site-mk-names-en.json') as { siteId: number; nameEn: string | null }[]).filter((s) => s.nameEn).map((s) => [s.siteId, displayNameEn(s.nameEn!)]));
   const historyParties = new Map(compileHistoryRuntime(root).elections.flatMap((e) => e.lists.map((l) => [l[0], l[8].map(([p]) => p)] as const)));
 
   const ds = new Map<number, ElectionDataset>(K.map((k) => [k, read(`public/data/k${k}.json`)]));
   const bios = new Map<number, Record<string, Bio>>(K.map((k) => [k, (read(`data/meta/bios/k${k}.json`) as { candidates: Record<string, Bio> }).candidates]));
   const changes = new Map<number, Changes>(K.map((k) => [k, read(`data/research/knesset-member-changes/k${k}.json`)]));
+  for (const b of [...bios.values()].flatMap((x) => Object.values(x))) if (b.displayNameEn && b.knesset?.siteId) enOfSite.set(b.knesset.siteId, b.displayNameEn);
 
   const out: MkRuntime = { version: 1, elections: {}, lists: {}, factions: {}, failedRunCoverage: { full: [], partial: {}, excluded: {} }, people: {} };
   const anomalies = review?.anomalies ?? [];
