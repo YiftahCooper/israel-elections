@@ -320,6 +320,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       need(Number.isFinite(action.retentionPct), 'retention', M.retention);
       need(action.retentionPct >= 0 && action.retentionPct <= 100, 'retention', M.retention);
       const parts = action.ids.map((id) => listById(s, id));
+      notWithdrawn(s, ...action.ids); // its ballots are held as invalid until it returns; restore it first
       const total = sumVotes(parts.map((l) => l.votes));
       const kept = Number((BigInt(total) * BigInt(Math.round(action.retentionPct * 100))) / 10000n);
       const seen = new Set<string>();
@@ -342,6 +343,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
     }
     case 'split': {
       const orig = listById(s, action.id);
+      notWithdrawn(s, action.id);
       need(action.parts.length >= 2, 'split-size', M.splitTwo);
       need(new Set(action.parts.map((p) => p.newId)).size === action.parts.length, 'duplicate-id', M.newListsDiffer);
       need(!action.parts.some((p) => s.lists.some((l) => l.id === p.newId && l.id !== action.id)), 'duplicate-id', M.listExists);
@@ -376,10 +378,13 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       // a new list is its own lineage, so comparisons and later merges/splits can follow it
       s = { ...s, lists: [...s.lists, { id: action.newId, synthetic: { kind: 'new', parts: [] }, originIds: [action.newId], letters: action.letters, nameHe: action.nameHe, shortHe: action.nameHe, shortEn: null, color: action.color, bloc: null, votes: action.votes, withdrawn: false, candidates: [], sponsorsHe: '' }] };
       break;
-    case 'removeList':
-      listById(s, action.listId);
-      s = pruneAgreements({ ...s, lists: s.lists.filter((l) => l.id !== action.listId) });
+    case 'removeList': {
+      // a withdrawn list's ballots are held as invalid only to return on reinstatement: with the list gone, they go too
+      const l = listById(s, action.listId);
+      const held = l.withdrawn ? Math.min(l.heldVotes ?? 0, s.invalid) : 0;
+      s = pruneAgreements({ ...s, invalid: s.invalid - held, lists: s.lists.filter((x) => x.id !== action.listId) });
       break;
+    }
     case 'setWithdrawn': {
       // Ballots for a list that does not contest are invalid: its votes move to the invalid count and
       // return if the list is reinstated.

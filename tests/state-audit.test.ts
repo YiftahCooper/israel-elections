@@ -240,3 +240,21 @@ test('c-robustness-06: unreadable saved comparisons are left out and counted', a
   expect(JSON.parse(mem.get('israel-elections:comparisons')!).map((c: { id: string }) => c.id)).toEqual(['c1']);
   expect(s.storageLossText(s.getState().storageLoss, 'en')).toMatch(/2 saved comparisons/);
 });
+
+test('c-state-code-15: removing a withdrawn list takes its held ballots out of the invalid count; merging or splitting one is refused', () => {
+  const base = store.replay(k25, 'x', []).scenario, ctx = { base };
+  const rz = base.lists.find((l) => l.shortEn === 'Religious Zionism')!;
+  let s = applyAction(base, { type: 'addList', newId: 'sim-new', nameHe: 'חדשה', letters: 'חד', color: '#123456', votes: 0 }, undefined, ctx);
+  s = applyAction(s, { type: 'transfer', from: base.lists[0].id, to: 'sim-new', votes: 40000 }, undefined, ctx);
+  const before = s.invalid;
+  s = applyAction(s, { type: 'setWithdrawn', listId: 'sim-new', withdrawn: true }, undefined, ctx);
+  expect(s.invalid).toBe(before + 40000);
+  expect(applyAction(s, { type: 'removeList', listId: 'sim-new' }, undefined, ctx).invalid).toBe(before);
+  // the real 2022 figures: withdrawing Religious Zionism makes its 516,470 ballots invalid; removing it takes them out again
+  const w = applyAction(base, { type: 'setWithdrawn', listId: rz.id, withdrawn: true }, undefined, ctx);
+  expect([base.invalid, w.invalid]).toEqual([29851, 546321]);
+  expect(applyAction(w, { type: 'removeList', listId: rz.id }, undefined, ctx).invalid).toBe(29851);
+  const merge: Action = { type: 'merge', ids: [base.lists[0].id, rz.id], newId: 'sim-m', nameHe: 'איחוד', letters: 'א', color: '#123456', retentionPct: 100, candidateOrder: 'interleave', nonRetained: 'abstain' };
+  expect(() => applyAction(w, merge, undefined, ctx)).toThrow(/withdrawn/);
+  expect(() => applyAction(w, { type: 'split', id: rz.id, parts: [{ newId: 'a', nameHe: 'א', letters: 'א1', color: '#111111', votes: 0, candidateIds: [] }, { newId: 'b', nameHe: 'ב', letters: 'ב1', color: '#222222', votes: 0, candidateIds: [] }] }, undefined, ctx)).toThrow(/withdrawn/);
+});

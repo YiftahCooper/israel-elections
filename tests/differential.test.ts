@@ -269,7 +269,7 @@ const EXPECTED: Record<Family, string> = {
   // fx-scen (12 Nov): refusal wording only. Every engine refusal became plain English with a Hebrew form, and the corpus
   // folds each refused action's message into this digest. 123 of 520 model cases differ, each only in that text (case by
   // case against HEAD's src); engine inputs, seats and validation are identical and the other four digests unchanged.
-  model: '31937648a17c7064fddd6cec481803b68c060ed8a298e96611ac3c15acea1446',
+  model: '010bbd78398c382f78f9a470cb34a16cedbe579e2defa3777ee47a28fbb838e9',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };
