@@ -32,7 +32,10 @@ describe('marginal votes (exact, verified at k and k−1)', () => {
       const at = allocate(perturb(input, '25-שס', source, r.votes!)!);
       const below = allocate(perturb(input, '25-שס', source, r.votes! - 1n)!);
       expect(seats(at, '25-שס')).toBe(12);
-      expect(seats(below, '25-שס')).toBe(11);
+      // one vote fewer: 11 seats, or an exact tie for the 12th, decided by lot (the answer is the first certain count;
+      // c-results-engine-02): with new voters, 27,327 ties Shas with UTJ inside their surplus pair
+      if (r.lotteryFrom === r.votes! - 1n) expect([...below.remainderSteps, ...below.internalDivisions.flatMap((d) => d.steps)].some((x) => x.tie?.tiedUnitIds.includes('25-שס'))).toBe(true);
+      else expect(seats(below, '25-שס')).toBe(11);
     }
   }, 10_000); // the proportional source is scanned vote by vote (about 1 s locally)
 

@@ -6,7 +6,7 @@ import { applyAction } from '../../model/actions.ts';
 import { errorText } from '../../model/messages.ts';
 import { validAction, type Action, type Scenario } from '../../model/scenario.ts';
 import { baselineOf } from '../factionDefaults.ts';
-import { getState, loadDataset, noteStorageLoss, openElection, replay, setState, toast } from '../store.ts';
+import { DataLoadError, getState, loadDataset, noteStorageLoss, openElection, replay, setState, toast } from '../store.ts';
 import type { MatchOverride } from './match.ts';
 
 /** Owner default (7 Nov): a list row's copy button (once arrows, now "Copy votes…") shows on hover, focus or selection;
@@ -83,9 +83,11 @@ export async function readComparison(hash: string): Promise<ComparisonLink | nul
  *  (its changes as the reference's Side by side draft), on the Side by side page. */
 export async function openComparison(c: ComparisonLink): Promise<boolean> {
   const he = getState().lang === 'he';
-  if (!(await openElection(c.main.e, { name: c.main.n || (he ? 'תרחיש משותף' : 'Shared scenario'), log: c.main.l, factionSplitBaseline: c.main.f }))) return false;
+  // both sides' data first: if either cannot be loaded, nothing is opened or changed (the load banner says which)
   let ods: ElectionDataset;
-  try { ods = await loadDataset(c.other.e); } catch { return false; }
+  try { ods = await loadDataset(c.other.e); }
+  catch (e) { setState({ loadError: { id: c.other.e, message: e instanceof Error ? e.message : String(e), kind: e instanceof DataLoadError ? e.kind : 'network', retry: () => void openComparison(c) } }); return false; }
+  if (!(await openElection(c.main.e, { name: c.main.n || (he ? 'תרחיש משותף' : 'Shared scenario'), log: c.main.l, factionSplitBaseline: c.main.f }))) return false;
   const value = c.other.e === c.main.e ? 'official' : `${ELECTION}${c.other.e}`;
   const key = c.other.e === c.main.e ? `official:${c.other.e}` : value;
   const start = baselineOf(ods);
@@ -103,10 +105,16 @@ export async function openComparison(c: ComparisonLink): Promise<boolean> {
 export async function openComparisonFromHash(): Promise<boolean> {
   if (!/^#c=/.test(location.hash)) return false;
   const c = await readComparison(location.hash);
-  if (!c || !(await openComparison(c))) {
+  if (!c) {
     history.replaceState(null, '', location.pathname + location.search);
     toast('error', getState().lang === 'he' ? 'קישור ההשוואה פגום או חלקי; לא נפתחה השוואה.' : 'This comparison link is damaged or incomplete; no comparison was opened.');
     return false;
+  }
+  // the data of a side could not be loaded: the link stays, nothing changed, and Try again opens the comparison
+  if (!(await openComparison(c))) {
+    const e = getState().loadError;
+    if (e && !e.kept) setState({ loadError: { ...e, retry: () => void openComparisonFromHash() } });
+    return true;
   }
   history.replaceState(null, '', location.pathname + location.search);
   return true;
@@ -136,8 +144,11 @@ const listeners = new Set<() => void>();
 const changed = () => { cache = null; listeners.forEach((f) => f()); };
 export const savedComparisons = (): SavedComparison[] => (cache ??= read());
 export const useSavedComparisons = () => useSyncExternalStore((f) => { listeners.add(f); return () => { listeners.delete(f); }; }, savedComparisons, savedComparisons);
+// Another open tab may have saved or deleted a comparison since this one read them: a change is made to what is stored
+// now, never to this tab's copy (audit 12 Nov 2026, c-robustness-07), and the other tab's change is shown as it happens.
+globalThis.addEventListener?.('storage', (e: StorageEvent) => { if (e.key === SAVED || e.key === null) changed(); });
 export function saveComparison(name: string, link: ComparisonLink): boolean {
-  const list = savedComparisons().filter((c) => c.name !== name);
+  const list = read().filter((c) => c.name !== name);
   try { localStorage.setItem(SAVED, JSON.stringify([{ id: crypto.randomUUID(), name, savedAt: new Date().toISOString(), link }, ...list])); changed(); return true; } catch { return false; }
 }
-export function deleteComparison(id: string) { try { localStorage.setItem(SAVED, JSON.stringify(savedComparisons().filter((c) => c.id !== id))); changed(); } catch { /* storage refused */ } }
+export function deleteComparison(id: string) { try { localStorage.setItem(SAVED, JSON.stringify(read().filter((c) => c.id !== id))); changed(); } catch { /* storage refused */ } }

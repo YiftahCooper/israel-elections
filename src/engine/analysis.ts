@@ -1,7 +1,7 @@
 // Counterfactual analysis built on the deterministic engine: exact marginal-vote searches,
 // sweeps with exact breakpoints, and allocation comparisons. Every answer is verified by running
 // the full allocation at the reported vote count and at one vote less.
-import { prepareAllocation } from './allocate.ts';
+import { prepareAllocation, type OpenTie } from './allocate.ts';
 import { cmp, rat, type Rational } from './rational.ts';
 import type { AllocationInput, AllocationResult, ListInput } from './types.ts';
 
@@ -81,6 +81,12 @@ export interface SearchResult {
   exact: boolean;
   reason?: 'already' | 'infeasible' | 'limit' | 'inconclusive';
   limit: bigint;
+  /** a smaller count than `votes` (or, when none is found, some count) that reaches the goal only through an exact tie:
+   *  the seat is then decided by lot (or, where the law of the time set no rule, not decided). `votes` is always the
+   *  first count at which the goal holds whatever the tie's outcome (audit 12 Nov 2026, c-results-engine-02). */
+  lotteryFrom?: bigint;
+  /** 'infeasible' because the list has as many seats as candidates (a candidate cap): no count of votes can add one */
+  cappedAtCandidates?: boolean;
 }
 
 const seatsOf = (r: AllocationResult, id: string) => r.lists.find((l) => l.id === id)?.seats ?? 0;
@@ -169,6 +175,39 @@ function firstOk(count: bigint, probe: (j: bigint) => Probe, linear: boolean): b
  *  minimality even where the outcome is not monotonic in the vote count. */
 export const EXHAUSTIVE_LIMIT = 50_000;
 
+/** At most this many allocations are worked out to settle the exact ties met at one vote count; past it the count is
+ *  taken as not certain, and the search answer as not proven. */
+const TIE_OUTCOMES = 256;
+
+/** The goal at one vote count, under every outcome of the exact ties the engine meets there (a lottery under the law;
+ *  no rule in some early eras). `certain`: it holds whatever the outcomes; `possible`: under at least one. Each tie the
+ *  engine decided provisionally is decided each way in turn, and the ties met after it on that path in turn too. */
+/** With `decisions`, each other outcome's decisions are added to the count's record, so two counts share a record only
+ *  when every outcome looked at decides alike (a tie between lists the move does not touch can last over many counts,
+ *  while the other outcomes' decisions change within them). */
+function underEveryTie(input: AllocationInput, votes: readonly bigint[], first: AllocationResult, ties: OpenTie[], goal: Goal, before: AllocationResult, traced: boolean, decisions?: unknown[]): { certain: boolean; possible: boolean; settled: boolean } {
+  let certain = goal(first, before), possible = certain, runs = 0;
+  const walk = (winners: Record<string, string>, open: OpenTie[]): boolean => {
+    const t = open[0]; // the first undecided tie on this path: the later ones depend on its outcome
+    if (!t) return true;
+    for (const id of t.ids) {
+      if (certain !== possible) return true; // both kinds of outcome already seen
+      const forced = { ...winners, [t.key]: id };
+      if (id === t.ids[0]) { if (!walk(forced, open.slice(1))) return false; continue; } // the outcome already shown, until its next tie
+      if (++runs > TIE_OUTCOMES) return false;
+      const next: OpenTie[] = [], d: unknown[] | undefined = decisions && [];
+      const r = prepareAllocation({ ...input, lotteryWinners: forced }).run(votes, traced, d, next);
+      const g = goal(r, before);
+      if (d) decisions!.push('|', t.key, id, ...d);
+      certain &&= g; possible ||= g;
+      if (!walk(forced, next)) return false;
+    }
+    return true;
+  };
+  const settled = ties.length === 0 || walk(input.lotteryWinners ?? {}, ties);
+  return { certain: settled && certain, possible, settled };
+}
+
 export function minimalChange(input: AllocationInput, target: string, source: VoteSource, goal: Goal, dir: Direction = 'gain', exhaustiveLimit = EXHAUSTIVE_LIMIT): SearchResult {
   const prepared = prepareAllocation(input);
   const before = prepared.run(input.lists.map((l) => l.votes));
@@ -176,14 +215,31 @@ export function minimalChange(input: AllocationInput, target: string, source: Vo
   const votesAt = perturbation(input.lists, target, source, dir);
   const test = (k: bigint): AllocationResult | null => { const v = votesAt(k); return v && prepared.run(v); };
   const { monotone: isMonotone = false, seatsOnly: untraced = false } = goal as Goal & GoalFlags;
-  const ok = (k: bigint) => { const v = votesAt(k); return v !== null && goal(prepared.run(v, !untraced), before); };
-  // scans: seats-only goals under linear moves may skip counts with equal decisions
+  // One rule for every list (c-results-engine-02): the goal is met at a count only when it holds whatever the outcome of
+  // an exact tie there. The smallest count where it holds only through a tie is kept, to be said beside the answer.
+  let lottery: bigint | null = null, unsettled = false;
+  const meets = (k: bigint, v: readonly bigint[], decisions?: unknown[]): boolean => {
+    const ties: OpenTie[] = [];
+    const r = prepared.run(v, !untraced, decisions, ties);
+    if (!ties.length) return goal(r, before);
+    const o = underEveryTie(input, v, r, ties, goal, before, !untraced, decisions);
+    if (!o.settled) unsettled = true;
+    if (o.possible && !o.certain && (lottery === null || k < lottery)) lottery = k;
+    return o.certain;
+  };
+  const ok = (k: bigint) => { const v = votesAt(k); return v !== null && meets(k, v); };
+  // scans: seats-only goals under linear moves may skip counts with equal decisions (a count with an exact tie has a
+  // record of its own: its tied set is part of the decisions)
   const linear = untraced && source.kind !== 'proportional';
   const probe = (k: bigint): Probe => {
     const v = votesAt(k);
     if (!v) return { ok: false, decisions: null };
     const decisions: unknown[] | undefined = linear ? [] : undefined;
-    return { ok: goal(prepared.run(v, !untraced, decisions), before), decisions: decisions ?? null };
+    return { ok: meets(k, v, decisions), decisions: decisions ?? null };
+  };
+  const result = (r: SearchResult): SearchResult => {
+    const below = lottery !== null && (r.votes === null || lottery < r.votes) ? lottery : null;
+    return { ...r, ...(unsettled ? { exact: false } : {}), ...(below !== null ? { lotteryFrom: below } : {}) };
   };
   if (goal(before, before)) return { found: false, votes: null, before, after: null, lastFailing: null, nonMonotonic: false, exact: true, reason: 'already', limit };
   if (limit < 1n) return { found: false, votes: null, before, after: null, lastFailing: null, nonMonotonic: false, exact: true, reason: 'infeasible', limit };
@@ -195,10 +251,10 @@ export function minimalChange(input: AllocationInput, target: string, source: Vo
     // be checked in full before concluding that no feasible count achieves a non-monotone goal.
     if (!isMonotone && limit <= BigInt(exhaustiveLimit)) {
       const j = firstOk(limit, (j) => probe(1n + j), linear);
-      if (j >= 0n) { const k = 1n + j; return { found: true, votes: k, before, after: test(k), lastFailing: k - 1n, nonMonotonic: true, exact: true, limit }; }
-      return { found: false, votes: null, before, after: null, lastFailing: limit, nonMonotonic: false, exact: true, reason: 'limit', limit };
+      if (j >= 0n) { const k = 1n + j; return result({ found: true, votes: k, before, after: test(k), lastFailing: k - 1n, nonMonotonic: true, exact: true, limit }); }
+      return result({ found: false, votes: null, before, after: null, lastFailing: limit, nonMonotonic: false, exact: true, reason: 'limit', limit });
     }
-    return { found: false, votes: null, before, after: null, lastFailing: hi, nonMonotonic: false, exact: isMonotone, reason: isMonotone ? 'limit' : 'inconclusive', limit };
+    return result({ found: false, votes: null, before, after: null, lastFailing: hi, nonMonotonic: false, exact: isMonotone, reason: isMonotone ? 'limit' : 'inconclusive', limit });
   }
   let lo = hi / 2n; // ok(lo) is false (or lo = 0)
   while (hi - lo > 1n) { const mid = (lo + hi) / 2n; if (ok(mid)) hi = mid; else lo = mid; }
@@ -219,7 +275,7 @@ export function minimalChange(input: AllocationInput, target: string, source: Vo
     hi = x >= 0n ? k - step + 1n + x : k; lo = hi - 1n;
   }
   const nonMonotonic = hi < found;
-  return { found: true, votes: hi, before, after: test(hi), lastFailing: lo, nonMonotonic, exact, limit };
+  return result({ found: true, votes: hi, before, after: test(hi), lastFailing: lo, nonMonotonic, exact, limit });
 }
 
 // ------------------------------------------------------------------- sweeps

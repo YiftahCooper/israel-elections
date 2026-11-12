@@ -9,7 +9,7 @@ import { RULESETS } from "../engine/rules.ts";
 import { PARTS, partSnapshot } from './parts.ts';
 // Pure scenario transitions. Each returns a new Scenario and never mutates its input.
 // Vote counts stay non-negative integers; every integer split uses exact largest-remainder rounding.
-import { validAction, NO_COALITION, blocSchemeState, electionRuleSetId, historicalRules, type Action, type ActionContext, type Scenario, type SimCandidate, type SimList } from './scenario.ts';
+import { validAction, NO_COALITION, blocSchemeState, electionRuleSetId, historicalRules, type Action, type ActionContext, type Scenario, type SimAgreement, type SimCandidate, type SimList } from './scenario.ts';
 import type { PartyDef } from '../data/schema.ts';
 
 import { ActionError, M, type Msg } from './messages.ts';
@@ -77,6 +77,31 @@ function checkAgreements(s: Scenario) {
       seen.add(m);
     }
   }
+}
+
+/** Under the law's rules (historical mode) section 67(a) allows each list one agreement, of two lists. Returning to the
+ *  law's rules (Historically valid mode, a part started from the official result, a preset or a saved scenario, a copy
+ *  from the compared side) switches off, in order, every enabled agreement that breaks it, so the scenario is always
+ *  one the law allows and its exported file always imports (audit 12 Nov 2026, c-screens-compare-03). */
+function lawfulAgreements(s: Scenario): Scenario {
+  if (s.mode !== 'historical') return s;
+  const off = new Set<string>(), seen = new Set<string>();
+  for (const a of s.agreements) {
+    if (!a.enabled) continue;
+    if (a.members.length !== 2 || a.members.some((m) => seen.has(m))) off.add(a.id);
+    else a.members.forEach((m) => seen.add(m));
+  }
+  if (!off.size) return s;
+  switchedOff?.push(...s.agreements.filter((a) => off.has(a.id)));
+  return { ...s, agreements: s.agreements.map((a) => (off.has(a.id) ? { ...a, enabled: false } : a)) };
+}
+let switchedOff: SimAgreement[] | null = null;
+/** Runs `f` (applying actions), and says which agreements the law's rules switched off on the way, so the screen can
+ *  name them with Undo. */
+export function collectSwitchedOff<T>(f: () => T): { value: T; off: SimAgreement[] } {
+  const was = switchedOff, off: SimAgreement[] = [];
+  switchedOff = off;
+  try { return { value: f(), off }; } finally { switchedOff = was; }
 }
 
 /** Removes agreements that reference lists which no longer exist. */
@@ -253,6 +278,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         if (action.part === 'votes') s = { ...s, invalid: Math.max(0, s.invalid - heldBefore + s.lists.reduce((sum,l) => sum + (l.heldVotes ?? 0), 0)) };
         if (action.part === 'candidates') s = withSplits(s, s0, snapshot!.factionSplits);
       }
+      s = lawfulAgreements(s);
       break;
     }
     case 'setVotes':
@@ -442,17 +468,9 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       s = { ...s, rules: { ...s.rules, ...action.patch } };
       break;
     case 'setMode':
-      if (action.mode === 'historical') {
-        const disabled = new Set<string>();
-        const seen = new Set<string>();
-        for (const a of s.agreements) {
-          if (!a.enabled) continue;
-          if (a.members.length !== 2 || a.members.some((m) => seen.has(m))) disabled.add(a.id);
-          else a.members.forEach((m) => seen.add(m));
-        }
-        // the law's rules, never the reset context's (which may be a saved experiment): preview and commit agree
-        s = { ...s, mode: 'historical', rules: historicalRules(electionRuleSetId(s.electionId)), agreements: s.agreements.map((a) => (disabled.has(a.id) ? { ...a, enabled: false } : a)) };
-      } else s = { ...s, mode: 'experimental' };
+      // the law's rules, never the reset context's (which may be a saved experiment): preview and commit agree
+      if (action.mode === 'historical') s = lawfulAgreements({ ...s, mode: 'historical', rules: historicalRules(electionRuleSetId(s.electionId)) });
+      else s = { ...s, mode: 'experimental' };
       break;
     case 'setTotals':
       if (action.registered !== undefined) need(isWhole(action.registered), 'votes', M.registeredWhole);

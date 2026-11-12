@@ -28,22 +28,23 @@ import { useDigits } from '../store.ts';
 function useJson<T>(url: string | null, empty: T) {
   const [value, setValue] = useState<T>(empty);
   const [error, setError] = useState(false);
+  const [attempt, setAttempt] = useState(0);
   useEffect(() => {
     let live = true; setValue(empty); setError(false);
     if (!url) return;
     fetch(url).then(r => { if (!r.ok) throw new Error(String(r.status)); return r.json(); })
       .then(d => { if (live) setValue(d); }).catch(() => { if (live) setError(true); });
     return () => { live = false; };
-  }, [url]);
-  return { value, error };
+  }, [url, attempt]);
+  return { value, error, retry: () => setAttempt(n => n + 1) };
 }
 const NO_LOCATIONS: LocalityLocations = {};
 const NO_LINES: FeatureCollection = { type:'FeatureCollection', features:[] };
 const NO_NAMES: LocalityNames = { names: [], project: [] };
 const LINE_IDS = MAP_LINES.map(x => x.id);
 export function useLocalityLocations(id: string, available = true) {
-  const { value: locations, error } = useJson(available ? `${import.meta.env.BASE_URL}data/${id}-locations.json` : null, NO_LOCATIONS);
-  return { locations, error };
+  const { value: locations, error, retry } = useJson(available ? `${import.meta.env.BASE_URL}data/${id}-locations.json` : null, NO_LOCATIONS);
+  return { locations, error, retry };
 }
 /** Display names index-aligned with the election's locality rows (CBS lists; a few labelled project transliterations). */
 export function useLocalityNames(id: string, available = true) {
@@ -111,7 +112,7 @@ const textWidth = (text: string) => {
   return measure.measureText(text).width;
 };
 
-export function LocalityMap({ s, data, historicalLists, locations, names, locationError }: { s: Scenario; data: LocalityDataset; historicalLists: (SimList | null)[]; locations: LocalityLocations; names: LocalityNames; locationError: boolean }) {
+export function LocalityMap({ s, data, historicalLists, locations, names, locationError, retryLocations }: { s: Scenario; data: LocalityDataset; historicalLists: (SimList | null)[]; locations: LocalityLocations; names: LocalityNames; locationError: boolean; retryLocations: () => void }) {
   const L = useL(), lang = useLang();
   const dark = useStore(st => st.theme === 'dark');
   const [legendOpen,setLegendOpen]=useState(()=>window.matchMedia('(min-width: 700px)').matches);
@@ -123,7 +124,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   const every = allLines(LINE_IDS, lineChoice);
   const tick = (id: string, show: boolean) => setMapLineChoice(tickLine(LINE_IDS, lineChoice, id, show));
   const [hiddenLines, setHiddenLines] = useState(0);
-  const { value: lineData, error: lineError } = useJson(`${import.meta.env.BASE_URL}data/map-lines.geojson`, NO_LINES);
+  const { value: lineData, error: lineError, retry: retryLines } = useJson(`${import.meta.env.BASE_URL}data/map-lines.geojson`, NO_LINES);
   const digits = useDigits();
   const container = useRef<HTMLDivElement>(null), map = useRef<Leaflet.Map | null>(null);
   const [mode, setMode] = useState<'bloc' | 'list'>('bloc');
@@ -318,7 +319,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       </span>)}
     </fieldset></details>
     {<p className="small locality-boundary-limit" style={{visibility:hiddenLines>0?'visible':'hidden'}} aria-hidden={hiddenLines===0} role={hiddenLines>0?'status':undefined}>{L('Some approximate lines are hidden at this zoom. Zoom out to see them.', 'חלק מהקווים המקורבים מוסתרים בהגדלה זו. להצגתם, הקטינו את המפה.')} <Info title={L('Line detail limits','מגבלות פירוט הקווים')}>{L('Each layer stops at its source precision. Measured source differences are limited to roughly 20 screen pixels; outlines whose precision is unknown are shown only at overview zooms. Locality dots and names remain available. Each layer’s explanation states its uncertainty.', 'כל שכבה נעצרת לפי דיוק המקור. פערי המקורות שנמדדו מוגבלים לכ־20 פיקסלים במסך; תוואים שדיוקם אינו ידוע מוצגים רק בקנה מידה כללי. נקודות ושמות היישובים ממשיכים להופיע. אי־הוודאות מצוינת בהסבר של כל שכבה.')}</Info></p>}
-    {lineError && <p className="small bad" role="status">{L('Boundary data could not load.', 'נתוני הקווים לא נטענו.')}</p>}
+    {lineError && <p className="small bad" role="status">{L('Boundary data could not load.', 'נתוני הקווים לא נטענו.')} <button className="btn small" onClick={retryLines}>{L('Try again', 'נסו שוב')}</button></p>}
     <div ref={container} className="locality-map-canvas" role="region" aria-label={L('Locality results map; use search or table for keyboard selection','מפת תוצאות ביישובים; לבחירה במקלדת השתמשו בחיפוש או בטבלה')} />
     {tilesFailed && <p className="small bad">{L('The background map could not load; the locality dots still work.', 'מפת הרקע לא נטענה; נקודות היישובים עדיין פעילות.')}</p>}
     {selected && <section className="locality-map-results" aria-live="polite" aria-label={L('Selected locality results','תוצאות היישוב הנבחר')}>
@@ -343,7 +344,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
         const l=historicalLists[k];return <tr key={k}><td><span className="row" style={{gap:6,flexWrap:'nowrap'}}><span className="swatch" style={{background:l?.color ?? 'var(--muted)'}} />{l?listLabel(l,lang):data.listIds[k]}</span></td><td className="n">{fmtInt(v)}</td><td>{shareBar(v, top, l?.color ?? 'var(--muted)')}</td></tr>;
       });})()}</tbody></table></div>
     </section>}
-    {locationError && <p className="bad">{L('Coordinates could not be loaded. The table is still available.', 'לא ניתן לטעון מיקומים. הטבלה עדיין זמינה.')}</p>}
+    {locationError && <p className="bad" role="alert">{L('Coordinates could not be loaded. The table is still available.', 'לא ניתן לטעון מיקומים. הטבלה עדיין זמינה.')} <button className="btn small" onClick={retryLocations}>{L('Try again', 'נסו שוב')}</button></p>}
     <p className="small ink2">{L(`${placed.length} of ${localities} localities placed. Envelope votes have no geographic location.`,`${placed.length} מתוך ${localities} יישובים ממופים. למעטפות החיצוניות אין מיקום גאוגרפי.`)}</p>
     <details><summary>{L('Rows without a mapped location','שורות ללא מיקום במפה')}</summary><ul>{unplaced.map(i=><li key={i}><button className="btn small" onClick={()=>choose(i)}><LocalityName names={names} row={data.rows[i]} index={i} /> ({data.rows[i].code ?? '—'})</button></li>)}</ul></details>
   </div>;

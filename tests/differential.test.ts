@@ -136,7 +136,13 @@ const EXPECTED: Record<Family, string> = {
   // merged with k4 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k5 audit fixes: combined digest = union of the separately reviewed changes.
   allocation: '2bc949a3aaf91af20af8f4704c06b30fcfacf7d534d82c2bdc578d41023bf1a8',
-  analysis: '43f8772fa2f013a5f8a78f20608c097a5e62184718d7a3a197ff3adeeb6ce43e',
+  // Analysis re-recorded 2026-11-13 for one reviewed rule (audit c-results-engine-02): a search answer is the first count
+  // at which the goal holds whatever the outcome of an exact tie, and a smaller count reached only through a tie is kept as
+  // lotteryFrom. 74 of 818 cases differ: 23 answers move up by one (the old answer was a tie counted as reached), 28 keep
+  // their answer and gain lotteryFrom one vote below (a tie counted as not reached), and 23 sampled 1949 and synthetic
+  // cases (floored quotients tie often) were each checked vote by vote under every tie outcome. Allocation, model,
+  // validation and rules digests are unchanged. Lists: .backup-scratch/audit-1112/fx-state2/analysis-diff*.txt.
+  analysis: '1ba1ba4746ab304fffb7ca4d1e3d93a8c3c2890e4c707ca91399748120c25568',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
   // corrected names (0088 addendum: 1955 #24, 1959 #47, 2003 Shinui #14); src unchanged, other digests unchanged.

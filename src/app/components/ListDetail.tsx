@@ -23,6 +23,7 @@ import { rat } from '../../engine/rational.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { toEngineInput, votesCast, type Scenario, type SimList } from '../../model/scenario.ts';
 import { runTasks } from '../analysisPool.ts';
+import { cappedText, tieNote } from '../analysisWords.ts';
 import type { AnalysisTask } from '../analysisTasks.ts';
 import { listLabel, referenceLabel, warningText } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
@@ -179,7 +180,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
     const at = s;
     job.current = runTasks([task], (_, res) => { job.current = null; if (getState().scenario === at) { setConsequence(''); then(res as SearchResult); } });
   };
-  const notFound = (res: SearchResult) => toast('info', res.reason === 'inconclusive' || (res.found && !res.exact) ? L('Inconclusive within the search limit', 'לא הוכרע בטווח החיפוש') : L('Not reachable from this source', 'לא ניתן להגיע מהמקור הזה'));
+  const notFound = (res: SearchResult) => toast('info', res.cappedAtCandidates ? cappedText(lang === 'he') : res.reason === 'inconclusive' || (res.found && !res.exact) ? L('Inconclusive within the search limit', 'לא הוכרע בטווח החיפוש') : L('Not reachable from this source', 'לא ניתן להגיע מהמקור הזה'));
   /** a typed or stepped seat count: the fewest votes that give it, as one ordinary (marked, undoable) vote edit */
   const seatsFrom = (n: number, from: SourceChoice) => {
     const shown = lr.qualified && n === lr.seats + 1 ? margins?.gain : lr.qualified && lr.seats > 0 && n === lr.seats - 1 ? margins?.lose : undefined;
@@ -188,6 +189,8 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
       const got = res.after?.lists.find((x) => x.id === l.id)?.seats ?? n;
       editTo(l.votes + (n > lr.seats ? 1 : -1) * Number(res.votes), from);
       if (got !== n) toast('info', L(`${n} seats is not possible from this source; nearest: ${got}`, `${n} מנדטים אינם אפשריים מהמקור הזה; הקרוב ביותר: ${got}`));
+      // a count found by sampling is said where it is used, not only in the line below (c-analysis-code-06)
+      else if (!res.exact) toast('info', L(`≤ Found by sampling: fewer votes may also give ${n} seats.`, `≤ נמצא בדגימה: ייתכן שגם פחות קולות יביאו ${n} מנדטים.`));
     });
   };
   /** a boundary goal: keep the seats with the fewest votes, or sit just either side of the threshold */
@@ -195,7 +198,8 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
     const shown = margins?.[goal];
     searchThen(from, { kind: 'listSearch', input: toEngineInput(s), src: toVoteSource(from, s), goal, id: l.id, seats: lr.seats }, shown, (res) => {
       if (!res.found || res.votes === null || !res.exact) return notFound(res);
-      const k = Number(res.votes);
+      // keeping the seats for certain stops short of the first count where a tie could already cost one
+      const k = Number(goal === 'lose' ? res.lotteryFrom ?? res.votes : res.votes);
       editTo(goal === 'qualify' ? l.votes + k : goal === 'disqualify' ? l.votes - k : l.votes - k + 1, from);
     });
   };
@@ -247,7 +251,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
         {!l.withdrawn && <div className="seat-target">
           <NumericStepper label={L('Seats', 'מנדטים')} showLabel value={lr.seats} onCommit={(n) => commit((from) => seatsFrom(n, from))} max={s.rules.seats}
               steps={[{ id: '1', label: '1', amount: 1 }]} onPreview={(n) => { const t = seatVotes(n); if (t !== null) explainTarget(t); }} />
-            <Info title={L('Seats', 'מנדטים')}>{L('Type a seat count: the fewest votes that give it are moved.', 'הקלידו מספר מנדטים: יועברו הכי מעט קולות שמביאים אותו.')}</Info>
+            <Info title={L('Seats', 'מנדטים')}>{L('Type a seat count: the fewest votes found that give it for certain are moved. A count found by sampling (marked ≤) may not be the fewest.', 'הקלידו מספר מנדטים: יועברו הכי מעט קולות שנמצאו שמביאים אותו בוודאות. מספר שנמצא בדגימה (מסומן ≤) עשוי שלא להיות הקטן ביותר.')}</Info>
         </div>}
         <h3>{L('Votes', 'קולות')} <EditMarker s={s} path={['lists', l.id, 'votes']} />{k19ListNote(l.id, lang) && <Info title={L('Declared and detailed results', 'התוצאה המוכרזת והמפורטת')}>{k19ListNote(l.id, lang)}</Info>}</h3>
         {!lr.qualified && !l.withdrawn && Number(s.rules.thresholdPct) > 0 && <p className="small ink2">{L('Below the threshold', 'מתחת לאחוז החסימה')}</p>}
@@ -261,15 +265,17 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
             onPreview={explainTarget} />
           {!l.withdrawn && <><div className="vote-goals">
             {lr.qualified && quick(L('Reach next seat', 'הגעה למנדט הבא'), gainTarget, true, (from) => seatsFrom(lr.seats + 1, from))}
-            {lr.seats > 0 && quick(L(`Fewest votes to keep ${lr.seats} seats`, `הכי מעט קולות לשמירת ${lr.seats} מנדטים`), margins?.lose?.exact && margins.lose.found && margins.lose.votes !== null ? l.votes - Number(margins.lose.votes) + 1 : null, true, (from) => goalFrom('lose', from))}
+            {lr.seats > 0 && quick(L(`Fewest votes to keep ${lr.seats} seats`, `הכי מעט קולות לשמירת ${lr.seats} מנדטים`), margins?.lose?.exact && margins.lose.found && margins.lose.votes !== null ? l.votes - Number(margins.lose.lotteryFrom ?? margins.lose.votes) + 1 : null, true, (from) => goalFrom('lose', from))}
             {Number(s.rules.thresholdPct) > 0 && quick(lr.qualified ? L('Just below threshold', 'מעט מתחת לחסימה') : L('Cross the threshold', 'מעבר אחוז החסימה'), boundary === null ? null : boundary - (lr.qualified ? 1 : 0), true, (from) => goalFrom(lr.qualified ? 'disqualify' : 'qualify', from))}
             {baseList && <div style={{ visibility: baseList.votes === l.votes ? 'hidden' : undefined }}>{quick(L('Restore votes', 'שחזור הקולות'), baseList.votes)}</div>}
           </div>
           <p className="tiny seat-search-status" role="status">{(() => {
             if (!gain) return L('Searching…', 'מחפש…');
-            if (!gain.found || gain.votes === null) return gain.reason === 'inconclusive' ? L('Inconclusive within the search limit', 'לא הוכרע בטווח החיפוש') : gain.reason === 'limit' ? L('Not reachable from this source', 'לא ניתן להגיע מהמקור הזה') : gain.reason === 'already' ? L('Already reached', 'כבר הושג') : L('No solution from this source', 'אין פתרון מהמקור הזה');
+            if (gain.cappedAtCandidates) return cappedText(lang === 'he');
+            const tie = gain.exact && gain.lotteryFrom !== undefined && <> · {tieNote(Number(gain.lotteryFrom), s.rules.tiePolicy, lang === 'he')}</>;
+            if (!gain.found || gain.votes === null) return <>{gain.reason === 'inconclusive' ? L('Inconclusive within the search limit', 'לא הוכרע בטווח החיפוש') : gain.reason === 'limit' ? L('Not reachable from this source', 'לא ניתן להגיע מהמקור הזה') : gain.reason === 'already' ? L('Already reached', 'כבר הושג') : L('No solution from this source', 'אין פתרון מהמקור הזה')}{tie}</>;
             const seats = (gain.after?.lists.find(x => x.id === l.id)?.seats ?? lr.seats) - lr.seats;
-            return <><SeatDelta value={seats} /> {seats === 1 ? L('seat', 'מנדט') : L('seats', 'מנדטים')} · {gain.exact ? L('proven minimum', 'מינימום מוכח') : L('sampled; minimum unproven', 'דגימה; המינימום לא הוכח')}</>;
+            return <><SeatDelta value={seats} /> {seats === 1 ? L('seat', 'מנדט') : L('seats', 'מנדטים')} · {gain.exact ? L('proven minimum', 'מינימום מוכח') : L('sampled; minimum unproven', 'דגימה; המינימום לא הוכח')}{tie}</>;
           })()}</p>
           <p className="tiny quick-consequence" role="status">{consequence}</p></>}
           <LiveSlider key={l.id} l={l} ceiling={Number(r.totalValid)} onCommit={(v) => commit((from) => editTo(v, from))} />

@@ -11,10 +11,13 @@ import { compileElectionTotals } from './scripts/election-totals-runtime.ts';
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import { scaleAwareMedia } from './scripts/scale-aware-media.ts';
+import { analysisVersion } from './scripts/analysis-version.ts';
 
 // base './' so the static build works from any path (GitHub Pages project site, file server).
 export default defineConfig({
   base: './',
+  // the analysis cache's version follows the engine and analysis code (src/app/analysisCache.ts)
+  define: { __ANALYSIS_VERSION__: JSON.stringify(analysisVersion()) },
   // width breakpoints follow the effective width under large text (scripts/scale-aware-media.ts)
   css: { postcss: { plugins: [scaleAwareMedia()] } },
   plugins: [react(), {

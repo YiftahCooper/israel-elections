@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { allocate } from '../src/engine/allocate.ts';
 import { goals, minimalChange, perturb, type Goal, type VoteSource } from '../src/engine/analysis.ts';
 import { ISRAEL_2014 } from '../src/engine/rules.ts';
+import type { AllocationInput, AllocationResult, TieRecord } from '../src/engine/types.ts';
 import { ActionError, applyAction } from '../src/model/actions.ts';
 import { historicalRules, electionRuleSetId, scenarioFromDataset, validateScenario, validVotes, type Action } from '../src/model/scenario.ts';
 import { replay } from '../src/app/store.ts';
@@ -75,6 +76,13 @@ it('marks unexhausted non-monotone searches inconclusive', () => {
   expect(result.exact).toBe(false);
   expect(result.reason).toBe('inconclusive');
 });
+/** the goal under every outcome of the exact ties left undecided at these votes, read from the traced allocation */
+function underEveryTie(input: AllocationInput, goal: Goal, before: AllocationResult): boolean[] {
+  const r = allocate(input);
+  const open = [...r.remainderSteps, ...r.internalDivisions.flatMap((d) => d.steps)].map((x) => x.tie).filter((t): t is TieRecord => !!t && !t.forced);
+  if (!open.length) return [goal(r, before)];
+  return open[0].tiedUnitIds.flatMap((id) => underEveryTie({ ...input, lotteryWinners: { ...input.lotteryWinners, [open[0].key]: id } }, goal, before));
+}
 it('matches brute-force minima for all supported goals on seeded small elections', () => {
   let seed = 0x45abcd;
   const random = (n: number) => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed % n; };
@@ -84,15 +92,23 @@ it('matches brute-force minima for all supported goals on seeded small elections
     const tests: Goal[] = [goals.seatGain('L0'), goals.seatLoss('L0'), goals.qualify('L0'), goals.disqualify('L0'), goals.seatsAtLeast('L0', 4), goals.groupSeatsAtLeast(['L0', 'L2'], 4), goals.groupSeatsBelow(['L0', 'L2'], 4)];
     for (const source of [{ kind: 'new' }, { kind: 'transfer', listId: 'L1' }, { kind: 'proportional', listIds: [] }] as VoteSource[]) for (const dir of ['gain', 'lose'] as const) {
       const results = tests.map(g => minimalChange(input, 'L0', source, g, dir));
+      // the first count where the goal holds whatever the outcome of an exact tie, and the first where it holds under
+      // some outcome (c-results-engine-02: a tie decided by lot is not counted as reaching the goal)
       const minima = tests.map(g => g(before, before) ? 0n : null as bigint | null);
+      const possible = tests.map(() => null as bigint | null);
       for (let k = 1n; k <= results[0].limit; k++) {
         const p = perturb(input, 'L0', source, k, dir);
         if (!p) continue;
-        const after = allocate(p);
-        tests.forEach((g, i) => { if (minima[i] === null && g(after, before)) minima[i] = k; });
+        tests.forEach((g, i) => {
+          if (minima[i] !== null) return;
+          const o = underEveryTie(p, g, before);
+          if (o.every(Boolean)) minima[i] = k;
+          if (possible[i] === null && o.some(Boolean)) possible[i] = k;
+        });
       }
       results.forEach((r, i) => {
         expect(r.votes, `trial ${trial}, ${source.kind}, ${dir}, goal ${i}`).toBe(minima[i] === 0n ? null : minima[i]);
+        if (minima[i] !== 0n) expect(r.lotteryFrom ?? r.votes, `trial ${trial}, ${source.kind}, ${dir}, goal ${i} lottery`).toBe(possible[i]);
         expect(r.exact).toBe(true);
       });
     }

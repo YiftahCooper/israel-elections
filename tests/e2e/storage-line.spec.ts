@@ -56,8 +56,9 @@ test('a share link naming an unknown election says it is damaged and opens the n
 // (c-analysis-code-03), both languages
 for (const lang of ['en', 'he'] as const) test(`pictures: 1977 with the 1973 rules (${lang})`, async ({ page }) => {
   test.skip(!OUT, 'pictures only');
-  const ws = { v: 1, electionId: 'k9', current: { id: 'k9-rules', name: '1973 rules', electionId: 'k9', ref: null,
+  const work = { electionId: 'k9', current: { id: 'k9-rules', name: '1973 rules', electionId: 'k9', ref: null,
     log: [{ at: '2026-11-12T00:00:00.000Z', action: { type: 'startPart', part: 'rules', source: 'preset', presetId: 'il-1973-bader-ofer-1' } }] }, sessions: [], drafts: [] };
+  const ws = { v: 2, tabs: { earlier: { at: 1, ws: work } } };
   await page.setViewportSize({ width: 1500, height: 1000 });
   await page.addInitScript(([lang, ws]) => {
     if (sessionStorage.getItem('started')) return;

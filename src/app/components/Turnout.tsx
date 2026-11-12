@@ -27,17 +27,29 @@ const locCache = new Map<ElectionId, Promise<LocalityDataset>>();
 /** Loads an election's locality results; `available` is false when the election has none. */
 export function useLocalities(id: ElectionId, available = true) {
   const [d, setD] = useState<LocalityDataset | null>(null);
-  const [err, setErr] = useState<string | null>(null);
+  const [failed, setFailed] = useState(false);
+  const [attempt, setAttempt] = useState(0);
   useEffect(() => {
     let live = true; // ignore a slower response for an election we have already left
-    setD(null); setErr(null);
+    setD(null); setFailed(false);
     if (!available) return;
     let p = locCache.get(id);
-    if (!p) { p = fetch(`data/${id}-localities.json`).then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); }); locCache.set(id, p); }
-    p.then((x) => live && setD(x), (e) => { locCache.delete(id); if (live) setErr(String(e)); });
+    if (!p) {
+      p = fetch(`data/${id}-localities.json`).then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+        // a file of another shape (cut short, another version) fails here, with Try again, not deep inside a screen
+        .then((x) => { if (!Array.isArray(x?.rows) || !Array.isArray(x?.listIds)) throw new Error('not a locality file'); return x as LocalityDataset; });
+      locCache.set(id, p);
+    }
+    p.then((x) => live && setD(x), () => { locCache.delete(id); if (live) setFailed(true); });
     return () => { live = false; };
-  }, [id, available]);
-  return { data: d, error: err };
+  }, [id, available, attempt]);
+  /** a failed load is said in words, with Try again (asks the server again), never as a bare error (c-robustness-10) */
+  return { data: d, failed, retry: () => setAttempt((n) => n + 1) };
+}
+/** what a screen says when the locality results could not be loaded */
+export function LocalitiesFailed({ retry }: { retry: () => void }) {
+  const L = useL();
+  return <p className="bad" role="alert">{L('The locality results could not be loaded.', 'לא ניתן היה לטעון את התוצאות לפי יישובים.')} <button className="btn small" onClick={retry}>{L('Try again', 'נסו שוב')}</button></p>;
 }
 
 type Source = { id: string; publisher?: string; url?: string; official?: boolean };
@@ -60,7 +72,7 @@ export function Turnout({ s }: { s: Scenario }) {
 
   const L = useL(), lang = useLang();
   const hasLocalities = useStore((st) => st.datasets[s.electionId]?.hasLocalities !== false);
-  const { data } = useLocalities(s.electionId, hasLocalities);
+  const { data, failed: localitiesFailed, retry: retryLocalities } = useLocalities(s.electionId, hasLocalities);
   const saved = useVoterGroups();
   const sources = useSources();
   const [d, setDraft] = useState<Draft>(lastDraft);
@@ -157,6 +169,7 @@ export function Turnout({ s }: { s: Scenario }) {
             catch (err) { toast('error', errorText(err, lang)); }
           }} />
         </div>
+        {localitiesFailed && <LocalitiesFailed retry={retryLocalities} />}
 
         {!d.members && <p className="small ink2">{data?.groups?.length
           ? L('Pick a group, move its turnout, and add or remove its voters.', 'בחרו קבוצה, שנו את שיעור ההצבעה שלה והוסיפו או הסירו מצביעים.')

@@ -75,7 +75,12 @@ interface StageOptions {
   warnings: EngineWarning[] | null;
   /** receives each vote-dependent decision when not null (see `PreparedAllocation.run`) */
   decisions: unknown[] | null;
+  /** receives each exact tie decided without a recorded outcome, when not null (see `PreparedAllocation.run`) */
+  ties: OpenTie[] | null;
 }
+/** An exact tie for a seat with no recorded outcome: the first unit (`ids[0]`) is shown provisionally; its key forces
+ *  another (AllocationInput.lotteryWinners). */
+export interface OpenTie { key: string; ids: string[] }
 
 const NOT_COMPETING: Rational = rat(-1n);
 
@@ -147,6 +152,7 @@ function runRemainderStage(units: WorkUnit[], remaining: number, o: StageOptions
       const forced = o.lotteryWinners[key];
       const forcedAt = forced ? ids.indexOf(forced) : -1;
       if (forcedAt >= 0) winner = tied[forcedAt];
+      else o.ties?.push({ key, ids });
       if (trace) {
         tie = { key, tiedUnitIds: ids, chosen: units[winner].id, forced: forcedAt >= 0 };
         if (o.tiePolicy === 'unspecified') o.warnings!.push({ code: 'lottery-required', message: `Equal remainders in ${o.stage}; the inspected historical statute does not specify a tie procedure. ${tie.forced ? 'A supplied outcome is shown.' : 'The first unit is provisional.'}`, data: { key, ids, tiePolicy: 'unspecified' } });
@@ -222,8 +228,9 @@ export interface PreparedAllocation {
   /** `votes[i]` replaces `input.lists[i].votes`; `trace` false omits steps, divisions and warnings.
    *  `decisions`, when given, receives every vote-dependent decision in order: each list's
    *  qualification, floor quotas, whole-quota seats, the half-votes test and each remainder
-   *  step's tied set (winner first). Everything else, seats included, follows from these. */
-  run(votes: readonly bigint[], trace?: boolean, decisions?: unknown[]): AllocationResult;
+   *  step's tied set (winner first). Everything else, seats included, follows from these.
+   *  `ties`, when given, receives each exact tie decided provisionally (no recorded outcome), in order. */
+  run(votes: readonly bigint[], trace?: boolean, decisions?: unknown[], ties?: OpenTie[]): AllocationResult;
 }
 
 export function prepareAllocation(input: AllocationInput): PreparedAllocation {
@@ -255,7 +262,7 @@ export function prepareAllocation(input: AllocationInput): PreparedAllocation {
   const highestAverage = isHighestAverage(rules.remainderMethod);
   const n = lists.length;
 
-  function run(votes: readonly bigint[], trace = true, decisions: unknown[] | null = null): AllocationResult {
+  function run(votes: readonly bigint[], trace = true, decisions: unknown[] | null = null, ties: OpenTie[] | null = null): AllocationResult {
     const allWarnings: EngineWarning[] = [];
     const warnings = trace ? allWarnings : null;
     // ballots for a list that does not contest are not valid votes for the threshold base
@@ -347,7 +354,7 @@ export function prepareAllocation(input: AllocationInput): PreparedAllocation {
 
     const base: BaseOptions = { method: rules.remainderMethod, majorityCap: rules.majorityCap,
       remainderRequiresInitialSeat: rules.remainderRequiresInitialSeat && !highestAverage, quotientRounding: rules.quotientRounding,
-      largestRemainderRepeat: rules.largestRemainderRepeat, tiePolicy: rules.tiePolicy, lotteryWinners, warnings, decisions };
+      largestRemainderRepeat: rules.largestRemainderRepeat, tiePolicy: rules.tiePolicy, lotteryWinners, warnings, decisions, ties };
     const remaining = Math.max(0, rules.seats - initialTotal);
     const remainderSteps = qualifiedCount > 0
       ? runRemainderStage(units, remaining, { ...base, stage: 'national', seatsTotal: rules.seats, universeVotes: qualifyingVotes, quota })
