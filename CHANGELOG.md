@@ -2,6 +2,7 @@
 
 ## 7 November 2026 — Settings
 
+- Localities and turnout by group (12 Nov, audit): “Israeli localities in Judea and Samaria” left out the whole Hebron area (Kiryat Arba, Karmel, Otniel and about 15 more), because CBS subdistrict 77 was taken for Gaza; it is Hebron. The group is now all of district 7 plus the Jewish community in Hebron: 130 localities and 237,136 valid votes in 2026, up from 110 and 227,079.
 - Import (12 Nov, audit): a scenario file whose results differ from what its own list of changes gives (changed by hand) is no longer opened only to lose that change silently on save or reload; it is refused with a plain message. A file made on older data opens on the current data and says so, as a share link does.
 - Scenarios (12 Nov, audit): exporting a saved scenario from its card kept no description (for example a What if question opened as a scenario); the card's export and the Compare reference now carry it.
 - What if (12 Nov, audit): the expanded answer for a merger that wins a seat read “14 = 6 + 7”; it now reads “6 + 7 = 13 apart, 14 together (+1)”, in words in both languages, and the equation form stays only where the joint list wins exactly its parts' seats.

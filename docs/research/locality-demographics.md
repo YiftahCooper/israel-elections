@@ -55,7 +55,7 @@ After an intentional change, review the normalized rows and update their manifes
 | `arab` | CBS non-Jewish locality code 2 plus tribe code 3. Includes Druze and Circassian localities in the CBS geographic non-Jewish category; does not assert every resident is Arab. Mixed Jewish–Arab code 4 excluded. |
 | `kibbutzim` | Current locality form 330 (33 before 2007). |
 | `moshavim` | Current forms 310 and 320 (moshavim and collective moshavim). |
-| `judea-samaria` | District 7, excluding historical Gaza subdistrict 77. Israeli localities represented in the election rows only. |
+| `judea-samaria` | District 7, all seven subdistricts (77 is Hebron: Kiryat Arba, Karmel, Otniel; the Gaza Strip localities were district 8), plus the Jewish community in Hebron, the Central Elections Committee's locality 3400, which no CBS file lists. Israeli localities represented in the election rows only. Until 12 Nov 2026 subdistrict 77 was wrongly excluded as "Gaza". |
 | `bedouin-tribes` | Current form 460; tribes only. This is not a list of all Bedouin towns. |
 | `haredi` | Seven fixed IDI authorities: Bnei Brak, Modi’in Illit, Beitar Illit, Elad, Rekhasim, Qiryat Yearim, Immanuel; 2021 reference. |
 | `druze` | Fixed ≥95% 2022 group: Daliyat al-Karmel, Yirka, Beit Jann, Majdal Shams, Kisra–Sumei, Yanuh–Jat, Buq’ata, Julis, Hurfeish, Sajur, Mas’ade, Ein Qiniyye, Ein al-Asad. |
@@ -149,7 +149,7 @@ of a demographic population.
 | k16 | 2003 | arab | 129 | 489,559 | 292,362 | 9.286 |
 | k16 | 2003 | kibbutzim | 252 | 102,316 | 70,417 | 2.237 |
 | k16 | 2003 | moshavim | 446 | 152,531 | 110,963 | 3.524 |
-| k16 | 2003 | judea-samaria | 106 | 113,429 | 85,931 | 2.729 |
+| k16 | 2003 | judea-samaria | 122 | 119,513 | 90,511 | 2.875 |
 | k16 | 2003 | bedouin-tribes | 22 | 20,726 | 7,225 | 0.229 |
 | k16 | 2003 | haredi | 7 | 109,004 | 85,466 | 2.715 |
 | k16 | 2003 | druze | 12 | 35,377 | 22,226 | 0.706 |
@@ -158,7 +158,7 @@ of a demographic population.
 | k18 | 2009 | arab | 134 | 613,650 | 322,301 | 9.554 |
 | k18 | 2009 | kibbutzim | 256 | 109,959 | 75,594 | 2.241 |
 | k18 | 2009 | moshavim | 440 | 181,183 | 131,399 | 3.895 |
-| k18 | 2009 | judea-samaria | 102 | 152,944 | 113,682 | 3.370 |
+| k18 | 2009 | judea-samaria | 118 | 160,480 | 119,094 | 3.530 |
 | k18 | 2009 | bedouin-tribes | 20 | 24,142 | 5,723 | 0.170 |
 | k18 | 2009 | haredi | 7 | 138,906 | 104,074 | 3.085 |
 | k18 | 2009 | druze | 11 | 32,273 | 20,316 | 0.602 |
@@ -166,7 +166,7 @@ of a demographic population.
 | k19 | 2013 | arab | 143 | 696,998 | 386,940 | 10.202 |
 | k19 | 2013 | kibbutzim | 260 | 120,425 | 86,275 | 2.275 |
 | k19 | 2013 | moshavim | 441 | 197,373 | 147,567 | 3.891 |
-| k19 | 2013 | judea-samaria | 103 | 181,232 | 141,690 | 3.736 |
+| k19 | 2013 | judea-samaria | 119 | 189,789 | 148,171 | 3.907 |
 | k19 | 2013 | bedouin-tribes | 21 | 28,418 | 8,385 | 0.221 |
 | k19 | 2013 | haredi | 7 | 159,519 | 129,556 | 3.416 |
 | k19 | 2013 | druze | 12 | 47,486 | 28,253 | 0.745 |
@@ -174,7 +174,7 @@ of a demographic population.
 | k20 | 2015 | arab | 144 | 747,658 | 470,657 | 11.177 |
 | k20 | 2015 | kibbutzim | 261 | 125,770 | 92,285 | 2.192 |
 | k20 | 2015 | moshavim | 442 | 206,833 | 162,254 | 3.853 |
-| k20 | 2015 | judea-samaria | 104 | 196,958 | 156,438 | 3.715 |
+| k20 | 2015 | judea-samaria | 122 | 206,263 | 163,708 | 3.888 |
 | k20 | 2015 | bedouin-tribes | 21 | 32,008 | 10,567 | 0.251 |
 | k20 | 2015 | haredi | 7 | 170,730 | 137,156 | 3.257 |
 | k20 | 2015 | druze | 12 | 50,448 | 28,670 | 0.681 |
@@ -182,7 +182,7 @@ of a demographic population.
 | k21 | 2019 | arab | 146 | 848,869 | 413,166 | 9.588 |
 | k21 | 2019 | kibbutzim | 262 | 133,118 | 97,801 | 2.270 |
 | k21 | 2019 | moshavim | 445 | 225,800 | 174,913 | 4.059 |
-| k21 | 2019 | judea-samaria | 107 | 227,241 | 176,881 | 4.105 |
+| k21 | 2019 | judea-samaria | 125 | 237,694 | 185,004 | 4.293 |
 | k21 | 2019 | bedouin-tribes | 20 | 34,268 | 8,609 | 0.200 |
 | k21 | 2019 | haredi | 7 | 192,425 | 150,955 | 3.503 |
 | k21 | 2019 | druze | 13 | 55,974 | 32,658 | 0.758 |
@@ -190,7 +190,7 @@ of a demographic population.
 | k22 | 2019 | arab | 146 | 857,661 | 502,027 | 11.315 |
 | k22 | 2019 | kibbutzim | 261 | 133,910 | 96,297 | 2.170 |
 | k22 | 2019 | moshavim | 445 | 227,353 | 173,517 | 3.911 |
-| k22 | 2019 | judea-samaria | 107 | 230,512 | 176,125 | 3.970 |
+| k22 | 2019 | judea-samaria | 125 | 241,100 | 184,065 | 4.149 |
 | k22 | 2019 | bedouin-tribes | 20 | 34,873 | 14,542 | 0.328 |
 | k22 | 2019 | haredi | 7 | 195,531 | 154,781 | 3.489 |
 | k22 | 2019 | druze | 13 | 54,636 | 27,892 | 0.629 |
@@ -198,7 +198,7 @@ of a demographic population.
 | k23 | 2020 | arab | 146 | 872,585 | 562,158 | 12.247 |
 | k23 | 2020 | kibbutzim | 261 | 135,084 | 96,640 | 2.105 |
 | k23 | 2020 | moshavim | 444 | 226,984 | 172,998 | 3.769 |
-| k23 | 2020 | judea-samaria | 106 | 233,516 | 178,461 | 3.888 |
+| k23 | 2020 | judea-samaria | 124 | 244,206 | 186,331 | 4.059 |
 | k23 | 2020 | bedouin-tribes | 20 | 35,687 | 15,565 | 0.339 |
 | k23 | 2020 | haredi | 7 | 198,990 | 157,072 | 3.422 |
 | k23 | 2020 | druze | 13 | 57,287 | 30,999 | 0.675 |
@@ -206,7 +206,7 @@ of a demographic population.
 | k24 | 2021 | arab | 146 | 900,183 | 396,896 | 9.000 |
 | k24 | 2021 | kibbutzim | 262 | 137,692 | 98,119 | 2.225 |
 | k24 | 2021 | moshavim | 446 | 232,475 | 172,066 | 3.902 |
-| k24 | 2021 | judea-samaria | 106 | 242,606 | 178,916 | 4.057 |
+| k24 | 2021 | judea-samaria | 124 | 253,681 | 186,687 | 4.233 |
 | k24 | 2021 | bedouin-tribes | 20 | 37,574 | 12,035 | 0.273 |
 | k24 | 2021 | haredi | 7 | 205,381 | 155,342 | 3.522 |
 | k24 | 2021 | druze | 13 | 58,786 | 26,736 | 0.606 |
@@ -214,7 +214,7 @@ of a demographic population.
 | k25 | 2022 | arab | 146 | 938,401 | 493,995 | 10.368 |
 | k25 | 2022 | kibbutzim | 262 | 142,468 | 99,398 | 2.086 |
 | k25 | 2022 | moshavim | 446 | 236,943 | 177,020 | 3.715 |
-| k25 | 2022 | judea-samaria | 106 | 255,148 | 191,440 | 4.018 |
+| k25 | 2022 | judea-samaria | 124 | 266,958 | 199,862 | 4.195 |
 | k25 | 2022 | bedouin-tribes | 20 | 39,921 | 14,910 | 0.313 |
 | k25 | 2022 | haredi | 7 | 214,269 | 168,144 | 3.529 |
 | k25 | 2022 | druze | 13 | 61,195 | 29,498 | 0.619 |
@@ -222,7 +222,7 @@ of a demographic population.
 | k26 | 2024 | arab | 147 | 1,033,589 | 805,683 | 14.156 |
 | k26 | 2024 | kibbutzim | 262 | 154,659 | 114,391 | 2.010 |
 | k26 | 2024 | moshavim | 443 | 248,550 | 196,447 | 3.452 |
-| k26 | 2024 | judea-samaria | 110 | 290,737 | 227,077 | 3.990 |
+| k26 | 2024 | judea-samaria | 130 | 304,096 | 237,136 | 4.167 |
 | k26 | 2024 | bedouin-tribes | 20 | 44,472 | 33,088 | 0.581 |
 | k26 | 2024 | haredi | 7 | 242,722 | 193,874 | 3.406 |
 | k26 | 2024 | druze | 13 | 71,208 | 41,837 | 0.735 |
