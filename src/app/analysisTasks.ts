@@ -5,7 +5,9 @@ import { allocate } from '../engine/allocate.ts';
 import type { AllocationInput } from '../engine/types.ts';
 
 export interface SecurityItem { id: string; qualified: boolean; seats: number }
-export interface SecurityFigure { value: number | null; exact: boolean; reason?: SearchResult['reason']; limit: number; nonMonotonic: boolean }
+/** One seat-safety figure; `lotteryFrom`: from this smaller count the seat is reached only through an exact tie (decided
+ *  by lot); `cappedAtCandidates`: not possible because every candidate on the list already has a seat. */
+export interface SecurityFigure { value: number | null; exact: boolean; reason?: SearchResult['reason']; limit: number; nonMonotonic: boolean; lotteryFrom?: number; cappedAtCandidates?: boolean }
 export interface SecurityRow { qualification: Partial<Record<SecurityPart, SecurityFigure>>; id: string; seats: number; gain: number | null; lose: number | null; qualify: number | null }
 /** 'qualify' for a list below the threshold; 'gain' and 'lose' for a qualified list */
 export type SecurityPart = 'qualify' | 'gain' | 'lose';
@@ -26,7 +28,8 @@ export type AnalysisTask =
   /** every point in a vote range where the seats change */
   | { kind: 'sweep'; input: AllocationInput; target: string; from: bigint; to: bigint };
 
-export interface TransferOutcome { found: boolean; votes: bigint | null; exact: boolean; reason?: SearchResult['reason'] }
+/** `lotteryFrom`: from this smaller transfer the majority changes only through an exact tie */
+export interface TransferOutcome { found: boolean; votes: bigint | null; exact: boolean; reason?: SearchResult['reason']; lotteryFrom?: bigint }
 export type TaskResult<T extends AnalysisTask> =
   T extends { kind: 'listSearch' | 'seatTarget' } ? SearchResult : T extends { kind: 'security' } ? SecurityFigure : T extends { kind: 'groupTransfer' } ? TransferOutcome : SweepResult;
 
@@ -40,7 +43,7 @@ export function runTask(task: AnalysisTask): SearchResult | SecurityFigure | Tra
       const goal = task.below ? goals.groupSeatsBelow(task.ids, task.n) : goals.groupSeatsAtLeast(task.ids, task.n);
       const m = task.max === undefined ? minimalChange(task.input, task.to, { kind: 'transfer', listId: task.from }, goal)
         : minimalChange(task.input, task.to, { kind: 'transfer', listId: task.from, max: task.max }, goal, 'gain', Math.max(1, Number(task.max)));
-      return { found: m.found, votes: m.votes, exact: m.exact, reason: m.reason };
+      return { found: m.found, votes: m.votes, exact: m.exact, reason: m.reason, ...(m.lotteryFrom !== undefined ? { lotteryFrom: m.lotteryFrom } : {}) };
     }
     case 'sweep': return sweepVotes(task.input, task.target, task.from, task.to);
   }
@@ -56,7 +59,7 @@ const beyondCandidates = (input: AllocationInput, id: string, seats: number): bo
   return !!input.rules.seatsCappedAtCandidates && c !== undefined && seats > c;
 };
 const impossible = (input: AllocationInput): SearchResult =>
-  ({ found: false, votes: null, before: allocate(input), after: null, lastFailing: null, nonMonotonic: false, exact: true, reason: 'infeasible', limit: 0n });
+  ({ found: false, votes: null, before: allocate(input), after: null, lastFailing: null, nonMonotonic: false, exact: true, reason: 'infeasible', limit: 0n, cappedAtCandidates: true });
 
 /** One list's search; 'lose' looks for the first seat lost (or, with no seats, falling below the threshold). */
 export function listSearch(input: AllocationInput, src: VoteSource, goal: ListGoal, id: string, seats: number): SearchResult {
@@ -77,7 +80,8 @@ export function seatTarget(input: AllocationInput, src: VoteSource, id: string, 
 /** The figure for one part: the fewest votes found (for 'lose', the fewest lost that cost a seat), or null when none was found. */
 export function securityPart(input: AllocationInput, src: VoteSource, part: SecurityPart, item: SecurityItem): SecurityFigure {
   const m = listSearch(input, src, part, item.id, item.seats);
-  return { value: m.found ? Number(m.votes) : null, exact: m.exact, reason: m.reason, limit: Number(m.limit), nonMonotonic: m.nonMonotonic };
+  return { value: m.found ? Number(m.votes) : null, exact: m.exact, reason: m.reason, limit: Number(m.limit), nonMonotonic: m.nonMonotonic,
+    ...(m.lotteryFrom !== undefined ? { lotteryFrom: Number(m.lotteryFrom) } : {}), ...(m.cappedAtCandidates ? { cappedAtCandidates: true } : {}) };
 }
 
 /** Assembles a list's row from its parts (all parts of `partsOf(item)` must be present). */

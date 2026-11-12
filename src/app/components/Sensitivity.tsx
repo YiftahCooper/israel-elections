@@ -19,6 +19,7 @@ import { fmtInt } from '../format.ts';
 import { dispatch, useDigits } from '../store.ts';
 import { Info, NumberInput } from './ui.tsx';
 import { useChartWidth } from './Charts.tsx';
+import { tieNote } from '../analysisWords.ts';
 
 // Each tool answers its question as soon as the page opens, with defaults, and again whenever its inputs or the
 // scenario change; the searches run in background workers and can be cancelled. The tools are keyed by election,
@@ -315,7 +316,7 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
   const offset = seats - listSeats;
   const has = seats >= majority;
 
-  type Found = { from: string; to: string; votes: bigint; unsure: boolean } | { none: true; unsure: boolean };
+  type Found = { from: string; to: string; votes: bigint; unsure: boolean; lotteryFrom?: bigint } | { none: true; unsure: boolean };
   const [res, setRes] = useState<{ s: Scenario; bid: string; found: Found } | null>(null);
   const [progress, setProgress] = useState<{ done: number; total: number; settling?: boolean } | null>(null);
   const [cancelled, setCancelled] = useState(false);
@@ -335,9 +336,10 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
     // the answer is chosen in the order above, however the workers finish
     type Task = (typeof tasks)[number];
     const open = (m: TransferOutcome) => m.reason === 'inconclusive' || (m.found && !m.exact);
-    const bestOf = (xs: { t: Task; m: TransferOutcome }[]) => xs.reduce<{ from: string; to: string; votes: bigint } | null>((b, { t, m }) =>
-      m.found && m.votes !== null && (!b || m.votes < b.votes) ? { from: t.from, to: t.to, votes: m.votes } : b, null);
-    const show = (best: { from: string; to: string; votes: bigint } | null, unsure: boolean) => {
+    type Best = { from: string; to: string; votes: bigint; lotteryFrom?: bigint };
+    const bestOf = (xs: { t: Task; m: TransferOutcome }[]) => xs.reduce<Best | null>((b, { t, m }) =>
+      m.found && m.votes !== null && (!b || m.votes < b.votes) ? { from: t.from, to: t.to, votes: m.votes, ...(m.exact && m.lotteryFrom !== undefined ? { lotteryFrom: m.lotteryFrom } : {}) } : b, null);
+    const show = (best: Best | null, unsure: boolean) => {
       setProgress(null);
       setRes({ s, bid, found: best ? { ...best, unsure } : { none: true, unsure } });
     };
@@ -409,6 +411,7 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
             {found.unsure && <>{L('At most', 'לכל היותר')} </>}<b>{fmtInt(found.votes)}</b>{found.unsure && <> <Info title={L('Smallest found', 'הקטן ביותר שנמצא')}>{L('Some searches could not test every count, so a smaller transfer may exist.', 'חלק מהחיפושים לא בדקו כל מספר, ולכן ייתכן מעבר קטן יותר.')}</Info></>} {one ? L('vote moving from ', 'קול שעובר מ') : L('votes moving from ', 'קולות שעוברים מ')}<PartyName s={s} id={found.from} /> {L('to ', 'ל')}<PartyName s={s} id={found.to} /> {after === null || (has ? after < majority : after >= majority)
               ? (has ? (one ? L('ends the majority.', 'מבטל את הרוב.') : L('end the majority.', 'מבטלים את הרוב.')) : (one ? L('gives the bloc a majority.', 'נותן לגוש רוב.') : L('give the bloc a majority.', 'נותנים לגוש רוב.')))
               : <>{one ? L('does not flip it in the chamber', 'אינו הופך אותו במליאה') : L('do not flip it in the chamber', 'אינם הופכים אותו במליאה')} <Info title={L('Members counted apart', 'חברים שנספרים בנפרד')}>{L('Some parties or members of these lists count for another bloc, and the search moves whole lists.', 'חלק מהמפלגות או החברים ברשימות אלה נספרים בגוש אחר, והחיפוש מזיז רשימות שלמות.')}</Info></>}
+            {!found.unsure && found.lotteryFrom !== undefined && <div className="ink2">{tieNote(Number(found.lotteryFrom), s.rules.tiePolicy, lang === 'he')}</div>}
             {after !== null && <div className="row" style={{ marginTop: 6 }}>{meter(after)}<bdi dir="ltr">{seats} → {after} / {majority}</bdi></div>}
             <div><button className="btn small" style={{ marginTop: 6 }} onClick={() => dispatch({ type: 'transfer', from: found.from, to: found.to, votes: Number(found.votes) })}>{L('Apply', 'החלה')}</button></div>
           </div>

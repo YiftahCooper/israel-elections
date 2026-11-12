@@ -474,6 +474,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .sec-call { cursor: pointer; font: inherit; color: inherit; }
 .sec-call:hover { border-color: var(--ink-2); }
 .sec-pending { color: var(--muted); }
+.sec-tie { color: var(--ink-2); cursor: help; margin-inline-start: 1px; }
 .sec-row { display: grid; grid-template-columns: minmax(110px, 170px) 1fr 52px 1fr; gap: 8px; align-items: center; padding: 4px 6px; border-radius: 4px; }
 .sec-seats { text-align: center; font-weight: 700; }
 /* the chart reads left to right in Hebrew too: losses left of the seats, gains right; the name stays at the start */

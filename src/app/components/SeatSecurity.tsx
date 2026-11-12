@@ -18,6 +18,7 @@ import { setState } from '../store.ts';
 import { stayingHome, toVoteSource, type SourceChoice } from '../voteEdit.ts';
 import { DisclosureToggle, Info, Seg, Slip } from './ui.tsx';
 import { participantName } from '../governmentSupport.ts';
+import { cappedText, tieNote } from '../analysisWords.ts';
 import { minimalWinning, governmentVote, recordedRoles, recordedVoteGap, firstGovernmentComparison, type VoteGapReason } from '../coalitions.ts';
 import { Majority } from './Majority.tsx';
 import { useRefRows } from '../compare/useRefRows.ts';
@@ -91,18 +92,23 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
   const scale = (v: number) => Math.sqrt(Math.min(v, max) / max) * 100;
   const nm = (id: string) => listLabel(s.lists.find((l) => l.id === id)!, lang);
 
+  const policy = input.rules.tiePolicy;
+  /** a proven figure where fewer votes already reach an exact tie for the seat (c-results-engine-02) */
+  const tie = (f: SecurityFigure) => f.exact && f.lotteryFrom !== undefined
+    ? <sup className="sec-tie" title={tieNote(f.lotteryFrom, policy, lang === 'he')} aria-label={tieNote(f.lotteryFrom, policy, lang === 'he')}>*</sup> : null;
   const text = (f: SecurityFigure | undefined) => {
     if (!f) return <span className="sec-pending" aria-label={L('Calculating', 'מחשב')}>…</span>;
-    if (f.value !== null) return f.exact ? fmtInt(f.value) : <span title={L('Found by sampling: the smallest may be lower', 'נמצא בדגימה: הקטן ביותר עשוי להיות נמוך יותר')}>≤ {fmtInt(f.value)}</span>;
+    if (f.value !== null) return f.exact ? <>{fmtInt(f.value)}{tie(f)}</> : <span title={L('Found by sampling: the smallest may be lower', 'נמצא בדגימה: הקטן ביותר עשוי להיות נמוך יותר')}>≤ {fmtInt(f.value)}</span>;
     if (f.reason === 'already') return '0';
-    if (f.reason === 'infeasible') return <span title={L('Not possible', 'לא אפשרי')}>—</span>;
-    if (f.exact) return <span title={L(`None within ${fmtInt(f.limit)} votes`, `אין עד ${fmtInt(f.limit)} קולות`)}>&gt; {fmtInt(f.limit)}</span>;
+    if (f.reason === 'infeasible') return <span title={f.cappedAtCandidates ? cappedText(lang === 'he') : L('Not possible', 'לא אפשרי')}>—</span>;
+    if (f.exact) return <><span title={L(`None within ${fmtInt(f.limit)} votes`, `אין עד ${fmtInt(f.limit)} קולות`)}>&gt; {fmtInt(f.limit)}</span>{tie(f)}</>;
     return <span title={L(`Not found by sampling up to ${fmtInt(f.limit)}`, `לא נמצא בדגימה עד ${fmtInt(f.limit)}`)}>?</span>;
   };
   const shown = [...above.flatMap((x) => partsOf(x.item).map((p) => fig(x.l.id, p))), ...below.map((x) => fig(x.l.id, 'qualify'))].filter((f): f is SecurityFigure => !!f);
   const sampled = shown.some((f) => !f.exact && f.value !== null);
   const unknown = shown.some((f) => f.value === null && !f.exact && f.reason !== 'infeasible' && f.reason !== 'already');
   const bounded = shown.some((f) => f.value === null && f.exact && f.reason === 'limit');
+  const tied = shown.some((f) => f.exact && f.lotteryFrom !== undefined);
 
   const tightest = busy ? [] : above
     .filter((x) => x.item.seats > 0 && fig(x.l.id, 'gain')?.exact && fig(x.l.id, 'lose')?.exact)
@@ -122,7 +128,10 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
         <span className="small ink2">{L('Votes come from', 'הקולות מגיעים מ־')}</span>
         <Seg label={L('Votes come from', 'הקולות מגיעים מ־')} value={kind} onChange={setKind} options={[{ v: 'proportional', label: L('Other lists', 'שאר הרשימות') }, { v: 'new', label: L('New voters', 'מצביעים חדשים') }]} />
         <Info title={L('How this is computed', 'איך זה מחושב')}>
-          {L('Each figure is the fewest votes a list must lose or gain to change its seats, found by recomputing the whole election.', 'כל מספר הוא הכי מעט קולות שרשימה צריכה לאבד או להוסיף כדי שמספר המנדטים שלה ישתנה, לפי חישוב מחדש של כל הבחירות.')}{' '}
+          {L('Each figure is the fewest votes a list must lose or gain to change its seats for certain, found by recomputing the whole election.', 'כל מספר הוא הכי מעט קולות שרשימה צריכה לאבד או להוסיף כדי שמספר המנדטים שלה ישתנה בוודאות, לפי חישוב מחדש של כל הבחירות.')}{' '}
+          {policy === 'unspecified'
+            ? L('* marks a figure where fewer votes could already bring an exact tie for the seat, for which the law of the time set no rule; point at it for the count.', '* מסמן מספר שכבר בפחות קולות ממנו ייתכן שוויון מדויק על המנדט, שהחוק של אז לא קבע לו כלל; הצביעו עליו כדי לראות את מספר הקולות.')
+            : L('* marks a figure where fewer votes could already bring an exact tie for the seat, decided by lot; point at it for the count.', '* מסמן מספר שכבר בפחות קולות ממנו ייתכן שוויון מדויק על המנדט, שמוכרע בהגרלה; הצביעו עליו כדי לראות את מספר הקולות.')}{' '}
           {L('Other lists: votes move to or from all other lists in proportion; turnout stays the same. New voters: votes come from new voters, or are lost to voters staying home, so the threshold moves too.', 'שאר הרשימות: הקולות עוברים מכל שאר הרשימות או אליהן, באופן יחסי; שיעור ההצבעה לא משתנה. מצביעים חדשים: הקולות באים ממצביעים חדשים, או הולכים לנמנעים, ולכן גם אחוז החסימה בקולות זז.')}{' '}
           {L('Bars use a fixed square-root scale, capped at 1.25 seats’ worth of votes; numbers show the full margin. ≤ marks a figure found by sampling: the smallest may be lower. > means none was found within the search limit; ? that sampling found none.', 'הפסים בסקאלת שורש קבועה, עד קולות בשווי 1.25 מנדטים; המספרים מציגים את הפער המלא. ≤ מסמן מספר שנמצא בדגימה: הקטן ביותר עשוי להיות נמוך יותר. > פירושו שלא נמצא בגבול החיפוש; ? שהדגימה לא מצאה.')}
         </Info>
@@ -175,9 +184,10 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
 
         </section>
       )}
-      {(sampled || unknown || bounded) && (
+      {(sampled || unknown || bounded || tied) && (
         <p className="small muted" style={{ marginBottom: 0 }}>
-          {[sampled && L('≤ found by sampling', '≤ נמצא בדגימה'), bounded && L('> none within the search limit', '> לא נמצא בגבול החיפוש'), unknown && L('? sampling found none', '? הדגימה לא מצאה')].filter(Boolean).join(' · ')}
+          {[tied && (policy === 'unspecified' ? L('* fewer votes could already tie for the seat (no rule in the law)', '* כבר בפחות קולות ייתכן שוויון על המנדט (אין לו כלל בחוק)') : L('* fewer votes could already tie for the seat (decided by lot)', '* כבר בפחות קולות ייתכן שוויון על המנדט (מוכרע בהגרלה)')),
+            sampled && L('≤ found by sampling', '≤ נמצא בדגימה'), bounded && L('> none within the search limit', '> לא נמצא בגבול החיפוש'), unknown && L('? sampling found none', '? הדגימה לא מצאה')].filter(Boolean).join(' · ')}
         </p>
       )}
     </div>
