@@ -50,12 +50,22 @@ export const colourClashes=(color:string,others:readonly NamedColour[],min:numbe
 export function idColour(id:string){const h=[...id].reduce((n,c)=>(Math.imul(n,31)+c.charCodeAt(0))>>>0,0);return fromOklch(.65,.18,(h%360)*Math.PI/180);}
 
 
-/** Domain adapters share the same assigner and thresholds; research values remain inputs. */
-export function separateColours(items: { id: string; color: string; alternatives?: string[] }[], neighbours: Set<string> = new Set(), min = MIN_LIST_DELTA_E, minNeighbour = MIN_NEIGHBOUR_DELTA_E) {
+/** The nearest colour a seat fill can use (CIE L* within SEAT_LIGHTNESS), keeping hue and chroma: a research colour
+ * too dark or too light to read on both themes (a black or near-white party colour) moves by lightness only. */
+export function readableSeatColour(color:string):string{
+ const L=hexToLab(color)[0];if(L>=SEAT_LIGHTNESS[0]&&L<=SEAT_LIGHTNESS[1])return color.toLowerCase();
+ const[L0,C,h]=hexToOklch(color),up=L<SEAT_LIGHTNESS[0];
+ for(let i=1;i<=200;i++){const c=fromOklch(L0+(up?1:-1)*i*.0025,C,h),l=hexToLab(c)[0];if(l>=SEAT_LIGHTNESS[0]&&l<=SEAT_LIGHTNESS[1])return c;}
+ return color.toLowerCase();
+}
+
+/** Domain adapters share the same assigner and thresholds; research values remain inputs. `obstacles`: colours an item
+ * must also clear, each by its own minimum, without moving them (e.g. another list's party seat colours). */
+export function separateColours(items: { id: string; color: string; alternatives?: string[] }[], neighbours: Set<string> = new Set(), min = MIN_LIST_DELTA_E, minNeighbour = MIN_NEIGHBOUR_DELTA_E, obstacles: (id: string) => readonly { color: string; min: number }[] = () => []) {
   const placed: { id: string; color: string }[] = [], out = new Map<string, string>(), adjusted = new Set<string>();
   const need = (a: string, b: string) => (neighbours.has(`${a} ${b}`) || neighbours.has(`${b} ${a}`) ? minNeighbour : min);
   // the smallest margin by which `c` clears every placed colour (negative: it fails one)
-  const margin = (id: string, c: string) => placed.reduce((m, p) => Math.min(m, deltaE2000(c, p.color) - need(id, p.id)), Infinity);
+  const margin = (id: string, c: string) => obstacles(id).reduce((m, o) => Math.min(m, deltaE2000(c, o.color) - o.min), placed.reduce((m, p) => Math.min(m, deltaE2000(c, p.color) - need(id, p.id)), Infinity));
   const readable = (c: string) => { const L = hexToLab(c)[0]; return L >= SEAT_LIGHTNESS[0] && L <= SEAT_LIGHTNESS[1]; };
   const rad = Math.PI / 180;
   for (const { id, color, alternatives = [] } of items) {
@@ -74,7 +84,7 @@ export function separateColours(items: { id: string; color: string; alternatives
       // only when no small move of its own colour works: an alternative as it is, else the best available margin
       if (bestCost === Infinity) best = alternatives.map((c) => c.toLowerCase()).find((c) => margin(id, c) >= 0 && readable(c)) ?? fallback;
     }
-    best = assignColour([best], placed.map(p=>p.color), {minDeltaE:min,lightness:SEAT_LIGHTNESS,allow:c=>placed.every(p=>deltaE2000(c,p.color)>=need(id,p.id))});
+    best = assignColour([best], placed.map(p=>p.color), {minDeltaE:min,lightness:SEAT_LIGHTNESS,allow:c=>placed.every(p=>deltaE2000(c,p.color)>=need(id,p.id))&&obstacles(id).every(o=>deltaE2000(c,o.color)>=o.min)});
     if (best !== own) adjusted.add(id);
     placed.push({ id, color: best }); out.set(id, best);
   }

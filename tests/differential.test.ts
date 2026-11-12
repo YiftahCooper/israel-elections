@@ -292,7 +292,11 @@ const EXPECTED: Record<Family, string> = {
   // Merged with fx-names and fx-state (13 Nov): against the previous commit, the 26 published datasets differ only in
   // blocSchemes[].nameHe/nameEn, blocSchemes[].blocs[].color and builtAt (field-by-field diff), and the previous src and
   // this src give the same 520 model outputs on one set of data (fable-check/model-diff2.ts: 0 differ).
-  model: 'd4126152fb753d6b779b8be5455a31234fcd9fd497ce5562695183fc2f07aa26',
+  // fx-families (13 Nov, c-families-map-logos-09/10/11): list colours seeded from each election's colour research and
+  // kept apart from other lists' party seats; Balad 2009/2013 logos on a dark backing. Against 170d6fad, the 26 published
+  // datasets differ only in lists[].color (206 fields), lists[].logo.background (k18, k19) and builtAt (field-by-field
+  // diff); allocation, analysis, validation and rules digests are unchanged.
+  model: '07679c56861b18de404638249c987749b783fa1eeec5f1e2092c67c83f8e1829',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

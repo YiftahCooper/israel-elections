@@ -1,5 +1,62 @@
 [
   {
+    "election": "k1",
+    "list": "1-ב",
+    "letters": "ב",
+    "party": "poalei-agudat-yisrael",
+    "canonicalParty": "poalei-agudat-yisrael",
+    "name": "Poalei Agudat Yisrael",
+    "base": "#df561d",
+    "color": "#da6116",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: labor, labor"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k1.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 4.371
+  },
+  {
+    "election": "k3",
+    "list": "3-גד",
+    "letters": "גד",
+    "party": "poalei-agudat-yisrael",
+    "canonicalParty": "poalei-agudat-yisrael",
+    "name": "Poalei Agudat Yisrael",
+    "base": "#df561d",
+    "color": "#da6116",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: labor, labor"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k3.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 4.371
+  },
+  {
+    "election": "k4",
+    "list": "4-גד",
+    "letters": "גד",
+    "party": "poalei-agudat-yisrael",
+    "canonicalParty": "poalei-agudat-yisrael",
+    "name": "Poalei Agudat Yisrael",
+    "base": "#df561d",
+    "color": "#da6116",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: labor, labor"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k4.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 4.371
+  },
+  {
     "election": "k6",
     "list": "6-את",
     "letters": "את",
@@ -7,7 +64,7 @@
     "canonicalParty": "mapai",
     "name": "Mapai",
     "base": "#ad0101",
-    "color": "#8d4300",
+    "color": "#884309",
     "forced": true,
     "reasons": [
       "global sibling separation: ahdut-haavoda"
@@ -16,7 +73,7 @@
     "source": "data/meta/k6.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 14.768
+    "deltaE": 14.746
   },
   {
     "election": "k7",
@@ -26,7 +83,7 @@
     "canonicalParty": "mapam",
     "name": "Mapam",
     "base": "#96342e",
-    "color": "#89403e",
+    "color": "#863933",
     "forced": true,
     "reasons": [
       "global sibling separation: labor",
@@ -36,7 +93,7 @@
     "source": "data/meta/k7.json",
     "custom": false,
     "recordedVariation": true,
-    "deltaE": 5.279
+    "deltaE": 3.749
   },
   {
     "election": "k8",
@@ -46,7 +103,7 @@
     "canonicalParty": "free-centre",
     "name": "Free Centre",
     "base": "#0058d5",
-    "color": "#143eff",
+    "color": "#4147f1",
     "forced": true,
     "reasons": [
       "global sibling separation: herut"
@@ -55,7 +112,7 @@
     "source": "data/meta/k8.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 9.341
+    "deltaE": 8.505
   },
   {
     "election": "k8",
@@ -65,7 +122,7 @@
     "canonicalParty": "mapam",
     "name": "Mapam",
     "base": "#96342e",
-    "color": "#89403e",
+    "color": "#863933",
     "forced": true,
     "reasons": [
       "global sibling separation: labor",
@@ -75,7 +132,64 @@
     "source": "data/meta/k8.json",
     "custom": false,
     "recordedVariation": true,
-    "deltaE": 5.279
+    "deltaE": 3.749
+  },
+  {
+    "election": "k8",
+    "list": "8-גד",
+    "letters": "גד",
+    "party": "poalei-agudat-yisrael",
+    "canonicalParty": "poalei-agudat-yisrael",
+    "name": "Poalei Agudat Yisrael",
+    "base": "#df561d",
+    "color": "#da6116",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: labor, labor"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k8.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 4.371
+  },
+  {
+    "election": "k8",
+    "list": "8-קנ",
+    "letters": "קנ",
+    "party": "blue-red-movement",
+    "canonicalParty": "blue-red-movement",
+    "name": "Blue-Red Movement",
+    "base": "#4f8afb",
+    "color": "#658bfd",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: herut"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 3.092
+  },
+  {
+    "election": "k9",
+    "list": "9-מחל",
+    "letters": "מחל",
+    "party": "ahdut-seidel-1977",
+    "canonicalParty": "ahdut-seidel-1977",
+    "name": "Ahdut faction (Hillel Seidel)",
+    "base": "#e75669",
+    "color": "#d96671",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: labor"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 3.551
   },
   {
     "election": "k9",
@@ -85,7 +199,7 @@
     "canonicalParty": "mapam",
     "name": "Mapam",
     "base": "#96342e",
-    "color": "#89403e",
+    "color": "#863933",
     "forced": true,
     "reasons": [
       "global sibling separation: labor",
@@ -95,7 +209,64 @@
     "source": "data/meta/k9.json",
     "custom": false,
     "recordedVariation": true,
-    "deltaE": 5.279
+    "deltaE": 3.749
+  },
+  {
+    "election": "k9",
+    "list": "9-ו",
+    "letters": "ו",
+    "party": "rakah",
+    "canonicalParty": "rakah",
+    "name": "Rakah",
+    "base": "#ab0e1a",
+    "color": "#96460b",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: labor, mapam"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k9.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 15.832
+  },
+  {
+    "election": "k9",
+    "list": "9-ש",
+    "letters": "ש",
+    "party": "independent-socialists",
+    "canonicalParty": "independent-socialists",
+    "name": "Independent Socialist (Social-Democratic) Faction",
+    "base": "#239bcf",
+    "color": "#23a2d8",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: herut"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 2.2
+  },
+  {
+    "election": "k9",
+    "list": "9-ש",
+    "letters": "ש",
+    "party": "moked",
+    "canonicalParty": "moked",
+    "name": "Moked",
+    "base": "#ff2a24",
+    "color": "#d06932",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: labor"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k9.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 13.679
   },
   {
     "election": "k10",
@@ -105,7 +276,7 @@
     "canonicalParty": "mapam",
     "name": "Mapam",
     "base": "#ab0e1a",
-    "color": "#99304b",
+    "color": "#a30d45",
     "forced": true,
     "reasons": [
       "global sibling separation: labor"
@@ -114,7 +285,26 @@
     "source": "data/meta/k10.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 14.278
+    "deltaE": 14.236
+  },
+  {
+    "election": "k10",
+    "list": "10-ו",
+    "letters": "ו",
+    "party": "israeli-communist-party",
+    "canonicalParty": "israeli-communist-party",
+    "name": "Israeli Communist Party (Rakah)",
+    "base": "#089bd4",
+    "color": "#2ba2f8",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: herut, tzomet"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 6.918
   },
   {
     "election": "k11",
@@ -124,7 +314,7 @@
     "canonicalParty": "mapam",
     "name": "Mapam",
     "base": "#ab0e1a",
-    "color": "#99304b",
+    "color": "#a30d45",
     "forced": true,
     "reasons": [
       "global sibling separation: labor"
@@ -133,7 +323,140 @@
     "source": "data/meta/k11.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 14.278
+    "deltaE": 14.236
+  },
+  {
+    "election": "k11",
+    "list": "11-ו",
+    "letters": "ו",
+    "party": "israeli-communist-party",
+    "canonicalParty": "israeli-communist-party",
+    "name": "Israeli Communist Party (Rakah)",
+    "base": "#089bd4",
+    "color": "#2ba2f8",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: herut, tzomet"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 6.918
+  },
+  {
+    "election": "k11",
+    "list": "11-ת",
+    "letters": "ת",
+    "party": "tehiya",
+    "canonicalParty": "tehiya",
+    "name": "Tehiya",
+    "base": "#007fff",
+    "color": "#6a7bec",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: herut"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k11.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 9.014
+  },
+  {
+    "election": "k11",
+    "list": "11-עד",
+    "letters": "עד",
+    "party": "matzad",
+    "canonicalParty": "matzad",
+    "name": "Matzad",
+    "base": "#d45baf",
+    "color": "#d352ce",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: independent-liberals"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 6.49
+  },
+  {
+    "election": "k11",
+    "list": "11-עד",
+    "letters": "עד",
+    "party": "poalei-agudat-yisrael",
+    "canonicalParty": "poalei-agudat-yisrael",
+    "name": "Poalei Agudat Yisrael",
+    "base": "#df561d",
+    "color": "#da6116",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: labor, labor"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k1.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 4.371
+  },
+  {
+    "election": "k12",
+    "list": "12-ג",
+    "letters": "ג",
+    "party": "poalei-agudat-yisrael",
+    "canonicalParty": "poalei-agudat-yisrael",
+    "name": "Poalei Agudat Yisrael",
+    "base": "#df561d",
+    "color": "#da6116",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: labor, labor"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k1.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 4.371
+  },
+  {
+    "election": "k12",
+    "list": "12-ו",
+    "letters": "ו",
+    "party": "israeli-communist-party",
+    "canonicalParty": "israeli-communist-party",
+    "name": "Israeli Communist Party (Rakah)",
+    "base": "#089bd4",
+    "color": "#2ba2f8",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: herut, tzomet"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 6.918
+  },
+  {
+    "election": "k12",
+    "list": "12-הן",
+    "letters": "הן",
+    "party": "shinui",
+    "canonicalParty": "shinui",
+    "name": "Shinui",
+    "base": "#2d4277",
+    "color": "#6b7a9c",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: agudat-yisrael, likud"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k12.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 20.245
   },
   {
     "election": "k13",
@@ -143,7 +466,7 @@
     "canonicalParty": "mapam",
     "name": "Mapam",
     "base": "#ab0e1a",
-    "color": "#99304b",
+    "color": "#a30d45",
     "forced": true,
     "reasons": [
       "global sibling separation: labor"
@@ -152,7 +475,26 @@
     "source": "data/meta/k13.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 14.278
+    "deltaE": 14.236
+  },
+  {
+    "election": "k13",
+    "list": "13-מרצ",
+    "letters": "מרצ",
+    "party": "shinui",
+    "canonicalParty": "shinui",
+    "name": "Shinui",
+    "base": "#2d4277",
+    "color": "#6b7a9c",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: agudat-yisrael, likud"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k13.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 20.245
   },
   {
     "election": "k13",
@@ -162,17 +504,18 @@
     "canonicalParty": "degel-hatorah",
     "name": "Degel HaTorah",
     "base": "#03428f",
-    "color": "#024f5e",
+    "color": "#7054db",
     "forced": true,
     "reasons": [
       "global sibling separation: agudat-yisrael",
+      "separation from other lists' seats in the same election: likud",
       "recorded research differs this election (data/meta/k13.json): #1b1b1b → #03428f"
     ],
     "confidence": "low",
     "source": "data/meta/k13.json",
     "custom": false,
     "recordedVariation": true,
-    "deltaE": 17.635
+    "deltaE": 18.328
   },
   {
     "election": "k14",
@@ -182,7 +525,7 @@
     "canonicalParty": "gesher",
     "name": "Gesher",
     "base": "#0000ff",
-    "color": "#2503f8",
+    "color": "#0001f3",
     "forced": true,
     "reasons": [
       "global sibling separation: likud"
@@ -191,7 +534,7 @@
     "source": "data/meta/k14.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 0.827
+    "deltaE": 1.501
   },
   {
     "election": "k14",
@@ -201,7 +544,7 @@
     "canonicalParty": "mapam",
     "name": "Mapam",
     "base": "#ab0e1a",
-    "color": "#99304b",
+    "color": "#a30d45",
     "forced": true,
     "reasons": [
       "global sibling separation: labor"
@@ -210,7 +553,66 @@
     "source": "data/meta/k14.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 14.278
+    "deltaE": 14.236
+  },
+  {
+    "election": "k14",
+    "list": "14-מרצ",
+    "letters": "מרצ",
+    "party": "shinui",
+    "canonicalParty": "shinui",
+    "name": "Shinui",
+    "base": "#2d4277",
+    "color": "#6b7a9c",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: agudat-yisrael, likud"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k14.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 20.245
+  },
+  {
+    "election": "k14",
+    "list": "14-ו",
+    "letters": "ו",
+    "party": "hadash",
+    "canonicalParty": "hadash",
+    "name": "Hadash",
+    "base": "#c81f28",
+    "color": "#bc5f62",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: ratz, labor",
+      "recorded research differs this election (data/meta/k14.json): #ea1f26 → #c81f28"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k14.json",
+    "custom": false,
+    "recordedVariation": true,
+    "deltaE": 13.543
+  },
+  {
+    "election": "k14",
+    "list": "14-ו",
+    "letters": "ו",
+    "party": "balad",
+    "canonicalParty": "balad",
+    "name": "Balad",
+    "base": "#f07d00",
+    "color": "#dc8912",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: tkuma",
+      "recorded research differs this election (data/meta/k14.json): #f65f0c → #f07d00"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k14.json",
+    "custom": false,
+    "recordedVariation": true,
+    "deltaE": 7.089
   },
   {
     "election": "k14",
@@ -220,17 +622,18 @@
     "canonicalParty": "degel-hatorah",
     "name": "Degel HaTorah",
     "base": "#03428f",
-    "color": "#024f5e",
+    "color": "#7054db",
     "forced": true,
     "reasons": [
       "global sibling separation: agudat-yisrael",
+      "separation from other lists' seats in the same election: likud",
       "recorded research differs this election (data/meta/k14.json): #1b1b1b → #03428f"
     ],
     "confidence": "low",
     "source": "data/meta/k14.json",
     "custom": false,
     "recordedVariation": true,
-    "deltaE": 17.635
+    "deltaE": 18.328
   },
   {
     "election": "k14",
@@ -240,7 +643,7 @@
     "canonicalParty": "arab-democratic-party",
     "name": "Arab Democratic Party",
     "base": "#15793d",
-    "color": "#526b69",
+    "color": "#77a883",
     "forced": true,
     "reasons": [
       "global sibling separation: raam"
@@ -249,7 +652,7 @@
     "source": "data/meta/k14.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 20.044
+    "deltaE": 20.681
   },
   {
     "election": "k15",
@@ -259,7 +662,7 @@
     "canonicalParty": "gesher",
     "name": "Gesher",
     "base": "#0000ff",
-    "color": "#2503f8",
+    "color": "#0001f3",
     "forced": true,
     "reasons": [
       "global sibling separation: likud"
@@ -268,7 +671,7 @@
     "source": "data/meta/k15.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 0.827
+    "deltaE": 1.501
   },
   {
     "election": "k15",
@@ -278,17 +681,18 @@
     "canonicalParty": "degel-hatorah",
     "name": "Degel HaTorah",
     "base": "#03428f",
-    "color": "#024f5e",
+    "color": "#7054db",
     "forced": true,
     "reasons": [
       "global sibling separation: agudat-yisrael",
+      "separation from other lists' seats in the same election: likud",
       "recorded research differs this election (data/meta/k15.json): #1b1b1b → #03428f"
     ],
     "confidence": "low",
     "source": "data/meta/k15.json",
     "custom": false,
     "recordedVariation": true,
-    "deltaE": 17.635
+    "deltaE": 18.328
   },
   {
     "election": "k15",
@@ -298,7 +702,7 @@
     "canonicalParty": "arab-democratic-party",
     "name": "Arab Democratic Party",
     "base": "#15793d",
-    "color": "#526b69",
+    "color": "#77a883",
     "forced": true,
     "reasons": [
       "global sibling separation: raam"
@@ -307,7 +711,103 @@
     "source": "data/meta/k15.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 20.044
+    "deltaE": 20.681
+  },
+  {
+    "election": "k15",
+    "list": "15-יט",
+    "letters": "יט",
+    "party": "moledet",
+    "canonicalParty": "moledet",
+    "name": "Moledet",
+    "base": "#083d7b",
+    "color": "#285a9a",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: agudat-yisrael"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k15.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 9.719
+  },
+  {
+    "election": "k15",
+    "list": "15-ד",
+    "letters": "ד",
+    "party": "balad",
+    "canonicalParty": "balad",
+    "name": "Balad",
+    "base": "#f07d00",
+    "color": "#dc8912",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: tkuma",
+      "recorded research differs this election (data/meta/k15.json): #f65f0c → #f07d00"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k15.json",
+    "custom": false,
+    "recordedVariation": true,
+    "deltaE": 7.089
+  },
+  {
+    "election": "k15",
+    "list": "15-ד",
+    "letters": "ד",
+    "party": "taal",
+    "canonicalParty": "taal",
+    "name": "Ta'al",
+    "base": "#f2cb06",
+    "color": "#f3cc09",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: agudat-yisrael"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k18.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 0.237
+  },
+  {
+    "election": "k16",
+    "list": "16-ל",
+    "letters": "ל",
+    "party": "moledet",
+    "canonicalParty": "moledet",
+    "name": "Moledet",
+    "base": "#083d7b",
+    "color": "#285a9a",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: agudat-yisrael"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k16.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 9.719
+  },
+  {
+    "election": "k16",
+    "list": "16-מרצ",
+    "letters": "מרצ",
+    "party": "democratic-choice",
+    "canonicalParty": "democratic-choice",
+    "name": "Democratic Choice",
+    "base": "#e5557c",
+    "color": "#f7478d",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: hadash"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 4.953
   },
   {
     "election": "k16",
@@ -317,17 +817,57 @@
     "canonicalParty": "degel-hatorah",
     "name": "Degel HaTorah",
     "base": "#03428f",
-    "color": "#024f5e",
+    "color": "#7054db",
     "forced": true,
     "reasons": [
       "global sibling separation: agudat-yisrael",
+      "separation from other lists' seats in the same election: likud",
       "recorded research differs this election (data/meta/k16.json): #1b1b1b → #03428f"
     ],
     "confidence": "low",
     "source": "data/meta/k16.json",
     "custom": false,
     "recordedVariation": true,
-    "deltaE": 17.635
+    "deltaE": 18.328
+  },
+  {
+    "election": "k16",
+    "list": "16-ו",
+    "letters": "ו",
+    "party": "hadash",
+    "canonicalParty": "hadash",
+    "name": "Hadash",
+    "base": "#c81f28",
+    "color": "#bc5f62",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: ratz, labor",
+      "recorded research differs this election (data/meta/k16.json): #ea1f26 → #c81f28"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k16.json",
+    "custom": false,
+    "recordedVariation": true,
+    "deltaE": 13.543
+  },
+  {
+    "election": "k16",
+    "list": "16-ו",
+    "letters": "ו",
+    "party": "taal",
+    "canonicalParty": "taal",
+    "name": "Ta'al",
+    "base": "#f2cb06",
+    "color": "#f3cc09",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: agudat-yisrael"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k18.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 0.237
   },
   {
     "election": "k16",
@@ -337,7 +877,7 @@
     "canonicalParty": "arab-democratic-party",
     "name": "Arab Democratic Party",
     "base": "#15793d",
-    "color": "#526b69",
+    "color": "#77a883",
     "forced": true,
     "reasons": [
       "global sibling separation: raam"
@@ -346,7 +886,26 @@
     "source": "data/meta/k16.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 20.044
+    "deltaE": 20.681
+  },
+  {
+    "election": "k17",
+    "list": "17-טב",
+    "letters": "טב",
+    "party": "moledet",
+    "canonicalParty": "moledet",
+    "name": "Moledet",
+    "base": "#083d7b",
+    "color": "#285a9a",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: agudat-yisrael"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k17.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 9.719
   },
   {
     "election": "k17",
@@ -356,16 +915,17 @@
     "canonicalParty": "ahi",
     "name": "Renewed Religious National Zionism",
     "base": "#008bd3",
-    "color": "#798496",
+    "color": "#9d9daa",
     "forced": true,
     "reasons": [
-      "global sibling separation: likud"
+      "global sibling separation: likud",
+      "separation from other lists' seats in the same election: telem"
     ],
     "confidence": "medium",
     "source": "data/meta/k18.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 16.653
+    "deltaE": 25.087
   },
   {
     "election": "k17",
@@ -375,17 +935,37 @@
     "canonicalParty": "degel-hatorah",
     "name": "Degel HaTorah",
     "base": "#03428f",
-    "color": "#024f5e",
+    "color": "#7054db",
     "forced": true,
     "reasons": [
       "global sibling separation: agudat-yisrael",
+      "separation from other lists' seats in the same election: likud",
       "recorded research differs this election (data/meta/k17.json): #1b1b1b → #03428f"
     ],
     "confidence": "low",
     "source": "data/meta/k17.json",
     "custom": false,
     "recordedVariation": true,
-    "deltaE": 17.635
+    "deltaE": 18.328
+  },
+  {
+    "election": "k17",
+    "list": "17-עם",
+    "letters": "עם",
+    "party": "taal",
+    "canonicalParty": "taal",
+    "name": "Ta'al",
+    "base": "#f2cb06",
+    "color": "#f3cc09",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: agudat-yisrael"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k18.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 0.237
   },
   {
     "election": "k17",
@@ -395,7 +975,7 @@
     "canonicalParty": "arab-democratic-party",
     "name": "Arab Democratic Party",
     "base": "#15793d",
-    "color": "#526b69",
+    "color": "#77a883",
     "forced": true,
     "reasons": [
       "global sibling separation: raam"
@@ -404,7 +984,7 @@
     "source": "data/meta/k17.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 20.044
+    "deltaE": 20.681
   },
   {
     "election": "k18",
@@ -414,16 +994,36 @@
     "canonicalParty": "ahi",
     "name": "Ahi",
     "base": "#008bd3",
-    "color": "#798496",
+    "color": "#9d9daa",
     "forced": true,
     "reasons": [
-      "global sibling separation: likud"
+      "global sibling separation: likud",
+      "separation from other lists' seats in the same election: telem"
     ],
     "confidence": "medium",
     "source": "data/meta/k18.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 16.653
+    "deltaE": 25.087
+  },
+  {
+    "election": "k18",
+    "list": "18-עם",
+    "letters": "עם",
+    "party": "taal",
+    "canonicalParty": "taal",
+    "name": "Ta'al",
+    "base": "#f2cb06",
+    "color": "#f3cc09",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: agudat-yisrael"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k18.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 0.237
   },
   {
     "election": "k18",
@@ -433,16 +1033,93 @@
     "canonicalParty": "hatikva",
     "name": "Hatikva",
     "base": "#11ab59",
-    "color": "#24a594",
+    "color": "#07715e",
     "forced": true,
     "reasons": [
-      "global sibling separation: eretz-yisrael-shelanu"
+      "global sibling separation: eretz-yisrael-shelanu",
+      "separation from other lists' seats in the same election: raam"
     ],
     "confidence": "derived",
     "source": "party id",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 16.123
+    "deltaE": 23.975
+  },
+  {
+    "election": "k18",
+    "list": "18-ט",
+    "letters": "ט",
+    "party": "eretz-yisrael-shelanu",
+    "canonicalParty": "eretz-yisrael-shelanu",
+    "name": "Eretz Yisrael Shelanu",
+    "base": "#31aa40",
+    "color": "#0aab30",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: meretz"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 2.084
+  },
+  {
+    "election": "k18",
+    "list": "18-ט",
+    "letters": "ט",
+    "party": "moledet",
+    "canonicalParty": "moledet",
+    "name": "Moledet",
+    "base": "#083d7b",
+    "color": "#285a9a",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: agudat-yisrael"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k15.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 9.719
+  },
+  {
+    "election": "k18",
+    "list": "18-מרצ",
+    "letters": "מרצ",
+    "party": "new-movement",
+    "canonicalParty": "new-movement",
+    "name": "HaTnua HaHadasha (New Movement)",
+    "base": "#e8594d",
+    "color": "#f03e36",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: tkuma"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 4.447
+  },
+  {
+    "election": "k18",
+    "list": "18-מרצ",
+    "letters": "מרצ",
+    "party": "meretz",
+    "canonicalParty": "meretz",
+    "name": "Meretz",
+    "base": "#42b23c",
+    "color": "#15df80",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: jewish-home"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k18.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 13.185
   },
   {
     "election": "k18",
@@ -452,16 +1129,36 @@
     "canonicalParty": "green-movement",
     "name": "Green Movement",
     "base": "#54ef5f",
-    "color": "#c0d4a2",
+    "color": "#ccd8ac",
     "forced": true,
     "reasons": [
-      "global sibling separation: meretz"
+      "global sibling separation: meretz",
+      "separation from other lists' seats in the same election: jewish-home"
     ],
     "confidence": "medium",
     "source": "data/meta/k18.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 18.201
+    "deltaE": 20.149
+  },
+  {
+    "election": "k19",
+    "list": "19-עם",
+    "letters": "עם",
+    "party": "taal",
+    "canonicalParty": "taal",
+    "name": "Ta'al",
+    "base": "#f2cb06",
+    "color": "#f3cc09",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: agudat-yisrael"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k19.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 0.237
   },
   {
     "election": "k19",
@@ -471,7 +1168,7 @@
     "canonicalParty": "arab-democratic-party",
     "name": "Arab Democratic Party (Mada)",
     "base": "#15793d",
-    "color": "#526b69",
+    "color": "#77a883",
     "forced": true,
     "reasons": [
       "global sibling separation: raam"
@@ -480,7 +1177,7 @@
     "source": "data/meta/k14.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 20.044
+    "deltaE": 20.681
   },
   {
     "election": "k20",
@@ -490,16 +1187,36 @@
     "canonicalParty": "green-movement",
     "name": "Green Movement",
     "base": "#54ef5f",
-    "color": "#c0d4a2",
+    "color": "#ccd8ac",
     "forced": true,
     "reasons": [
-      "global sibling separation: meretz"
+      "global sibling separation: meretz",
+      "separation from other lists' seats in the same election: jewish-home"
     ],
     "confidence": "medium",
     "source": "data/meta/k20.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 18.201
+    "deltaE": 20.149
+  },
+  {
+    "election": "k20",
+    "list": "20-ודעם",
+    "letters": "ודעם",
+    "party": "hadash",
+    "canonicalParty": "hadash",
+    "name": "Hadash (Israeli Communist Party)",
+    "base": "#ea1f26",
+    "color": "#a70512",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: labor, otzma-yehudit"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k20.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 14.593
   },
   {
     "election": "k20",
@@ -509,16 +1226,36 @@
     "canonicalParty": "balad",
     "name": "Balad",
     "base": "#f65f0c",
-    "color": "#e86e0b",
+    "color": "#d38002",
     "forced": true,
     "reasons": [
-      "global sibling separation: hadash"
+      "global sibling separation: hadash",
+      "separation from other lists' seats in the same election: tkuma"
     ],
     "confidence": "medium",
     "source": "data/meta/k20.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 5.516
+    "deltaE": 15.415
+  },
+  {
+    "election": "k20",
+    "list": "20-ודעם",
+    "letters": "ודעם",
+    "party": "taal",
+    "canonicalParty": "taal",
+    "name": "Ta'al",
+    "base": "#f2cb06",
+    "color": "#f3cc09",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: agudat-yisrael"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k20.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 0.237
   },
   {
     "election": "k20",
@@ -528,7 +1265,7 @@
     "canonicalParty": "otzma-yehudit",
     "name": "Otzma Yehudit (Jewish National Front)",
     "base": "#f0491c",
-    "color": "#fd254a",
+    "color": "#f0415c",
     "forced": true,
     "reasons": [
       "global sibling separation: tkuma"
@@ -537,7 +1274,7 @@
     "source": "data/meta/k20.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 13.944
+    "deltaE": 16.442
   },
   {
     "election": "k20",
@@ -547,7 +1284,7 @@
     "canonicalParty": "arab-democratic-party",
     "name": "Arab Democratic Party (Mada)",
     "base": "#15793d",
-    "color": "#526b69",
+    "color": "#77a883",
     "forced": true,
     "reasons": [
       "global sibling separation: raam"
@@ -556,7 +1293,7 @@
     "source": "data/meta/k14.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 20.044
+    "deltaE": 20.681
   },
   {
     "election": "k21",
@@ -566,16 +1303,36 @@
     "canonicalParty": "ahi",
     "name": "Ahi",
     "base": "#008bd3",
-    "color": "#798496",
+    "color": "#9d9daa",
     "forced": true,
     "reasons": [
-      "global sibling separation: likud"
+      "global sibling separation: likud",
+      "separation from other lists' seats in the same election: telem"
     ],
     "confidence": "medium",
     "source": "data/meta/k21.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 16.653
+    "deltaE": 25.087
+  },
+  {
+    "election": "k21",
+    "list": "21-פה",
+    "letters": "פה",
+    "party": "yesh-atid",
+    "canonicalParty": "yesh-atid",
+    "name": "Yesh Atid",
+    "base": "#003aa7",
+    "color": "#1e2ebe",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: likud"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k21.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 5.647
   },
   {
     "election": "k21",
@@ -585,16 +1342,55 @@
     "canonicalParty": "telem",
     "name": "Telem",
     "base": "#093566",
-    "color": "#333445",
+    "color": "#6580a2",
     "forced": true,
     "reasons": [
-      "global sibling separation: yesh-atid"
+      "global sibling separation: yesh-atid",
+      "separation from other lists' seats in the same election: likud"
     ],
     "confidence": "low",
     "source": "data/meta/k21.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 12.741
+    "deltaE": 26.307
+  },
+  {
+    "election": "k21",
+    "list": "21-ום",
+    "letters": "ום",
+    "party": "hadash",
+    "canonicalParty": "hadash",
+    "name": "Hadash (Israeli Communist Party)",
+    "base": "#ea1f26",
+    "color": "#a70512",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: labor, otzma-yehudit"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k21.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 14.593
+  },
+  {
+    "election": "k21",
+    "list": "21-ום",
+    "letters": "ום",
+    "party": "taal",
+    "canonicalParty": "taal",
+    "name": "Ta'al",
+    "base": "#f2cb06",
+    "color": "#f3cc09",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: agudat-yisrael"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k21.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 0.237
   },
   {
     "election": "k21",
@@ -604,7 +1400,7 @@
     "canonicalParty": "otzma-yehudit",
     "name": "Otzma Yehudit (Jewish National Front)",
     "base": "#f0491c",
-    "color": "#fd254a",
+    "color": "#f0415c",
     "forced": true,
     "reasons": [
       "global sibling separation: tkuma"
@@ -613,7 +1409,7 @@
     "source": "data/meta/k21.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 13.944
+    "deltaE": 16.442
   },
   {
     "election": "k21",
@@ -623,16 +1419,55 @@
     "canonicalParty": "balad",
     "name": "Balad",
     "base": "#f65f0c",
-    "color": "#e86e0b",
+    "color": "#d38002",
     "forced": true,
     "reasons": [
-      "global sibling separation: hadash"
+      "global sibling separation: hadash",
+      "separation from other lists' seats in the same election: tkuma"
     ],
     "confidence": "medium",
     "source": "data/meta/k21.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 5.516
+    "deltaE": 15.415
+  },
+  {
+    "election": "k21",
+    "list": "21-ז",
+    "letters": "ז",
+    "party": "zehut",
+    "canonicalParty": "zehut",
+    "name": "Zehut",
+    "base": "#51c8e6",
+    "color": "#48cad9",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: yashar"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k21.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 5.393
+  },
+  {
+    "election": "k22",
+    "list": "22-פה",
+    "letters": "פה",
+    "party": "yesh-atid",
+    "canonicalParty": "yesh-atid",
+    "name": "Yesh Atid",
+    "base": "#003aa7",
+    "color": "#1e2ebe",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: likud"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 5.647
   },
   {
     "election": "k22",
@@ -642,16 +1477,55 @@
     "canonicalParty": "telem",
     "name": "Telem",
     "base": "#093566",
-    "color": "#333445",
+    "color": "#6580a2",
     "forced": true,
     "reasons": [
-      "global sibling separation: yesh-atid"
+      "global sibling separation: yesh-atid",
+      "separation from other lists' seats in the same election: likud"
     ],
     "confidence": "low",
     "source": "data/meta/k22.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 12.741
+    "deltaE": 26.307
+  },
+  {
+    "election": "k22",
+    "list": "22-מחל",
+    "letters": "מחל",
+    "party": "kulanu",
+    "canonicalParty": "kulanu",
+    "name": "Kulanu",
+    "base": "#00aff0",
+    "color": "#0693ad",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: israel-resilience, new-right"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 13.811
+  },
+  {
+    "election": "k22",
+    "list": "22-ודעם",
+    "letters": "ודעם",
+    "party": "hadash",
+    "canonicalParty": "hadash",
+    "name": "Hadash (Israeli Communist Party)",
+    "base": "#ea1f26",
+    "color": "#a70512",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: labor, otzma-yehudit"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 14.593
   },
   {
     "election": "k22",
@@ -661,16 +1535,93 @@
     "canonicalParty": "balad",
     "name": "Balad",
     "base": "#f65f0c",
-    "color": "#e86e0b",
+    "color": "#d38002",
     "forced": true,
     "reasons": [
-      "global sibling separation: hadash"
+      "global sibling separation: hadash",
+      "separation from other lists' seats in the same election: tkuma"
     ],
     "confidence": "medium",
     "source": "data/meta/k22.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 5.516
+    "deltaE": 15.415
+  },
+  {
+    "election": "k22",
+    "list": "22-ודעם",
+    "letters": "ודעם",
+    "party": "taal",
+    "canonicalParty": "taal",
+    "name": "Ta'al",
+    "base": "#f2cb06",
+    "color": "#f3cc09",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: agudat-yisrael"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 0.237
+  },
+  {
+    "election": "k22",
+    "list": "22-טב",
+    "letters": "טב",
+    "party": "new-right",
+    "canonicalParty": "new-right",
+    "name": "New Right (registered as Tzalash)",
+    "base": "#25abe4",
+    "color": "#83b6fe",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: israel-resilience"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 12.232
+  },
+  {
+    "election": "k22",
+    "list": "22-אמת",
+    "letters": "אמת",
+    "party": "gesher-2019",
+    "canonicalParty": "gesher-2019",
+    "name": "Gesher",
+    "base": "#101e6d",
+    "color": "#101e5b",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: yesh-atid"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 3.441
+  },
+  {
+    "election": "k22",
+    "list": "22-מרצ",
+    "letters": "מרצ",
+    "party": "meretz",
+    "canonicalParty": "meretz",
+    "name": "Meretz",
+    "base": "#42b23c",
+    "color": "#15df80",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: jewish-home"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 13.185
   },
   {
     "election": "k22",
@@ -680,16 +1631,17 @@
     "canonicalParty": "green-movement",
     "name": "Green Movement",
     "base": "#54ef5f",
-    "color": "#c0d4a2",
+    "color": "#ccd8ac",
     "forced": true,
     "reasons": [
-      "global sibling separation: meretz"
+      "global sibling separation: meretz",
+      "separation from other lists' seats in the same election: jewish-home"
     ],
     "confidence": "medium",
     "source": "data/meta/k22.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 18.201
+    "deltaE": 20.149
   },
   {
     "election": "k22",
@@ -699,7 +1651,7 @@
     "canonicalParty": "independence",
     "name": "Independence",
     "base": "#05a786",
-    "color": "#0ea68f",
+    "color": "#10a58e",
     "forced": true,
     "reasons": [
       "global sibling separation: meretz"
@@ -708,7 +1660,45 @@
     "source": "party id",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 3.1
+    "deltaE": 3.095
+  },
+  {
+    "election": "k23",
+    "list": "23-מחל",
+    "letters": "מחל",
+    "party": "kulanu",
+    "canonicalParty": "kulanu",
+    "name": "Kulanu",
+    "base": "#00aff0",
+    "color": "#0693ad",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: israel-resilience, new-right"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 13.811
+  },
+  {
+    "election": "k23",
+    "list": "23-פה",
+    "letters": "פה",
+    "party": "yesh-atid",
+    "canonicalParty": "yesh-atid",
+    "name": "Yesh Atid",
+    "base": "#003aa7",
+    "color": "#1e2ebe",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: likud"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 5.647
   },
   {
     "election": "k23",
@@ -718,16 +1708,36 @@
     "canonicalParty": "telem",
     "name": "Telem",
     "base": "#093566",
-    "color": "#333445",
+    "color": "#6580a2",
     "forced": true,
     "reasons": [
-      "global sibling separation: yesh-atid"
+      "global sibling separation: yesh-atid",
+      "separation from other lists' seats in the same election: likud"
     ],
     "confidence": "low",
     "source": "data/meta/k23.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 12.741
+    "deltaE": 26.307
+  },
+  {
+    "election": "k23",
+    "list": "23-ודעם",
+    "letters": "ודעם",
+    "party": "hadash",
+    "canonicalParty": "hadash",
+    "name": "Hadash (Israeli Communist Party)",
+    "base": "#ea1f26",
+    "color": "#a70512",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: labor, otzma-yehudit"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 14.593
   },
   {
     "election": "k23",
@@ -737,16 +1747,93 @@
     "canonicalParty": "balad",
     "name": "Balad",
     "base": "#f65f0c",
-    "color": "#e86e0b",
+    "color": "#d38002",
     "forced": true,
     "reasons": [
-      "global sibling separation: hadash"
+      "global sibling separation: hadash",
+      "separation from other lists' seats in the same election: tkuma"
     ],
     "confidence": "medium",
     "source": "data/meta/k23.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 5.516
+    "deltaE": 15.415
+  },
+  {
+    "election": "k23",
+    "list": "23-ודעם",
+    "letters": "ודעם",
+    "party": "taal",
+    "canonicalParty": "taal",
+    "name": "Ta'al",
+    "base": "#f2cb06",
+    "color": "#f3cc09",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: agudat-yisrael"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 0.237
+  },
+  {
+    "election": "k23",
+    "list": "23-אמת",
+    "letters": "אמת",
+    "party": "gesher-2019",
+    "canonicalParty": "gesher-2019",
+    "name": "Gesher",
+    "base": "#101e6d",
+    "color": "#101e5b",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: yesh-atid"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 3.441
+  },
+  {
+    "election": "k23",
+    "list": "23-אמת",
+    "letters": "אמת",
+    "party": "meretz",
+    "canonicalParty": "meretz",
+    "name": "Meretz",
+    "base": "#42b23c",
+    "color": "#15df80",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: jewish-home"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 13.185
+  },
+  {
+    "election": "k23",
+    "list": "23-טב",
+    "letters": "טב",
+    "party": "new-right",
+    "canonicalParty": "new-right",
+    "name": "New Right (registered as Tzalash)",
+    "base": "#25abe4",
+    "color": "#83b6fe",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: israel-resilience"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 12.232
   },
   {
     "election": "k23",
@@ -756,16 +1843,17 @@
     "canonicalParty": "ahi",
     "name": "Ahi",
     "base": "#008bd3",
-    "color": "#798496",
+    "color": "#9d9daa",
     "forced": true,
     "reasons": [
-      "global sibling separation: likud"
+      "global sibling separation: likud",
+      "separation from other lists' seats in the same election: telem"
     ],
     "confidence": "medium",
     "source": "data/meta/k23.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 16.653
+    "deltaE": 25.087
   },
   {
     "election": "k24",
@@ -775,16 +1863,17 @@
     "canonicalParty": "atid-ehad",
     "name": "Atid Ehad",
     "base": "#d66f1b",
-    "color": "#be8101",
+    "color": "#946a25",
     "forced": true,
     "reasons": [
-      "global sibling separation: tkuma"
+      "global sibling separation: tkuma",
+      "separation from other lists' seats in the same election: balad"
     ],
     "confidence": "derived",
     "source": "party id",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 12.941
+    "deltaE": 16.535
   },
   {
     "election": "k24",
@@ -794,7 +1883,7 @@
     "canonicalParty": "otzma-yehudit",
     "name": "Otzma Yehudit (Jewish National Front)",
     "base": "#f0491c",
-    "color": "#fd254a",
+    "color": "#f0415c",
     "forced": true,
     "reasons": [
       "global sibling separation: tkuma"
@@ -803,7 +1892,45 @@
     "source": "data/meta/k24.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 13.944
+    "deltaE": 16.442
+  },
+  {
+    "election": "k24",
+    "list": "24-ודעם",
+    "letters": "ודעם",
+    "party": "hadash",
+    "canonicalParty": "hadash",
+    "name": "Hadash (Israeli Communist Party)",
+    "base": "#ea1f26",
+    "color": "#a70512",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: labor, otzma-yehudit"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k24.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 14.593
+  },
+  {
+    "election": "k24",
+    "list": "24-ודעם",
+    "letters": "ודעם",
+    "party": "taal",
+    "canonicalParty": "taal",
+    "name": "Ta'al",
+    "base": "#f2cb06",
+    "color": "#f3cc09",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: agudat-yisrael"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k24.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 0.237
   },
   {
     "election": "k24",
@@ -813,16 +1940,17 @@
     "canonicalParty": "balad",
     "name": "Balad",
     "base": "#f65f0c",
-    "color": "#e86e0b",
+    "color": "#d38002",
     "forced": true,
     "reasons": [
-      "global sibling separation: hadash"
+      "global sibling separation: hadash",
+      "separation from other lists' seats in the same election: tkuma"
     ],
     "confidence": "medium",
     "source": "data/meta/k24.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 5.516
+    "deltaE": 15.415
   },
   {
     "election": "k24",
@@ -832,16 +1960,17 @@
     "canonicalParty": "new-hope",
     "name": "New Hope",
     "base": "#01448b",
-    "color": "#512990",
+    "color": "#4d346d",
     "forced": true,
     "reasons": [
-      "global sibling separation: likud"
+      "global sibling separation: likud",
+      "separation from other lists' seats in the same election: yesh-atid"
     ],
     "confidence": "low",
     "source": "data/meta/k24.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 16.222
+    "deltaE": 16.336
   },
   {
     "election": "k25",
@@ -851,7 +1980,7 @@
     "canonicalParty": "otzma-yehudit",
     "name": "Otzma Yehudit (Jewish National Front)",
     "base": "#f0491c",
-    "color": "#fd254a",
+    "color": "#f0415c",
     "forced": true,
     "reasons": [
       "global sibling separation: tkuma"
@@ -860,7 +1989,7 @@
     "source": "data/meta/k25.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 13.944
+    "deltaE": 16.442
   },
   {
     "election": "k25",
@@ -870,16 +1999,36 @@
     "canonicalParty": "atid-ehad",
     "name": "Atid Ehad",
     "base": "#d66f1b",
-    "color": "#be8101",
+    "color": "#946a25",
     "forced": true,
     "reasons": [
-      "global sibling separation: tkuma"
+      "global sibling separation: tkuma",
+      "separation from other lists' seats in the same election: balad"
     ],
     "confidence": "derived",
     "source": "party id",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 12.941
+    "deltaE": 16.535
+  },
+  {
+    "election": "k25",
+    "list": "25-ט",
+    "letters": "ט",
+    "party": "eretz-yisrael-shelanu",
+    "canonicalParty": "eretz-yisrael-shelanu",
+    "name": "Eretz Yisrael Shelanu",
+    "base": "#31aa40",
+    "color": "#0aab30",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: meretz"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 2.084
   },
   {
     "election": "k25",
@@ -889,16 +2038,74 @@
     "canonicalParty": "new-hope",
     "name": "New Hope",
     "base": "#01448b",
-    "color": "#512990",
+    "color": "#4d346d",
     "forced": true,
     "reasons": [
-      "global sibling separation: likud"
+      "global sibling separation: likud",
+      "separation from other lists' seats in the same election: yesh-atid"
     ],
     "confidence": "low",
     "source": "data/meta/k25.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 16.222
+    "deltaE": 16.336
+  },
+  {
+    "election": "k25",
+    "list": "25-ום",
+    "letters": "ום",
+    "party": "hadash",
+    "canonicalParty": "hadash",
+    "name": "Hadash (Israeli Communist Party)",
+    "base": "#ea1f26",
+    "color": "#a70512",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: labor, otzma-yehudit"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k25.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 14.593
+  },
+  {
+    "election": "k25",
+    "list": "25-ום",
+    "letters": "ום",
+    "party": "taal",
+    "canonicalParty": "taal",
+    "name": "Ta'al",
+    "base": "#f2cb06",
+    "color": "#f3cc09",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: agudat-yisrael"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k25.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 0.237
+  },
+  {
+    "election": "k25",
+    "list": "25-ב",
+    "letters": "ב",
+    "party": "new-right",
+    "canonicalParty": "new-right",
+    "name": "Yamina / New Right (registered as Tzalash)",
+    "base": "#25abe4",
+    "color": "#83b6fe",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: israel-resilience"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k25.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 12.232
   },
   {
     "election": "k26",
@@ -908,16 +2115,17 @@
     "canonicalParty": "new-hope",
     "name": "New Hope – the National Right",
     "base": "#01448b",
-    "color": "#512990",
+    "color": "#4d346d",
     "forced": true,
     "reasons": [
-      "global sibling separation: likud"
+      "global sibling separation: likud",
+      "separation from other lists' seats in the same election: yesh-atid"
     ],
     "confidence": "low",
     "source": "data/meta/k26.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 16.222
+    "deltaE": 16.336
   },
   {
     "election": "k26",
@@ -927,7 +2135,7 @@
     "canonicalParty": "otzma-yehudit",
     "name": "Otzma Yehudit (Jewish National Front)",
     "base": "#f0491c",
-    "color": "#fd254a",
+    "color": "#f0415c",
     "forced": true,
     "reasons": [
       "global sibling separation: tkuma"
@@ -936,7 +2144,64 @@
     "source": "data/meta/k26.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 13.944
+    "deltaE": 16.442
+  },
+  {
+    "election": "k26",
+    "list": "26-ב",
+    "letters": "ב",
+    "party": "eretz-yisrael-shelanu",
+    "canonicalParty": "eretz-yisrael-shelanu",
+    "name": "Eretz Yisrael Shelanu",
+    "base": "#31aa40",
+    "color": "#0aab30",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: meretz"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 2.084
+  },
+  {
+    "election": "k26",
+    "list": "26-ג",
+    "letters": "ג",
+    "party": "homat-torat-yisrael",
+    "canonicalParty": "homat-torat-yisrael",
+    "name": "Homat Torat Yisrael",
+    "base": "#0f92f7",
+    "color": "#2e89f8",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: yashar"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 4.18
+  },
+  {
+    "election": "k26",
+    "list": "26-ט",
+    "letters": "ט",
+    "party": "zehut",
+    "canonicalParty": "zehut",
+    "name": "Zehut",
+    "base": "#51c8e6",
+    "color": "#48cad9",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: yashar"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k26.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 5.393
   },
   {
     "election": "k26",
@@ -946,16 +2211,55 @@
     "canonicalParty": "atid-ehad",
     "name": "Atid Ehad",
     "base": "#d66f1b",
-    "color": "#be8101",
+    "color": "#946a25",
     "forced": true,
     "reasons": [
-      "global sibling separation: tkuma"
+      "global sibling separation: tkuma",
+      "separation from other lists' seats in the same election: balad"
     ],
     "confidence": "derived",
     "source": "party id",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 12.941
+    "deltaE": 16.535
+  },
+  {
+    "election": "k26",
+    "list": "26-אמת",
+    "letters": "אמת",
+    "party": "democrats",
+    "canonicalParty": "democrats",
+    "name": "The Democrats",
+    "base": "#2535d8",
+    "color": "#6654ff",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: likud, yesh-atid"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k26.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 12.202
+  },
+  {
+    "election": "k26",
+    "list": "26-אמת",
+    "letters": "אמת",
+    "party": "meretz",
+    "canonicalParty": "meretz",
+    "name": "Meretz",
+    "base": "#42b23c",
+    "color": "#15df80",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: jewish-home"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k26.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 13.185
   },
   {
     "election": "k26",
@@ -965,16 +2269,74 @@
     "canonicalParty": "together-bennett",
     "name": "Together (Bennett)",
     "base": "#2a2a78",
-    "color": "#4e2256",
+    "color": "#6e76a7",
     "forced": true,
     "reasons": [
-      "global sibling separation: yesh-atid"
+      "global sibling separation: yesh-atid",
+      "separation from other lists' seats in the same election: likud"
     ],
     "confidence": "low",
     "source": "data/meta/k26.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 12.961
+    "deltaE": 25.176
+  },
+  {
+    "election": "k26",
+    "list": "26-רק",
+    "letters": "רק",
+    "party": "yesh-atid",
+    "canonicalParty": "yesh-atid",
+    "name": "Yesh Atid",
+    "base": "#003aa7",
+    "color": "#1e2ebe",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: likud"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k26.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 5.647
+  },
+  {
+    "election": "k26",
+    "list": "26-ודם",
+    "letters": "ודם",
+    "party": "hadash",
+    "canonicalParty": "hadash",
+    "name": "Hadash (Israeli Communist Party)",
+    "base": "#ea1f26",
+    "color": "#a70512",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: labor, otzma-yehudit"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k26.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 14.593
+  },
+  {
+    "election": "k26",
+    "list": "26-ודם",
+    "letters": "ודם",
+    "party": "taal",
+    "canonicalParty": "taal",
+    "name": "Ta'al",
+    "base": "#f2cb06",
+    "color": "#f3cc09",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: agudat-yisrael"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k26.json",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 0.237
   },
   {
     "election": "k26",
@@ -984,15 +2346,16 @@
     "canonicalParty": "balad",
     "name": "Balad",
     "base": "#f65f0c",
-    "color": "#e86e0b",
+    "color": "#d38002",
     "forced": true,
     "reasons": [
-      "global sibling separation: hadash"
+      "global sibling separation: hadash",
+      "separation from other lists' seats in the same election: tkuma"
     ],
     "confidence": "medium",
     "source": "data/meta/k26.json",
     "custom": false,
     "recordedVariation": false,
-    "deltaE": 5.516
+    "deltaE": 15.415
   }
 ]

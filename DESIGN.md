@@ -637,7 +637,10 @@ constituent identity has an inner dot, including the lead party. The outer ring 
 the list colour. `partyDisplayColor` resolves the whole list deterministically, retaining
 supplied colours when distinguishable and deriving missing or colliding display colours.
 Opaque dots have at least 3:1 contrast and ΔE00 20 against their ring; sibling dots have
-ΔE00 20 separation. The same per-list colours appear in both themes, legends, hover keys,
+ΔE00 20 separation. In one election, seats of different lists are ΔE00 15 apart, whether drawn in a party's or a
+list's colour (13 Nov, `tests/chamber-seat-colours.test.ts`): the party with more seats keeps its colour, a list gives
+way to another list's parties, and a moved colour takes the smallest step decision 0087 §6 allows (lightness, chroma,
+hue at most 24°) before any other hue. The same per-list colours appear in both themes, legends, hover keys,
 reference/Compare chambers, chart cells, list/party bars, candidate tints, family details,
 bloc-member pieces and exports. Colour research and confidence metadata remain unchanged;
 the display-colour explanation stays behind the existing settings (i) and in SVG descriptions.

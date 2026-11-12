@@ -2,6 +2,8 @@
 
 ## 7 November 2026 — Settings
 
+- Colours (13 Nov, audit): lists take the colour the research records for them in that election, and a joint list led by a party with that colour matches its leading seats (Yashar! 2026 light blue, not green; Together blue; Zionist Union 2015 and One Israel 1999 blue, not orange; the National Religious Party plum in every election).
+- Chamber (13 Nov, audit): seats of different lists no longer share near-identical colours (2026: Yashar! and Yisrael Beiteinu, the Democrats and Yesh Atid, Otzma Yehudit and Hadash, Tkuma and Balad). The colour check now compares every two seat-winning parties of an election across lists, in all 26 elections.
 - Localities (13 Nov, audit): “Find a locality” now finds a city typed in its usual English spelling (Beersheba, Petah Tikva, Bnei Brak, Herzliya, Eilat, Katzrin…). When nothing contains the typed letters, it also accepts the spellings CBS writes differently (q/k, w/v, b/v, tz/z, ei/e, doubled letters, apostrophes and hyphens).
 - Logos (13 Nov, audit): Balad’s 2009 and 2013 logos, cream-and-gold outlines, are shown on a dark tile; on the light theme they were almost invisible.
 - Party families (13 Nov, audit): an election’s breakdown gave a joint list’s whole seats as the family’s (Likud lineage 2013 under “Count all”: “31 seats; since 2009: +4”). It now gives the family’s own seats and its partners exactly as the seats chart does, whatever the mixed-list choice (“20 seats +11 partners”; “▼ −7 seats”); the list’s 31 stay on the list’s own row.
