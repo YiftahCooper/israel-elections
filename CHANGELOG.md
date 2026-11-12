@@ -2,6 +2,7 @@
 
 ## 7 November 2026 — Settings
 
+- Side by side (12 Nov, audit): the card of an election to the 2nd, 3rd, 12th, 13th, 22nd or 23rd Knesset read “$2nd Knesset” or “$3rd Knesset” in English; every screen now takes the ordinal from one helper.
 - Overview (12 Nov, audit): the 1949 “Votes per seat” card wrote the quota as votes ÷ 120 beside a figure that is right only for ÷ 121; it now shows ÷ 121, as the 1949 law set, from the same code as the walkthrough.
 - Explanations (12 Nov, audit): polling areas hold up to 800 voters, or 900 with the committee’s approval, and may have a second ballot box; Sweden’s first Sainte-Laguë divisor is 1.2; ballot letters were limited to two until July 2026; the Droop quota adds one; today’s government-formation and no-confidence rules are marked as today’s; for 1951–1969 the walkthrough no longer says the law requires a lottery for ties, since the sources checked state no rule.
 - 2019 (September) (12 Nov, audit): Popular Unity’s name reads אלוחדה, not אלחודה. The candidate gazette misprints one word that the same page, the final results notice and the committee’s results page all print correctly; recorded as a reviewed correction.

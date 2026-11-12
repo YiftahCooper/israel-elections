@@ -1,5 +1,6 @@
 import { percent, rationalPoints } from '../components/Percentage.tsx';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
+import { ordinalEn } from '../electionLabel.ts';
 // The Compare workbench (israel-elections-private docs/design/compare-workbench.md): two live sides pinned left → right in both languages,
 // their chambers and blocs, one head-to-head table of paired lists, and copies between the sides.
 import { useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
@@ -331,7 +332,7 @@ function SideCard({ x, picker, focused, onFocus, align }: { x: SideModel; picker
   return <section className={`cmp-card ${focused ? 'focused' : ''}`} data-side={align} data-role={x.role} style={{ borderColor: x.frame }} dir={lang === 'he' ? 'rtl' : 'ltr'} onPointerDown={onFocus} onFocus={onFocus} aria-label={title}>
     <div className="cmp-card-head">
       <span className="cmp-card-role">{x.role === 'main' ? L('Your work', 'העבודה שלכם') : L('Compared with', 'מושווה עם')}</span>
-      <span className="cmp-card-election"><b>{e ? x.year : x.sc.electionId}</b> <span className="muted small">{e ? (lang === 'he' ? `הכנסת ה־${e.knesset}` : `${e.knesset}th Knesset`.replace(/^(\d*1)th/, '$1st').replace(/^(\d*2)th/, '$2nd').replace(/^(\d*3)th/, '$3rd').replace(/^1([123])(st|nd|rd)/, '1$1th')) : ''}</span></span>
+      <span className="cmp-card-election"><b>{e ? x.year : x.sc.electionId}</b> <span className="muted small">{e ? (lang === 'he' ? `הכנסת ה־${e.knesset}` : `${ordinalEn(e.knesset)} Knesset`) : ''}</span></span>
       {picker}
     </div>
     <div className="cmp-identity">
