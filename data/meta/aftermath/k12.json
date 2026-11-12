@@ -300,7 +300,8 @@
           "cites": [
             {
               "source": "unita-19881114",
-              "quote": "il Degel Hatorah dal canto suo ha deciso di non indicare per l'incarico di premier né Shamir né Peres."
+              "quote": "il Degel Hatorah dal canto suo ha deciso di non indicare per l'incarico di premier né Sha- mir né Peres.",
+              "note": "PDF text layer, line break kept as printed (Sha- mir)."
             },
             {
               "source": "recommendations-research-2",
@@ -335,8 +336,7 @@
         }
       ],
       "notes": [
-        "Contemporary reporting gives aggregate support of 63 for Shamir and 55 for Peres. Only 49 Peres seats are assigned here from named-party reporting; Hadash, PLP and ADP (6 seats) are unconfirmed. Degel (2 seats) supported a broad government, but a formal presidential recommendation is unconfirmed. Arithmetic is not evidence of a per-list recommendation.",
-        "R4 recheck 7 November: JTA 9 November names non-Arab parties but does not authenticate these four final positions. +972/Local Call (27 October 2022) explicitly attributes conditional Peres recommendations to Hadash, PLP and ADP; this retrospective account is not a newly recovered President’s House record and does not close the existing authentication gap. Degel’s reported preference for unity does not by itself prove a formal recommendation. All four remain unconfirmed; no arithmetic reconstruction.",
+        "Contemporary reporting gives aggregate support of 63 for Shamir and 55 for Peres; that agreement is a consistency check, not evidence of any single list. JTA (9 November) names the non-Arab parties’ choices. Hadash, PLP and ADP rest on one retrospective account (Local Call, 2022); Degel HaTorah on l’Unità (14 November 1988) and UPI.",
         "7 November policy pass (docs/source-policy.md): Degel is none (probable: l’Unità 14 November 1988 and UPI, independent contemporary reports). Hadash, PLP and ADP recommended Peres conditionally (provisional: one retrospective, Local Call 2022). The President’s House consultation file for 7–13 November 1988 remains the deciding record. The totals now match the contemporary 63–55 report; that agreement is a consistency check, not evidence."
       ]
     }
@@ -400,7 +400,10 @@
           }
         ],
         "person": "peres",
-        "scope": "mid-term"
+        "scope": "mid-term",
+        "notes": [
+          "Not yet recorded: the dates Herzog tasked Peres (March 1990, after the no-confidence vote) and Shamir (late April 1990). The New York Times of 21 March 1990 reports Peres’s tasking “this evening” without a dateline; no source checked on 12 November 2026 settles either date, so neither tasking is drawn."
+        ]
       },
       {
         "date": "1990-06-11",
@@ -711,7 +714,8 @@
                 "note": "Official appointment linked to retained faction-membership record 27683. יצחק מודעי"
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "factionNameEn": "Party for the Advancement of the Zionist Idea"
           },
           {
             "factionNameHe": "מפלגה דתית לאומית",
@@ -725,7 +729,8 @@
                 "note": "Official appointment linked to retained faction-membership record 27641. זבולון המר"
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "letters": "ב"
           },
           {
             "factionNameHe": "צומת",
@@ -753,7 +758,8 @@
                 "note": "Official appointment linked to retained faction-membership record 27715. רפאל פנחסי"
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "letters": "שס"
           }
         ],
         "cites": [

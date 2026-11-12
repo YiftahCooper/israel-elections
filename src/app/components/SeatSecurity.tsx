@@ -1,6 +1,5 @@
 import { formatDate } from '../dateFormat.ts';
 import { reviewedAftermath } from '../../data/aftermath-runtime.ts';
-import { englishLabel } from '../../data/names.ts';
 import type { Certainty } from '../../data/evidence.ts';
 import { AnalysisEdits } from './AnalysisEdits.tsx';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
@@ -18,7 +17,8 @@ import { partsOf, type SecurityFigure, type SecurityItem, type SecurityPart } fr
 import { setState } from '../store.ts';
 import { stayingHome, toVoteSource, type SourceChoice } from '../voteEdit.ts';
 import { DisclosureToggle, Info, Seg, Slip } from './ui.tsx';
-import { minimalWinning, governmentVote, recordedRoles, recordedVoteGap, type VoteGapReason } from '../coalitions.ts';
+import { participantName } from '../governmentSupport.ts';
+import { minimalWinning, governmentVote, recordedRoles, recordedVoteGap, firstGovernmentComparison, type VoteGapReason } from '../coalitions.ts';
 import { Majority } from './Majority.tsx';
 import { useRefRows } from '../compare/useRefRows.ts';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
@@ -229,16 +229,6 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     setInspected(null);
     dispatch({ type: 'setCoalition', coalition: withCoalitionRole(choices, id, role) });
   };
-  const government = s.blocSchemes?.find(g => g.kind === 'government');
-  const governmentBloc = government?.blocs.find(b => b.id === 'coalition');
-  // A structural edit or a collapsed mixed list cannot establish partner identity.
-  const historyComparable = governmentBloc && !governmentBloc.candidates.length &&
-    governmentBloc.lists.every(id => s.lists.some(l => l.id === id)) &&
-    !seated.some(x => !x.partyId && s.lists.find(l => l.id === x.listId)?.parties?.some(p => governmentBloc.parties.includes(p.id)));
-  const missingGovernmentPartner = governmentBloc?.lists.some(id => !seated.some(x => x.listId === id));
-  const historicalIds = historyComparable
-    ? seated.filter(x => governmentBloc.lists.includes(x.listId) || (!!x.partyId && governmentBloc.parties.includes(x.partyId))).map(x => x.l.id) : null;
-  const historyMatches = (ids: string[]) => !missingGovernmentPartner && !!historicalIds?.length && historicalIds.length === ids.length && historicalIds.every(id => ids.includes(id));
   const sorted = [...minimal].sort((a, b) => a.n - b.n || a.ids.length - b.ids.length);
   const shown = sorted.slice(0, 24);
   const blocName = (b: { nameHe: string; nameEn: string; appDefined?: boolean }) => groupingName(b, lang);
@@ -249,7 +239,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
    *  arrangement and stays Any. Each row keeps its recorded certainty; nothing is upgraded. */
   const record = reviewedAftermath(s.electionId)?.government;
   const { recorded: recordedRows, choices: recordedChoices } = recordedRoles(record?.coalition ?? [], s.lists, seated.map((x) => ({ id: x.l.id, listId: x.listId })));
-  const recorded = recordedRows.map((x) => ({ ...x, name: x.list ? listLabel(x.list, lang) : x.r.factionNameHe ? (lang === 'he' ? x.r.factionNameHe : englishLabel(null, x.r.factionNameHe)) : (x.r.letters ?? '') }));
+  const recorded = recordedRows.map((x) => ({ ...x, name: participantName(x.r, [], lang, x.list).name }));
   const recordOn = !!recordedChoices && COALITION_ROLES.every((k) => sameSet(live(choices[k]), recordedChoices[k]));
   /** loaded from the record but not adding up to it: one line names the recorded tally and why it differs */
   const gap = recordOn && record ? recordedVoteGap(record, voteOf(live(choices.in)), recordedRows, sumOf, total) : null;
@@ -315,8 +305,13 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
       {/* members by bloc only when they span blocs: one bloc would repeat the members total above */}
       {(split.length > 1 || everyNeeded) && <div className="row small coal-blocs">{split.length > 1 && split.map(({ b, n }) => <span key={b.id ?? 'none'} title={'appDefined' in b && b.appDefined ? appGroupingExplanation(lang) : undefined}>{blocName(b)} <b>{n}</b></span>)}
         {everyNeeded && <span className="muted">{L('Each is needed for the majority', 'כל אחת נחוצה לרוב')}</span>}</div>}
-      {governmentBloc && <p className="small muted" style={{ margin: 0 }}>{!historicalIds ? L('First-government comparison unavailable', 'אין נתונים להשוואה לממשלה הראשונה') : historyMatches(ids) ? (recordedChoices?.support.length && sameSet(supportIds, recordedChoices.support) ? L('Matches the recorded first government and its outside support', 'תואמת לממשלה הראשונה המתועדת ולתמיכה מבחוץ בה') : L('Matches the recorded first-government partners', 'תואמת לשותפות הממשלה הראשונה המתועדת')) : L('Different from the recorded first-government partners', 'שונה משותפות הממשלה הראשונה המתועדת')}{' '}
-        <Info title={L('Historical comparison', 'השוואה היסטורית')}>{L('Compares members with the recorded first government only, not every government during this Knesset, and not its outside support. Scenario seats can differ from the official result.', 'השוואת החברות בקואליציה לממשלה הראשונה המתועדת בלבד, ולא לכל ממשלה במהלך הכנסת או לתמיכה מבחוץ בה. המנדטים בתרחיש עשויים להיות שונים מהתוצאה הרשמית.')} {government && `${blocName(government)} · ${government.date ? formatDate(government.date,lang) : ''}`}</Info></p>}
+      {record && <p className="small muted" style={{ margin: 0 }}>{({
+        unavailable: L('First-government comparison unavailable', 'אין נתונים להשוואה לממשלה הראשונה'),
+        'matches-with-support': L('Matches the recorded first government and its outside support', 'תואמת לממשלה הראשונה המתועדת ולתמיכה מבחוץ בה'),
+        matches: L('Matches the recorded first-government partners', 'תואמת לשותפות הממשלה הראשונה המתועדת'),
+        different: L('Different from the recorded first-government partners', 'שונה משותפות הממשלה הראשונה המתועדת'),
+      })[firstGovernmentComparison(ids, supportIds, recordedChoices)]}{' '}
+        <Info title={L('Historical comparison', 'השוואה היסטורית')}>{L('Compares members with the recorded first government only, not every government during this Knesset, and not its outside support. Scenario seats can differ from the official result.', 'השוואת החברות בקואליציה לממשלה הראשונה המתועדת בלבד, ולא לכל ממשלה במהלך הכנסת או לתמיכה מבחוץ בה. המנדטים בתרחיש עשויים להיות שונים מהתוצאה הרשמית.')} {`${lang === 'he' ? record.nameHe : record.nameEn} · ${formatDate(record.startDate, lang)}`}</Info></p>}
     </>;
   };
   /** "Recorded vote: 61 for · 59 against. Differs here because …" with the specific reasons from the research

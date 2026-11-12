@@ -118,6 +118,13 @@
       "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
       "kind": "official",
       "accessed": "2026-11-07"
+    },
+    "idi-lavon-1961": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1961/",
+      "publisher": "Israel Democracy Institute",
+      "publisherHe": "המכון הישראלי לדמוקרטיה",
+      "kind": "academic",
+      "accessed": "2026-11-12"
     }
   },
   "results": {
@@ -526,8 +533,8 @@
       {
         "date": "1961-01-31",
         "type": "government-resignation",
-        "textEn": "Ben-Gurion resigned; the government continued as a caretaker until the next government took office on 2 November 1961. Eshkol announced the resignation to the Knesset on 1 February, referring to the previous evening.",
-        "textHe": "בן־גוריון התפטר והממשלה המשיכה לכהן כממשלת מעבר עד כינון הממשלה הבאה ב־2 בנובמבר 1961. אשכול הודיע על ההתפטרות בכנסת ב־1 בפברואר והתייחס לערב הקודם.",
+        "textEn": "The Lavon affair led to a political crisis and an early election. Ben-Gurion resigned on 31 January; Eshkol announced the resignation to the Knesset the next day. The government stayed in office as a caretaker until 2 November 1961.",
+        "textHe": "פרשת לבון הובילה למשבר פוליטי ולבחירות מוקדמות. בן־גוריון התפטר ב־31 בינואר; אשכול הודיע על ההתפטרות בכנסת למחרת. הממשלה המשיכה לכהן כממשלת מעבר עד 2 בנובמבר 1961.",
         "cites": [
           {
             "source": "plenum-resignation",
@@ -540,6 +547,16 @@
           {
             "source": "plenum-gov10",
             "quote": "אנו עוברים להצבעה על הבעת אמון לממשלה שהתייצבה לפני הכנסת. הצבעה 63 בעד הבעת אמון לממשלה 46 נגד לוז: ק. היו\"ר ושישה הביעה נגר ארבעים של שישים ושלושה ברוב הכנסת אמון לממשלה, בראשותו של דוד בןגוריון. אני מברך את הממשלה להתכוננותה, ומאחל לה הצלחה בניהול עניני המדינה."
+          },
+          {
+            "source": "idi-lavon-1961",
+            "quote": "כ-21 חודשים לאחר הבחירות הקודמות נקראו אזרחי ישראל לקלפיות פעם נוספת, הפעם בשל פרשת לבון. הפרשה עמדה במוקד מערכת הבחירות",
+            "locator": "opening paragraph; retained copy data/raw/research/idi-1961.html"
+          },
+          {
+            "source": "idi-lavon-1961",
+            "quote": "לא היה כמעט מוסד פוליטי שלא נקלע לתוך סבך המשבר",
+            "locator": "opening paragraph"
           }
         ],
         "scope": "mid-term",

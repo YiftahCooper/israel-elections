@@ -190,3 +190,63 @@ test('switching language on mounted history updates endpoint direction and visua
     }
   }
 });
+
+// Fix lane fx-after (audit 12 Nov 2026)
+const openAfter = async (page: import('@playwright/test').Page, id: string, lang: 'en' | 'he') => {
+  await page.goto('/');
+  if (lang === 'en') await page.getByRole('button', { name: 'EN', exact: true }).click();
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), id);
+  await page.getByRole('tab', { name: lang === 'he' ? 'אחרי הבחירות' : 'After the election', exact: true }).click();
+  return page.locator('.after-election');
+};
+for (const lang of ['en', 'he'] as const) test(`acting and interim prime ministers are named as such: ${lang}`, async ({ page }) => {
+  const history = await openAfter(page, 'k16', lang);
+  await expect(history.locator('.after-pms')).toHaveText(lang === 'en'
+    ? 'Ariel Sharon · 27 Feb 2003→Ehud Olmert (acting Prime Minister) · 4 Jan 2006→Ehud Olmert (interim Prime Minister) · 14 Apr 2006'
+    : 'אריאל שרון · 27 בפבר׳ 2003←אהוד אולמרט (ממלא מקום ראש הממשלה) · 4 בינו׳ 2006←אהוד אולמרט (ראש הממשלה בפועל) · 14 באפר׳ 2006');
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k13');
+  await expect(history.locator('.after-pms')).toContainText(lang === 'en' ? 'Shimon Peres (acting Prime Minister)' : 'שמעון פרס (ראש הממשלה בפועל)');
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k6');
+  await expect(history.locator('.after-pms')).toContainText(lang === 'en' ? 'Yigal Allon (acting Prime Minister)' : 'יגאל אלון (ראש הממשלה בפועל)');
+});
+
+test('later-government rows name every faction in English, never transliterated', async ({ page }) => {
+  const history = await openAfter(page, 'k10', 'en');
+  await history.getByText('Government changes', { exact: true }).click();
+  const change = history.locator('.after-government-change').last();
+  for (const name of ['Tehiya', 'Tami', 'Movement for Social Zionist Renewal', 'National Religious Party']) await expect(change.locator('.after-coalition')).toContainText(name);
+  await expect(change).not.toContainText("thyyh");
+  for (const [id, name] of [['k6', 'Alignment'], ['k15', 'Yisrael BaAliyah'], ['k13', "Yi'ud"]] as const) {
+    await choose(page.getByRole('button', { name: 'Election', exact: true }), id);
+    await history.getByText('Government changes', { exact: true }).click();
+    await expect(history.locator('.after-government-change .after-coalition').last()).toContainText(name);
+  }
+  // no row anywhere on the screen falls back to the neutral colour for want of a name
+  await expect(history.locator('.after-party-name[lang="he"]')).toHaveCount(0);
+});
+
+test('a mid-term change shows no investiture vote of its own; a formation bar names the person tasked', async ({ page }) => {
+  const history = await openAfter(page, 'k7', 'en');
+  await history.getByText('Government changes', { exact: true }).click();
+  const change = history.locator('.after-government-change').first();
+  await expect(change).toContainText('Gahal');
+  await expect(change.locator('.after-confidence-vote')).toHaveCount(0);
+  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k10');
+  await expect(history.locator('.after-mandate small')).toContainText(['Menachem Begin', 'Yitzhak Shamir']);
+  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k18');
+  await expect(history.locator('.after-confidence-vote').first()).toHaveText('69 for · 45 against · 5 abstaining');
+});
+
+test('records added in this pass: the Lavon affair, the 1988 recommendations, Government 37 changes, Hebrew wording', async ({ page }) => {
+  const history = await openAfter(page, 'k4', 'he');
+  await history.getByText('שינויים בממשלה', { exact: true }).click();
+  await expect(history).toContainText('פרשת לבון הובילה למשבר פוליטי ולבחירות מוקדמות.');
+  await choose(page.getByRole('button', { name: 'בחירות', exact: true }), 'k12');
+  await expect(history.locator('.after-key')).toContainText('שמעון פרס 55');
+  await choose(page.getByRole('button', { name: 'בחירות', exact: true }), 'k11');
+  await expect(history.locator('.after-individual').filter({ hasText: 'אמירה סרטני' })).toContainText('מרשימת המערך');
+  await expect(history).not.toContainText('נבחר ברשימת');
+  await choose(page.getByRole('button', { name: 'בחירות', exact: true }), 'k25');
+  await history.getByText('שינויים בממשלה', { exact: true }).click();
+  await expect(history.locator('.after-government-change')).toHaveCount(9);
+});

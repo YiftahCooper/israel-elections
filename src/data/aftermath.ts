@@ -9,6 +9,8 @@ export interface GovernmentParticipant {
   seats: number | null;
   electionListSeats?: number;
   factionNameHe?: string;
+  /** English name of a faction that has no ballot letters and matches no list (data/meta/knesset-faction-names-en.json). */
+  factionNameEn?: string;
   role: GovernmentSupportRole;
   /** docs/source-policy.md; never above the ceiling its cites support (src/data/evidence.ts). */
   certainty: Certainty;
@@ -27,6 +29,9 @@ export interface GovernmentIndividual extends Omit<GovernmentParticipant, 'lette
   countedInFactionSeats: boolean;
   vote: 'for' | 'against' | 'abstain' | 'absent' | 'unknown';
 }
+/** The only keys a recorded tally may carry; anything else fails validation (c-aftermath-04: 'abstained' hid 5 votes). */
+export const CONFIDENCE_VOTE_KEYS = ['for', 'against', 'abstain', 'absent'] as const;
+export interface ConfidenceVote { for: number; against: number; abstain?: number; absent?: number }
 export interface GovernmentSupport {
   coalition: GovernmentParticipant[];
   individuals?: GovernmentIndividual[];
@@ -34,7 +39,7 @@ export interface GovernmentSupport {
   coalitionSeats: number | null;
   supportSeats: number | null;
   knownMemberSeats?: number | null;
-  confidenceVote: { for: number; against: number; abstain?: number } | null;
+  confidenceVote: ConfidenceVote | null;
   confidenceVoteCites?: SupportCitation[];
   membershipCoverage: 'complete' | 'partial';
   reconciliation: {

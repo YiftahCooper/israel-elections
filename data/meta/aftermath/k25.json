@@ -278,6 +278,13 @@
       "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-12"
+    },
+    "odata-government37": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=GovernmentNum%20eq%2037&%24format=json&%24top=1000",
+      "publisher": "Knesset OData, government 37 appointment register",
+      "kind": "official",
+      "accessed": "2026-11-12",
+      "publisherHe": "הכנסת, מאגר המינויים של הממשלה ה־37"
     }
   },
   "results": {
@@ -875,8 +882,8 @@
   ],
   "government": {
     "number": 37,
-    "nameEn": "37th government (Netanyahu VI)",
-    "nameHe": "הממשלה ה־37 (נתניהו השישית)",
+    "nameEn": "Government 37 (Benjamin Netanyahu)",
+    "nameHe": "הממשלה ה־37 (בנימין נתניהו)",
     "startDate": "2022-12-29",
     "primeMinisters": [
       {
@@ -969,7 +976,224 @@
       "status": "unresolved",
       "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Quantified gap: 64 identified member/support seats versus 63 votes for (+1); the named abstainers, absentees or dissenters needed to explain this gap have not been recovered. Do not infer that each member voted for."
     },
-    "knownMemberSeats": 64
+    "knownMemberSeats": 64,
+    "changes": [
+      {
+        "date": "2023-10-12",
+        "type": "ministerial-change",
+        "textEn": "Benny Gantz, Gadi Eisenkot, Gideon Sa’ar, Hili Tropper and Yifat Shasha-Biton joined the government as ministers.",
+        "textHe": "בני גנץ, גדי איזנקוט, גדעון סער, חילי טרופר ויפעת שאשא־ביטון הצטרפו לממשלה כשרים.",
+        "cites": [
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":31713,\"PersonID\":30657,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2024-06-13T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שר\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-06-13T10:16:18.113\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30657 is בנימין גנץ (data/research/knesset-member-changes/k25.json)."
+          },
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":31714,\"PersonID\":30836,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2024-06-13T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שר\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-06-13T10:14:52.787\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30836 is גדי איזנקוט (data/research/knesset-member-changes/k25.json)."
+          },
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":31715,\"PersonID\":1027,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2024-03-27T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שר\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-03-28T09:18:26.863\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 1027 is גדעון סער (data/research/knesset-member-changes/k25.json)."
+          },
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":31716,\"PersonID\":30683,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2024-06-13T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שר\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-06-13T10:15:48.637\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30683 is חילי טרופר (data/research/knesset-member-changes/k25.json)."
+          },
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":31717,\"PersonID\":30082,\"PositionID\":57,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2024-03-27T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שרה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-03-28T09:19:43.95\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30082 is יפעת שאשא ביטון (data/research/knesset-member-changes/k25.json)."
+          }
+        ],
+        "notes": [
+          "The five National Unity appointments. No vote tally or coalition-seat arithmetic is inferred."
+        ]
+      },
+      {
+        "date": "2024-03-27",
+        "type": "ministerial-change",
+        "textEn": "Gideon Sa’ar and Yifat Shasha-Biton’s ministerial service ended.",
+        "textHe": "כהונתם של גדעון סער ויפעת שאשא־ביטון כשרים הסתיימה.",
+        "cites": [
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":31715,\"PersonID\":1027,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2024-03-27T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שר\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-03-28T09:18:26.863\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 1027 is גדעון סער (data/research/knesset-member-changes/k25.json)."
+          },
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":31717,\"PersonID\":30082,\"PositionID\":57,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2024-03-27T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שרה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-03-28T09:19:43.95\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30082 is יפעת שאשא ביטון (data/research/knesset-member-changes/k25.json)."
+          }
+        ],
+        "notes": [
+          "OData service endpoint; the party exit was announced on 25 March according to the retained event record. Distinguish political announcement from formal service end."
+        ]
+      },
+      {
+        "date": "2024-06-13",
+        "type": "ministerial-change",
+        "textEn": "The Knesset appointment register records the end of Benny Gantz, Gadi Eisenkot and Hili Tropper’s ministerial service.",
+        "textHe": "מרשם המינויים של הכנסת מציין את סיום כהונתם של בני גנץ, גדי איזנקוט וחילי טרופר כשרים.",
+        "cites": [
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":31713,\"PersonID\":30657,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2024-06-13T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שר\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-06-13T10:16:18.113\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30657 is בנימין גנץ (data/research/knesset-member-changes/k25.json)."
+          },
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":31714,\"PersonID\":30836,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2024-06-13T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שר\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-06-13T10:14:52.787\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30836 is גדי איזנקוט (data/research/knesset-member-changes/k25.json)."
+          },
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":31716,\"PersonID\":30683,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2024-06-13T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שר\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-06-13T10:15:48.637\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30683 is חילי טרופר (data/research/knesset-member-changes/k25.json)."
+          }
+        ],
+        "notes": [
+          "The retained press event dates the National Unity exit announcement to 9 June. Official register gives 13 June endpoints; original resignation letters/effective timestamps were not fetched. Preserve this discrepancy; do not silently change 9 June to 13 June as the political departure date."
+        ]
+      },
+      {
+        "date": "2024-09-30",
+        "type": "ministerial-change",
+        "textEn": "Gideon Sa’ar returned to government as a minister without portfolio.",
+        "textHe": "גדעון סער חזר לממשלה כשר בלי תיק.",
+        "cites": [
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":32020,\"PersonID\":1027,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2024-09-30T00:00:00\",\"FinishDate\":\"2024-11-08T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שר בלי תיק\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-11-09T20:00:16.94\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 1027 is גדעון סער (data/research/knesset-member-changes/k25.json)."
+          }
+        ]
+      },
+      {
+        "date": "2025-01-21",
+        "type": "ministerial-change",
+        "textEn": "The ministerial terms of Itamar Ben Gvir, Yitzhak Wasserlauf and Amichai Eliyahu ended.",
+        "textHe": "כהונת השרים איתמר בן גביר, יצחק וסרלאוף ועמיחי אליהו הסתיימה.",
+        "cites": [
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":30691,\"PersonID\":30811,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2022-12-29T00:00:00\",\"FinishDate\":\"2025-01-21T00:00:00\",\"GovMinistryID\":1361,\"GovMinistryName\":\"המשרד לביטחון לאומי\",\"DutyDesc\":\"השר לביטחון לאומי\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-01-21T10:05:35.967\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30811 is איתמר בן גביר (data/research/knesset-member-changes/k25.json)."
+          },
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":31261,\"PersonID\":30847,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2022-12-29T00:00:00\",\"FinishDate\":\"2025-01-21T00:00:00\",\"GovMinistryID\":844,\"GovMinistryName\":\"משרד הנגב, הגליל והחוסן הלאומי\",\"DutyDesc\":\"שר הנגב, הגליל והחוסן הלאומי\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-01-21T10:04:15.577\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30847 is יצחק שמעון וסרלאוף (data/research/knesset-member-changes/k25.json)."
+          },
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":31463,\"PersonID\":30857,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2022-12-29T00:00:00\",\"FinishDate\":\"2025-01-21T00:00:00\",\"GovMinistryID\":884,\"GovMinistryName\":\"משרד המורשת\",\"DutyDesc\":\"שר המורשת\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-01-21T10:06:21.743\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30857 is עמיחי אליהו (data/research/knesset-member-changes/k25.json)."
+          }
+        ],
+        "notes": [
+          "The retained event dates Otzma Yehudit’s announcement and submission of resignation letters to 19 January; these official office endpoints are two days later."
+        ]
+      },
+      {
+        "date": "2025-03-19",
+        "type": "ministerial-change",
+        "textEn": "Itamar Ben Gvir, Yitzhak Wasserlauf and Amichai Eliyahu returned to their ministerial posts.",
+        "textHe": "איתמר בן גביר, יצחק וסרלאוף ועמיחי אליהו חזרו לתפקידי השרים שלהם.",
+        "cites": [
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":32164,\"PersonID\":30811,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2025-03-19T00:00:00\",\"FinishDate\":\"2026-11-10T00:00:00\",\"GovMinistryID\":1361,\"GovMinistryName\":\"המשרד לביטחון לאומי\",\"DutyDesc\":\"השר לביטחון לאומי\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2026-11-04T10:00:52.987\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30811 is איתמר בן גביר (data/research/knesset-member-changes/k25.json)."
+          },
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":32165,\"PersonID\":30847,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2025-03-19T00:00:00\",\"FinishDate\":\"2026-11-10T00:00:00\",\"GovMinistryID\":844,\"GovMinistryName\":\"משרד הנגב, הגליל והחוסן הלאומי\",\"DutyDesc\":\"שר הנגב, הגליל והחוסן הלאומי\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2026-11-04T10:00:52.987\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30847 is יצחק שמעון וסרלאוף (data/research/knesset-member-changes/k25.json)."
+          },
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":32166,\"PersonID\":30857,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2025-03-19T00:00:00\",\"FinishDate\":\"2026-11-10T00:00:00\",\"GovMinistryID\":884,\"GovMinistryName\":\"משרד המורשת\",\"DutyDesc\":\"שר המורשת\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2026-11-04T10:00:52.987\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30857 is עמיחי אליהו (data/research/knesset-member-changes/k25.json)."
+          }
+        ]
+      },
+      {
+        "date": "2025-07-16",
+        "type": "ministerial-change",
+        "textEn": "Uri Maklev’s terms as deputy minister in the Prime Minister’s Office and Transport Ministry ended.",
+        "textHe": "כהונת אורי מקלב כסגן שר במשרד ראש הממשלה ובמשרד התחבורה הסתיימה.",
+        "cites": [
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":30803,\"PersonID\":11835,\"PositionID\":40,\"KnessetNum\":25,\"StartDate\":\"2023-01-03T00:00:00\",\"FinishDate\":\"2025-07-16T00:00:00\",\"GovMinistryID\":568,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"סגן שר במשרד ראש הממשלה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-17T00:19:08.56\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 11835 is אורי מקלב (data/research/knesset-member-changes/k25.json)."
+          },
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":30804,\"PersonID\":11835,\"PositionID\":40,\"KnessetNum\":25,\"StartDate\":\"2023-01-03T00:00:00\",\"FinishDate\":\"2025-07-16T00:00:00\",\"GovMinistryID\":686,\"GovMinistryName\":\"משרד התחבורה והבטיחות בדרכים\",\"DutyDesc\":\"סגן שר במשרד התחבורה והבטיחות בדרכים\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-17T00:19:37.923\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 11835 is אורי מקלב (data/research/knesset-member-changes/k25.json)."
+          }
+        ],
+        "notes": [
+          "These are office endpoints for the UTJ officeholder, not proof of the whole faction’s continuing parliamentary role."
+        ]
+      },
+      {
+        "date": "2025-07-20",
+        "type": "ministerial-change",
+        "textEn": "The ministerial terms of Haim Biton, Michael Malkieli, Yaakov Margi, Yoav Ben Tzur and Uriel Busso ended.",
+        "textHe": "כהונתם של השרים חיים ביטון, מיכאל מלכיאלי, יעקב מרגי, יואב בן צור ואוריאל בוסו הסתיימה.",
+        "cites": [
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":30687,\"PersonID\":30804,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2022-12-29T00:00:00\",\"FinishDate\":\"2025-07-20T00:00:00\",\"GovMinistryID\":1004,\"GovMinistryName\":\"משרד החינוך\",\"DutyDesc\":\"שר בלי תיק במשרד החינוך\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-20T10:51:16.473\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30804 is חיים ביטון (data/research/knesset-member-changes/k25.json)."
+          },
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":30699,\"PersonID\":30470,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2022-12-29T00:00:00\",\"FinishDate\":\"2025-07-20T00:00:00\",\"GovMinistryID\":1283,\"GovMinistryName\":\"המשרד לשירותי דת\",\"DutyDesc\":\"השר לשירותי דת\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-20T10:59:33.477\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30470 is מיכאל מלכיאלי (data/research/knesset-member-changes/k25.json)."
+          },
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":31010,\"PersonID\":1056,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2022-12-29T00:00:00\",\"FinishDate\":\"2025-07-20T00:00:00\",\"GovMinistryID\":711,\"GovMinistryName\":\"משרד הרווחה והביטחון החברתי\",\"DutyDesc\":\"שר הרווחה והביטחון החברתי\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-20T10:57:27.803\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 1056 is יעקב מרגי (data/research/knesset-member-changes/k25.json)."
+          },
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":31042,\"PersonID\":28513,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-01-30T00:00:00\",\"FinishDate\":\"2025-07-20T00:00:00\",\"GovMinistryID\":830,\"GovMinistryName\":\"משרד העבודה\",\"DutyDesc\":\"שר העבודה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-20T10:42:26.743\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 28513 is יואב בן צור (data/research/knesset-member-changes/k25.json)."
+          },
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":31712,\"PersonID\":30765,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2025-07-20T00:00:00\",\"GovMinistryID\":1112,\"GovMinistryName\":\"משרד הבריאות\",\"DutyDesc\":\"שר הבריאות\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-20T14:36:49.72\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30765 is אוריאל בוסו (data/research/knesset-member-changes/k25.json)."
+          }
+        ],
+        "notes": [
+          "Shas announced cabinet withdrawal on 16 July in the retained event. Do not infer that Shas ended all parliamentary coalition support. Interior Minister Moshe Arbel is recorded separately."
+        ]
+      },
+      {
+        "date": "2025-07-22",
+        "type": "ministerial-change",
+        "textEn": "Moshe Arbel’s term as Interior Minister ended.",
+        "textHe": "כהונת משה ארבל כשר הפנים הסתיימה.",
+        "cites": [
+          {
+            "source": "odata-government37",
+            "quote": "{\"PersonToPositionID\":31464,\"PersonID\":30660,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-04-19T00:00:00\",\"FinishDate\":\"2025-07-22T00:00:00\",\"GovMinistryID\":754,\"GovMinistryName\":\"משרד הפנים\",\"DutyDesc\":\"שר הפנים\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-23T10:40:03.003\"}",
+            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30660 is משה ארבל (data/research/knesset-member-changes/k25.json)."
+          }
+        ]
+      }
+    ]
   },
   "supportSchemaVersion": 1
 }

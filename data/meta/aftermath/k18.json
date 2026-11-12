@@ -289,7 +289,7 @@
         "votes": {
           "for": 69,
           "against": 45,
-          "abstained": 5
+          "abstain": 5
         },
         "textEn": "The Knesset approved the 32nd government, 69 for · 45 against, with five abstentions; the ministers were sworn in.",
         "textHe": "הכנסת הביעה אמון בממשלה ה־32, 69 בעד · 45 נגד, וחמישה נמנעים; השרים הושבעו.",
@@ -459,8 +459,8 @@
   ],
   "government": {
     "number": 32,
-    "nameEn": "32nd government (Netanyahu II)",
-    "nameHe": "הממשלה ה־32 (נתניהו השנייה)",
+    "nameEn": "Government 32 (Benjamin Netanyahu)",
+    "nameHe": "הממשלה ה־32 (בנימין נתניהו)",
     "startDate": "2009-03-31",
     "endDate": "2013-03-18",
     "endDateRef": "data/meta/aftermath/k19.json confidence-vote",
@@ -556,7 +556,7 @@
     "confidenceVote": {
       "for": 69,
       "against": 45,
-      "abstained": 5
+      "abstain": 5
     },
     "confidenceVoteCites": [
       {

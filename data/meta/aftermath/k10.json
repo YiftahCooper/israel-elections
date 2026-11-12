@@ -439,7 +439,13 @@
         ],
         "resolution": "Unresolved after targeted primary-source retrieval. Contemporary press identifies 15 July, while the State Archives describes a letter of 16 July; the JTA 16 July publication date cannot determine its dispatch dateline. The original letter and President’s diary are the deciding records: Israel State Archives file נ-571/13 pp.5–7 (letter), and נ-224/4 (diary/consultations). Archive catalogue returned HTTP 403 and original JTA PDF transport failed; no second mandate event is invented. 7 November: a second, independent contemporary report (UPI, 4 August 1981) also gives 15 July; the archival letter date still conflicts, so the date stays disputed rather than settled by count."
       }
-    ]
+    ],
+    "people": {
+      "shamir": {
+        "nameEn": "Yitzhak Shamir",
+        "nameHe": "יצחק שמיר"
+      }
+    }
   },
   "term": {
     "start": "1981-07-20",
@@ -707,7 +713,8 @@
                 "note": "Official appointment linked to retained faction-membership record 27373. יובל נאמן"
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "letters": "ת"
           },
           {
             "factionNameHe": "הליכוד",
@@ -735,7 +742,8 @@
                 "note": "Official appointment linked to retained faction-membership record 27291. אהרן אוזן"
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "letters": "ני"
           },
           {
             "factionNameHe": "התנועה להתחדשות ציונית חברתית",
@@ -749,7 +757,8 @@
                 "note": "Official appointment linked to retained faction-membership record 27314. מרדכי בן-פורת"
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "factionNameEn": "Movement for Social Zionist Renewal"
           },
           {
             "factionNameHe": "חזית דתית לאומית",
@@ -763,7 +772,8 @@
                 "note": "Official appointment linked to retained faction-membership record 27336. זבולון המר"
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "letters": "ב"
           }
         ],
         "cites": [

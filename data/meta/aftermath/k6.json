@@ -356,7 +356,13 @@
         "governmentNumber": 14,
         "person": "meir"
       }
-    ]
+    ],
+    "people": {
+      "meir": {
+        "nameEn": "Golda Meir",
+        "nameHe": "גולדה מאיר"
+      }
+    }
   },
   "government": {
     "number": 13,
@@ -373,11 +379,20 @@
         "to": "1969-02-26"
       },
       {
-        "nameEn": "Yigal Allon (acting Prime Minister)",
-        "nameHe": "יגאל אלון (ראש הממשלה בפועל)",
+        "nameEn": "Yigal Allon",
+        "nameHe": "יגאל אלון",
         "letters": "את",
         "from": "1969-02-26",
-        "to": "1969-03-17"
+        "to": "1969-03-17",
+        "role": "acting",
+        "titleEn": "acting Prime Minister",
+        "titleHe": "ראש הממשלה בפועל",
+        "cites": [
+          {
+            "source": "coalition-1",
+            "quote": "PersonID 2173: ראש הממשלה, 1966-01-12–1969-02-26; PersonID 2142: ראש הממשלה בפועל, 1969-02-26–1969-03-17 (structured OData fields)."
+          }
+        ]
       }
     ],
     "firstGovernmentSchemeRef": "first-government",
@@ -523,7 +538,8 @@
                 "note": "Official appointment linked to retained faction-membership record 26742. אליהו ששון"
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "factionNameEn": "Alignment"
           },
           {
             "factionNameHe": "גוש חרות ליברלים",
@@ -537,7 +553,8 @@
                 "note": "Official appointment linked to retained faction-membership record 26673. יוסף ספיר"
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "letters": "חל"
           },
           {
             "factionNameHe": "מפלגה דתית לאומית",
@@ -551,7 +568,8 @@
                 "note": "Official appointment linked to retained faction-membership record 26766. יוסף בורג"
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "letters": "ב"
           }
         ],
         "cites": [
