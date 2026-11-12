@@ -42,8 +42,8 @@ for (const lang of ['en', 'he'] as const) for (const width of [390, 1500]) {
     const final = (await page.locator('.sens-result').boundingBox())!;
     expect(Math.abs(initial.y - final.y)).toBeLessThanOrEqual(1);
     expect(Math.abs(initial.height - final.height)).toBeLessThanOrEqual(1);
-    const ticks = await chart.locator('text').allTextContents();
-    expect(ticks.slice(0, 5)).toEqual(['0', '10', '20', '30', '40']);
+    // the vote sweep's chart is drawn when its exact calculation ends, after the threshold chart on a slow machine
+    await expect.poll(async () => (await chart.locator('text').allTextContents()).slice(0, 5), { timeout: 120_000 }).toEqual(['0', '10', '20', '30', '40']);
     const ladder = page.locator('.sens svg[aria-label]').nth(1);
     expect(await ladder.textContent()).not.toContain('…');
     const values = ladder.locator('.halo');

@@ -4,6 +4,8 @@ import { expect, type Page } from '@playwright/test';
  *  Save & share, Settings, About) is in its Menu. Opens the Menu when the bar has one; returns whether it did. */
 export async function openBarMenu(page: Page) {
   const button = page.locator('.band .band-menu-btn');
+  // the bar follows the viewport a frame after a resize: wait until it shows the Menu exactly when the width is a phone's
+  await page.waitForFunction(() => matchMedia('(max-width: 600px)').matches === !!document.querySelector('.band .band-menu-btn'));
   if (!await button.count()) return false;
   if (!await page.locator('#phone-menu').count()) await button.click();
   await expect(page.locator('#phone-menu')).toBeVisible();

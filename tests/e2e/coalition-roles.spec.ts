@@ -106,11 +106,13 @@ for (const lang of ['en', 'he'] as const) test(`the recorded first government fi
 
 for (const lang of ['en', 'he'] as const) test(`the recorded first government discloses where it differs from the recorded vote: ${lang}`, async ({ page }) => {
   await start(page, lang);
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k20');
+  // 2003: Yisrael BaAliyah's role is still unknown and six MKs voted neither way (2015, used here before, adds up
+  // exactly since United Torah Judaism's membership was recorded on 13 Nov 2026)
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k16');
   await page.getByRole('tab', { name: lang === 'he' ? 'קואליציות' : 'Coalitions', exact: true }).click();
   await page.getByRole('button', { name: lang === 'he' ? 'הממשלה הראשונה המתועדת' : 'Recorded first government', exact: true }).click();
   const line = page.locator('.coal-now .coal-recorded');
-  await expect(line).toHaveText(lang === 'he' ? 'ההצבעה המתועדת: 61 בעד · 59 נגד. כאן התוצאה שונה, כי תפקידים אינם ידועים i.' : 'Recorded vote: 61 for · 59 against. Differs here because roles are unknown i.');
+  await expect(line).toHaveText(lang === 'he' ? 'ההצבעה המתועדת: 66 בעד · 48 נגד. כאן התוצאה שונה, כי תפקידים אינם ידועים או חברי כנסת לא הצביעו בעד או נגד i.' : 'Recorded vote: 66 for · 48 against. Differs here because roles are unknown, or some MKs voted neither for nor against i.');
   await line.locator('.info > button').click();
   await expect(page.getByRole('tooltip')).toContainText(lang === 'he' ? 'התפקיד לא ידוע' : 'role unknown');
   // a choice of one's own is no longer the record: the line goes
