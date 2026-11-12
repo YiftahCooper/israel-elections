@@ -156,7 +156,9 @@ function Row({ r, v }: { r: MkRow; v: MkView }) {
 function eventText(e: MkEvent, v: MkView, L: T, lang: Lang): ReactNode {
   switch (e.kind) {
     case 'entered': return L('Entered the Knesset', g(v.female, 'נכנס לכנסת', 'נכנסה לכנסת'));
-    case 'left': return L('Left the Knesset', g(v.female, 'סיים את כהונתו בכנסת', 'סיימה את כהונתה בכנסת'));
+    // the Knesset records no reason for an end (a resignation, an appointment, a death in office): the words claim none
+    // (audit 12 Nov 2026, c-famous-late-07: Rabin and Ze'evi read "Left the Knesset")
+    case 'left': return L('Membership ended', 'הכהונה הסתיימה');
     case 'faction': return L(`Faction: ${factionName(e.faction!.now, lang)} (until then ${factionName(e.faction!.was, lang)})`, `סיעה: ${factionName(e.faction!.now, lang)} (עד אז ${factionName(e.faction!.was, lang)})`);
     default: return lang === 'he' ? e.text!.he : e.text!.en;
   }
