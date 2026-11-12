@@ -127,6 +127,9 @@ it('corrects ballot identity in list and candidate keys or conflating פ with פ
   expect(s.lists.find(l => l.id === '9-ימ')?.candidates[0].id).toBe('9-ימ#1');
   expect(ds.blocSchemes?.[0].blocs[0].lists).toContain('9-פש');
   expect(ds.blocSchemes?.[0].blocs[1].lists).not.toContain('9-פש');
-  expect(ds.lists.find(l => l.id === '9-מחל')?.candidates[20].nameEn).toBe('Yigal Cohen');
-  expect(ds.lists.find(l => l.id === '9-מחל')?.candidates[23].nameEn).toBe('Yigal Cohen-Orgad');
+  // ranks 21 and 24 are both printed כהן יגאל, and which rank is which person rests on medium-confidence evidence (the IDI
+  // scan joins their party marks with a swap arrow and a question mark): neither takes a member's official English name,
+  // as neither is matched to a member across elections (audit 12 Nov 2026, fx-names)
+  expect(ds.lists.find(l => l.id === '9-מחל')?.candidates[20].nameEn).toBeUndefined();
+  expect(ds.lists.find(l => l.id === '9-מחל')?.candidates[23].nameEn).toBeUndefined();
 });

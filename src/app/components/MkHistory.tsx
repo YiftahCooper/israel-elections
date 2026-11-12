@@ -179,7 +179,7 @@ function Result({ r, v }: { r: MkRow; v: MkView }) {
     case 'elected': return <span>{L('Elected', g(f, 'נבחר', 'נבחרה'))}</span>;
     case 'first': return <span>{L('Sat from the first sitting', g(f, 'כיהן מהישיבה הראשונה', 'כיהנה מהישיבה הראשונה'))} {notes}</span>;
     case 'later': return <span>{L(`Entered on ${formatDate(r.terms[0]?.start ?? '', 'en')}`, `${g(f, 'נכנס', 'נכנסה')} ב־${formatDate(r.terms[0]?.start ?? '', 'he')}`)}</span>;
-    case 'declined': return <span>{L('Elected; did not sit', g(f, 'נבחר; לא כיהן', 'נבחרה; לא כיהנה'))} {notes}</span>;
+    case 'declined': return <span>{L('Elected; did not sit', g(f, 'נבחר; לא כיהן', 'נבחרה; לא כיהנה'))} {notes}{basis}</span>;
     default: {
       const short = run.rank - run.seats;
       const sub = run.seats === 0 && run.share < run.threshold

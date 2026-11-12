@@ -321,3 +321,53 @@ describe('a move line never reads “X (until then X)”', () => {
     expect(line(GANTZ, 23, '2020-03-29')).toMatchObject({ now: { he: 'כחול לבן', en: 'Blue and White' }, was: { he: 'כחול לבן בראשות בנימין גנץ', en: 'Blue and White led by Benjamin Gantz' } });
   });
 });
+
+// Audit 12 Nov 2026 (fx-names, c-famous-late-04/06): an elected candidate whose Knesset match is official but whose
+// Wikipedia link is only probable was tied to no one, so their run vanished from their history.
+describe('every elected member has their run', () => {
+  it('every member who sat from a Knesset’s opening has a run in that election (all 25 Knessets)', () => {
+    const allowed: Record<string, string> = {
+      // no candidacy of the 1955 lists is tied to him in data/meta/bios/k3.json
+      'k3 2390': 'Idov Cohen',
+      // the 1977 Likud ranks 21 and 24 are both printed כהן יגאל; which rank is which person is medium-confidence evidence
+      'k9 2394': 'Yigal Cohen', 'k9 2399': 'Yigal Cohen-Orgad',
+      // the notice prints אמסלם אמיל at Shas #11; the given-name difference is not explained by an official source
+      'k17 4418': 'Haim Amsalem',
+    };
+    const missing: string[] = [];
+    for (let k = 1; k <= 25; k++) {
+      const ch = JSON.parse(readFileSync(`data/research/knesset-member-changes/k${k}.json`, 'utf8')) as { tenures: { personId: number; start: string }[]; checks: { openingDateReported: string } };
+      for (const t of ch.tenures) if (t.start === ch.checks.openingDateReported && !rt.people[t.personId].runs.some((r) => r[0] === k)) missing.push(`k${k} ${t.personId}`);
+    }
+    expect(missing.sort()).toEqual(Object.keys(allowed).sort());
+  });
+  it('2022: Fogel, Bismuth, Almog Cohen, Revivo and five more are tied by their official member record', () => {
+    for (const [p, list, rank] of [[30859, '25-ט', 10], [30835, '25-מחל', 27], [30833, '25-ט', 7], [30832, '25-מחל', 19]] as const)
+      expect(runs(p).find((r) => r.k === 25), `${p}`).toMatchObject({ list, rank, outcome: 'elected', basis: 'id' });
+    for (const p of [30831, 30837, 30849, 30854, 30863]) expect(runs(p).find((r) => r.k === 25)?.basis, `${p}`).toBe('id');
+  });
+  it('Deri and Benny Begin 1999, Arens 1992: elected, did not take the seat; linked by the name rule', () => {
+    expect(runs(2291).find((r) => r.k === 15)).toMatchObject({ list: '15-שס', rank: 1, outcome: 'declined', basis: 'name', via: 14 });
+    expect(runs(2178).find((r) => r.k === 15)).toMatchObject({ list: '15-יט', rank: 1, outcome: 'declined', basis: 'name', via: 14 });
+    expect(runs(463).find((r) => r.k === 13)).toMatchObject({ list: '13-מחל', rank: 2, outcome: 'declined', basis: 'name', via: 12 });
+    expect(mkView(rt, 2291)!.runs).toBe(11);
+  });
+  it('one notion of a certain Knesset identity: the comparison match, the MK history and the English name agree', () => {
+    // the 14 identities of candidates who were not elected, confirmed by the November research review: tied by ID and
+    // matched across elections, but with no official English name, since they rest on secondary sources (tests/bios.test.ts)
+    const reviewed = new Set((JSON.parse(readFileSync('data/raw/research/mk-runs-1109.reviewed.json', 'utf8')).runs as { status: string; candidateId: string }[])
+      .filter((r) => r.status === 'confirmed').map((r) => r.candidateId));
+    expect(reviewed.size).toBe(14);
+    const disagree: string[] = [];
+    for (let k = 1; k <= 26; k++) for (const l of ds(k).lists) for (const c of l.candidates) {
+      if (!c.bio?.knesset) continue;
+      const sure = !c.bio.probable || !!c.bio.memberConfirmed; // src/app/compare/match.ts memberKey
+      const p = personOfCandidate(rt, c.id);
+      const byId = p !== null && rt.people[p].runs.some((r) => `${r[1]}#${r[2]}` === c.id && r[4] === 'id');
+      if (byId && !sure) disagree.push(`${c.id}: tied by ID, not certain in the lists`);
+      if (sure && !c.nameEn && !reviewed.has(c.id)) disagree.push(`${c.id}: certain, no English name`);
+      if (!sure && c.nameEn) disagree.push(`${c.id}: not certain, English name ${c.nameEn}`);
+    }
+    expect(disagree).toEqual([]);
+  });
+});

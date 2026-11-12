@@ -14,6 +14,7 @@ import { RULESETS } from '../src/engine/rules.ts';
 import { mixHex } from '../src/data/colour.ts';
 import { compileHistoryRuntime } from './party-history-runtime.ts';
 import { shownRows } from './lib/faction-rows.ts';
+import { knessetMemberSure } from './lib/build/bios.ts';
 
 /** How a run ended. elected: within the list's seats at the election. first: not within the seats but sat from the
  *  first sitting. later: entered during that Knesset. out: did not enter that Knesset. declined: within the seats but
@@ -138,9 +139,10 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
       for (const c of l.candidates) {
         all.push({ k, l, c, elected: el.has(c.id) });
         const b = bios.get(k)![c.id];
-        // high: matched to that Knesset's membership. A candidate who entered the Knesset later in the list's faction
-        // is tied by the entry itself, even where a Wikipedia link on the same record is only medium.
-        if (!b?.knessetPersonId || (b.confidence !== 'high' && !/^not elected at the election; entered Knesset/.test(b.basis ?? ''))) continue;
+        // the Knesset identity is certain: a high entry, or one whose Knesset match is official (elected as that Knesset's
+        // member, or entered it later in the list's faction) where only a Wikipedia or party link on the same record is
+        // medium (scripts/lib/build/bios.ts; audit 12 Nov 2026, c-famous-late-04: Fogel, Bismuth and seven more of 2022)
+        if (!b?.knessetPersonId || !knessetMemberSure(b)) continue;
         const p = b.knessetPersonId;
         if (!terms.has(p) && !(k === 26 && el.has(c.id))) { anomalies.push(`${c.id} ${c.nameHe}: tied to person ${p} by ID but no term and not elected in k26`); continue; }
         const r: Run = { k, listId: l.id, rank: c.rank, candidateId: c.id, nameHe: c.nameHe, elected: el.has(c.id), notSeated: !!c.notSeated, basis: 'id', via: null };
@@ -164,7 +166,9 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
 
   // ---- runs that did not win a seat, tied by the name check ----
   for (const a of all) {
-    if (byCandidate.has(a.c.id) || a.elected || !covered(a.k, a.l.id)) continue;
+    // a candidate within the list's seats who did not take the seat is in the part of every list we hold, whatever the
+    // election (Deri and Benny Begin, 1999; Arens, 1992)
+    if (byCandidate.has(a.c.id) || a.elected || (!covered(a.k, a.l.id) && !a.c.notSeated)) continue;
     const key = normName(a.c.nameHe);
     const people = tiedNames.get(key);
     if (!people) continue;

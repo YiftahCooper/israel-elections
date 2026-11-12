@@ -16,7 +16,8 @@ interface Entry {
  *  or party match makes it medium), so the identity is read from its basis (scripts/research/build-bios.py): matched as an
  *  elected member or as one who entered the Knesset in the list's faction (official OData), or a high reviewed decision.
  *  A name-only match of a candidate who was never elected ("not elected; identical name…") stays probable. */
-const knessetIdentitySure = (e: Entry) => /^(elected; Knesset \d+ member|not elected at the election; entered Knesset )/.test(e.basis ?? '')
+type Graded = { confidence?: string; basis?: string };
+const knessetIdentitySure = (e: Graded) => /^(elected; Knesset \d+ member|not elected at the election; entered Knesset )/.test(e.basis ?? '')
   || (e.confidence === 'high' && /^elected; reviewed decision/.test(e.basis ?? ''));
 
 /** Whether the person is certain, separately from the other links: a high entry is, as is a medium one whose Knesset match
@@ -24,7 +25,13 @@ const knessetIdentitySure = (e: Entry) => /^(elected; Knesset \d+ member|not ele
  *  reviewed decision is not: the 1977 Likud ranks 21 and 24 are both printed כהן יגאל and which rank is which person is
  *  medium-confidence evidence (identity-decisions.reviewed.json). */
 const officialRosterMatch = /^(elected; Knesset \d+ member, name (identical|matches) \(\d+(\.\d+)?\)|not elected at the election; entered Knesset \d+ in the list's faction \(name score \d+(\.\d+)?\))/;
-const memberIdentitySure = (e: Entry) => knessetIdentitySure(e) && (e.confidence === 'high' || officialRosterMatch.test(e.basis ?? ''));
+const memberIdentitySure = (e: Graded) => knessetIdentitySure(e) && (e.confidence === 'high' || officialRosterMatch.test(e.basis ?? ''));
+/** Whether a candidacy belongs to the Knesset member its entry names: a high entry (an official match, or one of the
+ *  reviewed identities of candidates who were not elected), or a medium one whose Knesset match is official
+ *  (`memberConfirmed`). One notion for the comparison match (src/app/compare/match.ts memberKey) and the MK history
+ *  (scripts/mk-history-runtime.ts). The official English name needs more: an official match (memberIdentitySure),
+ *  since a reviewed identity of a candidate who was not elected rests on secondary sources. */
+export const knessetMemberSure = (e: Graded) => e.confidence === 'high' || memberIdentitySure(e);
 
 /** Identity certainty under docs/source-policy.md: an official Knesset identity is confirmed; a reviewed high match is
  *  probable; a rule-based name match (`probable: true` in the published bio) is provisional. */
@@ -34,11 +41,12 @@ export function applyBios(ds: ElectionDataset): ElectionDataset {
   const file = join(ROOT, 'data', 'meta', 'bios', `${ds.id}.json`);
   if (!existsSync(file)) return ds;
   const bios = (JSON.parse(readFileSync(file, 'utf8')) as { candidates: Record<string, Entry> }).candidates;
-  // official English names from the Knesset website, keyed by member site id; only certain Knesset identities take one
+  // official English names from the Knesset website, keyed by member site id; only official Knesset identities take one
+  // (not the 1977 Likud ranks 21 and 24, both printed כהן יגאל: which rank is which person is not certain)
   const namesFile = join(ROOT, 'data', 'raw', 'bios', 'knesset-site-mk-names-en.json');
   const namesEn = new Map(existsSync(namesFile) ? (JSON.parse(readFileSync(namesFile, 'utf8')) as { siteId: number; nameEn: string | null }[]).filter((x) => x.nameEn).map((x) => [x.siteId, x.nameEn!]) : []);
   const nameEnOf = (e: Entry) => {
-    if (!knessetIdentitySure(e) || !e.knesset?.siteId) return undefined;
+    if (!memberIdentitySure(e) || !e.knesset?.siteId) return undefined;
     // k12 audit: a reviewed displayNameEn overrides a misspelt site value; the raw site value stays as evidence.
     if (e.displayNameEn) return e.displayNameEn;
     const name = namesEn.get(e.knesset.siteId);
