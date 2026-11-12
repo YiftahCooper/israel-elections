@@ -49,7 +49,7 @@ for(const lang of ['en','he']) for(const theme of ['light','dark']) for(const wi
    }
    await page.getByRole('tab',{name:lang==='en'?'Rules':'כללים',exact:true}).click();
    await openSettings(page, lang);
-   await page.getByRole('checkbox',{name:lang==='en'?'Party colour in seats':'צבע המפלגה במושבים',exact:true}).uncheck();
+   await page.locator('.personal-settings [data-setting="jointListSeats"]').getByRole('button',{name:lang==='en'?'List':'רשימה',exact:true}).click();
   await page.keyboard.press('Escape');
    await page.getByRole('tab',{name:lang==='en'?'Overview':'תמונת מצב',exact:true}).click();
    await expect(page.locator('.chamber [data-component-seat]')).toHaveCount(0);

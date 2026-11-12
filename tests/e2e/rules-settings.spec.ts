@@ -21,7 +21,7 @@ test('settings sit in their own card, apart from the scenario rules', async ({ p
   await expect(settings).toBeVisible();
   for (const name of ['Votes come from', 'Mark changes since']) await expect(settings.getByRole('group', { name, exact: true })).toBeVisible();
   await expect(settings.getByRole('group', { name: 'Max decimal places', exact: true })).toBeVisible();
-  await expect(settings.getByRole('checkbox', { name: 'Party colour in seats', exact: true })).toBeChecked();
+  await expect(settings.getByRole('group', { name: 'Joint-list seats', exact: true })).toBeVisible();
   // rules are not in the settings card, settings are not among the rules
   await expect(settings.getByRole('textbox', { name: 'Threshold %' })).toHaveCount(0);
   await expect(page.locator('.rules-fields').getByRole('button', { name: 'Votes come from' })).toHaveCount(0);
