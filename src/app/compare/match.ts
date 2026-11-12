@@ -47,6 +47,8 @@ export interface MatchOverride { left: string; right: string | null; status: 'ac
 const dateOf = (electionId: string) => HISTORY.find((e) => e.id === electionId)?.date ?? '';
 /** An organisational merger or absorption (the only links that make a row "Merged" rather than "Ran jointly"). */
 const merger = (via: Relation[]) => via.some((r) => r.kind === 'merged-into' || r.kind === 'absorbed-into');
+/** One organisation stored under two records ("same party, stored twice"): the same party, not a rename. */
+const sameOrganisation = (via: Relation[]) => via.every((r) => r.kind === 'same-organisation');
 
 const rowKey = (left: string[], right: string[]) => `${left.join('+')}>${right.join('+')}`;
 
@@ -100,14 +102,17 @@ export function matchRows(a: Scenario, b: Scenario, overrides: MatchOverride[] =
     if (row) { row.left.push(l.l.id); row.leftSet.add(l.l.id); used.add(l.l.id); row.tag = 'yours'; }
     else open(r, [l.l.id], 'yours', { kind: 'user' });
   }
-  // 1. the same leading party (or one alliance led by another of its parties), also through a recorded rename or merger
+  // 1. the same leading party (or one alliance led by another of its parties), also through a recorded rename or merger.
+  //    A front that is an organisation in its own right (its record on the list: the Hadash front 1977–88, Sheli 1977)
+  //    leads its own list too, as the "compared with last time" rule counts it
+  const front = (x: (typeof A)[number], to: string) => x.ps.find((q) => x.l.originIds.some((o) => q === `vehicle-${o}`) && cont(q).has(to));
   for (const r of B) {
     if (rowOfRight.has(r.l.id)) continue;
-    const l = A.find((x) => !used.has(x.l.id) && !rejected(x.l.id, r.l.id) && x.lead && r.lead && (cont(x.lead).has(r.lead) || !!into(x.lead, r.ps) && x.ps.some((q) => cont(q).has(r.lead!))));
+    const l = A.find((x) => !used.has(x.l.id) && !rejected(x.l.id, r.l.id) && x.lead && r.lead && (cont(x.lead).has(r.lead) || !!front(x, r.lead) || !!into(x.lead, r.ps) && x.ps.some((q) => cont(q).has(r.lead!))));
     if (!l) continue;
-    const via = cont(l.lead!).get(r.lead!) ?? cont(l.lead!).get(into(l.lead, r.ps)!) ?? [];
+    const via = cont(l.lead!).get(r.lead!) ?? (front(l, r.lead!) ? cont(front(l, r.lead!)!).get(r.lead!) : undefined) ?? cont(l.lead!).get(into(l.lead, r.ps)!) ?? [];
     if (!via.length) open(r, [l.l.id], 'same', { kind: 'leading-party', partyId: l.lead! });
-    else open(r, [l.l.id], merger(via) ? 'merged' : 'renamed', { kind: 'lineage', edgeId: via[0].id, relation: via[0].kind });
+    else open(r, [l.l.id], merger(via) ? 'merged' : sameOrganisation(via) ? 'same' : 'renamed', { kind: 'lineage', edgeId: via[0].id, relation: via[0].kind });
   }
   // 2. a left list whose leading party now runs inside a right list led by another party: joined, or ran jointly with
   //    others (Merged only along a recorded merger). When the right list's own leader ran inside a third list, the
@@ -194,8 +199,8 @@ export function matchRows(a: Scenario, b: Scenario, overrides: MatchOverride[] =
         if (moved.length) row.notes.push({ side: 'left', kind: 'moved', partyIds: moved, listId: r.l.id });
       }
     }
-    // a party of the left list moved to an unrelated list: the left list was split, though the rows stay apart
-    if ((row.tag === 'same' || row.tag === 'renamed') && row.notes.some((n) => n.kind === 'moved')) row.tag = 'split';
+    // a partner of the left list moved to another list: the row keeps its word with the "moved on" note. Split is kept
+    // for the leading party's list spread over several lists (docs/features/party-history.md §1.4)
   }
   return rows.map(({ leftSet: _, ...row }) => ({ ...row, key: rowKey(row.left.length ? row.left : row.inLeft ? [`in:${row.inLeft}`] : [], row.right) }));
 }

@@ -177,6 +177,10 @@ export function planVotes(o: { from: CopySource; to: Scenario; ctx?: { base?: Sc
 /** "×1.10": the source's growth since its start (three decimals, trailing zeros dropped, at least two). */
 export const ratioText = (s: number, s0: number) => `×${(s / s0).toFixed(3).replace(/0$/, '')}`;
 
+/** Exact turnout target: votes cast = registered · (source cast / source registered), to the nearest vote. */
+const turnoutTarget = (from: Scenario, to: Scenario) => Number(nearest(BigInt(to.registered) * BigInt(votesCast(from)), BigInt(from.registered)));
+const sameRules = (x: object, y: object) => JSON.stringify(Object.entries(x).sort()) === JSON.stringify(Object.entries(y).sort());
+
 /** Turnout (copied as the percentage: lists and invalid ballots scale, shares stay), registered voters, invalid ballots. */
 export function planTotals(o: { from: CopySource; to: Scenario; ctx?: { base?: Scenario }; field: 'turnout' | 'registered' | 'invalid' }): Plan {
   const { from, to, field } = o;
@@ -191,8 +195,7 @@ export function planTotals(o: { from: CopySource; to: Scenario; ctx?: { base?: S
     return finish(to, o.ctx ?? {}, provenanceOf(from, 'invalid', { value: fmtInt(from.sc.invalid), paths: [['invalid']] }), [{ type: 'setTotals', invalid: from.sc.invalid }]);
   }
   if (!from.sc.registered || !to.registered) return refuse('Turnout is unknown for one side.', 'שיעור ההצבעה אינו ידוע באחד הצדדים.');
-  // exact target: votes cast = registered · (source cast / source registered), to the nearest vote
-  const target = Number(nearest(BigInt(to.registered) * BigInt(votesCast(from.sc)), BigInt(from.sc.registered)));
+  const target = turnoutTarget(from.sc, to);
   if (target === votesCast(to)) return refuse('Already the same.', 'כבר זהה.');
   let pct = (votesCast(from.sc) / from.sc.registered) * 100;
   for (let i = 0; i < 4 && Math.round(to.registered * (pct / 100)) !== target; i++) pct += (target - to.registered * (pct / 100)) / to.registered * 100;
@@ -205,7 +208,7 @@ export function planTotals(o: { from: CopySource; to: Scenario; ctx?: { base?: S
 export function planRules(o: { from: CopySource; to: Scenario; ctx?: { base?: Scenario }; what: 'threshold' | 'rules' }): Plan {
   const { from, to } = o;
   const law = historicalRules(electionRuleSetId(to.electionId));
-  const same = (x: object, y: object) => JSON.stringify(Object.entries(x).sort()) === JSON.stringify(Object.entries(y).sort());
+  const same = sameRules;
   if (o.what === 'threshold') {
     const pct = from.sc.rules.thresholdPct;
     if (pct === to.rules.thresholdPct) return refuse('Already the same.', 'כבר זהה.');
@@ -219,8 +222,8 @@ export function planRules(o: { from: CopySource; to: Scenario; ctx?: { base?: Sc
     [{ type: 'startPart', part: 'rules', source: 'saved', snapshot: { rules: { ...from.sc.rules }, mode }, name: from.name }]);
 }
 
-/** Surplus agreements mapped through the row matching. Pairs that cannot be mapped are listed, never dropped silently. */
-export function planAgreements(o: { from: CopySource; to: Scenario; ctx?: { base?: Scenario }; rows: MatchRow[]; direction: 'toRight' | 'toLeft' }): Plan & { skipped?: { members: string[]; reason: Msg }[] } {
+/** The source's agreements mapped onto the destination's lists through the row matching, and those that cannot be. */
+function mapAgreements(o: { from: Pick<CopySource, 'sc'>; to: Scenario; rows: MatchRow[]; direction: 'toRight' | 'toLeft' }) {
   const map = new Map<string, string>();
   for (const r of o.rows) {
     if (r.left.length !== 1 || r.right.length !== 1 || r.tag === 'check' || r.group) continue;
@@ -238,10 +241,29 @@ export function planAgreements(o: { from: CopySource; to: Scenario; ctx?: { base
     out.push({ id: `cmp-${a.id}`, members: members as string[], enabled: true });
   }
   const same = JSON.stringify(out.map((a) => [...a.members].sort())) === JSON.stringify(o.to.agreements.filter((a) => a.enabled).map((a) => [...a.members].sort()));
+  return { out, skipped, same };
+}
+/** Surplus agreements mapped through the row matching. Pairs that cannot be mapped are listed, never dropped silently. */
+export function planAgreements(o: { from: CopySource; to: Scenario; ctx?: { base?: Scenario }; rows: MatchRow[]; direction: 'toRight' | 'toLeft' }): Plan & { skipped?: { members: string[]; reason: Msg }[] } {
+  const { out, skipped, same } = mapAgreements(o);
   if (same) return { ...refuse('Already the same.', 'כבר זהה.'), skipped };
   const plan = finish(o.to, o.ctx ?? {}, provenanceOf(o.from, 'agreements', { value: String(out.length), paths: [['agreements']] }),
     [{ type: 'startPart', part: 'agreements', source: 'saved', snapshot: { agreements: out }, name: o.from.name }]);
   return { ...plan, skipped };
+}
+
+export type CopyField = 'turnout' | 'registered' | 'invalid' | 'threshold' | 'rules' | 'agreements';
+/** Whether copying a field from one side would change nothing: the plans' own "Already the same" test, on the value
+ *  that is copied (the agreements themselves, the exact turnout), never on the figure shown (a count, a rounded %). */
+export function alreadySame(field: CopyField, from: Scenario, to: Scenario, rows: MatchRow[], direction: 'toRight' | 'toLeft'): boolean {
+  switch (field) {
+    case 'registered': return from.registered === to.registered;
+    case 'invalid': return from.invalid === to.invalid;
+    case 'turnout': return !from.registered || !to.registered ? !from.registered && !to.registered : turnoutTarget(from, to) === votesCast(to);
+    case 'threshold': return from.rules.thresholdPct === to.rules.thresholdPct;
+    case 'rules': return sameRules(from.rules, to.rules);
+    case 'agreements': return mapAgreements({ from: { sc: from }, to, rows, direction }).same;
+  }
 }
 
 /** Roster import: the source roster and order, with its parties and completeness flags. Candidates keep their ids;

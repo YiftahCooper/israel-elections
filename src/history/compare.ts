@@ -38,19 +38,20 @@ export interface Comparison {
 }
 
 /** Registered parties of a list (alliance vehicles excluded); a scenario-made list takes its origin lists' parties. */
-export function partiesOf(electionId: string, l: Pick<SimList, 'id' | 'originIds' | 'parties' | 'candidates'>): string[] {
+export function partiesOf(electionId: string, l: Pick<SimList, 'id' | 'originIds' | 'parties' | 'candidates' | 'synthetic'>): string[] {
   // the compiled runtime holds each list's registered parties, canonical, with an alliance record only when it is an
   // organisation in its own right (named by an identity relation: the Hadash front, 1977–88)
   const lists = HISTORY[electionIndex(electionId)]?.lists ?? [];
   const of = (id: string) => lists.find((x) => x.id === id)?.parties ?? [];
   let ids = of(l.id);
   if (!ids.length) ids = l.originIds.flatMap(of);
-  // a split part keeps only the parties its candidates still represent
-  if (l.parties?.length && ids.length > 1) { const kept = new Set(l.parties.map((p) => canonicalParty(p.id))); const narrowed = ids.filter((p) => kept.has(p)); if (narrowed.length) ids = narrowed; }
+  // a split part made in a scenario keeps only the parties its candidates still represent (never the front's own
+  // record: the part is not the front); every other list keeps the runtime's parties, its front record included
+  if (l.synthetic?.kind === 'split' && l.parties?.length && ids.length > 1) { const kept = new Set(l.parties.map((p) => canonicalParty(p.id))); const narrowed = ids.filter((p) => kept.has(p)); if (narrowed.length) ids = narrowed; }
   return [...new Set(ids)];
 }
 /** The leading party: the singleton, or candidate #1's party, or the first constituent. */
-export function leadOf(electionId: string, l: Pick<SimList, 'id' | 'originIds' | 'parties' | 'candidates'>): string | null {
+export function leadOf(electionId: string, l: Pick<SimList, 'id' | 'originIds' | 'parties' | 'candidates' | 'synthetic'>): string | null {
   const ps = partiesOf(electionId, l);
   if (ps.length <= 1) return ps[0] ?? null;
   const first = l.candidates.find((c) => !c.notSeated)?.partyId;
@@ -90,8 +91,11 @@ export function comparablePredecessor(listId: string, now: ElectionFacts, earlie
   const holder = new Map<string, ListFacts>(); for (const l of now.lists) for (const p of l.parties) if (!holder.has(p)) holder.set(p, l);
   const homesOf = (q: string) => [...contOf(q).keys()].map((p) => holder.get(p)).filter((l): l is ListFacts => !!l);
   const intoSet = (q: string, set: Set<string>) => [...contOf(q).keys()].some((p) => set.has(p));
-  /** an earlier list is whole within these current lists when none of its parties now runs anywhere else */
-  const wholeIn = (M: ListFacts, ids: Set<string>) => M.parties.every((q) => homesOf(q).every((h) => ids.has(h.id)));
+  /** an earlier list is whole within these current lists when none of its parties now runs anywhere else and its leading
+   *  party runs there: a list whose leader ran nowhere is not on a partner's new list (Yachad 2015, whose partner Otzma
+   *  joined the Union of Right-Wing Parties in 2019 while Yachad itself did not run) */
+  const wholeIn = (M: ListFacts, ids: Set<string>) => M.parties.every((q) => homesOf(q).every((h) => ids.has(h.id)))
+    && (!M.lead || homesOf(M.lead).some((h) => ids.has(h.id)));
   const usedRels = (Ms: ListFacts[], ps: Set<string>) => {
     const out = new Map<string, Relation>();
     for (const M of Ms) for (const q of M.parties) for (const [p, via] of contOf(q)) if (ps.has(p)) for (const r of via) out.set(r.id, r);

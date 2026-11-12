@@ -1,9 +1,10 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import type { ElectionDataset, ElectionIndexEntry } from '../src/data/schema.ts';
-import { baselineOf } from '../src/app/derive.ts';
+import { allocationOf, baselineOf } from '../src/app/derive.ts';
 import { applyAction } from '../src/model/actions.ts';
-import { copyUnit, matchRows, mirrorRows, sharedCandidates, type MatchRow } from '../src/app/compare/match.ts';
+import { copyUnit, matchRows, mirrorRows, partiesOf, sharedCandidates, type MatchRow } from '../src/app/compare/match.ts';
+import { comparableFor, comparablePredecessor, scenarioFacts } from '../src/history/compare.ts';
 
 const load = (id: string): ElectionDataset => JSON.parse(readFileSync(`public/data/${id}.json`, 'utf8'));
 const elections: ElectionIndexEntry[] = JSON.parse(readFileSync('public/data/elections.json', 'utf8'));
@@ -181,5 +182,69 @@ describe('matcher fixes', () => {
     const home = rows.filter((r) => r.group === rz.group).flatMap((r) => [...r.left, ...(r.inLeft ? [r.inLeft] : [])]);
     expect(home).toContain(rz.group!.slice(6));
     expect(rz.tag).not.toBe('joined');
+  });
+});
+
+// One rule, one pairing: Side by side, the Matching panel and the Overview's "compared with last time" never disagree
+// about which earlier lists a list continues (docs/features/party-history.md §1.4).
+describe('Compare and the Overview pair the same lists', () => {
+  const ids = elections.filter((e) => e.available).sort((a, b) => a.date.localeCompare(b.date)).map((e) => e.id);
+  const pairs = ids.slice(1).map((id, i) => [ids[i], id] as const);
+  it.each(pairs)('%s → %s: every list the Overview counts is in the same Compare row', (x, y) => {
+    const a = baselineOf(load(x)), b = baselineOf(load(y));
+    const rows = matchRows(a, b);
+    for (const l of b.lists) {
+      const c = comparableFor(y, l.id)!;
+      const row = rowOf(rows, 'right', l.id)!;
+      const g = row.group ? rows.filter((r) => r.group === row.group) : [row];
+      const left = new Set(g.flatMap((r) => [...r.left, ...(r.inLeft ? [r.inLeft] : [])]));
+      expect({ list: l.id, missing: c.counted.map((m) => m.id).filter((m) => !left.has(m)) }).toEqual({ list: l.id, missing: [] });
+      if (c.counted.length) expect({ list: l.id, tag: row.tag }).not.toEqual({ list: l.id, tag: 'new' });
+    }
+  });
+  it.each(pairs)('%s → %s: a scenario of the official result compares exactly as the official records', (x, y) => {
+    const a = baselineOf(load(x)), b = baselineOf(load(y));
+    const now = scenarioFacts(b, allocationOf(b)), before = scenarioFacts(a, allocationOf(a));
+    for (const l of b.lists) {
+      const off = comparableFor(y, l.id)!, sc = comparablePredecessor(l.id, now, before);
+      expect({ list: l.id, kind: sc.kind, counted: sc.counted.map((m) => m.id) }).toEqual({ list: l.id, kind: off.kind, counted: off.counted.map((m) => m.id) });
+    }
+  });
+  it('Hadash 1992 continues the Hadash front of 1988 (recorded: same organisation)', () => {
+    const row = rowOf(matchRows(baselineOf(load('k12')), baselineOf(load('k13'))), 'right', '13-ו')!;
+    expect(row).toMatchObject({ left: ['12-ו'], tag: 'same', reason: { kind: 'lineage', edgeId: 'hadash-front-id-k12' } });
+  });
+  it('Sheli 1981 continues the Sheli front of 1977; the Black Panthers moved on to Hadash', () => {
+    const row = rowOf(matchRows(baselineOf(load('k9')), baselineOf(load('k10'))), 'right', '10-ש')!;
+    expect(row).toMatchObject({ left: ['9-ש'], tag: 'same', reason: { kind: 'lineage', edgeId: 'sheli-front-continuity' } });
+    expect(row.notes).toEqual([{ side: 'left', kind: 'moved', partyIds: ['black-panthers'], listId: '10-ו' }]);
+  });
+  it('a split part made in a scenario keeps only the parties its candidates represent, never the front itself', () => {
+    const k12 = baselineOf(load('k12'));
+    const h = k12.lists.find((l) => l.id === '12-ו')!;
+    expect(partiesOf('k12', h)).toContain('vehicle-12-ו');
+    const cs = h.candidates.filter((c) => !c.notSeated);
+    const bp = cs.filter((c) => c.partyId === 'black-panthers'), rest = cs.filter((c) => c.partyId !== 'black-panthers');
+    expect(bp.length).toBeGreaterThan(0);
+    const split = applyAction(k12, { type: 'split', id: '12-ו', parts: [
+      { newId: 'sim-a', nameHe: 'א', letters: 'וא', color: '#111111', votes: h.votes - 1000, candidateIds: rest.map((c) => c.id) },
+      { newId: 'sim-b', nameHe: 'ב', letters: 'וב', color: '#222222', votes: 1000, candidateIds: bp.map((c) => c.id) },
+    ] }, undefined, { base: k12 });
+    expect(partiesOf('k12', split.lists.find((l) => l.id === 'sim-b')!)).toEqual(['black-panthers']);
+  });
+});
+
+describe('a partner leaving is not a split (§1.4: Split is the leading party’s list spread over several lists)', () => {
+  it('Likud 2021 → Likud 2022 stays the same list; Atid Ehad moved on', () => {
+    const row = rowOf(matchRows(baselineOf(load('k24')), baselineOf(load('k25'))), 'right', '25-מחל')!;
+    expect(row.tag).toBe('same');
+    expect(row.group).toBeUndefined();
+    expect(row.notes).toContainEqual({ side: 'left', kind: 'moved', partyIds: ['atid-ehad'], listId: '25-ט' });
+    expect(comparableFor('k25', '25-מחל')!.kind).toBe('partial');
+  });
+  it('no row is called Split unless it belongs to a split group or a scenario split', () => {
+    const ids = elections.filter((e) => e.available).sort((a, b) => a.date.localeCompare(b.date)).map((e) => e.id);
+    for (let i = 1; i < ids.length; i++) for (const r of matchRows(baselineOf(load(ids[i - 1])), baselineOf(load(ids[i]))))
+      if (r.tag === 'split') expect({ row: r.key, group: !!r.group }).toEqual({ row: r.key, group: true });
   });
 });

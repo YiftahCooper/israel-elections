@@ -51,6 +51,23 @@ describe('other references', () => {
     expect(rows.byList.get(id(k25, 'Likud'))).toMatchObject({ seats: 27, names: 'Likud', bar: true });
     expect(rows.byList.get(id(k25, 'Yesh Atid'))).toMatchObject({ names: 'Together (Bennett)', how: '(joined)' });
   });
+  it('a later reference says what happened next in its own words: lists that ran together later did not split', () => {
+    const en = refRows(k25, k26, [], false, '2026', 'en'), he = refRows(k25, k26, [], false, '2026', 'he');
+    expect(en.byList.get(id(k25, 'Labor'))).toMatchObject({ names: 'The Democrats', how: '(ran jointly)', bar: false });
+    expect(en.byList.get(id(k25, 'Meretz'))).toMatchObject({ names: 'The Democrats', how: '(ran jointly)' });
+    expect(en.byList.get(id(k25, "Hadash–Ta'al"))).toMatchObject({ names: 'Joint List', how: '(ran jointly)' });
+    expect(he.byList.get(id(k25, 'Labor'))!.how).toBe('(רצו יחד)');
+    // the real split is still a split, counted against all of its successors
+    expect(en.byList.get(id(k25, 'Religious Zionism'))).toMatchObject({ how: '(split into 3)', seats: seats(k26, 'Religious Zionism–Zehut') + seats(k26, 'Otzma Yehudit') + seats(k26, 'Noam') });
+    expect(he.byList.get(id(k25, 'Religious Zionism'))!.how).toBe('(התפצלה ל-3)');
+  });
+  it('a later reference after a recorded merger: the General Zionists 1959 merged into the Liberal Party 1961', () => {
+    const k4 = baselineOf(load('k4')), k5 = baselineOf(load('k5'));
+    const en = refRows(k4, k5, [], false, '1961', 'en'), he = refRows(k4, k5, [], false, '1961', 'he');
+    const gz = k4.lists.find((l) => l.shortEn === 'General Zionists')!.id;
+    expect(en.byList.get(gz)).toMatchObject({ names: 'Liberal Party', how: '(merged)' });
+    expect(he.byList.get(gz)!.how).toBe('(התאחדו)');
+  });
   it('within one election, a list keeps its plain line and the name only when it differs', () => {
     const edited = applyAction(k26, { type: 'setVotes', listId: id(k26, 'Likud'), votes: 1_300_000 }, undefined, { base: k26 });
     const rows = refRows(edited, k26, [], true, 'Official result', 'en');
