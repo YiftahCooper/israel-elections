@@ -66,7 +66,8 @@ test('E7 native list controls in Compare and Seat safety open with Enter', async
   const votes=page.getByRole('region',{name:'List details'}).getByLabel('Votes',{exact:true});
   await votes.fill('1300000'); await votes.press('Enter'); await page.keyboard.press('Escape');
   for(const tab of ['Compare','Seat safety']) {
-    await page.getByRole('tab',{name:tab,exact:true}).click();
+    // Side by side opens from the comparison strip (no longer a tab)
+    if(tab==='Compare') await openSideBySide(page); else await page.getByRole('tab',{name:tab,exact:true}).click();
     const button=page.locator(tab==='Compare'?'.cmp-table':'.security').getByRole('button',{name:'Likud',exact:true});
     await expect(button).toBeVisible({timeout:60000}); await button.focus(); await button.press('Enter');
     await expect(page.getByRole('region',{name:'List details'})).toBeVisible();

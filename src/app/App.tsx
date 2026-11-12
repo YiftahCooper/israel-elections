@@ -196,7 +196,8 @@ function Shell() {
   const openTool = (id: Tab) => { setState({ tool: id }); window.scrollTo({ top: 0 }); };
   const selected = selectedListId && s.lists.some((l) => l.id === selectedListId) ? selectedListId : null;
   // on a tool page the list drawer opens only for a list chosen there (a selection made on the board waits for it)
-  const drawerOpen = tool !== 'after' && tool !== 'board' && !!selected && drawerFor === selected;
+  // Side by side is not a tab, so `tool` reads 'board' there; a list chosen in it still opens its details
+  const drawerOpen = tool !== 'after' && (tool !== 'board' || sideBySide) && !!selected && drawerFor === selected;
 
   return (
     <div className={`app ${preview ? 'board-preview' : ''}`} data-coloured={tool !== 'after' && resultChanges(committed, base).length ? '' : undefined} style={{ ['--scenario-color' as string]: tool !== 'after' && resultChanges(committed, base).length ? liveScenarioColor(committed, saved) : undefined, ['--scenario-ink' as string]:inkOn(liveScenarioColor(committed,saved)) }}>
