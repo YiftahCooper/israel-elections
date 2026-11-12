@@ -24,7 +24,8 @@
     ")להלן - העצמאות(": "(להלן - העצמאות)",
     ")כהנא(": "(כהנא)",
     ")איתיחאד אבנאא אלעהד(": "(איתיחאד אבנאא אלעהד)",
-    "2019;)": "2019);"
+    "2019;)": "2019);",
+    "אלחודה": "אלוחדה"
   },
   "withdrawn": [
     {
@@ -49,6 +50,6 @@
   "textEvidence": {
     "sourceId": "k22-candidates-gazette",
     "pages": "14466–14492",
-    "note": "Logical parentheses restored from printed YP 8420; YP 8454 also prints תמנו פנינה (פנחש). Raw PDF bytes unchanged."
+    "note": "Logical parentheses restored from printed YP 8420; YP 8454 also prints תמנו פנינה (פנחש). Raw PDF bytes unchanged. One misprint corrected: YP 8420 prints the designation of list כי as אלחודה אלשעביה, while the same page names its party אלוחדה אלשעביה, and the final results notice (data/raw/k22/results-gazette.pdf) and the committee results page (data/raw/k22/nationalresults.html) both print אלוחדה."
   }
 }

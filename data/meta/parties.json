@@ -413,7 +413,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k22.json",
-      "sha256": "a30eff5019cf9b319b5093f327a85c3eee6298e10c00f81d655dfdf9fa10932d",
+      "sha256": "a63651b7d4d3220e32af28aa8aef3a26f7b5193d2caeb3fa2b648dc958db22ef",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k23": {
@@ -18495,13 +18495,13 @@
     {
       "id": "vehicle-22-כי",
       "entityType": "electoral-vehicle",
-      "nameHe": "האחדות העממית - אלחודה אלשעביה בראשות פרופ' אסעד גאנם",
+      "nameHe": "האחדות העממית - אלוחדה אלשעביה בראשות פרופ' אסעד גאנם",
       "nameEn": null,
       "names": [
         {
           "date": "2019-09-17",
           "datePrecision": "day",
-          "nameHe": "האחדות העממית - אלחודה אלשעביה בראשות פרופ' אסעד גאנם",
+          "nameHe": "האחדות העממית - אלוחדה אלשעביה בראשות פרופ' אסעד גאנם",
           "nameEn": null,
           "sources": [
             "k22",

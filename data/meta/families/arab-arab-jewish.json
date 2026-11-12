@@ -3964,7 +3964,7 @@
       "electionId": "k22",
       "electionDate": "2019-09-17",
       "datasetPath": "public/data/k22.json",
-      "datasetSha256": "a30eff5019cf9b319b5093f327a85c3eee6298e10c00f81d655dfdf9fa10932d",
+      "datasetSha256": "a63651b7d4d3220e32af28aa8aef3a26f7b5193d2caeb3fa2b648dc958db22ef",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",

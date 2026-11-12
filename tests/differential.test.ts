@@ -262,7 +262,9 @@ const EXPECTED: Record<Family, string> = {
   // DG26: official YP 15023 roster provenance and Beit Yemini's printed name only.
   // Wider print-logo collection (LG2): logos only; all 26 datasets match outside logo/builtAt.
   // All together (merges of 12 Nov): digest recomputed on the merged data; each change reproduced its own digest before the merge.
-  model: '482c7d353b33948c42799773deff24ecbf54b6b7bc63d8ed4b44e3f0625669d2',
+  // Audit 12 Nov: k22 list כי, one misprinted word of its name corrected (אלחודה → אלוחדה, k22-corrections.json), with its
+  // link title. Votes, seats, ids and the other 25 datasets unchanged; only this digest changes.
+  model: '378b57054cebd7190f1b0c7a835c6c1f2aacfe77a0ed7e3777964b2d51c09178',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

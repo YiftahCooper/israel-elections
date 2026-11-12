@@ -214,7 +214,7 @@ export async function buildHistorical(config:BuildConfig){
       return {...c,givenHe,familyHe,id:candidateId(id,c.rank),nameHe:`${familyHe} ${givenHe}`};
     });
     if(config.leaders[list.letters])check(candidates[0].nameHe===config.leaders[list.letters],`k${n} ${list.letters}: unexpected party leader ${candidates[0].nameHe}`);
-    return listRecord(n,i,{letters:list.letters,nameHe:r.nameHe,votes:list.votes,sponsorsHe:normalize(r.sponsorsHe),withdrawn:config.withdrawn?.includes(list.letters) ?? ((n===23&&list.letters==='זץ')||(n===24&&list.letters==='רק')),
+    return listRecord(n,i,{letters:list.letters,nameHe:normalize(r.nameHe),votes:list.votes,sponsorsHe:normalize(r.sponsorsHe),withdrawn:config.withdrawn?.includes(list.letters) ?? ((n===23&&list.letters==='זץ')||(n===24&&list.letters==='רק')),
       candidates,candidatesSource:`k${n}-candidates-gazette`,notesHe:config.notes?.[list.letters]??[]});
   });
   const pairs=await agreementPairs(n,surplus);
