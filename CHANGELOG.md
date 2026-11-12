@@ -2,6 +2,8 @@
 
 ## 7 November 2026 — Settings
 
+- Seat cards and MK histories (12 Nov): in the 25th Knesset, Otzma Yehudit's faction is named Otzma Yehudit, not Religious Zionism. The Knesset registers both from the first day, and a list's name now goes to only one of the factions its members formed; no two factions sitting at the same time share a name.
+- Timeline (12 Nov): five end-of-term lines said “2th”, “3th”, “21th”, “22th” and “23th Knesset”; the records are corrected and the patch that hid the fault on screen is removed.
 - Coalitions (12 Nov): on a phone with large text, “More for than against: 51 for · 64 against” wraps inside its card instead of running past it, never splitting a mark from its label or a number from its word; the totals line keeps “= 51” together.
 - Data gaps register (12 Nov): no longer lists “[object Object]” as an election; the register skips the 2022 polling archive’s draft JSON Schema, which describes fields and holds no claims (one false flag removed; 11,467 flags).
 - Research: correct generated term ordinals and bilingual faction-move labels; reconcile the 2020 investiture with its complete official roll call and technical correction.

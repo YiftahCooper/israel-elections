@@ -139,12 +139,6 @@ function aftermathEvents(k: number, a: Aftermath): KEvent[] {
   }));
 }
 
-/** "21th Knesset" → "21st Knesset" (the research's generated English for the term boundaries). */
-export const fixOrdinals = (s: string) => s.replace(/\b(\d+)th\b/g, (_, n: string) => {
-  const t = Number(n) % 100, u = Number(n) % 10;
-  return n + (t >= 11 && t <= 13 ? 'th' : u === 1 ? 'st' : u === 2 ? 'nd' : u === 3 ? 'rd' : 'th');
-});
-
 const JOIN = new Set(['party-ministers-approved', 'coalition-return-statement']);
 const EXIT = new Set(['party-coalition-exit', 'coalition-exit-statement']);
 
@@ -383,7 +377,7 @@ function compileSteps(k: number, opening: string, end: string, seats: SeatRuntim
       if (!e.importance && (JOIN.has(e.kind) || EXIT.has(e.kind)) && partyLevel) importance = moved.length ? 'simple' : 'standard';
       const fm = e.kind === 'faction-membership-change' && factions.length === 2 ? { factions: [factions[0], factions[1]] as const, count: e.who.personIds?.length ?? 0 } : {};
       items.push({ id: e.id, type: 'event', kind: e.kind, importance, importanceFrom: e.byRule ? 'rule' : e.importance ? 'data' : 'fallback', marker, markerFrom: fromData ? 'data' : 'fallback',
-        en: fixOrdinals(e.summary.en), he: e.summary.he, certainty: e.certainty ?? null, evidenceClass: e.evidenceClass ?? null, sources: srcs(e), marks, moved, ...(e.timelineEligible === false ? { held: true as const } : {}), ...fm });
+        en: e.summary.en, he: e.summary.he, certainty: e.certainty ?? null, evidenceClass: e.evidenceClass ?? null, sources: srcs(e), marks, moved, ...(e.timelineEligible === false ? { held: true as const } : {}), ...fm });
       (items[items.length - 1] as TimelineItem & { _e?: KEvent })._e = e;
     }
     const coalition = sides ? current().filter((x) => side.get(x.t.personId) === 'c').map((x) => x.seat) : null;

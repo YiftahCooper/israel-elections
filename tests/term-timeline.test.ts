@@ -4,7 +4,7 @@ import { describe, expect, test } from 'vitest';
 import { mkdtempSync, mkdirSync, readFileSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { compileTermTimeline, fixOrdinals, type TermRuntime } from '../scripts/term-timeline-runtime.ts';
+import { compileTermTimeline, type TermRuntime } from '../scripts/term-timeline-runtime.ts';
 import { chamberOrder, holderAt, stepMarks, visibleItem, visibleSteps, type TimelineChoice } from '../src/history/termTimeline.ts';
 import { settingDefault } from '../src/app/settings.ts';
 
@@ -160,9 +160,11 @@ describe('stepping (owner, 12 Nov): the arrows stop at every event the bar shows
     const it = k25.timeline!.steps.flatMap((s) => s.items).find((x) => x.id === 'k25-observed-faction-5')!;
     expect(it.factions).toEqual([1098, 1110]); expect(it.count).toBe(8);
   });
-  test('ordinals in the research’s generated English are corrected', () => {
-    expect(fixOrdinals('21th Knesset membership ends as the 22th Knesset begins.')).toBe('21st Knesset membership ends as the 22nd Knesset begins.');
-    expect(fixOrdinals('1th, 2th, 3th, 11th, 12th, 13th, 111th, 24th')).toBe('1st, 2nd, 3rd, 11th, 12th, 13th, 111th, 24th');
+  test('every English ordinal in the Knesset event records is well formed (“21st”, never “21th”)', () => {
+    const right = (n: number) => { const t = n % 100, u = n % 10; return t >= 11 && t <= 13 ? 'th' : u === 1 ? 'st' : u === 2 ? 'nd' : u === 3 ? 'rd' : 'th'; };
+    const wrong: string[] = [];
+    for (let k = 1; k <= 25; k++) for (const m of readFileSync(`data/research/knesset-events/k${k}.json`, 'utf8').matchAll(/\b(\d+)(st|nd|rd|th)\b/g)) if (m[2] !== right(Number(m[1]))) wrong.push(`k${k}: ${m[0]}`);
+    expect(wrong).toEqual([]);
   });
 });
 
