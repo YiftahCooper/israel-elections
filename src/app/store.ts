@@ -5,7 +5,7 @@ import { baselineOf, freshScenario, factionDefault, setFactionDefault } from './
 import { validItemAnswers, validAnswers, sourceChoice, sourceValue, type PreferenceAnswers, type PreferenceAsk, type PreferenceId } from './preferences.ts';
 import type { Family } from '../families/model.ts';
 import { nextScenarioColor } from './scenarioIdentity.ts';
-import { PRESETS, type FeatureId, type Visibility } from './features.ts';
+import { PRESETS, TOOL_FEATURES, type FeatureId, type Visibility } from './features.ts';
 import { validSettings, settingValue, settingDefault, withLinked, LINKED, SETTINGS_KEY, SETTING_IDS, type RowId, type SettingId, type SettingValues } from './settings.ts';
 // Application state. Undo/redo keeps immutable scenario snapshots; saved scenarios remain action logs.
 import { useSyncExternalStore } from 'react';
@@ -116,7 +116,8 @@ const rememberedSettings = (() => { try { const raw = JSON.parse(globalThis.loca
 const deviceDark = () => globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches === true;
 const resolvedTheme = (pref: SettingValues['theme']): 'light' | 'dark' => pref === 'device' ? (deviceDark() ? 'dark' : 'light') : pref;
 const initialLevel: Level = LEVELS.includes(persisted.level as Level) ? persisted.level as Level : 'simple';
-const TOOL_IDS = new Set(['board', 'families', 'scenarios', 'whatif', 'coal', 'walk', 'structure', 'security', 'charts', 'turnout', 'sens', 'loc', 'rules', 'sources']);
+// every tool can be the one reopened (After the election was once left out of a hand-written copy of this list)
+const TOOL_IDS = new Set<string>(TOOL_FEATURES.map(f => f[0]));
 
 let state: State = {
   datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, reference: null, markOfficial: persisted.markOfficial === true, past: [], future: [], selectedListId: null, blocPanel: null,
@@ -592,9 +593,14 @@ export function useLevel() {
 }
 
 /** Switches the interface level (top bar and Settings). Where added votes come from is asked at every level, so a
- *  level change keeps the answer in force (owner, 9 Nov 2026; ADR 0013 addendum). */
+ *  level change keeps the answer in force (owner, 9 Nov 2026; ADR 0013 addendum). A level clears the Custom choices;
+ *  that is never silent: a message says so, and its Undo brings back the same choices on the same base level. */
 export function setLevel(level: Level) {
+  const before = { level: state.level, customFeatures: state.customFeatures };
   setState({ level, customFeatures: null });
+  if (!before.customFeatures) return;
+  const he = state.lang === 'he';
+  toast('info', he ? 'הבחירות ברמה המותאמת נוקו' : 'Custom choices cleared', { label: he ? 'ביטול' : 'Undo', run: () => setState(before) });
 }
 export function featureVisibility(id: FeatureId): Visibility {
   return state.customFeatures?.[id] ?? PRESETS[state.level][id];

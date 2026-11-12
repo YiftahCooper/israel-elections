@@ -29,7 +29,7 @@ import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtRat, fmtSigned } from '../format.ts';
 import { dispatch, dispatchMany, getState, useStore, previewAction, setState, toast, useFeature, useShown, useLevel, useVoteSource, useDigits, useSetting, withSource } from '../store.ts';
 import { clampTarget, deltaAction, stayingHome, toVoteSource, type SourceChoice, votesForShare, voteSourceLabel } from '../voteEdit.ts';
-import { Candidates } from './Candidates.tsx';
+import { Candidates, notSeatedReasons } from './Candidates.tsx';
 import { JointParties } from './JointParties.tsx';
 import { DecimalInput, Info, TextField } from './ui.tsx';
 import { SourcePicker } from './SourcePicker.tsx';
@@ -237,6 +237,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
     dispatch({ type: 'setAgreement', agreement: { id: agr?.id ?? `sim-agr-${Date.now().toString(36)}`, members: [l.id, id], enabled: agr?.enabled ?? true } });
   };
   const notes = ds.lists.find((x) => x.id === l.id)?.notesHe ?? [];
+  const notSeatedWhy = notSeatedReasons(ds);
 
   return (
     <div className="ld" role="region" aria-label={L('List details', 'פרטי רשימה')}>
@@ -365,18 +366,17 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
           </div>
         </section></Feature>
 
-      {notes.length > 0 && (<Feature id="notes">
-        <section>
-          {/* written by this project's data build about the official publications (not text of the Elections Committee); Hebrew only so far */}
-          <h3>{L('Notes on the sources (in Hebrew)', 'הערות על המקורות')}</h3>
-          {notes.map((n, i) => <p key={i} className="small" lang="he" dir="rtl" style={{ margin: '0 0 4px' }}>{n}</p>)}
-        </section>
-      </Feature>)}
+      {/* qualifications of the published record: shown at every level, never folded (a truth label, audit 12 Nov 2026) */}
+      {notes.length > 0 && <section>
+        {/* written by this project's data build about the official publications (not text of the Elections Committee); Hebrew only so far */}
+        <h3>{L('Notes on the sources (in Hebrew)', 'הערות על המקורות')}</h3>
+        {notes.map((n, i) => <p key={i} className="small" lang="he" dir="rtl" style={{ margin: '0 0 4px' }}>{n}</p>)}
+      </section>}
 
       <section className="wide">
-        <h3>{simple ? L(`Who gets in (${lr.seats})`, `מי נכנס לכנסת (${lr.seats})`) : L('Candidates', 'מועמדים')}<EditMarker s={s} path={['lists', l.id, 'candidates']} /></h3>
-        {ds.lists.find((x) => x.id === l.id)?.candidatesSecondary && <p className="small ink2">{L('Secondary source', 'מקור משני')} <Info title={L('Candidate source', 'מקור המועמדים')}>{L('Candidate list from a secondary source (the official page could not be retrieved).', 'רשימת המועמדים ממקור משני (העמוד הרשמי לא נטען).')}</Info></p>}
-        <Candidates l={l} seats={lr.seats} baseSeats={baseList ? histSeats : -1} baseCandidates={baseList?.candidates} />
+        <Candidates l={l} seats={lr.seats} baseSeats={baseList ? histSeats : -1} baseCandidates={baseList?.candidates} notSeatedWhy={notSeatedWhy}
+          marker={<EditMarker s={s} path={['lists', l.id, 'candidates']} />}
+          secondary={ds.lists.find((x) => x.id === l.id)?.candidatesSecondary && <p className="small ink2">{L('Secondary source', 'מקור משני')} <Info title={L('Candidate source', 'מקור המועמדים')}>{L('Candidate list from a secondary source (the official page could not be retrieved).', 'רשימת המועמדים ממקור משני (העמוד הרשמי לא נטען).')}</Info></p>} />
       </section>
     </div>
   );

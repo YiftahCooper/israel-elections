@@ -4,16 +4,27 @@ import { MkName } from './MkHistory.tsx';
 import {romanize} from '../../data/names.ts';
 import { StartFrom } from './StartFrom.tsx';
 import { useDisclosure } from './Feature.tsx';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, type ReactNode } from 'react';
 import { ArrowDown, ArrowUp, Pencil, Plus, X } from 'lucide-react';
-import type { CandidateBio } from '../../data/schema.ts';
+import type { CandidateBio, ElectionDataset } from '../../data/schema.ts';
 import type { SimCandidate, SimList } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { candidateName, shownName } from '../derive.ts';
 import { Info } from './ui.tsx';
 import { dispatch, useLevel, useSetting, useStore } from '../store.ts';
 
-export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList; seats: number; baseSeats: number; baseCandidates?: SimCandidate[] }) {
+/** The reason each candidate was "not seated", by candidate id: the note of their own list (also after a merge moved
+ *  them) that names them or their place on the roster. */
+export function notSeatedReasons(ds: Pick<ElectionDataset, 'lists'>): Record<string, string> {
+  return Object.fromEntries(ds.lists.flatMap((x) => x.candidates.filter((c) => c.notSeated).flatMap((c) => {
+    const n = x.notesHe?.find((t) => t.includes(c.nameHe) || t.includes(`(מקום ${c.rank})`));
+    return n ? [[c.id, n] as const] : [];
+  })));
+}
+
+/** A list's candidates under their heading (Simple: "Who gets in"). `notSeatedWhy`: the source note behind a
+ *  candidate's "not seated", by candidate id; `marker` follows the heading, `secondary` sits under it. */
+export function Candidates({ l, seats, baseSeats, baseCandidates, notSeatedWhy = {}, marker, secondary }: { l: SimList; seats: number; baseSeats: number; baseCandidates?: SimCandidate[]; notSeatedWhy?: Record<string, string>; marker?: ReactNode; secondary?: ReactNode }) {
   const L = useL();
   const lang = useLang();
   const { simple } = useLevel();
@@ -22,6 +33,8 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
   // Settings → All candidates: the full roster first; the switch below still shortens it
   const allCandidates = useSetting('allCandidates');
   const [showAll, setShowAll] = useState(allCandidates);
+  // Simple, more than ten elected: the first ten, then a step to all of those elected, then the full roster
+  const [allElected, setAllElected] = useState(false);
   const [drag, setDrag] = useState<number | null>(null);
   const [editing, setEditing] = useState<string | null>(null);
   const [draft, setDraft] = useState('');
@@ -43,11 +56,14 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
   const nextIn = seated[seats] ?? null;
   // Simple shows those elected and the next in line (skipped candidates in between stay visible)
   const cut = nextIn ? c.indexOf(nextIn) + 1 : lastIn ? c.indexOf(lastIn) + 1 : 0;
-  // Simple shows the first ten (the rest of those elected and the full roster are one click away)
-  const limit = showAll ? c.length : Math.min(c.length, simple ? Math.min(Math.max(cut, seats + 1), 10) : Math.max(cut + 5, seats + 6, 12));
+  // Simple shows the first ten elected (with anyone skipped between them), and says so in the heading
+  const firstTen = simple && !showAll && !allElected && seated.length > 10 && seats > 10;
+  const limit = showAll ? c.length : Math.min(c.length, firstTen ? c.indexOf(seated[9]) + 1 : simple ? Math.max(cut, seats + 1) : Math.max(cut + 5, seats + 6, 12));
 
   return (
     <div>
+      <h3>{!simple ? L('Candidates', 'מועמדים') : firstTen ? L(`Who gets in (first 10 of ${seats})`, `מי נכנס לכנסת (10 הראשונים מתוך ${seats})`) : L(`Who gets in (${seats})`, `מי נכנס לכנסת (${seats})`)}{marker}</h3>
+      {secondary}
       {control}{advanced && s && <StartFrom s={s} part="candidates" listId={l.id} />}
       {l.rosterUnavailable && <p className="small callout">{L('The official candidate list for this election is not available in the sources used here, so the names of those elected are not shown.', 'רשימת המועמדים הרשמית לבחירות אלה אינה זמינה במקורות שבשימוש כאן, ולכן שמות הנבחרים אינם מוצגים.')}</p>}
       {l.rosterTruncated && !l.rosterUnavailable && <p className="small callout">{L(`Only the first ${c.length} candidates of this list’s official roster are available here (everyone elected is included); later names were not transcribed.`, `כאן זמינים רק ${c.length} המועמדים הראשונים ברשימה הרשמית (כולל כל הנבחרים); השמות שאחריהם לא הוקלדו.`)}</p>}
@@ -99,13 +115,14 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
                   <button className="btn small ghost icon-only" aria-label={L('Insert candidate below', 'הוספת מועמד מתחת')} onClick={() => { const next = [...c]; next.splice(i + 1, 0, { id: `new-${Date.now().toString(36)}`, nameHe: L('New candidate', 'מועמד חדש') }); commit(next, 'insert'); }}><Plus className="icon sm" aria-hidden /></button>
                   <button className="btn small ghost danger icon-only" aria-label={L('Remove', 'הסרה')} onClick={() => commit(c.filter((y) => y.id !== x.id), `remove ${x.nameHe}`)}><X className="icon sm" aria-hidden /></button>
                 </span>
-              ) : <span className="tiny muted">{x.notSeated ? L('not seated', 'לא כיהן') : elected ? <span className="sr-only">{L('elected', 'נבחר')}</span> : x === nextIn ? L('next in line', 'הבא בתור') : ''}</span>}
+              ) : <span className="tiny muted">{x.notSeated ? <>{L('not seated', 'לא כיהן')}{notSeatedWhy[x.id] && <> <Info label={L('Why not seated', 'למה לא כיהן')} title={L('Not seated', 'לא כיהן')}><span lang="he" dir="rtl">{notSeatedWhy[x.id]}</span></Info></>}</> : elected ? <span className="sr-only">{L('elected', 'נבחר')}</span> : x === nextIn ? L('next in line', 'הבא בתור') : ''}</span>}
             </li>
           );
         })}
       </ol>
-      {c.length > limit && <button className="btn small" style={{ marginTop: 6 }} onClick={() => setShowAll(true)}>{L(`Show all ${c.length} candidates`, `הצגת כל ${c.length} המועמדים`)}</button>}
-      {showAll && c.length > 12 && <button className="btn small ghost" style={{ marginTop: 6 }} onClick={() => setShowAll(false)}>{L('Show fewer', 'הצגת פחות')}</button>}
+      {firstTen ? <button className="btn small" style={{ marginTop: 6 }} onClick={() => setAllElected(true)}>{L(`Show all ${seats} elected`, `הצגת כל ${seats} הנבחרים`)}</button>
+        : c.length > limit && <button className="btn small" style={{ marginTop: 6 }} onClick={() => setShowAll(true)}>{L(`Show all ${c.length} candidates`, `הצגת כל ${c.length} המועמדים`)}</button>}
+      {showAll && c.length > 12 && <button className="btn small ghost" style={{ marginTop: 6 }} onClick={() => { setShowAll(false); setAllElected(false); }}>{L('Show fewer', 'הצגת פחות')}</button>}
       {advanced && <button className="btn small" style={{ marginTop: 6, marginInlineStart: 6 }} onClick={() => commit([...c, { id: `new-${Date.now().toString(36)}`, nameHe: L('New candidate', 'מועמד חדש') }], 'append')}>{L('Add candidate at end', 'הוספת מועמד בסוף')}</button>}
     </div>
   );

@@ -155,9 +155,13 @@ function Control({ row, label }: { row: SettingRow; label: string }) {
   const lang = useLang();
   const level = useStore(st => st.level);
   const store = useStore(st => st);
+  // as in the top bar: while Custom choices are in force, Custom is the level shown as chosen (pressing a level clears
+  // them, with Undo); Custom opens its page
   if (row.control === 'level') return <span className="ps-level">
-    <Seg<Preset> label={label} value={level} onChange={setLevel} options={(['simple', 'standard', 'expert'] as const).map(v => ({ v, label: L(...LEVEL_LABELS[v]) }))} />
-    <button type="button" className="link-btn" onClick={() => setState({ tool: 'custom', settingsOpen: false, settingsFocus: null })}>{L('Custom…', 'מותאם…')}</button>
+    <Seg<Preset | 'custom'> label={label} value={store.customFeatures ? 'custom' : level}
+      onChange={v => { if (v === 'custom') setState({ tool: 'custom', settingsOpen: false, settingsFocus: null }); else setLevel(v); }}
+      options={[...(['simple', 'standard', 'expert'] as const).map(v => ({ v, label: L(...LEVEL_LABELS[v]) })),
+        { v: 'custom' as const, label: store.customFeatures ? L('Custom', 'מותאם') : L('Custom…', 'מותאם…'), title: store.customFeatures ? L('Custom · based on ', 'מותאם · על בסיס ') + L(...LEVEL_LABELS[level]) : undefined }]} />
   </span>;
   if (row.control === 'lang') return <Seg label={label} value={store.lang} onChange={v => setState({ lang: v as 'he' | 'en' })} options={row.options!.map(o => ({ v: o.value as 'he' | 'en', label: o.label[0] }))} />;
   if (row.control === 'choice') {

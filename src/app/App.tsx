@@ -3,7 +3,7 @@ import { Info } from './components/ui.tsx';
 import { BoardChoices } from './components/BoardChoices.tsx';
 import { CustomPage } from './components/Feature.tsx';
 import { TabRow } from './components/TabRow.tsx';
-import { TOOL_FEATURES, RANK, featureLabel, type Preset } from './features.ts';
+import { TOOL_FEATURES, PRESETS, RANK, featureLabel, type Preset } from './features.ts';
 import { electionContext } from '../data/electionContext.ts';
 import { PMResult } from './components/ElectionContext.tsx';
 import { createElement, memo, Suspense, use, useEffect, useLayoutEffect, useState, type ReactNode } from 'react';
@@ -192,7 +192,9 @@ function Shell() {
   // a tool set to Hidden (Custom) is never shown, also when it was the page last open
   const tool: Tab = toolPick && TOOLS.some((t) => t.id === toolPick) && (toolPick === 'board' || customFeatures?.[toolPick] !== 'hidden') ? toolPick : 'board';
   // every tool, under its heading; this level's first, then the others under a quiet label (never hidden)
-  const availableTools = TOOLS.filter(t => t.id === 'board' || customFeatures?.[t.id] !== 'hidden');
+  // Custom Show brings a tool into this level's tabs; Collapsed puts it with the muted ones (it still opens in full)
+  const visibility = (id: Tab) => id === 'board' ? 'show' : customFeatures?.[id] ?? PRESETS[level][id];
+  const availableTools = TOOLS.filter(t => visibility(t.id) !== 'hidden').map(t => ({ ...t, muted: visibility(t.id) !== 'show' }));
   // a tool is a page of its own; the board keeps its state (selection, open figures) when you come back
   const openTool = (id: Tab) => { setState({ tool: id }); window.scrollTo({ top: 0 }); };
   const selected = selectedListId && s.lists.some((l) => l.id === selectedListId) ? selectedListId : null;

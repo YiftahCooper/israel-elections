@@ -30,7 +30,7 @@ test('a first visit opens in Simple with only the essential controls', async ({ 
   await expect(page.getByRole('textbox', { name: 'Scenario name' })).toHaveCount(0);
 
   await listCard(page, 'Likud').click();
-  await expect(details(page).getByText(/^Who gets in \(\d+\)$/)).toBeVisible();
+  await expect(details(page).getByText(/^Who gets in \((first 10 of )?\d+\)$/)).toBeVisible();
   await expect(details(page).getByLabel('Votes', { exact: true })).toBeVisible();
   await expect(details(page).getByRole('combobox')).toHaveCount(0);
   await expect(details(page).getByRole('checkbox', { name: 'Withdrawn from the race' })).toHaveCount(0);

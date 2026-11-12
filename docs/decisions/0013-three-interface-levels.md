@@ -30,3 +30,15 @@ Levels control visibility, not which allocation engine runs. Simple always balan
 7 November 2026: owner pre-release direction supersedes saved-format compatibility requirements. Corrected ballot letters now correct internal list/candidate IDs, and old browser level names are no longer migrated.
 
 9 November 2026: the owner decided that where added votes come from is asked at every level, Simple included, with the same Just this once / For this list / Always choices. The consequence above ("Simple always balances vote edits proportionally") is superseded: changing level no longer resets the vote source, and Simple's question offers Other lists or New voters (the higher levels also offer one named list). Settings now shows every setting at every level, ordered Simple, Standard, Expert.
+
+12 November 2026 (audit c-levels-13): the Decision paragraph above describes the first split and is out of date. The
+split in force is the feature registry, `src/app/features.ts` (`TOOL_FEATURES`, `FEATURES`), which is the source of
+truth from now on. At the time of writing: Simple has the Overview, After the election, Party families, Scenarios,
+What if…, Coalitions, How seats were allocated and Sources; Standard adds Merge & split, Seat safety and Charts;
+Expert adds Turnout, Sensitivity, Localities and Rules. Side by side opens from the comparison strip at every level
+(owner, 12 November 2026). Tools above the level stay listed, muted, after "More in other levels", and open in full
+when pressed. Sections inside pages above the level are folded behind a chip, not hidden. A list's notes on the
+sources are a data qualification: shown at every level and not a Custom choice. The Custom page sets each feature
+to Show, Collapsed (for a tool: muted with the other levels' tools) or Hidden (no tab, chip or link); Side by side
+has Show and Hidden only. Choosing a level clears the Custom choices with a message and Undo. Some level differences
+inside components still read the level directly rather than the registry (audit c-levels-12, an open owner question).

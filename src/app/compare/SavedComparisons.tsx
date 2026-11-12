@@ -1,7 +1,7 @@
 // Saved comparisons on the Scenarios page, beside saved scenarios: one place for everything saved in this browser.
 import { FolderOpen, Link2, Trash2 } from 'lucide-react';
 import { useL, useLang } from '../i18n.ts';
-import { setState, toast, useStore } from '../store.ts';
+import { setState, toast, useShown, useStore } from '../store.ts';
 import { copyComparisonLink, deleteComparison, openComparison, useSavedComparisons, type SavedComparison } from './sides.ts';
 
 export function SavedComparisons() {
@@ -11,7 +11,9 @@ export function SavedComparisons() {
   const year = (id: string) => elections.find((e) => e.id === id)?.date.slice(0, 4) ?? id;
   // the years, unless the name already says them (the suggested name is the years)
   const years = (c: SavedComparison) => `${year(c.link.other.e)} ↔ ${year(c.link.main.e)}`;
-  const open = (c: SavedComparison) => openComparison(c.link).then((ok) => { if (!ok) toast('error', L('This comparison could not be opened.', 'לא ניתן לפתוח את ההשוואה.')); else setState({ tool: 'compare' }); });
+  // Side by side set to Hidden (Custom): the comparison opens on the Overview's comparison strip instead
+  const sideShown = useShown('compare');
+  const open = (c: SavedComparison) => openComparison(c.link).then((ok) => { if (!ok) toast('error', L('This comparison could not be opened.', 'לא ניתן לפתוח את ההשוואה.')); else setState({ tool: sideShown ? 'compare' : 'board' }); });
   // nothing saved yet: no empty section (Compare's Save says where it goes)
   if (!list.length) return null;
   return <section className="scn-comparisons" style={{ marginTop: 18 }}>
