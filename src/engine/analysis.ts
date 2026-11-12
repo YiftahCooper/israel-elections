@@ -9,7 +9,7 @@ import type { AllocationInput, AllocationResult, ListInput } from './types.ts';
  *  generally give different answers. */
 export type VoteSource =
   | { kind: 'new'; max?: bigint } // additional voters: valid total grows, by at most `max` (the voters staying home)
-  | { kind: 'transfer'; listId: string } // from (or to) one other list: valid total fixed
+  | { kind: 'transfer'; listId: string; max?: bigint } // from (or to) one other list: valid total fixed; at most `max` (a search below a known answer)
   | { kind: 'proportional'; listIds: string[] }; // from (or to) a group, in proportion to their votes; [] = all other lists
 
 export type Direction = 'gain' | 'lose';
@@ -36,7 +36,7 @@ function perturbation(lists: readonly ListInput[], target: string, source: VoteS
     const o = lists.findIndex((l) => l.id === source.listId);
     return (k) => {
       const v = moveTarget(k);
-      if (!v || o < 0 || lists[o].id === target || (dir === 'gain' && v[o] < k)) return null;
+      if (!v || o < 0 || lists[o].id === target || (dir === 'gain' && v[o] < k) || (source.max !== undefined && k > source.max)) return null;
       v[o] -= sign * k;
       return v;
     };
@@ -111,7 +111,7 @@ function limitFor(input: AllocationInput, target: string, source: VoteSource, di
   const t = input.lists.find((l) => l.id === target)?.votes ?? 0n;
   if (dir === 'lose') return t;
   if (source.kind === 'new') { const open = total * 4n + 1000n; return source.max !== undefined && source.max < open ? source.max : open; }
-  if (source.kind === 'transfer') return input.lists.find((l) => l.id === source.listId)?.votes ?? 0n;
+  if (source.kind === 'transfer') { const has = input.lists.find((l) => l.id === source.listId)?.votes ?? 0n; return source.max !== undefined && source.max < has ? source.max : has; }
   return input.lists.filter((l) => l.id !== target && (source.listIds.length === 0 || source.listIds.includes(l.id))).reduce((s, l) => s + l.votes, 0n);
 }
 
@@ -225,18 +225,22 @@ export function minimalChange(input: AllocationInput, target: string, source: Vo
 // ------------------------------------------------------------------- sweeps
 
 export interface SweepSegment { from: bigint; to: bigint; seats: Record<string, number>; qualified: string[] }
-export interface SweepResult { segments: SweepSegment[]; /** every integer evaluated */ exact: boolean; /** spacing of the evaluated counts */ step: bigint }
+export interface SweepResult { segments: SweepSegment[]; /** every count accounted for (always, see sweepVotes) */ exact: boolean; /** spacing of the evaluated grid */ step: bigint }
 
 const signature = (r: AllocationResult) => r.lists.map((l) => `${l.seats}${l.qualified ? 'q' : ''}`).join(',');
 
 /** Allocation for every vote count of `target` in [from, to], other lists fixed, as constant segments.
- *  Ranges up to `maxEvaluations` counts are evaluated vote by vote (exact). Wider ranges are evaluated
- *  on a regular grid of that many points, each change located to the exact vote by bisection; a change
- *  that reverts within one grid step could then be missed, and `exact` is false. */
+ *  Ranges up to `maxEvaluations` counts are evaluated vote by vote. Wider ranges are evaluated on a regular grid of that
+ *  many points; between two neighbouring points whose decision records differ, every count where the record changes is
+ *  located by bisection on the records. The target's own count is a linear move, so counts sharing a record share the
+ *  allocation (see "exact skipping" above): no change can hide between two counts with equal records, and the result is
+ *  complete either way (tests/analysis-regions.test.ts checks this vote by vote). */
 export function sweepVotes(input: AllocationInput, target: string, from: bigint, to: bigint, maxEvaluations = EXHAUSTIVE_LIMIT): SweepResult {
   const prepared = prepareAllocation(input);
   const votes = input.lists.map((l) => l.votes);
   const at = (v: bigint, decisions?: unknown[]) => prepared.run(input.lists.map((l, i) => (l.id === target ? v : votes[i])), false, decisions);
+  type Probe = { r: AllocationResult; d: unknown[] };
+  const probe = (v: bigint): Probe => { const d: unknown[] = []; return { r: at(v, d), d }; };
   const mk = (a: bigint, b: bigint, r: AllocationResult): SweepSegment => ({ from: a, to: b, seats: Object.fromEntries(r.lists.filter((l) => l.seats > 0).map((l) => [l.id, l.seats])), qualified: r.lists.filter((l) => l.qualified).map((l) => l.id) });
   if (to < from) return { segments: [], exact: true, step: 1n };
   const span = to - from;
@@ -244,32 +248,32 @@ export function sweepVotes(input: AllocationInput, target: string, from: bigint,
   // evaluated counts: from + step, from + 2·step, …, ending exactly at `to`
   const last = span === 0n ? 1n : (span + step - 1n) / step;
   const point = (j: bigint) => (from + j * step > to ? to : from + j * step);
-  const decisionsAt = (j: bigint) => { const d: unknown[] = []; at(point(j), d); return d; };
   const segs: SweepSegment[] = [];
   let curStart = from; let curRes = at(from); let curSig = signature(curRes);
-  let prev = from;
+  /** every count in (a, b] where the record changes, in order: the first count of each new record, with its allocation */
+  const changes = (a: bigint, pa: Probe, b: bigint, pb: Probe, out: [bigint, AllocationResult][]) => {
+    if (sameDecisions(pa.d, pb.d)) return;
+    if (b - a === 1n) { out.push([b, pb.r]); return; }
+    const m = (a + b) / 2n, pm = probe(m);
+    changes(a, pa, m, pm, out); changes(m, pm, b, pb, out);
+  };
+  let prev = from; let prevProbe = probe(from);
   for (let j = 1n; j <= last; j++) {
     const v = point(j);
-    const decisions: unknown[] = [];
-    const r = at(v, decisions); const sig = signature(r);
-    if (sig !== curSig) {
-      let a = prev;
-      // locate every change between the previous evaluated count and v
-      while (true) {
-        let lo = a; let hi = v;
-        while (hi - lo > 1n) { const mid = (lo + hi) / 2n; if (signature(at(mid)) === curSig) lo = mid; else hi = mid; }
-        segs.push(mk(curStart, lo, curRes));
-        curStart = hi; curRes = at(hi); curSig = signature(curRes);
-        if (curSig === sig) break;
-        a = hi;
-      }
+    const p = probe(v);
+    const cuts: [bigint, AllocationResult][] = [];
+    changes(prev, prevProbe, v, p, cuts);
+    for (const [x, r] of cuts) {
+      const sig = signature(r);
+      if (sig !== curSig) { segs.push(mk(curStart, x - 1n, curRes)); curStart = x; curRes = r; curSig = sig; }
     }
-    // the following evaluated counts with v's decisions have v's allocation: no change there
-    j = extent(j, last, decisionsAt, (d) => d, decisions).end;
-    prev = point(j);
+    // the following evaluated counts with v's record have v's allocation, and so has every count between them
+    const e = extent(j, last, (k) => probe(point(k)), (q) => q.d, p.d);
+    j = e.end;
+    prev = point(j); prevProbe = p;
   }
   segs.push(mk(curStart, to, curRes));
-  return { segments: segs, exact: step === 1n, step };
+  return { segments: segs, exact: true, step };
 }
 
 export interface ThresholdSegment { fromPct: Rational; toPct: Rational; seats: Record<string, number>; qualified: string[] }

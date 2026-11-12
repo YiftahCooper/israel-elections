@@ -136,7 +136,7 @@ const EXPECTED: Record<Family, string> = {
   // merged with k4 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k5 audit fixes: combined digest = union of the separately reviewed changes.
   allocation: '2bc949a3aaf91af20af8f4704c06b30fcfacf7d534d82c2bdc578d41023bf1a8',
-  analysis: 'e1e556de2f73c7ee52dbd64238835a04c50597e216baa6fdb9d2075b1be56f55',
+  analysis: '43f8772fa2f013a5f8a78f20608c097a5e62184718d7a3a197ff3adeeb6ce43e',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
   // corrected names (0088 addendum: 1955 #24, 1959 #47, 2003 Shinui #14); src unchanged, other digests unchanged.

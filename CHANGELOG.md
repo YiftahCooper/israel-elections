@@ -2,6 +2,9 @@
 
 ## 7 November 2026 — Settings
 
+- Votes → seats (12 Nov, audit): a wide range is now complete, not sampled: every change between the checked counts is found, so “Checked every 27 votes … a change could be missed” no longer appears. The test corpus had six ranges where the sampled chart missed a change that reversed within a step; each now matches a vote-by-vote scan. A wide range for a large list takes a few seconds longer.
+- Votes to flip a majority (12 Nov, audit): “At most 72,101” (2022, coalition bloc) was the proven minimum. Pairs the first search could not settle are now searched again, every count below the answer; the answer then shows without “At most” unless a pair is still open. The first answer shows meanwhile, marked “at most”.
+- Seat safety (12 Nov, audit): under the 1977 candidate cap a list with as many seats as candidates (Flatto-Sharon, one candidate) showed “?” for gaining a seat; it now shows “—”, not possible. The list's own seat target says the same.
 - Lists (12 Nov, audit): deleting a list that had withdrawn left its ballots counted as invalid for good; they now leave with it (2022: withdraw Religious Zionism and delete it, and invalid ballots go back from 546,321 to 29,851). Merging or splitting a withdrawn list is refused until it is restored, as its votes are.
 - Rules (12 Nov, audit): the “Alternative electoral system” banner now names every way the rules differ from the election's law, among them the 1977 candidate cap, ties, rounding of averages, repeated remainder seats and the 1949 agreement condition (1977 with the 1973 rules moved two seats and said nothing); “quota rounded down” and “agreements count only if every partner passes the threshold” are no longer worded the wrong way round.
 - Scenarios (12 Nov, audit): opening a saved scenario, a share link or a comparison of another election no longer deletes the unsaved work kept for that election; it stays in the scenario switcher.

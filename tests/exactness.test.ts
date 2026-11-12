@@ -27,11 +27,16 @@ describe('vote sweeps', () => {
       expect([v, Object.fromEntries(r.lists.filter((l) => l.seats).map((l) => [l.id, l.seats]))]).toEqual([v, seg.seats]);
     }
   });
-  it('wide ranges report that they are sampled', () => {
-    const input = simple(lists7([280, 183, 196, 95, 368, 281, 436]), [['0', '1']]);
-    const res = sweepVotes(input, '0', 0n, 600_000n);
-    expect(res.exact).toBe(false);
-    expect(res.step).toBeGreaterThan(1n);
+  // c-analysis-code-02: a wide range is evaluated on a grid, and every change between grid points is then found from
+  // the decision records, so the result is the vote-by-vote one (it read "a change could be missed" on every first view)
+  it('wide ranges are complete: the same segments as a vote-by-vote scan, including changes that reverse within a grid step', () => {
+    for (const [votes, to, grid] of [[[280, 183, 196, 95, 368, 281, 436], 60_000n, 50], [[1966, 21, 86, 4, 900], 4_000n, 7], [[1169, 12, 38, 64], 3_000n, 9]] as const) {
+      const input = simple(lists7([...votes]), [['0', '1']]);
+      const res = sweepVotes(input, '0', 0n, to, grid);
+      expect(res.step).toBeGreaterThan(1n);
+      expect(res.exact).toBe(true);
+      expect(res.segments).toEqual(sweepVotes(input, '0', 0n, to, Number(to) + 1).segments);
+    }
   });
 });
 
