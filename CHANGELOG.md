@@ -2,6 +2,7 @@
 
 ## 7 November 2026 — Settings
 
+- Data gaps register (12 Nov): no longer lists “[object Object]” as an election; the register skips the 2022 polling archive’s draft JSON Schema, which describes fields and holds no claims (one false flag removed; 11,467 flags).
 - Research: correct generated term ordinals and bilingual faction-move labels; reconcile the 2020 investiture with its complete official roll call and technical correction.
 - Logos (12 Nov, wider pass): add eleven election-confirmed assignments from original party platforms and archives, preserving dated originals, exact crops and byte checks; isolate the 2013 and 2015 Meretz wordmarks from adjacent campaign messages.
 
