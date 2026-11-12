@@ -271,6 +271,13 @@
       "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
       "kind": "official",
       "accessed": "2026-11-07"
+    },
+    "knesset-term-boundary-2026": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_KnessetDates?$filter=KnessetNum%20eq%2026&$format=json",
+      "publisher": "Knesset OData, KNS_KnessetDates 169",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח",
+      "kind": "official",
+      "accessed": "2026-11-12"
     }
   },
   "results": {
@@ -837,7 +844,21 @@
       }
     ],
     "start": "2022-12-29",
-    "inclusionRuleNote": "Eight grouped milestones retain their existing two-independent-chronology selection pairs. Israeli official and academic sources are the preferred framing anchors; direct notices supply particulars without being counted as independent chronologies. INSS publications are one family, as are all IDF, MFA, IDI or Commons publications respectively. Details and selection limits are in event notes and docs/research/aftermath-editorial-review.md."
+    "inclusionRuleNote": "Eight grouped milestones retain their existing two-independent-chronology selection pairs. Israeli official and academic sources are the preferred framing anchors; direct notices supply particulars without being counted as independent chronologies. INSS publications are one family, as are all IDF, MFA, IDI or Commons publications respectively. Details and selection limits are in event notes and docs/research/aftermath-editorial-review.md.",
+    "endedBy": {
+      "type": "knesset-term-ended",
+      "date": "2026-11-10",
+      "nextElection": "k26",
+      "textEn": "The 25th Knesset’s membership ended when the 26th Knesset opened on 10 November 2026. This is not an end date for the 37th government.",
+      "textHe": "כהונת הכנסת ה־25 הסתיימה עם תחילת כהונת הכנסת ה־26 ב־10 בנובמבר 2026. אין זה תאריך סיום כהונת הממשלה ה־37.",
+      "cites": [
+        {
+          "source": "knesset-term-boundary-2026",
+          "quote": "KnessetDateID: 169; KnessetNum: 26; PlenumStart: 2026-11-10T00:00:00; IsCurrent: true",
+          "note": "Project extraction of official fields, not a prose quotation. All 120 final k25 member records have FinishDate 2026-11-10T00:00:00; retained in data/raw/k25/knesset-odata-members.json."
+        }
+      ]
+    }
   },
   "issuePolling": {
     "status": "pending",
@@ -845,12 +866,12 @@
   },
   "gaps": [
     "President tasking/extension originals not retrieved; secondary reports identify the formal acts.",
-    "Detailed term chronology and formal end-of-Knesset record remain unfilled; election day must not be treated as the government end date.",
     "INSS December 2022 domestic-priority figures remain withheld: exact question and full answer menu not retrieved.",
     "Knesset inauguration record not retrieved.",
     "Legal dissolution date remains pending; 27 October 2026 election is sourced separately. No end date for the government or war is inferred from an election or ceasefire.",
     "This eight-row selection groups judicial and conflict phases; the 2026 Iran/Lebanon phase remains an explicit evidence gap.",
-    "k25 fixer re-check, 6 November 2026: MFA confirms the attributed October 2023 casualty/hostage figures. Ordinary access to the PMO authorization, Knesset chronology, INSS chronologies and AP timeline did not provide readable originals. Full citation-by-citation validation of subordinate term-event notes and chronology independence remains incomplete; existing dates are not thereby disproved."
+    "k25 fixer re-check, 6 November 2026: MFA confirms the attributed October 2023 casualty/hostage figures. Ordinary access to the PMO authorization, Knesset chronology, INSS chronologies and AP timeline did not provide readable originals. Full citation-by-citation validation of subordinate term-event notes and chronology independence remains incomplete; existing dates are not thereby disproved.",
+    "Detailed term chronology remains partial. Official membership endpoints and the next Knesset opening establish the parliamentary end on 10 November 2026; no government end date is inferred."
   ],
   "government": {
     "number": 37,

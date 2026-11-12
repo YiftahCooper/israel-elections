@@ -1700,9 +1700,9 @@
   "official": true,
   "description": "Membership identity cross-check of Knesset 25: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (2022-11-15) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
   "method": "http",
-  "retrievedAt": "2026-11-04",
-  "bytes": 102568,
-  "sha256": "e7b7258c44c337d5e8e4e25610fc6d8a78a25ad35faa9a52c762b57e07346144"
+  "retrievedAt": "2026-11-12T20:21:41.645659+00:00",
+  "bytes": 106928,
+  "sha256": "972e5eda3a7ff3217801218ca88a29295077be7c0a18b88e7361a8cba11c6138"
  },
  {
   "id": "k26-membership-odata",

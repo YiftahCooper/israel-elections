@@ -4,9 +4,9 @@ import { describe, expect, it } from 'vitest';
 
 // The research builders regenerate committed data offline from data/raw. Hand corrections belong in reviewed
 // inputs the builders apply, never in the outputs, so a rebuild must reproduce every committed file exactly.
-const check = (script: string) => {
+const check = (script: string, args: string[] = []) => {
   try {
-    execFileSync('python3', ['-I', `scripts/research/${script}`, '--check'], { encoding: 'utf8', stdio: 'pipe' });
+    execFileSync('python3', ['-I', `scripts/research/${script}`, ...args, '--check'], { encoding: 'utf8', stdio: 'pipe' });
     return '';
   } catch (e) {
     const err = e as { stdout?: string; stderr?: string; message: string };
@@ -16,6 +16,11 @@ const check = (script: string) => {
 const json = (path: string) => JSON.parse(readFileSync(path, 'utf8'));
 
 describe('research builders reproduce the committed data', () => {
+  it('reproduces refreshed k25 memberships and the official term-end event offline', () => {
+    expect(check('build-member-changes.py', ['--retained', '25'])).toBe('');
+    expect(check('build-faction-events.py')).toBe('');
+  }, 120_000);
+
   it('build-bios.py rebuilds data/meta/bios and the coverage table unchanged', () => {
     expect(check('build-bios.py'), 'move the hand correction into data/raw/bios/*.reviewed.json').toBe('');
   }, 120_000);

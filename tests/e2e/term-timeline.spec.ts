@@ -128,7 +128,9 @@ test('the election chart’s seat card names who else held the seat', async ({ p
 });
 
 // Owner, 12 Nov 2026: the arrows go through every event on the timeline. The ticks on the bar are the steps.
-for (const [election, level, total] of [['k24', 'simple', 9], ['k24', 'standard', 33], ['k24', 'expert', 44], ['k25', 'standard', 39], ['k21', 'expert', 9]] as const) {
+// KNS_KnessetDates 169 opens k26 on 10 Nov 2026; retained data/raw/research/k25-term-boundary.json.
+// The sourced k25 term-end adds one closing step to the former 39-step snapshot.
+for (const [election, level, total] of [['k24', 'simple', 9], ['k24', 'standard', 33], ['k24', 'expert', 44], ['k25', 'standard', 40], ['k21', 'expert', 9]] as const) {
   test(`${election} ${level}: ▶ stops at every tick on the bar, in order, and ◀ comes back the same way`, async ({ page }) => {
     await start(page, { level, election });
     const tl = await openTimeline(page);
@@ -164,7 +166,9 @@ test('the bar says "End" only when a step is there', async ({ page }) => {
   await start(page, { level: 'standard', election: 'k25' });
   const tl = await openTimeline(page);
   await expect(tl.locator('.tl-end-label.start')).toHaveText('Start');
-  await expect(tl.locator('.tl-end-label.end')).toHaveCount(0); // the 25th Knesset's records stop before its end
+  // Official opening record and all final k25 memberships agree: 10 Nov 2026, not the snapshot date.
+  // Source: KNS_KnessetDates 169; retained data/raw/research/k25-term-boundary.json.
+  await expect(tl.locator('.tl-end-label.end')).toHaveText('End');
 });
 
 test('a faction move names its factions in English', async ({ page }) => {

@@ -17,6 +17,14 @@ const personSeat = (t: TermRuntime, p: number, date: string) => t.seats.findInde
 const CHIKLI = 30786, ALHARUMI = 30548, SILMAN = 30718, RINAWIE = 30805, ORBACH = 30787, DERI = 2291, TAIEB = 30770;
 
 describe('seats and who held them', () => {
+  test('the 25th term ends at the official opening of the 26th', () => {
+    // KNS_KnessetDates 169: PlenumStart 2026-11-10; all final k25 MK records end that day.
+    // Retained official evidence: data/raw/research/k25-term-boundary.json.
+    expect(k25.timeline!.steps.at(-1)!.date).toBe('2026-11-10');
+    expect(k25.timeline!.steps.at(-1)!.items.some(i => i.kind === 'term-end')).toBe(true);
+    expect(k25.seats.every(s => s.holders.at(-1)![2] === '2026-11-10')).toBe(true);
+  });
+
   test('every term opens with 120 seats and the compiler reports nothing odd', () => {
     expect(rt.anomalies).toEqual([]);
     for (const t of Object.values(rt.terms)) expect(t.seats, `k${t.k}`).toHaveLength(120);
