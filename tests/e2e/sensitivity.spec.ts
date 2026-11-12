@@ -15,7 +15,7 @@ const blocRow = (page: Page) => panel(page).locator('.row > .small > bdi[dir="lt
 
 test('opening the page shows all three answers with defaults, without pressing anything', async ({ page }) => {
   await start(page);
-  await expect(panel(page).getByRole('img', { name: 'Seats against votes' })).toBeVisible({ timeout: 60_000 });
+  await expect(panel(page).getByRole('group', { name: 'Seats against votes' })).toBeVisible({ timeout: 60_000 });
   await expect(panel(page).getByRole('img', { name: 'Highest threshold each list passes' })).toBeVisible();
   await expect(panel(page).locator('.callout')).toContainText(/votes? moving from .+ give the bloc a majority/, { timeout: 120_000 });
   await expect(panel(page).locator('.callout > .row > bdi')).toHaveText('53 → 61 / 61');
@@ -49,7 +49,7 @@ test('switching election on the page gives that election’s lists and blocs', a
   await expect(panel(page).getByRole('textbox', { name: 'From', exact: true })).toHaveValue('20,549');
   // k12 audit: the opening coalition is 95 (Ravitz's plenum statement), not 97.
   await expect(blocRow(page)).toHaveText('95 / 61');
-  await expect(panel(page).getByRole('img', { name: 'Seats against votes' })).toContainText('20,549', { timeout: 60_000 });
+  await expect(panel(page).getByRole('group', { name: 'Seats against votes' })).toContainText('20,549', { timeout: 60_000 });
   await expect(panel(page).getByRole('textbox', { name: 'From %' })).toHaveCount(1);
 });
 
@@ -92,4 +92,36 @@ test('a button beside the range fields is as tall as the fields', async ({ page 
   const [f, b] = [(await from.boundingBox())!, (await reset.boundingBox())!];
   expect(Math.abs(b.height - f.height)).toBeLessThanOrEqual(1);
   expect(Math.abs(b.y - f.y)).toBeLessThanOrEqual(1);
+});
+
+// audit 12 Nov 2026 (ax-screens-d-01): the keyboard chooses a segment, on the bars and in the table, as a click does
+for (const lang of ['en', 'he'] as const) test(`a segment is chosen from the keyboard (${lang})`, async ({ page }) => {
+  await start(page, lang);
+  const rows = panel(page).locator('.sweep-tbl tbody tr'), bars = panel(page).locator('svg.chart [data-seg]');
+  await expect(rows.first()).toBeVisible({ timeout: 60_000 });
+  expect(await rows.count()).toBeGreaterThan(2);
+  // one tab stop each, on the segment shown now
+  await expect(bars.and(page.locator('[tabindex="0"]'))).toHaveCount(1);
+  await expect(rows.and(page.locator('[tabindex="0"]'))).toHaveCount(1);
+  const now = Number(await bars.and(page.locator('[tabindex="0"]')).getAttribute('data-seg'));
+  await bars.nth(now).focus();
+  await expect(bars.nth(now)).toHaveAttribute('aria-pressed', 'true');
+  // right is the next segment (more votes) in both languages: the chart is never mirrored
+  await page.keyboard.press('Home');
+  await expect(bars.nth(0)).toBeFocused();
+  await expect(bars.nth(0)).toHaveAttribute('aria-pressed', 'true');
+  await expect(rows.nth(0)).toHaveClass(/sel/);
+  await page.keyboard.press('ArrowRight');
+  await expect(bars.nth(1)).toBeFocused();
+  await expect(rows.nth(1)).toHaveClass(/sel/);
+  expect((await bars.nth(1).boundingBox())!.x).toBeGreaterThan((await bars.nth(0).boundingBox())!.x);
+  await expect(bars.nth(1)).toHaveAttribute('aria-label', lang === 'en' ? /^Votes [\d,]+–[\d,]+: \d+ seats$/ : /^קולות [\d,]+–[\d,]+: \d+ מנדטים$/);
+  // the table row follows, and its own arrows move down and up
+  await rows.nth(1).focus();
+  await page.keyboard.press('ArrowDown');
+  await expect(rows.nth(2)).toBeFocused();
+  await expect(rows.nth(2)).toHaveClass(/sel/);
+  await expect(bars.nth(2)).toHaveAttribute('aria-pressed', 'true');
+  await page.keyboard.press('ArrowUp');
+  await expect(rows.nth(1)).toHaveClass(/sel/);
 });

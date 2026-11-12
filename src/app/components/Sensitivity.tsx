@@ -96,6 +96,7 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
   const [box, W] = useChartWidth(720);
   const [sel, setSel] = useState<number | null>(null);
   const table = useRef<HTMLTableSectionElement>(null);
+  const chart = useRef<SVGSVGElement>(null);
   const sid = shown?.id ?? id, sl = shown?.s.lists.find((x) => x.id === sid);
   const segs = shown?.segments ?? [];
   const nowAt = sl ? segs.findIndex((g) => BigInt(sl.votes) >= g.from && BigInt(sl.votes) <= g.to) : -1;
@@ -116,6 +117,17 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
   const x0 = 30, plotW = W - 50;
   const at = (v: number | bigint) => shown ? x0 + (Number(BigInt(v) - BigInt(shown.from)) / (shown.to - shown.from + 1)) * plotW : 0;
   const y = (n: number) => 150 - (n / ticks[ticks.length - 1]) * 130;
+  // the keyboard chooses a segment as the pointer does: one tab stop on the bars and one on the rows, the arrow keys
+  // move between segments (left and right on the bars, which never mirror; up and down in the table)
+  const segKey = (e: React.KeyboardEvent, k: number, inTable: boolean) => {
+    const back = inTable ? 'ArrowUp' : 'ArrowLeft', next = inTable ? 'ArrowDown' : 'ArrowRight';
+    const to = e.key === back ? k - 1 : e.key === next ? k + 1 : e.key === 'Home' ? 0 : e.key === 'End' ? segs.length - 1 : e.key === 'Enter' || e.key === ' ' ? k : null;
+    if (to === null) return;
+    e.preventDefault();
+    const j = Math.max(0, Math.min(segs.length - 1, to));
+    setSel(j);
+    (inTable ? table.current?.children[j] as HTMLElement | undefined : chart.current?.querySelector<SVGElement>(`[data-seg="${j}"]`))?.focus();
+  };
   return (
     <div>
       <h3>{L('Votes → seats', 'קולות ← מנדטים')} <Info title={L('Votes → seats', 'קולות ← מנדטים')}>{L('The seats one list wins at every vote count in the range. All other lists keep their votes, so the valid total changes with this list. Boundaries are exact whole vote counts.', 'המנדטים שרשימה אחת מקבלת בכל מספר קולות בטווח. שאר הרשימות שומרות על קולותיהן, ולכן סך הקולות הכשרים משתנה עם הרשימה. הגבולות הם מספרי קולות מדויקים.')}</Info></h3>
@@ -140,12 +152,14 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
       {shown && (
         <div aria-busy={!current} style={{ opacity: current ? 1 : 0.45, transition: 'opacity .2s' }}>
           <div>
-          <svg className="chart" viewBox={`0 0 ${W} 180`} width="100%" role="img" aria-label={L('Seats against votes', 'מנדטים מול קולות')}>
+          <svg ref={chart} className="chart" viewBox={`0 0 ${W} 180`} width="100%" role="group" aria-label={L('Seats against votes', 'מנדטים מול קולות')}>
             {ticks.map((t) => <g key={t}><line className="gridl" x1={x0} x2={x0 + plotW} y1={y(t)} y2={y(t)} /><text x={x0 - 6} y={y(t) + 4} textAnchor="end">{t}</text></g>)}
             {segs.map((sg, k) => {
               const a = at(sg.from), b = at(sg.to + 1n), n = sg.seats[sid] ?? 0;
               return <rect key={k} x={a} y={y(n)} width={Math.max(1, b - a - 1)} height={150 - y(n)} fill={sl?.color} opacity={k === active ? 1 : 0.75} stroke={k === active ? 'var(--ink)' : 'none'} strokeWidth={1.5} rx={2}
-                style={{ cursor: 'pointer' }} onClick={() => setSel(k)}><title>{`${fmtInt(sg.from)}–${fmtInt(sg.to)}: ${n}`}</title></rect>;
+                data-seg={k} role="button" tabIndex={k === active ? 0 : -1} aria-pressed={k === active}
+                aria-label={L(`Votes ${fmtInt(sg.from)}–${fmtInt(sg.to)}: ${n} seats`, `קולות ${fmtInt(sg.from)}–${fmtInt(sg.to)}: ${n} מנדטים`)}
+                style={{ cursor: 'pointer' }} onClick={() => setSel(k)} onKeyDown={(e) => segKey(e, k, false)}><title>{`${fmtInt(sg.from)}–${fmtInt(sg.to)}: ${n}`}</title></rect>;
             })}
             {/* where the list stands now */}
             {sl && nowAt >= 0 && <g><line x1={at(sl.votes)} x2={at(sl.votes)} y1={12} y2={154} stroke="var(--ink)" strokeDasharray="3 3" /><text x={at(sl.votes)} y={10} textAnchor="middle" fill="var(--ink)">{L('now', 'עכשיו')}</text></g>}
@@ -158,7 +172,8 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
             <table className="tbl sweep-tbl">
               <thead><tr><th className="n">{L('Votes from', 'קולות מ')}</th><th className="n">{L('to', 'עד')}</th><th className="n">{L('Seats', 'מנדטים')}</th><th>{L('Other lists vs now', 'רשימות אחרות לעומת עכשיו')}</th></tr></thead>
               <tbody ref={table}>{segs.map((sg, k) => (
-                <tr key={k} className={k === active ? 'sel' : undefined} aria-current={k === nowAt || undefined} onClick={() => setSel(k)}>
+                <tr key={k} className={k === active ? 'sel' : undefined} aria-current={k === nowAt || undefined} onClick={() => setSel(k)}
+                  tabIndex={k === active ? 0 : -1} onKeyDown={(e) => segKey(e, k, true)}>
                   <td className="n">{fmtInt(sg.from)}</td><td className="n">{fmtInt(sg.to)}</td>
                   <td className="n"><b>{sg.seats[sid] ?? 0}</b>{!sg.qualified.includes(sid) ? <span className="muted" title={L('Below the threshold', 'מתחת לאחוז החסימה')}> ✕</span> : ''}{k === nowAt && <span className="muted"> · {L('now', 'עכשיו')}</span>}</td>
                   <td className="small"><SeatChanges seats={sg.seats} now={shown.now} skip={sid} s={shown.s} /></td>

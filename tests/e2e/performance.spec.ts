@@ -68,7 +68,7 @@ test('sensitivity searches run in the background on opening the tab and report p
   await page.getByRole('tab', { name: 'Sensitivity' }).click();
   // nothing to press: each tool answers with its defaults
   await expect(panel(page).getByRole('status').filter({ hasText: /Searching exactly… \d+ of \d+ transfers/ })).toBeVisible();
-  await expect(panel(page).getByRole('img', { name: 'Seats against votes' })).toBeVisible({ timeout: 60_000 });
+  await expect(panel(page).getByRole('group', { name: 'Seats against votes' })).toBeVisible({ timeout: 60_000 });
   await expect(panel(page).getByText(/votes? moving from|No single transfer|No transfer found/)).toBeVisible({ timeout: 120_000 });
   await expect(panel(page).getByText(/Calculating exactly|Searching exactly/)).toHaveCount(0);
   await expect(panel(page).getByRole('button', { name: /^(Run|Search)$/ })).toHaveCount(0);
