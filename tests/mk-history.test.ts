@@ -415,3 +415,28 @@ describe('a person has one English name on every screen', () => {
     expect(differ).toEqual([]);
   });
 });
+
+// audit 12 Nov 2026 (fx-termend §1b): the 26th Knesset's opening is not yet in the member records, so the 25th ran to
+// the snapshot date (12 Nov) and every one of its 120 last members read "Membership ended" on 10 Nov 2026
+describe('the end of a Knesset', () => {
+  const tenures = (k: number) => (JSON.parse(readFileSync(`data/research/knesset-member-changes/k${k}.json`, 'utf8')) as { tenures: { personId: number; end: string | null }[] }).tenures;
+  it('is the next one’s opening; where that is not recorded and every membership has closed, the last membership end', () => {
+    for (let k = 1; k <= 24; k++) expect(rt.elections[k].end, `k${k}`).toBe(rt.elections[k + 1].opening);
+    expect(rt.elections[26].opening).toBeNull();
+    expect(tenures(25).every((t) => t.end !== null)).toBe(true);
+    expect(rt.elections[25].end).toBe('2026-11-10');
+  });
+  it('a member who served to the end of the 25th has no end line; one who left early still has it', () => {
+    const last = tenures(25).filter((t) => t.end === '2026-11-10').map((t) => t.personId);
+    expect(last).toHaveLength(120);
+    const ends = last.flatMap((p) => mkView(rt, p)!.rows.filter((r) => r.k === 25).flatMap((r) => r.events.filter((e) => e.kind === 'left' && e.date === '2026-11-10')));
+    expect(ends).toEqual([]);
+    for (const p of last) expect(mkView(rt, p)!.rows.find((r) => r.k === 25)!.terms.at(-1)!.end).toBe('2026-11-10');
+    // Israel Eichler left on 21 Jan 2026
+    expect(mkView(rt, EICHLER)!.rows.find((r) => r.k === 25)!.events.filter((e) => e.kind === 'left').map((e) => e.date)).toEqual(['2026-01-21']);
+  });
+  it('every Knesset: an end line only where a membership ended before the term did', () => {
+    for (const id of Object.keys(rt.people)) for (const r of mkView(rt, Number(id))!.rows)
+      for (const e of r.events) if (e.kind === 'left') expect(e.date < r.end!, `${id} k${r.k} ${e.date}`).toBe(true);
+  });
+});
