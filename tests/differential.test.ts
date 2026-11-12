@@ -292,7 +292,16 @@ const EXPECTED: Record<Family, string> = {
   // Merged with fx-names and fx-state (13 Nov): against the previous commit, the 26 published datasets differ only in
   // blocSchemes[].nameHe/nameEn, blocSchemes[].blocs[].color and builtAt (field-by-field diff), and the previous src and
   // this src give the same 520 model outputs on one set of data (fable-check/model-diff2.ts: 0 differ).
-  model: 'd4126152fb753d6b779b8be5455a31234fcd9fd497ce5562695183fc2f07aa26',
+  // fx-names2 (13 Nov, c-famous-late-06): the 1999 Shas rank 1 (15-שס#1) has a reviewed identity, Aryeh Deri, from the
+  // results notice that records his resignation (YP 4757 p.3378). Recursive diff of k15 shows only that candidate's nameEn
+  // (added) and bio.probable (removed), and builtAt; HEAD's k15 with HEAD's dataset pins reproduces 07cf0bdd…. Others unchanged.
+  // fx-names2 (13 Nov): Hatnua in the 2015 Zionist Union list is spelled Hatnuah, as its 2013 list; the recursive diff of
+  // k20 shows only lists[1].parties[1].nameEn and builtAt.
+  // Merged with fx-after2, fx-phone and fx-arrows (13 Nov): against the previous commit the 26 published datasets differ
+  // only in k15 lists[2].candidates[0] (nameEn added, bio.probable removed), k20 lists[1].parties[1].nameEn and builtAt
+  // (field-by-field diff), and the previous src and this src give the same 520 model outputs on one set of data
+  // (fable-check/model-diff2.ts: 0 differ in every family).
+  model: '5ddf7f719ecd703c0051fe2bc74671f02312a128cd3a4b92c9ae5b1a99af508e',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

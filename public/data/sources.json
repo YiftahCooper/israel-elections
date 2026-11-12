@@ -3203,9 +3203,9 @@
   "description": "Reviewed decision (Knesset PersonID or left out, with the evidence) for every elected member whose dataset name the name rules of scripts/research/build-bios.py cannot match.",
   "method": "manual-review",
   "retrievedAt": "2026-11-04",
-  "note": "Hash and size re-recorded 12 Nov 2026 after reviewed decisions were added (aaa474fb and 7eab7202, 9 Nov).",
-  "bytes": 28025,
-  "sha256": "69fc5b3531e06041b1fa83f8e1ed3a8dcc258103a7e702d1dc3cf091043ace78"
+  "note": "Hash and size re-recorded 12 Nov 2026 after reviewed decisions were added (aaa474fb and 7eab7202, 9 Nov), and 13 Nov 2026 after the 1999 Shas rank 1 (Aryeh Deri, YP 4757 p.3378) was added.",
+  "bytes": 29030,
+  "sha256": "d7f659568f8e56e85f1deebea8b5bd341cffc40a1629adbc3c4c562d58002d7b"
  },
  {
   "id": "bios-party-sources",

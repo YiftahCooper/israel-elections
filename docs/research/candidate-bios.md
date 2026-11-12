@@ -31,7 +31,7 @@ doubtful cases are listed here.
 | k12 1988 | 121 | 121 | 120/120 | 1 | 121 (0) | 0 | 1 |
 | k13 1992 | 121 | 121 | 120/120 | 1 | 121 (0) | 0 | 1 |
 | k14 1996 | 129 | 121 | 120/120 | 1 | 121 (0) | 0 | 1 |
-| k15 1999 | 127 | 122 | 120/120 | 2 | 122 (0) | 0 | 2 |
+| k15 1999 | 127 | 122 | 120/120 | 2 | 122 (0) | 0 | 1 |
 | k16 2003 | 383 | 138 | 120/120 | 16 | 138 (2) | 0 | 12 |
 | k17 2006 | 729 | 138 | 120/120 | 13 | 138 (5) | 0 | 11 |
 | k18 2009 | 1,625 | 194 | 120/120 | 49 | 194 (25) | 0 | 62 |
@@ -43,7 +43,7 @@ doubtful cases are listed here.
 | k24 2021 | 1,406 | 177 | 119/120 | 51 | 172 (7) | 0 | 30 |
 | k25 2022 | 1,420 | 192 | 120/120 | 60 | 183 (12) | 0 | 64 |
 | k26 2026 | 1,352 | 165 | 73/120 | 47 | 123 (9) | 76 | 66 |
-| **all** | 15,641 | 3,792 | 3,071/3,120 | 528 | 3,722 (148) | 164 | 568 |
+| **all** | 15,641 | 3,792 | 3,071/3,120 | 528 | 3,722 (148) | 164 | 567 |
 <!-- coverage:end -->
 
 Elected members: 3,118 of 3,120 are tied to a Knesset PersonID and 3,071 have a Knesset page link. The gap is the 47 new members of the 26th Knesset (PersonID known, no website id yet) and the two members left out below. "Other MKs" are non-elected candidates who served as MKs (replacements, or MKs of other Knessets). "Medium" counts entries with at least one medium-confidence link.

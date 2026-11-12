@@ -1,19 +1,19 @@
 {
   "schemaVersion": 3,
-  "total": 11510,
+  "total": 11509,
   "counts": {
-    "unknown": 6962,
+    "unknown": 6960,
     "missing-field": 283,
     "conflict": 18,
-    "single-source": 2489,
+    "single-source": 2491,
     "low-confidence": 101,
     "release-hold": 0,
-    "inferred": 1167,
+    "inferred": 1166,
     "pending": 387,
     "unconfirmed": 103
   },
   "countsByStatus": {
-    "inferred-not-verified": 1032,
+    "inferred-not-verified": 1031,
     "needs-current-status-review": 313,
     "open": 10165
   },
@@ -28,17 +28,17 @@
     },
     "medium": {
       "total": 3594,
-      "confirmed": 582,
+      "confirmed": 584,
       "probable": 244,
       "provisional": 544,
       "disputed": 7,
-      "unknown": 2217
+      "unknown": 2215
     },
     "low": {
-      "total": 7050,
+      "total": 7049,
       "confirmed": 572,
       "probable": 0,
-      "provisional": 803,
+      "provisional": 802,
       "disputed": 0,
       "unknown": 5675
     }
@@ -80,9 +80,9 @@
       "unknown": 0
     },
     "Candidate identity links": {
-      "confirmed": 3215,
+      "confirmed": 3216,
       "probable": 41,
-      "provisional": 536,
+      "provisional": 535,
       "disputed": 0,
       "unknown": 0
     }
@@ -342,10 +342,10 @@
     },
     {
       "election": "k15",
-      "total": 373,
+      "total": 372,
       "highOpen": 30,
       "mediumOpen": 150,
-      "low": 161,
+      "low": 160,
       "counts": {
         "unknown": 205,
         "missing-field": 20,
@@ -353,7 +353,7 @@
         "single-source": 88,
         "low-confidence": 4,
         "release-hold": 0,
-        "inferred": 31,
+        "inferred": 30,
         "pending": 17,
         "unconfirmed": 7
       }
@@ -452,13 +452,13 @@
       "election": "k21",
       "total": 510,
       "highOpen": 2,
-      "mediumOpen": 117,
+      "mediumOpen": 116,
       "low": 339,
       "counts": {
-        "unknown": 293,
+        "unknown": 292,
         "missing-field": 0,
         "conflict": 0,
-        "single-source": 89,
+        "single-source": 90,
         "low-confidence": 3,
         "release-hold": 0,
         "inferred": 100,
@@ -470,13 +470,13 @@
       "election": "k22",
       "total": 484,
       "highOpen": 5,
-      "mediumOpen": 88,
+      "mediumOpen": 87,
       "low": 352,
       "counts": {
-        "unknown": 274,
+        "unknown": 273,
         "missing-field": 0,
         "conflict": 1,
-        "single-source": 103,
+        "single-source": 104,
         "low-confidence": 3,
         "release-hold": 0,
         "inferred": 88,
@@ -950,7 +950,7 @@
     {"election":"k20","area":"Issue polling","count":1,"certainty":{"unknown":1}},
     {"election":"k20","area":"Reactions","count":1,"certainty":{"unknown":1}},
     {"election":"k21","area":"Family classifications","count":78,"certainty":{"probable":2,"provisional":17,"unknown":59}},
-    {"election":"k21","area":"Party appearances","count":27,"certainty":{"unknown":27}},
+    {"election":"k21","area":"Party appearances","count":26,"certainty":{"unknown":26}},
     {"election":"k21","area":"data/meta/election-context.json events","count":6,"certainty":{"probable":4,"provisional":2}},
     {"election":"k21","area":"Formation","count":2,"certainty":{"provisional":2}},
     {"election":"k21","area":"aftermath results","count":1,"certainty":{"provisional":1}},
@@ -958,7 +958,7 @@
     {"election":"k21","area":"Reactions","count":1,"certainty":{"unknown":1}},
     {"election":"k21","area":"Term events","count":1,"certainty":{"probable":1}},
     {"election":"k22","area":"Family classifications","count":52,"certainty":{"probable":2,"provisional":15,"unknown":35}},
-    {"election":"k22","area":"Party appearances","count":20,"certainty":{"unknown":20}},
+    {"election":"k22","area":"Party appearances","count":19,"certainty":{"unknown":19}},
     {"election":"k22","area":"Formation","count":4,"certainty":{"provisional":4}},
     {"election":"k22","area":"data/meta/election-context.json events","count":3,"certainty":{"probable":2,"provisional":1}},
     {"election":"k22","area":"data/meta/kN-corrections.json withdrawn","count":3,"certainty":{"provisional":3}},
@@ -1043,7 +1043,7 @@
   ],
   "low": [
     {"area":"data/meta/bios/kN.json candidates","count":4066,"open":4066},
-    {"area":"Published lists","count":800,"open":568},
+    {"area":"Published lists","count":799,"open":567},
     {"area":"data/meta/parties.json parties","count":567,"open":459},
     {"area":"data/meta/kN.json colours","count":442,"open":442},
     {"area":"docs (prose)","count":300,"open":300},

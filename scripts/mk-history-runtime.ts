@@ -119,7 +119,14 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
     else if (secondary.length && complete.length + secondary.length === running.length) { out.failedRunCoverage.full.push(k); out.failedRunCoverage.excluded[k] = secondary; }
     else if (complete.length && k >= 16) out.failedRunCoverage.partial[k] = complete.map((l) => l.id);
   }
-  for (const k of K) out.elections[k].end = out.elections[k + 1]?.opening ?? (out.elections[k].opening ? (changes.get(k) as Changes & { asOf?: string }).asOf ?? null : null);
+  // a Knesset ends when the next one opens; where that opening is not yet recorded and every membership has closed, on
+  // the last membership end; only a Knesset still sitting runs to the snapshot date. The rule of the term timeline
+  // (scripts/term-timeline-runtime.ts); without it the 25th ran to 12 Nov 2026 and its 120 last members "left" on 10 Nov
+  for (const k of K) {
+    const ts = changes.get(k)!.tenures;
+    const closed = ts.length > 0 && ts.every((t) => t.end !== null) ? ts.reduce((m, t) => (t.end! > m ? t.end! : m), '') : null;
+    out.elections[k].end = out.elections[k + 1]?.opening ?? closed ?? (out.elections[k].opening ? (changes.get(k) as Changes & { asOf?: string }).asOf ?? null : null);
+  }
   const covered = (k: number, listId: string) => out.failedRunCoverage.full.includes(k) ? !(out.failedRunCoverage.excluded[k] ?? []).includes(listId) : (out.failedRunCoverage.partial[k] ?? []).includes(listId);
 
   // ---- people: everyone with a term, plus those elected to a Knesset that has not opened yet ----

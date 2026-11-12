@@ -175,7 +175,7 @@ export function PairingWhy({ row, early, late, earlyIds, lateIds, c }: { row: Ma
   const cross = early.sc.electionId !== late.sc.electionId;
   const at = (x: SideModel) => cross ? x.year : x.name;
   const lateN = lateIds.length ? listName(late, lateIds, lang) : '', earlyN = earlyIds.length ? listName(early, earlyIds, lang) : '';
-  const used = c && c.kind !== 'first' && c.kind !== 'new' && c.kind !== 'verify' && c.counted.length > 0 ? c : null;
+  const used = c && c.kind !== 'first' && c.kind !== 'new' && c.kind !== 'verify' && c.kind !== 'withdrawn' && c.counted.length > 0 ? c : null;
   const head = !lateN ? L(`${earlyN} (${at(early)}): no list continues it in ${at(late)}.`, `${earlyN} (${at(early)}): אין רשימה שממשיכה אותה ב־${at(late)}.`)
     : !earlyN ? L(`${lateN} (${at(late)}): no earlier list to compare with, so it is shown as new.`, `${lateN} (${at(late)}): אין רשימה קודמת להשוות אליה, ולכן היא מוצגת כחדשה.`)
     : used ? L(`${lateN} (${at(late)}) is compared with ${countedText(used, 'en')} in ${at(early)}${used.counted.length > 1 ? ', taken together' : ''}.`, `${lateN} (${at(late)}) מול ${countedText(used, 'he')} ב־${at(early)}${used.counted.length > 1 ? ', יחד' : ''}.`)

@@ -25,6 +25,24 @@ describe('matching k25 → k26 from party records only', () => {
     expect(rowOf(rows, 'left', '25-מחל')!.notes).toEqual([{ side: 'right', kind: 'with', partyIds: ['new-hope'] }]);
     expect(rowOf(rows, 'left', '25-כן')!.notes).toEqual([{ side: 'left', kind: 'moved', partyIds: ['new-hope'], listId: '26-מחל' }]);
   });
+  // audit 12 Nov 2026: a list that withdrew before the vote is no list; National Unity 2022 was paired with Blue and
+  // White's withdrawn 2026 list as "same"
+  it('a withdrawn list is never paired by the rules: National Unity 2022 ended, Blue and White 2026 stands alone', () => {
+    expect(rowOf(rows, 'left', '25-כן')).toMatchObject({ right: [], tag: 'ended' });
+    expect(rowOf(rows, 'right', '26-כן')).toMatchObject({ left: [], tag: 'new', notes: [] });
+    // the user can still map it by hand
+    expect(rowOf(matchRows(k25, k26, [{ left: '25-כן', right: '26-כן', status: 'user' }]), 'right', '26-כן')).toMatchObject({ left: ['25-כן'], tag: 'yours' });
+  });
+  it('every withdrawn list, every pair of elections: alone in its row, and never named in a note', () => {
+    for (let k = 2; k <= 26; k++) {
+      const a = baselineOf(load(`k${k - 1}`)), b = baselineOf(load(`k${k}`));
+      const gone = new Set([...a.lists, ...b.lists].filter((l) => l.withdrawn).map((l) => l.id));
+      for (const row of matchRows(a, b)) {
+        if ([...row.left, ...row.right].some((id) => gone.has(id))) expect(row.left.length + row.right.length, `k${k} ${row.key}`).toBe(1);
+        expect(row.notes.filter((n) => n.listId && gone.has(n.listId)), `k${k} ${row.key}`).toEqual([]);
+      }
+    }
+  });
   it('Hadash–Ta’al and Balad ran jointly as the Joint List (no recorded merger)', () => {
     const row = rowOf(rows, 'right', '26-ודם')!;
     expect(row.tag).toBe('ran-jointly');

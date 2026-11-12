@@ -43,8 +43,15 @@ describe('runs that did not win a seat', () => {
     expect(audit.runs).toHaveLength(123);
     expect(new Set(audit.runs.map((r: { candidateId: string }) => r.candidateId)).size).toBe(123);
     expect(audit.counts).toEqual({ confirmed: 14, 'ruled out': 17, unknown: 92 });
+    // left out in the review as "a two-word name on a list of another party"; the gazette sponsor line has since shown the
+    // list is Yachad's own (data/meta/parties.json, yachad-filing-2019), so the name rule ties it as for Feiglin's 22-זן
+    const sinceSameParty: Record<string, number> = { '21-זנ#1': 494 };
     for (const r of audit.runs) {
-      if (r.status === 'confirmed') {
+      if (sinceSameParty[r.candidateId]) {
+        expect(r.status).toBe('unknown');
+        expect(personOfCandidate(rt, r.candidateId)).toBe(sinceSameParty[r.candidateId]);
+        expect(rt.people[sinceSameParty[r.candidateId]].runs.find((run) => `${run[1]}#${run[2]}` === r.candidateId)?.slice(3, 5)).toEqual(['withdrawn', 'name']);
+      } else if (r.status === 'confirmed') {
         expect(personOfCandidate(rt, r.candidateId), r.candidateId).toBe(r.personId);
         expect(rt.people[r.personId].runs.find((run) => `${run[1]}#${run[2]}` === r.candidateId)?.[4]).toBe('id');
         expect(r.sourceIds.length).toBeGreaterThan(0);
@@ -146,6 +153,14 @@ describe('names', () => {
   it('every faction anyone sat in has an English name', () => {
     const used = new Set(Object.values(rt.people).flatMap((p) => p.terms.flatMap((t) => t[3].map((f) => f[0]))));
     expect([...used].filter((f) => !rt.factions[f]?.[1])).toEqual([]);
+  });
+  // audit 12 Nov 2026: the Knesset's faction table has one placeholder row, 911 “אין נתונים” (no data), dated 1 Jan 1900;
+  // it is kept in the runtime as recorded (the faction-events builder reads every row), but no member ever sat in it
+  it('no member is shown in the placeholder faction 911 “אין נתונים” (no data)', () => {
+    const empty = new Set(Object.entries(rt.factions).filter(([, f]) => f[0] === 'אין נתונים' || f[3] === 'אין נתונים').map(([id]) => Number(id)));
+    expect([...empty]).toEqual([911]);
+    const shown = Object.entries(rt.people).flatMap(([p, x]) => x.terms.flatMap((t) => t[3].filter((f) => empty.has(f[0])).map(() => p)));
+    expect(shown).toEqual([]);
   });
   it('two factions sitting at the same time never share a name (2022: Otzma Yehudit is not “Religious Zionism”)', () => {
     // the Knesset registers Otzma Yehudit (1106) apart from Religious Zionism (1097, then 1105) from the first day
@@ -346,11 +361,15 @@ describe('every elected member has their run', () => {
       expect(runs(p).find((r) => r.k === 25), `${p}`).toMatchObject({ list, rank, outcome: 'elected', basis: 'id' });
     for (const p of [30831, 30837, 30849, 30854, 30863]) expect(runs(p).find((r) => r.k === 25)?.basis, `${p}`).toBe('id');
   });
-  it('Deri and Benny Begin 1999, Arens 1992: elected, did not take the seat; linked by the name rule', () => {
-    expect(runs(2291).find((r) => r.k === 15)).toMatchObject({ list: '15-שס', rank: 1, outcome: 'declined', basis: 'name', via: 14 });
+  it('Deri 1999: elected, did not take the seat; tied by ID through the reviewed decision (YP 4757 p.3378 records his resignation)', () => {
+    const r = runs(2291).find((x) => x.k === 15);
+    expect(r).toMatchObject({ list: '15-שס', rank: 1, outcome: 'declined', basis: 'id' });
+    expect(ds(15).lists.find((l) => l.id === '15-שס')!.candidates.find((c) => c.id === '15-שס#1')!.nameEn).toBe('Aryeh Machluf Deri');
+    expect(mkView(rt, 2291)!.runs).toBe(11);
+  });
+  it('Benny Begin 1999, Arens 1992: elected, did not take the seat; no stored record names them, so linked by the name rule', () => {
     expect(runs(2178).find((r) => r.k === 15)).toMatchObject({ list: '15-יט', rank: 1, outcome: 'declined', basis: 'name', via: 14 });
     expect(runs(463).find((r) => r.k === 13)).toMatchObject({ list: '13-מחל', rank: 2, outcome: 'declined', basis: 'name', via: 12 });
-    expect(mkView(rt, 2291)!.runs).toBe(11);
   });
   it('one notion of a certain Knesset identity: the comparison match, the MK history and the English name agree', () => {
     // the 14 identities of candidates who were not elected, confirmed by the November research review: tied by ID and
@@ -413,5 +432,30 @@ describe('a person has one English name on every screen', () => {
       }
     }
     expect(differ).toEqual([]);
+  });
+});
+
+// audit 12 Nov 2026 (fx-termend §1b): the 26th Knesset's opening is not yet in the member records, so the 25th ran to
+// the snapshot date (12 Nov) and every one of its 120 last members read "Membership ended" on 10 Nov 2026
+describe('the end of a Knesset', () => {
+  const tenures = (k: number) => (JSON.parse(readFileSync(`data/research/knesset-member-changes/k${k}.json`, 'utf8')) as { tenures: { personId: number; end: string | null }[] }).tenures;
+  it('is the next one’s opening; where that is not recorded and every membership has closed, the last membership end', () => {
+    for (let k = 1; k <= 24; k++) expect(rt.elections[k].end, `k${k}`).toBe(rt.elections[k + 1].opening);
+    expect(rt.elections[26].opening).toBeNull();
+    expect(tenures(25).every((t) => t.end !== null)).toBe(true);
+    expect(rt.elections[25].end).toBe('2026-11-10');
+  });
+  it('a member who served to the end of the 25th has no end line; one who left early still has it', () => {
+    const last = tenures(25).filter((t) => t.end === '2026-11-10').map((t) => t.personId);
+    expect(last).toHaveLength(120);
+    const ends = last.flatMap((p) => mkView(rt, p)!.rows.filter((r) => r.k === 25).flatMap((r) => r.events.filter((e) => e.kind === 'left' && e.date === '2026-11-10')));
+    expect(ends).toEqual([]);
+    for (const p of last) expect(mkView(rt, p)!.rows.find((r) => r.k === 25)!.terms.at(-1)!.end).toBe('2026-11-10');
+    // Israel Eichler left on 21 Jan 2026
+    expect(mkView(rt, EICHLER)!.rows.find((r) => r.k === 25)!.events.filter((e) => e.kind === 'left').map((e) => e.date)).toEqual(['2026-01-21']);
+  });
+  it('every Knesset: an end line only where a membership ended before the term did', () => {
+    for (const id of Object.keys(rt.people)) for (const r of mkView(rt, Number(id))!.rows)
+      for (const e of r.events) if (e.kind === 'left') expect(e.date < r.end!, `${id} k${r.k} ${e.date}`).toBe(true);
   });
 });

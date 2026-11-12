@@ -1435,6 +1435,48 @@
         "sourceId": "k22-candidates-gazette",
         "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
       }
+    },
+    {
+      "letters": "זן",
+      "nameHe": "זהות - תנועה ישראלית יהודית בהנהגת משה פייגלין",
+      "sources": [
+        {
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8420.pdf",
+          "publisher": "Central Elections Committee / Reshumot (candidate-list gazette, 2019-09-02)",
+          "kind": "official",
+          "quote": "מטעם המפלגות: זהות - תנועה ישראלית יהודית",
+          "accessed": "2026-11-12",
+          "locator": "data/raw/k22/candidates.pdf, PDF page 9"
+        },
+        {
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8168.pdf",
+          "publisher": "Central Elections Committee / Reshumot (candidate-list gazette, 2019-03-25)",
+          "kind": "official",
+          "quote": "מטעם המפלגות: זהות - תנועה ישראלית יהודית (להלן - זהות); אחיעזר - מפלגה דתית מסורתית חברתית (להלן - אחיעזר)",
+          "accessed": "2026-11-12",
+          "locator": "data/raw/k21/candidates.pdf"
+        }
+      ],
+      "parties": [
+        {
+          "id": "zehut",
+          "nameHe": "זהות",
+          "nameEn": "Zehut",
+          "candidateRanks": [
+            1
+          ],
+          "confidence": "high",
+          "sources": [
+            {
+              "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8420.pdf",
+              "publisher": "Central Elections Committee / Reshumot",
+              "kind": "official",
+              "quote": "מטעם המפלגות: זהות - תנועה ישראלית יהודית",
+              "accessed": "2026-11-12"
+            }
+          ]
+        }
+      ]
     }
   ],
  "blocSchemes": [

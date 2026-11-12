@@ -2045,7 +2045,7 @@
       "electionId": "k15",
       "electionDate": "1999-05-17",
       "datasetPath": "public/data/k15.json",
-      "datasetSha256": "b4df116591cae9b96ae10e8679ccc438ab1697830d6205f13c2acfaec5f9ce7d",
+      "datasetSha256": "a8c8d29efa40b77ed738c97552d26b617feb897365bc74b7ed3277ea82094bb7",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "Rosters: everyone elected is included and cross-checked; no full winning-list rosters; later ranks of winning lists not transcribed. Contesting zero-seat rosters unavailable; two withdrawn registrations retained. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. Complete 9-pair agreement notice verified; every published seat reproduced.",
@@ -2636,7 +2636,7 @@
       "electionId": "k20",
       "electionDate": "2015-03-17",
       "datasetPath": "public/data/k20.json",
-      "datasetSha256": "471fc854972668fc72c0bed651f18499d1e71738fb680fcb087a52fcb66ff2ad",
+      "datasetSha256": "e3986edf344d2190ba56b37feae1fc50261100357193352dec5e3b56ea84c271",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2015-03-25",

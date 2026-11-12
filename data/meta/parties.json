@@ -364,7 +364,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k15.json",
-      "sha256": "b4df116591cae9b96ae10e8679ccc438ab1697830d6205f13c2acfaec5f9ce7d",
+      "sha256": "a8c8d29efa40b77ed738c97552d26b617feb897365bc74b7ed3277ea82094bb7",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k16": {
@@ -399,7 +399,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k20.json",
-      "sha256": "471fc854972668fc72c0bed651f18499d1e71738fb680fcb087a52fcb66ff2ad",
+      "sha256": "e3986edf344d2190ba56b37feae1fc50261100357193352dec5e3b56ea84c271",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k21": {
@@ -462,6 +462,22 @@
       "accessed": "2026-11-06",
       "support": "Printed p.534 (PDF p.536): new party registered December 2018; reused the old name, not organisational continuity.",
       "quote": "המפלגה החדשה (עם השם הישן) כדין אצל רשם המפלגות."
+    },
+    "yachad-filing-2019": {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8168.pdf",
+      "publisher": "Central Elections Committee / Reshumot, candidate-list gazette 8168 (25 Mar 2019)",
+      "kind": "official",
+      "locator": "data/raw/k21/candidates.pdf, PDF page 11",
+      "accessed": "2026-11-12",
+      "support": "List זנ (withdrew before the vote) was submitted \"מטעם המפלגות: יחד - בראשות אלי ישי\", the registered party that co-submitted list קץ in 2015 (\"מטעם המפלגות: יחד - בראשות אלי ישי; חזית יהודית לאומית\", data/raw/k20/candidates.pdf): the same party, not a one-election vehicle (audit 12 Nov 2026, dr-gov)."
+    },
+    "zehut-filing-2019b": {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8420.pdf",
+      "publisher": "Central Elections Committee / Reshumot, candidate-list gazette 8420 (2 Sep 2019)",
+      "kind": "official",
+      "locator": "data/raw/k22/candidates.pdf, PDF page 9",
+      "accessed": "2026-11-12",
+      "support": "List זן (withdrew before the vote) was submitted \"מטעם המפלגות: זהות - תנועה ישראלית יהודית\", the registered party that co-submitted list ז in April 2019 with Achiezer (data/raw/k21/candidates.pdf, PDF page 8): the same party, not a one-election vehicle (audit 12 Nov 2026, dr-gov)."
     }
   },
   "parties": [
@@ -15271,7 +15287,7 @@
           "date": "2015-03-17",
           "datePrecision": "day",
           "nameHe": "התנועה",
-          "nameEn": "Hatnua",
+          "nameEn": "Hatnuah",
           "sources": [
             "k20",
             "proposal"
@@ -16222,18 +16238,31 @@
             "proposal"
           ],
           "status": "observed-local-dataset"
+        },
+        {
+          "date": "2019-04-09",
+          "datePrecision": "day",
+          "nameHe": "יחד",
+          "nameEn": "Yachad",
+          "sources": [
+            "k21",
+            "yachad-filing-2019"
+          ],
+          "status": "observed-local-dataset"
         }
       ],
       "aliases": [],
       "activePeriod": {
         "from": "2015-03-17",
-        "to": "2015-03-17",
+        "to": "2019-04-09",
         "datePrecision": "day",
         "basis": "observed-election-appearances-not-lifetime"
       },
       "sources": [
         "k20",
-        "proposal"
+        "proposal",
+        "k21",
+        "yachad-filing-2019"
       ],
       "status": "observed-local-dataset",
       "externalIds": {}
@@ -17204,6 +17233,17 @@
           "status": "observed-local-dataset"
         },
         {
+          "date": "2019-09-17",
+          "datePrecision": "day",
+          "nameHe": "זהות",
+          "nameEn": "Zehut",
+          "sources": [
+            "k22",
+            "zehut-filing-2019b"
+          ],
+          "status": "observed-local-dataset"
+        },
+        {
           "date": "2026-10-27",
           "datePrecision": "day",
           "nameHe": "זהות",
@@ -17224,8 +17264,10 @@
       },
       "sources": [
         "k21",
+        "k22",
         "k26",
-        "proposal"
+        "proposal",
+        "zehut-filing-2019b"
       ],
       "status": "observed-local-dataset",
       "externalIds": {}
@@ -18187,38 +18229,6 @@
       "externalIds": {}
     },
     {
-      "id": "vehicle-21-זנ",
-      "entityType": "electoral-vehicle",
-      "nameHe": "יחד בראשית אלי ישי",
-      "nameEn": "Yachad",
-      "names": [
-        {
-          "date": "2019-04-09",
-          "datePrecision": "day",
-          "nameHe": "יחד בראשות אלי ישי",
-          "nameEn": "Yachad",
-          "sources": [
-            "k21",
-            "proposal"
-          ],
-          "status": "observed-local-dataset"
-        }
-      ],
-      "aliases": [],
-      "activePeriod": {
-        "from": "2019-04-09",
-        "to": "2019-04-09",
-        "datePrecision": "day",
-        "basis": "observed-election-appearances-not-lifetime"
-      },
-      "sources": [
-        "k21",
-        "proposal"
-      ],
-      "status": "observed-local-dataset",
-      "externalIds": {}
-    },
-    {
       "id": "vehicle-21-נך",
       "entityType": "electoral-vehicle",
       "nameHe": "מפלגת הרפורמה",
@@ -19015,38 +19025,6 @@
           "datePrecision": "day",
           "nameHe": "מנהיגות חברתית",
           "nameEn": null,
-          "sources": [
-            "k22",
-            "proposal"
-          ],
-          "status": "observed-local-dataset"
-        }
-      ],
-      "aliases": [],
-      "activePeriod": {
-        "from": "2019-09-17",
-        "to": "2019-09-17",
-        "datePrecision": "day",
-        "basis": "observed-election-appearances-not-lifetime"
-      },
-      "sources": [
-        "k22",
-        "proposal"
-      ],
-      "status": "observed-local-dataset",
-      "externalIds": {}
-    },
-    {
-      "id": "vehicle-22-זן",
-      "entityType": "electoral-vehicle",
-      "nameHe": "זהות - תנועה ישראלית יהודית בהנהגת משה פייגלין",
-      "nameEn": "Zehut",
-      "names": [
-        {
-          "date": "2019-09-17",
-          "datePrecision": "day",
-          "nameHe": "זהות - תנועה ישראלית יהודית בהנהגת משה פייגלין",
-          "nameEn": "Zehut",
           "sources": [
             "k22",
             "proposal"
@@ -32582,15 +32560,16 @@
     {
       "electionId": "k21",
       "listId": "21-זנ",
-      "partyId": "vehicle-21-זנ",
+      "partyId": "yachad",
       "role": "singleton",
       "sources": [
         "k21",
-        "proposal"
+        "proposal",
+        "yachad-filing-2019"
       ],
       "status": "observed-local-dataset",
       "locator": "public/data/k21.json#/lists/41",
-      "continuity": "unresolved"
+      "continuity": "inherited-local-research"
     },
     {
       "electionId": "k21",
@@ -33212,15 +33191,16 @@
     {
       "electionId": "k22",
       "listId": "22-זן",
-      "partyId": "vehicle-22-זן",
+      "partyId": "zehut",
       "role": "singleton",
       "sources": [
         "k22",
-        "proposal"
+        "proposal",
+        "zehut-filing-2019b"
       ],
       "status": "observed-local-dataset",
       "locator": "public/data/k22.json#/lists/29",
-      "continuity": "unresolved"
+      "continuity": "inherited-local-research"
     },
     {
       "electionId": "k22",

@@ -5,7 +5,7 @@ import type { Scenario } from '../../model/scenario.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Certainty } from '../../data/evidence.ts';
 import { comparablePredecessor, leadOf, officialFacts, partiesOf, scenarioFacts, type Comparison } from '../../history/compare.ts';
-import { erasOf, eventsOf, identityOf, partySeries, type Identity, type SeriesPoint } from '../../history/identity.ts';
+import { erasOf, eventsOf, identityOf, ownSeatRecord, partySeries, type Identity, type SeriesPoint } from '../../history/identity.ts';
 import { OPEN_CHECKS, type Relation } from '../../history/relations.ts';
 import { HISTORY, electionIndex, electionPosition, historyList, listShort, partyNameAt, partyShort, yearLabel, type HList } from '../../history/runtime.ts';
 import { useL, useLang } from '../i18n.ts';
@@ -300,10 +300,13 @@ export function comparedName(c: Comparison, lang: Lang): string {
 }
 const prevYear = (c: Comparison, lang: Lang) => c.earlier ? yearLabel(electionIndex(c.earlier.id), lang) : '';
 
+/** A list that withdrew before the vote: no comparison, only this (the words MK history uses for such a run). */
+const WITHDREW: [string, string] = ['The list withdrew before the election', 'הרשימה פרשה לפני הבחירות'];
 /** Results row: "2022: 5 ▲6 · Hadash–Ta'al + Balad" (Standard and up; the name only when it differs). */
 export function ComparisonRowLine({ c, currentName }: { c: Comparison | null; currentName: string }) {
   const L = useL(), lang = useLang();
   if (!c || c.kind === 'first') return null;
+  if (c.kind === 'withdrawn') return <span className="ph-rowline">{L(...WITHDREW)}</span>;
   const py = prevYear(c, lang);
   if (c.kind === 'new') return <span className="ph-rowline">{L(`New · no ${py} list`, `חדשה · אין רשימה ${hebrewPrefix('מ', py)}`)}</span>;
   if (c.kind === 'verify') return <span className="ph-rowline">{py}: <span className="ph-cert ph-cert-unknown">{L('To verify', 'לבדיקה')}</span></span>;
@@ -315,6 +318,7 @@ export function ComparisonRowLine({ c, currentName }: { c: Comparison | null; cu
 /** The row line for screen readers: ", 2022: 5 seats, 6 more, compared with Hadash–Ta'al and Balad". */
 export function comparisonRowText(c: Comparison | null, lang: Lang): string {
   if (!c || c.kind === 'first') return '';
+  if (c.kind === 'withdrawn') return `, ${WITHDREW[lang === 'en' ? 0 : 1]}`;
   const py = prevYear(c, lang), en = lang === 'en';
   if (c.kind === 'new') return en ? `, new: no ${py} list` : `, חדשה: אין רשימה ${hebrewPrefix('מ', py)}`;
   if (c.kind === 'verify') return en ? `, ${py}: to verify` : `, ${py}: לבדיקה`;
@@ -328,6 +332,7 @@ export function comparisonRowText(c: Comparison | null, lang: Lang): string {
 export function ComparisonLine({ c }: { c: Comparison | null }) {
   const L = useL(), lang = useLang(), digits = useDigits();
   if (!c || c.kind === 'first') return null;
+  if (c.kind === 'withdrawn') return <div className="ph-cmpline" data-kind="withdrawn"><span className="muted">{L(...WITHDREW)}</span></div>;
   const py = prevYear(c, lang);
   if (c.kind === 'new') return <div className="ph-cmpline" data-kind="new"><span className="muted">{L(`Since ${py}`, `לעומת ${py}`)}</span> <b>{L('New', 'חדשה')}</b> <span className="small muted">{L(`no ${py} list`, `אין רשימה ${hebrewPrefix('מ', py)}`)}</span>
     <Info title={L('Compared with last time', 'השוואה לבחירות הקודמות')}>{L('A list is compared only with whole earlier lists linked by recorded party facts (the same party, a rename, a merger, a joint list). None qualifies here. Founders who came from another party do not make a predecessor.', 'רשימה מושווית רק לרשימות קודמות שלמות הקשורות בעובדות מתועדות על המפלגות (אותה מפלגה, שינוי שם, איחוד, רשימה משותפת). כאן אין כזו. מייסדים שבאו ממפלגה אחרת אינם יוצרים רשימה קודמת.')}</Info></div>;
@@ -375,7 +380,7 @@ function countedWithHow(c: Comparison, lang: Lang) {
 /** Compare: one line under the later list's name. Nothing when it is plainly the same list. */
 export function CompareNote({ c, currentName }: { c: Comparison | null; currentName: string }) {
   const L = useL(), lang = useLang();
-  if (!c || c.kind === 'first' || c.kind === 'new' || (c.kind === 'same' && !c.relations.length)) return null;
+  if (!c || c.kind === 'first' || c.kind === 'new' || c.kind === 'withdrawn' || (c.kind === 'same' && !c.relations.length)) return null;
   const py = prevYear(c, lang);
   // the same list under the same name: only what was left out is worth a line
   const plain = c.kind !== 'group' && !c.relations.length && c.counted.length === 1 && countedWithHow(c, lang) === currentName;
@@ -502,8 +507,9 @@ export function HistorySheet({ parties, initial, electionIdx, onClose }: { parti
   const [ref, width] = useWidth<HTMLDivElement>(880);
   const phone = width < 560;
   const h = useHistory(pid, metric);
-  const ran = h.points.filter((p) => p.list), won = ran.filter((p) => p.seats > 0);
-  const best = ran.reduce<SeriesPoint | undefined>((m, p) => !m || p.seats > m.seats ? p : m, undefined);
+  const ran = h.points.filter((p) => p.list);
+  // the party's own elected members, never the whole joint list's seats (c-screens-people-06)
+  const { won, best, unknown } = ownSeatRecord(h.points);
   const cur = h.points[sel ?? electionIdx] ?? h.points[electionIdx];
   const head = h.points[electionIdx].list ?? ran[ran.length - 1]?.list;
   const since = ran.length < h.points.length - h.firstRun || h.firstRun > 0 ? L(` since ${yearLabel(h.firstRun, 'en')}`, ` מאז ${yearLabel(h.firstRun, 'he')}`) : '';
@@ -515,7 +521,7 @@ export function HistorySheet({ parties, initial, electionIdx, onClose }: { parti
       <div className="ph-head-text">
         <h2>{lang === 'he' ? <>היסטוריה · {title}</> : <>{title} <span className="small muted">history</span></>}</h2>
         {h.eras.length > 1 && <div className="small ink2">{h.eras.map((e) => e.name).filter((n, i, a) => a.indexOf(n) === i).join(lang === 'he' ? ' ← ' : ' → ')}</div>}
-        <div className="small muted">{!ran.length ? NEVER(L) : L(`Ran in ${ran.length} of ${h.points.length - h.firstRun} elections${since} · won seats in ${won.length}`, `התמודדה ב־${ran.length} מתוך ${h.points.length - h.firstRun} בחירות${since} · זכתה במנדטים ב־${won.length}`)}{best && best.seats > 0 ? L(` · most: ${best.seats} (${yearLabel(best.i, 'en')})`, ` · שיא: ${best.seats} (${yearLabel(best.i, 'he')})`) : ''}</div>
+        <div className="small muted">{!ran.length ? NEVER(L) : L(`Ran in ${ran.length} of ${h.points.length - h.firstRun} elections${since} · won seats in ${won}${unknown ? ` (unknown in ${unknown})` : ''}`, `התמודדה ב־${ran.length} מתוך ${h.points.length - h.firstRun} בחירות${since} · זכתה במנדטים ב־${won}${unknown ? ` (לא ידוע ב־${unknown})` : ''}`)}{best ? L(` · most: ${best.own} (${yearLabel(best.i, 'en')})`, ` · שיא: ${best.own} (${yearLabel(best.i, 'he')})`) : ''}</div>
       </div>
       <button type="button" className="btn ghost" onClick={onClose} aria-label={L('Close', 'סגירה')}>×</button>
     </div>

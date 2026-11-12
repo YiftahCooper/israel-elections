@@ -101,6 +101,10 @@ export function compileHistoryRuntime(root = process.cwd()): HistoryRuntime {
       if (l.withdrawn) { /* no name at an election it did not run in */ }
       else if (ps.length === 1) then.set(ps[0], [l.shortHe, l.shortEn ?? null]);
       else for (const p of l.parties ?? []) if (ps.includes(canon(p.id)) && !then.has(canon(p.id))) then.set(canon(p.id), [stripNote(p.nameHe), p.nameEn ? stripNote(p.nameEn) : null]);
+      // a joint list's own record (vehicle-<list id>: the Hadash front of 1977–88, Sheli) is named as its list, in both
+      // languages, not by the registry's legal name (audit 12 Nov 2026, c-screens-people-07: four Hebrew "names" for Hadash)
+      const own = `vehicle-${l.id}`;
+      if (ps.includes(own)) { shortName.set(own, [l.shortHe, l.shortEn ?? null]); if (!l.withdrawn) then.set(own, [l.shortHe, l.shortEn ?? null]); }
       nameThen.set(l.id, then);
       const elected = new Map(f?.parties.map((p) => [canon(p.id), p.elected]) ?? []);
       return [l.id, l.votes, seats[l.id] ?? 0, l.color, l.shortHe, l.shortEn ?? null, l.letters, lead,

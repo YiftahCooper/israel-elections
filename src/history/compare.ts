@@ -5,6 +5,9 @@
 // - Group: when the leading party's earlier list is now spread over several lists led by its parties, the comparison is
 //   the group (no per-successor figure).
 // - New: no earlier list qualifies. To verify: the link that would decide it is not yet established.
+// - Withdrawn: a list that withdrew before the vote is no list at all, on either side: it is never compared with, and its
+//   own comparison only says that it withdrew (audit 12 Nov 2026: Tzomet 2021 was "0 → 663 votes" against its withdrawn
+//   2020 list).
 // A joint list's votes are never divided among its parties.
 import type { Scenario, SimList } from '../model/scenario.ts';
 import type { AllocationResult } from '../engine/types.ts';
@@ -12,9 +15,11 @@ import type { Certainty } from '../data/evidence.ts';
 import { continuations, decides, RELATIONS, weakest, type Relation } from './relations.ts';
 import { HISTORY, canonicalParty, electionIndex } from './runtime.ts';
 
-export interface ListFacts { id: string; parties: string[]; lead: string | null; seats: number; votes: number }
+export interface ListFacts { id: string; parties: string[]; lead: string | null; seats: number; votes: number;
+  /** withdrew before the vote (registered, not on the ballot): as if its parties had no list in that election */
+  withdrawn?: boolean }
 export interface ElectionFacts { id: string; date: string; valid: number; lists: ListFacts[] }
-export type ComparisonKind = 'same' | 'combined' | 'partial' | 'group' | 'new' | 'verify' | 'first';
+export type ComparisonKind = 'same' | 'combined' | 'partial' | 'group' | 'new' | 'verify' | 'first' | 'withdrawn';
 export interface Comparison {
   kind: ComparisonKind;
   earlier: { id: string; date: string } | null;
@@ -61,25 +66,29 @@ export function leadOf(electionId: string, l: Pick<SimList, 'id' | 'originIds' |
 /** One election as comparison facts: the official runtime, or a scenario with its allocation. */
 export function officialFacts(electionId: string): ElectionFacts | null {
   const e = HISTORY[electionIndex(electionId)];
-  return e ? { id: e.id, date: e.date, valid: e.valid, lists: e.lists.map(({ id, parties, lead, seats, votes }) => ({ id, parties, lead, seats, votes })) } : null;
+  return e ? { id: e.id, date: e.date, valid: e.valid, lists: e.lists.map(({ id, parties, lead, seats, votes, withdrawn }) => ({ id, parties, lead, seats, votes, withdrawn })) } : null;
 }
 export function scenarioFacts(s: Scenario, r: AllocationResult): ElectionFacts {
   const date = HISTORY[electionIndex(s.electionId)]?.date ?? '';
   return {
-    id: s.electionId, date, valid: s.lists.reduce((n, l) => n + l.votes, 0),
-    lists: s.lists.map((l) => ({ id: l.id, parties: partiesOf(s.electionId, l), lead: leadOf(s.electionId, l), seats: r.lists.find((x) => x.id === l.id)?.seats ?? 0, votes: l.votes })),
+    id: s.electionId, date, valid: s.lists.reduce((n, l) => n + (l.withdrawn ? 0 : l.votes), 0),
+    lists: s.lists.map((l) => ({ id: l.id, parties: partiesOf(s.electionId, l), lead: leadOf(s.electionId, l), seats: r.lists.find((x) => x.id === l.id)?.seats ?? 0, votes: l.votes, withdrawn: l.withdrawn })),
   };
 }
 
 const sum = (ls: ListFacts[], valid: number) => ({ seats: ls.reduce((n, l) => n + l.seats, 0), votes: ls.reduce((n, l) => n + l.votes, 0), valid });
 
 /** Compares one list of `now` with the whole lists of an earlier election. */
-export function comparablePredecessor(listId: string, now: ElectionFacts, earlier: ElectionFacts | null, rels: Relation[] = RELATIONS): Comparison {
-  const L = now.lists.find((l) => l.id === listId);
-  const empty = { counted: [], notCounted: [], left: [], newParties: [], group: [], relations: [], toVerify: [], certainty: 'confirmed' as Certainty, before: { seats: 0, votes: 0, valid: earlier?.valid ?? 0 } };
+export function comparablePredecessor(listId: string, nowAll: ElectionFacts, earlierAll: ElectionFacts | null, rels: Relation[] = RELATIONS): Comparison {
+  const L = nowAll.lists.find((l) => l.id === listId);
+  const empty = { counted: [], notCounted: [], left: [], newParties: [], group: [], relations: [], toVerify: [], certainty: 'confirmed' as Certainty, before: { seats: 0, votes: 0, valid: earlierAll?.valid ?? 0 } };
   if (!L) throw new Error(`unknown list ${listId}`);
-  const after = sum([L], now.valid);
-  if (!earlier) return { kind: 'first', earlier: null, ...empty, after };
+  const after = sum([L], nowAll.valid);
+  if (L.withdrawn) return { kind: 'withdrawn', earlier: earlierAll && { id: earlierAll.id, date: earlierAll.date }, ...empty, after };
+  if (!earlierAll) return { kind: 'first', earlier: null, ...empty, after };
+  // a withdrawn list is no list: its parties did not run in that election (on either side)
+  const ran = (f: ElectionFacts): ElectionFacts => ({ ...f, lists: f.lists.filter((l) => !l.withdrawn) });
+  const now = ran(nowAll), earlier = ran(earlierAll);
 
   // what each earlier party became (usable relations), and which current list now holds it
   const present = new Set(now.lists.flatMap((l) => l.parties));

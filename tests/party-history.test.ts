@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { comparableFor, comparablePredecessor, officialFacts } from '../src/history/compare.ts';
 import { RELATIONS, readRelations, type Relation } from '../src/history/relations.ts';
 import { HISTORY, electionIndex, electionPosition, historyList, partyNameAt } from '../src/history/runtime.ts';
-import { erasOf, eventsOf, identityOf, partySeries } from '../src/history/identity.ts';
+import { erasOf, eventsOf, identityOf, ownSeatRecord, partySeries } from '../src/history/identity.ts';
 import { compileHistoryRuntime, formOf, nameAtElection } from '../scripts/party-history-runtime.ts';
 import { certaintyCeiling } from '../src/data/evidence.ts';
 
@@ -69,11 +69,39 @@ describe('the 2026 comparison table (docs/features/party-history.md §1.4)', () 
     expect([c.before.seats, c.after.seats]).toEqual([a, b]);
   });
   it('Yashar! is new', () => expect(k26('דרך').kind).toBe('new'));
-  it('National Unity’s successor keeps its earlier list whole, noting who left', () => {
+  // audit 12 Nov 2026: a list that withdrew before the vote is no list; its own comparison read "12 → 0", and Tzomet 2021
+  // was compared with its withdrawn 2020 list ("0 → 663 votes, same party")
+  it('Blue and White 2026 withdrew: no comparison, only that it withdrew', () => {
     const c = k26('כן');
-    expect(c.kind).toBe('partial');
-    expect(c.counted.map((l) => l.id)).toEqual(['25-כן']);
-    expect(c.left).toEqual([{ partyId: 'new-hope', listId: '26-מחל' }]);
+    expect(c.kind).toBe('withdrawn');
+    expect([c.counted, c.notCounted, c.left]).toEqual([[], [], []]);
+    expect(c.before.seats).toBe(0);
+  });
+  it('Tzomet 2021 is new: its 2020 list withdrew, so it had no 2020 list', () => {
+    expect(comparableFor('k24', '24-זץ')!.kind).toBe('new');
+    expect(comparableFor('k23', '23-זץ')!.kind).toBe('withdrawn');
+  });
+  it('every withdrawn list: no comparison of its own, and never compared with, counted or named as a destination', () => {
+    let n = 0;
+    HISTORY.forEach((e, i) => {
+      const gone = new Set([...e.lists, ...(HISTORY[i - 1]?.lists ?? [])].filter((l) => l.withdrawn).map((l) => l.id));
+      for (const l of e.lists) {
+        const c = comparableFor(e.id, l.id)!;
+        if (l.withdrawn) { n++; expect(c.kind, l.id).toBe('withdrawn'); expect(c.counted, l.id).toEqual([]); continue; }
+        const named = [...c.counted.map((m) => m.id), ...c.group.map((m) => m.id), ...c.notCounted.map((m) => m.listId), ...c.left.map((m) => m.listId)];
+        expect(named.filter((id) => gone.has(id)), l.id).toEqual([]);
+      }
+    });
+    expect(n).toBe(HISTORY.flatMap((e) => e.lists).filter((l) => l.withdrawn).length);
+  });
+  it('a list withdrawn in a scenario is no list either (earlier side and later side)', () => {
+    const k25 = officialFacts('k25')!, k26f = officialFacts('k26')!;
+    const likud = comparablePredecessor('26-מחל', k26f, k25);
+    expect(likud.counted.map((l) => l.id)).toContain('25-מחל');
+    const without = { ...k25, lists: k25.lists.map((l) => l.id === '25-מחל' ? { ...l, withdrawn: true } : l) };
+    expect(comparablePredecessor('26-מחל', k26f, without).counted.map((l) => l.id)).not.toContain('25-מחל');
+    const gone = { ...k26f, lists: k26f.lists.map((l) => l.id === '26-מחל' ? { ...l, withdrawn: true } : l) };
+    expect(comparablePredecessor('26-מחל', gone, k25).kind).toBe('withdrawn');
   });
   it('Union of Right-Wing Parties 2019: Jewish Home only; Yachad 2015 is not counted, its leading party did not join (Otzma ran inside it)', () => {
     const c = comparableFor('k21', '21-טב')!;
@@ -183,6 +211,17 @@ describe('party histories (identity series)', () => {
     expect(series('tzomet')[electionIndex('k23')].list).toBeNull();
     for (const e of HISTORY) for (const l of e.lists) if (l.withdrawn) for (const p of l.parties) expect(series(p)[electionIndex(e.id)].list, `${e.id} ${l.id} ${p}`).toBeNull();
   });
+  // audit 12 Nov 2026 (dr-gov): both withdrawn lists were submitted by the registered party of the same name (gazette
+  // sponsor lines, data/raw/k21 and k22 candidates.pdf), so they carry its id, not a one-election vehicle's
+  it('Yachad April 2019 and Zehut September 2019: the registered party’s withdrawn list, so that election is not run', () => {
+    expect(historyList('k21', '21-זנ')).toMatchObject({ withdrawn: true, parties: ['yachad'] });
+    expect(historyList('k22', '22-זן')).toMatchObject({ withdrawn: true, parties: ['zehut'] });
+    expect(ran('yachad')).toEqual(['2015:led']);
+    expect(series('yachad')[electionIndex('k21')].list).toBeNull();
+    expect(ran('zehut')).toEqual(['2019:led', '2026:inside']);
+    expect(series('zehut')[electionIndex('k22')].list).toBeNull();
+    expect(comparableFor('k22', '22-זן')!.kind).toBe('withdrawn');
+  });
   it('Labor: Mapai → Labor → The Democrats, every election from 1949', () => {
     const s = series('democrats');
     expect(s.every((p) => p.list)).toBe(true);
@@ -208,6 +247,30 @@ describe('party histories (identity series)', () => {
   it('a split-off starts its own history; a faction split is an event only', () => {
     expect(identityOf('kadima').ids).toEqual(['kadima']);
     expect(ran('kadima')[0]).toBe('2006');
+  });
+  // audit 12 Nov 2026, c-screens-people-06: the sheet header counted the whole joint list ("Kulanu most: 36 (2020)")
+  it('the header counts the party’s own elected members, never the whole joint list', () => {
+    const rec = (id: string) => { const r = ownSeatRecord(series(id)); return { won: r.won, most: r.best?.own, year: r.best ? HISTORY[r.best.i].date.slice(0, 4) : null, unknown: r.unknown }; };
+    expect(rec('kulanu')).toEqual({ won: 4, most: 10, year: '2015', unknown: 0 });
+    expect(rec('tzomet')).toEqual({ won: 4, most: 8, year: '1992', unknown: 0 });
+    // none of its own members was elected in April 2019 (it ran inside the Union of Right-Wing Parties): 2021, 2022, 2026
+    expect(rec('otzma-yehudit')).toEqual({ won: 3, most: 6, year: '2022', unknown: 0 });
+    expect(series('otzma-yehudit').filter((p) => p.own! > 0).map((p) => HISTORY[p.i].date.slice(0, 4))).toEqual(['2021', '2022', '2026']);
+    // every party: "most" is its own best known count, never above it; an unknown election counts in neither figure
+    const ids = new Set(HISTORY.flatMap((e) => e.lists.flatMap((l) => l.parties)));
+    for (const id of ids) {
+      const s = series(id), r = ownSeatRecord(s);
+      const own = s.filter((p) => p.list && p.own !== null).map((p) => p.own!);
+      expect(r.best?.own ?? 0, id).toBe(Math.max(0, ...own));
+      expect(r.won, id).toBe(own.filter((n) => n > 0).length);
+      for (const p of s) if (p.list && p.role === 'alone') expect(p.own, id).toBe(p.seats);
+      for (const p of s) if (p.own !== null) expect(p.own, id).toBeLessThanOrEqual(p.seats);
+    }
+  });
+  it('an election where the party’s own members are not known counts in neither figure', () => {
+    const pts = series('kulanu').map((p) => p.i === electionIndex('k23') ? { ...p, own: null } : p);
+    expect(ownSeatRecord(pts)).toMatchObject({ won: 3, unknown: 1 });
+    expect(ownSeatRecord(pts).best?.own).toBe(10);
   });
   it('the series never holds a party vote figure: votes are the whole list’s', () => {
     for (const p of series('hadash')) if (p.list) expect(p.votes).toBe(p.list.votes);
@@ -261,14 +324,21 @@ describe('names at each election', () => {
     const differ: string[] = [];
     for (const id of new Set(HISTORY.flatMap((e) => e.lists.flatMap((l) => l.parties)))) {
       let he = '', en = '';
+      // the strip as drawn: each election's name is that of the id the party ran under then (its era), so a history
+      // through a joint list's own record is checked too (audit 12 Nov 2026, c-screens-people-07: Hadash 1977–88 had
+      // three long Hebrew legal names beside one English "Hadash")
       for (const p of partySeries(identityOf(id))) {
-        if (!p.list || !p.list.parties.includes(id)) continue;
-        const h = partyNameAt(id, p.i, 'he'), e = partyNameAt(id, p.i, 'en');
-        if (he && (h !== he) !== (e !== en) && !open.has(`${id} ${HISTORY[p.i].id}`)) differ.push(`${id} ${HISTORY[p.i].id}: ${he} → ${h}, ${en} → ${e}`);
+        if (!p.era) continue;
+        const h = partyNameAt(p.era, p.i, 'he'), e = partyNameAt(p.era, p.i, 'en');
+        if (he && (h !== he) !== (e !== en) && !open.has(`${p.era} ${HISTORY[p.i].id}`)) differ.push(`${id} ${HISTORY[p.i].id}: ${he} → ${h}, ${en} → ${e}`);
         he = h; en = e;
       }
     }
     expect(differ).toEqual([]);
+    // a joint list's own record is named as its list: Hadash is one name from 1977, Sheli one name in 1977 and 1981
+    expect(strip('hadash', 'he')).toEqual(['k9–k26 חד״ש']);
+    expect(strip('hadash', 'en')).toEqual(['k9–k26 Hadash']);
+    expect(strip('vehicle-9-ש', 'he')).toEqual(['k9–k10 שלי']);
   });
   it('spelling variants of one name do not split a history; a long form is the same name', () => {
     expect(formOf('מפלגת העבודה הישראלית', 'העבודה', 'he')).toBe(true);
