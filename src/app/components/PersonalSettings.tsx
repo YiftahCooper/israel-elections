@@ -9,6 +9,7 @@ import { listLabel } from '../derive.ts';
 import { RememberedAnswers } from './SourcePicker.tsx';
 import { Info, Seg } from './ui.tsx';
 import './personal-settings.css';
+import { textZoom } from '../textScale.ts';
 
 /** A row differs from its default (the dot before its label). Language and level are never "changed". */
 function useChanged(row: SettingRow): boolean {
@@ -60,14 +61,14 @@ function SettingsContent({ close }: { close: () => void }) {
     // after the dialog is shown (it opens in the parent's effect): measured on screen, the popup body alone scrolls
     const frame = requestAnimationFrame(() => {
       const b = body.current; if (!b) return;
-      b.scrollTop += el.getBoundingClientRect().top - b.getBoundingClientRect().top - 12;
+      b.scrollTop += (el.getBoundingClientRect().top - b.getBoundingClientRect().top) / textZoom() - 12; // screen distances are zoomed under Large text
     });
     el.dataset.flash = '';
     const t = setTimeout(() => { delete el.dataset.flash; setState({ settingsFocus: null }); }, 1200);
     return () => { cancelAnimationFrame(frame); clearTimeout(t); };
   }, [focusRow]);
   // a group can appear in several tiers: its chip goes to the first
-  const toGroup = (id: GroupId) => { const el = body.current?.querySelector<HTMLElement>(`[data-group="${id}"]`); if (el && body.current) body.current.scrollTop = el.getBoundingClientRect().top - body.current.getBoundingClientRect().top + body.current.scrollTop; };
+  const toGroup = (id: GroupId) => { const el = body.current?.querySelector<HTMLElement>(`[data-group="${id}"]`); if (el && body.current) body.current.scrollTop = (el.getBoundingClientRect().top - body.current.getBoundingClientRect().top) / textZoom() + body.current.scrollTop; };
   const resetAll = () => {
     const before = snapshot();
     resetRows(SETTINGS.filter(r => r.id !== 'lang' && r.id !== 'level'));
