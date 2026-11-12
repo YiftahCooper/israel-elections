@@ -80,6 +80,28 @@ export interface MkView {
   coverage: { from: string; partial: string[] };
 }
 
+/** A faction's name as every screen shows it (scripts/mk-history-runtime.ts names it; English through englishLabel). */
+export function factionLabel(rt: MkRuntime, f: number, lang: 'he' | 'en'): string {
+  const x = rt.factions[f];
+  if (!x) return '';
+  return lang === 'he' ? x[0] : englishLabel(x[1], x[0]);
+}
+/** A move from one faction to another, named as MK history names it: where both are shown under one name in a language,
+ *  that language gives both factions' recorded names instead, so a line never reads "X (until then X)" or "from X to X".
+ *  The Knesset on a date names its faction moves with it too (audit 12 Nov 2026, c-screens-people-04). */
+export function factionMove(rt: MkRuntime, from: number, to: number): NonNullable<MkEvent['faction']> {
+  const fac = (f: number) => { const x = rt.factions[f]; return { he: x?.[0] ?? '', en: x?.[1] ?? null }; };
+  // a faction's name as the Knesset recorded it (differs from the shown one for a faction shown under its list's name)
+  const recorded = (f: number) => { const x = rt.factions[f]; return x && x.length > 3 ? { he: x[3]!, en: x[4] ?? null } : { he: x?.[0] ?? '', en: x?.[1] ?? null }; };
+  const now = fac(to), was = fac(from);
+  const sameHe = now.he === was.he, sameEn = englishLabel(now.en, now.he) === englishLabel(was.en, was.he);
+  const rn = recorded(to), rw = recorded(from);
+  return {
+    now: { faction: to, he: sameHe ? rn.he : now.he, en: sameEn ? englishLabel(rn.en, rn.he) : now.en },
+    was: { faction: from, he: sameHe ? rw.he : was.he, en: sameEn ? englishLabel(rw.en, rw.he) : was.en },
+  };
+}
+
 const day = (s: string) => Date.parse(`${s}T00:00:00Z`);
 export const daysBetween = (a: string, b: string) => Math.round((day(b) - day(a)) / 86400000);
 
@@ -88,16 +110,7 @@ export function mkView(rt: MkRuntime, id: number): MkView | null {
   if (!p) return null;
   const ks = [...new Set([...p.terms.map((t) => t[0]), ...p.runs.map((r) => r[0])])].sort((a, b) => a - b);
   const fac = (f: number) => { const x = rt.factions[f]; return { he: x?.[0] ?? '', en: x?.[1] ?? null, color: x?.[2] ?? null }; };
-  // a faction's name as the Knesset recorded it (differs from the shown one for a faction shown under its list's name)
-  const recorded = (f: number) => { const x = rt.factions[f]; return x && x.length > 3 ? { he: x[3]!, en: x[4] ?? null } : { he: x?.[0] ?? '', en: x?.[1] ?? null }; };
-  const move = (now: MkSegment, was: MkSegment): NonNullable<MkEvent['faction']> => {
-    const sameHe = now.he === was.he, sameEn = englishLabel(now.en, now.he) === englishLabel(was.en, was.he);
-    const rn = recorded(now.faction), rw = recorded(was.faction);
-    return {
-      now: { faction: now.faction, he: sameHe ? rn.he : now.he, en: sameEn ? englishLabel(rn.en, rn.he) : now.en },
-      was: { faction: was.faction, he: sameHe ? rw.he : was.he, en: sameEn ? englishLabel(rw.en, rw.he) : was.en },
-    };
-  };
+  const move = (now: MkSegment, was: MkSegment) => factionMove(rt, was.faction, now.faction);
   let daysServed = 0;
   const rows: MkRow[] = ks.map((k) => {
     const e = rt.elections[k];

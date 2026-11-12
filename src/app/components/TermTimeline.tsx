@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import type { ElectionDataset } from '../../data/schema.ts';
-import { englishLabel } from '../../data/names.ts';
-import { useMkRuntime, openMkHistory, type MkRuntime } from '../../history/mk.ts';
-import { chamberOrder, holderAt, stepGlow, stepMarks, useTermRuntime, visibleSteps, type MarkKind, type PackedHolder, type StepView, type TermRuntime, type TimelineItem } from '../../history/termTimeline.ts';
+import { factionLabel, useMkRuntime, openMkHistory, type MkRuntime } from '../../history/mk.ts';
+import { chamberOrder, eventLine, holderAt, stepGlow, stepMarks, useTermRuntime, visibleSteps, type MarkKind, type PackedHolder, type StepView, type TermRuntime, type TimelineItem } from '../../history/termTimeline.ts';
 import { arcLayout, annularRegions } from '../layout.ts';
 import { listLabel } from '../derive.ts';
 import { formatDate } from '../dateFormat.ts';
@@ -154,14 +153,14 @@ function TimelineBar({ term, steps, index, go }: { term: TermRuntime; steps: Ste
 }
 
 function itemText(it: TimelineItem, term: TermRuntime, ds: ElectionDataset, mk: MkRuntime | null, lang: Lang, L: (en: string, he: string) => string): string {
-  if (it.type === 'event' || it.en) return (lang === 'he' ? it.he : it.en) ?? '';
+  if (it.type === 'event' || it.en) return eventLine(it, mk, lang);
   const list = ds.lists.find((l) => l.id === term.seats[it.seat!].list);
   const where = list ? ` · ${listLabel(list, lang)}` : '';
   const why = reasonWords(it.reason, female(mk, it.out ?? it.in), L);
-  const inN = personName(mk, it.in, lang), outN = personName(mk, it.out, lang), fIn = female(mk, it.in), fOut = female(mk, it.out);
+  const inN = personName(mk, it.in, lang), outN = personName(mk, it.out, lang), fIn = female(mk, it.in);
   const text = it.in != null && it.out != null ? L(`${inN} replaces ${outN}`, `${inN} ${fIn ? 'נכנסת' : 'נכנס'} במקום ${outN}`)
     : it.in != null ? L(`${inN} enters the Knesset`, `${inN} ${fIn ? 'נכנסת' : 'נכנס'} לכנסת`)
-    : L(`${outN} leaves the Knesset`, `${outN} ${fOut ? 'עוזבת' : 'עוזב'} את הכנסת`);
+    : L(`${outN}: membership ended`, `${outN}: הכהונה הסתיימה`); // MK history's words: no reason claimed
   return `${text}${where}${why ? ` · ${why}` : ''}`;
 }
 
@@ -267,7 +266,7 @@ function Chamber({ term, view, ds, mk }: { term: TermRuntime; view: StepView; ds
     {(rebels.length > 0 || keyKinds.length > 0) && <div className="tl-key">
       {rebels.length > 0 && <div className="tl-rebels"><div className="row"><MarkIcon kind="D2" /><b>{L('Rebel', 'מורד')} <bdi dir="ltr">{rebels.length}</bdi></b> <Info title={L('Rebel', 'מורד')}>{L('An MK who left the side their party is on. The seat moves to that side and keeps the party colour.', 'חבר כנסת שעזב את הצד שבו נמצאת מפלגתו. המושב עובר לצד הזה ושומר על צבע המפלגה.')}</Info></div>
         <ul>{rebels.map(([seat, p, item]) => { const src = itemById.get(item); const l = listOf(term.seats[seat].list); const f = female(mk, p);
-          const what = src?.it.kind === 'government-sworn-in' ? L('voted against the government', f ? 'הצביעה נגד הממשלה' : 'הצביע נגד הממשלה') : src?.it.kind === 'coalition-exit-statement' ? L('announced leaving the coalition', f ? 'הודיעה על פרישה מהקואליציה' : 'הודיע על פרישה מהקואליציה') : (lang === 'he' ? src?.it.he : src?.it.en) ?? '';
+          const what = src?.it.kind === 'government-sworn-in' ? L('voted against the government', f ? 'הצביעה נגד הממשלה' : 'הצביע נגד הממשלה') : src?.it.kind === 'coalition-exit-statement' ? L('announced leaving the coalition', f ? 'הודיעה על פרישה מהקואליציה' : 'הודיע על פרישה מהקואליציה') : src ? eventLine(src.it, mk, lang) : '';
           return <li key={p}><button type="button" className="link-btn" onClick={() => mk?.people[p] && openMkHistory(p)}><b><bdi>{personName(mk, p, lang)}</bdi></b></button>{l && <> · <bdi>{listLabel(l, lang)}</bdi></>} — <bdi>{what}</bdi> {src && <span className="muted"><bdi>{formatDate(src.date, lang)}</bdi></span>}</li>; })}</ul></div>}
       {keyKinds.length > 0 && <div className="tl-marks">{keyKinds.map((k) => <span key={k} className="row"><MarkIcon kind={k} />{k === 'D3x' ? L('Voted against, stayed', 'הצבעה נגד, בלי לעזוב') : k === 'D3a' ? L('Abstained, stayed', 'הימנעות, בלי לעזוב') : k === 'D4c' ? L('Moved to the coalition', 'מעבר לקואליציה') : k === 'D4o' ? L('Left the coalition', 'יציאה מהקואליציה') : L('Seat changed hands', 'חילופי מושב')}</span>)}</div>}
     </div>}
@@ -292,13 +291,15 @@ export function SeatCard({ term, seat, date, list, mk, onClose }: { term: TermRu
 function SeatHolderList({ term, holders, now, mk }: { term: TermRuntime; holders: readonly PackedHolder[]; now: PackedHolder | null; mk: MkRuntime | null }) {
   const L = useL(); const lang = useLang();
   const ours = holders.some((h) => h[4] && h[4] !== 'record');
-  const factionName = (f: number) => { const x = mk?.factions[f]; return x ? (lang === 'he' ? x[0] : englishLabel(x[1], x[0])) : ''; };
+  const factionName = (f: number) => mk ? factionLabel(mk, f, lang) : '';
   const line = (h: PackedHolder): ReactNode => {
     const fem = female(mk, h[0]);
     const came = h[3] === 'o' ? L('From the first sitting', 'מהישיבה הראשונה') : h[3] === 'r' ? L('Returned', fem ? 'חזרה לכנסת' : 'חזר לכנסת') : L('Entered', fem ? 'נכנסה לכנסת' : 'נכנס לכנסת');
     const why = entryWords(h[5], L);
     const ended = h[2] !== null && h[2] < term.end;
-    const out = ended ? `${L('Left the Knesset', fem ? 'עזבה את הכנסת' : 'עזב את הכנסת')} · ${reasonWords(h[6], fem, L) ?? L('reason not yet recorded', 'הסיבה טרם תועדה')}` : L('Until the end of the term', 'עד סוף הכהונה');
+    // as MK history words it: the Knesset records no reason for most ends, and the words claim none (fx-tlnames)
+    const reason = ended ? reasonWords(h[6], fem, L) : null;
+    const out = ended ? `${L('Membership ended', 'הכהונה הסתיימה')}${reason ? ` · ${reason}` : ''}` : L('Until the end of the term', 'עד סוף הכהונה');
     return <>{came}{why ? ` (${why})` : ''} · {out}</>;
   };
   return <>
