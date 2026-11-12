@@ -987,7 +987,8 @@
  },
  {
   "id": "k13-agreement-search-yp4014",
-  "file": "../../.backup-scratch/k13-k15/yp4014.pdf",
+  "file": "k13/yp4014.pdf",
+  "note": "Retained 12 Nov 2026: the scratch copy was lost; fetched again from the same URL, byte-identical (SHA-256 and byte count checked).",
   "url": "https://olaw.org.il/yalkut/yalkut-4014.pdf",
   "publisher": "State of Israel / Reshumot (olaw.org.il mirror)",
   "official": true,
@@ -999,7 +1000,8 @@
  },
  {
   "id": "k13-agreement-search-yp4015",
-  "file": "../../.backup-scratch/k13-k15/yp4015.pdf",
+  "file": "k13/yp4015.pdf",
+  "note": "Retained 12 Nov 2026: the scratch copy was lost; fetched again from the same URL, byte-identical (SHA-256 and byte count checked).",
   "url": "https://olaw.org.il/yalkut/yalkut-4015.pdf",
   "publisher": "State of Israel / Reshumot (olaw.org.il mirror)",
   "official": true,
@@ -1011,7 +1013,8 @@
  },
  {
   "id": "k13-agreement-search-yp4016",
-  "file": "../../.backup-scratch/k13-k15/yp4016.pdf",
+  "file": "k13/yp4016.pdf",
+  "note": "Retained 12 Nov 2026: the scratch copy was lost; fetched again from the same URL, byte-identical (SHA-256 and byte count checked).",
   "url": "https://olaw.org.il/yalkut/yalkut-4016.pdf",
   "publisher": "State of Israel / Reshumot (olaw.org.il mirror)",
   "official": true,
@@ -1023,7 +1026,8 @@
  },
  {
   "id": "k13-agreement-search-yp4018",
-  "file": "../../.backup-scratch/k13-k15/yp4018.pdf",
+  "file": "k13/yp4018.pdf",
+  "note": "Retained 12 Nov 2026: the scratch copy was lost; fetched again from the same URL, byte-identical (SHA-256 and byte count checked).",
   "url": "https://olaw.org.il/yalkut/yalkut-4018.pdf",
   "publisher": "State of Israel / Reshumot (olaw.org.il mirror)",
   "official": true,
@@ -1035,7 +1039,8 @@
  },
  {
   "id": "k13-agreement-search-yp4019",
-  "file": "../../.backup-scratch/k13-k15/yp4019.pdf",
+  "file": "k13/yp4019.pdf",
+  "note": "Retained 12 Nov 2026: the scratch copy was lost; fetched again from the same URL, byte-identical (SHA-256 and byte count checked).",
   "url": "https://olaw.org.il/yalkut/yalkut-4019.pdf",
   "publisher": "State of Israel / Reshumot (olaw.org.il mirror)",
   "official": true,
@@ -1047,7 +1052,8 @@
  },
  {
   "id": "k13-agreement-search-yp4020",
-  "file": "../../.backup-scratch/k13-k15/yp4020.pdf",
+  "file": "k13/yp4020.pdf",
+  "note": "Retained 12 Nov 2026: the scratch copy was lost; fetched again from the same URL, byte-identical (SHA-256 and byte count checked).",
   "url": "https://olaw.org.il/yalkut/yalkut-4020.pdf",
   "publisher": "State of Israel / Reshumot (olaw.org.il mirror)",
   "official": true,
@@ -1059,7 +1065,8 @@
  },
  {
   "id": "k13-agreement-search-yp4022",
-  "file": "../../.backup-scratch/k13-k15/yp4022.pdf",
+  "file": "k13/yp4022.pdf",
+  "note": "Retained 12 Nov 2026: the scratch copy was lost; fetched again from the same URL, byte-identical (SHA-256 and byte count checked).",
   "url": "https://olaw.org.il/yalkut/yalkut-4022.pdf",
   "publisher": "State of Israel / Reshumot (olaw.org.il mirror)",
   "official": true,
@@ -1071,7 +1078,8 @@
  },
  {
   "id": "k15-agreement-search-yp4750",
-  "file": "../../.backup-scratch/k13-k15/yp4750.pdf",
+  "file": "k15/yp4750.pdf",
+  "note": "Retained 12 Nov 2026: the scratch copy was lost; fetched again from the same URL, byte-identical (SHA-256 and byte count checked).",
   "url": "https://olaw.org.il/yalkut/yalkut-4750.pdf",
   "publisher": "State of Israel / Reshumot (olaw.org.il mirror)",
   "official": true,
@@ -1083,7 +1091,8 @@
  },
  {
   "id": "k15-agreement-search-yp4756",
-  "file": "../../.backup-scratch/k13-k15/yp4756.pdf",
+  "file": "k15/yp4756.pdf",
+  "note": "Retained 12 Nov 2026: the scratch copy was lost; fetched again from the same URL, byte-identical (SHA-256 and byte count checked).",
   "url": "https://olaw.org.il/yalkut/yalkut-4756.pdf",
   "publisher": "State of Israel / Reshumot (olaw.org.il mirror)",
   "official": true,
@@ -2756,7 +2765,7 @@
   "method": "manual-review",
   "description": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
   "retrievedAt": "2026-11-03T16:34:27.797461+00:00",
-  "bytes": 30436,
+  "bytes": 30571,
   "sha256": "3aebef1efd39d0bc06776dc11b7ab7938e16945a80e85930007dd10d3a34a618"
  },
  {
@@ -3131,11 +3140,12 @@
   "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkDetailsHeader?mkId={siteId}&languageKey=en",
   "publisher": "Knesset (official website, English member pages)",
   "official": true,
-  "description": "The English name (field Name) of every Knesset member the candidate bios link to, keyed by the Knesset website member id (KNS_MkSiteCode.SiteId); 1,050 members. The site shows each member's current name, which can differ from the name on an old ballot. Fetched by scripts/research/fetch-mk-names-en.py.",
+  "description": "The English name (field Name) of every Knesset member the candidate bios link to, keyed by the Knesset website member id (KNS_MkSiteCode.SiteId); 1,116 members. The site shows each member's current name, which can differ from the name on an old ballot. Fetched by scripts/research/fetch-mk-names-en.py.",
   "method": "http",
   "retrievedAt": "2026-11-05",
-  "bytes": 46776,
-  "sha256": "ab438870b66b12ed314c0a6f0111696ccec491b741d3a0ba0ca98a320923d0c8"
+  "note": "Hash and size re-recorded 12 Nov 2026 after two later edits: doubled spaces normalised with the site value kept as nameEnRaw (bc397d38, 6 Nov) and 66 more members fetched from the same API (470d78cf, 11 Nov).",
+  "bytes": 50362,
+  "sha256": "f07116ca402d916b33c79599ecfbfa2162344b0605356ac7a91f98eb64fbc3a6"
  },
  {
   "id": "bios-wikidata-p9770",
@@ -3193,8 +3203,9 @@
   "description": "Reviewed decision (Knesset PersonID or left out, with the evidence) for every elected member whose dataset name the name rules of scripts/research/build-bios.py cannot match.",
   "method": "manual-review",
   "retrievedAt": "2026-11-04",
-  "bytes": 20103,
-  "sha256": "217534b92ff515fd2903d8f8b37f04383a6c6d8ad48c62876b46f892e80dc43d"
+  "note": "Hash and size re-recorded 12 Nov 2026 after reviewed decisions were added (aaa474fb and 7eab7202, 9 Nov).",
+  "bytes": 28025,
+  "sha256": "69fc5b3531e06041b1fa83f8e1ed3a8dcc258103a7e702d1dc3cf091043ace78"
  },
  {
   "id": "bios-party-sources",
@@ -3204,8 +3215,9 @@
   "description": "Party-site biography links per candidate, with the page family (source), pattern and capture; produced by scripts/research/bios-party/collect_party.py and reviewed.",
   "method": "manual-review",
   "retrievedAt": "2026-11-04",
-  "bytes": 103034,
-  "sha256": "9901e8a8e91e78565c5bc23ee730534e1b938265472258d15a0e18396280a103"
+  "note": "Hash and size re-recorded 12 Nov 2026 after the reviewed evidence fixes of 8 Nov (e9dc1518: archived Yisrael Beytenu bios).",
+  "bytes": 106062,
+  "sha256": "2b436681b3298c3cdfcd7588943bcad83a8e1cd3ed8d26cb057855a55e898bc2"
  },
  {
   "id": "bios-likud-2026-members",

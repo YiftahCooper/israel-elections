@@ -1,6 +1,6 @@
 import { electionContext } from '../src/data/electionContext.ts';
 import { validateAftermathRecords } from './lib/build/aftermath.ts';
-import { verifySources } from './lib/build/sources.ts';
+import { verifyManifest, verifySources } from './lib/build/sources.ts';
 import { checkDatasetTotals } from './lib/build/validate.ts';
 // Builds the app datasets in public/data/ from the raw official sources in data/raw/.
 //   node scripts/build-datasets.ts            (BUILD_JOBS=1 builds serially in one thread)
@@ -108,6 +108,7 @@ if (!isMainThread) {
 
   const contextSourceIds = [...JSON.stringify(electionContext).matchAll(/"sourceId":"([^"]+)"/g)].map(m => m[1]);
   verifySources(contextSourceIds, (ok, message) => { if (!ok) throw new Error(message); });
+  verifyManifest((ok, message) => { if (!ok) throw new Error(message); });
   const warnings: string[] = [];
   let written = 0; let unchanged = 0;
   const write = (file: string, value: object, serialize?: (v: object) => string) => {

@@ -2,7 +2,7 @@
 // shared by every election builder. Nothing here interprets election data.
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, statSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, resolve, sep } from 'node:path';
 import type { ElectionDataset } from '../../../src/data/schema.ts';
 import type { Check } from './validate.ts';
 
@@ -62,6 +62,25 @@ export function verifySources(ids: readonly string[], check: Check, opts: Verify
   }
   return out;
 }
+/** Every manifest record that names a file, whether or not a builder cites it (audit 12 Nov: three biography inputs had
+ *  drifted from their recorded hash unnoticed, because only cited ids were verified). A file under data/raw must exist
+ *  and match its SHA-256 and byte count. A polling-station working copy in the ignored .backup-scratch/raw (recovered
+ *  by scripts/fetch-sources.ts; docs/DATA.md, Size and rebuilding) is checked when present. Anywhere else is refused. */
+export function verifyManifest(check: Check, records: readonly SourceRecord[] = manifest(), raw = RAW): void {
+  const scratch = resolve(raw, '..', '..', '.backup-scratch', 'raw');
+  for (const s of records) {
+    if (!s.file) continue;
+    const path = resolve(raw, s.file);
+    const working = path.startsWith(scratch + sep);
+    check(path.startsWith(raw + sep) || working, `${s.id}: manifest file outside data/raw (${s.file})`);
+    if (!existsSync(path)) { check(working, `${s.id}: retained file missing (${s.file})`); continue; }
+    if (s.file.endsWith('/')) { check(statSync(path).isDirectory() && !s.sha256, `${s.id}: a folder record carries no hash`); continue; }
+    check(s.sha256 && s.bytes !== undefined, `${s.id}: missing SHA-256 or byte count`);
+    check(fileSha256(path) === s.sha256, `${s.id}: source SHA-256 differs from manifest (${s.file})`);
+    check(statSync(path).size === s.bytes, `${s.id}: source byte count differs from manifest (${s.file})`);
+  }
+}
+
 /** Manifest hashes for ids that have one, skipping the rest (laws or notes without retained files). */
 export const manifestHashes = (ids: readonly string[]): Record<string, string> =>
   Object.fromEntries(ids.flatMap(id => { const s = sourceRecord(id); return s?.sha256 ? [[id, s.sha256]] : []; }));
