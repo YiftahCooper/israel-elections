@@ -3,7 +3,7 @@ import { choose } from './choices.ts';
 
 for (const lang of ['he', 'en'] as const) test(`k26 distinguishes the completed mandate from a new government: ${lang}`, async ({ page }) => {
   await page.goto('/');
-  if (lang === 'en') await page.getByRole('button', { name: 'EN', exact: true }).click();
+  if (lang === 'en') await page.getByRole('button', { name: 'English', exact: true }).click();
   await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k26');
   await page.getByRole('tab', { name: lang === 'he' ? 'אחרי הבחירות' : 'After the election', exact: true }).click();
   const history = page.locator('.after-election');
@@ -16,7 +16,7 @@ for (const lang of ['he', 'en'] as const) test(`k26 distinguishes the completed 
 
 test('history, split recommendations, direct elections and next-election navigation', async ({ page }) => {
   await page.goto('/');
-  await page.getByRole('button', { name: 'EN', exact: true }).click();
+  await page.getByRole('button', { name: 'English', exact: true }).click();
   await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k24');
   await page.locator('.band .election-about > summary').click();
   await page.getByRole('button', { name: 'Government & term →', exact: true }).click();
@@ -44,7 +44,7 @@ test('history, split recommendations, direct elections and next-election navigat
 
 test('history remains official after editing votes', async ({ page }) => {
   await page.goto('/');
-  await page.getByRole('button', { name: 'EN', exact: true }).click();
+  await page.getByRole('button', { name: 'English', exact: true }).click();
   await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
   await page.getByRole('tab', { name: 'After the election', exact: true }).click();
   await page.locator('section.tl .tl-chamber circle.seat').first().waitFor(); // the term timeline loads its own data
@@ -62,7 +62,7 @@ for (const lang of ['he', 'en'] as const) test(`localised history, isolated rang
   test.setTimeout(180_000);
   await page.setViewportSize({ width: 1024, height: 1000 });
   await page.goto('/');
-  if (lang === 'en') await page.getByRole('button', { name: 'EN', exact: true }).click();
+  if (lang === 'en') await page.getByRole('button', { name: 'English', exact: true }).click();
   await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k24');
   await page.getByRole('tab', { name: lang === 'he' ? 'אחרי הבחירות' : 'After the election', exact: true }).click();
   const history = page.locator('.after-election');
@@ -141,7 +141,7 @@ for (const lang of ['he', 'en'] as const) test(`localised history, isolated rang
 
 for (const lang of ['he', 'en'] as const) test(`support roles and honest unknown totals: ${lang}`, async ({ page }) => {
   await page.goto('/');
-  if (lang === 'en') await page.getByRole('button', { name: 'EN', exact: true }).click();
+  if (lang === 'en') await page.getByRole('button', { name: 'English', exact: true }).click();
   await page.getByRole('tab', { name: lang === 'he' ? 'אחרי הבחירות' : 'After the election', exact: true }).click();
   const election = page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true });
   const history = page.locator('.after-election');
@@ -176,7 +176,7 @@ test('switching language on mounted history updates endpoint direction and visua
   await page.getByRole('tab', { name: 'אחרי הבחירות', exact: true }).click();
   await choose(page.getByRole('button', { name: 'בחירות', exact: true }), 'k24');
   for (const lang of ['en', 'he', 'en'] as const) {
-    await page.getByRole('button', { name: lang === 'en' ? 'EN' : 'עב', exact: true }).click();
+    await page.getByRole('button', { name: lang === 'en' ? 'English' : 'עברית', exact: true }).click();
     const government = page.locator('.after-election h3').filter({ hasText: lang === 'he' ? 'הממשלה ה־36' : 'Government 36' });
     const start = government.locator('time').first();
     await expect(start).toHaveCSS('direction', lang === 'he' ? 'rtl' : 'ltr');

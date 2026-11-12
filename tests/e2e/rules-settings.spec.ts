@@ -88,7 +88,7 @@ test('an experimental rule edit is marked at its own field, and the era timeline
   await page.getByRole('button', { name: 'Experimental', exact: true }).click();
   await page.getByRole('group', { name: 'Thresholds by era' }).getByRole('button', { name: '1.5% (1992–2003)' }).click();
   await expect(page.getByRole('textbox', { name: 'Threshold %', exact: true })).toHaveValue('1.5');
-  const field = page.locator('label.field', { has: page.getByRole('textbox', { name: 'Threshold %', exact: true }) });
+  const field = page.locator('.field', { has: page.getByRole('textbox', { name: 'Threshold %', exact: true }) });
   await expect(field.locator('.edit-marker')).toHaveCount(1);
   // one marker per change, not a row of anonymous ones beside the heading
   await expect(page.locator('.rules-page .part-edits .edit-marker')).toHaveCount(0);

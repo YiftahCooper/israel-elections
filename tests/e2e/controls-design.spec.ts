@@ -64,7 +64,7 @@ test('saved official snapshots stay neutral; edited scenarios get distinct ident
 });
 test('threshold goal stays under the pointer when its consequence appears', async ({ page }) => {
   await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
-  await page.getByRole('button', { name: 'עב', exact: true }).click();
+  await page.getByRole('button', { name: 'עברית', exact: true }).click();
   await page.getByRole('region', { name: 'הרשימות', exact: true }).getByRole('button', { name: 'מרצ', exact: true }).click();
   const panel = page.locator('.side-panel');
   const cross = panel.getByRole('button', { name: 'מעבר אחוז החסימה', exact: true });

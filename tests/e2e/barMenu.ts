@@ -19,7 +19,7 @@ export async function closeBarMenu(page: Page) {
 /** Language and theme from the bar at any width (the phone Menu names them in full). */
 export async function barLanguage(page: Page, lang: 'en' | 'he') {
   if (await openBarMenu(page)) { await page.locator('#phone-menu').getByRole('button', { name: lang === 'he' ? 'עברית' : 'English', exact: true }).click(); await closeBarMenu(page); }
-  else await page.getByRole('button', { name: lang === 'he' ? 'עב' : 'EN', exact: true }).click();
+  else await page.getByRole('button', { name: lang === 'he' ? 'עברית' : 'English', exact: true }).click();
 }
 
 /** Settings from the bar's gear (desktop, tablet) or its Menu (phone). */
