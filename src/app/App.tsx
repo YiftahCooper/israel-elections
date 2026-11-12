@@ -61,8 +61,9 @@ const loaders = {
 function lazyPanel<M extends Record<K, (props: any) => ReactNode>, K extends keyof M>(load: () => Promise<M>, name: K) {
   let loaded: M[K] | null = null;
   let pending: Promise<void> | null = null;
-  // one retry for a dropped request; a second failure reaches the panel's error boundary
-  const preload = () => (pending ??= load().catch(load).then((m) => { loaded = m[name]; }));
+  // one retry for a dropped request; a second failure reaches the panel's error boundary and is forgotten, so its Try
+  // again (or opening the tab again) asks for the code once more (audit 12 Nov 2026, c-robustness-09)
+  const preload = () => (pending ??= load().catch(load).then((m) => { loaded = m[name]; }, (e) => { pending = null; throw e; }));
   const Panel = (props: Parameters<M[K]>[0]) => {
     if (!loaded) use(preload());
     return createElement(loaded!, props);
@@ -110,7 +111,8 @@ export function App() {
   useEffect(() => {
     loadElectionIndex();
     // the last visit's work first (so a share link opened now keeps it as a draft), then the link, then 2026
-    void restoreWorkspace().then(async () => (await openComparisonFromHash()) || openSharedFromHash()).then((opened) => { if (!opened && !getState().scenario) openElection('k26'); });
+    // an election whose data could not be loaded is not opened over: its banner offers Try again (and nothing stored changes)
+    void restoreWorkspace().then(async () => (await openComparisonFromHash()) || openSharedFromHash()).then((opened) => { if (!opened && !getState().scenario && !getState().loadError) openElection('k26'); });
     // a share link pasted into the address bar of an open tab only changes the hash
     const onHash = () => { void openComparisonFromHash().then((opened) => opened || openSharedFromHash()); };
     addEventListener('hashchange', onHash);
@@ -169,14 +171,21 @@ function Shell() {
     const h = setTimeout(run, 200); return () => clearTimeout(h);
   }, [ready, level]);
 
-  const loadBanner = loadError && (
+  // what failed, said as it is: the connection, or an app and data of different versions (reloading fetches both again);
+  // Try again asks again for what was asked for, and closing the banner with nothing open opens the newest election
+  const loadBanner = loadError && ((e) => (
     <div className="banner err" role="alert">
-      <span className="banner-text">{((e) => L(`Could not load the ${e} election data. Check the connection and try again.`, `טעינת נתוני הבחירות ${e} נכשלה. בדקו את החיבור ונסו שוב.`))(((x) => x ? electionLabel(x, elections, lang) : loadError.id)(elections.find((x) => x.id === loadError.id)))}{' '}
+      <span className="banner-text">{loadError.kind === 'version'
+        ? L(`The app and the ${e} election data are of different versions. Reload the page to fetch both again.`, `האתר ונתוני הבחירות ${e} הם מגרסאות שונות. טענו מחדש את הדף כדי להביא את שניהם מחדש.`)
+        : L(`Could not load the ${e} election data. Check the connection and try again.`, `טעינת נתוני הבחירות ${e} נכשלה. בדקו את החיבור ונסו שוב.`)}
+        {loadError.kept && <> {L('Your unsaved work on this election is not lost.', 'העבודה שלא נשמרה על הבחירות האלה לא אבדה.')}</>}{' '}
         <bdi dir="ltr" className="tiny muted">{loadError.message}</bdi></span>
-      <button className="btn small" onClick={() => openElection(loadError.id)}>{L('Try again', 'ניסיון נוסף')}</button>
-      {committed && <button className="btn small ghost icon-only" onClick={() => setState({ loadError: null })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button>}
+      {loadError.kind === 'version'
+        ? <button className="btn small" onClick={() => location.reload()}>{L('Reload', 'טעינה מחדש')}</button>
+        : <button className="btn small" onClick={() => (loadError.retry ?? (() => void openElection(loadError.id)))()}>{L('Try again', 'ניסיון נוסף')}</button>}
+      <button className="btn small ghost icon-only" onClick={() => { setState({ loadError: null }); if (!getState().scenario) void openElection('k26'); }} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button>
     </div>
-  );
+  ))(((x) => x ? electionLabel(x, elections, lang) : loadError.id)(elections.find((x) => x.id === loadError.id)));
   if (!committed || !ds) return <div className="app"><TopBar s={null} r={null} ds={undefined} baseR={null} />{loadBanner || <p style={{ padding: 20 }} className="muted">{L('Loading election data…', 'טוען נתוני בחירות…')}</p>}</div>;
 
   // the board shows a live preview while a slider is dragged; tools and history use the committed scenario

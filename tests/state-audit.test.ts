@@ -112,9 +112,11 @@ test('c-robustness-04, c-state-code-07: a link naming an unknown election or wit
 });
 
 const snap = (ds: ElectionDataset, log: Action[], extra: object = {}) => ({ id: `${ds.id}-x`, name: 'Work', electionId: ds.id, log: log.map((action) => ({ at: '2026-11-01T00:00:00.000Z', action })), ref: null, ...extra });
+/** the stored workspace: each tab's kept work under its own entry (here one, of an earlier visit) */
+const kept = (ws: object, at = 1) => JSON.stringify({ v: 2, tabs: { earlier: { at, ws } } });
 
 test('c-state-code-09: an election picked while the last visit is being restored wins, and the restored work is kept', async () => {
-  mem.set('israel-elections:workspace:v1', JSON.stringify({ v: 1, electionId: 'k26', current: snap(k26, [transfer(k26, 777)]), sessions: [], drafts: [] }));
+  mem.set('israel-elections:workspace:v1', kept({ electionId: 'k26', current: snap(k26, [transfer(k26, 777)]), sessions: [], drafts: [] }));
   store.setState({ datasets: { k24 } });
   let release!: () => void;
   const gate = new Promise<void>((r) => { release = r; });
@@ -150,15 +152,16 @@ test('c-state-code-13: unsaved work made on older data is restored with the "dat
   await store.openElection('k26');
   store.dispatch(transfer(k26, 500));
   await new Promise((r) => setTimeout(r, 300)); // the workspace is written 250 ms after the last change
-  const ws = JSON.parse(mem.get('israel-elections:workspace:v1')!);
+  const [entry] = Object.values(JSON.parse(mem.get('israel-elections:workspace:v1')!).tabs) as { ws: { current: { baseBuiltAt: string } } }[];
+  const ws = entry.ws;
   expect(ws.current.baseBuiltAt).toBe(k26.buildInfo.builtAt);
-  await expect(store.restoreWorkspace()).resolves.toBe(true);
-  expect(store.getState().notice).toBeNull();
+  const again = await restart({ 'israel-elections:workspace:v1': kept(ws) });
+  expect(again.getState().scenario!.log.at(-1)!.action).toEqual(transfer(k26, 500));
+  expect(again.getState().notice).toBeNull();
   ws.current.baseBuiltAt = '2000-01-01T00:00:00Z';
-  mem.set('israel-elections:workspace:v1', JSON.stringify(ws));
-  await expect(store.restoreWorkspace()).resolves.toBe(true);
-  expect(store.getState().notice).toMatch(/rebuilt/);
-  expect(store.getState().scenario!.log.at(-1)!.action).toEqual(transfer(k26, 500));
+  const rebuilt = await restart({ 'israel-elections:workspace:v1': kept(ws), 'israel-elections:v1': JSON.stringify({ lang: 'en' }) });
+  expect(rebuilt.getState().notice).toMatch(/rebuilt/);
+  expect(rebuilt.getState().scenario!.log.at(-1)!.action).toEqual(transfer(k26, 500));
 });
 
 test('c-robustness-05: an election data file of another shape is a load error, never a blank page', async () => {
@@ -218,16 +221,16 @@ test('c-robustness-01: unreadable settings are said to be so', async () => {
 });
 
 test('c-robustness-03: a workspace with one unreadable part keeps the rest and says so', async () => {
-  const ws = { v: 1, electionId: 'k26', current: snap(k26, [transfer(k26, 321)]), sessions: [snap(k25, [transfer(k25, 654)]), { id: 5 }], drafts: [['d', 7]] };
-  const s = await restart({ 'israel-elections:workspace:v1': JSON.stringify(ws) });
+  const ws = { electionId: 'k26', current: snap(k26, [transfer(k26, 321)]), sessions: [snap(k25, [transfer(k25, 654)]), { id: 5 }], drafts: [['d', 7]] };
+  const s = await restart({ 'israel-elections:workspace:v1': kept(ws) });
   const st = s.getState();
   expect(st.scenario && holds(321)({ scenario: st.scenario })).toBe(true);
   expect(st.sessions.k25 && holds(654)(st.sessions.k25)).toBe(true);
   expect(s.storageLossText(st.storageLoss, 'en')).toMatch(/unsaved work from your last visit/);
-  const broken = await restart({ 'israel-elections:workspace:v1': JSON.stringify({ v: 1, electionId: 'k26', current: { id: 5 }, sessions: [snap(k25, [transfer(k25, 654)])], drafts: [] }) });
+  const broken = await restart({ 'israel-elections:workspace:v1': kept({ electionId: 'k26', current: { id: 5 }, sessions: [snap(k25, [transfer(k25, 654)])], drafts: [] }) });
   expect(broken.getState().sessions.k25 && holds(654)(broken.getState().sessions.k25!)).toBe(true);
   expect(broken.storageLossText(broken.getState().storageLoss, 'en')).toMatch(/unsaved work/);
-  const garbage = await restart({ 'israel-elections:workspace:v1': '{"v":1,' });
+  const garbage = await restart({ 'israel-elections:workspace:v1': '{"v":2,' });
   expect(garbage.storageLossText(garbage.getState().storageLoss, 'en')).toMatch(/unsaved work/);
 });
 
@@ -257,4 +260,25 @@ test('c-state-code-15: removing a withdrawn list takes its held ballots out of t
   const merge: Action = { type: 'merge', ids: [base.lists[0].id, rz.id], newId: 'sim-m', nameHe: 'איחוד', letters: 'א', color: '#123456', retentionPct: 100, candidateOrder: 'interleave', nonRetained: 'abstain' };
   expect(() => applyAction(w, merge, undefined, ctx)).toThrow(/withdrawn/);
   expect(() => applyAction(w, { type: 'split', id: rz.id, parts: [{ newId: 'a', nameHe: 'א', letters: 'א1', color: '#111111', votes: 0, candidateIds: [] }, { newId: 'b', nameHe: 'ב', letters: 'ב1', color: '#222222', votes: 0, candidateIds: [] }] }, undefined, ctx)).toThrow(/withdrawn/);
+});
+
+test('c-state-code-08: opening someone else\'s colours (link, saved scenario) never changes your colours for the official result', async () => {
+  await store.openElection('k25');
+  const likud = k25.lists[0].id;
+  store.dispatch({ type: 'setListMeta', listId: likud, patch: { color: '#00aa00' } });
+  const palette = () => JSON.parse(mem.get('israel-elections:appearance:k25') ?? '[]');
+  expect(palette()).toEqual([{ type: 'setListMeta', listId: likud, patch: { color: '#00aa00' } }]);
+  await store.openElection('k25', { name: '', log: [{ type: 'setListMeta', listId: likud, patch: { color: '#ff00ff' } }] }); // a friend's colour-only link
+  store.dispatch({ type: 'setListMeta', listId: k25.lists[1].id, patch: { color: '#0000ff' } }); // and an edit of it
+  store.undo(); store.redo();
+  expect(palette()).toEqual([{ type: 'setListMeta', listId: likud, patch: { color: '#00aa00' } }]);
+  store.saveCurrent('Friend');
+  await store.openElection('k26'); await store.openElection('k25');
+  store.openOfficial();
+  expect(store.getState().scenario!.lists.find((l) => l.id === likud)!.color).toBe('#00aa00');
+  // your own edits of the official result still change it, undo included
+  store.dispatch({ type: 'setListMeta', listId: likud, patch: { color: '#123456' } });
+  expect(palette().at(-1)).toEqual({ type: 'setListMeta', listId: likud, patch: { color: '#123456' } });
+  store.undo();
+  expect(palette().at(-1)).toEqual({ type: 'setListMeta', listId: likud, patch: { color: '#00aa00' } });
 });

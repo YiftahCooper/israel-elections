@@ -12,6 +12,7 @@ import { useSyncExternalStore } from 'react';
 import { DATASET_SCHEMA_VERSION, ELECTION_IDS, type ElectionDataset, type ElectionId, type ElectionIndexEntry } from '../data/schema.ts';
 import { ActionError, applyAction } from '../model/actions.ts';
 import { errorText, M, type StorageLoss } from '../model/messages.ts';
+import { dropAnalysisCache } from './analysisCache.ts';
 import { validAction, scenarioFromDataset, validateScenario, type Action, type ActionContext, type ChangeEntry, type Scenario } from '../model/scenario.ts';
 import type { Lang } from './i18n.ts';
 import type { SourceChoice } from './voteEdit.ts';
@@ -55,8 +56,10 @@ export interface State {
   settings: Partial<SettingValues>;
   saved: SavedScenario[];
   toast: { kind: 'error' | 'info'; text: string; action?: { label: string; run: () => void } } | null;
-  /** the last election that failed to load, and why (the previous election stays open) */
-  loadError: { id: ElectionId; message: string } | null;
+  /** the last election that failed to load, and why (the previous election stays open): the cause (the connection, or
+   *  an app and data of different versions), what Try again retries (what was asked for: a link, a saved scenario, the
+   *  last visit's work), and whether unsaved work waits on it, kept until it loads */
+  loadError: { id: ElectionId; message: string; kind?: LoadErrorKind; retry?: () => void; kept?: boolean } | null;
   notice: string | null;
   /** how every vote edit on a list is balanced (shared by all vote controls) */
   voteSource: SourceChoice;
@@ -129,16 +132,21 @@ const validSaved = (x: unknown): x is SavedScenario => isRecord(x) && typeof x.i
   && ELECTION_IDS.includes(x.electionId as ElectionId) && typeof x.savedAt === 'string' && typeof x.baseBuiltAt === 'string'
   && Array.isArray(x.log) && x.log.every((a) => isRecord(a) && typeof a.type === 'string') && (x.description === undefined || typeof x.description === 'string')
   && (x.factionSplitBaseline === undefined || typeof x.factionSplitBaseline === 'boolean');
+/** The stored settings record (lang, level, Custom choices, saved scenarios…): undefined when there is none, null when it
+ *  cannot be read at all. */
+const storedMain = (): Record<string, unknown> | null | undefined => { const x = storedJson(LS); return x === undefined ? undefined : isRecord(x) ? x : null; };
 const persisted: Record<string, unknown> = (() => {
-  const x = storedJson(LS);
+  const x = storedMain();
   if (x === undefined) return {};
-  if (isRecord(x)) return x;
+  if (x) return x;
   startupLoss.settings = true; startupLoss.saved = -1; // nothing in it could be read
   return {};
 })();
-const persistedFeatures = isRecord(persisted.customFeatures)
-  ? Object.fromEntries(Object.entries(persisted.customFeatures).filter(([k, v]) => k in PRESETS.expert && VISIBILITIES.includes(v))) as Partial<Record<FeatureId, Visibility>>
+/** The readable Custom choices (null: none, the level's own presets) */
+const featuresOf = (x: unknown) => isRecord(x)
+  ? Object.fromEntries(Object.entries(x).filter(([k, v]) => k in PRESETS.expert && VISIBILITIES.includes(v))) as Partial<Record<FeatureId, Visibility>>
   : null;
+const persistedFeatures = featuresOf(persisted.customFeatures);
 // pre-release: only the current key is read; nothing older is carried over (israel-elections-private docs/design/settings.md)
 const rememberedSettings = (() => {
   const x = storedJson(SETTINGS_KEY);
@@ -176,15 +184,106 @@ let state: State = {
 };
 const listeners = new Set<() => void>();
 const emit = () => { for (const l of listeners) l(); };
-/** Writes settings and saved scenarios; returns false if the browser refused (full or disabled). */
+
+// ---- Several open tabs share this browser's storage (audit 12 Nov 2026, c-robustness-07) ----
+// A tab never writes back its whole copy of what is stored: it writes only what it changed itself since it last read or
+// wrote storage, on top of what is stored now. Each saved scenario, setting and remembered answer is merged on its own;
+// the language, the level with its Custom choices, Mark changes since and the last open tool are each one value. Changes
+// made in another tab are also taken in as they happen (the 'storage' event), except the language and the open tool,
+// which stay as this tab shows them (the stored value is the one any tab chose last).
+type Kept = Pick<State, 'lang' | 'level' | 'customFeatures' | 'markOfficial' | 'tool' | 'saved' | 'settings' | 'preferences' | 'preferenceFor'>;
+const keptOf = (st: Kept): Kept => ({ lang: st.lang, level: st.level, customFeatures: st.customFeatures, markOfficial: st.markOfficial, tool: st.tool, saved: st.saved, settings: st.settings, preferences: st.preferences, preferenceFor: st.preferenceFor });
+/** what this tab last read from storage or wrote to it */
+let synced: Kept = keptOf(state);
+const same = (a: unknown, b: unknown) => a === b || JSON.stringify(a) === JSON.stringify(b);
+/** `theirs` with this tab's own changes (`mine` against `base`) applied, key by key */
+function mergeKeys<T>(mine: Record<string, T>, base: Record<string, T>, theirs: Record<string, T>): Record<string, T> {
+  const out = { ...theirs };
+  for (const k of new Set([...Object.keys(mine), ...Object.keys(base)])) {
+    if (same(mine[k], base[k])) continue;
+    if (Object.hasOwn(mine, k)) out[k] = mine[k]; else delete out[k];
+  }
+  return out;
+}
+/** What storage holds now, each part read as at start-up; a part that is missing or cannot be read is undefined. */
+function storedKept(): Partial<Kept> {
+  const out: Partial<Kept> = {};
+  const x = storedMain();
+  if (x) {
+    if (x.lang === 'he' || x.lang === 'en') out.lang = x.lang;
+    if (LEVELS.includes(x.level as Level) && (x.customFeatures === null || isRecord(x.customFeatures))) { out.level = x.level as Level; out.customFeatures = featuresOf(x.customFeatures); }
+    if (typeof x.markOfficial === 'boolean') out.markOfficial = x.markOfficial;
+    if (x.tool === null || TOOL_IDS.has(x.tool as string)) out.tool = x.tool as string | null;
+    if (Array.isArray(x.saved)) out.saved = x.saved.filter(validSaved);
+  }
+  const settings = storedJson(SETTINGS_KEY);
+  if (isRecord(settings) && settings.v === 2 && isRecord(settings.values)) out.settings = validSettings(settings.values);
+  const preferences = storedJson(PREFERENCES_KEY);
+  if (isRecord(preferences)) out.preferences = validAnswers(preferences);
+  const items = storedJson(ITEM_PREFERENCES_KEY);
+  if (isRecord(items)) out.preferenceFor = validItemAnswers(items);
+  return out;
+}
+/** This tab's changes (`mine` against `base`) on top of what is stored (`theirs`); where nothing is stored, this tab's. */
+function mergeKept(mine: Kept, base: Kept, theirs: Partial<Kept>): Kept {
+  const one = <K extends keyof Kept>(k: K): Kept[K] => (theirs[k] === undefined || !same(mine[k], base[k]) ? mine[k] : theirs[k]!);
+  const levelMine = !same([mine.level, mine.customFeatures], [base.level, base.customFeatures]) || theirs.level === undefined;
+  const byId = (xs: SavedScenario[]) => Object.fromEntries(xs.map((x) => [x.id, x]));
+  const saved = theirs.saved === undefined ? mine.saved
+    : Object.values(mergeKeys(byId(mine.saved), byId(base.saved), byId(theirs.saved))).sort((a, b) => b.savedAt.localeCompare(a.savedAt));
+  return {
+    lang: one('lang'), level: levelMine ? mine.level : theirs.level!, customFeatures: levelMine ? mine.customFeatures : theirs.customFeatures!,
+    markOfficial: one('markOfficial'), tool: one('tool'),
+    saved: same(saved, mine.saved) ? mine.saved : saved,
+    settings: theirs.settings === undefined ? mine.settings : mergeKeys(mine.settings, base.settings, theirs.settings) as Kept['settings'],
+    preferences: theirs.preferences === undefined ? mine.preferences : mergeKeys(mine.preferences, base.preferences, theirs.preferences) as Kept['preferences'],
+    preferenceFor: theirs.preferenceFor === undefined ? mine.preferenceFor : mergeKeys(mine.preferenceFor ?? {}, base.preferenceFor ?? {}, theirs.preferenceFor ?? {}),
+  };
+}
+/** Writes settings and saved scenarios: this tab's changes, merged with what another tab may have stored meanwhile.
+ *  Returns false if the browser refused (full or disabled). */
 const persist = (): boolean => {
-  try { localStorage.setItem(LS, JSON.stringify({ lang: state.lang, level: state.level, customFeatures: state.customFeatures, markOfficial: state.markOfficial, tool: state.tool, saved: state.saved}));
-    localStorage.setItem(SETTINGS_KEY, JSON.stringify({ v: 2, values: state.settings }));
+  const mine = keptOf(state);
+  if ((Object.keys(mine) as (keyof Kept)[]).every((k) => mine[k] === synced[k])) return true; // nothing of it changed here
+  const kept = mergeKept(mine, synced, storedKept());
+  try {
+    setRoomy(LS, JSON.stringify({ lang: kept.lang, level: kept.level, customFeatures: kept.customFeatures, markOfficial: kept.markOfficial, tool: kept.tool, saved: kept.saved }));
+    setRoomy(SETTINGS_KEY, JSON.stringify({ v: 2, values: kept.settings }));
     // its own key, so the answer survives independently of the other settings
-    localStorage.setItem(PREFERENCES_KEY, JSON.stringify(state.preferences));
-    localStorage.setItem(ITEM_PREFERENCES_KEY, JSON.stringify(validItemAnswers(state.preferenceFor))); return true; }
-  catch { return false; }
+    setRoomy(PREFERENCES_KEY, JSON.stringify(kept.preferences));
+    setRoomy(ITEM_PREFERENCES_KEY, JSON.stringify(validItemAnswers(kept.preferenceFor)));
+  } catch { return false; }
+  // the language and the open tool are not taken in, so this tab's own value stays the one its changes are measured from
+  synced = { ...kept, lang: mine.lang, tool: mine.tool };
+  // what another tab stored meanwhile is now shown here too (the language and open tool stay as this tab shows them)
+  takeIn(kept);
+  return true;
 };
+/** Shows what another tab stored (merged with this tab's own changes, which win), without writing anything. */
+function takeIn(kept: Kept) {
+  const patch: Partial<State> = {};
+  for (const k of ['level', 'customFeatures', 'markOfficial', 'saved', 'settings', 'preferences', 'preferenceFor'] as const) if (state[k] !== kept[k]) (patch as Record<string, unknown>)[k] = kept[k];
+  if (!Object.keys(patch).length) return false;
+  if (patch.preferences && (patch.preferences.jointSeats !== 'off') !== (state.preferences.jointSeats !== 'off')) applyJointSeats(patch.preferences.jointSeats !== 'off');
+  if (patch.preferences) patch.voteSource = sourceChoice(patch.preferences.voteSource ?? 'proportional');
+  state = { ...state, ...patch, theme: resolvedTheme(settingValue(patch.settings ?? state.settings, 'theme', patch.level ?? state.level)) };
+  return true;
+}
+globalThis.addEventListener?.('storage', (e: StorageEvent) => {
+  if (e.key !== null && ![LS, SETTINGS_KEY, PREFERENCES_KEY, ITEM_PREFERENCES_KEY, WS].includes(e.key)) return;
+  if (e.key === WS) { keepOwnWorkspace(); return; }
+  const stored = storedKept();
+  const kept = mergeKept(keptOf(state), synced, stored);
+  // what is stored is now what this tab has seen; its own unwritten changes (if any) stay to be written
+  synced = { ...synced, ...Object.fromEntries(Object.entries(stored).filter(([k]) => k !== 'lang' && k !== 'tool')) };
+  if (takeIn(kept)) emit();
+});
+/** Stores a value; when the browser's storage is full, the analysis cache (results that can always be worked out again)
+ *  is cleared and the value stored once more. The user's own work always wins over the cache (c-analysis-code-04). */
+function setRoomy(key: string, value: string) {
+  try { localStorage.setItem(key, value); }
+  catch (e) { if (!dropAnalysisCache()) throw e; localStorage.setItem(key, value); }
+}
 
 export const getState = () => state;
 /** Adds to what is said could not be read (counts add up; see StorageLoss). */
@@ -200,12 +299,17 @@ export function setState(patch: Partial<State> | ((s: State) => Partial<State>))
   // any committed change to the scenario ends a live preview
   state = { ...state, ...p, ...('scenario' in p && !('preview' in p) ? { preview: null } : {}) };
   if ('preview' in p && Object.keys(p).length === 1) { emit(); return; } // previews are never persisted
-  // Keep the official palette independently of whichever scenario is currently open.
-  if(p.scenario && Array.isArray(p.scenario.log) && !factLog(p.scenario).length) {
-    try { localStorage.setItem(`israel-elections:appearance:${p.scenario.electionId}`,JSON.stringify(p.scenario.log.map(e=>e.action).filter(a=>ACTION_CLASSIFICATION[a.type]==='appearance'||ACTION_CLASSIFICATION[a.type]==='view'||a.type==='setListMeta'&&Object.keys(a.patch).every(k=>k==='color')))); } catch { /* workspace/save can still retain it */ }
-  }
   persist();
   emit();
+}
+/** The official result's colours are kept as a browser preference, independently of whichever scenario is open. Only the
+ *  user's own edits of the official result change them: never opening someone else's colours in a link, a saved
+ *  scenario or a file (audit 12 Nov 2026, c-state-code-08). Called after each edit, undo and redo. */
+function keepOfficialPalette() {
+  const s = state.scenario;
+  if (!s || state.reference || scenarioKey() !== 'official') return;
+  try { setRoomy(`israel-elections:appearance:${s.electionId}`, JSON.stringify(s.log.map(e => e.action).filter(a => ACTION_CLASSIFICATION[a.type] === 'appearance' || ACTION_CLASSIFICATION[a.type] === 'view' || a.type === 'setListMeta' && Object.keys(a.patch).every(k => k === 'color')))); }
+  catch { /* workspace/save can still retain it */ }
 }
 export function useStore<T>(sel: (s: State) => T): T {
   const snap = () => sel(state);
@@ -267,6 +371,7 @@ export function dispatch(action: Action): boolean {
   try {
     const next = applyAction(s, action, undefined, baseContext(state.datasets[s.electionId], s.factionSplitBaseline ?? false));
     setState({ scenario: next, past: [...state.past.slice(-199), s], future: [] });
+    keepOfficialPalette();
     return true;
   } catch (e) {
     toast('error', errorText(e, state.lang));
@@ -282,6 +387,7 @@ export function dispatchMany(actions: Action[]): boolean {
     const ctx = baseContext(state.datasets[s.electionId], s.factionSplitBaseline ?? false);
     const next = actions.reduce((x, a) => applyAction(x, a, undefined, ctx), s);
     setState({ scenario: next, past: [...state.past.slice(-199), s], future: [] });
+    keepOfficialPalette();
     return true;
   } catch (e) {
     toast('error', errorText(e, state.lang));
@@ -301,13 +407,21 @@ export function undo() {
   const { past, scenario, future } = state;
   if (!past.length || !scenario) return;
   setState({ scenario: past[past.length - 1], past: past.slice(0, -1), future: [scenario, ...future] });
+  keepOfficialPalette();
 }
 export function redo() {
   const { past, scenario, future } = state;
   if (!future.length || !scenario) return;
   setState({ scenario: future[0], past: [...past, scenario], future: future.slice(1) });
+  keepOfficialPalette();
 }
 
+export type LoadErrorKind = 'network' | 'version';
+/** A data file that could not be used: no answer or a broken download ('network'), or a file made for another version
+ *  of the app ('version': reloading the page fetches the app and its data again). */
+export class DataLoadError extends Error { constructor(message: string, readonly kind: LoadErrorKind) { super(message); } }
+const messageOf = (e: unknown) => (e instanceof Error ? e.message : String(e));
+const kindOf = (e: unknown): LoadErrorKind => (e instanceof DataLoadError ? e.kind : 'network');
 /** The parts of an election data file the app relies on before anything is drawn. */
 const validDataset = (x: unknown, id: ElectionId): x is ElectionDataset => isRecord(x) && x.schemaVersion === DATASET_SCHEMA_VERSION && x.id === id
   && isRecord(x.totals) && isRecord(x.buildInfo) && typeof x.buildInfo.builtAt === 'string' && Array.isArray(x.blocs) && Array.isArray(x.agreements)
@@ -316,12 +430,17 @@ const validDataset = (x: unknown, id: ElectionId): x is ElectionDataset => isRec
 export async function loadDataset(id: ElectionId): Promise<ElectionDataset> {
   const have = state.datasets[id];
   if (have) return have;
-  const res = await fetch(`data/${id}.json`);
-  if (!res.ok) throw new Error(`data/${id}.json: HTTP ${res.status}`);
-  let ds: unknown;
-  try { ds = await res.json(); } catch { throw new Error(`data/${id}.json: not a data file`); }
-  // a file of another shape (a cached copy from another version of the app) is a load error, never a blank page
-  if (!validDataset(ds, id)) throw new Error(`data/${id}.json: made for another version of the app`);
+  const attempt = async (cache?: RequestCache): Promise<unknown> => {
+    const res = await fetch(`data/${id}.json`, cache ? { cache } : undefined);
+    if (!res.ok) throw new DataLoadError(`data/${id}.json: HTTP ${res.status}`, 'network');
+    try { return await res.json(); } catch { return unreadable; }
+  };
+  let ds = await attempt();
+  // a file that cannot be read, or of another shape, may be a copy the browser kept: it is fetched once more from the server
+  if (ds === unreadable || !validDataset(ds, id)) ds = await attempt('reload');
+  if (ds === unreadable) throw new DataLoadError(`data/${id}.json: not a data file`, 'network');
+  // a file of another shape (made for another version of the app) is a load error, never a blank page
+  if (!validDataset(ds, id)) throw new DataLoadError(`data/${id}.json: made for another version of the app`, 'version');
   setState((s) => ({ datasets: { ...s.datasets, [id]: ds } }));
   return ds;
 }
@@ -370,11 +489,13 @@ export async function openElection(id: ElectionId, from?: { id?: string; name: s
       ({ scenario, past, future, reference } = sessions[id]!);
     }
     delete sessions[id];
-    setState({ electionId: id, scenario, reference, past, future, sessions, ...(kept ? { scenarioDrafts: { ...state.scenarioDrafts, ...kept } } : {}), selectedListId: null, blocPanel: null, loadError: null, notice, compare: { ...state.compare, chamber: 'work' } });
+    // a banner for last visit's work that could not be reopened stays until that work is
+    setState({ electionId: id, scenario, reference, past, future, sessions, ...(kept ? { scenarioDrafts: { ...state.scenarioDrafts, ...kept } } : {}), selectedListId: null, blocPanel: null, loadError: state.loadError?.kept ? state.loadError : null, notice, compare: { ...state.compare, chamber: 'work' } });
     if (kept) keptToast();
     return true;
   } catch (e) {
-    if (seq === openSeq) setState({ loadError: { id, message: e instanceof Error ? e.message : String(e) } });
+    // Try again asks again for what was asked for (this election, or the saved or shared scenario on it); nothing changed
+    if (seq === openSeq) setState({ loadError: { id, message: messageOf(e), kind: kindOf(e), retry: () => void openElection(id, from) } });
     return false;
   }
 }
@@ -489,6 +610,8 @@ export async function openSharedFromHash(): Promise<boolean> {
   // an unnamed shared scenario is named for where it came from, so it is recognisable among unsaved work
   const name = sh.name || (state.lang === 'he' ? 'תרחיש משותף' : 'Shared scenario');
   if (await openElection(sh.electionId, { ...sh, name })) history.replaceState(null, '', location.pathname + location.search);
+  // its data could not be loaded: Try again opens the link (still in the address bar), not the plain election
+  else if (state.loadError?.id === sh.electionId && !state.loadError.kept) setState({ loadError: { ...state.loadError, retry: () => void openSharedFromHash() } });
   return true;
 }
 
@@ -503,6 +626,7 @@ export function resetAll() {
   }
   fresh=applyAction(fresh,{type:'setBlocAppearance',blocs:fresh.blocs.map(b=>({...b,color:old.blocs.find(x=>x.id===b.id)?.color??b.color}))});
   setState({ scenario: fresh, past: [...state.past, state.scenario], future: [] });
+  keepOfficialPalette();
 }
 
 export function saveCurrent(name?: string, options?: { newIdentity?: boolean; overwriteId?: string }): boolean {
@@ -612,8 +736,15 @@ export function askPreference(ask: PreferenceAsk) {
   setState({ preferenceAsk: ask });
 }
 export function setPreference(id: PreferenceId, value?: string) {
-  if (id === 'jointSeats') {
-    const on = value !== 'off'; // no answer is the default, which is On
+  if (id === 'jointSeats') applyJointSeats(value !== 'off'); // no answer is the default, which is On
+  const preferences = { ...state.preferences };
+  if (value) preferences[id] = value; else delete preferences[id];
+  // Answers remembered for one list, bloc or scenario are kept: the more specific answer still wins, and they are
+  // cleared only by Ask again or Forget all (israel-elections-private docs/design/settings.md §5), never silently.
+  setState({ preferences, ...(id === 'voteSource' && value ? { voteSource: sourceChoice(value) } : {}), ...(id === 'comparison' && value ? { markOfficial: value === 'official' } : {}) });
+}
+/** Counting joint lists by party on or off: every scenario of the session is replayed under the new baseline. */
+function applyJointSeats(on: boolean) {
     setFactionDefault(on);
     const one = (s: Scenario): Scenario => {
       const ds = state.datasets[s.electionId];
@@ -631,12 +762,6 @@ export function setPreference(id: PreferenceId, value?: string) {
     state = { ...state, ...(state.scenario ? session({ scenario: state.scenario, reference: state.reference, past: state.past, future: state.future }) : {}), preview: null,
       sessions: Object.fromEntries(Object.entries(state.sessions).map(([k, x]) => [k, session(x!)])),
       scenarioDrafts: Object.fromEntries(Object.entries(state.scenarioDrafts).map(([k, x]) => [k, session(x)])) };
-  }
-  const preferences = { ...state.preferences };
-  if (value) preferences[id] = value; else delete preferences[id];
-  // Answers remembered for one list, bloc or scenario are kept: the more specific answer still wins, and they are
-  // cleared only by Ask again or Forget all (israel-elections-private docs/design/settings.md §5), never silently.
-  setState({ preferences, ...(id === 'voteSource' && value ? { voteSource: sourceChoice(value) } : {}), ...(id === 'comparison' && value ? { markOfficial: value === 'official' } : {}) });
 }
 export function answerPreference(value: string, scope: 'once' | 'item' | 'always') {
   const ask = state.preferenceAsk; if (!ask) return;
@@ -698,19 +823,40 @@ export function useShown(id: FeatureId) {
 // The open scenario, each election's session and the session drafts are kept in this browser's storage as their
 // change logs (never as computed results), and rebuilt by replaying the logs against the same datasets. Undo is
 // rebuilt one change at a time. Nothing leaves the device.
+// Each open tab keeps its work under its own entry, so two tabs never write over each other's unsaved work
+// (c-robustness-07). A new visit takes over the entries of earlier visits (and of tabs still open, which then write
+// theirs again); an entry whose election data could not be loaded stays stored, untouched, until it is reopened
+// (c-robustness-11).
 const WS = 'israel-elections:workspace:v1';
+const TAB = globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random()}`;
 type Snap = { factionSplitBaseline?: boolean; id: string; name: string; description?: string; identityColor?: string; electionId: ElectionId; baseBuiltAt?: string; log: ChangeEntry[]; ref: { factionSplitBaseline?: boolean; id: string; name: string; description?: string; log: ChangeEntry[] } | null };
-type Workspace = { v: 1; electionId: ElectionId; current: Snap | null; sessions: Snap[]; drafts: [string, Snap][] };
+type Workspace = { electionId: ElectionId; current: Snap | null; sessions: Snap[]; drafts: [string, Snap][] };
+type Entry = { at: number; ws: Workspace };
+/** entries of earlier visits or other tabs that this tab has taken over: removed from storage when it next writes */
+const takenOver = new Set<string>();
+/** what of them could not be reopened yet: written back under the same entry until it is */
+let pending: Record<string, Entry> = {};
 const snapOf = (x: ScenarioSession): Snap => ({ factionSplitBaseline: x.scenario.factionSplitBaseline, id: x.scenario.id, name: x.scenario.name, description: x.scenario.description, identityColor: x.scenario.identityColor,
   electionId: x.scenario.electionId, baseBuiltAt: x.scenario.baseBuiltAt, log: x.scenario.log, ref: x.reference ? { factionSplitBaseline: x.reference.factionSplitBaseline, id: x.reference.id, name: x.reference.name, description: x.reference.description, log: x.reference.log } : null });
 function writeWorkspace() {
   const st = state;
   if (!st.scenario) return;
-  const ws: Workspace = { v: 1, electionId: st.scenario.electionId,
+  const ws: Workspace = { electionId: st.scenario.electionId,
     current: { ...snapOf({ scenario: st.scenario, reference: st.reference, past: [], future: [] }) },
     sessions: Object.values(st.sessions).filter((x): x is ScenarioSession => !!x && (x.scenario.log.length > 0 || !!x.reference)).map(snapOf),
     drafts: Object.entries(st.scenarioDrafts).filter(([, x]) => !!x?.scenario).map(([k, x]) => [k, snapOf(x)]) };
-  try { localStorage.setItem(WS, JSON.stringify(ws)); } catch { /* full or disabled storage: the session simply is not restored */ }
+  const { tabs } = readWorkspace();
+  for (const id of takenOver) delete tabs[id];
+  Object.assign(tabs, pending);
+  tabs[TAB] = { at: Date.now(), ws };
+  try { setRoomy(WS, JSON.stringify({ v: 2, tabs })); } catch { /* full or disabled storage: the session simply is not restored */ }
+}
+/** Another tab changed the stored workspace: if it took over this tab's entry (a new visit opened), this tab writes its
+ *  own again; what it took over that this tab could not reopen yet is that tab's to reopen now. */
+function keepOwnWorkspace() {
+  const { tabs } = readWorkspace();
+  for (const id of Object.keys(pending)) if (!tabs[id]) delete pending[id];
+  if (state.scenario && !tabs[TAB]) writeWorkspace();
 }
 let wsTimer: ReturnType<typeof setTimeout> | null = null;
 let wsLast: unknown[] = [];
@@ -749,30 +895,49 @@ const optionalOf = (x: unknown, type: string) => x === undefined || typeof x ===
 const validSnap = (x: unknown): x is Snap => isRecord(x) && typeof x.id === 'string' && typeof x.name === 'string' && ELECTION_IDS.includes(x.electionId as ElectionId)
   && Array.isArray(x.log) && optionalOf(x.description, 'string') && optionalOf(x.identityColor, 'string') && optionalOf(x.factionSplitBaseline, 'boolean') && optionalOf(x.baseBuiltAt, 'string')
   && (x.ref === null || isRecord(x.ref) && typeof x.ref.id === 'string' && typeof x.ref.name === 'string' && Array.isArray(x.ref.log) && optionalOf(x.ref.description, 'string') && optionalOf(x.ref.factionSplitBaseline, 'boolean'));
-/** The readable parts of the stored workspace; `lost` when anything stored could not be read. */
-function readWorkspace(): { ws: Workspace | null; lost: boolean } {
-  const x = storedJson(WS);
-  if (x === undefined) return { ws: null, lost: false };
-  if (!isRecord(x) || x.v !== 1 || !ELECTION_IDS.includes(x.electionId as ElectionId)) return { ws: null, lost: true };
+/** The readable parts of one tab's kept work; null when nothing in it can be read. */
+function readEntry(x: unknown): { ws: Workspace; lost: boolean } | null {
+  if (!isRecord(x) || !ELECTION_IDS.includes(x.electionId as ElectionId)) return null;
   const sessions = Array.isArray(x.sessions) ? x.sessions.filter(validSnap) : [];
   const drafts = Array.isArray(x.drafts) ? x.drafts.filter((d): d is [string, Snap] => Array.isArray(d) && d.length === 2 && typeof d[0] === 'string' && validSnap(d[1])) : [];
   const current = validSnap(x.current) ? x.current : null;
-  const lost = !current || !Array.isArray(x.sessions) || sessions.length < x.sessions.length || !Array.isArray(x.drafts) || drafts.length < x.drafts.length;
-  return { ws: { v: 1, electionId: x.electionId as ElectionId, current, sessions, drafts }, lost };
+  const lost = (x.current !== null && !current) || !Array.isArray(x.sessions) || sessions.length < x.sessions.length || !Array.isArray(x.drafts) || drafts.length < x.drafts.length;
+  return { ws: { electionId: x.electionId as ElectionId, current, sessions, drafts }, lost };
 }
-/** Restores the last workspace in this browser. Resolves false when there is none (or it cannot be read), and when an
- *  election opened meanwhile (that choice wins; the restored work is then kept beside it, nothing is lost). */
+/** The readable entries of the stored workspace; `lost` when anything stored could not be read. */
+function readWorkspace(): { tabs: Record<string, Entry>; lost: boolean } {
+  const x = storedJson(WS);
+  if (x === undefined) return { tabs: {}, lost: false };
+  if (!isRecord(x) || x.v !== 2 || !isRecord(x.tabs)) return { tabs: {}, lost: true };
+  const tabs: Record<string, Entry> = {};
+  let lost = false;
+  for (const [id, e] of Object.entries(x.tabs)) {
+    const r = isRecord(e) && typeof e.at === 'number' ? readEntry(e.ws) : null;
+    if (!r) { lost = true; continue; }
+    lost ||= r.lost;
+    tabs[id] = { at: (e as { at: number }).at, ws: r.ws };
+  }
+  return { tabs, lost };
+}
+/** Restores the last visit's work in this browser (and that of any other tab, beside it). Resolves false when there is
+ *  none, when it cannot be read, when its election data could not be loaded (it stays stored; the load banner offers Try
+ *  again), and when an election opened meanwhile (that choice wins; the restored work is then kept beside it). */
 export async function restoreWorkspace(): Promise<boolean> {
-  try { return await restoreWorkspaceFrom(); } catch { return false; } // a damaged workspace must never stop the app starting
+  try {
+    const { tabs, lost } = readWorkspace();
+    if (lost) noteStorageLoss({ workspace: true });
+    for (const [id, e] of Object.entries(tabs)) if (id !== TAB) { takenOver.add(id); pending[id] = e; }
+    return await restorePending();
+  } catch { return false; } // a damaged workspace must never stop the app starting
 }
-async function restoreWorkspaceFrom(): Promise<boolean> {
-  const { ws, lost } = readWorkspace();
-  if (lost) noteStorageLoss({ workspace: true });
-  if (!ws) return false;
+async function restorePending(): Promise<boolean> {
+  const entries = Object.entries(pending).sort(([, a], [, b]) => b.at - a.at);
+  if (!entries.length) return false;
   const seq = ++openSeq;
-  const ids = [...new Set([ws.electionId, ...ws.sessions.map(x => x.electionId), ...ws.drafts.map(([, x]) => x.electionId)])];
-  const loaded = await Promise.allSettled(ids.map(id => loadDataset(id)));
-  const ds = (id: ElectionId) => { const i = ids.indexOf(id); const r = loaded[i]; return r?.status === 'fulfilled' ? r.value : undefined; };
+  const snaps = entries.flatMap(([, e]) => [...(e.ws.current ? [e.ws.current] : []), ...e.ws.sessions, ...e.ws.drafts.map(([, x]) => x)]);
+  const ids = [...new Set(snaps.map((x) => x.electionId))];
+  const loaded = await Promise.allSettled(ids.map((id) => loadDataset(id)));
+  const ds = (id: ElectionId) => { const r = loaded[ids.indexOf(id)]; return r?.status === 'fulfilled' ? r.value : undefined; };
   let failed = 0, rebuilt = false;
   const one = (x: Snap) => {
     const d = ds(x.electionId); if (!d) return null;
@@ -780,28 +945,52 @@ async function restoreWorkspaceFrom(): Promise<boolean> {
     if (x.baseBuiltAt && x.baseBuiltAt !== d.buildInfo.builtAt) rebuilt = true;
     return r.session;
   };
-  const current = ws.current && ds(ws.electionId) ? one(ws.current) : null;
-  const restored: ScenarioSession[] = [];
-  for (const x of ws.sessions) if (!current || x.electionId !== ws.electionId) { const r = one(x); if (r) restored.push(r); }
+  // what could not be reopened stays as it was stored, under its own entry
+  const remaining: Record<string, Entry> = {};
+  const keep = (id: string, e: Entry, f: (ws: Workspace) => void) => f((remaining[id] ??= { at: e.at, ws: { electionId: e.ws.electionId, current: null, sessions: [], drafts: [] } }).ws);
+  const [mainId, main] = entries[0];
+  let current: ScenarioSession | null = null;
+  const mainSessions: ScenarioSession[] = [], beside: ScenarioSession[] = [];
   const drafts: State['scenarioDrafts'] = {};
-  for (const [k, x] of ws.drafts) { const r = one(x); if (r) drafts[k] = r; }
+  for (const [id, e] of entries) {
+    const r = e.ws.current && one(e.ws.current);
+    if (e.ws.current && !r) keep(id, e, (ws) => { ws.current = e.ws.current; });
+    else if (r && id === mainId) current = r;
+    else if (r) beside.push(r);
+    for (const x of e.ws.sessions) {
+      if (id === mainId && current && x.electionId === main.ws.electionId) continue; // the open scenario is that election's work
+      const s = one(x);
+      if (!s) keep(id, e, (ws) => { ws.sessions.push(x); });
+      else (id === mainId ? mainSessions : beside).push(s);
+    }
+    for (const [k, x] of e.ws.drafts) { const s = one(x); if (s) drafts[k] = s; else keep(id, e, (ws) => { ws.drafts.push([k, x]); }); }
+  }
+  pending = remaining;
   const he = state.lang === 'he';
   const notice = [failed ? (he ? `${failed} שינויים מהביקור הקודם לא ניתן היה להחיל מחדש על הנתונים הנוכחיים.` : `${failed} change(s) from your last visit could not be re-applied to the current data.`) : '',
     rebuilt ? (he ? 'הנתונים ההיסטוריים נבנו מחדש מאז הביקור הקודם; השינויים שלא נשמרו הוחלו מחדש על הנתונים הנוכחיים.' : 'The historical data has been rebuilt since your last visit; your unsaved changes were re-applied to the current data.') : ''].filter(Boolean).join(' ') || null;
-  if (seq === openSeq && current) {
+  // the first election that could not be loaded is named in the load banner, whose Try again reopens what is left
+  const failedSnap = Object.values(remaining).flatMap((e) => [...(e.ws.current ? [e.ws.current] : []), ...e.ws.sessions, ...e.ws.drafts.map(([, x]) => x)])[0];
+  const reason = failedSnap && loaded[ids.indexOf(failedSnap.electionId)];
+  const loadError: State['loadError'] = failedSnap ? { id: failedSnap.electionId, message: reason?.status === 'rejected' ? messageOf(reason.reason) : '', kind: kindOf(reason?.status === 'rejected' ? reason.reason : null), retry: () => void restorePending(), kept: true }
+    : state.loadError?.kept ? null : state.loadError;
+  if (current && seq === openSeq && !state.scenario) {
     const sessions: State['sessions'] = {};
-    for (const r of restored) sessions[r.scenario.electionId] ??= r;
-    setState({ electionId: ws.electionId, ...current, sessions, scenarioDrafts: drafts, selectedListId: null, blocPanel: null, loadError: null, notice });
+    for (const r of mainSessions) sessions[r.scenario.electionId] ??= r;
+    const scenarioDrafts = { ...state.scenarioDrafts, ...drafts };
+    for (const r of beside) placeBeside(r, current.scenario.electionId, sessions, scenarioDrafts);
+    setState({ electionId: main.ws.electionId, ...current, sessions, scenarioDrafts, selectedListId: null, blocPanel: null, loadError, notice });
     return true;
   }
-  // Another election opened meanwhile, or the open scenario could not be read: what was restored is kept beside it, as
+  // Another election opened meanwhile, or the open scenario could not be reopened: what was restored is kept beside it, as
   // that election's session when it has none, otherwise as a draft in the scenario switcher.
   const sessions = { ...state.sessions }, scenarioDrafts = { ...drafts, ...state.scenarioDrafts };
-  for (const r of current ? [current, ...restored] : restored) {
-    const e = r.scenario.electionId;
-    if (e !== state.scenario?.electionId && !sessions[e]) sessions[e] = r;
-    else Object.assign(scenarioDrafts, keepAside(r));
-  }
-  setState({ sessions, scenarioDrafts, ...(notice ? { notice } : {}) });
+  for (const r of [...(current ? [current] : []), ...mainSessions, ...beside]) placeBeside(r, state.scenario?.electionId, sessions, scenarioDrafts);
+  setState({ sessions, scenarioDrafts, loadError, ...(notice ? { notice } : {}) });
   return false;
+}
+function placeBeside(r: ScenarioSession, open: ElectionId | undefined, sessions: State['sessions'], scenarioDrafts: State['scenarioDrafts']) {
+  const e = r.scenario.electionId;
+  if (e !== open && !sessions[e]) sessions[e] = r;
+  else Object.assign(scenarioDrafts, keepAside(r));
 }

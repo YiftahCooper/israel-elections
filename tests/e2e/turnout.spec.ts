@@ -113,10 +113,10 @@ test('zero-vote split descendants share observed local votes once when adding tu
   ];
   await page.addInitScript(actions => {
     localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'expert', hintDismissed: true }));
-    localStorage.setItem('israel-elections:workspace:v1', JSON.stringify({ v: 1, electionId: 'k25', current: {
+    localStorage.setItem('israel-elections:workspace:v1', JSON.stringify({ v: 2, tabs: { earlier: { at: 1, ws: { electionId: 'k25', current: {
       id: 'split-test', name: 'Split test', electionId: 'k25', ref: null,
       log: actions.map(action => ({ action, at: '2026-11-07T00:00:00Z' })),
-    }, sessions: [], drafts: [] }));
+    }, sessions: [], drafts: [] } } } }));
   }, actions);
   await page.route('**/data/k25-localities.json', route => route.fulfill({ json: {
     ...local, listIds: [a.id, b.id],
@@ -132,7 +132,7 @@ test('zero-vote split descendants share observed local votes once when adding tu
   await target.fill('30'); await target.press('Enter');
   await panel.getByRole('button', { name: 'Add 100 voters', exact: true }).click();
   await expect.poll(() => page.evaluate(() => {
-    const last = JSON.parse(localStorage.getItem('israel-elections:workspace:v1') ?? 'null')?.current?.log.at(-1)?.action;
-    return last?.type === 'addVoters' ? last.allocations.map((x: { votes: number }) => x.votes) : null;
+    const last = Object.values<{ at: number; ws: { current?: { name?: string; identityColor?: string; log: { action: { type: string; allocations?: { votes: number }[] } }[] } } }>(JSON.parse(localStorage.getItem('israel-elections:workspace:v1') ?? 'null')?.tabs ?? {}).sort((x, y) => y.at - x.at)[0]?.ws.current?.log.at(-1)?.action;
+    return last?.type === 'addVoters' ? last.allocations!.map((x: { votes: number }) => x.votes) : null;
   })).toEqual([25, 25, 50]);
 });

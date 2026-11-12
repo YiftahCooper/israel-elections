@@ -52,7 +52,7 @@ test('save moves the reference, official setting restores markers, colour surviv
   expect(await panel.locator('.edit-marker').count()).toBe(2); // name and votes; colour is appearance
   // Workspace writes are debounced; reload only once this scenario is durable.
   await expect.poll(() => page.evaluate(() => {
-    const current = JSON.parse(localStorage.getItem('israel-elections:workspace:v1') ?? 'null')?.current;
+    const current = Object.values<{ at: number; ws: { current?: { name?: string; identityColor?: string; log: { action: { type: string; allocations?: { votes: number }[] } }[] } } }>(JSON.parse(localStorage.getItem('israel-elections:workspace:v1') ?? 'null')?.tabs ?? {}).sort((x, y) => y.at - x.at)[0]?.ws.current;
     return { name: current?.name, color: current?.identityColor };
   })).toEqual({ name: 'Unity', color: '#417182' });
   // a reload restores the work in progress (owner decision 2026-11-04): still Unity, with its colour

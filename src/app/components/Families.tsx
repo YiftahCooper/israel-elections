@@ -53,10 +53,10 @@ export function Families({s}:{s:Scenario}) {
  const all=[...builtins,...catalogue.users].map(view),chosen=selected.map(id=>all.find(f=>f.id===id)).filter((f):f is Family=>!!f&&!catalogue.hidden.includes(f.id));
  const f=chosen.find(f=>f.id===active)??chosen[0];
  const name=(f:Family)=>shortFamilyName(f,lang);
- const save=(next:typeof catalogue)=>{setCatalogue(next);try{writeCatalogue(next);setError('');}catch{setError(L('Browser storage unavailable. Export to keep your definition.','אחסון הדפדפן אינו זמין. ייצאו כדי לשמור את ההגדרה.'));}};
+ const save=(next:typeof catalogue)=>{setCatalogue(next);try{setCatalogue(writeCatalogue(next,catalogue));setError('');}catch{setError(L('Browser storage unavailable. Export to keep your definition.','אחסון הדפדפן אינו זמין. ייצאו כדי לשמור את ההגדרה.'));}};
  /** The full evidence file with the policy the reader is viewing. */
  const definition=async(x:Family)=>({...await fullDefinition(x),defaultMixedPolicy:x.defaultMixedPolicy});
- const setPolicy=(v:MixedPolicy)=>{if(!f)return;const next={...policies,[f.id]:v};setPolicies(next);try{localStorage.setItem(POLICY,JSON.stringify(next));}catch{/* view-only preference */}};
+ const setPolicy=(v:MixedPolicy)=>{if(!f)return;const next={...readPolicies(),[f.id]:v};setPolicies(next);try{localStorage.setItem(POLICY,JSON.stringify(next));}catch{/* view-only preference */}};
  const edit=async(change:(f:Family)=>Family,saveNew=false)=>{
   if(!f||busy)return;setBusy(true);
   try{const full=await definition(f),copy=saveNew||full.status!=='personal';
