@@ -203,6 +203,17 @@ describe('party histories (identity series)', () => {
     expect(series('tzomet')[electionIndex('k23')].list).toBeNull();
     for (const e of HISTORY) for (const l of e.lists) if (l.withdrawn) for (const p of l.parties) expect(series(p)[electionIndex(e.id)].list, `${e.id} ${l.id} ${p}`).toBeNull();
   });
+  // audit 12 Nov 2026 (dr-gov): both withdrawn lists were submitted by the registered party of the same name (gazette
+  // sponsor lines, data/raw/k21 and k22 candidates.pdf), so they carry its id, not a one-election vehicle's
+  it('Yachad April 2019 and Zehut September 2019: the registered party’s withdrawn list, so that election is not run', () => {
+    expect(historyList('k21', '21-זנ')).toMatchObject({ withdrawn: true, parties: ['yachad'] });
+    expect(historyList('k22', '22-זן')).toMatchObject({ withdrawn: true, parties: ['zehut'] });
+    expect(ran('yachad')).toEqual(['2015:led']);
+    expect(series('yachad')[electionIndex('k21')].list).toBeNull();
+    expect(ran('zehut')).toEqual(['2019:led', '2026:inside']);
+    expect(series('zehut')[electionIndex('k22')].list).toBeNull();
+    expect(comparableFor('k22', '22-זן')!.kind).toBe('withdrawn');
+  });
   it('Labor: Mapai → Labor → The Democrats, every election from 1949', () => {
     const s = series('democrats');
     expect(s.every((p) => p.list)).toBe(true);

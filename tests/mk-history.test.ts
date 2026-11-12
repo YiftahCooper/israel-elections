@@ -43,8 +43,15 @@ describe('runs that did not win a seat', () => {
     expect(audit.runs).toHaveLength(123);
     expect(new Set(audit.runs.map((r: { candidateId: string }) => r.candidateId)).size).toBe(123);
     expect(audit.counts).toEqual({ confirmed: 14, 'ruled out': 17, unknown: 92 });
+    // left out in the review as "a two-word name on a list of another party"; the gazette sponsor line has since shown the
+    // list is Yachad's own (data/meta/parties.json, yachad-filing-2019), so the name rule ties it as for Feiglin's 22-זן
+    const sinceSameParty: Record<string, number> = { '21-זנ#1': 494 };
     for (const r of audit.runs) {
-      if (r.status === 'confirmed') {
+      if (sinceSameParty[r.candidateId]) {
+        expect(r.status).toBe('unknown');
+        expect(personOfCandidate(rt, r.candidateId)).toBe(sinceSameParty[r.candidateId]);
+        expect(rt.people[sinceSameParty[r.candidateId]].runs.find((run) => `${run[1]}#${run[2]}` === r.candidateId)?.slice(3, 5)).toEqual(['withdrawn', 'name']);
+      } else if (r.status === 'confirmed') {
         expect(personOfCandidate(rt, r.candidateId), r.candidateId).toBe(r.personId);
         expect(rt.people[r.personId].runs.find((run) => `${run[1]}#${run[2]}` === r.candidateId)?.[4]).toBe('id');
         expect(r.sourceIds.length).toBeGreaterThan(0);

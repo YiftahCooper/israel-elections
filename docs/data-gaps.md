@@ -3,7 +3,7 @@
 11511 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
 
 - High importance: 865 (confirmed 405, probable 32, provisional 162, disputed 13, unknown 253).
-- Medium importance: 3596 (confirmed 582, probable 244, provisional 544, disputed 7, unknown 2219).
+- Medium importance: 3596 (confirmed 584, probable 244, provisional 544, disputed 7, unknown 2217).
 - Low importance: 7050 (confirmed 572, provisional 803, unknown 5675).
 
 ## High importance: open, by election
@@ -294,8 +294,8 @@ Shown in Standard/Expert views or the After-the-election tab. Grouped by record 
 - **k18**: Family classifications 55 (probable 2, provisional 21, unknown 32); Party appearances 19 (unknown 19); List metadata 15 (unknown 15); data/meta/election-context.json events 4 (probable 2, provisional 1, unknown 1); Term events 2 (probable 1, unknown 1); aftermath results 1 (probable 1); Formation 1 (provisional 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1).
 - **k19**: Family classifications 61 (probable 6, provisional 18, unknown 37); Party appearances 17 (unknown 17); data/meta/election-context.json events 9 (probable 1, provisional 5, unknown 3); List metadata 6 (probable 2, unknown 4); Formation 2 (provisional 2); aftermath results 1 (probable 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1); Term events 1 (probable 1).
 - **k20**: Family classifications 66 (probable 5, provisional 18, unknown 43); List metadata 15 (unknown 15); Party appearances 13 (unknown 13); data/meta/election-context.json events 5 (probable 2, provisional 3); Formation 2 (provisional 2); data/raw/kN/localities.datagov.json records 1 (unknown 1); Government 1 (unknown 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1).
-- **k21**: Family classifications 78 (probable 2, provisional 17, unknown 59); Party appearances 27 (unknown 27); data/meta/election-context.json events 6 (probable 4, provisional 2); Formation 2 (provisional 2); aftermath results 1 (provisional 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1); Term events 1 (probable 1).
-- **k22**: Family classifications 52 (probable 2, provisional 15, unknown 35); Party appearances 20 (unknown 20); Formation 4 (provisional 4); data/meta/election-context.json events 3 (probable 2, provisional 1); data/meta/kN-corrections.json withdrawn 3 (provisional 3); Term events 3 (probable 3); Issue polling 1 (unknown 1); List metadata 1 (unknown 1); Reactions 1 (unknown 1).
+- **k21**: Family classifications 78 (probable 2, provisional 17, unknown 59); Party appearances 26 (unknown 26); data/meta/election-context.json events 6 (probable 4, provisional 2); Formation 2 (provisional 2); aftermath results 1 (provisional 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1); Term events 1 (probable 1).
+- **k22**: Family classifications 52 (probable 2, provisional 15, unknown 35); Party appearances 19 (unknown 19); Formation 4 (provisional 4); data/meta/election-context.json events 3 (probable 2, provisional 1); data/meta/kN-corrections.json withdrawn 3 (provisional 3); Term events 3 (probable 3); Issue polling 1 (unknown 1); List metadata 1 (unknown 1); Reactions 1 (unknown 1).
 - **k23**: Family classifications 41 (probable 2, provisional 14, unknown 25); Party appearances 19 (unknown 19); data/meta/election-context.json events 5 (probable 2, provisional 3); Formation 5 (probable 2, provisional 3); Term events 3 (probable 3); Issue polling 1 (unknown 1); Reactions 1 (unknown 1).
 - **k24**: Family classifications 56 (probable 4, provisional 15, unknown 37); Party appearances 23 (unknown 23); data/meta/election-context.json events 4 (provisional 4); Formation 2 (probable 2); aftermath results 1 (provisional 1); Issue polling 1 (probable 1); Reactions 1 (unknown 1).
 - **k25**: data/raw/polls/kN/polls.json polls 159 (unknown 159); Family classifications 47 (probable 2, provisional 17, unknown 28); Party appearances 26 (unknown 26); List metadata 11 (probable 2, provisional 3, unknown 6); Term events 3 (probable 1, unknown 2); data/meta/election-context.json events 2 (probable 1, provisional 1); Formation 2 (provisional 2); aftermath results 1 (provisional 1); data/raw/polls/kN/cec-13-final-supplement.json record 1 (unknown 1); data/raw/polls/kN/cec-13-final-supplement.json undecidedOnlyPct 1 (unknown 1); Government 1 (unknown 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1).
@@ -323,7 +323,7 @@ Every claim in these families, not only gaps. Derived from each claim’s own so
 
 ## Counts
 
-By kind: unknown: 6971; missing-field: 283; conflict: 18; single-source: 2481; low-confidence: 101; release-hold: 0; inferred: 1167; pending: 389; unconfirmed: 101.
+By kind: unknown: 6969; missing-field: 283; conflict: 18; single-source: 2483; low-confidence: 101; release-hold: 0; inferred: 1167; pending: 389; unconfirmed: 101.
 
 By status: inferred-not-verified: 1032; needs-current-status-review: 313; open: 10166.
 
@@ -349,8 +349,8 @@ By status: inferred-not-verified: 1032; needs-current-status-review: 313; open: 
 | k18 | 7 | 99 | 344 | 475 |
 | k19 | 5 | 99 | 344 | 478 |
 | k20 | 11 | 105 | 309 | 448 |
-| k21 | 2 | 117 | 339 | 510 |
-| k22 | 5 | 88 | 352 | 484 |
+| k21 | 2 | 116 | 339 | 510 |
+| k22 | 5 | 87 | 352 | 484 |
 | k23 | 4 | 75 | 269 | 395 |
 | k24 | 12 | 88 | 303 | 438 |
 | k25 | 8 | 256 | 393 | 699 |

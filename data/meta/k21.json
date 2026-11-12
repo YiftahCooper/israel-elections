@@ -1302,6 +1302,48 @@
         "sourceId": "k21-candidates-gazette",
         "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
       }
+    },
+    {
+      "letters": "זנ",
+      "nameHe": "יחד בראשות אלי ישי",
+      "sources": [
+        {
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8168.pdf",
+          "publisher": "Central Elections Committee / Reshumot (candidate-list gazette, 2019-03-25)",
+          "kind": "official",
+          "quote": "יחד - בראשות אלי ישי",
+          "accessed": "2026-11-12",
+          "locator": "data/raw/k21/candidates.pdf, PDF page 11"
+        },
+        {
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset20-cand.pdf",
+          "publisher": "Central Elections Committee / Reshumot (candidate-list gazette, 2015-03-10)",
+          "kind": "official",
+          "quote": "מטעם המפלגות: יחד - בראשות אלי ישי; חזית יהודית לאומית",
+          "accessed": "2026-11-12",
+          "locator": "data/raw/k20/candidates.pdf"
+        }
+      ],
+      "parties": [
+        {
+          "id": "yachad",
+          "nameHe": "יחד",
+          "nameEn": "Yachad",
+          "candidateRanks": [
+            1
+          ],
+          "confidence": "high",
+          "sources": [
+            {
+              "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8168.pdf",
+              "publisher": "Central Elections Committee / Reshumot",
+              "kind": "official",
+              "quote": "יחד - בראשות אלי ישי",
+              "accessed": "2026-11-12"
+            }
+          ]
+        }
+      ]
     }
   ],
  "blocSchemes": [
