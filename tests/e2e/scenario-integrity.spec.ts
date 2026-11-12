@@ -40,10 +40,12 @@ for (const lang of ['en', 'he'] as const) test(`ax-screens-c-03: the expanded me
   await page.locator('#tab-whatif').click();
   const row = page.locator('.wi-row').filter({ hasText: MERGER[lang] });
   await row.locator('.wi-q').click();
-  const fact = row.locator('.wi-facts li').filter({ hasText: '→' }).first();
+  // the expanded line uses words, not an arrow: "A 6 + B 7 = 13 apart, 14 together +1" (WhatIf.tsx)
+  const fact = row.locator('.wi-facts li').filter({ hasText: lang === 'he' ? 'בנפרד' : 'apart' }).first();
   // the parts as they were, their sum, then the joint list's own result and the difference
-  await expect(fact).toContainText(/6 \+ .*7 = /);
-  await expect(fact.locator('bdi[dir="ltr"]').first()).toHaveText('13 → 14');
+  await expect(fact).toContainText(lang === 'he' ? /6 \+ .*7 = 13 בנפרד/ : /6 \+ .*7 = 13 apart/);
+  await expect(fact.locator('b')).toHaveText('14');
+  await expect(fact).toContainText(lang === 'he' ? 'יחד' : 'together');
   await expect(fact.locator('.seat-delta')).toHaveText(/1/);
   await expect(fact).not.toContainText('14 =');
 });
