@@ -88,12 +88,18 @@ is *probable*. Newspaper reports need the number of independent reports the poli
 For a list at one election, look at each of its parties at the previous election, following any renames and
 mergers:
 
-- **Counted:** an earlier list counts **whole** when all of its parties are on the current list.
+- **Counted:** an earlier list counts **whole** when all of its parties are on the current list. A partner that did
+  not run at all does not stop it counting; a list whose leading party did not run does not count on a partner's new
+  list (Yachad 2015: only Otzma Yehudit joined the Union of Right-Wing Parties in 2019, so Otzma is "not counted").
 - **Not counted:** an earlier list that also held parties now running elsewhere is named and left out, because its
   votes cannot be divided.
 - **Split:** when the leading party's earlier list is now spread over several lists, the comparison is made for the
   group: "Religious Zionism 2022 → 3 lists: 14 → 13 ▼1". There is no figure for each successor.
 - **New:** no earlier list qualifies.
+
+The Compare screen pairs lists by the same records, so a list the comparison counts is always in the same Compare row.
+A partner that moved to another list is noted there ("moved on"); the row keeps its word (Same, Renamed), because the
+leading party's list did not split.
 
 A comparison is only as sure as the least sure relation it used. Applied to the 2026 results:
 

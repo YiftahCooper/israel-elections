@@ -75,6 +75,19 @@ describe('the 2026 comparison table (docs/features/party-history.md §1.4)', () 
     expect(c.counted.map((l) => l.id)).toEqual(['25-כן']);
     expect(c.left).toEqual([{ partyId: 'new-hope', listId: '26-מחל' }]);
   });
+  it('Union of Right-Wing Parties 2019: Jewish Home only; Yachad 2015 is not counted, its leading party did not join (Otzma ran inside it)', () => {
+    const c = comparableFor('k21', '21-טב')!;
+    expect(c.kind).toBe('partial');
+    expect(c.counted.map((l) => l.id)).toEqual(['20-טב']);
+    expect(c.notCounted).toEqual([{ partyId: 'otzma-yehudit', listId: '20-קץ' }]);
+    expect([c.before.seats, c.after.seats]).toEqual([8, 5]);
+    expect(c.before.votes).toBe(historyList('k20', '20-טב')!.votes);
+  });
+  it('an earlier list whose leading party ran nowhere is not counted on a partner’s new list (Morasha 1984 into Agudat Yisrael 1988)', () => {
+    const c = comparableFor('k12', '12-ג')!;
+    expect(c.counted.map((l) => l.id)).toEqual(['11-ג']);
+    expect(c.notCounted).toEqual([{ partyId: 'poalei-agudat-yisrael', listId: '11-עד' }]);
+  });
   it('1949 has nothing to compare with', () => expect(comparableFor('k1', HISTORY[0].lists[0].id)!.kind).toBe('first'));
 });
 
