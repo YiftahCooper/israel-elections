@@ -32,6 +32,8 @@ export interface GlossarySource extends GlossaryLink {
   supports: string;
   /** ISO date the URL was loaded and the passage confirmed */
   checked: string;
+  /** the copy kept in the repository (a path under data/raw, listed in data/raw/SOURCES.json), where one is stored */
+  retained?: string;
 }
 
 export interface GlossaryTerm {
@@ -73,6 +75,7 @@ const L = {
   s67: law('Seif108', 'סעיף 67 (התקשרות בין רשימות)'),
   s68: law('Seif109', 'סעיף 68 (מקום קלפי)'),
   s68a: law('Seif110', 'סעיף 68א ואילך (הצבעה מחוץ לקלפי הרגילה)'),
+  s70: law('Seif113', 'סעיף 70 (הוראות במקרים מיוחדים)'),
   s78: law('Seif123', 'סעיף 78 (קולות פסולים)'),
   s81: law('Seif126', 'סעיף 81 (חלוקת המנדטים)'),
   s82: law('Seif127', 'סעיף 82 (רשימות קשורות)'),
@@ -81,6 +84,11 @@ const L = {
 const BL_KNESSET: GlossaryLink = { title: 'חוק-יסוד: הכנסת', publisher: NEVO, url: 'https://www.nevo.co.il/law_html/law00/72242.htm' };
 const BL_GOV: GlossaryLink = { title: 'חוק-יסוד: הממשלה', publisher: NEVO, url: 'https://www.nevo.co.il/law_html/law00/73690.htm' };
 const KNESSET_LAW: GlossaryLink = { title: 'חוק הכנסת, התשנ"ד-1994, פרק ו\' (ראש האופוזיציה)', publisher: NEVO, url: 'https://www.nevo.co.il/law_html/law00/72263.htm' };
+// the texts behind the glossary's statements, kept in data/raw (audit 12 Nov 2026, cx-law)
+const LAW_EXTRACT = 'data/raw/law/elections-law-consolidated-extract.txt';
+const ORDINANCE_1948: GlossaryLink = { title: 'פקודת הבחירות לאסיפה המכוננת, תש"ט-1948, ס\' 16(ג)', publisher: 'הכנסת – ארכיון החקיקה', url: 'https://fs.knesset.gov.il/0/law/0_lsr_312706.pdf' };
+const ORDINANCE_1948_AMENDMENT: GlossaryLink = { title: 'פקודת הבחירות לאסיפה המכוננת (תיקון), תש"ט-1948 (עיתון רשמי 40, 31.12.1948), ס\' 1(ג)', publisher: 'הכנסת – ארכיון החקיקה', url: 'https://fs.knesset.gov.il/0/law/0_lsr_312720.pdf' };
+const BL_GOV_1992: GlossaryLink = { title: 'חוק-יסוד: הממשלה, 1992 (הנוסח המקורי)', publisher: 'הכנסת – ארכיון החקיקה', url: 'https://fs.knesset.gov.il/12/law/12_lsr_210707.pdf' };
 const LAW_1949: GlossaryLink = { title: 'פקודת הבחירות לאספה המכוננת (עיתון רשמי 33, תוספת א\'), ס\' 30–31', publisher: 'הכנסת – ארכיון החקיקה', url: 'https://fs.knesset.gov.il/0/law/0_lsr_312706.pdf' };
 const LAW_1951: GlossaryLink = { title: 'חוק הבחירות לכנסת, 1951 (ס"ח 74 עמ\' 116), ס\' 38–40', publisher: 'הכנסת – ארכיון החקיקה', url: 'https://fs.knesset.gov.il/1/law/1_lsr_208018.pdf' };
 const LAW_1973: GlossaryLink = { title: 'חוק הבחירות לכנסת (תיקון מס\' 4), 1973 (ס"ח 692 עמ\' 108)', publisher: 'הכנסת – ארכיון החקיקה', url: 'https://fs.knesset.gov.il/7/law/7_lsr_211799.pdf' };
@@ -155,7 +163,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     defEn: 'Each list has a name and Hebrew letters printed on its ballot slip to tell it apart from the others: up to three letters since July 2026, one or two before. A joint list of parties already in the Knesset may combine their letters beyond that. A party represented in the outgoing Knesset has priority to keep its letters.',
     linkHe: L.s61, linkEn: E.electionDay,
     sources: [
-      src(L.s61, 'he', 'law', 's.61(a)–(b): a name with up to three Hebrew letters; a joint list of represented parties may exceed that; priority for parties in the outgoing Knesset'),
+      { ...src(L.s61, 'he', 'law', 's.61(a)–(b): a name with up to three Hebrew letters; a joint list of represented parties may exceed that; priority for parties in the outgoing Knesset'), checked: '2026-11-12', retained: LAW_EXTRACT },
       { title: 'ספר החוקים 3546, תיקון לחוק הבחירות לכנסת (16 ביולי 2026)', publisher: 'הכנסת (רשומות)', url: 'https://fs.knesset.gov.il/25/law/25_lsr_14147458.pdf', lang: 'he', kind: 'law', supports: 's.61(a) amended: up to three letters replaces one letter or two (two was the limit before July 2026)', checked: '2026-11-12' },
       src(CEC25, 'he', 'official', 'results table column "אותיות הרשימה"'),
       src(E.electionDay, 'en', 'institute', 'each slip bears the list’s name and its identifying letter or letters'),
@@ -374,7 +382,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     sources: [
       src(H.methods, 'he', 'institute', '"שיטת סנט לגואה המשופרת": divisors 1.4, 3, 5, 7'),
       src(E.methods, 'en', 'institute', 'modified Sainte-Laguë, divisors 1.4, 3, 5, 7; Norway (its statement on Sweden is out of date)'),
-      { title: 'Så fördelas mandaten', publisher: 'Valmyndigheten (Swedish Election Authority)', url: 'https://www.val.se/det-svenska-valsystemet/rostrakning-och-mandatfordelning/sa-fordelas-mandaten', lang: 'en', kind: 'official', supports: 'Sweden: the first divisor is 1.2 (divideras med 1,2); page in Swedish', checked: '2026-11-12' },
+      { title: 'Så fördelas mandaten', publisher: 'Valmyndigheten (Swedish Election Authority)', url: 'https://www.val.se/det-svenska-valsystemet/rostrakning-och-mandatfordelning/sa-fordelas-mandaten', lang: 'en', kind: 'official', supports: 'Sweden: the first divisor is 1.2 (divideras med 1,2); page in Swedish', checked: '2026-11-12', retained: 'data/raw/law/sweden-seat-allocation-extract.txt' },
     ],
   },
   {
@@ -436,12 +444,15 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'polling-station', nameHe: 'קלפי', nameEn: 'Polling station', level: 'simple', provenance: 'sourced',
-    defHe: 'המקום שבו מצביעים. שטח המדינה מחולק לאזורי קלפי ממוספרים, בדרך כלל עד 800 בוחרים באזור (ועדת הבחירות המרכזית רשאית לאשר עד 900), ובכל אזור קלפי אחת, ובשעת הצורך שתיים. כל בוחר רשום לקלפי מסוימת לפי מענו. הספירה נעשית בכל קלפי מיד בתום ההצבעה.',
-    defEn: 'The place where people vote. The country is divided into numbered polling areas, normally of up to 800 voters (the Central Elections Committee may approve up to 900), each with one ballot box, or a second where needed. Every voter is assigned to one station by address. Votes are counted at each station as soon as voting ends.',
+    defHe: 'המקום שבו מצביעים. שטח המדינה מחולק לאזורי קלפי ממוספרים, כיום בדרך כלל עד 800 בוחרים באזור (ועדת הבחירות המרכזית רשאית לאשר עד 900; ב-1949: עד 1,000, ובאישורה עד 1,500), ובכל אזור קלפי אחת, ובשעת הצורך שתיים. כל בוחר רשום לקלפי מסוימת לפי מענו. הספירה נעשית בכל קלפי מיד בתום ההצבעה.',
+    defEn: 'The place where people vote. The country is divided into numbered polling areas, today normally of up to 800 voters (the Central Elections Committee may approve up to 900; in 1949, 1,000, or 1,500 with its approval), each with one ballot box, or a second where needed. Every voter is assigned to one station by address. Votes are counted at each station as soon as voting ends.',
     linkHe: H.electionDay, linkEn: E.electionDay,
     sources: [
-      src(L.s9, 'he', 'law', 'ss.9–11: polling areas, one locality, at most 800 voters, up to 900 with the committee’s approval'),
-      src(L.s68, 'he', 'law', 's.68(a)–(b): one ballot box per polling area; a second where needed'),
+      { ...src(L.s9, 'he', 'law', 'ss.9–11: polling areas, one locality, at most 800 voters, up to 900 with the committee’s approval'), checked: '2026-11-12', retained: LAW_EXTRACT },
+      { ...src(L.s68, 'he', 'law', 's.68(a): one ballot box per polling area'), checked: '2026-11-12', retained: LAW_EXTRACT },
+      { ...src(L.s70, 'he', 'law', 's.70(b): a second ballot box where an area has more than 900 voters or a long queue is expected'), checked: '2026-11-12', retained: LAW_EXTRACT },
+      { ...src(ORDINANCE_1948, 'he', 'law', '1949: s.16(c): a polling area’s voter list holds at most 1,000 voters; the committee may approve up to 1,200'), checked: '2026-11-03', retained: 'data/raw/k1/law-1948.pdf' },
+      { ...src(ORDINANCE_1948_AMENDMENT, 'he', 'law', '1949: s.1(c) replaces 1,200 in s.16(c) by 1,500 (published 31 Dec 1948, before the January 1949 vote)'), checked: '2026-11-03', retained: 'data/raw/k1/law-1948-312720.pdf' },
       src(CEC25, 'he', 'official', 'results by polling station ("תוצאות לפי קלפיות")'),
       src(E.knesset101, 'en', 'institute', 'voters assigned in advance to a polling station by registered residence'),
     ],
@@ -551,6 +562,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     linkHe: H.headOfState, linkEn: E.formation,
     sources: [
       src(BL_GOV, 'he', 'law', 's.7: President assigns the task after consulting factions; s.13: constitution by confidence'),
+      { ...src(BL_GOV_1992, 'he', 'law', '1992 text: s.3(b): the Prime Minister elected directly; s.63(a): from the elections to the 14th Knesset (1996)'), checked: '2026-11-12', retained: 'data/raw/law/basic-law-government-1992.pdf' },
       src(H.headOfState, 'he', 'institute', 'the head of state’s role in government formation'),
       src(E.formation, 'en', 'institute', 'process, time limits, investiture'),
       src(E.president, 'en', 'institute', 'first, second and 61-MK third attempts'),

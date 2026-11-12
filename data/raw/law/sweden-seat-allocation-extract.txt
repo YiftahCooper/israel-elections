@@ -1,0 +1,16 @@
+Valmyndigheten (Swedish Election Authority), "Så fördelas mandaten" (How the seats are allocated): extract.
+Source: https://www.val.se/det-svenska-valsystemet/rostrakning-och-mandatfordelning/sa-fordelas-mandaten
+Retrieved: 2026-11-12 (audit of 12 Nov 2026, lane cx-law); HTTP 200; project User-Agent.
+Original HTML SHA-256: 154a1b00931be176a9c6b7d739f13270c70c373d3e318861054fc20dd609b820 (229,968 bytes; not retained).
+This is a short text extract of the official page, not the whole page. Swedish, verbatim.
+In English: the seats are allocated one at a time by the modified odd-number (Sainte-Laguë) method; a party's
+votes are divided by 1.2 for its first seat, then by 3, 5, 7, 9, 11 and so on.
+
+Så delas mandaten ut
+Mandaten delas ut ett i taget med den jämkade uddatalsmetoden.
+Det betyder att ett partis totala antal röster – det så kallade röstetalet – i varje omgång delas med ett delningstal:
+Första mandatet: partiets röstetal divideras med 1,2
+Andra mandatet: partiets röstetal divideras med 3
+Tredje mandatet: partiets röstetal divideras med 5
+Fjärde mandatet osv.: partiets röstetal divideras med 7, 9, 11 … osv.
+Divideringen ger varje parti ett jämförelsetal. I varje omgång går nästa mandat till det parti som har det högsta jämförelsetalet. De andra partiernas jämförelsetal ändras inte utan används även i nästa omgång.
