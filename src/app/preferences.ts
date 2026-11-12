@@ -50,12 +50,13 @@ export function validAnswers(value: unknown): PreferenceAnswers {
   return answers;
 }
 
-/** Read only recognised, election-scoped item answers. Entity existence is checked against
- * the scenario when used: custom lists may only exist in a restored browser workspace. */
+/** Read only recognised item answers: election-scoped list and bloc answers, and "Mark changes since" for one saved
+ * scenario. Entity existence is checked against the scenario when used: custom lists may only exist in a restored
+ * browser workspace. */
 export function validItemAnswers(value: unknown): Record<string, string> {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
   return Object.fromEntries(Object.entries(value).filter(([key, answer]) => {
-    const match = /^(voteSource|copyMode):(k(?:[1-9]|1[0-9]|2[0-6])):(list|bloc):(.+)$/.exec(key);
+    const match = /^(voteSource|copyMode):(k(?:[1-9]|1[0-9]|2[0-6])):(list|bloc):(.+)$/.exec(key) ?? /^(comparison)::(.+)$/.exec(key);
     return match && typeof answer === 'string' && validAnswers({ [match[1]]: answer })[match[1] as PreferenceId] === answer;
   }));
 }

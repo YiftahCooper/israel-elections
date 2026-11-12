@@ -1,5 +1,6 @@
 // Versioned by algorithm contract: bump when allocation/search semantics change.
-const PREFIX = 'israel-elections:analysis:v1:';
+// v2 (12 Nov 2026): complete vote sweeps, settled majority flips, 'not possible' under the candidate cap.
+const FAMILY = 'israel-elections:analysis:', PREFIX = `${FAMILY}v2:`;
 const memory = new Map<string, string>();
 export const encodeAnalysis = (value: unknown) => JSON.stringify(value, (_, v) => typeof v === 'bigint' ? { $bigint: String(v) } : v);
 const decode = (value: string) => JSON.parse(value, (_, v) => v && typeof v === 'object' && Object.keys(v).length === 1 && typeof v.$bigint === 'string' ? BigInt(v.$bigint) : v);
@@ -27,6 +28,8 @@ export function retainAnalysis(input: unknown, result: unknown): void {
     const storage = globalThis.localStorage;
     if (!storage) return;
     // Bound retained working results; never evict scenario saves or other app settings.
+    // results kept by an earlier version are never read again; they only take space
+    for (const old of Object.keys(storage)) if (old.startsWith(FAMILY) && !old.startsWith(PREFIX)) storage.removeItem(old);
     const keys = Object.keys(storage).filter(k => k.startsWith(PREFIX));
     if (keys.length >= 120 && !storage.getItem(key)) storage.removeItem(keys[0]);
     try { storage.setItem(key, raw); }

@@ -136,7 +136,7 @@ const EXPECTED: Record<Family, string> = {
   // merged with k4 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k5 audit fixes: combined digest = union of the separately reviewed changes.
   allocation: '2bc949a3aaf91af20af8f4704c06b30fcfacf7d534d82c2bdc578d41023bf1a8',
-  analysis: 'e1e556de2f73c7ee52dbd64238835a04c50597e216baa6fdb9d2075b1be56f55',
+  analysis: '43f8772fa2f013a5f8a78f20608c097a5e62184718d7a3a197ff3adeeb6ce43e',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
   // corrected names (0088 addendum: 1955 #24, 1959 #47, 2003 Shinui #14); src unchanged, other digests unchanged.
@@ -280,7 +280,11 @@ const EXPECTED: Record<Family, string> = {
   // (scripts/lib/build/finalize.ts): only shortEn fields with ’ change (k9, k11, k13–k17, k20, k21). Other digests unchanged.
   // Merged with fx-after's k12 change (12 Nov): the datasets differ from the previous commit only in the fields named
   // above (field-by-field diff of all 26 published datasets), so the digest is the two changes together.
-  model: '07cf0bddd7d77f41e1b41641dd3a7d69e17f7d8cda87d545489ca0d38f6ae9d4',
+  // fx-state (12 Nov, c-state-code-15): removing a withdrawn list takes its held ballots out of the invalid count, and
+  // merging or splitting a withdrawn list is refused. 28 of 520 cases differ, all in three sequences from the changed
+  // step on (seq8 from removeList; seq17 and seq23 from the refused merge); allocation, validation and rules digests are
+  // unchanged (case-by-case against the previous tree, .backup-scratch/audit-1112/fable-check/model-diff2.ts).
+  model: 'c4313a17bf8f81ff83ab9188ebf8fca4f8ff4075018bde4f0d65732eed1052f4',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

@@ -14,7 +14,8 @@ const base = scenarioFromDataset(ds);
 const likud = base.lists.find((l) => l.shortEn === 'Likud')!;
 
 // sample arguments for the messages that name a list or a number; a new parameterised message must be added here
-const SAMPLES: Record<string, unknown[]> = { withdrawn: [likud], notEnoughVotes: [likud, 1234], poolTooSmall: [1234], splitOver: [2000, 1000], groupInvalid: [2] };
+const SAMPLES: Record<string, unknown[]> = { withdrawn: [likud], notEnoughVotes: [likud, 1234], poolTooSmall: [1234], splitOver: [2000, 1000], groupInvalid: [2],
+  storageLost: [{ saved: 3, comparisons: -1, workspace: true, settings: true }] };
 const messages = Object.entries(M).map(([k, m]) => {
   if (typeof m !== 'function') return [k, m] as const;
   expect(SAMPLES[k], `sample arguments for M.${k}`).toBeDefined();

@@ -51,5 +51,5 @@ export const hasAppearance = (s:Pick<Scenario,'log'>) => s.log.some(e=>isAppeara
 export const STORE_FIELDS = {
  familyView:'B',datasets:'A',elections:'A',electionId:'B',scenario:'A',preview:'A',reference:'A',past:'A',future:'A',saved:'A',sessions:'A',scenarioDrafts:'A',compare:'A',
  markOfficial:'B',selectedListId:'C',blocPanel:'C',tool:'C',comparing:'B',lang:'C',theme:'C',level:'C',customFeatures:'C',settings:'B',
- toast:'C',loadError:'C',notice:'C',voteSource:'B',preferences:'B',settingsOpen:'C',settingsFocus:'C',preferenceAsk:'C',preferenceFor:'B',
+ toast:'C',loadError:'C',notice:'C',storageLoss:'C',voteSource:'B',preferences:'B',settingsOpen:'C',settingsFocus:'C',preferenceAsk:'C',preferenceFor:'B',
 } as const satisfies Record<keyof import('../app/store.ts').State,'A'|'B'|'C'>;

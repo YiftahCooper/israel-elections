@@ -4,6 +4,9 @@
 import { englishLabel } from '../data/names.ts';
 
 export type Msg = { en: string; he: string };
+/** Stored values the app could not read and left out: how many saved scenarios or comparisons (−1: an unknown number),
+ *  whether part of the last visit's unsaved work, whether some settings. */
+export type StorageLoss = { saved?: number; comparisons?: number; workspace?: boolean; settings?: boolean };
 type Named = { shortHe: string; shortEn: string | null };
 const en = (l: Named) => englishLabel(l.shortEn, l.shortHe);
 const n = (x: number) => x.toLocaleString('en-US');
@@ -76,6 +79,18 @@ export const M = {
   groupRange: { en: "A group's turnout must be from 0% to 100%.", he: 'שיעור ההצבעה של קבוצה חייב להיות בין 0% ל־100%.' },
   groupTotals: { en: 'The locality results do not add up, so this group cannot be changed.', he: 'תוצאות היישובים אינן מסתכמות, ולכן אי אפשר לשנות את הקבוצה הזו.' },
   groupNoList: { en: "A list from the election is no longer in this scenario, so its voters' choice has nowhere to go.", he: 'רשימה מהבחירות כבר אינה בתרחיש, ולכן לקולות שלה אין לאן ללכת.' },
+  // what this browser kept and the app could not read (src/app/store.ts storageLoss); one plain line
+  storageLost: (loss: StorageLoss): Msg => {
+    const count = (k: number | undefined, one: Msg, many: (n: number) => Msg, some: Msg): Msg | null => !k ? null : k === 1 ? one : k > 0 ? many(k) : some;
+    const parts = [
+      count(loss.saved, { en: '1 saved scenario', he: 'תרחיש שמור אחד' }, (k) => ({ en: `${n(k)} saved scenarios`, he: `${n(k)} תרחישים שמורים` }), { en: 'saved scenarios', he: 'תרחישים שמורים' }),
+      count(loss.comparisons, { en: '1 saved comparison', he: 'השוואה שמורה אחת' }, (k) => ({ en: `${n(k)} saved comparisons`, he: `${n(k)} השוואות שמורות` }), { en: 'saved comparisons', he: 'השוואות שמורות' }),
+      loss.workspace ? { en: 'unsaved work from your last visit', he: 'עבודה שלא נשמרה מהביקור הקודם' } : null,
+      loss.settings ? { en: 'some settings', he: 'חלק מההגדרות' } : null,
+    ].filter((x): x is Msg => !!x);
+    return { en: `Some of what this browser kept could not be read and was left out: ${parts.map((p) => p.en).join(', ')}.`,
+      he: `חלק ממה שנשמר בדפדפן הזה לא היה קריא, ולכן הושמט: ${parts.map((p) => p.he).join(', ')}.` };
+  },
 } satisfies Record<string, Msg | ((...args: never[]) => Msg)>;
 
 /** A refused change, with its message in both languages (`message` is the English one). */

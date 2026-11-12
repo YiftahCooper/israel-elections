@@ -31,3 +31,25 @@ test('denied storage still computes and reuses memory', async () => {
   expect(cachedAnalysis('denied-storage', compute)).toEqual({ votes: 9n });
   expect(compute).toHaveBeenCalledTimes(1);
 });
+// results kept before the search fixes of 12 Nov 2026 (complete sweeps, settled flips, the candidate cap) are not read,
+// and are cleared when a new result is kept (audit c-analysis-code-01 to -03; the cache comment asks for a bump)
+test('results kept by an earlier version are never read and are cleared', async () => {
+  const store: Record<string, string> = {};
+  Object.defineProperties(store, {
+    getItem: { value: (k: string) => store[k] ?? null }, setItem: { value: (k: string, v: string) => { store[k] = v; } },
+    removeItem: { value: (k: string) => { delete store[k]; } },
+  });
+  vi.stubGlobal('localStorage', store);
+  const { retainAnalysis } = await import('../src/app/analysisCache.ts');
+  retainAnalysis('version-check', { votes: 1n });
+  const [now] = Object.keys(store);
+  expect(now).toMatch(/^israel-elections:analysis:v2:/);
+  const old = now.replace(':v2:', ':v1:');
+  store[old] = store[now]; delete store[now];
+  vi.resetModules();
+  const fresh = await import('../src/app/analysisCache.ts');
+  expect(fresh.readAnalysis('version-check')).toBeUndefined();
+  store['israel-elections:v1'] = '{}';
+  fresh.retainAnalysis('another', { votes: 2n });
+  expect(Object.keys(store).sort()).toEqual([expect.stringMatching(/^israel-elections:analysis:v2:/), 'israel-elections:v1']);
+});

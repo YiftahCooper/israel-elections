@@ -1,6 +1,7 @@
 // Analysis tasks that can run in a background worker or on the main thread with exactly the same
 // code and result. Tasks and results are plain data (bigints included), so they cross postMessage.
 import { goals, minimalChange, sweepVotes, type SearchResult, type SweepResult, type VoteSource } from '../engine/analysis.ts';
+import { allocate } from '../engine/allocate.ts';
 import type { AllocationInput } from '../engine/types.ts';
 
 export interface SecurityItem { id: string; qualified: boolean; seats: number }
@@ -19,8 +20,9 @@ export type AnalysisTask =
   | { kind: 'seatTarget'; input: AllocationInput; src: VoteSource; id: string; seats: number; n: number }
   /** one seat-security figure for one list */
   | { kind: 'security'; input: AllocationInput; src: VoteSource; part: SecurityPart; item: SecurityItem }
-  /** the smallest transfer from one list to another that takes a group of lists across n seats */
-  | { kind: 'groupTransfer'; input: AllocationInput; from: string; to: string; ids: string[]; n: number; below: boolean }
+  /** the smallest transfer from one list to another that takes a group of lists across n seats; with `max`, every
+   *  transfer up to it is checked (a search below an answer already found, which settles it exactly) */
+  | { kind: 'groupTransfer'; input: AllocationInput; from: string; to: string; ids: string[]; n: number; below: boolean; max?: bigint }
   /** every point in a vote range where the seats change */
   | { kind: 'sweep'; input: AllocationInput; target: string; from: bigint; to: bigint };
 
@@ -36,7 +38,8 @@ export function runTask(task: AnalysisTask): SearchResult | SecurityFigure | Tra
     case 'security': return securityPart(task.input, task.src, task.part, task.item);
     case 'groupTransfer': {
       const goal = task.below ? goals.groupSeatsBelow(task.ids, task.n) : goals.groupSeatsAtLeast(task.ids, task.n);
-      const m = minimalChange(task.input, task.to, { kind: 'transfer', listId: task.from }, goal);
+      const m = task.max === undefined ? minimalChange(task.input, task.to, { kind: 'transfer', listId: task.from }, goal)
+        : minimalChange(task.input, task.to, { kind: 'transfer', listId: task.from, max: task.max }, goal, 'gain', Math.max(1, Number(task.max)));
       return { found: m.found, votes: m.votes, exact: m.exact, reason: m.reason };
     }
     case 'sweep': return sweepVotes(task.input, task.target, task.from, task.to);
@@ -46,8 +49,18 @@ export function runTask(task: AnalysisTask): SearchResult | SecurityFigure | Tra
 /** 'lose' only for a list with seats: a qualified list without seats has none to lose */
 export const partsOf = (item: SecurityItem): SecurityPart[] => (item.qualified ? (item.seats > 0 ? ['gain', 'lose'] : ['gain']) : ['qualify']);
 
+/** Under a candidate cap (1977) a list with as many seats as candidates can win no more, whatever its votes: the answer
+ *  is "not possible", not a search that finds nothing. */
+const beyondCandidates = (input: AllocationInput, id: string, seats: number): boolean => {
+  const c = input.lists.find((l) => l.id === id)?.candidateCount;
+  return !!input.rules.seatsCappedAtCandidates && c !== undefined && seats > c;
+};
+const impossible = (input: AllocationInput): SearchResult =>
+  ({ found: false, votes: null, before: allocate(input), after: null, lastFailing: null, nonMonotonic: false, exact: true, reason: 'infeasible', limit: 0n });
+
 /** One list's search; 'lose' looks for the first seat lost (or, with no seats, falling below the threshold). */
 export function listSearch(input: AllocationInput, src: VoteSource, goal: ListGoal, id: string, seats: number): SearchResult {
+  if (goal === 'gain' && beyondCandidates(input, id, seats + 1)) return impossible(input);
   if (goal === 'disqualify') return minimalChange(input, id, src, goals.disqualify(id), 'lose');
   if (goal === 'qualify') return minimalChange(input, id, src, goals.qualify(id));
   if (goal === 'gain') return minimalChange(input, id, src, goals.seatGain(id));
@@ -57,6 +70,7 @@ export function listSearch(input: AllocationInput, src: VoteSource, goal: ListGo
 /** The fewest votes moved (towards the list when n is above its seats, away from it when below) that
  *  bring it to n seats; when no count gives exactly n, the first count past it. */
 export function seatTarget(input: AllocationInput, src: VoteSource, id: string, seats: number, n: number): SearchResult {
+  if (n > seats && beyondCandidates(input, id, n)) return impossible(input);
   return n > seats ? minimalChange(input, id, src, goals.seatsAtLeast(id, n)) : minimalChange(input, id, src, goals.seatsAtMost(id, n), 'lose');
 }
 

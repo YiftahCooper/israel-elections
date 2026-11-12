@@ -317,7 +317,7 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
 
   type Found = { from: string; to: string; votes: bigint; unsure: boolean } | { none: true; unsure: boolean };
   const [res, setRes] = useState<{ s: Scenario; bid: string; found: Found } | null>(null);
-  const [progress, setProgress] = useState<{ done: number; total: number } | null>(null);
+  const [progress, setProgress] = useState<{ done: number; total: number; settling?: boolean } | null>(null);
   const [cancelled, setCancelled] = useState(false);
   const [again, setAgain] = useState(0);
   const stop = useRef<(() => void) | null>(null);
@@ -333,16 +333,31 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
       tasks.push({ kind: 'groupTransfer', input, from: from.id, to: to.id, ids: members, n: majority - offset, below: has });
     }
     // the answer is chosen in the order above, however the workers finish
-    const finish = (outcomes: TransferOutcome[]) => {
-      let best: { from: string; to: string; votes: bigint } | null = null;
-      let unsure = false;
-      for (let k = 0; k < outcomes.length; k++) {
-        const m = outcomes[k];
-        if (m.found && m.votes !== null && (!best || m.votes < best.votes)) best = { from: tasks[k].from, to: tasks[k].to, votes: m.votes };
-        if (m.reason === 'inconclusive' || (m.found && !m.exact)) unsure = true;
-      }
+    type Task = (typeof tasks)[number];
+    const open = (m: TransferOutcome) => m.reason === 'inconclusive' || (m.found && !m.exact);
+    const bestOf = (xs: { t: Task; m: TransferOutcome }[]) => xs.reduce<{ from: string; to: string; votes: bigint } | null>((b, { t, m }) =>
+      m.found && m.votes !== null && (!b || m.votes < b.votes) ? { from: t.from, to: t.to, votes: m.votes } : b, null);
+    const show = (best: { from: string; to: string; votes: bigint } | null, unsure: boolean) => {
       setProgress(null);
       setRes({ s, bid, found: best ? { ...best, unsure } : { none: true, unsure } });
+    };
+    const finish = (outcomes: TransferOutcome[]) => {
+      const first = tasks.map((t, k) => ({ t, m: outcomes[k] }));
+      const best = bestOf(first), left = first.filter((x) => open(x.m));
+      if (!best || !left.length) return show(best, left.length > 0);
+      // a pair that could not test every count is searched again below the best answer, every count, so the answer is
+      // exact unless that search too stays open (c-analysis-code-01: "At most" was shown for proven minimums). Meanwhile
+      // the answer found is shown as "at most".
+      show(best, true);
+      const more = left.map((x) => ({ ...x.t, max: best.votes - 1n })), second: TransferOutcome[] = new Array(more.length);
+      let done = 0;
+      setProgress({ done: 0, total: more.length, settling: true });
+      stop.current = runTasks(more, (i, m) => {
+        second[i] = m; done++;
+        if (done < more.length) return setProgress({ done, total: more.length, settling: true });
+        stop.current = null;
+        show(bestOf([...first, ...more.map((t, j) => ({ t, m: second[j] }))]), second.some(open));
+      });
     };
     setCancelled(false);
     if (!tasks.length) { finish([]); return; }
@@ -381,7 +396,9 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
         <span className="small"><bdi dir="ltr">{seats} / {majority}</bdi> {seats >= majority ? L('(has a majority)', '(יש רוב)') : L('(no majority)', '(אין רוב)')}</span>
       </div>
       <div className="sens-result">
-        {progress && <p className="small muted row" role="status">{L(`Searching exactly… ${progress.done} of ${progress.total} transfers`, `מחפש במדויק… ${progress.done} מתוך ${progress.total} מעברים`)}
+        {progress && <p className="small muted row" role="status">{progress.settling
+          ? L(`Checking for a smaller transfer… ${progress.done} of ${progress.total}`, `בודק אם יש מעבר קטן יותר… ${progress.done} מתוך ${progress.total}`)
+          : L(`Searching exactly… ${progress.done} of ${progress.total} transfers`, `מחפש במדויק… ${progress.done} מתוך ${progress.total} מעברים`)}
           <button className="btn small" onClick={cancel}>{L('Cancel', 'ביטול')}</button></p>}
         {!progress && cancelled && !current && <p className="small muted row">{L('Cancelled.', 'בוטל.')} <button className="btn small" onClick={() => setAgain((n) => n + 1)}>{L('Search', 'חיפוש')}</button></p>}
         {current && 'none' in res.found && <p className="small">{res.found.unsure
