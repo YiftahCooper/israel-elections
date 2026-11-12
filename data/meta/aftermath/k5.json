@@ -67,6 +67,7 @@
     "coalition-1": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2010&$format=json",
       "publisher": "Knesset OData (ParliamentInfo)",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-04"
     },
@@ -414,6 +415,8 @@
       },
       {
         "date": "1961-11-02",
+        "orderSeq": 1,
+        "orderBasis": "Same day. Ben-Gurion presented the government 'שעה קלה לאחר שהנשיא הטיל עלי הבוקר' (presentation-gov10); the confidence vote followed the presentation (plenum-gov10: 'הבעת אמון לממשלה שהתייצבה לפני הכנסת').",
         "type": "mandate-given",
         "textEn": "The President tasked David Ben-Gurion with forming a government.",
         "textHe": "הנשיא הטיל על דוד בן־גוריון להרכיב ממשלה.",
@@ -427,6 +430,8 @@
       },
       {
         "date": "1961-11-02",
+        "orderSeq": 2,
+        "orderBasis": "Same day. Ben-Gurion presented the government 'שעה קלה לאחר שהנשיא הטיל עלי הבוקר' (presentation-gov10); the confidence vote followed the presentation (plenum-gov10: 'הבעת אמון לממשלה שהתייצבה לפני הכנסת').",
         "type": "confidence-vote",
         "textEn": "The Knesset expressed confidence in government 10, headed by David Ben-Gurion, 63 for · 46 against.",
         "textHe": "הכנסת הביעה אמון בממשלה ה־10 בראשות דוד בן־גוריון, 63 בעד · 46 נגד.",

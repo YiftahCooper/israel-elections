@@ -58,6 +58,7 @@
     "globes-2021-04-06": {
       "url": "https://en.globes.co.il/en/article-president-rivlin-tasks-netanyahu-with-forming-government-1001366407",
       "publisher": "Globes",
+      "publisherHe": "גלובס",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
@@ -70,6 +71,7 @@
     "globes-2021-05-05": {
       "url": "https://en.globes.co.il/en/article-rivlin-asks-lapid-to-form-a-government-1001370105",
       "publisher": "Globes",
+      "publisherHe": "גלובס",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
@@ -88,6 +90,7 @@
     "inn-2021-06-02": {
       "url": "https://www.israelnationalnews.com/news/307378",
       "publisher": "Israel National News",
+      "publisherHe": "ערוץ 7",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
@@ -177,30 +180,35 @@
     },
     "globes-joint-letter-2021-05-05": {
       "url": "https://www.globes.co.il/news/article.aspx?did=1001369956",
+      "publisherHe": "גלובס",
       "title": "Joint List letter to President, 5 May 2021",
       "accessed": "2026-11-06",
       "kind": "secondary"
     },
     "inn-president-2021-04-06": {
       "url": "https://www.inn.co.il/news/472940",
+      "publisherHe": "ערוץ 7",
       "title": "President Rivlin statement reproduced in Hebrew, 6 April 2021",
       "accessed": "2026-11-06",
       "kind": "secondary"
     },
     "zman-2022-04-06": {
       "url": "https://www.zman.co.il/302851/",
+      "publisherHe": "זמן ישראל",
       "title": "Contemporaneous report of Silman departure",
       "accessed": "2026-11-06",
       "kind": "secondary"
     },
     "ynet-term-2022": {
       "url": "https://www.ynet.co.il/news/article/s1jfqs0y9",
+      "publisherHe": "ynet",
       "title": "Chronology of the 36th government",
       "accessed": "2026-11-06",
       "kind": "secondary"
     },
     "calcalist-2022-10-27": {
       "url": "https://www.calcalist.co.il/local_news/article/by0uwtwes",
+      "publisherHe": "כלכליסט",
       "title": "Separate signing of maritime agreement, 27 October 2022",
       "accessed": "2026-11-06",
       "kind": "secondary"

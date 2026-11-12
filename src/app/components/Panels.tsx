@@ -276,7 +276,6 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
   const noLocalities = !ds.totals.ballotBoxes && !ds.totals.localities;
   return (
     <div className="grid2 stack-sm" style={{ alignItems: 'start', gap: 18 }}>
-      <AfterElectionSources ds={ds} />
       <div>
         <h3>{L('Data status', 'מצב הנתונים')}</h3>
         <p className="small" style={ds.status.stage === 'official-final' ? undefined : { color: 'var(--warn-ink)' }}>{ds.status.stage === 'official-final' ? L('Official final results', 'תוצאות סופיות רשמיות') : L('Gazette not yet verified', 'הפרסום ברשומות טרם אומת')} <Info title={L('Data status details', 'פירוט מצב הנתונים')}>{lang === 'he' ? ds.status.noteHe.replaceAll('הפרסום ברשומות לא אומת', 'הפרסום ברשומות טרם אומת') : ds.status.noteEn.replaceAll('Gazette publication unverified', 'Gazette publication not yet verified')}{ds.id === 'k19' && <><br />{k19StatusNote(lang)}</>}</Info></p>
@@ -323,6 +322,8 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
           <li>{L('Elected candidates are those elected on election night; later replacements and the Norwegian Law are not modelled.', 'הנבחרים הם מי שנבחרו בליל הבחירות; מחליפים מאוחרים והחוק הנורבגי אינם ממודלים.')}</li>
           <li>{L('Demographic turnout tools are hypothetical and labelled as such.', 'כלי ההצבעה הדמוגרפיים היפותטיים ומסומנים ככאלה.')}</li>
         </ul>
+        {/* secondary history sources follow the election's own data status and sources (c-design-principles-17) */}
+        <AfterElectionSources ds={ds} />
       </div>
       <div>
         <details><summary>{L('English list names', 'שמות הרשימות באנגלית')}</summary>

@@ -52,6 +52,7 @@
     "knesset-investiture": {
       "url": "https://main.knesset.gov.il/EN/News/PressReleases/Pages/press1752020r.aspx",
       "publisher": "Knesset News",
+      "publisherHe": "חדשות הכנסת",
       "kind": "official",
       "accessed": "2026-11-05"
     },

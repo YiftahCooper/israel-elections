@@ -31,18 +31,21 @@
     "government-research-1": {
       "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%90%D7%97%D7%AA",
       "publisher": "Hebrew Wikipedia",
+      "publisherHe": "ויקיפדיה העברית",
       "kind": "secondary",
       "accessed": "2026-11-04"
     },
     "government-research-2": {
       "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%90%D7%97%D7%AA",
       "publisher": "Hebrew Wikipedia",
+      "publisherHe": "ויקיפדיה העברית",
       "kind": "secondary",
       "accessed": "2026-11-04"
     },
     "government-research-3": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=GovernmentNum%20eq%2031",
       "publisher": "Knesset OData (ParliamentInfo)",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-04",
       "via": "Existing first-government research extraction from official OData, accessed 2026-11-04; the associated quote is the retained extraction summary, not verbatim API serialization."
@@ -50,12 +53,14 @@
     "recommendations-research-1": {
       "url": "https://www.globes.co.il/news/article.aspx?did=1000081213",
       "publisher": "Globes",
+      "publisherHe": "גלובס",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
     "recommendations-research-2": {
       "url": "https://www.israelnationalnews.com/news/101500",
       "publisher": "Israel National News",
+      "publisherHe": "ערוץ 7",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
@@ -80,6 +85,7 @@
     "recommendations-research-6": {
       "url": "https://he.wikipedia.org/wiki/%D7%94%D7%98%D7%9C%D7%AA_%D7%94%D7%9E%D7%A0%D7%93%D7%98_%D7%9C%D7%94%D7%A7%D7%9E%D7%AA_%D7%9E%D7%9E%D7%A9%D7%9C%D7%94_%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
       "publisher": "Wikipedia (he)",
+      "publisherHe": "ויקיפדיה העברית",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },

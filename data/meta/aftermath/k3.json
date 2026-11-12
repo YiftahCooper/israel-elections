@@ -44,12 +44,14 @@
     "coalition-1": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%207&$format=json",
       "publisher": "Knesset OData (ParliamentInfo)",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-04"
     },
     "coalition-2": {
       "url": "https://he.wikipedia.org/wiki/ממשלת_ישראל_השביעית",
       "publisher": "Hebrew Wikipedia",
+      "publisherHe": "ויקיפדיה העברית",
       "kind": "secondary",
       "accessed": "2026-11-04"
     },

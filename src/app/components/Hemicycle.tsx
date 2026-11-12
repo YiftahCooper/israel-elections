@@ -424,9 +424,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           {seats.some(st=>st.bloc===null) && <span className="row no-bloc-legend"><span className="swatch bloc-swatch unassigned" style={{['--bc' as string]:'var(--muted)'}} />{L('No bloc','ללא גוש')}</span>}
           {componentRows.map(({l,p,n}) => <button key={`${l.id}:${p.id}`} aria-pressed={selected === l.id} onClick={()=>setState({selectedListId:selected === l.id ? null : l.id})}><PartyKey partyId={p.id} color={partyDisplayColor(l,p.id)} ring={jointLook === 'both' ? l.color : undefined}/>{componentName(l,p)} <b>{n}</b></button>)}
           {legendRows.filter(({l})=>!componentRows.some(row=>row.l.id===l.id)).map(({ l, n }) => (
-            <button key={l.id} aria-pressed={selected === l.id} onClick={() => setState({ selectedListId: selected === l.id ? null : l.id })}>
-              <span aria-hidden="true"><Slip {...l} name={listLabel(l, lang)} size="sm" /></span>{listLabel(l, lang)} <b className="tabnum">{n}</b>
-            </button>
+            <ListKeyItem key={l.id} list={l} seats={n} pressed={selected === l.id} onPick={() => setState({ selectedListId: selected === l.id ? null : l.id })} />
           ))}
         </div>
       )}
@@ -441,6 +439,14 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
 }
 
 /** Who else held this seat during the term (owner decision F1, 11 Nov 2026): the official result only. */
+/** One list in a chamber's key: its slip, name and seats. Shared by this chamber and the term chamber on After the
+ *  election; without `onPick` it is a plain label. */
+export function ListKeyItem({ list, seats, pressed, onPick }: { list: Parameters<typeof Slip>[0] & Parameters<typeof listLabel>[0]; seats: number; pressed?: boolean; onPick?: () => void }) {
+  const lang = useLang();
+  const body = <><span aria-hidden="true"><Slip {...list} name={listLabel(list, lang)} size="sm" /></span>{listLabel(list, lang)} <b className="tabnum"><bdi dir="ltr">{seats}</bdi></b></>;
+  return onPick ? <button aria-pressed={pressed} onClick={onPick}>{body}</button> : <span className="legend-item">{body}</span>;
+}
+
 function SeatHolders({ electionId, candidate }: { electionId: string; candidate: { id: string; nameHe: string } | null }) {
   return <SeatHoldersNote electionId={electionId} personId={usePersonOf(candidate)} />;
 }

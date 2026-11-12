@@ -24,18 +24,21 @@
     "recommendations-3": {
       "url": "https://www.maariv.co.il/news/elections-2026/article-1384980",
       "publisher": "Maariv",
+      "publisherHe": "מעריב",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
     "recommendations-4": {
       "url": "https://www.haaretz.com/israel-news/elections/2026-11-05/ty-article-live/netanyahu-warns-against-arab-jewish-coalition-in-first-appearance-since-election/000001a1-a9ee-defa-a7f7-adfff1720000",
       "publisher": "Haaretz",
+      "publisherHe": "הארץ",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
     "recommendations-5": {
       "url": "https://www.maariv.co.il/news/elections-2026/article-1384980",
       "publisher": "Maariv (live page, later update)",
+      "publisherHe": "מעריב (עמוד חי, עדכון מאוחר יותר)",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
@@ -48,108 +51,126 @@
     "president-results": {
       "url": "https://www.president.gov.il/%D7%A0%D7%A9%D7%99%D7%90-%D7%94%D7%9E%D7%93%D7%99%D7%A0%D7%94-%D7%A7%D7%99%D7%91%D7%9C-%D7%9C%D7%99%D7%93%D7%99%D7%95-%D7%90%D7%AA-%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA-%D7%94%D7%91%D7%97%D7%99%D7%A8/",
       "publisher": "President's Residence",
+      "publisherHe": "בית הנשיא",
       "kind": "official",
       "accessed": "2026-11-05"
     },
     "president-faction-1": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%94%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99%D7%9D-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98-%D7%9C/",
       "publisher": "President's Residence",
+      "publisherHe": "בית הנשיא",
       "kind": "official",
       "accessed": "2026-11-09"
     },
     "president-faction-2": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%A8%D7%A2%D7%B4%D7%9E-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98-%D7%9C%D7%94%D7%A8%D7%9B%D7%91%D7%AA/",
       "publisher": "President's Residence",
+      "publisherHe": "בית הנשיא",
       "kind": "official",
       "accessed": "2026-11-09"
     },
     "president-faction-3": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%99%D7%94%D7%93%D7%95%D7%AA-%D7%94%D7%AA%D7%95%D7%A8%D7%94-%D7%94%D7%97%D7%9C%D7%99%D7%98%D7%94-%D7%A9%D7%9C%D7%90-%D7%9C%D7%94%D7%9E%D7%9C%D7%99%D7%A5-%D7%A2%D7%9C-%D7%90/",
       "publisher": "President's Residence",
+      "publisherHe": "בית הנשיא",
       "kind": "official",
       "accessed": "2026-11-09"
     },
     "president-faction-4": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%99%D7%AA%D7%A0%D7%95-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98/",
       "publisher": "President's Residence",
+      "publisherHe": "בית הנשיא",
       "kind": "official",
       "accessed": "2026-11-09"
     },
     "president-faction-5": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%A9%D7%B4%D7%A1-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%97%D7%B4%D7%9B-%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F-%D7%A0%D7%AA%D7%A0%D7%99%D7%94%D7%95-%D7%9C%D7%94/",
       "publisher": "President's Residence",
+      "publisherHe": "בית הנשיא",
       "kind": "official",
       "accessed": "2026-11-09"
     },
     "maariv-consultations": {
       "url": "https://www.maariv.co.il/news/elections-2026/article-1384980",
       "publisher": "Maariv",
+      "publisherHe": "מעריב",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
     "president-round-complete": {
       "url": "https://www.president.gov.il/%D7%AA%D7%9D-%D7%A1%D7%91%D7%91-%D7%94%D7%94%D7%AA%D7%99%D7%99%D7%A2%D7%A6%D7%95%D7%99%D7%95%D7%AA-%D7%A2%D7%9D-%D7%9B%D7%9C%D7%9C-%D7%A1%D7%99%D7%A2%D7%95%D7%AA-%D7%94%D7%9B%D7%A0%D7%A1%D7%AA-%D7%91/",
       "publisher": "President's Residence",
+      "publisherHe": "בית הנשיא",
       "kind": "official",
       "accessed": "2026-11-09"
     },
     "president-likud": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%97%D7%B4%D7%9B-%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F-%D7%A0%D7%AA%D7%A0%D7%99%D7%94/",
       "publisher": "President's Residence",
+      "publisherHe": "בית הנשיא",
       "kind": "official",
       "accessed": "2026-11-09"
     },
     "cec-plenary-approval": {
       "url": "https://www.israelhayom.co.il/news/law/article/21776989",
       "publisher": "Israel Hayom",
+      "publisherHe": "ישראל היום",
       "kind": "secondary",
       "accessed": "2026-11-06"
     },
     "president-otzma": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%A2%D7%95%D7%A6%D7%9E%D7%94-%D7%99%D7%94%D7%95%D7%93%D7%99%D7%AA-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%97%D7%B4%D7%9B-%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F/",
       "publisher": "President's Residence",
+      "publisherHe": "בית הנשיא",
       "kind": "official",
       "accessed": "2026-11-09"
     },
     "president-joint-list": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94-%D7%94%D7%9E%D7%A9%D7%95%D7%AA%D7%A4%D7%AA-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0/",
       "publisher": "President's Residence",
+      "publisherHe": "בית הנשיא",
       "kind": "official",
       "accessed": "2026-11-09"
     },
     "president-religious-zionism": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%94%D7%A6%D7%99%D7%95%D7%A0%D7%95%D7%AA-%D7%94%D7%93%D7%AA%D7%99%D7%AA-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%97%D7%B4%D7%9B-%D7%91%D7%A0%D7%99%D7%9E%D7%99/",
       "publisher": "President's Residence",
+      "publisherHe": "בית הנשיא",
       "kind": "official",
       "accessed": "2026-11-09"
     },
     "president-summary": {
       "url": "https://www.president.gov.il/%D7%A0%D7%A9%D7%99%D7%90-%D7%94%D7%9E%D7%93%D7%99%D7%A0%D7%94-%D7%A1%D7%99%D7%99%D7%9D-%D7%90%D7%AA-%D7%A1%D7%91%D7%91-%D7%94%D7%94%D7%AA%D7%99%D7%99%D7%A2%D7%A6%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%94/",
       "publisher": "President's Residence",
+      "publisherHe": "בית הנשיא",
       "kind": "official",
       "accessed": "2026-11-09"
     },
     "president-tasking": {
       "url": "https://www.president.gov.il/%D7%A0%D7%A9%D7%99%D7%90-%D7%94%D7%9E%D7%93%D7%99%D7%A0%D7%94-%D7%94%D7%98%D7%99%D7%9C-%D7%90%D7%AA-%D7%9E%D7%9C%D7%90%D7%9B%D7%AA-%D7%94%D7%A8%D7%9B%D7%91%D7%AA-%D7%94%D7%9E%D7%9E%D7%A9%D7%9C%D7%94/",
       "publisher": "President's Residence",
+      "publisherHe": "בית הנשיא",
       "kind": "official",
       "accessed": "2026-11-09"
     },
     "president-together": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%91%D7%99%D7%97%D7%93-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98-%D7%9C%D7%94%D7%A8%D7%9B%D7%91%D7%AA/",
       "publisher": "President's Residence",
+      "publisherHe": "בית הנשיא",
       "kind": "official",
       "accessed": "2026-11-09"
     },
     "president-yashar": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%99%D7%A9%D7%A8-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98-%D7%9C%D7%94%D7%A8%D7%9B%D7%91%D7%AA-%D7%94/",
       "publisher": "President's Residence",
+      "publisherHe": "בית הנשיא",
       "kind": "official",
       "accessed": "2026-11-09"
     },
     "president-zehut": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%96%D7%94%D7%95%D7%AA-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%97%D7%B4%D7%9B-%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F-%D7%A0%D7%AA%D7%A0%D7%99%D7%94%D7%95-%D7%9C/",
       "publisher": "President's Residence",
+      "publisherHe": "בית הנשיא",
       "kind": "official",
       "accessed": "2026-11-09"
     }

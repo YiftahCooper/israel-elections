@@ -69,12 +69,14 @@
     "coalition-1": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%203&$format=json",
       "publisher": "Knesset OData (ParliamentInfo)",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-04"
     },
     "coalition-2": {
       "url": "https://he.wikipedia.org/wiki/ממשלת_ישראל_השלישית",
       "publisher": "Hebrew Wikipedia",
+      "publisherHe": "ויקיפדיה העברית",
       "kind": "secondary",
       "accessed": "2026-11-04"
     },
@@ -371,6 +373,8 @@
       },
       {
         "date": "1955-06-29",
+        "orderSeq": 2,
+        "orderBasis": "Same day. Sharett told the Knesset the President had tasked him at noon (presentation-gov6: 'הצהרים הזמינני והטיל עלי את המשימה להרכיב את הממשלה החדשה'); the Knesset then voted confidence in the government 'שהורכבה והוצגה' (plenum-gov6).",
         "type": "confidence-vote",
         "textEn": "The Knesset expressed confidence in government 6, headed by Moshe Sharett, 66 for · 32 against, with 3 abstentions.",
         "textHe": "הכנסת הביעה אמון בממשלה ה־6 בראשות משה שרת, 66 בעד · 32 נגד, עם 3 נמנעים.",
@@ -390,6 +394,8 @@
       },
       {
         "date": "1955-06-29",
+        "orderSeq": 1,
+        "orderBasis": "Same day. Sharett told the Knesset the President had tasked him at noon (presentation-gov6: 'הצהרים הזמינני והטיל עלי את המשימה להרכיב את הממשלה החדשה'); the Knesset then voted confidence in the government 'שהורכבה והוצגה' (plenum-gov6).",
         "type": "mandate-given",
         "textEn": "The President tasked Sharett with forming a replacement government.",
         "textHe": "הנשיא הטיל על שרת להרכיב ממשלה חדשה.",
