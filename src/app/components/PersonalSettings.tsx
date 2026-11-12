@@ -159,7 +159,7 @@ function Control({ row, label }: { row: SettingRow; label: string }) {
     <Seg<Preset> label={label} value={level} onChange={setLevel} options={(['simple', 'standard', 'expert'] as const).map(v => ({ v, label: L(...LEVEL_LABELS[v]) }))} />
     <button type="button" className="link-btn" onClick={() => setState({ tool: 'custom', settingsOpen: false, settingsFocus: null })}>{L('Custom…', 'מותאם…')}</button>
   </span>;
-  if (row.control === 'lang') return <Seg label={label} value={store.lang} onChange={v => setState({ lang: v as 'he' | 'en' })} options={row.options!.map(o => ({ v: o.value as 'he' | 'en', label: o.label[0] }))} />;
+  if (row.control === 'lang') return <Seg label={label} value={store.lang} onChange={v => setState({ lang: v as 'he' | 'en' })} options={row.options!.map(o => ({ v: o.value as 'he' | 'en', label: o.label[0], lang: o.value }))} />;
   if (row.control === 'choice') {
     const q = CHOICE[row.id]!;
     const value = store.preferences[q] ?? 'ask';
