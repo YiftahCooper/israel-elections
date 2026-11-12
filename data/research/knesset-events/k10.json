@@ -90,8 +90,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 457 and 471.",
-        "he": "רישום החברות עבר מסיעת ר\"ץ לסיעת מערך (1 ח״כים)."
+        "en": "1 MK recorded moving from Ratz to Alignment.",
+        "he": "רישום החברות עבר מסיעת ר\"ץ לסיעת מערך (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -133,7 +133,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 441 and 471.",
+        "en": "2 MKs recorded moving from Likud to Alignment.",
         "he": "רישום החברות עבר מסיעת הליכוד לסיעת מערך (2 ח״כים)."
       },
       "classification": "counts",
@@ -175,8 +175,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 469 and 1022.",
-        "he": "רישום החברות עבר מסיעת תנועה להתחדשות ממלכתית לסיעת רפ\"י - הרשימה הממלכתית (1 ח״כים)."
+        "en": "1 MK recorded moving from Telem to Rafi.",
+        "he": "רישום החברות עבר מסיעת תנועה להתחדשות ממלכתית לסיעת רפ\"י - הרשימה הממלכתית (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -217,8 +217,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 469 and 1023.",
-        "he": "רישום החברות עבר מסיעת תנועה להתחדשות ממלכתית לסיעת התנועה להתחדשות ציונית חברתית (1 ח״כים)."
+        "en": "1 MK recorded moving from Telem to Movement for Social Zionist Renewal.",
+        "he": "רישום החברות עבר מסיעת תנועה להתחדשות ממלכתית לסיעת התנועה להתחדשות ציונית חברתית (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -296,8 +296,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 445 and 1020.",
-        "he": "רישום החברות עבר מסיעת חזית דתית לאומית לסיעת חה\"כ חיים דרוקמן (1 ח״כים)."
+        "en": "1 MK recorded moving from National Religious Front to MK Haim Meir Druckman.",
+        "he": "רישום החברות עבר מסיעת חזית דתית לאומית לסיעת חה\"כ חיים דרוקמן (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -338,8 +338,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 471 and 1021.",
-        "he": "רישום החברות עבר מסיעת מערך לסיעת ר\"ץ (1 ח״כים)."
+        "en": "1 MK recorded moving from Alignment to Ratz.",
+        "he": "רישום החברות עבר מסיעת מערך לסיעת ר\"ץ (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -381,7 +381,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 445 and 1019.",
+        "en": "2 MKs recorded moving from National Religious Front to Gesher.",
         "he": "רישום החברות עבר מסיעת חזית דתית לאומית לסיעת גשר - מרכז ציוני דתי (2 ח״כים)."
       },
       "classification": "counts",
@@ -424,7 +424,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 1019 and 445.",
+        "en": "2 MKs recorded moving from Gesher to National Religious Front.",
         "he": "רישום החברות עבר מסיעת גשר - מרכז ציוני דתי לסיעת חזית דתית לאומית (2 ח״כים)."
       },
       "classification": "counts",

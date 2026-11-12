@@ -12,7 +12,7 @@
       "kind": "term-start",
       "who": {},
       "summary": {
-        "en": "21th Knesset membership begins.",
+        "en": "21st Knesset membership begins.",
         "he": "תחילת כהונת הכנסת ה־21."
       },
       "classification": "counts",
@@ -54,7 +54,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 922 and 1059.",
+        "en": "2 MKs recorded moving from Ra’am–Balad to Ra'am.",
         "he": "רישום החברות עבר מסיעת רע\"ם - בל\"ד - הרשימה הערבית המאוחדת ברית לאומית דמוקרטית לסיעת רע\"ם – רשימת האיחוד הערבי (2 ח״כים)."
       },
       "classification": "counts",
@@ -97,7 +97,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 922 and 1060.",
+        "en": "2 MKs recorded moving from Ra’am–Balad to Balad.",
         "he": "רישום החברות עבר מסיעת רע\"ם - בל\"ד - הרשימה הערבית המאוחדת ברית לאומית דמוקרטית לסיעת בל\"ד – ברית לאומית דמוקרטית (2 ח״כים)."
       },
       "classification": "counts",
@@ -139,8 +139,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 931 and 1058.",
-        "he": "רישום החברות עבר מסיעת הליכוד בהנהגת בנימין נתניהו לראשות הממשלה לסיעת אח\"י - ארץ, חברה, יהדות (1 ח״כים)."
+        "en": "1 MK recorded moving from Likud to Ahi.",
+        "he": "רישום החברות עבר מסיעת הליכוד בהנהגת בנימין נתניהו לראשות הממשלה לסיעת אח\"י - ארץ, חברה, יהדות (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -184,7 +184,7 @@
         ]
       },
       "summary": {
-        "en": "4 MKs recorded moving between factions 924 and 1061.",
+        "en": "4 MKs recorded moving from Hadash–Ta’al to Hadash.",
         "he": "רישום החברות עבר מסיעת חד\"ש תע\"ל בראשות איימן עודה ואחמד טיבי לסיעת חד\"ש (4 ח״כים)."
       },
       "classification": "counts",
@@ -227,7 +227,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 924 and 1062.",
+        "en": "2 MKs recorded moving from Hadash–Ta’al to Ta'al.",
         "he": "רישום החברות עבר מסיעת חד\"ש תע\"ל בראשות איימן עודה ואחמד טיבי לסיעת תע\"ל (2 ח״כים)."
       },
       "classification": "counts",
@@ -272,7 +272,7 @@
         ]
       },
       "summary": {
-        "en": "4 MKs recorded moving between factions 928 and 1063.",
+        "en": "4 MKs recorded moving from United Torah Judaism to Agudat Yisrael.",
         "he": "רישום החברות עבר מסיעת יהדות התורה לסיעת אגודת ישראל (4 ח״כים)."
       },
       "classification": "counts",
@@ -317,7 +317,7 @@
         ]
       },
       "summary": {
-        "en": "4 MKs recorded moving between factions 928 and 1064.",
+        "en": "4 MKs recorded moving from United Torah Judaism to Degel HaTorah.",
         "he": "רישום החברות עבר מסיעת יהדות התורה לסיעת דגל התורה (4 ח״כים)."
       },
       "classification": "counts",
@@ -359,8 +359,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 1058 and 923.",
-        "he": "רישום החברות עבר מסיעת אח\"י - ארץ, חברה, יהדות לסיעת הבית היהודי - האיחוד הלאומי (1 ח״כים)."
+        "en": "1 MK recorded moving from Ahi to Jewish Home–National Union.",
+        "he": "רישום החברות עבר מסיעת אח\"י - ארץ, חברה, יהדות לסיעת הבית היהודי - האיחוד הלאומי (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -393,7 +393,7 @@
       "kind": "term-end",
       "who": {},
       "summary": {
-        "en": "21th Knesset membership ends as the 22th Knesset begins.",
+        "en": "21st Knesset membership ends as the 22th Knesset begins.",
         "he": "סיום כהונת הכנסת ה־21."
       },
       "classification": "counts",

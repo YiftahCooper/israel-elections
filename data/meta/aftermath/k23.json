@@ -126,6 +126,18 @@
       "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
       "kind": "official",
       "accessed": "2026-11-07"
+    },
+    "investiture-roll-32531": {
+      "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PlenumVoteResult?%24filter=VoteID%20eq%2032531&%24count=true",
+      "publisher": "Knesset, complete official results for vote 32531 (17 May 2020)",
+      "kind": "official",
+      "accessed": "2026-11-12"
+    },
+    "investiture-protocol-35": {
+      "url": "https://fs.knesset.gov.il/23/Plenum/23_ptm_570636.doc",
+      "publisher": "Knesset, 17 May 2020 plenum protocol, division 5 and subsequent technical correction",
+      "kind": "official",
+      "accessed": "2026-11-12"
     }
   },
   "results": {
@@ -638,12 +650,23 @@
     ],
     "confidenceVote": {
       "for": 73,
-      "against": 46
+      "against": 46,
+      "abstain": 0
     },
     "confidenceVoteCites": [
       {
         "source": "knesset-investiture",
         "quote": "The vote of confidence in the new government passed with 73 in favor and 46 against."
+      },
+      {
+        "source": "investiture-roll-32531",
+        "quote": "VoteID 32531: 119 result rows; ResultCode 7: 73; ResultCode 8: 46.",
+        "note": "Tabulation of both official API pages, not a prose quotation. No abstention rows. Miki Levy (23632) has no result among the 120 sitting members; this establishes non-participation, not physical absence."
+      },
+      {
+        "source": "investiture-protocol-35",
+        "quote": "Division 5, chair correction after Avi Dichter reports his uncaptured vote.",
+        "note": "Locator, not prose quotation: initial 72–46 becomes 73–46 when the chair adds Dichter for; no abstentions."
       }
     ],
     "membershipCoverage": "complete",
@@ -652,7 +675,7 @@
     "reconciliation": {
       "status": "exact",
       "expectedFor": 73,
-      "note": "73 member seats + 0 outside-support seats = 73 for, 46 against. Numerical equality alone does not certify every individual’s vote."
+      "note": "73 member seats = 73 for; 46 against, zero abstentions, one non-participant (Miki Levy, Yesh Atid–Telem, person 23632). The complete official roll call agrees with all 73 members in the retained first-government rank scheme. Labor faction: Peretz and Shmuli for, Michaeli against; Yamina faction: Rafi Peretz for, the other five against. Those split-faction exclusions are already excluded from the 73, not extra subtractions. The protocol corrects 72 for to 73 after adding Dichter’s uncaptured vote. A vote alone does not prove continuing coalition membership."
     },
     "knownMemberSeats": 73
   },

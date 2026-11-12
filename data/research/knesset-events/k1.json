@@ -12,7 +12,7 @@
       "kind": "term-start",
       "who": {},
       "summary": {
-        "en": "1th Knesset membership begins.",
+        "en": "1st Knesset membership begins.",
         "he": "תחילת כהונת הכנסת ה־1."
       },
       "classification": "counts",
@@ -90,8 +90,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 129 and 977.",
-        "he": "רישום החברות עבר מסיעת מפלגה קומוניסטית ישראלית לסיעת הקומוניסטים העברים (1 ח״כים)."
+        "en": "1 MK recorded moving from Maki to Hebrew Communists.",
+        "he": "רישום החברות עבר מסיעת מפלגה קומוניסטית ישראלית לסיעת הקומוניסטים העברים (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -132,8 +132,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 977 and 105.",
-        "he": "רישום החברות עבר מסיעת הקומוניסטים העברים לסיעת מפלגת פועלים מאוחדת (1 ח״כים)."
+        "en": "1 MK recorded moving from Hebrew Communists to Mapam.",
+        "he": "רישום החברות עבר מסיעת הקומוניסטים העברים לסיעת מפלגת פועלים מאוחדת (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -203,7 +203,7 @@
       "kind": "term-end",
       "who": {},
       "summary": {
-        "en": "1th Knesset membership ends as the 2th Knesset begins.",
+        "en": "1st Knesset membership ends as the 2th Knesset begins.",
         "he": "סיום כהונת הכנסת ה־1."
       },
       "classification": "counts",

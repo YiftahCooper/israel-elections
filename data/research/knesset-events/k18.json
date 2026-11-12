@@ -97,7 +97,7 @@
         ]
       },
       "summary": {
-        "en": "8 MKs recorded moving between factions 1047 and 750.",
+        "en": "8 MKs recorded moving from Labor to Labor.",
         "he": "רישום החברות עבר מסיעת העבודה בראשות אהוד ברק לסיעת העבודה (8 ח״כים)."
       },
       "classification": "counts",
@@ -143,7 +143,7 @@
         ]
       },
       "summary": {
-        "en": "5 MKs recorded moving between factions 1047 and 762.",
+        "en": "5 MKs recorded moving from Labor to Atzmaut.",
         "he": "רישום החברות עבר מסיעת העבודה בראשות אהוד ברק לסיעת העצמאות (5 ח״כים)."
       },
       "classification": "counts",
@@ -186,7 +186,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 742 and 1051.",
+        "en": "2 MKs recorded moving from National Union to Otzma Leyisrael.",
         "he": "רישום החברות עבר מסיעת איחוד לאומי לסיעת עוצמה לישראל (2 ח״כים)."
       },
       "classification": "counts",
@@ -234,7 +234,7 @@
         ]
       },
       "summary": {
-        "en": "7 MKs recorded moving between factions 751 and 1048.",
+        "en": "7 MKs recorded moving from Kadima to Hatnuah.",
         "he": "רישום החברות עבר מסיעת קדימה - עם ציפי לבני לראשות הממשלה לסיעת התנועה בראשות ציפי לבני (7 ח״כים)."
       },
       "classification": "counts",
@@ -276,8 +276,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 752 and 1050.",
-        "he": "רישום החברות עבר מסיעת הרשימה הערבית המאוחדת - התנועה הערבית להתחדשות לסיעת מד\"ע - מפלגה דמוקרטית ערבית (1 ח״כים)."
+        "en": "1 MK recorded moving from Ra'am–Ta'al to Arab Democratic Party.",
+        "he": "רישום החברות עבר מסיעת הרשימה הערבית המאוחדת - התנועה הערבית להתחדשות לסיעת מד\"ע - מפלגה דמוקרטית ערבית (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -318,8 +318,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 753 and 1049.",
-        "he": "רישום החברות עבר מסיעת התאחדות הספרדים העולמית שומרי תורה לסיעת חה\"כ חיים אמסלם (1 ח״כים)."
+        "en": "1 MK recorded moving from Shas to MK Chaim Amsellem.",
+        "he": "רישום החברות עבר מסיעת התאחדות הספרדים העולמית שומרי תורה לסיעת חה\"כ חיים אמסלם (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",

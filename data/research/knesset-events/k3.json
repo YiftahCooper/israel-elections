@@ -12,7 +12,7 @@
       "kind": "term-start",
       "who": {},
       "summary": {
-        "en": "3th Knesset membership begins.",
+        "en": "3rd Knesset membership begins.",
         "he": "תחילת כהונת הכנסת ה־3."
       },
       "classification": "counts",
@@ -63,7 +63,7 @@
         ]
       },
       "summary": {
-        "en": "11 MKs recorded moving between factions 207 and 982.",
+        "en": "11 MKs recorded moving from National Religious Front to Hapoel HaMizrahi–Mizrahi.",
         "he": "רישום החברות עבר מסיעת חזית דתית לאומית לסיעת הפועל המזרחי - המזרחי (11 ח״כים)."
       },
       "classification": "counts",
@@ -147,7 +147,7 @@
         ]
       },
       "summary": {
-        "en": "6 MKs recorded moving between factions 209 and 980.",
+        "en": "6 MKs recorded moving from Religious Torah Front to Agudat Yisrael–Poalei Agudat Yisrael.",
         "he": "רישום החברות עבר מסיעת חזית דתית תורתית לסיעת אגודת ישראל - פועלי אגודת ישראל (6 ח״כים)."
       },
       "classification": "counts",
@@ -199,7 +199,7 @@
         ]
       },
       "summary": {
-        "en": "11 MKs recorded moving between factions 982 and 981.",
+        "en": "11 MKs recorded moving from Hapoel HaMizrahi–Mizrahi to National Religious Party.",
         "he": "רישום החברות עבר מסיעת הפועל המזרחי - המזרחי לסיעת מפלגה דתית לאומית (11 ח״כים)."
       },
       "classification": "counts",
@@ -270,7 +270,7 @@
       "kind": "term-end",
       "who": {},
       "summary": {
-        "en": "3th Knesset membership ends as the 4th Knesset begins.",
+        "en": "3rd Knesset membership ends as the 4th Knesset begins.",
         "he": "סיום כהונת הכנסת ה־3."
       },
       "classification": "counts",

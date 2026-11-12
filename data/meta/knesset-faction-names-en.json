@@ -1,5 +1,5 @@
 {
- "about": "English names for Knesset factions whose Hebrew name (Knesset database, KNS_Faction) matches no list or registered party in this repository. Used only to show the faction in English on an MK's history card (scripts/mk-history-runtime.ts). The party's established English name or abbreviation where one is in common use (Hadash, Ta'al, Mapam, Rafi, Rakah, Gahal, Shinui), else a plain translation or transliteration of the Hebrew name. Display names, not facts: the Hebrew name stays authoritative and is what the card shows in Hebrew. To be checked in the Hebrew/English naming review.",
+ "about": "English names for Knesset factions whose Hebrew name (Knesset database, KNS_Faction) matches no list or registered party in this repository. Used to show factions in English on MK history cards (scripts/mk-history-runtime.ts) and in generated research-event summaries (scripts/research/build-faction-events.py). Exact Hebrew-name entries take precedence in research summaries so joint factions retain all named components. The party's established English name or abbreviation where one is in common use (Hadash, Ta'al, Mapam, Rafi, Rakah, Gahal, Shinui), else a plain translation or transliteration of the Hebrew name. Display names, not facts: the Hebrew name stays authoritative and is what the card shows in Hebrew. To be checked in the Hebrew/English naming review.",
  "names": {
   "דרך חדשה": "New Way",
   "מפלגה לאומית ערבית": "Arab National Party",
@@ -61,6 +61,25 @@
   "הבית היהודי מיסודם של המפד״ל": "Jewish Home",
   "הבית היהודי מיסודם של המפד״ל והאיחוד הלאומי": "Jewish Home",
   "מולדת האיחוד הלאומי": "Moledet National Union",
-  "הימין הממלכתי": "National Right"
+  "הימין הממלכתי": "National Right",
+  "הפועל המזרחי - המזרחי": "Hapoel HaMizrahi–Mizrahi",
+  "אגודת ישראל - פועלי אגודת ישראל": "Agudat Yisrael–Poalei Agudat Yisrael",
+  "פיתוח ושלום": "Development and Peace",
+  "חזית דתית לאומית": "National Religious Front",
+  "תחייה": "Tehiya",
+  "ליכוד - צומת": "Likud–Tzomet",
+  "האיחוד הלאומי - ישראל ביתנו": "National Union–Yisrael Beiteinu",
+  "האיחוד הלאומי - ישראל ביתנו - מולדת - תקומה": "National Union–Yisrael Beiteinu–Moledet–Tkuma",
+  "האיחוד הלאומי - מולדת - תקומה": "National Union–Moledet–Tkuma",
+  "העבודה - מימד - עם אחד": "Labor–Meimad–Am Ehad",
+  "מרצ - הבחירה הדמוקרטית - שחר": "Meretz–Democratic Choice–Shahar",
+  "מרצ - יחד והבחירה הדמוקרטית": "Meretz–Yachad and the Democratic Choice",
+  "יהדות התורה ­ אגודת ישראל ודתיים בלתי מפלגתיים": "Torah Judaism–Agudat Yisrael and Non-Partisan Religious",
+  "המחנה התורתי ­ פועלי אגודת ישראל ודתיים בלתי מפלגתיים": "Torah Camp–Poalei Agudat Yisrael and Non-Partisan Religious",
+  "העבודה - מרצ": "Labor–Meretz",
+  "יש עתיד - תל״ם": "Yesh Atid–Telem",
+  "הבית היהודי - האיחוד הלאומי": "Jewish Home–National Union",
+  "עוצמה יהודית בראשות איתמר בן גביר": "Otzma Yehudit",
+  "ביחד": "Beyahad"
  }
 }

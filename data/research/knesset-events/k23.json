@@ -12,7 +12,7 @@
       "kind": "term-start",
       "who": {},
       "summary": {
-        "en": "23th Knesset membership begins.",
+        "en": "23rd Knesset membership begins.",
         "he": "תחילת כהונת הכנסת ה־23."
       },
       "classification": "counts",
@@ -58,7 +58,7 @@
         ]
       },
       "summary": {
-        "en": "6 MKs recorded moving between factions 949 and 956.",
+        "en": "6 MKs recorded moving from Labor–Gesher–Meretz to Labor–Meretz.",
         "he": "רישום החברות עבר מסיעת העבודה - גשר - מרצ לסיעת העבודה - מרצ (6 ח״כים)."
       },
       "classification": "counts",
@@ -100,8 +100,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 949 and 957.",
-        "he": "רישום החברות עבר מסיעת העבודה - גשר - מרצ לסיעת גשר (1 ח״כים)."
+        "en": "1 MK recorded moving from Labor–Gesher–Meretz to Gesher.",
+        "he": "רישום החברות עבר מסיעת העבודה - גשר - מרצ לסיעת גשר (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -142,8 +142,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 946 and 952.",
-        "he": "רישום החברות עבר מסיעת כחול לבן לסיעת חה\"כ ע'דיר כמאל מריח (1 ח״כים)."
+        "en": "1 MK recorded moving from Blue and White to MK Gadeer Kamal-Mreeh.",
+        "he": "רישום החברות עבר מסיעת כחול לבן לסיעת חה\"כ ע'דיר כמאל מריח (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -184,8 +184,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 950 and 953.",
-        "he": "רישום החברות עבר מסיעת יש עתיד לסיעת חה\"כ פנינה תמנו (1 ח״כים)."
+        "en": "1 MK recorded moving from Yesh Atid to MK Pnina Tameno.",
+        "he": "רישום החברות עבר מסיעת יש עתיד לסיעת חה\"כ פנינה תמנו (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -226,8 +226,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 952 and 950.",
-        "he": "רישום החברות עבר מסיעת חה\"כ ע'דיר כמאל מריח לסיעת יש עתיד (1 ח״כים)."
+        "en": "1 MK recorded moving from MK Gadeer Kamal-Mreeh to Yesh Atid.",
+        "he": "רישום החברות עבר מסיעת חה\"כ ע'דיר כמאל מריח לסיעת יש עתיד (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -268,8 +268,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 953 and 946.",
-        "he": "רישום החברות עבר מסיעת חה\"כ פנינה תמנו לסיעת כחול לבן (1 ח״כים)."
+        "en": "1 MK recorded moving from MK Pnina Tameno to Blue and White.",
+        "he": "רישום החברות עבר מסיעת חה\"כ פנינה תמנו לסיעת כחול לבן (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -323,7 +323,7 @@
         ]
       },
       "summary": {
-        "en": "14 MKs recorded moving between factions 1079 and 946.",
+        "en": "14 MKs recorded moving from Blue and White to Blue and White.",
         "he": "רישום החברות עבר מסיעת כחול לבן בראשות בנימין גנץ לסיעת כחול לבן (14 ח״כים)."
       },
       "classification": "counts",
@@ -365,8 +365,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 1079 and 950.",
-        "he": "רישום החברות עבר מסיעת כחול לבן בראשות בנימין גנץ לסיעת יש עתיד (1 ח״כים)."
+        "en": "1 MK recorded moving from Blue and White to Yesh Atid.",
+        "he": "רישום החברות עבר מסיעת כחול לבן בראשות בנימין גנץ לסיעת יש עתיד (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -408,7 +408,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 1079 and 954.",
+        "en": "2 MKs recorded moving from Blue and White to Derekh Eretz.",
         "he": "רישום החברות עבר מסיעת כחול לבן בראשות בנימין גנץ לסיעת דרך ארץ (2 ח״כים)."
       },
       "classification": "counts",
@@ -465,7 +465,7 @@
         ]
       },
       "summary": {
-        "en": "16 MKs recorded moving between factions 1079 and 955.",
+        "en": "16 MKs recorded moving from Blue and White to Yesh Atid–Telem.",
         "he": "רישום החברות עבר מסיעת כחול לבן בראשות בנימין גנץ לסיעת יש עתיד - תל\"ם (16 ח״כים)."
       },
       "classification": "counts",
@@ -509,7 +509,7 @@
         ]
       },
       "summary": {
-        "en": "3 MKs recorded moving between factions 956 and 958.",
+        "en": "3 MKs recorded moving from Labor–Meretz to Israeli Labor.",
         "he": "רישום החברות עבר מסיעת העבודה - מרצ לסיעת העבודה הישראלית (3 ח״כים)."
       },
       "classification": "counts",
@@ -553,7 +553,7 @@
         ]
       },
       "summary": {
-        "en": "3 MKs recorded moving between factions 956 and 959.",
+        "en": "3 MKs recorded moving from Labor–Meretz to Meretz.",
         "he": "רישום החברות עבר מסיעת העבודה - מרצ לסיעת מרצ (3 ח״כים)."
       },
       "classification": "counts",
@@ -1244,8 +1244,8 @@
         ]
       },
       "summary": {
-        "en": "1 MKs recorded moving between factions 948 and 960.",
-        "he": "רישום החברות עבר מסיעת ימינה לסיעת הבית היהודי (1 ח״כים)."
+        "en": "1 MK recorded moving from Yamina to The Jewish Home.",
+        "he": "רישום החברות עבר מסיעת ימינה לסיעת הבית היהודי (ח״כ אחד)."
       },
       "classification": "counts",
       "reason": "Official dated membership transition. Formal split, merger or rename requires a separate decision record.",
@@ -1666,7 +1666,7 @@
         ]
       },
       "summary": {
-        "en": "3 MKs recorded moving between factions 944 and 1071.",
+        "en": "3 MKs recorded moving from United Torah Judaism to Agudat Yisrael.",
         "he": "רישום החברות עבר מסיעת יהדות התורה והשבת אגודת ישראל - דגל התורה לסיעת אגודת ישראל (3 ח״כים)."
       },
       "classification": "counts",
@@ -1715,7 +1715,7 @@
         ]
       },
       "summary": {
-        "en": "4 MKs recorded moving between factions 944 and 1072.",
+        "en": "4 MKs recorded moving from United Torah Judaism to Degel HaTorah.",
         "he": "רישום החברות עבר מסיעת יהדות התורה והשבת אגודת ישראל - דגל התורה לסיעת דגל התורה (4 ח״כים)."
       },
       "classification": "counts",
@@ -1801,7 +1801,7 @@
         ]
       },
       "summary": {
-        "en": "2 MKs recorded moving between factions 948 and 1073.",
+        "en": "2 MKs recorded moving from Yamina to National Union.",
         "he": "רישום החברות עבר מסיעת ימינה לסיעת האיחוד הלאומי (2 ח״כים)."
       },
       "classification": "counts",
@@ -1895,7 +1895,7 @@
         ]
       },
       "summary": {
-        "en": "8 MKs recorded moving between factions 943 and 1074.",
+        "en": "8 MKs recorded moving from Joint List to Joint List.",
         "he": "רישום החברות עבר מסיעת הרשימה המשותפת חד\"ש, רע\"מ, תע\"ל, בל\"ד לסיעת הרשימה המשותפת (8 ח״כים)."
       },
       "classification": "counts",
@@ -1944,7 +1944,7 @@
         ]
       },
       "summary": {
-        "en": "4 MKs recorded moving between factions 943 and 1075.",
+        "en": "4 MKs recorded moving from Joint List to Ra'am.",
         "he": "רישום החברות עבר מסיעת הרשימה המשותפת חד\"ש, רע\"מ, תע\"ל, בל\"ד לסיעת רע\"מ – רשימת האיחוד הערבי (4 ח״כים)."
       },
       "classification": "counts",
@@ -1992,7 +1992,7 @@
         ]
       },
       "summary": {
-        "en": "3 MKs recorded moving between factions 943 and 1076.",
+        "en": "3 MKs recorded moving from Joint List to Ta'al.",
         "he": "רישום החברות עבר מסיעת הרשימה המשותפת חד\"ש, רע\"מ, תע\"ל, בל\"ד לסיעת תע\"ל – התנועה הערבית להתחדשות (3 ח״כים)."
       },
       "classification": "counts",
@@ -2030,7 +2030,7 @@
       "kind": "term-end",
       "who": {},
       "summary": {
-        "en": "23th Knesset membership ends as the 24th Knesset begins.",
+        "en": "23rd Knesset membership ends as the 24th Knesset begins.",
         "he": "סיום כהונת הכנסת ה־23."
       },
       "classification": "counts",
