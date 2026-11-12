@@ -12,7 +12,7 @@ import { votesCast, type Scenario } from '../../model/scenario.ts';
 import { listLabel, methodOf, quotaFormula, referenceLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat } from '../format.ts';
-import { dispatch, setState, useDigits } from '../store.ts';
+import { dispatch, setState, useDigits, useShown } from '../store.ts';
 import { DecimalInput, Info } from './ui.tsx';
 
 function Fig({ k, term, v, d, children }: { k: string; term?: string; v: ReactNode; d?: ReactNode; children?: ReactNode }) {
@@ -37,6 +37,7 @@ function Fig({ k, term, v, d, children }: { k: string; term?: string; v: ReactNo
 
 export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: ElectionDataset }) {
   const L = useL();
+  const walkShown = useShown('walk');
   const { shown: expert, control: expertControl } = useDisclosure('expertFigures');
   const { shown: standard, control: standardControl } = useDisclosure('voteFigures');
   const lang = useLang();
@@ -101,7 +102,7 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
       {expert && (
         <Fig k={L('Seats: quota + remainder', 'מנדטים: מודד + עודפים')} term={method.term} v={`${r.initialSeatsTotal} + ${r.remainderSeatsTotal}`} d={L(`${r.remainderSeatsTotal} by ${method.en}`, `${r.remainderSeatsTotal} ${hebrewPrefix('ב', method.he)}`)}>
           <p className="small" style={{ margin: '0 0 6px' }}>{L(`${r.initialSeatsTotal} seats went by whole quotas; the remaining ${r.remainderSeatsTotal} by ${method.en}.`, `${r.initialSeatsTotal} מנדטים חולקו במודדים שלמים; ${r.remainderSeatsTotal} הנותרים ${hebrewPrefix('ב', method.he)}.`)}</p>
-          <button className="btn small" onClick={() => setState({ tool: 'walk' })}>{L('Allocation steps', 'שלבי החלוקה')}</button>
+          {walkShown && <button className="btn small" onClick={() => setState({ tool: 'walk' })}>{L('Allocation steps', 'שלבי החלוקה')}</button>}
         </Fig>
       )}
       {(standardControl || expertControl) && <div className="figures-more">{standardControl}{expertControl}</div>}

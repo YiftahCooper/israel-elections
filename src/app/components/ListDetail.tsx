@@ -27,7 +27,7 @@ import type { AnalysisTask } from '../analysisTasks.ts';
 import { listLabel, referenceLabel, warningText } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtRat, fmtSigned } from '../format.ts';
-import { dispatch, dispatchMany, getState, useStore, previewAction, setState, toast, useFeature, useLevel, useVoteSource, useDigits, useSetting, withSource } from '../store.ts';
+import { dispatch, dispatchMany, getState, useStore, previewAction, setState, toast, useFeature, useShown, useLevel, useVoteSource, useDigits, useSetting, withSource } from '../store.ts';
 import { clampTarget, deltaAction, stayingHome, toVoteSource, type SourceChoice, votesForShare, voteSourceLabel } from '../voteEdit.ts';
 import { Candidates } from './Candidates.tsx';
 import { JointParties } from './JointParties.tsx';
@@ -215,6 +215,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
     return <button key={label} className="btn small" disabled={t === null || t === l.votes} aria-description={delta ? `${delta} · ${sourceName}` : sourceName} onMouseEnter={() => { if (t !== null && hoverPreviews) explainTarget(t); }} onFocus={() => { if (t !== null) explainTarget(t); }} onClick={() => { if (t !== null) commit(go ?? ((from) => editTo(target!, from))); }}><span dir={/^[×÷]/.test(label) ? 'ltr' : undefined}>{label}</span>{delta && <bdi dir="ltr" aria-hidden>{delta}</bdi>}</button>;
   };
   const transferShown = useFeature('voteSource') === 'show';
+  const walkShown = useShown('walk');
   const total = Number(r.totalValid);
   // the default step is the largest round amount that is still a small move in this election (≤ 2% of the valid votes)
   const defaultStep = total >= 500_000 ? '10k' : '1k';
@@ -287,7 +288,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
         <Feature id="voteStart"><StartFrom s={s} part="votes" /></Feature>
       </section>
 
-      {crossing !== null && Number(s.rules.thresholdPct) > 0 && <p className="small crossing">{crossing ? L('Passed the threshold', 'עברה את אחוז החסימה') : L('Below the threshold', 'מתחת לאחוז החסימה')} <Info title={L('Allocation recalculated', 'החלוקה חושבה מחדש')}>{L('Qualifying votes and every allocation were recalculated.', 'הקולות המשתתפים וכל החלוקה חושבו מחדש.')}</Info> <button className="table-action" onClick={() => setState({ tool: 'walk', selectedListId: null })}>{L('Walkthrough: threshold', 'שלבי החלוקה: אחוז החסימה')}</button></p>}
+      {crossing !== null && Number(s.rules.thresholdPct) > 0 && <p className="small crossing">{crossing ? L('Passed the threshold', 'עברה את אחוז החסימה') : L('Below the threshold', 'מתחת לאחוז החסימה')} <Info title={L('Allocation recalculated', 'החלוקה חושבה מחדש')}>{L('Qualifying votes and every allocation were recalculated.', 'הקולות המשתתפים וכל החלוקה חושבו מחדש.')}</Info> {walkShown && <button className="table-action" onClick={() => setState({ tool: 'walk', selectedListId: null })}>{L('Walkthrough: threshold', 'שלבי החלוקה: אחוז החסימה')}</button>}</p>}
 
       {simple && agr && <p className="small">{L('With ', 'עם ')}{nameOf(partnerId)} · {agrStatus?.active ? L('in force', 'בתוקף') : !agr.enabled ? L('switched off', 'כבוי') : L('no effect', 'ללא השפעה')}</p>}
       <Feature id="agreements">
