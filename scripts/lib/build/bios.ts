@@ -19,9 +19,16 @@ interface Entry {
 const knessetIdentitySure = (e: Entry) => /^(elected; Knesset \d+ member|not elected at the election; entered Knesset )/.test(e.basis ?? '')
   || (e.confidence === 'high' && /^elected; reviewed decision/.test(e.basis ?? ''));
 
+/** Whether the person is certain, separately from the other links: a high entry is, as is a medium one whose Knesset match
+ *  is one of the official roster rules (the medium then comes only from a Hebrew Wikipedia or party link). A medium
+ *  reviewed decision is not: the 1977 Likud ranks 21 and 24 are both printed כהן יגאל and which rank is which person is
+ *  medium-confidence evidence (identity-decisions.reviewed.json). */
+const officialRosterMatch = /^(elected; Knesset \d+ member, name (identical|matches) \(\d+(\.\d+)?\)|not elected at the election; entered Knesset \d+ in the list's faction \(name score \d+(\.\d+)?\))/;
+const memberIdentitySure = (e: Entry) => knessetIdentitySure(e) && (e.confidence === 'high' || officialRosterMatch.test(e.basis ?? ''));
+
 /** Identity certainty under docs/source-policy.md: an official Knesset identity is confirmed; a reviewed high match is
  *  probable; a rule-based name match (`probable: true` in the published bio) is provisional. */
-export const bioIdentityCertainty = (e: Entry): 'confirmed' | 'probable' | 'provisional' => knessetIdentitySure(e) ? 'confirmed' : e.confidence === 'high' ? 'probable' : 'provisional';
+export const bioIdentityCertainty = (e: Entry): 'confirmed' | 'probable' | 'provisional' => memberIdentitySure(e) ? 'confirmed' : e.confidence === 'high' ? 'probable' : 'provisional';
 
 export function applyBios(ds: ElectionDataset): ElectionDataset {
   const file = join(ROOT, 'data', 'meta', 'bios', `${ds.id}.json`);
@@ -46,6 +53,8 @@ export function applyBios(ds: ElectionDataset): ElectionDataset {
       ...(e.hewiki?.url ? { hewiki: { title: e.hewiki.title, url: e.hewiki.url } } : {}),
       ...(e.party?.url ? { party: { url: e.party.url, ...(e.party.publisher ? { publisher: e.party.publisher } : {}), ...(e.party.archivedAt ? { archivedAt: e.party.archivedAt } : {}) } } : {}),
       ...(e.confidence === 'medium' ? { probable: true } : {}),
+      // `probable` covers every link; the Knesset member record itself is official (audit 12 Nov, ax-build-guesses-03)
+      ...(e.confidence === 'medium' && e.knesset?.url && memberIdentitySure(e) ? { memberConfirmed: true } : {}),
     };
     if (/en\.wikipedia/.test(JSON.stringify(b))) throw new Error(`data/meta/bios/${ds.id}.json: English Wikipedia is never linked`);
     return b.knesset || b.hewiki || b.party ? b : null;

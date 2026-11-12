@@ -276,9 +276,11 @@ describe('a person on two lists after an import', () => {
     expect(names(ok(planRoster({ from: from25, to: k26, ctx, srcId: '25-מחל', dstId: '26-מחל' })).result, '26-מחל')).toEqual([['Tally Gotliv', '26-ב']]);
     // National Unity 2022 into Yashar!: Sa'ar now on Likud, Ginzburg on Together. Probable links (Elkin, Haskel) are not identity.
     expect(names(ok(planRoster({ from: from25, to: k26, ctx, srcId: '25-כן', dstId: '26-דרך' })).result, '26-דרך')).toEqual([['Gideon Sa\'ar', '26-מחל'], ['Eitan Ginzburg', '26-רק']]);
-    const probable = k26.lists.flatMap((l) => l.candidates).filter((c) => c.bio?.probable && c.bio.knesset);
+    const probable = k26.lists.flatMap((l) => l.candidates).filter((c) => c.bio?.probable && c.bio.knesset && !c.bio.memberConfirmed);
     expect(probable.length).toBeGreaterThan(0);
     for (const c of probable) expect(memberKey(c)).toBeUndefined();
+    // a probable Hebrew Wikipedia link does not hide an official Knesset identity: Almog Cohen, Otzma Yehudit 2022 #7, Likud 2026
+    expect(names(ok(planRoster({ from: from25, to: k26, ctx, srcId: '25-ט', dstId: '26-ב' })).result, '26-ב')).toContainEqual(['Almog Cohen', '26-מחל']);
   });
   it('never removes anyone unless asked; a chosen removal is an ordinary, marked edit of the other list in the same step', () => {
     const kept = ok(planRoster({ from: from25, to: k26, ctx, srcId: '25-מחל', dstId: '26-מחל' }));

@@ -32,8 +32,11 @@ interface Edge {
   /** merger progress (docs/features/party-history.md, data contract); only a registered merger carries identity */
   stage?: string; certainty?: string; continues?: string;
 }
+/** A pending lineage item: a proposed relation (both ends; merged-into when no relation is named), an open check on
+ *  parties (partyIds only), or a general note. Shown as "To verify" and never used. */
+type Pending = Partial<Omit<Edge, 'id' | 'evidence'>> & { id: string; partyIds?: string[]; evidence?: Partial<Edge['evidence']> };
 export interface FamilyBundle {
-  registry: Registry; lineage: { sources: Sources; edges: Edge[] }; families: Family[];
+  registry: Registry; lineage: { sources: Sources; edges: Edge[]; pending?: Pending[] }; families: Family[];
   datasets: Record<string, ElectionDataset>; hashes: Record<string, string>;
 }
 function check(value: unknown, message: string): asserts value { if (!value) throw new Error(message); }
@@ -126,20 +129,39 @@ export function validateFamilies(bundle: FamilyBundle): void {
   }
   const edgeIds = new Set<string>();
   const successors = new Map<string, { to: string; date: string }[]>();
+  const relationKinds = ['split-from', 'merged-into', 'absorbed-into', 'renamed-to', 'faction-split', 'same-organisation', 'not-same-organisation', 'electoral-partner', 'leader-moved-to'];
+  const dateOk = (date: unknown, precision: unknown) => typeof date === 'string' && (precision === 'year' ? /^\d{4}$/.test(date) : precision === 'day' && /^\d{4}-\d{2}-\d{2}$/.test(date));
   for (const e of lineage.edges) {
     check(!edgeIds.has(e.id), `duplicate edge ${e.id}`); edgeIds.add(e.id);
-    check(['split-from', 'merged-into', 'absorbed-into', 'renamed-to', 'faction-split', 'same-organisation', 'not-same-organisation', 'electoral-partner', 'leader-moved-to'].includes(e.relation), `unknown relation ${e.relation}`);
+    check(relationKinds.includes(e.relation), `unknown relation ${e.relation}`);
     check(e.stage === undefined || e.relation === 'merged-into' && ['announced', 'approved', 'registered'].includes(e.stage), `${e.id}: stage`);
     if (e.continues !== undefined) { check(e.relation === 'merged-into' && e.from.includes(e.continues), `${e.id}: continues`); }
     // a recorded certainty may never exceed what its cited sources support (src/data/evidence.ts)
     if (e.certainty !== undefined) check((CERTAINTIES as readonly string[]).includes(e.certainty) && certaintyAllowed(e.certainty as Certainty, certaintyCeiling(e.sources.map((id) => ({ id, source: evidenceOf(lineage.sources[id] as Parameters<typeof evidenceOf>[0]) })))), `${e.id}: certainty above its sources`);
     check(e.from.length && e.to.length && e.evidence.status && e.evidence.interpretation, 'empty edge evidence');
     for (const p of [...e.from, ...e.to]) party(p); refs(e.sources, lineage.sources);
-    check(e.datePrecision === 'year' ? /^\d{4}$/.test(e.date) : e.datePrecision === 'day' && /^\d{4}-\d{2}-\d{2}$/.test(e.date), `edge date ${e.id}`);
+    check(dateOk(e.date, e.datePrecision), `edge date ${e.id}`);
     if (e.relation === 'electoral-partner') check(datasets[e.electionId ?? '']?.lists.some(l => l.id === e.listId) && datasets[e.electionId!].electionDate === e.date, 'partnership election');
     if (['split-from', 'merged-into', 'absorbed-into', 'renamed-to'].includes(e.relation) && (!e.stage || e.stage === 'registered')) for (const from of e.from) for (const to of e.to) {
       const id = canonical(from); if (!successors.has(id)) successors.set(id, []); successors.get(id)!.push({ to: canonical(to), date: e.date });
     }
+  }
+  // Pending items: weaker evidence, the same structure. A proposed relation the app could not read would vanish from it
+  // without a word (src/history/relations.ts skips it), so everything it needs is checked here (audit 12 Nov).
+  for (const e of lineage.pending ?? []) {
+    check(typeof e.id === 'string' && e.id && !edgeIds.has(e.id), `duplicate or missing pending id ${e.id}`); edgeIds.add(e.id);
+    check(e.sources?.length, `${e.id}: missing sources`); refs(e.sources, lineage.sources);
+    check(e.evidence?.status && e.evidence.interpretation, `${e.id}: pending evidence`);
+    check((CERTAINTIES as readonly string[]).includes(e.certainty ?? ''), `${e.id}: pending certainty`);
+    if (e.partyIds !== undefined) { check(e.partyIds.length > 0, `${e.id}: empty partyIds`); for (const p of e.partyIds) party(p); }
+    const proposed = ['from', 'to', 'relation', 'date', 'datePrecision', 'stage', 'continues', 'electionId', 'listId'].some(k => k in e && e[k as keyof Pending] !== undefined);
+    if (!proposed) continue;
+    check(e.from?.length && e.to?.length, `${e.id}: a proposed relation needs both ends`);
+    for (const p of [...e.from, ...e.to]) party(p);
+    check(relationKinds.includes(e.relation ?? 'merged-into'), `${e.id}: unknown relation ${e.relation}`);
+    check(e.stage === undefined || (e.relation ?? 'merged-into') === 'merged-into' && ['announced', 'approved', 'registered'].includes(e.stage), `${e.id}: stage`);
+    check(e.continues === undefined || (e.relation ?? 'merged-into') === 'merged-into' && e.from.includes(e.continues), `${e.id}: continues`);
+    check(e.date === undefined && e.datePrecision === undefined || dateOk(e.date, e.datePrecision), `${e.id}: pending date`);
   }
   // A chronological directed return to an ancestor would assert impossible continuity.
   const walk = (node: string, path: Set<string>, date: string) => {

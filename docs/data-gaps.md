@@ -319,7 +319,7 @@ Every claim in these families, not only gaps. Derived from each claim’s own so
 | Formation events | 60 | 17 | 46 | 1 | 0 | 124 |
 | Term events | 29 | 54 | 0 | 0 | 0 | 83 |
 | Family classifications | 0 | 55 | 409 | 0 | 0 | 464 |
-| Candidate identity links | 3217 | 41 | 534 | 0 | 0 | 3792 |
+| Candidate identity links | 3215 | 41 | 536 | 0 | 0 | 3792 |
 
 ## Counts
 

@@ -119,7 +119,7 @@ export function scanDocument(file: string, doc: any, listLookup: Record<string, 
     if (v.certainty === 'disputed') addHere('conflict', v.note ?? v.noteEn ?? 'Recorded as disputed');
     if (v.candidatesUnavailable) addHere('unknown', 'Registered candidate roster unavailable', '.candidates');
     if (v.candidatesTruncated) addHere('missing-field', 'Only a candidate prefix is transcribed; later registered ranks missing', '.candidates');
-    if (v.probable === true) addHere('inferred', 'Probable identity match, not official identity verification', '.probable');
+    if (v.probable === true) addHere('inferred', v.memberConfirmed === true ? 'Probable Hebrew Wikipedia or party link; the Knesset member identity is official' : 'Probable identity match, not official identity verification', '.probable');
     if (v.confidence === 'low') addHere('low-confidence', 'Evidence confidence is low', '.confidence');
     if (/inferred|unverified|report-only|probable/.test(v.verification ?? v.status ?? '')) addHere('inferred', `Evidence status: ${v.verification ?? v.status}`);
     if (typeof v.status === 'string' && /unknown|unresolved|missing|unavailable|unconfirmed/.test(v.status)) addHere('unknown', `Status: ${v.status}`, '.status');

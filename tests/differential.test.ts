@@ -264,7 +264,9 @@ const EXPECTED: Record<Family, string> = {
   // All together (merges of 12 Nov): digest recomputed on the merged data; each change reproduced its own digest before the merge.
   // Audit 12 Nov: k22 list כי, one misprinted word of its name corrected (אלחודה → אלוחדה, k22-corrections.json), with its
   // link title. Votes, seats, ids and the other 25 datasets unchanged; only this digest changes.
-  model: '378b57054cebd7190f1b0c7a835c6c1f2aacfe77a0ed7e3777964b2d51c09178',
+  // Audit 12 Nov (ax-build-guesses-03): 21 k25/k26 candidate bios gain memberConfirmed (official Knesset identity beside a
+  // probable Hebrew Wikipedia link); recursive diff shows only those fields and builtAt. The other four digests are unchanged.
+  model: '158c41ac44caf615c356ebe97e43d13facc05a25719338c7581638b572bc2868',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };
