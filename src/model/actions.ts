@@ -12,28 +12,26 @@ import { PARTS, partSnapshot } from './parts.ts';
 import { validAction, NO_COALITION, blocSchemeState, electionRuleSetId, historicalRules, type Action, type ActionContext, type Scenario, type SimCandidate, type SimList } from './scenario.ts';
 import type { PartyDef } from '../data/schema.ts';
 
-export class ActionError extends Error {
-  readonly code: string;
-  constructor(code: string, message: string) { super(message); this.code = code; }
-}
+import { ActionError, M, type Msg } from './messages.ts';
+export { ActionError };
 
 const isWhole = (n: number) => Number.isSafeInteger(n) && n >= 0;
-const need = (cond: unknown, code: string, msg: string) => { if (!cond) throw new ActionError(code, msg); };
+const need = (cond: unknown, code: string, msg: Msg) => { if (!cond) throw new ActionError(code, msg); };
 
 const safeCount = (n: bigint): number => {
-  need(n >= 0n && n <= BigInt(Number.MAX_SAFE_INTEGER), 'votes', 'Vote counts and totals must be safe integers ≥ 0.');
+  need(n >= 0n && n <= BigInt(Number.MAX_SAFE_INTEGER), 'votes', M.votesRange);
   return Number(n);
 };
 const sumVotes = (values: number[]) => safeCount(values.reduce((sum, n) => {
-  need(isWhole(n), 'votes', 'Vote counts must be safe integers ≥ 0.');
+  need(isWhole(n), 'votes', M.votesWhole);
   return sum + BigInt(n);
 }, 0n));
 const addVotes = (a: number, b: number) => sumVotes([a, b]);
 
 /** Splits `total` into integers proportional to `weights` (largest remainder; ties by order). */
 export function apportion(total: number, weights: number[]): number[] {
-  need(isWhole(total), 'votes', 'Vote counts must be safe integers ≥ 0.');
-  need(weights.every((w) => Number.isFinite(w) && w >= 0), 'votes', 'Weights must be finite numbers ≥ 0.');
+  need(isWhole(total), 'votes', M.votesWhole);
+  need(weights.every((w) => Number.isFinite(w) && w >= 0), 'votes', M.invalid);
   const T = BigInt(total);
   const W = weights.map((w) => BigInt(Math.max(0, Math.round(w * 1e6))));
   const sum = W.reduce((a, b) => a + b, 0n);
@@ -49,7 +47,7 @@ export function apportion(total: number, weights: number[]): number[] {
 
 const listById = (s: Scenario, id: string) => {
   const l = s.lists.find((x) => x.id === id);
-  if (!l) throw new ActionError('unknown-list', `Unknown list ${id}`);
+  if (!l) throw new ActionError('unknown-list', M.unknownList);
   return l;
 };
 
@@ -57,7 +55,7 @@ const listById = (s: Scenario, id: string) => {
 const notWithdrawn = (s: Scenario, ...ids: string[]) => {
   for (const id of ids) {
     const l = s.lists.find((x) => x.id === id);
-    need(!l?.withdrawn, 'withdrawn', `${l?.shortHe ?? id} has withdrawn: reinstate it before changing its votes.`);
+    need(!l?.withdrawn, 'withdrawn', l ? M.withdrawn(l) : M.unknownList);
   }
 };
 
@@ -73,9 +71,9 @@ function checkAgreements(s: Scenario) {
   if (s.mode !== 'historical') return;
   const seen = new Set<string>();
   for (const a of s.agreements.filter((x) => x.enabled)) {
-    need(a.members.length === 2, 'agreement-size', 'Under section 67(a) an agreement joins exactly two lists. Switch to experimental rules to model other arrangements.');
+    need(a.members.length === 2, 'agreement-size', M.agreementTwo);
     for (const m of a.members) {
-      need(!seen.has(m), 'agreement-duplicate', 'Under section 67(a) a list may sign an agreement with one other list only.');
+      need(!seen.has(m), 'agreement-duplicate', M.agreementOnce);
       seen.add(m);
     }
   }
@@ -90,6 +88,26 @@ function partiesOf(parties: PartyDef[], candidates: SimCandidate[]): Pick<SimLis
   const seen = new Set<string>();
   const kept = parties.filter((p) => used.has(p.id) && !seen.has(p.id) && (seen.add(p.id), true));
   return kept.length ? { parties: kept.map((p) => ({ ...p })) } : {};
+}
+
+/** A roster restored or started from another state: its candidates with the parties they stand for and its completeness
+ *  flags, together (a roster copied from another election brings its own parties, so restoring must take them back). */
+const withRoster = (l: SimList, from: SimList): SimList => {
+  // fields keep their place in the list (absent ones stay absent), so a restore that changes nothing leaves it as it was
+  const out: SimList = { ...l, candidates: from.candidates, parties: from.parties?.length ? from.parties.map((p) => ({ ...p })) : undefined,
+    rosterUnavailable: from.rosterUnavailable || undefined, rosterTruncated: from.rosterTruncated || undefined };
+  for (const k of ['parties', 'rosterUnavailable', 'rosterTruncated'] as const) if (out[k] === undefined && !(k in l)) delete out[k];
+  return out;
+};
+/** After a roster restore, a list whose parties changed counts its faction as the source does (`splits`, when known);
+ *  a list left with fewer than two parties cannot stay split. Party colours follow the usual restore rule (kept by id). */
+function withSplits(s: Scenario, s0: Scenario, splits: string[] | undefined): Scenario {
+  const ids = (l?: SimList) => JSON.stringify(l?.parties?.map((p) => p.id) ?? []);
+  const changed = (l: SimList) => { const was = s0.lists.find((x) => x.id === l.id); return !!was && ids(was) !== ids(l); };
+  const before = s.factionSplits ?? [];
+  const kept = before.filter((id) => { const l = s.lists.find((x) => x.id === id); return !l || (l.parties?.length ?? 0) >= 2 && (!splits || !changed(l) || splits.includes(id)); });
+  const added = splits ? s.lists.filter((l) => !kept.includes(l.id) && (l.parties?.length ?? 0) >= 2 && changed(l) && splits.includes(l.id)).map((l) => l.id) : [];
+  return kept.length === before.length && !added.length ? s : { ...s, factionSplits: [...kept, ...added] };
 }
 
 function interleave<T>(arrays: T[][]): T[] {
@@ -107,10 +125,10 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
   const baseList = (id: string) => ctx.base?.lists.find((l) => l.id === id) ?? null;
   switch (action.type) {
     case 'familyOperation': {
-      need(validAction(action), 'family', 'Invalid family operation.');
+      need(validAction(action), 'family', M.invalid);
       const definition = structuredClone(action.definition);
       if (action.operation === 'group') {
-        need(resolve(definition,s).every(l => action.placements[l.id] === l.family), 'family', 'Grouping does not cover every list.');
+        need(resolve(definition,s).every(l => action.placements[l.id] === l.family), 'family', M.invalid);
         s = {...s, familyDefinition:definition, blocSchemeId:null, customGroupingName:!action.name||action.name===definition.nameHe?familyLabel(definition,'he'):action.name===definition.nameEn?familyLabel(definition,'en'):action.name, partyBlocs:{}, candidateBlocs:{},
           blocs:[{id:'selected',nameHe:familyLabel(definition,'he'),nameEn:familyLabel(definition,'en'),color:familyColor(definition)},...(Object.values(action.placements).includes('mixed')?[{id:'mixed',nameHe:'רשימות מעורבות',nameEn:'Mixed lists',color:'#b8a78a'}]:[]),{id:'other',nameHe:'כל השאר',nameEn:'Everyone else',color:'#7d8791'}],
           lists:s.lists.map(l=>({...l,bloc:action.placements[l.id]}))};
@@ -118,95 +136,95 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         s={...s,blocs:s.blocs.map((b,i)=>({...b,color:colors[i]}))};
       } else {
         const ids = action.allocations.map(a=>a.listId);
-        need(new Set(ids).size===ids.length, 'family','Duplicate allocations.');
-        for(const a of action.allocations) { const l=listById(s,a.listId); need(!l.withdrawn && l.votes===a.before,'family','Family vote preview is stale.'); }
+        need(new Set(ids).size===ids.length, 'family',M.invalid);
+        for(const a of action.allocations) { const l=listById(s,a.listId); need(!l.withdrawn && l.votes===a.before,'family',M.staleVotes); }
         const resolved=resolve(definition,s), members=resolved.filter(l=>l.family==='selected'&&!l.withdrawn);
         const donors=resolved.filter(l=>l.family!=='selected'&&!l.withdrawn&&(action.source.kind!=='transfer'||l.id===action.source.listId));
         const expectedMembers=distribute(BigInt(action.target),members.map(l=>BigInt(l.votes)));
         const memberBefore=sumVotes(members.map(l=>l.votes)), delta=action.target-memberBefore;
-        need(members.length>0 && ids.length===members.length+(action.source.kind==='new'?0:donors.length),'family','Incomplete family allocations.');
-        members.forEach((l,i)=>need(action.allocations.find(a=>a.listId===l.id)?.votes===expectedMembers[i],'family','Family allocation is not proportional.'));
+        need(members.length>0 && ids.length===members.length+(action.source.kind==='new'?0:donors.length),'family',M.invalid);
+        members.forEach((l,i)=>need(action.allocations.find(a=>a.listId===l.id)?.votes===expectedMembers[i],'family',M.invalid));
         if(action.source.kind!=='new') {
           const donorTarget=sumVotes(donors.map(l=>l.votes))-delta;
-          need(donorTarget>=0,'family','Insufficient donor votes.');
+          need(donorTarget>=0,'family',M.donorsShort);
           const shares=distribute(BigInt(donorTarget),donors.map(l=>BigInt(l.votes)));
-          donors.forEach((l,i)=>need(action.allocations.find(a=>a.listId===l.id)?.votes===shares[i],'family','Donor allocation is not proportional.'));
+          donors.forEach((l,i)=>need(action.allocations.find(a=>a.listId===l.id)?.votes===shares[i],'family',M.invalid));
         }
         const before=sumVotes(action.allocations.map(a=>a.before)), after=sumVotes(action.allocations.map(a=>a.votes));
-        need(after-before===action.registeredDelta && (action.source.kind==='new' || action.registeredDelta===0),'family','Votes must balance.');
+        need(after-before===action.registeredDelta && (action.source.kind==='new' || action.registeredDelta===0),'family',M.invalid);
         s={...s,familyDefinition:definition,registered:s.registered+action.registeredDelta,lists:s.lists.map(l=>({...l,votes:action.allocations.find(a=>a.listId===l.id)?.votes??l.votes}))};
       }
       break;
     }
     case 'setBlocAppearance':
-      need(action.blocs.length===s.blocs.length&&action.blocs.every(b=>s.blocs.some(x=>x.id===b.id)), 'blocs', 'Appearance cannot change bloc membership.');
+      need(action.blocs.length===s.blocs.length&&action.blocs.every(b=>s.blocs.some(x=>x.id===b.id)), 'blocs', M.invalid);
       s={...s,blocs:s.blocs.map(b=>({...b,color:action.blocs.find(x=>x.id===b.id)!.color}))};break;
     case 'setPartyColor':
-      need(listById(s,action.listId).parties?.some(p=>p.id===action.partyId),'party','Unknown party.');
+      need(listById(s,action.listId).parties?.some(p=>p.id===action.partyId),'party',M.noParty);
       s=replaceList(s,action.listId,l=>({...l,parties:l.parties?.map(p=>p.id===action.partyId?{...p,color:action.color,customColor:true}:p)}));break;
     case 'resetColors': {
       const base=ctx.base;
-      need(base,'no-base','Historical colours are unavailable.');
+      need(base,'no-base',M.noOfficial);
       const scheme=s.blocSchemes?.find(g=>g.id===s.blocSchemeId);
       s={...s,lists:s.lists.map(l=>{const b=base!.lists.find(x=>x.id===l.id);return {...l,color:b?.color??'#7d8791',parties:l.parties?.map(p=>({...p,color:base!.lists.flatMap(x=>x.parties??[]).find(x=>x.id===p.id)?.color,customColor:undefined}))};}),blocs:s.blocs.map(b=>({...b,color:(scheme?.blocs??base!.blocs).find(x=>x.id===b.id)?.color??'#7d8791'}))};break;
     }
     case 'setIdentityColor':
-      need(isHexColour(action.color), 'colour', 'Choose a valid hex colour.');
+      need(isHexColour(action.color), 'colour', M.colour);
       s = { ...s, identityColor: action.color }; break;
     case 'setCoalition':
       // every role present, each unit in at most one (validated): an older two-role log fails here
-      need(validAction(action), 'coalition', 'Invalid coalition choices.');
+      need(validAction(action), 'coalition', M.invalid);
       s = { ...s, coalition: action.coalition }; break;
     case 'startPart': {
-      need(validAction(action), 'part', 'Invalid starting point.');
+      need(validAction(action), 'part', M.invalid);
       let snapshot = action.snapshot;
       if (action.source === 'official') {
-        need(ctx.base, 'base', 'Official data is required.');
+        need(ctx.base, 'base', M.noOfficial);
         snapshot = partSnapshot(ctx.base!, action.part);
       }
       if (action.source === 'blank') {
-        need(PARTS[action.part]?.blank, 'part', 'This part cannot be blank.');
+        need(PARTS[action.part]?.blank, 'part', M.noBlank);
         if (action.part === 'candidates') snapshot = { lists: s.lists.map(l => ({ ...l, candidates: [], rosterUnavailable: false, rosterTruncated: false })) };
         else if (action.part === 'agreements') snapshot = { agreements: [] };
         else if (action.part === 'coalitions') snapshot = { coalition: NO_COALITION };
         else if (action.part === 'blocs') {
-          need(action.name?.trim(), 'name', 'Name the grouping.');
+          need(action.name?.trim(), 'name', M.nameGrouping);
           // two clearly different colours from the bloc palette: grey is reserved for No bloc
           snapshot = { blocs: [0, 1].map(i => ({ id: `blank-${i}`, nameHe: `גוש ${i+1}`, nameEn: `Bloc ${i+1}`, color: assignColour(BLOC_PALETTE,i?[BLOC_PALETTE[0]]:[],blocColourRules(i?[BLOC_PALETTE[0]]:[])) })), customGroupingName: action.name, blocSchemeId: null, partyBlocs: {}, candidateBlocs: {}, listBlocs: Object.fromEntries(s.lists.map(l => [l.id, null])) };
         }
       }
       if (action.source === 'preset') {
         if (action.part === 'blocs') {
-          need(action.presetId, 'preset', 'Choose a grouping.');
+          need(action.presetId, 'preset', M.chooseGrouping);
           snapshot = partSnapshot(applyAction(s, { type: 'applyBlocScheme', schemeId: action.presetId! }, now, ctx), 'blocs');
         } else if (action.part === 'rules') {
-          need(action.presetId && RULESETS[action.presetId], 'preset', 'Unknown rule set.');
+          need(action.presetId && RULESETS[action.presetId], 'preset', M.chooseRules);
           snapshot = { rules: historicalRules(action.presetId!), mode: action.presetId === electionRuleSetId(s.electionId) ? 'historical' : 'experimental' };
         }
       }
-      need(snapshot, 'part', 'This part editor is not available yet.');
+      need(snapshot, 'part', M.invalid);
       if (action.part === 'blocs') {
-        need(snapshot!.blocs, 'part', 'Grouping inputs are required.');
+        need(snapshot!.blocs, 'part', M.invalid);
         s = { ...s, familyDefinition:snapshot!.familyDefinition, blocs: snapshot!.blocs!, blocSchemeId: snapshot!.blocSchemeId ?? null, customGroupingName: snapshot!.customGroupingName, partyBlocs: snapshot!.partyBlocs ?? {}, candidateBlocs: snapshot!.candidateBlocs ?? {}, lists: s.lists.map(l => ({ ...l, bloc: snapshot!.listBlocs?.[l.id] ?? null })) };
       } else if (action.part === 'agreements') {
         const ids = new Set(s.lists.map(l => l.id));
-        need(snapshot!.agreements?.every(a => a.members.every(id => ids.has(id))), 'lists', 'Agreement lists do not exist in this scenario.');
+        need(snapshot!.agreements?.every(a => a.members.every(id => ids.has(id))), 'lists', M.agreementLists);
         s = { ...s, agreements: snapshot!.agreements! };
       } else if (action.part === 'rules') {
-        need(snapshot!.rules && snapshot!.mode, 'part', 'Rule inputs are required.');
+        need(snapshot!.rules && snapshot!.mode, 'part', M.invalid);
         s = { ...s, rules: snapshot!.rules!, mode: snapshot!.mode! };
       }
       else if (action.part === 'coalitions') {
-        need(snapshot!.coalition, 'part', 'Coalition inputs are required.');
+        need(snapshot!.coalition, 'part', M.invalid);
         s = { ...s, coalition: snapshot!.coalition };
       }
       else if (action.part === 'totals') {
-        need(snapshot!.registered !== undefined && snapshot!.invalid !== undefined, 'part', 'Totals are required.');
-        need(!snapshot!.validVotes || s.lists.some(l => !l.withdrawn && l.votes > 0), 'votes', 'A positive vote distribution is required to scale turnout.');
+        need(snapshot!.registered !== undefined && snapshot!.invalid !== undefined, 'part', M.invalid);
+        need(!snapshot!.validVotes || s.lists.some(l => !l.withdrawn && l.votes > 0), 'votes', M.turnoutNeedsVotes);
         const votes = snapshot!.validVotes === undefined ? null : apportion(snapshot!.validVotes!, s.lists.map(l => l.withdrawn ? 0 : l.votes));
         s = { ...s, registered: snapshot!.registered!, invalid: snapshot!.invalid!, lists: votes ? s.lists.map((l,i) => ({ ...l, votes: votes[i] })) : s.lists };
       } else if (action.part === 'structure') {
-        need(snapshot!.lists, 'part', 'Lists are required.');
+        need(snapshot!.lists, 'part', M.invalid);
         const heldBefore = s.lists.reduce((sum,l) => sum + (l.heldVotes ?? 0), 0);
         const lists = snapshot!.lists!.map(from => {
           const old = s.lists.find(l => l.id === from.id);
@@ -218,44 +236,45 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         const heldAfter = lists.reduce((sum,l) => sum + (l.heldVotes ?? 0), 0);
         s = { ...s, lists, invalid: Math.max(0, s.invalid - heldBefore + heldAfter), agreements: snapshot!.agreements ?? [], factionSplits: snapshot!.factionSplits ?? [] };
       } else {
-        need(snapshot!.lists, 'part', 'List inputs are required.');
-        if (action.listId) need(s.lists.some(l => l.id === action.listId), 'lists', 'List does not exist.');
+        need(snapshot!.lists, 'part', M.invalid);
+        if (action.listId) need(s.lists.some(l => l.id === action.listId), 'lists', M.unknownList);
         const heldBefore = s.lists.reduce((sum,l) => sum + (l.heldVotes ?? 0), 0);
         s = { ...s, lists: s.lists.map(l => {
           if (action.listId && action.listId !== l.id) return l;
           const from = snapshot!.lists!.find(x => x.id === l.id);
-          need(from, 'lists', 'Starting-point lists do not match this scenario.');
+          need(from, 'lists', M.startMismatch);
           if (action.part === 'votes') {
-            need(l.withdrawn === from!.withdrawn, 'lists', 'Restore matching withdrawals before copying votes.');
+            need(l.withdrawn === from!.withdrawn, 'lists', M.matchWithdrawals);
             return { ...l, votes: from!.votes, heldVotes: from!.heldVotes };
           }
-          if (action.part === 'candidates') return { ...l, candidates: from!.candidates, rosterUnavailable: from!.rosterUnavailable, rosterTruncated: from!.rosterTruncated };
+          if (action.part === 'candidates') return withRoster(l, from!);
           return { ...l, nameHe: from!.nameHe, shortHe: from!.shortHe, shortEn: from!.shortEn, letters: from!.letters, color: from!.color };
         }) };
         if (action.part === 'votes') s = { ...s, invalid: Math.max(0, s.invalid - heldBefore + s.lists.reduce((sum,l) => sum + (l.heldVotes ?? 0), 0)) };
+        if (action.part === 'candidates') s = withSplits(s, s0, snapshot!.factionSplits);
       }
       break;
     }
     case 'setVotes':
-      need(isWhole(action.votes), 'votes', 'Votes must be a whole number ≥ 0.');
+      need(isWhole(action.votes), 'votes', M.votesWhole);
       notWithdrawn(s, action.listId);
       s = replaceList(s, action.listId, (l) => ({ ...l, votes: action.votes }));
       listById(s, action.listId);
       break;
     case 'transfer': {
-      need(isWhole(action.votes), 'votes', 'Votes must be a whole number ≥ 0.');
-      need(action.from !== action.to, 'transfer-self', 'Choose two different lists.');
+      need(isWhole(action.votes), 'votes', M.votesWhole);
+      need(action.from !== action.to, 'transfer-self', M.twoLists);
       const from = listById(s, action.from); listById(s, action.to);
       notWithdrawn(s, action.from, action.to);
-      need(from.votes >= action.votes, 'transfer-exceeds', `${from.shortHe} has only ${from.votes.toLocaleString('en-US')} votes.`);
+      need(from.votes >= action.votes, 'transfer-exceeds', M.notEnoughVotes(from, from.votes));
       s = replaceList(s, action.from, (l) => ({ ...l, votes: l.votes - action.votes }));
       s = replaceList(s, action.to, (l) => ({ ...l, votes: addVotes(l.votes, action.votes) }));
       break;
     }
     case 'addVoters': {
       if (!action.demographic) {
-        need(isWhole(action.invalid), 'votes', 'Invalid ballots must be a whole number ≥ 0.');
-        for (const a of action.allocations) { need(isWhole(a.votes), 'votes', 'Votes must be whole numbers ≥ 0.'); listById(s, a.listId); }
+        need(isWhole(action.invalid), 'votes', M.invalidWhole);
+        for (const a of action.allocations) { need(isWhole(a.votes), 'votes', M.votesWhole); listById(s, a.listId); }
         notWithdrawn(s, ...action.allocations.filter((a) => a.votes > 0).map((a) => a.listId));
         for (const a of action.allocations) s = replaceList(s, a.listId, (l) => ({ ...l, votes: addVotes(l.votes, a.votes) }));
         s = { ...s, invalid: addVotes(s.invalid, action.invalid) };
@@ -263,24 +282,24 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       }
 
       const validDelta = Number.isSafeInteger;
-      need(validDelta(action.invalid), 'votes', 'Invalid ballot delta must be a safe integer.');
-      need(new Set(action.allocations.map(a => a.listId)).size === action.allocations.length, 'votes', 'Duplicate allocation.');
-      for (const a of action.allocations) { need(validDelta(a.votes), 'votes', 'Vote delta must be a safe integer.'); listById(s, a.listId); }
+      need(validDelta(action.invalid), 'votes', M.invalid);
+      need(new Set(action.allocations.map(a => a.listId)).size === action.allocations.length, 'votes', M.invalid);
+      for (const a of action.allocations) { need(validDelta(a.votes), 'votes', M.invalid); listById(s, a.listId); }
       notWithdrawn(s, ...action.allocations.filter(a => a.votes !== 0).map(a => a.listId));
       for (const a of action.allocations) s = replaceList(s, a.listId, l => ({ ...l, votes: safeCount(BigInt(l.votes) + BigInt(a.votes)) }));
       s = { ...s, invalid: safeCount(BigInt(s.invalid) + BigInt(action.invalid)) };
-      if (action.demographic) need(addVotes(sumVotes(s.lists.map(l => l.votes)), s.invalid) <= s.registered, 'turnout', 'Votes cast exceed registered voters.');
+      if (action.demographic) need(addVotes(sumVotes(s.lists.map(l => l.votes)), s.invalid) <= s.registered, 'turnout', M.turnoutOver);
       break;
     }
     case 'redistribute': {
-      need(isWhole(action.votes), 'votes', 'Votes must be a whole number ≥ 0.');
-      need(new Set(action.from).size === action.from.length, 'redistribute', 'A list appears twice among the sources.');
-      need(action.to.length > 0 && action.to.reduce((t, x) => t + Math.max(0, x.share), 0) > 0, 'redistribute', 'Choose at least one list to receive the votes.');
-      need(!action.to.some((t) => action.from.includes(t.listId)), 'redistribute', 'A list cannot both give and receive votes.');
+      need(isWhole(action.votes), 'votes', M.votesWhole);
+      need(new Set(action.from).size === action.from.length, 'redistribute', M.sourceTwice);
+      need(action.to.length > 0 && action.to.reduce((t, x) => t + Math.max(0, x.share), 0) > 0, 'redistribute', M.noReceiver);
+      need(!action.to.some((t) => action.from.includes(t.listId)), 'redistribute', M.giveAndTake);
       const sources = action.from.map((id) => listById(s, id));
       notWithdrawn(s, ...action.from, ...action.to.map((t) => t.listId));
       const pool = sumVotes(sources.map((l) => l.votes));
-      need(pool >= action.votes, 'transfer-exceeds', `The selected lists hold only ${pool.toLocaleString('en-US')} votes.`);
+      need(pool >= action.votes, 'transfer-exceeds', M.poolTooSmall(pool));
       const take = apportion(action.votes, sources.map((l) => l.votes));
       sources.forEach((l, i) => { s = replaceList(s, l.id, (x) => ({ ...x, votes: x.votes - take[i] })); });
       const give = apportion(action.votes, action.to.map((t) => t.share));
@@ -288,7 +307,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       break;
     }
     case 'scaleAll': {
-      need(Number.isFinite(action.factorPct) && action.factorPct >= 0, 'factor', 'Scale must be ≥ 0%.');
+      need(Number.isFinite(action.factorPct) && action.factorPct >= 0, 'factor', M.scaleNegative);
       const total = sumVotes(s.lists.map((l) => l.votes));
       const target = Math.round(total * (action.factorPct / 100));
       const parts = apportion(target, s.lists.map((l) => l.votes));
@@ -296,10 +315,10 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       break;
     }
     case 'merge': {
-      need(new Set(action.ids).size === action.ids.length && action.ids.length >= 2, 'merge-size', 'Select at least two different lists to merge.');
-      need(!s.lists.some((l) => l.id === action.newId && !action.ids.includes(l.id)), 'duplicate-id', 'A list with that id already exists.');
-      need(Number.isFinite(action.retentionPct), 'retention', 'Retention must be a number.');
-      need(action.retentionPct >= 0 && action.retentionPct <= 100, 'retention', 'Retention must be between 0% and 100%.');
+      need(new Set(action.ids).size === action.ids.length && action.ids.length >= 2, 'merge-size', M.mergeTwo);
+      need(!s.lists.some((l) => l.id === action.newId && !action.ids.includes(l.id)), 'duplicate-id', M.listExists);
+      need(Number.isFinite(action.retentionPct), 'retention', M.retention);
+      need(action.retentionPct >= 0 && action.retentionPct <= 100, 'retention', M.retention);
       const parts = action.ids.map((id) => listById(s, id));
       const total = sumVotes(parts.map((l) => l.votes));
       const kept = Number((BigInt(total) * BigInt(Math.round(action.retentionPct * 100))) / 10000n);
@@ -323,19 +342,19 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
     }
     case 'split': {
       const orig = listById(s, action.id);
-      need(action.parts.length >= 2, 'split-size', 'A split needs at least two resulting lists.');
-      need(new Set(action.parts.map((p) => p.newId)).size === action.parts.length, 'duplicate-id', 'The new lists need different ids.');
-      need(!action.parts.some((p) => s.lists.some((l) => l.id === p.newId && l.id !== action.id)), 'duplicate-id', 'A list with that id already exists.');
+      need(action.parts.length >= 2, 'split-size', M.splitTwo);
+      need(new Set(action.parts.map((p) => p.newId)).size === action.parts.length, 'duplicate-id', M.newListsDiffer);
+      need(!action.parts.some((p) => s.lists.some((l) => l.id === p.newId && l.id !== action.id)), 'duplicate-id', M.listExists);
       const sum = sumVotes(action.parts.map((p) => p.votes));
-      for (const p of action.parts) need(isWhole(p.votes), 'votes', 'Votes must be whole numbers ≥ 0.');
-      need(sum <= orig.votes, 'split-exceeds', `The parts total ${sum.toLocaleString('en-US')} votes, more than the original ${orig.votes.toLocaleString('en-US')}.`);
-      need(sum === orig.votes, 'split-total', 'The parts must sum exactly to the original vote count.');
+      for (const p of action.parts) need(isWhole(p.votes), 'votes', M.votesWhole);
+      need(sum <= orig.votes, 'split-exceeds', M.splitOver(sum, orig.votes));
+      need(sum === orig.votes, 'split-total', M.splitTotal);
       const used = new Set<string>();
       const byId = new Map<string, SimCandidate>();
       for (const c of orig.candidates) if (!byId.has(c.id)) byId.set(c.id, c);
       for (const p of action.parts) for (const cid of p.candidateIds) {
-        need(byId.has(cid), 'split-candidate', 'A part contains a candidate who is not on the original list.');
-        need(!used.has(cid), 'split-candidate', 'A candidate can appear on only one of the new lists.');
+        need(byId.has(cid), 'split-candidate', M.splitStranger);
+        need(!used.has(cid), 'split-candidate', M.splitTwice);
         used.add(cid);
       }
       const newLists: SimList[] = action.parts.map((p, i) => ({
@@ -352,8 +371,8 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       break;
     }
     case 'addList':
-      need(isWhole(action.votes), 'votes', 'Votes must be a whole number ≥ 0.');
-      need(!s.lists.some((l) => l.id === action.newId), 'duplicate-id', 'List id already exists.');
+      need(isWhole(action.votes), 'votes', M.votesWhole);
+      need(!s.lists.some((l) => l.id === action.newId), 'duplicate-id', M.listExists);
       // a new list is its own lineage, so comparisons and later merges/splits can follow it
       s = { ...s, lists: [...s.lists, { id: action.newId, synthetic: { kind: 'new', parts: [] }, originIds: [action.newId], letters: action.letters, nameHe: action.nameHe, shortHe: action.nameHe, shortEn: null, color: action.color, bloc: null, votes: action.votes, withdrawn: false, candidates: [], sponsorsHe: '' }] };
       break;
@@ -382,7 +401,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
     case 'setAgreement': {
       const { members } = action.agreement;
       for (const m of members) listById(s, m);
-      need(members.length >= 2 && new Set(members).size === members.length, 'agreement-members', 'An agreement joins at least two different lists.');
+      need(members.length >= 2 && new Set(members).size === members.length, 'agreement-members', M.agreementMembers);
       const exists = s.agreements.some((a) => a.id === action.agreement.id);
       s = { ...s, agreements: exists ? s.agreements.map((a) => (a.id === action.agreement.id ? action.agreement : a)) : [...s.agreements, action.agreement] };
       checkAgreements(s);
@@ -393,9 +412,9 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       break;
     case 'candidates': {
       listById(s, action.listId);
-      need(Array.isArray(action.candidates), 'candidates', 'Invalid candidate list.');
+      need(Array.isArray(action.candidates), 'candidates', M.invalid);
       const ids = new Set<string>();
-      for (const c of action.candidates) { need(c.nameHe.trim().length > 0, 'candidate-name', 'Every candidate needs a name.'); need(!ids.has(c.id), 'candidate-dup', 'Duplicate candidate.'); ids.add(c.id); }
+      for (const c of action.candidates) { need(c.nameHe.trim().length > 0, 'candidate-name', M.candidateName); need(!ids.has(c.id), 'candidate-dup', M.candidateTwice); ids.add(c.id); }
       s = replaceList(s, action.listId, (l) => ({ ...l, candidates: action.candidates as SimCandidate[],
         // an imported roster brings its constituent parties and completeness flags with it
         ...(action.parties !== undefined ? { parties: action.parties.length ? action.parties.map((p) => ({ ...p })) : undefined } : {}),
@@ -405,16 +424,16 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
     }
     case 'copyFrom': {
       // concrete inner steps, already computed from the source: replay never needs the other side
-      need(validAction(action), 'copy', 'Invalid copy.');
+      need(validAction(action), 'copy', M.invalid);
       for (const a of action.actions) s = applyAction(s, a, now, ctx);
       s = { ...s, log: s0.log };
       break;
     }
     case 'setRules':
-      need(s.mode === 'experimental', 'historical-rules', 'Electoral rules are fixed by law in a historically valid simulation. Switch to experimental rules to change them.');
-      if (action.patch.seats !== undefined) need(Number.isInteger(action.patch.seats) && action.patch.seats >= 1 && action.patch.seats <= 1000, 'seats', 'Seats must be a whole number between 1 and 1000.');
-      if (action.patch.thresholdPct !== undefined) need(/^\d+(\.\d+)?$/.test(action.patch.thresholdPct) && Number(action.patch.thresholdPct) <= 100, 'threshold', 'Threshold must be a percentage between 0 and 100.');
-      if (action.patch.maxAgreementSize !== undefined) need(Number.isInteger(action.patch.maxAgreementSize) && action.patch.maxAgreementSize >= 2, 'agreement-size', 'Agreements need at least two lists.');
+      need(s.mode === 'experimental', 'historical-rules', M.rulesByLaw);
+      if (action.patch.seats !== undefined) need(Number.isInteger(action.patch.seats) && action.patch.seats >= 1 && action.patch.seats <= 1000, 'seats', M.seats);
+      if (action.patch.thresholdPct !== undefined) need(/^\d+(\.\d+)?$/.test(action.patch.thresholdPct) && Number(action.patch.thresholdPct) <= 100, 'threshold', M.threshold);
+      if (action.patch.maxAgreementSize !== undefined) need(Number.isInteger(action.patch.maxAgreementSize) && action.patch.maxAgreementSize >= 2, 'agreement-size', M.agreementSize);
       s = { ...s, rules: { ...s.rules, ...action.patch } };
       break;
     case 'setMode':
@@ -426,12 +445,13 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
           if (a.members.length !== 2 || a.members.some((m) => seen.has(m))) disabled.add(a.id);
           else a.members.forEach((m) => seen.add(m));
         }
-        s = { ...s, mode: 'historical', rules: ctx.base && ctx.base.electionId === s.electionId ? { ...ctx.base.rules } : historicalRules(electionRuleSetId(s.electionId)), agreements: s.agreements.map((a) => (disabled.has(a.id) ? { ...a, enabled: false } : a)) };
+        // the law's rules, never the reset context's (which may be a saved experiment): preview and commit agree
+        s = { ...s, mode: 'historical', rules: historicalRules(electionRuleSetId(s.electionId)), agreements: s.agreements.map((a) => (disabled.has(a.id) ? { ...a, enabled: false } : a)) };
       } else s = { ...s, mode: 'experimental' };
       break;
     case 'setTotals':
-      if (action.registered !== undefined) need(isWhole(action.registered), 'votes', 'Registered voters must be a whole number ≥ 0.');
-      if (action.invalid !== undefined) need(isWhole(action.invalid), 'votes', 'Invalid ballots must be a whole number ≥ 0.');
+      if (action.registered !== undefined) need(isWhole(action.registered), 'votes', M.registeredWhole);
+      if (action.invalid !== undefined) need(isWhole(action.invalid), 'votes', M.invalidWhole);
       s = { ...s, registered: action.registered ?? s.registered, invalid: action.invalid ?? s.invalid };
       break;
     case 'setBlocs': {
@@ -444,17 +464,16 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
     }
     case 'applyBlocScheme': {
       const scheme = s.blocSchemes?.find((x) => x.id === action.schemeId);
-      need(scheme, 'unknown-scheme', 'This election has no such bloc scheme.');
+      need(scheme, 'unknown-scheme', M.noScheme);
+      // lists created by merges/splits take the bloc their origin lists share in the scheme (blocSchemeState)
       const st = blocSchemeState(scheme!, s.lists);
-      // lists created by merges/splits take the bloc their origin lists share in the scheme
-      const originBloc = (l: SimList) => { const b = new Set(l.originIds.map((o) => st.listBloc[o] ?? null)); return b.size === 1 ? [...b][0] : null; };
       s = { ...s, customGroupingName: undefined, blocSchemeId: scheme!.id, blocs: st.blocs, partyBlocs: st.partyBlocs, candidateBlocs: st.candidateBlocs,
-        lists: s.lists.map((l) => ({ ...l, bloc: l.id in st.listBloc ? st.listBloc[l.id] : originBloc(l) })) };
+        lists: s.lists.map((l) => ({ ...l, bloc: st.listBloc[l.id] })) };
       break;
     }
     case 'setPartyBloc': {
-      need(s.lists.some((l) => l.parties?.some((p) => p.id === action.partyId)), 'unknown-party', 'No list has this party.');
-      need(action.bloc === null || s.blocs.some((b) => b.id === action.bloc), 'unknown-bloc', 'No such bloc.');
+      need(s.lists.some((l) => l.parties?.some((p) => p.id === action.partyId)), 'unknown-party', M.noParty);
+      need(action.bloc === null || s.blocs.some((b) => b.id === action.bloc), 'unknown-bloc', M.noBloc);
       const partyBlocs = { ...s.partyBlocs };
       if (action.inherit) delete partyBlocs[action.partyId]; else partyBlocs[action.partyId] = action.bloc;
       s = { ...s, blocSchemeId: s.blocSchemes ? null : s.blocSchemeId, partyBlocs };
@@ -462,7 +481,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
     }
     case 'setFactionSplit': {
       const l = listById(s, action.listId);
-      need((l.parties?.length ?? 0) >= 2, 'not-joint', 'Only a joint list of several parties can split into factions.');
+      need((l.parties?.length ?? 0) >= 2, 'not-joint', M.notJoint);
       const rest = (s.factionSplits ?? []).filter((id) => id !== l.id);
       s = { ...s, factionSplits: action.split ? [...rest, l.id] : rest };
       break;
@@ -487,7 +506,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
     }
     case 'resetVotes': {
       const b = baseList(action.listId);
-      need(b, 'no-base', 'This list has no historical value to reset to.');
+      need(b, 'no-base', M.notInOfficial);
       listById(s, action.listId);
       notWithdrawn(s, action.listId);
       s = replaceList(s, action.listId, (l) => ({ ...l, votes: b!.votes }));
@@ -495,9 +514,9 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
     }
     case 'resetCandidates': {
       const b = baseList(action.listId);
-      need(b, 'no-base', 'This list has no historical candidate list.');
+      need(b, 'no-base', M.notInOfficial);
       listById(s, action.listId);
-      s = replaceList(s, action.listId, (l) => ({ ...l, candidates: b!.candidates }));
+      s = withSplits(replaceList(s, action.listId, (l) => withRoster(l, b!)), s0, ctx.base!.factionSplits ?? []);
       break;
     }
     case 'setDescription':
@@ -507,10 +526,10 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       s = { ...s, name: action.name };
       break;
     case 'setTurnout': {
-      need(action.pct > 0 && action.pct <= 100, 'turnout', 'Turnout must be above 0% and at most 100%.');
+      need(action.pct > 0 && action.pct <= 100, 'turnout', M.turnoutRange);
       const valid = sumVotes(s.lists.map((l) => l.votes));
       const cast = addVotes(valid, s.invalid);
-      need(cast > 0, 'turnout', 'There are no votes to scale.');
+      need(cast > 0, 'turnout', M.noVotes);
       const target = Math.round(s.registered * (action.pct / 100));
       const invalid = Math.round((s.invalid * target) / cast);
       const parts = apportion(target - invalid, s.lists.map((l) => l.votes));
@@ -521,28 +540,28 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       const B = ctx.base;
       if (action.what === 'agreements') {
         const src = B?.agreements ?? action.agreements;
-        need(src, 'no-base', 'Historical agreements are unavailable.');
+        need(src, 'no-base', M.noOfficial);
         const ids = new Set(s.lists.map((l) => l.id));
         s = { ...s, agreements: src!.filter((a) => a.members.every((m) => ids.has(m))).map((a) => ({ ...a, members: [...a.members] })) };
       } else if (action.what === 'totals') {
         const reg = B?.registered ?? action.registered, inv = B?.invalid ?? action.invalid;
-        need(reg !== undefined && inv !== undefined, 'no-base', 'Historical totals are unavailable.');
+        need(reg !== undefined && inv !== undefined, 'no-base', M.noOfficial);
         s = { ...s, registered: reg!, invalid: inv! };
       } else if (action.what === 'blocs') {
         const blocs = B?.blocs ?? action.blocs;
         const listBlocs = B ? Object.fromEntries(B.lists.map((l) => [l.id, l.bloc])) : action.listBlocs;
-        need(blocs && listBlocs, 'no-base', 'Historical blocs are unavailable.');
+        need(blocs && listBlocs, 'no-base', M.noOfficial);
         s = { ...s, blocs: blocs!, lists: s.lists.map((l) => (l.id in listBlocs! ? { ...l, bloc: listBlocs![l.id] } : l)),
           ...(B ? { customGroupingName: B.customGroupingName, blocSchemeId: B.blocSchemeId, partyBlocs: B.partyBlocs, candidateBlocs: B.candidateBlocs } : {}) };
       } else s = { ...s, lotteryWinners: {} };
       break;
     }
   }
-  if(action.type==='resetList'||action.type==='restore'||action.type==='startPart') {
+  if(action.type==='resetList'||action.type==='restore'||action.type==='startPart'||action.type==='resetCandidates') {
     s={...s,lists:s.lists.map(l=>{const old=s0.lists.find(x=>x.id===l.id);return old?{...l,color:old.color,...(l.parties?{parties:l.parties.map(p=>{const color=old.parties?.find(x=>x.id===p.id)?.color;return color?{...p,color,customColor:old.parties?.find(x=>x.id===p.id)?.customColor}:p;})}:{})}:l;}),blocs:s.blocs.map(b=>({...b,color:s0.blocs.find(x=>x.id===b.id)?.color??b.color}))};
   }
   // All transitions, including resets/restores, must keep both counts and derived totals exact.
-  need(isWhole(s.registered) && isWhole(s.invalid), 'votes', 'Totals must be safe integers ≥ 0.');
+  need(isWhole(s.registered) && isWhole(s.invalid), 'votes', M.votesRange);
   addVotes(sumVotes(s.lists.map((l) => l.votes)), s.invalid);
   const next = { ...s, log: [...s0.log, { at: now, action }] };
   recordEditScope(s0,next,action);

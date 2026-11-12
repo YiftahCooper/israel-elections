@@ -2,6 +2,16 @@
 
 ## 7 November 2026 — Settings
 
+- Import (12 Nov, audit): a scenario file whose results differ from what its own list of changes gives (changed by hand) is no longer opened only to lose that change silently on save or reload; it is refused with a plain message. A file made on older data opens on the current data and says so, as a share link does.
+- Scenarios (12 Nov, audit): exporting a saved scenario from its card kept no description (for example a What if question opened as a scenario); the card's export and the Compare reference now carry it.
+- What if (12 Nov, audit): the expanded answer for a merger that wins a seat read “14 = 6 + 7”; it now reads “6 + 7 = 13 apart, 14 together (+1)”, in words in both languages, and the equation form stays only where the joint list wins exactly its parts' seats.
+- Blocs (12 Nov, audit): applying a sourced grouping again put merged and split lists in no bloc; they now take the bloc their origin lists share (none if the origins differ), also in comparisons of groupings.
+- Compare (12 Nov, audit): a renamed candidate counted as “the same” roster, so Compare showed nothing to compare and refused to copy it; every candidate field, the parties and the completeness flags now count.
+- Start (12 Nov, audit): a damaged value in this browser's storage (for example the text null) left a blank page; every stored setting, saved scenario, workspace and saved comparison is now checked, and anything malformed is ignored.
+- Candidates (12 Nov, audit): restoring the official roster after copying another election's roster kept that election's parties on the list; the restore now brings back the official parties, the completeness flags and how a joint list's faction is counted.
+- Compare (12 Nov, audit): copying the official threshold into a saved experiment showed the experiment's 5% in the preview but committed 3.25%; returning to the law's rules now always uses the election's statutory rules, and every copy's preview is exactly what it commits.
+- Compare (12 Nov, audit): on a phone the Side by side, Close side by side and Swap icon buttons now have names for screen readers.
+- Messages (12 Nov, audit): every refusal from the scenario engine, and the import errors, now come in plain English and Hebrew, say what to do, and name lists in the reader's language (English copy refusals showed Hebrew list names).
 - 25th Knesset (12 Nov, audit): its records now run to its end. The Knesset’s database closes all 120 memberships on 10 November 2026, the day the 26th Knesset opened; seat cards and faction histories show that end date instead of “ongoing”, and the timeline ends with it.
 - Side by side and Copy (12 Nov, audit): 21 candidates of 2022 and 2026 whose Knesset member record is official (Almog Cohen, Limor Sonn Har Melech, Boaz Bismuth and others) were ignored when matching people across elections, because their Hebrew Wikipedia link is only probable; they now count as the same person, so “also on another list” warnings and shared-candidate suggestions include them. The two 1977 Likud candidates both printed כהן יגאל stay unmatched: which rank is which person is not certain.
 - Side by side (12 Nov, audit): the card of an election to the 2nd, 3rd, 12th, 13th, 22nd or 23rd Knesset read “$2nd Knesset” or “$3rd Knesset” in English; every screen now takes the ordinal from one helper.

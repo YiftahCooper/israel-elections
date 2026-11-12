@@ -1,9 +1,7 @@
 // "Copy 2022's …" on screens other than the Lists panel while comparing (Turnout and eligible voters, the threshold, the
 // whole rule set): one step with the top bar's Undo, marked like any edit ("From 2022"). Loaded on first use, with copy.ts.
-import { baselineOf } from '../factionDefaults.ts';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
-import { dispatch, getState, toast } from '../store.ts';
-import { activeReferenceOf } from '../useActiveReference.ts';
+import { baseContext, dispatch, getState, toast } from '../store.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { planAgreements, planRules, planTotals, type Plan } from './copy.ts';
 import { pairedRows } from './listRows.ts';
@@ -28,7 +26,8 @@ export function copyOther(ref: Reference, what: OtherCopy, lang: 'he' | 'en') {
   const st = getState();
   const work = st.scenario, ds = work && st.datasets[work.electionId];
   if (!work || !ds) return;
-  const plan = planOther(ref, work, what, { base: activeReferenceOf(st) ?? baselineOf(ds), overrides: st.compare.overrides[[work.electionId, ref.sc.electionId].sort().join('|')] ?? [], workDate: ds.electionDate });
+  // resets resolve as the copy will commit (dispatch's context), never against the marker reference
+  const plan = planOther(ref, work, what, { base: baseContext(ds, work.factionSplitBaseline ?? false).base, overrides: st.compare.overrides[[work.electionId, ref.sc.electionId].sort().join('|')] ?? [], workDate: ds.electionDate });
   const where = ref.same ? ref.name : ref.year;
   if (!plan.ok) { toast('info', plan.reason[lang]); return; }
   dispatch(plan.action);

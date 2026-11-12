@@ -118,7 +118,7 @@ describe('scenario actions', () => {
     expect(() => applyAction(base, { type: 'split', id: '25-ט', parts: [
       { newId: 'a', nameHe: 'a', letters: 'a', color: '#000', votes: 516_470, candidateIds: [] },
       { newId: 'b', nameHe: 'b', letters: 'b', color: '#000', votes: 1, candidateIds: [] },
-    ] })).toThrow(/more than the original/);
+    ] })).toThrow(/more than the list's 516,470/);
   });
 
   it('historical mode locks the rules and the two-list agreement structure', () => {

@@ -68,8 +68,8 @@ describe('voter groups', () => {
     expect(validateVoterGroup(p)).toEqual([]);
     expect(parseVoterGroups(JSON.stringify(p))).toEqual([p]);
     expect(parseVoterGroups(JSON.stringify({ groups: [p, { ...p, id: 'vg-2' }] }))).toHaveLength(2);
-    expect(() => parseVoterGroups('not json')).toThrow(/JSON/);
-    expect(() => parseVoterGroups(JSON.stringify({ ...p, kind: 'scenario' }))).toThrow(/invalid/);
+    expect(() => parseVoterGroups('not json')).toThrow('This file is not a voter group file this app can open.');
+    expect(() => parseVoterGroups(JSON.stringify({ ...p, kind: 'scenario' }))).toThrow('Voter group 1 in the file is not valid, so nothing was imported.');
     expect(validateVoterGroup(preset({ members: { type: 'manual', electorate: 1000, turnoutPct: 50, invalidPct: 1 } }))).toContain('vote: typed numbers have no observed mix');
     expect(validateVoterGroup(preset({ vote: { type: 'shares', electionId: 'k25', shares: { a: -1 } } }))).toContain('vote.shares');
     expect(validateVoterGroup(preset({ turnoutChange: 500 }))).toContain('turnoutChange');

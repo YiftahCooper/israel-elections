@@ -2,6 +2,7 @@ import { isEnvelopeRow, type ElectionId, type LocalityDataset, type LocalityRow 
 import { historicalLocalVotes } from './historicalLocalVotes.ts';
 import { toNumber } from '../engine/rational.ts';
 import { apportion } from './actions.ts';
+import { ActionError, M } from './messages.ts';
 import type { Action, Scenario } from './scenario.ts';
 
 /** A reusable, shareable definition of a hypothetical voter group and a turnout change.
@@ -126,9 +127,10 @@ export function validateVoterGroup(x: unknown): string[] {
 /** Accepts one preset, an array, or { groups: [...] }; throws with the problems otherwise. */
 export function parseVoterGroups(text: string): VoterGroupPreset[] {
   let parsed: unknown;
-  try { parsed = JSON.parse(text); } catch { throw new Error('The file is not valid JSON.'); }
+  try { parsed = JSON.parse(text); } catch { throw new ActionError('voter-groups', M.groupsFile); }
   const items = Array.isArray(parsed) ? parsed : isObj(parsed) && Array.isArray(parsed.groups) ? parsed.groups : [parsed];
-  if (!items.length) throw new Error('The file has no voter groups.');
-  items.forEach((x, i) => { const p = validateVoterGroup(x); if (p.length) throw new Error(`Voter group ${i + 1} is invalid: ${p.slice(0, 4).join(', ')}.`); });
+  if (!items.length) throw new ActionError('voter-groups', M.groupsEmpty);
+  // the problems themselves are for the console; the reader gets one plain sentence
+  items.forEach((x, i) => { const p = validateVoterGroup(x); if (p.length) { console.warn(`Voter group ${i + 1}:`, p); throw new ActionError('voter-groups', M.groupInvalid(i + 1)); } });
   return items as VoterGroupPreset[];
 }

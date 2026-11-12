@@ -1,4 +1,5 @@
 import { markerLead } from '../compare/copyText.ts';
+import { errorText } from '../../model/messages.ts';
 import { copyOriginOf } from '../../model/editScopes.ts';
 import { ScenarioSave, UnsavedMark } from './ScenarioSave.tsx';
 import { createPortal } from 'react-dom';
@@ -125,10 +126,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
     const f = e.target.files?.[0]; if (!f) return;
     try {
       if (await openImported(importScenarioJson(await f.text()))) toast('info', L('Scenario imported.', 'התרחיש יובא.'));
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err);
-      toast('error', L(msg, `לא ניתן לייבא את התרחיש (${msg})`));
-    }
+    } catch (err) { toast('error', errorText(err, lang)); }
     e.target.value = ''; setMenu(false); setPhoneMenu(false);
   }} />;
   const startOver = () => { if (!s?.log.length || !getSetting('confirmStartOver') || confirm(L('Start over from the official result? (Undo can restore it.)', 'להתחיל מחדש מהתוצאה הרשמית? (ניתן לבטל)'))) resetAll(); };

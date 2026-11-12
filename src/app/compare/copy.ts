@@ -1,7 +1,8 @@
 // Plans Compare copies (design: israel-elections-private docs/design/compare-workbench.md §7). Pure: each plan is a list of concrete,
 // already-computed actions for the destination side, wrapped in one `copyFrom` step. Inputs travel; results never do:
 // seats, quotas and elected members are recalculated by the engine on the destination.
-import { applyAction, ActionError, apportion } from '../../model/actions.ts';
+import { applyAction, apportion } from '../../model/actions.ts';
+import { errorText } from '../../model/messages.ts';
 import { historicalRules, electionRuleSetId, votesCast, type Action, type CopyProvenance, type Scenario, type SimAgreement, type SimCandidate, type SimList } from '../../model/scenario.ts';
 import { percentToRational } from '../../engine/rational.ts';
 import { sourceValue } from '../preferences.ts';
@@ -9,6 +10,8 @@ import { stayingHome, type SourceChoice } from '../voteEdit.ts';
 import { fmtInt, fmtPct } from '../format.ts';
 import { getSetting } from '../store.ts';
 import { personKey, type MatchRow } from './match.ts';
+import { rosterKey } from '../../model/roster.ts';
+import { englishLabel } from '../../data/names.ts';
 
 export type Msg = { en: string; he: string };
 /** eligible: the same share of everyone entitled to vote; share: of the valid votes; count: the same number; change: the
@@ -26,7 +29,8 @@ export type Plan = { ok: true; action: Action; result: Scenario; targets: { list
 const refuse = (en: string, he: string): Plan => ({ ok: false, reason: { en, he } });
 const valid = (s: Scenario) => s.lists.reduce((t, l) => t + l.votes, 0);
 const sum = (s: Scenario, ids: string[]) => ids.reduce((t, id) => t + (s.lists.find((l) => l.id === id)?.votes ?? 0), 0);
-const nameOf = (s: Scenario, ids: string[]) => ids.map((id) => s.lists.find((l) => l.id === id)?.shortHe ?? id).join(' + ');
+/** The lists' names in one language: English names in English text, never the Hebrew ones */
+const nameOf = (s: Scenario, ids: string[], lang: 'en' | 'he') => ids.map((id) => { const l = s.lists.find((x) => x.id === id); return l ? (lang === 'en' ? englishLabel(l.shortEn, l.shortHe) : l.shortHe) : id; }).join(' + ');
 /** round(num/den) to the nearest integer, halves up; num, den ≥ 0 */
 const nearest = (num: bigint, den: bigint) => (2n * num + den) / (2n * den);
 const floor = (num: bigint, den: bigint) => num / den;
@@ -42,7 +46,7 @@ function finish(dest: Scenario, ctx: { base?: Scenario }, provenance: CopyProven
     const ids = provenance.targetListIds ?? [];
     return { ok: true, action, result, targets: ids.map((id) => ({ listId: id, before: dest.lists.find((l) => l.id === id)?.votes ?? 0, after: result.lists.find((l) => l.id === id)?.votes ?? 0 })), ...extra };
   } catch (e) {
-    return refuse(e instanceof ActionError ? e.message : String(e), e instanceof ActionError ? e.message : String(e));
+    return refuse(errorText(e, 'en'), errorText(e, 'he'));
   }
 }
 
@@ -69,7 +73,7 @@ export function planVotes(o: { from: CopySource; to: Scenario; ctx?: { base?: Sc
   for (const id of srcAll) if (!from.sc.lists.some((l) => l.id === id)) return refuse('A source list no longer exists.', 'רשימת מקור כבר אינה קיימת.');
   for (const id of dstAll) if (!o.to.lists.some((l) => l.id === id)) return refuse('A destination list no longer exists.', 'רשימת יעד כבר אינה קיימת.');
   for (const u of units) if (u.src.every((id) => from.sc.lists.find((l) => l.id === id)!.withdrawn))
-    return refuse(`${nameOf(from.sc, u.src)} withdrew: there are no votes to copy.`, `${nameOf(from.sc, u.src)} פרשה: אין קולות להעתקה.`);
+    return refuse(`${nameOf(from.sc, u.src, 'en')} withdrew: there are no votes to copy.`, `${nameOf(from.sc, u.src, 'he')} פרשה: אין קולות להעתקה.`);
   // a withdrawn destination is reinstated in the same step (its held votes return), never given votes while withdrawn
   const inner: Action[] = [];
   let w = o.to;
@@ -144,7 +148,7 @@ export function planVotes(o: { from: CopySource; to: Scenario; ctx?: { base?: Sc
     const pool = donors.reduce((t, l) => t + BigInt(l.votes), 0n);
     if (!donors.length) return refuse('Not possible: no other list can balance these votes.', 'לא אפשרי: אין רשימה אחרת שתאזן את הקולות.');
     if (gain > pool) return policy.kind === 'transfer'
-      ? refuse(`${donors[0].shortHe} has only ${fmtInt(pool)} votes.`, `לרשימה ${donors[0].shortHe} רק ${fmtInt(pool)} קולות.`)
+      ? refuse(`${englishLabel(donors[0].shortEn, donors[0].shortHe)} has only ${fmtInt(pool)} votes.`, `לרשימה ${donors[0].shortHe} יש רק ${fmtInt(pool)} קולות.`)
       : refuse('Not possible: the other lists would need negative votes.', 'לא אפשרי: שאר הרשימות היו צריכות מספר קולות שלילי.');
     // as every vote edit: taken from (or given back to) the other lists in proportion to their votes, exact largest remainder
     const parts = apportion(Number(gain < 0n ? -gain : gain), donors.map((l) => l.votes));
@@ -277,7 +281,7 @@ function removalActions(w: Scenario, removals: Removal[]): Action[] {
 export function planRoster(o: { from: CopySource; to: Scenario; ctx?: { base?: Scenario }; srcId: string; dstId: string; remove?: Removal[] }): Plan {
   const src = o.from.sc.lists.find((l) => l.id === o.srcId), dst = o.to.lists.find((l) => l.id === o.dstId);
   if (!src || !dst) return refuse('The list no longer exists.', 'הרשימה כבר אינה קיימת.');
-  if (JSON.stringify(src.candidates.map((c) => c.id)) === JSON.stringify(dst.candidates.map((c) => c.id))) return refuse('Already the same.', 'כבר זהה.');
+  if (rosterKey(src) === rosterKey(dst)) return refuse('Already the same.', 'כבר זהה.');
   return finish(o.to, o.ctx ?? {}, provenanceOf(o.from, 'candidates', { sourceListIds: [src.id], targetListIds: [dst.id], value: String(src.candidates.length), paths: [['lists', dst.id, 'candidates']] }),
     [...rosterActions(o.from, src, o.to, dst.id), ...removalActions(o.to, o.remove ?? [])]);
 }
@@ -297,7 +301,7 @@ export function planWholeList(o: { from: CopySource; to: Scenario; ctx?: { base?
   const ctx = o.ctx ?? {};
   const src = o.from.sc.lists.find((l) => l.id === o.srcId);
   if (!src) return refuse('The list no longer exists.', 'הרשימה כבר אינה קיימת.');
-  if (src.withdrawn) return refuse(`${src.shortHe} withdrew: there is nothing to copy.`, `${src.shortHe} פרשה: אין מה להעתיק.`);
+  if (src.withdrawn) return refuse(`${englishLabel(src.shortEn, src.shortHe)} withdrew: there is nothing to copy.`, `${src.shortHe} פרשה: אין מה להעתיק.`);
   let w = o.to; const inner: Action[] = [];
   const add = (a: Action) => { inner.push(a); w = applyAction(w, a, undefined, ctx); };
   let dstId = o.dstId;
@@ -319,7 +323,7 @@ export function planWholeList(o: { from: CopySource; to: Scenario; ctx?: { base?
     }
     if (o.opts.candidates || !o.dstId) for (const a of rosterActions(o.from, src, w, dstId)) add(a);
     for (const a of removalActions(w, (o.remove ?? []).filter((r) => r.listId !== dstId))) add(a);
-  } catch (e) { return refuse(e instanceof Error ? e.message : String(e), e instanceof Error ? e.message : String(e)); }
+  } catch (e) { return refuse(errorText(e, 'en'), errorText(e, 'he')); }
   let votesPlan: Plan | null = null;
   if (o.opts.votes) {
     votesPlan = planVotes({ from: o.from, to: w, ctx, units: [{ src: [src.id], dst: [dstId] }], mode: o.opts.mode, policy: o.opts.policy });

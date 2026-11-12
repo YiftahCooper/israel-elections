@@ -266,7 +266,10 @@ const EXPECTED: Record<Family, string> = {
   // link title. Votes, seats, ids and the other 25 datasets unchanged; only this digest changes.
   // Audit 12 Nov (ax-build-guesses-03): 21 k25/k26 candidate bios gain memberConfirmed (official Knesset identity beside a
   // probable Hebrew Wikipedia link); recursive diff shows only those fields and builtAt. The other four digests are unchanged.
-  model: '158c41ac44caf615c356ebe97e43d13facc05a25719338c7581638b572bc2868',
+  // fx-scen (12 Nov): refusal wording only. Every engine refusal became plain English with a Hebrew form, and the corpus
+  // folds each refused action's message into this digest. 123 of 520 model cases differ, each only in that text (case by
+  // case against HEAD's src); engine inputs, seats and validation are identical and the other four digests unchanged.
+  model: '31937648a17c7064fddd6cec481803b68c060ed8a298e96611ac3c15acea1446',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

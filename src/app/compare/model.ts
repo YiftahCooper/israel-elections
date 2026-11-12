@@ -14,6 +14,9 @@ export interface SideModel {
   sc: Scenario; r: AllocationResult;
   /** the side's starting point: markers, As change and Start over compare with it */
   start: Scenario;
+  /** what a copy's resets resolve against: the same official result the side's own edits commit with (never the marker
+   *  reference, which may be a saved experiment), so a copy's preview is exactly what it commits */
+  base: Scenario;
   ds: ElectionDataset;
   /** "2022" */
   year: string;

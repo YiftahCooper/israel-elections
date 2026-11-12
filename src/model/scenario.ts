@@ -256,8 +256,9 @@ export function toRuleSet(r: SimRules, historicalId: string | null): RuleSet {
   };
 }
 
-/** The bloc state a sourced scheme gives: bloc definitions, each list's bloc, and party/candidate overrides. */
-export function blocSchemeState(scheme: BlocScheme, lists: { id: string }[]) {
+/** The bloc state a sourced scheme gives: bloc definitions, each list's bloc, and party/candidate overrides. A list the
+ *  scheme does not name (made by a merge or split) takes the bloc its origin lists share in it, else none. */
+export function blocSchemeState(scheme: BlocScheme, lists: { id: string; originIds?: string[] }[]) {
   const listBloc = new Map<string, string>();
   const partyBlocs: Record<string, string | null> = {};
   const candidateBlocs: Record<string, string | null> = {};
@@ -266,9 +267,10 @@ export function blocSchemeState(scheme: BlocScheme, lists: { id: string }[]) {
     for (const p of b.parties) partyBlocs[p] = b.id;
     for (const c of b.candidates) candidateBlocs[c] = b.id;
   }
+  const originBloc = (l: { originIds?: string[] }) => { const b = new Set((l.originIds ?? []).map((o) => listBloc.get(o) ?? null)); return b.size === 1 ? [...b][0] : null; };
   return {
     blocs: scheme.blocs.map(({ id, nameHe, nameEn, color, appDefined }) => ({ id, nameHe, nameEn, color, ...(appDefined || scheme.appDefined ? { appDefined: true } : {}) })),
-    listBloc: Object.fromEntries(lists.map((l) => [l.id, listBloc.get(l.id) ?? null])) as Record<string, string | null>,
+    listBloc: Object.fromEntries(lists.map((l) => [l.id, listBloc.get(l.id) ?? originBloc(l)])) as Record<string, string | null>,
     partyBlocs, candidateBlocs,
   };
 }

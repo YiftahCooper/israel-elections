@@ -9,8 +9,9 @@ import { PRESETS, type FeatureId, type Visibility } from './features.ts';
 import { validSettings, settingValue, settingDefault, withLinked, LINKED, SETTINGS_KEY, SETTING_IDS, type RowId, type SettingId, type SettingValues } from './settings.ts';
 // Application state. Undo/redo keeps immutable scenario snapshots; saved scenarios remain action logs.
 import { useSyncExternalStore } from 'react';
-import type { ElectionDataset, ElectionId, ElectionIndexEntry } from '../data/schema.ts';
+import { ELECTION_IDS, type ElectionDataset, type ElectionId, type ElectionIndexEntry } from '../data/schema.ts';
 import { ActionError, applyAction } from '../model/actions.ts';
+import { errorText } from '../model/messages.ts';
 import { validAction, scenarioFromDataset, validateScenario, type Action, type ActionContext, type ChangeEntry, type Scenario } from '../model/scenario.ts';
 import type { Lang } from './i18n.ts';
 import type { SourceChoice } from './voteEdit.ts';
@@ -98,20 +99,31 @@ const PREFERENCES_KEY = 'israel-elections:preferences';
 const rememberedPreferences = (() => { try { const raw = globalThis.localStorage?.getItem(PREFERENCES_KEY); return raw ? validAnswers(JSON.parse(raw)) : {}; } catch { return {}; } })();
 // Joint lists start counted by party unless the user turned it off (israel-elections-private docs/design/settings.md)
 setFactionDefault(rememberedPreferences.jointSeats !== 'off');
-const persisted = (() => { try { return JSON.parse(globalThis.localStorage?.getItem(LS) ?? '{}'); } catch { return {}; } })();
+// Browser storage is outside the app's control (another version, an extension, a hand edit): every stored value is
+// checked before use, and anything malformed falls back to its default so the app always starts.
+const isRecord = (x: unknown): x is Record<string, unknown> => !!x && typeof x === 'object' && !Array.isArray(x);
+const VISIBILITIES: readonly unknown[] = ['show', 'collapsed', 'hidden'];
+const validSaved = (x: unknown): x is SavedScenario => isRecord(x) && typeof x.id === 'string' && typeof x.name === 'string'
+  && ELECTION_IDS.includes(x.electionId as ElectionId) && typeof x.savedAt === 'string' && typeof x.baseBuiltAt === 'string'
+  && Array.isArray(x.log) && x.log.every(validAction) && (x.description === undefined || typeof x.description === 'string')
+  && (x.factionSplitBaseline === undefined || typeof x.factionSplitBaseline === 'boolean');
+const persisted: Record<string, unknown> = (() => { try { const x: unknown = JSON.parse(globalThis.localStorage?.getItem(LS) ?? '{}'); return isRecord(x) ? x : {}; } catch { return {}; } })();
+const persistedFeatures = isRecord(persisted.customFeatures)
+  ? Object.fromEntries(Object.entries(persisted.customFeatures).filter(([k, v]) => k in PRESETS.expert && VISIBILITIES.includes(v))) as Partial<Record<FeatureId, Visibility>>
+  : null;
 // pre-release: only the current key is read; nothing older is carried over (israel-elections-private docs/design/settings.md)
 const rememberedSettings = (() => { try { const raw = JSON.parse(globalThis.localStorage?.getItem(SETTINGS_KEY) ?? 'null'); return raw?.v === 2 ? validSettings(raw.values) : {}; } catch { return {}; } })();
 const deviceDark = () => globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches === true;
 const resolvedTheme = (pref: SettingValues['theme']): 'light' | 'dark' => pref === 'device' ? (deviceDark() ? 'dark' : 'light') : pref;
-const initialLevel: Level = LEVELS.includes(persisted.level) ? persisted.level : 'simple';
+const initialLevel: Level = LEVELS.includes(persisted.level as Level) ? persisted.level as Level : 'simple';
 const TOOL_IDS = new Set(['board', 'families', 'scenarios', 'whatif', 'coal', 'walk', 'structure', 'security', 'charts', 'turnout', 'sens', 'loc', 'rules', 'sources']);
 
 let state: State = {
   datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, reference: null, markOfficial: persisted.markOfficial === true, past: [], future: [], selectedListId: null, blocPanel: null,
-  tool: settingValue(rememberedSettings, 'openOn', initialLevel) === 'last' && TOOL_IDS.has(persisted.tool) ? persisted.tool : null, comparing: null,
-  lang: persisted.lang ?? 'he', theme: resolvedTheme(settingValue(rememberedSettings, 'theme', initialLevel)),
-  level: initialLevel, customFeatures: persisted.customFeatures ?? null, settings: rememberedSettings,
-  saved: persisted.saved ?? [], toast: null, loadError: null, notice: null, voteSource: sourceChoice(rememberedPreferences.voteSource ?? 'proportional'), preferences: rememberedPreferences, preferenceAsk: null, preferenceFor: rememberedItems, sessions: {}, scenarioDrafts: {},
+  tool: settingValue(rememberedSettings, 'openOn', initialLevel) === 'last' && TOOL_IDS.has(persisted.tool as string) ? persisted.tool as string : null, comparing: null,
+  lang: persisted.lang === 'en' ? 'en' : 'he', theme: resolvedTheme(settingValue(rememberedSettings, 'theme', initialLevel)),
+  level: initialLevel, customFeatures: persistedFeatures, settings: rememberedSettings,
+  saved: Array.isArray(persisted.saved) ? persisted.saved.filter(validSaved) : [], toast: null, loadError: null, notice: null, voteSource: sourceChoice(rememberedPreferences.voteSource ?? 'proportional'), preferences: rememberedPreferences, preferenceAsk: null, preferenceFor: rememberedItems, sessions: {}, scenarioDrafts: {},
   compare: { drafts: {}, overrides: {}, snapshot: null, swapped: null, chamber: 'work', back: null },
 };
 const listeners = new Set<() => void>();
@@ -201,7 +213,7 @@ export function dispatch(action: Action): boolean {
     setState({ scenario: next, past: [...state.past.slice(-199), s], future: [] });
     return true;
   } catch (e) {
-    toast('error', e instanceof ActionError ? e.message : String(e));
+    toast('error', errorText(e, state.lang));
     return false;
   }
 }
@@ -216,7 +228,7 @@ export function dispatchMany(actions: Action[]): boolean {
     setState({ scenario: next, past: [...state.past.slice(-199), s], future: [] });
     return true;
   } catch (e) {
-    toast('error', e instanceof ActionError ? e.message : String(e));
+    toast('error', errorText(e, state.lang));
     return false;
   }
 }
@@ -258,6 +270,10 @@ export function replay(ds: ElectionDataset, name: string, log: Action[], splitBa
   for (const a of log) { try { s = applyAction(s, a, undefined, ctx); } catch { failed++; } }
   return { scenario: s, failed };
 }
+
+/** A saved scenario replayed from its log, with what is kept beside the log: its id and description. */
+export const withSavedIdentity = (sc: Scenario, x: Pick<SavedScenario, 'id' | 'description'>): Scenario =>
+  ({ ...sc, id: x.id, ...(x.description ? { description: x.description } : {}) });
 
 let openSeq = 0;
 /** Opens an election (optionally replaying a saved or shared log). Resolves false if it could not be loaded.
@@ -361,13 +377,28 @@ export function deleteSaved(id: string) {
   setState((st) => ({ saved: st.saved.filter((x) => x.id !== id) }));
 }
 
-/** Opens an imported scenario file as a new, unsaved scenario with the file as its reference. */
+/** A scenario's inputs as one comparable text: everything but its identity, name, description, change log and the
+ *  annotations an exported file adds. */
+const IMPORT_IGNORED = new Set(['id', 'name', 'description', 'log', 'editMarkers', 'datasetBuiltAt']);
+const inputsText = (x: object) => JSON.stringify(Object.fromEntries(Object.entries(x).filter(([k]) => !IMPORT_IGNORED.has(k)).sort(([a], [b]) => a.localeCompare(b))),
+  (_k, v) => v && typeof v === 'object' && !Array.isArray(v) ? Object.fromEntries(Object.keys(v).sort().map((k) => [k, v[k]])) : v);
+
+/** Opens an imported scenario file as a new, unsaved scenario. A scenario is kept as its change log (saving, sharing and
+ *  reloading replay it), so the file opens as its log replays. On the data it was made from, a file whose inputs differ
+ *  from what its log gives was changed by hand: it is refused, since saving would silently undo that change. A file made
+ *  on older data opens on the current data and says so, as a share link does. */
 export async function openImported(sc: Scenario): Promise<boolean> {
-  if (!(await openElection(sc.electionId))) return false;
-  stashCurrent();
-  const fresh = { ...sc, id: `${sc.electionId}-${Date.now().toString(36)}` };
-  setState({ scenario: fresh, reference: fresh, past: [], future: [], selectedListId: null, blocPanel: null });
-  return true;
+  let ds: ElectionDataset;
+  try { ds = await loadDataset(sc.electionId); } catch { return openElection(sc.electionId); } // shows why it could not load
+  const log = sc.log.map((e) => e.action), split = sc.factionSplitBaseline ?? false;
+  if (sc.baseBuiltAt === ds.buildInfo.builtAt) {
+    const r = replay(ds, sc.name, log, split);
+    if (r.failed || inputsText(r.scenario) !== inputsText(sc)) {
+      toast('error', state.lang === 'he' ? 'הקובץ אינו תואם את רשימת השינויים שלו, ולכן לא נפתח. ייצאו אותו שוב מהאתר.' : 'This file does not match its own list of changes, so it was not opened. Export it again from the app.');
+      return false;
+    }
+  }
+  return openElection(sc.electionId, { name: sc.name, ...(sc.description ? { description: sc.description } : {}), log, factionSplitBaseline: split, baseBuiltAt: sc.baseBuiltAt });
 }
 
 /** Opens a share link in the address bar (on start-up or when a link is pasted into an open tab). */
@@ -473,11 +504,13 @@ export async function readSharedFromHash(): Promise<{ electionId: ElectionId; na
   } catch { return null; }
 }
 
+/** Reads a scenario file. A file this app cannot open is refused with one plain sentence (the details go to the console). */
 export function importScenarioJson(text: string): Scenario {
+  const refuse = (detail: unknown) => { console.warn('Scenario import refused:', detail); return new ActionError('import', { en: 'This file is not a scenario this app can open.', he: 'הקובץ הזה אינו תרחיש שהאתר יכול לפתוח.' }); };
   let parsed: unknown;
-  try { parsed = JSON.parse(text); } catch { throw new Error('The file is not valid JSON.'); }
+  try { parsed = JSON.parse(text); } catch (e) { throw refuse(e); }
   const problems = validateScenario(parsed);
-  if (problems.length) throw new Error(`Cannot import this scenario: ${problems.slice(0, 5).join('; ')}${problems.length > 5 ? '…' : ''}.`);
+  if (problems.length) throw refuse(problems);
   return parsed as Scenario;
 }
 
@@ -621,11 +654,21 @@ function rebuild(ds: ElectionDataset, x: Snap): { session: ScenarioSession; fail
   const scenario = { ...s, id: x.id, name: x.name, ...(x.description ? { description: x.description } : {}), ...(x.identityColor ? { identityColor: x.identityColor } : {}) };
   return { session: { scenario, reference: ref, past: steps.slice(-200), future: [] }, failed };
 }
+const validEntries = (x: unknown) => Array.isArray(x) && x.every((e) => isRecord(e) && typeof e.at === 'string' && validAction(e.action));
+const optionalOf = (x: unknown, type: string) => x === undefined || typeof x === type;
+const validSnap = (x: unknown): x is Snap => isRecord(x) && typeof x.id === 'string' && typeof x.name === 'string' && ELECTION_IDS.includes(x.electionId as ElectionId)
+  && validEntries(x.log) && optionalOf(x.description, 'string') && optionalOf(x.identityColor, 'string') && optionalOf(x.factionSplitBaseline, 'boolean')
+  && (x.ref === null || isRecord(x.ref) && typeof x.ref.id === 'string' && typeof x.ref.name === 'string' && validEntries(x.ref.log) && optionalOf(x.ref.description, 'string') && optionalOf(x.ref.factionSplitBaseline, 'boolean'));
+const validWorkspace = (x: unknown): x is Workspace => isRecord(x) && x.v === 1 && ELECTION_IDS.includes(x.electionId as ElectionId) && validSnap(x.current)
+  && Array.isArray(x.sessions) && x.sessions.every(validSnap) && Array.isArray(x.drafts) && x.drafts.every((d) => Array.isArray(d) && d.length === 2 && typeof d[0] === 'string' && validSnap(d[1]));
 /** Restores the last workspace in this browser. Resolves false when there is none (or it cannot be read). */
 export async function restoreWorkspace(): Promise<boolean> {
+  try { return await restoreWorkspaceFrom(); } catch { return false; } // a damaged workspace must never stop the app starting
+}
+async function restoreWorkspaceFrom(): Promise<boolean> {
   let ws: Workspace | null = null;
-  try { ws = JSON.parse(localStorage.getItem(WS) ?? 'null'); } catch { return false; }
-  if (!ws || ws.v !== 1 || !ws.current) return false;
+  try { const x: unknown = JSON.parse(localStorage.getItem(WS) ?? 'null'); ws = validWorkspace(x) ? x : null; } catch { return false; }
+  if (!ws || !ws.current) return false;
   const ids = [...new Set([ws.electionId, ...ws.sessions.map(x => x.electionId), ...ws.drafts.map(([, x]) => x.electionId)])];
   const loaded = await Promise.allSettled(ids.map(id => loadDataset(id)));
   const ds = (id: ElectionId) => { const i = ids.indexOf(id); const r = loaded[i]; return r?.status === 'fulfilled' ? r.value : undefined; };

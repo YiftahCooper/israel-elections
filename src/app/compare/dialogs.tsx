@@ -90,8 +90,8 @@ export function WholeListDialog({ req, onClose, onDone }: { req: WholeRequest; o
   const [adding, setAdding] = useState(req.dstId === null);
   const src = req.from.sc.lists.find((l) => l.id === req.srcId)!, dst = req.dstId ? req.to.sc.lists.find((l) => l.id === req.dstId) : undefined;
   const planWith = (rm: Removal[]) => only && req.dstId
-    ? planRoster({ from: sourceOf(req.from), to: req.to.sc, ctx: { base: req.to.start }, srcId: req.srcId, dstId: req.dstId, remove: rm })
-    : planWholeList({ from: sourceOf(req.from), to: req.to.sc, ctx: { base: req.to.start }, srcId: req.srcId, dstId: adding ? null : req.dstId, opts: { ...opts, mode, policy: source }, remove: rm });
+    ? planRoster({ from: sourceOf(req.from), to: req.to.sc, ctx: { base: req.to.base }, srcId: req.srcId, dstId: req.dstId, remove: rm })
+    : planWholeList({ from: sourceOf(req.from), to: req.to.sc, ctx: { base: req.to.base }, srcId: req.srcId, dstId: adding ? null : req.dstId, opts: { ...opts, mode, policy: source }, remove: rm });
   const plan = useMemo(() => planWith(remove), [req, opts, mode, source, adding, remove]); // eslint-disable-line react-hooks/exhaustive-deps -- planWith reads these
   // people the import puts on two lists, found before any removal so a removed one stays listed (and can be put back)
   const dupes = useMemo(() => { const p = planWith([]); if (!p.ok) return []; const id = (p.action as { provenance?: { targetListIds?: string[] } }).provenance?.targetListIds?.[0]; return id && (opts.candidates || adding) ? duplicatePeople(p.result, id) : []; }, [req, opts, mode, source, adding]); // eslint-disable-line react-hooks/exhaustive-deps

@@ -26,7 +26,7 @@ test('scaling is exact, atomic, replayable and preserves input',()=>{
   expect(next.lists.reduce((a,l)=>a+BigInt(l.votes),0n)).toBe(BigInt(ds(25).totals.valid));
   expect(resolve(f,next).filter(l=>l.family==='selected').reduce((a,l)=>a+l.votes,0)).toBe(740474);
   expect(next.familyDefinition).toEqual(f);expect(applyAction(s,JSON.parse(JSON.stringify(a))).lists).toEqual(next.lists);
-  expect(()=>applyAction(next,a)).toThrow('stale');
+  expect(()=>applyAction(next,a)).toThrow('The votes changed meanwhile. Try again.');
 });
 test('target share, fixed donor, impossible targets and new voters',()=>{
   const s=scenarioFromDataset(ds(25)); const a=scaleAction(f,s,'share','20',{kind:'proportional'});expect(a.operation==='scale'&&a.target).toBe(952948);

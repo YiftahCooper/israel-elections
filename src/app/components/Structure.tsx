@@ -14,6 +14,7 @@ import { useMemo, useState } from 'react';
 import { allocate } from '../../engine/allocate.ts';
 import { compareAllocations } from '../../engine/analysis.ts';
 import type { AllocationResult } from '../../engine/types.ts';
+import { errorText } from '../../model/messages.ts';
 import { applyAction, apportion } from '../../model/actions.ts';
 import { hasOwnCandidates, planPartySplit } from '../../model/jointSplit.ts';
 import { toEngineInput, type Action, type Scenario, type SimList, type SimRules } from '../../model/scenario.ts';
@@ -124,7 +125,7 @@ function Preview({ s, r, actions }: { s: Scenario; r: AllocationResult; actions:
       const next = actions.reduce((x, a) => applyAction(x, a), s);
       const rows = changeRows(s, r, next, allocate(toEngineInput(next)), lang).filter((x) => x.structural || x.was !== x.now);
       return { rows: rows.sort(rowOrder) };
-    } catch (e) { return { error: e instanceof Error ? e.message : String(e) }; }
+    } catch (e) { return { error: errorText(e, lang) }; }
   }, [s, r, actions, lang]);
   if (!res) return null;
   if ('error' in res) return <p className="small bad">{res.error}</p>;

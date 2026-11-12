@@ -7,7 +7,7 @@ import type { ElectionDataset } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
-import { dispatch, redo, resetAll, undo, useStore } from '../store.ts';
+import { baseContext, dispatch, redo, resetAll, undo, useStore } from '../store.ts';
 import { dispatchSide, redoSide, startOverSide, undoSide } from '../compare/sides.ts';
 import { startComparing, swapWithReference, useReference, yearOf } from '../compare/mode.ts';
 import type { SideModel } from '../compare/model.ts';
@@ -36,7 +36,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
   const mainStart = reference ?? base;
   const mainEdited = resultChanges(s, base).length > 0;
   const main: SideModel = {
-    role: 'main', key: 'main', sc: s, r, start: mainStart, ds, year: yearOf(elections, s.electionId, lang),
+    role: 'main', key: 'main', sc: s, r, start: mainStart, base: baseContext(ds, s.factionSplitBaseline ?? false).base!, ds, year: yearOf(elections, s.electionId, lang),
     name: mainEdited ? s.name || L('Your work', 'העבודה שלכם') : L('Official result', 'התוצאה הרשמית'),
     official: !mainEdited, edited: resultChanges(s, mainStart).length > 0, frame: mainEdited ? scenarioColor(s) : 'var(--rule)',
     canUndo: past.length > 0, canRedo: future.length > 0, undo, redo, startOver: resetAll, apply: (a: Action) => dispatch(a),
@@ -44,7 +44,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
   const draft = drafts[ref.id];
   const otherEdited = !ref.official;
   const other: SideModel = {
-    role: 'other', key: ref.id, sc: ref.sc, r: allocationOfCached(ref.sc), start: ref.start, ds: ref.ds, year: ref.year, name: ref.name,
+    role: 'other', key: ref.id, sc: ref.sc, r: allocationOfCached(ref.sc), start: ref.start, base: ref.start, ds: ref.ds, year: ref.year, name: ref.name,
     official: ref.official, edited: !!draft && resultChanges(ref.sc, ref.initial).length > 0, frame: otherEdited ? scenarioColor(ref.sc) : 'var(--rule)',
     canUndo: !!draft?.past.length, canRedo: !!draft?.future.length,
     undo: () => undoSide(ref.id), redo: () => redoSide(ref.id), startOver: () => startOverSide(ref.id),
