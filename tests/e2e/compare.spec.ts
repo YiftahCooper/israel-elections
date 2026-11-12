@@ -339,19 +339,87 @@ test('saved comparisons are listed on the Scenarios page with Open, Copy link an
   await expect(page.locator('.scn-comparisons')).toHaveCount(0);
 });
 
-test('the surplus agreements arrows copy when the agreements differ, though both sides have six', async ({ page }) => {
+test('the surplus agreements Copy works when the agreements differ, though both sides have six', async ({ page }) => {
   await start(page, 'en', 'k26');
   await openSideBySide(page);
   await choose(picker(page), 'election:k24');
   const agr = page.locator('.cmp-band-row[data-key="agreements"]');
   await expect(agr.locator('.cmp-band-v')).toHaveText(['6', '6']);
-  await expect(agr.getByRole('button', { name: 'Copy surplus agreements to 2026' })).toBeEnabled();
-  await expect(agr.getByRole('button', { name: 'Copy surplus agreements to 2021' })).toBeEnabled();
-  await agr.getByRole('button', { name: 'Copy surplus agreements to 2026' }).click();
+  // one worded Copy into your work; the other direction is in "⋯", in words, your work first
+  const copy = agr.getByRole('button', { name: 'Copy surplus agreements to 2026' });
+  await expect(copy).toHaveText('Copy to 2026');
+  await expect(copy).toBeEnabled();
+  await agr.getByRole('button', { name: 'More for surplus agreements' }).click();
+  const menu = page.locator('.cmp-menu');
+  await expect(menu.locator('.cmp-menu-head')).toHaveText(['To 2026', 'To 2021']);
+  await expect(menu.getByRole('button', { name: 'Copy surplus agreements' })).toHaveCount(2);
+  for (const b of await menu.getByRole('button', { name: 'Copy surplus agreements' }).all()) await expect(b).toBeEnabled();
+  // the menu takes the focus (it is drawn at the end of the page); Escape returns it to "⋯"
+  await expect(menu.getByRole('button', { name: 'Copy surplus agreements' }).first()).toBeFocused();
+  await page.keyboard.press('Escape');
+  await expect(menu).toHaveCount(0);
+  await expect(agr.getByRole('button', { name: 'More for surplus agreements' })).toBeFocused();
+  await copy.click();
   await expect(page.locator('.toast')).toContainText('Copied to 2026.');
-  // now they are the same agreements: nothing left to copy
-  await expect(agr.getByRole('button', { name: 'Copy surplus agreements to 2026' })).toBeDisabled();
+  // now they are the same agreements: nothing left to copy, and the button says why
+  await expect(copy).toBeDisabled();
+  await expect(copy).toHaveAccessibleDescription('Already the same');
+  await expect(copy).toHaveAttribute('title', 'Copy surplus agreements to 2026: already the same');
+  await agr.getByRole('button', { name: 'More for surplus agreements' }).click();
+  await expect(menu.getByRole('button', { name: 'Copy surplus agreements' }).first()).toBeDisabled();
+  await expect(menu.locator('.cmp-menu-note').first()).toHaveText('Already the same.');
 });
+
+test('the menu copies the other way: turnout from your work into the compared result', async ({ page }) => {
+  await start(page, 'en', 'k26');
+  await openSideBySide(page);
+  const turnout = page.locator('.cmp-band-row[data-key="turnout"]');
+  const values = turnout.locator('.cmp-band-v');
+  await expect(values).toHaveText(['77.98%', '70.63%']);
+  await turnout.getByRole('button', { name: 'More for turnout' }).click();
+  await page.locator('.cmp-menu').getByRole('button', { name: 'Copy turnout' }).nth(1).click();
+  await expect(page.locator('.toast')).toContainText('Copied to 2022.');
+  await expect(values).toHaveText(['77.98%', '77.98%']);
+  await expect(turnout.getByRole('button', { name: 'Copy turnout to 2026' })).toBeDisabled();
+});
+
+// owner, 9 Nov 2026: Compare has no copy arrows; copying is worded. Only Swap (and the strip's Compare) carry an arrow icon.
+for (const lang of ['en', 'he'] as const) for (const width of [1500, 390]) {
+  test(`no copy control in Side by side is an arrow: ${lang}, ${width}px`, async ({ page }) => {
+    await start(page, lang, 'k26', width);
+    await openSideBySide(page);
+    const arrowControls = async () => page.locator('.side-by-side, .cmp-menu, dialog[open]').evaluateAll((roots) => roots.flatMap((root) =>
+      [...root.querySelectorAll('button, [role="button"], a')].filter((b) => b.querySelector('svg[class*="arrow"]') || /[←→⇐⇒⟵⟶➜⬅➡]/.test(b.textContent ?? ''))
+        .map((b) => b.getAttribute('aria-label') || b.textContent?.trim() || '')));
+    const notCopy = /^(Swap|החלפה|Compare|השוואה)(?=$|[\s:])/;
+    // the band's copy is worded, beside a "⋯" whose menu names both directions in words
+    const band = page.locator('.cmp-band-row[data-key="turnout"]');
+    await expect(band.locator('.cmp-band-copy')).toHaveText(lang === 'he' ? 'העתקה ל־2026' : 'Copy to 2026');
+    const found = await arrowControls();
+    expect(found.some((name) => /^(Swap|החלפה)/.test(name))).toBe(true); // the check sees arrow icons (Swap has one)
+    for (const name of found) expect(name).toMatch(notCopy);
+    await expect(page.locator('.cmp-arrow')).toHaveCount(0);
+    await band.locator('.cmp-band-more').click();
+    await expect(page.locator('.cmp-menu .cmp-menu-head')).toHaveText(lang === 'he' ? ['אל 2026', 'אל 2022'] : ['To 2026', 'To 2022']);
+    for (const name of await arrowControls()) expect(name).toMatch(notCopy);
+    await expect(page.locator('.cmp-menu')).not.toContainText(/[←→]/);
+    await page.keyboard.press('Escape');
+    // a list row's own menu (a sheet on a phone) names the directions in words too
+    const likud = page.locator('tr.cmp-row').filter({ has: page.locator('.cmp-lname, .cmp-rname', { hasText: lang === 'he' ? 'הליכוד' : 'Likud' }) }).first();
+    await likud.locator('.cmp-more-btn').click();
+    const rowMenu = page.locator('.cmp-menu, dialog[open]').last();
+    await expect(rowMenu).toContainText(lang === 'he' ? 'אל 2022' : 'To 2022');
+    await expect(rowMenu).not.toContainText(/[←→]/);
+    for (const name of await arrowControls()) expect(name).toMatch(notCopy);
+    // phone: the band's buttons are 44px targets, as the list rows' are
+    if (width < 800) for (const b of await page.locator('.cmp-band-copy, .cmp-band-more').all()) { const r = (await b.boundingBox())!; expect(r.height).toBeGreaterThanOrEqual(44); expect(r.width).toBeGreaterThanOrEqual(44); }
+    // the band keeps inside the screen
+    const over = await page.locator('.cmp-band-row > *').evaluateAll((cells) => cells.filter((cell) => { const r = cell.getBoundingClientRect();
+      return [...cell.querySelectorAll('bdi, .cmp-band-k, button')].some((c) => { const q = c.getBoundingClientRect(); return q.left < r.left - 0.5 || q.right > r.right + 0.5; }); }).length);
+    expect(over).toBe(0);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+  });
+}
 
 test('the two 2019 elections are told apart on a saved comparison card', async ({ page }) => {
   await start(page, 'en', 'k22');
