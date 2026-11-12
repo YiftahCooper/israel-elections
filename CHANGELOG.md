@@ -2,6 +2,8 @@
 
 ## 7 November 2026 — Settings
 
+- Data (12 Nov): refreshed official k25 memberships and faction endpoints; the 25th Knesset ended on 10 November 2026 when the 26th opened, with retained OData evidence and reproducible builders.
+
 - Overview (12 Nov, audit): the 1949 “Votes per seat” card wrote the quota as votes ÷ 120 beside a figure that is right only for ÷ 121; it now shows ÷ 121, as the 1949 law set, from the same code as the walkthrough.
 - Explanations (12 Nov, audit): polling areas hold up to 800 voters, or 900 with the committee’s approval, and may have a second ballot box; Sweden’s first Sainte-Laguë divisor is 1.2; ballot letters were limited to two until July 2026; the Droop quota adds one; today’s government-formation and no-confidence rules are marked as today’s; for 1951–1969 the walkthrough no longer says the law requires a lottery for ties, since the sources checked state no rule.
 - 2019 (September) (12 Nov, audit): Popular Unity’s name reads אלוחדה, not אלחודה. The candidate gazette misprints one word that the same page, the final results notice and the committee’s results page all print correctly; recorded as a reviewed correction.

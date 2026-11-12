@@ -5,6 +5,7 @@ Run from the repository root. No network. Does not classify a membership change 
 a legal split, merger, rename or party foundation. Retains the source's partial
 coverage and unknown formal decision type. Existing researched events win.
 """
+import argparse
 import json
 import re
 import subprocess
@@ -18,7 +19,7 @@ def ordinal(n):
     return str(n) + ('th' if 10 <= n % 100 <= 20 else {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th'))
 
 
-def build():
+def build(check=False):
     # Reuse the app's reviewed English display names; never publish raw faction IDs
     # or guess translations from a faction's elected list.
     faction_names = json.loads(subprocess.check_output([
@@ -43,6 +44,24 @@ def build():
         for fid, he in names.items():
             faction_names[str(fid)][1] = curated.get(norm(he), faction_names[str(fid)][1])
         before = json.dumps(doc, ensure_ascii=False)
+        boundary_path = ROOT / f'data/raw/research/k{n}-term-boundary.json'
+        if boundary_path.exists():
+            boundary = json.loads(boundary_path.read_text())
+            date = boundary['termEnd']
+            event = {
+                'id': f'k{n}-term-end', 'date': date, 'kind': 'term-end', 'who': {},
+                'summary': {'en': f'{ordinal(n)} Knesset membership ends when the {ordinal(n+1)} Knesset begins.',
+                            'he': f'כהונת הכנסת ה־{n} הסתיימה עם תחילת כהונת הכנסת ה־{n+1}.'},
+                'classification': 'counts',
+                'reason': 'The membership boundary is the new Knesset’s start, not election day or the snapshot date.',
+                'seatsAfter': None, 'sources': boundary['eventSources'],
+                'certainty': 'confirmed', 'evidenceClass': 'Official',
+                'classificationBasis': 'Official membership endpoints and next Knesset opening record agree.',
+                'marker': None, 'importance': 'simple',
+                'importanceReason': 'This establishes a parliamentary term boundary or changes who holds the premiership.'}
+            doc['events'] = [e for e in doc['events'] if e['id'] != event['id']] + [event]
+            doc['events'].sort(key=lambda e: e['date'])
+            doc['asOf'] = boundary['retrievedAt'][:10]
         def english(fid):
             value = faction_names[str(fid)][1]
             if not value:
@@ -93,10 +112,14 @@ def build():
             doc['events'].sort(key=lambda e: (e['date'], e['id']))
             doc['asOf'] = '2026-11-09'
         if json.dumps(doc, ensure_ascii=False) != before:
+            if check:
+                raise AssertionError(f'{target} needs rebuilding')
             target.write_text(json.dumps(doc, ensure_ascii=False, indent=2) + '\n')
         counts[n] = count
     return counts
 
 
 if __name__ == '__main__':
-    print(json.dumps(build()))
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--check', action='store_true')
+    print(json.dumps(build(parser.parse_args().check)))

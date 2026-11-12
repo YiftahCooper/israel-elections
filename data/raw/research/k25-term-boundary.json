@@ -1,0 +1,1237 @@
+{
+  "source": "Knesset OData ParliamentInfo.svc",
+  "retrievedAt": "2026-11-12T20:21:41.645659+00:00",
+  "termEnd": "2026-11-10",
+  "nextKnesset": 26,
+  "dates": [
+    {
+      "KnessetDateID": 161,
+      "KnessetNum": 25,
+      "Name": "העשרים וחמש",
+      "Assembly": 1,
+      "Plenum": 1,
+      "PlenumStart": "2022-11-15T00:00:00",
+      "PlenumFinish": "2023-04-02T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-08-17T15:47:33.267"
+    },
+    {
+      "KnessetDateID": 162,
+      "KnessetNum": 25,
+      "Name": "העשרים וחמש",
+      "Assembly": 2,
+      "Plenum": 1,
+      "PlenumStart": "2023-04-30T00:00:00",
+      "PlenumFinish": "2023-07-30T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-08-17T15:47:33.267"
+    },
+    {
+      "KnessetDateID": 163,
+      "KnessetNum": 25,
+      "Name": "העשרים וחמש",
+      "Assembly": 1,
+      "Plenum": 2,
+      "PlenumStart": "2023-10-15T00:00:00",
+      "PlenumFinish": "2024-04-07T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-08-17T15:47:33.267"
+    },
+    {
+      "KnessetDateID": 164,
+      "KnessetNum": 25,
+      "Name": "העשרים וחמש",
+      "Assembly": 2,
+      "Plenum": 2,
+      "PlenumStart": "2024-05-19T00:00:00",
+      "PlenumFinish": "2024-07-28T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-08-17T15:47:33.267"
+    },
+    {
+      "KnessetDateID": 165,
+      "KnessetNum": 25,
+      "Name": "העשרים וחמש",
+      "Assembly": 1,
+      "Plenum": 3,
+      "PlenumStart": "2024-10-27T00:00:00",
+      "PlenumFinish": "2025-04-02T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-08-17T15:47:33.267"
+    },
+    {
+      "KnessetDateID": 166,
+      "KnessetNum": 25,
+      "Name": "העשרים וחמש",
+      "Assembly": 2,
+      "Plenum": 3,
+      "PlenumStart": "2025-05-04T00:00:00",
+      "PlenumFinish": "2025-07-27T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-08-17T15:47:33.267"
+    },
+    {
+      "KnessetDateID": 167,
+      "KnessetNum": 25,
+      "Name": "העשרים וחמש",
+      "Assembly": 1,
+      "Plenum": 4,
+      "PlenumStart": "2025-10-19T00:00:00",
+      "PlenumFinish": "2026-03-31T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-08-17T15:47:33.267"
+    },
+    {
+      "KnessetDateID": 168,
+      "KnessetNum": 25,
+      "Name": "העשרים וחמש",
+      "Assembly": 2,
+      "Plenum": 4,
+      "PlenumStart": "2026-05-10T00:00:00",
+      "PlenumFinish": "2026-07-17T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-08-17T15:47:33.267"
+    },
+    {
+      "KnessetDateID": 169,
+      "KnessetNum": 26,
+      "Name": "העשרים ושש",
+      "Assembly": 1,
+      "Plenum": 1,
+      "PlenumStart": "2026-11-10T00:00:00",
+      "PlenumFinish": null,
+      "IsCurrent": true,
+      "LastUpdatedDate": "2026-08-17T15:49:29.313"
+    }
+  ],
+  "factions": [
+    {
+      "FactionID": 1095,
+      "Name": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל",
+      "KnessetNum": 25,
+      "StartDate": "2022-11-15T00:00:00",
+      "FinishDate": "2026-11-10T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-11-04T10:00:52.98"
+    },
+    {
+      "FactionID": 1096,
+      "Name": "הליכוד ",
+      "KnessetNum": 25,
+      "StartDate": "2022-11-15T00:00:00",
+      "FinishDate": "2026-11-10T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-11-04T10:00:52.98"
+    },
+    {
+      "FactionID": 1097,
+      "Name": "הציונות הדתית",
+      "KnessetNum": 25,
+      "StartDate": "2022-11-15T00:00:00",
+      "FinishDate": "2022-11-20T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2022-11-27T13:50:32.94"
+    },
+    {
+      "FactionID": 1098,
+      "Name": "המחנה הממלכתי",
+      "KnessetNum": 25,
+      "StartDate": "2022-11-15T00:00:00",
+      "FinishDate": "2025-07-08T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-03-23T17:00:47.967"
+    },
+    {
+      "FactionID": 1099,
+      "Name": "רע\"ם",
+      "KnessetNum": 25,
+      "StartDate": "2022-11-15T00:00:00",
+      "FinishDate": "2026-11-10T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-11-04T10:00:52.98"
+    },
+    {
+      "FactionID": 1100,
+      "Name": "העבודה",
+      "KnessetNum": 25,
+      "StartDate": "2022-11-15T00:00:00",
+      "FinishDate": "2026-11-10T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-11-04T10:00:52.98"
+    },
+    {
+      "FactionID": 1101,
+      "Name": "יהדות התורה",
+      "KnessetNum": 25,
+      "StartDate": "2022-11-15T00:00:00",
+      "FinishDate": "2026-11-10T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-11-04T10:00:52.98"
+    },
+    {
+      "FactionID": 1102,
+      "Name": "יש עתיד",
+      "KnessetNum": 25,
+      "StartDate": "2022-11-15T00:00:00",
+      "FinishDate": "2026-11-10T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-11-04T10:00:52.98"
+    },
+    {
+      "FactionID": 1103,
+      "Name": "חד\"ש-תע\"ל",
+      "KnessetNum": 25,
+      "StartDate": "2022-11-15T00:00:00",
+      "FinishDate": "2026-11-10T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-11-04T10:00:52.98"
+    },
+    {
+      "FactionID": 1104,
+      "Name": "ישראל ביתנו",
+      "KnessetNum": 25,
+      "StartDate": "2022-11-15T00:00:00",
+      "FinishDate": "2026-11-10T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-11-04T10:00:52.98"
+    },
+    {
+      "FactionID": 1105,
+      "Name": "הציונות הדתית בראשות בצלאל סמוטריץ'",
+      "KnessetNum": 25,
+      "StartDate": "2022-11-20T00:00:00",
+      "FinishDate": "2026-11-10T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-11-04T10:00:52.98"
+    },
+    {
+      "FactionID": 1106,
+      "Name": "עוצמה יהודית בראשות איתמר בן גביר",
+      "KnessetNum": 25,
+      "StartDate": "2022-11-15T00:00:00",
+      "FinishDate": "2026-11-10T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-11-04T10:00:52.98"
+    },
+    {
+      "FactionID": 1107,
+      "Name": "נעם - בראשות אבי מעוז",
+      "KnessetNum": 25,
+      "StartDate": "2022-11-20T00:00:00",
+      "FinishDate": "2026-11-10T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-11-04T10:00:52.98"
+    },
+    {
+      "FactionID": 1108,
+      "Name": "הימין הממלכתי ",
+      "KnessetNum": 25,
+      "StartDate": "2024-03-13T00:00:00",
+      "FinishDate": "2026-11-10T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-11-04T10:00:52.98"
+    },
+    {
+      "FactionID": 1109,
+      "Name": "חה\"כ עידן רול",
+      "KnessetNum": 25,
+      "StartDate": "2025-01-14T00:00:00",
+      "FinishDate": "2025-08-13T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-03-23T16:20:59.293"
+    },
+    {
+      "FactionID": 1110,
+      "Name": "כחול לבן - המחנה הממלכתי",
+      "KnessetNum": 25,
+      "StartDate": "2025-07-08T00:00:00",
+      "FinishDate": "2026-11-10T00:00:00",
+      "IsCurrent": false,
+      "LastUpdatedDate": "2026-11-04T10:00:52.98"
+    }
+  ],
+  "nextKnessetMembership": {
+    "count": 120,
+    "openingDates": [
+      "2026-11-10T00:00:00"
+    ]
+  },
+  "queries": {
+    "positions": [
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+ge+1+and+KnessetNum+le+26+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24orderby=PersonToPositionID&%24select=PersonToPositionID%2CPersonID%2CPositionID%2CKnessetNum%2CStartDate%2CFinishDate%2CFactionID%2CFactionName&%24format=json",
+        "accessedAt": "2026-11-12T20:17:10.773863+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "ee923649fe509db11d4f6653d5f4af1fb7be4ef6402026c214d28a89051223e6",
+        "file": "positions-001.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=481,481&$format=json",
+        "accessedAt": "2026-11-12T20:17:12.211615+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "17737b9ff4d367e01ba2ee9d9f9fbaa88f265e270b852d917215cf07013fb305",
+        "file": "positions-002.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=590,590&$format=json",
+        "accessedAt": "2026-11-12T20:17:13.638980+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "c138522400072ad85491392002c6537e16e3bb7cf639cb48eb89408337fa12b7",
+        "file": "positions-003.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=778,778&$format=json",
+        "accessedAt": "2026-11-12T20:17:15.065877+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "45815746256d218f02ce219b6207e6159ae060342b53f4fe0b5e49f05bd39e1b",
+        "file": "positions-004.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=921,921&$format=json",
+        "accessedAt": "2026-11-12T20:17:16.508140+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "d979a108e8ab6f9c98f3324e5a1ea160190e5a4748a170a666e21fd8a959f28b",
+        "file": "positions-005.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=1038,1038&$format=json",
+        "accessedAt": "2026-11-12T20:17:17.939235+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "dbc51b265f5917de99e8af73742cb0a03cc6824493c10a031bfd3bffcb89c373",
+        "file": "positions-006.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=1164,1164&$format=json",
+        "accessedAt": "2026-11-12T20:17:19.366058+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "a2ebecfc44a7f775c28f0329bb168ce52581f27bc3dbd1dc3bdb41e5e1bf8d8f",
+        "file": "positions-007.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=1299,1299&$format=json",
+        "accessedAt": "2026-11-12T20:17:20.768141+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "dfd77f6d4bea7e701ef6c2d19ecae7ed42f75fadd6f365a5d2e9ef3e6e630691",
+        "file": "positions-008.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=1429,1429&$format=json",
+        "accessedAt": "2026-11-12T20:17:22.194835+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "01f9496e26514506f98abf65ce74d7984d0d2f6e94453da33d3f21ec9acae8e4",
+        "file": "positions-009.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=1530,1530&$format=json",
+        "accessedAt": "2026-11-12T20:17:23.622768+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "8e699d84eeb86ec7973ff956d1162e2b43568202f6bc90ba1f0d9fa2e5908819",
+        "file": "positions-010.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=1632,1632&$format=json",
+        "accessedAt": "2026-11-12T20:17:25.047205+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "ec3138b1434cb5822da19e675d8f36c1ca9f6051df3bbde6890a666212de5d52",
+        "file": "positions-011.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=1734,1734&$format=json",
+        "accessedAt": "2026-11-12T20:17:26.475661+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "2a9f94de0479e56cee4dcf9fefdc2fd71b8ccf2ec162677bbd6860eee041ff73",
+        "file": "positions-012.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=1841,1841&$format=json",
+        "accessedAt": "2026-11-12T20:17:27.875876+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "7b05b44a602eb34f2dc1d399080ae8651b850a5d2d0394e8d5169e8ebf407b8c",
+        "file": "positions-013.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=1941,1941&$format=json",
+        "accessedAt": "2026-11-12T20:17:29.312126+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "7e3762f0d53411db2f0a972404e672af8a82ad062c0f253932db1669b12f4853",
+        "file": "positions-014.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=2071,2071&$format=json",
+        "accessedAt": "2026-11-12T20:17:30.735054+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "3c4a2a9889271efff232b8a9b96e6dec29fd0b9eea18e3ed5e2e0857c5d7015b",
+        "file": "positions-015.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=2175,2175&$format=json",
+        "accessedAt": "2026-11-12T20:17:32.162691+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "bbc08f499f804605789c8eb4c82d5459e3f8e93aae75d56fa656808026100672",
+        "file": "positions-016.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=2281,2281&$format=json",
+        "accessedAt": "2026-11-12T20:17:33.591578+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "bb8d05d9b5cdeb81540c3fa410b50aa1803e25da2ab727faee31ecd57b67c165",
+        "file": "positions-017.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=2382,2382&$format=json",
+        "accessedAt": "2026-11-12T20:17:35.023115+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "199465e1e022baba8a5580ce25a40a7f09d3c8ea757d99c6e19b7bfb2e681438",
+        "file": "positions-018.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=2483,2483&$format=json",
+        "accessedAt": "2026-11-12T20:17:36.447676+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "56ad5a6d5a0f78845aa110d74c2f100eb05304bee3eaa403501779fe3145eaa5",
+        "file": "positions-019.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=2586,2586&$format=json",
+        "accessedAt": "2026-11-12T20:17:37.878903+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "ac0f37f4123746cbcfbc6b166156b2ed7be54207d28041f260ea6c6237677723",
+        "file": "positions-020.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=2688,2688&$format=json",
+        "accessedAt": "2026-11-12T20:17:39.306376+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "4378e0c5f8e3fb24d39a2f4d65d92a51206fc157db6de1900c1d86f0ffa7c6af",
+        "file": "positions-021.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=2789,2789&$format=json",
+        "accessedAt": "2026-11-12T20:17:40.733900+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "70a5c630628bc76b403b260fc4f95e43664110b8342a119fddcaa8b7c5645b0c",
+        "file": "positions-022.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=2892,2892&$format=json",
+        "accessedAt": "2026-11-12T20:17:42.129814+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "bd88d94c600eef7e4df7bd65d65c695635cd8e1b68c330f62b0d3764e20df267",
+        "file": "positions-023.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=2995,2995&$format=json",
+        "accessedAt": "2026-11-12T20:17:43.554133+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "37d1c56a6827e8d12e4b680b57b33a15ad91fd348bd2923ba14c3637ce9ba4f6",
+        "file": "positions-024.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=3097,3097&$format=json",
+        "accessedAt": "2026-11-12T20:17:44.982808+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "2a37cf5ff40cb1f12dd87f5f7f8ce06e623257a38929a492efcd7b1213029cc3",
+        "file": "positions-025.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=3223,3223&$format=json",
+        "accessedAt": "2026-11-12T20:17:46.405857+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "a1a3ca901a40d789ee4d450d7342ce04b6d010604a0374da48b5b38eff4c0123",
+        "file": "positions-026.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=3332,3332&$format=json",
+        "accessedAt": "2026-11-12T20:17:47.807710+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "a0ba1842cd9d9cc408d985d536a6567c3c64e4dd95d6d9ebd8c2c53a98658031",
+        "file": "positions-027.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=20401,20401&$format=json",
+        "accessedAt": "2026-11-12T20:17:49.239567+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "24047b2f07d2e54c158e85f41ed0572e28839e45cd689ccb37d95056af6854b1",
+        "file": "positions-028.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=20939,20939&$format=json",
+        "accessedAt": "2026-11-12T20:17:50.672033+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "79ccd45c87fc9a9aef39b58ac0e09b4c93d4cff7eb414911ae1e5037c86abfbe",
+        "file": "positions-029.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=21040,21040&$format=json",
+        "accessedAt": "2026-11-12T20:17:52.099962+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "39e2dbdc959b471f4bbf75fd3b4026f093f27d7d9815bfe42608b229f0ffbf79",
+        "file": "positions-030.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=21610,21610&$format=json",
+        "accessedAt": "2026-11-12T20:17:53.527048+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "ee934869a4e6045fa7b505d96c5da96dd01dc4cd64d7398eb6a379ab293569e9",
+        "file": "positions-031.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=23592,23592&$format=json",
+        "accessedAt": "2026-11-12T20:17:55.006597+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "d0a66bddc1e3ad4e9258c2e3a3e9455e18581364e2cd895b908360bdb1dcc4d1",
+        "file": "positions-032.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=23754,23754&$format=json",
+        "accessedAt": "2026-11-12T20:17:56.430411+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "766cbb7a7527ed493cf720f15d8f982ff9b063ee3c017a25d5dc9dcedb749881",
+        "file": "positions-033.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=23889,23889&$format=json",
+        "accessedAt": "2026-11-12T20:17:57.859271+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "47d37ecedcafa0f10df9897fb0da01698dfc217fd24a1e38c273dce2a39f76c0",
+        "file": "positions-034.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=25768,25768&$format=json",
+        "accessedAt": "2026-11-12T20:17:59.325219+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "a4b8bc509323b1423db194adf1967df10dace69b2dd4bc2656e907231fa26c61",
+        "file": "positions-035.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=25868,25868&$format=json",
+        "accessedAt": "2026-11-12T20:18:00.812612+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "2c17e769d133f455589fb47a3c01b82075367dcd1f5b1fd9bbbc42b4fb7dae02",
+        "file": "positions-036.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=25968,25968&$format=json",
+        "accessedAt": "2026-11-12T20:18:02.325186+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "9fbb57d4a9c5eaf0a400d3bc73b456c81b319e80430f9bd061b065497de15068",
+        "file": "positions-037.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=26068,26068&$format=json",
+        "accessedAt": "2026-11-12T20:18:03.824014+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "fb9c64a393fe1fb07eed057c3988e7b3701943d70e8ac0096fba22ec3042d4b8",
+        "file": "positions-038.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=26168,26168&$format=json",
+        "accessedAt": "2026-11-12T20:18:05.309613+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "a9c12690411c91db209a88c53edb37d17d8796eb6e4ea7a43ee3950df1654087",
+        "file": "positions-039.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=26268,26268&$format=json",
+        "accessedAt": "2026-11-12T20:18:06.817491+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "262c6e68c788ae38e45198292e19649e3526767b647c08be0f88d4e07831dc2f",
+        "file": "positions-040.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=26368,26368&$format=json",
+        "accessedAt": "2026-11-12T20:18:08.312517+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "736972df624f9b02724fe17fe3c5dc328bcf9286593893b3ee7beaddd3fab483",
+        "file": "positions-041.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=26468,26468&$format=json",
+        "accessedAt": "2026-11-12T20:18:09.793229+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "29e214890ff64e88dd4e833fc2788314305492ede74d1814279d747b31354f43",
+        "file": "positions-042.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=26571,26571&$format=json",
+        "accessedAt": "2026-11-12T20:18:11.277216+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "b6d5b271369e113db95626415df22453a24b67fba3deca821a809dfc251d2e83",
+        "file": "positions-043.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=26677,26677&$format=json",
+        "accessedAt": "2026-11-12T20:18:12.763403+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "988e6770ab73be842206a86324dab2823981b88d64d414119758c6b38cbac5d2",
+        "file": "positions-044.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=26795,26795&$format=json",
+        "accessedAt": "2026-11-12T20:18:14.298963+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "934460d82536a739c741bd65df5bc214cd07ac63e826d98ccf9d847b4c824a8c",
+        "file": "positions-045.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=26895,26895&$format=json",
+        "accessedAt": "2026-11-12T20:18:15.797317+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "efdf76118ac4d1da752852e5e04b1668e67d4e1364981d0c1fd55ca0f073665b",
+        "file": "positions-046.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=26995,26995&$format=json",
+        "accessedAt": "2026-11-12T20:18:17.275967+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "c7bb9cdc3f66da94398115cebeda6bf8445dbcebe771b3ddf3a8df4566f090c8",
+        "file": "positions-047.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=27095,27095&$format=json",
+        "accessedAt": "2026-11-12T20:18:18.779361+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "688505c5b151ed927bcce5c3af7892b687767f2d3140090261b0f221cfd47fe2",
+        "file": "positions-048.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=27195,27195&$format=json",
+        "accessedAt": "2026-11-12T20:18:20.253250+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "046feed63fc67c156bb62a5f787cd6898dd674c8324ca520775130660b85edbe",
+        "file": "positions-049.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=27295,27295&$format=json",
+        "accessedAt": "2026-11-12T20:18:21.733048+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "e7b0f8789fccdbbf3ddf3ed07d48628375aa558f5254dede7cae774b921075ab",
+        "file": "positions-050.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=27395,27395&$format=json",
+        "accessedAt": "2026-11-12T20:18:23.159079+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "eb0c24a9ab9b0f5726478c97cdc19474f660cb4e977a98e4f07814fd46514106",
+        "file": "positions-051.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=27495,27495&$format=json",
+        "accessedAt": "2026-11-12T20:18:24.583132+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "da8a97ccd67d67cc353172a00069049d8d4fd07a1f59a127c8042b20603a5722",
+        "file": "positions-052.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=27595,27595&$format=json",
+        "accessedAt": "2026-11-12T20:18:26.075085+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "af7ef0e038f67c0e1bcb1935c58fc6c8a61b28db27ecfafb6e743ad48f778112",
+        "file": "positions-053.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=27699,27699&$format=json",
+        "accessedAt": "2026-11-12T20:18:27.542357+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "02ba1d2b6d94ae958812898ef0233426504cc80a82705c8fab491a3bcedfefa0",
+        "file": "positions-054.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=27801,27801&$format=json",
+        "accessedAt": "2026-11-12T20:18:29.013046+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "d30591e0fbb93c1e23bd4cad0811017352c36edf327fd47921d704c4bff250ee",
+        "file": "positions-055.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=27901,27901&$format=json",
+        "accessedAt": "2026-11-12T20:18:30.483282+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "4df44f8aacc89a453c54c18bba733e20cb50e43e5e8335da07b52cab3384077b",
+        "file": "positions-056.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=28001,28001&$format=json",
+        "accessedAt": "2026-11-12T20:18:31.957268+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "d72e77a413e2d8415f7e709b18c74314c806934e1049ee34014359b290a53156",
+        "file": "positions-057.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=28101,28101&$format=json",
+        "accessedAt": "2026-11-12T20:18:33.430648+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "92d46ff7eb8001b4dba72ec32b511ec45704ef57ccbf225c9978e39cd166a477",
+        "file": "positions-058.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=28201,28201&$format=json",
+        "accessedAt": "2026-11-12T20:18:34.908702+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "3cf7fb2b37f538e5006fbc3dfb12e1e3202683616b9a703014674db36d2b8e2e",
+        "file": "positions-059.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=28301,28301&$format=json",
+        "accessedAt": "2026-11-12T20:18:36.379660+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "252f3aff097b24140f0ab3f55e2b8907ac872171bcc39284f015ccf11a7b572a",
+        "file": "positions-060.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=28401,28401&$format=json",
+        "accessedAt": "2026-11-12T20:18:37.852125+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "6cc32616f5cc6b444d423fadcd0f29b2a383cfe8b2b42adffe01ff61302c6f46",
+        "file": "positions-061.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=28501,28501&$format=json",
+        "accessedAt": "2026-11-12T20:18:39.321495+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "ecf6279898b2f92bf8407b81a962f51993a1092a15937241107c2960c2ce8131",
+        "file": "positions-062.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=28601,28601&$format=json",
+        "accessedAt": "2026-11-12T20:18:40.787329+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "4e0c21c87fbcb1c6b9fa0989d5ccce95ab40925aa00cbb5226a0a176e2f3fa29",
+        "file": "positions-063.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=28701,28701&$format=json",
+        "accessedAt": "2026-11-12T20:18:42.259321+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "19c65e9738cc4362314cfe5322b321516c28e0183ebb33a9e4934df64aeb032b",
+        "file": "positions-064.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=28801,28801&$format=json",
+        "accessedAt": "2026-11-12T20:18:43.777500+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "c0f5d3b3ba774a5cfb25f606b3ac3f716e57c5178dc1b8e308674b7db62bf50e",
+        "file": "positions-065.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=28901,28901&$format=json",
+        "accessedAt": "2026-11-12T20:18:45.248528+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "70b2b00c933779b8f7a7b3501b711153023c721012de526480623ce8174e163c",
+        "file": "positions-066.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=29001,29001&$format=json",
+        "accessedAt": "2026-11-12T20:18:46.723907+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "1fc59a545547756f37df5760e62d980847fd402d215b5753d9dc8c37faf8b3f9",
+        "file": "positions-067.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=29110,29110&$format=json",
+        "accessedAt": "2026-11-12T20:18:48.187444+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "e51f08e71d95d509c2dbd72668b9c75e5ee61f2529694269458bc5e54edf9ed6",
+        "file": "positions-068.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=29224,29224&$format=json",
+        "accessedAt": "2026-11-12T20:18:49.712218+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "706b11832790b49719994d9630a43db909029050ffcc6fda9e4449725bbc44aa",
+        "file": "positions-069.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=29467,29467&$format=json",
+        "accessedAt": "2026-11-12T20:18:51.177120+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "f5c7a9f736a60225e52e9d69327ee869be487c22afcf8a4bafa50ccc3274b378",
+        "file": "positions-070.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=29567,29567&$format=json",
+        "accessedAt": "2026-11-12T20:18:52.635510+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "cc3a095d60bb4697692ad06e3abcd96901bb995c2981e2419065821c25b5d489",
+        "file": "positions-071.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=29667,29667&$format=json",
+        "accessedAt": "2026-11-12T20:18:54.096885+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "d477678bff69a5b837383ba2a8c56e9283a7649df8689335bda3a9d741693208",
+        "file": "positions-072.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=29767,29767&$format=json",
+        "accessedAt": "2026-11-12T20:18:55.556737+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "ec3e388801ba62606b36efa0b9c0035942fc3c093b2ff8e445691c3f9397e85b",
+        "file": "positions-073.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=29889,29889&$format=json",
+        "accessedAt": "2026-11-12T20:18:57.017327+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "36b585079635aaddfdd3ecc934d0db1c6ed1de87d0e4963ed2363e7e0672cad7",
+        "file": "positions-074.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=30022,30022&$format=json",
+        "accessedAt": "2026-11-12T20:18:58.478924+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "8427ea50b19a983480904e64b803e710db787df830eddc8183d1d9e4771b9d19",
+        "file": "positions-075.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=30215,30215&$format=json",
+        "accessedAt": "2026-11-12T20:18:59.945348+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "adc52d0a4ae057a262f5da6f13fea578c30b710235b6c942f84521083087c80f",
+        "file": "positions-076.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=30361,30361&$format=json",
+        "accessedAt": "2026-11-12T20:19:01.408661+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "c777cd7c4d2ef64d29bdb9357b1a147a98346c4e58767588020170401c829b4e",
+        "file": "positions-077.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=30461,30461&$format=json",
+        "accessedAt": "2026-11-12T20:19:02.834546+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "9ad6a085fd66c28286877875f335e42beabfadb03a8fb64e159c3e38a5a13e2d",
+        "file": "positions-078.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=32312,32312&$format=json",
+        "accessedAt": "2026-11-12T20:19:04.291209+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "dbd490d3bcf52b720de4ccc968dc1bedfc00d86846875de9aeac16f1408dd2c1",
+        "file": "positions-079.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=34042,34042&$format=json",
+        "accessedAt": "2026-11-12T20:19:05.760736+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "29dae686de1cdda883069e07584a1ba337b95237ca72e69ccce564509e139034",
+        "file": "positions-080.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$orderby=PersonToPositionID&$select=PersonToPositionID,PersonID,PositionID,KnessetNum,StartDate,FinishDate,FactionID,FactionName&$skiptoken=34196,34196&$format=json",
+        "accessedAt": "2026-11-12T20:19:07.229505+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "5be992098f1da4e8c81b3d05fe99ebd367a51bfc6cf59b8881eb5c39c6bdb2e9",
+        "file": "positions-081.json",
+        "rows": 65
+      }
+    ],
+    "factions": [
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+ge+1+and+KnessetNum+le+26&%24orderby=FactionID&%24format=json",
+        "accessedAt": "2026-11-12T20:19:08.616450+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "29661382634c2440c1f3f27258ac7ed50bd48709c80a66e3cc146e9c51e9b2eb",
+        "file": "factions-001.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026&$orderby=FactionID&$skiptoken=263,263&$format=json",
+        "accessedAt": "2026-11-12T20:19:10.076358+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "471917e7632f81aa3475e633074d751cfc990d93c6ba9aa5f968b58e922fa7d2",
+        "file": "factions-002.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026&$orderby=FactionID&$skiptoken=503,503&$format=json",
+        "accessedAt": "2026-11-12T20:19:11.560412+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "daa342043c619a8716cd9a5aec95ccc508e3db2d831acb5309fe1288d6ccdd39",
+        "file": "factions-003.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026&$orderby=FactionID&$skiptoken=690,690&$format=json",
+        "accessedAt": "2026-11-12T20:19:13.007878+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "1c0fcaa083ee8e1d42a760bfd50be2b92e27f011d957957d58dbb2bb3a29ba57",
+        "file": "factions-004.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026&$orderby=FactionID&$skiptoken=978,978&$format=json",
+        "accessedAt": "2026-11-12T20:19:14.469546+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "a75b3e40818e254bb2dec8406cf68b0fcf3bab915a68cde606223fc2f15eb3b7",
+        "file": "factions-005.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026&$orderby=FactionID&$skiptoken=1078,1078&$format=json",
+        "accessedAt": "2026-11-12T20:19:15.927151+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "e87094d034c88ecc0a5b24b343e0eb08dfb727f209b2afd9b469e0a5b7ba52ad",
+        "file": "factions-006.json",
+        "rows": 41
+      }
+    ],
+    "dates": [
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_KnessetDates?%24filter=KnessetNum+ge+1+and+KnessetNum+le+26&%24orderby=KnessetDateID&%24format=json",
+        "accessedAt": "2026-11-12T20:19:17.310996+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "74d1e7a03e667f58a90fa6441800a0b1efd49ccfc01d0d80e99efd4191ae65ee",
+        "file": "dates-001.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_KnessetDates?$filter=KnessetNum%20ge%201%20and%20KnessetNum%20le%2026&$orderby=KnessetDateID&$skiptoken=101,101&$format=json",
+        "accessedAt": "2026-11-12T20:19:18.771081+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "e4a7fcb130cf3e65658fb92ebc1d25c462a122cf0ae49a0b5bcfc44daa837392",
+        "file": "dates-002.json",
+        "rows": 65
+      }
+    ]
+  },
+  "personQueries": [
+    {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person?%24filter=PersonID+ge+0&%24select=PersonID%2CLastName%2CFirstName%2CGenderDesc&%24format=json",
+      "sha256": "259e1d505f57f1559dea2491db44a0eca50fde8c1846c135306cc1efb54434d6"
+    },
+    {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person?$filter=PersonID%20ge%200&$select=PersonID,LastName,FirstName,GenderDesc&$skiptoken=535&$format=json",
+      "sha256": "85f1e1c5a1f4e29f53cce174828e2932738b21a84fc0a25ab86f45fade8f8762"
+    },
+    {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person?$filter=PersonID%20ge%200&$select=PersonID,LastName,FirstName,GenderDesc&$skiptoken=2124&$format=json",
+      "sha256": "242e5cd58026da7b3f1cdd80d88972beb84efe76bd97eb3cb082800ec5718bab"
+    },
+    {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person?$filter=PersonID%20ge%200&$select=PersonID,LastName,FirstName,GenderDesc&$skiptoken=2225&$format=json",
+      "sha256": "45f45b293429022cdab2fd08550456f3c383a6fda45d6c872ee51ede149f2200"
+    },
+    {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person?$filter=PersonID%20ge%200&$select=PersonID,LastName,FirstName,GenderDesc&$skiptoken=2325&$format=json",
+      "sha256": "7db51e7ea0fa6f92307b6bd9196bc86838fb762d33d9ae53e48e122ae6959218"
+    },
+    {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person?$filter=PersonID%20ge%200&$select=PersonID,LastName,FirstName,GenderDesc&$skiptoken=2425&$format=json",
+      "sha256": "a8b26ea14f9428a90766159849372a484ceb73de3de032033efcfd533dfd7657"
+    },
+    {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person?$filter=PersonID%20ge%200&$select=PersonID,LastName,FirstName,GenderDesc&$skiptoken=2525&$format=json",
+      "sha256": "de5f1f4f231d82956128d018de0b8685e93013cc9b62cba2157048209825ee7b"
+    },
+    {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person?$filter=PersonID%20ge%200&$select=PersonID,LastName,FirstName,GenderDesc&$skiptoken=2625&$format=json",
+      "sha256": "39c364ff3aef8bcc6b69cb8033e72a0fb84b5bcde4fead36f3e2e6dd3b5a2c18"
+    },
+    {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person?$filter=PersonID%20ge%200&$select=PersonID,LastName,FirstName,GenderDesc&$skiptoken=4415&$format=json",
+      "sha256": "a41a7b98cb95768f36d057e04aaba01053e805cfefcc1d35ba480a9f03407cf0"
+    },
+    {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person?$filter=PersonID%20ge%200&$select=PersonID,LastName,FirstName,GenderDesc&$skiptoken=23533&$format=json",
+      "sha256": "36dee3e5dca5d782aae41456aed14531062b0cc35e7228aa81cd2e6e33ed87e4"
+    },
+    {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person?$filter=PersonID%20ge%200&$select=PersonID,LastName,FirstName,GenderDesc&$skiptoken=30549&$format=json",
+      "sha256": "a761b809da5440099ba45304a81154298bddfbe6acbb85893189ebcc58b3f4c7"
+    },
+    {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person?$filter=PersonID%20ge%200&$select=PersonID,LastName,FirstName,GenderDesc&$skiptoken=30794&$format=json",
+      "sha256": "c0605220692808a7325ae839899bcdde2b525195544923a01f7b9693f4d26789"
+    },
+    {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person?$filter=PersonID%20ge%200&$select=PersonID,LastName,FirstName,GenderDesc&$skiptoken=30939&$format=json",
+      "sha256": "aa48016413e04e10648b2934d0336f182df405b0bf53e7aed1d645ae0aac3f6c"
+    }
+  ],
+  "eventSources": [
+    {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_KnessetDates?%24filter=KnessetNum+eq+26&%24format=json",
+      "publisher": "Knesset",
+      "date": null,
+      "accessed": "2026-11-12",
+      "type": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "inspection": "retained-record",
+      "locator": "KnessetDateID 169; data/raw/research/k25-term-boundary.json and data/raw/k25/knesset-odata-members.json",
+      "supportingNote": "KnessetNum: 26; PlenumStart: 2026-11-10T00:00:00; IsCurrent: true",
+      "effectiveDate": "2026-11-10"
+    },
+    {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61%29&%24format=json",
+      "publisher": "Knesset",
+      "date": null,
+      "accessed": "2026-11-12",
+      "type": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "inspection": "retained-record",
+      "locator": "All 120 final k25 memberships; data/raw/research/k25-term-boundary.json and data/raw/k25/knesset-odata-members.json",
+      "supportingNote": "FinishDate: 2026-11-10T00:00:00",
+      "effectiveDate": "2026-11-10"
+    }
+  ]
+}

@@ -6569,6 +6569,51 @@
         23591,
         30923
       ]
+    },
+    {
+      "id": "k25-term-end",
+      "date": "2026-11-10",
+      "kind": "term-end",
+      "who": {},
+      "summary": {
+        "en": "25th Knesset membership ends when the 26th Knesset begins.",
+        "he": "כהונת הכנסת ה־25 הסתיימה עם תחילת כהונת הכנסת ה־26."
+      },
+      "classification": "counts",
+      "reason": "The membership boundary is the new Knesset’s start, not election day or the snapshot date.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_KnessetDates?%24filter=KnessetNum+eq+26&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "KnessetDateID 169; data/raw/research/k25-term-boundary.json and data/raw/k25/knesset-odata-members.json",
+          "supportingNote": "KnessetNum: 26; PlenumStart: 2026-11-10T00:00:00; IsCurrent: true",
+          "effectiveDate": "2026-11-10"
+        },
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+25+and+%28PositionID+eq+43+or+PositionID+eq+61%29&%24format=json",
+          "publisher": "Knesset",
+          "date": null,
+          "accessed": "2026-11-12",
+          "type": "official",
+          "evidenceFamily": "knesset-parliament-info",
+          "inspection": "retained-record",
+          "locator": "All 120 final k25 memberships; data/raw/research/k25-term-boundary.json and data/raw/k25/knesset-odata-members.json",
+          "supportingNote": "FinishDate: 2026-11-10T00:00:00",
+          "effectiveDate": "2026-11-10"
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official",
+      "classificationBasis": "Official membership endpoints and next Knesset opening record agree.",
+      "marker": null,
+      "importance": "simple",
+      "importanceReason": "This establishes a parliamentary term boundary or changes who holds the premiership."
     }
   ],
   "membershipEventRefs": [

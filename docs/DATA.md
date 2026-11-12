@@ -681,3 +681,45 @@ Flatto-Sharon capacity qualification and separate 2019–2022 elections (k26's p
 note was removed on 9 November 2026, once YP 15100 was found). This is not a complete historical event register. Redistribution authority
 in 1977, primary 1999 PM invalid/cast totals, 1999 printed-slip withdrawal instructions and
 a government-hosted 2001 download remain unresolved.
+
+### Membership endpoint refresh (12 November 2026)
+
+The `kNN-membership-odata` manifest entries describe assembled JSON snapshots, not
+single HTTP response bodies. `scripts/fetch-sources.ts` preserves these existing
+entries; its generic HTTP refresh does not assemble membership/person joins.
+The separate bounded fetcher `scripts/research/fetch-member-changes.py` retrieves
+all pages of positions, factions and parliamentary session dates into
+`.backup-scratch/m2/raw/`. Then run
+`python3 scripts/research/refresh-membership-snapshots.py` to compare k1–k25
+(including a fresh official person-name cross-check), refresh only differing
+snapshots, and update their manifest bytes, SHA-256 and retrieval timestamp.
+The stored k16/k17 snapshots contain positions/persons only; their normalized
+faction intervals are additionally checked against the fresh extraction.
+Both fetchers use the project User-Agent, pace requests at least one second
+apart, and stop on errors or Retry-After without bypassing challenges.
+
+The 12 November check found only k25 endpoint drift: the Knesset now records the
+last memberships and faction assignments ending on **10 November 2026**.
+`data/raw/research/k25-term-boundary.json` retains the official next-term opening
+record (`KNS_KnessetDates` 169), faction registry and request provenance. This is
+a parliamentary boundary; it does not establish the end of the 37th government.
+The live service also has 120 member-position records for k26 starting that day;
+no k26 history is added by this refresh.
+
+Offline reproduction (from the repository root):
+
+```sh
+python3 scripts/research/build-member-changes.py --retained 25
+python3 scripts/research/build-faction-events.py
+python3 scripts/research/build-member-changes.py --retained 25 --check
+python3 scripts/research/build-faction-events.py --check
+npm run -s data:build
+```
+
+The bounded `--retained` mode reprojects membership/faction end fields from durable
+raw inputs while checking record identities and preserving separately reviewed
+replacement annotations, vote evidence and their provenance. The older full
+builder depends on disposable extraction pages and predates those annotations;
+it must not overwrite that later research. The term-end event is generated from
+the retained official boundary input. Fresh downloads are needed only for a new
+live comparison, not for offline rebuilding.

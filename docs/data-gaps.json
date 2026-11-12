@@ -1,11 +1,11 @@
 {
   "schemaVersion": 3,
-  "total": 11467,
+  "total": 11472,
   "counts": {
-    "unknown": 6955,
+    "unknown": 6958,
     "missing-field": 283,
     "conflict": 18,
-    "single-source": 2455,
+    "single-source": 2457,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1167,
@@ -15,7 +15,7 @@
   "countsByStatus": {
     "inferred-not-verified": 1032,
     "needs-current-status-review": 313,
-    "open": 10122
+    "open": 10127
   },
   "countsByImportance": {
     "high": {
@@ -27,20 +27,20 @@
       "unknown": 240
     },
     "medium": {
-      "total": 3594,
-      "confirmed": 581,
+      "total": 3595,
+      "confirmed": 582,
       "probable": 241,
       "provisional": 545,
       "disputed": 7,
       "unknown": 2220
     },
     "low": {
-      "total": 7046,
+      "total": 7050,
       "confirmed": 572,
       "probable": 0,
       "provisional": 803,
       "disputed": 0,
-      "unknown": 5671
+      "unknown": 5675
     }
   },
   "claimCertainty": {
@@ -522,15 +522,15 @@
     },
     {
       "election": "k25",
-      "total": 683,
+      "total": 688,
       "highOpen": 8,
       "mediumOpen": 256,
-      "low": 389,
+      "low": 393,
       "counts": {
-        "unknown": 453,
+        "unknown": 456,
         "missing-field": 0,
         "conflict": 0,
-        "single-source": 131,
+        "single-source": 133,
         "low-confidence": 4,
         "release-hold": 0,
         "inferred": 84,
@@ -1059,7 +1059,7 @@
     {"area":"data/raw/research/ckan-election-search.json result","count":164,"open":164},
     {"area":"data/raw/research/ckan-votes-knesset.json result","count":102,"open":102},
     {"area":"data/raw/votes-knesset.catalogue.json result","count":102,"open":102},
-    {"area":"data/raw/kN/knesset-odata-members.json positions","count":51,"open":51},
+    {"area":"data/raw/kN/knesset-odata-members.json positions","count":50,"open":50},
     {"area":"data/raw/research/odata-elections-catalog.json result","count":41,"open":41},
     {"area":"data/raw/kN/knesset-odata-members.json record","count":26,"open":26},
     {"area":"data/meta/logos/kN.json logos","count":21,"open":21},
@@ -1073,9 +1073,9 @@
     {"area":"data/raw/kN/government-15-positions.json value","count":4,"open":4},
     {"area":"data/raw/research/mk-runs-1109.reviewed.json runs","count":4,"open":4},
     {"area":"data/meta/logos/README.md","count":3,"open":3},
+    {"area":"data/raw/research/kN-term-boundary.json queries","count":3,"open":3},
     {"area":"data/raw/bios/identity-decisions.reviewed.json decisions","count":2,"open":2},
     {"area":"data/raw/kN/knesset-odata-factions.json record","count":2,"open":2},
-    {"area":"data/raw/kN/knesset-odata-members.json factionMemberships","count":2,"open":2},
     {"area":"data/raw/SOURCES.json license","count":2,"open":2},
     {"area":"data/raw/SOURCES.json url","count":2,"open":2},
     {"area":"data/raw/bios/entry-corrections.reviewed.json displayNames","count":1,"open":1},
@@ -1092,8 +1092,12 @@
     {"area":"data/raw/bios/wikidata-israeli-parties.json labelHe","count":1,"open":1},
     {"area":"data/raw/bios/wikidata-israeli-party-members.json birth","count":1,"open":1},
     {"area":"data/raw/bios/wikidata-israeli-party-members.json knessetSiteId","count":1,"open":1},
+    {"area":"data/raw/kN/knesset-odata-members.json factionMemberships","count":1,"open":1},
     {"area":"data/raw/party-links/overlay-corrections.reviewed.json aliases","count":1,"open":1},
     {"area":"data/raw/party-links/overlay-corrections.reviewed.json overlayReviewedAt","count":1,"open":1},
+    {"area":"data/raw/research/kN-term-boundary.json dates","count":1,"open":1},
+    {"area":"data/raw/research/kN-term-boundary.json eventSources","count":1,"open":1},
+    {"area":"data/raw/research/kN-term-boundary.json record","count":1,"open":1},
     {"area":"data/raw/research/MANIFEST.json note","count":1,"open":1},
     {"area":"data/raw/research/mk-runs-1109.reviewed.json coverageReview","count":1,"open":1}
   ]

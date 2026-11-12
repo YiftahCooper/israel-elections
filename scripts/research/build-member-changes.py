@@ -6,6 +6,7 @@ No network calls. Outputs retain reported dates, including anomalous intervals.
 Citation source IDs resolve through each file's sources map; record IDs identify
 atomic OData records. No replacement reason or formal split is inferred.
 """
+import argparse
 import hashlib
 import json
 import subprocess
@@ -175,5 +176,62 @@ def main():
     print(json.dumps(summaries, indent=2))
 
 
+def refresh_retained(n, check=False):
+    """Reproject membership fields without discarding separately reviewed research.
+
+    The original full extractor predates the reviewed replacement/vote annotations.
+    This bounded refresh reads durable raw inputs, preserves those annotations and
+    their original provenance, and checks record identity before replacing dates.
+    """
+    raw = load(ROOT / f'data/raw/k{n}/knesset-odata-members.json')
+    boundary = load(ROOT / f'data/raw/research/k{n}-term-boundary.json')
+    path = OUT / f'k{n}.json'
+    original = path.read_text()
+    doc = json.loads(original)
+    mk = {r['PersonToPositionID']: r for r in raw['positions']}
+    fr = {r['PersonToPositionID']: r for r in raw['factionMemberships']}
+    assert set(mk) == {t['id'] for t in doc['tenures']}, 'New/deleted tenures need full research'
+    for t in doc['tenures']:
+        r = mk[t['id']]
+        assert (t['personId'], t['start']) == (r['PersonID'], day(r['StartDate']))
+        t['end'] = day(r['FinishDate'])
+        for f in t['factions']:
+            r = fr[f['cites'][0]['recordId']]
+            assert (t['personId'], f['factionId'], f['start']) == (r['PersonID'], r['FactionID'], day(r['StartDate']))
+            f['end'] = day(r['FinishDate'])
+    registry = {f['FactionID']: f for f in boundary['factions']}
+    for f in doc['factionRegistry']:
+        r = registry[f['id']]
+        assert (f['nameHe'], f['start']) == (r['Name'], day(r['StartDate']))
+        f['end'] = day(r['FinishDate'])
+    doc['asOf'] = raw['retrievedAt'][:10]
+    for key in ('positions', 'factions'):
+        doc['sources'][key]['accessed'] = raw['retrievedAt'][:10]
+        doc['sources'][key]['retainedArtifact'] = (f'data/raw/k{n}/knesset-odata-members.json'
+                                                  if key == 'positions' else f'data/raw/research/k{n}-term-boundary.json')
+    # Keep the project's compact array-item-per-line format.
+    encode = lambda v: json.dumps(v, ensure_ascii=False, separators=(',', ':'))
+    lines = []
+    for key, value in doc.items():
+        rendered = ('[\n' + ',\n'.join('  ' + encode(v) for v in value) + '\n ]'
+                    if isinstance(value, list) and value else encode(value))
+        lines.append(' ' + encode(key) + ':' + rendered)
+    result = '{\n' + ',\n'.join(lines) + '\n}\n'
+    if check:
+        assert result == original, f'{path} needs a retained refresh'
+    elif result != original:
+        path.write_text(result)
+    print(f'k{n}: retained membership projection ' + ('checked' if check else 'rebuilt'))
+
+
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--retained', type=int, help='Refresh only raw membership fields for this term; preserve reviewed annotations')
+    parser.add_argument('--check', action='store_true')
+    args = parser.parse_args()
+    if args.retained:
+        refresh_retained(args.retained, args.check)
+    else:
+        if args.check:
+            parser.error('--check requires --retained')
+        main()

@@ -1,10 +1,9 @@
 {
  "source": "Knesset OData ParliamentInfo.svc",
- "retrievedAt": "2026-11-04",
+ "retrievedAt": "2026-11-12T20:21:41.645659+00:00",
  "queries": [
-  "KNS_PersonToPosition?$filter=KnessetNum eq 25 and (PositionID eq 43 or PositionID eq 61)",
-  "KNS_PersonToPosition?$filter=KnessetNum eq 25 and PositionID eq 54",
-  "KNS_Person?$filter=PersonID eq … (every MK PersonID above, in batches of 25)"
+  "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+ge+1+and+KnessetNum+le+26+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24orderby=PersonToPositionID&%24select=PersonToPositionID%2CPersonID%2CPositionID%2CKnessetNum%2CStartDate%2CFinishDate%2CFactionID%2CFactionName&%24format=json",
+  "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person?%24filter=PersonID+ge+0&%24select=PersonID%2CLastName%2CFirstName%2CGenderDesc&%24format=json"
  ],
  "note": "PositionID 43/61 = Knesset member. Members whose StartDate is the earliest StartDate (2022-11-15) are taken as the opening membership. PositionID 54 rows (factionMemberships) give each member's faction (FactionName) and its dates.",
  "positions": [
@@ -14,7 +13,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -24,7 +23,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -34,7 +33,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -44,7 +43,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -64,7 +63,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -84,7 +83,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -94,7 +93,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -134,7 +133,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -144,7 +143,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -154,7 +153,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -184,7 +183,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -204,7 +203,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -224,7 +223,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -234,7 +233,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -244,7 +243,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -264,7 +263,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -284,7 +283,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -294,7 +293,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -314,7 +313,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -324,7 +323,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -334,7 +333,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -354,7 +353,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -404,7 +403,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -414,7 +413,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -454,7 +453,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -464,7 +463,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -474,7 +473,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -484,7 +483,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -494,7 +493,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -504,7 +503,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -534,7 +533,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -544,7 +543,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -594,7 +593,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -604,7 +603,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -614,7 +613,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -624,7 +623,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -634,7 +633,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -644,7 +643,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -664,7 +663,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -674,7 +673,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -684,7 +683,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -694,7 +693,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -704,7 +703,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -714,7 +713,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -724,7 +723,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -744,7 +743,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -754,7 +753,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -774,7 +773,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -784,7 +783,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -794,7 +793,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -804,7 +803,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -814,7 +813,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -824,7 +823,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -834,7 +833,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -844,7 +843,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -854,7 +853,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -874,7 +873,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -884,7 +883,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -914,7 +913,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -924,7 +923,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -944,7 +943,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -954,7 +953,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -964,7 +963,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -974,7 +973,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -984,7 +983,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -994,7 +993,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1004,7 +1003,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1014,7 +1013,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1034,7 +1033,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1054,7 +1053,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1064,7 +1063,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1074,7 +1073,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1084,7 +1083,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1104,7 +1103,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1114,7 +1113,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1124,7 +1123,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1134,7 +1133,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1144,7 +1143,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1154,7 +1153,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1174,7 +1173,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1184,7 +1183,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1194,7 +1193,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1204,7 +1203,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1214,7 +1213,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2023-01-01T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1224,7 +1223,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2023-01-03T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1244,7 +1243,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2023-01-06T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1264,7 +1263,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2023-01-07T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1274,7 +1273,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2023-01-17T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1304,7 +1303,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2023-02-01T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1344,7 +1343,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2023-02-10T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1354,7 +1353,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2023-02-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1364,7 +1363,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2023-02-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1374,7 +1373,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2023-03-12T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1384,7 +1383,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2023-03-26T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1404,7 +1403,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2023-08-01T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1414,7 +1413,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2023-10-14T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1424,7 +1423,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2024-06-30T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1434,7 +1433,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2024-07-05T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1444,7 +1443,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2025-01-05T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1454,7 +1453,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2025-01-21T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1464,7 +1463,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2025-04-06T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1474,7 +1473,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2025-06-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1484,7 +1483,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2025-06-20T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1504,7 +1503,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2025-07-04T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1514,7 +1513,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2025-07-08T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1524,7 +1523,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2025-07-10T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1534,7 +1533,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2025-07-16T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1544,7 +1543,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2025-07-17T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1554,7 +1553,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2025-07-17T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1564,7 +1563,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2025-07-20T10:01:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1574,7 +1573,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2025-07-20T10:03:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1594,7 +1593,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2025-07-20T10:05:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1604,7 +1603,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2025-08-13T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1614,7 +1613,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2026-01-21T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1624,7 +1623,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2026-05-19T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1634,7 +1633,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2026-06-07T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1644,7 +1643,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2026-07-28T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1654,7 +1653,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2026-08-11T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1664,7 +1663,7 @@
    "PositionID": 43,
    "KnessetNum": 25,
    "StartDate": "2026-08-13T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   },
@@ -1674,7 +1673,7 @@
    "PositionID": 61,
    "KnessetNum": 25,
    "StartDate": "2026-09-09T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": null,
    "FactionName": null
   }
@@ -2600,7 +2599,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1104,
    "FactionName": "ישראל ביתנו"
   },
@@ -2610,7 +2609,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -2620,7 +2619,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1101,
    "FactionName": "יהדות התורה"
   },
@@ -2630,7 +2629,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -2650,7 +2649,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1103,
    "FactionName": "חד\"ש-תע\"ל"
   },
@@ -2670,7 +2669,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -2680,7 +2679,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -2720,7 +2719,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1095,
    "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
   },
@@ -2730,7 +2729,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -2770,7 +2769,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1104,
    "FactionName": "ישראל ביתנו"
   },
@@ -2790,7 +2789,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -2820,7 +2819,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -2830,7 +2829,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1104,
    "FactionName": "ישראל ביתנו"
   },
@@ -2850,7 +2849,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1100,
    "FactionName": "העבודה"
   },
@@ -2870,7 +2869,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -2880,7 +2879,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -2900,7 +2899,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -2910,7 +2909,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -2940,7 +2939,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1101,
    "FactionName": "יהדות התורה"
   },
@@ -2990,7 +2989,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1103,
    "FactionName": "חד\"ש-תע\"ל"
   },
@@ -3000,7 +2999,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1103,
    "FactionName": "חד\"ש-תע\"ל"
   },
@@ -3040,7 +3039,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -3050,7 +3049,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1100,
    "FactionName": "העבודה"
   },
@@ -3070,7 +3069,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1104,
    "FactionName": "ישראל ביתנו"
   },
@@ -3080,7 +3079,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -3090,7 +3089,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1095,
    "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
   },
@@ -3120,7 +3119,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1095,
    "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
   },
@@ -3210,7 +3209,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -3220,7 +3219,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -3250,7 +3249,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -3260,7 +3259,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -3270,7 +3269,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -3280,7 +3279,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -3290,7 +3289,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -3300,7 +3299,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1099,
    "FactionName": "רע\"ם"
   },
@@ -3330,7 +3329,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1103,
    "FactionName": "חד\"ש-תע\"ל"
   },
@@ -3340,7 +3339,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -3360,7 +3359,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1104,
    "FactionName": "ישראל ביתנו"
   },
@@ -3370,7 +3369,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1095,
    "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
   },
@@ -3380,7 +3379,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1099,
    "FactionName": "רע\"ם"
   },
@@ -3390,7 +3389,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1099,
    "FactionName": "רע\"ם"
   },
@@ -3400,7 +3399,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1095,
    "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
   },
@@ -3410,7 +3409,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1095,
    "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
   },
@@ -3420,7 +3419,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -3430,7 +3429,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -3440,7 +3439,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -3460,7 +3459,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -3470,7 +3469,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -3500,7 +3499,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1100,
    "FactionName": "העבודה"
   },
@@ -3510,7 +3509,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1100,
    "FactionName": "העבודה"
   },
@@ -3570,7 +3569,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -3590,7 +3589,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -3600,7 +3599,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -3620,7 +3619,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -3640,7 +3639,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -3650,7 +3649,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1099,
    "FactionName": "רע\"ם"
   },
@@ -3660,7 +3659,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -3670,7 +3669,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1099,
    "FactionName": "רע\"ם"
   },
@@ -3710,7 +3709,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -3730,7 +3729,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -3740,7 +3739,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -3770,7 +3769,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -3780,7 +3779,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -3790,7 +3789,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1104,
    "FactionName": "ישראל ביתנו"
   },
@@ -3800,7 +3799,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-20T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1105,
    "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ'"
   },
@@ -3820,7 +3819,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-20T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1105,
    "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ'"
   },
@@ -3830,7 +3829,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-20T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1105,
    "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ'"
   },
@@ -3840,7 +3839,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-20T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1106,
    "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
   },
@@ -3850,7 +3849,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-20T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1105,
    "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ'"
   },
@@ -3860,7 +3859,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-20T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1107,
    "FactionName": "נעם - בראשות אבי מעוז"
   },
@@ -3870,7 +3869,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-20T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1105,
    "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ'"
   },
@@ -3890,7 +3889,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-20T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1106,
    "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
   },
@@ -3900,7 +3899,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-20T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1106,
    "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
   },
@@ -3910,7 +3909,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-20T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1105,
    "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ'"
   },
@@ -3930,7 +3929,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2022-11-20T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1106,
    "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
   },
@@ -3940,7 +3939,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2023-01-01T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1106,
    "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
   },
@@ -3950,7 +3949,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2023-01-02T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1095,
    "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
   },
@@ -3970,7 +3969,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2023-01-06T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -3990,7 +3989,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2023-01-07T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -4000,7 +3999,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2023-01-17T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -4030,7 +4029,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2023-02-01T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -4070,7 +4069,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2023-02-09T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -4080,7 +4079,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2023-02-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -4090,7 +4089,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2023-02-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -4100,7 +4099,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2023-03-12T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -4110,7 +4109,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2023-03-26T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -4130,7 +4129,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2023-08-01T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -4140,7 +4139,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2023-10-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -4160,7 +4159,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2024-03-13T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1108,
    "FactionName": "הימין הממלכתי "
   },
@@ -4180,7 +4179,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2024-03-13T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1108,
    "FactionName": "הימין הממלכתי "
   },
@@ -4190,7 +4189,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2024-06-30T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -4200,7 +4199,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2024-07-05T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1108,
    "FactionName": "הימין הממלכתי "
   },
@@ -4210,7 +4209,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-01-05T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -4230,7 +4229,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-01-21T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1106,
    "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
   },
@@ -4240,7 +4239,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-04-06T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1105,
    "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ'"
   },
@@ -4250,7 +4249,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-06-15T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1101,
    "FactionName": "יהדות התורה"
   },
@@ -4260,7 +4259,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-06-20T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1103,
    "FactionName": "חד\"ש-תע\"ל"
   },
@@ -4290,7 +4289,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-07-08T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1110,
    "FactionName": "כחול לבן - המחנה הממלכתי"
   },
@@ -4300,7 +4299,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-07-08T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1110,
    "FactionName": "כחול לבן - המחנה הממלכתי"
   },
@@ -4310,7 +4309,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-07-08T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1110,
    "FactionName": "כחול לבן - המחנה הממלכתי"
   },
@@ -4320,7 +4319,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-07-08T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1110,
    "FactionName": "כחול לבן - המחנה הממלכתי"
   },
@@ -4330,7 +4329,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-07-08T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1110,
    "FactionName": "כחול לבן - המחנה הממלכתי"
   },
@@ -4340,7 +4339,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-07-08T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1110,
    "FactionName": "כחול לבן - המחנה הממלכתי"
   },
@@ -4350,7 +4349,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-07-08T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1110,
    "FactionName": "כחול לבן - המחנה הממלכתי"
   },
@@ -4370,7 +4369,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-07-08T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1110,
    "FactionName": "כחול לבן - המחנה הממלכתי"
   },
@@ -4380,7 +4379,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-07-10T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1108,
    "FactionName": "הימין הממלכתי "
   },
@@ -4390,7 +4389,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-07-16T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1101,
    "FactionName": "יהדות התורה"
   },
@@ -4400,7 +4399,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-07-17T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1101,
    "FactionName": "יהדות התורה"
   },
@@ -4410,7 +4409,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-07-17T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1101,
    "FactionName": "יהדות התורה"
   },
@@ -4420,7 +4419,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-07-20T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1095,
    "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
   },
@@ -4430,7 +4429,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-07-20T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1095,
    "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
   },
@@ -4440,7 +4439,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-07-20T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1095,
    "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
   },
@@ -4460,7 +4459,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2025-08-13T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -4470,7 +4469,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2026-01-21T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1101,
    "FactionName": "יהדות התורה"
   },
@@ -4480,7 +4479,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2026-05-19T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1095,
    "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
   },
@@ -4490,7 +4489,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2026-06-07T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -4500,7 +4499,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2026-07-28T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -4510,7 +4509,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2026-08-11T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   },
@@ -4520,7 +4519,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2026-08-13T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1096,
    "FactionName": "הליכוד "
   },
@@ -4530,7 +4529,7 @@
    "PositionID": 54,
    "KnessetNum": 25,
    "StartDate": "2026-09-09T00:00:00",
-   "FinishDate": null,
+   "FinishDate": "2026-11-10T00:00:00",
    "FactionID": 1102,
    "FactionName": "יש עתיד"
   }
