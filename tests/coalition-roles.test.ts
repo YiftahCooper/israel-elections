@@ -139,9 +139,10 @@ describe('the recorded first government as roles', () => {
   it('the first-government grouping holds outside support as its own group', () => {
     const g = load('k13').blocSchemes!.find((x) => x.id === 'first-government')!;
     expect(g.blocs.map((b) => [b.id, b.lists.length])).toEqual([['coalition', 3], ['outside-support', 2], ['opposition', 5]]);
-    // the support group recolours no list: Shas and Moledet keep the colours they had before it existed
+    // the support group recolours no list: Shas and Moledet keep the colours they had before it existed (Moledet's
+    // since 13 Nov from its researched navy #083d7b, lightened to a readable seat colour and kept apart: fx-families)
     const colour = (letters: string) => load('k13').lists.find((l) => l.letters === letters)!.color;
-    expect([colour('שס'), colour('ט')]).toEqual(['#773bf8', '#82764b']);
+    expect([colour('שס'), colour('ט')]).toEqual(['#773bf8', '#6979d6']);
   });
 });
 

@@ -23,9 +23,9 @@ interface Meta { electionId: string; lists: MetaList[]; blocSchemes?: MetaScheme
 const HEX = /^#[0-9a-fA-F]{6}$/;
 const KINDS = new Set(['government', 'parliamentary', 'pre-election']);
 
-import {hexToLab,hexToOklch,MIN_LIST_DELTA_E,MIN_NEIGHBOUR_DELTA_E} from '../../../src/data/colour.ts';
+import {hexToLab,MIN_LIST_DELTA_E,MIN_NEIGHBOUR_DELTA_E} from '../../../src/data/colour.ts';
 import {MAP_UNASSIGNED_COLOUR} from '../../../src/app/locality-map-model.ts';
-import {readableSeatColour,separateBlocColours,separateColours} from '../../../src/data/colourGuard.ts';
+import {readableSeatColour,separateBlocColours,separateColours,usableResearchColour} from '../../../src/data/colourGuard.ts';
 import {partyDisplayColor} from '../../../src/app/partyDisplayColor.ts';
 
 
@@ -78,11 +78,10 @@ export function applyMeta(ds: ElectionDataset, localities?:Pick<LocalityDataset,
   // seat fill moves to the nearest readable lightness, keeping its hue. Black, white or grey research (OKLCH chroma
   // under .03) would read as the map's mark for no winner (MAP_UNASSIGNED_COLOUR), so the app's colour is kept for
   // it, as before. Separation follows (distinctColours).
-  const usable = (hex: string) => hexToOklch(hex)[1] >= 0.03;
   const listResearch = new Map<string, string>(), partyResearch = new Map<string, string>();
   for (const c of meta.colours ?? []) {
-    if (c.letters && usable(c.color)) listResearch.set(listId(c.letters), c.color.toLowerCase());
-    if (c.party && usable(c.color)) partyResearch.set(c.party, c.color.toLowerCase());
+    if (c.letters && usableResearchColour(c.color)) listResearch.set(listId(c.letters), c.color.toLowerCase());
+    if (c.party && usableResearchColour(c.color)) partyResearch.set(c.party, c.color.toLowerCase());
   }
   const seed = (l: ElectionDataset['lists'][number], parties: { id: string; nameHe: string; nameEn: string; color?: string }[] | undefined) => {
     const own = listResearch.get(l.id), first = l.candidates.find((c) => c.rank === 1), lead = first && partyOfCandidate.get(first.id);

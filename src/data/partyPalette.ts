@@ -3,7 +3,9 @@ import{idColour,COLOUR_RULES}from'./colourGuard.ts';
 export interface PartyResearch {color:string;confidence:string;source:string}
 /** `seated`: seats won on this list by each party (in the default chamber they are drawn in the party's colour). */
 export interface PartyAppearance {election:string;list:string;parties:string[];seated?:Record<string,number>}
-export interface PartyResearchIndex {aliases?:Record<string,string>;canonical:Record<string,PartyResearch>;byList:Record<string,Record<string,PartyResearch>>;appearances:PartyAppearance[]}
+/** `chamber`: per election, the lists the default chamber draws in their own colour (a list of one party, or a joint
+ * list's seats without a recorded party), with their colour and seats. */
+export interface PartyResearchIndex {aliases?:Record<string,string>;canonical:Record<string,PartyResearch>;byList:Record<string,Record<string,PartyResearch>>;appearances:PartyAppearance[];chamber?:Record<string,{list:string;color:string;seats:number}[]>}
 /** `against`: siblings it was moved away from; `acrossLists`: parties of other lists in the same election. */
 export interface CanonicalPartyColour {party:string;base:string;color:string;confidence:string;source:string;adjusted:boolean;against:string[];acrossLists?:string[]}
 export const partyColourKey=(party:string,base:string)=>`${party}|${base.toLowerCase()}`;
@@ -36,10 +38,11 @@ export function canonicalPartyPalette(index:PartyResearchIndex){
   placed.add(key);
  }
  // Across lists (decision 0087 §6, finding c-families-map-logos-09): in one election's chamber every two seats of
- // different lists differ by the identity step. A party's fill serves every election it ran in, a list's colour only
- // one, so a list drawn in its own colour moves away from other lists' parties (scripts/lib/build/meta.ts). Of two
- // parties on different lists, the one that won more seats (in any election) keeps its colour; the other takes the
- // smallest move that clears them and keeps its siblings apart (smallPartyMove), else the nearest colour that does.
+ // different lists differ by the identity step, and the better-known keeps its colour, judged by the most seats a party
+ // won in any election (its fill serves all of them). Of two parties on different lists the bigger keeps its colour;
+ // a party also clears a list drawn in its own colour that won more seats than the party ever did. The one that must
+ // move takes the smallest step that clears them and keeps its siblings apart (smallPartyMove), else the nearest colour
+ // that does. Any other list gives way to the party (scripts/lib/build/meta.ts).
  const seatedIn=index.appearances.flatMap(a=>Object.entries(a.seated??{}).map(([p,seats])=>({a,p,seats,key:partyColourKey(p,base(p,a.list).color)})));
  const most=new Map<string,number>();for(const s of seatedIn)most.set(s.key,Math.max(most.get(s.key)??0,s.seats));
  const across=new Map<string,{a:string;b:string;lists:string[]}>(),settled=new Set<string>();
@@ -49,8 +52,9 @@ export function canonicalPartyPalette(index:PartyResearchIndex){
    const pair=[key,o.key].sort(),id=pair.join(' '),edge=across.get(id)??{a:pair[0],b:pair[1],lists:[]};
    for(const l of [m.a.list,o.a.list])if(!edge.lists.includes(l))edge.lists.push(l);across.set(id,edge);others.set(o.key,o.p);
   }
-  const walls=[...others.keys()].map(k=>nodes.get(k)!.color),siblings=[...edges.values()].flatMap(e=>e.a===key?[nodes.get(e.b)!.color]:e.b===key?[nodes.get(e.a)!.color]:[]);
-  const clash=[...others].filter(([k])=>deltaE2000(node.color,nodes.get(k)!.color)<COLOUR_RULES.identity).map(([,p])=>p);
+  const lists=seatedIn.filter(m=>m.key===key).flatMap(m=>(index.chamber?.[m.a.election]??[]).filter(c=>c.list!==m.a.list&&c.seats>most.get(key)!));
+  const walls=[...[...others.keys()].map(k=>nodes.get(k)!.color),...lists.map(c=>c.color)],siblings=[...edges.values()].flatMap(e=>e.a===key?[nodes.get(e.b)!.color]:e.b===key?[nodes.get(e.a)!.color]:[]);
+  const clash=[...[...others].filter(([k])=>deltaE2000(node.color,nodes.get(k)!.color)<COLOUR_RULES.identity).map(([,p])=>p),...lists.filter(c=>deltaE2000(node.color,c.color)<COLOUR_RULES.identity).map(c=>`list ${c.list}`)];
   if(clash.length){
    node.color=smallPartyMove(node.color,walls,siblings)??nearestPartyVariant(node.color,[...walls.map(color=>({color,min:COLOUR_RULES.identity as number})),...siblings]);
    node.adjusted=node.color!==node.base;node.acrossLists=clash;

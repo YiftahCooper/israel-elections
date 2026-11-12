@@ -50,6 +50,9 @@ export const colourClashes=(color:string,others:readonly NamedColour[],min:numbe
 export function idColour(id:string){const h=[...id].reduce((n,c)=>(Math.imul(n,31)+c.charCodeAt(0))>>>0,0);return fromOklch(.65,.18,(h%360)*Math.PI/180);}
 
 
+/** Whether a researched colour can seed a list's seat colour: black, white or grey (OKLCH chroma under .03) would read
+ * as the map's mark for no winner, so such research keeps the app's colour. */
+export const usableResearchColour=(color:string)=>hexToOklch(color)[1]>=.03;
 /** The nearest colour a seat fill can use (CIE L* within SEAT_LIGHTNESS), keeping hue and chroma: a research colour
  * too dark or too light to read on both themes (a black or near-white party colour) moves by lightness only. */
 export function readableSeatColour(color:string):string{
