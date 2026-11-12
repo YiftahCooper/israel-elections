@@ -11,6 +11,13 @@
 .band.band-phone .election { flex: 1 1 auto; min-inline-size: 0; max-inline-size: none; }
 .band.band-phone .election .choice-trigger { inline-size: 100%; min-inline-size: 0; min-block-size: 44px; padding-inline: 8px; gap: 4px; justify-content: space-between; }
 .band.band-phone .election .choice-current { min-inline-size: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* the election on two short lines (year, then the Knesset), so the one-row bar never cuts it, Large text included */
+.band.band-phone .election .choice-current { display: grid; text-align: start; line-height: 1.15; }
+.band.band-phone .election .choice-current-part { overflow: hidden; text-overflow: ellipsis; }
+.band.band-phone .election .choice-current-part + .choice-current-part { font-size: 11.5px; font-weight: 600; }
+.band.band-phone .election :is(.choice-current-dot, .choice-when-long) { display: none; }
+.band.band-phone .election .choice-when-short { display: inline; }
+.band.band-phone .election .choice-trigger { padding-inline: 5px; gap: 2px; }
 .band-menu-btn { position: relative; flex: none; }
 /* the result's publication is not yet verified: the About line is in the menu, so the button carries a mark */
 .band-menu-flag { position: absolute; inset-block-start: 2px; inset-inline-end: 0; display: grid; place-items: center; inline-size: 14px; block-size: 14px; border-radius: 50%; background: var(--warn-bg); color: var(--warn-ink); font-size: 10px; font-weight: 700; line-height: 1; }

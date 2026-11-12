@@ -2,6 +2,16 @@
 
 ## 7 November 2026 — Settings
 
+- Phones and Large text (12 Nov, audit): with Text size Large, the full-screen Party history, MK history and party family sheets were 15% taller than the screen, so their title, close button and bottom could not be reached; every sheet, dialog, menu and pop-up now fits the screen at any text size and scrolls inside.
+- Phones and Large text (12 Nov, audit): with Text size Large, the bloc panel opened scrolled too far (the chosen bloc under the header); it, the Lists column, Settings and the tools strip now scroll exactly to the item.
+- List panel (12 Nov, audit): on a phone the History chart and its note were wider than the panel, cutting off the latest elections in English and the first ones in Hebrew; they now fit at every width.
+- List panel (12 Nov, audit): on a phone, a list whose seats did not change showed a bare “from the official result”; it now reads “No change from the official result”.
+- What if (12 Nov, audit): on a phone a long list name ran under “Open as a scenario” and hid its seat change; the name now wraps and the change stays in view.
+- Side by side (12 Nov, audit): the change column was drawn over the “Copy votes…” button on tablets and desktops (the stacked numbers in a 28px slot); the change now sits beside the button or above it. On phones the list name had 0–67px; it keeps at least 7rem and the change wraps.
+- Sensitivity (12 Nov, audit): in Hebrew the range rows read backwards (“from” and “to” after their numbers); each row now has one label, “Vote range” / “Threshold range”, then the two boxes low to high with a dash, as on the chart. At 360px the two result tables now fit their box.
+- Dates (12 Nov, audit): About (“This election”) and the 1996–1999 Prime Minister panel showed dates as 2026-09-24; they now use the app's date format (24 Sept 2026).
+- Top bar (12 Nov, audit): the election selector cut its own name on a desktop (“September 2019 · 22n…”) and on phones (“2026 · 2…”); its slot now fits the longest name, and on phones the name sits on two short lines (year, then the Knesset).
+- Change line (12 Nov, audit): on a phone the (i) of “No changes” fell onto a line of its own; it now sits right after the label.
 - Knesset on a date (12 Nov, audit): the 25th Knesset's timeline now ends on 10 Nov 2026, the day the 26th opened, with one closing line and the chamber as it stood on its last day (Coalition 61). Its last step showed an empty chamber (0 seats) and, with seat changes on, 120 members “leaving”; the bar ran to 12 Nov, the date the records were taken. A term whose members' records have all closed ends on that day, as every earlier term does.
 - Knesset on a date (12 Nov, audit): United Torah Judaism is one faction of two parties. On 14 Jul 2025 only Degel HaTorah's four MKs now leave the coalition (Coalition 64), and Agudat Yisrael's three on 15 Jul (Coalition 61); all seven left on the 14th and the 15th moved no one.
 - Party history (12 Nov, audit): HaOlam HaZeh's history continues as Meri. The Knesset renamed its faction מחנה רדיקלי ישראלי on 3 Jul 1973, shown as a rename; the list ran as מרי (העולם הזה – כח חדש) that December. The date is the faction's; the party's legal rename date is not known.
