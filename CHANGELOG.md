@@ -2,6 +2,7 @@
 
 ## 7 November 2026 — Settings
 
+- Rules (12 Nov, audit): the “Alternative electoral system” banner now names every way the rules differ from the election's law, among them the 1977 candidate cap, ties, rounding of averages, repeated remainder seats and the 1949 agreement condition (1977 with the 1973 rules moved two seats and said nothing); “quota rounded down” and “agreements count only if every partner passes the threshold” are no longer worded the wrong way round.
 - Scenarios (12 Nov, audit): opening a saved scenario, a share link or a comparison of another election no longer deletes the unsaved work kept for that election; it stays in the scenario switcher.
 - Scenarios (12 Nov, audit): a saved scenario that only changes colours was taken for the official result, so the switcher could not go back to the official result; it is now its own scenario.
 - Mark changes since (12 Nov, audit): the answer “For this scenario” is now remembered after a reload.

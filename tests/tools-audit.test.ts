@@ -29,3 +29,23 @@ it('a pure divisor method in 1949 still fills the Knesset even with the 1949 ini
     expect(r.lists.reduce((n, l) => n + l.seats, 0), method).toBe(120);
   }
 });
+
+it('c-state-code-12: the experimental-rules banner names every way the rules differ from the law, for every era on every election', async () => {
+  const { ELECTION_IDS } = await import('../src/data/schema.ts');
+  const { RULESETS, ruleDepartures } = await import('../src/engine/rules.ts');
+  const { electionRuleSetId, historicalRules, toRuleSet } = await import('../src/model/scenario.ts');
+  for (const e of ELECTION_IDS) {
+    const law = historicalRules(electionRuleSetId(e));
+    for (const id of Object.keys(RULESETS)) {
+      const rules = historicalRules(id);
+      const s = { electionId: e, rules } as Parameters<typeof ruleChanges>[0];
+      const en = ruleChanges(s, 'en'), he = ruleChanges(s, 'he');
+      const differ = ruleDepartures(toRuleSet(rules, null), toRuleSet(law, null));
+      expect(en, `${id} on ${e}: ${differ.join(', ')}`).toHaveLength(differ.length);
+      expect(he).toHaveLength(differ.length);
+      expect(new Set(en).size).toBe(en.length);
+    }
+  }
+  // 1977 with the 1973 rules: the candidate cap, which moved two seats (Sheli 2 → 1, Flatto-Sharon 1 → 2)
+  expect(ruleChanges({ electionId: 'k9', rules: historicalRules('il-1973-bader-ofer-1') } as Parameters<typeof ruleChanges>[0], 'en')).toEqual(['candidate cap off']);
+});

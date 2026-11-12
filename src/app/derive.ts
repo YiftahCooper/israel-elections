@@ -11,6 +11,7 @@ import { applyAction } from '../model/actions.ts';
 import { compareAllocations } from '../engine/analysis.ts';
 // Memoised derivations: every displayed figure comes from allocate(scenario).
 import { allocate } from '../engine/allocate.ts';
+import { RULE_DEFAULTS, type OptionalRule } from '../engine/rules.ts';
 import type { AllocationResult, EngineWarning } from '../engine/types.ts';
 import { NO_COALITION, electionRuleSetId, historicalRules, toEngineInput, validVotes, votesCast, type Scenario, type SimList, type SimRules } from '../model/scenario.ts';
 import type { Lang } from './i18n.ts';
@@ -52,10 +53,24 @@ export function ruleChanges(s: Scenario, lang: Lang): string[] {
   if (r.remainderMethod !== law.remainderMethod) out.push(he ? `חלוקת עודפים: ${METHOD[r.remainderMethod][1]} (בחוק: ${methodOf(law).he})` : `remainder seats by ${METHOD[r.remainderMethod][0]} (law: ${methodOf(law).en})`);
   if (Boolean(r.remainderRequiresInitialSeat) !== Boolean(law.remainderRequiresInitialSeat)) out.push(he ? `עודפים ${r.remainderRequiresInitialSeat ? 'רק' : 'גם'} לרשימות ${r.remainderRequiresInitialSeat ? 'עם' : 'בלי'} מודד שלם` : `remainder seats ${r.remainderRequiresInitialSeat ? 'only for' : 'also for'} lists ${r.remainderRequiresInitialSeat ? 'with' : 'without'} a whole quota`);
   if ((r.quotaSeatOffset ?? 0) !== (law.quotaSeatOffset ?? 0)) out.push(he ? (r.quotaSeatOffset ? 'המודד מחולק במושבים ועוד אחד' : 'המודד מחולק במספר המושבים') : (r.quotaSeatOffset ? 'quota divided by seats plus one' : 'quota divided by the seats'));
-  if (r.quotaRounding !== law.quotaRounding) out.push(he ? 'מודד ללא עיגול' : 'quota not rounded down');
+  if (r.quotaRounding !== law.quotaRounding) out.push(r.quotaRounding === 'exact' ? (he ? 'מודד ללא עיגול' : 'quota not rounded down') : (he ? 'מודד מעוגל כלפי מטה' : 'quota rounded down'));
   if (r.majorityCap !== law.majorityCap) out.push(he ? `מגבלת מחצית המנדטים ${onOff(r.majorityCap)}` : `half-seats cap ${onOff(r.majorityCap)}`);
   if (r.maxAgreementSize !== law.maxAgreementSize) out.push(he ? `הסכמי עודפים של עד ${r.maxAgreementSize} רשימות` : `surplus agreements of up to ${r.maxAgreementSize} lists`);
-  if (r.agreementRequiresAllQualify !== law.agreementRequiresAllQualify) out.push(he ? 'הסכם תקף גם אם שותפה לא עברה את החסימה' : 'agreements count even if a partner fails the threshold');
+  if (r.agreementRequiresAllQualify !== law.agreementRequiresAllQualify) out.push(r.agreementRequiresAllQualify
+    ? (he ? 'הסכם תקף רק אם כל השותפות עברו את החסימה' : 'agreements count only if every partner passes the threshold')
+    : (he ? 'הסכם תקף גם אם שותפה לא עברה את החסימה' : 'agreements count even if a partner fails the threshold'));
+  // the rules every era states only where it differs from today's law (RULE_DEFAULTS); each can move seats
+  const opt = <K extends OptionalRule>(k: K, x: SimRules) => x[k] ?? RULE_DEFAULTS[k];
+  if (opt('agreementRequiresInitialSeat', r) !== opt('agreementRequiresInitialSeat', law)) out.push(r.agreementRequiresInitialSeat
+    ? (he ? 'כל שותפה בהסכם חייבת לזכות במנדט במודד שלם' : 'each agreement partner must win a whole-quota seat')
+    : (he ? 'שותפות בהסכם אינן חייבות לזכות במנדט במודד שלם' : 'agreement partners need no whole-quota seat'));
+  if (opt('quotientRounding', r) !== opt('quotientRounding', law)) out.push(opt('quotientRounding', r) === 'floor'
+    ? (he ? 'שברים בממוצעים נמחקים' : 'fractions of averages dropped') : (he ? 'שברים בממוצעים נשמרים' : 'fractions of averages kept'));
+  if (opt('largestRemainderRepeat', r) !== opt('largestRemainderRepeat', law)) out.push(opt('largestRemainderRepeat', r)
+    ? (he ? 'רשימה יכולה לזכות ביותר ממנדט עודף אחד' : 'a list can win more than one remainder seat') : (he ? 'לכל היותר מנדט עודף אחד לרשימה' : 'at most one remainder seat per list'));
+  if (opt('tiePolicy', r) !== opt('tiePolicy', law)) out.push(opt('tiePolicy', r) === 'lottery'
+    ? (he ? 'שוויון מוכרע בהגרלה' : 'ties decided by lottery') : (he ? 'ללא כלל להכרעה בשוויון' : 'no rule for ties'));
+  if (Boolean(r.seatsCappedAtCandidates) !== Boolean(law.seatsCappedAtCandidates)) out.push(he ? `מגבלת המועמדים ${onOff(!!r.seatsCappedAtCandidates)}` : `candidate cap ${onOff(!!r.seatsCappedAtCandidates)}`);
   return out;
 }
 
