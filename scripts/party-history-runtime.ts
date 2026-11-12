@@ -12,8 +12,9 @@ type Fact = { listId: string; headPartyId?: string | null; unknownElected: numbe
 /** A party on a list: [id, elected or -1, and where its usual short name was not yet (or no longer) its name at that
  *  election, the name it ran under then: Hebrew, English or null]. See nameAtElection below. */
 export type PackedParty = readonly [string, number] | readonly [string, number, string, string | null];
-/** One list: [id, votes, seats, colour, shortHe, shortEn, letters, lead, parties, unknownElected] */
-export type PackedList = readonly [string, number, number, string, string, string | null, string, string | null, readonly PackedParty[], number];
+/** One list: [id, votes, seats, colour, shortHe, shortEn, letters, lead, parties, unknownElected, 1 if it withdrew before
+ *  the vote (registered, not on the ballot: a party did not run on it) else 0] */
+export type PackedList = readonly [string, number, number, string, string, string | null, string, string | null, readonly PackedParty[], number, number];
 export interface HistoryRuntime {
   version: 1;
   elections: { id: string; date: string; valid: number; pending: boolean; lists: PackedList[] }[];
@@ -92,15 +93,18 @@ export function compileHistoryRuntime(root = process.cwd()): HistoryRuntime {
       const f = facts.get(l.id);
       const first = l.candidates.find((c) => !c.notSeated)?.partyId;
       const lead = ps.length <= 1 ? ps[0] ?? null : first && ps.includes(canon(first)) ? canon(first) : f?.headPartyId && ps.includes(canon(f.headPartyId)) ? canon(f.headPartyId) : ps[0];
-      if (ps.length === 1) shortName.set(ps[0], [l.shortHe, l.shortEn ?? null]);
-      for (const p of l.parties ?? []) constituentName.set(canon(p.id), [stripNote(p.nameHe), p.nameEn ? stripNote(p.nameEn) : null]);
+      // a list that withdrew before the vote names a party only when no list it ran on does (audit 12 Nov 2026,
+      // c-screens-people-02): it never overrides a name the party was on the ballot under
+      if (ps.length === 1 && (!l.withdrawn || !shortName.has(ps[0]))) shortName.set(ps[0], [l.shortHe, l.shortEn ?? null]);
+      for (const p of l.parties ?? []) if (!l.withdrawn || !constituentName.has(canon(p.id))) constituentName.set(canon(p.id), [stripNote(p.nameHe), p.nameEn ? stripNote(p.nameEn) : null]);
       const then = new Map<string, [string, string | null]>();
-      if (ps.length === 1) then.set(ps[0], [l.shortHe, l.shortEn ?? null]);
+      if (l.withdrawn) { /* no name at an election it did not run in */ }
+      else if (ps.length === 1) then.set(ps[0], [l.shortHe, l.shortEn ?? null]);
       else for (const p of l.parties ?? []) if (ps.includes(canon(p.id)) && !then.has(canon(p.id))) then.set(canon(p.id), [stripNote(p.nameHe), p.nameEn ? stripNote(p.nameEn) : null]);
       nameThen.set(l.id, then);
       const elected = new Map(f?.parties.map((p) => [canon(p.id), p.elected]) ?? []);
       return [l.id, l.votes, seats[l.id] ?? 0, l.color, l.shortHe, l.shortEn ?? null, l.letters, lead,
-        ps.map((p) => [p, ps.length === 1 ? seats[l.id] ?? 0 : elected.get(p) ?? -1] as const), f?.unknownElected ?? 0];
+        ps.map((p) => [p, ps.length === 1 ? seats[l.id] ?? 0 : elected.get(p) ?? -1] as const), f?.unknownElected ?? 0, l.withdrawn ? 1 : 0];
     });
     return { id: d.id, date: d.electionDate, valid: d.totals.valid, pending: d.status.stage !== 'official-final', lists };
   });
@@ -115,7 +119,7 @@ export function compileHistoryRuntime(root = process.cwd()): HistoryRuntime {
   // each language on its own (the English and Hebrew records do not always change name at the same election)
   const shown = new Map<string, Map<number, [string, string | null]>>();
   for (const [id, usual] of Object.entries(parties)) {
-    const then = elections.map((e) => { const l = e.lists.find((x) => x[8].some(([p]) => p === id)); return l ? nameThen.get(l[0])?.get(id) ?? null : null; });
+    const then = elections.map((e) => { const l = e.lists.find((x) => !x[10] && x[8].some(([p]) => p === id)); return l ? nameThen.get(l[0])?.get(id) ?? null : null; });
     // English names tell a short form of a Hebrew name from a new one; not the other way round (Tkuma kept its Hebrew
     // registered name when its English one became "Religious Zionist Party")
     const sameEn = then.map((n) => !!usual[1] && !!n?.[1] && formOf(n[1], usual[1], 'en'));
@@ -124,9 +128,9 @@ export function compileHistoryRuntime(root = process.cwd()): HistoryRuntime {
     then.forEach((n, i) => { if (n && (he[i] || en[i])) (shown.get(id) ?? shown.set(id, new Map()).get(id)!).set(i, [he[i] ?? usual[0], en[i] ?? usual[1]]); });
   }
   elections.forEach((e, i) => { e.lists = e.lists.map((l) => [l[0], l[1], l[2], l[3], l[4], l[5], l[6], l[7], l[8].map(([p, n]): PackedParty => {
-    const x = shown.get(p)?.get(i);
+    const x = l[10] ? undefined : shown.get(p)?.get(i);
     return x ? [p, n, x[0], x[1]] : [p, n];
-  }), l[9]]); });
+  }), l[9], l[10]]); });
   const aliases: Record<string, string> = {};
   for (const p of registry.parties) for (const a of p.aliases ?? []) aliases[a.id] = p.id;
   return { version: 1, elections, parties, aliases };

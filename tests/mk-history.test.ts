@@ -371,3 +371,23 @@ describe('every elected member has their run', () => {
     expect(disagree).toEqual([]);
   });
 });
+
+// audit 12 Nov 2026, c-screens-people-02: a list that withdrew before the vote was shown as a run that "got 0%, below
+// the threshold" and counted among the elections the person ran in
+describe('a list that withdrew before the election is not a run', () => {
+  const GANTZ = 30657, FEIGLIN = 23556;
+  it('Gantz 2026 (Blue and White) and Feiglin September 2019 (Zehut): the list withdrew', () => {
+    expect(runs(GANTZ).find((r) => r.k === 26)).toMatchObject({ list: '26-כן', rank: 1, outcome: 'withdrawn' });
+    expect(runs(FEIGLIN).find((r) => r.k === 22)).toMatchObject({ list: '22-זן', rank: 1, outcome: 'withdrawn' });
+  });
+  it('is not counted in "on a list in N elections"', () => {
+    expect(mkView(rt, GANTZ)!.runs).toBe(5); // 2019 (twice), 2020, 2021, 2022; not 2026
+    expect(mkView(rt, FEIGLIN)!.runs).toBe(5); // 2009, 2013, April 2019, 2022, 2026; not September 2019
+  });
+  it('every run on a withdrawn list, and only those, reads "withdrawn"', () => {
+    for (const k of Object.keys(rt.elections).map(Number)) {
+      const wd = new Set(ds(k).lists.filter((l) => l.withdrawn).map((l) => l.id));
+      for (const [id, p] of Object.entries(rt.people)) for (const r of p.runs) if (r[0] === k) expect(r[3] === 'withdrawn', `${id} ${r[1]}`).toBe(wd.has(r[1]));
+    }
+  });
+});

@@ -419,6 +419,9 @@ function chipParties(electionId: string, l: Parameters<typeof partiesOf>[1]) {
   return first ? [first, ...ps.filter((p) => p !== first && !(front && p === front))] : ps;
 }
 
+/** A party whose only list withdrew before the vote (2026 Tnuat Ahi) never ran: no "since" year, no "0 of 26". */
+const NEVER = (L: ReturnType<typeof useL>) => L('did not run in any election', 'לא התמודדה באף מערכת בחירות');
+
 export function PartyHistorySection({ s, r, listId }: { s: Scenario; r: AllocationResult; listId: string }) {
   const L = useL(), lang = useLang();
   const l = s.lists.find((x) => x.id === listId);
@@ -435,7 +438,7 @@ export function PartyHistorySection({ s, r, listId }: { s: Scenario; r: Allocati
   const c = compare(listId);
   const ran = h.points.filter((p) => p.list);
   return <section className="ph-sec" aria-label={L('History', 'היסטוריה')}>
-    <h3>{L('History', 'היסטוריה')} <span className="tiny muted">· {ran.length > 1 ? L(`since ${yearLabel(h.firstRun, 'en')}`, `מאז ${yearLabel(h.firstRun, 'he')}`) : L(`only ${yearLabel(h.firstRun, 'en')}`, `רק ${yearLabel(h.firstRun, 'he')}`)}</span></h3>
+    <h3>{L('History', 'היסטוריה')} <span className="tiny muted">· {!ran.length ? NEVER(L) : ran.length > 1 ? L(`since ${yearLabel(h.firstRun, 'en')}`, `מאז ${yearLabel(h.firstRun, 'he')}`) : L(`only ${yearLabel(h.firstRun, 'en')}`, `רק ${yearLabel(h.firstRun, 'he')}`)}</span></h3>
     {chips.length > 1 && <div className="ph-chips" role="group" aria-label={L('Whose history', 'ההיסטוריה של')}>
       {chips.map((p) => <button key={p} type="button" className={`btn small ${p === active ? 'primary' : ''}`} aria-pressed={p === active} onClick={() => setPid(p)}>{partyShort(p, lang)}</button>)}</div>}
     {h.eras.length > 1 && <div className="tiny muted ph-chain">{h.eras.map((e) => e.name).filter((n, i, a) => a.indexOf(n) === i).join(lang === 'he' ? ' ← ' : ' → ')}</div>}
@@ -512,7 +515,7 @@ export function HistorySheet({ parties, initial, electionIdx, onClose }: { parti
       <div className="ph-head-text">
         <h2>{lang === 'he' ? <>היסטוריה · {title}</> : <>{title} <span className="small muted">history</span></>}</h2>
         {h.eras.length > 1 && <div className="small ink2">{h.eras.map((e) => e.name).filter((n, i, a) => a.indexOf(n) === i).join(lang === 'he' ? ' ← ' : ' → ')}</div>}
-        <div className="small muted">{L(`Ran in ${ran.length} of ${h.points.length - h.firstRun} elections${since} · won seats in ${won.length}`, `התמודדה ב־${ran.length} מתוך ${h.points.length - h.firstRun} בחירות${since} · זכתה במנדטים ב־${won.length}`)}{best && best.seats > 0 ? L(` · most: ${best.seats} (${yearLabel(best.i, 'en')})`, ` · שיא: ${best.seats} (${yearLabel(best.i, 'he')})`) : ''}</div>
+        <div className="small muted">{!ran.length ? NEVER(L) : L(`Ran in ${ran.length} of ${h.points.length - h.firstRun} elections${since} · won seats in ${won.length}`, `התמודדה ב־${ran.length} מתוך ${h.points.length - h.firstRun} בחירות${since} · זכתה במנדטים ב־${won.length}`)}{best && best.seats > 0 ? L(` · most: ${best.seats} (${yearLabel(best.i, 'en')})`, ` · שיא: ${best.seats} (${yearLabel(best.i, 'he')})`) : ''}</div>
       </div>
       <button type="button" className="btn ghost" onClick={onClose} aria-label={L('Close', 'סגירה')}>×</button>
     </div>

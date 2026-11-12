@@ -153,6 +153,15 @@ const electionIdxOf = (id: string) => HISTORY.findIndex((e) => e.id === id);
 describe('party histories (identity series)', () => {
   const series = (id: string) => partySeries(identityOf(id));
   const ran = (id: string) => series(id).filter((p) => p.list).map((p) => HISTORY[p.i].date.slice(0, 4) + (p.role === 'alone' ? '' : `:${p.role}`));
+  // audit 12 Nov 2026, c-screens-people-02: a list that withdrew before the vote drew a zero bar and counted as a run
+  it('a list that withdrew before the vote is not a run: Blue and White 2026, Tzomet 2020', () => {
+    expect(historyList('k26', '26-כן')).toMatchObject({ withdrawn: true, votes: 0 });
+    expect(series('israel-resilience')[electionIndex('k26')].list).toBeNull();
+    expect(ran('israel-resilience')).not.toContain('2026');
+    expect(historyList('k23', '23-זץ')).toMatchObject({ withdrawn: true, votes: 0 });
+    expect(series('tzomet')[electionIndex('k23')].list).toBeNull();
+    for (const e of HISTORY) for (const l of e.lists) if (l.withdrawn) for (const p of l.parties) expect(series(p)[electionIndex(e.id)].list, `${e.id} ${l.id} ${p}`).toBeNull();
+  });
   it('Labor: Mapai → Labor → The Democrats, every election from 1949', () => {
     const s = series('democrats');
     expect(s.every((p) => p.list)).toBe(true);
@@ -214,7 +223,7 @@ describe('names at each election', () => {
   it('the other names that were shown before they existed', () => {
     expect(strip('tkuma', 'en')).toEqual(['k15–k20 Tkuma', 'k21–k23 National Union–Tkuma', 'k24–k26 Religious Zionist Party']);
     expect(strip('tkuma', 'he')).toEqual(['k15–k17 תקומה', 'k18–k26 האיחוד הלאומי – תקומה']);
-    expect(strip('israel-resilience', 'en')).toEqual(['k21–k23 Israel Resilience', 'k24–k26 Blue and White']);
+    expect(strip('israel-resilience', 'en')).toEqual(['k21–k23 Israel Resilience', 'k24–k25 Blue and White']); // 2026: the list withdrew
     expect(strip('otzma-yehudit', 'en')).toEqual(['k19–k19 Otzma Leyisrael', 'k20–k26 Otzma Yehudit']);
     expect(strip('ahi', 'en')).toEqual(['k17–k17 Renewed Religious National Zionism', 'k18–k23 Ahi']);
     expect(strip('new-hope', 'en')).toEqual(['k24–k25 New Hope', 'k26–k26 New Hope – the National Right']);

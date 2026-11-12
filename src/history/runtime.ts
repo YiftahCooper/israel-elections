@@ -13,15 +13,17 @@ export interface HList {
   /** a party's name at this election, where it differs from its usual short name ([Hebrew, English or null]) */
   names: Record<string, readonly [string, string | null]>;
   unknownElected: number;
+  /** withdrew before the vote: registered, not on the ballot, so no party ran on it */
+  withdrawn: boolean;
 }
 export interface HElection { id: string; date: string; valid: number; pending: boolean; lists: HList[] }
 
 export const HISTORY: HElection[] = packed.elections.map((e) => ({
   id: e.id, date: e.date, valid: e.valid, pending: e.pending,
-  lists: e.lists.map(([id, votes, seats, color, shortHe, shortEn, letters, lead, ps, unknownElected]) => ({
+  lists: e.lists.map(([id, votes, seats, color, shortHe, shortEn, letters, lead, ps, unknownElected, withdrawn]) => ({
     id, votes, seats, color, shortHe, shortEn, letters, lead, parties: ps.map(([p]) => p),
     elected: Object.fromEntries(ps.map(([p, n]) => [p, n < 0 ? null : n])),
-    names: Object.fromEntries(ps.filter((x) => x.length === 4).map((x) => [x[0], [x[2]!, x[3] ?? null] as const])), unknownElected,
+    names: Object.fromEntries(ps.filter((x) => x.length === 4).map((x) => [x[0], [x[2]!, x[3] ?? null] as const])), unknownElected, withdrawn: withdrawn === 1,
   })),
 }));
 export const electionIndex = (id: string) => HISTORY.findIndex((e) => e.id === id);
@@ -43,7 +45,7 @@ export function partyShort(id: string, lang: 'he' | 'en'): string {
 }
 /** A party's name at one election (election index): the name it ran under then, else its usual short name. */
 export function partyNameAt(id: string, i: number, lang: 'he' | 'en'): string {
-  const n = HISTORY[i]?.lists.find((l) => l.parties.includes(id))?.names[id];
+  const n = HISTORY[i]?.lists.find((l) => !l.withdrawn && l.parties.includes(id))?.names[id];
   return n ? (lang === 'he' ? n[0] : englishLabel(n[1], n[0])) : partyShort(id, lang);
 }
 export const listShort = (l: Pick<HList, 'shortHe' | 'shortEn'>, lang: 'he' | 'en') => lang === 'he' ? l.shortHe : englishLabel(l.shortEn, l.shortHe);

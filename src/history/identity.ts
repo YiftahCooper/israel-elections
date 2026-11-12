@@ -76,7 +76,8 @@ const isListRecord = (p: string, l: HList) => p === `vehicle-${l.id}`;
 export function partySeries(identity: Identity): SeriesPoint[] {
   const ids = new Set(identity.ids);
   return HISTORY.map((e, i) => {
-    const lists = e.lists.filter((l) => l.parties.some((p) => ids.has(p)));
+    // a list that withdrew before the vote is not a run (2026 Blue and White, 2020 Tzomet): the election shows as not run
+    const lists = e.lists.filter((l) => !l.withdrawn && l.parties.some((p) => ids.has(p)));
     const l = lists.find((x) => x.lead && ids.has(x.lead)) ?? lists.find((x) => x.parties.some((p) => ids.has(p) && isListRecord(p, x))) ?? [...lists].sort((a, b) => b.seats - a.seats)[0];
     if (!l) return { i, list: null, members: [], role: null, seats: 0, votes: 0, valid: e.valid, own: null, partners: [], era: null };
     const members = l.parties.filter((p) => ids.has(p));

@@ -73,7 +73,7 @@ export interface MkView {
   daysServed: number;
   /** the longest Knesset in days, so every Knesset's bar is drawn on one scale */
   longest: number;
-  /** elections where they were on an official list we can read */
+  /** elections where they were on an official list we can read (a list that withdrew before the vote is not a run) */
   runs: number;
   /** the first election from which runs that did not win a seat are shown on every list, and the earlier elections
    *  where they are shown only for some lists */
@@ -135,7 +135,7 @@ export function mkView(rt: MkRuntime, id: number): MkView | null {
   const from = rt.elections[full[0]]?.date.slice(0, 4) ?? '';
   const partial = Object.keys(rt.failedRunCoverage.partial).map(Number).sort((a, b) => a - b).map((k) => rt.elections[k].date.slice(0, 4));
   const longest = Math.max(1, ...Object.values(rt.elections).map((x) => x.opening && x.end ? daysBetween(x.opening, x.end) : 0));
-  return { id, he: p.he, en: p.en, female: p.female, site: p.site, wiki: p.wiki, rows, daysServed, longest, runs: p.runs.length, coverage: { from, partial } };
+  return { id, he: p.he, en: p.en, female: p.female, site: p.site, wiki: p.wiki, rows, daysServed, longest, runs: p.runs.filter((r) => r[3] !== 'withdrawn').length, coverage: { from, partial } };
 }
 
 /** "3 years 5 months" (whole months; under a month, days). */

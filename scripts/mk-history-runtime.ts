@@ -19,7 +19,8 @@ import { knessetMemberSure } from './lib/build/bios.ts';
 /** How a run ended. elected: within the list's seats at the election. first: not within the seats but sat from the
  *  first sitting. later: entered during that Knesset. out: did not enter that Knesset. declined: within the seats but
  *  never sat in that Knesset (the candidate notes say why). */
-export type RunOutcome = 'elected' | 'first' | 'later' | 'out' | 'declined';
+/** 'withdrawn': the list withdrew before the vote, so no one ran on it (audit 12 Nov 2026, c-screens-people-02) */
+export type RunOutcome = 'elected' | 'first' | 'later' | 'out' | 'declined' | 'withdrawn';
 /** id: the Knesset member ID ties the candidacy to the person (official membership or entry in the list's faction).
  *  name: the same listed name, character for character, as a candidacy tied by ID, and no one else could be meant. */
 export type RunBasis = 'id' | 'name';
@@ -303,8 +304,10 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
       const e = out.elections[r.k];
       const inK = ts.filter((t) => t[0] === r.k);
       const inSeats = r.rank <= out.lists[r.listId][3];
+      const l = ds.get(r.k)!.lists.find((x) => x.id === r.listId)!;
       let o: RunOutcome;
-      if (inSeats && r.notSeated) o = 'declined';
+      if (l.withdrawn) o = 'withdrawn';
+      else if (inSeats && r.notSeated) o = 'declined';
       // elected but never sat in that Knesset (the candidate notes give the official record, e.g. withdrew before the first sitting)
       else if (inSeats && r.elected && !inK.length && r.k !== 26) o = 'declined';
       else if (inSeats && r.elected) o = 'elected';
@@ -312,7 +315,6 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
       else if (inK.length) o = 'later';
       else o = 'out';
       // the official notes on the candidates whose places explain it (their own, or those above who did not sit)
-      const l = ds.get(r.k)!.lists.find((x) => x.id === r.listId)!;
       const notes = o === 'declined' ? l.candidates.find((c) => c.id === r.candidateId)?.notes ?? []
         : o === 'first' ? l.candidates.filter((c) => c.rank <= out.lists[r.listId][3]).flatMap((c) => c.notes ?? []).filter((n) => /first sitting/.test(n.en)) : [];
       return [r.k, r.listId, r.rank, o, r.basis, r.via, notes.map((n) => [n.en, n.he] as const)];
