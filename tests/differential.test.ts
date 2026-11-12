@@ -271,7 +271,11 @@ const EXPECTED: Record<Family, string> = {
   // case against HEAD's src); engine inputs, seats and validation are identical and the other four digests unchanged.
   // fx-names (12 Nov): k9 Likud ranks 21 and 24 (both printed כהן יגאל) lose their English names, as which rank is which
   // person is not certain; recursive diff of k9 shows only those two nameEn fields and builtAt. Other digests unchanged.
-  model: '1ebb9fe1ada719535686c14a6e009d64d8e8a93c6dd83ef68e84400fdd8062ed',
+  // fx-names G (12 Nov): five constituent-party English names follow the official sponsor records (Tkuma 2015, 2021–26
+  // "National Union–Tkuma"; Independence 2019 "Independence"); recursive diffs of k20, k22, k24–k26 show only those
+  // parties[].nameEn fields and builtAt. Then list and party English names take one apostrophe, the straight one
+  // (scripts/lib/build/finalize.ts): only shortEn fields with ’ change (k9, k11, k13–k17, k20, k21). Other digests unchanged.
+  model: '7f5e3635ebf9255bd44aa060ff60b0289e1806a84b068fa17637ae7496e892b7',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

@@ -221,12 +221,33 @@ describe('names at each election', () => {
     expect(partyNameAt('new-right', electionIndex('k21'), 'en')).toBe('New Right');
   });
   it('the other names that were shown before they existed', () => {
-    expect(strip('tkuma', 'en')).toEqual(['k15–k20 Tkuma', 'k21–k23 National Union–Tkuma', 'k24–k26 Religious Zionist Party']);
+    // the English follows the official sponsor records, as the Hebrew does (audit 12 Nov 2026, c-famous-late-10): the lists
+    // of 2015–2026 were submitted by האיחוד הלאומי - תקומה, which is still its name in the party registrar
+    expect(strip('tkuma', 'en')).toEqual(['k15–k19 Tkuma', 'k20–k26 National Union–Tkuma']);
     expect(strip('tkuma', 'he')).toEqual(['k15–k17 תקומה', 'k18–k26 האיחוד הלאומי – תקומה']);
     expect(strip('israel-resilience', 'en')).toEqual(['k21–k23 Israel Resilience', 'k24–k25 Blue and White']); // 2026: the list withdrew
     expect(strip('otzma-yehudit', 'en')).toEqual(['k19–k19 Otzma Leyisrael', 'k20–k26 Otzma Yehudit']);
     expect(strip('ahi', 'en')).toEqual(['k17–k17 Renewed Religious National Zionism', 'k18–k23 Ahi']);
     expect(strip('new-hope', 'en')).toEqual(['k24–k25 New Hope', 'k26–k26 New Hope – the National Right']);
+  });
+  // audit 12 Nov 2026, c-famous-late-10: the English and Hebrew of one election named different things (Tkuma 2021–26:
+  // "Religious Zionist Party" beside האיחוד הלאומי – תקומה)
+  it('the Hebrew and English strips change name at the same elections', () => {
+    // left open, as no stored official record settles them: Tkuma in 2009 and 2013 (no sponsor record; the dataset's Hebrew
+    // gives the joint name, its English the short one); New Hope in 2026 (the gazette's sponsor line reads תקווה חדשה הימין
+    // הממלכתי, the November 2026 registrar תקווה חדשה אחדות לישראל)
+    const open = new Set(['tkuma k18', 'tkuma k20', 'new-hope k26']); // Tkuma: Hebrew changes in 2009, English in 2015
+    const differ: string[] = [];
+    for (const id of new Set(HISTORY.flatMap((e) => e.lists.flatMap((l) => l.parties)))) {
+      let he = '', en = '';
+      for (const p of partySeries(identityOf(id))) {
+        if (!p.list || !p.list.parties.includes(id)) continue;
+        const h = partyNameAt(id, p.i, 'he'), e = partyNameAt(id, p.i, 'en');
+        if (he && (h !== he) !== (e !== en) && !open.has(`${id} ${HISTORY[p.i].id}`)) differ.push(`${id} ${HISTORY[p.i].id}: ${he} → ${h}, ${en} → ${e}`);
+        he = h; en = e;
+      }
+    }
+    expect(differ).toEqual([]);
   });
   it('spelling variants of one name do not split a history; a long form is the same name', () => {
     expect(formOf('מפלגת העבודה הישראלית', 'העבודה', 'he')).toBe(true);

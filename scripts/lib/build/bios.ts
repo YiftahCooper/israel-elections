@@ -37,11 +37,11 @@ export const knessetMemberSure = (e: Graded) => e.confidence === 'high' || membe
  *  probable; a rule-based name match (`probable: true` in the published bio) is provisional. */
 export const bioIdentityCertainty = (e: Entry): 'confirmed' | 'probable' | 'provisional' => memberIdentitySure(e) ? 'confirmed' : e.confidence === 'high' ? 'probable' : 'provisional';
 
-/** The display form of an official English name from the Knesset website: backticks become apostrophes and repeated
- *  whitespace collapses (audits k7, k9, k13, k18). Spelling is never changed here; the raw site value stays in data/raw/bios
- *  as evidence. One function for the lists and MK history, so a person reads the same on both (audit 12 Nov 2026,
- *  ax-names-rosters-05). */
-export const displayNameEn = (raw: string) => raw.replaceAll('`', "'").replace(/\s+/g, ' ').trim();
+/** The display form of an English name: one apostrophe, the straight one (a backtick or a typographic ’ becomes '), and
+ *  repeated whitespace collapses (audits k7, k9, k13, k18). Spelling is never changed here; raw values stay in data/raw as
+ *  evidence. One function for people's names (the lists and MK history: audit 12 Nov 2026, ax-names-rosters-05) and for
+ *  list and party names (scripts/lib/build/finalize.ts: Ra'am–Ta'al, Da'am, Women's Party; c-famous-late-12). */
+export const displayNameEn = (raw: string) => raw.replace(/[`’]/g, "'").replace(/\s+/g, ' ').trim();
 
 export function applyBios(ds: ElectionDataset): ElectionDataset {
   const file = join(ROOT, 'data', 'meta', 'bios', `${ds.id}.json`);

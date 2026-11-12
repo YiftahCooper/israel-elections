@@ -120,8 +120,8 @@ export function compileHistoryRuntime(root = process.cwd()): HistoryRuntime {
   const shown = new Map<string, Map<number, [string, string | null]>>();
   for (const [id, usual] of Object.entries(parties)) {
     const then = elections.map((e) => { const l = e.lists.find((x) => !x[10] && x[8].some(([p]) => p === id)); return l ? nameThen.get(l[0])?.get(id) ?? null : null; });
-    // English names tell a short form of a Hebrew name from a new one; not the other way round (Tkuma kept its Hebrew
-    // registered name when its English one became "Religious Zionist Party")
+    // English names tell a short form of a Hebrew name from a new one; not the other way round (a Hebrew record can give
+    // the registered name where the English one gives the name the party was known by: Blue and White (Israel Resilience), 2022)
     const sameEn = then.map((n) => !!usual[1] && !!n?.[1] && formOf(n[1], usual[1], 'en'));
     const he = nameAtElection(usual[0], then.map((n) => n?.[0] ?? null), 'he', sameEn);
     const en = usual[1] ? nameAtElection(usual[1], then.map((n) => n?.[1] ?? null), 'en') : then.map(() => null);

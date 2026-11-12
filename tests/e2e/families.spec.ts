@@ -151,7 +151,7 @@ test('breakdown marks the family’s own parties in a mixed list and only they c
  await page.locator('.family-plots section').first().locator('g[role=button]').nth(19).click();
  const d=page.getByRole('dialog',{name:'Election breakdown',exact:true});await expect(d.locator('.family-point-delta')).toContainText('Since 22 Jan 2013: −102,251 votes · −3.88 points · ▼ −5 seats');
  const mixed=d.locator('article[data-state=mixed]');await expect(mixed).toHaveCount(1);await expect(mixed.locator('[data-own] b')).toHaveText('Yachad');await expect(mixed).toContainText('Shown hatched, not counted');
- await expect(d.locator('.family-point-changes')).toContainText('Now represented: Yachad · U’Bizchutan');await expect(d.locator('.family-point-changes')).not.toContainText('Otzma');
+ await expect(d.locator('.family-point-changes')).toContainText("Now represented: Yachad · U'Bizchutan");await expect(d.locator('.family-point-changes')).not.toContainText('Otzma');
  await expect(d.locator('article').first()).toHaveAttribute('data-state','counted');
  await d.getByRole('button',{name:'Close',exact:true}).click();expect(await page.evaluate(()=>scrollY)).toBe(y);
 });

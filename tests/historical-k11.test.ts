@@ -93,7 +93,7 @@ it('corrects ballot labels in both list and candidate IDs', () => {
     expect(applyAction(s, {type:'setListMeta', listId:id, patch:{shortHe:'saved edit'}}).lists.find(x => x.id === id)!.shortHe).toBe('saved edit');
   }
   expect(ds.lists.find((l: {id: string}) => l.id === '11-אמת').candidates[60].nameHe).toBe('חזיזה יצחק');
-  expect(ds.lists.find((l: {id: string}) => l.id === '11-ע').shortEn).toBe('National Tenants’ Protection Organisation');
+  expect(ds.lists.find((l: {id: string}) => l.id === '11-ע').shortEn).toBe("National Tenants' Protection Organisation");
   expect(ds.lists.find((l: {id: string}) => l.id === '11-ש').shortEn).toBe('Shiluv');
 });
 
