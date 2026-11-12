@@ -833,7 +833,10 @@
         "kind": "transliteration",
         "sourceId": "k24-candidates-gazette",
         "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
+      },
+      "notes": [
+        "Results-notice name retained (YP 9511, 31 March 2021, pp. 4621 and 4625; source k24-results-gazette): משפט צדק בראשות ד\"ר לריסה עמיר טרימבובלר. The Central Elections Committee's results website names the list משפט צדק, לרפורמה במערכת המשפט (https://votes24.bechirot.gov.il/nationalresults, retained 3 November 2026; source k24-national-html). These are variant names of one list, not different lists."
+      ]
     },
     {
       "letters": "רף",
