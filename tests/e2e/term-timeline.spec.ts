@@ -171,6 +171,21 @@ test('the bar says "End" only when a step is there', async ({ page }) => {
   await expect(tl.locator('.tl-end-label.end')).toHaveText('End');
 });
 
+// Audit of 12 Nov 2026: the 25th Knesset's records closed on 10 Nov 2026, the day the 26th opened. The last step is one
+// line and the chamber as it stood on the last day, at the bar's end.
+test('k25: the term ends with one line and the chamber as it stood', async ({ page }) => {
+  await start(page, { level: 'expert', election: 'k25' });
+  const tl = await openTimeline(page);
+  await tl.getByRole('slider').focus();
+  await page.keyboard.press('End');
+  await expect(current(tl)).toHaveAttribute('data-date', '2026-11-10');
+  await expect(current(tl)).toHaveAttribute('style', /left: 100%/);
+  await expect(tl.locator('.tl-lines li')).toHaveCount(1);
+  await expect(tl.locator('.tl-lines li[data-kind="term-end"]')).toHaveCount(1);
+  await expect(tl.locator('.tl-sides')).toContainText('Coalition 61');
+  await expect(tl.locator('[data-mark="rep"]')).toHaveCount(0);
+});
+
 test('a faction move names its factions in English', async ({ page }) => {
   await start(page, { level: 'expert', election: 'k21' });
   const tl = await openTimeline(page);

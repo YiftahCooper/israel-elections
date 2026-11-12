@@ -74,6 +74,36 @@ describe('sides after each date (they match every count the research gives)', ()
   });
 });
 
+// audit of 12 Nov 2026: the 25th Knesset's records closed on 10 Nov 2026, the day the 26th opened. A term that ended
+// ends the same way whether or not the next term's records are in the repository.
+describe('the end of a term', () => {
+  test('one closing line, the chamber as it stood on its last day, and the bar ends that day', () => {
+    for (const t of Object.values(rt.terms)) {
+      if (!t.timeline) continue;
+      const [prev, last] = t.timeline.steps.slice(-2);
+      expect(last.date, `k${t.k}`).toBe(t.end);
+      expect(last.items.map((it) => it.kind), `k${t.k}`).toEqual(['term-end']);
+      expect(last.coalition, `k${t.k}`).toEqual(prev.coalition);
+      expect(t.seats.every((_, i) => holderAt(t, i, t.end)), `k${t.k}`).toBe(true);
+    }
+  });
+  test('the 25th ends on 10 Nov 2026, not on the 12 Nov snapshot, with coalition 61 and nobody shown leaving', () => {
+    expect(k25.end).toBe('2026-11-10');
+    const last = k25.timeline!.steps.at(-1)!;
+    expect(last.coalition).toHaveLength(61);
+    expect(last.items.some((it) => it.type === 'seat')).toBe(false);
+  });
+  test('a term still sitting runs to the snapshot date', () => {
+    const root = mkdtempSync(join(tmpdir(), 'tl-open-'));
+    for (const d of ['public', 'data/meta', 'data/research/knesset-events']) { mkdirSync(join(root, d, '..'), { recursive: true }); symlinkSync(join(process.cwd(), d), join(root, d)); }
+    mkdirSync(join(root, 'data/research/knesset-member-changes'), { recursive: true });
+    const ch = JSON.parse(readFileSync('data/research/knesset-member-changes/k25.json', 'utf8'));
+    for (const t of ch.tenures) if (t.end === '2026-11-10') { t.end = null; for (const f of t.factions) if (f.end === '2026-11-10') f.end = null; }
+    writeFileSync(join(root, 'data/research/knesset-member-changes/k25.json'), JSON.stringify(ch));
+    expect(compileTermTimeline(root).terms[25].end).toBe(ch.asOf);
+  });
+});
+
 describe('levels (owner, 11 Nov): Simple fewest, Standard more, Expert all', () => {
   test('Simple: the term, the government and the moves that changed its majority; no seat changes', () => {
     // as the research grades them: start, swearing-in, Silman, Rinawie Zoabi out and back, Orbach, dissolution, rotation, end
