@@ -24,6 +24,8 @@
 .mk-term { min-inline-size: 0; display: grid; gap: 3px; }
 .mk-bar { position: relative; block-size: 20px; background: var(--surface-2); border: 1px solid var(--rule-2); border-radius: 3px; box-sizing: border-box; min-inline-size: 6px; }
 .mk-seg { position: absolute; inset-block: -1px; display: flex; align-items: center; overflow: hidden; border-radius: 2px; }
+/* days the Knesset's record gives no faction for: hatched, never a faction colour (the event line names it) */
+.mk-unrec { background: repeating-linear-gradient(45deg, var(--ink-2) 0 2px, transparent 2px 4px); outline: 1px solid var(--ink-2); outline-offset: -1px; }
 .mk-segname { font-size: 11px; font-weight: 600; padding-inline: 5px; white-space: nowrap; overflow: hidden; text-overflow: clip; }
 .mk-mark { position: absolute; inset-block-start: -6px; inline-size: 0; block-size: 0; border-inline: 4px solid transparent; border-block-start: 6px solid var(--ink); transform: translateX(-4px); }
 .mk-res { min-inline-size: 0; }

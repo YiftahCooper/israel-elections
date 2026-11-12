@@ -1,7 +1,7 @@
 // Each MK's own history (scripts/mk-history-runtime.ts compiles it; src/app/components/MkHistory.tsx draws it).
 // The runtime is its own chunk, requested the first time a name or a seat could open a history.
 import { useEffect, useState, useSyncExternalStore } from 'react';
-import type { MkPerson, MkRuntime, PackedRun, RunBasis, RunOutcome } from '../../scripts/mk-history-runtime.ts';
+import type { MkPerson, MkRuntime, PackedFaction, PackedRun, RunBasis, RunOutcome } from '../../scripts/mk-history-runtime.ts';
 import { englishLabel } from '../data/names.ts';
 
 export type { MkRuntime, RunOutcome, RunBasis };
@@ -48,7 +48,11 @@ export interface MkEvent {
   date: string;
   /** the time of day, where the record gives one */
   time?: string;
-  kind: 'entered' | 'left' | 'faction' | 'recorded';
+  /** unrecorded: no faction in the Knesset's record from this date until `until`; unsettled: a membership record whose
+   *  end is no later than its start, so its dates are not settled (audit 12 Nov 2026, cx-factions-05) */
+  kind: 'entered' | 'left' | 'faction' | 'recorded' | 'unrecorded' | 'unsettled';
+  /** for unrecorded: the day a faction is recorded again, or the membership ends */
+  until?: string;
   /** for faction: the new and the previous faction. Where both are shown under one name in a language, that language
    *  gives both factions' recorded names instead, so a line never reads "X (until then X)". */
   faction?: { now: Pick<MkSegment, 'faction' | 'he' | 'en'>; was: Pick<MkSegment, 'faction' | 'he' | 'en'> };
@@ -63,8 +67,8 @@ export interface MkRun {
 export interface MkRow {
   k: number; electionDate: string; opening: string | null; end: string | null;
   run: MkRun | null;
-  /** time in this Knesset: one entry per continuous period */
-  terms: { start: string; end: string; ongoing: boolean; segments: MkSegment[] }[];
+  /** time in this Knesset: one entry per continuous period; `unrecorded`: the days in it no faction record covers */
+  terms: { start: string; end: string; ongoing: boolean; segments: MkSegment[]; unrecorded: { start: string; end: string }[] }[];
   events: MkEvent[];
 }
 export interface MkView {
@@ -82,6 +86,21 @@ export interface MkView {
 
 const day = (s: string) => Date.parse(`${s}T00:00:00Z`);
 export const daysBetween = (a: string, b: string) => Math.round((day(b) - day(a)) / 86400000);
+
+/** The days of a term [start, end) that none of its faction records covers: the Knesset's record gives no faction for
+ *  them, so none is shown (the research files flag each one: data/research/knesset-member-changes, tenures[].gaps). */
+export function unrecordedFaction(rows: readonly PackedFaction[], start: string, end: string): { start: string; end: string }[] {
+  const out: { start: string; end: string }[] = [];
+  let at = start;
+  for (const [, s, e] of [...rows].sort((a, b) => a[1].localeCompare(b[1]))) {
+    if (s > at) out.push({ start: at, end: s < end ? s : end });
+    const until = e ?? end;
+    if (until > at) at = until;
+    if (at >= end) break;
+  }
+  if (at < end) out.push({ start: at, end });
+  return out.filter((g) => g.start < g.end);
+}
 
 export function mkView(rt: MkRuntime, id: number): MkView | null {
   const p: MkPerson | undefined = rt.people[id];
@@ -106,13 +125,17 @@ export function mkView(rt: MkRuntime, id: number): MkView | null {
     const run: MkRun | null = r && L ? { listId: r[1], rank: r[2], outcome: r[3], basis: r[4], via: r[5], notes: r[6] ?? [], he: L[0], en: L[1], color: L[2], seats: L[3], share: L[4], threshold: e.threshold } : null;
     // continuous periods: a term that ends the day the next begins is one period (a new record, not a gap)
     const terms: MkRow['terms'] = [];
+    const unsettled: MkEvent[] = [];
     for (const t of p.terms.filter((x) => x[0] === k).sort((a, b) => a[1].localeCompare(b[1]))) {
+      // a membership record that ends no later than it starts is not time served: it is named as unsettled, not drawn
+      if (t[2] !== null && t[2] <= t[1]) { unsettled.push({ date: t[1], kind: 'unsettled' }); continue; }
       const end = t[2] ?? e.end ?? t[1];
       // the compiled records are the shown ones: no zero-length record, cut to the term, same-day ones in time order
       const segments = t[3].map(([f, s, fe, st, et]): MkSegment => ({ faction: f, ...fac(f), start: s, end: fe ?? end, ...(st ? { startTime: st } : {}), ...(et ? { endTime: et } : {}) }));
+      const unrecorded = unrecordedFaction(t[3], t[1], end);
       const last = terms[terms.length - 1];
-      if (last && last.end === t[1]) { last.end = end; last.ongoing = t[2] === null; last.segments.push(...segments); }
-      else terms.push({ start: t[1], end, ongoing: t[2] === null, segments });
+      if (last && last.end === t[1]) { last.end = end; last.ongoing = t[2] === null; last.segments.push(...segments); last.unrecorded.push(...unrecorded); }
+      else terms.push({ start: t[1], end, ongoing: t[2] === null, segments, unrecorded });
     }
     for (const t of terms) {
       // touching segments of one faction are one
@@ -122,10 +145,12 @@ export function mkView(rt: MkRuntime, id: number): MkView | null {
     const events: MkEvent[] = [];
     terms.forEach((t, i) => {
       if (t.start !== e.opening) events.push({ date: t.start, kind: 'entered' });
+      for (const g of t.unrecorded) events.push({ date: g.start, kind: 'unrecorded', until: g.end });
       t.segments.forEach((s, j) => { if (j > 0) events.push({ date: s.start, ...(s.startTime ? { time: s.startTime } : {}), kind: 'faction', faction: move(s, t.segments[j - 1]) }); });
       if (!t.ongoing && t.end !== e.end) events.push({ date: t.end, kind: 'left' });
       void i;
     });
+    events.push(...unsettled);
     for (const ev of p.events.filter((x) => x[2] === k)) events.push({ date: ev[0], kind: 'recorded', text: { en: ev[3], he: ev[4] }, evidence: ev[5], sources: ev[6] });
     // by date only: the sort keeps the path's order within a day (the faction that continues comes last)
     events.sort((a, b) => a.date.localeCompare(b.date));
