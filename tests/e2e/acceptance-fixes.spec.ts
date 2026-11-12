@@ -38,7 +38,7 @@ test('E3 separated lists compare once as a group', async ({page}) => {
   await expect(page.locator('.lb-group-comparison')).toContainText('together 4, officially 7');
   await expect(page.locator('.session')).not.toContainText('−7');
   await openSideBySide(page);
-  await choose(page.locator('.side-by-side').getByRole('button', { name: 'Compare with', exact: true }), 'official');
+  await choose(page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true }), 'official');
   const row=page.locator('tr.cmp-row').filter({hasText:'Agudat Yisrael'});
   await expect(row).toHaveCount(1);
   await expect(row).toContainText('Degel HaTorah');
@@ -100,7 +100,7 @@ test('E10 Compare rows carry list identity tiles and signed seat changes', async
   const votes=page.getByRole('region',{name:'List details'}).getByLabel('Votes',{exact:true});
   await votes.fill('1300000'); await votes.press('Enter'); await page.keyboard.press('Escape');
   await openSideBySide(page);
-  await choose(page.locator('.side-by-side').getByRole('button', { name: 'Compare with', exact: true }), 'official');
+  await choose(page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true }), 'official');
   const likud=page.locator('tr.cmp-row').filter({has:page.locator('.cmp-lname',{hasText:'Likud'})});
   await expect(likud.locator('.cmp-lname .slip')).toBeVisible();
   await expect(likud.locator('.cmp-delta bdi').first()).toHaveText(/^▲\s*\+\d+$/);

@@ -19,7 +19,7 @@ test('grouping-only switches stay factual-neutral in Compare and keep named undo
     await openSideBySide(page);
     // U7 makes both sourced schemes unchanged facts: comparing opens the previous election, and this election's
     // official result is not offered, since nothing has changed
-    const picker = page.locator('.side-by-side').getByRole('button', { name: 'Compare with', exact: true });
+    const picker = page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true });
     await expect(picker).toHaveAttribute('data-value', 'prev');
     await picker.click();
     await expect(page.getByRole('dialog').last().locator('[data-choice-value="official"]')).toHaveCount(0);

@@ -69,7 +69,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     await page.locator('.side-panel').getByRole('button', { name: lang === 'en' ? 'Close' : 'סגירה', exact: true }).click();
     await openSideBySide(page);
     // candidates entering and leaving are listed within one election: compare with this election's official result
-    await choose(page.locator('.side-by-side').getByRole('button', { name: lang === 'en' ? 'Compare with' : 'השוואה עם', exact: true }), 'official');
+    await choose(page.locator('.cmpm-strip').getByRole('button', { name: lang === 'en' ? 'Compare with' : 'השוואה עם', exact: true }), 'official');
     await page.locator('details.cmp-section > summary').click();
     const compared = page.locator('.cmp-section li bdi[lang="he"][dir="rtl"]');
     await expect(compared.first()).toBeVisible();

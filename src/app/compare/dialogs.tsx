@@ -51,10 +51,11 @@ export function Modal({ label, onClose, children, className = '' }: { label: str
 const listName = (x: SideModel, ids: string[], lang: 'he' | 'en') => ids.map((id) => { const l = x.sc.lists.find((y) => y.id === id); return l ? listLabel(l, lang) : id; }).join(' + ');
 
 /** The balance choice: the app's own vote-source question and labels. */
-export function SourceSelect({ dest, exclude, value, onChange, label }: { dest: Scenario; exclude: string[]; value: SourceChoice; onChange: (v: SourceChoice) => void; label: string }) {
+/** info: what the chosen source does, behind an (i) on the label */
+export function SourceSelect({ dest, exclude, value, onChange, label, info }: { dest: Scenario; exclude: string[]; value: SourceChoice; onChange: (v: SourceChoice) => void; label: string; info?: ReactNode }) {
   const L = useL(), lang = useLang();
   const others = dest.lists.filter((l) => !exclude.includes(l.id) && !l.withdrawn).sort((a, b) => b.votes - a.votes);
-  return <label className="field">{label}
+  return <label className="field"><span>{label}{info && <> {info}</>}</span>
     <select aria-label={label} value={sourceValue(value)} onChange={(e) => onChange(sourceChoice(e.target.value))}>
       <option value="proportional">{L('Other lists, proportionally', 'שאר הרשימות, באופן יחסי')}</option>
       <option value="new">{L('New voters / staying home', 'מצביעים חדשים / נמנעים')}</option>

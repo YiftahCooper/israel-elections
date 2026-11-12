@@ -124,10 +124,10 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
             <span><b>{label(m)}</b> <Info title={words(m)}>{why[m]}</Info><br />{result(m)}</span>
           </label>; })}
         </fieldset>}
-      <p className="small cmpm-copy-from">{fromText}</p>
       {req.notCopied && req.notCopied.length > 0 && <p className="small muted">{L(`Not copied, no list in ${where}: `, `לא מועתקות, אין להן רשימה ${inWhere(where)}: `)}<bdi>{req.notCopied.join(', ')}</bdi></p>}
       {/* asked at every level (owner, 9 Nov 2026) */}
-      {<SourceSelect dest={to.sc} exclude={dst} value={source} onChange={setSource} label={L('Extra votes come from', 'קולות נוספים מגיעים מ־')} />}
+      {<SourceSelect dest={to.sc} exclude={dst} value={source} onChange={setSource} label={L('Extra votes come from', 'קולות נוספים מגיעים מ־')}
+        info={<Info title={L('Extra votes come from', 'קולות נוספים מגיעים מ־')}>{fromText}</Info>} />}
       {!simple && <fieldset className="preference-scope"><legend>{L('Use this choice', 'שימוש בבחירה')}</legend>
         {([['once', L('Just this once', 'רק הפעם')], ...(one ? [['item', L('For this list', 'לרשימה זו')]] : []), ['always', L('Always', 'תמיד')]] as [typeof scope, string][]).map(([v, t]) =>
           <label key={v}><input type="radio" name="cmp-scope" value={v} checked={scope === v} onChange={() => setScope(v)} />{t}</label>)}

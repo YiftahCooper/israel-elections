@@ -8,10 +8,8 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { dispatch, redo, resetAll, undo, useStore } from '../store.ts';
-import { ChoicePicker } from './ChoicePicker.tsx';
 import { dispatchSide, redoSide, startOverSide, undoSide } from '../compare/sides.ts';
-import { compareWith, closeSideBySide, startComparing, swapWithReference, useReference, yearOf } from '../compare/mode.ts';
-import { useReferenceChoices } from '../compare/CompareStrip.tsx';
+import { startComparing, swapWithReference, useReference, yearOf } from '../compare/mode.ts';
 import type { SideModel } from '../compare/model.ts';
 import type { Action } from '../../model/scenario.ts';
 
@@ -29,12 +27,10 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
   const past = useStore((st) => st.past), future = useStore((st) => st.future);
   const { markerReference: reference } = useActiveReference();
   const state = useReference(s);
-  const choices = useReferenceChoices(s);
   // opened without comparing (a saved comparison, an old link): comparing starts, as from the strip
   useEffect(() => { if (!comparing) startComparing(); }, [comparing]);
   if (state.status !== 'ready') return <div className="cmp">
     <p className="small muted">{state.status === 'loading' || state.status === 'off' ? L('Loading…', 'טוען…') : L('Nothing to compare here. Choose what to compare with in the strip above.', 'אין כאן מה להשוות. בחרו עם מה להשוות ברצועה שלמעלה.')}</p>
-    <button type="button" className="btn small" onClick={closeSideBySide}>{L('Close side by side', 'סגירת זו לצד זו')}</button>
   </div>;
   const ref = state.ref;
   const mainStart = reference ?? base;
@@ -55,12 +51,12 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
     apply: (a: Action) => dispatchSide(ref.id, ref.initial, ref.start, a),
   };
   return <div className="cmp">
-    <div className="cmpm-side-head"><h2>{L('Side by side', 'זו לצד זו')}</h2>
-      <button type="button" className="btn small cmpm-side-close" onClick={closeSideBySide}>{L('Close side by side', 'סגירת זו לצד זו')}</button></div>
+    {/* chosen and closed from the strip above (its picker and "Close side by side"): no second picker or Close here */}
+    <div className="cmpm-side-head"><h2>{L('Side by side', 'זו לצד זו')}</h2></div>
     <AnalysisEdits s={s} outlet="compare-grouping" />
     <Suspense fallback={<p className="small muted">{L('Loading…', 'טוען…')}</p>}>
       <Workbench main={main} other={other} onSwap={() => swapWithReference(ref)}
-        picker={<ChoicePicker label={L('Compare with', 'השוואה עם')} value={comparing ?? 'prev'} options={choices} onChange={compareWith} />} />
+        picker={null} />
     </Suspense>
   </div>;
 }

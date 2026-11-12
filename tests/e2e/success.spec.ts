@@ -73,7 +73,7 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
   await expect(page.locator('.chamber circle.seat')).toHaveCount(120);
   await openSideBySide(page);
   // comparing starts on the previous election; the candidates entering and leaving are listed within one election
-  await choose(page.locator('.side-by-side').getByRole('button', { name: 'Compare with', exact: true }), 'official');
+  await choose(page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true }), 'official');
   await expect(page.locator('tr.cmp-row').first()).toBeVisible();
   await page.locator('details.cmp-section > summary').click();
   await expect(page.getByText(/Entering the Knesset \(\d+\)/)).toBeVisible();

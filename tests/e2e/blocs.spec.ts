@@ -140,7 +140,7 @@ for (const lang of ['en', 'he'] as const) for (const election of ['k24', 'k25'])
     }
     await openSideBySide(page);
     // compared with the previous election (2021 → 2019 Sep, 2022 → 2021)
-    await expect(page.locator('.side-by-side').getByRole('button', {name: lang === 'en' ? 'Compare with' : 'השוואה עם', exact:true})).toHaveAttribute('data-value', 'prev');
+    await expect(page.locator('.cmpm-strip').getByRole('button', {name: lang === 'en' ? 'Compare with' : 'השוואה עם', exact:true})).toHaveAttribute('data-value', 'prev');
     // the open scenario's side names the app grouping once, never on each bloc
     const legend = page.locator('.cmp-card[data-role="main"] .majority-context');
     await expect(legend).toContainText(`· ${tag}`);

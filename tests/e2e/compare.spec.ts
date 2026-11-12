@@ -18,7 +18,7 @@ async function start(page: Page, lang: 'en' | 'he' = 'en', election = 'k26', wid
   await page.goto('/');
   if (election !== 'k26') await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
 }
-const picker = (page: Page) => page.locator('.side-by-side').getByRole('button', { name: 'Compare with', exact: true });
+const picker = (page: Page) => page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true });
 // a row by either side's name (in English your work's names are on the left)
 const row = (page: Page, name: string) => page.locator('tr.cmp-row').filter({ has: page.locator('.cmp-lname, .cmp-rname', { hasText: name }) }).first();
 // in English your work is the left column, the compared result the right one
@@ -46,7 +46,7 @@ test('opens from the strip on the previous election, your work on the left; clos
   // the compared result's seats open no list of your work
   await card(page, 'other').locator('[data-seat]').first().click();
   await expect(page.locator('aside .sp-head')).toHaveCount(0);
-  await page.locator('.cmpm-side-close').click();
+  await page.locator('.cmpm-strip .cmpm-side').click(); // the strip's toggle closes it
   await expect(page.locator('.side-by-side')).toHaveCount(0);
   await expect(page.getByRole('tab', { name: 'Coalitions', exact: true })).toHaveAttribute('aria-selected', 'true');
   await expect(page.locator('.cmpm-strip')).toBeVisible(); // still comparing
@@ -86,7 +86,7 @@ test('k25 → k26: copy Likud’s 2022 votes into your work, marked with its ori
   await page.keyboard.press('Escape');
   await expect(card(page, 'main')).toContainText('1 change from the official result');
   // your work is the open scenario: the Overview shows the copy, marked the same way
-  await page.locator('.cmpm-side-close').click();
+  await page.locator('.cmpm-strip .cmpm-side').click(); // the strip's toggle closes it
   await expect(page.locator('.lb-row').filter({ hasText: 'Likud' }).first()).toContainText('28');
   await expect(page.locator('[data-copied]').first()).toContainText('From 2022');
   await page.getByRole('button', { name: /^Undo:/ }).click();
@@ -330,7 +330,7 @@ test('saved comparisons are listed on the Scenarios page with Open, Copy link an
   await expect(page.locator('.toast')).toContainText('Link copied');
   await saved.getByRole('button', { name: 'Open' }).click();
   await expect(page.locator('.cmp-wb')).toBeVisible();
-  await page.locator('.cmpm-side-close').click();
+  await page.locator('.cmpm-strip .cmpm-side').click(); // the strip's toggle closes it
   await page.getByRole('tab', { name: 'Scenarios', exact: true }).click();
   page.once('dialog', (d) => d.accept());
   await page.locator('.scn-comparisons .scn-card').getByRole('button', { name: /^Delete / }).click();

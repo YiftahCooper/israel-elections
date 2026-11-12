@@ -224,7 +224,7 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
       {[left, right].map((x, i) => <SideCard key={x.role} x={x} picker={x.role === 'other' ? picker : null} focused={focusSide === x.role} onFocus={() => setFocusSide(x.role)} align={i === 0 ? 'left' : 'right'} />)}
       <div className="cmp-centre">
         <button type="button" className="btn small cmp-swap" onClick={() => { setCopyReq(null); setWholeReq(null); setMenu(null); onSwap(); }} aria-label={L('Swap: make the other result your work', 'החלפה: התוצאה השנייה הופכת לעבודה שלכם')} title={L('Swap: make the other result your work', 'החלפה: התוצאה השנייה הופכת לעבודה שלכם')}><ArrowLeftRight size={16} /><span>{L('Swap', 'החלפה')}</span></button>
-        <span className="tiny muted cmp-centre-key" dir={lang === 'he' ? 'rtl' : 'ltr'}>{L('Change:', 'שינוי:')} <bdi dir="ltr">{nameOf(right)} − {nameOf(left)}</bdi></span>
+        <span className="tiny muted cmp-centre-key" dir={lang === 'he' ? 'rtl' : 'ltr'}>{L('Change:', 'שינוי:')} <bdi dir="ltr">{nameOf(mainLeft ? left : right)} − {nameOf(mainLeft ? right : left)}</bdi></span>
       </div>
     </div>
 
@@ -251,7 +251,7 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
         <thead><tr>
           {!simple && <th className="cmp-tick"><span className="sr-only">{L('Select', 'בחירה')}</span></th>}
           <th className="cmp-name cmp-lname" dir={lang === 'he' ? 'rtl' : 'ltr'}>{nameOf(left)}</th><th className="n cmp-v">{L('Votes', 'קולות')}</th><th className="n cmp-s">{L('Share', 'שיעור')}</th><th className="n">{L('Seats', 'מנדטים')}</th>
-          <th className="cmp-mid">{L('Change', 'שינוי')} {!simple && <Info title={L('Change', 'שינוי')}>{L(`${nameOf(right)} minus ${nameOf(left)}: seats, then the share of valid votes in percentage points (pp).`, `${nameOf(right)} פחות ${nameOf(left)}: מנדטים, ואז שיעור הקולות הכשרים בנקודות אחוז (נק׳ אחוז).`)}</Info>}</th>
+          <th className="cmp-mid">{L('Change', 'שינוי')} {!simple && <Info title={L('Change', 'שינוי')}>{L(`${nameOf(mainLeft ? left : right)} minus ${nameOf(mainLeft ? right : left)}: seats, then the share of valid votes in percentage points (pp).`, `${nameOf(mainLeft ? left : right)} פחות ${nameOf(mainLeft ? right : left)}: מנדטים, ואז שיעור הקולות הכשרים בנקודות אחוז (נק׳ אחוז).`)}</Info>}</th>
           <th className="n">{L('Seats', 'מנדטים')}</th><th className="n cmp-s">{L('Share', 'שיעור')}</th><th className="n cmp-v">{L('Votes', 'קולות')}</th><th className="cmp-name cmp-rname" dir={lang === 'he' ? 'rtl' : 'ltr'}>{nameOf(right)}</th>
           <th className="cmp-more"><span className="sr-only">{L('More', 'עוד')}</span></th>
         </tr></thead>

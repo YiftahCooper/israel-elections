@@ -65,12 +65,10 @@
 .cmpm-copy .cmpm-copy-ticks label { display: flex; gap: 6px; align-items: center; min-block-size: 28px; }
 .cmpm-copy .cmpm-copy-lists .row { display: flex; gap: 12px; }
 .cmpm-copy-sentence { margin: 0; line-height: 1.5; }
-.cmpm-copy-from { margin: 0; color: var(--ink-2); }
 
 /* the Side by side page: its name and Close, which returns to the screen you came from, still comparing */
 .cmpm-side-head { display: flex; align-items: center; gap: 10px; margin-block-end: 8px; }
 .cmpm-side-head h2 { margin: 0; font-size: 18px; }
-.cmpm-side-close { margin-inline-start: auto; }
 
 /* "Copy 2022's" beside a key number (Turnout, Rules) */
 .tn-copy { margin: 4px 0 0; }
@@ -83,3 +81,6 @@
 .cmpm-refblocs .corridor { cursor: default; background-image: repeating-linear-gradient(135deg, transparent 0 5px, color-mix(in srgb, var(--bc) 18%, transparent) 5px 7px); }
 .cmpm-refblocs .corridor:hover { border-color: color-mix(in srgb, var(--bc) 35%, transparent); }
 .cmpm-refblocs .milestone { height: 30px; }
+
+/* while comparing, the switch shows either chamber in the same place: the small reference chamber would repeat it */
+.cmpm-chamber[data-showing] .baseline-mini { display: none; }
