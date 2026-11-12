@@ -41,7 +41,8 @@ test('a tab whose code is still downloading shows a loading status, then its con
   await expect(side.getByRole('status')).toHaveText('Loading…');
   release();
   await expect(side.locator('.cmp-card')).toHaveCount(2);
-  await expect(side.getByRole('button', { name: 'Compare with', exact: true })).toHaveAttribute('data-value', 'prev');
+  // what it is compared with is chosen in the strip above (Side by side has no picker of its own)
+  await expect(page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true })).toHaveAttribute('data-value', 'prev');
   await expect(side.getByRole('status')).toHaveCount(0);
 });
 

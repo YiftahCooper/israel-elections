@@ -43,6 +43,8 @@ for (const width of [1500, 1024, 390]) test(`notices and experimental rules leav
 
 for (const lang of ['en', 'he'] as const) test(`phone band is one row; level and scenario are in its menu in ${lang}`, async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 1000 });
+  // the bar switches to its phone form after the resize; acting before that would press a button about to go
+  await expect(page.locator('.band .band-menu-btn')).toBeVisible();
   if (lang === 'he') await barLanguage(page, 'he');
   // owner, 9 Nov 2026: one row of 44px targets (was four rows, 204px)
   expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(60);

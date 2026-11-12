@@ -26,7 +26,7 @@ test.describe('Settings: every setting at every level, by complexity', () => {
     await expect(settings(page).locator('.ps-tier-sep')).toHaveText(['Standard', 'Expert']);
     // the same settings at every level (only the Simple starter tip is Simple's alone); no "more settings" line
     const rows = await settings(page).locator('[data-setting]').count();
-    expect(rows).toBe(level === 'simple' ? 42 : 41);   // 12 Nov: + the Localities map's lines switch
+    expect(rows).toBe(level === 'simple' ? 43 : 42);   // 12 Nov: + the Localities map's lines switch, + Bars for the compared result
     await expect(settings(page).getByText(/more settings in Standard/)).toHaveCount(0);
     await expect(settings(page).locator('[data-tier="simple"] [data-setting="voteSource"]')).toHaveCount(1);
     await expect(settings(page).locator('[data-tier="expert"] [data-setting="chamberLayout"]')).toHaveCount(1);

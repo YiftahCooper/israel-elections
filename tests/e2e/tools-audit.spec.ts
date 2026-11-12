@@ -93,7 +93,8 @@ test('Hebrew charts keep the English left-to-right geometry', async ({ page }) =
   expect(Number(await svg.locator('.bar').first().getAttribute('x'))).toBeCloseTo(mid, 0);
   expect(Number(await svg.locator('.bar').last().getAttribute('x'))).toBeLessThan(mid);
   await openSideBySide(page);
-  await expect(panel(page).getByRole('button', { name: 'השוואה עם', exact: true })).toHaveAttribute('data-value', 'prev');
+  // chosen in the strip above (Side by side has no picker of its own)
+  await expect(page.locator('.cmpm-strip').getByRole('button', { name: 'השוואה עם', exact: true })).toHaveAttribute('data-value', 'prev');
   const figs = panel(page).locator('.cmp-card');
   await expect(figs.nth(0)).toContainText('2022'); // the earlier result is on the left, as before → after
   expect((await figs.nth(0).boundingBox())!.x).toBeLessThan((await figs.nth(1).boundingBox())!.x);
