@@ -5,11 +5,12 @@ import { groupTabs } from '../tabGroups.ts';
 import { motionReduced } from '../store.ts';
 import './tab-row.css';
 
-type Tool = { id: string; level: Preset };
+/** `muted`: not shown at this level, by the level itself or by a Custom choice of Collapsed (featureVisibility). */
+type Tool = { id: string; level: Preset; muted: boolean };
 /** The tools strip: every tool by name under three small headings ("Your scenario", "What happened", "How it
  *  works"). Each heading names a tab list of its own; the strip as a whole is still one Tab stop, and the arrow keys
- *  run through every tab across the headings. Tools above the current level stay listed, muted, at the end of their
- *  heading's tabs. On a phone the headings become three buttons above the sideways-scrolling strip. */
+ *  run through every tab across the headings. Tools above the current level (or set to Collapsed on the Custom page)
+ *  stay listed, muted, at the end of their heading's tabs. On a phone the headings become three buttons above the sideways-scrolling strip. */
 export function TabRow({ tools, level, selected, label, onOpen, onKey, onPrefetch }: {
   tools: readonly Tool[]; level: Preset; selected: string | null; label: (id: string) => string;
   onOpen: (id: string) => void; onKey: (id: string) => void; onPrefetch: (id: string) => void;
@@ -18,7 +19,9 @@ export function TabRow({ tools, level, selected, label, onOpen, onKey, onPrefetc
   const strip = useRef<HTMLDivElement>(null);
   // one stable callback: a new function each render would tear down and rebuild the observers on every render
   const stripRef = useCallback((el: HTMLDivElement | null) => { strip.current = el; return trackTabOverflow(el); }, []);
-  const locked = (t: Tool) => RANK[t.level] > RANK[level];
+  const locked = (t: Tool) => t.muted;
+  // said after a muted tool's name: the level it belongs to, or Collapsed when a Custom choice put it there
+  const why = (t: Tool) => RANK[t.level] > RANK[level] ? L(...LEVEL_LABELS[t.level]) : L('Collapsed', 'מכווץ');
   // this level's tools first under each heading, then the others (never hidden)
   const groups = groupTabs(tools).map(g => ({ ...g, tabs: [...g.tabs.filter(t => !locked(t)), ...g.tabs.filter(locked)] }));
   const ordered = groups.flatMap(g => g.tabs);
@@ -52,7 +55,7 @@ export function TabRow({ tools, level, selected, label, onOpen, onKey, onPrefetc
                   if (next < 0) return;
                   e.preventDefault(); onKey(ordered[next].id);
                   (document.getElementById(`tab-${ordered[next].id}`) as HTMLElement | null)?.focus();
-                }}>{label(t.id)}{locked(t) && <span className="sr-only"> ({L(...LEVEL_LABELS[t.level])})</span>}</button>,
+                }}>{label(t.id)}{locked(t) && <span className="sr-only"> ({why(t)})</span>}</button>,
             ])}
           </div>
         </div>;

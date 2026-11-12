@@ -42,7 +42,8 @@
 .personal-settings .pref-items li { flex-wrap: wrap; }
 .link-btn { all: unset; color: var(--link, var(--focus)); text-decoration: underline; cursor: pointer; font-size: 13px; }
 .link-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-.toast .toast-action { margin-inline-start: 10px; }
+/* the toast is dark on light (light on dark): its action button keeps the page's own ink, or its label vanishes */
+.toast .toast-action { margin-inline-start: 10px; color: var(--ink); }
 .toast .toast-close { margin-inline-start: 4px; color: inherit; }
 
 /* Phone: a full-screen sheet. Segmented controls sit on their own line under the label (decided by width, not by
