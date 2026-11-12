@@ -1,9 +1,9 @@
 import './percentage.css';
 import type { Rational } from '../../engine/rational.ts';
 import { createPortal } from 'react-dom';
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useId, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { exactDecimal, fmtPct, fmtPp, nonZeroFixed, pctExactNote } from '../format.ts';
-import { useLang } from '../i18n.ts';
+import { useL, useLang } from '../i18n.ts';
 import { Floating } from '../floating.tsx';
 import { useHoverIntent } from '../hoverIntent.ts';
 import { useSetting } from '../store.ts';
@@ -13,6 +13,12 @@ import { useSetting } from '../store.ts';
 // decimal cap; a value already shown in full discloses nothing. The disclosure floats in the top layer, so the value
 // itself never changes size. Inside a button or link the value is not a second tab stop: focusing that control
 // shows the disclosure of its first rounded value instead.
+// A value on its own is not a tab stop either (a table of them was dozens of stops with no role, audit 12 Nov 2026,
+// c-a11y-02): a screen reader reads its exact value as the figure's description (aria-description, which Chrome's
+// accessibility tree exposes on a plain span and on chart text; hidden text would also be copied, searched and read
+// by tests as part of the sentence), and the keyboard has one "Exact values" switch per table, list or section (seen
+// only while it has focus; its words come from CSS so it adds no text either), which shows that table's values
+// exactly in place until it is pressed again. A tooltip has no switch: it closes when focus moves.
 
 type Props = { svg?: boolean; pad?: number };
 
@@ -24,15 +30,40 @@ export function Percentage({ part, whole, digits = 2, threshold, ...rest }: { pa
 }
 
 const INTERACTIVE = 'button, a[href], [role="button"], summary, label';
+/** What one "Exact values" switch covers: the nearest table, list of facts or section around a value. */
+const SCOPE = 'table, dl, section, aside, dialog';
+// the scopes switched to exact values (held per element, forgotten with it)
+const exactScopes = new WeakSet<Element>();
+let exactVersion = 0;
+const exactListeners = new Set<() => void>();
+const subscribeExact = (fn: () => void) => { exactListeners.add(fn); return () => { exactListeners.delete(fn); }; };
+const toggleExact = (scope: Element) => {
+  if (exactScopes.has(scope)) exactScopes.delete(scope); else exactScopes.add(scope);
+  exactVersion++; exactListeners.forEach(fn => fn());
+};
 const PAD = /^(\d[\d,]*)(?:\.(\d+))?%$/;
 
 export function ExactValue({ text, note, svg = false, pad }: { text: string; note?: string } & Props) {
+  const L = useL();
   const hover = useSetting('hoverPopups');
-  // 'hover' is transient; 'held' (focus or tap) was asked for, so Escape closes it and goes no further
+  // 'hover' is transient; 'held' (a tap, or focus on the control it sits in) was asked for, so Escape closes it and
+  // goes no further
   const [open, setOpen] = useState<false | 'hover' | 'held'>(false);
   const [nested, setNested] = useState(false);
   const intent = useHoverIntent(() => setOpen(o => o === 'hover' ? false : o), !!open);
   const ref = useRef<HTMLSpanElement | SVGTSpanElement | null>(null), id = useId();
+  // the table (list, section) this value belongs to, and whether this is its first value on its own (the one that
+  // carries the switch)
+  const [scope, setScope] = useState<Element | null>(null);
+  const [first, setFirst] = useState(false);
+  useLayoutEffect(() => {
+    const el = ref.current;
+    const sc = note && !svg && !el?.closest('[role="tooltip"]') ? el?.parentElement?.closest(SCOPE) ?? null : null;
+    setScope(sc);
+    setFirst(!!sc && [...sc.querySelectorAll('[data-standalone]')].find(e => e.closest(SCOPE) === sc) === el);
+  });
+  useSyncExternalStore(subscribeExact, () => exactVersion);
+  const exact = !!scope && exactScopes.has(scope);
   // inside a control: show on that control's keyboard focus, for its first rounded value only
   useEffect(() => {
     const host = note ? ref.current?.parentElement?.closest(INTERACTIVE) : null;
@@ -53,30 +84,45 @@ export function ExactValue({ text, note, svg = false, pad }: { text: string; not
     document.addEventListener('pointerdown', close, true); document.addEventListener('keydown', close, true);
     return () => { document.removeEventListener('pointerdown', close, true); document.removeEventListener('keydown', close, true); };
   }, [open]);
-  const m = pad !== undefined && !svg ? PAD.exec(text) : null;
+  // the exact figure is the note's first word ("33.333333…%", "+0.253")
+  const figure = note ? note.slice(0, note.search(/[ :]/)) : text;
+  const m = pad !== undefined && !svg && !exact ? PAD.exec(text) : null;
   const missing = m ? pad! - (m[2]?.length ?? 0) : 0;
   // the reserve follows the % sign, so the digits line up and the sign stays beside its number
   const body = m && missing > 0 ? <>{text}<span className="pct-pad" aria-hidden>{m[2] === undefined ? '.' : ''}{'0'.repeat(missing)}</span></> : text;
   if (!note) return svg ? <tspan className="percentage">{text}</tspan> : <span className="percentage">{body}</span>;
   const props = {
     ref: (el: HTMLSpanElement | SVGTSpanElement | null) => { ref.current = el; },
-    className: 'percentage', 'data-rounded': '', 'aria-describedby': open ? id : undefined,
-    tabIndex: nested ? undefined : 0,
+    className: 'percentage', 'data-rounded': '', 'data-standalone': nested || svg ? undefined : '', 'aria-describedby': open ? id : undefined,
     onPointerEnter: (e: React.PointerEvent) => { if (hover && e.pointerType === 'mouse') intent.enter(() => setOpen(o => o || 'hover')); },
     onPointerLeave: (e: React.PointerEvent) => { if (e.pointerType === 'mouse') intent.leave(); },
-    onFocus: () => { if (!nested) setOpen('held'); }, onBlur: () => { if (!nested) setOpen(false); },
     // a tap shows the value (and does not also activate a row it sits in); a mouse click passes through
     onClick: (e: React.MouseEvent) => { const p = (e.nativeEvent as PointerEvent).pointerType; if (p === 'touch' || p === 'pen') { e.stopPropagation(); e.preventDefault(); setOpen('held'); } },
-    onKeyDown: (e: React.KeyboardEvent) => { if (!nested && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); setOpen('held'); } },
   };
+  // the exact value for a screen reader, read with the figure (inside a control, the control's disclosure gives it)
+  const described = nested ? undefined : note;
+  const label = L('Exact values', 'ערכים מדויקים');
   return <>
-    {svg ? <tspan {...props}>{text}</tspan> : <span {...props}>{body}</span>}
+    {first && <button type="button" className="exact-switch" aria-pressed={exact} aria-label={label} data-label={label} onClick={() => toggleExact(scope!)} onFocus={keepInside} />}
+    {svg ? <tspan {...props} aria-description={note}>{text}</tspan>
+      : exact ? <span {...props} aria-description={described} data-exact dir="ltr">{figure}</span>
+      : <span {...props} aria-description={described}>{body}</span>}
     {open && createPortal(<Floating id={id} className="percentage-pop" anchor={() => ref.current?.getBoundingClientRect()}><ExactNote note={note} /></Floating>, document.body)}
   </>;
 }
 
 /** "33.333333…%: the exact share" or "+0.25 pp: …" → the figure isolated left to right, then the words in the
  *  page's direction (a figure never contains a space or a colon). */
+/** The switch is drawn from where its figure starts; nudge it back inside its table when that runs past an edge. */
+function keepInside(e: React.FocusEvent<HTMLButtonElement>) {
+  const b = e.currentTarget, box = b.closest(SCOPE)?.getBoundingClientRect();
+  b.style.translate = '';
+  if (!box) return;
+  const r = b.getBoundingClientRect();
+  const dx = r.right > box.right ? box.right - r.right : r.left < box.left ? box.left - r.left : 0;
+  if (dx) b.style.translate = `${dx}px 0`;
+}
+
 function ExactNote({ note }: { note: string }) {
   const i = note.search(/[ :]/);
   return <span data-exact><bdi dir="ltr">{note.slice(0, i)}</bdi>{note.slice(i)}</span>;

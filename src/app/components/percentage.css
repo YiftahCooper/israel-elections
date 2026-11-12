@@ -1,6 +1,12 @@
 .percentage { font-variant-numeric: tabular-nums; }
 .percentage[data-rounded] { cursor: help; }
-.percentage[tabindex]:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 2px; }
+/* one per table, list or section, for the keyboard: hidden until it has focus, then drawn above its first value
+   without moving anything */
+.exact-switch:not(:focus) { position: absolute; width: 1px; height: 1px; padding: 0; border: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.exact-switch:focus { position: absolute; z-index: 5; transform: translateY(-110%); padding: 2px 8px; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); color: var(--ink); box-shadow: var(--shadow-pop); font-size: 12px; font-weight: 600; line-height: 1.4; white-space: nowrap; cursor: pointer; }
+.exact-switch[aria-pressed="true"]:focus { background: var(--open); }
+/* the switch's words come from CSS (its name is aria-label), so it adds no text to the sentence or table around it */
+.exact-switch:focus::after { content: attr(data-label); }
 /* invisible zeros that keep decimal points aligned down a table column; never read or copied */
 .pct-pad { visibility: hidden; user-select: none; }
 .percentage-pop { display: block; z-index: 40; width: max-content; max-width: min(320px, calc((100vw - 32px) / var(--text-zoom, 1))); padding: 6px 10px; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); color: var(--ink); box-shadow: var(--shadow-pop); font-size: 13px; font-weight: 400; line-height: 1.4; white-space: normal; text-align: start; }

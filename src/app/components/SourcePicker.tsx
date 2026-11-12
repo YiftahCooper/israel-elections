@@ -1,6 +1,6 @@
 import { groupingName } from '../groupingName.ts';
 import { electionLabel } from '../electionLabel.ts';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import type { Scenario, SimList } from '../../model/scenario.ts';
 import type { ElectionId } from '../../data/schema.ts';
 import { baselineOf, listLabel } from '../derive.ts';
@@ -20,13 +20,15 @@ export function SourcePicker({ s, l }: { s: Scenario; l: SimList }) {
   useEffect(() => {
     if (src.kind === 'transfer' && (src.listId === l.id || !s.lists.some((x) => x.id === src.listId))) setState({ voteSource: { kind: 'proportional' } });
   }, [src, l.id, s.lists]);
+  // the words name and focus the drop-down; the (i) stays a button of its own, outside the <label>
+  const id = useId();
   return (
     <div>
-      <label className="field">
-        <span className="row" style={{ gap: 6 }}>{L('Votes come from', 'הקולות מגיעים מ־')}
+      <div className="field">
+        <span className="row" style={{ gap: 6 }}><label htmlFor={id}>{L('Votes come from', 'הקולות מגיעים מ־')}</label>
           <Info title={L('Different counterfactuals', 'תרחישים שונים')}>{L('Taking votes from all other lists keeps turnout and the valid total fixed. New voters (or voters staying home) change the valid total, and so the threshold in votes. A transfer moves votes from or to one list — if that list is below the threshold, those votes stop being wasted. These give different seat results.', 'לקיחה מכל שאר הרשימות שומרת על ההצבעה ועל סך הכשרים. מצביעים חדשים (או נמנעים) משנים את סך הכשרים ולכן את אחוז החסימה בקולות. מעבר מזיז קולות מול רשימה אחת — אם היא מתחת לחסימה, הקולות מפסיקים להתבזבז. התוצאות שונות.')}</Info>
         </span>
-        <select aria-label={L('Votes come from', 'הקולות מגיעים מ־')} value={src.kind === 'transfer' ? `t:${src.listId}` : src.kind} onChange={(e) => {
+        <select id={id} value={src.kind === 'transfer' ? `t:${src.listId}` : src.kind} onChange={(e) => {
           const v = e.target.value;
           chooseSource(`list:${l.id}`, v === 'new' ? { kind: 'new' } : v === 'proportional' ? { kind: 'proportional' } : { kind: 'transfer', listId: v.slice(2) });
         }}>
@@ -36,7 +38,7 @@ export function SourcePicker({ s, l }: { s: Scenario; l: SimList }) {
             {[...others].sort((a, b) => b.votes - a.votes).map((x) => <option key={x.id} value={`t:${x.id}`}>{listLabel(x, lang)} ({fmtInt(x.votes)})</option>)}
           </optgroup>
         </select>
-      </label>
+      </div>
     </div>
   );
 }

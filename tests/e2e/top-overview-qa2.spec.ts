@@ -74,7 +74,7 @@ test('fallback slips use the same identity in the list and inspector', async ({ 
 
 
 test('Hebrew phone values, names, grouping and shared name wrapping stay readable', async ({ page }) => {
-  await page.getByRole('button', { name: 'עב', exact: true }).click();
+  await page.getByRole('button', { name: 'עברית', exact: true }).click();
   await page.getByRole('button', { name: 'מצב כהה', exact: true }).click();
   await page.setViewportSize({ width: 390, height: 1000 });
   const sum = page.locator('.fig .v bdi').last();

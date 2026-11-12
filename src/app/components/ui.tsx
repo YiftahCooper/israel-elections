@@ -30,7 +30,9 @@ export function Info({ title, children, term, label }: { title?: string; childre
     document.addEventListener('keydown', onKey, true); document.addEventListener('pointerdown', onDoc);
     return () => { document.removeEventListener('keydown', onKey, true); document.removeEventListener('pointerdown', onDoc); };
   }, [open]);
-  const heading = title ?? (g ? (lang === 'he' ? g.nameHe : `${g.nameEn} (${g.nameHe})`) : '');
+  // on the English page a term's Hebrew name follows in brackets, marked as Hebrew so it is read in Hebrew
+  const heading = title ?? (g ? (lang === 'he' ? g.nameHe : g.nameEn) : '');
+  const hebrewToo = !title && g && lang !== 'he';
   return (
     <span className="info" ref={ref}
       onPointerEnter={(e) => { if (e.pointerType === 'mouse' && hoverPopups) bridge.enter(() => setOpen((o) => o || 'hover')); }}
@@ -41,7 +43,7 @@ export function Info({ title, children, term, label }: { title?: string; childre
         onBlur={(e) => { if (!ref.current?.contains(e.relatedTarget as Node)) setOpen((o) => (o === 'hover' ? o : false)); }}>i</button>
       {open && (
         <Floating onPointerEnter={bridge.keep} onPointerLeave={bridge.leave} className="pop" id={id} anchor={() => ref.current?.querySelector('button')?.getBoundingClientRect()}>
-          {heading && <b>{heading}</b>}
+          {heading && <b>{heading}{hebrewToo && <> (<span lang="he">{g.nameHe}</span>)</>}</b>}
           {g && <span>{lang === 'he' ? g.defHe : g.defEn}</span>}
           {g && <GlossaryLink g={g} lang={lang} />}
           {children}
@@ -79,10 +81,12 @@ export function Slip({ letters, color, size, logo: logoIn, name, synthetic }: { 
   return <span title={fallbackLabel} className={`slip ${size ?? ''} ${letters.length > 4 ? 'long' : ''}`} style={{ ['--c' as string]: color }} aria-label={fallbackLabel} lang="he" dir="rtl">{letters || '—'}</span>;
 }
 
-export function Seg<T extends string>({ value, options, onChange, label }: { value: T; options: { v: T; label: string; title?: string }[]; onChange: (v: T) => void; label: string }) {
+/** `lang` marks an option written in another language than the page (a language's own name); `name` is its spoken
+ *  name when the label is short ("עב" → "עברית"). */
+export function Seg<T extends string>({ value, options, onChange, label }: { value: T; options: { v: T; label: string; title?: string; lang?: string; name?: string }[]; onChange: (v: T) => void; label: string }) {
   return (
     <span className="seg" role="group" aria-label={label}>
-      {options.map((o) => <button key={o.v} type="button" title={o.title} aria-pressed={o.v === value} onClick={() => onChange(o.v)}>{o.label}</button>)}
+      {options.map((o) => <button key={o.v} type="button" title={o.title} lang={o.lang} aria-label={o.name} aria-pressed={o.v === value} onClick={() => onChange(o.v)}>{o.label}</button>)}
     </span>
   );
 }
@@ -132,13 +136,13 @@ export function DecimalInput({ disabled = false, value, onCommit, label, digits 
 }
 
 /** Text field that applies on Enter or blur (one undo step per edit, not per keystroke). */
-export function TextField({ disabled = false, value, onCommit, label, placeholder }: { disabled?: boolean; value: string; onCommit: (v: string) => void; label?: string; placeholder?: string }) {
+export function TextField({ id, disabled = false, value, onCommit, label, placeholder }: { id?: string; disabled?: boolean; value: string; onCommit: (v: string) => void; label?: string; placeholder?: string }) {
   const [text, setText] = useState(value);
   const [commits, setCommits] = useState(0);
   useEffect(() => setText(value), [value, commits]);
   // after committing, show the value actually in force (a rejected edit reverts)
   const commit = () => { if (text !== value) onCommit(text); setCommits((c) => c + 1); };
-  return <input disabled={disabled} type="text" aria-label={label} placeholder={placeholder} value={text} onChange={(e) => setText(e.target.value)} onBlur={commit}
+  return <input id={id} disabled={disabled} type="text" aria-label={label} placeholder={placeholder} value={text} onChange={(e) => setText(e.target.value)} onBlur={commit}
     onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape' && text !== value) { e.preventDefault(); e.stopPropagation(); setText(value); } }} />;
 }
 

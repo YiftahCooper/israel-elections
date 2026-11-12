@@ -15,7 +15,7 @@ import { ruleEraLabel } from '../changeValue.tsx';
 import { LocalityMap, Locality2006Note, LocalityName, localityName, localityNameSource, useLocalityLocations, useLocalityNames } from './LocalityMap.tsx';
 import { localityHebrewName, type LocalityNames } from '../../data/locality-names.ts';
 import { matchesLocality } from '../locality-map-model.ts';
-import { Fragment, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { Fragment, useEffect, useId, useMemo, useState, type ReactNode } from 'react';
 import { isEnvelopeRow, type ElectionDataset, type LocalityDataset } from '../../data/schema.ts';
 import { RULESETS } from '../../engine/rules.ts';
 import type { AllocationResult } from '../../engine/types.ts';
@@ -49,6 +49,8 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
   const elections = useStore(st => st.elections);
   const eras = useMemo(() => thresholdEras(elections), [elections]);
   const exp = s.mode === 'experimental';
+  // a field's words name and focus the field; the (i) beside them is a button of its own, outside the <label>
+  const fieldId = useId();
   // re-choosing the value already in force is not an edit: only real changes reach the history
   const set = (patch: Partial<Scenario['rules']>) => {
     const changed = Object.fromEntries(Object.entries(patch).filter(([k, v]) => k === 'thresholdPct' ? Number(v) !== Number(s.rules.thresholdPct) || !/^\d+(\.\d+)?$/.test(String(v)) : s.rules[k as keyof Scenario['rules']] !== v));
@@ -60,7 +62,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
   const mark = (k: keyof Scenario['rules']) => <EditMarker s={s} path={['rules', k]} />;
   // an on/off rule: its label says what "on" means; the (i) names the law it comes from
   const rule = (k: keyof Scenario['rules'], on: boolean, change: (on: boolean) => void, label: string, info?: ReactNode, disabled = false) =>
-    <label className="row small rule-check"><input type="checkbox" checked={on} disabled={!exp || disabled} onChange={(e) => change(e.target.checked)} /><span>{label} {info}{mark(k)}</span></label>;
+    <div className="row small rule-check"><input id={`${fieldId}-${k}`} type="checkbox" checked={on} disabled={!exp || disabled} onChange={(e) => change(e.target.checked)} /><span><label htmlFor={`${fieldId}-${k}`}>{label}</label> {info}{mark(k)}</span></div>;
   return (
     <div className="grid2 stack-sm rules-page">
       {/* the scenario's rules and electorate: edits here are marked, undoable and saved with the scenario */}
@@ -85,7 +87,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
         <fieldset className="rules-fields">
           <div className="grid2 rules-grid">
             <div className="field"><span>{L('Seats', 'מושבים')}{mark('seats')}</span><NumericStepper disabled={!exp} value={s.rules.seats} min={1} max={1000} onCommit={(n) => set({ seats: n })} label={L('Seats', 'מושבים')} steps={[{ id: '1', label: '1', amount: 1 }]} /></div>
-            <label className="field"><span>{L('Threshold %', 'אחוז חסימה %')} <Info term="threshold" />{mark('thresholdPct')}</span><TextField disabled={!exp} value={s.rules.thresholdPct} label={L('Threshold %', 'אחוז חסימה %')} onCommit={(v) => set({ thresholdPct: v.trim().replace('%', '') })} /></label>
+            <div className="field"><span><label htmlFor={fieldId + '-threshold'}>{L('Threshold %', 'אחוז חסימה %')}</label> <Info term="threshold" />{mark('thresholdPct')}</span><TextField id={fieldId + '-threshold'} disabled={!exp} value={s.rules.thresholdPct} label={L('Threshold %', 'אחוז חסימה %')} onCommit={(v) => set({ thresholdPct: v.trim().replace('%', '') })} /></div>
             <div className="field"><span><span id="remainder-method-label">{L('Remainder method', 'שיטת העודפים')}</span> <Info term={methodOf(s.rules).term} />{mark('remainderMethod')}</span>
               <select disabled={!exp} aria-labelledby="remainder-method-label" value={s.rules.remainderMethod} onChange={(e) => {
                 const m = e.target.value as Scenario['rules']['remainderMethod'];
@@ -101,11 +103,11 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
                 <option value="droop">{L('Largest remainder, Droop quota', 'שארית גדולה, מודד דרופ')}</option>
               </select>
             </div>
-            <label className="field"><span>{L('Quota rounding', 'עיגול המודד')} <Info term="quota" />{mark('quotaRounding')}</span>
-              <select disabled={!exp} value={s.rules.quotaRounding} onChange={(e) => set({ quotaRounding: e.target.value as 'floor' | 'exact' })}>
+            <div className="field"><span><label htmlFor={fieldId + '-quota'}>{L('Quota rounding', 'עיגול המודד')}</label> <Info term="quota" />{mark('quotaRounding')}</span>
+              <select id={fieldId + '-quota'} disabled={!exp} value={s.rules.quotaRounding} onChange={(e) => set({ quotaRounding: e.target.value as 'floor' | 'exact' })}>
                 <option value="floor">{L('Whole number (law)', 'מספר שלם (החוק)')}</option><option value="exact">{L('Exact fraction', 'שבר מדויק')}</option>
               </select>
-            </label>
+            </div>
             <div className="field"><span>{L('Lists per agreement', 'רשימות בהסכם')} <Info term="surplus" />{mark('maxAgreementSize')}</span><NumericStepper disabled={!exp} value={s.rules.maxAgreementSize} min={2} onCommit={(n) => set({ maxAgreementSize: n })} label={L('Lists per agreement', 'רשימות בהסכם')} steps={[{ id: '1', label: '1', amount: 1 }]} /></div>
             <div className="rules-checks">
               {rule('majorityCap', s.rules.majorityCap, (on) => set({ majorityCap: on }), L('Half-seats cap', 'מגבלת מחצית'), <Info term="cap" />)}
@@ -375,7 +377,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
           </> : null;
         })()}
         <h3>{L('Glossary', 'מונחים')}</h3>
-        <dl className="small">{GLOSSARY.map((g) => <div key={g.id} id={`term-${g.id}`} style={{ marginBottom: 10 }}><dt><b>{lang === 'he' ? g.nameHe : g.nameEn}</b>{lang === 'he' ? '' : <span className="muted"> · {g.nameHe}</span>}</dt><dd style={{ margin: 0 }}>{lang === 'he' ? g.defHe : g.defEn}<br /><GlossaryLink g={g} lang={lang} /></dd></div>)}</dl>
+        <dl className="small">{GLOSSARY.map((g) => <div key={g.id} id={`term-${g.id}`} style={{ marginBottom: 10 }}><dt><b>{lang === 'he' ? g.nameHe : g.nameEn}</b>{lang === 'he' ? '' : <span className="muted"> · <span lang="he">{g.nameHe}</span></span>}</dt><dd style={{ margin: 0 }}>{lang === 'he' ? g.defHe : g.defEn}<br /><GlossaryLink g={g} lang={lang} /></dd></div>)}</dl>
       </div>
     </div>
   );

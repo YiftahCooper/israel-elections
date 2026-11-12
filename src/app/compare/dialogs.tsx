@@ -2,7 +2,7 @@ import { percent } from '../components/Percentage.tsx';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
 // Compare's dialogs: the copy question, whole-list replacement, list matching, a side's vote editor, the phone row sheet
 // and saving a comparison. Every figure shown before committing is the engine's, computed on a scratch copy.
-import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react';
 import type { Scenario, SimList } from '../../model/scenario.ts';
 import { allocationOf, electedOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
@@ -20,6 +20,7 @@ import { partyLabel } from '../../families/registry.ts';
 import { CertChip, CERT_INFO, countedText, EvidenceLinks, eventText, relationYear, useCrossComparison } from '../components/PartyHistory.tsx';
 import type { Comparison } from '../../history/compare.ts';
 import { RELATIONS } from '../../history/relations.ts';
+import { openModal } from '../focusReturn.ts';
 
 type L = (en: string, he: string) => string;
 export const TAGS: Record<MatchTag, [string, string]> = {
@@ -43,7 +44,8 @@ export const tagText = (t: MatchTag, L: L) => L(...TAGS[t]);
 /** A modal dialog that keeps focus and closes on Escape or the backdrop. */
 export function Modal({ label, onClose, children, className = '' }: { label: string; onClose: () => void; children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDialogElement>(null);
-  useEffect(() => { const d = ref.current; if (d && !d.open) d.showModal(); return () => { if (d?.open) d.close(); }; }, []);
+  // closing gives focus back to what opened it
+  useEffect(() => openModal(ref.current), []);
   return <dialog ref={ref} className={`cmp-dialog ${className}`} aria-label={label} onCancel={(e) => { e.preventDefault(); onClose(); }}
     onKeyDown={(e) => { if (e.key === 'Escape') e.stopPropagation(); }} onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>{children}</dialog>;
 }
@@ -55,13 +57,15 @@ const listName = (x: SideModel, ids: string[], lang: 'he' | 'en') => ids.map((id
 export function SourceSelect({ dest, exclude, value, onChange, label, info }: { dest: Scenario; exclude: string[]; value: SourceChoice; onChange: (v: SourceChoice) => void; label: string; info?: ReactNode }) {
   const L = useL(), lang = useLang();
   const others = dest.lists.filter((l) => !exclude.includes(l.id) && !l.withdrawn).sort((a, b) => b.votes - a.votes);
-  return <label className="field"><span>{label}{info && <> {info}</>}</span>
-    <select aria-label={label} value={sourceValue(value)} onChange={(e) => onChange(sourceChoice(e.target.value))}>
+  // the words name and focus the drop-down; the (i) stays a button of its own, outside the <label>
+  const id = useId();
+  return <div className="field"><span><label htmlFor={id}>{label}</label>{info && <> {info}</>}</span>
+    <select id={id} value={sourceValue(value)} onChange={(e) => onChange(sourceChoice(e.target.value))}>
       <option value="proportional">{L('Other lists, proportionally', 'שאר הרשימות, באופן יחסי')}</option>
       <option value="new">{L('New voters / staying home', 'מצביעים חדשים / נמנעים')}</option>
       <optgroup label={L('One list', 'רשימה אחת')}>{others.map((l) => <option key={l.id} value={`t:${l.id}`}>{listLabel(l, lang)}</option>)}</optgroup>
     </select>
-  </label>;
+  </div>;
 }
 
 /** What a plan does to the destination, in seats: "Likud 27 → 30 ▲ +3 · Yashar! 21 → 19 ▼ −2". */

@@ -42,11 +42,13 @@ for (const width of [1500, 390]) for (const lang of ['en', 'he'] as const) test(
   expect(await inRow.boundingBox()).toEqual(box);
   await page.keyboard.press('Escape');
   await expect(exactTip(page, lang)).toHaveCount(0);
-  // a value outside a control is a tab stop of its own
+  // a value outside a control is not a tab stop (audit 12 Nov 2026, c-a11y-02): a screen reader reads its exact value
+  // with it, the keyboard has its table's Exact values switch, and hover or a tap still shows it
   await row.click();
   const standalone = page.locator('.ld .kv .percentage[data-rounded]').first();
-  await standalone.focus();
-  await expect(standalone).toHaveAttribute('tabindex', '0');
+  await expect(standalone).not.toHaveAttribute('tabindex', /.*/);
+  await expect(standalone).toHaveAccessibleDescription(lang === 'en' ? /the exact share/ : /השיעור המדויק/);
+  if (width === 390) await standalone.tap(); else await standalone.hover();
   await expect(exactTip(page, lang)).toBeVisible();
   await expect(exactTip(page, lang)).toHaveText(/^[\d.,…]+%: /);
 });

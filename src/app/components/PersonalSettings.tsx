@@ -164,7 +164,7 @@ function Control({ row, label }: { row: SettingRow; label: string }) {
       options={[...(['simple', 'standard', 'expert'] as const).map(v => ({ v, label: L(...LEVEL_LABELS[v]) })),
         { v: 'custom' as const, label: store.customFeatures ? L('Custom', 'מותאם') : L('Custom…', 'מותאם…'), title: store.customFeatures ? L('Custom · based on ', 'מותאם · על בסיס ') + L(...LEVEL_LABELS[level]) : undefined }]} />
   </span>;
-  if (row.control === 'lang') return <Seg label={label} value={store.lang} onChange={v => setState({ lang: v as 'he' | 'en' })} options={row.options!.map(o => ({ v: o.value as 'he' | 'en', label: o.label[0] }))} />;
+  if (row.control === 'lang') return <Seg label={label} value={store.lang} onChange={v => setState({ lang: v as 'he' | 'en' })} options={row.options!.map(o => ({ v: o.value as 'he' | 'en', label: o.label[0], lang: o.value }))} />;
   if (row.control === 'choice') {
     const q = CHOICE[row.id]!;
     const value = store.preferences[q] ?? 'ask';

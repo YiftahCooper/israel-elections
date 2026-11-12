@@ -13,8 +13,11 @@ const start = async (page: Page, settings: Record<string, unknown> = {}) => {
 test('an info button stays open when clicked, and Escape closes it', async ({ page }) => {
   await start(page, { level: 'expert' });
   // a figure opens in place; its definition is behind the info mark inside
-  await page.locator('.fig').filter({ has: page.locator('.k', { hasText: /^Invalid ballots/ }) }).locator('> button').click();
-  const info = page.getByRole('button', { name: /^Invalid ballots \(/ });
+  const fig = page.locator('.fig').filter({ has: page.locator('.k', { hasText: /^Invalid ballots/ }) });
+  await fig.locator('> button').click();
+  // the (i) is named by the English term; its Hebrew name is in the popover's heading, marked as Hebrew (audit 12 Nov 2026)
+  // (the figure's own note has an (i) of the same name first; the definition's is the last)
+  const info = fig.getByRole('button', { name: 'Invalid ballots', exact: true }).last();
   await info.click();
   await expect(info).toHaveAttribute('aria-expanded', 'true');
   await expect(page.getByRole('tooltip')).toContainText('counted for no list');
@@ -27,8 +30,9 @@ test.describe('on a touch phone', () => {
   test.use({ viewport: { width: 375, height: 812 }, hasTouch: true, isMobile: true });
   test('an info button opens on tap', async ({ page }) => {
     await start(page, { level: 'expert' });
-    await page.locator('.fig').filter({ has: page.locator('.k', { hasText: /^Invalid ballots/ }) }).locator('> button').tap();
-    await page.getByRole('button', { name: /^Invalid ballots \(/ }).tap();
+    const fig = page.locator('.fig').filter({ has: page.locator('.k', { hasText: /^Invalid ballots/ }) });
+    await fig.locator('> button').tap();
+    await fig.getByRole('button', { name: 'Invalid ballots', exact: true }).last().tap();
     await expect(page.getByRole('tooltip')).toBeVisible();
   });
   for (const level of ['simple', 'standard', 'expert']) for (const lang of ['en', 'he']) {

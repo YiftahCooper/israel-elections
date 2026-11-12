@@ -7,6 +7,7 @@ import type { ElectionId } from '../../data/schema.ts';
 import { useL, useLang } from '../i18n.ts';
 import { setState, useDigits, useShown, useStore } from '../store.ts';
 import { useEffect, useRef, useState } from 'react';
+import { useCloseOnFocusAway } from '../focusReturn.ts';
 import { listLabel } from '../derive.ts';
 import { formatDate } from '../dateFormat.ts';
 
@@ -38,6 +39,9 @@ export function ElectionAbout({ electionId, listId }: { electionId: ElectionId; 
     document.addEventListener('keydown', onKey); document.addEventListener('pointerdown', onDown);
     return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onDown); };
   }, [listId]);
+  // and when focus leaves it, so it never covers the control Tab moved to
+  // (read from the element: the toggle event that updates `open` comes a moment after the press)
+  useCloseOnFocusAway(!listId, t => !ref.current?.open || ref.current.contains(t), () => { if (ref.current) ref.current.open = false; });
   if (listId && !events.length) return null;
   const pending = events.find(e => e.type === 'publication-status');
   // in the election's own About, a list's event says which list ("this list" alone is ambiguous there)

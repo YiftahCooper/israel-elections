@@ -119,7 +119,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
     const line = cmp?.rows.byList.get(l.id);
     return (
       <li key={l.id} data-family={family}>
-        <button type="button" data-family={familyRows.find(x => x.id === l.id)?.family} ref={open ? selRef : undefined} className={`lb-row ${out ? 'out' : ''} ${dimOthers && selected && !open ? 'dim' : ''}`} aria-pressed={open}
+        <button type="button" data-list-id={l.id} data-family={familyRows.find(x => x.id === l.id)?.family} ref={open ? selRef : undefined} className={`lb-row ${out ? 'out' : ''} ${dimOthers && selected && !open ? 'dim' : ''}`} aria-pressed={open}
           aria-label={listLabel(l, lang)} aria-describedby={`lbd-${l.id}`}
           onClick={() => setState({ selectedListId: open ? null : l.id })}
           title={l.logo || l.synthetic ? listLabel(l, lang) : `${listLabel(l, lang)} — ${L('Ballot letters (no verified election logo)', 'אותיות הפתק (טרם נמצא סמל ממקור לבחירות אלה)')}`}>

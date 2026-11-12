@@ -413,7 +413,7 @@ function ListName({ id, s }: { id: string; s: Scenario }) {
   const L = useL();
   const sl = s.lists.find((x) => x.id === id);
   if (!sl) return <>{id}</>;
-  return <span className="walk-pair"><span className="swatch" style={{ background: sl.color }} /><button className="table-action" onClick={() => setState({ selectedListId: id })}>{listLabel(sl, lang)}</button> <span className="muted" dir="rtl" title={L('Ballot letters', 'אותיות הרשימה')} aria-label={L(`Ballot letters ${sl.letters}`, `אותיות הרשימה ${sl.letters}`)}>{sl.letters}</span></span>;
+  return <span className="walk-pair"><span className="swatch" style={{ background: sl.color }} /><button className="table-action" onClick={() => setState({ selectedListId: id })}>{listLabel(sl, lang)}</button> <span className="sr-only">{L('Ballot letters', 'אותיות הרשימה')} </span><span className="muted" lang="he" dir="rtl" title={L('Ballot letters', 'אותיות הרשימה')}>{sl.letters}</span></span>;
 }
 
 function WalkTable({ s, rows, cols, heads }: { s: Scenario; rows: AllocationResult['lists']; cols: (l: AllocationResult['lists'][number]) => ReactNode[]; heads: string[] }) {

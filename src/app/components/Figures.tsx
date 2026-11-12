@@ -6,6 +6,7 @@ import { EditMarker } from './EditMarker.tsx';
 // Each figure opens the same independent popover without resizing the board.
 import { useId, useRef, useState, type ReactNode } from 'react';
 import { ChevronDown, ChevronUp, X } from 'lucide-react';
+import { useCloseOnFocusAway } from '../focusReturn.ts';
 import type { ElectionDataset } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { votesCast, type Scenario } from '../../model/scenario.ts';
@@ -21,6 +22,9 @@ function Fig({ k, term, v, d, children }: { k: string; term?: string; v: ReactNo
   const pop = useRef<HTMLDivElement>(null);
   const [isOpen, setOpen] = useState(false);
   const trigger = useRef<HTMLButtonElement>(null);
+  // a popover over the page: it closes when focus moves outside it (Tab past its end), so it never covers the control
+  // that has focus; read from the element, since its toggle event comes a moment after the press
+  useCloseOnFocusAway(true, t => !pop.current?.matches(':popover-open') || pop.current.contains(t) || !!trigger.current?.contains(t), () => pop.current?.hidePopover());
   useFloating(pop, () => trigger.current?.getBoundingClientRect(), isOpen, false);
   if (!children) return <div className="fig static"><span className="k"><span>{k}</span></span><span className="v"><bdi dir="ltr">{v}</bdi></span>{d && <span className="d">{d}</span>}</div>;
   return (

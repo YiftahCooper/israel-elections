@@ -166,18 +166,19 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       if (el && hover) setHover({ seat: seats[j], anchor: el });
     }
   };
-  // leaving the seats and the card for anything else closes the card
-  const onSeatsBlur = (e: React.FocusEvent) => { const to = e.relatedTarget as Element | null; if (hover && !inCard(to) && !to?.closest?.('[data-seat-pos]')) setHover(null); };
+  // leaving the seats and the card for anything else closes the card; a sheet opened from the card (an MK's history)
+  // keeps it, so closing the sheet gives focus back to the card's button
+  const onSeatsBlur = (e: React.FocusEvent) => { const to = e.relatedTarget as Element | null; if (hover && !inCard(to) && !to?.closest?.('[data-seat-pos], dialog')) setHover(null); };
   useEffect(() => {
     if (!hover) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key !== 'Escape') return;
+      if (e.key !== 'Escape' || (e.target as Element).closest?.('dialog')) return;
       e.stopImmediatePropagation();
       const back = inCard(document.activeElement);
       setHover(null);
       if (back) seatAt(stop)?.focus();
     };
-    const onDoc = (e: PointerEvent) => { const t = e.target as Element; if (!inCard(t) && !t.closest?.('[data-seat-pos]')) setHover(null); };
+    const onDoc = (e: PointerEvent) => { const t = e.target as Element; if (!inCard(t) && !t.closest?.('[data-seat-pos], dialog')) setHover(null); };
     document.addEventListener('keydown', onKey, true); document.addEventListener('pointerdown', onDoc);
     return () => { document.removeEventListener('keydown', onKey, true); document.removeEventListener('pointerdown', onDoc); };
   }, [hover, stop]); // eslint-disable-line react-hooks/exhaustive-deps

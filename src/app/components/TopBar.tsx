@@ -6,6 +6,7 @@ import { createPortal } from 'react-dom';
 import { isFactAction } from '../../model/actionClassification.ts';
 import { listLabel } from '../derive.ts';
 import { useFloating } from '../floating.tsx';
+import { useCloseOnFocusAway } from '../focusReturn.ts';
 import { ScenarioSwitcher } from './ScenarioSwitcher.tsx';
 import { useActiveReference } from '../useActiveReference.ts';
 import { ElectionAbout } from './ElectionContext.tsx';
@@ -78,6 +79,8 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
     document.addEventListener('keydown', onKey); document.addEventListener('pointerdown', onDown);
     return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onDown); };
   }, [menu]);
+  // and when focus leaves it, so it never covers the control Tab moved to
+  useCloseOnFocusAway(menu, t => !!menuRef.current?.contains(t), () => setMenu(false));
   const [shareUrl, setShareUrl] = useState('');
   // A link describes one snapshot; never offer an older snapshot after an edit.
   useEffect(() => setShareUrl(''), [s]);
@@ -141,6 +144,8 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
 
   if (phone) return (
     <header className="band band-phone" ref={trackBandHeight}>
+      {/* the page's top heading: the bar has no room for the name on a phone */}
+      <h1 className="sr-only">{L('Israeli Elections Explorer', 'סייר הבחירות לכנסת')}</h1>
       <button className="tool band-menu-btn" aria-label={L('Menu', 'תפריט') + (publicationPending(ds) ? ' · ' + L('Gazette not yet verified', 'הפרסום ברשומות טרם אומת') : '')} title={L('Menu', 'תפריט')} aria-expanded={phoneMenu} aria-controls="phone-menu"
         onClick={() => setPhoneMenu(m => !m)}>{phoneMenu ? <X className="icon" aria-hidden /> : <Menu className="icon" aria-hidden />}{publicationPending(ds) && !phoneMenu && <span className="band-menu-flag" aria-hidden>!</span>}</button>
       {pickElection(false)}
@@ -163,7 +168,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
             <span className="band-levels"><Seg<'simple' | 'standard' | 'expert' | 'custom'> label={L('Detail level', 'רמת פירוט')} value={custom ? 'custom' : level} onChange={(v) => { if (v !== 'custom') setLevel(v); }} options={(['simple', 'standard', 'expert'] as const).map(v => ({ v, label: L(...LEVEL_LABELS[v]) }))} />
               {customButton(() => { setState({ tool: 'custom' }); setPhoneMenu(false); })}</span></div>
           <div className="phone-menu-field"><span>{L('Language', 'שפה')}</span>
-            <Seg label={L('Language', 'שפה')} value={lang} onChange={(v) => setState({ lang: v })} options={[{ v: 'he', label: 'עברית' }, { v: 'en', label: 'English' }]} /></div>
+            <Seg label={L('Language', 'שפה')} value={lang} onChange={(v) => setState({ lang: v })} options={[{ v: 'he', label: 'עברית', lang: 'he' }, { v: 'en', label: 'English', lang: 'en' }]} /></div>
           <div className="phone-menu-field"><span>{L('Theme', 'ערכת צבעים')}</span>
             <Seg label={L('Theme', 'ערכת צבעים')} value={themeChoice} onChange={(v) => setSetting('theme', v)} options={[{ v: 'device', label: L('Device', 'לפי המכשיר') }, { v: 'light', label: L('Light', 'בהיר') }, { v: 'dark', label: L('Dark', 'כהה') }]} /></div>
           {/* Settings gives focus back to its opener on closing; the menu is gone by then, so that is the Menu button */}
@@ -178,7 +183,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
 
   return (
     <header className="band" ref={trackBandHeight}>
-      <span className="brand"><span className="brand-full">{L('Israeli Elections Explorer', 'סייר הבחירות לכנסת')}</span><span className="brand-short">{L('Elections', 'סייר הבחירות')}</span></span>
+      <h1 className="brand" aria-label={L('Israeli Elections Explorer', 'סייר הבחירות לכנסת')}><span className="brand-full">{L('Israeli Elections Explorer', 'סייר הבחירות לכנסת')}</span><span className="brand-short">{L('Elections', 'סייר הבחירות')}</span></h1>
       {pickElection(true)}
       {ds && !pmContestId && <ElectionAbout electionId={ds.id} />}
       {s && ds && <ScenarioSwitcher s={s} ds={ds} />}
@@ -205,7 +210,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
       <button className="tool" aria-haspopup="dialog" title={L('Settings', 'הגדרות')} aria-label={L('Settings', 'הגדרות')} onClick={() => setState({ settingsOpen: true })}><Settings className="icon" aria-hidden /></button>
       {/* outside the dark top bar, so none of the bar's own control styles reach the popup */}
       {settingsPortal}
-      <Seg label={L('Language', 'שפה')} value={lang} onChange={(v) => setState({ lang: v })} options={[{ v: 'he', label: 'עב' }, { v: 'en', label: 'EN' }]} />
+      <Seg label={L('Language', 'שפה')} value={lang} onChange={(v) => setState({ lang: v })} options={[{ v: 'he', label: 'עב', lang: 'he', name: 'עברית' }, { v: 'en', label: 'EN', lang: 'en', name: 'English' }]} />
       <button className="tool" title={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} aria-label={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} onClick={toggleTheme}>
         {theme === 'dark' ? <Sun className="icon" aria-hidden /> : <Moon className="icon" aria-hidden />}</button>
       </div>
@@ -254,7 +259,8 @@ function PhoneStatus({ s, ds, open, onOpen }: { s: Scenario; ds: ElectionDataset
 }
 
 /** The phone menu: a panel under the bar, outside it (so none of the dark bar's control styles reach it). It closes
- *  on Escape (focus returns to the Menu button) or a press outside; the bar's own Menu and status buttons toggle it. */
+ *  on Escape (focus returns to the Menu button), a press outside or focus moving outside; the bar's own Menu and
+ *  status buttons toggle it. */
 function PhoneMenu({ onClose, children }: { onClose: () => void; children: React.ReactNode }) {
   const L = useL();
   const ref = useRef<HTMLDivElement>(null);
@@ -262,6 +268,8 @@ function PhoneMenu({ onClose, children }: { onClose: () => void; children: React
   close.current = onClose;
   // under the bar; when the bar has scrolled away (it is not sticky on phones), at the top of the screen instead of hidden
   useFloating(ref, () => { const r = document.querySelector('.band')?.getBoundingClientRect(); return r && { left: r.left, right: r.right, top: Math.max(r.top, 0), bottom: Math.max(r.bottom, 0) }; });
+  // it covers the page: focus moving to the page behind it (Tab past its end, Shift+Tab before its start) closes it
+  useCloseOnFocusAway(true, t => !!ref.current?.contains(t) || !!t.closest('.band-menu-btn, .band-status'), () => close.current());
   useEffect(() => {
     const onClose = () => close.current();
     ref.current?.focus({ preventScroll: true });

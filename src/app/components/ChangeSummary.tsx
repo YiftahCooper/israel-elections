@@ -16,6 +16,7 @@ import { allocationOf } from '../derive.ts';
 import { lazy, Suspense, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useFloating } from '../floating.tsx';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { useCloseOnFocusAway } from '../focusReturn.ts';
 import type { ElectionDataset } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
@@ -55,6 +56,9 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
   const historyId = useId();
   const pop = useRef<HTMLDivElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
+  // a popover over the page: it closes when focus moves outside it (Tab past its end), so it never covers the control
+  // that has focus; read from the element, since its toggle event comes a moment after the press
+  useCloseOnFocusAway(true, t => !pop.current?.matches(':popover-open') || pop.current.contains(t) || !!trigger.current?.contains(t), () => pop.current?.hidePopover());
   const line = useRef<HTMLDivElement>(null);
   const changes = useRef<HTMLSpanElement>(null);
   useFloating(pop, () => trigger.current?.getBoundingClientRect(), open, false);

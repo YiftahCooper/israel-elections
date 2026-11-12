@@ -4,6 +4,7 @@ import { ordinalEn } from '../electionLabel.ts';
 // The Compare workbench (israel-elections-private docs/design/compare-workbench.md): two live sides pinned left → right in both languages,
 // their chambers and blocs, one head-to-head table of paired lists, and copies between the sides.
 import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
+import { usePopupTabOrder } from '../focusReturn.ts';
 import { createPortal } from 'react-dom';
 import { ArrowLeftRight, MoreHorizontal, Redo2, Undo2 } from 'lucide-react';
 import { inputPart } from '../../model/editScopes.ts';
@@ -85,8 +86,11 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
   const [selected, setSelected] = useState<Set<string>>(new Set());
   // the "⋯" menu of a list row or of a key-numbers row (one kind of menu for both)
   const [menu, setMenu] = useState<({ key: string; anchor: HTMLElement } & ({ row: MatchRow } | { field: CopyField; label: string })) | null>(null);
-  // the menu is drawn at the end of the page, so it takes the focus when it opens (Escape gives it back to "⋯")
+  // the menu is drawn at the end of the page, so it takes the focus when it opens (Escape gives it back to "⋯"); Tab
+  // from its last control goes on to what follows the "⋯" button, Shift+Tab from its first goes back to the button
   const menuRef = useRef<HTMLSpanElement>(null);
+  const menuId = useId();
+  usePopupTabOrder(!!menu, () => menu?.anchor, menuId, () => setMenu(null));
   useEffect(() => { menuRef.current?.querySelector<HTMLElement>('.cmp-menu-item:not(:disabled)')?.focus({ preventScroll: true }); }, [menu?.key]);
   const [copyReq, setCopyReq] = useState<CopyRequest | null>(null);
   const [wholeReq, setWholeReq] = useState<WholeRequest | null>(null);
@@ -324,7 +328,7 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
     {!cross && <People left={left} right={right} />}
     {cross && <p className="small muted">{L('Lists are paired from party records', 'הרשימות מותאמות לפי רישומי המפלגות')} <Info title={L('Pairing lists', 'התאמת רשימות')}>{L('Pairs come from the party registry and documented lineage, never from names or ballot letters. A copy is a snapshot: later edits on the other side don’t change it. Seats are always recalculated.', 'ההתאמות לפי מרשם המפלגות והשושלת המתועדת, לעולם לא לפי שמות או אותיות. העתקה היא תמונת מצב: עריכות מאוחרות בצד השני אינן משנות אותה. המנדטים תמיד מחושבים מחדש.')}</Info></p>}
 
-    {menu && createPortal(<Floating anchor={() => menu.anchor.getBoundingClientRect()} className="cmp-menu" role="dialog" label={L('Row actions', 'פעולות לשורה')}>
+    {menu && createPortal(<Floating id={menuId} anchor={() => menu.anchor.getBoundingClientRect()} className="cmp-menu" role="dialog" label={L('Row actions', 'פעולות לשורה')}>
       <span ref={menuRef} className="cmp-menu-in" onKeyDown={(e) => { if (e.key === 'Escape') { e.stopPropagation(); setMenu(null); menu.anchor.focus(); } }}>
         {'row' in menu ? menuItems(menu.row, () => setMenu(null)) : bandItems(menu.field, menu.label, () => setMenu(null))}
         <button type="button" className="btn small ghost cmp-menu-item" onClick={() => setMenu(null)}>{L('Close', 'סגירה')}</button>
@@ -415,6 +419,9 @@ function Mark({ x, path }: { x: SideModel; path: readonly string[] }) {
   const L = useL(), lang = useLang();
   const ref = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
+  // the popup sits at the end of the page: Tab goes from the mark into it and on to what follows the mark
+  const popId = useId();
+  usePopupTabOrder(open, () => ref.current, popId, () => setOpen(false));
   const origin = listMarks(x, path[1]).find((m) => m.path.join('/') === path.join('/'))?.origin;
   const before = markerReference(x.sc, x.start, path);
   const part = inputPart(path);
@@ -423,7 +430,7 @@ function Mark({ x, path }: { x: SideModel; path: readonly string[] }) {
   const listId = path[0] === 'lists' ? path[1] : path[2];
   return <>
     <button ref={ref} type="button" className="cmp-mark" data-copied={origin ? 'true' : undefined} aria-label={text} aria-expanded={open} onClick={(e) => { e.stopPropagation(); setOpen(!open); }}>{word}</button>
-    {open && createPortal(<Floating anchor={() => ref.current?.getBoundingClientRect()} className="edit-tooltip cmp-mark-pop" role="dialog" label={text}>
+    {open && createPortal(<Floating id={popId} anchor={() => ref.current?.getBoundingClientRect()} className="edit-tooltip cmp-mark-pop" role="dialog" label={text}>
       <span onKeyDown={(e) => { if (e.key === 'Escape') { setOpen(false); ref.current?.focus(); } }}>{text}
         {origin && <span className="tiny muted cmp-snap">{L('A snapshot: later edits on the other side don’t change it.', 'תמונת מצב: עריכות מאוחרות בצד השני אינן משנות אותה.')}</span>}
         {part && <button type="button" className="btn small marker-restore" onClick={() => { x.apply({ type: 'startPart', part, source: 'saved', snapshot: partSnapshot(before, part), name: L('Starting point', 'נקודת ההתחלה'), ...(listId ? { listId } : {}) }); setOpen(false); }}>{L('Restore ', 'שחזור ')}{PARTS[part][lang]}</button>}

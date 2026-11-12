@@ -12,6 +12,7 @@ import { closeMkHistory, daysBetween, knessetName, knessetUrl, mkView, openMkHis
   type MkEvent, type MkRow, type MkRuntime, type MkView } from '../../history/mk.ts';
 import { Info } from './ui.tsx';
 import './mk-history.css';
+import { openModal } from '../focusReturn.ts';
 
 type T = (en: string, he: string) => string;
 const monthYear = (d: string, lang: Lang) => new Date(`${d}T12:00:00Z`).toLocaleDateString(appLocale(lang), { timeZone: 'UTC', month: 'short', year: 'numeric' });
@@ -69,7 +70,8 @@ function MkHistoryDialog({ rt, id }: { rt: MkRuntime; id: number }) {
   const L = useL(), lang = useLang();
   const ref = useRef<HTMLDialogElement>(null);
   const v = useMemo(() => mkView(rt, id), [rt, id]);
-  useEffect(() => { const d = ref.current; if (d && !d.open) d.showModal(); return () => { if (d?.open) d.close(); }; }, []);
+  // closing gives focus back to what opened it
+  useEffect(() => openModal(ref.current), []);
   useEffect(() => { ref.current?.scrollTo({ top: 0 }); }, [id]);
   if (!v) return null;
   const name = lang === 'he' || !v.en ? v.he : v.en;

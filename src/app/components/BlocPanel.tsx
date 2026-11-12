@@ -19,6 +19,7 @@ import { StartFrom } from './StartFrom.tsx';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { EditMarker } from './EditMarker.tsx';
 import { Plus, Trash2, X } from 'lucide-react';
+import { usePanelFocus } from '../focusReturn.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { groupingLabel, blocPieces, listLabel } from '../derive.ts';
@@ -89,6 +90,8 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
   }, [s, r]);
   const seatsIn = (k: string) => (units.get(k) ?? []).reduce((t, u) => t + u.n, 0);
 
+  const panel = useRef<HTMLElement>(null);
+  usePanelFocus(panel, focus);
   useEffect(() => { const card = cards.current[focus], body = card?.closest('.sp-body');
     // screen distances are zoomed under Large text; scrollTop is not
     if (card && body) body.scrollTop += (card.getBoundingClientRect().top - body.getBoundingClientRect().top) / textZoom(); }, [focus]);
@@ -139,11 +142,11 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
   const schemes = s.blocSchemes ?? [];
 
   return (
-    <aside className="panel side-panel bloc-panel" aria-label={L('Edit blocs', 'עריכת גושים')}>
+    <aside ref={panel} className="panel side-panel bloc-panel" aria-label={L('Edit blocs', 'עריכת גושים')}>
       {ds && <div className="sheet-scenario-switcher"><ScenarioSwitcher s={s} ds={ds} /></div>}
       <header className="sp-head">
         <div style={{ minWidth: 0, flex: 1 }}>
-          <h2 style={{ margin: 0 }}>{L('Blocs', 'גושים')}</h2>
+          <h2 style={{ margin: 0 }} tabIndex={-1} data-panel-heading>{L('Blocs', 'גושים')}</h2>
           <div className="small ink2">{L('Drag a list or party to another bloc, or choose it and then the bloc. Seats and votes do not change.', 'גררו רשימה או מפלגה לגוש אחר, או בחרו בה ואז בגוש. המנדטים והקולות אינם משתנים.')}</div>
         </div>
         <button className="btn ghost icon-only" aria-label={L('Close', 'סגירה')} onClick={() => setState({ blocPanel: null })}><X className="icon" aria-hidden /></button>

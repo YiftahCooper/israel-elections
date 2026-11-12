@@ -209,8 +209,9 @@ function Chamber({ term, view, ds, mk }: { term: TermRuntime; view: StepView; ds
   const hover = useHoverIntent(() => setOpen(null), !!open);
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { e.stopImmediatePropagation(); setOpen(null); } };
-    const onDoc = (e: PointerEvent) => { const t = e.target as Element; if (!t.closest?.('.tl-card') && !t.closest?.('[data-tl-seat]')) setOpen(null); };
+    // a sheet opened from the card (an MK's history) closes on its own Escape and keeps the card, for focus to return to
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape' && !(e.target as Element).closest?.('dialog')) { e.stopImmediatePropagation(); setOpen(null); } };
+    const onDoc = (e: PointerEvent) => { const t = e.target as Element; if (!t.closest?.('.tl-card, [data-tl-seat], dialog')) setOpen(null); };
     document.addEventListener('keydown', onKey, true); document.addEventListener('pointerdown', onDoc);
     return () => { document.removeEventListener('keydown', onKey, true); document.removeEventListener('pointerdown', onDoc); };
   }, [open]);
