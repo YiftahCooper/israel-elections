@@ -13,7 +13,7 @@ import { X } from 'lucide-react';
 import { createPortal } from 'react-dom';
 import { allocationOf, baselineOf, ruleChanges, scenarioIssues, tieAffectsSeats, warningText } from './derive.ts';
 import { LangContext, useL } from './i18n.ts';
-import { dispatch, getState, loadElectionIndex, openElection, openSharedFromHash, redo, restoreWorkspace, setSetting, setState, undo, useSetting, useStore } from './store.ts';
+import { dispatch, getState, loadElectionIndex, openElection, openSharedFromHash, redo, restoreWorkspace, setSetting, setState, storageLossText, undo, useSetting, useStore } from './store.ts';
 import { Figures as FiguresView } from './components/Figures.tsx';
 import { BlocBar as BlocBarView } from './components/Blocs.tsx';
 import { ListBars as ListBarsView } from './components/ListBars.tsx';
@@ -140,6 +140,7 @@ function Shell() {
   const loadError = useStore((st) => st.loadError);
   const elections = useStore((st) => st.elections);
   const notice = useStore((st) => st.notice);
+  const storageLoss = useStore((st) => st.storageLoss);
   const lang = useStore((st) => st.lang);
   const level = useStore((st) => st.level);
   const customFeatures = useStore(st => st.customFeatures);
@@ -266,6 +267,7 @@ function Shell() {
         {loadBanner}
 
         {notice && <div className="banner note" role="status"><span className="banner-text">{notice}</span> <button className="btn small ghost icon-only" onClick={() => setState({ notice: null })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
+        {storageLoss && <div className="banner note" role="status"><span className="banner-text">{storageLossText(storageLoss, lang)}</span> <button className="btn small ghost icon-only" onClick={() => setState({ storageLoss: null })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
         {tool !== 'board' && r.warnings.filter((w) => w.code !== 'internal-loss').map((w, i) => tieAffectsSeats(s, w)
           ? <div key={`w${i}`} className="banner warn" role="alert">{warningText(w, s, lang)}</div>
           : <div key={`w${i}`} className="banner note" role="status">{warningText(w, s, lang)}</div>)}

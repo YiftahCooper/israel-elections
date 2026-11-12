@@ -31,7 +31,7 @@ for(const id of ['k26','k25','k1'] as const)it(`${id}: appearance is saved witho
  const loaded=replay(ds,'My colours',s.log.map(e=>e.action)).scenario;
  expect(loaded.lists.map(l=>l.color)).toEqual(s.lists.map(l=>l.color));
  expect(loaded.blocs).toEqual(s.blocs);
- expect(scenarioKey({scenario:loaded,reference:loaded,saved:[{id:loaded.id,electionId:id,name:'My colours',savedAt:'',baseBuiltAt:loaded.baseBuiltAt,log:loaded.log.map(e=>e.action)}]})).toBe('official');
+ expect(scenarioKey({scenario:loaded,reference:loaded,saved:[{id:loaded.id,electionId:id,name:'My colours',savedAt:'',baseBuiltAt:loaded.baseBuiltAt,log:loaded.log.map(e=>e.action)}]})).toBe(loaded.id); // saved, it is its own document (c-state-code-02)
  const edited=applyAction(s,{type:'setVotes',listId:s.lists[0].id,votes:s.lists[0].votes+1},undefined,ctx);
  expect(referenceChanges(edited,base).length).toBeGreaterThan(0);
  const restoredVotes=applyAction(edited,{type:'resetVotes',listId:s.lists[0].id},undefined,ctx);

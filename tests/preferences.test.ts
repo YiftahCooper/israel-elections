@@ -73,8 +73,8 @@ test('stored item answers accept only known questions, elections, scopes and val
   expect(validItemAnswers({
     'voteSource:k25:list:a': 'new', 'voteSource:k26:list:a': 'proportional',
     'voteSource:k27:list:a': 'new', 'voteSource:k1:list:': 'new',
-    'voteSource:k1:list:a': 'invalid', 'comparison::saved': 'official',
-  })).toEqual({ 'voteSource:k25:list:a': 'new', 'voteSource:k26:list:a': 'proportional' });
+    'voteSource:k1:list:a': 'invalid', 'comparison::saved': 'official', 'comparison::other': 'new', 'comparison:k25:saved': 'official',
+  })).toEqual({ 'voteSource:k25:list:a': 'new', 'voteSource:k26:list:a': 'proportional', 'comparison::saved': 'official' }); // c-state-code-03: "For this scenario" is kept
 });
 test('item answers are isolated per election and stale list targets are ignored', () => {
   const run = vi.fn();

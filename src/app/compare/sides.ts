@@ -1,12 +1,12 @@
 // Compare's two sides. The right side IS the main scenario (an edit there is an Overview edit, with the same undo);
 // the other side is a separate draft per comparator, kept for the session with its own undo, redo and Start over.
 import { useSyncExternalStore } from 'react';
-import type { ElectionDataset, ElectionId } from '../../data/schema.ts';
+import { ELECTION_IDS, type ElectionDataset, type ElectionId } from '../../data/schema.ts';
 import { applyAction } from '../../model/actions.ts';
 import { errorText } from '../../model/messages.ts';
 import { validAction, type Action, type Scenario } from '../../model/scenario.ts';
 import { baselineOf } from '../factionDefaults.ts';
-import { getState, loadDataset, openElection, replay, setState, toast } from '../store.ts';
+import { getState, loadDataset, noteStorageLoss, openElection, replay, setState, toast } from '../store.ts';
 import type { MatchOverride } from './match.ts';
 
 /** Owner default (7 Nov): copy arrows show on hover, focus or selection; on touch screens (no hover) always. */
@@ -67,7 +67,7 @@ export async function copyComparisonLink(c: ComparisonLink) {
   try { await navigator.clipboard.writeText(await comparisonLink(c)); toast('info', he ? 'הקישור הועתק. הוא פותח את שני הצדדים ואת ההתאמות שלכם.' : 'Link copied. It opens both sides and your pairings.'); }
   catch { toast('error', he ? 'הדפדפן סירב להעתיק את הקישור.' : 'The browser refused to copy the link.'); }
 }
-const validSide = (x: unknown): x is SideLink => !!x && typeof x === 'object' && typeof (x as SideLink).e === 'string' && typeof (x as SideLink).n === 'string' && Array.isArray((x as SideLink).l) && (x as SideLink).l.every(validAction);
+const validSide = (x: unknown): x is SideLink => !!x && typeof x === 'object' && ELECTION_IDS.includes((x as SideLink).e) && typeof (x as SideLink).n === 'string' && Array.isArray((x as SideLink).l) && (x as SideLink).l.every(validAction);
 const validLink = (c: unknown): c is ComparisonLink => !!c && typeof c === 'object' && (c as ComparisonLink).v === 1 && validSide((c as ComparisonLink).main) && validSide((c as ComparisonLink).other) && Array.isArray((c as ComparisonLink).m);
 export async function readComparison(hash: string): Promise<ComparisonLink | null> {
   const m = hash.match(/#c=([A-Za-z0-9_-]+)/);
@@ -116,8 +116,18 @@ const validSaved = (c: unknown): c is SavedComparison => !!c && typeof c === 'ob
   && typeof (c as SavedComparison).savedAt === 'string' && validLink((c as SavedComparison).link);
 const SAVED = 'israel-elections:comparisons';
 export interface SavedComparison { id: string; name: string; savedAt: string; link: ComparisonLink }
+/** The readable saved comparisons; any that cannot be read are left out and said to be (once, in the storage line). */
 const read = (): SavedComparison[] => {
-  try { const x: unknown = JSON.parse(localStorage.getItem(SAVED) ?? '[]'); return Array.isArray(x) ? x.filter(validSaved) : []; } catch { return []; }
+  let raw: string | null;
+  try { raw = localStorage.getItem(SAVED); } catch { return []; } // storage blocked: nothing to read
+  if (raw === null) return [];
+  let x: unknown;
+  try { x = JSON.parse(raw); } catch { x = null; }
+  const ok = Array.isArray(x) ? x.filter(validSaved) : [];
+  const lost = Array.isArray(x) ? x.length - ok.length : -1;
+  // read while a screen renders, so it is reported (and the readable ones kept on their own) just after
+  if (lost) queueMicrotask(() => { try { localStorage.setItem(SAVED, JSON.stringify(ok)); } catch { /* refused: said again next time */ } noteStorageLoss({ comparisons: lost }); });
+  return ok;
 };
 // one snapshot, refreshed on every change here, so Compare's picker and the Scenarios page stay in step
 let cache: SavedComparison[] | null = null;

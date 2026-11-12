@@ -9,9 +9,9 @@ import { PRESETS, type FeatureId, type Visibility } from './features.ts';
 import { validSettings, settingValue, settingDefault, withLinked, LINKED, SETTINGS_KEY, SETTING_IDS, type RowId, type SettingId, type SettingValues } from './settings.ts';
 // Application state. Undo/redo keeps immutable scenario snapshots; saved scenarios remain action logs.
 import { useSyncExternalStore } from 'react';
-import { ELECTION_IDS, type ElectionDataset, type ElectionId, type ElectionIndexEntry } from '../data/schema.ts';
+import { DATASET_SCHEMA_VERSION, ELECTION_IDS, type ElectionDataset, type ElectionId, type ElectionIndexEntry } from '../data/schema.ts';
 import { ActionError, applyAction } from '../model/actions.ts';
-import { errorText } from '../model/messages.ts';
+import { errorText, M, type StorageLoss } from '../model/messages.ts';
 import { validAction, scenarioFromDataset, validateScenario, type Action, type ActionContext, type ChangeEntry, type Scenario } from '../model/scenario.ts';
 import type { Lang } from './i18n.ts';
 import type { SourceChoice } from './voteEdit.ts';
@@ -74,6 +74,8 @@ export interface State {
    *  pair, the frozen copy of your work, the work kept aside by Swap, which chamber the seat chart shows and the screen
    *  Side by side returns to. See src/app/compare/mode.ts and sides.ts. */
   compare: { drafts: Record<string, ScenarioSession>; overrides: Record<string, import('./compare/match.ts').MatchOverride[]>; snapshot: Scenario | null; swapped: ScenarioSession | null; chamber: 'work' | 'ref'; back: string | null };
+  /** what this browser kept and the app could not read, and so left out (said once, in one line, until dismissed) */
+  storageLoss: StorageLoss | null;
 }
 
 const LS = 'israel-elections:v1';
@@ -93,38 +95,83 @@ export async function loadElectionIndex() {
     setState({ elections: [...rows].sort((a, b) => b.date.localeCompare(a.date)) });
   } catch { /* keep the fallback */ }
 }
+// Browser storage is outside the app's control (another version, an extension, a hand edit): every stored value is
+// checked before use. Anything malformed falls back to its default so the app always starts; what could not be read is
+// said once, in one plain line (storageLoss), and everything that can be read is kept.
+const isRecord = (x: unknown): x is Record<string, unknown> => !!x && typeof x === 'object' && !Array.isArray(x);
+const stored = (key: string): string | null => { try { return globalThis.localStorage?.getItem(key) ?? null; } catch { return null; } };
+/** A stored JSON value: undefined when there is none, `unreadable` when it does not parse. */
+const unreadable = Symbol('unreadable');
+const storedJson = (key: string): unknown => { const raw = stored(key); if (raw === null) return undefined; try { return JSON.parse(raw); } catch { return unreadable; } };
+const startupLoss: StorageLoss = {};
 const ITEM_PREFERENCES_KEY = 'israel-elections:item-preferences';
-const rememberedItems = (() => { try { return validItemAnswers(JSON.parse(globalThis.localStorage?.getItem(ITEM_PREFERENCES_KEY) ?? '{}')); } catch { return {}; } })();
+const rememberedItems = (() => {
+  const x = storedJson(ITEM_PREFERENCES_KEY);
+  if (x === undefined) return {};
+  const ok = validItemAnswers(x === unreadable ? null : x);
+  if (!isRecord(x) || Object.keys(ok).length < Object.keys(x).length) startupLoss.settings = true;
+  return ok;
+})();
 const PREFERENCES_KEY = 'israel-elections:preferences';
-const rememberedPreferences = (() => { try { const raw = globalThis.localStorage?.getItem(PREFERENCES_KEY); return raw ? validAnswers(JSON.parse(raw)) : {}; } catch { return {}; } })();
+const rememberedPreferences = (() => {
+  const x = storedJson(PREFERENCES_KEY);
+  if (x === undefined) return {};
+  const ok = validAnswers(x === unreadable ? null : x);
+  if (!isRecord(x) || Object.keys(ok).length < Object.keys(x).length) startupLoss.settings = true;
+  return ok;
+})();
 // Joint lists start counted by party unless the user turned it off (israel-elections-private docs/design/settings.md)
 setFactionDefault(rememberedPreferences.jointSeats !== 'off');
-// Browser storage is outside the app's control (another version, an extension, a hand edit): every stored value is
-// checked before use, and anything malformed falls back to its default so the app always starts.
-const isRecord = (x: unknown): x is Record<string, unknown> => !!x && typeof x === 'object' && !Array.isArray(x);
 const VISIBILITIES: readonly unknown[] = ['show', 'collapsed', 'hidden'];
+/** A saved scenario is readable when its identity is; a step of its log the app does not know is kept, and reported as
+ *  not re-applied when the scenario is opened (replay). */
 const validSaved = (x: unknown): x is SavedScenario => isRecord(x) && typeof x.id === 'string' && typeof x.name === 'string'
   && ELECTION_IDS.includes(x.electionId as ElectionId) && typeof x.savedAt === 'string' && typeof x.baseBuiltAt === 'string'
-  && Array.isArray(x.log) && x.log.every(validAction) && (x.description === undefined || typeof x.description === 'string')
+  && Array.isArray(x.log) && x.log.every((a) => isRecord(a) && typeof a.type === 'string') && (x.description === undefined || typeof x.description === 'string')
   && (x.factionSplitBaseline === undefined || typeof x.factionSplitBaseline === 'boolean');
-const persisted: Record<string, unknown> = (() => { try { const x: unknown = JSON.parse(globalThis.localStorage?.getItem(LS) ?? '{}'); return isRecord(x) ? x : {}; } catch { return {}; } })();
+const persisted: Record<string, unknown> = (() => {
+  const x = storedJson(LS);
+  if (x === undefined) return {};
+  if (isRecord(x)) return x;
+  startupLoss.settings = true; startupLoss.saved = -1; // nothing in it could be read
+  return {};
+})();
 const persistedFeatures = isRecord(persisted.customFeatures)
   ? Object.fromEntries(Object.entries(persisted.customFeatures).filter(([k, v]) => k in PRESETS.expert && VISIBILITIES.includes(v))) as Partial<Record<FeatureId, Visibility>>
   : null;
 // pre-release: only the current key is read; nothing older is carried over (israel-elections-private docs/design/settings.md)
-const rememberedSettings = (() => { try { const raw = JSON.parse(globalThis.localStorage?.getItem(SETTINGS_KEY) ?? 'null'); return raw?.v === 2 ? validSettings(raw.values) : {}; } catch { return {}; } })();
+const rememberedSettings = (() => {
+  const x = storedJson(SETTINGS_KEY);
+  if (x === undefined) return {};
+  const values = isRecord(x) && x.v === 2 && isRecord(x.values) ? x.values : null;
+  const ok = values ? validSettings(values) : {};
+  if (!values || Object.keys(ok).length < Object.keys(values).length) startupLoss.settings = true;
+  return ok;
+})();
 const deviceDark = () => globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches === true;
 const resolvedTheme = (pref: SettingValues['theme']): 'light' | 'dark' => pref === 'device' ? (deviceDark() ? 'dark' : 'light') : pref;
 const initialLevel: Level = LEVELS.includes(persisted.level as Level) ? persisted.level as Level : 'simple';
 const TOOL_IDS = new Set(['board', 'families', 'scenarios', 'whatif', 'coal', 'walk', 'structure', 'security', 'charts', 'turnout', 'sens', 'loc', 'rules', 'sources']);
+const persistedSaved = Array.isArray(persisted.saved) ? persisted.saved.filter(validSaved) : [];
+if (persisted.saved !== undefined) {
+  const lost = Array.isArray(persisted.saved) ? persisted.saved.length - persistedSaved.length : -1;
+  if (lost) startupLoss.saved = lost;
+}
+if ((persisted.lang !== undefined && persisted.lang !== 'he' && persisted.lang !== 'en')
+  || (persisted.level !== undefined && !LEVELS.includes(persisted.level as Level))
+  || (persisted.tool !== undefined && persisted.tool !== null && !TOOL_IDS.has(persisted.tool as string))
+  || (persisted.markOfficial !== undefined && typeof persisted.markOfficial !== 'boolean')
+  || (persisted.customFeatures !== undefined && persisted.customFeatures !== null
+    && (!isRecord(persisted.customFeatures) || Object.keys(persistedFeatures!).length < Object.keys(persisted.customFeatures).length))) startupLoss.settings = true;
 
 let state: State = {
   datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, reference: null, markOfficial: persisted.markOfficial === true, past: [], future: [], selectedListId: null, blocPanel: null,
   tool: settingValue(rememberedSettings, 'openOn', initialLevel) === 'last' && TOOL_IDS.has(persisted.tool as string) ? persisted.tool as string : null, comparing: null,
   lang: persisted.lang === 'en' ? 'en' : 'he', theme: resolvedTheme(settingValue(rememberedSettings, 'theme', initialLevel)),
   level: initialLevel, customFeatures: persistedFeatures, settings: rememberedSettings,
-  saved: Array.isArray(persisted.saved) ? persisted.saved.filter(validSaved) : [], toast: null, loadError: null, notice: null, voteSource: sourceChoice(rememberedPreferences.voteSource ?? 'proportional'), preferences: rememberedPreferences, preferenceAsk: null, preferenceFor: rememberedItems, sessions: {}, scenarioDrafts: {},
+  saved: persistedSaved, toast: null, loadError: null, notice: null, voteSource: sourceChoice(rememberedPreferences.voteSource ?? 'proportional'), preferences: rememberedPreferences, preferenceAsk: null, preferenceFor: rememberedItems, sessions: {}, scenarioDrafts: {},
   compare: { drafts: {}, overrides: {}, snapshot: null, swapped: null, chamber: 'work', back: null },
+  storageLoss: Object.keys(startupLoss).length ? startupLoss : null,
 };
 const listeners = new Set<() => void>();
 const emit = () => { for (const l of listeners) l(); };
@@ -139,6 +186,14 @@ const persist = (): boolean => {
 };
 
 export const getState = () => state;
+/** Adds to what is said could not be read (counts add up; see StorageLoss). */
+export function noteStorageLoss(loss: StorageLoss) {
+  const was = state.storageLoss ?? {};
+  const add = (a?: number, b?: number) => (a === undefined ? b : b === undefined ? a : a < 0 || b < 0 ? -1 : a + b);
+  setState({ storageLoss: { ...was, ...loss, saved: add(was.saved, loss.saved), comparisons: add(was.comparisons, loss.comparisons), workspace: was.workspace || loss.workspace, settings: was.settings || loss.settings } });
+}
+/** The one line that says what could not be read, in the reader's language (null: nothing). */
+export const storageLossText = (loss: StorageLoss | null, lang: Lang): string | null => (loss ? M.storageLost(loss)[lang === 'he' ? 'he' : 'en'] : null);
 export function setState(patch: Partial<State> | ((s: State) => Partial<State>)) {
   const p = typeof patch === 'function' ? patch(state) : patch;
   // any committed change to the scenario ends a live preview
@@ -252,12 +307,20 @@ export function redo() {
   setState({ scenario: future[0], past: [...past, scenario], future: future.slice(1) });
 }
 
+/** The parts of an election data file the app relies on before anything is drawn. */
+const validDataset = (x: unknown, id: ElectionId): x is ElectionDataset => isRecord(x) && x.schemaVersion === DATASET_SCHEMA_VERSION && x.id === id
+  && isRecord(x.totals) && isRecord(x.buildInfo) && typeof x.buildInfo.builtAt === 'string' && Array.isArray(x.blocs) && Array.isArray(x.agreements)
+  && (x.blocSchemes === undefined || Array.isArray(x.blocSchemes))
+  && Array.isArray(x.lists) && x.lists.every((l) => isRecord(l) && typeof l.id === 'string' && typeof l.votes === 'number' && Array.isArray(l.candidates));
 export async function loadDataset(id: ElectionId): Promise<ElectionDataset> {
   const have = state.datasets[id];
   if (have) return have;
   const res = await fetch(`data/${id}.json`);
   if (!res.ok) throw new Error(`data/${id}.json: HTTP ${res.status}`);
-  const ds = (await res.json()) as ElectionDataset;
+  let ds: unknown;
+  try { ds = await res.json(); } catch { throw new Error(`data/${id}.json: not a data file`); }
+  // a file of another shape (a cached copy from another version of the app) is a load error, never a blank page
+  if (!validDataset(ds, id)) throw new Error(`data/${id}.json: made for another version of the app`);
   setState((s) => ({ datasets: { ...s.datasets, [id]: ds } }));
   return ds;
 }
@@ -267,7 +330,8 @@ export function replay(ds: ElectionDataset, name: string, log: Action[], splitBa
   let s = { ...scenarioFromDataset(ds, name, splitBaseline) };
   let failed = 0;
   const ctx = { base: scenarioFromDataset(ds, 'historical', splitBaseline) };
-  for (const a of log) { try { s = applyAction(s, a, undefined, ctx); } catch { failed++; } }
+  // a step the app cannot read (an older or damaged link, file or store) is not re-applied, and counted as such
+  for (const a of log) { if (!validAction(a)) { failed++; continue; } try { s = applyAction(s, a, undefined, ctx); } catch { failed++; } }
   return { scenario: s, failed };
 }
 
@@ -284,6 +348,8 @@ export async function openElection(id: ElectionId, from?: { id?: string; name: s
     const ds = await loadDataset(id);
     if (seq !== openSeq) return false; // a later request superseded this one
     if (from && state.scenario?.electionId === id) stashCurrent();
+    // the unsaved work kept for this election while another was open is kept as a draft, not replaced
+    const kept = from && state.scenario?.electionId !== id && state.sessions[id] ? keepAside(state.sessions[id]!) : null;
     // keep the work of the election we are leaving, so switching back restores it (with undo)
     const leaving = state.scenario ? { [state.scenario.electionId]: { scenario: state.scenario, past: state.past, future: state.future, reference: state.reference } } : {};
     const sessions = { ...state.sessions, ...leaving };
@@ -303,7 +369,8 @@ export async function openElection(id: ElectionId, from?: { id?: string; name: s
       ({ scenario, past, future, reference } = sessions[id]!);
     }
     delete sessions[id];
-    setState({ electionId: id, scenario, reference, past, future, sessions, selectedListId: null, blocPanel: null, loadError: null, notice, compare: { ...state.compare, chamber: 'work' } });
+    setState({ electionId: id, scenario, reference, past, future, sessions, ...(kept ? { scenarioDrafts: { ...state.scenarioDrafts, ...kept } } : {}), selectedListId: null, blocPanel: null, loadError: null, notice, compare: { ...state.compare, chamber: 'work' } });
+    if (kept) keptToast();
     return true;
   } catch (e) {
     if (seq === openSeq) setState({ loadError: { id, message: e instanceof Error ? e.message : String(e) } });
@@ -316,10 +383,10 @@ export async function openElection(id: ElectionId, from?: { id?: string; name: s
 export function scenarioKey(st: Pick<State, 'scenario' | 'reference'> & Partial<Pick<State, 'saved' | 'datasets'>> = state): string | null {
   const s = st.scenario;
   if (!s) return null;
-  if(hasAppearance(s)&&(!factLog(s).length||st.datasets?.[s.electionId]&&!inputDiffs(s,baselineOf(st.datasets[s.electionId]!)).length)) return 'official';
-  const authored = s.log.some(e => e.action.type === 'rename' || e.action.type === 'setDescription');
-  if (!st.saved?.some(x => x.id === s.id) && !factLog(s).length && !authored) return 'official';
+  // a saved scenario, or one the user named or described, is its own document even when its facts are the official ones
   const entry = st.saved?.find(x => x.id === s.id);
+  const authored = s.log.some(e => e.action.type === 'rename' || e.action.type === 'setDescription');
+  if (!entry && !authored && (!factLog(s).length || hasAppearance(s) && st.datasets?.[s.electionId] && !inputDiffs(s, baselineOf(st.datasets[s.electionId]!)).length)) return 'official';
   const ds = st.datasets?.[s.electionId];
   const checkpoint = entry && ds ? { ...replay(ds, entry.name, entry.log, entry.factionSplitBaseline ?? false).scenario, name: entry.name, description: entry.description } : st.reference;
   const dirty = !checkpoint || scenarioDirty(s, checkpoint);
@@ -329,12 +396,19 @@ const isUnsavedKey = (key: string | null, st: Pick<State, 'saved'> = state) => !
 
 /** Keeps unsaved work, with its undo history, in the session drafts before another scenario replaces it. */
 export function stashCurrent(): boolean {
-  const s = state.scenario, key = scenarioKey();
-  if (!s || !key || !isUnsavedKey(key)) return false;
-  setState({ scenarioDrafts: { ...state.scenarioDrafts, [key]: { scenario: s, reference: state.reference, past: state.past, future: state.future } } });
-  toast('info', state.lang === 'he' ? 'השינויים שלא נשמרו נשארים במחליף התרחישים למפגש זה.' : 'Unsaved changes kept in the scenario switcher for this session.');
+  const s = state.scenario;
+  const kept = s && keepAside({ scenario: s, reference: state.reference, past: state.past, future: state.future });
+  if (!kept) return false;
+  setState({ scenarioDrafts: { ...state.scenarioDrafts, ...kept } });
+  keptToast();
   return true;
 }
+/** A session as a session draft under its switcher key; null when there is nothing unsaved in it. */
+function keepAside(x: ScenarioSession): Record<string, ScenarioSession> | null {
+  const key = scenarioKey({ scenario: x.scenario, reference: x.reference, saved: state.saved, datasets: state.datasets });
+  return key && isUnsavedKey(key) ? { [key]: x } : null;
+}
+const keptToast = () => toast('info', state.lang === 'he' ? 'השינויים שלא נשמרו נשארים במחליף התרחישים למפגש זה.' : 'Unsaved changes kept in the scenario switcher for this session.');
 
 /** Opens a saved scenario under its own identity (the reference its markers compare with). */
 export async function openSaved(x: SavedScenario): Promise<boolean> {
@@ -469,8 +543,10 @@ export function duplicateCurrent() {
   while (id === s.id || state.saved.some((x) => x.id === id)) id += 'x';
   const named: Scenario = { ...s, id, name: nextCopyName(s.name || (he ? 'תרחיש' : 'Scenario'), state.saved.map(x => x.name)) };
   const copy = applyAction(named, { type: 'setIdentityColor', color: nextScenarioColor(state.saved, s.electionId) });
+  const was = { scenario: s, reference: state.reference, past: state.past, future: state.future };
   setState({ scenario: copy, past: [], future: [] });
-  saveCurrent(copy.name);
+  // the browser refused to save (saveCurrent said why): the original stays open with its undo history
+  if (!saveCurrent(copy.name)) setState(was);
 }
 
 // ------------------------------------------------------------------ sharing (URL fragment)
@@ -499,8 +575,10 @@ export async function readSharedFromHash(): Promise<{ electionId: ElectionId; na
   if (!m) return null;
   try {
     const raw = await pipe(unb64url(m[1]), new DecompressionStream('deflate-raw'));
-    const p = JSON.parse(new TextDecoder().decode(raw));
-    return { electionId: p.e, name: p.n ?? '', ...(typeof p.d === 'string' ? { description: p.d } : {}), log: p.l ?? [], factionSplitBaseline: p.f === true, baseBuiltAt: p.b };
+    const p: unknown = JSON.parse(new TextDecoder().decode(raw));
+    // a link that does not name a known election with a list of changes is damaged; its steps are checked on replay
+    if (!isRecord(p) || !ELECTION_IDS.includes(p.e as ElectionId) || !Array.isArray(p.l) || !optionalOf(p.n, 'string') || !optionalOf(p.d, 'string') || !optionalOf(p.b, 'string')) return null;
+    return { electionId: p.e as ElectionId, name: (p.n as string | undefined) ?? '', ...(typeof p.d === 'string' ? { description: p.d } : {}), log: p.l as Action[], factionSplitBaseline: p.f === true, baseBuiltAt: p.b as string };
   } catch { return null; }
 }
 
@@ -611,10 +689,10 @@ export function useFeature(id: FeatureId) {
 // change logs (never as computed results), and rebuilt by replaying the logs against the same datasets. Undo is
 // rebuilt one change at a time. Nothing leaves the device.
 const WS = 'israel-elections:workspace:v1';
-type Snap = { factionSplitBaseline?: boolean; id: string; name: string; description?: string; identityColor?: string; electionId: ElectionId; log: ChangeEntry[]; ref: { factionSplitBaseline?: boolean; id: string; name: string; description?: string; log: ChangeEntry[] } | null };
+type Snap = { factionSplitBaseline?: boolean; id: string; name: string; description?: string; identityColor?: string; electionId: ElectionId; baseBuiltAt?: string; log: ChangeEntry[]; ref: { factionSplitBaseline?: boolean; id: string; name: string; description?: string; log: ChangeEntry[] } | null };
 type Workspace = { v: 1; electionId: ElectionId; current: Snap | null; sessions: Snap[]; drafts: [string, Snap][] };
 const snapOf = (x: ScenarioSession): Snap => ({ factionSplitBaseline: x.scenario.factionSplitBaseline, id: x.scenario.id, name: x.scenario.name, description: x.scenario.description, identityColor: x.scenario.identityColor,
-  electionId: x.scenario.electionId, log: x.scenario.log, ref: x.reference ? { factionSplitBaseline: x.reference.factionSplitBaseline, id: x.reference.id, name: x.reference.name, description: x.reference.description, log: x.reference.log } : null });
+  electionId: x.scenario.electionId, baseBuiltAt: x.scenario.baseBuiltAt, log: x.scenario.log, ref: x.reference ? { factionSplitBaseline: x.reference.factionSplitBaseline, id: x.reference.id, name: x.reference.name, description: x.reference.description, log: x.reference.log } : null });
 function writeWorkspace() {
   const st = state;
   if (!st.scenario) return;
@@ -635,7 +713,8 @@ listeners.add(() => {
 });
 // a reload or tab close inside the debounce still keeps the last edit
 globalThis.addEventListener?.('pagehide', () => { if (wsTimer) { clearTimeout(wsTimer); wsTimer = null; writeWorkspace(); } });
-/** Rebuilds a session from its log; its undo history is the log replayed one change at a time. */
+/** Rebuilds a session from its log; its undo history is the log replayed one change at a time. A step the app cannot
+ *  read is not re-applied, and counted as such. */
 function rebuild(ds: ElectionDataset, x: Snap): { session: ScenarioSession; failed: number } {
   const ctx = { base: scenarioFromDataset(ds, 'historical', x.factionSplitBaseline ?? false) };
   let failed = 0;
@@ -643,6 +722,7 @@ function rebuild(ds: ElectionDataset, x: Snap): { session: ScenarioSession; fail
     let s = from ?? scenarioFromDataset(ds, name, splitBaseline);
     const steps: Scenario[] = [];
     for (const e of entries.slice(from ? from.log.length : 0)) {
+      if (!isRecord(e) || typeof e.at !== 'string' || !validAction(e.action)) { failed++; continue; }
       steps.push(s);
       try { s = applyAction(s, e.action, undefined, ctx); const log = [...s.log.slice(0, -1), e]; carryEditScopes(s.log, log); s = { ...s, log }; } catch { failed++; }
     }
@@ -654,35 +734,64 @@ function rebuild(ds: ElectionDataset, x: Snap): { session: ScenarioSession; fail
   const scenario = { ...s, id: x.id, name: x.name, ...(x.description ? { description: x.description } : {}), ...(x.identityColor ? { identityColor: x.identityColor } : {}) };
   return { session: { scenario, reference: ref, past: steps.slice(-200), future: [] }, failed };
 }
-const validEntries = (x: unknown) => Array.isArray(x) && x.every((e) => isRecord(e) && typeof e.at === 'string' && validAction(e.action));
 const optionalOf = (x: unknown, type: string) => x === undefined || typeof x === type;
+/** A kept scenario is readable when its identity is (steps are checked one by one when it is rebuilt). */
 const validSnap = (x: unknown): x is Snap => isRecord(x) && typeof x.id === 'string' && typeof x.name === 'string' && ELECTION_IDS.includes(x.electionId as ElectionId)
-  && validEntries(x.log) && optionalOf(x.description, 'string') && optionalOf(x.identityColor, 'string') && optionalOf(x.factionSplitBaseline, 'boolean')
-  && (x.ref === null || isRecord(x.ref) && typeof x.ref.id === 'string' && typeof x.ref.name === 'string' && validEntries(x.ref.log) && optionalOf(x.ref.description, 'string') && optionalOf(x.ref.factionSplitBaseline, 'boolean'));
-const validWorkspace = (x: unknown): x is Workspace => isRecord(x) && x.v === 1 && ELECTION_IDS.includes(x.electionId as ElectionId) && validSnap(x.current)
-  && Array.isArray(x.sessions) && x.sessions.every(validSnap) && Array.isArray(x.drafts) && x.drafts.every((d) => Array.isArray(d) && d.length === 2 && typeof d[0] === 'string' && validSnap(d[1]));
-/** Restores the last workspace in this browser. Resolves false when there is none (or it cannot be read). */
+  && Array.isArray(x.log) && optionalOf(x.description, 'string') && optionalOf(x.identityColor, 'string') && optionalOf(x.factionSplitBaseline, 'boolean') && optionalOf(x.baseBuiltAt, 'string')
+  && (x.ref === null || isRecord(x.ref) && typeof x.ref.id === 'string' && typeof x.ref.name === 'string' && Array.isArray(x.ref.log) && optionalOf(x.ref.description, 'string') && optionalOf(x.ref.factionSplitBaseline, 'boolean'));
+/** The readable parts of the stored workspace; `lost` when anything stored could not be read. */
+function readWorkspace(): { ws: Workspace | null; lost: boolean } {
+  const x = storedJson(WS);
+  if (x === undefined) return { ws: null, lost: false };
+  if (!isRecord(x) || x.v !== 1 || !ELECTION_IDS.includes(x.electionId as ElectionId)) return { ws: null, lost: true };
+  const sessions = Array.isArray(x.sessions) ? x.sessions.filter(validSnap) : [];
+  const drafts = Array.isArray(x.drafts) ? x.drafts.filter((d): d is [string, Snap] => Array.isArray(d) && d.length === 2 && typeof d[0] === 'string' && validSnap(d[1])) : [];
+  const current = validSnap(x.current) ? x.current : null;
+  const lost = !current || !Array.isArray(x.sessions) || sessions.length < x.sessions.length || !Array.isArray(x.drafts) || drafts.length < x.drafts.length;
+  return { ws: { v: 1, electionId: x.electionId as ElectionId, current, sessions, drafts }, lost };
+}
+/** Restores the last workspace in this browser. Resolves false when there is none (or it cannot be read), and when an
+ *  election opened meanwhile (that choice wins; the restored work is then kept beside it, nothing is lost). */
 export async function restoreWorkspace(): Promise<boolean> {
   try { return await restoreWorkspaceFrom(); } catch { return false; } // a damaged workspace must never stop the app starting
 }
 async function restoreWorkspaceFrom(): Promise<boolean> {
-  let ws: Workspace | null = null;
-  try { const x: unknown = JSON.parse(localStorage.getItem(WS) ?? 'null'); ws = validWorkspace(x) ? x : null; } catch { return false; }
-  if (!ws || !ws.current) return false;
+  const { ws, lost } = readWorkspace();
+  if (lost) noteStorageLoss({ workspace: true });
+  if (!ws) return false;
+  const seq = ++openSeq;
   const ids = [...new Set([ws.electionId, ...ws.sessions.map(x => x.electionId), ...ws.drafts.map(([, x]) => x.electionId)])];
   const loaded = await Promise.allSettled(ids.map(id => loadDataset(id)));
   const ds = (id: ElectionId) => { const i = ids.indexOf(id); const r = loaded[i]; return r?.status === 'fulfilled' ? r.value : undefined; };
-  const main = ds(ws.electionId);
-  if (!main) return false;
-  let failed = 0;
-  const one = (x: Snap) => { const d = ds(x.electionId); if (!d) return null; const r = rebuild(d, x); failed += r.failed; return r.session; };
-  const current = one(ws.current)!;
-  const sessions: State['sessions'] = {};
-  for (const x of ws.sessions) if (x.electionId !== ws.electionId) { const r = one(x); if (r) sessions[x.electionId] = r; }
+  let failed = 0, rebuilt = false;
+  const one = (x: Snap) => {
+    const d = ds(x.electionId); if (!d) return null;
+    const r = rebuild(d, x); failed += r.failed;
+    if (x.baseBuiltAt && x.baseBuiltAt !== d.buildInfo.builtAt) rebuilt = true;
+    return r.session;
+  };
+  const current = ws.current && ds(ws.electionId) ? one(ws.current) : null;
+  const restored: ScenarioSession[] = [];
+  for (const x of ws.sessions) if (!current || x.electionId !== ws.electionId) { const r = one(x); if (r) restored.push(r); }
   const drafts: State['scenarioDrafts'] = {};
   for (const [k, x] of ws.drafts) { const r = one(x); if (r) drafts[k] = r; }
   const he = state.lang === 'he';
-  setState({ electionId: ws.electionId, ...current, sessions, scenarioDrafts: drafts, selectedListId: null, blocPanel: null, loadError: null,
-    notice: failed ? (he ? `${failed} שינויים מהביקור הקודם לא ניתן היה להחיל מחדש על הנתונים הנוכחיים.` : `${failed} change(s) from your last visit could not be re-applied to the current data.`) : null });
-  return true;
+  const notice = [failed ? (he ? `${failed} שינויים מהביקור הקודם לא ניתן היה להחיל מחדש על הנתונים הנוכחיים.` : `${failed} change(s) from your last visit could not be re-applied to the current data.`) : '',
+    rebuilt ? (he ? 'הנתונים ההיסטוריים נבנו מחדש מאז הביקור הקודם; השינויים שלא נשמרו הוחלו מחדש על הנתונים הנוכחיים.' : 'The historical data has been rebuilt since your last visit; your unsaved changes were re-applied to the current data.') : ''].filter(Boolean).join(' ') || null;
+  if (seq === openSeq && current) {
+    const sessions: State['sessions'] = {};
+    for (const r of restored) sessions[r.scenario.electionId] ??= r;
+    setState({ electionId: ws.electionId, ...current, sessions, scenarioDrafts: drafts, selectedListId: null, blocPanel: null, loadError: null, notice });
+    return true;
+  }
+  // Another election opened meanwhile, or the open scenario could not be read: what was restored is kept beside it, as
+  // that election's session when it has none, otherwise as a draft in the scenario switcher.
+  const sessions = { ...state.sessions }, scenarioDrafts = { ...drafts, ...state.scenarioDrafts };
+  for (const r of current ? [current, ...restored] : restored) {
+    const e = r.scenario.electionId;
+    if (e !== state.scenario?.electionId && !sessions[e]) sessions[e] = r;
+    else Object.assign(scenarioDrafts, keepAside(r));
+  }
+  setState({ sessions, scenarioDrafts, ...(notice ? { notice } : {}) });
+  return false;
 }

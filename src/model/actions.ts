@@ -556,6 +556,8 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       } else s = { ...s, lotteryWinners: {} };
       break;
     }
+    // a step this version does not know (an older or damaged link, file or store) is refused, never logged as done
+    default: throw new ActionError('unknown-action', M.invalid);
   }
   if(action.type==='resetList'||action.type==='restore'||action.type==='startPart'||action.type==='resetCandidates') {
     s={...s,lists:s.lists.map(l=>{const old=s0.lists.find(x=>x.id===l.id);return old?{...l,color:old.color,...(l.parties?{parties:l.parties.map(p=>{const color=old.parties?.find(x=>x.id===p.id)?.color;return color?{...p,color,customColor:old.parties?.find(x=>x.id===p.id)?.customColor}:p;})}:{})}:l;}),blocs:s.blocs.map(b=>({...b,color:s0.blocs.find(x=>x.id===b.id)?.color??b.color}))};

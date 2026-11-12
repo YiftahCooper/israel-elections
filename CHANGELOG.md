@@ -2,6 +2,15 @@
 
 ## 7 November 2026 — Settings
 
+- Scenarios (12 Nov, audit): opening a saved scenario, a share link or a comparison of another election no longer deletes the unsaved work kept for that election; it stays in the scenario switcher.
+- Scenarios (12 Nov, audit): a saved scenario that only changes colours was taken for the official result, so the switcher could not go back to the official result; it is now its own scenario.
+- Mark changes since (12 Nov, audit): the answer “For this scenario” is now remembered after a reload.
+- Links (12 Nov, audit): a step in a share link, saved scenario or kept work that this version cannot read is no longer silently skipped; it is counted in the “could not be re-applied” notice. A link that names an unknown election or has no list of changes is reported as damaged, not as a connection failure.
+- Start (12 Nov, audit): an election picked while the last visit is still being restored is no longer undone by the restore; the restored work is kept in the scenario switcher.
+- Duplicate (12 Nov, audit): when the browser refuses to save a duplicate, the original stays open with its undo history.
+- Start (12 Nov, audit): unsaved work restored after a data correction now says the data was rebuilt, as share links and saved scenarios do.
+- Start (12 Nov, audit): whatever this browser kept that cannot be read is now said in one line (saved scenarios, saved comparisons, unsaved work, settings), and everything readable is kept: one damaged saved scenario or one damaged part of the last visit's work no longer takes the rest with it.
+- Data (12 Nov, audit): an election data file from another version of the app shows the “Could not load” message with Try again instead of a blank page.
 - Party history (12 Nov, audit): HaOlam HaZeh's history continues as Meri. The Knesset renamed its faction מחנה רדיקלי ישראלי on 3 Jul 1973, shown as a rename; the list ran as מרי (העולם הזה – כח חדש) that December. The date is the faction's; the party's legal rename date is not known.
 - Party history (12 Nov, audit): the State List's history starts with its own 1969 list (National List, 4 seats) and continues inside Likud in 1973; they were two separate histories. The link rests on the Israel Democracy Institute's party profiles, so it is marked probable.
 - Party history (12 Nov, audit): each election shows the name the party ran under then, never a later one. New Right in April 2019 to 2020 is New Right, not Yamina (the joint list formed for September 2019); also Tkuma before 2021 (not “Religious Zionist Party”), Israel Resilience in 2019–2020 (not Blue and White), Otzma Leyisrael in 2013, Renewed Religious National Zionism in 2006 and New Hope in 2021–2022; the point card's “As …”, partner and leader names follow the same rule. Spelling variants of one name do not split a history.
