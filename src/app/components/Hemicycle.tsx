@@ -19,7 +19,7 @@ import { BlocMajorities } from './Majority.tsx';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
-import { allocationOf, listLabel, methodOf, seatBlocsOf, seatedOrder, candidateName, referenceLabel, comparisonGroups } from '../derive.ts';
+import { allocationOf, listLabel, methodOf, seatBlocsOf, seatedOrder, seatCandidate, candidateName, referenceLabel, comparisonGroups } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { arcLayout, annularRegions } from '../layout.ts';
 import { arcSeatSlots, trayBlocRegions, trayCell, trayShape, TRAY } from '../blocLine.ts';
@@ -76,6 +76,27 @@ function shade(hex: string, i: number): string {
   const ch = (v: number) => Math.round(f > 0 ? v + (255 - v) * f : v * (1 + f));
   const r = ch((n >> 16) & 255), g = ch((n >> 8) & 255), b = ch(n & 255);
   return `#${((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1)}`;
+}
+
+/** One row of the chamber's key. A joint list counted by party has one row per party, and one more for its seats whose
+ *  member has no recorded party (`p` null), so every seat drawn is in the key (audit c-screens-overview-02). */
+export interface ChamberKeyRow { key: string; l: SimList; p: NonNullable<SimList['parties']>[number] | null; byParty: boolean; n: number; colors: string[] }
+/** The key in the order the seats are drawn: each list where its first seat is, a list counted by party expanded into
+ *  its party rows in place (audit c-design-principles-06), with the colours its seats actually carry. */
+export function chamberKeyRows(s: Scenario, seats: SeatInfo[], look: JointLook): ChamberKeyRow[] {
+  const split = new Set(look === 'list' ? [] : s.factionSplits ?? []);
+  const rows = new Map<string, ChamberKeyRow>();
+  for (const st of seats) {
+    const byParty = split.has(st.listId), key = byParty ? `${st.listId}:${st.partyId ?? ''}` : st.listId;
+    let row = rows.get(key);
+    if (!row) {
+      const l = s.lists.find(x => x.id === st.listId)!;
+      rows.set(key, row = { key, l, p: byParty ? l.parties?.find(p => p.id === st.partyId) ?? null : null, byParty, n: 0, colors: [] });
+    }
+    row.n++;
+    if (!row.colors.includes(st.color)) row.colors.push(st.color);
+  }
+  return [...rows.values()];
 }
 
 /** `paired`: drawn beside its reference chamber (Compare), so the small reference chamber and change list are not repeated. */
@@ -230,12 +251,9 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     // the legend in chamber order, each list with its seat colour(s), and old → new only where the seats changed
     const groupsNow = comparisonGroups(s,r,base,br);
     const rowsY = vb.y+vb.height+extra+20;
-    const exportRows = legendRows.flatMap(({l,n,colors}) => {
-      const components = componentRows.filter(row=>row.l.id===l.id);
-      return components.length ? components.map(({p,n})=>({l,n,colors:[jointLook==='both'?l.color:partyDisplayColor(l,p.id)],label:componentName(l,p),inner:jointLook==='both'?partyDisplayColor(l,p.id):undefined as string | undefined}))
-        : [{l,n,colors,label:listLabel(l,lang),inner:undefined}];
-    });
-    exportRows.forEach(({l,n,colors,label,inner},i) => {
+    const exportRows = keyRows.map(({l,p,byParty,n,colors})=>({l,n,byParty,colors:p && jointLook==='both' ? [l.color] : colors,label:keyName(l,p,byParty),
+      inner:p && jointLook==='both' ? partyDisplayColor(l,p.id) : undefined as string | undefined}));
+    exportRows.forEach(({l,n,byParty,colors,label,inner},i) => {
       const x = colStart(i % 2), y = rowsY + Math.floor(i/2)*32, dir = rtlText ? -1 : 1;
       colors.forEach((c,k)=>{
         const dot = document.createElementNS(NS,'circle');
@@ -243,14 +261,14 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         if(inner) { const fill=dot.cloneNode() as SVGCircleElement;fill.setAttribute('r',String(7*PARTY_SHARE));fill.setAttribute('fill',inner);clone.appendChild(fill); }
       });
       const artwork = syntheticIconSvg(l);
-      if (artwork && !componentRows.some(row => row.l.id === l.id)) {
+      if (artwork && !byParty) {
         const tile = new DOMParser().parseFromString(artwork, 'image/svg+xml').documentElement;
         tile.innerHTML = tile.innerHTML.replaceAll('id="tile"', `id="tile-${i}"`).replaceAll('url(#tile)', `url(#tile-${i})`);
         tile.setAttribute('x', String(rtlText ? x - 44 : x)); tile.setAttribute('y', String(y - 19));
         tile.setAttribute('width', '44'); tile.setAttribute('height', '24'); clone.appendChild(tile);
       }
       const g = groupsNow.find(g=>g.bIds.includes(l.id));
-      const delta = !componentRows.some(row=>row.l.id===l.id) && g?.bIds.length===1 ? g.seatsB-g.seatsA : 0;
+      const delta = !byParty && g?.bIds.length===1 ? g.seatsB-g.seatsA : 0;
       const numbers = delta && g ? `${g.seatsA} → ${g.seatsB}` : String(n);
       const legend = svgText(x+dir*(artwork ? 50 : 8+colors.length*16),y,16,`${label.length>42?label.slice(0,41)+'…':label} \u2066${numbers}\u2069`);
       if (delta) {
@@ -292,7 +310,8 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   const remainderHow = L(`Seat won by ${m.en}`, `מנדט שהושג בשיטת ${m.he}`);
   const hv = hover ? listOf(hover.seat.listId) : null;
   const originalDataset = useStore(st => st.datasets[s.electionId]);
-  const cand = hover && hv ? seatedOrder(hv)[hover.seat.idx] ?? null : null;
+  // the member in this seat and their place on the full list (a candidate who was not seated keeps their place)
+  const { candidate: cand, place: candPlace } = hover && hv ? seatCandidate(hv, hover.seat.idx) : { candidate: null, place: null };
 
   // Only certain official identities use the Knesset's given-name-first display; user edits keep their text.
   function memberName(c: NonNullable<typeof cand>) {
@@ -364,7 +383,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         const dim = dimOthers && selected && selected !== st.listId;
         return <g key={i} {...seatButton(i)}>
           <rect data-seat="" data-bloc={st.bloc ?? "__none"} className={`seat ${dim ? 'dim' : ''}`} x={x} y={y} width={c} height={c} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--ink-2)'} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`)?4:1}
-            onMouseEnter={e => { if (hoverPopups) onSeatHover(st,e); }} onMouseLeave={hoverBridge.leave} onClick={e => { if (!hoverPopups) onSeat(st,e); setState({selectedListId: st.listId}); }}><title>{seatLabel(st)}</title></rect>
+            onMouseEnter={e => { if (hoverPopups) onSeatHover(st,e); }} onMouseLeave={hoverBridge.leave} onClick={e => { if (!hoverPopups) onSeat(st,e); setState({ selectedListId: selected === st.listId ? null : st.listId }); }}><title>{seatLabel(st)}</title></rect>
           {st.innerColor && <PartyDot partyId={st.partyId} x={x+c/2} y={y+c/2} r={c/2} square={{rx:4}} color={st.innerColor} className={dim ? 'seat dim' : 'seat'}/>}
         </g>;
       })}
@@ -374,9 +393,13 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
 
   // lists in the order their seats are drawn (blocs left to right, No bloc between their halves), each with the colours
   // its seats actually carry in the chosen colour mode
-  const legendRows = [...new Set(seats.map(st => st.listId))].map(id => ({ l: listOf(id), n: r.lists.find(x => x.id === id)?.seats ?? 0, colors: [...new Set(seats.filter(st => st.listId === id).map(st => st.color))] }));
-  const componentName = (l: SimList, p: NonNullable<SimList['parties']>[number]) => { const name = lang === 'he' ? p.nameHe : p.nameEn; return name === listLabel(l,lang) ? name : `${name} · ${listLabel(l,lang)}`; };
-  const componentRows = legendRows.flatMap(({l}) => (s.factionSplits ?? []).includes(l.id) && jointLook !== 'list' ? (l.parties ?? []).map(p => ({l,p,n:seats.filter(st=>st.listId===l.id && st.partyId===p.id).length})).filter(x=>x.n>0) : []);
+  const keyRows = chamberKeyRows(s, seats, jointLook);
+  // a party row names its party and its list; seats whose member has no recorded party keep the list's name
+  const keyName = (l: SimList, p: ChamberKeyRow['p'], byParty: boolean) => {
+    if (!byParty) return listLabel(l, lang);
+    const name = p ? (lang === 'he' ? p.nameHe : p.nameEn) : L('Party not recorded', 'מפלגה לא מתועדת');
+    return name === listLabel(l, lang) ? name : `${name} · ${listLabel(l, lang)}`;
+  };
   const head = !compactProp && (expertControl || standardControl || expert);
   return (
     <div className="chamber">
@@ -396,7 +419,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         <Floating onPointerEnter={hoverBridge.keep} onPointerLeave={hoverBridge.leave} className="tip" preferAbove anchor={() => hover.anchor.getBoundingClientRect()}
           role="dialog" label={seatNames[seats.indexOf(hover.seat)] ?? seatLabel(hover.seat)}><div ref={card} onBlur={onSeatsBlur}>
           <div className="row"><Slip {...hv} name={listLabel(hv, lang)} size="sm" /><b>{listLabel(hv, lang)}</b> <span className="muted">({hv.letters})</span></div>
-          {cand ? <div><b><CandidateName candidate={cand} text={hoverCandidateName} /></b> · {L('rank', 'מקום')} {hover.seat.idx + 1}{cand.notes?.map((n, k) => <div key={k} className="muted small">{lang === 'he' ? n.he : n.en}</div>)}</div>
+          {cand ? <div><b><CandidateName candidate={cand} text={hoverCandidateName} /></b> · {L('rank', 'מקום')} {candPlace}{cand.notes?.map((n, k) => <div key={k} className="muted small">{lang === 'he' ? n.he : n.en}</div>)}</div>
             : hv.rosterUnavailable || hv.rosterTruncated ? <div className="muted">{L(`Seat ${hover.seat.idx + 1} of the list; candidate names are not available for this election`, `מושב ${hover.seat.idx + 1} של הרשימה; שמות המועמדים אינם זמינים לבחירות אלה`)}</div>
             : <div className="bad">{L('Vacant — the list has too few candidates', 'מושב ריק — אין די מועמדים ברשימה')}</div>}
           {(hover.seat.partyId || cand?.partyHe) && <div className="muted small row">{hover.seat.partyColor && <PartyKey hover partyId={hover.seat.partyId} color={hover.seat.partyColor} ring={hover.seat.innerColor ? hv.color : undefined}/>}{seatLabel(hover.seat)}</div>}
@@ -423,10 +446,12 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       {!compactProp && (
         <div className="legend" data-key-off={chamberKey ? undefined : ''} role="group" aria-label={L('Lists in the Knesset', 'הרשימות בכנסת')} style={{ marginTop: 6 }}>
           {seats.some(st=>st.bloc===null) && <span className="row no-bloc-legend"><span className="swatch bloc-swatch unassigned" style={{['--bc' as string]:'var(--muted)'}} />{L('No bloc','ללא גוש')}</span>}
-          {componentRows.map(({l,p,n}) => <button key={`${l.id}:${p.id}`} aria-pressed={selected === l.id} onClick={()=>setState({selectedListId:selected === l.id ? null : l.id})}><PartyKey partyId={p.id} color={partyDisplayColor(l,p.id)} ring={jointLook === 'both' ? l.color : undefined}/>{componentName(l,p)} <b>{n}</b></button>)}
-          {legendRows.filter(({l})=>!componentRows.some(row=>row.l.id===l.id)).map(({ l, n }) => (
-            <ListKeyItem key={l.id} list={l} seats={n} pressed={selected === l.id} onPick={() => setState({ selectedListId: selected === l.id ? null : l.id })} />
-          ))}
+          {keyRows.map(({ key, l, p, byParty, n, colors }) => {
+            const pick = () => setState({ selectedListId: selected === l.id ? null : l.id });
+            return byParty
+              ? <button key={key} aria-pressed={selected === l.id} onClick={pick}>{p ? <PartyKey partyId={p.id} color={partyDisplayColor(l, p.id)} ring={jointLook === 'both' ? l.color : undefined} /> : <PartyKey color={l.color} />}{keyName(l, p, true)} <b className="tabnum"><bdi dir="ltr">{n}</bdi></b></button>
+              : <ListKeyItem key={key} list={l} seats={n} seatColors={colors} pressed={selected === l.id} onPick={pick} />;
+          })}
         </div>
       )}
       {!compactProp && standard && (
@@ -442,9 +467,10 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
 /** Who else held this seat during the term (owner decision F1, 11 Nov 2026): the official result only. */
 /** One list in a chamber's key: its slip, name and seats. Shared by this chamber and the term chamber on After the
  *  election; without `onPick` it is a plain label. */
-export function ListKeyItem({ list, seats, pressed, onPick }: { list: Parameters<typeof Slip>[0] & Parameters<typeof listLabel>[0]; seats: number; pressed?: boolean; onPick?: () => void }) {
+export function ListKeyItem({ list, seats, seatColors, pressed, onPick }: { list: Parameters<typeof Slip>[0] & Parameters<typeof listLabel>[0]; seats: number; seatColors?: string[]; pressed?: boolean; onPick?: () => void }) {
   const lang = useLang();
-  const body = <><span aria-hidden="true"><Slip {...list} name={listLabel(list, lang)} size="sm" /></span>{listLabel(list, lang)} <b className="tabnum"><bdi dir="ltr">{seats}</bdi></b></>;
+  // `seatColors`: the colours its seats carry, as the same dot the party rows use, so the whole key has one swatch
+  const body = <>{seatColors?.map(c => <PartyKey key={c} color={c} />)}<span aria-hidden="true"><Slip {...list} name={listLabel(list, lang)} size="sm" /></span>{listLabel(list, lang)} <b className="tabnum"><bdi dir="ltr">{seats}</bdi></b></>;
   return onPick ? <button aria-pressed={pressed} onClick={onPick}>{body}</button> : <span className="legend-item">{body}</span>;
 }
 

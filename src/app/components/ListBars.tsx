@@ -169,6 +169,14 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
                 </li>
               );
             })}
+            {/* members with no recorded party stay with the list: their seats are shown, so the rows add up to the list's */}
+            {(() => { const rest = lr.seats - electedOf(l, lr.seats).filter(c => l.parties!.some(p => p.id === c.partyId)).length; return rest > 0 && (
+              <li key="rest" data-party-rest="">
+                <Slip letters="" name={listLabel(l, lang)} color={l.color} />
+                <span className="lb-pname">{L('Party not recorded', 'מפלגה לא מתועדת')}</span>
+                <span className="lb-bar" aria-hidden><i style={{ width: `${(rest / scale) * 100}%`, background: l.color }} /></span>
+                <b>{rest}</b>
+              </li>); })()}
           </ul>
         )}
       </li>

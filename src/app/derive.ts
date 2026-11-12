@@ -144,6 +144,12 @@ export const candidateName = (c: { nameHe: string; displayNameHe?: string; nameE
 /** The candidates who fill a list's seats, in order: the roster minus those the official notice did not seat. */
 export const seatedOrder = (l: Pick<SimList, 'candidates'>) => l.candidates.filter((c) => !c.notSeated);
 export const electedOf = (l: SimList, seats: number) => seatedOrder(l).slice(0, seats);
+/** The member in a list's seat number `seat` (0-based) and that member's place on the full roster (1-based), which is
+ *  not the seat number once a candidate before them was not seated (1999 Shas: the first seat is No. 2). */
+export function seatCandidate(l: Pick<SimList, 'candidates'>, seat: number) {
+  const candidate = seatedOrder(l)[seat] ?? null;
+  return { candidate, place: candidate ? l.candidates.indexOf(candidate) + 1 : null };
+}
 
 const tieCache = new WeakMap<Scenario, Map<string, boolean>>();
 /** Whether choosing a different winner for this tie would change any list's final seats. */
