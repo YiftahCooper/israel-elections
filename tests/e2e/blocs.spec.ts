@@ -9,7 +9,7 @@ const start = async (page: Page, level: string) => {
     JSON.stringify({ lang: 'en', hintDismissed: true, level }));
   await page.goto('/');
   await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
-  await expect(page.getByRole('button', { name: 'Grouping', exact: true })).toHaveText(/37th government/);
+  await expect(page.getByRole('button', { name: 'Grouping', exact: true })).toHaveText(/Government 37 /);
 };
 const blocs = (page: Page) => page.getByRole('region', { name: 'Seats by bloc' });
 /** a bloc's band in the strip; its seat count is the bold figure in its label */
@@ -21,7 +21,7 @@ const listRow = (page: Page, name: string) => page.getByRole('region', { name: '
 test('an election opens on its first government, and other sourced groupings can be chosen', async ({ page }) => {
   await start(page, 'simple');
   const grouping = page.getByRole('button', { name: 'Grouping', exact: true });
-  await expect(grouping).toHaveText(/37th government/);
+  await expect(grouping).toHaveText(/Government 37 /);
   await expect(blocCount(page, 'Coalition')).toHaveText('64');
   await choose(grouping, 'pre-election-blocs');
   await expect(grouping).toContainText('Comparison groups · App');
@@ -64,7 +64,7 @@ test('moving one party of a joint list to another bloc moves only its members’
   expect(after - before).toBeLessThan(12); // only New Hope's members, not all of National Unity
   const grouping = page.getByRole('button', { name: 'Grouping', exact: true });
   await expect(grouping).toContainText('Your grouping');
-  await choose(grouping, { label: '37th government (Netanyahu VI)' });
+  await choose(grouping, { label: 'Government 37 (first government of the Knesset)' });
   await expect(blocCount(page, 'Coalition')).toHaveText(String(before));
 });
 

@@ -41,6 +41,8 @@
 .tl-sides { display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; margin-top: 4px; }
 .tl-sides > span { display: inline-flex; align-items: center; gap: 6px; }
 .tl-sides .swatch { width: 16px; height: 16px; border-radius: 3px; display: inline-block; }
+.tl-chamber .legend { justify-content: center; margin-top: 8px; }
+.tl-chamber .legend-item { display: inline-flex; gap: 6px; align-items: center; padding: 3px 0; }
 .tl-key { border-top: 1px solid var(--rule); margin-top: 10px; padding-top: 8px; display: grid; gap: 8px; }
 .tl-key .row { display: inline-flex; gap: 6px; align-items: center; }
 .tl-rebels ul { list-style: none; margin: 4px 0 0; padding-inline-start: 24px; display: grid; gap: 4px; }

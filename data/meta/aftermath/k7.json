@@ -32,6 +32,7 @@
     "coalition-1": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2015&$format=json",
       "publisher": "Knesset OData (ParliamentInfo)",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-06",
       "sourceId": "k7-government-15-positions"

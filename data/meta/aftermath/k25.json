@@ -46,12 +46,14 @@
     "news13-investiture": {
       "url": "https://13tv.co.il/item/news/politics/politics/new-goverment-903377286/?pid=101676",
       "publisher": "Channel 13 News",
+      "publisherHe": "חדשות 13",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
     "knesset-government37": {
       "url": "https://main.knesset.gov.il/mk/government/pages/governments.aspx?govId=37&govid=37",
       "publisher": "Knesset",
+      "publisherHe": "הכנסת",
       "kind": "official",
       "accessed": "2026-11-05"
     },

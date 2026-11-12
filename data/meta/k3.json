@@ -576,7 +576,7 @@
   "blocSchemes": [
     {
       "id": "first-government",
-      "nameHe": "הממשלה ה-7 (הממשלה הראשונה של הכנסת)",
+      "nameHe": "הממשלה ה־7 (הממשלה הראשונה של הכנסת)",
       "nameEn": "Government 7 (first government of the Knesset)",
       "kind": "government",
       "date": "1955-11-03",
@@ -665,7 +665,7 @@
     },
     {
       "id": "labour-affiliated-arab-lists",
-      "nameHe": "מפא\"י והרשימות הערביות המסונפות אליה (רשימות לוויין)",
+      "nameHe": "מפא״י והרשימות הערביות המסונפות אליה (רשימות לוויין)",
       "nameEn": "Mapai and its affiliated Arab (satellite) lists",
       "kind": "parliamentary",
       "date": "1955-07-26",

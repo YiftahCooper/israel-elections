@@ -93,6 +93,7 @@
     "idi-1981": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/elections/1981/",
       "publisher": "Israel Democracy Institute",
+      "publisherHe": "המכון הישראלי לדמוקרטיה",
       "kind": "academic",
       "accessed": "2026-11-05"
     },
@@ -142,12 +143,14 @@
     "opening-odata": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_KnessetDates?$filter=KnessetNum%20eq%209&$format=json",
       "publisher": "Knesset OData",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-06"
     },
     "dmc-odata": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2018%20and%20StartDate%20eq%20datetime'1977-10-24T00:00:00'&$format=json",
       "publisher": "Knesset OData",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-06"
     },
@@ -657,6 +660,9 @@
       {
         "id": "operation-litani",
         "date": "1978-03",
+        "orderDate": "1978-03-11",
+        "orderSeq": 1,
+        "orderBasis": "Month only. The Defense Ministry chronology cited here (mod-1972-1980) places the operation after the Coastal Road massacre of 11 March 1978: 'following which Israel launched the Litani Operation in Lebanon.' The day of the launch is not in the record's sources.",
         "category": "security",
         "textEn": "Israel launched Operation Litani in southern Lebanon after the Coastal Road terror attack.",
         "textHe": "ישראל פתחה במבצע ליטני בדרום לבנון בעקבות פיגוע כביש החוף.",

@@ -248,5 +248,111 @@ test('records added in this pass: the Lavon affair, the 1988 recommendations, Go
   await expect(history).not.toContainText('נבחר ברשימת');
   await choose(page.getByRole('button', { name: 'בחירות', exact: true }), 'k25');
   await history.getByText('שינויים בממשלה', { exact: true }).click();
-  await expect(history.locator('.after-government-change')).toHaveCount(9);
+  // 11 since the 12 Nov merge (Goldknopf 15 Jun 2025 and Porush/Tesler 17 Jul 2025 joined the nine fx-after rows)
+  await expect(history.locator('.after-government-change')).toHaveCount(11);
+});
+
+// Fix lane fx-after2 (audit 12 Nov 2026, second pass)
+for (const lang of ['en', 'he'] as const) test(`each recommendation group is named under its own run of the bar, left to right: ${lang}`, async ({ page }) => {
+  const history = await openAfter(page, 'k26', lang);
+  for (const id of ['k26', 'k25', 'k21', 'k22', 'k11', 'k9']) {
+    if (id !== 'k26') await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), id);
+    await expect(history).toHaveAttribute('data-election', id);
+    const round = history.locator('.after-round').first();
+    const geometry = await round.evaluate(root => {
+      const bar = root.querySelector('.after-bar')!.getBoundingClientRect();
+      const groups = [...root.querySelectorAll('.after-group')].map(g => g.getBoundingClientRect());
+      const brackets = [...root.querySelectorAll('.after-bracket')].map(g => g.getBoundingClientRect());
+      const labels = [...root.querySelectorAll<HTMLElement>('.after-group-label')].map(l => ({ key: l.dataset.group, box: l.getBoundingClientRect() }));
+      return { bar: { left: bar.left, right: bar.right }, groups: groups.map(g => ({ left: g.left, right: g.right })), brackets: brackets.map(g => ({ left: g.left, right: g.right })), labels: labels.map(l => ({ key: l.key, left: l.box.left, right: l.box.right, top: l.box.top, bottom: l.box.bottom })) };
+    });
+    expect(geometry.labels.length, id).toBe(geometry.groups.length);
+    geometry.groups.forEach((g, i) => {
+      // the bracket spans exactly its group's run of the bar
+      expect(Math.abs(geometry.brackets[i].left - g.left), `${id} bracket ${i}`).toBeLessThan(1.5);
+      expect(Math.abs(geometry.brackets[i].right - g.right), `${id} bracket ${i}`).toBeLessThan(1.5);
+      const l = geometry.labels[i]; const centre = (l.left + l.right) / 2;
+      // centred under its run; a label wider than a run at the bar's end ends with the bar instead, over its run
+      const atEnd = l.right - l.left > g.right - g.left && (Math.abs(l.right - geometry.bar.right) < 1.5 || Math.abs(l.left - geometry.bar.left) < 1.5);
+      if (atEnd) expect(l.left <= (g.left + g.right) / 2 && (g.left + g.right) / 2 <= l.right, `${id} ${l.key} covers its run`).toBe(true);
+      else expect(centre >= g.left - 0.5 && centre <= g.right + 0.5, `${id} ${l.key} centre ${centre} in ${g.left}–${g.right}`).toBe(true);
+      expect(l.left >= geometry.bar.left - 0.5 && l.right <= geometry.bar.right + 0.5, `${id} ${l.key} inside the bar's width`).toBe(true);
+    });
+    // no two labels overlap
+    for (const [i, a] of geometry.labels.entries()) for (const b of geometry.labels.slice(i + 1))
+      expect(a.right <= b.left || b.right <= a.left || a.bottom <= b.top || b.bottom <= a.top, `${id} ${a.key}/${b.key} overlap`).toBe(true);
+  }
+  // 2026: the 7 who made no recommendation sit at the right end in both languages, as on the bar
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k26');
+  const labels = history.locator('.after-round').first().locator('.after-group-label');
+  await expect(labels).toHaveText(lang === 'he' ? ['גדי איזנקוט 67', 'בנימין נתניהו 46', 'ללא המלצה 7'] : ['Gadi Eisenkot 67', 'Benjamin Netanyahu 46', 'No recommendation 7']);
+  const xs = await labels.evaluateAll(nodes => nodes.map(n => n.getBoundingClientRect().left));
+  expect(xs[0]).toBeLessThan(xs[1]); expect(xs[1]).toBeLessThan(xs[2]);
+});
+
+for (const lang of ['en', 'he'] as const) test(`an open mandate is drawn inside the timeline as ongoing, its name beside it: ${lang}`, async ({ page }) => {
+  const history = await openAfter(page, 'k26', lang);
+  const formation = history.locator('.after-formation');
+  const line = (await formation.locator('.after-date-line').boundingBox())!;
+  const mandate = formation.locator('.after-mandate');
+  await expect(mandate).toHaveAttribute('data-open', 'true');
+  await expect(mandate.locator('small')).toHaveText(lang === 'he' ? 'גדי איזנקוט · בתוקף' : 'Gadi Eisenkot · ongoing');
+  const bar = (await mandate.locator('span').boundingBox())!, name = (await mandate.locator('small').boundingBox())!;
+  expect(bar.width).toBeGreaterThan(20);
+  expect(bar.x + bar.width).toBeLessThanOrEqual(line.x + line.width + 1);
+  // the name ends where the bar ends, inside the line
+  expect(Math.abs(name.x + name.width - (bar.x + bar.width))).toBeLessThan(2);
+  expect(name.x).toBeGreaterThanOrEqual(line.x);
+  await expect(formation.locator('.after-date-line > span').last()).toContainText(lang === 'he' ? 'נבדק' : 'Checked');
+  // a closed mandate keeps its own end and no "ongoing"
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k25');
+  await expect(history.locator('.after-mandate[data-open]')).toHaveCount(0);
+});
+
+for (const lang of ['en', 'he'] as const) test(`the next-election button names the Knesset; the dissolution is said once: ${lang}`, async ({ page }) => {
+  const history = await openAfter(page, 'k22', lang);
+  await expect(history.locator('footer button.btn')).toHaveText(lang === 'he' ? '← הבחירות הבאות · 2020 · הכנסת ה־23' : '→ Next election · 2020 · 23rd Knesset');
+  await expect(history.locator('.after-events time[datetime="2019-12-12"]')).toHaveCount(1); // the dissolution, listed once
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k20');
+  await expect(history.locator('footer .after-events')).toHaveCount(1); // 2018: the dissolution is listed nowhere else
+  await expect(history.locator('footer button.btn')).toContainText(lang === 'he' ? 'אפריל 2019 · הכנסת ה־21' : 'April 2019 · 21st Knesset');
+});
+
+test('events never go backwards on the page, in all 26 elections', async ({ page }) => {
+  test.setTimeout(240_000);
+  const history = await openAfter(page, 'k1', 'en');
+  const audit: Record<string, string[]> = {};
+  for (let n = 1; n <= 26; n++) {
+    if (n > 1) await choose(page.getByRole('button', { name: 'Election', exact: true }), `k${n}`);
+    await expect(history).toHaveAttribute('data-election', `k${n}`);
+    const lists = await history.locator('ol.after-events').evaluateAll(ols => ols.map(ol => [...ol.children].map(li => li.querySelector('time')!.getAttribute('datetime')!)));
+    for (const dates of lists) dates.slice(1).forEach((d, i) => {
+      const a = dates[i], k = Math.min(a.length, d.length);
+      expect(d.slice(0, k) >= a.slice(0, k), `k${n}: ${a} then ${d}`).toBe(true);
+    });
+    audit[`k${n}`] = lists.flat();
+  }
+  // the audit's three cases
+  const k6 = await (async () => { await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k6'); return history.locator('section').filter({ has: page.getByRole('heading', { name: 'During the term' }) }).locator('li').allInnerTexts(); })();
+  expect(k6.findIndex(t => t.includes('national unity government'))).toBeLessThan(k6.findIndex(t => t.includes('fought Egypt, Jordan and Syria')));
+  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k9');
+  const k9 = await history.locator('section').filter({ has: page.getByRole('heading', { name: 'During the term' }) }).locator('li').allInnerTexts();
+  expect(k9.findIndex(t => t.includes('Coastal Road massacre'))).toBeLessThan(k9.findIndex(t => t.includes('Operation Litani')));
+  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k2');
+  const k2 = await history.locator('section').filter({ has: page.getByRole('heading', { name: 'Government formation' }) }).locator('li').allInnerTexts();
+  expect(k2.findIndex(t => t.includes('tasked Sharett'))).toBeLessThan(k2.findIndex(t => t.includes('confidence in government 6')));
+});
+
+for (const lang of ['en', 'he'] as const) test(`Sources: the election's own data leads; aftermath sources follow, named, one per address: ${lang}`, async ({ page }) => {
+  await openAfter(page, 'k26', lang);
+  await page.getByRole('tab', { name: lang === 'he' ? 'מקורות' : 'Sources', exact: true }).click();
+  const panel = page.locator('#analysis-panel');
+  await expect(panel.locator('h3').first()).toHaveText(lang === 'he' ? 'מצב הנתונים' : 'Data status');
+  const block = panel.locator('.after-sources');
+  const links = block.locator('.after-source-list > li > a');
+  await expect(links).toHaveCount(22);
+  for (const text of await links.allInnerTexts()) expect(text).not.toMatch(/^www\.|\.(com|org|il)$/);
+  await expect(links.filter({ hasText: lang === 'he' ? /^בית הנשיא$/ : /^President's Residence$/ })).toHaveCount(16);
+  if (lang === 'he') for (const name of ['מעריב', 'הארץ', 'ישראל היום']) await expect(links.filter({ hasText: name }).first()).toBeVisible();
+  await expect(block.locator('.after-source-list > li').first()).toContainText(lang === 'he' ? 'רשמי · נשלף' : 'Official · Retrieved');
 });

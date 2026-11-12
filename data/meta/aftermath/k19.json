@@ -10,12 +10,14 @@
     "recommendations-1": {
       "url": "https://news.walla.co.il/item/2612671",
       "publisher": "Walla! News",
+      "publisherHe": "וואלה חדשות",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
     "recommendations-2": {
       "url": "https://www.bhol.co.il/news/744869",
       "publisher": "Behadrei Haredim",
+      "publisherHe": "בחדרי חרדים",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
@@ -58,6 +60,7 @@
     "knesset-dissolution": {
       "url": "https://main.knesset.gov.il/News/PressReleases/Pages/press081214-lf.aspx",
       "publisher": "Knesset News",
+      "publisherHe": "חדשות הכנסת",
       "kind": "official",
       "accessed": "2026-11-05"
     },

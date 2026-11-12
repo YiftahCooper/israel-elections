@@ -1019,8 +1019,8 @@
  "blocSchemes": [
   {
    "id": "first-government",
-   "nameHe": "ממשלת ישראל ה-36 (בנט–לפיד)",
-   "nameEn": "36th government (Bennett–Lapid)",
+   "nameHe": "הממשלה ה־36 (הממשלה הראשונה של הכנסת)",
+   "nameEn": "Government 36 (first government of the Knesset)",
    "kind": "government",
    "date": "2021-06-13",
    "governmentNumber": 36,
@@ -1029,7 +1029,7 @@
      "id": "coalition",
      "nameHe": "קואליציה",
      "nameEn": "Coalition",
-     "color": "#1f5aa5",
+     "color": "#3A6EA5",
      "members": [
       {
        "letters": "פה"
@@ -1062,7 +1062,7 @@
      "id": "opposition",
      "nameHe": "אופוזיציה",
      "nameEn": "Opposition",
-     "color": "#7f7f7f",
+     "color": "#8C8C8C",
      "members": [
       {
        "letters": "מחל"

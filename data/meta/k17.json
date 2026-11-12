@@ -771,8 +771,8 @@
   "blocSchemes": [
     {
       "id": "first-government",
-      "nameHe": "הממשלה הראשונה של הכנסת ה-17 (ממשלה 31) והאופוזיציה",
-      "nameEn": "First government of the 17th Knesset (government 31) and opposition",
+      "nameHe": "הממשלה ה־31 (הממשלה הראשונה של הכנסת)",
+      "nameEn": "Government 31 (first government of the Knesset)",
       "kind": "government",
       "date": "2006-05-04",
       "blocs": [
@@ -780,7 +780,7 @@
           "id": "coalition",
           "nameHe": "קואליציה",
           "nameEn": "Coalition",
-          "color": "#2E7D32",
+          "color": "#3A6EA5",
           "seats": 67,
           "members": [
             {
@@ -801,7 +801,7 @@
           "id": "opposition",
           "nameHe": "אופוזיציה",
           "nameEn": "Opposition",
-          "color": "#9E9E9E",
+          "color": "#8C8C8C",
           "seats": 53,
           "members": [
             {

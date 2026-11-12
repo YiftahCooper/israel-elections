@@ -284,7 +284,15 @@ const EXPECTED: Record<Family, string> = {
   // merging or splitting a withdrawn list is refused. 28 of 520 cases differ, all in three sequences from the changed
   // step on (seq8 from removeList; seq17 and seq23 from the refused merge); allocation, validation and rules digests are
   // unchanged (case-by-case against the previous tree, .backup-scratch/audit-1112/fable-check/model-diff2.ts).
-  model: 'c4313a17bf8f81ff83ab9188ebf8fca4f8ff4075018bde4f0d65732eed1052f4',
+  // fx-after2 (12 Nov, c-famous-early-08): the Coalitions presets' titles and colours only (one pattern for every
+  // first-government preset; the satellite-list preset named after that year's party). Against HEAD's src and data
+  // together, 341 of 520 model cases differ, each only in a scheme or bloc nameEn/nameHe/colour or the dataset build
+  // time; allocation, analysis, validation and rules are identical. On one set of data HEAD's src and this src give
+  // the same 520 model outputs (fable-check/model-diff.ts), so the source changes move nothing.
+  // Merged with fx-names and fx-state (13 Nov): against the previous commit, the 26 published datasets differ only in
+  // blocSchemes[].nameHe/nameEn, blocSchemes[].blocs[].color and builtAt (field-by-field diff), and the previous src and
+  // this src give the same 520 model outputs on one set of data (fable-check/model-diff2.ts: 0 differ).
+  model: 'd4126152fb753d6b779b8be5455a31234fcd9fd497ce5562695183fc2f07aa26',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

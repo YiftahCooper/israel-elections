@@ -2,7 +2,9 @@ import type { ElectionDataset, ElectionId } from './schema.ts';
 import type { GovernmentSupport } from './aftermath.ts';
 export interface Cite { source: string; quote: string; locator?: string; note?: string }
 export interface HistorySource { url: string; publisher?: string; publisherHe?: string; title?: string; kind: string; accessed: string; via?: string }
-export interface DatedFact { date: string; endDate?: string; textEn: string; textHe: string; cites: Cite[]; notes?: string[]; type?: string; category?: string; person?: string; days?: number }
+/** `orderDate`/`orderSeq` place an event among others of the same date, or a month- or year-only event among the days
+ *  in it, from what the record's own sources say (`orderBasis`); they are never shown and never change `date`. */
+export interface DatedFact { id?: string; date: string; endDate?: string; textEn: string; textHe: string; cites: Cite[]; notes?: string[]; type?: string; category?: string; person?: string; days?: number; orderDate?: string; orderSeq?: number; orderBasis?: string }
 export interface RecommendationEntry { letters: string; seats: number; status: string; nominee?: string; split?: { nominee?: string; status?: string; seats: number }[]; cites?: Cite[]; noteEn?: string; noteHe?: string }
 export interface RecommendationRound { id: string; date: string; endDate?: string; nominees: Record<string, { nameEn: string; nameHe: string }>; entries: RecommendationEntry[]; totals: Record<string, number>; cites: Cite[]; notes?: string[] }
 /** `role` marks a prime minister who held the office in an acting or interim capacity; `titleEn`/`titleHe` are the
@@ -18,6 +20,32 @@ export function recommendationPieces(round: RecommendationRound) {
 // The audit establishes chronology independence. This guard also stops a later single-source
 // candidate or repeated citation to one source from leaking onto the history page.
 export const visibleTermEvents = (events: DatedFact[]) => events.filter(e => new Set(e.cites?.map(c => c.source)).size >= 2);
+/** Events in the order they happened (c-famous-early-05): by date, a month- or year-only date before the days in it,
+ *  unless `orderDate` places it; same position: `orderSeq`, then the record's order. */
+export function chronological<T extends DatedFact>(events: readonly T[]): T[] {
+  const key = (e: T) => e.orderDate ?? e.date;
+  const byKey = (a: T, b: T) => key(a) < key(b) ? -1 : key(a) > key(b) ? 1 : 0;
+  return events.map((e, i) => [e, i] as const).sort(([a, i], [b, j]) => byKey(a, b) || (a.orderSeq ?? 0) - (b.orderSeq ?? 0) || i - j).map(([e]) => e);
+}
+/** The fact that ended the term, for the footer; null when it is unsourced or the formation or term list already
+ *  shows it: the same day, and the same kind of event or a dissolution (c-design-principles-15: one place per fact). */
+export function termEndFact(data: Aftermath) {
+  const end = data.term.endedBy;
+  if (!end?.cites?.length) return null;
+  const same = (e: DatedFact) => e.date.length === 10 && e.date === end.date && (e.type === end.type || /dissol/.test(e.type ?? e.id ?? ''));
+  return [...data.formation.events, ...visibleTermEvents(data.term.events)].some(same) ? null : end;
+}
+/** A source's name: the publisher's own Hebrew name in Hebrew when recorded, else its name as recorded; the web
+ *  address only when the record names no publisher or title (c-rtl-phone-06). */
+export const sourceLabel = (s: HistorySource, lang: 'he' | 'en') => (lang === 'he' ? s.publisherHe : undefined) ?? s.publisher ?? s.title ?? new URL(s.url).hostname;
+/** The Sources page's list: one row per address, official sources first (as the page's own list), then in the record's order. */
+export function pageSources(data: Aftermath) {
+  const rank = (s: HistorySource) => s.kind === 'official' ? 0 : 1;
+  const seen = new Set<string>();
+  return Object.values(data.sources).map((s, i) => [s, i] as const)
+    .sort(([a, i], [b, j]) => rank(a) - rank(b) || i - j)
+    .map(([s]) => s).filter(s => !seen.has(s.url) && !!seen.add(s.url));
+}
 export const completePolls = (data: Aftermath) => data.issuePolling?.status === 'filled' ? (data.issuePolling.items ?? []).filter(p => p.questionEn && p.questionHe && p.populationEn && p.populationHe && p.fieldDates && p.answers.every(a => a.labelHe)) : [];
 export function validateAftermath(data: Aftermath, ds: ElectionDataset): string[] {
   const errors: string[] = [];
@@ -58,6 +86,12 @@ export function validateAftermath(data: Aftermath, ds: ElectionDataset): string[
     }
   };
   walk(data);
+  // ordering fields only refine the stated date, and say why
+  const dated: DatedFact[] = [...data.formation.events, ...data.term.events, ...data.reaction?.items ?? [], ...data.government?.changes ?? []];
+  for (const e of dated) {
+    if ((e.orderDate !== undefined || e.orderSeq !== undefined) && !e.orderBasis) errors.push(`Order without basis: ${e.date}`);
+    if (e.orderDate !== undefined && !(/^\d{4}-\d{2}-\d{2}$/.test(e.orderDate) && e.orderDate.startsWith(e.date))) errors.push(`Order date outside the event's date: ${e.date}`);
+  }
   for (const source of Object.values(data.sources)) if (new URL(source.url).hostname === 'en.wikipedia.org') errors.push('Forbidden source');
   return errors;
 }

@@ -1082,8 +1082,8 @@
  "blocSchemes": [
   {
    "id": "first-government",
-   "nameHe": "ממשלת ישראל ה-37 (נתניהו השישית)",
-   "nameEn": "37th government (Netanyahu VI)",
+   "nameHe": "הממשלה ה־37 (הממשלה הראשונה של הכנסת)",
+   "nameEn": "Government 37 (first government of the Knesset)",
    "kind": "government",
    "date": "2022-12-29",
    "governmentNumber": 37,
@@ -1092,7 +1092,7 @@
      "id": "coalition",
      "nameHe": "קואליציה",
      "nameEn": "Coalition",
-     "color": "#1f5aa5",
+     "color": "#3A6EA5",
      "members": [
       {
        "letters": "מחל"
@@ -1113,7 +1113,7 @@
      "id": "opposition",
      "nameHe": "אופוזיציה",
      "nameEn": "Opposition",
-     "color": "#7f7f7f",
+     "color": "#8C8C8C",
      "members": [
       {
        "letters": "פה"

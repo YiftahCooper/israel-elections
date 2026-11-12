@@ -220,3 +220,25 @@ test('the 21st Knesset: no government formed, so no sides; the dissolution is a 
   await expect(tl.locator('[data-side="coalition"]')).toHaveCount(0);
   await expect(tl.locator('.tl-end-label.end')).toHaveText('End');
 });
+
+// fx-after2 (c-design-principles-11): the term chamber names its colours, as the Overview chamber does
+for (const lang of ['en', 'he'] as const) test(`the term chamber has a list key that follows the date: ${lang}`, async ({ page }) => {
+  await start(page, { lang, level: 'expert', election: 'k22' });
+  const tl = await openTimeline(page, lang);
+  const key = tl.getByRole('group', { name: lang === 'he' ? 'הרשימות בכנסת' : 'Lists in the Knesset' });
+  if (lang === 'en') for (const row of ['Blue and White 33', 'Likud 32']) await expect(key).toContainText(row);
+  const sum = async () => (await key.locator('b').allInnerTexts()).reduce((n, t) => n + Number(t), 0);
+  const filled = async () => Number(await tl.locator('.tl-chamber svg > text').first().textContent());
+  // each item carries the list's slip; its seats add up to the seats held on the shown date, at every step
+  await expect(key.locator('.slip').first()).toBeVisible();
+  for (let i = 0; i < 6; i++) {
+    expect(await sum()).toBe(await filled());
+    const next = tl.getByRole('button', { name: lang === 'he' ? /^הצעד הבא/ : /^Next step/ });
+    if (await next.isDisabled()) break;
+    await next.click();
+  }
+  // the 25th Knesset: a vacant seat leaves its list's count
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k25');
+  await expect(tl.locator('.tl-chamber circle.seat')).toHaveCount(120);
+  expect(await sum()).toBe(await filled());
+});

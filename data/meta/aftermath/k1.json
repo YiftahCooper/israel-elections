@@ -42,6 +42,7 @@
     "coalition-1": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%201&$format=json",
       "publisher": "Knesset OData (ParliamentInfo)",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-04"
     },
@@ -290,6 +291,8 @@
       },
       {
         "date": "1950-10",
+        "orderSeq": 1,
+        "orderBasis": "Ben-Gurion's presentation of government 2 (presentation-gov2, 30 Oct 1950) recounts these steps in this order: he returned the mandate, the President tasked Rosen, Rosen declined and advised tasking Ben-Gurion, the President tasked Ben-Gurion again.",
         "type": "mandate-returned",
         "textEn": "Ben-Gurion returned the task of forming a government.",
         "textHe": "בן־גוריון החזיר את התפקיד להרכבת ממשלה.",
@@ -306,6 +309,8 @@
       },
       {
         "date": "1950-10",
+        "orderSeq": 2,
+        "orderBasis": "Ben-Gurion's presentation of government 2 (presentation-gov2, 30 Oct 1950) recounts these steps in this order: he returned the mandate, the President tasked Rosen, Rosen declined and advised tasking Ben-Gurion, the President tasked Ben-Gurion again.",
         "type": "mandate-given",
         "textEn": "The President tasked Pinchas Rosen with forming a government.",
         "textHe": "הנשיא הטיל על פנחס רוזן להרכיב ממשלה.",
@@ -322,6 +327,8 @@
       },
       {
         "date": "1950-10",
+        "orderSeq": 3,
+        "orderBasis": "Ben-Gurion's presentation of government 2 (presentation-gov2, 30 Oct 1950) recounts these steps in this order: he returned the mandate, the President tasked Rosen, Rosen declined and advised tasking Ben-Gurion, the President tasked Ben-Gurion again.",
         "type": "mandate-returned",
         "textEn": "Rosen declined the assignment and advised the President to task Ben-Gurion.",
         "textHe": "רוזן לא קיבל על עצמו את השליחות והציע לנשיא להטיל אותה על בן־גוריון.",
@@ -338,6 +345,8 @@
       },
       {
         "date": "1950-10",
+        "orderSeq": 4,
+        "orderBasis": "Ben-Gurion's presentation of government 2 (presentation-gov2, 30 Oct 1950) recounts these steps in this order: he returned the mandate, the President tasked Rosen, Rosen declined and advised tasking Ben-Gurion, the President tasked Ben-Gurion again.",
         "type": "mandate-given",
         "textEn": "The President again tasked Ben-Gurion with forming a government.",
         "textHe": "הנשיא שב והטיל על בן־גוריון להרכיב ממשלה.",

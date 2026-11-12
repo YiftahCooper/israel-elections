@@ -11,6 +11,7 @@ import { useSetting, useStore } from '../store.ts';
 import { Floating } from '../floating.tsx';
 import { useHoverIntent } from '../hoverIntent.ts';
 import { Info, Slip } from './ui.tsx';
+import { ListKeyItem } from './Hemicycle.tsx';
 import './TermTimeline.css';
 
 type List = ElectionDataset['lists'][number];
@@ -216,6 +217,12 @@ function Chamber({ term, view, ds, mk }: { term: TermRuntime; view: StepView; ds
   }, [open]);
   const focusAt = (n: number) => { const m = (n + order.length) % order.length; setFocusPos(m); svg.current?.querySelector<SVGElement>(`[data-pos="${m}"]`)?.focus(); };
   const filled = order.filter((s) => holderAt(term, s, view.step.date)).length;
+  // the lists' colours named, as under the Overview chamber: each list with its seats held on this date, in chamber order
+  const keyRows = useMemo(() => {
+    const seats = new Map<string, number>();
+    for (const s of order) { const id = term.seats[s].list; if (id && holderAt(term, s, view.step.date)) seats.set(id, (seats.get(id) ?? 0) + 1); }
+    return [...seats].flatMap(([id, n]) => { const l = listOf(id); return l ? [{ l, n }] : []; });
+  }, [order, term, view.step.date]); // eslint-disable-line react-hooks/exhaustive-deps
   const coal = view.step.coalition?.length ?? 0;
   const seatName = (s: number) => {
     const h = holderAt(term, s, view.step.date); const l = listOf(term.seats[s].list);
@@ -256,6 +263,7 @@ function Chamber({ term, view, ds, mk }: { term: TermRuntime; view: StepView; ds
       <span><i className="swatch bloc-swatch" style={{ ['--bc' as string]: COAL } as CSSProperties} />{L('Coalition', 'קואליציה')} <b><bdi dir="ltr">{coal}</bdi></b></span>
       <span><i className="swatch bloc-swatch" style={{ ['--bc' as string]: REST } as CSSProperties} />{L('Not in the coalition', 'לא בקואליציה')} <b><bdi dir="ltr">{filled - coal}</bdi></b></span>
     </> : <span className="muted">{term.timeline!.noGovernment ? L('No government was formed in this Knesset', 'בכנסת הזאת לא הוקמה ממשלה') : L('Before the government is sworn in', 'לפני השבעת הממשלה')}</span>}</div>
+    <div className="legend" role="group" aria-label={L('Lists in the Knesset', 'הרשימות בכנסת')}>{keyRows.map(({ l, n }) => <ListKeyItem key={l.id} list={l} seats={n} />)}</div>
     {(rebels.length > 0 || keyKinds.length > 0) && <div className="tl-key">
       {rebels.length > 0 && <div className="tl-rebels"><div className="row"><MarkIcon kind="D2" /><b>{L('Rebel', 'מורד')} <bdi dir="ltr">{rebels.length}</bdi></b> <Info title={L('Rebel', 'מורד')}>{L('An MK who left the side their party is on. The seat moves to that side and keeps the party colour.', 'חבר כנסת שעזב את הצד שבו נמצאת מפלגתו. המושב עובר לצד הזה ושומר על צבע המפלגה.')}</Info></div>
         <ul>{rebels.map(([seat, p, item]) => { const src = itemById.get(item); const l = listOf(term.seats[seat].list); const f = female(mk, p);

@@ -6,7 +6,7 @@ async function start(page: Page) {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang:'en', level:'standard', hintDismissed:true})));
   await page.goto('/');
   await choose(page.getByRole('button', {name:'Election', exact:true}), 'k25');
-  await expect(page.getByRole('button', { name: 'Grouping', exact: true })).toHaveText(/37th government/);
+  await expect(page.getByRole('button', { name: 'Grouping', exact: true })).toHaveText(/Government 37 /);
 }
 async function split(page: Page) {
   await page.getByRole('button', {name:'United Torah Judaism', exact:true}).click();
