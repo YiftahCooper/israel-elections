@@ -2,7 +2,7 @@ import './percentage.css';
 import type { Rational } from '../../engine/rational.ts';
 import { createPortal } from 'react-dom';
 import { useEffect, useId, useRef, useState } from 'react';
-import { exactDecimal, fmtPct, fmtPp, pctExactNote, trimDecimal } from '../format.ts';
+import { exactDecimal, fmtPct, fmtPp, nonZeroFixed, pctExactNote } from '../format.ts';
 import { useLang } from '../i18n.ts';
 import { Floating } from '../floating.tsx';
 import { useHoverIntent } from '../hoverIntent.ts';
@@ -91,8 +91,7 @@ const ppNote = (exact: string, lang: 'he' | 'en') => lang === 'he' ? `${exact} ×
 /** A change in percentage points held as a float: signed, at most `digits` decimals, never a non-zero change as 0. */
 export function PointValue({ value, digits = 2, unsigned = false }: { value: number; digits?: number; unsigned?: boolean }) {
   const lang = useLang();
-  const text = trimDecimal(Math.abs(value).toFixed(digits));
-  const shown = value !== 0 && Number(text) === 0 ? `<${digits === 0 ? '1' : `0.${'0'.repeat(digits - 1)}1`}` : text;
+  const shown = nonZeroFixed(Math.abs(value), digits);
   const sign = unsigned ? '' : value > 0 ? '+' : value < 0 ? 'âˆ’' : '';
   // floats carry binary noise: the exact value is read to nine decimals and shown to six
   const exact = exactDecimal(BigInt(Math.round(Math.abs(value) * 1e9)), 1_000_000_000n);

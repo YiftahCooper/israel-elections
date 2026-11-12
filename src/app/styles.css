@@ -203,6 +203,7 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 12px 0; }
 .sens-result { display: flow-root; min-height: 180px; }
 .sens-meter { flex: 0 0 120px; }
 .sweep-tbl tbody tr { cursor: pointer; }
+.sweep-tbl tbody tr:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
 .sens .chart .halo { stroke: var(--surface); stroke-width: 3px; paint-order: stroke; stroke-linejoin: round; }
 details > summary { cursor: pointer; }
 
@@ -341,6 +342,9 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .seat { transition: fill .18s ease, opacity .15s; cursor: pointer; }
 .seat.dim { opacity: .22; }
 [data-theme="dark"] .seat.dim { opacity: .38; }
+/* a seat reached by the keyboard: a ring drawn around it (a shape, not a colour change); the mouse shows none */
+.chamber .seat-btn { outline: none; }
+.chamber .seat-ring { fill: none; stroke: var(--focus); stroke-width: 3px; pointer-events: none; }
 /* the centre readout scales with the drawing; on a phone it would shrink to ~6px, so it is drawn larger there */
 @media (max-width: 760px) { .chamber .centre-total { font-size: 64px; } .chamber .centre-sub { font-size: 28px; } }
 .chamber .tip, .chart-tooltip { display: block; position: fixed; z-index: 30; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); box-shadow: var(--shadow-pop); padding: 8px 10px; font-size: 13px; min-width: min(180px, calc(100vw - 16px)); max-width: min(360px, calc(100vw - 16px)); }

@@ -605,6 +605,10 @@ export function keepFeature(id: FeatureId, visibility: Visibility = 'show') {
 export function useFeature(id: FeatureId) {
   return useStore(st => st.customFeatures?.[id] ?? PRESETS[st.level][id]);
 }
+/** A tool or page set to Hidden on the Custom page is not offered anywhere: no tab, and no link that opens it. */
+export function useShown(id: FeatureId) {
+  return useStore(st => st.customFeatures?.[id] !== 'hidden');
+}
 
 // ---- Workspace restore: unsaved work survives a reload (owner decision 2026-11-04) ----
 // The open scenario, each election's session and the session drafts are kept in this browser's storage as their

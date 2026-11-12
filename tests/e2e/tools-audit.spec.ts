@@ -54,7 +54,7 @@ test('the vote sweep draws on open and redraws for a range typed in', async ({ p
   await tool(page, 'sens');
   const from = panel(page).getByRole('textbox', { name: 'From', exact: true });
   const first = await from.inputValue();
-  const chart = panel(page).getByRole('img', { name: 'Seats against votes' });
+  const chart = panel(page).getByRole('group', { name: 'Seats against votes' });
   await expect(chart).toContainText(first, { timeout: 60_000 });
   await from.fill('1000000'); await from.press('Enter');
   await expect(chart).toContainText('1,000,000', { timeout: 60_000 });
@@ -79,7 +79,7 @@ test('the sweeps refuse an empty or reversed range in place, without a result', 
   const from = panel(page).getByRole('textbox', { name: 'From', exact: true });
   await from.fill('99999999'); await from.press('Enter');
   await expect(panel(page).getByRole('alert')).toHaveText('“To” must be above “from”.');
-  await expect(panel(page).getByRole('img', { name: 'Seats against votes' })).toHaveCount(0);
+  await expect(panel(page).getByRole('group', { name: 'Seats against votes' })).toHaveCount(0);
 });
 
 // Owner rule (2026-11-04): Hebrew graphics read left to right like English; only text is right-to-left.

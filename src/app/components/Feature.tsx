@@ -12,6 +12,8 @@ export function Feature({ id, children }: { id: FeatureId; children: ReactNode }
   useEffect(() => { if (visibility === 'show') setOpen(false); }, [visibility]);
   const f = FEATURES.find(f => f[0] === id)!;
   if (visibility === 'show') return <>{children}</>;
+  // Hidden leaves nothing to open (Collapsed keeps the disclosure); the settings behind it keep working
+  if (visibility === 'hidden') return null;
   return <div className="feature-disclosure">
     <DisclosureToggles id={id} open={open} onToggle={() => setOpen(!open)} label={L(f[2], f[3])} />
     {open && children}
@@ -42,8 +44,8 @@ export function useDisclosure(id: FeatureId) {
   useEffect(() => { setOpen(false); }, [level]);
   useEffect(() => { if (visibility === 'show') setOpen(false); }, [visibility]);
   const f = FEATURES.find(f => f[0] === id)!;
-  const shown = visibility === 'show' || open;
-  const control = visibility === 'show' ? null : <div className="feature-disclosure">
+  const shown = visibility === 'show' || (visibility === 'collapsed' && open);
+  const control = visibility !== 'collapsed' ? null : <div className="feature-disclosure">
     <DisclosureToggles id={id} open={open} onToggle={() => setOpen(!open)} label={L(f[2], f[3])} />
   </div>;
   return { shown, control };

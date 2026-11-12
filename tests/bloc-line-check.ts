@@ -1,7 +1,7 @@
 // Shared checks for the bloc line (tests only): every seat's whole outline lies inside its own region and outside every
 // other region, and no line comes closer to a seat than the clearance the router reports.
 import type { SeatPos } from '../src/app/layout.ts';
-import { arcBlocRegions, trayBlocRegions, trayCell, TRAY, type Pt } from '../src/app/blocLine.ts';
+import { arcBlocRegions, trayBlocRegions, trayCell, trayShape, TRAY, type Pt } from '../src/app/blocLine.ts';
 
 export const inside = (pt: Pt, poly: Pt[]) => {
   let c = false;
@@ -43,10 +43,10 @@ export function regionErrors(seats: SeatPos[], bands: number[], rad: number, cx 
 
 /** Blocks: every seat's square (corners and edge midpoints) inside its own region only. */
 export function trayRegionErrors(bands: number[]): string[] {
-  const { regions, lines } = trayBlocRegions(bands), errors: string[] = [];
+  const { regions, lines } = trayBlocRegions(bands), errors: string[] = [], { rows } = trayShape(bands.length);
   const ids = [...new Set(bands)];
   bands.forEach((b, i) => {
-    const [x, y] = trayCell(i), c = TRAY.cell, own = ids.indexOf(b);
+    const [x, y] = trayCell(i, rows), c = TRAY.cell, own = ids.indexOf(b);
     const pts: Pt[] = [[x + 4, y], [x + c - 4, y], [x + c, y + 4], [x + c, y + c - 4], [x + c - 4, y + c], [x + 4, y + c], [x, y + c - 4], [x, y + 4], [x + c / 2, y + c / 2]];
     for (const pt of pts) for (const region of regions) {
       if (inside(pt, region.polygon) !== (region.band === b)) { errors.push(`cell ${i} wrong side of region ${region.band}`); return; }

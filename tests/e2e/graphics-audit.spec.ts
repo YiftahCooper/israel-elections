@@ -19,7 +19,7 @@ for(const lang of ['he','en']) for(const theme of ['light','dark']) for(const ph
       await page.evaluate(()=>document.fonts.ready);
       const check = async()=> {
         const errors=await page.locator('.chamber').first().evaluate(el=>{
-          const svg=el.querySelector('svg[role="img"]') as SVGSVGElement;
+          const svg=el.querySelector(':scope > svg') as SVGSVGElement;
           const regions=[...svg.querySelectorAll<SVGGeometryElement>('[data-bloc-region]')];
           const errors:string[]=[];
           // Regions now have deliberate theme-aware borders, including the reference chamber.

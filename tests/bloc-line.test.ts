@@ -1,7 +1,7 @@
 // The bloc line as pure geometry: correct side, few bends, same answer every time.
 import { describe, expect, test } from 'vitest';
 import { arcLayout } from '../src/app/layout.ts';
-import { arcBlocRegions, arcSeatSlots, directionChanges, pullString, simplify, trayBlocRegions, trayCell, TRAY, turning, type Pt } from '../src/app/blocLine.ts';
+import { arcBlocRegions, arcSeatSlots, directionChanges, pullString, simplify, trayBlocRegions, trayCell, trayShape, TRAY, turning, type Pt } from '../src/app/blocLine.ts';
 import { regionErrors, trayRegionErrors } from './bloc-line-check.ts';
 
 /** A turn of about 6° or more: one the eye sees. */
@@ -112,5 +112,21 @@ describe('Blocks tray', () => {
         expect(directionChanges(line.points)).toBeLessThanOrEqual(1);
       }
     }
+  });
+  // audit 12 Nov 2026 (ax-screens-a-03): above 120 seats the fixed 1000 × 320 drawing cut off seat 121 onwards
+  test('every seat of every chamber size Rules allows is inside the drawing', () => {
+    expect(trayShape(120)).toEqual({ rows: 6, cols: 20, width: 1000, height: 320 });
+    for (let n = 1; n <= 1000; n++) {
+      const { rows, cols, width, height } = trayShape(n);
+      expect(rows * cols, `${n}`).toBeGreaterThanOrEqual(n);
+      const [x, y] = trayCell(n - 1, rows);
+      expect(x + TRAY.cell, `${n}`).toBeLessThanOrEqual(width - TRAY.end);
+      expect(y + TRAY.cell, `${n}`).toBeLessThanOrEqual(height - TRAY.end);
+      // the drawing keeps the 120-seat proportions, more or less: never a strip
+      expect(width / height, `${n}`).toBeLessThan(4);
+    }
+  });
+  test('bloc regions still hold their own seats in a larger chamber', () => {
+    for (const sizes of [[61, 60], [75, 75], [400, 7, 593]]) expect(trayRegionErrors(split(sizes)), sizes.join('/')).toEqual([]);
   });
 });

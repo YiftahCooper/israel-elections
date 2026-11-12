@@ -188,8 +188,9 @@ function Shell() {
   const label = (id: Tab) => L(...featureLabel(id));
   const customPage = toolNow === 'custom';
   // Side by side is a page opened from the comparison strip, not a tab (owner, 12 Nov 2026, C5b)
-  const sideBySide = toolNow === 'compare';
-  const tool: Tab = toolPick && TOOLS.some((t) => t.id === toolPick) ? toolPick : 'board';
+  const sideBySide = toolNow === 'compare' && customFeatures?.compare !== 'hidden';
+  // a tool set to Hidden (Custom) is never shown, also when it was the page last open
+  const tool: Tab = toolPick && TOOLS.some((t) => t.id === toolPick) && (toolPick === 'board' || customFeatures?.[toolPick] !== 'hidden') ? toolPick : 'board';
   // every tool, under its heading; this level's first, then the others under a quiet label (never hidden)
   const availableTools = TOOLS.filter(t => t.id === 'board' || customFeatures?.[t.id] !== 'hidden');
   // a tool is a page of its own; the board keeps its state (selection, open figures) when you come back

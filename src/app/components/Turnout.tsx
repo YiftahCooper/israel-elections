@@ -16,7 +16,7 @@ import {
 import { allocationOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { errorText } from '../../model/messages.ts';
-import { fmtInt, fmtPctNum, signed, trimDecimal } from '../format.ts';
+import { fmtInt, fmtPctNum, nonZeroFixed, signed } from '../format.ts';
 import { dispatch, toast, useDigits, useStore } from '../store.ts';
 import { deleteVoterGroup, exportVoterGroup, newGroupId, saveVoterGroup, useVoterGroups } from '../voterGroupStore.ts';
 import { ChoicePicker, type Choice } from './ChoicePicker.tsx';
@@ -79,7 +79,7 @@ export function Turnout({ s }: { s: Scenario }) {
   const weights = vote === 'observed' ? f!.mix! : s.lists.map((l) => shareOf(l.id));
   const shareSum = s.lists.reduce((t, l) => t + shareOf(l.id), 0);
   const change = useMemo(() => (f ? groupChange(s, f, d.change, weights) : null), [s, f, d.change, weights.join(',')]); // eslint-disable-line react-hooks/exhaustive-deps
-  const label = `${d.name || L('Voter group', 'קבוצת מצביעים')} ${d.change >= 0 ? '+' : '−'}${trimDecimal(Math.abs(d.change).toFixed(digits))} ${L('pp', 'נק׳')}`;
+  const label = `${d.name || L('Voter group', 'קבוצת מצביעים')} ${d.change >= 0 ? '+' : '−'}${nonZeroFixed(Math.abs(d.change), digits)} ${L('pp', 'נק׳')}`;
   const seatDiff = useMemo(() => {
     if (!change || change.error || !change.delta) return null;
     try {

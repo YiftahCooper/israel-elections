@@ -1,22 +1,15 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useL, useLang } from '../i18n.ts';
-import { getState, resetSettings, restoreSettings, setLevel, setMapLines, setPreference, setSetting, setState, settingChanged, toast, useStore } from '../store.ts';
-import { DECIMAL_CHOICES, GROUPS, SETTINGS, TIERS, isExternal, rowMatches, rowTier, rowVisible, settingValue, type GroupId, type RowId, type SettingId, type SettingRow, type SettingValues } from '../settings.ts';
+import { getState, setLevel, setMapLines, setPreference, setSetting, setState, settingChanged, toast, useStore } from '../store.ts';
+import { CHOICE, resetRows, restore, snapshot } from '../settingsReset.ts';
+import { DECIMAL_CHOICES, GROUPS, SETTINGS, TIERS, isExternal, rowMatches, rowTier, rowVisible, settingValue, type GroupId, type SettingId, type SettingRow } from '../settings.ts';
 import { LEVEL_LABELS, type Preset } from '../features.ts';
-import { PREFERENCES, type PreferenceId } from '../preferences.ts';
+import { PREFERENCES } from '../preferences.ts';
 import { listLabel } from '../derive.ts';
 import { RememberedAnswers } from './SourcePicker.tsx';
 import { Info, Seg } from './ui.tsx';
 import './personal-settings.css';
 
-/** The point-of-use questions behind three rows; their answers live in the PREFERENCES store. */
-const CHOICE: Partial<Record<RowId, PreferenceId>> = { jointByParty: 'jointSeats', voteSource: 'voteSource', markChanges: 'comparison', copyMode: 'copyMode' };
-type Snapshot = { settings: Partial<SettingValues>; preferences: Partial<Record<PreferenceId, string>> };
-const snapshot = (): Snapshot => ({ settings: getState().settings, preferences: { ...getState().preferences } });
-function restore(snap: Snapshot) {
-  restoreSettings(snap.settings);
-  for (const id of ['jointSeats', 'voteSource', 'comparison'] as const) if (getState().preferences[id] !== snap.preferences[id]) setPreference(id, snap.preferences[id]);
-}
 /** A row differs from its default (the dot before its label). Language and level are never "changed". */
 function useChanged(row: SettingRow): boolean {
   return useStore(st => {
@@ -26,12 +19,6 @@ function useChanged(row: SettingRow): boolean {
     return !isExternal(row.id) && settingChanged(st, row.id as SettingId);
   });
 }
-/** Returns rows to their defaults: settings by registry, questions back to their default answer. */
-function resetRows(rows: readonly SettingRow[]) {
-  resetSettings(rows.filter(r => !isExternal(r.id)).map(r => r.id as SettingId));
-  for (const r of rows) { const q = CHOICE[r.id]; if (q && getState().preferences[q] !== undefined) setPreference(q, undefined); }
-}
-
 /** Native modal that leaves the current page mounted and returns focus to its opener. */
 export function PersonalSettings() {
   const open = useStore(st => st.settingsOpen);
@@ -107,7 +94,7 @@ function SettingsContent({ close }: { close: () => void }) {
       </div>)}
       <footer className="ps-foot">
         <button type="button" className="btn small" onClick={resetAll}>{L('Reset all settings', 'איפוס כל ההגדרות')}</button>
-        <Info title={L('Reset all settings', 'איפוס כל ההגדרות')}>{L('Back to the defaults, with Undo. Language, detail level and remembered answers stay.', 'חזרה לברירות המחדל, עם ביטול. השפה, רמת הפירוט והתשובות השמורות נשארות.')}</Info>
+        <Info title={L('Reset all settings', 'איפוס כל ההגדרות')}>{L('Back to the defaults, with Undo. Questions answered with “Always” are asked again. Language, detail level and answers remembered for one list, bloc or scenario stay.', 'חזרה לברירות המחדל, עם ביטול. שאלות שנענו ב״תמיד״ יישאלו שוב. השפה, רמת הפירוט והתשובות השמורות לרשימה, לגוש או לתרחיש אחד נשארות.')}</Info>
       </footer>
     </div>
   </>;

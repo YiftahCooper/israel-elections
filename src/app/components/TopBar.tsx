@@ -21,7 +21,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { csvEscape, download } from '../format.ts';
-import { deleteSaved, dispatch, getSetting, setLevel, setSetting, toggleTheme, useSetting, duplicateCurrent, importScenarioJson, openElection, openImported, openSaved, replay, redo, resetAll, scenarioKey, setState, shareLink, toast, undo, useStore } from '../store.ts';
+import { deleteSaved, dispatch, getSetting, setLevel, setSetting, toggleTheme, useSetting, duplicateCurrent, importScenarioJson, openElection, openImported, openSaved, replay, redo, resetAll, scenarioKey, setState, shareLink, toast, undo, useShown, useStore } from '../store.ts';
 import { compareWith } from '../compare/mode.ts';
 import { ChevronDown, Copy, Download, FolderOpen, Link2, Menu, Moon, Redo2, RotateCcw, Save, Share2, Sun, Table2, Trash2, Undo2, Upload, Settings, X } from 'lucide-react';
 import { PersonalSettings } from './PersonalSettings.tsx';
@@ -52,6 +52,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
   const theme = useStore((st) => st.theme);
   const themeChoice = useSetting('theme');
   const custom = useStore(st => st.customFeatures);
+  const scenariosShown = useShown('scenarios');
   const level = useStore((st) => st.level);
   const canUndo = useStore((st) => st.past.length > 0);
   const canRedo = useStore((st) => st.future.length > 0);
@@ -96,7 +97,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
             <button className="btn small" onClick={() => { if (s && ds) download(`${s.electionId}-${fileName(s.name)}.json`, JSON.stringify({ ...s, ...exportAnnotations(s, lang), datasetBuiltAt: ds.buildInfo.builtAt }, null, 1), 'application/json'); close(); }}><Download className="icon sm" aria-hidden />{L('Export scenario (JSON)', 'ייצוא תרחיש (JSON)')}</button>
             <button className="btn small" onClick={() => fileRef.current?.click()}><Upload className="icon sm" aria-hidden />{L('Import scenario (JSON)', 'ייבוא תרחיש (JSON)')}</button>
             <button className="btn small" onClick={() => { exportCsv(); close(); }}><Table2 className="icon sm" aria-hidden />{L('Export results table (CSV)', 'ייצוא טבלת תוצאות (CSV)')}</button>
-            <button className="btn small" onClick={() => { setState({ tool: 'scenarios' }); close(); }}><FolderOpen className="icon sm" aria-hidden />{L('All scenarios', 'כל התרחישים')}</button>
+            {scenariosShown && <button className="btn small" onClick={() => { setState({ tool: 'scenarios' }); close(); }}><FolderOpen className="icon sm" aria-hidden />{L('All scenarios', 'כל התרחישים')}</button>}
             <div className="section-title" style={{ margin: '8px 0 2px' }}>{L('Saved in this browser', 'שמורים בדפדפן')}</div>
             {saved.length === 0 && <p className="small muted" style={{ margin: 0 }}>{L('Nothing saved yet.', 'אין עדיין.')}</p>}
             {saved.map((x) => (

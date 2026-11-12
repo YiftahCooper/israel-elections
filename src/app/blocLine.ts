@@ -259,20 +259,28 @@ function routeRegions(seats: SeatPos[], bands: number[], seatRadius: number, cx:
   return { regions, lines };
 }
 
-/** Blocks: the tray's cell for seat i, filled column by column (6 rows, top to bottom, then the next column). */
-export const TRAY = { cols: 20, rows: 6, pitch: 48, cell: 36, x0: 24, y0: 16 } as const;
-export function trayCell(i: number): Pt {
-  const col = Math.floor(i / TRAY.rows), row = i % TRAY.rows;
+/** Blocks: the tray's cell for seat i, filled column by column (`rows` rows, top to bottom, then the next column). */
+export const TRAY = { cols: 20, rows: 6, pitch: 48, cell: 36, x0: 24, y0: 16, end: 28 } as const;
+export function trayCell(i: number, rows: number = TRAY.rows): Pt {
+  const col = Math.floor(i / rows), row = i % rows;
   return [TRAY.x0 + col * TRAY.pitch, TRAY.y0 + row * TRAY.pitch];
+}
+/** The tray for n seats: 20 × 6 up to 120 seats, the same drawing for every Knesset. A larger chamber (Rules allows
+ *  up to 1000) adds rows and columns in about the same proportion, and the drawing grows to hold every seat. */
+export function trayShape(n: number): { rows: number; cols: number; width: number; height: number } {
+  const rows = Math.max(TRAY.rows, Math.ceil(Math.sqrt((n * TRAY.rows) / TRAY.cols)));
+  const cols = Math.max(TRAY.cols, Math.ceil(n / rows));
+  const size = (k: number, start: number) => start + (k - 1) * TRAY.pitch + TRAY.cell + TRAY.end;
+  return { rows, cols, width: size(cols, TRAY.x0), height: size(rows, TRAY.y0) };
 }
 
 /** Bloc regions of the Blocks tray. Each boundary runs down the gap between two columns, steps once across a column
  *  where a bloc ends part-way down it, and continues down the next gap. The step's corners are rounded with the
  *  largest radius the row gap allows, keeping `C_MIN`-scaled clearance from the seats. */
-export function trayBlocRegions(bands: number[]): { regions: BlocRegion[]; lines: BlocLine[] } {
+export function trayBlocRegions(bands: number[], rows: number = trayShape(bands.length).rows): { regions: BlocRegion[]; lines: BlocLine[] } {
   const ids = [...new Set(bands)], n = bands.length;
   if (!n) return { regions: [], lines: [] };
-  const { rows, pitch, cell, x0, y0 } = TRAY;
+  const { pitch, cell, x0, y0 } = TRAY;
   const cols = Math.ceil(n / rows), gap = pitch - cell, half = gap / 2;
   const top = y0 - half, bottom = y0 + (rows - 1) * pitch + cell + half;
   const gapX = (col: number) => x0 + col * pitch - half; // the gap left of column `col`
