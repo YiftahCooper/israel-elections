@@ -46,3 +46,34 @@ as a plain number, a figure found by sampling as "≤ n" (the smallest may be lo
 found none within the limit, and "?" when sampling found none, with a key below the table; the tightest-seats
 summary uses only exact figures. `tests/security-qualification.test.ts` checks that the qualifications reach the
 rows. The original reasoning above is unchanged (audit 12 Nov, ax-screens-d-05).
+
+## Addendum, 13 November 2026: what each screen says about its proof, and ties
+
+What the screens show now (audit 12 Nov 2026, c-analysis-code-05; the reasoning above is unchanged):
+
+- Seat safety keeps each figure's qualification: a plain number is a proven minimum; "≤ n" was found by sampling (the
+  smallest may be lower); "> limit" means an exact search found none within the limit; "?" that sampling found none;
+  "—" that it is not possible (under the 1977 candidate cap, every candidate on the list already has a seat, said in
+  its title); "*" that fewer votes already reach an exact tie for the seat (below). A key under the table names the
+  marks that appear; the closest-calls summary uses exact figures only.
+- List details: the line under the vote goals says "proven minimum" or "sampled; minimum unproven"; a seat count
+  typed or stepped to that was found by sampling says so when it is applied (c-analysis-code-06); the boundary goals
+  refuse a figure that is not exact.
+- Votes to flip a majority: pairs whose search could not test every count are searched again, every count below the
+  best answer; "At most" stays only while a pair is still open.
+
+Ties (c-results-engine-02, decided by the integrator): every "votes to gain / lose a seat" search, in every tool, now
+reports the first count at which the change is certain whatever the outcome of an exact tie. The engine reports the
+ties it met but did not decide (`OpenTie`); the search judges the goal under every outcome of those ties (at most 256
+outcomes; beyond that the answer is marked not exact), and keeps the smallest count that reaches the goal only through
+a tie as `lotteryFrom`, which the screens say beside the figure ("A tie decided by lot is possible from N votes"; for
+1951–1969, when the law set no rule for a tie, "an exact tie, for which the law of the time set no rule"). The
+alternative outcomes' decisions are added to the record that the range-skipping of 4 November compares, so it stays
+sound. `tests/lottery-ties.test.ts` checks the answers vote by vote on real elections and on small elections built to
+tie, under every rule set; the analysis digest in `tests/differential.test.ts` moved for 74 of 818 searches, each
+explained in that file.
+
+Stored results (c-analysis-code-04 and -07): results kept in the browser carry a version that is a hash of the engine
+and analysis sources, worked out at build time (`scripts/analysis-version.ts` through `vite.config.ts`), so a result
+worked out by other code is never read; they are limited to 40 results and 1.5 million characters, oldest out first,
+and give way to the user's own work when storage is full.
