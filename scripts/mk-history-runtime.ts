@@ -199,7 +199,10 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
     for (const n of [{ nameHe: p.nameHe, nameEn: p.nameEn }, ...(p.names ?? [])]) if (n.nameHe && n.nameEn) for (const x of factionKeys(n.nameHe)) if (!partyByName.has(x)) partyByName.set(x, n.nameEn);
   }
   // English display names for factions that match nothing above (data/meta/knesset-faction-names-en.json)
-  const curatedEn = new Map(Object.entries((read('data/meta/knesset-faction-names-en.json') as { names: Record<string, string> }).names).map(([he, en]) => [normName(he), en]));
+  const curated = read('data/meta/knesset-faction-names-en.json') as { names: Record<string, string>; sameName?: Record<string, string> };
+  const curatedEn = new Map(Object.entries(curated.names).map(([he, en]) => [normName(he), en]));
+  // one English name for a Hebrew faction name, in every Knesset, whatever rule named it (cx-factions-07)
+  const sameNameEn = new Map(Object.entries(curated.sameName ?? {}).map(([he, en]) => [normName(he), en]));
   const listsByEn = new Map<string, { k: number; id: string }[]>();
   for (const k of K) for (const l of ds.get(k)!.lists) if (l.shortEn) (listsByEn.get(l.shortEn) ?? listsByEn.set(l.shortEn, []).get(l.shortEn)!).push({ k, id: l.id });
   const memberByName = new Map<string, string>();
@@ -252,11 +255,11 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
         list = near?.id;
       }
       const L = list ? out.lists[list] : undefined;
-      if (L) { out.factions[f.id] = [L[0], L[1], L[2]]; continue; }
+      if (L) { out.factions[f.id] = [L[0], sameNameEn.get(normName(f.nameHe)) ?? L[1], L[2]]; continue; }
       // a registered party of that name; a one-member faction ("חה״כ <name>") is named after its member
       const party = keys.map((x) => partyByName.get(x)).find(Boolean);
       const member = /^חה״כ /.test(normName(f.nameHe)) ? memberByName.get(nameKey(normName(f.nameHe).slice(5))) : undefined;
-      const en = party ?? (member ? `MK ${member}` : null) ?? curatedEn.get(normName(f.nameHe)) ?? null;
+      const en = sameNameEn.get(normName(f.nameHe)) ?? party ?? (member ? `MK ${member}` : null) ?? curatedEn.get(normName(f.nameHe)) ?? null;
       // the colour of the nearest list with that English name (Hadash, Ta'al, Mapam ...), else none
       const twin = en ? (listsByEn.get(en) ?? []).sort((a, b) => Math.abs(a.k - k) - Math.abs(b.k - k))[0] : undefined;
       // else a lighter shade of the list most of its members were elected on, so the change still shows on the bar

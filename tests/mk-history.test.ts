@@ -229,4 +229,22 @@ describe('factions shown equal the Knesset record', () => {
       expect([packed[3][0][1], packed[3][0][2]], `shown ${p}`).toEqual([ss, se]);
     }
   });
+
+  it('one English name for one Hebrew faction name, in every Knesset', () => {
+    const reg = new Map<number, string>();
+    for (let k = 1; k <= 25; k++) for (const f of record(k).factionRegistry) reg.set(f.id, normName(f.nameHe));
+    // the identical registered name יהדות התורה (13th–15th, 20th, 21st and 25th Knessets)
+    expect([589, 631, 10, 908, 928, 1101].map((f) => [reg.get(f), rt.factions[f][1]])).toEqual(Array(6).fill(['יהדות התורה', 'United Torah Judaism']));
+    // Left as they are, each for a stated reason: the owner's open question on factions named after their list
+    // (fac-names: 361 in 1973, the NRP in 1992–2003), and the list labels' own conventions, which belong to the lists
+    // ("United Arab List" and "Ra'am"; straight and curly apostrophes in Hadash–Ta’al and Ra’am–Ta’al).
+    const OPEN = new Set([361, 575, 615, 9]);
+    const LIST_CONVENTION = new Set(['רע״ם', 'חד״ש–תע״ל', 'רע״ם–תע״ל']);
+    const byShown = new Map<string, Set<string>>();
+    for (const [id, [he, en]] of Object.entries(rt.factions)) {
+      if (OPEN.has(Number(id)) || LIST_CONVENTION.has(he) || !en) continue;
+      (byShown.get(he) ?? byShown.set(he, new Set()).get(he)!).add(en);
+    }
+    expect([...byShown].filter(([, en]) => en.size > 1).map(([he, en]) => `${he}: ${[...en].join(' / ')}`)).toEqual([]);
+  });
 });
