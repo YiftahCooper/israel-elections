@@ -66,10 +66,10 @@ const words = (s: string) => normName(s).split(' ').length;
 /** a faction's or list's Hebrew name, for comparing names across the two sources */
 const FINAL: Record<string, string> = { 'ץ': 'צ', 'ם': 'מ', 'ן': 'נ', 'ך': 'כ', 'ף': 'פ' };
 const nameKey = (s: string) => normName(s).replace(/^ה(?=[א-ת]{3})/, '').replace(/[״׳"'.]/g, '').replace(/[-–]/g, ' ').replace(/[ץםןךף]/g, (c) => FINAL[c]).replace(/\s+/g, ' ').trim();
-/** a faction name, its first part ("בל״ד - ברית לאומית דמוקרטית" → בל״ד) and its part in brackets */
+/** a faction name, its first part ("בל״ד - ברית לאומית דמוקרטית" → בל״ד), its part in brackets, and the name without "led by …" ("עוצמה יהודית בראשות איתמר בן גביר" → עוצמה יהודית) */
 const factionKeys = (s: string) => {
   const n = normName(s).replace(/­/g, '-');
-  const parts = [n, n.split(/\s+-\s+/)[0], ...(n.match(/\(([^)]+)\)/)?.slice(1) ?? []), n.replace(/\s*\([^)]*\)\s*/g, ' ')];
+  const parts = [n, n.split(/\s+-\s+/)[0], ...(n.match(/\(([^)]+)\)/)?.slice(1) ?? []), n.replace(/\s*\([^)]*\)\s*/g, ' '), n.replace(/\s+בראשות\s.*$/, '')];
   return [...new Set(parts.map(nameKey).filter((x) => x.length > 1))];
 };
 const pct = (part: number, whole: number) => Math.round((part / whole) * 10000) / 100;
@@ -221,13 +221,26 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
       const m = members.get(f.factionId) ?? members.set(f.factionId, new Map()).get(f.factionId)!;
       m.set(r.listId, (m.get(r.listId) ?? 0) + 1);
     }
+    // the list an opening faction's members were elected on, when most of them were
+    const formedBy = (f: { id: number; start: string }) => {
+      const m = votes.get(f.id); if (!m || f.start !== opening) return undefined;
+      const total = [...m.values()].reduce((a, b) => a + b, 0), best = [...m.entries()].sort((a, b) => b[1] - a[1])[0];
+      return best && best[1] * 2 > total ? { list: best[0], total } : undefined;
+    };
+    // One list can seat two factions from the first day (2022: Religious Zionism and Otzma Yehudit, registered apart at the
+    // opening). The list's name then goes to the faction that carries it, else the larger; the other is named by its own name.
+    const namesake = new Map<string, { id: number; named: boolean; total: number }>();
     for (const f of ch.factionRegistry) {
-      const m = votes.get(f.id);
-      const total = m ? [...m.values()].reduce((a, b) => a + b, 0) : 0;
-      const best = m ? [...m.entries()].sort((a, b) => b[1] - a[1])[0] : undefined;
-      const atOpening = f.start === opening;
-      let list = best && atOpening && best[1] * 2 > total ? best[0] : undefined;
-      // a faction whose Hebrew name (or its first part, or its abbreviation) is a list's name: the nearest election's list
+      const c = formedBy(f); if (!c) continue;
+      const named = factionKeys(f.nameHe).some((x) => (listsByName.get(x) ?? []).some((h) => h.id === c.list));
+      const cur = namesake.get(c.list);
+      if (!cur || (Number(named) - Number(cur.named) || c.total - cur.total) > 0) namesake.set(c.list, { id: f.id, named, total: c.total });
+    }
+    for (const f of ch.factionRegistry) {
+      const formed = formedBy(f);
+      let list = formed && namesake.get(formed.list)?.id === f.id ? formed.list : undefined;
+      // a faction whose Hebrew name (or its first part, its abbreviation, or its name without "led by …") is a list's name:
+      // the nearest election's list
       const keys = factionKeys(f.nameHe);
       if (!list) {
         const hits = keys.flatMap((x) => listsByName.get(x) ?? []);

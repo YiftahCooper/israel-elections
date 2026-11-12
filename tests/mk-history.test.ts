@@ -145,6 +145,19 @@ describe('names', () => {
     const used = new Set(Object.values(rt.people).flatMap((p) => p.terms.flatMap((t) => t[3].map((f) => f[0]))));
     expect([...used].filter((f) => !rt.factions[f]?.[1])).toEqual([]);
   });
+  it('two factions sitting at the same time never share a name (2022: Otzma Yehudit is not “Religious Zionism”)', () => {
+    // the Knesset registers Otzma Yehudit (1106) apart from Religious Zionism (1097, then 1105) from the first day
+    expect(rt.factions[1106].slice(0, 2)).toEqual(['עוצמה יהודית', 'Otzma Yehudit']);
+    expect(rt.factions[1097].slice(0, 2)).toEqual(['הציונות הדתית', 'Religious Zionism']);
+    expect(rt.factions[1105].slice(0, 2)).toEqual(['הציונות הדתית', 'Religious Zionism']);
+    const clash: string[] = [];
+    for (let k = 1; k <= 25; k++) {
+      const reg = (JSON.parse(readFileSync(`data/research/knesset-member-changes/k${k}.json`, 'utf8')).factionRegistry as { id: number; start: string; end: string | null }[]).filter((f) => f.start !== f.end);
+      for (const a of reg) for (const b of reg) if (a.id < b.id && a.start < (b.end ?? '9') && b.start < (a.end ?? '9'))
+        for (const i of [0, 1] as const) if (rt.factions[a.id][i] === rt.factions[b.id][i]) clash.push(`k${k}: ${a.id} and ${b.id} both “${rt.factions[a.id][i]}”`);
+    }
+    expect(clash).toEqual([]);
+  });
   it('durations read naturally in both languages', () => {
     expect(servedText(400, 'en')).toBe('1 year 1 month');
     expect(servedText(800, 'he')).toBe('שנתיים וחודשיים');
