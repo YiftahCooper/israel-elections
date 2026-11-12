@@ -325,7 +325,9 @@ test('saved comparisons are listed on the Scenarios page with Open, Copy link an
   await page.getByRole('tab', { name: 'Scenarios', exact: true }).click();
   const saved = page.locator('.scn-comparisons .scn-card');
   await expect(saved).toHaveCount(1);
-  await expect(saved).toContainText('2022 ↔ 2026');
+  // the suggested name is the years as Side by side shows them (your work first); the card says them once
+  await expect(saved.locator('.scn-title')).toHaveText(/^2026 ↔ 2022\s*\S/);
+  await expect(saved).not.toContainText('2022 ↔ 2026');
   await saved.getByRole('button', { name: 'Copy link' }).click();
   await expect(page.locator('.toast')).toContainText('Link copied');
   await saved.getByRole('button', { name: 'Open' }).click();
@@ -335,4 +337,29 @@ test('saved comparisons are listed on the Scenarios page with Open, Copy link an
   page.once('dialog', (d) => d.accept());
   await page.locator('.scn-comparisons .scn-card').getByRole('button', { name: /^Delete / }).click();
   await expect(page.locator('.scn-comparisons')).toHaveCount(0);
+});
+
+test('the surplus agreements arrows copy when the agreements differ, though both sides have six', async ({ page }) => {
+  await start(page, 'en', 'k26');
+  await openSideBySide(page);
+  await choose(picker(page), 'election:k24');
+  const agr = page.locator('.cmp-band-row[data-key="agreements"]');
+  await expect(agr.locator('.cmp-band-v')).toHaveText(['6', '6']);
+  await expect(agr.getByRole('button', { name: 'Copy surplus agreements to 2026' })).toBeEnabled();
+  await expect(agr.getByRole('button', { name: 'Copy surplus agreements to 2021' })).toBeEnabled();
+  await agr.getByRole('button', { name: 'Copy surplus agreements to 2026' }).click();
+  await expect(page.locator('.toast')).toContainText('Copied to 2026.');
+  // now they are the same agreements: nothing left to copy
+  await expect(agr.getByRole('button', { name: 'Copy surplus agreements to 2026' })).toBeDisabled();
+});
+
+test('the two 2019 elections are told apart on a saved comparison card', async ({ page }) => {
+  await start(page, 'en', 'k22');
+  await openSideBySide(page);
+  await page.getByRole('button', { name: 'Save comparison' }).click();
+  await page.locator('dialog[open]').getByRole('button', { name: 'Save', exact: true }).click();
+  await page.getByRole('tab', { name: 'Scenarios', exact: true }).click();
+  const saved = page.locator('.scn-comparisons .scn-card');
+  await expect(saved.locator('.scn-title b')).toHaveText(/September 2019 ↔ April 2019/);
+  await expect(saved).not.toContainText('2019 ↔ 2019');
 });
