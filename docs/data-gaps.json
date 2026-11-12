@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "total": 11467,
+  "total": 11469,
   "counts": {
     "unknown": 6955,
     "missing-field": 283,
@@ -10,12 +10,12 @@
     "release-hold": 0,
     "inferred": 1167,
     "pending": 390,
-    "unconfirmed": 98
+    "unconfirmed": 100
   },
   "countsByStatus": {
     "inferred-not-verified": 1032,
     "needs-current-status-review": 313,
-    "open": 10122
+    "open": 10124
   },
   "countsByImportance": {
     "high": {
@@ -27,9 +27,9 @@
       "unknown": 240
     },
     "medium": {
-      "total": 3594,
+      "total": 3596,
       "confirmed": 581,
-      "probable": 241,
+      "probable": 243,
       "provisional": 545,
       "disputed": 7,
       "unknown": 2220
@@ -558,9 +558,9 @@
     },
     {
       "election": "cross-election",
-      "total": 1441,
+      "total": 1443,
       "highOpen": 3,
-      "mediumOpen": 245,
+      "mediumOpen": 247,
       "low": 1069,
       "counts": {
         "unknown": 1041,
@@ -571,7 +571,7 @@
         "release-hold": 0,
         "inferred": 4,
         "pending": 41,
-        "unconfirmed": 8
+        "unconfirmed": 10
       }
     }
   ],
@@ -1009,7 +1009,7 @@
     {"election":"k26","area":"Issue polling","count":1,"certainty":{"unknown":1}},
     {"election":"k26","area":"Reactions","count":1,"certainty":{"unknown":1}},
     {"election":"cross-election","area":"data/meta/party-lineage.json pending","count":50,"certainty":{"disputed":2,"unknown":48}},
-    {"election":"cross-election","area":"data/meta/party-lineage.json edges","count":27,"certainty":{"probable":25,"provisional":2}},
+    {"election":"cross-election","area":"data/meta/party-lineage.json edges","count":29,"certainty":{"probable":27,"provisional":2}},
     {"election":"cross-election","area":"data/meta/party-lineage.json settledChecks","count":16,"certainty":{"probable":16}},
     {"election":"cross-election","area":"data/raw/demographics/cbs-2018.json result","count":15,"certainty":{"unknown":15}},
     {"election":"cross-election","area":"data/raw/demographics/cbs-2019.json result","count":15,"certainty":{"unknown":15}},

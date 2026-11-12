@@ -244,3 +244,32 @@ describe('names at each election', () => {
     expect(early).toEqual([]);
   });
 });
+
+// audit 12 Nov 2026 (cx-parties-02, cx-parties-03): two histories that were one party each
+describe('one party, one history', () => {
+  const strip = (id: string, lang: 'he' | 'en') => erasOf(partySeries(identityOf(id)), lang).map((e) => `${HISTORY[e.from].id}–${HISTORY[e.to].id} ${e.name}`);
+  const lineage = JSON.parse(readFileSync('data/meta/party-lineage.json', 'utf8'));
+  const edge = (id: string) => lineage.edges.find((e: { id: string }) => e.id === id);
+  it('the State List: its own list in 1969, inside Likud in 1973', () => {
+    expect(identityOf('state-list').ids).toEqual(expect.arrayContaining(['vehicle-7-עמ', 'state-list']));
+    expect(identityOf('vehicle-7-עמ').ids).toContain('state-list');
+    expect(strip('state-list', 'en')).toEqual(['k7–k7 National List', 'k8–k8 State List']);
+    expect(strip('state-list', 'he')).toEqual(['k7–k7 רשימה ממלכתית', 'k8–k8 הרשימה הממלכתית']);
+    // same organisation is not drawn as an event; the link rests on IDI scholarship, so it is probable
+    expect(eventsOf(identityOf('state-list')).map((r) => r.id)).not.toContain('state-list-1969-1973');
+    expect(edge('state-list-1969-1973').certainty).toBe('probable');
+  });
+  it('HaOlam HaZeh became Meri: faction renamed 3 Jul 1973 in the Knesset record', () => {
+    expect(identityOf('meri').ids).toEqual(expect.arrayContaining(['vehicle-6-ש', 'vehicle-7-ש', 'meri']));
+    expect(strip('vehicle-6-ש', 'en')).toEqual(['k6–k7 HaOlam HaZeh', 'k8–k9 Meri']);
+    expect(strip('meri', 'he')).toEqual(['k6–k7 העולם הזה', 'k8–k9 מרי']);
+    const ev = eventsOf(identityOf('meri')).find((r) => r.id === 'haolam-meri-1973')!;
+    expect([ev.kind, ev.date]).toEqual(['renamed-to', '1973-07-03']);
+    // the official faction records carry it; the date is the faction's, not a legal registration
+    expect(edge('haolam-meri-1973').sources).toEqual(expect.arrayContaining(['odata-k7-factions', 'odata-k7-positions']));
+    expect(edge('haolam-meri-1973').effectiveFor).toBe('parliamentary-faction');
+    const k7 = JSON.parse(readFileSync('data/research/knesset-member-changes/k7.json', 'utf8'));
+    const reg = (id: number) => k7.factionRegistry.find((f: { id: number }) => f.id === id);
+    expect([reg(353).end, reg(994).start]).toEqual(['1973-07-03', '1973-07-03']);
+  });
+});
