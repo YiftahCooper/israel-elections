@@ -7,7 +7,7 @@ import type { Certainty } from '../../data/evidence.ts';
 import { comparablePredecessor, leadOf, officialFacts, partiesOf, scenarioFacts, type Comparison } from '../../history/compare.ts';
 import { erasOf, eventsOf, identityOf, partySeries, type Identity, type SeriesPoint } from '../../history/identity.ts';
 import { OPEN_CHECKS, type Relation } from '../../history/relations.ts';
-import { HISTORY, electionIndex, electionPosition, historyList, listShort, partyShort, yearLabel, type HList } from '../../history/runtime.ts';
+import { HISTORY, electionIndex, electionPosition, historyList, listShort, partyNameAt, partyShort, yearLabel, type HList } from '../../history/runtime.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
 import { hebrewPrefix as attach } from '../hebrewPrefix.ts';
@@ -36,8 +36,9 @@ export function CertChip({ c }: { c: Certainty }) {
   return <span className={`ph-cert ph-cert-${c}`} title={L(...CERT_INFO[c])}>{L(...CERT[c])}</span>;
 }
 
-const names = (ids: string[], lang: Lang) => {
-  const n = ids.map((p) => partyShort(p, lang));
+/** Parties' names; with an election index, the names they ran under at that election. */
+const names = (ids: string[], lang: Lang, i?: number) => {
+  const n = ids.map((p) => i === undefined ? partyShort(p, lang) : partyNameAt(p, i, lang));
   if (n.length < 2) return n.join('');
   return lang === 'he' ? `${n.slice(0, -1).join(', ')} ${hebrewPrefix('ו', n[n.length - 1])}` : `${n.slice(0, -1).join(', ')} and ${n[n.length - 1]}`;
 };
@@ -475,15 +476,15 @@ function PointCard({ p, identity }: { p: SeriesPoint; identity: Identity }) {
   const L = useL(), lang = useLang(), digits = useDigits();
   void identity;
   if (!p.list) return <div className="ph-card"><b>{yearLabel(p.i, lang)}</b> · {L('Did not run', 'לא התמודדה')}</div>;
-  const partners = names(p.partners, lang);
+  const partners = names(p.partners, lang, p.i);
   const joint = p.role !== 'alone';
   return <div className="ph-card" aria-live="polite">
     <div><b>{yearLabel(p.i, lang)} · <bdi>{listShort(p.list, lang)}</bdi></b></div>
     <div>{L(`${p.seats} seats`, `${p.seats} מנדטים`)} · <bdi dir="ltr">{percent(p.votes, p.valid, digits)}</bdi> · <bdi dir="ltr">{fmtInt(p.votes)}</bdi> {L('votes', 'קולות')}</div>
-    {joint && <div className="small">{p.role === 'led' ? L(`Led a joint list with ${partners}`, `הובילה רשימה משותפת עם ${partners}`) : L(`Ran inside a list led by ${partyShort(p.list.lead ?? p.partners[0], 'en')}`, `רצה ברשימה בראשות ${partyShort(p.list.lead ?? p.partners[0], 'he')}`)}</div>}
-    {joint && <div className="small">{L('Elected: ', 'נבחרו: ')}{[...p.members, ...p.partners].map((q) => { const n = p.list!.elected[q]; return `${partyShort(q, lang)} ${n ?? L('unknown', 'לא ידוע')}`; }).join(' · ')}{p.list.unknownElected > 0 ? L(` · unknown ${p.list.unknownElected}`, ` · לא ידוע ${p.list.unknownElected}`) : ''}</div>}
+    {joint && <div className="small">{p.role === 'led' ? L(`Led a joint list with ${partners}`, `הובילה רשימה משותפת עם ${partners}`) : L(`Ran inside a list led by ${partyNameAt(p.list.lead ?? p.partners[0], p.i, 'en')}`, `רצה ברשימה בראשות ${partyNameAt(p.list.lead ?? p.partners[0], p.i, 'he')}`)}</div>}
+    {joint && <div className="small">{L('Elected: ', 'נבחרו: ')}{[...p.members, ...p.partners].map((q) => { const n = p.list!.elected[q]; return `${partyNameAt(q, p.i, lang)} ${n ?? L('unknown', 'לא ידוע')}`; }).join(' · ')}{p.list.unknownElected > 0 ? L(` · unknown ${p.list.unknownElected}`, ` · לא ידוע ${p.list.unknownElected}`) : ''}</div>}
     {joint && <div className="tiny muted">{L('Votes are for the whole list', 'הקולות ניתנו לרשימה כולה')}</div>}
-    {p.era && partyShort(p.era, lang) !== listShort(p.list, lang) && <div className="tiny muted">{L(`As ${partyShort(p.era, 'en')}`, `בשם ${partyShort(p.era, 'he')}`)}</div>}
+    {p.era && partyNameAt(p.era, p.i, lang) !== listShort(p.list, lang) && <div className="tiny muted">{L(`As ${partyNameAt(p.era, p.i, 'en')}`, `בשם ${partyNameAt(p.era, p.i, 'he')}`)}</div>}
   </div>;
 }
 

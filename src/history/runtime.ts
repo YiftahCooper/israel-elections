@@ -10,6 +10,8 @@ export interface HList {
   parties: string[];
   /** elected members per party (official per-person records); null when not known for that party */
   elected: Record<string, number | null>;
+  /** a party's name at this election, where it differs from its usual short name ([Hebrew, English or null]) */
+  names: Record<string, readonly [string, string | null]>;
   unknownElected: number;
 }
 export interface HElection { id: string; date: string; valid: number; pending: boolean; lists: HList[] }
@@ -18,7 +20,8 @@ export const HISTORY: HElection[] = packed.elections.map((e) => ({
   id: e.id, date: e.date, valid: e.valid, pending: e.pending,
   lists: e.lists.map(([id, votes, seats, color, shortHe, shortEn, letters, lead, ps, unknownElected]) => ({
     id, votes, seats, color, shortHe, shortEn, letters, lead, parties: ps.map(([p]) => p),
-    elected: Object.fromEntries(ps.map(([p, n]) => [p, n < 0 ? null : n])), unknownElected,
+    elected: Object.fromEntries(ps.map(([p, n]) => [p, n < 0 ? null : n])),
+    names: Object.fromEntries(ps.filter((x) => x.length === 4).map((x) => [x[0], [x[2]!, x[3] ?? null] as const])), unknownElected,
   })),
 }));
 export const electionIndex = (id: string) => HISTORY.findIndex((e) => e.id === id);
@@ -37,6 +40,11 @@ export function partyShort(id: string, lang: 'he' | 'en'): string {
     return l ? listShort(l, lang) : lang === 'he' ? 'מפלגה לא ידועה' : 'Unknown party';
   }
   return lang === 'he' ? p[0] : englishLabel(p[1], p[0]);
+}
+/** A party's name at one election (election index): the name it ran under then, else its usual short name. */
+export function partyNameAt(id: string, i: number, lang: 'he' | 'en'): string {
+  const n = HISTORY[i]?.lists.find((l) => l.parties.includes(id))?.names[id];
+  return n ? (lang === 'he' ? n[0] : englishLabel(n[1], n[0])) : partyShort(id, lang);
 }
 export const listShort = (l: Pick<HList, 'shortHe' | 'shortEn'>, lang: 'he' | 'en') => lang === 'he' ? l.shortHe : englishLabel(l.shortEn, l.shortHe);
 
