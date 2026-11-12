@@ -40,6 +40,8 @@ export class ErrorBoundary extends Component<{ children: ReactNode; label: strin
 
 /** The kept unsaved work of earlier visits (src/app/store.ts, workspace); dropped only by "Start fresh" below. */
 const WORKSPACE_KEY = 'israel-elections:workspace:v1';
+/** the stored language among the app's settings (src/app/store.ts) */
+const MAIN_KEY = 'israel-elections:v1';
 
 /** The whole app's last resort: an error that no panel contained shows the app's own message, never a blank page.
  *  Reload tries again; Start fresh also leaves out the unsaved work kept from earlier visits (saved scenarios and
@@ -50,7 +52,8 @@ export class RootBoundary extends Component<{ children: ReactNode }, { error: Er
   componentDidCatch(error: Error) { console.error(error); }
   render() {
     if (!this.state.error) return this.props.children;
-    const he = document.documentElement.lang !== 'en';
+    // the app may have failed before it set the page's language: the reader's stored choice decides (Hebrew by default)
+    const he = (() => { try { const x = JSON.parse(localStorage.getItem(MAIN_KEY) ?? 'null'); if (x?.lang === 'en' || x?.lang === 'he') return x.lang === 'he'; } catch { /* unreadable */ } return document.documentElement.lang !== 'en'; })();
     const fresh = () => { try { localStorage.removeItem(WORKSPACE_KEY); } catch { /* storage unavailable: nothing kept */ } location.reload(); };
     return (
       <div className="app" dir={he ? 'rtl' : 'ltr'}>

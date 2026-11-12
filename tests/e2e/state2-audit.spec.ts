@@ -1,6 +1,7 @@
 // Audit 12 Nov 2026, lane fx-state2: work is never lost, a failed download can always be tried again, and the analysis
 // figures say what they prove. Pictures for the review with CHK_DIR=<folder>.
 import { expect, test, type Page } from '@playwright/test';
+import { choose } from './choices.ts';
 
 const OUT = process.env.CHK_DIR;
 const WS = 'israel-elections:workspace:v1';
@@ -128,4 +129,63 @@ for (const lang of ['en', 'he'] as const) test(`c-results-engine-02: Seat safety
   const status = page.locator('.side-panel .seat-search-status');
   await expect(status).toContainText(lang === 'en' ? 'A tie decided by lot is possible from 5,825 votes' : 'שוויון שמוכרע בהגרלה אפשרי החל מ־5,825 קולות', { timeout: 60_000 });
   if (OUT) await page.locator('.side-panel .seat-target').locator('..').screenshot({ path: `${OUT}/chk-list-tie-${lang}.png` });
+});
+
+for (const lang of ['en', 'he'] as const) test(`c-robustness-05: an error no panel contains shows the app's own message with Reload and Start fresh, never a blank page (${lang})`, async ({ page }) => {
+  await seed(page, lang);
+  // for this test only, the app's main code is served with one top-bar label replaced by an error (outside every panel)
+  await page.route(/\/assets\/index-[^/]+\.js$/, async (route) => {
+    const res = await route.fetch();
+    const body = (await res.text()).replaceAll('`Detail level`', '(()=>{throw new Error(`A test error in the top bar`)})()');
+    return route.fulfill({ response: res, body });
+  });
+  await page.goto('/');
+  const box = page.getByRole('alert');
+  await expect(box).toContainText(lang === 'en' ? 'Something went wrong and the page could not be shown.' : 'משהו השתבש, והדף לא הוצג.');
+  await expect(box).toContainText('A test error in the top bar');
+  await expect(box.getByRole('button', { name: lang === 'en' ? 'Reload' : 'טעינה מחדש', exact: true })).toBeVisible();
+  await expect(box.getByRole('button', { name: lang === 'en' ? 'Start fresh' : 'התחלה נקייה', exact: true })).toBeVisible();
+  if (OUT) await page.screenshot({ path: `${OUT}/chk-root-boundary-${lang}.png`, clip: { x: 0, y: 0, width: 1500, height: 240 } });
+});
+
+for (const lang of ['en', 'he'] as const) test(`c-analysis-code-06: a typed seat count found by sampling says so where it is applied (${lang})`, async ({ page }) => {
+  await seed(page, lang);
+  await page.goto('/');
+  await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), 'k25');
+  await page.getByRole('region', { name: lang === 'en' ? 'Lists' : 'הרשימות', exact: true }).getByRole('button', { name: lang === 'en' ? 'Likud' : 'הליכוד', exact: true }).click();
+  const seats = page.locator('.side-panel .seat-target').getByRole('textbox', { name: lang === 'en' ? 'Seats' : 'מנדטים', exact: true });
+  await seats.fill('40'); await seats.press('Enter');
+  const t = page.locator('.toast');
+  await expect(t).toContainText(lang === 'en' ? '≤ Found by sampling: fewer votes may also give 40 seats.' : '≤ נמצא בדגימה: ייתכן שגם פחות קולות יביאו 40 מנדטים.', { timeout: 30_000 });
+  if (OUT) await t.screenshot({ path: `${OUT}/chk-seat-count-sampled-${lang}.png` });
+});
+
+for (const lang of ['en', 'he'] as const) test(`c-screens-compare-03: back to the law's rules names the agreement switched off, with Undo (${lang})`, async ({ page }) => {
+  const k26 = await (await page.request.get('/data/k26.json')).json() as { lists: { id: string }[]; agreements: { members: string[] }[] };
+  const inAgreement = k26.agreements[0].members[0];
+  const free = k26.lists.find((l) => !k26.agreements.some((a) => a.members.includes(l.id)))!.id;
+  const log = [{ type: 'setMode', mode: 'experimental' }, { type: 'setAgreement', agreement: { id: 'extra', members: [inAgreement, free], enabled: true } }]
+    .map((action) => ({ at: '2026-11-13T00:00:00.000Z', action }));
+  await seed(page, lang, { [WS]: JSON.stringify({ v: 2, tabs: { earlier: { at: 1, ws: { electionId: 'k26', current: { id: 'k26-exp', name: 'Experiment', electionId: 'k26', ref: null, log }, sessions: [], drafts: [] } } } }) });
+  await page.goto('/');
+  await page.getByRole('button', { name: lang === 'en' ? 'Back to the real rules' : 'חזרה לכללים האמיתיים', exact: true }).click();
+  const t = page.locator('.toast');
+  await expect(t).toContainText(lang === 'en' ? 'switched off: by law, each list may have one agreement, with one other list.' : 'כובה: לפי החוק, לכל רשימה הסכם אחד עם רשימה אחת.');
+  if (OUT) await t.screenshot({ path: `${OUT}/chk-agreement-switched-off-${lang}.png` });
+  await t.getByRole('button', { name: lang === 'en' ? 'Undo' : 'ביטול', exact: true }).click();
+  await expect(page.getByRole('button', { name: lang === 'en' ? 'Back to the real rules' : 'חזרה לכללים האמיתיים', exact: true })).toBeVisible();
+});
+
+for (const lang of ['en', 'he'] as const) test(`c-analysis-code-03: under the 1977 cap the list's details say why another seat is not possible (${lang})`, async ({ page }) => {
+  await seed(page, lang);
+  await page.goto('/');
+  await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), 'k9');
+  await page.locator('#tab-security').click();
+  const row = page.locator('.sec-row', { hasText: lang === 'en' ? 'Flatto-Sharon' : 'פלאטו־שרון' }).first();
+  await expect(row.locator('.sec-r')).toContainText('—', { timeout: 30_000 });
+  await expect(row.locator('.sec-r span[title]').last()).toHaveAttribute('title', lang === 'en' ? 'Not possible: every candidate on the list already has a seat' : 'לא אפשרי: כל המועמדים ברשימה כבר קיבלו מנדט');
+  await row.locator('.table-action').click();
+  const status = page.locator('.side-panel .seat-search-status');
+  await expect(status).toHaveText(lang === 'en' ? 'Not possible: every candidate on the list already has a seat' : 'לא אפשרי: כל המועמדים ברשימה כבר קיבלו מנדט', { timeout: 30_000 });
+  if (OUT) await status.locator('..').screenshot({ path: `${OUT}/chk-list-capped-${lang}.png` });
 });
