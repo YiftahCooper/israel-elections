@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { expect, test } from 'vitest';
 
 // Every rounded percentage on screen goes through src/app/components/Percentage.tsx, which gives it the exact-value
-// disclosure (hover, focus, tap). A direct fmtPct / fmtPctNum / toFixed in a component would render a rounded value
+// disclosure (hover, focus, tap). A direct fmtPct / fmtPctNum / fmtPoints / toFixed in a component would render a rounded value
 // without it. The only exceptions are listed here, each with why it is not an on-screen rounded share.
 const ALLOWED: { file: string; has: string; why: string }[] = [
   { file: 'TopBar.tsx', has: '.toFixed(6)', why: 'CSV export: raw data, not on screen' },
@@ -12,8 +12,8 @@ const ALLOWED: { file: string; has: string; why: string }[] = [
   { file: 'FamilyCharts.tsx', has: '+v.toFixed(1)}%', why: 'axis ticks: round values, shown in full' },
   { file: 'FamilyCharts.tsx', has: "fmtPct(v,e.totals.valid,digits)+' · '", why: 'aria-label text for a chart point; its tooltip uses Percentage' },
   { file: 'LocalityMap.tsx', has: 'near.km.toFixed(1)', why: 'a distance, not a percentage' },
-  { file: 'LocalityMap.tsx', has: 'p.row.valid) * 100).toFixed(digits))', why: 'a map hover tooltip (not interactive); selecting the dot shows the margin with Percentage' },
-  { file: 'Turnout.tsx', has: 'Math.abs(d.change).toFixed(digits)', why: 'an entered change in the action label, shown in full' },
+  { file: 'LocalityMap.tsx', has: 'fmtPoints(w.margin / Math.max(1, p.row.valid) * 100, digits, true)', why: 'a map hover tooltip (not interactive), never a lead as 0; selecting the dot shows the margin with Percentage' },
+  { file: 'Turnout.tsx', has: 'nonZeroFixed(Math.abs(d.change), digits)', why: 'an entered change in the action label, never a change as 0' },
   { file: 'Turnout.tsx', has: 'aria-valuetext={`${fmtPctNum(', why: 'slider value text for assistive technology' },
   { file: 'Turnout.tsx', has: 'aria-label={lists.filter', why: 'aria-label of the mix bar; its legend uses Percentage' },
   { file: 'Turnout.tsx', has: 'title={`${listLabel(s.lists[i], lang)} ${fmtPctNum(', why: 'segment title; the legend beside it uses Percentage' },
@@ -23,7 +23,7 @@ const ALLOWED: { file: string; has: string; why: string }[] = [
   { file: 'TurnoutFacts.tsx', has: "${L('turnout', 'הצבעה')} ${fmtPct(", why: 'aria-label of a chart column; the readout and the table beside it use Percentage' },
   { file: 'Figures.tsx', has: 'd={fmtPct(cast, s.registered, digits) === fmtPct(', why: 'a comparison of two rounded strings, not output' },
 ];
-const TOKEN = /\bfmtPct\(|\bfmtPctNum\(|\.toFixed\(/;
+const TOKEN = /\bfmtPct\(|\bfmtPctNum\(|\bfmtPoints\(|\bnonZeroFixed\(|\.toFixed\(/;
 
 const files = (dir: string): string[] => readdirSync(dir, { withFileTypes: true }).flatMap(e => e.isDirectory() ? files(join(dir, e.name)) : [join(dir, e.name)]);
 
