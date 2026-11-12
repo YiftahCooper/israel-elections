@@ -173,7 +173,7 @@
   .cmp-band-slot-copy { grid-area: copy; }
   .cmp-band-slot-more { grid-area: more; }
   .cmp-band-slot:empty { display: none; }
-  .cmp-band-copy, .cmp-band-more { min-height: 44px; min-width: 44px; }
+  .cmp-band .btn.cmp-band-copy, .cmp-band .btn.cmp-band-more { min-height: 44px; min-width: 44px; }
   .cmp-menu .cmp-menu-item { min-height: 44px; }
 }
 

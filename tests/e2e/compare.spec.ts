@@ -411,6 +411,8 @@ for (const lang of ['en', 'he'] as const) for (const width of [1500, 390]) {
     await expect(rowMenu).toContainText(lang === 'he' ? 'אל 2022' : 'To 2022');
     await expect(rowMenu).not.toContainText(/[←→]/);
     for (const name of await arrowControls()) expect(name).toMatch(notCopy);
+    // phone: the band's buttons are 44px targets, as the list rows' are
+    if (width < 800) for (const b of await page.locator('.cmp-band-copy, .cmp-band-more').all()) { const r = (await b.boundingBox())!; expect(r.height).toBeGreaterThanOrEqual(44); expect(r.width).toBeGreaterThanOrEqual(44); }
     // the band keeps inside the screen
     const over = await page.locator('.cmp-band-row > *').evaluateAll((cells) => cells.filter((cell) => { const r = cell.getBoundingClientRect();
       return [...cell.querySelectorAll('bdi, .cmp-band-k, button')].some((c) => { const q = c.getBoundingClientRect(); return q.left < r.left - 0.5 || q.right > r.right + 0.5; }); }).length);
