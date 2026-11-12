@@ -4792,6 +4792,10 @@
         "en": "National Unity’s official faction record changes to Blue and White–National Unity.",
         "he": "רישום החברות עבר מסיעת המחנה הממלכתי לסיעת כחול לבן - המחנה הממלכתי (8 ח״כים)."
       },
+      "line": {
+        "en": "{f:1098}’s official faction record changes to {f:1110}.",
+        "he": "רישום החברות עבר מסיעת {f:1098} לסיעת {f:1110} (8 ח״כים)."
+      },
       "classification": "does not count",
       "reason": "A changed faction name/ID alone does not establish a change in parliamentary support.",
       "seatsAfter": null,

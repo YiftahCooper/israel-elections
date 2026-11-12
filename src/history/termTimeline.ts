@@ -3,6 +3,8 @@
 // seat card could show it. Everything below the loader is pure and tested in tests/term-timeline.test.ts.
 import { useEffect, useState } from 'react';
 import type { Importance, MarkKind, SeatChangeKind, TermRuntime, TermTimelineRuntime, TimelineItem, TimelineStep } from '../../scripts/term-timeline-runtime.ts';
+import { factionLabel, factionMove, type MkRuntime } from './mk.ts';
+import { englishLabel } from '../data/names.ts';
 
 export type { Importance, MarkKind, SeatChangeKind, TermRuntime, TermTimelineRuntime, TimelineItem, TimelineStep };
 export type { PackedHolder, Pairing } from '../../scripts/term-timeline-runtime.ts';
@@ -19,7 +21,25 @@ export function useTermRuntime(): TermTimelineRuntime | null {
   return rt;
 }
 
-const RANK: Record<Importance, number> = { simple: 0, standard: 1, expert: 2 };
+// ---------- event lines: factions named by id, as every other screen names them (audit 12 Nov 2026, c-screens-people-04) ----------
+/** A faction move's line: from its two faction ids and head count, with MK history's names (factionMove). */
+export function factionMoveLine(mk: MkRuntime | null, [from, to]: readonly [number, number], count: number, lang: 'he' | 'en'): string {
+  const m = mk ? factionMove(mk, from, to) : null;
+  const was = m ? (lang === 'he' ? m.was.he : englishLabel(m.was.en, m.was.he)) : '…';
+  const now = m ? (lang === 'he' ? m.now.he : englishLabel(m.now.en, m.now.he)) : '…';
+  return lang === 'he' ? `רישום החברות עבר מסיעת ${was} לסיעת ${now} (${count === 1 ? 'ח״כ אחד' : `${count} ח״כים`}).`
+    : `${count} ${count === 1 ? 'MK' : 'MKs'} recorded moving from ${was} to ${now}.`;
+}
+/** A line whose factions are written as {f:id} (data/research/knesset-events `line`), with each faction's shown name. */
+export const fillFactions = (mk: MkRuntime | null, text: string, lang: 'he' | 'en') =>
+  text.replace(/\{f:(\d+)\}/g, (_, id: string) => (mk ? factionLabel(mk, Number(id), lang) : '') || '…');
+/** The line an event shows (seat changes are written by the screen from the people's names). */
+export function eventLine(it: Pick<TimelineItem, 'factions' | 'count' | 'en' | 'he'>, mk: MkRuntime | null, lang: 'he' | 'en'): string {
+  if (it.factions) return factionMoveLine(mk, it.factions, it.count ?? 0, lang);
+  return fillFactions(mk, (lang === 'he' ? it.he : it.en) ?? '', lang);
+}
+
+const RANK: Record<Importance, number> ={ simple: 0, standard: 1, expert: 2 };
 /** Is an item shown? Events: at their level and above. Seat changes: none at Off; at Important, those the research
  *  rates Simple or Standard; at All, those plus the kinds the Expert setting keeps. */
 export function visibleItem(it: TimelineItem, level: Importance, seatChanges: 'off' | 'important' | 'all', kinds: Record<SeatChangeKind, boolean>): boolean {

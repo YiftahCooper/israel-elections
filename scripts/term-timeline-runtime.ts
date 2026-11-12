@@ -50,7 +50,8 @@ export interface TimelineItem {
   importanceFrom: 'data' | 'fallback' | 'rule';
   marker: Marker | null;
   markerFrom: 'data' | 'fallback';
-  /** short text; null for seat changes (the app writes them from the names) */
+  /** short text, its factions written {f:id} (the app names them, as every screen does); null for seat changes and
+   *  faction moves (the app writes them from the names and the factions below) */
   en: string | null; he: string | null;
   certainty: string | null; evidenceClass: string | null;
   sources: readonly (readonly [string, string])[];
@@ -62,7 +63,8 @@ export interface TimelineItem {
   seat?: number; in?: number | null; out?: number | null; change?: SeatChangeKind; reason?: string | null;
   /** the research holds this event out of the steps; it still shapes the chamber */
   held?: true;
-  /** faction-membership changes: the factions [from, to] and how many members moved (the app names them) */
+  /** faction-membership changes: the factions [from, to] and how many members moved (the app writes the line, with the
+   *  names MK history gives them; the research summary is research text and is not shown) */
   factions?: readonly [number, number]; count?: number;
 }
 export interface TimelineStep {
@@ -89,6 +91,9 @@ type Changes = { asOf?: string; tenures: Tenure[]; replacements: Replacement[]; 
 type Vote = { for?: number | null; against?: number | null; crossVotes?: { personId: number; vote: string }[] | null };
 type KEvent = {
   id: string; date: string; kind: string; who: { personIds?: number[]; factionIds?: number[] }; summary: { en: string; he: string };
+  /** the line the timeline shows where the research summary names factions in its own words: the summary with each faction
+   *  written {f:id}, so the app names it as every other screen does (audit 12 Nov 2026, c-screens-people-04) */
+  line?: { en?: string; he?: string };
   classification?: string; certainty?: string; evidenceClass?: string; seatsAfter?: { coalition: number | null; opposition: number | null } | null;
   sources?: { url?: string; publisher?: string }[]; vote?: Vote;
   importance?: Importance; marker?: Marker | null; markerDirection?: string; direction?: string;
@@ -390,7 +395,7 @@ function compileSteps(k: number, opening: string, end: string, seats: SeatRuntim
       if (!e.importance && (JOIN.has(e.kind) || EXIT.has(e.kind)) && partyLevel) importance = moved.length ? 'simple' : 'standard';
       const fm = e.kind === 'faction-membership-change' && factions.length === 2 ? { factions: [factions[0], factions[1]] as const, count: e.who.personIds?.length ?? 0 } : {};
       items.push({ id: e.id, type: 'event', kind: e.kind, importance, importanceFrom: e.byRule ? 'rule' : e.importance ? 'data' : 'fallback', marker, markerFrom: fromData ? 'data' : 'fallback',
-        en: e.summary.en, he: e.summary.he, certainty: e.certainty ?? null, evidenceClass: e.evidenceClass ?? null, sources: srcs(e), marks, moved, ...(e.timelineEligible === false ? { held: true as const } : {}), ...fm });
+        en: 'factions' in fm ? null : e.line?.en ?? e.summary.en, he: 'factions' in fm ? null : e.line?.he ?? e.summary.he, certainty: e.certainty ?? null, evidenceClass: e.evidenceClass ?? null, sources: srcs(e), marks, moved, ...(e.timelineEligible === false ? { held: true as const } : {}), ...fm });
       (items[items.length - 1] as TimelineItem & { _e?: KEvent })._e = e;
     }
     const coalition = sides ? current().filter((x) => side.get(x.t.personId) === 'c').map((x) => x.seat) : null;

@@ -21,8 +21,8 @@ async function openTimeline(page: Page, lang: 'en' | 'he' = 'en') {
   return tl;
 }
 const current = (tl: ReturnType<Page['locator']>) => tl.locator('.tl-tick[data-current]');
-async function stepTo(tl: ReturnType<Page['locator']>, date: string) {
-  for (let i = 0; i < 80 && (await current(tl).getAttribute('data-date')) !== date; i++) await tl.getByRole('button', { name: /^Next step/ }).click();
+async function stepTo(tl: ReturnType<Page['locator']>, date: string, lang: 'en' | 'he' = 'en') {
+  for (let i = 0; i < 80 && (await current(tl).getAttribute('data-date')) !== date; i++) await tl.getByRole('button', { name: lang === 'he' ? /^הצעד הבא/ : /^Next step/ }).click();
   await expect(current(tl)).toHaveAttribute('data-date', date);
 }
 
@@ -204,10 +204,37 @@ test('a faction move names its factions in English', async ({ page }) => {
   await start(page, { level: 'expert', election: 'k21' });
   const tl = await openTimeline(page);
   await stepTo(tl, '2019-06-02');
-  await expect(tl.locator('.tl-lines')).toContainText('2 MKs recorded moving from Ra’am–Balad to Balad.');
+  await expect(tl.locator('.tl-lines')).toContainText("2 MKs recorded moving from Ra'am–Balad to Balad.");
   await expect(tl.locator('.tl-lines')).toContainText('1 MK recorded moving from Likud to Ahi.');
   await expect(tl.locator('.tl-lines')).not.toContainText('between factions');
 });
+
+// Audit of 12 Nov 2026 (c-screens-people-04, c-famous-late-09): the timeline names each faction as the seat cards and
+// MK history do (tests/term-timeline-names.test.ts checks every line; these are the two steps the audit named).
+for (const lang of ['en', 'he'] as const) {
+  test(`${lang}: the 25th Knesset on 13 Mar 2024 and the 24th on 15 Aug 2022 name the factions as MK history does`, async ({ page }) => {
+    await start(page, { lang, level: 'standard', election: 'k25' });
+    let tl = await openTimeline(page, lang);
+    await stepTo(tl, '2024-03-13', lang);
+    await expect(tl.locator('.tl-lines li[data-item="k25-faction-3"]')).toContainText(lang === 'he'
+      ? 'רישום החברות עבר מסיעת המחנה הממלכתי לסיעת הימין הממלכתי (4 ח״כים).' : '4 MKs recorded moving from National Unity to National Right.');
+    await page.getByRole('button', { name: lang === 'he' ? 'מומחה' : 'Expert', exact: true }).first().click();
+    await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k24');
+    tl = await openTimeline(page, lang);
+    await tl.getByRole('slider').focus(); await page.keyboard.press('Home'); // the timeline keeps the date it was on (2024)
+    await stepTo(tl, '2022-08-15', lang);
+    const lines = tl.locator('.tl-lines');
+    if (lang === 'en') {
+      await expect(lines.locator('li[data-item="k24-committee-2022-08-15-18"]')).toContainText('Yamina splits into Yamina and National Unity; National Unity then splits into National Unity and Beyahad (Bennett); New Hope splits into New Hope – Unity for Israel and Derekh Eretz.');
+      await expect(lines.locator('li[data-item="k24-committee-2022-08-15-16"]')).toContainText('United Torah Judaism faction splits into Degel HaTorah and Agudat Yisrael.');
+      await expect(lines).not.toContainText('National Camp');
+      await expect(lines).not.toContainText('Beyachad');
+    } else {
+      await expect(lines.locator('li[data-item="k24-committee-2022-08-15-18"]')).toContainText('אושרו התפלגויות ימינה, המחנה הממלכתי ותקווה חדשה.');
+      await expect(lines.locator('li[data-item="k24-committee-2022-08-15-17"]')).toContainText('אושרה התפלגות סיעת הציונות הדתית לסיעות הציונות הדתית ונעם - בראשות חה״כ אבי מעוז.');
+    }
+  });
+}
 
 test('the 21st Knesset: no government formed, so no sides; the dissolution is a step', async ({ page }) => {
   await start(page, { level: 'simple', election: 'k21' });

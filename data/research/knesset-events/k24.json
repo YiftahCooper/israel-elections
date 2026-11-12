@@ -3219,6 +3219,10 @@
         "en": "House Committee declares Chikli to have left Yamina.",
         "he": "ועדת הכנסת הכריזה על שיקלי כפורש מימינה."
       },
+      "line": {
+        "en": "House Committee declares Chikli to have left {f:966}.",
+        "he": "ועדת הכנסת הכריזה על שיקלי כפורש מ{f:966}."
+      },
       "classification": "counts",
       "reason": "Formal declaration changes faction status; it does not date his first opposition vote.",
       "seatsAfter": null,
@@ -4117,6 +4121,10 @@
         "en": "Religious Zionism joint faction splits into Religious Zionism and Otzma Yehudit.",
         "he": "אושרה התפלגות סיעת הציונות הדתית לסיעות הציונות הדתית ועוצמה יהודית."
       },
+      "line": {
+        "en": "{f:961} joint faction splits into {f:961} and {f:1081}.",
+        "he": "אושרה התפלגות סיעת {f:961} לסיעות {f:961} ו{f:1081}."
+      },
       "classification": "counts",
       "reason": "Formal House Committee decision, limited to the parliamentary act it records. No party registration or government-support status inferred.",
       "seatsAfter": null,
@@ -4559,6 +4567,10 @@
         "en": "UTJ faction splits into Degel HaTorah and Agudat Yisrael.",
         "he": "אושרה התפלגות סיעת יהדות התורה לדגל התורה ולאגודת ישראל."
       },
+      "line": {
+        "en": "{f:965} faction splits into {f:1082} and {f:1083}.",
+        "he": "אושרה התפלגות סיעת {f:965} ל{f:1082} ול{f:1083}."
+      },
       "classification": "counts",
       "reason": "Formal House Committee decision, limited to the parliamentary act it records. No party registration or government-support status inferred.",
       "seatsAfter": null,
@@ -4597,6 +4609,10 @@
       "summary": {
         "en": "Religious Zionism faction splits into Religious Zionism and Noam.",
         "he": "אושרה התפלגות סיעת הציונות הדתית לסיעות הציונות הדתית ונעם."
+      },
+      "line": {
+        "en": "{f:961} faction splits into {f:961} and {f:1084}.",
+        "he": "אושרה התפלגות סיעת {f:961} לסיעות {f:961} ו{f:1084}."
       },
       "classification": "counts",
       "reason": "Formal House Committee decision, limited to the parliamentary act it records. No party registration or government-support status inferred.",
@@ -4637,6 +4653,10 @@
       "summary": {
         "en": "Yamina splits into Yamina and National Camp; National Camp then splits into National Camp and Beyachad (Bennett); New Hope splits into New Hope and Derech Eretz.",
         "he": "אושרו התפלגויות ימינה, המחנה הממלכתי ותקווה חדשה."
+      },
+      "line": {
+        "en": "{f:966} splits into {f:1091} and {f:1085}; {f:1085} then splits into {f:1085} and {f:1086} (Bennett); {f:972} splits into {f:1088} and {f:1087}.",
+        "he": "אושרו התפלגויות {f:966}, {f:1085} ו{f:972}."
       },
       "classification": "counts",
       "reason": "Formal House Committee decision, limited to the parliamentary act it records. No party registration or government-support status inferred.",
@@ -5268,6 +5288,10 @@
         "en": "Joint List faction splits into Joint List (Hadash and Balad) and Ta’al.",
         "he": "אושרה התפלגות הרשימה המשותפת לסיעות הרשימה המשותפת ותע״ל."
       },
+      "line": {
+        "en": "{f:964} faction splits into {f:1089} and {f:1090}.",
+        "he": "אושרה התפלגות {f:964} לסיעות {f:1089} ו{f:1090}."
+      },
       "classification": "counts",
       "reason": "Formal House Committee decision, limited to the parliamentary act it records. No party registration or government-support status inferred.",
       "seatsAfter": null,
@@ -5305,6 +5329,10 @@
       "summary": {
         "en": "Yamina and Beyachad factions merge as Yamina, representing Tzalash; no party merger inferred.",
         "he": "אושר מיזוג סיעות ימינה וביחד לסיעת ימינה המייצגת את מפלגת צל״ש."
+      },
+      "line": {
+        "en": "{f:1091} and {f:1086} factions merge as {f:1091}, representing Tzalash; no party merger inferred.",
+        "he": "אושר מיזוג סיעות {f:1091} ו{f:1086} לסיעת {f:1091} המייצגת את מפלגת צל״ש."
       },
       "classification": "counts",
       "reason": "Formal House Committee decision, limited to the parliamentary act it records. No party registration or government-support status inferred.",
@@ -5644,6 +5672,10 @@
       "summary": {
         "en": "Yamina faction splits into Yamina and Economic Freedom (Abir Kara).",
         "he": "אושרה התפלגות סיעת ימינה לסיעות ימינה וחופש כלכלי."
+      },
+      "line": {
+        "en": "{f:1091} faction splits into {f:1091} and {f:1092} (Abir Kara).",
+        "he": "אושרה התפלגות סיעת {f:1091} לסיעות {f:1091} ו{f:1092}."
       },
       "classification": "counts",
       "reason": "Formal House Committee decision, limited to the parliamentary act it records. No party registration or government-support status inferred.",
