@@ -315,8 +315,8 @@
   "blocSchemes": [
     {
       "id": "first-government",
-      "nameHe": "הממשלה הראשונה של הכנסת ה-12 (ממשלה 23) והאופוזיציה",
-      "nameEn": "First government of the 12th Knesset (government 23) and opposition",
+      "nameHe": "הממשלה ה־23 (הממשלה הראשונה של הכנסת)",
+      "nameEn": "Government 23 (first government of the Knesset)",
       "kind": "government",
       "date": "1988-12-22",
       "blocs": [
@@ -324,7 +324,7 @@
           "id": "coalition",
           "nameHe": "קואליציה",
           "nameEn": "Coalition",
-          "color": "#2E7D32",
+          "color": "#3A6EA5",
           "seats": 95,
           "members": [
             {
@@ -348,7 +348,7 @@
           "id": "opposition",
           "nameHe": "אופוזיציה",
           "nameEn": "Opposition",
-          "color": "#9E9E9E",
+          "color": "#8C8C8C",
           "seats": 25,
           "members": [
             {

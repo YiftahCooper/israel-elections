@@ -1270,8 +1270,8 @@
  "blocSchemes": [
   {
    "id": "first-government",
-   "nameHe": "ממשלת ישראל ה-35 (נתניהו–גנץ)",
-   "nameEn": "35th government (Netanyahu–Gantz)",
+   "nameHe": "הממשלה ה־35 (הממשלה הראשונה של הכנסת)",
+   "nameEn": "Government 35 (first government of the Knesset)",
    "kind": "government",
    "date": "2020-05-17",
    "governmentNumber": 35,
@@ -1280,7 +1280,7 @@
      "id": "coalition",
      "nameHe": "קואליציה",
      "nameEn": "Coalition",
-     "color": "#1f5aa5",
+     "color": "#3A6EA5",
      "members": [
       {
        "letters": "מחל"
@@ -1349,7 +1349,7 @@
      "id": "opposition",
      "nameHe": "אופוזיציה",
      "nameEn": "Opposition",
-     "color": "#7f7f7f",
+     "color": "#8C8C8C",
      "members": [
       {
        "letters": "פה",

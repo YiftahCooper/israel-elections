@@ -1940,7 +1940,7 @@
   "blocSchemes": [
     {
       "id": "first-government",
-      "nameHe": "הממשלה ה-13 (הממשלה הראשונה של הכנסת)",
+      "nameHe": "הממשלה ה־13 (הממשלה הראשונה של הכנסת)",
       "nameEn": "Government 13 (first government of the Knesset)",
       "kind": "government",
       "date": "1966-01-12",
@@ -2048,8 +2048,8 @@
     },
     {
       "id": "labour-affiliated-arab-lists",
-      "nameHe": "מפא\"י/המערך והרשימות הערביות המסונפות אליה (רשימות לוויין)",
-      "nameEn": "Mapai/Alignment and its affiliated Arab (satellite) lists",
+      "nameHe": "המערך והרשימות הערביות המסונפות אליו (רשימות לוויין)",
+      "nameEn": "The Alignment and its affiliated Arab (satellite) lists",
       "kind": "parliamentary",
       "date": "1965-11-02",
       "blocs": [

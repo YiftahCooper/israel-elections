@@ -2,6 +2,7 @@
 
 ## 7 November 2026 — Settings
 
+- Coalitions (12 Nov, audit): the satellite-list preset is named after that year’s party: Mapai to 1961, the Alignment from 1965 (it read “Mapai/Alignment” in 1951, 1961, 1965, 1969 and 1977). Every first-government preset now has one title, “Government 19 (first government of the Knesset)”, and one blue and grey pair; 1981–2006 had their own wording and green, 2009–2022 a third wording.
 - Knesset on a date (12 Nov, audit): the 25th Knesset's timeline now ends on 10 Nov 2026, the day the 26th opened, with one closing line and the chamber as it stood on its last day (Coalition 61). Its last step showed an empty chamber (0 seats) and, with seat changes on, 120 members “leaving”; the bar ran to 12 Nov, the date the records were taken. A term whose members' records have all closed ends on that day, as every earlier term does.
 - Knesset on a date (12 Nov, audit): United Torah Judaism is one faction of two parties. On 14 Jul 2025 only Degel HaTorah's four MKs now leave the coalition (Coalition 64), and Agudat Yisrael's three on 15 Jul (Coalition 61); all seven left on the 14th and the 15th moved no one.
 - Party history (12 Nov, audit): HaOlam HaZeh's history continues as Meri. The Knesset renamed its faction מחנה רדיקלי ישראלי on 3 Jul 1973, shown as a rename; the list ran as מרי (העולם הזה – כח חדש) that December. The date is the faction's; the party's legal rename date is not known.

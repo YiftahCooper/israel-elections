@@ -854,7 +854,7 @@
   "blocSchemes": [
     {
       "id": "first-government",
-      "nameHe": "הממשלה ה-16 (הממשלה הראשונה של הכנסת)",
+      "nameHe": "הממשלה ה־16 (הממשלה הראשונה של הכנסת)",
       "nameEn": "Government 16 (first government of the Knesset)",
       "kind": "government",
       "date": "1974-03-10",
@@ -1048,8 +1048,8 @@
     },
     {
       "id": "labour-affiliated-arab-lists",
-      "nameHe": "המערך והרשימות הערביות המסונפות אליו",
-      "nameEn": "The Alignment and its affiliated Arab lists",
+      "nameHe": "המערך והרשימות הערביות המסונפות אליו (רשימות לוויין)",
+      "nameEn": "The Alignment and its affiliated Arab (satellite) lists",
       "kind": "parliamentary",
       "date": "1973-12-31",
       "blocs": [

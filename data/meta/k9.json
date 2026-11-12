@@ -1685,7 +1685,7 @@
   "blocSchemes": [
     {
       "id": "first-government",
-      "nameHe": "הממשלה ה-18 (הממשלה הראשונה של הכנסת)",
+      "nameHe": "הממשלה ה־18 (הממשלה הראשונה של הכנסת)",
       "nameEn": "Government 18 (first government of the Knesset)",
       "kind": "government",
       "date": "1977-06-20",
@@ -1787,8 +1787,8 @@
     },
     {
       "id": "labour-affiliated-arab-lists",
-      "nameHe": "מפא\"י/המערך והרשימות הערביות המסונפות אליה (רשימות לוויין)",
-      "nameEn": "Mapai/Alignment and its affiliated Arab (satellite) lists",
+      "nameHe": "המערך והרשימות הערביות המסונפות אליו (רשימות לוויין)",
+      "nameEn": "The Alignment and its affiliated Arab (satellite) lists",
       "kind": "parliamentary",
       "date": "1977-05-17",
       "blocs": [

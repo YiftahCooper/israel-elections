@@ -28,7 +28,7 @@
   "blocSchemes": [
     {
       "id": "first-government",
-      "nameHe": "הממשלה ה-3 (הממשלה הראשונה של הכנסת)",
+      "nameHe": "הממשלה ה־3 (הממשלה הראשונה של הכנסת)",
       "nameEn": "Government 3 (first government of the Knesset)",
       "kind": "government",
       "date": "1951-10-08",
@@ -155,8 +155,8 @@
     },
     {
       "id": "labour-affiliated-arab-lists",
-      "nameHe": "מפא\"י/המערך והרשימות הערביות המסונפות אליה (רשימות לוויין)",
-      "nameEn": "Mapai/Alignment and its affiliated Arab (satellite) lists",
+      "nameHe": "מפא״י והרשימות הערביות המסונפות אליה (רשימות לוויין)",
+      "nameEn": "Mapai and its affiliated Arab (satellite) lists",
       "kind": "parliamentary",
       "date": "1951-07-30",
       "blocs": [

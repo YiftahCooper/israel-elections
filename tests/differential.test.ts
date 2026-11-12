@@ -272,7 +272,12 @@ const EXPECTED: Record<Family, string> = {
   // fx-after (12 Nov, c-aftermath-01): k12's sourced 1988 recommendations grouping now matches the After the election
   // record (Peres 55 with Hadash, PLP and ADP; Degel in 'No recommendation'). Restoring HEAD's public/data/k12.json alone
   // reproduces 31937648… and all four other digests; only this digest changes.
-  model: 'a26911b01c26bb882ed312ae726070a4abdbdcac8de3d1058fb9270cdfeb4a11',
+  // fx-after2 (12 Nov, c-famous-early-08): the Coalitions presets' titles and colours only (one pattern for every
+  // first-government preset; the satellite-list preset named after that year's party). Against HEAD's src and data
+  // together, 341 of 520 model cases differ, each only in a scheme or bloc nameEn/nameHe/colour or the dataset build
+  // time; allocation, analysis, validation and rules are identical. On one set of data HEAD's src and this src give
+  // the same 520 model outputs (fable-check/model-diff.ts), so the source changes move nothing.
+  model: 'cb340728f2d50052e491e4023a7091e1a70bac9512c6ccfb5a80ddf2a8768f3c',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };
