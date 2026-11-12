@@ -21,12 +21,24 @@ export interface NationalTotals { valid: number; invalid?: number; votesCast?: n
  *  Elections whose printed gazette is internally inconsistent check only what holds and document
  *  the exception where they are built. */
 export function checkNationalTable(check: Check, id: string, rows: readonly NationalRow[], totals: NationalTotals) {
+  // every supplied count is whole on its own, before any arithmetic can make a wrong one reconcile (audit 12 Nov)
+  check(whole(totals.valid) && [totals.invalid, totals.votesCast, totals.registered].every(n => n === undefined || whole(n)), `${id}: invalid national totals`);
   check(rows.length > 0 && new Set(rows.map(r => r.letters)).size === rows.length, `${id}: duplicate or empty ballot letters`);
   check(rows.every(r => r.letters && (r.nameHe === undefined || r.nameHe) && whole(r.votes) && whole(r.seats)), `${id}: invalid national row`);
   check(sum(rows.map(r => r.votes)) === totals.valid, `${id}: list votes do not sum to valid`);
   check(sum(rows.map(r => r.seats)) === 120, `${id}: official seats do not sum to 120`);
   if (totals.invalid !== undefined && totals.votesCast !== undefined) check(totals.valid + totals.invalid === totals.votesCast, `${id}: cast ≠ valid + invalid`);
   if (totals.registered !== undefined && totals.votesCast !== undefined) check(whole(totals.registered) && whole(totals.votesCast) && totals.registered >= totals.votesCast, `${id}: turnout exceeds electorate`);
+}
+
+/** The published dataset's totals, whichever builder made them: every count whole, and the national table holds in full
+ *  (list votes sum to valid, cast = valid + invalid, turnout ≤ electorate). Run on every output in build-datasets. */
+export function checkDatasetTotals(check: Check, ds: ElectionDataset) {
+  const t = ds.totals;
+  check([t.registered, t.votesCast, t.invalid, t.valid, t.ballotBoxes, t.localities].every(whole) && (t.envelopeVotes === undefined || whole(t.envelopeVotes)), `${ds.id}: invalid national totals`);
+  check(t.valid + t.invalid === t.votesCast, `${ds.id}: cast ≠ valid + invalid`);
+  check(t.registered >= t.votesCast, `${ds.id}: turnout exceeds electorate`);
+  check(ds.lists.every(l => whole(l.votes)) && sum(ds.lists.map(l => l.votes)) === t.valid, `${ds.id}: list votes do not sum to valid`);
 }
 
 /** Surplus-agreement pairs: two members each, no list in two agreements, every member a ballot letter. */
