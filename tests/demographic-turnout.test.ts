@@ -22,7 +22,7 @@ it('removes ballots and allows endpoints, rejects out of range and overlap',()=>
  expect(demographicTurnout(base,fixture(),[{groupId:'test',turnoutPercent:0}]).invalid).toBe(base.invalid-50);
  expect(()=>demographicTurnout(base,fixture(),[{groupId:'test',turnoutChangePoints:51}])).toThrow();
  expect(()=>demographicTurnout(base,fixture(),[{groupId:'test',turnoutChangePoints:-51}])).toThrow();
- expect(()=>demographicTurnout(base,fixture(),[{groupId:'test',turnoutPercent:50},{groupId:'test',turnoutPercent:60}])).toThrow(/overlap/i);
+ expect(()=>demographicTurnout(base,fixture(),[{groupId:'test',turnoutPercent:50},{groupId:'test',turnoutPercent:60}])).toThrow('A locality is in two of the chosen groups. Change one group at a time.');
 });
 it('conserves votes through merges and splits, even zero-weight splits',()=>{
  const d=fixture();
@@ -51,12 +51,12 @@ it('Arab localities +10 points changes k25 seats using their own mix',()=>{
 });
 it('rejects cross-election, missing electorate, invalid percentages, envelopes and missing origins',()=>{
  const adjustment=[{groupId:'test',turnoutChangePoints:10}];
- const d=fixture();d.id='k24';expect(()=>demographicTurnout(base,d,adjustment)).toThrow(/mismatch/);
- d.id='k25';d.rows[0].registered=null;expect(()=>demographicTurnout(base,d,adjustment)).toThrow(/unavailable/);
- d.rows[0].registered=1000;d.rows[0].envelopes=true;expect(()=>demographicTurnout(base,d,adjustment)).toThrow(/envelope/);
- d.rows[0].envelopes=false;d.listIds[0]='absent';expect(()=>demographicTurnout(base,d,adjustment)).toThrow(/destination/);
+ const d=fixture();d.id='k24';expect(()=>demographicTurnout(base,d,adjustment)).toThrow('This change is not valid, so it was not made.');
+ d.id='k25';d.rows[0].registered=null;expect(()=>demographicTurnout(base,d,adjustment)).toThrow('Eligible voters are not known for these localities.');
+ d.rows[0].registered=1000;d.rows[0].envelopes=true;expect(()=>demographicTurnout(base,d,adjustment)).toThrow("This group's localities cannot be used. Choose another group.");
+ d.rows[0].envelopes=false;d.listIds[0]='absent';expect(()=>demographicTurnout(base,d,adjustment)).toThrow("A list from the election is no longer in this scenario, so its voters' choice has nowhere to go.");
  for(const value of [NaN,Infinity,-1,101])expect(()=>demographicTurnout(base,fixture(),[{groupId:'test',turnoutPercent:value}])).toThrow();
- expect(()=>demographicTurnout(base,fixture(),[{groupId:'unknown',turnoutPercent:50}])).toThrow(/Unknown/);
+ expect(()=>demographicTurnout(base,fixture(),[{groupId:'unknown',turnoutPercent:50}])).toThrow('This group is no longer available.');
 });
 it('uses exact decimal points, 100% bounds, deterministic Hamilton ties and nonzero split weights',()=>{
  const d=fixture();
@@ -69,9 +69,9 @@ it('uses exact decimal points, 100% bounds, deterministic Hamilton ties and nonz
 });
 it('rejects distinct overlapping groups and invalid removal results; preserves scenario input',()=>{
  const d=fixture();d.groups!.push({...d.groups![0],id:'overlap'});
- expect(()=>demographicTurnout(base,d,[{groupId:'test',turnoutPercent:60},{groupId:'overlap',turnoutPercent:60}])).toThrow(/Overlapping/);
+ expect(()=>demographicTurnout(base,d,[{groupId:'test',turnoutPercent:60},{groupId:'overlap',turnoutPercent:60}])).toThrow('A locality is in two of the chosen groups. Change one group at a time.');
  const s=structuredClone(base);s.lists[0].votes=0;
- expect(()=>demographicTurnout(s,fixture(),[{groupId:'test',turnoutPercent:0}])).toThrow(/negative/);
+ expect(()=>demographicTurnout(s,fixture(),[{groupId:'test',turnoutPercent:0}])).toThrow('This turnout change would leave a negative or too large vote count. Choose a smaller change.');
  const before=JSON.stringify(base);demographicTurnout(base,fixture(),[{groupId:'test',turnoutChangePoints:10}]);expect(JSON.stringify(base)).toBe(before);
 });
 it('rebuilds k18/k19 against original locality evidence after attaching demographic metadata',async()=>{

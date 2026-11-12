@@ -20,13 +20,22 @@ const resultCache = new WeakMap<ElectionDataset, Map<string, WhatIfResult[]>>();
 const arrow = (a: string, b: string) => <bdi dir="ltr">{a} → {b}</bdi>;
 
 /** one fact as a short phrase; `full` names the parts of a joint list (the row shows numbers only) */
-function Fact({ f, lang, full }: { f: WhatIfFact; lang: Lang; full?: boolean }): ReactNode {
+export function Fact({ f, lang, full }: { f: WhatIfFact; lang: Lang; full?: boolean }): ReactNode {
   const he = lang === 'he';
   switch (f.kind) {
-    // the bare sum reads left to right in Hebrew too; the named form is a sentence in the page's direction
-    case 'joint': return <span className="wi-chip"><span className="swatch" style={{ background: f.color }} />{f.label} {full
-      ? <><b>{f.seats}</b> = {f.parts.map((p, i) => <span key={i}>{i > 0 && ' + '}{p.label} {p.seats}</span>)}</>
-      : <bdi dir="ltr"><b>{f.seats}</b> <span className="ink2">= {f.parts.map((p) => p.seats).join(' + ')}</span></bdi>}</span>;
+    // the bare sum reads left to right in Hebrew too; the named form is a sentence in the page's direction. The joint
+    // list equals the sum of its parts only when no seat moved; otherwise the parts' sum comes first, then the joint
+    // list's own result and the difference (never an equation that is false).
+    case 'joint': {
+      const total = f.parts.reduce((n, p) => n + p.seats, 0), d = f.seats - total;
+      const named = f.parts.map((p, i) => <span key={i}>{i > 0 && ' + '}{p.label} {p.seats}</span>);
+      if (!d) return <span className="wi-chip"><span className="swatch" style={{ background: f.color }} />{f.label} {full
+        ? <><b>{f.seats}</b> = {named}</>
+        : <bdi dir="ltr"><b>{f.seats}</b> <span className="ink2">= {f.parts.map((p) => p.seats).join(' + ')}</span></bdi>}</span>;
+      return <span className="wi-chip"><span className="swatch" style={{ background: f.color }} />{f.label}{full
+        ? <>: {named} = <bdi dir="ltr">{total} → <b>{f.seats}</b></bdi> <SeatDelta value={d} /></>
+        : <> <bdi dir="ltr"><span className="ink2">{f.parts.map((p) => p.seats).join(' + ')} = {total} →</span> <b>{f.seats}</b></bdi> <SeatDelta value={d} /></>}</span>;
+    }
     case 'band': return <span>{he ? <>אין רשימה בין <bdi dir="ltr">{f.from}%</bdi> ל-<bdi dir="ltr">{f.to}%</bdi></> : `No list between ${f.from}% and ${f.to}%`}</span>;
     case 'agreements': return <span>{f.count === 1 ? (he ? 'ההסכם לא הזיז אף מנדט' : 'The agreement moved no seat') : (he ? `${f.count} ההסכמים לא הזיזו אף מנדט` : `The ${f.count} agreements moved no seat`)}</span>;
     case 'threshold': return <span>{he ? 'אחוז החסימה' : 'Threshold'} {arrow(fmtInt(f.before), f.after === 0n ? (he ? 'אין' : 'none') : fmtInt(f.after))} {f.after !== 0n && (he ? 'קולות' : 'votes')}</span>;

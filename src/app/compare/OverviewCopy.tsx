@@ -5,7 +5,7 @@ import { allocationOf, listLabel, resultChanges } from '../derive.ts';
 import { baselineOf } from '../factionDefaults.ts';
 import { useL, useLang } from '../i18n.ts';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
-import { dispatch, toast, useStore } from '../store.ts';
+import { baseContext, dispatch, toast, useStore } from '../store.ts';
 import { useActiveReference } from '../useActiveReference.ts';
 import { scenarioColor } from '../scenarioIdentity.ts';
 import { askCopy, type CopyAsk } from './copyAsk.ts';
@@ -60,9 +60,9 @@ export function OverviewCopy({ ask }: { ask: CopyAsk }) {
   const start = markerReference ?? base;
   const edited = resultChanges(s, base).length > 0;
   const workYear = yearOf(elections, s.electionId, lang);
-  const to: SideModel = { role: 'main', key: 'main', sc: s, r: allocationOf(s), start, ds, year: workYear, name: L('your work', 'העבודה שלכם'),
+  const to: SideModel = { role: 'main', key: 'main', sc: s, r: allocationOf(s), start, base: baseContext(ds, s.factionSplitBaseline ?? false).base!, ds, year: workYear, name: L('your work', 'העבודה שלכם'),
     official: !edited, edited, frame: edited ? scenarioColor(s) : 'var(--rule)', canUndo: false, canRedo: false, undo: noop, redo: noop, startOver: noop, apply: () => false };
-  const from: SideModel = { role: 'other', key: ref.id, sc: ref.sc, r: allocationOf(ref.sc), start: ref.start, ds: ref.ds, year: ref.year, name: ref.name,
+  const from: SideModel = { role: 'other', key: ref.id, sc: ref.sc, r: allocationOf(ref.sc), start: ref.start, base: ref.start, ds: ref.ds, year: ref.year, name: ref.name,
     official: ref.official, edited: !ref.official, frame: 'var(--rule)', canUndo: false, canRedo: false, undo: noop, redo: noop, startOver: noop, apply: () => false };
   const where = ref.same ? ref.name : ref.year;
   const unit = ask.lists ? offer.unitOf(ask.lists[0]) : null;

@@ -47,7 +47,7 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
   const [source, setSource] = useState<SourceChoice>(() => { const v = rem.source ?? voteSource; return v.kind === 'transfer' && dst.includes(v.listId) ? { kind: 'proportional' } : v; });
   const [scope, setScope] = useState<'once' | 'item' | 'always'>('once');
   const plans = useMemo(() => Object.fromEntries(modes.map((m) => [m, (m === 'change' || m === 'ratio') && !edited ? null
-    : planVotes({ from: sourceOf(from), to: to.sc, ctx: { base: to.start }, units, mode: m, policy: source })])) as Record<CopyMode, Plan | null>,
+    : planVotes({ from: sourceOf(from), to: to.sc, ctx: { base: to.base }, units, mode: m, policy: source })])) as Record<CopyMode, Plan | null>,
   [source, req, ticked, expert, simple, edited]); // eslint-disable-line react-hooks/exhaustive-deps
   const plan = plans[mode];
   const target = (p: Plan | null) => p?.ok ? p.targets.reduce((t, x) => t + x.after, 0) : null;

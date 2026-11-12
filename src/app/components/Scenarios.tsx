@@ -6,6 +6,7 @@ import { hasAppearance, factLog } from '../../model/actionClassification.ts';
 import { Info } from './ui.tsx';
 import { EditMarker } from './EditMarker.tsx';
 import { exportAnnotations } from '../scenarioExport.ts';
+import { errorText } from '../../model/messages.ts';
 // Scenarios as first-class things: the current one with its name and description, and every saved one as a
 // card with its result drawn, to open, compare, export, share or delete. Built-in "What if" questions open here
 // as named scenarios too.
@@ -19,7 +20,7 @@ import type { Scenario } from '../../model/scenario.ts';
 import { allocationOf, listLabel, baselineOf, resultChanges, changesLabel, groupingOnly, unchangedResultNote } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { download } from '../format.ts';
-import { deleteSaved, duplicateCurrent, getSetting, useSetting, importScenarioJson, openImported, openSaved, replay, resetAll, scenarioKey, setState, shareLink, toast, useStore, type SavedScenario } from '../store.ts';
+import { deleteSaved, withSavedIdentity, duplicateCurrent, getSetting, useSetting, importScenarioJson, openImported, openSaved, replay, resetAll, scenarioKey, setState, shareLink, toast, useStore, type SavedScenario } from '../store.ts';
 import { ScenarioGallery } from './ScenarioGallery.tsx';
 import { SavedComparisons } from '../compare/SavedComparisons.tsx';
 import { electionLabel } from './TopBar.tsx';
@@ -73,9 +74,9 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
   // 'official' (nothing changed), the saved id (no unsaved changes) or a draft key (unsaved changes)
   const key = useStore((st) => scenarioKey(st));
   const official = key === 'official', clean = isSaved && !!reference && !scenarioDirty(s, reference);
-  // the result of every saved scenario of this election, replayed once
+  // the result of every saved scenario of this election, replayed once; the description is kept beside the log
   const results = useMemo(() => new Map(saved.filter((x) => x.electionId === s.electionId).map((x) => {
-    const sc = replay(ds, x.name, x.log, x.factionSplitBaseline ?? false).scenario;
+    const sc = withSavedIdentity(replay(ds, x.name, x.log, x.factionSplitBaseline ?? false).scenario, x);
     return [x.id, { sc, r: allocationOf(sc) }] as const;
   })), [saved, ds, s.electionId]);
   const electionName = (id: string) => { const e = elections.find((x) => x.id === id); return e ? electionLabel(e, elections, lang) : id; };
@@ -116,7 +117,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
           const f = e.target.files?.[0]; if (!f) return;
           try {
             if (await openImported(importScenarioJson(await f.text()))) toast('info', L('Scenario imported.', 'התרחיש יובא.'));
-          } catch (err) { toast('error', err instanceof Error ? err.message : String(err)); }
+          } catch (err) { toast('error', errorText(err, lang)); }
           e.target.value = '';
         }} />
       </section>

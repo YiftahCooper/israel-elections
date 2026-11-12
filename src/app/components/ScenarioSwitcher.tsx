@@ -8,7 +8,7 @@ import { changeText, ChangeValue } from '../changeValue.tsx';
 import { useMemo } from 'react';
 import { type Scenario } from '../../model/scenario.ts';
 import type { ElectionDataset } from '../../data/schema.ts';
-import { openOfficial, openSaved, replay, restoreDraft, scenarioKey, useStore } from '../store.ts';
+import { openOfficial, openSaved, replay, withSavedIdentity, restoreDraft, scenarioKey, useStore } from '../store.ts';
 import { useL, useLang } from '../i18n.ts';
 import { liveScenarioColor } from '../scenarioIdentity.ts';
 import { ChoicePicker, type Choice } from './ChoicePicker.tsx';
@@ -20,7 +20,7 @@ export function ScenarioSwitcher({ s, ds, onPicked }: { s: Scenario; ds: Electio
   const { reference, loadedReference: checkpointReference } = useActiveReference();
   const drafts = useStore(st => st.scenarioDrafts);
   const official = baselineOf(ds);
-  const entries = useMemo(() => saved.filter(x => x.electionId === s.electionId).map(x => { const result = replay(ds, x.name, x.log, x.factionSplitBaseline ?? false); return { ...x, failed: result.failed, scenario: { ...result.scenario, ...(x.description ? { description: x.description } : {}), id: x.id } }; }), [saved, ds, s.electionId]);
+  const entries = useMemo(() => saved.filter(x => x.electionId === s.electionId).map(x => { const result = replay(ds, x.name, x.log, x.factionSplitBaseline ?? false); return { ...x, failed: result.failed, scenario: withSavedIdentity(result.scenario, x) }; }), [saved, ds, s.electionId]);
   // 'official', a saved id, or unsaved work: changed since loading, or never saved (an opened share link)
   const current = scenarioKey({ scenario: s, reference: checkpointReference, saved, datasets: { [ds.id]: ds } }) ?? 'official';
   const preview = (x: Scenario, neutral = false) => <><span className="swatch" style={{ background: neutral || !resultChanges(x, official).length ? 'var(--muted)' : liveScenarioColor(x, saved) }} /><ResultPreview s={x} /></>;

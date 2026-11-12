@@ -2,6 +2,16 @@
 
 ## 7 November 2026 — Settings
 
+- Import (12 Nov, audit): a scenario file whose results differ from what its own list of changes gives (changed by hand) is no longer opened only to lose that change silently on save or reload; it is refused with a plain message. A file made on older data opens on the current data and says so, as a share link does.
+- Scenarios (12 Nov, audit): exporting a saved scenario from its card kept no description (for example a What if question opened as a scenario); the card's export and the Compare reference now carry it.
+- What if (12 Nov, audit): the expanded answer for a merger that wins a seat read “14 = 6 + 7”; it now reads “6 + 7 = 13 → 14 (+1)” in both languages, and the equation form stays only where the joint list wins exactly its parts' seats.
+- Blocs (12 Nov, audit): applying a sourced grouping again put merged and split lists in no bloc; they now take the bloc their origin lists share (none if the origins differ), also in comparisons of groupings.
+- Compare (12 Nov, audit): a renamed candidate counted as “the same” roster, so Compare showed nothing to compare and refused to copy it; every candidate field, the parties and the completeness flags now count.
+- Start (12 Nov, audit): a damaged value in this browser's storage (for example the text null) left a blank page; every stored setting, saved scenario, workspace and saved comparison is now checked, and anything malformed is ignored.
+- Candidates (12 Nov, audit): restoring the official roster after copying another election's roster kept that election's parties on the list; the restore now brings back the official parties, the completeness flags and how a joint list's faction is counted.
+- Compare (12 Nov, audit): copying the official threshold into a saved experiment showed the experiment's 5% in the preview but committed 3.25%; returning to the law's rules now always uses the election's statutory rules, and every copy's preview is exactly what it commits.
+- Compare (12 Nov, audit): on a phone the Side by side, Close side by side and Swap icon buttons now have names for screen readers.
+- Messages (12 Nov, audit): every refusal from the scenario engine, and the import errors, now come in plain English and Hebrew, say what to do, and name lists in the reader's language (English copy refusals showed Hebrew list names).
 - Side by side (12 Nov, audit): the card of an election to the 2nd, 3rd, 12th, 13th, 22nd or 23rd Knesset read “$2nd Knesset” or “$3rd Knesset” in English; every screen now takes the ordinal from one helper.
 - Overview (12 Nov, audit): the 1949 “Votes per seat” card wrote the quota as votes ÷ 120 beside a figure that is right only for ÷ 121; it now shows ÷ 121, as the 1949 law set, from the same code as the walkthrough.
 - Explanations (12 Nov, audit): polling areas hold up to 800 voters, or 900 with the committee’s approval, and may have a second ballot box; Sweden’s first Sainte-Laguë divisor is 1.2; ballot letters were limited to two until July 2026; the Droop quota adds one; today’s government-formation and no-confidence rules are marked as today’s; for 1951–1969 the walkthrough no longer says the law requires a lottery for ties, since the sources checked state no rule.

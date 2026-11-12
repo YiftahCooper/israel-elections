@@ -138,13 +138,13 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
   const copyField = (field: 'turnout' | 'registered' | 'invalid' | 'threshold' | 'rules' | 'agreements', d: Dir) => {
     const { from, to } = sideOf(d);
     const done = L(`Copied to ${nameOf(to)}.`, `הועתק ${hebrewPrefix('ל', nameOf(to))}.`);
-    if (field === 'threshold' || field === 'rules') return direct(planRules({ from: sourceOf(from), to: to.sc, ctx: { base: to.start }, what: field }), to, done);
+    if (field === 'threshold' || field === 'rules') return direct(planRules({ from: sourceOf(from), to: to.sc, ctx: { base: to.base }, what: field }), to, done);
     if (field === 'agreements') {
-      const plan = planAgreements({ from: sourceOf(from), to: to.sc, ctx: { base: to.start }, rows, direction: d });
+      const plan = planAgreements({ from: sourceOf(from), to: to.sc, ctx: { base: to.base }, rows, direction: d });
       const skipped = plan.skipped?.length ? L(` ${plan.skipped.length} not copied: no matching pair.`, ` ${plan.skipped.length} לא הועתקו: אין זוג מתאים.`) : '';
       return direct(plan, to, done + skipped);
     }
-    direct(planTotals({ from: sourceOf(from), to: to.sc, ctx: { base: to.start }, field }), to, done);
+    direct(planTotals({ from: sourceOf(from), to: to.sc, ctx: { base: to.base }, field }), to, done);
   };
   const oneToOne = (row: MatchRow, d: Dir) => { const u = copyUnit(row, rows, d); return u && u.src.length === 1 && u.dst.length === 1 ? u : null; };
 
@@ -171,12 +171,12 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
       if (one && !simple) {
         items.push(btn(`w${d}`, L('Whole list…', 'הרשימה כולה…'), () => setWholeReq({ from, to, srcId: one.src[0], dstId: one.dst[0], cross })));
         items.push(btn(`c${d}`, L('Candidates', 'מועמדים'), () => {
-          const plan = planRoster({ from: sourceOf(from), to: to.sc, ctx: { base: to.start }, srcId: one.src[0], dstId: one.dst[0] });
+          const plan = planRoster({ from: sourceOf(from), to: to.sc, ctx: { base: to.base }, srcId: one.src[0], dstId: one.dst[0] });
           // someone would stand on two lists: ask, with the warning, instead of copying at once
           if (plan.ok && duplicatePeople(plan.result, one.dst[0]).length) setWholeReq({ from, to, srcId: one.src[0], dstId: one.dst[0], cross, candidatesOnly: true });
           else direct(plan, to, L(`Candidates copied to ${nameOf(to)}.`, `המועמדים הועתקו ${hebrewPrefix('ל', nameOf(to))}.`));
         }));
-        items.push(btn(`k${d}`, L('Colour', 'צבע'), () => direct(planColour({ from: sourceOf(from), to: to.sc, ctx: { base: to.start }, srcId: one.src[0], dstId: one.dst[0] }), to, L(`Colour copied to ${nameOf(to)}.`, `הצבע הועתק ${hebrewPrefix('ל', nameOf(to))}.`))));
+        items.push(btn(`k${d}`, L('Colour', 'צבע'), () => direct(planColour({ from: sourceOf(from), to: to.sc, ctx: { base: to.base }, srcId: one.src[0], dstId: one.dst[0] }), to, L(`Colour copied to ${nameOf(to)}.`, `הצבע הועתק ${hebrewPrefix('ל', nameOf(to))}.`))));
       }
       if (srcOnly && !simple) for (const id of d === 'toRight' ? row.left : row.right) items.push(btn(`a${d}${id}`, L('Add as a new list…', 'הוספה כרשימה חדשה…'), () => setWholeReq({ from, to, srcId: id, dstId: null, cross })));
       if (!u && !srcOnly) items.push(<p key={`n${d}`} className="tiny muted cmp-menu-note">{row.tag === 'check' ? L('Accept or reject the match first.', 'אשרו או דחו קודם את ההתאמה.') : L('No counterpart.', 'אין מקבילה.')}</p>);

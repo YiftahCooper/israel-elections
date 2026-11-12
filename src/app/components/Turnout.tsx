@@ -15,6 +15,7 @@ import {
 } from '../../model/voterGroups.ts';
 import { allocationOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
+import { errorText } from '../../model/messages.ts';
 import { fmtInt, fmtPctNum, signed, trimDecimal } from '../format.ts';
 import { dispatch, toast, useDigits, useStore } from '../store.ts';
 import { deleteVoterGroup, exportVoterGroup, newGroupId, saveVoterGroup, useVoterGroups } from '../voterGroupStore.ts';
@@ -153,7 +154,7 @@ export function Turnout({ s }: { s: Scenario }) {
           <input ref={file} type="file" accept="application/json,.json" hidden onChange={async (e) => {
             const x = e.target.files?.[0]; e.target.value = ''; if (!x) return;
             try { const ps = parseVoterGroups(await x.text()); ps.forEach(saveVoterGroup); load(ps[0]); toast('info', L(`Imported ${ps.length} voter group${ps.length > 1 ? 's' : ''}.`, `יובאו ${ps.length} קבוצות מצביעים.`)); }
-            catch (err) { toast('error', err instanceof Error ? err.message : String(err)); }
+            catch (err) { toast('error', errorText(err, lang)); }
           }} />
         </div>
 
