@@ -44,19 +44,25 @@ type RawEdge = {
 const CERTAINTIES: readonly Certainty[] = ['confirmed', 'probable', 'provisional', 'disputed', 'unknown'];
 const STAGES: readonly MergerStage[] = ['announced', 'approved', 'registered'];
 
-/** Parses one lineage file into relations; unknown kinds are skipped (the validator reports them). */
-export function readRelations(file: { sources: Record<string, RawSource>; edges: RawEdge[]; pending: RawEdge[] }): Relation[] {
+/** Parses one lineage file into relations. A pending item without relation fields is a party-only check (OPEN_CHECKS)
+ *  or a note; any other item that cannot be read is handed to `unreadable` (the build's validator,
+ *  scripts/validate-families.ts, refuses such files, so this is a second line of defence). */
+export function readRelations(file: { sources: Record<string, RawSource>; edges: RawEdge[]; pending: RawEdge[] }, unreadable: (e: RawEdge) => void = () => {}): Relation[] {
   const out: Relation[] = [];
   const add = (e: RawEdge, pendingItem: boolean) => {
     const kind = (e.relation ?? (pendingItem ? 'merged-into' : '')) as RelationKind;
-    if (!e.from?.length || !e.to?.length || !RELATION_KINDS.includes(kind)) return;
+    const names = (x: unknown) => Array.isArray(x) && x.length > 0 && x.every((p) => typeof p === 'string');
+    if (!names(e.from) || !names(e.to) || !RELATION_KINDS.includes(kind)) {
+      if (!pendingItem || e.from !== undefined || e.to !== undefined || e.relation !== undefined) unreadable(e);
+      return;
+    }
     const cited = (e.sources ?? []).map((id) => ({ id, source: evidenceOf(file.sources[id]) }));
     const ceiling = certaintyCeiling(cited);
     const recorded = CERTAINTIES.includes(e.certainty as Certainty) ? e.certainty as Certainty : undefined;
     const pending = pendingItem || e.evidence?.status === 'unresolved';
     const certainty: Certainty = pending ? 'unknown' : recorded && certaintyAllowed(recorded, ceiling) ? recorded : ceiling;
     out.push({
-      id: e.id, kind, from: e.from.map(canonicalParty), to: e.to.map(canonicalParty), date: e.date ?? '',
+      id: e.id, kind, from: e.from!.map(canonicalParty), to: e.to!.map(canonicalParty), date: e.date ?? '',
       ...(e.dateTo ? { dateTo: e.dateTo } : {}), ...(STAGES.includes(e.stage as MergerStage) ? { stage: e.stage as MergerStage } : {}),
       ...(e.continues ? { continues: canonicalParty(e.continues) } : {}),
       certainty, pending,
@@ -69,10 +75,21 @@ export function readRelations(file: { sources: Record<string, RawSource>; edges:
   return out;
 }
 
-export const RELATIONS: Relation[] = readRelations(lineage as unknown as Parameters<typeof readRelations>[0]);
-/** Pending checks about parties without a relation of their own (a Registrar entry not yet read): "To verify". */
-export const OPEN_CHECKS: { id: string; partyIds: string[] }[] = (lineage.pending as { id: string; partyIds?: string[]; from?: string[] }[])
-  .filter((p) => p.partyIds?.length && !p.from).map((p) => ({ id: p.id, partyIds: p.partyIds!.map(canonicalParty) }));
+const UNREADABLE: RawEdge[] = [];
+export const RELATIONS: Relation[] = readRelations(lineage as unknown as Parameters<typeof readRelations>[0], (e) => UNREADABLE.push(e));
+// An item that cannot be read never silently changes a history: in development it stops the app; otherwise it is
+// reported, and the parties it names are shown as "To verify" (OPEN_CHECKS) rather than as if nothing were recorded.
+if (UNREADABLE.length) {
+  const msg = `data/meta/party-lineage.json: ${UNREADABLE.length} item(s) cannot be read (${UNREADABLE.map((e) => e.id).join(', ')}); run scripts/validate-families.ts`;
+  if (import.meta.env?.DEV) throw new Error(msg);
+  console.error(msg);
+}
+/** Pending checks about parties without a relation of their own (a Registrar entry not yet read), and the parties of any
+ *  item that cannot be read: "To verify". */
+export const OPEN_CHECKS: { id: string; partyIds: string[] }[] = [
+  ...(lineage.pending as { id: string; partyIds?: string[]; from?: string[] }[]).filter((p) => p.partyIds?.length && !p.from).map((p) => ({ id: p.id, partyIds: p.partyIds!.map(canonicalParty) })),
+  ...UNREADABLE.map((e) => ({ id: e.id, partyIds: [e.from, e.to].flatMap((x) => (Array.isArray(x) ? x : [])).filter((p): p is string => typeof p === 'string').map(canonicalParty) })).filter((o) => o.partyIds.length),
+];
 
 /** Parties named by an identity relation (renamed, merged, absorbed, same organisation). An alliance record among
  *  them is an organisation in its own right, not only an electoral vehicle. */

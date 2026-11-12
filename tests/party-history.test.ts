@@ -101,6 +101,14 @@ describe('relations', () => {
     expect(parsed.map((r) => r.certainty)).toEqual(['confirmed', 'unknown', 'disputed', 'unknown']);
     expect(certaintyCeiling([])).toBe('unknown');
   });
+  it('a lineage item that cannot be read is reported, never silently dropped; party-only checks and notes are not items', () => {
+    const seen: string[] = [];
+    const parsed = readRelations({ sources: { cec: { kind: 'repository-dataset' } }, edges: [{ id: 'e1', from: ['x'], relation: 'renamed-to', sources: ['cec'] }],
+      pending: [{ id: 'p1', from: ['x'], to: 'y' as unknown as string[], sources: ['cec'] }, { id: 'p2', relation: 'bogus', from: ['x'], to: ['y'] }, { id: 'p3', partyIds: ['x'] } as never, { id: 'note' },
+        { id: 'p4', from: ['x'], to: ['y'], sources: ['cec'] }] }, (e) => seen.push(e.id));
+    expect(seen).toEqual(['e1', 'p1', 'p2']);
+    expect(parsed.map((r) => r.id)).toEqual(['p4']);
+  });
 });
 
 describe('votes are never divided', () => {
