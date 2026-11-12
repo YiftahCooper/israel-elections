@@ -2,6 +2,12 @@
 
 ## 7 November 2026 — Settings
 
+- Settings (12 Nov, audit): Undo after “Reset all settings” or a group’s Reset brings back every question’s default answer; “Copy votes: default method” used to stay cleared. The (i) of Reset all now says that answers chosen with “Always” are asked again, and that answers remembered for one list, bloc or scenario stay.
+- Seat chart (12 Nov, audit): every seat’s card opens from the keyboard, in Arc and in Blocks: one Tab stop, the arrow keys move between seats as they are drawn, Enter or Space opens the card, Escape closes it. A ring marks the seat, and a screen reader names its list, seat number and member.
+- Seat chart (12 Nov, audit): Blocks dims the other seats when a list is chosen, as Arc does. A chamber larger than 120 seats (Rules, Experimental) gets a larger Blocks tray, so every seat shows on screen and in the SVG and PNG exports.
+- Custom level (12 Nov, audit): Hidden leaves nothing to open: no “More options” chip, no tab, and no button into a hidden tool (Allocation steps, Walkthrough: threshold, All scenarios, Government & term, Sources, Apply family as grouping). Collapsed keeps its chip, and the settings behind a hidden feature keep working.
+- Sensitivity (12 Nov, audit): a vote segment can be chosen from the keyboard, with the arrow keys on the bars and in the table.
+- Localities (12 Nov, audit): a map dot’s hover text no longer rounds a small lead to “+0 pp”; it says “<1 pp”, as the selected locality does. The Turnout voter-group label and the percentages in the change list follow the same rule.
 - Side by side (12 Nov, audit): the card of an election to the 2nd, 3rd, 12th, 13th, 22nd or 23rd Knesset read “$2nd Knesset” or “$3rd Knesset” in English; every screen now takes the ordinal from one helper.
 - Overview (12 Nov, audit): the 1949 “Votes per seat” card wrote the quota as votes ÷ 120 beside a figure that is right only for ÷ 121; it now shows ÷ 121, as the 1949 law set, from the same code as the walkthrough.
 - Explanations (12 Nov, audit): polling areas hold up to 800 voters, or 900 with the committee’s approval, and may have a second ballot box; Sweden’s first Sainte-Laguë divisor is 1.2; ballot letters were limited to two until July 2026; the Droop quota adds one; today’s government-formation and no-confidence rules are marked as today’s; for 1951–1969 the walkthrough no longer says the law requires a lottery for ties, since the sources checked state no rule.
