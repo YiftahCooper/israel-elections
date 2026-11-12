@@ -20,24 +20,6 @@
       "bytes": 4447
     },
     {
-      "file": null,
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Meretz_Logo.svg",
-      "licence": "Public domain (PD-logo)",
-      "attribution": "Meretz; File:Meretz Logo.svg; Public domain (PD-logo).",
-      "hosted": false,
-      "inUseEvidence": "Withheld: Commons gives an uploader-supplied December 2012 date, but its file history starts in July 2016 and the hosted revision is from August 2022. No independently inspected 2013 usage supports these bytes.",
-      "confidence": "medium",
-      "letters": "מרצ",
-      "evidenceId": "commons-98922399",
-      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/67/Meretz_Logo.svg",
-      "status": "unresolved",
-      "sha256": "7280e326e3ef3da33c5dbbe5ae54e7f98f1c2aa607bc588264bde77359dc4e8c",
-      "originalSha256": "7280e326e3ef3da33c5dbbe5ae54e7f98f1c2aa607bc588264bde77359dc4e8c",
-      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas.",
-      "rights": "free-licence",
-      "bytes": 3586
-    },
-    {
       "file": "logos/kadima-2013.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Logo_Kadima.svg",
       "licence": "Public domain (PD-textlogo)",
@@ -330,6 +312,94 @@
         "rawIndex": "logo-lg-k19-yesh-atid-index"
       },
       "originalAssetUrl": "http://yeshatid.org.il/wp-content/themes/yair/images/logo.png"
+    },
+    {
+      "letters": "אמת",
+      "file": "logos/labor-2013-k19-print.png",
+      "sourceUrl": "https://www.idi.org.il/policy/parties-and-elections/parties/haavoda/",
+      "assetSourceUrl": "https://www.idi.org.il/media/6668/מפלגת-העבודה.pdf",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "labor — original campaign platform, preserved by IDI; unaltered rectangular crop and proportional resize only.",
+      "hosted": true,
+      "status": "verified",
+      "rights": "fair-use-identification",
+      "confidence": "medium",
+      "evidenceId": "lg2-print-labor-k19",
+      "inUseDate": "2013",
+      "inUseEvidence": "Official cover explicitly names the 19th Knesset. IDI attaches this exact PDF to its 2013 row; white Labor wordmark on the original red strip. Original publication and catalogue page retained. No cross-election inference, recolouring or redrawing.",
+      "publicationEvidence": {
+        "page": "lg2-print-labor-k19-page",
+        "asset": "lg2-print-labor-k19-asset",
+        "publicationDate": "2013",
+        "cropBox": [
+          280,
+          1010,
+          497,
+          1064
+        ],
+        "originalDimensions": [
+          774,
+          1095
+        ],
+        "pdfPage": 1,
+        "renderScale": 1.3,
+        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist; dimensions and crop coordinates are in this rendered raster."
+      },
+      "originalSha256": "a67f2cf34c971e748c41f4306816acd278b77464b5e131728931b9be90cc6329",
+      "sha256": "353327f2830840a6d34fd6cedcbe88b3dfc0096f49f19553247ad8e6cd535588",
+      "bytes": 20387,
+      "retrievedAt": "2026-11-12",
+      "dateBasis": "year-single-election",
+      "dateEvidence": {
+        "yearSource": "exact-catalogue-year",
+        "yearEvidence": "Inspected IDI table row labelled 2013 links this exact PDF; retained HTML source page.",
+        "campaignIdentity": "explicit-election",
+        "campaignEvidence": "Official cover explicitly names the 19th Knesset. IDI attaches this exact PDF to its 2013 row; white Labor wordmark on the original red strip."
+      }
+    },
+    {
+      "letters": "מרצ",
+      "file": "logos/meretz-2013-k19-print.png",
+      "sourceUrl": "https://www.idi.org.il/policy/parties-and-elections/parties/meretz/",
+      "assetSourceUrl": "https://www.idi.org.il/media/6686/מרצ.pdf",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "meretz — original campaign platform, preserved by IDI; unaltered rectangular crop and proportional resize only.",
+      "hosted": true,
+      "status": "verified",
+      "rights": "fair-use-identification",
+      "confidence": "medium",
+      "evidenceId": "lg2-print-meretz-k19",
+      "inUseDate": "2013",
+      "inUseEvidence": "Cover explicitly says מצע מרצ בחירות 2013. Rectangular crop retains only the מרצ wordmark; the adjacent rival-directed slogan and the separately placed השמאל של ישראל tagline are omitted. The original wordmark bounding rectangle intersects a tiny blue edge of the adjacent box; those original background pixels are preserved, with no slogan letters retained and no cleaning or recolouring. Original publication and catalogue page retained. No cross-election inference or redrawing.",
+      "publicationEvidence": {
+        "page": "lg2-print-meretz-k19-page",
+        "asset": "lg2-print-meretz-k19-asset",
+        "publicationDate": "2013",
+        "cropBox": [
+          974,
+          2605,
+          2008,
+          2995
+        ],
+        "originalDimensions": [
+          2382,
+          3368
+        ],
+        "pdfPage": 1,
+        "renderScale": 4,
+        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist at scale 4; dimensions and crop coordinates are in this rendered raster."
+      },
+      "originalSha256": "85d5bc6727ae1eeed908c0c2646c2429297ef67e664dd3aa23d9d26b58dfba6b",
+      "sha256": "8d5e1ec88850545a2b9e16f51e91a97cd6c35c4b507598057c88e8b2411fb427",
+      "bytes": 38350,
+      "retrievedAt": "2026-11-12",
+      "dateBasis": "year-single-election",
+      "dateEvidence": {
+        "yearSource": "printed-year",
+        "yearEvidence": "Original cover prints 2013.",
+        "campaignIdentity": "explicit-election",
+        "campaignEvidence": "Cover explicitly says מצע מרצ בחירות 2013. Rectangular crop retains only the מרצ wordmark; the adjacent rival-directed slogan and the separately placed השמאל של ישראל tagline are omitted. The original wordmark bounding rectangle intersects a tiny blue edge of the adjacent box; those original background pixels are preserved, with no slogan letters retained and no cleaning or recolouring."
+      }
     }
   ]
 }

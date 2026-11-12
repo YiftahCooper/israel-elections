@@ -306,6 +306,86 @@
         "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fwww.yeshatid.org.il%2Fcontent%2Fimages%2Flogo_he-IL.png&from=2014&to=20150301&output=json&filter=statuscode%3A200&collapse=digest",
         "rawIndex": "logo-lg-k20-yesh-atid-index"
       }
+    },
+    {
+      "letters": "מרצ",
+      "file": "logos/meretz-2015-k20-print.png",
+      "sourceUrl": "https://www.idi.org.il/policy/parties-and-elections/parties/meretz/",
+      "assetSourceUrl": "https://www.idi.org.il/media/6685/מרצ-2015.pdf",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "meretz — original campaign platform, preserved by IDI; unaltered rectangular crop and proportional resize only.",
+      "hosted": true,
+      "status": "verified",
+      "rights": "fair-use-identification",
+      "confidence": "medium",
+      "evidenceId": "lg2-print-meretz-k20",
+      "inUseDate": "2015",
+      "inUseEvidence": "Cover explicitly prints 2015 and מצע מרצ. All 81 original pages were visually reviewed: no standalone emblem was found; interior headers repeat the slogan lockup. The cover’s green מרצ word is isolated by a rectangular crop, omitting שמאל זה; original paper texture and colours are preserved. Original publication and catalogue page retained. No cross-election inference or redrawing.",
+      "publicationEvidence": {
+        "page": "lg2-print-meretz-k20-page",
+        "asset": "lg2-print-meretz-k20-asset",
+        "publicationDate": "2015",
+        "cropBox": [
+          262,
+          2983,
+          868,
+          3210
+        ],
+        "originalDimensions": [
+          2382,
+          3368
+        ],
+        "pdfPage": 1,
+        "renderScale": 4,
+        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist at scale 4; dimensions and crop coordinates are in this rendered raster."
+      },
+      "originalSha256": "0b81c3798ae89125e64059ede03a7605e026d0ad57d5b15c8768220a046b0c3e",
+      "sha256": "0395338985816ba4b5a5c5df08bb4918f225625e8cdb84c5123fc8056d350636",
+      "bytes": 41016,
+      "retrievedAt": "2026-11-12",
+      "dateBasis": "year-single-election",
+      "dateEvidence": {
+        "yearSource": "printed-year",
+        "yearEvidence": "Original cover prints 2015.",
+        "campaignIdentity": "explicit-election",
+        "campaignEvidence": "Cover explicitly prints 2015 and מצע מרצ. All 81 original pages were visually reviewed: no standalone emblem was found; interior headers repeat the slogan lockup. The cover’s green מרצ word is isolated by a rectangular crop, omitting שמאל זה; original paper texture and colours are preserved."
+      }
+    },
+    {
+      "letters": "ל",
+      "file": "logos/beiteinu-2015-k20-lg2.png",
+      "sourceUrl": "http://www.beytenu.org.il/",
+      "assetSourceUrl": "https://web.archive.org/web/20150227081840id_/http://www.beytenu.org.il/wp-content/themes/beitenu/images/logo.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "beiteinu — official campaign website logo; proportionally resized only.",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "lg2-beiteinu-k20-20150315021149",
+      "inUseDate": "2015-03-15",
+      "archiveUrl": "https://web.archive.org/web/20150315021149id_/http://www.beytenu.org.il/",
+      "archiveTimestamp": "20150315021149",
+      "inUseEvidence": "Inspected official campaign page references this exact original asset. Both page and image payloads match their independently retained CDX SHA-1 digests. ",
+      "retrievedAt": "2026-11-12",
+      "sha256": "83422fec10d835a2fff52f226f418e0db60ec2f0f2cf8e7a7359aa946e02c529",
+      "originalSha256": "648d37dc281592c9dde6957fbf8b082457f12bb51e91928d0061990f90e5daa5",
+      "bytes": 20399,
+      "rawEvidence": {
+        "page": "lg2-beiteinu-k20-20150315021149-page",
+        "asset": "lg2-beiteinu-k20-20150315021149-asset"
+      },
+      "assetArchiveTimestamp": "20150227081840",
+      "assetArchiveUrl": "https://web.archive.org/web/20150227081840id_/http://www.beytenu.org.il/wp-content/themes/beitenu/images/logo.png",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "OTNUT4O2FP3SFQXKSHS3QMDORIG6WA3G",
+        "computedDigest": "OTNUT4O2FP3SFQXKSHS3QMDORIG6WA3G",
+        "assetCaptureTimestamp": "20150227081840",
+        "cdxCaptureTimestamp": "20150227081840",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=http%3A%2F%2Fwww.beytenu.org.il%2Fwp-content%2Fthemes%2Fbeitenu%2Fimages%2Flogo.png&from=1995&to=20150315&output=json&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "lg2-beiteinu-k20-20150315021149-index"
+      }
     }
   ]
 }

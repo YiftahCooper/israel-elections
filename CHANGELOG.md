@@ -3,6 +3,7 @@
 ## 7 November 2026 — Settings
 
 - Research: correct generated term ordinals and bilingual faction-move labels; reconcile the 2020 investiture with its complete official roll call and technical correction.
+- Logos (12 Nov, wider pass): add eleven election-confirmed assignments from original party platforms and archives, preserving dated originals, exact crops and byte checks; isolate the 2013 and 2015 Meretz wordmarks from adjacent campaign messages.
 
 - After the election (12 Nov): the Knesset-on-a-date arrows stop at every event the bar shows at the level, votes and faction changes included (locked by tests); the 21st and 22nd Knessets, which formed no government, get the timeline too, with the formation attempts and the dissolution; faction moves are named in English.
 - Logos (12 Nov): add eight campaign-confirmed list/party assignments from official archived sites (2013, 2015, 2021 and 2022), with original-byte checks; keep a conflicting 2020 header unassigned.

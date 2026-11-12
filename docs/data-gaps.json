@@ -1,8 +1,8 @@
 {
   "schemaVersion": 3,
-  "total": 11471,
+  "total": 11468,
   "counts": {
-    "unknown": 6958,
+    "unknown": 6955,
     "missing-field": 283,
     "conflict": 18,
     "single-source": 2456,
@@ -15,7 +15,7 @@
   "countsByStatus": {
     "inferred-not-verified": 1032,
     "needs-current-status-review": 313,
-    "open": 10126
+    "open": 10123
   },
   "countsByImportance": {
     "high": {
@@ -35,12 +35,12 @@
       "unknown": 2221
     },
     "low": {
-      "total": 7049,
+      "total": 7046,
       "confirmed": 572,
       "probable": 0,
       "provisional": 803,
       "disputed": 0,
-      "unknown": 5674
+      "unknown": 5671
     }
   },
   "claimCertainty": {
@@ -396,12 +396,12 @@
     },
     {
       "election": "k18",
-      "total": 476,
+      "total": 475,
       "highOpen": 7,
       "mediumOpen": 99,
-      "low": 345,
+      "low": 344,
       "counts": {
-        "unknown": 304,
+        "unknown": 303,
         "missing-field": 0,
         "conflict": 1,
         "single-source": 66,
@@ -414,12 +414,12 @@
     },
     {
       "election": "k19",
-      "total": 480,
+      "total": 478,
       "highOpen": 5,
       "mediumOpen": 99,
-      "low": 346,
+      "low": 344,
       "counts": {
-        "unknown": 298,
+        "unknown": 296,
         "missing-field": 0,
         "conflict": 0,
         "single-source": 62,
@@ -1081,7 +1081,7 @@
     {"area":"data/raw/kN/knesset-odata-members.json positions","count":51,"open":51},
     {"area":"data/raw/research/odata-elections-catalog.json result","count":41,"open":41},
     {"area":"data/raw/kN/knesset-odata-members.json record","count":26,"open":26},
-    {"area":"data/meta/logos/kN.json logos","count":24,"open":24},
+    {"area":"data/meta/logos/kN.json logos","count":21,"open":21},
     {"area":"data/raw/polls/kN/coverage.json candidates","count":18,"open":18},
     {"area":"data/raw/SOURCES.json sha256","count":17,"open":17},
     {"area":"data/raw/party-links/overlay-corrections.reviewed.json entries","count":16,"open":16},

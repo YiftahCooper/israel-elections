@@ -51,6 +51,94 @@
       "originalSha256": "52b46b7934af3436df13fb0e6ed1f78bdcab2e344a1cfbffdac2f2db626e3ef0",
       "rights": "free-licence",
       "bytes": 32272
+    },
+    {
+      "letters": "אמת",
+      "file": "logos/labor-1996-k14-print.png",
+      "sourceUrl": "https://www.idi.org.il/policy/parties-and-elections/parties/haavoda/",
+      "assetSourceUrl": "https://www.idi.org.il/media/6674/עבודה-14.pdf",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "labor — original campaign platform, preserved by IDI; unaltered rectangular crop and proportional resize only.",
+      "hosted": true,
+      "status": "verified",
+      "rights": "fair-use-identification",
+      "confidence": "medium",
+      "evidenceId": "lg2-print-labor-k14",
+      "inUseDate": "1996",
+      "inUseEvidence": "Official platform cover explicitly names the 14th Knesset; IDI catalogue row is 1996. Blue/red Labor wordmark at the foot of the original cover. Original publication and catalogue page retained. No cross-election inference, recolouring or redrawing.",
+      "publicationEvidence": {
+        "page": "lg2-print-labor-k14-page",
+        "asset": "lg2-print-labor-k14-asset",
+        "publicationDate": "1996",
+        "cropBox": [
+          320,
+          805,
+          558,
+          865
+        ],
+        "originalDimensions": [
+          774,
+          1095
+        ],
+        "pdfPage": 1,
+        "renderScale": 1.3,
+        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist; dimensions and crop coordinates are in this rendered raster."
+      },
+      "originalSha256": "46dfd8d70b3e37cb8b5cccdda85b62a65b5c5d913458fe631b4650a341e64f91",
+      "sha256": "ca68ba4955967b5b009c211ed347286b082028df29c5d7e506262939856926a8",
+      "bytes": 22337,
+      "retrievedAt": "2026-11-12",
+      "dateBasis": "year-single-election",
+      "dateEvidence": {
+        "yearSource": "exact-catalogue-year",
+        "yearEvidence": "Inspected IDI table row labelled 1996 links this exact PDF; retained HTML source page.",
+        "campaignIdentity": "explicit-election",
+        "campaignEvidence": "Official platform cover explicitly names the 14th Knesset; IDI catalogue row is 1996. Blue/red Labor wordmark at the foot of the original cover."
+      }
+    },
+    {
+      "letters": "כן",
+      "file": "logos/yisrael-baaliya-1996-k14-print.png",
+      "sourceUrl": "https://www.idi.org.il/policy/parties-and-elections/parties/yisrael-ba-aliya/",
+      "assetSourceUrl": "https://www.idi.org.il/media/13025/ישראל-בעלייה-עיקרי-מצע-התנועה.pdf",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "yisrael-baaliya — original campaign platform, preserved by IDI; unaltered rectangular crop and proportional resize only.",
+      "hosted": true,
+      "status": "verified",
+      "rights": "fair-use-identification",
+      "confidence": "medium",
+      "evidenceId": "lg2-print-yisrael-baaliya-k14",
+      "inUseDate": "1996",
+      "inUseEvidence": "IDI attaches this exact original platform scan to its 1996 row. Full black header retains Hebrew name, Russian subtitle and star; no handwriting is included in the crop. Original publication and catalogue page retained. No cross-election inference, recolouring or redrawing.",
+      "publicationEvidence": {
+        "page": "lg2-print-yisrael-baaliya-k14-page",
+        "asset": "lg2-print-yisrael-baaliya-k14-asset",
+        "publicationDate": "1996",
+        "cropBox": [
+          63,
+          100,
+          701,
+          213
+        ],
+        "originalDimensions": [
+          760,
+          1079
+        ],
+        "pdfPage": 1,
+        "renderScale": 1.3,
+        "coordinateSpace": "Raster of original PDF page 1 rendered by pdfjs-dist; dimensions and crop coordinates are in this rendered raster."
+      },
+      "originalSha256": "db3cb9a7f8f7a2f035bb52cce09c28a81e124547bff7d6d778b85c42e1fe5238",
+      "sha256": "a363d1e414460d1839f35c39a03f7670da1a0fcded8e183e29c8003c14b02491",
+      "bytes": 7402,
+      "retrievedAt": "2026-11-12",
+      "dateBasis": "year-single-election",
+      "dateEvidence": {
+        "yearSource": "exact-catalogue-year",
+        "yearEvidence": "Inspected IDI table row labelled 1996 links this exact PDF; retained HTML source page.",
+        "campaignIdentity": "exact-list-name",
+        "campaignEvidence": "IDI attaches this exact original platform scan to its 1996 row. Full black header retains Hebrew name, Russian subtitle and star; no handwriting is included in the crop."
+      }
     }
   ]
 }

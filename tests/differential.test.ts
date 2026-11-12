@@ -260,8 +260,9 @@ const EXPECTED: Record<Family, string> = {
   // Substituting HEAD's k26 reproduces 26acbc3b… exactly; the other four digests are unchanged.
   // 12 Nov logos: all 26 datasets match HEAD outside logo/builtAt; only this digest changes.
   // DG26: official YP 15023 roster provenance and Beit Yemini's printed name only.
-  // Both together (merge of 12 Nov): digest recomputed on the merged data; each change reproduced its own digest before the merge.
-  model: '1277e2a2e426de42f1611a6c6eda162eb582373a70d94c6f68dc04a99e06a831',
+  // Wider print-logo collection (LG2): logos only; all 26 datasets match outside logo/builtAt.
+  // All together (merges of 12 Nov): digest recomputed on the merged data; each change reproduced its own digest before the merge.
+  model: '482c7d353b33948c42799773deff24ecbf54b6b7bc63d8ed4b44e3f0625669d2',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };
