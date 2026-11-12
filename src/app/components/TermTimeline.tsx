@@ -153,11 +153,6 @@ function TimelineBar({ term, steps, index, go }: { term: TermRuntime; steps: Ste
 }
 
 function itemText(it: TimelineItem, term: TermRuntime, ds: ElectionDataset, mk: MkRuntime | null, lang: Lang, L: (en: string, he: string) => string): string {
-  // the research's generated English for a faction move names the factions by number: name them (the Hebrew already does)
-  if (lang === 'en' && it.factions && it.count && /factions \d+ and \d+/.test(it.en ?? '')) {
-    const name = (f: number) => { const x = mk?.factions[f]; return x ? englishLabel(x[1], x[0]) : '…'; };
-    return `${it.count} ${it.count === 1 ? 'MK' : 'MKs'} recorded moving from ${name(it.factions[0])} to ${name(it.factions[1])}.`;
-  }
   if (it.type === 'event' || it.en) return (lang === 'he' ? it.he : it.en) ?? '';
   const list = ds.lists.find((l) => l.id === term.seats[it.seat!].list);
   const where = list ? ` · ${listLabel(list, lang)}` : '';

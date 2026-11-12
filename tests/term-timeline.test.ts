@@ -156,7 +156,7 @@ describe('stepping (owner, 12 Nov): the arrows stop at every event the bar shows
     const step24 = k24.timeline!.steps.filter((s) => s.items.some((it) => group.includes(it.id)));
     expect(step24).toHaveLength(1);
   });
-  test('a faction move carries its factions and head count, so the app can name them', () => {
+  test('a faction move carries its factions and head count', () => {
     const it = k25.timeline!.steps.flatMap((s) => s.items).find((x) => x.id === 'k25-observed-faction-5')!;
     expect(it.factions).toEqual([1098, 1110]); expect(it.count).toBe(8);
   });
