@@ -264,7 +264,10 @@ const EXPECTED: Record<Family, string> = {
   // All together (merges of 12 Nov): digest recomputed on the merged data; each change reproduced its own digest before the merge.
   // Audit 12 Nov: k22 list כי, one misprinted word of its name corrected (אלחודה → אלוחדה, k22-corrections.json), with its
   // link title. Votes, seats, ids and the other 25 datasets unchanged; only this digest changes.
-  model: '378b57054cebd7190f1b0c7a835c6c1f2aacfe77a0ed7e3777964b2d51c09178',
+  // fx-scen (12 Nov): refusal wording only. Every engine refusal became plain English with a Hebrew form, and the corpus
+  // folds each refused action's message into this digest. 123 of 520 model cases differ, each only in that text (case by
+  // case against HEAD's src); engine inputs, seats and validation are identical and the other four digests unchanged.
+  model: '22c9f56e34a07f054f29644e0ca906f3df486b04a31726fe82493bf32c82f898',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };
