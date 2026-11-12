@@ -91,6 +91,16 @@ export function partySeries(identity: Identity): SeriesPoint[] {
   });
 }
 
+/** The party's own seat record across its runs (audit 12 Nov 2026, c-screens-people-06): its own elected members, never
+ *  the whole joint list's seats (Kulanu inside Likud in 2020 is its own members, not Likud's 36). An election where its
+ *  own members are not known counts in neither figure and is counted in `unknown`. */
+export function ownSeatRecord(points: SeriesPoint[]): { won: number; best: SeriesPoint | undefined; unknown: number } {
+  const ran = points.filter((p) => p.list);
+  const known = ran.filter((p) => p.own !== null);
+  const best = known.reduce<SeriesPoint | undefined>((m, p) => p.own! > 0 && (!m || p.own! > m.own!) ? p : m, undefined);
+  return { won: known.filter((p) => p.own! > 0).length, best, unknown: ran.length - known.length };
+}
+
 /** Consecutive runs of the same name: the name strip under the chart (Mapai | Labor | The Democrats). Each election
  *  shows the name the party ran under then, never a later one (New Right in April 2019, not Yamina). */
 export function erasOf(points: SeriesPoint[], lang: 'he' | 'en'): { from: number; to: number; name: string }[] {

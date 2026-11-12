@@ -73,8 +73,11 @@ function sameElection(a: Scenario, b: Scenario): MatchRow[] {
  *  "compared with last time" rule uses: renames, registered mergers and absorptions, same organisation. */
 export function matchRows(a: Scenario, b: Scenario, overrides: MatchOverride[] = []): MatchRow[] {
   if (a.electionId === b.electionId) return sameElection(a, b);
-  const A = a.lists.map((l) => ({ l, ps: partiesOf(a.electionId, l), lead: leadOf(a.electionId, l) }));
-  const B = b.lists.map((l) => ({ l, ps: partiesOf(b.electionId, l), lead: leadOf(b.electionId, l) }));
+  const all = (s: Scenario) => s.lists.map((l) => ({ l, ps: partiesOf(s.electionId, l), lead: leadOf(s.electionId, l) }));
+  const Aall = all(a), Ball = all(b);
+  // a list that withdrew before the vote is no list: never paired or noted by the rules (only by the user's own
+  // mapping), so its row is Ended or New, as if its parties had no list in that election (audit 12 Nov 2026)
+  const A = Aall.filter((x) => !x.l.withdrawn), B = Ball.filter((x) => !x.l.withdrawn);
   const from = dateOf(a.electionId), to = dateOf(b.electionId);
   const present = new Set(B.flatMap((x) => x.ps));
   const contCache = new Map<string, Map<string, Relation[]>>();
@@ -96,7 +99,7 @@ export function matchRows(a: Scenario, b: Scenario, overrides: MatchOverride[] =
 
   // 0. the user's own mappings come first
   for (const o of overrides.filter((o) => o.status === 'user' && o.right)) {
-    const r = B.find((x) => x.l.id === o.right), l = A.find((x) => x.l.id === o.left);
+    const r = Ball.find((x) => x.l.id === o.right), l = Aall.find((x) => x.l.id === o.left);
     if (!r || !l || used.has(l.l.id)) continue;
     const row = rowOfRight.get(r.l.id);
     if (row) { row.left.push(l.l.id); row.leftSet.add(l.l.id); used.add(l.l.id); row.tag = 'yours'; }
@@ -177,8 +180,8 @@ export function matchRows(a: Scenario, b: Scenario, overrides: MatchOverride[] =
     }
   }
   // 5. everything else is New or Ended: never matched by name, letters or rank
-  for (const r of B) if (!rowOfRight.has(r.l.id)) open(r, [], 'new', { kind: 'none' });
-  for (const x of A) if (!used.has(x.l.id)) { rows.push({ key: '', left: [x.l.id], right: [], tag: 'ended', reason: { kind: 'none' }, notes: [], leftSet: new Set([x.l.id]) }); used.add(x.l.id); }
+  for (const r of Ball) if (!rowOfRight.has(r.l.id)) open(r, [], 'new', { kind: 'none' });
+  for (const x of Aall) if (!used.has(x.l.id)) { rows.push({ key: '', left: [x.l.id], right: [], tag: 'ended', reason: { kind: 'none' }, notes: [], leftSet: new Set([x.l.id]) }); used.add(x.l.id); }
 
   // partner annotations: parties that moved between rows are noted on both rows, never chained into one group
   const rowsOfLeft = new Map<string, Row>(); for (const row of rows) for (const id of row.left) rowsOfLeft.set(id, row);
@@ -187,12 +190,14 @@ export function matchRows(a: Scenario, b: Scenario, overrides: MatchOverride[] =
   for (const row of rows) {
     const lefts = groupLeft(row), rights = groupRight(row);
     for (const id of row.right) {
-      const r = B.find((x) => x.l.id === id)!;
+      const r = Ball.find((x) => x.l.id === id)!;
+      if (r.l.withdrawn) continue;
       const from = r.ps.filter((p) => A.some((x) => !lefts.has(x.l.id) && x.ps.some((q) => cont(q).has(p))));
       if (from.length && row.tag !== 'new') row.notes.push({ side: 'right', kind: 'with', partyIds: from });
     }
     for (const id of row.left) {
-      const l = A.find((x) => x.l.id === id)!;
+      const l = Aall.find((x) => x.l.id === id)!;
+      if (l.l.withdrawn) continue;
       for (const r of B) {
         if (rights.has(r.l.id)) continue;
         const moved = l.ps.filter((p) => p !== l.lead && !!into(p, r.ps));
