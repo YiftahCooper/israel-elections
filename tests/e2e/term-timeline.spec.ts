@@ -186,6 +186,20 @@ test('k25: the term ends with one line and the chamber as it stood', async ({ pa
   await expect(tl.locator('[data-mark="rep"]')).toHaveCount(0);
 });
 
+// Audit of 12 Nov 2026 (c-screens-people-01): United Torah Judaism is one faction of two parties. Degel HaTorah's four
+// MKs left the coalition on 14 Jul 2025, Agudat Yisrael's three on 15 Jul.
+test('k25: a party leaving a shared faction moves only its own seats', async ({ page }) => {
+  await start(page, { level: 'simple', election: 'k25' });
+  const tl = await openTimeline(page);
+  await stepTo(tl, '2025-07-14');
+  await expect(tl.locator('.tl-lines li[data-item="k25-degel-exit"]')).toHaveCount(1);
+  await expect(tl.locator('.tl-sides')).toContainText('Coalition 64');
+  await expect(tl.locator('[data-mark="D4o"]')).toHaveCount(4);
+  await stepTo(tl, '2025-07-15');
+  await expect(tl.locator('.tl-sides')).toContainText('Coalition 61');
+  await expect(tl.locator('[data-mark="D4o"]')).toHaveCount(3);
+});
+
 test('a faction move names its factions in English', async ({ page }) => {
   await start(page, { level: 'expert', election: 'k21' });
   const tl = await openTimeline(page);

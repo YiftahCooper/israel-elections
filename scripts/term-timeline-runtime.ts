@@ -350,7 +350,12 @@ function compileSteps(k: number, opening: string, end: string, seats: SeatRuntim
         const dir: 'c' | 'o' | undefined = dirText ? (/coalition/i.test(dirText) && !/opposition/i.test(dirText) ? 'c' : 'o')
           : JOIN.has(e.kind) ? 'c' : EXIT.has(e.kind) || marker === 'D2' ? 'o' : undefined;
         if (partyLevel && !(marker === 'D2')) {
-          for (const x of current()) if (factions.includes(factionAt(x.t, d) ?? -1) && !rebels.has(x.t.personId)) {
+          // a faction can hold more than one party (United Torah Judaism: Degel HaTorah and Agudat Yisrael); when the event
+          // names its people, only they move
+          const only = e.markerPersonIds?.length ? new Set(e.markerPersonIds) : null;
+          const members = current().filter((x) => factions.includes(factionAt(x.t, d) ?? -1));
+          for (const p of only ?? []) if (!members.some((x) => x.t.personId === p)) anomalies.push(`k${k} ${e.id}: ${p} is not in the event's factions on ${d}`);
+          for (const x of members) if ((!only || only.has(x.t.personId)) && !rebels.has(x.t.personId)) {
             const target = dir ?? (side.get(x.t.personId) === 'c' ? 'o' : 'c');
             // a graded D4 draws its arrows even when an announcement the day before already moved the party (the research counts
             // New Hope in the coalition from Sa'ar's 29 Sep 2024 announcement; the D4 is the 30 Sep approval)

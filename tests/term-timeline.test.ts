@@ -68,6 +68,17 @@ describe('sides after each date (they match every count the research gives)', ()
     expect(coal(k25, '2024-09-29')).toBe(68);
     expect(coal(k25, '2025-01-19')).toBe(62);
     expect(coal(k25, '2025-03-19')).toBe(68);
+    expect(coal(k25, '2025-07-14')).toBe(64);
+    expect(coal(k25, '2025-07-15')).toBe(61);
+  });
+  // audit c-screens-people-01: United Torah Judaism is one faction of two parties. Degel HaTorah's four sitting MKs left on
+  // 14 Jul 2025, Agudat Yisrael's three on 15 Jul (list 25-ג's partyIds; the faction's members in the membership records)
+  test('a party leaving a shared faction moves only its own members', () => {
+    const DEGEL = [526, 23641, 30672, 30768], AGUDAT = [1057, 30846, 30870];
+    const arrows = (d: string, id: string) => step(k25, d).items.find((it) => it.id === id)!.marks.map(([s, m]) => [holderAt(k25, s, d)![0], m]);
+    expect(arrows('2025-07-14', 'k25-degel-exit').sort()).toEqual(DEGEL.map((p) => [p, 'D4o']).sort());
+    expect(arrows('2025-07-15', 'k25-utj-exit').sort()).toEqual(AGUDAT.map((p) => [p, 'D4o']).sort());
+    for (const p of AGUDAT) expect(step(k25, '2025-07-14').coalition).toContain(personSeat(k25, p, '2025-07-14'));
   });
   test('the last day shows the Knesset as it stood, not an empty chamber', () => {
     expect(step(k24, '2022-11-15').coalition!.length).toBeGreaterThan(50);
