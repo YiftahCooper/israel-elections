@@ -2303,7 +2303,7 @@
       "electionId": "k20",
       "electionDate": "2015-03-17",
       "datasetPath": "public/data/k20.json",
-      "datasetSha256": "0c6e01c2bb6392eb71e2f6e76ac2206c38a42c35086a75ff38a886a65794e718",
+      "datasetSha256": "d35a7d2826f9b86cd70b1f14fe42918852f166d46d1176256151486e5d634ed2",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2015-03-25",

@@ -154,6 +154,14 @@ describe('names', () => {
     const used = new Set(Object.values(rt.people).flatMap((p) => p.terms.flatMap((t) => t[3].map((f) => f[0]))));
     expect([...used].filter((f) => !rt.factions[f]?.[1])).toEqual([]);
   });
+  // audit 12 Nov 2026: the Knesset's faction table has one placeholder row, 911 “אין נתונים” (no data), dated 1 Jan 1900;
+  // it is kept in the runtime as recorded (the faction-events builder reads every row), but no member ever sat in it
+  it('no member is shown in the placeholder faction 911 “אין נתונים” (no data)', () => {
+    const empty = new Set(Object.entries(rt.factions).filter(([, f]) => f[0] === 'אין נתונים' || f[3] === 'אין נתונים').map(([id]) => Number(id)));
+    expect([...empty]).toEqual([911]);
+    const shown = Object.entries(rt.people).flatMap(([p, x]) => x.terms.flatMap((t) => t[3].filter((f) => empty.has(f[0])).map(() => p)));
+    expect(shown).toEqual([]);
+  });
   it('two factions sitting at the same time never share a name (2022: Otzma Yehudit is not “Religious Zionism”)', () => {
     // the Knesset registers Otzma Yehudit (1106) apart from Religious Zionism (1097, then 1105) from the first day
     // 1097 is the list's own faction and takes its name; 1106 and 1105 are shown under their recorded names

@@ -38,3 +38,33 @@ describe('one apostrophe in English names',()=>{
   expect(registry.parties.flatMap(p=>[p.nameEn,...(p.names??[]).map(n=>n.nameEn)].filter((n):n is string=>!!n&&/[’‘`]/.test(n)).map(n=>`${p.id}: ${n}`))).toEqual([]);
  });
 });
+// audit 12 Nov 2026 (fx-names2): one party was spelled two ways, Hatnuah (2013 list) and Hatnua (2015, inside the Zionist
+// Union). Within one party id, two English names that are spellings of one name (they agree once case, punctuation, the
+// letter h, a leading "The" and doubled letters are set aside) must be the same text: in its own lists, as a partner on a
+// joint list, and in the party registry.
+describe('one English spelling of a party name',()=>{
+ it('no party id carries two spellings of one name',()=>{
+  // listed by the first names lane as genuinely different spellings, left for the owner (fx-names/REPORT.md); nothing else
+  const ownerQuestion=new Set(['jewish-home: Jewish Home | The Jewish Home',"daam: Da'am | Daam"]);
+  const names=new Map<string,Map<string,Set<string>>>();
+  const add=(id:string,en:string|null|undefined,where:string)=>{
+   if(!en)return;
+   const skeleton=en.toLowerCase().replace(/^the\s+/,'').replace(/[^a-z]/g,'').replace(/h/g,'').replace(/(.)\1+/g,'$1');
+   const byId=names.get(id)??names.set(id,new Map()).get(id)!;
+   (byId.get(skeleton)??byId.set(skeleton,new Set()).get(skeleton)!).add(`${en}\t${where}`);
+  };
+  for(const d of datasets)for(const l of d.lists){
+   if(l.parties?.length===1)add(l.parties[0].id,l.shortEn,`${d.id} ${l.id}`);
+   for(const p of l.parties??[])add(p.id,p.nameEn,`${d.id} ${l.id}`);
+  }
+  const registry=JSON.parse(readFileSync('data/meta/parties.json','utf8')) as {parties:{id:string;nameEn?:string;names?:{date:string;nameEn?:string}[]}[]};
+  for(const p of registry.parties){add(p.id,p.nameEn,'registry');for(const n of p.names??[])add(p.id,n.nameEn,`registry ${n.date}`);}
+  const two:string[]=[];
+  for(const [id,bySkeleton] of names)for(const forms of bySkeleton.values()){
+   const spellings=[...new Set([...forms].map((f)=>f.split('\t')[0]))].sort();
+   if(spellings.length>1&&!ownerQuestion.has(`${id}: ${spellings.join(' | ')}`))two.push(`${id}: ${[...forms].join('; ')}`);
+  }
+  expect(two).toEqual([]);
+  expect(names.get('hatnua')!.size).toBe(1);
+ });
+});

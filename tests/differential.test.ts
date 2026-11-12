@@ -283,7 +283,9 @@ const EXPECTED: Record<Family, string> = {
   // fx-names2 (13 Nov, c-famous-late-06): the 1999 Shas rank 1 (15-שס#1) has a reviewed identity, Aryeh Deri, from the
   // results notice that records his resignation (YP 4757 p.3378). Recursive diff of k15 shows only that candidate's nameEn
   // (added) and bio.probable (removed), and builtAt; HEAD's k15 with HEAD's dataset pins reproduces 07cf0bdd…. Others unchanged.
-  model: 'f548f39ec017b9e70c59f07563f53751ca183dece6c9d2173533024603a77808',
+  // fx-names2 (13 Nov): Hatnua in the 2015 Zionist Union list is spelled Hatnuah, as its 2013 list; the recursive diff of
+  // k20 shows only lists[1].parties[1].nameEn and builtAt.
+  model: '773bb606438e44cf4de852de4ffbc65119a059e39539c7cf87036a956d1ab3db',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

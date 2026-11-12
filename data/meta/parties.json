@@ -399,7 +399,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k20.json",
-      "sha256": "0c6e01c2bb6392eb71e2f6e76ac2206c38a42c35086a75ff38a886a65794e718",
+      "sha256": "d35a7d2826f9b86cd70b1f14fe42918852f166d46d1176256151486e5d634ed2",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k21": {
@@ -15287,7 +15287,7 @@
           "date": "2015-03-17",
           "datePrecision": "day",
           "nameHe": "התנועה",
-          "nameEn": "Hatnua",
+          "nameEn": "Hatnuah",
           "sources": [
             "k20",
             "proposal"
