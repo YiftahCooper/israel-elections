@@ -14,7 +14,7 @@ import { RulesCopy } from '../compare/RulesCopy.tsx';
 import { ruleEraLabel } from '../changeValue.tsx';
 import { LocalityMap, Locality2006Note, LocalityName, localityName, localityNameSource, useLocalityLocations, useLocalityNames } from './LocalityMap.tsx';
 import { localityHebrewName, type LocalityNames } from '../../data/locality-names.ts';
-import { matchesLocality } from '../locality-map-model.ts';
+import { findLocalities } from '../locality-map-model.ts';
 import { Fragment, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { isEnvelopeRow, type ElectionDataset, type LocalityDataset } from '../../data/schema.ts';
 import { RULESETS } from '../../engine/rules.ts';
@@ -172,7 +172,7 @@ export function Localities({ s }: { s: Scenario }) {
   const keyed = data.rows.map((r, i) => ({ r, key: String(i) }));
   const hasRegistered = data.rows.some((r) => r.registered !== null);
   const nameAt = (key: string) => localityName(names, data.rows[Number(key)], Number(key), lang);
-  const rows = keyed.filter(({ r, key }) => matchesLocality(q, { ...locations[String(r.code)], nameHe: localityHebrewName(names, r, Number(key)), code: r.code, aliases: [...(locations[String(r.code)]?.aliases ?? []), names.names[Number(key)] ?? '', r.nameHe] }))
+  const rows = findLocalities(q, keyed, ({ r, key }) => ({ ...locations[String(r.code)], nameHe: localityHebrewName(names, r, Number(key)), code: r.code, aliases: [...(locations[String(r.code)]?.aliases ?? []), names.names[Number(key)] ?? '', r.nameHe] }))
     .sort(({ r: a, key: ka }, { r: b, key: kb }) => sort === 'name' || (!hasRegistered && sort !== 'turnout') ? nameAt(ka).localeCompare(nameAt(kb), lang)
       : sort === 'turnout' ? (b.registered ? b.votesCast / b.registered : -1) - (a.registered ? a.votesCast / a.registered : -1)
       : (b.registered ?? 0) - (a.registered ?? 0)).slice(0, 300);

@@ -15,7 +15,7 @@ import { localityLocationKey } from '../../data/locality-location-key.ts';
 import { localityHebrewName, type LocalityNames } from '../../data/locality-names.ts';
 import type { SimList, Scenario } from '../../model/scenario.ts';
 import { allocationOf, listLabel, seatBlocsOf } from '../derive.ts';
-import { localityTotals, localityWinner, matchesLocality, nearestLocality, normalizeLocalityName } from '../locality-map-model.ts';
+import { findLocalities, localityTotals, localityWinner, nearestLocality, normalizeLocalityName } from '../locality-map-model.ts';
 import { useL, useLang } from '../i18n.ts';
 import { setMapLineChoice, setMapLines, useSetting, useStore } from '../store.ts';
 import { allLines, shownLines, tickLine } from '../mapLineChoice.ts';
@@ -139,7 +139,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     return !isEnvelopeRow(row) && p ? [{ ...p, row, index }] : [];
   }), [data, locations]);
   const searchNames = (r: LocalityRow, i: number) => ({ ...locations[localityLocationKey(r, i)], nameHe: localityHebrewName(names, r, i), code: r.code, aliases: [...(locations[localityLocationKey(r, i)]?.aliases ?? []), names.names[i] ?? '', r.nameHe] });
-  const matches = useMemo(() => data.rows.flatMap((r, i) => matchesLocality(q, searchNames(r, i)) ? [i] : []), [data, locations, names, q]);
+  const matches = useMemo(() => findLocalities(q, data.rows.map((_, i) => i), i => searchNames(data.rows[i], i)), [data, locations, names, q]);
   const winners = useMemo(() => placed.map(p => localityWinner(s, data.listIds, p.row.votes, mode)), [placed,s,data.listIds,mode]);
   const groupName = (key: string | null) => key === null ? (mode === 'bloc' ? L('No bloc', 'ללא גוש') : L('Unassigned', 'ללא שיוך')) : mode === 'bloc'
     ? (() => { const b = s.blocs.find(x => x.id === key); return b ? groupingName(b, lang) : key; })()

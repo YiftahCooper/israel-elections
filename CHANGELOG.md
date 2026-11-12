@@ -2,6 +2,8 @@
 
 ## 7 November 2026 — Settings
 
+- Localities (13 Nov, audit): “Find a locality” now finds a city typed in its usual English spelling (Beersheba, Petah Tikva, Bnei Brak, Herzliya, Eilat, Katzrin…). When nothing contains the typed letters, it also accepts the spellings CBS writes differently (q/k, w/v, b/v, tz/z, ei/e, doubled letters, apostrophes and hyphens).
+- Logos (13 Nov, audit): Balad’s 2009 and 2013 logos, cream-and-gold outlines, are shown on a dark tile; on the light theme they were almost invisible.
 - Party families (13 Nov, audit): an election’s breakdown gave a joint list’s whole seats as the family’s (Likud lineage 2013 under “Count all”: “31 seats; since 2009: +4”). It now gives the family’s own seats and its partners exactly as the seats chart does, whatever the mixed-list choice (“20 seats +11 partners”; “▼ −7 seats”); the list’s 31 stay on the list’s own row.
 - Party families (13 Nov, audit): Centre 2026 counts Yesh Atid inside Together (Bennett): 5 seats, with Bennett’s 7 as partners, from the official candidate list (Yalkut HaPirsumim 15023), as it already counted National Unity in 2022. Yashar! and Reservists–New Economic stay under review.
 - Party families (13 Nov, audit): “Did not contest” was printed whenever a family named no list (Russian-speaking 1992, although the Democracy and Aliyah list ran). It now reads “No list classified”; a year whose lists are only under review reads “Lists not yet classified”, and a total beside lists under review says “Some lists not yet classified”. The aliyah lists of 1981, 1984 and 1992 are named for review in the Russian-speaking family.
