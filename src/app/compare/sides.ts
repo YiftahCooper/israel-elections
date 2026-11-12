@@ -9,7 +9,8 @@ import { baselineOf } from '../factionDefaults.ts';
 import { getState, loadDataset, noteStorageLoss, openElection, replay, setState, toast } from '../store.ts';
 import type { MatchOverride } from './match.ts';
 
-/** Owner default (7 Nov): copy arrows show on hover, focus or selection; on touch screens (no hover) always. */
+/** Owner default (7 Nov): a list row's copy button (once arrows, now "Copy votes…") shows on hover, focus or selection;
+ *  on touch screens (no hover) always. The key numbers' Copy buttons always show. */
 export const COPY_ARROWS: 'hover' | 'always' = 'hover';
 
 const ELECTION = 'election:';

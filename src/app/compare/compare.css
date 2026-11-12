@@ -1,4 +1,4 @@
-/* Compare workbench. Sides, columns and arrows are pinned left → right in both languages; text inside mirrors. */
+/* Compare workbench. Sides and columns are pinned left → right in both languages; text inside mirrors. */
 .cmp-wb { display: grid; gap: 12px; }
 .cmp-panel-head { justify-content: flex-end; align-items: center; gap: 8px; flex-wrap: wrap; }
 .cmp-title { margin: 0; font-size: 18px; }
@@ -52,17 +52,6 @@
 .cmp-groupline > td { background: var(--surface-2); border-block-start: 1px dashed var(--rule-2); }
 .cmp-none { text-align: center; padding: 14px; }
 
-/* copy arrows: space always reserved (no jumps); shown on hover, focus or selection; always on touch screens */
-.cmp-arrow { display: inline-grid; place-items: center; width: 28px; height: 28px; border: 1px solid var(--rule-2); border-radius: 5px; background: var(--surface); color: var(--ink); cursor: pointer; padding: 0; }
-.cmp-arrow:hover:not(:disabled) { border-color: var(--focus); color: var(--focus); }
-.cmp-arrow:disabled { cursor: default; color: var(--muted); border-style: dashed; }
-.cmp-arrow-space { display: inline-block; width: 28px; }
-.cmp-wb[data-arrows="hover"] .cmp-row .cmp-arrow { opacity: 0; }
-.cmp-wb[data-arrows="hover"] .cmp-row:is(:hover, :focus-within, .selected) .cmp-arrow { opacity: 1; }
-.cmp-wb[data-arrows="hover"] .cmp-row .cmp-arrow:disabled { opacity: 0 !important; }
-.cmp-wb[data-arrows="hover"] .cmp-row:is(:hover, :focus-within, .selected) .cmp-arrow:disabled { opacity: .55 !important; }
-@media (hover: none) { .cmp-wb[data-arrows="hover"] .cmp-row .cmp-arrow:not(:disabled) { opacity: 1; } }
-
 /* match tags: words, not icons; Check is the only one that asks for attention */
 .cmp-tag { display: inline-block; font-size: 11.5px; font-weight: 600; padding: 0 6px; border-radius: 999px; border: 1px solid var(--rule-2); color: var(--ink-2); background: var(--surface); line-height: 18px; white-space: nowrap; }
 .cmp-tag.tag-check { border-style: dashed; color: var(--warn-ink); background: var(--warn-bg); border-color: color-mix(in srgb, var(--warn-ink) 45%, transparent); margin-inline-start: 6px; }
@@ -87,13 +76,17 @@
 .cmp-menu hr { border: 0; border-top: 1px solid var(--rule); margin: 4px 0; width: 100%; }
 
 .cmp-band-grid { display: grid; gap: 0; max-width: 760px; margin-inline: auto; }
-.cmp-band-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, auto) minmax(0, 1fr); align-items: center; gap: 8px; padding: 3px 0; border-block-end: 1px solid var(--rule); }
+.cmp-band-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(284px, auto) minmax(0, 1fr); align-items: center; gap: 8px; padding: 3px 0; border-block-end: 1px solid var(--rule); }
 .cmp-band-v { font-variant-numeric: tabular-nums; font-weight: 600; }
 .cmp-band-row > .cmp-band-v:first-child { text-align: right; }
 .cmp-band-row > .cmp-band-v:last-child { text-align: left; }
-.cmp-band-mid { display: grid; grid-template-columns: 28px minmax(0, 1fr) 28px; gap: 6px; align-items: center; text-align: center; }
+/* the middle: Copy (beside your work), the label, "⋯"; both slots keep their width, filled or not, so labels never move */
+.cmp-band-mid { display: grid; grid-template-columns: 60px minmax(0, 1fr) 60px; gap: 6px; align-items: center; text-align: center; }
 .cmp-band-k { color: var(--ink-2); font-size: 13px; }
-.cmp-band .cmp-arrow:disabled { opacity: .35; }
+.cmp-band-slot { display: flex; align-items: center; min-width: 0; }
+.cmp-band-slot-copy { justify-content: flex-end; }
+.cmp-band-copy { min-height: 28px; padding: 2px 8px; }
+.cmp-band-more { min-height: 28px; padding: 2px 6px; }
 
 .cmp-dialog[open] { display: grid; gap: 10px; padding: 14px 16px; border: 1px solid var(--rule-2); border-radius: 8px; background: var(--surface); color: var(--ink); max-inline-size: min(94vw, 34rem); max-block-size: 88dvh; overflow: auto; box-shadow: var(--shadow-pop); }
 .cmp-dialog::backdrop { background: rgb(0 0 0 / .25); }
@@ -134,7 +127,7 @@
 @media (max-width: 1100px) {
   .cmp-table .cmp-s { display: none; }
 }
-/* phone: two small cards side by side, one line per list, and the row sheet instead of hover arrows */
+/* phone: two small cards side by side, one line per list, and the row sheet instead of the row menu */
 @media (max-width: 760px) {
   .cmp-sides { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "centre centre" "left right"; gap: 6px; }
   .cmp-centre { padding-top: 0; max-width: none; display: flex; justify-content: center; align-items: center; gap: 8px; }
@@ -153,7 +146,7 @@
   [dir="rtl"] .cmp-table tr.cmp-row { grid-template-columns: 44px auto auto auto minmax(0, 1fr); grid-template-areas: "more ls mid rs rn" "more ln ln ln ln"; }
   .cmp-table tr.cmp-row > td { border: 0; padding: 0; min-width: 0; }
   .cmp-table tr.cmp-row > .cmp-rname, .cmp-table tr.cmp-row > .cmp-lname { overflow: hidden; }
-  .cmp-table tr.cmp-row > .cmp-tick, .cmp-table tr.cmp-row > .cmp-v, .cmp-table tr.cmp-row > .cmp-s, .cmp-table .cmp-arrow, .cmp-table .cmp-pp { display: none; }
+  .cmp-table tr.cmp-row > .cmp-tick, .cmp-table tr.cmp-row > .cmp-v, .cmp-table tr.cmp-row > .cmp-s, .cmp-table .cmp-pp { display: none; }
   .cmp-table tr.cmp-row > .cmp-rname { grid-area: rn; text-align: start; }
   .cmp-table tr.cmp-row > .cmp-lname { grid-area: ln; text-align: start; font-size: 12px; color: var(--muted); }
   .cmp-table tr.cmp-row > .cmp-lname::before { content: attr(data-year) ": "; }
@@ -172,12 +165,16 @@
   .cmp-table tr.cmp-groupline > td:first-of-type:not(:empty), .cmp-table tr.cmp-groupline > td[colspan="4"] { flex: 1 0 100%; }
   .cmp-table tr.cmp-groupline .cmp-mid-in { display: flex; align-items: center; gap: 8px; }
   .cmp-table tr.cmp-groupline .cmp-delta { flex-direction: row; gap: 4px; white-space: nowrap; }
-  .cmp-table tr.cmp-groupline .cmp-arrow { display: inline-flex; opacity: 1; width: 44px; height: 44px; }
   .cmp-dialog[open] { position: fixed; margin: 0; inset-block-start: auto; inset-block-end: 0; inset-inline: 0; max-inline-size: none; inline-size: 100%; border-radius: 12px 12px 0 0; box-sizing: border-box; }
   .cmp-band-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, 1fr); }
-  .cmp-band-mid { grid-template-columns: 36px minmax(0, 1fr) 36px; gap: 2px; }
-  .cmp-band .cmp-arrow { width: 36px; height: 36px; }
-  .cmp-band .cmp-arrow-space { width: 36px; }
+  /* the label takes the middle's whole width; Copy and "⋯" sit under it */
+  .cmp-band-mid { grid-template-columns: auto auto; grid-template-areas: "k k" "copy more"; justify-content: center; gap: 2px 6px; }
+  .cmp-band-k { grid-area: k; }
+  .cmp-band-slot-copy { grid-area: copy; }
+  .cmp-band-slot-more { grid-area: more; }
+  .cmp-band-slot:empty { display: none; }
+  .cmp-band-copy, .cmp-band-more { min-height: 44px; min-width: 44px; }
+  .cmp-menu .cmp-menu-item { min-height: 44px; }
 }
 
 /* people an import puts on two lists: a warning, never a block */
