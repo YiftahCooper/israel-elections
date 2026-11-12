@@ -15,12 +15,16 @@ The three interface levels use the same exact engine, with the rules of the chos
 
 | Level | Tools |
 |---|---|
-| **Simple** (default) | Chamber, list cards, proportionally balanced vote edits, elected candidates with notes, and joint-list parties. Per-election blocs: first government or recognised groupings. “What if…”, coalitions, walkthrough, sources and undo. |
-| **Standard** | Adds vote-source choices, comparisons, mergers/splits, surplus agreements, seat security, charts and history. Edit blocs as “Your grouping”, move constituent parties to another bloc, or “Run as separate lists” with editable vote-share assumptions. Save, share, import/export and withdraw/remove lists. |
-| **Expert** | Adds candidate/identity editing, turnout, sensitivity, localities and chamber options. Experimental methods include D’Hondt, modified Sainte-Laguë and largest remainder with a Droop quota. Separate runs also show vote counts. |
+| **Simple** (default) | Chamber, list cards, vote edits (you choose whether added votes come from the other lists or from new voters) and elected candidates with notes. Per-election blocs: first government or recognised groupings; edit them as “Your grouping” or move a joint list’s parties to another bloc. After the election (recommendations, government and dated history), Party families, saved scenarios, “What if…”, coalitions, how seats were allocated, side-by-side comparison, sources and undo. |
+| **Standard** | Adds merge and split (“Run as separate lists” with editable vote-share assumptions), surplus agreement edits, withdrawing or restoring lists, a named list as the source of added votes, seat safety, charts and vote totals. |
+| **Expert** | Adds candidate and list identity editing, turnout, sensitivity, localities, rules and chamber options. Experimental methods include D’Hondt, Sainte-Laguë, modified Sainte-Laguë and largest remainder with a Droop quota. Separate runs also show vote counts. |
+
+Save & share (save in this browser, share links, import and export) is in the top bar at every level.
+Tools above your level stay in the tab strip, muted, and open when pressed. **Custom** lets you show,
+fold or hide each tool one by one.
 
 Hebrew is the default, with right-to-left layout. English and light/dark themes are available.
-Info icons open a 47-term bilingual glossary with learn-more links to the law, CEC or
+Info icons open a bilingual glossary with learn-more links to the law, CEC or
 Israel Democracy Institute; terms appear at the relevant interface level. Candidate notes
 explain misprints and members replaced before a Knesset’s first sitting, without changing
 who the simulation seats.
@@ -31,7 +35,7 @@ candidates link to their Knesset member page, their party's page and Hebrew Wiki
 
 Votes, candidates and surplus agreements come from Central Elections Committee (CEC),
 data.gov.il and Reshumot sources. Raw files and a manifest record source URLs, retrieval
-times and SHA-256 hashes. Two 2026 candidate rosters use a labelled secondary source.
+times and SHA-256 hashes.
 Sourced party, bloc and colour research supplements the official results; colours fall back
 to the app palette where needed. Short names are app metadata. English Wikipedia is never
 used or linked; Hebrew Wikipedia is labelled secondary.
@@ -45,9 +49,9 @@ See [Data coverage and provenance](docs/DATA.md) for sources, qualifications and
 
 The engine uses exact integer and fraction arithmetic for seat decisions. Tests reproduce
 every list’s official **2022** seat count exactly, including all 120 seats.
-For **2026**, tests reproduce the seat totals reported from the CEC final count; that test’s
-comparison figures are labelled as secondary press reports. The dataset has no gazetted
-official seat table yet and records final publication as pending as of 3 November 2026.
+For **2026**, tests reproduce every list’s seats in the official results notice
+(Yalkut HaPirsumim 15100, 4 November 2026). Every other election since 1949 has its own test
+that reproduces every list’s official seats.
 Availability is recorded in [the election index](public/data/elections.json).
 
 Tests also cover threshold boundaries, surplus agreements, statutory ties and model actions.
@@ -125,8 +129,9 @@ Read [Data coverage](docs/DATA.md) before changing sources or publishing rebuilt
 
 Not affiliated with the Central Elections Committee or any political party.
 Blocs are informal, editable groupings, not official electoral classifications.
-Scenarios and turnout models are hypothetical, not forecasts. Candidate displays follow
-registered lists and do not track later changes in Knesset membership.
+Scenarios and turnout models are hypothetical, not forecasts. The simulation fills seats from
+the registered lists; for the actual result, the seat card and the After the election timeline
+show who later took over a seat.
 
 ## Licence
 

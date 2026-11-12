@@ -35,8 +35,8 @@ The separate share/count charts lead the page. At 1200px and above they sit side
 side, each 300px high; narrow layouts stack them, each at least 240px high. Small
 multiples use one shared scale per metric. Actual dates position the points; horizontal
 year labels are thinned on phones, not scaled down. End labels identify each series.
-Hover/focus reveals exact votes/share/date, mixed totals and publication status. The
-2026 point is hollow and labelled pending gazette. Tab enters the current point;
+Hover/focus reveals exact votes/share/date, mixed totals and publication status. An
+election still awaiting its gazette would be drawn hollow and labelled; none is at present. Tab enters the current point;
 arrow keys move among the 26 elections, and Enter/Space opens the focused election.
 The shared cursor follows chart and table focus. Unknown points break the line;
 observed zero and did-not-contest remain different in exact figures.
@@ -69,7 +69,7 @@ Extensions and contested lists are editable for the sheet's chosen election. Reg
 relationship suggestions and manual partner links remain preview-first. Primary
 choices throughout the profile/sheet use chips, segments or ChoicePicker, not selects.
 
-Scaling has shared quick-action styling, a ± stepper, +1/+5/+10% shortcuts and a
+Scaling has shared quick-action styling, a ± stepper, −10/−5/+5/+10% shortcuts and a
 target-share input mode. Negative percentages lower a family (to −100% at most). Before/after
 strips show the family's seats in its colour against the majority line, with the seat
 delta, and
@@ -143,8 +143,8 @@ light/dark, 1440×900 and 390×844, saved under `.backup-scratch/families/` as
 `scripts/family-runtime.ts` compiles metadata during Vite build (and development) to
 `data/families-runtime.json` and the profile's virtual runtime module. It packs ids,
 bilingual names/definitions, membership/outcome flags, review ids, dates, publication
-flags, immutable whole-list votes and derived totals. The current JSON is 41,846 bytes
-raw. A unit test enforces the 200 KB ceiling and independently reconciles every
+flags, immutable whole-list votes and derived totals. A unit test keeps the JSON under
+200,000 bytes and independently reconciles every
 family/election with the full metadata. No generated copy is checked into source.
 
 The initial profile does not import the registry or full evidence, or fetch 26 complete

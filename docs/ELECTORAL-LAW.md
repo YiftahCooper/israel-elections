@@ -34,7 +34,7 @@ Israeli statutes are not subject to copyright (Copyright Law 5768-2007, s. 6).
 | 81(d)(4) half-seats cap | a unit with `2 × votes ≤ qualifying` and `2 × seats ≥ 120` stops receiving remainder seats |
 | 67(a), 82(a) agreements | exactly two lists; one agreement per list; effective only if both pass 81(a); combined only in the 81(d) stage |
 | 82(b) internal division | the pair's seats are re-divided from scratch by the whole of section 81 (pair quota, whole seats, Bader–Ofer, cap) |
-| 83 elected members | the first *n* candidates on the list as registered |
+| 83 elected members | the first *n* candidates in registered order, skipping any the results notice did not seat (`notSeated`; `seatedOrder` in `src/app/derive.ts`) |
 
 Notes on interpretation, each covered by tests (`tests/engine.test.ts`):
 
@@ -47,13 +47,14 @@ Notes on interpretation, each covered by tests (`tests/engine.test.ts`):
 ## Validation
 
 * 25th Knesset (2022): every list's seats equal the official CEC result; quota 36,227; 113 whole-quota seats and 7 remainder seats; threshold 154,855 votes.
-* 26th Knesset (2026): the result equals the seat counts reported from the CEC final count (Likud 27, Yashar! 21, Together 12, Joint List 11, Democrats 8, Ra'am 8, Otzma Yehudit 7, UTJ 7, Yisrael Beiteinu 7, Religious Zionism–Zehut 6, Shas 6); quota 44,874; 5 remainder seats. The results notice (Yalkut HaPirsumim 15100, 4 November 2026, pp. 1634–1645, [free-justice.openapi.gov.il](https://free-justice.openapi.gov.il/free/moj/portal/rest/searchpredefinedapi/v1/SearchPredefinedApi/Documents/ZVveZMQvnnqOsVI7G9PTFPfFAwA1faZKrTzj68RbFA8=)) prints every list's votes (total 5,691,426) but no quota; its lists above the 184,972-vote threshold hold 5,384,948 votes, and 5,384,948 ÷ 120 = 44,874.57, whose whole part is the quota. The earlier 44,873 predated the 5 November recount.
+* 26th Knesset (2026): every list's seats equal the official results notice (Likud 27, Yashar! 21, Together 12, Joint List 11, Democrats 8, Ra'am 8, Otzma Yehudit 7, UTJ 7, Yisrael Beiteinu 7, Religious Zionism–Zehut 6, Shas 6); quota 44,874; 5 remainder seats. The results notice (Yalkut HaPirsumim 15100, 4 November 2026, pp. 1634–1645, [free-justice.openapi.gov.il](https://free-justice.openapi.gov.il/free/moj/portal/rest/searchpredefinedapi/v1/SearchPredefinedApi/Documents/ZVveZMQvnnqOsVI7G9PTFPfFAwA1faZKrTzj68RbFA8=)) prints every list's votes (total 5,691,426) but no quota; its lists above the 184,972-vote threshold hold 5,384,948 votes, and 5,384,948 ÷ 120 = 44,874.57, whose whole part is the quota. The earlier 44,873 predated the 5 November recount.
 * First-stage and remainder counts equal the CEC's printed calculation sheets for 1981–2021 (`tests/official-stage-counts.test.ts`). The 1973 sheet and one page of the 1977 sheet count agreement pairs jointly in the first stage (117 + 3, 114 + 6); §82(a) joins a pair only for 81(d), so the engine gives 114 + 6 and 113 + 7, with the same final seats. Decision 0073, note of 9 November 2026.
 * Without agreements and with an exact quota, Bader–Ofer equals D'Hondt; 200 random elections are cross-checked against an independent D'Hondt implementation.
 
-## Earlier statutory eras (Knessets 16–24)
+## Earlier statutory eras (Knessets 16–26)
 
-The engine now defines three exact presets. All retain Bader–Ofer, 120 seats, the floor
+Three presets cover Knessets 16–26 (the engine has seven in all: `src/engine/rules.ts`;
+the older ones are described below). All three retain Bader–Ofer, 120 seats, the floor
 quota, two-list agreements effective only when both lists qualify, and the statutory
 majority cap. The changed parameter is the qualifying threshold:
 
@@ -78,8 +79,9 @@ No additional allocation-method difference has been established in this implemen
 
 `historicalRules()` resolves each preset; returning from experimental mode restores the
 election's era, using its historical base scenario when provided. Tests cover that rule
-plumbing for each election id. They do **not** establish seat reproduction for Knessets
-16–24: those datasets remain unreleased pending the checks in DATA.md.
+plumbing for each election id. Seat reproduction is tested separately: every published
+election, 1949–2026, reproduces every list's official seats (`tests/historical-kNN.test.ts`,
+and `tests/engine.test.ts` for 2022).
 
 ### Knessets 16–17: checked clauses and archive-date limitation
 
@@ -99,11 +101,11 @@ internal re-division modeled today. The indexed statutory text was inspected; di
 retrieval returned 403. No additional parameter change is supported by this evidence.
 Decision [0051](decisions/0051-k16-k17-historical-allocation-evidence.md) records the limits.
 
-The new k16/k17 tests exercise actual historical national vote fixtures and reproduce all
-gazetted seats, with thresholds **47,226 / 62,742** and quotas **25,138 / 24,619**.
-They are explicitly research fixtures: both elections remain unavailable because gazette
-figures conflict with polling data, full candidate rosters are unverified and required
-locality fields are missing. Successful allocation does not clear those release gates.
+Both elections are released. Their tests reproduce all gazetted seats, with thresholds
+**47,226 / 62,742** and quotas **25,138 / 24,619**. Each dataset's status note discloses its
+remaining limits (truncated and unavailable rosters, documented source discrepancies);
+decisions [0052](decisions/0052-k16-k17-national-and-locality-release-policy.md)–[0054](decisions/0054-k16-k17-elected-roster-coverage.md)
+record the release.
 
 ## 1949: Constituent Assembly ordinance
 
@@ -150,7 +152,8 @@ identical final seats; the historical order is unknown and is not fabricated.
 The warning remains visible. Decision [0063](decisions/0063-k1-connections-rosters-national-release.md)
 records the evidence, checks both choices and releases the national dataset under
 the owner's prefix-roster standard. Decision 0060's counterfactual simulation
-limits still apply. UI election labels need the reviewed withdrawal mappings.
+limits still apply. The app's elected names skip candidates the results did not seat
+(`notSeated` in the dataset).
 
 ## 1951–1969: floor Hare and largest remainders
 
@@ -189,7 +192,7 @@ HaOlam HaZeh 1. The pair receives 47 seats and re-divides 45+2 at internal quota
 [0069a](decisions/0069a-k6-corrected-connection-national-release.md) supersedes the
 1965-specific uncertainty in decisions 0060–0062 and 0068. Follow-up evidence now supplies complete notices for the released
 1951–1969 datasets: **YP 177 p.1177** (צ–סצ), **YP 427 p.1053** (א–יד, פ–ש,
-צ–צח, סצ–ל, נ–ע), **YP 709 p.125** (א–רא, יא–ע), **YP 865 p.1843** (ב–ד,
+צ–צח, סצ–ל, נ–ע), **YP 709 pp.125–126** (א–רא, יא–ע, תו–שת), **YP 865 p.1843** (ב–ד,
 מ–תו, יא–רא), and **YP 1565 p.246** (יא–רא). Signed primary notices were read
 in full; inactive pairs are retained. All seats match with the existing preset,
 including the formerly mismatched 1959 Mapai 47 and Cooperation and Brotherhood 2.
@@ -240,11 +243,12 @@ claim of verified legal authority. See [0073](decisions/0073-k9-candidate-cap-in
 
 K10–K12 are released with complete required winning-roster prefixes and all elected-name
 checks, using notices YP2720 p.2027 (three pairs), YP3073 p.2839 (four), and YP3588 p.170
-(five). K8 remains unavailable: agreement notice not located and four seat differences.
-K9 also remains unavailable: both copies of YP2326 omit Ratz's elected-member paragraph,
-so only 119/120 elected names can be cross-checked against the required results notice.
-The full per-list tables and both K9 computations are in
-[0075](decisions/0075-k8-k12-release-evidence.md). No app Rules panel edit was made.
+(five). K8 and K9 are released too. K8 reproduces every published seat with the six official
+connections in the CEC's calculation record (Form 30 appendix): decision
+[0077](decisions/0077-k8-official-connections-cec-appendix.md). For K9, both copies of YP2326 omit
+Ratz's elected-member paragraph; Ratz's first member is confirmed from official Knesset membership
+records: decision [0076](decisions/0076-k9-ratz-release-and-k8-search.md). The full per-list tables
+and both K9 computations are in [0075](decisions/0075-k8-k12-release-evidence.md).
 
 ## Knessets 13–15 (1992–1999)
 
@@ -261,10 +265,11 @@ sections 67/82 text; a complete point-in-time intervening amendment-chain audit 
 **not complete**. See decision [0082](decisions/0082-k13-k15-rule-era-evidence.md)
 for exactly what was checked and why result reproduction is not statutory proof.
 
-Research fixtures reproduce every gazetted seat with thresholds/quotas **39,253 /
+All three are released and reproduce every gazetted seat with thresholds/quotas **39,253 /
 20,715** (1992), **45,782 / 24,779** (1996), **49,642 / 25,936** (1999). All fill
-120 seats and need no lottery. The 1992 fixture uses only sourced inputs: no agreement
+120 seats and need no lottery. The 1992 dataset uses only sourced inputs: no agreement
 notice was found, and no agreement was inferred. This reproduces seats but does not
-establish agreement completeness. Candidate coverage still blocks all three releases;
-no public election datasets are emitted. Tests also exercise historical rule reset and
+establish agreement completeness; the dataset's status note says so. Rosters list everyone
+elected; later ranks are not transcribed (decisions [0083](decisions/0083-k13-k15-elected-prefix-release-standard.md)
+and [0086](decisions/0086-k13-k15-release-verification.md)). Tests also exercise historical rule reset and
 scenario import for ids k13–k15, independently of the real-seat checks.
