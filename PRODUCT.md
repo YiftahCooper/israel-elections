@@ -36,7 +36,8 @@ official sources, in Hebrew and English, at three levels of depth.
 - Used in a desktop or phone browser; installed nowhere (a static site, intended for GitHub Pages).
 - Hebrew is the default language with right-to-left layout; English is a full alternative. Light and dark themes.
 - Three interface levels over one engine: Simple (truly visually minimal), Standard (common, consequential
-  edits), Expert (edit as freely as reasonable).
+  edits), Expert (edit as freely as reasonable), plus Custom, which shows, folds or hides each tool one by one.
+  Which tool sits at which level is set in `src/app/features.ts` (decision 0013).
 
 ## Capabilities and Constraints
 
