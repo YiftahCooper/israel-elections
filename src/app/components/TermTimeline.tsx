@@ -299,7 +299,7 @@ function SeatHolderList({ term, holders, now, mk }: { term: TermRuntime; holders
       <div>{mk?.people[h[0]] ? <button type="button" className="link-btn" onClick={() => openMkHistory(h[0])}><b><bdi>{personName(mk, h[0], lang)}</bdi></b></button> : <b><bdi>{personName(mk, h[0], lang)}</bdi></b>}
         {' '}<span className="muted small"><bdi dir={lang === 'he' ? 'rtl' : 'ltr'}><bdi>{formatDate(h[1], lang)}</bdi> – <bdi>{formatDate(h[2] && h[2] < term.end ? h[2] : term.end, lang)}</bdi></bdi></span></div>
       <div className="small">{line(h)}</div>
-      {h[7].slice(1).map(([f, from]) => <div key={from} className="small muted">{L('Faction', 'סיעה')}: <bdi>{factionName(f)}</bdi> · <bdi>{formatDate(from, lang)}</bdi></div>)}
+      {h[7].slice(1).map(([f, from, time], j) => <div key={j} className="small muted">{L('Faction', 'סיעה')}: <bdi>{factionName(f)}</bdi> · <bdi>{formatDate(from, lang)}{time ? `, ${time}` : ''}</bdi></div>)}
     </li>)}</ol>
   </>;
 }

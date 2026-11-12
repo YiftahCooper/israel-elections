@@ -38,9 +38,15 @@ export function closeMkHistory() { open = null; emit(); }
 export const useOpenMkHistory = () => useSyncExternalStore((f) => { listeners.add(f); return () => listeners.delete(f); }, () => open, () => null);
 
 // ---------- the card's facts, derived (pure; tested in tests/mk-history.test.ts) ----------
-export interface MkSegment { faction: number; he: string; en: string | null; color: string | null; start: string; end: string }
+export interface MkSegment {
+  faction: number; he: string; en: string | null; color: string | null; start: string; end: string;
+  /** times of day, where the Knesset's record gives them ("10:01"; several factions on one day) */
+  startTime?: string; endTime?: string;
+}
 export interface MkEvent {
   date: string;
+  /** the time of day, where the record gives one */
+  time?: string;
   kind: 'entered' | 'left' | 'faction' | 'recorded';
   /** for faction: the new and the previous faction */
   faction?: { now: Pick<MkSegment, 'he' | 'en'>; was: Pick<MkSegment, 'he' | 'en'> };
@@ -90,24 +96,26 @@ export function mkView(rt: MkRuntime, id: number): MkView | null {
     const terms: MkRow['terms'] = [];
     for (const t of p.terms.filter((x) => x[0] === k).sort((a, b) => a[1].localeCompare(b[1]))) {
       const end = t[2] ?? e.end ?? t[1];
-      const segments = t[3].map(([f, s, fe]) => ({ faction: f, ...fac(f), start: s, end: fe ?? end }));
+      // the compiled records are the shown ones: no zero-length record, cut to the term, same-day ones in time order
+      const segments = t[3].map(([f, s, fe, st, et]): MkSegment => ({ faction: f, ...fac(f), start: s, end: fe ?? end, ...(st ? { startTime: st } : {}), ...(et ? { endTime: et } : {}) }));
       const last = terms[terms.length - 1];
       if (last && last.end === t[1]) { last.end = end; last.ongoing = t[2] === null; last.segments.push(...segments); }
       else terms.push({ start: t[1], end, ongoing: t[2] === null, segments });
     }
     for (const t of terms) {
       // touching segments of one faction are one
-      t.segments = t.segments.reduce<MkSegment[]>((out, s) => { const q = out[out.length - 1]; if (q && q.faction === s.faction && q.end === s.start) q.end = s.end; else out.push({ ...s }); return out; }, []);
+      t.segments = t.segments.reduce<MkSegment[]>((out, s) => { const q = out[out.length - 1]; if (q && q.faction === s.faction && q.end === s.start && !q.endTime && !s.startTime) { q.end = s.end; if (s.endTime) q.endTime = s.endTime; } else out.push({ ...s }); return out; }, []);
       daysServed += daysBetween(t.start, t.end);
     }
     const events: MkEvent[] = [];
     terms.forEach((t, i) => {
       if (t.start !== e.opening) events.push({ date: t.start, kind: 'entered' });
-      t.segments.forEach((s, j) => { if (j > 0) events.push({ date: s.start, kind: 'faction', faction: { now: s, was: t.segments[j - 1] } }); });
+      t.segments.forEach((s, j) => { if (j > 0) events.push({ date: s.start, ...(s.startTime ? { time: s.startTime } : {}), kind: 'faction', faction: { now: s, was: t.segments[j - 1] } }); });
       if (!t.ongoing && t.end !== e.end) events.push({ date: t.end, kind: 'left' });
       void i;
     });
     for (const ev of p.events.filter((x) => x[2] === k)) events.push({ date: ev[0], kind: 'recorded', text: { en: ev[3], he: ev[4] }, evidence: ev[5], sources: ev[6] });
+    // by date only: the sort keeps the path's order within a day (the faction that continues comes last)
     events.sort((a, b) => a.date.localeCompare(b.date));
     return { k, electionDate: e.date, opening: e.opening, end: e.end, run, terms, events };
   });

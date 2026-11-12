@@ -13,6 +13,7 @@ import type { ElectionDataset } from '../src/data/schema.ts';
 import { RULESETS } from '../src/engine/rules.ts';
 import { mixHex } from '../src/data/colour.ts';
 import { compileHistoryRuntime } from './party-history-runtime.ts';
+import { shownRows } from './lib/faction-rows.ts';
 
 /** How a run ended. elected: within the list's seats at the election. first: not within the seats but sat from the
  *  first sitting. later: entered during that Knesset. out: did not enter that Knesset. declined: within the seats but
@@ -24,8 +25,11 @@ export type RunBasis = 'id' | 'name';
 /** [election number, list id, rank, outcome, basis, for basis "name": the election number of the ID-tied run,
  *  for "declined" and "first": the official candidate notes that explain it ([English, Hebrew][]) ] */
 export type PackedRun = readonly [number, string, number, RunOutcome, RunBasis, number | null, readonly (readonly [string, string])[]];
-/** [Knesset number, start, end or null (still serving), factions [faction id, start, end or null][]] */
-export type PackedTerm = readonly [number, string, string | null, readonly (readonly [number, string, string | null])[]];
+/** One faction in a term: [faction id, start, end or null, and where the Knesset's record has them: start time, end time].
+ *  Only the records the app shows, cut to the term and in order (scripts/lib/faction-rows.ts). */
+export type PackedFaction = readonly [number, string, string | null] | readonly [number, string, string | null, string | null, string | null];
+/** [Knesset number, start, end or null (still serving), factions] */
+export type PackedTerm = readonly [number, string, string | null, readonly PackedFaction[]];
 /** [date, kind, Knesset number, English, Hebrew, evidence class, sources [publisher, url][]] */
 export type PackedEvent = readonly [string, string, number, string, string, string, readonly (readonly [string, string])[]];
 export interface MkPerson {
@@ -55,7 +59,7 @@ export interface MkRuntime {
 export interface MkReview { leftOut: { candidateId: string; nameHe: string; reason: string; personIds: number[] }[]; anomalies: string[] }
 
 type Bio = { knessetPersonId?: number | null; confidence?: string; knesset?: { siteId?: number } | null; hewiki?: { title?: string } | null; basis?: string };
-type Tenure = { personId: number; nameHe: string; start: string; end: string | null; factions: { factionId: number; nameHe: string; start: string; end: string | null }[] };
+type Tenure = { personId: number; nameHe: string; start: string; end: string | null; factions: { factionId: number; nameHe: string; start: string; end: string | null; startTime?: string; endTime?: string }[] };
 type Changes = { tenures: Tenure[]; factionRegistry: { id: number; nameHe: string; start: string; end: string | null }[]; checks: { openingDateReported?: string | null } };
 type KEvent = { id: string; date: string; kind: string; who: { personIds?: number[] }; summary: { en: string; he: string }; classification: string; certainty: string; evidenceClass?: string; sources: { url?: string; publisher?: string }[] };
 
@@ -116,7 +120,7 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
   const terms = new Map<number, PackedTerm[]>();
   for (const k of K) for (const t of changes.get(k)!.tenures) {
     const list = terms.get(t.personId) ?? [];
-    list.push([k, t.start, t.end, t.factions.map((f) => [f.factionId, f.start, f.end] as const)]);
+    list.push([k, t.start, t.end, shownRows(t.factions, t).map((f): PackedFaction => f.startTime || f.endTime ? [f.factionId, f.start, f.end, f.startTime ?? null, f.endTime ?? null] : [f.factionId, f.start, f.end])]);
     terms.set(t.personId, list);
   }
 

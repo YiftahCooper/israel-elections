@@ -144,7 +144,7 @@ function Row({ r, v }: { r: MkRow; v: MkView }) {
     </> : <span className="tiny muted">{L('Place on the list not in our data', 'המקום ברשימה אינו בנתונים')}</span>}</div>
     <div className="mk-term"><TermBar r={r} v={v} /></div>
     <div className="mk-res"><Result r={r} v={v} /></div>
-    {events.length > 0 && <ul className="mk-events">{events.map((e, i) => <li key={i}><span className="mk-edate">{formatDate(e.date, lang)}</span><span>{eventText(e, v, L, lang)}</span>
+    {events.length > 0 && <ul className="mk-events">{events.map((e, i) => <li key={i}><span className="mk-edate">{formatDate(e.date, lang)}{e.time ? `, ${e.time}` : ''}</span><span>{eventText(e, v, L, lang)}</span>
       {e.kind === 'recorded' && <EventSource e={e} />}</li>)}</ul>}
   </li>;
 }

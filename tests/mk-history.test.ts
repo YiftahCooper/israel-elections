@@ -165,3 +165,68 @@ describe('names', () => {
     expect(servedText(12, 'en')).toBe('12 days');
   });
 });
+
+// The audit of 12 Nov 2026 against the Knesset's live record (.backup-scratch/audit-1112/cx-factions): what the card
+// shows must equal the stored record (data/research/knesset-member-changes), every Knesset, not a sample.
+describe('factions shown equal the Knesset record', () => {
+  type Row = { factionId: number; start: string; end: string | null; startTime?: string; endTime?: string; cites: { recordId: number }[] };
+  type Ten = { id: number; personId: number; start: string; end: string | null; factions: Row[] };
+  const record = (k: number) => JSON.parse(readFileSync(`data/research/knesset-member-changes/k${k}.json`, 'utf8')) as { tenures: Ten[]; factionRegistry: { id: number; nameHe: string }[] };
+  const YASINOV = 1054, BENNETT = 23511;
+  const row = (p: number, k: number) => mkView(rt, p)!.rows.find((r) => r.k === k)!;
+
+  it('Yasinov, 1 Feb 2006: the record’s times of day order the day, ending in the faction that continues', () => {
+    const t = record(16).tenures.find((x) => x.personId === YASINOV)!;
+    // the record: Shinui 10:01–10:59, HaOlim 11:01–11:59, National Union 12:01–12:59, Yisrael Beiteinu to 17 Apr
+    const timed = t.factions.filter((f) => f.startTime).map((f) => [f.cites[0].recordId, f.factionId, f.startTime, f.endTime]);
+    expect(timed).toEqual([[29890, 1078, '10:01', '10:59'], [28398, 588, '11:01', '11:59'], [28399, 45, '12:01', '12:59']]);
+    const r = row(YASINOV, 16);
+    expect(r.terms[0].segments.map((s) => [s.faction, s.start, s.end, s.startTime ?? null, s.endTime ?? null])).toEqual([
+      [43, '2003-02-17', '2005-05-18', null, null], [1038, '2005-05-18', '2006-02-01', null, null],
+      [1078, '2006-02-01', '2006-02-01', '10:01', '10:59'], [588, '2006-02-01', '2006-02-01', '11:01', '11:59'],
+      [45, '2006-02-01', '2006-02-01', '12:01', '12:59'], [590, '2006-02-01', '2006-04-17', null, null]]);
+    expect(r.events.filter((e) => e.date === '2006-02-01').map((e) => [e.time ?? null, e.faction!.now.en, e.faction!.was.en])).toEqual([
+      ['10:01', 'Shinui', 'Shinui'], ['11:01', 'HaOlim', 'Shinui'], ['12:01', 'National Union', 'HaOlim'], [null, 'Yisrael Beiteinu', 'National Union']]);
+  });
+
+  it('a record that starts and ends at the same midnight is never shown: no faction, no change, no bar (all 25 Knessets)', () => {
+    const zero: string[] = [];
+    for (let k = 1; k <= 25; k++) for (const t of record(k).tenures) for (const f of t.factions)
+      if (f.end === f.start && !f.startTime && !f.endTime) zero.push(`${t.personId}:${f.factionId}:${f.start}`);
+    // 28 such rows: Peled (k14) twice, Lasry and Milo (k15), 22 in the 2020 Blue and White split (k23), Bennett and Sofer
+    // (k24). Yasinov's three rows on 1 Feb 2006 have times of day and are not among them.
+    expect(zero).toHaveLength(28);
+    expect(zero).toContain(`${BENNETT}:1085:2022-08-15`); // record 30147, kept in the data
+    for (const z of zero) {
+      const [p, f, d] = z.split(':');
+      for (const r of mkView(rt, Number(p))!.rows) {
+        expect(r.terms.flatMap((t) => t.segments).some((s) => s.faction === Number(f) && s.start === d && s.end === d), z).toBe(false);
+        expect(r.events.some((e) => e.kind === 'faction' && e.date === d && (e.faction!.now as { faction?: number }).faction === Number(f)), z).toBe(false);
+      }
+    }
+    for (const [id] of Object.entries(rt.people)) for (const r of mkView(rt, Number(id))!.rows) for (const s of r.terms.flatMap((t) => t.segments))
+      expect(s.end > s.start || !!s.startTime, `${id} k${r.k} ${s.faction}`).toBe(true);
+    // Bennett, 15 Aug 2022: Yamina to Together, with no National Unity line
+    expect(row(BENNETT, 24).events.filter((e) => e.kind === 'faction').map((e) => [e.date, e.faction!.now.en, e.faction!.was.en])).toEqual([
+      ['2022-08-15', 'Together (Bennett)', 'Yamina'], ['2022-09-06', 'Yamina', 'Together (Bennett)']]);
+  });
+
+  it('a faction is shown only while the member sat; the record keeps its own dates (all 25 Knessets)', () => {
+    for (const [id] of Object.entries(rt.people)) for (const r of mkView(rt, Number(id))!.rows) for (const t of r.terms) for (const s of t.segments)
+      expect(s.start >= t.start && s.end <= t.end, `${id} k${r.k} ${s.faction} ${s.start}..${s.end} in ${t.start}..${t.end}`).toBe(true);
+    const k25 = record(25).tenures;
+    const cases: [number, string, string | null, string | null, string | null][] = [
+      // person, record start, record end, shown start, shown end
+      [30768, '2025-07-01', '2025-07-16', '2025-07-02', '2025-07-16'], // Baruchi
+      [30868, '2023-01-02', null, '2023-01-03', null], // Mashriki
+      [30875, '2023-02-09', null, '2023-02-10', null], // Melaku
+      [30880, '2023-03-31', '2023-10-15', '2023-03-31', '2023-10-14'], // Buaron
+    ];
+    for (const [p, rs, re, ss, se] of cases) {
+      const t = k25.find((x) => x.personId === p && x.factions.some((f) => f.start === rs))!;
+      expect([t.factions[0].start, t.factions[0].end], `record ${p}`).toEqual([rs, re]);
+      const packed = rt.people[p].terms.find((x) => x[0] === 25 && x[1] === t.start)!;
+      expect([packed[3][0][1], packed[3][0][2]], `shown ${p}`).toEqual([ss, se]);
+    }
+  });
+});

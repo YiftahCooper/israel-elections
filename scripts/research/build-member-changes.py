@@ -33,6 +33,17 @@ def day(value):
     return value[:10] if value else None
 
 
+def clock(value):
+    """The time of day a record gives ("10:01"), or None at midnight: same-day rows keep their order (k16, 1 Feb 2006)."""
+    return value[11:16] if value and value[11:16] not in ('', '00:00') else None
+
+
+def segment_order(f):
+    """Same-day rows in time order, before a row that continues past that day."""
+    start = day(f['StartDate'])
+    return (start, 1 if not f['FinishDate'] or day(f['FinishDate']) > start else 0, f['StartDate'], f['PersonToPositionID'])
+
+
 def cite(r):
     return {'source': 'positions', 'recordId': r['PersonToPositionID']}
 
@@ -78,13 +89,14 @@ def main():
             start, end = day(r['StartDate']), day(r['FinishDate'])
             person = names.get(r['PersonID'])
             segments = []
-            for f in sorted(fr, key=lambda x: x['StartDate']):
+            for f in sorted(fr, key=segment_order):
                 if f['PersonID'] != r['PersonID']:
                     continue
                 fs, fe = day(f['StartDate']), day(f['FinishDate'])
                 # Keep full source dates; link only intersecting positive-length intervals.
                 if (not end or fs < end) and (not fe or fe > start):
-                    segments.append({'factionId': f['FactionID'], 'nameHe': f['FactionName'], 'start': fs, 'end': fe, 'certainty': 'confirmed', 'cites': [cite(f)]})
+                    times = {k: v for k, v in (('startTime', clock(f['StartDate'])), ('endTime', clock(f['FinishDate']))) if v}
+                    segments.append({'factionId': f['FactionID'], 'nameHe': f['FactionName'], 'start': fs, 'end': fe, **times, 'certainty': 'confirmed', 'cites': [cite(f)]})
             doc['tenures'].append({'id': r['PersonToPositionID'], 'personId': r['PersonID'],
                                    'nameHe': f"{person['FirstName']} {person['LastName']}" if person else None,
                                    'nameCites': [{'source': 'persons', 'recordId': r['PersonID']}],
