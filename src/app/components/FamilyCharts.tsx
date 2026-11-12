@@ -19,10 +19,15 @@ const drawn=(a:Agg)=>a.votes!==null&&a.status==='observed'&&!onlyMixed(a);
 /** One wording for every state a family can be in at one election (chart, tooltip and table share it). */
 export function familyStatus(a:Agg,L:Tr):string|null {
  if(a.votes===null)return L('Unknown','לא ידוע');
- if(a.status==='did-not-contest')return L('Did not contest','לא התמודדו');
+ if(a.status==='none-classified')return L('No list classified','אין רשימה מסווגת');
+ if(a.status==='unclassified')return L('Lists not yet classified','רשימות שטרם סווגו');
  if(a.status==='not-counted')return a.excluded?L('Only in mixed lists (left out)','רק ברשימות מעורבות (הושמטו)'):L('No list counted','אין רשימה שנספרה');
  if(onlyMixed(a))return L('Only in mixed lists','רק ברשימות מעורבות');
  return null;
+}
+/** Beside a total: the family has lists still under review in this election, so the total may not be all of it. */
+export function reviewNote(a:Agg,L:Tr):string|null {
+ return a.reviews>0&&a.status!=='unclassified'&&a.status!=='unknown'?L('Some lists not yet classified','חלק מהרשימות טרם סווגו'):null;
 }
 /** Round axis steps (1, 2, 2.5, 5 × 10ⁿ) so gridlines read 5/10/15/20 %, never 11/23/34 %. */
 function niceScale(max:number){const raw=max/4,mag=10**Math.floor(Math.log10(raw)),step=[1,2,2.5,5,10].map(m=>m*mag).find(s=>s>=raw)!;const top=Math.ceil(max*1.04/step)*step;return {top,ticks:Array.from({length:Math.round(top/step)+1},(_,i)=>i*step)};}
@@ -59,6 +64,7 @@ function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;m
   if(status)parts.push(status);if(a.votes!==null&&a.status==='observed'&&!onlyMixed(a))parts.push(num(a.votes,e));
   if(a.mixed)parts.push(<>{onlyMixed(a)?'':L('Mixed lists','רשימות מעורבות')+': '}{num(a.mixed,e)}</>);
   if(a.excluded&&a.status==='observed')parts.push(`${L('Mixed lists left out','רשימות מעורבות שהושמטו')}: ${Number(a.excluded).toLocaleString('en-US')}`);
+  const note=reviewNote(a,L);if(note)parts.push(note);
   if(e.pending)parts.push(L('Gazette not yet verified','הפרסום ברשומות טרם אומת'));return <>{parts.map((part,i)=><span key={i}>{i ? ' · ' : ''}{part}</span>)}</>;};
  const describe=(a:Agg,e:HistoryElection)=>{
   const num=(v:bigint)=>`${metric==='share'?fmtPct(v,e.totals.valid,digits)+' · ':''}${Number(v).toLocaleString('en-US')} ${L('votes','קולות')}`;
@@ -67,6 +73,7 @@ function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;m
   if(a.votes!==null&&a.status==='observed'&&!onlyMixed(a))parts.push(num(a.votes));
   if(a.mixed)parts.push(`${onlyMixed(a)?'':L('Mixed lists','רשימות מעורבות')+': '}${num(a.mixed)}`);
   if(a.excluded&&a.status==='observed')parts.push(`${L('Mixed lists left out','רשימות מעורבות שהושמטו')}: ${Number(a.excluded).toLocaleString('en-US')}`);
+  const note=reviewNote(a,L);if(note)parts.push(note);
   if(e.pending)parts.push(L('Gazette not yet verified','הפרסום ברשומות טרם אומת'));
   return parts.join(' · ');
  };

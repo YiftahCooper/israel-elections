@@ -1929,7 +1929,6 @@
           "nameHe": "האיחוד הלאומי - ישראל ביתנו - מולדת - תקומה",
           "votes": 173973,
           "partyIds": [
-            "yisrael-beiteinu",
             "tkuma",
             "moledet"
           ],
@@ -1939,8 +1938,8 @@
             "moledet"
           ],
           "proposedPartyIds": [],
-          "scope": "core",
-          "treatment": "include",
+          "scope": "mixed",
+          "treatment": "separate-segment",
           "identityEvidence": {
             "status": "observed-local-dataset",
             "locator": "public/data/k16.json#/lists/4"
@@ -1953,7 +1952,7 @@
               "radical",
               "noam-hardal"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Yisrael Beiteinu, which shared this ballot, is a partner (as in the Russian-speaking family); all list votes stay in mixed segment."
           },
           "constituentVotes": null
         }
@@ -1961,28 +1960,28 @@
       "reviewCandidates": [],
       "computed": {
         "coreOnly": {
-          "votes": 173973,
-          "percent": {
-            "numerator": 17397300,
-            "denominator": 3148364
-          },
-          "displayPct": 5.525822
-        },
-        "includedUnmixed": {
-          "votes": 173973,
-          "percent": {
-            "numerator": 17397300,
-            "denominator": 3148364
-          },
-          "displayPct": 5.525822
-        },
-        "mixedWholeLists": {
           "votes": 0,
           "percent": {
             "numerator": 0,
             "denominator": 3148364
           },
           "displayPct": 0.0
+        },
+        "includedUnmixed": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 3148364
+          },
+          "displayPct": 0.0
+        },
+        "mixedWholeLists": {
+          "votes": 173973,
+          "percent": {
+            "numerator": 17397300,
+            "denominator": 3148364
+          },
+          "displayPct": 5.525822
         },
         "wholeListInclusionAlternative": {
           "votes": 173973,

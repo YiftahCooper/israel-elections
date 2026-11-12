@@ -58,6 +58,15 @@ export function familySeatRow(f:Family,electionId:string):FamilySeatRow {
  return {electionId,status:'observed',own:ownLists.reduce((t,l)=>t+l.seats,0),ownLists,partners:orderPartners(partners)};
 }
 
+/** The seat figures an election's breakdown shows: the family's own seats and partners exactly as the seats chart draws
+ * them, and the change in own seats since the election before. Votes follow the mixed-list policy; seats never do, so a
+ * joint list's whole total is never reported as the family's. `change` is null when either election has no seat count. */
+export function familySeatSummary(f:Family,electionId:string){
+ const at=historyElections.findIndex(d=>d.id===electionId),row=familySeatRow(f,electionId),prev=at>0?familySeatRow(f,historyElections[at-1].id):null;
+ const known=row.status==='observed';
+ return {known,own:row.own,partners:row.partners.reduce((t,p)=>t+p.seats,0),change:known&&prev?.status==='observed'?row.own-prev.own:null};
+}
+
 /** Round axis top and ticks for the family's own seats: the smallest 1, 2, 5 × 10ⁿ step that needs at most five
  * steps, so the top is as close to the family's best result as a round number allows (48 → 50, 12 → 15). */
 export function seatAxis(maxOwn:number):{top:number;ticks:number[]} {

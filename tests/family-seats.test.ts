@@ -1,8 +1,8 @@
 import {describe,expect,test} from 'vitest';
 import {readFileSync,readdirSync} from 'node:fs';
-import {builtins} from '../src/families/runtime.ts';
+import {builtins,historyElections} from '../src/families/runtime.ts';
 import {fork} from '../src/families/model.ts';
-import {familySeatRow,orderPartners,seatAxis,stackBar,type SeatGeometry} from '../src/families/seatBars.ts';
+import {familySeatRow,familySeatSummary,orderPartners,seatAxis,stackBar,type SeatGeometry} from '../src/families/seatBars.ts';
 import registry from '../data/meta/parties.json';
 import type {ElectionDataset} from '../src/data/schema.ts';
 
@@ -118,5 +118,24 @@ describe('stacking and fade geometry',()=>{
   });
   expect(Math.max(b.own,...b.parts.map(p=>p.y1))).toBeLessThanOrEqual(g.plot+1e-9);
   expect(b.clipped).toBe(b.own+partners.reduce((t,n)=>t+n*s,0)>g.plot+1e-9);
+ });
+});
+
+describe('election breakdown: seats agree with the seats chart under every mixed-list policy',()=>{
+ const policies=['separate-segment','include-headed-list','include-whole-list','exclude'] as const;
+ for(const f of builtins)test(f.id,()=>{
+  historyElections.forEach((e,i)=>{
+   const chart=familySeatRow(f,e.id),before=i>0?familySeatRow(f,historyElections[i-1].id):null;
+   for(const policy of policies){
+    const s=familySeatSummary({...f,defaultMixedPolicy:policy},e.id),at=`${f.id} ${e.id} ${policy}`;
+    expect(s.known,at).toBe(chart.status==='observed');
+    expect(s.own,at).toBe(chart.own);
+    expect(s.partners,at).toBe(chart.partners.reduce((t,p)=>t+p.seats,0));
+    expect(s.change,at).toBe(chart.status==='observed'&&before?.status==='observed'?chart.own-before.own:null);
+   }
+  });
+ });
+ test('Likud lineage 2013: 20 own seats and 11 partners on Likud–Yisrael Beiteinu, down 7 from 27, under Count all too',()=>{
+  for(const policy of policies)expect(familySeatSummary({...by('herut-likud'),defaultMixedPolicy:policy},'k19')).toEqual({known:true,own:20,partners:11,change:-7});
  });
 });

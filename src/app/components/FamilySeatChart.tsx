@@ -9,7 +9,7 @@ import {partyDisplayColor} from '../partyDisplayColor.ts';
 import {useSetting} from '../store.ts';
 import {useL,useLang} from '../i18n.ts';
 import {Info} from './ui.tsx';
-import {familyDate,familyStatus} from './FamilyCharts.tsx';
+import {familyDate,familyStatus,reviewNote} from './FamilyCharts.tsx';
 import type {ElectionId} from '../../data/schema.ts';
 
 const PARTNERS='israel-elections:families:partners';
@@ -58,7 +58,7 @@ function SeatPlot({family:f,rows,axis,partners:show,named,cursor,onCursor,onInsp
  const label=shortFamilyName(f,lang);
  const status=(r:FamilySeatRow,e:HistoryElection)=>r.status==='unknown'?L('Unknown','לא ידוע'):r.status==='none'?familyStatus(aggregate(f,e),L):null;
  const partnerTotal=(r:FamilySeatRow)=>r.partners.reduce((t,p)=>t+p.seats,0);
- const barText=(r:FamilySeatRow,e:HistoryElection)=>{const s=status(r,e),p=partnerTotal(r);return [familyDate(e,lang),label,s??seatsWord(r.own,L),...(!s&&show&&p?[`${L('Partners on joint lists','שותפות ברשימות משותפות')}: +${p}`]:[])].join(' · ');};
+ const barText=(r:FamilySeatRow,e:HistoryElection)=>{const s=status(r,e),p=partnerTotal(r);const note=s?null:reviewNote(aggregate(f,e),L);return [familyDate(e,lang),label,s??seatsWord(r.own,L),...(!s&&show&&p?[`${L('Partners on joint lists','שותפות ברשימות משותפות')}: +${p}`]:[]),...(note?[note]:[])].join(' · ');};
  const ownText=(r:FamilySeatRow,e:HistoryElection)=>`${label}: ${seatsWord(r.own,L)} · ${r.ownLists.filter(l=>l.seats>0).map(l=>historyListName(e.id,l.listId,lang)).join(', ')||L('no list won seats','אף רשימה לא זכתה במנדטים')} · ${year(e,lang)}`;
  const focusAt=(bar:number,seg:number|null)=>{const el=svg.current?.querySelector<SVGElement>(seg===null?`[data-bar="${bar}"]`:`[data-bar="${bar}"][data-seg="${seg}"]`);el?.focus({preventScroll:true});};
  const segCount=(r:FamilySeatRow)=>r.status!=='observed'?0:1+(show?r.partners.length:0);
@@ -123,6 +123,7 @@ function SeatFacts({f,row:r,e,seg,show,status,touch}:{f:Family;row:FamilySeatRow
    {show&&p>0&&<><span className="ft-sub">{L('Partners on joint lists','שותפות ברשימות משותפות')}: +{p}</span>
     {r.partners.map((x,i)=><span key={i} className="ft-row" data-on={seg===i+1||undefined}><i className="family-key-partner" style={{['--partner' as string]:partnerColor(x)}} aria-hidden/><span>{partnerName(x,lang,L)} <b>{x.seats}</b> · {historyListName(e.id,x.listId,lang)}</span></span>)}</>}
   </>}
+  {!status&&reviewNote(aggregate(f,e),L)&&<span className="ft-sub">{reviewNote(aggregate(f,e),L)}</span>}
   {e.pending&&<span>{L('Gazette not yet verified','הפרסום ברשומות טרם אומת')}</span>}
   <span className="ft-hint">{touch?L('Tap again for details','הקשה נוספת לפירוט'):L('Click for details and changes','לחיצה לפירוט ולשינויים')}</span>
  </>;

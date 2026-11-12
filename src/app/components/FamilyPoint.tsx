@@ -8,6 +8,7 @@ import type {ElectionDataset,ElectionId} from '../../data/schema.ts';
 import {aggregate,membership,type Family} from '../../families/model.ts';
 import {fullDefinition} from '../../families/catalogue.ts';
 import {familyColor,historyElections,shortFamilyName} from '../../families/runtime.ts';
+import {familySeatSummary} from '../../families/seatBars.ts';
 import {appearances,canonicalParty,partyLabel} from '../../families/registry.ts';
 import lineage from '../../../data/meta/party-lineage.json';
 import {loadDataset,useDigits} from '../store.ts';
@@ -15,7 +16,7 @@ import {allocationOf,baselineOf,listLabel} from '../derive.ts';
 import {useL,useLang} from '../i18n.ts';
 import {Info,Slip} from './ui.tsx';
 import {JointFacts} from './JointFacts.tsx';
-import {familyDate,familyStatus,openFamilyElection} from './FamilyCharts.tsx';
+import {familyDate,familyStatus,openFamilyElection,reviewNote} from './FamilyCharts.tsx';
 
 /** Official ballots and sourced organisation changes; never infer voter transfers from a trend. */
 export function FamilyPoint({family:f,electionId}:{family:Family;electionId:ElectionId}) {
@@ -37,7 +38,10 @@ export function FamilyPoint({family:f,electionId}:{family:Family;electionId:Elec
  const edges=lineage.edges.filter(e=>e.relation!=='electoral-partner'&&before&&e.date.slice(0,4)>=before.electionDate.slice(0,4)&&e.date.slice(0,4)<=ds.electionDate.slice(0,4)&&[...e.from,...e.to].some(id=>now.has(canonicalParty(id))||old.has(canonicalParty(id))));
  const seatsOf=(d:ElectionDataset)=>d.officialSeats??Object.fromEntries(allocationOf(baselineOf(d)).lists.map(l=>[l.id,l.seats]));
  const seats=seatsOf(ds);
- const familySeats=(d:ElectionDataset,set:Set<string>)=>{const s=seatsOf(d);return d.lists.reduce((n,l)=>n+(set.has(l.id)?s[l.id]??0:0),0);};
+ // The family's own seats and partners, exactly as the seats chart counts them: the vote policy never changes them, and
+ // a joint list's whole total appears only on that list's own row.
+ const seat=familySeatSummary(f,electionId);
+ const seatsWord=(n:number)=>n===1?L('1 seat','מנדט אחד'):`${n} ${L('seats','מנדטים')}`;
  const counted=a.votes!==null&&!(a.votes===0n&&a.mixed),prevCounted=!!prev&&prev.votes!==null&&!(prev.votes===0n&&prev.mixed);
  const share=(v:bigint,d:ElectionDataset)=>Number(v)*100/d.totals.valid;
  const status=familyStatus(a,L),mixedDelta=a.mixed!==null&&prev?.mixed!==null&&prev?.mixed!==undefined?a.mixed-prev.mixed:null;
@@ -49,14 +53,14 @@ export function FamilyPoint({family:f,electionId}:{family:Family;electionId:Elec
  const lists=ds.lists.filter(l=>ids.has(l.id)).sort((x,y)=>rank(x.id)-rank(y.id)||y.votes-x.votes);
  return <div className="family-point" style={{['--family-color' as string]:familyColor(f)}}>
   <h3>{shortFamilyName(f,lang)} · {familyDate(historyElections[at],lang)}</h3>
-  <div className="family-point-total">{status&&<span>{status}</span>}{counted&&<span><b>{Number(a.votes).toLocaleString('en-US')} {L('votes','קולות')}</b> · <bdi dir="ltr">{percentNum(share(a.votes!,ds),digits)}</bdi> · {familySeats(ds,m.selected)} {L('seats','מנדטים')}</span>}{!!a.mixed&&<span className="family-point-mixed"><i className="family-key-mixed" aria-hidden/><span>{L('Mixed lists','רשימות מעורבות')}: {Number(a.mixed).toLocaleString('en-US')} · <bdi dir="ltr">{percentNum(share(a.mixed,ds),digits)}</bdi></span></span>}</div>
-  {before&&previous&&prev&&(counted&&prevCounted||mixedDelta!==null&&(!!a.mixed||!!prev.mixed))&&<p className="family-point-delta">{L('Since','מאז')} {familyDate(before,lang)}: {counted&&prevCounted&&<>{signed(a.votes!-prev.votes!)} {L('votes','קולות')} · {signed(share(a.votes!,ds)-share(prev.votes!,previous),digits)} {L('points','נקודות אחוז')} · <SeatDelta value={familySeats(ds,m.selected)-familySeats(previous,membership(f,previous.id).selected)} /> {L('seats','מנדטים')}</>}{!!(a.mixed||prev.mixed)&&mixedDelta!==null&&<>{counted&&prevCounted?' · ':''}{L('mixed lists','רשימות מעורבות')} {signed(mixedDelta)}</>}</p>}
+  <div className="family-point-total">{status&&<span>{status}</span>}{counted&&<span><b>{Number(a.votes).toLocaleString('en-US')} {L('votes','קולות')}</b> · <bdi dir="ltr">{percentNum(share(a.votes!,ds),digits)}</bdi></span>}{seat.known&&<span className="family-point-seats"><b>{seatsWord(seat.own)}</b>{seat.partners>0&&<> <bdi dir="ltr">+{seat.partners}</bdi> {seat.partners===1?L('partner','שותפה'):L('partners','שותפות')}</>}</span>}{!!a.mixed&&<span className="family-point-mixed"><i className="family-key-mixed" aria-hidden/><span>{L('Mixed lists','רשימות מעורבות')}: {Number(a.mixed).toLocaleString('en-US')} · <bdi dir="ltr">{percentNum(share(a.mixed,ds),digits)}</bdi></span></span>}{reviewNote(a,L)&&<span className="family-point-review">{reviewNote(a,L)}</span>}</div>
+  {before&&previous&&prev&&(counted&&prevCounted||seat.change!==null||mixedDelta!==null&&(!!a.mixed||!!prev.mixed))&&<p className="family-point-delta">{L('Since','מאז')} {familyDate(before,lang)}: {counted&&prevCounted&&<>{signed(a.votes!-prev.votes!)} {L('votes','קולות')} · {signed(share(a.votes!,ds)-share(prev.votes!,previous),digits)} {L('points','נקודות אחוז')}</>}{seat.change!==null&&<>{counted&&prevCounted?' · ':''}<SeatDelta value={seat.change} /> {L('seats','מנדטים')}</>}{!!(a.mixed||prev.mixed)&&mixedDelta!==null&&<>{counted&&prevCounted||seat.change!==null?' · ':''}{L('mixed lists','רשימות מעורבות')} {signed(mixedDelta)}</>}</p>}
   {!ds.officialSeats&&<p className="small muted">{L('Calculated seats · Gazette not yet verified','מנדטים מחושבים · הפרסום ברשומות טרם אומת')} <Info title={L('Seat counts','ספירת מנדטים')}>{L('Calculated from the published vote counts under this election’s rules. Gazetted seat counts are unavailable.','חושב מספירת הקולות שפורסמה לפי כללי הבחירות האלה. ספירת מנדטים שפורסמה ברשומות אינה זמינה.')}</Info></p>}
   <div className="family-point-lists">{lists.map(l=>{const member=row?.members.find(x=>x.listId===l.id),review=row?.reviewCandidates.find(x=>x.listId===l.id),mixed=member?.scope==='mixed',isCounted=m.selected.has(l.id),separate=m.mixed.has(l.id);
    const ownParty=(id:string)=>!!member?.partyIds.some(x=>canonicalParty(x)===canonicalParty(id));
    const state=isCounted?L('Counted','נספרת'):separate?L('Shown hatched, not counted','מוצגת בקווקוו, לא נספרת'):l.withdrawn?L('Withdrawn','פרשה'):review?L('Contested, not counted','במחלוקת, לא נספרת'):mixed?L('Left out','הושמטה'):L('Not counted','לא נספרת');
    return <article key={l.id} data-state={isCounted?'counted':separate?'mixed':'other'}>
-   <div className="family-point-list"><Slip letters={l.letters} color={l.color} logo={l.logo} name={listLabel(l,lang)} size="sm"/><strong>{listLabel(l,lang)}</strong><span>{l.votes.toLocaleString('en-US')} {L('votes','קולות')} · {seats[l.id]??0} {L('seats','מנדטים')}</span></div>
+   <div className="family-point-list"><Slip letters={l.letters} color={l.color} logo={l.logo} name={listLabel(l,lang)} size="sm"/><strong>{listLabel(l,lang)}</strong><span>{l.votes.toLocaleString('en-US')} {L('votes','קולות')} · {seatsWord(seats[l.id]??0)}</span></div>
    <p className="small">{mixed&&<>{L('Mixed list','רשימה מעורבת')} · </>}{state}{member?.headsList&&` · ${L('Family heads this list','המשפחה בראש הרשימה')}`}{' '}
     {member&&<Info title={L('Classification and sources','סיווג ומקורות')}><span>{lang==='en'?member.classificationEvidence.claim:'סיווג מערכתי לפי הגדרת המשפחה; אין הסקה על חלוקת קולות בין המרכיבים.'}</span>{member.classificationEvidence.sourceIds.map(id=>full.sources[id]?source(id,full.sources[id]):null)}</Info>}
     {!member&&review&&<Info title={L('Why not counted','מדוע לא נספרת')}><span>{lang==='en'?review.reason:'הסיווג במחלוקת או שטרם הוכרע, ולכן הרשימה אינה נספרת. הנימוק המלא מתועד במקור (באנגלית).'}</span>{review.sourceIds.map(id=>full.sources[id]?source(id,full.sources[id]):null)}</Info>}</p>

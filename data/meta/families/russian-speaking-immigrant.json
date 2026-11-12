@@ -1044,7 +1044,20 @@
         "k10-national-reviewed"
       ],
       "members": [],
-      "reviewCandidates": [],
+      "reviewCandidates": [
+        {
+          "listId": "10-נס",
+          "nameHe": "הרשימה למען עליה",
+          "votes": 6992,
+          "treatment": "exclude-pending-or-contested",
+          "evidenceStatus": "unresolved",
+          "sourceIds": [
+            "proposal",
+            "k10"
+          ],
+          "reason": "Aliyah list named in the official results; the research (party-families.md, row I) says such micro-lists need individual review, not automatic inclusion. No votes counted until reviewed."
+        }
+      ],
       "computed": {
         "coreOnly": {
           "votes": 0,
@@ -1104,7 +1117,20 @@
         "k11-national-reviewed"
       ],
       "members": [],
-      "reviewCandidates": [],
+      "reviewCandidates": [
+        {
+          "listId": "11-ס",
+          "nameHe": "תנועת עליה וצעירים",
+          "votes": 5794,
+          "treatment": "exclude-pending-or-contested",
+          "evidenceStatus": "unresolved",
+          "sourceIds": [
+            "proposal",
+            "k11"
+          ],
+          "reason": "Aliyah list named in the official results; the research (party-families.md, row I) says such micro-lists need individual review, not automatic inclusion. No votes counted until reviewed."
+        }
+      ],
       "computed": {
         "coreOnly": {
           "votes": 0,
@@ -1232,7 +1258,32 @@
         "k13-k15-threshold-amendment"
       ],
       "members": [],
-      "reviewCandidates": [],
+      "reviewCandidates": [
+        {
+          "listId": "13-ד",
+          "nameHe": "התנועה הלאומית לדמוקרטיה ועליה",
+          "votes": 11697,
+          "treatment": "exclude-pending-or-contested",
+          "evidenceStatus": "unresolved",
+          "sourceIds": [
+            "proposal",
+            "k13"
+          ],
+          "reason": "Aliyah list named in the official results; the research (party-families.md, row I) says such micro-lists need individual review, not automatic inclusion. No votes counted until reviewed."
+        },
+        {
+          "listId": "13-ק",
+          "nameHe": "גימלאים, עולים וקשישים",
+          "votes": 8327,
+          "treatment": "exclude-pending-or-contested",
+          "evidenceStatus": "unresolved",
+          "sourceIds": [
+            "proposal",
+            "k13"
+          ],
+          "reason": "Aliyah list named in the official results; the research (party-families.md, row I) says such micro-lists need individual review, not automatic inclusion. No votes counted until reviewed."
+        }
+      ],
       "computed": {
         "coreOnly": {
           "votes": 0,
