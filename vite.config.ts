@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { ELECTION_IDS, type ElectionDataset } from './src/data/schema.ts';
 import { validateAftermath, type Aftermath } from './src/data/aftermath-model.ts';
 import { compileFamilyRuntime } from './scripts/family-runtime.ts';
+import { readFamilyBundle, validateFamilies } from './scripts/validate-families.ts';
 import { compileHistoryRuntime } from './scripts/party-history-runtime.ts';
 import { compileMkHistory } from './scripts/mk-history-runtime.ts';
 import { compileTermTimeline } from './scripts/term-timeline-runtime.ts';
@@ -32,6 +33,8 @@ export default defineConfig({
     },
   }, {
     name: 'family-runtime',
+    // the registry, lineage (pending items too) and presets pass the validator before the app reads them (audit 12 Nov)
+    buildStart() { validateFamilies(readFamilyBundle()); },
     resolveId(id) { if (id === 'virtual:family-runtime') return '\0family-runtime'; },
     load(id) { if (id === '\0family-runtime') return `export default ${JSON.stringify(compileFamilyRuntime())}`; },
     generateBundle() { this.emitFile({ type:'asset', fileName:'data/families-runtime.json', source:JSON.stringify(compileFamilyRuntime()) }); },
