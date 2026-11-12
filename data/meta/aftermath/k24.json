@@ -646,8 +646,8 @@
   },
   "government": {
     "number": 36,
-    "nameEn": "36th government (Bennett–Lapid)",
-    "nameHe": "הממשלה ה־36 (בנט–לפיד)",
+    "nameEn": "Government 36 (Naftali Bennett)",
+    "nameHe": "הממשלה ה־36 (נפתלי בנט)",
     "startDate": "2021-06-13",
     "endDate": "2022-12-29",
     "endDateRef": "data/meta/k25.json blocSchemes[first-government].date (37th government)",

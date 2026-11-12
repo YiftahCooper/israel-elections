@@ -113,6 +113,13 @@
       "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
       "kind": "official",
       "accessed": "2026-11-07"
+    },
+    "basic-law-government-2001": {
+      "url": "https://fs.knesset.gov.il//15/law/15_lsr_300337.pdf",
+      "publisher": "Basic Law: The Government (2001), Sefer HaHukim 1780",
+      "publisherHe": "חוק־יסוד: הממשלה (תשס״א), ספר החוקים 1780",
+      "kind": "official",
+      "accessed": "2026-11-12"
     }
   },
   "results": {
@@ -458,7 +465,9 @@
             "source": "government-official",
             "quote": "ב-4 בינואר 2006 לקה ראש הממשלה אריאל שרון באירוע מוחי וחדל לתפקד כראש הממשלה. סמכויותיו הועברו לממלא מקומו אהוד אולמרט. בתום מאה ימים לאשפוזו, ב-14 באפריל 2006, הסתיימה כהונתו כראש הממשלה."
           }
-        ]
+        ],
+        "titleEn": "acting Prime Minister",
+        "titleHe": "ממלא מקום ראש הממשלה"
       },
       {
         "nameEn": "Ehud Olmert",
@@ -470,8 +479,16 @@
           {
             "source": "government-official",
             "quote": "ב-4 בינואר 2006 לקה ראש הממשלה אריאל שרון באירוע מוחי וחדל לתפקד כראש הממשלה. סמכויותיו הועברו לממלא מקומו אהוד אולמרט. בתום מאה ימים לאשפוזו, ב-14 באפריל 2006, הסתיימה כהונתו כראש הממשלה."
+          },
+          {
+            "source": "basic-law-government-2001",
+            "quote": "נפטר ראש הממשלה, נבצר ממנו דרך קבע למלא את תפקירו או הופסקה כהונתו מחמת עבירה, תקבע הממשלה שר אחר שהוא חבר הכנסת וחבר סיעתו של ראש הממשלה, לכהן כראש הממשלה בפועל עד שתיכון הממשלה החדשה.",
+            "locator": "§30(c)",
+            "note": "PDF text extraction; תפקירו is the scan’s reading of תפקידו."
           }
-        ]
+        ],
+        "titleEn": "interim Prime Minister",
+        "titleHe": "ראש הממשלה בפועל"
       }
     ],
     "firstGovernmentSchemeRef": "first-government",

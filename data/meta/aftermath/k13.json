@@ -171,6 +171,13 @@
       "evidenceFamily": "local-call-awawdy-2022",
       "accessed": "2026-11-07",
       "via": "Read by the 7 November research helper; a direct request on 7 November met a bot-verification page, which was not bypassed. One retrospective account in two languages, not two sources."
+    },
+    "basic-law-government-1968": {
+      "url": "https://fs.knesset.gov.il//6/law/6_lsr_212425.DOC",
+      "publisher": "Basic Law: The Government (1968), Sefer HaHukim 540",
+      "publisherHe": "חוק־יסוד: הממשלה (תשכ״ח), ספר החוקים 540",
+      "kind": "official",
+      "accessed": "2026-11-12"
     }
   },
   "results": {
@@ -580,6 +587,22 @@
         "to": "1995-11-22",
         "notes": [
           "Acting prime minister after Rabin’s assassination; Government 26 began on 22 November."
+        ],
+        "role": "acting",
+        "titleEn": "acting Prime Minister",
+        "titleHe": "ראש הממשלה בפועל",
+        "cites": [
+          {
+            "source": "basic-law-government-1968",
+            "quote": "נפטר ראש הממשלה, תקבע הממשלה שר אחר מבין השרים שהם חברי הכנסת לכהן כראש הממשלה כפועל עד שתיכון הממשלה החדשה.",
+            "locator": "§25(b), p. 228",
+            "note": "The Knesset’s Word transcription reads כפועל (a line break inside כראש הממשלה is joined here); §40(a)(1) of the same law names the office ראש הממשלה בפועל."
+          },
+          {
+            "source": "basic-law-government-1968",
+            "quote": "קביעה של ממלא מקום לראש הממשלה או של ראש הממשלה בפועל",
+            "locator": "§40(a)(1)"
+          }
         ]
       }
     ],
@@ -698,7 +721,8 @@
                 "note": "Official appointment linked to retained faction-membership record 27900. גונן שגב"
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "factionNameEn": "Yi'ud"
           },
           {
             "factionNameHe": "מפלגת העבודה הישראלית",
@@ -712,7 +736,8 @@
                 "note": "Official appointment linked to retained faction-membership record 27871. אפרים סנה"
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "letters": "אמת"
           },
           {
             "factionNameHe": "מרצ",

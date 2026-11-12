@@ -390,8 +390,8 @@
   ],
   "government": {
     "number": 34,
-    "nameEn": "34th government (Netanyahu IV)",
-    "nameHe": "הממשלה ה־34 (נתניהו הרביעית)",
+    "nameEn": "Government 34 (Benjamin Netanyahu)",
+    "nameHe": "הממשלה ה־34 (בנימין נתניהו)",
     "startDate": "2015-05-14",
     "endDate": "2020-05-17",
     "endDateRef": "data/meta/aftermath/k23.json confidence-vote",

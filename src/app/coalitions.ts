@@ -76,6 +76,16 @@ export function recordedRoles(rows: readonly GovernmentParticipant[], lists: rea
   return { recorded, choices };
 }
 
+/** The line under the partners: how members compare with the recorded first government. One definition with the
+ *  Recorded first government button: the members (In) that `recordedRoles` loads from the research record, never
+ *  the separate sourced grouping. Outside support is reported only when the members match. */
+export function firstGovernmentComparison(members: readonly string[], support: readonly string[], recorded: CoalitionChoices | null) {
+  const same = (a: readonly string[], b: readonly string[]) => a.length === b.length && a.every((id) => b.includes(id));
+  if (!recorded?.in.length) return 'unavailable' as const;
+  if (!same(members, recorded.in)) return 'different' as const;
+  return recorded.support.length && same(support, recorded.support) ? 'matches-with-support' as const : 'matches' as const;
+}
+
 /** Why the loaded roles' arithmetic differs from the recorded confidence vote, from the research itself
  *  (data/meta/aftermath): individual MKs who voted apart from their list (individuals[]; modelled only in a
  *  later stage, israel-elections-private docs/design/individual-mks.md), roles left Any, partial participation counted whole, MKs who

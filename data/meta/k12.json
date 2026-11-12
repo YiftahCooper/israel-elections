@@ -470,30 +470,34 @@
             },
             {
               "letters": "הן"
+            },
+            {
+              "letters": "ו",
+              "note": "Recommended Peres conditionally; one retrospective account (Local Call, 2022)."
+            },
+            {
+              "letters": "פ",
+              "note": "Recommended Peres conditionally; one retrospective account (Local Call, 2022)."
+            },
+            {
+              "letters": "ע",
+              "note": "Recommended Peres conditionally; one retrospective account (Local Call, 2022)."
             }
           ],
-          "seats": 49
+          "seats": 55
         },
         {
-          "id": "unconfirmed",
-          "nameHe": "המלצה לא מאומתת",
-          "nameEn": "Recommendation unconfirmed",
+          "id": "none",
+          "nameHe": "לא המליצו",
+          "nameEn": "No recommendation",
           "color": "#9e9e9e",
           "members": [
             {
-              "letters": "ו"
-            },
-            {
-              "letters": "פ"
-            },
-            {
-              "letters": "ע"
-            },
-            {
-              "letters": "עץ"
+              "letters": "עץ",
+              "note": "Recommended neither candidate; preferred a broad Labor–Likud government (l’Unità, 14 November 1988; UPI)."
             }
           ],
-          "seats": 8
+          "seats": 2
         }
       ],
       "sources": [
@@ -524,10 +528,24 @@
           "kind": "secondary",
           "quote": "With its own 40 seats and the 11 seats offered Sunday, plus previously pledged support from one other religious party and three far-right parties, Likud can claim a majority with 63 seats in the 120-member Knesset",
           "accessed": "2026-11-05"
+        },
+        {
+          "url": "https://www.mekomit.co.il/המפלגות-הערביות-ממליצות-על-מועמדים-כב/",
+          "publisher": "Local Call (שיחה מקומית), 11 October 2022",
+          "kind": "secondary",
+          "quote": "כולן המליצו בפני הנשיא על פרס כמועמד לראשות הממשלה",
+          "accessed": "2026-11-07"
+        },
+        {
+          "url": "https://archivio.unita.news/assets/main/1988/11/14/page_004.pdf",
+          "publisher": "l’Unità, 14 November 1988, p. 4",
+          "kind": "secondary",
+          "quote": "il Degel Hatorah dal canto suo ha deciso di non indicare per l'incarico di premier né Sha- mir né Peres.",
+          "accessed": "2026-11-12"
         }
       ],
       "notes": [
-        "Contemporary reporting gives aggregate support of 63 for Shamir and 55 for Peres. Only 49 Peres seats are assigned here from named-party reporting; Hadash, PLP and ADP (6 seats) are unconfirmed. Degel (2 seats) supported a broad government, but a formal presidential recommendation is unconfirmed. Arithmetic is not evidence of a per-list recommendation."
+        "Contemporary reporting gives 63 for Shamir and 55 for Peres. Hadash, PLP and ADP (6 seats) recommended Peres conditionally (provisional: one retrospective account, Local Call 2022). Degel HaTorah (2 seats) recommended neither candidate (probable: l’Unità 14 November 1988 and UPI). The President’s House consultation file for 7–13 November 1988 remains the deciding record. Same classification as the After the election screen (data/meta/aftermath/k12.json)."
       ]
     }
   ],

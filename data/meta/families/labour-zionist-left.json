@@ -2057,7 +2057,7 @@
       "electionId": "k12",
       "electionDate": "1988-11-01",
       "datasetPath": "public/data/k12.json",
-      "datasetSha256": "f23c66888b31e80b9924dfea5ffa399fb8d00f4d98943d7c1fa52f00b1b87072",
+      "datasetSha256": "fc467e0ec08218ec13ac50fd6157608b5a4933db5a550a3dc2569422a42e1c1e",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 121 retained candidate entries (120 declared elected) across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",

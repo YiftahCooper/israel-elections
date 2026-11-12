@@ -272,9 +272,8 @@
       },
       {
         "date": "2020-04-12",
-        "type": "extension",
+        "type": "extension-refused",
         "person": "gantz",
-        "days": 0,
         "notes": [
           "Refusal, not a granted extension. The subsequent two-day extension is recorded separately."
         ],
@@ -284,6 +283,10 @@
           {
             "source": "toi-extension-refused",
             "quote": "will not grant Blue and White chairman Benny Gantz a 14-day extension"
+          },
+          {
+            "source": "inn-extension-letter",
+            "quote": "On 12 April 2020, I decided not to accede to MK Gantz’s request for an extension"
           }
         ]
       },
@@ -528,8 +531,8 @@
   ],
   "government": {
     "number": 35,
-    "nameEn": "35th government (Netanyahu–Gantz)",
-    "nameHe": "הממשלה ה־35 (נתניהו–גנץ)",
+    "nameEn": "Government 35 (Benjamin Netanyahu)",
+    "nameHe": "הממשלה ה־35 (בנימין נתניהו)",
     "startDate": "2020-05-17",
     "endDate": "2021-06-13",
     "endDateRef": "data/meta/aftermath/k24.json formation confidence-vote",

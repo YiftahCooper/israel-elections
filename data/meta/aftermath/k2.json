@@ -417,7 +417,13 @@
         ],
         "resolution": "Both dates describe separate procedural steps; the change entry uses the conventional government start (declarations), while formation records the confidence vote."
       }
-    ]
+    ],
+    "people": {
+      "sharett": {
+        "nameEn": "Moshe Sharett",
+        "nameHe": "משה שרת"
+      }
+    }
   },
   "government": {
     "number": 3,

@@ -5,10 +5,13 @@ export interface HistorySource { url: string; publisher?: string; publisherHe?: 
 export interface DatedFact { date: string; endDate?: string; textEn: string; textHe: string; cites: Cite[]; notes?: string[]; type?: string; category?: string; person?: string; days?: number }
 export interface RecommendationEntry { letters: string; seats: number; status: string; nominee?: string; split?: { nominee?: string; status?: string; seats: number }[]; cites?: Cite[]; noteEn?: string; noteHe?: string }
 export interface RecommendationRound { id: string; date: string; endDate?: string; nominees: Record<string, { nameEn: string; nameHe: string }>; entries: RecommendationEntry[]; totals: Record<string, number>; cites: Cite[]; notes?: string[] }
+/** `role` marks a prime minister who held the office in an acting or interim capacity; `titleEn`/`titleHe` are the
+ *  office's title as the cited source gives it (the name never carries it). */
+export interface PrimeMinister { nameEn: string; nameHe: string; from: string; to?: string; letters?: string; role?: 'acting' | 'interim'; titleEn?: string; titleHe?: string; cites?: Cite[]; notes?: string[] }
 export type GovernmentChange = DatedFact & Partial<GovernmentSupport> & { number?: number; coalitionSeatsNote?: string; roleGap?: string };
-export interface Government extends GovernmentSupport { number: number; nameEn: string; nameHe: string; startDate: string; endDate?: string; primeMinisters: { nameEn: string; nameHe: string; from: string; to?: string }[]; coalitionSeatsNote?: string; roleGap?: string; cites: Cite[]; endDateCites?: Cite[]; changes?: GovernmentChange[]; notes?: string[] }
+export interface Government extends GovernmentSupport { number: number; nameEn: string; nameHe: string; startDate: string; endDate?: string; primeMinisters: PrimeMinister[]; coalitionSeatsNote?: string; roleGap?: string; cites: Cite[]; endDateCites?: Cite[]; changes?: GovernmentChange[]; notes?: string[] }
 export interface Poll { date?: string; timing?: string; sourceId: string; questionEn?: string; questionHe?: string; populationEn?: string; populationHe?: string; fieldDates?: { from: string; to: string }; answers: { labelEn: string; labelHe?: string; pct: number }[]; cites?: Cite[] }
-export interface Aftermath { schemaVersion: number; electionId: ElectionId; status: string; reviewedAt: string; sources: Record<string, HistorySource>; results: { electionDate: string }; recommendationRounds: RecommendationRound[]; formation: { events: DatedFact[]; conflicts?: unknown[] }; government?: Government; reaction?: { items: DatedFact[] }; term: { events: DatedFact[]; candidatesPending: { label: string; date?: string; why: string }[]; endedBy?: DatedFact & { nextElection?: ElectionId }; inclusionRule?: string }; issuePolling?: { status: string; items?: Poll[] } }
+export interface Aftermath { schemaVersion: number; electionId: ElectionId; status: string; reviewedAt: string; sources: Record<string, HistorySource>; results: { electionDate: string }; recommendationRounds: RecommendationRound[]; formation: { events: DatedFact[]; conflicts?: unknown[]; people?: Record<string, { nameEn: string; nameHe: string }> }; government?: Government; reaction?: { items: DatedFact[] }; term: { events: DatedFact[]; candidatesPending: { label: string; date?: string; why: string }[]; endedBy?: DatedFact & { nextElection?: ElectionId }; inclusionRule?: string }; issuePolling?: { status: string; items?: Poll[] } }
 export function recommendationPieces(round: RecommendationRound) {
   return round.entries.flatMap(e => (e.split ?? [{ nominee: e.nominee, status: e.status, seats: e.seats }]).map(p => ({ ...p, letters: e.letters, group: p.nominee ?? p.status ?? 'unknown', cites: e.cites ?? round.cites })));
 }
@@ -43,6 +46,8 @@ export function validateAftermath(data: Aftermath, ds: ElectionDataset): string[
         if (entry.seats !== null && (entry.seats < 0 || (official !== undefined && entry.seats > official))) errors.push(`Participation seat mismatch: ${entry.letters}`);
       }
     }
+    // c-aftermath-11: a faction with no ballot letters needs a list carrying its name or its own English name
+    for (const entry of snapshot.coalition ?? []) if (!entry.letters && !entry.factionNameEn && !ds.lists.some(l => l.nameHe === entry.factionNameHe || l.shortHe === entry.factionNameHe)) errors.push(`No English name: ${entry.factionNameHe}`);
   }
   const walk = (v: unknown): void => {
     if (Array.isArray(v)) v.forEach(walk);

@@ -529,23 +529,12 @@
         "notes": [
           "76 is the remaining lists’ election-seat total (56 + 12 + 4 + 2 + 2), not a reconstruction of all later faction splits or a confidence vote."
         ],
-        "confidenceVote": {
-          "for": 90,
-          "against": 10,
-          "abstain": 4
-        },
-        "confidenceVoteCites": [
-          {
-            "source": "plenum-gov15",
-            "quote": "בעד הבעת אמון לממשלה — 90; נגד — 10; נמנעים — 4. ההצעה להביע אמון לממשלה נתקבלה."
-          }
-        ],
         "membershipCoverage": "complete",
         "supportSeats": 0,
         "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
         "reconciliation": {
-          "status": "unresolved",
-          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Quantified gap: 76 identified member/support seats versus 90 votes for (-14); the named abstainers, absentees or dissenters needed to explain this gap have not been recovered. Do not infer that each member voted for."
+          "status": "vote-unavailable",
+          "note": "No new investiture vote is documented for this coalition withdrawal; the 90–10–4 vote belongs to 15 December 1969."
         },
         "knownMemberSeats": 76
       }

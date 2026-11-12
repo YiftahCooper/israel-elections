@@ -446,8 +446,8 @@
   ],
   "government": {
     "number": 33,
-    "nameEn": "33rd government (Netanyahu III)",
-    "nameHe": "הממשלה ה־33 (נתניהו השלישית)",
+    "nameEn": "Government 33 (Benjamin Netanyahu)",
+    "nameHe": "הממשלה ה־33 (בנימין נתניהו)",
     "startDate": "2013-03-18",
     "endDate": "2015-05-14",
     "endDateRef": "data/meta/aftermath/k20.json confidence-vote",
