@@ -6,9 +6,10 @@ import { openSideBySide } from './sideBySide.ts';
 
 type Opts = { lang?: 'en' | 'he'; width?: number; height?: number; text?: 'normal' | 'large'; level?: string };
 async function start(page: Page, { lang = 'en', width = 390, height = 844, text = 'normal', level = 'expert' }: Opts = {}) {
-  // one page runs several cases: each writes its own settings and reloads (an init script would keep the first case's)
+  // one page runs several cases: each writes its own settings from a static file of the same origin (the app, if
+  // loaded, saves its own settings as it unloads), then opens the app
   await page.setViewportSize({ width, height });
-  if (page.url() === 'about:blank') await page.goto('/');
+  await page.goto('/robots.txt');
   await page.evaluate(([lang, level, text]) => {
     localStorage.clear(); sessionStorage.clear();
     localStorage.setItem('israel-elections:preferences', '{"voteSource":"proportional","comparison":"reference","jointSeats":"off"}');
