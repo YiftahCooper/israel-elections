@@ -43,7 +43,7 @@ test('opens from the seat: Idit Silman, six elections, three not elected', async
   await expect(rows.nth(1)).toContainText('Not elected');
   await expect(rows.nth(1)).toContainText('1 place short');
   await expect(rows.nth(3)).toContainText('Sat from the first sitting');
-  await expect(rows.nth(3)).toContainText('Left the Knesset');
+  await expect(rows.nth(3)).toContainText('Membership ended'); // no recorded reason: neutral words (audit 12 Nov 2026, c-famous-late-07)
   await expect(rows.nth(5)).toContainText('No. 46 · the list won 27');
   await expect(rows.nth(5)).toContainText('19 places short');
   await expect(card(page)).toContainText('shown from 2009 on');

@@ -296,7 +296,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   // Only certain official identities use the Knesset's given-name-first display; user edits keep their text.
   function memberName(c: NonNullable<typeof cand>) {
     const unchanged = originalDataset?.lists.some(l => l.candidates.some(x => x.id === c.id && x.nameHe === c.nameHe));
-    const sourced = c.bio?.knesset && !c.bio.probable && !c.displayNameHe && unchanged
+    const sourced = c.bio?.knesset && (!c.bio.probable || c.bio.memberConfirmed) && !c.displayNameHe && unchanged
       ? (memberNames as Record<string, string>)[c.bio.knesset.split('/').at(-1)!] : undefined;
     return lang === 'he' && sourced ? sourced : candidateName(c, lang);
   }

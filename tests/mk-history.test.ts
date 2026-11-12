@@ -4,6 +4,8 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { compileMkHistory, normName, type MkReview, type MkRuntime } from '../scripts/mk-history-runtime.ts';
 import { mkView, personOfCandidate, servedText } from '../src/history/mk.ts';
+import { englishLabel } from '../src/data/names.ts';
+import { mixHex } from '../src/data/colour.ts';
 import type { ElectionDataset } from '../src/data/schema.ts';
 
 const SILMAN = 30718, SHAKED = 23512, ILLOUZ = 30839, BEN_GURION = 2198, EICHLER = 1057, HAZAN = 2348;
@@ -147,9 +149,10 @@ describe('names', () => {
   });
   it('two factions sitting at the same time never share a name (2022: Otzma Yehudit is not “Religious Zionism”)', () => {
     // the Knesset registers Otzma Yehudit (1106) apart from Religious Zionism (1097, then 1105) from the first day
-    expect(rt.factions[1106].slice(0, 2)).toEqual(['עוצמה יהודית', 'Otzma Yehudit']);
+    // 1097 is the list's own faction and takes its name; 1106 and 1105 are shown under their recorded names
+    expect(rt.factions[1106].slice(0, 2)).toEqual(['עוצמה יהודית בראשות איתמר בן גביר', 'Otzma Yehudit led by Itamar Ben Gvir']);
     expect(rt.factions[1097].slice(0, 2)).toEqual(['הציונות הדתית', 'Religious Zionism']);
-    expect(rt.factions[1105].slice(0, 2)).toEqual(['הציונות הדתית', 'Religious Zionism']);
+    expect(rt.factions[1105].slice(0, 2)).toEqual(['הציונות הדתית בראשות בצלאל סמוטריץ׳', 'Religious Zionism led by Bezalel Smotrich']);
     const clash: string[] = [];
     for (let k = 1; k <= 25; k++) {
       const reg = (JSON.parse(readFileSync(`data/research/knesset-member-changes/k${k}.json`, 'utf8')).factionRegistry as { id: number; start: string; end: string | null }[]).filter((f) => f.start !== f.end);
@@ -186,7 +189,7 @@ describe('factions shown equal the Knesset record', () => {
       [1078, '2006-02-01', '2006-02-01', '10:01', '10:59'], [588, '2006-02-01', '2006-02-01', '11:01', '11:59'],
       [45, '2006-02-01', '2006-02-01', '12:01', '12:59'], [590, '2006-02-01', '2006-04-17', null, null]]);
     expect(r.events.filter((e) => e.date === '2006-02-01').map((e) => [e.time ?? null, e.faction!.now.en, e.faction!.was.en])).toEqual([
-      ['10:01', 'Shinui', 'Shinui'], ['11:01', 'HaOlim', 'Shinui'], ['12:01', 'National Union', 'HaOlim'], [null, 'Yisrael Beiteinu', 'National Union']]);
+      ['10:01', 'Shinui', 'Shinui – Party of the Secular and the Middle Class'], ['11:01', 'HaOlim', 'Shinui'], ['12:01', 'National Union', 'HaOlim'], [null, 'Yisrael Beiteinu', 'National Union']]);
   });
 
   it('a record that starts and ends at the same midnight is never shown: no faction, no change, no bar (all 25 Knessets)', () => {
@@ -206,9 +209,10 @@ describe('factions shown equal the Knesset record', () => {
     }
     for (const [id] of Object.entries(rt.people)) for (const r of mkView(rt, Number(id))!.rows) for (const s of r.terms.flatMap((t) => t.segments))
       expect(s.end > s.start || !!s.startTime, `${id} k${r.k} ${s.faction}`).toBe(true);
-    // Bennett, 15 Aug 2022: Yamina to Together, with no National Unity line
+    // Bennett, 15 Aug 2022: Yamina to Beyahad (ביחד), with no National Unity line. Not "Together (Bennett)": that is the
+    // English of his 2026 list ביחד בראשות בנט, and nothing stored says the 2022 faction is that party.
     expect(row(BENNETT, 24).events.filter((e) => e.kind === 'faction').map((e) => [e.date, e.faction!.now.en, e.faction!.was.en])).toEqual([
-      ['2022-08-15', 'Together (Bennett)', 'Yamina'], ['2022-09-06', 'Yamina', 'Together (Bennett)']]);
+      ['2022-08-15', 'Beyahad', 'Yamina'], ['2022-09-06', 'Yamina', 'Beyahad']]);
   });
 
   it('a faction is shown only while the member sat; the record keeps its own dates (all 25 Knessets)', () => {
@@ -236,16 +240,178 @@ describe('factions shown equal the Knesset record', () => {
     for (let k = 1; k <= 25; k++) for (const f of record(k).factionRegistry) reg.set(f.id, normName(f.nameHe));
     // the identical registered name יהדות התורה (13th–15th, 20th, 21st and 25th Knessets)
     expect([589, 631, 10, 908, 928, 1101].map((f) => [reg.get(f), rt.factions[f][1]])).toEqual(Array(6).fill(['יהדות התורה', 'United Torah Judaism']));
-    // Left as they are, each for a stated reason: the owner's open question on factions named after their list
-    // (fac-names: 361 in 1973, the NRP in 1992–2003), and the list labels' own conventions, which belong to the lists
-    // ("United Arab List" and "Ra'am"; straight and curly apostrophes in Hadash–Ta’al and Ra’am–Ta’al).
-    const OPEN = new Set([361, 575, 615, 9]);
+    // the NRP's recorded name מפלגה דתית לאומית: "National Religious Party" in every Knesset, not "NRP" in 1992–2003
+    expect([237, 575, 615, 9, 49].map((f) => [reg.get(f), rt.factions[f][1]])).toEqual(Array(5).fill(['מפלגה דתית לאומית', 'National Religious Party']));
+    // Left as they are: the list labels' own conventions, which belong to the lists ("United Arab List" and "Ra'am";
+    // straight and curly apostrophes in Hadash–Ta’al and Ra’am–Ta’al).
     const LIST_CONVENTION = new Set(['רע״ם', 'חד״ש–תע״ל', 'רע״ם–תע״ל']);
     const byShown = new Map<string, Set<string>>();
-    for (const [id, [he, en]] of Object.entries(rt.factions)) {
-      if (OPEN.has(Number(id)) || LIST_CONVENTION.has(he) || !en) continue;
+    for (const [, [he, en]] of Object.entries(rt.factions)) {
+      if (LIST_CONVENTION.has(he) || !en) continue;
       (byShown.get(he) ?? byShown.set(he, new Set()).get(he)!).add(en);
     }
     expect([...byShown].filter(([, en]) => en.size > 1).map(([he, en]) => `${he}: ${[...en].join(' / ')}`)).toEqual([]);
+  });
+});
+
+// Audit 12 Nov 2026 (fx-names, findings ax-famous-early-01/02, ax-famous-late-01/02/03, ax-names-rosters-01/02/03,
+// ax-build-guesses-02, c-famous-early-01/02/03, c-famous-late-01/02/03): a faction is shown under the name the Knesset
+// recorded for it. Its list's short name stands in only for the list's own faction, formed by its elected members at
+// the opening; a name or colour never comes from a later party or from another election's list that shares a word.
+describe('a faction is shown under its own recorded name', () => {
+  const changes = (k: number) => JSON.parse(readFileSync(`data/research/knesset-member-changes/k${k}.json`, 'utf8')) as
+    { factionRegistry: { id: number; nameHe: string; start: string }[]; checks: { openingDateReported?: string } };
+  it('joint factions keep every partner; renamed factions keep their own name (both languages)', () => {
+    const shown = (f: number) => rt.factions[f].slice(0, 2);
+    expect(shown(980)).toEqual(['אגודת ישראל - פועלי אגודת ישראל', 'Agudat Yisrael–Poalei Agudat Yisrael']);
+    expect(shown(982)).toEqual(['הפועל המזרחי - המזרחי', 'Hapoel HaMizrahi–Mizrahi']);
+    expect(shown(645)).toEqual(['ליכוד - צומת', 'Likud–Tzomet']);
+    expect(shown(7)).toEqual(['האיחוד הלאומי - ישראל ביתנו', 'National Union–Yisrael Beiteinu']);
+    expect(shown(502)).toEqual(['העבודה - מימד - עם אחד', 'Labor–Meimad–Am Ehad']);
+    expect(shown(935)).toEqual(['הבית היהודי - האיחוד הלאומי', 'Jewish Home–National Union']);
+    expect(shown(955)).toEqual(['יש עתיד - תל״ם', 'Yesh Atid–Telem']);
+    expect(shown(956)).toEqual(['העבודה - מרצ', 'Labor–Meretz']);
+    expect(shown(1110)).toEqual(['כחול לבן - המחנה הממלכתי', 'Blue and White–National Unity']);
+    expect(shown(1017)).toEqual(['רפ״י - הרשימה הממלכתית', 'Rafi–State List']);
+    expect(shown(1022)).toEqual(['רפ״י - הרשימה הממלכתית', 'Rafi–State List']);
+    expect(shown(1015)).toEqual(['פיתוח ושלום', 'Development and Peace']); // not Flatto-Sharon's 1984 list label
+    expect(shown(462)).toEqual(['צל״ש - ציונות ליברליות שוויון', 'Tzalash']); // not New Right, founded 2018
+    expect(shown(361)).toEqual(['יהדות התורה - אגודת ישראל ודתיים בלתי מפלגתיים', 'Torah Judaism–Agudat Yisrael and Non-Partisan Religious']); // not UTJ (1992)
+    expect(shown(998)).toEqual(['יעד - תנועה לזכויות האזרח', 'Yaad–Civil Rights Movement']); // not the 1981 list Yaad
+    expect(shown(1019)).toEqual(['גשר - מרכז ציוני דתי', 'Gesher – Zionist Religious Centre']); // not the 2019 list Gesher
+  });
+  it('their colours are not the colours of those later or unrelated lists', () => {
+    const colour = (id: string) => rt.lists[id][2];
+    expect(rt.factions[361][2]).not.toBe(colour('13-ג'));
+    expect(rt.factions[998][2]).not.toBe(colour('10-יס'));
+    expect(rt.factions[1019][2]).not.toBe(colour('21-נר'));
+    expect(rt.factions[1015][2]).not.toBe(colour('11-פש'));
+  });
+  it('every faction not formed at the opening shows its recorded Hebrew name; every colour comes from a list up to the next election (all 25 Knessets)', () => {
+    const wrong: string[] = [];
+    for (let k = 1; k <= 25; k++) {
+      const ch = changes(k);
+      const allowed = new Set(Object.entries(rt.lists).filter(([id]) => Number(id.split('-')[0]) <= k + 1).map(([, l]) => l[2]));
+      const home = new Set(Object.entries(rt.lists).filter(([id]) => Number(id.split('-')[0]) === k).map(([, l]) => l[2]));
+      for (const f of ch.factionRegistry) {
+        const [he, , c] = rt.factions[f.id];
+        if (f.start !== ch.checks.openingDateReported && he !== normName(f.nameHe)) wrong.push(`k${k} ${f.id}: ${he} for ${f.nameHe}`);
+        // a list's colour (up to the next election), or a lighter shade of a list of this election, or none
+        if (c && !allowed.has(c) && ![...home].some((h) => mixHex(h, '#ffffff', 0.45) === c)) wrong.push(`k${k} ${f.id}: colour ${c}`);
+      }
+    }
+    expect(wrong).toEqual([]);
+  });
+});
+
+describe('a move line never reads “X (until then X)”', () => {
+  it('in either language, for every member (c-famous-late-03)', () => {
+    const same: string[] = [];
+    for (const id of Object.keys(rt.people)) for (const r of mkView(rt, Number(id))!.rows) for (const e of r.events) if (e.kind === 'faction') {
+      const { now, was } = e.faction!;
+      if (now.he === was.he) same.push(`${id} k${r.k} ${e.date} he ${now.he}`);
+      if (englishLabel(now.en, now.he) === englishLabel(was.en, was.he)) same.push(`${id} k${r.k} ${e.date} en ${now.en}`);
+    }
+    expect(same).toEqual([]);
+  });
+  it('where two factions are shown under one list name, the line gives their recorded names', () => {
+    const BEN_ELIEZER = 435, GANTZ = 30657;
+    const line = (p: number, k: number, d: string) => mkView(rt, p)!.rows.find((r) => r.k === k)!.events.find((e) => e.kind === 'faction' && e.date === d)!.faction!;
+    expect(line(BEN_ELIEZER, 18, '2011-01-17')).toMatchObject({ now: { he: 'העבודה', en: 'Labor' }, was: { he: 'העבודה בראשות אהוד ברק', en: 'Labor led by Ehud Barak' } });
+    expect(line(GANTZ, 23, '2020-03-29')).toMatchObject({ now: { he: 'כחול לבן', en: 'Blue and White' }, was: { he: 'כחול לבן בראשות בנימין גנץ', en: 'Blue and White led by Benjamin Gantz' } });
+  });
+});
+
+// Audit 12 Nov 2026 (fx-names, c-famous-late-04/06): an elected candidate whose Knesset match is official but whose
+// Wikipedia link is only probable was tied to no one, so their run vanished from their history.
+describe('every elected member has their run', () => {
+  it('every member who sat from a Knesset’s opening has a run in that election (all 25 Knessets)', () => {
+    const allowed: Record<string, string> = {
+      // no candidacy of the 1955 lists is tied to him in data/meta/bios/k3.json
+      'k3 2390': 'Idov Cohen',
+      // the 1977 Likud ranks 21 and 24 are both printed כהן יגאל; which rank is which person is medium-confidence evidence
+      'k9 2394': 'Yigal Cohen', 'k9 2399': 'Yigal Cohen-Orgad',
+      // the notice prints אמסלם אמיל at Shas #11; the given-name difference is not explained by an official source
+      'k17 4418': 'Haim Amsalem',
+    };
+    const missing: string[] = [];
+    for (let k = 1; k <= 25; k++) {
+      const ch = JSON.parse(readFileSync(`data/research/knesset-member-changes/k${k}.json`, 'utf8')) as { tenures: { personId: number; start: string }[]; checks: { openingDateReported: string } };
+      for (const t of ch.tenures) if (t.start === ch.checks.openingDateReported && !rt.people[t.personId].runs.some((r) => r[0] === k)) missing.push(`k${k} ${t.personId}`);
+    }
+    expect(missing.sort()).toEqual(Object.keys(allowed).sort());
+  });
+  it('2022: Fogel, Bismuth, Almog Cohen, Revivo and five more are tied by their official member record', () => {
+    for (const [p, list, rank] of [[30859, '25-ט', 10], [30835, '25-מחל', 27], [30833, '25-ט', 7], [30832, '25-מחל', 19]] as const)
+      expect(runs(p).find((r) => r.k === 25), `${p}`).toMatchObject({ list, rank, outcome: 'elected', basis: 'id' });
+    for (const p of [30831, 30837, 30849, 30854, 30863]) expect(runs(p).find((r) => r.k === 25)?.basis, `${p}`).toBe('id');
+  });
+  it('Deri and Benny Begin 1999, Arens 1992: elected, did not take the seat; linked by the name rule', () => {
+    expect(runs(2291).find((r) => r.k === 15)).toMatchObject({ list: '15-שס', rank: 1, outcome: 'declined', basis: 'name', via: 14 });
+    expect(runs(2178).find((r) => r.k === 15)).toMatchObject({ list: '15-יט', rank: 1, outcome: 'declined', basis: 'name', via: 14 });
+    expect(runs(463).find((r) => r.k === 13)).toMatchObject({ list: '13-מחל', rank: 2, outcome: 'declined', basis: 'name', via: 12 });
+    expect(mkView(rt, 2291)!.runs).toBe(11);
+  });
+  it('one notion of a certain Knesset identity: the comparison match, the MK history and the English name agree', () => {
+    // the 14 identities of candidates who were not elected, confirmed by the November research review: tied by ID and
+    // matched across elections, but with no official English name, since they rest on secondary sources (tests/bios.test.ts)
+    const reviewed = new Set((JSON.parse(readFileSync('data/raw/research/mk-runs-1109.reviewed.json', 'utf8')).runs as { status: string; candidateId: string }[])
+      .filter((r) => r.status === 'confirmed').map((r) => r.candidateId));
+    expect(reviewed.size).toBe(14);
+    const disagree: string[] = [];
+    for (let k = 1; k <= 26; k++) for (const l of ds(k).lists) for (const c of l.candidates) {
+      if (!c.bio?.knesset) continue;
+      const sure = !c.bio.probable || !!c.bio.memberConfirmed; // src/app/compare/match.ts memberKey
+      const p = personOfCandidate(rt, c.id);
+      const byId = p !== null && rt.people[p].runs.some((r) => `${r[1]}#${r[2]}` === c.id && r[4] === 'id');
+      if (byId && !sure) disagree.push(`${c.id}: tied by ID, not certain in the lists`);
+      if (sure && !c.nameEn && !reviewed.has(c.id)) disagree.push(`${c.id}: certain, no English name`);
+      if (!sure && c.nameEn) disagree.push(`${c.id}: not certain, English name ${c.nameEn}`);
+    }
+    expect(disagree).toEqual([]);
+  });
+});
+
+// audit 12 Nov 2026, c-screens-people-02: a list that withdrew before the vote was shown as a run that "got 0%, below
+// the threshold" and counted among the elections the person ran in
+describe('a list that withdrew before the election is not a run', () => {
+  const GANTZ = 30657, FEIGLIN = 23556;
+  it('Gantz 2026 (Blue and White) and Feiglin September 2019 (Zehut): the list withdrew', () => {
+    expect(runs(GANTZ).find((r) => r.k === 26)).toMatchObject({ list: '26-כן', rank: 1, outcome: 'withdrawn' });
+    expect(runs(FEIGLIN).find((r) => r.k === 22)).toMatchObject({ list: '22-זן', rank: 1, outcome: 'withdrawn' });
+  });
+  it('is not counted in "on a list in N elections"', () => {
+    expect(mkView(rt, GANTZ)!.runs).toBe(5); // 2019 (twice), 2020, 2021, 2022; not 2026
+    expect(mkView(rt, FEIGLIN)!.runs).toBe(5); // 2009, 2013, April 2019, 2022, 2026; not September 2019
+  });
+  it('every run on a withdrawn list, and only those, reads "withdrawn"', () => {
+    for (const k of Object.keys(rt.elections).map(Number)) {
+      const wd = new Set(ds(k).lists.filter((l) => l.withdrawn).map((l) => l.id));
+      for (const [id, p] of Object.entries(rt.people)) for (const r of p.runs) if (r[0] === k) expect(r[3] === 'withdrawn', `${id} ${r[1]}`).toBe(wd.has(r[1]));
+    }
+  });
+});
+
+// audit 12 Nov 2026, ax-build-guesses-01, ax-names-rosters-04/05, c-famous-early-07: MK history took the Knesset site's
+// raw English names ("Moseh Zeev Feldman", "Yeushua Sagi", "Meir Pa`il") while the lists show the reviewed display form
+describe('a person has one English name on every screen', () => {
+  it('the reviewed spellings: Moshe Zeev Feldman, Yehoshua Sagi', () => {
+    expect(rt.people[2541].en).toBe('Moshe Zeev Feldman');
+    expect(rt.people[2624].en).toBe('Yehoshua Sagi');
+  });
+  it('no backtick for an apostrophe', () => {
+    expect(Object.entries(rt.people).filter(([, p]) => p.en?.includes('`')).map(([id, p]) => `${id} ${p.en}`)).toEqual([]);
+    expect(Object.values(rt.factions).filter((f) => f[1]?.includes('`'))).toEqual([]);
+  });
+  it('equals the name on the list of the same election, for every candidacy that has one', () => {
+    const differ: string[] = [];
+    for (let k = 1; k <= 26; k++) {
+      const byPlace = new Map(ds(k).lists.flatMap((l) => l.candidates.map((c) => [`${l.id}#${c.rank}`, c.nameEn] as const)));
+      for (const [id, p] of Object.entries(rt.people)) for (const r of p.runs) {
+        const en = r[0] === k ? byPlace.get(`${r[1]}#${r[2]}`) : undefined;
+        if (en && en !== p.en) differ.push(`${id} ${r[1]}#${r[2]}: list ${en}, history ${p.en}`);
+      }
+    }
+    expect(differ).toEqual([]);
   });
 });

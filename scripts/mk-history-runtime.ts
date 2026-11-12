@@ -14,11 +14,13 @@ import { RULESETS } from '../src/engine/rules.ts';
 import { mixHex } from '../src/data/colour.ts';
 import { compileHistoryRuntime } from './party-history-runtime.ts';
 import { shownRows } from './lib/faction-rows.ts';
+import { displayNameEn, knessetMemberSure } from './lib/build/bios.ts';
 
 /** How a run ended. elected: within the list's seats at the election. first: not within the seats but sat from the
  *  first sitting. later: entered during that Knesset. out: did not enter that Knesset. declined: within the seats but
  *  never sat in that Knesset (the candidate notes say why). */
-export type RunOutcome = 'elected' | 'first' | 'later' | 'out' | 'declined';
+/** 'withdrawn': the list withdrew before the vote, so no one ran on it (audit 12 Nov 2026, c-screens-people-02) */
+export type RunOutcome = 'elected' | 'first' | 'later' | 'out' | 'declined' | 'withdrawn';
 /** id: the Knesset member ID ties the candidacy to the person (official membership or entry in the list's faction).
  *  name: the same listed name, character for character, as a candidacy tied by ID, and no one else could be meant. */
 export type RunBasis = 'id' | 'name';
@@ -47,8 +49,9 @@ export interface MkRuntime {
   elections: Record<number, { date: string; opening: string | null; end: string | null; threshold: number }>;
   /** per list id: [short Hebrew, short English or null, colour, seats, valid-vote share in percent (2 decimals)] */
   lists: Record<string, readonly [string, string | null, string, number, number]>;
-  /** faction id → [Hebrew, English or null, colour or null] */
-  factions: Record<number, readonly [string, string | null, string | null]>;
+  /** faction id → [Hebrew, English or null, colour or null], and for a faction shown under its list's name whose recorded
+   *  name differs: [.., the recorded Hebrew name, its English or null] */
+  factions: Record<number, readonly [string, string | null, string | null] | readonly [string, string | null, string | null, string, string | null]>;
   /** elections whose runs that did not win a seat are shown: every list (full), or only these lists (partial) */
   failedRunCoverage: { full: number[]; partial: Record<number, string[]>; excluded: Record<number, string[]> };
   /** person id → history. A run's candidate id is `${list id}#${rank}`. */
@@ -58,7 +61,7 @@ export interface MkRuntime {
 /** Review output: matches left out and why (written by scripts/research/mk-history-review.ts, not shipped). */
 export interface MkReview { leftOut: { candidateId: string; nameHe: string; reason: string; personIds: number[] }[]; anomalies: string[] }
 
-type Bio = { knessetPersonId?: number | null; confidence?: string; knesset?: { siteId?: number } | null; hewiki?: { title?: string } | null; basis?: string };
+type Bio = { knessetPersonId?: number | null; confidence?: string; knesset?: { siteId?: number } | null; hewiki?: { title?: string } | null; basis?: string; displayNameEn?: string };
 type Tenure = { personId: number; nameHe: string; start: string; end: string | null; factions: { factionId: number; nameHe: string; start: string; end: string | null; startTime?: string; endTime?: string }[] };
 type Changes = { tenures: Tenure[]; factionRegistry: { id: number; nameHe: string; start: string; end: string | null }[]; checks: { openingDateReported?: string | null } };
 type KEvent = { id: string; date: string; kind: string; who: { personIds?: number[] }; summary: { en: string; he: string }; classification: string; certainty: string; evidenceClass?: string; sources: { url?: string; publisher?: string }[] };
@@ -87,12 +90,15 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
   const read = (path: string) => JSON.parse(readFileSync(`${root}/${path}`, 'utf8'));
   const persons = new Map((read('data/raw/bios/knesset-odata-persons.json') as { PersonID: number; FirstName: string; LastName: string; GenderDesc: string }[]).map((p) => [p.PersonID, p]));
   const siteOf = new Map((read('data/raw/bios/knesset-odata-mk-site-codes.json') as { KnsID: number; SiteId: number }[]).map((s) => [s.KnsID, s.SiteId]));
-  const enOfSite = new Map((read('data/raw/bios/knesset-site-mk-names-en.json') as { siteId: number; nameEn: string }[]).map((s) => [s.siteId, s.nameEn.replace(/\s+/g, ' ').trim()]));
+  // English names as the lists show them (scripts/lib/build/bios.ts): the site's, in display form, or a reviewed spelling
+  // where the site misprints it (data/meta/bios displayNameEn: "Moseh Zeev Feldman" → Moshe, "Yeushua Sagi" → Yehoshua)
+  const enOfSite = new Map((read('data/raw/bios/knesset-site-mk-names-en.json') as { siteId: number; nameEn: string | null }[]).filter((s) => s.nameEn).map((s) => [s.siteId, displayNameEn(s.nameEn!)]));
   const historyParties = new Map(compileHistoryRuntime(root).elections.flatMap((e) => e.lists.map((l) => [l[0], l[8].map(([p]) => p)] as const)));
 
   const ds = new Map<number, ElectionDataset>(K.map((k) => [k, read(`public/data/k${k}.json`)]));
   const bios = new Map<number, Record<string, Bio>>(K.map((k) => [k, (read(`data/meta/bios/k${k}.json`) as { candidates: Record<string, Bio> }).candidates]));
   const changes = new Map<number, Changes>(K.map((k) => [k, read(`data/research/knesset-member-changes/k${k}.json`)]));
+  for (const b of [...bios.values()].flatMap((x) => Object.values(x))) if (b.displayNameEn && b.knesset?.siteId) enOfSite.set(b.knesset.siteId, b.displayNameEn);
 
   const out: MkRuntime = { version: 1, elections: {}, lists: {}, factions: {}, failedRunCoverage: { full: [], partial: {}, excluded: {} }, people: {} };
   const anomalies = review?.anomalies ?? [];
@@ -137,9 +143,10 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
       for (const c of l.candidates) {
         all.push({ k, l, c, elected: el.has(c.id) });
         const b = bios.get(k)![c.id];
-        // high: matched to that Knesset's membership. A candidate who entered the Knesset later in the list's faction
-        // is tied by the entry itself, even where a Wikipedia link on the same record is only medium.
-        if (!b?.knessetPersonId || (b.confidence !== 'high' && !/^not elected at the election; entered Knesset/.test(b.basis ?? ''))) continue;
+        // the Knesset identity is certain: a high entry, or one whose Knesset match is official (elected as that Knesset's
+        // member, or entered it later in the list's faction) where only a Wikipedia or party link on the same record is
+        // medium (scripts/lib/build/bios.ts; audit 12 Nov 2026, c-famous-late-04: Fogel, Bismuth and seven more of 2022)
+        if (!b?.knessetPersonId || !knessetMemberSure(b)) continue;
         const p = b.knessetPersonId;
         if (!terms.has(p) && !(k === 26 && el.has(c.id))) { anomalies.push(`${c.id} ${c.nameHe}: tied to person ${p} by ID but no term and not elected in k26`); continue; }
         const r: Run = { k, listId: l.id, rank: c.rank, candidateId: c.id, nameHe: c.nameHe, elected: el.has(c.id), notSeated: !!c.notSeated, basis: 'id', via: null };
@@ -163,7 +170,9 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
 
   // ---- runs that did not win a seat, tied by the name check ----
   for (const a of all) {
-    if (byCandidate.has(a.c.id) || a.elected || !covered(a.k, a.l.id)) continue;
+    // a candidate within the list's seats who did not take the seat is in the part of every list we hold, whatever the
+    // election (Deri and Benny Begin, 1999; Arens, 1992)
+    if (byCandidate.has(a.c.id) || a.elected || (!covered(a.k, a.l.id) && !a.c.notSeated)) continue;
     const key = normName(a.c.nameHe);
     const people = tiedNames.get(key);
     if (!people) continue;
@@ -194,11 +203,7 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
   for (const k of K) for (const l of ds.get(k)!.lists) for (const n of [l.shortHe, l.nameHe]) {
     const key = nameKey(n); (listsByName.get(key) ?? listsByName.set(key, []).get(key)!).push({ k, id: l.id });
   }
-  const partyByName = new Map<string, string>();
-  for (const p of (read('data/meta/parties.json') as { parties: { nameHe: string; nameEn?: string | null; names?: { nameHe?: string; nameEn?: string | null }[] }[] }).parties) {
-    for (const n of [{ nameHe: p.nameHe, nameEn: p.nameEn }, ...(p.names ?? [])]) if (n.nameHe && n.nameEn) for (const x of factionKeys(n.nameHe)) if (!partyByName.has(x)) partyByName.set(x, n.nameEn);
-  }
-  // English display names for factions that match nothing above (data/meta/knesset-faction-names-en.json)
+  // English display names for factions not formed by a list (data/meta/knesset-faction-names-en.json)
   const curated = read('data/meta/knesset-faction-names-en.json') as { names: Record<string, string>; sameName?: Record<string, string> };
   const curatedEn = new Map(Object.entries(curated.names).map(([he, en]) => [normName(he), en]));
   // one English name for a Hebrew faction name, in every Knesset, whatever rule named it (cx-factions-07)
@@ -245,26 +250,33 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
     }
     for (const f of ch.factionRegistry) {
       const formed = formedBy(f);
-      let list = formed && namesake.get(formed.list)?.id === f.id ? formed.list : undefined;
-      // a faction whose Hebrew name (or its first part, its abbreviation, or its name without "led by …") is a list's name:
-      // the nearest election's list
-      const keys = factionKeys(f.nameHe);
-      if (!list) {
-        const hits = keys.flatMap((x) => listsByName.get(x) ?? []);
-        const near = hits.sort((a, b) => Math.abs(a.k - k - 0.4) - Math.abs(b.k - k - 0.4))[0];
-        list = near?.id;
+      const list = formed && namesake.get(formed.list)?.id === f.id ? formed.list : undefined;
+      const he = normName(f.nameHe);
+      // the list's own faction (formed by its elected members at the opening): the list's short name and colour
+      // (its recorded name is kept, to tell it from another faction of the same shown name: Labor led by Ehud Barak → Labor)
+      if (list) {
+        const L = out.lists[list], en = sameNameEn.get(he) ?? L[1];
+        out.factions[f.id] = nameKey(L[0]) === nameKey(he) ? [L[0], en, L[2]] : [L[0], en, L[2], he, sameNameEn.get(he) ?? curatedEn.get(he) ?? null];
+        continue;
       }
-      const L = list ? out.lists[list] : undefined;
-      if (L) { out.factions[f.id] = [L[0], sameNameEn.get(normName(f.nameHe)) ?? L[1], L[2]]; continue; }
-      // a registered party of that name; a one-member faction ("חה״כ <name>") is named after its member
-      const party = keys.map((x) => partyByName.get(x)).find(Boolean);
-      const member = /^חה״כ /.test(normName(f.nameHe)) ? memberByName.get(nameKey(normName(f.nameHe).slice(5))) : undefined;
-      const en = sameNameEn.get(normName(f.nameHe)) ?? party ?? (member ? `MK ${member}` : null) ?? curatedEn.get(normName(f.nameHe)) ?? null;
-      // the colour of the nearest list with that English name (Hadash, Ta'al, Mapam ...), else none
-      const twin = en ? (listsByEn.get(en) ?? []).sort((a, b) => Math.abs(a.k - k) - Math.abs(b.k - k))[0] : undefined;
+      // any other faction: the name the Knesset recorded for it, with an English form of that same name (audit 12 Nov
+      // 2026, fx-names). Never a later party's name, nor a list's that only shares a word with it: a faction formed
+      // during a term is not that list (1955 Agudat Yisrael–Poalei Agudat Yisrael, 2000 National Union–Yisrael Beiteinu,
+      // 2005 Tzalash, 1978 Development and Peace).
+      // English: the reviewed map; else a list with this very short name, of this or an earlier election or of the next
+      // one (a faction formed during a term that then ran under its own name: New Right 2018, Kadima 2005); else, for a
+      // one-member faction ("חה״כ <name>"), its member.
+      const near = (hs: { k: number; id: string }[]) => hs.filter((h) => h.k <= k + 1).sort((a, b) => Number(a.k > k) - Number(b.k > k) || b.k - a.k)[0];
+      const named = (field: 'shortHe' | 'nameHe') => near((listsByName.get(nameKey(he)) ?? []).filter((h) => nameKey(ds.get(h.k)!.lists.find((l) => l.id === h.id)![field]) === nameKey(he)));
+      const short = named('shortHe');
+      const member = /^חה״כ /.test(he) ? memberByName.get(nameKey(he.slice(5))) : undefined;
+      const en = sameNameEn.get(he) ?? curatedEn.get(he) ?? (short ? out.lists[short.id][1] : null) ?? (member ? `MK ${member}` : null) ?? null;
+      // the colour of that list, else of the latest list up to this election (or the next) with this very full name or
+      // that same English name (Otzma Yehudit led by Itamar Ben Gvir, Hadash, Ta'al, Mapam ...)
+      const twin = short ?? named('nameHe') ?? (en ? near(listsByEn.get(en) ?? []) : undefined);
       // else a lighter shade of the list most of its members were elected on, so the change still shows on the bar
       const home = [...(members.get(f.id)?.entries() ?? [])].sort((a, b) => b[1] - a[1])[0]?.[0];
-      out.factions[f.id] = [normName(f.nameHe), en, twin ? out.lists[twin.id][2] : home ? mixHex(out.lists[home][2], '#ffffff', 0.45) : null];
+      out.factions[f.id] = [he, en, twin ? out.lists[twin.id][2] : home ? mixHex(out.lists[home][2], '#ffffff', 0.45) : null];
     }
   }
 
@@ -295,8 +307,10 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
       const e = out.elections[r.k];
       const inK = ts.filter((t) => t[0] === r.k);
       const inSeats = r.rank <= out.lists[r.listId][3];
+      const l = ds.get(r.k)!.lists.find((x) => x.id === r.listId)!;
       let o: RunOutcome;
-      if (inSeats && r.notSeated) o = 'declined';
+      if (l.withdrawn) o = 'withdrawn';
+      else if (inSeats && r.notSeated) o = 'declined';
       // elected but never sat in that Knesset (the candidate notes give the official record, e.g. withdrew before the first sitting)
       else if (inSeats && r.elected && !inK.length && r.k !== 26) o = 'declined';
       else if (inSeats && r.elected) o = 'elected';
@@ -304,7 +318,6 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
       else if (inK.length) o = 'later';
       else o = 'out';
       // the official notes on the candidates whose places explain it (their own, or those above who did not sit)
-      const l = ds.get(r.k)!.lists.find((x) => x.id === r.listId)!;
       const notes = o === 'declined' ? l.candidates.find((c) => c.id === r.candidateId)?.notes ?? []
         : o === 'first' ? l.candidates.filter((c) => c.rank <= out.lists[r.listId][3]).flatMap((c) => c.notes ?? []).filter((n) => /first sitting/.test(n.en)) : [];
       return [r.k, r.listId, r.rank, o, r.basis, r.via, notes.map((n) => [n.en, n.he] as const)];

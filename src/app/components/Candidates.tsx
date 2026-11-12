@@ -144,7 +144,10 @@ function BioLinks({ bio, name }: { bio: CandidateBio; name: string }) {
       {party && <a href={party} target="_blank" rel="noreferrer" title={L('The party’s own page (partisan)', 'הדף של המפלגה עצמה (מקור מפלגתי)') + (year ? L(`, archived ${year}`, `, ארכיון ${year}`) : '')}>
         {L('Party', 'מפלגה')}{year ? ` ${year}` : ''}</a>}
       {wiki && <a href={wiki} target="_blank" rel="noreferrer" hrefLang="he" title={L('Hebrew Wikipedia: a secondary source', 'ויקיפדיה העברית: מקור משני')}>{L('Wikipedia (he)', 'ויקיפדיה')}</a>}
-      {bio.probable && <span className="muted" title={L('Matched by name, not by an official identifier', 'הותאם לפי שם, לא לפי מזהה רשמי')}>{L('(probable match)', '(התאמה סבירה)')}</span>}
+      {bio.probable && (bio.memberConfirmed
+        // the Knesset page is tied by the official member record; only the other links were matched by name
+        ? <span className="muted" title={L('The Knesset page: by the official member record. The other links: matched by name, not by an official identifier', 'דף הכנסת: לפי רישום חבר הכנסת הרשמי. שאר הקישורים: הותאמו לפי שם, לא לפי מזהה רשמי')}>{L('(other links probable)', '(שאר הקישורים: התאמה סבירה)')}</span>
+        : <span className="muted" title={L('Matched by name, not by an official identifier', 'הותאם לפי שם, לא לפי מזהה רשמי')}>{L('(probable match)', '(התאמה סבירה)')}</span>)}
     </span>
   );
 }

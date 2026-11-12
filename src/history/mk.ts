@@ -2,6 +2,7 @@
 // The runtime is its own chunk, requested the first time a name or a seat could open a history.
 import { useEffect, useState, useSyncExternalStore } from 'react';
 import type { MkPerson, MkRuntime, PackedRun, RunBasis, RunOutcome } from '../../scripts/mk-history-runtime.ts';
+import { englishLabel } from '../data/names.ts';
 
 export type { MkRuntime, RunOutcome, RunBasis };
 let runtime: MkRuntime | null = null;
@@ -48,8 +49,9 @@ export interface MkEvent {
   /** the time of day, where the record gives one */
   time?: string;
   kind: 'entered' | 'left' | 'faction' | 'recorded';
-  /** for faction: the new and the previous faction */
-  faction?: { now: Pick<MkSegment, 'he' | 'en'>; was: Pick<MkSegment, 'he' | 'en'> };
+  /** for faction: the new and the previous faction. Where both are shown under one name in a language, that language
+   *  gives both factions' recorded names instead, so a line never reads "X (until then X)". */
+  faction?: { now: Pick<MkSegment, 'faction' | 'he' | 'en'>; was: Pick<MkSegment, 'faction' | 'he' | 'en'> };
   /** for recorded: the text, how it is known and its sources */
   text?: { en: string; he: string }; evidence?: string; sources?: readonly (readonly [string, string])[];
 }
@@ -71,7 +73,7 @@ export interface MkView {
   daysServed: number;
   /** the longest Knesset in days, so every Knesset's bar is drawn on one scale */
   longest: number;
-  /** elections where they were on an official list we can read */
+  /** elections where they were on an official list we can read (a list that withdrew before the vote is not a run) */
   runs: number;
   /** the first election from which runs that did not win a seat are shown on every list, and the earlier elections
    *  where they are shown only for some lists */
@@ -86,6 +88,16 @@ export function mkView(rt: MkRuntime, id: number): MkView | null {
   if (!p) return null;
   const ks = [...new Set([...p.terms.map((t) => t[0]), ...p.runs.map((r) => r[0])])].sort((a, b) => a - b);
   const fac = (f: number) => { const x = rt.factions[f]; return { he: x?.[0] ?? '', en: x?.[1] ?? null, color: x?.[2] ?? null }; };
+  // a faction's name as the Knesset recorded it (differs from the shown one for a faction shown under its list's name)
+  const recorded = (f: number) => { const x = rt.factions[f]; return x && x.length > 3 ? { he: x[3]!, en: x[4] ?? null } : { he: x?.[0] ?? '', en: x?.[1] ?? null }; };
+  const move = (now: MkSegment, was: MkSegment): NonNullable<MkEvent['faction']> => {
+    const sameHe = now.he === was.he, sameEn = englishLabel(now.en, now.he) === englishLabel(was.en, was.he);
+    const rn = recorded(now.faction), rw = recorded(was.faction);
+    return {
+      now: { faction: now.faction, he: sameHe ? rn.he : now.he, en: sameEn ? englishLabel(rn.en, rn.he) : now.en },
+      was: { faction: was.faction, he: sameHe ? rw.he : was.he, en: sameEn ? englishLabel(rw.en, rw.he) : was.en },
+    };
+  };
   let daysServed = 0;
   const rows: MkRow[] = ks.map((k) => {
     const e = rt.elections[k];
@@ -110,7 +122,7 @@ export function mkView(rt: MkRuntime, id: number): MkView | null {
     const events: MkEvent[] = [];
     terms.forEach((t, i) => {
       if (t.start !== e.opening) events.push({ date: t.start, kind: 'entered' });
-      t.segments.forEach((s, j) => { if (j > 0) events.push({ date: s.start, ...(s.startTime ? { time: s.startTime } : {}), kind: 'faction', faction: { now: s, was: t.segments[j - 1] } }); });
+      t.segments.forEach((s, j) => { if (j > 0) events.push({ date: s.start, ...(s.startTime ? { time: s.startTime } : {}), kind: 'faction', faction: move(s, t.segments[j - 1]) }); });
       if (!t.ongoing && t.end !== e.end) events.push({ date: t.end, kind: 'left' });
       void i;
     });
@@ -123,7 +135,7 @@ export function mkView(rt: MkRuntime, id: number): MkView | null {
   const from = rt.elections[full[0]]?.date.slice(0, 4) ?? '';
   const partial = Object.keys(rt.failedRunCoverage.partial).map(Number).sort((a, b) => a - b).map((k) => rt.elections[k].date.slice(0, 4));
   const longest = Math.max(1, ...Object.values(rt.elections).map((x) => x.opening && x.end ? daysBetween(x.opening, x.end) : 0));
-  return { id, he: p.he, en: p.en, female: p.female, site: p.site, wiki: p.wiki, rows, daysServed, longest, runs: p.runs.length, coverage: { from, partial } };
+  return { id, he: p.he, en: p.en, female: p.female, site: p.site, wiki: p.wiki, rows, daysServed, longest, runs: p.runs.filter((r) => r[3] !== 'withdrawn').length, coverage: { from, partial } };
 }
 
 /** "3 years 5 months" (whole months; under a month, days). */

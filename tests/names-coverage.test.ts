@@ -28,3 +28,13 @@ describe('complete English list identity',()=>{
   expect(meretz.shortEn).toBe(p.nameEn);expect(meretz.logo).toEqual(p.logo);
  });
 });
+// audit 12 Nov 2026, c-famous-late-12: one list was spelled two ways across elections (Ra’am–Ta’al beside Ra'am–Ta'al);
+// English list and party names take one apostrophe, the straight one, as people's names do (scripts/lib/build/finalize.ts)
+describe('one apostrophe in English names',()=>{
+ it('no list, party or candidate English name uses a typographic apostrophe or a backtick',()=>{
+  const odd=datasets.flatMap(d=>d.lists.flatMap(l=>[l.shortEn,l.englishName?.label,...(l.parties??[]).map(p=>p.nameEn),...l.candidates.map(c=>c.nameEn)].filter((n):n is string=>!!n&&/[’‘`]/.test(n)).map(n=>`${d.id} ${l.id}: ${n}`)));
+  expect(odd).toEqual([]);
+  const registry=JSON.parse(readFileSync('data/meta/parties.json','utf8')) as {parties:{id:string;nameEn?:string;names?:{nameEn?:string}[]}[]};
+  expect(registry.parties.flatMap(p=>[p.nameEn,...(p.names??[]).map(n=>n.nameEn)].filter((n):n is string=>!!n&&/[’‘`]/.test(n)).map(n=>`${p.id}: ${n}`))).toEqual([]);
+ });
+});

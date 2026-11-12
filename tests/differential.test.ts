@@ -272,7 +272,15 @@ const EXPECTED: Record<Family, string> = {
   // fx-after (12 Nov, c-aftermath-01): k12's sourced 1988 recommendations grouping now matches the After the election
   // record (Peres 55 with Hadash, PLP and ADP; Degel in 'No recommendation'). Restoring HEAD's public/data/k12.json alone
   // reproduces 31937648… and all four other digests; only this digest changes.
-  model: 'a26911b01c26bb882ed312ae726070a4abdbdcac8de3d1058fb9270cdfeb4a11',
+  // fx-names (12 Nov): k9 Likud ranks 21 and 24 (both printed כהן יגאל) lose their English names, as which rank is which
+  // person is not certain; recursive diff of k9 shows only those two nameEn fields and builtAt. Other digests unchanged.
+  // fx-names G (12 Nov): five constituent-party English names follow the official sponsor records (Tkuma 2015, 2021–26
+  // "National Union–Tkuma"; Independence 2019 "Independence"); recursive diffs of k20, k22, k24–k26 show only those
+  // parties[].nameEn fields and builtAt. Then list and party English names take one apostrophe, the straight one
+  // (scripts/lib/build/finalize.ts): only shortEn fields with ’ change (k9, k11, k13–k17, k20, k21). Other digests unchanged.
+  // Merged with fx-after's k12 change (12 Nov): the datasets differ from the previous commit only in the fields named
+  // above (field-by-field diff of all 26 published datasets), so the digest is the two changes together.
+  model: '07cf0bddd7d77f41e1b41641dd3a7d69e17f7d8cda87d545489ca0d38f6ae9d4',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

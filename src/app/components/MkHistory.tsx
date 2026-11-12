@@ -99,7 +99,9 @@ function MkHistoryDialog({ rt, id }: { rt: MkRuntime; id: number }) {
 
 function summary(v: MkView, L: T, lang: Lang): string {
   const knessets = v.rows.filter((r) => r.terms.length).length;
-  const first = v.rows.find((r) => r.run)?.electionDate.slice(0, 4), last = [...v.rows].reverse().find((r) => r.run)?.electionDate.slice(0, 4);
+  // a list that withdrew before the vote is not a run: it is not counted, nor does it stretch the years
+  const ran = v.rows.filter((r) => r.run && r.run.outcome !== 'withdrawn');
+  const first = ran[0]?.electionDate.slice(0, 4), last = ran[ran.length - 1]?.electionDate.slice(0, 4);
   const span = first && last && first !== last ? `${first}\u2060–\u2060${last}` : first ?? ''; // word joiners: the range never breaks at the dash
   const parts = [
     knessets ? L(`${servedText(v.daysServed, 'en')} in the Knesset, in ${knessets === 1 ? 'one Knesset' : `${knessets} Knessets`}`,
@@ -139,8 +141,10 @@ function Row({ r, v }: { r: MkRow; v: MkView }) {
     <div className="mk-when"><b>{monthYear(r.electionDate, lang)}</b><span className="tiny ink2">{knessetName(r.k, lang)}</span></div>
     <div className="mk-list">{run ? <>
       <span className="mk-lname"><span className="mk-sw" style={{ background: run.color }} aria-hidden /><b>{listName(run, lang)}</b></span>
-      <Places rank={run.rank} seats={run.seats} color={run.color} />
-      <span className="tiny ink2">{L(`No. ${run.rank} · the list won ${run.seats}`, `מקום ${run.rank} · הרשימה זכתה ב־${run.seats}`)}</span>
+      {run.outcome === 'withdrawn' ? <span className="tiny ink2">{L(`No. ${run.rank}`, `מקום ${run.rank}`)}</span> : <>
+        <Places rank={run.rank} seats={run.seats} color={run.color} />
+        <span className="tiny ink2">{L(`No. ${run.rank} · the list won ${run.seats}`, `מקום ${run.rank} · הרשימה זכתה ב־${run.seats}`)}</span>
+      </>}
     </> : <span className="tiny muted">{L('Place on the list not in our data', 'המקום ברשימה אינו בנתונים')}</span>}</div>
     <div className="mk-term"><TermBar r={r} v={v} /></div>
     <div className="mk-res"><Result r={r} v={v} /></div>
@@ -152,7 +156,9 @@ function Row({ r, v }: { r: MkRow; v: MkView }) {
 function eventText(e: MkEvent, v: MkView, L: T, lang: Lang): ReactNode {
   switch (e.kind) {
     case 'entered': return L('Entered the Knesset', g(v.female, 'נכנס לכנסת', 'נכנסה לכנסת'));
-    case 'left': return L('Left the Knesset', g(v.female, 'סיים את כהונתו בכנסת', 'סיימה את כהונתה בכנסת'));
+    // the Knesset records no reason for an end (a resignation, an appointment, a death in office): the words claim none
+    // (audit 12 Nov 2026, c-famous-late-07: Rabin and Ze'evi read "Left the Knesset")
+    case 'left': return L('Membership ended', 'הכהונה הסתיימה');
     case 'faction': return L(`Faction: ${factionName(e.faction!.now, lang)} (until then ${factionName(e.faction!.was, lang)})`, `סיעה: ${factionName(e.faction!.now, lang)} (עד אז ${factionName(e.faction!.was, lang)})`);
     default: return lang === 'he' ? e.text!.he : e.text!.en;
   }
@@ -179,7 +185,8 @@ function Result({ r, v }: { r: MkRow; v: MkView }) {
     case 'elected': return <span>{L('Elected', g(f, 'נבחר', 'נבחרה'))}</span>;
     case 'first': return <span>{L('Sat from the first sitting', g(f, 'כיהן מהישיבה הראשונה', 'כיהנה מהישיבה הראשונה'))} {notes}</span>;
     case 'later': return <span>{L(`Entered on ${formatDate(r.terms[0]?.start ?? '', 'en')}`, `${g(f, 'נכנס', 'נכנסה')} ב־${formatDate(r.terms[0]?.start ?? '', 'he')}`)}</span>;
-    case 'declined': return <span>{L('Elected; did not sit', g(f, 'נבחר; לא כיהן', 'נבחרה; לא כיהנה'))} {notes}</span>;
+    case 'declined': return <span>{L('Elected; did not sit', g(f, 'נבחר; לא כיהן', 'נבחרה; לא כיהנה'))} {notes}{basis}</span>;
+    case 'withdrawn': return <span className="mk-out">{L('The list withdrew before the election', 'הרשימה פרשה לפני הבחירות')} {basis}</span>;
     default: {
       const short = run.rank - run.seats;
       const sub = run.seats === 0 && run.share < run.threshold
