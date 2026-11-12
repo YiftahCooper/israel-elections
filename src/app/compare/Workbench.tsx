@@ -21,7 +21,7 @@ import { CandidateName } from '../components/CandidateName.tsx';
 import { MkName } from '../components/MkHistory.tsx';
 import { Info, Slip } from '../components/ui.tsx';
 import { matchRows, mirrorRows, copyUnit, groupIds, inOf, type MatchRow } from './match.ts';
-import { duplicatePeople, planAgreements, planColour, planRoster, planRules, planTotals, type CopyUnit, type Plan } from './copy.ts';
+import { alreadySame, duplicatePeople, planAgreements, planColour, planRoster, planRules, planTotals, type CopyField, type CopyUnit, type Plan } from './copy.ts';
 import { COPY_ARROWS, copyComparisonLink, comparisonOf, openComparison, pairKey, saveComparison, useSavedComparisons, setOverrides } from './sides.ts';
 import { cellsOf, listMarks, sourceOf, unitsFor, type Cells, type SideModel } from './model.ts';
 import { MatchingPanel, PairingWhy, RowSheet, SaveDialog, VotesEditor, WholeListDialog, tagText, type WholeRequest } from './dialogs.tsx';
@@ -299,7 +299,7 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
       </table>
     </div>
 
-    <KeyBand left={left} right={right} simple={simple} expert={expert} copy={copyField} nameOf={nameOf} />
+    <KeyBand left={left} right={right} simple={simple} expert={expert} copy={copyField} nameOf={nameOf} same={(f, d) => { const { from, to } = sideOf(d); return alreadySame(f, from.sc, to.sc, rows, d); }} />
 
     {!cross && <People left={left} right={right} />}
     {cross && <p className="small muted">{L('Lists are paired from party records', 'הרשימות מותאמות לפי רישומי המפלגות')} <Info title={L('Pairing lists', 'התאמת רשימות')}>{L('Pairs come from the party registry and documented lineage, never from names or ballot letters. A copy is a snapshot: later edits on the other side don’t change it. Seats are always recalculated.', 'ההתאמות לפי מרשם המפלגות והשושלת המתועדת, לעולם לא לפי שמות או אותיות. העתקה היא תמונת מצב: עריכות מאוחרות בצד השני אינן משנות אותה. המנדטים תמיד מחושבים מחדש.')}</Info></p>}
@@ -439,7 +439,8 @@ function GroupLine({ group, rows, left, right, simple, copy, nameOf }: { group: 
 }
 
 /** Key numbers and rules, head to head. Inputs carry copy arrows; results never do. */
-function KeyBand({ left, right, simple, expert, copy, nameOf }: { left: SideModel; right: SideModel; simple: boolean; expert: boolean; copy: (f: 'turnout' | 'registered' | 'invalid' | 'threshold' | 'rules' | 'agreements', d: Dir) => void; nameOf: (x: SideModel) => string }) {
+/** same: whether a copy would change nothing (its arrow is disabled), judged on the copied value, not the figure shown */
+function KeyBand({ left, right, simple, expert, copy, nameOf, same }: { left: SideModel; right: SideModel; simple: boolean; expert: boolean; copy: (f: CopyField, d: Dir) => void; nameOf: (x: SideModel) => string; same: (f: CopyField, d: Dir) => boolean }) {
   const L = useL(), lang = useLang(), digits = useDigits();
   const turnout = (x: SideModel) => x.sc.registered ? percent(x.sc.lists.reduce((t, l) => t + l.votes, 0) + x.sc.invalid, x.sc.registered, digits) : '—';
   const thrVotes = (x: SideModel) => Number(x.sc.rules.thresholdPct) === 0 ? L('None', 'אין') : fmtInt(x.r.thresholdVotes);
@@ -459,7 +460,7 @@ function KeyBand({ left, right, simple, expert, copy, nameOf }: { left: SideMode
     { k: 'unrep', label: L('Votes with no seat', 'קולות ללא מנדט'), l: percent(left.r.unrepresentedVotes, left.r.totalValid, digits), r: percent(right.r.unrepresentedVotes, right.r.totalValid, digits), show: true },
   ];
   const btn = (row: Row, d: Dir) => { const to = d === 'toRight' ? right : left; const label = L(`Copy ${row.label.toLowerCase()} to ${nameOf(to)}`, `העתקת ${row.label} ${hebrewPrefix('ל', nameOf(to))}`);
-    return <button type="button" className="cmp-arrow" aria-label={label} title={label} disabled={row.l === row.r} onClick={() => copy(row.field!, d)}>{d === 'toRight' ? <ArrowRight size={16} /> : <ArrowLeft size={16} />}</button>; };
+    return <button type="button" className="cmp-arrow" aria-label={label} title={label} disabled={same(row.field!, d)} onClick={() => copy(row.field!, d)}>{d === 'toRight' ? <ArrowRight size={16} /> : <ArrowLeft size={16} />}</button>; };
   return <section className="cmp-section cmp-band" aria-label={L('Key numbers and rules', 'מספרי מפתח וכללים')}>
     <h3>{L('Key numbers and rules', 'מספרי מפתח וכללים')}</h3>
     <div className="cmp-band-grid" dir="ltr">

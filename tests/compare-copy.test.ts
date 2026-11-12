@@ -8,7 +8,7 @@ import { copyOriginOf } from '../src/model/editScopes.ts';
 import { percentToRational } from '../src/engine/rational.ts';
 import { votesCast, type Action, type Scenario } from '../src/model/scenario.ts';
 import { getState, replay, setState } from '../src/app/store.ts';
-import { duplicatePeople, planAgreements, planColour, planRoster, planRules, planTotals, planVotes, planWholeList, type CopySource, type Plan } from '../src/app/compare/copy.ts';
+import { alreadySame, duplicatePeople, planAgreements, planColour, planRoster, planRules, planTotals, planVotes, planWholeList, type CopySource, type Plan } from '../src/app/compare/copy.ts';
 import { matchRows, memberKey } from '../src/app/compare/match.ts';
 import { comparisonLink, comparisonOf, dispatchSide, readComparison, redoSide, startOverSide, undoSide } from '../src/app/compare/sides.ts';
 import { stayingHome } from '../src/app/voteEdit.ts';
@@ -303,5 +303,29 @@ describe('a person on two lists after an import', () => {
     const p = ok(planWholeList({ from: from25, to: k26, ctx, srcId: '25-מחל', dstId: '26-מחל', opts, remove: [{ listId: d.otherListId, candidateId: d.otherCandidateId }] }));
     expect(duplicatePeople(p.result, '26-מחל')).toEqual([]);
     expect(seats(p.result, '26-מחל')).toBe(30);
+  });
+});
+
+describe('the band’s arrows rest only when a copy would change nothing', () => {
+  const k24 = baselineOf(load('k24'));
+  const rows = matchRows(k24, k26);
+  it('2021 and 2026 both have six surplus agreements, but different ones: the copy is offered and changes them', () => {
+    const n = (s: Scenario) => s.agreements.filter((a) => a.enabled).length;
+    expect([n(k24), n(k26)]).toEqual([6, 6]);
+    expect(alreadySame('agreements', k24, k26, rows, 'toRight')).toBe(false);
+    const p = planAgreements({ from: { sc: k24, start: k24, name: '2021', official: true }, to: k26, ctx, rows, direction: 'toRight' });
+    expect(p.ok).toBe(true);
+    expect(alreadySame('agreements', ok(p).result, ok(p).result, matchRows(k26, k26), 'toRight')).toBe(true);
+  });
+  it('turnout is judged on the exact votes cast, never on the rounded percentage shown', () => {
+    const near = applyAction(k26, { type: 'setTotals', invalid: k26.invalid + 1 }, undefined, ctx);
+    expect(alreadySame('turnout', near, k26, [], 'toRight')).toBe(false);
+    expect(planTotals({ from: { sc: near, start: near, name: 'x', official: false }, to: k26, ctx, field: 'turnout' }).ok).toBe(true);
+    expect(alreadySame('turnout', k26, k26, [], 'toRight')).toBe(true);
+  });
+  it('the rules are judged on the whole rule set, not the seat method’s name', () => {
+    const other = applyAction(applyAction(k26, { type: 'setMode', mode: 'experimental' }, undefined, ctx), { type: 'setRules', patch: { thresholdPct: '2' } }, undefined, ctx);
+    expect(alreadySame('rules', other, k26, [], 'toRight')).toBe(false);
+    expect(alreadySame('rules', k26, k26, [], 'toRight')).toBe(true);
   });
 });
