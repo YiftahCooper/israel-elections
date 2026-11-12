@@ -1,11 +1,13 @@
 import { test, expect } from '@playwright/test';
 
 test('default analysis survives reload without starting workers; edits calculate automatically', async ({ page }) => {
-  test.setTimeout(180_000);
+  test.setTimeout(300_000);
   await page.addInitScript(() => { localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'expert', hintDismissed: true })); });
   await page.goto('/'); await page.locator('#tab-sens').click();
   await expect(page.locator('.sens .callout')).toBeVisible({ timeout: 120_000 });
   await expect(page.locator('.sens .sweep-tbl tbody tr')).not.toHaveCount(0);
+  // a bloc-flip answer first shown as "at most" is settled by a second search; only finished analysis is kept
+  await expect(page.getByText(/Searching exactly|Checking for a smaller transfer/)).toHaveCount(0, { timeout: 180_000 });
   const before = await page.locator('.sens .sweep-tbl').textContent();
   await page.reload();
   let workers = 0;
