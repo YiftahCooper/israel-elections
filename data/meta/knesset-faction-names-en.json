@@ -81,5 +81,10 @@
   "הבית היהודי - האיחוד הלאומי": "Jewish Home–National Union",
   "עוצמה יהודית בראשות איתמר בן גביר": "Otzma Yehudit",
   "ביחד": "Beyahad"
+ },
+ "sameNameAbout": "One English name for factions whose Hebrew name in the Knesset database is exactly the key, in every Knesset (audit cx-factions-07, 12 Nov 2026). Without it the name follows each election's list label, so the same Hebrew name showed as \"UTJ\" in the 13th to 15th Knessets and \"United Torah Judaism\" in the 20th, 21st and 25th, and the 23rd Knesset's הבית היהודי as \"The Jewish Home\" beside \"Jewish Home\" in every other Knesset. Overrides every other naming rule for these factions; the Hebrew shown is unchanged.",
+ "sameName": {
+  "יהדות התורה": "United Torah Judaism",
+  "הבית היהודי": "Jewish Home"
  }
 }

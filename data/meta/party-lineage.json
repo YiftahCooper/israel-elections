@@ -1251,6 +1251,52 @@
       "evidenceFamily": "idi",
       "accessed": "2026-11-09",
       "support": "Profile: Yahad founded before 1984, joined Alignment faction shortly after election, and merged into Labor during the 11th Knesset. No exact party-merger effective date supplied."
+    },
+    "state-list-profile": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/state-list/",
+      "publisher": "IDI party profile",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-12",
+      "evidenceFamily": "idi",
+      "support": "The State List (HaReshima HaMamlachtit) was established in 1969; the list received four seats in the 1969 elections (results table: 1969, 42,654 votes, 4 seats), the same votes and seats as the 1969 list רשימה ממלכתית (7-עמ).",
+      "retrieval": {
+        "status": 200,
+        "sha256": "6e381a7fb6ca6eff622bfee8c96f9171b83b725474cf0f5c932b4d0ae5907e69"
+      }
+    },
+    "likud-1973-profile": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/likud/",
+      "publisher": "IDI party profile",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-12",
+      "evidenceFamily": "idi",
+      "support": "Likud began as a joint list established in 1973 which included Herut, the Liberal Party, the Free Center, the National List, and the Movement for Greater Israel.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "ac410204b2465e971c2aa41e5747f3f71b8659aca3b721a72704a90a757a81b6"
+      }
+    },
+    "odata-k7-positions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+7+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k7.json",
+      "support": "Official Knesset OData fields retained in k7: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+    },
+    "odata-k7-factions": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+7&%24format=json",
+      "publisher": "Knesset",
+      "accessed": "2026-11-07",
+      "kind": "official",
+      "evidenceFamily": "knesset-parliament-info",
+      "tier": "primary",
+      "locator": "data/research/knesset-member-changes/k7.json",
+      "support": "Official Knesset OData fields retained in k7: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
     }
   },
   "edges": [
@@ -4381,6 +4427,55 @@
       "evidence": {
         "status": "documented",
         "interpretation": "Same HaOlam HaZeh movement in the 1965 and 1969 elections."
+      }
+    },
+    {
+      "id": "state-list-1969-1973",
+      "from": [
+        "vehicle-7-עמ"
+      ],
+      "to": [
+        "state-list"
+      ],
+      "relation": "same-organisation",
+      "date": "1973-12-31",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "state-list-profile",
+        "likud-1973-profile",
+        "odata-k7-factions",
+        "k7",
+        "k8"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "The 1969 list רשימה ממלכתית and the הרשימה הממלכתית inside the 1973 Likud list are one party. IDI gives the State List's founding in 1969 and its 1969 result (42,654 votes, 4 seats, the same as list 7-עמ), and names the National List among the parties of the 1973 Likud list. The Knesset record has the party's faction הרשימה הממלכתית (339) through the whole Seventh Knesset, 17 Nov 1969 to 21 Jan 1974. The link rests on IDI scholarship, not on an official register entry, so it is probable, not confirmed."
+      }
+    },
+    {
+      "id": "haolam-meri-1973",
+      "from": [
+        "vehicle-7-ש"
+      ],
+      "to": [
+        "meri"
+      ],
+      "relation": "renamed-to",
+      "date": "1973-07-03",
+      "datePrecision": "day",
+      "effectiveFor": "parliamentary-faction",
+      "sources": [
+        "odata-k7-factions",
+        "odata-k7-positions",
+        "k8",
+        "haolam-continuity"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "The Knesset record ends the faction העולם הזה - כוח חדש (353) on 3 Jul 1973 and starts מחנה רדיקלי ישראלי (994) the same day; Uri Avnery moves from one to the other (records 26781, 26782). The list that ran in December 1973 was named מרי (העולם הזה – כח חדש), and IDI's HaOlam HaZeh profile counts that 1973 run (10,469 votes) as the movement's. The date is the parliamentary faction's change of name; when the party itself was renamed in law is not established."
       }
     },
     {

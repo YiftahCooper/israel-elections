@@ -288,3 +288,19 @@ describe('the research lane’s fields win over the temporary fallback', () => {
     expect(seat.importanceFrom).toBe('data'); expect(seat.certainty).toBe('confirmed'); expect(seat.en).toBe(null);
   });
 });
+
+// Seat cards list a member's factions as the Knesset records them (audit of 12 Nov 2026, scripts/lib/faction-rows.ts).
+describe('seat-card faction lines', () => {
+  const holder = (k: number, p: number) => rt.terms[k].seats.flatMap((s) => s.holders).find((h) => h[0] === p)!;
+  test('Yasinov, 1 Feb 2006: in the order of the record’s times, Yisrael Beiteinu last', () => {
+    expect(holder(16, 1054)[7]).toEqual([[43, '2003-02-17'], [1038, '2005-05-18'], [1078, '2006-02-01', '10:01'], [588, '2006-02-01', '11:01'], [45, '2006-02-01', '12:01'], [590, '2006-02-01']]);
+  });
+  test('a record that starts and ends at the same midnight is not a faction line (Bennett, Sofer, the 2020 split)', () => {
+    expect(holder(24, 23511)[7]).toEqual([[966, '2021-04-06'], [1086, '2022-08-15'], [1091, '2022-09-06']]);
+    expect(holder(24, 30717)[7]).toEqual([[962, '2021-04-06'], [961, '2021-06-27']]);
+    expect(holder(23, 23594)[7]).toEqual([[1079, '2020-03-16'], [955, '2020-03-29']]); // Lapid: no zero-length Yesh Atid row
+  });
+  test('a faction line never starts before the holder’s own term', () => {
+    for (const t of Object.values(rt.terms)) for (const s of t.seats) for (const h of s.holders) for (const [, from] of h[7]) expect(from >= h[1], `k${t.k} ${h[0]}`).toBe(true);
+  });
+});

@@ -19,6 +19,7 @@
  *  land, FALLBACK_IMPORTANCE and fallbackMarker() below derive them from the event kind. Both are temporary and marked
  *  in the output (`importanceFrom`, `markerFrom`), so the app and the tests can tell data from fallback. */
 import { readFileSync, existsSync } from 'node:fs';
+import { shownRows } from './lib/faction-rows.ts';
 
 export type Importance = 'simple' | 'standard' | 'expert';
 export type Marker = 'D2' | 'D3' | 'D4' | 'replacement';
@@ -30,8 +31,9 @@ export type HolderEntry = 'o' | 'e' | 'r';
 export type Pairing = 'record' | 'list' | 'faction' | 'any';
 /** [person id, start, end or null (to the end of the term), how they came, how the seat was paired (null for the
  *  first holder), reason entered (null: not recorded), reason left (null: not recorded or still sitting),
- *  factions [faction id, from][] (only when more than one)] */
-export type PackedHolder = readonly [number, string, string | null, HolderEntry, Pairing | null, string | null, string | null, readonly (readonly [number, string])[]];
+ *  factions [faction id, from, and the time of day where the record gives one][] (only when more than one; the records
+ *  the app shows: scripts/lib/faction-rows.ts)] */
+export type PackedHolder = readonly [number, string, string | null, HolderEntry, Pairing | null, string | null, string | null, readonly (readonly [number, string] | readonly [number, string, string])[]];
 export interface SeatRuntime { list: string | null; holders: PackedHolder[] }
 
 /** A seat mark drawn at one step. D2: rebel (persistent, from the rebels list); D3: voted against (x) or abstained (a)
@@ -81,7 +83,7 @@ export interface TermRuntime {
 }
 export interface TermTimelineRuntime { version: 1; terms: Record<number, TermRuntime>; anomalies: string[] }
 
-type Tenure = { id: number; personId: number; start: string; end: string | null; factions: { factionId: number; start: string; end: string | null }[] };
+type Tenure = { id: number; personId: number; start: string; end: string | null; factions: { factionId: number; start: string; end: string | null; startTime?: string; endTime?: string }[] };
 type Replacement = { kind: string; date: string; enteringPersonId: number | null; enteringTenureId?: number; leavingPersonId: number | null; leavingTenureId: number | null; reason?: string; returningMember?: boolean; candidatePositionHints?: { listId: string }[]; importance?: Importance };
 type Changes = { asOf?: string; tenures: Tenure[]; replacements: Replacement[]; checks: { openingDateReported?: string | null } };
 type Vote = { for?: number | null; against?: number | null; crossVotes?: { personId: number; vote: string }[] | null };
@@ -187,7 +189,9 @@ function compileTerm(root: string, k: number, opening: string, end: string, ch: 
     if (!run.has(b.knessetPersonId)) run.set(b.knessetPersonId, [list, Number(rank)]);
   }
   for (const r of ch.replacements) if (r.enteringPersonId && !run.has(r.enteringPersonId) && r.candidatePositionHints?.[0]) run.set(r.enteringPersonId, [r.candidatePositionHints[0].listId, 999]);
-  const tenures = ch.tenures.filter((t) => t.start < end && (t.end === null || t.end > t.start)).sort((a, b) => a.start.localeCompare(b.start) || a.id - b.id);
+  // each member's factions as the app shows them: no zero-length record, cut to the term, same-day ones in time order
+  const tenures = ch.tenures.filter((t) => t.start < end && (t.end === null || t.end > t.start)).map((t) => ({ ...t, factions: shownRows(t.factions, t) }))
+    .sort((a, b) => a.start.localeCompare(b.start) || a.id - b.id);
   // a faction's list: the list most of its members from the first sitting were elected on
   const factionList = new Map<number, string>();
   {
@@ -206,7 +210,7 @@ function compileTerm(root: string, k: number, opening: string, end: string, ch: 
   const seats: SeatRuntime[] = [];
   const holderTenure: Tenure[][] = [];
   const openingSeat: Record<number, number> = {};
-  const factionsOf = (t: Tenure) => t.factions.length > 1 ? t.factions.map((f) => [f.factionId, f.start] as const) : [];
+  const factionsOf = (t: Tenure) => t.factions.length > 1 ? t.factions.map((f) => f.startTime ? [f.factionId, f.start, f.startTime] as const : [f.factionId, f.start] as const) : [];
   const recordFor = new Map(ch.replacements.filter((r) => r.enteringTenureId).map((r) => [r.enteringTenureId!, r]));
   const departureOf = new Map(ch.replacements.filter((r) => r.leavingTenureId).map((r) => [r.leavingTenureId!, r]));
   const sat = new Set<number>();

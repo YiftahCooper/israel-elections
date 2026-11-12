@@ -13,6 +13,7 @@ import type { ElectionDataset } from '../src/data/schema.ts';
 import { RULESETS } from '../src/engine/rules.ts';
 import { mixHex } from '../src/data/colour.ts';
 import { compileHistoryRuntime } from './party-history-runtime.ts';
+import { shownRows } from './lib/faction-rows.ts';
 
 /** How a run ended. elected: within the list's seats at the election. first: not within the seats but sat from the
  *  first sitting. later: entered during that Knesset. out: did not enter that Knesset. declined: within the seats but
@@ -24,8 +25,11 @@ export type RunBasis = 'id' | 'name';
 /** [election number, list id, rank, outcome, basis, for basis "name": the election number of the ID-tied run,
  *  for "declined" and "first": the official candidate notes that explain it ([English, Hebrew][]) ] */
 export type PackedRun = readonly [number, string, number, RunOutcome, RunBasis, number | null, readonly (readonly [string, string])[]];
-/** [Knesset number, start, end or null (still serving), factions [faction id, start, end or null][]] */
-export type PackedTerm = readonly [number, string, string | null, readonly (readonly [number, string, string | null])[]];
+/** One faction in a term: [faction id, start, end or null, and where the Knesset's record has them: start time, end time].
+ *  Only the records the app shows, cut to the term and in order (scripts/lib/faction-rows.ts). */
+export type PackedFaction = readonly [number, string, string | null] | readonly [number, string, string | null, string | null, string | null];
+/** [Knesset number, start, end or null (still serving), factions] */
+export type PackedTerm = readonly [number, string, string | null, readonly PackedFaction[]];
 /** [date, kind, Knesset number, English, Hebrew, evidence class, sources [publisher, url][]] */
 export type PackedEvent = readonly [string, string, number, string, string, string, readonly (readonly [string, string])[]];
 export interface MkPerson {
@@ -55,7 +59,7 @@ export interface MkRuntime {
 export interface MkReview { leftOut: { candidateId: string; nameHe: string; reason: string; personIds: number[] }[]; anomalies: string[] }
 
 type Bio = { knessetPersonId?: number | null; confidence?: string; knesset?: { siteId?: number } | null; hewiki?: { title?: string } | null; basis?: string };
-type Tenure = { personId: number; nameHe: string; start: string; end: string | null; factions: { factionId: number; nameHe: string; start: string; end: string | null }[] };
+type Tenure = { personId: number; nameHe: string; start: string; end: string | null; factions: { factionId: number; nameHe: string; start: string; end: string | null; startTime?: string; endTime?: string }[] };
 type Changes = { tenures: Tenure[]; factionRegistry: { id: number; nameHe: string; start: string; end: string | null }[]; checks: { openingDateReported?: string | null } };
 type KEvent = { id: string; date: string; kind: string; who: { personIds?: number[] }; summary: { en: string; he: string }; classification: string; certainty: string; evidenceClass?: string; sources: { url?: string; publisher?: string }[] };
 
@@ -116,7 +120,7 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
   const terms = new Map<number, PackedTerm[]>();
   for (const k of K) for (const t of changes.get(k)!.tenures) {
     const list = terms.get(t.personId) ?? [];
-    list.push([k, t.start, t.end, t.factions.map((f) => [f.factionId, f.start, f.end] as const)]);
+    list.push([k, t.start, t.end, shownRows(t.factions, t).map((f): PackedFaction => f.startTime || f.endTime ? [f.factionId, f.start, f.end, f.startTime ?? null, f.endTime ?? null] : [f.factionId, f.start, f.end])]);
     terms.set(t.personId, list);
   }
 
@@ -195,7 +199,10 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
     for (const n of [{ nameHe: p.nameHe, nameEn: p.nameEn }, ...(p.names ?? [])]) if (n.nameHe && n.nameEn) for (const x of factionKeys(n.nameHe)) if (!partyByName.has(x)) partyByName.set(x, n.nameEn);
   }
   // English display names for factions that match nothing above (data/meta/knesset-faction-names-en.json)
-  const curatedEn = new Map(Object.entries((read('data/meta/knesset-faction-names-en.json') as { names: Record<string, string> }).names).map(([he, en]) => [normName(he), en]));
+  const curated = read('data/meta/knesset-faction-names-en.json') as { names: Record<string, string>; sameName?: Record<string, string> };
+  const curatedEn = new Map(Object.entries(curated.names).map(([he, en]) => [normName(he), en]));
+  // one English name for a Hebrew faction name, in every Knesset, whatever rule named it (cx-factions-07)
+  const sameNameEn = new Map(Object.entries(curated.sameName ?? {}).map(([he, en]) => [normName(he), en]));
   const listsByEn = new Map<string, { k: number; id: string }[]>();
   for (const k of K) for (const l of ds.get(k)!.lists) if (l.shortEn) (listsByEn.get(l.shortEn) ?? listsByEn.set(l.shortEn, []).get(l.shortEn)!).push({ k, id: l.id });
   const memberByName = new Map<string, string>();
@@ -248,11 +255,11 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
         list = near?.id;
       }
       const L = list ? out.lists[list] : undefined;
-      if (L) { out.factions[f.id] = [L[0], L[1], L[2]]; continue; }
+      if (L) { out.factions[f.id] = [L[0], sameNameEn.get(normName(f.nameHe)) ?? L[1], L[2]]; continue; }
       // a registered party of that name; a one-member faction ("חה״כ <name>") is named after its member
       const party = keys.map((x) => partyByName.get(x)).find(Boolean);
       const member = /^חה״כ /.test(normName(f.nameHe)) ? memberByName.get(nameKey(normName(f.nameHe).slice(5))) : undefined;
-      const en = party ?? (member ? `MK ${member}` : null) ?? curatedEn.get(normName(f.nameHe)) ?? null;
+      const en = sameNameEn.get(normName(f.nameHe)) ?? party ?? (member ? `MK ${member}` : null) ?? curatedEn.get(normName(f.nameHe)) ?? null;
       // the colour of the nearest list with that English name (Hadash, Ta'al, Mapam ...), else none
       const twin = en ? (listsByEn.get(en) ?? []).sort((a, b) => Math.abs(a.k - k) - Math.abs(b.k - k))[0] : undefined;
       // else a lighter shade of the list most of its members were elected on, so the change still shows on the bar

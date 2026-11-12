@@ -2,9 +2,9 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { comparableFor, comparablePredecessor, officialFacts } from '../src/history/compare.ts';
 import { RELATIONS, readRelations, type Relation } from '../src/history/relations.ts';
-import { HISTORY, electionPosition, historyList } from '../src/history/runtime.ts';
+import { HISTORY, electionIndex, electionPosition, historyList, partyNameAt } from '../src/history/runtime.ts';
 import { erasOf, eventsOf, identityOf, partySeries } from '../src/history/identity.ts';
-import { compileHistoryRuntime } from '../scripts/party-history-runtime.ts';
+import { compileHistoryRuntime, formOf, nameAtElection } from '../scripts/party-history-runtime.ts';
 import { certaintyCeiling } from '../src/data/evidence.ts';
 
 // The recorded relations (data/meta/party-lineage.json, stage 1 research); fixtures only where a rule needs a variant.
@@ -200,5 +200,76 @@ describe('where an event is drawn between elections (charts are evenly spaced, n
   it('before the first election and after the last stay on the chart', () => {
     expect(electionPosition('1948')).toBe(0);
     expect(electionPosition('2030')).toBe(HISTORY.length - 1);
+  });
+});
+
+// A party's name at an election is the one in force then (audit cx-parties-01, 12 Nov 2026).
+describe('names at each election', () => {
+  const strip = (id: string, lang: 'he' | 'en') => erasOf(partySeries(identityOf(id)), lang).map((e) => `${HISTORY[e.from].id}–${HISTORY[e.to].id} ${e.name}`);
+  it('New Right in April 2019 is New Right, not Yamina (the joint list formed for September 2019)', () => {
+    expect(strip('new-right', 'en')).toEqual(['k21–k23 New Right', 'k24–k25 Yamina']);
+    expect(strip('new-right', 'he')).toEqual(['k21–k23 הימין החדש', 'k24–k25 ימינה']);
+    expect(partyNameAt('new-right', electionIndex('k21'), 'en')).toBe('New Right');
+  });
+  it('the other names that were shown before they existed', () => {
+    expect(strip('tkuma', 'en')).toEqual(['k15–k20 Tkuma', 'k21–k23 National Union–Tkuma', 'k24–k26 Religious Zionist Party']);
+    expect(strip('tkuma', 'he')).toEqual(['k15–k17 תקומה', 'k18–k26 האיחוד הלאומי – תקומה']);
+    expect(strip('israel-resilience', 'en')).toEqual(['k21–k23 Israel Resilience', 'k24–k26 Blue and White']);
+    expect(strip('otzma-yehudit', 'en')).toEqual(['k19–k19 Otzma Leyisrael', 'k20–k26 Otzma Yehudit']);
+    expect(strip('ahi', 'en')).toEqual(['k17–k17 Renewed Religious National Zionism', 'k18–k23 Ahi']);
+    expect(strip('new-hope', 'en')).toEqual(['k24–k25 New Hope', 'k26–k26 New Hope – the National Right']);
+  });
+  it('spelling variants of one name do not split a history; a long form is the same name', () => {
+    expect(formOf('מפלגת העבודה הישראלית', 'העבודה', 'he')).toBe(true);
+    expect(formOf('תקומה', 'האיחוד הלאומי – תקומה', 'he')).toBe(false);
+    expect(formOf('Hatnuah', 'Hatnua', 'en')).toBe(true);
+    expect(formOf('NRP', 'National Religious Party', 'en')).toBe(true);
+    expect(strip('labor', 'en')).toEqual(['k1–k6 Mapai', 'k7–k25 Labor', 'k26–k26 The Democrats']);
+    expect(nameAtElection('ימינה', ['הימין החדש', null, 'ימינה', 'הימין החדש'], 'he')).toEqual(['הימין החדש', null, null, 'הימין החדש']);
+  });
+  it('every party, every election: the name shown was in use by then (data/meta/parties.json, dated names)', () => {
+    type P = { id: string; aliases?: { id: string }[]; names: { date: string; nameHe: string; nameEn?: string | null }[] };
+    const reg = JSON.parse(readFileSync('data/meta/parties.json', 'utf8')) as { parties: P[] };
+    const dated = new Map<string, P['names']>();
+    for (const p of reg.parties) for (const id of [p.id, ...(p.aliases ?? []).map((a) => a.id)]) dated.set(id, [...(dated.get(id) ?? []), ...p.names]);
+    const early: string[] = [];
+    HISTORY.forEach((e, i) => { for (const l of e.lists) for (const p of l.parties) {
+      const names = (dated.get(p) ?? []).filter((n) => n.date <= e.date);
+      if (!names.length) continue;
+      const he = partyNameAt(p, i, 'he'), en = partyNameAt(p, i, 'en');
+      // a name dated by then that holds every word of the shown one (a long form of it, or the same)
+      const known = names.some((n) => formOf(n.nameHe, he, 'he') || (!!n.nameEn && formOf(n.nameEn, en, 'en')));
+      if (!known) early.push(`${e.id} ${p}: ${en} / ${he}`);
+    } });
+    expect(early).toEqual([]);
+  });
+});
+
+// audit 12 Nov 2026 (cx-parties-02, cx-parties-03): two histories that were one party each
+describe('one party, one history', () => {
+  const strip = (id: string, lang: 'he' | 'en') => erasOf(partySeries(identityOf(id)), lang).map((e) => `${HISTORY[e.from].id}–${HISTORY[e.to].id} ${e.name}`);
+  const lineage = JSON.parse(readFileSync('data/meta/party-lineage.json', 'utf8'));
+  const edge = (id: string) => lineage.edges.find((e: { id: string }) => e.id === id);
+  it('the State List: its own list in 1969, inside Likud in 1973', () => {
+    expect(identityOf('state-list').ids).toEqual(expect.arrayContaining(['vehicle-7-עמ', 'state-list']));
+    expect(identityOf('vehicle-7-עמ').ids).toContain('state-list');
+    expect(strip('state-list', 'en')).toEqual(['k7–k7 National List', 'k8–k8 State List']);
+    expect(strip('state-list', 'he')).toEqual(['k7–k7 רשימה ממלכתית', 'k8–k8 הרשימה הממלכתית']);
+    // same organisation is not drawn as an event; the link rests on IDI scholarship, so it is probable
+    expect(eventsOf(identityOf('state-list')).map((r) => r.id)).not.toContain('state-list-1969-1973');
+    expect(edge('state-list-1969-1973').certainty).toBe('probable');
+  });
+  it('HaOlam HaZeh became Meri: faction renamed 3 Jul 1973 in the Knesset record', () => {
+    expect(identityOf('meri').ids).toEqual(expect.arrayContaining(['vehicle-6-ש', 'vehicle-7-ש', 'meri']));
+    expect(strip('vehicle-6-ש', 'en')).toEqual(['k6–k7 HaOlam HaZeh', 'k8–k9 Meri']);
+    expect(strip('meri', 'he')).toEqual(['k6–k7 העולם הזה', 'k8–k9 מרי']);
+    const ev = eventsOf(identityOf('meri')).find((r) => r.id === 'haolam-meri-1973')!;
+    expect([ev.kind, ev.date]).toEqual(['renamed-to', '1973-07-03']);
+    // the official faction records carry it; the date is the faction's, not a legal registration
+    expect(edge('haolam-meri-1973').sources).toEqual(expect.arrayContaining(['odata-k7-factions', 'odata-k7-positions']));
+    expect(edge('haolam-meri-1973').effectiveFor).toBe('parliamentary-faction');
+    const k7 = JSON.parse(readFileSync('data/research/knesset-member-changes/k7.json', 'utf8'));
+    const reg = (id: number) => k7.factionRegistry.find((f: { id: number }) => f.id === id);
+    expect([reg(353).end, reg(994).start]).toEqual(['1973-07-03', '1973-07-03']);
   });
 });

@@ -4,7 +4,7 @@
 // "not the same party" facts are never crossed. The series is generic enough to describe a person later (MK history):
 // one point per election with a whole-list total, the subject's own share of it, and a role.
 import { RELATIONS, distinct, usable, type Relation } from './relations.ts';
-import { HISTORY, partyShort, type HList } from './runtime.ts';
+import { HISTORY, partyNameAt, type HList } from './runtime.ts';
 
 export interface Identity {
   /** the id the history was opened for */
@@ -90,12 +90,13 @@ export function partySeries(identity: Identity): SeriesPoint[] {
   });
 }
 
-/** Consecutive runs of the same name: the name strip under the chart (Mapai | Labor | The Democrats). */
+/** Consecutive runs of the same name: the name strip under the chart (Mapai | Labor | The Democrats). Each election
+ *  shows the name the party ran under then, never a later one (New Right in April 2019, not Yamina). */
 export function erasOf(points: SeriesPoint[], lang: 'he' | 'en'): { from: number; to: number; name: string }[] {
   const out: { from: number; to: number; name: string }[] = [];
   for (const p of points) {
     if (!p.era) continue;
-    const name = partyShort(p.era, lang);
+    const name = partyNameAt(p.era, p.i, lang);
     const last = out[out.length - 1];
     if (last && last.name === name) last.to = p.i; else out.push({ from: p.i, to: p.i, name });
   }
