@@ -47,7 +47,7 @@
 .family-key-mixed {inline-size:7px;block-size:12px;border:1px solid var(--ink-2);background:repeating-linear-gradient(45deg,var(--ink-2) 0 1.2px,transparent 1.2px 3.5px);}
 .family-plot g[role=button] {cursor:pointer;}
 .family-plot g[role=button]:focus-visible {outline:2px solid var(--focus);}
-.family-tooltip {display:grid;gap:3px;position:fixed;inset-block-start:8px;inline-size:min(330px,calc(100vw - 16px));font-size:12px;line-height:1.4;background:var(--surface);border:1px solid var(--rule-2);box-shadow:var(--shadow-pop);padding:7px 10px;border-radius:5px;color:var(--ink);pointer-events:none;}
+.family-tooltip {display:grid;gap:3px;position:fixed;inset-block-start:8px;inline-size:min(330px,calc((100vw - 16px) / var(--text-zoom, 1)));font-size:12px;line-height:1.4;background:var(--surface);border:1px solid var(--rule-2);box-shadow:var(--shadow-pop);padding:7px 10px;border-radius:5px;color:var(--ink);pointer-events:none;}
 /* The hover box only reports; it never takes the pointer, so moving along the chart cannot make it flicker or jump. */
 .family-tooltip .ft-row {display:flex;gap:6px;align-items:flex-start;}
 .family-tooltip .ft-row>i {flex-shrink:0;margin-block-start:3px;}
@@ -83,7 +83,7 @@
 .family-consequence p {font-size:12px;}
 .family-unavailable {font-size:13px;color:var(--ink-2);max-inline-size:44ch;}
 .family-quick-step input[aria-invalid=true] {border-color:var(--bad);}
-.family-sheet {margin-inline-start:auto;margin-inline-end:0;margin-block:0;block-size:100dvh;max-block-size:100dvh;inline-size:min(600px,100vw);max-inline-size:100vw;border:0;border-inline-start:1px solid var(--rule);padding:0;background:var(--surface);color:var(--ink);box-shadow:var(--shadow-pop);}
+.family-sheet {margin-inline-start:auto;margin-inline-end:0;margin-block:0;block-size:calc(100dvh / var(--text-zoom, 1));max-block-size:calc(100dvh / var(--text-zoom, 1));inline-size:min(600px,calc(100vw / var(--text-zoom, 1)));max-inline-size:calc(100vw / var(--text-zoom, 1));border:0;border-inline-start:1px solid var(--rule);padding:0;background:var(--surface);color:var(--ink);box-shadow:var(--shadow-pop);}
 .family-sheet::backdrop {background:rgb(0 0 0/.35);}
 .family-sheet>header {display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;border-block-end:1px solid var(--rule);position:sticky;inset-block-start:0;background:var(--surface);z-index:2;}
 .family-sheet h2 {font-size:18px;}

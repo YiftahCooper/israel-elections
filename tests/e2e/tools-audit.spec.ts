@@ -78,7 +78,7 @@ test('the sweeps refuse an empty or reversed range in place, without a result', 
   await expect(panel(page).getByRole('columnheader', { name: 'Threshold above' })).toBeVisible();
   const from = panel(page).getByRole('textbox', { name: 'From', exact: true });
   await from.fill('99999999'); await from.press('Enter');
-  await expect(panel(page).getByRole('alert')).toHaveText('“To” must be above “from”.');
+  await expect(panel(page).getByRole('alert')).toHaveText('The second number must be above the first.');
   await expect(panel(page).getByRole('group', { name: 'Seats against votes' })).toHaveCount(0);
 });
 

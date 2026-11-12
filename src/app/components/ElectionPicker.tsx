@@ -35,7 +35,7 @@ export function ElectionPicker({ elections, value, onChange, arrows = true }: { 
   }, [open, previewKey]); // the opened timeline keeps its election snapshot while previews arrive
   return <span className="election choice-picker election-navigation">
     {arrows && <button className="tool election-arrow" aria-label={L('Previous election', 'הבחירות הקודמות')} disabled={at < 0 || at >= options.length - 1 || options[at + 1]?.disabled} onClick={() => onChange(options[at + 1].value)}><span aria-hidden>‹</span></button>}
-    <button ref={trigger} className="btn choice-trigger" aria-label={L('Election', 'בחירות')} aria-haspopup="dialog" data-value={value} onClick={() => { setQuery(''); setOpen(true); dialog.current?.showModal(); dialog.current?.querySelector<HTMLInputElement>('input')?.focus(); requestAnimationFrame(() => dialog.current?.querySelector<HTMLElement>(`[data-choice-value="${value}"]`)?.scrollIntoView({ block: 'nearest' })); }}><span className="choice-current">{options[at]?.label}</span><ChevronsUpDown className="icon sm picker-affordance" aria-hidden /></button>
+    <button ref={trigger} className="btn choice-trigger" aria-label={L('Election', 'בחירות')} aria-haspopup="dialog" data-value={value} onClick={() => { setQuery(''); setOpen(true); dialog.current?.showModal(); dialog.current?.querySelector<HTMLInputElement>('input')?.focus(); requestAnimationFrame(() => dialog.current?.querySelector<HTMLElement>(`[data-choice-value="${value}"]`)?.scrollIntoView({ block: 'nearest' })); }}><CurrentElection label={options[at]?.label ?? ''} date={options[at]?.date ?? ''} lang={lang} /><ChevronsUpDown className="icon sm picker-affordance" aria-hidden /></button>
     {arrows && <button className="tool election-arrow" aria-label={L('Next election', 'הבחירות הבאות')} disabled={at <= 0 || options[at - 1]?.disabled} onClick={() => onChange(options[at - 1].value)}><span aria-hidden>›</span></button>}
     <dialog ref={dialog} className="choice-dialog election-dialog" aria-label={L('Election', 'בחירות')} onKeyDown={e => { if (e.key === 'Escape') e.stopPropagation(); }} onCancel={e => { e.preventDefault(); close(); }} onClick={e => { if (e.target === e.currentTarget) close(); }}>
       <div className="timeline-search"><input autoFocus type="search" value={query} aria-label={L('Search choices', 'חיפוש אפשרויות')} placeholder={L('Year, Knesset or date…', 'שנה, כנסת או תאריך…')} onChange={e => setQuery(e.target.value)} onKeyDown={e => { if (e.key === 'ArrowDown') { e.preventDefault(); dialog.current?.querySelector<HTMLButtonElement>('.choice-option:not(:disabled)')?.focus(); } }} /><button className="btn" aria-label={L('Close', 'סגירה')} onClick={close}>×</button></div>
@@ -57,5 +57,15 @@ export function ElectionPicker({ elections, value, onChange, arrows = true }: { 
         {!matches.length && <p>{L('No matches', 'אין תוצאות')}</p>}
       </div>
     </dialog>
+  </span>;
+}
+
+/** The trigger's name in two parts (when · which Knesset). The phone bar stacks them, with a short month for 2019. */
+function CurrentElection({ label, date, lang }: { label: string; date: string; lang: 'he' | 'en' }) {
+  const [when, ...rest] = label.split(' · ');
+  const short = /\s/.test(when) && /^\d{4}-\d{2}/.test(date) ? formatDate(date.slice(0, 7), lang) : when;
+  return <span className="choice-current">
+    <span className="choice-current-part"><span className="choice-when-long">{when}</span><span className="choice-when-short">{short}</span></span>
+    {rest.length > 0 && <span className="choice-current-part"><span className="choice-current-dot"> · </span>{rest.join(' · ')}</span>}
   </span>;
 }

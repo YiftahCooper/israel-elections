@@ -21,9 +21,9 @@
 .session > .compare-on { margin-inline-start: auto; }
 .session > .compare-on + .btn { margin-inline-start: 0; }
 @media (max-width: 600px) {
-  .session:has(> .compare-on) { grid-template-columns: minmax(0, 1fr) auto auto; }
-  .session > .compare-on { grid-area: 1 / 2; }
-  .session > .compare-on + .btn { grid-area: 1 / 3; }
+  .session:has(> .compare-on) { grid-template-columns: minmax(0, max-content) auto minmax(0, 1fr) auto auto; }
+  .session > .compare-on { grid-area: 1 / 4; }
+  .session > .compare-on + .btn { grid-area: 1 / 5; }
   /* the count label keeps the room it had before the Compare button: its 30% cap would otherwise be 30% of a column
      the two buttons narrowed (22vw is what 30% of the old column came to) */
   .session > b.fit-label { max-inline-size: min(100%, 22vw); }

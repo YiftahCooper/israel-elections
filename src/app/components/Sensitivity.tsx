@@ -133,15 +133,19 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
       <h3>{L('Votes → seats', 'קולות ← מנדטים')} <Info title={L('Votes → seats', 'קולות ← מנדטים')}>{L('The seats one list wins at every vote count in the range. All other lists keep their votes, so the valid total changes with this list. Boundaries are exact whole vote counts.', 'המנדטים שרשימה אחת מקבלת בכל מספר קולות בטווח. שאר הרשימות שומרות על קולותיהן, ולכן סך הקולות הכשרים משתנה עם הרשימה. הגבולות הם מספרי קולות מדויקים.')}</Info></h3>
       <div className="row">
         <ChoicePicker label={L('List', 'רשימה')} value={id} onChange={setPicked} options={main.slice(0, 30).map(x => ({ value: x.id, label: listLabel(x, lang), preview: <span className="swatch" style={{ background: x.color }} /> }))} />
-        <span className="row" dir="ltr" style={{ flexWrap: 'nowrap', gap: 6 }}>
-          <span className="small">{L('from', 'מ')}</span><NumberInput value={from} onCommit={(n) => setRange(n, to)} label={L('From', 'מ')} width={100} />
-          <span className="small">{L('to', 'עד')}</span><NumberInput value={to} onCommit={(n) => setRange(from, n)} label={L('To', 'עד')} width={100} />
+        {/* one label in the page's direction, then the range low to high, left to right as on the chart's axis */}
+        <span className="row" role="group" aria-label={L('Vote range', 'טווח קולות')} style={{ gap: 6 }}>
+          <span className="small">{L('Vote range', 'טווח קולות')}</span>
+          <span className="row" dir="ltr" style={{ flexWrap: 'nowrap', gap: 6 }}>
+            <NumberInput value={from} onCommit={(n) => setRange(n, to)} label={L('From', 'מ')} width={100} /><span aria-hidden="true">–</span>
+            <NumberInput value={to} onCommit={(n) => setRange(from, n)} label={L('To', 'עד')} width={100} />
+          </span>
         </span>
         {custom?.id === id && <button className="btn" onClick={() => setCustom(null)} title={L('Back to the default range', 'חזרה לטווח ברירת המחדל')}>{L('Reset', 'איפוס')}</button>}
       </div>
       {/* one status line of fixed height: computing, cancelled or an invalid range never moves the chart */}
       <p className="small muted row sens-status" role="status">
-        {!valid ? <span role="alert">{L('“To” must be above “from”.', '"עד" חייב להיות גדול מ"מ".')}</span>
+        {!valid ? <span role="alert">{L('The second number must be above the first.', 'המספר השני חייב להיות גדול מהראשון.')}</span>
           : state === 'busy' ? <>{L('Calculating exactly…', 'מחשב במדויק…')} <button className="btn small" onClick={cancel}>{L('Cancel', 'ביטול')}</button></>
           : state === 'cancelled' && !current ? <>{L('Cancelled.', 'בוטל.')} <button className="btn small" onClick={() => setAgain((n) => n + 1)}>{L('Run', 'הרצה')}</button></>
           : shown && !shown.exact ? <>{L(`Checked every ${fmtInt(shown.step)} votes`, `נבדק כל ${fmtInt(shown.step)} קולות`)} <Info title={L('Sampled range', 'טווח מדוגם')}>{L(`The range is wide, so the result was calculated every ${fmtInt(shown.step)} votes and each change was then located to the exact vote. A change that reverses within ${fmtInt(shown.step)} votes could be missed; narrow the range to 50,000 votes or less for a complete result.`, `הטווח רחב, ולכן חושב כל ${fmtInt(shown.step)} קולות וכל שינוי אותר עד הקול המדויק. שינוי שמתהפך בתוך ${fmtInt(shown.step)} קולות עלול להיעלם; צמצמו את הטווח ל-50,000 קולות או פחות לתוצאה מלאה.`)}</Info></>
@@ -236,9 +240,12 @@ function ThresholdSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
     <div>
       <h3>{L('Threshold → seats', 'אחוז חסימה ← מנדטים')} <Info title={L('Threshold → seats', 'אחוז חסימה ← מנדטים')}>{L('The result at every threshold in the range, with the exact percentages where it changes. Experimental: the other rules stay as they are.', 'התוצאה בכל אחוז חסימה בטווח, עם האחוזים המדויקים שבהם היא משתנה. ניסיוני: שאר הכללים נשארים כפי שהם.')}</Info></h3>
       <div className="row">
-        <span className="row" dir="ltr" style={{ flexWrap: 'nowrap', gap: 6 }}>
-          <span className="small">{L('from', 'מ')}</span><PctInput value={lo} onCommit={setLo} label={L('From %', 'מ-%')} />%
-          <span className="small">{L('to', 'עד')}</span><PctInput value={hi} onCommit={setHi} label={L('To %', 'עד %')} />%
+        <span className="row" role="group" aria-label={L('Threshold range', 'טווח אחוזים')} style={{ gap: 6 }}>
+          <span className="small">{L('Threshold range', 'טווח אחוזים')}</span>
+          <span className="row" dir="ltr" style={{ flexWrap: 'nowrap', gap: 6 }}>
+            <PctInput value={lo} onCommit={setLo} label={L('From %', 'מ-%')} />%<span aria-hidden="true">–</span>
+            <PctInput value={hi} onCommit={setHi} label={L('To %', 'עד %')} />%
+          </span>
         </span>
       </div>
       {!out && <p className="small" role="alert">{L('Enter percentages from 0 to 100 with “to” above “from”, e.g. 1 and 5.', 'הזינו אחוזים בין 0 ל-100 שבהם "עד" גדול מ"מ", למשל 1 ו-5.')}</p>}

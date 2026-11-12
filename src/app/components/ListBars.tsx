@@ -28,6 +28,7 @@ import { setState, useDigits, useLevel, useSetting, useStore } from '../store.ts
 import { blocDisplayOrder } from '../blocOrder.ts';
 import { partyListed } from '../seatlessParties.ts';
 import { DisclosureToggle, Slip } from './ui.tsx';
+import { textZoom } from '../textScale.ts';
 
 
 
@@ -56,8 +57,9 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   useEffect(() => { const row = selRef.current, panel = row?.closest('.lbars');
     if (selected && row && panel && panel.scrollHeight > panel.clientHeight) {
       const r = row.getBoundingClientRect(), p = panel.getBoundingClientRect();
-      if (r.top < p.top) panel.scrollTop += r.top - p.top;
-      else if (r.bottom > p.bottom) panel.scrollTop += r.bottom - p.bottom;
+      // screen distances are zoomed under Large text; scrollTop is not
+      if (r.top < p.top) panel.scrollTop += (r.top - p.top) / textZoom();
+      else if (r.bottom > p.bottom) panel.scrollTop += (r.bottom - p.bottom) / textZoom();
     } }, [selected]);
 
   const previousSeats = useRef({ election: s.electionId, seats: new Map(r.lists.map(x => [x.id, x.seats])) });

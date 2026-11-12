@@ -29,6 +29,7 @@ import { dispatch, setState } from '../store.ts';
  *  (tests/party-colours.test.ts) */
 export {BLOC_PALETTE} from '../../model/blocColors.ts';
 import {BLOC_PALETTE} from '../../model/blocColors.ts';
+import { textZoom } from '../textScale.ts';
 const PALETTE = BLOC_PALETTE;
 const NONE = '__none';
 
@@ -89,7 +90,8 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
   const seatsIn = (k: string) => (units.get(k) ?? []).reduce((t, u) => t + u.n, 0);
 
   useEffect(() => { const card = cards.current[focus], body = card?.closest('.sp-body');
-    if (card && body) body.scrollTop += card.getBoundingClientRect().top - body.getBoundingClientRect().top; }, [focus]);
+    // screen distances are zoomed under Large text; scrollTop is not
+    if (card && body) body.scrollTop += (card.getBoundingClientRect().top - body.getBoundingClientRect().top) / textZoom(); }, [focus]);
   // Escape first cancels a move or closes the colours, before it closes the panel (the app's handler)
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {

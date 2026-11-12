@@ -4,6 +4,7 @@ import { useL, useLang } from '../i18n.ts';
 import { groupTabs } from '../tabGroups.ts';
 import { motionReduced } from '../store.ts';
 import './tab-row.css';
+import { textZoom } from '../textScale.ts';
 
 /** `muted`: not shown at this level, by the level itself or by a Custom choice of Collapsed (featureVisibility). */
 type Tool = { id: string; level: Preset; muted: boolean };
@@ -31,7 +32,7 @@ export function TabRow({ tools, level, selected, label, onOpen, onKey, onPrefetc
     const s = strip.current, g = s?.querySelector<HTMLElement>(`[data-tab-group="${id}"]`);
     if (!s || !g) return;
     const a = g.getBoundingClientRect(), b = s.getBoundingClientRect();
-    s.scrollBy({ left: lang === 'he' ? a.right - b.right : a.left - b.left, behavior: motionReduced() ? 'auto' : 'smooth' });
+    s.scrollBy({ left: (lang === 'he' ? a.right - b.right : a.left - b.left) / textZoom(), behavior: motionReduced() ? 'auto' : 'smooth' });
   };
   return <nav className="toolbar" aria-label={L('Tools', 'כלים')}>
     <div className="tab-jumps">{groups.map(g => <button key={g.id} type="button" data-current={g.tabs.some(t => t.id === selected) ? '' : undefined}
