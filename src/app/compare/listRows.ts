@@ -36,10 +36,13 @@ export function pairedRows(work: Scenario, ref: Scenario, overrides: MatchOverri
   return refEarlier ? matchRows(ref, work, overrides) : mirrorRows(matchRows(work, ref, overrides));
 }
 
+/** What happened between the two elections, said from the reference's side: an earlier reference's lists "ran
+ *  separately", a later reference's list is where they "ran jointly". */
 const HOW: Partial<Record<MatchTag, [string, string]>> = {
   renamed: ['renamed', 'שינתה שם'], joined: ['joined', 'הצטרפה'], merged: ['merged', 'התאחדו'],
   'ran-jointly': ['ran separately', 'רצו בנפרד'], yours: ['paired by you', 'הותאמה על ידיכם'], split: ['split', 'התפצלה'],
 };
+const HOW_LATER: Partial<Record<MatchTag, [string, string]>> = { ...HOW, 'ran-jointly': ['ran jointly', 'רצו יחד'] };
 
 export function refRows(work: Scenario, ref: Scenario, overrides: MatchOverride[], refEarlier: boolean, label: string, lang: Lang): RefRows {
   const rows = pairedRows(work, ref, overrides, refEarlier);
@@ -48,6 +51,8 @@ export function refRows(work: Scenario, ref: Scenario, overrides: MatchOverride[
   const nameOf = (id: string) => { const l = ref.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : id; };
   const en = lang === 'en';
   const same = work.electionId === ref.electionId;
+  // a later reference: rows were matched earlier → later and mirrored, so your lists are the earlier side
+  const later = !same && !refEarlier;
   const byList = new Map<string, RefLine>();
   const only: RefOnly[] = [];
   const seen = new Set<string>();
@@ -72,7 +77,9 @@ export function refRows(work: Scenario, ref: Scenario, overrides: MatchOverride[
     const left = groupIds(g, 'left'), right = groupIds(g, 'right');
     const names = left.map(nameOf).join(' + ');
     const parts = right.length;
-    const how = parts > 1 ? (en ? `split into ${parts}` : `התפצלה ל-${parts}`) : HOW[row.tag]?.[en ? 0 : 1] ?? '';
+    // a split names its successors, on whichever side they are; several lists of yours in any other row ran together later
+    const successors = row.group || row.tag === 'split' ? (later ? left : right).length : 0;
+    const how = successors > 1 ? (en ? `split into ${successors}` : `התפצלה ל-${successors}`) : (later ? HOW_LATER : HOW)[row.tag]?.[en ? 0 : 1] ?? '';
     const notCounted = g.flatMap(notCountedOf);
     for (const id of right) {
       const plain = same && row.tag === 'same' && left.length === 1 && right.length === 1 && names === nameOf(id) && nameOf(id) === listLabel(work.lists.find((l) => l.id === id)!, lang);
