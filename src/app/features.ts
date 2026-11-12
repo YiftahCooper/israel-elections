@@ -18,12 +18,13 @@ export const TOOL_FEATURES = [
   ['sources', 'Explore', 'Sources', 'מקורות', 'simple'],
 ] as const;
 export const FEATURES = [...TOOL_FEATURES,
-  // Side by side opens from the comparison strip, not as a tab (owner, 12 Nov 2026, C5b)
-  ['compare', 'Analyse', 'Side by side', 'זו לצד זו', 'standard'],
+  // Side by side opens from the comparison strip, not as a tab, at every level (owner, 12 Nov 2026, C5b)
+  ['compare', 'Analyse', 'Side by side', 'זו לצד זו', 'simple'],
   ['familyEdit', 'Edit', 'Family definitions and presets', 'הגדרות משפחות ותבניות', 'standard'],
   ['familyScale', 'Edit', 'Scale family votes', 'שינוי קולות למשפחה', 'standard'],
   ['familyGrouping', 'Edit', 'Apply family grouping', 'קיבוץ לפי משפחה', 'standard'],
-  ['splitIdentity', 'Edit', 'Split list identity', 'זהות הרשימה בפיצול', 'standard'],
+  // Merge & split → Merge lists: the merged list's name, letters, candidate order and colour (the id is historical)
+  ['splitIdentity', 'Edit', 'Merged list details', 'פרטי הרשימה המאוחדת', 'standard'],
   ['voteStart', 'Edit', 'Vote starting point', 'נקודת מוצא לקולות', 'standard'],
   ['chamberOptions', 'Explore', 'Chamber options', 'אפשרויות המליאה', 'expert'],
   ['chamberLegend', 'Explore', 'Export the chamber', 'ייצוא המליאה', 'standard'],
@@ -36,7 +37,6 @@ export const FEATURES = [...TOOL_FEATURES,
   ['identity', 'Edit', 'List identity', 'זהות הרשימה', 'expert'],
   ['candidateEdit', 'Edit', 'Candidate editing', 'עריכת מועמדים', 'expert'],
   ['allocation', 'Analyse', 'Allocation detail', 'פירוט החלוקה', 'expert'],
-  ['notes', 'Explore', 'Official list notes', 'הערות רשמיות לרשימה', 'standard'],
 ] as const;
 export type FeatureId = typeof FEATURES[number][0];
 /** The one source of every tool and section name (tab strip, Custom page, disclosures) and of level names. */
@@ -45,7 +45,10 @@ export const LEVEL_LABELS: Record<Preset, readonly [string, string]> = { simple:
 export const RANK: Record<Preset, number> = { simple: 0, standard: 1, expert: 2 };
 export const PRESETS = Object.fromEntries((['simple', 'standard', 'expert'] as const).map(level =>
   [level, Object.fromEntries(FEATURES.map(([id,,,, min]) => [id, RANK[level] >= RANK[min] ? 'show' : 'collapsed']))])) as Record<Preset, Record<FeatureId, Visibility>>;
+/** Always shown, never a feature: a list's notes on the sources are among the data qualifications (audit 12 Nov 2026). */
 export const TRUTH_LABELS = ['editMarkers', 'scenarioChip', 'searchQualifiers', 'publicationWarnings', 'dataQualifications'] as const;
+/** Features with no folded form: the Custom page offers Show or Hidden only (Side by side is a button or nothing). */
+export const SHOW_OR_HIDE: readonly FeatureId[] = ['compare'];
 
 /** Short previews for the visibility cards, in the same order as their bilingual labels. */
 export const FEATURE_PREVIEWS: Record<FeatureId, readonly [string, string]> = {
@@ -68,7 +71,7 @@ export const FEATURE_PREVIEWS: Record<FeatureId, readonly [string, string]> = {
   loc: ['Browse votes on a map', 'עיון בקולות על מפה'],
   rules: ['Method, threshold, chamber size', 'שיטה, אחוז חסימה, גודל הכנסת'],
   sources: ['Official records and data coverage', 'מקורות רשמיים וכיסוי הנתונים'],
-  splitIdentity: ['Name and colour of each new list', 'שם וצבע לכל רשימה חדשה'],
+  splitIdentity: ['Name, letters, colour and candidate order', 'שם, אותיות, צבע וסדר המועמדים'],
   voteStart: ['Restore or copy vote totals', 'שחזור או העתקת מספרי קולות'],
   chamberOptions: ['Arc or blocks; colour by list or bloc', 'קשת או גושים; צביעה לפי רשימה או גוש'],
   chamberLegend: ['Download the seat diagram as SVG or PNG', 'הורדת תרשים המושבים כ־SVG או PNG'],
@@ -81,5 +84,4 @@ export const FEATURE_PREVIEWS: Record<FeatureId, readonly [string, string]> = {
   identity: ['Names, ballot letters and colours', 'שמות, אותיות וצבעים'],
   candidateEdit: ['Reorder, add or remove candidates', 'סידור, הוספה והסרת מועמדים'],
   allocation: ['Whole-quota and remainder seats', 'מנדטים במודד ובחלוקת עודפים'],
-  notes: ['Qualifications from the published record', 'סייגים מתוך הפרסום הרשמי'],
 };
