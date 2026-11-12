@@ -9,7 +9,6 @@ export const TOOL_FEATURES = [
   ['coal', 'Explore', 'Coalitions', 'קואליציות', 'simple'],
   ['walk', 'Explore', 'How seats were allocated', 'חלוקת המנדטים', 'simple'],
   ['structure', 'Edit', 'Merge & split', 'איחוד ופיצול', 'standard'],
-  ['compare', 'Analyse', 'Compare', 'השוואה', 'standard'],
   ['security', 'Analyse', 'Seat safety', 'ביטחון המנדטים', 'standard'],
   ['charts', 'Analyse', 'Charts', 'תרשימים', 'standard'],
   ['turnout', 'Edit', 'Turnout', 'שיעור הצבעה', 'expert'],
@@ -19,6 +18,8 @@ export const TOOL_FEATURES = [
   ['sources', 'Explore', 'Sources', 'מקורות', 'simple'],
 ] as const;
 export const FEATURES = [...TOOL_FEATURES,
+  // Side by side opens from the comparison strip, not as a tab (owner, 12 Nov 2026, C5b)
+  ['compare', 'Analyse', 'Side by side', 'זו לצד זו', 'standard'],
   ['familyEdit', 'Edit', 'Family definitions and presets', 'הגדרות משפחות ותבניות', 'standard'],
   ['familyScale', 'Edit', 'Scale family votes', 'שינוי קולות למשפחה', 'standard'],
   ['familyGrouping', 'Edit', 'Apply family grouping', 'קיבוץ לפי משפחה', 'standard'],

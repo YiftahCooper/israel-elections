@@ -50,7 +50,7 @@ for (const [width, election] of [[1500, 'k26'], [1024, 'k25'], [390, 'k1']] as c
     // phones (one-row bar, owner 9 Nov): level, Custom and Settings are in the bar's Menu, which Settings
     // gives focus back to
     const phone = width === 390, menuBtn = page.locator('.band .band-menu-btn');
-    for (const [level, tab] of [['simple', 'board'], ['standard', 'coal'], ['expert', 'rules'], ['custom', 'compare']]) {
+    for (const [level, tab] of [['simple', 'board'], ['standard', 'coal'], ['expert', 'rules'], ['custom', 'structure']]) {
       if (phone) await menuBtn.click();
       if (level !== 'custom') await page.getByRole('group', { name: lang === 'en' ? 'Detail level' : 'רמת פירוט' }).getByRole('button', { name: lang === 'en' ? ({ simple: 'Simple', standard: 'Standard', expert: 'Expert' }[level]!) : ({ simple: 'פשוט', standard: 'רגיל', expert: 'מומחה' }[level]!), exact: true }).click();
       else {

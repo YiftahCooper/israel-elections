@@ -10,6 +10,7 @@ import { StartFrom } from './StartFrom.tsx';
 import { PartEdits } from './PartEdits.tsx';
 import { describe } from '../actionDescription.ts';
 import { EditMarker } from './EditMarker.tsx';
+import { RulesCopy } from '../compare/RulesCopy.tsx';
 import { ruleEraLabel } from '../changeValue.tsx';
 import { LocalityMap, Locality2006Note, LocalityName, localityName, localityNameSource, useLocalityLocations, useLocalityNames } from './LocalityMap.tsx';
 import { localityHebrewName, type LocalityNames } from '../../data/locality-names.ts';
@@ -79,6 +80,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
         <p className="small ink2 rules-law">{L('Law', 'החוק')}: <b>{ruleEraLabel(law, lang)}</b> <Info title={exp ? L('Experimental rules', 'כללים ניסיוניים') : L('Historically valid', 'תקף היסטורית')}>{exp
           ? L('You may change the electoral system itself. Results are an alternative system, not Israeli law; each rule that differs is marked Edited.', 'ניתן לשנות את שיטת הבחירות עצמה. התוצאות הן שיטה חלופית ולא החוק הישראלי; כל כלל ששונה מסומן ״נערך״.')
           : L('The law of this election is enforced. Votes, lists, candidates and agreements can still change; choose Experimental to change the rules themselves.', 'החוק של בחירות אלה נאכף. עדיין ניתן לשנות קולות, רשימות, מועמדים והסכמים; לשינוי הכללים עצמם בחרו ״ניסיוני״.')}</Info></p>
+        <RulesCopy s={s} />
         {Object.keys(s.lotteryWinners).length > 0 && <p className="small">{L('You have recorded lottery outcomes for tied seats.', 'רשמתם תוצאות הגרלה למושבים בשוויון.')} <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'lottery' })}>{L('Clear them', 'ניקוי')}</button></p>}
         <fieldset className="rules-fields">
           <div className="grid2 rules-grid">

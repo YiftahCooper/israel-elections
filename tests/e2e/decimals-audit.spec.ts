@@ -1,5 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 import { choose } from './choices.ts';
+import { openSideBySide } from './sideBySide.ts';
 
 // Settings → Max decimal places bounds every percentage and percentage-point figure on screen. Exempt: a threshold
 // set in law (3.25%, 1.5%) is a rule, shown exactly; anything inside [data-exact], where a screen is about precision;
@@ -51,11 +52,12 @@ for (const max of [0, 1, 2, 3]) for (const tab of ['compare', 'security', 'struc
   await page.locator('.lb-row').first().click();
   for (let i = 0; i < 3; i++) await page.getByRole('button', { name: 'Increase Votes', exact: true }).click();
   await page.keyboard.press('Escape');
-  await page.locator(`#tab-${tab}`).click();
+  // Side by side opens from the comparison strip (no longer a tab)
+  if (tab === 'compare') await openSideBySide(page); else await page.locator(`#tab-${tab}`).click();
   await page.waitForTimeout(600);
   expect(await offenders(page, max)).toEqual([]);
   // the screen's own disclosures (details, folded rows) hold numbers too
-  for (const d of await page.locator('[role="tabpanel"] details:not([open]) > summary').all()) await d.click().catch(() => {});
+  for (const d of await page.locator('#analysis-panel details:not([open]) > summary').all()) await d.click().catch(() => {});
   await page.waitForTimeout(300);
   expect(await offenders(page, max)).toEqual([]);
 });

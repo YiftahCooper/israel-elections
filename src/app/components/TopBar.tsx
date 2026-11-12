@@ -21,6 +21,7 @@ import type { Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { csvEscape, download } from '../format.ts';
 import { deleteSaved, dispatch, getSetting, setLevel, setSetting, toggleTheme, useSetting, duplicateCurrent, importScenarioJson, openElection, openImported, openSaved, replay, redo, resetAll, scenarioKey, setState, shareLink, toast, undo, useStore } from '../store.ts';
+import { compareWith } from '../compare/mode.ts';
 import { ChevronDown, Copy, Download, FolderOpen, Link2, Menu, Moon, Redo2, RotateCcw, Save, Share2, Sun, Table2, Trash2, Undo2, Upload, Settings, X } from 'lucide-react';
 import { PersonalSettings } from './PersonalSettings.tsx';
 import { Seg } from './ui.tsx';
@@ -102,7 +103,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
                 <button className="btn small ghost" style={{ justifyContent: 'flex-start', minWidth: 0 }} aria-current={x.id === s?.id ? 'true' : undefined} disabled={x.id === s?.id && !dirty} onClick={() => { void openSaved(x); close(); }}>
                   <span className="swatch" style={{ background: (ds?.id===x.electionId?resultChanges(replay(ds,x.name,x.log,x.factionSplitBaseline??false).scenario,baselineOf(ds)).length:x.log.some(isFactAction)) ? savedColor(x.log) : 'var(--muted)' }} /><span className="clip" style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{x.name}{x.id === s?.id && dirty && <UnsavedMark />}</span> <span className="muted">({elections.find((e) => e.id === x.electionId)?.date.slice(0, 4) ?? x.electionId})</span>{x.id === s?.id && <span aria-hidden>✓</span>}</button>
                 <span className="row" style={{ flexWrap: 'nowrap', gap: 2 }}>
-                  <button className="btn small ghost" onClick={() => { setState({ compareWith: x.id, tool: 'compare' }); close(); }} disabled={x.electionId !== electionId || x.id === s?.id}>{L('Compare', 'השוואה')}</button>
+                  <button className="btn small ghost" onClick={() => { compareWith(`saved:${x.id}`); close(); }} disabled={x.id === s?.id}>{L('Compare', 'השוואה')}</button>
                   <button className="btn small ghost danger icon-only" aria-label={L(`Delete ${x.name}`, `מחיקת ${x.name}`)} onClick={() => { if (confirm(L(`Delete “${x.name}” from this browser?`, `למחוק את "${x.name}" מהדפדפן?`))) deleteSaved(x.id); }}><Trash2 className="icon sm" aria-hidden /></button>
                 </span>
               </div>

@@ -14,7 +14,7 @@ describe('the three headings over the tab row', () => {
     expect(groups.map(g => [g.id, g.tabs.map(t => t.id)])).toEqual([['scenario', ['board']], ['happened', ['sources', 'after']]]);
   });
   test('tolerates a tool that is missing or not listed', () => {
-    const withoutCompare = TOOL_FEATURES.map(([id]) => ({ id })).filter(t => t.id !== 'compare');
+    const withoutCompare = TOOL_FEATURES.map(([id]) => ({ id })).filter(t => (t.id as string) !== 'compare');
     expect(groupTabs(withoutCompare).flatMap(g => g.tabs).length).toBe(withoutCompare.length);
     expect(groupTabs([{ id: 'glossary' }])[0]).toMatchObject({ id: 'scenario', tabs: [{ id: 'glossary' }] });
   });

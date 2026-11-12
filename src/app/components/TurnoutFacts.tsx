@@ -14,6 +14,10 @@ import { countChange, ELECTION_TOTALS, electionWhen, officialThreshold, previous
 import { EditMarker } from './EditMarker.tsx';
 import { percent, percentNum, points } from './Percentage.tsx';
 import { Info } from './ui.tsx';
+import { useReference } from '../compare/mode.ts';
+import { refLabel } from '../compare/useRefRows.ts';
+import { CopyOtherButton } from '../compare/CopyOtherButton.tsx';
+import type { OtherCopy } from '../compare/copyOther.ts';
 
 const arrow = (n: number) => (n > 0 ? '▲ ' : n < 0 ? '▼ ' : '');
 const signOf = (n: number) => (n > 0 ? '+' : n < 0 ? '−' : '±');
@@ -30,12 +34,13 @@ function PointDelta({ value, digits }: { value: number; digits: number }) {
   return <span className="seat-delta tn-delta" data-sign={Math.sign(value)}><bdi dir="ltr">{arrow(value)}{points(value, digits)}</bdi> {L('pp', 'נק׳')}</span>;
 }
 
-function Fact({ id, k, info, v, d, since }: { id: string; k: string; info?: ReactNode; v: ReactNode; d?: ReactNode; since?: ReactNode }) {
+function Fact({ id, k, info, v, d, since, copy }: { id: string; k: string; info?: ReactNode; v: ReactNode; d?: ReactNode; since?: ReactNode; copy?: ReactNode }) {
   return <div className="tn-fact" data-fact={id}>
     <dt>{k}{info}</dt>
     <dd className="tn-v">{v}</dd>
     {d && <dd className="tn-d">{d}</dd>}
     {since && <dd className="tn-since">{since}</dd>}
+    {copy && <dd className="tn-copy">{copy}</dd>}
   </div>;
 }
 
@@ -43,7 +48,12 @@ export function TurnoutFacts({ s }: { s: Scenario }) {
   const L = useL(), lang = useLang(), digits = useDigits();
   const { standard, expert } = useLevel();
   const official = totalsOf(s.electionId);
-  const prev = previousTotals(s.electionId);
+  // while comparing, "since" is the compared result (its own totals, edits included); otherwise the previous election
+  const cmp = useReference(s);
+  const ref = cmp.status === 'ready' ? cmp.ref : null;
+  const prev: Pick<ElectionTotalsRow, 'registered' | 'votesCast' | 'ballotBoxes'> | null = ref
+    ? { registered: ref.sc.registered, votesCast: votesCast(ref.sc), ballotBoxes: totalsOf(ref.sc.electionId)?.ballotBoxes ?? null }
+    : previousTotals(s.electionId);
   const r = allocationOf(s);
   const cast = votesCast(s);
   const valid = Number(r.totalValid);
@@ -51,21 +61,25 @@ export function TurnoutFacts({ s }: { s: Scenario }) {
   const officialName = referenceLabel(null, lang).name;
   if (!official) return null;
   const castEdited = cast !== official.votesCast || s.registered !== official.registered;
-  const since = prev ? electionWhen(prev, lang) : '';
-  const sinceWords = (x: ReactNode) => prev && <>{x} <span className="tn-when">{L(`since ${since}`, `לעומת ${since}`)}</span></>;
+  const prevRow = previousTotals(s.electionId);
+  const since = ref ? refLabel(ref, s) : prevRow ? electionWhen(prevRow, lang) : '';
+  const sinceWords = (x: ReactNode) => prev && <>{x} <span className="tn-when">{ref?.same ? L(`against ${since}`, `לעומת ${since}`) : L(`since ${since}`, `לעומת ${since}`)}</span></>;
+  const copy = (what: OtherCopy, en: string, he: string) => ref && <CopyOtherButton refr={ref} what={what} what_en={en} what_he={he} />;
   const noThreshold = Number(s.rules.thresholdPct) === 0;
 
   return <section className="tn-facts" aria-labelledby="tn-facts-h">
     <h3 id="tn-facts-h">{L('Voters and turnout', 'בעלי זכות בחירה והצבעה')}</h3>
-    {!prev && <p className="small ink2 tn-first">{L('The first election: there is no earlier one to compare with.', 'הבחירות הראשונות: אין בחירות קודמות להשוואה.')}</p>}
+    {!prev && !ref && <p className="small ink2 tn-first">{L('The first election: there is no earlier one to compare with.', 'הבחירות הראשונות: אין בחירות קודמות להשוואה.')}</p>}
     <dl className="tn-grid">
       <Fact id="registered" k={L('Eligible voters', 'בעלי זכות בחירה')} info={<Info term="registered-voters" />}
         v={<><bdi dir="ltr">{fmtInt(s.registered)}</bdi><EditMarker s={s} path={['registered']} /></>}
-        since={prev && sinceWords(<CountDelta now={s.registered} before={prev.registered} digits={digits} />)} />
+        since={prev && sinceWords(<CountDelta now={s.registered} before={prev.registered} digits={digits} />)}
+        copy={copy('registered', 'eligible voters', 'מספר בעלי זכות הבחירה')} />
       <Fact id="turnout" k={L('Turnout', 'שיעור ההצבעה')} info={<Info term="turnout" />}
         v={percent(cast, s.registered, digits)}
         d={!standard || castEdited ? <>{!standard && <><bdi dir="ltr">{fmtInt(cast)}</bdi> {L('votes cast', 'מצביעים')}</>}{castEdited && <>{!standard && ' · '}{officialName} {percent(official.votesCast, official.registered, digits)}</>}</> : undefined}
-        since={prev && sinceWords(<PointDelta value={pct - turnoutPct(prev.votesCast, prev.registered)} digits={digits} />)} />
+        since={prev && sinceWords(<PointDelta value={pct - turnoutPct(prev.votesCast, prev.registered)} digits={digits} />)}
+        copy={copy('turnout', 'turnout', 'שיעור ההצבעה')} />
       {standard && <Fact id="cast" k={L('Votes cast', 'מצביעים')}
         info={<Info title={L('Votes cast', 'מצביעים')}>{L('Every ballot in the box, valid and invalid.', 'כל הפתקים בקלפי, כשרים ופסולים.')}</Info>}
         v={<bdi dir="ltr">{fmtInt(cast)}</bdi>}
@@ -74,7 +88,8 @@ export function TurnoutFacts({ s }: { s: Scenario }) {
       {standard && <Fact id="valid" k={L('Valid votes', 'קולות כשרים')} info={<Info term="valid" />}
         v={<bdi dir="ltr">{fmtInt(valid)}</bdi>} />}
       {standard && <Fact id="invalid" k={L('Invalid ballots', 'קולות פסולים')} info={<Info term="invalid-votes" />}
-        v={<><bdi dir="ltr">{fmtInt(s.invalid)}</bdi><EditMarker s={s} path={['invalid']} /></>} d={<>{percent(s.invalid, cast, digits)} {L('of votes cast', 'מהמצביעים')}</>} />}
+        v={<><bdi dir="ltr">{fmtInt(s.invalid)}</bdi><EditMarker s={s} path={['invalid']} /></>} d={<>{percent(s.invalid, cast, digits)} {L('of votes cast', 'מהמצביעים')}</>}
+        copy={expert && copy('invalid', 'invalid ballots', 'מספר הקולות הפסולים')} />}
       {standard && (noThreshold
         ? <Fact id="threshold" k={L('Threshold', 'אחוז החסימה')} info={<Info term="threshold" />} v={L('None', 'אין')} d={L('No percentage threshold', 'ללא אחוז חסימה')} />
         : <Fact id="threshold" k={L('Threshold', 'אחוז החסימה')} info={<Info term="threshold" />}

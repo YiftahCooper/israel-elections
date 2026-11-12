@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { choose } from './choices.ts';
+import { openSideBySide } from './sideBySide.ts';
 // Blocs per election and constituent parties (decision 0087).
 import { expect, test, type Page } from '@playwright/test';
 
@@ -137,8 +138,9 @@ for (const lang of ['en', 'he'] as const) for (const election of ['k24', 'k25'])
     for (const label of await page.locator('.strip-legend > span').all()) {
       await expect(label).not.toContainText(`· ${tag}`);
     }
-    await page.getByRole('tab', {name: lang === 'en' ? 'Compare' : 'השוואה', exact:true}).click();
-    await choose(page.getByRole('button', {name: lang === 'en' ? 'Compare with' : 'השוואה עם', exact:true}), `election:${election === 'k24' ? 'k23' : 'k24'}`);
+    await openSideBySide(page);
+    // compared with the previous election (2021 → 2019 Sep, 2022 → 2021)
+    await expect(page.locator('.cmpm-strip').getByRole('button', {name: lang === 'en' ? 'Compare with' : 'השוואה עם', exact:true})).toHaveAttribute('data-value', 'prev');
     // the open scenario's side names the app grouping once, never on each bloc
     const legend = page.locator('.cmp-card[data-role="main"] .majority-context');
     await expect(legend).toContainText(`· ${tag}`);

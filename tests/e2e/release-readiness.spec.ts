@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { openSideBySide } from './sideBySide.ts';
 
 for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) {
   test(`long edited names stay on the one-line change summary without widening the page (${lang}, ${theme})`, async ({ page }) => {
@@ -26,8 +27,8 @@ for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) {
 
 test('comparison seat counts have readable contrast', async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'expert' })));
-  await page.goto('/'); await page.locator('#tab-compare').click();
-  await expect(page.getByRole('button', { name: 'Compare with', exact: true })).toHaveAttribute('data-value', 'election:k25'); // unchanged result compares with 2022 automatically
+  await page.goto('/'); await openSideBySide(page);
+  await expect(page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true })).toHaveAttribute('data-value', 'prev'); // compares with the previous election, 2022
   const number = page.locator('.cmp-table .cmp-seats b').first();
   await expect(number).toBeVisible();
   const contrast = await number.evaluate(el => {

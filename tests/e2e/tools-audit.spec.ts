@@ -1,6 +1,7 @@
 // Release-candidate audit of the tool pages (area E): each test locks in one defect class that was fixed.
 import { expect, test, type Page } from '@playwright/test';
 import { choose } from './choices.ts';
+import { openSideBySide } from './sideBySide.ts';
 
 async function start(page: Page, lang: 'en' | 'he' = 'en', election = 'k26', width = 1500) {
   await page.setViewportSize({ width, height: 1000 });
@@ -91,8 +92,8 @@ test('Hebrew charts keep the English left-to-right geometry', async ({ page }) =
   const mid = await svg.evaluate(el => (el as SVGSVGElement).viewBox.baseVal.width / 2);
   expect(Number(await svg.locator('.bar').first().getAttribute('x'))).toBeCloseTo(mid, 0);
   expect(Number(await svg.locator('.bar').last().getAttribute('x'))).toBeLessThan(mid);
-  await tool(page, 'compare');
-  await expect(panel(page).getByRole('button', { name: 'השוואה עם', exact: true })).toHaveAttribute('data-value', 'election:k25');
+  await openSideBySide(page);
+  await expect(panel(page).getByRole('button', { name: 'השוואה עם', exact: true })).toHaveAttribute('data-value', 'prev');
   const figs = panel(page).locator('.cmp-card');
   await expect(figs.nth(0)).toContainText('2022'); // the earlier result is on the left, as before → after
   expect((await figs.nth(0).boundingBox())!.x).toBeLessThan((await figs.nth(1).boundingBox())!.x);

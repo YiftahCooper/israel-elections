@@ -34,13 +34,15 @@ test('a tab whose code is still downloading shows a loading status, then its con
   const held = new Promise<void>((r) => { release = r; });
   await page.route(chunk('Compare'), async (route) => { await held; await route.continue(); });
   await start(page, { level: 'expert' });
-  await page.getByRole('tab', { name: 'Compare' }).click();
-  await expect(panel(page).getByRole('status')).toHaveText('Loading…');
-  await expect(page.getByRole('tab', { name: 'Compare' })).toHaveAttribute('aria-selected', 'true');
+  // Side by side opens from the comparison strip (it is no longer a tab)
+  await page.locator('.compare-on').click();
+  await page.locator('.cmpm-strip .cmpm-side').click();
+  const side = page.locator('.side-by-side');
+  await expect(side.getByRole('status')).toHaveText('Loading…');
   release();
-  await expect(panel(page).locator('.cmp-card')).toHaveCount(2);
-  await expect(panel(page).getByRole('button', { name: 'Compare with', exact: true })).toHaveAttribute('data-value', 'election:k25');
-  await expect(panel(page).getByRole('status')).toHaveCount(0);
+  await expect(side.locator('.cmp-card')).toHaveCount(2);
+  await expect(side.getByRole('button', { name: 'Compare with', exact: true })).toHaveAttribute('data-value', 'prev');
+  await expect(side.getByRole('status')).toHaveCount(0);
 });
 
 test('seat security is computed in background workers and fills the whole table', async ({ page }) => {

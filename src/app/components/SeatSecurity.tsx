@@ -20,6 +20,8 @@ import { stayingHome, toVoteSource, type SourceChoice } from '../voteEdit.ts';
 import { DisclosureToggle, Info, Seg, Slip } from './ui.tsx';
 import { minimalWinning, governmentVote, recordedRoles, recordedVoteGap, type VoteGapReason } from '../coalitions.ts';
 import { Majority } from './Majority.tsx';
+import { useRefRows } from '../compare/useRefRows.ts';
+import { hebrewPrefix } from '../hebrewPrefix.ts';
 import './coalitions.css';
 
 type Kind = 'proportional' | 'new';
@@ -195,6 +197,12 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     return { l: { id: p.id, color: p.color, bloc: p.bloc }, letters: party ? '' : list.letters, listId: p.listId, partyId: p.partyId, logo: party ? party.logo : list.logo, synthetic: party ? undefined : list.synthetic, n: p.n, label };
   });
   const [inspected, setInspected] = useState<{ election: string; ids: string[] } | null>(null);
+  // while comparing: each partner's seats in the compared result, and the same lists' total there (a split counted once)
+  const cmp = useRefRows(s);
+  const refLineOf = (id: string) => { const u = seated.find(x => x.l.id === id); const line = u && !u.partyId ? cmp?.rows.byList.get(u.listId) : undefined; return line?.kind === 'pair' ? line : undefined; };
+  const refTotal = (ids: string[]) => { const seen = new Set<string>(); let n = 0, any = false;
+    for (const id of ids) { const line = refLineOf(id); if (!line) continue; any = true; const k = line.together.join('+'); if (seen.has(k)) continue; seen.add(k); n += line.seats; }
+    return any ? n : null; };
   const selected = inspected?.election === s.electionId ? inspected.ids.filter(id => seated.some(x => x.l.id === id)) : [];
   const choices = s.coalition ?? NO_COALITION;
   // choices name units by id; a unit no longer seated (after an edit) keeps its choice but counts for nothing
@@ -293,12 +301,15 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     const v = voteOf(ids);
     const pivotal = v.passes ? [...ids, ...supportIds].filter(id => v.votesFor - seatsOf(id) < v.forNeeded) : [];
     const tag = pivotal.length > 0 && pivotal.length < ids.length + supportIds.length;
-    const item = (id: string) => <li key={id}><Slip letters={seated.find(x => x.l.id === id)?.letters ?? ''} synthetic={seated.find(x => x.l.id === id)?.synthetic} name={nm(id)} logo={seated.find(x => x.l.id === id)?.logo} color={colorOf(id)} size="sm" />{nm(id)} <b>{seatsOf(id)}</b> {tag && pivotal.includes(id) && <span className="small">{L('Pivotal', 'חיונית לרוב')}</span>}</li>;
+    const item = (id: string) => <li key={id}><Slip letters={seated.find(x => x.l.id === id)?.letters ?? ''} synthetic={seated.find(x => x.l.id === id)?.synthetic} name={nm(id)} logo={seated.find(x => x.l.id === id)?.logo} color={colorOf(id)} size="sm" />{nm(id)} <b>{seatsOf(id)}</b> {cmp && refLineOf(id) && <span className="small muted cmpm-coal-ref"><bdi>{cmp.label}</bdi>: {refLineOf(id)!.seats}</span>} {tag && pivotal.includes(id) && <span className="small">{L('Pivotal', 'חיונית לרוב')}</span>}</li>;
     const split = [...s.blocs, { id: null, nameHe: 'ללא גוש', nameEn: 'No bloc' }].map(b => ({ b, n: seated.filter(x => ids.includes(x.l.id) && x.l.bloc === b.id).reduce((n, x) => n + x.n, 0) })).filter(x => x.n > 0);
     const everyNeeded = !!sayAllNeeded && pivotal.length === ids.length + supportIds.length && pivotal.length > 1;
     const others = (role: 'support' | 'abstain', list: string[]) => list.length > 0 && <ul className="coal-partners" data-role={role}><li className="small ink2"><i className={`coal-key coal-${role}`} aria-hidden />{role === 'support' ? <>{L('Outside support', 'תמיכה מבחוץ')} <Info term="outside-support" /></> : L('Abstains by arrangement', 'נמנעות בהסדר')}</li>{list.map(item)}</ul>;
+    const before = cmp && ids.length ? refTotal(ids) : null;
     return <>
       <ul className="coal-partners">{ids.map(item)}</ul>
+      {cmp && before !== null && <p className="small muted cmpm-coal-total">{L(`Their lists in ${cmp.label}: `, `הרשימות שלהן ${hebrewPrefix("ב", cmp.label)}: `)}<b>{before}</b>
+        <Info title={L(`Compared with ${cmp.label}`, `בהשוואה ${hebrewPrefix('ל', cmp.label)}`)}>{L(`The seats that the same lists had in ${cmp.label}, paired as on the Lists panel. A list that split since is counted once, as a whole; lists with no list of their own then are left out.`, `המנדטים שהיו לאותן רשימות ${hebrewPrefix('ב', cmp.label)}, בהתאמה כמו בלוח הרשימות. רשימה שהתפצלה מאז נספרת פעם אחת, בשלמותה; רשימות שלא הייתה להן אז רשימה משלהן אינן נספרות.`)}</Info></p>}
       {others('support', supportIds)}
       {others('abstain', abstainIds)}
       {/* members by bloc only when they span blocs: one bloc would repeat the members total above */}

@@ -1,3 +1,4 @@
+import { compareWith } from '../compare/mode.ts';
 import {ColourPicker} from './ColourPicker.tsx';
 import { scenarioDirty } from '../scenarioDocument.ts';
 import { ScenarioSave, UnsavedMark } from './ScenarioSave.tsx';
@@ -133,7 +134,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
                 {res ? <ResultBar s={res.sc} r={res.r} /> : <p className="tiny muted" style={{ margin: 0 }}>{L('Open it to see its result.', 'פתחו כדי לראות את התוצאה.')}</p>}
                 <div className="row" style={{ gap: 4 }}>
                   <button className="btn small" aria-label={x.id === s.id && !clean ? L('Reopen saved version', 'פתיחת הגרסה השמורה') : undefined} onClick={() => open(x)} disabled={x.id === s.id && clean}><FolderOpen className="icon sm" aria-hidden />{x.id === s.id ? clean ? L('Open now', 'פתוח עכשיו') : L('Reopen', 'פתיחה מחדש') : L('Open', 'פתיחה')}</button>
-                  <button className="btn small" disabled={x.electionId !== s.electionId || x.id === s.id} onClick={() => setState({ compareWith: x.id, tool: 'compare' })}><GitCompare className="icon sm" aria-hidden />{L('Compare', 'השוואה')}</button>
+                  <button className="btn small" disabled={x.id === s.id} onClick={() => { compareWith(`saved:${x.id}`); setState({ tool: 'board' }); }}><GitCompare className="icon sm" aria-hidden />{L('Compare', 'השוואה')}</button>
                   {res && <button className="btn small ghost" onClick={() => exportJson(res.sc)}><Download className="icon sm" aria-hidden />{L('Export', 'ייצוא')}</button>}
                   <span className="spacer" />
                   <button className="btn small ghost danger icon-only" aria-label={L(`Delete ${x.name}`, `מחיקת ${x.name}`)} onClick={() => { if (confirm(L(`Delete “${x.name}” from this browser?`, `למחוק את "${x.name}" מהדפדפן?`))) deleteSaved(x.id); }}><Trash2 className="icon sm" aria-hidden /></button>

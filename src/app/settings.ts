@@ -31,6 +31,7 @@ export interface SettingValues {
   listOrder: 'seats' | 'votes' | 'bloc' | 'name';
   voteCounts: boolean;
   lastTimeRows: boolean;
+  compareBars: boolean;
   allCandidates: boolean;
   chamberLayout: 'hemicycle' | 'blocks';
   seatColour: 'list' | 'bloc' | 'party';
@@ -118,6 +119,8 @@ export const SETTINGS: readonly SettingRow[] = [
     info: ['The number of votes beside each list’s share.', 'מספר הקולות ליד אחוז הקולות של כל רשימה.'], synonyms: 'votes numbers totals count קולות מספרים' },
   { id: 'lastTimeRows', group: 'lists', control: 'toggle', min: 'standard', label: ['Compared with last time', 'השוואה לבחירות הקודמות'],
     info: ['A line under each list: its seats at the previous election and the change (2022: 5 ▲6). Compare and the list panel always show the comparison.', 'שורה מתחת לכל רשימה: המנדטים בבחירות הקודמות והשינוי (2022: 5 ▲6). ההשוואה וחלונית הרשימה מציגות את ההשוואה תמיד.'], synonyms: 'previous last election history since change predecessor קודמות היסטוריה שינוי' },
+  { id: 'compareBars', group: 'lists', control: 'toggle', min: 'simple', label: ['Bars for the compared result', 'עמודות לתוצאה המושווית'],
+    info: ['While comparing, a thin striped bar under each list’s bar shows its seats in the result you compare with. Off: the line under the list only.', 'בזמן השוואה, עמודה דקה ומפוספסת מתחת לעמודת כל רשימה מראה את מנדטיה בתוצאה שאתם משווים אליה. כבוי: השורה שמתחת לרשימה בלבד.'], synonyms: 'compare comparison reference striped bar previous השוואה עמודה מפוספסת קודמת' },
   { id: 'allCandidates', group: 'lists', control: 'toggle', min: 'standard', label: ['All candidates', 'כל המועמדים'],
     info: ['Opens a list’s full roster. Off: the elected and the next few first.', 'פותח את רשימת המועמדים המלאה. כבוי: הנבחרים והבאים בתור תחילה.'], synonyms: 'candidates roster members names מועמדים חברים שמות' },
 
@@ -147,9 +150,9 @@ export const SETTINGS: readonly SettingRow[] = [
   { id: 'markChanges', group: 'editing', control: 'choice', min: 'simple', label: ['Mark changes since', 'סימון שינויים מאז'],
     info: ['Opened scenario: only your newer changes are marked. Official result: every difference is marked.', 'התרחיש שנפתח: מסומנים רק השינויים החדשים. התוצאה הרשמית: מסומן כל הבדל.'],
     synonyms: 'differences markers reference ask default הבדלים סימונים ייחוס לשאול ברירת מחדל' },
-  { id: 'copyMode', group: 'editing', control: 'choice', min: 'standard', feature: 'compare', label: ['Copy votes between elections as', 'העתקת קולות בין בחירות לפי'],
-    info: ['Compare: a list’s votes copied from another election. Share of the vote keeps its strength; Number of votes copies the count. Ask: you choose at each copy.', 'השוואה: קולות של רשימה שמועתקים מבחירות אחרות. שיעור מהקולות שומר על כוחה; מספר הקולות מעתיק את המספר. לשאול: בוחרים בכל העתקה.'],
-    synonyms: 'copy compare share count elections ask default remember העתקה השוואה שיעור מספר בחירות לשאול ברירת מחדל זכירה' },
+  { id: 'copyMode', group: 'editing', control: 'choice', min: 'standard', label: ['Copy votes: default method', 'העתקת קולות: שיטת ברירת המחדל'],
+    info: ['Where the Copy votes box starts. Eligible voters: the same share of everyone entitled to vote. Valid votes: the same share of the votes cast. Number: the same count. Ask: no default, the box starts on eligible voters. Simple offers eligible voters only.', 'מאיפה מתחיל חלון העתקת הקולות. בעלי זכות בחירה: אותו חלק מכל מי שזכאי להצביע. קולות כשרים: אותו חלק מהקולות שהוטלו. מספר: אותו מספר קולות. לשאול: אין ברירת מחדל, והחלון מתחיל בבעלי זכות הבחירה. ברמה הבסיסית מוצגים בעלי זכות הבחירה בלבד.'],
+    synonyms: 'copy compare share count eligible registered elections ask default remember העתקה השוואה שיעור מספר בעלי זכות בחירה בחירות לשאול ברירת מחדל זכירה' },
   { id: 'confirmStartOver', group: 'editing', control: 'toggle', min: 'simple', label: ['Confirm start over', 'אישור לפני התחלה מחדש'],
     info: ['Asks before clearing all changes. Undo can always restore them.', 'שאלה לפני מחיקת כל השינויים. תמיד אפשר לשחזר עם ביטול.'], synonyms: 'reset confirm start over dialog איפוס אישור התחלה' },
   { id: 'hoverPreviews', group: 'editing', control: 'toggle', min: 'standard', label: ['Hover previews', 'תצוגה מקדימה בריחוף'],
@@ -198,7 +201,7 @@ export function settingDefault<K extends SettingId>(id: K, level: Preset): Setti
   const d: SettingValues = {
     theme: 'device', density: 'compact', starterTip: true, openOn: 'overview',
     listSymbol: 'logo', jointListSeats: level === 'simple' ? 'list' : 'both', jointListParties: level === 'simple' ? 'none' : level === 'standard' ? 'seated' : 'all', seatlessLists: 'over', withdrawnLists: true,
-    listOrder: 'seats', voteCounts: level !== 'simple', lastTimeRows: false, allCandidates: false,
+    listOrder: 'seats', voteCounts: level !== 'simple', lastTimeRows: false, compareBars: true, allCandidates: false,
     chamberLayout: 'hemicycle', seatColour: 'list', blocShading: true, referenceChamber: true, chamberKey: true, dimUnselected: true,
     decimals: level === 'expert' ? 3 : level === 'standard' ? 2 : 1, splitWarning: true,
     confirmStartOver: true, hoverPreviews: true, communityScenarios: true, compareWith: 'previous', optionPreviews: true,

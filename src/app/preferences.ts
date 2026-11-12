@@ -21,12 +21,14 @@ export const PREFERENCES = {
       { value: 'official', label: ['Official result', 'התוצאה הרשמית'] },
     ],
   },
-  /** Compare: how votes copied between elections are read (within one election a copy is always the count). */
+  /** How votes copied from another election start out (12 Nov 2026: the share of eligible voters first). Within one
+   *  election a copy is always the same number of votes. */
   copyMode: {
-    label: ['Copy votes between elections as', 'העתקת קולות בין בחירות לפי'],
+    label: ['Copy votes: default method', 'העתקת קולות: שיטת ברירת המחדל'],
     options: [
-      { value: 'share', label: ['Share of the vote', 'שיעור מהקולות'] },
-      { value: 'count', label: ['Number of votes', 'מספר הקולות'] },
+      { value: 'eligible', label: ['Same share of eligible voters', 'אותו חלק מבעלי זכות הבחירה'] },
+      { value: 'share', label: ['Same share of valid votes', 'אותו חלק מהקולות הכשרים'] },
+      { value: 'count', label: ['Same number of votes', 'אותו מספר קולות'] },
     ],
   },
 } as const;

@@ -43,7 +43,9 @@ export interface State {
   blocPanel: string | null;
   /** the open tool beside the chamber (null: the level's first tool) */
   tool: string | null;
-  compareWith: string; // session-only: 'auto', 'historical', 'official', saved id or 'election:<id>'
+  /** Comparing (session-only; compare/mode.ts): null when off, else what the screen is compared with: 'prev', 'election:<id>',
+   *  'saved:<id>', 'official', 'snapshot' or 'swapped'. */
+  comparing: string | null;
   lang: Lang;
   theme: 'light' | 'dark';
   level: Level;
@@ -67,9 +69,10 @@ export interface State {
   sessions: Partial<Record<ElectionId, ScenarioSession>>;
   /** Unsaved branches shared by the header and phone inspectors; deliberately session-only. */
   scenarioDrafts: Record<string, ScenarioSession>;
-  /** Compare's other side (session-only): its drafts by comparator, the orientation (null: earlier election on the left)
-   *  and the user's list pairings by election pair. See src/app/compare/sides.ts. */
-  compare: { drafts: Record<string, ScenarioSession>; swap: boolean | null; overrides: Record<string, import('./compare/match.ts').MatchOverride[]> };
+  /** Comparing (session-only): the reference's Side by side drafts by reference, the user's list pairings by election
+   *  pair, the frozen copy of your work, the work kept aside by Swap, which chamber the seat chart shows and the screen
+   *  Side by side returns to. See src/app/compare/mode.ts and sides.ts. */
+  compare: { drafts: Record<string, ScenarioSession>; overrides: Record<string, import('./compare/match.ts').MatchOverride[]>; snapshot: Scenario | null; swapped: ScenarioSession | null; chamber: 'work' | 'ref'; back: string | null };
 }
 
 const LS = 'israel-elections:v1';
@@ -101,16 +104,15 @@ const rememberedSettings = (() => { try { const raw = JSON.parse(globalThis.loca
 const deviceDark = () => globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches === true;
 const resolvedTheme = (pref: SettingValues['theme']): 'light' | 'dark' => pref === 'device' ? (deviceDark() ? 'dark' : 'light') : pref;
 const initialLevel: Level = LEVELS.includes(persisted.level) ? persisted.level : 'simple';
-const TOOL_IDS = new Set(['board', 'families', 'scenarios', 'whatif', 'coal', 'walk', 'structure', 'compare', 'security', 'charts', 'turnout', 'sens', 'loc', 'rules', 'sources']);
-const compareStart = (values: Partial<SettingValues>, level: Level) => settingValue(values, 'compareWith', level) === 'official' ? 'official' : 'auto';
+const TOOL_IDS = new Set(['board', 'families', 'scenarios', 'whatif', 'coal', 'walk', 'structure', 'security', 'charts', 'turnout', 'sens', 'loc', 'rules', 'sources']);
 
 let state: State = {
   datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, reference: null, markOfficial: persisted.markOfficial === true, past: [], future: [], selectedListId: null, blocPanel: null,
-  tool: settingValue(rememberedSettings, 'openOn', initialLevel) === 'last' && TOOL_IDS.has(persisted.tool) ? persisted.tool : null, compareWith: compareStart(rememberedSettings, initialLevel),
+  tool: settingValue(rememberedSettings, 'openOn', initialLevel) === 'last' && TOOL_IDS.has(persisted.tool) ? persisted.tool : null, comparing: null,
   lang: persisted.lang ?? 'he', theme: resolvedTheme(settingValue(rememberedSettings, 'theme', initialLevel)),
   level: initialLevel, customFeatures: persisted.customFeatures ?? null, settings: rememberedSettings,
   saved: persisted.saved ?? [], toast: null, loadError: null, notice: null, voteSource: sourceChoice(rememberedPreferences.voteSource ?? 'proportional'), preferences: rememberedPreferences, preferenceAsk: null, preferenceFor: rememberedItems, sessions: {}, scenarioDrafts: {},
-  compare: { drafts: {}, swap: null, overrides: {} },
+  compare: { drafts: {}, overrides: {}, snapshot: null, swapped: null, chamber: 'work', back: null },
 };
 const listeners = new Set<() => void>();
 const emit = () => { for (const l of listeners) l(); };
@@ -285,7 +287,7 @@ export async function openElection(id: ElectionId, from?: { id?: string; name: s
       ({ scenario, past, future, reference } = sessions[id]!);
     }
     delete sessions[id];
-    setState({ electionId: id, scenario, reference, past, future, sessions, selectedListId: null, blocPanel: null, compareWith: compareStart(state.settings, state.level), loadError: null, notice });
+    setState({ electionId: id, scenario, reference, past, future, sessions, selectedListId: null, blocPanel: null, loadError: null, notice, compare: { ...state.compare, chamber: 'work' } });
     return true;
   } catch (e) {
     if (seq === openSeq) setState({ loadError: { id, message: e instanceof Error ? e.message : String(e) } });

@@ -239,7 +239,7 @@ describe('whole list', () => {
 });
 
 describe('the other side’s own history', () => {
-  beforeEach(() => setState({ compare: { drafts: {}, swap: null, overrides: {} } }));
+  beforeEach(() => setState({ compare: { drafts: {}, overrides: {}, snapshot: null, swapped: null, chamber: 'work', back: null } }));
   it('makes each copy one undoable step, with redo and Start over', () => {
     const p = ok(planVotes({ from: { sc: k26, start: k26, name: '2026', official: true }, to: k25, ctx: { base: k25 }, units: [{ src: ['26-מחל'], dst: ['25-מחל'] }], mode: 'count', policy: { kind: 'proportional' } }));
     const key = 'election:k25';
@@ -259,7 +259,7 @@ describe('the other side’s own history', () => {
 it('shares a comparison as a link that reads back both sides and the pairings', async () => {
   vi.stubGlobal('location', { origin: 'https://example.test', pathname: '/' });
   const p = ok(planVotes({ from: from25, to: k26, ctx, units: likud, mode: 'share', policy: { kind: 'proportional' } }));
-  const c = comparisonOf(p.result, k25, true, [{ left: '25-אמת', right: '26-אמת', status: 'accepted' }]);
+  const c = comparisonOf(p.result, k25, [{ left: '25-אמת', right: '26-אמת', status: 'accepted' }]);
   const url = await comparisonLink(c);
   expect(url).toMatch(/^https:\/\/example\.test\/#c=[A-Za-z0-9_-]+$/);
   const back = await readComparison(url.slice(url.indexOf('#')));

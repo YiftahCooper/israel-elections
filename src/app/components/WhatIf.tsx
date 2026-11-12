@@ -57,7 +57,7 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
     let s: Scenario = { ...freshScenario(ds, title), description };
     for (const a of actions) s = applyAction(s, a);
     // a coalition-role question opens where its roles are shown
-    setState({ scenario: s, past: st.scenario ? [...st.past, st.scenario] : st.past, future: [], selectedListId: null, compareWith: 'historical', tool: actions.some((a) => a.type === 'setCoalition') ? 'coal' : 'board' });
+    setState({ scenario: s, past: st.scenario ? [...st.past, st.scenario] : st.past, future: [], selectedListId: null, tool: actions.some((a) => a.type === 'setCoalition') ? 'coal' : 'board' });
     window.scrollTo({ top: 0, behavior: motionReduced() ? 'instant' : 'smooth' });
   };
 
