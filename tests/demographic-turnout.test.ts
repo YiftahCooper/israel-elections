@@ -78,7 +78,7 @@ it('rebuilds k18/k19 against original locality evidence after attaching demograp
  const { buildK18 }=await import('../scripts/lib/historical/k18.ts');
  const { buildK19 }=await import('../scripts/lib/historical/k19.ts');
  for(const build of [buildK18,buildK19]){const result=await build();expect(result.loc?.rows.length).toBeGreaterThan(1000);}
-});
+},60_000); // two full historical builds: over the 5 s default on a slow CI runner (scheduled deploy of 12 Nov 2026 timed out)
 it('signed demographic actions validate, log and replay removals without enabling ordinary negative additions',()=>{
  const result=demographicTurnout(base,fixture(),[{groupId:'test',turnoutPercent:0}]);
  const applied=applyAction(base,result.action,'2026-11-04T00:00:00Z');
