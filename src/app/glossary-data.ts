@@ -151,11 +151,12 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'ballot-letters', nameHe: 'אותיות הרשימה', nameEn: 'Ballot letters', level: 'simple', provenance: 'sourced',
-    defHe: 'לכל רשימה כינוי ועד שלוש אותיות עבריות המודפסות על פתק ההצבעה שלה, כדי להבדיל אותה משאר הרשימות. מפלגה המיוצגת בכנסת היוצאת זכאית לעדיפות בבחירת אותיותיה.',
-    defEn: 'Each list has a name and up to three Hebrew letters printed on its ballot slip to tell it apart from the others. A party represented in the outgoing Knesset has priority to keep its letters.',
+    defHe: 'לכל רשימה כינוי ואותיות עבריות המודפסות על פתק ההצבעה שלה, כדי להבדיל אותה משאר הרשימות: עד שלוש אותיות מאז יולי 2026, ולפני כן אות אחת או שתיים. רשימה משותפת של מפלגות המיוצגות בכנסת רשאית לצרף את אותיותיהן גם מעבר לכך. מפלגה המיוצגת בכנסת היוצאת זכאית לעדיפות בבחירת אותיותיה.',
+    defEn: 'Each list has a name and Hebrew letters printed on its ballot slip to tell it apart from the others: up to three letters since July 2026, one or two before. A joint list of parties already in the Knesset may combine their letters beyond that. A party represented in the outgoing Knesset has priority to keep its letters.',
     linkHe: L.s61, linkEn: E.electionDay,
     sources: [
-      src(L.s61, 'he', 'law', 's.61(a)–(b): a name with up to three Hebrew letters; priority for parties in the outgoing Knesset'),
+      src(L.s61, 'he', 'law', 's.61(a)–(b): a name with up to three Hebrew letters; a joint list of represented parties may exceed that; priority for parties in the outgoing Knesset'),
+      { title: 'ספר החוקים 3546, תיקון לחוק הבחירות לכנסת (16 ביולי 2026)', publisher: 'הכנסת (רשומות)', url: 'https://fs.knesset.gov.il/25/law/25_lsr_14147458.pdf', lang: 'he', kind: 'law', supports: 's.61(a) amended: up to three letters replaces one letter or two (two was the limit before July 2026)', checked: '2026-11-12' },
       src(CEC25, 'he', 'official', 'results table column "אותיות הרשימה"'),
       src(E.electionDay, 'en', 'institute', 'each slip bears the list’s name and its identifying letter or letters'),
     ],
@@ -345,12 +346,13 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'droop-quota', nameHe: 'מכסת דרופ', nameEn: 'Droop quota', level: 'expert', provenance: 'sourced',
-    defHe: 'מכסה שבה מחלקים את הקולות הכשרים במספר המושבים ועוד אחד, ולכן היא קטנה מעט ממכסת הייר ומשאירה פחות מושבים עודפים. ישראל אינה משתמשת בה; ב-1949 חילקו ב-121 (מספר המושבים ועוד אחד).',
-    defEn: 'A quota obtained by dividing valid votes by the number of seats plus one, so it is slightly smaller than the Hare quota and leaves fewer seats over. Israel does not use it today; in 1949 the divisor was 121, i.e. seats plus one.',
+    defHe: 'מכסה: הקולות הכשרים חלקי מספר המושבים ועוד אחד, בעיגול כלפי מטה, ועוד אחד. היא קטנה מעט ממכסת הייר ומשאירה פחות מושבים עודפים. ישראל אינה משתמשת בה; ב-1949 חילקו ב-121 (מספר המושבים ועוד אחד) ועיגלו כלפי מטה, בלי התוספת.',
+    defEn: 'A quota: the valid votes divided by the seats plus one, rounded down, plus one. It is slightly smaller than the Hare quota and leaves fewer seats over. Israel does not use it; in 1949 the votes were divided by 121 (seats plus one) and rounded down, without the added one.',
     linkHe: H.methods, linkEn: E.methods,
     sources: [
       src(H.methods, 'he', 'institute', '"מכסת דרופ" definition'),
-      src(E.methods, 'en', 'institute', '"The Droop Quota" section'),
+      src(E.methods, 'en', 'institute', '"The Droop Quota" section (its example leaves out the added one)'),
+      { title: 'Electoral Act 1992, section 120(1)', publisher: 'Irish Statute Book', url: 'https://www.irishstatutebook.ie/eli/1992/act/23/section/120/enacted/en/html', lang: 'en', kind: 'law', supports: 'the quota in statute: votes divided by seats plus one, the result increased by one, any fractional remainder being disregarded', checked: '2026-11-12' },
       src(LAW_1949, 'he', 'law', '1949 divisor 121 (docs/ELECTORAL-LAW.md)'),
     ],
   },
@@ -366,12 +368,13 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'modified-sainte-lague', nameHe: 'שיטת סנט־לגה המשופרת', nameEn: 'Modified Sainte-Laguë method', level: 'expert', provenance: 'sourced',
-    defHe: 'גרסה של סנט־לגה שבה המחלק הראשון הוא 1.4 ולא 1 (1.4, 3, 5, 7…), כדי להקשות על רשימות קטנות מאוד לזכות במושב ראשון. נהוגה בנורווגיה ובשוודיה.',
-    defEn: 'A variant of Sainte-Laguë whose first divisor is 1.4 instead of 1 (1.4, 3, 5, 7…), making a first seat harder for very small lists. It is used in Norway and Sweden.',
+    defHe: 'גרסה של סנט־לגה שבה המחלק הראשון הוא 1.4 ולא 1 (1.4, 3, 5, 7…), כדי להקשות על רשימות קטנות מאוד לזכות במושב ראשון. כך נהוג בנורווגיה; בשוודיה המחלק הראשון כיום הוא 1.2.',
+    defEn: 'A variant of Sainte-Laguë whose first divisor is 1.4 instead of 1 (1.4, 3, 5, 7…), making a first seat harder for very small lists. Norway uses it; Sweden’s first divisor is now 1.2.',
     linkHe: H.methods, linkEn: E.methods,
     sources: [
       src(H.methods, 'he', 'institute', '"שיטת סנט לגואה המשופרת": divisors 1.4, 3, 5, 7'),
-      src(E.methods, 'en', 'institute', 'modified Sainte-Laguë, divisors 1.4, 3, 5, 7; Norway and Sweden'),
+      src(E.methods, 'en', 'institute', 'modified Sainte-Laguë, divisors 1.4, 3, 5, 7; Norway (its statement on Sweden is out of date)'),
+      { title: 'Så fördelas mandaten', publisher: 'Valmyndigheten (Swedish Election Authority)', url: 'https://www.val.se/det-svenska-valsystemet/rostrakning-och-mandatfordelning/sa-fordelas-mandaten', lang: 'en', kind: 'official', supports: 'Sweden: the first divisor is 1.2 (divideras med 1,2); page in Swedish', checked: '2026-11-12' },
     ],
   },
   {
@@ -433,12 +436,12 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'polling-station', nameHe: 'קלפי', nameEn: 'Polling station', level: 'simple', provenance: 'sourced',
-    defHe: 'המקום שבו מצביעים. שטח המדינה מחולק לאזורי קלפי ממוספרים, עם קלפי אחת לכל אזור ועד 800 בוחרים, וכל בוחר רשום לקלפי מסוימת לפי מענו. הספירה נעשית בכל קלפי מיד בתום ההצבעה.',
-    defEn: 'The place where people vote. The country is divided into numbered polling areas, each with one ballot box and at most 800 voters, and every voter is assigned to one station by address. Votes are counted at each station as soon as voting ends.',
+    defHe: 'המקום שבו מצביעים. שטח המדינה מחולק לאזורי קלפי ממוספרים, בדרך כלל עד 800 בוחרים באזור (ועדת הבחירות המרכזית רשאית לאשר עד 900), ובכל אזור קלפי אחת, ובשעת הצורך שתיים. כל בוחר רשום לקלפי מסוימת לפי מענו. הספירה נעשית בכל קלפי מיד בתום ההצבעה.',
+    defEn: 'The place where people vote. The country is divided into numbered polling areas, normally of up to 800 voters (the Central Elections Committee may approve up to 900), each with one ballot box, or a second where needed. Every voter is assigned to one station by address. Votes are counted at each station as soon as voting ends.',
     linkHe: H.electionDay, linkEn: E.electionDay,
     sources: [
-      src(L.s9, 'he', 'law', 'ss.9–11: polling areas, one locality, at most 800 voters'),
-      src(L.s68, 'he', 'law', 's.68(a): one ballot box per polling area'),
+      src(L.s9, 'he', 'law', 'ss.9–11: polling areas, one locality, at most 800 voters, up to 900 with the committee’s approval'),
+      src(L.s68, 'he', 'law', 's.68(a)–(b): one ballot box per polling area; a second where needed'),
       src(CEC25, 'he', 'official', 'results by polling station ("תוצאות לפי קלפיות")'),
       src(E.knesset101, 'en', 'institute', 'voters assigned in advance to a polling station by registered residence'),
     ],
@@ -501,8 +504,8 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'majority-61', nameHe: 'רוב של 61', nameEn: 'Majority of 61', level: 'simple', provenance: 'sourced',
-    defHe: '61 הם רוב מוחלט מתוך 120 חברי הכנסת. רוב כזה דרוש כדי להחליף ממשלה בהצבעת אי־אמון. להקמת ממשלה החוק מסתפק ברוב רגיל של המצביעים, אבל כמעט כל הממשלות נהנו מתמיכת 61 לפחות.',
-    defEn: '61 is an absolute majority of the 120 members. It is required to replace a government by a no-confidence vote. Forming a government legally needs only more votes for than against, but almost every government has had at least 61 supporters.',
+    defHe: '61 הם רוב מוחלט מתוך 120 חברי הכנסת. רוב כזה דרוש כיום כדי להחליף ממשלה בהצבעת אי־אמון. להקמת ממשלה החוק מסתפק ברוב רגיל של המצביעים, אבל כמעט כל הממשלות נהנו מתמיכת 61 לפחות.',
+    defEn: '61 is an absolute majority of the 120 members. Today it is required to replace a government by a no-confidence vote. Forming a government legally needs only more votes for than against, but almost every government has had at least 61 supporters.',
     linkHe: BL_GOV, linkEn: E.formation,
     sources: [
       src(BL_GOV, 'he', 'law', 's.28(b): no confidence by a majority of members; s.13(d): government constituted on the Knesset’s confidence'),
@@ -543,8 +546,8 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'government-formation', nameHe: 'הרכבת הממשלה', nameEn: 'Government formation', level: 'simple', provenance: 'sourced',
-    defHe: 'אחרי פרסום התוצאות הנשיא מתייעץ עם נציגי הסיעות ומטיל על חבר כנסת את התפקיד להרכיב ממשלה. יש לו 28 ימים ועוד ארכה של עד 14. הממשלה מכוננת כשהכנסת מביעה בה אמון. אם כל הניסיונות נכשלים, נערכות בחירות חדשות.',
-    defEn: 'After the results are published, the President consults the factions and asks one Knesset member to form a government, with 28 days plus up to 14 more. The government takes office once the Knesset votes confidence in it. If every attempt fails, new elections are held.',
+    defHe: 'אחרי פרסום התוצאות הנשיא מתייעץ עם נציגי הסיעות ומטיל על חבר כנסת את התפקיד להרכיב ממשלה. יש לו 28 ימים ועוד ארכה של עד 14. הממשלה מכוננת כשהכנסת מביעה בה אמון. אם כל הניסיונות נכשלים, נערכות בחירות חדשות. אלה הכללים כיום; ב-1996, ב-1999 וב-2001 נבחר ראש הממשלה ישירות בידי הבוחרים.',
+    defEn: 'After the results are published, the President consults the factions and asks one Knesset member to form a government, with 28 days plus up to 14 more. The government takes office once the Knesset votes confidence in it. If every attempt fails, new elections are held. These are today’s rules; in 1996, 1999 and 2001 the voters elected the Prime Minister directly.',
     linkHe: H.headOfState, linkEn: E.formation,
     sources: [
       src(BL_GOV, 'he', 'law', 's.7: President assigns the task after consulting factions; s.13: constitution by confidence'),

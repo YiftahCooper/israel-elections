@@ -9,7 +9,7 @@ import { ChevronDown, ChevronUp, X } from 'lucide-react';
 import type { ElectionDataset } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { votesCast, type Scenario } from '../../model/scenario.ts';
-import { listLabel, methodOf, referenceLabel } from '../derive.ts';
+import { listLabel, methodOf, quotaFormula, referenceLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat } from '../format.ts';
 import { dispatch, setState, useDigits } from '../store.ts';
@@ -46,6 +46,7 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
   const thrPct = s.rules.thresholdPct;
   const thr = Number(r.thresholdVotes);
   const noThreshold = Number(thrPct) === 0;
+  const quota = quotaFormula(r, s.rules, r.qualifyingVotes, s.rules.seats);
   const method = methodOf(s.rules);
   const row = (l: Scenario['lists'][number]) => ({ l, lr: r.lists.find((x) => x.id === l.id)! });
   // votes for lists that won no seat: below the threshold, or (1949) without a whole quota
@@ -68,8 +69,8 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
 
       {r.quota.num > 0n && (
         <Fig k={L('Votes per seat', 'קולות למנדט')} term="quota" v={fmtRat(r.quota, 0)} d={L('the general quota', 'המודד הכללי')}>
-          <div className="formula">⌊{fmtInt(r.qualifyingVotes)} ÷ {s.rules.seats}⌋ = {r.quota.den === 1n ? fmtInt(r.quota.num) : fmtFrac(r.quota)}</div>
-          <p className="small" style={{ marginBottom: 0 }}><Info title={L('Quota calculation', 'חישוב המודד')}>{L('The votes of the lists that passed the threshold, divided by the seats. It is not a price per extra seat: a further seat depends on every list’s remainder.', 'הקולות של הרשימות שעברו את החסימה, חלקי מספר המנדטים. אין זה "מחיר" למנדט נוסף: מנדט נוסף תלוי בעודפים של כל הרשימות.')}</Info></p>
+          <div className="formula">{quota.text} = {r.quota.den === 1n ? fmtInt(r.quota.num) : fmtFrac(r.quota)}</div>
+          <p className="small" style={{ marginBottom: 0 }}><Info title={L('Quota calculation', 'חישוב המודד')}>{L(`The votes of the lists that passed the threshold, divided by ${quota.divisor === s.rules.seats ? 'the seats' : `the seats plus one (${quota.divisor})`}. It is not a price per extra seat: a further seat depends on every list’s remainder.`, `הקולות של הרשימות שעברו את החסימה, חלקי ${quota.divisor === s.rules.seats ? 'מספר המנדטים' : `מספר המנדטים ועוד אחד (${quota.divisor})`}. אין זה "מחיר" למנדט נוסף: מנדט נוסף תלוי בעודפים של כל הרשימות.`)}</Info></p>
         </Fig>
       )}
 

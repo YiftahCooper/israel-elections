@@ -319,7 +319,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
         <h3 style={{ marginTop: 14 }}>{L('Method and limits', 'שיטה ומגבלות')}</h3>
         <ul className="small" style={{ paddingInlineStart: 18 }}>
           <li>{L('Seats are computed by deterministic code implementing sections 81–82 of the Knesset Elections Law with exact integer arithmetic. Automated tests check that it reproduces the officially published seats of every list in every election offered here.', 'המנדטים מחושבים בקוד דטרמיניסטי המממש את סעיפים 81–82 לחוק הבחירות בחשבון שלמים מדויק. בדיקות אוטומטיות מוודאות שהוא משחזר את המנדטים שפורסמו רשמית לכל רשימה בכל מערכת בחירות המוצגת כאן.')}</li>
-          <li>{L('Exact ties are decided by lottery under the law; the app flags them and lets you choose the lottery outcome.', 'שוויון מדויק מוכרע בהגרלה לפי החוק; היישום מסמן זאת ומאפשר לבחור את תוצאת ההגרלה.')}</li>
+          <li>{L('Exact ties: today’s law, like the 1949 law, decides them by lottery; for 1951–1969 the sources checked state no rule. The app flags a tie and lets you choose the outcome.', 'שוויון מדויק: לפי החוק כיום, וכך גם ב-1949, מכריעה הגרלה; לשנים 1951–1969 לא אותר כלל במקורות שנבדקו. היישום מסמן שוויון ומאפשר לבחור את התוצאה.')}</li>
           <li>{L('Elected candidates are those elected on election night; later replacements and the Norwegian Law are not modelled.', 'הנבחרים הם מי שנבחרו בליל הבחירות; מחליפים מאוחרים והחוק הנורבגי אינם ממודלים.')}</li>
           <li>{L('Demographic turnout tools are hypothetical and labelled as such.', 'כלי ההצבעה הדמוגרפיים היפותטיים ומסומנים ככאלה.')}</li>
         </ul>

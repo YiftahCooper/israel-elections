@@ -405,3 +405,13 @@ export const resultChanges=(s:Scenario,reference:Scenario):EditPath[]=>reference
 /** True when the only changes are groupings or coalition roles: the scenario differs, its votes and seats do not. */
 export const groupingOnly=(s:Scenario,reference:Scenario):boolean=>{const p=referenceChanges(s,reference);return p.length>0&&p.every(x=>!!analysisPart(x));};
 export const unchangedResultNote=(lang:Lang)=>lang==='he'?'הקולות והמנדטים לא השתנו':'Votes and seats unchanged';
+
+/** The quota written out as the engine computed it: seats + 1 in 1949, Droop, unrounded, or the exact fallback when
+ *  rounding fails. `divisor` is the number the votes were divided by. One source for the walkthrough and the Overview. */
+export function quotaFormula(r: Pick<AllocationResult, 'warnings'>, rules: SimRules, votes: bigint, seats: number, stage?: string): { text: string; divisor: number } {
+  const fallback = r.warnings.some((w) => (w.code === 'zero-quota' || w.code === 'quota-over-allocation') && (w.data as { stage?: string } | undefined)?.stage === stage);
+  const divisor = seats + (fallback ? 0 : rules.quotaSeatOffset ?? 0);
+  const n = new Intl.NumberFormat('en-US').format(votes);
+  if (rules.remainderMethod === 'droop' && !fallback) return { text: `⌊ ${n} ÷ ${seats + 1} ⌋ + 1`, divisor: seats + 1 };
+  return { text: rules.quotaRounding === 'floor' && !fallback ? `⌊ ${n} ÷ ${divisor} ⌋` : `${n} ÷ ${divisor}`, divisor };
+}

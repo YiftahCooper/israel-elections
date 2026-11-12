@@ -2,6 +2,9 @@
 
 ## 7 November 2026 — Settings
 
+- Overview (12 Nov, audit): the 1949 “Votes per seat” card wrote the quota as votes ÷ 120 beside a figure that is right only for ÷ 121; it now shows ÷ 121, as the 1949 law set, from the same code as the walkthrough.
+- Explanations (12 Nov, audit): polling areas hold up to 800 voters, or 900 with the committee’s approval, and may have a second ballot box; Sweden’s first Sainte-Laguë divisor is 1.2; ballot letters were limited to two until July 2026; the Droop quota adds one; today’s government-formation and no-confidence rules are marked as today’s; for 1951–1969 the walkthrough no longer says the law requires a lottery for ties, since the sources checked state no rule.
+- 2019 (September) (12 Nov, audit): Popular Unity’s name reads אלוחדה, not אלחודה. The candidate gazette misprints one word that the same page, the final results notice and the committee’s results page all print correctly; recorded as a reviewed correction.
 - Seat cards and MK histories (12 Nov): in the 25th Knesset, Otzma Yehudit's faction is named Otzma Yehudit, not Religious Zionism. The Knesset registers both from the first day, and a list's name now goes to only one of the factions its members formed; no two factions sitting at the same time share a name.
 - Timeline (12 Nov): five end-of-term lines said “2th”, “3th”, “21th”, “22th” and “23th Knesset”; the records are corrected and the patch that hid the fault on screen is removed.
 - Coalitions (12 Nov): on a phone with large text, “More for than against: 51 for · 64 against” wraps inside its card instead of running past it, never splitting a mark from its label or a number from its word; the totals line keeps “= 51” together.
