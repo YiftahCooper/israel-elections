@@ -156,6 +156,25 @@ export function scanDocument(file: string, doc: any, listLookup: Record<string, 
   return [...rows.values()];
 }
 
+/**
+ * Membership records the Knesset's own rows leave unsettled: each `tenures[].gaps` entry in
+ * data/research/knesset-member-changes/kN.json (a period no faction row covers, or a membership row that ends no later than
+ * it starts). Only these entries are read from those files; their confirmed rows are not gaps (audit 12 Nov 2026,
+ * cx-factions-05 and cx-events-06).
+ */
+export function memberChangeGaps(file: string, doc: any): Gap[] {
+  const rows: Gap[] = [];
+  (doc?.tenures ?? []).forEach((t: Obj, i: number) => (t.gaps ?? []).forEach((g: Obj, j: number) => {
+    const item = `tenure ${t.id} / $.tenures[*].gaps[*].${g.about}`;
+    const row: Gap = { key: hash(JSON.stringify([file, t.id, j, g.about])).slice(0, 24), election: `k${doc.knesset}`, letters: '', name: t.nameHe ?? '', item, kind: 'unknown',
+      uncertainty: String(g.note ?? '').slice(0, 500), sources: ['knesset-parliament-info'], nextSource: 'Knesset House Committee notice or plenum record for those dates; the member’s official Knesset page',
+      status: 'open', file, locations: [`$.tenures[${i}].gaps[${j}]`], occurrences: 1, importance: 'medium', certainty: 'unknown' };
+    row.importance = importanceOf(row);
+    rows.push(row);
+  }));
+  return rows;
+}
+
 /** Required fields come directly from the on-disk TypeScript schema, including nested records. */
 function schemaGaps(root: string, file: string, doc: any): Gap[] {
   const schema = readFileSync(join(root, 'src/data/schema.ts'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/[^\n]*/g, '');
@@ -248,6 +267,7 @@ export function generateFullRegister(root = ROOT) {
       });
     }
   }
+  for (const file of filesUnder(root, 'data/research/knesset-member-changes').filter(f => /\/k\d+\.json$/.test(f))) gaps.push(...memberChangeGaps(file, read(root, file)));
   gaps.sort((a, b) => (Number(a.election.slice(1)) || 999) - (Number(b.election.slice(1)) || 999) || a.file.localeCompare(b.file, 'en') || a.item.localeCompare(b.item, 'en') || a.kind.localeCompare(b.kind, 'en'));
   return { schemaVersion: 1, counts: Object.fromEntries(kinds.map(k => [k, gaps.filter(g => g.kind === k).length])), census: certaintyCensus(root), gaps };
 }
@@ -281,6 +301,7 @@ const AREA_LABELS: Record<string, string> = {
   'families elections': 'Family classifications', 'public/data/kN.json lists': 'Published lists',
   'public/data/kN.json agreements': 'Surplus agreements', 'data/meta/kN.json blocSchemes': 'Bloc schemes',
   'data/meta/parties.json partyAppearances': 'Party appearances', 'data/meta/kN.json lists': 'List metadata',
+  'data/research/knesset-member-changes/kN.json tenures': 'Membership records', 'data/research/knesset-member-changes/kN.json tenures.gaps': 'Membership records',
 };
 const labelOf = (g: Gap) => g.letters || g.item.split(' / ').slice(0, -1).join(' / ') || '';
 
