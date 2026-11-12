@@ -248,8 +248,9 @@ test('records added in this pass: the Lavon affair, the 1988 recommendations, Go
   await expect(history).not.toContainText('נבחר ברשימת');
   await choose(page.getByRole('button', { name: 'בחירות', exact: true }), 'k25');
   await history.getByText('שינויים בממשלה', { exact: true }).click();
-  // 11 since the 12 Nov merge (Goldknopf 15 Jun 2025 and Porush/Tesler 17 Jul 2025 joined the nine fx-after rows)
-  await expect(history.locator('.after-government-change')).toHaveCount(11);
+  // 15: the nine fx-after rows, Goldknopf 15 Jun 2025 and Porush/Tesler 17 Jul 2025 (12 Nov merge), and four rows from
+  // the appointment register (13 Nov): Maoz 1 Mar 2023, 5 Jun 2023 and 26 Mar 2025, Eichler 19 Jan 2026
+  await expect(history.locator('.after-government-change')).toHaveCount(15);
 });
 
 // Fix lane fx-after2 (audit 12 Nov 2026, second pass)

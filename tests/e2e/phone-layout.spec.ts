@@ -127,7 +127,8 @@ test('Sensitivity: range rows read low to high under one label; the tables fit a
       const label = await box(group.getByText(name, { exact: true }));
       if (lang === 'he') expect(label.x).toBeGreaterThan(hi.x); else expect(label.x).toBeLessThan(lo.x);
     }
-    await expect(panel.locator('.tablewrap')).toHaveCount(2);
+    // the vote sweep's table appears when its exact calculation ends ("Calculating exactly…" until then)
+    await expect(panel.locator('.tablewrap')).toHaveCount(2, { timeout: 90_000 });
     for (const t of await panel.locator('.tablewrap').all()) expect(await t.evaluate(e => e.scrollWidth - e.clientWidth)).toBeLessThanOrEqual(0);
   }
 });
