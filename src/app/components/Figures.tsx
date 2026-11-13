@@ -75,7 +75,7 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
       {r.quota.num > 0n && (
         <Fig k={L('Votes per seat', 'קולות למנדט')} term="quota" v={fmtRat(r.quota, 0)} d={L('the general quota', 'המודד הכללי')}>
           <div className="formula">{quota.text} = {r.quota.den === 1n ? fmtInt(r.quota.num) : fmtFrac(r.quota)}</div>
-          <p className="small" style={{ marginBottom: 0 }}><Info title={L('Quota calculation', 'חישוב המודד')}>{L(`The votes of the lists that passed the threshold, divided by ${quota.divisor === s.rules.seats ? 'the seats' : `the seats plus one (${quota.divisor})`}. It is not a price per extra seat: a further seat depends on every list’s remainder.`, `הקולות של הרשימות שעברו את החסימה, חלקי ${quota.divisor === s.rules.seats ? 'מספר המנדטים' : `מספר המנדטים ועוד אחד (${quota.divisor})`}. אין זה "מחיר" למנדט נוסף: מנדט נוסף תלוי בעודפים של כל הרשימות.`)}</Info></p>
+          <p className="small" style={{ marginBottom: 0 }}><Info title={L('Quota calculation', 'חישוב המודד')}>{L(`${noThreshold ? 'All valid votes (there is no threshold)' : 'The votes of the lists that passed the threshold'}, divided by ${quota.divisor === s.rules.seats ? 'the seats' : `the seats plus one (${quota.divisor})`}. It is not a price per extra seat: a further seat depends on every list’s remainder.`, `${noThreshold ? 'כל הקולות הכשרים (אין אחוז חסימה)' : 'הקולות של הרשימות שעברו את החסימה'}, חלקי ${quota.divisor === s.rules.seats ? 'מספר המנדטים' : `מספר המנדטים ועוד אחד (${quota.divisor})`}. אין זה "מחיר" למנדט נוסף: מנדט נוסף תלוי בעודפים של כל הרשימות.`)}</Info></p>
         </Fig>
       )}
 
@@ -101,7 +101,7 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
         <div className="kv small"><span>{L('Ballots cast', 'מצביעים')}</span><span>{fmtInt(cast)}</span><span>{L('Invalid ballots', 'קולות פסולים')}</span><span>{fmtInt(s.invalid)}</span><span><b>{L('Valid votes', 'קולות כשרים')}</b></span><span><b>{fmtInt(r.totalValid)}</b></span></div>
       </Fig>}
       {expert && <Fig k={L('Qualifying votes', 'קולות משתתפים')} term="qualifying" v={fmtInt(r.qualifyingVotes)} d={<>{percent(r.qualifyingVotes, r.totalValid, digits)} {L('of valid', 'מהכשרים')}</>}>
-        <p className="small" style={{ margin: 0 }}>{L(`${r.lists.filter(x => x.qualified).length} qualifying lists`, `${r.lists.filter(x => x.qualified).length} רשימות משתתפות`)} <Info title={L('Qualifying votes', 'קולות משתתפים')}>{L(`The votes of the ${r.lists.filter((x) => x.qualified).length} lists that passed the threshold; only these share the seats. ${fmtInt(r.unrepresentedVotes)} valid votes went to lists that did not.`, `הקולות של ${r.lists.filter((x) => x.qualified).length} הרשימות שעברו את החסימה; רק הן מתחלקות במנדטים. ${fmtInt(r.unrepresentedVotes)} קולות כשרים ניתנו לרשימות שלא עברו.`)}</Info></p>
+        <p className="small" style={{ margin: 0 }}>{noThreshold ? <QualifyingNoThreshold s={s} r={r} seatlessVotes={seatlessVotes} /> : <>{L(`${r.lists.filter(x => x.qualified).length} qualifying lists`, `${r.lists.filter(x => x.qualified).length} רשימות משתתפות`)} <Info title={L('Qualifying votes', 'קולות משתתפים')}>{L(`The votes of the ${r.lists.filter((x) => x.qualified).length} lists that passed the threshold; only these share the seats. ${fmtInt(r.unrepresentedVotes)} valid votes went to lists that did not.`, `הקולות של ${r.lists.filter((x) => x.qualified).length} הרשימות שעברו את החסימה; רק הן מתחלקות במנדטים. ${fmtInt(r.unrepresentedVotes)} קולות כשרים ניתנו לרשימות שלא עברו.`)}</Info></>}</p>
       </Fig>}
       {expert && (
         <Fig k={L('Seats: quota + remainder', 'מנדטים: מודד + עודפים')} term={method.term} v={`${r.initialSeatsTotal} + ${r.remainderSeatsTotal}`} d={L(`${r.remainderSeatsTotal} by ${method.en}`, `${r.remainderSeatsTotal} ${hebrewPrefix('ב', method.he)}`)}>
@@ -112,4 +112,18 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
       {(standardControl || expertControl) && <div className="figures-more">{standardControl}{expertControl}</div>}
     </div>
   );
+}
+
+/** With no threshold (1949, or a rule set to 0%) every list takes part: none "passed" anything, and the votes with no
+ *  seat are those of lists that won none, as the card beside it counts them (audit c-screens-overview-03). Whether only
+ *  lists with a whole quota share the remaining seats is the rule's own flag (1949: ELECTORAL-LAW.md, ordinance s.30). */
+function QualifyingNoThreshold({ s, r, seatlessVotes }: { s: Scenario; r: AllocationResult; seatlessVotes: number }) {
+  const L = useL();
+  // the lists whose votes the card sums (with no threshold, every list that ran)
+  const taking = r.lists.filter(x => x.qualified).length;
+  const won = r.lists.filter(x => x.seats > 0).length;
+  const quotaOnly = !!s.rules.remainderRequiresInitialSeat;
+  return <>{L(`No threshold: all ${taking} lists take part; ${won} won a seat`, `אין אחוז חסימה: כל ${taking} הרשימות משתתפות; ${won === 1 ? 'אחת זכתה' : `${won} זכו`} במנדט`)} <Info title={L('Qualifying votes', 'קולות משתתפים')}>{L(
+    `There is no threshold, so the votes of every list count.${quotaOnly ? ' Only lists that won a whole quota share the remaining seats.' : ''} ${fmtInt(seatlessVotes)} valid votes went to lists that won no seat.`,
+    `אין אחוז חסימה, ולכן הקולות של כל הרשימות נספרים.${quotaOnly ? ' רק רשימות שזכו במודד שלם מתחלקות במנדטים הנותרים.' : ''} ${fmtInt(seatlessVotes)} קולות כשרים ניתנו לרשימות שלא זכו במנדט.`)}</Info></>;
 }

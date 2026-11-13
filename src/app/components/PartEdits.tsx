@@ -8,7 +8,7 @@ import { useStore } from '../store.ts';
 import { EditMarker } from './EditMarker.tsx';
 /** Each changed input has the same marker, including removed entities with no remaining field.
  *  `single` marks a summary row once however many of its inputs changed (the opened item marks each field). */
-export function PartEdits({ s, prefix, single = false }: { s: Scenario; prefix: string[]; single?: boolean }) {
+export function PartEdits({ s, prefix, single = false, skip = [] }: { s: Scenario; prefix: string[]; single?: boolean; skip?: string[] }) {
   const L = useL();
   const lang = useStore(st => st.lang);
   const { markerReference: reference } = useActiveReference();
@@ -28,7 +28,8 @@ export function PartEdits({ s, prefix, single = false }: { s: Scenario; prefix: 
   }
   // a withdrawn list's held ballots are the withdrawal itself, already marked at its switch: not a second, unlabelled mark
   const implied = (p: EditPath) => p[0] === 'lists' && p[2] === 'heldVotes' && changes.some(q => q[0] === 'lists' && q[1] === p[1] && q[2] === 'withdrawn');
-  const paths = changes.filter(p => !implied(p)).filter(p => prefix[0]==='parts' ? p[0]==='parts'&&PART_MARKER_SURFACES[p[1] as Part]===prefix[1] : prefix.every((k, i) => p[i] === k)||(prefix.length===1&&p[0]==='parts'&&p[1]===prefix[0]));
+  // `skip`: fields marked at their own figure in the same row (a list row's votes)
+  const paths = changes.filter(p => !implied(p) && !(p.length === prefix.length + 1 && skip.includes(p[prefix.length]))).filter(p => prefix[0]==='parts' ? p[0]==='parts'&&PART_MARKER_SURFACES[p[1] as Part]===prefix[1] : prefix.every((k, i) => p[i] === k)||(prefix.length===1&&p[0]==='parts'&&p[1]===prefix[0]));
   // the most telling change first: a withdrawal or new identity says more than the vote count it implies
   const rank = (p: EditPath) => ['withdrawn', 'votes'].indexOf(p[2] ?? '') + 1 || 3;
   const shown = single ? [...paths].sort((a, b) => rank(a) - rank(b)).slice(0, 1) : paths;

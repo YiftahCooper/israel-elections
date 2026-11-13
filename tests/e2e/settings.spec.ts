@@ -275,7 +275,9 @@ test.describe('every setting takes effect', () => {
     await expect(chamber.locator('.legend')).toBeHidden();
     await row(page, 'chamberLayout').getByRole('button', { name: 'Blocks', exact: true }).click();
     await expect(chamber.locator('svg rect[aria-label], svg rect title').first()).toBeAttached();
-    await expect(chamber.locator('svg circle')).toHaveCount(0);
+    // the seats are squares; the key's swatches are dots, so look only in the seat drawing
+    await expect(chamber.locator('svg[role="group"] circle')).toHaveCount(0);
+    await expect(chamber.locator('svg[role="group"] rect[data-seat]')).toHaveCount(120);
     await page.keyboard.press('Escape');
     // the reference mini-chamber shows only after a change, and only while the setting is on
     await page.locator('.lb-row').first().click();

@@ -144,6 +144,12 @@ export const candidateName = (c: { nameHe: string; displayNameHe?: string; nameE
 /** The candidates who fill a list's seats, in order: the roster minus those the official notice did not seat. */
 export const seatedOrder = (l: Pick<SimList, 'candidates'>) => l.candidates.filter((c) => !c.notSeated);
 export const electedOf = (l: SimList, seats: number) => seatedOrder(l).slice(0, seats);
+/** The member in a list's seat number `seat` (0-based) and that member's place on the full roster (1-based), which is
+ *  not the seat number once a candidate before them was not seated (1999 Shas: the first seat is No. 2). */
+export function seatCandidate(l: Pick<SimList, 'candidates'>, seat: number) {
+  const candidate = seatedOrder(l)[seat] ?? null;
+  return { candidate, place: candidate ? l.candidates.indexOf(candidate) + 1 : null };
+}
 
 const tieCache = new WeakMap<Scenario, Map<string, boolean>>();
 /** Whether choosing a different winner for this tie would change any list's final seats. */
@@ -410,7 +416,9 @@ export function editPathLabel(s: Scenario, path: EditPath, lang: Lang, fallback?
     if (agreement) return agreement.members.map(id => listName(id) ?? (lang === 'he' ? 'רשימה שהוסרה' : 'Removed list')).join(' + ');
     const entity = [...s.blocs, ...(s.blocSchemes ?? []), ...s.lists.flatMap(l => [...l.candidates, ...(l.parties ?? [])]),
       ...(fallback ? [...fallback.blocs, ...(fallback.blocSchemes ?? []), ...fallback.lists.flatMap(l => [...l.candidates, ...(l.parties ?? [])])] : [])].find(x => x.id === k);
-    return listName(k) ?? (entity ? (lang === 'he' ? entity.nameHe : englishLabel('nameEn' in entity ? entity.nameEn : null,entity.nameHe)) : (lang === 'he' ? 'פרט' : 'Detail'));
+    // a candidate is named as everywhere else (official English name, else the Hebrew), never letter by letter
+    const person = entity && [s, ...(fallback ? [fallback] : [])].some(x => x.lists.some(l => l.candidates.some(c => c.id === k)));
+    return listName(k) ?? (entity ? (person ? candidateName(entity as { nameHe: string; nameEn?: string }, lang) : lang === 'he' ? entity.nameHe : englishLabel('nameEn' in entity ? entity.nameEn : null,entity.nameHe)) : (lang === 'he' ? 'פרט' : 'Detail'));
   }).join(' · ');
 }
 

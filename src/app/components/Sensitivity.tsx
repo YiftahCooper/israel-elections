@@ -1,3 +1,4 @@
+import { textZoom } from '../textScale.ts';
 import { percent } from './Percentage.tsx';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { cachedAnalysis } from '../analysisCache.ts';
@@ -47,8 +48,10 @@ function revealRow(row: HTMLElement | null) {
   const box = row?.closest('.tablewrap') as HTMLElement | null;
   if (!row || !box) return;
   requestAnimationFrame(() => {
-    const head = box.querySelector('thead')?.getBoundingClientRect().height ?? 0;
-    const top = row.getBoundingClientRect().top - box.getBoundingClientRect().top - box.clientTop;
+    // screen distances are zoomed under Large text; scrollTop, clientHeight and offsetHeight are not
+    const z = textZoom();
+    const head = (box.querySelector('thead')?.getBoundingClientRect().height ?? 0) / z;
+    const top = (row.getBoundingClientRect().top - box.getBoundingClientRect().top) / z - box.clientTop;
     if (top < head || top + row.offsetHeight > box.clientHeight) {
       const desired = Math.max(0, box.scrollTop + top - head);
       // Let the final row reach the header too; clamping to the table end cuts an earlier row in half.

@@ -9,6 +9,7 @@ import { useActiveReference } from '../useActiveReference.ts';
 import { referenceLabel } from '../derive.ts';
 import { allocationOf } from '../derive.ts';
 import { PartEdits } from './PartEdits.tsx';
+import { EditMarker } from './EditMarker.tsx';
 import { LazyRowComparison } from './PartyHistoryLazy.tsx';
 import { useRefRows } from '../compare/useRefRows.ts';
 import { RefLegend, RefLine, RefOnly, refLineText } from '../compare/RefLine.tsx';
@@ -83,7 +84,9 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   // A list never folds away behind "Show all" because of an edit: one shown in the reference stays shown when its
   // votes fall (a withdrawal drops them to 0), and one edited beyond its votes (withdrawn, renamed) is shown too.
   // Small vote changes spread proportionally over every list do not unfold the long tail.
-  const editedBeyondVotes = new Set(resultChanges(markerScenario, base).filter((p) => p[0] === 'lists' && p[2] !== 'votes').map((p) => p[1]));
+  const listChanges = resultChanges(markerScenario, base).filter((p) => p[0] === 'lists');
+  const editedBeyondVotes = new Set(listChanges.filter((p) => p[2] !== 'votes').map((p) => p[1]));
+  const withdrawalEdited = new Set(listChanges.filter((p) => p[2] === 'withdrawn').map((p) => p[1]));
   const baseTotal = base.lists.reduce((t, b) => t + b.votes, 0);
   // Settings → Lists with no seats (Over 0.5% / All / Folded) and Lists that withdrew. A list you selected or edited
   // is always shown, and "Show all" still opens the rest.
@@ -125,7 +128,8 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
           title={l.logo || l.synthetic ? listLabel(l, lang) : `${listLabel(l, lang)} — ${L('Ballot letters (no verified election logo)', 'אותיות הפתק (טרם נמצא סמל ממקור לבחירות אלה)')}`}>
           <Slip name={listLabel(l, lang)} letters={l.letters} color={l.color} logo={l.logo} synthetic={l.synthetic} />
           <span className="lb-main">
-            <span className="lb-name">{listLabel(l, lang)}<PartEdits single s={s} prefix={['lists', l.id]} /></span>
+            {/* the name carries a mark for the list's identity (renamed, withdrawn…); its votes carry their own below */}
+            <span className="lb-name">{listLabel(l, lang)}<PartEdits single s={s} prefix={['lists', l.id]} skip={['votes']} /></span>
             {familyDefinition && family && family!=='other' && <small className="family-row-label">{familyLabel(familyDefinition,lang)}{family==='mixed'?` · ${L('Mixed lists','רשימות מעורבות')}`:''}</small>}
             <span className="lb-bar" aria-hidden>
               {out
@@ -140,7 +144,10 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
             <span className="lb-sub">
               <span>{voteCounts && <>{fmtInt(l.votes)} · </>}{percent(l.votes, total, digits, s.rules.thresholdPct)}
               {out && thr > 0 && !l.withdrawn && <> · {(lang === 'he' ? <>{percent(l.votes, thr, 0)}{" מאחוז החסימה"}</> : <>{percent(l.votes, thr, 0)}{" of the threshold"}</>)}</>}
-              {l.withdrawn && <> · {L('withdrew', 'פרשה')}</>}</span>
+              {l.withdrawn && <> · {L('withdrew', 'פרשה')}</>}
+              {/* edited votes are marked at the figure, with the panel closed too (audit c-design-principles-09); a withdrawal
+                  says more than the votes it implies, so its row keeps the one mark beside the name */}
+              {!withdrawalEdited.has(l.id) && <EditMarker summary s={s} path={['lists', l.id, 'votes']} />}</span>
               {partner && <span className="lb-agr"><span aria-hidden>⇄ </span>{listLabel(partner, lang)}</span>}
               {cmp ? line && <RefLine line={line} label={cmp.label} r={r} /> : lastTime && lr.seats > 0 && <LazyRowComparison s={s} r={r} listId={l.id} currentName={listLabel(l, lang)} />}
             </span>
@@ -169,6 +176,14 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
                 </li>
               );
             })}
+            {/* members with no recorded party stay with the list: their seats are shown, so the rows add up to the list's */}
+            {(() => { const rest = lr.seats - electedOf(l, lr.seats).filter(c => l.parties!.some(p => p.id === c.partyId)).length; return rest > 0 && (
+              <li key="rest" data-party-rest="">
+                <Slip letters="" name={listLabel(l, lang)} color={l.color} />
+                <span className="lb-pname">{L('Party not recorded', 'מפלגה לא מתועדת')}</span>
+                <span className="lb-bar" aria-hidden><i style={{ width: `${(rest / scale) * 100}%`, background: l.color }} /></span>
+                <b>{rest}</b>
+              </li>); })()}
           </ul>
         )}
       </li>

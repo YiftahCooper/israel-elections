@@ -235,7 +235,8 @@ for (const lang of ['en', 'he'] as const) {
     await page.getByRole('button', { name: lang === 'he' ? 'מומחה' : 'Expert', exact: true }).first().click();
     await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k24');
     tl = await openTimeline(page, lang);
-    await tl.getByRole('slider').focus(); await page.keyboard.press('Home'); // the timeline keeps the date it was on (2024)
+    // a date outside the 24th Knesset's term (13 Mar 2024) is not kept: the timeline starts at the term's first step
+    await expect(tl.locator('.tl-count')).toHaveText(/^(Step|צעד) 1 /);
     await stepTo(tl, '2022-08-15', lang);
     const lines = tl.locator('.tl-lines');
     if (lang === 'en') {

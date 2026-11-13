@@ -84,13 +84,15 @@ export function TermTimeline({ ds }: { ds: ElectionDataset }) {
   const term = rt?.terms[Number(ds.id.slice(1))];
   const steps = useMemo(() => term?.timeline ? visibleSteps(term, { level, seatChanges, kinds: { norwegian, left, unknown } }) : [], [term, level, seatChanges, norwegian, left, unknown]);
   const [date, setDate] = useState<string | null>(null);
-  // a level change keeps the reader's place: the last visible step on or before the date they were on
+  // a level change keeps the reader's place: the last visible step on or before the date they were on. Another
+  // election keeps it only when the date falls inside that Knesset's term; any other date starts at its first step
   const index = useMemo(() => {
     if (!steps.length) return -1;
-    if (!date) return 0;
+    const all = term?.timeline?.steps ?? [], from = [term?.opening, all[0]?.date].filter(Boolean).sort()[0], to = [term?.end, all.at(-1)?.date].filter(Boolean).sort().at(-1);
+    if (!date || !from || !to || date < from || date > to) return 0;
     let i = 0; steps.forEach((s, j) => { if (s.step.date <= date) i = j; });
     return i;
-  }, [steps, date]);
+  }, [steps, date, term]);
   if (!term?.timeline || index < 0) return null;
   const view = steps[index];
   const go = (i: number) => setDate(steps[Math.max(0, Math.min(steps.length - 1, i))].step.date);

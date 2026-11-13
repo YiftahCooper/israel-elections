@@ -9,7 +9,7 @@ import { useHoverIntent } from '../hoverIntent.ts';
 import {markerOwner,registerMarker,subscribeMarkers} from '../markerOwners.ts';
 import { useActiveReference } from '../useActiveReference.ts';
 import { useId, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
-import { changeText, ChangeValue } from '../changeValue.tsx';
+import { ChangeValue, isRosterPath, markerChangeText } from '../changeValue.tsx';
 import type { Scenario } from '../../model/scenario.ts';
 import { baselineOf, editPathLabel, markerPath, markerReference, type EditPath } from '../derive.ts';
 import { useSetting, useStore } from '../store.ts';
@@ -41,14 +41,16 @@ export function EditMarker({ s, path, summary = false, outlet = '' }: { s: Scena
   const origin = copyOriginOf(s, logicalPath)?.provenance;
   const word = origin ? fromLabel(origin, lang, s.electionId) : L('Edited', 'נערך');
   const lead = markerLead(origin, lang, s.electionId);
-  const label = context + ' · ' + lead + changeText(before, logicalPath, lang);
+  // a whole candidate list says what changed in it, in a few names, not the former list (audit c-screens-overview-08)
+  const change = markerChangeText(before, s, logicalPath, lang, origin);
+  const label = context + ' · ' + change;
   const part = inputPart(logicalPath);
   const listId = logicalPath[0] === 'lists' ? logicalPath[1] : logicalPath[0] === 'parts' ? logicalPath[2] : undefined;
   return <span ref={anchor} className="edit-marker-slot" data-marker-path={logicalPath.join('/')}>{visible&&<span className="edit-marker" data-marker-kind={logicalPath[0]==='parts'?'part':'item'} role="button" tabIndex={visible?0:undefined} aria-expanded={open} aria-controls={open ? id : undefined} aria-label={label} aria-describedby={open&&visible ? id : undefined}
     onMouseEnter={() => { if (hoverPopups) hover.enter(() => setOpen(true)); }} onMouseLeave={hover.leave} onClick={e => { e.stopPropagation(); hover.keep(); setOpen(true); }} onFocus={() => setOpen(true)} onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget as Node) && !document.getElementById(id)?.contains(e.relatedTarget as Node)) setOpen(false); }}
     onKeyDown={e => { if (e.target === e.currentTarget && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); e.stopPropagation(); setOpen(true); } if (e.key === 'Escape' && open) { e.stopPropagation(); setOpen(false); } }} data-copied={origin ? 'true' : undefined}>{word}
     {open && visible && createPortal(<Floating id={id} role="dialog" label={label} onPointerEnter={hover.keep} onPointerLeave={hover.leave} className="edit-tooltip" anchor={() => anchor.current?.getBoundingClientRect()}>
-      {context} · {lead}<ChangeValue s={before} path={logicalPath} lang={lang} />
+      {context} · {isRosterPath(logicalPath) ? change : <>{lead}<ChangeValue s={before} path={logicalPath} lang={lang} /></>}
       {part && <button type="button" className="btn small marker-restore" onBlur={e => { if (!anchor.current?.contains(e.relatedTarget as Node)) setOpen(false); }} onKeyDown={e => { if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); anchor.current?.querySelector<HTMLElement>('.edit-marker')?.focus(); setOpen(false); } }} onClick={e => { e.stopPropagation(); dispatch({ type: 'startPart', part, source: 'saved', snapshot: partSnapshot(before, part), name: L('Reference', 'נקודת הייחוס'), ...(listId ? { listId } : {}) }); setOpen(false); }}>{L('Restore ', 'שחזור ')}{PARTS[part][lang]}</button>}
     </Floating>, document.body)}
   </span>}</span>;
