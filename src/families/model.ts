@@ -33,6 +33,12 @@ export function validFamily(x: unknown): x is Family {
   if (x.links !== undefined && (!Array.isArray(x.links) || !x.links.every((l: any) => obj(l) && typeof l.from === 'string' && typeof l.to === 'string' && l.from !== l.to && ['lineage','electoral-partner'].includes(l.type)))) return false;
   return true;
 }
+/** The sources a family's own entries cite (memberships, lists under review, vote records), in the file's order.
+ * The source blocks were copied between presets, so a file may also hold sources no entry of this family uses. */
+export function citedSources(f: Family): [string, Family['sources'][string]][] {
+  const cited = new Set(f.elections.flatMap(e => [...((e.voteSourceIds as string[] | undefined) ?? []), ...e.members.flatMap(m => m.classificationEvidence.sourceIds), ...e.reviewCandidates.flatMap(r => r.sourceIds)]));
+  return Object.entries(f.sources).filter(([id]) => cited.has(id));
+}
 export function parseFamily(text: string): Family { const x: unknown = JSON.parse(text); if (!validFamily(x)) throw new Error('Invalid family definition'); return structuredClone(x); }
 export function membership(f: Family, election: ElectionId) {
   const row = f.elections.find(e => e.electionId === election);
@@ -52,10 +58,11 @@ export function aggregate(f: Family, ds: Pick<ElectionDataset,'id'> & { lists:{i
   const m = membership(f, ds.id); const knownIds = new Set(ds.lists.map(l => l.id));
   const unresolved = !m.known || !!f.elections.find(e=>e.electionId===ds.id)?.members.some(m=>m.treatment==='unresolved'&&!f.included?.includes(m.listId)&&!f.disabled?.includes(m.listId)) || [...m.selected,...m.mixed].some(id => id.startsWith(ds.id.slice(1)+'-') && !knownIds.has(id));
   const sum = (ids: Set<string>) => ds.lists.reduce((v,l) => v + (ids.has(l.id) ? BigInt(l.votes) : 0n),0n);
-  // Nothing counted is "did not contest" only when the definition names no list at all for this election;
-  // lists left out by the mixed policy, by the user or as contested are "not counted", never absence.
-  const row = f.elections.find(e=>e.electionId===ds.id), named = !!row && (row.members.length > 0 || row.reviewCandidates.length > 0);
-  return { votes: unresolved ? null : sum(m.selected), mixed: unresolved ? null : sum(m.mixed), excluded: unresolved ? null : sum(m.excluded), valid: BigInt(ds.totals.valid), status: unresolved ? 'unknown' : !m.selected.size && !m.mixed.size ? (named ? 'not-counted' : 'did-not-contest') : 'observed' };
+  // A definition that names no list for an election says nothing about who ran: "none classified", never "did not
+  // contest". Lists it names only for review are "unclassified"; lists left out by the mixed policy or by the user are
+  // "not counted". `reviews`: lists still under review, shown beside any total so it never reads as the whole family.
+  const row = f.elections.find(e=>e.electionId===ds.id), reviews = row?.reviewCandidates.length ?? 0;
+  return { votes: unresolved ? null : sum(m.selected), mixed: unresolved ? null : sum(m.mixed), excluded: unresolved ? null : sum(m.excluded), valid: BigInt(ds.totals.valid), reviews, status: unresolved ? 'unknown' : !m.selected.size && !m.mixed.size ? (row?.members.length ? 'not-counted' : reviews ? 'unclassified' : 'none-classified') : 'observed' };
 }
 export function resolve(f: Family, s: Scenario) {
   const { selected, mixed } = membership(f,s.electionId);

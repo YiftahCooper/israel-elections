@@ -73,9 +73,13 @@ test('mixed-only elections are not plotted as zero; mixed policy is a persistent
  await expect(page.locator('.family-chip')).toHaveCount(9);await expect(page.locator('.family-profile')).toContainText('Sourced draft interpretation');
  await page.reload();await page.getByRole('tab',{name:'Party families',exact:true}).click();await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
  await expect(page.getByRole('group',{name:'Mixed-list policy',exact:true}).getByRole('button',{name:'Leave out',exact:true})).toHaveAttribute('aria-pressed','true');
- // Centre names only contested lists in 2026: that is not "did not contest".
+ // Centre 2026: Yesh Atid's 5 seats inside Together, with Bennett's 7 as partners; other lists still under review.
  await page.getByRole('button',{name:'Centre',exact:true}).click();await page.getByText('Exact figures (26 elections)',{exact:true}).click();
- await expect(page.locator('.family-table tbody tr').last()).toContainText('No list counted');await expect(page.locator('.family-table tbody tr').last()).not.toContainText('Did not contest');
+ const last=page.locator('.family-table tbody tr').last();await expect(last).toContainText('5 seats +7 partners');await expect(last).toContainText('Some lists not yet classified');await expect(last).not.toContainText('Did not contest');
+ // Russian-speaking: no list is classified before 1981, and the aliyah lists of 1981, 1984 and 1992 await review
+ await page.getByRole('button',{name:'Russian-speaking',exact:true}).click();await page.getByRole('button',{name:'Centre',exact:true}).click();
+ const rows=page.locator('.family-table tbody tr');await expect(rows.nth(0)).toContainText('No list classified');await expect(rows.nth(12)).toContainText('Lists not yet classified');await expect(rows.nth(11)).toContainText('No list classified');
+ await expect(page.locator('.family-table')).not.toContainText('Did not contest');
 });
 test('even axis ticks, scale down with a seat delta, distinct copies and delete',async({page})=>{
  await start(page);const svg=page.locator('.family-plots svg').first();

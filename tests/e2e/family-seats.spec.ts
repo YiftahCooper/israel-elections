@@ -58,9 +58,37 @@ test('touch: the first tap shows the facts, the second opens the details; Hebrew
 
 test('years without seats: no list is a dash, a list with no seats is 0, Morasha 1984 on both charts',async({page})=>{
  await start(page);await only(page,'Radical right');
- await expect(bar(page,0)).toHaveAttribute('aria-label',/Did not contest/);await expect(bar(page,18)).toHaveAttribute('aria-label',/Radical right · 0 seats$/);
+ await expect(bar(page,0)).toHaveAttribute('aria-label',/No list classified/);await expect(bar(page,18)).toHaveAttribute('aria-label',/Radical right · 0 seats · Some lists not yet classified$/);
  await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Radical right',exact:true}).click();
  await expect(seg(page,10,1)).toHaveAttribute('aria-label','Matzad: 1 seat · Morasha · 1984');
  await page.getByRole('button',{name:'Religious Zionist',exact:true}).click();await page.getByRole('button',{name:'Haredi',exact:true}).click();
  await expect(seg(page,10,1)).toHaveAttribute('aria-label','Poalei Agudat Yisrael: 1 seat · Morasha · 1984');
+});
+
+test('election breakdown: the family’s seats and their change are the seats chart’s, under every mixed-list policy',async({page})=>{
+ test.setTimeout(240_000);
+ await start(page,'en','expert');await only(page,'Likud lineage');
+ const group=page.getByRole('group',{name:'Mixed-list policy',exact:true}),dialog=page.getByRole('dialog',{name:'Election breakdown',exact:true});
+ const own=async(i:number)=>{const m=(await bar(page,i).getAttribute('aria-label'))!.match(/ · (\d+) seats?(?: · |$)/)??(await bar(page,i).getAttribute('aria-label'))!.match(/ · (1) seat(?: · |$)/);return m?Number(m[1]):null;};
+ for(const policy of ['Count all','Show hatched','Count if family heads it','Leave out']){
+  await group.getByRole('button',{name:policy,exact:true}).click();
+  let before:number|null=null;
+  for(let i=0;i<26;i++){
+   const chart=await own(i);
+   // the bar's own edge, beside its coloured segments (which lie over the bar's middle)
+   await bar(page,i).click({position:{x:2,y:2}});await expect(dialog.locator('.family-point')).toBeVisible();
+   if(chart===null)await expect(dialog.locator('.family-point-seats')).toHaveCount(0);
+   else await expect(dialog.locator('.family-point-seats b'),`${policy} bar ${i}`).toHaveText(chart===1?'1 seat':`${chart} seats`);
+   if(chart!==null&&before!==null)await expect(dialog.locator('.family-point-delta .seat-delta'),`${policy} bar ${i}`).toHaveText(new RegExp(`${chart-before>0?'\\+':chart-before<0?'−':''}${Math.abs(chart-before)}$`));
+   await dialog.getByRole('button',{name:'Close',exact:true}).click();
+   before=chart;
+  }
+ }
+ // 2013: Likud–Yisrael Beiteinu won 31; the family's own were 20 (down 7 from 27), the list's 31 only on its own row
+ await group.getByRole('button',{name:'Count all',exact:true}).click();await bar(page,18).click({position:{x:2,y:2}});
+ await expect(dialog.locator('.family-point-total')).toContainText('885,163 votes');
+ await expect(dialog.locator('.family-point-seats')).toHaveText('20 seats +11 partners');
+ await expect(dialog.locator('.family-point-delta')).toContainText('▼ −7 seats');
+ await expect(dialog.locator('.family-point-total')).not.toContainText('31');
+ await expect(dialog.locator('article').first()).toContainText('31 seats');
 });

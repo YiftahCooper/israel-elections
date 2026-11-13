@@ -1,21 +1,21 @@
 {
   "schemaVersion": 3,
-  "total": 11524,
+  "total": 11531,
   "counts": {
-    "unknown": 6975,
+    "unknown": 6979,
     "missing-field": 283,
     "conflict": 18,
     "single-source": 2491,
     "low-confidence": 101,
     "release-hold": 0,
-    "inferred": 1166,
-    "pending": 387,
+    "inferred": 1167,
+    "pending": 389,
     "unconfirmed": 103
   },
   "countsByStatus": {
-    "inferred-not-verified": 1031,
+    "inferred-not-verified": 1032,
     "needs-current-status-review": 313,
-    "open": 10180
+    "open": 10186
   },
   "countsByImportance": {
     "high": {
@@ -27,12 +27,12 @@
       "unknown": 244
     },
     "medium": {
-      "total": 3609,
+      "total": 3616,
       "confirmed": 584,
       "probable": 244,
-      "provisional": 544,
+      "provisional": 545,
       "disputed": 7,
-      "unknown": 2230
+      "unknown": 2236
     },
     "low": {
       "total": 7049,
@@ -75,7 +75,7 @@
     "Family classifications": {
       "confirmed": 0,
       "probable": 55,
-      "provisional": 409,
+      "provisional": 410,
       "disputed": 0,
       "unknown": 0
     },
@@ -252,37 +252,37 @@
     },
     {
       "election": "k10",
-      "total": 341,
+      "total": 343,
       "highOpen": 19,
-      "mediumOpen": 113,
+      "mediumOpen": 115,
       "low": 171,
       "counts": {
-        "unknown": 206,
+        "unknown": 207,
         "missing-field": 13,
         "conflict": 2,
         "single-source": 83,
         "low-confidence": 3,
         "release-hold": 0,
         "inferred": 18,
-        "pending": 13,
+        "pending": 14,
         "unconfirmed": 3
       }
     },
     {
       "election": "k11",
-      "total": 411,
+      "total": 413,
       "highOpen": 46,
-      "mediumOpen": 118,
+      "mediumOpen": 120,
       "low": 204,
       "counts": {
-        "unknown": 214,
+        "unknown": 215,
         "missing-field": 18,
         "conflict": 1,
         "single-source": 114,
         "low-confidence": 6,
         "release-hold": 0,
         "inferred": 40,
-        "pending": 15,
+        "pending": 16,
         "unconfirmed": 3
       }
     },
@@ -306,19 +306,19 @@
     },
     {
       "election": "k13",
-      "total": 302,
+      "total": 306,
       "highOpen": 24,
-      "mediumOpen": 111,
+      "mediumOpen": 115,
       "low": 146,
       "counts": {
-        "unknown": 196,
+        "unknown": 198,
         "missing-field": 12,
         "conflict": 0,
         "single-source": 45,
         "low-confidence": 2,
         "release-hold": 0,
         "inferred": 25,
-        "pending": 14,
+        "pending": 16,
         "unconfirmed": 8
       }
     },
@@ -540,9 +540,9 @@
     },
     {
       "election": "k26",
-      "total": 565,
+      "total": 564,
       "highOpen": 2,
-      "mediumOpen": 130,
+      "mediumOpen": 129,
       "low": 365,
       "counts": {
         "unknown": 273,
@@ -551,8 +551,8 @@
         "single-source": 142,
         "low-confidence": 6,
         "release-hold": 0,
-        "inferred": 100,
-        "pending": 44,
+        "inferred": 101,
+        "pending": 42,
         "unconfirmed": 0
       }
     },
@@ -837,7 +837,7 @@
     {"election":"k9","area":"data/raw/kN/search.reviewed.json capResolution","count":1,"certainty":{"provisional":1}},
     {"election":"k9","area":"Issue polling","count":1,"certainty":{"unknown":1}},
     {"election":"k9","area":"Reactions","count":1,"certainty":{"unknown":1}},
-    {"election":"k10","area":"Family classifications","count":46,"certainty":{"probable":4,"provisional":14,"unknown":28}},
+    {"election":"k10","area":"Family classifications","count":48,"certainty":{"probable":4,"provisional":14,"unknown":30}},
     {"election":"k10","area":"Published lists","count":31,"certainty":{"unknown":31}},
     {"election":"k10","area":"Party appearances","count":19,"certainty":{"unknown":19}},
     {"election":"k10","area":"List metadata","count":6,"certainty":{"unknown":6}},
@@ -846,7 +846,7 @@
     {"election":"k10","area":"Issue polling","count":2,"certainty":{"unknown":2}},
     {"election":"k10","area":"Formation","count":1,"certainty":{"disputed":1}},
     {"election":"k10","area":"Reactions","count":1,"certainty":{"unknown":1}},
-    {"election":"k11","area":"Family classifications","count":51,"certainty":{"probable":4,"provisional":16,"unknown":31}},
+    {"election":"k11","area":"Family classifications","count":53,"certainty":{"probable":4,"provisional":16,"unknown":33}},
     {"election":"k11","area":"Published lists","count":25,"certainty":{"unknown":25}},
     {"election":"k11","area":"Party appearances","count":12,"certainty":{"unknown":12}},
     {"election":"k11","area":"List metadata","count":11,"certainty":{"probable":2,"unknown":9}},
@@ -868,7 +868,7 @@
     {"election":"k12","area":"Issue polling","count":2,"certainty":{"unknown":2}},
     {"election":"k12","area":"data/raw/kN/candidates.reviewed.json corrections","count":1,"certainty":{"unknown":1}},
     {"election":"k12","area":"Reactions","count":1,"certainty":{"unknown":1}},
-    {"election":"k13","area":"Family classifications","count":55,"certainty":{"probable":2,"provisional":15,"unknown":38}},
+    {"election":"k13","area":"Family classifications","count":59,"certainty":{"probable":2,"provisional":15,"unknown":42}},
     {"election":"k13","area":"Published lists","count":25,"certainty":{"unknown":25}},
     {"election":"k13","area":"Party appearances","count":12,"certainty":{"unknown":12}},
     {"election":"k13","area":"Term events","count":6,"certainty":{"probable":5,"unknown":1}},
@@ -1000,7 +1000,7 @@
     {"election":"k25","area":"Government","count":1,"certainty":{"unknown":1}},
     {"election":"k25","area":"Issue polling","count":1,"certainty":{"unknown":1}},
     {"election":"k25","area":"Reactions","count":1,"certainty":{"unknown":1}},
-    {"election":"k26","area":"Family classifications","count":93,"certainty":{"probable":1,"provisional":20,"unknown":72}},
+    {"election":"k26","area":"Family classifications","count":92,"certainty":{"probable":1,"provisional":21,"unknown":70}},
     {"election":"k26","area":"Party appearances","count":21,"certainty":{"unknown":21}},
     {"election":"k26","area":"data/meta/election-context.json events","count":7,"certainty":{"provisional":7}},
     {"election":"k26","area":"List metadata","count":6,"certainty":{"probable":6}},

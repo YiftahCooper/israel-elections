@@ -8,9 +8,30 @@ import { allocationOf, seatBlocsOf } from './derive.ts';
 export function normalizeLocalityName(value: string): string {
   return value.normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
 }
-export function matchesLocality(query: string, names: { nameHe: string; nameEn?: string; aliases?: string[]; code?: number | null }): boolean {
+type LocalitySearchNames = { nameHe: string; nameEn?: string; aliases?: string[]; code?: number | null };
+export function matchesLocality(query: string, names: LocalitySearchNames): boolean {
   const q = normalizeLocalityName(query);
   return [names.nameHe, names.nameEn ?? '', ...(names.aliases ?? []), String(names.code ?? '')].some(n => normalizeLocalityName(n).includes(q));
+}
+/** A looser key for Latin spellings of Hebrew place names, so the usual English spelling finds the CBS romanisation
+ * (Katzrin → Qazrin, Bnei Brak → Bene Beraq, Beersheba → Be'er Sheva): apostrophes, hyphens and spaces ignored;
+ * q/k, w/v, b/v (one Hebrew letter), tz/ts/z, ch/kh and ei/e alike; the short e that romanisations write for a shva
+ * and doubled letters dropped; iy as i. */
+export function looseLocalityKey(value: string): string {
+  const collapse = (s: string) => s.replace(/(.)\1+/g, '$1');
+  const x = value.normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase().replace(/[^a-z]/g, '')
+    .replace(/t[sz]/g, 'z').replace(/ch/g, 'kh').replace(/ck/g, 'k').replace(/ph/g, 'f').replace(/q/g, 'k').replace(/w/g, 'v').replace(/b/g, 'v')
+    .replace(/ei/g, 'e').replace(/e/g, '');
+  return collapse(collapse(x).replace(/iy|yi/g, 'i'));
+}
+function looselyMatchesLocality(query: string, names: LocalitySearchNames): boolean {
+  const q = looseLocalityKey(query);
+  return q.length >= 3 && [names.nameEn ?? '', ...(names.aliases ?? [])].some(n => looseLocalityKey(n).includes(q));
+}
+/** Localities whose name or code contains the query; only when none does, those that match its looser Latin key. */
+export function findLocalities<T>(query: string, items: readonly T[], names: (item: T) => LocalitySearchNames): T[] {
+  const direct = items.filter(item => matchesLocality(query, names(item)));
+  return direct.length ? direct : items.filter(item => looselyMatchesLocality(query, names(item)));
 }
 /** Constituents have no separate local ballots: apportion list votes by current elected-seat bloc fractions.
  * Lists without seats use their list bloc. This is a labelled estimate, not observed constituent votes. */

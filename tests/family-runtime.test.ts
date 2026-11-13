@@ -50,7 +50,7 @@ test('import rejects invalid structures, duplicates and unsafe sources',()=>{
 test('grouping snapshots all lists and prior state stays immutable',()=>{
   const s=scenarioFromDataset(ds(12));const next=applyAction(s,groupingAction(f,s));expect(next.blocSchemeId).toBe(null);expect(next.customGroupingName).toBe('חרדים');expect(next.lists.filter(l=>l.bloc==='selected')).toHaveLength(4);expect(next.log).toHaveLength(1);expect(s.familyDefinition).toBeUndefined();
 });
-test('unknown, did not contest and observed zero are distinct',()=>{const d=ds(25);expect(aggregate({...f,elections:[]},d).status).toBe('unknown');expect(aggregate({...f,elections:[{electionId:'k25',members:[],reviewCandidates:[]}]},d).status).toBe('did-not-contest');const z=structuredClone(d);for(const l of z.lists)l.votes=0;expect(aggregate(f,z).votes).toBe(0n);expect(membership(f,'k25').selected.size).toBe(2);});
+test('unknown, none classified, unclassified and observed zero are distinct',()=>{const d=ds(25);expect(aggregate({...f,elections:[]},d).status).toBe('unknown');expect(aggregate({...f,elections:[{electionId:'k25',members:[],reviewCandidates:[]}]},d).status).toBe('none-classified');expect(aggregate({...f,elections:[{electionId:'k25',members:[],reviewCandidates:[{listId:'25-פה',reason:'',sourceIds:[]}]}]},d)).toMatchObject({status:'unclassified',reviews:1});const z=structuredClone(d);for(const l of z.lists)l.votes=0;expect(aggregate(f,z).votes).toBe(0n);expect(membership(f,'k25').selected.size).toBe(2);});
 
 test('all nine built-ins load generically and retain draft status',async()=>{
  const {builtins}=await import('../src/families/catalogue.ts');expect(builtins).toHaveLength(9);expect(builtins.every(f=>f.status==='research-draft-not-production')).toBe(true);

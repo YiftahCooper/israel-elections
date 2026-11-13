@@ -125,6 +125,7 @@
 .family-point {display:grid;gap:14px;min-inline-size:0;overflow-wrap:anywhere;}
 .family-point-total {display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;}
 .family-point-mixed {display:inline-flex;align-items:center;gap:6px;}
+.family-point-review {color:var(--muted);font-size:13px;}
 .family-point-mixed .family-key-mixed,.family-point-total .family-key-mixed {border-color:var(--family-color);background:repeating-linear-gradient(45deg,var(--family-color) 0 1.2px,transparent 1.2px 3.5px);}
 .family-point-delta {font-weight:600;font-size:13px;}
 .family-point-lists article {position:relative;padding-inline-start:10px;}

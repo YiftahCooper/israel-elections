@@ -174,3 +174,17 @@ it('publishes 2006 name placements while preserving official null codes and unma
     expect(locations[`row:${index}`]).toBeUndefined();
   }
 });
+
+it('finds a locality by its usual English spelling, not only the CBS romanisation (audit 12 Nov)', async () => {
+  const { readFileSync } = await import('node:fs');
+  const { findLocalities } = await import('../src/app/locality-map-model.ts');
+  const places = Object.values(JSON.parse(readFileSync('public/data/k26-locations.json', 'utf8')) as Record<string, { code: number; nameHe: string; nameEn?: string; aliases?: string[] }>);
+  const find = (q: string) => findLocalities(q, places, p => p).map(p => p.code);
+  // the six from the audit, then ten more
+  for (const [q, code] of [['Beersheba', 9000], ['Petah Tikva', 7900], ['Bnei Brak', 6100], ['Herzliya', 6400], ['Eilat', 2600], ['Katzrin', 4100],
+    ['Rishon LeZion', 8300], ['Kiryat Shmona', 2800], ['Nahariya', 9100], ['Kfar Saba', 6900], ['Raanana', 8700], ['Maale Adumim', 3616],
+    ['Ashkelon', 7100], ['Karmiel', 1139], ['Beit Shemesh', 2610], ['Zichron Yaakov', 9300]] as const) expect(find(q), q).toContain(code);
+  // a spelling that already matches directly keeps only its direct matches (no looser extras)
+  expect(find('Haifa')).toEqual([4000]);
+  expect(find('Akko')).toEqual([7600]);
+});

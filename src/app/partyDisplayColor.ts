@@ -22,7 +22,8 @@ export function partyDisplayDecision(list:PartyList,partyId:string):PartyColourD
  const color=custom?base.color:display?.color??base.color;
  const recordedVariation=!custom&&!!index.canonical[id]&&base.color!==index.canonical[id].color;
  const reasons:string[]=[];
- if(color!==base.color)reasons.push(`global sibling separation: ${display?.against.join(', ')}`);
+ if(color!==base.color&&display?.against.length)reasons.push(`global sibling separation: ${display.against.join(', ')}`);
+ if(color!==base.color&&display?.acrossLists?.length)reasons.push(`separation from other lists' seats in the same election: ${display.acrossLists.join(', ')}`);
  if(recordedVariation)reasons.push(`recorded research differs this election (${base.source}): ${index.canonical[id].color} → ${base.color}`);
  return{base:base.color,color,forced:color!==base.color,reasons,confidence:base.confidence,source:base.source,custom,recordedVariation};
 }

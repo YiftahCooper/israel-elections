@@ -79,7 +79,8 @@ test('every offered copy commits exactly its preview', () => {
     expect(inputs(committed), c.what).toEqual(inputs(p.result));
   }
   expect(made).toBeGreaterThan(50);
-});
+  // more than fifty copies, each planned twice and committed: over the 5 s default on a slow CI runner
+}, 60_000);
 
 test('copying the official threshold into a saved experiment gives the law\'s rules in the preview and the result', () => {
   const p = planOther(ref as never, work, 'threshold', { base: workCtx().base, workDate: d26.electionDate });

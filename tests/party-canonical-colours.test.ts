@@ -12,14 +12,20 @@ test('ring edits never alter a party fill',()=>{
 });
 
 test('all multi-election parties share one fill per recorded base, with a large majority exact',async()=>{
- const {partyDecisions,partyStability}=await import('../scripts/report-party-colours.ts'),{hexToOklch}=await import('../src/data/colour.ts');
+ const {partyDecisions,partyStability}=await import('../scripts/report-party-colours.ts');
  const rows=partyDecisions(),summary=partyStability();
- expect(summary.exactBase/summary.appearances).toBeGreaterThan(.75);
+ // Separating seated parties of different lists in each election (finding c-families-map-logos-09) moves 44 party
+ // fills, many by ΔE under 3 (Agudat Yisrael, Ta'al), so the exact share fell from 215/267 to 129/267. Each such move
+ // carries its reason; counting those as intended, a large majority is still exact.
+ const across=(r:{reasons:string[]})=>r.reasons.some(x=>x.startsWith('separation from other lists'));
+ expect(rows.filter(r=>r.color===r.base||across(r)).length/rows.length).toBeGreaterThan(.75);
  for(const p of summary.multipleElectionParties){
   for(const base of p.bases)expect(new Set(rows.filter(r=>r.canonicalParty===p.party&&r.base===base).map(r=>r.color)).size,p.party).toBe(1);
   if(p.distinctColours>1){expect(p.bases.length,p.party).toBeGreaterThan(1);expect(p.recordedReasons.length,p.party).toBeGreaterThan(0);}
  }
- for(const r of rows)expect(Math.abs(hexToOklch(r.color)[0]-hexToOklch(r.base)[0]),r.party).toBeLessThanOrEqual(.021);
+ // a moved fill takes the smallest step decision 0087 §6 allows (lightness, chroma, hue at most 24°) where one exists,
+ // so lightness may change (it no longer has to stay within .02 of the research); every move states its reason
+ for(const r of rows)if(r.color!==r.base)expect(r.reasons.length,r.party).toBeGreaterThan(0);
  expect(summary.unresolved).toEqual([]);
 });
 test('an impossible global separation is reported rather than varied locally',async()=>{

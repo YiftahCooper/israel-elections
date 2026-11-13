@@ -17,7 +17,9 @@ sources, appearances, mixed flags and independent BigInt totals.
 `src/families/model.ts` contains the generic import guard, membership resolution,
 aggregation and vote plans. Chart numbers come from immutable election datasets,
 not the cached preset totals. Whole list ids are deduplicated. Missing coverage and
-unresolved decisions yield unknown; an empty observed selection is did-not-contest;
+unresolved decisions yield unknown; a definition that names no list is "No list classified"
+(never "did not contest": the data cannot say who ran), and one that names lists only for review is "Lists not
+yet classified"; wherever lists are under review a total also says "Some lists not yet classified";
 an observed selected zero remains zero. Unknown points break the line. Presets may
 overlap: compare shows separate small multiples and never adds family totals.
 
@@ -39,7 +41,7 @@ Hover/focus reveals exact votes/share/date, mixed totals and publication status.
 election still awaiting its gazette would be drawn hollow and labelled; none is at present. Tab enters the current point;
 arrow keys move among the 26 elections, and Enter/Space opens the focused election.
 The shared cursor follows chart and table focus. Unknown points break the line;
-observed zero and did-not-contest remain different in exact figures.
+observed zero and "no list classified" remain different in exact figures.
 
 The table is secondary, under **Exact figures (26 elections)**. It starts collapsed
 unless reduced motion or the explicit **Prefer exact figures (screen-reader/table

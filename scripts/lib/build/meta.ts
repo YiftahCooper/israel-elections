@@ -2,9 +2,8 @@ import {localityLeaderIds} from '../../../src/data/locality-leaders.ts';
 // Merges the sourced party/bloc/colour research (data/meta/kNN.json, decision 0087) into a dataset:
 //  - constituent parties of joint lists (ListRecord.parties) and each candidate's party (Candidate.partyId);
 //  - bloc schemes per election (ElectionDataset.blocSchemes, defaultBlocScheme), normalised to ids;
-//  - colours: constituent-party colours, and each list's associated colour where the research rates it
-//    medium or high and it stays distinguishable from its seat-order neighbours (otherwise the app's
-//    cross-election colour is kept).
+//  - colours: constituent-party colours, and each list's colour from the research for that election (see below),
+//    separated from the lists and party seats it shares the chamber with.
 // It never changes votes, seats, rosters or the elected list, and it fails loudly on any reference to a
 // list, rank or party that does not exist, so a roster correction cannot silently misassign people.
 import { existsSync, readFileSync } from 'node:fs';
@@ -24,8 +23,10 @@ interface Meta { electionId: string; lists: MetaList[]; blocSchemes?: MetaScheme
 const HEX = /^#[0-9a-fA-F]{6}$/;
 const KINDS = new Set(['government', 'parliamentary', 'pre-election']);
 
-import {hexToLab} from '../../../src/data/colour.ts';
-import {separateBlocColours,separateColours} from '../../../src/data/colourGuard.ts';
+import {hexToLab,MIN_LIST_DELTA_E,MIN_NEIGHBOUR_DELTA_E} from '../../../src/data/colour.ts';
+import {MAP_UNASSIGNED_COLOUR} from '../../../src/app/locality-map-model.ts';
+import {readableSeatColour,separateBlocColours,separateColours,usableResearchColour} from '../../../src/data/colourGuard.ts';
+import {partyDisplayColor} from '../../../src/app/partyDisplayColor.ts';
 
 
 export function applyMeta(ds: ElectionDataset, localities?:Pick<LocalityDataset,'listIds'|'rows'>): ElectionDataset {
@@ -70,9 +71,23 @@ export function applyMeta(ds: ElectionDataset, localities?:Pick<LocalityDataset,
     if (!HEX.test(c.color)) fail(`bad colour ${c.color}`);
     if (c.party && strong(c)) for (const lid of partyLists.get(c.party) ?? []) { const p = partiesByList.get(lid)?.find((x) => x.id === c.party); if (p) p.color = c.color.toLowerCase(); }
   }
-  // list colours: the associated colour where the research has one, else the app's cross-election colour
-  const associated = new Map<string, string>();
-  for (const c of meta.colours ?? []) if (c.letters && strong(c)) associated.set(listId(c.letters), c.color.toLowerCase());
+  // list colours (decision 0087 §6): the colour the research records for the list in this election, whatever its
+  // confidence (the low ones are the owner's to confirm). A joint list led by a party recorded with that same colour,
+  // or with no list colour recorded and led by a party that has one, takes that party's seat colour, so the list and
+  // its leading seats agree. Without research, the app's cross-election colour. A colour too dark or too light for a
+  // seat fill moves to the nearest readable lightness, keeping its hue. Black, white or grey research (OKLCH chroma
+  // under .03) would read as the map's mark for no winner (MAP_UNASSIGNED_COLOUR), so the app's colour is kept for
+  // it, as before. Separation follows (distinctColours).
+  const listResearch = new Map<string, string>(), partyResearch = new Map<string, string>();
+  for (const c of meta.colours ?? []) {
+    if (c.letters && usableResearchColour(c.color)) listResearch.set(listId(c.letters), c.color.toLowerCase());
+    if (c.party && usableResearchColour(c.color)) partyResearch.set(c.party, c.color.toLowerCase());
+  }
+  const seed = (l: ElectionDataset['lists'][number], parties: { id: string; nameHe: string; nameEn: string; color?: string }[] | undefined) => {
+    const own = listResearch.get(l.id), first = l.candidates.find((c) => c.rank === 1), lead = first && partyOfCandidate.get(first.id);
+    const leading = lead && parties ? partyResearch.get(lead) : undefined;
+    return readableSeatColour(lead && leading && (!own || own === leading) ? partyDisplayColor({ id: l.id, color: l.color, parties: parties! }, lead) : own ?? l.color);
+  };
   let lists = ds.lists.map((l) => {
     const parties = partiesByList.get(l.id);
     const englishName = meta.lists.find(x => x.letters === l.letters)?.englishName;
@@ -80,7 +95,7 @@ export function applyMeta(ds: ElectionDataset, localities?:Pick<LocalityDataset,
     return {
       ...l,
       ...(englishName ? {shortEn: englishName.label, englishName} : {}),
-      color: associated.get(l.id) ?? l.color,
+      color: seed(l, parties),
       ...(parties ? { parties } : {}),
       candidates: l.candidates.map((c) => (partyOfCandidate.has(c.id) ? { ...c, partyId: partyOfCandidate.get(c.id)! } : c)),
     };
@@ -145,7 +160,7 @@ export function applyMeta(ds: ElectionDataset, localities?:Pick<LocalityDataset,
  *  stricter difference for lists drawn side by side — in the default grouping's chamber order (blocs left to right,
  *  unassigned lists between their halves) and in the list column (most seats first). Larger lists keep their colour;
  *  a smaller one that clashes moves by the least perceptible amount (src/data/colour.ts). */
-function distinctColours<T extends { id: string; votes: number; color: string; parties?: { id: string }[]; candidates: { id: string }[] }>(ds: ElectionDataset, lists: T[], scheme: BlocScheme | undefined,localities?:Pick<LocalityDataset,'listIds'|'rows'>): T[] {
+function distinctColours<T extends { id: string; votes: number; color: string; parties?: { id: string; nameHe: string; nameEn: string }[]; candidates: { id: string; partyId?: string; notSeated?: boolean }[] }>(ds: ElectionDataset, lists: T[], scheme: BlocScheme | undefined,localities?:Pick<LocalityDataset,'listIds'|'rows'>): T[] {
   const thr = Number(ds.ruleSetId.split('-').pop()) / 100;
   const seats = (l: { id: string; votes: number }) => (ds.officialSeats ? ds.officialSeats[l.id] ?? 0 : l.votes >= thr * ds.totals.valid ? 1 : 0);
   const winners = lists.filter((l) => seats(l) > 0);
@@ -164,6 +179,15 @@ function distinctColours<T extends { id: string; votes: number; color: string; p
   const localityFile=join(META,'..','..','public','data',`${ds.id}-localities.json`);
   const localIds=localities?localityLeaderIds(localities):existsSync(localityFile)?localityLeaderIds(JSON.parse(readFileSync(localityFile,'utf8'))):new Set<string>();
   const extra=lists.filter(l=>localIds.has(l.id)&&!winners.some(w=>w.id===l.id));
-  const { colors } = separateColours([...winners].sort((a, b) => b.votes - a.votes).concat(extra.sort((a,b)=>b.votes-a.votes)).map((l) => ({ id: l.id, color: l.color, alternatives: appColour.get(l.id) === l.color ? [] : [appColour.get(l.id)!] })), neighbours);
+  // the default chamber draws a joint list's seats in its parties' colours (src/data/partyPalette.ts keeps parties of
+  // different lists apart); a list drawn in its own colour also clears the other lists' seated parties, so no two
+  // seats of different lists look alike (tests/chamber-seat-colours.test.ts)
+  const elected = (l: T) => l.candidates.filter((c) => !c.notSeated).slice(0, ds.officialSeats?.[l.id] ?? 0);
+  const ownParty = (l: T, c: { partyId?: string }) => (l.parties?.length ?? 0) > 1 && !!c.partyId && l.parties!.some((p) => p.id === c.partyId);
+  const partySeats = new Map(winners.map((l) => [l.id, [...new Set(elected(l).filter((c) => ownParty(l, c)).map((c) => c.partyId!))].map((p) => partyDisplayColor(l, p))]));
+  const drawnAsList = (l: T) => elected(l).some((c) => !ownParty(l, c));
+  // and every list on the map stays apart from its mark for no winner (tests/colour-sweep.test.ts)
+  const obstacles = (id: string) => [{ color: MAP_UNASSIGNED_COLOUR, min: MIN_NEIGHBOUR_DELTA_E }, ...(drawnAsList(lists.find((l) => l.id === id)!) ? winners.filter((o) => o.id !== id).flatMap((o) => (partySeats.get(o.id) ?? []).map((color) => ({ color, min: MIN_LIST_DELTA_E }))) : [])];
+  const { colors } = separateColours([...winners].sort((a, b) => b.votes - a.votes).concat(extra.sort((a,b)=>b.votes-a.votes)).map((l) => ({ id: l.id, color: l.color, alternatives: appColour.get(l.id) === l.color ? [] : [appColour.get(l.id)!] })), neighbours, undefined, undefined, obstacles);
   return lists.map((l) => (colors.has(l.id) ? { ...l, color: colors.get(l.id)! } : l));
 }
