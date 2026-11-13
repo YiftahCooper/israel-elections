@@ -11,7 +11,7 @@ import { inputPart } from '../../model/editScopes.ts';
 import { PARTS, partSnapshot } from '../../model/parts.ts';
 import { allocationOf, changeCount, editPathLabel, electedOf, listLabel, markerReference, METHODS, resultChanges } from '../derive.ts';
 import { baselineOf } from '../factionDefaults.ts';
-import { changeText } from '../changeValue.tsx';
+import { markerChangeText } from '../changeValue.tsx';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtRat, PP } from '../format.ts';
 import { setState, toast, useDigits, useLevel, useSetting, useStore } from '../store.ts';
@@ -426,7 +426,8 @@ function Mark({ x, path }: { x: SideModel; path: readonly string[] }) {
   const before = markerReference(x.sc, x.start, path);
   const part = inputPart(path);
   const word = origin ? markerLead(origin, lang, x.sc.electionId).split(' · ')[0].replace(/ \(.*\)$/, '') : L('Edited', 'נערך');
-  const text = `${editPathLabel(x.sc, path, lang, x.start)} · ${markerLead(origin, lang, x.sc.electionId)}${changeText(before, path, lang)}`;
+  // a candidate list says what changed in it ("Edited: moved: …"), not its whole former list, as the Overview's marker does
+  const text = `${editPathLabel(x.sc, path, lang, x.start)} · ${markerChangeText(before, x.sc, path, lang, origin)}`;
   const listId = path[0] === 'lists' ? path[1] : path[2];
   return <>
     <button ref={ref} type="button" className="cmp-mark" data-copied={origin ? 'true' : undefined} aria-label={text} aria-expanded={open} onClick={(e) => { e.stopPropagation(); setOpen(!open); }}>{word}</button>

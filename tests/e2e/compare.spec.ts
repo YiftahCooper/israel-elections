@@ -311,7 +311,10 @@ test('an import that puts someone on two lists warns, names both, and removes on
   const ask = page.locator('dialog[open].cmp-whole');
   await ask.locator('.cmp-dupes').getByRole('button', { name: 'Remove from Otzma Yehudit' }).click();
   await ask.getByRole('button', { name: 'Copy candidates' }).click();
-  await expect(row(page, 'Otzma Yehudit').locator('.cmp-rname .cmp-mark, .cmp-lname .cmp-mark').first()).toHaveText('Edited');
+  const otzma = row(page, 'Otzma Yehudit').locator('.cmp-rname .cmp-mark, .cmp-lname .cmp-mark').first();
+  await expect(otzma).toHaveText('Edited');
+  // the mark says what changed in the candidate list, not the whole former list (as the Overview's marker does)
+  await expect(otzma).toHaveAttribute('aria-label', /· Edited: removed: Tally Gotliv \S?\(\d+\)\S?$/);
   await expect(row(page, 'Likud').locator('.cmp-mark[data-copied]').first()).toHaveText('From 2022');
 });
 
