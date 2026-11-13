@@ -399,7 +399,9 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .tbl td.n, .tbl th.n { text-align: end; white-space: nowrap; }
 .tbl tr.win td { background: var(--open); }
 .tbl tr.sel td { background: var(--open); }
-.tablewrap { overflow: auto; max-height: 520px; border: 1px solid var(--rule); border-radius: var(--radius); }
+/* positioned, so anything absolutely placed inside a table (the hidden Exact values switch) scrolls and is clipped with
+   the table instead of widening the page or sheet around it */
+.tablewrap { position: relative; overflow: auto; max-height: 520px; border: 1px solid var(--rule); border-radius: var(--radius); }
 
 /* ---------- candidate list */
 .cands { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; }

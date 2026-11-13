@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { choose } from './choices.ts';
+import { barLanguage } from './barMenu.ts';
 
 for (const lang of ['he', 'en'] as const) test(`k26 distinguishes the completed mandate from a new government: ${lang}`, async ({ page }) => {
   await page.goto('/');
@@ -194,7 +195,7 @@ test('switching language on mounted history updates endpoint direction and visua
 // Fix lane fx-after (audit 12 Nov 2026)
 const openAfter = async (page: import('@playwright/test').Page, id: string, lang: 'en' | 'he') => {
   await page.goto('/');
-  if (lang === 'en') await page.getByRole('button', { name: 'EN', exact: true }).click();
+  if (lang === 'en') await barLanguage(page, 'en');
   await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), id);
   await page.getByRole('tab', { name: lang === 'he' ? 'אחרי הבחירות' : 'After the election', exact: true }).click();
   return page.locator('.after-election');
