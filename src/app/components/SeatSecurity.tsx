@@ -1,5 +1,6 @@
 import { formatDate } from '../dateFormat.ts';
 import { reviewedAftermath } from '../../data/aftermath-runtime.ts';
+import { electionContext } from '../../data/electionContext.ts';
 import type { Certainty } from '../../data/evidence.ts';
 import { AnalysisEdits } from './AnalysisEdits.tsx';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
@@ -248,6 +249,9 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
    *  support Support, arranged abstention Abstain. A confidence vote alone, or an unknown relationship, is not an
    *  arrangement and stays Any. Each row keeps its recorded certainty; nothing is upgraded. */
   const record = reviewedAftermath(s.electionId)?.government;
+  // 1996 and 1999 elected the Prime Minister directly (Basic Law: The Government, 1992): the legal note says that the
+  // confidence-vote arithmetic follows today's rules, not that era's (audit 12 Nov 2026, cx-law-06)
+  const directPmYear = electionContext.pmContests.find((c) => c.electionId === s.electionId && c.contestType === 'parallel-pm')?.effectiveDate.slice(0, 4);
   const { recorded: recordedRows, choices: recordedChoices } = recordedRoles(record?.coalition ?? [], s.lists, seated.map((x) => ({ id: x.l.id, listId: x.listId })));
   const recorded = recordedRows.map((x) => ({ ...x, name: participantName(x.r, [], lang, x.list).name }));
   const recordOn = !!recordedChoices && COALITION_ROLES.every((k) => sameSet(live(choices[k]), recordedChoices[k]));
@@ -288,7 +292,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
       <span className="coal-tests">
         <span className="coal-test" data-ok={v.passes}><span className="coal-part">{mark(v.passes)}{L('More for than against', 'יותר תומכים ממתנגדים')}:</span> <span className="coal-part"><span className="coal-for">{L(`${v.votesFor} for`, `${v.votesFor} בעד`)}</span> ·</span> <span className="coal-against">{L(`${v.against} against`, `${v.against} נגד`)}</span></span>
         <span className="coal-test" data-ok={v.stable}><span className="coal-part">{mark(v.stable)}<Majority n={v.votesFor} total={total} /></span></span>
-        <Info title={L('Forming a government', 'הקמת ממשלה')}>{L(
+        <Info title={L('Forming a government', 'הקמת ממשלה')}>{directPmYear && L(`In ${directPmYear} the voters elected the Prime Minister directly, under the rules of that time; this arithmetic uses today’s. `, `ב־${directPmYear} בחרו הבוחרים את ראש הממשלה ישירות, לפי הכללים של אז; החשבון כאן לפי הכללים של היום. `)}{L(
           `Under today’s law, the Knesset forms a government by a confidence vote (Basic Law: The Government, §13(d)). No special majority is set, so the general rule applies (Basic Law: The Knesset, §25): a majority of those voting, abstainers not counted, so more for than against, not ${v.majority}. ${v.majority} of ${total} is a majority of all members, needed to replace a government by a constructive no-confidence vote (Basic Law: The Government, §28(b)); a government with ${v.majority} cannot be replaced while they hold. Here members and outside support vote for, arranged abstentions abstain and every other seat votes against; absences are not modelled. Pivotal: losing that partner, member or outside support, loses the vote. Members are split by bloc when they span blocs. Arithmetic only, not political feasibility.`,
           `לפי החוק כיום, הממשלה מוקמת בהבעת אמון של הכנסת (חוק־יסוד: הממשלה, סעיף 13(ד)). לא נקבע רוב מיוחד, ולכן חל הכלל הכללי (חוק־יסוד: הכנסת, סעיף 25): רוב המשתתפים בהצבעה, והנמנעים אינם נמנים עמם. די ביותר תומכים ממתנגדים, לא ב־${v.majority}. ${v.majority} מתוך ${total} הם רוב חברי הכנסת, הדרוש להחלפת ממשלה בהבעת אי־אמון קונסטרוקטיבית (חוק־יסוד: הממשלה, סעיף 28(ב)); ממשלה שיש לה ${v.majority} אינה ניתנת להחלפה כל עוד הם עומדים לצדה. כאן חברות הקואליציה והתמיכה מבחוץ מצביעות בעד, הנמנעות בהסדר נמנעות וכל השאר מצביעים נגד; היעדרויות אינן מחושבות. חיונית: שותפה, חברה או תומכת מבחוץ, שבלעדיה ההצבעה נכשלת. החברות מפוצלות לפי גוש כשהן משתייכות ליותר מגוש אחד. חשבון בלבד, לא היתכנות פוליטית.`)}</Info>
       </span>

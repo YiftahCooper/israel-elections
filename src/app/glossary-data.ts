@@ -515,13 +515,14 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'majority-61', nameHe: 'רוב של 61', nameEn: 'Majority of 61', level: 'simple', provenance: 'sourced',
-    defHe: '61 הם רוב מוחלט מתוך 120 חברי הכנסת. רוב כזה דרוש כיום כדי להחליף ממשלה בהצבעת אי־אמון. להקמת ממשלה החוק מסתפק ברוב רגיל של המצביעים, אבל כמעט כל הממשלות נהנו מתמיכת 61 לפחות.',
-    defEn: '61 is an absolute majority of the 120 members. Today it is required to replace a government by a no-confidence vote. Forming a government legally needs only more votes for than against, but almost every government has had at least 61 supporters.',
+    defHe: '61 הם רוב מוחלט מתוך 120 חברי הכנסת. כיום רוב כזה דרוש כדי להחליף ממשלה בהצבעת אי־אמון, ולהקמת ממשלה החוק מסתפק ברוב רגיל של המצביעים; כמעט כל הממשלות נהנו מתמיכת 61 לפחות. ב־1996, ב־1999 וב־2001 נבחר ראש הממשלה ישירות בידי הבוחרים, לפי כללים אחרים.',
+    defEn: '61 is an absolute majority of the 120 members. Today it is required to replace a government by a no-confidence vote, while forming one legally needs only more votes for than against; almost every government has had at least 61 supporters. In 1996, 1999 and 2001 the voters elected the Prime Minister directly, under other rules.',
     linkHe: BL_GOV, linkEn: E.formation,
     sources: [
       src(BL_GOV, 'he', 'law', 's.28(b): no confidence by a majority of members; s.13(d): government constituted on the Knesset’s confidence'),
       src(E.formation, 'en', 'institute', 'Basic Law does not require an absolute majority at investiture; governments almost always had ≥61'),
       src(E.knesset101, 'en', 'institute', 'constructive no-confidence needs at least 61 MKs'),
+      { ...src(BL_GOV_1992, 'he', 'law', '1992 text: s.3(b): the Prime Minister elected directly; s.63(a): from the elections to the 14th Knesset (1996)'), checked: '2026-11-12', retained: 'data/raw/law/basic-law-government-1992.pdf' },
     ],
   },
   {
