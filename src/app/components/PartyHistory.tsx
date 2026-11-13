@@ -9,7 +9,7 @@ import { erasOf, eventsOf, identityOf, ownSeatRecord, partySeries, type Identity
 import { OPEN_CHECKS, type Relation } from '../../history/relations.ts';
 import { HISTORY, electionIndex, electionPosition, historyList, listShort, partyNameAt, partyShort, yearLabel, type HList } from '../../history/runtime.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtPct, seatsText } from '../format.ts';
+import { fmtInt, fmtPct, seatsText, PP } from '../format.ts';
 import { hebrewPrefix as attach, hebrewPrefixName } from '../hebrewPrefix.ts';
 import { useDigits, useLevel, useSetting } from '../store.ts';
 import { Info, Slip } from './ui.tsx';
@@ -344,7 +344,7 @@ export function ComparisonLine({ c }: { c: Comparison | null }) {
   return <div className="ph-cmpline" data-kind={c.kind}>
     <span className="muted">{L(`Since ${py}`, `לעומת ${py}`)}</span> <b><bdi>{comparedName(c, lang)}</bdi></b>
     <span dir="ltr" className="ph-num">{c.before.seats} → {c.after.seats} <SeatDelta value={d} /></span>
-    {share && share.num !== 0n && <span className="ph-num">· <bdi dir="ltr">{rationalPoints(share, digits)}</bdi> {L('pp', 'נק׳ אחוז')}</span>}
+    {share && share.num !== 0n && <span className="ph-num">· <bdi dir="ltr">{rationalPoints(share, digits)}</bdi> {L(...PP)}</span>}
     {c.certainty !== 'confirmed' && <CertChip c={c.certainty} />}
     <Info title={L('Compared with', 'בהשוואה ל־')}><ComparisonWhy c={c} /></Info>
     {(c.notCounted.length > 0 || c.left.length > 0) && <div className="tiny muted ph-notcounted">

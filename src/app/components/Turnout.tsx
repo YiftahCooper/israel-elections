@@ -16,7 +16,7 @@ import {
 import { allocationOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { errorText } from '../../model/messages.ts';
-import { fmtInt, fmtPctNum, nonZeroFixed, signed } from '../format.ts';
+import { fmtInt, fmtPctNum, nonZeroFixed, signed, PP } from '../format.ts';
 import { dispatch, toast, useDigits, useStore } from '../store.ts';
 import { deleteVoterGroup, exportVoterGroup, newGroupId, saveVoterGroup, useVoterGroups } from '../voterGroupStore.ts';
 import { ChoicePicker, type Choice } from './ChoicePicker.tsx';
@@ -91,7 +91,7 @@ export function Turnout({ s }: { s: Scenario }) {
   const weights = vote === 'observed' ? f!.mix! : s.lists.map((l) => shareOf(l.id));
   const shareSum = s.lists.reduce((t, l) => t + shareOf(l.id), 0);
   const change = useMemo(() => (f ? groupChange(s, f, d.change, weights) : null), [s, f, d.change, weights.join(',')]); // eslint-disable-line react-hooks/exhaustive-deps
-  const label = `${d.name || L('Voter group', 'קבוצת מצביעים')} ${d.change >= 0 ? '+' : '−'}${nonZeroFixed(Math.abs(d.change), digits)} ${L('pp', 'נק׳')}`;
+  const label = `${d.name || L('Voter group', 'קבוצת מצביעים')} ${d.change >= 0 ? '+' : '−'}${nonZeroFixed(Math.abs(d.change), digits)} ${L(...PP)}`;
   const seatDiff = useMemo(() => {
     if (!change || change.error || !change.delta) return null;
     try {
@@ -131,7 +131,7 @@ export function Turnout({ s }: { s: Scenario }) {
       detail: isFacts(f) ? (lang === 'he' ? <>{fmtInt(f.localities!)}{" יישובים · "}{fmtInt(f.electorate)}{" בעלי זכות · הצבעה "}{percentNum(100 * f.cast / f.electorate, digits)}</> : <>{fmtInt(f.localities!)}{" localities · "}{fmtInt(f.electorate)}{" registered · turnout "}{percentNum(100 * f.cast / f.electorate, digits)}</>) : problemText(f) })),
     ...(!hasLocalities ? [{ value: 'none', label: L('Groups from locality results', 'קבוצות מתוצאות היישובים'), group: L('Official locality data', 'נתונים רשמיים לפי יישובים'), disabled: true, detail: problemText('needs-localities') }] : []),
     ...(data ? [{ value: 'share', label: L('Localities where chosen lists got ≥ X%', 'יישובים שבהם רשימות נבחרות קיבלו ≥ X%'), group: L('Official locality data', 'נתונים רשמיים לפי יישובים'), disabled: data.rows.every((r) => r.registered === null), detail: data.rows.every((r) => r.registered === null) ? problemText('no-registered') : undefined }] : []),
-    ...saved.map((p) => { const r = resolveGroup(s, data, p.members); return { value: `saved:${p.id}`, label: p.name, group: L('Saved in this browser', 'שמורות בדפדפן זה'), detail: isFacts(r) ? `${signed(Math.round(p.turnoutChange * 10) / 10)} ${L('pp', 'נק׳')}` : problemText(r) }; }),
+    ...saved.map((p) => { const r = resolveGroup(s, data, p.members); return { value: `saved:${p.id}`, label: p.name, group: L('Saved in this browser', 'שמורות בדפדפן זה'), detail: isFacts(r) ? `${signed(Math.round(p.turnoutChange * 10) / 10)} ${L(...PP)}` : problemText(r) }; }),
     { value: 'manual', label: L('Custom group…', 'קבוצה מותאמת אישית…'), group: L('Your own', 'משלכם') },
   ];
 
@@ -215,7 +215,7 @@ export function Turnout({ s }: { s: Scenario }) {
           {f && <>
             <div className="vg-turnout">
               <label className="small" htmlFor="vg-change">{L('Turnout', 'שיעור הצבעה')}</label>
-              <span className="vg-range"><bdi dir="ltr"><b>{percentNum(curPct, digits)}</b> → <b>{percentNum(curPct + d.change, digits)}</b></bdi> <span className="ink2">({signed(Math.round(d.change * 10) / 10)} {L('pp', 'נק׳')})</span></span>
+              <span className="vg-range"><bdi dir="ltr"><b>{percentNum(curPct, digits)}</b> → <b>{percentNum(curPct + d.change, digits)}</b></bdi> <span className="ink2">({signed(Math.round(d.change * 10) / 10)} {L(...PP)})</span></span>
               <input id="vg-change" type="range" min={-Math.floor(curPct * 10) / 10} max={Math.floor((100 - curPct) * 10) / 10} step={0.1} value={d.change}
                 aria-valuetext={`${fmtPctNum(curPct + d.change, digits)}`} onChange={(e) => set({ change: Number(e.target.value) })} />
               <PctField label={L('New turnout %', 'שיעור הצבעה חדש %')} bare value={Math.round((curPct + d.change) * 10) / 10} max={100} onCommit={(n) => set({ change: Math.round((n - curPct) * 10) / 10 })} />

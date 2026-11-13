@@ -10,6 +10,8 @@ export function countOf(n: number | bigint, lang: 'he' | 'en', en: readonly [str
   if (Number(n) === 1) return lang === 'he' ? he[0] : `1 ${en[0]}`;
   return `${fmtInt(n)} ${lang === 'he' ? he[1] : en[1]}`;
 }
+/** The unit of a change between two percentages, one form on every screen. */
+export const PP = ['pp', 'נק׳ אחוז'] as const;
 export const SEATS = { en: ['seat', 'seats'], he: ['מנדט אחד', 'מנדטים'] } as const;
 export const VOTES = { en: ['vote', 'votes'], he: ['קול אחד', 'קולות'] } as const;
 export const seatsText = (n: number | bigint, lang: 'he' | 'en') => countOf(n, lang, SEATS.en, SEATS.he);
@@ -36,7 +38,8 @@ const exactParts = (part: number | bigint, whole: number | bigint) => {
  *  - with a threshold (an exact decimal string such as "3.25"), a share whose ordinary rounding would land on the
  *    other side of it gets one more decimal instead: 1.46% against 1.5% at one decimal shows "1.46%", and 3.4%
  *    against 3.25% at none shows "3.4%". This is the only time the maximum is exceeded, by one digit. If even that
- *    digit would cross (1.4996%), it is rounded toward the true side: "1.49%" (israel-elections-private docs/design/settings.md, 9.7a). */
+ *    digit would cross (1.4996%), it is rounded toward the true side: "1.49%" (israel-elections-private docs/design/settings.md, 9.7a).
+ *  - a share short of the whole is never shown as the whole (">99.9%"), the same rule at the other end. */
 export function fmtPct(part: number | bigint, whole: number | bigint, digits = 2, threshold?: string): string {
   const { P, W } = exactParts(part, whole);
   if (W === 0n) return '—%';
@@ -48,8 +51,11 @@ export function fmtPct(part: number | bigint, whole: number | bigint, digits = 2
     if (crosses(shown)) { shown = pct(P, W, digits + 1); if (crosses(shown)) shown = directed(P, W, digits + 1, below ? -1 : 1); }
   }
   if (P !== 0n && /^-?0(\.0*)?$/.test(shown)) return `<${digits === 0 ? '1' : `0.${'0'.repeat(digits - 1)}1`}%`;
+  if (P > 0n && P < W && /^100(\.0*)?$/.test(shown)) return `>${almostWhole(digits)}%`;
   return `${trimDecimal(shown)}%`;
 }
+/** "99", "99.9", "99.99": the largest figure below 100 at `digits` decimals, for a share or a lead short of 100. */
+const almostWhole = (digits: number) => digits === 0 ? '99' : `99.${'9'.repeat(digits)}`;
 /** An exact ratio as a decimal: in full when it ends within `max` decimals ("10.84"), else cut there with an
  *  ellipsis ("33.333333…"). Never rounded, so it is never a rounded figure presented as exact. */
 export function exactDecimal(num: bigint, den: bigint, max = 6): string {
@@ -67,7 +73,7 @@ export function pctExactNote(part: number | bigint, whole: number | bigint, digi
   const shown = fmtPct(part, whole, digits, threshold);
   const exact = `${exactDecimal(P * 100n, W)}%`;
   if (exact === shown) return undefined;
-  const extra = !!threshold && P > 0n && !shown.startsWith('<') && shown !== `${trimDecimal(pct(P, W, digits))}%`;
+  const extra = !!threshold && P > 0n && !/^[<>]/.test(shown) && shown !== `${trimDecimal(pct(P, W, digits))}%`;
   if (!extra) return lang === 'he' ? `${exact}: השיעור המדויק` : `${exact}: the exact share`;
   const below = P * 100n * decimalParts(threshold!).den < decimalParts(threshold!).num * W;
   return lang === 'he'
@@ -80,6 +86,8 @@ export function fmtPp(r: Rational, digits = 2): string {
   const t = trimDecimal(fmtRat(r, digits));
   if (r.num === 0n) return t;
   if (/^-?0(\.0*)?$/.test(t)) return `${r.num < 0n ? '−' : '+'}<${digits === 0 ? '1' : `0.${'0'.repeat(digits - 1)}1`}`;
+  const abs = r.num < 0n ? -r.num : r.num, den = r.den < 0n ? -r.den : r.den;
+  if (abs < 100n * den && /^-?100(\.0*)?$/.test(t)) return `${r.num < 0n ? '−' : '+'}>${almostWhole(digits)}`;
   return t.startsWith('-') ? `−${t.slice(1)}` : `+${t}`;
 }
 /** A percentage that is already a number (an entered share, a sum of entered shares), with at most `digits`
@@ -90,7 +98,12 @@ export function nonZeroFixed(size: number, digits = 2): string {
   return size !== 0 && Number(text) === 0 ? `<${digits === 0 ? '1' : `0.${'0'.repeat(digits - 1)}1`}` : text;
 }
 /** A change in percentage points held as a float, as plain text (tooltips, labels): signed unless `unsigned`. */
-export const fmtPoints = (value: number, digits = 2, unsigned = false) => (unsigned ? '' : value > 0 ? '+' : value < 0 ? '−' : '') + nonZeroFixed(Math.abs(value), digits);
+/** A size in percentage points (never above 100), as nonZeroFixed, and never a size short of 100 as 100 (">99.9"). */
+export function pointsFixed(size: number, digits = 2): string {
+  const text = nonZeroFixed(size, digits);
+  return size < 100 && Number(text) >= 100 ? `>${almostWhole(digits)}` : text;
+}
+export const fmtPoints = (value: number, digits = 2, unsigned = false) => (unsigned ? '' : value > 0 ? '+' : value < 0 ? '−' : '') + pointsFixed(Math.abs(value), digits);
 export const fmtPctNum = (n: number, digits = 2) => Number.isFinite(n) ? `${n < 0 ? '-' : ''}${nonZeroFixed(Math.abs(n), digits)}%` : '—%';
 export const fmtRat = (r: Rational, digits = 2) => toDecimal(r, digits).replace(/^(-?)(\d+)/, (_, sg: string, d: string) => sg + EN.format(BigInt(d)));
 export const fmtFrac = (r: Rational) => `${fmtInt(r.num)} / ${fmtInt(r.den)}`;

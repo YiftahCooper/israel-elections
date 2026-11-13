@@ -662,7 +662,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   {
     id: 'candidate-cap-1977', nameHe: 'הגבלה למספר המועמדים (1977)', nameEn: 'Candidate cap (1977)', level: 'expert', provenance: 'sourced',
     defHe: 'ב־1977 רשימה של מועמד יחיד (פלאטו שרון) קיבלה קולות ליותר ממנדט אחד אך זכתה במנדט אחד, ושאר המנדטים חולקו לרשימות אחרות. האפליקציה משחזרת זאת בהגבלת המנדטים למספר המועמדים. בהכרעת הכנסת בערעור מ־1 בנובמבר 1977 תועד שהוועדה הגבילה את הרשימה למנדט אחד בחלוקה הראשונה, חילקה 114 מנדטים ואז שישה מנדטים עודפים לפי סעיף 81(ד).',
-    defEn: 'In 1977 a one-candidate list (Flatto-Sharon) won enough votes for more than one seat but received one, and the remaining seat went elsewhere. The app reproduces this by capping a list’s seats at its number of candidates. The Knesset’s 1 November 1977 appeal determination documents the CEC’s initial one-seat cap: 114 seats were allocated initially, then six surplus seats under section 81(d).',
+    defEn: 'In 1977 a one-candidate list (Flatto-Sharon) won enough votes for more than one seat but received one, and the remaining seat went elsewhere. The app reproduces this by capping a list’s seats at its number of candidates. The Knesset’s 1 November 1977 appeal determination documents the CEC’s initial one-seat cap: 114 seats were allocated initially, then six remainder seats under section 81(d).',
     linkHe: H.y1977, linkEn: E.y1977,
     sources: [
       { ...src({ title: 'הכרעת הכנסת בערעור יעקב גרוס, 1 בנובמבר 1977, עמ׳ 237', publisher: 'הכנסת', url: 'https://fs.knesset.gov.il/9/Plenum/9_ptm_253927.pdf' }, 'he', 'official', '1 November 1977, p.237: appeal rejected; 114 initial seats, six surplus seats under section 81(d)'), checked: '2026-11-06' },

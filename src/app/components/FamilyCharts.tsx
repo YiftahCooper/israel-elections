@@ -1,4 +1,4 @@
-import { fmtPct } from '../format.ts';
+import { fmtPct, PP } from '../format.ts';
 import { percent, points } from './Percentage.tsx';
 import { Floating } from '../floating.tsx';
 import {Fragment,useEffect,useId,useRef,useState,type ReactNode} from 'react';
@@ -131,7 +131,7 @@ function PointFacts({f,at,metric,text}:{f:Family;at:number;metric:'share'|'votes
  const sign=(n:number)=>n>0?'+':n<0?'−':'±';
  return <>
   <span>{text}</span>
-  {delta!==null&&<span className="ft-delta">{L('Since','מאז')} {familyDate(prev!,lang)}: <bdi dir="ltr">{metric==='share'?<>{points(delta,digits)} {L('points','נקודות אחוז')}</>:<>{sign(delta)}{Math.abs(delta).toLocaleString('en-US')}</>}</bdi></span>}
+  {delta!==null&&<span className="ft-delta">{L('Since','מאז')} {familyDate(prev!,lang)}: <bdi dir="ltr">{metric==='share'?points(delta,digits):<>{sign(delta)}{Math.abs(delta).toLocaleString('en-US')}</>}</bdi>{metric==='share'&&<> {L(...PP)}</>}</span>}
   {m.selected.size>0&&<span className="ft-row"><i className="family-key-line" aria-hidden/>{byVotes(m.selected).map(name).join(' · ')}</span>}
   {byVotes(m.mixed).map(id=>{const parts=mixedComposition(f,e.id,id,lang);return <span key={id} className="ft-row"><i className="family-key-mixed" aria-hidden/><span>{name(id)}{parts.length>1&&<>: {parts.map((p,i)=><Fragment key={i}>{i>0&&' + '}{p.own?<b>{p.name}</b>:p.name}</Fragment>)}</>}</span></span>;})}
   {m.excluded.size>0&&<span className="ft-row muted">{L('Left out','לא נספרו')}: {byVotes(m.excluded).map(name).join(' · ')}</span>}

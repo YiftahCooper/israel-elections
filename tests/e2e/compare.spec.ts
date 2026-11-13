@@ -153,7 +153,7 @@ test('a split copies only as a group; nothing is left to check in 2022 → 2026;
   await expect(dem.locator('.cmp-tag')).toHaveText('Ran jointly');
   await page.locator('.cmp-toolbar').getByRole('button', { name: /Matching/ }).click();
   const panel = page.locator('dialog[open].cmp-matching');
-  await panel.getByRole('button', { name: 'To check', exact: true }).click();
+  await panel.getByRole('button', { name: 'To verify', exact: true }).click();
   await expect(panel.locator('.cmp-match-list')).toHaveText('Nothing here.');
   await panel.getByRole('button', { name: 'All', exact: true }).click();
   const yashar = panel.locator('li').filter({ hasText: 'Yashar!' }).first();

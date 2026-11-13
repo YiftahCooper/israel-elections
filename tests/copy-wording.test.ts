@@ -78,3 +78,17 @@ describe('counts are singular for one (c-english-02)', () => {
     expect(SRC.filter(([p, t]) => !p.includes('relations.ts') && /\b(seat|member|candidate|change|vote|list|locality|election)\(s\)/.test(t)).map(([p]) => p)).toEqual([]);
   });
 });
+
+describe('a share short of the whole is never shown as the whole (c-docs-numbers-01/05)', () => {
+  it('fmtPct keeps "<" at the bottom and adds ">" at the top', async () => {
+    const { fmtPct, fmtPoints, pctExactNote } = await import('../src/app/format.ts');
+    expect(fmtPct(9997n, 10000n, 1)).toBe('>99.9%');
+    expect(fmtPct(9996n, 10000n, 0)).toBe('>99%');
+    expect(fmtPct(10000n, 10000n, 1)).toBe('100%');
+    expect(fmtPct(9990n, 10000n, 1)).toBe('99.9%');
+    expect(fmtPct(1n, 100000n, 1)).toBe('<0.1%');
+    expect(fmtPoints(99.97, 1)).toBe('+>99.9');
+    expect(fmtPoints(100, 1)).toBe('+100');
+    expect(pctExactNote(9997n, 10000n, 1, undefined, 'en')).not.toMatch(/^>/);
+  });
+});

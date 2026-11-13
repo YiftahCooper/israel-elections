@@ -28,7 +28,7 @@ test('R1 R2 R3 R4 T1 T2: explanations stay live, edits stay put and labels are r
   await steady(page.getByRole('button', { name: 'Experimental', exact: true }));
   await steady(page.getByRole('button', { name: 'Increase Turnout %', exact: true }));
   await expect(page.locator('.band').getByRole('button', { name: /^Undo:/ })).toHaveAccessibleName(/Turnout set to \d+\.\d{2}%/);
-  await expect(page.getByRole('button', { name: '0.1 points', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: '0.1 pp', exact: true })).toBeVisible();
   await steady(page.getByRole('button', { name: 'Increase Registered voters', exact: true }));
   const rulesSteps = (await page.locator('.rules-turnout .seg').boundingBox())!;
   const picker = (await page.getByRole('button', { name: 'Use another election’s turnout', exact: true }).boundingBox())!;

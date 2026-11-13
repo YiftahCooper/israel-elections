@@ -79,7 +79,7 @@ export const FEATURE_PREVIEWS: Record<FeatureId, readonly [string, string]> = {
   expertFigures: ['Quota and allocation statistics', 'מודד ונתוני חלוקת מנדטים'],
   jointEditing: ['Parties within a joint list', 'מפלגות בתוך רשימה משותפת'],
   voteSource: ['Where added votes come from', 'מהיכן מגיעים הקולות הנוספים'],
-  agreements: ['Pair lists for surplus seats', 'צימוד רשימות לחלוקת עודפים'],
+  agreements: ['Pair lists for remainder seats', 'צימוד רשימות לחלוקת עודפים'],
   standing: ['Contest, withdraw or restore a list', 'התמודדות, פרישה או החזרת רשימה'],
   identity: ['Names, ballot letters and colours', 'שמות, אותיות וצבעים'],
   candidateEdit: ['Reorder, add or remove candidates', 'סידור, הוספה והסרת מועמדים'],
