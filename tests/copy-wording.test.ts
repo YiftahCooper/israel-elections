@@ -84,6 +84,8 @@ describe('a share short of the whole is never shown as the whole (c-docs-numbers
     const { fmtPct, fmtPoints, pctExactNote } = await import('../src/app/format.ts');
     expect(fmtPct(9997n, 10000n, 1)).toBe('>99.9%');
     expect(fmtPct(9996n, 10000n, 0)).toBe('>99%');
+    // c-docs-numbers-05: a list just under the threshold (2022 scenario: 154,100 of the 154,855 votes needed)
+    expect(fmtPct(154100n, 154855n, 0)).toBe('>99%');
     expect(fmtPct(10000n, 10000n, 1)).toBe('100%');
     expect(fmtPct(9990n, 10000n, 1)).toBe('99.9%');
     expect(fmtPct(1n, 100000n, 1)).toBe('<0.1%');
