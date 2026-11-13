@@ -1,4 +1,4 @@
-import { percentNum } from './Percentage.tsx';
+import { percent } from './Percentage.tsx';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { ordinalEn } from '../electionLabel.ts';
 import { useFloating } from '../floating.tsx';
@@ -56,7 +56,9 @@ export function ElectionAbout({ electionId, listId }: { electionId: ElectionId; 
 }
 
 export function PMResult({ contest, onKnesset }: { contest: PMContest; onKnesset?: () => void }) {
-  // a published percentage is shown with at most its published two decimals, never invented precision
+  // every contest's share is computed from the stored votes, like every other share in the app; a share the
+  // official notice printed (1996: 50.49% and 49.51%, which the votes give as 50.4955% and 49.5045%) is quoted
+  // as published under the ballot totals, never offered as the exact share
   const digits = useDigits();
   const L = useL(); const lang = useLang();
   const num = (n: number) => n.toLocaleString(lang === 'he' ? 'he-IL' : 'en-US');
@@ -71,7 +73,7 @@ export function PMResult({ contest, onKnesset }: { contest: PMContest; onKnesset
         {contest.candidates.filter(c => c.status === 'final').map(c => {
           const share = c.votes!.value / contest.totals.valid.value * 100;
           return <div className="pm-candidate" key={c.id}>
-            <div>{lang === 'he' ? c.nameHe : c.nameEn} <strong>{num(c.votes!.value)}</strong> · {percentNum(c.publishedPercent?.value ?? share,digits)}</div>
+            <div>{lang === 'he' ? c.nameHe : c.nameEn} <strong>{num(c.votes!.value)}</strong> · {percent(c.votes!.value, contest.totals.valid.value, digits)}</div>
             <div className="pm-track" aria-hidden="true"><span style={{ width: `${share}%` }} /><i /></div>
           </div>;
         })}
@@ -79,6 +81,7 @@ export function PMResult({ contest, onKnesset }: { contest: PMContest; onKnesset
       <EvidenceLink source={contest.source} />
       <details className="pm-evidence"><summary>{L('Ballot totals & sources', 'סיכומי ההצבעה ומקורות')}</summary>
         <dl>{(['valid', 'invalid', 'cast'] as const).map(key => <div key={key}><dt>{key === 'valid' ? L('Valid', 'כשרים') : key === 'invalid' ? L('Invalid', 'פסולים') : L('Cast', 'מצביעים')}</dt><dd>{num(contest.totals[key].value)} · <EvidenceLink source={contest.totals[key].source} /></dd></div>)}</dl>
+        {contest.candidates.some(c => c.publishedPercent) && <p className="pm-published">{L('Shares printed in the official results notice', 'השיעורים שנדפסו בהודעת התוצאות הרשמית')}: {contest.candidates.filter(c => c.publishedPercent).map((c, i) => <span key={c.id}>{i ? ' · ' : ''}{lang === 'he' ? c.nameHe : c.nameEn} <bdi dir="ltr">{c.publishedPercent!.value}%</bdi></span>)} · <EvidenceLink source={contest.candidates.find(c => c.publishedPercent)!.publishedPercent!.source} /></p>}
         <p>{lang === 'he' ? b.textHe : b.textEn} <EvidenceLink source={b.source} /></p>
         {contest.noteEn && <p>{lang === 'he' ? contest.noteHe : contest.noteEn}</p>}
       </details>

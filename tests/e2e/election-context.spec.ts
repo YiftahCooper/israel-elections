@@ -12,8 +12,11 @@ test('k14 displays the independent PM ballot in Simple', async ({ page }) => {
   await expect(pm).toContainText('Benjamin Netanyahu');
   await expect(pm).toContainText('1,501,023');
   await expect(pm).toContainText('50% of valid PM votes');
+  // the share is computed from the votes (1,501,023 of 2,972,589 = 50.4955%); the notice's rounded 50.49% is quoted, not called exact
+  await expect(pm.locator('.pm-candidate').first()).toContainText('1,501,023 · 50.5%');
   await pm.getByText('Ballot totals & sources').click();
   await expect(pm).toContainText('3,121,270');
+  await expect(pm.locator('.pm-published')).toContainText('Shares printed in the official results notice: Benjamin Netanyahu 50.49% · Shimon Peres 49.51%');
   await expect(page.getByRole('region', { name: 'The Knesset', exact: true })).toBeVisible();
 });
 test('2001 is PM-only and returns to the unaltered k15 chamber', async ({ page }) => {

@@ -22,7 +22,7 @@ import { allLines, shownLines, tickLine } from '../mapLineChoice.ts';
 import type { FeatureCollection } from 'geojson';
 import { MAP_LINES, MAP_LINE_SNAPSHOT, drawMapLines, mapLineSourceLabel } from '../locality-map-lines.ts';
 import { basemapAttribution } from '../locality-basemap-style.ts';
-import { fmtInt, fmtPoints, PP } from '../format.ts';
+import { countOf, fmtInt, fmtPoints, PP } from '../format.ts';
 import { useDigits } from '../store.ts';
 
 function useJson<T>(url: string | null, empty: T) {
@@ -284,7 +284,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     </div>
     {normalizeLocalityName(q) && <div className="locality-map-matches" aria-label={L('Matching localities','יישובים תואמים')}>
       {matches.slice(0,30).map(i=><button className="btn small" key={i} onClick={()=>choose(i)} dir="auto">{nameOf(i)} ({data.rows[i].code ?? '—'})</button>)}
-      <p className="small" role="status">{L(`${matches.length} matches; up to 30 shown.`,`${matches.length} התאמות; מוצגות עד 30.`)}</p>
+      <p className="small" role="status">{countOf(matches.length, lang, ['match', 'matches'], ['התאמה אחת', 'התאמות'])}{matches.length > 30 ? L('; the first 30 are shown.', '; מוצגות 30 הראשונות.') : '.'}</p>
     </div>}
     <form className="locality-map-address" onSubmit={e=>{e.preventDefault();void searchAddress();}}>
       <label className="field">{L('Nearest locality to an address ', 'היישוב הקרוב לכתובת ')}<input type="text" value={address} onChange={e=>setAddress(e.target.value)} /></label>
