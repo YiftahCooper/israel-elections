@@ -103,5 +103,9 @@ test('turnout step choices stay on one line on a Hebrew phone', async ({ page })
   await tab(page, 'שיעור הצבעה');
   const steps = page.locator('.numeric-stepper .seg button');
   await expect(steps.first()).toBeVisible();
-  for (const b of await steps.all()) expect((await b.boundingBox())!.height).toBeLessThanOrEqual(36);
+  // one line of text in each (a phone's step buttons are 44 px tall for touch, so height alone no longer tells)
+  for (const b of await steps.all()) {
+    expect((await b.boundingBox())!.height).toBeLessThanOrEqual(44);
+    expect(await b.evaluate(el => { const r = document.createRange(); r.selectNodeContents(el); return new Set([...r.getClientRects()].map(x => Math.round(x.top))).size; })).toBe(1);
+  }
 });
