@@ -409,6 +409,9 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .cand .rk { color: var(--muted); text-align: end; font-size: 13px; }
 .cand.el { background: color-mix(in srgb, var(--c) 12%, var(--surface)); }
 .cand[data-component-party] { background: color-mix(in srgb, var(--c) 22%, var(--surface)); }
+/* on the stronger party tint the small grey text takes the second ink: with --muted a bright party colour (dark theme)
+   or a very dark one (light theme) drops it below 4.5:1 */
+.cand[data-component-party] .muted, .cand[data-component-party] .rk { color: var(--ink-2); }
 .component-key { width: 14px; height: 14px; border-radius: 50%; flex: none; display: inline-flex; }
 .cand.el .rk { color: var(--ink); font-weight: 700; }
 .cand.out { color: var(--ink-2); }
