@@ -3,7 +3,7 @@
 // seat card could show it. Everything below the loader is pure and tested in tests/term-timeline.test.ts.
 import { useEffect, useState } from 'react';
 import type { Importance, MarkKind, SeatChangeKind, TermRuntime, TermTimelineRuntime, TimelineItem, TimelineStep } from '../../scripts/term-timeline-runtime.ts';
-import { factionLabel, factionMove, type MkRuntime } from './mk.ts';
+import { factionLabel, factionMove, soloFactionMember, type MkRuntime } from './mk.ts';
 import { englishLabel } from '../data/names.ts';
 
 export type { Importance, MarkKind, SeatChangeKind, TermRuntime, TermTimelineRuntime, TimelineItem, TimelineStep };
@@ -25,8 +25,13 @@ export function useTermRuntime(): TermTimelineRuntime | null {
 /** A faction move's line: from its two faction ids and head count, with MK history's names (factionMove). */
 export function factionMoveLine(mk: MkRuntime | null, [from, to]: readonly [number, number], count: number, lang: 'he' | 'en'): string {
   const m = mk ? factionMove(mk, from, to) : null;
-  const was = m ? (lang === 'he' ? m.was.he : englishLabel(m.was.en, m.was.he)) : '…';
-  const now = m ? (lang === 'he' ? m.now.he : englishLabel(m.now.en, m.now.he)) : '…';
+  // a one-member faction is named as one, not as its member ("to MK Idan Roll"): soloFactionMember
+  const name = (f: NonNullable<typeof m>['was']) => {
+    const solo = soloFactionMember(f, lang);
+    if (lang === 'he') return solo ? `היחיד של ${solo}` : f.he;
+    return solo ? `the single-member faction of ${solo}` : englishLabel(f.en, f.he);
+  };
+  const was = m ? name(m.was) : '…', now = m ? name(m.now) : '…';
   return lang === 'he' ? `רישום החברות עבר מסיעת ${was} לסיעת ${now} (${count === 1 ? 'ח״כ אחד' : `${count} ח״כים`}).`
     : `${count} ${count === 1 ? 'MK' : 'MKs'} recorded moving from ${was} to ${now}.`;
 }

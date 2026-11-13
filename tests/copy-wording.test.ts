@@ -92,3 +92,15 @@ describe('a share short of the whole is never shown as the whole (c-docs-numbers
     expect(pctExactNote(9997n, 10000n, 1, undefined, 'en')).not.toMatch(/^>/);
   });
 });
+
+describe('a one-member faction is named as one (fx-copy, also-yours 1)', () => {
+  it('the timeline and MK history say "single-member faction of Idan Roll", not "to MK Idan Roll"', async () => {
+    const { factionMoveLine } = await import('../src/history/termTimeline.ts');
+    const { soloFactionMember } = await import('../src/history/mk.ts');
+    const rt = { factions: { 1102: ['יש עתיד', 'Yesh Atid', '#00f'], 1109: ['חה״כ עידן רול', 'MK Idan Roll', null] } } as never;
+    expect(factionMoveLine(rt, [1102, 1109], 1, 'en')).toBe('1 MK recorded moving from Yesh Atid to the single-member faction of Idan Roll.');
+    expect(factionMoveLine(rt, [1102, 1109], 1, 'he')).toBe('רישום החברות עבר מסיעת יש עתיד לסיעת היחיד של עידן רול (ח״כ אחד).');
+    expect(factionMoveLine(rt, [1109, 1102], 1, 'en')).toBe('1 MK recorded moving from the single-member faction of Idan Roll to Yesh Atid.');
+    expect(soloFactionMember({ he: 'יש עתיד', en: 'Yesh Atid' }, 'en')).toBeNull();
+  });
+});

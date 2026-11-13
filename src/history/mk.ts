@@ -90,6 +90,12 @@ export function factionLabel(rt: MkRuntime, f: number, lang: 'he' | 'en'): strin
   if (!x) return '';
   return lang === 'he' ? x[0] : englishLabel(x[1], x[0]);
 }
+/** A one-member faction, which the Knesset records under its member's name ("חה״כ עידן רול", in English "MK Idan Roll"):
+ *  that member's name, so a line can say "the single-member faction of Idan Roll" rather than "to MK Idan Roll". */
+export function soloFactionMember(f: { he: string; en: string | null }, lang: 'he' | 'en'): string | null {
+  if (!/^חה["״]כ /.test(f.he)) return null;
+  return lang === 'he' ? f.he.slice(5) : englishLabel(f.en?.replace(/^MK /, '') ?? null, f.he.slice(5));
+}
 /** A move from one faction to another, named as MK history names it: where both are shown under one name in a language,
  *  that language gives both factions' recorded names instead, so a line never reads "X (until then X)" or "from X to X".
  *  The Knesset on a date names its faction moves with it too (audit 12 Nov 2026, c-screens-people-04). */

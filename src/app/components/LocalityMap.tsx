@@ -345,7 +345,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       });})()}</tbody></table></div>
     </section>}
     {locationError && <p className="bad" role="alert">{L('Coordinates could not be loaded. The table is still available.', 'לא ניתן לטעון מיקומים. הטבלה עדיין זמינה.')} <button className="btn small" onClick={retryLocations}>{L('Try again', 'נסו שוב')}</button></p>}
-    <p className="small ink2">{L(`${placed.length} of ${localities} localities placed. Envelope votes have no geographic location.`,`${placed.length} מתוך ${localities} יישובים ממופים. למעטפות החיצוניות אין מיקום גאוגרפי.`)}</p>
+    <p className="small ink2">{L(`${fmtInt(placed.length)} of ${fmtInt(localities)} localities placed. Envelope votes have no geographic location.`,`${fmtInt(placed.length)} מתוך ${fmtInt(localities)} יישובים ממופים. למעטפות החיצוניות אין מיקום גאוגרפי.`)}</p>
     <details><summary>{L('Rows without a mapped location','שורות ללא מיקום במפה')}</summary><ul>{unplaced.map(i=><li key={i}><button className="btn small" onClick={()=>choose(i)}><LocalityName names={names} row={data.rows[i]} index={i} /> ({data.rows[i].code ?? '—'})</button></li>)}</ul></details>
   </div>;
 }

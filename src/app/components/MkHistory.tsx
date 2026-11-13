@@ -10,7 +10,7 @@ import { appLocale, formatDate } from '../dateFormat.ts';
 import { useStore } from '../store.ts';
 import type { ElectionId } from '../../data/schema.ts';
 import { englishLabel } from '../../data/names.ts';
-import { closeMkHistory, daysBetween, knessetName, knessetUrl, mkView, openMkHistory, personOfCandidate, servedText, useMkRuntime, useOpenMkHistory, wikiUrl,
+import { closeMkHistory, daysBetween, knessetName, knessetUrl, mkView, openMkHistory, personOfCandidate, servedText, soloFactionMember, useMkRuntime, useOpenMkHistory, wikiUrl,
   type MkEvent, type MkRow, type MkRuntime, type MkView } from '../../history/mk.ts';
 import { Info } from './ui.tsx';
 import './mk-history.css';
@@ -20,6 +20,11 @@ type T = (en: string, he: string) => string;
 const monthYear = (d: string, lang: Lang) => new Date(`${d}T12:00:00Z`).toLocaleDateString(appLocale(lang), { timeZone: 'UTC', month: 'short', year: 'numeric' });
 const listName = (r: { he: string; en: string | null }, lang: Lang) => lang === 'he' ? r.he : englishLabel(r.en, r.he);
 const factionName = (f: { he: string; en: string | null }, lang: Lang) => lang === 'he' ? f.he : englishLabel(f.en, f.he);
+// in a sentence, a one-member faction is named as one (the term timeline's faction lines do the same)
+const factionMoveName = (f: { he: string; en: string | null }, lang: Lang) => {
+  const solo = soloFactionMember(f, lang);
+  return solo ? (lang === 'he' ? `סיעת היחיד של ${solo}` : `single-member faction of ${solo}`) : factionName(f, lang);
+};
 /** dark or light text on a colour */
 function inkOn(hex: string | null): string {
   if (!hex || !/^#[0-9a-f]{6}$/i.test(hex)) return 'var(--ink)';
@@ -163,7 +168,7 @@ function eventText(e: MkEvent, v: MkView, L: T, lang: Lang): ReactNode {
     // the Knesset records no reason for an end (a resignation, an appointment, a death in office): the words claim none
     // (audit 12 Nov 2026, c-famous-late-07: Rabin and Ze'evi read "Left the Knesset")
     case 'left': return L('Membership ended', 'הכהונה הסתיימה');
-    case 'faction': return L(`Faction: ${factionName(e.faction!.now, lang)} (until then ${factionName(e.faction!.was, lang)})`, `סיעה: ${factionName(e.faction!.now, lang)} (עד אז ${factionName(e.faction!.was, lang)})`);
+    case 'faction': return L(`Faction: ${factionMoveName(e.faction!.now, lang)} (until then ${factionMoveName(e.faction!.was, lang)})`, `סיעה: ${factionMoveName(e.faction!.now, lang)} (עד אז ${factionMoveName(e.faction!.was, lang)})`);
     // the Knesset's record gives no faction for these days: none is shown, and the line says so (audit 12 Nov 2026, cx-factions-05)
     case 'unrecorded': return L(`Faction not recorded until ${formatDate(e.until!, 'en')}`, `הסיעה לא תועדה עד ${formatDate(e.until!, 'he')}`);
     case 'unsettled': return L('A second membership record: dates not settled', 'רשומת כהונה נוספת: המועדים אינם ברורים');

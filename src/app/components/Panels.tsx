@@ -152,6 +152,9 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
 
 // ------------------------------------------------------------------ localities
 
+// Elections with no official locality table: their locality rows are official polling-station results summed by
+// locality (docs/DATA.md, "Knessets 16–18 have no independent locality resources").
+const LOCALITIES_SUMMED_FROM_STATIONS = new Set(['k16', 'k17', 'k18']);
 export function Localities({ s }: { s: Scenario }) {
   const L = useL();
   const lang = useLang();
@@ -187,7 +190,9 @@ export function Localities({ s }: { s: Scenario }) {
         <button aria-pressed={view === 'table'} onClick={() => setView('table')}>{L('Table', 'טבלה')}</button>
       </span>
       {view === 'map' ? <LocalityMap key={s.electionId} s={s} data={data} historicalLists={histLists} locations={locations} names={names} locationError={locationError} retryLocations={retryLocations} /> : <>
-      <p className="small ink2">{L('Historical locality results', 'תוצאות היסטוריות לפי יישוב')} <Info title={L('Locality results', 'תוצאות לפי יישוב')}>{L(`Official CEC results for ${localityCount} localities plus double-envelope votes. These are the historical figures; your scenario changes are national and are not distributed to localities.`, `תוצאות רשמיות של ועדת הבחירות ל־${localityCount} יישובים ולמעטפות החיצוניות. אלה הנתונים ההיסטוריים; שינויי התרחיש הם ארציים ואינם מחולקים ליישובים.`)}</Info></p>
+      <p className="small ink2">{L('Historical locality results', 'תוצאות היסטוריות לפי יישוב')} <Info title={L('Locality results', 'תוצאות לפי יישוב')}>{LOCALITIES_SUMMED_FROM_STATIONS.has(data.id)
+        ? L(`Official CEC polling-station results, summed by locality (${fmtInt(localityCount)} localities), plus double-envelope votes. No official locality table exists for this election. These are the historical figures; your scenario changes are national and are not distributed to localities.`, `תוצאות הקלפיות הרשמיות של ועדת הבחירות, מסוכמות לפי יישוב (${fmtInt(localityCount)} יישובים), ולמעטפות החיצוניות. לבחירות אלה אין טבלת יישובים רשמית. אלה הנתונים ההיסטוריים; שינויי התרחיש הם ארציים ואינם מחולקים ליישובים.`)
+        : L(`Official CEC results for ${fmtInt(localityCount)} localities plus double-envelope votes. These are the historical figures; your scenario changes are national and are not distributed to localities.`, `תוצאות רשמיות של ועדת הבחירות ל־${fmtInt(localityCount)} יישובים ולמעטפות החיצוניות. אלה הנתונים ההיסטוריים; שינויי התרחיש הם ארציים ואינם מחולקים ליישובים.`)}</Info></p>
       {data.id === 'k17' ? <Locality2006Note /> : (data.noteEn || data.noteHe) && <p className="small callout">{lang === 'he' ? data.noteHe ?? data.noteEn : data.noteEn ?? data.noteHe}</p>}
       <div className="row" style={{ marginBottom: 8 }}>
         <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder={L('Locality name or code', 'שם יישוב או סמל')} aria-label={L('Search localities', 'חיפוש יישוב')} />
