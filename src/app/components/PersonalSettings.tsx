@@ -95,7 +95,7 @@ function SettingsContent({ close }: { close: () => void }) {
       </div>)}
       <footer className="ps-foot">
         <button type="button" className="btn small" onClick={resetAll}>{L('Reset all settings', 'איפוס כל ההגדרות')}</button>
-        <Info title={L('Reset all settings', 'איפוס כל ההגדרות')}>{L('Back to the defaults, with Undo. Questions answered with “Always” are asked again. Language, detail level and answers remembered for one list, bloc or scenario stay.', 'חזרה לברירות המחדל, עם ביטול. שאלות שנענו ב״תמיד״ יישאלו שוב. השפה, רמת הפירוט והתשובות השמורות לרשימה, לגוש או לתרחיש אחד נשארות.')}</Info>
+        <Info title={L('Reset all settings', 'איפוס כל ההגדרות')}>{L('Back to the defaults, with Undo. Questions answered with “Always” are asked again. Language, detail level and answers remembered for one list, bloc or scenario stay.', 'חזרה לברירות המחדל, עם ביטול. שאלות שנענו ב"תמיד" יישאלו שוב. השפה, רמת הפירוט והתשובות השמורות לרשימה, לגוש או לתרחיש אחד נשארות.')}</Info>
       </footer>
     </div>
   </>;
@@ -106,7 +106,7 @@ function Group({ id, tier, rows, first = true }: { id: GroupId; tier: Preset; ro
   const g = GROUPS.find(x => x.id === id)!;
   const resettable = rows.filter(r => r.id !== 'lang' && r.id !== 'level');
   const anyChanged = useStore(st => resettable.some(r => { const q = CHOICE[r.id]; return q === 'jointSeats' ? st.preferences.jointSeats === 'off' : q ? st.preferences[q] !== undefined : !isExternal(r.id) && settingChanged(st, r.id as SettingId); }));
-  const reset = () => { const before = snapshot(); resetRows(resettable); toast('info', L(`${g.label[0]} reset`, `${g.label[1]}: אופס`), { label: L('Undo', 'ביטול'), run: () => restore(before) }); };
+  const reset = () => { const before = snapshot(); resetRows(resettable); toast('info', L(`${g.label[0]} reset`, `${g.label[1]}: ההגדרות אופסו`), { label: L('Undo', 'ביטול'), run: () => restore(before) }); };
   const hid = `ps-g-${tier}-${id}`;
   // data-group marks a group's first appearance (the chips scroll there); data-tier-group names each one
   return <section className={`ps-group ${id === 'top' ? 'ps-top' : ''}`} data-group={first ? id : undefined} data-tier-group={`${tier}:${id}`} aria-labelledby={hid}>

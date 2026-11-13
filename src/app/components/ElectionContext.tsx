@@ -15,7 +15,7 @@ import { formatDate } from '../dateFormat.ts';
 export function EvidenceLink({ source }: { source: ContextSource }) {
   const L = useL(); const lang = useLang();
   const label = source.evidence === 'official' ? L('Official', 'רשמי') : source.evidence === 'secondary' ? L('Secondary', 'מקור משני') : L('Unresolved', 'טרם הוברר');
-  return <a href={source.url} target="_blank" rel="noreferrer" className="context-source">{lang === 'he' ? source.publisherHe : source.publisher} · {label}{source.verification === 'report-only' && <> · {L('Unverified in this build; report transcription', 'לא אומת בבנייה זו; תעתיק מהדוח')}</>}</a>;
+  return <a href={source.url} target="_blank" rel="noreferrer" className="context-source">{lang === 'he' ? source.publisherHe : source.publisher} · {label}{source.verification === 'report-only' && <> · {L('Unverified in this build; report transcription', 'לא אומת בגרסה זו; תעתיק מהדוח')}</>}</a>;
 }
 
 /** Immutable history, deliberately independent of the scenario/action log. */

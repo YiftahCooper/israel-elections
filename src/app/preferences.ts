@@ -1,7 +1,7 @@
 /** One registry for action-time questions and their Settings controls. Values are stable storage IDs. */
 export const PREFERENCES = {
   voteSource: {
-    label: ['Votes come from', 'הקולות מגיעים מ־'],
+    label: ['Votes come from', 'מקור הקולות'],
     options: [
       { value: 'proportional', label: ['Other lists', 'שאר הרשימות'] },
       { value: 'new', label: ['New voters', 'מצביעים חדשים'] },

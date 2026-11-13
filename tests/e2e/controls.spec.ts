@@ -76,7 +76,7 @@ test('fine vote/share nudges and a paired 1pp transfer are single undo steps', a
   await page.getByRole('button', { name: 'Increase Votes', exact: true }).click();
   expect(value(await votes.inputValue())).toBe(value(before) + 1000);
   await page.getByRole('button', { name: /^Undo:/ }).click(); await expect(votes).toHaveValue(before);
-  await page.getByRole('group', { name: 'Votes step size', exact: true }).getByRole('button', { name: '0.1pp', exact: true }).click();
+  await page.getByRole('group', { name: 'Votes step size', exact: true }).getByRole('button', { name: '0.1 pp', exact: true }).click();
   await page.getByRole('button', { name: 'Increase Votes', exact: true }).click();
   expect(value(await votes.inputValue())).toBeGreaterThan(value(before));
   await page.getByRole('button', { name: /^Undo:/ }).click(); await expect(votes).toHaveValue(before);
@@ -84,7 +84,7 @@ test('fine vote/share nudges and a paired 1pp transfer are single undo steps', a
   const donorVotes = async () => value((await donorRow.locator('.lb-sub').innerText()).split(' · ')[0]);
   const donorBefore = await donorVotes();
   await page.locator('.side-panel').getByRole('button', { name: 'Scale, share & transfer', exact: true }).click();
-  await page.getByRole('button', { name: 'Transfer 1pp', exact: true }).click();
+  await page.getByRole('button', { name: 'Transfer 1 pp', exact: true }).click();
   const gain = value(await votes.inputValue()) - value(before);
   expect(gain).toBe(47647);
   expect(donorBefore - await donorVotes()).toBe(gain);

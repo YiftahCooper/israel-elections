@@ -504,7 +504,7 @@ export async function openElection(id: ElectionId, from?: { id?: string; name: s
       scenario = { ...r.scenario, ...(from.description ? { description: from.description } : {}), ...(from.id ? { id: from.id } : {}) };
       reference = scenario;
       const he = state.lang === 'he';
-      if (r.failed) notice = he ? `${r.failed} שינויים לא ניתן היה להחיל מחדש על הנתונים הנוכחיים.` : `${r.failed} change(s) could not be re-applied to the current data.`;
+      if (r.failed) notice = he ? `${r.failed === 1 ? 'שינוי אחד' : `${r.failed} שינויים`} לא ניתן היה להחיל מחדש על הנתונים הנוכחיים.` : `${r.failed === 1 ? '1 change' : `${r.failed} changes`} could not be re-applied to the current data.`;
       if (from.baseBuiltAt && from.baseBuiltAt !== ds.buildInfo.builtAt) notice = (notice ? notice + ' ' : '') + (he ? 'הנתונים ההיסטוריים נבנו מחדש מאז שהתרחיש נוצר; השינויים הוחלו מחדש על הנתונים הנוכחיים.' : 'The historical data has been rebuilt since this scenario was made; its changes were re-applied to the current data.');
     } else if (sessions[id]) {
       ({ scenario, past, future, reference } = sessions[id]!);
@@ -988,7 +988,7 @@ async function restorePending(): Promise<boolean> {
   }
   pending = remaining;
   const he = state.lang === 'he';
-  const notice = [failed ? (he ? `${failed} שינויים מהביקור הקודם לא ניתן היה להחיל מחדש על הנתונים הנוכחיים.` : `${failed} change(s) from your last visit could not be re-applied to the current data.`) : '',
+  const notice = [failed ? (he ? `${failed === 1 ? 'שינוי אחד' : `${failed} שינויים`} מהביקור הקודם לא ניתן היה להחיל מחדש על הנתונים הנוכחיים.` : `${failed === 1 ? '1 change' : `${failed} changes`} from your last visit could not be re-applied to the current data.`) : '',
     rebuilt ? (he ? 'הנתונים ההיסטוריים נבנו מחדש מאז הביקור הקודם; השינויים שלא נשמרו הוחלו מחדש על הנתונים הנוכחיים.' : 'The historical data has been rebuilt since your last visit; your unsaved changes were re-applied to the current data.') : ''].filter(Boolean).join(' ') || null;
   // the first election that could not be loaded is named in the load banner, whose Try again reopens what is left
   const failedSnap = Object.values(remaining).flatMap((e) => [...(e.ws.current ? [e.ws.current] : []), ...e.ws.sessions, ...e.ws.drafts.map(([, x]) => x)])[0];

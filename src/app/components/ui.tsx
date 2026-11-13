@@ -150,7 +150,7 @@ export function TextField({ id, disabled = false, value, onCommit, label, placeh
  *  describe the app's own tools or an inferred procedure say so, since the link is only background. */
 export function GlossaryLink({ g, lang }: { g: GlossaryTerm; lang: 'he' | 'en' }) {
   const link = lang === 'he' ? g.linkHe : g.linkEn;
-  const note = g.provenance === 'app' ? (lang === 'he' ? 'מתאר כלי של היישום; הקישור לרקע בלבד.' : 'Describes a tool in this app; the link is background only.')
+  const note = g.provenance === 'app' ? (lang === 'he' ? 'מתאר כלי של האפליקציה; הקישור לרקע בלבד.' : 'Describes a tool in this app; the link is background only.')
     : g.provenance === 'inferred' ? (lang === 'he' ? 'הנוסח המחייב לא אותר; ההליך מוסק מהתוצאה הרשמית.' : 'The governing text was not located; the procedure is inferred from the official result.') : null;
   return (
     <span className="glossary-link">

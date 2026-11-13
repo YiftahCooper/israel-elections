@@ -76,7 +76,7 @@ export function CompareStrip({ s }: { s: Scenario }) {
     {ready && <button type="button" className="btn small cmpm-swap" aria-label={L('Swap', 'החלפה')} onClick={() => swapWithReference(ready)} title={L(`Make ${ready.year} your work`, `${ready.year} תהפוך לעבודה שלכם`)}>
       <ArrowLeftRight className="icon sm" aria-hidden /><span>{L('Swap', 'החלפה')}</span></button>}
     {ready && <Info title={L('Swap', 'החלפה')} label={L('About Swap', 'הסבר: החלפה')}>{he
-      ? `${ready.year} (${ready.name}) הופכת לעבודה שלכם, והעבודה הנוכחית הופכת לנקודת ההשוואה ונשמרת כטיוטה שלא נשמרה, עם היסטוריית הביטולים שלה. החלפה נוספת מחזירה. מה שמשווים אליו אינו נערך כאן; כדי לשנות אותו, מחליפים.`
+      ? `${ready.year} (${ready.name}) הופכת לעבודה שלכם, והעבודה הנוכחית הופכת לנקודת ההשוואה ונשארת כטיוטה שלא נשמרה, עם היסטוריית הביטולים שלה. החלפה נוספת מחזירה. מה שמשווים אליו אינו נערך כאן; כדי לשנות אותו, מחליפים.`
       : `${ready.year} (${ready.name}) becomes your work, and your current work becomes the reference, kept as an unsaved draft with its own undo history. Swap again to go back. The reference is never edited here; to change it, swap.`}</Info>}
     {ready && sideShown && (side
       ? <button type="button" className="btn small cmpm-side" aria-pressed aria-label={L('Close side by side', 'סגירת זו לצד זו')} onClick={closeSideBySide}><Columns2 className="icon sm" aria-hidden /><span>{L('Close side by side', 'סגירת זו לצד זו')}</span></button>

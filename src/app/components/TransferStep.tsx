@@ -23,7 +23,7 @@ export function TransferStep({ s, l }: { s: Scenario; l: SimList }) {
   }, [s, l.id, donor?.id, votes, lang]);
   return <div className="transfer-step">
     <ChoicePicker label={L('Transfer from', 'העברה מתוך')} value={donor?.id ?? ''} options={donors.map(x => ({ value: x.id, label: listLabel(x, lang), detail: `${fmtInt(x.votes)} ${L('votes', 'קולות')}`, preview: <span className="swatch" style={{ background: x.color }} /> }))} onChange={setSelected} />
-    <button className="btn small" disabled={!action} onClick={() => { if (action) dispatchMany([action]); }}>{L('Transfer 1pp', 'העברת נק׳ אחוז אחת')}</button>
+    <button className="btn small" disabled={!action} onClick={() => { if (action) dispatchMany([action]); }}>{L('Transfer 1 pp', 'העברת נק׳ אחוז אחת')}</button>
     <p className="tiny" aria-live="polite">{donor ? `${listLabel(donor, lang)} ${lang === 'he' ? '←' : '→'} ${listLabel(l, lang)} · ${fmtInt(votes)} ${L('votes', 'קולות')} · ` : ''}{L('Valid total and turnout unchanged', 'סך הכשרים ושיעור ההצבעה ללא שינוי')} · {consequence}</p>
   </div>;
 }

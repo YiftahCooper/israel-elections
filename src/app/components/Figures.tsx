@@ -1,5 +1,6 @@
 import { percent } from './Percentage.tsx';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
+import { featureLabel } from '../features.ts';
 import { useFloating } from '../floating.tsx';
 import { useDisclosure } from './Feature.tsx';
 import { EditMarker } from './EditMarker.tsx';
@@ -34,7 +35,7 @@ function Fig({ k, term, v, d, children }: { k: string; term?: string; v: ReactNo
         <span className="v"><bdi dir="ltr">{v}</bdi></span>
         {d && <span className="d">{d}</span>}
       </button>
-      <div id={popoverId} ref={pop} className="more" popover="auto" onToggle={e => { setOpen(e.newState === 'open'); }}><div className="more-head"><b>{k}</b><button className="btn ghost icon-only" aria-label={L('Close', 'סגירה')} onClick={() => pop.current?.hidePopover()}><X className="icon sm" aria-hidden /></button></div>{children}{term && <div className="row small ink2" style={{ marginTop: 8, gap: 4 }}>{L('Definition and source', 'הגדרה ומקור')} <Info term={term} /></div>}</div>
+      <div id={popoverId} ref={pop} className="more" popover="auto" onToggle={e => { setOpen(e.newState === 'open'); }}><div className="more-head"><b>{k}</b><button className="btn ghost icon-only" aria-label={L('Close', 'סגירה')} onClick={() => pop.current?.hidePopover()}><X className="icon sm" aria-hidden /></button></div>{children}{term && <div className="row small ink2" style={{ marginTop: 8, gap: 4 }}>{L('Definition and source', 'הגדרה ומקור')} <Info term={term} label={`${k}: ${L('definition and source', 'הגדרה ומקור')}`} /></div>}</div>
     </div>
   );
 }
@@ -106,7 +107,7 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
       {expert && (
         <Fig k={L('Seats: quota + remainder', 'מנדטים: מודד + עודפים')} term={method.term} v={`${r.initialSeatsTotal} + ${r.remainderSeatsTotal}`} d={L(`${r.remainderSeatsTotal} by ${method.en}`, `${r.remainderSeatsTotal} ${hebrewPrefix('ב', method.he)}`)}>
           <p className="small" style={{ margin: '0 0 6px' }}>{L(`${r.initialSeatsTotal} seats went by whole quotas; the remaining ${r.remainderSeatsTotal} by ${method.en}.`, `${r.initialSeatsTotal} מנדטים חולקו במודדים שלמים; ${r.remainderSeatsTotal} הנותרים ${hebrewPrefix('ב', method.he)}.`)}</p>
-          {walkShown && <button className="btn small" onClick={() => setState({ tool: 'walk' })}>{L('Allocation steps', 'שלבי החלוקה')}</button>}
+          {walkShown && <button className="btn small" onClick={() => setState({ tool: 'walk' })}>{L(...featureLabel('walk'))}</button>}
         </Fig>
       )}
       {(standardControl || expertControl) && <div className="figures-more">{standardControl}{expertControl}</div>}

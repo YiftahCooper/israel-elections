@@ -115,7 +115,7 @@ for (const lang of ['en', 'he'] as const) test(`c-results-engine-02: Seat safety
   await seed(page, lang, { 'israel-elections:preferences': JSON.stringify({ voteSource: 'new', comparison: 'reference', jointSeats: 'off' }) });
   await page.goto('/');
   await page.locator('#tab-security').click();
-  await page.getByRole('group', { name: lang === 'en' ? 'Votes come from' : 'הקולות מגיעים מ־', exact: true }).getByRole('button', { name: lang === 'en' ? 'New voters' : 'מצביעים חדשים', exact: true }).click();
+  await page.getByRole('group', { name: lang === 'en' ? 'Votes come from' : 'מקור הקולות', exact: true }).getByRole('button', { name: lang === 'en' ? 'New voters' : 'מצביעים חדשים', exact: true }).click();
   const tie = page.locator('.sec-row .sec-tie').first();
   await expect(tie).toBeVisible({ timeout: 60_000 });
   const row = page.locator('.sec-row', { has: page.locator('.sec-r .sec-tie[title*="5,825"]') });

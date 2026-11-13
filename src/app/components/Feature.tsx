@@ -24,7 +24,7 @@ export function CustomPage() {
   const custom = useStore(st => st.customFeatures);
   return <section className="panel custom-page" aria-label={L('Custom level', 'רמה מותאמת')}>
     <header><h2>{L('Custom level', 'רמה מותאמת')}</h2></header><div className="body">
-    <div className="row custom-reset">{(['simple', 'standard', 'expert'] as const).map(p => <button key={p} className="btn" onClick={() => setState({ level: p, customFeatures: null })}>{L('Reset to ', 'איפוס ל־')}{L(...LEVEL_LABELS[p])}</button>)}</div>
+    <div className="row custom-reset">{(['simple', 'standard', 'expert'] as const).map(p => <button key={p} className="btn" onClick={() => setState({ level: p, customFeatures: null })}>{L('Reset to ', 'איפוס לרמה: ')}{L(...LEVEL_LABELS[p])}</button>)}</div>
     {(['Explore', 'Edit', 'Analyse'] as const).map(group => <section key={group}><h3>{L(group, { Explore: 'חקירה', Edit: 'עריכה', Analyse: 'ניתוח' }[group])}</h3>
       <div className="custom-grid">{FEATURES.filter(f => f[1] === group).map(([id,,en,he]) => <div key={id} className="custom-feature">
         <div><strong>{L(en,he)}</strong><p className="small muted">{L(...FEATURE_PREVIEWS[id])}</p></div>

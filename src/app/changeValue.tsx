@@ -10,10 +10,10 @@ import { fmtInt } from './format.ts';
 const terms: Record<string, [string, string]> = {
   historical: ['Historical rules', 'כללים היסטוריים'], experimental: ['Experimental rules', 'כללים ניסיוניים'],
   floor: ['Round down', 'עיגול כלפי מטה'], exact: ['Exact', 'מדויק'], lottery: ['Lottery', 'הגרלה'],
-  unspecified: ['Not specified', 'לא נקבע'], 'bader-ofer': ['Bader–Ofer', 'באדר–עופר'],
-  'largest-remainder': ['Largest remainder', 'השארית הגדולה'], dhondt: ['D’Hondt', 'ד׳הונדט'],
-  'droop': ['Droop quota', 'מודד דרופ'], 'nearest': ['Round to nearest', 'עיגול לקרוב'], 'ceil': ['Round up', 'עיגול כלפי מעלה'],
-  'sainte-lague': ['Sainte-Laguë', 'סנט־לגה'], 'modified-sainte-lague': ['Modified Sainte-Laguë', 'סנט־לגה מתוקנת'],
+  unspecified: ['Not specified', 'לא נקבע'], 'bader-ofer': ['Bader–Ofer', 'בדר–עופר'],
+  'largest-remainder': ['Largest remainder', 'השארית הגדולה ביותר'], dhondt: ['D’Hondt', 'ד׳הונדט'],
+  'droop': ['Droop quota', 'מכסת דרופ'], 'nearest': ['Round to nearest', 'עיגול לקרוב'], 'ceil': ['Round up', 'עיגול כלפי מעלה'],
+  'sainte-lague': ['Sainte-Laguë', 'סנט־לגה'], 'modified-sainte-lague': ['Modified Sainte-Laguë', 'סנט־לגה המשופרת'],
 };
 export function changeText(s: Scenario, path: EditPath, lang: Lang): string {
   const he = lang === 'he', none = he ? 'ללא' : 'None';
@@ -65,8 +65,8 @@ export function ChangeValue({ s, path, lang }: { s: Scenario; path: EditPath; la
 
 export function ruleEraLabel(r: RuleSet, lang: Lang): string {
   const he = lang === 'he', year = r.id.match(/il-(\d+)/)?.[1] ?? '';
-  const method = r.id.includes('1949') ? (he ? 'הממוצע הגבוה' : 'Highest averages')
-    : r.remainderMethod === 'largest-remainder' ? (he ? 'השארית הגדולה' : 'Largest remainder') : (he ? 'בדר–עופר' : 'Bader–Ofer');
+  const method = r.id.includes('1949') ? (he ? 'הממוצע הגדול ביותר' : 'Highest averages')
+    : r.remainderMethod === 'largest-remainder' ? (he ? 'השארית הגדולה ביותר' : 'Largest remainder') : (he ? 'בדר–עופר' : 'Bader–Ofer');
   const threshold = Number(r.threshold.num) / Number(r.threshold.den) * 100;
   return year + ' · ' + method + ' · ' + (threshold ? threshold + (he ? '% חסימה' : '% threshold') : (he ? 'ללא אחוז חסימה' : 'No percentage threshold'))
     + (r.seatsCappedAtCandidates ? (he ? ' · מגבלת מועמדים (מוסקת)' : ' · Candidate cap (inferred)') : '');

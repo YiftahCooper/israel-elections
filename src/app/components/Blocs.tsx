@@ -37,7 +37,7 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
   useEffect(() => { if (previewing) return; previous.current = { election: s.electionId, scheme: s.blocSchemeId, seats: counts }; }, [s.electionId, s.blocSchemeId, counts, previewing]);
   const total = s.rules.seats;
   const majority = Math.floor(total / 2) + 1;
-  if (r.seatsAllocated === 0) return <p className="small muted" style={{ margin: 0 }}>{L('No seats are allocated in this scenario.', 'בתרחיש זה לא חולקו מושבים.')}</p>;
+  if (r.seatsAllocated === 0) return <p className="small muted" style={{ margin: 0 }}>{L('No seats are allocated in this scenario.', 'בתרחיש זה לא חולקו מנדטים.')}</p>;
 
   const scheme = s.blocSchemes?.find(x => x.id === s.blocSchemeId);
   const name = (b: { nameHe: string; nameEn: string; appDefined?: boolean }) => groupingName(b, lang);
@@ -64,7 +64,7 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
       <div className="blocs-head">
         <h2 style={{ margin: 0 }}>{L('Blocs', 'גושים')} <Info term="bloc">{kindNote}</Info> <AnalysisEdits s={s} outlet="bloc-bands" /></h2>
         <button className="btn small" aria-expanded={!!panel} onClick={() => (panel ? setState({ blocPanel: null }) : openPanel(groups[0]?.key ?? NONE))}>
-          <Pencil className="icon sm" aria-hidden />{s.blocs.length ? L('Edit blocs', 'עריכת גושים') : L('Group seats into blocs', 'חלוקת המושבים לגושים')}</button>
+          <Pencil className="icon sm" aria-hidden />{s.blocs.length ? L('Edit blocs', 'עריכת גושים') : L('Group seats into blocs', 'חלוקת המנדטים לגושים')}</button>
       </div>
       <div className="majority-context small"><span className="muted" title={scheme?.appDefined ? appGroupingExplanation(lang) : undefined}>{groupingLabel(s, lang)}</span></div>
       {changed && <p className="small muted" style={{margin:'4px 0'}}>{L('Dashed outline: ', 'מתאר מקווקו: ')}{referenceLabel(labelReference,lang).name}</p>}

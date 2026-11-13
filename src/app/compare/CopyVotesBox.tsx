@@ -7,7 +7,7 @@ import { useMemo, useState, type ReactNode } from 'react';
 import { percent, rationalPoints } from '../components/Percentage.tsx';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt } from '../format.ts';
+import { fmtInt, PP } from '../format.ts';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { setState, useDigits, useLevel, useStore } from '../store.ts';
 import { stayingHome, type SourceChoice } from '../voteEdit.ts';
@@ -62,7 +62,7 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
     if (m === 'share') return percent(s, valid(from.sc), digits);
     if (m === 'count') return <bdi dir="ltr">{fmtInt(s)}</bdi>;
     if (m === 'change') { const S = BigInt(valid(from.sc)), S0 = BigInt(valid(from.start)); if (!S || !S0) return null;
-      return <>{rationalPoints({ num: 100n * (BigInt(s) * S0 - BigInt(s0) * S), den: S * S0 }, digits)} {L('points', 'נק׳ אחוז')}</>; }
+      return <>{rationalPoints({ num: 100n * (BigInt(s) * S0 - BigInt(s0) * S), den: S * S0 }, digits)} {L(...PP)}</>; }
     return s0 ? <bdi dir="ltr">{ratioText(s, s0)}</bdi> : null;
   };
   const inWhere = (he: string) => hebrewPrefix('ב', he);
@@ -126,8 +126,8 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
         </fieldset>}
       {req.notCopied && req.notCopied.length > 0 && <p className="small muted">{L(`Not copied, no list in ${where}: `, `לא מועתקות, אין להן רשימה ${inWhere(where)}: `)}<bdi>{req.notCopied.join(', ')}</bdi></p>}
       {/* asked at every level (owner, 9 Nov 2026) */}
-      {<SourceSelect dest={to.sc} exclude={dst} value={source} onChange={setSource} label={L('Extra votes come from', 'קולות נוספים מגיעים מ־')}
-        info={<Info title={L('Extra votes come from', 'קולות נוספים מגיעים מ־')}>{fromText}</Info>} />}
+      {<SourceSelect dest={to.sc} exclude={dst} value={source} onChange={setSource} label={L('Extra votes come from', 'מקור הקולות הנוספים')}
+        info={<Info title={L('Extra votes come from', 'מקור הקולות הנוספים')}>{fromText}</Info>} />}
       {!simple && <fieldset className="preference-scope"><legend>{L('Use this choice', 'שימוש בבחירה')}</legend>
         {([['once', L('Just this once', 'רק הפעם')], ...(one ? [['item', L('For this list', 'לרשימה זו')]] : []), ['always', L('Always', 'תמיד')]] as [typeof scope, string][]).map(([v, t]) =>
           <label key={v}><input type="radio" name="cmp-scope" value={v} checked={scope === v} onChange={() => setScope(v)} />{t}</label>)}

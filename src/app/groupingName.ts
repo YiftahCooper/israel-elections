@@ -1,8 +1,8 @@
 /** Shared by screen labels, native options, SVG/image exports and textual descriptions. */
 export interface GroupingName { nameHe: string; nameEn: string; appDefined?: boolean }
-export const appGroupingTag = (lang: string) => lang === 'he' ? 'יישומון' : 'App';
+export const appGroupingTag = (lang: string) => lang === 'he' ? 'של האפליקציה' : 'App';
 export const appGroupingExplanation = (lang: string) => lang === 'he'
-  ? 'היישומון הגדיר חלוקה זו לצורך השוואה; זו אינה חלוקה רשמית או חלוקה שהייתה מוכרת בזמן הבחירות.'
+  ? 'האפליקציה הגדירה חלוקה זו לצורך השוואה; זו אינה חלוקה רשמית או חלוקה שהייתה מוכרת בזמן הבחירות.'
   : 'The app defined this grouping for comparison; it is not an official or contemporaneous grouping.';
 /** Pass a scheme only when its own marked label is visible in the same display context. */
 export function groupingName(g: GroupingName, lang: string, markedScheme?: { appDefined?: boolean }): string {

@@ -1,7 +1,7 @@
 import { percentNum } from './Percentage.tsx';
 import { SplitPartNote, SplitWarning } from './SplitWarning.tsx';
 import { partyDisplayColor } from '../partyDisplayColor.ts';
-import { hebrewPrefix } from '../hebrewPrefix.ts';
+import { hebrewPrefixName } from '../hebrewPrefix.ts';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { EditMarker } from './EditMarker.tsx';
 import { useDisclosure } from './Feature.tsx';
@@ -114,7 +114,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
       </div>
       {!seatlessParties && seats > 0 && ((n) => n > 0 && <DisclosureToggle open={showZero} onToggle={() => setShowZero(x => !x)}
         more={L(`+${n} with no seats`, `‏+${n} ללא מנדטים`)} fewer={L('Hide parties with no seats', 'הסתרת מפלגות ללא מנדטים')} />)(parties.filter(p => hiddenSeatlessParty(s, p.id, held(p.id))).length)}
-      {unknownElected > 0 && <p className="tiny muted">{L(`${unknownElected} unassigned seats`, `${unknownElected} מנדטים ללא שיוך`)} <Info title={L('Unknown party', 'מפלגה לא ידועה')}>{L(`${unknownElected} elected member(s) have no recorded party; their seats stay with the list.`, `ל-${unknownElected} נבחרים לא תועדה מפלגה; מושביהם נשארים עם הרשימה.`)}</Info></p>}
+      {unknownElected > 0 && <p className="tiny muted">{(unknownElected === 1 ? L('1 unassigned seat', 'מנדט אחד ללא שיוך') : L(`${unknownElected} unassigned seats`, `${unknownElected} מנדטים ללא שיוך`))} <Info title={L('Unknown party', 'מפלגה לא ידועה')}>{(unknownElected === 1 ? L('1 elected member has no recorded party; their seat stays with the list.', 'לנבחר אחד לא תועדה מפלגה; מושבו נשאר עם הרשימה.') : L(`${unknownElected} elected members have no recorded party; their seats stay with the list.`, `ל־${unknownElected} נבחרים לא תועדה מפלגה; מושביהם נשארים עם הרשימה.`))}</Info></p>}
       {standard && (
         <div style={{ marginTop: 6 }}>
           <button className="btn small" aria-expanded={open} onClick={() => setOpen((o) => !o)}>{L('Split into separate lists', 'פיצול לרשימות נפרדות')}</button>
@@ -136,10 +136,10 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
             ))}
           </div>
           {Math.abs(sum - 100) > 0.05 && <p className="small" style={{ color: 'var(--warn-ink)' }}>{(lang === 'he' ? <>{"החלקים מסתכמים ב-"}{percentNum(sum, digits)}{"; הקולות יחולקו ביחס הזה."}</> : <>{"The shares add up to "}{percentNum(sum, digits)}{"; the votes are divided in these proportions."}</>)}</p>}
-          {unassigned > 0 && home && <p className="tiny muted">{L(`${unassigned} candidates assigned to lead party`, `${unassigned} מועמדים צורפו למפלגת הראש`)} <Info title={L('Candidate assignment', 'שיוך מועמדים')}>{L(`${unassigned} candidate(s) without a recorded party go with ${name(home)} (the party of the list’s leader).`, `${unassigned} מועמדים שמפלגתם לא תועדה יצורפו ${hebrewPrefix('ל', name(home))} (מפלגת העומד בראש הרשימה).`)}</Info></p>}
+          {unassigned > 0 && home && <p className="tiny muted">{(unassigned === 1 ? L('1 candidate assigned to lead party', 'מועמד אחד צורף למפלגת הראש') : L(`${unassigned} candidates assigned to lead party`, `${unassigned} מועמדים צורפו למפלגת הראש`))} <Info title={L('Candidate assignment', 'שיוך מועמדים')}>{(unassigned === 1 ? L(`1 candidate without a recorded party goes with ${name(home)} (the party of the list’s leader).`, `מועמד אחד שמפלגתו לא תועדה יצורף ${hebrewPrefixName('ל', name(home))} (מפלגת העומד בראש הרשימה).`) : L(`${unassigned} candidates without a recorded party go with ${name(home)} (the party of the list’s leader).`, `${unassigned} מועמדים שמפלגתם לא תועדה יצורפו ${hebrewPrefixName('ל', name(home))} (מפלגת העומד בראש הרשימה).`))}</Info></p>}
           {plan.parts.length < 2 && <p className="small" style={{ color: 'var(--warn-ink)' }}>{L('Give at least two parties a share.', 'תנו חלק לשתי מפלגות לפחות.')}</p>}
           <div className="row" style={{ gap: 6 }}>
-            <button className="btn small primary" disabled={plan.parts.length < 2} onClick={run}>{L(`Run as ${plan.parts.length} separate lists`, `ריצה ב-${plan.parts.length} רשימות נפרדות`)}</button>
+            <button className="btn small primary" disabled={plan.parts.length < 2} onClick={run}>{L(`Run as ${plan.parts.length} separate lists`, `התמודדות ב־${plan.parts.length} רשימות נפרדות`)}</button>
             {shares && <button className="btn small ghost" onClick={() => setShares(null)}>{L('Reset shares', 'איפוס החלוקה')}</button>}
           </div>
           </div>}

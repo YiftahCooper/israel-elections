@@ -1,6 +1,6 @@
 import { percent } from './Percentage.tsx';
 import { k19StatusNote } from '../k19Note.ts';
-import { formatDate } from '../dateFormat.ts';
+import { datesInText, formatDate } from '../dateFormat.ts';
 import { AfterElectionSources } from './AfterElection.tsx';
 import { factLog, isFactAction } from '../../model/actionClassification.ts';
 import { Download } from 'lucide-react';
@@ -76,17 +76,17 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
             <button aria-pressed={exp} onClick={() => setMode('experimental')}>{L('Experimental', 'ניסיוני')}</button>
           </span>
           <EditMarker s={s} path={['mode']} />
-          {!exp && <span className="small ink2">{L('Locked to the law: choose Experimental to change', 'נעול לפי החוק: לשינוי בחרו ״ניסיוני״')}</span>}
+          {!exp && <span className="small ink2">{L('Locked to the law: choose Experimental to change', 'נעול לפי החוק: לשינוי בחרו "ניסיוני"')}</span>}
         </div>
         {/* the law of this election, named by era, in both modes: what the experiment departs from */}
         <p className="small ink2 rules-law">{L('Law', 'החוק')}: <b>{ruleEraLabel(law, lang)}</b> <Info title={exp ? L('Experimental rules', 'כללים ניסיוניים') : L('Historically valid', 'תקף היסטורית')}>{exp
-          ? L('You may change the electoral system itself. Results are an alternative system, not Israeli law; each rule that differs is marked Edited.', 'ניתן לשנות את שיטת הבחירות עצמה. התוצאות הן שיטה חלופית ולא החוק הישראלי; כל כלל ששונה מסומן ״נערך״.')
-          : L('The law of this election is enforced. Votes, lists, candidates and agreements can still change; choose Experimental to change the rules themselves.', 'החוק של בחירות אלה נאכף. עדיין ניתן לשנות קולות, רשימות, מועמדים והסכמים; לשינוי הכללים עצמם בחרו ״ניסיוני״.')}</Info></p>
+          ? L('You may change the electoral system itself. Results are an alternative system, not Israeli law; each rule that differs is marked Edited.', 'ניתן לשנות את שיטת הבחירות עצמה. התוצאות הן שיטה חלופית ולא החוק הישראלי; כל כלל ששונה מסומן "נערך".')
+          : L('The law of this election is enforced. Votes, lists, candidates and agreements can still change; choose Experimental to change the rules themselves.', 'החוק של בחירות אלה נאכף. עדיין ניתן לשנות קולות, רשימות, מועמדים והסכמים; לשינוי הכללים עצמם בחרו "ניסיוני".')}</Info></p>
         <RulesCopy s={s} />
-        {Object.keys(s.lotteryWinners).length > 0 && <p className="small">{L('You have recorded lottery outcomes for tied seats.', 'רשמתם תוצאות הגרלה למושבים בשוויון.')} <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'lottery' })}>{L('Clear them', 'ניקוי')}</button></p>}
+        {Object.keys(s.lotteryWinners).length > 0 && <p className="small">{L('You have recorded lottery outcomes for tied seats.', 'רשמתם תוצאות הגרלה למנדטים בשוויון.')} <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'lottery' })}>{L('Clear them', 'ניקוי')}</button></p>}
         <fieldset className="rules-fields">
           <div className="grid2 rules-grid">
-            <div className="field"><span>{L('Seats', 'מושבים')}{mark('seats')}</span><NumericStepper disabled={!exp} value={s.rules.seats} min={1} max={1000} onCommit={(n) => set({ seats: n })} label={L('Seats', 'מושבים')} steps={[{ id: '1', label: '1', amount: 1 }]} /></div>
+            <div className="field"><span>{L('Seats', 'מנדטים')}{mark('seats')}</span><NumericStepper disabled={!exp} value={s.rules.seats} min={1} max={1000} onCommit={(n) => set({ seats: n })} label={L('Seats', 'מנדטים')} steps={[{ id: '1', label: '1', amount: 1 }]} /></div>
             <div className="field"><span><label htmlFor={fieldId + '-threshold'}>{L('Threshold %', 'אחוז חסימה %')}</label> <Info term="threshold" />{mark('thresholdPct')}</span><TextField id={fieldId + '-threshold'} disabled={!exp} value={s.rules.thresholdPct} label={L('Threshold %', 'אחוז חסימה %')} onCommit={(v) => set({ thresholdPct: v.trim().replace('%', '') })} /></div>
             <div className="field"><span><span id="remainder-method-label">{L('Remainder method', 'שיטת העודפים')}</span> <Info term={methodOf(s.rules).term} />{mark('remainderMethod')}</span>
               <select disabled={!exp} aria-labelledby="remainder-method-label" value={s.rules.remainderMethod} onChange={(e) => {
@@ -95,12 +95,12 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
                 set({ remainderMethod: m, ...(DIVISOR_METHODS.includes(m) && (s.rules.remainderRequiresInitialSeat || s.rules.agreementRequiresInitialSeat) ? { remainderRequiresInitialSeat: false, agreementRequiresInitialSeat: false } : {}) });
               }}>
                 {/* with 1949's whole-quota condition the same divisor rule is that election's highest averages, named as such */}
-                <option value="bader-ofer">{s.rules.remainderRequiresInitialSeat ? L('Highest averages (1949 law)', 'הממוצע הגבוה (חוק 1949)') : L('Bader–Ofer (law since 1973)', 'בדר–עופר (החוק מאז 1973)')}</option>
-                <option value="largest-remainder">{L('Largest remainder (1951–1969 law)', 'שארית גדולה (חוק 1951–1969)')}</option>
-                <option value="sainte-lague">{L('Sainte-Laguë (all seats)', 'סנט-לגה (כל המושבים)')}</option>
-                <option value="dhondt">{L('D’Hondt (all seats)', 'ד׳הונדט (כל המושבים)')}</option>
-                <option value="modified-sainte-lague">{L('Modified Sainte-Laguë (all seats)', 'סנט-לגה מתוקנת (כל המושבים)')}</option>
-                <option value="droop">{L('Largest remainder, Droop quota', 'שארית גדולה, מודד דרופ')}</option>
+                <option value="bader-ofer">{s.rules.remainderRequiresInitialSeat ? L('Highest averages (1949 law)', 'הממוצע הגדול ביותר (חוק 1949)') : L('Bader–Ofer (law since 1973)', 'בדר–עופר (החוק מאז 1973)')}</option>
+                <option value="largest-remainder">{L('Largest remainder (1951–1969 law)', 'השארית הגדולה ביותר (חוק 1951–1969)')}</option>
+                <option value="sainte-lague">{L('Sainte-Laguë (all seats)', 'סנט־לגה (כל המנדטים)')}</option>
+                <option value="dhondt">{L('D’Hondt (all seats)', 'ד׳הונדט (כל המנדטים)')}</option>
+                <option value="modified-sainte-lague">{L('Modified Sainte-Laguë (all seats)', 'סנט־לגה המשופרת (כל המנדטים)')}</option>
+                <option value="droop">{L('Largest remainder, Droop quota', 'השארית הגדולה ביותר, מכסת דרופ')}</option>
               </select>
             </div>
             <div className="field"><span><label htmlFor={fieldId + '-quota'}>{L('Quota rounding', 'עיגול המודד')}</label> <Info term="quota" />{mark('quotaRounding')}</span>
@@ -114,9 +114,9 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
               {rule('agreementRequiresAllQualify', s.rules.agreementRequiresAllQualify, (on) => set({ agreementRequiresAllQualify: on }), L('Agreement needs all partners above threshold', 'הסכם דורש שכל השותפות יעברו'))}
               {/* each era's own rules, shown where they apply (that election, or once set) so they can be seen and changed */}
               {(law.remainderRequiresInitialSeat || s.rules.remainderRequiresInitialSeat) && rule('remainderRequiresInitialSeat', !!s.rules.remainderRequiresInitialSeat, (on) => set({ remainderRequiresInitialSeat: on, agreementRequiresInitialSeat: on }), L('Remainder seats only for lists with a whole quota', 'עודפים רק לרשימות עם מודד שלם'), <Info term="rules-1949" />, divisor)}
-              {(law.quotaSeatOffset || s.rules.quotaSeatOffset) ? rule('quotaSeatOffset', !!s.rules.quotaSeatOffset, (on) => set({ quotaSeatOffset: on ? 1 : 0 }), L('Quota divides by the seats plus one', 'המודד מחולק במושבים ועוד אחד'), <Info term="rules-1949" />) : null}
+              {(law.quotaSeatOffset || s.rules.quotaSeatOffset) ? rule('quotaSeatOffset', !!s.rules.quotaSeatOffset, (on) => set({ quotaSeatOffset: on ? 1 : 0 }), L('Quota divides the votes by the seats plus one', 'המודד: הקולות חלקי מספר המנדטים ועוד אחד'), <Info term="rules-1949" />) : null}
               {(law.largestRemainderRepeat === false || s.rules.largestRemainderRepeat === false) && rule('largestRemainderRepeat', s.rules.largestRemainderRepeat === false, (on) => set({ largestRemainderRepeat: !on }), L('At most one remainder seat per list', 'לכל היותר מנדט עודף אחד לרשימה'),
-                <Info title={L('1951–1969 law', 'החוק ב-1951–1969')}>{L('The largest-remainder law of 1951–1969 gives each list at most one remainder seat. Off: once every list has had one, the round starts again.', 'חוק השארית הגדולה של 1951–1969 נותן לכל רשימה לכל היותר מנדט עודף אחד. כבוי: אחרי שכל רשימה קיבלה אחד, הסבב מתחיל מחדש.')}</Info>,
+                <Info title={L('1951–1969 law', 'החוק ב־1951–1969')}>{L('The largest-remainder law of 1951–1969 gives each list at most one remainder seat. Off: once every list has had one, the round starts again.', 'חוק השארית הגדולה של 1951–1969 נותן לכל רשימה לכל היותר מנדט עודף אחד. כבוי: אחרי שכל רשימה קיבלה אחד, הסבב מתחיל מחדש.')}</Info>,
                 !['largest-remainder', 'droop'].includes(s.rules.remainderMethod))}
               {(law.seatsCappedAtCandidates || s.rules.seatsCappedAtCandidates) && rule('seatsCappedAtCandidates', !!s.rules.seatsCappedAtCandidates, (on) => set({ seatsCappedAtCandidates: on }), L('No more seats than candidates', 'לא יותר מנדטים ממועמדים'), <Info term="candidate-cap-1977" />)}
             </div>
@@ -152,6 +152,9 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
 
 // ------------------------------------------------------------------ localities
 
+// Elections with no official locality table: their locality rows are official polling-station results summed by
+// locality (docs/DATA.md, "Knessets 16–18 have no independent locality resources").
+const LOCALITIES_SUMMED_FROM_STATIONS = new Set(['k16', 'k17', 'k18']);
 export function Localities({ s }: { s: Scenario }) {
   const L = useL();
   const lang = useLang();
@@ -187,7 +190,9 @@ export function Localities({ s }: { s: Scenario }) {
         <button aria-pressed={view === 'table'} onClick={() => setView('table')}>{L('Table', 'טבלה')}</button>
       </span>
       {view === 'map' ? <LocalityMap key={s.electionId} s={s} data={data} historicalLists={histLists} locations={locations} names={names} locationError={locationError} retryLocations={retryLocations} /> : <>
-      <p className="small ink2">{L('Historical locality results', 'תוצאות היסטוריות לפי יישוב')} <Info title={L('Locality results', 'תוצאות לפי יישוב')}>{L(`Official CEC results for ${localityCount} localities plus double-envelope votes. These are the historical figures; your scenario changes are national and are not distributed to localities.`, `תוצאות רשמיות של ועדת הבחירות ל-${localityCount} יישובים ולמעטפות החיצוניות. אלה הנתונים ההיסטוריים; שינויי התרחיש הם ארציים ואינם מחולקים ליישובים.`)}</Info></p>
+      <p className="small ink2">{L('Historical locality results', 'תוצאות היסטוריות לפי יישוב')} <Info title={L('Locality results', 'תוצאות לפי יישוב')}>{LOCALITIES_SUMMED_FROM_STATIONS.has(data.id)
+        ? L(`Official CEC polling-station results, summed by locality (${fmtInt(localityCount)} localities), plus double-envelope votes. No official locality table exists for this election. These are the historical figures; your scenario changes are national and are not distributed to localities.`, `תוצאות הקלפיות הרשמיות של ועדת הבחירות, מסוכמות לפי יישוב (${fmtInt(localityCount)} יישובים), ולמעטפות החיצוניות. לבחירות אלה אין טבלת יישובים רשמית. אלה הנתונים ההיסטוריים; שינויי התרחיש הם ארציים ואינם מחולקים ליישובים.`)
+        : L(`Official CEC results for ${fmtInt(localityCount)} localities plus double-envelope votes. These are the historical figures; your scenario changes are national and are not distributed to localities.`, `תוצאות רשמיות של ועדת הבחירות ל־${fmtInt(localityCount)} יישובים ולמעטפות החיצוניות. אלה הנתונים ההיסטוריים; שינויי התרחיש הם ארציים ואינם מחולקים ליישובים.`)}</Info></p>
       {data.id === 'k17' ? <Locality2006Note /> : (data.noteEn || data.noteHe) && <p className="small callout">{lang === 'he' ? data.noteHe ?? data.noteEn : data.noteEn ?? data.noteHe}</p>}
       <div className="row" style={{ marginBottom: 8 }}>
         <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder={L('Locality name or code', 'שם יישוב או סמל')} aria-label={L('Search localities', 'חיפוש יישוב')} />
@@ -310,18 +315,18 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
             <li key={x.id} style={{ marginBottom: 8 }}>
               {/* source records are written in English (Hebrew originals keep an English publisher for English
                   pages); each runs in its own direction inside a Hebrew page */}
-              <b dir="auto">{lang === 'en' ? x.publisherEn ?? x.publisher : x.publisher}</b> {x.official ? <span className="chip ok">{L('official', 'רשמי')}</span> : <span className="chip secondary">{L('secondary', 'משני')}</span>}<br />
-              <span dir="auto" style={{ display: 'block' }}>{lang === 'en' ? englishSourceText(x.descriptionEn ?? x.description) : x.description}</span>
+              <b dir="auto">{datesInText(lang === 'en' ? x.publisherEn ?? x.publisher : x.publisher)}</b> {x.official ? <span className="chip ok">{L('official', 'רשמי')}</span> : <span className="chip secondary">{L('secondary', 'משני')}</span>}<br />
+              <span dir="auto" style={{ display: 'block' }}>{datesInText(lang === 'en' ? englishSourceText(x.descriptionEn ?? x.description) : x.description)}</span>
               <SourceAddress x={x} />
-              <div className="muted tiny">{x.retrievedAt && <>{L('Retrieved', 'נשלף')} <bdi dir="ltr">{formatDate(x.retrievedAt, lang)}</bdi></>}{x.sha256 && <>{x.retrievedAt ? ' · ' : ''}<bdi dir="ltr">SHA-256 {x.sha256.slice(0, 16)}…</bdi></>}{x.note ? <> · <bdi dir="auto">{x.note}</bdi></> : ''}</div>
+              <div className="muted tiny">{x.retrievedAt && <>{L('Retrieved', 'נשלף')} <bdi dir="ltr">{formatDate(x.retrievedAt, lang)}</bdi></>}{x.sha256 && <>{x.retrievedAt ? ' · ' : ''}<bdi dir="ltr">SHA-256 {x.sha256.slice(0, 16)}…</bdi></>}{x.note ? <> · <bdi dir="auto">{datesInText(x.note)}</bdi></> : ''}</div>
             </li>
           ))}
         </ul>}
-        <p className="small muted">{L('Names, colours and blocs', 'שמות, צבעים וגושים')} <Info title={L('App annotations', 'נתונים של היישום')}>{L('Short and English list names are assigned by this application. Colours are the colours associated with each party where a source supports it, otherwise an app colour; blocs follow the sources given for each grouping (see decision 0087). None of these is official election data.', 'השמות המקוצרים והאנגליים של הרשימות נקבעו ביישום זה. הצבעים הם הצבעים המזוהים עם כל מפלגה כשיש לכך מקור, ואחרת צבע של היישום; הגושים לפי המקורות של כל חלוקה (ראו החלטה 0087). אף אחד מאלה אינו נתון בחירות רשמי.')}</Info></p>
+        <p className="small muted">{L('Names, colours and blocs', 'שמות, צבעים וגושים')} <Info title={L('App annotations', 'נתונים של האפליקציה')}>{L('Short and English list names are assigned by this application. Colours are the colours associated with each party where a source supports it, otherwise an app colour; blocs follow the sources given for each grouping (see decision 0087). None of these is official election data.', 'השמות המקוצרים והאנגליים של הרשימות נקבעו באפליקציה זו. הצבעים הם הצבעים המזוהים עם כל מפלגה כשיש לכך מקור, ואחרת צבע של האפליקציה; הגושים לפי המקורות של כל חלוקה (ראו החלטה 0087). אף אחד מאלה אינו נתון בחירות רשמי.')}</Info></p>
         <h3 style={{ marginTop: 14 }}>{L('Method and limits', 'שיטה ומגבלות')}</h3>
         <ul className="small" style={{ paddingInlineStart: 18 }}>
           <li>{L('Seats are computed by deterministic code implementing sections 81–82 of the Knesset Elections Law with exact integer arithmetic. Automated tests check that it reproduces the officially published seats of every list in every election offered here.', 'המנדטים מחושבים בקוד דטרמיניסטי המממש את סעיפים 81–82 לחוק הבחירות בחשבון שלמים מדויק. בדיקות אוטומטיות מוודאות שהוא משחזר את המנדטים שפורסמו רשמית לכל רשימה בכל מערכת בחירות המוצגת כאן.')}</li>
-          <li>{L('Exact ties: today’s law, like the 1949 law, decides them by lottery; for 1951–1969 the sources checked state no rule. The app flags a tie and lets you choose the outcome.', 'שוויון מדויק: לפי החוק כיום, וכך גם ב-1949, מכריעה הגרלה; לשנים 1951–1969 לא אותר כלל במקורות שנבדקו. היישום מסמן שוויון ומאפשר לבחור את התוצאה.')}</li>
+          <li>{L('Exact ties: today’s law, like the 1949 law, decides them by lottery; for 1951–1969 the sources checked state no rule. The app flags a tie and lets you choose the outcome.', 'שוויון מדויק: לפי החוק כיום, וכך גם ב־1949, מכריעה הגרלה; לשנים 1951–1969 לא אותר כלל במקורות שנבדקו. האפליקציה מסמנת שוויון ומאפשרת לבחור את התוצאה.')}</li>
           <li>{L('Elected candidates are those elected on election night; later replacements and the Norwegian Law are not modelled.', 'הנבחרים הם מי שנבחרו בליל הבחירות; מחליפים מאוחרים והחוק הנורבגי אינם ממודלים.')}</li>
           <li>{L('Demographic turnout tools are hypothetical and labelled as such.', 'כלי ההצבעה הדמוגרפיים היפותטיים ומסומנים ככאלה.')}</li>
         </ul>
@@ -330,7 +335,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
       </div>
       <div>
         <details><summary>{L('English list names', 'שמות הרשימות באנגלית')}</summary>
-          <p className="small">{L('Existing common-use English labels are app annotations. The entries below are unofficial shortened transliterations, not verified official English names. Unmatched sponsor/faction names and legacy or user-created names use unofficial consonantal romanisation.', 'השמות האנגליים המקובלים הם נתוני תצוגה של היישום. הרשומות להלן הן תעתיקים מקוצרים לא רשמיים, לא שמות רשמיים באנגלית שאומתו. לשמות ישנים או חדשים ללא שם אנגלי מוצג תעתיק עיצורים.')}</p>
+          <p className="small">{L('Existing common-use English labels are app annotations. The entries below are unofficial shortened transliterations, not verified official English names. Other names, including names you type, are spelled letter by letter and are unofficial.', 'השמות האנגליים המקובלים הם נתוני תצוגה של האפליקציה. הרשומות להלן הן תעתיקים מקוצרים לא רשמיים, לא שמות רשמיים באנגלית שאומתו. לשמות אחרים, גם לשמות שאתם מקלידים, מוצג תעתיק לא רשמי, אות באות.')}</p>
           <ul className="small">{ds.lists.filter(l => l.englishName).map(l => <li key={l.id}>{listLabel(l, lang)} · {L('Unofficial transliteration', 'תעתיק לא רשמי')} · {l.englishName!.sourceId}</li>)}</ul>
         </details>
         {(() => {
@@ -364,13 +369,13 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
           // a credit runs in the direction of most of its letters, so a Hebrew uploader name before a Latin
           // file name does not reorder the line
           const dir = (t: string) => (t.match(/[A-Za-z]/g)?.length ?? 0) >= (t.match(/[\u0590-\u05FF\u0600-\u06FF]/g)?.length ?? 0) ? 'ltr' : 'rtl';
-          const item = (x: typeof logos[number]) => { const c = credit(x.logo.attribution, x.logo.licence); return <li key={x.logo.file}><b>{x.names.join(' · ')}</b>: <bdi dir={dir(c.main)}><a href={x.logo.sourceUrl} target="_blank" rel="noreferrer">{c.main}</a></bdi> · <bdi dir="auto">{x.logo.licence}</bdi>{c.original && <> · <bdi className="muted" dir="rtl" lang={/[\u0600-\u06FF]/.test(c.original) ? 'ar' : 'he'}>{c.original}</bdi></>}</li>; };
+          const item = (x: typeof logos[number]) => { const c = credit(datesInText(x.logo.attribution), x.logo.licence); return <li key={x.logo.file}><b>{x.names.join(' · ')}</b>: <bdi dir={dir(c.main)}><a href={x.logo.sourceUrl} target="_blank" rel="noreferrer">{c.main}</a></bdi> · <bdi dir="auto">{x.logo.licence}</bdi>{c.original && <> · <bdi className="muted" dir="rtl" lang={/[\u0600-\u06FF]/.test(c.original) ? 'ar' : 'he'}>{c.original}</bdi></>}</li>; };
           // the secondary label is said once, for the Commons group, not on every row
           const groups = [{ id: 'party', title: L('From the parties', 'מהמפלגות'), secondary: false, rows: logos.filter((x) => !commons(x.logo.sourceUrl)) },
             { id: 'commons', title: 'Wikimedia Commons', secondary: true, rows: logos.filter((x) => commons(x.logo.sourceUrl)) }].filter((g) => g.rows.length);
           return logos.length ? <>
             <h3>{L('Party logos', 'סמלי המפלגות')}</h3>
-            <p className="small ink2">{L('Separate licences', 'רישיונות נפרדים')} <Info title={L('Logo licences', 'רישיונות הסמלים')}>{L('Verified party marks from official sources or Wikimedia Commons (secondary). Logos are shown only with evidence for this election. Rights and credits are separate from the app licence.', 'סמלים ממקורות רשמיים או מוויקישיתוף (משני). סמלים מוצגים רק עם ראיות לשימוש בבחירות האלה. הזכויות והייחוס נפרדים מרישיון היישום.')}</Info></p>
+            <p className="small ink2">{L('Separate licences', 'רישיונות נפרדים')} <Info title={L('Logo licences', 'רישיונות הסמלים')}>{L('Verified party marks from official sources or Wikimedia Commons (secondary). Logos are shown only with evidence for this election. Rights and credits are separate from the app licence.', 'סמלים ממקורות רשמיים או מוויקישיתוף (משני). סמלים מוצגים רק עם ראיות לשימוש בבחירות האלה. הזכויות והייחוס נפרדים מרישיון האפליקציה.')}</Info></p>
             {groups.map((g) => <Fragment key={g.id}>
               <p className="small" style={{ margin: '8px 0 2px', fontWeight: 600 }}><bdi>{g.title}</bdi>{g.secondary && <> <span className="chip secondary">{L('secondary', 'משני')}</span></>}</p>
               <ul className="small credits" style={{ paddingInlineStart: 18, marginTop: 2 }}>{g.rows.map(item)}</ul>
@@ -394,7 +399,7 @@ export function History({ s, r, ds, reference = null }: { s: Scenario; r: Alloca
   const last = s.log.at(-1);
   const next = future.at(-1)?.log.at(-1);
   const undoName = last ? L('Undo: ', 'ביטול: ') + describe(last.action, s, lang) : L('Undo', 'ביטול');
-  const redoName = next ? L('Redo: ', 'חזרה: ') + describe(next.action, future.at(-1)!, lang) : L('Redo', 'חזרה');
+  const redoName = next ? L('Redo: ', 'ביצוע מחדש: ') + describe(next.action, future.at(-1)!, lang) : L('Redo', 'ביצוע מחדש');
   void r;
   const revertTo = (n: number) => {
     const { scenario } = replay(ds, s.name, s.log.slice(0, n).map((e) => e.action), s.factionSplitBaseline ?? false);

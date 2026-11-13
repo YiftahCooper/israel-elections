@@ -144,7 +144,7 @@ test('1988 changes name constituents in English and retain the sourced split',as
 test('hover box names hatched lists’ parties, states the change, never grows or takes the pointer',async({page})=>{
  await start(page);const marks=page.locator('.family-plots section').first().locator('g[role=button]');
  await marks.nth(19).hover();const tip=page.getByRole('tooltip');
- await expect(tip).toContainText('Since 22 Jan 2013: −3.88 points');await expect(tip).toContainText('Yachad: Yachad + Otzma Yehudit');await expect(tip.locator('b')).toHaveText('Yachad');
+ await expect(tip).toContainText('Since 22 Jan 2013: −3.88 pp');await expect(tip).toContainText('Yachad: Yachad + Otzma Yehudit');await expect(tip.locator('b')).toHaveText('Yachad');
  expect(await tip.evaluate(e=>getComputedStyle(e).pointerEvents)).toBe('none');
  const box=await tip.boundingBox();await page.waitForTimeout(800);expect(await tip.boundingBox()).toEqual(box);
  await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
@@ -153,7 +153,7 @@ test('hover box names hatched lists’ parties, states the change, never grows o
 test('breakdown marks the family’s own parties in a mixed list and only they count as represented',async({page})=>{
  await start(page);await page.locator('.family-plots section').first().locator('g[role=button]').nth(19).scrollIntoViewIfNeeded();const y=await page.evaluate(()=>scrollY);
  await page.locator('.family-plots section').first().locator('g[role=button]').nth(19).click();
- const d=page.getByRole('dialog',{name:'Election breakdown',exact:true});await expect(d.locator('.family-point-delta')).toContainText('Since 22 Jan 2013: −102,251 votes · −3.88 points · ▼ −5 seats');
+ const d=page.getByRole('dialog',{name:'Election breakdown',exact:true});await expect(d.locator('.family-point-delta')).toContainText('Since 22 Jan 2013: −102,251 votes · −3.88 pp · ▼ −5 seats');
  const mixed=d.locator('article[data-state=mixed]');await expect(mixed).toHaveCount(1);await expect(mixed.locator('[data-own] b')).toHaveText('Yachad');await expect(mixed).toContainText('Shown hatched, not counted');
  await expect(d.locator('.family-point-changes')).toContainText("Now represented: Yachad · U'Bizchutan");await expect(d.locator('.family-point-changes')).not.toContainText('Otzma');
  await expect(d.locator('article').first()).toHaveAttribute('data-state','counted');

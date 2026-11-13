@@ -78,7 +78,7 @@ test('Hebrew: the page does not move when the source list arrives late', async (
   await open(page, 'he', 'k26');
   await sourcesTab(page, 'he');
   const panel = page.locator('#analysis-panel');
-  const note = panel.getByRole('button', { name: 'נתונים של היישום' });
+  const note = panel.getByRole('button', { name: 'נתונים של האפליקציה' });
   await expect(note).toBeVisible();
   const before = (await note.boundingBox())!.y;
   await page.waitForTimeout(1200);

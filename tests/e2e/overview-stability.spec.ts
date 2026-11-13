@@ -80,7 +80,7 @@ test('Hebrew phone: bloc counts are spaced from their majority note, the governm
   await start(page, 'he', 390, 'k25');
   const legend = page.locator('.blocs .strip-legend');
   await expect(legend).toContainText('64 3 מעל 61');
-  await expect(legend).toContainText('56 חסרים 5 ל-61');
+  await expect(legend).toContainText('56 חסרים 5 ל־61');
   const current = page.getByRole('button', { name: 'חלוקה לגושים', exact: true }).locator('.choice-current');
   expect(await current.evaluate(e => e.scrollWidth <= e.clientWidth)).toBe(true);
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);

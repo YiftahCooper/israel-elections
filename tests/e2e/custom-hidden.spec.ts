@@ -74,6 +74,6 @@ test('Hidden: no feature leaves anything to click, and its settings keep working
     else if (id === 'compare') expect(side, id).toBe(false);
   }
   // links into a hidden tool are gone too (here the walkthrough's, from the 1988 list panel)
-  await expect(page.getByRole('button', { name: 'Allocation steps', exact: true })).toHaveCount(0);
-  await expect(page.getByRole('button', { name: /^Walkthrough/ })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'How seats were allocated', exact: true })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: /^How seats were allocated: / })).toHaveCount(0);
 });

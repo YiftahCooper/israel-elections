@@ -34,7 +34,7 @@ for(const lang of ['en','he']) for(const theme of ['light','dark']) for(const wi
    boxes.forEach(b=>{expect(b.lt).toBeGreaterThanOrEqual(b.top);expect(b.lb).toBeLessThanOrEqual(b.bottom)});
    expect(boxes[1].top).toBeGreaterThanOrEqual(boxes[0].bottom);
    for(const layout of ['Arc','Blocks']){
-    await page.getByRole('button',{name:lang==='en'?layout:layout==='Arc'?'קשת':'גושים',exact:true}).click();
+    await page.getByRole('button',{name:lang==='en'?layout:layout==='Arc'?'קשת':'משבצות',exact:true}).click();
     const chamber=page.locator('.chamber').first();
     await expect(chamber.locator('[data-component-seat]')).toHaveCount(8);
     await expect(chamber.locator('[data-seat]')).toHaveCount(120);

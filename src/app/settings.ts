@@ -90,8 +90,8 @@ export const SETTINGS: readonly SettingRow[] = [
     options: [o('compact', 'Compact', 'צפוף'), o('comfortable', 'Comfortable', 'מרווח')], synonyms: 'density dense padding compact צפיפות צפוף מרווח' },
   { id: 'starterTip', group: 'general', control: 'toggle', min: 'simple', only: 'simple', label: ['Starter tip', 'טיפ פתיחה'],
     info: ['The one-line tip under the Overview. Turn on to see it again.', 'שורת העצה בתחתית תמונת המצב. הפעילו כדי לראות אותה שוב.'], synonyms: 'hint tips help onboarding עצה רמז עזרה' },
-  { id: 'openOn', group: 'general', control: 'seg', min: 'standard', label: ['Open on', 'פתיחה ב־'],
-    info: ['Where the app opens. A share link wins, and your unsaved work is restored either way.', 'היכן היישום נפתח. קישור שיתוף קודם, והעבודה שלא נשמרה משוחזרת בכל מקרה.'],
+  { id: 'openOn', group: 'general', control: 'seg', min: 'standard', label: ['Open on', 'מסך הפתיחה'],
+    info: ['Where the app opens. A share link wins, and your unsaved work is restored either way.', 'היכן האפליקציה נפתחת. קישור שיתוף קודם, והעבודה שלא נשמרה משוחזרת בכל מקרה.'],
     options: [o('overview', 'Overview', 'תמונת מצב'), o('last', 'Last tool', 'הכלי האחרון')], synonyms: 'start page startup home tab פתיחה דף בית לשונית' },
 
   { id: 'listSymbol', group: 'lists', control: 'seg', min: 'simple', label: ['List symbol', 'סמל הרשימה'],
@@ -108,7 +108,7 @@ export const SETTINGS: readonly SettingRow[] = [
     options: [o('none', 'Lists only', 'רשימות בלבד'), o('seated', 'With seats', 'עם מנדטים'), o('all', 'All', 'כולן')],
     synonyms: 'parties constituent factions zero 0 seats empty hidden below threshold מפלגות מרכיבות סיעות אפס 0 מנדטים ריק חסימה' },
   { id: 'seatlessLists', group: 'lists', control: 'seg', min: 'simple', label: ['Lists with no seats', 'רשימות ללא מנדטים'],
-    info: ['How many lists that won no seat show at first. ‘Show all’ still opens the rest; a list you changed always shows.', 'כמה רשימות שלא זכו במנדט מוצגות בהתחלה. ‘הצגת הכול’ עדיין פותח את השאר; רשימה ששיניתם מוצגת תמיד.'],
+    info: ['How many lists that won no seat show at first. ‘Show all’ still opens the rest; a list you changed always shows.', 'כמה רשימות שלא זכו במנדט מוצגות בהתחלה. "הצגת הכול" עדיין פותח את השאר; רשימה ששיניתם מוצגת תמיד.'],
     options: [o('over', 'Over 0.5%', 'מעל 0.5%'), o('all', 'All', 'כולן'), o('folded', 'Folded', 'מקופלות')], synonyms: 'zero 0 seats below threshold small tail אפס 0 מנדטים חסימה קטנות' },
   { id: 'withdrawnLists', group: 'lists', control: 'toggle', min: 'standard', label: ['Lists that withdrew', 'רשימות שפרשו'],
     info: ['Lists that withdrew before election day and got no votes. A list you withdrew is always shown.', 'רשימות שפרשו לפני יום הבחירות ולא קיבלו קולות. רשימה שאתם הוצאתם מוצגת תמיד.'], synonyms: 'withdrawn withdrew zero votes פרישה פרשו אפס קולות' },
@@ -126,7 +126,7 @@ export const SETTINGS: readonly SettingRow[] = [
 
   { id: 'chamberLayout', group: 'chamber', control: 'seg', min: 'expert', feature: 'chamberOptions', label: ['Layout', 'פריסה'],
     info: ['The shape only; every seat stays the same.', 'הצורה בלבד; כל מושב נשאר אותו מושב.'],
-    options: [o('hemicycle', 'Arc', 'קשת'), o('blocks', 'Blocks', 'גושים')], synonyms: 'arc hemicycle blocks chamber shape קשת חצי עיגול מליאה צורה' },
+    options: [o('hemicycle', 'Arc', 'קשת'), o('blocks', 'Blocks', 'משבצות')], synonyms: 'arc hemicycle blocks chamber shape grid קשת חצי עיגול מליאה צורה משבצות' },
   { id: 'seatColour', group: 'chamber', control: 'seg', min: 'expert', feature: 'chamberOptions', label: ['Colour seats by', 'צביעת מושבים לפי'],
     info: ['Party: each seat by its member’s party, also inside joint lists.', 'מפלגה: כל מושב לפי מפלגת חבר הכנסת, גם ברשימות משותפות.'],
     options: [o('list', 'List', 'רשימה'), o('bloc', 'Bloc', 'גוש'), o('party', 'Party', 'מפלגה')], synonyms: 'colour color seats צבע מושבים' },
@@ -139,12 +139,12 @@ export const SETTINGS: readonly SettingRow[] = [
   { id: 'dimUnselected', group: 'chamber', control: 'toggle', min: 'standard', feature: 'chamberOptions', label: ['Dim other seats', 'עמעום שאר המושבים'],
     info: ['When a list is chosen, the other seats and rows fade.', 'כשבוחרים רשימה, שאר המושבים והשורות מתעמעמים.'], synonyms: 'dim fade highlight selection עמעום הדגשה בחירה' },
 
-  { id: 'decimals', group: 'numbers', control: 'decimals', min: 'simple', label: ['Max decimal places', 'ספרות אחרי הנקודה (מרבי)'],
-    info: ['Percentages show at most this many, without trailing zeros. Tap, hover or focus one for its exact value. Next to the threshold a share gets one more digit, so it never looks like it is on the other side.', 'אחוזים מוצגים עם לכל היותר כמה ספרות, בלי אפסים בסוף. נגיעה, ריחוף או מיקוד מציגים את הערך המדויק. ליד אחוז החסימה מוצגת ספרה נוספת, כדי שהאחוז לא ייראה בצד השני שלו.'],
+  { id: 'decimals', group: 'numbers', control: 'decimals', min: 'simple', label: ['Max decimal places', 'מספר ספרות מרבי אחרי הנקודה'],
+    info: ['Percentages show at most this many, without trailing zeros. Tap, hover or focus one for its exact value. Next to the threshold a share gets one more digit, so it never looks like it is on the other side.', 'אחוזים מוצגים עם מספר הספרות שנבחר לכל היותר, בלי אפסים בסוף. נגיעה, ריחוף או מיקוד מציגים את הערך המדויק. ליד אחוז החסימה מוצגת ספרה נוספת, כדי שהאחוז לא ייראה בצד השני שלו.'],
     synonyms: 'decimal precision percent % digits rounding דיוק אחוז עשרוניות עיגול' },
 
   { id: 'splitWarning', group: 'editing', control: 'toggle', min: 'standard', label: ['Joint-list split warning', 'אזהרה בפיצול רשימה משותפת'], info: ['When splitting a joint list, remind that the split is an assumption for the scenario. Turn on to see it again.', 'בפיצול רשימה משותפת, תזכורת שהפיצול הוא הנחה לתרחיש. הפעילו כדי לראות אותה שוב.'], synonyms: 'split warning remember assumption פיצול אזהרה הנחה' },
-  { id: 'voteSource', group: 'editing', control: 'choice', min: 'simple', label: ['Votes come from', 'הקולות מגיעים מ־'],
+  { id: 'voteSource', group: 'editing', control: 'choice', min: 'simple', label: ['Votes come from', 'מקור הקולות'],
     info: ['Other lists: from all, in proportion; turnout stays. New voters: turnout changes. Ask: you choose at each edit.', 'שאר הרשימות: מכולן, באופן יחסי; ההצבעה לא משתנה. מצביעים חדשים: ההצבעה משתנה. לשאול: בוחרים בכל עריכה.'],
     synonyms: 'source donor ask default remember balance מקור תורם לשאול ברירת מחדל זכירה' },
   { id: 'markChanges', group: 'editing', control: 'choice', min: 'simple', label: ['Mark changes since', 'סימון שינויים מאז'],
@@ -160,7 +160,7 @@ export const SETTINGS: readonly SettingRow[] = [
   { id: 'communityScenarios', group: 'editing', control: 'toggle', min: 'standard', feature: 'scenarios', label: ['Community scenarios', 'תרחישי הקהילה'],
     info: ['Loads the community list on the Scenarios page. Off: your own saves and links only.', 'טעינת רשימת הקהילה בעמוד התרחישים. כבוי: רק השמירות והקישורים שלכם.'], synonyms: 'gallery community shared network גלריה קהילה רשת' },
 
-  { id: 'compareWith', group: 'analysis', control: 'seg', min: 'standard', feature: 'compare', label: ['Compare with', 'השוואה מול'],
+  { id: 'compareWith', group: 'analysis', control: 'seg', min: 'standard', feature: 'compare', label: ['Compare with', 'השוואה עם'],
     info: ['What Compare shows on the other side when it opens. You can change it there.', 'מה מוצג בצד השני כשההשוואה נפתחת. אפשר לשנות שם.'],
     options: [o('previous', 'Previous election', 'הבחירות הקודמות'), o('official', 'Official result', 'התוצאה הרשמית')], synonyms: 'compare comparison previous official השוואה קודמות רשמית' },
   { id: 'optionPreviews', group: 'analysis', control: 'toggle', min: 'standard', label: ['Option previews', 'תצוגה מקדימה באפשרויות'],
@@ -176,11 +176,11 @@ export const SETTINGS: readonly SettingRow[] = [
     info: ['Steps where one MK replaced another. Important: party heads and others the research rates important, as at Standard.', 'צעדים שבהם חבר כנסת החליף אחר. חשובים: ראשי מפלגות ואחרים שהמחקר מדרג כחשובים, כמו ברמה רגילה.'],
     options: [o('off', 'Off', 'כבוי'), o('important', 'Important', 'חשובים'), o('all', 'All', 'כולם')], synonyms: 'timeline seat changes replacement norwegian steps ציר זמן חילופים מחליף נורבגי צעדים' },
   { id: 'seatStepsNorwegian', group: 'history', control: 'toggle', min: 'expert', feature: 'after', label: ['Norwegian law', 'החוק הנורבגי'],
-    info: ['With All: ministers who give up their seat to the next on the list, and their return.', 'במצב ״כולם״: שרים שמפנים את מקומם לבא בתור ברשימה, וחזרתם.'], synonyms: 'norwegian law minister replacement timeline נורבגי שר מחליף ציר זמן' },
+    info: ['With All: ministers who give up their seat to the next on the list, and their return.', 'במצב "כולם": שרים שמפנים את מקומם לבא בתור ברשימה, וחזרתם.'], synonyms: 'norwegian law minister replacement timeline נורבגי שר מחליף ציר זמן' },
   { id: 'seatStepsLeft', group: 'history', control: 'toggle', min: 'expert', feature: 'after', label: ['Resignations and deaths', 'התפטרות ופטירה'],
-    info: ['With All: MKs who resigned or died, and who replaced them.', 'במצב ״כולם״: חברי כנסת שהתפטרו או נפטרו, ומי שבא במקומם.'], synonyms: 'resigned resignation died death replacement timeline התפטרות פטירה מחליף ציר זמן' },
+    info: ['With All: MKs who resigned or died, and who replaced them.', 'במצב "כולם": חברי כנסת שהתפטרו או נפטרו, ומי שבא במקומם.'], synonyms: 'resigned resignation died death replacement timeline התפטרות פטירה מחליף ציר זמן' },
   { id: 'seatStepsUnrecorded', group: 'history', control: 'toggle', min: 'expert', feature: 'after', label: ['Reason not recorded', 'סיבה שלא תועדה'],
-    info: ['With All: changes whose reason the research has not recorded yet. Today that is most of them.', 'במצב ״כולם״: חילופים שסיבתם טרם תועדה במחקר. כיום רובם.'], synonyms: 'unknown reason replacement timeline סיבה לא ידועה מחליף ציר זמן' },
+    info: ['With All: changes whose reason the research has not recorded yet. Today that is most of them.', 'במצב "כולם": חילופים שסיבתם טרם תועדה במחקר. כיום רובם.'], synonyms: 'unknown reason replacement timeline סיבה לא ידועה מחליף ציר זמן' },
 
   { id: 'textSize', group: 'access', control: 'seg', min: 'simple', label: ['Text size', 'גודל טקסט'],
     info: ['Large makes all text and controls about 15% bigger.', 'גדול מגדיל את כל הטקסט והבקרים בכ־15%.'],
@@ -192,7 +192,7 @@ export const SETTINGS: readonly SettingRow[] = [
   { id: 'preferTables', group: 'access', control: 'toggle', min: 'simple', label: ['Tables instead of charts', 'טבלאות במקום תרשימים'],
     info: ['Charts, family history and Localities open as tables. Each page can still switch.', 'תרשימים, היסטוריית משפחות ויישובים נפתחים כטבלאות. בכל עמוד אפשר עדיין להחליף.'], synonyms: 'table exact screen reader map טבלה מדויק קורא מסך מפה' },
   { id: 'keepMessages', group: 'access', control: 'toggle', min: 'simple', label: ['Keep messages open', 'הודעות נשארות פתוחות'],
-    info: ['Short messages, such as ‘Saved’, stay until you close them.', 'הודעות קצרות, כמו ‘נשמר’, נשארות עד שסוגרים אותן.'], synonyms: 'toast notification message timeout הודעה התראה' },
+    info: ['Short messages, such as ‘Saved’, stay until you close them.', 'הודעות קצרות, כמו "נשמר", נשארות עד שסוגרים אותן.'], synonyms: 'toast notification message timeout הודעה התראה' },
 ];
 
 const NO_LINES_OFF: readonly string[] = Object.freeze([]);

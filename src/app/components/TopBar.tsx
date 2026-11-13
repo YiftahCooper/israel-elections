@@ -61,7 +61,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
   const last = s?.log.at(-1);
   const next = future.at(-1)?.log.at(-1);
   const undoName = last && s ? L('Undo: ', 'ביטול: ') + describe(last.action, s, lang) : L('Undo', 'ביטול');
-  const redoName = next && s ? L('Redo: ', 'חזרה: ') + describe(next.action, future.at(-1)!, lang) : L('Redo', 'חזרה');
+  const redoName = next && s ? L('Redo: ', 'ביצוע מחדש: ') + describe(next.action, future.at(-1)!, lang) : L('Redo', 'ביצוע מחדש');
   const saved = useStore((st) => st.saved);
   const dirty = useStore(st => { const key = scenarioKey(st); return !!key && key !== 'official' && !st.saved.some(x => x.id === key); });
   const fileRef = useRef<HTMLInputElement>(null);
@@ -102,7 +102,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
             <button className="btn small" onClick={() => { exportCsv(); close(); }}><Table2 className="icon sm" aria-hidden />{L('Export results table (CSV)', 'ייצוא טבלת תוצאות (CSV)')}</button>
             {scenariosShown && <button className="btn small" onClick={() => { setState({ tool: 'scenarios' }); close(); }}><FolderOpen className="icon sm" aria-hidden />{L('All scenarios', 'כל התרחישים')}</button>}
             <div className="section-title" style={{ margin: '8px 0 2px' }}>{L('Saved in this browser', 'שמורים בדפדפן')}</div>
-            {saved.length === 0 && <p className="small muted" style={{ margin: 0 }}>{L('Nothing saved yet.', 'אין עדיין.')}</p>}
+            {saved.length === 0 && <p className="small muted" style={{ margin: 0 }}>{L('Nothing saved yet.', 'עדיין לא נשמר דבר.')}</p>}
             {saved.map((x) => (
               <div key={x.id} className="row small" style={{ justifyContent: 'space-between', flexWrap: 'nowrap' }}>
                 <button className="btn small ghost" style={{ justifyContent: 'flex-start', minWidth: 0 }} aria-current={x.id === s?.id ? 'true' : undefined} disabled={x.id === s?.id && !dirty} onClick={() => { void openSaved(x); close(); }}>

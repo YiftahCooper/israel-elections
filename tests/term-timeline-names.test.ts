@@ -7,7 +7,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { compileMkHistory } from '../scripts/mk-history-runtime.ts';
 import { compileTermTimeline, type TimelineItem } from '../scripts/term-timeline-runtime.ts';
 import { eventLine, fillFactions } from '../src/history/termTimeline.ts';
-import { factionLabel, factionMove, mkView } from '../src/history/mk.ts';
+import { factionLabel, factionMove, mkView, soloFactionMember } from '../src/history/mk.ts';
 import { englishLabel } from '../src/data/names.ts';
 
 const mk = compileMkHistory();
@@ -19,6 +19,11 @@ const registry = (k: number) => new Set((JSON.parse(readFileSync(`data/research/
 const name = (x: { he: string; en: string | null }, lang: 'he' | 'en') => lang === 'he' ? x.he : englishLabel(x.en, x.he);
 const items = (k: number): TimelineItem[] => rt.terms[k]?.timeline?.steps.flatMap((s) => s.items) ?? [];
 const LANGS = ['en', 'he'] as const;
+// in a move's line a one-member faction (recorded as "חה״כ <name>") is named as one (audit 12 Nov 2026, fx-copy)
+const inLine = (x: { he: string; en: string | null }, lang: 'he' | 'en') => {
+  const solo = soloFactionMember(x, lang);
+  return solo ? (lang === 'he' ? `היחיד של ${solo}` : `the single-member faction of ${solo}`) : name(x, lang);
+};
 
 describe('one name per faction: the timeline and MK history', () => {
   test('a faction’s shown name is the one MK history gives it, for every faction of every member in all 26 Knessets', () => {
@@ -39,8 +44,8 @@ describe('one name per faction: the timeline and MK history', () => {
       for (const lang of LANGS) {
         const line = eventLine({ factions: [ids[0], ids[1]], count, en: null, he: null }, mk, lang);
         expect(line, `${e.id} ${lang}`).toBe(lang === 'he'
-          ? `רישום החברות עבר מסיעת ${m.was.he} לסיעת ${m.now.he} (${count === 1 ? 'ח״כ אחד' : `${count} ח״כים`}).`
-          : `${count} ${count === 1 ? 'MK' : 'MKs'} recorded moving from ${name(m.was, 'en')} to ${name(m.now, 'en')}.`);
+          ? `רישום החברות עבר מסיעת ${inLine(m.was, 'he')} לסיעת ${inLine(m.now, 'he')} (${count === 1 ? 'ח״כ אחד' : `${count} ח״כים`}).`
+          : `${count} ${count === 1 ? 'MK' : 'MKs'} recorded moving from ${inLine(m.was, 'en')} to ${inLine(m.now, 'en')}.`);
       }
       // the same move on a moved member's MK history: the same two names (MK history leaves out records the Knesset
       // keeps but the app does not show, so not every move has a line there)

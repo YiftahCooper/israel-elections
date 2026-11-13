@@ -64,7 +64,7 @@ for(const lang of ['he','en']) for(const theme of ['light','dark']) for(const ph
       }
       await expect(page.locator('.blocs-head > select, .chamber-panel select')).toHaveCount(0);
       if(!c.name.startsWith('k')) await page.screenshot({path:`.backup-scratch/graphics-audit/${c.name}-${lang}-${theme}-${phone?'phone':'desktop'}.png`,fullPage:true});
-      await page.getByRole('group',{name:lang==='he'?'פריסה':'Chamber layout'}).getByRole('button',{name:lang==='he'?'גושים':'Blocks',exact:true}).click();
+      await page.getByRole('group',{name:lang==='he'?'פריסה':'Chamber layout'}).getByRole('button',{name:lang==='he'?'משבצות':'Blocks',exact:true}).click();
       await expect(page.locator('.chamber [data-seat]')).toHaveCount(120);
       await check();
       if(!c.name.startsWith('k')) await page.locator('.chamber').first().screenshot({path:`.backup-scratch/graphics-audit/blocks-${c.name}-${lang}-${theme}-${phone?'phone':'desktop'}.png`});

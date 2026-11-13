@@ -9,8 +9,8 @@ import { erasOf, eventsOf, identityOf, ownSeatRecord, partySeries, type Identity
 import { OPEN_CHECKS, type Relation } from '../../history/relations.ts';
 import { HISTORY, electionIndex, electionPosition, historyList, listShort, partyNameAt, partyShort, yearLabel, type HList } from '../../history/runtime.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtPct } from '../format.ts';
-import { hebrewPrefix as attach } from '../hebrewPrefix.ts';
+import { fmtInt, fmtPct, seatsText, PP } from '../format.ts';
+import { hebrewPrefix as attach, hebrewPrefixName } from '../hebrewPrefix.ts';
 import { useDigits, useLevel, useSetting } from '../store.ts';
 import { Info, Slip } from './ui.tsx';
 import { SeatDelta } from './SeatDelta.tsx';
@@ -21,9 +21,9 @@ import { openModal } from '../focusReturn.ts';
 type Lang = 'he' | 'en';
 /** A Hebrew prefix on a name: after ל, ב or כ the definite article ה is absorbed (לדמוקרטים, לעבודה); מ and ו keep it. */
 const hebrewPrefix = (p: Parameters<typeof attach>[0], name: string | number) =>
-  (p === 'ל' || p === 'ב' || p === 'כ') && /^ה[א-ת]/.test(String(name)) ? `${p}${String(name).slice(1)}` : attach(p, name);
+  p === 'ל' || p === 'ב' || p === 'כ' ? hebrewPrefixName(p, String(name)) : attach(p, name);
 const CERT: Record<Certainty, [string, string]> = {
-  confirmed: ['Confirmed', 'מאושר'], probable: ['Probable', 'סביר'], provisional: ['Provisional', 'ראשוני'], disputed: ['Disputed', 'שנוי במחלוקת'], unknown: ['To verify', 'לבדיקה'],
+  confirmed: ['Confirmed', 'מאושר'], probable: ['Probable', 'סביר'], provisional: ['Provisional', 'זמני'], disputed: ['Disputed', 'שנוי במחלוקת'], unknown: ['To verify', 'לבדיקה'],
 };
 const CERT_INFO: Record<Certainty, [string, string]> = {
   confirmed: ['An official record, or independent reports with scholarship.', 'רשומה רשמית, או דיווחים בלתי תלויים לצד מחקר.'],
@@ -56,7 +56,7 @@ export function eventText(r: Relation, lang: Lang): string {
       return en ? `${f} merged into ${t}` : `${f} ${v(r.from, 'התאחדה', 'התאחדו')} ${hebrewPrefix('ל', t)}`;
     case 'absorbed-into': return en ? `${f} joined ${t}` : `${f} ${v(r.from, 'הצטרפה', 'הצטרפו')} ${hebrewPrefix('ל', t)}`;
     case 'split-from': return en ? `${t} split from ${f}` : `${t} ${v(r.to, 'התפצלה', 'התפצלו')} ${hebrewPrefix('מ', f)}`;
-    case 'faction-split': return en ? `Knesset faction split: ${t} left ${f}` : `פילוג סיעה בכנסת: ${t} ${v(r.to, 'פרשה', 'נפרדו')} ${hebrewPrefix('מ', f)}`;
+    case 'faction-split': return en ? `Knesset faction split: ${t} left ${f}` : `פילוג סיעה בכנסת: ${t} ${v(r.to, 'פרשה', 'פרשו')} ${hebrewPrefix('מ', f)}`;
     case 'same-organisation': return en ? `${f} and ${t}: one organisation` : `${f} ${hebrewPrefix('ו', t)}: אותו ארגון`;
     default: return en ? `${f} → ${t}` : `${f} ← ${t}`;
   }
@@ -259,7 +259,7 @@ function useHistory(partyId: string, metric: 'seats' | 'share') {
       const ownColour = p.list.color;
       const own = metric === 'seats' && p.role !== 'alone' && p.own !== null ? L(` (own members ${p.own})`, ` (חברי המפלגה ${p.own})`) : '';
       return { i: p.i, absent: false, value, solid, inside: p.role === 'inside', color: ownColour,
-        label: `${yearLabel(p.i, lang)} · ${listShort(p.list, lang)}: ${metric === 'seats' ? L(`${p.seats} seats`, `${p.seats} מנדטים`) : fmtPct(p.votes, p.valid, digits)}${own}`, part: [p.votes, p.valid] };
+        label: `${yearLabel(p.i, lang)} · ${listShort(p.list, lang)}: ${metric === 'seats' ? L(seatsText(p.seats, 'en'), seatsText(p.seats, 'he')) : fmtPct(p.votes, p.valid, digits)}${own}`, part: [p.votes, p.valid] };
     });
     const chartEvents: ChartEvent[] = events.map((r, k) => ({ key: r.id, date: r.date, certainty: r.certainty, word: kindWord(r, L), text: eventText(r, lang), n: k + 1 })).filter((e) => e.date);
     return { identity, points, events, bars, chartEvents, eras: erasOf(points, lang), firstRun };
@@ -325,8 +325,8 @@ export function comparisonRowText(c: Comparison | null, lang: Lang): string {
   if (c.kind === 'verify') return en ? `, ${py}: to verify` : `, ${py}: לבדיקה`;
   const d = c.after.seats - c.before.seats;
   const change = d === 0 ? (en ? 'unchanged' : 'ללא שינוי') : en ? `${Math.abs(d)} ${d > 0 ? 'more' : 'fewer'}` : `${Math.abs(d)} ${d > 0 ? 'יותר' : 'פחות'}`;
-  return en ? `, ${py}: ${c.before.seats} seats (${change}), compared with ${comparedName(c, 'en')}${c.kind === 'partial' ? ', partly' : ''}`
-    : `, ${py}: ${c.before.seats} מנדטים (${change}), בהשוואה ${hebrewPrefix('ל', comparedName(c, 'he'))}${c.kind === 'partial' ? ', בחלקה' : ''}`;
+  return en ? `, ${py}: ${seatsText(c.before.seats, 'en')} (${change}), compared with ${comparedName(c, 'en')}${c.kind === 'partial' ? ', partly' : ''}`
+    : `, ${py}: ${seatsText(c.before.seats, 'he')} (${change}), בהשוואה ${hebrewPrefix('ל', comparedName(c, 'he'))}${c.kind === 'partial' ? ', בחלקה' : ''}`;
 }
 
 /** Panel line: "Since 2022 Labor + Meretz 4 → 8 ▲4 · −0.4 pp  Probable (i)", and anything not counted. */
@@ -344,9 +344,9 @@ export function ComparisonLine({ c }: { c: Comparison | null }) {
   return <div className="ph-cmpline" data-kind={c.kind}>
     <span className="muted">{L(`Since ${py}`, `לעומת ${py}`)}</span> <b><bdi>{comparedName(c, lang)}</bdi></b>
     <span dir="ltr" className="ph-num">{c.before.seats} → {c.after.seats} <SeatDelta value={d} /></span>
-    {share && share.num !== 0n && <span className="ph-num">· <bdi dir="ltr">{rationalPoints(share, digits)}</bdi> {L('pp', 'נק׳ אחוז')}</span>}
+    {share && share.num !== 0n && <span className="ph-num">· <bdi dir="ltr">{rationalPoints(share, digits)}</bdi> {L(...PP)}</span>}
     {c.certainty !== 'confirmed' && <CertChip c={c.certainty} />}
-    <Info title={L('Compared with', 'מושווה ל')}><ComparisonWhy c={c} /></Info>
+    <Info title={L('Compared with', 'בהשוואה ל־')}><ComparisonWhy c={c} /></Info>
     {(c.notCounted.length > 0 || c.left.length > 0) && <div className="tiny muted ph-notcounted">
       {c.notCounted.map((n) => { const h = prevList(c, n.listId); return <span key={`${n.partyId}${n.listId}`}>{L(`${partyShort(n.partyId, 'en')} not counted: it ran inside ${h ? listShort(h, 'en') : 'another list'} in ${py}.`, `${partyShort(n.partyId, 'he')} לא נספרה: ${hebrewPrefix('ב', py)} רצה בתוך ${h ? listShort(h, 'he') : 'רשימה אחרת'}.`)} </span>; })}
       {c.left.map((n) => <span key={`l${n.partyId}`}>{L(`${partyShort(n.partyId, 'en')} has since left.`, `${partyShort(n.partyId, 'he')} עזבה מאז.`)} </span>)}
@@ -403,7 +403,7 @@ export function ComparisonWhy({ c }: { c: Comparison }) {
     <span>{c.kind === 'group'
       ? L(`The ${py} list was divided among several lists, so they are compared together. Votes are never split between parties.`, `הרשימה ${hebrewPrefix('מ', py)} התחלקה בין כמה רשימות, ולכן הן מושוות יחד. הקולות אינם מפוצלים בין מפלגות.`)
       : L(`Compared with whole ${py} lists whose parties all ran on this list. Votes are never split between parties.`, `מושווה לרשימות ${hebrewPrefix('מ', py)} במלואן, שכל מפלגותיהן רצו ברשימה זו. הקולות אינם מפוצלים בין מפלגות.`)}</span>
-    <span className="ph-why-lists">{c.counted.map((l) => { const h = prevList(c, l.id); return <span key={l.id}><bdi>{h ? listShort(h, lang) : l.id}</bdi> {py}: {L(`${l.seats} seats`, `${l.seats} מנדטים`)} · <bdi dir="ltr">{fmtInt(l.votes)}</bdi> {L('votes', 'קולות')}</span>; })}</span>
+    <span className="ph-why-lists">{c.counted.map((l) => { const h = prevList(c, l.id); return <span key={l.id}><bdi>{h ? listShort(h, lang) : l.id}</bdi> {py}: {L(seatsText(l.seats, 'en'), seatsText(l.seats, 'he'))} · <bdi dir="ltr">{fmtInt(l.votes)}</bdi> {L('votes', 'קולות')}</span>; })}</span>
     {c.relations.map((r) => <span key={r.id}>{eventText(r, lang)} ({year(r.date)}) · <CertChip c={r.certainty} />{expert && r.sources.length > 0 && <span className="tiny muted"> · {r.sources.map((s) => s.publisher ?? s.id).join('; ')}</span>}</span>)}
     {c.newParties.length > 0 && c.kind !== 'group' && <span className="muted">{L(`No earlier list: ${names(c.newParties, 'en')}.`, `ללא רשימה קודמת: ${names(c.newParties, 'he')}.`)}</span>}
   </span>;
@@ -490,7 +490,7 @@ function PointCard({ p, identity }: { p: SeriesPoint; identity: Identity }) {
   const joint = p.role !== 'alone';
   return <div className="ph-card" aria-live="polite">
     <div><b>{yearLabel(p.i, lang)} · <bdi>{listShort(p.list, lang)}</bdi></b></div>
-    <div>{L(`${p.seats} seats`, `${p.seats} מנדטים`)} · <bdi dir="ltr">{percent(p.votes, p.valid, digits)}</bdi> · <bdi dir="ltr">{fmtInt(p.votes)}</bdi> {L('votes', 'קולות')}</div>
+    <div>{L(seatsText(p.seats, 'en'), seatsText(p.seats, 'he'))} · <bdi dir="ltr">{percent(p.votes, p.valid, digits)}</bdi> · <bdi dir="ltr">{fmtInt(p.votes)}</bdi> {L('votes', 'קולות')}</div>
     {joint && <div className="small">{p.role === 'led' ? L(`Led a joint list with ${partners}`, `הובילה רשימה משותפת עם ${partners}`) : L(`Ran inside a list led by ${partyNameAt(p.list.lead ?? p.partners[0], p.i, 'en')}`, `רצה ברשימה בראשות ${partyNameAt(p.list.lead ?? p.partners[0], p.i, 'he')}`)}</div>}
     {joint && <div className="small">{L('Elected: ', 'נבחרו: ')}{[...p.members, ...p.partners].map((q) => { const n = p.list!.elected[q]; return `${partyNameAt(q, p.i, lang)} ${n ?? L('unknown', 'לא ידוע')}`; }).join(' · ')}{p.list.unknownElected > 0 ? L(` · unknown ${p.list.unknownElected}`, ` · לא ידוע ${p.list.unknownElected}`) : ''}</div>}
     {joint && <div className="tiny muted">{L('Votes are for the whole list', 'הקולות ניתנו לרשימה כולה')}</div>}

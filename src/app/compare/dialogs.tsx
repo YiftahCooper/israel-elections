@@ -1,5 +1,5 @@
 import { percent } from '../components/Percentage.tsx';
-import { hebrewPrefix } from '../hebrewPrefix.ts';
+import { hebrewPrefixName } from '../hebrewPrefix.ts';
 // Compare's dialogs: the copy question, whole-list replacement, list matching, a side's vote editor, the phone row sheet
 // and saving a comparison. Every figure shown before committing is the engine's, computed on a scratch copy.
 import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react';
@@ -62,7 +62,7 @@ export function SourceSelect({ dest, exclude, value, onChange, label, info }: { 
   return <div className="field"><span><label htmlFor={id}>{label}</label>{info && <> {info}</>}</span>
     <select id={id} value={sourceValue(value)} onChange={(e) => onChange(sourceChoice(e.target.value))}>
       <option value="proportional">{L('Other lists, proportionally', 'שאר הרשימות, באופן יחסי')}</option>
-      <option value="new">{L('New voters / staying home', 'מצביעים חדשים / נמנעים')}</option>
+      <option value="new">{L('New voters / staying home', 'מצביעים חדשים / מי שלא הצביעו')}</option>
       <optgroup label={L('One list', 'רשימה אחת')}>{others.map((l) => <option key={l.id} value={`t:${l.id}`}>{listLabel(l, lang)}</option>)}</optgroup>
     </select>
   </div>;
@@ -76,7 +76,7 @@ export function Outcome({ plan, to, focus }: { plan: Plan; to: SideModel; focus?
   const changed = plan.result.lists.map((l) => ({ l, a: to.r.lists.find((x) => x.id === l.id)?.seats ?? 0, b: after.lists.find((x) => x.id === l.id)?.seats ?? 0 }))
     .filter((x) => x.a !== x.b || focus?.includes(x.l.id)).sort((x, y) => Number(focus?.includes(y.l.id)) - Number(focus?.includes(x.l.id)) || Math.abs(y.b - y.a) - Math.abs(x.b - x.a));
   return <span className="cmp-outcome">{changed.length ? changed.slice(0, 4).map(({ l, a, b }) => <span key={l.id}><bdi>{listLabel(l, lang)}</bdi> <bdi dir="ltr">{a} → {b}</bdi> {a !== b && <SeatDelta value={b - a} />}</span>) : L('Seats unchanged', 'המנדטים ללא שינוי')}
-    {plan.capped !== undefined && <span className="cmp-capped">{L(`Capped at ${fmtInt(plan.capped)} voters staying home`, `מוגבל ל־${fmtInt(plan.capped)} הנמנעים`)}</span>}</span>;
+    {plan.capped !== undefined && <span className="cmp-capped">{L(`Capped at ${fmtInt(plan.capped)} voters staying home`, `מוגבל ל־${fmtInt(plan.capped)} שלא הצביעו`)}</span>}</span>;
 }
 
 /** candidatesOnly: the Candidates copy, asked here only when it would put someone on two lists */
@@ -118,7 +118,7 @@ export function WholeListDialog({ req, onClose, onDone }: { req: WholeRequest; o
     </div>}
     {!adding && !only && <p className="small muted">{L(`Kept from ${req.to.year}: rules, agreements, bloc and coalition.`, `נשמרים מ־${req.to.year}: הכללים, ההסכמים, הגוש והקואליציה.`)}</p>}
     {dupes.length > 0 && <div className="cmp-dupes" role="group" aria-label={L('On two lists', 'בשתי רשימות')}>
-      <p className="small"><b>{L(`${dupes.length} on two lists`, `${dupes.length} בשתי רשימות`)}</b> <Info title={L('On two lists', 'בשתי רשימות')}>{L(`These people would also stand on another list in ${req.to.year}. A person can sit for one list only; the app doesn’t choose which. Removing them there is an ordinary, marked edit of that list. Matched by Knesset member record, never by name.`, `אנשים אלה יופיעו גם ברשימה אחרת ב־${req.to.year}. אדם יכול לכהן מטעם רשימה אחת בלבד; היישומון אינו מחליט איזו. הסרתם משם היא עריכה רגילה ומסומנת של אותה רשימה. ההתאמה לפי רישום חבר הכנסת, לעולם לא לפי שם.`)}</Info></p>
+      <p className="small"><b>{L(`${dupes.length} on two lists`, `${dupes.length} בשתי רשימות`)}</b> <Info title={L('On two lists', 'בשתי רשימות')}>{L(`These people would also stand on another list in ${req.to.year}. A person can sit for one list only; the app doesn’t choose which. Removing them there is an ordinary, marked edit of that list. Matched by Knesset member record, never by name.`, `אנשים אלה יופיעו גם ברשימה אחרת ב־${req.to.year}. אדם יכול לכהן מטעם רשימה אחת בלבד; האפליקציה אינה מחליטה איזו. הסרתם משם היא עריכה רגילה ומסומנת של אותה רשימה. ההתאמה לפי רישום חבר הכנסת, לעולם לא לפי שם.`)}</Info></p>
       <ul>{dupes.map((d) => { const on = isRemoved(d), other = otherName(d.otherListId); return <li key={`${d.otherListId}:${d.otherCandidateId}`} className="row">
         <span><span aria-hidden>⚠ </span><b><CandidateName candidate={d.candidate} /></b> · {on ? L(`removed from ${other}`, `הוסר מרשימת ${other}`) : L(`also on ${other}`, `גם ברשימת ${other}`)}</span>
         <button type="button" className="btn small" aria-pressed={on} onClick={() => toggleRemove(d)}>{on ? L('Undo', 'ביטול') : L(`Remove from ${other}`, `הסרה מרשימת ${other}`)}</button>
@@ -145,7 +145,7 @@ export function VotesEditor({ side, listId, onClose }: { side: SideModel; listId
   const [source, setSource] = useState<SourceChoice>(voteSource.kind === 'transfer' && voteSource.listId === listId ? { kind: 'proportional' } : voteSource);
   const n = /^\d+$/.test(text.replace(/[,\s]/g, '')) ? Number(text.replace(/[,\s]/g, '')) : null;
   const action = n === null ? null : deltaAction(side.sc, l, n - l.votes, source);
-  const label = L(`Votes for ${listLabel(l, 'en')} (${side.year})`, `קולות ${hebrewPrefix('ל', listLabel(l, 'he'))} (${side.year})`);
+  const label = L(`Votes for ${listLabel(l, 'en')} (${side.year})`, `קולות ${hebrewPrefixName('ל', listLabel(l, 'he'))} (${side.year})`);
   return <Modal label={label} onClose={onClose} className="cmp-ask">
     <form onSubmit={(e) => { e.preventDefault(); if (action && side.apply(action)) onClose(); }}>
       <p className="cmp-ask-title"><b>{label}</b></p>
@@ -216,7 +216,7 @@ export function MatchingPanel({ rows, flip, left, right, overrides, setOverrides
   const lineage = useCrossComparison(early.sc.electionId !== late.sc.electionId ? late : null, early.sc.electionId !== late.sc.electionId ? early : null);
   return <Modal label={L('Matching', 'התאמת רשימות')} onClose={onClose} className="cmp-matching">
     <div className="choice-head"><b>{L('Matching', 'התאמת רשימות')}</b> <Info title={L('How lists are matched', 'כיצד רשימות מותאמות')}>{L('From the party registry and documented lineage only: the leading party, shared constituent parties, renames, mergers and splits. Never by name, ballot letters or rank. Your pairings stay with this comparison and never change a result.', 'רק לפי מרשם המפלגות והשושלת המתועדת: המפלגה המובילה, מפלגות מרכיבות משותפות, שינויי שם, איחודים ופיצולים. לעולם לא לפי שם, אותיות או דירוג. ההתאמות שלכם נשמרות להשוואה זו בלבד ואינן משנות תוצאה.')}</Info><button className="btn" aria-label={L('Close', 'סגירה')} onClick={onClose}>×</button></div>
-    <div className="seg-row" role="group" aria-label={L('Show', 'הצגה')}>{([['all', L('All', 'הכול')], ['check', L('To check', 'לבדיקה')], ['unmatched', L('Unmatched', 'ללא התאמה')]] as const).map(([v, t]) =>
+    <div className="seg-row" role="group" aria-label={L('Show', 'הצגה')}>{([['all', L('All', 'הכול')], ['check', L('To verify', 'לבדיקה')], ['unmatched', L('Unmatched', 'ללא התאמה')]] as const).map(([v, t]) =>
       <button key={v} type="button" className={`btn small ${filter === v ? 'primary' : ''}`} aria-pressed={filter === v} onClick={() => setFilter(v)}>{t}</button>)}</div>
     <ul className="cmp-match-list">{shown.map((row) => <li key={row.key}>
       <div className="row cmp-match-names" dir="ltr"><bdi>{shown1(left, row, 'left')}</bdi><span aria-hidden>{flip ? '←' : '→'}</span><bdi>{shown1(right, row, 'right')}</bdi>
@@ -227,7 +227,7 @@ export function MatchingPanel({ rows, flip, left, right, overrides, setOverrides
         {row.tag === 'check' && row.check?.map((id) => <span key={id} className="row">
           <button type="button" className="btn small" onClick={() => setOverrides([...without((o) => o.left === id), { left: id, right: lateIds(row)[0], status: 'accepted' }])}>{L(`Accept ${name(early, [id])}`, `אישור ${name(early, [id])}`)}</button>
           <button type="button" className="btn small ghost" onClick={() => setOverrides([...without((o) => o.left === id), { left: id, right: lateIds(row)[0], status: 'rejected' }])}>{L('No match', 'אין התאמה')}</button></span>)}
-        {(row.tag === 'yours' || mine(row)) && <button type="button" className="btn small ghost" onClick={() => setOverrides(without((o) => earlyIds(row).includes(o.left) || lateIds(row).includes(o.right ?? '')))}>{L('Undo my pairing', 'ביטול ההתאמה שלי')}</button>}
+        {(row.tag === 'yours' || mine(row)) && <button type="button" className="btn small ghost" onClick={() => setOverrides(without((o) => earlyIds(row).includes(o.left) || lateIds(row).includes(o.right ?? '')))}>{L('Undo my pairing', 'ביטול ההתאמה שלכם')}</button>}
         {(row.tag === 'new' || row.tag === 'ended') && <button type="button" className="btn small" aria-expanded={mapping === row.key} onClick={() => setMapping(mapping === row.key ? null : row.key)}>{L('Map to…', 'התאמה ל…')}</button>}
       </div>
       {mapping === row.key && <MapTo row={row} early={early} late={late} earlyIds={earlyIds(row)} lateIds={lateIds(row)} onPick={(other) => { setOverrides([...overrides, row.tag === 'ended' ? { left: earlyIds(row)[0], right: other, status: 'user' } : { left: other, right: lateIds(row)[0], status: 'user' }]); setMapping(null); }} />}

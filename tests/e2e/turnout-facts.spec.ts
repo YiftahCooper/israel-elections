@@ -55,8 +55,11 @@ test('1949 says what is missing: no earlier election, no threshold, no ballot-bo
   await expect(fact(facts, 'envelopes').locator('.tn-d')).toHaveText('Not in the source for this election');
 });
 
-test('Expert: ballot boxes and double envelopes where the source has them', async ({ page }) => {
+test('Expert: polling-station results and double envelopes where the source has them', async ({ page }) => {
   const facts = await open(page, { level: 'expert', election: 'k25' });
+  // the rows of the official table, named as on Sources, not "ballot boxes" (c-english-07)
+  await expect(fact(facts, 'boxes').locator('dt')).toHaveText(/^Polling-station results/);
+  await expect(fact(facts, 'boxes').locator('dt').getByRole('button', { name: 'Polling station', exact: true })).toBeVisible();
   await expect(fact(facts, 'boxes').locator('.tn-v')).toHaveText('12,545');
   await expect(fact(facts, 'boxes').locator('.tn-since')).toHaveText('▼ −381 · −2.95% since 2021');
   await expect(fact(facts, 'envelopes').locator('.tn-v')).toHaveText('462,807');
@@ -75,9 +78,9 @@ test('a what-if turnout shows in the facts, with the official value beside it', 
 test('the chart covers all 26 elections; a column opens its election; the table lists them', async ({ page }) => {
   const facts = await open(page);
   await expect(facts.locator('.tn-col')).toHaveCount(26);
-  await expect(facts.locator('.tn-col[aria-current="true"]')).toHaveAttribute('aria-label', /^2026 · Knesset 26: eligible voters 7,331,981, turnout 77\.98%$/);
+  await expect(facts.locator('.tn-col[aria-current="true"]')).toHaveAttribute('aria-label', /^2026 · 26th Knesset: eligible voters 7,331,981, turnout 77\.98%$/);
   await facts.locator('.tn-hit[data-chart="reg"]').nth(24).hover();
-  await expect(facts.locator('.tn-readout')).toContainText('2022 · Knesset 25');
+  await expect(facts.locator('.tn-readout')).toContainText('2022 · 25th Knesset');
   await facts.locator('.tn-hit[data-chart="reg"]').nth(24).click();
   await expect(page.getByRole('button', { name: 'Election', exact: true })).toHaveAttribute('data-value', 'k25');
   await expect(page.locator('#tab-turnout')).toHaveAttribute('aria-selected', 'true');

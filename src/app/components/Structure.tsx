@@ -1,7 +1,7 @@
 import { percent, percentNum } from './Percentage.tsx';
 import { SplitPartNote, SplitWarning } from './SplitWarning.tsx';
 import {ColourPicker} from './ColourPicker.tsx';
-import { hebrewPrefix } from '../hebrewPrefix.ts';
+import { hebrewPrefixName } from '../hebrewPrefix.ts';
 import { SeatDelta } from './SeatDelta.tsx';
 import { Slip } from './ui.tsx';
 import { EditMarker } from './EditMarker.tsx';
@@ -252,11 +252,11 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
         <select style={{ maxWidth: 300 }} value={b} onChange={(e) => setB(e.target.value)} aria-label={L('Second list', 'רשימה שנייה')}><option value="">{L('List…', 'רשימה…')}</option>{s.lists.filter((x) => x.id !== a && (exp || !used.has(x.id))).sort((x, y) => y.votes - x.votes).map((x) => <option key={x.id} value={x.id}>{listLabel(x, lang)}</option>)}</select>
         <button className="btn small primary" disabled={!a || !b} onClick={() => { if (dispatch({ type: 'setAgreement', agreement: { id: `sim-agr-${newId()}`, members: [a, b], enabled: true } })) { setA(''); setB(''); } }}>{L('Add agreement', 'הוספת הסכם')}</button>
       </div>
-      {exp && <p className="small muted">{L('Experimental rules: agreements of up to ', 'כללים ניסיוניים: הסכמים של עד ')}{s.rules.maxAgreementSize}{L(' lists (set in the Rules tab). Add a third list by editing an agreement below.', ' רשימות (בלשונית הכללים).')}</p>}
+      {exp && <p className="small muted">{L('Experimental rules: agreements of up to ', 'כללים ניסיוניים: הסכמים של עד ')}{s.rules.maxAgreementSize}{L(' lists (set in the Rules tab). Add a third list by editing an agreement below.', ' רשימות (נקבע בלשונית הכללים). רשימה שלישית מוסיפים בעריכת הסכם למטה.')}</p>}
       {exp && s.rules.maxAgreementSize > 2 && s.agreements.map((ag) => (
         <div key={ag.id} className="row small" style={{ marginTop: 4 }}>
           {ag.members.map(name).join(' ⇄ ')}
-          <select defaultValue="" onChange={(e) => { if (e.target.value) dispatch({ type: 'setAgreement', agreement: { ...ag, members: [...ag.members, e.target.value] } }); }} aria-label={L('Add member', 'הוספת חברה')}>
+          <select defaultValue="" onChange={(e) => { if (e.target.value) dispatch({ type: 'setAgreement', agreement: { ...ag, members: [...ag.members, e.target.value] } }); }} aria-label={L('Add member', 'הוספת רשימה להסכם')}>
             <option value="">{L('+ add member', '+ הוספה')}</option>
             {s.lists.filter((x) => !ag.members.includes(x.id)).sort((x, y) => y.votes - x.votes).slice(0, 25).map((x) => <option key={x.id} value={x.id}>{listLabel(x, lang)}</option>)}
           </select>
@@ -294,13 +294,13 @@ function Merge({ s, r }: { s: Scenario; r: AllocationResult }) {
   };
   return (
     <div className="st-task">
-      <p className="small ink2" style={{ marginTop: 0 }}>{L('Choose lists to merge', 'בחירת רשימות לאיחוד')} <Info title={L('Merge assumptions', 'הנחות האיחוד')}>{L('Choose two or more lists to run together. The merged list faces the threshold and the seat count as one list; its members’ surplus agreements are dropped. Voters who do not stay with it stay home.', 'בחרו שתי רשימות או יותר שירוצו יחד. הרשימה המאוחדת מתמודדת עם אחוז החסימה ועם חלוקת המנדטים כרשימה אחת; הסכמי העודפים של חברותיה מבוטלים. מצביעים שאינם נשארים איתה נמנעים.')}</Info></p>
+      <p className="small ink2" style={{ marginTop: 0 }}>{L('Choose lists to merge', 'בחירת רשימות לאיחוד')} <Info title={L('Merge assumptions', 'הנחות האיחוד')}>{L('Choose two or more lists to run together. The merged list faces the threshold and the seat count as one list; its members’ surplus agreements are dropped. Voters who do not stay with it stay home.', 'בחרו שתי רשימות או יותר שירוצו יחד. הרשימה המאוחדת מתמודדת עם אחוז החסימה ועם חלוקת המנדטים כרשימה אחת; הסכמי העודפים של חברותיה מבוטלים. מי שאינם נשארים איתה אינם מצביעים.')}</Info></p>
       <ListPicker s={s} picked={ids} onToggle={(id) => setIds(ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id])} />
       {ids.length >= 2 && (
         <div className="st-options">
           <label className="field">{L(`Voters who stay: ${retention}%`, `מצביעים שנשארים: ${retention}%`)}
             <input type="range" min={50} max={100} value={retention} onChange={(e) => setRetention(Number(e.target.value))} />
-            <span className="tiny muted tabnum">{L(`${fmtInt(kept)} of ${fmtInt(total)} votes`, `${fmtInt(kept)} מתוך ${fmtInt(total)} קולות`)}{kept < total && L(` · ${fmtInt(total - kept)} stay home`, ` · ${fmtInt(total - kept)} נמנעים`)}</span></label>
+            <span className="tiny muted tabnum">{L(`${fmtInt(kept)} of ${fmtInt(total)} votes`, `${fmtInt(kept)} מתוך ${fmtInt(total)} קולות`)}{kept < total && L(` · ${fmtInt(total - kept)} stay home`, ` · ${fmtInt(total - kept)} לא מצביעים`)}</span></label>
           {control}
           {standard && <>
             <label className="field">{L('Name', 'שם')}<input type="text" value={nameHe} placeholder={lang === 'he' ? defaultHe : defaultEn} onChange={(e) => setName(e.target.value)} /></label>
@@ -411,7 +411,7 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
             : Math.abs(sumPct - 100) > 0.05 && <p className="small st-full" style={{ margin: 0, color: 'var(--warn-ink)' }}>{(lang === 'he' ? <>{"החלקים מסתכמים ב־"}{percentNum(sumPct, digits)}{"; הקולות יחולקו ביחס הזה."}</> : <>{"The shares add up to "}{percentNum(sumPct, digits)}{"; the votes are divided in these proportions."}</>)}</p>}
           {(shares || unassigned > 0) && <div className="row st-full" style={{ gap: 8 }}>
             {shares && <button type="button" className="btn small ghost" onClick={() => setShares(null)}>{L('Reset shares', 'איפוס החלוקה')}</button>}
-            {unassigned > 0 && home && <span className="tiny muted">{L(`${unassigned} candidates go with the lead party`, `${unassigned} מועמדים עם מפלגת הראש`)} <Info title={L('Candidate assignment', 'שיוך מועמדים')}>{L(`${unassigned} candidate(s) without a recorded party go with ${name(home)} (the party of the list’s leader).`, `${unassigned} מועמדים שמפלגתם לא תועדה מצורפים ${hebrewPrefix('ל', name(home))} (מפלגת העומד בראש הרשימה).`)}</Info></span>}
+            {unassigned > 0 && home && <span className="tiny muted">{(unassigned === 1 ? L('1 candidate goes with the lead party', 'מועמד אחד עם מפלגת הראש') : L(`${unassigned} candidates go with the lead party`, `${unassigned} מועמדים עם מפלגת הראש`))} <Info title={L('Candidate assignment', 'שיוך מועמדים')}>{(unassigned === 1 ? L(`1 candidate without a recorded party goes with ${name(home)} (the party of the list’s leader).`, `מועמד אחד שמפלגתו לא תועדה מצורף ${hebrewPrefixName('ל', name(home))} (מפלגת העומד בראש הרשימה).`) : L(`${unassigned} candidates without a recorded party go with ${name(home)} (the party of the list’s leader).`, `${unassigned} מועמדים שמפלגתם לא תועדה מצורפים ${hebrewPrefixName('ל', name(home))} (מפלגת העומד בראש הרשימה).`))}</Info></span>}
           </div>}
         </div>
       )}
@@ -422,7 +422,7 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
               <option value="top">{L('Cut at a rank', 'חיתוך במקום ברשימה')}</option>
               <option value="alternate">{L('Alternating ranks', 'מקומות לסירוגין')}</option>
             </select></label>
-          {mode === 'top' && <label className="field">{L(`Candidates on ${plainNames[0][lang === 'he' ? 0 : 1]}`, `מועמדים ${hebrewPrefix('ב', plainNames[0][0])}`)}<NumberInput value={n} onCommit={(v) => setTopN(Math.min(v, l.candidates.length))} label={L('Candidates on the first list', 'מועמדים ברשימה הראשונה')} width={90} /></label>}
+          {mode === 'top' && <label className="field">{L(`Candidates on ${plainNames[0][lang === 'he' ? 0 : 1]}`, `מועמדים ${hebrewPrefixName('ב', plainNames[0][0])}`)}<NumberInput value={n} onCommit={(v) => setTopN(Math.min(v, l.candidates.length))} label={L('Candidates on the first list', 'מועמדים ברשימה הראשונה')} width={90} /></label>}
           <label className="field st-full">{L('Vote share', 'חלוקת הקולות')}
             <input type="range" min={0} max={100} value={shareA} aria-label={L(`Vote share of ${plainNames[0][1]} (%)`, `חלק הקולות של ${plainNames[0][0]} (%)`)} onChange={(e) => setShareA(Number(e.target.value))} /></label>
           <div className="st-full"><ShareBar parts={[{ key: 'a', color: colours[0], votes: plainVotes }, { key: 'b', color: colours[1], votes: l.votes - plainVotes }]} /></div>

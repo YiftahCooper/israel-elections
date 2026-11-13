@@ -11,9 +11,9 @@ import { inputPart } from '../../model/editScopes.ts';
 import { PARTS, partSnapshot } from '../../model/parts.ts';
 import { allocationOf, changeCount, editPathLabel, electedOf, listLabel, markerReference, METHODS, resultChanges } from '../derive.ts';
 import { baselineOf } from '../factionDefaults.ts';
-import { changeText } from '../changeValue.tsx';
+import { markerChangeText } from '../changeValue.tsx';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtRat } from '../format.ts';
+import { fmtInt, fmtRat, PP } from '../format.ts';
 import { setState, toast, useDigits, useLevel, useSetting, useStore } from '../store.ts';
 import { Floating } from '../floating.tsx';
 import { Hemicycle } from '../components/Hemicycle.tsx';
@@ -259,11 +259,11 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
       </span>
       {!simple && <input type="search" className="cmp-search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder={L('Find a list…', 'חיפוש רשימה…')} aria-label={L('Find a list', 'חיפוש רשימה')} />}
       {!simple && <label className="cmp-switch small"><input type="checkbox" checked={zero} onChange={(e) => setZero(e.target.checked)} />{L('Lists with no seats', 'רשימות ללא מנדטים')}</label>}
-      {cross && <button type="button" className="btn small" onClick={() => setMatching(true)} disabled={simple && !toCheck}>{L('Matching', 'התאמת רשימות')}{toCheck > 0 && <span className="cmp-tag tag-check">{L(`${toCheck} to check`, `${toCheck} לבדיקה`)}</span>}</button>}
+      {cross && <button type="button" className="btn small" onClick={() => setMatching(true)} disabled={simple && !toCheck}>{L('Matching', 'התאמת רשימות')}{toCheck > 0 && <span className="cmp-tag tag-check">{L(`${toCheck} to verify`, `${toCheck} לבדיקה`)}</span>}</button>}
     </div>
     {selected.size > 0 && !simple && (() => { const r = unitSel('toRight'), l = unitSel('toLeft'); return <div className="cmp-selbar row" role="region" aria-label={L('Selected rows', 'שורות שנבחרו')}>
       <b>{L(`${selected.size} selected`, `${selected.size} נבחרו`)}</b>
-      {r.skipped > 0 && <span className="small cmp-refused">{L(`${r.skipped} need a decision (no counterpart or to check)`, `${r.skipped} דורשות החלטה (אין מקבילה או לבדיקה)`)}</span>}
+      {r.skipped > 0 && <span className="small cmp-refused">{L(`${r.skipped} need a decision (no counterpart or to verify)`, `${r.skipped} דורשות החלטה (אין מקבילה או לבדיקה)`)}</span>}
       {/* into your work first; into the compared result (its own draft) second */}
       {([toWork, toWork === 'toLeft' ? 'toRight' : 'toLeft'] as Dir[]).map((d) => { const x = d === 'toRight' ? r : l, to = d === 'toRight' ? right : left;
         return <button key={d} type="button" className={`btn small ${to.role === 'main' ? '' : 'ghost'}`} disabled={!x.units.length || x.skipped > 0} onClick={() => copyVotes(x.units, d)}>{L(`Copy votes into ${nameOf(to)}`, `העתקת קולות ${hebrewPrefix('ל', nameOf(to))}`)}</button>; })}
@@ -302,7 +302,7 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
                 <span className="cmp-mid-in">
                   <span className="cmp-delta">
                     {grouped ? <span className="tiny muted">{L('see group', 'ראו קבוצה')}</span> : d !== null ? <SeatDelta value={d} /> : <span className="muted">—</span>}
-                    {!simple && shareD && shareD.num !== 0n && <span className="tiny muted cmp-pp" dir={lang === 'he' ? 'rtl' : 'ltr'}><bdi dir="ltr">{rationalPoints(shareD, digits)}</bdi> {L('pp', 'נק׳ אחוז')}</span>}
+                    {!simple && shareD && shareD.num !== 0n && <span className="tiny muted cmp-pp" dir={lang === 'he' ? 'rtl' : 'ltr'}><bdi dir="ltr">{rationalPoints(shareD, digits)}</bdi> {L(...PP)}</span>}
                     <span className="cmp-tagwhy"><span className={`cmp-tag tag-${row.tag}`}>{tagText(row.tag, L)}</span><Info title={L('This pairing', 'ההתאמה הזו')} label={L(`Why this pairing: ${what}`, `למה ההתאמה הזו: ${what}`)}>{why(row)}</Info></span>
                   </span>
                   {copyButton(row, toWork === 'toLeft' ? (toL && !grouped ? [toL] : null) : (toR && !grouped ? [toR] : null), what)}
@@ -355,7 +355,7 @@ function SideCard({ x, picker, focused, onFocus, align }: { x: SideModel; picker
   const title = `${x.year} · ${x.name}`;
   return <section className={`cmp-card ${focused ? 'focused' : ''}`} data-side={align} data-role={x.role} style={{ borderColor: x.frame }} dir={lang === 'he' ? 'rtl' : 'ltr'} onPointerDown={onFocus} onFocus={onFocus} aria-label={title}>
     <div className="cmp-card-head">
-      <span className="cmp-card-role">{x.role === 'main' ? L('Your work', 'העבודה שלכם') : L('Compared with', 'מושווה עם')}</span>
+      <span className="cmp-card-role">{x.role === 'main' ? L('Your work', 'העבודה שלכם') : L('Compared with', 'בהשוואה ל־')}</span>
       <span className="cmp-card-election"><b>{e ? x.year : x.sc.electionId}</b> <span className="muted small">{e ? (lang === 'he' ? `הכנסת ה־${e.knesset}` : `${ordinalEn(e.knesset)} Knesset`) : ''}</span></span>
       {picker}
     </div>
@@ -366,13 +366,13 @@ function SideCard({ x, picker, focused, onFocus, align }: { x: SideModel; picker
       {changes > 0 && <span className="tiny muted">{changes === 1 ? L('1 change from the official result', 'שינוי אחד מהתוצאה הרשמית') : L(`${changes} changes from the official result`, `${changes} שינויים מהתוצאה הרשמית`)}</span>}
       <span className="cmp-card-tools">
         <button type="button" className="btn small ghost" disabled={!x.canUndo} onClick={x.undo} aria-label={L(`Undo on ${x.year}`, `ביטול ב־${x.year}`)} title={L('Undo', 'ביטול')}><Undo2 size={15} /></button>
-        <button type="button" className="btn small ghost" disabled={!x.canRedo} onClick={x.redo} aria-label={L(`Redo on ${x.year}`, `חזרה ב־${x.year}`)} title={L('Redo', 'חזרה')}><Redo2 size={15} /></button>
+        <button type="button" className="btn small ghost" disabled={!x.canRedo} onClick={x.redo} aria-label={L(`Redo on ${x.year}`, `ביצוע מחדש ב־${x.year}`)} title={L('Redo', 'ביצוע מחדש')}><Redo2 size={15} /></button>
         {(x.role === 'other' ? x.edited : changes > 0) && <button type="button" className="btn small ghost" onClick={x.startOver}>{L('Start over', 'התחלה מחדש')}</button>}
       </span>
     </div>
     {/* the other side's seats open no list: its lists are not the open scenario */}
     <div className="cmp-chamber" onClickCapture={x.role === 'other' ? (ev) => ev.stopPropagation() : undefined}><Hemicycle s={x.sc} r={x.r} reference={x.start} compact paired title={title} /></div>
-    {x.edited && <p className="tiny muted cmp-outline-key">{(x.role === 'main' ? L('Outlined: seats gained compared with its starting point', 'מתאר: מנדטים שנוספו לעומת נקודת ההתחלה') : L('Outlined: seats gained compared with the official result', 'מתאר: מנדטים שנוספו לעומת התוצאה הרשמית'))}</p>}
+    {x.edited && <p className="tiny muted cmp-outline-key">{(x.role === 'main' ? L('Outlined: seats gained compared with its starting point', 'בקו מתאר: מנדטים שנוספו לעומת נקודת ההתחלה') : L('Outlined: seats gained compared with the official result', 'בקו מתאר: מנדטים שנוספו לעומת התוצאה הרשמית'))}</p>}
   </section>;
 }
 
@@ -426,7 +426,8 @@ function Mark({ x, path }: { x: SideModel; path: readonly string[] }) {
   const before = markerReference(x.sc, x.start, path);
   const part = inputPart(path);
   const word = origin ? markerLead(origin, lang, x.sc.electionId).split(' · ')[0].replace(/ \(.*\)$/, '') : L('Edited', 'נערך');
-  const text = `${editPathLabel(x.sc, path, lang, x.start)} · ${markerLead(origin, lang, x.sc.electionId)}${changeText(before, path, lang)}`;
+  // a candidate list says what changed in it ("Edited: moved: …"), not its whole former list, as the Overview's marker does
+  const text = `${editPathLabel(x.sc, path, lang, x.start)} · ${markerChangeText(before, x.sc, path, lang, origin)}`;
   const listId = path[0] === 'lists' ? path[1] : path[2];
   return <>
     <button ref={ref} type="button" className="cmp-mark" data-copied={origin ? 'true' : undefined} aria-label={text} aria-expanded={open} onClick={(e) => { e.stopPropagation(); setOpen(!open); }}>{word}</button>

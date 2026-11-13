@@ -119,7 +119,7 @@ test('Sensitivity: range rows read low to high under one label; the tables fit a
     await start(page, { lang, width: 360, height: 740 });
     await page.locator('#tab-sens').click();
     const panel = page.locator('#analysis-panel');
-    for (const [name, from, to] of lang === 'he' ? [['טווח קולות', 'מ', 'עד'], ['טווח אחוזים', 'מ-%', 'עד %']] : [['Vote range', 'From', 'To'], ['Threshold range', 'From %', 'To %']]) {
+    for (const [name, from, to] of lang === 'he' ? [['טווח קולות', 'מספר קולות מינימלי', 'מספר קולות מרבי'], ['טווח אחוזים', 'אחוז מינימלי', 'אחוז מרבי']] : [['Vote range', 'From', 'To'], ['Threshold range', 'From %', 'To %']]) {
       const group = panel.getByRole('group', { name, exact: true });
       await expect(group).toBeVisible();
       const lo = await box(group.getByRole('textbox', { name: from, exact: true })), hi = await box(group.getByRole('textbox', { name: to, exact: true }));

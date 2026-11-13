@@ -6,10 +6,11 @@ import type { Scenario } from '../../model/scenario.ts';
 import { votesCast } from '../../model/scenario.ts';
 import type { ElectionId } from '../../data/schema.ts';
 import { allocationOf, referenceLabel } from '../derive.ts';
-import { fmtInt, fmtPct, trimDecimal } from '../format.ts';
+import { fmtInt, fmtPct, trimDecimal, PP } from '../format.ts';
 import { useL, useLang } from '../i18n.ts';
 import { openElection, useDigits, useLevel, useSetting, useStore } from '../store.ts';
 import { useHoverIntent } from '../hoverIntent.ts';
+import { electionLabel } from '../electionLabel.ts';
 import { countChange, ELECTION_TOTALS, electionWhen, officialThreshold, previousTotals, totalsOf, turnoutPct, type ElectionTotalsRow } from '../turnoutFacts.ts';
 import { EditMarker } from './EditMarker.tsx';
 import { percent, percentNum, points } from './Percentage.tsx';
@@ -31,7 +32,7 @@ function CountDelta({ now, before, digits }: { now: number; before: number; digi
 }
 function PointDelta({ value, digits }: { value: number; digits: number }) {
   const L = useL();
-  return <span className="seat-delta tn-delta" data-sign={Math.sign(value)}><bdi dir="ltr">{arrow(value)}{points(value, digits)}</bdi> {L('pp', 'נק׳')}</span>;
+  return <span className="seat-delta tn-delta" data-sign={Math.sign(value)}><bdi dir="ltr">{arrow(value)}{points(value, digits)}</bdi> {L(...PP)}</span>;
 }
 
 function Fact({ id, k, info, v, d, since, copy }: { id: string; k: string; info?: ReactNode; v: ReactNode; d?: ReactNode; since?: ReactNode; copy?: ReactNode }) {
@@ -94,7 +95,7 @@ export function TurnoutFacts({ s }: { s: Scenario }) {
         ? <Fact id="threshold" k={L('Threshold', 'אחוז החסימה')} info={<Info term="threshold" />} v={L('None', 'אין')} d={L('No percentage threshold', 'ללא אחוז חסימה')} />
         : <Fact id="threshold" k={L('Threshold', 'אחוז החסימה')} info={<Info term="threshold" />}
           v={<><bdi dir="ltr">{fmtInt(r.thresholdVotes)}</bdi> {L('votes', 'קולות')}</>} d={<>{trimDecimal(s.rules.thresholdPct)}% {L('of valid votes', 'מהקולות הכשרים')}</>} />)}
-      {expert && <Fact id="boxes" k={L('Ballot boxes', 'קלפיות')} info={<Info term="polling-station" />}
+      {expert && <Fact id="boxes" k={L('Polling-station results', 'תוצאות קלפי')} info={<Info term="polling-station"><span>{L('Rows in the official results table, which can include central double-envelope counts; not the number of physical polling stations.', 'שורות בטבלת התוצאות הרשמית, שעשויות לכלול ספירה מרכזית של מעטפות חיצוניות; אין זה מספר הקלפיות הפיזיות.')}</span></Info>}
         v={official.ballotBoxes === null ? '—' : <bdi dir="ltr">{fmtInt(official.ballotBoxes)}</bdi>}
         d={official.ballotBoxes === null ? L('Not in the source for this election', 'לא מופיע במקור לבחירות אלה') : undefined}
         since={official.ballotBoxes !== null && prev?.ballotBoxes ? sinceWords(<CountDelta now={official.ballotBoxes} before={prev.ballotBoxes} digits={digits} />) : undefined} />}
@@ -143,7 +144,7 @@ function TurnoutHistory({ current }: { current: ElectionId }) {
   const every = Math.max(1, Math.ceil(30 / slot));
   const tick = (i: number) => i === n - 1 || (i % every === 0 && n - 1 - i >= every);
   const go = (i: number) => { if (rows[i].id !== current) void openElection(rows[i].id as ElectionId); };
-  const name = (t: ElectionTotalsRow) => { const e = index.find((x) => x.id === t.id); return e ? `${electionWhen(t, lang)} · ${lang === 'he' ? `הכנסת ה-${e.knesset}` : `Knesset ${e.knesset}`}` : electionWhen(t, lang); };
+  const name = (t: ElectionTotalsRow) => { const e = index.find((x) => x.id === t.id); return e ? electionLabel(e, index, lang) : electionWhen(t, lang); };
   const label = (i: number) => `${name(rows[i])}: ${L('eligible voters', 'בעלי זכות בחירה')} ${fmtInt(rows[i].registered)}, ${L('turnout', 'הצבעה')} ${fmtPct(rows[i].votesCast, rows[i].registered, digits)}`;
   const columns = (chart: 'reg' | 'pct') => rows.map((t, i) => <rect key={t.id} className="tn-hit" x={ml + i * slot} y={0} width={slot} height={top + H + axisH}
     onPointerEnter={(e) => { if (e.pointerType === 'touch') setHover(i); else intent.enter(() => setHover(i)); }} onPointerLeave={(e) => { if (e.pointerType !== 'touch') intent.leave(); if (!intent.isShown) setHover((h) => (h === i ? null : h)); }} onClick={() => go(i)} data-chart={chart} />);

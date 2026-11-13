@@ -19,6 +19,6 @@ export function BoardChoices({ s }: { s: Scenario }) {
       ...saved.filter(x => x.electionId === s.electionId).map(x => ({ value: `saved:${x.id}`, label: x.name, detail: L('Saved grouping', 'חלוקה שמורה'), preview: ds ? <ResultPreview s={replay(ds, x.name, x.log, x.factionSplitBaseline ?? false).scenario} /> : undefined }))
     ]} onChange={value => { if (value === '__custom') return; const entry = saved.find(x => `saved:${x.id}` === value); if (entry && ds) dispatch({ type: 'startPart', part: 'blocs', source: 'saved', name: entry.name, snapshot: partSnapshot(replay(ds, entry.name, entry.log, entry.factionSplitBaseline ?? false).scenario, 'blocs') }); else dispatch({ type: 'applyBlocScheme', schemeId: value }); }} />
     <AnalysisEdits s={s} outlet="grouping-picker" />
-    {s.blocSchemes?.find(g => g.id === s.blocSchemeId)?.appDefined && <Info title={L('App grouping', 'חלוקה של היישומון')}>{appGroupingExplanation(lang)}</Info>}
+    {s.blocSchemes?.find(g => g.id === s.blocSchemeId)?.appDefined && <Info title={L('App grouping', 'חלוקה של האפליקציה')}>{appGroupingExplanation(lang)}</Info>}
   </div>;
 }

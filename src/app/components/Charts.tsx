@@ -208,7 +208,7 @@ function ShareTable({ s, r, height }: { s: Scenario; r: AllocationResult; height
   return (
     <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')} style={height > 520 ? { maxHeight: height } : undefined}>
       <table className="tbl">
-        <thead><tr><th>{L('List', 'רשימה')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('% valid', '% מהכשרים')}</th><th className="n">{L('% qualifying', '% מהמשתתפים')}</th><th className="n">{L('Seats', 'מנדטים')}</th><th className="n">{L('% seats', '% מנדטים')}</th>
+        <thead><tr><th>{L('List', 'רשימה')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('% valid', '% מהכשרים')}</th><th className="n">{L('% qualifying', '% מהקולות המשתתפים')}</th><th className="n">{L('Seats', 'מנדטים')}</th><th className="n">{L('% seats', '% מנדטים')}</th>
           <th className="n"><span className="row" style={{ gap: 4, justifyContent: 'flex-end', flexWrap: 'nowrap' }}>{L('Seats − votes', 'מנדטים − קולות')}<Info title={L('Seats − votes', 'מנדטים − קולות')}>{L('Share of seats minus share of valid votes, in percentage points. Above zero: more seats than votes.', 'שיעור המנדטים פחות שיעור הקולות הכשרים, בנקודות אחוז. מעל אפס: יותר מנדטים מקולות.')}</Info></span></th></tr></thead>
         <tbody>
           {s.lists.filter((l) => !l.withdrawn).sort((a, b) => b.votes - a.votes).map((l) => { const lr = r.lists.find((x) => x.id === l.id)!; return (

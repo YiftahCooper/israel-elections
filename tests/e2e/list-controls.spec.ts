@@ -144,7 +144,7 @@ test('a list\'s seat count can be typed: the fewest votes that give it are moved
   // below the threshold, 1 seat cannot exist: the list lands on the nearest count and says so
   await open(page, 'Meretz');
   await seats.fill('1'); await seats.press('Enter');
-  await expect(page.getByText(/1 seats is not possible from this source; nearest: \d/)).toBeVisible({ timeout: 30000 });
+  await expect(page.getByText(/1 seat is not possible from this source; nearest: \d/)).toBeVisible({ timeout: 30000 });
   await expect(seats).toHaveValue('4');
   await panel.screenshot({ path: '.backup-scratch/seat-target.png' });
   // the remembered answer is the setting in Rules → Display, and can go back to asking
