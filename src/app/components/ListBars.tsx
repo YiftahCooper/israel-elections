@@ -24,7 +24,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
 import { comparisonGroups, officialSeatsFor, electedOf, listLabel, resultChanges } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtPct } from '../format.ts';
+import { fmtInt, fmtPct, seatsText } from '../format.ts';
 import { setState, useDigits, useLevel, useSetting, useStore } from '../store.ts';
 import { blocDisplayOrder } from '../blocOrder.ts';
 import { partyListed } from '../seatlessParties.ts';
@@ -152,7 +152,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
               {cmp ? line && <RefLine line={line} label={cmp.label} r={r} /> : lastTime && lr.seats > 0 && <LazyRowComparison s={s} r={r} listId={l.id} currentName={listLabel(l, lang)} />}
             </span>
           </span>
-          <span className="sr-only" id={`lbd-${l.id}`}>{L(`${lr.seats} seats`, `${lr.seats} מנדטים`)}, {fmtPct(l.votes, total, digits, s.rules.thresholdPct)}{familyDefinition && family && family!=='other' && <> · {familyLabel(familyDefinition,lang)}{family==='mixed'?` · ${L('Mixed lists','רשימות מעורבות')}`:''}</>}{d !== 0 && <>, {Math.abs(d)}{d > 0 ? baseLabel.more : baseLabel.fewer}</>}{l.withdrawn && <>, {L('withdrew', 'פרשה')}</>}{partner && <>, {L(`surplus-vote agreement with ${listLabel(partner, lang)}`, `הסכם עודפים עם ${listLabel(partner, lang)}`)}</>}{cmp ? line && refLineText(line, cmp.label, r, lang) : lastTime && lr.seats > 0 && <LazyRowComparison sr s={s} r={r} listId={l.id} currentName={listLabel(l, lang)} />}</span>
+          <span className="sr-only" id={`lbd-${l.id}`}>{L(seatsText(lr.seats, 'en'), seatsText(lr.seats, 'he'))}, {fmtPct(l.votes, total, digits, s.rules.thresholdPct)}{familyDefinition && family && family!=='other' && <> · {familyLabel(familyDefinition,lang)}{family==='mixed'?` · ${L('Mixed lists','רשימות מעורבות')}`:''}</>}{d !== 0 && <>, {Math.abs(d)}{d > 0 ? baseLabel.more : baseLabel.fewer}</>}{l.withdrawn && <>, {L('withdrew', 'פרשה')}</>}{partner && <>, {L(`surplus-vote agreement with ${listLabel(partner, lang)}`, `הסכם עודפים עם ${listLabel(partner, lang)}`)}</>}{cmp ? line && refLineText(line, cmp.label, r, lang) : lastTime && lr.seats > 0 && <LazyRowComparison sr s={s} r={r} listId={l.id} currentName={listLabel(l, lang)} />}</span>
           <span className="lb-seats">
             <b key={`s${lr.seats}`} className={previousSeats.current.election === s.electionId && previousSeats.current.seats.has(l.id) && previousSeats.current.seats.get(l.id) !== lr.seats ? 'tick' : ''}>{lr.seats}</b>
             {d !== 0 && <small dir="ltr"><SeatDelta value={d} /></small>}

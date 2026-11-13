@@ -25,15 +25,15 @@ export function SourcePicker({ s, l }: { s: Scenario; l: SimList }) {
   return (
     <div>
       <div className="field">
-        <span className="row" style={{ gap: 6 }}><label htmlFor={id}>{L('Votes come from', 'הקולות מגיעים מ־')}</label>
-          <Info title={L('Different counterfactuals', 'תרחישים שונים')}>{L('Taking votes from all other lists keeps turnout and the valid total fixed. New voters (or voters staying home) change the valid total, and so the threshold in votes. A transfer moves votes from or to one list — if that list is below the threshold, those votes stop being wasted. These give different seat results.', 'לקיחה מכל שאר הרשימות שומרת על ההצבעה ועל סך הכשרים. מצביעים חדשים (או נמנעים) משנים את סך הכשרים ולכן את אחוז החסימה בקולות. מעבר מזיז קולות מול רשימה אחת — אם היא מתחת לחסימה, הקולות מפסיקים להתבזבז. התוצאות שונות.')}</Info>
+        <span className="row" style={{ gap: 6 }}><label htmlFor={id}>{L('Votes come from', 'מקור הקולות')}</label>
+          <Info title={L('Where the votes come from', 'מאיפה באים הקולות')}>{L('Taking votes from all other lists keeps turnout and the valid total fixed. New voters (or voters staying home) change the valid total, and so the threshold in votes. A transfer moves votes from or to one list — if that list is below the threshold, those votes stop being wasted. These give different seat results.', 'לקיחה מכל שאר הרשימות שומרת על ההצבעה ועל סך הכשרים. מצביעים חדשים (או בוחרים שלא מצביעים) משנים את סך הכשרים ולכן את אחוז החסימה בקולות. מעבר מזיז קולות מול רשימה אחת — אם היא מתחת לחסימה, הקולות מפסיקים להתבזבז. התוצאות שונות.')}</Info>
         </span>
         <select id={id} value={src.kind === 'transfer' ? `t:${src.listId}` : src.kind} onChange={(e) => {
           const v = e.target.value;
           chooseSource(`list:${l.id}`, v === 'new' ? { kind: 'new' } : v === 'proportional' ? { kind: 'proportional' } : { kind: 'transfer', listId: v.slice(2) });
         }}>
           <option value="proportional">{L('Other lists', 'שאר הרשימות')}</option>
-          <option value="new">{L('New voters / staying home', 'מצביעים חדשים / נמנעים')}</option>
+          <option value="new">{L('New voters / staying home', 'מצביעים חדשים / מי שלא הצביעו')}</option>
           <optgroup label={L('One specific list (transfer)', 'רשימה אחת מסוימת (מעבר)')}>
             {[...others].sort((a, b) => b.votes - a.votes).map((x) => <option key={x.id} value={`t:${x.id}`}>{listLabel(x, lang)} ({fmtInt(x.votes)})</option>)}
           </optgroup>
@@ -68,7 +68,7 @@ export function SourceDialog() {
     onClick={e => { if (e.target === e.currentTarget) cancel(); }}>
     <p className="small" style={{ margin: 0 }}><b>{ask?.title}</b>{' '}
       <Info title={label}>{id === 'voteSource'
-        ? L('Other lists: taken from all, in proportion; turnout unchanged. New voters: turnout changes. One list: only that list gives or takes. A remembered donor is asked again if unavailable or part of the edited group.', 'שאר הרשימות: מכולן, באופן יחסי; ההצבעה ללא שינוי. מצביעים חדשים: ההצבעה משתנה. רשימה אחת: רק היא נותנת או מקבלת. נשאל שוב אם הרשימה שנזכרה אינה זמינה או נכללת בקבוצה הנערכת.')
+        ? L('Other lists: taken from all, in proportion; turnout unchanged. New voters: turnout changes. One list: only that list gives or takes. A remembered donor is asked again if unavailable or part of the edited group.', 'שאר הרשימות: מכולן, באופן יחסי; ההצבעה ללא שינוי. מצביעים חדשים: ההצבעה משתנה. רשימה אחת: רק היא נותנת או מקבלת. אם הרשימה ששמרתם אינה זמינה או שייכת לקבוצה הנערכת, השאלה תוצג שוב.')
         : L('Opened scenario: only your newer changes are marked. Official result: every difference is marked.', 'התרחיש שנפתח: מסומנים רק השינויים החדשים. התוצאה הרשמית: מסומן כל הבדל.')}</Info></p>
     <form onSubmit={e => { e.preventDefault(); if (value) answerPreference(value, scope); }}>
       <label className="field">{label}
@@ -162,7 +162,7 @@ export function RememberedAnswers({ id }: { id: PreferenceId }) {
   return <div className="pref-remembered">
     <button type="button" className="btn small ghost pref-disclosure" aria-expanded={open} onClick={() => setOpen(o => !o)}>
       {L(`Remembered for ${items.length}`, `נשמר ל־${items.length}`)} <span aria-hidden>{open ? '▾' : '▸'}</span></button>
-    <Info title={L('Remembered answers', 'תשובות שמורות')}>{L('An answer chosen with “For this list”, “For this bloc” or “For this scenario”. It wins over the default above, only for that item and election.', 'תשובה שנבחרה עם ״לרשימה זו״, ״לגוש זה״ או ״לתרחיש זה״. היא קודמת לברירת המחדל, רק לפריט ולבחירות האלה.')}</Info>
+    <Info title={L('Remembered answers', 'תשובות שמורות')}>{L('An answer chosen with “For this list”, “For this bloc” or “For this scenario”. It wins over the default above, only for that item and election.', 'תשובה שנבחרה עם "לרשימה זו", "לגוש זה" או "לתרחיש זה". היא קודמת לברירת המחדל, רק לפריט ולבחירות האלה.')}</Info>
     {open && <>
       <ul className="pref-items small" aria-label={L(PREFERENCES[id].label[0], PREFERENCES[id].label[1]) + ' · ' + title}>
         {items.map(([k, v]) => { const [, election, ...rest] = k.split(':'); const name = itemLabel(election, rest.join(':'));

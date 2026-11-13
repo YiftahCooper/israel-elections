@@ -217,7 +217,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   // ---- from votes to seats ----
   {
     id: 'threshold', nameHe: 'אחוז החסימה', nameEn: 'Electoral threshold', level: 'simple', provenance: 'sourced',
-    defHe: 'רשימה משתתפת בחלוקת המנדטים רק אם קיבלה לפחות שיעור קבוע מכלל הקולות הכשרים (סעיף 81(א)): 3.25% מאז 2015, 2% ב-2006–2013, 1.5% ב-1992–2003 ו-1% ב-1951–1988. בבחירות 1949 לא נקבע אחוז, אבל רשימה נזקקה למודד שלם אחד (כ-0.83%). מספר הקולות הנדרש משתנה עם סך הקולות הכשרים.',
+    defHe: 'רשימה משתתפת בחלוקת המנדטים רק אם קיבלה לפחות שיעור קבוע מכלל הקולות הכשרים (סעיף 81(א)): 3.25% מאז 2015, 2% ב־2006–2013, 1.5% ב־1992–2003 ו־1% ב־1951–1988. בבחירות 1949 לא נקבע אחוז, אבל רשימה נזקקה למודד שלם אחד (כ־0.83%). מספר הקולות הנדרש משתנה עם סך הקולות הכשרים.',
     defEn: 'A list takes part in seat allocation only with at least a fixed share of all valid votes (section 81(a)): 3.25% since 2015, 2% in 2006–2013, 1.5% in 1992–2003 and 1% in 1951–1988. In 1949 no percentage was set, but a list needed one whole quota (about 0.83%). The number of votes required changes with the valid total.',
     linkHe: H.seats, linkEn: E.threshold,
     sources: [
@@ -241,7 +241,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'unrepresented', nameHe: 'קולות שלא השתתפו בחלוקה ("קולות שהלכו לאיבוד")', nameEn: 'Unrepresented (wasted) votes', level: 'simple', provenance: 'sourced',
-    defHe: 'קולות כשרים לגמרי שניתנו לרשימות שלא עברו את אחוז החסימה, ולכן לא תרמו למנדט. בניגוד לקולות פסולים הם כן משפיעים: הם נכללים בסך שממנו מחושב אחוז החסימה. בבחירות 1949 גם רשימה שלא הגיעה למודד שלם לא זכתה במושב.',
+    defHe: 'קולות כשרים לגמרי שניתנו לרשימות שלא עברו את אחוז החסימה, ולכן לא תרמו למנדט. בניגוד לקולות פסולים הם כן משפיעים: הם נכללים בסך שממנו מחושב אחוז החסימה. בבחירות 1949 גם רשימה שלא הגיעה למודד שלם לא זכתה במנדט.',
     defEn: 'Fully valid votes cast for lists that failed the threshold, so they won no seat. Unlike invalid votes they still matter: they are part of the total from which the threshold is calculated. In 1949 a list short of one whole quota also won nothing.',
     linkHe: H.invalid, linkEn: E.invalid,
     sources: [
@@ -252,7 +252,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'quota', nameHe: 'המודד הכללי', nameEn: 'General quota', level: 'simple', provenance: 'sourced',
-    defHe: 'סך הקולות המשתתפים חלקי 120, והמספר השלם היוצא (סעיף 81(ב)). זהו בקירוב "מחיר" של מנדט: כל רשימה מקבלת תחילה מנדט לכל מודד שלם בקולותיה. ב-1949 חילקו את כל הקולות הכשרים ב-121.',
+    defHe: 'סך הקולות המשתתפים חלקי 120, והמספר השלם היוצא (סעיף 81(ב)). זהו בקירוב "מחיר" של מנדט: כל רשימה מקבלת תחילה מנדט לכל מודד שלם בקולותיה. ב־1949 חילקו את כל הקולות הכשרים ב־121.',
     defEn: 'Qualifying votes divided by 120, keeping the whole number (section 81(b)). It is roughly the “price” of a seat: each list first gets one seat per whole quota in its votes. In 1949 all valid votes were divided by 121.',
     linkHe: H.seats, linkEn: E.seats,
     sources: [
@@ -264,7 +264,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'whole-quota-seats', nameHe: 'מנדטים במודד', nameEn: 'Whole-quota seats', level: 'simple', provenance: 'sourced',
-    defHe: 'המנדטים שכל רשימה מקבלת בשלב הראשון: מספר הפעמים שהמודד הכללי נכנס בקולותיה, בלי שארית. כך מתחלקים רוב המנדטים: 113 מתוך 120 ב-2022.',
+    defHe: 'המנדטים שכל רשימה מקבלת בשלב הראשון: מספר הפעמים שהמודד הכללי נכנס בקולותיה, בלי שארית. כך מתחלקים רוב המנדטים: 113 מתוך 120 ב־2022.',
     defEn: 'The seats each list gets in the first stage: the number of times the general quota fits into its votes, ignoring the remainder. This fills most of the chamber: 113 of the 120 seats in 2022.',
     linkHe: H.seats, linkEn: E.seats,
     sources: [
@@ -275,7 +275,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'remainder-seats', nameHe: 'מנדטים עודפים', nameEn: 'Remainder seats', level: 'simple', provenance: 'sourced',
-    defHe: 'המנדטים המעטים שנותרו אחרי החלוקה לפי המודד (שבעה ב-2022). מאז 1973 הם מתחלקים בשיטת בדר–עופר, ובבחירות 1951–1969 לפי השארית הגדולה ביותר.',
+    defHe: 'המנדטים המעטים שנותרו אחרי החלוקה לפי המודד (שבעה ב־2022). מאז 1973 הם מתחלקים בשיטת בדר–עופר, ובבחירות 1951–1969 לפי השארית הגדולה ביותר.',
     defEn: 'The few seats still unfilled after the whole-quota stage (seven in 2022). Since 1973 they are shared out by the Bader–Ofer method; in 1951–1969 they went to the largest remainders.',
     linkHe: H.surplus, linkEn: E.seats,
     sources: [
@@ -299,8 +299,8 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
   },
   {
-    id: 'dhondt', nameHe: "שיטת ד'הונט", nameEn: "D'Hondt method", level: 'expert', provenance: 'sourced',
-    defHe: "שיטת 'ממוצע גבוה ביותר' נפוצה: כל מנדט ניתן לרשימה שקולותיה ÷ (מנדטיה + 1) הם הגבוהים ביותר. שיטת בדר–עופר היא בפועל ד'הונט; תוצאתה יכולה להיות שונה רק בגלל הסכמי עודפים, ובמקרי קצה נדירים בגלל מגבלת מחצית המנדטים או עיגול המודד.",
+    id: 'dhondt', nameHe: 'שיטת ד׳הונדט', nameEn: "D'Hondt method", level: 'expert', provenance: 'sourced',
+    defHe: "שיטת 'ממוצע גבוה ביותר' נפוצה: כל מנדט ניתן לרשימה שקולותיה ÷ (מנדטיה + 1) הם הגבוהים ביותר. שיטת בדר–עופר היא בפועל ד׳הונדט; תוצאתה יכולה להיות שונה רק בגלל הסכמי עודפים, ובמקרי קצה נדירים בגלל מגבלת מחצית המנדטים או עיגול המודד.",
     defEn: "A widely used highest-averages method: each seat goes to the list with the highest votes ÷ (seats + 1). Bader–Ofer is in effect D'Hondt; its result can differ only because of surplus agreements and, in rare edge cases, the half-seats cap or the rounding of the quota.",
     linkHe: H.methods, linkEn: E.methods,
     sources: [
@@ -322,7 +322,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'highest-averages', nameHe: 'שיטת הממוצע הגדול ביותר', nameEn: 'Highest-averages method', level: 'expert', provenance: 'sourced',
-    defHe: 'משפחת שיטות שבהן המושבים מחולקים אחד־אחד: מחלקים את קולות כל מפלגה במחלקים קבועים, והמנה הגבוהה זוכה. ההבדל בין השיטות הוא סדרת המחלקים (ד\'הונט: 1, 2, 3…; סנט־לגה: 1, 3, 5…).',
+    defHe: 'משפחת שיטות שבהן המנדטים מחולקים אחד־אחד: מחלקים את קולות כל מפלגה במחלקים קבועים, והמנה הגבוהה זוכה. ההבדל בין השיטות הוא סדרת המחלקים (ד׳הונדט: 1, 2, 3…; סנט־לגה: 1, 3, 5…).',
     defEn: 'A family of methods that award seats one at a time: each party’s votes are divided by a fixed series of divisors and the highest result wins. Methods differ only in the divisors (D’Hondt 1, 2, 3…; Sainte-Laguë 1, 3, 5…).',
     linkHe: H.methods, linkEn: E.methods,
     sources: [
@@ -331,8 +331,8 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
   },
   {
-    id: 'largest-remainder', nameHe: 'שיטת השארית (העודף) הגדולה ביותר', nameEn: 'Largest-remainder method', level: 'simple', provenance: 'sourced',
-    defHe: 'אחרי חלוקת מושבים לפי מודד שלם, המושבים הנותרים ניתנים לרשימות שנותרו להן השאריות הגדולות ביותר, בלי קשר לגודלן. כך חולקו המנדטים העודפים בבחירות 1951–1969, מושב נוסף אחד לכל היותר לכל רשימה.',
+    id: 'largest-remainder', nameHe: 'שיטת השארית הגדולה ביותר', nameEn: 'Largest-remainder method', level: 'simple', provenance: 'sourced',
+    defHe: 'אחרי חלוקת מנדטים לפי מודד שלם, המנדטים הנותרים ניתנים לרשימות שנותרו להן השאריות הגדולות ביותר, בלי קשר לגודלן. כך חולקו המנדטים העודפים בבחירות 1951–1969, מנדט נוסף אחד לכל היותר לכל רשימה.',
     defEn: 'After whole-quota seats are given out, the leftover seats go to the lists with the largest unused remainders, whatever their size. Israel used it for the remainder seats in 1951–1969, at most one extra seat per list.',
     linkHe: H.methods, linkEn: E.methods,
     sources: [
@@ -343,7 +343,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'hare-quota', nameHe: 'מכסת הייר', nameEn: 'Hare quota', level: 'expert', provenance: 'sourced',
-    defHe: 'מכסה שמחושבת כסך הקולות הכשרים (בניכוי רשימות מתחת לחסימה) חלקי מספר המושבים. המודד הכללי בישראל הוא מכסת הייר המעוגלת כלפי מטה.',
+    defHe: 'מכסה שמחושבת כסך הקולות הכשרים (בניכוי רשימות מתחת לחסימה) חלקי מספר המנדטים. המודד הכללי בישראל הוא מכסת הייר המעוגלת כלפי מטה.',
     defEn: 'A quota equal to the valid votes (excluding lists below the threshold) divided by the number of seats. Israel’s general quota is a Hare quota rounded down to a whole number.',
     linkHe: H.methods, linkEn: E.methods,
     sources: [
@@ -354,7 +354,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'droop-quota', nameHe: 'מכסת דרופ', nameEn: 'Droop quota', level: 'expert', provenance: 'sourced',
-    defHe: 'מכסה: הקולות הכשרים חלקי מספר המושבים ועוד אחד, בעיגול כלפי מטה, ועוד אחד. היא קטנה מעט ממכסת הייר ומשאירה פחות מושבים עודפים. ישראל אינה משתמשת בה; ב-1949 חילקו ב-121 (מספר המושבים ועוד אחד) ועיגלו כלפי מטה, בלי התוספת.',
+    defHe: 'מכסה: הקולות הכשרים חלקי מספר המנדטים ועוד אחד, בעיגול כלפי מטה, ועוד אחד. היא קטנה מעט ממכסת הייר ומשאירה פחות מנדטים עודפים. ישראל אינה משתמשת בה; ב־1949 חילקו ב־121 (מספר המנדטים ועוד אחד) ועיגלו כלפי מטה, בלי התוספת.',
     defEn: 'A quota: the valid votes divided by the seats plus one, rounded down, plus one. It is slightly smaller than the Hare quota and leaves fewer seats over. Israel does not use it; in 1949 the votes were divided by 121 (seats plus one) and rounded down, without the added one.',
     linkHe: H.methods, linkEn: E.methods,
     sources: [
@@ -366,7 +366,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'sainte-lague', nameHe: 'שיטת סנט־לגה', nameEn: 'Sainte-Laguë method', level: 'simple', provenance: 'sourced',
-    defHe: 'שיטת ממוצע גבוה ביותר שבה המחלקים הם 1, 3, 5, 7 וכן הלאה, במקום 1, 2, 3 של ד\'הונט. היא פחות מיטיבה עם הרשימות הגדולות. באפליקציה היא כלל ניסיוני בלבד ואינה חלק מהחוק בישראל.',
+    defHe: 'שיטת ממוצע גבוה ביותר שבה המחלקים הם 1, 3, 5, 7 וכן הלאה, במקום 1, 2, 3 של ד׳הונדט. היא פחות מיטיבה עם הרשימות הגדולות. באפליקציה היא כלל ניסיוני בלבד ואינה חלק מהחוק בישראל.',
     defEn: 'A highest-averages method whose divisors are 1, 3, 5, 7 and so on, instead of D’Hondt’s 1, 2, 3. It gives large lists less of an edge. In this app it is an experimental rule only; it is not part of Israeli law.',
     linkHe: H.methods, linkEn: E.methods,
     sources: [
@@ -376,7 +376,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'modified-sainte-lague', nameHe: 'שיטת סנט־לגה המשופרת', nameEn: 'Modified Sainte-Laguë method', level: 'expert', provenance: 'sourced',
-    defHe: 'גרסה של סנט־לגה שבה המחלק הראשון הוא 1.4 ולא 1 (1.4, 3, 5, 7…), כדי להקשות על רשימות קטנות מאוד לזכות במושב ראשון. כך נהוג בנורווגיה; בשוודיה המחלק הראשון כיום הוא 1.2.',
+    defHe: 'גרסה של סנט־לגה שבה המחלק הראשון הוא 1.4 ולא 1 (1.4, 3, 5, 7…), כדי להקשות על רשימות קטנות מאוד לזכות במנדט ראשון. כך נהוג בנורווגיה; בשוודיה המחלק הראשון כיום הוא 1.2.',
     defEn: 'A variant of Sainte-Laguë whose first divisor is 1.4 instead of 1 (1.4, 3, 5, 7…), making a first seat harder for very small lists. Norway uses it; Sweden’s first divisor is now 1.2.',
     linkHe: H.methods, linkEn: E.methods,
     sources: [
@@ -410,7 +410,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'tie-lottery', nameHe: 'שוויון והגרלה', nameEn: 'Ties and lottery', level: 'simple', provenance: 'sourced',
-    defHe: 'אם לשתי רשימות או יותר יש מודד רשימה זהה בדיוק על המנדט הבא, ועדת הבחירות המרכזית עורכת הגרלה (סעיף 81(ד)(2)). כך גם ב-1949. בחוק של 1951–1969 לא נמצאה הוראה לשוויון בשאריות.',
+    defHe: 'אם לשתי רשימות או יותר יש מודד רשימה זהה בדיוק על המנדט הבא, ועדת הבחירות המרכזית עורכת הגרלה (סעיף 81(ד)(2)). כך גם ב־1949. בחוק של 1951–1969 לא נמצאה הוראה לשוויון בשאריות.',
     defEn: 'If two or more lists have exactly equal quotients for the next seat, the Central Elections Committee draws lots (section 81(d)(2)); the 1949 ordinance did the same. No rule for equal remainders was found in the 1951–1969 law.',
     linkHe: L.s81, linkEn: E.seats,
     sources: [
@@ -422,7 +422,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   // ---- where and how people vote ----
   {
     id: 'envelopes', nameHe: 'מעטפות כפולות (חיצוניות)', nameEn: 'Double envelopes', level: 'simple', provenance: 'sourced',
-    defHe: 'הסדר שמאפשר לקבוצות מסוימות להצביע מחוץ לקלפי שבה הן רשומות, למשל חיילים ושוטרים, מאושפזים, אסירים, אנשים המוגבלים בניידות, נשים במקלטים ועובדי מדינה בחו"ל. הפתק נכנס למעטפה אנונימית בתוך מעטפה חיצונית מזוהה, והקולות נספרים בנפרד. בקובצי התוצאות הם מרוכזים מחוץ ליישובים, ולכן שיעור ההצבעה ביישוב אינו כולל אותם.',
+    defHe: 'הסדר שמאפשר לקבוצות מסוימות להצביע מחוץ לקלפי שבה הן רשומות, למשל חיילים ושוטרים, מאושפזים, אסירים, אנשים המוגבלים בניידות, נשים במקלטים ועובדי מדינה בחו״ל. הפתק נכנס למעטפה אנונימית בתוך מעטפה חיצונית מזוהה, והקולות נספרים בנפרד. בקובצי התוצאות הם מרוכזים מחוץ ליישובים, ולכן שיעור ההצבעה ביישוב אינו כולל אותם.',
     defEn: 'An arrangement letting certain groups vote away from their own polling station, such as soldiers and police, hospital patients, prisoners, people with limited mobility, women in shelters and civil servants abroad. The slip goes in an anonymous envelope inside an outer envelope bearing the voter’s details, and these votes are counted centrally. Results files group them outside any locality, so locality turnout excludes them.',
     linkHe: H.electionDay, linkEn: E.invalid,
     sources: [
@@ -444,7 +444,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'polling-station', nameHe: 'קלפי', nameEn: 'Polling station', level: 'simple', provenance: 'sourced',
-    defHe: 'המקום שבו מצביעים. שטח המדינה מחולק לאזורי קלפי ממוספרים, כיום בדרך כלל עד 800 בוחרים באזור (ועדת הבחירות המרכזית רשאית לאשר עד 900; ב-1949: עד 1,000, ובאישורה עד 1,500), ובכל אזור קלפי אחת, ובשעת הצורך שתיים. כל בוחר רשום לקלפי מסוימת לפי מענו. הספירה נעשית בכל קלפי מיד בתום ההצבעה.',
+    defHe: 'המקום שבו מצביעים. שטח המדינה מחולק לאזורי קלפי ממוספרים, כיום בדרך כלל עד 800 בוחרים באזור (ועדת הבחירות המרכזית רשאית לאשר עד 900; ב־1949: עד 1,000, ובאישורה עד 1,500), ובכל אזור קלפי אחת, ובשעת הצורך שתיים. כל בוחר רשום לקלפי מסוימת לפי מענו. הספירה נעשית בכל קלפי מיד בתום ההצבעה.',
     defEn: 'The place where people vote. The country is divided into numbered polling areas, today normally of up to 800 voters (the Central Elections Committee may approve up to 900; in 1949, 1,000, or 1,500 with its approval), each with one ballot box, or a second where needed. Every voter is assigned to one station by address. Votes are counted at each station as soon as voting ends.',
     linkHe: H.electionDay, linkEn: E.electionDay,
     sources: [
@@ -557,7 +557,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'government-formation', nameHe: 'הרכבת הממשלה', nameEn: 'Government formation', level: 'simple', provenance: 'sourced',
-    defHe: 'אחרי פרסום התוצאות הנשיא מתייעץ עם נציגי הסיעות ומטיל על חבר כנסת את התפקיד להרכיב ממשלה. יש לו 28 ימים ועוד ארכה של עד 14. הממשלה מכוננת כשהכנסת מביעה בה אמון. אם כל הניסיונות נכשלים, נערכות בחירות חדשות. אלה הכללים כיום; ב-1996, ב-1999 וב-2001 נבחר ראש הממשלה ישירות בידי הבוחרים.',
+    defHe: 'אחרי פרסום התוצאות הנשיא מתייעץ עם נציגי הסיעות ומטיל על חבר כנסת את התפקיד להרכיב ממשלה. יש לו 28 ימים ועוד ארכה של עד 14. הממשלה מכוננת כשהכנסת מביעה בה אמון. אם כל הניסיונות נכשלים, נערכות בחירות חדשות. אלה הכללים כיום; ב־1996, ב־1999 וב־2001 נבחר ראש הממשלה ישירות בידי הבוחרים.',
     defEn: 'After the results are published, the President consults the factions and asks one Knesset member to form a government, with 28 days plus up to 14 more. The government takes office once the Knesset votes confidence in it. If every attempt fails, new elections are held. These are today’s rules; in 1996, 1999 and 2001 the voters elected the Prime Minister directly.',
     linkHe: H.headOfState, linkEn: E.formation,
     sources: [
@@ -601,7 +601,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   // ---- the app's own concepts ----
   {
     id: 'proportional-representation', nameHe: 'ייצוג יחסי', nameEn: 'Proportional representation', level: 'simple', provenance: 'sourced',
-    defHe: 'שיטה שבה כל רשימה מקבלת מושבים בקירוב לפי חלקה בקולות: כ-10% מהקולות מקנים כ-10% מהמושבים. אחוז החסימה ושיטת חלוקת העודפים מרחיקים מעט את התוצאה מיחסיות מלאה. "ייצוג יחסי טהור" באפליקציה הוא תרחיש ניסיוני בלי חסימה ובלי הסכמים.',
+    defHe: 'שיטה שבה כל רשימה מקבלת מנדטים בקירוב לפי חלקה בקולות: כ־10% מהקולות מקנים כ־10% מהמנדטים. אחוז החסימה ושיטת חלוקת העודפים מרחיקים מעט את התוצאה מיחסיות מלאה. "ייצוג יחסי טהור" באפליקציה הוא תרחיש ניסיוני בלי חסימה ובלי הסכמים.',
     defEn: 'A system in which each list wins seats roughly in line with its vote share: about 10% of the votes gives about 10% of the seats. The threshold and the remainder method move the result slightly away from exact proportionality. The app’s “pure proportional representation” card is an experimental scenario with no threshold and no agreements.',
     linkHe: H.methods, linkEn: E.knesset101,
     sources: [
@@ -613,7 +613,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'historical-rules', nameHe: 'כללים היסטוריים', nameEn: 'Historical rules', level: 'standard', provenance: 'app',
-    defHe: 'מצב שבו האפליקציה אוכפת את חוק הבחירות שחל באותן בחירות (מספר המושבים, אחוז החסימה, שיטת העודפים, הסכמי העודפים ומגבלת המחצית). אפשר לשנות קולות ורשימות, אבל לא את השיטה עצמה.',
+    defHe: 'מצב שבו האפליקציה אוכפת את חוק הבחירות שחל באותן בחירות (מספר המנדטים, אחוז החסימה, שיטת העודפים, הסכמי העודפים ומגבלת המחצית). אפשר לשנות קולות ורשימות, אבל לא את השיטה עצמה.',
     defEn: 'The mode in which the app enforces the election law in force for that election: number of seats, threshold, remainder method, surplus agreements and the half-seats cap. You can change votes and lists, but not the system itself.',
     linkHe: L.s81, linkEn: E.seats,
     sources: [
@@ -622,7 +622,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'experimental-rules', nameHe: 'כללים ניסיוניים', nameEn: 'Experimental rules', level: 'simple', provenance: 'app',
-    defHe: 'מצב שבו אפשר לשנות את שיטת הבחירות עצמה, למשל אחוז החסימה, שיטת חלוקת המושבים או מספר הרשימות בהסכם. התוצאה היא שיטה חלופית ולא תוצאה אפשרית לפי החוק בישראל.',
+    defHe: 'מצב שבו אפשר לשנות את שיטת הבחירות עצמה, למשל אחוז החסימה, שיטת חלוקת המנדטים או מספר הרשימות בהסכם. התוצאה היא שיטה חלופית ולא תוצאה אפשרית לפי החוק בישראל.',
     defEn: 'The mode in which you may change the electoral system itself, such as the threshold, the seat-allocation method or how many lists an agreement may join. Results describe an alternative system, not a legally possible Israeli result.',
     linkHe: H.methods, linkEn: E.methods,
     sources: [
@@ -630,7 +630,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
   },
   {
-    id: 'seat-security', nameHe: 'עד כמה מנדט בטוח', nameEn: 'Seat security', level: 'standard', provenance: 'app',
+    id: 'seat-security', nameHe: 'ביטחון המנדטים', nameEn: 'Seat safety', level: 'standard', provenance: 'app',
     defHe: 'לכל רשימה: כמה קולות היא צריכה לאבד כדי לאבד מנדט, וכמה קולות נוספים דרושים למנדט הבא. המספרים מחושבים בחישוב מחדש של כל הבחירות, והם תלויים בשאלה לאן עוברים הקולות. זה איננו המודד הכללי.',
     defEn: 'For each list, how many votes it would have to lose to lose a seat, and how many more it needs for the next one. The figures come from recomputing the whole election, and they depend on where the votes move. They are not the general quota.',
     linkHe: H.seats, linkEn: E.seats,
@@ -650,7 +650,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   // ---- rule eras ----
   {
     id: 'rules-1949', nameHe: 'כללי 1949 (האספה המכוננת)', nameEn: '1949 rules (Constituent Assembly)', level: 'simple', provenance: 'sourced',
-    defHe: 'הבחירות הראשונות היו לאספה המכוננת, שהפכה לכנסת הראשונה. לא נקבע אחוז חסימה; המודד היה כל הקולות הכשרים ÷ 121, ורק רשימות שזכו במודד שלם התחרו על המושבים הנותרים, לפי קולות ÷ (מושבים + 1) בלי שברים. שוויון הוכרע בהגרלה, ולא הייתה מגבלת מחצית.',
+    defHe: 'הבחירות הראשונות היו לאספה המכוננת, שהפכה לכנסת הראשונה. לא נקבע אחוז חסימה; המודד היה כל הקולות הכשרים ÷ 121, ורק רשימות שזכו במודד שלם התחרו על המנדטים הנותרים, לפי קולות ÷ (מנדטים + 1) בלי שברים. שוויון הוכרע בהגרלה, ולא הייתה מגבלת מחצית.',
     defEn: 'The first election chose the Constituent Assembly, which became the First Knesset. There was no percentage threshold; the quota was all valid votes ÷ 121, and only lists with a whole quota competed for the remaining seats, by votes ÷ (seats + 1) with fractions dropped. Ties went to a lottery, and there was no half-seats cap.',
     linkHe: H.y1949, linkEn: E.y1949,
     sources: [
@@ -661,7 +661,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'candidate-cap-1977', nameHe: 'הגבלה למספר המועמדים (1977)', nameEn: 'Candidate cap (1977)', level: 'expert', provenance: 'sourced',
-    defHe: 'ב-1977 רשימה של מועמד יחיד (פלאטו שרון) קיבלה קולות ליותר ממנדט אחד אך זכתה במנדט אחד, ושאר המנדטים חולקו לרשימות אחרות. האפליקציה משחזרת זאת בהגבלת המנדטים למספר המועמדים. בהכרעת הכנסת בערעור מ-1 בנובמבר 1977 תועד שהוועדה הגבילה את הרשימה למנדט אחד בחלוקה הראשונה, חילקה 114 מנדטים ואז שישה מנדטים עודפים לפי סעיף 81(ד).',
+    defHe: 'ב־1977 רשימה של מועמד יחיד (פלאטו שרון) קיבלה קולות ליותר ממנדט אחד אך זכתה במנדט אחד, ושאר המנדטים חולקו לרשימות אחרות. האפליקציה משחזרת זאת בהגבלת המנדטים למספר המועמדים. בהכרעת הכנסת בערעור מ־1 בנובמבר 1977 תועד שהוועדה הגבילה את הרשימה למנדט אחד בחלוקה הראשונה, חילקה 114 מנדטים ואז שישה מנדטים עודפים לפי סעיף 81(ד).',
     defEn: 'In 1977 a one-candidate list (Flatto-Sharon) won enough votes for more than one seat but received one, and the remaining seat went elsewhere. The app reproduces this by capping a list’s seats at its number of candidates. The Knesset’s 1 November 1977 appeal determination documents the CEC’s initial one-seat cap: 114 seats were allocated initially, then six surplus seats under section 81(d).',
     linkHe: H.y1977, linkEn: E.y1977,
     sources: [

@@ -143,7 +143,7 @@ function TurnoutHistory({ current }: { current: ElectionId }) {
   const every = Math.max(1, Math.ceil(30 / slot));
   const tick = (i: number) => i === n - 1 || (i % every === 0 && n - 1 - i >= every);
   const go = (i: number) => { if (rows[i].id !== current) void openElection(rows[i].id as ElectionId); };
-  const name = (t: ElectionTotalsRow) => { const e = index.find((x) => x.id === t.id); return e ? `${electionWhen(t, lang)} · ${lang === 'he' ? `הכנסת ה-${e.knesset}` : `Knesset ${e.knesset}`}` : electionWhen(t, lang); };
+  const name = (t: ElectionTotalsRow) => { const e = index.find((x) => x.id === t.id); return e ? `${electionWhen(t, lang)} · ${lang === 'he' ? `הכנסת ה־${e.knesset}` : `Knesset ${e.knesset}`}` : electionWhen(t, lang); };
   const label = (i: number) => `${name(rows[i])}: ${L('eligible voters', 'בעלי זכות בחירה')} ${fmtInt(rows[i].registered)}, ${L('turnout', 'הצבעה')} ${fmtPct(rows[i].votesCast, rows[i].registered, digits)}`;
   const columns = (chart: 'reg' | 'pct') => rows.map((t, i) => <rect key={t.id} className="tn-hit" x={ml + i * slot} y={0} width={slot} height={top + H + axisH}
     onPointerEnter={(e) => { if (e.pointerType === 'touch') setHover(i); else intent.enter(() => setHover(i)); }} onPointerLeave={(e) => { if (e.pointerType !== 'touch') intent.leave(); if (!intent.isShown) setHover((h) => (h === i ? null : h)); }} onClick={() => go(i)} data-chart={chart} />);

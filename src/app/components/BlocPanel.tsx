@@ -240,7 +240,7 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
         </ol>
         <button className="btn bp-add" onClick={addBloc}><Plus className="icon sm" aria-hidden />{L('New bloc', 'גוש חדש')}</button>
         <p className="tiny muted" style={{ marginTop: 10 }}>{s.blocSchemeId === null && schemes.length
-          ? L('Your grouping. The sourced groupings stay available under “Start from”; Undo reverses any change.', 'החלוקה שלכם. החלוקות המתועדות נשארות זמינות תחת "נקודת מוצא"; ביטול מחזיר כל שינוי.')
+          ? L('Your grouping. The sourced groupings stay available under “Copy blocs from…”; Undo reverses any change.', 'החלוקה שלכם. החלוקות המתועדות נשארות זמינות תחת "העתקת גושים מ…"; ביטול מחזיר כל שינוי.')
           : L('Editing never alters a sourced grouping: your changes become “Your grouping”. Undo reverses any change.', 'עריכה לעולם אינה משנה חלוקה מתועדת: השינויים הופכים ל"החלוקה שלכם". ביטול מחזיר כל שינוי.')}</p>
       </div>
     </aside>

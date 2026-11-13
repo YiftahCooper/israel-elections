@@ -16,7 +16,7 @@ import { runTasks } from '../analysisPool.ts';
 import type { AnalysisTask, TransferOutcome } from '../analysisTasks.ts';
 import { blocPieces, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt } from '../format.ts';
+import { fmtInt, seatsText } from '../format.ts';
 import { dispatch, useDigits } from '../store.ts';
 import { Info, NumberInput } from './ui.tsx';
 import { useChartWidth } from './Charts.tsx';
@@ -141,8 +141,8 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
         <span className="row" role="group" aria-label={L('Vote range', 'טווח קולות')} style={{ gap: 6 }}>
           <span className="small">{L('Vote range', 'טווח קולות')}</span>
           <span className="row" dir="ltr" style={{ flexWrap: 'nowrap', gap: 6 }}>
-            <NumberInput value={from} onCommit={(n) => setRange(n, to)} label={L('From', 'מ')} width={100} /><span aria-hidden="true">–</span>
-            <NumberInput value={to} onCommit={(n) => setRange(from, n)} label={L('To', 'עד')} width={100} />
+            <NumberInput value={from} onCommit={(n) => setRange(n, to)} label={L('From', 'מספר קולות מינימלי')} width={100} /><span aria-hidden="true">–</span>
+            <NumberInput value={to} onCommit={(n) => setRange(from, n)} label={L('To', 'מספר קולות מרבי')} width={100} />
           </span>
         </span>
         {custom?.id === id && <button className="btn" onClick={() => setCustom(null)} title={L('Back to the default range', 'חזרה לטווח ברירת המחדל')}>{L('Reset', 'איפוס')}</button>}
@@ -152,7 +152,7 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
         {!valid ? <span role="alert">{L('The second number must be above the first.', 'המספר השני חייב להיות גדול מהראשון.')}</span>
           : state === 'busy' ? <>{L('Calculating exactly…', 'מחשב במדויק…')} <button className="btn small" onClick={cancel}>{L('Cancel', 'ביטול')}</button></>
           : state === 'cancelled' && !current ? <>{L('Cancelled.', 'בוטל.')} <button className="btn small" onClick={() => setAgain((n) => n + 1)}>{L('Run', 'הרצה')}</button></>
-          : shown && !shown.exact ? <>{L(`Checked every ${fmtInt(shown.step)} votes`, `נבדק כל ${fmtInt(shown.step)} קולות`)} <Info title={L('Sampled range', 'טווח מדוגם')}>{L(`The range is wide, so the result was calculated every ${fmtInt(shown.step)} votes and each change was then located to the exact vote. A change that reverses within ${fmtInt(shown.step)} votes could be missed; narrow the range to 50,000 votes or less for a complete result.`, `הטווח רחב, ולכן חושב כל ${fmtInt(shown.step)} קולות וכל שינוי אותר עד הקול המדויק. שינוי שמתהפך בתוך ${fmtInt(shown.step)} קולות עלול להיעלם; צמצמו את הטווח ל-50,000 קולות או פחות לתוצאה מלאה.`)}</Info></>
+          : shown && !shown.exact ? <>{L(`Checked every ${fmtInt(shown.step)} votes`, `נבדק כל ${fmtInt(shown.step)} קולות`)} <Info title={L('Sampled range', 'טווח מדוגם')}>{L(`The range is wide, so the result was calculated every ${fmtInt(shown.step)} votes and each change was then located to the exact vote. A change that reverses within ${fmtInt(shown.step)} votes could be missed; narrow the range to 50,000 votes or less for a complete result.`, `הטווח רחב, ולכן חושב כל ${fmtInt(shown.step)} קולות וכל שינוי אותר עד הקול המדויק. שינוי שמתהפך בתוך ${fmtInt(shown.step)} קולות עלול להיעלם; צמצמו את הטווח ל־50,000 קולות או פחות לתוצאה מלאה.`)}</Info></>
           : null}
       </p>
       <div ref={box}>
@@ -166,7 +166,7 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
               const a = at(sg.from), b = at(sg.to + 1n), n = sg.seats[sid] ?? 0;
               return <rect key={k} x={a} y={y(n)} width={Math.max(1, b - a - 1)} height={150 - y(n)} fill={sl?.color} opacity={k === active ? 1 : 0.75} stroke={k === active ? 'var(--ink)' : 'none'} strokeWidth={1.5} rx={2}
                 data-seg={k} role="button" tabIndex={k === active ? 0 : -1} aria-pressed={k === active}
-                aria-label={L(`Votes ${fmtInt(sg.from)}–${fmtInt(sg.to)}: ${n} seats`, `קולות ${fmtInt(sg.from)}–${fmtInt(sg.to)}: ${n} מנדטים`)}
+                aria-label={L(`Votes ${fmtInt(sg.from)}–${fmtInt(sg.to)}: ${seatsText(n, 'en')}`, `קולות ${fmtInt(sg.from)}–${fmtInt(sg.to)}: ${seatsText(n, 'he')}`)}
                 style={{ cursor: 'pointer' }} onClick={() => setSel(k)} onKeyDown={(e) => segKey(e, k, false)}><title>{`${fmtInt(sg.from)}–${fmtInt(sg.to)}: ${n}`}</title></rect>;
             })}
             {/* where the list stands now */}
@@ -178,7 +178,7 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
           </div>
           <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')} style={{ maxHeight: 300 }}>
             <table className="tbl sweep-tbl">
-              <thead><tr><th className="n">{L('Votes from', 'קולות מ')}</th><th className="n">{L('to', 'עד')}</th><th className="n">{L('Seats', 'מנדטים')}</th><th>{L('Other lists vs now', 'רשימות אחרות לעומת עכשיו')}</th></tr></thead>
+              <thead><tr><th className="n">{L('Votes from', 'מספר קולות מינימלי')}</th><th className="n">{L('to', 'מרבי')}</th><th className="n">{L('Seats', 'מנדטים')}</th><th>{L('Other lists vs now', 'רשימות אחרות לעומת עכשיו')}</th></tr></thead>
               <tbody ref={table}>{segs.map((sg, k) => (
                 <tr key={k} className={k === active ? 'sel' : undefined} aria-current={k === nowAt || undefined} onClick={() => setSel(k)}
                   tabIndex={k === active ? 0 : -1} onKeyDown={(e) => segKey(e, k, true)}>
@@ -247,12 +247,12 @@ function ThresholdSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
         <span className="row" role="group" aria-label={L('Threshold range', 'טווח אחוזים')} style={{ gap: 6 }}>
           <span className="small">{L('Threshold range', 'טווח אחוזים')}</span>
           <span className="row" dir="ltr" style={{ flexWrap: 'nowrap', gap: 6 }}>
-            <PctInput value={lo} onCommit={setLo} label={L('From %', 'מ-%')} />%<span aria-hidden="true">–</span>
-            <PctInput value={hi} onCommit={setHi} label={L('To %', 'עד %')} />%
+            <PctInput value={lo} onCommit={setLo} label={L('From %', 'אחוז מינימלי')} />%<span aria-hidden="true">–</span>
+            <PctInput value={hi} onCommit={setHi} label={L('To %', 'אחוז מרבי')} />%
           </span>
         </span>
       </div>
-      {!out && <p className="small" role="alert">{L('Enter percentages from 0 to 100 with “to” above “from”, e.g. 1 and 5.', 'הזינו אחוזים בין 0 ל-100 שבהם "עד" גדול מ"מ", למשל 1 ו-5.')}</p>}
+      {!out && <p className="small" role="alert">{L('Enter percentages from 0 to 100 with “to” above “from”, e.g. 1 and 5.', 'הזינו אחוזים בין 0 ל־100, כשהאחוז המרבי גדול מהמינימלי, למשל 1 ו־5.')}</p>}
       {out && <ThresholdLadder s={s} r={r} lo={out.loR} hi={out.hiR} />}
       {out && (
         <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')} style={{ maxHeight: 300, marginTop: 8 }}>

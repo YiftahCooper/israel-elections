@@ -80,7 +80,7 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
   return (
     <div>
       <p className="ink2 small" style={{ marginTop: 0 }}>{L('Start from the real result', 'מתחילים מהתוצאה האמיתית')} <Info title={L('About these questions', 'על השאלות האלה')}>
-        {L('Each question starts from the real result and changes one thing; seat changes are exact. Its (i) lists the assumptions. Data: this election’s votes, agreements and rules, see ', 'כל שאלה מתחילה מהתוצאה האמיתית ומשנה דבר אחד; שינויי המנדטים מדויקים. ה-(i) שלה מפרט את ההנחות. הנתונים: הקולות, ההסכמים והכללים של הבחירות האלה, ראו ')}
+        {L('Each question starts from the real result and changes one thing; seat changes are exact. Its (i) lists the assumptions. Data: this election’s votes, agreements and rules, see ', 'כל שאלה מתחילה מהתוצאה האמיתית ומשנה דבר אחד; שינויי המנדטים מדויקים. ה־(i) שלה מפרט את ההנחות. הנתונים: הקולות, ההסכמים והכללים של הבחירות האלה, ראו ')}
         {sourcesShown ? <button type="button" className="table-action wi-src" onClick={() => setState({ tool: 'sources' })}>{L('Sources', 'מקורות')}</button> : L('Sources', 'מקורות')}.
         {L(' “Open as a scenario” loads it so you can explore further (Undo returns you).', ' "פתיחה כתרחיש" טוענת אותה להמשך חקירה (ביטול מחזיר אתכם).')}
       </Info></p>

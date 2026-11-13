@@ -1,6 +1,8 @@
 import { partyDisplayColor } from './partyDisplayColor.ts';
-import { hebrewPrefix } from './hebrewPrefix.ts';
+import { hebrewPrefix, hebrewPrefixName } from './hebrewPrefix.ts';
 import { formatDate } from './dateFormat.ts';
+import { seatsText } from './format.ts';
+import { featureLabel } from './features.ts';
 import { factLog } from '../model/actionClassification.ts';
 import { groupingName } from './groupingName.ts';
 import { englishLabel } from '../data/names.ts';
@@ -28,15 +30,15 @@ export { baselineOf } from './factionDefaults.ts';
 /** Names, glossary term and per-seat rule of every allocation method, in one place for all screens. */
 export const METHODS: Record<SimRules['remainderMethod'], { en: string; he: string; term: string; stepEn: string; stepHe: string }> = {
   'bader-ofer': { en: 'Bader–Ofer', he: 'בדר–עופר', term: 'baderofer', stepEn: 'highest votes ÷ (seats + 1)', stepHe: 'הגבוה ביותר בקולות ÷ (מנדטים + 1)' },
-  'largest-remainder': { en: 'largest remainder (Hare quota)', he: 'השארית הגדולה (מודד הייר)', term: 'largest-remainder', stepEn: 'largest remainder (votes − quota × seats)', stepHe: 'השארית הגדולה ביותר (קולות − מודד × מנדטים)' },
-  'droop': { en: 'largest remainder (Droop quota)', he: 'השארית הגדולה (מודד דרופ)', term: 'droop-quota', stepEn: 'largest remainder (votes − Droop quota × seats)', stepHe: 'השארית הגדולה ביותר (קולות − מודד דרופ × מנדטים)' },
-  'sainte-lague': { en: 'Sainte-Laguë', he: 'סנט-לגה', term: 'sainte-lague', stepEn: 'highest votes ÷ (2 × seats + 1)', stepHe: 'הגבוה ביותר בקולות ÷ (2 × מנדטים + 1)' },
-  'modified-sainte-lague': { en: 'modified Sainte-Laguë', he: 'סנט-לגה מתוקנת', term: 'modified-sainte-lague', stepEn: 'highest votes ÷ 1.4 for a first seat, then ÷ (2 × seats + 1)', stepHe: 'הגבוה ביותר בקולות ÷ 1.4 למושב הראשון, ואחר כך ÷ (2 × מנדטים + 1)' },
+  'largest-remainder': { en: 'largest remainder (Hare quota)', he: 'השארית הגדולה ביותר (מכסת הייר)', term: 'largest-remainder', stepEn: 'largest remainder (votes − quota × seats)', stepHe: 'השארית הגדולה ביותר (קולות − מודד × מנדטים)' },
+  'droop': { en: 'largest remainder (Droop quota)', he: 'השארית הגדולה ביותר (מכסת דרופ)', term: 'droop-quota', stepEn: 'largest remainder (votes − Droop quota × seats)', stepHe: 'השארית הגדולה ביותר (קולות − מכסת דרופ × מנדטים)' },
+  'sainte-lague': { en: 'Sainte-Laguë', he: 'סנט־לגה', term: 'sainte-lague', stepEn: 'highest votes ÷ (2 × seats + 1)', stepHe: 'הגבוה ביותר בקולות ÷ (2 × מנדטים + 1)' },
+  'modified-sainte-lague': { en: 'modified Sainte-Laguë', he: 'סנט־לגה המשופרת', term: 'modified-sainte-lague', stepEn: 'highest votes ÷ 1.4 for a first seat, then ÷ (2 × seats + 1)', stepHe: 'הגבוה ביותר בקולות ÷ 1.4 למנדט הראשון, ואחר כך ÷ (2 × מנדטים + 1)' },
   'dhondt': { en: 'D’Hondt', he: 'ד׳הונדט', term: 'dhondt', stepEn: 'highest votes ÷ (seats + 1)', stepHe: 'הגבוה ביותר בקולות ÷ (מנדטים + 1)' },
 };
 /** The method in force, with 1949's highest-averages rule (only lists with a whole-quota seat compete) named as such. */
 export function methodOf(rules: Pick<SimRules, 'remainderMethod'> & { remainderRequiresInitialSeat?: boolean }) {
-  if (rules.remainderMethod === 'bader-ofer' && rules.remainderRequiresInitialSeat) return { ...METHODS['bader-ofer'], en: 'highest averages', he: 'הממוצע הגבוה', term: 'highest-averages' };
+  if (rules.remainderMethod === 'bader-ofer' && rules.remainderRequiresInitialSeat) return { ...METHODS['bader-ofer'], en: 'highest averages', he: 'הממוצע הגדול ביותר', term: 'highest-averages' };
   return METHODS[rules.remainderMethod];
 }
 const METHOD = Object.fromEntries(Object.entries(METHODS).map(([k, v]) => [k, [v.en, v.he]])) as Record<SimRules['remainderMethod'], [string, string]>;
@@ -47,12 +49,12 @@ export function ruleChanges(s: Scenario, lang: Lang): string[] {
   const he = lang === 'he';
   const out: string[] = [];
   const onOff = (v: boolean) => (he ? (v ? 'פעילה' : 'כבויה') : v ? 'on' : 'off');
-  if (r.seats !== law.seats) out.push(he ? `${r.seats} מושבים (בחוק: ${law.seats})` : `${r.seats} seats (law: ${law.seats})`);
+  if (r.seats !== law.seats) out.push(he ? `${r.seats} מנדטים (בחוק: ${law.seats})` : `${r.seats} seats (law: ${law.seats})`);
   if (Number(r.thresholdPct) !== Number(law.thresholdPct)) out.push(he ? `אחוז חסימה ${r.thresholdPct}% (בחוק: ${law.thresholdPct}%)` : `threshold ${r.thresholdPct}% (law: ${law.thresholdPct}%)`);
   // the law's method by the name the app gives it (1949: highest averages, not Bader–Ofer)
   if (r.remainderMethod !== law.remainderMethod) out.push(he ? `חלוקת עודפים: ${METHOD[r.remainderMethod][1]} (בחוק: ${methodOf(law).he})` : `remainder seats by ${METHOD[r.remainderMethod][0]} (law: ${methodOf(law).en})`);
   if (Boolean(r.remainderRequiresInitialSeat) !== Boolean(law.remainderRequiresInitialSeat)) out.push(he ? `עודפים ${r.remainderRequiresInitialSeat ? 'רק' : 'גם'} לרשימות ${r.remainderRequiresInitialSeat ? 'עם' : 'בלי'} מודד שלם` : `remainder seats ${r.remainderRequiresInitialSeat ? 'only for' : 'also for'} lists ${r.remainderRequiresInitialSeat ? 'with' : 'without'} a whole quota`);
-  if ((r.quotaSeatOffset ?? 0) !== (law.quotaSeatOffset ?? 0)) out.push(he ? (r.quotaSeatOffset ? 'המודד מחולק במושבים ועוד אחד' : 'המודד מחולק במספר המושבים') : (r.quotaSeatOffset ? 'quota divided by seats plus one' : 'quota divided by the seats'));
+  if ((r.quotaSeatOffset ?? 0) !== (law.quotaSeatOffset ?? 0)) out.push(he ? (r.quotaSeatOffset ? 'המודד: הקולות חלקי מספר המנדטים ועוד אחד' : 'המודד: הקולות חלקי מספר המנדטים') : (r.quotaSeatOffset ? 'quota: votes divided by the seats plus one' : 'quota: votes divided by the seats'));
   if (r.quotaRounding !== law.quotaRounding) out.push(r.quotaRounding === 'exact' ? (he ? 'מודד ללא עיגול' : 'quota not rounded down') : (he ? 'מודד מעוגל כלפי מטה' : 'quota rounded down'));
   if (r.majorityCap !== law.majorityCap) out.push(he ? `מגבלת מחצית המנדטים ${onOff(r.majorityCap)}` : `half-seats cap ${onOff(r.majorityCap)}`);
   if (r.maxAgreementSize !== law.maxAgreementSize) out.push(he ? `הסכמי עודפים של עד ${r.maxAgreementSize} רשימות` : `surplus agreements of up to ${r.maxAgreementSize} lists`);
@@ -84,8 +86,8 @@ export function referenceLabel(reference: Pick<Scenario, 'name'> | null, lang: L
     name,
     since: he ? hebrewPrefix('מ', name) : `from ${reference ? name : 'the official result'}`,
     at: reference ? (he ? `בתרחיש ${name}` : `in ${name}`) : he ? 'בפועל' : 'officially',
-    more: he ? ` יותר מאשר ${hebrewPrefix('ב', name)}` : ` more than ${reference ? name : 'the official result'}`,
-    fewer: he ? ` פחות מאשר ${hebrewPrefix('ב', name)}` : ` fewer than ${reference ? name : 'the official result'}`,
+    more: he ? ` יותר מאשר ${reference ? hebrewPrefix('ב', name) : hebrewPrefixName('ב', name)}` : ` more than ${reference ? name : 'the official result'}`,
+    fewer: he ? ` פחות מאשר ${reference ? hebrewPrefix('ב', name) : hebrewPrefixName('ב', name)}` : ` fewer than ${reference ? name : 'the official result'}`,
     seats: reference ? (he ? `מנדטים בתרחיש ${name}` : `Seats in ${name}`) : he ? 'מנדטים בתוצאה הרשמית' : 'Official seats',
   };
 }
@@ -127,7 +129,7 @@ export function scenarioIssues(s: Scenario, r: AllocationResult): ScenarioIssue[
     const sl = s.lists.find((x) => x.id === l.id)!;
     // an unavailable or truncated roster is unknown beyond what is listed, not short of candidates
     const n = seatedOrder(sl).length;
-    if (l.seats > n && !sl.rosterUnavailable && !sl.rosterTruncated) out.push({ level: 'error', en: `${listLabel(sl, 'en')} wins ${l.seats} seats but has only ${n} candidates; ${l.seats - n} seat(s) would stay vacant.`, he: `${sl.shortHe} זוכה ב-${l.seats} מנדטים אך יש בה רק ${n} מועמדים; ${l.seats - n} מושבים יישארו ריקים.` });
+    if (l.seats > n && !sl.rosterUnavailable && !sl.rosterTruncated) out.push({ level: 'error', en: `${listLabel(sl, 'en')} wins ${seatsText(l.seats, 'en')} but has only ${n === 1 ? '1 candidate' : `${n} candidates`}; ${l.seats - n === 1 ? '1 seat' : `${l.seats - n} seats`} would stay vacant.`, he: `${sl.shortHe} זוכה ${hebrewPrefix('ב', seatsText(l.seats, 'he'))} אך יש בה רק ${n === 1 ? 'מועמד אחד' : `${n} מועמדים`}; ${l.seats - n === 1 ? 'מושב אחד יישאר ריק' : `${l.seats - n} מושבים יישארו ריקים`}.` });
   }
   const letters = new Map<string, number>();
   for (const l of s.lists) letters.set(l.letters, (letters.get(l.letters) ?? 0) + 1);
@@ -175,19 +177,19 @@ export function warningText(w: EngineWarning, s: Scenario, lang: Lang): string {
       const names = (d.cappedIds as string[]).map(nm).join(he ? ' ו' : ' and ');
       return he ? `מספר המועמדים הגביל את המנדטים של ${names} ושינה את החלוקה. ההגבלה ההיסטורית של 1977 מתועדת; החלתה בתרחיש ששונה היא הסקה של האפליקציה.` : `Candidate counts limited the seats of ${names} and changed the allocation. The historical 1977 cap is documented; applying it to this changed scenario is an app inference.`;
     }
-    case 'unfilled-seats': return he ? `${nm(String(d.list))}: ${d.seats} מנדטים ו־${d.candidates} מועמדים. ההליך של תקופה זו למושבים שלא ניתן לאייש אינו ממודל.` : `${nm(String(d.list))}: ${d.seats} seats and ${d.candidates} candidates. This era’s procedure for unfilled seats is not modelled.`;
+    case 'unfilled-seats': return he ? `${nm(String(d.list))}: ${seatsText(Number(d.seats), 'he')} ו${Number(d.candidates) === 1 ? 'מועמד אחד' : `־${d.candidates} מועמדים`}. ההליך של תקופה זו למושבים שלא ניתן לאייש אינו ממודל.` : `${nm(String(d.list))}: ${seatsText(Number(d.seats), 'en')} and ${Number(d.candidates) === 1 ? '1 candidate' : `${d.candidates} candidates`}. This era’s procedure for unfilled seats is not modelled.`;
     case 'lottery-required': {
       const ids = (d.ids as string[] | undefined) ?? [];
       const names = ids.map((u) => { const a = s.agreements.find((x) => x.id === u); return a ? a.members.map(nm).join('+') : nm(u); }).join(he ? ' ו' : ' and ');
-      if (!tieAffectsSeats(s, w)) return he ? `שוויון מדויק בין ${names} קובע רק את סדר חלוקת המושבים: כל תוצאה אפשרית נותנת אותם מנדטים בדיוק.` : `An exact tie between ${names} only decides the order in which seats are awarded: every possible outcome gives exactly the same seats.`;
-      if (d.tiePolicy === 'unspecified') return he ? `שוויון מדויק בין ${names}: במקורות שנבדקו לא אותר הליך הכרעה לתקופה זו; מוצגת תוצאה משוערת שניתן לשנות. ניתן לבחור תוצאה בלשונית "איך חולקו המנדטים".` : `Exact tie between ${names}: the inspected sources do not establish this era’s tie procedure; a provisional scenario outcome is shown. You can choose one in the “How the seats were allocated” tab.`;
-      return he ? `שוויון מדויק בין ${names}: החוק מחייב הגרלה של ועדת הבחירות. בחרו את תוצאת ההגרלה בלשונית "איך חולקו המנדטים".` : `Exact tie between ${names}: the law requires a CEC lottery. Choose the outcome in the “How the seats were allocated” tab.`;
+      if (!tieAffectsSeats(s, w)) return he ? `שוויון מדויק בין ${names} קובע רק את סדר חלוקת המנדטים: כל תוצאה אפשרית נותנת אותם מנדטים בדיוק.` : `An exact tie between ${names} only decides the order in which seats are awarded: every possible outcome gives exactly the same seats.`;
+      if (d.tiePolicy === 'unspecified') return he ? `שוויון מדויק בין ${names}: במקורות שנבדקו לא אותר הליך הכרעה לתקופה זו; מוצגת תוצאה משוערת שניתן לשנות. ניתן לבחור תוצאה בלשונית "${featureLabel('walk')[1]}".` : `Exact tie between ${names}: the inspected sources do not establish this era’s tie procedure; a provisional scenario outcome is shown. You can choose one in the “${featureLabel('walk')[0]}” tab.`;
+      return he ? `שוויון מדויק בין ${names}: החוק מחייב הגרלה של ועדת הבחירות. בחרו את תוצאת ההגרלה בלשונית "${featureLabel('walk')[1]}".` : `Exact tie between ${names}: the law requires a CEC lottery. Choose the outcome in the “${featureLabel('walk')[0]}” tab.`;
     }
-    case 'no-qualifying-lists': return he ? 'אף רשימה לא עברה את אחוז החסימה, ולכן אי אפשר לחלק מושבים.' : 'No list passed the threshold, so no seats can be allocated.';
-    case 'zero-quota': return he ? 'יש פחות קולות משתתפים ממושבים, ולכן המודד השלם הוא 0; נעשה שימוש במודד המדויק (לא מעוגל).' : 'There are fewer qualifying votes than seats, so the whole-number quota is 0; the exact (unrounded) quota is used.';
-    case 'quota-over-allocation': return he ? 'חישוב המודד נותן יותר מושבים מהקיים. ההליך המשפטי למצב זה לא הוברר; המודד המדויק משמש כחלופה בהדמיה.' : 'The quota calculation gives more seats than are available. The legal procedure for this case is unresolved; the exact quota is a simulation fallback.';
-    case 'seats-unallocatable': return he ? 'לא ניתן היה לחלק את כל המושבים: אף רשימה אינה זכאית למושב נוסף לפי הכללים הנבחרים.' : 'Not every seat could be allocated: no list is eligible for a further seat under the chosen rules.';
-    case 'internal-loss': return he ? `${nm(String(d.list))} מקבלת פחות מושבים ממה שהמודד השלם שלה לבדה היה נותן, כי סעיף 82(ב) מחלק מחדש את מושבי הצמד מתחילה.` : `${nm(String(d.list))} ends with fewer seats than its own whole quota, because section 82(b) re-divides the pair's seats from scratch.`;
+    case 'no-qualifying-lists': return he ? 'אף רשימה לא עברה את אחוז החסימה, ולכן אי אפשר לחלק מנדטים.' : 'No list passed the threshold, so no seats can be allocated.';
+    case 'zero-quota': return he ? 'יש פחות קולות משתתפים ממנדטים, ולכן המודד השלם הוא 0; נעשה שימוש במודד המדויק (לא מעוגל).' : 'There are fewer qualifying votes than seats, so the whole-number quota is 0; the exact (unrounded) quota is used.';
+    case 'quota-over-allocation': return he ? 'חישוב המודד נותן יותר מנדטים מהקיימים. ההליך המשפטי למצב זה לא הוברר; המודד המדויק משמש כחלופה בהדמיה.' : 'The quota calculation gives more seats than are available. The legal procedure for this case is unresolved; the exact quota is a simulation fallback.';
+    case 'seats-unallocatable': return he ? 'לא ניתן היה לחלק את כל המנדטים: אף רשימה אינה זכאית למנדט נוסף לפי הכללים הנבחרים.' : 'Not every seat could be allocated: no list is eligible for a further seat under the chosen rules.';
+    case 'internal-loss': return he ? `${nm(String(d.list))} מקבלת פחות מנדטים ממה שהמודד השלם שלה לבדה היה נותן, כי סעיף 82(ב) מחלק מחדש את מושבי הצמד מתחילה.` : `${nm(String(d.list))} ends with fewer seats than its own whole quota, because section 82(b) re-divides the pair's seats from scratch.`;
     case 'agreement-rule-departure': return he ? 'הסכם של יותר משתי רשימות אינו מותר לפי סעיף 67(א); הוא מחושב כאן ככלל ניסיוני.' : 'An agreement of more than two lists is not allowed by section 67(a); it is computed here as an experimental rule.';
   }
 }
@@ -299,7 +301,7 @@ export function groupingLabel(s: Scenario, lang: Lang): string {
 }
 export function majorityText(n: number, total: number, lang: Lang): string {
   const m = Math.floor(total / 2) + 1;
-  return lang === 'he' ? `${n} / ${total} · ${n < m ? `חסרים ${m-n} ל-${m}` : `${n-m} מעל ${m}`}`
+  return lang === 'he' ? `${n} / ${total} · ${n < m ? `חסרים ${m-n} ל־${m}` : `${n-m} מעל ${m}`}`
     : `${n} / ${total} · ${n < m ? `${m-n} short of ${m}` : `${n-m} above ${m}`}`;
 }
 
@@ -404,7 +406,7 @@ export function editPathLabel(s: Scenario, path: EditPath, lang: Lang, fallback?
   if(path[0]==='parts')return PARTS[path[1] as Part]?.[lang]??'';
   const names: Record<string, [string, string]> = {
     description: ['Description', 'תיאור'],
-    lists: ['Lists', 'רשימות'], votes: ['Votes', 'קולות'], nameHe: ['Full name', 'שם מלא'], shortHe: ['Short Hebrew name', 'שם קצר בעברית'], shortEn: ['English name', 'שם באנגלית'], letters: ['Ballot letters', 'אותיות הרשימה'], color: ['Colour', 'צבע'], bloc: ['Bloc membership', 'שיוך לגוש'], blocs: ['Blocs', 'גושים'], nameEn: ['English name', 'שם באנגלית'], candidates: ['Candidates', 'מועמדים'], agreements: ['Agreements', 'הסכמי עודפים'], rules: ['Rules', 'כללים'], registered: ['Registered voters', 'בעלי זכות בחירה'], invalid: ['Invalid ballots', 'קולות פסולים'], withdrawn: ['Withdrawal', 'פרישה'], customGroupingName: ['Grouping name', 'שם החלוקה'], blocSchemeId: ['Grouping', 'חלוקה'], partyBlocs: ['Party membership', 'שיוך מפלגות'], candidateBlocs: ['Member membership', 'שיוך חברים'], factionSplits: ['Faction splits', 'פיצולי סיעות'], coalition: ['Coalition choices', 'בחירת קואליציה'], mode: ['Rule mode', 'מצב כללים'], seats: ['Seats', 'מנדטים'], quotaRounding: ['Quota rounding', 'עיגול המודד'], remainderMethod: ['Remainder method', 'שיטת חלוקת העודפים'], majorityCap: ['Half-seats cap', 'מגבלת מחצית המושבים'], maxAgreementSize: ['Agreement size', 'גודל הסכם'], agreementRequiresAllQualify: ['Agreement threshold condition', 'תנאי החסימה בהסכם'], quotaSeatOffset: ['Quota divisor offset', 'תוספת למחלק המודד'], remainderRequiresInitialSeat: ['Remainder needs a quota seat', 'עודפים מחייבים מנדט במודד'], agreementRequiresInitialSeat: ['Agreement needs a quota seat', 'הסכם מחייב מנדט במודד'], quotientRounding: ['Quotient rounding', 'עיגול המודדים'], largestRemainderRepeat: ['Repeated remainder seats', 'מנדטי שארית חוזרים'], tiePolicy: ['Tie procedure', 'הכרעה בשוויון'], seatsCappedAtCandidates: ['Candidate seat cap', 'מגבלת מושבים לפי מועמדים'], thresholdPct: ['Threshold', 'אחוז החסימה'], lotteryWinners: ['Lottery', 'הגרלה'], sponsorsHe: ['Sponsors', 'מגישים'], members: ['Members', 'חברות'], enabled: ['Enabled', 'בתוקף'], originIds: ['Origins', 'מקור'], heldVotes: ['Held votes', 'קולות מוחזקים'], parties: ['Parties', 'מפלגות'], in: ['In', 'בפנים'], support: ['Outside support', 'תמיכה מבחוץ'], abstain: ['Abstains by arrangement', 'נמנעת בהסדר'], out: ['Out', 'בחוץ'],
+    lists: ['Lists', 'רשימות'], votes: ['Votes', 'קולות'], nameHe: ['Full name', 'שם מלא'], shortHe: ['Short Hebrew name', 'שם קצר בעברית'], shortEn: ['English name', 'שם באנגלית'], letters: ['Ballot letters', 'אותיות הרשימה'], color: ['Colour', 'צבע'], bloc: ['Bloc membership', 'שיוך לגוש'], blocs: ['Blocs', 'גושים'], nameEn: ['English name', 'שם באנגלית'], candidates: ['Candidates', 'מועמדים'], agreements: ['Agreements', 'הסכמי עודפים'], rules: ['Rules', 'כללים'], registered: ['Registered voters', 'בעלי זכות בחירה'], invalid: ['Invalid ballots', 'קולות פסולים'], withdrawn: ['Withdrawal', 'פרישה'], customGroupingName: ['Grouping name', 'שם החלוקה'], blocSchemeId: ['Grouping', 'חלוקה'], partyBlocs: ['Party membership', 'שיוך מפלגות'], candidateBlocs: ['Member membership', 'שיוך חברים'], factionSplits: ['Faction splits', 'פיצולי סיעות'], coalition: ['Coalition choices', 'בחירת קואליציה'], mode: ['Rule mode', 'מצב כללים'], seats: ['Seats', 'מנדטים'], quotaRounding: ['Quota rounding', 'עיגול המודד'], remainderMethod: ['Remainder method', 'שיטת חלוקת העודפים'], majorityCap: ['Half-seats cap', 'מגבלת מחצית המנדטים'], maxAgreementSize: ['Agreement size', 'גודל הסכם'], agreementRequiresAllQualify: ['Agreement threshold condition', 'תנאי החסימה בהסכם'], quotaSeatOffset: ['Quota divisor offset', 'תוספת למחלק המודד'], remainderRequiresInitialSeat: ['Remainder needs a quota seat', 'עודפים מחייבים מנדט במודד'], agreementRequiresInitialSeat: ['Agreement needs a quota seat', 'הסכם מחייב מנדט במודד'], quotientRounding: ['Quotient rounding', 'עיגול המודדים'], largestRemainderRepeat: ['Repeated remainder seats', 'מנדטי שארית חוזרים'], tiePolicy: ['Tie procedure', 'הכרעה בשוויון'], seatsCappedAtCandidates: ['Candidate seat cap', 'מגבלת מנדטים לפי מועמדים'], thresholdPct: ['Threshold', 'אחוז החסימה'], lotteryWinners: ['Lottery', 'הגרלה'], sponsorsHe: ['Sponsors', 'מגישים'], members: ['Members', 'חברות'], enabled: ['Enabled', 'בתוקף'], originIds: ['Origins', 'מקור'], heldVotes: ['Held votes', 'קולות מוחזקים'], parties: ['Parties', 'מפלגות'], in: ['In', 'בפנים'], support: ['Outside support', 'תמיכה מבחוץ'], abstain: ['Abstains by arrangement', 'נמנעת בהסדר'], out: ['Out', 'בחוץ'],
   };
   const listName = (id: string) => {
     const l = s.lists.find(l => l.id === id) ?? fallback?.lists.find(l => l.id === id);

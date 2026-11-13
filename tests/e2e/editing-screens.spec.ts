@@ -75,7 +75,7 @@ test('R1: withdrawn votes stay locked while source explanations remain available
   await start(page); await page.locator('.lb-row').first().click();
   await page.getByRole('checkbox', { name: 'Withdrawn from the race' }).check();
   await expect(page.getByRole('button', { name: 'Increase Votes', exact: true })).toBeDisabled();
-  const info = page.getByRole('button', { name: 'Different counterfactuals', exact: true });
+  const info = page.getByRole('button', { name: 'Where the votes come from', exact: true });
   await info.click(); await expect(page.getByRole('tooltip')).toContainText('Taking votes');
 });
 for (const lang of ['en','he']) for (const theme of ['light','dark']) for (const width of [390,1024,1500]) test(`editing layout ${lang} ${theme} ${width}`, async ({ page }) => {

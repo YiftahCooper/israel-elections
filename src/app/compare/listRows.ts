@@ -79,7 +79,7 @@ export function refRows(work: Scenario, ref: Scenario, overrides: MatchOverride[
     const parts = right.length;
     // a split names its successors, on whichever side they are; several lists of yours in any other row ran together later
     const successors = row.group || row.tag === 'split' ? (later ? left : right).length : 0;
-    const how = successors > 1 ? (en ? `split into ${successors}` : `התפצלה ל-${successors}`) : (later ? HOW_LATER : HOW)[row.tag]?.[en ? 0 : 1] ?? '';
+    const how = successors > 1 ? (en ? `split into ${successors}` : `התפצלה ל־${successors}`) : (later ? HOW_LATER : HOW)[row.tag]?.[en ? 0 : 1] ?? '';
     const notCounted = g.flatMap(notCountedOf);
     for (const id of right) {
       const plain = same && row.tag === 'same' && left.length === 1 && right.length === 1 && names === nameOf(id) && nameOf(id) === listLabel(work.lists.find((l) => l.id === id)!, lang);

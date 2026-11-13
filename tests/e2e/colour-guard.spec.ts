@@ -24,7 +24,7 @@ for(const lang of ['en','he'])for(const theme of ['light','dark'])for(const widt
  const picker=page.locator('.scn-options .colour-picker'),input=picker.locator('input[type=color]');
  const clash=entries.find((s:any)=>s.name==='Colour A').log.findLast((a:any)=>a.type==='setIdentityColor').color;
  await input.fill(clash);await expect(input).toHaveValue(clash);
- await expect(picker.getByRole('status')).toContainText(L('Hard to tell apart from','קשה להבחין לעומת'));
+ await expect(picker.getByRole('status')).toContainText(L('Hard to tell apart from','קשה להבחין בינו לבין'));
  await picker.getByRole('button',{name:L('Colour checks','בדיקת צבעים'),exact:true}).click();
  await expect(page.getByRole('tooltip')).toContainText('CIEDE2000');await page.keyboard.press('Escape');
  // The rebuilt Settings popup and large-text layout preserve the explicit choice and its advice.
@@ -35,7 +35,7 @@ for(const lang of ['en','he'])for(const theme of ['light','dark'])for(const widt
  await page.keyboard.press('Escape');
  await expect(page.locator('html')).toHaveAttribute('data-text','large');
  await expect(input).toHaveValue(clash);
- await expect(picker.getByRole('status')).toContainText(L('Hard to tell apart from','קשה להבחין לעומת'));
+ await expect(picker.getByRole('status')).toContainText(L('Hard to tell apart from','קשה להבחין בינו לבין'));
  await page.screenshot({path:`.backup-scratch/v1c/advice-${lang}-${theme}-${width}.png`,fullPage:true});
  await picker.getByRole('button',{name:L('Use alternative','בחירת חלופה'),exact:true}).click();
  await expect(input).toBeFocused();expect(await input.inputValue()).not.toBe(clash);

@@ -9,6 +9,7 @@ import { TransferStep } from './TransferStep.tsx';
 import { applyAction } from '../../model/actions.ts';
 import { useActiveReference } from '../useActiveReference.ts';
 import { Feature } from './Feature.tsx';
+import { featureLabel } from '../features.ts';
 import { StartFrom } from './StartFrom.tsx';
 import { EditMarker } from './EditMarker.tsx';
 import { PartEdits } from './PartEdits.tsx';
@@ -27,7 +28,7 @@ import { cappedText, tieNote } from '../analysisWords.ts';
 import type { AnalysisTask } from '../analysisTasks.ts';
 import { listLabel, referenceLabel, warningText } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtFrac, fmtInt, fmtRat, fmtSigned } from '../format.ts';
+import { fmtFrac, fmtInt, fmtRat, fmtSigned, seatsText } from '../format.ts';
 import { dispatch, dispatchMany, getState, useStore, previewAction, setState, toast, useFeature, useShown, useLevel, useVoteSource, useDigits, useSetting, withSource } from '../store.ts';
 import { clampTarget, deltaAction, stayingHome, toVoteSource, type SourceChoice, votesForShare, voteSourceLabel } from '../voteEdit.ts';
 import { Candidates, notSeatedReasons } from './Candidates.tsx';
@@ -161,7 +162,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
   const editTo = (target: number, from: SourceChoice = src) => {
     const cur = getState().scenario; const cl = cur?.lists.find((x) => x.id === l.id); if (!cur || !cl) return;
     const t = clampTarget(cur, cl, target, from);
-    if (t !== Math.round(target)) toast('info', L(`Limited to ${fmtInt(t)}: the chosen source cannot supply more votes.`, `הוגבל ל-${fmtInt(t)}: במקור שנבחר אין יותר קולות.`));
+    if (t !== Math.round(target)) toast('info', L(`Limited to ${fmtInt(t)}: the chosen source cannot supply more votes.`, `הוגבל ל־${fmtInt(t)}: במקור שנבחר אין יותר קולות.`));
     const a = deltaAction(cur, cl, t - cl.votes, from, histShares);
     if (a) dispatch(a);
   };
@@ -188,9 +189,9 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
       if (!res.found || res.votes === null) return notFound(res);
       const got = res.after?.lists.find((x) => x.id === l.id)?.seats ?? n;
       editTo(l.votes + (n > lr.seats ? 1 : -1) * Number(res.votes), from);
-      if (got !== n) toast('info', L(`${n} seats is not possible from this source; nearest: ${got}`, `${n} מנדטים אינם אפשריים מהמקור הזה; הקרוב ביותר: ${got}`));
+      if (got !== n) toast('info', L(`${seatsText(n, 'en')} is not possible from this source; nearest: ${got}`, `${n === 1 ? 'מנדט אחד אינו אפשרי' : `${n} מנדטים אינם אפשריים`} מהמקור הזה; הקרוב ביותר: ${got}`));
       // a count found by sampling is said where it is used, not only in the line below (c-analysis-code-06)
-      else if (!res.exact) toast('info', L(`≤ Found by sampling: fewer votes may also give ${n} seats.`, `≤ נמצא בדגימה: ייתכן שגם פחות קולות יביאו ${n} מנדטים.`));
+      else if (!res.exact) toast('info', L(`≤ Found by sampling: fewer votes may also give ${seatsText(n, 'en')}.`, `≤ נמצא בדגימה: ייתכן שגם פחות קולות יביאו ${seatsText(n, 'he')}.`));
     });
   };
   /** a boundary goal: keep the seats with the fewest votes, or sit just either side of the threshold */
@@ -265,7 +266,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
             onPreview={explainTarget} />
           {!l.withdrawn && <><div className="vote-goals">
             {lr.qualified && quick(L('Reach next seat', 'הגעה למנדט הבא'), gainTarget, true, (from) => seatsFrom(lr.seats + 1, from))}
-            {lr.seats > 0 && quick(L(`Fewest votes to keep ${lr.seats} seats`, `הכי מעט קולות לשמירת ${lr.seats} מנדטים`), margins?.lose?.exact && margins.lose.found && margins.lose.votes !== null ? l.votes - Number(margins.lose.lotteryFrom ?? margins.lose.votes) + 1 : null, true, (from) => goalFrom('lose', from))}
+            {lr.seats > 0 && quick(L(`Fewest votes to keep ${seatsText(lr.seats, 'en')}`, `הכי מעט קולות לשמירת ${seatsText(lr.seats, 'he')}`), margins?.lose?.exact && margins.lose.found && margins.lose.votes !== null ? l.votes - Number(margins.lose.lotteryFrom ?? margins.lose.votes) + 1 : null, true, (from) => goalFrom('lose', from))}
             {Number(s.rules.thresholdPct) > 0 && quick(lr.qualified ? L('Just below threshold', 'מעט מתחת לחסימה') : L('Cross the threshold', 'מעבר אחוז החסימה'), boundary === null ? null : boundary - (lr.qualified ? 1 : 0), true, (from) => goalFrom(lr.qualified ? 'disqualify' : 'qualify', from))}
             {baseList && <div style={{ visibility: baseList.votes === l.votes ? 'hidden' : undefined }}>{quick(L('Restore votes', 'שחזור הקולות'), baseList.votes)}</div>}
           </div>
@@ -295,7 +296,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
         <Feature id="voteStart"><StartFrom s={s} part="votes" /></Feature>
       </section>
 
-      {crossing !== null && Number(s.rules.thresholdPct) > 0 && <p className="small crossing">{crossing ? L('Passed the threshold', 'עברה את אחוז החסימה') : L('Below the threshold', 'מתחת לאחוז החסימה')} <Info title={L('Allocation recalculated', 'החלוקה חושבה מחדש')}>{L('Qualifying votes and every allocation were recalculated.', 'הקולות המשתתפים וכל החלוקה חושבו מחדש.')}</Info> {walkShown && <button className="table-action" onClick={() => setState({ tool: 'walk', selectedListId: null })}>{L('Walkthrough: threshold', 'שלבי החלוקה: אחוז החסימה')}</button>}</p>}
+      {crossing !== null && Number(s.rules.thresholdPct) > 0 && <p className="small crossing">{crossing ? L('Passed the threshold', 'עברה את אחוז החסימה') : L('Below the threshold', 'מתחת לאחוז החסימה')} <Info title={L('Allocation recalculated', 'החלוקה חושבה מחדש')}>{L('Qualifying votes and every allocation were recalculated.', 'הקולות המשתתפים וכל החלוקה חושבו מחדש.')}</Info> {walkShown && <button className="table-action" onClick={() => setState({ tool: 'walk', selectedListId: null })}>{L(`${featureLabel('walk')[0]}: threshold`, `${featureLabel('walk')[1]}: אחוז החסימה`)}</button>}</p>}
 
       {simple && agr && <p className="small">{L('With ', 'עם ')}{nameOf(partnerId)} · {agrStatus?.active ? L('in force', 'בתוקף') : !agr.enabled ? L('switched off', 'כבוי') : L('no effect', 'ללא השפעה')}</p>}
       <Feature id="agreements">

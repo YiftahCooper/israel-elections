@@ -23,7 +23,7 @@ for (const lang of ['en', 'he']) test(`what-if separates explanation from the ex
   await page.goto('/'); await page.locator('#tab-whatif').click();
   const row = page.locator('.wi-row').filter({ hasText: lang === 'en' ? 'Pure proportional representation' : 'ייצוג יחסי טהור' });
   await row.getByRole('button', { name: lang === 'en' ? 'Assumptions: Pure proportional representation' : 'הנחות: ייצוג יחסי טהור', exact: true }).click();
-  await expect(page.getByRole('tooltip')).toContainText(lang === 'en' ? 'Sainte-Laguë' : 'סנט-לגה');
+  await expect(page.getByRole('tooltip')).toContainText(lang === 'en' ? 'Sainte-Laguë' : 'סנט־לגה');
   await page.keyboard.press('Escape');
   await expect(row).toContainText(lang === 'en' ? 'Experimental' : 'ניסיוני');
   await row.locator('.wi-q').click();
@@ -35,11 +35,11 @@ test('Hebrew sensitivity ranges and majority counts read left to right', async (
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'he', level: 'expert', hintDismissed: true })));
   await page.goto('/'); await page.locator('#tab-sens').click();
   const panel = page.locator('#analysis-panel');
-  const from = await panel.getByRole('textbox', { name: 'מ', exact: true }).boundingBox();
-  const to = await panel.getByRole('textbox', { name: 'עד', exact: true }).boundingBox();
+  const from = await panel.getByRole('textbox', { name: 'מספר קולות מינימלי', exact: true }).boundingBox();
+  const to = await panel.getByRole('textbox', { name: 'מספר קולות מרבי', exact: true }).boundingBox();
   expect(from!.x).toBeLessThan(to!.x);
-  const lo = await panel.getByRole('textbox', { name: 'מ-%', exact: true }).boundingBox();
-  const hi = await panel.getByRole('textbox', { name: 'עד %', exact: true }).boundingBox();
+  const lo = await panel.getByRole('textbox', { name: 'אחוז מינימלי', exact: true }).boundingBox();
+  const hi = await panel.getByRole('textbox', { name: 'אחוז מרבי', exact: true }).boundingBox();
   expect(lo!.x).toBeLessThan(hi!.x);
   await expect(panel.locator('.row > .small > bdi[dir="ltr"]')).toHaveText('53 / 61');
 });

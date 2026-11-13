@@ -355,7 +355,7 @@ function SideCard({ x, picker, focused, onFocus, align }: { x: SideModel; picker
   const title = `${x.year} · ${x.name}`;
   return <section className={`cmp-card ${focused ? 'focused' : ''}`} data-side={align} data-role={x.role} style={{ borderColor: x.frame }} dir={lang === 'he' ? 'rtl' : 'ltr'} onPointerDown={onFocus} onFocus={onFocus} aria-label={title}>
     <div className="cmp-card-head">
-      <span className="cmp-card-role">{x.role === 'main' ? L('Your work', 'העבודה שלכם') : L('Compared with', 'מושווה עם')}</span>
+      <span className="cmp-card-role">{x.role === 'main' ? L('Your work', 'העבודה שלכם') : L('Compared with', 'בהשוואה ל־')}</span>
       <span className="cmp-card-election"><b>{e ? x.year : x.sc.electionId}</b> <span className="muted small">{e ? (lang === 'he' ? `הכנסת ה־${e.knesset}` : `${ordinalEn(e.knesset)} Knesset`) : ''}</span></span>
       {picker}
     </div>
@@ -366,13 +366,13 @@ function SideCard({ x, picker, focused, onFocus, align }: { x: SideModel; picker
       {changes > 0 && <span className="tiny muted">{changes === 1 ? L('1 change from the official result', 'שינוי אחד מהתוצאה הרשמית') : L(`${changes} changes from the official result`, `${changes} שינויים מהתוצאה הרשמית`)}</span>}
       <span className="cmp-card-tools">
         <button type="button" className="btn small ghost" disabled={!x.canUndo} onClick={x.undo} aria-label={L(`Undo on ${x.year}`, `ביטול ב־${x.year}`)} title={L('Undo', 'ביטול')}><Undo2 size={15} /></button>
-        <button type="button" className="btn small ghost" disabled={!x.canRedo} onClick={x.redo} aria-label={L(`Redo on ${x.year}`, `חזרה ב־${x.year}`)} title={L('Redo', 'חזרה')}><Redo2 size={15} /></button>
+        <button type="button" className="btn small ghost" disabled={!x.canRedo} onClick={x.redo} aria-label={L(`Redo on ${x.year}`, `ביצוע מחדש ב־${x.year}`)} title={L('Redo', 'ביצוע מחדש')}><Redo2 size={15} /></button>
         {(x.role === 'other' ? x.edited : changes > 0) && <button type="button" className="btn small ghost" onClick={x.startOver}>{L('Start over', 'התחלה מחדש')}</button>}
       </span>
     </div>
     {/* the other side's seats open no list: its lists are not the open scenario */}
     <div className="cmp-chamber" onClickCapture={x.role === 'other' ? (ev) => ev.stopPropagation() : undefined}><Hemicycle s={x.sc} r={x.r} reference={x.start} compact paired title={title} /></div>
-    {x.edited && <p className="tiny muted cmp-outline-key">{(x.role === 'main' ? L('Outlined: seats gained compared with its starting point', 'מתאר: מנדטים שנוספו לעומת נקודת ההתחלה') : L('Outlined: seats gained compared with the official result', 'מתאר: מנדטים שנוספו לעומת התוצאה הרשמית'))}</p>}
+    {x.edited && <p className="tiny muted cmp-outline-key">{(x.role === 'main' ? L('Outlined: seats gained compared with its starting point', 'בקו מתאר: מנדטים שנוספו לעומת נקודת ההתחלה') : L('Outlined: seats gained compared with the official result', 'בקו מתאר: מנדטים שנוספו לעומת התוצאה הרשמית'))}</p>}
   </section>;
 }
 

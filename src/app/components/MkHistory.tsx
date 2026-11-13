@@ -1,6 +1,8 @@
 // An MK's own history (owner decisions M1–M3, 9 Nov 2026): every Knesset they sat in or ran for, one row each, with
 // their place on the list, their time in that Knesset and the dated facts. Facts only, never judgements. Graphics run
 // left to right in both languages; only text mirrors.
+import { seatsText } from '../format.ts';
+import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { History, X } from 'lucide-react';
 import { useL, useLang, type Lang } from '../i18n.ts';
@@ -108,7 +110,7 @@ function summary(v: MkView, L: T, lang: Lang): string {
   const parts = [
     knessets ? L(`${servedText(v.daysServed, 'en')} in the Knesset, in ${knessets === 1 ? 'one Knesset' : `${knessets} Knessets`}`,
       `${servedText(v.daysServed, 'he')} בכנסת, ${knessets === 1 ? 'בכנסת אחת' : `ב־${knessets} כנסות`}`) : L('Elected to the 26th Knesset', g(v.female, 'נבחר לכנסת ה־26', 'נבחרה לכנסת ה־26')),
-    v.runs ? L(`on a list in ${v.runs === 1 ? 'one election' : `${v.runs} elections`}${span ? `, ${span}` : ''}`, `${v.runs === 1 ? 'ברשימה בבחירות אחת' : `ברשימות ב־${v.runs} מערכות בחירות`}${span ? `, ${span}` : ''}`) : '',
+    v.runs ? L(`on a list in ${v.runs === 1 ? 'one election' : `${v.runs} elections`}${span ? `, ${span}` : ''}`, `${v.runs === 1 ? 'ברשימה במערכת בחירות אחת' : `ברשימות ב־${v.runs} מערכות בחירות`}${span ? `, ${span}` : ''}`) : '',
   ];
   void lang;
   return parts.filter(Boolean).join(' · ');
@@ -215,7 +217,7 @@ function Places({ rank, seats, color }: { rank: number; seats: number; color: st
   const n = Math.max(rank, seats) + 1, w = 220, u = Math.min(10, w / n), h = 10, gap = u > 4 ? 1.5 : 0.5;
   const x = 1 + (rank - 1) * u + (u - gap) / 2;
   return <svg className="mk-places" width={n * u + 2} height={h + 6} viewBox={`0 0 ${n * u + 2} ${h + 6}`} direction="ltr" role="img"
-    aria-label={L(`Place ${rank}; the list won ${seats} seats`, `מקום ${rank}; הרשימה זכתה ב־${seats} מנדטים`)}>
+    aria-label={L(`Place ${rank}; the list won ${seatsText(seats, 'en')}`, `מקום ${rank}; הרשימה זכתה ${hebrewPrefix('ב', seatsText(seats, 'he'))}`)}>
     {Array.from({ length: n }, (_, i) => i < seats
       ? <rect key={i} x={1 + i * u} y={4} width={Math.max(0.8, u - gap)} height={h} fill={color} rx={u > 6 ? 1 : 0} />
       : <rect key={i} x={1 + i * u} y={4} width={Math.max(0.8, u - gap)} height={h} className="mk-empty" rx={u > 6 ? 1 : 0} />)}

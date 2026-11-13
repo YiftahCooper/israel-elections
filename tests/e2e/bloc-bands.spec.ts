@@ -12,7 +12,7 @@ for (const lang of ['he', 'en'] as const) for (const theme of ['light', 'dark'])
       if (election !== 'k26') await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
       await expect(page.locator('.chamber').first().locator('[data-seat]')).toHaveCount(120);
       for (const layout of ['hemicycle', 'blocks']) {
-        await page.getByRole('group', { name: lang === 'he' ? 'פריסה' : 'Chamber layout' }).getByRole('button', { name: layout === 'blocks' ? (lang === 'he' ? 'גושים' : 'Blocks') : (lang === 'he' ? 'קשת' : 'Arc'), exact: true }).click();
+        await page.getByRole('group', { name: lang === 'he' ? 'פריסה' : 'Chamber layout' }).getByRole('button', { name: layout === 'blocks' ? (lang === 'he' ? 'משבצות' : 'Blocks') : (lang === 'he' ? 'קשת' : 'Arc'), exact: true }).click();
         const borders = page.locator('.chamber > svg .wedge');
         expect(await borders.count()).toBeGreaterThan(0);
         for (const border of await borders.all()) {

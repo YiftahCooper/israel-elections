@@ -7,14 +7,14 @@ export function FamilyEvidence({family}:{family:Family}) {
  useEffect(()=>{let live=true;fullDefinition(family).then(f=>{if(live)setFull(f);}).catch(()=>setError(true));return()=>{live=false;};},[family]);
  if(!full)return <p role="status">{error?L('Evidence could not be loaded.','לא ניתן לטעון את הראיות.'):L('Loading evidence…','טעינת ראיות…')}</p>;
  const limitationsHe=(full.id==='haredi'||full.forkedFrom?.id==='haredi')?[
- 'נבדקו כל 26 הקבצים המקומיים, אך אין טענה לסיווג ממצה של כל רשימה קטנה. מקרים הדורשים ראיות נוספות נשארים מפורשים ולא נכללים בשקט.',
- 'ב־1949 אין מספר קולות נפרד לאגודת ישראל ולפועלי אגודת ישראל; נתון הליבה אינו ידוע ואינו אפס.',
+ 'נבדקו נתוני כל 26 מערכות הבחירות, אך לא כל רשימה קטנה סווגה. רשימות שדרושות עליהן עוד ראיות רשומות בנפרד ואינן נספרות.',
+ 'ב־1949 אין מספר קולות נפרד לאגודת ישראל ולפועלי אגודת ישראל; הקולות של המפלגות עצמן אינם ידועים, והם אינם אפס.',
  'נתוני 2026 מבוססים על התוצאות הסופיות הרשמיות של ועדת הבחירות, כפי שפורסמו ברשומות (ילקוט הפרסומים 15100, 4.11.2026).',
- 'מזהי המרכיבים הקיימים נשמרו גם כששלמות רשימת המועמדים אינה ודאית. הצעות למיפוי רשימות יחיד אינן הופכות אותן אוטומטית למרכיבים בנתוני הבחירות.',
- 'מזהי המפלגות המוצעים מציינים מיפויי הופעה חסרים, ובהם גם זהויות קנוניות שכבר קיימות, ולא בהכרח מפלגות חדשות במאגר.'
+ 'מפלגות שכבר רשומות כחלק מרשימה נשארות כך גם כשלא ברור שרשימת המועמדים שלמה. מפלגה שהוצע לקשר לרשימה אינה נוספת לנתוני הבחירות מעצם ההצעה.',
+ 'המפלגות המוצעות הן מפלגות שחסר להן קישור לרשימות שבהן הופיעו. חלקן כבר קיימות בנתונים, ולא כולן מפלגות חדשות.'
  ]:[
- 'הטיוטה נשענת על סקירת המקורות המוגדרת במחקר. הסיווג הוא פרשנות ואינו סיווג רשמי.',
- 'זהויות של רשימות קטנות וגבולות אידאולוגיים שטרם הוכרעו דורשים סקירה נוספת; הם מפורטים במקרים המוחרגים ובמחלוקות שבמרשם.'
+ 'הסיווג מבוסס על המקורות שנסקרו במחקר. הוא פרשנות, לא סיווג רשמי.',
+ 'רשימות קטנות שזהותן לא הוכרעה, ומקרי גבול מבחינה רעיונית, עוד דורשים בדיקה; הם מפורטים ברשימת המקרים שהוצאו ובמחלוקות.'
  ];
- return <div className="family-evidence"><h3>{lang==='he'?full.nameHe:full.nameEn}</h3><p>{lang==='he'?full.definitionHe:full.definition}</p><p>{L('Revision','גרסה')}: {full.revision}</p><p>{L('Selected ballots, never a demographic estimate. Whole mixed lists remain a convention, not a constituent vote split.','פתקים לרשימות נבחרות, לא אומדן דמוגרפי. הכללת רשימה מעורבת שלמה היא מוסכמה ולא פיצול קולות למרכיבים.')}</p>{citedSources(full).map(([id,s])=><p key={id}>{s.url?<a href={s.url} target="_blank" rel="noreferrer">{s.publisher??L('Source','מקור')}</a>:L('Local election record','פרסום הבחירות המקומי')}{lang==='en'&&typeof s.support==='string'&&` — ${s.support}`}</p>)}<h3>{L('Limitations','מגבלות')}</h3><ul>{(lang==='he'?limitationsHe:Array.isArray(full.limitations)?full.limitations:[]).map((s,i)=><li key={i}>{String(s)}</li>)}</ul></div>;
+ return <div className="family-evidence"><h3>{lang==='he'?full.nameHe:full.nameEn}</h3><p>{lang==='he'?full.definitionHe:full.definition}</p><p>{L('Revision','גרסה')}: {full.revision}</p><p>{L('Selected ballots, never a demographic estimate. Whole mixed lists remain a convention, not a constituent vote split.','פתקים לרשימות נבחרות, לא אומדן דמוגרפי. הכללת רשימה מעורבת שלמה היא מוסכמה ולא פיצול קולות למרכיבים.')}</p>{citedSources(full).map(([id,s])=><p key={id}>{s.url?<a href={s.url} target="_blank" rel="noreferrer">{s.publisher??L('Source','מקור')}</a>:L('Election data stored in the app','נתוני הבחירות השמורים באפליקציה')}{lang==='en'&&typeof s.support==='string'&&` — ${s.support}`}</p>)}<h3>{L('Limitations','מגבלות')}</h3><ul>{(lang==='he'?limitationsHe:Array.isArray(full.limitations)?full.limitations:[]).map((s,i)=><li key={i}>{String(s)}</li>)}</ul></div>;
 }

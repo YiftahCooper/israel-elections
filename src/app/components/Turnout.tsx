@@ -120,7 +120,7 @@ export function Turnout({ s }: { s: Scenario }) {
   const value = !d.members ? '' : d.savedId ? `saved:${d.savedId}` : d.members.type === 'sourced' ? `src:${d.members.groupId}` : d.members.type === 'voteShare' ? 'share' : 'manual';
 
   const problemText = (p: GroupProblem) => ({
-    'needs-localities': L('Needs locality results (2003 on)', 'דורש תוצאות לפי יישובים (מ-2003)'),
+    'needs-localities': L('Needs locality results (2003 on)', 'דורש תוצאות לפי יישובים (מ־2003)'),
     'no-registered': L('No registered-voter counts by locality', 'אין מספרי בעלי זכות בחירה לפי יישוב'),
     'unknown-group': L('Not defined for this election', 'לא מוגדר לבחירות אלה'),
     'other-election': L('Defined for another election', 'מוגדר לבחירות אחרות'),
@@ -225,7 +225,7 @@ export function Turnout({ s }: { s: Scenario }) {
               <span className="small">{canObserve ? L('How they vote', 'איך הם מצביעים') : L('How they vote (% per list)', 'איך הם מצביעים (% לכל רשימה)')}</span>
               {canObserve && <span className="seg" role="group" aria-label={L('How they vote', 'איך הם מצביעים')}>
                 <button type="button" aria-pressed={vote === 'observed'} onClick={() => set({ vote: 'observed' })}>{L('Like this group voted', 'כמו שהקבוצה הצביעה')}</button>
-                <button type="button" aria-pressed={vote === 'shares'} onClick={() => set({ vote: 'shares' })}>{L('My shares', 'חלוקה שלי')}</button>
+                <button type="button" aria-pressed={vote === 'shares'} onClick={() => set({ vote: 'shares' })}>{L('My shares', 'החלוקה שלכם')}</button>
               </span>}
               {vote === 'observed' && mixTotal > 0 && <div className="vg-mix" role="img" aria-label={lists.filter((l) => f.mix![s.lists.indexOf(l)] > 0).slice(0, 6).map((l) => `${listLabel(l, lang)} ${fmtPctNum(100 * f.mix![s.lists.indexOf(l)] / mixTotal, digits)}`).join(', ')}>
                 <div className="vg-bar">{[...s.lists.keys()].filter((i) => f.mix![i] / mixTotal >= 0.01).sort((a, b) => f.mix![b] - f.mix![a]).map((i) => <i key={s.lists[i].id} style={{ background: s.lists[i].color, flex: f.mix![i] }} title={`${listLabel(s.lists[i], lang)} ${fmtPctNum(100 * f.mix![i] / mixTotal, digits)}`} />)}
@@ -241,12 +241,12 @@ export function Turnout({ s }: { s: Scenario }) {
                     onChange={(e) => set({ shares: { ...(d.sharesFor && d.sharesFor !== s.electionId ? {} : d.shares), [l.id]: e.target.value }, sharesFor: s.electionId })} />%
                 </label>)}</div>
                 <p className="small ink2">{lists.length > 12 && <button type="button" className="btn small ghost" onClick={() => setShowAll(!showAll)}>{showAll ? L('Fewer lists', 'פחות רשימות') : L(`All ${lists.length} lists`, `כל ${lists.length} הרשימות`)}</button>}
-                  {shareSum > 0 && Math.abs(shareSum - 100) > 0.01 && (lang === 'he' ? <>{" סך הכול "}{percentNum(shareSum, digits)}{", מותאם ל-100%."}</> : <>{" Total "}{percentNum(shareSum, digits)}{", scaled to 100%."}</>)}</p>
+                  {shareSum > 0 && Math.abs(shareSum - 100) > 0.01 && (lang === 'he' ? <>{" סך הכול "}{percentNum(shareSum, digits)}{", מותאם ל־100%."}</> : <>{" Total "}{percentNum(shareSum, digits)}{", scaled to 100%."}</>)}</p>
               </>}
             </div>
 
             <div className="vg-result">
-              {change?.error === 'range' && <p id="vg-why" className="small bad">{L('Turnout must stay between 0% and 100%.', 'שיעור ההצבעה חייב להישאר בין 0% ל-100%.')}</p>}
+              {change?.error === 'range' && <p id="vg-why" className="small bad">{L('Turnout must stay between 0% and 100%.', 'שיעור ההצבעה חייב להישאר בין 0% ל־100%.')}</p>}
               {change?.error === 'no-split' && <p id="vg-why" className="small bad">{L('Give at least one list a share.', 'תנו חלק לרשימה אחת לפחות.')}</p>}
               {change?.error === 'too-few' && <p id="vg-why" className="small bad">{L('Some lists do not have enough votes to remove.', 'לחלק מהרשימות אין די קולות להסרה.')}</p>}
               {change && !change.error && change.delta !== 0 && <>

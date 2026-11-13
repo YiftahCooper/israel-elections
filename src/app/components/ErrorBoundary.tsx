@@ -26,9 +26,9 @@ export class ErrorBoundary extends Component<{ children: ReactNode; label: strin
         <div>
           {code
             ? <><b>{he ? `לא ניתן היה להוריד את "${this.props.label}".` : `“${this.props.label}” could not be downloaded.`}</b>{' '}
-              {he ? 'שאר היישום ממשיך לעבוד. נסו שוב, ואם זה לא עוזר, טענו מחדש את הדף.' : 'The rest of the app still works. Try again; if that does not help, reload the page.'}</>
+              {he ? 'שאר האפליקציה ממשיכה לעבוד. נסו שוב, ואם זה לא עוזר, טענו מחדש את הדף.' : 'The rest of the app still works. Try again; if that does not help, reload the page.'}</>
             : <><b>{he ? `משהו השתבש בחלק "${this.props.label}".` : `Something went wrong in “${this.props.label}”.`}</b>{' '}
-              {he ? 'שאר היישום ממשיך לעבוד; אפשר לבטל את השינוי האחרון או לנסות שוב.' : 'The rest of the app still works; undo your last change or try again.'}</>}
+              {he ? 'שאר האפליקציה ממשיכה לעבוד; אפשר לבטל את השינוי האחרון או לנסות שוב.' : 'The rest of the app still works; undo your last change or try again.'}</>}
           <div className="tiny muted mono" style={{ marginTop: 4 }}>{this.state.error.message}</div>
           <button className="btn small" style={{ marginTop: 6 }} onClick={() => { if (code) forgetFailedCode(); this.setState({ error: null }); }}>{he ? 'נסו שוב' : 'Try again'}</button>
           {code && <> <button className="btn small" style={{ marginTop: 6 }} onClick={() => location.reload()}>{he ? 'טעינה מחדש' : 'Reload'}</button></>}

@@ -31,7 +31,7 @@ for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) test(`al
       await page.keyboard.press('Escape');
     }
     for (const layout of ['hemicycle','blocks']) {
-      await page.getByRole('group',{name:lang==='he'?'פריסה':'Chamber layout'}).getByRole('button',{name:layout==='hemicycle'?(lang==='he'?'קשת':'Arc'):(lang==='he'?'גושים':'Blocks'),exact:true}).click();
+      await page.getByRole('group',{name:lang==='he'?'פריסה':'Chamber layout'}).getByRole('button',{name:layout==='hemicycle'?(lang==='he'?'קשת':'Arc'):(lang==='he'?'משבצות':'Blocks'),exact:true}).click();
       const dots=page.locator('.chamber > svg [data-component-seat]');
       const expected=ds.lists.reduce((sum:number,l:{id:string;parties?:{id:string}[];candidates:{partyId?:string}[]})=>sum+((l.parties?.length??0)>1?l.candidates.slice(0,ds.officialSeats?.[l.id]??0).filter(c=>l.parties!.some(p=>p.id===c.partyId)).length:0),0);
       await expect(dots).toHaveCount(expected);

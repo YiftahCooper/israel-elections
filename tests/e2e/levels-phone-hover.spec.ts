@@ -134,7 +134,7 @@ test.describe('phone top bar (390 × 844)', () => {
     expect((await band.boundingBox())!.height).toBeLessThanOrEqual(60);
     await expect(band.locator('.election-arrow')).toHaveCount(0);
     await expect(band.getByRole('button', { name: new RegExp(`^${L('Undo', 'ביטול')}`) })).toBeVisible();
-    await expect(band.getByRole('button', { name: new RegExp(`^${L('Redo', 'חזרה')}`) })).toBeVisible();
+    await expect(band.getByRole('button', { name: new RegExp(`^${L('Redo', 'ביצוע מחדש')}`) })).toBeVisible();
     await expect(band.getByRole('group', { name: L('Detail level', 'רמת פירוט') })).toHaveCount(0);
     const status = band.locator('.band-status');
     await expect(status).toHaveText(L('Official', 'רשמי'));

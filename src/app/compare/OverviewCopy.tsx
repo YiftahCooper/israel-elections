@@ -4,7 +4,7 @@ import { useEffect, useMemo } from 'react';
 import { allocationOf, listLabel, resultChanges } from '../derive.ts';
 import { baselineOf } from '../factionDefaults.ts';
 import { useL, useLang } from '../i18n.ts';
-import { hebrewPrefix } from '../hebrewPrefix.ts';
+import { hebrewPrefix, hebrewPrefixName } from '../hebrewPrefix.ts';
 import { baseContext, dispatch, toast, useStore } from '../store.ts';
 import { useActiveReference } from '../useActiveReference.ts';
 import { scenarioColor } from '../scenarioIdentity.ts';
@@ -52,7 +52,7 @@ export function OverviewCopy({ ask }: { ask: CopyAsk }) {
     if (!nothing || !ref) return;
     // a list with nothing in the reference to copy from: said plainly, nothing changes
     const l = s.lists.find((x) => x.id === ask.lists![0]), where = ref.same ? ref.name : ref.year, name = l ? listLabel(l, lang) : '';
-    toast('info', L(`Nothing to copy: ${name} had no list of its own in ${where}.`, `אין מה להעתיק: ${hebrewPrefix('ל', name)} לא הייתה רשימה משלה ${hebrewPrefix('ב', where)}.`));
+    toast('info', L(`Nothing to copy: ${name} had no list of its own in ${where}.`, `אין מה להעתיק: ${hebrewPrefixName('ל', name)} לא הייתה רשימה משלה ${hebrewPrefix('ב', where)}.`));
     askCopy(null);
   }, [nothing]); // eslint-disable-line react-hooks/exhaustive-deps
   if (!ref || !offer || nothing) return null;

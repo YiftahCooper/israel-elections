@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt } from '../format.ts';
-import { hebrewPrefix } from '../hebrewPrefix.ts';
+import { fmtInt, seatsText } from '../format.ts';
+import { hebrewPrefix, hebrewPrefixName } from '../hebrewPrefix.ts';
 import { SeatDelta } from '../components/SeatDelta.tsx';
 import type { RefLine as Line, RefRows } from './listRows.ts';
 
@@ -28,8 +28,8 @@ export function refLineText(line: Line, label: string, r: AllocationResult, lang
   if (line.kind === 'check') return en ? `, ${label}: to verify, ${line.names}` : `, ${label}: לבדיקה, ${line.names}`;
   const d = now(line, r) - line.seats;
   const change = d === 0 ? (en ? 'unchanged' : 'ללא שינוי') : en ? `${Math.abs(d)} ${d > 0 ? 'more' : 'fewer'}` : `${Math.abs(d)} ${d > 0 ? 'יותר' : 'פחות'}`;
-  return en ? `, ${label}: ${line.seats} seats (${change})${line.names ? `, compared with ${line.names}` : ''}${line.how ? ` ${line.how}` : ''}`
-    : `, ${label}: ${line.seats} מנדטים (${change})${line.names ? `, בהשוואה ${hebrewPrefix('ל', line.names)}` : ''}${line.how ? ` ${line.how}` : ''}`;
+  return en ? `, ${label}: ${seatsText(line.seats, 'en')} (${change})${line.names ? `, compared with ${line.names}` : ''}${line.how ? ` ${line.how}` : ''}`
+    : `, ${label}: ${seatsText(line.seats, 'he')} (${change})${line.names ? `, בהשוואה ${hebrewPrefixName('ל', line.names)}` : ''}${line.how ? ` ${line.how}` : ''}`;
 }
 
 /** "▬ 2026 ▨ 2022" above the lists, when the reference bars are drawn. */
@@ -52,6 +52,6 @@ export function RefOnly({ rows, label }: { rows: RefRows; label: string }) {
       {rows.only.map((x) => <li key={x.id}><bdi className="cmpm-only-name">{x.name}</bdi>
         <span className="muted" dir="ltr">{fmtInt(x.votes)}</span><b>{x.seats}</b></li>)}
     </ul>
-    {rows.onlySmall > 0 && <p className="tiny muted">{lang === 'he' ? `ועוד ${rows.onlySmall} רשימות קטנות (פחות מ-0.5% ובלי מנדט).` : `And ${rows.onlySmall} smaller lists (under 0.5%, no seat).`}</p>}
+    {rows.onlySmall > 0 && <p className="tiny muted">{lang === 'he' ? `ועוד ${rows.onlySmall} רשימות קטנות (פחות מ־0.5% ובלי מנדט).` : `And ${rows.onlySmall} smaller lists (under 0.5%, no seat).`}</p>}
   </details>;
 }

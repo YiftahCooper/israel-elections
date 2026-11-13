@@ -105,7 +105,7 @@ for (const lang of ['en', 'he'] as const) for (const election of ['k24', 'k25'])
     const scheme = election === 'k24' ? 'knesset-blocs-2021' : 'pre-election-blocs';
     await picker.click();
     const option = page.locator(`.choice-option[data-choice-value="${scheme}"]`);
-    const tag = lang === 'en' ? 'App' : 'יישומון';
+    const tag = lang === 'en' ? 'App' : 'של האפליקציה';
     await expect(option).toContainText(`· ${tag}`);
     await expect(option).toHaveAttribute('title', /not an official|אינה חלוקה רשמית/);
     await option.click();

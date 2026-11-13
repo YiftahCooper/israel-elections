@@ -10,7 +10,7 @@ export function ColourAdvice({value,others,onChange,rules={},id}:{value:string;o
  const alternative=nearestDistinctColour(value,others.map(x=>x.color),rules);
  const improves=alternative!==value&&colourPasses(alternative,others.map(x=>x.color),rules);
  return <span id={id} className="colour-advice" role="status">
-  <span>{clashes.length?L(`Hard to tell apart from ${clashes[0].name}`,`קשה להבחין לעומת ${clashes[0].name}`):L('Low contrast','ניגודיות נמוכה')}</span>
+  <span>{clashes.length?L(`Hard to tell apart from ${clashes[0].name}`,`קשה להבחין בינו לבין ${clashes[0].name}`):L('Low contrast','ניגודיות נמוכה')}</span>
   {improves&&<button type="button" className="btn small" onClick={()=>onChange(alternative)}><i aria-hidden style={{background:alternative}}/>{L('Use alternative','בחירת חלופה')}</button>}
   <Info title={L('Colour checks','בדיקת צבעים')}>{L('Compares colours shown together using CIEDE2000 and checks contrast against their backgrounds. Your choice is kept until you choose an alternative. Labels and outlines still identify items.','השוואת צבעים שמוצגים יחד באמצעות CIEDE2000 ובדיקת ניגודיות מול הרקע. הבחירה נשמרת עד לבחירה בחלופה. שמות ומתארים ממשיכים לזהות את הפריטים.')}</Info>
  </span>;

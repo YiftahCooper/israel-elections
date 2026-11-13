@@ -20,7 +20,7 @@ import { groupingName, appGroupingExplanation } from '../src/app/groupingName.ts
 it('marks names in both languages without changing sourced names', () => {
   const g = { nameEn: 'Comparison groups', nameHe: 'קבוצות להשוואה', appDefined: true };
   expect(groupingName(g, 'en')).toBe('Comparison groups · App');
-  expect(groupingName(g, 'he')).toBe('קבוצות להשוואה · יישומון');
+  expect(groupingName(g, 'he')).toBe('קבוצות להשוואה · של האפליקציה');
   expect(groupingName({...g, appDefined: false}, 'en')).toBe('Comparison groups');
   expect(appGroupingExplanation('en')).toContain('not an official or contemporaneous');
   expect(appGroupingExplanation('he')).toContain('אינה חלוקה רשמית');

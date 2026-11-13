@@ -4,6 +4,16 @@ import { pct, rat, toDecimal, type Rational } from '../engine/rational.ts';
 // but building that formatter on every call is ~25x slower in Chromium (it dominates large tables).
 const EN = new Intl.NumberFormat('en-US');
 export const fmtInt = (n: number | bigint) => (typeof n === 'bigint' ? EN.format(n) : EN.format(Math.round(n)));
+/** A count with its noun in the right number: "1 seat", "3 seats"; in Hebrew the singular is a whole phrase with
+ *  no figure ("מנדט אחד"), the plural "3 מנדטים". */
+export function countOf(n: number | bigint, lang: 'he' | 'en', en: readonly [string, string], he: readonly [string, string]): string {
+  if (Number(n) === 1) return lang === 'he' ? he[0] : `1 ${en[0]}`;
+  return `${fmtInt(n)} ${lang === 'he' ? he[1] : en[1]}`;
+}
+export const SEATS = { en: ['seat', 'seats'], he: ['מנדט אחד', 'מנדטים'] } as const;
+export const VOTES = { en: ['vote', 'votes'], he: ['קול אחד', 'קולות'] } as const;
+export const seatsText = (n: number | bigint, lang: 'he' | 'en') => countOf(n, lang, SEATS.en, SEATS.he);
+export const votesText = (n: number | bigint, lang: 'he' | 'en') => countOf(n, lang, VOTES.en, VOTES.he);
 export const fmtSigned = (n: number | bigint) => (Number(n) > 0 ? '+' : Number(n) < 0 ? '−' : '±') + fmtInt(typeof n === 'bigint' ? (n < 0n ? -n : n) : Math.abs(n));
 export const trimDecimal = (s: string) => s.includes('.') ? s.replace(/0+$/, '').replace(/\.$/, '') : s;
 /** A decimal string ("3.25") as an exact fraction, for comparisons without floating point. */

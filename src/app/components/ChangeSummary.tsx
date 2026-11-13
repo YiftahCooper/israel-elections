@@ -1,6 +1,6 @@
 import { appLocale } from '../dateFormat.ts';
 import { FittingLabel } from './FittingLabel.tsx';
-import { hebrewPrefix } from '../hebrewPrefix.ts';
+import { hebrewPrefixName } from '../hebrewPrefix.ts';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { SeatDelta } from './SeatDelta.tsx';
 import { Info } from './ui.tsx';
@@ -100,7 +100,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
     <div ref={line} className={`session ${edited ? '' : 'idle'}`} role="status" aria-live="polite">
       <FittingLabel full={label} short={reference ? String(count) : compact} reference={namedReference} locale={appLocale(lang)} />
       {/* the (i) right after the label it explains, on the same line at every width */}
-      <Info title={L('Your changes', 'השינויים שלכם')}>{L('Reference: ', 'נקודת השוואה: ')}<bdi>{referenceLabel(reference, lang).name}</bdi>. {L('Counts your actions since the named reference, not individual fields: votes, rules, lists, blocs and coalition roles. Colours do not count. History shows all changes from the official result; undo, redo or return to an earlier change there.', 'סופר את הפעולות שלכם מאז נקודת ההשוואה הנקובה, ולא שדות בודדים: קולות, כללים, רשימות, גושים ותפקידים בקואליציה. צבעים אינם נספרים. בהיסטוריה מוצגים כל השינויים מהתוצאה הרשמית; אפשר לבטל, לבצע שוב או לחזור לשינוי קודם.')}</Info>
+      <Info title={L('Your changes', 'השינויים שלכם')}>{L('Reference: ', 'נקודת ההשוואה: ')}<bdi>{referenceLabel(reference, lang).name}</bdi>. {L('Counts your actions since the named reference, not individual fields: votes, rules, lists, blocs and coalition roles. Colours do not count. History shows all changes from the official result; undo, redo or return to an earlier change there.', 'סופר את הפעולות שלכם מאז נקודת ההשוואה הנקובה, ולא שדות בודדים: קולות, כללים, רשימות, גושים ותפקידים בקואליציה. צבעים אינם נספרים. בהיסטוריה מוצגים כל השינויים מהתוצאה הרשמית; אפשר לבטל, לבצע שוב או לחזור לשינוי קודם.')}</Info>
       <span ref={changes} className="session-changes">
         {edited && <>
           {moves.length === 0
@@ -113,7 +113,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
           {blocs && <span className="moves" style={{ color: 'var(--ink-2)' }}>
             {!familyGrouping && <span>{groupingLabel(s, lang)}</span>}
             {blocs.filter((x) => x.n > 0 || x.d).map(({ b, n, d }) => <span key={b.id} title={b.appDefined ? appGroupingExplanation(lang) : undefined}><bdi>{name(b)}</bdi> {n}{d ? <span dir="ltr"> (<SeatDelta value={d} />)</span> : null}</span>)}
-            {!familyGrouping && <span>{holder ? L(`${name(holder.b)} holds a majority`, `${hebrewPrefix('ל', name(holder.b))} יש רוב`) : L('no bloc has a majority', 'לאף גוש אין רוב')}</span>}
+            {!familyGrouping && <span>{holder ? L(`${name(holder.b)} holds a majority`, `${hebrewPrefixName('ל', name(holder.b))} יש רוב`) : L('no bloc has a majority', 'לאף גוש אין רוב')}</span>}
           </span>}
           {s.mode === 'experimental' && <span className="chip exp">{L('Experimental rules', 'כללים ניסיוניים')}</span>}
         </>}

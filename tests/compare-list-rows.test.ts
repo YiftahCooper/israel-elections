@@ -59,7 +59,7 @@ describe('other references', () => {
     expect(he.byList.get(id(k25, 'Labor'))!.how).toBe('(רצו יחד)');
     // the real split is still a split, counted against all of its successors
     expect(en.byList.get(id(k25, 'Religious Zionism'))).toMatchObject({ how: '(split into 3)', seats: seats(k26, 'Religious Zionism–Zehut') + seats(k26, 'Otzma Yehudit') + seats(k26, 'Noam') });
-    expect(he.byList.get(id(k25, 'Religious Zionism'))!.how).toBe('(התפצלה ל-3)');
+    expect(he.byList.get(id(k25, 'Religious Zionism'))!.how).toBe('(התפצלה ל־3)');
   });
   it('a later reference after a recorded merger: the General Zionists 1959 merged into the Liberal Party 1961', () => {
     const k4 = baselineOf(load('k4')), k5 = baselineOf(load('k5'));
