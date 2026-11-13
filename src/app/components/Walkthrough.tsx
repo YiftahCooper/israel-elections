@@ -200,7 +200,8 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
         const row = (l: AllocationResult['lists'][number]) => { const sl = listOf(l.id)!; return (
           <tr key={l.id} className={passes(l) ? '' : 'below'}>
             <td><ListName id={l.id} s={s} /> {statusChange(l)}{l.withdrawn ? <span className="chip">{L('withdrew', 'פרשה')}</span> : null}</td>
-            <td className="n"><EditMarker s={s} path={['lists', sl.id, 'votes']} />{fmtInt(l.votes)}</td>
+            {/* the mark stands apart from the figure, which stays end-aligned with the others (audit c-design-principles-10) */}
+            <td className="n walk-votes"><EditMarker s={s} path={['lists', sl.id, 'votes']} />{fmtInt(l.votes)}</td>
             <td className="n">{percent(l.votes, r.totalValid, digits, s.rules.thresholdPct, { pad: digits })}</td>
           </tr>
         ); };

@@ -19,7 +19,7 @@ import { BlocMajorities } from './Majority.tsx';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
-import { allocationOf, listLabel, methodOf, seatBlocsOf, seatedOrder, seatCandidate, candidateName, referenceLabel, comparisonGroups } from '../derive.ts';
+import { allocationOf, listLabel, methodOf, seatBlocsOf, seatedOrder, seatCandidate, candidateName, referenceLabel, comparisonGroups, groupingLabel, majorityText } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { arcLayout, annularRegions } from '../layout.ts';
 import { arcSeatSlots, trayBlocRegions, trayCell, trayShape, TRAY } from '../blocLine.ts';
@@ -67,6 +67,13 @@ export function seatOrder(s: Scenario, r: AllocationResult, colorBy: 'list' | 'b
   const order = blocDisplayOrder(s);
   const rank = (b: string | null) => order.indexOf(b);
   return out.sort((a, b) => rank(a.bloc) - rank(b.bloc) || within(a, b));
+}
+
+/** `text` cut to at most `max` characters at a word boundary, with an ellipsis. */
+export function clipWords(text: string, max: number): string {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max - 1), space = cut.lastIndexOf(' ');
+  return (space > max / 2 ? cut.slice(0, space) : cut).replace(/[\s·,(–-]+$/u, '') + '…';
 }
 
 function shade(hex: string, i: number): string {
@@ -251,7 +258,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     // the legend in chamber order, each list with its seat colour(s), and old → new only where the seats changed
     const groupsNow = comparisonGroups(s,r,base,br);
     const rowsY = vb.y+vb.height+extra+20;
-    const exportRows = keyRows.map(({l,p,byParty,n,colors})=>({l,n,byParty,colors:p && jointLook==='both' ? [l.color] : colors,label:keyName(l,p,byParty),
+    const exportRows = keyRows.map(({l,p,byParty,n,colors})=>({l,n,byParty,colors:p && jointLook==='both' ? [l.color] : colors,label:exportName(l,p,byParty),
       inner:p && jointLook==='both' ? partyDisplayColor(l,p.id) : undefined as string | undefined}));
     exportRows.forEach(({l,n,byParty,colors,label,inner},i) => {
       const x = colStart(i % 2), y = rowsY + Math.floor(i/2)*32, dir = rtlText ? -1 : 1;
@@ -270,7 +277,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       const g = groupsNow.find(g=>g.bIds.includes(l.id));
       const delta = !byParty && g?.bIds.length===1 ? g.seatsB-g.seatsA : 0;
       const numbers = delta && g ? `${g.seatsA} → ${g.seatsB}` : String(n);
-      const legend = svgText(x+dir*(artwork ? 50 : 8+colors.length*16),y,16,`${label.length>42?label.slice(0,41)+'…':label} \u2066${numbers}\u2069`);
+      const legend = svgText(x+dir*(artwork ? 50 : 8+colors.length*16),y,16,`${label} \u2066${numbers}\u2069`);
       if (delta) {
         const change = document.createElementNS(NS, 'tspan');
         change.textContent = ` \u2066(${seatDeltaText(delta)})\u2069`;
@@ -282,15 +289,19 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     const entry = elections.find(e=>e.id===s.electionId);
     const captionY = rowsY + Math.ceil(exportRows.length/2)*32 + 8;
     clone.appendChild(svgText(colStart(0), captionY, 13, `${entry ? electionLabel(entry, elections, lang) : ''}${entry ? ' · ' : ''}${factLog(s).length ? s.name || L('Scenario', 'תרחיש') : L('Official result', 'התוצאה הרשמית')}`));
+    // the picture leaves the app, so it names the grouping its seats are arranged (and shaded) by, and each bloc with
+    // its seats, as the bloc bar does on the board (audit c-screens-overview-12)
     const scheme = s.blocSchemes?.find(g => g.id === s.blocSchemeId);
-    const appBlocs = s.blocs.filter(b => b.appDefined);
-    const provenance = scheme?.appDefined ? groupingName(scheme, lang) : appBlocs.map(b => groupingName(b, lang)).join(' · ');
-    if (provenance) {
-      clone.appendChild(svgText(colStart(0), captionY + 22, 13, provenance));
+    const groupingLines = s.blocs.length ? [groupingLabel(s, lang), ...blocDisplayOrder(s).map(id => {
+      const n = seats.filter(st => st.bloc === id).length, b = s.blocs.find(x => x.id === id);
+      return !n && !b ? '' : `${b ? groupingName(b, lang, scheme) : L('No bloc', 'ללא גוש')}: ${b ? majorityText(n, total, lang).replace(/^(\d+ \/ \d+)/, '\u2066$1\u2069') : n}`;
+    }).filter(Boolean)] : [];
+    groupingLines.forEach((line, i) => clone.appendChild(svgText(colStart(0), captionY + 22 * (i + 1), 13, line)));
+    if (scheme?.appDefined || s.blocs.some(b => b.appDefined)) {
       const description = document.createElementNS(NS, 'desc');
       description.textContent = appGroupingExplanation(lang); clone.appendChild(description);
     }
-    clone.setAttribute('viewBox', `${vb.x} ${vb.y} ${vb.width} ${captionY - vb.y + (provenance ? 38 : 14)}`);
+    clone.setAttribute('viewBox', `${vb.x} ${vb.y} ${vb.width} ${captionY - vb.y + 14 + 22 * groupingLines.length + (groupingLines.length ? 2 : 0)}`);
     const xml = new XMLSerializer().serializeToString(clone);
     if (kind === 'svg') return download('knesset.svg', xml, 'image/svg+xml');
     const img = new Image();
@@ -394,13 +405,21 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   // lists in the order their seats are drawn (blocs left to right, No bloc between their halves), each with the colours
   // its seats actually carry in the chosen colour mode
   const keyRows = chamberKeyRows(s, seats, jointLook);
+  // an exported key line has room for about 42 characters: a party row shortens its party's name first, so the list's
+  // name stays whole, and a cut falls between words
+  const exportName = (l: SimList, p: ChamberKeyRow['p'], byParty: boolean) => {
+    const full = keyName(l, p, byParty), list = listLabel(l, lang), max = 42;
+    if (full.length <= max) return full;
+    if (byParty && full.endsWith(` · ${list}`) && list.length + 8 <= max) return `${clipWords(full.slice(0, -list.length - 3), max - list.length - 3)} · ${list}`;
+    return clipWords(full, max);
+  };
   // a party row names its party and its list; seats whose member has no recorded party keep the list's name
   const keyName = (l: SimList, p: ChamberKeyRow['p'], byParty: boolean) => {
     if (!byParty) return listLabel(l, lang);
     const name = p ? (lang === 'he' ? p.nameHe : p.nameEn) : L('Party not recorded', 'מפלגה לא מתועדת');
     return name === listLabel(l, lang) ? name : `${name} · ${listLabel(l, lang)}`;
   };
-  const head = !compactProp && (expertControl || standardControl || expert);
+  const head = !compactProp && (expertControl || standardControl || expert || standard);
   return (
     <div className="chamber">
       {head && <div className="chamber-tools">
@@ -409,6 +428,11 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           <ChoicePicker label={L('Colour seats by', 'צביעת מושבים לפי')} value={colorBy} options={(['list', 'bloc', 'party'] as const).map(value => ({ value, label: value === 'list' ? L('List', 'רשימה') : value === 'bloc' ? L('Bloc', 'גוש') : L('Party', 'מפלגה'), preview: <ResultPreview s={s} blocs={value === 'bloc'} party={value === 'party'} /> }))} onChange={value => setSetting('seatColour', value as typeof colorBy)} />
         </>}
         {expertControl}{standardControl}
+        {/* the export buttons open beside their chip, in the tools row (audit c-levels-09: they appeared under the key) */}
+        {standard && <span className="row chamber-export">
+          <button className="btn small ghost" onClick={() => exportSvg('svg')}>{L('Export SVG', 'ייצוא SVG')}</button>
+          <button className="btn small ghost" onClick={() => exportSvg('png')}>{L('Export PNG', 'ייצוא PNG')}</button>
+        </span>}
       </div>}
       {/* on the board the bloc bar directly below already carries this line; Compare's chambers stand alone */}
       {compactProp && <BlocMajorities s={s} r={r} />}
@@ -452,12 +476,6 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
               ? <button key={key} aria-pressed={selected === l.id} onClick={pick}>{p ? <PartyKey partyId={p.id} color={partyDisplayColor(l, p.id)} ring={jointLook === 'both' ? l.color : undefined} /> : <PartyKey color={l.color} />}{keyName(l, p, true)} <b className="tabnum"><bdi dir="ltr">{n}</bdi></b></button>
               : <ListKeyItem key={key} list={l} seats={n} seatColors={colors} pressed={selected === l.id} onPick={pick} />;
           })}
-        </div>
-      )}
-      {!compactProp && standard && (
-        <div className="row" style={{ justifyContent: 'flex-end', marginTop: 4 }}>
-          <button className="btn small ghost" onClick={() => exportSvg('svg')}>{L('Export SVG', 'ייצוא SVG')}</button>
-          <button className="btn small ghost" onClick={() => exportSvg('png')}>{L('Export PNG', 'ייצוא PNG')}</button>
         </div>
       )}
     </div>

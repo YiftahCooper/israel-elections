@@ -941,7 +941,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 }
 
 /* Shared persistent comparison grammar: current = solid ink, reference = dashed ink. */
-.chamber .legend { display: flex; flex-wrap: wrap; gap: 4px 8px; }
+.chamber .legend { display: flex; flex-wrap: wrap; gap: 4px 16px; }
 .chamber .legend button { max-width: 100%; white-space: normal; overflow-wrap: anywhere; text-align: start; }
 .graphic-key { margin: 4px 0; }
 .lb-bar > .delta-segment { position: absolute; inset-block: -1px; border-block: 2px solid var(--ink); pointer-events: none; }
@@ -993,13 +993,14 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 /* Rules & settings: the scenario's rules beside a separate settings card */
 .rules-page { align-items: start; gap: 18px; }
 .rules-fields { border: 0; padding: 0; margin: 0; min-width: 0; }
+/* the lone Settings… button keeps its content width, as every button does (audit c-design-principles-04) */
+.rules-page > .btn { justify-self: start; align-self: start; }
 .rules-grid { align-items: start; }
 .rules-turnout > .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; align-items: start; margin-block-end: 6px; }
 .rules-turnout .numeric-stepper { inline-size: 100%; }
 .rules-turnout .choice-trigger { margin-block-start: 23px; }
 .electorate-heading { min-block-size: 49px; }
 @media (max-width: 600px) { .rules-grid { grid-template-columns: minmax(0, 1fr); } }
-.turnout-step-row .numeric-stepper .seg { inline-size: max-content; max-inline-size: 100%; }
 @media (max-width: 600px) { .rules-turnout > .row > :last-child { grid-column: 1 / -1; } }
 .rules-checks { display: grid; gap: 4px; align-content: start; padding-block-start: 18px; }
 .rule-check { flex-wrap: nowrap; align-items: start; gap: 6px; }
@@ -1073,8 +1074,10 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .stepper-controls .stepper-nudge { inline-size: 36px; flex-shrink: 0; border-radius: 0; font-size: 18px; }
 .stepper-value-row .stepper-nudge { border-start-start-radius: 5px; border-end-start-radius: 5px; }
 .stepper-controls > .stepper-nudge { border-start-end-radius: 5px; border-end-end-radius: 5px; }
-.numeric-stepper .seg { display: flex; inline-size: 100%; }
-.numeric-stepper .seg button { flex: 1; padding: 2px 5px; min-block-size: 26px; font-size: 11px; }
+/* the step-size switch: one size everywhere (Rules, Turnout, the list panel, the bloc editor), as wide as its labels,
+   at the stepper's start, never wrapped (audit c-design-principles-03) */
+.numeric-stepper .seg { display: inline-flex; flex-wrap: nowrap; inline-size: max-content; max-inline-size: 100%; justify-self: start; }
+.numeric-stepper .seg button { flex: none; padding: 2px 8px; min-block-size: 26px; font-size: 12.5px; white-space: nowrap; }
 .vote-goals { display: grid; gap: 4px; }
 /* the seat count, typed or stepped: a compact row above the vote controls */
 .seat-target { display: flex; align-items: center; gap: 6px; }
@@ -1095,8 +1098,9 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
   .election-dialog { inline-size: 100%; }
   .election-row .result-preview { inline-size: 88px; }
   .stepper-controls .stepper-nudge { min-block-size: 40px; }
-  .numeric-stepper .seg button { min-block-size: 32px; }
 }
+/* phones and touch screens: the step sizes are 44px touch targets */
+@media (max-width: 760px), (pointer: coarse) { .numeric-stepper .seg button { min-block-size: 44px; min-inline-size: 44px; } }
 @media (max-width: 600px) {
   /* The chamber supplies an SVG-relative left coordinate; constrain the opposite edge too. */
   .chamber .tip { inset-inline-end: 8px; min-inline-size: 0; max-inline-size: calc(100% - 16px); overflow-wrap: anywhere; }
@@ -1202,6 +1206,9 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 /* Edited is an inline annotation, with the same ink and underline as text disclosures. */
 .edit-marker { border: 0; border-radius: 0; background: transparent; padding: 0; margin-inline-start: 5px; font-size: 12px; font-weight: 500; line-height: 1.2; text-decoration: underline dotted; text-underline-offset: 3px; cursor: pointer; }
 .edit-marker:hover, .edit-marker[aria-expanded="true"] { text-decoration-style: solid; }
+/* a mark before a figure in a table cell keeps a gap from it; the figure keeps the column's end alignment */
+td.n .edit-marker { margin-inline-end: 6px; }
+td.n:has(.edit-marker) { white-space: nowrap; }
 .edit-tooltip .marker-restore { display: block; margin-block-start: 6px; }
 
 /* Segment focus rings must escape the group, like neighbouring controls. */

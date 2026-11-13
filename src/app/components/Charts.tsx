@@ -1,6 +1,7 @@
 import { percent, rationalPoints } from './Percentage.tsx';
-import{PartyDot}from'./PartyDot.tsx';
-import { seatOrder } from './Hemicycle.tsx';
+import{PartyDot, PARTY_SHARE}from'./PartyDot.tsx';
+import { chamberKeyRows, seatOrder } from './Hemicycle.tsx';
+import { partyDisplayColor } from '../partyDisplayColor.ts';
 import { Floating } from '../floating.tsx';
 import { useHoverIntent } from '../hoverIntent.ts';
 import { GraphicChanges } from './GraphicChanges.tsx';
@@ -236,7 +237,11 @@ export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
   const lang = useLang();
   const hatch = useId();
   const cells = 200;
-  const seatCells = seatOrder(s,r,'list',jointLook).map(st=>({color:st.color,id:st.listId,innerColor:st.innerColor,partyId:st.partyId}));
+  const seatInfo = seatOrder(s,r,'list',jointLook);
+  const seatCells = seatInfo.map(st=>({color:st.color,id:st.listId,innerColor:st.innerColor,partyId:st.partyId}));
+  // the key explains every colour the seats carry: a list counted by party has a row per party (and one for its members
+  // with no recorded party), drawn as its seat squares are, as the chamber's key does (audit c-design-principles-05)
+  const keyRows = chamberKeyRows(s, seatInfo, jointLook);
   // vote squares follow the seat squares' list order, so each list sits in the same place in both waffles
   const order = [...new Set(seatCells.map((c) => c.id))];
   const lists = s.lists.filter((l) => !l.withdrawn).map((l) => ({ l, lr: r.lists.find((x) => x.id === l.id)! }));
@@ -273,7 +278,17 @@ export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
         {grid(seatCells, 12, L('Seats: each square is one seat', 'מנדטים: כל ריבוע = מנדט אחד'))}
       </div>
       <div className="legend" style={{ marginTop: 8 }}>
-        {[...seated].sort((a, b) => b.l.votes - a.l.votes).map(({ l, lr }) => <span key={l.id} className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)} <span className="muted tabnum">{lr.seats}</span></span>)}
+        {[...seated].sort((a, b) => b.l.votes - a.l.votes).flatMap(({ l, lr }) => {
+          const parts = keyRows.filter(k => k.l.id === l.id && k.byParty);
+          if (!parts.length) return [<span key={l.id} className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)} <span className="muted tabnum">{lr.seats}</span></span>];
+          return parts.map(({ key, p, n }) => {
+            const party = p ? partyDisplayColor(l, p.id) : l.color, inner = p && jointLook === 'both';
+            const name = p ? (lang === 'he' ? p.nameHe : p.nameEn) : L('Party not recorded', 'מפלגה לא מתועדת');
+            return <span key={key} className="row" style={{ gap: 5 }}>
+              <svg className="swatch" width="10" height="10" aria-hidden><rect width="10" height="10" rx="2" fill={inner ? l.color : party} />{inner && <rect x={5 - 5 * PARTY_SHARE} y={5 - 5 * PARTY_SHARE} width={10 * PARTY_SHARE} height={10 * PARTY_SHARE} rx={2 * PARTY_SHARE} fill={party} />}</svg>
+              {name === listLabel(l, lang) ? name : `${name} · ${listLabel(l, lang)}`} <span className="muted tabnum">{n}</span></span>;
+          });
+        })}
         {wasted > 0 && <span className="row" style={{ gap: 5 }}><svg width="10" height="10" aria-hidden><rect width="10" height="10" rx="2" fill={`url(#${hatch})`} /></svg>{(lang === 'he' ? <>{"ללא מנדט: "}{percent(wasted, r.totalValid, digits)}{" מהקולות"}</> : <>{"No seat: "}{percent(wasted, r.totalValid, digits)}{" of votes"}</>)}<Info term="unrepresented" /></span>}
       </div>
     </div>
