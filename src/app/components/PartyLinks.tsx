@@ -2,12 +2,13 @@
 // material) and a neutral source (Knesset, Hebrew Wikipedia marked secondary, the Elections Committee, research).
 // English Wikipedia is never linked (the build refuses it).
 import type { PartyLink } from '../../data/schema.ts';
-import { useL } from '../i18n.ts';
+import { useL, useLang } from '../i18n.ts';
+import { datesInText, formatDate } from '../dateFormat.ts';
 
 const safe = (u: string) => /^https:\/\//.test(u);
 
 export function PartyLinks({ links, name }: { links?: PartyLink[]; name: string }) {
-  const L = useL();
+  const L = useL(); const lang = useLang();
   const ok = (links ?? []).filter((x) => safe(x.url));
   if (!ok.length) return null;
   const label = (x: PartyLink) => {
@@ -25,8 +26,8 @@ export function PartyLinks({ links, name }: { links?: PartyLink[]; name: string 
       case 'academic': return x.publisher === 'המכון הישראלי לדמוקרטיה' ? L('Israel Democracy Institute', x.publisher) : L('Research', x.publisher);
     }
   };
-  const title = (x: PartyLink) => [L(x.titleEn ?? name, x.titleHe ?? name), x.kind === 'partisan' ? L('the party’s own voice (partisan)', 'בקולה של המפלגה (מפלגתי)') : L('a neutral source', 'מקור ניטרלי'),
-    x.sourceType === 'hewiki' ? L('Hebrew Wikipedia: a secondary source', 'ויקיפדיה העברית: מקור משני') : '', x.archivedAt ? L(`archived ${x.archivedAt}`, `ארכיון ${x.archivedAt}`) : '',
+  const title = (x: PartyLink) => [datesInText(L(x.titleEn ?? name, x.titleHe ?? name)), x.kind === 'partisan' ? L('the party’s own voice (partisan)', 'בקולה של המפלגה (מפלגתי)') : L('a neutral source', 'מקור ניטרלי'),
+    x.sourceType === 'hewiki' ? L('Hebrew Wikipedia: a secondary source', 'ויקיפדיה העברית: מקור משני') : '', x.archivedAt ? L(`archived ${formatDate(x.archivedAt, lang)}`, `ארכיון ${formatDate(x.archivedAt, lang)}`) : '',
     x.confidence === 'medium' ? L('probable match', 'התאמה סבירה') : ''].filter(Boolean).join(' · ');
   const group = (kind: PartyLink['kind']) => ok.filter((x) => x.kind === kind);
   return (

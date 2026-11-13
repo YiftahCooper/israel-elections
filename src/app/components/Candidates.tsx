@@ -1,3 +1,4 @@
+import { datesInText } from '../dateFormat.ts';
 import { partyDisplayColor } from '../partyDisplayColor.ts';
 import { CandidateName } from './CandidateName.tsx';
 import { MkName } from './MkHistory.tsx';
@@ -99,7 +100,7 @@ export function Candidates({ l, seats, baseSeats, baseCandidates, notSeatedWhy =
                 ) : (
                   lang === 'en' && x.nameEn ? <><MkName candidate={x}><CandidateName candidate={x} note={false} /></MkName> <bdi className="muted tiny" lang="he" dir="rtl">{shownName(x)}</bdi></> : <MkName candidate={x}><CandidateName candidate={x} note={false} /></MkName>
                 )}
-                {x.notes?.map((n, k) => <span key={k} className="muted tiny cand-note"> · {lang === 'he' ? n.he : n.en}</span>)}
+                {x.notes?.map((n, k) => <span key={k} className="muted tiny cand-note"> · {datesInText(lang === 'he' ? n.he : n.en)}</span>)}
                 {(() => { const p = x.partyId ? l.parties?.find((q) => q.id === x.partyId) : undefined;
                   return p ? <span className="muted tiny"> · {lang === 'he' ? p.nameHe : p.nameEn}</span>
                     : x.partyHe && l.sponsorsHe.includes(';') ? <span className="muted tiny"> · {lang === 'he' ? x.partyHe : romanize(x.partyHe)}</span> : null; })()}

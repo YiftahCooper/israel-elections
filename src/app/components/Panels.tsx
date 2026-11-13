@@ -1,6 +1,6 @@
 import { percent } from './Percentage.tsx';
 import { k19StatusNote } from '../k19Note.ts';
-import { formatDate } from '../dateFormat.ts';
+import { datesInText, formatDate } from '../dateFormat.ts';
 import { AfterElectionSources } from './AfterElection.tsx';
 import { factLog, isFactAction } from '../../model/actionClassification.ts';
 import { Download } from 'lucide-react';
@@ -315,10 +315,10 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
             <li key={x.id} style={{ marginBottom: 8 }}>
               {/* source records are written in English (Hebrew originals keep an English publisher for English
                   pages); each runs in its own direction inside a Hebrew page */}
-              <b dir="auto">{lang === 'en' ? x.publisherEn ?? x.publisher : x.publisher}</b> {x.official ? <span className="chip ok">{L('official', 'רשמי')}</span> : <span className="chip secondary">{L('secondary', 'משני')}</span>}<br />
-              <span dir="auto" style={{ display: 'block' }}>{lang === 'en' ? englishSourceText(x.descriptionEn ?? x.description) : x.description}</span>
+              <b dir="auto">{datesInText(lang === 'en' ? x.publisherEn ?? x.publisher : x.publisher)}</b> {x.official ? <span className="chip ok">{L('official', 'רשמי')}</span> : <span className="chip secondary">{L('secondary', 'משני')}</span>}<br />
+              <span dir="auto" style={{ display: 'block' }}>{datesInText(lang === 'en' ? englishSourceText(x.descriptionEn ?? x.description) : x.description)}</span>
               <SourceAddress x={x} />
-              <div className="muted tiny">{x.retrievedAt && <>{L('Retrieved', 'נשלף')} <bdi dir="ltr">{formatDate(x.retrievedAt, lang)}</bdi></>}{x.sha256 && <>{x.retrievedAt ? ' · ' : ''}<bdi dir="ltr">SHA-256 {x.sha256.slice(0, 16)}…</bdi></>}{x.note ? <> · <bdi dir="auto">{x.note}</bdi></> : ''}</div>
+              <div className="muted tiny">{x.retrievedAt && <>{L('Retrieved', 'נשלף')} <bdi dir="ltr">{formatDate(x.retrievedAt, lang)}</bdi></>}{x.sha256 && <>{x.retrievedAt ? ' · ' : ''}<bdi dir="ltr">SHA-256 {x.sha256.slice(0, 16)}…</bdi></>}{x.note ? <> · <bdi dir="auto">{datesInText(x.note)}</bdi></> : ''}</div>
             </li>
           ))}
         </ul>}
@@ -369,7 +369,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
           // a credit runs in the direction of most of its letters, so a Hebrew uploader name before a Latin
           // file name does not reorder the line
           const dir = (t: string) => (t.match(/[A-Za-z]/g)?.length ?? 0) >= (t.match(/[\u0590-\u05FF\u0600-\u06FF]/g)?.length ?? 0) ? 'ltr' : 'rtl';
-          const item = (x: typeof logos[number]) => { const c = credit(x.logo.attribution, x.logo.licence); return <li key={x.logo.file}><b>{x.names.join(' · ')}</b>: <bdi dir={dir(c.main)}><a href={x.logo.sourceUrl} target="_blank" rel="noreferrer">{c.main}</a></bdi> · <bdi dir="auto">{x.logo.licence}</bdi>{c.original && <> · <bdi className="muted" dir="rtl" lang={/[\u0600-\u06FF]/.test(c.original) ? 'ar' : 'he'}>{c.original}</bdi></>}</li>; };
+          const item = (x: typeof logos[number]) => { const c = credit(datesInText(x.logo.attribution), x.logo.licence); return <li key={x.logo.file}><b>{x.names.join(' · ')}</b>: <bdi dir={dir(c.main)}><a href={x.logo.sourceUrl} target="_blank" rel="noreferrer">{c.main}</a></bdi> · <bdi dir="auto">{x.logo.licence}</bdi>{c.original && <> · <bdi className="muted" dir="rtl" lang={/[\u0600-\u06FF]/.test(c.original) ? 'ar' : 'he'}>{c.original}</bdi></>}</li>; };
           // the secondary label is said once, for the Commons group, not on every row
           const groups = [{ id: 'party', title: L('From the parties', 'מהמפלגות'), secondary: false, rows: logos.filter((x) => !commons(x.logo.sourceUrl)) },
             { id: 'commons', title: 'Wikimedia Commons', secondary: true, rows: logos.filter((x) => commons(x.logo.sourceUrl)) }].filter((g) => g.rows.length);

@@ -104,3 +104,15 @@ describe('a one-member faction is named as one (fx-copy, also-yours 1)', () => {
     expect(soloFactionMember({ he: 'יש עתיד', en: 'Yesh Atid' }, 'en')).toBeNull();
   });
 });
+
+describe('dates inside stored notes are written in the app format (fx-copy, also-yours 3)', () => {
+  it('in the language of the note, leaving file names and identifiers alone', async () => {
+    const { datesInText } = await import('../src/app/dateFormat.ts');
+    expect(datesInText('Resigned from the candidate list on 2021-03-03, before polling day')).toBe('Resigned from the candidate list on 3 Mar 2021, before polling day');
+    expect(datesInText('התפטר מרשימת המועמדים ב־2021-03-03, לפני יום הבחירות')).toBe('התפטר מרשימת המועמדים ב־3 במרץ 2021, לפני יום הבחירות');
+    expect(datesInText('Reshumot — YP 8172, 2019-03-26, pp. 9194–9195')).toBe('Reshumot — YP 8172, 26 Mar 2019, pp. 9194–9195');
+    expect(datesInText('k25/cec-press-surplus-2022-10-23.pdf')).toBe('k25/cec-press-surplus-2022-10-23.pdf');
+    expect(datesInText('registrar-parties-2026-11-08-json')).toBe('registrar-parties-2026-11-08-json');
+    expect(datesInText('poster (1949-01-01). Cropped')).toBe('poster (1 Jan 1949). Cropped');
+  });
+});
