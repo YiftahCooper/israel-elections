@@ -17,6 +17,7 @@ import { SeatDelta } from './SeatDelta.tsx';
 import { percent, rationalPoints } from './Percentage.tsx';
 import './party-history.css';
 import { openModal } from '../focusReturn.ts';
+import { partyDisplayColor } from '../partyDisplayColor.ts';
 
 type Lang = 'he' | 'en';
 /** A Hebrew prefix on a name: after ל, ב or כ the definite article ה is absorbed (לדמוקרטים, לעבודה); מ and ו keep it. */
@@ -126,8 +127,6 @@ export interface Bar {
 export interface ChartEvent { key: string; date: string; certainty: Certainty; word: string; text: string; n: number }
 
 const certRank: Record<Certainty, number> = { confirmed: 4, probable: 3, provisional: 2, disputed: 1, unknown: 0 };
-/** "Merged", "Merged (probable)": the certainty word whenever it is not Confirmed, as in the comparison line. */
-const flagWord = (e: ChartEvent, L: (en: string, he: string) => string) => e.certainty === 'confirmed' ? e.word : `${e.word} (${L(...CERT[e.certainty]).toLocaleLowerCase()})`;
 /** Rough text width at the chart's 10.5px font (Hebrew and Latin alike). */
 const textW = (s: string) => s.length * 5.9 + 4;
 
@@ -148,32 +147,27 @@ export function HistoryChart({ bars, eras, events, selected, onSelect, compact, 
       if (last && ex - last.x < (compact ? 4 : 7)) last.items.push(e); else g.push({ x: ex, items: [e] });
     }
     return g.map((gr) => {
-      const words = [...new Set(gr.items.map((e) => flagWord(e, L)))];
       const worst = gr.items.reduce((w, e) => certRank[e.certainty] < certRank[w.certainty] ? e : w, gr.items[0]);
-      return { ...gr, worst, words: words.join(' · '), nums: gr.items.map((e) => e.n).join(','), title: gr.items.map((e) => `${year(e.date)} · ${e.text} · ${L(...CERT[e.certainty])}`).join('\n') };
+      return { ...gr, worst, nums: gr.items.map((e) => e.n).join(','), title: gr.items.map((e) => `${e.n}. ${year(e.date)} · ${e.text} · ${L(...CERT[e.certainty])}`).join('\n') };
     });
   }, [events, width, compact, L]); // eslint-disable-line react-hooks/exhaustive-deps
-  // flags: each on the first row where it touches nothing (A, B: words; C: numbers)
-  // words when every flag fits in three rows; otherwise each event's number in the list below (phones, busy histories)
-  const place = (nums: boolean) => {
-    const ends: number[] = []; let fits = true;
-    const out = groups.map((g) => {
-      const text = nums ? g.nums : g.words;
-      const w = nums ? Math.max(16, textW(text) + 4) : textW(text) + 6;
-      const right = !nums && g.x + w > width - mr;
-      const x0 = nums ? g.x - w / 2 : right ? g.x - w : g.x, x1 = x0 + w;
+  // version C (owner, 16 Nov 2026): every event is a numbered circle at the top of its line, the same number and circle
+  // as in the Events list below; events that touch share one pill ("5,6,7"). Each sits on the first row where it touches
+  // nothing (at most three rows).
+  const placed = useMemo(() => {
+    const ends: number[] = [];
+    return groups.map((g) => {
+      const text = g.nums;
+      const w = g.items.length > 1 ? Math.max(16, textW(text) + 4) : 16;
+      const x0 = g.x - w / 2, x1 = x0 + w;
       let row = ends.findIndex((e) => x0 > e + 3);
-      if (row < 0) { if (ends.length < 3) row = ends.length; else { fits = false; row = ends.indexOf(Math.min(...ends)); } }
+      if (row < 0) row = ends.length < 3 ? ends.length : ends.indexOf(Math.min(...ends));
       ends[row] = x1;
       return { ...g, text, w, x0, row };
     });
-    return { out, fits };
-  };
-  const words = useMemo(() => place(false), [groups, width]); // eslint-disable-line react-hooks/exhaustive-deps
-  const nums = !words.fits;
-  const placed = useMemo(() => nums ? place(true).out : words.out, [nums, words, groups, width]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [groups]);
   const rows = compact || !groups.length ? 0 : Math.max(...placed.map((p) => p.row)) + 1;
-  const rowH = nums ? 19 : 16;
+  const rowH = 19;
   const mt = compact ? 14 : 18 + rows * rowH;
   const strip = compact ? 0 : 20, xl = 15;
   const H = height - mt - xl - strip - 4;
@@ -188,11 +182,13 @@ export function HistoryChart({ bars, eras, events, selected, onSelect, compact, 
   const pid = `ph${useId().replace(/[^a-zA-Z0-9]/g, '')}`;
   const move = (d: number) => { const order = present.map((b) => b.i); const at = order.indexOf(selected ?? -1); const next = order[Math.min(order.length - 1, Math.max(0, (at < 0 ? 0 : at) + d))]; if (next !== undefined) onSelect(next); };
   const yearShown = (i: number) => i === selected || (i % every === 0 || i === n - 1) && !(i !== n - 1 && n - 1 - i < every && every > 1) && !(selected !== null && (compact || phone) && Math.abs(i - selected) * slotW < 26 && i !== selected);
-  const lineTop = (p: typeof placed[number]) => compact ? mt - 6 : 18 + p.row * rowH + (nums ? 7 : 6);
+  const lineTop = (p: typeof placed[number]) => compact ? mt - 6 : 18 + p.row * rowH + 7;
   return (
     <svg className={`ph-chart ${compact ? 'compact' : ''}`} width={width} height={height} viewBox={`0 0 ${width} ${height}`} direction="ltr" role={compact ? 'img' : 'group'} aria-label={label}
       onKeyDown={compact ? undefined : (e) => { if (e.key === 'ArrowRight') { e.preventDefault(); move(1); } else if (e.key === 'ArrowLeft') { e.preventDefault(); move(-1); } else if (e.key === 'Home') { e.preventDefault(); onSelect(first); } else if (e.key === 'End') { e.preventDefault(); onSelect(last); } }}>
-      <defs>{present.map((b) => <pattern key={b.i} id={`${pid}-${b.i}`} patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><rect width="5" height="5" fill={b.color} opacity=".18" /><path d="M0 0V5" stroke={b.color} strokeWidth="2.2" /></pattern>)}</defs>
+      {/* partners' part: the list's colour in stripes on a light tint of it, in both themes (dark stripes on a dark tint were
+          unreadable in dark, 16 Nov 2026) */}
+      <defs>{present.map((b) => <pattern key={b.i} id={`${pid}-${b.i}`} patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><rect width="5" height="5" style={{ fill: `color-mix(in srgb, ${b.color} 24%, #fff)` }} /><path d="M0 0V5" stroke={b.color} strokeWidth="2.2" /></pattern>)}</defs>
       {/* the selected election: a soft band behind its column and its year; its value and year in bold */}
       {selected !== null && bars[selected] && <rect className="ph-selband" x={x(selected) - slotW / 2 + 0.5} y={compact ? mt - 4 : mt - 6} width={slotW - 1} height={H + (compact ? 4 : 6) + xl + 1} rx={3} />}
       {!compact && Array.from({ length: top.max / top.step + 1 }, (_, k) => k * top.step).map((val) => <g key={val}>
@@ -226,16 +222,13 @@ export function HistoryChart({ bars, eras, events, selected, onSelect, compact, 
       {!compact && eras.map((e, k) => { const w = (e.to - e.from + 1) * slotW - 2, fits = w > e.name.length * 6.4 + 8; return <g key={k}>
         <rect x={x(e.from) - slotW / 2 + 1} y={mt + H + xl + 1} width={w} height={strip - 5} rx={3} className="ph-era"><title>{e.name}</title></rect>
         {fits && <text x={(x(e.from) + x(e.to)) / 2} y={mt + H + xl + strip - 8} className="ph-era-t" textAnchor="middle">{e.name}</text>}</g>; })}
-      {/* each event's flag names it (or gives its number in the list below when the words do not fit) */}
-      {placed.map((p) => {
+      {/* each event's numbered circle: the same number as its row in the Events list below */}
+      {!compact && placed.map((p) => {
         const weak = certRank[p.worst.certainty] < certRank.probable;
         const y1 = lineTop(p);
         return <g key={p.items[0].key} className={`ph-ev ${weak ? 'weak' : ''}`} data-certainty={p.worst.certainty}>
           <title>{p.title}</title>
-          {!compact && nums && <g className="ph-evnum"><rect x={p.x0} y={y1 - 8} width={p.w} height={15} rx={7.5} /><text x={p.x} y={y1 + 3.5} textAnchor="middle">{p.text}</text></g>}
-          {!compact && !nums && (() => { const right = p.x0 < p.x - 1;
-            return <g className="ph-flag"><rect x={p.x0} y={y1 - 12} width={p.w} height={13} rx={2} />
-              <text x={right ? p.x - 4 : p.x + 4} y={y1 - 2.5} textAnchor={right ? 'end' : 'start'}>{p.text}</text></g>; })()}
+          <g className="ph-evnum"><rect x={p.x0} y={y1 - 8} width={p.w} height={16} rx={8} /><text x={p.x} y={y1 + 3.5} textAnchor="middle">{p.text}</text></g>
         </g>;
       })}
     </svg>
@@ -426,6 +419,13 @@ function chipParties(electionId: string, l: Parameters<typeof partiesOf>[1]) {
   return first ? [first, ...ps.filter((p) => p !== first && !(front && p === front))] : ps;
 }
 
+/** A party's chip: its colour beside its name, as every place that names a party shows it (16 Nov 2026). */
+function PartyChip({ id, active, color, onPick }: { id: string; active: boolean; color?: string; onPick: () => void }) {
+  const lang = useLang();
+  return <button type="button" className={`btn small ph-chip ${active ? 'primary' : ''}`} aria-pressed={active} onClick={onPick}>
+    {color && <span className="swatch" style={{ background: color }} aria-hidden />}{partyShort(id, lang)}</button>;
+}
+
 /** A party whose only list withdrew before the vote (2026 Tnuat Ahi) never ran: no "since" year, no "0 of 26". */
 const NEVER = (L: ReturnType<typeof useL>) => L('did not run in any election', 'לא התמודדה באף מערכת בחירות');
 
@@ -434,6 +434,7 @@ export function PartyHistorySection({ s, r, listId }: { s: Scenario; r: Allocati
   const l = s.lists.find((x) => x.id === listId);
   const k = electionIndex(s.electionId);
   const chips = useMemo(() => l ? chipParties(s.electionId, l) : [], [s.electionId, l]);
+  const colours = useMemo(() => Object.fromEntries(l ? chips.map((p) => [p, l.parties?.length ? partyDisplayColor(l, p) : l.color]) : []) as Record<string, string>, [chips, l]);
   const [pid, setPid] = useState<string | null>(chips[0] ?? null);
   useEffect(() => { setPid(chips[0] ?? null); }, [listId]); // eslint-disable-line react-hooks/exhaustive-deps
   const [open, setOpen] = useState(false);
@@ -447,7 +448,7 @@ export function PartyHistorySection({ s, r, listId }: { s: Scenario; r: Allocati
   return <section className="ph-sec" aria-label={L('History', 'היסטוריה')}>
     <h3>{L('History', 'היסטוריה')} <span className="tiny muted">· {!ran.length ? NEVER(L) : ran.length > 1 ? L(`since ${yearLabel(h.firstRun, 'en')}`, `מאז ${yearLabel(h.firstRun, 'he')}`) : L(`only ${yearLabel(h.firstRun, 'en')}`, `רק ${yearLabel(h.firstRun, 'he')}`)}</span></h3>
     {chips.length > 1 && <div className="ph-chips" role="group" aria-label={L('Whose history', 'ההיסטוריה של')}>
-      {chips.map((p) => <button key={p} type="button" className={`btn small ${p === active ? 'primary' : ''}`} aria-pressed={p === active} onClick={() => setPid(p)}>{partyShort(p, lang)}</button>)}</div>}
+      {chips.map((p) => <PartyChip key={p} id={p} active={p === active} color={colours[p]} onPick={() => setPid(p)} />)}</div>}
     {h.eras.length > 1 && <div className="tiny muted ph-chain">{h.eras.map((e) => e.name).filter((n, i, a) => a.indexOf(n) === i).join(lang === 'he' ? ' ← ' : ' → ')}</div>}
     {ran.length > 1 && <div ref={ref} className="ph-compact">
       <button type="button" className="ph-chartbtn" onClick={() => setOpen(true)} aria-label={L(`Open full history: ${partyShort(active, 'en')}`, `פתיחת ההיסטוריה המלאה: ${partyShort(active, 'he')}`)}>
@@ -458,27 +459,36 @@ export function PartyHistorySection({ s, r, listId }: { s: Scenario; r: Allocati
     </div>}
     <ComparisonLine c={c} />
     <button type="button" className="btn small ph-full" onClick={() => setOpen(true)}>{L('Full history', 'היסטוריה מלאה')} <span aria-hidden>{lang === 'he' ? '‹' : '›'}</span></button>
-    {open && <HistorySheet parties={chips} initial={active} electionIdx={k} onClose={() => setOpen(false)} />}
+    {open && <HistorySheet parties={chips} colours={colours} initial={active} electionIdx={k} onClose={() => setOpen(false)} />}
   </section>;
 }
 
-/** What the chart's marks mean, in words: bars, partners' share, gaps, event lines (and why they sit between bars). */
-function Legend({ compact, metric = 'seats', events = [] }: { compact?: boolean; metric?: 'seats' | 'share'; events?: ChartEvent[] }) {
+/** What the chart's marks mean, in words: every mark the chart can draw is named here (owner, 16 Nov 2026: each line and
+ *  display explains itself), with the longer explanations behind (i). */
+function Legend({ compact, metric = 'seats', events = [], inside = false, eras = false }: { compact?: boolean; metric?: 'seats' | 'share'; events?: ChartEvent[]; inside?: boolean; eras?: boolean }) {
   const L = useL();
   const weak = events.some((e) => certRank[e.certainty] < certRank.probable);
   return <div className={`ph-legend ${compact ? 'tiny' : 'small'}`}>
     {metric === 'seats' ? <>
       <span><i className="ph-sw solid" />{L('Own members', 'חברי המפלגה')}</span>
       <span><i className="ph-sw hatch" />{L('Partners’ members', 'חברי השותפות')}</span>
+      {inside && !compact && <span><i className="ph-sw dash" />{L('Inside another’s list', 'בתוך רשימה אחרת')}</span>}
     </> : <>
       <span><i className="ph-sw solid" />{L('Ran alone', 'רצה לבדה')}</span>
       <span><i className="ph-sw hatch" />{L('Joint list (whole list)', 'רשימה משותפת (כולה)')}</span>
       <span><i className="ph-sw dash" />{L('Inside another’s list', 'בתוך רשימה אחרת')}</span>
     </>}
-    <span><b className="ph-gapkey" aria-hidden>·</b> {L('Did not run', 'לא התמודדה')}{!compact && <Info title={L('Party history', 'היסטוריית מפלגה')}>{L('Each bar is the whole list the party ran in. Seats: solid is the party’s own elected members, hatched its partners’ (official candidate lists and Knesset records). Vote share: a joint list’s votes belong to the whole list and are never divided. The shaded column is the election you are looking at.', 'כל עמודה היא הרשימה כולה שבה רצה המפלגה. מנדטים: החלק המלא הוא חברי המפלגה שנבחרו, המקווקו – חברי השותפות (רשימות המועמדים ורשומות הכנסת). שיעור קולות: קולות רשימה משותפת שייכים לרשימה כולה ואינם מחולקים. העמודה המוצללת היא הבחירות שבהן אתם צופים.')}</Info>}</span>
-    {events.length > 0 && <span className="ph-evkey"><i className="ph-sw evline" />{L('Merger, split or new name', 'איחוד, פילוג או שם חדש')}
-      {!compact && <Info title={L('Where events are drawn', 'היכן מסומנים אירועים')}>{L('Bars are elections, evenly spaced. This is not a time scale: Knessets last different lengths. Each line sits between the two elections the event fell between, at the same point of that gap as in time. Example: Kadima split from Likud on 23 Nov 2005, 89% of the way from the 2003 election to the 2006 one. A date known only by its year is placed in mid-year.', 'העמודות הן מערכות בחירות, במרווחים שווים. זה אינו ציר זמן: משך כל כנסת שונה. כל קו נמצא בין שתי הבחירות שביניהן אירע האירוע, באותה נקודה בפער כמו בזמן. לדוגמה: קדימה התפצלה מהליכוד ב־23 בנובמבר 2005, 89% מהדרך בין בחירות 2003 לבחירות 2006. תאריך שידועה בו רק השנה מסומן באמצע השנה.')}</Info>}</span>}
+    <span><b className="ph-gapkey" aria-hidden>·</b> {L('Did not run', 'לא התמודדה')}</span>
+    {!compact && <span><i className="ph-sw selband" />{L('Election you are looking at', 'הבחירות שבהן אתם צופים')}</span>}
+    {!compact && eras && <span><i className="ph-sw era" />{L('Name at the time', 'השם באותה תקופה')}</span>}
+    {events.length > 0 && (compact
+      ? <span className="ph-evkey"><i className="ph-sw evline" />{L('Merger, split or new name', 'איחוד, פילוג או שם חדש')}</span>
+      : <span className="ph-evkey"><i className="ph-sw evnum" aria-hidden>1</i>{L('Merger, split or new name: its number in Events below', 'איחוד, פילוג או שם חדש: מספרו ברשימת האירועים למטה')}
+        <Info title={L('Where events are drawn', 'היכן מסומנים אירועים')}>{L('Bars are elections, evenly spaced. This is not a time scale: Knessets last different lengths. Each line sits between the two elections the event fell between, at the same point of that gap as in time. Example: Kadima split from Likud on 23 Nov 2005, 89% of the way from the 2003 election to the 2006 one. A date known only by its year is placed in mid-year. Events too close to tell apart share one mark (“5,6,7”).', 'העמודות הן מערכות בחירות, במרווחים שווים. זה אינו ציר זמן: משך כל כנסת שונה. כל קו נמצא בין שתי הבחירות שביניהן אירע האירוע, באותה נקודה בפער כמו בזמן. לדוגמה: קדימה התפצלה מהליכוד ב־23 בנובמבר 2005, 89% מהדרך בין בחירות 2003 לבחירות 2006. תאריך שידועה בו רק השנה מסומן באמצע השנה. אירועים קרובים מדי זה לזה חולקים סימן אחד („5,6,7”).')}</Info></span>)}
     {weak && <span><i className="ph-sw evline weak" />{L('Dashed: not yet established', 'מקווקו: טרם בוסס')}</span>}
+    {!compact && <Info title={L('Party history', 'היסטוריית מפלגה')} label={L('How to read this chart', 'איך לקרוא את התרשים')}>{L(
+      'Each bar is one election: the whole list the party ran in, in that list’s own colour at that election, so the colour changes when the list changed. The number above a bar is its seats (or its share of the valid votes). Seats: the solid part is the party’s own elected members, the striped part its partners’ on a joint list (official candidate lists and Knesset records). A dashed outline: the party ran inside another party’s list. Vote share: a joint list’s votes belong to the whole list and are never divided. A dot: the party did not run that year. The strip under the years gives the name the party had in each period. The shaded column is the election you are looking at; click any bar, or use the arrow keys, to read that election in the box below.',
+      'כל עמודה היא מערכת בחירות אחת: הרשימה כולה שבה רצה המפלגה, בצבע של אותה רשימה באותן בחירות, ולכן הצבע משתנה כשהרשימה השתנתה. המספר מעל העמודה הוא מספר המנדטים (או שיעור הקולות הכשרים). מנדטים: החלק המלא הוא חברי המפלגה שנבחרו, החלק המפוספס – חברי השותפות ברשימה משותפת (רשימות המועמדים ורשומות הכנסת). מסגרת מקווקוות: המפלגה רצה בתוך רשימה של מפלגה אחרת. שיעור קולות: קולות רשימה משותפת שייכים לרשימה כולה ואינם מחולקים. נקודה: המפלגה לא התמודדה באותה שנה. הפס שמתחת לשנים מציג את שם המפלגה בכל תקופה. העמודה המוצללת היא הבחירות שבהן אתם צופים; לחיצה על עמודה, או מקשי החצים, מציגה את אותן בחירות בתיבה שמתחת.')}</Info>}
   </div>;
 }
 
@@ -499,7 +509,7 @@ function PointCard({ p, identity }: { p: SeriesPoint; identity: Identity }) {
 }
 
 /** The full view: a wide sheet (full screen on phones). `parties`: the chips (a joint list's parties). */
-export function HistorySheet({ parties, initial, electionIdx, onClose }: { parties: string[]; initial: string; electionIdx: number; onClose: () => void }) {
+export function HistorySheet({ parties, colours = {}, initial, electionIdx, onClose }: { parties: string[]; colours?: Record<string, string>; initial: string; electionIdx: number; onClose: () => void }) {
   const L = useL(), lang = useLang(), digits = useDigits();
   const { expert } = useLevel();
   const preferTables = useSetting('preferTables');
@@ -528,7 +538,7 @@ export function HistorySheet({ parties, initial, electionIdx, onClose }: { parti
       <button type="button" className="btn ghost" onClick={onClose} aria-label={L('Close', 'סגירה')}>×</button>
     </div>
     <div className="ph-toolbar">
-      {parties.length > 1 && <div className="ph-chips" role="group" aria-label={L('Whose history', 'ההיסטוריה של')}>{parties.map((p) => <button key={p} type="button" className={`btn small ${p === pid ? 'primary' : ''}`} aria-pressed={p === pid} onClick={() => setPid(p)}>{partyShort(p, lang)}</button>)}</div>}
+      {parties.length > 1 && <div className="ph-chips" role="group" aria-label={L('Whose history', 'ההיסטוריה של')}>{parties.map((p) => <PartyChip key={p} id={p} active={p === pid} color={colours[p]} onPick={() => setPid(p)} />)}</div>}
       <div className="seg-row" role="group" aria-label={L('Measure', 'מדד')}>
         {(['seats', 'share'] as const).map((m) => <button key={m} type="button" className={`btn small ${metric === m ? 'primary' : ''}`} aria-pressed={metric === m} onClick={() => setMetric(m)}>{m === 'seats' ? L('Seats', 'מנדטים') : L('Vote share', 'שיעור קולות')}</button>)}
       </div>
@@ -537,7 +547,7 @@ export function HistorySheet({ parties, initial, electionIdx, onClose }: { parti
       <HistoryChart bars={h.bars} eras={h.eras} events={h.chartEvents} selected={sel} onSelect={setSel} width={width} height={phone ? 230 : 290} unit={metric} phone={phone}
         label={L(`${partyShort(pid, 'en')}: ${metric === 'seats' ? 'seats' : 'vote share'} at each election. Arrow keys move between elections.`, `${partyShort(pid, 'he')}: ${metric === 'seats' ? 'מנדטים' : 'שיעור קולות'} בכל בחירות. מקשי החצים עוברים בין בחירות.`)} />
     </div>
-    <Legend metric={metric} events={h.chartEvents} />
+    <Legend metric={metric} events={h.chartEvents} inside={h.bars.some((b) => b.inside)} eras={h.eras.length > 0} />
     {cur && <PointCard p={cur} identity={h.identity} />}
     {(h.events.length > 0 || open.length > 0) && <>
       <h3>{L('Events', 'אירועים')}</h3>
