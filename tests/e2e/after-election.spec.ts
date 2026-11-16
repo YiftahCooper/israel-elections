@@ -107,7 +107,8 @@ for (const lang of ['he', 'en'] as const) test(`localised history, isolated rang
   }));
   expect(orphans).toEqual([]);
   const summary = history.locator('.after-support-totals').first();
-  await expect(summary.locator('.after-members-total')).toHaveText('62');
+  // Round 7 research (16 Nov 2026): Chikli opposed government 36 from its formation, so 61 coalition members, not 62.
+  await expect(summary.locator('.after-members-total')).toHaveText('61');
   await expect(summary.locator('.after-confidence-vote')).toContainText(lang === 'he' ? '60 בעד · 59 נגד' : '60 for · 59 against');
   await expect(history.locator('[data-individual="amichai-chikli"]')).toContainText(lang === 'he' ? 'נגד' : 'Against');
   await expect(history.locator('[data-individual="said-al-harumi"]')).toContainText(lang === 'he' ? 'נמנע' : 'Abstained');
