@@ -41,6 +41,9 @@ register (`docs/data-gaps.md`).
   only; a touch shows nothing.
 - **Registered names on the Overview list.** The list composition still writes "(registered as …)" in brackets; Party
   history already puts the registered name behind an (i). The same rule should apply on the Overview.
+- **Exact values by mouse with hover popups off.** Mouse users reach the "Exact values" switch in the note that opens
+  when the pointer rests on a figure. With "Popups on hover" off, clicking a figure opens nothing, so the switch is out
+  of reach by mouse (owner's question, 16 Nov 2026: "Why don't mouse users have this option?").
 
 ## Before release 1
 
