@@ -203,6 +203,20 @@
       "accessed": "2026-11-16",
       "evidenceFamily": "Knesset-sitting-437733",
       "via": "PDF p. 1, printed p. 334"
+    },
+    "goldberg-1998": {
+      "url": "https://doi.org/10.2979/isr.1998.3.1.211",
+      "publisher": "Giora Goldberg, “Religious Zionism and the Framing of a Constitution for Israel”, Israel Studies 3:1 (1998)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:goldberg"
+    },
+    "galnoor-blander-2018": {
+      "url": "https://doi.org/10.1017/9781316160978",
+      "publisher": "Itzhak Galnoor and Dana Blander, The Handbook of Israel’s Political System (Cambridge University Press, 2018)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:galnoor"
     }
   },
   "results": {
@@ -601,10 +615,18 @@
       {
         "letters": "ד",
         "seats": 2,
-        "role": "other",
-        "certainty": "unknown",
-        "cites": [],
-        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+        "role": "member-without-ministries",
+        "certainty": "probable",
+        "cites": [
+          {
+            "source": "goldberg-1998",
+            "quote": "Agudat Yisrael and Poalei Agudat Yisrael, participated in the governing coalitions from statehood until 1952.",
+            "locator": "p. 212"
+          }
+        ],
+        "note": "Probable: one study (Giora Goldberg, 1998) says Poalei Agudat Yisrael was in the governing coalitions from 1948 until 1952. Still to find: a record of the time.",
+        "noteEn": "One study says it was in the governing coalitions until 1952.",
+        "noteHe": "מחקר אחד אומר שהייתה בקואליציות עד 1952."
       },
       {
         "letters": "יד",
@@ -719,10 +741,18 @@
           {
             "letters": "ב",
             "seats": 2,
-            "role": "other",
-            "certainty": "unknown",
-            "cites": [],
-            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+            "role": "member-without-ministries",
+            "certainty": "probable",
+            "cites": [
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "After the government won the Knesset’s vote of confidence, Mizrahi and Ha-Mizrahi also joined, based on a promise",
+                "locator": "p. 413"
+              }
+            ],
+            "note": "Probable: one book (Galnoor and Blander, 2018) says Mizrahi joined right after the government won the Knesset’s confidence vote. Still to find: a record of the time.",
+            "noteEn": "Joined right after the government won the confidence vote.",
+            "noteHe": "הצטרפה מיד אחרי שהממשלה זכתה באמון הכנסת."
           },
           {
             "letters": "פ",
@@ -783,9 +813,9 @@
         "supportSeats": null,
         "reconciliation": {
           "status": "unresolved",
-          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 77; full membership remains unknown. Investiture: 63 for, 24 against, not recorded abstaining."
+          "note": "Not every member of the coalition is known (those known hold 79 seats); the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 63 for, 24 against, abstentions not recorded."
         },
-        "knownMemberSeats": 77
+        "knownMemberSeats": 79
       },
       {
         "date": "1954-01-26",
@@ -898,7 +928,7 @@
         "supportSeats": null,
         "reconciliation": {
           "status": "unresolved",
-          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 73; full membership remains unknown. Investiture: 75 for, 23 against, 5 abstaining."
+          "note": "Not every member of the coalition is known (those known hold 73 seats); the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 75 for, 23 against, 5 abstaining."
         },
         "knownMemberSeats": 73
       },
@@ -1026,7 +1056,7 @@
         "supportSeats": null,
         "reconciliation": {
           "status": "unresolved",
-          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 59; full membership remains unknown. Investiture: 66 for, 32 against, 3 abstaining."
+          "note": "Not every member of the coalition is known (those known hold 59 seats); the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 66 for, 32 against, 3 abstaining."
         },
         "knownMemberSeats": 59
       },
@@ -1063,9 +1093,9 @@
     "supportSeats": null,
     "reconciliation": {
       "status": "unresolved",
-      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 58; full membership remains unknown. Investiture: 56 for, 40 against, 4 abstaining."
+      "note": "Not every member of the coalition is known (those known hold 60 seats); the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 56 for, 40 against, 4 abstaining."
     },
-    "knownMemberSeats": 58
+    "knownMemberSeats": 60
   },
   "term": {
     "start": "1951-07-30",

@@ -162,6 +162,20 @@
       "accessed": "2026-11-16",
       "evidenceFamily": "Knesset-sitting-477066",
       "via": "OOXML paragraph 4644"
+    },
+    "galnoor-blander-2018": {
+      "url": "https://doi.org/10.1017/9781316160978",
+      "publisher": "Itzhak Galnoor and Dana Blander, The Handbook of Israel’s Political System (Cambridge University Press, 2018)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:galnoor"
+    },
+    "mendilow-2003": {
+      "url": "https://doi.org/10.1515/9780791487501",
+      "publisher": "Jonathan Mendilow, Ideology, Party Change, and Electoral Campaigns in Israel, 1965–2001 (SUNY Press, 2003)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:mendilow"
     }
   },
   "results": {
@@ -602,13 +616,23 @@
       {
         "letters": "ג",
         "seats": 5,
-        "note": "IDI names the seven-member coalition in the retained research; six factions have ministers in the official roster, UTJ does not. Deposit of UTJ’s original agreement not inspected.",
+        "note": "Two independent studies, and the Israel Democracy Institute, count United Torah Judaism in Barak’s coalition. It had no minister in the official roster.",
         "role": "member-without-ministries",
-        "certainty": "provisional",
+        "certainty": "confirmed",
         "cites": [
           {
             "source": "idi-coalition",
             "quote": "כללה הקואליציה שבע סיעות ונסמכה על רוב של 75 חברי כנסת"
+          },
+          {
+            "source": "galnoor-blander-2018",
+            "quote": "Shas joined the coalition, with UTJ and the NRP following suit.",
+            "locator": "p. 424"
+          },
+          {
+            "source": "mendilow-2003",
+            "quote": "Shas and the Ashkenazi ultraorthodox United Torah Judaism. The latter bolted the coalition in September 1999",
+            "locator": "p. 275"
           }
         ]
       }
@@ -753,7 +777,7 @@
         "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
         "reconciliation": {
           "status": "unresolved",
-          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 0; full membership remains unknown. Investiture: 72 for, 21 against, not recorded abstaining."
+          "note": "Not every member of the coalition is known, and its seats at this date have not been counted; the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 72 for, 21 against, abstentions not recorded."
         },
         "knownMemberSeats": 0
       }

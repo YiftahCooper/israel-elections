@@ -88,11 +88,12 @@ describe('the recorded first government as roles', () => {
     const seats = (ids: string[]) => pieces.filter((p) => ids.includes(p.id)).reduce((n, p) => n + p.n, 0);
     return { ...out, seats };
   };
-  it('k13 loads members and the provisional outside support, never upgraded', () => {
+  it('k13 loads members and the outside support at its recorded certainty', () => {
     const { recorded, choices, seats } = rolesFor('k13');
     expect(seats(choices!.in)).toBe(62);
     expect(seats(choices!.support)).toBe(5);
-    expect(recorded.filter((x) => x.role === 'support').map((x) => [x.r.letters, x.r.certainty])).toEqual([['ו', 'provisional'], ['ע', 'provisional']]);
+    // Confirmed since 16 Nov 2026 (books batch 1: independent studies, one citing the agreements of 9 July 1992).
+    expect(recorded.filter((x) => x.role === 'support').map((x) => [x.r.letters, x.r.certainty])).toEqual([['ו', 'confirmed'], ['ע', 'confirmed']]);
   });
   it('a confidence vote alone or an unknown relationship stays Any', () => {
     const k1 = rolesFor('k1');
@@ -125,10 +126,13 @@ describe('the recorded first government as roles', () => {
     const k20 = rolesFor('k20');
     const v20 = governmentVote({ members: k20.seats(k20.choices!.in), support: 0, abstain: 0, total: 120 });
     expect(recordedVoteGap(aftermathRecords.k20!.government!, v20, k20.recorded, k20.seats, 120)).toBeNull();
-    // 2003: one role is still unknown, and the gap says so
+    // 2003: every role is now recorded (Yisrael BaAliyah a probable member since 16 Nov 2026), so 68 member seats
+    // against the recorded 66 for are disclosed as MKs who did not vote, not as an unknown role
     const k16 = rolesFor('k16');
     const v16 = governmentVote({ members: k16.seats(k16.choices!.in), support: 0, abstain: 0, total: 120 });
-    expect(recordedVoteGap(aftermathRecords.k16!.government!, v16, k16.recorded, k16.seats, 120)!.reasons.map((r) => r.kind)).toContain('unknown');
+    const kinds16 = recordedVoteGap(aftermathRecords.k16!.government!, v16, k16.recorded, k16.seats, 120)!.reasons.map((r) => r.kind);
+    expect(kinds16).not.toContain('unknown');
+    expect(kinds16).toContain('not-voting');
     // 1984: Alignment counted whole (37 of 44 took part) and seven individual MKs disclosed
     const k11 = rolesFor('k11');
     const v11 = governmentVote({ members: k11.seats(k11.choices!.in), support: 0, abstain: 0, total: 120 });

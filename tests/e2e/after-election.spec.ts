@@ -150,13 +150,16 @@ for (const lang of ['he', 'en'] as const) test(`support roles and honest unknown
   const history = page.locator('.after-election');
   await choose(election, 'k9');
   await expect(history.locator('[data-support-role="member-without-ministries"]').first()).toContainText(lang === 'he' ? 'אגודת ישראל' : 'Agudat');
-  await expect(history.locator('[data-support-role="confidence-vote-only"]').first()).toContainText(lang === 'he' ? 'פלאטו' : 'Flatto');
+  // Flatto-Sharon supported the government from outside (probable since 16 Nov 2026), not by his vote alone
+  await expect(history.locator('[data-support-role="outside-support"]').first()).toContainText(lang === 'he' ? 'פלאטו' : 'Flatto');
   await expect(history.locator('[data-individual="moshe-dayan"]')).toContainText(lang === 'he' ? 'משה דיין' : 'Moshe Dayan');
   await expect(history.locator('.after-members-total').first()).toHaveText('62');
+  await expect(history.locator('.after-support-total').first()).toHaveText('1');
   await expect(history.locator('.after-confidence-vote').first()).toContainText(lang === 'he' ? '63 בעד · 53 נגד' : '63 for · 53 against');
   await choose(election, 'k13');
   await expect(history.locator('[data-support-role="outside-support"]').first().locator('.after-party')).toHaveCount(2);
-  await expect(history.locator('[data-support-role="outside-support"]').first()).toContainText(lang === 'he' ? 'זמני' : 'Provisional');
+  // Confirmed since 16 Nov 2026 (independent studies, one citing the agreements of 9 July 1992): no "Provisional" mark
+  await expect(history.locator('[data-support-role="outside-support"]').first()).not.toContainText(lang === 'he' ? 'זמני' : 'Provisional');
   await expect(history.locator('.after-support-total').first()).toHaveText('5');
   await expect(history.locator('.after-confidence-vote').first()).toContainText(lang === 'he' ? '67 בעד · 53 נגד' : '67 for · 53 against');
   await history.getByText(lang === 'he' ? 'שינויים בממשלה' : 'Government changes', { exact: true }).click();

@@ -141,6 +141,20 @@
       "accessed": "2026-11-16",
       "evidenceFamily": "Knesset-sitting-490972",
       "via": "PDF p. 50, printed p. 1562"
+    },
+    "rubinstein-1979": {
+      "url": "https://openlibrary.org/works/OL17851764W",
+      "publisher": "Elyakim Rubinstein, “The Lesser Parties in the Israeli Elections of 1977”, in Howard R. Penniman (ed.), Israel at the Polls: The Knesset Elections of 1977 (American Enterprise Institute, 1979)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:rubinstein"
+    },
+    "goldberg-1998": {
+      "url": "https://doi.org/10.2979/isr.1998.3.1.211",
+      "publisher": "Giora Goldberg, “Religious Zionism and the Framing of a Constitution for Israel”, Israel Studies 3:1 (1998)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:goldberg"
     }
   },
   "results": {
@@ -509,15 +523,25 @@
             "letters": "לע",
             "seats": 4,
             "role": "member-with-ministries",
-            "certainty": "provisional",
+            "certainty": "confirmed",
             "cites": [
               {
                 "source": "role-roster-17",
                 "quote": "PersonToPositionID 3837; PersonID 2575; PositionID 39; StartDate 1974-06-03T00:00:00",
                 "note": "Project extraction of official fields, not prose quotation. משה קול; faction join: "
+              },
+              {
+                "source": "rubinstein-1979",
+                "quote": "the two Independent Liberal ministers wanted to submit their resignation.",
+                "locator": "p. 187"
+              },
+              {
+                "source": "goldberg-1998",
+                "quote": "It included the Labor Party, Marxist Mapam, secular Independent Liberals, the radical Civil Rights Movement (Ratz), and Arabs Knesset Members.",
+                "locator": "p. 221"
               }
             ],
-            "note": "Official appointment established, but this minister was not a sitting MK at formation. Party attribution reuses the governing-faction research and needs an explicit contemporaneous affiliation source; the API does not supply it."
+            "note": "The official roster records the appointment of Moshe Kol, and two independent studies name the Independent Liberals among the parties of Rabin’s first government."
           },
           {
             "letters": "רצ",
@@ -612,7 +636,7 @@
     "supportSeats": null,
     "reconciliation": {
       "status": "unresolved",
-      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 65; full membership remains unknown. Investiture: 62 for, 46 against, 9 abstaining."
+      "note": "Not every member of the coalition is known (those known hold 65 seats); the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 62 for, 46 against, 9 abstaining."
     },
     "knownMemberSeats": 65
   },

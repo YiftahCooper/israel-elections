@@ -234,11 +234,11 @@
           "members": [
             {
               "letters": "ו",
-              "note": "outside support, provisional (data/meta/aftermath/k13.json)"
+              "note": "outside support, confirmed (data/meta/aftermath/k13.json)"
             },
             {
               "letters": "ע",
-              "note": "outside support, provisional (data/meta/aftermath/k13.json)"
+              "note": "outside support, confirmed (data/meta/aftermath/k13.json)"
             }
           ]
         },
@@ -267,7 +267,7 @@
           ]
         }
       ],
-      "notes": "Opening coalition: Labor, Meretz and Shas (62 seats), checked against the official coalition agreements and first-sitting transcript; IDI independently confirms membership. Bloc colours are display suggestions. Hadash and the Arab Democratic Party (5 seats) gave outside support without joining: a provisional classification in data/meta/aftermath/k13.json (government support roles, 7 November 2026).",
+      "notes": "Opening coalition: Labor, Meretz and Shas (62 seats), checked against the official coalition agreements and first-sitting transcript; IDI independently confirms membership. Bloc colours are display suggestions. Hadash and the Arab Democratic Party (5 seats) gave outside support without joining: confirmed in data/meta/aftermath/k13.json (16 November 2026: several independent studies, one citing the agreements Labor signed with both parties on 9 July 1992).",
       "sources": [
         {
           "url": "https://main.knesset.gov.il/mk/government/documents/cagreement25.pdf",

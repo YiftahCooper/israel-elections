@@ -177,6 +177,34 @@
       "accessed": "2026-11-16",
       "evidenceFamily": "Knesset-sitting-436746",
       "via": "PDF p. 58, printed p. 112"
+    },
+    "abramson-1990": {
+      "url": "https://doi.org/10.4324/9780429310409-10",
+      "publisher": "Paul R. Abramson, “Demographic Change and Partisan Support”, in Asher Arian and Michal Shamir (eds.), The Elections in Israel 1988 (Westview, 1990)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:abramson"
+    },
+    "diskin-1991": {
+      "url": "https://openlibrary.org/works/OL4457043W",
+      "publisher": "Abraham Diskin, Elections and Voters in Israel (Praeger, 1991)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:diskin"
+    },
+    "galnoor-blander-2018": {
+      "url": "https://doi.org/10.1017/9781316160978",
+      "publisher": "Itzhak Galnoor and Dana Blander, The Handbook of Israel’s Political System (Cambridge University Press, 2018)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:galnoor"
+    },
+    "bradley-1985": {
+      "url": "https://openlibrary.org/works/OL4561717W",
+      "publisher": "C. Paul Bradley, Parliamentary Elections in Israel: Three Case Studies (Tompson & Rutter, 1985)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:bradley"
     }
   },
   "results": {
@@ -383,6 +411,13 @@
             {
               "source": "jta1984mandate",
               "quote": "with the exception of the Kach Party headed by Rabbi Meir Kahane"
+            },
+            {
+              "source": "bradley-1985",
+              "quote": "He also excluded Rabbi Kahane from the consultation process—all the other 14 Knesset parties were included,",
+              "locator": "p. 179",
+              "note": "The book cites The New York Times of 6 August 1984.",
+              "noteHe": "הספר מסתמך על הניו יורק טיימס מ־6 באוגוסט 1984."
             }
           ],
           "noteEn": "Not invited to the consultations.",
@@ -415,7 +450,8 @@
       ],
       "notes": [
         "Per-list split (Alignment 44, Hadash 4, Ratz 3, Yahad 3, Shinui 3, Progressive List 2, Ometz 1 = 60; Likud 41, Tehiya–Tzomet 5, Shas 4, Agudat Yisrael 2, Morasha 2 = 54) matches JTA's contemporary totals; El País counted 59 for Labor (it groups Yahad and Ometz as 'three'), recorded as a source conflict. Recommendations were made on Friday 3 August 1984; Herzog gave Peres the mandate on 5 August. The rotation agreement (Shamir to take over after 25 months) came later and is not a recommendation.",
-        "Upgrade: JTA 6 August 1984 names every faction on each side, including Ometz/Hurwitz and the unity-government positions; the per-list classification no longer depends solely on Hebrew Wikipedia. Kach was not invited, not an explicit refusal to recommend."
+        "Upgrade: JTA 6 August 1984 names every faction on each side, including Ometz/Hurwitz and the unity-government positions; the per-list classification no longer depends solely on Hebrew Wikipedia. Kach was not invited, not an explicit refusal to recommend.",
+        "A later book, Abraham Diskin’s chapter in Israel at the Polls 2009 (Routledge, 2011), p. 61, says 60 MKs backed Peres and 60 backed Shamir. The reports of the time (JTA, 6 and 7 August 1984) give 60 and 54, and this record keeps their figures."
       ]
     }
   ],
@@ -931,15 +967,32 @@
         "fromLetters": "אמת",
         "countedInFactionSeats": false,
         "role": "other",
-        "certainty": "provisional",
+        "certainty": "confirmed",
         "vote": "unknown",
         "cites": [
           {
             "source": "jta-opponents21",
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
+          },
+          {
+            "source": "abramson-1990",
+            "quote": "Mapam refused to join the government; the six Mapam MKs who had been elected on the Alignment list joined the opposition.",
+            "locator": "p. 174"
+          },
+          {
+            "source": "diskin-1991",
+            "quote": "Mapam, with its six seats, left the Alignment and did not join the coalition.",
+            "locator": "p. 39"
+          },
+          {
+            "source": "galnoor-blander-2018",
+            "quote": "on the left (Ratz, Mapam and Yossi Sarid, Hadash and the Progressive List for Peace)",
+            "locator": "p. 420",
+            "note": "Among those outside the coalition.",
+            "noteHe": "בין אלה שמחוץ לקואליציה."
           }
         ],
-        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition (the six Mapam MKs and Yossi Sarid stayed out); their party opposed the government. Already left out of the list’s seats, so not counted twice. A contemporary JTA report covers the group; the Knesset record of the vote, checked in November 2026, gives only the totals, so this MK’s own vote is unknown."
+        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition: Mapam refused to join and its six MKs went into opposition, as a report of the time and three independent studies say. The books speak of Mapam’s six MKs as a group; the names are this record’s. Already left out of the list’s seats, so not counted twice. The Knesset record of the vote gives only the totals, so this MK’s own vote is unknown."
       },
       {
         "id": "elazar-granot",
@@ -948,15 +1001,32 @@
         "fromLetters": "אמת",
         "countedInFactionSeats": false,
         "role": "other",
-        "certainty": "provisional",
+        "certainty": "confirmed",
         "vote": "unknown",
         "cites": [
           {
             "source": "jta-opponents21",
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
+          },
+          {
+            "source": "abramson-1990",
+            "quote": "Mapam refused to join the government; the six Mapam MKs who had been elected on the Alignment list joined the opposition.",
+            "locator": "p. 174"
+          },
+          {
+            "source": "diskin-1991",
+            "quote": "Mapam, with its six seats, left the Alignment and did not join the coalition.",
+            "locator": "p. 39"
+          },
+          {
+            "source": "galnoor-blander-2018",
+            "quote": "on the left (Ratz, Mapam and Yossi Sarid, Hadash and the Progressive List for Peace)",
+            "locator": "p. 420",
+            "note": "Among those outside the coalition.",
+            "noteHe": "בין אלה שמחוץ לקואליציה."
           }
         ],
-        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition (the six Mapam MKs and Yossi Sarid stayed out); their party opposed the government. Already left out of the list’s seats, so not counted twice. A contemporary JTA report covers the group; the Knesset record of the vote, checked in November 2026, gives only the totals, so this MK’s own vote is unknown."
+        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition: Mapam refused to join and its six MKs went into opposition, as a report of the time and three independent studies say. The books speak of Mapam’s six MKs as a group; the names are this record’s. Already left out of the list’s seats, so not counted twice. The Knesset record of the vote gives only the totals, so this MK’s own vote is unknown."
       },
       {
         "id": "yair-tsaban",
@@ -965,15 +1035,32 @@
         "fromLetters": "אמת",
         "countedInFactionSeats": false,
         "role": "other",
-        "certainty": "provisional",
+        "certainty": "confirmed",
         "vote": "unknown",
         "cites": [
           {
             "source": "jta-opponents21",
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
+          },
+          {
+            "source": "abramson-1990",
+            "quote": "Mapam refused to join the government; the six Mapam MKs who had been elected on the Alignment list joined the opposition.",
+            "locator": "p. 174"
+          },
+          {
+            "source": "diskin-1991",
+            "quote": "Mapam, with its six seats, left the Alignment and did not join the coalition.",
+            "locator": "p. 39"
+          },
+          {
+            "source": "galnoor-blander-2018",
+            "quote": "on the left (Ratz, Mapam and Yossi Sarid, Hadash and the Progressive List for Peace)",
+            "locator": "p. 420",
+            "note": "Among those outside the coalition.",
+            "noteHe": "בין אלה שמחוץ לקואליציה."
           }
         ],
-        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition (the six Mapam MKs and Yossi Sarid stayed out); their party opposed the government. Already left out of the list’s seats, so not counted twice. A contemporary JTA report covers the group; the Knesset record of the vote, checked in November 2026, gives only the totals, so this MK’s own vote is unknown."
+        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition: Mapam refused to join and its six MKs went into opposition, as a report of the time and three independent studies say. The books speak of Mapam’s six MKs as a group; the names are this record’s. Already left out of the list’s seats, so not counted twice. The Knesset record of the vote gives only the totals, so this MK’s own vote is unknown."
       },
       {
         "id": "amira-sartani",
@@ -982,15 +1069,32 @@
         "fromLetters": "אמת",
         "countedInFactionSeats": false,
         "role": "other",
-        "certainty": "provisional",
+        "certainty": "confirmed",
         "vote": "unknown",
         "cites": [
           {
             "source": "jta-opponents21",
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
+          },
+          {
+            "source": "abramson-1990",
+            "quote": "Mapam refused to join the government; the six Mapam MKs who had been elected on the Alignment list joined the opposition.",
+            "locator": "p. 174"
+          },
+          {
+            "source": "diskin-1991",
+            "quote": "Mapam, with its six seats, left the Alignment and did not join the coalition.",
+            "locator": "p. 39"
+          },
+          {
+            "source": "galnoor-blander-2018",
+            "quote": "on the left (Ratz, Mapam and Yossi Sarid, Hadash and the Progressive List for Peace)",
+            "locator": "p. 420",
+            "note": "Among those outside the coalition.",
+            "noteHe": "בין אלה שמחוץ לקואליציה."
           }
         ],
-        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition (the six Mapam MKs and Yossi Sarid stayed out); their party opposed the government. Already left out of the list’s seats, so not counted twice. A contemporary JTA report covers the group; the Knesset record of the vote, checked in November 2026, gives only the totals, so this MK’s own vote is unknown."
+        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition: Mapam refused to join and its six MKs went into opposition, as a report of the time and three independent studies say. The books speak of Mapam’s six MKs as a group; the names are this record’s. Already left out of the list’s seats, so not counted twice. The Knesset record of the vote gives only the totals, so this MK’s own vote is unknown."
       },
       {
         "id": "muhammad-wattad",
@@ -999,15 +1103,32 @@
         "fromLetters": "אמת",
         "countedInFactionSeats": false,
         "role": "other",
-        "certainty": "provisional",
+        "certainty": "confirmed",
         "vote": "unknown",
         "cites": [
           {
             "source": "jta-opponents21",
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
+          },
+          {
+            "source": "abramson-1990",
+            "quote": "Mapam refused to join the government; the six Mapam MKs who had been elected on the Alignment list joined the opposition.",
+            "locator": "p. 174"
+          },
+          {
+            "source": "diskin-1991",
+            "quote": "Mapam, with its six seats, left the Alignment and did not join the coalition.",
+            "locator": "p. 39"
+          },
+          {
+            "source": "galnoor-blander-2018",
+            "quote": "on the left (Ratz, Mapam and Yossi Sarid, Hadash and the Progressive List for Peace)",
+            "locator": "p. 420",
+            "note": "Among those outside the coalition.",
+            "noteHe": "בין אלה שמחוץ לקואליציה."
           }
         ],
-        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition (the six Mapam MKs and Yossi Sarid stayed out); their party opposed the government. Already left out of the list’s seats, so not counted twice. A contemporary JTA report covers the group; the Knesset record of the vote, checked in November 2026, gives only the totals, so this MK’s own vote is unknown."
+        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition: Mapam refused to join and its six MKs went into opposition, as a report of the time and three independent studies say. The books speak of Mapam’s six MKs as a group; the names are this record’s. Already left out of the list’s seats, so not counted twice. The Knesset record of the vote gives only the totals, so this MK’s own vote is unknown."
       },
       {
         "id": "haika-grossman",
@@ -1016,15 +1137,32 @@
         "fromLetters": "אמת",
         "countedInFactionSeats": false,
         "role": "other",
-        "certainty": "provisional",
+        "certainty": "confirmed",
         "vote": "unknown",
         "cites": [
           {
             "source": "jta-opponents21",
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
+          },
+          {
+            "source": "abramson-1990",
+            "quote": "Mapam refused to join the government; the six Mapam MKs who had been elected on the Alignment list joined the opposition.",
+            "locator": "p. 174"
+          },
+          {
+            "source": "diskin-1991",
+            "quote": "Mapam, with its six seats, left the Alignment and did not join the coalition.",
+            "locator": "p. 39"
+          },
+          {
+            "source": "galnoor-blander-2018",
+            "quote": "on the left (Ratz, Mapam and Yossi Sarid, Hadash and the Progressive List for Peace)",
+            "locator": "p. 420",
+            "note": "Among those outside the coalition.",
+            "noteHe": "בין אלה שמחוץ לקואליציה."
           }
         ],
-        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition (the six Mapam MKs and Yossi Sarid stayed out); their party opposed the government. Already left out of the list’s seats, so not counted twice. A contemporary JTA report covers the group; the Knesset record of the vote, checked in November 2026, gives only the totals, so this MK’s own vote is unknown."
+        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition: Mapam refused to join and its six MKs went into opposition, as a report of the time and three independent studies say. The books speak of Mapam’s six MKs as a group; the names are this record’s. Already left out of the list’s seats, so not counted twice. The Knesset record of the vote gives only the totals, so this MK’s own vote is unknown."
       },
       {
         "id": "yossi-sarid",
@@ -1033,15 +1171,27 @@
         "fromLetters": "אמת",
         "countedInFactionSeats": false,
         "role": "other",
-        "certainty": "provisional",
+        "certainty": "confirmed",
         "vote": "unknown",
         "cites": [
           {
             "source": "jta-opponents21",
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
+          },
+          {
+            "source": "diskin-1991",
+            "quote": "A dovish member of the Labor Party, Yossi Sarid, left that party and joined an opposition party, CRM.",
+            "locator": "p. 39"
+          },
+          {
+            "source": "galnoor-blander-2018",
+            "quote": "on the left (Ratz, Mapam and Yossi Sarid, Hadash and the Progressive List for Peace)",
+            "locator": "p. 420",
+            "note": "Among those outside the coalition.",
+            "noteHe": "בין אלה שמחוץ לקואליציה."
           }
         ],
-        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition (the six Mapam MKs and Yossi Sarid stayed out); their party opposed the government. Already left out of the list’s seats, so not counted twice. A contemporary JTA report covers the group; the Knesset record of the vote, checked in November 2026, gives only the totals, so this MK’s own vote is unknown."
+        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition: he left Labor for the Citizens’ Rights Movement, in opposition, as a report of the time and two independent studies say. Already left out of the list’s seats, so not counted twice. The Knesset record of the vote gives only the totals, so this MK’s own vote is unknown."
       }
     ],
     "knownMemberSeats": 97

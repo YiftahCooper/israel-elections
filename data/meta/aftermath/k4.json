@@ -611,7 +611,7 @@
     "supportSeats": null,
     "reconciliation": {
       "status": "unresolved",
-      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 81; full membership remains unknown. Investiture: 78 for, 33 against, not recorded abstaining."
+      "note": "Not every member of the coalition is known (those known hold 81 seats); the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 78 for, 33 against, abstentions not recorded."
     },
     "knownMemberSeats": 81
   },

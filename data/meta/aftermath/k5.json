@@ -167,6 +167,20 @@
       "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
       "kind": "official",
       "accessed": "2026-11-07"
+    },
+    "goldberg-1998": {
+      "url": "https://doi.org/10.2979/isr.1998.3.1.211",
+      "publisher": "Giora Goldberg, “Religious Zionism and the Framing of a Constitution for Israel”, Israel Studies 3:1 (1998)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:goldberg"
+    },
+    "galnoor-blander-2018": {
+      "url": "https://doi.org/10.1017/9781316160978",
+      "publisher": "Itzhak Galnoor and Dana Blander, The Handbook of Israel’s Political System (Cambridge University Press, 2018)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:galnoor"
     }
   },
   "results": {
@@ -607,10 +621,23 @@
       {
         "letters": "ד",
         "seats": 2,
-        "role": "other",
-        "certainty": "unknown",
-        "cites": [],
-        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+        "role": "member-without-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "galnoor-blander-2018",
+            "quote": "Poalei Agudat Yisrael joined the coalition and made do with deputy minister in the Education Ministry.",
+            "locator": "p. 416"
+          },
+          {
+            "source": "goldberg-1998",
+            "quote": "Poalei Agudat Yisrael joined the governing coalitions also from 1960 to 1969.",
+            "locator": "p. 212"
+          }
+        ],
+        "note": "Two independent studies say Poalei Agudat Yisrael joined the coalition. It had a deputy minister (Education), not a cabinet seat.",
+        "noteEn": "Joined with a deputy minister (Education), not a minister.",
+        "noteHe": "הצטרפה עם סגן שר (חינוך), בלי שר."
       },
       {
         "letters": "יא",
@@ -759,7 +786,7 @@
         "supportSeats": 0,
         "reconciliation": {
           "status": "unresolved",
-          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Quantified gap: 68 identified member/support seats versus 64 votes for (+4); the named abstainers, absentees or dissenters needed to explain this gap have not been recovered. Do not infer that each member voted for."
+          "note": "The coalition and its supporters held 68 seats, but 64 MKs voted for; which 4 did not is unknown, as the record does not say how each MK voted. Not every member of the coalition is known either. Do not assume every coalition MK voted for."
         },
         "knownMemberSeats": 68
       },
@@ -834,10 +861,18 @@
           {
             "letters": "ד",
             "seats": 2,
-            "role": "other",
-            "certainty": "unknown",
-            "cites": [],
-            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+            "role": "member-without-ministries",
+            "certainty": "probable",
+            "cites": [
+              {
+                "source": "goldberg-1998",
+                "quote": "Poalei Agudat Yisrael joined the governing coalitions also from 1960 to 1969.",
+                "locator": "p. 212"
+              }
+            ],
+            "note": "Probable: one study (Giora Goldberg, 1998) says Poalei Agudat Yisrael was in the governing coalitions from 1960 to 1969. Still to find: a record of this government.",
+            "noteEn": "One study says it was in the coalitions of 1960–1969.",
+            "noteHe": "מחקר אחד אומר שהייתה בקואליציות של 1960–1969."
           },
           {
             "letters": "יא",
@@ -873,9 +908,9 @@
         "supportSeats": null,
         "reconciliation": {
           "status": "unresolved",
-          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 62; full membership remains unknown. Investiture: 59 for, 36 against, 9 abstaining."
+          "note": "Not every member of the coalition is known (those known hold 64 seats); the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 59 for, 36 against, 9 abstaining."
         },
-        "knownMemberSeats": 62
+        "knownMemberSeats": 64
       }
     ],
     "endDateCites": [
@@ -898,9 +933,9 @@
     "supportSeats": null,
     "reconciliation": {
       "status": "unresolved",
-      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 62; full membership remains unknown. Investiture: 63 for, 46 against, not recorded abstaining."
+      "note": "Not every member of the coalition is known (those known hold 64 seats); the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 63 for, 46 against, abstentions not recorded."
     },
-    "knownMemberSeats": 62
+    "knownMemberSeats": 64
   },
   "term": {
     "start": "1961-08-15",

@@ -135,6 +135,20 @@
       "accessed": "2026-11-16",
       "evidenceFamily": "Knesset-sitting-564427",
       "via": "Legacy Word logical paragraph 1743 (not a printed page or OOXML paragraph)"
+    },
+    "galnoor-blander-2018": {
+      "url": "https://doi.org/10.1017/9781316160978",
+      "publisher": "Itzhak Galnoor and Dana Blander, The Handbook of Israel’s Political System (Cambridge University Press, 2018)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:galnoor"
+    },
+    "rahat-shamir-2023": {
+      "url": "https://doi.org/10.4324/9781003267911-3",
+      "publisher": "Gideon Rahat and Michal Shamir, “The Four Elections 2019–2021: A Chronological Overview”, in Michal Shamir and Gideon Rahat (eds.), The Elections in Israel 2019–2021 (Routledge, 2023)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:shamir"
     }
   },
   "results": {
@@ -542,7 +556,7 @@
         "letters": "ג",
         "seats": 6,
         "role": "member-without-ministries",
-        "certainty": "probable",
+        "certainty": "confirmed",
         "cites": [
           {
             "source": "idi-coalition",
@@ -560,9 +574,19 @@
             "source": "appointments-34",
             "quote": "{\"PersonToPositionID\":17283,\"PersonID\":528,\"PositionID\":40,\"KnessetNum\":20,\"StartDate\":\"2015-05-19T00:00:00\",\"FinishDate\":\"2015-09-02T00:00:00\",\"GovMinistryID\":1109,\"GovMinistryName\":\"משרד הבריאות\",\"DutyDesc\":\"סגן שר הבריאות\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":34,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-12-01T10:51:57.933\"}",
             "note": "Official register record (JSON, Hebrew shown decoded). PersonID 528 is יעקב ליצמן, יהדות התורה (data/research/knesset-member-changes/k20.json)."
+          },
+          {
+            "source": "galnoor-blander-2018",
+            "quote": "UTJ joined the coalition formed after the 2015 election with two deputy ministers (health and education)",
+            "locator": "p. 772"
+          },
+          {
+            "source": "rahat-shamir-2023",
+            "quote": "In addition to the Likud, the coalition included the ultra-Orthodox and religious parties (United Torah Judaism, Shas, and the Jewish Home) and Kulanu",
+            "locator": "p. 27"
           }
         ],
-        "note": "The Israel Democracy Institute’s profile of the government lists United Torah Judaism among the five coalition parties, with a signed coalition agreement and no cabinet minister. Scholarship supports “probable” under docs/source-policy.md; the deposited agreement itself was not inspected. Yakov Litzman’s deputy health post starts on 19 May 2015, not on the investiture day.",
+        "note": "Two independent studies and the Israel Democracy Institute count United Torah Judaism in the coalition, which it joined under a signed agreement without a cabinet minister. Yakov Litzman’s deputy health post starts on 19 May 2015, not on the investiture day.",
         "noteEn": "United Torah Judaism does not take ministerial posts; Yakov Litzman became Deputy Health Minister on 19 May 2015.",
         "noteHe": "יהדות התורה אינה מקבלת תפקידי שרים; יעקב ליצמן מונה לסגן שר הבריאות ב־19 במאי 2015."
       }

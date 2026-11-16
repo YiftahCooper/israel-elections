@@ -142,6 +142,13 @@
       "publisher": "Knesset OData, formation-day cabinet appointments",
       "kind": "official",
       "accessed": "2026-11-07"
+    },
+    "galnoor-blander-2018": {
+      "url": "https://doi.org/10.1017/9781316160978",
+      "publisher": "Itzhak Galnoor and Dana Blander, The Handbook of Israel’s Political System (Cambridge University Press, 2018)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:galnoor"
     }
   },
   "results": {
@@ -450,29 +457,43 @@
         "letters": "מ",
         "seats": 8,
         "role": "member-with-ministries",
-        "certainty": "provisional",
+        "certainty": "probable",
         "cites": [
           {
             "source": "role-roster-13",
             "quote": "PersonToPositionID 3995; PersonID 2220; PositionID 39; StartDate 1966-01-12T00:00:00",
             "note": "Project extraction of official fields, not prose quotation. ישראל ברזילי; faction join: "
+          },
+          {
+            "source": "galnoor-blander-2018",
+            "quote": "Alignment + affiliates, NRP, Poalei Agudat Yisrael, Independent Liberals, Mapam",
+            "locator": "p. 406",
+            "note": "The book’s table of the parties in each government.",
+            "noteHe": "טבלה בספר של המפלגות בכל ממשלה."
           }
         ],
-        "note": "Official appointment established, but this minister was not a sitting MK at formation. Party attribution reuses the governing-faction research and needs an explicit contemporaneous affiliation source; the API does not supply it."
+        "note": "The official roster records the appointment of Israel Barzilai, who was not a sitting MK. That he came from Mapam rests on one book’s table of the parties in each government, so it is probable until a record of the time names his party."
       },
       {
         "letters": "לע",
         "seats": 5,
         "role": "member-with-ministries",
-        "certainty": "provisional",
+        "certainty": "probable",
         "cites": [
           {
             "source": "role-roster-13",
             "quote": "PersonToPositionID 3834; PersonID 2575; PositionID 39; StartDate 1966-01-12T00:00:00",
             "note": "Project extraction of official fields, not prose quotation. משה קול; faction join: "
+          },
+          {
+            "source": "galnoor-blander-2018",
+            "quote": "Alignment + affiliates, NRP, Poalei Agudat Yisrael, Independent Liberals, Mapam",
+            "locator": "p. 406",
+            "note": "The book’s table of the parties in each government.",
+            "noteHe": "טבלה בספר של המפלגות בכל ממשלה."
           }
         ],
-        "note": "Official appointment established, but this minister was not a sitting MK at formation. Party attribution reuses the governing-faction research and needs an explicit contemporaneous affiliation source; the API does not supply it."
+        "note": "The official roster records the appointment of Moshe Kol, who was not a sitting MK. That he came from the Independent Liberals rests on one book’s table of the parties in each government, so it is probable until a record of the time names his party."
       },
       {
         "letters": "ד",
@@ -619,7 +640,7 @@
         "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
         "reconciliation": {
           "status": "unresolved",
-          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 0; full membership remains unknown. Investiture: 84 for, 12 against, 1 abstaining."
+          "note": "Not every member of the coalition is known, and its seats at this date have not been counted; the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 84 for, 12 against, 1 abstaining."
         },
         "knownMemberSeats": 0
       }
@@ -644,7 +665,7 @@
     "supportSeats": null,
     "reconciliation": {
       "status": "unresolved",
-      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 71; full membership remains unknown. Investiture: 71 for, 41 against, not recorded abstaining."
+      "note": "Not every member of the coalition is known (those known hold 71 seats); the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 71 for, 41 against, abstentions not recorded."
     },
     "knownMemberSeats": 71
   },

@@ -1,9 +1,9 @@
 # Data gaps register
 
-12616 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
+12600 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
 
-- High importance: 852 (confirmed 415, probable 28, provisional 155, disputed 10, unknown 244).
-- Medium importance: 4611 (confirmed 1050, probable 332, provisional 605, disputed 9, unknown 2615).
+- High importance: 836 (confirmed 413, probable 34, provisional 137, disputed 12, unknown 240).
+- Medium importance: 4611 (confirmed 1057, probable 332, provisional 597, disputed 9, unknown 2616).
 - Low importance: 7153 (confirmed 572, provisional 802, unknown 5779).
 
 ## High importance: open, most-shown first
@@ -60,7 +60,6 @@ Could change seats, votes, a government’s composition, recommendation totals o
 - [Formation conflicts](../data/meta/aftermath/k20.json) ×1: probable 1
 - [Formation events](../data/meta/aftermath/k20.json) ×1: provisional 1. mandate-given 2015-03-25
 - [Government](../data/meta/aftermath/k20.json) ×1: probable 1
-- [Government roles](../data/meta/aftermath/k20.json) ×1: probable 1. ג
 - [Investiture vote](../data/meta/aftermath/k20.json) ×1: probable 1
 - [Recommendation rounds](../data/meta/aftermath/k20.json) ×1: probable 1. r1
 
@@ -90,12 +89,12 @@ Could change seats, votes, a government’s composition, recommendation totals o
 ### k16
 
 - [Formation conflicts](../data/meta/aftermath/k16.json) ×2: disputed 1, unknown 1. Disputed: Tasking date
-- [Government roles](../data/meta/aftermath/k16.json) ×2: probable 1, unknown 1. ב, כן
 - [Coalition seat total](../data/meta/aftermath/k16.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json discrepancies.status](../data/raw/k16/national.reviewed.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k16/national.reviewed.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k16/national.reviewed.json) ×1: unknown 1
 - [Formation events](../data/meta/aftermath/k16.json) ×1: provisional 1. mandate-given 2003-02-09
+- [Government roles](../data/meta/aftermath/k16.json) ×1: probable 1. כן
 - [Investiture reconciliation](../data/meta/aftermath/k16.json) ×1: unknown 1
 - [Investiture vote](../data/meta/aftermath/k16.json) ×1: provisional 1
 - [Outside-support seat total](../data/meta/aftermath/k16.json) ×1: unknown 1
@@ -109,7 +108,6 @@ Could change seats, votes, a government’s composition, recommendation totals o
 - [data/meta/election-context.json pmContests](../data/meta/election-context.json) ×2: provisional 2. pm1999, pm2001
 - [aftermath government.confidenceVote](../data/meta/aftermath/k15.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json discrepancies](../data/raw/k15/national.reviewed.json) ×1: provisional 1
-- [Government roles](../data/meta/aftermath/k15.json) ×1: provisional 1. ג
 - [Investiture reconciliation](../data/meta/aftermath/k15.json) ×1: unknown 1
 - [Investiture vote](../data/meta/aftermath/k15.json) ×1: provisional 1
 
@@ -126,20 +124,19 @@ Could change seats, votes, a government’s composition, recommendation totals o
 - [Recommendations](../data/meta/aftermath/k13.json) ×9: provisional 3, unknown 6. ו, מרצ, ע, אמת, ב, ג, ט, מחל, שס
 - [Later governments](../data/meta/aftermath/k13.json) ×7: provisional 2, unknown 5. אמת
 - [Formation events](../data/meta/aftermath/k13.json) ×2: probable 1, provisional 1. consultations 1992-06-28, mandate-given 1992-07-02
-- [Government roles](../data/meta/aftermath/k13.json) ×2: provisional 2. ו, ע
 - [data/raw/kN/national.reviewed.json agreements.sourceId](../data/raw/k13/national.reviewed.json) ×1: unknown 1
 - [Investiture vote](../data/meta/aftermath/k13.json) ×1: provisional 1
 - [Recommendation rounds](../data/meta/aftermath/k13.json) ×1: provisional 1. r1
 
 ### k12
 
-- [Later governments](../data/meta/aftermath/k12.json) ×10: provisional 4, unknown 6. ב, שס, avraham-verdiger, eliezer-mizrachi
+- [Later governments](../data/meta/aftermath/k12.json) ×10: provisional 3, disputed 1, unknown 6. ב, שס, avraham-verdiger, eliezer-mizrachi. Disputed: Disputed. A report of the time (JTA) says he backed the government under a separate deal; a later study (Etta Bick, 1995
 - [Recommendations](../data/meta/aftermath/k12.json) ×4: probable 1, provisional 3. ו, פ, ע, עץ
 - [Coalition seat total](../data/meta/aftermath/k12.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k12/national.reviewed.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k12/national.reviewed.json) ×1: unknown 1
 - [Formation events](../data/meta/aftermath/k12.json) ×1: provisional 1. mandate-given 1988-11-14
-- [Government roles](../data/meta/aftermath/k12.json) ×1: provisional 1. ג
+- [Government roles](../data/meta/aftermath/k12.json) ×1: probable 1. ג
 - [Investiture reconciliation](../data/meta/aftermath/k12.json) ×1: unknown 1
 - [Investiture vote](../data/meta/aftermath/k12.json) ×1: provisional 1
 - [Outside-support seat total](../data/meta/aftermath/k12.json) ×1: unknown 1
@@ -147,9 +144,9 @@ Could change seats, votes, a government’s composition, recommendation totals o
 ### k11
 
 - [Formation conflicts](../data/meta/aftermath/k11.json) ×2: provisional 1, disputed 1. Disputed: Investiture sitting versus oath after midnight
-- [Recommendations](../data/meta/aftermath/k11.json) ×15: provisional 15. אמת, ו, רצ, ט, הן, פ, יש, מחל, ת, שס, ג, עד, ב, ני +1
-- [Individual MKs](../data/meta/aftermath/k11.json) ×14: provisional 7, unknown 7. amira-sartani, elazar-granot, haika-grossman, muhammad-wattad, victor-shemtov, yair-tsaban, yossi-sarid
+- [Recommendations](../data/meta/aftermath/k11.json) ×14: provisional 14. אמת, ו, רצ, ט, הן, פ, יש, מחל, ת, שס, ג, עד, ב, ני
 - [Later governments](../data/meta/aftermath/k11.json) ×8: unknown 8. government-succession 1986-10-20, אמת, שס, ב
+- [Individual MKs](../data/meta/aftermath/k11.json) ×7: unknown 7. amira-sartani, elazar-granot, haika-grossman, muhammad-wattad, victor-shemtov, yair-tsaban, yossi-sarid
 - [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k11/national.reviewed.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k11/national.reviewed.json) ×1: unknown 1
 - [Formation events](../data/meta/aftermath/k11.json) ×1: provisional 1. mandate-given 1984-08-05
@@ -174,7 +171,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 - [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k9/national.reviewed.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k9/national.reviewed.json) ×1: unknown 1
 - [Formation events](../data/meta/aftermath/k9.json) ×1: provisional 1. consultations 1977-05-30
-- [Government roles](../data/meta/aftermath/k9.json) ×1: provisional 1. פש
+- [Government roles](../data/meta/aftermath/k9.json) ×1: probable 1. פש
 - [Investiture vote](../data/meta/aftermath/k9.json) ×1: provisional 1
 
 ### k8
@@ -187,7 +184,6 @@ Could change seats, votes, a government’s composition, recommendation totals o
 - [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k8/national.reviewed.json) ×1: unknown 1
 - [Formation events](../data/meta/aftermath/k8.json) ×1: provisional 1. consultations 1974-01-16
 - [Investiture reconciliation](../data/meta/aftermath/k8.json) ×1: unknown 1
-- [Later governments](../data/meta/aftermath/k8.json) ×1: provisional 1. לע
 - [Outside-support seat total](../data/meta/aftermath/k8.json) ×1: unknown 1
 - [Recommendation rounds](../data/meta/aftermath/k8.json) ×1: provisional 1. r1
 
@@ -201,7 +197,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 
 - [Recommendations](../data/meta/aftermath/k6.json) ×13: provisional 2, unknown 11. חל, כא, את, ב, מ, לע, ג, ו, רא, ד, יא, ש, ק
 - [Later governments](../data/meta/aftermath/k6.json) ×6: unknown 6. חל, ב
-- [Government roles](../data/meta/aftermath/k6.json) ×4: provisional 2, unknown 2. מ, לע, רא, יא
+- [Government roles](../data/meta/aftermath/k6.json) ×4: probable 2, unknown 2. מ, לע, רא, יא
 - [Coalition seat total](../data/meta/aftermath/k6.json) ×1: unknown 1
 - [Formation events](../data/meta/aftermath/k6.json) ×1: provisional 1. consultations 1965-11
 - [Investiture reconciliation](../data/meta/aftermath/k6.json) ×1: unknown 1
@@ -211,9 +207,9 @@ Could change seats, votes, a government’s composition, recommendation totals o
 ### k5
 
 - [Recommendations](../data/meta/aftermath/k5.json) ×21: provisional 1, unknown 20. א, ח, ל, ב, מ, תו, ק, ג, יא, ד, רא
-- [Later governments](../data/meta/aftermath/k5.json) ×6: unknown 6. ד, יא, רא
-- [Government roles](../data/meta/aftermath/k5.json) ×3: unknown 3. ד, יא, רא
+- [Later governments](../data/meta/aftermath/k5.json) ×6: probable 1, unknown 5. ד, יא, רא
 - [Formation events](../data/meta/aftermath/k5.json) ×2: probable 2. mandate-given 1961-09-06, mandate-given 1961-09-14
+- [Government roles](../data/meta/aftermath/k5.json) ×2: unknown 2. יא, רא
 - [Bloc schemes](../data/meta/k5.json) ×1: provisional 1. labour-affiliated-arab-lists
 - [Coalition seat total](../data/meta/aftermath/k5.json) ×1: unknown 1
 - [Investiture reconciliation](../data/meta/aftermath/k5.json) ×1: unknown 1
@@ -241,8 +237,8 @@ Could change seats, votes, a government’s composition, recommendation totals o
 ### k2
 
 - [Recommendations](../data/meta/aftermath/k2.json) ×15: unknown 15. א, צ, מ, ו, ח, ק, פ, יד, ג, סצ, ב, ד, נ, ל +1
-- [Later governments](../data/meta/aftermath/k2.json) ×8: unknown 8. ב, יד, נ, ע, ל
-- [Government roles](../data/meta/aftermath/k2.json) ×4: unknown 4. ד, יד, נ, ע
+- [Later governments](../data/meta/aftermath/k2.json) ×9: probable 1, unknown 8. ב, יד, נ, ע, ל
+- [Government roles](../data/meta/aftermath/k2.json) ×4: probable 1, unknown 3. ד, יד, נ, ע
 - [Coalition seat total](../data/meta/aftermath/k2.json) ×1: unknown 1
 - [Formation events](../data/meta/aftermath/k2.json) ×1: provisional 1. consultations 1951-08
 - [Investiture reconciliation](../data/meta/aftermath/k2.json) ×1: unknown 1
@@ -251,7 +247,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 
 ### k1
 
-- [Government roles](../data/meta/aftermath/k1.json) ×3: probable 1, provisional 1, disputed 1. ל, יד, נ. Disputed: Galnoor and Blander place the Yemenite Association inside the coalition; IDI’s five-party, 73-seat account leaves it out
+- [Government roles](../data/meta/aftermath/k1.json) ×3: probable 1, disputed 2. נ, ל, יד. Disputed: Disputed. Ofira Gruweis Kovalsky’s study (2021) says WIZO followed the Progressives into Ben-Gurion’s coalition. Galnoor; Galnoor and Blander place the Yemenite Association inside the coalition; IDI’s five-party, 73-seat account leaves it out
 - [Recommendations](../data/meta/aftermath/k1.json) ×12: unknown 12. א, מ, ב, ח, צ, פ, ס, ק, יד, טו, נ, ל
 - [Later governments](../data/meta/aftermath/k1.json) ×4: unknown 4. יד
 - [Bloc schemes](../data/meta/k1.json) ×1: probable 1. labour-affiliated-arab-lists
@@ -275,10 +271,10 @@ Shown in Standard/Expert views or the After-the-election tab, in the same order.
 - **k17**: Family classifications 45 (probable 2, provisional 16, unknown 27); data/raw/kN/candidates.reviewed.json lists 32 (provisional 8, unknown 24); Party appearances 20 (unknown 20); Published lists 12 (unknown 12); data/research/knesset-events/kN.json events 11 (unknown 11); List metadata 4 (unknown 4); Term events 4 (probable 4); data/meta/election-context.json events 3 (provisional 2, unknown 1); data/raw/kN/localities.reviewed.json rows 3 (unknown 3); Issue polling 2 (unknown 2); Membership records 2 (unknown 2); data/raw/kN/reconciliation.reviewed.json rawEnvelopeRegistered 1 (unknown 1); data/raw/kN/reconciliation.reviewed.json totals 1 (unknown 1); Government 1 (unknown 1); Reactions 1 (unknown 1).
 - **k16**: Family classifications 58 (probable 4, provisional 21, unknown 33); data/raw/kN/candidates.reviewed.json lists 26 (unknown 26); data/research/knesset-events/kN.json events 24 (unknown 24); List metadata 13 (probable 2, unknown 11); Party appearances 13 (unknown 13); Published lists 13 (unknown 13); data/meta/election-context.json events 9 (probable 2, provisional 5, unknown 2); Term events 4 (probable 4); Membership records 3 (unknown 3); data/raw/kN/localities.reviewed.json rows 2 (unknown 2); Issue polling 2 (unknown 2); data/meta/kN-withdrawn.json record 1 (provisional 1); Government 1 (unknown 1); Reactions 1 (unknown 1).
 - **k15**: Family classifications 65 (probable 2, provisional 23, unknown 40); Published lists 31 (unknown 31); data/research/knesset-events/kN.json events 15 (unknown 15); Party appearances 15 (unknown 15); data/raw/pm/reviewed-transcription.json contests 14 (probable 5, provisional 9); List metadata 11 (unknown 11); Term events 6 (probable 6); data/meta/election-context.json events 2 (provisional 2); Issue polling 2 (unknown 2); data/raw/kN/candidates.reviewed.json note 1 (unknown 1); Formation 1 (probable 1); Government 1 (unknown 1); Reactions 1 (unknown 1).
-- **k14**: Family classifications 57 (probable 4, provisional 16, unknown 37); data/research/knesset-events/kN.json events 23 (unknown 23); Published lists 21 (unknown 21); data/raw/pm/reviewed-transcription.json contests 8 (provisional 8); Party appearances 8 (unknown 8); List metadata 7 (unknown 7); data/meta/election-context.json events 6 (provisional 6); Term events 3 (probable 3); Issue polling 1 (probable 1); Reactions 1 (unknown 1).
+- **k14**: Family classifications 57 (probable 4, provisional 16, unknown 37); data/research/knesset-events/kN.json events 23 (unknown 23); Published lists 21 (unknown 21); data/raw/pm/reviewed-transcription.json contests 8 (provisional 8); Party appearances 8 (unknown 8); List metadata 7 (unknown 7); data/meta/election-context.json events 6 (provisional 6); Term events 3 (probable 3); Government 1 (unknown 1); Issue polling 1 (probable 1); Reactions 1 (unknown 1).
 - **k13**: Family classifications 59 (probable 2, provisional 15, unknown 42); Published lists 25 (unknown 25); Party appearances 12 (unknown 12); data/research/knesset-events/kN.json events 11 (unknown 11); Term events 6 (probable 5, unknown 1); List metadata 3 (unknown 3); data/meta/election-context.json events 2 (probable 1, provisional 1); Issue polling 2 (unknown 2); Membership records 2 (unknown 2); data/raw/kN/candidates.reviewed.json note 1 (unknown 1); Government 1 (unknown 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
 - **k12**: Family classifications 59 (probable 4, provisional 20, unknown 35); Published lists 27 (unknown 27); data/research/knesset-events/kN.json events 14 (unknown 14); Party appearances 10 (unknown 10); Term events 5 (probable 5); List metadata 4 (unknown 4); data/meta/election-context.json events 3 (probable 1, provisional 2); Formation 2 (provisional 2); Government 2 (unknown 2); Issue polling 2 (unknown 2); data/raw/kN/candidates.reviewed.json corrections 1 (unknown 1); Reactions 1 (unknown 1).
-- **k11**: Family classifications 53 (probable 4, provisional 16, unknown 33); Published lists 25 (unknown 25); data/research/knesset-events/kN.json events 14 (unknown 14); Party appearances 12 (unknown 12); List metadata 11 (probable 2, unknown 9); Government 8 (provisional 7, unknown 1); data/meta/election-context.json events 3 (probable 2, provisional 1); Term events 3 (probable 3); Issue polling 2 (unknown 2); data/meta/kN.json record 1 (probable 1); Formation 1 (provisional 1); Reactions 1 (unknown 1).
+- **k11**: Family classifications 53 (probable 4, provisional 16, unknown 33); Published lists 25 (unknown 25); data/research/knesset-events/kN.json events 14 (unknown 14); Party appearances 12 (unknown 12); List metadata 11 (probable 2, unknown 9); data/meta/election-context.json events 3 (probable 2, provisional 1); Term events 3 (probable 3); Issue polling 2 (unknown 2); data/meta/kN.json record 1 (probable 1); Formation 1 (provisional 1); Government 1 (unknown 1); Reactions 1 (unknown 1).
 - **k10**: Family classifications 48 (probable 4, provisional 14, unknown 30); Published lists 31 (unknown 31); Party appearances 19 (unknown 19); data/research/knesset-events/kN.json events 8 (unknown 8); List metadata 6 (unknown 6); Term events 5 (probable 5); Government 2 (unknown 2); Issue polling 2 (unknown 2); Formation 1 (disputed 1); Reactions 1 (unknown 1).
 - **k9**: Family classifications 43 (probable 4, provisional 14, unknown 25); data/research/knesset-events/kN.json events 33 (unknown 33); Published lists 21 (unknown 21); Party appearances 11 (unknown 11); List metadata 8 (unknown 8); Term events 7 (probable 7); data/meta/election-context.json events 2 (provisional 2); data/raw/kN/search.reviewed.json capResolution 1 (provisional 1); data/research/round7/history-display.json pointNotes 1 (unknown 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1).
 - **k8**: Family classifications 38 (probable 1, provisional 12, unknown 25); data/research/knesset-events/kN.json events 21 (unknown 21); Published lists 20 (unknown 20); Party appearances 10 (unknown 10); List metadata 6 (unknown 6); Term events 5 (probable 5); data/meta/election-context.json events 1 (provisional 1); Government 1 (unknown 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
@@ -288,7 +284,7 @@ Shown in Standard/Expert views or the After-the-election tab, in the same order.
 - **k4**: Family classifications 41 (probable 1, provisional 14, unknown 26); Published lists 24 (unknown 24); Party appearances 11 (unknown 11); data/research/knesset-events/kN.json events 4 (unknown 4); Term events 2 (probable 2); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Government 1 (unknown 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
 - **k3**: Family classifications 37 (probable 1, provisional 13, unknown 23); Published lists 19 (unknown 19); Party appearances 7 (unknown 7); List metadata 4 (unknown 4); data/research/knesset-events/kN.json events 3 (unknown 3); Government 2 (unknown 2); Term events 2 (probable 2); data/meta/election-context.json events 1 (provisional 1); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
 - **k2**: Family classifications 45 (probable 4, provisional 15, unknown 26); Published lists 15 (unknown 15); data/research/knesset-events/kN.json events 9 (unknown 9); Party appearances 4 (unknown 4); Government 2 (unknown 2); Term events 2 (probable 2); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Membership records 1 (unknown 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
-- **k1**: Family classifications 52 (probable 2, provisional 11, unknown 39); Published lists 21 (unknown 21); Party appearances 11 (unknown 11); List metadata 6 (probable 1, unknown 5); data/research/knesset-events/kN.json events 2 (unknown 2); Government 2 (provisional 1, unknown 1); Term events 2 (probable 2); data/meta/election-context.json events 1 (provisional 1); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
+- **k1**: Family classifications 52 (probable 2, provisional 11, unknown 39); Published lists 21 (unknown 21); Party appearances 11 (unknown 11); List metadata 6 (probable 1, unknown 5); data/research/knesset-events/kN.json events 2 (unknown 2); Term events 2 (probable 2); data/meta/election-context.json events 1 (provisional 1); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Government 1 (unknown 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
 
 ## Low importance: counts only
 
@@ -302,8 +298,8 @@ Every claim in these families, not only gaps. Derived from each claim’s own so
 
 | Claims | confirmed | probable | provisional | disputed | unknown | Total |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Recommendations | 77 | 56 | 73 | 0 | 100 | 306 |
-| Government roles | 175 | 3 | 20 | 1 | 37 | 236 |
+| Recommendations | 78 | 56 | 72 | 0 | 100 | 306 |
+| Government roles | 189 | 9 | 3 | 3 | 32 | 236 |
 | Formation events | 72 | 13 | 39 | 1 | 0 | 125 |
 | Term events | 31 | 54 | 0 | 0 | 0 | 85 |
 | Family classifications | 0 | 55 | 411 | 0 | 0 | 466 |
@@ -311,32 +307,32 @@ Every claim in these families, not only gaps. Derived from each claim’s own so
 
 ## Counts
 
-By kind: unknown: 7445; missing-field: 283; conflict: 17; single-source: 3010; low-confidence: 101; release-hold: 0; inferred: 1172; pending: 405; unconfirmed: 183.
+By kind: unknown: 7441; missing-field: 283; conflict: 19; single-source: 2998; low-confidence: 101; release-hold: 0; inferred: 1172; pending: 405; unconfirmed: 181.
 
-By status: inferred-not-verified: 1033; needs-current-status-review: 319; open: 11264.
+By status: inferred-not-verified: 1033; needs-current-status-review: 319; open: 11248.
 
 | Election | High open | Medium open | Low | Total |
 | --- | ---: | ---: | ---: | ---: |
-| k1 | 22 | 100 | 177 | 341 |
-| k2 | 32 | 81 | 152 | 302 |
+| k1 | 22 | 99 | 177 | 340 |
+| k2 | 33 | 81 | 152 | 302 |
 | k3 | 26 | 78 | 160 | 299 |
 | k4 | 18 | 86 | 170 | 299 |
-| k5 | 36 | 76 | 152 | 299 |
+| k5 | 35 | 76 | 152 | 297 |
 | k6 | 28 | 86 | 161 | 315 |
 | k7 | 15 | 77 | 160 | 281 |
-| k8 | 23 | 105 | 174 | 369 |
+| k8 | 22 | 105 | 174 | 368 |
 | k9 | 21 | 129 | 197 | 417 |
 | k10 | 19 | 123 | 171 | 363 |
-| k11 | 45 | 134 | 204 | 444 |
+| k11 | 37 | 127 | 204 | 436 |
 | k12 | 22 | 130 | 183 | 394 |
-| k13 | 23 | 126 | 146 | 331 |
-| k14 | 10 | 135 | 148 | 341 |
-| k15 | 29 | 165 | 160 | 405 |
-| k16 | 12 | 170 | 218 | 463 |
+| k13 | 21 | 126 | 146 | 329 |
+| k14 | 10 | 136 | 148 | 342 |
+| k15 | 28 | 165 | 160 | 404 |
+| k16 | 11 | 170 | 218 | 462 |
 | k17 | 6 | 142 | 229 | 422 |
 | k18 | 5 | 105 | 344 | 493 |
 | k19 | 4 | 104 | 344 | 494 |
-| k20 | 6 | 116 | 309 | 467 |
+| k20 | 5 | 116 | 309 | 466 |
 | k21 | 2 | 124 | 340 | 529 |
 | k22 | 5 | 96 | 352 | 503 |
 | k23 | 4 | 102 | 269 | 450 |

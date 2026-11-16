@@ -79,16 +79,31 @@ export function independenceKey(id: string, s: EvidenceSource): string {
   return `outlet:${OUTLET_ALIASES[h] ?? h}`;
 }
 
+/** A cited source; `citesRecord` names the official record a scholarly passage itself cites for the claim
+ *  (the cite's own field, since one book can cite a record for one statement and nothing for the next). */
+export interface CitedSource { id: string; source: EvidenceSource; citesRecord?: string }
+/** Scholarly works with declared, distinct authorship families (copies, reprints, two chapters by one author and an
+ *  edited volume quoting its own earlier volume all share one family). */
+export function independentScholarlyWorks(cited: CitedSource[]) {
+  return new Set(cited.filter(c => c.source.evidenceFamily && sourceTier(c.source) === 'scholarship').map(c => c.source.evidenceFamily)).size;
+}
+/** A scholarly passage that cites the specific official record behind the claim. */
+export const restsOnRecord = (c: CitedSource) => sourceTier(c.source) === 'scholarship' && !!c.citesRecord?.trim();
+
 export const certaintyRank = (c: Certainty) => ({ confirmed: 4, probable: 3, provisional: 2, disputed: 1, unknown: 0 })[c];
 
 /**
  * The strongest certainty the cited sources can support (docs/source-policy.md, "Thresholds"):
  * - confirmed: a primary record; or an independent contemporary report and scholarship; or three independent contemporary reports;
+ *   or two independent scholarly works; or one scholarly work whose cited passage rests on a named official record;
  * - probable: scholarship; or two independent reliable reports, at least one contemporary;
  * - provisional: one reliable source, or retrospectives only;
  * - unknown: nothing, or pointers (Hebrew Wikipedia) only.
+ * Two scholarly works count as independent only when each declares its authorship with `evidenceFamily` and the
+ * families differ (owner's rule of 16 Nov 2026): a host name cannot tell two chapters by one author apart from two
+ * authors, so undeclared scholarship never reaches "confirmed" by count.
  */
-export function certaintyCeiling(cited: { id: string; source: EvidenceSource }[]): Certainty {
+export function certaintyCeiling(cited: CitedSource[]): Certainty {
   const best = new Map<string, EvidenceTier>();
   for (const { id, source } of cited) {
     const key = independenceKey(id, source), tier = sourceTier(source), old = best.get(key);
@@ -99,6 +114,7 @@ export function certaintyCeiling(cited: { id: string; source: EvidenceSource }[]
   const reliable = tiers.filter(t => t !== 'pointer').length;
   if (n('primary')) return 'confirmed';
   if ((n('contemporary') && n('scholarship')) || n('contemporary') >= 3) return 'confirmed';
+  if (independentScholarlyWorks(cited) >= 2 || cited.some(restsOnRecord)) return 'confirmed';
   if (n('scholarship') || (reliable >= 2 && n('contemporary'))) return 'probable';
   if (reliable) return 'provisional';
   return 'unknown';

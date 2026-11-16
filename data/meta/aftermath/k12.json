@@ -208,6 +208,20 @@
       "accessed": "2026-11-16",
       "evidenceFamily": "Knesset-sitting-437127",
       "via": "PDF p. 48, printed p. 3882"
+    },
+    "diskin-1991": {
+      "url": "https://openlibrary.org/works/OL4457043W",
+      "publisher": "Abraham Diskin, Elections and Voters in Israel (Praeger, 1991)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:diskin"
+    },
+    "bick-1995": {
+      "url": "https://openlibrary.org/works/OL19596623W",
+      "publisher": "Etta Bick, “Fragmentation and Realignment: Israel’s Nationalist Parties in the 1992 Elections”, in Daniel J. Elazar and Shmuel Sandler (eds.), Israel at the Polls 1992 (Rowman & Littlefield, 1995)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:bick"
     }
   },
   "results": {
@@ -725,7 +739,7 @@
         "letters": "ג",
         "seats": 5,
         "role": "member-without-ministries",
-        "certainty": "provisional",
+        "certainty": "probable",
         "cites": [
           {
             "source": "plenum-1988-12-22",
@@ -741,9 +755,14 @@
             "source": "appointments-23",
             "quote": "{\"PersonToPositionID\":4089,\"PersonID\":2541,\"PositionID\":40,\"KnessetNum\":12,\"StartDate\":\"1988-12-26T00:00:00\",\"FinishDate\":\"1989-10-15T00:00:00\",\"GovMinistryID\":820,\"GovMinistryName\":\"משרד העבודה והרווחה\",\"DutyDesc\":\"סגן שר העבודה והרווחה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":23,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2020-09-22T18:18:53.1\"}",
             "note": "Official register record (JSON, Hebrew shown decoded). PersonID 2541 is משה-זאב פלדמן, אגודת ישראל (data/research/knesset-member-changes/k12.json)."
+          },
+          {
+            "source": "diskin-1991",
+            "quote": "the Aguda took on the responsibility for a government ministry for the first time since it rejoined the governmental coalitions in 1977",
+            "locator": "p. 179"
           }
         ],
-        "note": "Provisional: on 22 December 1988 Shamir announced that Agudat Yisrael had decided \"in principle\" to join the coalition, and its MK Feldman cited a written, signed commitment and announced a confidence vote; the agreement itself was not inspected. Feldman took office as a deputy minister on 26 December 1988. A deputy minister is not a cabinet minister.",
+        "note": "Probable: on 22 December 1988 Shamir announced that Agudat Yisrael had decided “in principle” to join, its MK Feldman spoke of a written, signed commitment, and one study (Abraham Diskin, 1991) says it took charge of a ministry. The agreement itself has not been seen. Feldman became a deputy minister on 26 December 1988; a deputy minister is not a cabinet minister.",
         "noteEn": "Decided “in principle” to join during the investiture debate; its deputy minister took office on 26 December 1988.",
         "noteHe": "החליטה \"עקרונית\" להצטרף במהלך הדיון על הצגת הממשלה; סגן השר מטעמה נכנס לתפקידו ב־26 בדצמבר 1988."
       },
@@ -969,7 +988,7 @@
             "fromLetters": "ג",
             "countedInFactionSeats": false,
             "role": "outside-support",
-            "certainty": "provisional",
+            "certainty": "disputed",
             "vote": "for",
             "cites": [
               {
@@ -980,9 +999,14 @@
                 "source": "plenum-531546",
                 "quote": "אליעזר מזרחי — בעד",
                 "locator": "p. 3882"
+              },
+              {
+                "source": "bick-1995",
+                "quote": "Mizrachi left Aguda and formed his own single-seat faction, and independently joined the Likud-led right-wing coalition.",
+                "locator": "p. 85"
               }
             ],
-            "note": "A separate personal support deal was reported; Agudat Yisrael as a party is not counted as joining. The agreement itself has not been found, nor whether it made Mizrachi a coalition member. The Knesset record confirms he voted for."
+            "note": "Disputed. A report of the time (JTA) says he backed the government under a separate deal; a later study (Etta Bick, 1995) says he joined the Likud-led coalition on his own. Agudat Yisrael as a party is not counted as joining. The deal itself has not been found. The Knesset record confirms he voted for."
           },
           {
             "id": "avraham-verdiger",

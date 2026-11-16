@@ -207,6 +207,27 @@
       "accessed": "2026-11-16",
       "evidenceFamily": "Knesset-sitting-239176",
       "via": "OOXML paragraph 1947"
+    },
+    "galnoor-blander-2018": {
+      "url": "https://doi.org/10.1017/9781316160978",
+      "publisher": "Itzhak Galnoor and Dana Blander, The Handbook of Israel’s Political System (Cambridge University Press, 2018)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:galnoor"
+    },
+    "galnoor-oxford-2021": {
+      "url": "https://doi.org/10.1093/oxfordhb/9780190675585.013.9",
+      "publisher": "Itzhak Galnoor, “Arab Citizens in the ‘Jewish’ State of Israel”, in Reuven Y. Hazan, Alan Dowty, Menachem Hofnung and Gideon Rahat (eds.), The Oxford Handbook of Israeli Politics and Society (Oxford University Press, 2021)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:galnoor"
+    },
+    "navot-swaid-khalaily-2023": {
+      "url": "https://doi.org/10.4324/9781003267911-14",
+      "publisher": "Doron Navot, Samer Swaid and Muhammed Khalaily, “The Arab Electorate and Parties, 2019–2021”, in Michal Shamir and Gideon Rahat (eds.), The Elections in Israel 2019–2021 (Routledge, 2023)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:navot-swaid-khalaily"
     }
   },
   "results": {
@@ -693,7 +714,7 @@
         "letters": "ו",
         "seats": 3,
         "role": "outside-support",
-        "certainty": "provisional",
+        "certainty": "confirmed",
         "cites": [
           {
             "source": "jta1992vote",
@@ -702,15 +723,35 @@
           {
             "source": "outside-support-history",
             "quote": "while not officially part of the coalition, voted with the government on most issues"
+          },
+          {
+            "source": "galnoor-blander-2018",
+            "quote": "both parties agreeing to support the Rabin government without being members of it.",
+            "locator": "p. 650"
+          },
+          {
+            "source": "galnoor-oxford-2021",
+            "quote": "coalition agreements with Hadash and the Arab Democratic Party (July 9, 1992), both Arab parties agreed to support the Rabin government without being coalition members",
+            "locator": "p. 157",
+            "note": "Note 12; it cites the agreements Labor signed with Hadash and the Arab Democratic Party on 9 July 1992.",
+            "noteHe": "הערה 12; היא מסתמכת על ההסכמים שחתמה מפלגת העבודה עם חד״ש ועם המפלגה הדמוקרטית הערבית ב־9 ביולי 1992.",
+            "citesRecord": "Labor Party coalition agreements with Hadash and the Arab Democratic Party, 9 July 1992 (published in The Basic Principles of the Government and Coalition Agreements, 1992)"
+          },
+          {
+            "source": "navot-swaid-khalaily-2023",
+            "quote": "along the lines of the second Rabin government, when Mada and Hadash supported the coalition without joining it",
+            "locator": "p. 247"
           }
         ],
-        "note": "JTA establishes both parties’ investiture support and ADP’s announced year of credit; retrospective reporting establishes the continuing blocking bloc. Original signed arrangement and its commencement date remain unrecovered."
+        "note": "Several independent studies say both parties supported the Rabin government from outside the coalition; one cites the agreements Labor signed with them on 9 July 1992. One book (Assaf Meydani, 2009, p. 109) counts them in the coalition, citing nothing.",
+        "noteEn": "One book counts them in the coalition; the others, one citing the agreements signed on 9 July 1992, say they supported it from outside.",
+        "noteHe": "ספר אחד מונה אותן בקואליציה; האחרים, ואחד מהם מסתמך על ההסכמים שנחתמו ב־9 ביולי 1992, אומרים שתמכו בממשלה מבחוץ."
       },
       {
         "letters": "ע",
         "seats": 2,
         "role": "outside-support",
-        "certainty": "provisional",
+        "certainty": "confirmed",
         "cites": [
           {
             "source": "jta1992vote",
@@ -719,9 +760,29 @@
           {
             "source": "outside-support-history",
             "quote": "while not officially part of the coalition, voted with the government on most issues"
+          },
+          {
+            "source": "galnoor-blander-2018",
+            "quote": "both parties agreeing to support the Rabin government without being members of it.",
+            "locator": "p. 650"
+          },
+          {
+            "source": "galnoor-oxford-2021",
+            "quote": "coalition agreements with Hadash and the Arab Democratic Party (July 9, 1992), both Arab parties agreed to support the Rabin government without being coalition members",
+            "locator": "p. 157",
+            "note": "Note 12; it cites the agreements Labor signed with Hadash and the Arab Democratic Party on 9 July 1992.",
+            "noteHe": "הערה 12; היא מסתמכת על ההסכמים שחתמה מפלגת העבודה עם חד״ש ועם המפלגה הדמוקרטית הערבית ב־9 ביולי 1992.",
+            "citesRecord": "Labor Party coalition agreements with Hadash and the Arab Democratic Party, 9 July 1992 (published in The Basic Principles of the Government and Coalition Agreements, 1992)"
+          },
+          {
+            "source": "navot-swaid-khalaily-2023",
+            "quote": "along the lines of the second Rabin government, when Mada and Hadash supported the coalition without joining it",
+            "locator": "p. 247"
           }
         ],
-        "note": "JTA establishes both parties’ investiture support and ADP’s announced year of credit; retrospective reporting establishes the continuing blocking bloc. Original signed arrangement and its commencement date remain unrecovered."
+        "note": "Several independent studies say both parties supported the Rabin government from outside the coalition; one cites the agreements Labor signed with them on 9 July 1992. One book (Assaf Meydani, 2009, p. 109) counts them in the coalition, citing nothing.",
+        "noteEn": "One book counts them in the coalition; the others, one citing the agreements signed on 9 July 1992, say they supported it from outside.",
+        "noteHe": "ספר אחד מונה אותן בקואליציה; האחרים, ואחד מהם מסתמך על ההסכמים שנחתמו ב־9 ביולי 1992, אומרים שתמכו בממשלה מבחוץ."
       }
     ],
     "coalitionSeats": 62,
@@ -824,7 +885,7 @@
         "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
         "reconciliation": {
           "status": "unresolved",
-          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 0; full membership remains unknown. Investiture: 62 for, 8 against, 38 abstaining."
+          "note": "Not every member of the coalition is known, and its seats at this date have not been counted; the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 62 for, 8 against, 38 abstaining."
         },
         "knownMemberSeats": 0
       }

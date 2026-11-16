@@ -139,13 +139,21 @@
       "publisher": "Itzhak Galnoor and Dana Blander, The Handbook of Israel’s Political System (Cambridge University Press, 2018), pp.24–25 and Figure 1.1",
       "kind": "academic",
       "accessed": "2026-11-07",
-      "via": "Publisher preview PDF, page 53; DOI 10.1017/9781316160978."
+      "via": "Publisher preview PDF, page 53; DOI 10.1017/9781316160978.",
+      "evidenceFamily": "author:galnoor"
     },
     "idi-1949": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/elections/1949/",
       "publisher": "Israel Democracy Institute, The Elections for the Constituent Assembly 1949",
       "kind": "academic",
       "accessed": "2026-11-07"
+    },
+    "gruweis-kovalsky-2021": {
+      "url": "https://doi.org/10.1080/13537121.2021.1940567",
+      "publisher": "Ofira Gruweis Kovalsky, “The General Zionists and the WIZO party, 1948–51”, Israel Affairs (2021)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:gruweis-kovalsky"
     }
   },
   "results": {
@@ -505,7 +513,7 @@
         "letters": "נ",
         "seats": 1,
         "role": "confidence-vote-only",
-        "certainty": "provisional",
+        "certainty": "disputed",
         "cites": [
           {
             "source": "coalition-2",
@@ -515,10 +523,24 @@
             "source": "galnoor-blander-2018",
             "quote": "Arab List … Sephardic + Yemenite … Mapai … Progressives … Religious … Coalition (74 mandates) … Gen’l Zion. + WIZO",
             "locator": "p.25, Figure 1.1",
-            "note": "WIZO is grouped with the General Zionists, outside the coalition arrow."
+            "note": "WIZO is grouped with the General Zionists, outside the coalition arrow.",
+            "noteHe": "בתרשים, ויצ״ו מקובצת עם הציונים הכלליים, מחוץ לקואליציה."
+          },
+          {
+            "source": "idi-1949",
+            "quote": "The coalition enjoyed the support of 73 Members of Knesset (MKs) from five parties",
+            "note": "The five parties it names do not include WIZO.",
+            "noteHe": "חמש המפלגות שהוא מונה אינן כוללות את ויצ״ו."
+          },
+          {
+            "source": "gruweis-kovalsky-2021",
+            "quote": "The decision of the Progressive party to join Ben-Gurion’s coalition seems to have supplied WIZO with the ideological rubber stamp to do so as well.",
+            "locator": "p. 791"
           }
         ],
-        "note": "Investiture support is documented; no signed coalition membership or continuing support arrangement recovered. This category records the established vote, not proof that no arrangement ever existed. Galnoor and Blander place WIZO outside the coalition; whether it supported by arrangement or only voted remains unresolved. Best next source: Gruweis Kovalsky, Israel Affairs (2021), DOI 10.1080/13537121.2021.1940567, and Herut 11 March 1949."
+        "note": "Disputed. Ofira Gruweis Kovalsky’s study (2021) says WIZO followed the Progressives into Ben-Gurion’s coalition. Galnoor and Blander’s chart puts WIZO with the General Zionists, outside the coalition, and the Israel Democracy Institute’s count of five parties and 73 seats leaves it out. The Knesset record shows its MK voted for the government. Still to check: the March 1949 newspapers her article cites.",
+        "noteEn": "One study says WIZO joined the coalition; a chart in another book and the Israel Democracy Institute leave it outside. Its MK voted for the government.",
+        "noteHe": "מחקר אחד אומר שוויצ״ו הצטרפה לקואליציה; תרשים בספר אחר והמכון הישראלי לדמוקרטיה משאירים אותה מחוצה לה. חברת הכנסת שלה הצביעה בעד הממשלה."
       },
       {
         "letters": "ל",
@@ -665,7 +687,7 @@
         "supportSeats": null,
         "reconciliation": {
           "status": "unresolved",
-          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 71; full membership remains unknown. Investiture: 69 for, 42 against, 2 abstaining."
+          "note": "Not every member of the coalition is known (those known hold 71 seats); the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 69 for, 42 against, 2 abstaining."
         },
         "knownMemberSeats": 71
       },
