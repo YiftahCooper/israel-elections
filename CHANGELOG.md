@@ -1,5 +1,9 @@
 # Changelog
 
+## 16 November 2026 — research data
+
+- Linked sourced returning lists and the 1973 Black Panthers, added Haim Amsalem’s 2019 run, checked six party registrations, and standardised sourced display spellings and the final-notice Horowitz spelling.
+
 ## 13 November 2026 — audit fixes
 
 - Localities (13 Nov, audit): one result under “Find a locality” reads “1 match” (Hebrew “התאמה אחת”), and “the first 30 are shown” appears only when more than 30 were found.

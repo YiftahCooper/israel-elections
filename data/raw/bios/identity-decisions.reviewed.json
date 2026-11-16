@@ -598,6 +598,13 @@
    "confidence": "high",
    "reason": "The 1999 results notice names the Shas list's rank 1 as the elected candidate who gave up the seat: YP 4757 p.3378 (data/raw/research/k15-results.pdf, PDF page 4), \"הודעה בדבר התפטרות מועמדים לכנסת החמש-עשרה … אות הרשימה: שס … המועמד: מס' 1. אריה מכלוף דרעי, ברשימה זו התפטר ביום ד' בסיון התשנ\"ט (19 במאי 1999)\". The same name, given and middle names included, is Knesset member PersonID 2291 (Aryeh Machluf Deri), tied by ID to Shas rank 1 in 1996 (14-שס#1); no other member has it. Audit 13 Nov 2026 (c-famous-late-06).",
    "basis": "elected; reviewed decision: rank 1 of the Shas list, elected; resigned on 19 May 1999, before the results were published, as the results notice records (YP 4757 p.3378, \"מס' 1. אריה מכלוף דרעי … התפטר\"); Knesset member PersonID 2291."
+  },
+  {
+   "candidateId": "21-ז#2",
+   "personId": 4418,
+   "confidence": "high",
+   "reason": "Zehut No.2 in April 2019 is the former Shas MK Haim Amsalem, explicitly identified in Ynet 21 Feb 2019 and independently corroborated by Zman Israel 4 Jan 2021. Sources: https://www.ynet.co.il/articles/0,7340,L-5467161,00.html ; https://www.zman.co.il/live/185871/ (data/raw/research/mk-runs-1109.reviewed.json).",
+   "basis": "not elected; reviewed decision: Zehut No.2 in April 2019 is the former Shas MK Haim Amsalem, explicitly identified in Ynet 21 Feb 2019 and independently corroborated by Zman Israel 4 Jan 2021. Sources: https://www.ynet.co.il/articles/0,7340,L-5467161,00.html ; https://www.zman.co.il/live/185871/ (data/raw/research/mk-runs-1109.reviewed.json)."
   }
  ]
 }

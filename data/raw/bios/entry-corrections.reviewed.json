@@ -33,6 +33,502 @@
    "displayNameEn": "Yehoshua Sagi",
    "displayNameEnNote": "Reviewed app transliteration of יהושע שגיא (YP 3588/3591); corrects the Knesset English header typo. Not claimed as a new official English spelling; original header remains in data/raw/bios/knesset-site-mk-names-en.json.",
    "source": "k12 audit, commit bd2532b; docs/research/data-audit/k12-resolution.md O15"
+  },
+  {
+   "candidateId": "17-כן#5",
+   "displayNameEn": "Avi Dichter",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Avi Dicter",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "17-שס#10",
+   "displayNameEn": "Yaakov Margi",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "officialNameEn": "Yakov Margi",
+   "source": "https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "21-מחל#6",
+   "displayNameEn": "Miri Regev",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Miri Miriam Regev",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "21-מחל#11",
+   "displayNameEn": "Avi Dichter",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Avi Dicter",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "21-מחל#26",
+   "displayNameEn": "Miki Zohar",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Makhluf Miki Zohar",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "21-פה#1",
+   "displayNameEn": "Benny Gantz",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "officialNameEn": "Benjamin Gantz",
+   "source": "https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "21-פה#12",
+   "displayNameEn": "Hili Tropper",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "officialNameEn": "Chili Tropper",
+   "source": "https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "21-שס#4",
+   "displayNameEn": "Yaakov Margi",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "officialNameEn": "Yakov Margi",
+   "source": "https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "21-כ#3",
+   "displayNameEn": "Yifat Shasha-Biton",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "officialNameEn": "Yifat Shasha Biton",
+   "source": "https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "25-מחל#9",
+   "displayNameEn": "Miri Regev",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Miri Miriam Regev",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "25-מחל#10",
+   "displayNameEn": "Miki Zohar",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Makhluf Miki Zohar",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "25-מחל#11",
+   "displayNameEn": "Avi Dichter",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Avi Dicter",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "25-ט#5",
+   "displayNameEn": "Yitzhak Wasserlauf",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Issac Shimon Wasserlauf",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "25-ט#9",
+   "displayNameEn": "Amichai Eliyahu",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Amichay Eliyahu",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "25-שס#2",
+   "displayNameEn": "Yaakov Margi",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "officialNameEn": "Yakov Margi",
+   "source": "https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "25-ג#1",
+   "displayNameEn": "Yitzhak Goldknopf",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Yitshak Goldknop",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "25-כן#1",
+   "displayNameEn": "Benny Gantz",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "officialNameEn": "Benjamin Gantz",
+   "source": "https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "25-כן#5",
+   "displayNameEn": "Yifat Shasha-Biton",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "officialNameEn": "Yifat Shasha Biton",
+   "source": "https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "25-כן#6",
+   "displayNameEn": "Hili Tropper",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "officialNameEn": "Chili Tropper",
+   "source": "https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "20-מחל#5",
+   "displayNameEn": "Miri Regev",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Miri Miriam Regev",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "20-מחל#22",
+   "displayNameEn": "Miki Zohar",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Makhluf Miki Zohar",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "20-מחל#26",
+   "displayNameEn": "Avi Dichter",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Avi Dicter",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "20-כ#7",
+   "displayNameEn": "Yifat Shasha-Biton",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "officialNameEn": "Yifat Shasha Biton",
+   "source": "https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "20-שס#4",
+   "displayNameEn": "Yaakov Margi",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "officialNameEn": "Yakov Margi",
+   "source": "https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "16-שס#11",
+   "displayNameEn": "Yaakov Margi",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "officialNameEn": "Yakov Margi",
+   "source": "https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "19-מחל#21",
+   "displayNameEn": "Miri Regev",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Miri Miriam Regev",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "19-שס#7",
+   "displayNameEn": "Yaakov Margi",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "officialNameEn": "Yakov Margi",
+   "source": "https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "18-כן#9",
+   "displayNameEn": "Avi Dichter",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Avi Dicter",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "18-מחל#27",
+   "displayNameEn": "Miri Regev",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Miri Miriam Regev",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "18-שס#6",
+   "displayNameEn": "Yaakov Margi",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "officialNameEn": "Yakov Margi",
+   "source": "https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "24-מחל#4",
+   "displayNameEn": "Miri Regev",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Miri Miriam Regev",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "24-מחל#9",
+   "displayNameEn": "Avi Dichter",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Avi Dicter",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "24-מחל#25",
+   "displayNameEn": "Miki Zohar",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Makhluf Miki Zohar",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "24-שס#2",
+   "displayNameEn": "Yaakov Margi",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "officialNameEn": "Yakov Margi",
+   "source": "https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "24-כן#1",
+   "displayNameEn": "Benny Gantz",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "officialNameEn": "Benjamin Gantz",
+   "source": "https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "24-כן#3",
+   "displayNameEn": "Hili Tropper",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "officialNameEn": "Chili Tropper",
+   "source": "https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "24-ט#10",
+   "displayNameEn": "Yitzhak Wasserlauf",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Issac Shimon Wasserlauf",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "24-ת#2",
+   "displayNameEn": "Yifat Shasha-Biton",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "officialNameEn": "Yifat Shasha Biton",
+   "source": "https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "22-פה#1",
+   "displayNameEn": "Benny Gantz",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "officialNameEn": "Benjamin Gantz",
+   "source": "https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "22-פה#12",
+   "displayNameEn": "Hili Tropper",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "officialNameEn": "Chili Tropper",
+   "source": "https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "22-מחל#7",
+   "displayNameEn": "Miri Regev",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Miri Miriam Regev",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "22-מחל#12",
+   "displayNameEn": "Avi Dichter",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Avi Dicter",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "22-מחל#28",
+   "displayNameEn": "Miki Zohar",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Makhluf Miki Zohar",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "22-מחל#29",
+   "displayNameEn": "Yifat Shasha-Biton",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "officialNameEn": "Yifat Shasha Biton",
+   "source": "https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "22-שס#4",
+   "displayNameEn": "Yaakov Margi",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "officialNameEn": "Yakov Margi",
+   "source": "https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "22-כף#3",
+   "displayNameEn": "Yitzhak Wasserlauf",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Issac Shimon Wasserlauf",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "26-מחל#5",
+   "displayNameEn": "Miri Regev",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Miri Miriam Regev",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "26-מחל#12",
+   "displayNameEn": "Miki Zohar",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Makhluf Miki Zohar",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "26-ב#3",
+   "displayNameEn": "Yitzhak Wasserlauf",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Issac Shimon Wasserlauf",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "26-ב#4",
+   "displayNameEn": "Amichai Eliyahu",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Amichay Eliyahu",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "26-שס#119",
+   "displayNameEn": "Yaakov Margi",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "officialNameEn": "Yakov Margi",
+   "source": "https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "26-ג#2",
+   "displayNameEn": "Yitzhak Goldknopf",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Yitshak Goldknop",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "26-דרך#6",
+   "displayNameEn": "Hili Tropper",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "officialNameEn": "Chili Tropper",
+   "source": "https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "26-כן#1",
+   "displayNameEn": "Benny Gantz",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "officialNameEn": "Benjamin Gantz",
+   "source": "https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "23-מחל#6",
+   "displayNameEn": "Miri Regev",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Miri Miriam Regev",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "23-מחל#11",
+   "displayNameEn": "Avi Dichter",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Avi Dicter",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "23-מחל#28",
+   "displayNameEn": "Miki Zohar",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Makhluf Miki Zohar",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "23-מחל#29",
+   "displayNameEn": "Yifat Shasha-Biton",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "officialNameEn": "Yifat Shasha Biton",
+   "source": "https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "23-פה#1",
+   "displayNameEn": "Benny Gantz",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "officialNameEn": "Benjamin Gantz",
+   "source": "https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "23-פה#12",
+   "displayNameEn": "Hili Tropper",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "officialNameEn": "Chili Tropper",
+   "source": "https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "23-שס#4",
+   "displayNameEn": "Yaakov Margi",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "officialNameEn": "Yakov Margi",
+   "source": "https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/",
+   "reviewedAt": "2026-11-16"
+  },
+  {
+   "candidateId": "23-נץ#2",
+   "displayNameEn": "Yitzhak Wasserlauf",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "officialNameEn": "Issac Shimon Wasserlauf",
+   "source": "https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/",
+   "reviewedAt": "2026-11-16"
   }
  ]
 }

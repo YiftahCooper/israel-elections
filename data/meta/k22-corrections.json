@@ -25,7 +25,8 @@
     ")כהנא(": "(כהנא)",
     ")איתיחאד אבנאא אלעהד(": "(איתיחאד אבנאא אלעהד)",
     "2019;)": "2019);",
-    "אלחודה": "אלוחדה"
+    "אלחודה": "אלוחדה",
+    "הורביץ, שפיר וברק": "הורוביץ, שפיר וברק"
   },
   "withdrawn": [
     {
@@ -50,6 +51,6 @@
   "textEvidence": {
     "sourceId": "k22-candidates-gazette",
     "pages": "14466–14492",
-    "note": "Logical parentheses restored from printed YP 8420; YP 8454 also prints תמנו פנינה (פנחש). Raw PDF bytes unchanged. One misprint corrected: YP 8420 prints the designation of list כי as אלחודה אלשעביה, while the same page names its party אלוחדה אלשעביה, and the final results notice (data/raw/k22/results-gazette.pdf) and the committee results page (data/raw/k22/nationalresults.html) both print אלוחדה."
+    "note": "Logical parentheses restored from printed YP 8420; YP 8454 also prints תמנו פנינה (פנחש). Raw PDF bytes unchanged. One misprint corrected: YP 8420 prints the designation of list כי as אלחודה אלשעביה, while the same page names its party אלוחדה אלשעביה, and the final results notice (data/raw/k22/results-gazette.pdf) and the committee results page (data/raw/k22/nationalresults.html) both print אלוחדה. Democratic Union designation uses הורוביץ from the final results notice (retained results-gazette.pdf, PDF pp.3–4, 6), rather than הורביץ in the earlier surplus notice (surplus.pdf, PDF p.2)."
   }
 }

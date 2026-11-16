@@ -3204,8 +3204,8 @@
     "method": "manual-review",
     "retrievedAt": "2026-11-04",
     "note": "Hash and size re-recorded 12 Nov 2026 after reviewed decisions were added (aaa474fb and 7eab7202, 9 Nov), and 13 Nov 2026 after the 1999 Shas rank 1 (Aryeh Deri, YP 4757 p.3378) was added.",
-    "bytes": 29030,
-    "sha256": "d7f659568f8e56e85f1deebea8b5bd341cffc40a1629adbc3c4c562d58002d7b"
+    "bytes": 29802,
+    "sha256": "d9083c08960fc1b73badcb2aa2322ceb4b25684f5b9ef0d448ab8f903f83e2f6"
   },
   {
     "id": "bios-party-sources",

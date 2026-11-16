@@ -1,0 +1,182 @@
+{
+  "asOf": "2026-11-16",
+  "records": [
+    {
+      "factionId": 493,
+      "knesset": 11,
+      "nameHe": "תחייה",
+      "observedFrom": "1984-08-13T00:00:00",
+      "observedTo": "1988-11-21T00:00:00",
+      "source": "data/raw/bios/knesset-odata-faction-positions.json",
+      "recordIds": [
+        27432,
+        27487,
+        27500,
+        27518,
+        27565
+      ],
+      "certainty": "confirmed",
+      "scope": "Recorded name and membership intervals. Does not identify the formal registration or rename instrument."
+    },
+    {
+      "factionId": 641,
+      "knesset": 14,
+      "nameHe": "מד\"ע - רע\"ם",
+      "observedFrom": "1996-06-17T00:00:00",
+      "observedTo": "1999-06-07T00:00:00",
+      "source": "data/raw/bios/knesset-odata-faction-positions.json",
+      "recordIds": [
+        27922,
+        27928,
+        27959,
+        30010
+      ],
+      "certainty": "confirmed",
+      "scope": "Recorded name and membership intervals. Does not identify the formal registration or rename instrument."
+    },
+    {
+      "factionId": 45,
+      "knesset": 16,
+      "nameHe": "האיחוד הלאומי - ישראל ביתנו - מולדת - תקומה",
+      "observedFrom": "2003-02-17T00:00:00",
+      "observedTo": "2006-02-01T12:59:00",
+      "source": "data/raw/bios/knesset-odata-faction-positions.json",
+      "recordIds": [
+        28306,
+        28307,
+        28314,
+        28364,
+        28399,
+        28411,
+        28434,
+        28454,
+        28508
+      ],
+      "certainty": "confirmed",
+      "scope": "Recorded name and membership intervals. Does not identify the formal registration or rename instrument."
+    },
+    {
+      "factionId": 584,
+      "knesset": 16,
+      "nameHe": "האיחוד הלאומי - מולדת - תקומה",
+      "observedFrom": "2006-02-01T00:00:00",
+      "observedTo": "2006-04-17T00:00:00",
+      "source": "data/raw/bios/knesset-odata-faction-positions.json",
+      "recordIds": [
+        29884,
+        29885,
+        29886,
+        29887
+      ],
+      "certainty": "confirmed",
+      "scope": "Recorded name and membership intervals. Does not identify the formal registration or rename instrument."
+    },
+    {
+      "factionId": 46,
+      "knesset": 16,
+      "nameHe": "מרצ - הבחירה הדמוקרטית - שחר",
+      "observedFrom": "2003-02-17T00:00:00",
+      "observedTo": "2004-06-15T00:00:00",
+      "source": "data/raw/bios/knesset-odata-faction-positions.json",
+      "recordIds": [
+        28291,
+        28329,
+        28346,
+        28370,
+        28415,
+        28522
+      ],
+      "certainty": "confirmed",
+      "scope": "Recorded name and membership intervals. Does not identify the formal registration or rename instrument."
+    },
+    {
+      "factionId": 748,
+      "knesset": 18,
+      "nameHe": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה",
+      "observedFrom": "2009-02-24T00:00:00",
+      "observedTo": "2013-02-05T00:00:00",
+      "source": "data/raw/bios/knesset-odata-faction-positions.json",
+      "recordIds": [
+        28716,
+        28717,
+        28729,
+        28734,
+        28738,
+        28739,
+        28741,
+        28759,
+        28765,
+        28783,
+        28795,
+        28802,
+        28803,
+        28804,
+        28806,
+        28808,
+        28826,
+        28831,
+        28833,
+        28836,
+        28839,
+        28841,
+        28849,
+        28850,
+        28852,
+        28854,
+        28855,
+        28859
+      ],
+      "certainty": "confirmed",
+      "scope": "Recorded name and membership intervals. Does not identify the formal registration or rename instrument."
+    },
+    {
+      "factionId": 923,
+      "knesset": 21,
+      "nameHe": "הבית היהודי - האיחוד הלאומי",
+      "observedFrom": "2019-04-30T00:00:00",
+      "observedTo": "2019-10-03T00:00:00",
+      "source": "data/raw/bios/knesset-odata-faction-positions.json",
+      "recordIds": [
+        29406,
+        29443,
+        29480,
+        29481,
+        29482,
+        29500
+      ],
+      "certainty": "confirmed",
+      "scope": "Recorded name and membership intervals. Does not identify the formal registration or rename instrument."
+    },
+    {
+      "factionId": 1086,
+      "knesset": 24,
+      "nameHe": "ביחד",
+      "observedFrom": "2022-08-15T00:00:00",
+      "observedTo": "2022-09-06T00:00:00",
+      "source": "data/raw/bios/knesset-odata-faction-positions.json",
+      "recordIds": [
+        30150
+      ],
+      "certainty": "confirmed",
+      "scope": "Recorded name and membership intervals. Does not identify the formal registration or rename instrument."
+    },
+    {
+      "factionId": 1108,
+      "knesset": 25,
+      "nameHe": "הימין הממלכתי ",
+      "observedFrom": "2024-03-13T00:00:00",
+      "observedTo": "2025-07-10T00:00:00",
+      "source": "data/raw/bios/knesset-odata-faction-positions.json",
+      "recordIds": [
+        31845,
+        31846,
+        31847,
+        31848,
+        31912,
+        32285
+      ],
+      "certainty": "confirmed",
+      "scope": "Recorded name and membership intervals. Does not identify the formal registration or rename instrument."
+    }
+  ]
+}

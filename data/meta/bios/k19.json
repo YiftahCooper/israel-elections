@@ -435,7 +435,9 @@
     "note": "The Likud's page of its outgoing MK (faction member) before the 2013 election; Likud ran with Yisrael Beiteinu."
    },
    "confidence": "high",
-   "basis": "elected; Knesset 19 member, name identical (3)"
+   "basis": "elected; Knesset 19 member, name identical (3)",
+   "displayNameEn": "Miri Regev",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "19-מחל#22": {
    "knessetPersonId": 6076,
@@ -2174,7 +2176,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 19 member, name identical (3)"
+   "basis": "elected; Knesset 19 member, name identical (3)",
+   "displayNameEn": "Yaakov Margi",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/"
   },
   "19-שס#8": {
    "knessetPersonId": 483,

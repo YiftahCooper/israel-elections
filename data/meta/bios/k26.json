@@ -121,7 +121,9 @@
     "note": "The party's 2026 list section (30 cards); each card opens the candidate's biography (data: /assets/list/members.json)."
    },
    "confidence": "high",
-   "basis": "elected; Knesset 26 member, name matches (2.5)"
+   "basis": "elected; Knesset 26 member, name matches (2.5)",
+   "displayNameEn": "Miri Regev",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "26-מחל#6": {
    "knessetPersonId": 468,
@@ -281,7 +283,9 @@
     "note": "The party's 2026 list section (30 cards); each card opens the candidate's biography (data: /assets/list/members.json)."
    },
    "confidence": "high",
-   "basis": "elected; Knesset 26 member, name matches (2.5)"
+   "basis": "elected; Knesset 26 member, name matches (2.5)",
+   "displayNameEn": "Miki Zohar",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "26-מחל#13": {
    "knessetPersonId": 30833,
@@ -901,7 +905,9 @@
    "hewiki": null,
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 26 member, name identical (3)"
+   "basis": "elected; Knesset 26 member, name identical (3)",
+   "displayNameEn": "Yitzhak Wasserlauf",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "26-ב#4": {
    "knessetPersonId": 30857,
@@ -917,7 +923,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 26 member, name identical (3)"
+   "basis": "elected; Knesset 26 member, name identical (3)",
+   "displayNameEn": "Amichai Eliyahu",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "26-ב#5": {
    "knessetPersonId": 30849,
@@ -1101,7 +1109,9 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 25 faction \"התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל\" shares \"הספרדימ\""
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 25 faction \"התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל\" shares \"הספרדימ\"",
+   "displayNameEn": "Yaakov Margi",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/"
   },
   "26-ג#1": {
    "knessetPersonId": 23641,
@@ -1129,7 +1139,9 @@
    "hewiki": null,
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 26 member, name matches (2.5)"
+   "basis": "elected; Knesset 26 member, name matches (2.5)",
+   "displayNameEn": "Yitzhak Goldknopf",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "26-ג#3": {
    "knessetPersonId": 30672,
@@ -1457,7 +1469,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; reviewed decision: טרופר יחיאל משה = טרופר חילי (Hili Tropper)."
+   "basis": "elected; reviewed decision: טרופר יחיאל משה = טרופר חילי (Hili Tropper).",
+   "displayNameEn": "Hili Tropper",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/"
   },
   "26-דרך#7": {
    "knessetPersonId": 30959,
@@ -2849,7 +2863,9 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 25 faction \"המחנה הממלכתי\" shares \"כחול\""
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 25 faction \"המחנה הממלכתי\" shares \"כחול\"",
+   "displayNameEn": "Benny Gantz",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/"
   },
   "26-כן#2": {
    "knessetPersonId": 23635,

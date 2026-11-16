@@ -1497,7 +1497,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 16 member, name identical (3)"
+   "basis": "elected; Knesset 16 member, name identical (3)",
+   "displayNameEn": "Yaakov Margi",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/"
   },
   "16-ל#1": {
    "knessetPersonId": 427,

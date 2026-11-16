@@ -97,7 +97,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 23 member, name matches (2.5)"
+   "basis": "elected; Knesset 23 member, name matches (2.5)",
+   "displayNameEn": "Miri Regev",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "23-מחל#7": {
    "knessetPersonId": 12951,
@@ -177,7 +179,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 23 member, name matches (2.5)"
+   "basis": "elected; Knesset 23 member, name matches (2.5)",
+   "displayNameEn": "Avi Dichter",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "23-מחל#12": {
    "knessetPersonId": 4397,
@@ -449,7 +453,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 23 member, name matches (2.5)"
+   "basis": "elected; Knesset 23 member, name matches (2.5)",
+   "displayNameEn": "Miki Zohar",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "23-מחל#29": {
    "knessetPersonId": 30082,
@@ -465,7 +471,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 23 member, name identical (3)"
+   "basis": "elected; Knesset 23 member, name identical (3)",
+   "displayNameEn": "Yifat Shasha-Biton",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/"
   },
   "23-מחל#30": {
    "knessetPersonId": 30118,
@@ -785,7 +793,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 23 member, name identical (3)"
+   "basis": "elected; Knesset 23 member, name identical (3)",
+   "displayNameEn": "Benny Gantz",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/"
   },
   "23-פה#2": {
    "knessetPersonId": 23594,
@@ -961,7 +971,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; reviewed decision: טרופר יחיאל משה = טרופר חילי (Hili Tropper)."
+   "basis": "elected; reviewed decision: טרופר יחיאל משה = טרופר חילי (Hili Tropper).",
+   "displayNameEn": "Hili Tropper",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/"
   },
   "23-פה#13": {
    "knessetPersonId": 23596,
@@ -1789,7 +1801,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 23 member, name identical (3)"
+   "basis": "elected; Knesset 23 member, name identical (3)",
+   "displayNameEn": "Yaakov Margi",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/"
   },
   "23-שס#5": {
    "knessetPersonId": 28513,
@@ -2653,7 +2667,9 @@
    "hewiki": null,
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 25 faction \"הציונות הדתית\" shares \"איתמר\"; surname unique among MKs"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 25 faction \"הציונות הדתית\" shares \"איתמר\"; surname unique among MKs",
+   "displayNameEn": "Yitzhak Wasserlauf",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "23-נץ#4": {
    "knessetPersonId": 30867,

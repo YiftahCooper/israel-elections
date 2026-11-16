@@ -1,11 +1,11 @@
 {
-  "reviewedAt": "2026-11-09",
+  "reviewedAt": "2026-11-16",
   "scope": "The original 123 left-out runs from the MK history review. Additional roster coverage is reported separately. No identity is inferred from a name alone.",
   "criterion": "Confirm only an election-specific source identifying the MK; rule out only positive contradictory evidence; otherwise unknown.",
   "counts": {
-    "confirmed": 14,
+    "confirmed": 15,
     "ruled out": 17,
-    "unknown": 92
+    "unknown": 91
   },
   "sources": {
     "tzinker-2003": {
@@ -199,6 +199,26 @@
       "inspected": "opened",
       "evidenceFamily": "same-election-id",
       "note": "High-confidence ties to an already elected candidate in the same election; a candidate cannot stand twice. See the exact candidate id recorded per conclusion. Source rosters and membership ties are already retained in this repository."
+    },
+    "amsalem-2019-ynet": {
+      "url": "https://www.ynet.co.il/articles/0,7340,L-5467161,00.html",
+      "publisher": "Ynet / Amir Alon",
+      "sourceType": "contemporary report",
+      "publicationDate": "2019-02-21",
+      "accessMethod": "web search and opened source",
+      "inspected": "opened, paragraphs on Zehut filing",
+      "evidenceFamily": "ynet-zehut-filing-2019",
+      "note": "Names Zehut No.2 Haim Amsalem and explicitly identifies him as the former Shas MK."
+    },
+    "amsalem-2019-zman": {
+      "url": "https://www.zman.co.il/live/185871/",
+      "publisher": "Zman Israel",
+      "sourceType": "retrospective report",
+      "publicationDate": "2021-01-04",
+      "accessMethod": "web search and opened source",
+      "inspected": "opened, live item body",
+      "evidenceFamily": "zman-amsalem-return-2021",
+      "note": "Connects the former Shas MK and Am Shalem leader to Zehut No.2 in April 2019; independent outlet, retrospective corroboration."
     }
   },
   "runs": [
@@ -1682,14 +1702,22 @@
       "queries": [
         "\"חיים אמסלם\" (2019 OR 2021) -site:en.wikipedia.org -site:hamichlol.org.il"
       ],
-      "status": "unknown",
-      "sourceIds": [],
-      "needed": "An election-specific biography, contemporary report or official record identifying this exact candidate as the suggested MK (or a different person). A repeated name alone is insufficient.",
-      "finding": "Targeted name/year search did not establish this exact run. Original exclusion retained: a two-word name on a list of another party, with no other evidence",
-      "confidence": "unresolved",
-      "confidenceRationale": "No identity-specific evidence found; no inference from names.",
-      "supportingSourceIds": [],
-      "contradictingSourceIds": []
+      "status": "confirmed",
+      "sourceIds": [
+        "amsalem-2019-ynet",
+        "amsalem-2019-zman"
+      ],
+      "needed": null,
+      "finding": "Ynet filing report explicitly identifies Zehut No.2 as the former Shas MK; independently corroborated by Zman Israel.",
+      "confidence": "high",
+      "confidenceRationale": "Election-specific reporting identifies the prior MK, not just a repeated name.",
+      "supportingSourceIds": [
+        "amsalem-2019-ynet",
+        "amsalem-2019-zman"
+      ],
+      "contradictingSourceIds": [],
+      "personId": 4418,
+      "reviewedAt": "2026-11-16"
     },
     {
       "candidateId": "21-ר#1",

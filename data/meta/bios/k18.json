@@ -145,7 +145,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 18 member, name matches (2.5)"
+   "basis": "elected; Knesset 18 member, name matches (2.5)",
+   "displayNameEn": "Avi Dichter",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "18-כן#10": {
    "knessetPersonId": 533,
@@ -1045,7 +1047,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 18 member, name matches (2.5)"
+   "basis": "elected; Knesset 18 member, name matches (2.5)",
+   "displayNameEn": "Miri Regev",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "18-מחל#28": {
    "knessetPersonId": 22911,
@@ -1945,7 +1949,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 18 member, name identical (3)"
+   "basis": "elected; Knesset 18 member, name identical (3)",
+   "displayNameEn": "Yaakov Margi",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/"
   },
   "18-שס#7": {
    "knessetPersonId": 483,

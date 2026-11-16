@@ -65,7 +65,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 24 member, name matches (2.5)"
+   "basis": "elected; Knesset 24 member, name matches (2.5)",
+   "displayNameEn": "Miri Regev",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "24-מחל#5": {
    "knessetPersonId": 12951,
@@ -145,7 +147,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 24 member, name matches (2.5)"
+   "basis": "elected; Knesset 24 member, name matches (2.5)",
+   "displayNameEn": "Avi Dichter",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "24-מחל#10": {
    "knessetPersonId": 30809,
@@ -401,7 +405,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 24 member, name matches (2.5)"
+   "basis": "elected; Knesset 24 member, name matches (2.5)",
+   "displayNameEn": "Miki Zohar",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "24-מחל#26": {
    "knessetPersonId": 12952,
@@ -1081,7 +1087,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 24 member, name identical (3)"
+   "basis": "elected; Knesset 24 member, name identical (3)",
+   "displayNameEn": "Yaakov Margi",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/"
   },
   "24-שס#3": {
    "knessetPersonId": 28513,
@@ -1253,7 +1261,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 24 member, name identical (3)"
+   "basis": "elected; Knesset 24 member, name identical (3)",
+   "displayNameEn": "Benny Gantz",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/"
   },
   "24-כן#2": {
    "knessetPersonId": 23635,
@@ -1285,7 +1295,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; reviewed decision: טרופר יחיאל משה = טרופר חילי (Hili Tropper)."
+   "basis": "elected; reviewed decision: טרופר יחיאל משה = טרופר חילי (Hili Tropper).",
+   "displayNameEn": "Hili Tropper",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/"
   },
   "24-כן#4": {
    "knessetPersonId": 30682,
@@ -2165,7 +2177,9 @@
    "hewiki": null,
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 25 faction \"הציונות הדתית\" shares \"דתית\""
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 25 faction \"הציונות הדתית\" shares \"דתית\"",
+   "displayNameEn": "Yitzhak Wasserlauf",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "24-ודעם#1": {
    "knessetPersonId": 30066,
@@ -2389,7 +2403,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 24 member, name identical (3)"
+   "basis": "elected; Knesset 24 member, name identical (3)",
+   "displayNameEn": "Yifat Shasha-Biton",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/"
   },
   "24-ת#3": {
    "knessetPersonId": 4397,

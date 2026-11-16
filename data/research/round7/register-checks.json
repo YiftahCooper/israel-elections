@@ -1,0 +1,106 @@
+{
+  "asOf": "2026-11-16",
+  "scope": "Six previously unchecked histories; all 170 retained registrations searched. This does not assert a live 16-Nov register snapshot.",
+  "checks": [
+    {
+      "partyId": "haredim-list-1949",
+      "searchedNameFragment": "חרדים",
+      "matches": [
+        {
+          "שם מפלגה": "אגודת החרדים – דגל התורה",
+          "מספר מפלגה": "59-900010-6",
+          "תאריך רישום": ""
+        }
+      ],
+      "conclusion": "The current register was checked; it does not establish this historical party’s identity or the dates of its organisational changes.",
+      "source": "data/raw/registrar/parties-2026-11-08.json",
+      "certainty": "unknown",
+      "scope": "Current register only; absence is not evidence of historical nonexistence."
+    },
+    {
+      "partyId": "yahad-1984",
+      "searchedNameFragment": "יחד",
+      "matches": [
+        {
+          "שם מפלגה": "אנחנו ביחד לסדר חברתי חדש",
+          "מספר מפלגה": "59-900160-9",
+          "תאריך רישום": ""
+        },
+        {
+          "שם מפלגה": "יחד – בראשות אלי ישי",
+          "מספר מפלגה": "59-900102-1",
+          "תאריך רישום": ""
+        },
+        {
+          "שם מפלגה": "נתי~ב – נחייה תמיד יחד בכבוד",
+          "מספר מפלגה": "59-900171-6",
+          "תאריך רישום": ""
+        }
+      ],
+      "conclusion": "The current register was checked; it does not establish this historical party’s identity or the dates of its organisational changes.",
+      "source": "data/raw/registrar/parties-2026-11-08.json",
+      "certainty": "unknown",
+      "scope": "Current register only; absence is not evidence of historical nonexistence."
+    },
+    {
+      "partyId": "daam",
+      "searchedNameFragment": "דע~ם",
+      "matches": [
+        {
+          "שם מפלגה": "ארגון הפעולה הדמוקרטי – דע~ם",
+          "מספר מפלגה": "59-900020-5",
+          "תאריך רישום": ""
+        }
+      ],
+      "conclusion": "Da’am is recorded as 59-900020-5; its registration date is blank. Historical organisational changes still need dated evidence.",
+      "source": "data/raw/registrar/parties-2026-11-08.json",
+      "certainty": "confirmed",
+      "scope": "Current register only; absence is not evidence of historical nonexistence."
+    },
+    {
+      "partyId": "uvizchutan",
+      "searchedNameFragment": "בזכות",
+      "matches": [
+        {
+          "שם מפלגה": "אחריות – לב אחד ורוח חדשה",
+          "מספר מפלגה": "59-900082-5",
+          "תאריך רישום": ""
+        }
+      ],
+      "conclusion": "Submitting party matched: אחריות – לב אחד ורוח חדשה, 59-900082-5; the registration date is blank.",
+      "source": "data/raw/registrar/parties-2026-11-08.json",
+      "certainty": "confirmed",
+      "scope": "Submitting party identity from retained official candidate filing; current registration number from retained register. Historical change dates are not established.",
+      "searchedLegalNameFragment": "אחריות – לב אחד"
+    },
+    {
+      "partyId": "hatzibur-haharedi",
+      "searchedNameFragment": "הציבור",
+      "matches": [],
+      "conclusion": "CEC filing names למען אחיי מפלגת כלל ישראל; party privacy policy identifies 59-900211-0. This newer number is not in the retained 170-row snapshot; official live record returned 403.",
+      "source": "data/raw/registrar/parties-2026-11-08.json",
+      "certainty": "unknown",
+      "scope": "Current register only; absence is not evidence of historical nonexistence.",
+      "searchedLegalNameFragment": "למען אחיי",
+      "additionalSource": "https://hatzibur-haharedi.org/privacy",
+      "sourceDate": "2026-10-19",
+      "reportedNumber": "59-900211-0"
+    },
+    {
+      "partyId": "hakel-2026",
+      "searchedNameFragment": "הקהל",
+      "matches": [
+        {
+          "שם מפלגה": "מחנה ישראל",
+          "מספר מפלגה": "59-900153-4",
+          "תאריך רישום": ""
+        }
+      ],
+      "conclusion": "Submitting party matched: מחנה ישראל, 59-900153-4; the registration date is blank.",
+      "source": "data/raw/registrar/parties-2026-11-08.json",
+      "certainty": "confirmed",
+      "scope": "Submitting party identity from retained official candidate filing; current registration number from retained register. Historical change dates are not established.",
+      "searchedLegalNameFragment": "מחנה ישראל"
+    }
+  ]
+}
