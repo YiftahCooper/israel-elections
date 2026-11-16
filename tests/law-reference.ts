@@ -21,14 +21,18 @@ export function reference(x: AllocationInput): number[] {
     }
     return { seats: seats.map((s, i) => Math.min(s, caps[i])), qnum, qden };
   }
-  function finish(v: bigint[], start: ReturnType<typeof initial>, n: number, ids: string[], stage: string, caps: number[] = v.map(() => Infinity)): number[] {
+  // canFill (1977, decision 0095): a unit that cannot seat one more member is passed over while another unit can take
+  // the seat; when none can, the passed-over units compete again and the check stops
+  function finish(v: bigint[], start: ReturnType<typeof initial>, n: number, ids: string[], stage: string, caps: number[] = v.map(() => Infinity), canFill?: (i: number, seats: number) => boolean): number[] {
     const seats = [...start.seats];
     const used = new Set<number>();
+    const passed = new Set<number>();
+    let checking = !!canFill;
     const sum = v.reduce((a, b) => a + b, 0n);
     let step = 0;
     while (seats.reduce((a, b) => a + b, 0) < n) {
       step++;
-      const capped = (i: number) => r.majorityCap && 2n*v[i] <= sum && 2*seats[i] >= n;
+      const capped = (i: number) => (r.majorityCap && 2n*v[i] <= sum && 2*seats[i] >= n) || passed.has(i);
       if (r.remainderMethod === 'largest-remainder' && r.largestRemainderRepeat !== false && v.every((_,i)=>used.has(i) || capped(i))) used.clear();
       const eligible = v.map((_, i) => i).filter(i => v[i] > 0n && !capped(i) && seats[i] < caps[i]
         && (!r.remainderRequiresInitialSeat || start.seats[i] > 0)
@@ -38,13 +42,16 @@ export function reference(x: AllocationInput): number[] {
         const d=BigInt(seats[i]+1); return r.quotientRounding === 'floor' ? [v[i]/d,1n] : [v[i],d];
       };
       const compare=(i:number,j:number)=>{const [a,b]=score(i),[c,d]=score(j);return a*d-c*b;};
+      if (!eligible.length && checking && passed.size) { checking = false; passed.clear(); step--; continue; }
       if (!eligible.length) break;
       let best = eligible[0];
       for (const i of eligible) if (compare(i,best)>0n) best = i;
       const tied = eligible.filter(i => compare(i,best)===0n);
       const key = `${stage}:${step}:${tied.map(i => ids[i]).sort().join('|')}`;
       const forced = tied.find(i => ids[i] === x.lotteryWinners?.[key]);
-      seats[forced ?? best]++; used.add(forced ?? best);
+      const winner = forced ?? best;
+      if (checking && !canFill!(winner, seats[winner] + 1)) { passed.add(winner); step--; continue; }
+      seats[winner]++; used.add(winner);
     }
     return seats;
   }
@@ -60,11 +67,14 @@ export function reference(x: AllocationInput): number[] {
   }
   const votes = groups.map(g => g.reduce((sum, i) => sum + ls[i].votes, 0n));
   const seats = groups.map(g => g.reduce((sum, i) => sum + starting.seats[live.indexOf(i)], 0));
-  const final = finish(votes, { ...starting, seats }, r.seats, unitIds, 'national', groups.map(g => g.reduce((s, i) => s + capacities[i], 0)));
+  const divide = (j: number, n: number) => {
+    const g = groups[j], memberVotes = g.map(i => ls[i].votes), memberCaps = g.map(i => capacities[i]);
+    return g.length === 1 ? [n] : finish(memberVotes, initial(memberVotes, n, memberCaps), n, g.map(i => ls[i].id), `internal:${unitIds[j]}`, memberCaps);
+  };
+  const canFill = (j: number, n: number) => groups[j].length === 1 || groups[j].every(i => capacities[i] === Infinity) || divide(j, n).reduce((a, b) => a + b, 0) === n;
+  const final = finish(votes, { ...starting, seats }, r.seats, unitIds, 'national', groups.map(g => g.reduce((s, i) => s + capacities[i], 0)), r.seatsCappedAtCandidates ? canFill : undefined);
   groups.forEach((g, j) => {
-    const memberVotes = g.map(i => ls[i].votes);
-    const memberCaps = g.map(i => capacities[i]);
-    const division = g.length === 1 ? [final[j]] : finish(memberVotes, initial(memberVotes, final[j], memberCaps), final[j], g.map(i => ls[i].id), `internal:${unitIds[j]}`, memberCaps);
+    const division = divide(j, final[j]);
     g.forEach((i, k) => { answer[i] = division[k]; });
   });
   return answer;
