@@ -1,10 +1,10 @@
 # Data gaps register
 
-12488 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
+12573 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
 
 - High importance: 865 (confirmed 412, probable 33, provisional 163, disputed 13, unknown 244).
-- Medium importance: 4557 (confirmed 1002, probable 331, provisional 605, disputed 9, unknown 2610).
-- Low importance: 7066 (confirmed 572, provisional 802, unknown 5692).
+- Medium importance: 4555 (confirmed 1002, probable 331, provisional 605, disputed 9, unknown 2608).
+- Low importance: 7153 (confirmed 572, provisional 802, unknown 5779).
 
 ## High importance: open, most-shown first
 
@@ -33,7 +33,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 - [Formation conflicts](../data/meta/aftermath/k24.json) ×2: provisional 1, disputed 1. Disputed: Time Lapid informed the President on 2 June 2021
 - [Formation events](../data/meta/aftermath/k24.json) ×3: probable 2, provisional 1. consultations 2021-04-05, mandate-given 2021-04-06, mandate-given 2021-05-05
 - [Bloc schemes](../data/meta/k24.json) ×2: provisional 1, unknown 1. knesset-blocs-2021, pm-recommendations
-- [Individual MKs](../data/meta/aftermath/k24.json) ×2: provisional 2. amichai-chikli, said-al-harumi
+- [Individual MKs](../data/meta/aftermath/k24.json) ×2: provisional 2. amichai-chikli, saeed-alkharumi
 - [Government](../data/meta/aftermath/k24.json) ×1: probable 1
 - [Investiture vote](../data/meta/aftermath/k24.json) ×1: provisional 1
 - [Recommendation rounds](../data/meta/aftermath/k24.json) ×1: probable 1. r2
@@ -286,7 +286,7 @@ Shown in Standard/Expert views or the After-the-election tab, in the same order.
 - **k12**: Family classifications 59 (probable 4, provisional 20, unknown 35); Published lists 27 (unknown 27); data/research/knesset-events/kN.json events 14 (unknown 14); Party appearances 10 (unknown 10); Term events 5 (probable 5); List metadata 4 (unknown 4); data/meta/election-context.json events 3 (probable 1, provisional 2); Formation 2 (provisional 2); Government 2 (unknown 2); Issue polling 2 (unknown 2); data/raw/kN/candidates.reviewed.json corrections 1 (unknown 1); Reactions 1 (unknown 1).
 - **k11**: Family classifications 53 (probable 4, provisional 16, unknown 33); Published lists 25 (unknown 25); data/research/knesset-events/kN.json events 14 (unknown 14); Party appearances 12 (unknown 12); List metadata 11 (probable 2, unknown 9); Government 8 (provisional 7, unknown 1); data/meta/election-context.json events 3 (probable 2, provisional 1); Term events 3 (probable 3); Issue polling 2 (unknown 2); data/meta/kN.json record 1 (probable 1); Formation 1 (provisional 1); Reactions 1 (unknown 1).
 - **k10**: Family classifications 48 (probable 4, provisional 14, unknown 30); Published lists 31 (unknown 31); Party appearances 19 (unknown 19); data/research/knesset-events/kN.json events 8 (unknown 8); List metadata 6 (unknown 6); Term events 5 (probable 5); Government 2 (unknown 2); Issue polling 2 (unknown 2); Formation 1 (disputed 1); Reactions 1 (unknown 1).
-- **k9**: Family classifications 43 (probable 4, provisional 14, unknown 25); data/research/knesset-events/kN.json events 33 (unknown 33); Published lists 21 (unknown 21); Party appearances 11 (unknown 11); List metadata 10 (unknown 10); Term events 7 (probable 7); data/meta/election-context.json events 2 (provisional 2); data/raw/kN/search.reviewed.json capResolution 1 (provisional 1); data/research/round7/history-display.json pointNotes 1 (unknown 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1).
+- **k9**: Family classifications 43 (probable 4, provisional 14, unknown 25); data/research/knesset-events/kN.json events 33 (unknown 33); Published lists 21 (unknown 21); Party appearances 11 (unknown 11); List metadata 8 (unknown 8); Term events 7 (probable 7); data/meta/election-context.json events 2 (provisional 2); data/raw/kN/search.reviewed.json capResolution 1 (provisional 1); data/research/round7/history-display.json pointNotes 1 (unknown 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1).
 - **k8**: Family classifications 38 (probable 1, provisional 12, unknown 25); data/research/knesset-events/kN.json events 21 (unknown 21); Published lists 20 (unknown 20); Party appearances 10 (unknown 10); List metadata 6 (unknown 6); Term events 5 (probable 5); data/meta/election-context.json events 1 (provisional 1); Government 1 (unknown 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
 - **k7**: Family classifications 40 (probable 4, provisional 11, unknown 25); Published lists 16 (unknown 16); data/research/knesset-events/kN.json events 6 (unknown 6); Party appearances 5 (unknown 5); List metadata 3 (unknown 3); Term events 2 (probable 2); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Government 1 (unknown 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
 - **k6**: Family classifications 42 (probable 4, provisional 12, unknown 26); Published lists 17 (unknown 17); data/research/knesset-events/kN.json events 14 (unknown 14); Party appearances 5 (unknown 5); Government 2 (unknown 2); Term events 2 (probable 2); data/meta/election-context.json events 1 (probable 1); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
@@ -300,7 +300,7 @@ Shown in Standard/Expert views or the After-the-election tab, in the same order.
 
 Display metadata, candidate trivia, raw-dump fields and provenance housekeeping.
 
-data/meta/bios/kN.json candidates 4067; Published lists 799 (567 open); data/meta/parties.json parties 567 (459 open); data/meta/kN.json colours 442; docs (prose) 300; List metadata 232 (0 open); data/raw/research/ckan-election-search.json result 164; data/raw/research/ckan-votes-knesset.json result 102; data/raw/votes-knesset.catalogue.json result 102; data/raw/kN/knesset-odata-members.json positions 50; data/raw/research/odata-elections-catalog.json result 41; data/raw/kN/knesset-odata-members.json record 26; data/meta/logos/kN.json logos 21; data/raw/polls/kN/coverage.json candidates 18; data/raw/SOURCES.json sha256 17; data/raw/party-links/overlay-corrections.reviewed.json entries 16; data/raw/SOURCES.json file 16; data/raw/kN/knesset-odata-factions.json factionMemberships 12; data/raw/kN/ratz-odata.json value 9; data/raw/research/knesset-speakers/kns-person-to-position-122.json value 9; data/raw/research/knesset-speakers/kns-person-to-position-123.json value 7; data/raw/bios/party-sources.reviewed.json sources 5; data/raw/kN/government-15-positions.json value 4; data/raw/research/mk-runs-1109.reviewed.json runs 4; data/meta/logos/README.md 3; data/raw/research/kN-term-boundary.json queries 3; data/raw/bios/identity-decisions.reviewed.json decisions 2; data/raw/kN/knesset-odata-factions.json record 2; data/raw/SOURCES.json license 2; data/raw/SOURCES.json url 2; data/raw/bios/entry-corrections.reviewed.json displayNames 1; data/raw/bios/entry-corrections.reviewed.json knessetVerified 1; data/raw/bios/knesset-odata-faction-positions.json FinishDate 1; data/raw/bios/knesset-odata-mk-positions.json FactionID 1; data/raw/bios/knesset-odata-mk-positions.json FactionName 1; data/raw/bios/knesset-odata-mk-positions.json FinishDate 1; data/raw/bios/knesset-odata-mk-positions.json KnessetNum 1; data/raw/bios/party-sources.reviewed.json links 1; data/raw/bios/party-sources.reviewed.json spotChecks 1; data/raw/bios/wikidata-israeli-parties.json dissolved 1; data/raw/bios/wikidata-israeli-parties.json inception 1; data/raw/bios/wikidata-israeli-parties.json labelHe 1; data/raw/bios/wikidata-israeli-party-members.json birth 1; data/raw/bios/wikidata-israeli-party-members.json knessetSiteId 1; data/raw/kN/knesset-odata-members.json factionMemberships 1; data/raw/party-links/overlay-corrections.reviewed.json aliases 1; data/raw/party-links/overlay-corrections.reviewed.json overlayReviewedAt 1; data/raw/research/kN-term-boundary.json dates 1; data/raw/research/kN-term-boundary.json eventSources 1; data/raw/research/kN-term-boundary.json record 1; data/raw/research/MANIFEST.json note 1; data/raw/research/mk-runs-1109.reviewed.json coverageReview 1.
+data/meta/bios/kN.json candidates 4154; Published lists 799 (567 open); data/meta/parties.json parties 567 (459 open); data/meta/kN.json colours 442; docs (prose) 300; List metadata 232 (0 open); data/raw/research/ckan-election-search.json result 164; data/raw/research/ckan-votes-knesset.json result 102; data/raw/votes-knesset.catalogue.json result 102; data/raw/kN/knesset-odata-members.json positions 50; data/raw/research/odata-elections-catalog.json result 41; data/raw/kN/knesset-odata-members.json record 26; data/meta/logos/kN.json logos 21; data/raw/polls/kN/coverage.json candidates 18; data/raw/SOURCES.json sha256 17; data/raw/party-links/overlay-corrections.reviewed.json entries 16; data/raw/SOURCES.json file 16; data/raw/kN/knesset-odata-factions.json factionMemberships 12; data/raw/kN/ratz-odata.json value 9; data/raw/research/knesset-speakers/kns-person-to-position-122.json value 9; data/raw/research/knesset-speakers/kns-person-to-position-123.json value 7; data/raw/bios/party-sources.reviewed.json sources 5; data/raw/kN/government-15-positions.json value 4; data/raw/research/mk-runs-1109.reviewed.json runs 4; data/meta/logos/README.md 3; data/raw/research/kN-term-boundary.json queries 3; data/raw/bios/identity-decisions.reviewed.json decisions 2; data/raw/kN/knesset-odata-factions.json record 2; data/raw/SOURCES.json license 2; data/raw/SOURCES.json url 2; data/raw/bios/entry-corrections.reviewed.json displayNames 1; data/raw/bios/entry-corrections.reviewed.json knessetVerified 1; data/raw/bios/knesset-odata-faction-positions.json FinishDate 1; data/raw/bios/knesset-odata-mk-positions.json FactionID 1; data/raw/bios/knesset-odata-mk-positions.json FactionName 1; data/raw/bios/knesset-odata-mk-positions.json FinishDate 1; data/raw/bios/knesset-odata-mk-positions.json KnessetNum 1; data/raw/bios/party-sources.reviewed.json links 1; data/raw/bios/party-sources.reviewed.json spotChecks 1; data/raw/bios/wikidata-israeli-parties.json dissolved 1; data/raw/bios/wikidata-israeli-parties.json inception 1; data/raw/bios/wikidata-israeli-parties.json labelHe 1; data/raw/bios/wikidata-israeli-party-members.json birth 1; data/raw/bios/wikidata-israeli-party-members.json knessetSiteId 1; data/raw/kN/knesset-odata-members.json factionMemberships 1; data/raw/party-links/overlay-corrections.reviewed.json aliases 1; data/raw/party-links/overlay-corrections.reviewed.json overlayReviewedAt 1; data/raw/research/kN-term-boundary.json dates 1; data/raw/research/kN-term-boundary.json eventSources 1; data/raw/research/kN-term-boundary.json record 1; data/raw/research/MANIFEST.json note 1; data/raw/research/mk-runs-1109.reviewed.json coverageReview 1.
 
 ## Certainty of recorded claims
 
@@ -313,13 +313,13 @@ Every claim in these families, not only gaps. Derived from each claim’s own so
 | Formation events | 61 | 18 | 45 | 1 | 0 | 125 |
 | Term events | 31 | 54 | 0 | 0 | 0 | 85 |
 | Family classifications | 0 | 55 | 411 | 0 | 0 | 466 |
-| Candidate identity links | 3216 | 42 | 535 | 0 | 0 | 3793 |
+| Candidate identity links | 3245 | 42 | 535 | 0 | 0 | 3822 |
 
 ## Counts
 
-By kind: unknown: 7355; missing-field: 283; conflict: 20; single-source: 2970; low-confidence: 101; release-hold: 0; inferred: 1172; pending: 404; unconfirmed: 183.
+By kind: unknown: 7440; missing-field: 283; conflict: 20; single-source: 2970; low-confidence: 101; release-hold: 0; inferred: 1172; pending: 404; unconfirmed: 183.
 
-By status: inferred-not-verified: 1033; needs-current-status-review: 318; open: 11137.
+By status: inferred-not-verified: 1033; needs-current-status-review: 318; open: 11222.
 
 | Election | High open | Medium open | Low | Total |
 | --- | ---: | ---: | ---: | ---: |
@@ -331,7 +331,7 @@ By status: inferred-not-verified: 1033; needs-current-status-review: 318; open: 
 | k6 | 28 | 86 | 161 | 315 |
 | k7 | 15 | 77 | 160 | 281 |
 | k8 | 24 | 105 | 174 | 369 |
-| k9 | 21 | 131 | 197 | 419 |
+| k9 | 21 | 129 | 197 | 417 |
 | k10 | 19 | 123 | 171 | 363 |
 | k11 | 46 | 134 | 204 | 445 |
 | k12 | 25 | 130 | 183 | 397 |
@@ -348,7 +348,7 @@ By status: inferred-not-verified: 1033; needs-current-status-review: 318; open: 
 | k23 | 4 | 102 | 269 | 450 |
 | k24 | 12 | 164 | 303 | 539 |
 | k25 | 8 | 396 | 393 | 863 |
-| k26 | 2 | 128 | 365 | 563 |
+| k26 | 2 | 128 | 452 | 650 |
 | cross-election | 3 | 275 | 1085 | 1488 |
 
 ## Maintenance and scope

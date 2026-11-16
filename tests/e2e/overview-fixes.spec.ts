@@ -27,13 +27,13 @@ for (const lang of ['en', 'he'] as const) test(`1999 Shas: the first seat's card
   await expect(page.locator('.chamber .tip')).toContainText(lang === 'he' ? 'מקום 2' : 'rank 2');
 });
 
-test('1977 counted by party: the key and the Hadash rows add up to every seat, with the member whose party is not recorded', async ({ page }) => {
+test('1977 counted by party: the key and the Hadash rows add up to every seat, the public circles seat included', async ({ page }) => {
   await start(page, { election: 'k9' });
   const nums = await page.locator('.chamber .legend button b').allTextContents();
   expect(nums.reduce((t, n) => t + Number(n), 0)).toBe(120);
-  await expect(page.locator('.chamber .legend')).toContainText('Party not recorded · Hadash 1');
-  const hadash = page.locator('.lbars li').filter({ has: page.locator('[data-party-rest]') });
-  await expect(hadash.locator('[data-party-rest]')).toContainText('Party not recorded1');
+  await expect(page.locator('.chamber .legend')).toContainText('Jewish and Arab public circles · Hadash 1');
+  const hadash = page.locator('.lbars li').filter({ has: page.locator('.lb-parties li', { hasText: 'Jewish and Arab public circles' }) });
+  await expect(hadash.locator('[data-party-rest]')).toHaveCount(0);
   const rows = await hadash.locator('.lb-parties li b').allTextContents();
   expect(rows.reduce((t, n) => t + Number(n), 0)).toBe(Number(await hadash.locator('.lb-seats b').textContent()));
   // one swatch type: every key row starts with a seat dot, in chamber order (Likud 40 before Shinui 2 in 1988)

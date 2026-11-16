@@ -197,12 +197,12 @@
             {
               "rank": 16,
               "datasetName": "שפירא אליהו",
-              "note": "Checked, unchanged: the candidate notice itself prints \"שפירא אליהו\" (YP 3073 p. 2826); the results notice prints \"שפייזר אליהו\" (YP 3081 p. 3007). The person is Eliyahu Speiser; the dataset keeps the candidate-notice reading with a recorded spelling variant."
+              "note": "Checked, unchanged: the candidate notice itself prints \"שפירא אליהו\" (YP 3073 p. 2826); the results notice prints \"שפייזר אליהו\" (YP 3081 p. 3007). The person is Eliahu Speiser; the dataset keeps the candidate-notice reading with a recorded spelling variant."
             },
             {
               "rank": 28,
               "datasetName": "חריש מיכאל",
-              "note": "roster spelling \"חריש מיכאל\" = Micha Harish"
+              "note": "roster spelling \"חריש מיכאל\" = Michael Harish"
             },
             {
               "rank": 37,
@@ -252,7 +252,7 @@
             {
               "rank": 33,
               "datasetName": "ותד מחמד",
-              "note": "roster spelling \"ותד מחמד\" = Mohammed Wattad"
+              "note": "roster spelling \"ותד מחמד\" = Muhammed Wattad"
             },
             {
               "rank": 40,
@@ -506,7 +506,7 @@
       "seats": 4,
       "rosterRanks": 4,
       "candidatesTruncated": true,
-      "notes": "Front named on the ballot as Rakah + Black Panthers + public circles; Charlie Biton held the Black Panthers place. Affiliation of the other elected members comes from their own biographies (party membership), not from a published seat split.",
+      "notes": "Front named on the ballot as Rakah + Black Panthers + public circles; Charlie Bitton held the Black Panthers place. Affiliation of the other elected members comes from their own biographies (party membership), not from a published seat split.",
       "parties": [
         {
           "id": "israeli-communist-party",
@@ -1223,7 +1223,7 @@
       "previousDatasetName": "שפירא אליהו",
       "datasetName": "שפירא אליהו",
       "resolution": "not a transcription error: gazette misprint, candidate-notice reading kept",
-      "evidence": "Checked, unchanged: the candidate notice itself prints \"שפירא אליהו\" (YP 3073 p. 2826); the results notice prints \"שפייזר אליהו\" (YP 3081 p. 3007). The person is Eliyahu Speiser; the dataset keeps the candidate-notice reading with a recorded spelling variant.",
+      "evidence": "Checked, unchanged: the candidate notice itself prints \"שפירא אליהו\" (YP 3073 p. 2826); the results notice prints \"שפייזר אליהו\" (YP 3081 p. 3007). The person is Eliahu Speiser; the dataset keeps the candidate-notice reading with a recorded spelling variant.",
       "resolvedOn": "2026-11-04",
       "record": "docs/decisions/0088-roster-corrections-and-odata-audit.md"
     },

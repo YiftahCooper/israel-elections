@@ -143,6 +143,15 @@ export const shownName = (c: { nameHe: string; displayNameHe?: string }) => c.di
 /** A candidate's name in the interface language: the official English name when the Knesset publishes one, else the Hebrew. */
 export const candidateName = (c: { nameHe: string; displayNameHe?: string; nameEn?: string }, lang: Lang) => (lang === 'en' && c.nameEn ? c.nameEn : shownName(c));
 
+/** A member's name given name first, as the seat chart and Find an MK show every member: the Knesset's own record
+ *  (memberNameHe), else a printed two-word name (family name, given name) turned round. A longer printed name is kept as
+ *  printed, since where its family name ends is not certain. */
+export const memberNameGivenFirst = (c: { nameHe: string; displayNameHe?: string; memberNameHe?: string }) => {
+  if (!c.displayNameHe && c.memberNameHe) return c.memberNameHe;
+  const parts = shownName(c).trim().split(/\s+/);
+  return parts.length === 2 ? `${parts[1]} ${parts[0]}` : shownName(c);
+};
+
 /** The candidates who fill a list's seats, in order: the roster minus those the official notice did not seat. */
 export const seatedOrder = (l: Pick<SimList, 'candidates'>) => l.candidates.filter((c) => !c.notSeated);
 export const electedOf = (l: SimList, seats: number) => seatedOrder(l).slice(0, seats);

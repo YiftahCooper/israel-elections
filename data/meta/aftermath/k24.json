@@ -820,7 +820,7 @@
       }
     ],
     "notes": [
-      "Continuing coalition membership at formation: 61 seats. The eight elected lists had 62 seats including Chikli, who opposed the government from formation. Alharumi remains a member despite abstaining in the investiture vote."
+      "Continuing coalition membership at formation: 61 seats. The eight elected lists had 62 seats including Chikli, who opposed the government from formation. Alkharumi remains a member despite abstaining in the investiture vote."
     ],
     "confidenceVote": {
       "for": 60,
@@ -843,7 +843,7 @@
     "reconciliation": {
       "status": "explained",
       "expectedFor": 60,
-      "note": "61 continuing coalition members minus Alharumi abstaining = 60 for. The 58 other-list seats plus Chikli = 59 against. Alharumi remains in the coalition count."
+      "note": "61 continuing coalition members minus Alkharumi abstaining = 60 for. The 58 other-list seats plus Chikli = 59 against. Alkharumi remains in the coalition count."
     },
     "individuals": [
       {
@@ -869,8 +869,8 @@
         "note": "Opposed this government from formation on 13 June 2021; not a coalition member or minister. Excluded from the six Yamina seats above. The House Committee declaration of 25 April 2022 concerns legal faction status, not the start of his opposition; Knesset membership ended 14 July 2022."
       },
       {
-        "id": "said-al-harumi",
-        "nameEn": "Said al-Harumi",
+        "id": "saeed-alkharumi",
+        "nameEn": "Saeed Alkharumi",
         "nameHe": "סעיד אלחרומי",
         "fromLetters": "עם",
         "countedInFactionSeats": true,

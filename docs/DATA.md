@@ -49,7 +49,7 @@ display colours, not a claim that every colour is an official party specificatio
 
 `data/meta/candidate-notes.json` holds 29 sourced bilingual notes: seven names printed
 differently in the candidate notice, the results notice or the Knesset record (such as the
-1984 Eliyahu Speiser misprint); two Knesset English spellings; five members named as elected
+1984 Eliahu Speiser misprint); two Knesset English spellings; five members named as elected
 who did not take the seat at the Knesset's first sitting (such as Sharansky in 2003); seven
 candidates who resigned before polling day; and eight 1996–1998 membership endings.
 `scripts/lib/build/notes.ts` adds the notes and, for three misprinted names, a corrected

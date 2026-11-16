@@ -23,7 +23,9 @@
 .tl-line-tail { white-space: nowrap; }
 .tl-mark-icon, .chamber svg.tl-mark-icon { flex: none; width: 18px; height: 18px; margin-top: 1px; display: inline-block; }
 
-.tl-chamber svg { max-width: 760px; margin-inline: auto; }
+/* the seat drawing only (a direct child): the small mark icons in the lines, the rebels row and the key are svgs too, and an
+   auto margin on one of those pushes its line to the far edge */
+.tl-chamber > svg { max-width: 760px; margin-inline: auto; }
 .tl-chamber .tl-vacant { stroke-dasharray: 4 3; }
 .tl-badge circle, .tl-badge rect:first-child { fill: var(--tl-red); stroke: var(--surface); stroke-width: 2px; vector-effect: non-scaling-stroke; }
 .tl-badge-D3a > rect:first-child { fill: var(--tl-grey); }

@@ -343,7 +343,7 @@
       "effectiveDate": "2013-01-22",
       "contestType": "knesset",
       "type": "disqualification",
-      "textEn": "Election-day eligibility: Haneen Zoabi (candidate). The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textEn": "Election-day eligibility: Hanin Zoabi (candidate). The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
       "textHe": "מעמד ביום הבחירות: חנין זועבי (מועמדת). בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
       "source": {
         "url": "https://www.idi.org.il/articles/65951",
@@ -360,7 +360,7 @@
       "effectiveDate": "2015-03-17",
       "contestType": "knesset",
       "type": "disqualification",
-      "textEn": "Election-day eligibility: Haneen Zoabi (candidate). The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textEn": "Election-day eligibility: Hanin Zoabi (candidate). The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
       "textHe": "מעמד ביום הבחירות: חנין זועבי (מועמדת). בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
       "source": {
         "url": "https://www.idi.org.il/articles/65951",
@@ -496,7 +496,7 @@
       "effectiveDate": "2019-04-09",
       "contestType": "knesset",
       "type": "disqualification",
-      "textEn": "Election-day eligibility: Michael Ben-Ari disqualified by the Supreme Court after the CEC had approved the candidacy. This excluded individual candidates, not their entire list. IDI secondary account; date denotes election-day status.",
+      "textEn": "Election-day eligibility: Michael Ben Ari disqualified by the Supreme Court after the CEC had approved the candidacy. This excluded individual candidates, not their entire list. IDI secondary account; date denotes election-day status.",
       "textHe": "מעמד ביום הבחירות: מיכאל בן ארי נפסל בבית המשפט העליון לאחר שהוועדה אישרה את מועמדותו. זו פסילת מועמדים יחידים ולא הרשימה כולה. לפי המכון הישראלי לדמוקרטיה, מקור משני; התאריך מציין את המעמד ביום הבחירות.",
       "source": {
         "url": "https://www.idi.org.il/articles/65951",
@@ -839,7 +839,7 @@
       "effectiveDate": "1988-10-27",
       "contestType": "knesset",
       "type": "membership-snapshot",
-      "textEn": "Michael Reiser (Likud #25) died on 27 October 1988, before polling day. The results notice omits him; original registered ranks are preserved.",
+      "textEn": "Michael Reisser (Likud #25) died on 27 October 1988, before polling day. The results notice omits him; original registered ranks are preserved.",
       "textHe": "מיכאל רייסר (הליכוד, מקום 25) נפטר ב־27 באוקטובר 1988, לפני יום הבחירות. הוא אינו מופיע בשמות הנבחרים בהודעת התוצאות; דירוג הרשימה הרשומה נשמר.",
       "source": {
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset12-results.pdf",
@@ -866,7 +866,7 @@
         },
         {
           "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/623",
-          "publisher": "Knesset — Michael Reiser, personal details",
+          "publisher": "Knesset — Michael Reisser, personal details",
           "publisherHe": "הכנסת — מיכאל רייסר, פרטים אישיים",
           "evidence": "official",
           "quote": "תאריך פטירה: ט״ז בחשוון תשמ״ט, 27/10/1988",
@@ -1019,7 +1019,7 @@
       "effectiveDate": "2026-11-04",
       "contestType": "knesset",
       "type": "correction",
-      "textEn": "Source comparison reviewed 4 November 2026 (not a historical correction date): The candidate notice misprints Eliyahu Speiser (#16) as שפירא אליהו; the results notice prints שפייזר אליהו. Both readings are preserved; this is not a verified separate erratum.",
+      "textEn": "Source comparison reviewed 4 November 2026 (not a historical correction date): The candidate notice misprints Eliahu Speiser (#16) as שפירא אליהו; the results notice prints שפייזר אליהו. Both readings are preserved; this is not a verified separate erratum.",
       "textHe": "השוואת מקורות שנבדקה ב־4 בנובמבר 2026 (לא מועד תיקון היסטורי): בהודעת המועמדים נדפס שמו של אליהו שפייזר (16) כ״שפירא אליהו״; בהודעת התוצאות נדפס ״שפייזר אליהו״. שתי הגרסאות נשמרות; לא אומתה הודעת תיקון נפרדת.",
       "source": {
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset11-results.pdf",

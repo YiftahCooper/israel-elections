@@ -37,7 +37,8 @@ test('the panel shows the party history and the comparison; the full sheet moves
   await expect(sheet(page).locator('.ph-card')).toContainText('2026 · The Democrats');
   await expect(sheet(page).locator('.ph-card')).toContainText('Elected: The Democrats 7 · Meretz 1');
   await expect(sheet(page).locator('.ph-events')).toContainText('Labor renamed The Democrats');
-  await expect(sheet(page).locator('.ph-events')).toContainText('To verify');
+  // the register was read (16 Nov 2026): the row says what it found, with its disputed chip, not "to verify"
+  await expect(sheet(page).locator('.ph-events')).toContainText('Party register checked: Registered name and legal change date remain unresolved');
   await sheet(page).locator('.ph-bar[aria-pressed="true"]').focus();
   await page.keyboard.press('ArrowLeft');
   await expect(sheet(page).locator('.ph-card')).toContainText('2022 · Labor');

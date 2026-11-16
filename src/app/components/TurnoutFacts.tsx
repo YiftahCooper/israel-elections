@@ -103,7 +103,7 @@ export function TurnoutFacts({ s }: { s: Scenario }) {
         since={official.ballotBoxes !== null && prev?.ballotBoxes ? sinceWords(<CountDelta now={official.ballotBoxes} before={prev.ballotBoxes} digits={digits} />) : undefined} />}
       {expert && <Fact id="envelopes" k={L('Double envelopes', 'מעטפות כפולות')} info={<Info term="envelopes" />}
         v={official.envelopeVotes === null ? '—' : <bdi dir="ltr">{fmtInt(official.envelopeVotes)}</bdi>}
-        d={official.envelopeVotes === null ? L('Not in the source for this election', 'לא מופיע במקור לבחירות אלה') : <>{percent(official.envelopeVotes, official.votesCast, digits)} {L('of votes cast', 'מהמצביעים')}</>} />}
+        d={official.envelopeVotes === null ? L('Not in the source for this election', 'לא מופיע במקור לבחירות אלה') : <>{percent(official.envelopeVotes, official.votesCast, digits)} {L('of votes cast, incl. invalid', 'מהמצביעים, כולל פסולים')}</>} />}
     </dl>
     {standard && <TurnoutHistory current={s.electionId} compared={ref && ref.sc.electionId !== s.electionId ? ref.sc.electionId : null} />}
   </section>;

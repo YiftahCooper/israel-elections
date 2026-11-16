@@ -955,6 +955,14 @@
    "confidence": "high",
    "basis": "elected; Knesset 26 member, name identical (3)"
   },
+  "26-ב#7": {
+   "knessetPersonId": 30981,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
   "26-שס#1": {
    "knessetPersonId": 2291,
    "knesset": {
@@ -1031,6 +1039,14 @@
     "url": "https://he.wikipedia.org/wiki/%D7%97%D7%99%D7%99%D7%9D_%D7%91%D7%99%D7%98%D7%95%D7%9F",
     "via": "wikidata Q106427258"
    },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
+  "26-שס#6": {
+   "knessetPersonId": 30989,
+   "knesset": null,
+   "hewiki": null,
    "party": null,
    "confidence": "high",
    "basis": "elected; Knesset 26 member, name identical (3)"
@@ -1171,6 +1187,30 @@
     "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%90%D7%99%D7%A8_%D7%A4%D7%A8%D7%95%D7%A9",
     "via": "wikidata Q1391548"
    },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
+  "26-ג#5": {
+   "knessetPersonId": 30953,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
+  "26-ג#6": {
+   "knessetPersonId": 30954,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
+  "26-ג#7": {
+   "knessetPersonId": 30955,
+   "knesset": null,
+   "hewiki": null,
    "party": null,
    "confidence": "high",
    "basis": "elected; Knesset 26 member, name identical (3)"
@@ -1423,6 +1463,14 @@
    "confidence": "high",
    "basis": "elected; Knesset 26 member, name matches (2.5)"
   },
+  "26-דרך#2": {
+   "knessetPersonId": 30957,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
   "26-דרך#3": {
    "knessetPersonId": 30685,
    "knesset": {
@@ -1435,6 +1483,14 @@
     "url": "https://he.wikipedia.org/wiki/%D7%90%D7%95%D7%A8%D7%99%D7%AA_%D7%A4%D7%A8%D7%A7%D7%A9-%D7%94%D7%9B%D7%94%D7%9F",
     "via": "wikidata Q20071724"
    },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
+  "26-דרך#4": {
+   "knessetPersonId": 30958,
+   "knesset": null,
+   "hewiki": null,
    "party": null,
    "confidence": "high",
    "basis": "elected; Knesset 26 member, name identical (3)"
@@ -1485,6 +1541,38 @@
    "confidence": "medium",
    "basis": "elected; Knesset 26 member, name identical (3); Hebrew Wikipedia via Wikidata Q42304031: identical Hebrew label, party \"ישר!\" (shares \"ישר\"), born 1976; the article places the person in this election"
   },
+  "26-דרך#8": {
+   "knessetPersonId": 30960,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
+  "26-דרך#9": {
+   "knessetPersonId": 30961,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
+  "26-דרך#10": {
+   "knessetPersonId": 30962,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
+  "26-דרך#11": {
+   "knessetPersonId": 30963,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
   "26-דרך#12": {
    "knessetPersonId": 23591,
    "knesset": {
@@ -1497,6 +1585,38 @@
     "url": "https://he.wikipedia.org/wiki/%D7%90%D7%9C%D7%A2%D7%96%D7%A8_%D7%A9%D7%98%D7%A8%D7%9F",
     "via": "wikidata Q4358424"
    },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
+  "26-דרך#13": {
+   "knessetPersonId": 30964,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
+  "26-דרך#14": {
+   "knessetPersonId": 30965,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
+  "26-דרך#15": {
+   "knessetPersonId": 30966,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
+  "26-דרך#16": {
+   "knessetPersonId": 30967,
+   "knesset": null,
+   "hewiki": null,
    "party": null,
    "confidence": "high",
    "basis": "elected; Knesset 26 member, name identical (3)"
@@ -1516,6 +1636,30 @@
    "party": null,
    "confidence": "high",
    "basis": "elected; Knesset 26 member, name matches (2.5)"
+  },
+  "26-דרך#18": {
+   "knessetPersonId": 30968,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
+  "26-דרך#19": {
+   "knessetPersonId": 30969,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
+  "26-דרך#20": {
+   "knessetPersonId": 30970,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
   },
   "26-דרך#21": {
    "knessetPersonId": 30971,
@@ -1589,6 +1733,14 @@
     "url": "https://he.wikipedia.org/wiki/%D7%90%D7%A4%D7%A8%D7%AA_%D7%A8%D7%99%D7%99%D7%98%D7%9F",
     "via": "wikidata Q6864478"
    },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
+  "26-אמת#5": {
+   "knessetPersonId": 30929,
+   "knesset": null,
+   "hewiki": null,
    "party": null,
    "confidence": "high",
    "basis": "elected; Knesset 26 member, name identical (3)"
@@ -1801,6 +1953,14 @@
    "confidence": "high",
    "basis": "elected; Knesset 26 member, name identical (3)"
   },
+  "26-רק#3": {
+   "knessetPersonId": 30924,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
   "26-רק#4": {
    "knessetPersonId": 30102,
    "knesset": {
@@ -1836,6 +1996,22 @@
    "party": null,
    "confidence": "medium",
    "basis": "elected; Knesset 26 member, name identical (3); Hebrew Wikipedia via Wikidata Q95627401: identical Hebrew label, party \"בנט 2026\" (shares \"בנט\"), born 1976; the article places the person in this election"
+  },
+  "26-רק#6": {
+   "knessetPersonId": 30926,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
+  "26-רק#7": {
+   "knessetPersonId": 30927,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
   },
   "26-רק#8": {
    "knessetPersonId": 30693,
@@ -1876,6 +2052,14 @@
    },
    "confidence": "high",
    "basis": "elected; Knesset 26 member, name identical (3)"
+  },
+  "26-רק#10": {
+   "knessetPersonId": 30928,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; reviewed decision: שלו יונתן = שלו יהונתן; spelling variant (provisional 26th Knesset faction row)."
   },
   "26-רק#11": {
    "knessetPersonId": 30990,
@@ -2577,6 +2761,22 @@
    "confidence": "high",
    "basis": "elected; Knesset 26 member, name identical (3)"
   },
+  "26-עם#7": {
+   "knessetPersonId": 30995,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
+  "26-עם#8": {
+   "knessetPersonId": 30996,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
   "26-ודם#1": {
    "knessetPersonId": 30069,
    "knesset": {
@@ -2633,6 +2833,14 @@
    "confidence": "high",
    "basis": "elected; Knesset 26 member, name identical (3)"
   },
+  "26-ודם#4": {
+   "knessetPersonId": 30950,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
   "26-ודם#5": {
    "knessetPersonId": 30719,
    "knesset": {
@@ -2681,6 +2889,14 @@
    "confidence": "high",
    "basis": "elected; Knesset 26 member, name identical (3)"
   },
+  "26-ודם#7": {
+   "knessetPersonId": 30951,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
   "26-ודם#8": {
    "knessetPersonId": 30991,
    "knesset": null,
@@ -2706,6 +2922,22 @@
     "retrieved": "2026-11-04",
     "note": "Hadash's list page with a short biography of each of its candidates on the Joint List."
    },
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
+  "26-ודם#10": {
+   "knessetPersonId": 30993,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 26 member, name identical (3)"
+  },
+  "26-ודם#11": {
+   "knessetPersonId": 30994,
+   "knesset": null,
+   "hewiki": null,
+   "party": null,
    "confidence": "high",
    "basis": "elected; Knesset 26 member, name identical (3)"
   },

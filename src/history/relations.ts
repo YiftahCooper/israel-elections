@@ -84,11 +84,17 @@ if (UNREADABLE.length) {
   if (import.meta.env?.DEV) throw new Error(msg);
   console.error(msg);
 }
-/** Pending checks about parties without a relation of their own (a Registrar entry not yet read), and the parties of any
- *  item that cannot be read: "To verify". */
-export const OPEN_CHECKS: { id: string; partyIds: string[] }[] = [
-  ...(lineage.pending as { id: string; partyIds?: string[]; from?: string[] }[]).filter((p) => p.partyIds?.length && !p.from).map((p) => ({ id: p.id, partyIds: p.partyIds!.map(canonicalParty) })),
-  ...UNREADABLE.map((e) => ({ id: e.id, partyIds: [e.from, e.to].flatMap((x) => (Array.isArray(x) ? x : [])).filter((p): p is string => typeof p === 'string').map(canonicalParty) })).filter((o) => o.partyIds.length),
+/** Pending checks about parties without a relation of their own, and the parties of any item that cannot be read: "To
+ *  verify". A check whose register was already read (`registerCheckedAt`) carries what that check found and what is still
+ *  open (`summaryEn`/`summaryHe`), so it is never shown as not yet checked. */
+export interface OpenCheck { id: string; partyIds: string[]; certainty: Certainty; summaryEn?: string; summaryHe?: string; checkedAt?: string }
+type RawCheck = { id: string; partyIds?: string[]; from?: string[]; certainty?: string; summaryEn?: string; summaryHe?: string; registerCheckedAt?: string };
+export const OPEN_CHECKS: OpenCheck[] = [
+  ...(lineage.pending as RawCheck[]).filter((p) => p.partyIds?.length && !p.from).map((p) => ({
+    id: p.id, partyIds: p.partyIds!.map(canonicalParty), certainty: p.certainty === 'disputed' ? 'disputed' as const : 'unknown' as const,
+    ...(p.registerCheckedAt && p.summaryEn && p.summaryHe ? { summaryEn: p.summaryEn, summaryHe: p.summaryHe, checkedAt: p.registerCheckedAt } : {}),
+  })),
+  ...UNREADABLE.map((e) => ({ id: e.id, certainty: 'unknown' as const, partyIds: [e.from, e.to].flatMap((x) => (Array.isArray(x) ? x : [])).filter((p): p is string => typeof p === 'string').map(canonicalParty) })).filter((o) => o.partyIds.length),
 ];
 
 /** Parties named by an identity relation (renamed, merged, absorbed, same organisation). An alliance record among

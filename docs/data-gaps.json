@@ -1,8 +1,8 @@
 {
   "schemaVersion": 3,
-  "total": 12488,
+  "total": 12573,
   "counts": {
-    "unknown": 7355,
+    "unknown": 7440,
     "missing-field": 283,
     "conflict": 20,
     "single-source": 2970,
@@ -15,7 +15,7 @@
   "countsByStatus": {
     "inferred-not-verified": 1033,
     "needs-current-status-review": 318,
-    "open": 11137
+    "open": 11222
   },
   "countsByImportance": {
     "high": {
@@ -27,20 +27,20 @@
       "unknown": 244
     },
     "medium": {
-      "total": 4557,
+      "total": 4555,
       "confirmed": 1002,
       "probable": 331,
       "provisional": 605,
       "disputed": 9,
-      "unknown": 2610
+      "unknown": 2608
     },
     "low": {
-      "total": 7066,
+      "total": 7153,
       "confirmed": 572,
       "probable": 0,
       "provisional": 802,
       "disputed": 0,
-      "unknown": 5692
+      "unknown": 5779
     }
   },
   "claimCertainty": {
@@ -80,7 +80,7 @@
       "unknown": 0
     },
     "Candidate identity links": {
-      "confirmed": 3216,
+      "confirmed": 3245,
       "probable": 42,
       "provisional": 535,
       "disputed": 0,
@@ -234,12 +234,12 @@
     },
     {
       "election": "k9",
-      "total": 419,
+      "total": 417,
       "highOpen": 21,
-      "mediumOpen": 131,
+      "mediumOpen": 129,
       "low": 197,
       "counts": {
-        "unknown": 218,
+        "unknown": 216,
         "missing-field": 12,
         "conflict": 1,
         "single-source": 124,
@@ -540,12 +540,12 @@
     },
     {
       "election": "k26",
-      "total": 563,
+      "total": 650,
       "highOpen": 2,
       "mediumOpen": 128,
-      "low": 365,
+      "low": 452,
       "counts": {
-        "unknown": 273,
+        "unknown": 360,
         "missing-field": 0,
         "conflict": 0,
         "single-source": 142,
@@ -588,7 +588,7 @@
     {"election":"k24","area":"Formation conflicts","count":2,"certainty":{"provisional":1,"disputed":1},"kinds":{"conflict":1,"single-source":1},"labels":[],"disputed":["Time Lapid informed the President on 2 June 2021"],"file":"data/meta/aftermath/k24.json"},
     {"election":"k24","area":"Formation events","count":3,"certainty":{"probable":2,"provisional":1},"kinds":{"single-source":1,"unconfirmed":2},"labels":["consultations 2021-04-05","mandate-given 2021-04-06","mandate-given 2021-05-05"],"file":"data/meta/aftermath/k24.json"},
     {"election":"k24","area":"Bloc schemes","count":2,"certainty":{"provisional":1,"unknown":1},"kinds":{"single-source":2},"labels":["knesset-blocs-2021","pm-recommendations"],"file":"data/meta/k24.json"},
-    {"election":"k24","area":"Individual MKs","count":2,"certainty":{"provisional":2},"kinds":{"single-source":1,"unconfirmed":1},"labels":["amichai-chikli","said-al-harumi"],"file":"data/meta/aftermath/k24.json"},
+    {"election":"k24","area":"Individual MKs","count":2,"certainty":{"provisional":2},"kinds":{"single-source":1,"unconfirmed":1},"labels":["amichai-chikli","saeed-alkharumi"],"file":"data/meta/aftermath/k24.json"},
     {"election":"k24","area":"Government","count":1,"certainty":{"probable":1},"kinds":{"unconfirmed":1},"labels":[],"file":"data/meta/aftermath/k24.json"},
     {"election":"k24","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k24.json"},
     {"election":"k24","area":"Recommendation rounds","count":1,"certainty":{"probable":1},"kinds":{"unconfirmed":1},"labels":["r2"],"file":"data/meta/aftermath/k24.json"},
@@ -992,7 +992,7 @@
     {"election":"k9","area":"data/research/knesset-events/kN.json events","count":33,"certainty":{"unknown":33}},
     {"election":"k9","area":"Published lists","count":21,"certainty":{"unknown":21}},
     {"election":"k9","area":"Party appearances","count":11,"certainty":{"unknown":11}},
-    {"election":"k9","area":"List metadata","count":10,"certainty":{"unknown":10}},
+    {"election":"k9","area":"List metadata","count":8,"certainty":{"unknown":8}},
     {"election":"k9","area":"Term events","count":7,"certainty":{"probable":7}},
     {"election":"k9","area":"data/meta/election-context.json events","count":2,"certainty":{"provisional":2}},
     {"election":"k9","area":"data/raw/kN/search.reviewed.json capResolution","count":1,"certainty":{"provisional":1}},
@@ -1086,7 +1086,7 @@
     {"election":"k1","area":"Recommendation rounds","count":1,"certainty":{"unknown":1}}
   ],
   "low": [
-    {"area":"data/meta/bios/kN.json candidates","count":4067,"open":4067},
+    {"area":"data/meta/bios/kN.json candidates","count":4154,"open":4154},
     {"area":"Published lists","count":799,"open":567},
     {"area":"data/meta/parties.json parties","count":567,"open":459},
     {"area":"data/meta/kN.json colours","count":442,"open":442},

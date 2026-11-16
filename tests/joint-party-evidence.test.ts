@@ -24,7 +24,7 @@ test('all 26 elections: the complete elected joint-list party gap inventory', ()
       }
     }
   }
-  expect(gaps).toEqual(['9-ו#5', '15-עם#3']);
+  expect(gaps).toEqual(['15-עם#3']);
 });
 
 test('1999 UAL: four sourced constituent assignments; Mahameed is never assigned from a later faction', () => {
@@ -41,9 +41,17 @@ test('1999 UAL: four sourced constituent assignments; Mahameed is never assigned
   expect(meta.unassignedEvidence[0].sources.some((s: { url: string }) => s.url.includes('FactionID=687'))).toBe(true);
 });
 
-test('1977 Mwais: faction membership is preserved without inventing Rakah membership', () => {
+test('1977 Mwais: the ballot’s Jewish and Arab public circles, from his official biography and Aronoff, never Rakah', () => {
   const d = read('public/data/k9.json') as ElectionDataset;
   const meta = read('data/meta/k9.json').lists.find((l: { letters: string }) => l.letters === 'ו');
-  expect(meta.unassignedRanks).toContain(5);
-  expect(applyMeta(d).lists.find(l => l.id === '9-ו')!.candidates.find(c => c.rank === 5)?.partyId).toBeUndefined();
+  expect(meta.unassignedRanks).toEqual([]);
+  // the third component is named on the ballot itself
+  expect(d.lists.find(l => l.id === '9-ו')!.nameHe).toContain('חוגי ציבור יהודים וערבים');
+  const circles = meta.parties.find((p: { id: string }) => p.id === 'jewish-arab-public-circles');
+  expect(circles.candidateRanks).toEqual([5]);
+  const evidence = circles.members[0].evidence as { kind: string; url: string; quote: string }[];
+  expect(evidence.some(e => e.kind === 'official' && e.url.includes('mkId=495') && e.quote.includes('ראשי הרשויות המקומיות הערביות'))).toBe(true);
+  expect(evidence.some(e => e.kind === 'academic' && e.quote.includes('non-Communist chairman'))).toBe(true);
+  expect(meta.parties.find((p: { id: string }) => p.id === 'rakah').candidateRanks).not.toContain(5);
+  expect(applyMeta(d).lists.find(l => l.id === '9-ו')!.candidates.find(c => c.rank === 5)?.partyId).toBe('jewish-arab-public-circles');
 });

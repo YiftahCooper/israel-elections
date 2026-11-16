@@ -358,8 +358,8 @@
           "type": "press",
           "evidenceFamily": "yedioth",
           "inspection": "opened",
-          "locator": "Investiture report: Chikli opposed; Alharumi abstained; government approved 60–59.",
-          "supportingNote": "Investiture report: Chikli opposed; Alharumi abstained; government approved 60–59."
+          "locator": "Investiture report: Chikli opposed; Alkharumi abstained; government approved 60–59.",
+          "supportingNote": "Investiture report: Chikli opposed; Alkharumi abstained; government approved 60–59."
         },
         {
           "url": "https://www.gov.il/BlobFolder/generalpage/pm3_25-4_25/he/candidates_disqualification_pm1_25_pm_1-25_2-25_4-25.pdf",
@@ -409,7 +409,7 @@
         ]
       },
       "summary": {
-        "en": "Bennett–Lapid government sworn in; confidence vote 60–59, one abstention. Chikli opposed; Saeed Alharumi abstained.",
+        "en": "Bennett–Lapid government sworn in; confidence vote 60–59, one abstention. Chikli opposed; Saeed Alkharumi abstained.",
         "he": "ממשלת בנט–לפיד הושבעה: 60 בעד, 59 נגד ונמנע אחד. שיקלי התנגד וסעיד אלחרומי נמנע."
       },
       "classification": "counts",
@@ -462,8 +462,8 @@
           "type": "press",
           "evidenceFamily": "yedioth",
           "inspection": "opened",
-          "locator": "Investiture report: Chikli opposed; Alharumi abstained; government approved 60–59.",
-          "supportingNote": "Investiture report: Chikli opposed; Alharumi abstained; government approved 60–59."
+          "locator": "Investiture report: Chikli opposed; Alkharumi abstained; government approved 60–59.",
+          "supportingNote": "Investiture report: Chikli opposed; Alkharumi abstained; government approved 60–59."
         }
       ],
       "certainty": "provisional",
@@ -482,7 +482,7 @@
           }
         ]
       },
-      "seatBasis": "62 nominal coalition seats minus Chikli; Alharumi’s abstention alone does not remove him.",
+      "seatBasis": "62 nominal coalition seats minus Chikli; Alkharumi’s abstention alone does not remove him.",
       "evidenceClass": "Official",
       "classificationBasis": "Researcher applies the brief’s dated-act test; classification is distinct from factual certainty.",
       "marker": "D3",
@@ -491,7 +491,7 @@
       "markerPersonIds": [
         30548
       ],
-      "markerReason": "Alharumi abstained but stayed; Chikli’s continuing opposition is a separate D2 event.",
+      "markerReason": "Alkharumi abstained but stayed; Chikli’s continuing opposition is a separate D2 event.",
       "timelineGroup": "k24-government36"
     },
     {
@@ -2028,8 +2028,8 @@
           "type": "press",
           "evidenceFamily": "yedioth",
           "inspection": "opened",
-          "locator": "Body identifies Alharumi and Ghanaim as abstainers; Abbas and Taha supported.",
-          "supportingNote": "Body identifies Alharumi and Ghanaim as abstainers; Abbas and Taha supported."
+          "locator": "Body identifies Alkharumi and Ghanaim as abstainers; Abbas and Taha supported.",
+          "supportingNote": "Body identifies Alkharumi and Ghanaim as abstainers; Abbas and Taha supported."
         }
       ],
       "certainty": "provisional",
@@ -2565,8 +2565,8 @@
           "type": "press",
           "evidenceFamily": "yedioth",
           "inspection": "opened",
-          "locator": "Report identifies Alharumi’s death and Khatib Yasin as the next member on the Ra’am list.",
-          "supportingNote": "Report identifies Alharumi’s death and Khatib Yasin as the next member on the Ra’am list."
+          "locator": "Report identifies Alkharumi’s death and Khatib Yassin as the next member on the Ra’am list.",
+          "supportingNote": "Report identifies Alkharumi’s death and Khatib Yassin as the next member on the Ra’am list."
         },
         {
           "url": "https://github.com/YiftahCooper/israel-elections/blob/fc6e7f7d21b2811426119994abc594ad79ed1616/data/meta/bios/k24.json",
