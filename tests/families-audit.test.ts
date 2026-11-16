@@ -13,8 +13,9 @@ const ds=(n:number)=>JSON.parse(readFileSync(`public/data/k${n}.json`,'utf8')) a
 const H=parseFamily(JSON.stringify(haredi)),C=parseFamily(JSON.stringify(centre)),K=parseFamily(JSON.stringify(likud));
 
 test('lists left out are "not counted", never "did not contest"',()=>{
-  // Centre 2026: Together (Yesh Atid's joint list) is mixed; Yashar!, Reservists–New Economic and the withdrawn Blue and White are still under review.
-  const c=aggregate(C,ds(26));expect(c.status).toBe('observed');expect(c.votes).toBe(0n);expect(c.mixed).toBe(532018n);expect(c.reviews).toBe(3);
+  // Centre 2026: Together (Yesh Atid's joint list) and Yashar! (with its unclassified partner Yesodot Yisrael) are
+  // mixed; Reservists–New Economic and the withdrawn Blue and White are still under review.
+  const c=aggregate(C,ds(26));expect(c.status).toBe('observed');expect(c.votes).toBe(0n);expect(c.mixed).toBe(532018n+913629n);expect(c.reviews).toBe(2);
   // Centre 1992 names only a list under review: "not yet classified", not absence.
   expect(aggregate(C,ds(13))).toMatchObject({status:'unclassified',reviews:1});
   // Likud lineage's 2026 list is mixed: excluding mixed lists is not absence, and the excluded votes stay visible.
