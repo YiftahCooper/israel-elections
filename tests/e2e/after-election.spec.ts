@@ -395,3 +395,17 @@ test('phone, Hebrew: the government card with its rotation line fits the screen'
   await expect(page.locator('.after-rotation')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
 });
+
+// facts/coalition-61 (16 Nov 2026): a coalition counted below the seats its lists won says why, list by list
+for (const lang of ['en', 'he'] as const) test(`the coalition count names the lists that joined only in part: ${lang}`, async ({ page }) => {
+  await page.goto('/');
+  if (lang === 'en') await page.getByRole('button', { name: 'English', exact: true }).click();
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k23');
+  await page.getByRole('tab', { name: lang === 'he' ? 'אחרי הבחירות' : 'After the election', exact: true }).click();
+  const total = page.locator('.after-support-totals .after-help-anchor').first();
+  await expect(total).toContainText(lang === 'he' ? 'חברי הקואליציה 73' : 'Members 73');
+  await total.getByRole('button').click();
+  const pop = page.locator('.pop').filter({ hasText: lang === 'he' ? 'מקורות וסייגים' : 'Sources & qualifications' });
+  await expect(pop).toContainText(lang === 'he' ? 'רשימות הקואליציה זכו ב־98 מנדטים; 73 מחבריהן נספרים' : 'The coalition’s lists won 98 seats; 73 of their members are counted');
+  await expect(pop).toContainText(lang === 'he' ? 'כחול לבן 17 מתוך 33' : 'Blue and White 17 of 33');
+});
