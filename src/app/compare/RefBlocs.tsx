@@ -9,10 +9,12 @@ import { groupingName } from '../groupingName.ts';
 import { useL, useLang } from '../i18n.ts';
 import { useReference } from './mode.ts';
 import { refLabel } from './useRefRows.ts';
+import { useBandNamesFit } from '../useBandNamesFit.ts';
 
 export function RefBlocs({ s }: { s: Scenario }) {
   const L = useL(), lang = useLang();
   const state = useReference(s);
+  const [stripRef, namesFit] = useBandNamesFit();
   const ref = state.status === 'ready' ? state.ref : null;
   const groups = useMemo(() => {
     if (!ref) return [];
@@ -28,11 +30,15 @@ export function RefBlocs({ s }: { s: Scenario }) {
   const label = refLabel(ref, s), grouping = groupingLabel(ref.sc, lang);
   return <div className="cmpm-refblocs">
     <p className="small muted cmpm-refblocs-head"><bdi>{label}</bdi>: {grouping}</p>
-    <div className="strip" role="img" aria-label={`${label}, ${grouping}: ${groups.map((g) => `${g.label} ${g.n}`).join(', ')}`}>
+    <div ref={stripRef} className={`strip ${namesFit ? '' : 'names-below'}`} data-names={namesFit ? 'in-bands' : 'below'} role="img" aria-label={`${label}, ${grouping}: ${groups.map((g) => `${g.label} ${g.n}`).join(', ')}`}>
       {groups.map((g) => <span key={g.id ?? 'none'} className={`corridor ${g.id === null ? 'no-bloc' : ''}`} style={{ flexGrow: g.n, flexBasis: 0, ['--bc' as string]: g.color }}>
         <span className="label"><span className="clip">{g.label}</span> <b>{g.n}</b></span>
       </span>)}
       <span className="milestone" aria-hidden style={{ left: `${(majority / total) * 100}%` }}><span>{majority}</span></span>
+    </div>
+    {/* as under the open scenario's strip: names too long for their bands are listed in full beneath */}
+    <div className={`strip-legend ${namesFit ? '' : 'shown'}`} aria-hidden>
+      {groups.map((g) => <span key={g.id ?? 'none'}><span className={`swatch bloc-swatch ${g.id === null ? 'unassigned' : ''}`} style={{ ['--bc' as string]: g.color }} />{g.label} <b>{g.n}</b></span>)}
     </div>
   </div>;
 }

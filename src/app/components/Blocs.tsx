@@ -2,6 +2,7 @@ import { AnalysisEdits } from './AnalysisEdits.tsx';
 import { groupingName, appGroupingExplanation, appGroupingTag } from '../groupingName.ts';
 import { blocDisplayOrder } from '../blocOrder.ts';
 import { useGraphicReference } from '../useGraphicReference.ts';
+import { useBandNamesFit } from '../useBandNamesFit.ts';
 // Blocs (decision 0087): the election's sourced groupings (the first government, recognised blocs) and
 // the user's own. Seats count per seat: a constituent party of a joint list can sit in another bloc
 // than its list. Moving parties between blocs never changes votes or seats. A bloc opens its editor
@@ -26,6 +27,7 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
   const jointLook = useSetting('jointListSeats');
   const pieces = useMemo(() => blocPieces(s, r), [s, r]);
   const { base, labelReference } = useGraphicReference(s);
+  const [stripRef, namesFit] = useBandNamesFit();
   const grouped = groupingBaseline(s, base);
   const before = grouped ? blocPieces(grouped, allocationOf(grouped)) : [];
   const previous = useRef({ election: s.electionId, scheme: s.blocSchemeId, seats: new Map<string | null, number>() });
@@ -71,7 +73,7 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
       {changed && <div className="bloc-reference" aria-label={referenceLabel(labelReference, lang).name}>
         {referenceBlocs.map(b => b.n > 0 && <span key={b.id ?? NONE} style={{width:`${b.n/total*100}%`}} title={`${b.label} ${b.n}`} />)}
       </div>}
-      <div className="strip" role="group" aria-label={`${groupingLabel(s, lang)}: ${groups.map(g => `${g.contextLabel} ${g.n}`).join(', ')}`}>
+      <div ref={stripRef} className={`strip ${namesFit ? '' : 'names-below'}`} data-names={namesFit ? 'in-bands' : 'below'} role="group" aria-label={`${groupingLabel(s, lang)}: ${groups.map(g => `${g.contextLabel} ${g.n}`).join(', ')}`}>
         {groups.map((g) => (
           <button key={g.key} type="button" className={`corridor ${g.id === null ? "no-bloc" : ""}`} style={{ flexGrow: g.n, flexBasis: 0, ['--bc' as string]: g.color }}
             aria-pressed={panel === g.key} title={(g.appDefined ? appGroupingExplanation(lang) + " " : "") + L(`${g.label}: ${g.n}${g.id !== null ? ` (${consequence(g.n)})` : ''}. Edit this bloc`, `${g.label}: ${g.n}${g.id !== null ? ` (${consequence(g.n)})` : ''}. עריכת הגוש`)} onClick={() => openPanel(g.key)}>
@@ -84,8 +86,8 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
         <span className="milestone" aria-hidden style={{ left: `${(majority / total) * 100}%` }}><span>{majority}</span></span>
       </div>
       <RefBlocs s={s} />
-      {/* on narrow screens the bands are too short for their names: they are listed in full beneath */}
-      <div className="strip-legend" aria-hidden>
+      {/* when a band is too short for its whole name (always on narrow screens), the names are listed in full beneath */}
+      <div className={`strip-legend ${namesFit ? '' : 'shown'}`} aria-hidden>
         {groups.map((g) => <span key={g.key} title={g.appDefined ? appGroupingExplanation(lang) : undefined}><span className={`swatch bloc-swatch ${g.id === null ? 'unassigned' : ''}`} style={{ ['--bc' as string]: g.color }} />{g.contextLabel} <b key={g.n >= majority ? 'majority' : 'minority'} className={g.id !== null && previous.current.election === s.electionId && previous.current.scheme === s.blocSchemeId && previous.current.seats.has(g.id) && ((previous.current.seats.get(g.id)! >= majority) !== (g.n >= majority)) ? 'tick' : ''}>{g.n}</b>{g.id !== null && <> <bdi className="consequence">{consequence(g.n)}</bdi></>}</span>)}
       </div>
     </section>
