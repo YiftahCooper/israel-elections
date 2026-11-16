@@ -861,6 +861,12 @@
           {
             "source": "jta1995vote",
             "quote": "The final vote was 62-8, with 38 abstentions."
+          },
+          {
+            "source": "role-roster-26",
+            "quote": "\"StartDate\":\"1995-11-22T00:00:00\"",
+            "note": "The Knesset’s database of ministers: the government’s ministers took office on 22 November 1995.",
+            "noteHe": "מאגר השרים של הכנסת: שרי הממשלה נכנסו לתפקידם ב־22 בנובמבר 1995."
           }
         ],
         "membershipCoverage": "partial",

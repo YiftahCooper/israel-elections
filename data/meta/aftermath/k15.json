@@ -110,7 +110,8 @@
       "url": "https://lacuna.co.il/posts/election_date/04-1.pdf",
       "publisher": "CEC chair, decision 1/04, 3 March 2004, pp.26–27 (third-party mirror)",
       "kind": "official",
-      "accessed": "2026-11-06"
+      "accessed": "2026-11-06",
+      "evidenceFamily": "institution:cec"
     },
     "gov28-tenure": {
       "url": "https://www.gov.il/BlobFolder/generalpage/gov28/he/gov28.pdf",
@@ -176,6 +177,22 @@
       "kind": "academic",
       "accessed": "2026-11-16",
       "evidenceFamily": "author:mendilow"
+    },
+    "shamir-arian-2005": {
+      "url": "https://doi.org/10.4324/9781351322287",
+      "publisher": "Michal Shamir and Asher Arian, introduction to Asher Arian and Michal Shamir (eds.), The Elections in Israel 2003 (Transaction, 2005)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:shamir"
+    },
+    "pm2001-gazette": {
+      "url": "https://olaw.org.il/yalkut/yalkut-4960.pdf",
+      "publisher": "Official Gazette, Yalkut HaPirsumim 4960, 12 February 2001, p. 1628 (public copy)",
+      "publisherHe": "רשומות, ילקוט הפרסומים 4960, 12 בפברואר 2001, עמ׳ 1628 (עותק ציבורי)",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-17",
+      "via": "Public copy of the official Reshumot issue: the Central Elections Committee chair’s notice of the results of the special election for prime minister."
     }
   },
   "results": {
@@ -256,6 +273,15 @@
           {
             "source": "idi2001",
             "quote": "לבחור ראש ממשלה בלבד, בלי לבחור רשימה לכנסת"
+          },
+          {
+            "source": "pm2001-gazette",
+            "quote": "תוצאות הבחירות המיוחדות לראש הממשלה, שהתקיימו ביום י״ג בשבט התשס״א (6 בפברואר 2001)"
+          },
+          {
+            "source": "shamir-arian-2005",
+            "quote": "On February 6, 2001, Ariel Sharon defeated Ehud Barak in the last election held under the direct election of the Prime Minister system.",
+            "locator": "p. 3"
           }
         ],
         "person": "sharon",
@@ -420,6 +446,15 @@
           {
             "source": "idi2001",
             "quote": "לבחור ראש ממשלה בלבד, בלי לבחור רשימה לכנסת"
+          },
+          {
+            "source": "pm2001-gazette",
+            "quote": "תוצאות הבחירות המיוחדות לראש הממשלה, שהתקיימו ביום י״ג בשבט התשס״א (6 בפברואר 2001)"
+          },
+          {
+            "source": "shamir-arian-2005",
+            "quote": "On February 6, 2001, Ariel Sharon defeated Ehud Barak in the last election held under the direct election of the Prime Minister system.",
+            "locator": "p. 3"
           }
         ],
         "confidence": "high"
@@ -495,13 +530,20 @@
       "type": "early-election",
       "date": "2002-11-05",
       "nextElection": "2003-01-28",
-      "textEn": "Prime Minister Sharon dissolved the Knesset with President Katsav’s consent; the election followed on 28 January 2003.",
-      "textHe": "ראש הממשלה שרון פיזר את הכנסת בהסכמת הנשיא קצב; הבחירות נערכו ב־28 בינואר 2003.",
+      "textEn": "Prime Minister Sharon asked President Katsav to dissolve the Knesset and, with his consent, dissolved it; the election followed on 28 January 2003.",
+      "textHe": "ראש הממשלה שרון ביקש מהנשיא קצב לפזר את הכנסת, ובהסכמתו פיזר אותה; הבחירות נערכו ב־28 בינואר 2003.",
       "cites": [
         {
           "source": "cec-dissolution",
           "quote": "בתאריך ל׳ בחשוון תשס״ג (5.11.2002)",
           "locator": "pp.26–27, paragraph 1; Sharon, with presidential consent, ordered dissolution under section 22."
+        },
+        {
+          "source": "shamir-arian-2005",
+          "quote": "On November 5, Sharon went to the president, Moshe Katzav,",
+          "locator": "p. 3",
+          "note": "He asked the President to dissolve the Knesset.",
+          "noteHe": "הוא ביקש מהנשיא לפזר את הכנסת."
         }
       ]
     }
@@ -758,6 +800,12 @@
           {
             "source": "vote2001",
             "quote": "by a vote of 72-21, with 27 members absent"
+          },
+          {
+            "source": "role-roster-29",
+            "quote": "\"StartDate\":\"2001-03-07T00:00:00\"",
+            "note": "The Knesset’s database of ministers: the government’s ministers took office on 7 March 2001.",
+            "noteHe": "מאגר השרים של הכנסת: שרי הממשלה נכנסו לתפקידם ב־7 במרץ 2001."
           }
         ],
         "membershipCoverage": "partial",

@@ -155,6 +155,13 @@
       "kind": "academic",
       "accessed": "2026-11-16",
       "evidenceFamily": "author:goldberg"
+    },
+    "krislov-1983": {
+      "url": "https://openlibrary.org/works/OL18241717W",
+      "publisher": "Samuel Krislov, “Mutual Involvement in Electoral Politics: The Case of Israel and the United States”, in Asher Arian (ed.), The Elections in Israel 1981 (Ramot, 1983)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:krislov"
     }
   },
   "results": {
@@ -809,9 +816,24 @@
           {
             "source": "idi-next",
             "quote": "פיטוריהם של שרי המפד\"ל בעקבות הימנעותם בהצבעת אי-אמון"
+          },
+          {
+            "source": "rubinstein-1979",
+            "quote": "Rabin so informed the Knesset on December 20, 1976.",
+            "locator": "p. 178",
+            "note": "Under the law, a minister who abstains in a no-confidence vote is deemed to resign on the day the government tells the Knesset.",
+            "noteHe": "לפי החוק, שר שנמנע בהצבעת אי־אמון נחשב כמי שהתפטר ביום שהממשלה מודיעה על כך לכנסת."
+          },
+          {
+            "source": "krislov-1983",
+            "quote": "Only a few weeks later, on December 19, Prime Minister Rabin chose to dismiss the NRP ministers",
+            "locator": "p. 180"
           }
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "notes": [
+          "Rabin decided on 19 December 1976 to remove the NRP ministers and told the Knesset on 20 December, the day their removal took effect."
+        ]
       }
     ],
     "candidatesPending": [],

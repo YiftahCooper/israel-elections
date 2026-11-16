@@ -172,6 +172,34 @@ describe('7 November policy pass on the real overlays', () => {
     expect(row('ל').certainty).toBe('disputed');
     expect(k1.government.coalitionSeats).toBe(73);
     const k10 = load('k10');
-    expect(k10.formation.events.find((e: any) => e.type === 'mandate-given' && e.date === '1981-07-15').certainty).toBe('disputed');
+    // 17 Nov 2026: Navon's request (15 July, two reports of the time) and his letter (16 July) are two acts, not a dispute.
+    expect(k10.formation.events.find((e: any) => e.type === 'mandate-given' && e.date === '1981-07-15').certainty).toBe('probable');
+    expect(k10.formation.conflicts.find((c: any) => c.about === 'Begin tasking date').status).toBe('resolved');
+  });
+});
+
+describe('books batch 3: formation and term dates (17 Nov 2026)', () => {
+  const load = (id: string) => JSON.parse(readFileSync(`data/meta/aftermath/${id}.json`, 'utf8'));
+  const at = (k: string, path: string) => { const d = load(k); return [path.split('.').reduce((a: any, x) => a[/^\d+$/.test(x) ? +x : x], d), d.sources] as const; };
+  it('confirms a date only where two independent works, a report of the time or an official record support it', () => {
+    for (const [k, path] of [['k7', 'term.endedBy'], ['k8', 'term.events.5'], ['k15', 'formation.events.2'], ['k15', 'term.events.4'], ['k15', 'term.endedBy'],
+      ['k16', 'term.events.1'], ['k16', 'term.events.2'], ['k17', 'government.changes.2'], ['k18', 'formation.events.0'], ['k19', 'formation.events.0'],
+      ['k19', 'term.events.1'], ['k12', 'government.changes.1'], ['k13', 'government.changes.0'], ['k15', 'government.changes.0']] as const) {
+      const [o, sources] = at(k, path);
+      expect([k, path, claimCertainty(o, sources)]).toEqual([k, path, 'confirmed']);
+    }
+  });
+  it('keeps one book plus an institute page probable, and the 1981 request probable without the flagged book', () => {
+    const [e1951, s1] = at('k1', 'term.endedBy');
+    expect(claimCertainty(e1951, s1)).toBe('probable');
+    const [e1981, s10] = at('k10', 'formation.events.1');
+    expect([e1981.certainty, e1981.cites.map((c: any) => s10[c.source].publisher).join(' | ')]).not.toContain(expect.stringMatching(/Bradley/));
+    expect(e1981.certainty).toBe('probable');
+  });
+  it('dates the 2014 firing from the report of the time, with the one-book dissent noted', () => {
+    const [e, sources] = at('k19', 'term.events.1');
+    expect(e.date).toBe('2014-12-02');
+    expect(sourceTier(sources['ynet-dismissal-2014'])).toBe('contemporary');
+    expect(e.notes.join(' ')).toMatch(/1 December/);
   });
 });

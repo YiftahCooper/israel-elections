@@ -316,8 +316,8 @@
       {
         "date": "1981-07-15",
         "type": "mandate-given",
-        "textEn": "Navon tasked Begin with forming a government; the State Archives dates the letter to 16 July.",
-        "textHe": "נבון הטיל על בגין להרכיב ממשלה; ארכיון המדינה מתארך את המכתב ל־16 ביולי.",
+        "textEn": "Navon asked Begin to form a government; the State Archives dates his letter to Begin 16 July.",
+        "textHe": "נבון ביקש מבגין להרכיב ממשלה; ארכיון המדינה מתארך את מכתבו לבגין ל־16 ביולי.",
         "cites": [
           {
             "source": "jta1981task",
@@ -335,10 +335,10 @@
         ],
         "person": "begin",
         "notes": [
-          "Press-based event date 15 July retained with dispute. The JTA item is published 16 July and says today; its original dateline was not recovered. The State Archives describes the formal presidential letter as dated 16 July. Do not infer separate appointment events."
+          "Two reports of the time give 15 July for Navon’s request. The State Archives’ account dates his formal letter 16 July; that is a separate act, not a second date for the request."
         ],
-        "certainty": "disputed",
-        "note": "Disputed date: JTA and UPI (contemporary, independent) give 15 July; the State Archives account dates the presidential letter 16 July. Deciding records: ISA file נ-571/13 pp.5–7 (letter) and נ-224/4 (diary)."
+        "certainty": "probable",
+        "note": "Probable: two reports of the time (JTA and UPI) date Navon’s request to 15 July. His letter of 16 July, in the State Archives’ account, is a separate act. The letter itself has not been seen."
       },
       {
         "date": "1981-08-04",
@@ -449,7 +449,8 @@
             "source": "upi-19810804"
           }
         ],
-        "resolution": "Unresolved after targeted primary-source retrieval. Contemporary press identifies 15 July, while the State Archives describes a letter of 16 July; the JTA 16 July publication date cannot determine its dispatch dateline. The original letter and President’s diary are the deciding records: Israel State Archives file נ-571/13 pp.5–7 (letter), and נ-224/4 (diary/consultations). Archive catalogue returned HTTP 403 and original JTA PDF transport failed; no second mandate event is invented. 7 November: a second, independent contemporary report (UPI, 4 August 1981) also gives 15 July; the archival letter date still conflicts, so the date stays disputed rather than settled by count."
+        "resolution": "Two different acts, not two dates for one act. Two reports of the time (JTA and UPI) say Navon asked Begin to form a government on 15 July 1981; the State Archives dates Navon’s letter to Begin 16 July. The request date is probable: the letter itself (State Archives file נ-571/13) and the President’s diary (נ-224/4) have not been seen.",
+        "status": "resolved"
       }
     ],
     "people": {

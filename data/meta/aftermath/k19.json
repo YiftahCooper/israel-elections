@@ -141,6 +141,27 @@
       "accessed": "2026-11-16",
       "evidenceFamily": "Knesset-sitting-479917",
       "via": "Legacy Word logical paragraph 3506 (not a printed page or OOXML paragraph)"
+    },
+    "shamir-2015": {
+      "url": "https://doi.org/10.4324/9781351295840-1",
+      "publisher": "Michal Shamir, “Introduction: The 2013 Elections and Israeli Democracy”, in Michal Shamir (ed.), The Elections in Israel 2013 (Transaction, 2015)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:shamir"
+    },
+    "moshe-2017": {
+      "url": "https://doi.org/10.4324/9781315205649-13",
+      "publisher": "Mira Moshe, “The Enemy Within Us: Emotional Politics in the 2015 Israeli Elections”, in Eithan Orkibi and Manfred Gerstenfeld (eds.), Israel at the Polls 2015 (Routledge, 2017)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:moshe"
+    },
+    "ynet-dismissal-2014": {
+      "url": "https://www.ynet.co.il/articles/0,7340,L-4598870,00.html",
+      "publisher": "Attila Somfalvi / Ynet, 2 December 2014",
+      "publisherHe": "אטילה שומפלבי / ynet, 2 בדצמבר 2014",
+      "kind": "secondary",
+      "accessed": "2026-11-17"
     }
   },
   "results": {
@@ -289,6 +310,11 @@
           {
             "source": "toi-notification",
             "quote": "Peres charged him with the task on February 2"
+          },
+          {
+            "source": "shamir-2015",
+            "quote": "On February 2, 2013, after consulting with the parties, President Shimon Peres assigned Netanyahu the task of forming the coalition.",
+            "locator": "p. 7"
           }
         ]
       },
@@ -420,9 +446,25 @@
           {
             "source": "idi-dismissal-date",
             "quote": "On December 2, 2014, Prime Minister Benjamin Netanyahu fired Finance Minister Yair Lapid and Justice Minister Tzipi Livni."
+          },
+          {
+            "source": "ynet-dismissal-2014",
+            "quote": "בנימין נתניהו פיטר הערב (יום ג') את שר האוצר יאיר לפיד ושרת המשפטים ציפי לבני",
+            "note": "Published that evening, 2 December 2014 (a Tuesday).",
+            "noteHe": "פורסם באותו ערב, 2 בדצמבר 2014 (יום שלישי)."
+          },
+          {
+            "source": "moshe-2017",
+            "quote": "2 December 2014, in a ‘dramatic move unprecedented in Israeli politics for many years’, Israeli Prime Minister Benjamin Netanyahu fired two of his senior ministers.",
+            "locator": "p. 185",
+            "note": "Her note cites the Ynet report above.",
+            "noteHe": "ההערה שלה מפנה לדיווח של ynet שלמעלה."
           }
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "notes": [
+          "One book, the Hebrew introduction to The Elections in Israel 2015 (Michal Shamir and Gideon Rahat, 2017), dates the firing to 1 December. The Ynet report of the time and the Israel Democracy Institute give 2 December."
+        ]
       }
     ],
     "candidatesPending": [

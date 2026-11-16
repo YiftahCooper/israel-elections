@@ -124,6 +124,20 @@
       "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
       "kind": "official",
       "accessed": "2026-11-07"
+    },
+    "boim-1979": {
+      "url": "https://openlibrary.org/works/OL17851764W",
+      "publisher": "Leon Boim, “The Financing of Elections”, in Howard R. Penniman (ed.), Israel at the Polls: The Knesset Elections of 1977 (American Enterprise Institute, 1979)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:boim"
+    },
+    "diskin-1991": {
+      "url": "https://openlibrary.org/works/OL4457043W",
+      "publisher": "Abraham Diskin, Elections and Voters in Israel (Praeger, 1991)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:diskin"
     }
   },
   "results": {
@@ -726,6 +740,16 @@
         {
           "source": "ipu-next",
           "quote": "originally scheduled for October 30, 1973, were postponed until the end of the year"
+        },
+        {
+          "source": "boim-1979",
+          "quote": "The Yom Kippur War broke out in October 1973, and the elections scheduled for October 30 were postponed until December 31.",
+          "locator": "p. 211"
+        },
+        {
+          "source": "diskin-1991",
+          "quote": "the elections themselves were postponed until December 31, 1973, and held in the shadow of the war",
+          "locator": "p. 26"
         }
       ]
     }

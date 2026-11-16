@@ -141,6 +141,20 @@
       "accessed": "2026-11-16",
       "evidenceFamily": "Knesset-sitting-322083",
       "via": "Legacy Word logical paragraph 5196 (not a printed page or OOXML paragraph)"
+    },
+    "diskin-2011": {
+      "url": "https://doi.org/10.4324/9781315868301",
+      "publisher": "Abraham Diskin, “The Likud: The Struggle for the Centre”, in Shmuel Sandler, Manfred Gerstenfeld and Hillel Frisch (eds.), Israel at the Polls 2009 (Routledge, 2011)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:diskin"
+    },
+    "shamir-arian-2011": {
+      "url": "https://doi.org/10.4324/9781351297608-1",
+      "publisher": "Michal Shamir and Asher Arian, introduction to Asher Arian and Michal Shamir (eds.), The Elections in Israel 2009 (Transaction, 2011)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:shamir"
     }
   },
   "results": {
@@ -288,6 +302,11 @@
           {
             "source": "inn-tasking",
             "quote": "entrusted him with the task of forming a government. Netanyahu now has 28 days"
+          },
+          {
+            "source": "diskin-2011",
+            "quote": "Hence, President Peres asked Netanyahu to form the new government on 20 February.",
+            "locator": "p. 61"
           }
         ]
       },
@@ -354,7 +373,27 @@
             "source": "idi-coalition"
           }
         ],
-        "resolution": "Use the election-specific IDI composition, consistent with the established first-government scheme and seats. IPU is used only for first sitting and date chronology, not coalition membership."
+        "resolution": "The Knesset’s list of ministers for the government sworn in on 31 March 2009 has five parties: Likud, Yisrael Beiteinu, Labor, Shas and the Jewish Home, as the Israel Democracy Institute says. The National Union voted against the government. United Torah Judaism joined a day later, one book says. The introduction to The Elections in Israel 2009 lists it among the parties right after the swearing-in; the Knesset’s record takes precedence. IPU’s list is wrong on both parties.",
+        "status": "resolved",
+        "cites": [
+          {
+            "source": "diskin-2011",
+            "quote": "the extreme right-wing National Union party voted against the government and sharply criticized it",
+            "locator": "p. 66"
+          },
+          {
+            "source": "diskin-2011",
+            "quote": "United Torah Judaism, which officially joined the coalition a day later",
+            "locator": "p. 66"
+          },
+          {
+            "source": "shamir-arian-2011",
+            "quote": "It was composed of a coalition of six parties, including, aside from Likud, Israel Beitenu, Labor, Shas, HaBayit HaYehudi, and Yahadut HaTorah.",
+            "locator": "p. 14",
+            "note": "Lists United Torah Judaism among the parties right after the swearing-in; the Knesset’s record does not.",
+            "noteHe": "מונה את יהדות התורה בין המפלגות מיד אחרי ההשבעה; הרשומה של הכנסת אינה מונה אותה."
+          }
+        ]
       }
     ]
   },
@@ -484,7 +523,7 @@
         }
       ],
       "notes": [
-        "Passage was after midnight on 16 October 2012; the law took effect on 15 October. IPU records the effective dissolution date, while this event describes the vote. Official law text verified in the search index; direct Knesset access was geographically unavailable."
+        "The sitting began on 15 October 2012 and the vote came after midnight, on 16 October; the law took effect on 15 October. IPU and two books (Michal Shamir, 2015; Manfred Gerstenfeld, 2016) give 15 October, the day of the sitting. The law is the record of the vote."
       ]
     }
   },
@@ -577,9 +616,14 @@
             "source": "role-roster-32",
             "quote": "PersonToPositionID 23329; PersonID 12946; PositionID 39; StartDate 2009-03-31T00:00:00",
             "note": "Project extraction of official fields, not prose quotation. דניאל הרשקוביץ; faction join: הבית היהודי - מפד\"ל החדשה"
+          },
+          {
+            "source": "diskin-2011",
+            "quote": "Israel Our Home and Labour have five ministers each, Shas has four and Jewish Home has one.",
+            "locator": "p. 66"
           }
         ],
-        "note": "A ministry is expected from previous research, but its representing party has not been verified against the appointment; do not infer it."
+        "note": "The Knesset’s record lists Daniel Hershkowitz as the Jewish Home’s minister; one book also counts one Jewish Home minister."
       }
     ],
     "coalitionSeats": 69,

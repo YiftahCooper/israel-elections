@@ -97,6 +97,13 @@
       "publisher": "White House, President Donald J. Trump’s Vision for Peace, Prosperity, and a Brighter Future, 28 January 2020",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "kenig-oxford-2021": {
+      "url": "https://doi.org/10.1093/oxfordhb/9780190675585.013.17",
+      "publisher": "Ofer Kenig, “The Executive Branch in Israel”, in Reuven Y. Hazan, Alan Dowty, Menachem Hofnung and Gideon Rahat (eds.), The Oxford Handbook of Israeli Politics and Society (Oxford University Press, 2021)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:kenig"
     }
   },
   "results": {
@@ -327,9 +334,13 @@
           {
             "value": "The dissolution law passed before presidential notification, advancing the election by eight days.",
             "source": "idi-dissolution"
+          },
+          {
+            "value": "Automatic dissolution, in passing (Ofer Kenig, 2021, p. 285: “the twenty-one-day period that ended in automatic dissolution of the Knesset”)",
+            "source": "kenig-oxford-2021"
           }
         ],
-        "resolution": "Use the academic legal account for the formal mechanism; separately record the failed parliamentary nomination period. Do not describe it solely as automatic dissolution."
+        "resolution": "Use the academic legal account for the formal mechanism; separately record the failed parliamentary nomination period. Do not describe it solely as automatic dissolution. A handbook chapter (Ofer Kenig, 2021) also says, in passing, that the Knesset dissolved automatically. The law itself, or the Knesset record of 11–12 December 2019, would settle it."
       }
     ]
   },
