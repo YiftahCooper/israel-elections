@@ -345,3 +345,32 @@ describe('seat-card faction lines', () => {
     for (const t of Object.values(rt.terms)) for (const s of t.seats) for (const h of s.holders) for (const [, from] of h[7]) expect(from >= h[1], `k${t.k} ${h[0]}`).toBe(true);
   });
 });
+
+// owner answers of 16 Nov 2026: Speaker changes at Standard and Expert; a coalition member's vote against the government
+// at Standard when the government lost the vote, at Expert when it won anyway
+describe('Speakers and votes against the government', () => {
+  test('each new Speaker is a Standard step with the Knesset’s record as its source', () => {
+    const sp = (t: TermRuntime) => t.timeline!.steps.flatMap((s) => s.items.filter((it) => it.kind === 'speaker-elected').map((it) => ({ date: s.date, it })));
+    expect(sp(k24).map((x) => x.date)).toEqual(['2021-06-13']);
+    expect(sp(k25).map((x) => x.date)).toEqual(['2022-12-13', '2022-12-29']);
+    for (const { it } of [...sp(k24), ...sp(k25)]) {
+      expect(it.importance).toBe('standard');
+      expect(it.en).toMatch(/^\{p:\d+\} becomes Speaker of the Knesset\.$/);
+      expect(it.sources[0][1]).toContain('knesset.gov.il/Odata');
+      expect(it.marks).toEqual([]);
+    }
+    // a Speaker carried over at a Knesset's opening is no event
+    expect(sp(rt.terms[21]!)).toEqual([]);
+  });
+  test('the lost-vote rule', () => {
+    const item = (t: TermRuntime, id: string) => t.timeline!.steps.flatMap((s) => s.items).find((it) => it.id === id)!;
+    const want: [TermRuntime, string, string][] = [
+      [k24, 'k24-citizenship-confidence', 'standard'], [k24, 'k24-conscription-first-reading-rejected', 'standard'],
+      [k24, 'k24-citizenship-final-reading', 'expert'], [k24, 'k24-judea-samaria-regulations-rejected', 'standard'],
+      [k25, 'k25-conscription-continuity', 'expert'], [k25, 'k25-retained-profits-tax', 'expert'], [k25, 'k25-dissolution-fails', 'expert'],
+    ];
+    for (const [t, id, level] of want) { expect(item(t, id).importance, id).toBe(level); expect(item(t, id).importanceFrom, id).toBe('rule'); }
+    // the swearing-in keeps its own level
+    expect(item(k24, 'k24-government36').importance).toBe('simple');
+  });
+});

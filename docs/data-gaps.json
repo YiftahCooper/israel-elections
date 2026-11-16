@@ -1,8 +1,8 @@
 {
   "schemaVersion": 3,
-  "total": 11531,
+  "total": 11547,
   "counts": {
-    "unknown": 6979,
+    "unknown": 6995,
     "missing-field": 283,
     "conflict": 18,
     "single-source": 2491,
@@ -15,7 +15,7 @@
   "countsByStatus": {
     "inferred-not-verified": 1032,
     "needs-current-status-review": 313,
-    "open": 10186
+    "open": 10202
   },
   "countsByImportance": {
     "high": {
@@ -35,12 +35,12 @@
       "unknown": 2236
     },
     "low": {
-      "total": 7049,
+      "total": 7065,
       "confirmed": 572,
       "probable": 0,
       "provisional": 802,
       "disputed": 0,
-      "unknown": 5675
+      "unknown": 5691
     }
   },
   "claimCertainty": {
@@ -558,12 +558,12 @@
     },
     {
       "election": "cross-election",
-      "total": 1443,
+      "total": 1459,
       "highOpen": 3,
       "mediumOpen": 247,
-      "low": 1069,
+      "low": 1085,
       "counts": {
-        "unknown": 1041,
+        "unknown": 1057,
         "missing-field": 35,
         "conflict": 5,
         "single-source": 307,
@@ -1068,6 +1068,8 @@
     {"area":"data/raw/SOURCES.json file","count":16,"open":16},
     {"area":"data/raw/kN/knesset-odata-factions.json factionMemberships","count":12,"open":12},
     {"area":"data/raw/kN/ratz-odata.json value","count":9,"open":9},
+    {"area":"data/raw/research/knesset-speakers/kns-person-to-position-122.json value","count":9,"open":9},
+    {"area":"data/raw/research/knesset-speakers/kns-person-to-position-123.json value","count":7,"open":7},
     {"area":"data/raw/bios/party-sources.reviewed.json sources","count":5,"open":5},
     {"area":"data/raw/kN/government-15-positions.json value","count":4,"open":4},
     {"area":"data/raw/research/mk-runs-1109.reviewed.json runs","count":4,"open":4},

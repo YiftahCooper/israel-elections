@@ -14,7 +14,7 @@
 .tl-end-label.end { right: 0; left: auto; transform: none; }
 .tl-track:focus-visible { outline-offset: 4px; }
 
-.tl-lines { background: var(--surface-2); border: 1px solid var(--rule); border-radius: var(--radius); padding: 8px 12px; margin-bottom: 8px; }
+.tl-lines { background: var(--surface-2); border: 1px solid var(--rule); border-radius: var(--radius); padding: 8px 12px; margin-block: 10px 8px; }
 .tl-lines-head { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
 .tl-count { font-size: 12px; color: var(--ink-2); border: 1px solid var(--rule-2); border-radius: 4px; padding: 0 6px; }
 .tl-lines ul { list-style: none; margin: 4px 0 0; padding: 0; }
@@ -32,10 +32,22 @@
 .tl-badge-D2 > circle:last-child { fill: #fff; stroke: none; }
 .tl-badge .tl-stroke { fill: none; stroke: #fff; stroke-linecap: round; stroke-linejoin: round; }
 .tl-mark-icon .tl-badge circle, .tl-mark-icon .tl-badge rect:first-child { stroke-width: 0; }
-.tl-glow { fill: none; stroke: var(--tl-glow); pointer-events: none; animation: tl-glow 2.6s ease-out forwards; }
-@keyframes tl-glow { 0% { opacity: 1; } 70% { opacity: .9; } 100% { opacity: .35; } }
-@media (prefers-reduced-motion: reduce) { .tl-glow { animation: none; opacity: .6; } }
-[data-motion="reduce"] .tl-glow { animation: none; opacity: .6; }
+/* the ring on seats that changed at this step: it arrives as a visible pulse (grows in from wide, beats twice) and then
+   fades to a faint ring that stays while the step is shown, so a late look still finds the seat (owner, 16 Nov 2026:
+   the old fade from full to 35% read as no animation at all). Still at reduced motion. */
+.tl-glow { fill: none; stroke: var(--tl-glow); pointer-events: none; transform-box: fill-box; transform-origin: center; animation: tl-glow 3.2s cubic-bezier(.3, .7, .4, 1) forwards; }
+@keyframes tl-glow {
+  0% { opacity: 0; transform: scale(2.1); }
+  14% { opacity: 1; transform: scale(1); }
+  28% { opacity: .5; transform: scale(1.22); }
+  42% { opacity: 1; transform: scale(1); }
+  56% { opacity: .5; transform: scale(1.22); }
+  70% { opacity: 1; transform: scale(1); }
+  100% { opacity: .3; transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) { .tl-glow { animation: none; opacity: .7; } }
+[data-motion="reduce"] .tl-glow { animation: none; opacity: .7; }
+.tl-ring-swatch { fill: none; stroke: var(--tl-glow); stroke-width: 3.5; }
 .tl-selected { fill: none; stroke: var(--focus); stroke-width: 3; pointer-events: none; }
 
 .tl-sides { display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; margin-top: 4px; }

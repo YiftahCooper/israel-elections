@@ -50,7 +50,9 @@ test('Simple steps through the government and the term only; Silman’s seat mov
 test('Standard adds votes and single MKs; Expert adds seat changes, chosen by kind in Settings', async ({ page }) => {
   await start(page, { level: 'standard' });
   let tl = await openTimeline(page);
-  await expect(tl.locator('.tl-count')).toHaveText('Step 1 of 33');
+  // 16 Nov 2026: a coalition member's vote against the government is Standard only when the government lost it (the
+  // 10 Mar 2022 citizenship final reading is Expert); the new Speaker shares the swearing-in step
+  await expect(tl.locator('.tl-count')).toHaveText('Step 1 of 32');
   await page.getByRole('button', { name: 'Expert', exact: true }).first().click();
   tl = page.locator('section.tl');
   await expect(tl.locator('.tl-count')).toHaveText('Step 1 of 44');
@@ -143,8 +145,9 @@ test('the election chart’s seat card names who else held the seat', async ({ p
 
 // Owner, 12 Nov 2026: the arrows go through every event on the timeline. The ticks on the bar are the steps.
 // KNS_KnessetDates 169 opens k26 on 10 Nov 2026; retained data/raw/research/k25-term-boundary.json.
-// The sourced k25 term-end adds one closing step to the former 39-step snapshot.
-for (const [election, level, total] of [['k24', 'simple', 9], ['k24', 'standard', 33], ['k24', 'expert', 44], ['k25', 'standard', 40], ['k21', 'expert', 9]] as const) {
+// The sourced k25 term-end adds one closing step to the former 39-step snapshot. 16 Nov 2026: k25 Standard gains the
+// Speaker election of 13 Dec 2022 and loses three votes the government won (now Expert); k24 Standard loses one.
+for (const [election, level, total] of [['k24', 'simple', 9], ['k24', 'standard', 32], ['k24', 'expert', 44], ['k25', 'standard', 39], ['k21', 'expert', 9]] as const) {
   test(`${election} ${level}: ▶ stops at every tick on the bar, in order, and ◀ comes back the same way`, async ({ page }) => {
     await start(page, { level, election });
     const tl = await openTimeline(page);
@@ -299,4 +302,61 @@ for (const lang of ['en', 'he'] as const) test(`the term chamber has a list key 
   await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k25');
   await expect(tl.locator('.tl-chamber circle.seat')).toHaveCount(120);
   expect(await sum()).toBe(await filled());
+});
+
+// Round 7, 16 Nov 2026 (owner cards lines-place, try-steps, speakers, deaths): the day's lines sit under the chart; the
+// yellow ring arrives as a visible pulse and the key names it; a Speaker change is a Standard step; the coalition count
+// explains itself; a replacement names its recorded reason
+test('the day’s lines sit below the chart, and the ring that marks a changed seat is named and animated', async ({ page }) => {
+  await start(page);
+  const tl = await openTimeline(page);
+  await tl.getByRole('button', { name: /^Next step/ }).click();
+  const chart = await tl.locator('.tl-chamber svg').first().boundingBox();
+  const lines = await tl.locator('.tl-lines').boundingBox();
+  expect(lines!.y).toBeGreaterThan(chart!.y + chart!.height - 1);
+  await expect(tl.locator('.tl-glow').first()).toBeAttached();
+  await expect(tl.locator('.tl-ring-key')).toHaveText('Changed on this date');
+  const anim = await tl.locator('.tl-glow').first().evaluate((el) => { const s = getComputedStyle(el); return [s.animationName, s.animationDuration]; });
+  expect(anim[0]).not.toBe('none');
+  expect(parseFloat(anim[1])).toBeGreaterThanOrEqual(2);
+  // a step that changes no seat has no ring and no ring key
+  await stepTo(tl, '2021-06-11');
+  await expect(tl.locator('.tl-ring-key')).toHaveCount(0);
+});
+
+test('reduced motion: the ring is drawn still, clearly visible', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await start(page);
+  const tl = await openTimeline(page);
+  await tl.getByRole('button', { name: /^Next step/ }).click();
+  const s = await tl.locator('.tl-glow').first().evaluate((el) => { const c = getComputedStyle(el); return [c.animationName, c.opacity]; });
+  expect(s[0]).toBe('none');
+  expect(Number(s[1])).toBeGreaterThanOrEqual(0.6);
+});
+
+test('the coalition count explains what it counts', async ({ page }) => {
+  await start(page);
+  const tl = await openTimeline(page);
+  await stepTo(tl, '2021-06-13');
+  await tl.locator('.tl-sides').getByRole('button', { name: 'Coalition' }).click();
+  await expect(page.getByText(/Seats on the government’s side after this date/)).toBeVisible();
+});
+
+for (const lang of ['en', 'he'] as const) test(`a new Speaker is a Standard step (${lang})`, async ({ page }) => {
+  await start(page, { lang, election: 'k25' });
+  const tl = await openTimeline(page, lang);
+  await stepTo(tl, '2022-12-13', lang);
+  await expect(tl.locator('.tl-lines')).toContainText(lang === 'he' ? 'יריב לוין נבחר ליושב ראש הכנסת.' : 'Yariv Levin becomes Speaker of the Knesset.');
+  await stepTo(tl, '2022-12-29', lang);
+  await expect(tl.locator('.tl-lines')).toContainText(lang === 'he' ? 'אמיר אוחנה נבחר ליושב ראש הכנסת.' : 'Amir Ohana becomes Speaker of the Knesset.');
+});
+
+test('a replacement after a death says so, on the line and on the seat card', async ({ page }) => {
+  await start(page);
+  const tl = await openTimeline(page);
+  await stepTo(tl, '2021-08-25');
+  await expect(tl.locator('.tl-lines')).toContainText("Iman Khatib Yassin replaces Saeed Alkharumi · Ra'am · Died in office");
+  // the newcomer's seat card names why the seat was freed
+  await tl.locator('[data-person="30758"] circle.seat').click();
+  await expect(page.locator('.tl-card .tl-holders')).toContainText('Died in office');
 });

@@ -54,3 +54,13 @@
 .mk-seg + .mk-seg { box-shadow: inset 2px 0 0 var(--surface); }
 /* the time scale starts at the left in both languages, so every Knesset's opening lines up (Hebrew graphics stay LTR) */
 .mk-term > * { justify-self: left; }
+/* the key above the rows (16 Nov 2026): the list's places, the bar and the event mark, each drawn as in the rows */
+.mk-key { display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: center; padding-block: 2px 8px; }
+.mk-key > span { display: inline-flex; gap: 6px; align-items: center; }
+.mk-key-fill { fill: var(--ink-2); }
+.mk-key-empty { fill: none; stroke: var(--rule-2); stroke-width: 1; }
+.mk-key-pin { fill: var(--ink); }
+.mk-key-track { position: relative; display: inline-block; inline-size: 40px; block-size: 12px; background: var(--surface-2); border: 1px solid var(--rule-2); border-radius: 3px; box-sizing: border-box; }
+.mk-key-seg { position: absolute; inset-block: -1px; left: 8px; inline-size: 20px; background: var(--ink-2); border-radius: 2px; }
+.mk-key-track, .mk-key-seg { font-style: normal; }
+.mk-key-mark { display: inline-block; inline-size: 0; block-size: 0; border-inline: 4px solid transparent; border-block-start: 6px solid var(--ink); }

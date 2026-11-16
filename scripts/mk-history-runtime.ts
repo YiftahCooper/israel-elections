@@ -8,7 +8,8 @@
  *  - dated events naming the person: data/research/knesset-events/kN.json (with their sources).
  *  Runs that did not win a seat are shown only from elections whose official candidate lists we hold in full; an
  *  uncertain match is left out, never shown (owner decision M2, 9 Nov 2026). */
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
+import { applyEventReasons, knownReason } from './lib/replacement-reasons.ts';
 import type { ElectionDataset } from '../src/data/schema.ts';
 import { RULESETS } from '../src/engine/rules.ts';
 import { mixHex } from '../src/data/colour.ts';
@@ -25,13 +26,16 @@ export type RunOutcome = 'elected' | 'first' | 'later' | 'out' | 'declined' | 'w
  *  name: the same listed name, character for character, as a candidacy tied by ID, and no one else could be meant. */
 export type RunBasis = 'id' | 'name';
 /** [election number, list id, rank, outcome, basis, for basis "name": the election number of the ID-tied run,
- *  for "declined" and "first": the official candidate notes that explain it ([English, Hebrew][]) ] */
-export type PackedRun = readonly [number, string, number, RunOutcome, RunBasis, number | null, readonly (readonly [string, string])[]];
+ *  for "declined" and "first": the official candidate notes that explain it ([English, Hebrew][]),
+ *  and for a run tied to the person by research: the sources that tie it ([publisher, url][]) ] */
+export type PackedRun = readonly [number, string, number, RunOutcome, RunBasis, number | null, readonly (readonly [string, string])[]]
+  | readonly [number, string, number, RunOutcome, RunBasis, number | null, readonly (readonly [string, string])[], readonly (readonly [string, string])[]];
 /** One faction in a term: [faction id, start, end or null, and where the Knesset's record has them: start time, end time].
  *  Only the records the app shows, cut to the term and in order (scripts/lib/faction-rows.ts). */
 export type PackedFaction = readonly [number, string, string | null] | readonly [number, string, string | null, string | null, string | null];
-/** [Knesset number, start, end or null (still serving), factions] */
-export type PackedTerm = readonly [number, string, string | null, readonly PackedFaction[]];
+/** [Knesset number, start, end or null (still serving), factions, and where the research records why the membership
+ *  ended: its reason code (src/history/reasons.ts words it)] */
+export type PackedTerm = readonly [number, string, string | null, readonly PackedFaction[]] | readonly [number, string, string | null, readonly PackedFaction[], string];
 /** [date, kind, Knesset number, English, Hebrew, evidence class, sources [publisher, url][]] */
 export type PackedEvent = readonly [string, string, number, string, string, string, readonly (readonly [string, string])[]];
 export interface MkPerson {
@@ -46,7 +50,7 @@ export interface MkRuntime {
   version: 1;
   /** per election number: date, opening of that Knesset (null before it opens), the day it ended (or the records'
    *  as-of date while it sits), threshold in percent */
-  elections: Record<number, { date: string; opening: string | null; end: string | null; threshold: number }>;
+  elections: Record<number, { date: string; opening: string | null; end: string | null; threshold: number; recordsPending?: true }>;
   /** per list id: [short Hebrew, short English or null, colour, seats, valid-vote share in percent (2 decimals)] */
   lists: Record<string, readonly [string, string | null, string, number, number]>;
   /** faction id → [Hebrew, English or null, colour or null], and for a faction shown under its list's name whose recorded
@@ -62,8 +66,8 @@ export interface MkRuntime {
 export interface MkReview { leftOut: { candidateId: string; nameHe: string; reason: string; personIds: number[] }[]; anomalies: string[] }
 
 type Bio = { knessetPersonId?: number | null; confidence?: string; knesset?: { siteId?: number } | null; hewiki?: { title?: string } | null; basis?: string; displayNameEn?: string };
-type Tenure = { personId: number; nameHe: string; start: string; end: string | null; factions: { factionId: number; nameHe: string; start: string; end: string | null; startTime?: string; endTime?: string }[] };
-type Changes = { tenures: Tenure[]; factionRegistry: { id: number; nameHe: string; start: string; end: string | null }[]; checks: { openingDateReported?: string | null } };
+type Tenure = { id: number; personId: number; nameHe: string; start: string; end: string | null; factions: { factionId: number; nameHe: string; start: string; end: string | null; startTime?: string; endTime?: string }[] };
+type Changes = { tenures: Tenure[]; replacements: { leavingTenureId: number | null; reason?: string }[]; factionRegistry: { id: number; nameHe: string; start: string; end: string | null }[]; checks: { openingDateReported?: string | null } };
 type KEvent = { id: string; date: string; kind: string; who: { personIds?: number[] }; summary: { en: string; he: string }; classification: string; certainty: string; evidenceClass?: string; sources: { url?: string; publisher?: string }[] };
 
 const K = Array.from({ length: 26 }, (_, i) => i + 1);
@@ -103,6 +107,20 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
   const out: MkRuntime = { version: 1, elections: {}, lists: {}, factions: {}, failedRunCoverage: { full: [], partial: {}, excluded: {} }, people: {} };
   const anomalies = review?.anomalies ?? [];
   const leftOut = review?.leftOut ?? [];
+  // runs tied to a person by research (data/raw/research/mk-runs-*.reviewed.json, status "confirmed"): the sources that
+  // tie each, shown behind the run's (i) (owner, 16 Nov 2026)
+  const researched = new Map<string, (readonly [string, string])[]>();
+  for (const f of readdirSync(`${root}/data/raw/research`).filter((n) => /^mk-runs-.*\.reviewed\.json$/.test(n)).sort()) {
+    const r = read(`data/raw/research/${f}`) as { sources: Record<string, { url?: string; publisher?: string; corroboration?: { url?: string; publisher?: string } }>; runs: { candidateId: string; status: string; sourceIds?: string[]; supportingSourceIds?: string[]; finding?: string }[] };
+    for (const run of r.runs) {
+      if (run.status !== 'confirmed') continue;
+      const out: [string, string][] = [];
+      const add = (publisher: string | undefined, url: string | undefined) => { if (url && /^https:\/\//.test(url) && !out.some((x) => x[1] === url)) out.push([publisher ?? new URL(url).hostname, url]); };
+      for (const id of new Set([...run.sourceIds ?? [], ...run.supportingSourceIds ?? []])) { const src = r.sources[id]; if (!src) continue; add(src.publisher, src.url); add(src.corroboration?.publisher, src.corroboration?.url); }
+      for (const url of run.finding?.match(/https:\/\/\S+?(?=\s|$)/g) ?? []) add(undefined, url.replace(/[.,;)]+$/, ''));
+      if (out.length) researched.set(run.candidateId, out);
+    }
+  }
 
   // ---- elections and lists ----
   for (const k of K) {
@@ -122,19 +140,30 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
   // a Knesset ends when the next one opens; where that opening is not yet recorded and every membership has closed, on
   // the last membership end; only a Knesset still sitting runs to the snapshot date. The rule of the term timeline
   // (scripts/term-timeline-runtime.ts); without it the 25th ran to 12 Nov 2026 and its 120 last members "left" on 10 Nov
+  const closedOn = (k: number) => { const ts = changes.get(k)?.tenures ?? []; return ts.length > 0 && ts.every((t) => t.end !== null) ? ts.reduce((m, t) => (t.end! > m ? t.end! : m), '') : null; };
+  // a Knesset whose member records are not yet in the data opened when the one before it ended (every membership of the
+  // 25th closes on 10 Nov 2026, the 26th's first sitting): it has an opening, no end and no time drawn (owner, 16 Nov 2026)
+  for (const k of K) if (!out.elections[k].opening && !changes.get(k)!.tenures.length && k > 1 && closedOn(k - 1)) { out.elections[k].opening = closedOn(k - 1); out.elections[k].recordsPending = true; }
   for (const k of K) {
-    const ts = changes.get(k)!.tenures;
-    const closed = ts.length > 0 && ts.every((t) => t.end !== null) ? ts.reduce((m, t) => (t.end! > m ? t.end! : m), '') : null;
-    out.elections[k].end = out.elections[k + 1]?.opening ?? closed ?? (out.elections[k].opening ? (changes.get(k) as Changes & { asOf?: string }).asOf ?? null : null);
+    const closed = closedOn(k);
+    out.elections[k].end = out.elections[k].recordsPending ? null : out.elections[k + 1]?.opening ?? closed ?? (out.elections[k].opening ? (changes.get(k) as Changes & { asOf?: string }).asOf ?? null : null);
   }
   const covered = (k: number, listId: string) => out.failedRunCoverage.full.includes(k) ? !(out.failedRunCoverage.excluded[k] ?? []).includes(listId) : (out.failedRunCoverage.partial[k] ?? []).includes(listId);
 
   // ---- people: everyone with a term, plus those elected to a Knesset that has not opened yet ----
   const terms = new Map<number, PackedTerm[]>();
-  for (const k of K) for (const t of changes.get(k)!.tenures) {
-    const list = terms.get(t.personId) ?? [];
-    list.push([k, t.start, t.end, shownRows(t.factions, t).map((f): PackedFaction => f.startTime || f.endTime ? [f.factionId, f.start, f.end, f.startTime ?? null, f.endTime ?? null] : [f.factionId, f.start, f.end])]);
-    terms.set(t.personId, list);
+  for (const k of K) {
+    // why each membership ended, where the research records it (the Knesset's own records give no reason)
+    const reps = changes.get(k)!.replacements;
+    applyEventReasons(root, k, reps);
+    const endedBy = new Map(reps.filter((r) => r.leavingTenureId != null && knownReason(r.reason)).map((r) => [r.leavingTenureId!, r.reason!]));
+    for (const t of changes.get(k)!.tenures) {
+      const list = terms.get(t.personId) ?? [];
+      const factions = shownRows(t.factions, t).map((f): PackedFaction => f.startTime || f.endTime ? [f.factionId, f.start, f.end, f.startTime ?? null, f.endTime ?? null] : [f.factionId, f.start, f.end]);
+      const why = t.end ? endedBy.get(t.id) : undefined;
+      list.push(why ? [k, t.start, t.end, factions, why] : [k, t.start, t.end, factions]);
+      terms.set(t.personId, list);
+    }
   }
 
   // ---- runs tied by Knesset member ID ----
@@ -327,7 +356,8 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
       // the official notes on the candidates whose places explain it (their own, or those above who did not sit)
       const notes = o === 'declined' ? l.candidates.find((c) => c.id === r.candidateId)?.notes ?? []
         : o === 'first' ? l.candidates.filter((c) => c.rank <= out.lists[r.listId][3]).flatMap((c) => c.notes ?? []).filter((n) => /first sitting/.test(n.en)) : [];
-      return [r.k, r.listId, r.rank, o, r.basis, r.via, notes.map((n) => [n.en, n.he] as const)];
+      const research = researched.get(r.candidateId);
+      return research ? [r.k, r.listId, r.rank, o, r.basis, r.via, notes.map((n) => [n.en, n.he] as const), research] : [r.k, r.listId, r.rank, o, r.basis, r.via, notes.map((n) => [n.en, n.he] as const)];
     });
     const site = siteOf.get(p) ?? null;
     const bioRec = rs.map((r) => bios.get(r.k)![r.candidateId]).find((b) => b?.hewiki?.title);

@@ -10,6 +10,7 @@ import { useSetting, useStore } from '../store.ts';
 import { Floating } from '../floating.tsx';
 import { useHoverIntent } from '../hoverIntent.ts';
 import { Info, Slip } from './ui.tsx';
+import { entryWords, reasonWords } from '../../history/reasons.ts';
 import { ListKeyItem } from './Hemicycle.tsx';
 import './TermTimeline.css';
 
@@ -25,24 +26,6 @@ const personName = (mk: MkRuntime | null, p: number | null | undefined, lang: La
   return x ? (lang === 'he' || !x.en ? x.he : x.en) : '…';
 };
 const female = (mk: MkRuntime | null, p: number | null | undefined) => p != null && !!mk?.people[p]?.female;
-
-/** Why someone came in, from the recorded reason (the seat was freed by it): null when not recorded. */
-function entryWords(reason: string | null | undefined, L: (en: string, he: string) => string): string | null {
-  if (!reason) return null;
-  if (/norweg|נורבג/i.test(reason)) return L('Norwegian law', 'החוק הנורבגי');
-  if (/resign|התפטר/i.test(reason)) return L('after a resignation', 'אחרי התפטרות');
-  if (/death|died|deceased|נפטר/i.test(reason)) return L('after a death', 'אחרי פטירה');
-  return null;
-}
-
-/** A recorded reason in plain words (the research lane's codes or text); null when it has no plain wording yet. */
-function reasonWords(reason: string | null | undefined, fem: boolean, L: (en: string, he: string) => string): string | null {
-  if (!reason) return null;
-  if (/norweg|נורבג/i.test(reason)) return L('Norwegian law', 'החוק הנורבגי');
-  if (/resign|התפטר/i.test(reason)) return L('Resigned', fem ? 'התפטרה' : 'התפטר');
-  if (/death|died|deceased|נפטר/i.test(reason)) return L('Died', fem ? 'נפטרה' : 'נפטר');
-  return null;
-}
 
 /** A mark on a seat, drawn at the seat's top-right corner whatever the language (graphics are never mirrored). Each is
  *  a shape, so it reads without colour: ! rebel, × voted against, – abstained, arrow changed side, bent arrow
@@ -104,8 +87,8 @@ export function TermTimeline({ ds }: { ds: ElectionDataset }) {
         : L('Step through the term: the chart shows every seat as it stood after that date. Coalition seats are on the left. Graphics run left to right in Hebrew too. A newcomer counts with their faction. The (i) beside each event gives its sources and how sure it is.',
           'צעד אחר צעד לאורך הכהונה: התרשים מציג כל מושב כפי שהיה אחרי התאריך. מושבי הקואליציה משמאל. גם בעברית התרשימים משמאל לימין. מי שנכנס לכנסת נספר עם סיעתו. ה־(i) ליד כל אירוע מציג את מקורותיו ואת מידת הוודאות.')}</Info></span></h3>
     <TimelineBar term={term} steps={steps} index={index} go={go} />
-    <StepLines term={term} view={view} index={index} total={steps.length} ds={ds} mk={mk} />
-    <Chamber key={term.k} term={term} view={view} ds={ds} mk={mk} />
+    {/* the day's lines sit under the chart, between the counts and the list key (owner decision, 16 Nov 2026) */}
+    <Chamber key={term.k} term={term} view={view} ds={ds} mk={mk} lines={<StepLines term={term} view={view} index={index} total={steps.length} ds={ds} mk={mk} />} />
   </section>;
 }
 
@@ -158,7 +141,7 @@ function itemText(it: TimelineItem, term: TermRuntime, ds: ElectionDataset, mk: 
   if (it.type === 'event' || it.en) return eventLine(it, mk, lang);
   const list = ds.lists.find((l) => l.id === term.seats[it.seat!].list);
   const where = list ? ` · ${listLabel(list, lang)}` : '';
-  const why = reasonWords(it.reason, female(mk, it.out ?? it.in), L);
+  const why = reasonWords(it.reason, female(mk, it.out ?? it.in), lang);
   const inN = personName(mk, it.in, lang), outN = personName(mk, it.out, lang), fIn = female(mk, it.in);
   const text = it.in != null && it.out != null ? L(`${inN} replaces ${outN}`, `${inN} ${fIn ? 'נכנסת' : 'נכנס'} במקום ${outN}`)
     : it.in != null ? L(`${inN} enters the Knesset`, `${inN} ${fIn ? 'נכנסת' : 'נכנס'} לכנסת`)
@@ -194,7 +177,7 @@ function StepLines({ term, view, index, total, ds, mk }: { term: TermRuntime; vi
   </div>;
 }
 
-function Chamber({ term, view, ds, mk }: { term: TermRuntime; view: StepView; ds: ElectionDataset; mk: MkRuntime | null }) {
+function Chamber({ term, view, ds, mk, lines }: { term: TermRuntime; view: StepView; ds: ElectionDataset; mk: MkRuntime | null; lines?: ReactNode }) {
   const L = useL(); const lang = useLang();
   const hoverPopups = useSetting('hoverPopups');
   const listOf = (id: string | null): List | undefined => ds.lists.find((l) => l.id === id);
@@ -235,6 +218,7 @@ function Chamber({ term, view, ds, mk }: { term: TermRuntime; view: StepView; ds
   const rebels = view.step.rebels;
   const itemById = useMemo(() => new Map(term.timeline!.steps.flatMap((s) => s.items.map((it) => [it.id, { it, date: s.date }] as const))), [term]);
   const keyKinds = [...new Set([...marks.values()])].filter((k) => k !== 'D2');
+  const ringed = glow.size > 0;
   return <div className="chamber tl-chamber">
     <svg ref={svg} {...LTR_SVG} viewBox={`40 30 920 ${H - 30}`} role="group" aria-label={sides ? L(`Seat chart: coalition ${coal}, not in the coalition ${120 - coal}`, `תרשים המושבים: קואליציה ${coal}, לא בקואליציה ${120 - coal}`) : L('Seat chart', 'תרשים המושבים')}>
       {regions.map((w) => <path key={w.band} className="wedge solid" data-side={sides ? (w.band === 0 ? 'coalition' : 'rest') : 'none'} d={w.fill} style={{ ['--bc' as string]: sides ? (w.band === 0 ? COAL : REST) : 'var(--axis)' }} />)}
@@ -262,16 +246,19 @@ function Chamber({ term, view, ds, mk }: { term: TermRuntime; view: StepView; ds
       <text x={cx} y={cy - 6} textAnchor="middle" fontSize={16} fill="var(--ink-2)">{L('seats · majority 61', 'מנדטים · רוב 61')}</text>
     </svg>
     <div className="tl-sides">{sides ? <>
-      <span><i className="swatch bloc-swatch" style={{ ['--bc' as string]: COAL } as CSSProperties} />{L('Coalition', 'קואליציה')} <b><bdi dir="ltr">{coal}</bdi></b></span>
+      <span className="after-help-anchor"><i className="swatch bloc-swatch" style={{ ['--bc' as string]: COAL } as CSSProperties} />{L('Coalition', 'קואליציה')} <b><bdi dir="ltr">{coal}</bdi></b> <Info title={L('Coalition', 'קואליציה')}>{L(
+        'Seats on the government’s side after this date. A member who voted against the government or left it counts on the other side, so this can differ from the coalition lists’ seats on the government card.',
+        'המושבים בצד הממשלה אחרי התאריך הזה. חבר כנסת שהצביע נגד הממשלה או עזב אותה נספר בצד השני, ולכן המספר יכול להיות שונה ממספר המושבים של רשימות הקואליציה בכרטיס הממשלה.')}</Info></span>
       <span><i className="swatch bloc-swatch" style={{ ['--bc' as string]: REST } as CSSProperties} />{L('Not in the coalition', 'לא בקואליציה')} <b><bdi dir="ltr">{filled - coal}</bdi></b></span>
     </> : <span className="muted">{term.timeline!.noGovernment ? L('No government was formed in this Knesset', 'בכנסת הזאת לא הוקמה ממשלה') : L('Before the government is sworn in', 'לפני השבעת הממשלה')}</span>}</div>
+    {lines}
     <div className="legend" role="group" aria-label={L('Lists in the Knesset', 'הרשימות בכנסת')}>{keyRows.map(({ l, n }) => <ListKeyItem key={l.id} list={l} seats={n} />)}</div>
-    {(rebels.length > 0 || keyKinds.length > 0) && <div className="tl-key">
+    {(rebels.length > 0 || keyKinds.length > 0 || ringed) && <div className="tl-key">
       {rebels.length > 0 && <div className="tl-rebels"><div className="row"><MarkIcon kind="D2" /><b>{L('Rebel', 'מורד')} <bdi dir="ltr">{rebels.length}</bdi></b> <Info title={L('Rebel', 'מורד')}>{L('An MK who left the side their party is on. The seat moves to that side and keeps the party colour.', 'חבר כנסת שעזב את הצד שבו נמצאת מפלגתו. המושב עובר לצד הזה ושומר על צבע המפלגה.')}</Info></div>
         <ul>{rebels.map(([seat, p, item]) => { const src = itemById.get(item); const l = listOf(term.seats[seat].list); const f = female(mk, p);
           const what = src?.it.kind === 'government-sworn-in' ? L('voted against the government', f ? 'הצביעה נגד הממשלה' : 'הצביע נגד הממשלה') : src?.it.kind === 'coalition-exit-statement' ? L('announced leaving the coalition', f ? 'הודיעה על פרישה מהקואליציה' : 'הודיע על פרישה מהקואליציה') : src ? eventLine(src.it, mk, lang) : '';
           return <li key={p}><button type="button" className="link-btn" onClick={() => mk?.people[p] && openMkHistory(p)}><b><bdi>{personName(mk, p, lang)}</bdi></b></button>{l && <> · <bdi>{listLabel(l, lang)}</bdi></>} — <bdi>{what}</bdi> {src && <span className="muted"><bdi>{formatDate(src.date, lang)}</bdi></span>}</li>; })}</ul></div>}
-      {keyKinds.length > 0 && <div className="tl-marks">{keyKinds.map((k) => <span key={k} className="row"><MarkIcon kind={k} />{k === 'D3x' ? L('Voted against, stayed', 'הצבעה נגד, בלי לעזוב') : k === 'D3a' ? L('Abstained, stayed', 'הימנעות, בלי לעזוב') : k === 'D4c' ? L('Moved to the coalition', 'מעבר לקואליציה') : k === 'D4o' ? L('Left the coalition', 'יציאה מהקואליציה') : L('Seat changed hands', 'חילופי מושב')}</span>)}</div>}
+      {(keyKinds.length > 0 || ringed) && <div className="tl-marks">{ringed && <span className="row tl-ring-key"><svg className="tl-mark-icon" viewBox="-12 -12 24 24" aria-hidden="true"><circle r={6} className="tl-ring-swatch" /></svg>{L('Changed on this date', 'השתנה בתאריך הזה')}</span>}{keyKinds.map((k) => <span key={k} className="row"><MarkIcon kind={k} />{k === 'D3x' ? L('Voted against, stayed', 'הצבעה נגד, בלי לעזוב') : k === 'D3a' ? L('Abstained, stayed', 'הימנעות, בלי לעזוב') : k === 'D4c' ? L('Moved to the coalition', 'מעבר לקואליציה') : k === 'D4o' ? L('Left the coalition', 'יציאה מהקואליציה') : L('Seat changed hands', 'חילופי מושב')}</span>)}</div>}
     </div>}
     {open && <Floating role="dialog" label={L('Who sat here', 'מי ישב כאן')} className="tip tl-card" anchor={() => open.anchor.getBoundingClientRect()} onPointerEnter={hover.keep} onPointerLeave={hover.leave} preferAbove>
       <SeatCard term={term} seat={open.seat} date={view.step.date} list={listOf(term.seats[open.seat].list)} mk={mk} onClose={() => setOpen(null)} />
@@ -298,10 +285,10 @@ function SeatHolderList({ term, holders, now, mk }: { term: TermRuntime; holders
   const line = (h: PackedHolder): ReactNode => {
     const fem = female(mk, h[0]);
     const came = h[3] === 'o' ? L('From the first sitting', 'מהישיבה הראשונה') : h[3] === 'r' ? L('Returned', fem ? 'חזרה לכנסת' : 'חזר לכנסת') : L('Entered', fem ? 'נכנסה לכנסת' : 'נכנס לכנסת');
-    const why = entryWords(h[5], L);
+    const why = entryWords(h[5], lang);
     const ended = h[2] !== null && h[2] < term.end;
     // as MK history words it: the Knesset records no reason for most ends, and the words claim none (fx-tlnames)
-    const reason = ended ? reasonWords(h[6], fem, L) : null;
+    const reason = ended ? reasonWords(h[6], fem, lang) : null;
     const out = ended ? `${L('Membership ended', 'הכהונה הסתיימה')}${reason ? ` · ${reason}` : ''}` : L('Until the end of the term', 'עד סוף הכהונה');
     return <>{came}{why ? ` (${why})` : ''} · {out}</>;
   };
