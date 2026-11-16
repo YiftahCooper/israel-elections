@@ -2,6 +2,7 @@
 
 ## 16 November 2026
 
+- Books (16 Nov): the owner's rule for books is in the source policy and the build's check: two independent scholarly works, or one that cites the official record, confirm a fact; one book alone is probable; a book that contradicts the data makes it disputed. Twenty-four government roles and one recommendation now cite book pages: the 1992 outside support of Hadash and the Arab Democratic Party, Mapam's six MKs and Yossi Sarid outside the 1984 coalition, United Torah Judaism in 1999 and 2015, the NRP in 2003, the Independent Liberals in 1974 and Poalei Agudat Yisrael in 1961 are confirmed; Flatto-Sharon in 1977 supported the government from outside (probable); WIZO in 1949 and Eliezer Mizrachi in 1990 are disputed, with both sides shown; Kach's exclusion from the 1984 consultations is confirmed. A disputed role says "Sources disagree", and the notes on investiture votes are in plain words.
 - Checked formation and confidence votes against the official Knesset sitting records: corrected the 2009 abstentions, recorded the chair’s corrections and named votes, and kept unresolved individual votes separate from coalition roles.
 
 - Government 36 counts 61 coalition members, excluding Chikli; Eichler’s January 2026 appointment has its own timeline event, Rabin and Zeevi have sourced death reasons, and rotation agreements retain planned and actual handovers separately.

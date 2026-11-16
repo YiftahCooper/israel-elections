@@ -139,6 +139,34 @@
       "publisherHe": "הכנסת, מאגר החברות בסיעות של הכנסת ה־16",
       "kind": "official",
       "accessed": "2026-11-13"
+    },
+    "galnoor-blander-2018": {
+      "url": "https://doi.org/10.1017/9781316160978",
+      "publisher": "Itzhak Galnoor and Dana Blander, The Handbook of Israel’s Political System (Cambridge University Press, 2018)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:galnoor"
+    },
+    "shamir-arian-2005": {
+      "url": "https://doi.org/10.4324/9781351322287",
+      "publisher": "Michal Shamir and Asher Arian, introduction to Asher Arian and Michal Shamir (eds.), The Elections in Israel 2003 (Transaction, 2005)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:shamir"
+    },
+    "rynhold-2008": {
+      "url": "https://doi.org/10.4324/9781315869513",
+      "publisher": "Jonathan Rynhold, “Peace and Security in the 2006 Election”, in Shmuel Sandler, Manfred Gerstenfeld and Jonathan Rynhold (eds.), Israel at the Polls 2006 (Routledge, 2008)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:rynhold"
+    },
+    "aldrich-et-al-2005": {
+      "url": "https://doi.org/10.4324/9781351322287-7",
+      "publisher": "John H. Aldrich, Andre Blais, Indridi H. Indridason and Renan Levine, “Coalition Considerations and the Vote”, in Asher Arian and Michal Shamir (eds.), The Elections in Israel 2003 (Transaction, 2005)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:aldrich-blais-indridason-levine"
     }
   },
   "results": {
@@ -554,23 +582,48 @@
       {
         "letters": "ב",
         "seats": 6,
-        "note": "Formation snapshot 27 February: the NRP ministers took office 3 March, as already documented in this record. Probable under the source policy: the Knesset lexicon is an institutional account; the government-30 investiture record is the deciding primary source.",
+        "note": "Three independent studies and the Knesset’s own account place the NRP in the coalition. Its ministers took office on 3 March, so on 27 February it is listed without ministries.",
         "role": "member-without-ministries",
-        "certainty": "probable",
+        "certainty": "confirmed",
         "cites": [
           {
             "source": "coalition-official",
             "quote": "בהשתתפות הליכוד, שינוי, המפד״ל והאיחוד הלאומי"
+          },
+          {
+            "source": "galnoor-blander-2018",
+            "quote": "was a partner in the 2003 Sharon government until bolting in the wake of the disengagement plan",
+            "locator": "p. 780"
+          },
+          {
+            "source": "shamir-arian-2005",
+            "quote": "a new and unprecedented coalition, with Shinui on his left and Mafdal (National Religious Party) and Ihud Leumi on his right.",
+            "locator": "p. 1"
+          },
+          {
+            "source": "rynhold-2008",
+            "quote": "Prime Minister Ariel Sharon formed a centre-right coalition consisting of the Likud, Shinui, the National Religious Party (NRP) and the National Union (NU).",
+            "locator": "p. 157"
           }
         ]
       },
       {
         "letters": "כן",
         "seats": 2,
-        "note": "Sharansky took office 3 March and his two-seat faction later merged; the official initial coalition names four factions and does not settle the two Yisrael BaAliyah seats on 27 February.",
-        "role": "other",
-        "certainty": "unknown",
-        "cites": []
+        "note": "Probable: one study counts Yisrael BaAliyah, together with the Likud, in the coalition formed after the election; the Knesset’s account names only four parties. Like the NRP’s, its minister (Natan Sharansky) took office on 3 March, so on 27 February it is listed without ministries.",
+        "role": "member-without-ministries",
+        "certainty": "probable",
+        "cites": [
+          {
+            "source": "aldrich-et-al-2005",
+            "quote": "The coalition that formed shortly after the election, between the Likud (with Yisrael B’Aliya), Ihud Leumi, the National Religious Party, and Shinui",
+            "locator": "p. 160",
+            "note": "Note 5 of the chapter.",
+            "noteHe": "הערה 5 בפרק."
+          }
+        ],
+        "noteEn": "Its minister, Natan Sharansky, took office on 3 March 2003.",
+        "noteHe": "השר מטעמה, נתן שרנסקי, נכנס לתפקידו ב־3 במרץ 2003."
       }
     ],
     "coalitionSeats": null,
@@ -789,9 +842,9 @@
     "supportSeats": null,
     "reconciliation": {
       "status": "unresolved",
-      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 66; full membership remains unknown. Investiture: 66 for, 48 against, not recorded abstaining."
+      "note": "Not every member of the coalition is known (those known hold 68 seats); the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 66 for, 48 against, abstentions not recorded."
     },
-    "knownMemberSeats": 66
+    "knownMemberSeats": 68
   },
   "supportSchemaVersion": 1
 }

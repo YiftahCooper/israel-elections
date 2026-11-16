@@ -99,6 +99,62 @@ describe('overlay validator', () => {
   });
 });
 
+describe("owner's book rule (16 Nov 2026)", () => {
+  // Books carry their authorship as `evidenceFamily`; two chapters by one author, or a reprint, share it.
+  const B: Record<string, EvidenceSource> = {
+    galnoor: { url: 'https://doi.org/10.1017/9781316160978', kind: 'academic', evidenceFamily: 'author:galnoor' },
+    galnoorOxford: { url: 'https://doi.org/10.1093/oxfordhb/9780190675585.013.9', kind: 'academic', evidenceFamily: 'author:galnoor' },
+    diskin: { url: 'https://openlibrary.org/works/OL4457043W', kind: 'academic', evidenceFamily: 'author:diskin' },
+    goldberg1998: { url: 'https://doi.org/10.2979/isr.1998.3.1.211', kind: 'academic', evidenceFamily: 'author:goldberg' },
+    goldberg2000: { url: 'https://doi.org/10.4324/9781315038865', kind: 'academic', evidenceFamily: 'author:goldberg' },
+    idi: S.idi, lexicon: S.lexicon, jta: S.jta,
+  };
+  const books = (...ids: string[]) => ids.map(id => ({ id, source: B[id] }));
+  it('confirms a fact two independent scholarly works state', () => {
+    expect(certaintyCeiling(books('galnoor', 'diskin'))).toBe('confirmed');
+    expect(certaintyCeiling(books('goldberg1998', 'diskin', 'galnoor'))).toBe('confirmed');
+  });
+  it('counts works by one author, or a reprint, once', () => {
+    expect(certaintyCeiling(books('galnoor', 'galnoorOxford'))).toBe('probable');
+    expect(certaintyCeiling(books('goldberg1998', 'goldberg2000'))).toBe('probable');
+  });
+  it('keeps one scholarly work alone at probable', () => {
+    expect(certaintyCeiling(books('diskin'))).toBe('probable');
+    expect(certaintyCeiling(books('galnoor'))).toBe('probable');
+  });
+  it('does not count undeclared scholarship as independent works', () => {
+    // An institute's page and the Knesset's own history page: authorship is not declared, so no count can confirm.
+    expect(certaintyCeiling(books('idi', 'lexicon'))).toBe('probable');
+    expect(certaintyCeiling(books('idi', 'diskin'))).toBe('probable');
+  });
+  it('confirms one scholarly work whose passage cites the official record', () => {
+    expect(certaintyCeiling([{ id: 'galnoorOxford', source: B.galnoorOxford, citesRecord: 'Labor coalition agreements of 9 July 1992' }])).toBe('confirmed');
+    expect(certaintyCeiling([{ id: 'galnoorOxford', source: B.galnoorOxford, citesRecord: ' ' }])).toBe('probable');
+    // Only scholarship can rest on a record it cites; a news report naming a record stays a news report.
+    expect(certaintyCeiling([{ id: 'jta', source: B.jta, citesRecord: 'the agreement' }])).toBe('provisional');
+  });
+  const row = (certainty: string, cites: object[], note?: string) => ({ sources: B, government: { coalition: [{ letters: 'א', certainty, cites, ...(note ? { note } : {}) }] } });
+  const q = (source: string, extra: object = {}) => ({ source, quote: 'q', ...extra });
+  it('the build accepts exactly this', () => {
+    expect(() => validateEvidenceDocument(row('confirmed', [q('galnoor'), q('diskin')]), 't')).not.toThrow();
+    expect(() => validateEvidenceDocument(row('confirmed', [q('galnoorOxford', { citesRecord: 'Labor coalition agreements of 9 July 1992' })]), 't')).not.toThrow();
+  });
+  it('the build keeps rejecting a single book, or one author twice, as confirmed', () => {
+    expect(() => validateEvidenceDocument(row('confirmed', [q('diskin')]), 't')).toThrow(/exceeds/);
+    expect(() => validateEvidenceDocument(row('confirmed', [q('galnoor'), q('galnoorOxford')]), 't')).toThrow(/exceeds/);
+    expect(() => validateEvidenceDocument(row('confirmed', [q('goldberg1998'), q('goldberg2000')]), 't')).toThrow(/exceeds/);
+    expect(() => validateEvidenceDocument(row('confirmed', [q('idi'), q('lexicon')]), 't')).toThrow(/exceeds/);
+  });
+  it('the build refuses a record claim on a non-scholarly cite or an empty one', () => {
+    expect(() => validateEvidenceDocument(row('provisional', [q('jta', { citesRecord: 'the agreement' })]), 't')).toThrow(/only for a scholarly work/);
+    expect(() => validateEvidenceDocument(row('probable', [q('diskin', { citesRecord: '' })]), 't')).toThrow(/must name/);
+  });
+  it('lets a recorded probable sit below two books only with a note', () => {
+    expect(() => validateEvidenceDocument(row('probable', [q('galnoor'), q('diskin')]), 't')).toThrow(/needs a note/);
+    expect(() => validateEvidenceDocument(row('probable', [q('galnoor'), q('diskin')], 'Only one of them says outside support.'), 't')).not.toThrow();
+  });
+});
+
 describe('7 November policy pass on the real overlays', () => {
   const load = (id: string) => JSON.parse(readFileSync(`data/meta/aftermath/${id}.json`, 'utf8'));
   it('every overlay passes the policy validator', () => {

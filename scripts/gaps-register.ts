@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { CERTAINTIES, certaintyCeiling, certaintyRank, classificationCertainty, type Certainty, type EvidenceSource } from '../src/data/evidence.ts';
+import { CERTAINTIES, certaintyCeiling, certaintyRank, classificationCertainty, type Certainty, type CitedSource, type EvidenceSource } from '../src/data/evidence.ts';
 import { claimCertainty } from './lib/build/evidence.ts';
 import { bioIdentityCertainty } from './lib/build/bios.ts';
 
@@ -74,9 +74,11 @@ export function scanDocument(file: string, doc: any, listLookup: Record<string, 
     if (typeof s === 'string') { const ref = sourceMap[s]; return ref ? ref.evidenceFamily ?? ref.evidenceFamilyId ?? ref.url ?? ref.sourceUrl ?? s : s; }
     return s?.evidenceFamily ?? s?.evidenceFamilyId ?? s?.url ?? s?.sourceUrl ?? (s?.source ? resolveSource(s.source) : s?.sourceId ?? s?.id ?? 'unresolved-source');
   };
-  const sourceObject = (s: any): { id: string; source: EvidenceSource } | null => {
+  /** A cite's own `citesRecord` (a scholarly passage resting on a named official record) travels with its source. */
+  const withRecord = (o: CitedSource | null, citesRecord: unknown): CitedSource | null => o && typeof citesRecord === 'string' ? { ...o, citesRecord } : o;
+  const sourceObject = (s: any): CitedSource | null => {
     if (typeof s === 'string') { const o = sourceMap[s] ?? sourceLookup[s]; return o && typeof o === 'object' ? { id: s, source: o } : /^https?:/.test(s) ? { id: s, source: { url: s } } : null; }
-    if (s && typeof s === 'object') return s.source ? sourceObject(s.source) : s.url || s.sourceUrl ? { id: s.id ?? s.url ?? s.sourceUrl, source: { ...s, url: s.url ?? s.sourceUrl } } : s.sourceId ? sourceObject(s.sourceId) : null;
+    if (s && typeof s === 'object') return s.source ? withRecord(sourceObject(s.source), s.citesRecord) : s.url || s.sourceUrl ? { id: s.id ?? s.url ?? s.sourceUrl, source: { ...s, url: s.url ?? s.sourceUrl } } : s.sourceId ? sourceObject(s.sourceId) : null;
     return null;
   };
   const ownRefs = (o: Obj) => o.cites ?? (Array.isArray(o.sources) ? o.sources : undefined) ?? o.sourceIds ?? (o.sourceId ? [o.sourceId] : undefined) ?? (o.source ? [o.source] : undefined);
@@ -109,7 +111,7 @@ export function scanDocument(file: string, doc: any, listLookup: Record<string, 
       ...(v.rank ? { entity: `rank ${v.rank}` } : {}),
       ...(v.type && v.date ? { entity: `${v.type} ${v.date}` } : {}) };
     const sources = refs(v, inherited);
-    const cited = ((own => Array.isArray(own) ? own : own ? [own] : [])(ownRefs(v) ?? inheritedRefs) as unknown[]).map(sourceObject).filter((x): x is { id: string; source: EvidenceSource } => !!x);
+    const cited = ((own => Array.isArray(own) ? own : own ? [own] : [])(ownRefs(v) ?? inheritedRefs) as unknown[]).map(sourceObject).filter((x): x is CitedSource => !!x);
     /** The claim's certainty under the policy: explicit if recorded and valid, else derived from what it cites. */
     const certaintyFor = (kind: GapKind): Certainty => {
       if (kind === 'conflict') return 'disputed';

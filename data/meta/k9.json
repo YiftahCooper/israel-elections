@@ -1726,7 +1726,7 @@
           "nameHe": "קואליציה",
           "nameEn": "Coalition",
           "color": "#3A6EA5",
-          "seats": 62,
+          "seats": 61,
           "members": [
             {
               "letters": "מחל"
@@ -1739,9 +1739,19 @@
             },
             {
               "letters": "כנ"
-            },
+            }
+          ]
+        },
+        {
+          "id": "outside-support",
+          "nameHe": "תמיכה מבחוץ",
+          "nameEn": "Outside support",
+          "color": "#93BCE3",
+          "seats": 1,
+          "members": [
             {
-              "letters": "פש"
+              "letters": "פש",
+              "note": "outside support, probable (data/meta/aftermath/k9.json)"
             }
           ]
         },
@@ -1808,7 +1818,7 @@
         }
       ],
       "notes": [
-        "Coalition = lists that joined or supported the government at formation. Flatto-Sharon supported the confidence vote: 62 seats by whole lists, plus Moshe Dayan individually = Begin’s 63 supporters. Hebrew Wikipedia places Flatto-Sharon in opposition; the contemporary official record and this project’s support-inclusive definition decide this grouping.",
+        "Coalition = lists that joined the government at formation (61 seats). Flatto-Sharon (1) supported it from outside without joining (probable, data/meta/aftermath/k9.json, 16 November 2026); with Moshe Dayan individually that makes Begin’s 63 supporters. Hebrew Wikipedia places Flatto-Sharon in opposition; the official record of the vote and two studies decide this grouping.",
         "The Democratic Movement for Change (יש) joined on 24 October 1977 (its ministers start 1977-10-24 in Knesset OData), so it is not a member at formation.",
         "Agudat Yisrael supported the government without ministers; the 63–53 confidence result and Begin’s statement are in the official formation protocol.",
         "Moshe Dayan, elected on the Alignment list (אמת), joined the government as an individual minister; the Alignment list itself was in opposition."

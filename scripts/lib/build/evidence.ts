@@ -1,15 +1,16 @@
 // Enforces docs/source-policy.md on the research overlays: every recorded certainty must be derivable from the
 // cited sources (src/data/evidence.ts), and every asserted claim must rest on at least one reliable source.
-import { CERTAINTIES, EVIDENCE_TIERS, certaintyAllowed, certaintyCeiling, certaintyRank, independenceKey, isEnglishWikipedia, isHebrewWikipedia, type Certainty, type EvidenceSource } from '../../../src/data/evidence.ts';
+import { CERTAINTIES, EVIDENCE_TIERS, certaintyAllowed, certaintyCeiling, certaintyRank, independenceKey, isEnglishWikipedia, isHebrewWikipedia, sourceTier, type Certainty, type CitedSource, type EvidenceSource } from '../../../src/data/evidence.ts';
 
 type Obj = Record<string, any>;
 const ASSERTED_RECOMMENDATION = new Set(['recommended', 'none', 'other', 'split']);
 const UNKNOWN_RECOMMENDATION = new Set(['unknown', 'unconfirmed']);
 
-export function citedSources(cites: unknown, sources: Record<string, EvidenceSource>) {
+export function citedSources(cites: unknown, sources: Record<string, EvidenceSource>): CitedSource[] {
   return (Array.isArray(cites) ? cites : []).flatMap((c: Obj) => {
     const id = typeof c === 'string' ? c : c?.source;
-    return typeof id === 'string' && sources[id] ? [{ id, source: sources[id] }] : [];
+    if (typeof id !== 'string' || !sources[id]) return [];
+    return [{ id, source: sources[id], ...(typeof c?.citesRecord === 'string' ? { citesRecord: c.citesRecord } : {}) }];
   });
 }
 
@@ -38,6 +39,11 @@ export function validateEvidenceDocument(doc: Obj, label: string) {
     if (Array.isArray(o.cites)) for (const c of o.cites) {
       const id = typeof c === 'string' ? c : c?.source;
       if (typeof id === 'string' && !Object.hasOwn(sources, id)) fail(`${path}: unknown citation source ${id}`);
+      // Only a scholarly passage can rest on a record it cites; a record itself is cited directly.
+      if (c && typeof c === 'object' && 'citesRecord' in c) {
+        if (typeof c.citesRecord !== 'string' || !c.citesRecord.trim()) fail(`${path}: citesRecord must name the official record the passage cites`);
+        if (typeof id === 'string' && sources[id] && sourceTier(sources[id]) !== 'scholarship') fail(`${path}: citesRecord is only for a scholarly work (source ${id} is ${sourceTier(sources[id])})`);
+      }
     }
     const cited = citedSources(o.cites ?? inherited, sources);
     const ceiling = certaintyCeiling(cited);

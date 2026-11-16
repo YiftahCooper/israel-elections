@@ -200,7 +200,8 @@ function GovernmentComposition({ data, ds, government: g, investiture = true }: 
   const vote = g.confidenceVote;
   const qualification = (entry: GovernmentParticipant | GovernmentIndividual) => entry.certainty === 'unknown'
     ? L('The relationship has not been established. It is not counted as membership.', 'המעמד טרם הוברר. אין לראות בו חברות בקואליציה.')
-    : entry.certainty === 'provisional' ? L('Provisional classification; the original terms are not fully authenticated.', 'סיווג זמני; תנאי ההסדר המקוריים טרם אומתו במלואם.') : undefined;
+    : entry.certainty === 'provisional' ? L('Provisional classification; the original terms are not fully authenticated.', 'סיווג זמני; תנאי ההסדר המקוריים טרם אומתו במלואם.')
+    : entry.certainty === 'disputed' ? L('Sources disagree; both sides are cited below.', 'המקורות חלוקים; שני הצדדים מובאים להלן.') : undefined;
   const votes = { for: L('For', 'בעד'), against: L('Against', 'נגד'), abstain: L('Abstained', 'נמנע'), absent: L('Absent', 'נעדר'), unknown: L('Vote unknown', 'הצבעה לא ידועה') };
   const reconciliation = g.reconciliation.status === 'unresolved' ? L('The difference has not been reconciled.', 'הפער טרם הוסבר.')
     : g.reconciliation.status === 'explained' ? L('The recorded participation and individual votes explain the difference.', 'רישומי ההשתתפות וההצבעות האישיות מסבירים את הפער.')

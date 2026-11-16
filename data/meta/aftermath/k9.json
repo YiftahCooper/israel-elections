@@ -182,6 +182,20 @@
       "accessed": "2026-11-16",
       "evidenceFamily": "Knesset-sitting-491051",
       "via": "PDF p. 56, printed p. 69"
+    },
+    "rubinstein-1979": {
+      "url": "https://openlibrary.org/works/OL17851764W",
+      "publisher": "Elyakim Rubinstein, “The Lesser Parties in the Israeli Elections of 1977”, in Howard R. Penniman (ed.), Israel at the Polls: The Knesset Elections of 1977 (American Enterprise Institute, 1979)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:rubinstein"
+    },
+    "mahler-1981": {
+      "url": "https://openlibrary.org/works/OL1788059W",
+      "publisher": "Gregory S. Mahler, The Knesset: Parliament in the Israeli Political System (Fairleigh Dickinson University Press, 1981)",
+      "kind": "academic",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "author:mahler"
     }
   },
   "results": {
@@ -548,15 +562,27 @@
       {
         "letters": "פש",
         "seats": 1,
-        "note": "Vote documented. No contemporary agreement, continuing pledge or promised office was recovered; not evidence that no arrangement existed. Extradition-law votes do not establish a formation agreement. 7 November: a 2018 obituary (Israel National News) says he joined Begin’s coalition, but gives no agreement or date; recorded as a lead only.",
-        "role": "confidence-vote-only",
-        "certainty": "provisional",
+        "note": "Probable: one study (Elyakim Rubinstein, 1979) says he supported the government from outside the coalition; another (Gregory Mahler, 1981) says only that he would vote with it without formally joining. No agreement of the time has been found.",
+        "role": "outside-support",
+        "certainty": "probable",
         "cites": [
           {
             "source": "jta-1977-06-21",
             "quote": "Voting for the government were Likud, the National Religious Party (NRP) and Aguda bloc, Moshe Dayan and Samuel Flatto-Sharon."
+          },
+          {
+            "source": "rubinstein-1979",
+            "quote": "After the election Flatto-Sharon supported the government, without formally entering the coalition.",
+            "locator": "p. 196"
+          },
+          {
+            "source": "mahler-1981",
+            "quote": "An independent MK, Samuel Flatto-Sharon, indicated that he would vote with the Government, even though he was not formally a part of the coalition.",
+            "locator": "p. 219"
           }
-        ]
+        ],
+        "noteEn": "Supported the government without joining the coalition.",
+        "noteHe": "תמך בממשלה בלי להצטרף לקואליציה."
       }
     ],
     "coalitionSeats": 62,
@@ -613,11 +639,11 @@
       }
     ],
     "membershipCoverage": "complete",
-    "supportSeats": 0,
+    "supportSeats": 1,
     "reconciliation": {
       "status": "explained",
       "expectedFor": 63,
-      "note": "61 member faction seats + Dayan individually (1) + Flatto-Sharon confidence-vote-only (1) = 63 for; 53 against. The other four MKs did not vote; they are not assigned a motive."
+      "note": "61 seats of the coalition’s lists, Dayan on his own (1) and Flatto-Sharon, who supported the government from outside (1): 63 for, as recorded; 53 against. The other four MKs did not vote; no reason is assigned to them."
     },
     "individuals": [
       {

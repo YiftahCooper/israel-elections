@@ -1,7 +1,8 @@
 # Source policy: how we decide what is a fact, and how sure we are
 
 *Policy in force since 7 November 2026; rewritten in plain language on 8 November 2026. Nothing was removed: every
-fact, date, number and source of the earlier version is kept.*
+fact, date, number and source of the earlier version is kept. On 16 November 2026 the owner added the rule for books
+(see "Books and other scholarly works" below).*
 
 ## In short
 
@@ -19,9 +20,9 @@ fact, date, number and source of the earlier version is kept.*
 - **It is enforced automatically.** Every time the data is rebuilt, the build checks each fact's label against its
   sources and refuses data that claims more certainty than the sources allow. A public list of open gaps is produced
   from the same rules.
-- **When the official record is out of reach.** Respected scholarship can settle a fact (as "probable", or
-  "confirmed" with a news report from the time), but the missing official record is still named so it can be checked
-  later.
+- **When the official record is out of reach.** Respected scholarship can settle a fact: one book makes it
+  "probable"; two independent books, or one book that cites the official record, make it "confirmed". The missing
+  official record is still named so it can be checked later.
 - **Neutral means not partisan within Israeli politics.** Israeli and Hebrew sources are welcome and are the main
   body of evidence. Opinion columns and advocacy groups from any camp are not evidence.
 
@@ -97,8 +98,8 @@ label needs. These are the "thresholds".
 
 | Certainty | Threshold (independent sources) |
 | --- | --- |
-| **confirmed** | A primary record; or one contemporary report plus one scholarly work; or three contemporary reports. |
-| **probable** | Scholarship without a primary record; or two reliable reports, at least one of them from the time. |
+| **confirmed** | A primary record; or one contemporary report plus one scholarly work; or three contemporary reports; or two independent scholarly works; or one scholarly work that cites the specific official record. |
+| **probable** | One scholarly work without a primary record; or two reliable reports, at least one of them from the time. |
 | **provisional** | One reliable source; or later retrospectives only. |
 | **disputed** | Reliable sources disagree. We record this openly, citing both sides, and never quietly pick one. |
 | **unknown** | No reliable source, or pointers only. Unknown never means "did not happen". |
@@ -123,7 +124,8 @@ Further rules:
   their meaning, and unknown stays unknown. Eleven rows that had claimed "confirmed" on the strength of a single news
   report from the time, or a single institutional web page, were lowered, each with a note:
   - ten individual roll-call votes, from 1984, 1990 and 2021, were lowered to **provisional**;
-  - the National Religious Party (NRP) in 2003 was lowered to **probable**.
+  - the National Religious Party (NRP) in 2003 was lowered to **probable**. On 16 November 2026 three independent
+    books placed it in that coalition, so under the book rule it is **confirmed** again.
 
 ## When sources disagree
 
@@ -146,14 +148,42 @@ have to stay unknown just because its primary record is out of reach. Recognised
 
 - one scholarly work that states the fact makes it **probable**;
 - scholarship plus an independent news report from the time makes it **confirmed**;
+- two independent scholarly works, or one scholarly work that cites the official record, make it **confirmed** (the
+  owner's rule of 16 November 2026, below);
 - the primary record that would decide the matter is still named in the note, so a later reader can upgrade or
   overturn the fact.
 
-There are two things scholarship may not do:
+There are things scholarship may not do:
 
 - **settle a fact by arithmetic.** For example, if a book gives only the total of parties that recommended a
   candidate, we never work out from that total which individual party recommended whom;
-- **read intention from a vote.** How a party voted does not prove what it intended or agreed.
+- **read intention from a vote.** How a party voted does not prove what it intended or agreed;
+- **read coalition membership from a vote.** Voting for a government does not make a party a member of its
+  coalition, and voting against it does not put a party outside.
+
+### Books and other scholarly works (owner's decision, 16 November 2026)
+
+The owner decided this rule on 16 November 2026, after the first batches of facts were checked against the private
+book collection.
+
+- **Two independent books confirm.** A fact stated by two independent scholarly works is **confirmed**.
+- **What "independent" means.** Two works are not independent when:
+  - one quotes or relies on the other;
+  - both are by the same author, such as two chapters by one scholar, or a journal article and its reprint in a book;
+  - an edited volume repeats its own earlier volume.
+
+  Chapters by different authors in one edited volume are independent of each other.
+- **One book that cites the record confirms.** One scholarly work that cites the specific official record for the
+  fact (for example, a signed coalition agreement named in its notes) makes it **confirmed**.
+- **One book alone is probable.** A fact stated by one scholarly work, with nothing else, is **probable**.
+- **A book that contradicts our data makes the fact disputed.** Both sides are recorded, each with its sources, and
+  neither is quietly dropped.
+- **An official record we already hold outranks any book.** A book never overturns a primary record in the data; it
+  can only be noted beside it.
+- **Never by arithmetic, and never from a vote.** A book's totals do not settle what each party did, and a vote does
+  not show who was in the coalition.
+- **Quotes stay short.** A book is quoted in at most about 25 words, with its printed page ("p. 412"). Page text
+  beyond that is never copied into the data.
 
 ## Bias and partisanship
 
@@ -207,6 +237,11 @@ in the journal *Israel Studies Forum*.
 **Where the rules live in code.**
 
 - `src/data/evidence.ts` derives each source's tier and each claim's certainty ceiling from its citations.
+- **The book rule in code.** A scholarly source declares its authorship with `evidenceFamily` (for example
+  `author:galnoor` for Galnoor and Blander's handbook and Galnoor's Oxford chapter). Two scholarly cites with different
+  declared families reach "confirmed". Scholarship without a declared family never counts towards that, because a web
+  address cannot tell two chapters by one author from two authors. A cite whose passage cites the official record names
+  that record in its own `citesRecord` field; the build accepts it only on a scholarly source.
 - `scripts/lib/build/evidence.ts` runs during the data build and rejects any record whose stated certainty is above
   what its cites support.
 - The [gaps register](data-gaps.md) (`docs/data-gaps.md`, with a JSON summary) reports every open item with its

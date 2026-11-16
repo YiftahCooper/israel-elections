@@ -571,7 +571,7 @@
         "supportSeats": null,
         "reconciliation": {
           "status": "unresolved",
-          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 75; full membership remains unknown. Investiture: 76 for, 33 against, not recorded abstaining."
+          "note": "Not every member of the coalition is known (those known hold 75 seats); the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 76 for, 33 against, abstentions not recorded."
         },
         "knownMemberSeats": 75
       }
@@ -597,7 +597,7 @@
     "supportSeats": null,
     "reconciliation": {
       "status": "unresolved",
-      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 75; full membership remains unknown. Investiture: 73 for, 32 against, 3 abstaining."
+      "note": "Not every member of the coalition is known (those known hold 75 seats); the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 73 for, 32 against, 3 abstaining."
     },
     "knownMemberSeats": 75
   },

@@ -15,6 +15,13 @@ register (`docs/data-gaps.md`).
   facts because several official sites refuse automated reading. The page collector (a browser extension that fetches
   pages from the owner's own browser) is meant to close most of this; each fetched batch is checked against the stored
   data, and the register is updated.
+- **Mapai's affiliated Arab lists: a role for "counted with the coalition, not official members".** From 1949 to 1973
+  the Arab lists affiliated with Mapai backed its governments. Galnoor and Blander's handbook (2018, p. 408) counts them
+  among the coalition partners but says they were "not official members of the government". Neither of the app's roles
+  fits: "member" says too much and "outside support" too little. So their 30 rows in governments 1–17 stay unknown
+  (books batch 1, 16 Nov 2026). Needed: a role for this, chosen by the owner, then the rows filled from the handbook.
+  The 1949 Nazareth list, stored today as a probable member partly on the same book, should be read again at the same
+  time; the Hebrew original (Am Oved, 2013) would show what "official members" means.
 
 ## Features
 
