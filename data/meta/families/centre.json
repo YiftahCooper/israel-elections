@@ -2496,7 +2496,7 @@
       "electionId": "k19",
       "electionDate": "2013-01-22",
       "datasetPath": "public/data/k19.json",
-      "datasetSha256": "97ec4b4a9ff5523b6e8b4dbaecc938ed8009d63c4bfa526068a7c9bc4934fa9d",
+      "datasetSha256": "da66183393ae5004b78ecbb458cdce4fc0052871fad1d69a3bde62f69e5a0837",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2013-01-30",
@@ -2575,7 +2575,7 @@
           "listId": "19-כן",
           "letters": "כן",
           "nameHe": "קדימה בראשות שאול מופז",
-          "votes": 78974,
+          "votes": 79081,
           "partyIds": [
             "kadima"
           ],
@@ -2604,20 +2604,20 @@
       "reviewCandidates": [],
       "computed": {
         "coreOnly": {
-          "votes": 811599,
+          "votes": 811706,
           "percent": {
-            "numerator": 81159900,
+            "numerator": 81170600,
             "denominator": 3792742
           },
-          "displayPct": 21.39874
+          "displayPct": 21.401561
         },
         "includedUnmixed": {
-          "votes": 811599,
+          "votes": 811706,
           "percent": {
-            "numerator": 81159900,
+            "numerator": 81170600,
             "denominator": 3792742
           },
-          "displayPct": 21.39874
+          "displayPct": 21.401561
         },
         "mixedWholeLists": {
           "votes": 0,
@@ -2628,12 +2628,12 @@
           "displayPct": 0.0
         },
         "wholeListInclusionAlternative": {
-          "votes": 811599,
+          "votes": 811706,
           "percent": {
-            "numerator": 81159900,
+            "numerator": 81170600,
             "denominator": 3792742
           },
-          "displayPct": 21.39874
+          "displayPct": 21.401561
         },
         "mixedHarediVotes": null,
         "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."

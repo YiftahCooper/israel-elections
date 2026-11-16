@@ -67,5 +67,6 @@ is labelled. Suggested alternatives are not evidence of a past design discussion
 | [0089](0089-party-logos-fair-use.md) | Official campaign logos under fair use for identification; separate constituent emblems |
 | [0090: Sourced locality groups and exact demographic turnout deltas](0090-demographic-turnout.md) | Locality groups from retained CBS tables and dated cohorts; a group's turnout change becomes an exact signed vote delta. Implemented. |
 | [0093: Election-specific partisan and neutral party links](0093-party-links.md) | Optional party and list links per election from `data/meta/party-links/`, with a stated order of preferred sources. Implemented. |
+| [0094: 2013 shows the declared result](0094-k19-declared-result.md) | The main table carries the gazette's declared list votes; the polling-station sums (which the map adds up to) are noted. |
 
 Records 0020–0086 are grouped by election era; numbers in between are left free for that era. Records from 0087 on are product and design decisions.

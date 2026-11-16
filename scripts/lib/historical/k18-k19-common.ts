@@ -194,9 +194,11 @@ export async function buildHistorical(o: BuildOptions): Promise<{ ds: ElectionDa
     check(r, `k${n}: roster missing for ${l.letters}`);
     check(r.candidates.length === o.candidateCounts[l.letters], `k${n} ${l.letters}: candidate count differs from reviewed last rank`);
     return listRecord(n, i, { letters: l.letters, nameHe: normalize(l.nameHe), fallbackShortHe: r.nameHe,
-      votes: finalCapture?.lists.find(r => r.letters === l.letters)?.votes ?? l.votes,
+      // 2013: the declared result (the gazette notice, by which the seats were handed out) for every list; three lists'
+      // polling-station sums differ slightly and are noted (decision 0094, owner 16 Nov 2026; before it, 0042)
+      votes: l.votes,
       candidates: r.candidates.map(c => ({ ...c, nameHe: normalize(c.nameHe) })), candidatesSource: `k${n}-candidates-gazette`,
-      notesHe: n === 19 && l.letters in correction ? ['מספר הקולות לפי התוצאות הסופיות באתר ועדת הבחירות; שונה מפרסום רשומות המקורי. ראו החלטה 0041.'] : [] });
+      notesHe: n === 19 && l.letters in correction ? [`מספר הקולות לפי התוצאה המוכרזת ברשומות (י"פ 6540), שלפיה חולקו המנדטים. סכום הקלפיות בתוצאות הסופיות באתר ועדת הבחירות: ${(finalCapture?.lists.find(r => r.letters === l.letters)?.votes ?? l.votes).toLocaleString('en-US')}. ראו החלטה 0094.`] : [] });
   });
   for (const [letters, leader] of Object.entries(o.candidateLeaders)) check(lists.find(l => l.letters === letters)?.candidates[0].nameHe === leader, `k${n} ${letters}: unexpected first candidate`);
   const letters = lists.map(l => l.letters);
@@ -225,7 +227,9 @@ export async function buildHistorical(o: BuildOptions): Promise<{ ds: ElectionDa
   }
   const sums = sumRows(loc.rows, lists.length);
   check(sums.valid === o.totals.valid && sums.invalid === o.totals.invalid && sums.votesCast === o.totals.votesCast, `k${n}: locality totals differ from national`);
-  lists.forEach((l, i) => check(l.votes === sums.votes[i], `k${n} ${l.letters}: national/locality votes differ`));
+  // 2013's declared result differs from the polling-station sums by the three documented amounts, and only by them
+  const gap = (letters: string) => (correction as Record<string, number>)[letters] ?? 0;
+  lists.forEach((l, i) => check(l.votes + gap(l.letters) === sums.votes[i], `k${n} ${l.letters}: national/locality votes differ`));
   check(lists.reduce((s, l) => s + l.votes, 0) === o.totals.valid, `k${n}: national lists do not sum to valid`);
   if (n === 19) {
     check(sums.registered === o.totals.registered, 'k19: registered total differs');
@@ -264,7 +268,7 @@ export async function buildHistorical(o: BuildOptions): Promise<{ ds: ElectionDa
   if (n === 19) {
     const final = rawJson('k19/final-results.capture.json');
     check(['registered', 'votesCast', 'invalid', 'valid'].every(k => final.totals[k] === o.totals[k as keyof typeof o.totals]), 'k19: CEC final totals differ');
-    check(final.lists.length === lists.length && final.lists.every((r: National) => lists.some(l => l.letters === r.letters && l.votes === r.votes && ds.officialSeats![l.id] === r.seats)), 'k19: CEC final per-list numbers differ');
+    check(final.lists.length === lists.length && final.lists.every((r: National) => lists.some(l => l.letters === r.letters && l.votes + gap(l.letters) === r.votes && ds.officialSeats![l.id] === r.seats)), 'k19: CEC final per-list numbers differ');
   } else {
     const memorandum = (await pdfLines(join(RAW, 'k18/allocation.pdf')))[2].map(l => l.text).join(' ');
     for (const value of ['5,278,985', '3,416,587', '43,097', '3,373,490']) check(memorandum.includes(value), `k18: CEC memorandum lacks ${value}`);

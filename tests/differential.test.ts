@@ -135,7 +135,9 @@ const EXPECTED: Record<Family, string> = {
   // merged with k3 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k4 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k5 audit fixes: combined digest = union of the separately reviewed changes.
-  allocation: '2bc949a3aaf91af20af8f4704c06b30fcfacf7d534d82c2bdc578d41023bf1a8',
+  // r7-u1 (16 Nov, decision 0094): 2013 carries the declared list votes; 32 of 6,832 allocation outputs and 18 of 520
+  // model outputs change, all of them 2013 cases (outputs compared with the previous k19.json in place).
+  allocation: 'a568e5e093c357f44d358bc0b6f2b69875924c444ea852d16a7c432001ee5600',
   // Analysis re-recorded 2026-11-13 for one reviewed rule (audit c-results-engine-02): a search answer is the first count
   // at which the goal holds whatever the outcome of an exact tie, and a smaller count reached only through a tie is kept as
   // lotteryFrom. 74 of 818 cases differ: 23 answers move up by one (the old answer was a tie counted as reached), 28 keep
@@ -314,7 +316,7 @@ const EXPECTED: Record<Family, string> = {
   // one set of data (fable-check/model-diff2.ts: 0 differ in every family).
   // r7-u1 (16 Nov): merging lists of different blocs marks the grouping custom (blocSchemeId null). Of the 520 model
   // outputs, 17 change and only in blocSchemeId (outputs compared with and without the change, the field masked).
-  model: '589795cdc10dd0bb02c913903933610bf99e00ab4f96c81ab74185568f104c03',
+  model: '4e7e13f6d0a6b22965d18492c5add04aa1587946e6c4afc1a08c389a0555337d',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

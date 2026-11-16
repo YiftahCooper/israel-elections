@@ -260,8 +260,8 @@
     "available": true,
     "status": {
       "stage": "official-final",
-      "noteEn": "Official final CEC results; every seat reproduced. The gazette prints a valid total 270 lower than its own list counts and three slightly different list totals; seats are identical either way. See decisions 0041–0042.",
-      "noteHe": "תוצאות סופיות רשמיות; כל המנדטים שוחזרו. ברשומות סך הכשרים נמוך ב-270 מסכום הרשימות ושלוש רשימות שונות במעט; המנדטים זהים בשתי הגרסאות. ראו החלטות 0041–0042."
+      "noteEn": "Official CEC results; every seat reproduced. List votes follow the declared result in the gazette; the CEC final results differ slightly for three lists, so the 2013 map differs from the main table by up to 109 votes. The gazette's printed valid total, 270 lower than its own list counts, was formally corrected. Seats are identical either way. See decisions 0041, 0042 and 0094.",
+      "noteHe": "תוצאות רשמיות; כל המנדטים שוחזרו. קולות הרשימות לפי התוצאה המוכרזת ברשומות; בתוצאות הסופיות של ועדת הבחירות שלוש רשימות שונות במעט, ולכן מפת 2013 שונה מהטבלה הראשית בעד 109 קולות. סך הכשרים שהודפס ברשומות, נמוך ב-270 מסכום הרשימות, תוקן רשמית. המנדטים זהים בשתי הגרסאות. ראו החלטות 0041, 0042 ו-0094."
     },
     "preview": [["#1f5aa5",31],["#1b06ca",19],["#ee161f",15],["#8dc63f",12],["#684af2",11],["#333963",7],["#6681a7",6],["#12aa48",6],["#137123",4],["#a70512",4],["#bb5e06",3],["#17a2b8",2]]
   },
