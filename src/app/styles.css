@@ -348,6 +348,15 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .chart { direction: ltr; }
 .seat { transition: fill .18s ease, opacity .15s; cursor: pointer; }
 .seat.dim { opacity: .22; }
+/* Find an MK: the found seat ringed and named, the others faded */
+.find-mk { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin-block-end: 4px; font-size: 13px; color: var(--ink-2); }
+.find-mk input { width: 14em; max-width: 100%; min-height: 44px; }
+@media (max-width: 600px) { .find-mk-choices .btn { min-height: 44px; } }
+.find-mk-result { color: var(--ink); font-weight: 600; }
+.find-mk-choices { display: flex; flex-wrap: wrap; gap: 4px; flex-basis: 100%; }
+.chamber svg.finding :is(.seat, .seat-btn image):not(.found) { opacity: .2; }
+.chamber .found-mark circle, .chamber .found-mark rect { fill: none; stroke: var(--ink); stroke-width: 4px; }
+.chamber .found-mark text { fill: var(--ink); font-weight: 700; paint-order: stroke; stroke: var(--surface); stroke-width: 6px; stroke-linejoin: round; }
 [data-theme="dark"] .seat.dim { opacity: .38; }
 /* a seat reached by the keyboard: a ring drawn around it (a shape, not a colour change); the mouse shows none */
 .chamber .seat-btn { outline: none; }

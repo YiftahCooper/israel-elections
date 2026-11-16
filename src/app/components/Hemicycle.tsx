@@ -28,6 +28,7 @@ import { electionLabel } from '../electionLabel.ts';
 import { setSetting, setState, useSetting, useStore } from '../store.ts';
 import { Info, Seg } from './ui.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
+import { FindMk, foundSeat, type MkEntry } from './FindMk.tsx';
 import { ResultPreview } from './ResultPreview.tsx';
 
 export interface SeatInfo { listId: string; idx: number; color: string; innerColor?: string; partyColor?: string; partyId?: string; remainder: boolean; bloc: string | null; holder: string }
@@ -347,6 +348,26 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     const name = c ? memberName(c) : l.rosterUnavailable || l.rosterTruncated ? '' : L('vacant', 'ריק');
     return [seatLabel(st), `${L('seat', 'מושב')} ${st.idx + 1}`, name].filter(Boolean).join(' · ');
   }), [seats, lang, originalDataset]); // eslint-disable-line react-hooks/exhaustive-deps
+  // Find an MK: the names each seat answers to (both languages), and its label when found
+  const [findQ, setFindQ] = useState(''), [findPick, setFindPick] = useState<number | null>(null);
+  const mkEntries = useMemo(() => seats.flatMap((st, i): MkEntry[] => {
+    const l = listOf(st.listId), { candidate: c, place } = seatCandidate(l, st.idx);
+    if (!c) return [];
+    const name = memberName(c);
+    return [{ seat: i, names: [candidateName(c, 'he'), candidateName(c, 'en'), name], label: L(`${name} · ${listLabel(l, lang)} #${place}`, `${name} · ${listLabel(l, lang)}, מקום ${place}`) }];
+  }), [seats, lang, originalDataset]); // eslint-disable-line react-hooks/exhaustive-deps
+  const found = foundSeat(mkEntries, findQ, findPick);
+  const foundLabel = found === null ? null : mkEntries.find((e) => e.seat === found)!.label;
+  /** The found seat's ring and its name over it (under it in the top row), kept inside the drawing [x0, x1]. */
+  const foundMark = (x: number, y: number, half: number, top: number, x0: number, x1: number, square: boolean) => {
+    if (!foundLabel) return null;
+    const fs = 26, w = foundLabel.length * fs * 0.55, ly = y - half - 16 - fs < top ? y + half + 14 + fs : y - half - 16;
+    const lx = Math.min(x1 - w / 2 - 8, Math.max(x0 + w / 2 + 8, x));
+    return <g className="found-mark" aria-hidden="true" pointerEvents="none">
+      {square ? <rect x={x - half - 6} y={y - half - 6} width={2 * half + 12} height={2 * half + 12} rx={9} /> : <circle cx={x} cy={y} r={half + 6} />}
+      <text x={lx} y={ly} textAnchor="middle" fontSize={fs} direction={lang === 'he' ? 'rtl' : 'ltr'}>{foundLabel}</text>
+    </g>;
+  };
   /** a seat as one keyboard control: the tab stop moves with the arrow keys (see onSeatKey) */
   const seatButton = (i: number) => ({
     'data-seat-pos': i, className: 'seat-btn', role: 'button', tabIndex: i === Math.min(stop, seats.length - 1) ? 0 : -1,
@@ -359,7 +380,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     const cx = W / 2, cy = 470, R = 400;
     const wedges = annularRegions(placed, bandOf, rad, cx, cy, R);
     body = (
-      <svg ref={svgRef} viewBox={`40 30 920 ${H - 30}`} role="group" aria-label={`${title ?? L('Knesset seat diagram', 'תרשים מושבי הכנסת')}: ${summary}`}>
+      <svg ref={svgRef} className={found !== null ? 'finding' : undefined} viewBox={`40 30 920 ${H - 30}`} role="group" aria-label={`${title ?? L('Knesset seat diagram', 'תרשים מושבי הכנסת')}: ${summary}`}>
         {seats.some(st => st.innerColor) && <desc>{componentDescription}</desc>}
         {blocShading && wedges.map(w => <g key={w.band}>
           {/* Shared edges are covered by an opaque border, avoiding antialiasing seams. */}
@@ -370,7 +391,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           const p = placed[i]; if (!p) return null;
           const dim = dimOthers && selected && selected !== st.listId;
           return (
-            <g key={i} {...seatButton(i)}><circle className={`seat ${dim ? 'dim' : ''}`} cx={cx + p.x * R} cy={cy + p.y * R} r={rad * R} fill={st.color}
+            <g key={i} {...seatButton(i)}><circle className={`seat ${dim ? 'dim' : ''} ${i === found ? 'found' : ''}`} cx={cx + p.x * R} cy={cy + p.y * R} r={rad * R} fill={st.color}
               data-seat="" data-bloc={st.bloc ?? "__none"} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? "var(--ink)" : "var(--ink-2)"} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`) ? 4 : 1}
               onMouseEnter={(e) => { if (hoverPopups) onSeatHover(st, e); }} onMouseLeave={hoverBridge.leave}
               onClick={(e) => { if (!hoverPopups) onSeat(st, e); setState({ selectedListId: selected === st.listId ? null : st.listId }); }}><title>{seatLabel(st)}</title></circle>
@@ -379,6 +400,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           );
         })}
         {ring !== null && placed[ring] && <circle className="seat-ring" cx={cx + placed[ring].x * R} cy={cy + placed[ring].y * R} r={rad * R + 4} />}
+        {found !== null && placed[found] && foundMark(cx + placed[found].x * R, cy + placed[found].y * R, rad * R, 30, 40, 960, false)}
         <text className="centre-total" x={cx} y={cy - 40} textAnchor="middle" fontSize={44} fontWeight={700} fill="var(--ink)">{r.seatsAllocated}</text>
         <text className="centre-sub" x={cx} y={cy - 6} textAnchor="middle" fontSize={16} fill="var(--ink-2)">{isolate(L(`seats · majority ${Math.floor(total / 2) + 1}`, `מנדטים · רוב ${Math.floor(total / 2) + 1}`))}</text>
       </svg>
@@ -388,7 +410,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     // and number of lists never change the geometry. A chamber of more than 120 seats (Rules) gets
     // a larger tray, so every seat is drawn (and exported).
     const regions = trayBlocRegions(bandOf, tray.cols);
-    body = <svg ref={svgRef} viewBox={`0 0 ${tray.width} ${tray.height}`} role="group" aria-label={summary}>
+    body = <svg ref={svgRef} className={found !== null ? 'finding' : undefined} viewBox={`0 0 ${tray.width} ${tray.height}`} role="group" aria-label={summary}>
       {seats.some(st => st.innerColor) && <desc>{componentDescription}</desc>}
       {/* one shape per bloc, meeting along the bloc line: a straight edge with at most one rounded step */}
       {blocShading && regions.regions.map(w => <path key={w.band} data-bloc-region={bands[w.band].bloc} aria-hidden="true" pointerEvents="none"
@@ -397,12 +419,13 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         const [x, y] = trayCell(i, tray.cols), c = TRAY.cell;
         const dim = dimOthers && selected && selected !== st.listId;
         return <g key={i} {...seatButton(i)}>
-          <rect data-seat="" data-bloc={st.bloc ?? "__none"} className={`seat ${dim ? 'dim' : ''}`} x={x} y={y} width={c} height={c} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--ink-2)'} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`)?4:1}
+          <rect data-seat="" data-bloc={st.bloc ?? "__none"} className={`seat ${dim ? 'dim' : ''} ${i === found ? 'found' : ''}`} x={x} y={y} width={c} height={c} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--ink-2)'} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`)?4:1}
             onMouseEnter={e => { if (hoverPopups) onSeatHover(st,e); }} onMouseLeave={hoverBridge.leave} onClick={e => { if (!hoverPopups) onSeat(st,e); setState({ selectedListId: selected === st.listId ? null : st.listId }); }}><title>{seatLabel(st)}</title></rect>
           {st.innerColor && <PartyDot partyId={st.partyId} x={x+c/2} y={y+c/2} r={c/2} square={{rx:4}} color={st.innerColor} className={dim ? 'seat dim' : 'seat'}/>}
         </g>;
       })}
       {ring !== null && ring < seats.length && (([x, y]) => <rect className="seat-ring" x={x - 4} y={y - 4} width={TRAY.cell + 8} height={TRAY.cell + 8} rx={7} />)(trayCell(ring, tray.cols))}
+      {found !== null && found < seats.length && (([x, y]) => foundMark(x + TRAY.cell / 2, y + TRAY.cell / 2, TRAY.cell / 2, 0, 0, tray.width, true))(trayCell(found, tray.cols))}
     </svg>;
   }
 
@@ -440,6 +463,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       </div>}
       {/* on the board the bloc bar directly below already carries this line; Compare's chambers stand alone */}
       {compactProp && <BlocMajorities s={s} r={r} />}
+      {!compactProp && mkEntries.length > 0 && <FindMk entries={mkEntries} query={findQ} onQuery={setFindQ} pick={findPick} onPick={setFindPick} />}
       {body}
       {/* the card comes next in the page, so Tab goes from a seat into its card (its links) */}
       {/* the per-list seat changes are said once, in the change line under the tools strip */}
