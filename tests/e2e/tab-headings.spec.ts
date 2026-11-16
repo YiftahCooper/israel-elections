@@ -36,16 +36,18 @@ test('every tool has a heading', async () => {
   for (const [id] of TOOL_FEATURES) expect(TAB_GROUP[id], id).toBeTruthy();
 });
 
-test('Simple: tools of other levels stay under their own heading, muted, after “More in other levels”', async ({ page }) => {
+test('Simple: tools of other levels stay under their own heading, greyed out, and ask before opening', async ({ page }) => {
   await open(page, { level: 'simple' });
   expect(await ids(page, 'What happened')).toEqual(['after', 'families', 'sources', 'loc']);
   expect(await ids(page, 'How it works')).toEqual(['walk', 'rules']);
   const happened = page.locator('[data-tab-group="happened"]');
-  await expect(happened.locator('.more-label')).toHaveText('More in other levels');
+  // 16 Nov: no "More in other levels" label; the greyed tools ask whether to switch level or add the tool
+  await expect(happened.locator('.more-label')).toHaveCount(0);
   await expect(page.locator('#tab-loc')).toHaveClass(/locked/);
   await expect(page.locator('#tab-loc')).toHaveAccessibleName('Localities (Expert)');
   for (const tab of await tools(page).getByRole('tab').all()) await expect(tab).toBeInViewport({ ratio: 1 });
   await page.locator('#tab-loc').click();
+  await page.getByRole('dialog', { name: 'Localities' }).getByRole('button', { name: 'Switch to Expert', exact: true }).click();
   await expect(page.locator('#tab-loc')).toHaveAttribute('aria-selected', 'true');
 });
 

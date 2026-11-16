@@ -13,20 +13,21 @@ test('Simple opens agreement editing in place and keeps it across reload', async
   await page.getByRole('button',{name:'More options: Agreement editing',exact:true}).click();
   await expect(page.getByRole('combobox',{name:'Agreement partner',exact:true})).toBeVisible();
   await page.locator('.feature-disclosure').filter({has:page.getByRole('button',{name:'More options: Agreement editing',exact:true})}).getByRole('button',{name:'Keep this visible',exact:true}).click();
-  await expect(page.getByRole('button',{name:'Custom · based on Simple',exact:true})).toBeVisible();
+  // 16 Nov: an own choice for the level, counted beside the level buttons (there is no Custom level any more)
+  await expect(page.locator('.band .band-own')).toHaveText('+1 own');
   expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(60);
   await page.reload();
   await page.getByRole('region',{name:'Lists',exact:true}).getByRole('button',{name:'Likud',exact:true}).click();
   await expect(page.getByRole('combobox',{name:'Agreement partner',exact:true})).toBeVisible();
 });
-test('Custom hides a tool and resetting Standard restores it', async ({page}) => {
+test('Settings hides a tool for this level and clearing the own choices restores it', async ({page}) => {
   await start(page,'standard');
-  await page.getByRole('button',{name:'Custom',exact:true}).click();
-  await expect(page.getByRole('tab', {selected:true})).toHaveCount(0);
-  await page.getByRole('group',{name:'Charts',exact:true}).getByRole('button',{name:'Hidden',exact:true}).click();
+  await page.keyboard.press('Escape');
+  await page.locator('.band').getByRole('button',{name:'Settings',exact:true}).click();
+  await page.locator('[data-part="charts"]').getByRole('group',{name:'Charts',exact:true}).getByRole('button',{name:'Hidden',exact:true}).click();
   await expect(page.getByRole('tab',{name:'Charts',exact:true})).toHaveCount(0);
-  await page.getByRole('button',{name:'Reset to Standard',exact:true}).click();
-  await expect(page.getByRole('tab',{name:'Charts',exact:true})).toBeVisible();
+  await page.locator('.ps-own').getByRole('button',{name:'Clear all',exact:true}).click();
+  await expect(page.getByRole('tab',{name:'Charts',exact:true})).toHaveCount(1);
 });
 test('blank candidates can be undone and chip changes are human wording', async ({page}) => {
   await start(page,'expert');

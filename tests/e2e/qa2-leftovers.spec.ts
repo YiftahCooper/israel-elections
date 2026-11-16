@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { barLanguage, openBarMenu } from './barMenu.ts';
+import { barLanguage, openBarMenu, openScenarioMenu } from './barMenu.ts';
 import { choose } from './choices.ts';
 
 test.describe.configure({ mode: 'parallel' });
@@ -29,7 +29,7 @@ test('X1 analysis choices and settings use the shared picker', async ({ page }) 
 for (const width of [1500, 1024, 390]) test(`notices and experimental rules leave the board fixed at ${width}`, async ({ page }) => {
   await page.setViewportSize({ width, height: 1000 });
   const before = (await page.locator('.board').boundingBox())!.y;
-  await openBarMenu(page); // phones: the switcher is in the bar's Menu
+  await openScenarioMenu(page); // phones: the switcher is in the scenario panel
   await choose(page.getByRole('button', { name: 'Switch scenario' }), 'qa2-old');
   await expect(page.locator('.banner').filter({ hasText: 'rebuilt' })).toContainText('rebuilt');
   await page.locator('#tab-rules').click();
@@ -49,8 +49,10 @@ for (const lang of ['en', 'he'] as const) test(`phone band is one row; level and
   // owner, 9 Nov 2026: one row of 44px targets (was four rows, 204px)
   expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(60);
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
+  // 16 Nov: the level in the three-lines panel, the switcher in the scenario panel
   await openBarMenu(page);
-  await expect(page.locator('#phone-menu .band-levels')).toBeVisible();
+  await expect(page.locator('#app-menu .band-levels')).toBeVisible();
+  await openScenarioMenu(page);
   await expect(page.locator('#phone-menu .scenario-switcher')).toBeVisible();
 });
 

@@ -1,5 +1,5 @@
 import { choose } from './choices.ts';
-import { closeBarMenu, openBarMenu } from './barMenu.ts';
+import { closeBarMenu, openBarMenu, openSettings } from './barMenu.ts';
 import { allocate } from '../../src/engine/allocate.ts';
 import { scenarioFromDataset, toEngineInput } from '../../src/model/scenario.ts';
 import { readFileSync } from 'node:fs';
@@ -63,10 +63,9 @@ for (const lang of ['he','en']) for (const theme of ['light','dark']) for (const
     expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(60);
     const suffix=`${lang}-${theme}-${phone?'phone':'desktop'}`;
     await page.screenshot({path:`.backup-scratch/polish/chamber-${suffix}.png`});
-    await openBarMenu(page);
-    await page.getByRole('button',{name:lang==='he'?'מותאם':'Custom',exact:true}).click();
-    await expect(page.getByRole('tab',{selected:true})).toHaveCount(0);
-    await expect(page.locator('.custom-grid')).toHaveCount(3);
+    // (16 Nov: the Custom page became rows of Settings, under each level)
+    await openSettings(page, lang);
+    await expect(page.locator('.personal-settings [data-tier-group$=":tools"]')).toHaveCount(3);
     await page.screenshot({path:`.backup-scratch/polish/custom-${suffix}.png`});
   });
 }
