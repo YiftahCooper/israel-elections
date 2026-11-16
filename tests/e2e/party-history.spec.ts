@@ -74,12 +74,19 @@ test('the row line shows from Standard once its Settings switch is on', async ({
   const described = await listRow(page, 'Joint List').getAttribute('aria-describedby');
   await expect(page.locator(`[id="${described}"]`)).toContainText('2022: 5 seats (6 more)');
 });
-for (const [what, level, values] of [['by default', 'standard', {}], ['by default at Expert', 'expert', {}], ['at Simple even when switched on', 'simple', { lastTimeRows: true }]] as const)
+for (const [what, level, values] of [['by default', 'standard', {}], ['by default at Expert', 'expert', {}], ['by default at Simple', 'simple', {}]] as const)
   test(`no row line when ${what}`, async ({ page }) => {
     await start(page, { level, values });
     await expect(listRow(page, 'Joint List')).toBeVisible();
     await expect(page.locator('.ph-rowline')).toHaveCount(0);
   });
+
+// Owner, 16 Nov 2026: a setting of one's own works at every level ("blend features from other modes").
+test('row lines at Simple when the reader switched them on', async ({ page }) => {
+  await start(page, { level: 'simple', values: { lastTimeRows: true } });
+  await expect(listRow(page, 'Joint List')).toBeVisible();
+  await expect(listRow(page, 'Yisrael Beiteinu').locator('.ph-rowline')).toHaveText(/^2022: 6 ▲ \+1$/);
+});
 
 test('in Hebrew the chart is drawn left to right and every word is Hebrew', async ({ page }) => {
   await start(page, { lang: 'he' });

@@ -36,7 +36,7 @@ for(const election of ['k26','k25']) test(`${election}: cosmetic colours never m
  const votes=page.locator('.side-panel').getByRole('textbox',{name:'Votes',exact:true});
  await votes.fill('1120000');await votes.press('Enter');
  expect(await page.locator('.app').evaluate(el=>(el as HTMLElement).style.getPropertyValue('--scenario-color'))).not.toBe('');
- await page.locator('.side-panel').getByRole('button',{name:'Reset colours',exact:true}).click();
+ await page.locator('.side-panel').getByRole('button',{name:'Reset: Colour',exact:true}).click();// a Reset beside each changed colour (owner, 16 Nov 2026)
  await expect(votes).toHaveValue('1,120,000');
  expect(await page.locator('.app').evaluate(el=>(el as HTMLElement).style.getPropertyValue('--scenario-color'))).not.toBe('');
  await choose(page.locator('.band .scenario-switcher .choice-trigger'),'official');await official();
