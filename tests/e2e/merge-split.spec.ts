@@ -93,9 +93,11 @@ for (const lang of ['en', 'he'] as const) test(`no sideways scroll and still sub
 test('the "All lists" toggle is a chip aligned with the list chips', async ({ page }) => {
   await start(page);
   const more = panel(page).getByRole('button', { name: /^All \d+ lists$/ });
-  const [chip, box] = [await panel(page).locator('.chip.coal').first().boundingBox(), await more.boundingBox()];
-  expect(box!.x).toBe(chip!.x);
-  expect(box!.height).toBe(chip!.height);
+  const chips = await panel(page).locator('.chip.coal').evaluateAll((cs) => cs.map((c) => { const r = c.getBoundingClientRect(); return { x: r.x, y: r.y, h: r.height }; }));
+  const box = (await more.boundingBox())!;
+  // the chips wrap, so the toggle sits on a line of list chips, or starts the next line at the same edge
+  expect(chips.some((c) => Math.abs(c.y - box.y) < 1) || box.x === chips[0].x).toBe(true);
+  expect(box.height).toBe(chips[0].h);
   await expect(more.locator('svg')).toHaveCount(1);
   await more.click();
   await expect(more).toHaveCount(0);

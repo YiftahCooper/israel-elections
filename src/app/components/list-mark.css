@@ -7,3 +7,14 @@
 .choice-trigger > .list-mark { margin-inline-end: 2px; }
 /* a party with no logo in a joint list's party rows: its dot, centred where a slip would be */
 .party-dot-slot { display: inline-grid; place-items: center; width: 58px; height: 32px; }
+/* phones: a list's name inside a table cell keeps only its colour dot and may wrap, so tables fit a 360px screen */
+.list-mark-compact { display: none; }
+@media (max-width: 760px) {
+  td .list-name-marked { display: inline; }
+  td .list-name-marked > .list-mark { display: none; }
+  td .list-name-marked > .list-mark-compact { display: inline-block; margin-inline-end: 4px; vertical-align: -1px; }
+  td .list-name-marked > .list-mark-compact > .list-mark-dot { display: inline-block; inline-size: 10px; block-size: 10px; }
+}
+/* inside a chip the mark is a size smaller, so a chip with a logo is as tall as one without (the "All lists" chip) */
+.chip > .list-mark { inline-size: 32px; }
+.chip > .list-mark .slip.xs { width: 32px; height: 18px; padding: 0 1px; border-width: 1px; }

@@ -44,5 +44,6 @@ export function partyChoice(p: PartyDef, lang: Lang, list?: MarkList, extra: Par
 
 /** A list's name with its mark, inline (rows, chips, legends). */
 export function ListName({ list, lang, children }: { list: MarkList; lang: Lang; children?: ReactNode }) {
-  return <span className="list-name-marked"><ListMark list={list} lang={lang} /><bdi>{children ?? listLabel(list, lang)}</bdi></span>;
+  // the compact dot replaces the mark inside table cells on phones (list-mark.css), so a table of lists fits the screen
+  return <span className="list-name-marked"><ListMark list={list} lang={lang} /><span className="list-mark-compact" aria-hidden><ColourDot color={list.color} /></span><bdi>{children ?? listLabel(list, lang)}</bdi></span>;
 }
