@@ -20,11 +20,27 @@ register (`docs/data-gaps.md`).
 
 - **Votes against one's own government.** Show when a minister or coalition member voted against the government in a
   recorded Knesset vote (for example the Defence Minister's vote in 2023). Waits for research into which such votes are
-  reliably recorded by name; votes that did not defeat a law are hard to establish.
+  reliably recorded by name; votes that did not defeat a law are hard to establish. Research of 16 November found named,
+  recorded dissent for selected cases (Chikli, the citizenship law, Gallant on conscription, retained-profits taxation),
+  not a complete census; the timeline already shows the votes in its data (Standard if the government lost, Expert if it
+  won).
 - **Election-law eras in the Coalitions tool.** The tool applies today's law to every election for release 1. Later:
   each election's own rules (the required majority, the investiture rules of each era).
-- **Rotation agreements.** Show an agreed rotation of Prime Ministers (an alternate Prime Minister) where the government
-  is shown, even when the rotation never took place. Research and display are in progress.
+
+## Layout and settings
+
+- **One-row top bar on medium screens.** Between 761 and 1399 px wide the top bar takes two rows. One row needs
+  something taken out of it, which is a design choice for the owner.
+- **A shared scenario never overrides the viewer's own settings.** Opening someone else's scenario leaves every
+  setting unchanged (tested), but the scenario still shows joint lists the way its author chose while it is open. The
+  viewer's own setting should win.
+- **Colour changes in Settings.** The Colours list can name another election whose colours were changed back to the
+  official ones; resetting another election's colours from Settings takes effect the next time it is opened;
+  recolouring a saved scenario marks it unsaved, although colours are not part of the result.
+- **Formation dots on phones.** On After the election, the dots of a government's formation name their event on hover
+  only; a touch shows nothing.
+- **Registered names on the Overview list.** The list composition still writes "(registered as …)" in brackets; Party
+  history already puts the registered name behind an (i). The same rule should apply on the Overview.
 
 ## Before release 1
 

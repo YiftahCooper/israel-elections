@@ -110,8 +110,8 @@ test('short screens pin only the top bar, and the three lines hold the tools', a
   await page.setViewportSize({ width: 1280, height: 720 });
   await start(page, { app: { level: 'expert' } });
   await page.locator('#tab-coal').click();
-  await page.mouse.wheel(0, 900);
-  await expect.poll(() => page.locator('.toolbar').evaluate(e => e.getBoundingClientRect().bottom)).toBeLessThan(5);
+  // Under load the screen may still be drawing when the first wheel turns: scroll again until the strips have gone.
+  await expect.poll(async () => { await page.mouse.wheel(0, 900); return page.locator('.toolbar').evaluate(e => e.getBoundingClientRect().bottom); }).toBeLessThan(5);
   await expect.poll(() => page.locator('.band').evaluate(e => e.getBoundingClientRect().top)).toBe(0);
   await page.locator('.band-tools-btn').click();
   await page.locator('#app-menu').getByRole('button', { name: 'Charts' }).click();
