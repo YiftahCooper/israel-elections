@@ -79,7 +79,7 @@ for (const lang of ['en', 'he'] as const) test(`What if…: a minority governmen
   await expect(page.locator('.coal-now .majority-readout')).toHaveText(lang === 'he' ? '67 / 120 · 6 מעל 61' : '67 / 120 · 6 above 61');
 });
 
-for (const lang of ['en', 'he'] as const) test(`the recorded first government fills its roles, provisional outside support marked: ${lang}`, async ({ page }) => {
+for (const lang of ['en', 'he'] as const) test(`the recorded first government fills its roles, outside support shown as recorded: ${lang}`, async ({ page }) => {
   await start(page, lang, 390);
   await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k13');
   await page.getByRole('tab', { name: lang === 'he' ? 'קואליציות' : 'Coalitions', exact: true }).click();
@@ -98,23 +98,25 @@ for (const lang of ['en', 'he'] as const) test(`the recorded first government fi
     while ((n = w.nextNode())) for (const m of n.textContent!.matchAll(/\d+/g)) { const r = document.createRange(); r.setStart(n, m.index!); r.setEnd(n, m.index! + m[0].length); xs[m[0]] = r.getBoundingClientRect().x; }
     return [xs['67'], xs['120']]; });
   expect(a).toBeLessThan(b);
-  // the (i) shows each role's certainty as recorded, never upgraded
+  // the (i) shows each role as recorded; Hadash and the Arab Democratic Party are confirmed outside support since books
+  // batch 1 (17 Nov 2026: several independent works, one citing the signed 9 July 1992 agreements), so no "provisional"
   await page.locator('.coal-record .info > button').click();
-  await expect(page.getByRole('tooltip')).toContainText(lang === 'he' ? 'זמני' : 'provisional');
+  await expect(page.getByRole('tooltip')).toContainText(lang === 'he' ? 'תמיכה מבחוץ' : 'Outside support: Hadash, Arab Democratic Party');
+  await expect(page.getByRole('tooltip')).not.toContainText(lang === 'he' ? 'זמני' : 'provisional');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
 for (const lang of ['en', 'he'] as const) test(`the recorded first government discloses where it differs from the recorded vote: ${lang}`, async ({ page }) => {
   await start(page, lang);
-  // 2003: Yisrael BaAliyah's role is still unknown and six MKs voted neither way (2015, used here before, adds up
-  // exactly since United Torah Judaism's membership was recorded on 13 Nov 2026)
+  // 2003: six MKs voted neither way (Yisrael BaAliyah's role, unknown until books batch 2, is now recorded as a member;
+  // 2015, used here before, adds up exactly since United Torah Judaism's membership was recorded on 13 Nov 2026)
   await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k16');
   await page.getByRole('tab', { name: lang === 'he' ? 'קואליציות' : 'Coalitions', exact: true }).click();
   await page.getByRole('button', { name: lang === 'he' ? 'הממשלה הראשונה המתועדת' : 'Recorded first government', exact: true }).click();
   const line = page.locator('.coal-now .coal-recorded');
-  await expect(line).toHaveText(lang === 'he' ? 'ההצבעה המתועדת: 66 בעד · 48 נגד. כאן התוצאה שונה, כי תפקידים אינם ידועים או חברי כנסת לא הצביעו בעד או נגד i.' : 'Recorded vote: 66 for · 48 against. Differs here because roles are unknown, or some MKs voted neither for nor against i.');
+  await expect(line).toHaveText(lang === 'he' ? 'ההצבעה המתועדת: 66 בעד · 48 נגד. כאן התוצאה שונה, כי חברי כנסת לא הצביעו בעד או נגד i.' : 'Recorded vote: 66 for · 48 against. Differs here because some MKs voted neither for nor against i.');
   await line.locator('.info > button').click();
-  await expect(page.getByRole('tooltip')).toContainText(lang === 'he' ? 'התפקיד לא ידוע' : 'role unknown');
+  await expect(page.getByRole('tooltip')).toContainText(lang === 'he' ? 'לא הצביעו בעד או נגד' : 'voted neither for nor against');
   // a choice of one's own is no longer the record: the line goes
   await card(page, lang === 'he' ? 'הליכוד' : 'Likud').getByRole('button', { name: lang === 'he' ? 'כל אפשרות' : 'Any', exact: true }).click();
   await expect(line).toHaveCount(0);
