@@ -94,7 +94,7 @@ for (const phone of [false, true]) test(`election picker keyboard ${phone ? 'pho
   await page.setViewportSize(phone ? { width: 390, height: 844 } : { width: 1440, height: 900 });
   await start(page); const picker = page.getByRole('button', { name: 'Election', exact: true });
   await picker.focus(); await page.keyboard.press('Enter');
-  const search = page.getByRole('searchbox'); await expect(search).toBeFocused(); await search.fill('September 2019');
+  const search = page.getByRole('searchbox', { name: 'Search choices' }); await expect(search).toBeFocused(); await search.fill('September 2019');
   await search.press('ArrowDown');
   await expect(picker).toHaveAttribute('data-value', 'k25');
   // Enter on the focused row opens it (one step, like a click)
