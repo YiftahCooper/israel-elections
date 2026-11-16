@@ -231,3 +231,22 @@ for (const theme of ['light', 'dark'] as const) test(`history text and chips hav
   expect(ratios.length).toBeGreaterThan(10);
   for (const r of ratios) expect(r.ratio, r.text ?? '').toBeGreaterThanOrEqual(4.5);
 });
+
+// party/c9-5 (16 Nov 2026): every pairing tag in Side by side keeps its (i), on a wide screen and a phone, in both
+// languages
+for (const [lang, width] of [['en', 1500], ['he', 390]] as const) test(`every pairing tag in Side by side has its (i): ${lang} ${width}`, async ({ page }) => {
+  await start(page, { lang, width });
+  await openSideBySide(page);
+  const tags = page.locator('tr.cmp-row .cmp-tag');
+  await expect(tags.first()).toBeAttached();
+  const n = await tags.count();
+  expect(n).toBeGreaterThan(5);
+  let checked = 0;
+  for (let i = 0; i < n; i++) {
+    const tag = tags.nth(i);
+    if (!(await tag.isVisible())) continue;
+    await expect(tag.locator('xpath=..').getByRole('button', { name: lang === 'he' ? /^למה ההתאמה הזו/ : /^Why this pairing/ })).toBeVisible();
+    checked++;
+  }
+  expect(checked).toBeGreaterThan(5);
+});
