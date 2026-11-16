@@ -114,3 +114,17 @@ test('opening a shared scenario leaves the viewer’s settings and remembered an
   expect(stored.preferences).toEqual(preferences);
   await ctx.close();
 });
+
+// 1977 (decision 0095): Flatto-Sharon in a surplus agreement with Poalei Agudat Yisrael cannot fill a fourth seat inside
+// the pair; the seat goes to the next list, so the Knesset still has 120 members, and a note says so.
+test('1977: an agreement that cannot fill a seat passes it on; the Knesset keeps 120 seats', async ({ page }) => {
+  await start(page, 'expert');
+  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k9');
+  await page.locator('.lb-row').filter({ hasText: 'Flatto-Sharon' }).first().click();
+  await choose(page.locator('.side-panel .agreement-partner .choice-trigger'), '9-ד');
+  await page.keyboard.press('Escape');
+  await expect(page.locator('.banner').filter({ hasText: 'too few candidates to fill seat 4' })).toBeVisible();
+  await expect(page.locator('.banner').filter({ hasText: 'too few candidates to fill seat 4' })).toContainText('Flatto-Sharon');
+  // every seat is filled: no "not every seat could be allocated" note (the exact 120 is asserted in rule-uncertainty.test.ts)
+  await expect(page.locator('.banner').filter({ hasText: 'Not every seat' })).toHaveCount(0);
+});

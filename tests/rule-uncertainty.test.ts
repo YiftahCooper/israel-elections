@@ -57,3 +57,21 @@ it('unresolved quota fallbacks warn only when reached', () => {
   expect(allocate(simple({a:1,b:1},[],{seats:1})).warnings.some(w=>w.code==='quota-over-allocation')).toBe(false);
   expect(allocate(simple({a:1,b:1,c:1},[],{seats:2})).warnings.some(w=>w.code==='quota-over-allocation')).toBe(true);
 });
+
+// 1977 capacity rule (decision 0095, research handoff data/research/round7/1977-capacity.md): an agreement that cannot
+// fill a further seat from its members' rosters takes no further seat; the seat goes to the next quotient.
+it('1977: Flatto-Sharon in an agreement with Poalei Agudat Yisrael still fills 120 seats; the returned seat is named', () => {
+  const input = official();
+  const withPair = { ...input, agreements: [...input.agreements, { id: 'x', members: ['9-פש', '9-ד'] }] };
+  for (const trace of [true, false]) {
+    const r = prepareAllocation(withPair).run(withPair.lists.map(l => l.votes), trace);
+    expect(r.seatsAllocated).toBe(120);
+    expect([r.lists.find(l => l.id === '9-פש')!.seats, r.lists.find(l => l.id === '9-ד')!.seats]).toEqual([1, 2]);
+  }
+  expect(allocate(withPair).warnings).toContainEqual(expect.objectContaining({ code: 'agreement-unfillable', data: { ids: ['9-פש', '9-ד'], seats: 4 } }));
+  // the official result is unchanged and carries no warning (checked above); Hadash or Sheli as partner still fills 120
+  for (const partner of ['9-ו', '9-ש']) {
+    const r = allocate({ ...input, agreements: [...input.agreements.filter(a => !a.members.includes(partner)), { id: 'x', members: ['9-פש', partner] }] });
+    expect(r.seatsAllocated, partner).toBe(120);
+  }
+});

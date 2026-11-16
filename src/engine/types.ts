@@ -118,6 +118,7 @@ export interface AgreementStatus {
 
 export type WarningCode =
   | 'inferred-candidate-cap'
+  | 'agreement-unfillable'
   | 'unfilled-seats'
   | 'lottery-required'
   | 'quota-over-allocation'

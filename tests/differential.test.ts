@@ -137,7 +137,11 @@ const EXPECTED: Record<Family, string> = {
   // merged with k5 audit fixes: combined digest = union of the separately reviewed changes.
   // r7-u1 (16 Nov, decision 0094): 2013 carries the declared list votes; 32 of 6,832 allocation outputs and 18 of 520
   // model outputs change, all of them 2013 cases (outputs compared with the previous k19.json in place).
-  allocation: 'a568e5e093c357f44d358bc0b6f2b69875924c444ea852d16a7c432001ee5600',
+  // r7-u1 (16 Nov, decision 0095): with candidate caps on, an agreement that cannot fill a further seat from its rosters
+  // takes no further seat while another list can. 75 of 6,832 allocation outputs change, every one with candidate caps
+  // on; 72 seat more members and 3 keep the same total; none seats fewer. Analysis, model, validation and rules outputs
+  // are identical (tests/differential-compare.ts against the previous src).
+  allocation: '2d30a7e8be28457f9725f0a1589c2eb0393346f8347acedf6ae004e35cce797d',
   // Analysis re-recorded 2026-11-13 for one reviewed rule (audit c-results-engine-02): a search answer is the first count
   // at which the goal holds whatever the outcome of an exact tie, and a smaller count reached only through a tie is kept as
   // lotteryFrom. 74 of 818 cases differ: 23 answers move up by one (the old answer was a tie counted as reached), 28 keep
