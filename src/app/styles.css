@@ -169,10 +169,10 @@ html { scroll-padding-block-start: calc(var(--band-h, 52px) + var(--toolbar-h) +
 .tool-page > .body { padding: 14px 16px 18px; }
 @media (max-width: 1100px) {
   .board, .board.with-panel { grid-template-columns: minmax(0, 1fr); }
-  /* one column: the result, then the lists (the main way in to editing), then blocs and figures */
+  /* one column: the result and its blocs, then the lists (the main way in to editing), then the figures */
   .board .center { display: contents; }
   .board .center > * { order: 3; min-width: 0; }
-  .board .center > .board-choices, .board .center > .chamber-panel { order: 1; }
+  .board .center > .board-choices, .board .center > .chamber-panel, .board .center > .blocs { order: 1; }
   .board .lbars { order: 2; }
 }
 @media (max-width: 760px) {

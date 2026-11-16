@@ -77,7 +77,8 @@ export function TurnoutFacts({ s }: { s: Scenario }) {
         since={prev && sinceWords(<CountDelta now={s.registered} before={prev.registered} digits={digits} />)}
         copy={copy('registered', 'eligible voters', 'מספר בעלי זכות הבחירה')} />
       <Fact id="turnout" k={L('Turnout', 'שיעור ההצבעה')} info={<Info term="turnout" />}
-        v={percent(cast, s.registered, digits)}
+        // as precise as the turnout field under it (two decimals), so one number never shows at two precisions
+        v={percent(cast, s.registered, Math.max(digits, 2))}
         d={!standard || castEdited ? <>{!standard && <><bdi dir="ltr">{fmtInt(cast)}</bdi> {L('votes cast', 'מצביעים')}</>}{castEdited && <>{!standard && ' · '}{officialName} {percent(official.votesCast, official.registered, digits)}</>}</> : undefined}
         since={prev && sinceWords(<PointDelta value={pct - turnoutPct(prev.votesCast, prev.registered)} digits={digits} />)}
         copy={copy('turnout', 'turnout', 'שיעור ההצבעה')} />

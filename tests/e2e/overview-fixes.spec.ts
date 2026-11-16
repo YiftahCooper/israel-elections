@@ -54,8 +54,11 @@ test('Blocks: a second click on the chosen list closes it and the other seats st
 
 for (const lang of ['en', 'he'] as const) test(`1949 Qualifying votes: no threshold, 21 lists take part, 12 won a seat (${lang})`, async ({ page }) => {
   await start(page, { lang, election: 'k1' });
-  const fig = page.locator('.fig').filter({ hasText: lang === 'he' ? 'קולות משתתפים' : 'Qualifying votes' });
+  // the qualifying votes sit inside the Votes with no seat tile (their complement), not in a tile of their own
+  await expect(page.locator('.fig > button .k').filter({ hasText: lang === 'he' ? 'קולות משתתפים' : 'Qualifying votes' })).toHaveCount(0);
+  const fig = page.locator('.fig').filter({ has: page.locator('> button .k', { hasText: lang === 'he' ? 'קולות ללא מנדט' : 'Votes with no seat' }) });
   await fig.getByRole('button').first().click();
+  await expect(fig.locator('.more')).toContainText(lang === 'he' ? 'קולות משתתפים' : 'Qualifying votes');
   await expect(fig.locator('.more')).toContainText(lang === 'he' ? 'אין אחוז חסימה: כל 21 הרשימות משתתפות; 12 זכו במנדט' : 'No threshold: all 21 lists take part; 12 won a seat');
   await expect(fig.locator('.more')).not.toContainText(lang === 'he' ? 'שעברו' : 'passed');
 });

@@ -365,6 +365,8 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       rest.splice(Math.min(firstIdx, rest.length), 0, merged);
       s = { ...s, lists: rest, invalid: addVotes(s.invalid, (action.nonRetained === 'invalid' ? total - kept : 0)) };
       s = { ...s, agreements: s.agreements.filter((a) => !a.members.some((m) => action.ids.includes(m))) };
+      // lists of different blocs merged into one (in no bloc) no longer follow a sourced grouping: it is now custom
+      if (blocs.size > 1 && s.blocSchemes) s = { ...s, blocSchemeId: null };
       break;
     }
     case 'split': {

@@ -161,7 +161,7 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
   const toWork: Dir = mainLeft ? 'toLeft' : 'toRight';
   const copyButton = (row: MatchRow | null, units: CopyUnit[] | null, what: string) => {
     const label = units ? L(`Copy ${what}’s votes into ${nameOf(main)}`, `העתקת הקולות של ${what} ${hebrewPrefix('ל', nameOf(main))}`) : row?.tag === 'check' ? L('Accept or reject this match first', 'אשרו או דחו קודם את ההתאמה') : row?.group ? L('Votes of a split list can’t be divided by list: copy the group', 'אין לחלק קולות של רשימה מפוצלת לפי רשימה: העתיקו את הקבוצה') : L('No counterpart to copy', 'אין מקבילה להעתקה');
-    return <button type="button" className="btn small cmp-copy-votes" aria-label={label} title={label} disabled={!units} onClick={(e) => { e.stopPropagation(); if (units) copyVotes(units, toWork); }}>{L('Copy votes…', 'העתקת קולות…')}</button>;
+    return <button type="button" className="btn small cmp-copy-votes" aria-label={label} title={label} disabled={!units} onClick={(e) => { e.stopPropagation(); if (units) copyVotes(units, toWork); }}>{L('Copy', 'העתקה')}</button>;
   };
 
   // ---- the row menu (both directions in words, no arrows; every field); on a phone the row sheet instead
@@ -277,7 +277,6 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
           <th className="cmp-name cmp-lname" dir={lang === 'he' ? 'rtl' : 'ltr'}>{nameOf(left)}</th><th className="n cmp-v">{L('Votes', 'קולות')}</th><th className="n cmp-s">{L('Share', 'שיעור')}</th><th className="n">{L('Seats', 'מנדטים')}</th>
           <th className="cmp-mid">{L('Change', 'שינוי')} {!simple && <Info title={L('Change', 'שינוי')}>{L(`${nameOf(mainLeft ? left : right)} minus ${nameOf(mainLeft ? right : left)}: seats, then the share of valid votes in percentage points (pp).`, `${nameOf(mainLeft ? left : right)} פחות ${nameOf(mainLeft ? right : left)}: מנדטים, ואז שיעור הקולות הכשרים בנקודות אחוז (נק׳ אחוז).`)}</Info>}</th>
           <th className="n">{L('Seats', 'מנדטים')}</th><th className="n cmp-s">{L('Share', 'שיעור')}</th><th className="n cmp-v">{L('Votes', 'קולות')}</th><th className="cmp-name cmp-rname" dir={lang === 'he' ? 'rtl' : 'ltr'}>{nameOf(right)}</th>
-          <th className="cmp-more"><span className="sr-only">{L('More', 'עוד')}</span></th>
         </tr></thead>
         <tbody>
           {visible.map((row) => {
@@ -305,19 +304,22 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
                     {!simple && shareD && shareD.num !== 0n && <span className="tiny muted cmp-pp" dir={lang === 'he' ? 'rtl' : 'ltr'}><bdi dir="ltr">{rationalPoints(shareD, digits)}</bdi> {L(...PP)}</span>}
                     <span className="cmp-tagwhy"><span className={`cmp-tag tag-${row.tag}`}>{tagText(row.tag, L)}</span><Info title={L('This pairing', 'ההתאמה הזו')} label={L(`Why this pairing: ${what}`, `למה ההתאמה הזו: ${what}`)}>{why(row)}</Info></span>
                   </span>
-                  {copyButton(row, toWork === 'toLeft' ? (toL && !grouped ? [toL] : null) : (toR && !grouped ? [toR] : null), what)}
+                  {/* the row's actions, centred between the two columns: Copy into your work, then "⋯" for the rest */}
+                  <span className="cmp-acts">
+                    {copyButton(row, toWork === 'toLeft' ? (toL && !grouped ? [toL] : null) : (toR && !grouped ? [toR] : null), what)}
+                    <button type="button" className="btn small ghost cmp-more-btn" aria-label={L(`More for ${what}`, `עוד עבור ${what}`)} aria-haspopup="dialog" aria-expanded={menu?.key === row.key}
+                      onClick={(e) => { e.stopPropagation(); if (narrow()) setSheet(row); else setMenu(menu?.key === row.key ? null : { key: row.key, row, anchor: e.currentTarget }); }}><MoreHorizontal size={16} /></button>
+                  </span>
                 </span>
               </td>
               <td className="n cmp-seats cmp-rs">{r ? <b>{r.seats}</b> : null}</td>
               <td className="n cmp-s">{r && <bdi dir="ltr">{percent(r.votes, r.total, digits, right.sc.rules.thresholdPct, { pad: digits })}</bdi>}</td>
               <td className="n cmp-v">{r ? <VotesCell x={right} c={r} onEdit={(id) => setEditing({ side: right, listId: id })} /> : null}</td>
               <NameCell x={right} c={r} row={row} side="right" lang={lang} cmp={!simple && laterSide === 'right' ? lineage : undefined} />
-              <td className="cmp-more"><button type="button" className="btn small ghost cmp-more-btn" aria-label={L(`More for ${what}`, `עוד עבור ${what}`)} aria-haspopup="dialog" aria-expanded={menu?.key === row.key}
-                onClick={(e) => { e.stopPropagation(); if (narrow()) setSheet(row); else setMenu(menu?.key === row.key ? null : { key: row.key, row, anchor: e.currentTarget }); }}><MoreHorizontal size={16} /></button></td>
             </tr>,
             last ? <GroupLine key={`${row.group}:line`} group={row.group!} rows={rows} left={left} right={right} simple={simple} copy={(u, dir) => copyVotes([u], dir)} nameOf={nameOf} /> : null];
           })}
-          {!visible.length && <tr><td colSpan={11} className="muted small cmp-none">{L('No rows here. Choose All to see every list.', 'אין כאן שורות. בחרו "הכול" כדי לראות את כל הרשימות.')}</td></tr>}
+          {!visible.length && <tr><td colSpan={10} className="muted small cmp-none">{L('No rows here. Choose All to see every list.', 'אין כאן שורות. בחרו "הכול" כדי לראות את כל הרשימות.')}</td></tr>}
         </tbody>
       </table>
     </div>
@@ -460,15 +462,15 @@ function GroupLine({ group, rows, left, right, simple, copy, nameOf }: { group: 
       {/* compared result → your work, as on every row (the change is your work against it) */}
       <span className="cmp-delta">{(() => { const [was, now] = left.role === 'main' ? [r.seats, l.seats] : [l.seats, r.seats]; return <><bdi dir="ltr">{was} → {now}</bdi> <SeatDelta value={now - was} /></>; })()}</span>
       {/* one worded button into your work, as on every row; the other direction is in the row's menu */}
-      {(() => { const d: Dir = left.role === 'main' ? 'toLeft' : 'toRight'; return <button type="button" className="btn small cmp-copy-votes" aria-label={label(d)} title={label(d)} onClick={() => copy(d === 'toLeft' ? toL : toR, d)}>{L('Copy votes…', 'העתקת קולות…')}</button>; })()}
+      {(() => { const d: Dir = left.role === 'main' ? 'toLeft' : 'toRight'; return <button type="button" className="btn small cmp-copy-votes" aria-label={label(d)} title={label(d)} onClick={() => copy(d === 'toLeft' ? toL : toR, d)}>{L('Copy', 'העתקה')}</button>; })()}
     </span></td>
-    <td colSpan={5} />
+    <td colSpan={4} />
   </tr>;
 }
 
 /** Key numbers and rules, head to head. An input row copies as a list row does (owner, 9 Nov 2026: no copy arrows): one
- *  worded "Copy to <your work>", at the reading start beside its figure, and "⋯" with both directions in words; results
- *  never copy. same: whether a copy would change nothing (judged on the copied value, not the figure shown). */
+ *  worded "Copy" into your work (owner, 16 Nov 2026: in side by side the direction is plain), centred under the label
+ *  between the two figures, and "⋯" with both directions in words; results never copy. same: whether a copy would change nothing (judged on the copied value, not the figure shown). */
 function KeyBand({ left, right, simple, expert, toWork, copy, nameOf, same, menuKey, onMore }: { left: SideModel; right: SideModel; simple: boolean; expert: boolean; toWork: Dir; copy: (f: CopyField, d: Dir) => void; nameOf: (x: SideModel) => string; same: (f: CopyField, d: Dir) => boolean; menuKey: string | null; onMore: (f: CopyField, label: string, anchor: HTMLElement) => void }) {
   const L = useL(), lang = useLang(), digits = useDigits(), uid = useId();
   const turnout = (x: SideModel) => x.sc.registered ? percent(x.sc.lists.reduce((t, l) => t + l.votes, 0) + x.sc.invalid, x.sc.registered, digits) : '—';
@@ -494,7 +496,7 @@ function KeyBand({ left, right, simple, expert, toWork, copy, nameOf, same, menu
     const to = toWork === 'toRight' ? right : left, off = same(row.field!, toWork), why = `${uid}-${row.k}-same`;
     const label = L(`Copy ${row.label.toLowerCase()} to ${nameOf(to)}`, `העתקת ${row.label} ${hebrewPrefix('ל', nameOf(to))}`);
     return <>
-      <button type="button" className="btn small cmp-band-copy" aria-label={label} aria-describedby={off ? why : undefined} title={off ? L(`${label}: already the same`, `${label}: כבר זהה`) : label} disabled={off} onClick={() => copy(row.field!, toWork)}><bdi className="cmp-band-copy-text">{L(`Copy to ${nameOf(to)}`, `העתקה ${hebrewPrefix('ל', nameOf(to))}`)}</bdi></button>
+      <button type="button" className="btn small cmp-band-copy" aria-label={label} aria-describedby={off ? why : undefined} title={off ? L(`${label}: already the same`, `${label}: כבר זהה`) : label} disabled={off} onClick={() => copy(row.field!, toWork)}><bdi className="cmp-band-copy-text">{L('Copy', 'העתקה')}</bdi></button>
       {off && <span id={why} className="sr-only">{L('Already the same', 'כבר זהה')}</span>}
     </>;
   };
@@ -505,10 +507,10 @@ function KeyBand({ left, right, simple, expert, toWork, copy, nameOf, same, menu
     <div className="cmp-band-grid" dir="ltr">
       {rows.filter((r) => r.show).map((row) => <div key={row.k} className={`cmp-band-row ${row.field ? 'input' : ''}`} data-key={row.k}>
         <span className="cmp-band-v"><bdi dir="ltr">{row.l}</bdi></span>
-        <span className="cmp-band-mid" dir={toWork === 'toLeft' ? 'ltr' : 'rtl'}>
-          <span className="cmp-band-slot cmp-band-slot-copy">{row.field && copyBtn(row)}</span>
+        {/* the label, and under it Copy and "⋯" centred between the two figures, as on the list rows */}
+        <span className="cmp-band-mid">
           <span className="cmp-band-k" dir={lang === 'he' ? 'rtl' : 'ltr'}>{row.label}</span>
-          <span className="cmp-band-slot cmp-band-slot-more">{row.field && moreBtn(row)}</span>
+          {row.field && <span className="cmp-acts" dir={lang === 'he' ? 'rtl' : 'ltr'}>{copyBtn(row)}{moreBtn(row)}</span>}
         </span>
         <span className="cmp-band-v"><bdi dir="ltr">{row.r}</bdi></span>
       </div>)}

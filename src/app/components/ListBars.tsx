@@ -158,7 +158,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
             {d !== 0 && <small dir="ltr"><SeatDelta value={d} /></small>}
           </span>
         </button>
-        {/* while comparing: copy this list's votes from the compared result (shown on hover, focus or when chosen) */}
+        {/* while comparing: copy this list's votes from the compared result, always in view under its line */}
         {line?.kind === 'pair' && <div className="cmpm-copy-row"><button type="button" className="btn small cmpm-copy-btn" onClick={() => askCopy({ lists: [l.id] })}
           aria-label={L(`Copy votes from ${cmp!.label}: ${listLabel(l, lang)}`, `העתקת קולות ${hebrewPrefix('מ', cmp!.label)}: ${listLabel(l, lang)}`)}>{L('Copy votes…', 'העתקת קולות…')}</button></div>}
         {splitIds.has(l.id) && (l.parties?.length ?? 0) > 1 && l.parties!.some(p => partyListed(jointListParties, s, p.id, electedOf(l, lr.seats).filter((c) => c.partyId === p.id).length, lr.seats)) && (
