@@ -149,7 +149,7 @@ function PartRow({ id }: { id: FeatureId }) {
     {own && <span className="sr-only">{L('Your choice: ', 'הבחירה שלכם: ')}</span>}
     <span className="ps-label-text">{label}</span>
   </>;
-  const info = <Info title={label} label={L(`About ${label}`, `הסבר: ${label}`)}>{L(...FEATURE_PREVIEWS[id])}. {from === 'simple' ? L('Part of every level.', 'חלק מכל הרמות.') : L(`Part of ${LEVEL_LABELS[from][0]}${from === 'expert' ? '' : ' and Expert'}.`, `חלק מרמת „${LEVEL_LABELS[from][1]}”${from === 'expert' ? '' : ' ו„מומחה”'}.`)}</Info>;
+  const info = <Info title={label} label={L(`About ${label}`, `הסבר: ${label}`)}>{L(...FEATURE_PREVIEWS[id])}. {from === 'simple' ? L('Part of every level.', 'חלק מכל הרמות.') : L(`Part of ${LEVEL_LABELS[from][0]}${from === 'expert' ? '' : ' and Expert'}.`, `חלק מרמת "${LEVEL_LABELS[from][1]}"${from === 'expert' ? '' : ' ו"מומחה"'}.`)}</Info>;
   if (twoWay) return <div className="ps-row is-toggle" data-setting={`part:${id}`} data-part={id}>
     <label className="ps-label switch-row"><span className="ps-label-inner">{head}</span>
       <span className="switch"><input type="checkbox" aria-label={label} checked={shownAs(id, value) === 'show'} onChange={e => setFeature(id, e.target.checked ? 'show' : PRESETS[level][id] === 'show' ? 'hidden' : PRESETS[level][id])} /></span></label>
@@ -173,7 +173,7 @@ function OwnChoices() {
   const word = (id: FeatureId) => { const v = shownAs(id, custom![id]!); return v === 'show' ? L('added', 'נוסף') : v === 'hidden' ? L('hidden', 'מוסתר') : TOOL_IDS.includes(id) ? L('greyed out', 'באפור') : L('folded', 'מקופל'); };
   const undo = (only?: FeatureId[]) => { const before = snapshot(); resetFeatures(only); toast('info', L('Your choices cleared', 'הבחירות שלכם נוקו'), { label: L('Undo', 'ביטול'), run: () => restore(before) }); };
   return <section className="ps-own" aria-labelledby="ps-own-title" data-setting="own">
-    <h4 id="ps-own-title">{L(`Your choices for ${LEVEL_LABELS[level][0]}`, `הבחירות שלכם לרמת „${LEVEL_LABELS[level][1]}”`)}
+    <h4 id="ps-own-title">{L(`Your choices for ${LEVEL_LABELS[level][0]}`, `הבחירות שלכם לרמת "${LEVEL_LABELS[level][1]}"`)}
       <Info title={L('Your choices', 'הבחירות שלכם')}>{L('Tools and details you added to this level or took from it. They stay when you change level.', 'כלים ופרטים שהוספתם לרמה הזו או הורדתם ממנה. הם נשארים גם כשמחליפים רמה.')}</Info>
       <button type="button" className="link-btn ps-reset" onClick={() => undo()}>{L('Clear all', 'ניקוי הכול')}</button></h4>
     <ul className="ps-own-list">{ids.map(id => <li key={id}><span>{L(...featureLabel(id))} · <span className="ink2">{word(id)}</span></span>

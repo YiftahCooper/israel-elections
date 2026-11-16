@@ -146,8 +146,8 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
    *  16 Nov 2026: one place to see and undo them). Nothing shows while there are none. */
   const own = ownChoices(custom, level).length;
   const ownChip = (before?: () => void) => own > 0 && <button type="button" className="btn small band-custom band-own" aria-haspopup="dialog"
-    title={L(`${own} of your own choices for ${LEVEL_LABELS[level][0]}: open in Settings`, `${own} בחירות שלכם לרמת „${LEVEL_LABELS[level][1]}”: פתיחה בהגדרות`)}
-    aria-label={L(`${own} of your own choices for ${LEVEL_LABELS[level][0]}`, `${own} בחירות שלכם לרמת „${LEVEL_LABELS[level][1]}”`)}
+    title={L(`${own} of your own choices for ${LEVEL_LABELS[level][0]}: open in Settings`, `${own} בחירות שלכם לרמת "${LEVEL_LABELS[level][1]}": פתיחה בהגדרות`)}
+    aria-label={L(`${own} of your own choices for ${LEVEL_LABELS[level][0]}`, `${own} בחירות שלכם לרמת "${LEVEL_LABELS[level][1]}"`)}
     onClick={() => { before?.(); setState({ settingsOpen: true, settingsFocus: 'own' }); }}><span><bdi dir="ltr">+{own}</bdi> {L('own', 'משלכם')}</span></button>;
   const settingsPortal = createPortal(<PersonalSettings />, document.body);
 
