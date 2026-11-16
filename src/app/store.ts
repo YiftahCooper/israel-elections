@@ -12,6 +12,7 @@ import { useSyncExternalStore } from 'react';
 import { DATASET_SCHEMA_VERSION, ELECTION_IDS, type ElectionDataset, type ElectionId, type ElectionIndexEntry } from '../data/schema.ts';
 import { ActionError, applyAction, collectSwitchedOff } from '../model/actions.ts';
 import { listLabel } from './derive.ts';
+import { compactLog, expandLog } from './linkCompact.ts';
 import type { SimAgreement } from '../model/scenario.ts';
 import { errorText, M, type StorageLoss } from '../model/messages.ts';
 import { dropAnalysisCache } from './analysisCache.ts';
@@ -618,9 +619,55 @@ export async function openImported(sc: Scenario): Promise<boolean> {
   return openElection(sc.electionId, { name: sc.name, ...(sc.description ? { description: sc.description } : {}), log, factionSplitBaseline: split, baseBuiltAt: sc.baseBuiltAt });
 }
 
+// ---- community gallery links (#g=<issue>): the short link of a scenario published in the gallery
+const GALLERY_PENDING = 'israel-elections:gallery-pending', GALLERY_ORIGIN = 'israel-elections:gallery-origin';
+const session = { get: (k: string) => { try { return sessionStorage.getItem(k); } catch { return null; } }, set: (k: string, v: string | null) => { try { if (v === null) sessionStorage.removeItem(k); else sessionStorage.setItem(k, v); } catch { /* private window */ } } };
+/** The gallery Open button calls this before opening an entry, so the opened scenario is known to be that entry. */
+export const markGalleryOpen = (issue: number) => session.set(GALLERY_PENDING, String(issue));
+function noteGalleryOpened(e: ElectionId) {
+  const issue = Number(session.get(GALLERY_PENDING));
+  session.set(GALLERY_PENDING, null);
+  session.set(GALLERY_ORIGIN, issue > 0 && state.scenario ? JSON.stringify({ issue, e, log: JSON.stringify(state.scenario.log.map((x) => x.action)) }) : null);
+}
+function galleryOrigin(): { issue: number; e: ElectionId; log: string } | null {
+  try { const g = JSON.parse(session.get(GALLERY_ORIGIN) ?? 'null'); return g && Number.isInteger(g.issue) && typeof g.log === 'string' ? g : null; } catch { return null; }
+}
+async function openGalleryFromHash(): Promise<boolean> {
+  const issue = Number(location.hash.slice(3));
+  const site = `${location.origin}${location.pathname}`;
+  let link: string | undefined;
+  try {
+    // a fresh read of the published index (one static file), not the gallery page's cache or its wait after a failure:
+    // an entry published since the gallery was last read must open
+    const { GalleryClient } = await import('./gallery/gallery.ts');
+    link = (await new GalleryClient(site, (input, init) => fetch(input, init)).load()).entries.find((x) => x.issue === issue)?.shareLink;
+  } catch { /* no index */ }
+  if (!link) {
+    history.replaceState(null, '', location.pathname + location.search);
+    toast('error', state.lang === 'he' ? 'התרחיש הזה לא נמצא בגלריה (אולי הוסר), או שהגלריה לא נטענה.' : 'This scenario is not in the gallery (it may have been removed), or the gallery could not be loaded.');
+    return false;
+  }
+  history.replaceState(null, '', new URL(link).hash);
+  markGalleryOpen(issue);
+  return openSharedFromHash();
+}
+
 /** Opens a share link in the address bar (on start-up or when a link is pasted into an open tab). */
 export async function openSharedFromHash(): Promise<boolean> {
-  const sh = await readSharedFromHash();
+  if (/^#g=\d+$/.test(location.hash)) return openGalleryFromHash();
+  let sh = await readSharedFromHash();
+  // a short link is read against its election's data; one naming a list or candidate the data lacks is damaged
+  if (sh?.compact) {
+    try { const { compact: _c, ...rest } = sh; sh = { ...rest, log: expandLog(sh.log as never, await loadDataset(sh.electionId)) }; }
+    catch (e) {
+      if (!(e instanceof DataLoadError)) sh = null;
+      else { // its data could not be loaded: the link stays in the address bar, and Try again opens it
+        const id = sh.electionId;
+        setState({ loadError: { id, message: e.message, kind: e.kind, retry: () => void openSharedFromHash() } });
+        return true;
+      }
+    }
+  }
   if (!sh) {
     if (!/^#s=/.test(location.hash)) return false;
     history.replaceState(null, '', location.pathname + location.search);
@@ -630,7 +677,7 @@ export async function openSharedFromHash(): Promise<boolean> {
   // the link is cleared only once it has opened, so a failed load can be retried by reloading
   // an unnamed shared scenario is named for where it came from, so it is recognisable among unsaved work
   const name = sh.name || (state.lang === 'he' ? 'תרחיש משותף' : 'Shared scenario');
-  if (await openElection(sh.electionId, { ...sh, name })) history.replaceState(null, '', location.pathname + location.search);
+  if (await openElection(sh.electionId, { ...sh, name })) { history.replaceState(null, '', location.pathname + location.search); noteGalleryOpened(sh.electionId); }
   // its data could not be loaded: Try again opens the link (still in the address bar), not the plain election
   else if (state.loadError?.id === sh.electionId && !state.loadError.kept) setState({ loadError: { ...state.loadError, retry: () => void openSharedFromHash() } });
   return true;
@@ -709,14 +756,20 @@ async function pipe(bytes: Uint8Array, stream: CompressionStream | Decompression
   return new Uint8Array(await out.arrayBuffer());
 }
 
-export async function shareLink(): Promise<string> {
+export async function shareLink(opts: { gallery?: boolean } = {}): Promise<string> {
   const s = state.scenario!;
-  const payload = JSON.stringify({ e: s.electionId, n: s.name, ...(s.description ? { d: s.description } : {}), b: s.baseBuiltAt, f: s.factionSplitBaseline ?? false, l: s.log.map((x) => x.action) });
+  const log = s.log.map((x) => x.action);
+  // a scenario opened from the community gallery and not changed since is shared as its gallery entry
+  const gallery = galleryOrigin();
+  if (opts.gallery !== false && gallery && gallery.e === s.electionId && gallery.log === JSON.stringify(log)) return `${location.origin}${location.pathname}#g=${gallery.issue}`;
+  // v2: lists and candidates are written against the published election (linkCompact), so links stay short
+  const ds = state.datasets[s.electionId];
+  const payload = JSON.stringify({ e: s.electionId, n: s.name, ...(s.description ? { d: s.description } : {}), b: s.baseBuiltAt, f: s.factionSplitBaseline ?? false, ...(ds ? { v: 2, l: compactLog(log, ds) } : { l: log }) });
   const z = await pipe(new TextEncoder().encode(payload), new CompressionStream('deflate-raw'));
   return `${location.origin}${location.pathname}#s=${b64url(z)}`;
 }
 
-export async function readSharedFromHash(): Promise<{ electionId: ElectionId; name: string; description?: string; log: Action[]; factionSplitBaseline?: boolean; baseBuiltAt: string } | null> {
+export async function readSharedFromHash(): Promise<{ electionId: ElectionId; name: string; description?: string; log: Action[]; factionSplitBaseline?: boolean; baseBuiltAt: string; compact?: boolean } | null> {
   const m = location.hash.match(/#s=([A-Za-z0-9_-]+)/);
   if (!m) return null;
   try {
@@ -724,7 +777,7 @@ export async function readSharedFromHash(): Promise<{ electionId: ElectionId; na
     const p: unknown = JSON.parse(new TextDecoder().decode(raw));
     // a link that does not name a known election with a list of changes is damaged; its steps are checked on replay
     if (!isRecord(p) || !ELECTION_IDS.includes(p.e as ElectionId) || !Array.isArray(p.l) || !optionalOf(p.n, 'string') || !optionalOf(p.d, 'string') || !optionalOf(p.b, 'string')) return null;
-    return { electionId: p.e as ElectionId, name: (p.n as string | undefined) ?? '', ...(typeof p.d === 'string' ? { description: p.d } : {}), log: p.l as Action[], factionSplitBaseline: p.f === true, baseBuiltAt: p.b as string };
+    return { electionId: p.e as ElectionId, name: (p.n as string | undefined) ?? '', ...(typeof p.d === 'string' ? { description: p.d } : {}), log: p.l as Action[], factionSplitBaseline: p.f === true, baseBuiltAt: p.b as string, ...(p.v === 2 ? { compact: true } : {}) };
   } catch { return null; }
 }
 

@@ -6,6 +6,7 @@ import { applyAction } from '../../model/actions.ts';
 import { errorText } from '../../model/messages.ts';
 import { validAction, type Action, type Scenario } from '../../model/scenario.ts';
 import { baselineOf } from '../factionDefaults.ts';
+import { compactLog, expandLog } from '../linkCompact.ts';
 import { DataLoadError, getState, loadDataset, noteStorageLoss, openElection, replay, setState, toast } from '../store.ts';
 import type { MatchOverride } from './match.ts';
 
@@ -53,13 +54,15 @@ const unb64url = (s: string) => Uint8Array.from(atob(s.replace(/-/g, '+').replac
 async function pipe(bytes: Uint8Array, stream: CompressionStream | DecompressionStream) { return new Uint8Array(await new Response(new Blob([bytes as BlobPart]).stream().pipeThrough(stream)).arrayBuffer()); }
 
 /** One side of a shared or saved comparison: the election, a name and the change log (empty: the official result). */
-export interface SideLink { e: ElectionId; n: string; f: boolean; l: Action[] }
+export interface SideLink { e: ElectionId; n: string; f: boolean; l: Action[]; /** l written against the published election (linkCompact) */ v?: 2 }
 export interface ComparisonLink { v: 1; main: SideLink; other: SideLink; m: MatchOverride[] }
 const sideOf = (s: Scenario): SideLink => ({ e: s.electionId, n: s.name, f: s.factionSplitBaseline ?? false, l: s.log.map((x) => x.action) });
 export const comparisonOf = (main: Scenario, other: Scenario, m: MatchOverride[]): ComparisonLink => ({ v: 1, main: sideOf(main), other: sideOf(other), m });
 
 export async function comparisonLink(c: ComparisonLink): Promise<string> {
-  const z = await pipe(new TextEncoder().encode(JSON.stringify(c)), new CompressionStream('deflate-raw'));
+  // each side's lists and candidates are written against its published election, as in a scenario link
+  const short = (x: SideLink): SideLink => { const ds = getState().datasets[x.e]; return ds && x.l.length ? { ...x, v: 2, l: compactLog(x.l, ds) as never } : x; };
+  const z = await pipe(new TextEncoder().encode(JSON.stringify({ ...c, main: short(c.main), other: short(c.other) })), new CompressionStream('deflate-raw'));
   return `${location.origin}${location.pathname}#c=${b64url(z)}`;
 }
 /** Copies a comparison's link and says so (Compare's head and the Scenarios page). */
@@ -68,7 +71,8 @@ export async function copyComparisonLink(c: ComparisonLink) {
   try { await navigator.clipboard.writeText(await comparisonLink(c)); toast('info', he ? 'הקישור הועתק. הוא פותח את שני הצדדים ואת ההתאמות שלכם.' : 'Link copied. It opens both sides and your pairings.'); }
   catch { toast('error', he ? 'הדפדפן סירב להעתיק את הקישור.' : 'The browser refused to copy the link.'); }
 }
-const validSide = (x: unknown): x is SideLink => !!x && typeof x === 'object' && ELECTION_IDS.includes((x as SideLink).e) && typeof (x as SideLink).n === 'string' && Array.isArray((x as SideLink).l) && (x as SideLink).l.every(validAction);
+// a short side is checked once it is read against its election's data (openComparison)
+const validSide = (x: unknown): x is SideLink => !!x && typeof x === 'object' && ELECTION_IDS.includes((x as SideLink).e) && typeof (x as SideLink).n === 'string' && Array.isArray((x as SideLink).l) && ((x as SideLink).v === 2 || (x as SideLink).l.every(validAction));
 const validLink = (c: unknown): c is ComparisonLink => !!c && typeof c === 'object' && (c as ComparisonLink).v === 1 && validSide((c as ComparisonLink).main) && validSide((c as ComparisonLink).other) && Array.isArray((c as ComparisonLink).m);
 export async function readComparison(hash: string): Promise<ComparisonLink | null> {
   const m = hash.match(/#c=([A-Za-z0-9_-]+)/);
@@ -84,9 +88,14 @@ export async function readComparison(hash: string): Promise<ComparisonLink | nul
 export async function openComparison(c: ComparisonLink): Promise<boolean> {
   const he = getState().lang === 'he';
   // both sides' data first: if either cannot be loaded, nothing is opened or changed (the load banner says which)
-  let ods: ElectionDataset;
-  try { ods = await loadDataset(c.other.e); }
-  catch (e) { setState({ loadError: { id: c.other.e, message: e instanceof Error ? e.message : String(e), kind: e instanceof DataLoadError ? e.kind : 'network', retry: () => void openComparison(c) } }); return false; }
+  let ods: ElectionDataset, mds: ElectionDataset;
+  try { ods = await loadDataset(c.other.e); mds = await loadDataset(c.main.e); }
+  catch (e) { setState({ loadError: { id: e instanceof DataLoadError && /data\/(k\d+)/.exec(e.message)?.[1] === c.main.e ? c.main.e : c.other.e, message: e instanceof Error ? e.message : String(e), kind: e instanceof DataLoadError ? e.kind : 'network', retry: () => void openComparison(c) } }); return false; }
+  // short sides are read against their election's data; a side naming a list or candidate the data lacks is damaged
+  const full = (x: SideLink, ds: ElectionDataset): SideLink | null => { if (x.v !== 2) return x; try { const l = expandLog(x.l as never, ds); return l.every(validAction) ? { e: x.e, n: x.n, f: x.f, l } : null; } catch { return null; } };
+  const main = full(c.main, mds), other = full(c.other, ods);
+  if (!main || !other) { toast('error', he ? 'קישור ההשוואה פגום או חלקי; לא נפתחה השוואה.' : 'This comparison link is damaged or incomplete; no comparison was opened.'); return false; }
+  c = { ...c, main, other };
   if (!(await openElection(c.main.e, { name: c.main.n || (he ? 'תרחיש משותף' : 'Shared scenario'), log: c.main.l, factionSplitBaseline: c.main.f }))) return false;
   const value = c.other.e === c.main.e ? 'official' : `${ELECTION}${c.other.e}`;
   const key = c.other.e === c.main.e ? `official:${c.other.e}` : value;

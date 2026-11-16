@@ -47,3 +47,26 @@ test('a list with no parties of its own can join another from its panel', async 
   await choose(page.locator('.side-panel section.joint-edit').getByRole('button', { name: 'Run inside another list' }), '25-ום');
   await expect(page.locator('.side-panel .party-rows')).toContainText('Balad');
 });
+
+test('the share link of a joint-list edit is short and opens the same lists; a gallery entry shares as #g=', async ({ page }) => {
+  await start(page);
+  await row(page, "Hadash–Ta'al").click();
+  await choose(page.locator('.side-panel section.joint-edit').getByRole('button', { name: 'Add a list to this one' }), '25-ד');
+  await page.keyboard.press('Escape');
+  await page.getByRole('tab', { name: 'Scenarios', exact: true }).click();
+  await page.getByRole('button', { name: 'Copy a share link', exact: true }).click();
+  const link = await page.getByRole('textbox', { name: 'Share link', exact: true }).inputValue();
+  expect(link.length).toBeLessThan(400);
+  // the gallery index names this link as entry 7
+  await page.route('**/data/scenarios.json', (route) => route.fulfill({ json: { timestamp: Date.now() - 1000, entries: [{ issue: 7, author: 'someone', date: '2026-11-01T00:00:00Z', likes: 0,
+    name: 'Balad with Hadash–Ta’al', description: '', electionId: 'k25', year: '2022', tags: [], shareLink: link }] } }));
+  await page.goto('about:blank');
+  await page.goto(link.replace(/#s=.*/, '#g=7'));
+  await expect(page.getByRole('button', { name: 'Switch scenario' })).toContainText('Shared scenario');
+  await page.getByRole('tab', { name: 'Overview', exact: true }).click();
+  await expect(row(page, "Hadash–Ta'al")).toContainText('317,352');
+  await expect(page.locator('.lb-row').filter({ hasText: /Balad/ })).toHaveCount(0);
+  await page.getByRole('tab', { name: 'Scenarios', exact: true }).click();
+  await page.getByRole('button', { name: 'Copy a share link', exact: true }).click();
+  await expect(page.getByRole('textbox', { name: 'Share link', exact: true })).toHaveValue(/#g=7$/);
+});
