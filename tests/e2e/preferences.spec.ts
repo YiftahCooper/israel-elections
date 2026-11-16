@@ -14,12 +14,12 @@ test('first-use choices wait for an explicit scope; keyboard and cancellation pr
   await expect(ask).toBeVisible(); await expect(ask).toBeFocused();
   await page.keyboard.press('Enter'); await expect(ask).toBeVisible();
   await expect(ask.getByRole('button', { name: 'Apply', exact: true })).toBeDisabled();
-  await ask.getByRole('combobox').selectOption('new');
+  await choose(ask.locator('.choice-trigger').first(), 'new');
   await expect(votes).toHaveValue(before);
   await page.keyboard.press('Escape'); await expect(ask).toBeHidden();
   await expect(votes).toHaveValue(before); await expect(votes).toBeFocused();
   await page.getByRole('button', { name: 'Increase Votes', exact: true }).click();
-  await ask.getByRole('combobox').selectOption('new');
+  await choose(ask.locator('.choice-trigger').first(), 'new');
   await ask.getByRole('radio', { name: 'Always', exact: true }).check();
   await ask.getByRole('button', { name: 'Apply', exact: true }).click();
   await expect(ask).toBeHidden();
@@ -41,7 +41,7 @@ test('opening a saved scenario asks about its comparison, persists Always, and S
   await choose(switcher, saved!);
   const ask = page.getByRole('dialog', { name: 'Mark changes since', exact: true });
   await expect(ask).toBeVisible();
-  await ask.getByRole('combobox').selectOption('official');
+  await choose(ask.locator('.choice-trigger').first(), 'official');
   await ask.getByRole('radio', { name: 'Always', exact: true }).check();
   await ask.getByRole('button', { name: 'Apply', exact: true }).click();
   await expect(switcher).toHaveAttribute('data-value', saved!);
@@ -68,7 +68,7 @@ for (const scope of ['Just this once', 'For this scenario']) test(`comparison sc
   await choose(picker, 'official'); await choose(picker, saved);
   const ask = page.locator('.source-ask');
   await expect(ask.getByRole('radio')).toHaveCount(3);
-  await ask.getByRole('combobox').selectOption('reference');
+  await choose(ask.locator('.choice-trigger').first(), 'reference');
   await ask.getByRole('radio', { name: scope, exact: true }).check();
   await ask.getByRole('button', { name: 'Apply', exact: true }).click();
   await expect(picker).toHaveAttribute('data-value', saved);

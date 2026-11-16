@@ -88,9 +88,14 @@ test('joint-list parties without a colour of their own are told apart on candida
   await expect(component).toBeVisible();
   const partyColour = await component.evaluate(e => getComputedStyle(e).getPropertyValue('--c').trim());
   expect(partyColour.toLowerCase()).not.toBe(listColour.toLowerCase());
-  const displayColours = await panel.locator('.party-row .slip').evaluateAll(els => els.map(el => getComputedStyle(el).getPropertyValue('--c').trim()));
+  // a party row shows its logo, else its colour dot (Round 7): read the slip's colour or the dot's
+  const displayColours = await panel.locator('.party-row .slip, .party-row .list-mark-dot').evaluateAll(els => els.map(el => {
+    const c = el.classList.contains('slip') ? getComputedStyle(el).getPropertyValue('--c').trim() : getComputedStyle(el).backgroundColor;
+    const m = c.startsWith('rgb') ? c.match(/\d+/g) : null;
+    return m ? `#${m.slice(0, 3).map(x => Number(x).toString(16).padStart(2, '0')).join('')}` : c.toLowerCase();
+  }));
   expect(new Set(displayColours).size).toBe(2);
-  expect(displayColours).toContain(partyColour);
+  expect(displayColours).toContain(partyColour.toLowerCase());
   await panel.getByRole('button', { name: 'Split into separate lists', exact: true }).click();
   await panel.getByRole('button', { name: 'Run as 2 separate lists', exact: true }).click();
   // New ballot lists start from recorded party colours or stable party-id bases.

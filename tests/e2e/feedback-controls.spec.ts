@@ -34,7 +34,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
       await votes.fill(String(original + 1000)); await votes.press('Enter');
       const ask = page.locator('.source-ask');
       await expect(ask.getByRole('radio')).toHaveCount(3);
-      await ask.getByRole('combobox').selectOption('new');
+      await choose(ask.locator('.choice-trigger').first(), 'new');
       await ask.screenshot({ path: `.backup-scratch/task-b/after-prefs-${election}-${lang}-${theme}-${width}.png` });
       await page.keyboard.press('Escape');
       expect(Number((await votes.inputValue()).replaceAll(',', ''))).toBe(original);
@@ -63,7 +63,7 @@ for (const scope of ['Just this once', 'For this list']) test(`source scope: ${s
   const votes = panel.getByRole('textbox', { name: 'Votes', exact: true });
   await votes.fill('123457'); await votes.press('Enter');
   await expect(ask.getByRole('radio')).toHaveCount(3);
-  await ask.getByRole('combobox').selectOption('new');
+  await choose(ask.locator('.choice-trigger').first(), 'new');
   await ask.getByRole('radio', { name: scope, exact: true }).check();
   await ask.screenshot({ path: `.backup-scratch/task-b/after-prefs-${scope.replaceAll(' ', '-')}.png` });
   await ask.getByRole('button', { name: 'Apply', exact: true }).press('Enter');
