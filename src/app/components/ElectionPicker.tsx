@@ -12,23 +12,28 @@ function OfficialPreview({ ds }: { ds: ElectionDataset }) {
   const s = useMemo(() => scenarioFromDataset(ds), [ds]);
   return <ResultPreview s={s} blocs={false} />;
 }
+/** The strip shipped with the election list (no election data downloads to draw it). */
+function IndexPreview({ pieces }: { pieces: [string, number][] }) {
+  return <span className="result-preview" aria-hidden>{pieces.map(([color, n], i) => <i key={i} style={{ background: color, flex: n }} />)}</span>;
+}
 /** `arrows`: the ‹ › previous/next buttons beside the picker (not on the phone bar, owner 9 Nov 2026). */
 export function ElectionPicker({ elections, value, onChange, arrows = true }: { elections: ElectionIndexEntry[]; value: string; onChange: (value: string) => void; arrows?: boolean }) {
   const L = useL(), lang = useLang(), datasets = useStore(st => st.datasets);
   const dialog = useRef<HTMLDialogElement>(null), trigger = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false), [query, setQuery] = useState('');
   const era = (date: string) => Number(date.slice(0, 4)) >= 2015 ? '2015–2026' : Number(date.slice(0, 4)) >= 2003 ? '2003–2013' : Number(date.slice(0, 4)) >= 1992 ? '1992–2001' : '1949–1988';
-  const options = [...elections.map(e => ({ value: e.id, electionId: e.id, label: electionLabel(e, elections, lang), date: e.date, group: era(e.date), disabled: !e.available, pm: false })), ...electionContext.pmContests.filter(c => c.contestType === 'prime-minister-only').map(c => ({ value: c.id, electionId: c.electionId, label: `2001 · ${L('Prime Minister only', 'ראש הממשלה בלבד')}`, date: c.effectiveDate, group: era(c.effectiveDate), disabled: false, pm: true }))].sort((a, b) => b.date.localeCompare(a.date));
+  const options = [...elections.map(e => ({ value: e.id, electionId: e.id, label: electionLabel(e, elections, lang), date: e.date, group: era(e.date), disabled: !e.available, pm: false, preview: e.preview })), ...electionContext.pmContests.filter(c => c.contestType === 'prime-minister-only').map(c => ({ value: c.id, electionId: c.electionId, label: `2001 · ${L('Prime Minister only', 'ראש הממשלה בלבד')}`, date: c.effectiveDate, group: era(c.effectiveDate), disabled: false, pm: true, preview: undefined }))].sort((a, b) => b.date.localeCompare(a.date));
   const matches = options.filter(o => `${o.label} ${o.date}`.toLocaleLowerCase().includes(query.toLocaleLowerCase()));
   const at = options.findIndex(o => o.value === value);
   const close = () => { dialog.current?.close(); setOpen(false); trigger.current?.focus(); };
   const commit = (key: string) => { onChange(key); close(); };
-  const previewKey = elections.filter(e => e.available).map(e => e.id).join(',');
+  const previewKey = elections.filter(e => e.available && !e.preview).map(e => e.id).join(',');
   useEffect(() => {
     if (!open) return;
     let live = true;
-    // Fetch on opening only. Loading previews never changes the active election or scenario.
-    void Promise.allSettled(elections.filter(e => e.available).map(e => loadDataset(e.id))).then(() => {
+    // The election list carries each strip; only an election missing one is fetched, on opening. Loading previews
+    // never changes the active election or scenario.
+    void Promise.allSettled(elections.filter(e => e.available && !e.preview).map(e => loadDataset(e.id))).then(() => {
       if (live) dialog.current?.querySelector<HTMLElement>(`[data-choice-value="${value}"]`)?.scrollIntoView({ block: 'nearest' });
     });
     return () => { live = false; };
@@ -50,7 +55,7 @@ export function ElectionPicker({ elections, value, onChange, arrows = true }: { 
           {o.group !== matches[i - 1]?.group && <h3 className="choice-era">{o.group}</h3>}
           <button className="choice-option" data-choice-value={o.value} aria-label={o.label} aria-description={formatDate(o.date, lang)} aria-current={o.value === value ? 'true' : undefined} disabled={o.disabled} onClick={() => commit(o.value)}>
             <span className="choice-copy"><b>{o.label}</b><small><time dateTime={o.date}>{formatDate(o.date, lang)}</time>{o.disabled ? L(' · unavailable', ' · לא זמין') : ''}</small></span>
-            {o.pm ? <span className="pm-marker">{L('PM ballot', 'פתק לראש הממשלה')}</span> : datasets[o.electionId] ? <OfficialPreview ds={datasets[o.electionId]!} /> : <span className="preview-loading" aria-label={L('Loading result preview', 'טעינת תצוגת התוצאה')} />}
+            {o.pm ? <span className="pm-marker">{L('PM ballot', 'פתק לראש הממשלה')}</span> : o.preview ? <IndexPreview pieces={o.preview} /> : datasets[o.electionId] ? <OfficialPreview ds={datasets[o.electionId]!} /> : <span className="preview-loading" aria-label={L('Loading result preview', 'טעינת תצוגת התוצאה')} />}
             <span className="election-current-mark" aria-hidden>{o.value === value ? '✓' : ''}</span>
           </button>
         </div>)}

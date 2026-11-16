@@ -15,7 +15,8 @@
     "test:e2e": "playwright test",
     "data:fetch": "node scripts/fetch-sources.ts",
     "data:gaps": "node scripts/gaps-register.ts",
-    "data:gaps:check": "node scripts/gaps-register.ts --check"
+    "data:gaps:check": "node scripts/gaps-register.ts --check",
+    "data:previews": "node scripts/election-previews.ts"
   },
   "devDependencies": {
     "@playwright/test": "^1.64.1",

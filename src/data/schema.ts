@@ -17,6 +17,8 @@ export interface ElectionIndexEntry {
   /** false = sources are downloaded but the dataset is not yet built and verified */
   available: boolean;
   status: { stage: string; noteEn?: string; noteHe?: string };
+  /** the official result strip the election picker draws: [colour, seats] per list with seats (scripts/election-previews.ts) */
+  preview?: [string, number][];
 }
 
 export interface DatasetStatus {
