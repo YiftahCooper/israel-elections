@@ -26,6 +26,13 @@ const kinds: GapKind[] = ['unknown', 'missing-field', 'conflict', 'single-source
 const read = (root: string, file: string) => JSON.parse(readFileSync(join(root, file), 'utf8'));
 const filesUnder = (root: string, directory: string): string[] => !existsSync(join(root, directory)) ? [] : readdirSync(join(root, directory), { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name, 'en')).flatMap(e => e.isDirectory() ? filesUnder(root, `${directory}/${e.name}`) : [`${directory}/${e.name}`]);
 const nullMetadata = new Set(['lastModified', 'archivedAt', 'archiveUrl', 'shortEn', 'bloc', 'partiesHe', 'defaultBlocScheme']);
+/** Nulls that mean "does not apply" in one family of records: an event that moves no seat, has no seat marker or is no
+ *  formal decision; a source page with no date of its own; a Speaker still in office. */
+const INAPPLICABLE_NULLS: [RegExp, Set<string>][] = [
+  [/^data\/research\/knesset-events\//, new Set(['seatsAfter', 'marker', 'formalDecisionType', 'date'])],
+  [/^data\/research\/knesset-speakers\.json$/, new Set(['end'])],
+];
+const inapplicableNull = (file: string, k: string) => nullMetadata.has(k) || INAPPLICABLE_NULLS.some(([f, keys]) => f.test(file) && keys.has(k));
 const nextSource = (file: string, path: string) => /recommendation/i.test(path) ? 'President’s House / State Archives faction consultation minutes; contemporary independent reporting' : /colour|color/i.test(path) ? 'Dated party campaign material or official party style guide' : /candidate|roster|rank/i.test(path + file) ? 'CEC approved candidate gazette and official elected-member notice' : /logo/i.test(file) ? 'Dated original campaign artefact and rights/catalogue record' : /famil|lineage|parties/.test(file) ? 'Party registry / Knesset faction history; independent academic party history' : 'CEC / Knesset primary record for the field; independent dated corroboration';
 const compact = (v: any) => typeof v === 'string' ? v : JSON.stringify(v);
 
@@ -140,7 +147,7 @@ export function scanDocument(file: string, doc: any, listLookup: Record<string, 
     if (/\/SOURCES\.json$/.test(file) && /^\$\[\d+\]$/.test(path))
       for (const field of ['id', 'file', 'url', 'sha256']) if (!v[field]) addHere('missing-field', `Source manifest field absent: ${field}`, `.${field}`);
     for (const [k, x] of Object.entries(v)) {
-      if (x === null && !nullMetadata.has(k)) addHere('unknown', `Explicit null: ${k} (may be unavailable or inapplicable; review context)`, `.${k}`);
+      if (x === null && !inapplicableNull(file, k)) addHere('unknown', `Explicit null: ${k} (may be unavailable or inapplicable; review context)`, `.${k}`);
       if (typeof x === 'string') {
         if (/^(unknown|unresolved|unavailable|missing|not-verified)$/i.test(x) && k !== 'status') addHere('unknown', `${k}: ${x}`, `.${k}`);
         if (/^(gap|gaps|missing|unresolved|unassignedRanks)$/i.test(k) && x) addHere('unknown', x, `.${k}`);
@@ -235,8 +242,15 @@ export function certaintyCensus(root = ROOT) {
   return census;
 }
 
+/** Member-change files have their own scanner (memberChangeGaps): their tenure gaps are rows, their bulk fields are not. */
+const MEMBER_CHANGES = /^data\/research\/knesset-member-changes\/k\d+\.json$/;
+/** Every file the register reads. All of data/ is in it, so a new research or raw file is never left out of the register
+ *  (16 Nov 2026: the register is kept current by `npm run data:gaps:check`, run by Vitest). */
+export function registerInputs(root = ROOT): string[] {
+  return [...filesUnder(root, 'data/raw'), ...filesUnder(root, 'data/meta'), ...filesUnder(root, 'data/research').filter(f => !MEMBER_CHANGES.test(f)), ...filesUnder(root, 'docs/decisions'), ...filesUnder(root, 'docs/research/data-audit'), 'src/data/schema.ts', 'public/data/elections.json', ...filesUnder(root, 'public/data').filter(f => /\/k\d+\.json$/.test(f))].sort();
+}
 export function generateFullRegister(root = ROOT) {
-  const inputs = [...filesUnder(root, 'data/raw'), ...filesUnder(root, 'data/meta'), ...filesUnder(root, 'docs/decisions'), ...filesUnder(root, 'docs/research/data-audit'), 'src/data/schema.ts', 'public/data/elections.json', ...filesUnder(root, 'public/data').filter(f => /\/k\d+\.json$/.test(f))].sort();
+  const inputs = registerInputs(root);
   const listLookup: Record<string, Obj> = {};
   for (const f of inputs.filter(f => /^public\/data\/k\d+\.json$/.test(f))) { const d = read(root, f); for (const l of d.lists) { listLookup[`${d.id}:${l.id}`] = l; listLookup[`${d.id}:${l.letters}`] = l; } }
   const gaps: Gap[] = [];
@@ -267,13 +281,17 @@ export function generateFullRegister(root = ROOT) {
       });
     }
   }
-  for (const file of filesUnder(root, 'data/research/knesset-member-changes').filter(f => /\/k\d+\.json$/.test(f))) gaps.push(...memberChangeGaps(file, read(root, file)));
+  for (const file of filesUnder(root, 'data/research/knesset-member-changes').filter(f => MEMBER_CHANGES.test(f))) gaps.push(...memberChangeGaps(file, read(root, file)));
   gaps.sort((a, b) => (Number(a.election.slice(1)) || 999) - (Number(b.election.slice(1)) || 999) || a.file.localeCompare(b.file, 'en') || a.item.localeCompare(b.item, 'en') || a.kind.localeCompare(b.kind, 'en'));
   return { schemaVersion: 1, counts: Object.fromEntries(kinds.map(k => [k, gaps.filter(g => g.kind === k).length])), census: certaintyCensus(root), gaps };
 }
 type FullRegister = ReturnType<typeof generateFullRegister>;
 const electionKey = (id: string) => /^k\d+$/.test(id) ? `k${Number(id.slice(1))}` : id;
 const electionOrder = (a: string, b: string) => (Number(a.slice(1)) || 999) - (Number(b.slice(1)) || 999) || a.localeCompare(b, 'en');
+/** Most-shown first (16 Nov 2026): facts every election uses, then the elections from the newest (the one the explorer
+ *  opens on) back to the first. A reader meets recent data most and relies on it most. */
+export const shownOrder = (a: string, b: string) => shownRank(a) - shownRank(b) || a.localeCompare(b, 'en');
+const shownRank = (e: string) => /^k\d+$/.test(e) ? -Number(e.slice(1)) : -1000;
 const tally = <T extends string>(values: readonly T[], gaps: Gap[], pick: (g: Gap) => string) => Object.fromEntries(values.map(v => [v, gaps.filter(g => pick(g) === v).length])) as Record<T, number>;
 const nonzero = (o: Record<string, number>) => Object.fromEntries(Object.entries(o).filter(([, n]) => n));
 /** A conflict's subject, so a grouped line still says what is disputed. */
@@ -314,11 +332,11 @@ export function summarizeRegister(full: FullRegister) {
     const conflicts = [...new Set(gs.filter(g => g.kind === 'conflict').map(conflictAbout))];
     return { election: electionKey(gs[0].election), area: areaOf(gs[0], 2), count: gs.length, certainty: nonzero(tally(CERTAINTIES, gs, g => g.certainty)),
       kinds: nonzero(tally(kinds, gs, g => g.kind)), labels: [...new Set(gs.map(labelOf).filter(Boolean))], ...(conflicts.length ? { disputed: conflicts } : {}), file: gs[0].file };
-  }).sort((a, b) => electionOrder(a.election, b.election) || b.count - a.count || a.area.localeCompare(b.area, 'en'));
+  }).sort((a, b) => shownOrder(a.election, b.election) || Number(!!b.disputed) - Number(!!a.disputed) || b.count - a.count || a.area.localeCompare(b.area, 'en'));
   const mediumOpen = full.gaps.filter(g => g.importance === 'medium' && isOpen(g));
   const medium = [...group(mediumOpen, g => JSON.stringify([electionKey(g.election), areaOf(g, 1)])).values()].map(gs => ({
     election: electionKey(gs[0].election), area: areaOf(gs[0], 1), count: gs.length, certainty: nonzero(tally(CERTAINTIES, gs, g => g.certainty)),
-  })).sort((a, b) => electionOrder(a.election, b.election) || b.count - a.count || a.area.localeCompare(b.area, 'en'));
+  })).sort((a, b) => shownOrder(a.election, b.election) || b.count - a.count || a.area.localeCompare(b.area, 'en'));
   const lowGaps = full.gaps.filter(g => g.importance === 'low');
   const low = [...group(lowGaps, g => areaOf(g, 1)).entries()].map(([area, gs]) => ({ area, count: gs.length, open: gs.filter(isOpen).length }))
     .sort((a, b) => b.count - a.count || a.area.localeCompare(b.area, 'en'));
@@ -351,15 +369,15 @@ export function renderMarkdown(register: Summary): string {
     `- High importance: ${imp.high.total} (${certaintyList(imp.high)}).`,
     `- Medium importance: ${imp.medium.total} (${certaintyList(imp.medium)}).`,
     `- Low importance: ${imp.low.total} (${certaintyList(imp.low)}).`, '',
-    '## High importance: open, by election', '',
-    'Could change seats, votes, a government’s composition, recommendation totals or a Simple-level headline. One line per record area with counts by certainty; labels are ballot letters, people or events.', ''];
+    '## High importance: open, most-shown first', '',
+    'Could change seats, votes, a government’s composition, recommendation totals or a Simple-level headline. Fix from the top: facts every election uses come first, then the elections from the newest (the one the explorer opens on) back to the first; within an election, disputed rows first, then the largest. One line per record area with counts by certainty; labels are ballot letters, people or events.', ''];
   for (const [election, rows] of byElection(register.high)) {
     lines.push(`### ${election}`, '');
     for (const r of rows) lines.push(`- [${escapeCell(r.area)}](../${r.file}) ×${r.count}: ${certaintyList(r.certainty)}${r.labels.length ? `. ${escapeCell(listLabels(r.labels))}` : ''}${r.disputed ? `. Disputed: ${escapeCell(r.disputed.join('; '))}` : ''}`);
     lines.push('');
   }
-  lines.push('## Medium importance: open, by election', '',
-    'Shown in Standard/Expert views or the After-the-election tab. Grouped by record area; counts by certainty.', '');
+  lines.push('## Medium importance: open, most-shown first', '',
+    'Shown in Standard/Expert views or the After-the-election tab, in the same order. Grouped by record area; counts by certainty.', '');
   for (const [election, rows] of byElection(register.medium))
     lines.push(`- **${election}**: ${rows.map(r => `${escapeCell(r.area)} ${r.count} (${certaintyList(r.certainty)})`).join('; ')}.`);
   lines.push('', '## Low importance: counts only', '',
@@ -377,7 +395,7 @@ export function renderMarkdown(register: Summary): string {
     '## Maintenance and scope', '',
     'Regenerate this summary: `npm run data:gaps`. Verify: `npm run data:gaps:check` (also checked by Vitest). Production builds and deployments do not enforce register freshness. Only summary-level counts and grouped facts affect staleness; raw file bytes and bulk-only descriptions do not.', '',
     'Importance and certainty are code rules (`importanceOf` in scripts/gaps-register.ts; src/data/evidence.ts), not hand tags. Full export: `npm run data:gaps -- --full` writes `.backup-scratch/data-gaps/full.json` and `full.md` (gitignored), with every row, its sources and the best next source.', '',
-    'Retained JSON under data/raw and data/meta is scanned for declared uncertainty; published national datasets are checked against required schema fields. Decision/audit prose needs current-status review. Binary sources are not interpreted; unrecorded contradictions need human review. Nulls can be inapplicable. Family classification is editorial and never confirmed.', '',
+    'Every JSON file under data/ (raw, meta and research) is scanned for declared uncertainty, and a test fails if one is left out; published national datasets are checked against required schema fields. Decision/audit prose needs current-status review. Binary sources are not interpreted; unrecorded contradictions need human review. Nulls can be inapplicable. Family classification is editorial and never confirmed.', '',
     'Research and blockers: [initial round](research/data-gaps-1992-followup.md), [closure batches](research/data-gaps-closure-batches.md), [7 November policy pass](research/evidence-policy-pass-1107.md). Machine-readable summary: [data-gaps.json](data-gaps.json).', '');
   return lines.join('\n');
 }

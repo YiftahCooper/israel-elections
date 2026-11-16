@@ -1,7 +1,7 @@
-import { readFileSync, mkdirSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { readFileSync, readdirSync, mkdirSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
-import { expect, it } from 'vitest';
-import { scanDocument, generateRegister, renderMarkdown, checkRegister, generateFullRegister, summarizeRegister, writeRegister, serializeSummary, importanceOf, isOpen, areaOf, type GapKind } from '../scripts/gaps-register.ts';
+import { describe, expect, it } from 'vitest';
+import { scanDocument, generateRegister, renderMarkdown, checkRegister, generateFullRegister, summarizeRegister, writeRegister, serializeSummary, importanceOf, isOpen, areaOf, registerInputs, shownOrder, type GapKind } from '../scripts/gaps-register.ts';
 
 it('the committed register and prose cannot drift from their inputs', () => {
   const register = generateRegister();
@@ -168,4 +168,37 @@ it('bulk details do not stale the summary when counts and selected items are unc
   const selected = full.gaps.find(g => g.kind === 'conflict' && g.importance === 'high')!;
   selected.uncertainty = 'Changed summary-level description of what is disputed';
   expect(summarizeRegister(full)).not.toEqual(before);
+});
+
+// 16 Nov 2026: the register ranks by importance, most-shown first, and keeps up with the data: every data file is read
+describe('ranked by importance and kept current', () => {
+  it('every JSON file under data/ is read by the register (member changes by their own scanner)', () => {
+    const inputs = new Set(registerInputs());
+    const walk = (d: string): string[] => readdirSync(d, { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk(`${d}/${e.name}`) : [`${d}/${e.name}`]);
+    const missed = walk('data').filter((f) => f.endsWith('.json') && !inputs.has(f) && !/^data\/research\/knesset-member-changes\/k\d+\.json$/.test(f));
+    expect(missed).toEqual([]);
+  });
+  it('high and medium rows run from the most-shown: facts for every election, then the newest election back', () => {
+    const r = generateRegister();
+    for (const rows of [r.high, r.medium]) {
+      const order = [...new Set(rows.map((x) => x.election))];
+      expect(order).toEqual([...order].sort(shownOrder));
+      expect(order.indexOf('k26')).toBeLessThan(order.indexOf('k1'));
+    }
+    const first = [...new Set(r.high.map((x) => x.election))];
+    if (first.includes('cross-election')) expect(first[0]).toBe('cross-election');
+    // within an election, a disputed row comes before the others
+    for (const e of new Set(r.high.map((x) => x.election))) {
+      const rows = r.high.filter((x) => x.election === e);
+      const firstPlain = rows.findIndex((x) => !x.disputed);
+      if (firstPlain >= 0) expect(rows.slice(firstPlain).some((x) => x.disputed)).toBe(false);
+    }
+  });
+  it('a null that means "does not apply" in the term events is no gap; a missing vote count is', () => {
+    const doc = { events: [{ id: 'e1', date: '2022-01-01', marker: null, seatsAfter: null, sources: [{ url: 'https://example.org', date: null }], vote: { for: null, against: 50 } }] };
+    const rows = scanDocument('data/research/knesset-events/k24.json', doc);
+    const items = rows.map((g) => g.item.split(' / ').pop());
+    expect(items).toContain('$.events[*].vote.for');
+    for (const field of ['marker', 'seatsAfter', 'sources[*].date']) expect(items).not.toContain(`$.events[*].${field}`);
+  });
 });
