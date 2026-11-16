@@ -26,7 +26,8 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
     case 'setCoalition': {
       const c = a.coalition;
       const parts = ([['in', 'in', 'בפנים'], ['support', 'outside support', 'תמיכה מבחוץ'], ['abstain', 'abstaining', 'נמנעות'], ['out', 'out', 'בחוץ']] as const)
-        .filter(([k]) => c[k].length).map(([k, en, heText]) => `${c[k].length} ${he ? heText : en}`);
+        .filter(([k]) => c[k].length).map(([k, en, heText]) => `${c[k].length} ${he ? heText : en}`)
+        .concat(c.breaks?.length ? [he ? `${c.breaks.length} בנפרד מרשימתם` : `${c.breaks.length} apart from their list`] : []);
       return parts.length ? `${he ? 'קואליציה' : 'Coalition'}: ${parts.join(' · ')}` : (he ? 'בחירת הקואליציה נוקתה' : 'Coalition choices cleared');
     }
     case 'startPart': return `${PARTS[a.part][lang]}: ${a.name ?? (a.source === 'official' ? (he ? 'התוצאה הרשמית' : 'official result') : a.source === 'blank' ? (he ? 'ריק' : 'blank') : (a.source === 'preset' ? (a.part === 'rules' ? (a.presetId && RULESETS[a.presetId] ? ruleEraLabel(RULESETS[a.presetId], lang) : (he ? 'כללים ממקור מתועד' : 'Sourced rules')) : ((g) => g ? groupingName(g, lang) : undefined)(s.blocSchemes?.find(g => g.id === a.presetId)) ?? (he ? 'חלוקה ממקור מתועד' : 'Sourced grouping')) : (he ? 'תרחיש שמור' : 'saved scenario')))}`;

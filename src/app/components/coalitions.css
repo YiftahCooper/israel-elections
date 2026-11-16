@@ -42,3 +42,12 @@
 }
 /* the 61 badge sits above the big bar; keep it clear of the totals and tests line */
 .coal-now .coal-bar.big, .coal-detail .coal-bar.big { margin-top: 14px; }
+/* MKs apart from their list (Expert, folded): one row per MK, the tag says whether it is recorded or the user's edit */
+.coal-apart { margin: 0 0 10px; }
+.coal-apart > summary { cursor: pointer; color: var(--ink-2); }
+.coal-apart-why { margin: 6px 0; }
+.coal-apart-list { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 6px; }
+.coal-apart-list li { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+.coal-apart-who { min-width: 0; }
+.coal-apart-tag.rec { padding: 0 6px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink-2); }
+.coal-apart-add { flex-wrap: wrap; gap: 6px; }
