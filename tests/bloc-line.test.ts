@@ -1,35 +1,48 @@
 // The bloc line as pure geometry: correct side, few bends, same answer every time.
 import { describe, expect, test } from 'vitest';
 import { arcLayout } from '../src/app/layout.ts';
-import { arcBlocRegions, arcSeatSlots, directionChanges, pullString, simplify, trayBlocRegions, trayCell, trayShape, TRAY, turning, type Pt } from '../src/app/blocLine.ts';
-import { regionErrors, trayRegionErrors } from './bloc-line-check.ts';
+import { arcBlocRegions, arcSeatSlots, centreLine, directionChanges, roundCorners, simplify, smoothLine, trayBlocRegions, trayCell, trayShape, TRAY, type Pt } from '../src/app/blocLine.ts';
+import { regionErrors, sharpest, trayRegionErrors } from './bloc-line-check.ts';
 
 /** A turn of about 6° or more: one the eye sees. */
 const SEEN = 0.1;
 /** Bands for blocs of the given sizes, in seat order. */
 const split = (sizes: number[]) => sizes.flatMap((n, b) => Array<number>(n).fill(b));
 
-describe('pullString', () => {
-  test('a straight corridor gives a straight line', () => {
-    const xs = [0, 1, 2, 3, 4];
-    expect(pullString(xs, [-1, -1, -1, -1, -1], [1, 1, 1, 1, 1], 0, 0)).toEqual([[0, 0], [4, 0]]);
+describe('centreLine', () => {
+  test('in a straight corridor it runs down the middle', () => {
+    const xs = [0, 1, 2, 3, 4], lo = [0, 0, 0, 0, 0], hi = [2, 2, 2, 2, 2];
+    const { angles } = centreLine(xs, lo, hi, [1, 1, 1, 1, 1], [2, 2, 2, 2, 2]);
+    for (const a of angles) expect(a).toBeCloseTo(1, 3);
   });
-  test('the line bends only at the corner that forces it', () => {
-    // the corridor drops at x=2: the line must pass under (2, 0) and then down to -2
-    const path = pullString([0, 1, 2, 3, 4], [-5, -5, -5, -5, -5], [5, 5, 0, -1, 5], 2, -2);
-    expect(path.length).toBeLessThanOrEqual(4);
-    for (const [x, y] of path) if (x === 2) expect(y).toBeLessThanOrEqual(0);
-    expect(path[0]).toEqual([0, 2]);
-    expect(path.at(-1)).toEqual([4, -2]);
+  test('it never leaves the corridor, even where the middle is far off', () => {
+    const xs = [0, 1, 2, 3, 4], lo = [0, 0, 1.5, 1.5, 1.5], hi = [1, 2, 2, 2, 2];
+    const { angles } = centreLine(xs, lo, hi, [0.5, 1, 1.75, 1.75, 1.75], [1, 2, 0.5, 0.5, 0.5]);
+    angles.forEach((a, k) => { expect(a).toBeGreaterThanOrEqual(lo[k] - 1e-9); expect(a).toBeLessThanOrEqual(hi[k] + 1e-9); });
   });
 });
 
-describe('directionChanges and turning', () => {
+describe('roundCorners and smoothLine', () => {
+  test('a right angle becomes a curve; the ends and straight runs stay', () => {
+    const corner: Pt[] = [[0, 0], [10, 0], [10, 10]], round = roundCorners(corner, 2);
+    expect(round[0]).toEqual([0, 0]);
+    expect(round.at(-1)).toEqual([10, 10]);
+    expect(round.length).toBeGreaterThan(3);
+    expect(round.some(([x, y]) => x === 10 && y === 0)).toBe(false);
+    expect(roundCorners(corner, 2, 3, () => false)).toEqual(corner);
+  });
+  test('smoothing irons out a bump but stops where something must stay clear', () => {
+    const bumpy: Pt[] = [[0, 0], [1, 0], [2, 1], [3, 0], [4, 0]];
+    expect(Math.abs(smoothLine(bumpy, 20, () => true)[2][1])).toBeLessThan(0.3);
+    expect(smoothLine(bumpy, 20, () => false)).toEqual(bumpy);
+  });
+});
+
+describe('directionChanges', () => {
   test('straight 0, one step 1, a zigzag counts every change', () => {
     expect(directionChanges([[0, 0], [1, 0], [2, 0]])).toBe(0);
     expect(directionChanges([[0, 0], [1, 0], [2, 1], [3, 1]])).toBe(1);
     expect(directionChanges([[0, 0], [1, 1], [2, 0], [3, 1], [4, 0]])).toBe(2);
-    expect(turning([[0, 0], [1, 0], [2, 0]])).toBe(0);
   });
   test('tiny turns along a sampled curve are not direction changes', () => {
     const arc: Pt[] = Array.from({ length: 50 }, (_, i) => [Math.cos(i / 50), Math.sin(i / 50)]);
@@ -60,7 +73,11 @@ describe('half circle', () => {
       const { lines, regions } = arcBlocRegions(placed, bands, arc.r);
       expect(lines).toHaveLength(sizes.length - 1);
       expect(regions).toHaveLength(sizes.length);
-      for (const line of lines) expect(directionChanges(line.points, SEEN), `${sizes.join('/')}`).toBeLessThanOrEqual(3);
+      // smooth: no sharp corner (small blocs in a small chamber can still make it wind round them)
+      for (const line of lines) {
+        expect(directionChanges(line.points, SEEN), `${sizes.join("/")}`).toBeLessThanOrEqual(12);
+        expect(sharpest(line.points), `${sizes.join("/")}`).toBeLessThan(1.8);
+      }
     }
   });
 

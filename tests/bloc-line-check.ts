@@ -55,3 +55,49 @@ export function trayRegionErrors(bands: number[]): string[] {
   });
   return errors;
 }
+
+/** How far off the middle each line crosses each row, where that row has seats of both sides next to each other: 0 is
+ *  exactly midway between the two seats' edges, 1 is touching one of them. One number per line and row. */
+export function centring(seats: SeatPos[], bands: number[], rad: number, lines: { points: Pt[] }[], cx = 500, cy = 470, scale = 400): number[] {
+  const ids = [...new Set(bands)], out: number[] = [];
+  const radii = [...new Set(seats.map((p) => Math.hypot(p.x, p.y).toFixed(6)))].map(Number);
+  lines.forEach((line, j) => {
+    for (const q of radii) {
+      const row = seats.map((p, i) => ({ p, i })).filter(({ p }) => Math.abs(Math.hypot(p.x, p.y) - q) < 1e-5).sort((a, b) => b.p.a - a.p.a);
+      const k = row.findIndex(({ i }) => ids.indexOf(bands[i]) > j);
+      if (k <= 0) continue;
+      const a0 = row[k - 1].p.a - Math.asin(rad / q), a1 = row[k].p.a + Math.asin(rad / q); // the two seats' facing edges
+      // where the line crosses this radius between those two seats
+      let cross: number | null = null;
+      const pts = line.points.map(([x, y]) => [(x - cx) / scale, (y - cy) / scale]);
+      for (let m = 0; m + 1 < pts.length; m++) {
+        const r0 = Math.hypot(pts[m][0], pts[m][1]), r1 = Math.hypot(pts[m + 1][0], pts[m + 1][1]);
+        if ((r0 - q) * (r1 - q) > 0 || r0 === r1) continue;
+        const t = (q - r0) / (r1 - r0), x = pts[m][0] + t * (pts[m + 1][0] - pts[m][0]), y = pts[m][1] + t * (pts[m + 1][1] - pts[m][1]);
+        const a = Math.atan2(-y, x);
+        if (a <= a0 + 1e-9 && a >= a1 - 1e-9) { cross = a; break; }
+      }
+      if (cross === null) { out.push(1); continue; }
+      out.push(Math.abs(cross - (a0 + a1) / 2) / ((a0 - a1) / 2));
+    }
+  });
+  return out;
+}
+
+/** The sharpest corner of a line: the most it turns within any `span` units of its length (radians). */
+export function sharpest(points: Pt[], span = 6, step = 1): number {
+  const even: Pt[] = [points[0]];
+  for (let m = 1; m < points.length; m++) {
+    const [x0, y0] = points[m - 1], [x1, y1] = points[m], d = Math.hypot(x1 - x0, y1 - y0);
+    for (let t = step; t <= d; t += step) even.push([x0 + ((x1 - x0) * t) / d, y0 + ((y1 - y0) * t) / d]);
+  }
+  const heading = even.slice(1).map((p, i) => Math.atan2(p[1] - even[i][1], p[0] - even[i][0]));
+  const w = Math.max(1, Math.round(span / step));
+  let worst = 0;
+  for (let i = 0; i + w < heading.length; i++) {
+    let d = heading[i + w] - heading[i];
+    while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI;
+    worst = Math.max(worst, Math.abs(d));
+  }
+  return worst;
+}
