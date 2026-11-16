@@ -30,7 +30,9 @@ describe('historical edge cases', () => {
   });
   it('records both 2021 exceptions and Raam membership without a ministry', () => {
     const g = read(24).government;
-    expect(g.coalitionSeats).toBe(62); expect(g.supportSeats).toBe(0);
+    expect(g.coalitionSeats).toBe(61); expect(g.supportSeats).toBe(0);
+    expect(g.coalition.find((x: any) => x.letters === 'ב').seats).toBe(6);
+    expect(g.individuals.find((x: any) => x.id === 'amichai-chikli')).toMatchObject({ role: 'other', countedInFactionSeats: false, vote: 'against' });
     expect(g.coalition.find((x: any) => x.letters === 'עם').role).toBe('member-without-ministries');
     expect(g.individuals.map((x: any) => x.vote).sort()).toEqual(['abstain', 'against']);
     expect(g.confidenceVote).toEqual({ for: 60, against: 59, abstain: 1 });

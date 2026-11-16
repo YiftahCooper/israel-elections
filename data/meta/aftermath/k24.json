@@ -236,6 +236,13 @@
       "publisher": "Knesset OData, all government 36 deputy-minister appointments",
       "kind": "official",
       "accessed": "2026-11-07"
+    },
+    "cec-chikli-2022": {
+      "url": "https://www.gov.il/BlobFolder/generalpage/pm3_25-4_25/he/candidates_disqualification_pm1_25_pm_1-25_2-25_4-25.pdf",
+      "publisher": "Central Elections Committee chair",
+      "kind": "official",
+      "accessed": "2026-11-16",
+      "via": "Retained reviewed event extraction: k24-chikli-opposition-established, section 39, page 24; fresh retrieval refused (403)."
     }
   },
   "results": {
@@ -705,7 +712,7 @@
       },
       {
         "letters": "ב",
-        "seats": 7,
+        "seats": 6,
         "role": "member-with-ministries",
         "certainty": "confirmed",
         "cites": [
@@ -713,8 +720,14 @@
             "source": "role-roster-36",
             "quote": "PersonToPositionID 24071; PersonID 23511; PositionID 45; StartDate 2021-06-13T00:00:00",
             "note": "Project extraction of official fields, not prose quotation. נפתלי בנט; faction join: ימינה בראשות נפתלי בנט"
+          },
+          {
+            "source": "cec-chikli-2022",
+            "quote": "62 → 61",
+            "note": "Project extraction of the retained reviewed section 39/p.24 locator; nominal 62 reduced by Chikli opposition. Original PDF could not be reopened this round. Not a verbatim quotation."
           }
-        ]
+        ],
+        "note": "Six continuing coalition members; the elected Yamina list had seven seats. Chikli opposed the government from formation and is excluded, not merely subtracted from the investiture vote."
       },
       {
         "letters": "אמת",
@@ -795,7 +808,7 @@
         "noteHe": "בהסכם הקואליציוני הוצע תפקיד של סגן שר, אך הוא לא מומש."
       }
     ],
-    "coalitionSeats": 62,
+    "coalitionSeats": 61,
     "cites": [
       {
         "source": "inn-2021-06-02",
@@ -807,7 +820,7 @@
       }
     ],
     "notes": [
-      "Seats are list seats at the election. Ra'am held no ministry; Yamina MK Amichai Chikli voted against (see k24.json first-government notes)."
+      "Continuing coalition membership at formation: 61 seats. The eight elected lists had 62 seats including Chikli, who opposed the government from formation. Alharumi remains a member despite abstaining in the investiture vote."
     ],
     "confidenceVote": {
       "for": 60,
@@ -826,11 +839,11 @@
     ],
     "membershipCoverage": "complete",
     "supportSeats": 0,
-    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
+    "coalitionSeatsNote": "Continuing member seats, excluding Chikli from 13 June 2021; 62 is the nominal total of the eight election lists. Investiture: 60 for, 59 against, one abstention.",
     "reconciliation": {
       "status": "explained",
       "expectedFor": 60,
-      "note": "62 coalition-list member seats − Chikli voting against (Yamina) − al-Harumi abstaining (Raam) = 60 for; the 58 opposition seats plus Chikli = 59 against; al-Harumi = 1 abstention. No outside-support seats."
+      "note": "61 continuing coalition members minus Alharumi abstaining = 60 for. The 58 other-list seats plus Chikli = 59 against. Alharumi remains in the coalition count."
     },
     "individuals": [
       {
@@ -838,17 +851,22 @@
         "nameEn": "Amichai Chikli",
         "nameHe": "עמיחי שיקלי",
         "fromLetters": "ב",
-        "countedInFactionSeats": true,
-        "role": "member-with-ministries",
+        "countedInFactionSeats": false,
+        "role": "other",
         "certainty": "provisional",
         "vote": "against",
         "cites": [
           {
             "source": "n12-2021-06-13",
             "quote": "ח\"כ עמיחי שיקלי מימינה הצביע נגד, וח\"כ סעיד אלחרומי מרע\"ם החליט ברגע האחרון להימנע"
+          },
+          {
+            "source": "cec-chikli-2022",
+            "quote": "62 → 61",
+            "note": "Project extraction of the retained reviewed section 39/p.24 locator; nominal 62 reduced by Chikli opposition. Original PDF could not be reopened this round. Not a verbatim quotation."
           }
         ],
-        "note": "Faction membership role only; Chikli did not support this government and was not a minister. Provisional under the source policy: one contemporary N12 roll-call report; the Knesset plenum vote record is the deciding record."
+        "note": "Opposed this government from formation on 13 June 2021; not a coalition member or minister. Excluded from the six Yamina seats above. The House Committee declaration of 25 April 2022 concerns legal faction status, not the start of his opposition; Knesset membership ended 14 July 2022."
       },
       {
         "id": "said-al-harumi",
@@ -868,7 +886,7 @@
         "note": "An individual abstention is established; no prearranged abstention is inferred. Provisional under the source policy: one contemporary N12 roll-call report; the Knesset plenum vote record is the deciding record."
       }
     ],
-    "knownMemberSeats": 62
+    "knownMemberSeats": 61
   },
   "term": {
     "start": "2021-06-13",
