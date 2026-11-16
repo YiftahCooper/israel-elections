@@ -36,9 +36,11 @@ split in force is the feature registry, `src/app/features.ts` (`TOOL_FEATURES`, 
 truth from now on. At the time of writing: Simple has the Overview, After the election, Party families, Scenarios,
 What if…, Coalitions, How seats were allocated and Sources; Standard adds Merge & split, Seat safety and Charts;
 Expert adds Turnout, Sensitivity, Localities and Rules. Side by side opens from the comparison strip at every level
-(owner, 12 November 2026). Tools above the level stay listed, muted, after "More in other levels", and open in full
-when pressed. Sections inside pages above the level are folded behind a chip, not hidden. A list's notes on the
-sources are a data qualification: shown at every level and not a Custom choice. The Custom page sets each feature
-to Show, Collapsed (for a tool: muted with the other levels' tools) or Hidden (no tab, chip or link); Side by side
-has Show and Hidden only. Choosing a level clears the Custom choices with a message and Undo. Some level differences
-inside components still read the level directly rather than the registry (audit c-levels-12, an open owner question).
+(owner, 12 November 2026). Tools above the level stay listed, greyed out, under their heading; pressed, they ask
+whether to switch to their level or add the tool to this one (16 November 2026). Sections inside pages above the
+level are folded behind a chip, not hidden. A list's notes on the sources are a data qualification: shown at every
+level and not a choice. Since 16 November 2026 there is no Custom level: the user's own choices (a tool or detail
+added to the level or taken from it) are kept across level changes, counted by a chip beside the level buttons and
+listed in Settings, where every tool and detail has a row under its level (Shown, Folded or Greyed out, Hidden; a
+detail with no folded form has a switch). The level differences that components read directly became features of
+the registry (c-levels-12, answered: move every difference).
