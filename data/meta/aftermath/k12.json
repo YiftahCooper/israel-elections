@@ -953,6 +953,12 @@
           {
             "source": "jta1990vote",
             "quote": "late Monday by a vote of 62-57"
+          },
+          {
+            "source": "role-roster-24",
+            "quote": "\"StartDate\":\"1990-06-11T00:00:00\"",
+            "note": "The Knesset’s database of ministers: the government’s ministers took office on 11 June 1990.",
+            "noteHe": "מאגר השרים של הכנסת: שרי הממשלה נכנסו לתפקידם ב־11 ביוני 1990."
           }
         ],
         "membershipCoverage": "partial",

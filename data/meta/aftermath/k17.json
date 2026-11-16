@@ -164,6 +164,20 @@
       "accessed": "2026-11-16",
       "evidenceFamily": "Knesset-sitting-131247",
       "via": "Legacy Word logical paragraph 4974 (not a printed page or OOXML paragraph)"
+    },
+    "diskin-2011": {
+      "url": "https://doi.org/10.4324/9781315868301",
+      "publisher": "Abraham Diskin, “The Likud: The Struggle for the Centre”, in Shmuel Sandler, Manfred Gerstenfeld and Hillel Frisch (eds.), Israel at the Polls 2009 (Routledge, 2011)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:diskin"
+    },
+    "shamir-arian-2011": {
+      "url": "https://doi.org/10.4324/9781351297608-1",
+      "publisher": "Michal Shamir and Asher Arian, introduction to Asher Arian and Michal Shamir (eds.), The Elections in Israel 2009 (Transaction, 2011)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:shamir"
     }
   },
   "results": {
@@ -638,6 +652,16 @@
           {
             "source": "ipu2009",
             "quote": "She failed to reach a coalition agreement with other parties before the extended deadline of 26 October."
+          },
+          {
+            "source": "diskin-2011",
+            "quote": "on 26 October she announced that she was unable to form a new coalition",
+            "locator": "p. 55"
+          },
+          {
+            "source": "shamir-arian-2011",
+            "quote": "On October 26, Livni informed the President that she had failed to form a coalition.",
+            "locator": "p. 5"
           }
         ],
         "person": "livni",

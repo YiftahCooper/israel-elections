@@ -1,5 +1,9 @@
 # Changelog
 
+## 17 November 2026
+
+- Books, batch 3 (17 Nov): formation and term dates checked against the book collection under the owner's rule. Confirmed: the 1973 election postponement, the NRP ministers' removal (December 1976), the 2001 prime-minister election (from the official results notice), the 2002 dissolution, Kadima's founding, Sharon's stroke, Livni giving up (26 October 2008), the 2009 and 2013 taskings, the 1990, 1995 and 2001 government start dates (official ministers' list), and the firing of Lapid and Livni on 2 December 2014 (Ynet report of that day; one book's 1 December is noted). The 1981 tasking is probable: Navon's request (15 July) and his letter (16 July) are two acts. The 2009 coalition question is closed by the Knesset's record; the 2019 dissolution question stays open with one more source.
+
 ## 16 November 2026
 
 - Books (16 Nov): the owner's rule for books is in the source policy and the build's check: two independent scholarly works, or one that cites the official record, confirm a fact; one book alone is probable; a book that contradicts the data makes it disputed. Twenty-four government roles and one recommendation now cite book pages: the 1992 outside support of Hadash and the Arab Democratic Party, Mapam's six MKs and Yossi Sarid outside the 1984 coalition, United Torah Judaism in 1999 and 2015, the NRP in 2003, the Independent Liberals in 1974 and Poalei Agudat Yisrael in 1961 are confirmed; Flatto-Sharon in 1977 supported the government from outside (probable); WIZO in 1949 and Eliezer Mizrachi in 1990 are disputed, with both sides shown; Kach's exclusion from the 1984 consultations is confirmed. A disputed role says "Sources disagree", and the notes on investiture votes are in plain words.

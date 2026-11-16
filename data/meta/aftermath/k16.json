@@ -13,7 +13,8 @@
       "url": "https://www.gov.il/BlobFolder/generalpage/facts-about-israel-history/en/English_SiteTransfer_DOCUMENTS_History2010.pdf",
       "publisher": "Israel Ministry of Foreign Affairs, Facts About Israel: History (2010), pp. 48–70",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-05",
+      "evidenceFamily": "institution:mfa"
     },
     "knesset-history": {
       "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-sixteenth-knesset-2003-2006",
@@ -93,7 +94,8 @@
       "publisher": "Congressional Research Service, Carol Migdalovitz, Israel: Background and Relations with the United States, RL33476, 14 August 2009",
       "kind": "official",
       "accessed": "2026-11-05",
-      "via": "EveryCRSReport reproduction of the CRS report; independently authored retrospective, especially Government and Politics, pp. 6–10."
+      "via": "EveryCRSReport reproduction of the CRS report; independently authored retrospective, especially Government and Politics, pp. 6–10.",
+      "evidenceFamily": "author:migdalovitz"
     },
     "government-official": {
       "url": "https://main.knesset.gov.il/mk/government/pages/governments.aspx?govid=30",
@@ -167,6 +169,13 @@
       "kind": "academic",
       "accessed": "2026-11-16",
       "evidenceFamily": "author:aldrich-blais-indridason-levine"
+    },
+    "goldberg-2010": {
+      "url": "https://doi.org/10.1080/13537120903461979",
+      "publisher": "Giora Goldberg, “Kadima Goes Back: The Limited Power of Vagueness”, Israel Affairs 16:1 (2010)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:goldberg"
     }
   },
   "results": {
@@ -408,6 +417,11 @@
           {
             "source": "ipu2006",
             "quote": "subsequently established a new party called Kadima"
+          },
+          {
+            "source": "goldberg-2010",
+            "quote": "In November 2005 Prime Minister Sharon announced his resignation from the Likud and the establishment of a new party.",
+            "locator": "p. 34"
           }
         ],
         "confidence": "high"
@@ -430,6 +444,11 @@
           {
             "source": "mfa-history",
             "quote": "Ehud Olmert becomes acting prime minister"
+          },
+          {
+            "source": "goldberg-2010",
+            "quote": "Less than two months later, on 4 January 2006, Sharon collapsed and has never regained consciousness.",
+            "locator": "p. 34"
           }
         ],
         "confidence": "high",
