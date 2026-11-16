@@ -101,9 +101,15 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   const hidden = outside.length - visibleOut.length;
   const jointLook = useSetting('jointListSeats');
   const componentSeats = seatOrder(s,r,'list',jointLook);
+  // a joint list counted by party: one segment per party in its colour, with a thin gap between parties and no frame
+  // (the list's own colour is on the frame round its symbol)
   const barFill = (l: SimList) => {
     const seats = componentSeats.filter(st=>st.listId===l.id);
-    return seats.some(st=>st.partyColor) ? `linear-gradient(90deg, ${seats.map((st,i)=>`${st.partyColor ?? st.color} ${i/seats.length*100}% ${(i+1)/seats.length*100}%`).join(', ')})` : l.color;
+    if (!seats.some(st=>st.partyColor)) return l.color;
+    const runs: { color: string; from: number; to: number }[] = [];
+    seats.forEach((st, i) => { const c = st.partyColor ?? st.color, last = runs[runs.length - 1]; if (last && last.color === c) last.to = i + 1; else runs.push({ color: c, from: i, to: i + 1 }); });
+    const at = (k: number) => `${(k / seats.length) * 100}%`;
+    return `linear-gradient(90deg, ${runs.map((g, j) => `${g.color} ${j ? `calc(${at(g.from)} + 1px)` : '0%'} ${j < runs.length - 1 ? `calc(${at(g.to)} - 1px)` : '100%'}${j < runs.length - 1 ? `, var(--surface) calc(${at(g.to)} - 1px) calc(${at(g.to)} + 1px)` : ''}`).join(', ')})`;
   };
   const splitIds = new Set(s.factionSplits ?? []);
   // one scale for every bar: the largest list now or in the official result
@@ -126,7 +132,9 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
           aria-label={listLabel(l, lang)} aria-describedby={`lbd-${l.id}`}
           onClick={() => setState({ selectedListId: open ? null : l.id })}
           title={l.logo || l.synthetic ? listLabel(l, lang) : `${listLabel(l, lang)} — ${L('Ballot letters (no verified election logo)', 'אותיות הפתק (טרם נמצא סמל ממקור לבחירות אלה)')}`}>
-          <Slip name={listLabel(l, lang)} letters={l.letters} color={l.color} logo={l.logo} synthetic={l.synthetic} />
+          {splitIds.has(l.id) && jointLook !== 'list' && componentSeats.some((st) => st.listId === l.id && st.partyColor)
+            ? <span className="slip-joint" style={{ ['--lc' as string]: l.color }} title={L('Joint list: its own colour is the frame; the bar shows its parties', 'רשימה משותפת: צבעה במסגרת; הפס מראה את מפלגותיה')}><Slip name={listLabel(l, lang)} letters={l.letters} color={l.color} logo={l.logo} synthetic={l.synthetic} /></span>
+            : <Slip name={listLabel(l, lang)} letters={l.letters} color={l.color} logo={l.logo} synthetic={l.synthetic} />}
           <span className="lb-main">
             {/* the name carries a mark for the list's identity (renamed, withdrawn…); its votes carry their own below */}
             <span className="lb-name">{listLabel(l, lang)}<PartEdits single s={s} prefix={['lists', l.id]} skip={['votes']} /></span>
@@ -134,7 +142,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
             <span className="lb-bar" aria-hidden>
               {out
                 ? <><i className="thr-fill" style={{ width: `${Math.min(100, (l.votes / Math.max(1, thr)) * 100)}%`, background: l.color }} /><span className="thr-tick" /></>
-                : <><i style={{ width: `${(lr.seats / scale) * 100}%`, background: barFill(l), borderBlock: (s.factionSplits ?? []).includes(l.id) && jointLook === 'both' ? `2px solid ${l.color}` : undefined, boxSizing: 'border-box' }} />{d !== 0 && <span className="delta-segment" style={{ insetInlineStart: `${(Math.min(lr.seats, was ?? 0) / scale) * 100}%`, width: `${(Math.abs(d) / scale) * 100}%` }} />}{d !== 0 && <span className="was" style={{ width: `${((was ?? 0) / scale) * 100}%` }} />}</>}
+                : <><i style={{ width: `${(lr.seats / scale) * 100}%`, background: barFill(l) }} />{d !== 0 && <span className="delta-segment" style={{ insetInlineStart: `${(Math.min(lr.seats, was ?? 0) / scale) * 100}%`, width: `${(Math.abs(d) / scale) * 100}%` }} />}{d !== 0 && <span className="was" style={{ width: `${((was ?? 0) / scale) * 100}%` }} />}</>}
             </span>
             {out && (was ?? 0) > 0 && <span className="lb-bar" aria-hidden title={baseLabel.seats}>
               <span className="was" style={{width:`${(was ?? 0)/scale*100}%`}} />

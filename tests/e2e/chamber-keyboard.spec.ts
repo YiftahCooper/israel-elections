@@ -31,14 +31,15 @@ for (const lang of ['en', 'he'] as const) for (const layout of ['hemicycle', 'bl
     // arrows follow what is drawn, left to right in both languages (the chamber is never mirrored)
     const x0 = (await seat(page, 0).boundingBox())!.x;
     await page.keyboard.press('ArrowRight');
-    const right = layout === 'blocks' ? 6 : 1;
+    const right = 1;
     await expect(seat(page, right)).toBeFocused();
     expect((await seat(page, right).boundingBox())!.x).toBeGreaterThan(x0);
     await expect(page.locator('.chamber [data-seat-pos][tabindex="0"]')).toHaveCount(1);
     await expect(seat(page, right)).toHaveAttribute('tabindex', '0');
     await page.keyboard.press('ArrowLeft');
     await expect(seat(page, 0)).toBeFocused();
-    if (layout === 'blocks') { await page.keyboard.press('ArrowDown'); await expect(seat(page, 1)).toBeFocused(); await page.keyboard.press('ArrowUp'); }
+    // Blocks fills row by row: down is the seat under it, 20 places on
+    if (layout === 'blocks') { await page.keyboard.press('ArrowDown'); await expect(seat(page, 20)).toBeFocused(); await page.keyboard.press('ArrowUp'); await expect(seat(page, 0)).toBeFocused(); }
     // Enter opens the card for this seat; it names the same member
     await page.keyboard.press('Enter');
     await expect(card(page)).toBeVisible();

@@ -1,5 +1,5 @@
 // Every election k1–k26 × every bloc grouping it ships with, in both layouts: the bloc line keeps every seat on its own
-// side, bends only where it must, and is the same for the same input. With BLOC_LINE_SWEEP=<file.html> it also writes
+// side, runs in the middle between the blocs' seats wherever it can, turns smoothly, and is the same for the same input. With BLOC_LINE_SWEEP=<file.html> it also writes
 // one picture per case, for looking at (see .backup-scratch/sc-1112 in the main checkout).
 import { expect, test } from 'vitest';
 import { writeFileSync } from 'node:fs';
@@ -11,11 +11,11 @@ import { applyAction } from '../src/model/actions.ts';
 import { scenarioFromDataset } from '../src/model/scenario.ts';
 import { allocationOf } from '../src/app/derive.ts';
 import { dataset } from './graphics-cases.ts';
-import { regionErrors, trayRegionErrors } from './bloc-line-check.ts';
+import { centring, regionErrors, sharpest, trayRegionErrors } from './bloc-line-check.ts';
 
 const pictures: string[] = [];
 // a turn of about 6° or more is one the eye sees; smaller ones are the curve following a seat's round edge
-const SEEN = 0.1, BEND_LIMIT = 3;
+const SEEN = 0.1;
 const svgArc = (title: string, seats: { color: string }[], bands: number[], colours: string[]) => {
   const arc = arcLayout(seats.length), slots = arcSeatSlots(arc.seats, bands, arc.r), placed = slots.map((k) => arc.seats[k]);
   const { regions, lines } = arcBlocRegions(placed, bands, arc.r);
@@ -37,7 +37,7 @@ const cases = Array.from({ length: 26 }, (_, i) => i + 1).flatMap((n) => {
 });
 
 test('every election and grouping: seats on their own side, few bends, deterministic', () => {
-  const problems: string[] = [], bends: number[] = [];
+  const problems: string[] = [], bends: number[] = [], offs: number[] = [], sharp: number[] = [];
   for (const { name, s } of cases) {
     const r = allocationOf(s), seats = seatOrder(s, r, 'list');
     const order = blocDisplayOrder(s), bands = seats.map((st) => order.indexOf(st.bloc));
@@ -46,16 +46,26 @@ test('every election and grouping: seats on their own side, few bends, determini
     if (new Set(slots).size !== seats.length) problems.push(`${name}: two seats share a place`);
     const first = arcBlocRegions(placed, bands, arc.r);
     problems.push(...regionErrors(placed, bands, arc.r).map((e) => `${name} arc: ${e}`), ...trayRegionErrors(bands).map((e) => `${name} blocks: ${e}`));
-    for (const line of first.lines) bends.push(directionChanges(line.points, SEEN));
+    for (const line of first.lines) { bends.push(directionChanges(line.points, SEEN)); sharp.push(sharpest(line.points)); }
+    const co = centring(placed, bands, arc.r, first.lines); offs.push(...co);
+    if (process.env.BLOC_DEBUG) console.log('CASE', name, 'centring', co.map((v) => v.toFixed(2)).join(' '), 'sharp', first.lines.map((l) => sharpest(l.points).toFixed(2)).join(' '));
     if (JSON.stringify(arcBlocRegions(placed, bands, arc.r)) !== JSON.stringify(first) || JSON.stringify(arcSeatSlots(arc.seats, bands, arc.r)) !== JSON.stringify(slots)) problems.push(`${name}: not deterministic`);
     if (process.env.BLOC_LINE_SWEEP && new Set(bands).size > 1) pictures.push(`<section><h3>${name}</h3>${svgArc(name, seats, bands, colours)}${svgTray(name, seats, bands, colours)}</section>`);
   }
   if (process.env.BLOC_LINE_SWEEP) writeFileSync(process.env.BLOC_LINE_SWEEP, `<!doctype html><meta charset="utf-8"><style>body{font:13px sans-serif}section{border-top:1px solid #ccc;width:940px}figure{margin:4px}</style>${pictures.join('')}`);
   expect(problems).toEqual([]);
-  // most lines are straight or have one smooth step; none weaves
   const histogram = bends.reduce<Record<number, number>>((h, b) => ({ ...h, [b]: (h[b] ?? 0) + 1 }), {});
   console.log('direction changes per line:', JSON.stringify(histogram));
-  expect(Math.max(...bends)).toBeLessThanOrEqual(BEND_LIMIT);
-  expect(bends.filter((b) => b <= 1).length / bends.length).toBeGreaterThanOrEqual(0.75);
+  const q = (xs: number[], f: number) => [...xs].sort((a, b) => a - b)[Math.floor(f * (xs.length - 1))].toFixed(3);
+  console.log('centring', offs.length, 'median', q(offs, 0.5), 'p90', q(offs, 0.9), 'p99', q(offs, 0.99), 'max', q(offs, 1), '; sharpest', 'median', q(sharp, 0.5), 'p90', q(sharp, 0.9), 'max', q(sharp, 1));
+  const at = (xs: number[], f: number) => [...xs].sort((a, b) => a - b)[Math.floor(f * (xs.length - 1))];
+  // in the middle: half of all row crossings within 5% of the gap's middle, nine in ten within 60% of the way to a seat
+  expect(at(offs, 0.5)).toBeLessThan(0.05);
+  expect(at(offs, 0.9)).toBeLessThan(0.6);
+  // smooth: most lines straight or one or two gentle turns, no sharp corner anywhere
+  expect(bends.filter((b) => b <= 2).length / bends.length).toBeGreaterThanOrEqual(0.75);
+  expect(Math.max(...bends)).toBeLessThanOrEqual(12);
+  expect(at(sharp, 0.9)).toBeLessThan(0.7);
+  expect(Math.max(...sharp)).toBeLessThan(1.7);
 }, 120000);
 

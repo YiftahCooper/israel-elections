@@ -7134,5 +7134,33 @@
   "retrievedAt": "2026-11-12",
   "bytes": 1375,
   "sha256": "f61562d7d71c9f0ec6e5969ffc8edb4226afd738d27486253e9404f2a6ef6004"
+ },
+ {
+  "id": "cbs-statistical-areas-2022-25m-a",
+  "file": "map-outlines/cbs-statistical-areas-2022-25m-a.json",
+  "url": "https://services8.arcgis.com/JcXY3lLZni6BK4El/arcgis/rest/services/statistical_areas_2022/FeatureServer/0/query?where=1%3D1&outFields=SEMEL_YISHUV&returnGeometry=true&outSR=2039&maxAllowableOffset=25&geometryPrecision=0&resultRecordCount=2000&resultOffset=0&f=json",
+  "publisher": "הלשכה המרכזית לסטטיסטיקה — אזורים סטטיסטיים 2022",
+  "publisherEn": "Central Bureau of Statistics — statistical areas 2022 (ArcGIS item 65410312f3ab4c3482f52f8c8a284a3d)",
+  "official": true,
+  "description": "CBS 2022 statistical areas with their locality code (SEMEL_YISHUV), in ITM, generalised by the server to 25 m; features 1 onward of 3,857. scripts/build-locality-outlines.py joins them into one outline per locality for the Localities map's Vote mix view (public/data/locality-outlines-2022.geojson).",
+  "note": "CBS open-use licence v2.1 (3 Jan 2016): copying, adaptation and redistribution allowed with source credit; the map credits CBS and says the outlines are adapted. CBS says the layer follows the Interior Ministry's 2021 continuous boundaries; not legal municipal borders. The file wraps the response with its URL, status and size.",
+  "method": "http",
+  "retrievedAt": "2026-11-09",
+  "bytes": 6063445,
+  "sha256": "c8b67f1de3ba5781bca6095bac4be0cdc154e27df006891e51357c149bb1e6e8"
+ },
+ {
+  "id": "cbs-statistical-areas-2022-25m-b",
+  "file": "map-outlines/cbs-statistical-areas-2022-25m-b.json",
+  "url": "https://services8.arcgis.com/JcXY3lLZni6BK4El/arcgis/rest/services/statistical_areas_2022/FeatureServer/0/query?where=1%3D1&outFields=SEMEL_YISHUV&returnGeometry=true&outSR=2039&maxAllowableOffset=25&geometryPrecision=0&resultRecordCount=2000&resultOffset=2000&f=json",
+  "publisher": "הלשכה המרכזית לסטטיסטיקה — אזורים סטטיסטיים 2022",
+  "publisherEn": "Central Bureau of Statistics — statistical areas 2022 (ArcGIS item 65410312f3ab4c3482f52f8c8a284a3d)",
+  "official": true,
+  "description": "CBS 2022 statistical areas with their locality code (SEMEL_YISHUV), in ITM, generalised by the server to 25 m; features 2001 onward of 3,857. scripts/build-locality-outlines.py joins them into one outline per locality for the Localities map's Vote mix view (public/data/locality-outlines-2022.geojson).",
+  "note": "CBS open-use licence v2.1 (3 Jan 2016): copying, adaptation and redistribution allowed with source credit; the map credits CBS and says the outlines are adapted. CBS says the layer follows the Interior Ministry's 2021 continuous boundaries; not legal municipal borders. The file wraps the response with its URL, status and size.",
+  "method": "http",
+  "retrievedAt": "2026-11-09",
+  "bytes": 3363634,
+  "sha256": "a4978b6c8096b0190a1b1518eadc6cf247c1d1d954a5b4893c12c6fef1896a78"
  }
 ]

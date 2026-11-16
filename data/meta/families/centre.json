@@ -487,6 +487,17 @@
       "kind": "official",
       "accessed": "2026-11-12",
       "support": "Party affiliation (השתייכות מפלגתית) of every candidate on list רק: of the 12 elected, places 2, 4, 6, 9 and 12 were nominated by Yesh Atid and places 1, 3, 5, 7, 8, 10 and 11 by Together (Bennett). Retained copy: data/raw/k26/yp15023-candidates.pdf."
+    },
+    "crs-in12751": {
+      "url": "https://www.everycrsreport.com/files/2026-10-30_IN12751_9721e1fb9efa295a5078f5461d9b952ec1254e8a.pdf",
+      "publisher": "Congressional Research Service (Jim Zanotti), Insight IN12751, 30 October 2026",
+      "kind": "secondary",
+      "accessed": "2026-11-16",
+      "support": "p. 1: the bloc of 48 seats was “led by the centrist Yashar party headed by Gadi Eisenkot”. An independent analysis placing Yashar in the centre; it names no family for Yashar's partner Yesodot Yisrael.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "21b9e48f1d34d8c469fdf14767d413486b1bea9d536c12ed2651ef3d6eb765d1"
+      }
     }
   },
   "elections": [
@@ -3314,7 +3325,7 @@
       "electionId": "k25",
       "electionDate": "2022-11-01",
       "datasetPath": "public/data/k25.json",
-      "datasetSha256": "c9ae7dbd7a323c2a7152d4a9af1f0b14a3789720eb50c415815ae7ebe765d130",
+      "datasetSha256": "2e8790c70bb08d921a9a41a882be863ae6b28d0e2788b120181f99b37482d03b",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2022-11-10",
@@ -3433,7 +3444,7 @@
       "electionId": "k26",
       "electionDate": "2026-10-27",
       "datasetPath": "public/data/k26.json",
-      "datasetSha256": "4fa00a632f3cb78277a338505b39d2be912ebb8189c423f8b9e17129f0786742",
+      "datasetSha256": "18e4b1110f4bf539caed5032e1b8e39f26753830b136259f4633eb730f48c524",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-09",
@@ -3482,26 +3493,38 @@
             "claim": "Yesh Atid, the family's party since 2013, ran inside this joint list (official candidate list: 5 of its 12 elected members). Together (Bennett) is the partner; its own classification is not settled. All list votes stay in mixed segment, as for National Unity in 2022."
           },
           "constituentVotes": null
-        }
-      ],
-      "reviewCandidates": [
+        },
         {
           "listId": "26-דרך",
+          "letters": "דרך",
           "nameHe": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל",
           "votes": 913629,
           "partyIds": [
+            "yashar"
+          ],
+          "datasetPartyIds": [
             "yashar",
             "yesodot-yisrael"
           ],
-          "treatment": "exclude-pending-or-contested",
-          "evidenceStatus": "unresolved",
-          "sourceIds": [
-            "proposal",
-            "k26",
-            "centre"
-          ],
-          "reason": "Proposal marks this extension pending; no votes counted. Contemporary classification or boundary review required."
-        },
+          "proposedPartyIds": [],
+          "scope": "mixed",
+          "treatment": "separate-segment",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k26.json#/lists/5"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "crs-in12751",
+              "k26"
+            ],
+            "claim": "Yashar (Eisenkot) is described as a centrist party by an independent analysis (CRS IN12751). Yesodot Yisrael, its partner on the list, is not placed in any family by the sources found, so the list counts as mixed and all its votes stay in the mixed segment."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [
         {
           "listId": "26-די",
           "nameHe": "המילואימניקים והכלכלית בראשות יועז הנדל וירון זליכה",
@@ -3554,20 +3577,20 @@
           "displayPct": 0.0
         },
         "mixedWholeLists": {
-          "votes": 532018,
+          "votes": 1445647,
           "percent": {
-            "numerator": 53201800,
+            "numerator": 144564700,
             "denominator": 5691426
           },
-          "displayPct": 9.34771
+          "displayPct": 25.400436
         },
         "wholeListInclusionAlternative": {
-          "votes": 532018,
+          "votes": 1445647,
           "percent": {
-            "numerator": 53201800,
+            "numerator": 144564700,
             "denominator": 5691426
           },
-          "displayPct": 9.34771
+          "displayPct": 25.400436
         },
         "mixedHarediVotes": null,
         "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
