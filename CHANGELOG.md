@@ -1,5 +1,9 @@
 # Changelog
 
+## 16 November 2026 — map, colours, families and the seat chart
+
+- Seat chart, map, colours and families (16 Nov): a Find an MK box over the seat chart, each list's seats in rank order from the front row, Blocks as horizontal stripes and the line between blocs midway and smooth; the Localities map keeps its winner dots and gains a Vote mix view (circles far away, each town's tiles grouped by list close up), the double-envelope island and an approximate dot for Hebron; joint lists show their parties with a thin gap and their own colour as a frame round the symbol; the Arab lists bloc is ochre; Yashar! counts in Centre 2026; the Arab and joint family's Hebrew chip reads ערביות ומשותפות; Party families' Scale panel sits under its charts.
+
 ## 13 November 2026 — audit fixes
 
 - Localities (13 Nov, audit): one result under “Find a locality” reads “1 match” (Hebrew “התאמה אחת”), and “the first 30 are shown” appears only when more than 30 were found.
