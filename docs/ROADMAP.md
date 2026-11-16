@@ -46,3 +46,6 @@ register (`docs/data-gaps.md`).
 
 - **A full review, screen by screen and level by level**, by independent reviewers, as a reader would use the app, on
   a phone and a desktop, in Hebrew and English.
+- **How "probable" facts are shown.** Count the facts still marked probable, per screen and election, and let the owner
+  choose: keep today's wording, or show them plainly with the source (book and page) in the (i). Few dozen: keep as is;
+  hundreds or more: consider the plain style. Decided by the owner near release (16 Nov 2026).
