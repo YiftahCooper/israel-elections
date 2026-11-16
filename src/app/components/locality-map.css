@@ -7,6 +7,12 @@
 .locality-map-address small { flex-basis: 100%; }
 .locality-map-legend span { display: inline-flex; gap: 5px; align-items: center; font-size: .8rem; }
 .locality-map-legend i { width: 12px; height: 12px; border: 1px solid var(--ink-2); border-radius: 50%; }
+.locality-map-legend { align-items: center; }
+/* the Winner / Vote mix switch leads the key; a row of its own on a phone */
+.locality-map-legend .locality-map-view { margin-inline-end: 6px; font-size: inherit; }
+.locality-map-legend .locality-map-view .seg { gap: 0; font-size: .85rem; }
+@media (max-width: 699px) { .locality-map-legend .locality-map-view { flex-basis: 100%; } .locality-map-view .seg button { min-height: 44px; } }
+.vote-mix-canvas { position: absolute; left: 0; top: 0; }
 .locality-map-results { margin-block: 14px; }
 .locality-map-tool button:not(.info button), .locality-map-tool select { min-height: 32px; }
 

@@ -24,6 +24,8 @@ import { MAP_LINES, MAP_LINE_SNAPSHOT, drawMapLines, mapLineSourceLabel } from '
 import { basemapAttribution } from '../locality-basemap-style.ts';
 import { countOf, fmtInt, fmtPoints, PP } from '../format.ts';
 import { useDigits } from '../store.ts';
+import { manualPoint } from '../../data/locality-manual-points.ts';
+import { AreasLayer, type AreaPlace, type Island, type MapView, type Part } from './mapAreas.ts';
 
 function useJson<T>(url: string | null, empty: T) {
   const [value, setValue] = useState<T>(empty);
@@ -42,6 +44,14 @@ const NO_LOCATIONS: LocalityLocations = {};
 const NO_LINES: FeatureCollection = { type:'FeatureCollection', features:[] };
 const NO_NAMES: LocalityNames = { names: [], project: [] };
 const LINE_IDS = MAP_LINES.map(x => x.id);
+type Outlines = { type: 'FeatureCollection'; features: { properties: { code: number }; geometry: { type: 'Polygon' | 'MultiPolygon'; coordinates: number[][][] | number[][][][] } }[] };
+const NO_OUTLINES: Outlines = { type: 'FeatureCollection', features: [] };
+// the map's view ("Winner" dots or "Vote mix"), remembered on this device; it opens on the dots
+const VIEW_KEY = 'israel-elections:map-view';
+const readView = (): MapView => { try { return localStorage.getItem(VIEW_KEY) === 'mix' ? 'mix' : 'winner'; } catch { return 'winner'; } };
+const saveView = (v: MapView) => { try { localStorage.setItem(VIEW_KEY, v); } catch { /* not remembered; the switch still works */ } };
+// Review only: `?map-order=biggest` puts each town's biggest list first, for the owner to compare with the fixed order.
+const biggestFirst = () => { try { return new URLSearchParams(location.search).get('map-order') === 'biggest'; } catch { return false; } };
 export function useLocalityLocations(id: string, available = true) {
   const { value: locations, error, retry } = useJson(available ? `${import.meta.env.BASE_URL}data/${id}-locations.json` : null, NO_LOCATIONS);
   return { locations, error, retry };
@@ -103,6 +113,8 @@ const photonCache = new Map<string, PhotonFeature[]>();
 let lastRequest = 0;
 interface PhotonFeature { geometry: { coordinates: [number, number] }; properties: Record<string, string> }
 const GREY = MAP_UNASSIGNED_COLOUR;
+// the vote mix's grey for votes outside the shown blocs or seated lists; black would read as a list of its own
+const OTHER = '#9aa1a9';
 const share = (v: number, whole: number, digits: number) => whole > 0 ? percent(v, whole, digits) : '—';
 let measure: CanvasRenderingContext2D | null = null;
 const textWidth = (text: string) => {
@@ -128,6 +140,14 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   const digits = useDigits();
   const container = useRef<HTMLDivElement>(null), map = useRef<Leaflet.Map | null>(null);
   const [mode, setMode] = useState<'bloc' | 'list'>('bloc');
+  const [view, setViewState] = useState<MapView>(readView);
+  const setView = (v: MapView) => { setViewState(v); saveView(v); };
+  const mix = view === 'mix';
+  // the town outlines (1.7 MB) load only once the vote mix is first shown
+  const [wantOutlines, setWantOutlines] = useState(mix);
+  useEffect(() => { if (mix) setWantOutlines(true); }, [mix]);
+  const { value: outlineData, error: outlineError, retry: retryOutlines } = useJson(wantOutlines ? `${import.meta.env.BASE_URL}data/locality-outlines-2022.geojson` : null, NO_OUTLINES);
+  const outlines = useMemo(() => new Map(outlineData.features.map(f => [f.properties.code, (f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates) as number[][][][]])), [outlineData]);
   const [q, setQ] = useState(''), [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [address, setAddress] = useState(''), [busy, setBusy] = useState(false), [message, setMessage] = useState('');
   const [suggestions, setSuggestions] = useState<PhotonFeature[]>([]);
@@ -136,8 +156,12 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   useEffect(() => { mounted.current = true; return () => { mounted.current = false; }; }, []);
   const nameOf = (i: number) => localityName(names, data.rows[i], i, lang);
   const placed = useMemo(() => data.rows.flatMap((row, index) => {
+    if (isEnvelopeRow(row)) return [];
     const p = locations[localityLocationKey(row, index)];
-    return !isEnvelopeRow(row) && p ? [{ ...p, row, index }] : [];
+    if (p) return [{ lat: p.lat, lon: p.lon, code: p.code as number | null, row, index, approx: null as null | { en: string; he: string } }];
+    // a place with no CBS point that this project placed by hand, marked approximate (Hebron)
+    const m = Object.keys(locations).length ? manualPoint(row) : null;
+    return m ? [{ lat: m.lat, lon: m.lon, code: m.code as number | null, row, index, approx: { en: m.noteEn, he: m.noteHe } }] : [];
   }), [data, locations]);
   const searchNames = (r: LocalityRow, i: number) => ({ ...locations[localityLocationKey(r, i)], nameHe: localityHebrewName(names, r, i), code: r.code, aliases: [...(locations[localityLocationKey(r, i)]?.aliases ?? []), names.names[i] ?? '', r.nameHe] });
   const matches = useMemo(() => findLocalities(q, data.rows.map((_, i) => i), i => searchNames(data.rows[i], i)), [data, locations, names, q]);
@@ -146,6 +170,38 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     ? (() => { const b = s.blocs.find(x => x.id === key); return b ? groupingName(b, lang) : key; })()
     : (() => { const l = s.lists.find(x => x.id === key); return l ? listLabel(l, lang) : key; })();
   const groupColor = (key: string | null) => key === null ? GREY : (mode === 'bloc' ? s.blocs.find(b => b.id === key)?.color : s.lists.find(l => l.id === key)?.color) ?? GREY;
+  // The vote mix: each place's votes by bloc or list. Lists that won no seat are one grey "Other". The order is the same in
+  // every town: bloc by bloc, in the scenario's bloc order, and inside a bloc the biggest list in the country first.
+  const seated = useMemo(() => new Set(allocationOf(s).lists.filter(x => x.seats > 0).map(x => x.id)), [s]);
+  const partsOf = (votes: number[]): Part[] => {
+    let other = 0; const parts: Part[] = [];
+    for (const g of localityTotals(s, data.listIds, votes, mode)) {
+      if (g.votes <= 0) continue;
+      if (g.key === null || (mode === 'list' && !seated.has(g.key))) { other += g.votes; continue; }
+      parts.push({ key: g.key, color: groupColor(g.key), votes: g.votes, label: groupName(g.key) });
+    }
+    const blocRank = (id: string | null) => { const i = s.blocs.findIndex(b => b.id === id); return i < 0 ? s.blocs.length : i; };
+    const rank = (key: string) => { if (mode === 'bloc') return [blocRank(key), 0]; const l = s.lists.find(x => x.id === key); return [blocRank(l?.bloc ?? null), -(l?.votes ?? 0)]; };
+    if (biggestFirst()) parts.sort((a, b) => b.votes - a.votes);
+    else parts.sort((a, b) => { const x = rank(a.key), y = rank(b.key); return x[0] - y[0] || x[1] - y[1]; });
+    if (other > 0) parts.push({ key: '', color: OTHER, votes: other, label: mode === 'bloc' ? L('No bloc', 'ללא גוש') : L('Other', 'אחרות') });
+    return parts;
+  };
+  const areaPlaces = useMemo<AreaPlace[]>(() => !mix ? [] : placed.map(p => ({ index: p.index, name: localityName(names, p.row, p.index, lang), lat: p.lat, lon: p.lon, valid: p.row.valid,
+    parts: partsOf(p.row.votes), geom: p.code === null ? null : outlines.get(p.code) ?? null })), [mix, placed, outlines, s, mode, names, lang, seated]);
+  // Double-envelope votes belong to no place: an island in the sea west of Tel Aviv, sized like a town's circle
+  const envelopeRows = useMemo(() => data.rows.flatMap((r, i) => isEnvelopeRow(r) ? [i] : []), [data]);
+  const island = useMemo<Island | null>(() => {
+    if (!envelopeRows.length || !placed.length) return null;
+    const votes = data.listIds.map((_, k) => envelopeRows.reduce((a, i) => a + (data.rows[i].votes[k] ?? 0), 0));
+    const valid = envelopeRows.reduce((a, i) => a + data.rows[i].valid, 0);
+    if (valid <= 0) return null;
+    const first = envelopeRows[0], ta = placed.find(p => p.code === 5000);
+    const taName = ta ? localityName(names, ta.row, ta.index, lang) : '';
+    return { lat: 32.0, lon: 34.62, valid, parts: partsOf(votes), winner: localityWinner(s, data.listIds, votes, mode).color,
+      title: localityName(names, data.rows[first], first, lang), sub: L(`${fmtInt(valid)} votes`, `${fmtInt(valid)} קולות`),
+      keepClear: ta && taName ? { lat: ta.lat, lon: ta.lon, width: Math.ceil(textWidth(taName)) + 4, rtl: lang === 'he' } : null };
+  }, [envelopeRows, placed, data, s, mode, names, lang, seated]);
   const fittedFor = useRef<unknown>(null);
   useEffect(() => {
     if (!container.current) return;
@@ -171,6 +227,23 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     }).catch(() => { if (!controller.signal.aborted) setTilesFailed(true); });
     return () => controller.abort();
   }, [dark]);
+  const areas = useRef<AreasLayer | null>(null);
+  useEffect(() => {
+    const m = map.current; if (!m) return;
+    const layer = new AreasLayer(); layer.addTo(m); areas.current = layer;
+    const click = (e: Leaflet.LeafletMouseEvent) => { if (layer.onIsland(e.containerPoint)) setSelectedIndex(envelopeRowsRef.current[0] ?? null); };
+    m.on('click', click);
+    return () => { m.off('click', click); layer.remove(); areas.current = null; };
+  }, []);
+  const envelopeRowsRef = useRef(envelopeRows); envelopeRowsRef.current = envelopeRows;
+  // CBS open-use licence: the outlines carry their source credit while the vote mix shows them
+  useEffect(() => {
+    const m = map.current; if (!m || !mix) return;
+    const credit = `<a href="https://www.arcgis.com/home/item.html?id=65410312f3ab4c3482f52f8c8a284a3d">${lang === 'he' ? 'גבולות: הלמ״ס, אזורים סטטיסטיים 2022 (מעובד)' : 'Outlines: CBS 2022 statistical areas (adapted)'}</a>`;
+    m.attributionControl.addAttribution(credit);
+    return () => { m.attributionControl.removeAttribution(credit); };
+  }, [mix, lang]);
+  useEffect(() => { areas.current?.set(areaPlaces, view, dark, selectedIndex, island); }, [areaPlaces, view, dark, selectedIndex, island]);
   useEffect(() => {
     const m = map.current; if (!m || !lineData.features.length) return;
     return drawMapLines(m, lineData, lineIds, dark, setHiddenLines);
@@ -184,13 +257,22 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       const tip = document.createElement('span'); tip.className = 'locality-map-tip';
       const title = document.createElement('strong'); title.dir = 'auto'; title.textContent = localityName(names, p.row, p.index, lang);
       const why = document.createElement('span'); why.dir = 'auto';
-      why.textContent = w.tied ? L('Tie', 'שוויון') : w.key === null ? L('Unassigned / no votes', 'ללא שיוך / ללא קולות')
+      // in the vote mix the tooltip gives the biggest shares; on the dots, who leads and by how much
+      const mixParts = mix ? areaPlaces.find(a => a.index === p.index)?.parts ?? [] : [];
+      const mixSum = mixParts.reduce((a, q) => a + q.votes, 0) || 1;
+      why.textContent = mix ? [...mixParts].sort((a, b) => b.votes - a.votes).slice(0, 3).map(q => `${q.label} ${share(q.votes, mixSum, 0)}`).join(' · ')
+        : w.tied ? L('Tie', 'שוויון') : w.key === null ? L('Unassigned / no votes', 'ללא שיוך / ללא קולות')
         : `${groupName(w.key)} \u2066+${fmtPoints(w.margin / Math.max(1, p.row.valid) * 100, digits, true)}\u2069 ${L(...PP)}`;
       const source = document.createElement('span'); source.dir = 'auto'; source.textContent = localityNameSource(names, p.row, p.index, lang);
       tip.append(title, why, source);
+      if (p.approx) { const note = document.createElement('span'); note.dir = 'auto'; note.textContent = lang === 'he' ? p.approx.he : p.approx.en; tip.append(note); }
+      // the vote mix draws its own circles and tiles: the dot stays, unseen, for its tooltip and click
+      if (mix) { Leaflet.circleMarker([p.lat,p.lon], {radius:6, stroke:false, fillOpacity:0}).bindTooltip(tip).on('click',()=>setSelectedIndex(p.index)).addTo(group); return; }
       // a thin white outline separates neighbouring dots; a dark ring would darken every colour alike
       Leaflet.circleMarker([p.lat,p.lon], {radius:5, color:'#ffffff',weight:4,fill:false,interactive:false}).addTo(group);
       Leaflet.circleMarker([p.lat,p.lon], {radius:5, color:'#111418',weight:1,fillColor:w.color,fillOpacity:1}).bindTooltip(tip).on('click',()=>setSelectedIndex(p.index)).addTo(group);
+      // a place placed by hand (Hebron) has a dashed ring: its position is approximate
+      if (p.approx) Leaflet.circleMarker([p.lat,p.lon], {radius:8.5, color:dark?'#f2f4f7':'#111418',weight:1.4,dashArray:'2 2',fill:false,interactive:false,className:'locality-map-approx'}).addTo(group);
     });
     // open fitted to this election's localities (once per election, so a user's own zoom is kept while editing)
     if (placed.length && fittedFor.current !== data) {
@@ -198,7 +280,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       fittedFor.current = data;
     }
     return () => { group.remove(); };
-  }, [placed,winners,lang,data,names,digits]);
+  }, [placed,winners,lang,data,names,digits,mix,areaPlaces,dark]);
   // Same CBS/result keys as the table, both languages at every zoom. Larger localities first; no overlapping labels.
   useEffect(() => {
     const m = map.current, rtl = lang === 'he'; if (!m || (!rtl && !names.names.length)) return;
@@ -239,8 +321,8 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   }, [selectedIndex, placed]);
   const choose = (index: number) => {
     setSelectedIndex(index);
-    const row = data.rows[index], p = locations[localityLocationKey(row, index)];
-    if (p && !isEnvelopeRow(row)) map.current?.setView([p.lat,p.lon],12);
+    const p = placed.find(x => x.index === index);
+    if (p) map.current?.setView([p.lat,p.lon],12);
   };
   async function searchAddress() {
     if (busy || !address.trim()) return;
@@ -270,16 +352,17 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   const groups = selected ? localityTotals(s, data.listIds, selected.votes, mode).filter(g => g.votes > 0) : [];
   const selectedWinner = selected ? localityWinner(s, data.listIds, selected.votes, mode) : null;
   const localities = data.rows.filter(r => !isEnvelopeRow(r)).length;
-  const unplaced = data.rows.flatMap((r, i) => !isEnvelopeRow(r) && !locations[localityLocationKey(r, i)] ? [i] : []);
+  const placedRows = new Set(placed.map(p => p.index));
+  const unplaced = data.rows.flatMap((r, i) => !isEnvelopeRow(r) && !placedRows.has(i) ? [i] : []);
   const legend = mode === 'bloc' ? s.blocs.map(b => ({ id: b.id, color: b.color, label: groupingName(b, lang), title: b.appDefined ? appGroupingExplanation(lang) : undefined }))
-    : s.lists.filter(l => winners.some(w => w.key === l.id)).map(l => ({ id: l.id, color: l.color, label: listLabel(l, lang), title: undefined }));
+    : s.lists.filter(l => mix ? seated.has(l.id) : winners.some(w => w.key === l.id)).map(l => ({ id: l.id, color: l.color, label: listLabel(l, lang), title: undefined }));
   const shareBar = (v: number, top: number, color: string) => <span className="locality-share"><span><i style={{ width: `${v / (top || 1) * 100}%`, background: color }} /></span><span className="tabnum">{share(v, selected!.valid, digits)}</span></span>;
   return <div className="locality-map-tool">
     <p className="small ink2">{L('Historical votes · current grouping', 'קולות היסטוריים · חלוקה נוכחית')} <Info title={L('Map assumptions', 'הנחות המפה')}>{L('Historical local votes; colours follow your current scenario grouping. National vote edits are not distributed geographically. Split lists use national vote proportions; split blocs use elected-seat proportions, an estimate rather than measured party votes. English place names are CBS locality names; a few localities missing from CBS lists have this project’s transliteration (dotted underline).', 'קולות היסטוריים ביישובים; הצבעים לפי חלוקת הגושים הנוכחית. שינויי קולות ארציים אינם מחולקים גאוגרפית. רשימות שפוצלו מחולקות לפי יחס הקולות הארצי; גושים בתוך רשימה לפי יחס המושבים הנבחרים — אומדן ולא קולות מפלגתיים שנמדדו.')}</Info></p>
     {data.id !== 'k17' && (data.noteEn || data.noteHe) && <p className="small callout">{lang === 'he' ? data.noteHe ?? data.noteEn : data.noteEn ?? data.noteHe}</p>}
     {split && mode === 'bloc' && <p className="callout small">{L('A list spans several blocs: its locality votes are apportioned by its current elected members’ blocs.', 'רשימה משויכת לכמה גושים: קולותיה ביישוב מחולקים לפי שיוך חבריה הנבחרים כיום.')}</p>}
     <div className="row">
-      <ChoicePicker label={L('Colour by', 'צביעה לפי')} value={mode} options={[{ value: 'bloc', label: L('Winning bloc', 'הגוש המוביל'), preview: <ResultPreview s={s} /> }, { value: 'list', label: L('Winning list', 'הרשימה המובילה'), preview: <ResultPreview s={s} blocs={false} /> }]} onChange={v => setMode(v as typeof mode)} />
+      <ChoicePicker label={L('Colour by', 'צביעה לפי')} value={mode} options={[{ value: 'bloc', label: mix ? L('Blocs', 'גושים') : L('Winning bloc', 'הגוש המוביל'), preview: <ResultPreview s={s} /> }, { value: 'list', label: mix ? L('Lists', 'רשימות') : L('Winning list', 'הרשימה המובילה'), preview: <ResultPreview s={s} blocs={false} /> }]} onChange={v => setMode(v as typeof mode)} />
       <label className="field">{L('Find a locality ', 'חיפוש יישוב ')}<input type="search" value={q} onChange={e=>setQ(e.target.value)} placeholder={L('Hebrew, English or code','עברית, אנגלית או סמל')} /></label>
     </div>
     {normalizeLocalityName(q) && <div className="locality-map-matches" aria-label={L('Matching localities','יישובים תואמים')}>
@@ -297,7 +380,18 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       if (near) {choose(near.item.index);setMessage(L(`Nearest mapped locality: ${nameOf(near.item.index)}, ${near.km.toFixed(1)} km (straight line).`, `היישוב הממופה הקרוב: ${nameOf(near.item.index)}, ${near.km.toFixed(1)} ק״מ בקו אווירי.`));}
     }}>{[f.properties.name,f.properties.street,f.properties.housenumber,f.properties.city,f.properties.country].filter(Boolean).join(', ')}</button>)}</div>}
     {data.id === 'k17' && <Locality2006Note />}
-    <div className="locality-map-legend">{legend.map(x=><span key={x.id} title={x.title}><i style={{background:x.color}} />{x.label}</span>)}<span><i style={{background:GREY}}/>{L('Tie / unassigned / no votes','שוויון / ללא שיוך / ללא קולות')}</span></div>
+    <div className="locality-map-legend">
+      <span className="locality-map-view">
+        <span className="seg" role="group" aria-label={L('Map view', 'תצוגת המפה')}>
+          <button type="button" aria-pressed={!mix} onClick={() => setView('winner')}>{L('Winner', 'המוביל')}</button>
+          <button type="button" aria-pressed={mix} onClick={() => setView('mix')}>{L('Vote mix', 'תמהיל קולות')}</button>
+        </span>
+        <Info title={L('Map view', 'תצוגת המפה')}><p>{L('Winner: one dot per place, in the colour of the bloc or list that came first there.', 'המוביל: נקודה לכל יישוב, בצבע הגוש או הרשימה שהגיעו ראשונים בו.')}</p>
+          <p>{L('Vote mix: from afar, a circle per place, its size by valid votes, cut by votes. Close up, each town is filled with small squares, one block per bloc or list, its share of the squares its share of the votes. The blocks show shares, not where in the town people voted. The order is the same in every town, bloc by bloc. Lists that won no seat are grey (Other). Double-envelope votes are the dashed island off Tel Aviv. The app remembers your choice on this device.', 'תמהיל קולות: מרחוק, עיגול לכל יישוב, גודלו לפי הקולות הכשרים, מחולק לפי הקולות. מקרוב, כל יישוב ממולא בריבועים קטנים, גוש אחד לכל גוש או רשימה, וחלקו בריבועים כחלקו בקולות. הגושים מראים חלקים, לא היכן ביישוב הצביעו. הסדר זהה בכל יישוב, גוש אחר גוש. רשימות שלא זכו במושב באפור (אחרות). קולות המעטפות הכפולות הם האי המקווקו מול תל אביב. האפליקציה זוכרת את הבחירה במכשיר הזה.')}</p></Info>
+      </span>
+      {legend.map(x=><span key={x.id} title={x.title}><i style={{background:x.color}} />{x.label}</span>)}<span><i style={{background:mix ? OTHER : GREY}}/>{mix ? (mode === 'bloc' ? L('No bloc', 'ללא גוש') : L('Other: lists without a seat', 'אחרות: רשימות ללא מושב')) : L('Tie / unassigned / no votes','שוויון / ללא שיוך / ללא קולות')}</span>
+    </div>
+    {mix && outlineError && <p className="small bad" role="status">{L('Town outlines could not load; places show as circles.', 'גבולות היישובים לא נטענו; היישובים מוצגים כעיגולים.')} <button className="btn small" onClick={retryOutlines}>{L('Try again', 'נסו שוב')}</button></p>}
     <details className="locality-boundary-disclosure" open={legendOpen} onToggle={e=>setLegendOpen(e.currentTarget.open)}><summary>{L('Lines and areas', 'קווים ושטחים')}</summary>
     <fieldset className="locality-boundary-legend"><legend className="sr-only">{L('Lines and areas', 'קווים ושטחים')}</legend>
       <label className="locality-boundary-all"><input type="checkbox" checked={every === 'all'} ref={el => { if (el) el.indeterminate = every === 'some'; }}
@@ -337,7 +431,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
         <span>{L('Valid ', 'כשרים ')}<b className="tabnum">{fmtInt(selected.valid)}</b></span>
         <span>{L('Registered ', 'בעלי זכות ')}<b className="tabnum">{selected.registered === null ? '—' : fmtInt(selected.registered)}</b></span>
         <span>{L('Invalid ', 'פסולים ')}<b className="tabnum">{fmtInt(selected.invalid)}</b></span>
-        <Info title={L('Location and turnout', 'מיקום והצבעה')}><p>{localityNameSource(names, selected, selectedIndex!, lang)}</p>{L('Turnout excludes double-envelope votes. Coordinates are CBS locality reference points, not polling stations.', 'ההצבעה אינה כוללת מעטפות חיצוניות. המיקום הוא נקודת ייחוס של הלמ״ס ליישוב ולא מיקום קלפי.')}</Info>
+        <Info title={L('Location and turnout', 'מיקום והצבעה')}><p>{localityNameSource(names, selected, selectedIndex!, lang)}</p>{(() => { const a = placed.find(p => p.index === selectedIndex)?.approx; return a && <p>{lang === 'he' ? a.he : a.en}</p>; })()}{L('Turnout excludes double-envelope votes. Coordinates are CBS locality reference points, not polling stations.', 'ההצבעה אינה כוללת מעטפות חיצוניות. המיקום הוא נקודת ייחוס של הלמ״ס ליישוב ולא מיקום קלפי.')}</Info>
       </p>
       {/* each list's share drawn as a bar in its colour, scaled to the leader */}
       <div className="tablewrap"><table className="tbl"><thead><tr><th>{L('List','רשימה')}</th><th className="n">{L('Votes','קולות')}</th><th>{L('Share','שיעור')}</th></tr></thead><tbody>{(()=>{const rows=selected.votes.map((v,k)=>({v,k})).filter(x=>x.v>0).sort((a,b)=>b.v-a.v);const top=rows[0]?.v||1;return rows.map(({v,k})=>{
