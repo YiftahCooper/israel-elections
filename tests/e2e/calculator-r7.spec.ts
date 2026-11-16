@@ -84,3 +84,33 @@ test('the compared election has a grey band and a key; the turnout line can be t
   await expect(page.locator('.tn-history .tn-panel')).toHaveCount(1);
   await expect(page.locator('.tn-history')).not.toContainText('Turnout (%)');
 });
+
+// A scenario carries no viewer settings: opening someone's link leaves this viewer's settings and remembered answers
+// as they were (the scenario's own choices, such as counting joint lists by party, stay inside the scenario).
+test('opening a shared scenario leaves the viewer’s settings and remembered answers unchanged', async ({ page, browser }) => {
+  await start(page);
+  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await page.locator('.lb-row').filter({ hasText: 'Likud' }).first().click();
+  await page.keyboard.press('Escape');
+  await page.getByRole('tab', { name: 'Coalitions', exact: true }).click();
+  await page.locator('.coal-choice').first().getByRole('button', { name: 'In', exact: true }).click();
+  await page.getByRole('tab', { name: 'Scenarios', exact: true }).click();
+  await page.getByRole('button', { name: 'Copy a share link', exact: true }).click();
+  const link = await page.getByRole('textbox', { name: 'Share link', exact: true }).inputValue();
+  const ctx = await browser.newContext();
+  const viewer = await ctx.newPage();
+  const settings = { starterTip: false, decimals: 3, theme: 'dark', textSize: 'large', compareWith: 'official' };
+  const preferences = { voteSource: 'proportional', comparison: 'official', jointSeats: 'off' };
+  await viewer.addInitScript(([settings, preferences]) => { if (sessionStorage.getItem('seeded')) return; sessionStorage.setItem('seeded', '1');
+    localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'he', level: 'expert' }));
+    localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: settings }));
+    localStorage.setItem('israel-elections:preferences', JSON.stringify(preferences)); }, [settings, preferences] as const);
+  await viewer.goto(link);
+  await expect(viewer.getByRole('button', { name: 'החלפת תרחיש' })).toContainText('תרחיש משותף');
+  await viewer.waitForTimeout(500);
+  const stored = await viewer.evaluate(() => ({ v1: JSON.parse(localStorage.getItem('israel-elections:v1') ?? '{}'), settings: JSON.parse(localStorage.getItem('israel-elections:settings') ?? '{}'), preferences: JSON.parse(localStorage.getItem('israel-elections:preferences') ?? '{}') }));
+  expect(stored.v1).toMatchObject({ lang: 'he', level: 'expert' });
+  expect(stored.settings.values).toMatchObject(settings);
+  expect(stored.preferences).toEqual(preferences);
+  await ctx.close();
+});
