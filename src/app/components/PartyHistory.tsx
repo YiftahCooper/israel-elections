@@ -420,10 +420,12 @@ function chipParties(electionId: string, l: Parameters<typeof partiesOf>[1]) {
 }
 
 /** A party's chip: its colour beside its name, as every place that names a party shows it (16 Nov 2026). */
-function PartyChip({ id, active, color, onPick }: { id: string; active: boolean; color?: string; onPick: () => void }) {
+/** A party chip: its colour and its name; at an election where the party was known by another name than the one it is
+ *  registered under, the name it was known by (16 Nov 2026). */
+function PartyChip({ id, active, color, at, onPick }: { id: string; active: boolean; color?: string; at: number; onPick: () => void }) {
   const lang = useLang();
   return <button type="button" className={`btn small ph-chip ${active ? 'primary' : ''}`} aria-pressed={active} onClick={onPick}>
-    {color && <span className="swatch" style={{ background: color }} aria-hidden />}{partyShort(id, lang)}</button>;
+    {color && <span className="swatch" style={{ background: color }} aria-hidden />}{HISTORY[at]?.known[id]?.registered ? partyNameAt(id, at, lang) : partyShort(id, lang)}</button>;
 }
 
 /** A party whose only list withdrew before the vote (2026 Tnuat Ahi) never ran: no "since" year, no "0 of 26". */
@@ -448,7 +450,7 @@ export function PartyHistorySection({ s, r, listId }: { s: Scenario; r: Allocati
   return <section className="ph-sec" aria-label={L('History', 'היסטוריה')}>
     <h3>{L('History', 'היסטוריה')} <span className="tiny muted">· {!ran.length ? NEVER(L) : ran.length > 1 ? L(`since ${yearLabel(h.firstRun, 'en')}`, `מאז ${yearLabel(h.firstRun, 'he')}`) : L(`only ${yearLabel(h.firstRun, 'en')}`, `רק ${yearLabel(h.firstRun, 'he')}`)}</span></h3>
     {chips.length > 1 && <div className="ph-chips" role="group" aria-label={L('Whose history', 'ההיסטוריה של')}>
-      {chips.map((p) => <PartyChip key={p} id={p} active={p === active} color={colours[p]} onPick={() => setPid(p)} />)}</div>}
+      {chips.map((p) => <PartyChip key={p} id={p} active={p === active} color={colours[p]} at={k} onPick={() => setPid(p)} />)}</div>}
     {h.eras.length > 1 && <div className="tiny muted ph-chain">{h.eras.map((e) => e.name).filter((n, i, a) => a.indexOf(n) === i).join(lang === 'he' ? ' ← ' : ' → ')}</div>}
     {ran.length > 1 && <div ref={ref} className="ph-compact">
       <button type="button" className="ph-chartbtn" onClick={() => setOpen(true)} aria-label={L(`Open full history: ${partyShort(active, 'en')}`, `פתיחת ההיסטוריה המלאה: ${partyShort(active, 'he')}`)}>
@@ -498,13 +500,15 @@ function PointCard({ p, identity }: { p: SeriesPoint; identity: Identity }) {
   if (!p.list) return <div className="ph-card"><b>{yearLabel(p.i, lang)}</b> · {L('Did not run', 'לא התמודדה')}</div>;
   const partners = names(p.partners, lang, p.i);
   const joint = p.role !== 'alone';
+  const known = p.era ? HISTORY[p.i]?.known[p.era] : undefined;
   return <div className="ph-card" aria-live="polite">
     <div><b>{yearLabel(p.i, lang)} · <bdi>{listShort(p.list, lang)}</bdi></b></div>
     <div>{L(seatsText(p.seats, 'en'), seatsText(p.seats, 'he'))} · <bdi dir="ltr">{percent(p.votes, p.valid, digits)}</bdi> · <bdi dir="ltr">{fmtInt(p.votes)}</bdi> {L('votes', 'קולות')}</div>
     {joint && <div className="small">{p.role === 'led' ? L(`Led a joint list with ${partners}`, `הובילה רשימה משותפת עם ${partners}`) : L(`Ran inside a list led by ${partyNameAt(p.list.lead ?? p.partners[0], p.i, 'en')}`, `רצה ברשימה בראשות ${partyNameAt(p.list.lead ?? p.partners[0], p.i, 'he')}`)}</div>}
     {joint && <div className="small">{L('Elected: ', 'נבחרו: ')}{[...p.members, ...p.partners].map((q) => { const n = p.list!.elected[q]; return `${partyNameAt(q, p.i, lang)} ${n ?? L('unknown', 'לא ידוע')}`; }).join(' · ')}{p.list.unknownElected > 0 ? L(` · unknown ${p.list.unknownElected}`, ` · לא ידוע ${p.list.unknownElected}`) : ''}</div>}
     {joint && <div className="tiny muted">{L('Votes are for the whole list', 'הקולות ניתנו לרשימה כולה')}</div>}
-    {p.era && partyNameAt(p.era, p.i, lang) !== listShort(p.list, lang) && <div className="tiny muted">{L(`As ${partyNameAt(p.era, p.i, 'en')}`, `בשם ${partyNameAt(p.era, p.i, 'he')}`)}</div>}
+    {p.era && (partyNameAt(p.era, p.i, lang) !== listShort(p.list, lang) || known?.registered) && <div className="tiny muted">{L(`As ${partyNameAt(p.era, p.i, 'en')}`, `בשם ${partyNameAt(p.era, p.i, 'he')}`)}{known?.registered && <> <Info title={L('Registered name', 'השם הרשום')}>{L(`Registered as ${known.registered[1]}; it ran as ${partyNameAt(p.era, p.i, 'en')}.`, `רשומה בשם ${known.registered[0]}; התמודדה בשם ${partyNameAt(p.era, p.i, 'he')}.`)}{known.source && <> <a href={known.source} target="_blank" rel="noreferrer">{L('Source', 'מקור')}</a></>}</Info></>}</div>}
+    {known?.note && <div className="tiny muted ph-pointnote">{L(known.note[1], known.note[0])}</div>}
   </div>;
 }
 
@@ -526,8 +530,10 @@ export function HistorySheet({ parties, colours = {}, initial, electionIdx, onCl
   const head = h.points[electionIdx].list ?? ran[ran.length - 1]?.list;
   const since = ran.length < h.points.length - h.firstRun || h.firstRun > 0 ? L(` since ${yearLabel(h.firstRun, 'en')}`, ` מאז ${yearLabel(h.firstRun, 'he')}`) : '';
   const open = OPEN_CHECKS.filter((o) => o.partyIds.some((p) => h.identity.ids.includes(p)));
-  const title = partyShort(pid, lang);
-  return <Sheet label={L(`${partyShort(pid, 'en')} history`, `היסטוריה: ${partyShort(pid, 'he')}`)} onClose={onClose}>
+  // the name it was known by at the election you are looking at, where that differs from its registered name (16 Nov 2026)
+  const titleIn = (l: 'he' | 'en') => HISTORY[electionIdx]?.known[pid]?.registered ? partyNameAt(pid, electionIdx, l) : partyShort(pid, l);
+  const title = titleIn(lang);
+  return <Sheet label={L(`${titleIn('en')} history`, `היסטוריה: ${titleIn('he')}`)} onClose={onClose}>
     <div className="ph-head">
       {head && <Slip name={listShort(head, lang)} letters={head.letters} color={head.color} size="lg" />}
       <div className="ph-head-text">
@@ -538,7 +544,7 @@ export function HistorySheet({ parties, colours = {}, initial, electionIdx, onCl
       <button type="button" className="btn ghost" onClick={onClose} aria-label={L('Close', 'סגירה')}>×</button>
     </div>
     <div className="ph-toolbar">
-      {parties.length > 1 && <div className="ph-chips" role="group" aria-label={L('Whose history', 'ההיסטוריה של')}>{parties.map((p) => <PartyChip key={p} id={p} active={p === pid} color={colours[p]} onPick={() => setPid(p)} />)}</div>}
+      {parties.length > 1 && <div className="ph-chips" role="group" aria-label={L('Whose history', 'ההיסטוריה של')}>{parties.map((p) => <PartyChip key={p} id={p} active={p === pid} color={colours[p]} at={electionIdx} onPick={() => setPid(p)} />)}</div>}
       <div className="seg-row" role="group" aria-label={L('Measure', 'מדד')}>
         {(['seats', 'share'] as const).map((m) => <button key={m} type="button" className={`btn small ${metric === m ? 'primary' : ''}`} aria-pressed={metric === m} onClick={() => setMetric(m)}>{m === 'seats' ? L('Seats', 'מנדטים') : L('Vote share', 'שיעור קולות')}</button>)}
       </div>

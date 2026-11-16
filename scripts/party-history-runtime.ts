@@ -2,7 +2,7 @@
  *  Per election: whole-list votes and seats, colours, short names, the registered parties of each list, its leading
  *  party and the elected members per party (joint facts). No constituent vote figure exists anywhere: votes belong to
  *  the whole list. Logos and sources stay in the datasets and metadata. */
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import type { ElectionDataset } from '../src/data/schema.ts';
 
 type Appearance = { electionId: string; listId: string; partyId: string; role: string };
@@ -11,13 +11,16 @@ type Fact = { listId: string; headPartyId?: string | null; unknownElected: numbe
 
 /** A party on a list: [id, elected or -1, and where its usual short name was not yet (or no longer) its name at that
  *  election, the name it ran under then: Hebrew, English or null]. See nameAtElection below. */
+/** A party's name as it was known at one election, with its registered name ([Hebrew, English]); a note on the point.
+ *  From the research handoff data/research/round7/history-display.json (16 Nov 2026), read when present. */
+export type PackedKnown = { registered?: readonly [string, string]; source?: string; note?: readonly [string, string] };
 export type PackedParty = readonly [string, number] | readonly [string, number, string, string | null];
 /** One list: [id, votes, seats, colour, shortHe, shortEn, letters, lead, parties, unknownElected, 1 if it withdrew before
  *  the vote (registered, not on the ballot: a party did not run on it) else 0] */
 export type PackedList = readonly [string, number, number, string, string, string | null, string, string | null, readonly PackedParty[], number, number];
 export interface HistoryRuntime {
   version: 1;
-  elections: { id: string; date: string; valid: number; pending: boolean; lists: PackedList[] }[];
+  elections: { id: string; date: string; valid: number; pending: boolean; lists: PackedList[]; known?: Record<string, PackedKnown> }[];
   /** party id → [short Hebrew name, short English name or null, 1 for a registered party, 0 for a one-election vehicle] */
   parties: Record<string, readonly [string, string | null, number]>;  /** retired party id → its canonical id (the registry's aliases), so the app needs no registry to read lineage */
   aliases: Record<string, string>;
@@ -85,7 +88,7 @@ export function compileHistoryRuntime(root = process.cwd()): HistoryRuntime {
   const constituentName = new Map<string, [string, string | null]>();
   // each party's name at each election (list id → party id → name), kept below where it differs from the usual one
   const nameThen = new Map<string, Map<string, [string, string | null]>>();
-  const elections = Array.from({ length: 26 }, (_, i) => {
+  const elections: HistoryRuntime['elections'] = Array.from({ length: 26 }, (_, i) => {
     const d = read(`public/data/k${i + 1}.json`) as ElectionDataset;
     const seats = (d.officialSeats ?? {}) as Record<string, number>;
     const lists = d.lists.map((l): PackedList => {
@@ -135,6 +138,23 @@ export function compileHistoryRuntime(root = process.cwd()): HistoryRuntime {
     const x = l[10] ? undefined : shown.get(p)?.get(i);
     return x ? [p, n, x[0], x[1]] : [p, n];
   }), l[9], l[10]]); });
+  // known names (shown) and registered names (behind the (i)); a note on a history point
+  const handoff = `${root}/data/research/round7/history-display.json`;
+  if (existsSync(handoff)) {
+    type KnownName = { partyId: string; fromElection?: string; electionId?: string; displayHe: string; displayEn: string; registeredHe: string; registeredEn: string; source?: string };
+    type PointNote = { partyId: string; electionId: string; noteHe: string; noteEn: string };
+    const doc = JSON.parse(readFileSync(handoff, 'utf8')) as { partyNames?: KnownName[]; pointNotes?: PointNote[] };
+    const num = (id: string) => Number(id.slice(1));
+    const at = (e: (typeof elections)[number], party: string) => (e.known ??= {})[party] ??= {};
+    for (const k of doc.partyNames ?? []) for (const e of elections) {
+      if (!(k.electionId ? e.id === k.electionId : k.fromElection && num(e.id) >= num(k.fromElection))) continue;
+      const ran = e.lists.some((l) => !l[10] && l[8].some(([p]) => p === k.partyId));
+      if (!ran) continue;
+      e.lists = e.lists.map((l) => l[10] ? l : [l[0], l[1], l[2], l[3], l[4], l[5], l[6], l[7], l[8].map((x): PackedParty => x[0] === k.partyId ? [x[0], x[1], k.displayHe, k.displayEn] : x), l[9], l[10]]);
+      Object.assign(at(e, k.partyId), { registered: [k.registeredHe, k.registeredEn] as const, ...(k.source ? { source: k.source } : {}) });
+    }
+    for (const n of doc.pointNotes ?? []) { const e = elections.find((x) => x.id === n.electionId); if (e) at(e, n.partyId).note = [n.noteHe, n.noteEn]; }
+  }
   const aliases: Record<string, string> = {};
   for (const p of registry.parties) for (const a of p.aliases ?? []) aliases[a.id] = p.id;
   return { version: 1, elections, parties, aliases };

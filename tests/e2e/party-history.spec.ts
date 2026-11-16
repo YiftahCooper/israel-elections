@@ -3,6 +3,8 @@
 // left to right, the phone sheet, contrast, and that viewing history is never an edit.
 import { expect, test, type Page } from '@playwright/test';
 import { openSideBySide } from './sideBySide.ts';
+import { choose } from './choices.ts';
+import { existsSync } from 'node:fs';
 
 async function start(page: Page, { lang = 'en', level = 'standard', width = 1500, values = {} }: { lang?: 'en' | 'he'; level?: string; width?: number; values?: Record<string, unknown> } = {}) {
   await page.setViewportSize({ width, height: width < 800 ? 844 : 1000 });
@@ -249,4 +251,22 @@ for (const [lang, width] of [['en', 1500], ['he', 390]] as const) test(`every pa
     checked++;
   }
   expect(checked).toBeGreaterThan(5);
+});
+
+// facts/known-names (16 Nov 2026): the name a party was known by on screen, its registered name behind the (i). The names
+// are the research handoff data/research/round7/history-display.json; this runs once it is in the checkout.
+for (const lang of ['en', 'he'] as const) test(`a party known by another name shows it, the registered name behind the (i): ${lang}`, async ({ page }) => {
+  test.skip(!existsSync('data/research/round7/history-display.json'), 'known-name research not yet in this checkout');
+  await start(page, { lang });
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k25');
+  await listRow(page, lang === 'he' ? 'הציונות הדתית' : 'Religious Zionism').click();
+  const sec = page.locator('aside .ph-sec');
+  const chip = sec.getByRole('button', { name: lang === 'he' ? 'הציונות הדתית' : 'Religious Zionist Party', exact: true });
+  await chip.click();
+  await sec.getByRole('button', { name: lang === 'he' ? 'היסטוריה מלאה' : 'Full history', exact: true }).click();
+  await expect(sheet(page).getByRole('heading', { level: 2 })).toContainText(lang === 'he' ? 'הציונות הדתית' : 'Religious Zionist Party');
+  const card = sheet(page).locator('.ph-card');
+  await expect(card).toContainText(lang === 'he' ? 'בשם הציונות הדתית' : 'As Religious Zionist Party');
+  await card.getByRole('button', { name: lang === 'he' ? 'השם הרשום' : 'Registered name' }).click();
+  await expect(page.getByText(lang === 'he' ? /רשומה בשם האיחוד הלאומי - תקומה/ : /Registered as National Union–Tkuma/)).toBeVisible();
 });

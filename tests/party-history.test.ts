@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { comparableFor, comparablePredecessor, officialFacts } from '../src/history/compare.ts';
 import { RELATIONS, readRelations, type Relation } from '../src/history/relations.ts';
@@ -307,8 +307,11 @@ describe('names at each election', () => {
   it('the other names that were shown before they existed', () => {
     // the English follows the official sponsor records, as the Hebrew does (audit 12 Nov 2026, c-famous-late-10): the lists
     // of 2015–2026 were submitted by האיחוד הלאומי - תקומה, which is still its name in the party registrar
-    expect(strip('tkuma', 'en')).toEqual(['k15–k19 Tkuma', 'k20–k26 National Union–Tkuma']);
-    expect(strip('tkuma', 'he')).toEqual(['k15–k17 תקומה', 'k18–k26 האיחוד הלאומי – תקומה']);
+    // since 16 Nov 2026 the name a party was known by is shown, the registered one behind the (i): from 2021 the Religious
+    // Zionist Party (research handoff data/research/round7/history-display.json, when it is in the checkout)
+    const knownNames = existsSync('data/research/round7/history-display.json');
+    expect(strip('tkuma', 'en')).toEqual(knownNames ? ['k15–k19 Tkuma', 'k20–k23 National Union–Tkuma', 'k24–k26 Religious Zionist Party'] : ['k15–k19 Tkuma', 'k20–k26 National Union–Tkuma']);
+    expect(strip('tkuma', 'he')).toEqual(knownNames ? ['k15–k17 תקומה', 'k18–k23 האיחוד הלאומי – תקומה', 'k24–k26 הציונות הדתית'] : ['k15–k17 תקומה', 'k18–k26 האיחוד הלאומי – תקומה']);
     expect(strip('israel-resilience', 'en')).toEqual(['k21–k23 Israel Resilience', 'k24–k25 Blue and White']); // 2026: the list withdrew
     expect(strip('otzma-yehudit', 'en')).toEqual(['k19–k19 Otzma Leyisrael', 'k20–k26 Otzma Yehudit']);
     expect(strip('ahi', 'en')).toEqual(['k17–k17 Renewed Religious National Zionism', 'k18–k23 Ahi']);
@@ -356,7 +359,8 @@ describe('names at each election', () => {
     const early: string[] = [];
     HISTORY.forEach((e, i) => { for (const l of e.lists) for (const p of l.parties) {
       const names = (dated.get(p) ?? []).filter((n) => n.date <= e.date);
-      if (!names.length) continue;
+      // a name it was known by, with its own source and its registered name behind the (i)
+      if (!names.length || e.known[p]?.registered) continue;
       const he = partyNameAt(p, i, 'he'), en = partyNameAt(p, i, 'en');
       // a name dated by then that holds every word of the shown one (a long form of it, or the same)
       const known = names.some((n) => formOf(n.nameHe, he, 'he') || (!!n.nameEn && formOf(n.nameEn, en, 'en')));
@@ -392,5 +396,27 @@ describe('one party, one history', () => {
     const k7 = JSON.parse(readFileSync('data/research/knesset-member-changes/k7.json', 'utf8'));
     const reg = (id: number) => k7.factionRegistry.find((f: { id: number }) => f.id === id);
     expect([reg(353).end, reg(994).start]).toEqual(['1973-07-03', '1973-07-03']);
+  });
+});
+
+// 16 Nov 2026: a party known by another name than its registered one shows the known name, the registered one behind the
+// (i); a note on a history point. The names are the research handoff (data/research/round7/history-display.json), read
+// when it is in the checkout.
+describe.runIf(existsSync('data/research/round7/history-display.json'))('known and registered party names', () => {
+  const rt = compileHistoryRuntime();
+  const at = (k: string) => rt.elections.find((e) => e.id === k)!;
+  const party = (k: string, id: string) => at(k).lists.flatMap((l) => l[8]).find(([p]) => p === id);
+  it('the Religious Zionist Party from 2021, its registered name behind the (i); earlier elections untouched', () => {
+    for (const k of ['k24', 'k25', 'k26']) {
+      expect(party(k, 'tkuma')?.slice(2)).toEqual(['הציונות הדתית', 'Religious Zionist Party']);
+      expect(at(k).known?.tkuma?.registered).toEqual(['האיחוד הלאומי - תקומה', 'National Union–Tkuma']);
+    }
+    expect(at('k23').known?.tkuma).toBeUndefined();
+    expect(party('k23', 'tkuma')?.length).toBe(2);
+  });
+  it('Israel Democratic Party in 2019 only; the Panthers’ 1977 point says they also ran inside Sheli', () => {
+    expect(party('k22', 'independence')?.slice(2)).toEqual(['ישראל דמוקרטית', 'Israel Democratic Party']);
+    expect(at('k22').known?.independence?.source).toMatch(/^https:\/\//);
+    expect(at('k9').known?.['black-panthers']?.note).toEqual(['התמודדו גם במסגרת מחנה שלי', 'Also ran inside Sheli']);
   });
 });
