@@ -428,6 +428,10 @@ function PartyChip({ id, active, color, at, onPick }: { id: string; active: bool
     {color && <span className="swatch" style={{ background: color }} aria-hidden />}{HISTORY[at]?.known[id]?.registered ? partyNameAt(id, at, lang) : partyShort(id, lang)}</button>;
 }
 
+/** A party's elected members on a joint list, where the records do not say: TBD (16 Nov 2026); the count stays missing,
+ *  never zero. */
+const TBD = (L: ReturnType<typeof useL>) => L('TBD', 'טרם נקבע');
+
 /** A party whose only list withdrew before the vote (2026 Tnuat Ahi) never ran: no "since" year, no "0 of 26". */
 const NEVER = (L: ReturnType<typeof useL>) => L('did not run in any election', 'לא התמודדה באף מערכת בחירות');
 
@@ -505,7 +509,7 @@ function PointCard({ p, identity }: { p: SeriesPoint; identity: Identity }) {
     <div><b>{yearLabel(p.i, lang)} · <bdi>{listShort(p.list, lang)}</bdi></b></div>
     <div>{L(seatsText(p.seats, 'en'), seatsText(p.seats, 'he'))} · <bdi dir="ltr">{percent(p.votes, p.valid, digits)}</bdi> · <bdi dir="ltr">{fmtInt(p.votes)}</bdi> {L('votes', 'קולות')}</div>
     {joint && <div className="small">{p.role === 'led' ? L(`Led a joint list with ${partners}`, `הובילה רשימה משותפת עם ${partners}`) : L(`Ran inside a list led by ${partyNameAt(p.list.lead ?? p.partners[0], p.i, 'en')}`, `רצה ברשימה בראשות ${partyNameAt(p.list.lead ?? p.partners[0], p.i, 'he')}`)}</div>}
-    {joint && <div className="small">{L('Elected: ', 'נבחרו: ')}{[...p.members, ...p.partners].map((q) => { const n = p.list!.elected[q]; return `${partyNameAt(q, p.i, lang)} ${n ?? L('unknown', 'לא ידוע')}`; }).join(' · ')}{p.list.unknownElected > 0 ? L(` · unknown ${p.list.unknownElected}`, ` · לא ידוע ${p.list.unknownElected}`) : ''}</div>}
+    {joint && <div className="small">{L('Elected: ', 'נבחרו: ')}{[...p.members, ...p.partners].map((q) => { const n = p.list!.elected[q]; return `${partyNameAt(q, p.i, lang)} ${n ?? TBD(L)}`; }).join(' · ')}{p.list.unknownElected > 0 ? L(` · unknown ${p.list.unknownElected}`, ` · לא ידוע ${p.list.unknownElected}`) : ''}</div>}
     {joint && <div className="tiny muted">{L('Votes are for the whole list', 'הקולות ניתנו לרשימה כולה')}</div>}
     {p.era && (partyNameAt(p.era, p.i, lang) !== listShort(p.list, lang) || known?.registered) && <div className="tiny muted">{L(`As ${partyNameAt(p.era, p.i, 'en')}`, `בשם ${partyNameAt(p.era, p.i, 'he')}`)}{known?.registered && <> <Info title={L('Registered name', 'השם הרשום')}>{L(`Registered as ${known.registered[1]}; it ran as ${partyNameAt(p.era, p.i, 'en')}.`, `רשומה בשם ${known.registered[0]}; התמודדה בשם ${partyNameAt(p.era, p.i, 'he')}.`)}{known.source && <> <a href={known.source} target="_blank" rel="noreferrer">{L('Source', 'מקור')}</a></>}</Info></>}</div>}
     {known?.note && <div className="tiny muted ph-pointnote">{L(known.note[1], known.note[0])}</div>}
@@ -578,7 +582,7 @@ export function HistorySheet({ parties, colours = {}, initial, electionIdx, onCl
         <tbody>{ran.map((p) => <tr key={p.i} className={p.i === sel ? 'sel' : ''}>
           <td><button type="button" className="table-action" onClick={() => setSel(p.i)}>{yearLabel(p.i, lang)}</button></td>
           <td><bdi>{listShort(p.list!, lang)}</bdi>{p.role !== 'alone' && <span className="tiny muted"> · {p.role === 'led' ? L('joint, led', 'משותפת, בראשה') : L('joint, inside', 'משותפת, בתוכה')}</span>}</td>
-          <td className="n">{p.seats}</td><td className="n">{p.role === 'alone' ? '—' : p.own ?? L('unknown', 'לא ידוע')}</td>
+          <td className="n">{p.seats}</td><td className="n">{p.role === 'alone' ? '—' : p.own ?? TBD(L)}</td>
           <td className="n"><bdi dir="ltr">{fmtInt(p.votes)}</bdi></td><td className="n"><bdi dir="ltr">{percent(p.votes, p.valid, digits)}</bdi></td>
         </tr>)}</tbody>
       </table></div>
