@@ -73,9 +73,9 @@ test('mixed-only elections are not plotted as zero; mixed policy is a persistent
  await expect(page.locator('.family-chip')).toHaveCount(9);await expect(page.locator('.family-profile')).toContainText('Sourced draft interpretation');
  await page.reload();await page.getByRole('tab',{name:'Party families',exact:true}).click();await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
  await expect(page.getByRole('group',{name:'Mixed-list policy',exact:true}).getByRole('button',{name:'Leave out',exact:true})).toHaveAttribute('aria-pressed','true');
- // Centre 2026: Yesh Atid's 5 seats inside Together, with Bennett's 7 as partners; other lists still under review.
+ // Centre 2026: Yesh Atid's 5 seats inside Together, with Bennett's 7 as partners; Yashar!'s list; the Reservists still under review.
  await page.getByRole('button',{name:'Centre',exact:true}).click();await page.getByText('Exact figures (26 elections)',{exact:true}).click();
- const last=page.locator('.family-table tbody tr').last();await expect(last).toContainText('5 seats +7 partners');await expect(last).toContainText('Some lists not yet classified');await expect(last).not.toContainText('Did not contest');
+ const last=page.locator('.family-table tbody tr').last();await expect(last).toContainText('23 seats +10 partners');await expect(last).toContainText('Some lists not yet classified');await expect(last).not.toContainText('Did not contest');
  // Russian-speaking: no list is classified before 1981, and the aliyah lists of 1981, 1984 and 1992 await review
  await page.getByRole('button',{name:'Russian-speaking',exact:true}).click();await page.getByRole('button',{name:'Centre',exact:true}).click();
  const rows=page.locator('.family-table tbody tr');await expect(rows.nth(0)).toContainText('No list classified');await expect(rows.nth(12)).toContainText('Lists not yet classified');await expect(rows.nth(11)).toContainText('No list classified');
@@ -207,4 +207,10 @@ test('the selected election is a shaded column with its value and year in bold; 
  await page.keyboard.press('Escape');
  await page.locator('.family-plots h3').first().getByRole('button',{name:'Time axis',exact:true}).click();
  await expect(page.locator('.info .pop')).toContainText('A true time scale: each point sits on its election day');
+});
+test('the family’s Scale action sits under its charts, above the exact figures (U4 pass, 16 Nov)',async({page})=>{
+ await start(page);const scale=await page.getByRole('heading',{name:'Scale this family’s votes',exact:true}).boundingBox();
+ const exact=await page.getByText('Exact figures (26 elections)',{exact:true}).boundingBox();
+ const plots=await page.locator('.family-plots').boundingBox();
+ expect(scale!.y).toBeGreaterThan(plots!.y+plots!.height-1);expect(scale!.y).toBeLessThan(exact!.y);
 });

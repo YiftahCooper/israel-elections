@@ -62,7 +62,7 @@
 .family-table table {border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;}
 .family-table td,.family-table th {padding:8px;text-align:start;border-block-end:1px solid var(--rule);}
 .family-table small {display:block;}
-.family-scale {display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;align-items:start;padding:16px;background:var(--surface-2);border:1px solid var(--rule);border-radius:6px;}
+.family-scale {margin-block-end:12px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;align-items:start;padding:16px;background:var(--surface-2);border:1px solid var(--rule);border-radius:6px;}
 .family-scale h3 {font-size:14px;margin-block-end:5px;}
 .family-scale-inputs {display:grid;gap:10px;justify-items:start;}
 .family-quick-step {direction:ltr;display:flex;gap:4px;align-items:center;}
