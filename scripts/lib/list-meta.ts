@@ -9,12 +9,12 @@ export const BLOCS = {
   k25: [
     { id: 'netanyahu', nameHe: 'גוש נתניהו', nameEn: 'Netanyahu bloc', color: '#2f5fa8' },
     { id: 'change', nameHe: 'גוש השינוי', nameEn: 'Change bloc', color: '#2aa198' },
-    { id: 'arab', nameHe: 'רשימות ערביות', nameEn: 'Arab lists', color: '#2e8b57' },
+    { id: 'arab', nameHe: 'רשימות ערביות', nameEn: 'Arab lists', color: '#8a6d1f' },
   ],
   k26: [
     { id: 'netanyahu', nameHe: 'גוש נתניהו', nameEn: 'Netanyahu bloc', color: '#2f5fa8' },
     { id: 'opposition', nameHe: 'גוש האופוזיציה', nameEn: 'Opposition bloc', color: '#2aa198' },
-    { id: 'arab', nameHe: 'רשימות ערביות', nameEn: 'Arab lists', color: '#2e8b57' },
+    { id: 'arab', nameHe: 'רשימות ערביות', nameEn: 'Arab lists', color: '#8a6d1f' },
   ],
 };
 

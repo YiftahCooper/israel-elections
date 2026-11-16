@@ -312,7 +312,9 @@ const EXPECTED: Record<Family, string> = {
   // (0c459bc9) the 26 published datasets differ only in lists[].color (180 fields), lists[].logo.background (added in
   // k18 and k19) and builtAt (field-by-field diff), and the previous src and this src give the same 520 model outputs on
   // one set of data (fable-check/model-diff2.ts: 0 differ in every family).
-  model: 'f44c8324a30f193e08245df60bf3a0a0817f079589ec7a4cd5b7e7a15cf9485f',
+  // U4 col-blocs (16 Nov): the Arab lists bloc in k25 and k26 is ochre instead of sea green (the dataset's blocs and the
+  // pre-election-blocs scheme); the published datasets differ only in those four bloc color fields.
+  model: '6063de5b1485b1fbac524cb6164aa090d35dbb0ff38db9569cccfe54d8f403f2',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };
