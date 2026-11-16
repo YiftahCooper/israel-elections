@@ -39,7 +39,7 @@ newly certified against every underlying primary record.
 | k10 | 3 → 3 | First Lebanon War: attribution introduction → Operation Peace for Galilee against PLO terrorist bases; official context and withdrawal distinction in notes. Sinai withdrawal and bank crisis unchanged. |
 | k11 | 3 → 3 | Security-zone withdrawal, stabilization programme and First Intifada unchanged. No unsupported participant or motive claims appended. |
 | k12 | 4 → 4 | Iraqi missile attacks, Operation Solomon, Madrid and rights Basic Laws unchanged. |
-| k13 | 6 → 6 | Goldstein: “killed” → murdered worshippers in the Cave of the Patriarchs massacre, supported by Hebrew Knesset research; 1996 bombings: impersonal occurrence → Hamas terrorists carried them out. Oslo, Jordan treaty and Rabin assassination unchanged. |
+| k13 | 6 → 6 | Goldstein: “killed” → murdered worshippers in the Cave of the Patriarchs massacre, supported by Hebrew Knesset research (16 Nov 2026: “The Jewish terrorist Baruch Goldstein … 29 Muslim worshippers”, the Foreign Ministry timeline’s word for the victims); 1996 bombings: impersonal occurrence → Hamas terrorists carried them out. Oslo, Jordan treaty and Rabin assassination unchanged. |
 | k14 | 2 → 2 | Hebron Protocol and Wye Memorandum unchanged: signatories and acts, without evaluations. |
 | k15 | 6 → 6 | Second Intifada: bare onset → onset plus suicide bombings/terror attacks. Defensive Shield: attribution paragraph → named operation after the Passover attack; MOD chronology establishes 29 March–10 May dates and supersedes the earlier endpoint gap. Camp David, October unrest, withdrawal and direct election unchanged. |
 | k16 | 3 → 3 | Disengagement, Kadima and Sharon incapacity unchanged; no praise, blame or inferred motives. |

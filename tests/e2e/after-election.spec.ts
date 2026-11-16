@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { existsSync } from 'node:fs';
 import { choose } from './choices.ts';
 import { barLanguage } from './barMenu.ts';
 
@@ -357,4 +358,40 @@ for (const lang of ['en', 'he'] as const) test(`Sources: the election's own data
   await expect(links.filter({ hasText: lang === 'he' ? /^בית הנשיא$/ : /^President's Residence$/ })).toHaveCount(16);
   if (lang === 'he') for (const name of ['מעריב', 'הארץ', 'ישראל היום']) await expect(links.filter({ hasText: name }).first()).toBeVisible();
   await expect(block.locator('.after-source-list > li').first()).toContainText(lang === 'he' ? 'רשמי · נשלף' : 'Official · Retrieved');
+});
+
+// 16 Nov 2026: the government card shows its rotation agreement, also when the rotation never happened. The agreements
+// are the research lane's file; this runs once that file is in the checkout.
+for (const lang of ['en', 'he'] as const) test(`a government's rotation agreement is on its card, kept or not: ${lang}`, async ({ page }) => {
+  test.skip(!existsSync('data/research/government-rotation-agreements.json'), 'rotation research not yet in this checkout');
+  await page.goto('/');
+  if (lang === 'en') await page.getByRole('button', { name: 'English', exact: true }).click();
+  const open = async (k: string) => {
+    await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), k);
+    await page.getByRole('tab', { name: lang === 'he' ? 'אחרי הבחירות' : 'After the election', exact: true }).click();
+    return page.locator('.after-election .after-rotation');
+  };
+  let rot = await open('k23');
+  await expect(rot).toContainText(lang === 'he' ? 'ראש הממשלה החלופי: בני גנץ · רוטציה מתוכננת ל־17 בנוב׳ 2021 · הרוטציה לא התקיימה' : 'Alternate Prime Minister: Benny Gantz · rotation planned for 17 Nov 2021 · did not take place');
+  rot = await open('k24');
+  await expect(rot).toContainText(lang === 'he' ? 'יאיר לפיד' : 'took place early, on 1 Jul 2022');
+  await rot.getByRole('button', { name: lang === 'he' ? 'הסכם רוטציה' : 'Rotation agreement' }).click();
+  await expect(page.getByRole('link', { name: /Israel Democracy Institute/ })).toBeVisible();
+  rot = await open('k11');
+  await expect(rot).toContainText(lang === 'he' ? 'הסכם רוטציה: יצחק שמיר · אחרי 25 חודשים' : 'Rotation agreement: Yitzhak Shamir · after 25 months · took place on 20 Oct 1986');
+  await expect(rot).not.toContainText(lang === 'he' ? 'החלופי' : 'Alternate');
+  // no agreement, no line
+  await open('k25');
+  await expect(page.locator('.after-election .after-rotation')).toHaveCount(0);
+});
+
+// the rotation line wraps on a phone: the page never scrolls sideways (it did, by 250 px, before the line could wrap)
+test('phone, Hebrew: the government card with its rotation line fits the screen', async ({ page }) => {
+  test.skip(!existsSync('data/research/government-rotation-agreements.json'), 'rotation research not yet in this checkout');
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  await choose(page.getByRole('button', { name: 'בחירות', exact: true }), 'k24');
+  await page.getByRole('tab', { name: 'אחרי הבחירות', exact: true }).click();
+  await expect(page.locator('.after-rotation')).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
 });
