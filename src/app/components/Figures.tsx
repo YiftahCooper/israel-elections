@@ -16,8 +16,10 @@ import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat } from '../format.ts';
 import { dispatch, setState, useDigits, useShown } from '../store.ts';
 import { DecimalInput, Info } from './ui.tsx';
+import { TURNOUT_FIELD_DIGITS } from './TurnoutSteps.tsx';
 
-function Fig({ k, term, v, d, children }: { k: string; term?: string; v: ReactNode; d?: ReactNode; children?: ReactNode }) {
+/** vOpen: the value while the popover is open, when the popover holds a field for it (lay-turnout) */
+function Fig({ k, term, v, vOpen, d, children }: { k: string; term?: string; v: ReactNode; vOpen?: ReactNode; d?: ReactNode; children?: ReactNode }) {
   const L = useL();
   const popoverId = useId();
   const pop = useRef<HTMLDivElement>(null);
@@ -32,7 +34,7 @@ function Fig({ k, term, v, d, children }: { k: string; term?: string; v: ReactNo
     <div className={`fig ${isOpen ? 'open' : ''}`}>
       <button ref={trigger} type="button" aria-expanded={isOpen} aria-controls={popoverId} popoverTarget={popoverId}>
         <span className="k"><span>{k}</span>{isOpen ? <ChevronUp className="icon sm" aria-hidden /> : <ChevronDown className="icon sm" aria-hidden />}</span>
-        <span className="v"><bdi dir="ltr">{v}</bdi></span>
+        <span className="v"><bdi dir="ltr">{isOpen && vOpen !== undefined ? vOpen : v}</bdi></span>
         {d && <span className="d">{d}</span>}
       </button>
       <div id={popoverId} ref={pop} className="more" popover="auto" onToggle={e => { setOpen(e.newState === 'open'); }}><div className="more-head"><b>{k}</b><button className="btn ghost icon-only" aria-label={L('Close', 'סגירה')} onClick={() => pop.current?.hidePopover()}><X className="icon sm" aria-hidden /></button></div>{children}{term && <div className="row small ink2" style={{ marginTop: 8, gap: 4 }}>{L('Definition and source', 'הגדרה ומקור')} <Info term={term} label={`${k}: ${L('definition and source', 'הגדרה ומקור')}`} /></div>}</div>
@@ -90,10 +92,10 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
         <p className="small" style={{ margin: '4px 0 0' }}>{noThreshold ? <QualifyingNoThreshold s={s} r={r} seatlessVotes={seatlessVotes} /> : <>{L(`${r.lists.filter(x => x.qualified).length} qualifying lists`, `${r.lists.filter(x => x.qualified).length} רשימות משתתפות`)} <Info title={L('Qualifying votes', 'קולות משתתפים')}>{L(`The votes of the ${r.lists.filter((x) => x.qualified).length} lists that passed the threshold; only these share the seats. ${fmtInt(r.unrepresentedVotes)} valid votes went to lists that did not.`, `הקולות של ${r.lists.filter((x) => x.qualified).length} הרשימות שעברו את החסימה; רק הן מתחלקות במנדטים. ${fmtInt(r.unrepresentedVotes)} קולות כשרים ניתנו לרשימות שלא עברו.`)}</Info></>}</p></div>}
       </Fig>
 
-      <Fig k={L('Turnout', 'שיעור ההצבעה')} term="turnout" v={percent(cast, s.registered, Math.max(digits, 2))} d={fmtPct(cast, s.registered, digits) === fmtPct(ds.totals.votesCast, ds.totals.registered, digits) ? `${fmtInt(cast)} ${L('ballots cast', 'מצביעים')}` : <>{referenceLabel(null, lang).name} {percent(ds.totals.votesCast, ds.totals.registered, digits)}</>}>
+      <Fig k={L('Turnout', 'שיעור ההצבעה')} term="turnout" v={percent(cast, s.registered, digits)} vOpen={percent(cast, s.registered, TURNOUT_FIELD_DIGITS)} d={fmtPct(cast, s.registered, digits) === fmtPct(ds.totals.votesCast, ds.totals.registered, digits) ? `${fmtInt(cast)} ${L('ballots cast', 'מצביעים')}` : <>{referenceLabel(null, lang).name} {percent(ds.totals.votesCast, ds.totals.registered, digits)}</>}>
         <div className="row">
           <label className="row small">{L('Set turnout to', 'קביעת שיעור ההצבעה ל-')}
-            <DecimalInput value={s.registered ? (cast / s.registered) * 100 : 0} digits={2} width={86} label={L('Turnout %', 'שיעור הצבעה %')} onCommit={(p) => dispatch({ type: 'setTurnout', pct: p })} />% <Info title={L('Proportional turnout', 'הצבעה יחסית')}>{L('Every list, and the invalid ballots, grows or shrinks in proportion.', 'כל הרשימות, והקולות הפסולים, גדלים או קטנים באופן יחסי.')}</Info></label>
+            <DecimalInput value={s.registered ? (cast / s.registered) * 100 : 0} digits={TURNOUT_FIELD_DIGITS} width={86} label={L('Turnout %', 'שיעור הצבעה %')} onCommit={(p) => dispatch({ type: 'setTurnout', pct: p })} />% <Info title={L('Proportional turnout', 'הצבעה יחסית')}>{L('Every list, and the invalid ballots, grows or shrinks in proportion.', 'כל הרשימות, והקולות הפסולים, גדלים או קטנים באופן יחסי.')}</Info></label>
           {Math.abs(cast - ds.totals.votesCast) > 0 && s.registered === ds.totals.registered && <button className="btn small" onClick={() => dispatch({ type: 'setTurnout', pct: (ds.totals.votesCast / ds.totals.registered) * 100 })}>{L('Restore turnout', 'שחזור ההצבעה')}</button>}
         </div>
         <div className="kv small"><span>{L('Registered voters', 'בעלי זכות בחירה')}</span><span>{fmtInt(s.registered)}</span><span>{L('Ballots cast', 'מצביעים')}</span><span>{fmtInt(cast)}</span><span>{L('Invalid ballots', 'קולות פסולים')}</span><span>{fmtInt(s.invalid)}</span></div>

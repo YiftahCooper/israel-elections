@@ -14,8 +14,11 @@ const panel = (page: Page) => page.locator('#analysis-panel');
 
 test('a merged list keeps the first list’s colour instead of an app default', async ({ page }) => {
   await start(page);
+  // Likud's colour, read in the Charts key where the merged list is checked below (16 Nov, lane U1: the Merge & split
+  // chips show each list's logo, no longer a colour swatch)
+  await tool(page, 'charts');
+  const likudColour = await panel(page).locator('.legend > span').filter({ hasText: /^Likud \d+$/ }).locator('.swatch').evaluate((el) => getComputedStyle(el).backgroundColor);
   await tool(page, 'structure');
-  const likudColour = await panel(page).getByRole('button', { name: 'Likud', exact: true }).locator('.swatch').evaluate((el) => getComputedStyle(el).backgroundColor);
   await panel(page).getByRole('button', { name: 'Likud', exact: true }).click();
   await panel(page).getByRole('button', { name: 'Shas', exact: true }).click();
   await panel(page).getByRole('button', { name: /^Merge 2 lists/ }).click();
@@ -23,7 +26,7 @@ test('a merged list keeps the first list’s colour instead of an app default', 
   const merged = page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: /Likud–Shas/ }).first();
   await expect(merged).toBeVisible();
   await tool(page, 'charts');
-  await expect(panel(page).locator('.legend .swatch').first()).toHaveCSS('background-color', likudColour);
+  await expect(panel(page).locator('.legend > span').filter({ hasText: /^Likud–Shas \d+$/ }).locator('.swatch')).toHaveCSS('background-color', likudColour);
 });
 
 test('the 1949 walkthrough states the quota and threshold as that law computed them', async ({ page }) => {

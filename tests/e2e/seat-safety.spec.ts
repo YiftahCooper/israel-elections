@@ -62,7 +62,10 @@ test('lists below the threshold show how far each is from it; smaller ones open 
   await start(page);
   const below = panel(page).getByRole('region', { name: 'Below the threshold' });
   await expect(below.getByRole('listitem')).toHaveCount(2);
-  await expect(below.getByRole('listitem').first()).toContainText(/^Reservists[\s\S]*[\d,]+ short$/);
+  // 16 Nov (lane U1, owner: a list's logo or colour dot wherever it is named): the row opens with the list's mark
+  await expect(below.getByRole('listitem').first().locator('.sec-name > .list-mark')).toHaveCount(1);
+  await expect(below.getByRole('listitem').first().locator('.sec-name > button')).toHaveText(/^Reservists/);
+  await expect(below.getByRole('listitem').first()).toContainText(/Reservists[\s\S]*[\d,]+ short$/);
   await expect(below.getByRole('listitem').first().getByRole('img')).toHaveAttribute('aria-label', /^[\d,]+ of [\d,]+ votes$/);
   const more = below.locator('button[aria-expanded]');
   await expect(more).toHaveText(/^\d+ smaller lists$/);

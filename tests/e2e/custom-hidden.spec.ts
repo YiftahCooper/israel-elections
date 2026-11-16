@@ -45,10 +45,14 @@ async function visit(page: Page, vis: Vis): Promise<{ disclosures: Set<string>; 
     await chips.nth(0).click(); await chips.nth(1).click();
     await collect();
   }
+  // Coalitions: MKs apart from their list (16 Nov)
+  if (await page.locator('#tab-coal').count()) { await openTool(page, 'coal'); await expect(page.locator('#tool-panel .coal')).toBeVisible(); await collect(); }
   // Side by side opens from the comparison strip
   await page.locator('#tab-board').click();
   await page.getByRole('button', { name: 'Compare', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Stop comparing', exact: true })).toBeVisible();
+  // the strip's buttons wait for the compared election to load (Swap shows exactly then); counting earlier saw none
+  await expect(page.getByRole('button', { name: 'Swap', exact: true })).toBeVisible();
   const side = await page.getByRole('button', { name: 'Side by side', exact: true }).count() > 0;
   await page.getByRole('button', { name: 'Stop comparing', exact: true }).click();
   // 1988: a list with official notes

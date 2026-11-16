@@ -23,7 +23,7 @@ import { participantName } from '../governmentSupport.ts';
 import { cappedText, tieNote } from '../analysisWords.ts';
 import { minimalWinning, governmentVote, recordedRoles, recordedVoteGap, firstGovernmentComparison, roleVote, type VoteGapReason } from '../coalitions.ts';
 import { MkVotes } from './MkVotes.tsx';
-import { useFeature } from '../store.ts';
+import { useDisclosure } from './Feature.tsx';
 import { Majority } from './Majority.tsx';
 import { useRefRows } from '../compare/useRefRows.ts';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
@@ -227,9 +227,10 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
   const seatsOf = (id: string) => seated.find((x) => x.l.id === id)?.n ?? 0;
   const sumOf = (ids: string[]) => ids.reduce((n, id) => n + seatsOf(id), 0);
   const support = sumOf(supportIds), abstain = sumOf(abstainIds);
-  // MKs voting apart from their list (Expert, folded): each shifts one seat's vote from its list's to their own
+  // MKs voting apart from their list (Expert, folded): each shifts one seat's vote from its list's to their own.
+  // Below Expert, or when the user collapses it, the section waits behind the feature's disclosure, like every feature.
   const breaks = (choices.breaks ?? []).filter((b) => seated.some((x) => x.l.id === b.unit));
-  const apartShown = useFeature('mkVotes') === 'show';
+  const { shown: apartShown, control: apartControl } = useDisclosure('mkVotes');
   const voteOf = (ids: string[]) => governmentVote({ members: sumOf(ids), support, abstain, total,
     shifts: breaks.map((b) => ({ from: ids.includes(b.unit) ? 'for' as const : roleVote(roleOf(b.unit) === 'in' ? 'any' : roleOf(b.unit)), to: b.vote })) });
   const withBreaks = (c: CoalitionChoices, next: MkVote[]): CoalitionChoices => { const { breaks: _, ...rest } = c; return next.length ? { ...rest, breaks: next } : rest; };
@@ -413,6 +414,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
           </div>
         ))}
       </div>
+      {apartControl}
       {apartShown && <MkVotes s={s} r={r} breaks={choices.breaks ?? []} roleOf={roleOf} onChange={(next) => { setInspected(null); dispatch({ type: 'setCoalition', coalition: withBreaks(choices, next) }); }}
         units={seated.map((x) => ({ id: x.l.id, listId: x.listId, partyId: x.partyId, label: x.label, letters: x.letters, logo: x.logo, synthetic: x.synthetic, color: x.l.color, n: x.n }))} />}
       {(pickedIds.length > 0 || supportIds.length > 0) && <section className="coal-now" aria-label={L('Coalition details', 'פרטי הקואליציה')}>

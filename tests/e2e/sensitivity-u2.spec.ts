@@ -22,13 +22,14 @@ test('default analysis survives reload without starting workers; edits calculate
   await expect.poll(() => workers).toBeGreaterThan(0);
 });
 
-for (const theme of ['light', 'dark']) test(`${theme}: signed arrows contrast on result backgrounds, names use swatches, order and precision`, async ({ page }) => {
+for (const theme of ['light', 'dark']) test(`${theme}: signed arrows contrast on result backgrounds, names carry their list marks, order and precision`, async ({ page }) => {
   await page.addInitScript(theme => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', theme, level: 'standard', hintDismissed: true })), theme);
   await page.goto('/'); await openTool(page, 'sens');
-  await expect(page.locator('.sens .sweep-tbl .swatch').first()).toBeVisible({timeout:60000});
+  // 16 Nov (lane U1, owner): a list is named with its logo or colour dot (the list mark), no longer a swatch
+  await expect(page.locator('.sens .sweep-tbl .list-name-marked > .list-mark').first()).toBeVisible({timeout:60000});
   expect(await page.locator('.sens h3').allTextContents()).toEqual(['Votes → seats i', 'Votes to flip a majority i', 'Threshold → seats i']);
   const deltas = page.locator('.sens .seat-delta');
-  const ratios = await page.locator('.sens .seat-delta, .sens .swatch + bdi').evaluateAll(els => {
+  const ratios = await page.locator('.sens .seat-delta, .sens .list-name-marked > bdi').evaluateAll(els => {
     const rgb = (c: string) => (c.match(/[\d.]+/g) ?? []).slice(0,3).map(Number);
     const lum = (c: number[]) => c.map(v => { const x=v/255; return x<=0.04045?x/12.92:((x+0.055)/1.055)**2.4; }).reduce((s,v,i)=>s+v*[0.2126,0.7152,0.0722][i],0);
     return els.map(el => {

@@ -72,3 +72,27 @@ for (const max of [0, 1]) test(`a split's shares and their sum · k25 · max ${m
   await expect(page.getByText(/The shares add up to/)).toBeVisible();
   expect(await offenders(page, max)).toEqual([]);
 });
+
+// Owner, 16 Nov 2026 (lay-turnout): "the tile reads 77.98% when the field is on screen". The turnout field shows two
+// decimals; a turnout figure beside it shows the same, and Max decimal places governs it wherever the field is not shown.
+for (const max of [0, 3]) test(`the turnout figure takes its field's precision only while the field is on screen · max ${max}`, async ({ page }) => {
+  await open(page, max, 'k26');
+  const tile = page.locator('.fig').filter({ has: page.locator('.k', { hasText: /^Turnout/ }) });
+  const value = tile.locator(':scope > button .v');
+  await expect(value).toHaveText(max === 0 ? '78%' : '77.979%');
+  const positions = () => page.locator('.fig').evaluateAll(els => els.map(el => { const r = el.getBoundingClientRect(); return [r.x, r.y, r.width, r.height]; }));
+  await page.locator('.figures').scrollIntoViewIfNeeded();
+  const before = await positions(), y = await page.evaluate(() => scrollY);
+  await tile.locator(':scope > button').click();
+  await expect(tile.locator('.more')).toBeVisible();
+  await expect(tile.getByRole('textbox', { name: 'Turnout %' })).toHaveValue('77.98');
+  await expect(value).toHaveText('77.98%');
+  expect(await positions()).toEqual(before); expect(await page.evaluate(() => scrollY)).toBe(y);
+  await page.keyboard.press('Escape');
+  await expect(value).toHaveText(max === 0 ? '78%' : '77.979%');
+  // the Turnout tab: the field is always under the tile
+  await page.locator('#tab-turnout').click();
+  await expect(page.locator('.turnout')).toBeVisible();
+  await expect(page.locator('.turnout-national').getByRole('textbox', { name: 'Turnout %' })).toHaveValue('77.98');
+  await expect(page.locator('.turnout [data-fact="turnout"] .tn-v')).toHaveText('77.98%');
+});

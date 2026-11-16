@@ -27,7 +27,8 @@ for (const theme of ['light','dark']) for (const lang of ['en', 'he']) for (cons
 for (const theme of ['light','dark']) for (const width of [1500,1024,390]) for (const lang of ['en','he']) test(`figure popovers leave every sibling and page stationary ${lang} ${theme} ${width}`,async({page})=>{
   await page.setViewportSize({width,height:900});
   await page.addInitScript(({lang,theme})=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang,theme,level:'expert',hintDismissed:true})),{lang,theme});
-  await page.goto('/'); await expect(page.locator('.fig')).toHaveCount(7);
+  // 16 Nov (owner, lay-figures): Qualifying votes folded into Votes with no seat, so six tiles
+  await page.goto('/'); await expect(page.locator('.fig')).toHaveCount(6);
   await page.locator('.figures').scrollIntoViewIfNeeded();
   const positions=()=>page.locator('.fig').evaluateAll(els=>els.map(el=>{const r=el.getBoundingClientRect();return [r.x,r.y,r.width,r.height]}));
   for(const fig of await page.locator('.fig').all()) {

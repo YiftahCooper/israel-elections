@@ -5,16 +5,22 @@
 .list-mark-dot { inline-size: 12px; block-size: 12px; border-radius: 50%; box-shadow: 0 0 0 1px var(--rule-2, rgba(0,0,0,.25)); }
 .list-name-marked { display: inline-flex; align-items: center; gap: 6px; min-inline-size: 0; }
 .choice-trigger > .list-mark { margin-inline-end: 2px; }
-/* phones: a list's name inside a table cell keeps only its colour dot and may wrap, so tables fit a 360px screen */
+/* phones: a list's name inside a table cell or a sentence keeps only its colour dot and may wrap, so tables fit a
+   360px screen and a sentence takes no extra line */
 .list-mark-compact { display: none; }
 @media (max-width: 760px) {
-  td .list-name-marked { display: inline; }
-  td .list-name-marked > .list-mark { display: none; }
-  td .list-name-marked > .list-mark-compact { display: inline-block; margin-inline-end: 4px; vertical-align: -1px; }
-  td .list-name-marked > .list-mark-compact > .list-mark-dot { display: inline-block; inline-size: 10px; block-size: 10px; }
+  :is(td, .callout) .list-name-marked { display: inline; }
+  :is(td, .callout) .list-name-marked > .list-mark { display: none; }
+  :is(td, .callout) .list-name-marked > .list-mark-compact { display: inline-block; margin-inline-end: 4px; vertical-align: -1px; }
+  :is(td, .callout) .list-name-marked > .list-mark-compact > .list-mark-dot { display: inline-block; inline-size: 10px; block-size: 10px; }
 }
 /* inside a chip the mark is a size smaller, so a chip with a logo is as tall as one without (the "All lists" chip) */
 .chip > .list-mark { inline-size: 32px; }
 .chip > .list-mark .slip.xs { width: 32px; height: 18px; padding: 0 1px; border-width: 1px; }
 /* a party with no logo and no ballot letters of its own: its colour dot, centred where a slip would be (was a dash) */
 .slip.dot { border-color: transparent; background: none; display: inline-grid; place-items: center; }
+/* a list named inside a sentence (Sensitivity's "votes moving from … to …"), wider screens: the logo fits the text
+   line, so lines with a logo keep the same spacing as the others */
+.callout .list-name-marked { vertical-align: bottom; }
+.callout .list-name-marked > .list-mark { inline-size: 28px; }
+.callout .list-name-marked .slip.xs { width: 28px; height: 16px; padding: 0 1px; border-width: 1px; font-size: 9px; }

@@ -15,6 +15,7 @@ import { countChange, ELECTION_TOTALS, electionWhen, officialThreshold, previous
 import { EditMarker } from './EditMarker.tsx';
 import { percent, percentNum, points } from './Percentage.tsx';
 import { Info } from './ui.tsx';
+import { TURNOUT_FIELD_DIGITS } from './TurnoutSteps.tsx';
 import { useReference } from '../compare/mode.ts';
 import { refLabel } from '../compare/useRefRows.ts';
 import { CopyOtherButton } from '../compare/CopyOtherButton.tsx';
@@ -78,7 +79,7 @@ export function TurnoutFacts({ s }: { s: Scenario }) {
         copy={copy('registered', 'eligible voters', 'מספר בעלי זכות הבחירה')} />
       <Fact id="turnout" k={L('Turnout', 'שיעור ההצבעה')} info={<Info term="turnout" />}
         // as precise as the turnout field under it (two decimals), so one number never shows at two precisions
-        v={percent(cast, s.registered, Math.max(digits, 2))}
+        v={percent(cast, s.registered, TURNOUT_FIELD_DIGITS)}
         d={!standard || castEdited ? <>{!standard && <><bdi dir="ltr">{fmtInt(cast)}</bdi> {L('votes cast', 'מצביעים')}</>}{castEdited && <>{!standard && ' · '}{officialName} {percent(official.votesCast, official.registered, digits)}</>}</> : undefined}
         since={prev && sinceWords(<PointDelta value={pct - turnoutPct(prev.votesCast, prev.registered)} digits={digits} />)}
         copy={copy('turnout', 'turnout', 'שיעור ההצבעה')} />
