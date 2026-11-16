@@ -10,13 +10,13 @@
 //  3. small wiggles are ironed out and its corners rounded, wherever that keeps every seat on its side and clear.
 // Every step is checked: a step that would put a seat on the wrong side or too close is not taken.
 //
-// Blocks. Seats fill the 20 × 6 tray column by column, so each bloc is a band read left to right like the half circle,
-// and its edge is one vertical line with at most one step; the step's two corners are rounded within the row gap.
+// Blocks. Seats fill the 20 × 6 tray row by row, left to right, so each bloc is a horizontal stripe, and its edge is
+// one horizontal line with at most one step; the step's two corners are rounded within the gap between columns.
 import type { SeatPos } from './layout.ts';
 
 export type Pt = [number, number];
 export interface BlocRegion { band: number; fill: string; polygon: Pt[] }
-/** One boundary in screen coordinates, inner rim to outer rim (half circle) or top to bottom (Blocks). */
+/** One boundary in screen coordinates, inner rim to outer rim (half circle) or left to right (Blocks). */
 export interface BlocLine { after: number; points: Pt[]; clearance: number }
 
 const f = (v: number) => Number(v.toFixed(3));
@@ -493,51 +493,51 @@ function routeRegions(seats: SeatPos[], bands: number[], seatRadius: number, cx:
 
 /** Blocks: the tray's cell for seat i, filled column by column (`rows` rows, top to bottom, then the next column). */
 export const TRAY = { cols: 20, rows: 6, pitch: 48, cell: 36, x0: 24, y0: 16, end: 28 } as const;
-export function trayCell(i: number, rows: number = TRAY.rows): Pt {
-  const col = Math.floor(i / rows), row = i % rows;
+export function trayCell(i: number, cols: number = TRAY.cols): Pt {
+  const col = i % cols, row = Math.floor(i / cols);
   return [TRAY.x0 + col * TRAY.pitch, TRAY.y0 + row * TRAY.pitch];
 }
 /** The tray for n seats: 20 × 6 up to 120 seats, the same drawing for every Knesset. A larger chamber (Rules allows
- *  up to 1000) adds rows and columns in about the same proportion, and the drawing grows to hold every seat. */
+ *  up to 1000) adds columns and rows in about the same proportion, and the drawing grows to hold every seat. */
 export function trayShape(n: number): { rows: number; cols: number; width: number; height: number } {
-  const rows = Math.max(TRAY.rows, Math.ceil(Math.sqrt((n * TRAY.rows) / TRAY.cols)));
-  const cols = Math.max(TRAY.cols, Math.ceil(n / rows));
+  const cols = Math.max(TRAY.cols, Math.ceil(Math.sqrt((n * TRAY.cols) / TRAY.rows)));
+  const rows = Math.max(TRAY.rows, Math.ceil(n / cols));
   const size = (k: number, start: number) => start + (k - 1) * TRAY.pitch + TRAY.cell + TRAY.end;
   return { rows, cols, width: size(cols, TRAY.x0), height: size(rows, TRAY.y0) };
 }
 
-/** Bloc regions of the Blocks tray. Each boundary runs down the gap between two columns, steps once across a column
- *  where a bloc ends part-way down it, and continues down the next gap. The step's corners are rounded with the
- *  largest radius the row gap allows, keeping `C_MIN`-scaled clearance from the seats. */
-export function trayBlocRegions(bands: number[], rows: number = trayShape(bands.length).rows): { regions: BlocRegion[]; lines: BlocLine[] } {
+/** Bloc regions of the Blocks tray. Each boundary runs along the gap between two rows, steps once across a row where a
+ *  bloc ends part-way along it, and continues along the next gap. The step's corners are rounded with the largest
+ *  radius the column gap allows, keeping clear of the seats. */
+export function trayBlocRegions(bands: number[], cols: number = trayShape(bands.length).cols): { regions: BlocRegion[]; lines: BlocLine[] } {
   const ids = [...new Set(bands)], n = bands.length;
   if (!n) return { regions: [], lines: [] };
   const { pitch, cell, x0, y0 } = TRAY;
-  const cols = Math.ceil(n / rows), gap = pitch - cell, half = gap / 2;
-  const top = y0 - half, bottom = y0 + (rows - 1) * pitch + cell + half;
-  const gapX = (col: number) => x0 + col * pitch - half; // the gap left of column `col`
-  const left = gapX(0), right = gapX(cols);
+  const rows = Math.ceil(n / cols), gap = pitch - cell, half = gap / 2;
+  const left = x0 - half, right = x0 + (cols - 1) * pitch + cell + half;
+  const gapY = (row: number) => y0 + row * pitch - half; // the gap above row `row`
+  const top = gapY(0), bottom = gapY(rows);
   const radius = half - 1.5; // stays 1.5 units off the seats
   const lines: BlocLine[] = [];
   for (let j = 0; j < ids.length - 1; j++) {
     const count = bands.filter((b) => ids.indexOf(b) <= j).length;
-    const col = Math.floor(count / rows), k = count % rows;
-    if (!k) { lines.push({ after: ids[j], points: [[gapX(col), top], [gapX(col), bottom]], clearance: half }); continue; }
-    // down the gap right of column `col` for its first k seats, across under them, down the gap on its left
-    const xa = gapX(col + 1), xb = gapX(col), ys = y0 + (k - 1) * pitch + cell + half;
+    const row = Math.floor(count / cols), k = count % cols;
+    if (!k) { lines.push({ after: ids[j], points: [[left, gapY(row)], [right, gapY(row)]], clearance: half }); continue; }
+    // along the gap under row `row` for its first k seats, up beside the k-th, along the gap above the rest
+    const ya = gapY(row + 1), yb = gapY(row), xs = x0 + (k - 1) * pitch + cell + half;
     const arc = (cxp: number, cyp: number, from: number, to: number): Pt[] => Array.from({ length: 7 }, (_, t) => {
       const a = from + ((to - from) * t) / 6; return [cxp + radius * Math.cos(a), cyp + radius * Math.sin(a)];
     });
-    lines.push({ after: ids[j], clearance: half - radius, points: [[xa, top],
-      ...arc(xa - radius, ys - radius, 0, Math.PI / 2),
-      ...arc(xb + radius, ys + radius, -Math.PI / 2, -Math.PI),
-      [xb, bottom]] });
+    lines.push({ after: ids[j], clearance: half - radius, points: [[left, ya],
+      ...arc(xs - radius, ya - radius, Math.PI / 2, 0),
+      ...arc(xs + radius, yb + radius, Math.PI, Math.PI * 1.5),
+      [right, yb]] });
   }
   const regions = ids.map((id, j) => {
-    const l: Pt[] = j === 0 ? [[left, top], [left, bottom]] : lines[j - 1].points;
-    const r: Pt[] = j === ids.length - 1 ? [[right, top], [right, bottom]] : lines[j].points;
-    // a bloc that ends part-way down the last column leaves the tray's empty cells outside every region
-    const polygon: Pt[] = [...l, ...[...r].reverse()];
+    const upper: Pt[] = j === 0 ? [[left, top], [right, top]] : lines[j - 1].points;
+    const lower: Pt[] = j === ids.length - 1 ? [[left, bottom], [right, bottom]] : lines[j].points;
+    // a bloc that ends part-way along the last row leaves the tray's empty cells inside the last region
+    const polygon: Pt[] = [...upper, ...[...lower].reverse()];
     return { band: id, fill: pathOf(polygon), polygon };
   });
   return { regions, lines };

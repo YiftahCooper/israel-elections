@@ -114,18 +114,19 @@ describe('half circle', () => {
 });
 
 describe('Blocks tray', () => {
-  test('cells fill column by column', () => {
+  test('cells fill row by row, left to right, so blocs are horizontal stripes', () => {
     expect(trayCell(0)).toEqual([TRAY.x0, TRAY.y0]);
-    expect(trayCell(1)).toEqual([TRAY.x0, TRAY.y0 + TRAY.pitch]);
-    expect(trayCell(TRAY.rows)).toEqual([TRAY.x0 + TRAY.pitch, TRAY.y0]);
+    expect(trayCell(1)).toEqual([TRAY.x0 + TRAY.pitch, TRAY.y0]);
+    expect(trayCell(TRAY.cols)).toEqual([TRAY.x0, TRAY.y0 + TRAY.pitch]);
   });
   test('every boundary is a straight cut or one rounded step, and every seat is on its side', () => {
     for (const sizes of [[60, 60], [64, 56], [7, 106, 7], [30, 25, 7, 58], [13, 13, 13, 13, 68]]) {
       const bands = split(sizes);
       expect(trayRegionErrors(bands)).toEqual([]);
       for (const line of trayBlocRegions(bands).lines) {
-        const xs = new Set(line.points.filter((p) => p === line.points[0] || p === line.points.at(-1)).map((p) => p[0]));
-        expect(xs.size).toBeLessThanOrEqual(2);
+        expect(line.points[0][0]).toBeLessThan(TRAY.x0);
+        expect(line.points.at(-1)![0]).toBeGreaterThan(TRAY.x0 + (TRAY.cols - 1) * TRAY.pitch + TRAY.cell);
+        expect(line.points.every((p, i) => !i || p[0] >= line.points[i - 1][0] - 1e-9)).toBe(true);
         expect(directionChanges(line.points)).toBeLessThanOrEqual(1);
       }
     }
@@ -136,7 +137,7 @@ describe('Blocks tray', () => {
     for (let n = 1; n <= 1000; n++) {
       const { rows, cols, width, height } = trayShape(n);
       expect(rows * cols, `${n}`).toBeGreaterThanOrEqual(n);
-      const [x, y] = trayCell(n - 1, rows);
+      const [x, y] = trayCell(n - 1, cols);
       expect(x + TRAY.cell, `${n}`).toBeLessThanOrEqual(width - TRAY.end);
       expect(y + TRAY.cell, `${n}`).toBeLessThanOrEqual(height - TRAY.end);
       // the drawing keeps the 120-seat proportions, more or less: never a strip

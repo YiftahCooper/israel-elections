@@ -180,8 +180,8 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   const seatAt = (i: number) => svgRef.current?.querySelector<SVGGElement>(`[data-seat-pos="${i}"]`) ?? null;
   const inCard = (n: EventTarget | null) => !!n && !!card.current?.contains(n as Node);
   const onSeatKey = (e: React.KeyboardEvent<SVGGElement>, i: number) => {
-    const across = layout === 'blocks' ? tray.rows : 1;
-    const to = e.key === 'ArrowRight' ? i + across : e.key === 'ArrowLeft' ? i - across : e.key === 'ArrowDown' ? i + 1 : e.key === 'ArrowUp' ? i - 1
+    const down = layout === 'blocks' ? tray.cols : 1;
+    const to = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : e.key === 'ArrowDown' ? i + down : e.key === 'ArrowUp' ? i - down
       : e.key === 'Home' ? 0 : e.key === 'End' ? seats.length - 1 : null;
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
@@ -380,17 +380,17 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       </svg>
     );
   } else {
-    // A 20 × 6 tray for every Knesset, filled column by column so each bloc is a band read left to right, as in the half
-    // circle; topology and number of lists never change the geometry. A chamber of more than 120 seats (Rules) gets
+    // A 20 × 6 tray for every Knesset, filled row by row, left to right, so each bloc is a horizontal stripe; topology
+    // and number of lists never change the geometry. A chamber of more than 120 seats (Rules) gets
     // a larger tray, so every seat is drawn (and exported).
-    const regions = trayBlocRegions(bandOf, tray.rows);
+    const regions = trayBlocRegions(bandOf, tray.cols);
     body = <svg ref={svgRef} viewBox={`0 0 ${tray.width} ${tray.height}`} role="group" aria-label={summary}>
       {seats.some(st => st.innerColor) && <desc>{componentDescription}</desc>}
       {/* one shape per bloc, meeting along the bloc line: a straight edge with at most one rounded step */}
       {blocShading && regions.regions.map(w => <path key={w.band} data-bloc-region={bands[w.band].bloc} aria-hidden="true" pointerEvents="none"
         className={`wedge solid ${bands[w.band].bloc === '__none' ? 'unassigned' : ''}`} d={w.fill} style={{ ['--bc' as string]: bands[w.band].color }} />)}
       {seats.map((st, i) => {
-        const [x, y] = trayCell(i, tray.rows), c = TRAY.cell;
+        const [x, y] = trayCell(i, tray.cols), c = TRAY.cell;
         const dim = dimOthers && selected && selected !== st.listId;
         return <g key={i} {...seatButton(i)}>
           <rect data-seat="" data-bloc={st.bloc ?? "__none"} className={`seat ${dim ? 'dim' : ''}`} x={x} y={y} width={c} height={c} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--ink-2)'} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`)?4:1}
@@ -398,7 +398,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           {st.innerColor && <PartyDot partyId={st.partyId} x={x+c/2} y={y+c/2} r={c/2} square={{rx:4}} color={st.innerColor} className={dim ? 'seat dim' : 'seat'}/>}
         </g>;
       })}
-      {ring !== null && ring < seats.length && (([x, y]) => <rect className="seat-ring" x={x - 4} y={y - 4} width={TRAY.cell + 8} height={TRAY.cell + 8} rx={7} />)(trayCell(ring, tray.rows))}
+      {ring !== null && ring < seats.length && (([x, y]) => <rect className="seat-ring" x={x - 4} y={y - 4} width={TRAY.cell + 8} height={TRAY.cell + 8} rx={7} />)(trayCell(ring, tray.cols))}
     </svg>;
   }
 
