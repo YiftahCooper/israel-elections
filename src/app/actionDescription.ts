@@ -5,6 +5,7 @@ import {familyLabel} from '../families/labels.ts';
 import { RULESETS } from '../engine/rules.ts';
 import { ruleEraLabel, changeText } from './changeValue.tsx';
 import { PARTS } from '../model/parts.ts';
+import { ownPartyId } from '../model/actions.ts';
 import type { Action, Scenario } from '../model/scenario.ts';
 import type { Lang } from './i18n.ts';
 import { listLabel, editPathLabel } from './derive.ts';
@@ -43,6 +44,11 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
     case 'scaleAll': return he ? `שינוי כל הקולות ל־${fmtPctNum(a.factorPct, getSetting('decimals'))}` : `Scaled all votes to ${fmtPctNum(a.factorPct, getSetting('decimals'))}`;
     case 'merge': return he ? `איחוד: ${a.nameHe} (${a.ids.length} רשימות, שימור ${fmtPctNum(a.retentionPct, getSetting('decimals'))})` : `Merged ${a.ids.length} lists into ${n(a.newId) === 'Removed list' ? englishLabel(null,a.nameHe) : n(a.newId)} (${fmtPctNum(a.retentionPct, getSetting('decimals'))} retained)`;
     case 'split': return he ? `פיצול ${hebrewPrefixName('ל', a.parts.map((p) => p.nameHe).join(' / '))}` : `Split into ${a.parts.map((p) => s.lists.some(l => l.id === p.newId) ? n(p.newId) : englishLabel(null,p.nameHe)).join(' / ')}`;
+    // the joining list is gone from the scenario; it lives on as a party of the list it joined
+    case 'joinList': { const own = s.lists.flatMap((l) => l.parties ?? []).find((p) => p.id === ownPartyId(a.listId));
+      const who = s.lists.some((l) => l.id === a.listId) ? n(a.listId) : own ? (he ? own.nameHe : own.nameEn) : (he ? 'רשימה' : 'A list');
+      return he ? `${who} הצטרפה ${hebrewPrefixName('ל', n(a.into))}` : `${who} joined ${n(a.into)}`; }
+    case 'leaveList': return he ? `${a.nameHe} יצאה ${hebrewPrefix('מ', n(a.listId))} (${fmtInt(a.votes)} קולות)` : `${a.shortEn ?? englishLabel(null, a.nameHe)} left ${n(a.listId)} (${fmtInt(a.votes)} votes)`;
     case 'addList': return he ? `רשימה חדשה: ${a.nameHe}` : `New list: ${s.lists.some(l => l.id === a.newId) ? n(a.newId) : englishLabel(null,a.nameHe)}`;
     case 'removeList': return he ? `הוסרה רשימה` : `Removed a list`;
     case 'setWithdrawn': return `${n(a.listId)}: ${a.withdrawn ? (he ? 'פרשה' : 'withdrawn') : (he ? 'הוחזרה' : 'reinstated')}`;

@@ -33,6 +33,7 @@ import { dispatch, dispatchMany, getState, useStore, previewAction, setState, to
 import { clampTarget, deltaAction, stayingHome, toVoteSource, type SourceChoice, votesForShare, voteSourceLabel } from '../voteEdit.ts';
 import { Candidates, notSeatedReasons } from './Candidates.tsx';
 import { JointParties } from './JointParties.tsx';
+import { JointEdit } from './JointEdit.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { listChoice } from './ListMark.tsx';
 import { DecimalInput, Info, TextField } from './ui.tsx';
@@ -318,7 +319,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
         </section></Feature>
 
 
-      <PartEdits s={s} prefix={['lists', l.id]} /><JointParties s={s} r={r} l={l} />
+      <PartEdits s={s} prefix={['lists', l.id]} /><JointParties s={s} r={r} l={l} /><JointEdit s={s} r={r} l={l} base={base} />
 
       <Feature id="standing">
         <section>

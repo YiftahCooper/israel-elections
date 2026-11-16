@@ -312,7 +312,9 @@ const EXPECTED: Record<Family, string> = {
   // (0c459bc9) the 26 published datasets differ only in lists[].color (180 fields), lists[].logo.background (added in
   // k18 and k19) and builtAt (field-by-field diff), and the previous src and this src give the same 520 model outputs on
   // one set of data (fable-check/model-diff2.ts: 0 differ in every family).
-  model: 'f44c8324a30f193e08245df60bf3a0a0817f079589ec7a4cd5b7e7a15cf9485f',
+  // r7-u1 (16 Nov): merging lists of different blocs marks the grouping custom (blocSchemeId null). Of the 520 model
+  // outputs, 17 change and only in blocSchemeId (outputs compared with and without the change, the field masked).
+  model: '589795cdc10dd0bb02c913903933610bf99e00ab4f96c81ab74185568f104c03',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

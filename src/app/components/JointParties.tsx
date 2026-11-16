@@ -4,6 +4,7 @@ import { partyDisplayColor } from '../partyDisplayColor.ts';
 import { hebrewPrefixName } from '../hebrewPrefix.ts';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { EditMarker } from './EditMarker.tsx';
+import { ColourDot } from './ListMark.tsx';
 import { useDisclosure } from './Feature.tsx';
 // A joint list's constituent parties (decision 0087): who holds its seats, which bloc each party sits in,
 // and "Run as separate lists", a counterfactual whose vote shares are an explicit, editable assumption.
@@ -98,8 +99,8 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
             can still be given a bloc or split off */}
         {parties.filter(p => seatlessParties || showZero || seats === 0 || !hiddenSeatlessParty(s, p.id, held(p.id))).map((p) => (
           <div key={p.id} className="party-row">
-            <Slip letters="" name={lang === 'he' ? p.nameHe : p.nameEn} color={colourOf[p.id]} logo={p.logo} />
-            <span style={{ minWidth: 0 }}>{name(p)}{l.candidates[0]?.partyId === p.id && <small className="muted"> · {L('Lead party', 'מפלגה מובילה')}</small>}<PartyLinks links={p.links} name={name(p)} /></span>
+            {p.logo ? <Slip letters="" name={lang === 'he' ? p.nameHe : p.nameEn} color={colourOf[p.id]} logo={p.logo} /> : <span className="party-dot-slot"><ColourDot color={colourOf[p.id]} /></span>}
+            <span style={{ minWidth: 0 }}><EditMarker s={s} path={['lists', l.id, 'parties', p.id]} />{' '}{name(p)}{l.candidates[0]?.partyId === p.id && <small className="muted"> · {L('Lead party', 'מפלגה מובילה')}</small>}<PartyLinks links={p.links} name={name(p)} /></span>
             <b>{held(p.id)}</b>
             {standard && s.blocs.length > 0 ? (
               <select aria-label={L(`Bloc of ${p.nameEn}`, `הגוש של ${p.nameHe}`)} value={s.partyBlocs && p.id in s.partyBlocs ? s.partyBlocs[p.id] ?? '__none' : '__list'}

@@ -135,6 +135,29 @@ function withSplits(s: Scenario, s0: Scenario, splits: string[] | undefined): Sc
   return kept.length === before.length && !added.length ? s : { ...s, factionSplits: [...kept, ...added] };
 }
 
+/** The id a list's own party takes when the list runs inside another one (the list had no party breakdown). */
+export const ownPartyId = (listId: string) => `own:${listId}`;
+/** The parties of a list, or the list itself as its one party, and its candidates with their party recorded. */
+function asParties(l: SimList): { parties: PartyDef[]; candidates: SimCandidate[] } {
+  if (l.parties?.length) {
+    const lead = l.candidates.find((c) => c.partyId)?.partyId ?? l.parties[0].id;
+    return { parties: l.parties, candidates: l.candidates.map((c) => (c.partyId && l.parties!.some((p) => p.id === c.partyId) ? c : { ...c, partyId: lead })) };
+  }
+  const own: PartyDef = { id: ownPartyId(l.id), nameHe: l.shortHe || l.nameHe, nameEn: l.shortEn ?? l.shortHe ?? l.nameHe, color: l.color, ...(l.logo ? { logo: l.logo } : {}) };
+  return { parties: [own], candidates: l.candidates.map((c) => ({ ...c, partyId: own.id })) };
+}
+/** Two rosters as one: each keeps its own order, and places go to them in proportion to their votes (D'Hondt), so a
+ *  party with a quarter of the joint vote holds about every fourth place. */
+function weightedInterleave<T>(a: T[], wa: number, b: T[], wb: number): T[] {
+  const out: T[] = [];
+  let i = 0, j = 0;
+  while (i < a.length || j < b.length) {
+    const takeA = j >= b.length || (i < a.length && wa / (i + 1) >= wb / (j + 1));
+    out.push(takeA ? a[i++] : b[j++]);
+  }
+  return out;
+}
+
 function interleave<T>(arrays: T[][]): T[] {
   const out: T[] = [];
   const n = Math.max(0, ...arrays.map((a) => a.length));
@@ -398,6 +421,59 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       const idx = s.lists.findIndex((l) => l.id === action.id);
       const lists = [...s.lists]; lists.splice(idx, 1, ...newLists);
       s = { ...s, lists, agreements: s.agreements.filter((a) => !a.members.includes(action.id)) };
+      break;
+    }
+    case 'joinList': {
+      // All of the joining list's votes go with it (as a merge keeping 100%); the host keeps its name, letters, logo and
+      // agreement. Each list's candidates keep their order and share the places in proportion to the two lists' votes.
+      need(action.listId !== action.into, 'join-self', M.joinSelf);
+      const b = listById(s, action.listId), a = listById(s, action.into);
+      notWithdrawn(s, a.id, b.id);
+      const ha = asParties(a), hb = asParties(b);
+      const seen = new Set<string>();
+      const candidates = weightedInterleave(ha.candidates, a.votes || 1, hb.candidates, b.votes || 1).filter((c) => (seen.has(c.id) ? false : (seen.add(c.id), true)));
+      const parties = [...ha.parties, ...hb.parties.filter((p) => !ha.parties.some((q) => q.id === p.id))];
+      // the joining list's seats keep counting for its own bloc where it has one and it differs from the host's
+      const partyBlocs = { ...s.partyBlocs };
+      if (b.bloc !== null && b.bloc !== a.bloc) for (const p of hb.parties) if (!(p.id in partyBlocs)) partyBlocs[p.id] = b.bloc;
+      const joined: SimList = { ...a, votes: addVotes(a.votes, b.votes), originIds: [...new Set([...a.originIds, ...b.originIds])], candidates, parties: parties.map((p) => ({ ...p })),
+        ...rosterFlags([a, b]) };
+      s = { ...s, partyBlocs, lists: s.lists.filter((l) => l.id !== b.id).map((l) => (l.id === a.id ? joined : l)),
+        factionSplits: (s.factionSplits ?? []).filter((id) => id !== b.id), agreements: s.agreements.filter((g) => !g.members.includes(b.id)) };
+      break;
+    }
+    case 'leaveList': {
+      // The party's candidates leave with the votes given to it; the rest of the list keeps its name, letters and agreement.
+      const a = listById(s, action.listId);
+      notWithdrawn(s, a.id);
+      need((a.parties?.length ?? 0) >= 2 && a.parties!.some((p) => p.id === action.partyId), 'not-joint', M.leaveJoint);
+      need(!s.lists.some((l) => l.id === action.newId), 'duplicate-id', M.listExists);
+      need(isWhole(action.votes), 'votes', M.votesWhole);
+      need(action.votes <= a.votes, 'leave-exceeds', M.leaveOver(action.votes, a.votes));
+      const party = a.parties!.find((p) => p.id === action.partyId)!;
+      const lead = a.candidates.find((c) => c.partyId)?.partyId ?? a.parties![0].id;
+      // candidates with no recorded party belong to the list's lead party, as in a split
+      const goes = (c: SimCandidate) => (c.partyId && a.parties!.some((p) => p.id === c.partyId) ? c.partyId : lead) === action.partyId;
+      const out = a.candidates.filter(goes), stay = a.candidates.filter((c) => !goes(c));
+      // a list that ran inside another in this scenario takes its own lineage back; a historical party carries the joint list's
+      const own = action.partyId.startsWith('own:');
+      const origin = own ? [action.partyId.slice(4)] : a.originIds;
+      const left: SimList = {
+        id: action.newId, originIds: origin, letters: action.letters, nameHe: action.nameHe, shortHe: own ? action.nameHe : party.nameHe, shortEn: action.shortEn, color: action.color,
+        ...(party.logo ? { logo: { ...party.logo } } : { synthetic: { kind: 'split', parts: [{ letters: a.letters, color: a.color }], part: 2, total: 2 } }),
+        bloc: s.partyBlocs && action.partyId in s.partyBlocs ? s.partyBlocs[action.partyId] : a.bloc, votes: action.votes, withdrawn: false, sponsorsHe: '', ...(party.links ? { links: party.links } : {}),
+        candidates: own ? out.map(({ partyId: _p, ...c }) => c) : out, ...rosterFlags([a]), ...(own ? {} : { parties: [{ ...party }] }),
+      };
+      // a list left with only its own party (it had no breakdown before another joined it) goes back to having none
+      const kept = partiesOf(a.parties!, stay).parties ?? [];
+      const plain = kept.length === 1 && kept[0].id === ownPartyId(a.id);
+      const rest: SimList = { ...a, votes: a.votes - action.votes, candidates: plain ? stay.map(({ partyId: _p, ...c }) => c) : stay };
+      if (kept.length && !plain) rest.parties = kept; else delete rest.parties;
+      const idx = s.lists.findIndex((l) => l.id === a.id);
+      const lists = s.lists.map((l) => (l.id === a.id ? rest : l)); lists.splice(idx + 1, 0, left);
+      const partyBlocs = { ...s.partyBlocs };
+      if (own) delete partyBlocs[action.partyId];
+      s = { ...s, lists, partyBlocs, factionSplits: (s.factionSplits ?? []).filter((id) => id !== a.id || (rest.parties?.length ?? 0) >= 2) };
       break;
     }
     case 'addList':

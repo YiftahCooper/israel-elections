@@ -5,3 +5,5 @@
 .list-mark-dot { inline-size: 12px; block-size: 12px; border-radius: 50%; box-shadow: 0 0 0 1px var(--rule-2, rgba(0,0,0,.25)); }
 .list-name-marked { display: inline-flex; align-items: center; gap: 6px; min-inline-size: 0; }
 .choice-trigger > .list-mark { margin-inline-end: 2px; }
+/* a party with no logo in a joint list's party rows: its dot, centred where a slip would be */
+.party-dot-slot { display: inline-grid; place-items: center; width: 58px; height: 32px; }

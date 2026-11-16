@@ -10,7 +10,7 @@ export const ACTION_CLASSIFICATION = {
   setIdentityColor: 'metadata', rename: 'metadata', setDescription: 'metadata',
   applyBlocScheme: 'view', setFactionSplit: 'view', setCoalition: 'edit',
   setVotes: 'edit', transfer: 'edit', addVoters: 'edit', redistribute: 'edit', scaleAll: 'edit',
-  merge: 'edit', split: 'edit', addList: 'edit', removeList: 'edit', setWithdrawn: 'edit',
+  merge: 'edit', split: 'edit', joinList: 'edit', leaveList: 'edit', addList: 'edit', removeList: 'edit', setWithdrawn: 'edit',
   setListMeta: 'conditional', setAgreement: 'edit', removeAgreement: 'edit', candidates: 'edit',
   setRules: 'edit', setMode: 'edit', setTotals: 'edit', setBlocs: 'edit', setPartyBloc: 'edit',
   setLottery: 'edit', resetList: 'edit', resetVotes: 'edit', resetCandidates: 'edit',

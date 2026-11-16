@@ -181,6 +181,10 @@ export type Action =
   | { type: 'merge'; ids: string[]; newId: string; nameHe: string; letters: string; color: string; retentionPct: number; candidateOrder: 'concat' | 'interleave'; nonRetained: 'abstain' | 'invalid' }
   | { type: 'split'; id: string; parts: { newId: string; nameHe: string; letters: string; color: string; votes: number; candidateIds: string[] }[] }
   | { type: 'addList'; newId: string; nameHe: string; letters: string; color: string; votes: number }
+  /** a list (all its parties, candidates and votes) runs inside another list, which keeps its name, letters and agreement */
+  | { type: 'joinList'; listId: string; into: string }
+  /** one party of a joint list leaves it with its candidates and the given votes, as a list of its own (with the party's logo) */
+  | { type: 'leaveList'; listId: string; partyId: string; votes: number; newId: string; nameHe: string; shortEn: string | null; letters: string; color: string }
   | { type: 'removeList'; listId: string }
   | { type: 'setWithdrawn'; listId: string; withdrawn: boolean }
   | { type: 'setListMeta'; listId: string; patch: Partial<Pick<SimList, 'nameHe' | 'shortHe' | 'shortEn' | 'letters' | 'color' | 'bloc'>> }
@@ -419,6 +423,8 @@ const actionFields: Record<Action['type'], Check> = {
   merge: shape({ ids: uniqueStrings, newId: string, nameHe: string, letters: string, color: string, retentionPct: finite, candidateOrder: oneOf('concat', 'interleave'), nonRetained: oneOf('abstain', 'invalid') }),
   split: shape({ id: string, parts: array(shape({ newId: string, nameHe: string, letters: string, color: string, votes: whole, candidateIds: uniqueStrings })) }),
   addList: shape({ newId: string, nameHe: string, letters: string, color: string, votes: whole }),
+  joinList: shape({ listId: string, into: string }),
+  leaveList: shape({ listId: string, partyId: string, votes: whole, newId: string, nameHe: string, shortEn: nullable(string), letters: string, color: string }),
   removeList: shape({ listId: string }), setWithdrawn: shape({ listId: string, withdrawn: boolean }),
   setListMeta: shape({ listId: string, patch: partial({ nameHe: string, shortHe: string, shortEn: nullable(string), letters: string, color: string, bloc: nullable(string) }) }),
   setAgreement: shape({ agreement }), removeAgreement: shape({ id: string }),
