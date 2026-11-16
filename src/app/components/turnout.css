@@ -70,6 +70,13 @@
 .tn-cur { fill: color-mix(in srgb, var(--focus) 13%, transparent); }
 .tn-axis.cur { fill: var(--ink); font-weight: 700; }
 .tn-hov { fill: var(--surface-2); }
+/* the election Compare has on the other side: a soft grey band, named in the key above the charts */
+.tn-cmp { fill: color-mix(in srgb, var(--muted) 22%, transparent); }
+.tn-key { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0 0 4px; }
+.tn-key span { display: inline-flex; align-items: center; gap: 5px; }
+.tn-sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; }
+.tn-sw.cur { background: color-mix(in srgb, var(--focus) 13%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--focus) 45%, transparent); }
+.tn-sw.cmp { background: color-mix(in srgb, var(--muted) 22%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--muted) 50%, transparent); }
 .tn-hit { fill: transparent; cursor: pointer; }
 .tn-col { outline: none; }
 .tn-col:focus-visible .tn-bar { stroke: var(--focus); stroke-width: 2; opacity: 1; }

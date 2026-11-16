@@ -44,16 +44,28 @@ export function minimalWinning<T extends { id: string; n: number }>(items: reado
  *  voting, abstainers not counted, so investiture needs more for than against, not 61. `majority` (61 of
  *  120) is a majority of all members, which a constructive no-confidence vote needs (The Government §28(b)):
  *  a government with that many votes cannot be replaced while they hold. */
-export function governmentVote({ members, support, abstain, total }: { members: number; support: number; abstain: number; total: number }) {
-  const votesFor = members + support;
-  const against = total - votesFor - abstain;
+export type MkVoteKind = 'for' | 'abstain' | 'against';
+/** One MK voting apart from their list: what the list votes (`from`) and what the MK votes (`to`). */
+export interface VoteShift { from: MkVoteKind; to: MkVoteKind }
+/** What a list in a role votes: members and outside support for, arranged abstentions abstain, every other seat against. */
+export const roleVote = (role: CoalitionRole | 'any'): MkVoteKind => role === 'in' || role === 'support' ? 'for' : role === 'abstain' ? 'abstain' : 'against';
+export function governmentVote({ members, support, abstain, total, shifts = [] }: { members: number; support: number; abstain: number; total: number; shifts?: readonly VoteShift[] }) {
+  const moved = (k: MkVoteKind) => shifts.filter((x) => x.to === k && x.from !== k).length - shifts.filter((x) => x.from === k && x.to !== k).length;
+  const votesFor = members + support + moved('for');
+  const abstaining = abstain + moved('abstain');
+  const against = total - votesFor - abstaining;
   const majority = Math.floor(total / 2) + 1;
+  // the count toward 61 (owner, 16 Nov 2026): the coalition's seats, less its MKs who vote against; its MKs who only
+  // abstain stay in it, and an MK of another list who votes for joins it
+  const backing = members + support - shifts.filter((x) => x.from === 'for' && x.to === 'against').length + shifts.filter((x) => x.from !== 'for' && x.to === 'for').length;
   return {
-    members, support, abstain, votesFor, against, majority,
+    members, support, abstain: abstaining, votesFor, against, majority, backing,
+    /** MKs voting apart from their list */
+    apart: shifts.filter((x) => x.from !== x.to).length,
     /** fewest votes for that are more than the votes against */
-    forNeeded: Math.floor((total - abstain) / 2) + 1,
+    forNeeded: Math.floor((total - abstaining) / 2) + 1,
     passes: votesFor > against,
-    stable: votesFor >= majority,
+    stable: backing >= majority,
   };
 }
 export type GovernmentVote = ReturnType<typeof governmentVote>;

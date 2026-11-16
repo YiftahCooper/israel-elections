@@ -129,7 +129,7 @@ test('a list\'s seat count can be typed: the fewest votes that give it are moved
   // the first seat edit asks where the votes come from; Remember stops asking
   const ask = page.getByRole('dialog', { name: 'Votes come from' });
   await expect(ask).toContainText('Likud');
-  await ask.getByRole('combobox').selectOption('proportional');
+  await choose(ask.locator('.choice-trigger').first(), 'proportional');
   await ask.getByRole('radio', { name: 'Always', exact: true }).check();
   await ask.getByRole('button', { name: 'Apply', exact: true }).click();
   await expect(seats).toHaveValue('35', { timeout: 30000 });
@@ -167,7 +167,7 @@ test('a list\'s seat count can be typed: the fewest votes that give it are moved
   await expect(seats).toHaveValue(String(now));
   // an answer without Remember holds for this list, and is asked again for another
   await seats.fill(String(now - 2)); await seats.press('Enter');
-  await ask.getByRole('combobox').selectOption('new');
+  await choose(ask.locator('.choice-trigger').first(), 'new');
   await ask.getByRole('radio', { name: 'For this list', exact: true }).check();
   await ask.getByRole('button', { name: 'Apply', exact: true }).click();
   await expect(seats).toHaveValue(String(now - 2), { timeout: 30000 });

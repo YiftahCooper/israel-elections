@@ -1,0 +1,20 @@
+/* ListMark.tsx: a list's or party's logo (or colour dot) beside its name in pickers, chips and rows */
+.list-mark { flex: none; display: inline-flex; align-items: center; justify-content: center; inline-size: 38px; }
+.slip.xs { width: 38px; height: 22px; box-sizing: border-box; font-size: 11px; padding: 1px 2px; border-width: 1.5px; }
+.slip.xs.long { font-size: 9px; }
+.list-mark-dot { inline-size: 12px; block-size: 12px; border-radius: 50%; box-shadow: 0 0 0 1px var(--rule-2, rgba(0,0,0,.25)); }
+.list-name-marked { display: inline-flex; align-items: center; gap: 6px; min-inline-size: 0; }
+.choice-trigger > .list-mark { margin-inline-end: 2px; }
+/* phones: a list's name inside a table cell keeps only its colour dot and may wrap, so tables fit a 360px screen */
+.list-mark-compact { display: none; }
+@media (max-width: 760px) {
+  td .list-name-marked { display: inline; }
+  td .list-name-marked > .list-mark { display: none; }
+  td .list-name-marked > .list-mark-compact { display: inline-block; margin-inline-end: 4px; vertical-align: -1px; }
+  td .list-name-marked > .list-mark-compact > .list-mark-dot { display: inline-block; inline-size: 10px; block-size: 10px; }
+}
+/* inside a chip the mark is a size smaller, so a chip with a logo is as tall as one without (the "All lists" chip) */
+.chip > .list-mark { inline-size: 32px; }
+.chip > .list-mark .slip.xs { width: 32px; height: 18px; padding: 0 1px; border-width: 1px; }
+/* a party with no logo and no ballot letters of its own: its colour dot, centred where a slip would be (was a dash) */
+.slip.dot { border-color: transparent; background: none; display: inline-grid; place-items: center; }

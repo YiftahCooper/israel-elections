@@ -33,7 +33,7 @@ test('a "For this list" answer is listed in Settings and Ask again makes the edi
   const inc = page.getByRole('button', { name: 'Increase Votes', exact: true });
   await inc.click();
   const ask = page.locator('.source-ask');
-  await ask.getByRole('combobox').selectOption('new');
+  await choose(ask.locator('.choice-trigger').first(), 'new');
   await ask.getByRole('radio', { name: 'For this list', exact: true }).check();
   await ask.getByRole('button', { name: 'Apply', exact: true }).click();
   await inc.click(); await expect(ask).toBeHidden();

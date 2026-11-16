@@ -51,7 +51,7 @@ export function ExactValue({ text, note, svg = false, pad }: { text: string; not
   const [open, setOpen] = useState<false | 'hover' | 'held'>(false);
   const [nested, setNested] = useState(false);
   const intent = useHoverIntent(() => setOpen(o => o === 'hover' ? false : o), !!open);
-  const ref = useRef<HTMLSpanElement | SVGTSpanElement | null>(null), id = useId();
+  const ref = useRef<HTMLSpanElement | SVGTSpanElement | null>(null), id = useId(), pop = useRef<HTMLSpanElement>(null);
   // the table (list, section) this value belongs to, and whether this is its first value on its own (the one that
   // carries the switch)
   const [scope, setScope] = useState<Element | null>(null);
@@ -78,7 +78,7 @@ export function ExactValue({ text, note, svg = false, pad }: { text: string; not
     if (!open) return;
     const close = (e: Event) => {
       if (e.type === 'keydown') { if ((e as KeyboardEvent).key !== 'Escape') return; if (open === 'held') e.stopImmediatePropagation(); }
-      if (e.type === 'pointerdown' && ref.current?.contains(e.target as Node)) return;
+      if (e.type === 'pointerdown' && (ref.current?.contains(e.target as Node) || pop.current?.contains(e.target as Node))) return;
       setOpen(false);
     };
     document.addEventListener('pointerdown', close, true); document.addEventListener('keydown', close, true);
@@ -107,7 +107,10 @@ export function ExactValue({ text, note, svg = false, pad }: { text: string; not
     {svg ? <tspan {...props} aria-description={note}>{text}</tspan>
       : exact ? <span {...props} aria-description={described} data-exact dir="ltr">{figure}</span>
       : <span {...props} aria-description={described}>{body}</span>}
-    {open && createPortal(<Floating id={id} className="percentage-pop" anchor={() => ref.current?.getBoundingClientRect()}><ExactNote note={note} /></Floating>, document.body)}
+    {/* the pointer can move onto the note: it also holds the table's switch, so mouse and touch have it as well */}
+    {open && createPortal(<Floating id={id} className="percentage-pop" anchor={() => ref.current?.getBoundingClientRect()} onPointerEnter={() => intent.keep()} onPointerLeave={() => intent.leave()}>
+      <span ref={pop}><ExactNote note={note} />{scope && <button type="button" className="btn small exact-pop-switch" aria-pressed={exact} onClick={() => toggleExact(scope)}>{exact && <span aria-hidden>✓ </span>}{label}</button>}</span>
+    </Floating>, document.body)}
   </>;
 }
 

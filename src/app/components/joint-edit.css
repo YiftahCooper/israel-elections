@@ -1,0 +1,4 @@
+/* Who runs on this list: pickers wrap on a phone; the move controls stack under them */
+.joint-edit-row { gap: 6px; flex-wrap: wrap; }
+.joint-move { display: grid; gap: 6px; margin-top: 6px; justify-items: start; }
+.joint-move-share { gap: 6px; }

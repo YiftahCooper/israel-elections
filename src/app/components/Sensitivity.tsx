@@ -5,6 +5,7 @@ import { cachedAnalysis } from '../analysisCache.ts';
 import { SeatDelta } from './SeatDelta.tsx';
 import { PartyName } from './PartyName.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
+import { listChoice } from './ListMark.tsx';
 import { GraphicChanges } from './GraphicChanges.tsx';
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import { allocate } from '../../engine/allocate.ts';
@@ -136,7 +137,7 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
     <div>
       <h3>{L('Votes → seats', 'קולות ← מנדטים')} <Info title={L('Votes → seats', 'קולות ← מנדטים')}>{L('The seats one list wins at every vote count in the range. All other lists keep their votes, so the valid total changes with this list. Boundaries are exact whole vote counts.', 'המנדטים שרשימה אחת מקבלת בכל מספר קולות בטווח. שאר הרשימות שומרות על קולותיהן, ולכן סך הקולות הכשרים משתנה עם הרשימה. הגבולות הם מספרי קולות מדויקים.')}</Info></h3>
       <div className="row">
-        <ChoicePicker label={L('List', 'רשימה')} value={id} onChange={setPicked} options={main.slice(0, 30).map(x => ({ value: x.id, label: listLabel(x, lang), preview: <span className="swatch" style={{ background: x.color }} /> }))} />
+        <ChoicePicker label={L('List', 'רשימה')} value={id} onChange={setPicked} options={main.slice(0, 30).map(x => listChoice(x, lang))} />
         {/* one label in the page's direction, then the range low to high, left to right as on the chart's axis */}
         <span className="row" role="group" aria-label={L('Vote range', 'טווח קולות')} style={{ gap: 6 }}>
           <span className="small">{L('Vote range', 'טווח קולות')}</span>

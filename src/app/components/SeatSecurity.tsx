@@ -9,9 +9,10 @@ import { dispatch } from '../store.ts';
 import { StartFrom } from './StartFrom.tsx';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
-import { toEngineInput, NO_COALITION, COALITION_ROLES, withCoalitionRole, type CoalitionRole, type Scenario } from '../../model/scenario.ts';
+import { toEngineInput, NO_COALITION, COALITION_ROLES, withCoalitionRole, type CoalitionChoices, type CoalitionRole, type MkVote, type Scenario } from '../../model/scenario.ts';
 import { coalitionPieces, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
+import { ListMark } from './ListMark.tsx';
 import { fmtInt, fmtSigned, votesText } from '../format.ts';
 import { runTasks } from '../analysisPool.ts';
 import { partsOf, type SecurityFigure, type SecurityItem, type SecurityPart } from '../analysisTasks.ts';
@@ -20,7 +21,9 @@ import { stayingHome, toVoteSource, type SourceChoice } from '../voteEdit.ts';
 import { DisclosureToggle, Info, Seg, Slip } from './ui.tsx';
 import { participantName } from '../governmentSupport.ts';
 import { cappedText, tieNote } from '../analysisWords.ts';
-import { minimalWinning, governmentVote, recordedRoles, recordedVoteGap, firstGovernmentComparison, type VoteGapReason } from '../coalitions.ts';
+import { minimalWinning, governmentVote, recordedRoles, recordedVoteGap, firstGovernmentComparison, roleVote, type VoteGapReason } from '../coalitions.ts';
+import { MkVotes } from './MkVotes.tsx';
+import { useFeature } from '../store.ts';
 import { Majority } from './Majority.tsx';
 import { useRefRows } from '../compare/useRefRows.ts';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
@@ -120,7 +123,7 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
   const belowShown = allBelow ? below : near;
   const open = (id: string) => setState({ selectedListId: id });
   const name = (l: Scenario['lists'][number]) => (
-    <span className="sec-name"><span className="swatch" style={{ background: l.color }} /><button className="table-action" onClick={() => open(l.id)}>{listLabel(l, lang)}</button></span>
+    <span className="sec-name"><ListMark list={l} lang={lang} /><button className="table-action" onClick={() => open(l.id)}>{listLabel(l, lang)}</button></span>
   );
 
   return (
@@ -224,7 +227,12 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
   const seatsOf = (id: string) => seated.find((x) => x.l.id === id)?.n ?? 0;
   const sumOf = (ids: string[]) => ids.reduce((n, id) => n + seatsOf(id), 0);
   const support = sumOf(supportIds), abstain = sumOf(abstainIds);
-  const voteOf = (ids: string[]) => governmentVote({ members: sumOf(ids), support, abstain, total });
+  // MKs voting apart from their list (Expert, folded): each shifts one seat's vote from its list's to their own
+  const breaks = (choices.breaks ?? []).filter((b) => seated.some((x) => x.l.id === b.unit));
+  const apartShown = useFeature('mkVotes') === 'show';
+  const voteOf = (ids: string[]) => governmentVote({ members: sumOf(ids), support, abstain, total,
+    shifts: breaks.map((b) => ({ from: ids.includes(b.unit) ? 'for' as const : roleVote(roleOf(b.unit) === 'in' ? 'any' : roleOf(b.unit)), to: b.vote })) });
+  const withBreaks = (c: CoalitionChoices, next: MkVote[]): CoalitionChoices => { const { breaks: _, ...rest } = c; return next.length ? { ...rest, breaks: next } : rest; };
   const { forNeeded, majority } = voteOf([]);
   // members a winning coalition needs: outside support already votes for, abstentions lower the bar
   const memberNeed = forNeeded - support;
@@ -255,8 +263,14 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
   const { recorded: recordedRows, choices: recordedChoices } = recordedRoles(record?.coalition ?? [], s.lists, seated.map((x) => ({ id: x.l.id, listId: x.listId })));
   const recorded = recordedRows.map((x) => ({ ...x, name: participantName(x.r, [], lang, x.list).name }));
   const recordOn = !!recordedChoices && COALITION_ROLES.every((k) => sameSet(live(choices[k]), recordedChoices[k]));
+  /** the research's MKs who voted apart from their list, as MK votes (a list's first seated unit; absent or unknown left out) */
+  const recordedBreaks: MkVote[] = (record?.individuals ?? []).flatMap((ind) => {
+    const unit = recordedRows.find((x) => x.r.letters === ind.fromLetters)?.units[0] ?? seated.find((x) => !x.partyId && s.lists.find((l) => l.id === x.listId)?.letters === ind.fromLetters)?.l.id;
+    return unit && (ind.vote === 'for' || ind.vote === 'against' || ind.vote === 'abstain') ? [{ unit, vote: ind.vote, mk: { id: ind.id, nameHe: ind.nameHe, nameEn: ind.nameEn }, recorded: true }] : [];
+  });
   /** loaded from the record but not adding up to it: one line names the recorded tally and why it differs */
-  const gap = recordOn && record ? recordedVoteGap(record, voteOf(live(choices.in)), recordedRows, sumOf, total) : null;
+  // an MK set apart by the user is a choice of one's own, as a changed role is: the record's line goes
+  const gap = recordOn && record && !breaks.some((b) => !b.recorded) ? recordedVoteGap({ ...record, individuals: record.individuals?.filter((ind) => !breaks.some((b) => b.mk?.id === ind.id)) }, voteOf(live(choices.in)), recordedRows, sumOf, total) : null;
   const certaintyName = (c: Certainty) => ({ confirmed: L('confirmed', 'מאושר'), probable: L('probable', 'סביר'), provisional: L('provisional', 'זמני'), disputed: L('disputed', 'שנוי במחלוקת'), unknown: L('unknown', 'לא ידוע') })[c];
   const colorOf = (id: string) => seated.find(x => x.l.id === id)!.l.color;
   const roleNames: Record<CoalitionRole | 'any', [string, string, string]> = {
@@ -289,9 +303,10 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     return <div className="coal-vote">
       {(support > 0 || abstain > 0) && <span className="coal-sum">{term('', v.members, roleNames.in[2])}{support > 0 && <> + {term('coal-support', support, roleNames.support[2])} <span className="coal-part">= <b>{v.votesFor}</b></span></>}</span>}
       {abstain > 0 && <span className="coal-sum">{term('coal-abstain', abstain, abstain === 1 ? L('abstaining', 'נמנע') : roleNames.abstain[2])}</span>}
+      {v.apart > 0 && <span className="coal-sum coal-apart-sum">{L(`${v.apart} ${v.apart === 1 ? 'MK votes' : 'MKs vote'} apart from their list`, v.apart === 1 ? 'חבר כנסת אחד מצביע בנפרד מרשימתו' : `${v.apart} חברי כנסת מצביעים בנפרד מרשימתם`)}</span>}
       <span className="coal-tests">
         <span className="coal-test" data-ok={v.passes}><span className="coal-part">{mark(v.passes)}{L('More for than against', 'יותר תומכים ממתנגדים')}:</span> <span className="coal-part"><span className="coal-for">{L(`${v.votesFor} for`, `${v.votesFor} בעד`)}</span> ·</span> <span className="coal-against">{L(`${v.against} against`, `${v.against} נגד`)}</span></span>
-        <span className="coal-test" data-ok={v.stable}><span className="coal-part">{mark(v.stable)}<Majority n={v.votesFor} total={total} /></span></span>
+        <span className="coal-test" data-ok={v.stable}><span className="coal-part">{mark(v.stable)}<Majority n={v.backing} total={total} /></span></span>
         <Info title={L('Forming a government', 'הקמת ממשלה')}>{directPmYear && L(`In ${directPmYear} the voters elected the Prime Minister directly, under the rules of that time; this arithmetic uses today’s. `, `ב־${directPmYear} בחרו הבוחרים את ראש הממשלה ישירות, לפי הכללים של אז; החשבון כאן לפי הכללים של היום. `)}{L(
           `Under today’s law, the Knesset forms a government by a confidence vote (Basic Law: The Government, §13(d)). No special majority is set, so the general rule applies (Basic Law: The Knesset, §25): a majority of those voting, abstainers not counted, so more for than against, not ${v.majority}. ${v.majority} of ${total} is a majority of all members, needed to replace a government by a constructive no-confidence vote (Basic Law: The Government, §28(b)); a government with ${v.majority} cannot be replaced while they hold. Here members and outside support vote for, arranged abstentions abstain and every other seat votes against; absences are not modelled. Pivotal: losing that partner, member or outside support, loses the vote. Members are split by bloc when they span blocs. Arithmetic only, not political feasibility.`,
           `לפי החוק כיום, הממשלה מוקמת בהבעת אמון של הכנסת (חוק־יסוד: הממשלה, סעיף 13(ד)). לא נקבע רוב מיוחד, ולכן חל הכלל הכללי (חוק־יסוד: הכנסת, סעיף 25): רוב המשתתפים בהצבעה, והנמנעים אינם נמנים עמם. די ביותר תומכים ממתנגדים, לא ב־${v.majority}. ${v.majority} מתוך ${total} הם רוב חברי הכנסת, הדרוש להחלפת ממשלה בהבעת אי־אמון קונסטרוקטיבית (חוק־יסוד: הממשלה, סעיף 28(ב)); ממשלה שיש לה ${v.majority} אינה ניתנת להחלפה כל עוד הם עומדים לצדה. כאן חברות הקואליציה והתמיכה מבחוץ מצביעות בעד, הנמנעות בהסדר נמנעות וכל השאר מצביעים נגד; היעדרויות אינן מחושבות. חיונית: שותפה, חברה או תומכת מבחוץ, שבלעדיה ההצבעה נכשלת. החברות מפוצלות לפי גוש כשהן משתייכות ליותר מגוש אחד. חשבון בלבד, לא היתכנות פוליטית.`)}</Info>
@@ -372,7 +387,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
       {record && (
         <div className="row coal-record" style={{ marginBottom: 8 }}>
           <button type="button" className={`btn small ${recordOn ? 'primary' : ''}`} aria-pressed={recordOn} disabled={!recordedChoices} title={recordedChoices ? undefined : L('A recorded partner is not in this scenario', 'שותפה מתועדת אינה בתרחיש זה')}
-            onClick={() => { if (recordOn || !recordedChoices) return; setInspected(null); dispatch({ type: 'setCoalition', coalition: recordedChoices }); }}>{L('Recorded first government', 'הממשלה הראשונה המתועדת')}</button>
+            onClick={() => { if (recordOn || !recordedChoices) return; setInspected(null); dispatch({ type: 'setCoalition', coalition: apartShown ? withBreaks(recordedChoices, recordedBreaks) : recordedChoices }); }}>{L('Recorded first government', 'הממשלה הראשונה המתועדת')}</button>
           <Info title={lang === 'he' ? record.nameHe : record.nameEn}>
             {formatDate(record.startDate, lang)}.{' '}
             {([['in', L('In', 'בפנים')], ['support', L('Outside support', 'תמיכה מבחוץ')], ['abstain', L('Abstains by arrangement', 'נמנעת בהסדר')], [null, L('Left as Any', 'נשארות ב"כל אפשרות"')]] as const).map(([role, label]) => {
@@ -398,6 +413,8 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
           </div>
         ))}
       </div>
+      {apartShown && <MkVotes s={s} r={r} breaks={choices.breaks ?? []} roleOf={roleOf} onChange={(next) => { setInspected(null); dispatch({ type: 'setCoalition', coalition: withBreaks(choices, next) }); }}
+        units={seated.map((x) => ({ id: x.l.id, listId: x.listId, partyId: x.partyId, label: x.label, letters: x.letters, logo: x.logo, synthetic: x.synthetic, color: x.l.color, n: x.n }))} />}
       {(pickedIds.length > 0 || supportIds.length > 0) && <section className="coal-now" aria-label={L('Coalition details', 'פרטי הקואליציה')}>
         <h3 style={{ margin: 0 }}>{L('Required partners', 'השותפות הנדרשות')}</h3>
         <Vote ids={pickedIds} />

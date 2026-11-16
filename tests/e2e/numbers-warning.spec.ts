@@ -22,6 +22,8 @@ for (const width of [1500, 390]) for (const lang of ['en', 'he'] as const) test(
   await page.setViewportSize({ width, height: 1000 });
   await open(page, lang, { decimals: 1 });
   const row = page.locator('.lb-row').first(), inRow = row.locator('.percentage[data-rounded]').first();
+  // on one column the blocs come above the lists, so the first row can start below the fold: a tap would scroll to it
+  await inRow.scrollIntoViewIfNeeded();
   const box = await inRow.boundingBox();
   if (width === 390) {
     // a tap on the value shows it and does not also open the list
@@ -96,5 +98,5 @@ test('2013: declared and detailed results behind (i), seats unchanged', async ({
   await page.locator('.lb-row').first().click();
   const info = page.locator('.ld h3').filter({ hasText: 'Votes' }).locator('.info button');
   await info.click();
-  await expect(page.getByText(/Declared result \(Reshumot notice and seat calculation\): 885,054\. The detailed results, shown here, sum to 885,163\. No seat changes\. Cause not documented\./)).toBeVisible();
+  await expect(page.getByText(/Shown: the declared result \(Reshumot notice and seat calculation\), 885,054\. The detailed results sum to 885,163; the 2013 map and list of places add up to that\. No seat changes\. Cause not documented\./)).toBeVisible();
 });

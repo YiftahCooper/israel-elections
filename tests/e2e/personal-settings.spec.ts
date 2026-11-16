@@ -14,7 +14,7 @@ for (const lang of ['en', 'he']) test(`saved list answers survive reload, isolat
   const inc = page.getByRole('button', { name: lang === 'en' ? 'Increase Votes' : 'הוספת קולות', exact: true });
   await inc.click();
   const ask = page.locator('.source-ask');
-  await ask.getByRole('combobox').selectOption('proportional');
+  await choose(ask.locator('.choice-trigger').first(), 'proportional');
   await ask.getByRole('radio', { name: lang === 'en' ? 'For this list' : 'לרשימה זו', exact: true }).check();
   await ask.getByRole('button', { name: lang === 'en' ? 'Apply' : 'החלה', exact: true }).click();
   await page.reload(); await page.locator('.lb-row').first().click(); await inc.click();
@@ -28,7 +28,7 @@ for (const lang of ['en', 'he']) test(`saved list answers survive reload, isolat
   await settings.getByRole('button', { name: lang === 'en' ? /Ask again for/ : /לשאול שוב עבור/ }).click();
   await expect(settings.locator('.pref-items li')).toHaveCount(0);
   await page.keyboard.press('Escape'); await inc.click(); await expect(ask).toBeVisible();
-  await ask.getByRole('combobox').selectOption('proportional');
+  await choose(ask.locator('.choice-trigger').first(), 'proportional');
   await ask.getByRole('radio', { name: lang === 'en' ? 'For this list' : 'לרשימה זו', exact: true }).check();
   await ask.getByRole('button', { name: lang === 'en' ? 'Apply' : 'החלה', exact: true }).click();
   await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), 'k25');

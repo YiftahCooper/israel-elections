@@ -77,6 +77,11 @@ interface StageOptions {
   decisions: unknown[] | null;
   /** receives each exact tie decided without a recorded outcome, when not null (see `PreparedAllocation.run`) */
   ties: OpenTie[] | null;
+  /** whether unit `i` can actually seat `seats` members (an agreement whose members' rosters are short); a unit that
+   *  cannot takes no further seat, and the seat goes to the next quotient (1977 capacity rule, decision 0095) */
+  fillable?: (i: number, seats: number) => boolean;
+  /** receives each unit refused a seat by `fillable`, with the seat it could not fill */
+  refused?: { unit: number; seats: number }[];
 }
 /** An exact tie for a seat with no recorded outcome: the first unit (`ids[0]`) is shown provisionally; its key forces
  *  another (AllocationInput.lotteryWinners). */
@@ -123,6 +128,10 @@ function runRemainderStage(units: WorkUnit[], remaining: number, o: StageOptions
   const eligible = units.map(() => false);
   const tied: number[] = [];
   let awarded = units.reduce((s, u) => s + u.seats, 0);
+  // units refused a seat they cannot fill; if no other unit can take a seat, they compete again without the check, so
+  // the rule only ever moves a seat to another list and never leaves one unallocated
+  const refusedUnits = new Set<number>();
+  let checkFill = !!o.fillable;
   for (let step = 1; step <= remaining; step++) {
     if (lr && o.largestRemainderRepeat !== false && units.every((u, i) => givenThisRound[i] || u.capped)) givenThisRound.fill(false);
     let best = -1;
@@ -139,20 +148,31 @@ function runRemainderStage(units: WorkUnit[], remaining: number, o: StageOptions
       if (c > 0n) { best = i; tied.length = 0; tied.push(i); } else if (c === 0n) tied.push(i);
     }
     o.decisions?.push(tied.length, ...tied);
+    if (best < 0 && checkFill && refusedUnits.size) {
+      checkFill = false;
+      for (const i of refusedUnits) units[i].capped = false;
+      step--; continue;
+    }
     if (best < 0) {
       o.warnings?.push({ code: 'seats-unallocatable', message: `No list can receive seat ${awarded + 1} in stage ${o.stage}.`, data: { stage: o.stage, remaining: remaining - step + 1 } });
       break;
     }
     let winner = best; // the first of the tied units unless a lottery outcome is recorded
     let tie: TieRecord | undefined;
+    const ids = tied.map((i) => units[i].id);
+    // keyed by the exact tied set, so a recorded outcome can never decide a different tie
+    const key = `${o.stage}:${step}:${[...ids].sort().join('|')}`;
+    const forced = tied.length > 1 ? o.lotteryWinners[key] : undefined;
+    const forcedAt = forced ? ids.indexOf(forced) : -1;
+    if (forcedAt >= 0) winner = tied[forcedAt];
+    // a unit that cannot seat one more member takes no further seat; this seat is decided again without it
+    if (checkFill) {
+      const ok = o.fillable!(winner, units[winner].seats + 1);
+      o.decisions?.push(ok);
+      if (!ok) { units[winner].capped = true; refusedUnits.add(winner); o.refused?.push({ unit: winner, seats: units[winner].seats + 1 }); step--; continue; }
+    }
     if (tied.length > 1) {
-      const ids = tied.map((i) => units[i].id);
-      // keyed by the exact tied set, so a recorded outcome can never decide a different tie
-      const key = `${o.stage}:${step}:${[...ids].sort().join('|')}`;
-      const forced = o.lotteryWinners[key];
-      const forcedAt = forced ? ids.indexOf(forced) : -1;
-      if (forcedAt >= 0) winner = tied[forcedAt];
-      else o.ties?.push({ key, ids });
+      if (forcedAt < 0) o.ties?.push({ key, ids });
       if (trace) {
         tie = { key, tiedUnitIds: ids, chosen: units[winner].id, forced: forcedAt >= 0 };
         if (o.tiePolicy === 'unspecified') o.warnings!.push({ code: 'lottery-required', message: `Equal remainders in ${o.stage}; the inspected historical statute does not specify a tie procedure. ${tie.forced ? 'A supplied outcome is shown.' : 'The first unit is provisional.'}`, data: { key, ids, tiePolicy: 'unspecified' } });
@@ -356,9 +376,23 @@ export function prepareAllocation(input: AllocationInput): PreparedAllocation {
       remainderRequiresInitialSeat: rules.remainderRequiresInitialSeat && !highestAverage, quotientRounding: rules.quotientRounding,
       largestRemainderRepeat: rules.largestRemainderRepeat, tiePolicy: rules.tiePolicy, lotteryWinners, warnings, decisions, ties };
     const remaining = Math.max(0, rules.seats - initialTotal);
+    // 1977 (decision 0095): an agreement whose members' rosters cannot fill a further seat inside the pair takes no
+    // further seat nationally; the seat goes to the next quotient. Checked by dry-running the pair's own division.
+    const refused: { unit: number; seats: number }[] = [];
+    const fillable = rules.seatsCappedAtCandidates ? (k: number, seats: number) => {
+      const u = units[k];
+      if (!u.isAgreement || u.members.every((i) => capacity[i] === undefined)) return true;
+      const parts = u.members.map((i) => ({ id: lists[i].id, votes: votes[i], seats: 0, initial: 0, capped: false, capacity: capacity[i] }));
+      divideWithinUnit(u.id, parts, seats, rules, { ...base, warnings: null, decisions: null, ties: null });
+      return parts.reduce((n, p) => n + p.seats, 0) === seats;
+    } : undefined;
     const remainderSteps = qualifiedCount > 0
-      ? runRemainderStage(units, remaining, { ...base, stage: 'national', seatsTotal: rules.seats, universeVotes: qualifyingVotes, quota })
+      ? runRemainderStage(units, remaining, { ...base, stage: 'national', seatsTotal: rules.seats, universeVotes: qualifyingVotes, quota, fillable, refused })
       : [];
+    // a refused seat the agreement received in the end (no other list could take it) is not reported
+    for (const { unit, seats } of refused) if (units[unit].seats < seats) warnings?.push({ code: 'agreement-unfillable',
+      message: `The agreement of ${units[unit].members.map((i) => lists[i].id).join(' and ')} cannot fill seat ${seats} from its rosters, so that seat goes to the next list by quotient. The 1977 capacity rule is documented; applying it to this changed scenario is an app inference.`,
+      data: { ids: units[unit].members.map((i) => lists[i].id), seats } });
 
     // --- internal division (82(b))
     const finalSeats: number[] = new Array(n).fill(0);

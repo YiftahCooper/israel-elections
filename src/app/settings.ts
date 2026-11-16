@@ -48,6 +48,7 @@ export interface SettingValues {
   communityScenarios: boolean;
   compareWith: 'previous' | 'official';
   optionPreviews: boolean;
+  turnoutHistoryLine: boolean;
   textSize: 'normal' | 'large';
   reduceMotion: boolean;
   hoverPopups: boolean;
@@ -169,6 +170,9 @@ export const SETTINGS: readonly SettingRow[] = [
     options: [o('previous', 'Previous election', 'הבחירות הקודמות'), o('official', 'Official result', 'התוצאה הרשמית')], synonyms: 'compare comparison previous official השוואה קודמות רשמית' },
   { id: 'optionPreviews', group: 'analysis', control: 'toggle', min: 'standard', label: ['Option previews', 'תצוגה מקדימה באפשרויות'],
     info: ['Small seat charts beside choices such as groupings. Off: names only, faster on slow phones.', 'תרשימי מושבים קטנים ליד אפשרויות כמו חלוקות. כבוי: שמות בלבד, מהיר יותר בטלפונים איטיים.'], synonyms: 'thumbnails mini charts previews תמונות ממוזערות תרשימים' },
+  { id: 'turnoutHistoryLine', group: 'analysis', control: 'toggle', min: 'expert', feature: 'turnout', label: ['Turnout line on Turnout', 'קו שיעור ההצבעה בעמוד ההצבעה'],
+    info: ['The Turnout (%) line under the eligible-voters chart in All elections. Off: the eligible-voters chart only.', 'קו שיעור ההצבעה (%) מתחת לתרשים בעלי זכות הבחירה ב"כל הבחירות". כבוי: תרשים בעלי זכות הבחירה בלבד.'],
+    synonyms: 'turnout line chart history elections percent שיעור הצבעה קו תרשים היסטוריה אחוז' },
   // the same switch as "All lines and areas" in the map's key; single lines are ticked in the key only
   { id: 'mapLines', group: 'analysis', control: 'toggle', min: 'expert', feature: 'loc', label: ['Map lines and areas', 'קווים ושטחים במפה'],
     info: ['Historical lines and areas on the Localities map. Each one can also be turned off in the map’s key.', 'קווים ושטחים היסטוריים במפת היישובים. אפשר לכבות כל אחד מהם גם במקרא המפה.'],
@@ -208,7 +212,7 @@ export function settingDefault<K extends SettingId>(id: K, level: Preset): Setti
     listOrder: 'seats', voteCounts: level !== 'simple', lastTimeRows: false, compareBars: true, allCandidates: false,
     chamberLayout: 'hemicycle', seatColour: 'list', blocShading: true, referenceChamber: true, chamberKey: true, dimUnselected: true,
     decimals: level === 'expert' ? 3 : level === 'standard' ? 2 : 1, splitWarning: true,
-    confirmStartOver: true, hoverPreviews: true, communityScenarios: true, compareWith: 'previous', optionPreviews: true,
+    confirmStartOver: true, hoverPreviews: true, communityScenarios: true, compareWith: 'previous', optionPreviews: true, turnoutHistoryLine: true,
     textSize: 'normal', reduceMotion: false, hoverPopups: true, preferTables: false, keepMessages: false,
     timelineSeatChanges: level === 'simple' ? 'off' : level === 'standard' ? 'important' : 'all', seatStepsNorwegian: true, seatStepsLeft: true, seatStepsUnrecorded: true,
     mapLines: true, mapLinesOff: NO_LINES_OFF,
@@ -263,7 +267,7 @@ export const FEATURE_GROUP: Record<Exclude<FeatureId, 'board'>, GroupId> = {
   voteFigures: 'numbers', expertFigures: 'numbers', allocation: 'numbers', allocationFormulas: 'numbers', turnoutFacts: 'numbers', turnoutCounts: 'numbers',
   splitIdentity: 'editing', voteStart: 'editing', jointEditing: 'editing', voteSource: 'editing', oneListSource: 'editing', agreements: 'editing',
   standing: 'editing', identity: 'editing', candidateEdit: 'editing', copyVotesButton: 'editing', copyMethods: 'editing', copyChangeMethods: 'editing', rulesCopy: 'editing',
-  familyEdit: 'analysis', familyScale: 'analysis', familyGrouping: 'analysis', whatIfAll: 'analysis', compareTools: 'analysis', compareExpert: 'analysis',
+  familyEdit: 'analysis', familyScale: 'analysis', familyGrouping: 'analysis', whatIfAll: 'analysis', mkVotes: 'analysis', compareTools: 'analysis', compareExpert: 'analysis',
   timelineEvents: 'history', timelineAllEvents: 'history', historySources: 'history',
 };
 /** Every tool and section with a row in Settings, in registry order. */

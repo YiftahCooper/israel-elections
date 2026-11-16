@@ -56,6 +56,8 @@ export const FEATURES = [...TOOL_FEATURES,
   ['copyMethods', 'Edit', 'Copy votes: more methods', 'העתקת קולות: שיטות נוספות', 'standard'],
   ['copyChangeMethods', 'Edit', 'Copy votes: change and ratio', 'העתקת קולות: שינוי ויחס', 'expert'],
   ['rulesCopy', 'Edit', 'Copy the rules', 'העתקת הכללים', 'expert'],
+  // Coalitions: MKs who vote apart from their list (owner, 16 Nov 2026: Expert only, and folded even there)
+  ['mkVotes', 'Analyse', 'MKs apart from their list', 'חברי כנסת בנפרד מרשימתם', 'expert'],
 ] as const;
 export type FeatureId = typeof FEATURES[number][0];
 /** The one source of every tool and section name (tab strip, Custom page, disclosures) and of level names. */
@@ -110,6 +112,7 @@ export const FEATURE_PREVIEWS: Record<FeatureId, readonly [string, string]> = {
   voteFigures: ['Valid, qualifying and unrepresented votes', 'קולות כשרים, משתתפים וללא ייצוג'],
   expertFigures: ['Quota and allocation statistics', 'מודד ונתוני חלוקת מנדטים'],
   jointEditing: ['Parties within a joint list', 'מפלגות בתוך רשימה משותפת'],
+  mkVotes: ['One MK’s vote in the confidence vote', 'ההצבעה של חבר כנסת אחד בהצבעת האמון'],
   voteSource: ['Where added votes come from', 'מהיכן מגיעים הקולות הנוספים'],
   agreements: ['Pair lists for remainder seats', 'צימוד רשימות לחלוקת עודפים'],
   standing: ['Contest, withdraw or restore a list', 'התמודדות, פרישה או החזרת רשימה'],

@@ -348,9 +348,9 @@ test('the surplus agreements Copy works when the agreements differ, though both 
   await choose(picker(page), 'election:k24');
   const agr = page.locator('.cmp-band-row[data-key="agreements"]');
   await expect(agr.locator('.cmp-band-v')).toHaveText(['6', '6']);
-  // one worded Copy into your work; the other direction is in "⋯", in words, your work first
+  // one worded Copy into your work (just "Copy": the direction is plain in side by side); the other direction is in "⋯"
   const copy = agr.getByRole('button', { name: 'Copy surplus agreements to 2026' });
-  await expect(copy).toHaveText('Copy to 2026');
+  await expect(copy).toHaveText('Copy');
   await expect(copy).toBeEnabled();
   await agr.getByRole('button', { name: 'More for surplus agreements' }).click();
   const menu = page.locator('.cmp-menu');
@@ -397,7 +397,7 @@ for (const lang of ['en', 'he'] as const) for (const width of [1500, 390]) {
     const notCopy = /^(Swap|החלפה|Compare|השוואה)(?=$|[\s:])/;
     // the band's copy is worded, beside a "⋯" whose menu names both directions in words
     const band = page.locator('.cmp-band-row[data-key="turnout"]');
-    await expect(band.locator('.cmp-band-copy')).toHaveText(lang === 'he' ? 'העתקה ל־2026' : 'Copy to 2026');
+    await expect(band.locator('.cmp-band-copy')).toHaveText(lang === 'he' ? 'העתקה' : 'Copy');
     const found = await arrowControls();
     expect(found.some((name) => /^(Swap|החלפה)/.test(name))).toBe(true); // the check sees arrow icons (Swap has one)
     for (const name of found) expect(name).toMatch(notCopy);

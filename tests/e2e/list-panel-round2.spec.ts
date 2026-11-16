@@ -88,9 +88,10 @@ test('joint-list parties without a colour of their own are told apart on candida
   await expect(component).toBeVisible();
   const partyColour = await component.evaluate(e => getComputedStyle(e).getPropertyValue('--c').trim());
   expect(partyColour.toLowerCase()).not.toBe(listColour.toLowerCase());
-  const displayColours = await panel.locator('.party-row .slip').evaluateAll(els => els.map(el => getComputedStyle(el).getPropertyValue('--c').trim()));
+  // a party row shows its logo, else its colour dot (Round 7); either way the slip carries the party's colour
+  const displayColours = await panel.locator('.party-row .slip').evaluateAll(els => els.map(el => getComputedStyle(el).getPropertyValue('--c').trim().toLowerCase()));
   expect(new Set(displayColours).size).toBe(2);
-  expect(displayColours).toContain(partyColour);
+  expect(displayColours).toContain(partyColour.toLowerCase());
   await panel.getByRole('button', { name: 'Split into separate lists', exact: true }).click();
   await panel.getByRole('button', { name: 'Run as 2 separate lists', exact: true }).click();
   // New ballot lists start from recorded party colours or stable party-id bases.

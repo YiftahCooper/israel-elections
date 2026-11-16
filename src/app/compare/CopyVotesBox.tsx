@@ -12,6 +12,7 @@ import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { setState, useDigits, useOn, useStore } from '../store.ts';
 import { stayingHome, type SourceChoice } from '../voteEdit.ts';
 import { Info } from '../components/ui.tsx';
+import { ListMark } from '../components/ListMark.tsx';
 import { COPY_MODE_DEFAULT, isDefaultCopyMode, planVotes, ratioText, type CopyMode, type CopyUnit, type Plan } from './copy.ts';
 import { remember, remembered } from './answers.ts';
 import { Modal, Outcome, SourceSelect } from './dialogs.tsx';
@@ -110,7 +111,7 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
         <div className="row"><button type="button" className="link-btn" onClick={() => setTicked(new Set(req.choices!.map((c) => c.key)))}>{L('All', 'הכול')}</button>
           <button type="button" className="link-btn" onClick={() => setTicked(new Set())}>{L('None', 'אף אחת')}</button></div>
         <div className="cmpm-copy-ticks">{req.choices.map((c) => <label key={c.key}><input type="checkbox" checked={ticked.has(c.key)}
-          onChange={(e) => { const n = new Set(ticked); if (e.target.checked) n.add(c.key); else n.delete(c.key); setTicked(n); }} /><bdi>{c.name}</bdi></label>)}</div>
+          onChange={(e) => { const n = new Set(ticked); if (e.target.checked) n.add(c.key); else n.delete(c.key); setTicked(n); }} />{(() => { const l = req.to.sc.lists.find((x) => x.id === c.unit.dst[0]); return l ? <ListMark list={l} lang={lang} /> : null; })()}<bdi>{c.name}</bdi></label>)}</div>
       </fieldset>}
       {!units.length ? <p className="muted">{L('Tick at least one list.', 'סמנו לפחות רשימה אחת.')}</p>
         : simple ? <p className="cmpm-copy-sentence" data-mode={mode}>

@@ -177,6 +177,10 @@ export function warningText(w: EngineWarning, s: Scenario, lang: Lang): string {
       const names = (d.cappedIds as string[]).map(nm).join(he ? ' ו' : ' and ');
       return he ? `מספר המועמדים הגביל את המנדטים של ${names} ושינה את החלוקה. ההגבלה ההיסטורית של 1977 מתועדת; החלתה בתרחיש ששונה היא הסקה של האפליקציה.` : `Candidate counts limited the seats of ${names} and changed the allocation. The historical 1977 cap is documented; applying it to this changed scenario is an app inference.`;
     }
+    case 'agreement-unfillable': {
+      const names = (d.ids as string[]).map(nm).join(he ? ' ו' : ' and ');
+      return he ? `להסכם העודפים של ${names} אין די מועמדים לאייש מנדט ${d.seats} בתוך ההסכם, ולכן המנדט עובר לרשימה הבאה לפי המנה. כלל 1977 מתועד; החלתו בתרחיש ששונה היא הסקה של האפליקציה.` : `The surplus agreement of ${names} has too few candidates to fill seat ${d.seats} inside it, so that seat goes to the next list by quotient. The 1977 rule is documented; applying it to this changed scenario is an app inference.`;
+    }
     case 'unfilled-seats': return he ? `${nm(String(d.list))}: ${seatsText(Number(d.seats), 'he')} ו${Number(d.candidates) === 1 ? 'מועמד אחד' : `־${d.candidates} מועמדים`}. ההליך של תקופה זו למושבים שלא ניתן לאייש אינו ממודל.` : `${nm(String(d.list))}: ${seatsText(Number(d.seats), 'en')} and ${Number(d.candidates) === 1 ? '1 candidate' : `${d.candidates} candidates`}. This era’s procedure for unfilled seats is not modelled.`;
     case 'lottery-required': {
       const ids = (d.ids as string[] | undefined) ?? [];

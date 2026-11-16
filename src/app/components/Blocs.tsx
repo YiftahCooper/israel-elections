@@ -58,7 +58,7 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
   const openPanel = (key: string) => setState({ blocPanel: key, selectedListId: null });
   const kindNote = scheme?.appDefined ? appGroupingExplanation(lang) : scheme?.kind === 'government' ? L('who formed the first government after this election, as recorded', 'מי הרכיבו את הממשלה הראשונה אחרי הבחירות, כפי שתועד')
     : scheme ? L('a recognised grouping of this election, from cited sources', 'חלוקה מוכרת של בחירות אלה, ממקורות מצוטטים')
-    : custom ? L('your own grouping', 'החלוקה שלכם') : '';
+    : custom ? L('custom blocs: your own grouping', 'גושים מותאמים: החלוקה שלכם') : '';
   return (
     <section className="panel blocs" aria-label={L('Seats by bloc', 'מנדטים לפי גוש')}>
       <div className="blocs-head">

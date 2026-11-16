@@ -18,13 +18,17 @@ export const SCENARIO_VERSION = 1;
  *  docs/research/government-support-roles.md: `in` = government member (with or without ministries);
  *  `support` = outside support, voting for the government without joining it; `abstain` = abstains by
  *  arrangement, so it is not counted among those voting; `out` = never a member, assumed to vote against. */
-export interface CoalitionChoices { in: string[]; support: string[]; abstain: string[]; out: string[] }
-export type CoalitionRole = keyof CoalitionChoices;
+export interface CoalitionChoices { in: string[]; support: string[]; abstain: string[]; out: string[]; breaks?: MkVote[] }
+/** One MK who votes apart from their list in the confidence vote (owner, 16 Nov 2026: a folded Expert section). `unit`
+ *  is the seated unit; `mk` names the MK when one was chosen, else it is "one MK of the list"; `recorded` marks a vote
+ *  the research records (loaded with the recorded first government), not the user's own edit. */
+export interface MkVote { unit: string; vote: 'for' | 'abstain' | 'against'; mk?: { id: string; nameHe: string; nameEn?: string }; recorded?: boolean }
+export type CoalitionRole = Exclude<keyof CoalitionChoices, 'breaks'>;
 export const COALITION_ROLES = ['in', 'support', 'abstain', 'out'] as const satisfies readonly CoalitionRole[];
 export const NO_COALITION: CoalitionChoices = { in: [], support: [], abstain: [], out: [] };
 /** The choices with `id` moved to `role` ('any' clears it), keeping every other unit's role. */
 export const withCoalitionRole = (c: CoalitionChoices, id: string, role: CoalitionRole | 'any'): CoalitionChoices =>
-  ({ in: [], support: [], abstain: [], out: [], ...Object.fromEntries(COALITION_ROLES.map((k) => [k, k === role ? [...c[k].filter((x) => x !== id), id] : c[k].filter((x) => x !== id)])) });
+  ({ in: [], support: [], abstain: [], out: [], ...Object.fromEntries(COALITION_ROLES.map((k) => [k, k === role ? [...c[k].filter((x) => x !== id), id] : c[k].filter((x) => x !== id)])), ...(c.breaks?.length ? { breaks: c.breaks } : {}) });
 
 export interface SimCandidate {
   id: string; // stable: original candidate id, or `new-…` for inserted candidates
@@ -182,6 +186,10 @@ export type Action =
   | { type: 'merge'; ids: string[]; newId: string; nameHe: string; letters: string; color: string; retentionPct: number; candidateOrder: 'concat' | 'interleave'; nonRetained: 'abstain' | 'invalid' }
   | { type: 'split'; id: string; parts: { newId: string; nameHe: string; letters: string; color: string; votes: number; candidateIds: string[] }[] }
   | { type: 'addList'; newId: string; nameHe: string; letters: string; color: string; votes: number }
+  /** a list (all its parties, candidates and votes) runs inside another list, which keeps its name, letters and agreement */
+  | { type: 'joinList'; listId: string; into: string }
+  /** one party of a joint list leaves it with its candidates and the given votes, as a list of its own (with the party's logo) */
+  | { type: 'leaveList'; listId: string; partyId: string; votes: number; newId: string; nameHe: string; shortEn: string | null; letters: string; color: string }
   | { type: 'removeList'; listId: string }
   | { type: 'setWithdrawn'; listId: string; withdrawn: boolean }
   | { type: 'setListMeta'; listId: string; patch: Partial<Pick<SimList, 'nameHe' | 'shortHe' | 'shortEn' | 'letters' | 'color' | 'bloc'>> }
@@ -395,7 +403,8 @@ const strings = array(string);
 const blocScheme = shape({ appDefined: optional(boolean), id: string, kind: oneOf('government', 'parliamentary', 'pre-election'), nameHe: string, nameEn: string, date: optional(string),
   blocs: array(shape({ id: string, nameHe: string, nameEn: string, appDefined: optional(boolean), color: string, lists: strings, parties: strings, candidates: strings })) });
 // every role is required, and a unit holds at most one role
-const coalition: Check = (x) => shape({ in: uniqueStrings, support: uniqueStrings, abstain: uniqueStrings, out: uniqueStrings })(x)
+const mkVote = shape({ unit: string, vote: oneOf('for', 'abstain', 'against'), mk: optional(shape({ id: string, nameHe: string, nameEn: optional(string) })), recorded: optional(boolean) });
+const coalition: Check = (x) => shape({ in: uniqueStrings, support: uniqueStrings, abstain: uniqueStrings, out: uniqueStrings, breaks: optional(array(mkVote)) })(x)
   && new Set(COALITION_ROLES.flatMap((k) => (x as CoalitionChoices)[k])).size === COALITION_ROLES.reduce((n, k) => n + (x as CoalitionChoices)[k].length, 0);
 const partSnapshotCheck = shape({ familyDefinition: optional(validFamily), validVotes: optional(whole), lists: optional(array(list)), registered: optional(whole), invalid: optional(whole), factionSplits: optional(uniqueStrings), blocs: optional(array(bloc)), blocSchemeId: optional(nullable(string)), customGroupingName: optional(string), partyBlocs: optional(stringMap(nullable(string))), candidateBlocs: optional(stringMap(nullable(string))), listBlocs: optional(stringMap(nullable(string))), agreements: optional(array(agreement)), rules: optional(rules), mode: optional(oneOf('historical', 'experimental')), coalition: optional(coalition) });
 const copyProvenance = shape({ electionId: oneOf(...ELECTION_IDS), sourceName: string, official: boolean,
@@ -420,6 +429,8 @@ const actionFields: Record<Action['type'], Check> = {
   merge: shape({ ids: uniqueStrings, newId: string, nameHe: string, letters: string, color: string, retentionPct: finite, candidateOrder: oneOf('concat', 'interleave'), nonRetained: oneOf('abstain', 'invalid') }),
   split: shape({ id: string, parts: array(shape({ newId: string, nameHe: string, letters: string, color: string, votes: whole, candidateIds: uniqueStrings })) }),
   addList: shape({ newId: string, nameHe: string, letters: string, color: string, votes: whole }),
+  joinList: shape({ listId: string, into: string }),
+  leaveList: shape({ listId: string, partyId: string, votes: whole, newId: string, nameHe: string, shortEn: nullable(string), letters: string, color: string }),
   removeList: shape({ listId: string }), setWithdrawn: shape({ listId: string, withdrawn: boolean }),
   setListMeta: shape({ listId: string, patch: partial({ nameHe: string, shortHe: string, shortEn: nullable(string), letters: string, color: string, bloc: nullable(string) }) }),
   setAgreement: shape({ agreement }), removeAgreement: shape({ id: string }),

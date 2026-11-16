@@ -3,7 +3,7 @@ import { liveScenarioColor, scenarioColor } from '../scenarioIdentity.ts';
 import { useEffect, useMemo, useState } from 'react';
 import { Info } from 'lucide-react';
 import { useL, useLang } from '../i18n.ts';
-import { shareLink, useStore } from '../store.ts';
+import { markGalleryOpen, shareLink, toast, useStore } from '../store.ts';
 import { GalleryClient, GalleryError, filterEntries, issueUrl, publishUrl, validShareLink, type GalleryEntry } from '../gallery/gallery.ts';
 import './ScenarioGallery.css';
 
@@ -52,7 +52,7 @@ export function ScenarioGallery() {
     tab.opener = null;
     setPublishing(true);
     try {
-      const link = await shareLink();
+      const link = await shareLink({ gallery: false });
       const election = elections.find(e => e.id === scenario.electionId);
       if (!election || !validShareLink(link, site)) throw new Error();
       tab.location.href = publishUrl({ identityColor: liveScenarioColor(scenario, saved), name: scenario.name || L('Untitled scenario', 'תרחיש ללא שם'), description: description.slice(0, 3000), electionId: scenario.electionId, year: election.date.slice(0, 4), tags: tags.split(',').map(t => t.trim()).filter(Boolean), shareLink: link });
@@ -90,8 +90,10 @@ export function ScenarioGallery() {
       <div className="row" style={{ gap: 4 }}><a className="btn small" href={validShareLink(e.shareLink, site) ? e.shareLink : undefined} onClick={event => {
         event.preventDefault();
         // A full navigation also invokes the app's existing startup share importer when only the hash changes.
-        if (validShareLink(e.shareLink, site)) { location.assign(e.shareLink); location.reload(); }
-      }}>{L('Open', 'פתיחה')}</a><a className="btn small ghost" href={issueUrl(e.issue)} target="_blank" rel="noopener noreferrer">{L('Like on GitHub ↗', 'לייק ב-GitHub ↗')}</a></div>
+        if (validShareLink(e.shareLink, site)) { markGalleryOpen(e.issue); location.assign(e.shareLink); location.reload(); }
+      }}>{L('Open', 'פתיחה')}</a><button type="button" className="btn small ghost" onClick={async () => {
+        try { await navigator.clipboard.writeText(`${site}#g=${e.issue}`); toast('info', L('Link copied', 'הקישור הועתק')); } catch { toast('error', L('The browser refused to copy the link.', 'הדפדפן סירב להעתיק את הקישור.')); }
+      }}>{L('Copy link', 'העתקת קישור')}</button><a className="btn small ghost" href={issueUrl(e.issue)} target="_blank" rel="noopener noreferrer">{L('Like on GitHub ↗', 'לייק ב-GitHub ↗')}</a></div>
     </li>)}</ul>
   </section>;
 }

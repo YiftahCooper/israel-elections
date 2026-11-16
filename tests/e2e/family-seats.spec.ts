@@ -86,7 +86,7 @@ test('election breakdown: the family’s seats and their change are the seats ch
  }
  // 2013: Likud–Yisrael Beiteinu won 31; the family's own were 20 (down 7 from 27), the list's 31 only on its own row
  await group.getByRole('button',{name:'Count all',exact:true}).click();await bar(page,18).click({position:{x:2,y:2}});
- await expect(dialog.locator('.family-point-total')).toContainText('885,163 votes');
+ await expect(dialog.locator('.family-point-total')).toContainText('885,054 votes');
  await expect(dialog.locator('.family-point-seats')).toHaveText('20 seats +11 partners');
  await expect(dialog.locator('.family-point-delta')).toContainText('▼ −7 seats');
  await expect(dialog.locator('.family-point-total')).not.toContainText('31');

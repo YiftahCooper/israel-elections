@@ -53,7 +53,7 @@ export function Info({ title, children, term, label }: { title?: string; childre
   );
 }
 
-export function Slip({ letters, color, size, logo: logoIn, name, synthetic }: { name?: string; letters: string; color: string; size?: 'sm' | 'lg'; logo?: LogoRef; synthetic?: SyntheticIdentity }) {
+export function Slip({ letters, color, size, logo: logoIn, name, synthetic }: { name?: string; letters: string; color: string; size?: 'xs' | 'sm' | 'lg'; logo?: LogoRef; synthetic?: SyntheticIdentity }) {
   const lang = useLang();
   // Settings → List symbol: Ballot letters shows the letters wherever a list has them; a party without ballot
   // letters of its own keeps its logo
@@ -78,7 +78,9 @@ export function Slip({ letters, color, size, logo: logoIn, name, synthetic }: { 
   );
   const fallbackLabel = letters ? (lang === 'he' ? `אותיות הפתק ${letters} (ללא סמל)` : `Ballot letters ${letters} (no logo)`)
     : (lang === 'he' ? `${name ?? 'מפלגה'} — אין סמל או אותיות פתק נפרדות` : `${name ?? 'Party'} — no logo or separate ballot letters`);
-  return <span title={fallbackLabel} className={`slip ${size ?? ''} ${letters.length > 4 ? 'long' : ''}`} style={{ ['--c' as string]: color }} aria-label={fallbackLabel} lang="he" dir="rtl">{letters || '—'}</span>;
+  // no logo and no letters of its own (a party of a joint list): its colour dot, as in every list picker
+  if (!letters) return <span title={fallbackLabel} className={`slip dot ${size ?? ''}`} style={{ ['--c' as string]: color }} aria-label={fallbackLabel}><span className="list-mark-dot" style={{ background: color }} /></span>;
+  return <span title={fallbackLabel} className={`slip ${size ?? ''} ${letters.length > 4 ? 'long' : ''}`} style={{ ['--c' as string]: color }} aria-label={fallbackLabel} lang="he" dir="rtl">{letters}</span>;
 }
 
 /** `lang` marks an option written in another language than the page (a language's own name); `name` is its spoken

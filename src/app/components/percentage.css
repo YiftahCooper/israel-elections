@@ -10,3 +10,6 @@
 /* invisible zeros that keep decimal points aligned down a table column; never read or copied */
 .pct-pad { visibility: hidden; user-select: none; }
 .percentage-pop { display: block; z-index: 40; width: max-content; max-width: min(320px, calc((100vw - 32px) / var(--text-zoom, 1))); padding: 6px 10px; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); color: var(--ink); box-shadow: var(--shadow-pop); font-size: 13px; font-weight: 400; line-height: 1.4; white-space: normal; text-align: start; }
+/* the same switch in the note a pointer or tap opens */
+.exact-pop-switch { display: flex; margin-block-start: 6px; min-block-size: 28px; }
+@media (pointer: coarse) { .exact-pop-switch { min-block-size: 44px; } }

@@ -15,7 +15,7 @@ import { StartFrom } from './StartFrom.tsx';
 // edited in place, its colour from a swatch, and its members are chips moved by dragging, or by choosing a chip
 // and then the bloc to move it to (the same on touch and keyboard). A constituent party of a joint list can sit in
 // another bloc than its list. Regrouping never changes votes or seats; a sourced grouping is never altered, edits
-// become "Your grouping" and the sourced one stays in the menu.
+// become "Custom blocs" and the sourced one stays in the menu.
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { EditMarker } from './EditMarker.tsx';
 import { Plus, Trash2, X } from 'lucide-react';
@@ -105,7 +105,8 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
   }, [picked, paletteFor]);
 
   const setBlocs = (blocs: Scenario['blocs']) => dispatch({ type: 'setBlocs', blocs });
-  const rename = (id: string, v: string) => setBlocs(s.blocs.map((b) => (b.id === id ? (lang === 'he' ? { ...b, nameHe: v } : { ...b, nameEn: v }) : b)));
+  // a typed name is the bloc's name in both languages (owner, 16 Nov 2026): the other language has no translation of it
+  const rename = (id: string, v: string) => setBlocs(s.blocs.map((b) => (b.id === id ? { ...b, nameHe: v, nameEn: v } : b)));
   const recolour = (id: string, c: string) => setBlocs(s.blocs.map((b) => (b.id === id ? { ...b, color: c } : b)));
   const remove = (id: string) => setBlocs(s.blocs.filter((b) => b.id !== id));
   const addBloc = () => {
@@ -240,8 +241,8 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
         </ol>
         <button className="btn bp-add" onClick={addBloc}><Plus className="icon sm" aria-hidden />{L('New bloc', 'גוש חדש')}</button>
         <p className="tiny muted" style={{ marginTop: 10 }}>{s.blocSchemeId === null && schemes.length
-          ? L('Your grouping. The sourced groupings stay available under “Copy blocs from…”; Undo reverses any change.', 'החלוקה שלכם. החלוקות המתועדות נשארות זמינות תחת "העתקת גושים מ…"; ביטול מחזיר כל שינוי.')
-          : L('Editing never alters a sourced grouping: your changes become “Your grouping”. Undo reverses any change.', 'עריכה לעולם אינה משנה חלוקה מתועדת: השינויים הופכים ל"החלוקה שלכם". ביטול מחזיר כל שינוי.')}</p>
+          ? L('Custom blocs. The sourced groupings stay available under “Copy blocs from…”; Undo reverses any change.', 'גושים מותאמים. החלוקות המתועדות נשארות זמינות תחת "העתקת גושים מ…"; ביטול מחזיר כל שינוי.')
+          : L('Editing never alters a sourced grouping: your changes become “Custom blocs”. Undo reverses any change.', 'עריכה לעולם אינה משנה חלוקה מתועדת: השינויים הופכים ל"גושים מותאמים". ביטול מחזיר כל שינוי.')}</p>
       </div>
     </aside>
   );

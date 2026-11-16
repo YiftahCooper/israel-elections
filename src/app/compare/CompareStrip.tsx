@@ -81,6 +81,6 @@ export function CompareStrip({ s }: { s: Scenario }) {
     {ready && sideShown && (side
       ? <button type="button" className="btn small cmpm-side" aria-pressed aria-label={L('Close side by side', 'סגירת זו לצד זו')} onClick={closeSideBySide}><Columns2 className="icon sm" aria-hidden /><span>{L('Close side by side', 'סגירת זו לצד זו')}</span></button>
       : <button type="button" className="btn small cmpm-side" aria-label={L('Side by side', 'זו לצד זו')} onClick={openSideBySide}><Columns2 className="icon sm" aria-hidden /><span>{L('Side by side', 'זו לצד זו')}</span></button>)}
-    <button type="button" className="btn small ghost cmpm-stop" onClick={stopComparing} aria-label={L('Stop comparing', 'סיום ההשוואה')}><span className="cmpm-stop-t">{L('Stop comparing', 'סיום ההשוואה')}</span><X className="icon sm" aria-hidden /></button>
+    <button type="button" className="btn small ghost cmpm-stop" onClick={stopComparing} aria-label={L('Stop comparing', 'סיום ההשוואה')} title={L('Stop comparing: your work stays as it is now, with any votes you copied', 'סיום ההשוואה: העבודה שלכם נשארת כפי שהיא עכשיו, עם הקולות שהעתקתם')}><span className="cmpm-stop-t">{L('Stop comparing', 'סיום ההשוואה')}</span><X className="icon sm" aria-hidden /></button>
   </div>;
 }

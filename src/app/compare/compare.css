@@ -45,8 +45,14 @@
 .cmp-more { width: 34px; text-align: center; }
 .cmp-more-btn { min-height: 30px; padding: 2px 6px; }
 .cmp-mid { width: 172px; text-align: center; }
-/* the change, then the row's one copy button: beside it when the cell is wide enough, else on the line below (never drawn over it) */
-.cmp-mid-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 8px; }
+/* the change, and under it the row's actions (Copy, "⋯"), centred between the two columns (owner, 16 Nov 2026) */
+.cmp-mid-in { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+.cmp-acts { display: inline-flex; align-items: center; justify-content: center; gap: 4px; }
+/* Copy itself sits on the centre line: an empty slot as wide as "⋯" balances it on the other side */
+@media (min-width: 761px) {
+  .cmp-acts::before { content: ''; flex: none; inline-size: 28px; }
+  .cmp-acts .cmp-more-btn { flex: none; inline-size: 28px; padding-inline: 0; justify-content: center; }
+}
 .cmp-delta { display: inline-flex; flex-direction: column; align-items: center; gap: 1px; line-height: 1.15; }
 .cmp-pp { font-variant-numeric: tabular-nums; }
 .cmp-row.selected > td { background: var(--open); }
@@ -78,17 +84,15 @@
 .cmp-menu hr { border: 0; border-top: 1px solid var(--rule); margin: 4px 0; width: 100%; }
 
 .cmp-band-grid { display: grid; gap: 0; max-width: 760px; margin-inline: auto; }
-.cmp-band-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(412px, auto) minmax(0, 1fr); align-items: center; gap: 8px; padding: 3px 0; border-block-end: 1px solid var(--rule); }
+.cmp-band-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, auto) minmax(0, 1fr); align-items: center; gap: 8px; padding: 3px 0; border-block-end: 1px solid var(--rule); }
 .cmp-band-v { font-variant-numeric: tabular-nums; font-weight: 600; }
 .cmp-band-row > .cmp-band-v:first-child { text-align: right; }
 .cmp-band-row > .cmp-band-v:last-child { text-align: left; }
-/* the middle: Copy (beside your work), the label, "⋯"; both slots keep their width, filled or not, so labels never move */
-.cmp-band-mid { display: grid; grid-template-columns: 132px minmax(0, 1fr) 132px; gap: 6px; align-items: center; text-align: center; }
+/* the middle: the label, and under it Copy and "⋯" centred between the two figures */
+.cmp-band-mid { display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center; }
 .cmp-band-k { color: var(--ink-2); font-size: 13px; }
-.cmp-band-slot { display: flex; align-items: center; min-width: 0; }
-.cmp-band-slot-copy { justify-content: flex-end; }
 .cmp-band-copy { min-height: 28px; padding: 2px 8px; max-width: 100%; }
-/* the button names where the number goes ("Copy to 2026"); a long scenario name is cut with an ellipsis, whole in the tooltip */
+/* the button says "Copy"; where the number goes is in its spoken name and tooltip */
 .cmp-band-copy-text { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cmp-band-more { min-height: 28px; padding: 2px 6px; }
 
@@ -147,8 +151,10 @@
   .cmp-table thead { display: none; }
   .cmp-table, .cmp-table tbody { display: block; }
   /* the name keeps a readable floor; the change cell wraps instead of taking the name's space */
-  .cmp-table tr.cmp-row { display: grid; grid-template-columns: minmax(7rem, 1fr) auto auto auto 44px; grid-template-areas: "rn ls mid rs more" "ln ln ln ln more"; align-items: center; column-gap: 6px; padding: 6px 4px; border-block-end: 1px solid var(--rule); cursor: pointer; min-height: 44px; }
-  [dir="rtl"] .cmp-table tr.cmp-row { grid-template-columns: 44px auto auto auto minmax(7rem, 1fr); grid-template-areas: "more ls mid rs rn" "more ln ln ln ln"; }
+  /* the change and the row's Copy and "⋯" sit in the middle, between the two seat counts, on both lines of the row */
+  .cmp-table tr.cmp-row { display: grid; grid-template-columns: minmax(7rem, 1fr) 2rem 7.5rem 2rem; grid-template-areas: "rn ls mid rs" "ln ls mid rs"; align-items: center; column-gap: 6px; padding: 6px 4px; border-block-end: 1px solid var(--rule); cursor: pointer; min-height: 44px; }
+  [dir="rtl"] .cmp-table tr.cmp-row { grid-template-columns: 2rem 7.5rem 2rem minmax(7rem, 1fr); grid-template-areas: "ls mid rs rn" "ls mid rs ln"; }
+  .cmp-table tr.cmp-row > .cmp-ls, .cmp-table tr.cmp-row > .cmp-rs { text-align: center; }
   .cmp-table tr.cmp-row > td { border: 0; padding: 0; min-width: 0; }
   .cmp-table tr.cmp-row > .cmp-rname, .cmp-table tr.cmp-row > .cmp-lname { overflow: hidden; }
   .cmp-table tr.cmp-row > .cmp-tick, .cmp-table tr.cmp-row > .cmp-v, .cmp-table tr.cmp-row > .cmp-s, .cmp-table .cmp-pp { display: none; }
@@ -160,9 +166,9 @@
   .cmp-table tr.cmp-row > .cmp-rs { grid-area: rs; }
   .cmp-table tr.cmp-row > .cmp-mid { grid-area: mid; width: auto; min-width: min-content; }
   .cmp-table tr.cmp-row .cmp-copy-votes { white-space: normal; }
-  .cmp-table tr.cmp-row > .cmp-mid .cmp-mid-in { display: flex; gap: 4px; }
+  .cmp-table tr.cmp-row > .cmp-mid .cmp-mid-in { display: flex; flex-direction: column; gap: 4px; }
+  .cmp-table .cmp-acts .btn { min-height: 44px; min-width: 44px; }
   .cmp-table tr.cmp-row > .cmp-mid .cmp-delta { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 4px; }
-  .cmp-table tr.cmp-row > .cmp-more { grid-area: more; width: auto; }
   .cmp-table .cmp-more-btn { min-height: 44px; min-width: 44px; }
   .cmp-table .cmp-name { max-width: none; min-width: 0; }
   .cmp-table tr.cmp-groupline { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px; padding: 4px; background: var(--surface-2); border-block-end: 1px solid var(--rule); }
@@ -173,15 +179,7 @@
   .cmp-table tr.cmp-groupline .cmp-delta { flex-direction: row; gap: 4px; white-space: nowrap; }
   .cmp-dialog[open] { position: fixed; margin: 0; inset-block-start: auto; inset-block-end: 0; inset-inline: 0; max-inline-size: none; inline-size: 100%; border-radius: 12px 12px 0 0; box-sizing: border-box; }
   .cmp-band-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, 1fr); }
-  /* the label takes the middle's whole width; Copy and "⋯" sit under it */
-  .cmp-band-mid { grid-template-columns: auto auto; grid-template-areas: "k k" "copy more"; justify-content: center; gap: 2px 6px; }
-  .cmp-band-k { grid-area: k; }
-  .cmp-band-slot-copy { grid-area: copy; }
-  .cmp-band-slot-more { grid-area: more; }
-  .cmp-band-slot:empty { display: none; }
   .cmp-band .btn.cmp-band-copy, .cmp-band .btn.cmp-band-more { min-height: 44px; min-width: 44px; }
-  /* on a phone the button's words take two lines ("Copy to" / "2026") rather than lose the destination */
-  .cmp-band-copy-text { white-space: normal; line-height: 1.15; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; }
   .cmp-menu .cmp-menu-item { min-height: 44px; }
 }
 

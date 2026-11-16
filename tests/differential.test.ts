@@ -135,7 +135,13 @@ const EXPECTED: Record<Family, string> = {
   // merged with k3 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k4 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k5 audit fixes: combined digest = union of the separately reviewed changes.
-  allocation: '2bc949a3aaf91af20af8f4704c06b30fcfacf7d534d82c2bdc578d41023bf1a8',
+  // r7-u1 (16 Nov, decision 0094): 2013 carries the declared list votes; 32 of 6,832 allocation outputs and 18 of 520
+  // model outputs change, all of them 2013 cases (outputs compared with the previous k19.json in place).
+  // r7-u1 (16 Nov, decision 0095): with candidate caps on, an agreement that cannot fill a further seat from its rosters
+  // takes no further seat while another list can. 75 of 6,832 allocation outputs change, every one with candidate caps
+  // on; 72 seat more members and 3 keep the same total; none seats fewer. Analysis, model, validation and rules outputs
+  // are identical (tests/differential-compare.ts against the previous src).
+  allocation: '2d30a7e8be28457f9725f0a1589c2eb0393346f8347acedf6ae004e35cce797d',
   // Analysis re-recorded 2026-11-13 for one reviewed rule (audit c-results-engine-02): a search answer is the first count
   // at which the goal holds whatever the outcome of an exact tie, and a smaller count reached only through a tie is kept as
   // lotteryFrom. 74 of 818 cases differ: 23 answers move up by one (the old answer was a tie counted as reached), 28 keep
@@ -314,9 +320,9 @@ const EXPECTED: Record<Family, string> = {
   // one set of data (fable-check/model-diff2.ts: 0 differ in every family).
   // Round 7: dataset diff is display spellings, four consistent short English names,
   // one reviewed Amsalem biography, final-notice Horowitz spelling and build times; U4 col-blocs (16 Nov): the Arab
-  // lists bloc in k25 and k26 is ochre instead of sea green (four bloc color fields).
-  // Allocation, analysis, validation and rules digests remain identical.
-  model: 'a41cc6679d039815a88e04a1da8fe89808d1dbd1f0a9fe466267155e69f15e1a',
+  // lists bloc in k25 and k26 is ochre instead of sea green (four bloc color fields). r7-u1 (16 Nov): merging lists of
+  // different blocs marks the grouping custom (blocSchemeId null); 17 of 520 model outputs change, only in that field.
+  model: '36acef75f545bd9600308225a211deda08e13ff6c47dd4e0f86c425a6ad2c1dc',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

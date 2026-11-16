@@ -8,6 +8,7 @@ import { useL, useLang } from '../i18n.ts';
 import { fmtInt } from '../format.ts';
 import { dispatchMany, useVoteSource } from '../store.ts';
 import { ChoicePicker } from './ChoicePicker.tsx';
+import { listChoice } from './ListMark.tsx';
 /** An explicit paired transfer is independent of the general balancing assumption. No clipping. */
 export function TransferStep({ s, l }: { s: Scenario; l: SimList }) {
   const L = useL(), lang = useLang(), src = useVoteSource();
@@ -22,7 +23,7 @@ export function TransferStep({ s, l }: { s: Scenario; l: SimList }) {
     return <SeatEffects>{after.lists.map(x => ({ id: x.id, d: x.seats - (before.lists.find(y => y.id === x.id)?.seats ?? 0) })).filter(x => x.d).map(x => <span key={x.id}>{listLabel(s.lists.find(y => y.id === x.id)!, lang)} <SeatDelta value={x.d} /> </span>)}</SeatEffects>;
   }, [s, l.id, donor?.id, votes, lang]);
   return <div className="transfer-step">
-    <ChoicePicker label={L('Transfer from', 'העברה מתוך')} value={donor?.id ?? ''} options={donors.map(x => ({ value: x.id, label: listLabel(x, lang), detail: `${fmtInt(x.votes)} ${L('votes', 'קולות')}`, preview: <span className="swatch" style={{ background: x.color }} /> }))} onChange={setSelected} />
+    <ChoicePicker label={L('Transfer from', 'העברה מתוך')} value={donor?.id ?? ''} options={donors.map(x => listChoice(x, lang, { detail: `${fmtInt(x.votes)} ${L('votes', 'קולות')}` }))} onChange={setSelected} />
     <button className="btn small" disabled={!action} onClick={() => { if (action) dispatchMany([action]); }}>{L('Transfer 1 pp', 'העברת נק׳ אחוז אחת')}</button>
     <p className="tiny" aria-live="polite">{donor ? `${listLabel(donor, lang)} ${lang === 'he' ? '←' : '→'} ${listLabel(l, lang)} · ${fmtInt(votes)} ${L('votes', 'קולות')} · ` : ''}{L('Valid total and turnout unchanged', 'סך הכשרים ושיעור ההצבעה ללא שינוי')} · {consequence}</p>
   </div>;
