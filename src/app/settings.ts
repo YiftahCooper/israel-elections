@@ -1,15 +1,17 @@
-import type { FeatureId, Preset } from './features.ts';
+import { FEATURES, featureLabel, FEATURE_PREVIEWS, TOOL_FEATURES, type FeatureId, type Preset } from './features.ts';
 
 /** Personal display settings (israel-elections-private docs/design/settings.md). One registry drives the popup, its search, the resets
  *  and the tests. Every level shows every setting, in tiers by `min`: Simple first, then Standard, then Expert (owner,
  *  9 Nov 2026). Values are sparse: only what the user set is stored, so level-dependent and later
  *  defaults reach untouched settings. Settings are never scenario edits. */
 type Bi = readonly [string, string];
-export type GroupId = 'top' | 'general' | 'lists' | 'chamber' | 'numbers' | 'editing' | 'analysis' | 'history' | 'access';
+export type GroupId = 'top' | 'general' | 'tools' | 'lists' | 'colours' | 'chamber' | 'numbers' | 'editing' | 'analysis' | 'history' | 'access';
 export const GROUPS: { id: GroupId; label: Bi }[] = [
   { id: 'top', label: ['Detail level', 'רמת פירוט'] },
   { id: 'general', label: ['General', 'כללי'] },
+  { id: 'tools', label: ['Tools', 'כלים'] },
   { id: 'lists', label: ['Lists & parties', 'רשימות ומפלגות'] },
+  { id: 'colours', label: ['Colours', 'צבעים'] },
   { id: 'chamber', label: ['Seat chart', 'תרשים המליאה'] },
   { id: 'numbers', label: ['Numbers', 'מספרים'] },
   { id: 'editing', label: ['Editing', 'עריכה'] },
@@ -78,7 +80,7 @@ const o = (value: string, en: string, he: string) => ({ value, label: [en, he] a
 /** Registry order is display order. */
 export const SETTINGS: readonly SettingRow[] = [
   { id: 'level', group: 'top', control: 'level', min: 'simple', label: ['Detail level', 'רמת פירוט'],
-    info: ['Decides which tools and settings are shown. Hidden edits and settings keep working.', 'קובעת אילו כלים והגדרות מוצגים. עריכות והגדרות מוסתרות ממשיכות לפעול.'],
+    info: ['Decides which tools and details are shown. Under each level below you can add a part of another level to yours, or take one away; a level change keeps those choices. Hidden edits and settings keep working.', 'קובעת אילו כלים ופרטים מוצגים. מתחת לכל רמה למטה אפשר להוסיף לרמה שלכם חלק מרמה אחרת, או להוריד חלק; מעבר רמה שומר על הבחירות האלה. עריכות והגדרות מוסתרות ממשיכות לפעול.'],
     options: [o('simple', 'Simple', 'פשוט'), o('standard', 'Standard', 'רגיל'), o('expert', 'Expert', 'מומחה')], synonyms: 'mode level complexity custom מצב רמה מורכבות מותאם' },
 
   { id: 'lang', group: 'general', control: 'lang', min: 'simple', label: ['Language', 'שפה'], options: [o('he', 'עברית', 'עברית'), o('en', 'English', 'English')], synonyms: 'language hebrew english שפה עברית אנגלית' },
@@ -124,6 +126,8 @@ export const SETTINGS: readonly SettingRow[] = [
   { id: 'allCandidates', group: 'lists', control: 'toggle', min: 'standard', label: ['All candidates', 'כל המועמדים'],
     info: ['Opens a list’s full roster. Off: the elected and the next few first.', 'פותח את רשימת המועמדים המלאה. כבוי: הנבחרים והבאים בתור תחילה.'], synonyms: 'candidates roster members names מועמדים חברים שמות' },
 
+  // Slot (16 Nov 2026): the on/off switch for the turnout line under the seat count goes here, first in the seat chart
+  // group, min 'simple', once that line and its setting exist.
   { id: 'chamberLayout', group: 'chamber', control: 'seg', min: 'expert', feature: 'chamberOptions', label: ['Layout', 'פריסה'],
     info: ['The shape only; every seat stays the same.', 'הצורה בלבד; כל מושב נשאר אותו מושב.'],
     options: [o('hemicycle', 'Arc', 'קשת'), o('blocks', 'Blocks', 'משבצות')], synonyms: 'arc hemicycle blocks chamber shape grid קשת חצי עיגול מליאה צורה משבצות' },
@@ -248,12 +252,33 @@ export function rowVisible(row: SettingRow, level: Preset): boolean {
 export const TIERS: readonly Preset[] = ['simple', 'standard', 'expert'];
 export const rowTier = (row: SettingRow): Preset => row.only ?? row.min;
 
+/** Where each tool and section sits in Settings: the tools under Tools, every other part with the settings it belongs
+ *  to, in the tier of the level it first appears at (owner, 16 Nov 2026: Settings by level, and any part of another
+ *  level can be added to one's own). The Overview is always shown, so it has no row. */
+export const FEATURE_GROUP: Record<Exclude<FeatureId, 'board'>, GroupId> = {
+  ...Object.fromEntries(TOOL_FEATURES.filter(f => f[0] !== 'board').map(f => [f[0], 'tools'])) as Record<Exclude<typeof TOOL_FEATURES[number][0], 'board'>, GroupId>,
+  compare: 'tools',
+  agreementMarks: 'lists', candidateDetail: 'lists', jointVotes: 'lists',
+  chamberOptions: 'chamber', chamberLegend: 'chamber',
+  voteFigures: 'numbers', expertFigures: 'numbers', allocation: 'numbers', allocationFormulas: 'numbers', turnoutFacts: 'numbers', turnoutCounts: 'numbers',
+  splitIdentity: 'editing', voteStart: 'editing', jointEditing: 'editing', voteSource: 'editing', oneListSource: 'editing', agreements: 'editing',
+  standing: 'editing', identity: 'editing', candidateEdit: 'editing', copyVotesButton: 'editing', copyMethods: 'editing', copyChangeMethods: 'editing', rulesCopy: 'editing',
+  familyEdit: 'analysis', familyScale: 'analysis', familyGrouping: 'analysis', whatIfAll: 'analysis', compareTools: 'analysis', compareExpert: 'analysis',
+  timelineEvents: 'history', timelineAllEvents: 'history', historySources: 'history',
+};
+/** Every tool and section with a row in Settings, in registry order. */
+export const FEATURE_ROWS: readonly Exclude<FeatureId, 'board'>[] = FEATURES.map(f => f[0]).filter((id): id is Exclude<FeatureId, 'board'> => id !== 'board');
+export const featureMatches = (id: FeatureId, query: string) => textMatches([...featureLabel(id), ...FEATURE_PREVIEWS[id]], query);
+
 const fold = (t: string) => t.toLowerCase().normalize('NFKD').replace(/[֑-ׇ]/g, '').replace(/[‘’'"״׳]/g, '');
 /** Bilingual search: labels, options, (i) text and synonyms in both languages, whatever the interface language. */
 export function rowMatches(row: SettingRow, query: string): boolean {
+  return textMatches([...row.label, ...(row.info ?? []), ...(row.options ?? []).flatMap(x => x.label), row.synonyms], query);
+}
+export function textMatches(parts: readonly string[], query: string): boolean {
   const q = fold(query.trim());
   if (!q) return true;
-  const hay = fold([...row.label, ...(row.info ?? []), ...(row.options ?? []).flatMap(x => x.label), row.synonyms].join(' '));
+  const hay = fold(parts.join(' '));
   return q.split(/\s+/).every(w => hay.includes(w));
 }
 

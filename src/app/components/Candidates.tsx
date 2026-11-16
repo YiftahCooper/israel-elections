@@ -12,7 +12,7 @@ import type { SimCandidate, SimList } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { candidateName, shownName } from '../derive.ts';
 import { Info } from './ui.tsx';
-import { dispatch, useLevel, useSetting, useStore } from '../store.ts';
+import { dispatch, useOn, useSetting, useStore } from '../store.ts';
 
 /** The reason each candidate was "not seated", by candidate id: the note of their own list (also after a merge moved
  *  them) that names them or their place on the roster. */
@@ -28,7 +28,7 @@ export function notSeatedReasons(ds: Pick<ElectionDataset, 'lists'>): Record<str
 export function Candidates({ l, seats, baseSeats, baseCandidates, notSeatedWhy = {}, marker, secondary }: { l: SimList; seats: number; baseSeats: number; baseCandidates?: SimCandidate[]; notSeatedWhy?: Record<string, string>; marker?: ReactNode; secondary?: ReactNode }) {
   const L = useL();
   const lang = useLang();
-  const { simple } = useLevel();
+  const simple = !useOn('candidateDetail');
   const { shown: advanced, control } = useDisclosure('candidateEdit');
   const s = useStore(st => st.scenario);
   // Settings → All candidates: the full roster first; the switch below still shortens it

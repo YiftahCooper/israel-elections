@@ -26,9 +26,10 @@ import { deleteSaved, dispatch, getSetting, setLevel, setSetting, toggleTheme, u
 import { compareWith } from '../compare/mode.ts';
 import { ChevronDown, Copy, Download, FolderOpen, Link2, Menu, Moon, Redo2, RotateCcw, Save, Share2, Sun, Table2, Trash2, Undo2, Upload, Settings, X } from 'lucide-react';
 import { PersonalSettings } from './PersonalSettings.tsx';
+import { AppMenu } from './AppMenu.tsx';
 import { Seg } from './ui.tsx';
 import './topbar-phone.css';
-import { LEVEL_LABELS } from '../features.ts';
+import { LEVEL_LABELS, ownChoices } from '../features.ts';
 
 export { electionLabel } from '../electionLabel.ts';
 import { ElectionPicker } from './ElectionPicker.tsx';
@@ -126,12 +127,14 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
 
   const phone = usePhone();
   const [phoneMenu, setPhoneMenu] = useState(false);
+  const [scenarioPanel, setScenarioPanel] = useState(false);
+  const [toolsPanel, setToolsPanel] = useState(false);
   const fileInput = <input ref={fileRef} type="file" accept="application/json,.json" hidden onChange={async (e) => {
     const f = e.target.files?.[0]; if (!f) return;
     try {
       if (await openImported(importScenarioJson(await f.text()))) toast('info', L('Scenario imported.', 'התרחיש יובא.'));
     } catch (err) { toast('error', errorText(err, lang)); }
-    e.target.value = ''; setMenu(false); setPhoneMenu(false);
+    e.target.value = ''; setMenu(false); setPhoneMenu(false); setScenarioPanel(false);
   }} />;
   const startOver = () => { if (!s?.log.length || !getSetting('confirmStartOver') || confirm(L('Start over from the official result? (Undo can restore it.)', 'להתחיל מחדש מהתוצאה הרשמית? (ניתן לבטל)'))) resetAll(); };
   const undoRedo = <>
@@ -139,42 +142,54 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
       <button className="tool" onClick={redo} disabled={!canRedo} title={redoName + ' (Ctrl+Y)'} aria-label={redoName}><Redo2 className="icon rtl-mirror" aria-hidden /></button></>;
   const pickElection = (arrows: boolean) => <ElectionPicker arrows={arrows} elections={elections} value={pmContestId ?? electionId} onChange={async value => { const pm = electionContext.pmContests.find(c => c.id === value && c.contestType === 'prime-minister-only'); if (await openElection(pm?.electionId ?? value as ElectionId)) onContestChange?.(pm?.id ?? null); }} />;
   /** Custom, naming the level it is based on (bar and phone menu alike) */
-  const customButton = (onClick: () => void) => <button className="btn small band-custom" aria-label={custom ? L('Custom', 'מותאם') + ' · ' + L('based on ', 'על בסיס ') + L(...LEVEL_LABELS[level]) : L('Custom', 'מותאם')} aria-pressed={custom !== null} title={custom ? L('Custom · based on ', 'מותאם · על בסיס ') + L(...LEVEL_LABELS[level]) : L('Custom', 'מותאם')} onClick={onClick}>{L('Custom', 'מותאם')}{custom && <span className="band-custom-base"> · {L('based on ', 'על בסיס ')}{L(...LEVEL_LABELS[level])}</span>}</button>;
+  /** the user's own choices for this level, named and counted beside the level; it opens them in Settings (owner,
+   *  16 Nov 2026: one place to see and undo them). Nothing shows while there are none. */
+  const own = ownChoices(custom, level).length;
+  const ownChip = (before?: () => void) => own > 0 && <button type="button" className="btn small band-custom band-own" aria-haspopup="dialog"
+    title={L(`${own} of your own choices for ${LEVEL_LABELS[level][0]}: open in Settings`, `${own} בחירות שלכם לרמת „${LEVEL_LABELS[level][1]}”: פתיחה בהגדרות`)}
+    aria-label={L(`${own} of your own choices for ${LEVEL_LABELS[level][0]}`, `${own} בחירות שלכם לרמת „${LEVEL_LABELS[level][1]}”`)}
+    onClick={() => { before?.(); setState({ settingsOpen: true, settingsFocus: 'own' }); }}>{L(`+${own} own`, `+${own} משלכם`)}</button>;
   const settingsPortal = createPortal(<PersonalSettings />, document.body);
 
-  if (phone) return (
-    <header className="band band-phone" ref={trackBandHeight}>
-      {/* the page's top heading: the bar has no room for the name on a phone */}
-      <h1 className="sr-only">{L('Israeli Elections Explorer', 'סייר הבחירות לכנסת')}</h1>
-      <button className="tool band-menu-btn" aria-label={L('Menu', 'תפריט') + (publicationPending(ds) ? ' · ' + L('Gazette not yet verified', 'הפרסום ברשומות טרם אומת') : '')} title={L('Menu', 'תפריט')} aria-expanded={phoneMenu} aria-controls="phone-menu"
-        onClick={() => setPhoneMenu(m => !m)}>{phoneMenu ? <X className="icon" aria-hidden /> : <Menu className="icon" aria-hidden />}{publicationPending(ds) && !phoneMenu && <span className="band-menu-flag" aria-hidden>!</span>}</button>
-      {pickElection(false)}
-      {!pmContestId && s && <PhoneStatus s={s} ds={ds} open={phoneMenu} onOpen={() => setPhoneMenu(true)} />}
-      {!pmContestId && s && <span className="band-undo">{undoRedo}</span>}
-      {phoneMenu && <PhoneMenu onClose={() => setPhoneMenu(false)}>
-        <p className="phone-menu-brand">{L('Israeli Elections Explorer', 'סייר הבחירות לכנסת')}</p>
-        {!pmContestId && s && ds && <section className="phone-menu-scenario" aria-labelledby="pm-scenario">
-          <h2 id="pm-scenario">{L('Scenario', 'תרחיש')}</h2>
-          <ScenarioSwitcher s={s} ds={ds} onPicked={() => setPhoneMenu(false)} />
-          <div className="phone-menu-row">
-            <button className="btn small" onClick={() => { startOver(); }} disabled={!s.log.length}><RotateCcw className="icon sm" aria-hidden />{L('Start over', 'התחלה מחדש')}</button>
-          </div>
-          <details className="phone-menu-share"><summary><Share2 className="icon sm" aria-hidden />{L('Save & share', 'שמירה ושיתוף')}</summary>
-            <div className="phone-menu-share-items">{shareItems(() => setPhoneMenu(false))}</div></details>
-        </section>}
-        <section aria-labelledby="pm-view">
+  // the View controls, in the three-lines panel on a phone (the bar has no room for them there)
+  const phoneView = <section aria-labelledby="pm-view">
           <h2 id="pm-view">{L('View', 'תצוגה')}</h2>
           <div className="phone-menu-field"><span>{L('Detail level', 'רמת פירוט')}</span>
-            <span className="band-levels"><Seg<'simple' | 'standard' | 'expert' | 'custom'> label={L('Detail level', 'רמת פירוט')} value={custom ? 'custom' : level} onChange={(v) => { if (v !== 'custom') setLevel(v); }} options={(['simple', 'standard', 'expert'] as const).map(v => ({ v, label: L(...LEVEL_LABELS[v]) }))} />
-              {customButton(() => { setState({ tool: 'custom' }); setPhoneMenu(false); })}</span></div>
+            <span className="band-levels"><Seg<'simple' | 'standard' | 'expert'> label={L('Detail level', 'רמת פירוט')} value={level} onChange={setLevel} options={(['simple', 'standard', 'expert'] as const).map(v => ({ v, label: L(...LEVEL_LABELS[v]) }))} />
+              {ownChip(() => { document.querySelector<HTMLElement>('.band-menu-btn')?.focus({ preventScroll: true }); setPhoneMenu(false); })}</span></div>
           <div className="phone-menu-field"><span>{L('Language', 'שפה')}</span>
             <Seg label={L('Language', 'שפה')} value={lang} onChange={(v) => setState({ lang: v })} options={[{ v: 'he', label: 'עברית', lang: 'he' }, { v: 'en', label: 'English', lang: 'en' }]} /></div>
           <div className="phone-menu-field"><span>{L('Theme', 'ערכת צבעים')}</span>
             <Seg label={L('Theme', 'ערכת צבעים')} value={themeChoice} onChange={(v) => setSetting('theme', v)} options={[{ v: 'device', label: L('Device', 'לפי המכשיר') }, { v: 'light', label: L('Light', 'בהיר') }, { v: 'dark', label: L('Dark', 'כהה') }]} /></div>
           {/* Settings gives focus back to its opener on closing; the menu is gone by then, so that is the Menu button */}
           <button className="btn small" aria-haspopup="dialog" onClick={() => { document.querySelector<HTMLElement>('.band-menu-btn')?.focus({ preventScroll: true }); setPhoneMenu(false); setState({ settingsOpen: true }); }}><Settings className="icon sm" aria-hidden />{L('Settings', 'הגדרות')}</button>
-        </section>
+        </section>;
+
+  // Two buttons, two jobs (owner, 16 Nov 2026): the three lines open the tools and the view; the scenario button opens
+  // the scenario (switch, start over, save and share).
+  if (phone) return (
+    <header className="band band-phone" ref={trackBandHeight}>
+      {/* the page's top heading: the bar has no room for the name on a phone */}
+      <h1 className="sr-only">{L('Israeli Elections Explorer', 'סייר הבחירות לכנסת')}</h1>
+      <button className="tool band-menu-btn" aria-label={L('Menu', 'תפריט') + (publicationPending(ds) ? ' · ' + L('Gazette not yet verified', 'הפרסום ברשומות טרם אומת') : '')} title={L('Menu', 'תפריט')} aria-expanded={phoneMenu} aria-controls="app-menu"
+        onClick={() => { setScenarioPanel(false); setPhoneMenu(m => !m); }}>{phoneMenu ? <X className="icon" aria-hidden /> : <Menu className="icon" aria-hidden />}{publicationPending(ds) && !phoneMenu && <span className="band-menu-flag" aria-hidden>!</span>}</button>
+      {pickElection(false)}
+      {!pmContestId && s && <PhoneStatus s={s} ds={ds} open={scenarioPanel} onOpen={() => { setPhoneMenu(false); setScenarioPanel(o => !o); }} />}
+      {!pmContestId && s && <span className="band-undo">{undoRedo}</span>}
+      {phoneMenu && <AppMenu onClose={() => setPhoneMenu(false)}>
+        {phoneView}
         {ds && !pmContestId && <section aria-labelledby="pm-about"><h2 id="pm-about">{L('This election', 'הבחירות האלה')}</h2><ElectionAbout electionId={ds.id} /></section>}
+      </AppMenu>}
+      {scenarioPanel && !pmContestId && s && ds && <PhoneMenu onClose={() => setScenarioPanel(false)} label={L('Scenario', 'תרחיש')}>
+        <section className="phone-menu-scenario" aria-labelledby="pm-scenario">
+          <h2 id="pm-scenario">{L('Scenario', 'תרחיש')}</h2>
+          <ScenarioSwitcher s={s} ds={ds} onPicked={() => setScenarioPanel(false)} />
+          <div className="phone-menu-row">
+            <button className="btn small" onClick={() => { startOver(); }} disabled={!s.log.length}><RotateCcw className="icon sm" aria-hidden />{L('Start over', 'התחלה מחדש')}</button>
+          </div>
+          <div className="phone-menu-share"><h2>{L('Save & share', 'שמירה ושיתוף')}</h2>
+            <div className="phone-menu-share-items">{shareItems(() => setScenarioPanel(false))}</div></div>
+        </section>
       </PhoneMenu>}
       {fileInput}
       {settingsPortal}
@@ -183,12 +198,15 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
 
   return (
     <header className="band" ref={trackBandHeight}>
+      {/* short or narrow screens: the tools in a side panel, since the tab rows scroll away or are cut there */}
+      <button type="button" className="tool band-tools-btn" aria-label={L('Tools', 'כלים')} title={L('Tools', 'כלים')} aria-expanded={toolsPanel} aria-controls="app-menu" onClick={() => setToolsPanel(o => !o)}><Menu className="icon" aria-hidden /></button>
+      {toolsPanel && <AppMenu onClose={() => setToolsPanel(false)} />}
       <h1 className="brand" aria-label={L('Israeli Elections Explorer', 'סייר הבחירות לכנסת')}><span className="brand-full">{L('Israeli Elections Explorer', 'סייר הבחירות לכנסת')}</span><span className="brand-short">{L('Elections', 'סייר הבחירות')}</span></h1>
       {pickElection(true)}
       {ds && !pmContestId && <ElectionAbout electionId={ds.id} />}
       {s && ds && <ScenarioSwitcher s={s} ds={ds} />}
 
-      <span className="band-levels"><Seg<'simple' | 'standard' | 'expert' | 'custom'> label={L('Detail level', 'רמת פירוט')} value={custom ? 'custom' : level} onChange={(v) => { if (v !== 'custom') setLevel(v); }} options={(['simple', 'standard', 'expert'] as const).map(v => ({ v, label: L(...LEVEL_LABELS[v]) }))} />{customButton(() => setState({ tool: 'custom' }))}</span>
+      <span className="band-levels"><Seg<'simple' | 'standard' | 'expert'> label={L('Detail level', 'רמת פירוט')} value={level} onChange={setLevel} options={(['simple', 'standard', 'expert'] as const).map(v => ({ v, label: L(...LEVEL_LABELS[v]) }))} />{ownChip()}</span>
       <span className="spacer" />
       <div className="band-actions">
       {/* scenario tools need a scenario: hidden while an election loads or after it failed to load */}
@@ -240,7 +258,7 @@ function ScenarioName({ name, placeholder, label }: { name: string; placeholder:
 const publicationPending = (ds: ElectionDataset | undefined) => !!ds && electionContext.events.some(e => e.electionId === ds.id && e.type === 'publication-status');
 
 /** Phone bar: what is on screen, at a glance (mark every edit): the official result, or the scenario's name and how
- *  many changes it holds. Pressing it opens the menu at the scenario part. */
+ *  many changes it holds. Pressing it opens the scenario panel (the three lines open the tools and view). */
 function PhoneStatus({ s, ds, open, onOpen }: { s: Scenario; ds: ElectionDataset | undefined; open: boolean; onOpen: () => void }) {
   const L = useL();
   const saved = useStore(st => st.saved);
@@ -258,25 +276,24 @@ function PhoneStatus({ s, ds, open, onOpen }: { s: Scenario; ds: ElectionDataset
   </button>;
 }
 
-/** The phone menu: a panel under the bar, outside it (so none of the dark bar's control styles reach it). It closes
- *  on Escape (focus returns to the Menu button), a press outside or focus moving outside; the bar's own Menu and
- *  status buttons toggle it. */
-function PhoneMenu({ onClose, children }: { onClose: () => void; children: React.ReactNode }) {
-  const L = useL();
+/** The phone's scenario panel: a panel under the bar, outside it (so none of the dark bar's control styles reach it). It closes
+ *  on Escape (focus returns to the scenario button), a press outside or focus moving outside; the scenario button
+ *  toggles it. */
+function PhoneMenu({ onClose, label, children }: { onClose: () => void; label: string; children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   const close = useRef(onClose);
   close.current = onClose;
   // under the bar; when the bar has scrolled away (it is not sticky on phones), at the top of the screen instead of hidden
   useFloating(ref, () => { const r = document.querySelector('.band')?.getBoundingClientRect(); return r && { left: r.left, right: r.right, top: Math.max(r.top, 0), bottom: Math.max(r.bottom, 0) }; });
   // it covers the page: focus moving to the page behind it (Tab past its end, Shift+Tab before its start) closes it
-  useCloseOnFocusAway(true, t => !!ref.current?.contains(t) || !!t.closest('.band-menu-btn, .band-status'), () => close.current());
+  useCloseOnFocusAway(true, t => !!ref.current?.contains(t) || !!t.closest('.band-status'), () => close.current());
   useEffect(() => {
     const onClose = () => close.current();
     ref.current?.focus({ preventScroll: true });
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape' && !document.querySelector('dialog[open]')) { onClose(); document.querySelector<HTMLElement>('.band-menu-btn')?.focus({ preventScroll: true }); } };
-    const onDown = (e: PointerEvent) => { const t = e.target as Element; if (!ref.current?.contains(t) && !t.closest?.('.band-menu-btn, .band-status, dialog')) onClose(); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape' && !document.querySelector('dialog[open]')) { onClose(); document.querySelector<HTMLElement>('.band-status')?.focus({ preventScroll: true }); } };
+    const onDown = (e: PointerEvent) => { const t = e.target as Element; if (!ref.current?.contains(t) && !t.closest?.('.band-status, dialog')) onClose(); };
     document.addEventListener('keydown', onKey); document.addEventListener('pointerdown', onDown);
     return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onDown); };
   }, []);
-  return createPortal(<div ref={ref} id="phone-menu" className="phone-menu" role="dialog" aria-label={L('Menu', 'תפריט')} tabIndex={-1}>{children}</div>, document.body);
+  return createPortal(<div ref={ref} id="phone-menu" className="phone-menu" role="dialog" aria-label={label} tabIndex={-1}>{children}</div>, document.body);
 }

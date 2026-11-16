@@ -10,7 +10,7 @@ import { listLabel, methodOf, quotaFormula as quotaFormulaOf } from '../derive.t
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtRat, seatsText } from '../format.ts';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
-import { dispatch, setState, useStore, useDigits } from '../store.ts';
+import { dispatch, setState, useDigits, useOn } from '../store.ts';
 import { useGraphicReference } from '../useGraphicReference.ts';
 import { Info } from './ui.tsx';
 
@@ -34,7 +34,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
   const lang = useLang();
   const digits = useDigits();
-  const advanced = useStore((st) => st.level === 'expert');
+  const advanced = useOn('allocationFormulas');
   const { base, result: br } = useGraphicReference(s);
   // divisor methods (Sainte-Laguë, D'Hondt…) have no quota stage: every seat is awarded one at a time
   const divisor = DIVISOR.includes(s.rules.remainderMethod);

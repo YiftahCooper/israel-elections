@@ -6,7 +6,7 @@ import { arcLayout, annularRegions } from '../layout.ts';
 import { listLabel } from '../derive.ts';
 import { formatDate } from '../dateFormat.ts';
 import { useL, useLang, type Lang } from '../i18n.ts';
-import { useSetting, useStore } from '../store.ts';
+import { useOn, useSetting } from '../store.ts';
 import { Floating } from '../floating.tsx';
 import { useHoverIntent } from '../hoverIntent.ts';
 import { Info, Slip } from './ui.tsx';
@@ -78,7 +78,9 @@ const pos = (term: TermRuntime, date: string) => Math.max(0, Math.min(100, (Date
 export function TermTimeline({ ds }: { ds: ElectionDataset }) {
   const L = useL(); const lang = useLang();
   const rt = useTermRuntime(); const mk = useMkRuntime();
-  const level = useStore((st) => st.level);
+  // the events shown follow two details of the level (features.ts): more events, every event
+  const more = useOn('timelineEvents'), every = useOn('timelineAllEvents');
+  const level = every ? 'expert' : more ? 'standard' : 'simple';
   const seatChanges = useSetting('timelineSeatChanges');
   const norwegian = useSetting('seatStepsNorwegian'), left = useSetting('seatStepsLeft'), unknown = useSetting('seatStepsUnrecorded');
   const term = rt?.terms[Number(ds.id.slice(1))];

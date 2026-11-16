@@ -15,7 +15,7 @@ import type { Action, Scenario, SimList } from '../../model/scenario.ts';
 import { electedOf } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt } from '../format.ts';
-import { dispatch, dispatchMany, setPreference, setState, useDigits, useStore, useLevel, useSetting } from '../store.ts';
+import { dispatch, dispatchMany, setPreference, setState, useDigits, useStore, useOn, useSetting } from '../store.ts';
 import { hiddenSeatlessParty } from '../seatlessParties.ts';
 import {JointFacts} from './JointFacts.tsx';
 import { PartyLinks } from './PartyLinks.tsx';
@@ -29,7 +29,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
   const digits = useDigits();
   const { shown: standard, control: standardControl } = useDisclosure('jointEditing');
   const lang = useLang();
-  const { expert } = useLevel();
+  const expert = useOn('jointVotes');
   // the same value as Settings → Joint lists by party (no answer means its default, On)
   const defaultSplit = useStore(st => st.preferences.jointSeats !== 'off');
   const seatlessParties = useSetting('jointListParties') === 'all';

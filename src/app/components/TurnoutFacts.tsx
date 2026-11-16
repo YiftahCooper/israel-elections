@@ -8,7 +8,7 @@ import type { ElectionId } from '../../data/schema.ts';
 import { allocationOf, referenceLabel } from '../derive.ts';
 import { fmtInt, fmtPct, trimDecimal, PP } from '../format.ts';
 import { useL, useLang } from '../i18n.ts';
-import { openElection, useDigits, useLevel, useSetting, useStore } from '../store.ts';
+import { openElection, useDigits, useOn, useSetting, useStore } from '../store.ts';
 import { useHoverIntent } from '../hoverIntent.ts';
 import { electionLabel } from '../electionLabel.ts';
 import { countChange, ELECTION_TOTALS, electionWhen, officialThreshold, previousTotals, totalsOf, turnoutPct, type ElectionTotalsRow } from '../turnoutFacts.ts';
@@ -47,7 +47,7 @@ function Fact({ id, k, info, v, d, since, copy }: { id: string; k: string; info?
 
 export function TurnoutFacts({ s }: { s: Scenario }) {
   const L = useL(), lang = useLang(), digits = useDigits();
-  const { standard, expert } = useLevel();
+  const standard = useOn('turnoutFacts'), expert = useOn('turnoutCounts');
   const official = totalsOf(s.electionId);
   // while comparing, "since" is the compared result (its own totals, edits included); otherwise the previous election
   const cmp = useReference(s);

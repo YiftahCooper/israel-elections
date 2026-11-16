@@ -154,7 +154,7 @@ input, textarea { caret-color: var(--focus); }
 
 /* Edits change content above the viewport; browser anchoring must not move the editing surface. */
 html, body { overflow-anchor: none; }
-:root { --toolbar-h: 40px; --session-h: 0px; --compare-h: 0px; --board-top: calc(var(--band-h, 52px) + var(--toolbar-h) + var(--session-h) + var(--compare-h) + 12px); }
+:root { --toolbar-h: 40px; --session-h: 0px; --compare-h: 0px; --board-top: calc(var(--band-h, 52px) + var(--pin-strips, 1) * (var(--toolbar-h) + var(--session-h) + var(--compare-h)) + 12px); }
 /* keyboard focus and in-page scrolling land below the sticky band, tools strip and change line */
 html { scroll-padding-block-start: calc(var(--band-h, 52px) + var(--toolbar-h) + var(--session-h) + var(--compare-h) + 8px); }
 @media (max-width: 1100px) { html { scroll-padding-block-start: calc(var(--band-h, 52px) + var(--toolbar-h) + 8px); } }
@@ -388,8 +388,16 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .tabs button:hover { color: var(--ink); }
 .tabs button[aria-selected="true"] { color: var(--ink); border-block-end-color: var(--shell); font-weight: 700; }
 [data-theme="dark"] .tabs button[aria-selected="true"] { border-block-end-color: var(--focus); }
+/* (the "More in other levels" words are gone: greyed tools ask on choosing, 16 Nov 2026) */
 .tabs .more-label { flex: none; white-space: nowrap; align-self: center; font-size: 12px; color: var(--muted); padding: 0 8px 0 4px; border-inline-start: 1px solid var(--rule); margin-inline-start: 4px; }
-.tabs button.locked { color: var(--muted); }
+.tabs button.locked { color: var(--muted); font-weight: 500; }
+/* a greyed-out tool chosen: switch level or add it to this one (ToolLevelAsk) */
+.tool-ask { max-inline-size: min(420px, calc(100vw - 32px)); padding: 16px 18px 12px; border: 1px solid var(--rule-2); border-radius: var(--radius); background: var(--surface); color: var(--ink); box-shadow: var(--shadow-pop); }
+.tool-ask::backdrop { background: #0004; }
+.tool-ask h2 { margin: 0 0 4px; }
+.tool-ask p { margin: 0 0 10px; }
+.tool-ask-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-block-end: 10px; }
+@media (max-width: 600px) { .tool-ask-actions .btn { min-block-size: 44px; } }
 .tool-intro { color: var(--ink-2); margin: 0 0 10px; }
 
 /* ---------- tables in tools */

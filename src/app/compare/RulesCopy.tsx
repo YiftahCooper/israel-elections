@@ -5,13 +5,13 @@ import type { Scenario } from '../../model/scenario.ts';
 import { trimDecimal } from '../format.ts';
 import { useL } from '../i18n.ts';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
-import { useLevel } from '../store.ts';
+import { useOn } from '../store.ts';
 import { CopyOtherButton } from './CopyOtherButton.tsx';
 import { useReference } from './mode.ts';
 
 export function RulesCopy({ s }: { s: Scenario }) {
   const L = useL();
-  const { expert } = useLevel();
+  const expert = useOn('rulesCopy');
   const state = useReference(s);
   if (!expert || state.status !== 'ready') return null;
   const ref = state.ref, where = ref.same ? ref.name : ref.year;

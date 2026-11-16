@@ -60,3 +60,21 @@
   .personal-settings .ps-row.is-seg .choice-picker, .personal-settings .ps-row.is-seg .choice-trigger { inline-size: 100%; }
   .personal-settings .ps-row.is-toggle { min-block-size: 44px; }
 }
+
+/* the user's own choices for the level, under the level row (one place to see and undo them) */
+.ps-own { padding: 8px 0 10px; border-block-end: 1px solid var(--rule); }
+.ps-own h4 { display: flex; align-items: center; gap: 6px; margin: 0 0 4px; }
+.ps-own h4 .ps-reset { margin-inline-start: auto; }
+.ps-own-list { list-style: none; margin: 0; padding: 0 16px 0 16px; display: grid; gap: 2px; }
+.ps-own-list li { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-block-size: 32px; }
+
+/* Colours: every colour the user changed (ColourChanges.tsx) */
+.ps-colours { display: grid; gap: 6px; padding-inline: 16px; }
+.ps-colours-where { margin: 4px 0 0; }
+.ps-colour-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.ps-colour-list li { display: flex; align-items: center; gap: 8px; min-block-size: 36px; }
+.ps-colour-swatches { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); }
+.ps-colour-swatches i { inline-size: 18px; block-size: 18px; border-radius: 3px; border: 1px solid var(--rule-2); }
+.ps-colour-list input[type="color"] { inline-size: 32px; block-size: 26px; padding: 0; border: 1px solid var(--rule-2); border-radius: 3px; background: none; }
+.ps-colour-name { flex: 1; min-inline-size: 0; }
+.ps-colours > .btn { justify-self: start; }

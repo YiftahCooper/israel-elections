@@ -14,7 +14,7 @@ import { baselineOf } from '../factionDefaults.ts';
 import { markerChangeText } from '../changeValue.tsx';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtRat, PP } from '../format.ts';
-import { setState, toast, useDigits, useLevel, useSetting, useStore } from '../store.ts';
+import { setState, toast, useDigits, useOn, useSetting, useStore } from '../store.ts';
 import { Floating } from '../floating.tsx';
 import { Hemicycle } from '../components/Hemicycle.tsx';
 import { SeatDelta } from '../components/SeatDelta.tsx';
@@ -41,7 +41,7 @@ const narrow = () => narrowerThan(760);
 
 export function Workbench({ main, other, picker, onSwap }: { main: SideModel; other: SideModel; picker: ReactNode; onSwap: () => void }) {
   const L = useL(), lang = useLang(), digits = useDigits();
-  const { simple, expert } = useLevel();
+  const simple = !useOn('compareTools'), expert = useOn('compareExpert');
   const pair = pairKey(main.sc.electionId, other.sc.electionId);
   const overrides = useStore((st) => st.compare.overrides[pair]) ?? [];
   // your work is where reading starts: on the left in English, on the right in Hebrew (owner, 12 Nov 2026, C3a); the

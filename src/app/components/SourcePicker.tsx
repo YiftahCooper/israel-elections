@@ -6,7 +6,7 @@ import type { ElectionId } from '../../data/schema.ts';
 import { baselineOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt } from '../format.ts';
-import { answerPreference, chooseSource, loadDataset, setState, useLevel, useStore, useVoteSource } from '../store.ts';
+import { answerPreference, chooseSource, loadDataset, setState, useOn, useStore, useVoteSource } from '../store.ts';
 import { PREFERENCES, sourceValue, type PreferenceId } from '../preferences.ts';
 import { Info } from './ui.tsx';
 
@@ -50,7 +50,7 @@ export function SourceDialog() {
   const ask = useStore(st => st.preferenceAsk);
   const s = useStore(st => st.scenario);
   // asked at every level (owner, 9 Nov 2026); Simple offers the two main answers, the higher levels also one list
-  const { simple } = useLevel();
+  const simple = !useOn('oneListSource');
   const [value, setValue] = useState('');
   const [scope, setScope] = useState<'once' | 'item' | 'always'>('once');
   const dialog = useRef<HTMLDialogElement>(null);
