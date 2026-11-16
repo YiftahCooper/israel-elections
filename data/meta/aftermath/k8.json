@@ -134,8 +134,8 @@
     },
     "plenum-253635": {
       "url": "https://fs.knesset.gov.il//8/Plenum/8_ptm_253635.pdf",
-      "publisher": "Knesset, דברי הכנסת, 1974-06-03, document 253635",
-      "publisherHe": "הכנסת, דברי הכנסת, 1974-06-03, מסמך 253635",
+      "publisher": "Knesset, Divrei HaKnesset, 3 June 1974",
+      "publisherHe": "הכנסת, דברי הכנסת, 3 ביוני 1974",
       "kind": "official",
       "tier": "primary",
       "accessed": "2026-11-16",
@@ -323,38 +323,21 @@
         "textHe": "הכנסת הביעה אמון בממשלה ה־17 בראשות יצחק רבין, 61 בעד · 51 נגד, עם 5 נמנעים.",
         "cites": [
           {
-            "source": "plenum-gov17",
-            "quote": "הצבעה 61 החדשה לממשלה אמון הבעת בעד 51 נגד 4 ' נמנעים ההצעה להביע אמון לממשלה נתקבלה. אהרן אבוחצירא )חזית דתית לאומית(: מצביע נגד ז ואיננו מי נגד חמישה.( הוא הנמנעים מספר )קריאה: היו\"ר י. ישעיהו: נמנעים ההצבעה: תוצאות את מתקן אני חמישה. מנחם בגין )הליכוד(: בןפורת. חברהכנסת תשכח את נא אל היו\"ר י. ישעיהו: הסתכלתי לצד זה ולא ראיתי."
-          },
-          {
             "source": "plenum-253635",
             "quote": "בעד הבעת אמון לממשלה החדשה",
-            "locator": "PDF p. 50, printed p. 1562",
-            "note": "C004: The explicit for count is 61. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote. The first printed table gives 4 abstentions; the chair expressly corrects this to 5 on the same page. Use the correction."
-          },
-          {
-            "source": "plenum-253635",
-            "quote": "בעד הבעת אמון לממשלה החדשה",
-            "locator": "PDF p. 50, printed p. 1562",
-            "note": "C005: The explicit against count is 51. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote. The first printed table gives 4 abstentions; the chair expressly corrects this to 5 on the same page. Use the correction."
+            "locator": "p. 1562"
           },
           {
             "source": "plenum-253635",
             "quote": "אני מתקן את תוצאות ההצבעה: נמנעים — חמישה",
-            "locator": "PDF p. 50, printed p. 1562",
-            "note": "C006: The explicit abstain count is 5. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote. The first printed table gives 4 abstentions; the chair expressly corrects this to 5 on the same page. Use the correction."
-          },
-          {
-            "source": "plenum-253635",
-            "quote": "אני מתקן את תוצאות ההצבעה: נמנעים — חמישה",
-            "locator": "PDF p. 50, printed p. 1562",
-            "note": "C007: The chair declared the motion adopted. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote. The first printed table gives 4 abstentions; the chair expressly corrects this to 5 on the same page. Use the correction."
+            "locator": "p. 1562",
+            "note": "The printed tally reads 61 for, 51 against, four abstaining; the chair then corrects the abstentions to five.",
+            "noteHe": "בטבלה המודפסת: 61 בעד, 51 נגד, ארבעה נמנעים; היושב־ראש מתקן מיד את מספר הנמנעים לחמישה."
           },
           {
             "source": "plenum-253635",
             "quote": "ההצבעה היא בעד אמון לממשלה או נגדו",
-            "locator": "PDF p. 50, printed p. 1562",
-            "note": "C065: Express confidence in the new Rabin government. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+            "locator": "p. 1562"
           }
         ],
         "votes": {
@@ -379,38 +362,23 @@
             "source": "plenum-gov17"
           }
         ],
-        "resolution": "The official chair corrects the table’s four abstentions to five (printed p. 1562). Use 61–51–5; this is an explicit correction within one record.",
+        "resolution": "The printed tally gives four abstentions; the chair corrects it to five on the same page. The corrected count, 61–51–5, is used.",
         "status": "resolved",
         "cites": [
           {
             "source": "plenum-253635",
             "quote": "בעד הבעת אמון לממשלה החדשה",
-            "locator": "PDF p. 50, printed p. 1562",
-            "note": "C004: The explicit for count is 61. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote. The first printed table gives 4 abstentions; the chair expressly corrects this to 5 on the same page. Use the correction."
-          },
-          {
-            "source": "plenum-253635",
-            "quote": "בעד הבעת אמון לממשלה החדשה",
-            "locator": "PDF p. 50, printed p. 1562",
-            "note": "C005: The explicit against count is 51. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote. The first printed table gives 4 abstentions; the chair expressly corrects this to 5 on the same page. Use the correction."
+            "locator": "p. 1562"
           },
           {
             "source": "plenum-253635",
             "quote": "אני מתקן את תוצאות ההצבעה: נמנעים — חמישה",
-            "locator": "PDF p. 50, printed p. 1562",
-            "note": "C006: The explicit abstain count is 5. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote. The first printed table gives 4 abstentions; the chair expressly corrects this to 5 on the same page. Use the correction."
-          },
-          {
-            "source": "plenum-253635",
-            "quote": "אני מתקן את תוצאות ההצבעה: נמנעים — חמישה",
-            "locator": "PDF p. 50, printed p. 1562",
-            "note": "C007: The chair declared the motion adopted. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote. The first printed table gives 4 abstentions; the chair expressly corrects this to 5 on the same page. Use the correction."
+            "locator": "p. 1562"
           },
           {
             "source": "plenum-253635",
             "quote": "ההצבעה היא בעד אמון לממשלה או נגדו",
-            "locator": "PDF p. 50, printed p. 1562",
-            "note": "C065: Express confidence in the new Rabin government. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+            "locator": "p. 1562"
           }
         ]
       }
@@ -601,26 +569,16 @@
         },
         "confidenceVoteCites": [
           {
-            "source": "plenum-gov17",
-            "quote": "הצבעה 61 החדשה לממשלה אמון הבעת בעד 51 נגד 4 ' נמנעים ההצעה להביע אמון לממשלה נתקבלה. אהרן אבוחצירא )חזית דתית לאומית(: מצביע נגד ז ואיננו מי נגד חמישה.( הוא הנמנעים מספר )קריאה: היו\"ר י. ישעיהו: נמנעים ההצבעה: תוצאות את מתקן אני חמישה. מנחם בגין )הליכוד(: בןפורת. חברהכנסת תשכח את נא אל היו\"ר י. ישעיהו: הסתכלתי לצד זה ולא ראיתי."
-          },
-          {
             "source": "plenum-253635",
             "quote": "בעד הבעת אמון לממשלה החדשה",
-            "locator": "PDF p. 50, printed p. 1562",
-            "note": "C004: The explicit for count is 61. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote. The first printed table gives 4 abstentions; the chair expressly corrects this to 5 on the same page. Use the correction."
-          },
-          {
-            "source": "plenum-253635",
-            "quote": "בעד הבעת אמון לממשלה החדשה",
-            "locator": "PDF p. 50, printed p. 1562",
-            "note": "C005: The explicit against count is 51. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote. The first printed table gives 4 abstentions; the chair expressly corrects this to 5 on the same page. Use the correction."
+            "locator": "p. 1562"
           },
           {
             "source": "plenum-253635",
             "quote": "אני מתקן את תוצאות ההצבעה: נמנעים — חמישה",
-            "locator": "PDF p. 50, printed p. 1562",
-            "note": "C006: The explicit abstain count is 5. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote. The first printed table gives 4 abstentions; the chair expressly corrects this to 5 on the same page. Use the correction."
+            "locator": "p. 1562",
+            "note": "The printed tally reads 61 for, 51 against, four abstaining; the chair then corrects the abstentions to five.",
+            "noteHe": "בטבלה המודפסת: 61 בעד, 51 נגד, ארבעה נמנעים; היושב־ראש מתקן מיד את מספר הנמנעים לחמישה."
           }
         ],
         "membershipCoverage": "complete",

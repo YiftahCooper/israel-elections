@@ -82,11 +82,21 @@ function useKindLabel() {
   const L = useL();
   return (s: HistorySource) => s.kind === 'official' ? L('Official', 'רשמי') : s.kind === 'archival' ? L('Archival', 'ארכיוני') : s.kind === 'academic' ? L('Academic', 'אקדמי') : L('Secondary', 'משני');
 }
+/** The two plain locator forms of the data ("p. 333"; "paragraph beginning «…»" for Word records) in the page's
+ *  language; the quoted opening keeps its own direction inside either language's line. */
+function LocatorText({ locator }: { locator: string }) {
+  const lang = useLang();
+  const para = /^paragraph beginning «?(.+?)»?$/.exec(locator);
+  if (para) return <>{lang === 'he' ? 'הפסקה שמתחילה ' : 'paragraph beginning '}<span style={{ display: 'inline-block' }}>«<bdi dir="auto">{para[1]}</bdi>»</span></>;
+  const page = /^p\. (\S+)$/.exec(locator);
+  if (page && lang === 'he') return <>עמ׳ <bdi dir="ltr">{page[1]}</bdi></>;
+  return <HistoryText text={locator} verbatim />;
+}
 function Evidence({ data, cites = [], notes = [], explanation }: { data: Aftermath; cites?: Cite[]; notes?: string[]; explanation?: ReactNode }) {
   const L = useL(); const lang = useLang(); const kind = useKindLabel();
   return <Info title={L('Sources & qualifications', 'מקורות וסייגים')}>
     {explanation && <p>{explanation}</p>}
-    {cites.map((c, i) => { const s = data.sources[c.source]; return s && <div key={i} className="after-evidence"><a href={s.url} target="_blank" rel="noreferrer"><bdi><HistoryText text={sourceLabel(s, lang)} /></bdi></a> · {kind(s)} · <DateRun date={s.accessed} /><blockquote dir="auto"><HistoryText text={c.quote} verbatim /></blockquote>{c.locator && <p dir="auto"><HistoryText text={c.locator} verbatim /></p>}{c.note && <p dir="auto"><HistoryText text={c.note} verbatim /></p>}</div>; })}
+    {cites.map((c, i) => { const s = data.sources[c.source]; return s && <div key={i} className="after-evidence"><a href={s.url} target="_blank" rel="noreferrer"><bdi><HistoryText text={sourceLabel(s, lang)} /></bdi></a> · {kind(s)} · <DateRun date={s.accessed} /><blockquote dir="auto"><HistoryText text={c.quote} verbatim /></blockquote>{c.locator && <p dir="auto"><LocatorText locator={c.locator} /></p>}{(lang === 'he' ? c.noteHe ?? c.note : c.note) && <p dir="auto"><HistoryText text={(lang === 'he' ? c.noteHe ?? c.note : c.note)!} verbatim /></p>}</div>; })}
     {notes.length > 0 && <details><summary>{L('Research notes · original language', 'הערות מחקר · בשפת המקור')}</summary>{notes.map((n, i) => <p key={i} dir="auto"><HistoryText text={n} verbatim /></p>)}</details>}
   </Info>;
 }

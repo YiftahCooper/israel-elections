@@ -155,8 +155,8 @@
     },
     "plenum-532847": {
       "url": "https://fs.knesset.gov.il//15/Plenum/15_ptm_532847.docx",
-      "publisher": "Knesset, דברי הכנסת, 1999-07-06, document 532847",
-      "publisherHe": "הכנסת, דברי הכנסת, 1999-07-06, מסמך 532847",
+      "publisher": "Knesset, Divrei HaKnesset, 6 July 1999",
+      "publisherHe": "הכנסת, דברי הכנסת, 6 ביולי 1999",
       "kind": "official",
       "tier": "primary",
       "accessed": "2026-11-16",
@@ -211,32 +211,16 @@
           {
             "source": "plenum-532847",
             "quote": "ברוב של 75 חברי כנסת בעד, 29 חברי כנסת נגד ו-11 נמנעים",
-            "locator": "OOXML paragraph 4650",
-            "note": "C033: The explicit for count is 75. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-          },
-          {
-            "source": "plenum-532847",
-            "quote": "ברוב של 75 חברי כנסת בעד, 29 חברי כנסת נגד ו-11 נמנעים",
-            "locator": "OOXML paragraph 4650",
-            "note": "C034: The explicit against count is 29. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-          },
-          {
-            "source": "plenum-532847",
-            "quote": "ברוב של 75 חברי כנסת בעד, 29 חברי כנסת נגד ו-11 נמנעים",
-            "locator": "OOXML paragraph 4650",
-            "note": "C035: The explicit abstain count is 11. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+            "locator": "paragraph beginning «רבותי חברי הכנסת, אני מודיע»"
           },
           {
             "source": "plenum-532847",
             "quote": "אני מודיע בזאת שהכנסת אישרה",
-            "locator": "OOXML paragraph 4650",
-            "note": "C036: The chair declared the motion adopted. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+            "locator": "paragraph beginning «רבותי חברי הכנסת, אני מודיע»"
           },
           {
             "source": "plenum-532847",
-            "quote": "בעד הודעת ראש הממשלה הנבחר א' ברק על כינון הממשלה והרכבה – 75",
-            "locator": "OOXML paragraph 4644",
-            "note": "C073: Approve prime minister-elect Barak’s government-formation/composition statement. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+            "quote": "בעד הודעת ראש הממשלה הנבחר א' ברק על כינון הממשלה והרכבה – 75"
           }
         ],
         "votes": {

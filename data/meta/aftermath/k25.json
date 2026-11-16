@@ -333,8 +333,8 @@
     },
     "plenum-1479551": {
       "url": "https://fs.knesset.gov.il/25/Plenum/25_ptm_1479551.doc",
-      "publisher": "Knesset, דברי הכנסת, 2022-12-29, document 1479551",
-      "publisherHe": "הכנסת, דברי הכנסת, 2022-12-29, מסמך 1479551",
+      "publisher": "Knesset, Divrei HaKnesset, 29 December 2022",
+      "publisherHe": "הכנסת, דברי הכנסת, 29 בדצמבר 2022",
       "kind": "official",
       "tier": "primary",
       "accessed": "2026-11-16",
@@ -531,33 +531,21 @@
           },
           {
             "source": "plenum-1479551",
-            "quote": "63 בעד, 54 נגד.",
-            "locator": "OOXML paragraph 3602",
-            "note": "C061: The explicit for count is 63. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-          },
-          {
-            "source": "plenum-1479551",
-            "quote": "63 בעד, 54 נגד.",
-            "locator": "OOXML paragraph 3602",
-            "note": "C062: The explicit against count is 54. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+            "quote": "63 בעד, 54 נגד."
           },
           {
             "source": "plenum-1479551",
             "quote": "אני קובע כי הכנסת הביעה אמון בממשלה בשעה טובה ומוצלחת.",
-            "locator": "OOXML paragraph 3602",
-            "note": "C063: The chair declared the motion adopted. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+            "locator": "paragraph beginning «63 בעד, 54 נגד. אני מודיע»"
           },
           {
             "source": "plenum-1479551",
             "quote": "ההצבעה היא הבעת אמון בממשלה.",
-            "locator": "OOXML paragraph 3591",
-            "note": "C081: The establishment/composition vote is an electronic confidence vote, distinct from the earlier Speaker election. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+            "locator": "paragraph beginning «רבותיי, אני מתכבד לעבור»"
           },
           {
             "source": "plenum-1479551",
-            "quote": "נמנעים – אין",
-            "locator": "OOXML paragraph 3597",
-            "note": "C084: The vote table explicitly records no abstentions. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+            "quote": "נמנעים – אין"
           }
         ]
       }
@@ -1057,33 +1045,11 @@
       },
       {
         "source": "plenum-1479551",
-        "quote": "63 בעד, 54 נגד.",
-        "locator": "OOXML paragraph 3602",
-        "note": "C061: The explicit for count is 63. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+        "quote": "63 בעד, 54 נגד."
       },
       {
         "source": "plenum-1479551",
-        "quote": "63 בעד, 54 נגד.",
-        "locator": "OOXML paragraph 3602",
-        "note": "C062: The explicit against count is 54. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-      },
-      {
-        "source": "plenum-1479551",
-        "quote": "נמנעים – אין",
-        "locator": "OOXML paragraph 3597",
-        "note": "C084: The vote table explicitly records no abstentions. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
-      },
-      {
-        "source": "plenum-1479551",
-        "quote": "נמנעים – אין",
-        "locator": "OOXML paragraph 3597",
-        "note": "C084: The vote table explicitly records no abstentions. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
-      },
-      {
-        "source": "plenum-1479551",
-        "quote": "נמנעים – אין",
-        "locator": "OOXML paragraph 3597",
-        "note": "C084: The vote table explicitly records no abstentions. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+        "quote": "נמנעים – אין"
       }
     ],
     "membershipCoverage": "complete",

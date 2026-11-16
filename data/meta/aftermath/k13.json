@@ -200,8 +200,8 @@
     },
     "plenum-532236": {
       "url": "https://fs.knesset.gov.il//13/Plenum/13_ptm_532236.docx",
-      "publisher": "Knesset, דברי הכנסת, 1995-11-22, document 532236",
-      "publisherHe": "הכנסת, דברי הכנסת, 1995-11-22, מסמך 532236",
+      "publisher": "Knesset, Divrei HaKnesset, 22 November 1995",
+      "publisherHe": "הכנסת, דברי הכנסת, 22 בנובמבר 1995",
       "kind": "official",
       "tier": "primary",
       "accessed": "2026-11-16",
@@ -412,33 +412,16 @@
           },
           {
             "source": "plenum-532236",
-            "quote": "62 תומכים, שמונה מתנגדים, 38 נמנעים.",
-            "locator": "OOXML paragraph 1951",
-            "note": "C026: The explicit for count is 62. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-          },
-          {
-            "source": "plenum-532236",
-            "quote": "62 תומכים, שמונה מתנגדים, 38 נמנעים.",
-            "locator": "OOXML paragraph 1951",
-            "note": "C027: The explicit against count is 8. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-          },
-          {
-            "source": "plenum-532236",
-            "quote": "62 תומכים, שמונה מתנגדים, 38 נמנעים.",
-            "locator": "OOXML paragraph 1951",
-            "note": "C028: The explicit abstain count is 38. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+            "quote": "62 תומכים, שמונה מתנגדים, 38 נמנעים."
           },
           {
             "source": "plenum-532236",
             "quote": "אני מודיע בזאת שקמה ממשלה חדשה בישראל והיא זכתה באמון הכנסת.",
-            "locator": "OOXML paragraph 1951",
-            "note": "C029: The chair declared the motion adopted. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+            "locator": "paragraph beginning «62 תומכים, שמונה מתנגדים, 38»"
           },
           {
             "source": "plenum-532236",
-            "quote": "ההודעה של ראש הממשלה בפועל ש' פרס על כינון הממשלה והרכבה נתקבלה.",
-            "locator": "OOXML paragraph 1947",
-            "note": "C071: Approve acting prime minister Peres’s establishment/composition statement. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+            "quote": "ההודעה של ראש הממשלה בפועל ש' פרס על כינון הממשלה והרכבה נתקבלה."
           }
         ],
         "votes": {
@@ -833,21 +816,7 @@
           },
           {
             "source": "plenum-532236",
-            "quote": "62 תומכים, שמונה מתנגדים, 38 נמנעים.",
-            "locator": "OOXML paragraph 1951",
-            "note": "C026: The explicit for count is 62. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-          },
-          {
-            "source": "plenum-532236",
-            "quote": "62 תומכים, שמונה מתנגדים, 38 נמנעים.",
-            "locator": "OOXML paragraph 1951",
-            "note": "C027: The explicit against count is 8. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-          },
-          {
-            "source": "plenum-532236",
-            "quote": "62 תומכים, שמונה מתנגדים, 38 נמנעים.",
-            "locator": "OOXML paragraph 1951",
-            "note": "C028: The explicit abstain count is 38. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+            "quote": "62 תומכים, שמונה מתנגדים, 38 נמנעים."
           }
         ],
         "coalitionSeats": null,

@@ -175,8 +175,8 @@
     },
     "plenum-254065": {
       "url": "https://fs.knesset.gov.il//9/Plenum/9_ptm_254065.pdf",
-      "publisher": "Knesset, דברי הכנסת, 1977-06-20, document 254065",
-      "publisherHe": "הכנסת, דברי הכנסת, 1977-06-20, מסמך 254065",
+      "publisher": "Knesset, Divrei HaKnesset, 20 June 1977",
+      "publisherHe": "הכנסת, דברי הכנסת, 20 ביוני 1977",
       "kind": "official",
       "tier": "primary",
       "accessed": "2026-11-16",
@@ -442,26 +442,17 @@
           {
             "source": "plenum-254065",
             "quote": "בעד ההצעה להביע אמון בממשלה",
-            "locator": "PDF p. 56, printed p. 69",
-            "note": "C008: The explicit for count is 63. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-          },
-          {
-            "source": "plenum-254065",
-            "quote": "בעד ההצעה להביע אמון בממשלה",
-            "locator": "PDF p. 56, printed p. 69",
-            "note": "C009: The explicit against count is 53. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+            "locator": "p. 69"
           },
           {
             "source": "plenum-254065",
             "quote": "ההצעה להביע אמון בממשלה נתקבלה",
-            "locator": "PDF p. 56, printed p. 69",
-            "note": "C010: The chair declared the motion adopted. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+            "locator": "p. 69"
           },
           {
             "source": "plenum-254065",
             "quote": "אני מעמיד להצבעה את ההצעה להביע אמון בממשלה",
-            "locator": "PDF p. 56, printed p. 69",
-            "note": "C066: Express confidence in the Begin government. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+            "locator": "p. 69"
           }
         ]
       }
@@ -618,14 +609,7 @@
       {
         "source": "plenum-254065",
         "quote": "בעד ההצעה להביע אמון בממשלה",
-        "locator": "PDF p. 56, printed p. 69",
-        "note": "C008: The explicit for count is 63. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-      },
-      {
-        "source": "plenum-254065",
-        "quote": "בעד ההצעה להביע אמון בממשלה",
-        "locator": "PDF p. 56, printed p. 69",
-        "note": "C009: The explicit against count is 53. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+        "locator": "p. 69"
       }
     ],
     "membershipCoverage": "complete",

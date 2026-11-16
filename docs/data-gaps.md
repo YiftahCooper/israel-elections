@@ -1,8 +1,8 @@
 # Data gaps register
 
-12529 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
+12531 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
 
-- High importance: 850 (confirmed 412, probable 28, provisional 156, disputed 10, unknown 244).
+- High importance: 852 (confirmed 415, probable 28, provisional 155, disputed 10, unknown 244).
 - Medium importance: 4613 (confirmed 1050, probable 332, provisional 605, disputed 9, unknown 2617).
 - Low importance: 7066 (confirmed 572, provisional 802, unknown 5692).
 
@@ -76,7 +76,6 @@ Could change seats, votes, a government’s composition, recommendation totals o
 - [Formation conflicts](../data/meta/aftermath/k18.json) ×2: probable 1, disputed 1. Disputed: Coalition membership in the IPU summary
 - [Formation events](../data/meta/aftermath/k18.json) ×1: provisional 1. mandate-given 2009-02-20
 - [Government](../data/meta/aftermath/k18.json) ×1: probable 1
-- [Investiture vote](../data/meta/aftermath/k18.json) ×1: provisional 1
 - [Recommendation rounds](../data/meta/aftermath/k18.json) ×1: probable 1. r1
 
 ### k17
@@ -312,9 +311,9 @@ Every claim in these families, not only gaps. Derived from each claim’s own so
 
 ## Counts
 
-By kind: unknown: 7360; missing-field: 283; conflict: 17; single-source: 3008; low-confidence: 101; release-hold: 0; inferred: 1172; pending: 405; unconfirmed: 183.
+By kind: unknown: 7360; missing-field: 283; conflict: 17; single-source: 3010; low-confidence: 101; release-hold: 0; inferred: 1172; pending: 405; unconfirmed: 183.
 
-By status: inferred-not-verified: 1033; needs-current-status-review: 319; open: 11177.
+By status: inferred-not-verified: 1033; needs-current-status-review: 319; open: 11179.
 
 | Election | High open | Medium open | Low | Total |
 | --- | ---: | ---: | ---: | ---: |
@@ -325,7 +324,7 @@ By status: inferred-not-verified: 1033; needs-current-status-review: 319; open: 
 | k5 | 36 | 76 | 152 | 299 |
 | k6 | 28 | 86 | 161 | 315 |
 | k7 | 15 | 77 | 160 | 281 |
-| k8 | 23 | 105 | 174 | 368 |
+| k8 | 23 | 105 | 174 | 369 |
 | k9 | 21 | 131 | 197 | 419 |
 | k10 | 19 | 123 | 171 | 363 |
 | k11 | 45 | 134 | 204 | 444 |
@@ -335,7 +334,7 @@ By status: inferred-not-verified: 1033; needs-current-status-review: 319; open: 
 | k15 | 29 | 165 | 160 | 405 |
 | k16 | 12 | 170 | 218 | 463 |
 | k17 | 6 | 142 | 229 | 422 |
-| k18 | 6 | 105 | 344 | 492 |
+| k18 | 5 | 105 | 344 | 493 |
 | k19 | 4 | 104 | 344 | 494 |
 | k20 | 6 | 116 | 309 | 467 |
 | k21 | 2 | 124 | 340 | 529 |

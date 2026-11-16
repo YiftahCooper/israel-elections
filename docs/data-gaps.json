@@ -1,11 +1,11 @@
 {
   "schemaVersion": 3,
-  "total": 12529,
+  "total": 12531,
   "counts": {
     "unknown": 7360,
     "missing-field": 283,
     "conflict": 17,
-    "single-source": 3008,
+    "single-source": 3010,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1172,
@@ -15,14 +15,14 @@
   "countsByStatus": {
     "inferred-not-verified": 1033,
     "needs-current-status-review": 319,
-    "open": 11177
+    "open": 11179
   },
   "countsByImportance": {
     "high": {
-      "total": 850,
-      "confirmed": 412,
+      "total": 852,
+      "confirmed": 415,
       "probable": 28,
-      "provisional": 156,
+      "provisional": 155,
       "disputed": 10,
       "unknown": 244
     },
@@ -216,7 +216,7 @@
     },
     {
       "election": "k8",
-      "total": 368,
+      "total": 369,
       "highOpen": 23,
       "mediumOpen": 105,
       "low": 174,
@@ -224,7 +224,7 @@
         "unknown": 207,
         "missing-field": 9,
         "conflict": 0,
-        "single-source": 105,
+        "single-source": 106,
         "low-confidence": 7,
         "release-hold": 0,
         "inferred": 20,
@@ -396,15 +396,15 @@
     },
     {
       "election": "k18",
-      "total": 492,
-      "highOpen": 6,
+      "total": 493,
+      "highOpen": 5,
       "mediumOpen": 105,
       "low": 344,
       "counts": {
         "unknown": 309,
         "missing-field": 0,
         "conflict": 1,
-        "single-source": 77,
+        "single-source": 78,
         "low-confidence": 5,
         "release-hold": 0,
         "inferred": 88,
@@ -613,7 +613,6 @@
     {"election":"k18","area":"Formation conflicts","count":2,"certainty":{"probable":1,"disputed":1},"kinds":{"conflict":1,"single-source":1},"labels":[],"disputed":["Coalition membership in the IPU summary"],"file":"data/meta/aftermath/k18.json"},
     {"election":"k18","area":"Formation events","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":["mandate-given 2009-02-20"],"file":"data/meta/aftermath/k18.json"},
     {"election":"k18","area":"Government","count":1,"certainty":{"probable":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k18.json"},
-    {"election":"k18","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k18.json"},
     {"election":"k18","area":"Recommendation rounds","count":1,"certainty":{"probable":1},"kinds":{"unconfirmed":1},"labels":["r1"],"file":"data/meta/aftermath/k18.json"},
     {"election":"k17","area":"data/raw/kN/national.reviewed.json discrepancies.status","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k17/national.reviewed.json"},
     {"election":"k17","area":"data/raw/kN/national.reviewed.json gazetteTotals.registered","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k17/national.reviewed.json"},

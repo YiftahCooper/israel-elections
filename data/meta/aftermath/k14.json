@@ -119,8 +119,8 @@
     },
     "plenum-532496": {
       "url": "https://fs.knesset.gov.il//14/Plenum/14_ptm_532496.docx",
-      "publisher": "Knesset, דברי הכנסת, 1996-06-18, document 532496",
-      "publisherHe": "הכנסת, דברי הכנסת, 1996-06-18, מסמך 532496",
+      "publisher": "Knesset, Divrei HaKnesset, 18 June 1996",
+      "publisherHe": "הכנסת, דברי הכנסת, 18 ביוני 1996",
       "kind": "official",
       "tier": "primary",
       "accessed": "2026-11-16",
@@ -161,8 +161,8 @@
       {
         "date": "1996-06-18",
         "type": "confidence-vote",
-        "textEn": "The Knesset approved the appointment of the ministers in the composition announced by directly elected prime minister Netanyahu, 62 for · 50 against.",
-        "textHe": "הכנסת אישרה את מינוי השרים בהרכב שהודיע עליו ראש הממשלה הנבחר נתניהו, 62 בעד · 50 נגד.",
+        "textEn": "The Knesset approved the ministers of Netanyahu’s 27th government, 62 for · 50 against.",
+        "textHe": "הכנסת אישרה את שרי הממשלה ה־27 בראשות נתניהו, 62 בעד · 50 נגד.",
         "cites": [
           {
             "source": "vote1996",
@@ -175,26 +175,17 @@
           {
             "source": "plenum-532496",
             "quote": "בעד – 62, נגד – 50.",
-            "locator": "OOXML paragraph 2278",
-            "note": "C030: The explicit for count is 62. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-          },
-          {
-            "source": "plenum-532496",
-            "quote": "בעד – 62, נגד – 50.",
-            "locator": "OOXML paragraph 2278",
-            "note": "C031: The explicit against count is 50. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+            "locator": "paragraph beginning «רבותי חברי הכנסת, להלן»"
           },
           {
             "source": "plenum-532496",
             "quote": "לפיכך אני קובע שההצעה אושרה.",
-            "locator": "OOXML paragraph 2278",
-            "note": "C032: The chair declared the motion adopted. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+            "locator": "paragraph beginning «רבותי חברי הכנסת, להלן»"
           },
           {
             "source": "plenum-532496",
             "quote": "מאשרת הכנסת את מינוים של השרים בהרכב שעליו הודיע ראש הממשלה.",
-            "locator": "OOXML paragraph 2006",
-            "note": "C072: Approve appointment of the ministers in the composition announced by the directly elected prime minister; preserve this legal wording. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+            "locator": "paragraph beginning «ראשית, אני רוצה לקרוא בפניכם»"
           }
         ],
         "votes": {
@@ -500,14 +491,7 @@
       {
         "source": "plenum-532496",
         "quote": "בעד – 62, נגד – 50.",
-        "locator": "OOXML paragraph 2278",
-        "note": "C030: The explicit for count is 62. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-      },
-      {
-        "source": "plenum-532496",
-        "quote": "בעד – 62, נגד – 50.",
-        "locator": "OOXML paragraph 2278",
-        "note": "C031: The explicit against count is 50. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+        "locator": "paragraph beginning «רבותי חברי הכנסת, להלן»"
       }
     ],
     "membershipCoverage": "complete",

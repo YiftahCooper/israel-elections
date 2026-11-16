@@ -134,8 +134,8 @@
     },
     "plenum-181874": {
       "url": "https://fs.knesset.gov.il//18/Plenum/18_ptm_181874.doc",
-      "publisher": "Knesset, דברי הכנסת, 2009-03-31, document 181874",
-      "publisherHe": "הכנסת, דברי הכנסת, 2009-03-31, מסמך 181874",
+      "publisher": "Knesset, Divrei HaKnesset, 31 March 2009",
+      "publisherHe": "הכנסת, דברי הכנסת, 31 במרץ 2009",
       "kind": "official",
       "tier": "primary",
       "accessed": "2026-11-16",
@@ -318,48 +318,25 @@
           "against": 45,
           "abstain": 0
         },
-        "textEn": "The Knesset approved the 32nd government, 69 for · 45 against, with no abstentions; the chair separately recorded five nonparticipants. The ministers were sworn in.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־32, 69 בעד · 45 נגד, ללא נמנעים; יושב הראש ציין בנפרד חמישה שלא השתתפו בהצבעה. השרים הושבעו.",
+        "textEn": "The Knesset approved the 32nd government, 69 for · 45 against; five MKs did not vote. The ministers were sworn in.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־32, 69 בעד · 45 נגד; חמישה חברי כנסת לא השתתפו בהצבעה. השרים הושבעו.",
         "cites": [
           {
-            "source": "jta-investiture",
-            "quote": "a vote of 69 to 45 with five abstentions."
-          },
-          {
             "source": "plenum-181874",
             "quote": "בעד – 69, נגד – 45, חמישה לא השתתפו בהצבעה, אין נמנעים.",
-            "locator": "Legacy Word logical paragraph 5196 (not a printed page or OOXML paragraph)",
-            "note": "C040: The explicit for count is 69. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-          },
-          {
-            "source": "plenum-181874",
-            "quote": "בעד – 69, נגד – 45, חמישה לא השתתפו בהצבעה, אין נמנעים.",
-            "locator": "Legacy Word logical paragraph 5196 (not a printed page or OOXML paragraph)",
-            "note": "C041: The explicit against count is 45. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-          },
-          {
-            "source": "plenum-181874",
-            "quote": "בעד – 69, נגד – 45, חמישה לא השתתפו בהצבעה, אין נמנעים.",
-            "locator": "Legacy Word logical paragraph 5196 (not a printed page or OOXML paragraph)",
-            "note": "C042: The explicit abstain count is 0. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+            "locator": "paragraph beginning «ובכן, רבותי חברי הכנסת, בעד»",
+            "note": "Some reports give five abstentions; the Knesset record has five who did not vote and none abstaining.",
+            "noteHe": "בחלק מהדיווחים: חמישה נמנעים. לפי דברי הכנסת, חמישה לא השתתפו בהצבעה ולא היו נמנעים."
           },
           {
             "source": "plenum-181874",
             "quote": "אני קובע שהודעת הממשלה על קווי היסוד של מדיניותה, על הרכבה ועל חלוקת התפקידים בין השרים אושרה.",
-            "locator": "Legacy Word logical paragraph 5196 (not a printed page or OOXML paragraph)",
-            "note": "C043: The chair declared the motion adopted. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+            "locator": "paragraph beginning «ובכן, רבותי חברי הכנסת, בעד»"
           },
           {
             "source": "plenum-181874",
             "quote": "אנחנו מצביעים על הודעת הממשלה על קווי היסוד של מדיניותה, על הרכבה ועל חלוקת התפקידים בין השרים.",
-            "locator": "Legacy Word logical paragraph 5045 (not a printed page or OOXML paragraph)",
-            "note": "C075: Vote by name on the government statement covering programme, composition and division of ministerial duties. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
-          },
-          {
-            "source": "plenum-181874",
-            "quote": "חמישה לא השתתפו בהצבעה, אין נמנעים.",
-            "locator": "Legacy Word logical paragraph 5196 (not a printed page or OOXML paragraph)",
-            "note": "C083: The chair explicitly reports five not participating, separately from zero abstentions. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Do not infer any additional absent member or derive an individual identity from this aggregate."
+            "locator": "paragraph beginning «ובכן, שמענו כולנו בסבלנות»"
           }
         ]
       }
@@ -623,32 +600,11 @@
     },
     "confidenceVoteCites": [
       {
-        "source": "jta-investiture",
-        "quote": "a vote of 69 to 45 with five abstentions."
-      },
-      {
         "source": "plenum-181874",
         "quote": "בעד – 69, נגד – 45, חמישה לא השתתפו בהצבעה, אין נמנעים.",
-        "locator": "Legacy Word logical paragraph 5196 (not a printed page or OOXML paragraph)",
-        "note": "C040: The explicit for count is 69. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-      },
-      {
-        "source": "plenum-181874",
-        "quote": "בעד – 69, נגד – 45, חמישה לא השתתפו בהצבעה, אין נמנעים.",
-        "locator": "Legacy Word logical paragraph 5196 (not a printed page or OOXML paragraph)",
-        "note": "C041: The explicit against count is 45. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-      },
-      {
-        "source": "plenum-181874",
-        "quote": "בעד – 69, נגד – 45, חמישה לא השתתפו בהצבעה, אין נמנעים.",
-        "locator": "Legacy Word logical paragraph 5196 (not a printed page or OOXML paragraph)",
-        "note": "C042: The explicit abstain count is 0. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-      },
-      {
-        "source": "plenum-181874",
-        "quote": "חמישה לא השתתפו בהצבעה, אין נמנעים.",
-        "locator": "Legacy Word logical paragraph 5196 (not a printed page or OOXML paragraph)",
-        "note": "C083: The chair explicitly reports five not participating, separately from zero abstentions. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Do not infer any additional absent member or derive an individual identity from this aggregate."
+        "locator": "paragraph beginning «ובכן, רבותי חברי הכנסת, בעד»",
+        "note": "Some reports give five abstentions; the Knesset record has five who did not vote and none abstaining.",
+        "noteHe": "בחלק מהדיווחים: חמישה נמנעים. לפי דברי הכנסת, חמישה לא השתתפו בהצבעה ולא היו נמנעים."
       }
     ],
     "membershipCoverage": "complete",

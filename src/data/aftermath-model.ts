@@ -1,6 +1,7 @@
 import type { ElectionDataset, ElectionId } from './schema.ts';
 import type { GovernmentSupport } from './aftermath.ts';
-export interface Cite { source: string; quote: string; locator?: string; note?: string }
+/** `noteHe` is the Hebrew wording of `note`, for the few notes written for readers in both languages. */
+export interface Cite { source: string; quote: string; locator?: string; note?: string; noteHe?: string }
 export interface HistorySource { url: string; publisher?: string; publisherHe?: string; title?: string; kind: string; accessed: string; via?: string }
 /** `orderDate`/`orderSeq` place an event among others of the same date, or a month- or year-only event among the days
  *  in it, from what the record's own sources say (`orderBasis`); they are never shown and never change `date`. */

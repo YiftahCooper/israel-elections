@@ -134,7 +134,7 @@
   "publisherEn": "Central Elections Committee for the 26th Knesset (gov.il)",
   "official": true,
   "description": "Official per-list pages: list name, letters, sponsoring parties, full ranked roster, per-candidate party, resignations",
-  "note": "gov.il returns HTTP 403 to scripted clients; captured on 2026-11-03 through the Exa page-fetch service, whose text extraction is stored verbatim. Each page carries its own \"תאריך עדכון\". Two pages (בי, כן) failed to render; their rosters now come from the official gazette, Yalkut HaPirsumim 15023. Tzeva Shahor section corrected from owner-browser capture on 2026-11-16 (collector-r7-j483): 22 October withdrawal and final 17-person roster. Other sections remain earlier extraction. This file is now a mixed-date reviewed derivative; original pre-review bytes retained losslessly in collector-r7/k26-list-pages-before-roster-review.json.gz.",
+  "note": "gov.il returns HTTP 403 to scripted clients; captured on 2026-11-03 through the Exa page-fetch service, whose text extraction is stored verbatim. Each page carries its own \"תאריך עדכון\". Two pages (בי, כן) failed to render; their rosters now come from the official gazette, Yalkut HaPirsumim 15023. The Tzeva Shahor page was checked again on 2026-11-16: the list withdrew on 22 October, leaving a final roster of 17. The other pages are from the earlier capture.",
   "retrievedAt": "2026-11-03",
   "bytes": 132969,
   "sha256": "587e305db4014a6d19c6b6279b2f0ae693b8ae2fd213d3523ab8420c626a79c8"

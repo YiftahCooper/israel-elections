@@ -181,8 +181,8 @@
     },
     "plenum-531200": {
       "url": "https://fs.knesset.gov.il//12/Plenum/12_ptm_531200.PDF",
-      "publisher": "Knesset, דברי הכנסת, 1988-12-22, document 531200",
-      "publisherHe": "הכנסת, דברי הכנסת, 1988-12-22, מסמך 531200",
+      "publisher": "Knesset, Divrei HaKnesset, 22 December 1988",
+      "publisherHe": "הכנסת, דברי הכנסת, 22 בדצמבר 1988",
       "kind": "official",
       "tier": "primary",
       "accessed": "2026-11-16",
@@ -191,8 +191,8 @@
     },
     "plenum-531505": {
       "url": "https://fs.knesset.gov.il//12/Plenum/12_ptm_531505.PDF",
-      "publisher": "Knesset, דברי הכנסת, 1990-03-15, document 531505",
-      "publisherHe": "הכנסת, דברי הכנסת, 1990-03-15, מסמך 531505",
+      "publisher": "Knesset, Divrei HaKnesset, 15 March 1990",
+      "publisherHe": "הכנסת, דברי הכנסת, 15 במרץ 1990",
       "kind": "official",
       "tier": "primary",
       "accessed": "2026-11-16",
@@ -201,8 +201,8 @@
     },
     "plenum-531546": {
       "url": "https://fs.knesset.gov.il//12/Plenum/12_ptm_531546.PDF",
-      "publisher": "Knesset, דברי הכנסת, 1990-06-11, document 531546",
-      "publisherHe": "הכנסת, דברי הכנסת, 1990-06-11, מסמך 531546",
+      "publisher": "Knesset, Divrei HaKnesset, 11 June 1990",
+      "publisherHe": "הכנסת, דברי הכנסת, 11 ביוני 1990",
       "kind": "official",
       "tier": "primary",
       "accessed": "2026-11-16",
@@ -446,32 +446,17 @@
           {
             "source": "plenum-531200",
             "quote": "ברוב של 84 בעד, 19 נגד ו־3 נמנעים",
-            "locator": "PDF p. 40, printed p. 249",
-            "note": "C015: The explicit for count is 84. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote. This is the counted repeat after the initial uncounted show of hands on PDF p39; do not cite that earlier vote as the counted result."
-          },
-          {
-            "source": "plenum-531200",
-            "quote": "ברוב של 84 בעד, 19 נגד ו־3 נמנעים",
-            "locator": "PDF p. 40, printed p. 249",
-            "note": "C016: The explicit against count is 19. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote. This is the counted repeat after the initial uncounted show of hands on PDF p39; do not cite that earlier vote as the counted result."
-          },
-          {
-            "source": "plenum-531200",
-            "quote": "ברוב של 84 בעד, 19 נגד ו־3 נמנעים",
-            "locator": "PDF p. 40, printed p. 249",
-            "note": "C017: The explicit abstain count is 3. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote. This is the counted repeat after the initial uncounted show of hands on PDF p39; do not cite that earlier vote as the counted result."
+            "locator": "p. 249"
           },
           {
             "source": "plenum-531200",
             "quote": "נתקבלה הודעתו של חבר הכנסת יצחק שמיר על הרכבת הממשלה החדשה",
-            "locator": "PDF p. 40, printed p. 249",
-            "note": "C018: The chair declared the motion adopted. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote. This is the counted repeat after the initial uncounted show of hands on PDF p39; do not cite that earlier vote as the counted result."
+            "locator": "p. 249"
           },
           {
             "source": "plenum-531200",
             "quote": "מי בעד הודעתו של חבר הכנסת יצחק שמיר",
-            "locator": "PDF p. 40, printed p. 249",
-            "note": "C068: Approve Shamir’s government-formation statement in the counted repeat vote. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+            "locator": "p. 249"
           }
         ],
         "votes": {
@@ -529,44 +514,22 @@
           {
             "source": "plenum-531546",
             "quote": "כינון הממשלה והרכבה בקולות של 62 בעד, 57 נגד, ונמנע אחד",
-            "locator": "PDF p. 48, printed p. 3882",
-            "note": "C022: The explicit for count is 62. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-          },
-          {
-            "source": "plenum-531546",
-            "quote": "כינון הממשלה והרכבה בקולות של 62 בעד, 57 נגד, ונמנע אחד",
-            "locator": "PDF p. 48, printed p. 3882",
-            "note": "C023: The explicit against count is 57. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-          },
-          {
-            "source": "plenum-531546",
-            "quote": "כינון הממשלה והרכבה בקולות של 62 בעד, 57 נגד, ונמנע אחד",
-            "locator": "PDF p. 48, printed p. 3882",
-            "note": "C024: The explicit abstain count is 1. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+            "locator": "p. 3882"
           },
           {
             "source": "plenum-531546",
             "quote": "הכנסת אישרה את הודעת ראש הממשלה",
-            "locator": "PDF p. 48, printed p. 3882",
-            "note": "C025: The chair declared the motion adopted. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-          },
-          {
-            "source": "plenum-531546",
-            "quote": "כינון הממשלה והרכבה",
-            "locator": "PDF p. 48, printed p. 3882",
-            "note": "C070: Approve the prime minister’s statement on government establishment and composition. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+            "locator": "p. 3882"
           },
           {
             "source": "plenum-531546",
             "quote": "אברהם ורדיגר — נמנע",
-            "locator": "PDF p. 47, printed p. 3881",
-            "note": "C085: Avraham Verdiger abstained in the government-formation vote. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+            "locator": "p. 3881"
           },
           {
             "source": "plenum-531546",
             "quote": "אליעזר מזרחי — בעד",
-            "locator": "PDF p. 48, printed p. 3882",
-            "note": "C086: Eliezer Mizrahi voted for in the government-formation vote. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+            "locator": "p. 3882"
           }
         ],
         "votes": {
@@ -866,26 +829,17 @@
           {
             "source": "plenum-531505",
             "quote": "להלן התוצאות: 60 בעד, 55 נגד",
-            "locator": "PDF p. 61, printed p. 2817",
-            "note": "C019: The explicit for count is 60. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-          },
-          {
-            "source": "plenum-531505",
-            "quote": "להלן התוצאות: 60 בעד, 55 נגד",
-            "locator": "PDF p. 61, printed p. 2817",
-            "note": "C020: The explicit against count is 55. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+            "locator": "p. 2817"
           },
           {
             "source": "plenum-531505",
             "quote": "הצעת סיעת המערך להביע אי־אמון לממשלה",
-            "locator": "PDF p. 61, printed p. 2817",
-            "note": "C021: The chair declared the motion adopted. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+            "locator": "p. 2817"
           },
           {
             "source": "plenum-531505",
             "quote": "בשל הפגיעה באחדות הלאומית ואי־אמון בראש הממשלה",
-            "locator": "PDF p. 61, printed p. 2817",
-            "note": "C069: The adopted no-confidence motion was Alignment’s motion against the government and prime minister. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+            "locator": "p. 2817"
           }
         ],
         "votes": {
@@ -997,20 +951,7 @@
           {
             "source": "plenum-531546",
             "quote": "כינון הממשלה והרכבה בקולות של 62 בעד, 57 נגד, ונמנע אחד",
-            "locator": "PDF p. 48, printed p. 3882",
-            "note": "C022: The explicit for count is 62. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-          },
-          {
-            "source": "plenum-531546",
-            "quote": "כינון הממשלה והרכבה בקולות של 62 בעד, 57 נגד, ונמנע אחד",
-            "locator": "PDF p. 48, printed p. 3882",
-            "note": "C023: The explicit against count is 57. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
-          },
-          {
-            "source": "plenum-531546",
-            "quote": "כינון הממשלה והרכבה בקולות של 62 בעד, 57 נגד, ונמנע אחד",
-            "locator": "PDF p. 48, printed p. 3882",
-            "note": "C024: The explicit abstain count is 1. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+            "locator": "p. 3882"
           }
         ],
         "coalitionSeats": null,
@@ -1018,7 +959,7 @@
         "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
         "reconciliation": {
           "status": "unresolved",
-          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 0; full membership remains unknown. Investiture: 62 for, 57 against, 1 abstaining."
+          "note": "Coalition membership is still unknown, so the members cannot be matched to the vote: 62 for, 57 against, one abstaining."
         },
         "individuals": [
           {
@@ -1038,11 +979,10 @@
               {
                 "source": "plenum-531546",
                 "quote": "אליעזר מזרחי — בעד",
-                "locator": "PDF p. 48, printed p. 3882",
-                "note": "C086: Eliezer Mizrahi voted for in the government-formation vote. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+                "locator": "p. 3882"
               }
             ],
-            "note": "Separate personal support deal reported; Aguda as a faction is not counted as joining. Original agreement and whether it formally admitted Mizrachi individually remain unrecovered. Official sitting record now confirms this individual vote only; role certainty is unchanged because membership/support arrangements are a separate proposition."
+            "note": "A separate personal support deal was reported; Agudat Yisrael as a party is not counted as joining. The agreement itself has not been found, nor whether it made Mizrachi a coalition member. The Knesset record confirms he voted for."
           },
           {
             "id": "avraham-verdiger",
@@ -1061,11 +1001,10 @@
               {
                 "source": "plenum-531546",
                 "quote": "אברהם ורדיגר — נמנע",
-                "locator": "PDF p. 47, printed p. 3881",
-                "note": "C085: Avraham Verdiger abstained in the government-formation vote. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+                "locator": "p. 3881"
               }
             ],
-            "note": "C085: The official sitting record confirms the individual abstention. No supporting arrangement is inferred; role certainty remains provisional because the vote does not establish a membership or outside-support agreement."
+            "note": "The Knesset record confirms he abstained. No arrangement with the government is assumed from this."
           }
         ],
         "knownMemberSeats": 0
@@ -1084,27 +1023,14 @@
       {
         "source": "plenum-531200",
         "quote": "ברוב של 84 בעד, 19 נגד ו־3 נמנעים",
-        "locator": "PDF p. 40, printed p. 249",
-        "note": "C015: The explicit for count is 84. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote. This is the counted repeat after the initial uncounted show of hands on PDF p39; do not cite that earlier vote as the counted result."
-      },
-      {
-        "source": "plenum-531200",
-        "quote": "ברוב של 84 בעד, 19 נגד ו־3 נמנעים",
-        "locator": "PDF p. 40, printed p. 249",
-        "note": "C016: The explicit against count is 19. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote. This is the counted repeat after the initial uncounted show of hands on PDF p39; do not cite that earlier vote as the counted result."
-      },
-      {
-        "source": "plenum-531200",
-        "quote": "ברוב של 84 בעד, 19 נגד ו־3 נמנעים",
-        "locator": "PDF p. 40, printed p. 249",
-        "note": "C017: The explicit abstain count is 3. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote. This is the counted repeat after the initial uncounted show of hands on PDF p39; do not cite that earlier vote as the counted result."
+        "locator": "p. 249"
       }
     ],
     "membershipCoverage": "partial",
     "supportSeats": null,
     "reconciliation": {
       "status": "unresolved",
-      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 95 (Agudat Yisrael’s 5 provisional); whether any other faction was a member is not established. Investiture: 84 for, 19 against, 3 abstaining, in the counted repeat (record 531200, C015–C018, C068)."
+      "note": "Coalition members known so far hold 95 seats (Agudat Yisrael’s five are provisional); whether any other party joined is unknown. The vote was taken a second time and counted: 84 for, 19 against, three abstaining. Without each MK’s vote, the 95 seats cannot be matched to the 84 votes for."
     },
     "knownMemberSeats": 95
   },
