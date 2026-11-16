@@ -50,3 +50,16 @@ test('a bloc name typed in one language is its name in both', async ({ page }) =
   await expect(page.locator('.blocs')).toContainText('My bloc');
   await expect(page.locator('.board-choices .choice-trigger')).toContainText('גושים מותאמים');
 });
+
+test('a mouse user can switch a table to exact values from the note a value opens', async ({ page }) => {
+  await start(page);
+  const value = page.locator('.lb-row').first().locator('.percentage[data-rounded]').first();
+  const rounded = await value.textContent();
+  await value.hover();
+  const note = page.getByRole('tooltip').filter({ hasText: 'the exact share' });
+  await expect(note).toBeVisible();
+  await note.hover();
+  await note.getByRole('button', { name: 'Exact values' }).click();
+  await expect(value).not.toHaveText(rounded!);
+  await expect(value).toHaveAttribute('data-exact');
+});
