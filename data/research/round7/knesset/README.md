@@ -1,0 +1,9 @@
+# Official formation and confidence records
+
+The retained 95-claim research packet covers 18 events: 88 explicit findings and seven unresolved individual-vote searches. `application-map.json` links every claim to the application record. The original final sitting records are under `data/raw/knesset-confidence/`, hashed in `data/raw/SOURCES.json`. Their scope is each cited proposition: a vote does not establish membership, outside support or intention.
+
+PDF locators give PDF and printed page; native OOXML locators count direct-body paragraphs. Four older OLE Word records (2006, 2009, 2013, 2015) use logical-text paragraphs, not printed pages or OOXML paragraphs. Their retained `*-units.json` preserves the exact logical text numbering. This locator limitation does not reduce the official record’s source tier. Claims and locator metadata preserve the original extraction parameters and hashes.
+
+The 1984 seven named votes remain unestablished after searching the final sitting record. The 2021 citizenship and 2022 Kahana votes are failed confidence-linked motions, never government falls. PDF/DOC representations of one sitting are one evidence family. Existing cross-vote and absence details not settled by this packet retain their earlier citations and certainty.
+
+To regenerate text locators, use Python 3.13.16 with `extraction-requirements.txt` and run `python3 data/research/round7/knesset/extract-records.py data/raw/knesset-confidence .backup-scratch/knesset-text`. The extractor reads magic bytes, extracts direct-body OOXML paragraphs, or decodes OLE Word CLX pieces (cp1255/UTF-16LE), retaining empty carriage-return units in one-based logical numbering. PDF text extraction is a navigation aid; the supplied claims identify visually checked decisive scanned pages. No OCR or embedded macro execution is involved.

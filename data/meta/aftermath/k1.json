@@ -19,7 +19,14 @@
       "url": "https://main.knesset.gov.il/mk/government/documents/gov1.pdf",
       "publisher": "Knesset, government 1 presentation (extract from plenum record)",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "b566cae5a36205d28fd6ed1348b1947160b1d56636dabda6a55bfe9820194d46",
+        "retrievedAt": "2026-11-16T16:47:49.723Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j10-01-gov1.pdf"
     },
     "plenum-gov2": {
       "url": "https://fs.knesset.gov.il/1/Plenum/1_ptm_250247.pdf",
@@ -31,7 +38,14 @@
       "url": "https://main.knesset.gov.il/mk/government/documents/gov2.pdf",
       "publisher": "Knesset, government 2 presentation (extract from plenum record)",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "260d8c97e68a0fd6956355b919310340ad8db8e674cd48e4209c627eee28ec5e",
+        "retrievedAt": "2026-11-16T17:08:18.894Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j15-01-gov2.pdf"
     },
     "recommendations-jta": {
       "url": "https://www.jta.org/archive/weizmann-summons-leaders-of-all-parties-in-assembly-to-consult-today-on-cabinet-make-up",
@@ -69,7 +83,14 @@
       "url": "https://main.knesset.gov.il/mk/government/documents/gov4.pdf",
       "publisher": "Knesset, sitting 155 of the Second Knesset, 22 December 1952 (retrospective account)",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "88d9d01f4a792a227f36ba93b4aa41ca2bc12fe7db05330d7309c10c54405c85",
+        "retrievedAt": "2026-11-16T17:08:38.993Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j18-01-gov4.pdf"
     },
     "mfa-history": {
       "url": "https://www.gov.il/BlobFolder/generalpage/facts-about-israel-history/en/English_SiteTransfer_DOCUMENTS_History2010.pdf",

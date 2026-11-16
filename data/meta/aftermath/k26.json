@@ -53,42 +53,84 @@
       "publisher": "President's Residence",
       "publisherHe": "בית הנשיא",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "9a05ea814e7ac41152edeb621265a86030ce36c52c1a3cb7318d8c6b0283aa35",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:08:18.443Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j235.html.gz"
     },
     "president-faction-1": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%94%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99%D7%9D-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98-%D7%9C/",
       "publisher": "President's Residence",
       "publisherHe": "בית הנשיא",
       "kind": "official",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "9e74fddbfc655a365488d7c90d8917d8f9ce8a90942ba39de3274d6ec1bf07c2",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:08:44.941Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j237.html.gz"
     },
     "president-faction-2": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%A8%D7%A2%D7%B4%D7%9E-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98-%D7%9C%D7%94%D7%A8%D7%9B%D7%91%D7%AA/",
       "publisher": "President's Residence",
       "publisherHe": "בית הנשיא",
       "kind": "official",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "965237a3beda409323a643ce402be880d19e272a82b6465e8c84d630cdf6bc5d",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:10:55.226Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j246.html.gz"
     },
     "president-faction-3": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%99%D7%94%D7%93%D7%95%D7%AA-%D7%94%D7%AA%D7%95%D7%A8%D7%94-%D7%94%D7%97%D7%9C%D7%99%D7%98%D7%94-%D7%A9%D7%9C%D7%90-%D7%9C%D7%94%D7%9E%D7%9C%D7%99%D7%A5-%D7%A2%D7%9C-%D7%90/",
       "publisher": "President's Residence",
       "publisherHe": "בית הנשיא",
       "kind": "official",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "b0c45d2bf4c5c73aa5c8093e41e617e9fcd089616ee063a09a2d9241980ed590",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:09:58.873Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j242.html.gz"
     },
     "president-faction-4": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%99%D7%AA%D7%A0%D7%95-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98/",
       "publisher": "President's Residence",
       "publisherHe": "בית הנשיא",
       "kind": "official",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "5810fe5e0bb6cc28c9518e9626b2922bbd20d8b4db378be58dd50752a82db659",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:10:13.216Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j243.html.gz"
     },
     "president-faction-5": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%A9%D7%B4%D7%A1-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%97%D7%B4%D7%9B-%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F-%D7%A0%D7%AA%D7%A0%D7%99%D7%94%D7%95-%D7%9C%D7%94/",
       "publisher": "President's Residence",
       "publisherHe": "בית הנשיא",
       "kind": "official",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "b46f9641d6c09cc0480fbd6d1098508f08d13ea99f53972954a395fbed5f7561",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:11:09.613Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j247.html.gz"
     },
     "maariv-consultations": {
       "url": "https://www.maariv.co.il/news/elections-2026/article-1384980",
@@ -102,14 +144,28 @@
       "publisher": "President's Residence",
       "publisherHe": "בית הנשיא",
       "kind": "official",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "55c05568d66055d5dd9db3d96955de3363f49e94f6bdf9c00151f494772ea4ee",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:11:23.992Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j248.html.gz"
     },
     "president-likud": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%97%D7%B4%D7%9B-%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F-%D7%A0%D7%AA%D7%A0%D7%99%D7%94/",
       "publisher": "President's Residence",
       "publisherHe": "בית הנשיא",
       "kind": "official",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "b6f0c5c5bfe713b19b73fb5c4111b59f1b028bab86e4bdde6fb9f0497c97658e",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:08:57.631Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j238.html.gz"
     },
     "cec-plenary-approval": {
       "url": "https://www.israelhayom.co.il/news/law/article/21776989",
@@ -123,56 +179,112 @@
       "publisher": "President's Residence",
       "publisherHe": "בית הנשיא",
       "kind": "official",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "acfdc9648551eb1b9fc95a53879c6be6a6e3ed33ec095f8cd45dd2c0ef5e8243",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:10:41.037Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j245.html.gz"
     },
     "president-joint-list": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94-%D7%94%D7%9E%D7%A9%D7%95%D7%AA%D7%A4%D7%AA-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0/",
       "publisher": "President's Residence",
       "publisherHe": "בית הנשיא",
       "kind": "official",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "675782eab4d247d288c6baccebae9ff6e7b82aaa9608fc83b342a2c4ef05c334",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:09:27.844Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j240.html.gz"
     },
     "president-religious-zionism": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%94%D7%A6%D7%99%D7%95%D7%A0%D7%95%D7%AA-%D7%94%D7%93%D7%AA%D7%99%D7%AA-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%97%D7%B4%D7%9B-%D7%91%D7%A0%D7%99%D7%9E%D7%99/",
       "publisher": "President's Residence",
       "publisherHe": "בית הנשיא",
       "kind": "official",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "e4e5c9169b0ba54630fb32dccb352f64834d6f35cbf363161b77e09f49d06024",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:09:10.245Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j239.html.gz"
     },
     "president-summary": {
       "url": "https://www.president.gov.il/%D7%A0%D7%A9%D7%99%D7%90-%D7%94%D7%9E%D7%93%D7%99%D7%A0%D7%94-%D7%A1%D7%99%D7%99%D7%9D-%D7%90%D7%AA-%D7%A1%D7%91%D7%91-%D7%94%D7%94%D7%AA%D7%99%D7%99%D7%A2%D7%A6%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%94/",
       "publisher": "President's Residence",
       "publisherHe": "בית הנשיא",
       "kind": "official",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "877544ee18def87f49c0bd5522fad21a9a0c710d88f196119ed5a00e96052e93",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T16:55:33.591Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j234.html.gz"
     },
     "president-tasking": {
       "url": "https://www.president.gov.il/%D7%A0%D7%A9%D7%99%D7%90-%D7%94%D7%9E%D7%93%D7%99%D7%A0%D7%94-%D7%94%D7%98%D7%99%D7%9C-%D7%90%D7%AA-%D7%9E%D7%9C%D7%90%D7%9B%D7%AA-%D7%94%D7%A8%D7%9B%D7%91%D7%AA-%D7%94%D7%9E%D7%9E%D7%A9%D7%9C%D7%94/",
       "publisher": "President's Residence",
       "publisherHe": "בית הנשיא",
       "kind": "official",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "787291ea01b0e4dff08aaa1471e93a3355242e2b90247600fe2fc3f8b79b158f",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T16:51:57.547Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j233.html.gz"
     },
     "president-together": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%91%D7%99%D7%97%D7%93-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98-%D7%9C%D7%94%D7%A8%D7%9B%D7%91%D7%AA/",
       "publisher": "President's Residence",
       "publisherHe": "בית הנשיא",
       "kind": "official",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "3f03ca90a244681e8807d10d27dccdadf888f8c6368370cece13860902bd8a3a",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:08:31.650Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j236.html.gz"
     },
     "president-yashar": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%99%D7%A9%D7%A8-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98-%D7%9C%D7%94%D7%A8%D7%9B%D7%91%D7%AA-%D7%94/",
       "publisher": "President's Residence",
       "publisherHe": "בית הנשיא",
       "kind": "official",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "34298da10523ec443298c500e4c3081a37f27b69fc2e4829f2c76e89e8ebcbcc",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:10:27.411Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j244.html.gz"
     },
     "president-zehut": {
       "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%96%D7%94%D7%95%D7%AA-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%97%D7%B4%D7%9B-%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F-%D7%A0%D7%AA%D7%A0%D7%99%D7%94%D7%95-%D7%9C/",
       "publisher": "President's Residence",
       "publisherHe": "בית הנשיא",
       "kind": "official",
-      "accessed": "2026-11-09"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "4408d98c199442a3973b18da96b82d18167942bf841707e1b89e06eca0ef93c7",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:09:43.905Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j241.html.gz"
     }
   },
   "results": {

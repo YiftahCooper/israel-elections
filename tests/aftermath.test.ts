@@ -86,7 +86,7 @@ describe('After the election: rules over all records', () => {
     expect(validTally({ for: 69, against: 45, abstained: 5 })).toBe(false);
     expect(validTally({ for: 69, against: 45, abstain: 5 })).toBe(true);
     expect(validTally({ for: 68, against: 48, absent: 4 })).toBe(true);
-    expect(aftermathRecords.k18!.government!.confidenceVote).toEqual({ for: 69, against: 45, abstain: 5 });
+    expect(aftermathRecords.k18!.government!.confidenceVote).toEqual({ for: 69, against: 45, abstain: 0 });
   });
   it('c-aftermath-11: no party or faction name on the screen is a letter-by-letter transliteration, in either language', () => {
     let rows = 0;

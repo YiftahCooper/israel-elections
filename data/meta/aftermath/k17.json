@@ -112,7 +112,14 @@
       "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/law/BasicLawGovt.html",
       "publisher": "ועדת הבחירות המרכזית — חוק יסוד: הממשלה, סעיפים 9–11",
       "kind": "official",
-      "accessed": "2026-11-06"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "18304e194b75a94e7e48db8356b3323edc642c2ee52b1168f8ad1e1e35518961",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:45:06.989Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j225.html.gz"
     },
     "idi-end-term": {
       "url": "https://www.idi.org.il/parliaments/3467/8203",
@@ -147,6 +154,16 @@
       "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
       "kind": "official",
       "accessed": "2026-11-07"
+    },
+    "plenum-129769": {
+      "url": "https://fs.knesset.gov.il//17/Plenum/17_ptm_129769.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 4 May 2006",
+      "publisherHe": "הכנסת, דברי הכנסת, 4 במאי 2006",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "Knesset-sitting-131247",
+      "via": "Legacy Word logical paragraph 4974 (not a printed page or OOXML paragraph)"
     }
   },
   "results": {
@@ -315,6 +332,21 @@
           {
             "source": "wp2006-confidence",
             "quote": "a vote of 65 to 49"
+          },
+          {
+            "source": "plenum-129769",
+            "quote": "בעד אישור הודעת ראש הממשלה - 65, נגד - 49.",
+            "locator": "paragraph beginning «חברי חברי הכנסת, בעד אישור»"
+          },
+          {
+            "source": "plenum-129769",
+            "quote": "אני קובעת שהכנסת אישרה את הודעת ראש הממשלה.",
+            "locator": "paragraph beginning «חברי חברי הכנסת, בעד אישור»"
+          },
+          {
+            "source": "plenum-129769",
+            "quote": "אבקש להביע אמון בממשלה זו.",
+            "locator": "paragraph beginning «גברתי היושבת-ראש, אנחנו»"
           }
         ],
         "votes": {
@@ -640,6 +672,11 @@
       {
         "source": "vote2006",
         "quote": "ברוב של 65 ח״כים מול 49 נגד ו-4 נעדרים אישרה אמש (יום ה׳) הכנסת את הממשלה ה-31"
+      },
+      {
+        "source": "plenum-129769",
+        "quote": "בעד אישור הודעת ראש הממשלה - 65, נגד - 49.",
+        "locator": "paragraph beginning «חברי חברי הכנסת, בעד אישור»"
       }
     ],
     "membershipCoverage": "complete",

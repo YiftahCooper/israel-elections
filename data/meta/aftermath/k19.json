@@ -131,6 +131,16 @@
       "kind": "official",
       "accessed": "2026-11-12",
       "via": "The service returns 100 rows per page (odata.nextLink continues); every row quoted here is on the first page."
+    },
+    "plenum-226257": {
+      "url": "https://fs.knesset.gov.il//19/Plenum/19_ptm_226257.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 18 March 2013",
+      "publisherHe": "הכנסת, דברי הכנסת, 18 במרץ 2013",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "Knesset-sitting-479917",
+      "via": "Legacy Word logical paragraph 3506 (not a printed page or OOXML paragraph)"
     }
   },
   "results": {
@@ -328,6 +338,21 @@
           {
             "source": "ynet-investiture",
             "quote": "ברוב של 68 תומכים מול 48 מתנגדים וארבעה חברי כנסת שנעדרו"
+          },
+          {
+            "source": "plenum-226257",
+            "quote": "בעד הודעת ראש הממשלה – 68, נגד – 48.",
+            "locator": "paragraph beginning «התוצאות: בעד הודעת ראש»"
+          },
+          {
+            "source": "plenum-226257",
+            "quote": "אני קובע כי הודעת ראש הממשלה, חבר הכנסת בנימין נתניהו, התקבלה על-ידי הכנסת.",
+            "locator": "paragraph beginning «התוצאות: בעד הודעת ראש»"
+          },
+          {
+            "source": "plenum-226257",
+            "quote": "נעבור להצבעה שמית על הודעת ראש הממשלה על קווי היסוד של ממשלתו, הרכבה ותחומי הפעילות של השרים.",
+            "locator": "paragraph beginning «חברי הכנסת, כנדרש, על-פי»"
           }
         ]
       }
@@ -549,6 +574,11 @@
       {
         "source": "ynet-investiture",
         "quote": "ברוב של 68 תומכים מול 48 מתנגדים וארבעה חברי כנסת שנעדרו"
+      },
+      {
+        "source": "plenum-226257",
+        "quote": "בעד הודעת ראש הממשלה – 68, נגד – 48.",
+        "locator": "paragraph beginning «התוצאות: בעד הודעת ראש»"
       }
     ],
     "membershipCoverage": "complete",

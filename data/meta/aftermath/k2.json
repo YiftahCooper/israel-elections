@@ -22,7 +22,14 @@
       "url": "https://main.knesset.gov.il/mk/government/documents/gov3.pdf",
       "publisher": "Knesset, government 3 presentation (extract from plenum record)",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "9fb760bbef586cb7135d12f340f71fa1a73905d1e086e41aea9414568fa7f994",
+        "retrievedAt": "2026-11-16T17:08:32.047Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j17-01-gov3.pdf"
     },
     "plenum-gov4": {
       "url": "https://fs.knesset.gov.il/2/Plenum/2_ptm_250692.pdf",
@@ -34,7 +41,14 @@
       "url": "https://main.knesset.gov.il/mk/government/documents/gov4.pdf",
       "publisher": "Knesset, government 4 presentation (extract from plenum record)",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "88d9d01f4a792a227f36ba93b4aa41ca2bc12fe7db05330d7309c10c54405c85",
+        "retrievedAt": "2026-11-16T17:08:38.993Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j18-01-gov4.pdf"
     },
     "plenum-gov5": {
       "url": "https://fs.knesset.gov.il/2/Plenum/2_ptm_250781.pdf",
@@ -46,7 +60,14 @@
       "url": "https://main.knesset.gov.il/mk/government/documents/gov5.pdf",
       "publisher": "Knesset, government 5 presentation (extract from plenum record)",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "e8b971be85efcd89233a30ca594b9d9e47409793fc2fde9f764b547002a07165",
+        "retrievedAt": "2026-11-16T17:08:45.345Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j19-01-gov5.pdf"
     },
     "plenum-gov6": {
       "url": "https://fs.knesset.gov.il/2/Plenum/2_ptm_250532.pdf",
@@ -58,7 +79,14 @@
       "url": "https://main.knesset.gov.il/mk/government/documents/gov6.pdf",
       "publisher": "Knesset, government 6 presentation (extract from plenum record)",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "bfc36a791c8ed9fdd7b3adea4acc0e4e4018c08fc2b0c807cf5e977ac27949f2",
+        "retrievedAt": "2026-11-16T17:08:51.817Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j20-01-gov6.pdf"
     },
     "recommendations-jta": {
       "url": "https://www.jta.org/archive/weizmann-continues-consultations-with-party-leaders-on-composition-of-government",
@@ -103,8 +131,15 @@
       "url": "https://www.gov.il/en/pages/timeline-of-events-half-a-century-of-independence",
       "publisher": "Israel Ministry of Foreign Affairs, Timeline of Events: Half a Century of Independence, 1948–1998",
       "kind": "official",
-      "accessed": "2026-11-05",
-      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
+      "accessed": "2026-11-16",
+      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "4d0226ade1392c9b098301ea198a02317f070a2d1cf0c5564599e3df1b6c0310",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:46:26.384Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j230.html.gz"
     },
     "un-scorpion-pass-1954": {
       "url": "https://digitallibrary.un.org/record/603141/files/S_3252-EN.pdf",
@@ -148,6 +183,26 @@
       "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
       "kind": "official",
       "accessed": "2026-11-07"
+    },
+    "plenum-250692": {
+      "url": "https://fs.knesset.gov.il//2/Plenum/2_ptm_250692.pdf",
+      "publisher": "Knesset, Divrei HaKnesset, 23 December 1952",
+      "publisherHe": "הכנסת, דברי הכנסת, 23 בדצמבר 1952",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "Knesset-sitting-489709",
+      "via": "PDF p. 8, printed p. 332"
+    },
+    "plenum-250350": {
+      "url": "https://fs.knesset.gov.il//2/Plenum/2_ptm_250350.pdf",
+      "publisher": "Knesset, Divrei HaKnesset, 24 December 1952",
+      "publisherHe": "הכנסת, דברי הכנסת, 24 בדצמבר 1952",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "Knesset-sitting-437733",
+      "via": "PDF p. 1, printed p. 334"
     }
   },
   "results": {
@@ -343,6 +398,26 @@
           {
             "source": "plenum-gov4",
             "quote": "הצבעה ■ בעד הצעת סיעות הקואליציה לאשר את קתיהיסוד של הממשלה ולהביע לה 63 קולות אמון 24 קולות נגד הגעת סיעות הקואליציה נתקבלה. שפרינצק: היו\"ר י. על ב63 קולות נגד 24 הובע אמון לממשלה שהוצגה ידי ראשהממשלה דוד בןגוריון ואושרו קוויהיסוד של תכ ניתה. הוקמה ממשלת ישראל חדשה. הרא הנני לברך את הממשלה החדשה והישגי. החשוב"
+          },
+          {
+            "source": "plenum-250692",
+            "quote": "ב־63 קולות נגד 24 הובע אמון לממשלה",
+            "locator": "p. 333"
+          },
+          {
+            "source": "plenum-250692",
+            "quote": "הוקמה ממשלת ישראל חדשה",
+            "locator": "p. 333"
+          },
+          {
+            "source": "plenum-250692",
+            "quote": "הכנסת מאשרת את קווי־היסוד",
+            "locator": "p. 332"
+          },
+          {
+            "source": "plenum-250350",
+            "quote": "הצהרת אמונים של חברי הממשלה",
+            "locator": "p. 334"
           }
         ],
         "votes": {
@@ -421,7 +496,30 @@
             "source": "oath-gov4"
           }
         ],
-        "resolution": "Both dates describe separate procedural steps; the change entry uses the conventional government start (declarations), while formation records the confidence vote."
+        "resolution": "The Knesset record has the confidence vote on 23 December and the ministers’ declarations at the next sitting, on 24 December. They are two separate steps; the government’s usual start date is unchanged.",
+        "status": "resolved",
+        "cites": [
+          {
+            "source": "plenum-250692",
+            "quote": "ב־63 קולות נגד 24 הובע אמון לממשלה",
+            "locator": "p. 333"
+          },
+          {
+            "source": "plenum-250692",
+            "quote": "הוקמה ממשלת ישראל חדשה",
+            "locator": "p. 333"
+          },
+          {
+            "source": "plenum-250692",
+            "quote": "הכנסת מאשרת את קווי־היסוד",
+            "locator": "p. 332"
+          },
+          {
+            "source": "plenum-250350",
+            "quote": "הצהרת אמונים של חברי הממשלה",
+            "locator": "p. 334"
+          }
+        ]
       }
     ],
     "people": {
@@ -674,6 +772,11 @@
           {
             "source": "plenum-gov4",
             "quote": "הצבעה ■ בעד הצעת סיעות הקואליציה לאשר את קתיהיסוד של הממשלה ולהביע לה 63 קולות אמון 24 קולות נגד הגעת סיעות הקואליציה נתקבלה. שפרינצק: היו\"ר י. על ב63 קולות נגד 24 הובע אמון לממשלה שהוצגה ידי ראשהממשלה דוד בןגוריון ואושרו קוויהיסוד של תכ ניתה. הוקמה ממשלת ישראל חדשה. הרא הנני לברך את הממשלה החדשה והישגי. החשוב"
+          },
+          {
+            "source": "plenum-250692",
+            "quote": "ב־63 קולות נגד 24 הובע אמון לממשלה",
+            "locator": "p. 333"
           }
         ],
         "membershipCoverage": "partial",

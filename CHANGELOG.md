@@ -2,6 +2,8 @@
 
 ## 16 November 2026
 
+- Checked formation and confidence votes against the official Knesset sitting records: corrected the 2009 abstentions, recorded the chair’s corrections and named votes, and kept unresolved individual votes separate from coalition roles.
+
 - Government 36 counts 61 coalition members, excluding Chikli; Eichler’s January 2026 appointment has its own timeline event, Rabin and Zeevi have sourced death reasons, and rotation agreements retain planned and actual handovers separately.
 - Linked sourced returning lists and the 1973 Black Panthers, added Haim Amsalem’s 2019 run, checked six party registrations, and standardised sourced display spellings and the final-notice Horowitz spelling.
 - Levels, Settings and the top bar (16 Nov): a level change keeps your own choices (the Custom level is gone; a “+N own” chip lists them in Settings, each with its undo); tools of other levels are greyed out and ask “Switch to Expert” or “Add to Simple”; Settings has a row for every tool and detail under its level, and a Colours section; a Reset sits beside every changed colour; on a phone the three lines open the tools and view and the scenario button opens the scenario; screens under 800 px high pin only the top bar, with the tools in a side panel.

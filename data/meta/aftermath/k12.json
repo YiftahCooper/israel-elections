@@ -178,6 +178,36 @@
       "publisher": "JTA, Shamir, Given Turn to Form Coalition, Says He Would Not Accept Baker Plan",
       "kind": "archival",
       "accessed": "2026-11-13"
+    },
+    "plenum-531200": {
+      "url": "https://fs.knesset.gov.il//12/Plenum/12_ptm_531200.PDF",
+      "publisher": "Knesset, Divrei HaKnesset, 22 December 1988",
+      "publisherHe": "הכנסת, דברי הכנסת, 22 בדצמבר 1988",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "Knesset-sitting-437018",
+      "via": "PDF p. 40, printed p. 249"
+    },
+    "plenum-531505": {
+      "url": "https://fs.knesset.gov.il//12/Plenum/12_ptm_531505.PDF",
+      "publisher": "Knesset, Divrei HaKnesset, 15 March 1990",
+      "publisherHe": "הכנסת, דברי הכנסת, 15 במרץ 1990",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "Knesset-sitting-437111",
+      "via": "PDF p. 61, printed p. 2817"
+    },
+    "plenum-531546": {
+      "url": "https://fs.knesset.gov.il//12/Plenum/12_ptm_531546.PDF",
+      "publisher": "Knesset, Divrei HaKnesset, 11 June 1990",
+      "publisherHe": "הכנסת, דברי הכנסת, 11 ביוני 1990",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "Knesset-sitting-437127",
+      "via": "PDF p. 48, printed p. 3882"
     }
   },
   "results": {
@@ -412,11 +442,27 @@
           {
             "source": "jta1988vote",
             "quote": "The lopsided 84-19 vote of confidence"
+          },
+          {
+            "source": "plenum-531200",
+            "quote": "ברוב של 84 בעד, 19 נגד ו־3 נמנעים",
+            "locator": "p. 249"
+          },
+          {
+            "source": "plenum-531200",
+            "quote": "נתקבלה הודעתו של חבר הכנסת יצחק שמיר על הרכבת הממשלה החדשה",
+            "locator": "p. 249"
+          },
+          {
+            "source": "plenum-531200",
+            "quote": "מי בעד הודעתו של חבר הכנסת יצחק שמיר",
+            "locator": "p. 249"
           }
         ],
         "votes": {
           "for": 84,
-          "against": 19
+          "against": 19,
+          "abstain": 3
         }
       },
       {
@@ -464,11 +510,32 @@
           {
             "source": "jta1990vote",
             "quote": "late Monday by a vote of 62-57"
+          },
+          {
+            "source": "plenum-531546",
+            "quote": "כינון הממשלה והרכבה בקולות של 62 בעד, 57 נגד, ונמנע אחד",
+            "locator": "p. 3882"
+          },
+          {
+            "source": "plenum-531546",
+            "quote": "הכנסת אישרה את הודעת ראש הממשלה",
+            "locator": "p. 3882"
+          },
+          {
+            "source": "plenum-531546",
+            "quote": "אברהם ורדיגר — נמנע",
+            "locator": "p. 3881"
+          },
+          {
+            "source": "plenum-531546",
+            "quote": "אליעזר מזרחי — בעד",
+            "locator": "p. 3882"
           }
         ],
         "votes": {
           "for": 62,
-          "against": 57
+          "against": 57,
+          "abstain": 1
         },
         "scope": "mid-term",
         "governmentNumber": 24
@@ -758,6 +825,21 @@
           {
             "source": "jta1990fall",
             "quote": "Shamir remains at the helm of a Likud-led caretaker government"
+          },
+          {
+            "source": "plenum-531505",
+            "quote": "להלן התוצאות: 60 בעד, 55 נגד",
+            "locator": "p. 2817"
+          },
+          {
+            "source": "plenum-531505",
+            "quote": "הצעת סיעת המערך להביע אי־אמון לממשלה",
+            "locator": "p. 2817"
+          },
+          {
+            "source": "plenum-531505",
+            "quote": "בשל הפגיעה באחדות הלאומית ואי־אמון בראש הממשלה",
+            "locator": "p. 2817"
           }
         ],
         "votes": {
@@ -858,12 +940,18 @@
         "roleGap": "Only positively identified cabinet factions are recorded here. Factions without ministers, individual crossings, effective faction sizes and the complete roll call still need the investiture record and deposited agreements. An empty or incomplete row set is not zero support.",
         "confidenceVote": {
           "for": 62,
-          "against": 57
+          "against": 57,
+          "abstain": 1
         },
         "confidenceVoteCites": [
           {
             "source": "jta1990vote",
             "quote": "late Monday by a vote of 62-57"
+          },
+          {
+            "source": "plenum-531546",
+            "quote": "כינון הממשלה והרכבה בקולות של 62 בעד, 57 נגד, ונמנע אחד",
+            "locator": "p. 3882"
           }
         ],
         "coalitionSeats": null,
@@ -871,7 +959,7 @@
         "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
         "reconciliation": {
           "status": "unresolved",
-          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 0; full membership remains unknown. Investiture: 62 for, 57 against, not recorded abstaining."
+          "note": "Coalition membership is still unknown, so the members cannot be matched to the vote: 62 for, 57 against, one abstaining."
         },
         "individuals": [
           {
@@ -887,9 +975,14 @@
               {
                 "source": "jta1990vote",
                 "quote": "A fifth Agudah member, Eliezer Mizrachi, supported the government in a separate deal concluded several weeks ago."
+              },
+              {
+                "source": "plenum-531546",
+                "quote": "אליעזר מזרחי — בעד",
+                "locator": "p. 3882"
               }
             ],
-            "note": "Separate personal support deal reported; Aguda as a faction is not counted as joining. Original agreement and whether it formally admitted Mizrachi individually remain unrecovered."
+            "note": "A separate personal support deal was reported; Agudat Yisrael as a party is not counted as joining. The agreement itself has not been found, nor whether it made Mizrachi a coalition member. The Knesset record confirms he voted for."
           },
           {
             "id": "avraham-verdiger",
@@ -904,9 +997,14 @@
               {
                 "source": "jta1990vote",
                 "quote": "Avraham Verdiger of the Agudat Yisrael party abstained from voting"
+              },
+              {
+                "source": "plenum-531546",
+                "quote": "אברהם ורדיגר — נמנע",
+                "locator": "p. 3881"
               }
             ],
-            "note": "Individual abstention established; no supporting arrangement inferred. Provisional under the source policy: one contemporary JTA report; the 1990 plenum roll call is the deciding record."
+            "note": "The Knesset record confirms he abstained. No arrangement with the government is assumed from this."
           }
         ],
         "knownMemberSeats": 0
@@ -914,19 +1012,25 @@
     ],
     "confidenceVote": {
       "for": 84,
-      "against": 19
+      "against": 19,
+      "abstain": 3
     },
     "confidenceVoteCites": [
       {
         "source": "jta1988vote",
         "quote": "The lopsided 84-19 vote of confidence"
+      },
+      {
+        "source": "plenum-531200",
+        "quote": "ברוב של 84 בעד, 19 נגד ו־3 נמנעים",
+        "locator": "p. 249"
       }
     ],
     "membershipCoverage": "partial",
     "supportSeats": null,
     "reconciliation": {
       "status": "unresolved",
-      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 95 (Agudat Yisrael’s 5 provisional); whether any other faction was a member is not established. Investiture: 84 for, 19 against, not recorded abstaining."
+      "note": "Coalition members known so far hold 95 seats (Agudat Yisrael’s five are provisional); whether any other party joined is unknown. The vote was taken a second time and counted: 84 for, 19 against, three abstaining. Without each MK’s vote, the 95 seats cannot be matched to the 84 votes for."
     },
     "knownMemberSeats": 95
   },

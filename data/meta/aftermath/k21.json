@@ -48,7 +48,14 @@
       "url": "https://main.knesset.gov.il/EN/activity/Documents/BasicLawsPDF/BasicLawTheGovernment.pdf",
       "publisher": "Knesset, Basic Law: The Government, section 12",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "213362a4c24d15f47a25989dab2eaedbb250df062daad69bd5981befe766389f",
+        "retrievedAt": "2026-11-16T16:46:33.726Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j6-01-BasicLawTheGovernment.pdf"
     },
     "sipri-2019": {
       "url": "https://www.sipri.org/sites/default/files/SIPRIYB20cC.pdf",

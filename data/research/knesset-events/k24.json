@@ -2030,10 +2030,21 @@
           "inspection": "opened",
           "locator": "Body identifies Alkharumi and Ghanaim as abstainers; Abbas and Taha supported.",
           "supportingNote": "Body identifies Alkharumi and Ghanaim as abstainers; Abbas and Taha supported."
+        },
+        {
+          "url": "https://fs.knesset.gov.il//24/Plenum/24_ptm_603539.doc",
+          "publisher": "Knesset, Divrei HaKnesset, 5 July 2021",
+          "date": "2021-07-05",
+          "accessed": "2026-11-16",
+          "type": "official",
+          "evidenceFamily": "Knesset-sitting-2159730",
+          "inspection": "retained-record",
+          "locator": "paragraph beginning «תודה רבה. אם לא יהיה שקט»",
+          "supportingNote": "Tally 59 for, 59 against; the motion failed. The vote on the order was declared a confidence vote."
         }
       ],
       "certainty": "provisional",
-      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "evidenceClass": "Official tally and confidence-linked motion; press sources retain named-vote detail",
       "classificationBasis": "The brief includes explicit confidence votes even when attached to another parliamentary question.",
       "vote": {
         "for": 59,
@@ -2053,7 +2064,7 @@
             "vote": "abstain"
           }
         ],
-        "notes": "Ynet identifies both Ra’am abstainers; Chikli was already outside continuing government support."
+        "notes": "Official record confirms the tally, motion and rejection only; existing press citations support cross-votes and any additional abstention detail. Failed motion did not bring down the government."
       },
       "timelineViews": [
         "specific-vote"
@@ -2065,7 +2076,8 @@
       "markerPersonIds": [
         30548,
         30803
-      ]
+      ],
+      "note": "Provisional for the combined event: named cross-votes remain supported by press reports; the official record confirms only the separately cited tally and motion."
     },
     {
       "id": "k24-norwegian-2021-07-09-967",
@@ -3956,10 +3968,21 @@
           "evidenceFamily": "times-of-israel",
           "locator": "Opening: early Tuesday vote, 55–55, Silman opposed; designated confidence vote; failed motion did not itself replace government.",
           "supportingNote": "Opening: early Tuesday vote, 55–55, Silman opposed; designated confidence vote; failed motion did not itself replace government."
+        },
+        {
+          "url": "https://fs.knesset.gov.il//24/Plenum/24_ptm_626508.doc",
+          "publisher": "Knesset, Divrei HaKnesset, 6 June 2022",
+          "date": "2022-06-06",
+          "accessed": "2026-11-16",
+          "type": "official",
+          "evidenceFamily": "Knesset-sitting-2192748",
+          "inspection": "retained-record",
+          "locator": "paragraph beginning «חברי הכנסת, אם כך, להלן»",
+          "supportingNote": "Tally 55 for, 55 against, none abstaining; the motion failed. The prime minister asked for it to be treated as a confidence vote."
         }
       ],
       "certainty": "provisional",
-      "evidenceClass": "Recorded vote (press report; roll call outstanding)",
+      "evidenceClass": "Official tally and confidence-linked motion; press sources retain named-vote detail",
       "classificationBasis": "The brief includes explicit confidence votes even when attached to another parliamentary question.",
       "vote": {
         "for": 55,
@@ -3969,7 +3992,9 @@
             "personId": 30718,
             "vote": "against"
           }
-        ]
+        ],
+        "notes": "Official record confirms the tally, motion and rejection only; existing press citations support cross-votes and any additional abstention detail. Failed motion did not bring down the government.",
+        "abstain": 0
       },
       "timelineViews": [
         "specific-vote"
@@ -3979,7 +4004,8 @@
       "marker": null,
       "importance": "standard",
       "importanceReason": "A budget or designated confidence decision is a significant parliamentary survival test, but does not by itself change continuing coalition membership.",
-      "markerReason": "Silman had already left on 6 April; her opposition is not a new D3 dissent by a continuing coalition MK."
+      "markerReason": "Silman had already left on 6 April; her opposition is not a new D3 dissent by a continuing coalition MK.",
+      "note": "Provisional for the combined event: named cross-votes remain supported by press reports; the official record confirms only the separately cited tally and motion."
     },
     {
       "id": "k24-orbach-exit",

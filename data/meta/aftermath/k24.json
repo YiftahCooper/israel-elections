@@ -35,7 +35,14 @@
       "publisher": "Prime Minister's Office (gov.il)",
       "publisherHe": "משרד ראש הממשלה",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "34175c02fc2f6182cb74ea79527bf6a1eeca3342dc69f54798c545bf57e74620",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:46:52.797Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j232.html.gz"
     },
     "loc-glm-2022-07-06": {
       "url": "https://www.loc.gov/item/global-legal-monitor/2022-07-06/israel-parliament-dissolves-itself-approves-national-election-and-financing-adjustments/",
@@ -243,6 +250,16 @@
       "kind": "official",
       "accessed": "2026-11-16",
       "via": "Retained reviewed event extraction: k24-chikli-opposition-established, section 39, page 24; fresh retrieval refused (403)."
+    },
+    "plenum-601944": {
+      "url": "https://fs.knesset.gov.il//24/Plenum/24_ptm_601944.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 13 June 2021",
+      "publisherHe": "הכנסת, דברי הכנסת, 13 ביוני 2021",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "Knesset-sitting-2159171",
+      "via": "OOXML paragraph 5896"
     }
   },
   "results": {
@@ -634,6 +651,33 @@
           {
             "source": "n12-2021-06-13",
             "quote": "ח\"כ עמיחי שיקלי מימינה הצביע נגד, וח\"כ סעיד אלחרומי מרע\"ם החליט ברגע האחרון להימנע"
+          },
+          {
+            "source": "plenum-601944",
+            "quote": "60 בעד, 59 נגד",
+            "locator": "paragraph beginning «תוצאות ההצבעה על ממשלת»"
+          },
+          {
+            "source": "plenum-601944",
+            "quote": "אחד נמנע.",
+            "locator": "paragraph beginning «תוצאות ההצבעה על ממשלת»"
+          },
+          {
+            "source": "plenum-601944",
+            "quote": "אני קובע כי הכנסת הביעה אמון בממשלת החילופים.",
+            "locator": "paragraph beginning «תוצאות ההצבעה על ממשלת»"
+          },
+          {
+            "source": "plenum-601944",
+            "quote": "הגישו לנו 20 חתימות כדי לגשת להצבעה שמית על ממשלה חלופית."
+          },
+          {
+            "source": "plenum-601944",
+            "quote": "עמיחי שיקלי–   נגד"
+          },
+          {
+            "source": "plenum-601944",
+            "quote": "סעיד אלחרומי–   נמנע"
           }
         ]
       }
@@ -835,6 +879,16 @@
       {
         "source": "n12-2021-06-13",
         "quote": "ח\"כ עמיחי שיקלי מימינה הצביע נגד, וח\"כ סעיד אלחרומי מרע\"ם החליט ברגע האחרון להימנע"
+      },
+      {
+        "source": "plenum-601944",
+        "quote": "60 בעד, 59 נגד",
+        "locator": "paragraph beginning «תוצאות ההצבעה על ממשלת»"
+      },
+      {
+        "source": "plenum-601944",
+        "quote": "אחד נמנע.",
+        "locator": "paragraph beginning «תוצאות ההצבעה על ממשלת»"
       }
     ],
     "membershipCoverage": "complete",
@@ -864,9 +918,13 @@
             "source": "cec-chikli-2022",
             "quote": "62 → 61",
             "note": "Project extraction of the retained reviewed section 39/p.24 locator; nominal 62 reduced by Chikli opposition. Original PDF could not be reopened this round. Not a verbatim quotation."
+          },
+          {
+            "source": "plenum-601944",
+            "quote": "עמיחי שיקלי–   נגד"
           }
         ],
-        "note": "Opposed this government from formation on 13 June 2021; not a coalition member or minister. Excluded from the six Yamina seats above. The House Committee declaration of 25 April 2022 concerns legal faction status, not the start of his opposition; Knesset membership ended 14 July 2022."
+        "note": "Opposed this government from formation on 13 June 2021; not a coalition member or minister. Excluded from the six Yamina seats above. The House Committee declaration of 25 April 2022 concerns legal faction status, not the start of his opposition; Knesset membership ended 14 July 2022. The Knesset record confirms he voted against."
       },
       {
         "id": "saeed-alkharumi",
@@ -881,9 +939,13 @@
           {
             "source": "n12-2021-06-13",
             "quote": "ח\"כ עמיחי שיקלי מימינה הצביע נגד, וח\"כ סעיד אלחרומי מרע\"ם החליט ברגע האחרון להימנע"
+          },
+          {
+            "source": "plenum-601944",
+            "quote": "סעיד אלחרומי–   נמנע"
           }
         ],
-        "note": "An individual abstention is established; no prearranged abstention is inferred. Provisional under the source policy: one contemporary N12 roll-call report; the Knesset plenum vote record is the deciding record."
+        "note": "The Knesset roll call confirms he abstained when his name was called the second time (he was not present at the first call). No prior arrangement is assumed."
       }
     ],
     "knownMemberSeats": 61

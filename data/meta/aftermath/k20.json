@@ -125,6 +125,16 @@
       "publisher": "JTA, Israel passes controversial law that cements it as country for Jews",
       "kind": "archival",
       "accessed": "2026-11-13"
+    },
+    "plenum-307157": {
+      "url": "https://fs.knesset.gov.il//20/Plenum/20_ptm_307157.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 14 May 2015",
+      "publisherHe": "הכנסת, דברי הכנסת, 14 במאי 2015",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "Knesset-sitting-564427",
+      "via": "Legacy Word logical paragraph 1743 (not a printed page or OOXML paragraph)"
     }
   },
   "results": {
@@ -304,6 +314,20 @@
           {
             "source": "eprs-investiture",
             "quote": "The Israeli Parliament (Knesset) voted on Thursday 14 May 2015 61-59 in favour of Prime Minister Benjamin Netanyahu's cabinet"
+          },
+          {
+            "source": "plenum-307157",
+            "quote": "בעד – 61 קולות, נגד – 59 קולות.",
+            "locator": "paragraph beginning «חברי הכנסת, התוצאה: בעד – 61»"
+          },
+          {
+            "source": "plenum-307157",
+            "quote": "אני קובע כי הממשלה זכתה באמון הכנסת.",
+            "locator": "paragraph beginning «חברי הכנסת, התוצאה: בעד – 61»"
+          },
+          {
+            "source": "plenum-307157",
+            "quote": "מי שמצביע בעד מביע אמון בממשלה;"
           }
         ]
       }
@@ -321,7 +345,24 @@
             "source": "eprs-investiture"
           }
         ],
-        "resolution": "Use 61–59, consistent with the 120-seat chamber and independent contemporaneous reports. Preserve the Knesset wording as a source error; plenum protocol remains the target."
+        "resolution": "The Knesset record gives 61 for and 59 against. It takes precedence over the Knesset News item’s 69–59; both earlier versions stay listed here.",
+        "status": "resolved",
+        "cites": [
+          {
+            "source": "plenum-307157",
+            "quote": "בעד – 61 קולות, נגד – 59 קולות.",
+            "locator": "paragraph beginning «חברי הכנסת, התוצאה: בעד – 61»"
+          },
+          {
+            "source": "plenum-307157",
+            "quote": "אני קובע כי הממשלה זכתה באמון הכנסת.",
+            "locator": "paragraph beginning «חברי הכנסת, התוצאה: בעד – 61»"
+          },
+          {
+            "source": "plenum-307157",
+            "quote": "מי שמצביע בעד מביע אמון בממשלה;"
+          }
+        ]
       }
     ]
   },
@@ -562,6 +603,15 @@
       {
         "source": "eprs-investiture",
         "quote": "The Israeli Parliament (Knesset) voted on Thursday 14 May 2015 61-59 in favour of Prime Minister Benjamin Netanyahu's cabinet"
+      },
+      {
+        "source": "plenum-307157",
+        "quote": "בעד – 61 קולות, נגד – 59 קולות.",
+        "locator": "paragraph beginning «חברי הכנסת, התוצאה: בעד – 61»"
+      },
+      {
+        "source": "plenum-307157",
+        "quote": "מי שמצביע בעד מביע אמון בממשלה;"
       }
     ],
     "membershipCoverage": "complete",

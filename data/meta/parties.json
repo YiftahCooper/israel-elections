@@ -441,7 +441,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k26.json",
-      "sha256": "7b153fedb317d349f94c135c8ab78cefc50057c17784e3dc756e3cb9764d0033",
+      "sha256": "a4ab2bfda4dddf2fba8e53d7a386eb6a870f110eb62c2a755d1a453528fa62cc",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "independent-liberals-profile": {

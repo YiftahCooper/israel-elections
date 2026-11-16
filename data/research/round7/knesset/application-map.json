@@ -1,0 +1,794 @@
+[
+  {
+    "claim": "C001",
+    "target": "data/meta/aftermath/k2.json:$.formation.events[4]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k2.json:$.formation.events[4].cites",
+      "data/meta/aftermath/k2.json:$.formation.conflicts[0]"
+    ]
+  },
+  {
+    "claim": "C002",
+    "target": "data/meta/aftermath/k2.json:$.formation.events[4]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k2.json:$.formation.events[4].cites",
+      "data/meta/aftermath/k2.json:$.formation.conflicts[0]"
+    ]
+  },
+  {
+    "claim": "C003",
+    "target": "data/meta/aftermath/k2.json:$.formation.events[4]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k2.json:$.formation.events[4].cites",
+      "data/meta/aftermath/k2.json:$.formation.conflicts[0]"
+    ]
+  },
+  {
+    "claim": "C004",
+    "target": "data/meta/aftermath/k8.json:$.formation.events[3]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k8.json:$.formation.events[3].cites",
+      "data/meta/aftermath/k8.json:$.formation.conflicts[0]"
+    ]
+  },
+  {
+    "claim": "C005",
+    "target": "data/meta/aftermath/k8.json:$.formation.events[3]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k8.json:$.formation.events[3].cites",
+      "data/meta/aftermath/k8.json:$.formation.conflicts[0]"
+    ]
+  },
+  {
+    "claim": "C006",
+    "target": "data/meta/aftermath/k8.json:$.formation.events[3]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k8.json:$.formation.events[3].cites",
+      "data/meta/aftermath/k8.json:$.formation.conflicts[0]"
+    ]
+  },
+  {
+    "claim": "C007",
+    "target": "data/meta/aftermath/k8.json:$.formation.events[3]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k8.json:$.formation.events[3].cites",
+      "data/meta/aftermath/k8.json:$.formation.conflicts[0]"
+    ]
+  },
+  {
+    "claim": "C008",
+    "target": "data/meta/aftermath/k9.json:$.formation.events[2]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k9.json:$.formation.events[2].cites"
+    ]
+  },
+  {
+    "claim": "C009",
+    "target": "data/meta/aftermath/k9.json:$.formation.events[2]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k9.json:$.formation.events[2].cites"
+    ]
+  },
+  {
+    "claim": "C010",
+    "target": "data/meta/aftermath/k9.json:$.formation.events[2]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k9.json:$.formation.events[2].cites"
+    ]
+  },
+  {
+    "claim": "C011",
+    "target": "data/meta/aftermath/k11.json:$.formation.events[2]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k11.json:$.formation.events[2].cites"
+    ]
+  },
+  {
+    "claim": "C012",
+    "target": "data/meta/aftermath/k11.json:$.formation.events[2]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k11.json:$.formation.events[2].cites"
+    ]
+  },
+  {
+    "claim": "C013",
+    "target": "data/meta/aftermath/k11.json:$.formation.events[2]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k11.json:$.formation.events[2].cites"
+    ]
+  },
+  {
+    "claim": "C014",
+    "target": "data/meta/aftermath/k11.json:$.formation.events[2]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k11.json:$.formation.events[2].cites"
+    ]
+  },
+  {
+    "claim": "C015",
+    "target": "data/meta/aftermath/k12.json:$.formation.events[2]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k12.json:$.formation.events[2].cites"
+    ]
+  },
+  {
+    "claim": "C016",
+    "target": "data/meta/aftermath/k12.json:$.formation.events[2]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k12.json:$.formation.events[2].cites"
+    ]
+  },
+  {
+    "claim": "C017",
+    "target": "data/meta/aftermath/k12.json:$.formation.events[2]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k12.json:$.formation.events[2].cites"
+    ]
+  },
+  {
+    "claim": "C018",
+    "target": "data/meta/aftermath/k12.json:$.formation.events[2]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k12.json:$.formation.events[2].cites"
+    ]
+  },
+  {
+    "claim": "C019",
+    "target": "data/meta/aftermath/k12.json:$.government.changes[0]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k12.json:$.government.changes[0].cites"
+    ]
+  },
+  {
+    "claim": "C020",
+    "target": "data/meta/aftermath/k12.json:$.government.changes[0]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k12.json:$.government.changes[0].cites"
+    ]
+  },
+  {
+    "claim": "C021",
+    "target": "data/meta/aftermath/k12.json:$.government.changes[0]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k12.json:$.government.changes[0].cites"
+    ]
+  },
+  {
+    "claim": "C022",
+    "target": "data/meta/aftermath/k12.json:$.formation.events[5]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k12.json:$.formation.events[5].cites"
+    ]
+  },
+  {
+    "claim": "C023",
+    "target": "data/meta/aftermath/k12.json:$.formation.events[5]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k12.json:$.formation.events[5].cites"
+    ]
+  },
+  {
+    "claim": "C024",
+    "target": "data/meta/aftermath/k12.json:$.formation.events[5]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k12.json:$.formation.events[5].cites"
+    ]
+  },
+  {
+    "claim": "C025",
+    "target": "data/meta/aftermath/k12.json:$.formation.events[5]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k12.json:$.formation.events[5].cites"
+    ]
+  },
+  {
+    "claim": "C026",
+    "target": "data/meta/aftermath/k13.json:$.formation.events[3]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k13.json:$.formation.events[3].cites"
+    ]
+  },
+  {
+    "claim": "C027",
+    "target": "data/meta/aftermath/k13.json:$.formation.events[3]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k13.json:$.formation.events[3].cites"
+    ]
+  },
+  {
+    "claim": "C028",
+    "target": "data/meta/aftermath/k13.json:$.formation.events[3]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k13.json:$.formation.events[3].cites"
+    ]
+  },
+  {
+    "claim": "C029",
+    "target": "data/meta/aftermath/k13.json:$.formation.events[3]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k13.json:$.formation.events[3].cites"
+    ]
+  },
+  {
+    "claim": "C030",
+    "target": "data/meta/aftermath/k14.json:$.formation.events[1]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k14.json:$.formation.events[1].cites"
+    ]
+  },
+  {
+    "claim": "C031",
+    "target": "data/meta/aftermath/k14.json:$.formation.events[1]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k14.json:$.formation.events[1].cites"
+    ]
+  },
+  {
+    "claim": "C032",
+    "target": "data/meta/aftermath/k14.json:$.formation.events[1]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k14.json:$.formation.events[1].cites"
+    ]
+  },
+  {
+    "claim": "C033",
+    "target": "data/meta/aftermath/k15.json:$.formation.events[1]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k15.json:$.formation.events[1].cites"
+    ]
+  },
+  {
+    "claim": "C034",
+    "target": "data/meta/aftermath/k15.json:$.formation.events[1]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k15.json:$.formation.events[1].cites"
+    ]
+  },
+  {
+    "claim": "C035",
+    "target": "data/meta/aftermath/k15.json:$.formation.events[1]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k15.json:$.formation.events[1].cites"
+    ]
+  },
+  {
+    "claim": "C036",
+    "target": "data/meta/aftermath/k15.json:$.formation.events[1]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k15.json:$.formation.events[1].cites"
+    ]
+  },
+  {
+    "claim": "C037",
+    "target": "data/meta/aftermath/k17.json:$.formation.events[1]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k17.json:$.formation.events[1].cites"
+    ]
+  },
+  {
+    "claim": "C038",
+    "target": "data/meta/aftermath/k17.json:$.formation.events[1]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k17.json:$.formation.events[1].cites"
+    ]
+  },
+  {
+    "claim": "C039",
+    "target": "data/meta/aftermath/k17.json:$.formation.events[1]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k17.json:$.formation.events[1].cites"
+    ]
+  },
+  {
+    "claim": "C040",
+    "target": "data/meta/aftermath/k18.json:$.formation.events[2]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k18.json:$.formation.events[2].cites"
+    ]
+  },
+  {
+    "claim": "C041",
+    "target": "data/meta/aftermath/k18.json:$.formation.events[2]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k18.json:$.formation.events[2].cites"
+    ]
+  },
+  {
+    "claim": "C042",
+    "target": "data/meta/aftermath/k18.json:$.formation.events[2]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k18.json:$.formation.events[2].cites",
+      "data/meta/aftermath/k18.json:$.government.confidenceVote.abstain",
+      "data/meta/aftermath/k18.json:$.formation.events[2].votes.abstain",
+      "data/meta/aftermath/k18.json:$.formation.events[2].textEn",
+      "data/meta/aftermath/k18.json:$.formation.events[2].textHe"
+    ]
+  },
+  {
+    "claim": "C043",
+    "target": "data/meta/aftermath/k18.json:$.formation.events[2]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k18.json:$.formation.events[2].cites"
+    ]
+  },
+  {
+    "claim": "C044",
+    "target": "data/meta/aftermath/k19.json:$.formation.events[3]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k19.json:$.formation.events[3].cites"
+    ]
+  },
+  {
+    "claim": "C045",
+    "target": "data/meta/aftermath/k19.json:$.formation.events[3]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k19.json:$.formation.events[3].cites"
+    ]
+  },
+  {
+    "claim": "C046",
+    "target": "data/meta/aftermath/k19.json:$.formation.events[3]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k19.json:$.formation.events[3].cites"
+    ]
+  },
+  {
+    "claim": "C047",
+    "target": "data/meta/aftermath/k20.json:$.formation.events[3]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k20.json:$.formation.events[3].cites",
+      "data/meta/aftermath/k20.json:$.formation.conflicts[0]"
+    ]
+  },
+  {
+    "claim": "C048",
+    "target": "data/meta/aftermath/k20.json:$.formation.events[3]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k20.json:$.formation.events[3].cites",
+      "data/meta/aftermath/k20.json:$.formation.conflicts[0]"
+    ]
+  },
+  {
+    "claim": "C049",
+    "target": "data/meta/aftermath/k20.json:$.formation.events[3]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k20.json:$.formation.events[3].cites",
+      "data/meta/aftermath/k20.json:$.formation.conflicts[0]"
+    ]
+  },
+  {
+    "claim": "C050",
+    "target": "data/meta/aftermath/k24.json:$.formation.events[5]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k24.json:$.formation.events[5].cites"
+    ]
+  },
+  {
+    "claim": "C051",
+    "target": "data/meta/aftermath/k24.json:$.formation.events[5]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k24.json:$.formation.events[5].cites"
+    ]
+  },
+  {
+    "claim": "C052",
+    "target": "data/meta/aftermath/k24.json:$.formation.events[5]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k24.json:$.formation.events[5].cites"
+    ]
+  },
+  {
+    "claim": "C053",
+    "target": "data/meta/aftermath/k24.json:$.formation.events[5]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k24.json:$.formation.events[5].cites"
+    ]
+  },
+  {
+    "claim": "C054",
+    "target": "data/research/knesset-events/k24.json:$.events[19]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/research/knesset-events/k24.json:$.events[19].cites"
+    ]
+  },
+  {
+    "claim": "C055",
+    "target": "data/research/knesset-events/k24.json:$.events[19]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/research/knesset-events/k24.json:$.events[19].cites"
+    ]
+  },
+  {
+    "claim": "C056",
+    "target": "data/research/knesset-events/k24.json:$.events[19]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/research/knesset-events/k24.json:$.events[19].cites"
+    ]
+  },
+  {
+    "claim": "C057",
+    "target": "data/research/knesset-events/k24.json:$.events[45]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/research/knesset-events/k24.json:$.events[45].cites"
+    ]
+  },
+  {
+    "claim": "C058",
+    "target": "data/research/knesset-events/k24.json:$.events[45]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/research/knesset-events/k24.json:$.events[45].cites"
+    ]
+  },
+  {
+    "claim": "C059",
+    "target": "data/research/knesset-events/k24.json:$.events[45]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/research/knesset-events/k24.json:$.events[45].cites"
+    ]
+  },
+  {
+    "claim": "C060",
+    "target": "data/research/knesset-events/k24.json:$.events[45]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/research/knesset-events/k24.json:$.events[45].cites"
+    ]
+  },
+  {
+    "claim": "C061",
+    "target": "data/meta/aftermath/k25.json:$.formation.events[4]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k25.json:$.formation.events[4].cites"
+    ]
+  },
+  {
+    "claim": "C062",
+    "target": "data/meta/aftermath/k25.json:$.formation.events[4]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k25.json:$.formation.events[4].cites"
+    ]
+  },
+  {
+    "claim": "C063",
+    "target": "data/meta/aftermath/k25.json:$.formation.events[4]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k25.json:$.formation.events[4].cites"
+    ]
+  },
+  {
+    "claim": "C064",
+    "target": "data/meta/aftermath/k2.json:$.formation.events[4]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k2.json:$.formation.events[4].cites",
+      "data/meta/aftermath/k2.json:$.formation.conflicts[0]"
+    ]
+  },
+  {
+    "claim": "C065",
+    "target": "data/meta/aftermath/k8.json:$.formation.events[3]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k8.json:$.formation.events[3].cites",
+      "data/meta/aftermath/k8.json:$.formation.conflicts[0]"
+    ]
+  },
+  {
+    "claim": "C066",
+    "target": "data/meta/aftermath/k9.json:$.formation.events[2]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k9.json:$.formation.events[2].cites"
+    ]
+  },
+  {
+    "claim": "C067",
+    "target": "data/meta/aftermath/k11.json:$.formation.events[2]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k11.json:$.formation.events[2].cites"
+    ]
+  },
+  {
+    "claim": "C068",
+    "target": "data/meta/aftermath/k12.json:$.formation.events[2]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k12.json:$.formation.events[2].cites"
+    ]
+  },
+  {
+    "claim": "C069",
+    "target": "data/meta/aftermath/k12.json:$.government.changes[0]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k12.json:$.government.changes[0].cites"
+    ]
+  },
+  {
+    "claim": "C070",
+    "target": "data/meta/aftermath/k12.json:$.formation.events[5]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k12.json:$.formation.events[5].cites"
+    ]
+  },
+  {
+    "claim": "C071",
+    "target": "data/meta/aftermath/k13.json:$.formation.events[3]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k13.json:$.formation.events[3].cites"
+    ]
+  },
+  {
+    "claim": "C072",
+    "target": "data/meta/aftermath/k14.json:$.formation.events[1]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k14.json:$.formation.events[1].cites"
+    ]
+  },
+  {
+    "claim": "C073",
+    "target": "data/meta/aftermath/k15.json:$.formation.events[1]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k15.json:$.formation.events[1].cites"
+    ]
+  },
+  {
+    "claim": "C074",
+    "target": "data/meta/aftermath/k17.json:$.formation.events[1]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k17.json:$.formation.events[1].cites"
+    ]
+  },
+  {
+    "claim": "C075",
+    "target": "data/meta/aftermath/k18.json:$.formation.events[2]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k18.json:$.formation.events[2].cites"
+    ]
+  },
+  {
+    "claim": "C076",
+    "target": "data/meta/aftermath/k19.json:$.formation.events[3]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k19.json:$.formation.events[3].cites"
+    ]
+  },
+  {
+    "claim": "C077",
+    "target": "data/meta/aftermath/k20.json:$.formation.events[3]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k20.json:$.formation.events[3].cites",
+      "data/meta/aftermath/k20.json:$.formation.conflicts[0]"
+    ]
+  },
+  {
+    "claim": "C078",
+    "target": "data/meta/aftermath/k24.json:$.formation.events[5]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k24.json:$.formation.events[5].cites"
+    ]
+  },
+  {
+    "claim": "C079",
+    "target": "data/research/knesset-events/k24.json:$.events[19]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/research/knesset-events/k24.json:$.events[19].cites"
+    ]
+  },
+  {
+    "claim": "C080",
+    "target": "data/research/knesset-events/k24.json:$.events[45]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/research/knesset-events/k24.json:$.events[45].cites"
+    ]
+  },
+  {
+    "claim": "C081",
+    "target": "data/meta/aftermath/k25.json:$.formation.events[4]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k25.json:$.formation.events[4].cites"
+    ]
+  },
+  {
+    "claim": "C082",
+    "target": "data/meta/aftermath/k2.json:$.formation.events[4]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k2.json:$.formation.events[4].cites",
+      "data/meta/aftermath/k2.json:$.formation.conflicts[0]"
+    ]
+  },
+  {
+    "claim": "C083",
+    "target": "data/meta/aftermath/k18.json:$.formation.events[2]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k18.json:$.formation.events[2].cites",
+      "data/meta/aftermath/k18.json:$.government.confidenceVote.abstain",
+      "data/meta/aftermath/k18.json:$.formation.events[2].votes.abstain",
+      "data/meta/aftermath/k18.json:$.formation.events[2].textEn",
+      "data/meta/aftermath/k18.json:$.formation.events[2].textHe"
+    ]
+  },
+  {
+    "claim": "C084",
+    "target": "data/meta/aftermath/k25.json:$.formation.events[4]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k25.json:$.formation.events[4].cites",
+      "data/meta/aftermath/k25.json:$.government.confidenceVote.abstain",
+      "data/meta/aftermath/k25.json:$.formation.events[4].votes.abstain"
+    ]
+  },
+  {
+    "claim": "C085",
+    "target": "data/meta/aftermath/k12.json:$.formation.events[5]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k12.json:$.government.changes[1].individuals[1].vote",
+      "data/meta/aftermath/k12.json:$.government.changes[1].individuals[1].cites",
+      "data/meta/aftermath/k12.json:$.government.changes[1].individuals[1].note"
+    ]
+  },
+  {
+    "claim": "C086",
+    "target": "data/meta/aftermath/k12.json:$.formation.events[5]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k12.json:$.government.changes[1].individuals[0].vote",
+      "data/meta/aftermath/k12.json:$.government.changes[1].individuals[0].cites",
+      "data/meta/aftermath/k12.json:$.government.changes[1].individuals[0].note"
+    ]
+  },
+  {
+    "claim": "C087",
+    "target": "data/meta/aftermath/k24.json:$.formation.events[5]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k24.json:$.government.individuals[0].vote",
+      "data/meta/aftermath/k24.json:$.government.individuals[0].cites",
+      "data/meta/aftermath/k24.json:$.government.individuals[0].note"
+    ]
+  },
+  {
+    "claim": "C088",
+    "target": "data/meta/aftermath/k24.json:$.formation.events[5]",
+    "action": "cited exact proposition",
+    "applied_locations": [
+      "data/meta/aftermath/k24.json:$.government.individuals[1].vote",
+      "data/meta/aftermath/k24.json:$.government.individuals[1].cites",
+      "data/meta/aftermath/k24.json:$.government.individuals[1].note"
+    ]
+  },
+  {
+    "claim": "C089",
+    "target": "data/meta/aftermath/k11.json:$.formation.events[2]",
+    "action": "searched; individual vote remains unknown",
+    "applied_locations": [
+      "data/meta/aftermath/k11.json:$.government.individuals[3].note"
+    ]
+  },
+  {
+    "claim": "C090",
+    "target": "data/meta/aftermath/k11.json:$.formation.events[2]",
+    "action": "searched; individual vote remains unknown",
+    "applied_locations": [
+      "data/meta/aftermath/k11.json:$.government.individuals[1].note"
+    ]
+  },
+  {
+    "claim": "C091",
+    "target": "data/meta/aftermath/k11.json:$.formation.events[2]",
+    "action": "searched; individual vote remains unknown",
+    "applied_locations": [
+      "data/meta/aftermath/k11.json:$.government.individuals[5].note"
+    ]
+  },
+  {
+    "claim": "C092",
+    "target": "data/meta/aftermath/k11.json:$.formation.events[2]",
+    "action": "searched; individual vote remains unknown",
+    "applied_locations": [
+      "data/meta/aftermath/k11.json:$.government.individuals[4].note"
+    ]
+  },
+  {
+    "claim": "C093",
+    "target": "data/meta/aftermath/k11.json:$.formation.events[2]",
+    "action": "searched; individual vote remains unknown",
+    "applied_locations": [
+      "data/meta/aftermath/k11.json:$.government.individuals[0].note"
+    ]
+  },
+  {
+    "claim": "C094",
+    "target": "data/meta/aftermath/k11.json:$.formation.events[2]",
+    "action": "searched; individual vote remains unknown",
+    "applied_locations": [
+      "data/meta/aftermath/k11.json:$.government.individuals[2].note"
+    ]
+  },
+  {
+    "claim": "C095",
+    "target": "data/meta/aftermath/k11.json:$.formation.events[2]",
+    "action": "searched; individual vote remains unknown",
+    "applied_locations": [
+      "data/meta/aftermath/k11.json:$.government.individuals[6].note"
+    ]
+  }
+]

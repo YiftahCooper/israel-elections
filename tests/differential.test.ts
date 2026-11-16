@@ -325,7 +325,9 @@ const EXPECTED: Record<Family, string> = {
   // Small fixes (16 Nov): every certain member carries the Knesset's given-name-first Hebrew name (memberNameHe), reviewed
   // identities take their English name, the 1977 Hadash rank 5 has its constituent and English spellings follow the
   // Knesset; the previous src and this src give the same 520 model outputs on the new data.
-  model: '3bd566dfac96b029829aab3791538da6d59cc681ff757c5872236e4832626bae',
+  // Accepted V1 pre-election roster correction (k26 has one candidate fewer); engine outputs and vote totals unchanged.
+  // Both land together in the 16 Nov night merge, so the model digest records both.
+  model: '3c9c66b9cbd6bcd23243c9d50ae4a7b0f955af39e0b8172b88309287351b7688',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

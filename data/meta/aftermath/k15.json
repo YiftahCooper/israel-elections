@@ -152,6 +152,16 @@
       "publisherHe": "הכנסת, דברי הכנסת, 17 באוקטובר 2001",
       "kind": "official",
       "accessed": "2026-11-12"
+    },
+    "plenum-532847": {
+      "url": "https://fs.knesset.gov.il//15/Plenum/15_ptm_532847.docx",
+      "publisher": "Knesset, Divrei HaKnesset, 6 July 1999",
+      "publisherHe": "הכנסת, דברי הכנסת, 6 ביולי 1999",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "Knesset-sitting-477066",
+      "via": "OOXML paragraph 4644"
     }
   },
   "results": {
@@ -197,8 +207,27 @@
           {
             "source": "lemonde1999-confidence",
             "quote": "par une majorité de 75 voix contre 29"
+          },
+          {
+            "source": "plenum-532847",
+            "quote": "ברוב של 75 חברי כנסת בעד, 29 חברי כנסת נגד ו-11 נמנעים",
+            "locator": "paragraph beginning «רבותי חברי הכנסת, אני מודיע»"
+          },
+          {
+            "source": "plenum-532847",
+            "quote": "אני מודיע בזאת שהכנסת אישרה",
+            "locator": "paragraph beginning «רבותי חברי הכנסת, אני מודיע»"
+          },
+          {
+            "source": "plenum-532847",
+            "quote": "בעד הודעת ראש הממשלה הנבחר א' ברק על כינון הממשלה והרכבה – 75"
           }
-        ]
+        ],
+        "votes": {
+          "for": 75,
+          "against": 29,
+          "abstain": 11
+        }
       },
       {
         "date": "2001-02-06",

@@ -19,7 +19,14 @@
       "url": "https://main.knesset.gov.il/mk/government/documents/gov10.pdf",
       "publisher": "Knesset, government 10 presentation (extract from plenum record)",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "8071b1f7250d87f02a2d6681cb7e82bd10125196dff2e145cc7405d07861e584",
+        "retrievedAt": "2026-11-16T16:48:05.164Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j11-01-gov10.pdf"
     },
     "plenum-gov11": {
       "url": "https://fs.knesset.gov.il/5/Plenum/5_ptm_252310.pdf",
@@ -31,7 +38,14 @@
       "url": "https://main.knesset.gov.il/mk/government/documents/gov11.pdf",
       "publisher": "Knesset, government 11 presentation (extract from plenum record)",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "fc1f1ee9a9ba8bf43cb9cc55f3def578c256495c382a895236f2d8c1f8214112",
+        "retrievedAt": "2026-11-16T16:48:19.929Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j12-01-gov11.pdf"
     },
     "plenum-gov12": {
       "url": "https://fs.knesset.gov.il/5/Plenum/5_ptm_252364.pdf",
@@ -43,7 +57,14 @@
       "url": "https://main.knesset.gov.il/mk/government/documents/gov12.pdf",
       "publisher": "Knesset, government 12 presentation (extract from plenum record)",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "4a635b42dfb6506f1c199764aac9d303d930cbc7105f85b386bae73f3f17271f",
+        "retrievedAt": "2026-11-16T16:48:39.052Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j13-01-gov12.pdf"
     },
     "recommendations-jta": {
       "url": "https://www.jta.org/archive/israel-president-opens-talks-on-cabinet-formation-sees-party-leaders",
@@ -75,7 +96,14 @@
       "url": "https://main.knesset.gov.il/mk/government/documents/gov11.pdf",
       "publisher": "Knesset, government 11 presentation (extract from plenum record)",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "fc1f1ee9a9ba8bf43cb9cc55f3def578c256495c382a895236f2d8c1f8214112",
+        "retrievedAt": "2026-11-16T16:48:19.929Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j12-01-gov11.pdf"
     },
     "term-history": {
       "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-fifth-knesset-1961-1965",
@@ -100,8 +128,15 @@
       "url": "https://www.gov.il/en/pages/timeline-of-events-half-a-century-of-independence",
       "publisher": "Israel Ministry of Foreign Affairs, Timeline of Events: Half a Century of Independence, 1948–1998",
       "kind": "official",
-      "accessed": "2026-11-05",
-      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
+      "accessed": "2026-11-16",
+      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "4d0226ade1392c9b098301ea198a02317f070a2d1cf0c5564599e3df1b6c0310",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:46:26.384Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j230.html.gz"
     },
     "german-foreign-office-1965": {
       "url": "https://www.auswaertiges-amt.de/en/aussenpolitik/laenderinformationen/israel-node/2707760-2707760",

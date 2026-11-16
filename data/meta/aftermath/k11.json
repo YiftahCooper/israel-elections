@@ -97,7 +97,14 @@
       "url": "https://main.knesset.gov.il/mk/government/documents/gov22.pdf",
       "publisher": "Knesset, 20 October 1986 investiture protocol",
       "kind": "official",
-      "accessed": "2026-11-06"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "6f0e6778adca2f2283bacbdf031fdafd627f12b7a466b7307eb9a0b928a078fb",
+        "retrievedAt": "2026-11-16T17:08:25.801Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j16-01-gov22.pdf"
     },
     "intifada1987": {
       "url": "https://www.un.org/unispal/document/auto-insert-209471/",
@@ -109,8 +116,15 @@
       "url": "https://www.gov.il/en/pages/timeline-of-events-half-a-century-of-independence",
       "publisher": "Israel Ministry of Foreign Affairs, Timeline of Events: Half a Century of Independence, 1948–1998",
       "kind": "official",
-      "accessed": "2026-11-05",
-      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
+      "accessed": "2026-11-16",
+      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "4d0226ade1392c9b098301ea198a02317f070a2d1cf0c5564599e3df1b6c0310",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:46:26.384Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j230.html.gz"
     },
     "idi-review-1988": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/elections/1988/",
@@ -153,6 +167,16 @@
       "publisher": "JTA, 17 September 1984 (retained earlier research)",
       "kind": "archival",
       "accessed": "2026-11-07"
+    },
+    "plenum-530251": {
+      "url": "https://fs.knesset.gov.il//11/Plenum/11_ptm_530251.PDF",
+      "publisher": "Knesset, Divrei HaKnesset, 13 September 1984",
+      "publisherHe": "הכנסת, דברי הכנסת, 13 בספטמבר 1984",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "Knesset-sitting-436746",
+      "via": "PDF p. 58, printed p. 112"
     }
   },
   "results": {
@@ -435,11 +459,27 @@
           {
             "source": "jta1984vote",
             "quote": "The Knesset voted 89-18 to approve the new government."
+          },
+          {
+            "source": "plenum-530251",
+            "quote": "ברוב של 89 קולות בעד לעומת 18 קולות נגד ונמנע אחד",
+            "locator": "p. 112"
+          },
+          {
+            "source": "plenum-530251",
+            "quote": "אני קובע, שהכנסת אישרה את הקמתה של הממשלה",
+            "locator": "p. 112"
+          },
+          {
+            "source": "plenum-530251",
+            "quote": "אני מעמיד להצבעה את ההודעה על הרכבת הממשלה",
+            "locator": "p. 112"
           }
         ],
         "votes": {
           "for": 89,
-          "against": 18
+          "against": 18,
+          "abstain": 1
         }
       }
     ],
@@ -863,19 +903,25 @@
     "coalitionSeats": 97,
     "confidenceVote": {
       "for": 89,
-      "against": 18
+      "against": 18,
+      "abstain": 1
     },
     "confidenceVoteCites": [
       {
         "source": "jta1984vote",
         "quote": "The Knesset voted 89-18 to approve the new government."
+      },
+      {
+        "source": "plenum-530251",
+        "quote": "ברוב של 89 קולות בעד לעומת 18 קולות נגד ונמנע אחד",
+        "locator": "p. 112"
       }
     ],
     "membershipCoverage": "complete",
     "supportSeats": 0,
     "reconciliation": {
       "status": "unresolved",
-      "note": "97 formal member seats, with only 37 of Alignment’s 44 included (six Mapam MKs and Yossi Sarid excluded). Recorded vote 89–18 leaves 13 non-voters. Their individual membership/absence distribution is not recovered; 97 must not be rendered as 89. Quantified gap: 97 identified member/support seats versus 89 votes for (+8); the named abstainers, absentees or dissenters needed to explain this gap have not been recovered. Do not infer that each member voted for."
+      "note": "The coalition held 97 seats: only 37 of the Alignment’s 44 MKs belonged to it (the six Mapam MKs and Yossi Sarid stayed out). The Knesset record gives 89 for, 18 against and one abstaining, but not how each MK voted, so which eight coalition MKs did not vote for is unknown. Do not assume every coalition MK voted for."
     },
     "individuals": [
       {
@@ -893,7 +939,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
+        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition (the six Mapam MKs and Yossi Sarid stayed out); their party opposed the government. Already left out of the list’s seats, so not counted twice. A contemporary JTA report covers the group; the Knesset record of the vote, checked in November 2026, gives only the totals, so this MK’s own vote is unknown."
       },
       {
         "id": "elazar-granot",
@@ -910,7 +956,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
+        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition (the six Mapam MKs and Yossi Sarid stayed out); their party opposed the government. Already left out of the list’s seats, so not counted twice. A contemporary JTA report covers the group; the Knesset record of the vote, checked in November 2026, gives only the totals, so this MK’s own vote is unknown."
       },
       {
         "id": "yair-tsaban",
@@ -927,7 +973,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
+        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition (the six Mapam MKs and Yossi Sarid stayed out); their party opposed the government. Already left out of the list’s seats, so not counted twice. A contemporary JTA report covers the group; the Knesset record of the vote, checked in November 2026, gives only the totals, so this MK’s own vote is unknown."
       },
       {
         "id": "amira-sartani",
@@ -944,7 +990,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
+        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition (the six Mapam MKs and Yossi Sarid stayed out); their party opposed the government. Already left out of the list’s seats, so not counted twice. A contemporary JTA report covers the group; the Knesset record of the vote, checked in November 2026, gives only the totals, so this MK’s own vote is unknown."
       },
       {
         "id": "muhammad-wattad",
@@ -961,7 +1007,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
+        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition (the six Mapam MKs and Yossi Sarid stayed out); their party opposed the government. Already left out of the list’s seats, so not counted twice. A contemporary JTA report covers the group; the Knesset record of the vote, checked in November 2026, gives only the totals, so this MK’s own vote is unknown."
       },
       {
         "id": "haika-grossman",
@@ -978,7 +1024,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
+        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition (the six Mapam MKs and Yossi Sarid stayed out); their party opposed the government. Already left out of the list’s seats, so not counted twice. A contemporary JTA report covers the group; the Knesset record of the vote, checked in November 2026, gives only the totals, so this MK’s own vote is unknown."
       },
       {
         "id": "yossi-sarid",
@@ -995,7 +1041,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
+        "note": "Elected on the Alignment list but not one of its 37 MKs in the coalition (the six Mapam MKs and Yossi Sarid stayed out); their party opposed the government. Already left out of the list’s seats, so not counted twice. A contemporary JTA report covers the group; the Knesset record of the vote, checked in November 2026, gives only the totals, so this MK’s own vote is unknown."
       }
     ],
     "knownMemberSeats": 97

@@ -20,7 +20,14 @@
       "url": "https://main.knesset.gov.il/mk/government/documents/gov13.pdf",
       "publisher": "Knesset, government 13 presentation (extract from plenum record)",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "1ed438daf3321d6f289de44025ba6effa6a392bc3246afee4dca0b708ca7896c",
+        "retrievedAt": "2026-11-16T17:08:10.095Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j14-01-gov13.pdf"
     },
     "plenum-gov14": {
       "url": "https://fs.knesset.gov.il/6/Plenum/6_ptm_252808.pdf",
@@ -32,7 +39,14 @@
       "url": "https://main.knesset.gov.il/mk/government/documents/gov.14.pdf",
       "publisher": "Knesset, government 14 presentation (extract from plenum record)",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "e25af75544f1679a0744dabc66d09b21790310fbbc41a6d922f71f22da8b4a17",
+        "retrievedAt": "2026-11-16T16:47:30.732Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j9-01-gov.14.pdf"
     },
     "recommendations-jta": {
       "url": "https://www.jta.org/archive/formation-of-new-cabinet-by-eshkol-proposed-by-opposition-parties",
@@ -70,8 +84,15 @@
       "url": "https://www.gov.il/en/pages/timeline-of-events-half-a-century-of-independence",
       "publisher": "Israel Ministry of Foreign Affairs, Timeline of Events: Half a Century of Independence, 1948–1998",
       "kind": "official",
-      "accessed": "2026-11-05",
-      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
+      "accessed": "2026-11-16",
+      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "4d0226ade1392c9b098301ea198a02317f070a2d1cf0c5564599e3df1b6c0310",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:46:26.384Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j230.html.gz"
     },
     "idi-democracy-timeline": {
       "url": "https://en.idi.org.il/articles/22171",
