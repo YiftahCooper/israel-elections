@@ -11,7 +11,7 @@ test('all retained research, including low-confidence colours, is indexed withou
  expect(JSON.parse(readFileSync('src/data/party-colour-research.json','utf8'))).toEqual(partyColourResearch());
  const ds=loadDataset('k25'),list=ds.lists.find(l=>l.parties?.some(p=>p.id==='otzma-yehudit'))!;
  expect(partyColourBase(list,'otzma-yehudit')).toMatchObject({color:'#f0491c',confidence:'low'});
-});
+},30000); // loads a whole election: about 2 s here, over 5 s on a cold CI runner
 test('every election stays near its recorded base unless a failed check forces a reported adjustment',()=>{
  const rows=partyDecisions();
  for(const r of rows){if(r.deltaE>2)expect(r.reasons.length,`${r.election} ${r.party}`).toBeGreaterThan(0);if(!r.forced)expect(r.deltaE).toBe(0);}

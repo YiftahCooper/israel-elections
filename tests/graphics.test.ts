@@ -16,7 +16,7 @@ test('regions enclose exactly their seats for every split of every chamber size'
     expect(regionContainmentErrors(arc.seats,arc.seats.map((_,i)=>Math.floor(i/3)),arc.r)).toEqual([]);
     expect(regionContainmentErrors(arc.seats,arc.seats.map((_,i)=>[0,1,2,3,4][Math.min(4,Math.floor(i*5/n))]),arc.r)).toEqual([]);
   }
-},30000);
+},120000); // exhaustive: about 16 s here, over 30 s on a GitHub runner
 import {changedSeatKeys} from '../src/app/graphics.ts';
 import {allocationOf} from '../src/app/derive.ts';
 import {graphicsCases,graphicScenario} from './graphics-cases.ts';
