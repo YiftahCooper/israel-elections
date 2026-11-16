@@ -280,6 +280,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 /* ---------- ballot slip / logo tile */
 .slip { flex: none; display: inline-grid; place-items: center; width: 58px; height: 32px; padding: 0 3px; background: var(--slip); color: #111; border: 1.5px solid var(--c, #888); border-radius: 4px; font-weight: 700; font-size: 15px; line-height: 1; letter-spacing: .01em; }
 .slip.long { font-size: 12px; }
+/* a joint list counted by party: its own colour frames its symbol, since its bar shows its parties' colours */
+.slip-joint { flex: none; display: inline-grid; padding: 2px; border-radius: 6px; background: var(--lc); }
 .slip.lg { width: 76px; height: 46px; font-size: 20px; border-width: 2px; }
 .slip.lg.long { font-size: 15px; }
 /* the single cell is sized by the slip, never by the image: a tall (portrait) logo scales down inside it */
