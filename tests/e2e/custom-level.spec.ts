@@ -11,13 +11,13 @@ async function start(page: Page, level = 'simple') {
 test('Simple opens agreement editing in place and keeps it across reload', async ({page}) => {
   await start(page);
   await page.getByRole('button',{name:'More options: Agreement editing',exact:true}).click();
-  await expect(page.getByRole('combobox',{name:'Agreement partner',exact:true})).toBeVisible();
+  await expect(page.getByRole('button',{name:'Agreement partner',exact:true})).toBeVisible();
   await page.locator('.feature-disclosure').filter({has:page.getByRole('button',{name:'More options: Agreement editing',exact:true})}).getByRole('button',{name:'Keep this visible',exact:true}).click();
   await expect(page.getByRole('button',{name:'Custom · based on Simple',exact:true})).toBeVisible();
   expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(60);
   await page.reload();
   await page.getByRole('region',{name:'Lists',exact:true}).getByRole('button',{name:'Likud',exact:true}).click();
-  await expect(page.getByRole('combobox',{name:'Agreement partner',exact:true})).toBeVisible();
+  await expect(page.getByRole('button',{name:'Agreement partner',exact:true})).toBeVisible();
 });
 test('Custom hides a tool and resetting Standard restores it', async ({page}) => {
   await start(page,'standard');

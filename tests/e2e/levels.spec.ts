@@ -49,9 +49,9 @@ test('Standard adds scenario management and consequential list edits, but not id
   await page.keyboard.press('Escape');
 
   await listCard(page, 'Likud').click();
-  await expect(details(page).getByRole('combobox', { name: 'Votes come from' })).toBeVisible();
+  await expect(details(page).getByRole('button', { name: 'Votes come from', exact: true })).toBeVisible();
   await expect(details(page).getByRole('checkbox', { name: 'Withdrawn from the race' })).toBeVisible();
-  await expect(details(page).getByRole('combobox', { name: 'Agreement partner' })).toHaveValue(/.+/);
+  await expect(details(page).getByRole('button', { name: 'Agreement partner', exact: true })).toHaveAttribute('data-value', /.+/);
   await expect(details(page).getByLabel('Short name (English)')).toHaveCount(0);
   await expect(page.getByRole('group', { name: 'Chamber layout' })).toHaveCount(0);
 });
@@ -98,9 +98,13 @@ test('Simple asks where added votes come from too, with each answer’s effect i
   await expect(ask.locator('.source-consequences li')).toHaveCount(2);
   await expect(ask.locator('.source-consequences')).toContainText('Turnout stays the same');
   await expect(ask.locator('.source-consequences')).toContainText('Turnout changes');
-  await expect(ask.getByRole('combobox').locator('optgroup')).toHaveCount(0);
   for (const scope of ['Just this once', 'For this list', 'Always']) await expect(ask.getByRole('radio', { name: scope, exact: true })).toBeVisible();
-  await ask.getByRole('combobox').selectOption('new');
+  const pick = ask.locator('.choice-trigger').first();
+  await pick.click();
+  const options = page.locator(`[id="${await pick.getAttribute('aria-controls')}"]`);
+  // no groups of single lists at Simple
+  await expect(options.locator('.choice-era')).toHaveCount(0);
+  await options.locator('[data-choice-value="new"]').click();
   await expect(ask.locator('.source-consequences li[data-chosen]')).toContainText('New voters');
   await ask.getByRole('button', { name: 'Apply', exact: true }).click();
   await expect(votes).toHaveValue('1,300,000');

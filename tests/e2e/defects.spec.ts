@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { choose } from './choices.ts';
 
 /** the valid total: the Invalid ballots card's breakdown (no card of its own beside its complement) */
 const validVotes = (page: import('@playwright/test').Page) => page.locator('.figures');
@@ -12,12 +13,12 @@ const start = async (page: import('@playwright/test').Page) => {
 
 test('reset everything keeps votes supplied by the selected donor', async ({ page }) => {
   const details = await start(page);
-  const source = details.getByRole('combobox', { name: 'Votes come from' });
-  await source.selectOption('new');
+  const source = details.getByRole('button', { name: 'Votes come from', exact: true });
+  await choose(source, 'new');
   await details.getByLabel('Votes', { exact: true }).fill('0');
   await details.getByLabel('Votes', { exact: true }).press('Enter');
   const total = await validVotes(page).getAttribute('data-valid-votes');
-  await source.selectOption('t:26-נף');
+  await choose(source, 't:26-נף');
   // a vote-only edit is undone by Restore votes ("Restore list" appears only when something else changed)
   await details.locator('.vote-goals').getByRole('button', { name: 'Restore votes' }).click();
   await expect(details.getByLabel('Votes', { exact: true })).toHaveValue('524');
@@ -26,8 +27,8 @@ test('reset everything keeps votes supplied by the selected donor', async ({ pag
 
 test('clamped and refused numeric edits display the authoritative value', async ({ page }) => {
   const details = await start(page);
-  const source = details.getByRole('combobox', { name: 'Votes come from' });
-  await source.selectOption('t:26-נף');
+  const source = details.getByRole('button', { name: 'Votes come from', exact: true });
+  await choose(source, 't:26-נף');
   const votes = details.getByLabel('Votes', { exact: true });
   await votes.fill('9999999'); await votes.press('Enter');
   await expect(votes).toHaveValue('1,168,115');
