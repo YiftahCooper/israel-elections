@@ -322,7 +322,8 @@ const EXPECTED: Record<Family, string> = {
   // one reviewed Amsalem biography, final-notice Horowitz spelling and build times; U4 col-blocs (16 Nov): the Arab
   // lists bloc in k25 and k26 is ochre instead of sea green (four bloc color fields). r7-u1 (16 Nov): merging lists of
   // different blocs marks the grouping custom (blocSchemeId null); 17 of 520 model outputs change, only in that field.
-  model: '36acef75f545bd9600308225a211deda08e13ff6c47dd4e0f86c425a6ad2c1dc',
+  // Accepted V1 pre-election roster correction; engine outputs and vote totals unchanged.
+  model: 'd7a945b60f6a07c05f52efda3c72b5c6a0c5376d25940dcaca318cdbf9b47dd1',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

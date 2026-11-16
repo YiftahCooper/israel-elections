@@ -330,6 +330,16 @@
       "publisherHe": "הכנסת, דברי הכנסת, הישיבה ה־358, 19 בינואר 2026",
       "kind": "official",
       "accessed": "2026-11-12"
+    },
+    "plenum-1479551": {
+      "url": "https://fs.knesset.gov.il/25/Plenum/25_ptm_1479551.doc",
+      "publisher": "Knesset, דברי הכנסת, 2022-12-29, document 1479551",
+      "publisherHe": "הכנסת, דברי הכנסת, 2022-12-29, מסמך 1479551",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "Knesset-sitting-2198735",
+      "via": "OOXML paragraph 3597"
     }
   },
   "results": {
@@ -509,7 +519,8 @@
         "type": "confidence-vote",
         "votes": {
           "for": 63,
-          "against": 54
+          "against": 54,
+          "abstain": 0
         },
         "textEn": "The Knesset approved the 37th government, 63 for · 54 against; its ministers were sworn in.",
         "textHe": "הכנסת הביעה אמון בממשלה ה־37, 63 בעד · 54 נגד; שריה הושבעו.",
@@ -517,6 +528,36 @@
           {
             "source": "news13-investiture",
             "quote": "63 ח\"כים הצביעו בעד, 54 התנגדו, והושבעה ממשלת בנימין נתניהו השישית."
+          },
+          {
+            "source": "plenum-1479551",
+            "quote": "63 בעד, 54 נגד.",
+            "locator": "OOXML paragraph 3602",
+            "note": "C061: The explicit for count is 63. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-1479551",
+            "quote": "63 בעד, 54 נגד.",
+            "locator": "OOXML paragraph 3602",
+            "note": "C062: The explicit against count is 54. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-1479551",
+            "quote": "אני קובע כי הכנסת הביעה אמון בממשלה בשעה טובה ומוצלחת.",
+            "locator": "OOXML paragraph 3602",
+            "note": "C063: The chair declared the motion adopted. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-1479551",
+            "quote": "ההצבעה היא הבעת אמון בממשלה.",
+            "locator": "OOXML paragraph 3591",
+            "note": "C081: The establishment/composition vote is an electronic confidence vote, distinct from the earlier Speaker election. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+          },
+          {
+            "source": "plenum-1479551",
+            "quote": "נמנעים – אין",
+            "locator": "OOXML paragraph 3597",
+            "note": "C084: The vote table explicitly records no abstentions. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
           }
         ]
       }
@@ -1006,12 +1047,43 @@
     ],
     "confidenceVote": {
       "for": 63,
-      "against": 54
+      "against": 54,
+      "abstain": 0
     },
     "confidenceVoteCites": [
       {
         "source": "news13-investiture",
         "quote": "63 ח\"כים הצביעו בעד, 54 התנגדו, והושבעה ממשלת בנימין נתניהו השישית."
+      },
+      {
+        "source": "plenum-1479551",
+        "quote": "63 בעד, 54 נגד.",
+        "locator": "OOXML paragraph 3602",
+        "note": "C061: The explicit for count is 63. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+      },
+      {
+        "source": "plenum-1479551",
+        "quote": "63 בעד, 54 נגד.",
+        "locator": "OOXML paragraph 3602",
+        "note": "C062: The explicit against count is 54. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+      },
+      {
+        "source": "plenum-1479551",
+        "quote": "נמנעים – אין",
+        "locator": "OOXML paragraph 3597",
+        "note": "C084: The vote table explicitly records no abstentions. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+      },
+      {
+        "source": "plenum-1479551",
+        "quote": "נמנעים – אין",
+        "locator": "OOXML paragraph 3597",
+        "note": "C084: The vote table explicitly records no abstentions. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+      },
+      {
+        "source": "plenum-1479551",
+        "quote": "נמנעים – אין",
+        "locator": "OOXML paragraph 3597",
+        "note": "C084: The vote table explicitly records no abstentions. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
       }
     ],
     "membershipCoverage": "complete",

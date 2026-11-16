@@ -237,7 +237,7 @@ test('a mid-term change shows no investiture vote of its own; a formation bar na
   await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k10');
   await expect(history.locator('.after-mandate small')).toContainText(['Menachem Begin', 'Yitzhak Shamir']);
   await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k18');
-  await expect(history.locator('.after-confidence-vote').first()).toHaveText('69 for · 45 against · 5 abstaining');
+  await expect(history.locator('.after-confidence-vote').first()).toHaveText('69 for · 45 against · 0 abstaining');
 });
 
 test('records added in this pass: the Lavon affair, the 1988 recommendations, Government 37 changes, Hebrew wording', async ({ page }) => {

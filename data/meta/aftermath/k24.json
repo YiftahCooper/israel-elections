@@ -250,6 +250,16 @@
       "kind": "official",
       "accessed": "2026-11-16",
       "via": "Retained reviewed event extraction: k24-chikli-opposition-established, section 39, page 24; fresh retrieval refused (403)."
+    },
+    "plenum-601944": {
+      "url": "https://fs.knesset.gov.il//24/Plenum/24_ptm_601944.doc",
+      "publisher": "Knesset, דברי הכנסת, 2021-06-13, document 601944",
+      "publisherHe": "הכנסת, דברי הכנסת, 2021-06-13, מסמך 601944",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "Knesset-sitting-2159171",
+      "via": "OOXML paragraph 5896"
     }
   },
   "results": {
@@ -641,6 +651,48 @@
           {
             "source": "n12-2021-06-13",
             "quote": "ח\"כ עמיחי שיקלי מימינה הצביע נגד, וח\"כ סעיד אלחרומי מרע\"ם החליט ברגע האחרון להימנע"
+          },
+          {
+            "source": "plenum-601944",
+            "quote": "60 בעד, 59 נגד",
+            "locator": "OOXML paragraph 5947",
+            "note": "C050: The explicit for count is 60. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-601944",
+            "quote": "60 בעד, 59 נגד",
+            "locator": "OOXML paragraph 5947",
+            "note": "C051: The explicit against count is 59. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-601944",
+            "quote": "אחד נמנע.",
+            "locator": "OOXML paragraph 5947",
+            "note": "C052: The explicit abstain count is 1. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-601944",
+            "quote": "אני קובע כי הכנסת הביעה אמון בממשלת החילופים.",
+            "locator": "OOXML paragraph 5947",
+            "note": "C053: The chair declared the motion adopted. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-601944",
+            "quote": "הגישו לנו 20 חתימות כדי לגשת להצבעה שמית על ממשלה חלופית.",
+            "locator": "OOXML paragraph 5687",
+            "note": "C078: The government-formation vote is a named vote, separate from the preceding Speaker election. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+          },
+          {
+            "source": "plenum-601944",
+            "quote": "עמיחי שיקלי–   נגד",
+            "locator": "OOXML paragraph 5882",
+            "note": "C087: Amichai Chikli voted against the government in the formation roll call. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Do not use his earlier absence in the separate Speaker election as the investiture vote."
+          },
+          {
+            "source": "plenum-601944",
+            "quote": "סעיד אלחרומי–   נמנע",
+            "locator": "OOXML paragraph 5896",
+            "note": "C088: Said al-Harumi abstained in the government formation vote on the repeat call. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Paragraph 5778 initially marks him absent; paragraph 5896 is the later answer in the same formation roll call. Earlier votes concern a different motion."
           }
         ]
       }
@@ -842,6 +894,24 @@
       {
         "source": "n12-2021-06-13",
         "quote": "ח\"כ עמיחי שיקלי מימינה הצביע נגד, וח\"כ סעיד אלחרומי מרע\"ם החליט ברגע האחרון להימנע"
+      },
+      {
+        "source": "plenum-601944",
+        "quote": "60 בעד, 59 נגד",
+        "locator": "OOXML paragraph 5947",
+        "note": "C050: The explicit for count is 60. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+      },
+      {
+        "source": "plenum-601944",
+        "quote": "60 בעד, 59 נגד",
+        "locator": "OOXML paragraph 5947",
+        "note": "C051: The explicit against count is 59. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+      },
+      {
+        "source": "plenum-601944",
+        "quote": "אחד נמנע.",
+        "locator": "OOXML paragraph 5947",
+        "note": "C052: The explicit abstain count is 1. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
       }
     ],
     "membershipCoverage": "complete",
@@ -871,9 +941,15 @@
             "source": "cec-chikli-2022",
             "quote": "62 → 61",
             "note": "Project extraction of the retained reviewed section 39/p.24 locator; nominal 62 reduced by Chikli opposition. Original PDF could not be reopened this round. Not a verbatim quotation."
+          },
+          {
+            "source": "plenum-601944",
+            "quote": "עמיחי שיקלי–   נגד",
+            "locator": "OOXML paragraph 5882",
+            "note": "C087: Amichai Chikli voted against the government in the formation roll call. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Do not use his earlier absence in the separate Speaker election as the investiture vote."
           }
         ],
-        "note": "Opposed this government from formation on 13 June 2021; not a coalition member or minister. Excluded from the six Yamina seats above. The House Committee declaration of 25 April 2022 concerns legal faction status, not the start of his opposition; Knesset membership ended 14 July 2022."
+        "note": "Opposed this government from formation on 13 June 2021; not a coalition member or minister. Excluded from the six Yamina seats above. The House Committee declaration of 25 April 2022 concerns legal faction status, not the start of his opposition; Knesset membership ended 14 July 2022. Official sitting record now confirms this individual vote only; role certainty is unchanged because membership/support arrangements are a separate proposition."
       },
       {
         "id": "said-al-harumi",
@@ -888,9 +964,15 @@
           {
             "source": "n12-2021-06-13",
             "quote": "ח\"כ עמיחי שיקלי מימינה הצביע נגד, וח\"כ סעיד אלחרומי מרע\"ם החליט ברגע האחרון להימנע"
+          },
+          {
+            "source": "plenum-601944",
+            "quote": "סעיד אלחרומי–   נמנע",
+            "locator": "OOXML paragraph 5896",
+            "note": "C088: Said al-Harumi abstained in the government formation vote on the repeat call. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Paragraph 5778 initially marks him absent; paragraph 5896 is the later answer in the same formation roll call. Earlier votes concern a different motion."
           }
         ],
-        "note": "An individual abstention is established; no prearranged abstention is inferred. Provisional under the source policy: one contemporary N12 roll-call report; the Knesset plenum vote record is the deciding record."
+        "note": "C088: The official formation roll call confirms abstention on the later call, after the earlier absence call. No prearranged abstention is inferred; continuing coalition role certainty is unchanged because the vote alone does not establish membership or an agreement."
       }
     ],
     "knownMemberSeats": 61

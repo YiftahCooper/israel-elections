@@ -167,6 +167,16 @@
       "publisher": "JTA, 17 September 1984 (retained earlier research)",
       "kind": "archival",
       "accessed": "2026-11-07"
+    },
+    "plenum-530251": {
+      "url": "https://fs.knesset.gov.il//11/Plenum/11_ptm_530251.PDF",
+      "publisher": "Knesset, דברי הכנסת, 1984-09-13, document 530251",
+      "publisherHe": "הכנסת, דברי הכנסת, 1984-09-13, מסמך 530251",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "Knesset-sitting-436746",
+      "via": "PDF p. 58, printed p. 112"
     }
   },
   "results": {
@@ -449,11 +459,42 @@
           {
             "source": "jta1984vote",
             "quote": "The Knesset voted 89-18 to approve the new government."
+          },
+          {
+            "source": "plenum-530251",
+            "quote": "ברוב של 89 קולות בעד לעומת 18 קולות נגד ונמנע אחד",
+            "locator": "PDF p. 58, printed p. 112",
+            "note": "C011: The explicit for count is 89. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-530251",
+            "quote": "ברוב של 89 קולות בעד לעומת 18 קולות נגד ונמנע אחד",
+            "locator": "PDF p. 58, printed p. 112",
+            "note": "C012: The explicit against count is 18. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-530251",
+            "quote": "ברוב של 89 קולות בעד לעומת 18 קולות נגד ונמנע אחד",
+            "locator": "PDF p. 58, printed p. 112",
+            "note": "C013: The explicit abstain count is 1. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-530251",
+            "quote": "אני קובע, שהכנסת אישרה את הקמתה של הממשלה",
+            "locator": "PDF p. 58, printed p. 112",
+            "note": "C014: The chair declared the motion adopted. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-530251",
+            "quote": "אני מעמיד להצבעה את ההודעה על הרכבת הממשלה",
+            "locator": "PDF p. 58, printed p. 112",
+            "note": "C067: Approve the government presented by Shimon Peres. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
           }
         ],
         "votes": {
           "for": 89,
-          "against": 18
+          "against": 18,
+          "abstain": 1
         }
       }
     ],
@@ -877,19 +918,38 @@
     "coalitionSeats": 97,
     "confidenceVote": {
       "for": 89,
-      "against": 18
+      "against": 18,
+      "abstain": 1
     },
     "confidenceVoteCites": [
       {
         "source": "jta1984vote",
         "quote": "The Knesset voted 89-18 to approve the new government."
+      },
+      {
+        "source": "plenum-530251",
+        "quote": "ברוב של 89 קולות בעד לעומת 18 קולות נגד ונמנע אחד",
+        "locator": "PDF p. 58, printed p. 112",
+        "note": "C011: The explicit for count is 89. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+      },
+      {
+        "source": "plenum-530251",
+        "quote": "ברוב של 89 קולות בעד לעומת 18 קולות נגד ונמנע אחד",
+        "locator": "PDF p. 58, printed p. 112",
+        "note": "C012: The explicit against count is 18. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+      },
+      {
+        "source": "plenum-530251",
+        "quote": "ברוב של 89 קולות בעד לעומת 18 קולות נגד ונמנע אחד",
+        "locator": "PDF p. 58, printed p. 112",
+        "note": "C013: The explicit abstain count is 1. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
       }
     ],
     "membershipCoverage": "complete",
     "supportSeats": 0,
     "reconciliation": {
       "status": "unresolved",
-      "note": "97 formal member seats, with only 37 of Alignment’s 44 included (six Mapam MKs and Yossi Sarid excluded). Recorded vote 89–18 leaves 13 non-voters. Their individual membership/absence distribution is not recovered; 97 must not be rendered as 89. Quantified gap: 97 identified member/support seats versus 89 votes for (+8); the named abstainers, absentees or dissenters needed to explain this gap have not been recovered. Do not infer that each member voted for."
+      "note": "97 formal member seats, with only 37 of Alignment’s 44 included (six Mapam MKs and Yossi Sarid excluded). Official record 530251 (C011–C014) records 89 for, 18 against and one abstention. The remaining members’ participation is not specified here. Their individual membership/absence distribution is not recovered; 97 must not be rendered as 89. Quantified gap: 97 identified member/support seats versus 89 votes for (+8); the named abstainers, absentees or dissenters needed to explain this gap have not been recovered. Do not infer that each member voted for."
     },
     "individuals": [
       {
@@ -907,7 +967,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record. C093: Final sitting record 530251 searched on 16 November 2026; individual vote not established. Vote remains unknown."
       },
       {
         "id": "elazar-granot",
@@ -924,7 +984,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record. C090: Final sitting record 530251 searched on 16 November 2026; individual vote not established. Vote remains unknown."
       },
       {
         "id": "yair-tsaban",
@@ -941,7 +1001,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record. C094: Final sitting record 530251 searched on 16 November 2026; individual vote not established. Vote remains unknown."
       },
       {
         "id": "amira-sartani",
@@ -958,7 +1018,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record. C089: Final sitting record 530251 searched on 16 November 2026; individual vote not established. Vote remains unknown."
       },
       {
         "id": "muhammad-wattad",
@@ -975,7 +1035,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record. C092: Final sitting record 530251 searched on 16 November 2026; individual vote not established. Vote remains unknown."
       },
       {
         "id": "haika-grossman",
@@ -992,7 +1052,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record. C091: Final sitting record 530251 searched on 16 November 2026; individual vote not established. Vote remains unknown."
       },
       {
         "id": "yossi-sarid",
@@ -1009,7 +1069,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record. C095: Final sitting record 530251 searched on 16 November 2026; individual vote not established. Vote remains unknown."
       }
     ],
     "knownMemberSeats": 97

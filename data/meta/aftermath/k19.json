@@ -131,6 +131,16 @@
       "kind": "official",
       "accessed": "2026-11-12",
       "via": "The service returns 100 rows per page (odata.nextLink continues); every row quoted here is on the first page."
+    },
+    "plenum-226257": {
+      "url": "https://fs.knesset.gov.il//19/Plenum/19_ptm_226257.doc",
+      "publisher": "Knesset, דברי הכנסת, 2013-03-18, document 226257",
+      "publisherHe": "הכנסת, דברי הכנסת, 2013-03-18, מסמך 226257",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "Knesset-sitting-479917",
+      "via": "Legacy Word logical paragraph 3506 (not a printed page or OOXML paragraph)"
     }
   },
   "results": {
@@ -328,6 +338,30 @@
           {
             "source": "ynet-investiture",
             "quote": "ברוב של 68 תומכים מול 48 מתנגדים וארבעה חברי כנסת שנעדרו"
+          },
+          {
+            "source": "plenum-226257",
+            "quote": "בעד הודעת ראש הממשלה – 68, נגד – 48.",
+            "locator": "Legacy Word logical paragraph 3662 (not a printed page or OOXML paragraph)",
+            "note": "C044: The explicit for count is 68. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-226257",
+            "quote": "בעד הודעת ראש הממשלה – 68, נגד – 48.",
+            "locator": "Legacy Word logical paragraph 3662 (not a printed page or OOXML paragraph)",
+            "note": "C045: The explicit against count is 48. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-226257",
+            "quote": "אני קובע כי הודעת ראש הממשלה, חבר הכנסת בנימין נתניהו, התקבלה על-ידי הכנסת.",
+            "locator": "Legacy Word logical paragraph 3662 (not a printed page or OOXML paragraph)",
+            "note": "C046: The chair declared the motion adopted. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-226257",
+            "quote": "נעבור להצבעה שמית על הודעת ראש הממשלה על קווי היסוד של ממשלתו, הרכבה ותחומי הפעילות של השרים.",
+            "locator": "Legacy Word logical paragraph 3506 (not a printed page or OOXML paragraph)",
+            "note": "C076: Vote by name on Netanyahu’s government programme, composition and ministerial duties. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
           }
         ]
       }
@@ -549,6 +583,18 @@
       {
         "source": "ynet-investiture",
         "quote": "ברוב של 68 תומכים מול 48 מתנגדים וארבעה חברי כנסת שנעדרו"
+      },
+      {
+        "source": "plenum-226257",
+        "quote": "בעד הודעת ראש הממשלה – 68, נגד – 48.",
+        "locator": "Legacy Word logical paragraph 3662 (not a printed page or OOXML paragraph)",
+        "note": "C044: The explicit for count is 68. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+      },
+      {
+        "source": "plenum-226257",
+        "quote": "בעד הודעת ראש הממשלה – 68, נגד – 48.",
+        "locator": "Legacy Word logical paragraph 3662 (not a printed page or OOXML paragraph)",
+        "note": "C045: The explicit against count is 48. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
       }
     ],
     "membershipCoverage": "complete",

@@ -154,6 +154,16 @@
       "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
       "kind": "official",
       "accessed": "2026-11-07"
+    },
+    "plenum-129769": {
+      "url": "https://fs.knesset.gov.il//17/Plenum/17_ptm_129769.doc",
+      "publisher": "Knesset, דברי הכנסת, 2006-05-04, document 129769",
+      "publisherHe": "הכנסת, דברי הכנסת, 2006-05-04, מסמך 129769",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "Knesset-sitting-131247",
+      "via": "Legacy Word logical paragraph 4974 (not a printed page or OOXML paragraph)"
     }
   },
   "results": {
@@ -322,6 +332,30 @@
           {
             "source": "wp2006-confidence",
             "quote": "a vote of 65 to 49"
+          },
+          {
+            "source": "plenum-129769",
+            "quote": "בעד אישור הודעת ראש הממשלה - 65, נגד - 49.",
+            "locator": "Legacy Word logical paragraph 5225 (not a printed page or OOXML paragraph)",
+            "note": "C037: The explicit for count is 65. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-129769",
+            "quote": "בעד אישור הודעת ראש הממשלה - 65, נגד - 49.",
+            "locator": "Legacy Word logical paragraph 5225 (not a printed page or OOXML paragraph)",
+            "note": "C038: The explicit against count is 49. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-129769",
+            "quote": "אני קובעת שהכנסת אישרה את הודעת ראש הממשלה.",
+            "locator": "Legacy Word logical paragraph 5225 (not a printed page or OOXML paragraph)",
+            "note": "C039: The chair declared the motion adopted. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-129769",
+            "quote": "אבקש להביע אמון בממשלה זו.",
+            "locator": "Legacy Word logical paragraph 4974 (not a printed page or OOXML paragraph)",
+            "note": "C074: Approve Olmert’s government statement; the prime minister asks for confidence. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
           }
         ],
         "votes": {
@@ -647,6 +681,18 @@
       {
         "source": "vote2006",
         "quote": "ברוב של 65 ח״כים מול 49 נגד ו-4 נעדרים אישרה אמש (יום ה׳) הכנסת את הממשלה ה-31"
+      },
+      {
+        "source": "plenum-129769",
+        "quote": "בעד אישור הודעת ראש הממשלה - 65, נגד - 49.",
+        "locator": "Legacy Word logical paragraph 5225 (not a printed page or OOXML paragraph)",
+        "note": "C037: The explicit for count is 65. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+      },
+      {
+        "source": "plenum-129769",
+        "quote": "בעד אישור הודעת ראש הממשלה - 65, נגד - 49.",
+        "locator": "Legacy Word logical paragraph 5225 (not a printed page or OOXML paragraph)",
+        "note": "C038: The explicit against count is 49. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
       }
     ],
     "membershipCoverage": "complete",

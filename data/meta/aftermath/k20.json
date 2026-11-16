@@ -125,6 +125,16 @@
       "publisher": "JTA, Israel passes controversial law that cements it as country for Jews",
       "kind": "archival",
       "accessed": "2026-11-13"
+    },
+    "plenum-307157": {
+      "url": "https://fs.knesset.gov.il//20/Plenum/20_ptm_307157.doc",
+      "publisher": "Knesset, דברי הכנסת, 2015-05-14, document 307157",
+      "publisherHe": "הכנסת, דברי הכנסת, 2015-05-14, מסמך 307157",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "Knesset-sitting-564427",
+      "via": "Legacy Word logical paragraph 1743 (not a printed page or OOXML paragraph)"
     }
   },
   "results": {
@@ -304,6 +314,30 @@
           {
             "source": "eprs-investiture",
             "quote": "The Israeli Parliament (Knesset) voted on Thursday 14 May 2015 61-59 in favour of Prime Minister Benjamin Netanyahu's cabinet"
+          },
+          {
+            "source": "plenum-307157",
+            "quote": "בעד – 61 קולות, נגד – 59 קולות.",
+            "locator": "Legacy Word logical paragraph 1915 (not a printed page or OOXML paragraph)",
+            "note": "C047: The explicit for count is 61. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-307157",
+            "quote": "בעד – 61 קולות, נגד – 59 קולות.",
+            "locator": "Legacy Word logical paragraph 1915 (not a printed page or OOXML paragraph)",
+            "note": "C048: The explicit against count is 59. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-307157",
+            "quote": "אני קובע כי הממשלה זכתה באמון הכנסת.",
+            "locator": "Legacy Word logical paragraph 1915 (not a printed page or OOXML paragraph)",
+            "note": "C049: The chair declared the motion adopted. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-307157",
+            "quote": "מי שמצביע בעד מביע אמון בממשלה;",
+            "locator": "Legacy Word logical paragraph 1743 (not a printed page or OOXML paragraph)",
+            "note": "C077: The chair explicitly makes a vote for the government a confidence vote. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
           }
         ]
       }
@@ -321,7 +355,34 @@
             "source": "eprs-investiture"
           }
         ],
-        "resolution": "Use 61–59, consistent with the 120-seat chamber and independent contemporaneous reports. Preserve the Knesset wording as a source error; plenum protocol remains the target."
+        "resolution": "The final plenum record explicitly declares 61 for and 59 against (legacy logical paragraph 1915). It takes precedence over the Knesset News item’s 69–59; the earlier versions remain recorded here.",
+        "status": "resolved",
+        "cites": [
+          {
+            "source": "plenum-307157",
+            "quote": "בעד – 61 קולות, נגד – 59 קולות.",
+            "locator": "Legacy Word logical paragraph 1915 (not a printed page or OOXML paragraph)",
+            "note": "C047: The explicit for count is 61. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-307157",
+            "quote": "בעד – 61 קולות, נגד – 59 קולות.",
+            "locator": "Legacy Word logical paragraph 1915 (not a printed page or OOXML paragraph)",
+            "note": "C048: The explicit against count is 59. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-307157",
+            "quote": "אני קובע כי הממשלה זכתה באמון הכנסת.",
+            "locator": "Legacy Word logical paragraph 1915 (not a printed page or OOXML paragraph)",
+            "note": "C049: The chair declared the motion adopted. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-307157",
+            "quote": "מי שמצביע בעד מביע אמון בממשלה;",
+            "locator": "Legacy Word logical paragraph 1743 (not a printed page or OOXML paragraph)",
+            "note": "C077: The chair explicitly makes a vote for the government a confidence vote. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+          }
+        ]
       }
     ]
   },
@@ -562,6 +623,24 @@
       {
         "source": "eprs-investiture",
         "quote": "The Israeli Parliament (Knesset) voted on Thursday 14 May 2015 61-59 in favour of Prime Minister Benjamin Netanyahu's cabinet"
+      },
+      {
+        "source": "plenum-307157",
+        "quote": "בעד – 61 קולות, נגד – 59 קולות.",
+        "locator": "Legacy Word logical paragraph 1915 (not a printed page or OOXML paragraph)",
+        "note": "C047: The explicit for count is 61. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+      },
+      {
+        "source": "plenum-307157",
+        "quote": "בעד – 61 קולות, נגד – 59 קולות.",
+        "locator": "Legacy Word logical paragraph 1915 (not a printed page or OOXML paragraph)",
+        "note": "C048: The explicit against count is 59. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+      },
+      {
+        "source": "plenum-307157",
+        "quote": "מי שמצביע בעד מביע אמון בממשלה;",
+        "locator": "Legacy Word logical paragraph 1743 (not a printed page or OOXML paragraph)",
+        "note": "C077: The chair explicitly makes a vote for the government a confidence vote. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
       }
     ],
     "membershipCoverage": "complete",

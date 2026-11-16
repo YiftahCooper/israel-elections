@@ -183,6 +183,26 @@
       "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
       "kind": "official",
       "accessed": "2026-11-07"
+    },
+    "plenum-250692": {
+      "url": "https://fs.knesset.gov.il//2/Plenum/2_ptm_250692.pdf",
+      "publisher": "Knesset, דברי הכנסת, 1952-12-23, document 250692",
+      "publisherHe": "הכנסת, דברי הכנסת, 1952-12-23, מסמך 250692",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "Knesset-sitting-489709",
+      "via": "PDF p. 8, printed p. 332"
+    },
+    "plenum-250350": {
+      "url": "https://fs.knesset.gov.il//2/Plenum/2_ptm_250350.pdf",
+      "publisher": "Knesset, דברי הכנסת, 1952-12-24, document 250350",
+      "publisherHe": "הכנסת, דברי הכנסת, 1952-12-24, מסמך 250350",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "Knesset-sitting-437733",
+      "via": "PDF p. 1, printed p. 334"
     }
   },
   "results": {
@@ -378,6 +398,36 @@
           {
             "source": "plenum-gov4",
             "quote": "הצבעה ■ בעד הצעת סיעות הקואליציה לאשר את קתיהיסוד של הממשלה ולהביע לה 63 קולות אמון 24 קולות נגד הגעת סיעות הקואליציה נתקבלה. שפרינצק: היו\"ר י. על ב63 קולות נגד 24 הובע אמון לממשלה שהוצגה ידי ראשהממשלה דוד בןגוריון ואושרו קוויהיסוד של תכ ניתה. הוקמה ממשלת ישראל חדשה. הרא הנני לברך את הממשלה החדשה והישגי. החשוב"
+          },
+          {
+            "source": "plenum-250692",
+            "quote": "ב־63 קולות נגד 24 הובע אמון לממשלה",
+            "locator": "PDF p. 9, printed p. 333",
+            "note": "C001: The explicit for count is 63. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-250692",
+            "quote": "ב־63 קולות נגד 24 הובע אמון לממשלה",
+            "locator": "PDF p. 9, printed p. 333",
+            "note": "C002: The explicit against count is 24. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-250692",
+            "quote": "הוקמה ממשלת ישראל חדשה",
+            "locator": "PDF p. 9, printed p. 333",
+            "note": "C003: The chair declared the motion adopted. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-250692",
+            "quote": "הכנסת מאשרת את קווי־היסוד",
+            "locator": "PDF p. 8, printed p. 332",
+            "note": "C064: Approve the proposed government programme and express confidence in the Ben-Gurion government. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+          },
+          {
+            "source": "plenum-250350",
+            "quote": "הצהרת אמונים של חברי הממשלה",
+            "locator": "PDF p. 1, printed p. 334",
+            "note": "C082: Ministerial declarations are in the separate sitting dated 24 December 1952. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Does not move the confidence vote from 23 to 24 December; appointment-date fields require their own semantics."
           }
         ],
         "votes": {
@@ -456,7 +506,40 @@
             "source": "oath-gov4"
           }
         ],
-        "resolution": "Both dates describe separate procedural steps; the change entry uses the conventional government start (declarations), while formation records the confidence vote."
+        "resolution": "Official sitting 158 on 23 December records the confidence vote; separate sitting 159 on 24 December records ministerial declarations. These are separate acts; the conventional government start is unchanged.",
+        "status": "resolved",
+        "cites": [
+          {
+            "source": "plenum-250692",
+            "quote": "ב־63 קולות נגד 24 הובע אמון לממשלה",
+            "locator": "PDF p. 9, printed p. 333",
+            "note": "C001: The explicit for count is 63. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-250692",
+            "quote": "ב־63 קולות נגד 24 הובע אמון לממשלה",
+            "locator": "PDF p. 9, printed p. 333",
+            "note": "C002: The explicit against count is 24. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-250692",
+            "quote": "הוקמה ממשלת ישראל חדשה",
+            "locator": "PDF p. 9, printed p. 333",
+            "note": "C003: The chair declared the motion adopted. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-250692",
+            "quote": "הכנסת מאשרת את קווי־היסוד",
+            "locator": "PDF p. 8, printed p. 332",
+            "note": "C064: Approve the proposed government programme and express confidence in the Ben-Gurion government. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family."
+          },
+          {
+            "source": "plenum-250350",
+            "quote": "הצהרת אמונים של חברי הממשלה",
+            "locator": "PDF p. 1, printed p. 334",
+            "note": "C082: Ministerial declarations are in the separate sitting dated 24 December 1952. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Does not move the confidence vote from 23 to 24 December; appointment-date fields require their own semantics."
+          }
+        ]
       }
     ],
     "people": {
@@ -709,6 +792,18 @@
           {
             "source": "plenum-gov4",
             "quote": "הצבעה ■ בעד הצעת סיעות הקואליציה לאשר את קתיהיסוד של הממשלה ולהביע לה 63 קולות אמון 24 קולות נגד הגעת סיעות הקואליציה נתקבלה. שפרינצק: היו\"ר י. על ב63 קולות נגד 24 הובע אמון לממשלה שהוצגה ידי ראשהממשלה דוד בןגוריון ואושרו קוויהיסוד של תכ ניתה. הוקמה ממשלת ישראל חדשה. הרא הנני לברך את הממשלה החדשה והישגי. החשוב"
+          },
+          {
+            "source": "plenum-250692",
+            "quote": "ב־63 קולות נגד 24 הובע אמון לממשלה",
+            "locator": "PDF p. 9, printed p. 333",
+            "note": "C001: The explicit for count is 63. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
+          },
+          {
+            "source": "plenum-250692",
+            "quote": "ב־63 קולות נגד 24 הובע אמון לממשלה",
+            "locator": "PDF p. 9, printed p. 333",
+            "note": "C002: The explicit against count is 24. Scope: Does not establish coalition membership, outside-support agreements, intentions, or unlisted individual votes. Alternative formats are one evidence family. Dates identify the sitting, not an exact civil clock time of the vote."
           }
         ],
         "membershipCoverage": "partial",
