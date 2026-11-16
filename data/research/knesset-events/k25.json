@@ -5856,6 +5856,57 @@
       "importanceReason": "A party leader or minister changes executive participation, but resignation from office alone does not establish a coalition departure."
     },
     {
+      "id": "k25-eichler-appointed",
+      "date": "2026-01-19",
+      "kind": "ministerial-appointment",
+      "who": {
+        "personIds": [
+          1057
+        ]
+      },
+      "summary": {
+        "en": "Israel Eichler appointed deputy minister in the Communications Ministry.",
+        "he": "ישראל אייכלר מונה לסגן שר במשרד התקשורת."
+      },
+      "classification": "context",
+      "reason": "Official appointment is distinct from a faction-wide coalition agreement. Contemporary reports explicitly distinguish the appointment from UTJ rejoining the coalition.",
+      "seatsAfter": null,
+      "sources": [
+        {
+          "url": "https://fs.knesset.gov.il/25/plenum/25_st_10938331.doc",
+          "publisher": "Knesset, plenum record, sitting 358, 19 January 2026",
+          "date": "2026-01-19",
+          "accessed": "2026-11-16",
+          "type": "official",
+          "evidenceFamily": "knesset-plenum-20260119",
+          "inspection": "retained-record",
+          "locator": "Sitting 358, government notice under section 25(a); retained aftermath k25 government.changes on 19 January",
+          "supportingNote": "הממשלה החליטה לאשר את מינויו של חבר הכנסת ישראל אייכלר לסגן שר במשרד התקשורת על ידי שר התקשורת."
+        },
+        {
+          "url": "https://www.timesofisrael.com/liveblog_entry/ministers-to-vote-on-bill-that-would-allow-haredi-party-to-rejoin-government-with-all-previous-mks-rejoining-knesset/",
+          "publisher": "The Times of Israel / Sam Sokol",
+          "date": "2026-01-22",
+          "accessed": "2026-11-16",
+          "type": "press",
+          "evidenceFamily": "toi-utj-20260122",
+          "inspection": "opened",
+          "locator": "Final three news paragraphs before subscription material",
+          "supportingNote": "Reports that UTJ had not rejoined the coalition although Eichler joined as deputy communications minister."
+        }
+      ],
+      "certainty": "confirmed",
+      "evidenceClass": "Official appointment; separate press evidence on party status",
+      "supportEffect": "none-established",
+      "importance": "standard",
+      "importanceReason": "Appointment by a party whose coalition return remains unestablished; does not automatically move party seats.",
+      "marker": null,
+      "relatedEventIds": [
+        "k25-eichler-arrangement",
+        "k25-eichler-pindrus"
+      ]
+    },
+    {
       "id": "k25-eichler-pindrus",
       "date": "2026-01-21",
       "kind": "member-replacement",

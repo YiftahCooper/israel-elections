@@ -1,26 +1,26 @@
 {
   "schemaVersion": 3,
-  "total": 11531,
+  "total": 11530,
   "counts": {
     "unknown": 6979,
     "missing-field": 283,
     "conflict": 18,
-    "single-source": 2491,
+    "single-source": 2489,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1167,
     "pending": 389,
-    "unconfirmed": 103
+    "unconfirmed": 104
   },
   "countsByStatus": {
     "inferred-not-verified": 1032,
     "needs-current-status-review": 313,
-    "open": 10186
+    "open": 10185
   },
   "countsByImportance": {
     "high": {
-      "total": 866,
-      "confirmed": 413,
+      "total": 865,
+      "confirmed": 412,
       "probable": 33,
       "provisional": 163,
       "disputed": 13,
@@ -504,7 +504,7 @@
     },
     {
       "election": "k24",
-      "total": 441,
+      "total": 440,
       "highOpen": 12,
       "mediumOpen": 91,
       "low": 303,
@@ -512,12 +512,12 @@
         "unknown": 254,
         "missing-field": 0,
         "conflict": 1,
-        "single-source": 113,
+        "single-source": 111,
         "low-confidence": 4,
         "release-hold": 0,
         "inferred": 51,
         "pending": 12,
-        "unconfirmed": 6
+        "unconfirmed": 7
       }
     },
     {
@@ -736,7 +736,7 @@
     {"election":"k24","area":"Formation events","count":3,"certainty":{"probable":2,"provisional":1},"kinds":{"single-source":1,"unconfirmed":2},"labels":["consultations 2021-04-05","mandate-given 2021-04-06","mandate-given 2021-05-05"],"file":"data/meta/aftermath/k24.json"},
     {"election":"k24","area":"Bloc schemes","count":2,"certainty":{"provisional":1,"unknown":1},"kinds":{"single-source":2},"labels":["knesset-blocs-2021","pm-recommendations"],"file":"data/meta/k24.json"},
     {"election":"k24","area":"Formation conflicts","count":2,"certainty":{"provisional":1,"disputed":1},"kinds":{"conflict":1,"single-source":1},"labels":[],"disputed":["Time Lapid informed the President on 2 June 2021"],"file":"data/meta/aftermath/k24.json"},
-    {"election":"k24","area":"Individual MKs","count":2,"certainty":{"provisional":2},"kinds":{"single-source":2},"labels":["amichai-chikli","said-al-harumi"],"file":"data/meta/aftermath/k24.json"},
+    {"election":"k24","area":"Individual MKs","count":2,"certainty":{"provisional":2},"kinds":{"single-source":1,"unconfirmed":1},"labels":["amichai-chikli","said-al-harumi"],"file":"data/meta/aftermath/k24.json"},
     {"election":"k24","area":"Government","count":1,"certainty":{"probable":1},"kinds":{"unconfirmed":1},"labels":[],"file":"data/meta/aftermath/k24.json"},
     {"election":"k24","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k24.json"},
     {"election":"k24","area":"Recommendation rounds","count":1,"certainty":{"probable":1},"kinds":{"unconfirmed":1},"labels":["r2"],"file":"data/meta/aftermath/k24.json"},
