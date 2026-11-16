@@ -1,5 +1,9 @@
 # Changelog
 
+## 16 November 2026 — Round 7
+
+- Calculator, scenarios and Compare (16 Nov, Round 7): every picker that names a list shows its logo or colour dot; Compare's Copy sits centred and always in view; a list can join a joint list and a party can leave one, from the list's panel; on one column the blocs come before the lists, and an edited grouping reads "Custom blocs"; share links are short and gallery entries share as #g=; the election list draws its strips without downloading elections; 2013 shows the declared result (decision 0094); a rounded value's note holds the Exact values switch; Turnout shades the compared election grey, and its turnout line can be turned off; Coalitions at Expert can set MKs apart from their list (June 2021: 60 for, 59 against, 61 of 120); a changed 1977 scenario keeps 120 seats (decision 0095).
+
 ## 13 November 2026 — audit fixes
 
 - Localities (13 Nov, audit): one result under “Find a locality” reads “1 match” (Hebrew “התאמה אחת”), and “the first 30 are shown” appears only when more than 30 were found.

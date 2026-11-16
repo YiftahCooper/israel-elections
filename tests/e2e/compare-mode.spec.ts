@@ -155,7 +155,7 @@ test('Copy votes at Standard: three methods, each with its figure and result; th
   await expect(methods.nth(2)).toContainText('Same number of votes as in 2022 (1,115,336)');
   await expect(methods.nth(2)).toContainText(/27 → 26/);
   await expect(methods.nth(0).locator('input')).toBeChecked();
-  await expect(box(page).getByRole('combobox', { name: 'Extra votes come from' })).toHaveValue('proportional');
+  await expect(box(page).locator('.choice-trigger[aria-label="Extra votes come from"]')).toHaveAttribute('data-value', 'proportional');
   await box(page).getByRole('button', { name: 'Copy into 2026' }).click();
   await expect(box(page)).toHaveCount(0);
   await expect(row(page, 'Likud').locator('.lb-seats b')).toHaveText('28');
