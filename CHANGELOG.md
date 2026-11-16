@@ -1,5 +1,9 @@
 # Changelog
 
+## 16 November 2026 — Round 7
+
+- History and governments (16 Nov, Round 7): Party history marks every event with a numbered circle as in its Events list, its key names every mark, its stripes read in dark mode and a party known by another name shows it (the registered name behind the (i)); the Knesset on a date shows the day's lines under the chart, a changed seat's ring as a visible pulse, new Speakers, and every recorded reason a seat changed hands, with a coalition member's vote against the government at Standard only when the government lost it; MK history explains its rows, shows the 26th Knesset open since 10 Nov 2026 and the sources of a run tied by research; a government card shows its rotation agreement, kept or not, and why its member count is below its lists' seats; the 1994 Hebron massacre names the Jewish terrorist Baruch Goldstein and the Muslim worshippers; the data gaps register runs from the most-shown data and reads every data file.
+
 ## 13 November 2026 — audit fixes
 
 - Localities (13 Nov, audit): one result under “Find a locality” reads “1 match” (Hebrew “התאמה אחת”), and “the first 30 are shown” appears only when more than 30 were found.
