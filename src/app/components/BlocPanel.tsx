@@ -154,7 +154,7 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
       <div className="sp-body">
         <FamilyGroupingLink />
         <StartFrom s={s} part="blocs" />
-        <button className="btn small" onClick={()=>dispatch({type:'resetColors'})}>{L('Reset colours','איפוס צבעים')}</button>
+        <button className="btn small" onClick={()=>dispatch({type:'resetColors'})}>{L('Reset all colours','איפוס כל הצבעים')}</button>
         <p className="tiny muted">{L(`Vote changes here are balanced by: ${voteSourceLabel(src, s, lang)}`, `שינויי קולות כאן מתקזזים מול: ${voteSourceLabel(src, s, lang)}`)}</p>
         <p className="small">{groupingLabel(s, lang)} <AnalysisEdits s={s} outlet="bloc-panel" /></p>
         {picked && (
@@ -189,7 +189,7 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
                 {b && paletteFor === k && (
                   <div className="bp-palette" role="group" aria-label={L('Colours', 'צבעים')}>
                     {PALETTE.map((c) => <button key={c} style={{ background: c }} aria-label={c} aria-pressed={c.toLowerCase() === color.toLowerCase()} onClick={() => { recolour(k, c); setPaletteFor(null); }} />)}
-                    <ColourPicker rules={blocColourRules(s.blocs.filter(x=>x.id!==k).map(x=>x.color))} label={L('Other…','אחר…')} value={color} onChange={c=>recolour(k,c)} minDeltaE={20} others={s.blocs.filter(x=>x.id!==k).map(x=>({color:x.color,name:name(x)}))}/>
+                    <ColourPicker rules={blocColourRules(s.blocs.filter(x=>x.id!==k).map(x=>x.color))} label={L('Other…','אחר…')} value={color} onChange={c=>recolour(k,c)} onReset={((o)=>o&&o.toLowerCase()!==color.toLowerCase()?()=>dispatch({type:'resetColors',only:{bloc:k}}):undefined)(s.blocSchemes?.find(g=>g.id===s.blocSchemeId)?.blocs.find(x=>x.id===k)?.color)} minDeltaE={20} others={s.blocs.filter(x=>x.id!==k).map(x=>({color:x.color,name:name(x)}))}/>
                   </div>
                 )}
                 <div className="bp-meter" aria-hidden><i style={{ width: `${Math.min(100, (n / total) * 100)}%` }} /><span style={{ insetInlineStart: `${((majority - 0.5) / total) * 100}%` }} /></div>

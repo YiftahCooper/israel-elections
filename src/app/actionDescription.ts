@@ -17,7 +17,7 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
   switch (a.type) {
     case 'copyFrom': return describeCopy(a.provenance, (a.provenance.targetListIds ?? []).map(n), lang, s.electionId);
     case 'familyOperation': return (a.operation === 'group' ? (he ? 'קיבוץ לפי משפחה: ' : 'Family grouping: ') : (he ? 'שינוי קולות המשפחה: ' : 'Scaled family votes: ')) + familyLabel(a.definition,lang);
-    case 'resetColors': return he ? 'הצבעים אופסו' : 'Colours reset';
+    case 'resetColors': return a.only ? (he ? 'צבע אופס' : 'Colour reset') : he ? 'הצבעים אופסו' : 'Colours reset';
     case 'setBlocAppearance': return he ? 'צבעי הגושים השתנו' : 'Bloc colours changed';
     case 'setPartyColor': return he ? 'צבע המפלגה השתנה' : 'Party colour changed';
     case 'setIdentityColor': return he ? 'צבע התרחיש השתנה' : 'Scenario colour changed';

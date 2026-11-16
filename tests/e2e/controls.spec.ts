@@ -1,6 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 import { choose } from './choices.ts';
-import { openBarMenu } from './barMenu.ts';
+import { openScenarioMenu } from './barMenu.ts';
 async function start(page: Page, lang = 'en', theme = 'light') {
   await page.addInitScript(v => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)), { lang, theme, level: 'expert', hintDismissed: true });
   await page.goto('/');
@@ -12,14 +12,13 @@ async function detail(page: Page) {
   await page.getByRole('region', { name: 'Lists', exact: true }).getByRole('button', { name: 'Likud', exact: true }).click();
   return page.locator('.side-panel').getByRole('textbox', { name: 'Votes', exact: true });
 }
-// on a phone the switcher is in the bar's Menu, or at the top of an open list sheet (which covers the bar)
-const switcher = async (page: Page) => { const button = page.getByRole('button', { name: 'Switch scenario', exact: true }); if (!await button.count()) await openBarMenu(page); return button; };
+// on a phone the switcher is in the scenario panel (the bar's status label), or at the top of an open list sheet (which covers the bar)
+const switcher = async (page: Page) => { const button = page.getByRole('button', { name: 'Switch scenario', exact: true }); if (!await button.count()) await openScenarioMenu(page); return button; };
 async function save(page: Page, name: string) {
   const close = page.locator('.side-panel').getByRole('button', { name: 'Close', exact: true });
   if (await close.count()) await close.click();
-  // phones (one-row bar, owner 9 Nov): Save & share is in the bar's Menu
-  if (await openBarMenu(page)) await page.locator('#phone-menu summary', { hasText: 'Save & share' }).click();
-  else await page.getByRole('button', { name: 'Save & share', exact: true }).click();
+  // phones (one-row bar, owner 9 Nov): Save & share is shown in full in the scenario panel (16 Nov)
+  if (!await openScenarioMenu(page)) await page.getByRole('button', { name: 'Save & share', exact: true }).click();
   const input = page.getByRole('textbox', { name: 'Scenario name', exact: true });
   await input.fill(name); await input.press('Enter');
   await page.getByRole('button', { name: 'Save in this browser', exact: true }).click();

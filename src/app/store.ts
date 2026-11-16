@@ -68,7 +68,8 @@ export interface State {
   preferences: PreferenceAnswers;
   settingsOpen?: boolean;
   /** a row to scroll to and highlight when Settings opens (a deep link from the point of use) */
-  settingsFocus?: RowId | null;
+  /** a Settings row to scroll to on opening: a setting, `part:<feature>` or `own` (the user's own choices) */
+  settingsFocus?: RowId | `part:${string}` | 'own' | null;
   preferenceAsk: PreferenceAsk | null;
   preferenceFor: Record<string, string> | null;
   /** per-election work kept while switching elections (scenario + undo history) */
@@ -315,6 +316,30 @@ function keepOfficialPalette() {
   if (!s || state.reference || scenarioKey() !== 'official') return;
   try { setRoomy(`israel-elections:appearance:${s.electionId}`, JSON.stringify(s.log.map(e => e.action).filter(a => ACTION_CLASSIFICATION[a.type] === 'appearance' || ACTION_CLASSIFICATION[a.type] === 'view' || a.type === 'setListMeta' && Object.keys(a.patch).every(k => k === 'color')))); }
   catch { /* workspace/save can still retain it */ }
+}
+/** A colour step of a kept official palette (not a grouping view choice). */
+const colourStep = (a: Action) => ACTION_CLASSIFICATION[a.type] === 'appearance' || a.type === 'setListMeta' && Object.keys(a.patch).every(k => k === 'color');
+/** Elections other than the open one whose official result keeps colours the user chose (Settings, Colours). */
+export function keptPalettes(): ElectionId[] {
+  const out: ElectionId[] = [];
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i) ?? '', m = /^israel-elections:appearance:(k\d+)$/.exec(key);
+      if (!m || m[1] === state.scenario?.electionId) continue;
+      const steps: unknown = JSON.parse(localStorage.getItem(key) ?? '[]');
+      if (Array.isArray(steps) && steps.some(a => validAction(a) && colourStep(a as Action) && (a as Action).type !== 'resetColors')) out.push(m[1] as ElectionId);
+    }
+  } catch { /* storage unreadable: nothing listed */ }
+  return out.sort((a, b) => Number(b.slice(1)) - Number(a.slice(1)));
+}
+/** Forgets the colours kept for another election's official result; its grouping view choices stay. */
+export function forgetPalette(id: ElectionId) {
+  const key = `israel-elections:appearance:${id}`;
+  try {
+    const steps: unknown = JSON.parse(localStorage.getItem(key) ?? '[]');
+    const kept = Array.isArray(steps) ? steps.filter(a => validAction(a) && !colourStep(a as Action)) : [];
+    if (kept.length) localStorage.setItem(key, JSON.stringify(kept)); else localStorage.removeItem(key);
+  } catch { /* nothing to forget */ }
 }
 export function useStore<T>(sel: (s: State) => T): T {
   const snap = () => sel(state);
@@ -817,23 +842,38 @@ export function useLevel() {
 }
 
 /** Switches the interface level (top bar and Settings). Where added votes come from is asked at every level, so a
- *  level change keeps the answer in force (owner, 9 Nov 2026; ADR 0013 addendum). A level clears the Custom choices;
- *  that is never silent: a message says so, and its Undo brings back the same choices on the same base level. */
+ *  level change keeps the answer in force (owner, 9 Nov 2026; ADR 0013 addendum). The user's own choices (a tool or
+ *  detail added to or taken from a level) are never cleared by a level change (owner, 16 Nov 2026: his own settings
+ *  are never overwritten); they are seen and undone in Settings. */
 export function setLevel(level: Level) {
-  const before = { level: state.level, customFeatures: state.customFeatures };
-  setState({ level, customFeatures: null });
-  if (!before.customFeatures) return;
-  const he = state.lang === 'he';
-  toast('info', he ? 'הבחירות ברמה המותאמת נוקו' : 'Custom choices cleared', { label: he ? 'ביטול' : 'Undo', run: () => setState(before) });
+  setState({ level });
 }
 export function featureVisibility(id: FeatureId): Visibility {
   return state.customFeatures?.[id] ?? PRESETS[state.level][id];
 }
-export function keepFeature(id: FeatureId, visibility: Visibility = 'show') {
-  setState({ customFeatures: { ...state.customFeatures, [id]: visibility } });
+/** One of the user's own choices: a value equal to what the level gives anyway is no choice, so it is dropped. */
+export function setFeature(id: FeatureId, visibility: Visibility) {
+  const { [id]: _was, ...rest } = state.customFeatures ?? {};
+  const next = visibility === PRESETS[state.level][id] ? rest : { ...rest, [id]: visibility };
+  setState({ customFeatures: Object.keys(next).length ? next : null });
+}
+/** "Keep this visible" beside a folded section, and "Add to this level" for a tool of another level. */
+export function keepFeature(id: FeatureId, visibility: Visibility = 'show') { setFeature(id, visibility); }
+/** Clears every own choice, with Undo. */
+export function clearOwnChoices(ids?: readonly FeatureId[]) {
+  const before = state.customFeatures;
+  if (!before) return;
+  const next = ids ? Object.fromEntries(Object.entries(before).filter(([k]) => !ids.includes(k as FeatureId))) : {};
+  setState({ customFeatures: Object.keys(next).length ? next : null });
+  const he = state.lang === 'he';
+  toast('info', he ? 'הבחירות שלכם נוקו' : 'Your choices cleared', { label: he ? 'ביטול' : 'Undo', run: () => setState({ customFeatures: before }) });
 }
 export function useFeature(id: FeatureId) {
   return useStore(st => st.customFeatures?.[id] ?? PRESETS[st.level][id]);
+}
+/** A detail with no folded form (features.ts SHOW_OR_HIDE): shown or not. */
+export function useOn(id: FeatureId) {
+  return useStore(st => (st.customFeatures?.[id] ?? PRESETS[st.level][id]) === 'show');
 }
 /** A tool or page set to Hidden on the Custom page is not offered anywhere: no tab, and no link that opens it. */
 export function useShown(id: FeatureId) {

@@ -1,7 +1,6 @@
 import {inkOn} from '../data/colourGuard.ts';
 import { Info } from './components/ui.tsx';
 import { BoardChoices } from './components/BoardChoices.tsx';
-import { CustomPage } from './components/Feature.tsx';
 import { TabRow } from './components/TabRow.tsx';
 import { TOOL_FEATURES, PRESETS, RANK, featureLabel, type Preset } from './features.ts';
 import { electionContext } from '../data/electionContext.ts';
@@ -197,7 +196,6 @@ function Shell() {
   const baseR = allocationOf(base);
   const issues = scenarioIssues(s, r);
   const label = (id: Tab) => L(...featureLabel(id));
-  const customPage = toolNow === 'custom';
   // Side by side is a page opened from the comparison strip, not a tab (owner, 12 Nov 2026, C5b)
   const sideBySide = toolNow === 'compare' && customFeatures?.compare !== 'hidden';
   // a tool set to Hidden (Custom) is never shown, also when it was the page last open
@@ -217,13 +215,13 @@ function Shell() {
     <div className={`app ${preview ? 'board-preview' : ''}`} data-coloured={tool !== 'after' && resultChanges(committed, base).length ? '' : undefined} style={{ ['--scenario-color' as string]: tool !== 'after' && resultChanges(committed, base).length ? liveScenarioColor(committed, saved) : undefined, ['--scenario-ink' as string]:inkOn(liveScenarioColor(committed,saved)) }}>
       <TopBar s={pmOnly ? null : committed} r={cr} ds={ds} baseR={baseR} pmContestId={pmContestId} onContestChange={setPMContestId} />
       {pmOnly ? <main className="work"><PMResult contest={pmOnly} onKnesset={() => setPMContestId(null)} /></main> : <>
-      <TabRow tools={availableTools} level={level} selected={customPage || sideBySide ? null : tool} label={(id) => label(id as Tab)}
+      <TabRow tools={availableTools} level={level} selected={sideBySide ? null : tool} label={(id) => label(id as Tab)}
         onOpen={(id) => { forgetFailedCode(); openTool(id as Tab); }} onKey={(id) => setState({ tool: id as Tab })} onPrefetch={(id) => prefetchTab(id as Tab)} />
       {tool !== 'after' && <ChangeSummary s={committed} r={cr} base={base} baseR={baseR} ds={ds} />}
-      {!customPage && <CompareStrip s={committed} />}
+      <CompareStrip s={committed} />
       <CopyHost />
       <main className="work">
-        {customPage ? <CustomPage /> : !sideBySide && tool === 'board' ? (
+        {!sideBySide && tool === 'board' ? (
           <div className={`board ${selected || blocPanel ? 'with-panel' : ''}`}>
             <ErrorBoundary label={L('Lists', 'רשימות')} resetKey={s}><ListBars s={s} r={r} base={base} baseR={baseR} /></ErrorBoundary>
             <div className="center"><BoardChoices s={s} />

@@ -1,4 +1,5 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
+import { ToolLevelAsk } from './ToolLevelAsk.tsx';
 import { LEVEL_LABELS, RANK, type Preset } from '../features.ts';
 import { useL, useLang } from '../i18n.ts';
 import { groupTabs } from '../tabGroups.ts';
@@ -10,19 +11,21 @@ import { textZoom } from '../textScale.ts';
 type Tool = { id: string; level: Preset; muted: boolean };
 /** The tools strip: every tool by name under three small headings ("Your scenario", "What happened", "How it
  *  works"). Each heading names a tab list of its own; the strip as a whole is still one Tab stop, and the arrow keys
- *  run through every tab across the headings. Tools above the current level (or set to Collapsed on the Custom page)
- *  stay listed, muted, at the end of their heading's tabs. On a phone the headings become three buttons above the sideways-scrolling strip. */
+ *  run through every tab across the headings. Tools above the current level (or greyed out by the user in Settings)
+ *  stay listed, greyed out, at the end of their heading's tabs; choosing one asks whether to switch level or add it to
+ *  this level (owner, 16 Nov 2026), so no "More in other levels" words are needed. On a phone the headings become three buttons above the sideways-scrolling strip. */
 export function TabRow({ tools, level, selected, label, onOpen, onKey, onPrefetch }: {
   tools: readonly Tool[]; level: Preset; selected: string | null; label: (id: string) => string;
   onOpen: (id: string) => void; onKey: (id: string) => void; onPrefetch: (id: string) => void;
 }) {
   const L = useL(), lang = useLang();
+  const [ask, setAsk] = useState<Tool | null>(null);
   const strip = useRef<HTMLDivElement>(null);
   // one stable callback: a new function each render would tear down and rebuild the observers on every render
   const stripRef = useCallback((el: HTMLDivElement | null) => { strip.current = el; return trackTabOverflow(el); }, []);
   const locked = (t: Tool) => t.muted;
-  // said after a muted tool's name: the level it belongs to, or Collapsed when a Custom choice put it there
-  const why = (t: Tool) => RANK[t.level] > RANK[level] ? L(...LEVEL_LABELS[t.level]) : L('Collapsed', 'מכווץ');
+  // said after a greyed tool's name: the level it belongs to, or that the user greyed it out
+  const why = (t: Tool) => RANK[t.level] > RANK[level] ? L(...LEVEL_LABELS[t.level]) : L('Greyed out', 'באפור');
   // this level's tools first under each heading, then the others (never hidden)
   const groups = groupTabs(tools).map(g => ({ ...g, tabs: [...g.tabs.filter(t => !locked(t)), ...g.tabs.filter(locked)] }));
   const ordered = groups.flatMap(g => g.tabs);
@@ -39,22 +42,21 @@ export function TabRow({ tools, level, selected, label, onOpen, onKey, onPrefetc
       onClick={() => jump(g.id)}>{L(...g.label)}</button>)}</div>
     <div ref={stripRef} className="tabs tab-strip">
       {groups.map(g => {
-        const firstLocked = g.tabs.findIndex(locked);
         return <div key={g.id} className="tab-group" data-tab-group={g.id}>
           <span className="tab-group-head" id={`tab-group-${g.id}`}>{L(...g.label)}</span>
           <div className="tab-group-tabs" role="tablist" aria-labelledby={`tab-group-${g.id}`}>
-            {g.tabs.map((t, i) => [
-              i === firstLocked ? <span key="more" className="more-label" aria-hidden>{L('More in other levels', 'עוד ברמות אחרות')}</span> : null,
+            {g.tabs.map((t) => [
               <button key={t.id} id={`tab-${t.id}`} role="tab" aria-selected={selected === t.id} aria-controls="analysis-panel" tabIndex={stop === t.id ? 0 : -1}
                 className={locked(t) ? 'locked' : ''}
-                onClick={() => onOpen(t.id)} onPointerEnter={() => onPrefetch(t.id)} onFocus={() => onPrefetch(t.id)}
+                onClick={() => locked(t) && selected !== t.id ? setAsk(t) : onOpen(t.id)} onPointerEnter={() => onPrefetch(t.id)} onFocus={() => onPrefetch(t.id)}
                 onKeyDown={(e) => {
                   const rtl = lang === 'he', at = ordered.indexOf(t);
                   const next = e.key === 'Home' ? 0 : e.key === 'End' ? ordered.length - 1
                     : e.key === (rtl ? 'ArrowLeft' : 'ArrowRight') ? (at + 1) % ordered.length
                     : e.key === (rtl ? 'ArrowRight' : 'ArrowLeft') ? (at - 1 + ordered.length) % ordered.length : -1;
                   if (next < 0) return;
-                  e.preventDefault(); onKey(ordered[next].id);
+                  // arrows move onto a greyed tool without opening it: Enter asks first
+                  e.preventDefault(); if (!locked(ordered[next])) onKey(ordered[next].id);
                   (document.getElementById(`tab-${ordered[next].id}`) as HTMLElement | null)?.focus();
                 }}>{label(t.id)}{locked(t) && <span className="sr-only"> ({why(t)})</span>}</button>,
             ])}
@@ -62,6 +64,7 @@ export function TabRow({ tools, level, selected, label, onOpen, onKey, onPrefetc
         </div>;
       })}
     </div>
+    {ask && <ToolLevelAsk tool={ask.id} toolLevel={ask.level} name={label(ask.id)} onOpen={() => onOpen(ask.id)} onClose={() => setAsk(null)} />}
   </nav>;
 }
 

@@ -2,6 +2,7 @@
 // number): key numbers at Simple, the full block and the all-elections chart from Standard, missing early figures
 // said in words, edits marked against the official result, Hebrew charts left to right, and readable contrast.
 import { expect, test, type Page } from '@playwright/test';
+import { openTool } from './openTool.ts';
 import { choose } from './choices.ts';
 
 async function open(page: Page, { lang = 'en', level = 'standard', election = 'k26', width = 1500 }: { lang?: 'en' | 'he'; level?: string; election?: string; width?: number } = {}) {
@@ -14,7 +15,7 @@ async function open(page: Page, { lang = 'en', level = 'standard', election = 'k
   }, [lang, level] as const);
   await page.goto('/');
   if (election !== 'k26') await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), election);
-  await page.locator('#tab-turnout').click();
+  await openTool(page, 'turnout');
   return page.locator('.tn-facts');
 }
 const fact = (facts: ReturnType<Page['locator']>, id: string) => facts.locator(`[data-fact="${id}"]`);

@@ -29,7 +29,7 @@ import type { AnalysisTask } from '../analysisTasks.ts';
 import { listLabel, referenceLabel, warningText } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtRat, fmtSigned, seatsText } from '../format.ts';
-import { dispatch, dispatchMany, getState, useStore, previewAction, setState, toast, useFeature, useShown, useLevel, useVoteSource, useDigits, useSetting, withSource } from '../store.ts';
+import { dispatch, dispatchMany, getState, useStore, previewAction, setState, toast, useFeature, useShown, useVoteSource, useDigits, useSetting, withSource } from '../store.ts';
 import { clampTarget, deltaAction, stayingHome, toVoteSource, type SourceChoice, votesForShare, voteSourceLabel } from '../voteEdit.ts';
 import { Candidates, notSeatedReasons } from './Candidates.tsx';
 import { JointParties } from './JointParties.tsx';
@@ -118,7 +118,8 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
   const baseLabel = referenceLabel(base === reference ? reference : null, lang);
   const digits = useDigits();
   const hoverPreviews = useSetting('hoverPreviews');
-  const { simple } = useLevel();
+  // the short lines stand in for their sections while those are folded or hidden
+  const shortSource = useFeature('voteSource') !== 'show', shortAgreement = useFeature('agreements') !== 'show';
   const src = useVoteSource();
   const lr = r.lists.find((x) => x.id === l.id)!;
   const previous = useRef({ id: l.id, qualified: lr.qualified, withdrawn: l.withdrawn });
@@ -281,7 +282,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
           <p className="tiny quick-consequence" role="status">{consequence}</p></>}
           <LiveSlider key={l.id} l={l} ceiling={Number(r.totalValid)} onCommit={(v) => commit((from) => editTo(v, from))} />
           {src.kind === 'new' && <p className="tiny ink2" style={{ margin: 0 }}>{L(`Staying home: ${fmtInt(stayingHome(s))}`, `לא הצביעו: ${fmtInt(stayingHome(s))}`)}</p>}
-          {simple && <p className="tiny ink2" style={{ margin: 0 }}>{sourceName}</p>}
+          {shortSource && <p className="tiny ink2" style={{ margin: 0 }}>{sourceName}</p>}
           </fieldset>
           <Feature id="voteSource"><SourcePicker s={s} l={l} /></Feature>
           <fieldset disabled={l.withdrawn} style={{ border: 0, padding: 0, margin: 0, minWidth: 0 }}>
@@ -298,7 +299,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
 
       {crossing !== null && Number(s.rules.thresholdPct) > 0 && <p className="small crossing">{crossing ? L('Passed the threshold', 'עברה את אחוז החסימה') : L('Below the threshold', 'מתחת לאחוז החסימה')} <Info title={L('Allocation recalculated', 'החלוקה חושבה מחדש')}>{L('Qualifying votes and every allocation were recalculated.', 'הקולות המשתתפים וכל החלוקה חושבו מחדש.')}</Info> {walkShown && <button className="table-action" onClick={() => setState({ tool: 'walk', selectedListId: null })}>{L(`${featureLabel('walk')[0]}: threshold`, `${featureLabel('walk')[1]}: אחוז החסימה`)}</button>}</p>}
 
-      {simple && agr && <p className="small">{L('With ', 'עם ')}{nameOf(partnerId)} · {agrStatus?.active ? L('in force', 'בתוקף') : !agr.enabled ? L('switched off', 'כבוי') : L('no effect', 'ללא השפעה')}</p>}
+      {shortAgreement && agr && <p className="small">{L('With ', 'עם ')}{nameOf(partnerId)} · {agrStatus?.active ? L('in force', 'בתוקף') : !agr.enabled ? L('switched off', 'כבוי') : L('no effect', 'ללא השפעה')}</p>}
       <Feature id="agreements">
         <section>
           <StartFrom s={s} part="agreements" />
@@ -366,9 +367,8 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
             <label className="field">{L('Short name (Hebrew)', 'שם מקוצר')}<TextField value={l.shortHe} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { shortHe: v } })} /></label>
             <label className="field">{L('Short name (English)', 'שם באנגלית')}<TextField value={l.shortEn ?? ''} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { shortEn: v || null } })} /></label>
             <label className="field">{L('Ballot letters', 'אותיות הרשימה')}<EditMarker s={s} path={['lists', l.id, 'letters']} /><TextField value={l.letters} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { letters: v } })} /></label>
-            <ColourPicker label={L('Colour', 'צבע')} value={l.color} onChange={color=>dispatch({type:'setListMeta',listId:l.id,patch:{color}})} others={s.lists.filter(x=>x.id!==l.id&&!x.withdrawn).map(x=>({color:x.color,name:listLabel(x,lang)}))}/>
-            {l.parties?.map(p=><ColourPicker key={p.id} label={L('Party colour: ','צבע מפלגה: ')+(lang==='he'?p.nameHe:p.nameEn)} value={p.customColor&&p.color?p.color:partyDisplayColor(l,p.id)} onChange={color=>dispatch({type:'setPartyColor',listId:l.id,partyId:p.id,color})} backgrounds={[]} minDeltaE={20} others={(l.parties??[]).filter(x=>x.id!==p.id).map(x=>({color:partyDisplayColor(l,x.id),name:lang==='he'?x.nameHe:x.nameEn}))}/>)}
-            <button className="btn small" onClick={()=>dispatch({type:'resetColors'})}>{L('Reset colours','איפוס צבעים')}</button>
+            <ColourPicker label={L('Colour', 'צבע')} value={l.color} onChange={color=>dispatch({type:'setListMeta',listId:l.id,patch:{color}})} onReset={baseList&&baseList.color!==l.color?()=>dispatch({type:'resetColors',only:{list:l.id}}):undefined} others={s.lists.filter(x=>x.id!==l.id&&!x.withdrawn).map(x=>({color:x.color,name:listLabel(x,lang)}))}/>
+            {l.parties?.map(p=><ColourPicker key={p.id} label={L('Party colour: ','צבע מפלגה: ')+(lang==='he'?p.nameHe:p.nameEn)} value={p.customColor&&p.color?p.color:partyDisplayColor(l,p.id)} onChange={color=>dispatch({type:'setPartyColor',listId:l.id,partyId:p.id,color})} onReset={p.customColor?()=>dispatch({type:'resetColors',only:{list:l.id,party:p.id}}):undefined} backgrounds={[]} minDeltaE={20} others={(l.parties??[]).filter(x=>x.id!==p.id).map(x=>({color:partyDisplayColor(l,x.id),name:lang==='he'?x.nameHe:x.nameEn}))}/>)}
             <label className="field" style={{ gridColumn: '1 / -1' }}>{L('Full name', 'שם מלא')}<EditMarker s={s} path={['lists', l.id, 'nameHe']} /><TextField value={l.nameHe} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { nameHe: v } })} /></label>
           </div>
         </section></Feature>

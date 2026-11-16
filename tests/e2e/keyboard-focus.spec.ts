@@ -135,15 +135,15 @@ for (const lang of ['en', 'he'] as const) {
     await open(page, lang, { width: 390 });
     const button = page.locator('.band .band-menu-btn');
     await button.click();
-    await expect(page.locator('#phone-menu')).toBeVisible();
+    await expect(page.locator('#app-menu')).toBeVisible();
     // Shift+Tab before its start goes to the page behind it: the menu closes rather than hide the focused control
-    await page.locator('#phone-menu').getByRole('button').first().focus();
+    await page.locator('#app-menu').getByRole('button').first().focus();
     await page.keyboard.press('Shift+Tab');
-    await expect(page.locator('#phone-menu')).toHaveCount(0);
+    await expect(page.locator('#app-menu')).toHaveCount(0);
     // the Menu button is part of it: focus there keeps it open
     await button.click();
     await button.focus();
-    await expect(page.locator('#phone-menu')).toBeVisible();
+    await expect(page.locator('#app-menu')).toBeVisible();
   });
 
   test(`Tab past an edit marker goes on in the page · ${lang}`, async ({ page }) => {
@@ -164,7 +164,7 @@ for (const lang of ['en', 'he'] as const) {
     await marker.focus(); await page.keyboard.press('Tab'); await page.keyboard.press('Shift+Tab');
     await expect(marker).toBeFocused();
     // the rest of the board is still reached by Tab from the top
-    await page.locator('.band .tool').first().focus();
+    await page.locator('.band .tool:visible').first().focus();
     const edit = page.getByRole('button', { name: T(lang, 'Edit blocs', 'עריכת גושים'), exact: true });
     let reached = false;
     for (let i = 0; i < 160 && !reached; i++) { await page.keyboard.press('Tab'); reached = await edit.evaluate(e => e === document.activeElement); }
@@ -241,7 +241,8 @@ for (const lang of ['en', 'he'] as const) {
 
 for (const theme of ['light', 'dark'] as const) test(`focus ring on the band and dimmed rows keep their contrast · ${theme}`, async ({ page }) => {
   await open(page, 'en', { theme });
-  await page.locator('.band .tool').first().focus();
+  // (the three-lines Tools button is not shown on a tall desktop screen, so the first shown one)
+  await page.locator('.band .tool:visible').first().focus();
   await page.keyboard.press('Shift+Tab'); await page.keyboard.press('Tab');
   const [ring, band] = await page.evaluate(() => [getComputedStyle(document.activeElement!).outlineColor, getComputedStyle(document.querySelector('.band')!).backgroundColor]);
   expect(contrast(ring, band)).toBeGreaterThanOrEqual(3);

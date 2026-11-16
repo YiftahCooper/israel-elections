@@ -168,7 +168,8 @@ export type Action =
   | { type: 'familyOperation'; definition: Family; operation: 'scale'; allocations: {listId:string; before:number; votes:number}[]; source: SourceChoice; target:number; registeredDelta:number }
   | { type: 'setBlocAppearance'; blocs: BlocDef[] }
   | { type: 'setPartyColor'; listId: string; partyId: string; color: string }
-  | { type: 'resetColors' }
+  /** every colour back to the official one; `only` names one list, party or bloc (16 Nov 2026: a reset beside each colour) */
+  | { type: 'resetColors'; only?: { list?: string; party?: string; bloc?: string } }
   | { type: 'setIdentityColor'; color: string }
   | { type: 'setCoalition'; coalition: CoalitionChoices }
   | { type: 'startPart'; part: Part; source: 'official' | 'saved' | 'blank' | 'preset'; snapshot?: PartSnapshot; name?: string; presetId?: string; listId?: string }
@@ -405,7 +406,7 @@ const actionFields: Record<Action['type'], Check> = {
   familyOperation: (x) => record(x) && validFamily(x.definition) && (x.operation === 'group' ? optional(string)(x.name) && record(x.placements) && Object.values(x.placements).every(v => ['selected','mixed','other'].includes(String(v))) : x.operation === 'scale' && array(shape({listId:string,before:whole,votes:whole}))(x.allocations) && signedWhole(x.registeredDelta) && whole(x.target) && shape({kind:oneOf('new','proportional','transfer'),listId:optional(string)})(x.source)),
   setBlocAppearance: shape({ blocs: array(bloc) }),
   setPartyColor: shape({ listId: string, partyId: string, color: string }),
-  resetColors: shape({}),
+  resetColors: shape({ only: optional(partial({ list: string, party: string, bloc: string })) }),
   setIdentityColor: shape({ color: isHexColour }),
   setCoalition: shape({ coalition }),
   startPart: shape({ part: oneOf('votes', 'identity', 'structure', 'agreements', 'blocs', 'coalitions', 'candidates', 'rules', 'totals'), source: oneOf('official', 'saved', 'blank', 'preset'), snapshot: optional(partSnapshotCheck), name: optional(string), presetId: optional(string), listId: optional(string) }),

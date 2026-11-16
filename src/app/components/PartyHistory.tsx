@@ -11,7 +11,7 @@ import { HISTORY, electionIndex, electionPosition, historyList, listShort, party
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct, seatsText, PP } from '../format.ts';
 import { hebrewPrefix as attach, hebrewPrefixName } from '../hebrewPrefix.ts';
-import { useDigits, useLevel, useSetting } from '../store.ts';
+import { useDigits, useOn, useSetting } from '../store.ts';
 import { Info, Slip } from './ui.tsx';
 import { SeatDelta } from './SeatDelta.tsx';
 import { percent, rationalPoints } from './Percentage.tsx';
@@ -70,7 +70,7 @@ const dateText = (r: Relation) => r.dateTo ? `${year(r.date)}–${year(r.dateTo)
 
 function Evidence({ r }: { r: Relation }) {
   const L = useL(), lang = useLang();
-  const { expert } = useLevel();
+  const expert = useOn('historySources');
   return <Info title={L('Evidence', 'ראיות')} label={L(`Evidence: ${eventText(r, 'en')}`, `ראיות: ${eventText(r, 'he')}`)}>
     <span className="ph-why">
       <span>{eventText(r, lang)} · <CertChip c={r.certainty} /></span>
@@ -397,7 +397,7 @@ export function CompareNote({ c, currentName }: { c: Comparison | null; currentN
 /** The evidence behind a comparison: the earlier lists, why, how sure. Used in the panel and in Compare. */
 export function ComparisonWhy({ c }: { c: Comparison }) {
   const L = useL(), lang = useLang();
-  const { expert } = useLevel();
+  const expert = useOn('historySources');
   const py = prevYear(c, lang);
   return <span className="ph-why">
     <span>{c.kind === 'group'
@@ -501,7 +501,7 @@ function PointCard({ p, identity }: { p: SeriesPoint; identity: Identity }) {
 /** The full view: a wide sheet (full screen on phones). `parties`: the chips (a joint list's parties). */
 export function HistorySheet({ parties, initial, electionIdx, onClose }: { parties: string[]; initial: string; electionIdx: number; onClose: () => void }) {
   const L = useL(), lang = useLang(), digits = useDigits();
-  const { expert } = useLevel();
+  const expert = useOn('historySources');
   const preferTables = useSetting('preferTables');
   const [pid, setPid] = useState(initial);
   const [metric, setMetric] = useState<'seats' | 'share'>('seats');

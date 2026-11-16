@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { barLanguage, closeBarMenu, openBarMenu } from './barMenu.ts';
+import { barLanguage, closeBarMenu, openBarMenu, openScenarioMenu } from './barMenu.ts';
 import { choose } from './choices.ts';
 
 test.beforeEach(async ({ page }) => {
@@ -15,11 +15,13 @@ for (const width of [390, 1024, 1500]) test(`scenario and header slots stay usab
   for (const id of ['k26', 'k25', 'k12', 'k1']) {
     await choose(page.getByRole('button', { name: 'Election', exact: true }), id);
     heights.push((await page.locator('.band').boundingBox())!.height);
-    // phones (owner, 9 Nov 2026): a one-row bar whose status label stands for the scenario; level and switcher in its Menu
-    if (width === 390) { await expect(page.locator('.band .band-status')).toBeVisible(); await openBarMenu(page); }
+    // phones (owner, 9 Nov 2026): a one-row bar whose status label opens the scenario (16 Nov: its own panel; the
+    // level is in the three-lines panel)
+    if (width === 390) { await expect(page.locator('.band .band-status')).toBeVisible(); await openScenarioMenu(page); }
     const scenario = page.locator(width === 390 ? '#phone-menu .scenario-switcher' : '.band .scenario-switcher');
     expect((await scenario.boundingBox())!.width).toBeGreaterThan(200);
     expect(await scenario.locator('.choice-current').evaluate(e => e.scrollWidth <= e.clientWidth + 1)).toBeTruthy();
+    if (width === 390) await openBarMenu(page);
     const levels = page.locator('.band-levels');
     expect(await levels.evaluate(e => [...e.children].every(x => Math.abs(x.getBoundingClientRect().top - e.firstElementChild!.getBoundingClientRect().top) < 5))).toBeTruthy();
     await closeBarMenu(page);
@@ -136,15 +138,16 @@ for (const width of [390, 1024, 1500]) test(`Hebrew header stays stable across e
 });
 
 
-test('active Custom keeps its phone label compact and its base accessible', async ({ page }) => {
+test('own choices keep the phone bar compact and are counted in the three-lines panel', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 1000 });
   const before = (await page.locator('.band').boundingBox())!.height;
-  // phones (owner, 9 Nov 2026): Custom is in the bar's Menu, named with its base there too
+  // 16 Nov 2026: the Custom level became own choices, counted by a chip beside the level buttons
   await openBarMenu(page);
-  await page.getByRole('button', { name: 'Custom', exact: true }).click();
-  await page.getByRole('group', { name: 'Charts', exact: true }).getByRole('button', { name: 'Hidden', exact: true }).click();
+  await page.locator('#app-menu').getByRole('button', { name: 'Settings', exact: true }).click();
+  await page.locator('[data-part="charts"]').getByRole('group', { name: 'Charts', exact: true }).getByRole('button', { name: 'Hidden', exact: true }).click();
+  await page.keyboard.press('Escape');
   await openBarMenu(page);
-  await expect(page.getByRole('button', { name: 'Custom · based on Expert', exact: true })).toBeVisible();
+  await expect(page.locator('#app-menu .band-own')).toHaveText('+1 own');
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
   expect((await page.locator('.band').boundingBox())!.height).toBe(before);
 });

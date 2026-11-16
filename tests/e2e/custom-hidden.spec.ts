@@ -1,9 +1,10 @@
 import { expect, test, type Page } from '@playwright/test';
+import { openTool } from './openTool.ts';
 import { choose } from './choices.ts';
-import { FEATURES, TOOL_FEATURES } from '../../src/app/features.ts';
+import { FEATURES, SHOW_OR_HIDE, TOOL_FEATURES } from '../../src/app/features.ts';
 
-// Audit 12 Nov 2026 (ax-screens-a-05): at the Custom level, Hidden leaves nothing to click, while Collapsed keeps the
-// disclosure. Every feature in features.ts is set to one of them, every screen that carries one is visited, and each
+// Audit 12 Nov 2026 (ax-screens-a-05): with the user's own choices (the Custom level until 16 Nov), Hidden leaves
+// nothing to click, while Collapsed keeps the disclosure. Every feature in features.ts is set to one of them, every screen that carries one is visited, and each
 // feature must be found where Collapsed puts it and nowhere at Hidden. A feature added to features.ts fails here until
 // a screen below shows it.
 type Vis = 'collapsed' | 'hidden';
@@ -37,9 +38,9 @@ async function visit(page: Page, vis: Vis): Promise<{ disclosures: Set<string>; 
   await list('Likud');
   await list('Religious Zionism');
   // the tools that carry features of their own, where the level offers them
-  if (await page.locator('#tab-families').count()) { await page.locator('#tab-families').click(); await expect(page.locator('#tool-panel')).toBeVisible(); await collect(); }
+  if (await page.locator('#tab-families').count()) { await openTool(page, 'families'); await expect(page.locator('#tool-panel')).toBeVisible(); await collect(); }
   if (await page.locator('#tab-structure').count()) {
-    await page.locator('#tab-structure').click();
+    await openTool(page, 'structure');
     const chips = page.locator('#tool-panel [role=group][aria-label="Lists"] .chip');
     await chips.nth(0).click(); await chips.nth(1).click();
     await collect();
@@ -61,6 +62,8 @@ test('Collapsed: every feature keeps a way to open it', async ({ page }) => {
   for (const [id] of FEATURES) {
     if (TOOLS.has(id)) await expect(page.locator(`#tab-${id}`), id).toHaveCount(1);
     else if (id === 'compare') expect(side, id).toBe(true);
+    // a detail that used to follow the level alone (16 Nov) has no folded form: collapsed is simply off
+    else if (SHOW_OR_HIDE.includes(id)) expect(disclosures.has(id), id).toBe(false);
     else expect(disclosures.has(id), id).toBe(true);
   }
 });

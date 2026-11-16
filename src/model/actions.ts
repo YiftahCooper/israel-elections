@@ -191,6 +191,15 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       const base=ctx.base;
       need(base,'no-base',M.noOfficial);
       const scheme=s.blocSchemes?.find(g=>g.id===s.blocSchemeId);
+      const only=action.only;
+      if(only){
+        // one colour: a list's own (its parties keep theirs), one party in a list, or one bloc
+        if(only.party){const was=base!.lists.flatMap(x=>x.parties??[]).find(x=>x.id===only.party)?.color;
+          s=replaceList(s,only.list??'',l=>({...l,parties:l.parties?.map(p=>p.id===only.party?{...p,color:was,customColor:undefined}:p)}));}
+        else if(only.list){const was=base!.lists.find(x=>x.id===only.list)?.color??'#7d8791';s=replaceList(s,only.list,l=>({...l,color:was}));}
+        else if(only.bloc){const was=(scheme?.blocs??base!.blocs).find(x=>x.id===only.bloc)?.color??'#7d8791';s={...s,blocs:s.blocs.map(b=>b.id===only.bloc?{...b,color:was}:b)};}
+        break;
+      }
       s={...s,lists:s.lists.map(l=>{const b=base!.lists.find(x=>x.id===l.id);return {...l,color:b?.color??'#7d8791',parties:l.parties?.map(p=>({...p,color:base!.lists.flatMap(x=>x.parties??[]).find(x=>x.id===p.id)?.color,customColor:undefined}))};}),blocs:s.blocs.map(b=>({...b,color:(scheme?.blocs??base!.blocs).find(x=>x.id===b.id)?.color??'#7d8791'}))};break;
     }
     case 'setIdentityColor':

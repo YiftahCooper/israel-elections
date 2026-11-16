@@ -25,7 +25,7 @@ import type { Scenario, SimList } from '../../model/scenario.ts';
 import { comparisonGroups, officialSeatsFor, electedOf, listLabel, resultChanges } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct, seatsText } from '../format.ts';
-import { setState, useDigits, useLevel, useSetting, useStore } from '../store.ts';
+import { setState, useDigits, useOn, useSetting, useStore } from '../store.ts';
 import { blocDisplayOrder } from '../blocOrder.ts';
 import { partyListed } from '../seatlessParties.ts';
 import { DisclosureToggle, Slip } from './ui.tsx';
@@ -40,8 +40,8 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   const lang = useLang();
   const baseLabel = referenceLabel(reference, lang);
   const digits = useDigits();
-  const { standard } = useLevel();
-  const lastTime = useSetting('lastTimeRows') && standard;
+  const marks = useOn('agreementMarks'), copyButton = useOn('copyVotesButton');
+  const lastTime = useSetting('lastTimeRows');
   const voteCounts = useSetting('voteCounts'), seatlessLists = useSetting('seatlessLists'), withdrawnLists = useSetting('withdrawnLists');
   const listOrder = useSetting('listOrder'), dimOthers = useSetting('dimUnselected');
   const jointListParties = useSetting('jointListParties');
@@ -97,7 +97,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
     return seatlessLists === 'all' || seatlessLists === 'over' && (l.votes >= total * 0.005 || b.votes >= baseTotal * 0.005);
   });
   const belowThreshold = thr > 0 && outside.every((x) => !x.lr.qualified);
-  const anyAgreement = standard && s.agreements.some((a) => a.enabled);
+  const anyAgreement = marks && s.agreements.some((a) => a.enabled);
   const hidden = outside.length - visibleOut.length;
   const jointLook = useSetting('jointListSeats');
   const componentSeats = seatOrder(s,r,'list',jointLook);
@@ -116,7 +116,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
     const family = familyRows.find(x => x.id === l.id)?.family;
     const open = selected === l.id;
     const d = was === null ? 0 : lr.seats - was;
-    const agr = standard ? s.agreements.find((a) => a.members.includes(l.id) && a.enabled) : undefined;
+    const agr = marks ? s.agreements.find((a) => a.members.includes(l.id) && a.enabled) : undefined;
     const partner = agr ? s.lists.find((x) => x.id === agr.members.find((m) => m !== l.id)) : undefined;
     const out = !lr.qualified;
     const line = cmp?.rows.byList.get(l.id);
@@ -197,9 +197,9 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
         {/* the partner mark is explained once, not on every row */}
         {anyAgreement && <span className="tiny muted lb-key" aria-hidden>⇄ {L('surplus-vote partner', 'שותפה להסכם עודפים')}</span>}
         <span className="spacer" /><span className="small muted">{L('seats', 'מנדטים')}</span></header>
-      {cmp && (refBars || standard) && <div className="cmpm-listbar">
+      {cmp && (refBars || copyButton) && <div className="cmpm-listbar">
         {refBars && <RefLegend work={cmp.ref.same ? L('Your work', 'העבודה שלכם') : yearOf(elections, s.electionId, lang)} label={cmp.label} />}
-        {standard && <button type="button" className="btn small cmpm-copy-all" onClick={() => askCopy({ lists: null })}>{L('Copy votes…', 'העתקת קולות…')}</button>}
+        {copyButton && <button type="button" className="btn small cmpm-copy-all" onClick={() => askCopy({ lists: null })}>{L('Copy votes…', 'העתקת קולות…')}</button>}
       </div>}
       {groups.map(g => <p key={g.key} className="lb-group-comparison small ink2">{L(`Ran separately: together ${g.seatsB}, ${baseLabel.at} ${g.seatsA} as `, `רצו בנפרד: יחד ${g.seatsB}, ${baseLabel.at} ${g.seatsA} בתור `)}{g.aIds.map(id => listLabel(base.lists.find(l => l.id === id)!, lang)).join(' + ')}</p>)}
       <ol className="lb">

@@ -20,8 +20,9 @@ The three interface levels use the same exact engine, with the rules of the chos
 | **Expert** | Adds candidate and list identity editing, turnout, sensitivity, localities, rules and chamber options. Experimental methods include D’Hondt, Sainte-Laguë, modified Sainte-Laguë and largest remainder with a Droop quota. Separate runs also show vote counts. |
 
 Save & share (save in this browser, share links, import and export) is in the top bar at every level.
-Tools above your level stay in the tab strip, muted, and open when pressed. **Custom** lets you show,
-fold or hide each tool one by one.
+Tools above your level stay in the tab strip, greyed out; pressed, they offer to switch level or add the tool to
+yours. Settings lists every tool and detail under its level, to show, fold or hide one by one; your choices stay when
+you change level.
 
 Hebrew is the default, with right-to-left layout. English and light/dark themes are available.
 Info icons open a bilingual glossary with learn-more links to the law, CEC or

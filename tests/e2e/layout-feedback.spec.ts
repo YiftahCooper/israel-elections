@@ -61,7 +61,7 @@ for (const theme of ['light','dark']) for (const lang of ['en','he']) for (const
  const end=await page.locator('.board').evaluate(el=>el.getBoundingClientRect().bottom);
  expect(844-end).toBeLessThanOrEqual(29);
  await (await barPart(page, '.election-about summary')).click();
- await expect(page.locator('.band .independence-note, #phone-menu .independence-note')).toContainText(lang==='en'?'Independent election simulator':'סימולטור בחירות עצמאי');
+ await expect(page.locator('.band .independence-note, #app-menu .independence-note')).toContainText(lang==='en'?'Independent election simulator':'סימולטור בחירות עצמאי');
 });
 
 for(const width of [1500,390]) test(`chamber hover card stays inside a short viewport ${width}`,async({page})=>{

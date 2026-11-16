@@ -9,7 +9,7 @@ import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, PP } from '../format.ts';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
-import { setState, useDigits, useLevel, useStore } from '../store.ts';
+import { setState, useDigits, useOn, useStore } from '../store.ts';
 import { stayingHome, type SourceChoice } from '../voteEdit.ts';
 import { Info } from '../components/ui.tsx';
 import { COPY_MODE_DEFAULT, isDefaultCopyMode, planVotes, ratioText, type CopyMode, type CopyUnit, type Plan } from './copy.ts';
@@ -28,7 +28,7 @@ const valid = (x: SideModel['sc']) => x.lists.reduce((t, l) => t + l.votes, 0);
 
 export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClose: () => void; onDone: (plan: Plan & { ok: true }, req: CopyRequest) => void }) {
   const L = useL(), lang = useLang(), digits = useDigits();
-  const { simple, expert } = useLevel();
+  const simple = !useOn('copyMethods'), expert = useOn('copyChangeMethods');
   const voteSource = useStore((st) => st.voteSource);
   const [ticked, setTicked] = useState<Set<string>>(() => new Set(req.choices?.map((c) => c.key)));
   const units = req.choices ? req.choices.filter((c) => ticked.has(c.key)).map((c) => c.unit) : req.units;

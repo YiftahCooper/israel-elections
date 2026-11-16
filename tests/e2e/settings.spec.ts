@@ -19,7 +19,7 @@ async function open(page: Page, seed: Seed = {}, election?: string) {
 }
 // on a phone, Settings is in the bar's Menu (owner, 9 Nov 2026): the helper opens the menu first
 const gear = (page: Page, lang: 'en' | 'he' = 'en') => ({ click: async () => {
-  if (await page.locator('.band .band-menu-btn').count()) { await page.locator('.band .band-menu-btn').click(); await page.locator('#phone-menu').getByRole('button', { name: lang === 'en' ? 'Settings' : 'הגדרות', exact: true }).click(); }
+  if (await page.locator('.band .band-menu-btn').count()) { await page.locator('.band .band-menu-btn').click(); await page.locator('#app-menu').getByRole('button', { name: lang === 'en' ? 'Settings' : 'הגדרות', exact: true }).click(); }
   else await page.locator('.band').getByRole('button', { name: lang === 'en' ? 'Settings' : 'הגדרות', exact: true }).click();
 } });
 const dialog = (page: Page) => page.locator('.personal-settings');
@@ -39,9 +39,9 @@ test.describe('the Settings popup', () => {
     // the starter tip exists only at Simple
     await expect(row(page, 'starterTip')).toHaveCount(0);
     await expect(row(page, 'chamberLayout')).toBeAttached();
-    // Custom… still opens the feature list
-    await row(page, 'level').getByRole('button', { name: 'Custom…', exact: true }).click();
-    await expect(page.locator('.custom-feature').first()).toBeVisible();
+    // 16 Nov: no Custom… button; each level's tools and parts are rows under it
+    await expect(row(page, 'level').getByRole('button', { name: 'Custom…', exact: true })).toHaveCount(0);
+    await expect(dialog(page).locator('[data-tier="standard"] [data-part="charts"]')).toBeVisible();
   });
 
   for (const lang of ['en', 'he'] as const) test(`search finds rows in both languages, from every level · ${lang}`, async ({ page }) => {

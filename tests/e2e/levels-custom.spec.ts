@@ -2,7 +2,8 @@ import { expect, test, type Page } from '@playwright/test';
 import { choose } from './choices.ts';
 
 // Audit 12 Nov 2026, lane c-levels: what the Custom level and the level switch promise, held to what the app does.
-// Each test names the finding it protects.
+// Each test names the finding it protects. 16 Nov 2026: the Custom level became the user's own choices for a level,
+// kept across level changes; the tests below follow that.
 const start = async (page: Page, app: Record<string, unknown>, settings: Record<string, unknown> = {}, extra: Record<string, string> = {}, ready = '.lb-row') => {
   await page.addInitScript(({ app, settings, extra }) => {
     if (sessionStorage.getItem('seeded')) return;
@@ -19,29 +20,23 @@ const levelGroup = (page: Page) => page.locator('.band').getByRole('group', { na
 const listButton = (page: Page, name: string) => page.getByRole('region', { name: /^(Lists|הרשימות)$/ }).getByRole('button', { name, exact: true });
 const details = (page: Page) => page.getByRole('region', { name: /^(List details|פרטי רשימה)$/ });
 
-test('c-levels-02: Custom Show brings a tool into this level; Collapsed puts it with the other levels', async ({ page }) => {
+test('c-levels-02: an own Show brings a tool into this level', async ({ page }) => {
   await start(page, { level: 'simple', customFeatures: { charts: 'show', rules: 'show' } });
   for (const id of ['charts', 'rules']) {
     await expect(page.locator(`#tab-${id}`)).not.toHaveClass(/locked/);
-    // no "(Standard)" / "(Expert)" announced for a tool this level now shows
+    // no "(Greyed out)" announced for a tool this level now shows
     await expect(page.locator(`#tab-${id} .sr-only`)).toHaveCount(0);
   }
-  // listed before "More in other levels" under its heading
-  const before = (id: string) => page.locator(`#tab-${id}`).evaluate(t => {
-    const more = t.parentElement!.querySelector('.more-label');
-    return !more || !!(t.compareDocumentPosition(more) & Node.DOCUMENT_POSITION_FOLLOWING);
-  });
-  expect(await before('charts')).toBe(true);
-  expect(await before('rules')).toBe(true);
 });
 
-test('c-levels-02: Custom Collapsed mutes a tool of this level and says why', async ({ page }) => {
+test('c-levels-02: an own Greyed out mutes a tool of this level and says why', async ({ page }) => {
   await start(page, { level: 'expert', customFeatures: { rules: 'collapsed' } });
   await expect(page.locator('#tab-rules')).toHaveClass(/locked/);
-  await expect(page.locator('#tab-rules')).toHaveAccessibleName('Rules (Collapsed)');
+  await expect(page.locator('#tab-rules')).toHaveAccessibleName('Rules (Greyed out)');
   await expect(page.locator('#tab-charts')).not.toHaveClass(/locked/);
-  // still opens in full when pressed
+  // pressed, it asks, and Show it again opens it in full
   await page.locator('#tab-rules').click();
+  await page.getByRole('dialog', { name: 'Rules' }).getByRole('button', { name: 'Show it again', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Rules', exact: true })).toBeVisible();
 });
 
@@ -62,23 +57,16 @@ test('c-levels-03: a hidden tool has no way in (About, Save & share, a saved com
 });
 
 for (const lang of ['en', 'he'] as const) {
-  test(`c-levels-04: a level change that clears Custom says so and Undo brings it back (${lang})`, async ({ page }) => {
+  test(`c-levels-04: a level change keeps the own choices and says nothing (${lang})`, async ({ page }) => {
     const custom = { security: 'show', agreements: 'hidden' };
     await start(page, { lang, level: 'simple', customFeatures: custom });
     const H = await he(page);
-    await expect(page.locator('.band-custom')).toHaveAttribute('aria-pressed', 'true');
+    await expect(page.locator('.band-own')).toHaveText(H ? '+2 משלכם' : '+2 own');
     await levelGroup(page).getByRole('button', { name: H ? 'רגיל' : 'Standard', exact: true }).click();
-    const toast = page.locator('.toast');
-    await expect(toast).toContainText(H ? 'הבחירות ברמה המותאמת נוקו' : 'Custom choices cleared');
-    await expect(page.locator('.band-custom')).toHaveAttribute('aria-pressed', 'false');
-    // the Undo label is readable: its ink is not its background (it inherited the toast's light text on a light button)
-    const ink = await toast.locator('.toast-action').evaluate(b => { const c = getComputedStyle(b); return [c.color, c.backgroundColor]; });
-    expect(ink[0]).not.toBe(ink[1]);
-    await toast.getByRole('button', { name: H ? 'ביטול' : 'Undo', exact: true }).click();
-    await expect(page.locator('.band-custom')).toHaveAttribute('aria-pressed', 'true');
-    await expect(page.locator('.band-custom')).toContainText(H ? 'על בסיס פשוט' : 'based on Simple');
+    await expect(levelGroup(page).getByRole('button', { name: H ? 'רגיל' : 'Standard', exact: true })).toHaveAttribute('aria-pressed', 'true');
+    await expect(page.locator('.toast')).toHaveCount(0);
     const stored = await page.evaluate(() => JSON.parse(localStorage.getItem('israel-elections:v1')!));
-    expect(stored.level).toBe('simple');
+    expect(stored.level).toBe('standard');
     expect(stored.customFeatures).toEqual(custom);
   });
 }
@@ -90,15 +78,19 @@ test('c-levels-04: a level change with no Custom choices says nothing', async ({
   await expect(page.locator('.toast')).toHaveCount(0);
 });
 
-test('c-levels-08: Settings shows Custom as the current level, and leaving it says so', async ({ page }) => {
+test('c-levels-08: Settings shows the level pressed, and the own choices right under it', async ({ page }) => {
   await start(page, { level: 'simple', customFeatures: { security: 'show' } });
   await page.getByRole('button', { name: 'Settings', exact: true }).click();
   const row = page.getByRole('dialog').getByRole('group', { name: 'Detail level', exact: true });
-  await expect(row.getByRole('button', { name: 'Simple', exact: true })).toHaveAttribute('aria-pressed', 'false');
-  await expect(row.getByRole('button', { name: /^Custom/ })).toHaveAttribute('aria-pressed', 'true');
-  await row.getByRole('button', { name: 'Simple', exact: true }).click();
-  await expect(page.locator('.toast')).toContainText('Custom choices cleared');
   await expect(row.getByRole('button', { name: 'Simple', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(row.getByRole('button', { name: /^Custom/ })).toHaveCount(0);
+  await expect(page.locator('.ps-own')).toContainText('Your choices for Simple');
+  // at Standard the same tool is the level's own, so nothing is listed; back at Simple the choice is still there
+  await row.getByRole('button', { name: 'Standard', exact: true }).click();
+  await expect(page.locator('.toast')).toHaveCount(0);
+  await expect(page.locator('.ps-own')).toHaveCount(0);
+  await row.getByRole('button', { name: 'Simple', exact: true }).click();
+  await expect(page.locator('.ps-own')).toContainText('Your choices for Simple');
 });
 
 test('c-levels-05: Open on Last tool reopens After the election', async ({ page }) => {
@@ -106,13 +98,13 @@ test('c-levels-05: Open on Last tool reopens After the election', async ({ page 
   await expect(page.locator('#tab-after')).toHaveAttribute('aria-selected', 'true');
 });
 
-test('c-levels-06 and 15: the Custom page says what Side by side and the merged list section do', async ({ page }) => {
+test('c-levels-06 and 15: Settings says what Side by side and the merged list section do', async ({ page }) => {
   await start(page, { level: 'simple' });
-  await page.locator('.band-custom').click();
-  const side = page.getByRole('group', { name: 'Side by side', exact: true });
-  await expect(side.getByRole('button', { name: 'Show', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('button', { name: 'Settings', exact: true }).click();
+  const side = page.locator('[data-part="compare"]');
+  await expect(side.getByRole('checkbox', { name: 'Side by side' })).toBeChecked();
   // Side by side has no folded form: it is offered at every level or hidden
-  await expect(side.getByRole('button', { name: 'Collapsed', exact: true })).toHaveCount(0);
+  await expect(side.getByRole('button', { name: 'Folded', exact: true })).toHaveCount(0);
   await expect(page.getByRole('group', { name: 'Merged list details', exact: true })).toBeVisible();
   await expect(page.getByText('Split list identity')).toHaveCount(0);
   // the official notes are a truth label, not a choice

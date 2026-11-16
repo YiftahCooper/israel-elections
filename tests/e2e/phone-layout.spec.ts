@@ -39,8 +39,8 @@ test('What if on a phone: no seat change runs under its row\'s "Open as a scenar
 test('dates in About and the Prime Minister panel use the app\'s date format', async ({ page }) => {
   await start(page, { lang: 'he', width: 360, height: 740 });
   await page.locator('.band .band-menu-btn').click();
-  await page.locator('#phone-menu .election-about summary').click();
-  const dates = page.locator('#phone-menu .election-about li time');
+  await page.locator('#app-menu .election-about summary').click();
+  const dates = page.locator('#app-menu .election-about li time');
   await expect(dates.first()).toHaveText('24 בספט׳ 2026');
   await expect(dates.first()).toHaveAttribute('datetime', '2026-09-24');
   for (const t of await dates.allTextContents()) expect(t).not.toMatch(/\d{4}-\d{2}/);

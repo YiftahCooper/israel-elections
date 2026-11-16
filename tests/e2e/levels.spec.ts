@@ -179,7 +179,8 @@ test('the picker labels the open election correctly even if the index omits it',
 test('a tool opened from its tab shows at once at every level, with no second disclosure', async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'standard', hintDismissed: true })));
   await page.goto('/');
-  // an Expert tool at Standard: its tab says so, and opening it shows the tool itself
+  // an Expert tool at Standard: its tab says so; pressed, it asks (16 Nov), and adding it shows the tool itself
   await page.getByRole('tab', { name: /^Rules/ }).click();
+  await page.getByRole('dialog', { name: 'Rules' }).getByRole('button', { name: 'Add to Standard', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Electoral rules', exact: true })).toBeVisible();
 });

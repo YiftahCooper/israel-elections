@@ -25,7 +25,8 @@ test.describe('Settings: every setting at every level, by complexity', () => {
     expect(await tiers.evaluateAll(t => t.map(x => x.getAttribute('data-tier')))).toEqual(['simple', 'standard', 'expert']);
     await expect(settings(page).locator('.ps-tier-sep')).toHaveText(['Standard', 'Expert']);
     // the same settings at every level (only the Simple starter tip is Simple's alone); no "more settings" line
-    const rows = await settings(page).locator('[data-setting]').count();
+    // (16 Nov: each level's tools and parts have rows of their own, data-part, counted apart from the settings)
+    const rows = await settings(page).locator('[data-setting]:not([data-part]):not([data-setting="own"])').count();
     expect(rows).toBe(level === 'simple' ? 43 : 42);   // 12 Nov: + the Localities map's lines switch, + Bars for the compared result
     await expect(settings(page).getByText(/more settings in Standard/)).toHaveCount(0);
     await expect(settings(page).locator('[data-tier="simple"] [data-setting="voteSource"]')).toHaveCount(1);
@@ -40,7 +41,7 @@ test.describe('Settings: every setting at every level, by complexity', () => {
     expect(names.slice(0, 5)).toEqual([...names.slice(0, 5)].sort((a, b) => a.localeCompare(b, 'en')));
     // two words: "order" alone is also inside "borders", a search word of the map-lines switch
     await settings(page).getByRole('searchbox').fill('list order');
-    await expect(settings(page).locator('[data-setting]')).toHaveCount(1);
+    await expect(settings(page).locator('[data-setting]:not([data-part])')).toHaveCount(1);
     await expect(settings(page).locator('.ps-tier-sep')).toHaveText(['Standard']);
     await settings(page).getByRole('searchbox').fill('');
     const group = settings(page).locator('[data-tier-group="standard:lists"]');
@@ -127,7 +128,9 @@ test.describe('explanations open on hover after a short rest', () => {
 
 test.describe('phone top bar (390 × 844)', () => {
   test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });
-  for (const lang of ['en', 'he'] as const) test(`${lang}: one row; menu holds the rest; status label opens the scenario part`, async ({ page }) => {
+  // 16 Nov 2026: the two bar buttons do two jobs: the three lines hold the tools and the view, the status label the
+  // scenario (before, both opened the same menu)
+  for (const lang of ['en', 'he'] as const) test(`${lang}: one row; the three lines hold tools and view; the status label opens the scenario`, async ({ page }) => {
     await open(page, { lang });
     const L = (en: string, he: string) => lang === 'en' ? en : he;
     const band = page.locator('.band');
@@ -139,19 +142,27 @@ test.describe('phone top bar (390 × 844)', () => {
     const status = band.locator('.band-status');
     await expect(status).toHaveText(L('Official', 'רשמי'));
     await band.locator('.band-menu-btn').click();
-    const menu = page.locator('#phone-menu');
+    const menu = page.locator('#app-menu');
     await expect(menu).toBeVisible();
     for (const name of [L('Detail level', 'רמת פירוט'), L('Language', 'שפה'), L('Theme', 'ערכת צבעים')]) await expect(menu.getByRole('group', { name, exact: true })).toBeVisible();
     await expect(menu.getByRole('button', { name: L('Settings', 'הגדרות'), exact: true })).toBeVisible();
-    await expect(menu.getByRole('button', { name: L('Start over', 'התחלה מחדש'), exact: true })).toBeVisible();
-    await expect(menu.getByText(L('Save & share', 'שמירה ושיתוף'), { exact: true })).toBeVisible();
-    await expect(menu.locator('.scenario-switcher')).toBeVisible();
     await expect(menu.locator('.election-about')).toBeVisible();
+    await expect(menu.locator('.scenario-switcher')).toHaveCount(0);
+    await expect(menu.getByRole('button', { name: L('Start over', 'התחלה מחדש'), exact: true })).toHaveCount(0);
     // switching level from the menu works and the menu stays open
     await menu.getByRole('group', { name: L('Detail level', 'רמת פירוט') }).getByRole('button', { name: L('Expert', 'מומחה'), exact: true }).click();
     await expect(menu.getByRole('group', { name: L('Detail level', 'רמת פירוט') }).getByRole('button', { name: L('Expert', 'מומחה'), exact: true })).toHaveAttribute('aria-pressed', 'true');
     await page.keyboard.press('Escape');
     await expect(menu).toHaveCount(0);
+    // the status label opens the scenario: switcher, Start over, and Save & share shown in full
+    await status.click();
+    const scenario = page.locator('#phone-menu');
+    await expect(scenario.locator('.scenario-switcher')).toBeVisible();
+    await expect(scenario.getByRole('button', { name: L('Start over', 'התחלה מחדש'), exact: true })).toBeVisible();
+    await expect(scenario.getByText(L('Save & share', 'שמירה ושיתוף'), { exact: true })).toBeVisible();
+    await expect(scenario.getByRole('group', { name: L('Detail level', 'רמת פירוט') })).toHaveCount(0);
+    await page.keyboard.press('Escape');
+    await expect(scenario).toHaveCount(0);
     // an edit makes the label name the scenario and count its changes (mark every edit)
     await page.locator('.lb-row').first().click();
     await page.locator('.side-panel').getByRole('button', { name: L('Increase Votes', 'הוספת קולות'), exact: true }).click();
@@ -159,7 +170,7 @@ test.describe('phone top bar (390 × 844)', () => {
     await expect(status).toHaveAttribute('aria-label', new RegExp(L('1 change', 'שינוי אחד')));
     await page.locator('.side-panel').getByRole('button', { name: L('Close', 'סגירה') }).first().click().catch(() => {});
     await status.click();
-    await expect(menu.locator('.scenario-switcher')).toBeVisible();
+    await expect(scenario.locator('.scenario-switcher')).toBeVisible();
   });
 
   test('tablet and desktop bars are unchanged: arrows and level buttons in the bar', async ({ page }) => {

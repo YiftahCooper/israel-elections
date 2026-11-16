@@ -1,4 +1,5 @@
-import { getState, resetSettings, restoreSettings, setPreference } from './store.ts';
+import { getState, resetSettings, restoreSettings, setPreference, setState } from './store.ts';
+import type { FeatureId } from './features.ts';
 import { isExternal, type RowId, type SettingId, type SettingRow, type SettingValues } from './settings.ts';
 import { PREFERENCES, type PreferenceId } from './preferences.ts';
 
@@ -10,12 +11,21 @@ const PREFERENCE_IDS = Object.keys(PREFERENCES) as PreferenceId[];
 
 /** Everything a reset can change: the settings and the questions' default answers. Answers remembered for one list,
  *  bloc or scenario (preferenceFor) are never reset, so they are not part of it. */
-export type Snapshot = { settings: Partial<SettingValues>; preferences: Partial<Record<PreferenceId, string>> };
-export const snapshot = (): Snapshot => ({ settings: getState().settings, preferences: { ...getState().preferences } });
+export type Snapshot = { settings: Partial<SettingValues>; preferences: Partial<Record<PreferenceId, string>>; features: ReturnType<typeof getState>['customFeatures'] };
+export const snapshot = (): Snapshot => ({ settings: getState().settings, preferences: { ...getState().preferences }, features: getState().customFeatures });
 /** Undo of a reset: every setting and every question's default answer back to what the snapshot held. */
 export function restore(snap: Snapshot) {
   restoreSettings(snap.settings);
+  setState({ customFeatures: snap.features });
   for (const id of PREFERENCE_IDS) if (getState().preferences[id] !== snap.preferences[id]) setPreference(id, snap.preferences[id]);
+}
+/** Takes back the user's own choices for these tools and sections (all of them when none are named): each follows its
+ *  level again. */
+export function resetFeatures(ids?: readonly FeatureId[]) {
+  const was = getState().customFeatures;
+  if (!was) return;
+  const next = ids ? Object.fromEntries(Object.entries(was).filter(([k]) => !ids.includes(k as FeatureId))) : {};
+  setState({ customFeatures: Object.keys(next).length ? next : null });
 }
 /** Returns rows to their defaults: settings by registry, questions back to their default answer. */
 export function resetRows(rows: readonly SettingRow[]) {

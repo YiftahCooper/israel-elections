@@ -23,7 +23,7 @@ test.describe('2026 is gazetted', () => {
     await expect(menu).toHaveAttribute('aria-label', lang === 'en' ? 'Menu' : 'תפריט');
     await expect(page.locator('.band-menu-flag')).toHaveCount(0);
     await menu.click();
-    await expect(page.locator('#phone-menu .election-about summary')).toBeVisible();
+    await expect(page.locator('#app-menu .election-about summary')).toBeVisible();
     await expect(page.locator('.publication-pending')).toHaveCount(0);
     await page.keyboard.press('Escape');
     await page.getByRole('tab', { name: lang === 'en' ? 'Party families' : 'משפחות מפלגות', exact: true }).click();
@@ -42,7 +42,7 @@ test.describe('theme: Device, Light or Dark', () => {
     await page.setViewportSize({ width: 390, height: 844 });
     await open(page);
     await page.locator('.band .band-menu-btn').click();
-    const theme = page.locator('#phone-menu').getByRole('group', { name: 'Theme', exact: true });
+    const theme = page.locator('#app-menu').getByRole('group', { name: 'Theme', exact: true });
     await expect(theme.getByRole('button')).toHaveText(['Device', 'Light', 'Dark']);
     await expect(theme.getByRole('button', { name: 'Device', exact: true })).toHaveAttribute('aria-pressed', 'true');
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
@@ -60,7 +60,7 @@ test.describe('theme: Device, Light or Dark', () => {
     await page.setViewportSize({ width: 390, height: 844 });
     await open(page, { lang: 'he' });
     await page.locator('.band .band-menu-btn').click();
-    await expect(page.locator('#phone-menu').getByRole('group', { name: 'ערכת צבעים', exact: true }).getByRole('button')).toHaveText(['לפי המכשיר', 'בהיר', 'כהה']);
+    await expect(page.locator('#app-menu').getByRole('group', { name: 'ערכת צבעים', exact: true }).getByRole('button')).toHaveText(['לפי המכשיר', 'בהיר', 'כהה']);
   });
   test('desktop: the sun/moon button flips the theme; flipping back to the device’s theme follows the device again', async ({ page }) => {
     await open(page);
@@ -77,7 +77,9 @@ test.describe('theme: Device, Light or Dark', () => {
 });
 
 test.describe('phone bar stays at the top while scrolling', () => {
-  test('390 px: pinned, 56 px, tools strip under it, scrolling and focus land below both', async ({ page }) => {
+  // 16 Nov 2026: on a phone only the bar stays; the tools strip scrolls away with the page (the three lines hold the
+  // tools), so scrolling and focus land below the bar alone
+  test('390 px: pinned, 56 px, the tools strip scrolls away, scrolling and focus land below the bar', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await open(page);
     await page.evaluate(() => window.scrollTo(0, 1600));
@@ -86,16 +88,16 @@ test.describe('phone bar stays at the top while scrolling', () => {
     expect(band.y).toBe(0);
     expect(band.height).toBe(56);
     const strip = (await page.locator('.toolbar').boundingBox())!;
-    expect(strip.y).toBe(56);
+    expect(strip.y + strip.height).toBeLessThan(0);
     const pad = await page.evaluate(() => parseFloat(getComputedStyle(document.documentElement).scrollPaddingBlockStart));
-    expect(Math.abs(pad - (56 + strip.height + 8))).toBeLessThan(1); // --toolbar-h is the strip's whole-pixel height
-    // a control above the view, brought back by focus (keyboard, or a field's keyboard), lands below the bar and the strip
+    expect(Math.abs(pad - (56 + 8))).toBeLessThan(1);
+    // a control above the view, brought back by focus (keyboard, or a field's keyboard), lands below the bar
     const row = page.locator('.lb-row').first();
     expect((await row.boundingBox())!.y).toBeLessThan(0);
     await row.focus();
-    await expect.poll(async () => (await row.boundingBox())!.y).toBeGreaterThanOrEqual(56 + strip.height - 1);
-    // the menu still opens right under the pinned bar
-    await page.locator('.band .band-menu-btn').click();
+    await expect.poll(async () => (await row.boundingBox())!.y).toBeGreaterThanOrEqual(56 - 1);
+    // the scenario panel still opens right under the pinned bar
+    await page.locator('.band .band-status').click();
     expect((await page.locator('#phone-menu').boundingBox())!.y).toBeGreaterThanOrEqual(56);
   });
   test('wider screens keep their bars as they were', async ({ page }) => {

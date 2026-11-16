@@ -10,7 +10,7 @@ import { applyAction } from '../../model/actions.ts';
 import { type Action, type Scenario } from '../../model/scenario.ts';
 import { useL, useLang, type Lang } from '../i18n.ts';
 import { fmtInt, signed } from '../format.ts';
-import { getState, motionReduced, setState, useLevel, useShown } from '../store.ts';
+import { getState, motionReduced, setState, useOn, useShown } from '../store.ts';
 import { computeWhatIf, type WhatIfFact, type WhatIfResult } from '../whatIf.ts';
 
 // The cards depend only on the dataset and the language (never on the edited scenario), so their
@@ -50,7 +50,7 @@ export function Fact({ f, lang, full }: { f: WhatIfFact; lang: Lang; full?: bool
 export function WhatIf({ ds }: { ds: ElectionDataset }) {
   const L = useL();
   const sourcesShown = useShown('sources');
-  const { simple } = useLevel();
+  const simple = !useOn('whatIfAll');
   const [all, setAll] = useState(false);
   const lang = useLang();
   const results = useMemo(() => {

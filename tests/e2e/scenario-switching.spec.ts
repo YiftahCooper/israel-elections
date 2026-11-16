@@ -90,21 +90,22 @@ test('a share link pasted into an open tab opens; switching away keeps it; resum
   await expect(page.locator('.toast')).toContainText('damaged');
 });
 
-test('every tool has one name: the tab strip and the Custom page agree', async ({ page }) => {
+test('every tool has one name: the tab strip and Settings agree', async ({ page }) => {
   await start(page, 'he', 'simple');
   const tabs = (await page.locator('.toolbar [role=tab]').evaluateAll(els => els.map(e => e.childNodes[0]?.textContent ?? ''))).sort();
-  await page.locator('.band .band-custom').click();
-  const cards = await page.locator('.custom-feature strong').allTextContents();
-  for (const t of tabs) expect(cards).toContain(t);
+  await page.locator('.band').getByRole('button', { name: 'הגדרות', exact: true }).click();
+  const rows = await page.locator('[data-tier-group$=":tools"] [data-part] .ps-label-text').allTextContents();
+  // the Overview has no row: it is the home page, never greyed out or hidden
+  for (const t of tabs.filter(t => t !== 'תמונת מצב')) expect(rows).toContain(t);
   expect(tabs).toContain('מה אם…');
-  // the Overview is the home page: it cannot be collapsed or hidden
-  await expect(page.locator('.custom-feature').filter({ hasText: 'תמונת מצב' }).locator('.seg')).toHaveCount(0);
+  // the Overview is the home page: it cannot be greyed out or hidden
+  await expect(page.locator('[data-part="board"]')).toHaveCount(0);
 });
 
 test('tablet: the strip stays one line and stays visible under the wrapped band', async ({ page }) => {
   await start(page, 'en', 'standard', { width: 1024, height: 800 });
-  const label = page.locator('.toolbar .more-label').first();
-  expect((await label.boundingBox())!.height).toBeLessThan(24);
+  // (16 Nov: the "More in other levels" label is gone; the strip's height is the measure)
+  expect((await page.locator('.toolbar [role=tab]').first().boundingBox())!.height).toBeLessThan(48);
   await page.mouse.wheel(0, 900);
   await page.waitForTimeout(200);
   const band = (await page.locator('.band').boundingBox())!;
@@ -115,9 +116,9 @@ test('tablet: the strip stays one line and stays visible under the wrapped band'
 
 test('phone: About opens on screen, names each list, and closes on Escape', async ({ page }) => {
   await start(page, 'he', 'simple', { width: 390, height: 844 });
-  // phones: About is in the bar's Menu (one-row bar, owner 9 Nov)
+  // phones: About is in the bar's three-lines panel (one-row bar, owner 9 Nov; two panels 16 Nov)
   await page.locator('.band .band-menu-btn').click();
-  const about = page.locator('#phone-menu .election-about');
+  const about = page.locator('#app-menu .election-about');
   await about.locator('summary').click();
   const list = about.locator('ul');
   await expect(list).toBeInViewport();
@@ -125,9 +126,9 @@ test('phone: About opens on screen, names each list, and closes on Escape', asyn
   await page.keyboard.press('Escape');
   await expect(list).toBeHidden();
   // the first Escape closes About only; the next closes the menu
-  await expect(page.locator('#phone-menu')).toBeVisible();
+  await expect(page.locator('#app-menu')).toBeVisible();
   await page.keyboard.press('Escape');
-  await expect(page.locator('#phone-menu')).toHaveCount(0);
+  await expect(page.locator('#app-menu')).toHaveCount(0);
 });
 
 test('a failed election load keeps the open election and a plain message', async ({ page }) => {
