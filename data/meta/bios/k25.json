@@ -145,7 +145,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 25 member, name matches (2.5)"
+   "basis": "elected; Knesset 25 member, name matches (2.5)",
+   "displayNameEn": "Miri Regev",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "25-מחל#10": {
    "knessetPersonId": 30058,
@@ -161,7 +163,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 25 member, name matches (2.5)"
+   "basis": "elected; Knesset 25 member, name matches (2.5)",
+   "displayNameEn": "Miki Zohar",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "25-מחל#11": {
    "knessetPersonId": 4395,
@@ -177,7 +181,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 25 member, name matches (2.5)"
+   "basis": "elected; Knesset 25 member, name matches (2.5)",
+   "displayNameEn": "Avi Dichter",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "25-מחל#12": {
    "knessetPersonId": 468,
@@ -925,7 +931,9 @@
    "hewiki": null,
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 25 member, name identical (3)"
+   "basis": "elected; Knesset 25 member, name identical (3)",
+   "displayNameEn": "Yitzhak Wasserlauf",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "25-ט#6": {
    "knessetPersonId": 30812,
@@ -989,7 +997,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 25 member, name matches (1)"
+   "basis": "elected; Knesset 25 member, name matches (1)",
+   "displayNameEn": "Amichai Eliyahu",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "25-ט#10": {
    "knessetPersonId": 30859,
@@ -1117,7 +1127,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 25 member, name identical (3)"
+   "basis": "elected; Knesset 25 member, name identical (3)",
+   "displayNameEn": "Yaakov Margi",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/"
   },
   "25-שס#3": {
    "knessetPersonId": 28513,
@@ -1309,7 +1321,9 @@
    "hewiki": null,
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 25 member, name matches (2.5)"
+   "basis": "elected; Knesset 25 member, name matches (2.5)",
+   "displayNameEn": "Yitzhak Goldknopf",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "25-ג#2": {
    "knessetPersonId": 526,
@@ -2109,7 +2123,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 25 member, name identical (3)"
+   "basis": "elected; Knesset 25 member, name identical (3)",
+   "displayNameEn": "Benny Gantz",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/"
   },
   "25-כן#2": {
    "knessetPersonId": 1027,
@@ -2173,7 +2189,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 25 member, name identical (3)"
+   "basis": "elected; Knesset 25 member, name identical (3)",
+   "displayNameEn": "Yifat Shasha-Biton",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/"
   },
   "25-כן#6": {
    "knessetPersonId": 30683,
@@ -2189,7 +2207,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; reviewed decision: טרופר יחיאל משה = טרופר חילי (Hili Tropper)."
+   "basis": "elected; reviewed decision: טרופר יחיאל משה = טרופר חילי (Hili Tropper).",
+   "displayNameEn": "Hili Tropper",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/"
   },
   "25-כן#7": {
    "knessetPersonId": 4397,

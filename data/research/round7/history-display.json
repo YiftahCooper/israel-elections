@@ -1,0 +1,43 @@
+{
+  "asOf": "2026-11-16",
+  "status": "data handoff; U3 must connect the new display fields without changing registered records",
+  "partyNames": [
+    {
+      "partyId": "tkuma",
+      "fromElection": "k24",
+      "displayHe": "הציונות הדתית",
+      "displayEn": "Religious Zionist Party",
+      "registeredHe": "האיחוד הלאומי - תקומה",
+      "registeredEn": "National Union–Tkuma",
+      "source": "https://en.idi.org.il/israeli-elections-and-parties/parties/religious-zionist-party/",
+      "scope": "Known electoral name from 2021. Does not retroactively rename earlier elections. Registered name remains in candidate-filing metadata."
+    },
+    {
+      "partyId": "independence",
+      "electionId": "k22",
+      "displayHe": "ישראל דמוקרטית",
+      "displayEn": "Israel Democratic Party",
+      "registeredHe": "מפלגת העצמאות",
+      "registeredEn": "Independence",
+      "source": "https://www.timesofisrael.com/barak-announces-name-of-new-political-party-democratic-israel/amp/",
+      "publicationDate": "2019-07-06",
+      "scope": "2019 campaign name; article explicitly distinguishes the preferred English branding from literal translation. Does not rename the 2011 faction."
+    }
+  ],
+  "pointNotes": [
+    {
+      "partyId": "black-panthers",
+      "electionId": "k9",
+      "noteHe": "התמודדו גם במסגרת מחנה שלי",
+      "noteEn": "Also ran inside Sheli",
+      "source": "data/meta/k9.json",
+      "locator": "lists[letters=ש].parties[id=black-panthers]",
+      "scope": "One history point still shows Hadash. This note names the separate Sheli appearance without attributing all Sheli votes to the Panthers."
+    }
+  ],
+  "unknownConstituentSeatCount": {
+    "labelEn": "TBD",
+    "labelHe": "טרם נקבע",
+    "scope": "Presentation label only. Preserve unknown as missing, never convert to zero. Do not replace certainty labels or other factual unknowns."
+  }
+}

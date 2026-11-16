@@ -1,8 +1,9 @@
 # Changelog
 
-## 16 November 2026 — government research
+## 16 November 2026 — research data
 
 - Government 36 counts 61 coalition members, excluding Chikli; Eichler’s January 2026 appointment has its own timeline event, Rabin and Zeevi have sourced death reasons, and rotation agreements retain planned and actual handovers separately.
+- Linked sourced returning lists and the 1973 Black Panthers, added Haim Amsalem’s 2019 run, checked six party registrations, and standardised sourced display spellings and the final-notice Horowitz spelling.
 
 ## 13 November 2026 — audit fixes
 

@@ -312,7 +312,10 @@ const EXPECTED: Record<Family, string> = {
   // (0c459bc9) the 26 published datasets differ only in lists[].color (180 fields), lists[].logo.background (added in
   // k18 and k19) and builtAt (field-by-field diff), and the previous src and this src give the same 520 model outputs on
   // one set of data (fable-check/model-diff2.ts: 0 differ in every family).
-  model: 'f44c8324a30f193e08245df60bf3a0a0817f079589ec7a4cd5b7e7a15cf9485f',
+  // Round 7: dataset diff is display spellings, four consistent short English names,
+  // one reviewed Amsalem biography, final-notice Horowitz spelling and build times.
+  // Allocation, analysis, validation and rules digests remain identical.
+  model: '3a737f2b54547b47e2037db11dd07e638eb3fd8ef825861461f9bb37d5bbffea',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

@@ -95,7 +95,9 @@
     "note": "The Likud's page of its outgoing MK (faction member) before the 2015 election."
    },
    "confidence": "high",
-   "basis": "elected; Knesset 20 member, name matches (2.5)"
+   "basis": "elected; Knesset 20 member, name matches (2.5)",
+   "displayNameEn": "Miri Regev",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "20-מחל#6": {
    "knessetPersonId": 479,
@@ -374,7 +376,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 20 member, name matches (2.5)"
+   "basis": "elected; Knesset 20 member, name matches (2.5)",
+   "displayNameEn": "Miki Zohar",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "20-מחל#23": {
    "knessetPersonId": 30059,
@@ -438,7 +442,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 20 member, name matches (2.5)"
+   "basis": "elected; Knesset 20 member, name matches (2.5)",
+   "displayNameEn": "Avi Dichter",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/whos-who-in-the-new-netanyahu-led-government/"
   },
   "20-מחל#27": {
    "knessetPersonId": 30095,
@@ -1914,7 +1920,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 20 member, name identical (3)"
+   "basis": "elected; Knesset 20 member, name identical (3)",
+   "displayNameEn": "Yifat Shasha-Biton",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/cabinet-approves-budget-making-cuts-to-offset-massive-wartime-defense-boost/"
   },
   "20-כ#8": {
    "knessetPersonId": 30083,
@@ -2306,7 +2314,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 20 member, name identical (3)"
+   "basis": "elected; Knesset 20 member, name identical (3)",
+   "displayNameEn": "Yaakov Margi",
+   "displayNameEnNote": "Checked press display spelling; the official English record is retained unchanged. Source: https://www.timesofisrael.com/liveblog_entry/shas-recommends-netanyahu-form-next-government/"
   },
   "20-שס#5": {
    "knessetPersonId": 483,

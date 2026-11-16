@@ -38,11 +38,11 @@ describe('who gets a history', () => {
 });
 
 describe('runs that did not win a seat', () => {
-  it('adds only the 14 source-confirmed identities from the November research review', () => {
+  it('adds only the 15 source-confirmed identities from the November research review', () => {
     const audit = JSON.parse(readFileSync('data/raw/research/mk-runs-1109.reviewed.json', 'utf8'));
     expect(audit.runs).toHaveLength(123);
     expect(new Set(audit.runs.map((r: { candidateId: string }) => r.candidateId)).size).toBe(123);
-    expect(audit.counts).toEqual({ confirmed: 14, 'ruled out': 17, unknown: 92 });
+    expect(audit.counts).toEqual({ confirmed: 15, 'ruled out': 17, unknown: 91 });
     // left out in the review as "a two-word name on a list of another party"; the gazette sponsor line has since shown the
     // list is Yachad's own (data/meta/parties.json, yachad-filing-2019), so the name rule ties it as for Feiglin's 22-זן
     const sinceSameParty: Record<string, number> = { '21-זנ#1': 494 };
@@ -391,11 +391,11 @@ describe('every elected member has their run', () => {
     expect(runs(463).find((r) => r.k === 13)).toMatchObject({ list: '13-מחל', rank: 2, outcome: 'declined', basis: 'name', via: 12 });
   });
   it('one notion of a certain Knesset identity: the comparison match, the MK history and the English name agree', () => {
-    // the 14 identities of candidates who were not elected, confirmed by the November research review: tied by ID and
+    // the 15 identities of candidates who were not elected, confirmed by the November research review: tied by ID and
     // matched across elections, but with no official English name, since they rest on secondary sources (tests/bios.test.ts)
     const reviewed = new Set((JSON.parse(readFileSync('data/raw/research/mk-runs-1109.reviewed.json', 'utf8')).runs as { status: string; candidateId: string }[])
       .filter((r) => r.status === 'confirmed').map((r) => r.candidateId));
-    expect(reviewed.size).toBe(14);
+    expect(reviewed.size).toBe(15);
     const disagree: string[] = [];
     for (let k = 1; k <= 26; k++) for (const l of ds(k).lists) for (const c of l.candidates) {
       if (!c.bio?.knesset) continue;

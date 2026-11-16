@@ -85,10 +85,17 @@ describe('official English names of Knesset members', () => {
         // display form: backticks become apostrophes and repeated whitespace collapses; spelling is never changed.
         const normalized = sourceName?.replaceAll('`', "'").replace(/\s+/g, ' ').trim();
         const reviewed: Record<string, [string, string]> = {'12-ג#1': ['Moshe Zeev Feldman', 'Moseh  Zeev Feldman'], '12-מחל#41': ['Yehoshua Sagi', 'Yeushua Sagi']};
-        if (m?.displayNameEn) {
+        if (m?.displayNameEn && reviewed[c.id]) {
           expect(m.displayNameEn, c.id).toBe(reviewed[c.id]?.[0]);
           expect(bySite.get(m.knesset!.siteId!), c.id).toBe(reviewed[c.id]?.[1]);
           expect(m.displayNameEnNote).toContain('YP 3588/3591');
+        }
+        if (m?.displayNameEn && !reviewed[c.id]) {
+          const correction = JSON.parse(readFileSync('data/raw/bios/entry-corrections.reviewed.json', 'utf8')).displayNames.find((x: {candidateId: string}) => x.candidateId === c.id);
+          expect(correction?.displayNameEn, c.id).toBe(m.displayNameEn);
+          expect(correction?.officialNameEn, c.id).toBe(sourceName);
+          expect(correction?.source).toMatch(/^https:\/\/www\.timesofisrael\.com\//);
+          expect(m.displayNameEnNote).toContain(correction.source);
         }
         expect(c.nameEn, c.id).toBe(m?.displayNameEn ?? normalized);
         expect(c.nameEn, c.id).not.toMatch(/[֐-׿]/);

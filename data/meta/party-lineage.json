@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "2026-11-09",
+  "revision": "2026-11-16",
   "direction": "from predecessor to successor; split-from points parent to departing organisation; electoral-partner points constituents to election-specific alliance vehicle",
   "sources": {
     "aguda": {
@@ -364,84 +364,84 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k15.json",
-      "sha256": "abc4d495e52b121208614992c83c6aa42b53cfa13362ee98d22216bc42dace09",
+      "sha256": "e7670f71d1ee73b0056232820829113482bcd0ef53df60214f3f2453f32525c2",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k16": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k16.json",
-      "sha256": "1a2987780ec49d2d2bf68be7ce4ed85abae1279cfc7a231a57d2798af871e257",
+      "sha256": "b85d464ac9ba7321f64acac0367a7d1c1d4004b771e2776723fe09623d4922f6",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k17": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k17.json",
-      "sha256": "cc0a1b11f37b2c01c7184d928b8f58b8ae8bdc6e293dfc3dd519c20c2d49d36c",
+      "sha256": "4fddcdd977d2c392a85304b28bfa5a09259ec7044d4e4a5c3eb7687685079d26",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k18": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k18.json",
-      "sha256": "d6b5d32880cd9773ce5dd021cfe9cb30a3809fdbea21cb6c5313301d0dede891",
+      "sha256": "1866863ca29186fde47b11ace8b51456fc747bd60e2a1a0fd6df2812df4c6502",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k19": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k19.json",
-      "sha256": "97ec4b4a9ff5523b6e8b4dbaecc938ed8009d63c4bfa526068a7c9bc4934fa9d",
+      "sha256": "396f3ae6c5848896799fea7a93b08b2f7240ba9336c0bbc2af4b4bf9e73e7f26",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k20": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k20.json",
-      "sha256": "7eb1d330db7d22c5178a2f61eecfd3f625425cf66fed494551270a55024e064f",
+      "sha256": "2c0facba3e858649386a0d201d04405ff26a77201a9ff4603c07fee48730a051",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k21": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k21.json",
-      "sha256": "88d6cfa264881036cb20067df354e09b97d303543a16e15a062223d1c5a97aad",
+      "sha256": "99195e0695851c564ee7291c2f87f05029b7ccb755791eee677016c52e42f303",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k22": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k22.json",
-      "sha256": "12a2462a766d15ea8f7a22f24552b47e6509f2700166b1c47fe5b42bee762481",
+      "sha256": "0de963be98ecbc194bb97f366d00035c4bd56dc579dc60846f38ff3d81c4d468",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k23": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k23.json",
-      "sha256": "709e8cfb630faa96d533b746a0396c17ebe821a14a9a5c9ee660e181bc82891b",
+      "sha256": "fa4994d890a60d2a8beda0528c0ab9794698d31ff6ad8a8f07088f8a2f878f61",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k24": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k24.json",
-      "sha256": "979b4ab0f66e3aa9ff877968b3aa6b861f8dfc134cb82a47188905eef7c0aaa1",
+      "sha256": "29e98f5d298d322cc857a0f3e9d3b5a1334cb96f2bf7f3fdc17ac0a6d54a1dba",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k25": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k25.json",
-      "sha256": "5a9144ece397f4d53133370dbcd2b3a443f03e833ebd963d48a8a6a7bd91771b",
+      "sha256": "c9ae7dbd7a323c2a7152d4a9af1f0b14a3789720eb50c415815ae7ebe765d130",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k26": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k26.json",
-      "sha256": "b6f85db37d9d3d8ef3520d55435f6379ca43b535f056d4ca3a32b20baf6fe600",
+      "sha256": "4fa00a632f3cb78277a338505b39d2be912ebb8189c423f8b9e17129f0786742",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "religious-islamist": {
@@ -1297,6 +1297,75 @@
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k7.json",
       "support": "Official Knesset OData fields retained in k7: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+    },
+    "r7-gil-profile": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/gil/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "secondary",
+      "tier": "scholarship",
+      "accessed": "2026-11-16",
+      "inspection": "opened; relevant history and election table read",
+      "evidenceFamily": "r7-gil-profile",
+      "support": "One party history explicitly covers the 1996, 2006 and 2009 elections; Rafi Eitan replaced Nava Arad. A later new pensioners organisation is outside this continuity claim."
+    },
+    "r7-gil-report": {
+      "url": "https://www.ynet.co.il/articles/0,7340,L-3888467,00.html",
+      "publisher": "Attila Somfalvi / Ynet",
+      "kind": "secondary",
+      "tier": "retrospective",
+      "accessed": "2026-11-16",
+      "inspection": "opened; relevant history and election table read",
+      "evidenceFamily": "r7-gil-report",
+      "support": "Opening paragraph explicitly connects the 2006 success and 2009 defeat of Gil. Reports creation of a NEW organisation in May 2010, which must not be silently joined to Gil.",
+      "publicationDate": "2010-05-12"
+    },
+    "r7-greens-profile": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/hayerukim/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "secondary",
+      "tier": "scholarship",
+      "accessed": "2026-11-16",
+      "inspection": "opened; relevant history and election table read",
+      "evidenceFamily": "r7-greens-profile",
+      "support": "One party founded in 1997; electoral table covers 1999, 2003, 2006, 2009, 2013 and 2015. Not the Green Movement."
+    },
+    "r7-ale-yarok-profile": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/green-leaf",
+      "publisher": "Israel Democracy Institute",
+      "kind": "secondary",
+      "tier": "scholarship",
+      "accessed": "2026-11-16",
+      "inspection": "opened; relevant history and election table read",
+      "evidenceFamily": "r7-ale-yarok-profile",
+      "support": "One party founded in 1999, ran every election through 2015; describes the separate Holocaust Survivors with Veterans of Ale Yarok split before 2009."
+    },
+    "r7-panthers-profile": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/hapanterim-hashorim/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "secondary",
+      "tier": "scholarship",
+      "accessed": "2026-11-16",
+      "inspection": "opened; relevant history and election table read",
+      "evidenceFamily": "r7-panthers-profile",
+      "support": "1973 majority group led by Charlie Biton ran as Black Panthers, 13,332 votes; a minority ran separately as Panthers Blue and White. A Panthers faction joined Hadash in 1977. This is not identity with the rival Blue and White list."
+    },
+    "r7-tzomet-profile": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/tzomet/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "secondary",
+      "tier": "scholarship",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "idi-tzomet-history",
+      "support": "IDI explicitly states continued operation and contests in 1999, 2003, 2006, 2009, and return in April/September 2019."
+    },
+    "r7-flatto-profile": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/plato-sharon/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "secondary",
+      "tier": "scholarship",
+      "accessed": "2026-11-16",
+      "evidenceFamily": "idi-flatto-history",
+      "support": "IDI identifies the same Flatto-Sharon organisation in its 1977 and 1981 history and results table."
     }
   },
   "edges": [
@@ -5171,6 +5240,281 @@
         "status": "documented",
         "interpretation": "House Committee approved Mizrahi departure and recognised Geulat Yisrael singleton. Not inferred from his biography; no inherited votes."
       }
+    },
+    {
+      "id": "r7-gil-2006-2009",
+      "from": [
+        "vehicle-17-זך"
+      ],
+      "to": [
+        "vehicle-18-זך"
+      ],
+      "relation": "same-organisation",
+      "date": "2009-02-10",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "r7-gil-profile",
+        "r7-gil-report"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Same Gil party in 2006 and 2009, explicitly connected by IDI and dated Ynet reporting. Later 2010 replacement is not included. Scholarship plus a retrospective report supports probable under the evidence policy; no Registrar number is asserted."
+      }
+    },
+    {
+      "id": "r7-greens-15-16",
+      "from": [
+        "vehicle-15-רק"
+      ],
+      "to": [
+        "vehicle-16-רק"
+      ],
+      "relation": "same-organisation",
+      "date": "2003-01-28",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "r7-greens-profile"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Continuity explicitly given in IDI party history and election-specific results table; changes of leader do not create a new party. Institutional scholarship, not a checked historical Registrar filing."
+      }
+    },
+    {
+      "id": "r7-greens-16-17",
+      "from": [
+        "vehicle-16-רק"
+      ],
+      "to": [
+        "vehicle-17-רק"
+      ],
+      "relation": "same-organisation",
+      "date": "2006-03-28",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "r7-greens-profile"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Continuity explicitly given in IDI party history and election-specific results table; changes of leader do not create a new party. Institutional scholarship, not a checked historical Registrar filing."
+      }
+    },
+    {
+      "id": "r7-greens-17-18",
+      "from": [
+        "vehicle-17-רק"
+      ],
+      "to": [
+        "vehicle-18-רק"
+      ],
+      "relation": "same-organisation",
+      "date": "2009-02-10",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "r7-greens-profile"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Continuity explicitly given in IDI party history and election-specific results table; changes of leader do not create a new party. Institutional scholarship, not a checked historical Registrar filing."
+      }
+    },
+    {
+      "id": "r7-ale-yarok-15-16",
+      "from": [
+        "vehicle-15-קנ"
+      ],
+      "to": [
+        "vehicle-16-קנ"
+      ],
+      "relation": "same-organisation",
+      "date": "2003-01-28",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "r7-ale-yarok-profile"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Continuity explicitly given in IDI party history and election-specific results table; changes of leader do not create a new party. Institutional scholarship, not a checked historical Registrar filing."
+      }
+    },
+    {
+      "id": "r7-ale-yarok-16-17",
+      "from": [
+        "vehicle-16-קנ"
+      ],
+      "to": [
+        "vehicle-17-קנ"
+      ],
+      "relation": "same-organisation",
+      "date": "2006-03-28",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "r7-ale-yarok-profile"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Continuity explicitly given in IDI party history and election-specific results table; changes of leader do not create a new party. Institutional scholarship, not a checked historical Registrar filing."
+      }
+    },
+    {
+      "id": "r7-ale-yarok-17-18",
+      "from": [
+        "vehicle-17-קנ"
+      ],
+      "to": [
+        "vehicle-18-קנ"
+      ],
+      "relation": "same-organisation",
+      "date": "2009-02-10",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "r7-ale-yarok-profile"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Continuity explicitly given in IDI party history and election-specific results table; changes of leader do not create a new party. Institutional scholarship, not a checked historical Registrar filing."
+      }
+    },
+    {
+      "id": "r7-ale-yarok-18-19",
+      "from": [
+        "vehicle-18-קנ"
+      ],
+      "to": [
+        "vehicle-19-קנ"
+      ],
+      "relation": "same-organisation",
+      "date": "2013-01-22",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "r7-ale-yarok-profile"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Continuity explicitly given in IDI party history and election-specific results table; changes of leader do not create a new party. Institutional scholarship, not a checked historical Registrar filing."
+      }
+    },
+    {
+      "id": "r7-ale-yarok-19-20",
+      "from": [
+        "vehicle-19-קנ"
+      ],
+      "to": [
+        "vehicle-20-קנ"
+      ],
+      "relation": "same-organisation",
+      "date": "2015-03-17",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "r7-ale-yarok-profile"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Continuity explicitly given in IDI party history and election-specific results table; changes of leader do not create a new party. Institutional scholarship, not a checked historical Registrar filing."
+      }
+    },
+    {
+      "id": "r7-panthers-1973",
+      "from": [
+        "vehicle-8-ז"
+      ],
+      "to": [
+        "black-panthers"
+      ],
+      "relation": "same-organisation",
+      "date": "1973-12-31",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "r7-panthers-profile",
+        "k8"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "The 1973 majority Panthers list is linked to the Panthers organisation, probable from IDI; this does not join the separate Panthers Blue and White list or merge Panthers with Hadash or Sheli."
+      }
+    },
+    {
+      "id": "r7-tzomet-2003",
+      "from": [
+        "vehicle-16-צ"
+      ],
+      "to": [
+        "tzomet"
+      ],
+      "relation": "same-organisation",
+      "date": "2003-01-28",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "r7-tzomet-profile"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Explicit organisational continuity in opened IDI history, checked against the election-specific vote table; not inferred from leader or list name alone."
+      }
+    },
+    {
+      "id": "r7-tzomet-2006",
+      "from": [
+        "vehicle-17-כץ"
+      ],
+      "to": [
+        "tzomet"
+      ],
+      "relation": "same-organisation",
+      "date": "2006-03-28",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "r7-tzomet-profile"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Explicit organisational continuity in opened IDI history, checked against the election-specific vote table; not inferred from leader or list name alone."
+      }
+    },
+    {
+      "id": "r7-flatto-1981",
+      "from": [
+        "vehicle-9-פש"
+      ],
+      "to": [
+        "vehicle-10-פש"
+      ],
+      "relation": "same-organisation",
+      "date": "1981-06-30",
+      "datePrecision": "day",
+      "effectiveFor": "organisation",
+      "sources": [
+        "r7-flatto-profile"
+      ],
+      "certainty": "probable",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Explicit organisational continuity in opened IDI history, checked against the election-specific vote table; not inferred from leader or list name alone."
+      }
     }
   ],
   "pending": [
@@ -5192,13 +5536,17 @@
       ],
       "sources": [
         "k1",
-        "proposal"
+        "proposal",
+        "registrar-2026-11-08"
       ],
       "evidence": {
         "status": "unresolved",
         "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
       },
-      "certainty": "unknown"
+      "certainty": "unknown",
+      "summaryEn": "The current register was checked; it does not establish this historical party’s identity or the dates of its organisational changes.",
+      "summaryHe": "מאגר המפלגות הנוכחי נבדק; הוא אינו מבסס את זהות המפלגה ההיסטורית או את מועדי השינויים בה.",
+      "registerCheckedAt": "2026-11-16"
     },
     {
       "id": "history-yahad-1984",
@@ -5206,13 +5554,17 @@
         "yahad-1984"
       ],
       "sources": [
-        "yahad-absorption"
+        "yahad-absorption",
+        "registrar-2026-11-08"
       ],
       "evidence": {
         "status": "unresolved",
         "interpretation": "Absorption into Labor during the 11th Knesset is probable from IDI; its exact date is not supplied. Joining the Alignment faction is a separate parliamentary act. Need the Labor/Yahad merger resolution or a dated Registrar instrument to place the party absorption on the timeline."
       },
-      "certainty": "unknown"
+      "certainty": "unknown",
+      "summaryEn": "The current register was checked; it does not establish this historical party’s identity or the dates of its organisational changes.",
+      "summaryHe": "מאגר המפלגות הנוכחי נבדק; הוא אינו מבסס את זהות המפלגה ההיסטורית או את מועדי השינויים בה.",
+      "registerCheckedAt": "2026-11-16"
     },
     {
       "id": "history-daam",
@@ -5228,13 +5580,17 @@
         "k22",
         "k23",
         "k24",
-        "proposal"
+        "proposal",
+        "registrar-2026-11-08"
       ],
       "evidence": {
         "status": "unresolved",
         "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
       },
-      "certainty": "unknown"
+      "certainty": "unknown",
+      "summaryEn": "Da’am is recorded as 59-900020-5; its registration date is blank. Historical organisational changes still need dated evidence.",
+      "summaryHe": "דע״ם רשומה במספר 59-900020-5; תאריך הרישום חסר. שינויים היסטוריים במפלגה עדיין דורשים מקור מתוארך.",
+      "registerCheckedAt": "2026-11-16"
     },
     {
       "id": "history-koach-lehashpia-2013",
@@ -5243,13 +5599,17 @@
       ],
       "sources": [
         "k19",
-        "proposal"
+        "proposal",
+        "registrar-2026-11-08"
       ],
       "evidence": {
         "status": "unresolved",
         "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
       },
-      "certainty": "unknown"
+      "certainty": "unknown",
+      "summaryEn": "The register was checked; whether the 2009 and 2013 lists used the same legal party remains unresolved.",
+      "summaryHe": "הרישום נבדק; טרם הוברר אם הרשימות ב־2009 וב־2013 הוגשו מטעם אותה מפלגה רשומה.",
+      "registerCheckedAt": "2026-11-16"
     },
     {
       "id": "history-uvizchutan",
@@ -5258,13 +5618,17 @@
       ],
       "sources": [
         "k20",
-        "proposal"
+        "proposal",
+        "registrar-2026-11-08"
       ],
       "evidence": {
         "status": "unresolved",
         "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
       },
-      "certainty": "unknown"
+      "certainty": "unknown",
+      "summaryEn": "Submitting party matched: אחריות – לב אחד ורוח חדשה, 59-900082-5; the registration date is blank.",
+      "summaryHe": "המפלגה שהגישה את הרשימה זוהתה במאגר: אחריות – לב אחד ורוח חדשה, 59-900082-5; תאריך הרישום חסר.",
+      "registerCheckedAt": "2026-11-16"
     },
     {
       "id": "history-hatzibur-haharedi",
@@ -5273,13 +5637,17 @@
       ],
       "sources": [
         "k26",
-        "proposal"
+        "proposal",
+        "registrar-2026-11-08"
       ],
       "evidence": {
         "status": "unresolved",
         "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
       },
-      "certainty": "unknown"
+      "certainty": "unknown",
+      "summaryEn": "The submitting party is named in the CEC filing; its reported registration number still needs the live Registrar record.",
+      "summaryHe": "המפלגה שהגישה את הרשימה מופיעה במסמכי ועדת הבחירות; מספר הרישום שפרסמה עדיין דורש אימות במאגר העדכני.",
+      "registerCheckedAt": "2026-11-16"
     },
     {
       "id": "history-hakel-2026",
@@ -5288,13 +5656,17 @@
       ],
       "sources": [
         "k26",
-        "proposal"
+        "proposal",
+        "registrar-2026-11-08"
       ],
       "evidence": {
         "status": "unresolved",
         "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
       },
-      "certainty": "unknown"
+      "certainty": "unknown",
+      "summaryEn": "Submitting party matched: מחנה ישראל, 59-900153-4; the registration date is blank.",
+      "summaryHe": "המפלגה שהגישה את הרשימה זוהתה במאגר: מחנה ישראל, 59-900153-4; תאריך הרישום חסר.",
+      "registerCheckedAt": "2026-11-16"
     },
     {
       "id": "democrats-registrar-date",
@@ -5313,7 +5685,10 @@
       "evidence": {
         "status": "unresolved",
         "interpretation": "The accessible official register was inspected: Labor 59-900001-5 and Meretz 59-900065-0 are separate; Labor name conflicts with the 2026 CEC submitting-party name. Legal rename date remains unknown (empty date); no completed legal merger established. Meretz convention approval date is not a registration field and remains unverified."
-      }
+      },
+      "summaryEn": "Registered name and legal change date remain unresolved: Labor / The Democrats; Meretz approval date still unverified.",
+      "summaryHe": "שם הרישום ומועד השינוי המשפטי טרם הובררו: העבודה / הדמוקרטים; מועד אישור האיחוד במרצ טרם אומת.",
+      "registerCheckedAt": "2026-11-16"
     },
     {
       "id": "koach-distinct-registration",
@@ -5331,7 +5706,10 @@
       "evidence": {
         "status": "unresolved",
         "interpretation": "Register has only כח להשפיע 59-900087-4, with disability-rights objectives consistent with the 2009 campaign, but no second entry naming Amnon Yitzhak. It cannot assign different numbers to the 2009 and 2013 appearances or exclude reuse of a legal platform; legal identity remains unknown."
-      }
+      },
+      "summaryEn": "The register was checked; whether the 2009 and 2013 lists used the same legal party remains unresolved.",
+      "summaryHe": "הרישום נבדק; טרם הוברר אם הרשימות ב־2009 וב־2013 הוגשו מטעם אותה מפלגה רשומה.",
+      "registerCheckedAt": "2026-11-16"
     },
     {
       "id": "achi-distinct-registration",
@@ -5348,7 +5726,10 @@
       "evidence": {
         "status": "unresolved",
         "interpretation": "Register identifies historic אח~י - ארץ חברה יהדות (former name ציונות לאומית דתית מתחדשת), 59-900067-6. CEC 2026 list 26-צבי submits through חוזרים לשורשים, absent from this 170-row snapshot. אחי ישראלי 59-900115-3 is a third name, not evidence for that vehicle. No pair of registration numbers can be established; identity remains unknown."
-      }
+      },
+      "summaryEn": "The register was checked; the link between historic Ahi and the 2026 submitting party remains unresolved.",
+      "summaryHe": "הרישום נבדק; הקשר בין אח״י ההיסטורית למפלגה שהגישה את הרשימה ב־2026 טרם הוברר.",
+      "registerCheckedAt": "2026-11-16"
     },
     {
       "id": "nrp-registrar-date",
@@ -5364,7 +5745,10 @@
       "evidence": {
         "status": "unresolved",
         "interpretation": "Continuity now confirmed by registered name and number 59-900008-0; only exact legal effective date remains open because the registration-date cell is empty. Do not treat 2008 as a Registrar date."
-      }
+      },
+      "summaryEn": "NRP–Jewish Home continuity is confirmed; the legal change date remains unverified.",
+      "summaryHe": "המשכיות המפד״ל והבית היהודי מאומתת; מועד השינוי המשפטי טרם אומת.",
+      "registerCheckedAt": "2026-11-16"
     }
   ],
   "settledChecks": [
