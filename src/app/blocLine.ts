@@ -543,6 +543,20 @@ export function trayBlocRegions(bands: number[], cols: number = trayShape(bands.
   return { regions, lines };
 }
 
+/** Within each group (a list in one bloc, or one party of a joint list counted by party), its seats take the group's
+ *  places front row first (the inner row), each row left to right, so a list's first candidate always sits in its
+ *  front row, on the left, and the order can be read off the chart. `groups[i]` names seat i's group. */
+export function frontRowFirst(places: SeatPos[], groups: string[]): SeatPos[] {
+  const out = places.slice(), byGroup = new Map<string, number[]>();
+  groups.forEach((g, i) => { const list = byGroup.get(g); if (list) list.push(i); else byGroup.set(g, [i]); });
+  const row = (p: SeatPos) => Math.round(Math.hypot(p.x, p.y) * 1e4);
+  for (const idx of byGroup.values()) {
+    const ps = idx.map((i) => places[i]).sort((a, b) => row(a) - row(b) || a.x - b.x);
+    idx.forEach((i, k) => { out[i] = ps[k]; });
+  }
+  return out;
+}
+
 /** Where each seat sits on the half circle when it is split into blocs. Today's order (by angle) makes every bloc a
  *  wedge, but a wedge's edge runs through seats in some rows, so the line between blocs has to weave around them.
  *  Instead, each boundary tries the lines that pass between seats in as many rows as possible (radial ones and ones

@@ -1,7 +1,7 @@
 // The bloc line as pure geometry: correct side, few bends, same answer every time.
 import { describe, expect, test } from 'vitest';
 import { arcLayout } from '../src/app/layout.ts';
-import { arcBlocRegions, arcSeatSlots, centreLine, directionChanges, roundCorners, simplify, smoothLine, trayBlocRegions, trayCell, trayShape, TRAY, type Pt } from '../src/app/blocLine.ts';
+import { arcBlocRegions, arcSeatSlots, centreLine, frontRowFirst, directionChanges, roundCorners, simplify, smoothLine, trayBlocRegions, trayCell, trayShape, TRAY, type Pt } from '../src/app/blocLine.ts';
 import { regionErrors, sharpest, trayRegionErrors } from './bloc-line-check.ts';
 
 /** A turn of about 6° or more: one the eye sees. */
@@ -146,5 +146,25 @@ describe('Blocks tray', () => {
   });
   test('bloc regions still hold their own seats in a larger chamber', () => {
     for (const sizes of [[61, 60], [75, 75], [400, 7, 593]]) expect(trayRegionErrors(split(sizes)), sizes.join('/')).toEqual([]);
+  });
+});
+
+describe('frontRowFirst', () => {
+  test("a list's candidates fill its places front row first, each row left to right", () => {
+    const arc = arcLayout(120), bands = split([62, 58]), placed = arcSeatSlots(arc.seats, bands, arc.r).map((k) => arc.seats[k]);
+    // three lists: the first two share bloc 0, the third is bloc 1
+    const groups = bands.map((b, i) => (b === 1 ? 'c' : i < 32 ? 'a' : 'b'));
+    const out = frontRowFirst(placed, groups);
+    expect(new Set(out).size).toBe(120);
+    for (const g of ['a', 'b', 'c']) {
+      const mine = out.filter((_, i) => groups[i] === g);
+      // the same places as before, only in a new order
+      expect(new Set(mine)).toEqual(new Set(placed.filter((_, i) => groups[i] === g)));
+      const radius = (p: { x: number; y: number }) => Math.round(Math.hypot(p.x, p.y) * 1e4);
+      for (let k = 1; k < mine.length; k++) {
+        const a = mine[k - 1], b = mine[k];
+        expect(radius(a) < radius(b) || (radius(a) === radius(b) && a.x < b.x), `${g} ${k}`).toBe(true);
+      }
+    }
   });
 });

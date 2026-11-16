@@ -22,7 +22,7 @@ import type { Scenario, SimList } from '../../model/scenario.ts';
 import { allocationOf, listLabel, methodOf, seatBlocsOf, seatedOrder, seatCandidate, candidateName, referenceLabel, comparisonGroups, groupingLabel, majorityText } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { arcLayout, annularRegions } from '../layout.ts';
-import { arcSeatSlots, trayBlocRegions, trayCell, trayShape, TRAY } from '../blocLine.ts';
+import { arcSeatSlots, frontRowFirst, trayBlocRegions, trayCell, trayShape, TRAY } from '../blocLine.ts';
 import { download, isolate, seatDeltaText } from '../format.ts';
 import { electionLabel } from '../electionLabel.ts';
 import { setSetting, setState, useSetting, useStore } from '../store.ts';
@@ -68,6 +68,9 @@ export function seatOrder(s: Scenario, r: AllocationResult, colorBy: 'list' | 'b
   const rank = (b: string | null) => order.indexOf(b);
   return out.sort((a, b) => rank(a.bloc) - rank(b.bloc) || within(a, b));
 }
+
+/** The group whose places a seat shares: its list (one party of it, when a joint list is counted by party) in its bloc. */
+export const seatGroup = (st: SeatInfo) => `${st.holder}|${st.bloc ?? ''}`;
 
 /** `text` cut to at most `max` characters at a word boundary, with an ellipsis. */
 export function clipWords(text: string, max: number): string {
@@ -158,9 +161,10 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     });
     return { bands: out, bandOf };
   }, [seats, s.blocs]);
-  // where each seat sits: blocs are placed so the line between them can run as straight as the seats allow
-  const placed = useMemo(() => { const slot = arcSeatSlots(pos, bandOf, rad); return slot.map((k) => pos[k]); }, [pos, bandOf, rad]);
-  const baselinePlaced = useMemo(() => arcSeatSlots(pos, baselineBands, rad).map((k) => pos[k]), [pos, baselineBands, rad]);
+  // where each seat sits: blocs are placed so the line between them can run as straight as the seats allow; within a
+  // list, its candidates fill its places front row first, each row left to right
+  const placed = useMemo(() => frontRowFirst(arcSeatSlots(pos, bandOf, rad).map((k) => pos[k]), seats.map(seatGroup)), [pos, bandOf, rad, seats]);
+  const baselinePlaced = useMemo(() => frontRowFirst(arcSeatSlots(pos, baselineBands, rad).map((k) => pos[k]), baselineSeats.map(seatGroup)), [pos, baselineBands, rad, baselineSeats]);
 
   const hoverBridge = useHoverIntent(() => setHover(null), !!hover);
   /** click and the keyboard open the seat card at once; a resting mouse opens it after the shared hover delay */
