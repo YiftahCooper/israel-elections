@@ -78,7 +78,9 @@ describe('official English names of Knesset members', () => {
       const meta = JSON.parse(readFileSync(`data/meta/bios/${e.id}.json`, 'utf8')).candidates as Record<string, { knesset?: { siteId?: number } | null; basis?: string; displayNameEn?: string; displayNameEnNote?: string }>;
       for (const l of load(e.id).lists) for (const c of l.candidates) {
         const m = meta[c.id];
-        if (m?.basis?.startsWith('not elected; ')) expect(c.nameEn, c.id).toBeUndefined();
+        // a candidate who was not elected takes the English name only through a high reviewed decision (Avigdor Kahalani,
+        // Likud No. 41 in 2003); a match by name rule alone never does
+        if (m?.basis?.startsWith('not elected; ') && !(m.basis.startsWith('not elected; reviewed decision') && (m as { confidence?: string }).confidence === 'high')) expect(c.nameEn, c.id).toBeUndefined();
         if (!c.nameEn) continue;
         n++;
         const sourceName = bySite.get(m!.knesset!.siteId!);
@@ -102,6 +104,12 @@ describe('official English names of Knesset members', () => {
       }
     }
     expect(n).toBeGreaterThan(3000);
+    const named = (k: string, id: string) => load(k).lists.flatMap((l) => l.candidates).find((c) => c.id === id);
+    expect(named('k16', '16-מחל#41')?.nameEn).toBe('Avigdor Kahalani');
+    expect(named('k22', '22-מרצ#10')?.nameEn).toBe('Ehud Barak');
+    // medium reviewed identities stay in Hebrew: the two 1977 Likud ranks both printed כהן יגאל, Emil/Haim Amsalem 2006
+    expect(named('k9', '9-מחל#21')?.nameEn).toBeUndefined();
+    expect(named('k17', '17-שס#11')?.nameEn).toBeUndefined();
     const s = scenarioFromDataset(load('k25'));
     expect(s.lists.flatMap((l) => l.candidates).find((c) => c.id === '25-מחל#1')?.nameEn).toBe('Benjamin Netanyahu');
     expect(validateScenario(JSON.parse(JSON.stringify(s)))).toEqual([]);

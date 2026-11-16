@@ -32,12 +32,11 @@ test('in every election the key adds up to the seats allocated, in chamber order
   }
 });
 
-test('1977 Hadash counted by party: Rakah 3, Black Panthers 1, and 1 seat with no party recorded', () => {
+test('1977 Hadash counted by party: Rakah 3, Black Panthers 1, Jewish and Arab public circles 1, none unrecorded', () => {
   const base = scenarioFromDataset(dataset(9));
   const hadash = base.lists.find(l => l.shortEn === 'Hadash')!;
   const s = { ...base, factionSplits: [hadash.id] }, r = allocationOf(s);
   const rows = chamberKeyRows(s, seatOrder(s, r, 'list', 'both'), 'both').filter(x => x.l.id === hadash.id);
-  expect(rows.map(x => [x.p?.nameEn ?? null, x.n]).sort()).toEqual([[null, 1], ...rows.filter(x => x.p).map(x => [x.p!.nameEn, x.n])].sort());
+  expect(rows.map(x => [x.p?.nameEn ?? null, x.n]).sort()).toEqual([['Black Panthers', 1], ['Jewish and Arab public circles', 1], ['Rakah', 3]]);
   expect(rows.reduce((t, x) => t + x.n, 0)).toBe(5);
-  expect(rows.find(x => !x.p)?.n).toBe(1);
 });

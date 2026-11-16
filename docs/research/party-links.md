@@ -151,7 +151,7 @@ files contain each missing identity's full reason; below is the complete id inve
 | k12 1988 | 10 | 27 | 27 | 2 | 5 | 6 |
 | k11 1984 | 4 | 26 | 26 | 1 | 7 | 11 |
 | k10 1981 | 4 | 31 | 31 | 0 | 3 | 7 |
-| k9 1977 | 5 | 22 | 22 | 0 | 4 | 11 |
+| k9 1977 | 5 | 22 | 22 | 0 | 4 | 12 |
 | k8 1973 | 2 | 21 | 21 | 0 | 6 | 11 |
 | k7 1969 | 2 | 16 | 16 | 0 | 2 | 4 |
 | k6 1965 | 2 | 17 | 17 | 0 | 2 | 4 |
@@ -286,8 +286,8 @@ files contain each missing identity's full reason; below is the complete id inve
 
 - Lists missing partisan: `9-אמת`, `9-ו`, `9-לע`, `9-ימ`, `9-ש`, `9-כנ`, `9-פש`, `9-ד`, `9-הפ`, `9-זה`, `9-זך`, `9-כה`, `9-כך`, `9-נס`, `9-ספ`, `9-פ`, `9-פז`.
 - Lists missing neutral: none.
-- Constituents missing partisan: `herut`, `liberal-party`, `laam`, `ahdut-seidel-1977`, `israeli-labor-party`, `mapam`, `rakah`, `black-panthers`, `independent-socialists`, `moked`, `meri`.
-- Constituents missing neutral: `herut`, `laam`, `ahdut-seidel-1977`, `mapam`, `rakah`, `independent-socialists`, `meri`.
+- Constituents missing partisan: `herut`, `liberal-party`, `laam`, `ahdut-seidel-1977`, `israeli-labor-party`, `mapam`, `rakah`, `black-panthers`, `jewish-arab-public-circles`, `independent-socialists`, `moked`, `meri`.
+- Constituents missing neutral: `herut`, `laam`, `ahdut-seidel-1977`, `mapam`, `rakah`, `jewish-arab-public-circles`, `independent-socialists`, `meri`.
 
 ### k8 1973
 

@@ -12,7 +12,7 @@ async function start(page: Page, level: string) {
   await page.getByRole('tab', { name: 'Coalitions', exact: true }).click();
 }
 
-test('June 2021 at Expert: the recorded first government counts Chikli against and al-Harumi abstaining: 60 for, 59 against, 61', async ({ page }) => {
+test('June 2021 at Expert: the recorded first government counts Chikli against and Alkharumi abstaining: 60 for, 59 against, 61', async ({ page }) => {
   await start(page, 'expert');
   const section = page.locator('details.coal-apart');
   await expect(section).not.toHaveAttribute('open');

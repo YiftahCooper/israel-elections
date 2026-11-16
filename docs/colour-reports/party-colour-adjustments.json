@@ -297,7 +297,7 @@
     "color": "#d96671",
     "forced": true,
     "reasons": [
-      "separation from other lists' seats in the same election: labor, list 9-ו"
+      "separation from other lists' seats in the same election: labor"
     ],
     "confidence": "derived",
     "source": "party id",
@@ -346,6 +346,25 @@
   },
   {
     "election": "k9",
+    "list": "9-ו",
+    "letters": "ו",
+    "party": "jewish-arab-public-circles",
+    "canonicalParty": "jewish-arab-public-circles",
+    "name": "Jewish and Arab public circles",
+    "base": "#199ec3",
+    "color": "#39a0a5",
+    "forced": true,
+    "reasons": [
+      "separation from other lists' seats in the same election: independent-socialists"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "recordedVariation": false,
+    "deltaE": 10.909
+  },
+  {
+    "election": "k9",
     "list": "9-ש",
     "letters": "ש",
     "party": "independent-socialists",
@@ -374,7 +393,7 @@
     "color": "#d06932",
     "forced": true,
     "reasons": [
-      "separation from other lists' seats in the same election: labor, list 9-ו"
+      "separation from other lists' seats in the same election: labor"
     ],
     "confidence": "low",
     "source": "data/meta/k9.json",

@@ -570,8 +570,10 @@ export function HistorySheet({ parties, colours = {}, initial, electionIdx, onCl
         </li>)}
         {open.map((o) => <li key={o.id}>
           <span className="ph-evdot weak" aria-hidden /><span className="ph-evyear">—</span>
-          <span>{L(`Registration record not yet checked: ${names(o.partyIds.filter((p) => !p.startsWith('vehicle-')), 'en')}`, `רישום המפלגות טרם נבדק: ${names(o.partyIds.filter((p) => !p.startsWith('vehicle-')), 'he')}`)}</span>
-          <span className="ph-evmeta"><CertChip c="unknown" /></span>
+          {/* a register already read says what it found and what is still open; only an unread one is "not yet checked" */}
+          <span>{o.summaryEn && o.summaryHe ? L(`Party register checked: ${o.summaryEn}`, `מאגר המפלגות נבדק: ${o.summaryHe}`)
+            : L(`Registration record not yet checked: ${names(o.partyIds.filter((p) => !p.startsWith('vehicle-')), 'en')}`, `רישום המפלגות טרם נבדק: ${names(o.partyIds.filter((p) => !p.startsWith('vehicle-')), 'he')}`)}</span>
+          <span className="ph-evmeta"><CertChip c={o.certainty} /></span>
         </li>)}
       </ul>
     </>}

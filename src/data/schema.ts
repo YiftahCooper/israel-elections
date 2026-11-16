@@ -48,6 +48,10 @@ export interface Candidate {
   /** the member's official English name on the Knesset website (a current name; data/raw/bios/knesset-site-mk-names-en.json),
    *  attached only to a candidate whose Knesset identity is certain (official OData match or a high reviewed decision) */
   nameEn?: string;
+  /** the member's Hebrew name as the Knesset records it, given name first (OData KNS_Person), attached under the same
+   *  identity rule as `nameEn`; it also covers members of the 26th Knesset elected for the first time, who have no
+   *  website page yet. The seat chart and Find an MK use it, so every member's name reads the same way. */
+  memberNameHe?: string;
   /** curated bilingual notes, e.g. a replacement before the Knesset's first sitting (decision 0088) */
   notes?: { en: string; he: string }[];
   /** the constituent party (ListRecord.parties) the candidate represented on a joint list, when sourced */

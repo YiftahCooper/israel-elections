@@ -199,7 +199,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     const first = envelopeRows[0], ta = placed.find(p => p.code === 5000);
     const taName = ta ? localityName(names, ta.row, ta.index, lang) : '';
     return { lat: 32.0, lon: 34.62, valid, parts: partsOf(votes), winner: localityWinner(s, data.listIds, votes, mode).color,
-      title: localityName(names, data.rows[first], first, lang), sub: L(`${fmtInt(valid)} votes`, `${fmtInt(valid)} קולות`),
+      title: localityName(names, data.rows[first], first, lang), sub: L(`${fmtInt(valid)} valid votes`, `${fmtInt(valid)} קולות כשרים`),
       keepClear: ta && taName ? { lat: ta.lat, lon: ta.lon, width: Math.ceil(textWidth(taName)) + 4, rtl: lang === 'he' } : null };
   }, [envelopeRows, placed, data, s, mode, names, lang, seated]);
   const fittedFor = useRef<unknown>(null);

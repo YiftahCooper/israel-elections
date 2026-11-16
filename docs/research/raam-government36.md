@@ -8,7 +8,7 @@
 - **Why this check exists.** Some people remember Ra’am holding a ministry or a deputy-minister post in that government. Some news reports said so at the time. The app currently shows Ra’am as a **coalition member without ministries**: a party that is formally part of the government’s coalition but has no minister in the cabinet. This document checks whether that is right.
 - **What was found.** The app is right. The official Knesset list of that government’s deputy ministers has no Ra’am member at any point in the term. The official list of ministers on the day the government was formed has no Ra’am minister either. No appointment date, government decision, Knesset notification or oath of office was found for Abbas as a deputy minister.
 - **Why the confusion.** The coalition deal did include an optional deputy-minister post in the Prime Minister’s Office for Arab affairs. Ra’am’s religious council never decided to take it up. Two other deputy posts were also offered (one for housing, one for Mazen Ghanaim). None of these offers became an appointment. One news site, The National (24 June 2021), wrote that Abbas took the post. That report is contradicted by the official record.
-- **What Ra’am did have.** Abbas was a Deputy Speaker of the Knesset and chaired its Special Committee for Arab Society Affairs. Ra’am MK Said al-Harumi chaired the Interior and Environmental Protection Committee for part of the term. The cabinet also approved large spending plans for Arab society and the Negev Bedouin. None of this makes someone a minister.
+- **What Ra’am did have.** Abbas was a Deputy Speaker of the Knesset and chaired its Special Committee for Arab Society Affairs. Ra’am MK Saeed Alkharumi chaired the Interior and Environmental Protection Committee for part of the term. The cabinet also approved large spending plans for Arab society and the Negev Bedouin. None of this makes someone a minister.
 - **What stays the same.** No data was changed. Even if Abbas had become a deputy minister, the app’s rules would still class Ra’am as a coalition member without ministries, because only a cabinet minister counts as a “member with ministries”.
 
 ## The finding in more detail
@@ -51,9 +51,9 @@ All of these were published at the time. They describe negotiations and offers, 
 - the government’s formation was announced on 2 June, and the agreement was signed nine days later;
 - Ra’am was formally included in the coalition without a seat in the cabinet;
 - Abbas was a Deputy Speaker of the Knesset and chaired the committee on Arab society affairs;
-- Said al-Harumi chaired the Interior and Environmental Protection Committee.
+- Saeed Alkharumi chaired the Interior and Environmental Protection Committee.
 
-This is academic research, not the signed agreement itself. Al-Harumi did not chair that committee for the whole term, so we must not show it as if he did.
+This is academic research, not the signed agreement itself. Alkharumi did not chair that committee for the whole term, so we must not show it as if he did.
 
 **Knesset announcements.**
 

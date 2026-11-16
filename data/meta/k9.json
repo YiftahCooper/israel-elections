@@ -1473,40 +1473,70 @@
               "confidence": "high"
             }
           ]
-        }
-      ],
-      "unassignedRanks": [
-        5
-      ],
-      "notes": [
-        "Rank 5 Hanna Mwais: no source states a constituent party (Hebrew Wikipedia gives only Hadash); Hadash also included Arab local office-holders and other groups."
-      ],
-      "unassignedEvidence": [
+        },
         {
-          "rank": 5,
-          "nameHe": "מואיס חנא",
-          "status": "unknown",
-          "reviewed": "2026-11-09",
+          "id": "jewish-arab-public-circles",
+          "nameHe": "חוגי ציבור יהודים וערבים",
+          "nameEn": "Jewish and Arab public circles",
+          "candidateRanks": [
+            5
+          ],
           "sources": [
             {
-              "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=495&languageKey=he",
-              "publisher": "Knesset website, member biography (public activity)",
-              "kind": "official",
-              "quote": "חבר סיעת החזית הדמוקרטית לשלום ושוויון.",
-              "accessed": "2026-11-09"
+              "url": "https://archive.org/details/israelatpollskne0000penn/page/316",
+              "publisher": "Myron J. Aronoff, glossary of political parties, in Howard R. Penniman (ed.), Israel at the Polls: The Knesset Elections of 1977 (AEI, 1979), p. 316",
+              "kind": "academic",
+              "quote": "The Democratic Front co-opted the non-Communist chairman of the influential organization of heads of Arab local councils as well as a former leader of the Black Panthers.",
+              "accessed": "2026-11-16"
             },
             {
-              "url": "https://fs.knesset.gov.il/9/Plenum/9_ptm_254033.pdf",
-              "publisher": "Knesset plenary transcript, 23 February 1981, PDF pp. 1–2",
-              "kind": "official",
-              "quote": "Memorial speeches identify Mwais as a Hadash founder and Arab local-authority leader; Toubi describes him as a guest at the Communist Party congress.",
-              "accessed": "2026-11-09",
-              "quoteNote": "Research summary, not a verbatim quotation."
+              "url": "https://archive.org/details/israelatpollskne0000penn/page/192",
+              "publisher": "Howard R. Penniman (ed.), Israel at the Polls: The Knesset Elections of 1977 (AEI, 1979), chapter \"The Lesser Parties\", p. 192",
+              "kind": "academic",
+              "quote": "It made contact with one of the Black Panther groups and put one of its leaders in a safe place on the Rakah list, along with a non-Communist Christian Arab.",
+              "accessed": "2026-11-16"
             }
           ],
-          "reason": "The official biography and memorial establish Hadash membership and civic leadership, but neither names a constituent party. Guest status at a party congress does not prove either membership or non-membership in 1977.",
-          "evidenceNeeded": "The 1977 Hadash constituent agreement, a party membership register, or an explicit contemporary account distinguishing Rakah membership from the non-party civic component."
+          "confidence": "high",
+          "members": [
+            {
+              "rank": 5,
+              "nameHe": "מואיס חנא",
+              "knessetPersonId": 2452,
+              "knessetBioMentionsParty": false,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=495&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "היה יו”ר הוועדה הארצית של ראשי הרשויות המקומיות הערביות.",
+                  "accessed": "2026-11-16"
+                },
+                {
+                  "url": "https://archive.org/details/israelatpollskne0000penn/page/316",
+                  "publisher": "Myron J. Aronoff, in Penniman (ed.), Israel at the Polls (1979), p. 316",
+                  "kind": "academic",
+                  "quote": "The Democratic Front co-opted the non-Communist chairman of the influential organization of heads of Arab local councils",
+                  "accessed": "2026-11-16"
+                },
+                {
+                  "url": "https://fs.knesset.gov.il/9/Plenum/9_ptm_254033.pdf",
+                  "publisher": "Knesset plenary transcript, 23 February 1981, PDF pp. 1–2",
+                  "kind": "official",
+                  "quote": "Memorial speeches identify Mwais as a Hadash founder and Arab local-authority leader; Toubi describes him as a guest at the Communist Party congress.",
+                  "accessed": "2026-11-09",
+                  "quoteNote": "Research summary, not a verbatim quotation."
+                }
+              ],
+              "note": "The ballot names three components: Rakah, the Black Panthers, and Jewish and Arab public circles. The Knesset biography makes Mwais the chairman of the national committee of Arab local-authority heads; Aronoff calls that chairman non-Communist, and he was not a Black Panther, so he stood for the public circles.",
+              "confidence": "high"
+            }
+          ]
         }
+      ],
+      "unassignedRanks": [],
+      "notes": [
+        "Rank 5 Hanna Mwais, chairman of the national committee of Arab local-authority heads, is the non-Communist co-opted by the Front (Aronoff, p. 316): he stands for the ballot's third component, Jewish and Arab public circles."
       ]
     },
     {

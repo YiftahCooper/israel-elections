@@ -8,6 +8,7 @@ import type { CandidateBio, ElectionDataset } from '../../../src/data/schema.ts'
 
 const ROOT = join(import.meta.dirname, '..', '..', '..');
 interface Entry {
+  knessetPersonId?: number | null;
   displayNameEn?: string; // Reviewed display transliteration; original official extract stays intact.
   knesset?: { url: string; siteId?: number } | null; hewiki?: { title: string; url: string } | null;
   party?: { url: string; publisher?: string; archivedAt?: string | null; kind?: string } | null; confidence: 'high' | 'medium'; basis?: string;
@@ -51,12 +52,26 @@ export function applyBios(ds: ElectionDataset): ElectionDataset {
   // (not the 1977 Likud ranks 21 and 24, both printed כהן יגאל: which rank is which person is not certain)
   const namesFile = join(ROOT, 'data', 'raw', 'bios', 'knesset-site-mk-names-en.json');
   const namesEn = new Map(existsSync(namesFile) ? (JSON.parse(readFileSync(namesFile, 'utf8')) as { siteId: number; nameEn: string | null }[]).filter((x) => x.nameEn).map((x) => [x.siteId, x.nameEn!]) : []);
+  // The official English name follows the same identity rule as the MK history and the comparison match
+  // (knessetMemberSure): an official roster match, or a high reviewed decision such as Avigdor Kahalani, Likud No. 41 in
+  // 2003, who was not elected. A medium reviewed decision (the two 1977 Likud ranks both printed כהן יגאל) or a match by
+  // name rule alone takes no English name.
   const nameEnOf = (e: Entry) => {
-    if (!memberIdentitySure(e) || !e.knesset?.siteId) return undefined;
+    if (!knessetMemberSure(e) || !e.knesset?.siteId) return undefined;
     // k12 audit: a reviewed displayNameEn overrides a misspelt site value; the raw site value stays as evidence.
     if (e.displayNameEn) return e.displayNameEn;
     const name = namesEn.get(e.knesset.siteId);
     return name;
+  };
+  // the member's Hebrew name as the Knesset records it, given name first (OData KNS_Person), for every certain identity,
+  // including members of the 26th Knesset elected for the first time, who have a PersonID but no website page yet
+  const personsFile = join(ROOT, 'data', 'raw', 'bios', 'knesset-odata-persons.json'), k26File = join(ROOT, 'data', 'raw', 'k26', 'knesset-odata-members.json');
+  type Person = { PersonID: number; FirstName: string; LastName: string };
+  const persons = new Map<number, Person>([...(existsSync(k26File) ? (JSON.parse(readFileSync(k26File, 'utf8')) as { persons: Person[] }).persons : []),
+    ...(existsSync(personsFile) ? JSON.parse(readFileSync(personsFile, 'utf8')) as Person[] : [])].map((p) => [p.PersonID, p]));
+  const memberNameHeOf = (e: Entry) => {
+    const p = e.knessetPersonId && knessetMemberSure(e) ? persons.get(e.knessetPersonId) : undefined;
+    return p?.FirstName && p.LastName ? `${p.FirstName.trim()} ${p.LastName.trim()}`.replace(/\s+/g, ' ') : undefined;
   };
   const ids = new Set(ds.lists.flatMap((l) => l.candidates.map((c) => c.id)));
   const unknown = Object.keys(bios).filter((id) => !ids.has(id));
@@ -73,5 +88,9 @@ export function applyBios(ds: ElectionDataset): ElectionDataset {
     if (/en\.wikipedia/.test(JSON.stringify(b))) throw new Error(`data/meta/bios/${ds.id}.json: English Wikipedia is never linked`);
     return b.knesset || b.hewiki || b.party ? b : null;
   };
-  return { ...ds, lists: ds.lists.map((l) => ({ ...l, candidates: l.candidates.map((c) => { const e = bios[c.id]; const b = e ? bioOf(e) : null; const en = e ? nameEnOf(e) : undefined; const displayEn = en ? displayNameEn(en) : undefined; return b || displayEn ? { ...c, ...(displayEn ? { nameEn: displayEn } : {}), ...(b ? { bio: b } : {}) } : c; }) })) };
+  return { ...ds, lists: ds.lists.map((l) => ({ ...l, candidates: l.candidates.map((c) => {
+    const e = bios[c.id]; const b = e ? bioOf(e) : null; const en = e ? nameEnOf(e) : undefined; const displayEn = en ? displayNameEn(en) : undefined;
+    const memberHe = e ? memberNameHeOf(e) : undefined;
+    return b || displayEn || memberHe ? { ...c, ...(displayEn ? { nameEn: displayEn } : {}), ...(memberHe ? { memberNameHe: memberHe } : {}), ...(b ? { bio: b } : {}) } : c;
+  }) })) };
 }

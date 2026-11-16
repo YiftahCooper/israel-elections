@@ -422,8 +422,8 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   // ---- where and how people vote ----
   {
     id: 'envelopes', nameHe: 'מעטפות כפולות (חיצוניות)', nameEn: 'Double envelopes', level: 'simple', provenance: 'sourced',
-    defHe: 'הסדר שמאפשר לקבוצות מסוימות להצביע מחוץ לקלפי שבה הן רשומות, למשל חיילים ושוטרים, מאושפזים, אסירים, אנשים המוגבלים בניידות, נשים במקלטים ועובדי מדינה בחו״ל. הפתק נכנס למעטפה אנונימית בתוך מעטפה חיצונית מזוהה, והקולות נספרים בנפרד. בקובצי התוצאות הם מרוכזים מחוץ ליישובים, ולכן שיעור ההצבעה ביישוב אינו כולל אותם.',
-    defEn: 'An arrangement letting certain groups vote away from their own polling station, such as soldiers and police, hospital patients, prisoners, people with limited mobility, women in shelters and civil servants abroad. The slip goes in an anonymous envelope inside an outer envelope bearing the voter’s details, and these votes are counted centrally. Results files group them outside any locality, so locality turnout excludes them.',
+    defHe: 'הסדר שמאפשר לקבוצות מסוימות להצביע מחוץ לקלפי שבה הן רשומות, למשל חיילים ושוטרים, מאושפזים, אסירים, אנשים המוגבלים בניידות, נשים במקלטים ועובדי מדינה בחו״ל. הפתק נכנס למעטפה אנונימית בתוך מעטפה חיצונית מזוהה, והקולות נספרים בנפרד. בקובצי התוצאות הם מרוכזים מחוץ ליישובים, ולכן שיעור ההצבעה ביישוב אינו כולל אותם. מספר המעטפות הכפולות כולל קולות שנפסלו; האי שבמפה מציג רק את הקולות הכשרים שבהן.',
+    defEn: 'An arrangement letting certain groups vote away from their own polling station, such as soldiers and police, hospital patients, prisoners, people with limited mobility, women in shelters and civil servants abroad. The slip goes in an anonymous envelope inside an outer envelope bearing the voter’s details, and these votes are counted centrally. Results files group them outside any locality, so locality turnout excludes them. The count of double envelopes includes ballots found invalid; the map’s island shows only the valid votes in them.',
     linkHe: H.electionDay, linkEn: E.invalid,
     sources: [
       src(L.s68a, 'he', 'law', 'ss.68A–68B, 91, 116B ff.: voting by outer envelope'),

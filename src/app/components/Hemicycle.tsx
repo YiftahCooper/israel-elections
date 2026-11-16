@@ -8,7 +8,6 @@ import { CandidateName } from './CandidateName.tsx';
 import { MkSeatLink, usePersonOf } from './MkHistory.tsx';
 import { SeatHoldersNote } from './TermTimeline.tsx';
 import { loadTermRuntime } from '../../history/termTimeline.ts';
-import memberNames from '../../data/candidate-display-names.json';
 import { Floating } from '../floating.tsx';
 import { useHoverIntent } from '../hoverIntent.ts';
 import { blocDisplayOrder } from '../blocOrder.ts';
@@ -19,7 +18,7 @@ import { BlocMajorities } from './Majority.tsx';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
-import { allocationOf, listLabel, methodOf, seatBlocsOf, seatedOrder, seatCandidate, candidateName, referenceLabel, comparisonGroups, groupingLabel, majorityText } from '../derive.ts';
+import { allocationOf, listLabel, methodOf, seatBlocsOf, seatedOrder, seatCandidate, candidateName, memberNameGivenFirst, referenceLabel, comparisonGroups, groupingLabel, majorityText } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { arcLayout, annularRegions } from '../layout.ts';
 import { arcSeatSlots, frontRowFirst, trayBlocRegions, trayCell, trayShape, TRAY } from '../blocLine.ts';
@@ -329,12 +328,12 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   // the member in this seat and their place on the full list (a candidate who was not seated keeps their place)
   const { candidate: cand, place: candPlace } = hover && hv ? seatCandidate(hv, hover.seat.idx) : { candidate: null, place: null };
 
-  // Only certain official identities use the Knesset's given-name-first display; user edits keep their text.
+  // Every member reads given name first (memberNameGivenFirst: the Knesset's record, else the printed name turned round),
+  // in English too when the member has no English name yet (new members of the 26th Knesset); user edits keep their text.
   function memberName(c: NonNullable<typeof cand>) {
+    if (lang === 'en' && c.nameEn) return c.nameEn;
     const unchanged = originalDataset?.lists.some(l => l.candidates.some(x => x.id === c.id && x.nameHe === c.nameHe));
-    const sourced = c.bio?.knesset && (!c.bio.probable || c.bio.memberConfirmed) && !c.displayNameHe && unchanged
-      ? (memberNames as Record<string, string>)[c.bio.knesset.split('/').at(-1)!] : undefined;
-    return lang === 'he' && sourced ? sourced : candidateName(c, lang);
+    return unchanged ? memberNameGivenFirst(c) : candidateName(c, lang);
   }
   const hoverCandidateName = cand ? memberName(cand) : '';
 

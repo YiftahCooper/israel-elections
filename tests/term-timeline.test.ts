@@ -240,7 +240,7 @@ describe('Knessets in which no government was formed (21st, 22nd)', () => {
 
 describe('markers (owner, 11 Nov)', () => {
   const view = (t: TermRuntime, d: string, level: TimelineChoice['level'] = 'expert') => visibleSteps(t, at(level, 'all')).find((s) => s.step.date === d)!;
-  test('swearing-in: Chikli voted against and is a rebel (D2) on the other side; Alharumi abstained and stayed (D3)', () => {
+  test('swearing-in: Chikli voted against and is a rebel (D2) on the other side; Alkharumi abstained and stayed (D3)', () => {
     const v = view(k24, '2021-06-13');
     const marks = stepMarks(v);
     const chikli = personSeat(k24, CHIKLI, '2021-06-13'), alharumi = personSeat(k24, ALHARUMI, '2021-06-13');

@@ -564,16 +564,19 @@ summary = {}
 outputs = {}   # path -> text; written (or compared with --check) at the end
 for k in ELECTIONS:
     order = {c['id']: i for i, c in enumerate(c for l in datasets[k]['lists'] for c in l['candidates'])}
+    linked = lambda e: e.get('knesset') or e.get('hewiki') or e.get('party')
+    # An elected member's official identity is kept even without a link (members of the 26th Knesset elected for the
+    # first time have a PersonID but no site id yet): the app names every member from the same Knesset person record.
     entries = {cid: {**{f: e.get(f) for f in FIELDS}, **{f: e[f] for f in OPTIONAL if f in e}}
                for cid, e in sorted(result[k].items(), key=lambda x: order[x[0]])
-               if e.get('knesset') or e.get('hewiki') or e.get('party')}
+               if linked(e) or (cid in set(elected[k]) and e.get('knessetPersonId'))}
     doc = {'electionId': k, 'generatedBy': 'scripts/research/build-bios.py', 'format': 'data/meta/bios/README.md',
            'candidates': entries}
     outputs[OUT / f'{k}.json'] = json.dumps(doc, ensure_ascii=False, indent=1) + '\n'
     el = set(elected[k])
     summary[k] = {
         'candidates': sum(len(l['candidates']) for l in datasets[k]['lists']),
-        'withLink': len(entries),
+        'withLink': sum(1 for e in entries.values() if linked(e)),
         'elected': len(el),
         'electedKnesset': sum(1 for c in el if entries.get(c, {}).get('knesset')),
         'electedPersonId': sum(1 for c in el if entries.get(c, {}).get('knessetPersonId') or (result[k].get(c, {}).get('knessetPersonId'))),

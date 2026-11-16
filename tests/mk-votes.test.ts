@@ -1,6 +1,6 @@
 // MKs who vote apart from their list in the Coalitions tool (owner, 16 Nov 2026). Each shifts one seat's vote; toward
 // 61, a government MK who votes against leaves the count and one who abstains stays (June 2021: Chikli against,
-// al-Harumi abstaining gives the recorded 60 for · 59 against and 61 of 120).
+// Alkharumi abstaining gives the recorded 60 for · 59 against and 61 of 120).
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import type { ElectionDataset } from '../src/data/schema.ts';
@@ -13,7 +13,7 @@ import { aftermathRecords } from '../src/data/aftermath-runtime.ts';
 import { describe as describeAction } from '../src/app/actionDescription.ts';
 
 describe('MKs apart from their list', () => {
-  it('June 2021: the recorded first government with Chikli against and al-Harumi abstaining is 60 for, 59 against, 61 toward the majority', () => {
+  it('June 2021: the recorded first government with Chikli against and Alkharumi abstaining is 60 for, 59 against, 61 toward the majority', () => {
     const s = scenarioFromDataset(JSON.parse(readFileSync('public/data/k24.json', 'utf8')) as ElectionDataset);
     const pieces = coalitionPieces(s, allocate(toEngineInput(s)));
     const g = aftermathRecords.k24!.government!;

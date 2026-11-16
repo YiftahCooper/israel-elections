@@ -112,7 +112,7 @@ for (const lang of ['he', 'en'] as const) test(`localised history, isolated rang
   await expect(summary.locator('.after-members-total')).toHaveText('61');
   await expect(summary.locator('.after-confidence-vote')).toContainText(lang === 'he' ? '60 בעד · 59 נגד' : '60 for · 59 against');
   await expect(history.locator('[data-individual="amichai-chikli"]')).toContainText(lang === 'he' ? 'נגד' : 'Against');
-  await expect(history.locator('[data-individual="said-al-harumi"]')).toContainText(lang === 'he' ? 'נמנע' : 'Abstained');
+  await expect(history.locator('[data-individual="saeed-alkharumi"]')).toContainText(lang === 'he' ? 'נמנע' : 'Abstained');
   await summary.locator('.after-help-anchor').nth(1).locator('.info > button').click();
   await expect(summary.locator('.pop')).toContainText('Chikli');
   await page.keyboard.press('Escape');
