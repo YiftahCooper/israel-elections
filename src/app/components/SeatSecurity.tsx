@@ -12,6 +12,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import { toEngineInput, NO_COALITION, COALITION_ROLES, withCoalitionRole, type CoalitionRole, type Scenario } from '../../model/scenario.ts';
 import { coalitionPieces, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
+import { ListMark } from './ListMark.tsx';
 import { fmtInt, fmtSigned, votesText } from '../format.ts';
 import { runTasks } from '../analysisPool.ts';
 import { partsOf, type SecurityFigure, type SecurityItem, type SecurityPart } from '../analysisTasks.ts';
@@ -120,7 +121,7 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
   const belowShown = allBelow ? below : near;
   const open = (id: string) => setState({ selectedListId: id });
   const name = (l: Scenario['lists'][number]) => (
-    <span className="sec-name"><span className="swatch" style={{ background: l.color }} /><button className="table-action" onClick={() => open(l.id)}>{listLabel(l, lang)}</button></span>
+    <span className="sec-name"><ListMark list={l} lang={lang} /><button className="table-action" onClick={() => open(l.id)}>{listLabel(l, lang)}</button></span>
   );
 
   return (

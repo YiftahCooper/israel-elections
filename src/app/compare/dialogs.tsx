@@ -2,7 +2,7 @@ import { percent } from '../components/Percentage.tsx';
 import { hebrewPrefixName } from '../hebrewPrefix.ts';
 // Compare's dialogs: the copy question, whole-list replacement, list matching, a side's vote editor, the phone row sheet
 // and saving a comparison. Every figure shown before committing is the engine's, computed on a scratch copy.
-import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import type { Scenario, SimList } from '../../model/scenario.ts';
 import { allocationOf, electedOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
@@ -11,6 +11,8 @@ import { useDigits, useStore } from '../store.ts';
 import { deltaAction, voteSourceLabel, type SourceChoice } from '../voteEdit.ts';
 import { sourceChoice, sourceValue } from '../preferences.ts';
 import { Info, Slip } from '../components/ui.tsx';
+import { ChoicePicker } from '../components/ChoicePicker.tsx';
+import { ListMark, listChoice } from '../components/ListMark.tsx';
 import { SeatDelta } from '../components/SeatDelta.tsx';
 import { COPY_MODE_DEFAULT, duplicatePeople, isDefaultCopyMode, planRoster, planWholeList, type CopyMode, type Plan, type Removal } from './copy.ts';
 import { CandidateName } from '../components/CandidateName.tsx';
@@ -50,6 +52,8 @@ export function Modal({ label, onClose, children, className = '' }: { label: str
     onKeyDown={(e) => { if (e.key === 'Escape') e.stopPropagation(); }} onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>{children}</dialog>;
 }
 
+/** the marks (logo or colour dot) of the lists a row names on one side */
+const marksOf = (x: SideModel, ids: string[], lang: 'he' | 'en') => ids.map((id) => { const l = x.sc.lists.find((y) => y.id === id); return l ? <ListMark key={id} list={l} lang={lang} /> : null; });
 const listName = (x: SideModel, ids: string[], lang: 'he' | 'en') => ids.map((id) => { const l = x.sc.lists.find((y) => y.id === id); return l ? listLabel(l, lang) : id; }).join(' + ');
 
 /** The balance choice: the app's own vote-source question and labels. */
@@ -57,14 +61,10 @@ const listName = (x: SideModel, ids: string[], lang: 'he' | 'en') => ids.map((id
 export function SourceSelect({ dest, exclude, value, onChange, label, info }: { dest: Scenario; exclude: string[]; value: SourceChoice; onChange: (v: SourceChoice) => void; label: string; info?: ReactNode }) {
   const L = useL(), lang = useLang();
   const others = dest.lists.filter((l) => !exclude.includes(l.id) && !l.withdrawn).sort((a, b) => b.votes - a.votes);
-  // the words name and focus the drop-down; the (i) stays a button of its own, outside the <label>
-  const id = useId();
-  return <div className="field"><span><label htmlFor={id}>{label}</label>{info && <> {info}</>}</span>
-    <select id={id} value={sourceValue(value)} onChange={(e) => onChange(sourceChoice(e.target.value))}>
-      <option value="proportional">{L('Other lists, proportionally', 'שאר הרשימות, באופן יחסי')}</option>
-      <option value="new">{L('New voters / staying home', 'מצביעים חדשים / מי שלא הצביעו')}</option>
-      <optgroup label={L('One list', 'רשימה אחת')}>{others.map((l) => <option key={l.id} value={`t:${l.id}`}>{listLabel(l, lang)}</option>)}</optgroup>
-    </select>
+  return <div className="field"><span>{label}{info && <> {info}</>}</span>
+    <ChoicePicker label={label} value={sourceValue(value)} onChange={(v) => onChange(sourceChoice(v))}
+      options={[{ value: 'proportional', label: L('Other lists, proportionally', 'שאר הרשימות, באופן יחסי') }, { value: 'new', label: L('New voters / staying home', 'מצביעים חדשים / מי שלא הצביעו') },
+        ...others.map((l) => listChoice(l, lang, { value: `t:${l.id}`, group: L('One list', 'רשימה אחת') }))]} />
   </div>;
 }
 
@@ -219,7 +219,7 @@ export function MatchingPanel({ rows, flip, left, right, overrides, setOverrides
     <div className="seg-row" role="group" aria-label={L('Show', 'הצגה')}>{([['all', L('All', 'הכול')], ['check', L('To verify', 'לבדיקה')], ['unmatched', L('Unmatched', 'ללא התאמה')]] as const).map(([v, t]) =>
       <button key={v} type="button" className={`btn small ${filter === v ? 'primary' : ''}`} aria-pressed={filter === v} onClick={() => setFilter(v)}>{t}</button>)}</div>
     <ul className="cmp-match-list">{shown.map((row) => <li key={row.key}>
-      <div className="row cmp-match-names" dir="ltr"><bdi>{shown1(left, row, 'left')}</bdi><span aria-hidden>{flip ? '←' : '→'}</span><bdi>{shown1(right, row, 'right')}</bdi>
+      <div className="row cmp-match-names" dir="ltr">{!inOf(row, 'left') && marksOf(left, row.left, lang)}<bdi>{shown1(left, row, 'left')}</bdi><span aria-hidden>{flip ? '←' : '→'}</span>{!inOf(row, 'right') && marksOf(right, row.right, lang)}<bdi>{shown1(right, row, 'right')}</bdi>
         <span className={`cmp-tag tag-${row.tag}`}>{tagText(row.tag, L)}</span></div>
       <PairingWhy row={row} early={early} late={late} earlyIds={earlyIds(row)} lateIds={lateIds(row)} c={lateIds(row).length === 1 && !row.group ? lineage(lateIds(row)[0]) : null} />
       {row.check?.length ? <div className="small muted">{L('to check', 'לבדיקה')}: {name(early, row.check)}</div> : null}
@@ -247,7 +247,7 @@ function MapTo({ row, early, late, earlyIds, lateIds, onPick }: { row: MatchRow;
     .sort((a, b) => b.n - a.n || b.l.votes - a.l.votes).slice(0, 12);
   return <div className="cmp-mapto">
     <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder={L('Find a list…', 'חיפוש רשימה…')} aria-label={L('Find a list', 'חיפוש רשימה')} />
-    <ul>{ranked.map(({ l, n }) => <li key={l.id}><button type="button" className="btn small ghost" onClick={() => onPick(l.id)}><Slip {...l} name={listLabel(l, lang)} size="sm" /> <bdi>{listLabel(l, lang)}</bdi>
+    <ul>{ranked.map(({ l, n }) => <li key={l.id}><button type="button" className="btn small ghost" onClick={() => onPick(l.id)}><ListMark list={l} lang={lang} /> <bdi>{listLabel(l, lang)}</bdi>
       {n > 0 && <span className="muted"> · {L(`${n} shared candidates`, `${n} מועמדים משותפים`)}</span>}</button></li>)}</ul>
   </div>;
 }
@@ -257,7 +257,7 @@ export function RowSheet({ row, left, right, why, onClose, actions }: { row: Mat
   const L = useL(), lang = useLang(), digits = useDigits();
   const side = (x: SideModel, ids: string[]) => { const c = cellsOf(x, ids), inside = inOf(row, x === left ? 'left' : 'right'); return <div className="cmp-sheet-side">
     <span className="muted small">{x.year} · {x.name}</span>
-    <b><bdi>{c ? listName(x, ids, lang) : inside ? L(`in ${listName(x, [inside], 'en')}`, `בתוך ${listName(x, [inside], 'he')}`) : '—'}</bdi></b>
+    <b className="list-name-marked">{c && marksOf(x, ids, lang)}<bdi>{c ? listName(x, ids, lang) : inside ? L(`in ${listName(x, [inside], 'en')}`, `בתוך ${listName(x, [inside], 'he')}`) : '—'}</bdi></b>
     {c && <span className="small"><bdi dir="ltr">{fmtInt(c.votes)}</bdi> {L('votes', 'קולות')} · <bdi dir="ltr">{percent(c.votes, c.total, digits, x.sc.rules.thresholdPct)}</bdi> · <b>{c.seats}</b> {L('seats', 'מנדטים')}</span>}
   </div>; };
   return <Modal label={L('List details', 'פרטי הרשימה')} onClose={onClose} className="cmp-sheet">

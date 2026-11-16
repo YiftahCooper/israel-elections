@@ -1,6 +1,6 @@
 import { groupingName } from '../groupingName.ts';
 import { electionLabel } from '../electionLabel.ts';
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Scenario, SimList } from '../../model/scenario.ts';
 import type { ElectionId } from '../../data/schema.ts';
 import { baselineOf, listLabel } from '../derive.ts';
@@ -9,6 +9,8 @@ import { fmtInt } from '../format.ts';
 import { answerPreference, chooseSource, loadDataset, setState, useLevel, useStore, useVoteSource } from '../store.ts';
 import { PREFERENCES, sourceValue, type PreferenceId } from '../preferences.ts';
 import { Info } from './ui.tsx';
+import { ChoicePicker } from './ChoicePicker.tsx';
+import { listChoice } from './ListMark.tsx';
 
 /** The single setting that decides how every vote edit on a list is balanced. */
 export function SourcePicker({ s, l }: { s: Scenario; l: SimList }) {
@@ -20,24 +22,16 @@ export function SourcePicker({ s, l }: { s: Scenario; l: SimList }) {
   useEffect(() => {
     if (src.kind === 'transfer' && (src.listId === l.id || !s.lists.some((x) => x.id === src.listId))) setState({ voteSource: { kind: 'proportional' } });
   }, [src, l.id, s.lists]);
-  // the words name and focus the drop-down; the (i) stays a button of its own, outside the <label>
-  const id = useId();
   return (
     <div>
       <div className="field">
-        <span className="row" style={{ gap: 6 }}><label htmlFor={id}>{L('Votes come from', 'מקור הקולות')}</label>
+        <span className="row" style={{ gap: 6 }}><span>{L('Votes come from', 'מקור הקולות')}</span>
           <Info title={L('Where the votes come from', 'מאיפה באים הקולות')}>{L('Taking votes from all other lists keeps turnout and the valid total fixed. New voters (or voters staying home) change the valid total, and so the threshold in votes. A transfer moves votes from or to one list — if that list is below the threshold, those votes stop being wasted. These give different seat results.', 'לקיחה מכל שאר הרשימות שומרת על ההצבעה ועל סך הכשרים. מצביעים חדשים (או בוחרים שלא מצביעים) משנים את סך הכשרים ולכן את אחוז החסימה בקולות. מעבר מזיז קולות מול רשימה אחת — אם היא מתחת לחסימה, הקולות מפסיקים להתבזבז. התוצאות שונות.')}</Info>
         </span>
-        <select id={id} value={src.kind === 'transfer' ? `t:${src.listId}` : src.kind} onChange={(e) => {
-          const v = e.target.value;
-          chooseSource(`list:${l.id}`, v === 'new' ? { kind: 'new' } : v === 'proportional' ? { kind: 'proportional' } : { kind: 'transfer', listId: v.slice(2) });
-        }}>
-          <option value="proportional">{L('Other lists', 'שאר הרשימות')}</option>
-          <option value="new">{L('New voters / staying home', 'מצביעים חדשים / מי שלא הצביעו')}</option>
-          <optgroup label={L('One specific list (transfer)', 'רשימה אחת מסוימת (מעבר)')}>
-            {[...others].sort((a, b) => b.votes - a.votes).map((x) => <option key={x.id} value={`t:${x.id}`}>{listLabel(x, lang)} ({fmtInt(x.votes)})</option>)}
-          </optgroup>
-        </select>
+        <ChoicePicker label={L('Votes come from', 'מקור הקולות')} value={src.kind === 'transfer' ? `t:${src.listId}` : src.kind} onChange={(v) =>
+          chooseSource(`list:${l.id}`, v === 'new' ? { kind: 'new' } : v === 'proportional' ? { kind: 'proportional' } : { kind: 'transfer', listId: v.slice(2) })}
+          options={[{ value: 'proportional', label: L('Other lists', 'שאר הרשימות') }, { value: 'new', label: L('New voters / staying home', 'מצביעים חדשים / מי שלא הצביעו') },
+            ...[...others].sort((a, b) => b.votes - a.votes).map((x) => listChoice(x, lang, { value: `t:${x.id}`, detail: fmtInt(x.votes), group: L('One specific list (transfer)', 'רשימה אחת מסוימת (מעבר)') }))]} />
       </div>
     </div>
   );
@@ -72,13 +66,9 @@ export function SourceDialog() {
         : L('Opened scenario: only your newer changes are marked. Official result: every difference is marked.', 'התרחיש שנפתח: מסומנים רק השינויים החדשים. התוצאה הרשמית: מסומן כל הבדל.')}</Info></p>
     <form onSubmit={e => { e.preventDefault(); if (value) answerPreference(value, scope); }}>
       <label className="field">{label}
-        <select aria-label={label} value={value} onChange={e => setValue(e.target.value)}>
-          <option value="" disabled>{L('Choose…', 'בחירה…')}</option>
-          {PREFERENCES[id].options.map(o => <option key={o.value} value={o.value}>{L(o.label[0], o.label[1])}</option>)}
-          {id === 'voteSource' && !simple && <optgroup label={L('One list', 'רשימה אחת')}>
-            {others.map(x => <option key={x.id} value={sourceValue({ kind: 'transfer', listId: x.id })}>{listLabel(x, lang)}</option>)}
-          </optgroup>}
-        </select>
+        <ChoicePicker label={label} placeholder={L('Choose…', 'בחירה…')} value={value} onChange={setValue}
+          options={[...PREFERENCES[id].options.map(o => ({ value: o.value, label: L(o.label[0], o.label[1]) })),
+            ...(id === 'voteSource' && !simple ? others.map(x => listChoice(x, lang, { value: sourceValue({ kind: 'transfer', listId: x.id }), group: L('One list', 'רשימה אחת') })) : [])]} />
       </label>
       {/* what each answer does, always in view (the chosen one in bold), so the dialog never changes height */}
       {id === 'voteSource' && <ul className="tiny source-consequences">

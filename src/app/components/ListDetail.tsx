@@ -33,6 +33,8 @@ import { dispatch, dispatchMany, getState, useStore, previewAction, setState, to
 import { clampTarget, deltaAction, stayingHome, toVoteSource, type SourceChoice, votesForShare, voteSourceLabel } from '../voteEdit.ts';
 import { Candidates, notSeatedReasons } from './Candidates.tsx';
 import { JointParties } from './JointParties.tsx';
+import { ChoicePicker } from './ChoicePicker.tsx';
+import { listChoice } from './ListMark.tsx';
 import { DecimalInput, Info, TextField } from './ui.tsx';
 import { SourcePicker } from './SourcePicker.tsx';
 
@@ -304,10 +306,8 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
           <StartFrom s={s} part="agreements" />
           <h3><EditMarker s={s} path={['agreements']} />{L('Surplus-vote agreement', 'הסכם עודפים')} <Info term="surplus" /></h3>
           <div className="row">
-            <select aria-label={L('Agreement partner', 'שותפה להסכם')} value={partnerId} onChange={(e) => setPartner(e.target.value)} style={{ maxWidth: 220 }}>
-              <option value="">{L('No agreement', 'אין הסכם')}</option>
-              {partners.map((x) => <option key={x.id} value={x.id}>{listLabel(x, lang)}</option>)}
-            </select>
+            <ChoicePicker className="agreement-partner" label={L('Agreement partner', 'שותפה להסכם')} value={partnerId}
+              options={[{ value: '', label: L('No agreement', 'אין הסכם') }, ...partners.map((x) => listChoice(x, lang))]} onChange={setPartner} />
             {agr && <label className="switch small"><input type="checkbox" checked={agr.enabled} onChange={(e) => dispatch({ type: 'setAgreement', agreement: { ...agr, enabled: e.target.checked } })} />{agr.enabled ? L('In force', 'בתוקף') : L('Off', 'כבוי')}</label>}
           </div>
           {agr && <p className="small" style={{ margin: '6px 0 0' }}>

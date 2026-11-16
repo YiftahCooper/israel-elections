@@ -4,6 +4,8 @@ import {ColourPicker} from './ColourPicker.tsx';
 import { hebrewPrefixName } from '../hebrewPrefix.ts';
 import { SeatDelta } from './SeatDelta.tsx';
 import { Slip } from './ui.tsx';
+import { ChoicePicker } from './ChoicePicker.tsx';
+import { ListMark, listChoice } from './ListMark.tsx';
 import { EditMarker } from './EditMarker.tsx';
 import { useDisclosure } from './Feature.tsx';
 import { StartFrom } from './StartFrom.tsx';
@@ -165,7 +167,7 @@ function ListPicker({ s, picked, onToggle, single }: { s: Scenario; picked: stri
     <div className="row" style={{ gap: 6 }} role="group" aria-label={single ? L('List', 'רשימה') : L('Lists', 'רשימות')}>
       {shown.map((l) => (
         <button key={l.id} type="button" className={`chip coal ${picked.includes(l.id) ? 'in' : ''}`} aria-pressed={picked.includes(l.id)} style={{ ['--c' as string]: l.color }} onClick={() => onToggle(l.id)}>
-          <span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)}
+          <ListMark list={l} lang={lang} />{listLabel(l, lang)}
         </button>
       ))}
       {/* a chip like its siblings (same box, same edge), with a chevron: it reads as the control it is */}
@@ -218,11 +220,10 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
               <span>
                 {ag.members.length === 2 ? <>
                   <EditMarker s={s} path={['agreements', ag.id]} /><b>{name(ag.members[0])}</b>{' ⇄ '}
-                  <select value={ag.members[1]} aria-label={L(`Partner of ${name(ag.members[0])}`, `השותפה של ${name(ag.members[0])}`)} style={{ maxWidth: 260 }}
-                    onChange={(e) => dispatch({ type: 'setAgreement', agreement: { ...ag, members: [ag.members[0], e.target.value] } })}>
-                    {s.lists.filter((x) => x.id === ag.members[1] || (x.id !== ag.members[0] && !x.withdrawn && (exp || !s.agreements.some((o) => o.id !== ag.id && o.enabled && o.members.includes(x.id)))))
-                      .sort((x, y) => y.votes - x.votes).map((x) => <option key={x.id} value={x.id}>{listLabel(x, lang)}</option>)}
-                  </select>
+                  <ChoicePicker label={L(`Partner of ${name(ag.members[0])}`, `השותפה של ${name(ag.members[0])}`)} value={ag.members[1]}
+                    onChange={(v) => dispatch({ type: 'setAgreement', agreement: { ...ag, members: [ag.members[0], v] } })}
+                    options={s.lists.filter((x) => x.id === ag.members[1] || (x.id !== ag.members[0] && !x.withdrawn && (exp || !s.agreements.some((o) => o.id !== ag.id && o.enabled && o.members.includes(x.id)))))
+                      .sort((x, y) => y.votes - x.votes).map((x) => listChoice(x, lang))} />
                 </> : <b>{ag.members.map(name).join(' ⇄ ')}</b>}{' '}
                 {inactive && <span className="chip no">{st?.reason === 'member-failed-threshold' ? L(`no effect: ${st.failedMembers.map(name).join(', ')} below threshold`, `ללא השפעה: ${st.failedMembers.map(name).join(', ')} מתחת לחסימה`)
                   : st?.reason === 'member-no-initial-seat' ? L(`no effect: ${st.failedMembers.map(name).join(', ')} won no whole-quota seat`, `ללא השפעה: ${st.failedMembers.map(name).join(', ')} לא זכתה במנדט במודד שלם`)
@@ -235,7 +236,7 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
                 {!inactive && <div className="small muted st-effect">{eff.length === 0
                   ? (ag.enabled ? L('Moves no seat.', 'אינו מזיז מנדט.') : L('Switching it on would move no seat.', 'הפעלתו לא הייתה מזיזה מנדט.'))
                   : <>{ag.enabled ? L('Effect:', 'השפעה:') : L('If switched on:', 'אם יופעל:')}{' '}{eff.map((e) => (
-                    <span key={e.id} className="st-eff"><span className="swatch" style={{ background: list(e.id)?.color }} /><bdi>{name(e.id)}</bdi> <b className="tabnum"><SeatDelta value={ag.enabled ? e.d : -e.d} /></b></span>))}</>}</div>}
+                    <span key={e.id} className="st-eff">{list(e.id) && <ListMark list={list(e.id)!} lang={lang} />}<bdi>{name(e.id)}</bdi> <b className="tabnum"><SeatDelta value={ag.enabled ? e.d : -e.d} /></b></span>))}</>}</div>}
               </span>
               <span className="tools">
                 <label className="switch small"><input type="checkbox" checked={ag.enabled} onChange={(e) => dispatch({ type: 'setAgreement', agreement: { ...ag, enabled: e.target.checked } })}
@@ -247,19 +248,18 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
         })}
       </ul>}
       <div className="row">
-        <select style={{ maxWidth: 300 }} value={a} onChange={(e) => setA(e.target.value)} aria-label={L('First list', 'רשימה ראשונה')}><option value="">{L('List…', 'רשימה…')}</option>{s.lists.filter((x) => exp || !used.has(x.id)).sort((x, y) => y.votes - x.votes).map((x) => <option key={x.id} value={x.id}>{listLabel(x, lang)}</option>)}</select>
+        <ChoicePicker label={L('First list', 'רשימה ראשונה')} placeholder={L('List…', 'רשימה…')} value={a} onChange={setA} options={s.lists.filter((x) => exp || !used.has(x.id)).sort((x, y) => y.votes - x.votes).map((x) => listChoice(x, lang))} />
         ⇄
-        <select style={{ maxWidth: 300 }} value={b} onChange={(e) => setB(e.target.value)} aria-label={L('Second list', 'רשימה שנייה')}><option value="">{L('List…', 'רשימה…')}</option>{s.lists.filter((x) => x.id !== a && (exp || !used.has(x.id))).sort((x, y) => y.votes - x.votes).map((x) => <option key={x.id} value={x.id}>{listLabel(x, lang)}</option>)}</select>
+        <ChoicePicker label={L('Second list', 'רשימה שנייה')} placeholder={L('List…', 'רשימה…')} value={b} onChange={setB} options={s.lists.filter((x) => x.id !== a && (exp || !used.has(x.id))).sort((x, y) => y.votes - x.votes).map((x) => listChoice(x, lang))} />
         <button className="btn small primary" disabled={!a || !b} onClick={() => { if (dispatch({ type: 'setAgreement', agreement: { id: `sim-agr-${newId()}`, members: [a, b], enabled: true } })) { setA(''); setB(''); } }}>{L('Add agreement', 'הוספת הסכם')}</button>
       </div>
       {exp && <p className="small muted">{L('Experimental rules: agreements of up to ', 'כללים ניסיוניים: הסכמים של עד ')}{s.rules.maxAgreementSize}{L(' lists (set in the Rules tab). Add a third list by editing an agreement below.', ' רשימות (נקבע בלשונית הכללים). רשימה שלישית מוסיפים בעריכת הסכם למטה.')}</p>}
       {exp && s.rules.maxAgreementSize > 2 && s.agreements.map((ag) => (
         <div key={ag.id} className="row small" style={{ marginTop: 4 }}>
           {ag.members.map(name).join(' ⇄ ')}
-          <select defaultValue="" onChange={(e) => { if (e.target.value) dispatch({ type: 'setAgreement', agreement: { ...ag, members: [...ag.members, e.target.value] } }); }} aria-label={L('Add member', 'הוספת רשימה להסכם')}>
-            <option value="">{L('+ add member', '+ הוספה')}</option>
-            {s.lists.filter((x) => !ag.members.includes(x.id)).sort((x, y) => y.votes - x.votes).slice(0, 25).map((x) => <option key={x.id} value={x.id}>{listLabel(x, lang)}</option>)}
-          </select>
+          <ChoicePicker label={L('Add member', 'הוספת רשימה להסכם')} placeholder={L('+ add member', '+ הוספה')} value=""
+            onChange={(v) => { if (v) dispatch({ type: 'setAgreement', agreement: { ...ag, members: [...ag.members, v] } }); }}
+            options={s.lists.filter((x) => !ag.members.includes(x.id)).sort((x, y) => y.votes - x.votes).slice(0, 25).map((x) => listChoice(x, lang))} />
         </div>
       ))}
     </div>

@@ -53,7 +53,7 @@ export function Info({ title, children, term, label }: { title?: string; childre
   );
 }
 
-export function Slip({ letters, color, size, logo: logoIn, name, synthetic }: { name?: string; letters: string; color: string; size?: 'sm' | 'lg'; logo?: LogoRef; synthetic?: SyntheticIdentity }) {
+export function Slip({ letters, color, size, logo: logoIn, name, synthetic }: { name?: string; letters: string; color: string; size?: 'xs' | 'sm' | 'lg'; logo?: LogoRef; synthetic?: SyntheticIdentity }) {
   const lang = useLang();
   // Settings → List symbol: Ballot letters shows the letters wherever a list has them; a party without ballot
   // letters of its own keeps its logo
