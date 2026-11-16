@@ -3,6 +3,8 @@
 // left to right, the phone sheet, contrast, and that viewing history is never an edit.
 import { expect, test, type Page } from '@playwright/test';
 import { openSideBySide } from './sideBySide.ts';
+import { choose } from './choices.ts';
+import { existsSync } from 'node:fs';
 
 async function start(page: Page, { lang = 'en', level = 'standard', width = 1500, values = {} }: { lang?: 'en' | 'he'; level?: string; width?: number; values?: Record<string, unknown> } = {}) {
   await page.setViewportSize({ width, height: width < 800 ? 844 : 1000 });
@@ -140,7 +142,7 @@ test('each pairing in Compare says what is compared with what, why and how sure,
   await expect(dem.getByRole('link', { name: /IDI/ })).toBeVisible();
 });
 
-test('the chart names its events, explains where they sit, and marks the chosen election without a dashed box', async ({ page }) => {
+test('the chart numbers its events as in the list below, explains where they sit, and marks the chosen election without a dashed box', async ({ page }) => {
   await start(page);
   await listRow(page, 'Likud').click();
   const sec = page.locator('aside .ph-sec');
@@ -148,7 +150,9 @@ test('the chart names its events, explains where they sit, and marks the chosen 
   await expect(sec.locator('.ph-legend')).toContainText('Merger, split or new name');
   await sec.getByRole('button', { name: 'Full history', exact: true }).click();
   const chart = sheet(page).locator('.ph-chart');
-  await expect(chart.locator('.ph-flag text')).toHaveText(['Merged (probable)', 'Merged (probable)', 'Faction split', 'Faction split']);
+  // version C (owner, 16 Nov 2026): a numbered circle on every event line, never words that come and go with the width
+  await expect(chart.locator('.ph-evnum text')).toHaveText(['1', '2', '3', '4']);
+  await expect(chart.locator('.ph-flag')).toHaveCount(0);
   await expect(chart).not.toContainText('?');
   await expect(chart.locator('.ph-selband')).toHaveCount(1);
   await expect(chart.locator('.ph-axis.sel')).toHaveText('’26');
@@ -160,24 +164,52 @@ test('the chart names its events, explains where they sit, and marks the chosen 
   await page.keyboard.press('Escape'); await page.keyboard.press('Escape');
   await listRow(page, 'The Democrats').click();
   await sec.getByRole('button', { name: 'Full history', exact: true }).click();
-  await expect(sheet(page).locator('.ph-ev.weak .ph-flag text')).toContainText('Union agreed (provisional)');
+  await expect(sheet(page).locator('.ph-ev.weak .ph-evnum text')).toHaveText('5,6,7');
   await expect(sheet(page).locator('.ph-legend')).toContainText('Dashed: not yet established');
 });
 
-test('in Hebrew the event flags and the event key are Hebrew', async ({ page }) => {
+test('in Hebrew the event key is Hebrew and the numbers match the list', async ({ page }) => {
   await start(page, { lang: 'he' });
   await listRow(page, 'הליכוד').click();
   await page.locator('aside .ph-sec').getByRole('button', { name: 'היסטוריה מלאה', exact: true }).click();
-  await expect(sheet(page).locator('.ph-flag text').first()).toHaveText('איחוד (סביר)');
-  await expect(sheet(page).locator('.ph-legend')).toContainText('איחוד, פילוג או שם חדש');
+  await expect(sheet(page).locator('.ph-evnum text').first()).toHaveText('1');
+  await expect(sheet(page).locator('.ph-legend')).toContainText('איחוד, פילוג או שם חדש: מספרו ברשימת האירועים למטה');
+  await expect(sheet(page).locator('.ph-legend')).toContainText('הבחירות שבהן אתם צופים');
 });
 
-test('on a phone a crowded chart numbers its events, matching the list below', async ({ page }) => {
+// every mark the chart draws is named in its key (owner, 16 Nov 2026): the shaded column, the name strip, the dashed
+// outline of a party inside another's list, and the numbered circles; colours and the rest behind one (i)
+test('the full chart’s key names every mark it draws', async ({ page }) => {
+  await start(page);
+  await listRow(page, 'Likud').click();
+  await page.locator('aside .ph-sec').getByRole('button', { name: 'Full history', exact: true }).click();
+  const key = sheet(page).locator('.ph-legend');
+  for (const t of ['Own members', 'Partners’ members', 'Did not run', 'Election you are looking at', 'Name at the time', 'Merger, split or new name: its number in Events below'])
+    await expect(key).toContainText(t);
+  await key.getByRole('button', { name: 'How to read this chart' }).click();
+  await expect(page.locator('.pop').filter({ hasText: 'in that list’s own colour at that election' })).toBeVisible();
+  // the party chips show each party's colour
+  await expect(sheet(page).locator('.ph-chip .swatch')).toHaveCount(2);
+});
+
+// the partners' stripes are drawn on a light tint of the list colour in both themes: dark stripes on a dark tint were
+// unreadable in dark (owner, 16 Nov 2026)
+test('the striped part of a bar sits on a light tint in dark too', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'dark' });
+  await start(page, { values: { theme: 'dark' } });
+  await listRow(page, 'Likud').click();
+  await page.locator('aside .ph-sec').getByRole('button', { name: 'Full history', exact: true }).click();
+  const fill = await sheet(page).locator('.ph-chart pattern rect').first().evaluate((r) => getComputedStyle(r).fill);
+  const [rr, gg, bb] = (fill.match(/[\d.]+/g) ?? []).map(Number);
+  // a light tint: well above mid-grey, in sRGB or as color-mix's resolved value
+  expect((rr + gg + bb) / 3).toBeGreaterThan(fill.startsWith('color(srgb') ? 0.6 : 150);
+});
+
+test('on a phone the chart numbers its events too, matching the list below', async ({ page }) => {
   await start(page, { width: 390 });
   await listRow(page, 'The Democrats').click();
   await page.locator('aside .ph-sec').getByRole('button', { name: 'Full history', exact: true }).click();
   await expect(sheet(page).locator('.ph-evnum text')).toHaveText(['1', '2', '3', '4', '5,6,7']);
-  await expect(sheet(page).locator('.ph-flag')).toHaveCount(0);
 });
 
 test('on a phone the full history fills the screen', async ({ page }) => {
@@ -207,4 +239,41 @@ for (const theme of ['light', 'dark'] as const) test(`history text and chips hav
   });
   expect(ratios.length).toBeGreaterThan(10);
   for (const r of ratios) expect(r.ratio, r.text ?? '').toBeGreaterThanOrEqual(4.5);
+});
+
+// party/c9-5 (16 Nov 2026): every pairing tag in Side by side keeps its (i), on a wide screen and a phone, in both
+// languages
+for (const [lang, width] of [['en', 1500], ['he', 390]] as const) test(`every pairing tag in Side by side has its (i): ${lang} ${width}`, async ({ page }) => {
+  await start(page, { lang, width });
+  await openSideBySide(page);
+  const tags = page.locator('tr.cmp-row .cmp-tag');
+  await expect(tags.first()).toBeAttached();
+  const n = await tags.count();
+  expect(n).toBeGreaterThan(5);
+  let checked = 0;
+  for (let i = 0; i < n; i++) {
+    const tag = tags.nth(i);
+    if (!(await tag.isVisible())) continue;
+    await expect(tag.locator('xpath=..').getByRole('button', { name: lang === 'he' ? /^למה ההתאמה הזו/ : /^Why this pairing/ })).toBeVisible();
+    checked++;
+  }
+  expect(checked).toBeGreaterThan(5);
+});
+
+// facts/known-names (16 Nov 2026): the name a party was known by on screen, its registered name behind the (i). The names
+// are the research handoff data/research/round7/history-display.json; this runs once it is in the checkout.
+for (const lang of ['en', 'he'] as const) test(`a party known by another name shows it, the registered name behind the (i): ${lang}`, async ({ page }) => {
+  test.skip(!existsSync('data/research/round7/history-display.json'), 'known-name research not yet in this checkout');
+  await start(page, { lang });
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k25');
+  await listRow(page, lang === 'he' ? 'הציונות הדתית' : 'Religious Zionism').click();
+  const sec = page.locator('aside .ph-sec');
+  const chip = sec.getByRole('button', { name: lang === 'he' ? 'הציונות הדתית' : 'Religious Zionist Party', exact: true });
+  await chip.click();
+  await sec.getByRole('button', { name: lang === 'he' ? 'היסטוריה מלאה' : 'Full history', exact: true }).click();
+  await expect(sheet(page).getByRole('heading', { level: 2 })).toContainText(lang === 'he' ? 'הציונות הדתית' : 'Religious Zionist Party');
+  const card = sheet(page).locator('.ph-card');
+  await expect(card).toContainText(lang === 'he' ? 'בשם הציונות הדתית' : 'As Religious Zionist Party');
+  await card.getByRole('button', { name: lang === 'he' ? 'השם הרשום' : 'Registered name' }).click();
+  await expect(page.getByText(lang === 'he' ? /רשומה בשם האיחוד הלאומי - תקומה/ : /Registered as National Union–Tkuma/)).toBeVisible();
 });

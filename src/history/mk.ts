@@ -53,6 +53,8 @@ export interface MkEvent {
   kind: 'entered' | 'left' | 'faction' | 'recorded' | 'unrecorded' | 'unsettled';
   /** for unrecorded: the day a faction is recorded again, or the membership ends */
   until?: string;
+  /** for left: the recorded reason code, where the research has one (src/history/reasons.ts words it) */
+  reason?: string;
   /** for faction: the new and the previous faction. Where both are shown under one name in a language, that language
    *  gives both factions' recorded names instead, so a line never reads "X (until then X)". */
   faction?: { now: Pick<MkSegment, 'faction' | 'he' | 'en'>; was: Pick<MkSegment, 'faction' | 'he' | 'en'> };
@@ -61,6 +63,8 @@ export interface MkEvent {
 }
 export interface MkRun {
   listId: string; rank: number; outcome: RunOutcome; basis: RunBasis; via: number | null; notes: readonly (readonly [string, string])[];
+  /** a run tied to the person by research: the sources that tie it ([publisher, url]) */
+  research?: readonly (readonly [string, string])[];
   he: string; en: string | null; color: string; seats: number; share: number; threshold: number;
 }
 /** One Knesset in the person's path: the election they ran in for it (if any) and their time in it. */
@@ -68,7 +72,7 @@ export interface MkRow {
   k: number; electionDate: string; opening: string | null; end: string | null;
   run: MkRun | null;
   /** time in this Knesset: one entry per continuous period; `unrecorded`: the days in it no faction record covers */
-  terms: { start: string; end: string; ongoing: boolean; segments: MkSegment[]; unrecorded: { start: string; end: string }[] }[];
+  terms: { start: string; end: string; ongoing: boolean; segments: MkSegment[]; unrecorded: { start: string; end: string }[]; reason?: string }[];
   events: MkEvent[];
 }
 export interface MkView {
@@ -141,7 +145,7 @@ export function mkView(rt: MkRuntime, id: number): MkView | null {
     const e = rt.elections[k];
     const r: PackedRun | undefined = p.runs.find((x) => x[0] === k);
     const L = r ? rt.lists[r[1]] : undefined;
-    const run: MkRun | null = r && L ? { listId: r[1], rank: r[2], outcome: r[3], basis: r[4], via: r[5], notes: r[6] ?? [], he: L[0], en: L[1], color: L[2], seats: L[3], share: L[4], threshold: e.threshold } : null;
+    const run: MkRun | null = r && L ? { listId: r[1], rank: r[2], outcome: r[3], basis: r[4], via: r[5], notes: r[6] ?? [], ...(r[7] ? { research: r[7] } : {}), he: L[0], en: L[1], color: L[2], seats: L[3], share: L[4], threshold: e.threshold } : null;
     // continuous periods: a term that ends the day the next begins is one period (a new record, not a gap)
     const terms: MkRow['terms'] = [];
     const unsettled: MkEvent[] = [];
@@ -153,8 +157,9 @@ export function mkView(rt: MkRuntime, id: number): MkView | null {
       const segments = t[3].map(([f, s, fe, st, et]): MkSegment => ({ faction: f, ...fac(f), start: s, end: fe ?? end, ...(st ? { startTime: st } : {}), ...(et ? { endTime: et } : {}) }));
       const unrecorded = unrecordedFaction(t[3], t[1], end);
       const last = terms[terms.length - 1];
-      if (last && last.end === t[1]) { last.end = end; last.ongoing = t[2] === null; last.segments.push(...segments); last.unrecorded.push(...unrecorded); }
-      else terms.push({ start: t[1], end, ongoing: t[2] === null, segments, unrecorded });
+      const reason = t[4];
+      if (last && last.end === t[1]) { last.end = end; last.ongoing = t[2] === null; last.segments.push(...segments); last.unrecorded.push(...unrecorded); last.reason = reason; }
+      else terms.push({ start: t[1], end, ongoing: t[2] === null, segments, unrecorded, ...(reason ? { reason } : {}) });
     }
     for (const t of terms) {
       // touching segments of one faction are one
@@ -166,7 +171,7 @@ export function mkView(rt: MkRuntime, id: number): MkView | null {
       if (t.start !== e.opening) events.push({ date: t.start, kind: 'entered' });
       for (const g of t.unrecorded) events.push({ date: g.start, kind: 'unrecorded', until: g.end });
       t.segments.forEach((s, j) => { if (j > 0) events.push({ date: s.start, ...(s.startTime ? { time: s.startTime } : {}), kind: 'faction', faction: move(s, t.segments[j - 1]) }); });
-      if (!t.ongoing && t.end !== e.end) events.push({ date: t.end, kind: 'left' });
+      if (!t.ongoing && t.end !== e.end) events.push({ date: t.end, kind: 'left', ...(t.reason ? { reason: t.reason } : {}) });
       void i;
     });
     events.push(...unsettled);

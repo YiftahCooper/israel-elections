@@ -16,10 +16,13 @@ export interface HList {
   /** withdrew before the vote: registered, not on the ballot, so no party ran on it */
   withdrawn: boolean;
 }
-export interface HElection { id: string; date: string; valid: number; pending: boolean; lists: HList[] }
+/** A party known by another name than its registered one at this election (the registered name goes behind the (i)),
+ *  and a note on its history point. */
+export interface HKnown { registered?: readonly [string, string]; source?: string; note?: readonly [string, string] }
+export interface HElection { id: string; date: string; valid: number; pending: boolean; lists: HList[]; known: Record<string, HKnown> }
 
 export const HISTORY: HElection[] = packed.elections.map((e) => ({
-  id: e.id, date: e.date, valid: e.valid, pending: e.pending,
+  id: e.id, date: e.date, valid: e.valid, pending: e.pending, known: e.known ?? {},
   lists: e.lists.map(([id, votes, seats, color, shortHe, shortEn, letters, lead, ps, unknownElected, withdrawn]) => ({
     id, votes, seats, color, shortHe, shortEn, letters, lead, parties: ps.map(([p]) => p),
     elected: Object.fromEntries(ps.map(([p, n]) => [p, n < 0 ? null : n])),

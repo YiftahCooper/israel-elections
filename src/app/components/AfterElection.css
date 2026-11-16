@@ -60,3 +60,7 @@
 .after-individuals { border-top: 1px solid var(--rule); padding-top: 12px; }
 .after-individual { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding-block: 6px; }
 .after-government-change + .after-government-change { margin-top: 16px; }
+/* the rotation agreement under the prime ministers (16 Nov 2026) */
+.after-rotation { margin-block: -6px 12px; color: var(--ink-2); }
+.after-rotation-why { display: block; }
+.after-rotation-src { display: grid; gap: 2px; margin-block-start: 6px; }

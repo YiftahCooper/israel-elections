@@ -20,6 +20,7 @@
  *  in the output (`importanceFrom`, `markerFrom`), so the app and the tests can tell data from fallback. */
 import { readFileSync, existsSync } from 'node:fs';
 import { shownRows } from './lib/faction-rows.ts';
+import { applyEventReasons } from './lib/replacement-reasons.ts';
 
 export type Importance = 'simple' | 'standard' | 'expert';
 export type Marker = 'D2' | 'D3' | 'D4' | 'replacement';
@@ -146,6 +147,22 @@ function aftermathEvents(k: number, a: Aftermath): KEvent[] {
   }));
 }
 
+/** New Speakers of the Knesset during a term (data/research/knesset-speakers.json, from the Knesset's database): one event
+ *  each, at Standard (owner decision, 16 Nov 2026). The line names the Speaker as {p:id}; the app writes the name. */
+function speakerEvents(root: string, k: number, opening: string, end: string): KEvent[] {
+  const path = `${root}/data/research/knesset-speakers.json`;
+  if (!existsSync(path)) return [];
+  const doc = JSON.parse(readFileSync(path, 'utf8')) as { sources: { publisher: string; url: string; positionId: number }[]; intervals: { knesset: number; personId: number; start: string; newOfficeholder: boolean; positionId: number }[] };
+  const women = new Set((JSON.parse(readFileSync(`${root}/data/raw/bios/knesset-odata-persons.json`, 'utf8')) as { PersonID: number; GenderDesc: string }[]).filter((p) => p.GenderDesc === 'נקבה').map((p) => p.PersonID));
+  return doc.intervals.filter((x) => x.knesset === k && x.newOfficeholder && x.start > opening && x.start < end).map((x) => {
+    const f = women.has(x.personId);
+    const src = doc.sources.find((s) => s.positionId === x.positionId);
+    return { id: `k${k}-speaker-${x.start}`, date: x.start, kind: 'speaker-elected', who: { personIds: [x.personId] },
+      summary: { en: `{p:${x.personId}} becomes Speaker of the Knesset.`, he: f ? `{p:${x.personId}} נבחרה ליושבת ראש הכנסת.` : `{p:${x.personId}} נבחר ליושב ראש הכנסת.` },
+      importance: 'standard', marker: null, certainty: 'confirmed', evidenceClass: 'Official record', sources: src ? [{ url: src.url.replace(/ /g, '%20'), publisher: src.publisher }] : [] };
+  });
+}
+
 const JOIN = new Set(['party-ministers-approved', 'coalition-return-statement']);
 const EXIT = new Set(['party-coalition-exit', 'coalition-exit-statement']);
 
@@ -170,16 +187,7 @@ export function compileTermTimeline(root = process.cwd()): TermTimelineRuntime {
     const closed = ch.tenures.length > 0 && ch.tenures.every((t) => t.end !== null) ? ch.tenures.reduce((m, t) => (t.end! > m ? t.end! : m), '') : null;
     const end = next ?? closed ?? ch.asOf ?? opening;
     // the research lane's replacement events carry the reason the membership records leave "unknown"
-    const evPath = `data/research/knesset-events/k${k}.json`;
-    if (existsSync(`${root}/${evPath}`)) for (const e of read<Events>(evPath).events) {
-      const r = e.marker === 'replacement' ? e.replacement : undefined;
-      if (!r?.reason) continue;
-      for (const m of r.memberChangesRefs ?? []) {
-        const i = /^\/replacements\/(\d+)$/.exec(m.pointer)?.[1];
-        const rec = m.path.endsWith(`/k${k}.json`) && i != null ? ch.replacements[Number(i)] : undefined;
-        if (rec && (!rec.reason || rec.reason === 'unknown')) rec.reason = r.reason;
-      }
-    }
+    applyEventReasons(root, k, ch.replacements);
     const term = compileTerm(root, k, opening, end, ch, out.anomalies, read);
     if (term) out.terms[k] = term;
   }
@@ -267,7 +275,7 @@ function compileTerm(root: string, k: number, opening: string, end: string, ch: 
   const aftermath = !sworn && existsSync(`${root}/${aftermathPath}`) ? read<Aftermath>(aftermathPath) : null;
   const noGovernment = aftermath?.formation?.outcome === 'no-government';
   const timeline = ev && (sworn || noGovernment)
-    ? compileSteps(k, opening, end, seats, holderTenure, noGovernment ? { ...ev, events: [...ev.events, ...aftermathEvents(k, aftermath!)] } : ev, ch.replacements, factionAt, anomalies)
+    ? compileSteps(k, opening, end, seats, holderTenure, { ...ev, events: [...ev.events, ...noGovernment ? aftermathEvents(k, aftermath!) : [], ...speakerEvents(root, k, opening, end)] }, ch.replacements, factionAt, anomalies)
     : null;
   return { k, opening, end, seats, openingSeat, timeline: timeline && noGovernment ? { ...timeline, noGovernment: true } : timeline };
 }
@@ -393,8 +401,17 @@ function compileSteps(k: number, opening: string, end: string, seats: SeatRuntim
       if (!e.importance && e.kind === 'dissolution-vote' && (e.vote?.for ?? 0) > (e.vote?.against ?? 0)) importance = 'simple';
       // a whole party joining or leaving is Simple; a second record of a move already made is Standard
       if (!e.importance && (JOIN.has(e.kind) || EXIT.has(e.kind)) && partyLevel) importance = moved.length ? 'simple' : 'standard';
+      // coalition members who voted against their own government and stayed (D3) (owner rule, 16 Nov 2026): Standard when
+      // the government lost the vote, Expert when it won anyway. The government's side is "for" on its own motions and
+      // bills; on a dissolution bill or a no-confidence motion it is "against"
+      let byRule = false;
+      if (e.marker === 'D3' && e.kind !== 'government-sworn-in' && e.vote && importance !== 'simple') {
+        const yes = e.vote.for ?? 0, no = e.vote.against ?? 0;
+        const lost = e.kind === 'no-confidence-vote' ? yes >= 61 : e.kind === 'dissolution-vote' ? yes > no : yes <= no;
+        importance = lost ? 'standard' : 'expert'; byRule = true;
+      }
       const fm = e.kind === 'faction-membership-change' && factions.length === 2 ? { factions: [factions[0], factions[1]] as const, count: e.who.personIds?.length ?? 0 } : {};
-      items.push({ id: e.id, type: 'event', kind: e.kind, importance, importanceFrom: e.byRule ? 'rule' : e.importance ? 'data' : 'fallback', marker, markerFrom: fromData ? 'data' : 'fallback',
+      items.push({ id: e.id, type: 'event', kind: e.kind, importance, importanceFrom: e.byRule || byRule ? 'rule' : e.importance ? 'data' : 'fallback', marker, markerFrom: fromData ? 'data' : 'fallback',
         en: 'factions' in fm ? null : e.line?.en ?? e.summary.en, he: 'factions' in fm ? null : e.line?.he ?? e.summary.he, certainty: e.certainty ?? null, evidenceClass: e.evidenceClass ?? null, sources: srcs(e), marks, moved, ...(e.timelineEligible === false ? { held: true as const } : {}), ...fm });
       (items[items.length - 1] as TimelineItem & { _e?: KEvent })._e = e;
     }

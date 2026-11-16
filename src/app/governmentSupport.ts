@@ -15,3 +15,18 @@ export function participantName<T extends NamedList>(entry: Pick<GovernmentParti
   const he = entry.factionNameHe ?? entry.letters ?? '';
   return { list: undefined, name: lang === 'en' && entry.factionNameEn ? entry.factionNameEn : he, hebrew: lang === 'en' && !entry.factionNameEn };
 }
+/** The coalition's member lists that are counted with fewer seats than they won at the election (some of their MKs never
+ *  joined: 2020 Blue and White, 2021 Yamina), and what all the member lists won. Null when none, or when the coalition
+ *  has no total or a member list's seats are not known. */
+export function listsBelowTheirSeats(rows: GovernmentParticipant[], counted: number | null, seatsOf: (letters: string) => number | undefined): { won: number; lists: { row: GovernmentParticipant; won: number }[] } | null {
+  if (counted == null) return null;
+  const members = rows.filter(r => r.certainty !== 'unknown' && (r.role === 'member-with-ministries' || r.role === 'member-without-ministries'));
+  let won = 0; const lists: { row: GovernmentParticipant; won: number }[] = [];
+  for (const r of members) {
+    const s = r.electionListSeats ?? (r.letters ? seatsOf(r.letters) : undefined);
+    if (s == null) return null;
+    won += s;
+    if (r.seats != null && s > r.seats) lists.push({ row: r, won: s });
+  }
+  return won > counted && lists.length ? { won, lists } : null;
+}

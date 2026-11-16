@@ -15,3 +15,14 @@ it('preserves provisional qualifications and unknown seat counts without inventi
   const entry = { ...row('outside-support', 'provisional'), seats: null };
   expect(supportRoleGroups([entry])[0].rows[0]).toEqual(entry);
 });
+it('a coalition counted below its lists’ seats names those lists and what all its lists won; otherwise nothing', async () => {
+  const { listsBelowTheirSeats } = await import('../src/app/governmentSupport.ts');
+  const seats: Record<string, number> = { 'ב': 7, 'פה': 17 };
+  const rows: GovernmentParticipant[] = [{ letters: 'ב', seats: 6, role: 'member-with-ministries', certainty: 'confirmed', cites: [] }, { letters: 'פה', seats: 17, role: 'member-with-ministries', certainty: 'confirmed', cites: [] }, { letters: 'ג', seats: 4, role: 'outside-support', certainty: 'confirmed', cites: [] }];
+  const r = listsBelowTheirSeats(rows, 23, (l) => seats[l]);
+  expect(r?.won).toBe(24);
+  expect(r?.lists.map((x) => [x.row.letters, x.won, x.row.seats])).toEqual([['ב', 7, 6]]);
+  expect(listsBelowTheirSeats(rows.map((x) => ({ ...x, seats: seats[x.letters!] ?? 4 })), 24, (l) => seats[l])).toBeNull();
+  expect(listsBelowTheirSeats(rows, null, (l) => seats[l])).toBeNull();
+  expect(listsBelowTheirSeats([{ ...rows[0], letters: 'x' }], 6, (l) => seats[l])).toBeNull();
+});

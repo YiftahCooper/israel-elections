@@ -1,6 +1,7 @@
 // Each MK's own history (scripts/mk-history-runtime.ts, src/history/mk.ts): who is matched to which candidacy, from
 // which elections runs that did not win a seat are shown, and the facts the card is built from.
 import { beforeAll, describe, expect, it } from 'vitest';
+import { reasonWords } from '../src/history/reasons.ts';
 import { readFileSync } from 'node:fs';
 import { compileMkHistory, normName, type MkReview, type MkRuntime } from '../scripts/mk-history-runtime.ts';
 import { mkView, personOfCandidate, servedText } from '../src/history/mk.ts';
@@ -459,10 +460,11 @@ describe('a person has one English name on every screen', () => {
 describe('the end of a Knesset', () => {
   const tenures = (k: number) => (JSON.parse(readFileSync(`data/research/knesset-member-changes/k${k}.json`, 'utf8')) as { tenures: { personId: number; end: string | null }[] }).tenures;
   it('is the next one’s opening; where that is not recorded and every membership has closed, the last membership end', () => {
-    for (let k = 1; k <= 24; k++) expect(rt.elections[k].end, `k${k}`).toBe(rt.elections[k + 1].opening);
-    expect(rt.elections[26].opening).toBeNull();
+    for (let k = 1; k <= 25; k++) expect(rt.elections[k].end, `k${k}`).toBe(rt.elections[k + 1].opening);
     expect(tenures(25).every((t) => t.end !== null)).toBe(true);
     expect(rt.elections[25].end).toBe('2026-11-10');
+    // the 26th opened as the 25th ended (owner, 16 Nov 2026); its member records are not yet in the data, so it has no end
+    expect(rt.elections[26]).toMatchObject({ opening: '2026-11-10', end: null, recordsPending: true });
   });
   it('a member who served to the end of the 25th has no end line; one who left early still has it', () => {
     const last = tenures(25).filter((t) => t.end === '2026-11-10').map((t) => t.personId);
@@ -476,5 +478,32 @@ describe('the end of a Knesset', () => {
   it('every Knesset: an end line only where a membership ended before the term did', () => {
     for (const id of Object.keys(rt.people)) for (const r of mkView(rt, Number(id))!.rows)
       for (const e of r.events) if (e.kind === 'left') expect(e.date < r.end!, `${id} k${r.k} ${e.date}`).toBe(true);
+  });
+});
+
+// owner answers of 16 Nov 2026: a researched run shows its sources; a membership ends with its recorded reason
+describe('researched runs and recorded reasons', () => {
+  const KAHALANI = 2574;
+  it('a run tied by research carries the sources that tie it', () => {
+    const run = rt.people[KAHALANI].runs.find((r) => r[1] === '16-מחל');
+    expect(run).toBeDefined();
+    const sources = run![7] ?? [];
+    expect(sources.map(([, url]) => url)).toEqual(expect.arrayContaining([expect.stringContaining('he.wikipedia.org'), expect.stringContaining('idi.org.il/media/5993')]));
+    const view = mkView(rt, KAHALANI)!.rows.find((r) => r.k === 16)!;
+    expect(view.run!.research!.length).toBe(sources.length);
+    // every researched run that reached a card has at least one https source
+    const all = Object.values(rt.people).flatMap((p) => p.runs.filter((r) => r[7]));
+    expect(all.length).toBeGreaterThanOrEqual(10);
+    for (const r of all) expect(r[7]!.every(([, url]) => url.startsWith('https://'))).toBe(true);
+  });
+  it('a membership that ended with a recorded reason says it, and every recorded reason has words', () => {
+    const ALHARUMI = 30548;
+    const row = mkView(rt, ALHARUMI)!.rows.find((r) => r.k === 24)!;
+    expect(row.events.find((e) => e.kind === 'left')).toMatchObject({ date: '2021-08-25', reason: 'death' });
+    const silman = mkView(rt, SILMAN)!.rows.find((r) => r.k === 24)!;
+    expect(silman.events.find((e) => e.kind === 'left')).toMatchObject({ date: '2022-09-13', reason: 'ordinary-resignation' });
+    const codes = new Set(Object.values(rt.people).flatMap((p) => p.terms.map((t) => t[4]).filter((r): r is string => !!r)));
+    expect(codes.size).toBeGreaterThan(1);
+    for (const c of codes) for (const lang of ['en', 'he'] as const) expect(reasonWords(c, false, lang), `${c} ${lang}`).not.toBeNull();
   });
 });

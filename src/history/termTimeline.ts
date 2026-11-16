@@ -38,10 +38,14 @@ export function factionMoveLine(mk: MkRuntime | null, [from, to]: readonly [numb
 /** A line whose factions are written as {f:id} (data/research/knesset-events `line`), with each faction's shown name. */
 export const fillFactions = (mk: MkRuntime | null, text: string, lang: 'he' | 'en') =>
   text.replace(/\{f:(\d+)\}/g, (_, id: string) => (mk ? factionLabel(mk, Number(id), lang) : '') || '…');
+/** A line whose people are written as {p:id} (the Speaker lines), with each person's shown name: the Knesset's English
+ *  name, else the registered Hebrew one (as the seat card names people). */
+export const fillPeople = (mk: MkRuntime | null, text: string, lang: 'he' | 'en') =>
+  text.replace(/\{p:(\d+)\}/g, (_, id: string) => { const p = mk?.people[Number(id)]; return p ? (lang === 'he' || !p.en ? p.he : p.en) : '…'; });
 /** The line an event shows (seat changes are written by the screen from the people's names). */
 export function eventLine(it: Pick<TimelineItem, 'factions' | 'count' | 'en' | 'he'>, mk: MkRuntime | null, lang: 'he' | 'en'): string {
   if (it.factions) return factionMoveLine(mk, it.factions, it.count ?? 0, lang);
-  return fillFactions(mk, (lang === 'he' ? it.he : it.en) ?? '', lang);
+  return fillPeople(mk, fillFactions(mk, (lang === 'he' ? it.he : it.en) ?? '', lang), lang);
 }
 
 const RANK: Record<Importance, number> = { simple: 0, standard: 1, expert: 2 };

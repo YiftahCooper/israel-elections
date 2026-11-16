@@ -124,6 +124,13 @@ describe('After the election: rules over all records', () => {
     expect(Object.values(seen).reduce((a, b) => a + b, 0)).toBe(26);
     expect((seen.matches ?? 0) + (seen['matches-with-support'] ?? 0)).toBeGreaterThanOrEqual(20);
   });
+  it('the Hebron massacre names the murderer as a Jewish terrorist and the victims as Muslim worshippers (16 Nov 2026)', () => {
+    const e = aftermathRecords.k13!.term!.events.find((x) => x.id === 'hebron-massacre')!;
+    expect(e.textEn).toBe('The Jewish terrorist Baruch Goldstein murdered 29 Muslim worshippers in the Cave of the Patriarchs massacre in Hebron.');
+    expect(e.textHe).toBe('המחבל היהודי ברוך גולדשטיין רצח 29 מתפללים מוסלמים בטבח במערת המכפלה בחברון.');
+    // the wording is the sources' own: the Foreign Ministry timeline says "Muslim worshippers"
+    expect(e.cites!.some((c) => /Muslim worshippers/.test(c.quote ?? ''))).toBe(true);
+  });
   it('c-aftermath-05: acting and interim prime ministers carry their title as data, never inside the name', () => {
     const titled = records.flatMap(r => (r.government?.primeMinisters ?? []).filter(p => p.role).map(p => [r.electionId, p.nameEn, p.titleEn, p.titleHe]));
     expect(titled.sort((a, b) => Number(a[0]!.slice(1)) - Number(b[0]!.slice(1)))).toEqual([

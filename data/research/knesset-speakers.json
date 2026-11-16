@@ -1,0 +1,338 @@
+{
+ "description": "Speakers of the Knesset (יושב ראש הכנסת): every office interval in the Knesset database. newOfficeholder marks an interval whose holder differs from the one before (a new Speaker took office on start); the others carry the same Speaker over into a new Knesset. Shown on the term timeline at Standard and Expert (owner decision, 16 Nov 2026).",
+ "sources": [
+  {
+   "publisher": "Knesset",
+   "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=PositionID eq 122&$format=json",
+   "positionId": 122,
+   "positionHe": "יושב ראש הכנסת",
+   "accessed": "2026-11-12",
+   "kind": "official",
+   "retained": {
+    "path": "data/raw/research/knesset-speakers/kns-person-to-position-122.json",
+    "sha256": "0a3b8d4d3c6e13efdc3bfd71291e04bedfc82b10748987440a97a20b33fe2453"
+   }
+  },
+  {
+   "publisher": "Knesset",
+   "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=PositionID eq 123&$format=json",
+   "positionId": 123,
+   "positionHe": "יושבת ראש הכנסת",
+   "accessed": "2026-11-12",
+   "kind": "official",
+   "retained": {
+    "path": "data/raw/research/knesset-speakers/kns-person-to-position-123.json",
+    "sha256": "662cd1cb71bd1d3b976fe3e559babfbfd76e8f9ed74603949dd6af0df10f26a0"
+   }
+  }
+ ],
+ "retrievedBy": "audit of 12 Nov 2026 (cx-events), both datasets complete (no nextLink)",
+ "intervals": [
+  {
+   "knesset": 1,
+   "personId": 2665,
+   "start": "1949-02-14",
+   "end": "1951-08-20",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 1133
+  },
+  {
+   "knesset": 2,
+   "personId": 2665,
+   "start": "1951-08-20",
+   "end": "1955-08-15",
+   "positionId": 122,
+   "newOfficeholder": false,
+   "record": 1134
+  },
+  {
+   "knesset": 3,
+   "personId": 2665,
+   "start": "1955-08-15",
+   "end": "1959-01-28",
+   "positionId": 122,
+   "newOfficeholder": false,
+   "record": 3358
+  },
+  {
+   "knesset": 3,
+   "personId": 2486,
+   "start": "1959-03-02",
+   "end": "1959-11-30",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 3361
+  },
+  {
+   "knesset": 4,
+   "personId": 2423,
+   "start": "1959-11-30",
+   "end": "1961-09-04",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 1274
+  },
+  {
+   "knesset": 5,
+   "personId": 2423,
+   "start": "1961-09-04",
+   "end": "1965-11-22",
+   "positionId": 122,
+   "newOfficeholder": false,
+   "record": 1275
+  },
+  {
+   "knesset": 6,
+   "personId": 2423,
+   "start": "1965-11-22",
+   "end": "1969-11-17",
+   "positionId": 122,
+   "newOfficeholder": false,
+   "record": 1276
+  },
+  {
+   "knesset": 7,
+   "personId": 2227,
+   "start": "1969-11-17",
+   "end": "1972-04-04",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 1277
+  },
+  {
+   "knesset": 7,
+   "personId": 2389,
+   "start": "1972-05-09",
+   "end": "1974-01-21",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 1137
+  },
+  {
+   "knesset": 8,
+   "personId": 2389,
+   "start": "1974-01-21",
+   "end": "1977-06-13",
+   "positionId": 122,
+   "newOfficeholder": false,
+   "record": 1138
+  },
+  {
+   "knesset": 9,
+   "personId": 2652,
+   "start": "1977-06-13",
+   "end": "1980-03-12",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 831
+  },
+  {
+   "knesset": 9,
+   "personId": 2222,
+   "start": "1980-03-12",
+   "end": "1981-07-20",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 703
+  },
+  {
+   "knesset": 10,
+   "personId": 2497,
+   "start": "1981-07-20",
+   "end": "1984-08-13",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 1139
+  },
+  {
+   "knesset": 11,
+   "personId": 2299,
+   "start": "1984-09-12",
+   "end": "1988-11-21",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 1140
+  },
+  {
+   "knesset": 12,
+   "personId": 2642,
+   "start": "1988-11-21",
+   "end": "1992-07-13",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 1332
+  },
+  {
+   "knesset": 13,
+   "personId": 2317,
+   "start": "1992-07-13",
+   "end": "1996-06-17",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 1142
+  },
+  {
+   "knesset": 14,
+   "personId": 2672,
+   "start": "1996-06-24",
+   "end": "1999-06-07",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 3193
+  },
+  {
+   "knesset": 15,
+   "personId": 434,
+   "start": "1999-07-06",
+   "end": "2003-02-17",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 1143
+  },
+  {
+   "knesset": 16,
+   "personId": 476,
+   "start": "2003-02-19",
+   "end": "2006-04-17",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 2235
+  },
+  {
+   "knesset": 17,
+   "personId": 433,
+   "start": "2006-05-04",
+   "end": "2009-02-24",
+   "positionId": 123,
+   "newOfficeholder": true,
+   "record": 636
+  },
+  {
+   "knesset": 18,
+   "personId": 476,
+   "start": "2009-03-30",
+   "end": "2013-02-05",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 1229
+  },
+  {
+   "knesset": 19,
+   "personId": 532,
+   "start": "2013-03-18",
+   "end": "2015-03-31",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 3289
+  },
+  {
+   "knesset": 20,
+   "personId": 532,
+   "start": "2015-03-31",
+   "end": "2019-04-30",
+   "positionId": 122,
+   "newOfficeholder": false,
+   "record": 17101
+  },
+  {
+   "knesset": 21,
+   "personId": 532,
+   "start": "2019-04-30",
+   "end": "2019-10-03",
+   "positionId": 122,
+   "newOfficeholder": false,
+   "record": 20487
+  },
+  {
+   "knesset": 22,
+   "personId": 532,
+   "start": "2019-10-03",
+   "end": "2020-03-16",
+   "positionId": 122,
+   "newOfficeholder": false,
+   "record": 21046
+  },
+  {
+   "knesset": 23,
+   "personId": 532,
+   "start": "2020-03-16",
+   "end": "2020-03-26",
+   "positionId": 122,
+   "newOfficeholder": false,
+   "record": 21638
+  },
+  {
+   "knesset": 23,
+   "personId": 30657,
+   "start": "2020-03-26",
+   "end": "2020-05-17",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 21721
+  },
+  {
+   "knesset": 23,
+   "personId": 12951,
+   "start": "2020-05-17",
+   "end": "2021-04-06",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 21837
+  },
+  {
+   "knesset": 24,
+   "personId": 12951,
+   "start": "2021-04-06",
+   "end": "2021-06-13",
+   "positionId": 122,
+   "newOfficeholder": false,
+   "record": 23848
+  },
+  {
+   "knesset": 24,
+   "personId": 23632,
+   "start": "2021-06-13",
+   "end": "2022-11-15",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 24094
+  },
+  {
+   "knesset": 25,
+   "personId": 23632,
+   "start": "2022-11-15",
+   "end": "2022-12-13",
+   "positionId": 122,
+   "newOfficeholder": false,
+   "record": 30604
+  },
+  {
+   "knesset": 25,
+   "personId": 12951,
+   "start": "2022-12-13",
+   "end": "2022-12-29",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 30603
+  },
+  {
+   "knesset": 25,
+   "personId": 30300,
+   "start": "2022-12-29",
+   "end": "2026-11-10",
+   "positionId": 122,
+   "newOfficeholder": true,
+   "record": 30678
+  },
+  {
+   "knesset": 26,
+   "personId": 30300,
+   "start": "2026-11-10",
+   "end": null,
+   "positionId": 122,
+   "newOfficeholder": false,
+   "record": 34259
+  }
+ ]
+}

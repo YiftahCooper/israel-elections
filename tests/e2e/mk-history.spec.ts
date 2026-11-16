@@ -43,7 +43,7 @@ test('opens from the seat: Idit Silman, six elections, three not elected', async
   await expect(rows.nth(1)).toContainText('Not elected');
   await expect(rows.nth(1)).toContainText('1 place short');
   await expect(rows.nth(3)).toContainText('Sat from the first sitting');
-  await expect(rows.nth(3)).toContainText('Membership ended'); // no recorded reason: neutral words (audit 12 Nov 2026, c-famous-late-07)
+  await expect(rows.nth(3)).toContainText('Membership ended'); // with the recorded reason where there is one (16 Nov 2026)
   await expect(rows.nth(5)).toContainText('No. 46 · the list won 27');
   await expect(rows.nth(5)).toContainText('19 places short');
   await expect(card(page)).toContainText('shown from 2009 on');
@@ -99,4 +99,43 @@ test('phone: the card fills the screen and its rows stack', async ({ page }) => 
   expect(box!.width).toBeGreaterThanOrEqual(388);
   const overflow = await card(page).evaluate((d) => d.scrollWidth - d.clientWidth);
   expect(overflow).toBeLessThanOrEqual(0);
+});
+
+// Round 7, 16 Nov 2026 (owner cards k26-open, mq1-source, mk9-timeline, deaths): the rows explain themselves; the 26th
+// Knesset is open; a run tied by research shows its sources; a membership ends with its recorded reason
+test('Silman: a key explains the rows; the 26th Knesset has opened; her 2022 resignation is named', async ({ page }) => {
+  await start(page);
+  await hoverSeat(page, 'Likud', 16);
+  await page.locator('.tip').getByRole('button', { name: 'Her history' }).click();
+  const key = card(page).locator('.mk-key');
+  await expect(key).toBeVisible();
+  await key.getByRole('button', { name: 'How to read the rows' }).click();
+  await expect(page.getByText(/whole Knesset/).first()).toBeVisible();
+  await key.getByRole('button', { name: 'How to read the rows' }).click();
+  const rows = card(page).locator('.mk-rows > li');
+  await expect(rows.filter({ hasText: '24th Knesset' })).toContainText('Membership ended · Resigned');
+  // she was not elected in 2026: not in the 26th Knesset, which opened in November
+  const k26 = rows.filter({ hasText: '26th Knesset' });
+  await expect(k26).toContainText('Not in this Knesset (from Nov 2026)');
+  await expect(k26).not.toContainText('not yet opened');
+});
+
+test('a run tied by research shows the sources that tie it', async ({ page }) => {
+  await start(page, { k: 'k16' });
+  await listRow(page, 'Likud').click();
+  await page.getByRole('button', { name: /^Show all \d+ candidates$/ }).click();
+  await page.locator('aside .cands .mk-name', { hasText: /קהלני|Kahalani/ }).first().click();
+  const row = card(page).locator('.mk-rows > li').filter({ hasText: '16th Knesset' });
+  await row.getByRole('button', { name: 'Source' }).click();
+  const pop = page.getByRole('link', { name: /idi|Israel Democracy/i });
+  await expect(pop.first()).toBeVisible();
+  await expect(page.getByText('Hebrew Wikipedia (a secondary source)').first()).toBeVisible();
+});
+
+test('an MK elected in 2026: the 26th Knesset opened on 10 Nov 2026, the time in it not yet in the records', async ({ page }) => {
+  await start(page, { k: 'k26' });
+  await hoverSeat(page, 'Likud', 1);
+  await page.locator('.tip').getByRole('button', { name: /history$/ }).click();
+  const k26 = card(page).locator('.mk-rows > li').filter({ hasText: '26th Knesset' });
+  await expect(k26.locator('.mk-pending')).toHaveText('Opened on 10 Nov 2026; time in it not yet in our records');
 });
