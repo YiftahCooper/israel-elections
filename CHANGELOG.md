@@ -1,5 +1,9 @@
 # Changelog
 
+## 16 November 2026
+
+- Levels, Settings and the top bar (16 Nov): a level change keeps your own choices (the Custom level is gone; a “+N own” chip lists them in Settings, each with its undo); tools of other levels are greyed out and ask “Switch to Expert” or “Add to Simple”; Settings has a row for every tool and detail under its level, and a Colours section; a Reset sits beside every changed colour; on a phone the three lines open the tools and view and the scenario button opens the scenario; screens under 800 px high pin only the top bar, with the tools in a side panel.
+
 ## 13 November 2026 — audit fixes
 
 - Localities (13 Nov, audit): one result under “Find a locality” reads “1 match” (Hebrew “התאמה אחת”), and “the first 30 are shown” appears only when more than 30 were found.
