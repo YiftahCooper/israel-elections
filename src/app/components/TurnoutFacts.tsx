@@ -104,7 +104,7 @@ export function TurnoutFacts({ s }: { s: Scenario }) {
         v={official.envelopeVotes === null ? '—' : <bdi dir="ltr">{fmtInt(official.envelopeVotes)}</bdi>}
         d={official.envelopeVotes === null ? L('Not in the source for this election', 'לא מופיע במקור לבחירות אלה') : <>{percent(official.envelopeVotes, official.votesCast, digits)} {L('of votes cast', 'מהמצביעים')}</>} />}
     </dl>
-    {standard && <TurnoutHistory current={s.electionId} />}
+    {standard && <TurnoutHistory current={s.electionId} compared={ref && ref.sc.electionId !== s.electionId ? ref.sc.electionId : null} />}
   </section>;
 }
 
@@ -122,9 +122,11 @@ function useWidth<T extends HTMLElement>(fallback: number) {
 /** Eligible voters and turnout at every election: two small charts on one shared row of elections (never two scales
  *  on one axis), drawn left to right in Hebrew too. A column opens that election; the readout above names the
  *  hovered or current election, in a reserved line so nothing moves. */
-function TurnoutHistory({ current }: { current: ElectionId }) {
+// compared: the election Compare has on the other side, shaded grey in both charts (owner, 16 Nov 2026)
+function TurnoutHistory({ current, compared }: { current: ElectionId; compared: ElectionId | null }) {
   const L = useL(), lang = useLang(), digits = useDigits();
   const preferTables = useSetting('preferTables');
+  const showLine = useSetting('turnoutHistoryLine');
   const index = useStore((st) => st.elections);
   const [ref, width] = useWidth<HTMLDivElement>(720);
   const [hover, setHover] = useState<number | null>(null);
@@ -132,6 +134,7 @@ function TurnoutHistory({ current }: { current: ElectionId }) {
   const intent = useHoverIntent(() => setHover(null), hover !== null);
   const rows = ELECTION_TOTALS;
   const cur = rows.findIndex((t) => t.id === current);
+  const cmp = compared ? rows.findIndex((t) => t.id === compared) : -1;
   const shown = rows[hover ?? cur] ?? rows[rows.length - 1];
   const pcts = useMemo(() => rows.map((t) => turnoutPct(t.votesCast, t.registered)), [rows]);
   const n = rows.length, ml = 34, mr = 6, slot = (width - ml - mr) / n, bw = Math.min(16, slot * 0.62);
@@ -149,15 +152,20 @@ function TurnoutHistory({ current }: { current: ElectionId }) {
   const label = (i: number) => `${name(rows[i])}: ${L('eligible voters', 'בעלי זכות בחירה')} ${fmtInt(rows[i].registered)}, ${L('turnout', 'הצבעה')} ${fmtPct(rows[i].votesCast, rows[i].registered, digits)}`;
   const columns = (chart: 'reg' | 'pct') => rows.map((t, i) => <rect key={t.id} className="tn-hit" x={ml + i * slot} y={0} width={slot} height={top + H + axisH}
     onPointerEnter={(e) => { if (e.pointerType === 'touch') setHover(i); else intent.enter(() => setHover(i)); }} onPointerLeave={(e) => { if (e.pointerType !== 'touch') intent.leave(); if (!intent.isShown) setHover((h) => (h === i ? null : h)); }} onClick={() => go(i)} data-chart={chart} />);
-  // the open election's year is always shown, in bold; regular ticks too close to it give way
-  const years = rows.map((t, i) => (i === cur || tick(i) && !(cur >= 0 && Math.abs(i - cur) * slot < 24)) && <text key={t.id} x={x(i)} y={top + H + 13} className={`tn-axis ${i === cur ? 'cur' : ''}`} textAnchor="middle">{`’${t.date.slice(2, 4)}`}</text>);
-  const band = (i: number) => <rect x={ml + i * slot + 0.5} y={top - 4} width={Math.max(1, slot - 1)} height={H + axisH + 4} rx={3} className={i === cur ? 'tn-cur' : 'tn-hov'} />;
+  // the open election's year is always shown, in bold; regular ticks too close to it give way. The compared election's
+  // year is bold too, unless it would touch the open one's (on a phone): the key above names it
+  const years = rows.map((t, i) => (i === cur || i === cmp && !(cur >= 0 && Math.abs(i - cur) * slot < 24) || tick(i) && !(cur >= 0 && Math.abs(i - cur) * slot < 24) && !(cmp >= 0 && Math.abs(i - cmp) * slot < 24)) && <text key={t.id} x={x(i)} y={top + H + 13} className={`tn-axis ${i === cur || i === cmp ? 'cur' : ''}`} textAnchor="middle">{`’${t.date.slice(2, 4)}`}</text>);
+  const band = (i: number) => <rect x={ml + i * slot + 0.5} y={top - 4} width={Math.max(1, slot - 1)} height={H + axisH + 4} rx={3} className={i === cur ? 'tn-cur' : i === cmp ? 'tn-cmp' : 'tn-hov'} />;
 
   return <div className="tn-history">
     <h4>{L('All elections', 'כל הבחירות')} <Info title={L('All elections', 'כל הבחירות')}>{L('Official national totals of each election. Choose an election to open it. Columns are elections, evenly spaced: this is not a time scale, since Knessets last different lengths. The shaded column is the open election.', 'הסיכומים הארציים הרשמיים של כל בחירות. בחירה בבחירות פותחת אותן. העמודות הן מערכות בחירות, במרווחים שווים: זה אינו ציר זמן, כי משך כל כנסת שונה. העמודה המוצללת היא הבחירות הפתוחות.')}</Info></h4>
     <p className="tn-readout small" aria-live="polite">
       <b>{name(shown)}</b> · {L('Eligible', 'בעלי זכות')} <bdi dir="ltr">{fmtInt(shown.registered)}</bdi> · {L('Turnout', 'הצבעה')} {percentNum(pcts[rows.indexOf(shown)], digits)}
     </p>
+    {cmp >= 0 && cur >= 0 && <p className="tn-key small ink2">
+      <span><i className="tn-sw cur" aria-hidden />{L(`${name(rows[cur])} · open`, `${name(rows[cur])} · פתוחות`)}</span>
+      <span><i className="tn-sw cmp" aria-hidden />{L(`${name(rows[cmp])} · compared`, `${name(rows[cmp])} · בהשוואה`)}</span>
+    </p>}
     <div ref={ref} className="tn-charts">
       <div className="tn-panel">
         <div className="tn-cap small ink2">{L('Eligible voters (millions)', 'בעלי זכות בחירה (מיליונים)')}</div>
@@ -171,7 +179,7 @@ function TurnoutHistory({ current }: { current: ElectionId }) {
           {Array.from({ length: regMax / regStep + 1 }, (_, k) => k * regStep).map((v) => <g key={v}>
             <line x1={ml} x2={width - mr} y1={yReg(v)} y2={yReg(v)} className="tn-gl" />
             <text x={ml - 5} y={yReg(v) + 3.5} className="tn-axis" textAnchor="end">{v / 1_000_000}</text></g>)}
-          {hover !== null && hover !== cur && band(hover)}{cur >= 0 && band(cur)}
+          {hover !== null && hover !== cur && hover !== cmp && band(hover)}{cmp >= 0 && band(cmp)}{cur >= 0 && band(cur)}
           {rows.map((t, i) => <g key={t.id} data-i={i} role="button" aria-label={label(i)} aria-current={i === cur ? 'true' : undefined} tabIndex={i === (hover ?? cur) ? 0 : -1}
             className="tn-col" onFocus={() => setHover(i)} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(i); } }}>
             <rect x={x(i) - bw / 2} y={yReg(t.registered)} width={bw} height={top + H - yReg(t.registered)} rx={Math.min(2, bw / 4)} className={`tn-bar ${i === cur ? 'cur' : ''}`} />
@@ -179,18 +187,18 @@ function TurnoutHistory({ current }: { current: ElectionId }) {
           {years}{columns('reg')}
         </svg>
       </div>
-      <div className="tn-panel" aria-hidden>
+      {showLine && <div className="tn-panel" aria-hidden>
         <div className="tn-cap small ink2">{L('Turnout (%)', 'שיעור ההצבעה (%)')}</div>
         <svg width={width} height={top + H + axisH} viewBox={`0 0 ${width} ${top + H + axisH}`} direction="ltr" className="tn-chart">
           {Array.from({ length: (pHi - pLo) / 10 + 1 }, (_, k) => pLo + k * 10).map((v) => <g key={v}>
             <line x1={ml} x2={width - mr} y1={yPct(v)} y2={yPct(v)} className="tn-gl" />
             <text x={ml - 5} y={yPct(v) + 3.5} className="tn-axis" textAnchor="end">{v}</text></g>)}
-          {hover !== null && hover !== cur && band(hover)}{cur >= 0 && band(cur)}
+          {hover !== null && hover !== cur && hover !== cmp && band(hover)}{cmp >= 0 && band(cmp)}{cur >= 0 && band(cur)}
           <polyline points={pcts.map((p, i) => `${x(i)},${yPct(p)}`).join(' ')} className="tn-line" />
           {pcts.map((p, i) => <circle key={i} cx={x(i)} cy={yPct(p)} r={i === cur ? 4.5 : 3} className={`tn-dot ${i === cur ? 'cur' : ''}`} />)}
           {years}{columns('pct')}
         </svg>
-      </div>
+      </div>}
     </div>
     <details className="tn-table" open={preferTables}>
       <summary className="small">{L('Table', 'טבלה')}</summary>

@@ -63,3 +63,24 @@ test('a mouse user can switch a table to exact values from the note a value open
   await expect(value).not.toHaveText(rounded!);
   await expect(value).toHaveAttribute('data-exact');
 });
+
+// Turnout's "All elections" charts: the compared election sits in a soft grey band in both charts, named in a key; the
+// Turnout (%) line can be turned off in Settings (turnoutHistoryLine).
+test('the compared election has a grey band and a key; the turnout line can be turned off', async ({ page }) => {
+  await start(page, 'expert');
+  await page.locator('.compare-on').click();
+  await page.getByRole('tab', { name: 'Turnout', exact: true }).click();
+  const hist = page.locator('.tn-history');
+  await expect(hist.locator('.tn-key')).toContainText('2022');
+  await expect(hist.locator('.tn-key')).toContainText('compared');
+  await expect(hist.locator('rect.tn-cmp')).toHaveCount(2);
+  await expect(hist.locator('.tn-panel')).toHaveCount(2);
+  await page.locator('.cmpm-strip').getByRole('button', { name: /^Stop comparing/ }).click();
+  await expect(hist.locator('.tn-key')).toHaveCount(0);
+  await expect(hist.locator('rect.tn-cmp')).toHaveCount(0);
+  await page.evaluate(() => localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false, turnoutHistoryLine: false } })));
+  await page.reload();
+  await page.getByRole('tab', { name: 'Turnout', exact: true }).click();
+  await expect(page.locator('.tn-history .tn-panel')).toHaveCount(1);
+  await expect(page.locator('.tn-history')).not.toContainText('Turnout (%)');
+});
