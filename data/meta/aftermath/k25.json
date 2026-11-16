@@ -151,7 +151,14 @@
       "url": "https://www.gov.il/en/pages/spoke-war081023",
       "publisher": "Prime Minister’s Office, Security Cabinet Approves War Situation, 8 October 2023 (updated 9 October)",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "1998e7739f973f65e8cd4056679737479e810f98d9c714efa1164c1906b5f0c8",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:46:00.441Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j229.html.gz"
     },
     "idi-war-law": {
       "url": "https://en.idi.org.il/articles/51077",
@@ -199,7 +206,14 @@
       "url": "https://www.gov.il/en/pages/event-statement240625",
       "publisher": "Prime Minister’s Office, Statement by PM Netanyahu, 24 June 2025 (updated 25 June)",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "8e91cd9f091a0157b30ba14fc064c2d0dfc83dbebda9af115eb5b513e4913b07",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:45:35.126Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j227.html.gz"
     },
     "idf-hamas-history": {
       "url": "https://www.idf.il/en/mini-sites/hamas/",
@@ -254,19 +268,40 @@
       "url": "https://www.gov.il/en/pages/spoke-hague211124",
       "publisher": "Prime Minister’s Office, Statement on ICC warrants, 21 November 2024",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "98afe4224bdf32bbdf21ad7152f9da19382163a36ee81c7716ecf5a3be0f0461",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:45:47.642Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j228.html.gz"
     },
     "president-icj-2024": {
       "url": "https://www.gov.il/en/departments/news/president-herzog-addresses-icj-ruling-28-jan-2024",
       "publisher": "President’s Spokesperson / MFA, President Herzog addresses ICJ Ruling, 28 January 2024",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "dda1f4c9c019941bc729d4de9b26dff8ea62a9ee7787668628d942139976feaa",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:45:21.890Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j226.html.gz"
     },
     "cec-election-timeline-2026": {
       "url": "https://www.gov.il/he/departments/dynamiccollectors/election-timeline26",
       "publisher": "ועדת הבחירות המרכזית, ציר הזמן לפעולות הוועדה לכנסת ה־26",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "d98199ac771ec75c932ad8079978b557b5a6a6e2176061ed2049e0c3feeb48ee",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:46:39.891Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j231.html.gz"
     },
     "role-roster-37": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2037%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",

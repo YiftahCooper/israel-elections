@@ -16,7 +16,25 @@
         27565
       ],
       "certainty": "confirmed",
-      "scope": "Recorded name and membership intervals. Does not identify the formal registration or rename instrument."
+      "scope": "OData final Hebrew label and membership envelope retained. Contemporary plenum uses Tehiya–Tzomet in February and May 1986; the final Tehiya label must not be projected across the term. Formal rename date remains unknown.",
+      "datedNameObservations": [
+        {
+          "nameHe": "התחיה־צמת",
+          "effectiveDate": "1986-02-19",
+          "source": "collector-r7-j254",
+          "pdfPage": 1,
+          "certainty": "confirmed",
+          "scope": "Contemporary faction attribution in plenum speech. Confirms usage on this date only; does not establish the formal rename date."
+        },
+        {
+          "nameHe": "התחיה־צמת",
+          "effectiveDate": "1986-05-28",
+          "source": "collector-r7-j255",
+          "pdfPage": 5,
+          "certainty": "confirmed",
+          "scope": "Contemporary faction attribution in plenum speech. Confirms usage on this date only; does not establish the formal rename date."
+        }
+      ]
     },
     {
       "factionId": 641,
@@ -176,7 +194,26 @@
         32285
       ],
       "certainty": "confirmed",
-      "scope": "Recorded name and membership intervals. Does not identify the formal registration or rename instrument."
+      "scope": "Hebrew OData name and membership intervals are retained observations, not a dated name history. English page label differs; neither source establishes a rename effective date.",
+      "nameObservations": [
+        {
+          "nameHe": "הימין הממלכתי",
+          "source": "data/raw/bios/knesset-odata-faction-positions.json",
+          "effectiveFrom": null,
+          "effectiveTo": null,
+          "scope": "Static Hebrew database label; observed membership start is not a name-validity start."
+        },
+        {
+          "nameEn": "New Hope - The United Right",
+          "observedAt": "2026-11-16",
+          "effectiveFrom": null,
+          "effectiveTo": null,
+          "source": "collector-r7-j25",
+          "scope": "English faction page label at capture. Page membership dates 2024-03-13–2026-11-10 are not asserted as name-validity dates.",
+          "url": "https://main.knesset.gov.il/EN/mk/apps/faction/faction-lobby?KnessetID=25&FactionID=1108",
+          "pageSha256": "7b0915c28fcf541cfea29cdd6e126b84ec574278c29aad74bb3275cb5bdc75d2"
+        }
+      ]
     }
   ]
 }

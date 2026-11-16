@@ -441,7 +441,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k26.json",
-      "sha256": "18e4b1110f4bf539caed5032e1b8e39f26753830b136259f4633eb730f48c524",
+      "sha256": "3245872f52ff7a891d318015b25693a73bd70416965a51aa31236f1438341a1f",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "religious-islamist": {
@@ -1366,6 +1366,19 @@
       "accessed": "2026-11-16",
       "evidenceFamily": "idi-flatto-history",
       "support": "IDI identifies the same Flatto-Sharon organisation in its 1977 and 1981 history and results table."
+    },
+    "collector-r7-registrar-599002110": {
+      "url": "https://www.gov.il/he/departments/dynamiccollectors/parties-db?skip=0&Name=%D7%9C%D7%9E%D7%A2%D7%9F%20%D7%90%D7%97",
+      "publisher": "Ministry of Justice – Registrar of Parties",
+      "kind": "official",
+      "accessed": "2026-11-16",
+      "retainedArtifact": "data/raw/collector-r7/registrar-599002110.reviewed.json",
+      "retrieval": {
+        "status": 200,
+        "sha256": "9d7cd2be71f1b99e959868a678f6a62a7684f0c7b9afb7e25a3688c8a1cdfb46"
+      },
+      "note": "Filtered live result confirms legal name, number and year only.",
+      "support": "Live Registrar result confirms legal party name, registration number 599002110 and registration year 2026; no exact date or ancestry."
     }
   },
   "edges": [
@@ -5638,15 +5651,16 @@
       "sources": [
         "k26",
         "proposal",
-        "registrar-2026-11-08"
+        "registrar-2026-11-08",
+        "collector-r7-registrar-599002110"
       ],
       "evidence": {
         "status": "unresolved",
-        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted. Live Registrar capture confirms name למען אחיי מפלגת כלל ישראל, number 599002110 and registration year 2026; no exact date or succession established."
       },
       "certainty": "unknown",
-      "summaryEn": "The submitting party is named in the CEC filing; its reported registration number still needs the live Registrar record.",
-      "summaryHe": "המפלגה שהגישה את הרשימה מופיעה במסמכי ועדת הבחירות; מספר הרישום שפרסמה עדיין דורש אימות במאגר העדכני.",
+      "summaryEn": "The live Registrar confirms למען אחיי מפלגת כלל ישראל, number 599002110, registered in 2026. Its exact registration date and organisational ancestry remain unverified.",
+      "summaryHe": "במאגר רשם המפלגות מופיעה למען אחיי מפלגת כלל ישראל, מספר 599002110, שנרשמה בשנת 2026. תאריך הרישום המדויק וההיסטוריה הארגונית עדיין אינם מאומתים.",
       "registerCheckedAt": "2026-11-16"
     },
     {

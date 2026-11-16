@@ -112,7 +112,14 @@
       "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/law/BasicLawGovt.html",
       "publisher": "ועדת הבחירות המרכזית — חוק יסוד: הממשלה, סעיפים 9–11",
       "kind": "official",
-      "accessed": "2026-11-06"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "18304e194b75a94e7e48db8356b3323edc642c2ee52b1168f8ad1e1e35518961",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:45:06.989Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j225.html.gz"
     },
     "idi-end-term": {
       "url": "https://www.idi.org.il/parliaments/3467/8203",

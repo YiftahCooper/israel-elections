@@ -1,11 +1,11 @@
 {
   "schemaVersion": 3,
-  "total": 12488,
+  "total": 12543,
   "counts": {
-    "unknown": 7355,
+    "unknown": 7360,
     "missing-field": 283,
     "conflict": 20,
-    "single-source": 2970,
+    "single-source": 3020,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1172,
@@ -15,7 +15,7 @@
   "countsByStatus": {
     "inferred-not-verified": 1033,
     "needs-current-status-review": 318,
-    "open": 11137
+    "open": 11192
   },
   "countsByImportance": {
     "high": {
@@ -27,12 +27,12 @@
       "unknown": 244
     },
     "medium": {
-      "total": 4557,
-      "confirmed": 1002,
-      "probable": 331,
+      "total": 4612,
+      "confirmed": 1050,
+      "probable": 332,
       "provisional": 605,
       "disputed": 9,
-      "unknown": 2610
+      "unknown": 2616
     },
     "low": {
       "total": 7066,
@@ -540,7 +540,7 @@
     },
     {
       "election": "k26",
-      "total": 563,
+      "total": 564,
       "highOpen": 2,
       "mediumOpen": 128,
       "low": 365,
@@ -548,7 +548,7 @@
         "unknown": 273,
         "missing-field": 0,
         "conflict": 0,
-        "single-source": 142,
+        "single-source": 143,
         "low-confidence": 6,
         "release-hold": 0,
         "inferred": 102,
@@ -558,15 +558,15 @@
     },
     {
       "election": "cross-election",
-      "total": 1488,
+      "total": 1542,
       "highOpen": 3,
-      "mediumOpen": 275,
+      "mediumOpen": 282,
       "low": 1085,
       "counts": {
-        "unknown": 1066,
+        "unknown": 1071,
         "missing-field": 35,
         "conflict": 5,
-        "single-source": 320,
+        "single-source": 369,
         "low-confidence": 0,
         "release-hold": 0,
         "inferred": 8,
@@ -766,6 +766,8 @@
     {"election":"cross-election","area":"data/meta/government-support-evidence.json government36Deputies","count":4,"certainty":{"unknown":4}},
     {"election":"cross-election","area":"data/research/government-rotation-agreements.json agreements","count":4,"certainty":{"unknown":4}},
     {"election":"cross-election","area":"data/meta/parties.json parties","count":3,"certainty":{"provisional":3}},
+    {"election":"cross-election","area":"data/research/round7/collector-checks.json claims","count":3,"certainty":{"probable":1,"unknown":2}},
+    {"election":"cross-election","area":"data/research/round7/faction-names.json records","count":3,"certainty":{"unknown":3}},
     {"election":"cross-election","area":"data/research/round7/README.md","count":3,"certainty":{"provisional":2,"unknown":1}},
     {"election":"cross-election","area":"data/meta/README.md","count":2,"certainty":{"unknown":2}},
     {"election":"cross-election","area":"data/raw/map-outlines/cbs-statistical-areas-2022-25m-a.json content","count":2,"certainty":{"unknown":2}},
@@ -775,6 +777,7 @@
     {"election":"cross-election","area":"data/meta/candidate-notes.json notes","count":1,"certainty":{"unknown":1}},
     {"election":"cross-election","area":"data/meta/election-context.json ballotIndependence","count":1,"certainty":{"provisional":1}},
     {"election":"cross-election","area":"data/meta/joint-facts-name-aliases.json aliases","count":1,"certainty":{"provisional":1}},
+    {"election":"cross-election","area":"data/raw/collector-r7/registrar-599002110.reviewed.json registrationDate","count":1,"certainty":{"unknown":1}},
     {"election":"cross-election","area":"data/raw/demographics/cbs-2003-normalized.json form","count":1,"certainty":{"unknown":1}},
     {"election":"cross-election","area":"data/raw/demographics/cbs-2003-normalized.json religion","count":1,"certainty":{"unknown":1}},
     {"election":"cross-election","area":"data/raw/demographics/cbs-2006-normalized.json form","count":1,"certainty":{"unknown":1}},

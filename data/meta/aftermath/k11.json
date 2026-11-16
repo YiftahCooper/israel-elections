@@ -97,7 +97,14 @@
       "url": "https://main.knesset.gov.il/mk/government/documents/gov22.pdf",
       "publisher": "Knesset, 20 October 1986 investiture protocol",
       "kind": "official",
-      "accessed": "2026-11-06"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "6f0e6778adca2f2283bacbdf031fdafd627f12b7a466b7307eb9a0b928a078fb",
+        "retrievedAt": "2026-11-16T17:08:25.801Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j16-01-gov22.pdf"
     },
     "intifada1987": {
       "url": "https://www.un.org/unispal/document/auto-insert-209471/",
@@ -109,8 +116,15 @@
       "url": "https://www.gov.il/en/pages/timeline-of-events-half-a-century-of-independence",
       "publisher": "Israel Ministry of Foreign Affairs, Timeline of Events: Half a Century of Independence, 1948–1998",
       "kind": "official",
-      "accessed": "2026-11-05",
-      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
+      "accessed": "2026-11-16",
+      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "4d0226ade1392c9b098301ea198a02317f070a2d1cf0c5564599e3df1b6c0310",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:46:26.384Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j230.html.gz"
     },
     "idi-review-1988": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/elections/1988/",

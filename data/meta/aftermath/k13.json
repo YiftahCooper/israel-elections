@@ -91,8 +91,15 @@
       "url": "https://www.gov.il/en/pages/timeline-of-events-half-a-century-of-independence",
       "publisher": "Israel Ministry of Foreign Affairs, Timeline of Events: Half a Century of Independence, 1948–1998",
       "kind": "official",
-      "accessed": "2026-11-05",
-      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
+      "accessed": "2026-11-16",
+      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "4d0226ade1392c9b098301ea198a02317f070a2d1cf0c5564599e3df1b6c0310",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:46:26.384Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j230.html.gz"
     },
     "knesset-political-violence": {
       "url": "https://fs.knesset.gov.il/globaldocs/MMM/469ac3ed-8e32-e811-80de-00155d0a0235/2_469ac3ed-8e32-e811-80de-00155d0a0235_11_7679.pdf",
@@ -110,7 +117,14 @@
       "url": "https://main.knesset.gov.il/mk/government/documents/cagreement25.pdf",
       "publisher": "הכנסת, הסכמים קואליציוניים לממשלה ה־25",
       "kind": "official",
-      "accessed": "2026-11-06"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "141af32c7d0351daf21c7a39df5a148fa38ee9868166ac4d4da3a688be61bc71",
+        "retrievedAt": "2026-11-16T16:47:11.751Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j8-01-cagreement25.pdf"
     },
     "gov25-odata": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2025&$format=json",

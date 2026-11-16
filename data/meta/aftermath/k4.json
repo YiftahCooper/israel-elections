@@ -19,7 +19,14 @@
       "url": "https://main.knesset.gov.il/mk/government/documents/gov9.pdf",
       "publisher": "Knesset, government 9 presentation (extract from plenum record)",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "60793bab5cb2011109715b62fe8bbae47cde57d0dff1f29d894000380ff91a61",
+        "retrievedAt": "2026-11-16T17:09:10.649Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j23-01-gov9.pdf"
     },
     "recommendations-1": {
       "url": "https://www.jta.org/archive/israel-president-appoints-ben-gurion-to-form-a-new-government",
@@ -32,7 +39,14 @@
       "url": "https://main.knesset.gov.il/mk/government/documents/gov9.pdf",
       "publisher": "Knesset (Divrei HaKnesset, 16 Dec 1959, government pages)",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "60793bab5cb2011109715b62fe8bbae47cde57d0dff1f29d894000380ff91a61",
+        "retrievedAt": "2026-11-16T17:09:10.649Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j23-01-gov9.pdf"
     },
     "coalition-1": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%209&$format=json",

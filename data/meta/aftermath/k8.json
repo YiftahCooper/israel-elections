@@ -73,8 +73,15 @@
       "url": "https://www.gov.il/en/pages/timeline-of-events-half-a-century-of-independence",
       "publisher": "Israel Ministry of Foreign Affairs, Timeline of Events: Half a Century of Independence, 1948–1998",
       "kind": "official",
-      "accessed": "2026-11-05",
-      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
+      "accessed": "2026-11-16",
+      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "4d0226ade1392c9b098301ea198a02317f070a2d1cf0c5564599e3df1b6c0310",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:46:26.384Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j230.html.gz"
     },
     "mod-1972-1980": {
       "url": "https://archives.mod.gov.il/sites/English/theTimeAxis/Pages/1972-%E2%80%93-1980.aspx",

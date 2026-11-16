@@ -35,7 +35,14 @@
       "publisher": "Prime Minister's Office (gov.il)",
       "publisherHe": "משרד ראש הממשלה",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "34175c02fc2f6182cb74ea79527bf6a1eeca3342dc69f54798c545bf57e74620",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:46:52.797Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j232.html.gz"
     },
     "loc-glm-2022-07-06": {
       "url": "https://www.loc.gov/item/global-legal-monitor/2022-07-06/israel-parliament-dissolves-itself-approves-national-election-and-financing-adjustments/",

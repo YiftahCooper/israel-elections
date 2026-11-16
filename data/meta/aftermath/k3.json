@@ -19,7 +19,14 @@
       "url": "https://main.knesset.gov.il/mk/government/documents/gov7.pdf",
       "publisher": "Knesset, government 7 presentation (extract from plenum record)",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "58032bd99fb17d1a665b6b2cb13bdc19f32022338cf3518842e712ee15c3bb87",
+        "retrievedAt": "2026-11-16T17:08:58.049Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j21-01-gov7.pdf"
     },
     "plenum-gov8": {
       "url": "https://fs.knesset.gov.il/3/Plenum/3_ptm_251466.pdf",
@@ -31,7 +38,14 @@
       "url": "https://main.knesset.gov.il/mk/government/documents/gov8.pdf",
       "publisher": "Knesset, government 8 presentation (extract from plenum record)",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-16",
+      "retrieval": {
+        "status": 200,
+        "sha256": "2c3bf1cb350d72d9a3bf9c780b669fb9334574a99eb2ee500b2150c2de6580cf",
+        "retrievedAt": "2026-11-16T17:09:04.486Z",
+        "method": "owner-browser-page-collector"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j22-01-gov8.pdf"
     },
     "recommendations-jta": {
       "url": "https://www.jta.org/archive/ben-zvi-ends-talks-on-cabinet-formation-will-summon-ben-gurion",
@@ -80,8 +94,15 @@
       "url": "https://www.gov.il/en/pages/timeline-of-events-half-a-century-of-independence",
       "publisher": "Israel Ministry of Foreign Affairs, Timeline of Events: Half a Century of Independence, 1948–1998",
       "kind": "official",
-      "accessed": "2026-11-05",
-      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
+      "accessed": "2026-11-16",
+      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "4d0226ade1392c9b098301ea198a02317f070a2d1cf0c5564599e3df1b6c0310",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-16T17:46:26.384Z"
+      },
+      "retainedArtifact": "data/raw/collector-r7/j230.html.gz"
     },
     "un-yearbook-1956": {
       "url": "https://www.un.org/unispal/document/auto-insert-197214/",
