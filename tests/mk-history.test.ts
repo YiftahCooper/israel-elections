@@ -141,10 +141,12 @@ describe('the owner’s examples', () => {
     expect(v.rows[5].terms[0].segments.map((s) => s.en)).toEqual(['Rafi', 'MK David Ben-Gurion']);
     expect(servedText(v.daysServed, 'en')).toBe('21 years 3 months');
   });
-  it('Israel Eichler: the recorded Norwegian-law report, then leaving, without an invented reason', () => {
+  it('Israel Eichler: distinguishes the agreement, official appointment, and later membership exit', () => {
     const k25 = mkView(rt, EICHLER)!.rows.find((r) => r.k === 25)!;
     // his last faction row ends on 20 Jan 2026, the membership on the 21st: that day is flagged, not filled in
-    expect(k25.events.map((e) => e.kind)).toEqual(['recorded', 'unrecorded', 'left']);
+    expect(k25.events.map((e) => e.kind)).toEqual(['recorded', 'recorded', 'unrecorded', 'left']);
+    expect(k25.events[1].text!.en).toMatch(/deputy minister in the Communications/);
+    expect(k25.events[1].date).toBe('2026-01-19');
     expect(k25.events[0].text!.en).toMatch(/Norwegian-law/);
     expect(k25.events[0].evidence).toBe('Contemporary report');
   });

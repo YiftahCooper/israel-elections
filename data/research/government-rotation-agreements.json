@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-16",
+  "coverage": "partial",
+  "scope": "Coalition agreements for the premiership; electoral-list leadership deals are excluded. Three established governing arrangements, not a proof no other attempted agreements existed.",
+  "agreements": [
+    {
+      "id": "peres-shamir-1984",
+      "governmentNumbers": [
+        21,
+        22
+      ],
+      "firstPrimeMinister": "Shimon Peres",
+      "secondPrimeMinister": "Yitzhak Shamir",
+      "agreedDate": null,
+      "agreedDateNote": "Agreement established by government formation on 13 September 1984; exact signature day not authenticated.",
+      "plannedRotationDate": null,
+      "plannedIntervalMonths": 25,
+      "plannedDateNote": "Contemporary IPU chronology states 25 months, not an exact calendar date.",
+      "actualRotationDate": "1986-10-20",
+      "outcome": "occurred",
+      "legalMechanism": "New government formed; not the statutory alternate-premiership office introduced in 2020.",
+      "sources": [
+        {
+          "url": "https://data.ipu.org/election-summary/PDF/ISRAEL_1984_E.PDF",
+          "publisher": "Inter-Parliamentary Union",
+          "locator": "Printed p.62, final paragraph of General Considerations",
+          "accessed": "2026-11-16",
+          "inspection": "opened",
+          "supportingNote": "Peres first, Shamir second after 25 months."
+        },
+        {
+          "path": "data/meta/aftermath/k11.json",
+          "locator": "government.changes: successor government 22, 20 October 1986",
+          "inspection": "retained-record",
+          "supportingNote": "Actual succession date retained in the government record; not a fresh reading of the original agreement."
+        }
+      ]
+    },
+    {
+      "id": "netanyahu-gantz-2020",
+      "governmentNumbers": [
+        35
+      ],
+      "firstPrimeMinister": "Benjamin Netanyahu",
+      "secondPrimeMinister": "Benny Gantz",
+      "agreedDate": "2020-04-20",
+      "plannedRotationDate": "2021-11-17",
+      "actualRotationDate": null,
+      "outcome": "did-not-occur",
+      "legalMechanism": "Statutory rotation government",
+      "sources": [
+        {
+          "url": "https://m.knesset.gov.il/mk/government/Documents/CA35-Likud-YT-130520.pdf",
+          "publisher": "Knesset, deposited coalition agreement",
+          "locator": "Opening recital dates principal Likud–Blue and White agreement to 20 April 2020",
+          "inspection": "search-snippet-only",
+          "supportingNote": "Signature date remains provisional pending full original agreement."
+        },
+        {
+          "url": "https://www.timesofisrael.com/a-year-before-gantz-is-set-to-succeed-netanyahu-both-express-doubt-itll-happen/",
+          "publisher": "The Times of Israel",
+          "date": "2020-11-17",
+          "accessed": "2026-11-16",
+          "inspection": "opened",
+          "locator": "Paragraph beginning According to the coalition deal",
+          "supportingNote": "Scheduled handover on 17 November 2021."
+        },
+        {
+          "path": "data/meta/aftermath/k23.json",
+          "locator": "government.endDate: 13 June 2021",
+          "inspection": "retained-record",
+          "supportingNote": "Government ended before scheduled handover; Gantz did not serve as PM."
+        }
+      ],
+      "agreedDateCertainty": "provisional",
+      "plannedRotationDateCertainty": "provisional"
+    },
+    {
+      "id": "bennett-lapid-2021",
+      "governmentNumbers": [
+        36
+      ],
+      "firstPrimeMinister": "Naftali Bennett",
+      "secondPrimeMinister": "Yair Lapid",
+      "agreedDate": null,
+      "agreementNotifiedDate": "2021-06-02",
+      "agreedDateNote": "2 June notification of formation is distinct from 11 June completion/deposit of agreements; exact signature day requires agreement PDF.",
+      "plannedRotationDate": "2023-08-27",
+      "actualRotationDate": "2022-07-01",
+      "outcome": "occurred-early",
+      "legalMechanism": "Statutory rotation triggered by dissolution provisions",
+      "sources": [
+        {
+          "url": "https://www.mako.co.il/news-politics/2021_q2/Article-f5711f726ecc971027.htm",
+          "publisher": "N12",
+          "date": "2021-06-02",
+          "accessed": "2026-11-16",
+          "inspection": "opened",
+          "locator": "Lead and paragraph giving the planned date",
+          "supportingNote": "Reported planned handover: 27 August 2023."
+        },
+        {
+          "url": "https://www.idi.org.il/articles/39110",
+          "publisher": "Israel Democracy Institute / Assaf Shapira",
+          "date": "2022-06-30",
+          "accessed": "2026-11-16",
+          "inspection": "opened",
+          "locator": "First substantive paragraph",
+          "supportingNote": "Dissolution advances rotation to 1 July 2022 instead of August 2023."
+        }
+      ],
+      "plannedRotationDateCertainty": "provisional"
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 # Data gaps register
 
-11531 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
+11530 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
 
-- High importance: 866 (confirmed 413, probable 33, provisional 163, disputed 13, unknown 244).
+- High importance: 865 (confirmed 412, probable 33, provisional 163, disputed 13, unknown 244).
 - Medium importance: 3616 (confirmed 584, probable 244, provisional 545, disputed 7, unknown 2236).
 - Low importance: 7049 (confirmed 572, provisional 802, unknown 5675).
 
@@ -317,9 +317,9 @@ Every claim in these families, not only gaps. Derived from each claim’s own so
 
 ## Counts
 
-By kind: unknown: 6979; missing-field: 283; conflict: 18; single-source: 2491; low-confidence: 101; release-hold: 0; inferred: 1167; pending: 389; unconfirmed: 103.
+By kind: unknown: 6979; missing-field: 283; conflict: 18; single-source: 2489; low-confidence: 101; release-hold: 0; inferred: 1167; pending: 389; unconfirmed: 104.
 
-By status: inferred-not-verified: 1032; needs-current-status-review: 313; open: 10186.
+By status: inferred-not-verified: 1032; needs-current-status-review: 313; open: 10185.
 
 | Election | High open | Medium open | Low | Total |
 | --- | ---: | ---: | ---: | ---: |
@@ -346,7 +346,7 @@ By status: inferred-not-verified: 1032; needs-current-status-review: 313; open: 
 | k21 | 2 | 116 | 339 | 510 |
 | k22 | 5 | 87 | 352 | 484 |
 | k23 | 4 | 75 | 269 | 395 |
-| k24 | 12 | 91 | 303 | 441 |
+| k24 | 12 | 91 | 303 | 440 |
 | k25 | 8 | 259 | 393 | 705 |
 | k26 | 2 | 129 | 365 | 564 |
 | cross-election | 3 | 247 | 1069 | 1443 |

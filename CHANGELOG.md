@@ -1,5 +1,9 @@
 # Changelog
 
+## 16 November 2026 — government research
+
+- Government 36 counts 61 coalition members, excluding Chikli; Eichler’s January 2026 appointment has its own timeline event, Rabin and Zeevi have sourced death reasons, and rotation agreements retain planned and actual handovers separately.
+
 ## 13 November 2026 — audit fixes
 
 - Localities (13 Nov, audit): one result under “Find a locality” reads “1 match” (Hebrew “התאמה אחת”), and “the first 30 are shown” appears only when more than 30 were found.
