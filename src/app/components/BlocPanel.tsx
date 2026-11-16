@@ -105,7 +105,8 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
   }, [picked, paletteFor]);
 
   const setBlocs = (blocs: Scenario['blocs']) => dispatch({ type: 'setBlocs', blocs });
-  const rename = (id: string, v: string) => setBlocs(s.blocs.map((b) => (b.id === id ? (lang === 'he' ? { ...b, nameHe: v } : { ...b, nameEn: v }) : b)));
+  // a typed name is the bloc's name in both languages (owner, 16 Nov 2026): the other language has no translation of it
+  const rename = (id: string, v: string) => setBlocs(s.blocs.map((b) => (b.id === id ? { ...b, nameHe: v, nameEn: v } : b)));
   const recolour = (id: string, c: string) => setBlocs(s.blocs.map((b) => (b.id === id ? { ...b, color: c } : b)));
   const remove = (id: string) => setBlocs(s.blocs.filter((b) => b.id !== id));
   const addBloc = () => {

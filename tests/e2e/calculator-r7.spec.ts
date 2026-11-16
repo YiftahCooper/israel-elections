@@ -38,3 +38,15 @@ test('list pickers show each list’s logo or colour dot', async ({ page }) => {
   expect(await options.count()).toBeGreaterThan(5);
   expect(await options.locator('.list-mark').count()).toBe(await options.count());
 });
+
+test('a bloc name typed in one language is its name in both', async ({ page }) => {
+  await start(page);
+  await page.locator('.blocs').getByRole('button', { name: 'Edit blocs', exact: true }).click();
+  const input = page.getByRole('textbox', { name: 'Bloc name' }).first();
+  await input.fill('My bloc'); await input.press('Enter');
+  await page.keyboard.press('Escape');
+  await expect(page.locator('.blocs')).toContainText('My bloc');
+  await page.getByRole('button', { name: 'עברית' }).click();
+  await expect(page.locator('.blocs')).toContainText('My bloc');
+  await expect(page.locator('.board-choices .choice-trigger')).toContainText('גושים מותאמים');
+});
