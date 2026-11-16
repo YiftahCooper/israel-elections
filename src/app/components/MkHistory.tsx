@@ -259,6 +259,8 @@ function TermBar({ r, v }: { r: MkRow; v: MkView }) {
   const [ref, px] = useWidth();
   if (!r.opening) return <span className="tiny muted">{L('This Knesset has not yet opened', 'הכנסת טרם נפתחה')}</span>;
   // opened, but its member records are not yet in the data (the 26th, from 10 Nov 2026): the date, and no bar
+  // a candidate who did not win a seat was not in it, records or not
+  if (!r.end && r.run && !['elected', 'first', 'later'].includes(r.run.outcome)) return <span className="tiny muted">{L(`Not in this Knesset (from ${monthYear(r.opening, 'en')})`, `לא ${g(v.female, 'כיהן', 'כיהנה')} בכנסת זו (מ־${monthYear(r.opening, 'he')})`)}</span>;
   if (!r.end) return <span className="tiny muted mk-pending">{L(`Opened on ${formatDate(r.opening, 'en')}; time in it not yet in our records`, `נפתחה ב־${formatDate(r.opening, 'he')}; רישומי הכהונה בה טרם נאספו`)}</span>;
   const len = Math.max(1, daysBetween(r.opening, r.end));
   // one scale for every row (the longest Knesset is the full width), so a short Knesset draws a short bar

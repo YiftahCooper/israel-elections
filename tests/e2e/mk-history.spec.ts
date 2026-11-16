@@ -114,8 +114,9 @@ test('Silman: a key explains the rows; the 26th Knesset has opened; her 2022 res
   await key.getByRole('button', { name: 'How to read the rows' }).click();
   const rows = card(page).locator('.mk-rows > li');
   await expect(rows.filter({ hasText: '24th Knesset' })).toContainText('Membership ended · Resigned');
+  // she was not elected in 2026: not in the 26th Knesset, which opened in November
   const k26 = rows.filter({ hasText: '26th Knesset' });
-  await expect(k26).toContainText('Opened on 10 Nov 2026');
+  await expect(k26).toContainText('Not in this Knesset (from Nov 2026)');
   await expect(k26).not.toContainText('not yet opened');
 });
 
@@ -129,4 +130,12 @@ test('a run tied by research shows the sources that tie it', async ({ page }) =>
   const pop = page.getByRole('link', { name: /idi|Israel Democracy/i });
   await expect(pop.first()).toBeVisible();
   await expect(page.getByText('Hebrew Wikipedia (a secondary source)').first()).toBeVisible();
+});
+
+test('an MK elected in 2026: the 26th Knesset opened on 10 Nov 2026, the time in it not yet in the records', async ({ page }) => {
+  await start(page, { k: 'k26' });
+  await hoverSeat(page, 'Likud', 1);
+  await page.locator('.tip').getByRole('button', { name: /history$/ }).click();
+  const k26 = card(page).locator('.mk-rows > li').filter({ hasText: '26th Knesset' });
+  await expect(k26.locator('.mk-pending')).toHaveText('Opened on 10 Nov 2026; time in it not yet in our records');
 });
