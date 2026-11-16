@@ -20,10 +20,10 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     await expect(badge).toHaveAttribute('title', lang === 'en' ? 'Ballot letters ט (no logo)' : 'אותיות הפתק ט (ללא סמל)');
     await badge.click();
     const panel = page.locator('.side-panel');
-    // Constituent badges must never borrow the parent list’s letters.
-    const neutral = panel.locator('.party-row .slip:not(.logo)');
-    await expect(neutral.first()).toHaveText('—');
-    await expect(neutral.first()).toHaveAttribute('title', /no logo or separate ballot letters|אין סמל או אותיות פתק נפרדות/);
+    // Constituent badges must never borrow the parent list’s letters: a party with no logo shows its colour dot.
+    await expect(panel.locator('.party-row .slip:not(.logo):not(.dot)')).toHaveCount(0);
+    await expect(panel.locator('.party-row .slip.dot .list-mark-dot').first()).toBeVisible();
+    await expect(panel.locator('.party-row .slip.dot').first()).toHaveAttribute('title', /no logo or separate ballot letters|אין סמל או אותיות פתק נפרדות/);
     const hebrewNames = panel.locator('.cands bdi[lang="he"][dir="rtl"]');
     await expect(hebrewNames.first()).toBeAttached();
     if (lang === 'en') {
