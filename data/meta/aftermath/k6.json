@@ -151,6 +151,22 @@
       "kind": "academic",
       "accessed": "2026-11-16",
       "evidenceFamily": "author:galnoor"
+    },
+    "davar-1965-11-26-p2": {
+      "url": "https://www.nli.org.il/en/newspapers/dav/1965/11/26/01/page/2",
+      "publisher": "Davar, 26 November 1965, p. 2",
+      "publisherHe": "דבר, 26 בנובמבר 1965, עמ׳ 2",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:davar",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "9017b42ca1ac0e9392a389aec6009a56bfa3baae2dd294f12b80cff96590e191",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T06:54:10.104Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1774-www.nli.org.il/page.html"
     }
   },
   "results": {
@@ -236,17 +252,42 @@
         {
           "letters": "ו",
           "seats": 3,
-          "status": "unknown"
+          "status": "other",
+          "cites": [
+            {
+              "source": "davar-1965-11-26-p2",
+              "quote": "",
+              "ocr": "הציעה לנשיא להטיל את הרכנת הממשלה על מועמד ;שיוכל לנצע. תכניה, אשר תחולל י . תמורה במדיניותה הרשמית של ישראל"
+            }
+          ],
+          "noteEn": "Proposed a candidate who would change Israel’s official policy; named no one.",
+          "noteHe": "הציעה מועמד שיחולל תמורה במדיניותה הרשמית של ישראל, בלי לנקוב בשם."
         },
         {
           "letters": "רא",
           "seats": 2,
-          "status": "unknown"
+          "status": "recommended",
+          "nominee": "eshkol",
+          "cites": [
+            {
+              "source": "davar-1965-11-26-p2",
+              "quote": "",
+              "ocr": "שהציעו להטיל את הרכנת הממשלה על לוי אשכול."
+            }
+          ]
         },
         {
           "letters": "ד",
           "seats": 2,
-          "status": "unknown"
+          "status": "recommended",
+          "nominee": "eshkol",
+          "cites": [
+            {
+              "source": "davar-1965-11-26-p2",
+              "quote": "",
+              "ocr": "עט הסיעות, שהציעו להטיל את הרכבת הממשלה על לוי אשנול נמנתה גט סיעת"
+            }
+          ]
         },
         {
           "letters": "יא",
@@ -265,8 +306,9 @@
         }
       ],
       "totals": {
-        "unknown": 84,
-        "eshkol": 36
+        "eshkol": 40,
+        "other": 3,
+        "unknown": 77
       },
       "cites": [
         {
@@ -280,9 +322,30 @@
       ],
       "notes": [
         "Conditions set in the consultations are not counted as recommendations. “Unknown” does not mean that no recommendation was made.",
-        "Month precision: 24 November JTA bulletin says consultations will start tomorrow; title says today. 26 November bulletin reports recommendations today. Bulletin and meeting dates are not assumed identical; exact start/end days remain unestablished."
+        "Month precision: 24 November JTA bulletin says consultations will start tomorrow; title says today. 26 November bulletin reports recommendations today. Bulletin and meeting dates are not assumed identical; exact start/end days remain unestablished.",
+        "Davar (26 November 1965, p. 2) reports Progress and Development and Poalei Agudat Yisrael proposing Eshkol, and Rakah asking for a candidate who would change official policy, naming no one."
       ],
-      "endDate": "1965-11"
+      "endDate": "1965-11",
+      "pagesRead": [
+        {
+          "paper": "Davar",
+          "date": "1965-11-26",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1965/11/26/01/page/1"
+        },
+        {
+          "paper": "Davar",
+          "date": "1965-11-26",
+          "page": 2,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1965/11/26/01/page/2"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1965-11-26",
+          "page": 2,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1965/11/26/01/page/2"
+        }
+      ]
     }
   ],
   "formation": {

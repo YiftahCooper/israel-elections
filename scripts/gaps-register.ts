@@ -263,6 +263,20 @@ export function placementCensus(root = ROOT) {
   }
   return out;
 }
+/** Newspaper pages and articles already read for each recommendation round (`pagesRead`, `searchNote` in
+ *  data/meta/aftermath/kN.json), with the lists still not known after reading them, so nobody reads them again. */
+export function recommendationSearches(root = ROOT) {
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const day = (iso: string) => { const [y, m, d] = iso.split('-').map(Number); return d ? `${d} ${months[m - 1]} ${y}` : m ? `${months[m - 1]} ${y}` : String(y); };
+  const out: { election: string; round: string; pages: string[]; stillUnknown: string[]; note?: string }[] = [];
+  for (const file of filesUnder(root, 'data/meta/aftermath').filter(f => /\/k\d+\.json$/.test(f))) {
+    const d = read(root, file);
+    for (const r of d.recommendationRounds ?? []) if (r.pagesRead?.length || r.searchNote)
+      out.push({ election: d.electionId, round: r.id, pages: (r.pagesRead ?? []).map((p: Obj) => `${p.paper}, ${day(p.date)}${p.page ? `, p. ${p.page}` : ''}`),
+        stillUnknown: (r.entries ?? []).filter((e: Obj) => e.status === 'unknown').map((e: Obj) => e.letters), ...(r.searchNote ? { note: r.searchNote } : {}) });
+  }
+  return out.sort((a, b) => Number(a.election.slice(1)) - Number(b.election.slice(1)) || a.round.localeCompare(b.round, 'en'));
+}
 export function registerInputs(root = ROOT): string[] {
   return [...filesUnder(root, 'data/raw'), ...filesUnder(root, 'data/meta'), ...filesUnder(root, 'data/research').filter(f => !MEMBER_CHANGES.test(f)), ...filesUnder(root, 'docs/decisions'), ...filesUnder(root, 'docs/research/data-audit'), 'src/data/schema.ts', 'public/data/elections.json', ...filesUnder(root, 'public/data').filter(f => /\/k\d+\.json$/.test(f))].sort();
 }
@@ -300,7 +314,7 @@ export function generateFullRegister(root = ROOT) {
   }
   for (const file of filesUnder(root, 'data/research/knesset-member-changes').filter(f => MEMBER_CHANGES.test(f))) gaps.push(...memberChangeGaps(file, read(root, file)));
   gaps.sort((a, b) => (Number(a.election.slice(1)) || 999) - (Number(b.election.slice(1)) || 999) || a.file.localeCompare(b.file, 'en') || a.item.localeCompare(b.item, 'en') || a.kind.localeCompare(b.kind, 'en'));
-  return { schemaVersion: 1, counts: Object.fromEntries(kinds.map(k => [k, gaps.filter(g => g.kind === k).length])), census: certaintyCensus(root), placements: placementCensus(root), gaps };
+  return { schemaVersion: 1, counts: Object.fromEntries(kinds.map(k => [k, gaps.filter(g => g.kind === k).length])), census: certaintyCensus(root), placements: placementCensus(root), searches: recommendationSearches(root), gaps };
 }
 type FullRegister = ReturnType<typeof generateFullRegister>;
 const electionKey = (id: string) => /^k\d+$/.test(id) ? `k${Number(id.slice(1))}` : id;
@@ -372,7 +386,7 @@ export function summarizeRegister(full: FullRegister) {
       const gaps = full.gaps.filter(g => electionKey(g.election) === election);
       return { election, total: gaps.length, highOpen: gaps.filter(g => g.importance === 'high' && isOpen(g)).length, mediumOpen: gaps.filter(g => g.importance === 'medium' && isOpen(g)).length, low: gaps.filter(g => g.importance === 'low').length, counts: tally(kinds, gaps, g => g.kind) };
     }),
-    high, medium, low,
+    high, medium, low, searches: full.searches ?? [],
   };
 }
 export function generateRegister(root = ROOT) { return summarizeRegister(generateFullRegister(root)); }
@@ -407,6 +421,9 @@ export function renderMarkdown(register: Summary): string {
   lines.push('', '## Low importance: counts only', '',
     'Display metadata, candidate trivia, raw-dump fields and provenance housekeeping.', '',
     register.low.map(r => `${escapeCell(r.area)} ${r.count}${r.open !== r.count ? ` (${r.open} open)` : ''}`).join('; ') + '.', '',
+    '## Recommendation searches already done', '',
+    'Newspaper pages and articles already read for the recommendations to the President, with the lists still not known after reading them. Read other pages, or the President’s consultation record, before reading these again. Quotes taken from these pages are the archive’s computer-read text, not yet checked against the printed page.', '',
+    ...register.searches.map(s => `- **${s.election} ${s.round}**: ${escapeCell(s.pages.join('; ') || 'none')}. Still not known: ${s.stillUnknown.length ? s.stillUnknown.join(', ') : 'none'}.${s.note ? ` ${escapeCell(s.note)}` : ''}`), '',
     '## Certainty of recorded claims', '',
     'Every claim in these families, not only gaps. Derived from each claim’s own sources; explicit values never exceed that ceiling (validated by `npm run data:build`).', '',
     `| Claims | ${CERTAINTIES.join(' | ')} | Total |`, `| --- | ${CERTAINTIES.map(() => '---:').join(' | ')} | ---: |`,
@@ -437,9 +454,9 @@ export function renderFullMarkdown(register: FullRegister): string {
 }
 /** Keep JSON readable without thousands of repeated property lines. */
 export function serializeSummary(summary: Summary): string {
-  const { high, medium, low, ...totals } = summary;
+  const { high, medium, low, searches, ...totals } = summary;
   const rows = (name: string, items: unknown[]) => `  "${name}": [\n` + items.map(item => '    ' + JSON.stringify(item)).join(',\n') + '\n  ]';
-  return JSON.stringify(totals, null, 2).slice(0, -2) + ',\n' + [rows('high', high), rows('medium', medium), rows('low', low)].join(',\n') + '\n}\n';
+  return JSON.stringify(totals, null, 2).slice(0, -2) + ',\n' + [rows('high', high), rows('medium', medium), rows('low', low), rows('searches', searches)].join(',\n') + '\n}\n';
 }
 export function writeRegister(root = ROOT, full = false) {
   const register = generateFullRegister(root);

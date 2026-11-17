@@ -178,11 +178,15 @@ describe('7 November policy pass on the real overlays', () => {
     const entry = (round: any, letters: string) => round.entries.find((e: any) => e.letters === letters);
     expect(entry(round12, 'עץ').status).toBe('none');
     expect(claimCertainty(entry(round12, 'עץ'), k12.sources)).toBe('probable');
-    // 17 Nov 2026: their only source was an outlet not used; what they told the President is not known
-    for (const l of ['ו', 'פ', 'ע']) expect([entry(round12, l).status, entry(round12, l).nominee, claimCertainty(entry(round12, l), k12.sources)]).toEqual(['unknown', undefined, 'unknown']);
-    expect(round12.totals).toEqual({ shamir: 63, peres: 49, none: 2, unknown: 6 });
-    const round13 = load('k13').recommendationRounds[0];
-    for (const l of ['ו', 'ע']) expect([entry(round13, l).status, entry(round13, l).nominee]).toEqual(['unknown', undefined]);
+    // 17 Nov 2026: an outlet not used was their only source until two papers of the time (Hadashot, Maariv) were read:
+    // Hadash and ADP named Peres (probable); PLP backed the Alignment without naming him (other)
+    for (const l of ['ו', 'ע']) expect([entry(round12, l).status, entry(round12, l).nominee, claimCertainty(entry(round12, l), k12.sources)]).toEqual(['recommended', 'peres', 'probable']);
+    expect([entry(round12, 'פ').status, entry(round12, 'פ').nominee, claimCertainty(entry(round12, 'פ'), k12.sources)]).toEqual(['other', undefined, 'probable']);
+    expect(round12.totals).toEqual({ shamir: 63, peres: 54, other: 1, none: 2 });
+    const k13 = load('k13'), round13 = k13.recommendationRounds[0];
+    // 1992: one paper (Hadashot) for each, with its conditions in the row note
+    for (const l of ['ו', 'ע']) expect([entry(round13, l).status, entry(round13, l).nominee, claimCertainty(entry(round13, l), k13.sources)]).toEqual(['recommended', 'rabin', 'provisional']);
+    for (const l of ['ו', 'ע']) expect(entry(round13, l).noteEn).toMatch(/condition|reservation/);
     expect(Object.values<number>(round12.totals).reduce((a, b) => a + b, 0)).toBe(120);
     const k1 = load('k1'), row = (l: string) => k1.government.coalition.find((r: any) => r.letters === l);
     expect([row('יד').role, row('יד').certainty]).toEqual(['member-without-ministries', 'probable']);

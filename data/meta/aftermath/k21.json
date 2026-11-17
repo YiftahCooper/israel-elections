@@ -175,13 +175,15 @@
           "letters": "ום",
           "seats": 6,
           "status": "none",
-          "noteEn": "Explicitly declined to recommend any candidate during the consultation; see the round’s direct reporting citations."
+          "noteEn": "Explicitly declined to recommend any candidate during the consultation; see the round’s direct reporting citations.",
+          "noteHe": "סירבה במפורש להמליץ על מועמד כלשהו בהתייעצות; ראו את הדיווחים מאותה תקופה בהערות הסבב."
         },
         {
           "letters": "דעם",
           "seats": 4,
           "status": "none",
-          "noteEn": "Explicitly declined to recommend any candidate during the consultation; see the round’s direct reporting citations."
+          "noteEn": "Explicitly declined to recommend any candidate during the consultation; see the round’s direct reporting citations.",
+          "noteHe": "סירבה במפורש להמליץ על מועמד כלשהו בהתייעצות; ראו את הדיווחים מאותה תקופה בהערות הסבב."
         }
       ],
       "totals": {

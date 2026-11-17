@@ -184,6 +184,70 @@
       "kind": "academic",
       "accessed": "2026-11-16",
       "evidenceFamily": "author:galnoor"
+    },
+    "davar-1961-09-06-p1": {
+      "url": "https://www.nli.org.il/en/newspapers/dav/1961/09/06/01/page/1",
+      "publisher": "Davar, 6 September 1961, p. 1",
+      "publisherHe": "דבר, 6 בספטמבר 1961, עמ׳ 1",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:davar",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "8673960fd2fcc1c59d80e1be5576b614693ffcf8e2fb77acd5cb8089235bc17f",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T06:52:06.064Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1765-www.nli.org.il/page.html"
+    },
+    "davar-1961-09-07-p1": {
+      "url": "https://www.nli.org.il/en/newspapers/dav/1961/09/07/01/page/1",
+      "publisher": "Davar, 7 September 1961, p. 1",
+      "publisherHe": "דבר, 7 בספטמבר 1961, עמ׳ 1",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:davar",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "e9bf72cc94a072678bdd318bb6dd4655bfa22b8c1a5e7e8630353981b83793b1",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T06:52:19.350Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1766-www.nli.org.il/page.html"
+    },
+    "davar-1961-09-15-p1": {
+      "url": "https://www.nli.org.il/en/newspapers/dav/1961/09/15/01/page/1",
+      "publisher": "Davar, 15 September 1961, p. 1",
+      "publisherHe": "דבר, 15 בספטמבר 1961, עמ׳ 1",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:davar",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "d49371262982fe287adbdeff6b30096fb53c37a9873622589e1dc315f82df8a5",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T06:52:32.846Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1767-www.nli.org.il/page.html"
+    },
+    "maariv-1961-09-06-p2": {
+      "url": "https://www.nli.org.il/en/newspapers/mar/1961/09/06/01/page/2",
+      "publisher": "Maariv, 6 September 1961, p. 2",
+      "publisherHe": "מעריב, 6 בספטמבר 1961, עמ׳ 2",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:maariv",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "d28ef0572753bd55ed8b6404737a51be3e24897b841478fe8d76df228ab3d8fb",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T07:11:27.205Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1802-www.nli.org.il/page.html"
     }
   },
   "results": {
@@ -220,13 +284,38 @@
             {
               "source": "recommendations-jta",
               "quote": "that Premier David Ben-Gurion be given the task"
+            },
+            {
+              "source": "davar-1961-09-06-p1",
+              "quote": "",
+              "ocr": "•המשיתת הציעה ינשיא המדינה לה־ טיי עי ד. _בן־גוריון את הרכבת הממשלה."
+            },
+            {
+              "source": "maariv-1961-09-06-p2",
+              "quote": "",
+              "ocr": "ח\"כ _גוברין הציע לנשיא להטיל את תשקיד הרכבת הממשלה על דוד _בן־גוריון,"
             }
           ]
         },
         {
           "letters": "ח",
           "seats": 17,
-          "status": "unknown"
+          "status": "recommended",
+          "nominee": "ben-gurion",
+          "cites": [
+            {
+              "source": "maariv-1961-09-06-p2",
+              "quote": "",
+              "ocr": "והיה אם. _כן־נוויון לא יצליח במילוי המשימה, הרי הם מבקשים להטיל את חנוקיד הרפכת הממשיד, על ראש הסיעה השנייה בגודלה — קרי: בגין."
+            },
+            {
+              "source": "davar-1961-09-06-p1",
+              "quote": "",
+              "ocr": "יש להסיל את התפקיד עי המפיגה השניה יפי גוריה, היינו עי \"חרות"
+            }
+          ],
+          "noteEn": "On a condition: asked that Ben-Gurion be given the task first, for a limited time, and Begin if he failed.",
+          "noteHe": "בתנאי: ביקשה להטיל את התפקיד תחילה על בן־גוריון, לזמן מוגבל, ואם ייכשל – על בגין."
         },
         {
           "letters": "ל",
@@ -251,7 +340,16 @@
         {
           "letters": "ק",
           "seats": 5,
-          "status": "unknown"
+          "status": "other",
+          "cites": [
+            {
+              "source": "davar-1961-09-07-p1",
+              "quote": "",
+              "ocr": "הציעז להטיל אח הרכבת הממשלה על חבר כנסת הוץ םבן־גוריון"
+            }
+          ],
+          "noteEn": "Proposed any Knesset member except Ben-Gurion; named no one.",
+          "noteHe": "הציעה כל חבר כנסת מלבד בן־גוריון, בלי לנקוב בשם."
         },
         {
           "letters": "ג",
@@ -275,8 +373,9 @@
         }
       ],
       "totals": {
-        "ben-gurion": 42,
-        "unknown": 78
+        "ben-gurion": 59,
+        "other": 5,
+        "unknown": 56
       },
       "cites": [
         {
@@ -289,10 +388,61 @@
         }
       ],
       "notes": [
-        "Conditions set in the consultations are not counted as recommendations. “Unknown” does not mean that no recommendation was made.",
-        "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved."
+        "Conditions a party set for joining a government are not counted as recommendations; a recommendation made on a condition is counted, and its row says the condition. “Unknown” does not mean that no recommendation was made.",
+        "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved.",
+        "Mapai proposed Ben-Gurion (the Jewish Telegraphic Agency, Davar and Maariv). Herut asked that Ben-Gurion be tasked first and Begin if he failed (Davar and Maariv); Maki proposed anyone but Ben-Gurion (Davar). Davar says the minority lists also proposed Ben-Gurion but does not name each list, so they stay unknown."
       ],
-      "endDate": "1961-09-06"
+      "endDate": "1961-09-06",
+      "pagesRead": [
+        {
+          "paper": "Davar",
+          "date": "1961-09-06",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1961/09/06/01/page/1"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1961-09-06",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1961/09/06/01/page/1"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1961-09-06",
+          "page": 2,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1961/09/06/01/page/2"
+        },
+        {
+          "paper": "Davar",
+          "date": "1961-09-07",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1961/09/07/01/page/1"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1961-09-07",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1961/09/07/01/page/1"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1961-09-07",
+          "page": 2,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1961/09/07/01/page/2"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1961-09-15",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1961/09/15/01/page/1"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1961-09-15",
+          "page": 2,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1961/09/15/01/page/2"
+        }
+      ]
     },
     {
       "id": "r2",
@@ -322,6 +472,11 @@
             {
               "source": "lamfrom-2008",
               "quote": "למחרת ביקשה משלחת מטעם מפא״י מהנשיא בן־צבי להטיל את הרכבת הממשלה על אשכול והנשיא עשה זאת באותו יום."
+            },
+            {
+              "source": "davar-1961-09-15-p1",
+              "quote": "",
+              "ocr": "נפני הנשיא להטיל את הרננת הממשלה על אשנול."
             }
           ]
         },
@@ -393,6 +548,50 @@
       "notes": [
         "Conditions set in the consultations are not counted as recommendations. “Unknown” does not mean that no recommendation was made.",
         "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved."
+      ],
+      "pagesRead": [
+        {
+          "paper": "Maariv",
+          "date": "1961-09-06",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1961/09/06/01/page/1"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1961-09-06",
+          "page": 2,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1961/09/06/01/page/2"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1961-09-07",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1961/09/07/01/page/1"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1961-09-07",
+          "page": 2,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1961/09/07/01/page/2"
+        },
+        {
+          "paper": "Davar",
+          "date": "1961-09-15",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1961/09/15/01/page/1"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1961-09-15",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1961/09/15/01/page/1"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1961-09-15",
+          "page": 2,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1961/09/15/01/page/2"
+        }
       ]
     }
   ],

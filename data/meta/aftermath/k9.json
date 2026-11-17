@@ -198,6 +198,54 @@
       "kind": "academic",
       "accessed": "2026-11-16",
       "evidenceFamily": "author:mahler"
+    },
+    "davar-1977-06-03-p1": {
+      "url": "https://www.nli.org.il/en/newspapers/dav/1977/06/03/01/page/1",
+      "publisher": "Davar, 3 June 1977, p. 1",
+      "publisherHe": "דבר, 3 ביוני 1977, עמ׳ 1",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:davar",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "6fbb1793fc91ff4be0bcb48c5915bdf56096a138f64db5120f976904a0129184",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T06:54:52.560Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1777-www.nli.org.il/page.html"
+    },
+    "davar-1977-06-03-p2": {
+      "url": "https://www.nli.org.il/en/newspapers/dav/1977/06/03/01/page/2",
+      "publisher": "Davar, 3 June 1977, p. 2",
+      "publisherHe": "דבר, 3 ביוני 1977, עמ׳ 2",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:davar",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "97b8ee558d3135321b7547b7cb1e4fccd75be6de015fea91fa3dc258a343a02d",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T07:01:54.629Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1785-www.nli.org.il/page.html"
+    },
+    "davar-1977-06-06-p1": {
+      "url": "https://www.nli.org.il/en/newspapers/dav/1977/06/06/01/page/1",
+      "publisher": "Davar, 6 June 1977, p. 1",
+      "publisherHe": "דבר, 6 ביוני 1977, עמ׳ 1",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:davar",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "19abda34cd1e781403e19703eb75d536a0eab0a02eea4095479bae0595e72f8c",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T06:53:29.475Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1771-www.nli.org.il/page.html"
     }
   },
   "results": {
@@ -290,13 +338,19 @@
           "letters": "ו",
           "seats": 5,
           "status": "other",
-          "noteEn": "Named no candidate in the report; stated the President was not bound to ask the largest party first.",
           "cites": [
             {
               "source": "jpost-1977-06-03",
               "quote": "Rakah, however, said the President was not legally required to first ask the head of the largest party in the new Knesset."
+            },
+            {
+              "source": "davar-1977-06-03-p1",
+              "quote": "",
+              "ocr": "ביקשה מהנשיא להטיל את תפקיד הרכב הממשלה על \" חבר כנסת שפוי\" מבין סיעות הבית, כולל המערך."
             }
-          ]
+          ],
+          "noteEn": "Named no candidate: asked for “a sane Knesset member” from any faction, the Alignment included, and opposed a Begin government.",
+          "noteHe": "לא נקבה במועמד: ביקשה „חבר כנסת שפוי” מבין הסיעות, כולל המערך, והתנגדה לממשלה בראשות בגין."
         },
         {
           "letters": "ג",
@@ -307,6 +361,11 @@
             {
               "source": "jpost-1977-06-03",
               "quote": "Agudat Yisrael and [Shlomzion] proposed Likud leader Menahem [Begin]."
+            },
+            {
+              "source": "davar-1977-06-03-p1",
+              "quote": "",
+              "ocr": "והציעה לנשיא לטהיל את הרכבת הממשלה על מנחם בגין"
             }
           ]
         },
@@ -319,6 +378,11 @@
             {
               "source": "jpost-1977-06-03",
               "quote": "Agudat Yisrael and [Shlomzion] proposed Likud leader Menahem [Begin]. ... Ariel [Sharon], head of [Shlomzion], appeared despite his announcement that he is joining the Likud, since the merger is not yet [official]."
+            },
+            {
+              "source": "davar-1977-06-03-p1",
+              "quote": "",
+              "ocr": "שרון ביקש מפרופסור קציר כי יטיל את מלאכת ‭,. ‬ ־ מרכבי• על מנחש בגין."
             }
           ]
         },
@@ -326,26 +390,38 @@
           "letters": "ש",
           "seats": 2,
           "status": "other",
-          "noteEn": "Asked for \"a moderate statesman\" and gave two Alignment MKs as examples.",
           "cites": [
             {
               "source": "jpost-1977-06-03",
               "quote": "A [Sheli] spokesman said its delegation had asked the President to select a \"moderate statesman, such as Haim Zadok (present Justice minister) or Yitzhak Navon (another Alignment MK),\" to form a government."
+            },
+            {
+              "source": "davar-1977-06-03-p2",
+              "quote": "",
+              "ocr": "המשלחת הביע בפני הנשיא את התנגדותה להקמת ממשלה בראשותו של מנחם, בגין."
             }
-          ]
+          ],
+          "noteEn": "Asked for “a moderate statesman” and gave two Alignment MKs as examples; opposed a Begin government.",
+          "noteHe": "ביקשה „מדינאי מתון” ונתנה שני חברי כנסת מהמערך כדוגמה; התנגדה לממשלה בראשות בגין."
         },
         {
           "letters": "פש",
           "seats": 1,
           "status": "recommended",
           "nominee": "begin",
-          "noteEn": "Reported as support for a Begin-led government.",
           "cites": [
             {
               "source": "jpost-1977-06-06",
               "quote": "In his talk with the President yesterday, Flatto Sharon voiced his support for a government led by Menahem Begin"
+            },
+            {
+              "source": "davar-1977-06-06-p1",
+              "quote": "",
+              "ocr": "פלאטו־שדון הודיע לנשיא כי הוא רואה את מגהם בגין כמועמדו להרכבת הממשלה."
             }
-          ]
+          ],
+          "noteEn": "Reported as support for a Begin-led government.",
+          "noteHe": "דווח כתמיכה בממשלה בראשות בגין."
         },
         {
           "letters": "ד",
@@ -391,7 +467,34 @@
       "notes": [
         "Totals are sums of the per-list entries above, not a figure published by the President. No official tally was retrieved.",
         "Four one-seat lists (Poalei Agudat Yisrael, Independent Liberals, Civil Rights Movement, United Arab List) were consulted on 3 or 5 June per the schedule, but their positions were not found in the issues read (gap).",
-        "Primary record to retrieve: Israel State Archives presidential file נ-571/13, \"הנשיאים קציר ונבון – תיקי הרכבת ממשלות – הרכבת הממשלה ה-18\" (cited in isa-navon-1981)."
+        "Primary record to retrieve: Israel State Archives presidential file נ-571/13, \"הנשיאים קציר ונבון – תיקי הרכבת ממשלות – הרכבת הממשלה ה-18\" (cited in isa-navon-1981).",
+        "Davar (3 and 6 June 1977) independently reports Agudat Yisrael, Shlomtzion and Flatto-Sharon for Begin, and Hadash and Sheli naming no candidate of their own."
+      ],
+      "pagesRead": [
+        {
+          "paper": "Davar",
+          "date": "1977-06-03",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1977/06/03/01/page/1"
+        },
+        {
+          "paper": "Davar",
+          "date": "1977-06-03",
+          "page": 2,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1977/06/03/01/page/2"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1977-06-03",
+          "page": 2,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1977/06/03/01/page/2"
+        },
+        {
+          "paper": "Davar",
+          "date": "1977-06-06",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1977/06/06/01/page/1"
+        }
       ]
     }
   ],

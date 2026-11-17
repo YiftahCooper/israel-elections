@@ -74,14 +74,40 @@ describe('After the election: rules over all records', () => {
       }
     }
     expect(compared).toBeGreaterThanOrEqual(16);
-    // the rule catches a grouping that still counts Hadash, PLP and ADP for Peres in 1988 (17 Nov 2026: their only
-    // source was an outlet not used, so the record has them as not known)
+    // the rule catches a grouping that still counts the Progressive List for Peace for Peres in 1988 (17 Nov 2026:
+    // the papers of the time disagree about it, so the record has it as "other", and Peres's group is 54 seats)
     const k12 = aftermathRecords.k12!.recommendationRounds[0];
     const stale = { id: 'pm-recommendations', blocs: [
       { id: 'shamir', seats: 63, members: ['מחל', 'שס', 'ג', 'ב', 'ת', 'ץ', 'ט'].map(letters => ({ letters })) },
       { id: 'peres', seats: 55, members: ['אמת', 'רצ', 'מפם', 'הן', 'ו', 'פ', 'ע'].map(letters => ({ letters })) },
       { id: 'none', seats: 2, members: [{ letters: 'עץ' }] }] };
-    expect(groupingDisagreements(k12 as never, [stale])).toEqual(expect.arrayContaining([expect.stringContaining('r1/ו: round says unknown, grouping says peres'), expect.stringContaining('r1/peres: grouping has 55 seats, round 49')]));
+    expect(groupingDisagreements(k12 as never, [stale])).toEqual(expect.arrayContaining([expect.stringContaining('r1/פ: round says other, grouping says peres'), expect.stringContaining('r1/peres: grouping has 55 seats, round 54')]));
+  });
+  it('newspapers read from scans: a quote is an exact part of the computer-read text, sources are dated pages, notes are in both languages (17 Nov 2026)', () => {
+    let ocrCites = 0;
+    for (const record of Object.values(aftermathRecords)) {
+      const sources = (record as { sources?: Record<string, { url?: string; evidenceFamily?: string; publisher?: string; publisherHe?: string }> }).sources ?? {};
+      for (const [id, src] of Object.entries(sources)) {
+        if (!src.evidenceFamily?.startsWith('newspaper:')) continue;
+        expect(src.url, id).toMatch(/^https:\/\/www\.nli\.org\.il\/en\/newspapers\/[a-z]+\/\d{4}\/\d{2}\/\d{2}\/01\/page\/\d+$/);
+        expect(src.publisher, id).toMatch(/^[A-Z][a-z]+, \d{1,2} [A-Z][a-z]+ \d{4}, p\. \d+$/);
+        expect(src.publisherHe, id).toMatch(/, עמ׳ \d+$/);
+      }
+      for (const round of record.recommendationRounds ?? []) {
+        for (const e of round.entries as { letters: string; status?: string; certainty?: string; noteEn?: string; noteHe?: string; cites?: { source: string; quote?: string; ocr?: string }[] }[]) {
+          const where = `${record.electionId}/${round.id}/${e.letters}`;
+          expect(Boolean(e.noteEn), `${where} has a note in both languages`).toBe(Boolean(e.noteHe));
+          if (e.status === 'disputed') expect(e.certainty, where).toBe('disputed');
+          for (const c of e.cites ?? []) {
+            if (c.ocr === undefined) { expect(c.quote, `${where}: a cite without computer-read text has a quote`).toBeTruthy(); continue; }
+            ocrCites++;
+            expect(sources[c.source]?.evidenceFamily, `${where}: computer-read text comes from a newspaper page`).toMatch(/^newspaper:/);
+            if (c.quote) expect(c.ocr, where).toContain(c.quote);
+          }
+        }
+      }
+    }
+    expect(ocrCites).toBeGreaterThanOrEqual(40);
   });
   it('c-aftermath-04: a tally with a key the screen does not read fails validation', () => {
     expect(validTally({ for: 69, against: 45, abstained: 5 })).toBe(false);

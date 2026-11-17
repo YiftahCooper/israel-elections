@@ -1055,6 +1055,19 @@
           "seats": 51
         },
         {
+          "id": "other",
+          "nameHe": "אחר: לא נקבו בשם",
+          "nameEn": "Other: no person named",
+          "color": "#8d6e97",
+          "members": [
+            {
+              "letters": "גד",
+              "note": "Agudat Yisrael’s delegates proposed the Alignment’s representatives, as the largest faction; no person named (Davar, 21 January 1974, p. 2)."
+            }
+          ],
+          "seats": 5
+        },
+        {
           "id": "none",
           "nameHe": "לא המליצו על מועמד",
           "nameEn": "No candidate named",
@@ -1076,9 +1089,6 @@
               "letters": "ב"
             },
             {
-              "letters": "גד"
-            },
-            {
               "letters": "רצ"
             },
             {
@@ -1097,7 +1107,7 @@
               "letters": "קנ"
             }
           ],
-          "seats": 30
+          "seats": 25
         }
       ],
       "sources": [
@@ -1130,10 +1140,17 @@
           "kind": "secondary",
           "accessed": "2026-11-06",
           "quote": "JERUSALEM, Jan. 16 (JTA)--President Ephraim Katzir met separately today with delegations from the Labor Party and Likud in the first official moves toward the formation of a new government."
+        },
+        {
+          "url": "https://www.nli.org.il/en/newspapers/dav/1974/01/21/01/page/2",
+          "publisher": "Davar, 21 January 1974, p. 2",
+          "kind": "secondary",
+          "quote": "נציגי האגודה הציעו להטיל את התפקיד על נציגי המערך,",
+          "accessed": "2026-11-17"
         }
       ],
       "notes": [
-        "The Alignment recommendation is reported by JTA (\"reportedly suggested\"), not an inspected official recommendation letter. Likud named no candidate according to the same report. Eight other lists (30 seats) remain Not stated in source.",
+        "The Alignment recommendation is reported by JTA (\"reportedly suggested\"), not an inspected official recommendation letter. Likud named no candidate according to the same report. The Religious Torah Front named the Alignment, not a person (Davar, 21 January 1974). Seven other lists (25 seats) remain Not stated in source.",
         "Mandate date: 30 January 1974, settled by the President’s dated letter reproduced in Knesset sitting 21 (10 March 1974, p.1). The JTA archive heading is 31 January; the primary act takes precedence.",
         "Confidence: medium for the Alignment and Likud entries."
       ]

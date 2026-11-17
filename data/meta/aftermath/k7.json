@@ -304,7 +304,27 @@
         "Start date inferred from “last Saturday” in JTA’s 6 November bulletin (1 November). End date unknown: the 10 November bulletin says “today”; its dispatch date is not independently established, so no 9 November date is asserted.",
         "104 seats rests on a reportedly qualified JTA statement about the outgoing-government factions, identified in the official government 14 record; medium confidence."
       ],
-      "blocSchemeRef": "pm-recommendations"
+      "blocSchemeRef": "pm-recommendations",
+      "pagesRead": [
+        {
+          "paper": "Davar",
+          "date": "1969-11-07",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1969/11/07/01/page/1"
+        },
+        {
+          "paper": "Davar",
+          "date": "1969-11-10",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1969/11/10/01/page/1"
+        },
+        {
+          "paper": "Davar",
+          "date": "1969-11-10",
+          "page": 2,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1969/11/10/01/page/2"
+        }
+      ]
     }
   ],
   "formation": {

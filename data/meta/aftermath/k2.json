@@ -345,6 +345,26 @@
         "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved.",
         "The opening day is not established: the report refers to meetings during the weekend. Only the month is displayed.",
         "Actual consultation end unresolved (14 or 15 August): JTA 14 August predicts \"will conclude tomorrow\", not completed meetings. No precise actual end date is asserted."
+      ],
+      "pagesRead": [
+        {
+          "paper": "Davar",
+          "date": "1951-08-14",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1951/08/14/01/page/1"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1951-08-14",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1951/08/14/01/page/1"
+        },
+        {
+          "paper": "Davar",
+          "date": "1951-08-15",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1951/08/15/01/page/1"
+        }
       ]
     }
   ],

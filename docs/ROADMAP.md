@@ -23,10 +23,6 @@ register (`docs/data-gaps.md`).
   The 1949 Nazareth list, stored today as a probable member partly on the same book, should be read again at the same
   time; the Hebrew original (Am Oved, 2013) would show what "official members" means.
 
-- **Notes on recommendation rows (After the election).** A party's own note on its recommendation (for example 1988
-  Hadash, PLP and ADP: "no usable source of the time found yet") is stored but never shown; readers see only "not
-  documented" and the round's notes. Show it in the row's (i). Found 17 Nov 2026 when +972/Local Call were removed.
-
 ## Features
 
 - **Votes against one's own government.** Show when a minister or coalition member voted against the government in a

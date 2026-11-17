@@ -4,7 +4,8 @@
 fact, date, number and source of the earlier version is kept. On 16 November 2026 the owner added the rule for books
 (see "Books and other scholarly works" below). On 17 November 2026 he named two outlets that are not used (see
 "Outlets not used"), and party families stopped carrying certainty labels (see "Party families are the project's
-classification").*
+classification"). Later that day the rules for newspapers read from scans were written down (see "Newspapers of the
+time read from scans").*
 
 ## In short
 
@@ -195,6 +196,26 @@ book collection.
 - **Quotes stay short.** A book is quoted in at most about 25 words, with its printed page ("p. 412"). Page text
   beyond that is never copied into the data.
 
+### Newspapers of the time read from scans (17 November 2026)
+
+Who each party recommended to the President before about 1995 is mostly known from the daily papers of the next day.
+The National Library of Israel's newspaper archive holds them as page scans with computer-read text.
+
+- **Each paper counts once.** One paper is **provisional**, two independent papers are **probable**, three are
+  **confirmed**, as in the thresholds above. Two papers printing the same agency story count once.
+- **Computer-read text is not a quote until checked.** A quote is shown only where the computer-read text is clean.
+  Otherwise the source is named by paper, date and page ("Davar, 17 August 1955, p. 1") with no quote. The passage as
+  the archive read it is kept beside the cite, hidden, until someone checks it against the printed page.
+- **A condition stays with the recommendation.** A party that named a person with a condition ("Ben-Gurion, and
+  Begin if he fails") is counted for that person, and the row's note states the condition.
+- **No person, no recommendation.** A party that named only a party, a type of government or no one is not counted
+  for anyone: "named no one" when it said so, "other" when it named a party or a description, or did not come.
+  Being invited to the consultations is not a recommendation.
+- **Papers that disagree.** When two papers report a party differently and neither is decisive, the row says "Sources
+  disagree", both cited. Seat totals that add up are a check, never proof of what one party said.
+- **Pages read and found empty are recorded.** A party whose papers were searched without result stays unknown, and
+  the gaps register lists the pages already read so no one reads them again.
+
 ## Bias and partisanship
 
 - **Neutral means not partisan within Israeli politics.** Israeli sources are welcome, and Hebrew sources are the
@@ -289,6 +310,12 @@ pointer.
 - `academic` sources and the named research institutions (IDI, IPU, INES) are scholarship.
 - Press is contemporary by default. Timelines, fast facts, year reviews and crisis-group analyses are retrospective;
   any other later account needs `tier: "retrospective"`.
+
+**Newspapers from scans.** Each National Library page is its own source with `evidenceFamily:
+"newspaper:<paper>"` (all pages share one web host, so the family is what keeps papers apart). A cite read from
+computer-read text carries `ocr`, the passage as the archive read it; its `quote` is empty or an exact part of `ocr`.
+A recommendation round lists the pages read in `pagesRead` and may explain a search in `searchNote`; the gaps register
+shows both. An entry whose papers disagree has status `disputed` and `certainty: "disputed"`.
 
 **Independence.** The wire agency is read from the publisher (Reuters, AP, UPI, JTA, AFP). A mirror, quotation or
 reproduction declares its original with `evidenceFamily`.

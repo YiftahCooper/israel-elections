@@ -188,6 +188,38 @@
       "kind": "archival",
       "accessed": "2026-11-07",
       "via": "Read by the 7 November research helper; a direct re-fetch returned HTTP 403 and was not retried. UPI wire: not independent of other UPI copies."
+    },
+    "davar-1981-07-14-p2": {
+      "url": "https://www.nli.org.il/en/newspapers/dav/1981/07/14/01/page/2",
+      "publisher": "Davar, 14 July 1981, p. 2",
+      "publisherHe": "דבר, 14 ביולי 1981, עמ׳ 2",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:davar",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "72762da48c3cc15d23fc565dccf57cfd7abd485734ec7a5b2204896e1a29e574",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T06:55:07.873Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1778-www.nli.org.il/page.html"
+    },
+    "davar-1981-07-15-p1": {
+      "url": "https://www.nli.org.il/en/newspapers/dav/1981/07/15/01/page/1",
+      "publisher": "Davar, 15 July 1981, p. 1",
+      "publisherHe": "דבר, 15 ביולי 1981, עמ׳ 1",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:davar",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "5272979cda8064eeee4b46eb90cd13a1c2e511116d0556e46f01d1c4e4237515",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T06:53:42.763Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1772-www.nli.org.il/page.html"
     }
   },
   "results": {
@@ -213,6 +245,10 @@
         "begin": {
           "nameEn": "Menachem Begin",
           "nameHe": "מנחם בגין"
+        },
+        "peres": {
+          "nameEn": "Shimon Peres",
+          "nameHe": "שמעון פרס"
         }
       },
       "entries": [
@@ -232,7 +268,30 @@
           "letters": "ג",
           "seats": 4,
           "status": "recommended",
-          "nominee": "begin"
+          "nominee": "begin",
+          "cites": [
+            {
+              "source": "recommendations-research-1",
+              "quote": "'I arrived at the conclusion that Mr. Menachem Begin has more chances than any other candidate to form the next government -- that is, 61 Knesset members spoke out in favor of his forming the government."
+            },
+            {
+              "source": "recommendations-research-2",
+              "quote": "Begin has support in principle from three religious parties -- the National Religious Party, the Tami Party and the Agudat Israel Party -- which hold a total of 13 seats in the Knesset (parliament)."
+            },
+            {
+              "source": "recommendations-research-3",
+              "quote": "Aharon Abu Hatzeira's Tami faction, with three seats, indicated to Navon that it preferred a government headed by Begin, while Moshe Dayan's two-seat Telem party leaned toward Labor"
+            },
+            {
+              "source": "recommendations-research-4",
+              "quote": "ב-10 ביולי זימן נבון את סיעות הבית להתייעצויות ב-13 וב-14 ביולי"
+            },
+            {
+              "source": "davar-1981-07-14-p2",
+              "quote": "",
+              "ocr": "נציגי אגודת ישראל המליצו אף תם בפני הנשיא לתטיל את הרכבת הפפשלת על מנחם בגין."
+            }
+          ]
         },
         {
           "letters": "ני",
@@ -243,37 +302,96 @@
         {
           "letters": "אמת",
           "seats": 47,
-          "status": "unknown"
+          "status": "recommended",
+          "nominee": "peres",
+          "cites": [
+            {
+              "source": "davar-1981-07-14-p2",
+              "quote": "",
+              "ocr": "ביקשתי מהנשיא, שיטיל על שפעוו \" פרם להרכיב איז _המפשלה."
+            }
+          ],
+          "noteEn": "Haim Bar-Lev said he had asked the President to task Peres.",
+          "noteHe": "חיים בר־לב אמר שביקש מהנשיא להטיל את התפקיד על פרס."
         },
         {
           "letters": "ו",
           "seats": 4,
-          "status": "unknown"
+          "status": "other",
+          "cites": [
+            {
+              "source": "davar-1981-07-15-p1",
+              "quote": "אמרה לנשיא שלא תתמוך בשום ממשלה",
+              "ocr": "אמרה לנשיא שלא תתמוך בשום ממשלה _ותתנגד לממשלת אחדות לאומית בראשות הליכוד."
+            }
+          ],
+          "noteEn": "Told the President it would support no government and would oppose a Likud-led unity government; the report names no candidate.",
+          "noteHe": "אמרה לנשיא שלא תתמוך בשום ממשלה ותתנגד לממשלת אחדות בראשות הליכוד; הדיווח אינו מזכיר מועמד."
         },
         {
           "letters": "ת",
           "seats": 3,
-          "status": "unknown"
+          "status": "none",
+          "cites": [
+            {
+              "source": "davar-1981-07-15-p1",
+              "quote": "",
+              "ocr": "תומכת בהקמת ממשלת אחדות לאומית אם תנאי היסוד שלה יהיר!פתיחת הסכמי קמפ דייוויד."
+            }
+          ],
+          "noteEn": "Supported a national unity government on condition that it reopen the Camp David Accords; named no one.",
+          "noteHe": "תמכה בממשלת אחדות לאומית בתנאי שתפתח מחדש את הסכמי קמפ דייוויד, בלי לנקוב בשם."
         },
         {
           "letters": "כן",
           "seats": 2,
-          "status": "unknown"
+          "status": "none",
+          "cites": [
+            {
+              "source": "davar-1981-07-15-p1",
+              "quote": "",
+              "ocr": "המליצו על הקפת ממשלת ליכוד לאומי בשל חומרת המצב החברתי והכלכלי."
+            }
+          ],
+          "noteEn": "Recommended a national unity government and named no one. A wire report the same week says Telem leaned towards Labour.",
+          "noteHe": "המליצה על ממשלת אחדות לאומית בלי לנקוב בשם. לפי דיווח של סוכנות ידיעות מאותו שבוע, תל״ם נטתה למערך."
         },
         {
           "letters": "הן",
           "seats": 2,
-          "status": "unknown"
+          "status": "recommended",
+          "nominee": "peres",
+          "cites": [
+            {
+              "source": "davar-1981-07-15-p1",
+              "quote": "",
+              "ocr": "אנשישינויי ורייצ הביעו תמיכה \" בהקמת ממשלה בראשות שמעון פרפ."
+            }
+          ],
+          "noteEn": "Expressed support for a government headed by Peres.",
+          "noteHe": "הביעה תמיכה בממשלה בראשות פרס."
         },
         {
           "letters": "רצ",
           "seats": 1,
-          "status": "unknown"
+          "status": "recommended",
+          "nominee": "peres",
+          "cites": [
+            {
+              "source": "davar-1981-07-15-p1",
+              "quote": "",
+              "ocr": "אנשישינויי ורייצ הביעו תמיכה \" בהקמת ממשלה בראשות שמעון פרפ."
+            }
+          ],
+          "noteEn": "Expressed support for a government headed by Peres.",
+          "noteHe": "הביעה תמיכה בממשלה בראשות פרס."
         }
       ],
       "totals": {
         "begin": 61,
-        "unknown": 59
+        "peres": 50,
+        "other": 4,
+        "none": 5
       },
       "cites": [
         {
@@ -294,9 +412,30 @@
         }
       ],
       "notes": [
-        "Partial: President Navon stated that 61 MKs backed Begin (Likud 48 + NRP 6 + Agudat Yisrael 4 + Tami 3, the parties UPI names). What the Alignment, Hadash, Tehiya, Telem, Shinui and Ratz told the President is not stated as a recommendation in the sources retrieved (JTA describes leanings only), so they are 'not stated', not 'no recommendation'.",
+        "President Navon stated that 61 MKs backed Begin (Likud 48 + NRP 6 + Agudat Yisrael 4 + Tami 3, the parties United Press International names). Davar (14 and 15 July 1981) reports the Alignment, Shinui and Ratz for Peres, Telem and Tehiya asking for a national unity government without naming anyone, and Hadash supporting no government; one newspaper each.",
         "Mandate given to Begin on 15 July 1981 (Navon's letter is dated 16 July in the State Archives account). UPI's 1981 pages returned 403 to a direct request on 2026-11-05; their quotes are from a search-index extract. The State Archives chapter also returned 403; its quote is from a search-index extract."
-      ]
+      ],
+      "pagesRead": [
+        {
+          "paper": "Davar",
+          "date": "1981-07-14",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1981/07/14/01/page/1"
+        },
+        {
+          "paper": "Davar",
+          "date": "1981-07-14",
+          "page": 2,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1981/07/14/01/page/2"
+        },
+        {
+          "paper": "Davar",
+          "date": "1981-07-15",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1981/07/15/01/page/1"
+        }
+      ],
+      "searchNote": "Maariv of 15 July 1981, p. 2, could not be opened."
     }
   ],
   "formation": {

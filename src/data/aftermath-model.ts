@@ -1,14 +1,23 @@
 import type { ElectionDataset, ElectionId } from './schema.ts';
 import type { GovernmentSupport } from './aftermath.ts';
 /** `noteHe` is the Hebrew wording of `note`, for the few notes written for readers in both languages. `citesRecord`
- *  names the official record a scholarly passage itself cites (docs/source-policy.md); the build's certainty check reads it. */
-export interface Cite { source: string; quote: string; locator?: string; note?: string; noteHe?: string; citesRecord?: string }
-export interface HistorySource { url: string; publisher?: string; publisherHe?: string; title?: string; kind: string; accessed: string; via?: string }
+ *  names the official record a scholarly passage itself cites (docs/source-policy.md); the build's certainty check reads it.
+ *  `ocr` marks a newspaper passage taken from the archive's computer-read text of the scan and not yet checked against the
+ *  printed page; it keeps that text, never shown, so a later scan check can find it. Such a cite shows `quote` (an exact
+ *  part of `ocr`) only where the text reads cleanly; otherwise `quote` is empty and readers get the paper, date and page. */
+export interface Cite { source: string; quote: string; locator?: string; note?: string; noteHe?: string; citesRecord?: string; ocr?: string }
+export interface HistorySource { url: string; publisher?: string; publisherHe?: string; title?: string; kind: string; accessed: string; via?: string; evidenceFamily?: string }
 /** `orderDate`/`orderSeq` place an event among others of the same date, or a month- or year-only event among the days
  *  in it, from what the record's own sources say (`orderBasis`); they are never shown and never change `date`. */
 export interface DatedFact { id?: string; date: string; endDate?: string; textEn: string; textHe: string; cites: Cite[]; notes?: string[]; type?: string; category?: string; person?: string; days?: number; orderDate?: string; orderSeq?: number; orderBasis?: string }
-export interface RecommendationEntry { letters: string; seats: number; status: string; nominee?: string; split?: { nominee?: string; status?: string; seats: number }[]; cites?: Cite[]; noteEn?: string; noteHe?: string }
-export interface RecommendationRound { id: string; date: string; endDate?: string; nominees: Record<string, { nameEn: string; nameHe: string }>; entries: RecommendationEntry[]; totals: Record<string, number>; cites: Cite[]; notes?: string[] }
+/** A recommendation entry's `status`: recommended (with `nominee`), none, other (named a party or a description, not a
+ *  person, or did not take part), disputed (sources disagree; the entry carries `certainty: 'disputed'` and both sides),
+ *  split, or unknown. `noteEn`/`noteHe` say any condition the list attached; they show in the row's (i). */
+export interface RecommendationEntry { letters: string; seats: number; status: string; nominee?: string; split?: { nominee?: string; status?: string; seats: number }[]; cites?: Cite[]; noteEn?: string; noteHe?: string; certainty?: string }
+/** A newspaper page or article read while looking for the round's recommendations, found or not (never shown; the gaps
+ *  register lists them so nobody reads them again). `searchNote` says what could not be read. */
+export interface PageRead { paper: string; date: string; page?: number; url: string }
+export interface RecommendationRound { id: string; date: string; endDate?: string; nominees: Record<string, { nameEn: string; nameHe: string }>; entries: RecommendationEntry[]; totals: Record<string, number>; cites: Cite[]; notes?: string[]; pagesRead?: PageRead[]; searchNote?: string }
 /** `role` marks a prime minister who held the office in an acting or interim capacity; `titleEn`/`titleHe` are the
  *  office's title as the cited source gives it (the name never carries it). */
 export interface PrimeMinister { nameEn: string; nameHe: string; from: string; to?: string; letters?: string; role?: 'acting' | 'interim'; titleEn?: string; titleHe?: string; cites?: Cite[]; notes?: string[] }
@@ -19,7 +28,7 @@ export interface Poll { date?: string; timing?: string; sourceId: string; questi
 export interface Conflict { about: string; values: { value: string; source: string }[]; resolution: string; status?: string; cites?: Cite[] }
 export interface Aftermath { schemaVersion: number; electionId: ElectionId; status: string; reviewedAt: string; sources: Record<string, HistorySource>; results: { electionDate: string }; recommendationRounds: RecommendationRound[]; formation: { events: DatedFact[]; conflicts?: Conflict[]; people?: Record<string, { nameEn: string; nameHe: string }> }; government?: Government; reaction?: { items: DatedFact[] }; term: { events: DatedFact[]; candidatesPending: { label: string; date?: string; why: string }[]; endedBy?: DatedFact & { nextElection?: ElectionId }; inclusionRule?: string }; issuePolling?: { status: string; items?: Poll[] } }
 export function recommendationPieces(round: RecommendationRound) {
-  return round.entries.flatMap(e => (e.split ?? [{ nominee: e.nominee, status: e.status, seats: e.seats }]).map(p => ({ ...p, letters: e.letters, group: p.nominee ?? p.status ?? 'unknown', cites: e.cites ?? round.cites })));
+  return round.entries.flatMap(e => (e.split ?? [{ nominee: e.nominee, status: e.status, seats: e.seats }]).map(p => ({ ...p, letters: e.letters, group: p.nominee ?? p.status ?? 'unknown', cites: e.cites ?? round.cites, noteEn: e.noteEn, noteHe: e.noteHe })));
 }
 // The audit establishes chronology independence. This guard also stops a later single-source
 // candidate or repeated citation to one source from leaking onto the history page.

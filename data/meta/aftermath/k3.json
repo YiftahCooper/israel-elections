@@ -123,6 +123,54 @@
       "kind": "official",
       "accessed": "2026-11-07",
       "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
+    },
+    "davar-1955-08-17-p1": {
+      "url": "https://www.nli.org.il/en/newspapers/dav/1955/08/17/01/page/1",
+      "publisher": "Davar, 17 August 1955, p. 1",
+      "publisherHe": "דבר, 17 באוגוסט 1955, עמ׳ 1",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:davar",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "c197fc704064d41df218f926152a4b393e10285f0a5b1f752183ca69e02cafe5",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T06:51:06.052Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1763-www.nli.org.il/page.html"
+    },
+    "davar-1955-08-18-p1": {
+      "url": "https://www.nli.org.il/en/newspapers/dav/1955/08/18/01/page/1",
+      "publisher": "Davar, 18 August 1955, p. 1",
+      "publisherHe": "דבר, 18 באוגוסט 1955, עמ׳ 1",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:davar",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "1d76aa42417be4a6d4b03074954b3548139c0a7d6c785039b023bda1c83de4fd",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T06:51:21.381Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1764-www.nli.org.il/page.html"
+    },
+    "maariv-1955-08-17-p1": {
+      "url": "https://www.nli.org.il/en/newspapers/mar/1955/08/17/01/page/1",
+      "publisher": "Maariv, 17 August 1955, p. 1",
+      "publisherHe": "מעריב, 17 באוגוסט 1955, עמ׳ 1",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:maariv",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "52d2ad66d0c45827e401988dcb16bebbfc74f7aa8e978e903fc1232c892c03f2",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T07:09:28.777Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1794-www.nli.org.il/page.html"
     }
   },
   "results": {
@@ -153,12 +201,38 @@
         {
           "letters": "א",
           "seats": 40,
-          "status": "unknown"
+          "status": "recommended",
+          "nominee": "ben-gurion",
+          "cites": [
+            {
+              "source": "davar-1955-08-17-p1",
+              "quote": "",
+              "ocr": "המ הצי־ *ו לנשיא להטיל את הרכבת הממ - שלה על ד. בן גוריון"
+            }
+          ]
         },
         {
           "letters": "ח",
           "seats": 15,
-          "status": "unknown"
+          "status": "other",
+          "cites": [
+            {
+              "source": "recommendations-jta",
+              "quote": "refused to accept the President's invitation"
+            },
+            {
+              "source": "davar-1955-08-18-p1",
+              "quote": "",
+              "ocr": ". חרות' לא הלכה לנשיא כמחאה ע7 סדר ההזמנה"
+            },
+            {
+              "source": "maariv-1955-08-17-p1",
+              "quote": "",
+              "ocr": "החליטה _חיופ שלז* להופיע להתיעצויות עפ נשיא המדינה"
+            }
+          ],
+          "noteEn": "Did not attend: Herut refused the President’s invitation, in protest at the order in which the factions were invited.",
+          "noteHe": "לא הגיעה: חרות דחתה את הזמנת הנשיא, במחאה על סדר הזמנת הסיעות."
         },
         {
           "letters": "צ",
@@ -168,7 +242,21 @@
         {
           "letters": "ב",
           "seats": 11,
-          "status": "unknown"
+          "status": "disputed",
+          "certainty": "disputed",
+          "cites": [
+            {
+              "source": "jta-consultations-start",
+              "quote": "They suggested that the representatives of the largest party (Mapai) be asked to form a government."
+            },
+            {
+              "source": "davar-1955-08-17-p1",
+              "quote": "",
+              "ocr": "הם הבי־ עו תמיכתם _במועמדות גן־גוייון כראש הממשלה."
+            }
+          ],
+          "noteEn": "Sources disagree. Davar says the Hapoel HaMizrachi delegation supported Ben-Gurion as prime minister; the Jewish Telegraphic Agency says the Front asked that the largest party be tasked, naming no one. The President’s consultation record would settle it.",
+          "noteHe": "המקורות חלוקים. לפי דבר, משלחת הפועל המזרחי תמכה בבן־גוריון כראש הממשלה; לפי סוכנות הידיעות היהודית, החזית ביקשה להטיל את התפקיד על הסיעה הגדולה בלי לנקוב בשם. פרוטוקול ההתייעצות אצל הנשיא יכריע."
         },
         {
           "letters": "תו",
@@ -212,7 +300,10 @@
         }
       ],
       "totals": {
-        "unknown": 120
+        "ben-gurion": 40,
+        "other": 15,
+        "disputed": 11,
+        "unknown": 54
       },
       "cites": [
         {
@@ -227,10 +318,48 @@
       "notes": [
         "Conditions set in the consultations are not counted as recommendations. “Unknown” does not mean that no recommendation was made.",
         "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved.",
-        "Herut refused to attend; the National Religious Front asked that the largest party be tasked without naming a person. Neither is converted into a personal recommendation.",
+        "Mapai proposed Ben-Gurion (Davar, 17 August 1955). Herut did not attend (the Jewish Telegraphic Agency, Davar and Maariv). For the National Religious Front the sources disagree: Davar says the Hapoel HaMizrachi delegation supported Ben-Gurion, the Jewish Telegraphic Agency that the Front asked for the largest party without naming a person; both are shown.",
         "Original JTA bulletin dated 17 August is datelined Jerusalem, Aug.16; the 18 August bulletin is datelined Aug.17 and says virtually completed. The 18 August bracket is the independently sourced mandate day, not proof of a consultation held that day."
       ],
-      "endDate": "1955-08-18"
+      "endDate": "1955-08-18",
+      "pagesRead": [
+        {
+          "paper": "Davar",
+          "date": "1955-08-17",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1955/08/17/01/page/1"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1955-08-17",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1955/08/17/01/page/1"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1955-08-17",
+          "page": 2,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1955/08/17/01/page/2"
+        },
+        {
+          "paper": "Davar",
+          "date": "1955-08-18",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1955/08/18/01/page/1"
+        },
+        {
+          "paper": "Davar",
+          "date": "1955-08-18",
+          "page": 2,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1955/08/18/01/page/2"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1955-08-18",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1955/08/18/01/page/1"
+        }
+      ]
     }
   ],
   "formation": {

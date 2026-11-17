@@ -164,6 +164,22 @@
       "kind": "academic",
       "accessed": "2026-11-17",
       "evidenceFamily": "author:krislov"
+    },
+    "davar-1974-01-21-p2": {
+      "url": "https://www.nli.org.il/en/newspapers/dav/1974/01/21/01/page/2",
+      "publisher": "Davar, 21 January 1974, p. 2",
+      "publisherHe": "דבר, 21 בינואר 1974, עמ׳ 2",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:davar",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "4576accce6724b81b0ca4ad6c4b7d32f6d96de50f6d3dfb5e0cbaacd62ba2402",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T06:55:24.034Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1779-www.nli.org.il/page.html"
     }
   },
   "results": {
@@ -217,7 +233,16 @@
         {
           "letters": "גד",
           "seats": 5,
-          "status": "unknown"
+          "status": "other",
+          "cites": [
+            {
+              "source": "davar-1974-01-21-p2",
+              "quote": "נציגי האגודה הציעו להטיל את התפקיד על נציגי המערך,",
+              "ocr": "נציגי האגודה הציעו להטיל את התפקיד על נציגי המערך, כסיעה הגמלה ביותר בכנסת."
+            }
+          ],
+          "noteEn": "Agudat Yisrael’s delegates proposed that the Alignment’s representatives be tasked, as the largest faction; they named no one.",
+          "noteHe": "נציגי אגודת ישראל הציעו להטיל את התפקיד על נציגי המערך, כסיעה הגדולה ביותר, בלי לנקוב בשם."
         },
         {
           "letters": "רצ",
@@ -256,9 +281,10 @@
         }
       ],
       "totals": {
-        "none": 39,
         "meir": 51,
-        "unknown": 30
+        "other": 5,
+        "none": 39,
+        "unknown": 25
       },
       "cites": [
         {
@@ -277,10 +303,37 @@
       "notes": [
         "Conditions set in the consultations are not counted as recommendations. “Unknown” does not mean that no recommendation was made.",
         "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved.",
-        "Consultation day confirmed as 16 January by the original JTA bulletin (17 January 1974, p.3), whose dateline is JERUSALEM, Jan. 16 and says met separately today. This is reported contemporary press evidence, not an official consultation transcript."
+        "Consultation day confirmed as 16 January by the original JTA bulletin (17 January 1974, p.3), whose dateline is JERUSALEM, Jan. 16 and says met separately today. This is reported contemporary press evidence, not an official consultation transcript.",
+        "The Religious Torah Front pointed to the Alignment, not to a person (Davar, 21 January 1974, p. 2)."
       ],
       "endDate": "1974-01-30",
-      "blocSchemeRef": "pm-recommendations"
+      "blocSchemeRef": "pm-recommendations",
+      "pagesRead": [
+        {
+          "paper": "Davar",
+          "date": "1974-01-17",
+          "page": 2,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1974/01/17/01/page/2"
+        },
+        {
+          "paper": "Davar",
+          "date": "1974-01-18",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1974/01/18/01/page/1"
+        },
+        {
+          "paper": "Davar",
+          "date": "1974-01-21",
+          "page": 2,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1974/01/21/01/page/2"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1974-01-21",
+          "page": 2,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1974/01/21/01/page/2"
+        }
+      ]
     }
   ],
   "formation": {

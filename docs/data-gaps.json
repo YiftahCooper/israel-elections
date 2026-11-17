@@ -1,30 +1,30 @@
 {
   "schemaVersion": 3,
-  "total": 12463,
+  "total": 12461,
   "counts": {
-    "unknown": 7424,
+    "unknown": 7397,
     "missing-field": 283,
-    "conflict": 17,
-    "single-source": 2925,
+    "conflict": 19,
+    "single-source": 2936,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1173,
     "pending": 357,
-    "unconfirmed": 183
+    "unconfirmed": 195
   },
   "countsByStatus": {
     "inferred-not-verified": 1034,
     "needs-current-status-review": 319,
-    "open": 11110
+    "open": 11108
   },
   "countsByImportance": {
     "high": {
-      "total": 827,
+      "total": 825,
       "confirmed": 412,
-      "probable": 34,
-      "provisional": 127,
-      "disputed": 9,
-      "unknown": 245
+      "probable": 46,
+      "provisional": 138,
+      "disputed": 11,
+      "unknown": 218
     },
     "medium": {
       "total": 4483,
@@ -51,11 +51,11 @@
   },
   "claimCertainty": {
     "Recommendations": {
-      "confirmed": 78,
-      "probable": 56,
-      "provisional": 67,
-      "disputed": 0,
-      "unknown": 105
+      "confirmed": 80,
+      "probable": 68,
+      "provisional": 78,
+      "disputed": 2,
+      "unknown": 78
     },
     "Government roles": {
       "confirmed": 189,
@@ -100,10 +100,10 @@
       "mediumOpen": 99,
       "low": 177,
       "counts": {
-        "unknown": 191,
+        "unknown": 189,
         "missing-field": 12,
         "conflict": 2,
-        "single-source": 81,
+        "single-source": 83,
         "low-confidence": 4,
         "release-hold": 0,
         "inferred": 22,
@@ -131,15 +131,15 @@
     },
     {
       "election": "k3",
-      "total": 296,
-      "highOpen": 26,
+      "total": 295,
+      "highOpen": 25,
       "mediumOpen": 74,
       "low": 160,
       "counts": {
-        "unknown": 187,
+        "unknown": 184,
         "missing-field": 12,
-        "conflict": 0,
-        "single-source": 63,
+        "conflict": 1,
+        "single-source": 64,
         "low-confidence": 4,
         "release-hold": 0,
         "inferred": 19,
@@ -167,12 +167,12 @@
     },
     {
       "election": "k5",
-      "total": 297,
-      "highOpen": 35,
+      "total": 296,
+      "highOpen": 34,
       "mediumOpen": 72,
       "low": 152,
       "counts": {
-        "unknown": 191,
+        "unknown": 189,
         "missing-field": 11,
         "conflict": 0,
         "single-source": 62,
@@ -180,7 +180,7 @@
         "release-hold": 0,
         "inferred": 19,
         "pending": 9,
-        "unconfirmed": 3
+        "unconfirmed": 4
       }
     },
     {
@@ -190,10 +190,10 @@
       "mediumOpen": 80,
       "low": 161,
       "counts": {
-        "unknown": 192,
+        "unknown": 189,
         "missing-field": 13,
         "conflict": 0,
-        "single-source": 69,
+        "single-source": 72,
         "low-confidence": 5,
         "release-hold": 0,
         "inferred": 18,
@@ -226,10 +226,10 @@
       "mediumOpen": 96,
       "low": 174,
       "counts": {
-        "unknown": 207,
+        "unknown": 206,
         "missing-field": 9,
         "conflict": 0,
-        "single-source": 100,
+        "single-source": 101,
         "low-confidence": 7,
         "release-hold": 0,
         "inferred": 20,
@@ -247,12 +247,12 @@
         "unknown": 213,
         "missing-field": 12,
         "conflict": 1,
-        "single-source": 117,
+        "single-source": 112,
         "low-confidence": 9,
         "release-hold": 0,
         "inferred": 36,
         "pending": 11,
-        "unconfirmed": 10
+        "unconfirmed": 15
       }
     },
     {
@@ -262,10 +262,10 @@
       "mediumOpen": 111,
       "low": 171,
       "counts": {
-        "unknown": 213,
+        "unknown": 207,
         "missing-field": 13,
         "conflict": 0,
-        "single-source": 93,
+        "single-source": 99,
         "low-confidence": 3,
         "release-hold": 0,
         "inferred": 18,
@@ -283,12 +283,12 @@
         "unknown": 227,
         "missing-field": 18,
         "conflict": 1,
-        "single-source": 120,
+        "single-source": 118,
         "low-confidence": 6,
         "release-hold": 0,
         "inferred": 40,
         "pending": 15,
-        "unconfirmed": 4
+        "unconfirmed": 6
       }
     },
     {
@@ -298,7 +298,7 @@
       "mediumOpen": 122,
       "low": 183,
       "counts": {
-        "unknown": 211,
+        "unknown": 208,
         "missing-field": 18,
         "conflict": 1,
         "single-source": 106,
@@ -306,7 +306,7 @@
         "release-hold": 0,
         "inferred": 31,
         "pending": 14,
-        "unconfirmed": 7
+        "unconfirmed": 10
       }
     },
     {
@@ -316,15 +316,15 @@
       "mediumOpen": 116,
       "low": 146,
       "counts": {
-        "unknown": 211,
+        "unknown": 204,
         "missing-field": 12,
-        "conflict": 0,
-        "single-source": 55,
+        "conflict": 1,
+        "single-source": 60,
         "low-confidence": 2,
         "release-hold": 0,
         "inferred": 26,
         "pending": 11,
-        "unconfirmed": 6
+        "unconfirmed": 7
       }
     },
     {
@@ -645,14 +645,14 @@
     {"election":"k14","area":"data/meta/election-context.json pmContests","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":["pm1996"],"file":"data/meta/election-context.json"},
     {"election":"k14","area":"Investiture reconciliation","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k14.json"},
     {"election":"k14","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k14.json"},
-    {"election":"k13","area":"Recommendations","count":9,"certainty":{"provisional":1,"unknown":8},"kinds":{"unknown":8,"single-source":1},"labels":["מרצ","אמת","ב","ג","ו","ט","מחל","ע","שס"],"file":"data/meta/aftermath/k13.json"},
+    {"election":"k13","area":"Recommendations","count":9,"certainty":{"probable":1,"provisional":6,"disputed":1,"unknown":1},"kinds":{"unknown":1,"conflict":1,"single-source":6,"unconfirmed":1},"labels":["שס","ב","ג","ו","ט","מחל","ע","מרצ","אמת"],"disputed":["Sources disagree. Hadashot says Shas recommended no one, because Rabin had not invited it into his government; Amigoe re"],"file":"data/meta/aftermath/k13.json"},
     {"election":"k13","area":"Later governments","count":6,"certainty":{"provisional":1,"unknown":5},"kinds":{"unknown":5,"single-source":1},"labels":["אמת"],"file":"data/meta/aftermath/k13.json"},
     {"election":"k13","area":"Formation events","count":2,"certainty":{"probable":1,"provisional":1},"kinds":{"single-source":1,"unconfirmed":1},"labels":["consultations 1992-06-28","mandate-given 1992-07-02"],"file":"data/meta/aftermath/k13.json"},
     {"election":"k13","area":"data/raw/kN/national.reviewed.json agreements.sourceId","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k13/national.reviewed.json"},
     {"election":"k13","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k13.json"},
     {"election":"k13","area":"Recommendation rounds","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":["r1"],"file":"data/meta/aftermath/k13.json"},
     {"election":"k12","area":"Later governments","count":9,"certainty":{"provisional":2,"disputed":1,"unknown":6},"kinds":{"unknown":6,"conflict":1,"single-source":1,"unconfirmed":1},"labels":["ב","שס","avraham-verdiger","eliezer-mizrachi"],"disputed":["Disputed. A report of the time (JTA) says he backed the government under a separate deal; a later study (Etta Bick, 1995"],"file":"data/meta/aftermath/k12.json"},
-    {"election":"k12","area":"Recommendations","count":4,"certainty":{"probable":1,"unknown":3},"kinds":{"unknown":3,"unconfirmed":1},"labels":["עץ","ו","פ","ע"],"file":"data/meta/aftermath/k12.json"},
+    {"election":"k12","area":"Recommendations","count":4,"certainty":{"probable":4},"kinds":{"unconfirmed":4},"labels":["ו","פ","ע","עץ"],"file":"data/meta/aftermath/k12.json"},
     {"election":"k12","area":"Coalition seat total","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k12.json"},
     {"election":"k12","area":"data/raw/kN/national.reviewed.json gazetteTotals.registered","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k12/national.reviewed.json"},
     {"election":"k12","area":"data/raw/kN/national.reviewed.json gazetteTotals.votesCast","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k12/national.reviewed.json"},
@@ -662,7 +662,7 @@
     {"election":"k12","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k12.json"},
     {"election":"k12","area":"Outside-support seat total","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k12.json"},
     {"election":"k11","area":"Formation conflicts","count":2,"certainty":{"provisional":1,"disputed":1},"kinds":{"conflict":1,"single-source":1},"labels":[],"disputed":["Investiture sitting versus oath after midnight"],"file":"data/meta/aftermath/k11.json"},
-    {"election":"k11","area":"Recommendations","count":14,"certainty":{"provisional":14},"kinds":{"single-source":14},"labels":["אמת","ו","רצ","ט","הן","פ","יש","מחל","ת","שס","ג","עד","ב","ני"],"file":"data/meta/aftermath/k11.json"},
+    {"election":"k11","area":"Recommendations","count":14,"certainty":{"probable":2,"provisional":12},"kinds":{"single-source":12,"unconfirmed":2},"labels":["אמת","ו","רצ","ט","הן","פ","יש","מחל","ת","שס","עד","ב","ג","ני"],"file":"data/meta/aftermath/k11.json"},
     {"election":"k11","area":"Later governments","count":8,"certainty":{"unknown":8},"kinds":{"unknown":8},"labels":["government-succession 1986-10-20","אמת","שס","ב"],"file":"data/meta/aftermath/k11.json"},
     {"election":"k11","area":"Individual MKs","count":7,"certainty":{"unknown":7},"kinds":{"unknown":7},"labels":["amira-sartani","elazar-granot","haika-grossman","muhammad-wattad","victor-shemtov","yair-tsaban","yossi-sarid"],"file":"data/meta/aftermath/k11.json"},
     {"election":"k11","area":"data/raw/kN/national.reviewed.json gazetteTotals.registered","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k11/national.reviewed.json"},
@@ -672,20 +672,20 @@
     {"election":"k11","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k11.json"},
     {"election":"k11","area":"Recommendation rounds","count":1,"certainty":{"probable":1},"kinds":{"unconfirmed":1},"labels":["r1"],"file":"data/meta/aftermath/k11.json"},
     {"election":"k10","area":"Later governments","count":7,"certainty":{"unknown":7},"kinds":{"unknown":7},"labels":["ת","ני","ב"],"file":"data/meta/aftermath/k10.json"},
-    {"election":"k10","area":"Recommendations","count":6,"certainty":{"unknown":6},"kinds":{"unknown":6},"labels":["אמת","ו","ת","כן","הן","רצ"],"file":"data/meta/aftermath/k10.json"},
+    {"election":"k10","area":"Recommendations","count":6,"certainty":{"provisional":6},"kinds":{"single-source":6},"labels":["אמת","ו","ת","כן","הן","רצ"],"file":"data/meta/aftermath/k10.json"},
     {"election":"k10","area":"Formation events","count":2,"certainty":{"probable":2},"kinds":{"single-source":1,"unconfirmed":1},"labels":["consultations 1981-07-13","mandate-given 1981-07-15"],"file":"data/meta/aftermath/k10.json"},
     {"election":"k10","area":"data/raw/kN/national.reviewed.json gazetteTotals.registered","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k10/national.reviewed.json"},
     {"election":"k10","area":"data/raw/kN/national.reviewed.json gazetteTotals.votesCast","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k10/national.reviewed.json"},
     {"election":"k10","area":"Formation conflicts","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k10.json"},
     {"election":"k9","area":"Formation conflicts","count":2,"certainty":{"provisional":1,"disputed":1},"kinds":{"conflict":1,"single-source":1},"labels":[],"disputed":["Date of the ministers' oath"],"file":"data/meta/aftermath/k9.json"},
-    {"election":"k9","area":"Recommendations","count":13,"certainty":{"provisional":9,"unknown":4},"kinds":{"unknown":4,"single-source":9},"labels":["מחל","אמת","יש","ב","ו","ג","כנ","ש","פש","ד","לע","רצ","ימ"],"file":"data/meta/aftermath/k9.json"},
+    {"election":"k9","area":"Recommendations","count":13,"certainty":{"probable":5,"provisional":4,"unknown":4},"kinds":{"unknown":4,"single-source":4,"unconfirmed":5},"labels":["מחל","אמת","יש","ב","ו","ג","כנ","ש","פש","ד","לע","רצ","ימ"],"file":"data/meta/aftermath/k9.json"},
     {"election":"k9","area":"Bloc schemes","count":1,"certainty":{"unknown":1},"kinds":{"single-source":1},"labels":["labour-affiliated-arab-lists"],"file":"data/meta/k9.json"},
     {"election":"k9","area":"data/raw/kN/national.reviewed.json gazetteTotals.registered","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k9/national.reviewed.json"},
     {"election":"k9","area":"data/raw/kN/national.reviewed.json gazetteTotals.votesCast","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k9/national.reviewed.json"},
     {"election":"k9","area":"Formation events","count":1,"certainty":{"provisional":1},"kinds":{"unconfirmed":1},"labels":["consultations 1977-05-30"],"file":"data/meta/aftermath/k9.json"},
     {"election":"k9","area":"Government roles","count":1,"certainty":{"probable":1},"kinds":{"unconfirmed":1},"labels":["פש"],"file":"data/meta/aftermath/k9.json"},
     {"election":"k9","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k9.json"},
-    {"election":"k8","area":"Recommendations","count":10,"certainty":{"provisional":2,"unknown":8},"kinds":{"unknown":8,"single-source":2},"labels":["חל טעם","אמת","גד","רצ","ב","ו","לע","עא","רא","קנ"],"file":"data/meta/aftermath/k8.json"},
+    {"election":"k8","area":"Recommendations","count":10,"certainty":{"provisional":3,"unknown":7},"kinds":{"unknown":7,"single-source":3},"labels":["חל טעם","אמת","גד","רצ","ב","ו","לע","עא","רא","קנ"],"file":"data/meta/aftermath/k8.json"},
     {"election":"k8","area":"data/raw/kN/agreements.proposed.json agreementsEvidence.transcription","count":3,"certainty":{"unknown":3},"kinds":{"unknown":3},"labels":[],"file":"data/raw/k8/agreements.proposed.json"},
     {"election":"k8","area":"Government roles","count":2,"certainty":{"unknown":2},"kinds":{"unknown":2},"labels":["רא","עא"],"file":"data/meta/aftermath/k8.json"},
     {"election":"k8","area":"Coalition seat total","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k8.json"},
@@ -698,7 +698,7 @@
     {"election":"k7","area":"Recommendations","count":13,"certainty":{"provisional":7,"unknown":6},"kinds":{"unknown":6,"single-source":7},"labels":["אמת","חל","ב","לע","רא","ד","יא","ג","עמ","ו","ש","ק","ט"],"file":"data/meta/aftermath/k7.json"},
     {"election":"k7","area":"Investiture reconciliation","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k7.json"},
     {"election":"k7","area":"Later governments","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":["coalition-withdrawal 1970-08-06"],"file":"data/meta/aftermath/k7.json"},
-    {"election":"k6","area":"Recommendations","count":13,"certainty":{"provisional":2,"unknown":11},"kinds":{"unknown":11,"single-source":2},"labels":["חל","כא","את","ב","מ","לע","ג","ו","רא","ד","יא","ש","ק"],"file":"data/meta/aftermath/k6.json"},
+    {"election":"k6","area":"Recommendations","count":13,"certainty":{"provisional":5,"unknown":8},"kinds":{"unknown":8,"single-source":5},"labels":["חל","כא","ו","רא","ד","את","ב","מ","לע","ג","יא","ש","ק"],"file":"data/meta/aftermath/k6.json"},
     {"election":"k6","area":"Later governments","count":6,"certainty":{"unknown":6},"kinds":{"unknown":6},"labels":["חל","ב"],"file":"data/meta/aftermath/k6.json"},
     {"election":"k6","area":"Government roles","count":4,"certainty":{"probable":2,"unknown":2},"kinds":{"unknown":2,"unconfirmed":2},"labels":["מ","לע","רא","יא"],"file":"data/meta/aftermath/k6.json"},
     {"election":"k6","area":"Coalition seat total","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k6.json"},
@@ -706,7 +706,7 @@
     {"election":"k6","area":"Investiture reconciliation","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k6.json"},
     {"election":"k6","area":"Outside-support seat total","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k6.json"},
     {"election":"k6","area":"Recommendation rounds","count":1,"certainty":{"provisional":1},"kinds":{"unconfirmed":1},"labels":["r1"],"file":"data/meta/aftermath/k6.json"},
-    {"election":"k5","area":"Recommendations","count":21,"certainty":{"provisional":1,"unknown":20},"kinds":{"unknown":20,"single-source":1},"labels":["א","ח","ל","ב","מ","תו","ק","ג","יא","ד","רא"],"file":"data/meta/aftermath/k5.json"},
+    {"election":"k5","area":"Recommendations","count":20,"certainty":{"probable":1,"provisional":1,"unknown":18},"kinds":{"unknown":18,"single-source":1,"unconfirmed":1},"labels":["ק","ח","ל","ב","מ","תו","ג","יא","ד","רא"],"file":"data/meta/aftermath/k5.json"},
     {"election":"k5","area":"Later governments","count":6,"certainty":{"probable":1,"unknown":5},"kinds":{"unknown":5,"single-source":1},"labels":["ד","יא","רא"],"file":"data/meta/aftermath/k5.json"},
     {"election":"k5","area":"Formation events","count":2,"certainty":{"probable":2},"kinds":{"single-source":2},"labels":["mandate-given 1961-09-06","mandate-given 1961-09-14"],"file":"data/meta/aftermath/k5.json"},
     {"election":"k5","area":"Government roles","count":2,"certainty":{"unknown":2},"kinds":{"unknown":2},"labels":["יא","רא"],"file":"data/meta/aftermath/k5.json"},
@@ -719,7 +719,7 @@
     {"election":"k4","area":"Coalition seat total","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k4.json"},
     {"election":"k4","area":"Investiture reconciliation","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k4.json"},
     {"election":"k4","area":"Outside-support seat total","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k4.json"},
-    {"election":"k3","area":"Recommendations","count":12,"certainty":{"unknown":12},"kinds":{"unknown":12},"labels":["א","ח","צ","ב","תו","מ","גד","יד","ק","נ","פ","ע"],"file":"data/meta/aftermath/k3.json"},
+    {"election":"k3","area":"Recommendations","count":11,"certainty":{"provisional":1,"disputed":1,"unknown":9},"kinds":{"unknown":9,"conflict":1,"single-source":1},"labels":["ב","א","צ","תו","מ","גד","יד","ק","נ","פ","ע"],"disputed":["Sources disagree. Davar says the Hapoel HaMizrachi delegation supported Ben-Gurion as prime minister; the Jewish Telegra"],"file":"data/meta/aftermath/k3.json"},
     {"election":"k3","area":"Later governments","count":6,"certainty":{"unknown":6},"kinds":{"unknown":6},"labels":["יד","נ","ע"],"file":"data/meta/aftermath/k3.json"},
     {"election":"k3","area":"Government roles","count":3,"certainty":{"unknown":3},"kinds":{"unknown":3},"labels":["יד","נ","ע"],"file":"data/meta/aftermath/k3.json"},
     {"election":"k3","area":"Coalition seat total","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k3.json"},
@@ -736,7 +736,7 @@
     {"election":"k2","area":"Outside-support seat total","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k2.json"},
     {"election":"k2","area":"Recommendation rounds","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":["r1"],"file":"data/meta/aftermath/k2.json"},
     {"election":"k1","area":"Government roles","count":3,"certainty":{"probable":1,"disputed":2},"kinds":{"conflict":2,"unconfirmed":1},"labels":["נ","ל","יד"],"disputed":["Disputed. Ofira Gruweis Kovalsky’s study (2021) says WIZO followed the Progressives into Ben-Gurion’s coalition. Galnoor","Galnoor and Blander place the Yemenite Association inside the coalition; Israel Democracy Institute’s five-party, 73-sea"],"file":"data/meta/aftermath/k1.json"},
-    {"election":"k1","area":"Recommendations","count":12,"certainty":{"unknown":12},"kinds":{"unknown":12},"labels":["א","מ","ב","ח","צ","פ","ס","ק","יד","טו","נ","ל"],"file":"data/meta/aftermath/k1.json"},
+    {"election":"k1","area":"Recommendations","count":12,"certainty":{"provisional":2,"unknown":10},"kinds":{"unknown":10,"single-source":2},"labels":["א","ס","מ","ב","ח","צ","פ","ק","יד","טו","נ","ל"],"file":"data/meta/aftermath/k1.json"},
     {"election":"k1","area":"Later governments","count":4,"certainty":{"unknown":4},"kinds":{"unknown":4},"labels":["יד"],"file":"data/meta/aftermath/k1.json"},
     {"election":"k1","area":"Bloc schemes","count":1,"certainty":{"probable":1},"kinds":{"single-source":1},"labels":["labour-affiliated-arab-lists"],"file":"data/meta/k1.json"},
     {"election":"k1","area":"Formation events","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":["consultations 1949-02"],"file":"data/meta/aftermath/k1.json"},
@@ -1132,5 +1132,21 @@
     {"area":"data/raw/research/kN-term-boundary.json record","count":1,"open":1},
     {"area":"data/raw/research/MANIFEST.json note","count":1,"open":1},
     {"area":"data/raw/research/mk-runs-1109.reviewed.json coverageReview","count":1,"open":1}
+  ],
+  "searches": [
+    {"election":"k1","round":"r1","pages":["Davar, 22 February 1949, p. 1","Davar, 23 February 1949, p. 1","Maariv, 23 February 1949, p. 1"],"stillUnknown":["מ","ב","ח","צ","פ","ק","יד","טו","נ","ל"]},
+    {"election":"k2","round":"r1","pages":["Davar, 14 August 1951, p. 1","Maariv, 14 August 1951, p. 1","Davar, 15 August 1951, p. 1"],"stillUnknown":["א","צ","מ","ו","ח","ק","פ","יד","ג","סצ","ב","ד","נ","ל","ע"]},
+    {"election":"k3","round":"r1","pages":["Davar, 17 August 1955, p. 1","Maariv, 17 August 1955, p. 1","Maariv, 17 August 1955, p. 2","Davar, 18 August 1955, p. 1","Davar, 18 August 1955, p. 2","Maariv, 18 August 1955, p. 1"],"stillUnknown":["צ","תו","מ","גד","יד","ק","נ","פ","ע"]},
+    {"election":"k4","round":"r1","pages":["Davar, 9 December 1959, p. 1","Davar, 9 December 1959, p. 2","Maariv, 9 December 1959, p. 1"],"stillUnknown":[]},
+    {"election":"k5","round":"r1","pages":["Davar, 6 September 1961, p. 1","Maariv, 6 September 1961, p. 1","Maariv, 6 September 1961, p. 2","Davar, 7 September 1961, p. 1","Maariv, 7 September 1961, p. 1","Maariv, 7 September 1961, p. 2","Maariv, 15 September 1961, p. 1","Maariv, 15 September 1961, p. 2"],"stillUnknown":["ל","ב","מ","תו","ג","יא","ד","רא"]},
+    {"election":"k5","round":"r2","pages":["Maariv, 6 September 1961, p. 1","Maariv, 6 September 1961, p. 2","Maariv, 7 September 1961, p. 1","Maariv, 7 September 1961, p. 2","Davar, 15 September 1961, p. 1","Maariv, 15 September 1961, p. 1","Maariv, 15 September 1961, p. 2"],"stillUnknown":["ח","ל","ב","מ","תו","ק","ג","יא","ד","רא"]},
+    {"election":"k6","round":"r1","pages":["Davar, 26 November 1965, p. 1","Davar, 26 November 1965, p. 2","Maariv, 26 November 1965, p. 2"],"stillUnknown":["את","ב","מ","לע","ג","יא","ש","ק"]},
+    {"election":"k7","round":"r1","pages":["Davar, 7 November 1969, p. 1","Davar, 10 November 1969, p. 1","Davar, 10 November 1969, p. 2"],"stillUnknown":["ג","עמ","ו","ש","ק","ט"]},
+    {"election":"k8","round":"r1","pages":["Davar, 17 January 1974, p. 2","Davar, 18 January 1974, p. 1","Davar, 21 January 1974, p. 2","Maariv, 21 January 1974, p. 2"],"stillUnknown":["רצ","ב","ו","לע","עא","רא","קנ"]},
+    {"election":"k9","round":"r1","pages":["Davar, 3 June 1977, p. 1","Davar, 3 June 1977, p. 2","Maariv, 3 June 1977, p. 2","Davar, 6 June 1977, p. 1"],"stillUnknown":["ד","לע","רצ","ימ"]},
+    {"election":"k10","round":"r1","pages":["Davar, 14 July 1981, p. 1","Davar, 14 July 1981, p. 2","Davar, 15 July 1981, p. 1"],"stillUnknown":[],"note":"Maariv of 15 July 1981, p. 2, could not be opened."},
+    {"election":"k11","round":"r1","pages":["Davar, 5 August 1984, p. 1","Davar, 5 August 1984, p. 2","Maariv, 5 August 1984, p. 2"],"stillUnknown":[]},
+    {"election":"k12","round":"r1","pages":["Hadashot, 8 November 1988, p. 3","Maariv, 8 November 1988, p. 3","Hadashot, 9 November 1988, p. 3","Maariv, 9 November 1988, p. 3","Maariv, 10 November 1988, p. 3","Hadashot, 11 November 1988, p. 3","Maariv, 11 November 1988, p. 3","Maariv, 11 November 1988, p. 4"],"stillUnknown":[],"note":"Davar’s online archive ends in June 1985, so Davar could not be read for 1988; Hadashot of 10 November 1988 could not be opened."},
+    {"election":"k13","round":"r1","pages":["Hadashot, 29 June 1992, p. 3","Jewish Telegraphic Agency, 29 June 1992","Hadashot, 30 June 1992, p. 1","Hadashot, 30 June 1992, p. 5","Hadashot, 1 July 1992, p. 1","Hadashot, 1 July 1992, p. 5","Hadashot, 1 July 1992, p. 7","Jewish Telegraphic Agency, 2 July 1992","Jewish Telegraphic Agency, 3 July 1992"],"stillUnknown":["אמת"],"note":"Davar’s online archive ends in June 1985, so Davar could not be read for 1992; Maariv of 30 June and 1 July 1992, p. 3, could not be opened. Hadashot of 29 June 1992, p. 3, has Hadash’s promise to recommend Rabin, before the meeting."}
   ]
 }

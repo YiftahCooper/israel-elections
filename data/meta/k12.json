@@ -488,9 +488,15 @@
             },
             {
               "letters": "הן"
+            },
+            {
+              "letters": "ו"
+            },
+            {
+              "letters": "ע"
             }
           ],
-          "seats": 49
+          "seats": 54
         },
         {
           "id": "none",
@@ -506,25 +512,17 @@
           "seats": 2
         },
         {
-          "id": "unstated",
-          "nameHe": "לא מצוין במקור",
-          "nameEn": "Not stated in source",
-          "color": "#cccccc",
+          "id": "other",
+          "nameHe": "אחר: לא נקבו בשם",
+          "nameEn": "Other: no person named",
+          "color": "#8d6e97",
           "members": [
             {
-              "letters": "ו",
-              "note": "No usable source from the time has been found yet."
-            },
-            {
               "letters": "פ",
-              "note": "No usable source from the time has been found yet."
-            },
-            {
-              "letters": "ע",
-              "note": "No usable source from the time has been found yet."
+              "note": "Muhammad Miari backed the Alignment’s candidate without naming Peres (Hadashot and Maariv, 11 November 1988)."
             }
           ],
-          "seats": 6
+          "seats": 1
         }
       ],
       "sources": [
@@ -562,10 +560,31 @@
           "kind": "secondary",
           "quote": "il Degel Hatorah dal canto suo ha deciso di non indicare per l'incarico di premier né Sha- mir né Peres.",
           "accessed": "2026-11-12"
+        },
+        {
+          "url": "https://www.nli.org.il/en/newspapers/mar/1988/11/08/01/page/3",
+          "publisher": "Maariv, 8 November 1988, p. 3",
+          "kind": "secondary",
+          "quote": "הצענו לנשיא להטיל את הרכבת הממשלה על שמיר",
+          "accessed": "2026-11-17"
+        },
+        {
+          "url": "https://www.nli.org.il/en/newspapers/hadashot/1988/11/11/01/page/3",
+          "publisher": "Hadashot, 11 November 1988, p. 3",
+          "kind": "secondary",
+          "quote": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל.",
+          "accessed": "2026-11-17"
+        },
+        {
+          "url": "https://www.nli.org.il/en/newspapers/mar/1988/11/11/01/page/4",
+          "publisher": "Maariv, 11 November 1988, p. 4",
+          "kind": "secondary",
+          "quote": "והמועמד שלנו הוא איש המערך",
+          "accessed": "2026-11-17"
         }
       ],
       "notes": [
-        "Reports of the time give 63 for Shamir and 55 for Peres; a total is not split among the lists. Degel HaTorah (2 seats) recommended neither candidate (probable: l’Unità, 14 November 1988, and United Press International). What Hadash, the Progressive List for Peace and the Arab Democratic Party (6 seats) told the President is not known: no usable source from the time has been found yet. The President’s consultation file for 7–13 November 1988 would decide it. Same classification as the After the election screen."
+        "Reports of the time give 63 for Shamir and 55 for Peres; a total is not split among the lists. Hadashot and Maariv (8–11 November 1988) name each list: Hadash and the Arab Democratic Party recommended Peres; the Progressive List for Peace backed the Alignment’s candidate without naming Peres. Degel HaTorah (2 seats) recommended neither candidate (probable: l’Unità, 14 November 1988, and United Press International). Same classification as the After the election screen."
       ]
     }
   ],

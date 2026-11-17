@@ -207,6 +207,22 @@
       "kind": "academic",
       "accessed": "2026-11-16",
       "evidenceFamily": "author:bradley"
+    },
+    "davar-1984-08-05-p1": {
+      "url": "https://www.nli.org.il/en/newspapers/dav/1984/08/05/01/page/1",
+      "publisher": "Davar, 5 August 1984, p. 1",
+      "publisherHe": "דבר, 5 באוגוסט 1984, עמ׳ 1",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:davar",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "07ba534de4db75ee5ca4bebd3e7def6945d78092621326a26592dc2c0b475f32",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T07:00:43.446Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1781-www.nli.org.il/page.html"
     }
   },
   "results": {
@@ -368,6 +384,11 @@
             {
               "source": "jta1984mandate",
               "quote": "The Likud, Tehiya, Shas, Aguda Israel and Morasha asked Herzog to give Shamir the first chance to form a government."
+            },
+            {
+              "source": "davar-1984-08-05-p1",
+              "quote": "ביקשו להטיל את הרכבת הממשלה על יצחק שמיר.",
+              "ocr": "ביקשו להטיל את הרכבת הממשלה על יצחק שמיר."
             }
           ]
         },
@@ -402,6 +423,11 @@
             {
               "source": "jta1984mandate",
               "quote": "The National Religious Party (NRP) and Tami asked merely that a national unity government be formed."
+            },
+            {
+              "source": "davar-1984-08-05-p1",
+              "quote": "לא המלצנו על מי יטיל הנשיא",
+              "ocr": "לא המלצנו על מי יטיל הנשיא אח הרכבת הממשלה אלא השארנו זאת לשיקול דעתו"
             }
           ]
         },
@@ -453,7 +479,28 @@
       "notes": [
         "Per-list split (Alignment 44, Hadash 4, Ratz 3, Yahad 3, Shinui 3, Progressive List 2, Ometz 1 = 60; Likud 41, Tehiya–Tzomet 5, Shas 4, Agudat Yisrael 2, Morasha 2 = 54) matches JTA's contemporary totals; El País counted 59 for Labor (it groups Yahad and Ometz as 'three'), recorded as a source conflict. Recommendations were made on Friday 3 August 1984; Herzog gave Peres the mandate on 5 August. The rotation agreement (Shamir to take over after 25 months) came later and is not a recommendation.",
         "Upgrade: JTA 6 August 1984 names every faction on each side, including Ometz/Hurwitz and the unity-government positions; the per-list classification no longer depends solely on Hebrew Wikipedia. Kach was not invited, not an explicit refusal to recommend.",
-        "A later book, Abraham Diskin’s chapter in Israel at the Polls 2009 (Routledge, 2011), p. 61, says 60 MKs backed Peres and 60 backed Shamir. The reports of the time (JTA, 6 and 7 August 1984) give 60 and 54, and this record keeps their figures."
+        "A later book, Abraham Diskin’s chapter in Israel at the Polls 2009 (Routledge, 2011), p. 61, says 60 MKs backed Peres and 60 backed Shamir. The reports of the time (JTA, 6 and 7 August 1984) give 60 and 54, and this record keeps their figures.",
+        "Davar (5 August 1984) independently reports Agudat Yisrael asking for Shamir and Tami’s Aharon Abuhatzeira saying it recommended no one and left the choice to the President."
+      ],
+      "pagesRead": [
+        {
+          "paper": "Davar",
+          "date": "1984-08-05",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1984/08/05/01/page/1"
+        },
+        {
+          "paper": "Davar",
+          "date": "1984-08-05",
+          "page": 2,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1984/08/05/01/page/2"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1984-08-05",
+          "page": 2,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1984/08/05/01/page/2"
+        }
       ]
     }
   ],

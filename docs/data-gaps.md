@@ -1,8 +1,8 @@
 # Data gaps register
 
-12463 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
+12461 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
 
-- High importance: 827 (confirmed 412, probable 34, provisional 127, disputed 9, unknown 245).
+- High importance: 825 (confirmed 412, probable 46, provisional 138, disputed 11, unknown 218).
 - Medium importance: 4483 (confirmed 1035, probable 248, provisional 182, disputed 8, unknown 2422, family placements: follows scholarship 103, the project’s own judgement 385, sources disagree 15, not yet checked 85).
 - Low importance: 7153 (confirmed 572, provisional 802, unknown 5779).
 
@@ -118,7 +118,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 
 ### k13
 
-- [Recommendations](../data/meta/aftermath/k13.json) ×9: provisional 1, unknown 8. מרצ, אמת, ב, ג, ו, ט, מחל, ע, שס
+- [Recommendations](../data/meta/aftermath/k13.json) ×9: probable 1, provisional 6, disputed 1, unknown 1. שס, ב, ג, ו, ט, מחל, ע, מרצ, אמת. Disputed: Sources disagree. Hadashot says Shas recommended no one, because Rabin had not invited it into his government; Amigoe re
 - [Later governments](../data/meta/aftermath/k13.json) ×6: provisional 1, unknown 5. אמת
 - [Formation events](../data/meta/aftermath/k13.json) ×2: probable 1, provisional 1. consultations 1992-06-28, mandate-given 1992-07-02
 - [data/raw/kN/national.reviewed.json agreements.sourceId](../data/raw/k13/national.reviewed.json) ×1: unknown 1
@@ -128,7 +128,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 ### k12
 
 - [Later governments](../data/meta/aftermath/k12.json) ×9: provisional 2, disputed 1, unknown 6. ב, שס, avraham-verdiger, eliezer-mizrachi. Disputed: Disputed. A report of the time (JTA) says he backed the government under a separate deal; a later study (Etta Bick, 1995
-- [Recommendations](../data/meta/aftermath/k12.json) ×4: probable 1, unknown 3. עץ, ו, פ, ע
+- [Recommendations](../data/meta/aftermath/k12.json) ×4: probable 4. ו, פ, ע, עץ
 - [Coalition seat total](../data/meta/aftermath/k12.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k12/national.reviewed.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k12/national.reviewed.json) ×1: unknown 1
@@ -141,7 +141,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 ### k11
 
 - [Formation conflicts](../data/meta/aftermath/k11.json) ×2: provisional 1, disputed 1. Disputed: Investiture sitting versus oath after midnight
-- [Recommendations](../data/meta/aftermath/k11.json) ×14: provisional 14. אמת, ו, רצ, ט, הן, פ, יש, מחל, ת, שס, ג, עד, ב, ני
+- [Recommendations](../data/meta/aftermath/k11.json) ×14: probable 2, provisional 12. אמת, ו, רצ, ט, הן, פ, יש, מחל, ת, שס, עד, ב, ג, ני
 - [Later governments](../data/meta/aftermath/k11.json) ×8: unknown 8. government-succession 1986-10-20, אמת, שס, ב
 - [Individual MKs](../data/meta/aftermath/k11.json) ×7: unknown 7. amira-sartani, elazar-granot, haika-grossman, muhammad-wattad, victor-shemtov, yair-tsaban, yossi-sarid
 - [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k11/national.reviewed.json) ×1: unknown 1
@@ -154,7 +154,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 ### k10
 
 - [Later governments](../data/meta/aftermath/k10.json) ×7: unknown 7. ת, ני, ב
-- [Recommendations](../data/meta/aftermath/k10.json) ×6: unknown 6. אמת, ו, ת, כן, הן, רצ
+- [Recommendations](../data/meta/aftermath/k10.json) ×6: provisional 6. אמת, ו, ת, כן, הן, רצ
 - [Formation events](../data/meta/aftermath/k10.json) ×2: probable 2. consultations 1981-07-13, mandate-given 1981-07-15
 - [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k10/national.reviewed.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k10/national.reviewed.json) ×1: unknown 1
@@ -163,7 +163,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 ### k9
 
 - [Formation conflicts](../data/meta/aftermath/k9.json) ×2: provisional 1, disputed 1. Disputed: Date of the ministers' oath
-- [Recommendations](../data/meta/aftermath/k9.json) ×13: provisional 9, unknown 4. מחל, אמת, יש, ב, ו, ג, כנ, ש, פש, ד, לע, רצ, ימ
+- [Recommendations](../data/meta/aftermath/k9.json) ×13: probable 5, provisional 4, unknown 4. מחל, אמת, יש, ב, ו, ג, כנ, ש, פש, ד, לע, רצ, ימ
 - [Bloc schemes](../data/meta/k9.json) ×1: unknown 1. labour-affiliated-arab-lists
 - [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k9/national.reviewed.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k9/national.reviewed.json) ×1: unknown 1
@@ -173,7 +173,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 
 ### k8
 
-- [Recommendations](../data/meta/aftermath/k8.json) ×10: provisional 2, unknown 8. חל טעם, אמת, גד, רצ, ב, ו, לע, עא, רא, קנ
+- [Recommendations](../data/meta/aftermath/k8.json) ×10: provisional 3, unknown 7. חל טעם, אמת, גד, רצ, ב, ו, לע, עא, רא, קנ
 - [data/raw/kN/agreements.proposed.json agreementsEvidence.transcription](../data/raw/k8/agreements.proposed.json) ×3: unknown 3
 - [Government roles](../data/meta/aftermath/k8.json) ×2: unknown 2. רא, עא
 - [Coalition seat total](../data/meta/aftermath/k8.json) ×1: unknown 1
@@ -192,7 +192,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 
 ### k6
 
-- [Recommendations](../data/meta/aftermath/k6.json) ×13: provisional 2, unknown 11. חל, כא, את, ב, מ, לע, ג, ו, רא, ד, יא, ש, ק
+- [Recommendations](../data/meta/aftermath/k6.json) ×13: provisional 5, unknown 8. חל, כא, ו, רא, ד, את, ב, מ, לע, ג, יא, ש, ק
 - [Later governments](../data/meta/aftermath/k6.json) ×6: unknown 6. חל, ב
 - [Government roles](../data/meta/aftermath/k6.json) ×4: probable 2, unknown 2. מ, לע, רא, יא
 - [Coalition seat total](../data/meta/aftermath/k6.json) ×1: unknown 1
@@ -203,7 +203,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 
 ### k5
 
-- [Recommendations](../data/meta/aftermath/k5.json) ×21: provisional 1, unknown 20. א, ח, ל, ב, מ, תו, ק, ג, יא, ד, רא
+- [Recommendations](../data/meta/aftermath/k5.json) ×20: probable 1, provisional 1, unknown 18. ק, ח, ל, ב, מ, תו, ג, יא, ד, רא
 - [Later governments](../data/meta/aftermath/k5.json) ×6: probable 1, unknown 5. ד, יא, רא
 - [Formation events](../data/meta/aftermath/k5.json) ×2: probable 2. mandate-given 1961-09-06, mandate-given 1961-09-14
 - [Government roles](../data/meta/aftermath/k5.json) ×2: unknown 2. יא, רא
@@ -222,7 +222,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 
 ### k3
 
-- [Recommendations](../data/meta/aftermath/k3.json) ×12: unknown 12. א, ח, צ, ב, תו, מ, גד, יד, ק, נ, פ, ע
+- [Recommendations](../data/meta/aftermath/k3.json) ×11: provisional 1, disputed 1, unknown 9. ב, א, צ, תו, מ, גד, יד, ק, נ, פ, ע. Disputed: Sources disagree. Davar says the Hapoel HaMizrachi delegation supported Ben-Gurion as prime minister; the Jewish Telegra
 - [Later governments](../data/meta/aftermath/k3.json) ×6: unknown 6. יד, נ, ע
 - [Government roles](../data/meta/aftermath/k3.json) ×3: unknown 3. יד, נ, ע
 - [Coalition seat total](../data/meta/aftermath/k3.json) ×1: unknown 1
@@ -245,7 +245,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 ### k1
 
 - [Government roles](../data/meta/aftermath/k1.json) ×3: probable 1, disputed 2. נ, ל, יד. Disputed: Disputed. Ofira Gruweis Kovalsky’s study (2021) says WIZO followed the Progressives into Ben-Gurion’s coalition. Galnoor; Galnoor and Blander place the Yemenite Association inside the coalition; Israel Democracy Institute’s five-party, 73-sea
-- [Recommendations](../data/meta/aftermath/k1.json) ×12: unknown 12. א, מ, ב, ח, צ, פ, ס, ק, יד, טו, נ, ל
+- [Recommendations](../data/meta/aftermath/k1.json) ×12: provisional 2, unknown 10. א, ס, מ, ב, ח, צ, פ, ק, יד, טו, נ, ל
 - [Later governments](../data/meta/aftermath/k1.json) ×4: unknown 4. יד
 - [Bloc schemes](../data/meta/k1.json) ×1: probable 1. labour-affiliated-arab-lists
 - [Formation events](../data/meta/aftermath/k1.json) ×1: provisional 1. consultations 1949-02
@@ -289,13 +289,32 @@ Display metadata, candidate trivia, raw-dump fields and provenance housekeeping.
 
 data/meta/bios/kN.json candidates 4154; Published lists 799 (567 open); data/meta/parties.json parties 567 (459 open); data/meta/kN.json colours 442; docs (prose) 300; List metadata 232 (0 open); data/raw/research/ckan-election-search.json result 164; data/raw/research/ckan-votes-knesset.json result 102; data/raw/votes-knesset.catalogue.json result 102; data/raw/kN/knesset-odata-members.json positions 50; data/raw/research/odata-elections-catalog.json result 41; data/raw/kN/knesset-odata-members.json record 26; data/meta/logos/kN.json logos 21; data/raw/polls/kN/coverage.json candidates 18; data/raw/SOURCES.json sha256 17; data/raw/party-links/overlay-corrections.reviewed.json entries 16; data/raw/SOURCES.json file 16; data/raw/kN/knesset-odata-factions.json factionMemberships 12; data/raw/kN/ratz-odata.json value 9; data/raw/research/knesset-speakers/kns-person-to-position-122.json value 9; data/raw/research/knesset-speakers/kns-person-to-position-123.json value 7; data/raw/bios/party-sources.reviewed.json sources 5; data/raw/kN/government-15-positions.json value 4; data/raw/research/mk-runs-1109.reviewed.json runs 4; data/meta/logos/README.md 3; data/raw/research/kN-term-boundary.json queries 3; data/raw/bios/identity-decisions.reviewed.json decisions 2; data/raw/kN/knesset-odata-factions.json record 2; data/raw/SOURCES.json license 2; data/raw/SOURCES.json url 2; data/raw/bios/entry-corrections.reviewed.json displayNames 1; data/raw/bios/entry-corrections.reviewed.json knessetVerified 1; data/raw/bios/knesset-odata-faction-positions.json FinishDate 1; data/raw/bios/knesset-odata-mk-positions.json FactionID 1; data/raw/bios/knesset-odata-mk-positions.json FactionName 1; data/raw/bios/knesset-odata-mk-positions.json FinishDate 1; data/raw/bios/knesset-odata-mk-positions.json KnessetNum 1; data/raw/bios/party-sources.reviewed.json links 1; data/raw/bios/party-sources.reviewed.json spotChecks 1; data/raw/bios/wikidata-israeli-parties.json dissolved 1; data/raw/bios/wikidata-israeli-parties.json inception 1; data/raw/bios/wikidata-israeli-parties.json labelHe 1; data/raw/bios/wikidata-israeli-party-members.json birth 1; data/raw/bios/wikidata-israeli-party-members.json knessetSiteId 1; data/raw/kN/knesset-odata-members.json factionMemberships 1; data/raw/party-links/overlay-corrections.reviewed.json aliases 1; data/raw/party-links/overlay-corrections.reviewed.json overlayReviewedAt 1; data/raw/research/kN-term-boundary.json dates 1; data/raw/research/kN-term-boundary.json eventSources 1; data/raw/research/kN-term-boundary.json record 1; data/raw/research/MANIFEST.json note 1; data/raw/research/mk-runs-1109.reviewed.json coverageReview 1.
 
+## Recommendation searches already done
+
+Newspaper pages and articles already read for the recommendations to the President, with the lists still not known after reading them. Read other pages, or the President’s consultation record, before reading these again. Quotes taken from these pages are the archive’s computer-read text, not yet checked against the printed page.
+
+- **k1 r1**: Davar, 22 February 1949, p. 1; Davar, 23 February 1949, p. 1; Maariv, 23 February 1949, p. 1. Still not known: מ, ב, ח, צ, פ, ק, יד, טו, נ, ל.
+- **k2 r1**: Davar, 14 August 1951, p. 1; Maariv, 14 August 1951, p. 1; Davar, 15 August 1951, p. 1. Still not known: א, צ, מ, ו, ח, ק, פ, יד, ג, סצ, ב, ד, נ, ל, ע.
+- **k3 r1**: Davar, 17 August 1955, p. 1; Maariv, 17 August 1955, p. 1; Maariv, 17 August 1955, p. 2; Davar, 18 August 1955, p. 1; Davar, 18 August 1955, p. 2; Maariv, 18 August 1955, p. 1. Still not known: צ, תו, מ, גד, יד, ק, נ, פ, ע.
+- **k4 r1**: Davar, 9 December 1959, p. 1; Davar, 9 December 1959, p. 2; Maariv, 9 December 1959, p. 1. Still not known: none.
+- **k5 r1**: Davar, 6 September 1961, p. 1; Maariv, 6 September 1961, p. 1; Maariv, 6 September 1961, p. 2; Davar, 7 September 1961, p. 1; Maariv, 7 September 1961, p. 1; Maariv, 7 September 1961, p. 2; Maariv, 15 September 1961, p. 1; Maariv, 15 September 1961, p. 2. Still not known: ל, ב, מ, תו, ג, יא, ד, רא.
+- **k5 r2**: Maariv, 6 September 1961, p. 1; Maariv, 6 September 1961, p. 2; Maariv, 7 September 1961, p. 1; Maariv, 7 September 1961, p. 2; Davar, 15 September 1961, p. 1; Maariv, 15 September 1961, p. 1; Maariv, 15 September 1961, p. 2. Still not known: ח, ל, ב, מ, תו, ק, ג, יא, ד, רא.
+- **k6 r1**: Davar, 26 November 1965, p. 1; Davar, 26 November 1965, p. 2; Maariv, 26 November 1965, p. 2. Still not known: את, ב, מ, לע, ג, יא, ש, ק.
+- **k7 r1**: Davar, 7 November 1969, p. 1; Davar, 10 November 1969, p. 1; Davar, 10 November 1969, p. 2. Still not known: ג, עמ, ו, ש, ק, ט.
+- **k8 r1**: Davar, 17 January 1974, p. 2; Davar, 18 January 1974, p. 1; Davar, 21 January 1974, p. 2; Maariv, 21 January 1974, p. 2. Still not known: רצ, ב, ו, לע, עא, רא, קנ.
+- **k9 r1**: Davar, 3 June 1977, p. 1; Davar, 3 June 1977, p. 2; Maariv, 3 June 1977, p. 2; Davar, 6 June 1977, p. 1. Still not known: ד, לע, רצ, ימ.
+- **k10 r1**: Davar, 14 July 1981, p. 1; Davar, 14 July 1981, p. 2; Davar, 15 July 1981, p. 1. Still not known: none. Maariv of 15 July 1981, p. 2, could not be opened.
+- **k11 r1**: Davar, 5 August 1984, p. 1; Davar, 5 August 1984, p. 2; Maariv, 5 August 1984, p. 2. Still not known: none.
+- **k12 r1**: Hadashot, 8 November 1988, p. 3; Maariv, 8 November 1988, p. 3; Hadashot, 9 November 1988, p. 3; Maariv, 9 November 1988, p. 3; Maariv, 10 November 1988, p. 3; Hadashot, 11 November 1988, p. 3; Maariv, 11 November 1988, p. 3; Maariv, 11 November 1988, p. 4. Still not known: none. Davar’s online archive ends in June 1985, so Davar could not be read for 1988; Hadashot of 10 November 1988 could not be opened.
+- **k13 r1**: Hadashot, 29 June 1992, p. 3; Jewish Telegraphic Agency, 29 June 1992; Hadashot, 30 June 1992, p. 1; Hadashot, 30 June 1992, p. 5; Hadashot, 1 July 1992, p. 1; Hadashot, 1 July 1992, p. 5; Hadashot, 1 July 1992, p. 7; Jewish Telegraphic Agency, 2 July 1992; Jewish Telegraphic Agency, 3 July 1992. Still not known: אמת. Davar’s online archive ends in June 1985, so Davar could not be read for 1992; Maariv of 30 June and 1 July 1992, p. 3, could not be opened. Hadashot of 29 June 1992, p. 3, has Hadash’s promise to recommend Rabin, before the meeting.
+
 ## Certainty of recorded claims
 
 Every claim in these families, not only gaps. Derived from each claim’s own sources; explicit values never exceed that ceiling (validated by `npm run data:build`).
 
 | Claims | confirmed | probable | provisional | disputed | unknown | Total |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Recommendations | 78 | 56 | 67 | 0 | 105 | 306 |
+| Recommendations | 80 | 68 | 78 | 2 | 78 | 306 |
 | Government roles | 189 | 9 | 3 | 3 | 32 | 236 |
 | Formation events | 75 | 13 | 37 | 0 | 0 | 125 |
 | Term events | 36 | 49 | 0 | 0 | 0 | 85 |
@@ -305,17 +324,17 @@ Party-family placements are the project’s classification, not facts, so they c
 
 ## Counts
 
-By kind: unknown: 7424; missing-field: 283; conflict: 17; single-source: 2925; low-confidence: 101; release-hold: 0; inferred: 1173; pending: 357; unconfirmed: 183.
+By kind: unknown: 7397; missing-field: 283; conflict: 19; single-source: 2936; low-confidence: 101; release-hold: 0; inferred: 1173; pending: 357; unconfirmed: 195.
 
-By status: inferred-not-verified: 1034; needs-current-status-review: 319; open: 11110.
+By status: inferred-not-verified: 1034; needs-current-status-review: 319; open: 11108.
 
 | Election | High open | Medium open | Low | Total |
 | --- | ---: | ---: | ---: | ---: |
 | k1 | 22 | 99 | 177 | 334 |
 | k2 | 33 | 76 | 152 | 301 |
-| k3 | 26 | 74 | 160 | 296 |
+| k3 | 25 | 74 | 160 | 295 |
 | k4 | 18 | 87 | 170 | 299 |
-| k5 | 35 | 72 | 152 | 297 |
+| k5 | 34 | 72 | 152 | 296 |
 | k6 | 28 | 80 | 161 | 313 |
 | k7 | 15 | 66 | 160 | 274 |
 | k8 | 22 | 96 | 174 | 361 |

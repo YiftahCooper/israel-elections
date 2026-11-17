@@ -69,9 +69,9 @@ function HistoryText({ text, verbatim = false }: { text: string; verbatim?: bool
   })}</>;
 }
 
-function HelpText({ data, text, cites, notes }: { data: Aftermath; text: string; cites?: Cite[]; notes?: string[] }) {
+function HelpText({ data, text, cites, notes, explanation }: { data: Aftermath; text: string; cites?: Cite[]; notes?: string[]; explanation?: string }) {
   const tail = /^(.*\s)(\S+)$/s.exec(text);
-  return <span>{tail && <HistoryText text={tail[1]} />}<span className="after-help-anchor"><HistoryText text={tail?.[2] ?? text} /> <Evidence data={data} cites={cites} notes={notes} /></span></span>;
+  return <span>{tail && <HistoryText text={tail[1]} />}<span className="after-help-anchor"><HistoryText text={tail?.[2] ?? text} /> <Evidence data={data} cites={cites} notes={notes} explanation={explanation && <HistoryText text={explanation} verbatim />} /></span></span>;
 }
 function FactText({ data, event }: { data: Aftermath; event: DatedFact }) {
   const lang = useLang();
@@ -101,7 +101,7 @@ function Evidence({ data, cites = [], notes = [], explanation }: { data: Afterma
   const L = useL(); const lang = useLang(); const kind = useKindLabel();
   return <Info title={L('Sources & qualifications', 'מקורות וסייגים')}>
     {explanation && <p>{explanation}</p>}
-    {cites.map((c, i) => { const s = data.sources[c.source]; return s && <div key={i} className="after-evidence"><a href={s.url} target="_blank" rel="noreferrer"><bdi><HistoryText text={sourceLabel(s, lang)} /></bdi></a> · {kind(s)} · <DateRun date={s.accessed} />{!isFieldRecord(c.quote) && <blockquote dir="auto"><HistoryText text={c.quote} verbatim /></blockquote>}{c.locator && <p dir="auto"><LocatorText locator={c.locator} /></p>}{(lang === 'he' ? c.noteHe ?? c.note : c.note) && <p dir="auto"><HistoryText text={(lang === 'he' ? c.noteHe ?? c.note : c.note)!} verbatim /></p>}</div>; })}
+    {cites.map((c, i) => { const s = data.sources[c.source]; return s && <div key={i} className="after-evidence"><a href={s.url} target="_blank" rel="noreferrer"><bdi><HistoryText text={sourceLabel(s, lang)} /></bdi></a> · {kind(s)} · <DateRun date={s.accessed} />{c.quote && !isFieldRecord(c.quote) && <blockquote dir="auto"><HistoryText text={c.quote} verbatim /></blockquote>}{c.locator && <p dir="auto"><LocatorText locator={c.locator} /></p>}{(lang === 'he' ? c.noteHe ?? c.note : c.note) && <p dir="auto"><HistoryText text={(lang === 'he' ? c.noteHe ?? c.note : c.note)!} verbatim /></p>}</div>; })}
     {notes.length > 0 && <details><summary>{L('Research notes · original language', 'הערות מחקר · בשפת המקור')}</summary>{notes.map((n, i) => typeof n === 'string' ? <p key={i} dir="auto"><HistoryText text={n} verbatim /></p> : n)}</details>}
   </Info>;
 }
@@ -150,15 +150,15 @@ function GroupKey({ groups, label }: { groups: [string, number][]; label: (key: 
 function Recommendations({ data, ds, round }: { data: Aftermath; ds: ElectionDataset; round: RecommendationRound }) {
   const L = useL(); const lang = useLang();
   const pieces = recommendationPieces(round);
-  const groupLabel = (key: string) => round.nominees[key] ? (lang === 'he' ? round.nominees[key].nameHe : round.nominees[key].nameEn) : key === 'none' ? L('No recommendation', 'ללא המלצה') : key === 'other' ? L('Other', 'אחר') : L('Not documented', 'לא מתועד');
-  const tail = (key: string) => key === 'unknown' ? 3 : key === 'none' ? 2 : key === 'other' || key === 'knesset' ? 1 : 0;
+  const groupLabel = (key: string) => round.nominees[key] ? (lang === 'he' ? round.nominees[key].nameHe : round.nominees[key].nameEn) : key === 'none' ? L('No recommendation', 'ללא המלצה') : key === 'other' ? L('Other', 'אחר') : key === 'disputed' ? L('Sources disagree', 'המקורות חלוקים') : L('Not documented', 'לא מתועד');
+  const tail = (key: string) => key === 'unknown' ? 4 : key === 'disputed' ? 3 : key === 'none' ? 2 : key === 'other' || key === 'knesset' ? 1 : 0;
   const groups = Object.entries(round.totals).sort(([a, x], [b, y]) => tail(a) - tail(b) || y - x);
   const list = (letters: string) => ds.lists.find(l => l.letters === letters)!;
   return <div className="after-round">
     <h4><span className="after-help-anchor"><DateRun date={round.date} end={round.endDate} /> <Evidence data={data} cites={round.cites} notes={round.notes} /></span></h4>
     <div className="after-bar-wrap"><div className="after-bar" dir="ltr" aria-hidden="true">{groups.map(([key, total]) => <div key={key} className="after-group" style={{ flex: total }}>{pieces.filter(p => p.group === key).map((p, i) => <span key={i} className={key === 'unknown' ? 'after-unknown' : ''} style={{ flex: p.seats, backgroundColor: key === 'unknown' ? undefined : list(p.letters).color }} title={`${p.letters} · ${listLabel(list(p.letters), lang)} · ${p.seats}`}>{p.seats >= 6 && <bdi className={p.seats < 10 ? 'after-small-slip' : undefined} lang="he">{p.letters}</bdi>}</span>)}</div>)}<i className="after-majority">61</i></div></div>
     <GroupKey groups={groups} label={groupLabel} />
-    <details className="after-breakdown"><summary>{L('Lists & recommendations', 'רשימות והמלצות')}</summary><table><thead><tr><th>{L('List', 'רשימה')}</th><th>{L('Recommendation', 'המלצה')}</th><th>{L('Seats', 'מנדטים')}</th></tr></thead><tbody>{groups.flatMap(([key]) => pieces.filter(p => p.group === key).map((p, i) => <tr key={`${key}-${i}`}><td><span className="after-party" style={{ '--party': list(p.letters).color } as CSSProperties}><bdi lang="he">{p.letters}</bdi> <bdi>{listLabel(list(p.letters), lang)}</bdi></span></td><td><HelpText data={data} text={groupLabel(key)} cites={p.cites} /></td><td><bdi dir="ltr">{p.seats}</bdi></td></tr>))}</tbody></table></details>
+    <details className="after-breakdown"><summary>{L('Lists & recommendations', 'רשימות והמלצות')}</summary><table><thead><tr><th>{L('List', 'רשימה')}</th><th>{L('Recommendation', 'המלצה')}</th><th>{L('Seats', 'מנדטים')}</th></tr></thead><tbody>{groups.flatMap(([key]) => pieces.filter(p => p.group === key).map((p, i) => <tr key={`${key}-${i}`}><td><span className="after-party" style={{ '--party': list(p.letters).color } as CSSProperties}><bdi lang="he">{p.letters}</bdi> <bdi>{listLabel(list(p.letters), lang)}</bdi></span></td><td><HelpText data={data} text={groupLabel(key)} cites={p.cites} explanation={lang === 'he' ? p.noteHe : p.noteEn} /></td><td><bdi dir="ltr">{p.seats}</bdi></td></tr>))}</tbody></table></details>
   </div>;
 }
 const MANDATE_ENDS = ['mandate-expired', 'mandate-returned', 'confidence-vote', 'informed-success'];

@@ -215,6 +215,54 @@
       "kind": "academic",
       "accessed": "2026-11-16",
       "evidenceFamily": "author:bick"
+    },
+    "hadashot-1988-11-11-p3": {
+      "url": "https://www.nli.org.il/en/newspapers/hadashot/1988/11/11/01/page/3",
+      "publisher": "Hadashot, 11 November 1988, p. 3",
+      "publisherHe": "חדשות, 11 בנובמבר 1988, עמ׳ 3",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:hadashot",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "fd0850e233959117d3971a4ecde8a34762a7b4dbc936c955459a30cad731a502",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T06:48:39.418Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1754-www.nli.org.il/page.html"
+    },
+    "maariv-1988-11-08-p3": {
+      "url": "https://www.nli.org.il/en/newspapers/mar/1988/11/08/01/page/3",
+      "publisher": "Maariv, 8 November 1988, p. 3",
+      "publisherHe": "מעריב, 8 בנובמבר 1988, עמ׳ 3",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:maariv",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "10fdc877063002a2adde209acc1dbcd82a792c5d0ad93b334baa03e4661ea99f",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T06:46:19.487Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1744-www.nli.org.il/page.html"
+    },
+    "maariv-1988-11-11-p4": {
+      "url": "https://www.nli.org.il/en/newspapers/mar/1988/11/11/01/page/4",
+      "publisher": "Maariv, 11 November 1988, p. 4",
+      "publisherHe": "מעריב, 11 בנובמבר 1988, עמ׳ 4",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:maariv",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "c6b33bcdfe206afa7ada48d7b8ec3b88fd7362d1a1f5555ee8418cd9f8ed2be1",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T06:50:09.890Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1759-www.nli.org.il/page.html"
     }
   },
   "results": {
@@ -251,7 +299,35 @@
           "letters": "מחל",
           "seats": 40,
           "status": "recommended",
-          "nominee": "shamir"
+          "nominee": "shamir",
+          "cites": [
+            {
+              "source": "recommendations-research-1",
+              "quote": "The decision gave Shamir the support of 63 members of Israel's 120-member parliament, the Knesset. Foreign Minister Shimon Peres, leader of the center-left Labor Party and Shamir's rival in the current governing coalition, could muster only 55 Knesset members to support a Labor-led government."
+            },
+            {
+              "source": "recommendations-research-2",
+              "quote": "Of the two other religious parties, one of them, the National Religious Party, pledged its five seats to Likud last week. The other, Degel Hatorah, pledged its two Knesset seats to a broad-based coalition of Labor and Likud."
+            },
+            {
+              "source": "recommendations-research-3",
+              "quote": "The leftist Mapam and Citizens Rights Movement, as well as the Center-Shinui Movement, have declared their preference for a Labor-led government. They urged Herzog to approach Foreign Minister Shimon Peres. The right-wing Tehiya, Tsomet and Moledet parties all have opted for a Likud government headed by Premier Yitzhak Shamir."
+            },
+            {
+              "source": "recommendations-research-4",
+              "quote": "With its own 40 seats and the 11 seats offered Sunday, plus previously pledged support from one other religious party and three far-right parties, Likud can claim a majority with 63 seats in the 120-member Knesset"
+            },
+            {
+              "source": "maariv-1988-11-08-p3",
+              "quote": "הצענו לנשיא להטיל את הרכבת הממשלה על שמיר",
+              "ocr": "הצענו לנשיא להטיל את הרכבת הממשלה על שמיר"
+            },
+            {
+              "source": "hadashot-1988-11-11-p3",
+              "quote": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל.",
+              "ocr": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל."
+            }
+          ]
         },
         {
           "letters": "שס",
@@ -269,70 +345,330 @@
           "letters": "ב",
           "seats": 5,
           "status": "recommended",
-          "nominee": "shamir"
+          "nominee": "shamir",
+          "cites": [
+            {
+              "source": "recommendations-research-1",
+              "quote": "The decision gave Shamir the support of 63 members of Israel's 120-member parliament, the Knesset. Foreign Minister Shimon Peres, leader of the center-left Labor Party and Shamir's rival in the current governing coalition, could muster only 55 Knesset members to support a Labor-led government."
+            },
+            {
+              "source": "recommendations-research-2",
+              "quote": "Of the two other religious parties, one of them, the National Religious Party, pledged its five seats to Likud last week. The other, Degel Hatorah, pledged its two Knesset seats to a broad-based coalition of Labor and Likud."
+            },
+            {
+              "source": "recommendations-research-3",
+              "quote": "The leftist Mapam and Citizens Rights Movement, as well as the Center-Shinui Movement, have declared their preference for a Labor-led government. They urged Herzog to approach Foreign Minister Shimon Peres. The right-wing Tehiya, Tsomet and Moledet parties all have opted for a Likud government headed by Premier Yitzhak Shamir."
+            },
+            {
+              "source": "recommendations-research-4",
+              "quote": "With its own 40 seats and the 11 seats offered Sunday, plus previously pledged support from one other religious party and three far-right parties, Likud can claim a majority with 63 seats in the 120-member Knesset"
+            },
+            {
+              "source": "hadashot-1988-11-11-p3",
+              "quote": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל.",
+              "ocr": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל."
+            },
+            {
+              "source": "maariv-1988-11-11-p4",
+              "quote": "",
+              "ocr": "השבוע הודיעו נציגי הליכוד, התחיה, המפד\"ל, מולדת וצומת כי הם ממליצים על יצחק שמיו."
+            }
+          ]
         },
         {
           "letters": "ת",
           "seats": 3,
           "status": "recommended",
-          "nominee": "shamir"
+          "nominee": "shamir",
+          "cites": [
+            {
+              "source": "recommendations-research-1",
+              "quote": "The decision gave Shamir the support of 63 members of Israel's 120-member parliament, the Knesset. Foreign Minister Shimon Peres, leader of the center-left Labor Party and Shamir's rival in the current governing coalition, could muster only 55 Knesset members to support a Labor-led government."
+            },
+            {
+              "source": "recommendations-research-2",
+              "quote": "Of the two other religious parties, one of them, the National Religious Party, pledged its five seats to Likud last week. The other, Degel Hatorah, pledged its two Knesset seats to a broad-based coalition of Labor and Likud."
+            },
+            {
+              "source": "recommendations-research-3",
+              "quote": "The leftist Mapam and Citizens Rights Movement, as well as the Center-Shinui Movement, have declared their preference for a Labor-led government. They urged Herzog to approach Foreign Minister Shimon Peres. The right-wing Tehiya, Tsomet and Moledet parties all have opted for a Likud government headed by Premier Yitzhak Shamir."
+            },
+            {
+              "source": "recommendations-research-4",
+              "quote": "With its own 40 seats and the 11 seats offered Sunday, plus previously pledged support from one other religious party and three far-right parties, Likud can claim a majority with 63 seats in the 120-member Knesset"
+            },
+            {
+              "source": "hadashot-1988-11-11-p3",
+              "quote": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל.",
+              "ocr": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל."
+            },
+            {
+              "source": "maariv-1988-11-11-p4",
+              "quote": "",
+              "ocr": "השבוע הודיעו נציגי הליכוד, התחיה, המפד\"ל, מולדת וצומת כי הם ממליצים על יצחק שמיו."
+            }
+          ]
         },
         {
           "letters": "ץ",
           "seats": 2,
           "status": "recommended",
-          "nominee": "shamir"
+          "nominee": "shamir",
+          "cites": [
+            {
+              "source": "recommendations-research-1",
+              "quote": "The decision gave Shamir the support of 63 members of Israel's 120-member parliament, the Knesset. Foreign Minister Shimon Peres, leader of the center-left Labor Party and Shamir's rival in the current governing coalition, could muster only 55 Knesset members to support a Labor-led government."
+            },
+            {
+              "source": "recommendations-research-2",
+              "quote": "Of the two other religious parties, one of them, the National Religious Party, pledged its five seats to Likud last week. The other, Degel Hatorah, pledged its two Knesset seats to a broad-based coalition of Labor and Likud."
+            },
+            {
+              "source": "recommendations-research-3",
+              "quote": "The leftist Mapam and Citizens Rights Movement, as well as the Center-Shinui Movement, have declared their preference for a Labor-led government. They urged Herzog to approach Foreign Minister Shimon Peres. The right-wing Tehiya, Tsomet and Moledet parties all have opted for a Likud government headed by Premier Yitzhak Shamir."
+            },
+            {
+              "source": "recommendations-research-4",
+              "quote": "With its own 40 seats and the 11 seats offered Sunday, plus previously pledged support from one other religious party and three far-right parties, Likud can claim a majority with 63 seats in the 120-member Knesset"
+            },
+            {
+              "source": "hadashot-1988-11-11-p3",
+              "quote": "נפגש הנשיא עם רפאל איתן מצומת, שהמליץ למנות את שמיר.",
+              "ocr": "אחה״צ נפגש הנשיא עם רפאל איתן מצומת, שהמליץ למנות את שמיר."
+            },
+            {
+              "source": "maariv-1988-11-11-p4",
+              "quote": "רפאל איתן ויואש צידון מצומת, שהמליצו להטיל את הרכבת הממשלה על שמיר.",
+              "ocr": "בשעות הערב באו למשכן הושיא רפאל איתן ויואש צידון מצומת, שהמליצו להטיל את הרכבת הממשלה על שמיר."
+            }
+          ]
         },
         {
           "letters": "ט",
           "seats": 2,
           "status": "recommended",
-          "nominee": "shamir"
+          "nominee": "shamir",
+          "cites": [
+            {
+              "source": "recommendations-research-1",
+              "quote": "The decision gave Shamir the support of 63 members of Israel's 120-member parliament, the Knesset. Foreign Minister Shimon Peres, leader of the center-left Labor Party and Shamir's rival in the current governing coalition, could muster only 55 Knesset members to support a Labor-led government."
+            },
+            {
+              "source": "recommendations-research-2",
+              "quote": "Of the two other religious parties, one of them, the National Religious Party, pledged its five seats to Likud last week. The other, Degel Hatorah, pledged its two Knesset seats to a broad-based coalition of Labor and Likud."
+            },
+            {
+              "source": "recommendations-research-3",
+              "quote": "The leftist Mapam and Citizens Rights Movement, as well as the Center-Shinui Movement, have declared their preference for a Labor-led government. They urged Herzog to approach Foreign Minister Shimon Peres. The right-wing Tehiya, Tsomet and Moledet parties all have opted for a Likud government headed by Premier Yitzhak Shamir."
+            },
+            {
+              "source": "recommendations-research-4",
+              "quote": "With its own 40 seats and the 11 seats offered Sunday, plus previously pledged support from one other religious party and three far-right parties, Likud can claim a majority with 63 seats in the 120-member Knesset"
+            },
+            {
+              "source": "hadashot-1988-11-11-p3",
+              "quote": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל.",
+              "ocr": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל."
+            },
+            {
+              "source": "maariv-1988-11-11-p4",
+              "quote": "",
+              "ocr": "השבוע הודיעו נציגי הליכוד, התחיה, המפד\"ל, מולדת וצומת כי הם ממליצים על יצחק שמיו."
+            }
+          ]
         },
         {
           "letters": "אמת",
           "seats": 39,
           "status": "recommended",
-          "nominee": "peres"
+          "nominee": "peres",
+          "cites": [
+            {
+              "source": "recommendations-research-1",
+              "quote": "The decision gave Shamir the support of 63 members of Israel's 120-member parliament, the Knesset. Foreign Minister Shimon Peres, leader of the center-left Labor Party and Shamir's rival in the current governing coalition, could muster only 55 Knesset members to support a Labor-led government."
+            },
+            {
+              "source": "recommendations-research-2",
+              "quote": "Of the two other religious parties, one of them, the National Religious Party, pledged its five seats to Likud last week. The other, Degel Hatorah, pledged its two Knesset seats to a broad-based coalition of Labor and Likud."
+            },
+            {
+              "source": "recommendations-research-3",
+              "quote": "The leftist Mapam and Citizens Rights Movement, as well as the Center-Shinui Movement, have declared their preference for a Labor-led government. They urged Herzog to approach Foreign Minister Shimon Peres. The right-wing Tehiya, Tsomet and Moledet parties all have opted for a Likud government headed by Premier Yitzhak Shamir."
+            },
+            {
+              "source": "recommendations-research-4",
+              "quote": "With its own 40 seats and the 11 seats offered Sunday, plus previously pledged support from one other religious party and three far-right parties, Likud can claim a majority with 63 seats in the 120-member Knesset"
+            },
+            {
+              "source": "hadashot-1988-11-11-p3",
+              "quote": "הח״כים שהמליצו על פרס הם אנשי המערך, מפ״ם, שינוי,",
+              "ocr": "הח״כים שהמליצו על פרס הם אנשי המערך, מפ״ם, שינוי, ו־צ, חד״ש, דראושה והרשימה המתקדמת."
+            },
+            {
+              "source": "maariv-1988-11-11-p4",
+              "quote": "",
+              "ocr": "לעומת זאת הוויעו נציגי המערך, רצ, תו\"ש, המוכז־שינוי, המפלגה הרמוקרטית הערבית, מפ\"ם והרשימה המתקדמת לשלום על תמיכתם בפרס."
+            }
+          ]
         },
         {
           "letters": "רצ",
           "seats": 5,
           "status": "recommended",
-          "nominee": "peres"
+          "nominee": "peres",
+          "cites": [
+            {
+              "source": "recommendations-research-1",
+              "quote": "The decision gave Shamir the support of 63 members of Israel's 120-member parliament, the Knesset. Foreign Minister Shimon Peres, leader of the center-left Labor Party and Shamir's rival in the current governing coalition, could muster only 55 Knesset members to support a Labor-led government."
+            },
+            {
+              "source": "recommendations-research-2",
+              "quote": "Of the two other religious parties, one of them, the National Religious Party, pledged its five seats to Likud last week. The other, Degel Hatorah, pledged its two Knesset seats to a broad-based coalition of Labor and Likud."
+            },
+            {
+              "source": "recommendations-research-3",
+              "quote": "The leftist Mapam and Citizens Rights Movement, as well as the Center-Shinui Movement, have declared their preference for a Labor-led government. They urged Herzog to approach Foreign Minister Shimon Peres. The right-wing Tehiya, Tsomet and Moledet parties all have opted for a Likud government headed by Premier Yitzhak Shamir."
+            },
+            {
+              "source": "recommendations-research-4",
+              "quote": "With its own 40 seats and the 11 seats offered Sunday, plus previously pledged support from one other religious party and three far-right parties, Likud can claim a majority with 63 seats in the 120-member Knesset"
+            },
+            {
+              "source": "hadashot-1988-11-11-p3",
+              "quote": "",
+              "ocr": "הח״כים שהמליצו על פרס הם אנשי המערך, מפ״ם, שינוי, ו־צ, חד״ש, דראושה והרשימה המתקדמת."
+            },
+            {
+              "source": "maariv-1988-11-11-p4",
+              "quote": "",
+              "ocr": "לעומת זאת הוויעו נציגי המערך, רצ, תו\"ש, המוכז־שינוי, המפלגה הרמוקרטית הערבית, מפ\"ם והרשימה המתקדמת לשלום על תמיכתם בפרס."
+            }
+          ]
         },
         {
           "letters": "ו",
           "seats": 4,
-          "status": "unknown",
-          "noteEn": "Not known yet: no usable source from the time has been found that says whom this list recommended.",
-          "noteHe": "עדיין לא ידוע: לא נמצא מקור שמיש מאותה תקופה שאומר על מי המליצה הרשימה."
+          "status": "recommended",
+          "nominee": "peres",
+          "cites": [
+            {
+              "source": "hadashot-1988-11-11-p3",
+              "quote": "",
+              "ocr": "הח״כים שהמליצו על פרס הם אנשי המערך, מפ״ם, שינוי, ו־צ, חד״ש, דראושה והרשימה המתקדמת."
+            },
+            {
+              "source": "maariv-1988-11-11-p4",
+              "quote": "",
+              "ocr": "לעומת זאת הוויעו נציגי המערך, רצ, תו\"ש, המוכז־שינוי, המפלגה הרמוקרטית הערבית, מפ\"ם והרשימה המתקדמת לשלום על תמיכתם בפרס."
+            }
+          ]
         },
         {
           "letters": "מפם",
           "seats": 3,
           "status": "recommended",
-          "nominee": "peres"
+          "nominee": "peres",
+          "cites": [
+            {
+              "source": "recommendations-research-1",
+              "quote": "The decision gave Shamir the support of 63 members of Israel's 120-member parliament, the Knesset. Foreign Minister Shimon Peres, leader of the center-left Labor Party and Shamir's rival in the current governing coalition, could muster only 55 Knesset members to support a Labor-led government."
+            },
+            {
+              "source": "recommendations-research-2",
+              "quote": "Of the two other religious parties, one of them, the National Religious Party, pledged its five seats to Likud last week. The other, Degel Hatorah, pledged its two Knesset seats to a broad-based coalition of Labor and Likud."
+            },
+            {
+              "source": "recommendations-research-3",
+              "quote": "The leftist Mapam and Citizens Rights Movement, as well as the Center-Shinui Movement, have declared their preference for a Labor-led government. They urged Herzog to approach Foreign Minister Shimon Peres. The right-wing Tehiya, Tsomet and Moledet parties all have opted for a Likud government headed by Premier Yitzhak Shamir."
+            },
+            {
+              "source": "recommendations-research-4",
+              "quote": "With its own 40 seats and the 11 seats offered Sunday, plus previously pledged support from one other religious party and three far-right parties, Likud can claim a majority with 63 seats in the 120-member Knesset"
+            },
+            {
+              "source": "hadashot-1988-11-11-p3",
+              "quote": "מאוחר יותר הגיעו למשכן הנשיא נציגי מפ״ם, בראשות ח״כ יאיר צבן, שהמליצו על פרס.",
+              "ocr": "מאוחר יותר הגיעו למשכן הנשיא נציגי מפ״ם, בראשות ח״כ יאיר צבן, שהמליצו על פרס."
+            },
+            {
+              "source": "maariv-1988-11-11-p4",
+              "quote": "",
+              "ocr": "לעומת זאת הוויעו נציגי המערך, רצ, תו\"ש, המוכז־שינוי, המפלגה הרמוקרטית הערבית, מפ\"ם והרשימה המתקדמת לשלום על תמיכתם בפרס."
+            }
+          ]
         },
         {
           "letters": "הן",
           "seats": 2,
           "status": "recommended",
-          "nominee": "peres"
+          "nominee": "peres",
+          "cites": [
+            {
+              "source": "recommendations-research-1",
+              "quote": "The decision gave Shamir the support of 63 members of Israel's 120-member parliament, the Knesset. Foreign Minister Shimon Peres, leader of the center-left Labor Party and Shamir's rival in the current governing coalition, could muster only 55 Knesset members to support a Labor-led government."
+            },
+            {
+              "source": "recommendations-research-2",
+              "quote": "Of the two other religious parties, one of them, the National Religious Party, pledged its five seats to Likud last week. The other, Degel Hatorah, pledged its two Knesset seats to a broad-based coalition of Labor and Likud."
+            },
+            {
+              "source": "recommendations-research-3",
+              "quote": "The leftist Mapam and Citizens Rights Movement, as well as the Center-Shinui Movement, have declared their preference for a Labor-led government. They urged Herzog to approach Foreign Minister Shimon Peres. The right-wing Tehiya, Tsomet and Moledet parties all have opted for a Likud government headed by Premier Yitzhak Shamir."
+            },
+            {
+              "source": "recommendations-research-4",
+              "quote": "With its own 40 seats and the 11 seats offered Sunday, plus previously pledged support from one other religious party and three far-right parties, Likud can claim a majority with 63 seats in the 120-member Knesset"
+            },
+            {
+              "source": "hadashot-1988-11-11-p3",
+              "quote": "הח״כים שהמליצו על פרס הם אנשי המערך, מפ״ם, שינוי,",
+              "ocr": "הח״כים שהמליצו על פרס הם אנשי המערך, מפ״ם, שינוי, ו־צ, חד״ש, דראושה והרשימה המתקדמת."
+            },
+            {
+              "source": "maariv-1988-11-11-p4",
+              "quote": "אמנון רובינשטיין ואברהם פורז ממרכז־שינוי, שהמליצו להטיל את תפקיד הרכבת הממשלה על שמעון פרס.",
+              "ocr": "אמנון רובינשטיין ואברהם פורז ממרכז־שינוי, שהמליצו להטיל את תפקיד הרכבת הממשלה על שמעון פרס."
+            }
+          ]
         },
         {
           "letters": "פ",
           "seats": 1,
-          "status": "unknown",
-          "noteEn": "Not known yet: no usable source from the time has been found that says whom this list recommended.",
-          "noteHe": "עדיין לא ידוע: לא נמצא מקור שמיש מאותה תקופה שאומר על מי המליצה הרשימה."
+          "status": "other",
+          "cites": [
+            {
+              "source": "hadashot-1988-11-11-p3",
+              "quote": "הוא נמנע מלהציע מפורשות את פרס.",
+              "ocr": "הוא נמנע מלהציע מפורשות את פרס."
+            },
+            {
+              "source": "maariv-1988-11-11-p4",
+              "quote": "והמועמד שלנו הוא איש המערך",
+              "ocr": "אין לנו כל דרך אתרת והמועמד שלנו הוא איש המערך"
+            }
+          ],
+          "noteEn": "Muhammad Miari backed the Alignment’s candidate but did not name Peres. Both newspapers count the list among Peres’s supporters in their summaries; their own accounts of the meeting say he named no person.",
+          "noteHe": "מוחמד מיעארי תמך במועמד המערך אך לא נקב בשמו של פרס. בסיכומיהם שני העיתונים מונים את הרשימה בין תומכי פרס; בתיאור הפגישה עצמה נאמר שלא נקב בשם."
         },
         {
           "letters": "ע",
           "seats": 1,
-          "status": "unknown",
-          "noteEn": "Not known yet: no usable source from the time has been found that says whom this list recommended.",
-          "noteHe": "עדיין לא ידוע: לא נמצא מקור שמיש מאותה תקופה שאומר על מי המליצה הרשימה."
+          "status": "recommended",
+          "nominee": "peres",
+          "cites": [
+            {
+              "source": "hadashot-1988-11-11-p3",
+              "quote": "",
+              "ocr": "ח״כ דראושה, שהגיע למשכן הנשיא עם קבוצה גדולה של אנשי תנועתו, המליץ כאמור להטיל את פרם את הרכבת הממשלה."
+            },
+            {
+              "source": "maariv-1988-11-11-p4",
+              "quote": "ח\"כ דראושה, שהמליץ לנשיא להטיל על פרס את הרכבת הממשלה.",
+              "ocr": "אתר־כך נועד הנשיא עם ח\"כ דראושה, שהמליץ לנשיא להטיל על פרס את הרכבת הממשלה."
+            }
+          ],
+          "noteEn": "Abdulwahab Darawshe recommended Peres. He set his own conditions for joining a Peres government: an international conference with the PLO and full equal rights for Arab citizens.",
+          "noteHe": "עבד אל־והאב דראושה המליץ על פרס. להצטרפות לממשלה בראשות פרס הציב תנאים: ועידה בינלאומית בהשתתפות אש״ף ושוויון זכויות מלא לערביי ישראל."
         },
         {
           "letters": "עץ",
@@ -355,9 +691,9 @@
       ],
       "totals": {
         "shamir": 63,
-        "peres": 49,
-        "none": 2,
-        "unknown": 6
+        "peres": 54,
+        "other": 1,
+        "none": 2
       },
       "cites": [
         {
@@ -378,9 +714,61 @@
         }
       ],
       "notes": [
-        "Reports of the time give 63 Knesset members for Shamir and 55 for Peres. A total does not show what any single list said, so it is not split among the lists. The Jewish Telegraphic Agency (9 November) names the choices of the parties other than the Arab lists; Degel HaTorah rests on l’Unità (14 November 1988) and United Press International.",
-        "Degel HaTorah recommended no one (probable: l’Unità, 14 November 1988, and United Press International, independent reports of the time). What Hadash, the Progressive List for Peace and the Arab Democratic Party (6 seats) told the President is not known: no usable source from the time has been found yet. Newspapers of 8–14 November 1988, or the President’s consultation file for 7–13 November 1988, would decide it."
-      ]
+        "Reports of the time give 63 Knesset members for Shamir and 55 for Peres; the 55 count the Progressive List for Peace, which named the Alignment’s candidate rather than Peres. A total does not show what any single list said, so it is not split among the lists. Degel HaTorah rests on l’Unità (14 November 1988) and United Press International.",
+        "Hadashot (11 November 1988, p. 3, by Ronit Antler) and Maariv (8 and 11 November 1988, by Arieh Bender) name the lists for each candidate; they are written separately and credit no news agency. Hadash and the Arab Democratic Party recommended Peres (both newspapers). Maariv’s computer-read text misspells Hadash, but the name stands in its list of the seven lists that backed Peres, the same seven as Hadashot’s, and the same misreadings occur elsewhere on that page, so it is counted as Hadash.",
+        "Degel HaTorah recommended no one (probable: l’Unità, 14 November 1988, and United Press International, independent reports of the time). The President’s consultation file for 7–13 November 1988 would settle what each list said."
+      ],
+      "pagesRead": [
+        {
+          "paper": "Hadashot",
+          "date": "1988-11-08",
+          "page": 3,
+          "url": "https://www.nli.org.il/en/newspapers/hadashot/1988/11/08/01/page/3"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1988-11-08",
+          "page": 3,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1988/11/08/01/page/3"
+        },
+        {
+          "paper": "Hadashot",
+          "date": "1988-11-09",
+          "page": 3,
+          "url": "https://www.nli.org.il/en/newspapers/hadashot/1988/11/09/01/page/3"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1988-11-09",
+          "page": 3,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1988/11/09/01/page/3"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1988-11-10",
+          "page": 3,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1988/11/10/01/page/3"
+        },
+        {
+          "paper": "Hadashot",
+          "date": "1988-11-11",
+          "page": 3,
+          "url": "https://www.nli.org.il/en/newspapers/hadashot/1988/11/11/01/page/3"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1988-11-11",
+          "page": 3,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1988/11/11/01/page/3"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1988-11-11",
+          "page": 4,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1988/11/11/01/page/4"
+        }
+      ],
+      "searchNote": "Davar’s online archive ends in June 1985, so Davar could not be read for 1988; Hadashot of 10 November 1988 could not be opened."
     }
   ],
   "formation": {

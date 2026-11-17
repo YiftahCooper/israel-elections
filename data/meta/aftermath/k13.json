@@ -214,6 +214,38 @@
       "kind": "academic",
       "accessed": "2026-11-16",
       "evidenceFamily": "author:navot-swaid-khalaily"
+    },
+    "hadashot-1992-06-30-p5": {
+      "url": "https://www.nli.org.il/en/newspapers/hadashot/1992/06/30/01/page/5",
+      "publisher": "Hadashot, 30 June 1992, p. 5",
+      "publisherHe": "חדשות, 30 ביוני 1992, עמ׳ 5",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:hadashot",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "4986bd5dcdb0f5bba1b29faacd2f25a143f9c2c48477d36b33832e1edd446baa",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T06:46:46.017Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1746-www.nli.org.il/page.html"
+    },
+    "hadashot-1992-07-01-p7": {
+      "url": "https://www.nli.org.il/en/newspapers/hadashot/1992/07/01/01/page/7",
+      "publisher": "Hadashot, 1 July 1992, p. 7",
+      "publisherHe": "חדשות, 1 ביולי 1992, עמ׳ 7",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:hadashot",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "54fc444932e020011f41406cf8d36e88a7ce57f164009b466f9b26a9c47c3bbc",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T06:50:22.541Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1760-www.nli.org.il/page.html"
     }
   },
   "results": {
@@ -238,6 +270,10 @@
         "rabin": {
           "nameEn": "Yitzhak Rabin",
           "nameHe": "יצחק רבין"
+        },
+        "shamir": {
+          "nameEn": "Yitzhak Shamir",
+          "nameHe": "יצחק שמיר"
         }
       },
       "entries": [
@@ -249,29 +285,74 @@
         {
           "letters": "ב",
           "seats": 6,
-          "status": "unknown"
+          "status": "none",
+          "cites": [
+            {
+              "source": "hadashot-1992-07-01-p7",
+              "quote": "שבחרו לא לנקוב בשמו של מועמד מסוים להרכבת ממשלה.",
+              "ocr": "נציגי המפ־ ד״ל, שבחרו לא לנקוב בשמו של מועמד מסוים להרכבת ממשלה."
+            }
+          ],
+          "noteEn": "Named no candidate and left the choice to the President.",
+          "noteHe": "לא נקבה בשם מועמד והשאירה את הבחירה לשיקול דעתו של הנשיא."
         },
         {
           "letters": "ג",
           "seats": 4,
-          "status": "unknown"
+          "status": "none",
+          "cites": [
+            {
+              "source": "hadashot-1992-07-01-p7",
+              "quote": "המליצו להרצוג להטיל את התפקיד על המועמד בעל הסיכויים הטובים ביותר, והדגישו שלא נקבו בשם מסוים.",
+              "ocr": "המליצו להרצוג להטיל את התפקיד על המועמד בעל הסיכויים הטובים ביותר, והדגישו שלא נקבו בשם מסוים."
+            }
+          ],
+          "noteEn": "Asked for the candidate with the best chances and stressed that it named no one.",
+          "noteHe": "ביקשה את המועמד בעל הסיכויים הטובים ביותר והדגישה שלא נקבה בשם."
         },
         {
           "letters": "ו",
           "seats": 3,
-          "status": "unknown",
-          "noteEn": "Not known yet: no usable source from the time has been found that says whom this list recommended.",
-          "noteHe": "עדיין לא ידוע: לא נמצא מקור שמיש מאותה תקופה שאומר על מי המליצה הרשימה."
+          "status": "recommended",
+          "nominee": "rabin",
+          "cites": [
+            {
+              "source": "hadashot-1992-07-01-p7",
+              "quote": "הבאים בתור היו נציגי חד״ש, אשר המליצו להטיל את התפקיד על יצחק רבין - אבל תוך הסתייגויות.",
+              "ocr": "הבאים בתור היו נציגי חד״ש, אשר המליצו להטיל את התפקיד על יצחק רבין - אבל תוך הסתייגויות."
+            }
+          ],
+          "noteEn": "Recommended Rabin with reservations: its support depended on the government’s make-up, its guidelines and its positions.",
+          "noteHe": "המליצה על רבין בהסתייגות: תמיכתה תלויה בהרכב הממשלה, בקווי היסוד שלה ובעמדותיה."
         },
         {
           "letters": "ט",
           "seats": 3,
-          "status": "unknown"
+          "status": "none",
+          "cites": [
+            {
+              "source": "hadashot-1992-07-01-p7",
+              "quote": "אמר כי לא המליץ לנשיא הרצוג על מי להטיל את הרכבת הממשלה.",
+              "ocr": "אמר כי לא המליץ לנשיא הרצוג על מי להטיל את הרכבת הממשלה."
+            }
+          ],
+          "noteEn": "Rehavam Ze’evi said he had recommended no one.",
+          "noteHe": "רחבעם זאבי אמר שלא המליץ על איש."
         },
         {
           "letters": "מחל",
           "seats": 32,
-          "status": "unknown"
+          "status": "recommended",
+          "nominee": "shamir",
+          "cites": [
+            {
+              "source": "hadashot-1992-06-30-p5",
+              "quote": "הם המליצו לנשיא לבחור ביצחק שמיר להקים ממשלת אחדות.",
+              "ocr": "הם המליצו לנשיא לבחור ביצחק שמיר להקים ממשלת אחדות."
+            }
+          ],
+          "noteEn": "Recommended Shamir, to form a unity government.",
+          "noteHe": "המליצה על שמיר, להקמת ממשלת אחדות."
         },
         {
           "letters": "מרצ",
@@ -282,18 +363,30 @@
             {
               "source": "amigoe-19920630",
               "quote": "Zowel de rechtsradicale Tsomet-partij als de joods-orthodoxe Shas-partij en de linkse Meretz-alliantie",
-              "note": "The report continues that these parties told Herzog on Monday they approved a Rabin-led government; approval in the consultations, not a quoted recommendation formula."
+              "note": "The report continues that these parties told Herzog on Monday they approved a Rabin-led government; approval in the consultations, not a quoted recommendation formula.",
+              "noteHe": "הדיווח ממשיך שמפלגות אלה אמרו להרצוג ביום שני שהן תומכות בממשלה בראשות רבין; תמיכה בהתייעצויות, לא נוסח המלצה מצוטט."
+            },
+            {
+              "source": "hadashot-1992-06-30-p5",
+              "quote": "יש להטיל על יצחק רבין להקים את הממשלה הבאה, מהר ככל האפשר.",
+              "ocr": "יש להטיל על יצחק רבין להקים את הממשלה הבאה, מהר ככל האפשר."
             }
-          ],
-          "noteEn": "Backed Rabin in the consultations, from one contemporary report.",
-          "noteHe": "תמכה ברבין בהתייעצויות, לפי דיווח בן הזמן אחד."
+          ]
         },
         {
           "letters": "ע",
           "seats": 2,
-          "status": "unknown",
-          "noteEn": "Not known yet: no usable source from the time has been found that says whom this list recommended.",
-          "noteHe": "עדיין לא ידוע: לא נמצא מקור שמיש מאותה תקופה שאומר על מי המליצה הרשימה."
+          "status": "recommended",
+          "nominee": "rabin",
+          "cites": [
+            {
+              "source": "hadashot-1992-07-01-p7",
+              "quote": "היתה רשימתו של ח״כ דראושה, שהמליצו על רבין.",
+              "ocr": "הרשימה האחרונה שהתק- בלה אצל הנשיא אתמול היתה רשימתו של ח״כ דראושה, שהמליצו על רבין. דראושה הסביר, כי בחירה זו תהיה בתנאי שיובטח שיויון זכויות לאוכלו־ סיה הערבית, קידום השלום וגישור על הפערים"
+            }
+          ],
+          "noteEn": "Recommended Rabin on conditions: equal rights for the Arab population, progress towards peace and closing the social gaps.",
+          "noteHe": "המליצה על רבין בתנאים: שוויון זכויות לאוכלוסייה הערבית, קידום השלום וגישור על הפערים."
         },
         {
           "letters": "ץ",
@@ -308,19 +401,44 @@
             {
               "source": "amigoe-19920630",
               "quote": "Dus bevelen wij hem aan",
-              "note": "Gonen Segev, explicitly identified as a Tsomet MK, speaks in the context of presidential consultations."
+              "note": "Gonen Segev, explicitly identified as a Tsomet MK, speaks in the context of presidential consultations.",
+              "noteHe": "גונן שגב, שמוצג במפורש כחבר הכנסת מצומת, מדבר בהקשר ההתייעצויות אצל הנשיא."
+            },
+            {
+              "source": "hadashot-1992-06-30-p5",
+              "quote": "גם צומת המליצה להטיל את התפקיד על רבין.",
+              "ocr": "גם צומת המליצה להטיל את התפקיד על רבין."
             }
           ]
         },
         {
           "letters": "שס",
           "seats": 6,
-          "status": "unknown"
+          "status": "disputed",
+          "certainty": "disputed",
+          "cites": [
+            {
+              "source": "hadashot-1992-06-30-p5",
+              "quote": "ומשלחת ש״ס לא המליצה לנשיא על מי להטיל את התפקיד.",
+              "ocr": "ומשלחת ש״ס לא המליצה לנשיא על מי להטיל את התפקיד."
+            },
+            {
+              "source": "amigoe-19920630",
+              "quote": "Zowel de rechtsradicale Tsomet-partij als de joods-orthodoxe Shas-partij en de linkse Meretz-alliantie",
+              "note": "The report continues that these parties, Shas among them, told Herzog on Monday that they approved a Rabin-led government.",
+              "noteHe": "הדיווח ממשיך שמפלגות אלה, ובהן ש״ס, אמרו להרצוג ביום שני שהן תומכות בממשלה בראשות רבין."
+            }
+          ],
+          "noteEn": "Sources disagree. Hadashot says Shas recommended no one, because Rabin had not invited it into his government; Amigoe reports that Shas approved a Rabin-led government. The President’s consultation record would settle it.",
+          "noteHe": "המקורות חלוקים. לפי חדשות, ש״ס לא המליצה על איש, כי רבין לא הזמין אותה לממשלתו; לפי אמיגואה, ש״ס תמכה בממשלה בראשות רבין. פרוטוקול ההתייעצות אצל הנשיא יכריע."
         }
       ],
       "totals": {
-        "rabin": 20,
-        "unknown": 100
+        "shamir": 32,
+        "rabin": 25,
+        "none": 13,
+        "disputed": 6,
+        "unknown": 44
       },
       "cites": [
         {
@@ -329,10 +447,64 @@
         }
       ],
       "notes": [
-        "No complete per-faction recommendation record was recovered by the existing research. A 61-seat blocking bloc is not a recommendation tally. Unknown is not an explicit decision to recommend nobody.",
-        "Tsomet’s recommendation of Rabin is supported by the Israel Democracy Institute (p. 599) and a report of the time in Amigoe. A total of seats does not show what any single list said. Amigoe also reports that Shas approved, while a later Walla account says the religious parties left the decision to the President; Shas needs the original consultation record, not either account alone.",
-        "Meretz backed Rabin in the consultations (provisional: one report of the time, Amigoe). What Hadash and the Arab Democratic Party told the President is not known: no usable source from the time has been found yet. Shas stays unknown: Amigoe reports its approval of Rabin, but Herzog’s memorandum as quoted by Amir Oren (Walla, October 2019) says the religious movements left the decision to him. Labor, Likud, the National Religious Party, United Torah Judaism and Moledet stay unknown; the memorandum’s total (69 Rabin, 32 Shamir, three none) does not show what each list said."
-      ]
+        "No complete per-faction recommendation record was recovered. Hadashot (30 June and 1 July 1992) reports each list’s meeting except Labour’s: Likud for Shamir; Meretz and Tsomet for Rabin; Hadash and the Arab Democratic Party for Rabin on conditions; the National Religious Party, United Torah Judaism and Moledet naming no one. One newspaper each, except Meretz (with Amigoe) and Tsomet (with Amigoe and the Israel Democracy Institute). Labour stays unknown: no report read names its recommendation.",
+        "Shas is disputed: Hadashot says it recommended no one, Amigoe that it approved a Rabin-led government. Herzog’s memorandum as quoted later by Amir Oren (Walla, October 2019) says the religious parties left the decision to him and gives 69 for Rabin, 32 for Shamir and three for no one. Labour 44, Meretz 12, Tsomet 8, Hadash 3 and the Arab Democratic Party 2 make 69 without Shas. That fits Hadashot, but it is a check of consistency, not proof of what any single list said.",
+        "A 61-seat blocking bloc is not a recommendation tally. Unknown is not an explicit decision to recommend nobody."
+      ],
+      "pagesRead": [
+        {
+          "paper": "Hadashot",
+          "date": "1992-06-29",
+          "page": 3,
+          "url": "https://www.nli.org.il/en/newspapers/hadashot/1992/06/29/01/page/3"
+        },
+        {
+          "paper": "Jewish Telegraphic Agency",
+          "date": "1992-06-29",
+          "url": "https://www.jta.org/archive/rabin-starts-building-coalition-with-haredi-parties-readay-to-talk"
+        },
+        {
+          "paper": "Hadashot",
+          "date": "1992-06-30",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/hadashot/1992/06/30/01/page/1"
+        },
+        {
+          "paper": "Hadashot",
+          "date": "1992-06-30",
+          "page": 5,
+          "url": "https://www.nli.org.il/en/newspapers/hadashot/1992/06/30/01/page/5"
+        },
+        {
+          "paper": "Hadashot",
+          "date": "1992-07-01",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/hadashot/1992/07/01/01/page/1"
+        },
+        {
+          "paper": "Hadashot",
+          "date": "1992-07-01",
+          "page": 5,
+          "url": "https://www.nli.org.il/en/newspapers/hadashot/1992/07/01/01/page/5"
+        },
+        {
+          "paper": "Hadashot",
+          "date": "1992-07-01",
+          "page": 7,
+          "url": "https://www.nli.org.il/en/newspapers/hadashot/1992/07/01/01/page/7"
+        },
+        {
+          "paper": "Jewish Telegraphic Agency",
+          "date": "1992-07-02",
+          "url": "https://www.jta.org/archive/labor-encounters-early-snags-in-effort-to-build-a-coalition"
+        },
+        {
+          "paper": "Jewish Telegraphic Agency",
+          "date": "1992-07-03",
+          "url": "https://www.jta.org/archive/herzog-gives-rabin-21-days-to-form-coalition-government"
+        }
+      ],
+      "searchNote": "Davar’s online archive ends in June 1985, so Davar could not be read for 1992; Maariv of 30 June and 1 July 1992, p. 3, could not be opened. Hadashot of 29 June 1992, p. 3, has Hadash’s promise to recommend Rabin, before the meeting."
     }
   ],
   "formation": {

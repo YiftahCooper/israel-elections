@@ -338,7 +338,12 @@ const EXPECTED: Record<Family, string> = {
   // 'Not stated in source' group (6), as their only source was an outlet the project does not use. The published k12
   // differs only in blocSchemes[1].blocs and builtAt; restoring HEAD's k12 (with its hash pins) reproduces 33a3b7f6… and
   // all four other digests.
-  model: '689cc5892ef05db31b313e44b5c4a667b9c9349eafda52814ac072ea06979c63',
+  // Newspapers of the time (17 Nov): the 1974, 1981 and 1988 recommendation groupings follow the papers (k8: the
+  // Religious Torah Front moves to a new 'other' group, placed beside Meir's so the bloc line stays smooth; k10: Peres,
+  // no recommendation and other replace 'Not stated in source'; k12: Hadash and ADP back to Peres, PLP to 'other'). The
+  // published k8, k10 and k12 differ only in blocSchemes[1] and builtAt; restoring HEAD's three datasets (with their
+  // hash pins) reproduces 689cc589… and all four other digests.
+  model: '0c6ad35ee88acb6e86c31fcd55ed75533dbf283700108aee58c8de3919f92f9b',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

@@ -239,7 +239,8 @@
           "seats": 6,
           "status": "recommended",
           "nominee": "olmert",
-          "noteEn": "Rabbi Elyashiv’s instruction is reported; the final six-seat attribution also matches the President’s aggregate and the retrospective breakdown. An account of UTJ’s actual presidential meeting remains a gap."
+          "noteEn": "Rabbi Elyashiv’s instruction is reported; the final six-seat attribution also matches the President’s aggregate and the retrospective breakdown. An account of UTJ’s actual presidential meeting remains a gap.",
+          "noteHe": "מדווחת הוראתו של הרב אלישיב; השיוך הסופי של ששת המנדטים תואם גם את הסיכום של הנשיא ואת הפירוט שנעשה בדיעבד. תיאור הפגישה של יהדות התורה עם הנשיא עדיין חסר."
         },
         {
           "letters": "מרצ",
@@ -261,7 +262,8 @@
           "letters": "טב",
           "seats": 9,
           "status": "none",
-          "noteEn": "Final position is no recommendation. Sources differ about an earlier Peretz endorsement versus a request for more time; see round notes."
+          "noteEn": "Final position is no recommendation. Sources differ about an earlier Peretz endorsement versus a request for more time; see round notes.",
+          "noteHe": "העמדה הסופית: ללא המלצה. המקורות חלוקים בשאלה אם קודם לכן תמכה בפרץ או ביקשה עוד זמן; ראו את הערות הסבב."
         },
         {
           "letters": "עם",

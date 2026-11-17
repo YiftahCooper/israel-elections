@@ -353,7 +353,27 @@
         "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved.",
         "120 seats rests on one JTA blanket report, not 12 separately verified statements; medium confidence. The date is tasking day, not a recovered consultation schedule."
       ],
-      "blocSchemeRef": "pm-recommendations"
+      "blocSchemeRef": "pm-recommendations",
+      "pagesRead": [
+        {
+          "paper": "Davar",
+          "date": "1959-12-09",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1959/12/09/01/page/1"
+        },
+        {
+          "paper": "Davar",
+          "date": "1959-12-09",
+          "page": 2,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1959/12/09/01/page/2"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1959-12-09",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1959/12/09/01/page/1"
+        }
+      ]
     }
   ],
   "formation": {

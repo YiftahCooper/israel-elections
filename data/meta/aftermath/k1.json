@@ -156,6 +156,38 @@
       "kind": "academic",
       "accessed": "2026-11-16",
       "evidenceFamily": "author:gruweis-kovalsky"
+    },
+    "davar-1949-02-23-p1": {
+      "url": "https://www.nli.org.il/en/newspapers/dav/1949/02/23/01/page/1",
+      "publisher": "Davar, 23 February 1949, p. 1",
+      "publisherHe": "דבר, 23 בפברואר 1949, עמ׳ 1",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:davar",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "549626505df01ba6e1ef09aad6c960cd4741d1be471a7b32cc577040156ad645",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T06:50:38.627Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1761-www.nli.org.il/page.html"
+    },
+    "maariv-1949-02-23-p1": {
+      "url": "https://www.nli.org.il/en/newspapers/mar/1949/02/23/01/page/1",
+      "publisher": "Maariv, 23 February 1949, p. 1",
+      "publisherHe": "מעריב, 23 בפברואר 1949, עמ׳ 1",
+      "kind": "archival",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "newspaper:maariv",
+      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "350587138b885bdedb1c8d850210a3cdef1b1f2362bd6cdff630af8c2058d1b8",
+        "method": "owner-browser-page-collector",
+        "retrievedAt": "2026-11-17T07:09:14.762Z"
+      },
+      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1793-www.nli.org.il/page.html"
     }
   },
   "results": {
@@ -197,7 +229,17 @@
         {
           "letters": "א",
           "seats": 46,
-          "status": "unknown"
+          "status": "recommended",
+          "nominee": "ben-gurion",
+          "cites": [
+            {
+              "source": "maariv-1949-02-23-p1",
+              "quote": "",
+              "ocr": "השיבו לו נציגי מפא\"י: ראש סיעתנו הוא מר דוד בן־גודיון."
+            }
+          ],
+          "noteEn": "Asked by the President whom to approach, Mapai’s delegates answered that the head of their faction was David Ben-Gurion.",
+          "noteHe": "לשאלת הנשיא אל מי לפנות, השיבו נציגי מפא״י שראש סיעתם הוא דוד בן־גוריון."
         },
         {
           "letters": "מ",
@@ -227,7 +269,17 @@
         {
           "letters": "ס",
           "seats": 4,
-          "status": "unknown"
+          "status": "recommended",
+          "nominee": "ben-gurion",
+          "cites": [
+            {
+              "source": "davar-1949-02-23-p1",
+              "quote": "",
+              "ocr": "_>מון בד. בן־גוריון בתור ראש המגל־ _2ןלה."
+            }
+          ],
+          "noteEn": "Bechor Shitrit told the President, for the Sephardi list, that the community had confidence in Ben-Gurion as prime minister.",
+          "noteHe": "בכור שטרית הודיע לנשיא, בשם סיעת הספרדים, שלעדה הספרדית יש אמון בבן־גוריון כראש הממשלה."
         },
         {
           "letters": "ק",
@@ -256,7 +308,8 @@
         }
       ],
       "totals": {
-        "unknown": 120
+        "ben-gurion": 50,
+        "unknown": 70
       },
       "cites": [
         {
@@ -270,7 +323,28 @@
       ],
       "notes": [
         "Conditions set in the consultations are not counted as recommendations. “Unknown” does not mean that no recommendation was made.",
+        "Weizmann first met six factions: Mapam, the General Zionists, the Progressives, the United Religious Front, the Sephardim and Mapai (Davar, 23 February 1949). Herut and the Communists were invited for 23 February (Maariv, 23 February 1949); an invitation is not a recommendation, and what they said is not known.",
         "Month precision: the 21 February bulletin schedules meetings for tomorrow; the 23 February follow-up reports meetings today. The original bulletin dateline was not retrieved, so no exact held date or per-faction schedule is inferred."
+      ],
+      "pagesRead": [
+        {
+          "paper": "Davar",
+          "date": "1949-02-22",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1949/02/22/01/page/1"
+        },
+        {
+          "paper": "Davar",
+          "date": "1949-02-23",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/dav/1949/02/23/01/page/1"
+        },
+        {
+          "paper": "Maariv",
+          "date": "1949-02-23",
+          "page": 1,
+          "url": "https://www.nli.org.il/en/newspapers/mar/1949/02/23/01/page/1"
+        }
       ]
     }
   ],

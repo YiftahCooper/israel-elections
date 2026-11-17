@@ -376,7 +376,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k8.json",
-      "sha256": "bf15902471b3402f3e8f87ac9fe45a4042b881c6113c2a9eae7bab7cd5e28a77",
+      "sha256": "3e74edfa8d22beb4a873ac169970deddfb06e345ca0d6559583c9b45b18dbf86",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -392,7 +392,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k10.json",
-      "sha256": "082a0ec32dcc124a65955bedb6cf540e27f012ae780219bf9fa9ffc12e1b57ad",
+      "sha256": "93f372bada176ef1be61f6a131b6b514de1787c999c9139e531a55bcaea42a1e",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -1619,7 +1619,7 @@
       "electionId": "k8",
       "electionDate": "1973-12-31",
       "datasetPath": "public/data/k8.json",
-      "datasetSha256": "bf15902471b3402f3e8f87ac9fe45a4042b881c6113c2a9eae7bab7cd5e28a77",
+      "datasetSha256": "3e74edfa8d22beb4a873ac169970deddfb06e345ca0d6559583c9b45b18dbf86",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results; every published seat reproduced with the six official list connections from the Central Elections Committee’s calculation record (Form 30 appendix; three had no effect). All 120 elected names transcribed from the official candidate notice (Yalkut HaPirsumim 1954) and cross-checked against the results notice (Yalkut HaPirsumim 1979) and the committee record. Later ranks truncated (Ratz complete); nonwinning rosters untranscribed. Three ballot letters and four list names corrected from the notices. Full amendment chain unverified; no localities.",
@@ -1905,7 +1905,7 @@
       "electionId": "k10",
       "electionDate": "1981-06-30",
       "datasetPath": "public/data/k10.json",
-      "datasetSha256": "082a0ec32dcc124a65955bedb6cf540e27f012ae780219bf9fa9ffc12e1b57ad",
+      "datasetSha256": "93f372bada176ef1be61f6a131b6b514de1787c999c9139e531a55bcaea42a1e",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 120 transcribed ranks across all 10 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
@@ -2247,7 +2247,7 @@
       "electionId": "k12",
       "electionDate": "1988-11-01",
       "datasetPath": "public/data/k12.json",
-      "datasetSha256": "35c8fdff09dd8c092a1b9cdcfb443fa25ddabb8137cb30454647af6c5e50426f",
+      "datasetSha256": "58712bc3107372a884452bc39ad2fc8f774218d08a79a2045d1b3a9a0ada2280",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 121 candidate entries (120 declared elected) across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
