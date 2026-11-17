@@ -382,7 +382,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k12.json",
-      "sha256": "fb8da86e1042620126ff57b0150ce69c62dd9e13d3b1c01e18441c7423500dea",
+      "sha256": "35c8fdff09dd8c092a1b9cdcfb443fa25ddabb8137cb30454647af6c5e50426f",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },

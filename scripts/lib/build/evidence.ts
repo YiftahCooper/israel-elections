@@ -1,6 +1,6 @@
 // Enforces docs/source-policy.md on the research overlays: every recorded certainty must be derivable from the
 // cited sources (src/data/evidence.ts), and every asserted claim must rest on at least one reliable source.
-import { CERTAINTIES, EVIDENCE_TIERS, certaintyAllowed, certaintyCeiling, certaintyRank, independenceKey, isEnglishWikipedia, isHebrewWikipedia, sourceTier, type Certainty, type CitedSource, type EvidenceSource } from '../../../src/data/evidence.ts';
+import { CERTAINTIES, EVIDENCE_TIERS, certaintyAllowed, certaintyCeiling, certaintyRank, excludedOutlet, independenceKey, isEnglishWikipedia, isHebrewWikipedia, sourceTier, type Certainty, type CitedSource, type EvidenceSource } from '../../../src/data/evidence.ts';
 
 type Obj = Record<string, any>;
 const ASSERTED_RECOMMENDATION = new Set(['recommended', 'none', 'other', 'split']);
@@ -26,6 +26,8 @@ export function validateEvidenceDocument(doc: Obj, label: string) {
   const fail = (msg: string) => { throw new Error(`${label}: ${msg}`); };
   for (const [id, s] of Object.entries(sources)) {
     if (isEnglishWikipedia(s.url)) fail(`source ${id}: English Wikipedia is never a source`);
+    const outlet = excludedOutlet(s.url, [s.publisher, (s as Obj).publisherHe, (s as Obj).title].filter(Boolean).join(' · '));
+    if (outlet) fail(`source ${id}: ${outlet} is an outlet not used (docs/source-policy.md)`);
     if (s.tier !== undefined) {
       if (!EVIDENCE_TIERS.includes(s.tier)) fail(`source ${id}: invalid tier ${s.tier}`);
       if (isHebrewWikipedia(s.url) && s.tier !== 'pointer') fail(`source ${id}: Hebrew Wikipedia is only a pointer`);

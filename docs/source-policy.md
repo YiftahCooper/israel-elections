@@ -2,7 +2,9 @@
 
 *Policy in force since 7 November 2026; rewritten in plain language on 8 November 2026. Nothing was removed: every
 fact, date, number and source of the earlier version is kept. On 16 November 2026 the owner added the rule for books
-(see "Books and other scholarly works" below).*
+(see "Books and other scholarly works" below). On 17 November 2026 he named two outlets that are not used (see
+"Outlets not used"), and party families stopped carrying certainty labels (see "Party families are the project's
+classification").*
 
 ## In short
 
@@ -25,6 +27,10 @@ fact, date, number and source of the earlier version is kept. On 16 November 202
   official record is still named so it can be checked later.
 - **Neutral means not partisan within Israeli politics.** Israeli and Hebrew sources are welcome and are the main
   body of evidence. Opinion columns and advocacy groups from any camp are not evidence.
+- **Some outlets are not used at all.** Outlets that question Israel's right to exist are never a source (see
+  "Outlets not used").
+- **Party families are a classification, not a fact.** A family placement is shown with the scholarship it follows and
+  never gets a certainty label.
 
 ## What the policy covers
 
@@ -34,7 +40,8 @@ It applies to every historical claim the data carries:
   asks one Knesset member to form a government);
 - which parties were members of a government, and which supported it from outside;
 - events in the life of a government and a Knesset term: formation, resignation, early elections;
-- where a party is placed in a party family;
+- where a party is placed in a party family (a classification, not a fact: see "Party families are the project's
+  classification");
 - links between a candidate on a list and a person in the Knesset's own records.
 
 Guidance on languages, editorial stance and polite access to archives is in a separate page,
@@ -113,9 +120,12 @@ Further rules:
 - **Checked on every rebuild.** Labels entered by hand are checked against the ceiling every time the data is rebuilt.
   Labels the app works out itself (recommendations to the President, events) are calculated directly from the cited
   sources, so they cannot drift away from them.
-- **Party families are editorial.** Placing a party in a family (such as "Radical right") is a judgement, not a fact
-  of record. So it can be at most **probable** (when scholarship places the party there); otherwise it is
-  **provisional**.
+- **Party families are the project's classification.** Placing a party in a family (such as "Radical right") is a
+  judgement, not a fact of record, so it never gets a certainty label: it is never called confirmed, probable or
+  provisional. The app shows each placement as the project's own ("Placed here by this project, from the sources
+  below"), with the scholarship it follows. A placement either follows scholarship that puts the party there, or is
+  the project's own judgement; when scholars disagree about a placement, both sides are shown. Facts about a party,
+  such as one party continuing another, are still facts and keep their certainty labels.
 - **Candidate identity.** When the Knesset's own records identify the person, the link is **confirmed**. A match a
   person has reviewed is **probable**. A match made only by a name rule (shown as "probable" in the published
   biography) is **provisional**.
@@ -196,6 +206,19 @@ book collection.
 - **Cross the camps.** When a political fact is contested, cite outlets from different camps. Agreement across camps
   is stronger than repetition within one.
 
+### Outlets not used
+
+The owner decided on 17 November 2026 that these outlets are not used as sources, not even as pointers: outlets that
+question Israel's right to exist have no place in the project. Sharp criticism of government policy is not a reason to
+exclude anyone; this list names outlets, not opinions.
+
+- **+972 Magazine** (972mag.com).
+- **Local Call** (Sicha Mekomit, «שיחה מקומית», mekomit.co.il), the Hebrew site that +972 Magazine translates.
+
+A fact that rested only on one of these outlets is recorded as **unknown** until a usable source is found; its value is
+never moved to another source unless that source states it on its own. The data build refuses any record that cites
+these outlets by address or by publisher.
+
 ## Recommended scholarship
 
 These are bibliographic records checked on 7 November 2026. Being on this list does not mean a work settles any
@@ -244,6 +267,12 @@ in the journal *Israel Studies Forum*.
   that record in its own `citesRecord` field; the build accepts it only on a scholarly source.
 - `scripts/lib/build/evidence.ts` runs during the data build and rejects any record whose stated certainty is above
   what its cites support.
+- **Outlets not used.** `EXCLUDED_OUTLETS` in `src/data/evidence.ts` lists them by web address and publisher name.
+  `scripts/lib/build/excluded-outlets.ts` scans every record under `data/meta` and `data/research` and the source
+  manifest `data/raw/SOURCES.json`; the data build stops on any hit, and a test runs the same scan.
+- **Family placements.** `placementBasis` in `src/data/evidence.ts` says what a placement rests on (scholarship, the
+  project's own judgement, sources that disagree, or not yet checked); it never returns a certainty. The gaps register
+  counts placements by that basis, apart from the certainty of facts.
 - The [gaps register](data-gaps.md) (`docs/data-gaps.md`, with a JSON summary) reports every open item with its
   importance and certainty.
 

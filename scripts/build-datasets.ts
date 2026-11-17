@@ -1,6 +1,7 @@
 import { electionContext } from '../src/data/electionContext.ts';
 import { validateAftermathRecords } from './lib/build/aftermath.ts';
 import { verifyManifest, verifySources } from './lib/build/sources.ts';
+import { scanExcludedOutlets } from './lib/build/excluded-outlets.ts';
 import { checkDatasetTotals } from './lib/build/validate.ts';
 // Builds the app datasets in public/data/ from the raw official sources in data/raw/.
 //   node scripts/build-datasets.ts            (BUILD_JOBS=1 builds serially in one thread)
@@ -83,6 +84,8 @@ if (!isMainThread) {
   parentPort!.on('message', async (i: number) => parentPort!.postMessage(await runBuilder(i)));
 } else {
   console.log(`aftermath: ${validateAftermathRecords()} government snapshots validated`);
+  const excluded = scanExcludedOutlets();
+  if (excluded.length) throw new Error(`outlets not used (docs/source-policy.md) are cited:\n${excluded.join('\n')}`);
   const jobs = Math.max(1, Math.min(Number(process.env.BUILD_JOBS) || Math.min(availableParallelism(), 8), BUILDERS.length));
   const results: Promise<Result>[] = jobs === 1 ? [] : Array(BUILDERS.length);
   if (jobs > 1) {

@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { CERTAINTIES, certaintyCeiling, certaintyRank, classificationCertainty, type Certainty, type CitedSource, type EvidenceSource } from '../src/data/evidence.ts';
+import { CERTAINTIES, PLACEMENT_BASES, PLACEMENT_WORDS, certaintyCeiling, certaintyRank, placementBasis, type Certainty, type CitedSource, type EvidenceSource, type PlacementBasis } from '../src/data/evidence.ts';
 import { claimCertainty } from './lib/build/evidence.ts';
 import { bioIdentityCertainty } from './lib/build/bios.ts';
 
@@ -16,8 +16,10 @@ export interface Gap {
   file: string; locations: string[]; occurrences: number;
   /** Code rules below (importanceOf), never hand tags. */
   importance: Importance;
-  /** docs/source-policy.md, derived from the record's own sources (src/data/evidence.ts). */
-  certainty: Certainty;
+  /** docs/source-policy.md, derived from the record's own sources (src/data/evidence.ts). Absent on a party-family
+   *  placement, which is the project's classification and not a fact: it carries `placement` instead. */
+  certainty?: Certainty;
+  placement?: PlacementBasis;
 }
 type Obj = Record<string, any>;
 const ROOT = resolve(import.meta.dirname, '..');
@@ -33,7 +35,7 @@ const INAPPLICABLE_NULLS: [RegExp, Set<string>][] = [
   [/^data\/research\/knesset-speakers\.json$/, new Set(['end'])],
 ];
 const inapplicableNull = (file: string, k: string) => nullMetadata.has(k) || INAPPLICABLE_NULLS.some(([f, keys]) => f.test(file) && keys.has(k));
-const nextSource = (file: string, path: string) => /recommendation/i.test(path) ? 'President’s House / State Archives faction consultation minutes; contemporary independent reporting' : /colour|color/i.test(path) ? 'Dated party campaign material or official party style guide' : /candidate|roster|rank/i.test(path + file) ? 'CEC approved candidate gazette and official elected-member notice' : /logo/i.test(file) ? 'Dated original campaign artefact and rights/catalogue record' : /famil|lineage|parties/.test(file) ? 'Party registry / Knesset faction history; independent academic party history' : 'CEC / Knesset primary record for the field; independent dated corroboration';
+const nextSource = (file: string, path: string) => /recommendation/i.test(path) ? 'President’s House / State Archives faction consultation minutes; contemporary independent reporting (Hebrew newspapers of the time, via JPress)' : /colour|color/i.test(path) ? 'Dated party campaign material or official party style guide' : /candidate|roster|rank/i.test(path + file) ? 'CEC approved candidate gazette and official elected-member notice' : /logo/i.test(file) ? 'Dated original campaign artefact and rights/catalogue record' : /famil|lineage|parties/.test(file) ? 'Party registry / Knesset faction history; independent academic party history' : 'CEC / Knesset primary record for the field; independent dated corroboration';
 const compact = (v: any) => typeof v === 'string' ? v : JSON.stringify(v);
 
 /**
@@ -86,13 +88,18 @@ export function scanDocument(file: string, doc: any, listLookup: Record<string, 
     const own = o.cites ?? (Array.isArray(o.sources) ? o.sources : undefined) ?? o.sourceIds ?? (o.sourceId ? [o.sourceId] : undefined) ?? (o.source ? [o.source] : undefined);
     return own ? [...new Set((Array.isArray(own) ? own : [own]).map(resolveSource))].sort() : inherited;
   };
-  const add = (kind: GapKind, detail: string, path: string, ctx: Obj, sources: string[], certainty: Certainty) => {
+  const add = (kind: GapKind, detail: string, path: string, ctx: Obj, sources: string[], judged: { certainty: Certainty } | { placement: PlacementBasis }) => {
     const item = [ctx.round, ctx.entity, path.replace(/\[\d+\]/g, '[*]')].filter(Boolean).join(' / ');
     const key = hash(JSON.stringify([file, ctx.election, ctx.letters, ctx.name, item, kind])).slice(0, 24);
     const old = rows.get(key);
-    if (old) { old.occurrences++; if (old.locations.length < 3) old.locations.push(path); old.sources = [...new Set([...old.sources, ...sources])].sort(); old.certainty = weaker(old.certainty, certainty); return; }
+    if (old) {
+      old.occurrences++; if (old.locations.length < 3) old.locations.push(path); old.sources = [...new Set([...old.sources, ...sources])].sort();
+      if ('certainty' in judged && old.certainty) old.certainty = weaker(old.certainty, judged.certainty);
+      if ('placement' in judged && old.placement && PLACEMENT_BASES.indexOf(judged.placement) > PLACEMENT_BASES.indexOf(old.placement)) old.placement = judged.placement;
+      return;
+    }
     const row: Gap = { key, election: ctx.election, letters: ctx.letters ?? '', name: ctx.name ?? '', item, kind,
-      uncertainty: detail.slice(0, 500), sources, nextSource: nextSource(file, path), status: kind === 'inferred' ? 'inferred-not-verified' : kind === 'release-hold' ? 'needs-current-status-review' : 'open', file, locations: [path], occurrences: 1, importance: 'medium', certainty };
+      uncertainty: detail.slice(0, 500), sources, nextSource: nextSource(file, path), status: kind === 'inferred' ? 'inferred-not-verified' : kind === 'release-hold' ? 'needs-current-status-review' : 'open', file, locations: [path], occurrences: 1, importance: 'medium', ...judged };
     row.importance = importanceOf(row);
     rows.set(key, row);
   };
@@ -119,12 +126,15 @@ export function scanDocument(file: string, doc: any, listLookup: Record<string, 
       if (typeof v.certainty === 'string' && (CERTAINTIES as readonly string[]).includes(v.certainty)) return v.certainty;
       if (kind === 'pending') return 'unknown';
       if (kind === 'low-confidence' || v.probable === true) return 'provisional';
-      if (/classificationEvidence$/.test(path)) return classificationCertainty(v.status ?? 'inferred', cited);
       if (kind === 'inferred') return weaker('provisional', certaintyCeiling(cited));
       return certaintyCeiling(cited);
     };
     let flagged = 0;
-    const addHere = (kind: GapKind, text: string, field = '') => { flagged++; add(kind, text, path + field, ctx, sources, certaintyFor(kind)); };
+    // A family placement is the project's classification: what it rests on, never a certainty (src/data/evidence.ts).
+    // A review candidate is a placement still being weighed, so it is judged the same way.
+    const placement = /classificationEvidence$/.test(path) ? placementBasis(v, cited)
+      : /^data\/meta\/families\//.test(file) && /reviewCandidates\[\d+\]$/.test(path) ? placementBasis({ status: v.evidenceStatus ?? 'unresolved' }, cited) : undefined;
+    const addHere = (kind: GapKind, text: string, field = '') => { flagged++; add(kind, text, path + field, ctx, sources, placement && !field ? { placement } : { certainty: certaintyFor(kind) }); };
     if (v.certainty === 'disputed') addHere('conflict', v.note ?? v.noteEn ?? 'Recorded as disputed');
     if (v.candidatesUnavailable) addHere('unknown', 'Registered candidate roster unavailable', '.candidates');
     if (v.candidatesTruncated) addHere('missing-field', 'Only a candidate prefix is transcribed; later registered ranks missing', '.candidates');
@@ -234,12 +244,6 @@ export function certaintyCensus(root = ROOT) {
     for (const e of d.formation?.events ?? []) count('Formation events', claimCertainty(e, sources));
     for (const e of d.term?.events ?? []) count('Term events', claimCertainty(e, sources));
   }
-  for (const file of filesUnder(root, 'data/meta/families').filter(f => f.endsWith('.json'))) {
-    const d = read(root, file); const sources = d.sources ?? {};
-    // A placement the sources dispute is recorded as disputed (books batch 4, 17 Nov 2026); otherwise it is derived.
-    for (const e of d.elections ?? []) for (const m of e.members ?? []) if (m.classificationEvidence)
-      count('Family classifications', m.classificationEvidence.certainty === 'disputed' ? 'disputed' : classificationCertainty(m.classificationEvidence.status, (m.classificationEvidence.sourceIds ?? []).filter((id: string) => sources[id]).map((id: string) => ({ id, source: sources[id] }))));
-  }
   for (const file of filesUnder(root, 'data/meta/bios').filter(f => /\/k\d+\.json$/.test(f)))
     for (const e of Object.values<Obj>(read(root, file).candidates ?? {})) count('Candidate identity links', bioIdentityCertainty(e as Parameters<typeof bioIdentityCertainty>[0]));
   return census;
@@ -249,6 +253,16 @@ export function certaintyCensus(root = ROOT) {
 const MEMBER_CHANGES = /^data\/research\/knesset-member-changes\/k\d+\.json$/;
 /** Every file the register reads. All of data/ is in it, so a new research or raw file is never left out of the register
  *  (16 Nov 2026: the register is kept current by `npm run data:gaps:check`, run by Vitest). */
+/** Party-family placements by what they rest on; they are the project's classification, so they have no certainty. */
+export function placementCensus(root = ROOT) {
+  const out = Object.fromEntries(PLACEMENT_BASES.map(k => [k, 0])) as Record<PlacementBasis, number>;
+  for (const file of filesUnder(root, 'data/meta/families').filter(f => f.endsWith('.json'))) {
+    const d = read(root, file); const sources = d.sources ?? {};
+    for (const e of d.elections ?? []) for (const m of e.members ?? []) if (m.classificationEvidence)
+      out[placementBasis(m.classificationEvidence, (m.classificationEvidence.sourceIds ?? []).filter((id: string) => sources[id]).map((id: string) => ({ id, source: sources[id] })))]++;
+  }
+  return out;
+}
 export function registerInputs(root = ROOT): string[] {
   return [...filesUnder(root, 'data/raw'), ...filesUnder(root, 'data/meta'), ...filesUnder(root, 'data/research').filter(f => !MEMBER_CHANGES.test(f)), ...filesUnder(root, 'docs/decisions'), ...filesUnder(root, 'docs/research/data-audit'), 'src/data/schema.ts', 'public/data/elections.json', ...filesUnder(root, 'public/data').filter(f => /\/k\d+\.json$/.test(f))].sort();
 }
@@ -286,7 +300,7 @@ export function generateFullRegister(root = ROOT) {
   }
   for (const file of filesUnder(root, 'data/research/knesset-member-changes').filter(f => MEMBER_CHANGES.test(f))) gaps.push(...memberChangeGaps(file, read(root, file)));
   gaps.sort((a, b) => (Number(a.election.slice(1)) || 999) - (Number(b.election.slice(1)) || 999) || a.file.localeCompare(b.file, 'en') || a.item.localeCompare(b.item, 'en') || a.kind.localeCompare(b.kind, 'en'));
-  return { schemaVersion: 1, counts: Object.fromEntries(kinds.map(k => [k, gaps.filter(g => g.kind === k).length])), census: certaintyCensus(root), gaps };
+  return { schemaVersion: 1, counts: Object.fromEntries(kinds.map(k => [k, gaps.filter(g => g.kind === k).length])), census: certaintyCensus(root), placements: placementCensus(root), gaps };
 }
 type FullRegister = ReturnType<typeof generateFullRegister>;
 const electionKey = (id: string) => /^k\d+$/.test(id) ? `k${Number(id.slice(1))}` : id;
@@ -297,11 +311,14 @@ export const shownOrder = (a: string, b: string) => shownRank(a) - shownRank(b) 
 const shownRank = (e: string) => /^k\d+$/.test(e) ? -Number(e.slice(1)) : -1000;
 const tally = <T extends string>(values: readonly T[], gaps: Gap[], pick: (g: Gap) => string) => Object.fromEntries(values.map(v => [v, gaps.filter(g => pick(g) === v).length])) as Record<T, number>;
 const nonzero = (o: Record<string, number>) => Object.fromEntries(Object.entries(o).filter(([, n]) => n));
+/** Family placements in a group, by what they rest on; nothing when the group has none. */
+const placements = (gs: Gap[]) => { const p = nonzero(tally(PLACEMENT_BASES, gs, g => g.placement ?? '')); return Object.keys(p).length ? { placements: p } : {}; };
 /** A conflict's subject, so a grouped line still says what is disputed. */
 const conflictAbout = (g: Gap) => { try { return String(JSON.parse(g.uncertainty).about ?? '').slice(0, 120); } catch { return g.uncertainty.replace(/^Disputed:\s*/i, '').split(' — ')[0].slice(0, 120); } };
 const countStatuses = (gaps: Gap[]): Record<string, number> => Object.fromEntries([...new Set(gaps.map(g => g.status))].sort().map(status => [status, gaps.filter(g => g.status === status).length]));
-/** Open means not yet confirmed under the source policy. A confirmed single-source record is not a gap to work. */
-export const isOpen = (g: Pick<Gap, 'certainty'>) => g.certainty !== 'confirmed';
+/** Open means not yet confirmed under the source policy. A confirmed single-source record is not a gap to work. A
+ *  family placement is open until scholarship supports it (it is a classification, so it is never "confirmed"). */
+export const isOpen = (g: Pick<Gap, 'certainty' | 'placement'>) => g.placement ? g.placement !== 'scholarship' : g.certainty !== 'confirmed';
 const fieldOf = (item: string) => (item.split(' / ').pop() ?? item).replace(/\[\*\]/g, '').replace(/^\$\.?/, '') || 'record';
 /** Human area for grouping: the record family and field, independent of election and row. */
 export function areaOf(g: Pick<Gap, 'file' | 'item'>, depth = 3) {
@@ -333,12 +350,12 @@ export function summarizeRegister(full: FullRegister) {
   const highOpen = full.gaps.filter(g => g.importance === 'high' && isOpen(g));
   const high = [...group(highOpen, g => JSON.stringify([electionKey(g.election), areaOf(g, 2), g.file])).values()].map(gs => {
     const conflicts = [...new Set(gs.filter(g => g.kind === 'conflict').map(conflictAbout))];
-    return { election: electionKey(gs[0].election), area: areaOf(gs[0], 2), count: gs.length, certainty: nonzero(tally(CERTAINTIES, gs, g => g.certainty)),
+    return { election: electionKey(gs[0].election), area: areaOf(gs[0], 2), count: gs.length, certainty: nonzero(tally(CERTAINTIES, gs, g => g.certainty ?? '')), ...placements(gs),
       kinds: nonzero(tally(kinds, gs, g => g.kind)), labels: [...new Set(gs.map(labelOf).filter(Boolean))], ...(conflicts.length ? { disputed: conflicts } : {}), file: gs[0].file };
   }).sort((a, b) => shownOrder(a.election, b.election) || Number(!!b.disputed) - Number(!!a.disputed) || b.count - a.count || a.area.localeCompare(b.area, 'en'));
   const mediumOpen = full.gaps.filter(g => g.importance === 'medium' && isOpen(g));
   const medium = [...group(mediumOpen, g => JSON.stringify([electionKey(g.election), areaOf(g, 1)])).values()].map(gs => ({
-    election: electionKey(gs[0].election), area: areaOf(gs[0], 1), count: gs.length, certainty: nonzero(tally(CERTAINTIES, gs, g => g.certainty)),
+    election: electionKey(gs[0].election), area: areaOf(gs[0], 1), count: gs.length, certainty: nonzero(tally(CERTAINTIES, gs, g => g.certainty ?? '')), ...placements(gs),
   })).sort((a, b) => shownOrder(a.election, b.election) || b.count - a.count || a.area.localeCompare(b.area, 'en'));
   const lowGaps = full.gaps.filter(g => g.importance === 'low');
   const low = [...group(lowGaps, g => areaOf(g, 1)).entries()].map(([area, gs]) => ({ area, count: gs.length, open: gs.filter(isOpen).length }))
@@ -348,8 +365,9 @@ export function summarizeRegister(full: FullRegister) {
     total: full.gaps.length,
     counts: full.counts,
     countsByStatus: countStatuses(full.gaps),
-    countsByImportance: Object.fromEntries(IMPORTANCES.map(i => [i, { total: full.gaps.filter(g => g.importance === i).length, ...tally(CERTAINTIES, full.gaps.filter(g => g.importance === i), g => g.certainty) }])),
+    countsByImportance: Object.fromEntries(IMPORTANCES.map(i => [i, { total: full.gaps.filter(g => g.importance === i).length, ...tally(CERTAINTIES, full.gaps.filter(g => g.importance === i), g => g.certainty ?? ''), ...placements(full.gaps.filter(g => g.importance === i)) }])),
     claimCertainty: full.census,
+    familyPlacements: full.placements,
     elections: elections.map(election => {
       const gaps = full.gaps.filter(g => electionKey(g.election) === election);
       return { election, total: gaps.length, highOpen: gaps.filter(g => g.importance === 'high' && isOpen(g)).length, mediumOpen: gaps.filter(g => g.importance === 'medium' && isOpen(g)).length, low: gaps.filter(g => g.importance === 'low').length, counts: tally(kinds, gaps, g => g.kind) };
@@ -361,28 +379,31 @@ export function generateRegister(root = ROOT) { return summarizeRegister(generat
 type Summary = ReturnType<typeof generateRegister>;
 
 const escapeCell = (s: string) => s.replaceAll('|', '\\|').replaceAll('\n', ' ');
-const certaintyList = (c: Record<string, number>) => CERTAINTIES.filter(k => c[k]).map(k => `${k} ${c[k]}`).join(', ');
+const certaintyList = (c: Record<string, number>, p?: Record<string, number>) => {
+  const placed = p ? PLACEMENT_BASES.filter(k => p[k]).map(k => `${PLACEMENT_WORDS[k]} ${p[k]}`).join(', ') : '';
+  return [...CERTAINTIES.filter(k => c[k]).map(k => `${k} ${c[k]}`), ...(placed ? [`family placements: ${placed}`] : [])].join(', ');
+};
 const listLabels = (labels: string[], max = 14) => labels.length > max ? `${labels.slice(0, max).join(', ')} +${labels.length - max}` : labels.join(', ');
 
 export function renderMarkdown(register: Summary): string {
   const byElection = <T extends { election: string }>(rows: T[]) => [...new Set(rows.map(r => r.election))].map(e => [e, rows.filter(r => r.election === e)] as const);
-  const imp = register.countsByImportance as unknown as Record<Importance, Record<string, number>>;
+  const imp = register.countsByImportance as unknown as Record<Importance, Record<string, number> & { placements?: Record<string, number> }>;
   const lines = ['# Data gaps register', '',
     `${register.total} review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.`, '',
-    `- High importance: ${imp.high.total} (${certaintyList(imp.high)}).`,
-    `- Medium importance: ${imp.medium.total} (${certaintyList(imp.medium)}).`,
-    `- Low importance: ${imp.low.total} (${certaintyList(imp.low)}).`, '',
+    `- High importance: ${imp.high.total} (${certaintyList(imp.high, imp.high.placements)}).`,
+    `- Medium importance: ${imp.medium.total} (${certaintyList(imp.medium, imp.medium.placements)}).`,
+    `- Low importance: ${imp.low.total} (${certaintyList(imp.low, imp.low.placements)}).`, '',
     '## High importance: open, most-shown first', '',
     'Could change seats, votes, a government’s composition, recommendation totals or a Simple-level headline. Fix from the top: facts every election uses come first, then the elections from the newest (the one the explorer opens on) back to the first; within an election, disputed rows first, then the largest. One line per record area with counts by certainty; labels are ballot letters, people or events.', ''];
   for (const [election, rows] of byElection(register.high)) {
     lines.push(`### ${election}`, '');
-    for (const r of rows) lines.push(`- [${escapeCell(r.area)}](../${r.file}) ×${r.count}: ${certaintyList(r.certainty)}${r.labels.length ? `. ${escapeCell(listLabels(r.labels))}` : ''}${r.disputed ? `. Disputed: ${escapeCell(r.disputed.join('; '))}` : ''}`);
+    for (const r of rows) lines.push(`- [${escapeCell(r.area)}](../${r.file}) ×${r.count}: ${certaintyList(r.certainty, r.placements)}${r.labels.length ? `. ${escapeCell(listLabels(r.labels))}` : ''}${r.disputed ? `. Disputed: ${escapeCell(r.disputed.join('; '))}` : ''}`);
     lines.push('');
   }
   lines.push('## Medium importance: open, most-shown first', '',
     'Shown in Standard/Expert views or the After-the-election tab, in the same order. Grouped by record area; counts by certainty.', '');
   for (const [election, rows] of byElection(register.medium))
-    lines.push(`- **${election}**: ${rows.map(r => `${escapeCell(r.area)} ${r.count} (${certaintyList(r.certainty)})`).join('; ')}.`);
+    lines.push(`- **${election}**: ${rows.map(r => `${escapeCell(r.area)} ${r.count} (${certaintyList(r.certainty, r.placements)})`).join('; ')}.`);
   lines.push('', '## Low importance: counts only', '',
     'Display metadata, candidate trivia, raw-dump fields and provenance housekeeping.', '',
     register.low.map(r => `${escapeCell(r.area)} ${r.count}${r.open !== r.count ? ` (${r.open} open)` : ''}`).join('; ') + '.', '',
@@ -390,6 +411,7 @@ export function renderMarkdown(register: Summary): string {
     'Every claim in these families, not only gaps. Derived from each claim’s own sources; explicit values never exceed that ceiling (validated by `npm run data:build`).', '',
     `| Claims | ${CERTAINTIES.join(' | ')} | Total |`, `| --- | ${CERTAINTIES.map(() => '---:').join(' | ')} | ---: |`,
     ...Object.entries(register.claimCertainty).map(([family, c]) => `| ${family} | ${CERTAINTIES.map(k => (c as Record<string, number>)[k]).join(' | ')} | ${Object.values(c as Record<string, number>).reduce((a, b) => a + b, 0)} |`), '',
+    `Party-family placements are the project’s classification, not facts, so they carry no certainty. Of ${Object.values(register.familyPlacements).reduce((a, b) => a + b, 0)}: ${PLACEMENT_BASES.filter(k => register.familyPlacements[k]).map(k => `${PLACEMENT_WORDS[k]} ${register.familyPlacements[k]}`).join(', ')}.`, '',
     '## Counts', '',
     `By kind: ${kinds.map(k => `${k}: ${register.counts[k]}`).join('; ')}.`, '',
     `By status: ${Object.entries(register.countsByStatus).map(([status, n]) => `${status}: ${n}`).join('; ')}.`, '',
@@ -398,7 +420,7 @@ export function renderMarkdown(register: Summary): string {
     '## Maintenance and scope', '',
     'Regenerate this summary: `npm run data:gaps`. Verify: `npm run data:gaps:check` (also checked by Vitest). Production builds and deployments do not enforce register freshness. Only summary-level counts and grouped facts affect staleness; raw file bytes and bulk-only descriptions do not.', '',
     'Importance and certainty are code rules (`importanceOf` in scripts/gaps-register.ts; src/data/evidence.ts), not hand tags. Full export: `npm run data:gaps -- --full` writes `.backup-scratch/data-gaps/full.json` and `full.md` (gitignored), with every row, its sources and the best next source.', '',
-    'Every JSON file under data/ (raw, meta and research) is scanned for declared uncertainty, and a test fails if one is left out; published national datasets are checked against required schema fields. Decision/audit prose needs current-status review. Binary sources are not interpreted; unrecorded contradictions need human review. Nulls can be inapplicable. Family classification is editorial and never confirmed.', '',
+    'Every JSON file under data/ (raw, meta and research) is scanned for declared uncertainty, and a test fails if one is left out; published national datasets are checked against required schema fields. Decision/audit prose needs current-status review. Binary sources are not interpreted; unrecorded contradictions need human review. Nulls can be inapplicable. A family placement is the project’s classification, never a certainty; it is open until scholarship supports it.', '',
     'Research and blockers: [initial round](research/data-gaps-1992-followup.md), [closure batches](research/data-gaps-closure-batches.md), [7 November policy pass](research/evidence-policy-pass-1107.md). Machine-readable summary: [data-gaps.json](data-gaps.json).', '');
   return lines.join('\n');
 }
@@ -409,7 +431,7 @@ export function renderFullMarkdown(register: FullRegister): string {
   let election = '';
   for (const g of register.gaps) {
     if (g.election !== election) { election = g.election; lines.push(`## ${election}`, '', '| Item | Importance / certainty / kind: uncertainty | Current sources | Best next source | Status / record |', '| --- | --- | --- | --- | --- |'); }
-    lines.push(`| ${escapeCell([g.letters, g.name, g.item].filter(Boolean).join(' / '))} | ${escapeCell(`${g.importance} / ${g.certainty} / ${g.kind}: ${g.uncertainty}`)} | ${escapeCell(g.sources.join('; ') || 'None recorded at this scope')} | ${escapeCell(g.nextSource)} | ${g.status} / ${g.file} |`);
+    lines.push(`| ${escapeCell([g.letters, g.name, g.item].filter(Boolean).join(' / '))} | ${escapeCell(`${g.importance} / ${g.certainty ?? `family placement: ${PLACEMENT_WORDS[g.placement!]}`} / ${g.kind}: ${g.uncertainty}`)} | ${escapeCell(g.sources.join('; ') || 'None recorded at this scope')} | ${escapeCell(g.nextSource)} | ${g.status} / ${g.file} |`);
   }
   return lines.join('\n') + '\n';
 }

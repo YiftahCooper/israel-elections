@@ -38,6 +38,17 @@ const SCHOLARSHIP_DOMAINS = ['idi.org.il', 'data.ipu.org', 'socsci4.tau.ac.il', 
 
 export const isEnglishWikipedia = (url = '') => /(^|\.)en\.(m\.)?wikipedia\.org$/.test(host(url));
 export const isHebrewWikipedia = (url = '') => /(^|\.)he\.(m\.)?wikipedia\.org$/.test(host(url));
+/** Outlets never used as sources (docs/source-policy.md, "Outlets not used"): outlets that question Israel's right
+ *  to exist. Sharp criticism of policy is not a reason; this list names outlets, not opinions. */
+export const EXCLUDED_OUTLETS: readonly { name: string; domains: readonly string[]; publisher: RegExp }[] = [
+  { name: '+972 Magazine', domains: ['972mag.com'], publisher: /\+972(?![\d-]|\s\d)|972\s?mag/i },
+  { name: 'Local Call (Sicha Mekomit)', domains: ['mekomit.co.il'], publisher: /Local Call|Si(?:c)?ha Mekomit|שיחה מקומית/i },
+];
+/** The excluded outlet a source's address or publisher names, if any. */
+export function excludedOutlet(url = '', publisher = ''): string | undefined {
+  const h = host(url);
+  return EXCLUDED_OUTLETS.find(o => o.domains.some(d => under(h, d)) || (publisher && o.publisher.test(publisher)))?.name;
+}
 
 export function sourceTier(s: EvidenceSource): EvidenceTier {
   const h = host(s.url);
@@ -125,9 +136,15 @@ export function certaintyAllowed(recorded: Certainty, ceiling: Certainty) {
   return recorded === 'unknown' || recorded === 'disputed' || certaintyRank(recorded) <= certaintyRank(ceiling);
 }
 
-/** Family placement is editorial: never confirmed; probable only when scholarship places it. */
-export function classificationCertainty(status: string, cited: { id: string; source: EvidenceSource }[]): Certainty {
-  if (status === 'unverified') return 'unknown';
-  const scholarship = cited.some(c => sourceTier(c.source) === 'scholarship');
-  return status !== 'inferred' && scholarship ? 'probable' : 'provisional';
+/** A party-family placement is the project's classification, not a fact of record (docs/source-policy.md, "Party
+ *  families are the project's classification"), so it never carries a certainty label. It says what it rests on:
+ *  scholarship that places the party there, or the project's own judgement; sources that disagree are recorded as
+ *  such, and a placement nobody has checked yet says so. */
+export const PLACEMENT_BASES = ['scholarship', 'project', 'disputed', 'not-checked'] as const;
+export type PlacementBasis = typeof PLACEMENT_BASES[number];
+export const PLACEMENT_WORDS: Record<PlacementBasis, string> = { scholarship: 'follows scholarship', project: 'the project’s own judgement', disputed: 'sources disagree', 'not-checked': 'not yet checked' };
+export function placementBasis(evidence: { status?: string; certainty?: string }, cited: { id: string; source: EvidenceSource }[]): PlacementBasis {
+  if (evidence.certainty === 'disputed' || evidence.status === 'contested') return 'disputed';
+  if (evidence.status === 'unverified' || evidence.status === 'unresolved') return 'not-checked';
+  return (evidence.status ?? 'inferred') !== 'inferred' && cited.some(c => sourceTier(c.source) === 'scholarship') ? 'scholarship' : 'project';
 }

@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { certaintyCeiling, certaintyAllowed, classificationCertainty, independenceKey, sourceTier, type EvidenceSource } from '../src/data/evidence.ts';
+import { certaintyCeiling, certaintyAllowed, excludedOutlet, placementBasis, independenceKey, sourceTier, type EvidenceSource } from '../src/data/evidence.ts';
+import { excludedOutletHits, scanExcludedOutlets } from '../scripts/lib/build/excluded-outlets.ts';
 import { claimCertainty, validateEvidenceDocument } from '../scripts/lib/build/evidence.ts';
 
 const S: Record<string, EvidenceSource> = {
@@ -16,7 +17,7 @@ const S: Record<string, EvidenceSource> = {
   nyt: { url: 'https://www.nytimes.com/1992/07/03/world/x.html', kind: 'secondary', publisher: 'The New York Times' },
   idi: { url: 'https://www.idi.org.il/media/20997/x.pdf', kind: 'academic' },
   idiProfile: { url: 'https://en.idi.org.il/israeli-elections-and-parties/parties/shas/', kind: 'secondary' },
-  retro: { url: 'https://www.972mag.com/x/', kind: 'secondary', tier: 'retrospective' },
+  retro: { url: 'https://www.example-magazine.com/x/', kind: 'secondary', tier: 'retrospective' },
   timeline: { url: 'https://kvia.com/x', kind: 'secondary', publisher: 'CNN Editorial Research, Benjamin Netanyahu Fast Facts' },
   hewiki: { url: 'https://he.wikipedia.org/wiki/x', kind: 'secondary' },
 };
@@ -64,10 +65,12 @@ describe('certainty thresholds', () => {
     expect(certaintyAllowed('disputed', 'provisional')).toBe(true);
     expect(certaintyAllowed('unknown', 'confirmed')).toBe(true);
   });
-  it('never confirms an editorial family placement', () => {
-    expect(classificationCertainty('documented', cite('idiProfile'))).toBe('probable');
-    expect(classificationCertainty('documented', cite('plenum'))).toBe('provisional');
-    expect(classificationCertainty('inferred', cite('idi'))).toBe('provisional');
+  it('gives a family placement what it rests on, never a certainty (17 Nov 2026)', () => {
+    expect(placementBasis({ status: 'documented' }, cite('idiProfile'))).toBe('scholarship');
+    expect(placementBasis({ status: 'documented' }, cite('plenum'))).toBe('project');
+    expect(placementBasis({ status: 'inferred' }, cite('idi'))).toBe('project');
+    expect(placementBasis({ status: 'unverified' }, cite('idi'))).toBe('not-checked');
+    expect(placementBasis({ status: 'documented', certainty: 'disputed' }, cite('idi'))).toBe('disputed');
   });
 });
 
@@ -92,6 +95,16 @@ describe('overlay validator', () => {
     expect(() => validateEvidenceDocument(rec('recommended', ['hewiki']), 't')).toThrow(/reliable source/);
     expect(() => validateEvidenceDocument(rec('recommended', ['idi']), 't')).not.toThrow();
     expect(() => validateEvidenceDocument(rec('unknown', []), 't')).not.toThrow();
+  });
+  it('never accepts an outlet not used, by address or by publisher (17 Nov 2026)', () => {
+    for (const s of [{ url: 'https://www.972mag.com/x/' }, { url: 'https://web.archive.org/web/2023/https://www.mekomit.co.il/x/' },
+      { url: 'https://example.org/x', publisher: 'Wadea Awawdy, +972 / Local Call' }, { url: 'https://example.org/x', publisher: 'שיחה מקומית' },
+      { url: 'https://example.org/x', publisher: '+972 Magazine' }])
+      expect(() => validateEvidenceDocument({ sources: { x: s } }, 't'), JSON.stringify(s)).toThrow(/outlet not used/);
+    // a telephone number with Israel's dialling code is not the outlet
+    expect(excludedOutlet('https://example.org/x', 'Hebrew University, +972-2-588-2888')).toBeUndefined();
+    expect(scanExcludedOutlets()).toEqual([]);
+    expect(excludedOutletHits({ sources: [{ url: 'https://www.mekomit.co.il/x/' }], credit: 'Local Call' }, 'f')).toHaveLength(2);
   });
   it('never accepts English Wikipedia or a dangling citation', () => {
     expect(() => validateEvidenceDocument({ sources: { x: { url: 'https://en.wikipedia.org/wiki/X' } } }, 't')).toThrow(/English Wikipedia/);
@@ -165,7 +178,11 @@ describe('7 November policy pass on the real overlays', () => {
     const entry = (round: any, letters: string) => round.entries.find((e: any) => e.letters === letters);
     expect(entry(round12, 'עץ').status).toBe('none');
     expect(claimCertainty(entry(round12, 'עץ'), k12.sources)).toBe('probable');
-    for (const l of ['ו', 'פ', 'ע']) expect([entry(round12, l).nominee, claimCertainty(entry(round12, l), k12.sources)]).toEqual(['peres', 'provisional']);
+    // 17 Nov 2026: their only source was an outlet not used; what they told the President is not known
+    for (const l of ['ו', 'פ', 'ע']) expect([entry(round12, l).status, entry(round12, l).nominee, claimCertainty(entry(round12, l), k12.sources)]).toEqual(['unknown', undefined, 'unknown']);
+    expect(round12.totals).toEqual({ shamir: 63, peres: 49, none: 2, unknown: 6 });
+    const round13 = load('k13').recommendationRounds[0];
+    for (const l of ['ו', 'ע']) expect([entry(round13, l).status, entry(round13, l).nominee]).toEqual(['unknown', undefined]);
     expect(Object.values<number>(round12.totals).reduce((a, b) => a + b, 0)).toBe(120);
     const k1 = load('k1'), row = (l: string) => k1.government.coalition.find((r: any) => r.letters === l);
     expect([row('יד').role, row('יד').certainty]).toEqual(['member-without-ministries', 'probable']);

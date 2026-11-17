@@ -250,7 +250,10 @@ test('records added in this pass: the Lavon affair, the 1988 recommendations, Go
   await history.getByText('שינויים בממשלה', { exact: true }).click();
   await expect(history).toContainText('פרשת לבון הובילה למשבר פוליטי ולבחירות מוקדמות.');
   await choose(page.getByRole('button', { name: 'בחירות', exact: true }), 'k12');
-  await expect(history.locator('.after-key')).toContainText('שמעון פרס 55');
+  // 17 Nov 2026: Hadash, PLP and ADP rested only on an outlet not used, so they are not documented (6) and Peres has 49
+  await expect(history.locator('.after-key')).toContainText('שמעון פרס 49');
+  await expect(history.locator('.after-key')).toContainText('לא מתועד 6');
+  await expect(history).not.toContainText('שיחה מקומית');
   await choose(page.getByRole('button', { name: 'בחירות', exact: true }), 'k11');
   await expect(history.locator('.after-individual').filter({ hasText: 'אמירה סרטני' })).toContainText('מרשימת המערך');
   await expect(history).not.toContainText('נבחר ברשימת');

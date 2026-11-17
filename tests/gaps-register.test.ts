@@ -36,9 +36,12 @@ it('the committed register and prose cannot drift from their inputs', () => {
   const recommendations = full.gaps.filter(g => g.kind === 'unknown' && /recommendationRounds.*entries/.test(g.item));
   expect(recommendations.length).toBeGreaterThan(0);
   for (const g of recommendations) expect([g.importance, g.certainty]).toEqual(['high', 'unknown']);
-  for (const g of full.gaps.filter(g => g.kind === 'conflict')) expect(g.certainty).toBe('disputed');
-  expect(Object.keys(register.claimCertainty)).toEqual(expect.arrayContaining(['Recommendations', 'Government roles', 'Formation events', 'Family classifications', 'Candidate identity links']));
-  expect(register.claimCertainty['Family classifications'].confirmed).toBe(0);
+  for (const g of full.gaps.filter(g => g.kind === 'conflict')) expect(g.certainty ?? g.placement).toBe('disputed');
+  expect(Object.keys(register.claimCertainty)).toEqual(expect.arrayContaining(['Recommendations', 'Government roles', 'Formation events', 'Candidate identity links']));
+  // a party-family placement is the project's classification: counted by what it rests on, never by certainty
+  expect(register.claimCertainty).not.toHaveProperty('Family classifications');
+  expect(register.familyPlacements.scholarship + register.familyPlacements.project).toBeGreaterThan(400);
+  expect(JSON.stringify([register.medium, register.high].flat().filter((r) => r.area === 'Family classifications').map((r) => r.certainty))).not.toMatch(/probable|provisional|confirmed/);
 }, 60000);
 it('ranks importance by code rules, not hand tags', () => {
   const at = (file: string, item: string, kind: GapKind = 'unknown') => importanceOf({ file, item, kind });

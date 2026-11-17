@@ -74,13 +74,14 @@ describe('After the election: rules over all records', () => {
       }
     }
     expect(compared).toBeGreaterThanOrEqual(16);
-    // the rule catches the 1988 disagreement the audit found: Hadash, PLP and ADP outside the Peres bloc
+    // the rule catches a grouping that still counts Hadash, PLP and ADP for Peres in 1988 (17 Nov 2026: their only
+    // source was an outlet not used, so the record has them as not known)
     const k12 = aftermathRecords.k12!.recommendationRounds[0];
     const stale = { id: 'pm-recommendations', blocs: [
       { id: 'shamir', seats: 63, members: ['מחל', 'שס', 'ג', 'ב', 'ת', 'ץ', 'ט'].map(letters => ({ letters })) },
-      { id: 'peres', seats: 49, members: ['אמת', 'רצ', 'מפם', 'הן'].map(letters => ({ letters })) },
-      { id: 'unconfirmed', seats: 8, members: ['ו', 'פ', 'ע', 'עץ'].map(letters => ({ letters })) }] };
-    expect(groupingDisagreements(k12 as never, [stale])).toEqual(expect.arrayContaining([expect.stringContaining('r1/ו: round says peres, grouping says unconfirmed'), expect.stringContaining('r1/peres: grouping has 49 seats, round 55')]));
+      { id: 'peres', seats: 55, members: ['אמת', 'רצ', 'מפם', 'הן', 'ו', 'פ', 'ע'].map(letters => ({ letters })) },
+      { id: 'none', seats: 2, members: [{ letters: 'עץ' }] }] };
+    expect(groupingDisagreements(k12 as never, [stale])).toEqual(expect.arrayContaining([expect.stringContaining('r1/ו: round says unknown, grouping says peres'), expect.stringContaining('r1/peres: grouping has 55 seats, round 49')]));
   });
   it('c-aftermath-04: a tally with a key the screen does not read fails validation', () => {
     expect(validTally({ for: 69, against: 45, abstained: 5 })).toBe(false);

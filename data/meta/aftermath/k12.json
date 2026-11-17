@@ -137,15 +137,6 @@
       "accessed": "2026-11-07",
       "publisherHe": "הכנסת, מאגר המידע הפתוח: השרים בהקמת הממשלה"
     },
-    "local-call-2022": {
-      "url": "https://www.mekomit.co.il/המפלגות-הערביות-ממליצות-על-מועמדים-כב/",
-      "publisher": "ודיע עואודה / שיחה מקומית, המפלגות הערביות ממליצות על מועמדים כבר משנות ה-80, ללא הישגים, 11 October 2022 (English translation: +972 Magazine, 27 October 2022)",
-      "kind": "secondary",
-      "tier": "retrospective",
-      "evidenceFamily": "local-call-awawdy-2022",
-      "accessed": "2026-11-07",
-      "via": "Read by the 7 November research helper; a direct request on 7 November met a bot-verification page, which was not bypassed. One retrospective account in two languages, not two sources."
-    },
     "unita-19881114": {
       "url": "https://archivio.unita.news/assets/main/1988/11/14/page_004.pdf",
       "publisher": "Giancarlo Lannutti / l’Unità, 14 November 1988, p.4, Il coprifuoco non soffoca «l’intifada»",
@@ -313,18 +304,9 @@
         {
           "letters": "ו",
           "seats": 4,
-          "status": "recommended",
-          "nominee": "peres",
-          "cites": [
-            {
-              "source": "local-call-2022",
-              "quote": "כולן המליצו בפני הנשיא על פרס כמועמד לראשות הממשלה",
-              "locator": "paragraph beginning בבחירות לכנסת ה-12",
-              "note": "Names Hadash (4), the Progressive List (1) and the Arab Democratic Party (1); the English translation describes the recommendation as conditional on narrowing social and economic gaps."
-            }
-          ],
-          "noteEn": "Conditional recommendation of Peres, from one later account. Contemporary reports of 55 seats for Peres are consistent but are not used as evidence for this list.",
-          "noteHe": "המלצה מותנית על פרס, לפי חשבון מאוחר אחד. הדיווחים בני הזמן על 55 תומכים בפרס תואמים, אך אינם משמשים ראיה לרשימה זו."
+          "status": "unknown",
+          "noteEn": "Not known yet: no usable source from the time has been found that says whom this list recommended.",
+          "noteHe": "עדיין לא ידוע: לא נמצא מקור שמיש מאותה תקופה שאומר על מי המליצה הרשימה."
         },
         {
           "letters": "מפם",
@@ -341,34 +323,16 @@
         {
           "letters": "פ",
           "seats": 1,
-          "status": "recommended",
-          "nominee": "peres",
-          "cites": [
-            {
-              "source": "local-call-2022",
-              "quote": "כולן המליצו בפני הנשיא על פרס כמועמד לראשות הממשלה",
-              "locator": "paragraph beginning בבחירות לכנסת ה-12",
-              "note": "Names Hadash (4), the Progressive List (1) and the Arab Democratic Party (1); the English translation describes the recommendation as conditional on narrowing social and economic gaps."
-            }
-          ],
-          "noteEn": "Conditional recommendation of Peres, from one later account. Contemporary reports of 55 seats for Peres are consistent but are not used as evidence for this list.",
-          "noteHe": "המלצה מותנית על פרס, לפי חשבון מאוחר אחד. הדיווחים בני הזמן על 55 תומכים בפרס תואמים, אך אינם משמשים ראיה לרשימה זו."
+          "status": "unknown",
+          "noteEn": "Not known yet: no usable source from the time has been found that says whom this list recommended.",
+          "noteHe": "עדיין לא ידוע: לא נמצא מקור שמיש מאותה תקופה שאומר על מי המליצה הרשימה."
         },
         {
           "letters": "ע",
           "seats": 1,
-          "status": "recommended",
-          "nominee": "peres",
-          "cites": [
-            {
-              "source": "local-call-2022",
-              "quote": "כולן המליצו בפני הנשיא על פרס כמועמד לראשות הממשלה",
-              "locator": "paragraph beginning בבחירות לכנסת ה-12",
-              "note": "Names Hadash (4), the Progressive List (1) and the Arab Democratic Party (1); the English translation describes the recommendation as conditional on narrowing social and economic gaps."
-            }
-          ],
-          "noteEn": "Conditional recommendation of Peres, from one later account. Contemporary reports of 55 seats for Peres are consistent but are not used as evidence for this list.",
-          "noteHe": "המלצה מותנית על פרס, לפי חשבון מאוחר אחד. הדיווחים בני הזמן על 55 תומכים בפרס תואמים, אך אינם משמשים ראיה לרשימה זו."
+          "status": "unknown",
+          "noteEn": "Not known yet: no usable source from the time has been found that says whom this list recommended.",
+          "noteHe": "עדיין לא ידוע: לא נמצא מקור שמיש מאותה תקופה שאומר על מי המליצה הרשימה."
         },
         {
           "letters": "עץ",
@@ -391,8 +355,9 @@
       ],
       "totals": {
         "shamir": 63,
-        "peres": 55,
-        "none": 2
+        "peres": 49,
+        "none": 2,
+        "unknown": 6
       },
       "cites": [
         {
@@ -413,8 +378,8 @@
         }
       ],
       "notes": [
-        "Contemporary reporting gives aggregate support of 63 for Shamir and 55 for Peres; that agreement is a consistency check, not evidence of any single list. JTA (9 November) names the non-Arab parties’ choices. Hadash, PLP and ADP rest on one retrospective account (Local Call, 2022); Degel HaTorah on l’Unità (14 November 1988) and UPI.",
-        "Degel HaTorah recommended no one (probable: l’Unità, 14 November 1988, and United Press International, independent reports of the time). Hadash, the Progressive List for Peace and the Arab Democratic Party recommended Peres on conditions (provisional: one later account, Local Call 2022). The President’s consultation file for 7–13 November 1988 would decide it. The totals now match the contemporary 63–55 report; that agreement is a consistency check, not evidence."
+        "Reports of the time give 63 Knesset members for Shamir and 55 for Peres. A total does not show what any single list said, so it is not split among the lists. The Jewish Telegraphic Agency (9 November) names the choices of the parties other than the Arab lists; Degel HaTorah rests on l’Unità (14 November 1988) and United Press International.",
+        "Degel HaTorah recommended no one (probable: l’Unità, 14 November 1988, and United Press International, independent reports of the time). What Hadash, the Progressive List for Peace and the Arab Democratic Party (6 seats) told the President is not known: no usable source from the time has been found yet. Newspapers of 8–14 November 1988, or the President’s consultation file for 7–13 November 1988, would decide it."
       ]
     }
   ],
@@ -693,7 +658,8 @@
     "Formation timeline is a sourced subset; missing steps must not be inferred from statutory maximum periods.",
     "Opening Degel status settled by Ravitz in the primary plenum debate p.238: opposition despite confidence support. A complete set of signed coalition agreements remains uncollected.",
     "Recommendation evidence and caveats are inherited from docs/research/pm-recommendations-1977-2006.md; a source quoting the President is not an original presidential record.",
-    "1990 Peres/Shamir tasking dates and extensions need the primary letters or verified contemporary texts; not reconstructed from prospective reports. Government 24 coalition splits are not represented by the first-government card."
+    "1990 Peres/Shamir tasking dates and extensions need the primary letters or verified contemporary texts; not reconstructed from prospective reports. Government 24 coalition splits are not represented by the first-government card.",
+    "Recommendations of Hadash, the Progressive List for Peace and the Arab Democratic Party (November 1988): no usable source yet. Search Hebrew newspapers of 8–14 November 1988 (Davar, Al HaMishmar, Maariv, Haaretz via JPress) and the President’s consultation file."
   ],
   "government": {
     "number": 23,

@@ -170,28 +170,12 @@
       "accessed": "2026-11-07",
       "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
-    "outside-support-history": {
-      "url": "https://www.972mag.com/palestinian-citizens-israel-coalition-elections/",
-      "publisher": "Wadea Awawdy, +972 / Local Call, 27 October 2022",
-      "kind": "secondary",
-      "accessed": "2026-11-07",
-      "tier": "retrospective"
-    },
     "role-roster-26": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2026%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
       "publisher": "Knesset open data: ministers at formation",
       "kind": "official",
       "accessed": "2026-11-07",
       "publisherHe": "הכנסת, מאגר המידע הפתוח: השרים בהקמת הממשלה"
-    },
-    "local-call-2022": {
-      "url": "https://www.mekomit.co.il/המפלגות-הערביות-ממליצות-על-מועמדים-כב/",
-      "publisher": "ודיע עואודה / שיחה מקומית, המפלגות הערביות ממליצות על מועמדים כבר משנות ה-80, ללא הישגים, 11 October 2022 (English translation: +972 Magazine, 27 October 2022)",
-      "kind": "secondary",
-      "tier": "retrospective",
-      "evidenceFamily": "local-call-awawdy-2022",
-      "accessed": "2026-11-07",
-      "via": "Read by the 7 November research helper; a direct request on 7 November met a bot-verification page, which was not bypassed. One retrospective account in two languages, not two sources."
     },
     "basic-law-government-1968": {
       "url": "https://fs.knesset.gov.il//6/law/6_lsr_212425.DOC",
@@ -275,18 +259,9 @@
         {
           "letters": "ו",
           "seats": 3,
-          "status": "recommended",
-          "nominee": "rabin",
-          "cites": [
-            {
-              "source": "local-call-2022",
-              "quote": "שתי המפלגות המליצו בפני הנשיא על רבין",
-              "locator": "paragraph beginning בסופו של דבר, הרשימה המתקדמת",
-              "note": "Names the Arab Democratic Party (2) and Hadash (3)."
-            }
-          ],
-          "noteEn": "Recommended Rabin, from one later account; no contemporary or scholarly corroboration recovered.",
-          "noteHe": "המליצה על רבין, לפי חשבון מאוחר אחד; לא נמצא אישור בן הזמן או מחקרי."
+          "status": "unknown",
+          "noteEn": "Not known yet: no usable source from the time has been found that says whom this list recommended.",
+          "noteHe": "עדיין לא ידוע: לא נמצא מקור שמיש מאותה תקופה שאומר על מי המליצה הרשימה."
         },
         {
           "letters": "ט",
@@ -316,18 +291,9 @@
         {
           "letters": "ע",
           "seats": 2,
-          "status": "recommended",
-          "nominee": "rabin",
-          "cites": [
-            {
-              "source": "local-call-2022",
-              "quote": "שתי המפלגות המליצו בפני הנשיא על רבין",
-              "locator": "paragraph beginning בסופו של דבר, הרשימה המתקדמת",
-              "note": "Names the Arab Democratic Party (2) and Hadash (3)."
-            }
-          ],
-          "noteEn": "Recommended Rabin, from one later account; no contemporary or scholarly corroboration recovered.",
-          "noteHe": "המליצה על רבין, לפי חשבון מאוחר אחד; לא נמצא אישור בן הזמן או מחקרי."
+          "status": "unknown",
+          "noteEn": "Not known yet: no usable source from the time has been found that says whom this list recommended.",
+          "noteHe": "עדיין לא ידוע: לא נמצא מקור שמיש מאותה תקופה שאומר על מי המליצה הרשימה."
         },
         {
           "letters": "ץ",
@@ -353,8 +319,8 @@
         }
       ],
       "totals": {
-        "rabin": 25,
-        "unknown": 95
+        "rabin": 20,
+        "unknown": 100
       },
       "cites": [
         {
@@ -364,8 +330,8 @@
       ],
       "notes": [
         "No complete per-faction recommendation record was recovered by the existing research. A 61-seat blocking bloc is not a recommendation tally. Unknown is not an explicit decision to recommend nobody.",
-        "2026-11-07: Tsomet is now independently corroborated by Israel Democracy Institute p.599 and a contemporary Amigoe scan. The other nine entries remain unknown; aggregate tally arithmetic is not per-faction evidence. Amigoe also reports Shas approval, while the later Walla account attributes discretion to the religious parties: Shas requires the original consultation record, not promotion from either alone.",
-        "Meretz (Amigoe, contemporary) and Hadash and ADP (Local Call 2022, retrospective) are provisional Rabin recommendations. Shas stays unknown: Amigoe reports its approval of Rabin, but Herzog’s memorandum as quoted by Amir Oren (Walla, October 2019) says the religious movements left the decision to him. Labor, Likud, NRP, UTJ and Moledet stay unknown; the memorandum’s aggregate (69 Rabin, 32 Shamir, three none) is not per-faction evidence."
+        "Tsomet’s recommendation of Rabin is supported by the Israel Democracy Institute (p. 599) and a report of the time in Amigoe. A total of seats does not show what any single list said. Amigoe also reports that Shas approved, while a later Walla account says the religious parties left the decision to the President; Shas needs the original consultation record, not either account alone.",
+        "Meretz backed Rabin in the consultations (provisional: one report of the time, Amigoe). What Hadash and the Arab Democratic Party told the President is not known: no usable source from the time has been found yet. Shas stays unknown: Amigoe reports its approval of Rabin, but Herzog’s memorandum as quoted by Amir Oren (Walla, October 2019) says the religious movements left the decision to him. Labor, Likud, the National Religious Party, United Torah Judaism and Moledet stay unknown; the memorandum’s total (69 Rabin, 32 Shamir, three none) does not show what each list said."
       ]
     }
   ],
@@ -630,7 +596,8 @@
   "gaps": [
     "Formation timeline is a sourced subset; missing steps must not be inferred from statutory maximum periods.",
     "The Knesset history dates Oslo II to Taba on 27 September; the Washington signing ceremony is a different step. This pass does not conflate them.",
-    "Official results publication: 1 July 1992 (YP 4021); first sitting: 13 July 1992 (official transcript). No earlier certification act inferred. Government 25 tenure and Peres succession checked against official OData on 6 November 2026."
+    "Official results publication: 1 July 1992 (YP 4021); first sitting: 13 July 1992 (official transcript). No earlier certification act inferred. Government 25 tenure and Peres succession checked against official OData on 6 November 2026.",
+    "Recommendations of Hadash and the Arab Democratic Party (June 1992): no usable source yet. Search Hebrew newspapers of 28 June–1 July 1992 (Davar, Al HaMishmar, Maariv, Haaretz via JPress) and the President’s consultation file."
   ],
   "government": {
     "number": 25,
@@ -726,10 +693,6 @@
             "quote": "Darousha said his two-man faction had decided to support the government, rather than abstain"
           },
           {
-            "source": "outside-support-history",
-            "quote": "while not officially part of the coalition, voted with the government on most issues"
-          },
-          {
             "source": "galnoor-blander-2018",
             "quote": "both parties agreeing to support the Rabin government without being members of it.",
             "locator": "p. 650"
@@ -761,10 +724,6 @@
           {
             "source": "jta1992vote",
             "quote": "Darousha said his two-man faction had decided to support the government, rather than abstain"
-          },
-          {
-            "source": "outside-support-history",
-            "quote": "while not officially part of the coalition, voted with the government on most issues"
           },
           {
             "source": "galnoor-blander-2018",

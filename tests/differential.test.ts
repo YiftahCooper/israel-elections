@@ -334,7 +334,11 @@ const EXPECTED: Record<Family, string> = {
   // notes and two link publishers in plain words. The field-by-field diff of the 26 published datasets shows only
   // status.noteEn/noteHe, lists[].candidates[].notes[], lists[].links[].publisher and builtAt; the other four digests
   // are unchanged.
-  model: '33a3b7f65e2ccb9ce6534ef1927367a8beca83117987827841b1c66b6a6098ef',
+  // Outlets not used (17 Nov): k12's 1988 recommendations grouping moves Hadash, PLP and ADP from Peres (55 → 49) to a new
+  // 'Not stated in source' group (6), as their only source was an outlet the project does not use. The published k12
+  // differs only in blocSchemes[1].blocs and builtAt; restoring HEAD's k12 (with its hash pins) reproduces 33a3b7f6… and
+  // all four other digests.
+  model: '689cc5892ef05db31b313e44b5c4a667b9c9349eafda52814ac072ea06979c63',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

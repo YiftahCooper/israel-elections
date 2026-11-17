@@ -1,11 +1,12 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { certaintyCeiling, classificationCertainty, type EvidenceSource } from '../src/data/evidence.ts';
+import { certaintyCeiling, placementBasis, type EvidenceSource } from '../src/data/evidence.ts';
 import { evidenceOf } from '../src/history/evidence-of.ts';
 import { readFamilyBundle, validateFamilies } from '../scripts/validate-families.ts';
 
 // Books batch 4 (17 Nov 2026): joint-list parties, whole joint lists, party families and party continuity, under the
-// owner's book rule (two works with no shared author confirm; one stays probable; families stay at most probable).
+// owner's book rule (two works with no shared author confirm; one stays probable). A family placement is the project's
+// classification, never a certainty: it follows scholarship or the project's own judgement.
 const read = (p: string) => JSON.parse(readFileSync(p, 'utf8'));
 type Src = EvidenceSource & { quote?: string; locator?: string; publisher?: string; kind?: string };
 const ceiling = (sources: Src[]) => certaintyCeiling(sources.map((source, i) => ({ id: String(i), source })));
@@ -50,10 +51,10 @@ describe('books batch 4: party families', () => {
   const rr = read('data/meta/families/radical-right.json'), ru = read('data/meta/families/russian-speaking-immigrant.json');
   const member = (f: any, k: string, listId: string) => f.elections.find((e: any) => e.electionId === k).members.find((m: any) => m.listId === listId);
   const cited = (f: any, ce: any) => ce.sourceIds.map((id: string) => ({ id, source: f.sources[id] }));
-  it('places Kach, Tehiya, Moledet and Otzma at probable with book pages, never confirmed', () => {
+  it('places Kach, Tehiya, Moledet and Otzma by scholarship, with book pages', () => {
     for (const [k, l] of [['k8', '8-כך'], ['k12', '12-ט'], ['k13', '13-ת'], ['k22', '22-כף']]) {
       const ce = member(rr, k, l).classificationEvidence;
-      expect([ce.status, classificationCertainty(ce.status, cited(rr, ce))]).toEqual(['documented', 'probable']);
+      expect([ce.status, placementBasis(ce, cited(rr, ce))]).toEqual(['documented', 'scholarship']);
       expect(ce.sourceIds.filter((id: string) => /^p\. \d+$/.test(rr.sources[id].locator ?? '')).length).toBeGreaterThanOrEqual(2);
       expect(ce.claimHe).toBeTruthy();
     }
