@@ -76,9 +76,10 @@ test('mixed-only elections are not plotted as zero; mixed policy is a persistent
  // Centre 2026: Yesh Atid's 5 seats inside Together, with Bennett's 7 as partners; Yashar!'s list; the Reservists still under review.
  await page.getByRole('button',{name:'Centre',exact:true}).click();await page.getByText('Exact figures (26 elections)',{exact:true}).click();
  const last=page.locator('.family-table tbody tr').last();await expect(last).toContainText('23 seats +10 partners');await expect(last).toContainText('Some lists not yet classified');await expect(last).not.toContainText('Did not contest');
- // Russian-speaking: no list is classified before 1981, and the aliyah lists of 1981, 1984 and 1992 await review
+ // Russian-speaking: no list is classified before 1981; the aliyah lists of 1981 and 1984 await review; in 1992 DA is counted
+ // (books batch 4, 17 Nov 2026) while the pensioners' list still awaits review
  await page.getByRole('button',{name:'Russian-speaking',exact:true}).click();await page.getByRole('button',{name:'Centre',exact:true}).click();
- const rows=page.locator('.family-table tbody tr');await expect(rows.nth(0)).toContainText('No list classified');await expect(rows.nth(12)).toContainText('Lists not yet classified');await expect(rows.nth(11)).toContainText('No list classified');
+ const rows=page.locator('.family-table tbody tr');await expect(rows.nth(0)).toContainText('No list classified');await expect(rows.nth(12)).toContainText('11,697');await expect(rows.nth(12)).toContainText('Some lists not yet classified');await expect(rows.nth(11)).toContainText('No list classified');
  await expect(page.locator('.family-table')).not.toContainText('Did not contest');
 });
 test('even axis ticks, scale down with a seat delta, distinct copies and delete',async({page})=>{

@@ -184,7 +184,9 @@ describe('matcher fixes', () => {
   });
   it('2. a recorded merger is Merged (Likud 1988: Herut and the Liberals)', () => {
     const row = pair('k11', 'k12').find((r) => r.right.includes('12-מחל'))!;
-    expect(row).toMatchObject({ tag: 'merged', left: ['11-מחל'], reason: { kind: 'lineage', edgeId: 'likud-party-1988' } });
+    // Ometz (1984) joined the Likud in 1988: two books, so its 1984 list now counts with the Likud's (books batch 4, 17 Nov 2026)
+    expect(row).toMatchObject({ tag: 'merged', reason: { kind: 'lineage', edgeId: 'likud-party-1988' } });
+    expect([...row.left].sort()).toEqual(['11-יש', '11-מחל'].sort());
   });
   it('2. a merger that also ran with a partner is "Ran jointly" (Alignment 1969: Labor’s merger, with Mapam)', () => {
     const row = pair('k6', 'k7').find((r) => r.right.includes('7-אמת'))!;

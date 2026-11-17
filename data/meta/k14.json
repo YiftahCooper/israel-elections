@@ -149,6 +149,24 @@
           "kind": "secondary",
           "quote": "בבחירות עצמן זכתה הרשימה ל-32 מנדטים, מתוכם 22 לליכוד, 5 לגשר, ו-5 לצומת.",
           "accessed": "2026-11-04"
+        },
+        {
+          "url": "https://openlibrary.org/works/OL8323366W",
+          "publisher": "Asher Arian, Politics in Israel: The Second Republic, 2nd ed. (CQ Press, 2005)",
+          "kind": "academic",
+          "accessed": "2026-11-17",
+          "evidenceFamily": "author:shamir",
+          "quote": "while the Likud list, formally called Likud-Gesher-Tzomet, combined the candidates of three parties: the Likud, David Levy's Gesher, and Raful Eitan's Tzomet.",
+          "locator": "p. 118"
+        },
+        {
+          "url": "https://doi.org/10.1201/9781315038865-3",
+          "publisher": "Giora Goldberg, “The Israeli Left in the 1999 Elections”, in Daniel J. Elazar and M. Ben Mollov (eds.), Israel at the Polls 1999 (Frank Cass, 2001)",
+          "kind": "academic",
+          "accessed": "2026-11-17",
+          "evidenceFamily": "author:goldberg",
+          "quote": "electoral front that consisted of Likud, Gesher and the secular, hawkish Tzomet party",
+          "locator": "p. 23"
         }
       ]
     },
@@ -413,6 +431,25 @@
               "kind": "secondary",
               "quote": "2 מנדטים (מתוך 4 לרשימה כולה): עבד אל-והאב דראושה, טלב א-סאנע",
               "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://doi.org/10.1515/9780791495223-005",
+              "publisher": "Ilana Kaufman and Rachel Israeli, “The Odd Group Out: The Arab-Palestinian Vote in the 1996 Elections”, in Asher Arian and Michal Shamir (eds.), The Elections in Israel 1996 (SUNY Press, 1999)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:kaufman-israeli",
+              "quote": "signed an agreement for setting up the United Arab List (UAL) with the ADP and the Arab-Islamic Bloc.",
+              "locator": "p. 96"
+            },
+            {
+              "url": "https://www.idi.org.il/books/12910",
+              "publisher": "Daniel Zucker, “Joint or Excluded? The Joint List in the 2015 Elections” (Hebrew), in Michal Shamir and Gideon Rahat (eds.), The Elections in Israel 2015 (Israel Democracy Institute, 2017)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:zucker",
+              "quote": "לקראת בחירות 1996 הצטרפו שתי מפלגות ערביות חדשות למערכת הפוליטית: הפלג הדרומי של התנועה האסלאמית, שהתמודד ברשימה משותפת עם מד״ע",
+              "locator": "p. 106",
+              "publisherHe": "דניאל צוקר, «משותפת או מודרת? הרשימה המשותפת בבחירות 2015», בתוך מיכל שמיר וגדעון רהט (עורכים), הבחירות בישראל 2015 (המכון הישראלי לדמוקרטיה, 2017)"
             }
           ],
           "confidence": "medium",

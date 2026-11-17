@@ -71,6 +71,24 @@
               "quote": "הכנסת השביעית (1969): מפ\"ם: מאיר יערי, יעקב חזן, ראובן ארזי, דב זכין, שלמה רוזן, חייקה גרוסמן, עבד אל-עזיז א-זועבי / העבודה: גולדה מאיר, יגאל אלון, ... צבי דינשטיין, ... [שאר הנבחרים]",
               "accessed": "2026-11-04",
               "quoteNote": "Condensed transcription of a member list in the source; \"/\" separates its party headings, \"...\" marks omitted names and [ ] marks editorial notes."
+            },
+            {
+              "url": "https://openlibrary.org/works/OL17851764W",
+              "publisher": "Glossary of political parties, in Howard R. Penniman (ed.), Israel at the Polls: The Knesset Elections of 1977 (American Enterprise Institute, 1979)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:elazar",
+              "quote": "The combined election list of the Labor party and Mapam which ran in the elections of 1969, 1973, and 1977.",
+              "locator": "p. 315"
+            },
+            {
+              "url": "https://openlibrary.org/works/OL8323366W",
+              "publisher": "Asher Arian, Politics in Israel: The Second Republic, 2nd ed. (CQ Press, 2005)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:shamir",
+              "quote": "in 1969 Labor joined Mapam in the Alignment",
+              "locator": "p. 121"
             }
           ],
           "confidence": "high",
@@ -956,6 +974,15 @@
               "quote": "הכנסת השביעית (1969), 26 מנדטים: חרות: מנחם בגין, יוחנן בדר, בנימין הלוי, אריה בן-אליעזר, חיים לנדאו, אסתר רזיאל-נאור, יוסף קרמרמן, מנחם ידיד, אברהם שכטרמן, יורם ארידור, חיים קורפו, בן-ציון קשת, דוד לוי, דב מילמן, יעקב נחושתן / המפלגה הליברלית: יוסף ספיר, אלימלך-שמעון רימלט, יוסף סרלין, יצחק-הנס קלינגהופר, צבי צימרמן, שמחה ארליך, אהרן גולדשטיין, יוסף תמיר, שניאור זלמן אברמוב, אברהם כץ, משה נסים",
               "accessed": "2026-11-04",
               "quoteNote": "Condensed transcription of a member list in the source; \"/\" separates its party headings, \"...\" marks omitted names and [ ] marks editorial notes."
+            },
+            {
+              "url": "https://openlibrary.org/works/OL8323366W",
+              "publisher": "Asher Arian, Politics in Israel: The Second Republic, 2nd ed. (CQ Press, 2005)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:shamir",
+              "quote": "Gahal, a bloc of the Herut movement and the Liberal Party, competed in 1965 with the Mapai-Ahdut Haavoda Alignment and in 1969",
+              "locator": "p. 139"
             }
           ],
           "confidence": "high",
@@ -1281,6 +1308,15 @@
               "quote": "הכנסת השביעית (1969), 26 מנדטים: חרות: מנחם בגין, יוחנן בדר, בנימין הלוי, אריה בן-אליעזר, חיים לנדאו, אסתר רזיאל-נאור, יוסף קרמרמן, מנחם ידיד, אברהם שכטרמן, יורם ארידור, חיים קורפו, בן-ציון קשת, דוד לוי, דב מילמן, יעקב נחושתן / המפלגה הליברלית: יוסף ספיר, אלימלך-שמעון רימלט, יוסף סרלין, יצחק-הנס קלינגהופר, צבי צימרמן, שמחה ארליך, אהרן גולדשטיין, יוסף תמיר, שניאור זלמן אברמוב, אברהם כץ, משה נסים",
               "accessed": "2026-11-04",
               "quoteNote": "Condensed transcription of a member list in the source; \"/\" separates its party headings, \"...\" marks omitted names and [ ] marks editorial notes."
+            },
+            {
+              "url": "https://openlibrary.org/works/OL8323366W",
+              "publisher": "Asher Arian, Politics in Israel: The Second Republic, 2nd ed. (CQ Press, 2005)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:shamir",
+              "quote": "Gahal, a bloc of the Herut movement and the Liberal Party, competed in 1965 with the Mapai-Ahdut Haavoda Alignment and in 1969",
+              "locator": "p. 139"
             }
           ],
           "confidence": "high",

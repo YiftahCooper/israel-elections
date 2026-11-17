@@ -143,6 +143,7 @@
 .family-point-parties>span {display:flex;align-items:center;gap:6px;}
 .family-point-changes {display:grid;gap:8px;}
 .family-point a {display:inline-block;margin-inline-end:8px;}
+.family-point .book-source>a {display:inline;margin-inline-end:0;} /* a cited book: its page follows the title on the same line */
 .family-sheet:has(.family-point) {overflow:auto;overscroll-behavior:contain;}
 
 /* Seats chart: own seats solid in the family colour, partners striped (partner colour with white) above, smallest first. */

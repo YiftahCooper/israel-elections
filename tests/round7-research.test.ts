@@ -7,7 +7,8 @@ describe('Round 7 source-backed list identities',()=>{
  it('Gil 2009 keeps its 2006 history and seven official seats',()=>{
   const c=comparableFor('k18','18-זך');
   expect(c?.counted.map(l=>l.id)).toEqual(['17-זך']);
-  expect(c?.certainty).toBe('probable');
+  // two books with no shared author say Gil ran again in 2009 (books batch 4, 17 Nov 2026)
+  expect(c?.certainty).toBe('confirmed');
  });
  it('Greens and Ale Yarok survive changes of ballot letter or leader',()=>{
   expect(identityOf('vehicle-18-רק').ids).toContain('vehicle-15-רק');

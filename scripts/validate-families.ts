@@ -11,7 +11,9 @@ type Sources = Record<string, { url?: string; locator?: string; support?: string
 interface Registry {
   sources: Sources;
   parties: { id: string; aliases: { id: string }[]; sources: string[] }[];
-  partyAppearances: { electionId: string; listId: string; partyId: string; role: string; sources: string[] }[];
+  partyAppearances: { electionId: string; listId: string; partyId: string; role: string; sources: string[]; continuity?: string;
+    /** What books say about this party's runs before and after this election (books batch 4, 17 Nov 2026). */
+    continuityEvidence?: { certainty: string; sources: string[]; note: string; noteHe: string; edge?: string } }[];
 }
 interface Metric { votes: number; percent: { numerator: number; denominator: number }; displayPct: number }
 interface Member {
@@ -78,6 +80,19 @@ export function validateFamilies(bundle: FamilyBundle): void {
       if (!appearances.has(key)) appearances.set(key, new Set());
       appearances.get(key)!.add(canonical(a.partyId));
     }
+  }
+  // Documented continuity carries its own book sources, a recorded certainty no higher than they support and a plain
+  // note in both languages; the appearance's own dataset source (the primary record of the run) is never counted for it.
+  const edgeById = new Map(lineage.edges.map(e => [e.id, e]));
+  for (const a of registry.partyAppearances) {
+    const c = a.continuityEvidence, where = `${a.electionId}/${a.listId}`;
+    check((a.continuity === 'documented') === !!c, `${where}: continuity 'documented' and its evidence go together`);
+    if (!c) continue;
+    refs(c.sources, registry.sources);
+    check(c.sources.every(id => registry.sources[id] && (registry.sources[id] as { kind?: string }).kind !== 'repository-dataset'), `${where}: continuity rests on a dataset`);
+    check((CERTAINTIES as readonly string[]).includes(c.certainty) && certaintyAllowed(c.certainty as Certainty, certaintyCeiling(c.sources.map(id => ({ id, source: evidenceOf(registry.sources[id] as Parameters<typeof evidenceOf>[0]) })))), `${where}: continuity certainty above its sources`);
+    check(!!c.note?.trim() && !!c.noteHe?.trim(), `${where}: continuity note in both languages`);
+    if (c.edge !== undefined) { const e = edgeById.get(c.edge); check(e && [...e.from, ...e.to].some(id => canonical(id) === canonical(a.partyId)), `${where}: continuity edge ${c.edge}`); }
   }
   for (const d of Object.values(datasets)) for (const l of d.lists) {
     check(appearances.has(`${d.id}/${l.id}`), `missing appearance ${l.id}`);

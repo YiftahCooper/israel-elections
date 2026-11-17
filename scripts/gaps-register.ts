@@ -236,8 +236,9 @@ export function certaintyCensus(root = ROOT) {
   }
   for (const file of filesUnder(root, 'data/meta/families').filter(f => f.endsWith('.json'))) {
     const d = read(root, file); const sources = d.sources ?? {};
+    // A placement the sources dispute is recorded as disputed (books batch 4, 17 Nov 2026); otherwise it is derived.
     for (const e of d.elections ?? []) for (const m of e.members ?? []) if (m.classificationEvidence)
-      count('Family classifications', classificationCertainty(m.classificationEvidence.status, (m.classificationEvidence.sourceIds ?? []).filter((id: string) => sources[id]).map((id: string) => ({ id, source: sources[id] }))));
+      count('Family classifications', m.classificationEvidence.certainty === 'disputed' ? 'disputed' : classificationCertainty(m.classificationEvidence.status, (m.classificationEvidence.sourceIds ?? []).filter((id: string) => sources[id]).map((id: string) => ({ id, source: sources[id] }))));
   }
   for (const file of filesUnder(root, 'data/meta/bios').filter(f => /\/k\d+\.json$/.test(f)))
     for (const e of Object.values<Obj>(read(root, file).candidates ?? {})) count('Candidate identity links', bioIdentityCertainty(e as Parameters<typeof bioIdentityCertainty>[0]));

@@ -469,6 +469,116 @@
       "locator": "public/data/k26.json",
       "sha256": "4fa00a632f3cb78277a338505b39d2be912ebb8189c423f8b9e17129f0786742",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "elazar-mollov2001-p14": {
+      "url": "https://doi.org/10.1201/9781315038865-1",
+      "publisher": "Daniel J. Elazar and M. Ben Mollov, “Introduction: Elections 1999 – The Interplay between Character, Political Culture and Centrism”, in Daniel J. Elazar and M. Ben Mollov (eds.), Israel at the Polls 1999 (Frank Cass, 2001)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:elazar",
+      "locator": "p. 14",
+      "quote": "the Russian immigrant party headed by Natan Sharansky",
+      "support": "Book passage quoted; the page is given."
+    },
+    "khanin2001-p125": {
+      "url": "https://doi.org/10.1201/9781315038865-6",
+      "publisher": "Vladimir (Ze’ev) Khanin, “Israeli ‘Russian’ Parties and the New Immigrant Vote”, in Daniel J. Elazar and M. Ben Mollov (eds.), Israel at the Polls 1999 (Frank Cass, 2001)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:khanin",
+      "locator": "p. 125",
+      "quote": "Sharansky, the leader of the most influential ‘Russian’ party, informally supported Barak.",
+      "support": "Book passage quoted; the page is given."
+    },
+    "khanin2005-p176": {
+      "url": "https://doi.org/10.4324/9780203086919",
+      "publisher": "Vladimir (Ze’ev) Khanin, “The Israeli ‘Russian’ Community and Immigrants Party Politics in the 2003 Elections”, in Shmuel Sandler, Manfred Gerstenfeld and Jonathan Rynhold (eds.), Israel at the Polls 2003 (Routledge, 2005)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:khanin",
+      "locator": "p. 176",
+      "quote": "‘Russian’ parties of Yisrael B'Aliya, Yisrael Beiteinu and Habehira Hademocratit style",
+      "support": "Book passage quoted; the page is given."
+    },
+    "khanin2011-p106": {
+      "url": "https://doi.org/10.4324/9781315868301",
+      "publisher": "Vladimir (Ze’ev) Khanin, “The Israel Beiteinu (Israel Our Home) Party between the Mainstream and ‘Russian’ Community Politics”, in Shmuel Sandler, Manfred Gerstenfeld and Hillel Frisch (eds.), Israel at the Polls 2009 (Routledge, 2011)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:khanin",
+      "locator": "p. 106",
+      "quote": "Israel Beiteinu was founded as a Russian right-wing political movement by a veteran immigrant",
+      "support": "Book passage quoted; the page is given."
+    },
+    "khanin2005-p152": {
+      "url": "https://doi.org/10.4324/9780203086919",
+      "publisher": "Vladimir (Ze’ev) Khanin, “The Israeli ‘Russian’ Community and Immigrants Party Politics in the 2003 Elections”, in Shmuel Sandler, Manfred Gerstenfeld and Jonathan Rynhold (eds.), Israel at the Polls 2003 (Routledge, 2005)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:khanin",
+      "locator": "p. 152",
+      "quote": "the Ihud Haleumi (National Union) bloc, whose leading component this time was the Yisrael Beiteinu party",
+      "support": "Book passage quoted; the page is given."
+    },
+    "khanin2008-p133": {
+      "url": "https://doi.org/10.4324/9781315869513",
+      "publisher": "Vladimir (Ze’ev) Khanin, “The Revival of ‘Russian’ Politics in Israel: The Case of the 2006 Election”, in Shmuel Sandler, Manfred Gerstenfeld and Hillel Frisch (eds.), Israel at the Polls 2006 (Routledge, 2008)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:khanin",
+      "locator": "p. 133",
+      "quote": "IB now enjoys de facto status as the Russian community consensus party",
+      "support": "Book passage quoted; the page is given."
+    },
+    "bick2008-p186": {
+      "url": "https://doi.org/10.4324/9781315869513",
+      "publisher": "Etta Bick, “A Clash of Authority: Lay Leaders and Rabbis in the National Religious Party”, in Shmuel Sandler, Manfred Gerstenfeld and Hillel Frisch (eds.), Israel at the Polls 2006 (Routledge, 2008)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:bick",
+      "locator": "p. 186",
+      "quote": "Yisrael Beitenu, the predominantly Russian party that had split from the National Union",
+      "support": "Book passage quoted; the page is given."
+    },
+    "reich1995-p135": {
+      "url": "https://openlibrary.org/works/OL19596623W",
+      "publisher": "Bernard Reich, Meyrav Wurmser and Noah Dropkin, “Playing Politics in Moscow and Jerusalem: Soviet Jewish Immigrants and the 1992 Knesset Elections”, in Daniel J. Elazar and Shmuel Sandler (eds.), Israel at the Polls, 1992 (Rowman & Littlefield, 1995)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:reich-wurmser-dropkin",
+      "locator": "p. 135",
+      "quote": "Ultimately, three immigrant parties participated in the elections:",
+      "support": "Book passage quoted; the page is given."
+    },
+    "bick1998-p125": {
+      "url": "https://openlibrary.org/works/OL18956337W",
+      "publisher": "Etta Bick, “Sectarian Party Politics in Israel: The Case of Yisrael Ba’Aliya, the Russian Immigrant Party”, in Daniel J. Elazar and Shmuel Sandler (eds.), Israel at the Polls, 1996 (Frank Cass, 1998)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:bick",
+      "locator": "p. 125",
+      "quote": "only 5 percent of the Russian immigrants voted for the immigrant parties. Yad B’Yad, received only 0.3 percent",
+      "support": "Book passage quoted; the page is given."
+    },
+    "gitelman-goldstein2002-p143": {
+      "url": "https://doi.org/10.1515/9780791488812-008",
+      "publisher": "Zvi Gitelman and Ken Goldstein, “The ‘Russian’ Revolution in Israeli Politics”, in Asher Arian and Michal Shamir (eds.), The Elections in Israel 1999 (SUNY Press, 2002)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:gitelman-goldstein",
+      "locator": "p. 143",
+      "quote": "A Soviet immigrant party, “DA,” also emerged in the 1992 elections.",
+      "support": "Book passage quoted; the page is given."
+    },
+    "khanin2001-p108": {
+      "url": "https://doi.org/10.1201/9781315038865-6",
+      "publisher": "Vladimir (Ze’ev) Khanin, “Israeli ‘Russian’ Parties and the New Immigrant Vote”, in Daniel J. Elazar and M. Ben Mollov (eds.), Israel at the Polls 1999 (Frank Cass, 2001)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:khanin",
+      "locator": "p. 108",
+      "quote": "attempts at Russian immigrant lists were organized before the elections of 1981 by the list for Russian Olim, and in 1992 by the DA Party",
+      "support": "Book passage quoted; the page is given."
     }
   },
   "elections": [
@@ -1257,20 +1367,41 @@
         "k13-k15-bader-ofer-amendment",
         "k13-k15-threshold-amendment"
       ],
-      "members": [],
-      "reviewCandidates": [
+      "members": [
         {
           "listId": "13-ד",
+          "letters": "ד",
           "nameHe": "התנועה הלאומית לדמוקרטיה ועליה",
           "votes": 11697,
-          "treatment": "exclude-pending-or-contested",
-          "evidenceStatus": "unresolved",
-          "sourceIds": [
-            "proposal",
-            "k13"
+          "partyIds": [
+            "vehicle-13-ד"
           ],
-          "reason": "Aliyah list named in the official results; the research (party-families.md, row I) says such micro-lists need individual review, not automatic inclusion. No votes counted until reviewed."
-        },
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "vehicle-13-ד"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k13.json#/lists/14"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "proposal",
+              "k13",
+              "immigrant",
+              "gitelman-goldstein2002-p143",
+              "khanin2001-p108"
+            ],
+            "claim": "Two studies name DA as a Soviet immigrant party in 1992.",
+            "claimHe": "שני מחקרים מציינים את ד\"ע כמפלגת עולים מברית המועצות ב־1992."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [
         {
           "listId": "13-ק",
           "nameHe": "גימלאים, עולים וקשישים",
@@ -1279,27 +1410,30 @@
           "evidenceStatus": "unresolved",
           "sourceIds": [
             "proposal",
-            "k13"
+            "k13",
+            "reich1995-p135",
+            "bick1998-p125"
           ],
-          "reason": "Aliyah list named in the official results; the research (party-families.md, row I) says such micro-lists need individual review, not automatic inclusion. No votes counted until reviewed."
+          "reason": "Not counted. Two studies count Yad B’Yad among the 1992 immigrant parties, but only a newspaper links that name to this ballot list.",
+          "reasonHe": "לא נספרת. שני מחקרים מונים את \"יד ביד\" בין מפלגות העולים של 1992, אבל רק עיתון מקשר את השם לרשימה הזאת."
         }
       ],
       "computed": {
         "coreOnly": {
-          "votes": 0,
+          "votes": 11697,
           "percent": {
-            "numerator": 0,
+            "numerator": 1169700,
             "denominator": 2616841
           },
-          "displayPct": 0.0
+          "displayPct": 0.446989
         },
         "includedUnmixed": {
-          "votes": 0,
+          "votes": 11697,
           "percent": {
-            "numerator": 0,
+            "numerator": 1169700,
             "denominator": 2616841
           },
-          "displayPct": 0.0
+          "displayPct": 0.446989
         },
         "mixedWholeLists": {
           "votes": 0,
@@ -1310,12 +1444,12 @@
           "displayPct": 0.0
         },
         "wholeListInclusionAlternative": {
-          "votes": 0,
+          "votes": 11697,
           "percent": {
-            "numerator": 0,
+            "numerator": 1169700,
             "denominator": 2616841
           },
-          "displayPct": 0.0
+          "displayPct": 0.446989
         },
         "mixedHarediVotes": null,
         "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
@@ -1364,14 +1498,17 @@
             "locator": "public/data/k14.json#/lists/5"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k14",
               "immigrant",
-              "mergers"
+              "mergers",
+              "elazar-mollov2001-p14",
+              "khanin2001-p125"
             ],
-            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Two studies describe Yisrael BaAliyah as the Russian immigrants’ party.",
+            "claimHe": "שני מחקרים מתארים את ישראל בעלייה כמפלגת העולים מרוסיה."
           },
           "constituentVotes": null
         }
@@ -1457,14 +1594,17 @@
             "locator": "public/data/k15.json#/lists/4"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k15",
               "immigrant",
-              "mergers"
+              "mergers",
+              "elazar-mollov2001-p14",
+              "khanin2001-p125"
             ],
-            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Two studies describe Yisrael BaAliyah as the Russian immigrants’ party.",
+            "claimHe": "שני מחקרים מתארים את ישראל בעלייה כמפלגת העולים מרוסיה."
           },
           "constituentVotes": null
         },
@@ -1487,14 +1627,16 @@
             "locator": "public/data/k15.json#/lists/12"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k15",
               "immigrant",
-              "mergers"
+              "mergers",
+              "khanin2011-p106"
             ],
-            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "One study describes Yisrael Beiteinu as founded as a Russian immigrant movement.",
+            "claimHe": "מחקר אחד מתאר את ישראל ביתנו כתנועה שנוסדה בידי עולים מרוסיה."
           },
           "constituentVotes": null
         }
@@ -1583,14 +1725,17 @@
             "locator": "public/data/k16.json#/lists/11"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k16",
               "immigrant",
-              "mergers"
+              "mergers",
+              "elazar-mollov2001-p14",
+              "khanin2005-p176"
             ],
-            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Two studies describe Yisrael BaAliyah as the Russian immigrants’ party.",
+            "claimHe": "שני מחקרים מתארים את ישראל בעלייה כמפלגת העולים מרוסיה."
           },
           "constituentVotes": null
         },
@@ -1615,14 +1760,17 @@
             "locator": "public/data/k16.json#/lists/4"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k16",
               "immigrant",
-              "mergers"
+              "mergers",
+              "khanin2005-p176",
+              "khanin2005-p152"
             ],
-            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Some partners fall outside this definition; all list votes stay in mixed segment."
+            "claim": "Counted through Yisrael Beiteinu only: one study names it among the Russian immigrant parties.",
+            "claimHe": "נספרת דרך ישראל ביתנו בלבד: מחקר אחד מונה אותה בין מפלגות העולים מרוסיה."
           },
           "constituentVotes": null
         }
@@ -1710,14 +1858,17 @@
             "locator": "public/data/k17.json#/lists/4"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k17",
               "immigrant",
-              "mergers"
+              "mergers",
+              "khanin2008-p133",
+              "bick2008-p186"
             ],
-            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Two studies describe Yisrael Beiteinu as a Russian immigrant party.",
+            "claimHe": "שני מחקרים מתארים את ישראל ביתנו כמפלגת עולים מרוסיה."
           },
           "constituentVotes": null
         }

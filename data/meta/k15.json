@@ -46,6 +46,24 @@
               "kind": "secondary",
               "quote": "העבודה: אהוד ברק, שמעון פרס, שלמה בן עמי, יוסי ביילין, מתן וילנאי, אברהם בורג, רענן כהן, עוזי ברעם, דליה איציק, בנימין בן אליעזר, חיים רמון, אלי גולדשמידט, אברהם בייגה שוחט, יעל דיין, אופיר פינס, אפרים סנה, נואף מסאלחה, אברהם יחזקאל, סופה לנדבר, סאלח טריף, שלום שמחון, יוסי כץ, ויצמן שירי, קולט אביטל, אלי בן-מנחם, אפי אושעיה, איתן כבל, דליה רבין",
               "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://doi.org/10.1017/9781316160978",
+              "publisher": "Itzhak Galnoor and Dana Blander, The Handbook of Israel’s Political System (Cambridge University Press, 2018)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:galnoor",
+              "quote": "Ehud Barak formed One Israel (Labor + Meimad + Gesher).",
+              "locator": "p. 423"
+            },
+            {
+              "url": "https://doi.org/10.1080/13537120108719597",
+              "publisher": "Giora Goldberg, “The Israeli Left in the 1999 Elections”, Israel Affairs 7:2–3 (2000)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:goldberg",
+              "quote": "One Israel was an electoral front consisting of three parties: Labour, Gesher and Meimad.",
+              "locator": "p. 23"
             }
           ],
           "confidence": "medium",
@@ -211,6 +229,24 @@
               "kind": "secondary",
               "quote": "תקומה: חנן פורת, צבי הנדל, אורי אריאל",
               "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://doi.org/10.4324/9781351297608-5",
+              "publisher": "Asher Cohen, “The Splintered Camp: Religious Zionist Parties in the 2009 Elections”, in Asher Arian and Michal Shamir (eds.), The Elections in Israel 2009 (Transaction, 2011)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:goldberg",
+              "quote": "Moledet, under the leadership of Rehavam Ze’evi; and Tekuma, a consociation of former NRP members Hanan Porat and Zvi Hendel",
+              "locator": "p. 72"
+            },
+            {
+              "url": "https://doi.org/10.1201/9781315038865-4",
+              "publisher": "Ami Pedahzur, “The Downfall of the National Camp?”, in Daniel J. Elazar and M. Ben Mollov (eds.), Israel at the Polls 1999 (Frank Cass, 2001)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:pedahzur",
+              "quote": "As for Tekuma, the party was backed by the resources of the Yesha council, primarily its members.",
+              "locator": "p. 49"
             }
           ],
           "confidence": "medium"
@@ -468,6 +504,24 @@
           "quote": "The UAL section describes the Islamic Movement–Mada alliance adding Mahameed personally at rank 3; it does not name a constituent party for him.",
           "accessed": "2026-11-09",
           "quoteNote": "Research summary, not a verbatim quotation."
+        },
+        {
+          "url": "https://doi.org/10.1201/9781315038865-8",
+          "publisher": "Hillel Frisch, “The Arab Vote in the Israeli Elections: The Bid for Leadership”, in Daniel J. Elazar and M. Ben Mollov (eds.), Israel at the Polls 1999 (Frank Cass, 2001)",
+          "kind": "academic",
+          "accessed": "2026-11-17",
+          "evidenceFamily": "author:frisch",
+          "quote": "The UAL is composed of an Arab nationalist party and the more moderate wing of the Islamic Movement.",
+          "locator": "p. 161"
+        },
+        {
+          "url": "https://doi.org/10.1201/9781315038865-8",
+          "publisher": "Hillel Frisch, “The Arab Vote in the Israeli Elections: The Bid for Leadership”, in Daniel J. Elazar and M. Ben Mollov (eds.), Israel at the Polls 1999 (Frank Cass, 2001)",
+          "kind": "academic",
+          "accessed": "2026-11-17",
+          "evidenceFamily": "author:frisch",
+          "quote": "took the lead from the more secular ADP within the UAL",
+          "locator": "p. 161"
         }
       ],
       "unassignedEvidence": [

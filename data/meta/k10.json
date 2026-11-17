@@ -48,6 +48,24 @@
               "kind": "secondary",
               "quote": "תנועת החרות: מנחם בגין, דוד לוי, יעקב מרידור, יצחק שמיר, יורם ארידור, אריאל שרון, משה ארנס, דב שילנסקי, חיים קורפו, מרדכי צפורי, אליהו בן-אלישר, רוני מילוא, משה קצב, מיכאל דקל, חיים קופמן, דוד מגן, אמל נסראלדין, יוסף רום, מרים גלזר-תעסה, יגאל כהן-אורגד, מאיר כהן-אבידב, מאיר שטרית, איתן לבני, מיכאל רייסר, עקיבא נוף",
               "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://openlibrary.org/works/OL9357518W",
+              "publisher": "Avraham Brichta, “Selection of Candidates to the Tenth Knesset: The Impact of Centralization”, in Howard R. Penniman and Daniel J. Elazar (eds.), Israel at the Polls, 1981 (Indiana University Press, 1986)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:brichta",
+              "quote": "the three main components of the Likud: the Herut, the Liberal party, and La’am.",
+              "locator": "p. 26"
+            },
+            {
+              "url": "https://openlibrary.org/works/OL18241717W",
+              "publisher": "Giora Goldberg and Steven A. Hoffman, “Nominations in Israel: The Politics of Institutionalization”, in Asher Arian (ed.), The Elections in Israel 1981 (Ramot, 1983)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:goldberg",
+              "quote": "To summarize the 1981 procedural situation within the Likud parties: Herut remained stable",
+              "locator": "p. 64"
             }
           ],
           "confidence": "medium",
@@ -168,6 +186,24 @@
               "kind": "secondary",
               "quote": "לע\"ם: אליעזר שוסטק, יגאל כהן, אהוד אולמרט, אמנון לין, יצחק פרץ",
               "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://openlibrary.org/works/OL9357518W",
+              "publisher": "Avraham Brichta, “Selection of Candidates to the Tenth Knesset: The Impact of Centralization”, in Howard R. Penniman and Daniel J. Elazar (eds.), Israel at the Polls, 1981 (Indiana University Press, 1986)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:brichta",
+              "quote": "the three main components of the Likud: the Herut, the Liberal party, and La’am.",
+              "locator": "p. 26"
+            },
+            {
+              "url": "https://openlibrary.org/works/OL18241717W",
+              "publisher": "Giora Goldberg and Steven A. Hoffman, “Nominations in Israel: The Politics of Institutionalization”, in Asher Arian (ed.), The Elections in Israel 1981 (Ramot, 1983)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:goldberg",
+              "quote": "As for La’am, the smallest party in the Likud",
+              "locator": "p. 64"
             }
           ],
           "confidence": "medium",
@@ -457,6 +493,15 @@
               "kind": "secondary",
               "quote": "ממייסדי הפנתרים השחורים, וחבר הכנסת מטעם חד\"ש",
               "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://openlibrary.org/works/OL18241717W",
+              "publisher": "Glossary, in Asher Arian (ed.), The Elections in Israel 1981 (Ramot, 1983)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:shamir",
+              "quote": "Presented joint list with Black Panthers in 1977 and 1981 under the name of Hadash.",
+              "locator": "p. 286"
             }
           ],
           "confidence": "medium",

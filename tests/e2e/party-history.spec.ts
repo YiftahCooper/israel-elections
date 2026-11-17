@@ -152,13 +152,15 @@ test('the chart numbers its events as in the list below, explains where they sit
   await sec.getByRole('button', { name: 'Full history', exact: true }).click();
   const chart = sheet(page).locator('.ph-chart');
   // version C (owner, 16 Nov 2026): a numbered circle on every event line, never words that come and go with the width
-  await expect(chart.locator('.ph-evnum text')).toHaveText(['1', '2', '3', '4']);
+  // books batch 4 (17 Nov 2026): Shlomtzion joining Herut (1977) and Ometz joining the Likud (1988) are events too;
+  // the two 1988 events share one circle on the chart
+  await expect(chart.locator('.ph-evnum text')).toHaveText(['1', '2,3', '4', '5', '6']);
   await expect(chart.locator('.ph-flag')).toHaveCount(0);
   await expect(chart).not.toContainText('?');
   await expect(chart.locator('.ph-selband')).toHaveCount(1);
   await expect(chart.locator('.ph-axis.sel')).toHaveText('’26');
   // the list below numbers the same events; no "?" or letter glyphs
-  await expect(sheet(page).locator('.ph-events .ph-evdot')).toHaveText(['1', '2', '3', '4']);
+  await expect(sheet(page).locator('.ph-events .ph-evdot')).toHaveText(['1', '2', '3', '4', '5', '6']);
   await sheet(page).getByRole('button', { name: 'Where events are drawn' }).click();
   await expect(page.locator('.pop').filter({ hasText: 'Where events are drawn' })).toContainText('89% of the way from the 2003 election to the 2006 one');
   // a weak link is dashed and says so in words

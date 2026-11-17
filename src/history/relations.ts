@@ -15,7 +15,7 @@ export type RelationKind =
 export type MergerStage = 'announced' | 'approved' | 'registered';
 export const RELATION_KINDS: readonly RelationKind[] = ['renamed-to', 'merged-into', 'absorbed-into', 'split-from', 'faction-split', 'same-organisation', 'not-same-organisation', 'electoral-partner', 'leader-moved-to'];
 
-export interface RelationSource { id: string; publisher?: string; url?: string; locator?: string; support?: string }
+export interface RelationSource { id: string; publisher?: string; publisherHe?: string; url?: string; locator?: string; quote?: string; support?: string }
 export interface Relation {
   id: string;
   kind: RelationKind;
@@ -66,7 +66,7 @@ export function readRelations(file: { sources: Record<string, RawSource>; edges:
       ...(e.dateTo ? { dateTo: e.dateTo } : {}), ...(STAGES.includes(e.stage as MergerStage) ? { stage: e.stage as MergerStage } : {}),
       ...(e.continues ? { continues: canonicalParty(e.continues) } : {}),
       certainty, pending,
-      sources: (e.sources ?? []).map((id) => ({ id, ...(file.sources[id] ? { publisher: file.sources[id].publisher, url: file.sources[id].url, locator: file.sources[id].locator, support: file.sources[id].support } : {}) })),
+      sources: (e.sources ?? []).map((id) => { const f = file.sources[id]; return { id, ...(f ? { publisher: f.publisher, ...(f.publisherHe ? { publisherHe: f.publisherHe } : {}), url: f.url, locator: f.locator, ...(f.quote ? { quote: f.quote } : {}), support: f.support } : {}) }; }),
       ...(e.evidence?.interpretation ? { note: e.evidence.interpretation } : {}),
     });
   };

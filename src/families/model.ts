@@ -5,13 +5,13 @@ import type { ElectionDataset, ElectionId } from '../data/schema.ts';
 import type { Action, Scenario } from '../model/scenario.ts';
 import type { SourceChoice } from '../app/voteEdit.ts';
 export type MixedPolicy = 'separate-segment' | 'include-whole-list' | 'include-headed-list' | 'exclude';
-export interface Member { listId: string; partyIds: string[]; scope: string; headsList?: boolean; treatment: string; classificationEvidence: { status: string; sourceIds: string[]; claim: string }; [key: string]: unknown }
+export interface Member { listId: string; partyIds: string[]; scope: string; headsList?: boolean; treatment: string; classificationEvidence: { status: string; sourceIds: string[]; claim: string; claimHe?: string; certainty?: string }; [key: string]: unknown }
 export interface Family {
   schemaVersion: 1; id: string; revision: string; status: string; nameHe: string; nameEn: string;
   labelEn?: string; labelHe?: string; displayColor?: string;
   definition: string; definitionHe?: string; defaultMixedPolicy: MixedPolicy;
-  sources: Record<string, { url?: string; publisher?: string; [key: string]: unknown }>;
-  elections: { electionId: ElectionId; members: Member[]; reviewCandidates: { listId: string; nameHe?: string; reason: string; sourceIds: string[] }[]; [key: string]: unknown }[];
+  sources: Record<string, { url?: string; publisher?: string; publisherHe?: string; locator?: string; quote?: string; [key: string]: unknown }>;
+  elections: { electionId: ElectionId; members: Member[]; reviewCandidates: { listId: string; nameHe?: string; reason: string; reasonHe?: string; sourceIds: string[] }[]; [key: string]: unknown }[];
   disabled?: string[]; included?: string[]; links?: { from: string; to: string; type: 'lineage' | 'electoral-partner'; electionId?:string; sourceEdgeId?:string }[];
   forkedFrom?: { id: string; revision: string }; [key: string]: unknown;
 }
