@@ -223,6 +223,14 @@
         "retrievedAt": "2026-11-17T07:00:43.446Z"
       },
       "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1781-www.nli.org.il/page.html"
+    },
+    "nyt-1984-08-06": {
+      "url": "https://www.nytimes.com/1984/08/06/world/israeli-president-designates-peres-to-form-cabinet.html",
+      "publisher": "The New York Times, 6 August 1984, p. A1: James Feron, “Israeli President Designates Peres to Form Cabinet”",
+      "kind": "newspaper",
+      "accessed": "2026-11-17",
+      "via": "Read from the newspaper’s own archive copy of the article (its digitized print text).",
+      "retainedArtifact": "owner’s private copy of the article"
     }
   },
   "results": {
@@ -441,11 +449,16 @@
               "quote": "with the exception of the Kach Party headed by Rabbi Meir Kahane"
             },
             {
+              "source": "nyt-1984-08-06",
+              "quote": "Rabbi Meir Kahane, whose Kach Party won one seat …, was not counted because Mr. Herzog did not invite him for consultations.",
+              "locator": "p. A1"
+            },
+            {
               "source": "bradley-1985",
               "quote": "He also excluded Rabbi Kahane from the consultation process—all the other 14 Knesset parties were included,",
               "locator": "p. 179",
-              "note": "The book cites The New York Times of 6 August 1984.",
-              "noteHe": "הספר מסתמך על הניו יורק טיימס מ־6 באוגוסט 1984."
+              "note": "The book cites this New York Times report, so it is not independent of it.",
+              "noteHe": "הספר מסתמך על הדיווח הזה בניו יורק טיימס, ולכן אינו עדות נפרדת ממנו."
             }
           ],
           "noteEn": "Not invited to the consultations.",
@@ -474,13 +487,19 @@
         {
           "source": "jta1984mandate",
           "quote": "60 Knesset members asked Herzog to choose Peres"
+        },
+        {
+          "source": "nyt-1984-08-06",
+          "quote": "60 members of Parliament favored Mr. Peres and 54 Mr. Shamir, with five choosing no one.",
+          "locator": "p. A1"
         }
       ],
       "notes": [
         "Per-list split (Alignment 44, Hadash 4, Ratz 3, Yahad 3, Shinui 3, Progressive List 2, Ometz 1 = 60; Likud 41, Tehiya–Tzomet 5, Shas 4, Agudat Yisrael 2, Morasha 2 = 54) matches JTA's contemporary totals; El País counted 59 for Labor (it groups Yahad and Ometz as 'three'), recorded as a source conflict. Recommendations were made on Friday 3 August 1984; Herzog gave Peres the mandate on 5 August. The rotation agreement (Shamir to take over after 25 months) came later and is not a recommendation.",
         "Upgrade: JTA 6 August 1984 names every faction on each side, including Ometz/Hurwitz and the unity-government positions; the per-list classification no longer depends solely on Hebrew Wikipedia. Kach was not invited, not an explicit refusal to recommend.",
         "A later book, Abraham Diskin’s chapter in Israel at the Polls 2009 (Routledge, 2011), p. 61, says 60 MKs backed Peres and 60 backed Shamir. The reports of the time (JTA, 6 and 7 August 1984) give 60 and 54, and this record keeps their figures.",
-        "Davar (5 August 1984) independently reports Agudat Yisrael asking for Shamir and Tami’s Aharon Abuhatzeira saying it recommended no one and left the choice to the President."
+        "Davar (5 August 1984) independently reports Agudat Yisrael asking for Shamir and Tami’s Aharon Abuhatzeira saying it recommended no one and left the choice to the President.",
+        "The New York Times (6 August 1984, p. A1) gives the same totals from the figures released on Friday 3 August: 60 for Peres, 54 for Shamir, five for no one, and Kahane (Kach) not counted because he was not invited."
       ],
       "pagesRead": [
         {

@@ -189,7 +189,8 @@ describe('7 November policy pass on the real overlays', () => {
     for (const l of ['ו', 'ע']) expect(entry(round13, l).noteEn).toMatch(/condition|reservation/);
     expect(Object.values<number>(round12.totals).reduce((a, b) => a + b, 0)).toBe(120);
     const k1 = load('k1'), row = (l: string) => k1.government.coalition.find((r: any) => r.letters === l);
-    expect([row('יד').role, row('יד').certainty]).toEqual(['member-without-ministries', 'probable']);
+    // 17 Nov 2026: Galnoor and Blander's coalition table and Kenig and Rahat (two independent books) confirm it
+    expect([row('יד').role, row('יד').certainty]).toEqual(['member-without-ministries', 'confirmed']);
     expect(row('ל').certainty).toBe('disputed');
     expect(k1.government.coalitionSeats).toBe(73);
     const k10 = load('k10');

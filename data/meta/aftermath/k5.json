@@ -248,6 +248,30 @@
         "retrievedAt": "2026-11-17T07:11:27.205Z"
       },
       "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1802-www.nli.org.il/page.html"
+    },
+    "galnoor-blander-2018-table": {
+      "url": "https://doi.org/10.1017/9781316160978",
+      "publisher": "Itzhak Galnoor and Dana Blander, The Handbook of Israel’s Political System (Cambridge University Press, 2018), Table 11.2, “Coalitions in Israel 1949–2015”, pp. 406–408",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:galnoor"
+    },
+    "galnoor-blander-2013-ch12": {
+      "url": "https://en.idi.org.il/media/3869/politiacal_system_c12.pdf",
+      "publisher": "Itzhak Galnoor and Dana Blander, The Political System of Israel (Am Oved and the Israel Democracy Institute, 2013), chapter 12, “Government coalitions”",
+      "publisherHe": "יצחק גל־נור ודנה בלאנדר, המערכת הפוליטית בישראל (עם עובד והמכון הישראלי לדמוקרטיה, 2013), פרק 12, קואליציות ממשלתיות",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:galnoor",
+      "via": "The Hebrew original of the 2018 handbook, by the same authors: one piece of evidence with it."
+    },
+    "kenig-rahat-2023": {
+      "url": "https://www.idi.org.il/media/20997/המפלגות-בישראל-2021-1992.pdf",
+      "publisher": "Ofer Kenig and Gideon Rahat, Parties in Israel 1992–2021 (Israel Democracy Institute, 2023)",
+      "publisherHe": "עופר קניג וגדעון רהט, המפלגות בישראל 1992–2021 (המכון הישראלי לדמוקרטיה, 2023)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:kenig-rahat"
     }
   },
   "results": {
@@ -847,21 +871,61 @@
       {
         "letters": "יא",
         "seats": 2,
-        "role": "other",
-        "certainty": "unknown",
-        "cites": [],
-        "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
+        "role": "member-without-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "galnoor-blander-2018-table",
+            "quote": "we included parties or MKs that were not official members of the government, such as the Arab lists affiliated with Mapai in the years 1949–73",
+            "locator": "p. 408, note to Table 11.2",
+            "note": "The book’s table (p. 406) gives this government as “11/61 · Ben-Gurion · Mapai + affiliates, Ahdut Ha’avoda, NRP, Poalei Agudat Yisrael · 68”: 68 seats, the same total as the rows recorded here.",
+            "noteHe": "בלוח בספר (עמ׳ 406) רשומה הממשלה הזאת כך: “11/61 · Ben-Gurion · Mapai + affiliates, Ahdut Ha’avoda, NRP, Poalei Agudat Yisrael · 68”; 68 מנדטים, כסכום השורות כאן."
+          },
+          {
+            "source": "galnoor-blander-2013-ch12",
+            "quote": "בהרכב הקואליציה נמנו גם … הרשימות הערביות הנלוות למפא\"י שנבחרו לכנסת בין 1949 ל־1973 בשמות שונים: … שיתוף ואחווה …",
+            "locator": "p. 604, note to table 12.2"
+          },
+          {
+            "source": "kenig-rahat-2023",
+            "quote": "פוליטיקאים ערבים ודרוזים מהמפלגות הציוניות (או מהרשימות הנלוות של מפא\"י) היו כמובן שותפים בקואליציות",
+            "locator": "p. 386, note 22"
+          }
+        ],
+        "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table’s 68 seats for this government equal the rows recorded here), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+        "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
+        "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
       },
       {
         "letters": "רא",
         "seats": 2,
-        "role": "other",
-        "certainty": "unknown",
-        "cites": [],
-        "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
+        "role": "member-without-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "galnoor-blander-2018-table",
+            "quote": "we included parties or MKs that were not official members of the government, such as the Arab lists affiliated with Mapai in the years 1949–73",
+            "locator": "p. 408, note to Table 11.2",
+            "note": "The book’s table (p. 406) gives this government as “11/61 · Ben-Gurion · Mapai + affiliates, Ahdut Ha’avoda, NRP, Poalei Agudat Yisrael · 68”: 68 seats, the same total as the rows recorded here.",
+            "noteHe": "בלוח בספר (עמ׳ 406) רשומה הממשלה הזאת כך: “11/61 · Ben-Gurion · Mapai + affiliates, Ahdut Ha’avoda, NRP, Poalei Agudat Yisrael · 68”; 68 מנדטים, כסכום השורות כאן."
+          },
+          {
+            "source": "galnoor-blander-2013-ch12",
+            "quote": "בהרכב הקואליציה נמנו גם … הרשימות הערביות הנלוות למפא\"י שנבחרו לכנסת בין 1949 ל־1973 בשמות שונים: … קידמה ופיתוח …",
+            "locator": "p. 604, note to table 12.2"
+          },
+          {
+            "source": "kenig-rahat-2023",
+            "quote": "פוליטיקאים ערבים ודרוזים מהמפלגות הציוניות (או מהרשימות הנלוות של מפא\"י) היו כמובן שותפים בקואליציות",
+            "locator": "p. 386, note 22"
+          }
+        ],
+        "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table’s 68 seats for this government equal the rows recorded here), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+        "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
+        "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
       }
     ],
-    "coalitionSeats": null,
+    "coalitionSeats": 68,
     "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
     "cites": [
       {
@@ -962,7 +1026,9 @@
                 "quote": "מפלגת פועלי ארץ ישראל, המפלגה הדתית-לאומית, מפלגת אחדות העבודה–פועלי ציון, פועלי אגודת ישראל, השיתוף והאחווה, הקדמה והפיתוח."
               }
             ],
-            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister."
+            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister.",
+            "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
           },
           {
             "letters": "רא",
@@ -975,7 +1041,9 @@
                 "quote": "מפלגת פועלי ארץ ישראל, המפלגה הדתית-לאומית, מפלגת אחדות העבודה–פועלי ציון, פועלי אגודת ישראל, השיתוף והאחווה, הקדמה והפיתוח."
               }
             ],
-            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister."
+            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister.",
+            "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
           }
         ],
         "coalitionSeats": 68,
@@ -994,7 +1062,7 @@
         "supportSeats": 0,
         "reconciliation": {
           "status": "unresolved",
-          "note": "The coalition and its supporters held 68 seats, but 64 MKs voted for; which 4 did not is unknown, as the record does not say how each MK voted. Not every member of the coalition is known either. Do not assume every coalition MK voted for."
+          "note": "The coalition and its supporters held 68 seats, but 64 MKs voted for; which 4 did not is unknown, as the record does not say how each MK voted. Do not assume every coalition MK voted for."
         },
         "knownMemberSeats": 68
       },
@@ -1088,21 +1156,61 @@
           {
             "letters": "יא",
             "seats": 2,
-            "role": "other",
-            "certainty": "unknown",
-            "cites": [],
-            "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "galnoor-blander-2018-table",
+                "quote": "we included parties or MKs that were not official members of the government, such as the Arab lists affiliated with Mapai in the years 1949–73",
+                "locator": "p. 408, note to Table 11.2",
+                "note": "The book’s table (p. 406) gives this government as “12/64 · Eshkol · Mapai + affiliates, NRP, Ahdut Ha’avoda, Poalei Agudat Yisrael · 68”: 68 seats, the same total as the rows recorded here.",
+                "noteHe": "בלוח בספר (עמ׳ 406) רשומה הממשלה הזאת כך: “12/64 · Eshkol · Mapai + affiliates, NRP, Ahdut Ha’avoda, Poalei Agudat Yisrael · 68”; 68 מנדטים, כסכום השורות כאן."
+              },
+              {
+                "source": "galnoor-blander-2013-ch12",
+                "quote": "בהרכב הקואליציה נמנו גם … הרשימות הערביות הנלוות למפא\"י שנבחרו לכנסת בין 1949 ל־1973 בשמות שונים: … שיתוף ואחווה …",
+                "locator": "p. 604, note to table 12.2"
+              },
+              {
+                "source": "kenig-rahat-2023",
+                "quote": "פוליטיקאים ערבים ודרוזים מהמפלגות הציוניות (או מהרשימות הנלוות של מפא\"י) היו כמובן שותפים בקואליציות",
+                "locator": "p. 386, note 22"
+              }
+            ],
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table’s 68 seats for this government equal the rows recorded here), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
           },
           {
             "letters": "רא",
             "seats": 2,
-            "role": "other",
-            "certainty": "unknown",
-            "cites": [],
-            "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "galnoor-blander-2018-table",
+                "quote": "we included parties or MKs that were not official members of the government, such as the Arab lists affiliated with Mapai in the years 1949–73",
+                "locator": "p. 408, note to Table 11.2",
+                "note": "The book’s table (p. 406) gives this government as “12/64 · Eshkol · Mapai + affiliates, NRP, Ahdut Ha’avoda, Poalei Agudat Yisrael · 68”: 68 seats, the same total as the rows recorded here.",
+                "noteHe": "בלוח בספר (עמ׳ 406) רשומה הממשלה הזאת כך: “12/64 · Eshkol · Mapai + affiliates, NRP, Ahdut Ha’avoda, Poalei Agudat Yisrael · 68”; 68 מנדטים, כסכום השורות כאן."
+              },
+              {
+                "source": "galnoor-blander-2013-ch12",
+                "quote": "בהרכב הקואליציה נמנו גם … הרשימות הערביות הנלוות למפא\"י שנבחרו לכנסת בין 1949 ל־1973 בשמות שונים: … קידמה ופיתוח …",
+                "locator": "p. 604, note to table 12.2"
+              },
+              {
+                "source": "kenig-rahat-2023",
+                "quote": "פוליטיקאים ערבים ודרוזים מהמפלגות הציוניות (או מהרשימות הנלוות של מפא\"י) היו כמובן שותפים בקואליציות",
+                "locator": "p. 386, note 22"
+              }
+            ],
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table’s 68 seats for this government equal the rows recorded here), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
           }
         ],
-        "coalitionSeats": null,
+        "coalitionSeats": 68,
         "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
         "confidenceVote": {
           "for": 59,
@@ -1115,13 +1223,13 @@
             "quote": "אנחנו עוברים להצבעה. הצבעה 59 בעד הבעת אמון לממשלה 36 נגד 9 נמנעים היו\"ר ק. לוז: הממשלה בראשותו של לוי אשכול זכתה באמון הכנסת. אני מברך את הממשלה בהתכוננותה ומאחל לה הצלחה"
           }
         ],
-        "membershipCoverage": "partial",
-        "supportSeats": null,
+        "membershipCoverage": "complete",
+        "supportSeats": 0,
         "reconciliation": {
           "status": "unresolved",
-          "note": "Not every member of the coalition is known (those known hold 64 seats); the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 59 for, 36 against, 9 abstaining."
+          "note": "The coalition held 68 seats, as Galnoor and Blander also count, but 59 MKs voted for (36 against, 9 abstaining); which 9 did not is unknown, as the record does not say how each MK voted. Do not assume every coalition MK voted for."
         },
-        "knownMemberSeats": 64
+        "knownMemberSeats": 68
       }
     ],
     "endDateCites": [
@@ -1140,13 +1248,13 @@
         "quote": "אנו עוברים להצבעה על הבעת אמון לממשלה שהתייצבה לפני הכנסת. הצבעה 63 בעד הבעת אמון לממשלה 46 נגד לוז: ק. היו\"ר ושישה הביעה נגר ארבעים של שישים ושלושה ברוב הכנסת אמון לממשלה, בראשותו של דוד בןגוריון. אני מברך את הממשלה להתכוננותה, ומאחל לה הצלחה בניהול עניני המדינה."
       }
     ],
-    "membershipCoverage": "partial",
-    "supportSeats": null,
+    "membershipCoverage": "complete",
+    "supportSeats": 0,
     "reconciliation": {
       "status": "unresolved",
-      "note": "Not every member of the coalition is known (those known hold 64 seats); the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 63 for, 46 against, abstentions not recorded."
+      "note": "The coalition held 68 seats, as Galnoor and Blander also count, but 63 MKs voted for (46 against); which 5 did not is unknown, as the record does not say how each MK voted. Do not assume every coalition MK voted for."
     },
-    "knownMemberSeats": 64
+    "knownMemberSeats": 68
   },
   "term": {
     "start": "1961-08-15",

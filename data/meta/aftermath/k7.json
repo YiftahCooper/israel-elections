@@ -469,7 +469,9 @@
             "quote": "הממשלה המוצעת תכלול שש סיעות, המייצגות ביחד 102 חברי כנסת"
           }
         ],
-        "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister."
+        "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister.",
+        "noteEn": "One of the Arab lists affiliated with Mapai and the Alignment: counted in the coalition, with no minister.",
+        "noteHe": "אחת הרשימות הערביות הנלוות למפא״י ולמערך: נמנתה בקואליציה, בלי שר."
       },
       {
         "letters": "יא",
@@ -482,7 +484,9 @@
             "quote": "הממשלה המוצעת תכלול שש סיעות, המייצגות ביחד 102 חברי כנסת"
           }
         ],
-        "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister."
+        "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister.",
+        "noteEn": "One of the Arab lists affiliated with Mapai and the Alignment: counted in the coalition, with no minister.",
+        "noteHe": "אחת הרשימות הערביות הנלוות למפא״י ולמערך: נמנתה בקואליציה, בלי שר."
       }
     ],
     "coalitionSeats": 102,
@@ -567,7 +571,9 @@
                 "quote": "הממשלה המוצעת תכלול שש סיעות, המייצגות ביחד 102 חברי כנסת"
               }
             ],
-            "note": "Same government after Gahal’s documented departure; these factions remain in the recorded snapshot and have no cabinet minister."
+            "note": "Same government after Gahal’s documented departure; these factions remain in the recorded snapshot and have no cabinet minister.",
+            "noteEn": "One of the Arab lists affiliated with Mapai and the Alignment: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י ולמערך: נמנתה בקואליציה, בלי שר."
           },
           {
             "letters": "יא",
@@ -580,7 +586,9 @@
                 "quote": "הממשלה המוצעת תכלול שש סיעות, המייצגות ביחד 102 חברי כנסת"
               }
             ],
-            "note": "Same government after Gahal’s documented departure; these factions remain in the recorded snapshot and have no cabinet minister."
+            "note": "Same government after Gahal’s documented departure; these factions remain in the recorded snapshot and have no cabinet minister.",
+            "noteEn": "One of the Arab lists affiliated with Mapai and the Alignment: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י ולמערך: נמנתה בקואליציה, בלי שר."
           }
         ],
         "coalitionSeats": 76,
@@ -618,7 +626,7 @@
     "supportSeats": 0,
     "reconciliation": {
       "status": "unresolved",
-      "note": "The coalition and its supporters held 102 seats, but 90 MKs voted for; which 12 did not is unknown, as the record does not say how each MK voted. Not every member of the coalition is known either. Do not assume every coalition MK voted for."
+      "note": "The coalition and its supporters held 102 seats, but 90 MKs voted for; which 12 did not is unknown, as the record does not say how each MK voted. Do not assume every coalition MK voted for."
     },
     "knownMemberSeats": 102
   },

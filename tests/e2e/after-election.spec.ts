@@ -167,8 +167,13 @@ for (const lang of ['he', 'en'] as const) test(`support roles and honest unknown
   await history.getByText(lang === 'he' ? 'שינויים בממשלה' : 'Government changes', { exact: true }).click();
   await expect(history.locator('.after-government-change .after-members-total').first()).toHaveText(lang === 'he' ? 'לא ידוע' : 'Unknown');
   await choose(election, 'k2');
-  await expect(history.locator('.after-members-total').first()).toHaveText(lang === 'he' ? 'לא ידוע' : 'Unknown');
-  await expect(history.locator('[data-support-role="unknown"]').first()).toBeVisible();
+  // 17 Nov 2026: Mapai's three affiliated Arab lists are members without ministries (two independent books), so the
+  // first government's total is published (65, as Galnoor and Blander count); a later one with an open role stays unknown
+  await expect(history.locator('.after-members-total').first()).toHaveText('65');
+  await expect(history.locator('[data-support-role="member-without-ministries"]').first().locator('.after-party')).toHaveCount(4);
+  await history.getByText(lang === 'he' ? 'שינויים בממשלה' : 'Government changes', { exact: true }).click();
+  await expect(history.locator('.after-government-change .after-members-total').first()).toHaveText(lang === 'he' ? 'לא ידוע' : 'Unknown');
+  await expect(history.locator('.after-government-change [data-support-role="unknown"]')).not.toHaveCount(0);
   await expect(history.locator('[data-support-role="member-with-ministries"] [data-support-role="unknown"]')).toHaveCount(0);
   await choose(election, 'k15');
   await expect(history.locator('.after-confidence-vote').first()).toHaveText(lang === 'he' ? 'לא ידוע' : 'Unknown');

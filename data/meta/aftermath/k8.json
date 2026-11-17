@@ -180,6 +180,44 @@
         "retrievedAt": "2026-11-17T06:55:24.034Z"
       },
       "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1779-www.nli.org.il/page.html"
+    },
+    "galnoor-blander-2018-table": {
+      "url": "https://doi.org/10.1017/9781316160978",
+      "publisher": "Itzhak Galnoor and Dana Blander, The Handbook of Israel’s Political System (Cambridge University Press, 2018), Table 11.2, “Coalitions in Israel 1949–2015”, pp. 406–408",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:galnoor"
+    },
+    "galnoor-blander-2013-ch12": {
+      "url": "https://en.idi.org.il/media/3869/politiacal_system_c12.pdf",
+      "publisher": "Itzhak Galnoor and Dana Blander, The Political System of Israel (Am Oved and the Israel Democracy Institute, 2013), chapter 12, “Government coalitions”",
+      "publisherHe": "יצחק גל־נור ודנה בלאנדר, המערכת הפוליטית בישראל (עם עובד והמכון הישראלי לדמוקרטיה, 2013), פרק 12, קואליציות ממשלתיות",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:galnoor",
+      "via": "The Hebrew original of the 2018 handbook, by the same authors: one piece of evidence with it."
+    },
+    "kenig-rahat-2023": {
+      "url": "https://www.idi.org.il/media/20997/המפלגות-בישראל-2021-1992.pdf",
+      "publisher": "Ofer Kenig and Gideon Rahat, Parties in Israel 1992–2021 (Israel Democracy Institute, 2023)",
+      "publisherHe": "עופר קניג וגדעון רהט, המפלגות בישראל 1992–2021 (המכון הישראלי לדמוקרטיה, 2023)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:kenig-rahat"
+    },
+    "faction-records-k8": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+8+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
+      "publisher": "Knesset open data: members’ faction memberships, Knesset 8",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: חברות בסיעות, הכנסת השמינית",
+      "kind": "official",
+      "accessed": "2026-11-17"
+    },
+    "deputy-minister-muadi": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=PersonID+eq+2454+and+PositionID+eq+40&%24format=json",
+      "publisher": "Knesset open data: Jabr Muadi’s deputy-minister appointments",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי ג׳בר מועדי לסגן שר",
+      "kind": "official",
+      "accessed": "2026-11-17"
     }
   },
   "results": {
@@ -522,21 +560,79 @@
       {
         "letters": "רא",
         "seats": 2,
-        "role": "other",
-        "certainty": "unknown",
-        "cites": [],
-        "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
+        "role": "member-without-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "galnoor-blander-2018-table",
+            "quote": "we included parties or MKs that were not official members of the government, such as the Arab lists affiliated with Mapai in the years 1949–73",
+            "locator": "p. 408, note to Table 11.2",
+            "note": "The book’s table (p. 407) gives this government as “03/74 · Meir · Alignment + affiliates, Independent Liberals, NRP · 68”: 68 seats, the same total as the rows recorded here.",
+            "noteHe": "בלוח בספר (עמ׳ 407) רשומה הממשלה הזאת כך: “03/74 · Meir · Alignment + affiliates, Independent Liberals, NRP · 68”; 68 מנדטים, כסכום השורות כאן."
+          },
+          {
+            "source": "galnoor-blander-2013-ch12",
+            "quote": "בהרכב הקואליציה נמנו גם … הרשימות הערביות הנלוות למפא\"י שנבחרו לכנסת בין 1949 ל־1973 בשמות שונים: … קידמה ופיתוח …",
+            "locator": "p. 604, note to table 12.2"
+          },
+          {
+            "source": "kenig-rahat-2023",
+            "quote": "פוליטיקאים ערבים ודרוזים מהמפלגות הציוניות (או מהרשימות הנלוות של מפא\"י) היו כמובן שותפים בקואליציות",
+            "locator": "p. 386, note 22"
+          },
+          {
+            "source": "faction-records-k8",
+            "quote": "PersonToPositionID 26929 and 27042: faction מערך from 1974-02-26",
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: Seif el-Din el-Zoubi and Jabr Muadi. They show the faction, not coalition membership.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: סיף-אלדין אלזועבי וג׳בר מועדי. הם מראים את הסיעה, לא חברות בקואליציה."
+          },
+          {
+            "source": "deputy-minister-muadi",
+            "quote": "PersonToPositionID 22698; GovernmentNum 16; סגן שר התקשורת; StartDate 1974-05-06",
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: Jabr Muadi, Deputy Minister of Communications.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: ג׳בר מועדי, סגן שר התקשורת."
+          }
+        ],
+        "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai and the Alignment. Galnoor and Blander count it among the coalition partners (their note names the list; their table’s 68 seats for this government equal the rows recorded here), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record. From 26 February 1974 the Knesset’s faction records list its MKs in the Alignment’s faction (the Alignment row keeps its 51 election seats). Jabr Muadi of this list became a deputy minister (Communications) on 6 May 1974, two months after this government was formed; a deputy minister is not a cabinet minister, so the role stays without ministries.",
+        "noteEn": "One of the Arab lists affiliated with Mapai and the Alignment: counted in the coalition, with no minister.",
+        "noteHe": "אחת הרשימות הערביות הנלוות למפא״י ולמערך: נמנתה בקואליציה, בלי שר."
       },
       {
         "letters": "עא",
         "seats": 1,
-        "role": "other",
-        "certainty": "unknown",
-        "cites": [],
-        "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
+        "role": "member-without-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "galnoor-blander-2018-table",
+            "quote": "we included parties or MKs that were not official members of the government, such as the Arab lists affiliated with Mapai in the years 1949–73",
+            "locator": "p. 408, note to Table 11.2",
+            "note": "The book’s table (p. 407) gives this government as “03/74 · Meir · Alignment + affiliates, Independent Liberals, NRP · 68”: 68 seats, the same total as the rows recorded here.",
+            "noteHe": "בלוח בספר (עמ׳ 407) רשומה הממשלה הזאת כך: “03/74 · Meir · Alignment + affiliates, Independent Liberals, NRP · 68”; 68 מנדטים, כסכום השורות כאן."
+          },
+          {
+            "source": "galnoor-blander-2013-ch12",
+            "quote": "בהרכב הקואליציה נמנו גם … הרשימות הערביות הנלוות למפא\"י שנבחרו לכנסת בין 1949 ל־1973 בשמות שונים: … רשימה ערבית לבדואים וכפריים …",
+            "locator": "p. 604, note to table 12.2"
+          },
+          {
+            "source": "kenig-rahat-2023",
+            "quote": "פוליטיקאים ערבים ודרוזים מהמפלגות הציוניות (או מהרשימות הנלוות של מפא\"י) היו כמובן שותפים בקואליציות",
+            "locator": "p. 386, note 22"
+          },
+          {
+            "source": "faction-records-k8",
+            "quote": "PersonToPositionID 26919: faction מערך from 1974-02-26",
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: Hamad Abu Rabia. They show the faction, not coalition membership.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חמאד אבו-רביעה. הם מראים את הסיעה, לא חברות בקואליציה."
+          }
+        ],
+        "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai and the Alignment. Galnoor and Blander count it among the coalition partners (their note names the list; their table’s 68 seats for this government equal the rows recorded here), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record. From 26 February 1974 the Knesset’s faction records list its MKs in the Alignment’s faction (the Alignment row keeps its 51 election seats).",
+        "noteEn": "One of the Arab lists affiliated with Mapai and the Alignment: counted in the coalition, with no minister.",
+        "noteHe": "אחת הרשימות הערביות הנלוות למפא״י ולמערך: נמנתה בקואליציה, בלי שר."
       }
     ],
-    "coalitionSeats": null,
+    "coalitionSeats": 68,
     "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
     "cites": [
       {
@@ -634,9 +730,23 @@
               {
                 "source": "plenum-gov17",
                 "quote": "המערך סיעות משתתפות הכנסת לאישור היום מפלגת העבודה, מפ\"ם והרשימות הערביות"
+              },
+              {
+                "source": "faction-records-k8",
+                "quote": "PersonToPositionID 26929 and 27042: faction מערך from 1974-02-26",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: Seif el-Din el-Zoubi and Jabr Muadi. They show the faction, not coalition membership.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: סיף-אלדין אלזועבי וג׳בר מועדי. הם מראים את הסיעה, לא חברות בקואליציה."
+              },
+              {
+                "source": "deputy-minister-muadi",
+                "quote": "PersonToPositionID 4152; GovernmentNum 17; סגן שר התקשורת; StartDate 1974-07-16",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: Jabr Muadi, Deputy Minister of Communications.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: ג׳בר מועדי, סגן שר התקשורת."
               }
             ],
-            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister."
+            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister. From 26 February 1974 the Knesset’s faction records list its MKs in the Alignment’s faction (the Alignment row keeps its 51 election seats); the record of 3 June 1974 names “the Arab lists” within the Alignment. Jabr Muadi of this list became a deputy minister (Communications) on 16 July 1974, six weeks after this government was formed; a deputy minister is not a cabinet minister, so the role stays without ministries.",
+            "noteEn": "One of the Arab lists affiliated with Mapai and the Alignment: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י ולמערך: נמנתה בקואליציה, בלי שר."
           },
           {
             "letters": "עא",
@@ -647,9 +757,17 @@
               {
                 "source": "plenum-gov17",
                 "quote": "המערך סיעות משתתפות הכנסת לאישור היום מפלגת העבודה, מפ\"ם והרשימות הערביות"
+              },
+              {
+                "source": "faction-records-k8",
+                "quote": "PersonToPositionID 26919: faction מערך from 1974-02-26",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: Hamad Abu Rabia. They show the faction, not coalition membership.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חמאד אבו-רביעה. הם מראים את הסיעה, לא חברות בקואליציה."
               }
             ],
-            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister."
+            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister. From 26 February 1974 the Knesset’s faction records list its MKs in the Alignment’s faction (the Alignment row keeps its 51 election seats); the record of 3 June 1974 names “the Arab lists” within the Alignment.",
+            "noteEn": "One of the Arab lists affiliated with Mapai and the Alignment: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י ולמערך: נמנתה בקואליציה, בלי שר."
           }
         ],
         "coalitionSeats": 61,
@@ -700,13 +818,13 @@
         "quote": "/ היו\"ר י. ישעיהו: תוצאות ההצבעה: בעד ההצעה להביע אמון לממשלה .9 46; נמנעים 62; נגד נתקבלה. לממשלה אמון להביע ההצעה ז. הצהרת אמונים של חברי הממשלה היו\"ר י. ישעיהו: את ראש הכנסת הביעה אמון לממשלה, ואני מזמין אמונים. להצהיר לדוכן הממשלה לעלות"
       }
     ],
-    "membershipCoverage": "partial",
-    "supportSeats": null,
+    "membershipCoverage": "complete",
+    "supportSeats": 0,
     "reconciliation": {
       "status": "unresolved",
-      "note": "Not every member of the coalition is known (those known hold 65 seats); the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 62 for, 46 against, 9 abstaining."
+      "note": "The coalition held 68 seats, as Galnoor and Blander also count, but 62 MKs voted for (46 against, 9 abstaining); which 6 did not is unknown, as the record does not say how each MK voted. Do not assume every coalition MK voted for."
     },
-    "knownMemberSeats": 65
+    "knownMemberSeats": 68
   },
   "term": {
     "start": "1973-12-31",

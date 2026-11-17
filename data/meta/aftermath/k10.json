@@ -298,7 +298,25 @@
           "letters": "ני",
           "seats": 3,
           "status": "recommended",
-          "nominee": "begin"
+          "nominee": "begin",
+          "cites": [
+            {
+              "source": "recommendations-research-3",
+              "quote": "Aharon Abu Hatzeira's Tami faction, with three seats, indicated to Navon that it preferred a government headed by Begin, while Moshe Dayan's two-seat Telem party leaned toward Labor"
+            },
+            {
+              "source": "recommendations-research-2",
+              "quote": "Begin has support in principle from three religious parties -- the National Religious Party, the Tami Party and the Agudat Israel Party -- which hold a total of 13 seats in the Knesset (parliament)."
+            },
+            {
+              "source": "davar-1981-07-15-p1",
+              "quote": "סיעת תמ\"י, שכללה את אהרון אוזן, אלי דיין ובן־ציון רובין, הציעה, שמנחם בגין ירכיב את הממשלה הבאה.",
+              "ocr": "סיעת תמ\"י, שכללה את אהרון איזן. אלי דיין ובז־ציון רובין, הציעה. שמנחם בגין ירביב את הממשלה הנאה.",
+              "scanChecked": true
+            }
+          ],
+          "noteEn": "Proposed that Begin form the next government.",
+          "noteHe": "הציעה שבגין ירכיב את הממשלה הבאה."
         },
         {
           "letters": "אמת",
@@ -418,7 +436,7 @@
         }
       ],
       "notes": [
-        "President Navon stated that 61 MKs backed Begin (Likud 48 + NRP 6 + Agudat Yisrael 4 + Tami 3, the parties United Press International names). Davar (14 and 15 July 1981) reports the Alignment, Shinui and Ratz for Peres, Telem and Tehiya asking for a national unity government without naming anyone, and Hadash supporting no government; one newspaper each.",
+        "President Navon stated that 61 MKs backed Begin (Likud 48 + NRP 6 + Agudat Yisrael 4 + Tami 3, the parties United Press International names). Davar (14 and 15 July 1981) reports Tami proposing Begin, the Alignment, Shinui and Ratz for Peres, Telem and Tehiya asking for a national unity government without naming anyone, and Hadash supporting no government; one newspaper each.",
         "Mandate given to Begin on 15 July 1981 (Navon's letter is dated 16 July in the State Archives account). UPI's 1981 pages returned 403 to a direct request on 2026-11-05; their quotes are from a search-index extract. The State Archives chapter also returned 403; its quote is from a search-index extract."
       ],
       "pagesRead": [

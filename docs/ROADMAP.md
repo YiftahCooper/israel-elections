@@ -15,15 +15,15 @@ register (`docs/data-gaps.md`).
   facts because several official sites refuse automated reading. The page collector (a browser extension that fetches
   pages from the owner's own browser) is meant to close most of this; each fetched batch is checked against the stored
   data, and the register is updated.
-- **Mapai's affiliated Arab lists: a role for "counted with the coalition, not official members".** From 1949 to 1973
-  the Arab lists affiliated with Mapai backed its governments. Galnoor and Blander's handbook (2018, p. 408) counts them
-  among the coalition partners but says they were "not official members of the government". Neither of the app's roles
-  fits: "member" says too much and "outside support" too little. So their 30 rows in governments 1–17 stay unknown
-  (books batch 1, 16 Nov 2026). Needed: a role for this, chosen by the owner, then the rows filled from the handbook.
-  The 1949 Nazareth list, stored today as a probable member partly on the same book, should be read again at the same
-  time. The Hebrew original (Am Oved and the Israel Democracy Institute, 2013, chapter 12, note to table 12.2, p. 604,
-  free from the Institute) says «בהרכב הקואליציה נמנו גם מפלגות או ח"כים שלא היו חברים רשמיים בממשלה»: counted in the
-  coalition's make-up, though not formal members of the government (17 Nov 2026).
+- **Governments 4, 5, 6 and 14: what still keeps their member totals open.** Found while settling Mapai's affiliated
+  Arab lists (17 Nov 2026). Government 4 (1952): the General Zionists row keeps its 20 election seats, but the Knesset's
+  faction records show the Sephardim's two MKs and the Yemenite MK joining that faction on 10 September 1951 (23
+  seats, which would match Galnoor and Blander's 87). Government 5 (1954): the Progressives are missing from the rows,
+  though Galnoor and Blander list them, and Mizrahi's role is open. Government 6 (1955): the Yemenite Association's
+  role is open. Government 14 (1969): only the parties with ministers are recorded; by then the two affiliated lists
+  had split into four one-MK factions (one became the Israeli Druze Faction), so which of them the book's
+  "affiliates" means needs a source. Needed: the faction seats from the Knesset's records, and a source for each open
+  role.
 
 ## Features
 

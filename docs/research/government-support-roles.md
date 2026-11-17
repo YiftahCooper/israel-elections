@@ -25,27 +25,29 @@ Types: `src/data/aftermath.ts` (re-exported by `schema.ts`). Validation: `script
 
 ## Government-by-government role table
 
+Update of 17 November 2026: Mapai’s affiliated Arab lists in governments 1–17 are N (coalition members without ministries), confirmed by two independent books: Galnoor and Blander’s coalition table (2018, Table 11.2, pp. 406–408, with its note naming the lists; Hebrew original 2013, p. 604) and Kenig and Rahat (2023, p. 386, note 22). Where every row then has a role and the rows add up to Galnoor and Blander’s total, the member total is now published.
+
 All role entries below map directly to `data/meta/aftermath/kN.json`, `government` or numbered `government.changes`, with claim-level source IDs, quotes/extraction notes and certainty. The table is an index, not a replacement source ledger. `?` is unknown; U is not a vote against. Individuals are detailed immediately below.
 
 | Election | Government | Faction role and seats | Member/support totals; recorded vote |
 |---|---:|---|---|
-| k1 | 1 | Mapai 46 M; United Religious Front 16 M; Progressive Party 5 M; Sephardim and Oriental Communities 4 M; Democratic List of Nazareth 2 N (probable, 7 Nov); WIZO 1 V†; Yemenite Association 1 V (disputed, 7 Nov) | 73 members / 0 outside; 73–45 |
-| k1 | 2 | Mapai 46 M; United Religious Front 16 M; Progressive Party 5 M; Sephardim and Oriental Communities 4 M; Democratic List of Nazareth 2 U | ? members / ? outside; 69–42; 2 abstain |
-| k2 | 3 | Mapai 45 M; Hapoel HaMizrahi 8 M; Mizrahi 2 M; Agudat Yisrael 3 M; Poalei Agudat Yisrael 2 U; Democratic List for Israeli Arabs 3 U; Progress and Work 1 U; Agriculture and Development 1 U | ? members / ? outside; 56–40; 4 abstain |
-| k2 | 4 | Mapai 45 M; General Zionists 20 M; Hapoel HaMizrahi 8 M; Mizrahi 2 U; Progressive Party 4 M; Democratic List for Israeli Arabs 3 U; Progress and Work 1 U; Agriculture and Development 1 U | ? members / ? outside; 63–24 |
-| k2 | 5 | Mapai 45 M; General Zionists 20 M; Hapoel HaMizrahi 8 M; Mizrahi 2 U; Democratic List for Israeli Arabs 3 U; Progress and Work 1 U; Agriculture and Development 1 U | ? members / ? outside; 75–23; 5 abstain |
-| k2 | 6 | Mapai 45 M; Hapoel HaMizrahi 8 M; Mizrahi 2 N; Progressive Party 4 M; Democratic List for Israeli Arabs 3 U; Progress and Work 1 U; Agriculture and Development 1 U; Yemenite Association 1 U | ? members / ? outside; 66–32; 3 abstain |
-| k3 | 7 | Mapai 40 M; National Religious Front 11 M; Ahdut HaAvoda 10 M; Mapam 9 M; Progressive Party 5 M; Democratic List for Israeli Arabs 2 U; Progress and Work 2 U; Agriculture and Development 1 U | ? members / ? outside; 73–32; 3 abstain |
-| k3 | 8 | Mapai 40 M; National Religious Front 11 M; Ahdut HaAvoda 10 M; Mapam 9 M; Progressive Party 5 M; Democratic List for Israeli Arabs 2 U; Progress and Work 2 U; Agriculture and Development 1 U | ? members / ? outside; 76–33 |
-| k4 | 9 | Mapai 47 M; National Religious Party 12 M; Mapam 9 M; Ahdut HaAvoda 7 M; Progressive Party 6 M; Progress and Development 2 U; Cooperation and Brotherhood 2 U; Agriculture and Development 1 U | ? members / ? outside; 78–33 |
-| k5 | 10 | Mapai 42 M; National Religious Party 12 M; Ahdut HaAvoda 8 M; Poalei Agudat Yisrael 2 U; Cooperation and Brotherhood 2 U; Progress and Development 2 U | ? members / ? outside; 63–46 |
+| k1 | 1 | Mapai 46 M; United Religious Front 16 M; Progressive Party 5 M; Sephardim and Oriental Communities 4 M; Democratic List of Nazareth 2 N; WIZO 1 V†; Yemenite Association 1 V (disputed, 7 Nov) | 73 members / 0 outside; 73–45 |
+| k1 | 2 | Mapai 46 M; United Religious Front 16 M; Progressive Party 5 M; Sephardim and Oriental Communities 4 M; Democratic List of Nazareth 2 N | 73 members / 0 outside; 69–42; 2 abstain |
+| k2 | 3 | Mapai 45 M; Hapoel HaMizrahi 8 M; Mizrahi 2 M; Agudat Yisrael 3 M; Poalei Agudat Yisrael 2 N (probable); Democratic List for Israeli Arabs 3 N; Progress and Work 1 N; Agriculture and Development 1 N | 65 members / 0 outside; 56–40; 4 abstain |
+| k2 | 4 | Mapai 45 M; General Zionists 20 M; Hapoel HaMizrahi 8 M; Mizrahi 2 N (probable); Progressive Party 4 M; Democratic List for Israeli Arabs 3 N; Progress and Work 1 N; Agriculture and Development 1 N | ? members / ? outside; 63–24 |
+| k2 | 5 | Mapai 45 M; General Zionists 20 M; Hapoel HaMizrahi 8 M; Mizrahi 2 U; Democratic List for Israeli Arabs 3 N; Progress and Work 1 N; Agriculture and Development 1 N | ? members / ? outside; 75–23; 5 abstain |
+| k2 | 6 | Mapai 45 M; Hapoel HaMizrahi 8 M; Mizrahi 2 N; Progressive Party 4 M; Democratic List for Israeli Arabs 3 N; Progress and Work 1 N; Agriculture and Development 1 N; Yemenite Association 1 U | ? members / ? outside; 66–32; 3 abstain |
+| k3 | 7 | Mapai 40 M; National Religious Front 11 M; Ahdut HaAvoda 10 M; Mapam 9 M; Progressive Party 5 M; Democratic List for Israeli Arabs 2 N; Progress and Work 2 N; Agriculture and Development 1 N | 80 members / 0 outside; 73–32; 3 abstain |
+| k3 | 8 | Mapai 40 M; National Religious Front 11 M; Ahdut HaAvoda 10 M; Mapam 9 M; Progressive Party 5 M; Democratic List for Israeli Arabs 2 N; Progress and Work 2 N; Agriculture and Development 1 N | 80 members / 0 outside; 76–33 |
+| k4 | 9 | Mapai 47 M; National Religious Party 12 M; Mapam 9 M; Ahdut HaAvoda 7 M; Progressive Party 6 M; Progress and Development 2 N; Cooperation and Brotherhood 2 N; Agriculture and Development 1 N | 86 members / 0 outside; 78–33 |
+| k5 | 10 | Mapai 42 M; National Religious Party 12 M; Ahdut HaAvoda 8 M; Poalei Agudat Yisrael 2 N; Cooperation and Brotherhood 2 N; Progress and Development 2 N | 68 members / 0 outside; 63–46 |
 | k5 | 11 | Mapai 42 M; National Religious Party 12 M; Ahdut HaAvoda 8 M; Poalei Agudat Yisrael 2 N; Cooperation and Brotherhood 2 N; Progress and Development 2 N | 68 members / 0 outside; 64–43 |
-| k5 | 12 | Mapai 42 M; National Religious Party 12 M; Ahdut HaAvoda 8 M; Poalei Agudat Yisrael 2 U; Cooperation and Brotherhood 2 U; Progress and Development 2 U | ? members / ? outside; 59–36; 9 abstain |
-| k6 | 13 | Alignment 45 M; National Religious Party 11 M; Mapam 8 M†; Independent Liberals 5 M†; Poalei Agudat Yisrael 2 N; Progress and Development 2 U; Cooperation and Brotherhood 2 U | ? members / ? outside; 71–41 |
+| k5 | 12 | Mapai 42 M; National Religious Party 12 M; Ahdut HaAvoda 8 M; Poalei Agudat Yisrael 2 N (probable); Cooperation and Brotherhood 2 N; Progress and Development 2 N | 68 members / 0 outside; 59–36; 9 abstain |
+| k6 | 13 | Alignment 45 M; National Religious Party 11 M; Mapam 8 M†; Independent Liberals 5 M†; Poalei Agudat Yisrael 2 N; Progress and Development 2 N; Cooperation and Brotherhood 2 N | 75 members / 0 outside; 71–41 |
 | k6 | 14 | מערך ? M; גוש חרות ליברלים ? M; מפלגה דתית לאומית ? M | ? members / ? outside; 84–12; 1 abstain |
 | k7 | 15 | Alignment 56 M; Gahal 26 M; National Religious Party 12 M; Independent Liberals 4 M; Progress and Development 2 N; Cooperation and Brotherhood 2 N | 102 members / 0 outside; 90–10; 4 abstain |
 | k7 | 15 after Gahal departure | Alignment 56 M; National Religious Party 12 M; Independent Liberals 4 M; Progress and Development 2 N; Cooperation and Brotherhood 2 N | 76 members / 0 outside; 90–10; 4 abstain |
-| k8 | 16 | Alignment 51 M; National Religious Party 10 M; Independent Liberals 4 M; Progress and Development 2 U; Arab List for Bedouin and Villagers 1 U | ? members / ? outside; 62–46; 9 abstain |
+| k8 | 16 | Alignment 51 M; National Religious Party 10 M; Independent Liberals 4 M; Progress and Development 2 N; Arab List for Bedouin and Villagers 1 N | 68 members / 0 outside; 62–46; 9 abstain |
 | k8 | 17 | Alignment 51 M; Independent Liberals 4 M†; Ratz 3 M; Progress and Development 2 N; Arab List for Bedouin and Villagers 1 N | 61 members / 0 outside; 61–51; 5 abstain |
 | k9 | 18 | Likud 43 M; Shlomtzion 2 M; National Religious Party 12 M; Agudat Yisrael 4 N; Flatto-Sharon 1 V† | 62 members / 0 outside; 63–53 |
 | k10 | 19 | Likud 48 M; Agudat Yisrael 4 N; National Religious Party 6 M; Tami 3 M | 61 members / 0 outside; 61–58 |
