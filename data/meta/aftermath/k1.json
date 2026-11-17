@@ -49,13 +49,13 @@
     },
     "recommendations-jta": {
       "url": "https://www.jta.org/archive/weizmann-summons-leaders-of-all-parties-in-assembly-to-consult-today-on-cabinet-make-up",
-      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin (reused recommendation research)",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
     "coalition-1": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%201&$format=json",
-      "publisher": "Knesset OData (ParliamentInfo)",
+      "publisher": "Knesset open data",
       "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-04"
@@ -118,21 +118,23 @@
     },
     "recommendations-followup": {
       "url": "https://www.jta.org/archive/weizmann-sees-party-lesders-on-new-govt-mapam-outlines-conditions-for-participation",
-      "publisher": "JTA, 23 February 1949 follow-up",
+      "publisher": "Jewish Telegraphic Agency, 23 February 1949 follow-up",
       "kind": "secondary",
       "accessed": "2026-11-06"
     },
     "role-roster-1": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%201%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "role-roster-2": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%202%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "galnoor-blander-2018": {
       "url": "https://api.pageplace.de/preview/DT0400.9781108548151_A34238872/preview-9781108548151_A34238872.pdf",
@@ -267,7 +269,7 @@
         }
       ],
       "notes": [
-        "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
+        "Conditions set in the consultations are not counted as recommendations. “Unknown” does not mean that no recommendation was made.",
         "Month precision: the 21 February bulletin schedules meetings for tomorrow; the 23 February follow-up reports meetings today. The original bulletin dateline was not retrieved, so no exact held date or per-faction schedule is inferred."
       ]
     }
@@ -443,7 +445,8 @@
           {
             "source": "role-roster-1",
             "quote": "PersonToPositionID 3569; PersonID 2448; PositionID 57; StartDate 1949-03-10T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. גולדה מאיר; faction join: מפלגת פועלי ארץ-ישראל"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: גולדה מאיר; faction: מפלגת פועלי ארץ-ישראל.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: גולדה מאיר; סיעה: מפלגת פועלי ארץ-ישראל."
           }
         ]
       },
@@ -456,7 +459,8 @@
           {
             "source": "role-roster-1",
             "quote": "PersonToPositionID 3379; PersonID 2661; PositionID 39; StartDate 1949-03-10T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. חיים משה שפירא; faction join: חזית דתית מאוחדת"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים משה שפירא; faction: חזית דתית מאוחדת.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים משה שפירא; סיעה: חזית דתית מאוחדת."
           }
         ]
       },
@@ -469,7 +473,8 @@
           {
             "source": "role-roster-1",
             "quote": "PersonToPositionID 3848; PersonID 2600; PositionID 39; StartDate 1949-03-10T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. פנחס רוזן; faction join: מפלגה פרוגרסיבית"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: פנחס רוזן; faction: מפלגה פרוגרסיבית.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: פנחס רוזן; סיעה: מפלגה פרוגרסיבית."
           }
         ]
       },
@@ -482,7 +487,8 @@
           {
             "source": "role-roster-1",
             "quote": "PersonToPositionID 3814; PersonID 2639; PositionID 39; StartDate 1949-03-10T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. בכור-שלום שיטרית; faction join: ספרדים ועדות מזרח"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: בכור-שלום שיטרית; faction: ספרדים ועדות מזרח.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בכור-שלום שיטרית; סיעה: ספרדים ועדות מזרח."
           }
         ]
       },
@@ -564,7 +570,7 @@
             "note": "The five named parties exclude the Yemenite Association."
           }
         ],
-        "note": "Disputed: Galnoor and Blander place the Yemenite Association inside the coalition; IDI’s five-party, 73-seat account leaves it out. Its vote for the government is established by the roll call. No agreement or continuing pledge recovered."
+        "note": "Disputed: Galnoor and Blander place the Yemenite Association inside the coalition; Israel Democracy Institute’s five-party, 73-seat account leaves it out. Its vote for the government is established by the roll call. No agreement or continuing pledge recovered."
       }
     ],
     "coalitionSeats": 73,
@@ -618,7 +624,8 @@
               {
                 "source": "role-roster-2",
                 "quote": "PersonToPositionID 3785; PersonID 2114; PositionID 39; StartDate 1950-11-01T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. משה שרת; faction join: מפלגת פועלי ארץ-ישראל"
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: משה שרת; faction: מפלגת פועלי ארץ-ישראל.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: משה שרת; סיעה: מפלגת פועלי ארץ-ישראל."
               }
             ]
           },
@@ -631,7 +638,8 @@
               {
                 "source": "role-roster-2",
                 "quote": "PersonToPositionID 3791; PersonID 2661; PositionID 39; StartDate 1950-11-01T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. חיים משה שפירא; faction join: חזית דתית מאוחדת"
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים משה שפירא; faction: חזית דתית מאוחדת.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים משה שפירא; סיעה: חזית דתית מאוחדת."
               }
             ]
           },
@@ -644,7 +652,8 @@
               {
                 "source": "role-roster-2",
                 "quote": "PersonToPositionID 3849; PersonID 2600; PositionID 39; StartDate 1950-11-01T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. פנחס רוזן; faction join: מפלגה פרוגרסיבית"
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: פנחס רוזן; faction: מפלגה פרוגרסיבית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: פנחס רוזן; סיעה: מפלגה פרוגרסיבית."
               }
             ]
           },
@@ -657,7 +666,8 @@
               {
                 "source": "role-roster-2",
                 "quote": "PersonToPositionID 3815; PersonID 2639; PositionID 39; StartDate 1950-11-01T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. בכור-שלום שיטרית; faction join: ספרדים ועדות מזרח"
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: בכור-שלום שיטרית; faction: ספרדים ועדות מזרח.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בכור-שלום שיטרית; סיעה: ספרדים ועדות מזרח."
               }
             ]
           },
@@ -667,7 +677,7 @@
             "role": "other",
             "certainty": "unknown",
             "cites": [],
-            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+            "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
           }
         ],
         "coalitionSeats": null,
@@ -742,7 +752,7 @@
             "quote": "גלוסקא זכריה (התימנים) בעד; כהן רחל (ויצ״ו) בעד; ג׳רגורה אמין סלים (הרשימה הדמוקראטית של נצרת) בעד. Project tabulation: 73 for, 45 against; Ben-Zvi and Granovsky absent."
           }
         ],
-        "note": "Absent, as recorded in the retained roll-call tabulation; individual inherits the faction participation role, not a personal ministerial appointment."
+        "note": "Absent, as recorded in the roll call. The role shown is the faction’s, not a personal ministerial appointment."
       },
       {
         "id": "granovsky",
@@ -759,7 +769,7 @@
             "quote": "גלוסקא זכריה (התימנים) בעד; כהן רחל (ויצ״ו) בעד; ג׳רגורה אמין סלים (הרשימה הדמוקראטית של נצרת) בעד. Project tabulation: 73 for, 45 against; Ben-Zvi and Granovsky absent."
           }
         ],
-        "note": "Absent, as recorded in the retained roll-call tabulation; role describes faction participation."
+        "note": "Absent, as recorded in the roll call. The role shown is the faction’s."
       }
     ],
     "knownMemberSeats": 73
@@ -824,7 +834,7 @@
       {
         "label": "Government and Knesset move to Jerusalem",
         "date": "1949-12",
-        "why": "Knesset history records the move and Ben-Gurion’s 5 December 1949 declaration. MFA timeline places the Knesset/ministries move under 1950. Separate declaration, relocation and premises before resolving dates; no bundled row promoted."
+        "why": "Knesset history records the move and Ben-Gurion’s 5 December 1949 declaration. Ministry of Foreign Affairs timeline places the Knesset/ministries move under 1950. Separate declaration, relocation and premises before resolving dates; no bundled row promoted."
       }
     ],
     "endedBy": {

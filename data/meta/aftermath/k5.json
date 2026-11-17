@@ -68,7 +68,7 @@
     },
     "recommendations-jta": {
       "url": "https://www.jta.org/archive/israel-president-opens-talks-on-cabinet-formation-sees-party-leaders",
-      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin (reused recommendation research)",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
@@ -87,7 +87,7 @@
     },
     "coalition-1": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2010&$format=json",
-      "publisher": "Knesset OData (ParliamentInfo)",
+      "publisher": "Knesset open data",
       "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-04"
@@ -152,21 +152,24 @@
     },
     "role-roster-10": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2010%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "role-roster-11": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2011%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "role-roster-12": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2012%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "goldberg-1998": {
       "url": "https://doi.org/10.2979/isr.1998.3.1.211",
@@ -286,7 +289,7 @@
         }
       ],
       "notes": [
-        "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
+        "Conditions set in the consultations are not counted as recommendations. “Unknown” does not mean that no recommendation was made.",
         "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved."
       ],
       "endDate": "1961-09-06"
@@ -388,7 +391,7 @@
         }
       ],
       "notes": [
-        "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
+        "Conditions set in the consultations are not counted as recommendations. “Unknown” does not mean that no recommendation was made.",
         "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved."
       ]
     }
@@ -446,7 +449,7 @@
         ],
         "person": "ben-gurion",
         "notes": [
-          "Refusal of the assignment, not expiry of a statutory mandate. Reused from the ISA text inspected in the earlier recommendation research."
+          "Refusal of the assignment, not expiry of a statutory mandate. From the Israel State Archives text."
         ]
       },
       {
@@ -588,7 +591,8 @@
           {
             "source": "role-roster-10",
             "quote": "PersonToPositionID 3821; PersonID 2639; PositionID 39; StartDate 1961-11-02T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. בכור-שלום שיטרית; faction join: מפלגת פועלי ארץ-ישראל"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: בכור-שלום שיטרית; faction: מפלגת פועלי ארץ-ישראל.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בכור-שלום שיטרית; סיעה: מפלגת פועלי ארץ-ישראל."
           }
         ]
       },
@@ -601,7 +605,8 @@
           {
             "source": "role-roster-10",
             "quote": "PersonToPositionID 3792; PersonID 2661; PositionID 39; StartDate 1961-11-02T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. חיים משה שפירא; faction join: מפלגה דתית לאומית"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים משה שפירא; faction: מפלגה דתית לאומית.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים משה שפירא; סיעה: מפלגה דתית לאומית."
           }
         ]
       },
@@ -614,7 +619,8 @@
           {
             "source": "role-roster-10",
             "quote": "PersonToPositionID 4085; PersonID 2142; PositionID 39; StartDate 1961-11-02T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יגאל אלון; faction join: אחדות העבודה - פועלי ציון"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יגאל אלון; faction: אחדות העבודה - פועלי ציון.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יגאל אלון; סיעה: אחדות העבודה - פועלי ציון."
           }
         ]
       },
@@ -645,7 +651,7 @@
         "role": "other",
         "certainty": "unknown",
         "cites": [],
-        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+        "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
       },
       {
         "letters": "רא",
@@ -653,7 +659,7 @@
         "role": "other",
         "certainty": "unknown",
         "cites": [],
-        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+        "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
       }
     ],
     "coalitionSeats": null,
@@ -700,7 +706,8 @@
               {
                 "source": "role-roster-11",
                 "quote": "PersonToPositionID 3822; PersonID 2639; PositionID 39; StartDate 1963-06-26T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. בכור-שלום שיטרית; faction join: מפלגת פועלי ארץ-ישראל"
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: בכור-שלום שיטרית; faction: מפלגת פועלי ארץ-ישראל.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בכור-שלום שיטרית; סיעה: מפלגת פועלי ארץ-ישראל."
               }
             ]
           },
@@ -713,7 +720,8 @@
               {
                 "source": "role-roster-11",
                 "quote": "PersonToPositionID 3786; PersonID 2661; PositionID 39; StartDate 1963-06-26T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. חיים משה שפירא; faction join: מפלגה דתית לאומית"
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים משה שפירא; faction: מפלגה דתית לאומית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים משה שפירא; סיעה: מפלגה דתית לאומית."
               }
             ]
           },
@@ -726,7 +734,8 @@
               {
                 "source": "role-roster-11",
                 "quote": "PersonToPositionID 3999; PersonID 2215; PositionID 39; StartDate 1963-06-26T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. ישראל בר-יהודה; faction join: אחדות העבודה - פועלי ציון"
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: ישראל בר-יהודה; faction: אחדות העבודה - פועלי ציון.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: ישראל בר-יהודה; סיעה: אחדות העבודה - פועלי ציון."
               }
             ]
           },
@@ -741,7 +750,7 @@
                 "quote": "מפלגת פועלי ארץ ישראל, המפלגה הדתית-לאומית, מפלגת אחדות העבודה–פועלי ציון, פועלי אגודת ישראל, השיתוף והאחווה, הקדמה והפיתוח."
               }
             ],
-            "note": "Named in the governing presentation; no cabinet minister from this faction in the official formation-day roster. Deputy ministry is not a cabinet ministry."
+            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister."
           },
           {
             "letters": "יא",
@@ -754,7 +763,7 @@
                 "quote": "מפלגת פועלי ארץ ישראל, המפלגה הדתית-לאומית, מפלגת אחדות העבודה–פועלי ציון, פועלי אגודת ישראל, השיתוף והאחווה, הקדמה והפיתוח."
               }
             ],
-            "note": "Named in the governing presentation; no cabinet minister from this faction in the official formation-day roster. Deputy ministry is not a cabinet ministry."
+            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister."
           },
           {
             "letters": "רא",
@@ -767,7 +776,7 @@
                 "quote": "מפלגת פועלי ארץ ישראל, המפלגה הדתית-לאומית, מפלגת אחדות העבודה–פועלי ציון, פועלי אגודת ישראל, השיתוף והאחווה, הקדמה והפיתוח."
               }
             ],
-            "note": "Named in the governing presentation; no cabinet minister from this faction in the official formation-day roster. Deputy ministry is not a cabinet ministry."
+            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister."
           }
         ],
         "coalitionSeats": 68,
@@ -828,7 +837,8 @@
               {
                 "source": "role-roster-12",
                 "quote": "PersonToPositionID 3593; PersonID 2513; PositionID 39; StartDate 1964-12-22T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. פנחס ספיר; faction join: מפלגת פועלי ארץ-ישראל"
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: פנחס ספיר; faction: מפלגת פועלי ארץ-ישראל.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: פנחס ספיר; סיעה: מפלגת פועלי ארץ-ישראל."
               }
             ]
           },
@@ -841,7 +851,8 @@
               {
                 "source": "role-roster-12",
                 "quote": "PersonToPositionID 3787; PersonID 2661; PositionID 39; StartDate 1964-12-22T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. חיים משה שפירא; faction join: מפלגה דתית לאומית"
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים משה שפירא; faction: מפלגה דתית לאומית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים משה שפירא; סיעה: מפלגה דתית לאומית."
               }
             ]
           },
@@ -854,7 +865,8 @@
               {
                 "source": "role-roster-12",
                 "quote": "PersonToPositionID 4000; PersonID 2215; PositionID 39; StartDate 1964-12-22T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. ישראל בר-יהודה; faction join: אחדות העבודה - פועלי ציון"
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: ישראל בר-יהודה; faction: אחדות העבודה - פועלי ציון.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: ישראל בר-יהודה; סיעה: אחדות העבודה - פועלי ציון."
               }
             ]
           },
@@ -880,7 +892,7 @@
             "role": "other",
             "certainty": "unknown",
             "cites": [],
-            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+            "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
           },
           {
             "letters": "רא",
@@ -888,7 +900,7 @@
             "role": "other",
             "certainty": "unknown",
             "cites": [],
-            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+            "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
           }
         ],
         "coalitionSeats": null,
@@ -992,7 +1004,7 @@
       {
         "label": "Conclusion of the Eichmann proceedings",
         "date": "1962",
-        "why": "Knesset history selects the end of proceedings, and MFA history selects execution in 1962. Exact execution date and a defined legal act still require a direct source; trial opening remains in k4."
+        "why": "Knesset history selects the end of proceedings, and Ministry of Foreign Affairs history selects execution in 1962. Exact execution date and a defined legal act still require a direct source; trial opening remains in k4."
       }
     ],
     "endedBy": {

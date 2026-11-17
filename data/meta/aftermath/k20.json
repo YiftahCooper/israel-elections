@@ -21,7 +21,7 @@
     },
     "recommendations-3": {
       "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%90%D7%A8%D7%91%D7%A2",
-      "publisher": "Wikipedia (he)",
+      "publisher": "Hebrew Wikipedia",
       "publisherHe": "ויקיפדיה העברית",
       "kind": "secondary",
       "accessed": "2026-11-04"
@@ -34,7 +34,7 @@
     },
     "jta-extension": {
       "url": "https://www.jta.org/2015/04/20/israel/netanyahu-granted-two-more-weeks-to-form-government",
-      "publisher": "JTA",
+      "publisher": "Jewish Telegraphic Agency",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
@@ -77,7 +77,7 @@
     },
     "crs-us-actions-chronology": {
       "url": "https://www.everycrsreport.com/files/2020-08-10_R44245_e3dc37ecc9a01a62da5681a88df51a4ae490338a.html",
-      "publisher": "Congressional Research Service, Jim Zanotti, Israel: Background and U.S. Relations in Brief (10 August 2020), Selected U.S. Actions chronology, pp.3–4, via EveryCRSReport",
+      "publisher": "Congressional Research Service, Jim Zanotti, Israel: Background and U.S. Relations in Brief (10 August 2020), Selected U.S. Actions chronology, pp.3–4, copy at EveryCRSReport.com",
       "kind": "official",
       "accessed": "2026-11-05"
     },
@@ -95,19 +95,21 @@
     },
     "cec-results": {
       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset20-results.pdf",
-      "publisher": "CEC / Reshumot, YP 7010",
+      "publisher": "Central Elections Committee / Reshumot, Yalkut HaPirsumim 7010",
       "kind": "official",
-      "accessed": "2026-11-06"
+      "accessed": "2026-11-06",
+      "publisherHe": "ועדת הבחירות המרכזית / רשומות, ילקוט הפרסומים 7010"
     },
     "role-roster-34": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2034%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "appointments-34": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=GovernmentNum%20eq%2034&%24format=json&%24top=1000",
-      "publisher": "Knesset OData, government 34 appointment register",
+      "publisher": "Knesset open data: appointments in government 34",
       "publisherHe": "הכנסת, מאגר המינויים של הממשלה ה־34",
       "kind": "official",
       "accessed": "2026-11-12",
@@ -122,7 +124,7 @@
     },
     "dr-events-nation-jta": {
       "url": "https://www.jta.org/2018/07/19/israel/israel-passes-controversial-law-cements-country-jews",
-      "publisher": "JTA, Israel passes controversial law that cements it as country for Jews",
+      "publisher": "Jewish Telegraphic Agency, Israel passes controversial law that cements it as country for Jews",
       "kind": "archival",
       "accessed": "2026-11-13"
     },
@@ -355,7 +357,7 @@
             "source": "knesset-investiture"
           },
           {
-            "value": "61 for / 59 against in the EPRS report",
+            "value": "61 for / 59 against in the European Parliamentary Research Service report",
             "source": "eprs-investiture"
           }
         ],
@@ -444,7 +446,7 @@
       {
         "label": "UN Security Council Resolution 2334",
         "date": "2016-12",
-        "why": "The inspected CFR timeline does not select Resolution 2334; a second qualifying chronology is missing."
+        "why": "The inspected Council on Foreign Relations timeline does not select Resolution 2334; a second qualifying chronology is missing."
       },
       {
         "label": "Gaza fighting and Lieberman’s resignation",
@@ -509,7 +511,8 @@
           {
             "source": "role-roster-34",
             "quote": "PersonToPositionID 17248; PersonID 965; PositionID 45; StartDate 2015-05-14T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. בנימין נתניהו; faction join: הליכוד"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: בנימין נתניהו; faction: הליכוד.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בנימין נתניהו; סיעה: הליכוד."
           }
         ]
       },
@@ -522,7 +525,8 @@
           {
             "source": "role-roster-34",
             "quote": "PersonToPositionID 17256; PersonID 30077; PositionID 39; StartDate 2015-05-14T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יואב גלנט; faction join: כולנו בראשות משה כחלון"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יואב גלנט; faction: כולנו בראשות משה כחלון.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יואב גלנט; סיעה: כולנו בראשות משה כחלון."
           }
         ]
       },
@@ -535,7 +539,8 @@
           {
             "source": "role-roster-34",
             "quote": "PersonToPositionID 17254; PersonID 713; PositionID 39; StartDate 2015-05-14T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. אורי אריאל; faction join: הבית היהודי בראשות נפתלי בנט"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: אורי אריאל; faction: הבית היהודי בראשות נפתלי בנט.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אורי אריאל; סיעה: הבית היהודי בראשות נפתלי בנט."
           }
         ]
       },
@@ -548,7 +553,8 @@
           {
             "source": "role-roster-34",
             "quote": "PersonToPositionID 17252; PersonID 483; PositionID 39; StartDate 2015-05-14T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. דוד אזולאי; faction join: ש\"ס"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: דוד אזולאי; faction: ש\"ס.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דוד אזולאי; סיעה: ש\"ס."
           }
         ]
       },
@@ -573,7 +579,8 @@
           {
             "source": "appointments-34",
             "quote": "{\"PersonToPositionID\":17283,\"PersonID\":528,\"PositionID\":40,\"KnessetNum\":20,\"StartDate\":\"2015-05-19T00:00:00\",\"FinishDate\":\"2015-09-02T00:00:00\",\"GovMinistryID\":1109,\"GovMinistryName\":\"משרד הבריאות\",\"DutyDesc\":\"סגן שר הבריאות\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":34,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-12-01T10:51:57.933\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 528 is יעקב ליצמן, יהדות התורה (data/research/knesset-member-changes/k20.json)."
+            "note": "The Knesset’s official record: יעקב ליצמן, יהדות התורה.",
+            "noteHe": "הרישום הרשמי של הכנסת: יעקב ליצמן, יהדות התורה."
           },
           {
             "source": "galnoor-blander-2018",
@@ -615,8 +622,8 @@
       }
     ],
     "notes": [
-      "Election-list seats at formation; the five rows of the IDI table match public/data/k20.json.",
-      "The EPRS prose omits Shas from its coalition list; use the five-party IDI table and the established first-government scheme for composition.",
+      "Election-list seats at formation; the five rows of the Israel Democracy Institute table match the official results.",
+      "The European Parliamentary Research Service prose omits Shas from its coalition list; use the five-party Israel Democracy Institute table and the established first-government scheme for composition.",
       "The government continued through the two elections in 2019; its replacement date is 17 May 2020, not the April 2019 election."
     ],
     "confidenceVote": {
@@ -657,12 +664,14 @@
           {
             "source": "appointments-34",
             "quote": "{\"PersonToPositionID\":18442,\"PersonID\":427,\"PositionID\":39,\"KnessetNum\":20,\"StartDate\":\"2016-05-30T00:00:00\",\"FinishDate\":\"2018-11-18T00:00:00\",\"GovMinistryID\":1175,\"GovMinistryName\":\"משרד הביטחון\",\"DutyDesc\":\"שר הביטחון\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":34,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-18T14:24:03.307\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 427 is אביגדור ליברמן, ישראל ביתנו (data/research/knesset-member-changes/k20.json)."
+            "note": "The Knesset’s official record: אביגדור ליברמן, ישראל ביתנו.",
+            "noteHe": "הרישום הרשמי של הכנסת: אביגדור ליברמן, ישראל ביתנו."
           },
           {
             "source": "appointments-34",
             "quote": "{\"PersonToPositionID\":18451,\"PersonID\":448,\"PositionID\":57,\"KnessetNum\":20,\"StartDate\":\"2016-05-30T00:00:00\",\"FinishDate\":\"2018-11-18T00:00:00\",\"GovMinistryID\":800,\"GovMinistryName\":\"משרד העלייה והקליטה\",\"DutyDesc\":\"שרת העלייה והקליטה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":34,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2019-01-14T08:16:06.807\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 448 is סופה לנדבר, ישראל ביתנו (data/research/knesset-member-changes/k20.json)."
+            "note": "The Knesset’s official record: סופה לנדבר, ישראל ביתנו.",
+            "noteHe": "הרישום הרשמי של הכנסת: סופה לנדבר, ישראל ביתנו."
           }
         ],
         "scope": "mid-term",
@@ -678,12 +687,14 @@
           {
             "source": "appointments-34",
             "quote": "{\"PersonToPositionID\":18442,\"PersonID\":427,\"PositionID\":39,\"KnessetNum\":20,\"StartDate\":\"2016-05-30T00:00:00\",\"FinishDate\":\"2018-11-18T00:00:00\",\"GovMinistryID\":1175,\"GovMinistryName\":\"משרד הביטחון\",\"DutyDesc\":\"שר הביטחון\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":34,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-18T14:24:03.307\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 427 is אביגדור ליברמן, ישראל ביתנו (data/research/knesset-member-changes/k20.json)."
+            "note": "The Knesset’s official record: אביגדור ליברמן, ישראל ביתנו.",
+            "noteHe": "הרישום הרשמי של הכנסת: אביגדור ליברמן, ישראל ביתנו."
           },
           {
             "source": "appointments-34",
             "quote": "{\"PersonToPositionID\":18451,\"PersonID\":448,\"PositionID\":57,\"KnessetNum\":20,\"StartDate\":\"2016-05-30T00:00:00\",\"FinishDate\":\"2018-11-18T00:00:00\",\"GovMinistryID\":800,\"GovMinistryName\":\"משרד העלייה והקליטה\",\"DutyDesc\":\"שרת העלייה והקליטה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":34,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2019-01-14T08:16:06.807\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 448 is סופה לנדבר, ישראל ביתנו (data/research/knesset-member-changes/k20.json)."
+            "note": "The Knesset’s official record: סופה לנדבר, ישראל ביתנו.",
+            "noteHe": "הרישום הרשמי של הכנסת: סופה לנדבר, ישראל ביתנו."
           }
         ],
         "scope": "mid-term",

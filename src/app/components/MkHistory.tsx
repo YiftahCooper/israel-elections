@@ -16,6 +16,7 @@ import { Info } from './ui.tsx';
 import { reasonWords } from '../../history/reasons.ts';
 import './mk-history.css';
 import { openModal } from '../focusReturn.ts';
+import { publisherIn } from '../publisherName.ts';
 
 type T = (en: string, he: string) => string;
 const monthYear = (d: string, lang: Lang) => new Date(`${d}T12:00:00Z`).toLocaleDateString(appLocale(lang), { timeZone: 'UTC', month: 'short', year: 'numeric' });
@@ -199,10 +200,10 @@ function Unsettled() {
     'ברישומי הכנסת יש ביום זה כהונה נוספת שמסתיימת לא יאוחר משהיא מתחילה. היא אינה נספרת כזמן בכנסת.')}</Info>;
 }
 function EventSource({ e }: { e: MkEvent }) {
-  const L = useL();
+  const L = useL(); const lang = useLang();
   if (!e.sources?.length) return null;
   const kind = /^Official/.test(e.evidence ?? '') ? L('Official record', 'רשומה רשמית') : /statement/i.test(e.evidence ?? '') ? L('Own statement, as reported', 'הודעה אישית, כפי שדווחה') : L('Press report', 'דיווח בעיתונות');
-  return <Info title={kind} label={L('Source', 'מקור')}><span className="mk-src">{e.sources.map(([pub, url]) => <a key={url} href={url} target="_blank" rel="noreferrer">{pub}</a>)}</span></Info>;
+  return <Info title={kind} label={L('Source', 'מקור')}><span className="mk-src">{e.sources.map(([pub, url]) => <a key={url} href={url} target="_blank" rel="noreferrer">{publisherIn(lang, pub)}</a>)}</span></Info>;
 }
 
 function Result({ r, v }: { r: MkRow; v: MkView }) {
@@ -215,7 +216,7 @@ function Result({ r, v }: { r: MkRow; v: MkView }) {
   // a run that research tied to the person: the sources that tie it (owner, 16 Nov 2026), instead of the name rule
   const researched = run?.research?.length ? <Info title={L('How this list is linked', 'איך הרשימה מקושרת')} label={L('Source', 'מקור')}>
     <span className="mk-why">{L(`A report or biography from the time names ${f ? 'her' : 'him'} on this list:`, `דיווח או ביוגרפיה מאותה עת ${g(f, 'מציינים אותו', 'מציינים אותה')} ברשימה זו:`)}</span>
-    <span className="mk-src">{run.research.map(([pub, url]) => <a key={url} href={url} target="_blank" rel="noreferrer" hrefLang={/he\.wikipedia\.org/.test(url) ? 'he' : undefined}>{/he\.wikipedia\.org/.test(url) ? L('Hebrew Wikipedia (a secondary source)', 'ויקיפדיה העברית (מקור משני)') : pub}</a>)}</span>
+    <span className="mk-src">{run.research.map(([pub, url]) => <a key={url} href={url} target="_blank" rel="noreferrer" hrefLang={/he\.wikipedia\.org/.test(url) ? 'he' : undefined}>{/he\.wikipedia\.org/.test(url) ? L('Hebrew Wikipedia (a secondary source)', 'ויקיפדיה העברית (מקור משני)') : publisherIn(lang, pub)}</a>)}</span>
   </Info> : null;
   const linked = researched ?? basis;
   if (!run) {

@@ -330,7 +330,11 @@ const EXPECTED: Record<Family, string> = {
   // Books batch 1 (16 Nov): Flatto-Sharon moves from the 1977 opening coalition to its own outside-support group (k9
   // blocSchemes[0]). The field-by-field diff of the 26 published datasets shows only k9 blocSchemes[0].blocs (2 → 3) and
   // builtAt; the other four digests are unchanged.
-  model: '689f7220356de1ad615206d595f9264105a7ce7fbd64b6d66a743fd33e0438ea',
+  // Reader text (17 Nov): status notes without decision or file references and with sources spelled out, candidate
+  // notes and two link publishers in plain words. The field-by-field diff of the 26 published datasets shows only
+  // status.noteEn/noteHe, lists[].candidates[].notes[], lists[].links[].publisher and builtAt; the other four digests
+  // are unchanged.
+  model: '33a3b7f65e2ccb9ce6534ef1927367a8beca83117987827841b1c66b6a6098ef',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

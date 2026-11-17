@@ -49,7 +49,7 @@
     },
     "recommendations-jta": {
       "url": "https://www.jta.org/archive/ben-zvi-ends-talks-on-cabinet-formation-will-summon-ben-gurion",
-      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin (reused recommendation research)",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin",
       "kind": "secondary",
       "accessed": "2026-11-05",
       "originalBulletinUrl": "https://pdfs.jta.org/1955/1955-08-18_160.pdf",
@@ -57,7 +57,7 @@
     },
     "coalition-1": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%207&$format=json",
-      "publisher": "Knesset OData (ParliamentInfo)",
+      "publisher": "Knesset open data",
       "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-04"
@@ -112,15 +112,17 @@
     },
     "role-roster-7": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%207%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "role-roster-8": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%208%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     }
   },
   "results": {
@@ -223,7 +225,7 @@
         }
       ],
       "notes": [
-        "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
+        "Conditions set in the consultations are not counted as recommendations. “Unknown” does not mean that no recommendation was made.",
         "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved.",
         "Herut refused to attend; the National Religious Front asked that the largest party be tasked without naming a person. Neither is converted into a personal recommendation.",
         "Original JTA bulletin dated 17 August is datelined Jerusalem, Aug.16; the 18 August bulletin is datelined Aug.17 and says virtually completed. The 18 August bracket is the independently sourced mandate day, not proof of a consultation held that day."
@@ -342,7 +344,8 @@
           {
             "source": "role-roster-7",
             "quote": "PersonToPositionID 3408; PersonID 2448; PositionID 57; StartDate 1955-11-03T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. גולדה מאיר; faction join: מפלגת פועלי ארץ-ישראל"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: גולדה מאיר; faction: מפלגת פועלי ארץ-ישראל.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: גולדה מאיר; סיעה: מפלגת פועלי ארץ-ישראל."
           }
         ]
       },
@@ -355,7 +358,8 @@
           {
             "source": "role-roster-7",
             "quote": "PersonToPositionID 3797; PersonID 2661; PositionID 39; StartDate 1955-11-03T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. חיים משה שפירא; faction join: הפועל המזרחי - המזרחי"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים משה שפירא; faction: הפועל המזרחי - המזרחי.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים משה שפירא; סיעה: הפועל המזרחי - המזרחי."
           }
         ]
       },
@@ -368,7 +372,8 @@
           {
             "source": "role-roster-7",
             "quote": "PersonToPositionID 3996; PersonID 2215; PositionID 39; StartDate 1955-11-03T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. ישראל בר-יהודה; faction join: אחדות העבודה - פועלי ציון"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: ישראל בר-יהודה; faction: אחדות העבודה - פועלי ציון.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: ישראל בר-יהודה; סיעה: אחדות העבודה - פועלי ציון."
           }
         ]
       },
@@ -381,7 +386,8 @@
           {
             "source": "role-roster-7",
             "quote": "PersonToPositionID 3992; PersonID 2220; PositionID 39; StartDate 1955-11-03T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. ישראל ברזילי; faction join: מפלגת פועלים מאוחדת"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: ישראל ברזילי; faction: מפלגת פועלים מאוחדת.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: ישראל ברזילי; סיעה: מפלגת פועלים מאוחדת."
           }
         ]
       },
@@ -394,7 +400,8 @@
           {
             "source": "role-roster-7",
             "quote": "PersonToPositionID 3853; PersonID 2600; PositionID 39; StartDate 1955-11-03T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. פנחס רוזן; faction join: מפלגה פרוגרסיבית"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: פנחס רוזן; faction: מפלגה פרוגרסיבית.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: פנחס רוזן; סיעה: מפלגה פרוגרסיבית."
           }
         ]
       },
@@ -404,7 +411,7 @@
         "role": "other",
         "certainty": "unknown",
         "cites": [],
-        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+        "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
       },
       {
         "letters": "נ",
@@ -412,7 +419,7 @@
         "role": "other",
         "certainty": "unknown",
         "cites": [],
-        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+        "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
       },
       {
         "letters": "ע",
@@ -420,7 +427,7 @@
         "role": "other",
         "certainty": "unknown",
         "cites": [],
-        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+        "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
       }
     ],
     "coalitionSeats": null,
@@ -474,7 +481,8 @@
               {
                 "source": "role-roster-8",
                 "quote": "PersonToPositionID 3409; PersonID 2448; PositionID 57; StartDate 1958-01-07T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. גולדה מאיר; faction join: מפלגת פועלי ארץ-ישראל"
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: גולדה מאיר; faction: מפלגת פועלי ארץ-ישראל.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: גולדה מאיר; סיעה: מפלגת פועלי ארץ-ישראל."
               }
             ]
           },
@@ -487,7 +495,8 @@
               {
                 "source": "role-roster-8",
                 "quote": "PersonToPositionID 3383; PersonID 2661; PositionID 39; StartDate 1958-01-07T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. חיים משה שפירא; faction join: מפלגה דתית לאומית"
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים משה שפירא; faction: מפלגה דתית לאומית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים משה שפירא; סיעה: מפלגה דתית לאומית."
               }
             ]
           },
@@ -500,7 +509,8 @@
               {
                 "source": "role-roster-8",
                 "quote": "PersonToPositionID 3997; PersonID 2215; PositionID 39; StartDate 1958-01-07T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. ישראל בר-יהודה; faction join: אחדות העבודה - פועלי ציון"
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: ישראל בר-יהודה; faction: אחדות העבודה - פועלי ציון.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: ישראל בר-יהודה; סיעה: אחדות העבודה - פועלי ציון."
               }
             ]
           },
@@ -513,7 +523,8 @@
               {
                 "source": "role-roster-8",
                 "quote": "PersonToPositionID 3993; PersonID 2220; PositionID 39; StartDate 1958-01-07T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. ישראל ברזילי; faction join: מפלגת פועלים מאוחדת"
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: ישראל ברזילי; faction: מפלגת פועלים מאוחדת.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: ישראל ברזילי; סיעה: מפלגת פועלים מאוחדת."
               }
             ]
           },
@@ -526,7 +537,8 @@
               {
                 "source": "role-roster-8",
                 "quote": "PersonToPositionID 3854; PersonID 2600; PositionID 39; StartDate 1958-01-07T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. פנחס רוזן; faction join: מפלגה פרוגרסיבית"
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: פנחס רוזן; faction: מפלגה פרוגרסיבית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: פנחס רוזן; סיעה: מפלגה פרוגרסיבית."
               }
             ]
           },
@@ -536,7 +548,7 @@
             "role": "other",
             "certainty": "unknown",
             "cites": [],
-            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+            "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
           },
           {
             "letters": "נ",
@@ -544,7 +556,7 @@
             "role": "other",
             "certainty": "unknown",
             "cites": [],
-            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+            "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
           },
           {
             "letters": "ע",
@@ -552,7 +564,7 @@
             "role": "other",
             "certainty": "unknown",
             "cites": [],
-            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+            "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
           }
         ],
         "coalitionSeats": null,
@@ -668,12 +680,12 @@
       {
         "label": "Wadi Salib protests",
         "date": "1959-07",
-        "why": "Knesset history gives 9 May 1959; the pending candidate gives July. MFA timeline selects Wadi Salib only at year precision. A direct dated record is needed to resolve the disagreement."
+        "why": "Knesset history gives 9 May 1959; the pending candidate gives July. Ministry of Foreign Affairs timeline selects Wadi Salib only at year precision. A direct dated record is needed to resolve the disagreement."
       },
       {
         "label": "Grenade thrown in the Knesset",
         "date": "1957-10-29",
-        "why": "Selected with date 29 October 1957 in Knesset history; not selected in the retrieved MFA chronology or IDI 1959. A second independent qualifying chronology is missing."
+        "why": "Selected with date 29 October 1957 in Knesset history; not selected in the retrieved Ministry of Foreign Affairs chronology or Israel Democracy Institute 1959. A second independent qualifying chronology is missing."
       }
     ],
     "endedBy": {

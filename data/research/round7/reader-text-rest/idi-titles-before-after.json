@@ -1,0 +1,422 @@
+[
+ {
+  "file": "data/meta/party-lineage.json",
+  "source": "haredi-society",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Ariel Finkelstein, 11 February 2024: The Political Structure of Haredi Local Authorities and Its Influence on How They Operate"
+ },
+ {
+  "file": "data/meta/party-lineage.json",
+  "source": "haredi-society",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אריאל פינקלשטיין, 11 בפברואר 2024: מאמר באנגלית על המבנה הפוליטי של הרשויות המקומיות החרדיות"
+ },
+ {
+  "file": "data/meta/party-lineage.json",
+  "source": "haredi-society",
+  "field": "publicationDate",
+  "after": "2024-02-11"
+ },
+ {
+  "file": "data/meta/party-lineage.json",
+  "source": "radical",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Assaf Shapira, 6 February 2021: The joint-lists phenomenon (in Hebrew)"
+ },
+ {
+  "file": "data/meta/party-lineage.json",
+  "source": "radical",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אסף שפירא, 6 בפברואר 2021: «תופעת הרשימות המשותפות»"
+ },
+ {
+  "file": "data/meta/party-lineage.json",
+  "source": "radical",
+  "field": "publicationDate",
+  "after": "2021-02-06"
+ },
+ {
+  "file": "data/meta/parties.json",
+  "source": "haredi-society",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Ariel Finkelstein, 11 February 2024: The Political Structure of Haredi Local Authorities and Its Influence on How They Operate"
+ },
+ {
+  "file": "data/meta/parties.json",
+  "source": "haredi-society",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אריאל פינקלשטיין, 11 בפברואר 2024: מאמר באנגלית על המבנה הפוליטי של הרשויות המקומיות החרדיות"
+ },
+ {
+  "file": "data/meta/parties.json",
+  "source": "haredi-society",
+  "field": "publicationDate",
+  "after": "2024-02-11"
+ },
+ {
+  "file": "data/meta/parties.json",
+  "source": "radical",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Assaf Shapira, 6 February 2021: The joint-lists phenomenon (in Hebrew)"
+ },
+ {
+  "file": "data/meta/parties.json",
+  "source": "radical",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אסף שפירא, 6 בפברואר 2021: «תופעת הרשימות המשותפות»"
+ },
+ {
+  "file": "data/meta/parties.json",
+  "source": "radical",
+  "field": "publicationDate",
+  "after": "2021-02-06"
+ },
+ {
+  "file": "data/meta/families/arab-arab-jewish.json",
+  "source": "haredi-society",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Ariel Finkelstein, 11 February 2024: The Political Structure of Haredi Local Authorities and Its Influence on How They Operate"
+ },
+ {
+  "file": "data/meta/families/arab-arab-jewish.json",
+  "source": "haredi-society",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אריאל פינקלשטיין, 11 בפברואר 2024: מאמר באנגלית על המבנה הפוליטי של הרשויות המקומיות החרדיות"
+ },
+ {
+  "file": "data/meta/families/arab-arab-jewish.json",
+  "source": "haredi-society",
+  "field": "publicationDate",
+  "after": "2024-02-11"
+ },
+ {
+  "file": "data/meta/families/arab-arab-jewish.json",
+  "source": "radical",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Assaf Shapira, 6 February 2021: The joint-lists phenomenon (in Hebrew)"
+ },
+ {
+  "file": "data/meta/families/arab-arab-jewish.json",
+  "source": "radical",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אסף שפירא, 6 בפברואר 2021: «תופעת הרשימות המשותפות»"
+ },
+ {
+  "file": "data/meta/families/arab-arab-jewish.json",
+  "source": "radical",
+  "field": "publicationDate",
+  "after": "2021-02-06"
+ },
+ {
+  "file": "data/meta/families/centre.json",
+  "source": "haredi-society",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Ariel Finkelstein, 11 February 2024: The Political Structure of Haredi Local Authorities and Its Influence on How They Operate"
+ },
+ {
+  "file": "data/meta/families/centre.json",
+  "source": "haredi-society",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אריאל פינקלשטיין, 11 בפברואר 2024: מאמר באנגלית על המבנה הפוליטי של הרשויות המקומיות החרדיות"
+ },
+ {
+  "file": "data/meta/families/centre.json",
+  "source": "haredi-society",
+  "field": "publicationDate",
+  "after": "2024-02-11"
+ },
+ {
+  "file": "data/meta/families/centre.json",
+  "source": "radical",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Assaf Shapira, 6 February 2021: The joint-lists phenomenon (in Hebrew)"
+ },
+ {
+  "file": "data/meta/families/centre.json",
+  "source": "radical",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אסף שפירא, 6 בפברואר 2021: «תופעת הרשימות המשותפות»"
+ },
+ {
+  "file": "data/meta/families/centre.json",
+  "source": "radical",
+  "field": "publicationDate",
+  "after": "2021-02-06"
+ },
+ {
+  "file": "data/meta/families/haredi.json",
+  "source": "haredi-society",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Ariel Finkelstein, 11 February 2024: The Political Structure of Haredi Local Authorities and Its Influence on How They Operate"
+ },
+ {
+  "file": "data/meta/families/haredi.json",
+  "source": "haredi-society",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אריאל פינקלשטיין, 11 בפברואר 2024: מאמר באנגלית על המבנה הפוליטי של הרשויות המקומיות החרדיות"
+ },
+ {
+  "file": "data/meta/families/haredi.json",
+  "source": "haredi-society",
+  "field": "publicationDate",
+  "after": "2024-02-11"
+ },
+ {
+  "file": "data/meta/families/herut-likud.json",
+  "source": "haredi-society",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Ariel Finkelstein, 11 February 2024: The Political Structure of Haredi Local Authorities and Its Influence on How They Operate"
+ },
+ {
+  "file": "data/meta/families/herut-likud.json",
+  "source": "haredi-society",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אריאל פינקלשטיין, 11 בפברואר 2024: מאמר באנגלית על המבנה הפוליטי של הרשויות המקומיות החרדיות"
+ },
+ {
+  "file": "data/meta/families/herut-likud.json",
+  "source": "haredi-society",
+  "field": "publicationDate",
+  "after": "2024-02-11"
+ },
+ {
+  "file": "data/meta/families/herut-likud.json",
+  "source": "radical",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Assaf Shapira, 6 February 2021: The joint-lists phenomenon (in Hebrew)"
+ },
+ {
+  "file": "data/meta/families/herut-likud.json",
+  "source": "radical",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אסף שפירא, 6 בפברואר 2021: «תופעת הרשימות המשותפות»"
+ },
+ {
+  "file": "data/meta/families/herut-likud.json",
+  "source": "radical",
+  "field": "publicationDate",
+  "after": "2021-02-06"
+ },
+ {
+  "file": "data/meta/families/labour-zionist-left.json",
+  "source": "haredi-society",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Ariel Finkelstein, 11 February 2024: The Political Structure of Haredi Local Authorities and Its Influence on How They Operate"
+ },
+ {
+  "file": "data/meta/families/labour-zionist-left.json",
+  "source": "haredi-society",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אריאל פינקלשטיין, 11 בפברואר 2024: מאמר באנגלית על המבנה הפוליטי של הרשויות המקומיות החרדיות"
+ },
+ {
+  "file": "data/meta/families/labour-zionist-left.json",
+  "source": "haredi-society",
+  "field": "publicationDate",
+  "after": "2024-02-11"
+ },
+ {
+  "file": "data/meta/families/labour-zionist-left.json",
+  "source": "radical",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Assaf Shapira, 6 February 2021: The joint-lists phenomenon (in Hebrew)"
+ },
+ {
+  "file": "data/meta/families/labour-zionist-left.json",
+  "source": "radical",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אסף שפירא, 6 בפברואר 2021: «תופעת הרשימות המשותפות»"
+ },
+ {
+  "file": "data/meta/families/labour-zionist-left.json",
+  "source": "radical",
+  "field": "publicationDate",
+  "after": "2021-02-06"
+ },
+ {
+  "file": "data/meta/families/national-religious.json",
+  "source": "haredi-society",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Ariel Finkelstein, 11 February 2024: The Political Structure of Haredi Local Authorities and Its Influence on How They Operate"
+ },
+ {
+  "file": "data/meta/families/national-religious.json",
+  "source": "haredi-society",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אריאל פינקלשטיין, 11 בפברואר 2024: מאמר באנגלית על המבנה הפוליטי של הרשויות המקומיות החרדיות"
+ },
+ {
+  "file": "data/meta/families/national-religious.json",
+  "source": "haredi-society",
+  "field": "publicationDate",
+  "after": "2024-02-11"
+ },
+ {
+  "file": "data/meta/families/national-religious.json",
+  "source": "radical",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Assaf Shapira, 6 February 2021: The joint-lists phenomenon (in Hebrew)"
+ },
+ {
+  "file": "data/meta/families/national-religious.json",
+  "source": "radical",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אסף שפירא, 6 בפברואר 2021: «תופעת הרשימות המשותפות»"
+ },
+ {
+  "file": "data/meta/families/national-religious.json",
+  "source": "radical",
+  "field": "publicationDate",
+  "after": "2021-02-06"
+ },
+ {
+  "file": "data/meta/families/radical-right.json",
+  "source": "haredi-society",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Ariel Finkelstein, 11 February 2024: The Political Structure of Haredi Local Authorities and Its Influence on How They Operate"
+ },
+ {
+  "file": "data/meta/families/radical-right.json",
+  "source": "haredi-society",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אריאל פינקלשטיין, 11 בפברואר 2024: מאמר באנגלית על המבנה הפוליטי של הרשויות המקומיות החרדיות"
+ },
+ {
+  "file": "data/meta/families/radical-right.json",
+  "source": "haredi-society",
+  "field": "publicationDate",
+  "after": "2024-02-11"
+ },
+ {
+  "file": "data/meta/families/radical-right.json",
+  "source": "radical",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Assaf Shapira, 6 February 2021: The joint-lists phenomenon (in Hebrew)"
+ },
+ {
+  "file": "data/meta/families/radical-right.json",
+  "source": "radical",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אסף שפירא, 6 בפברואר 2021: «תופעת הרשימות המשותפות»"
+ },
+ {
+  "file": "data/meta/families/radical-right.json",
+  "source": "radical",
+  "field": "publicationDate",
+  "after": "2021-02-06"
+ },
+ {
+  "file": "data/meta/families/religious-parties.json",
+  "source": "haredi-society",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Ariel Finkelstein, 11 February 2024: The Political Structure of Haredi Local Authorities and Its Influence on How They Operate"
+ },
+ {
+  "file": "data/meta/families/religious-parties.json",
+  "source": "haredi-society",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אריאל פינקלשטיין, 11 בפברואר 2024: מאמר באנגלית על המבנה הפוליטי של הרשויות המקומיות החרדיות"
+ },
+ {
+  "file": "data/meta/families/religious-parties.json",
+  "source": "haredi-society",
+  "field": "publicationDate",
+  "after": "2024-02-11"
+ },
+ {
+  "file": "data/meta/families/religious-parties.json",
+  "source": "radical",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Assaf Shapira, 6 February 2021: The joint-lists phenomenon (in Hebrew)"
+ },
+ {
+  "file": "data/meta/families/religious-parties.json",
+  "source": "radical",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אסף שפירא, 6 בפברואר 2021: «תופעת הרשימות המשותפות»"
+ },
+ {
+  "file": "data/meta/families/religious-parties.json",
+  "source": "radical",
+  "field": "publicationDate",
+  "after": "2021-02-06"
+ },
+ {
+  "file": "data/meta/families/russian-speaking-immigrant.json",
+  "source": "haredi-society",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Ariel Finkelstein, 11 February 2024: The Political Structure of Haredi Local Authorities and Its Influence on How They Operate"
+ },
+ {
+  "file": "data/meta/families/russian-speaking-immigrant.json",
+  "source": "haredi-society",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אריאל פינקלשטיין, 11 בפברואר 2024: מאמר באנגלית על המבנה הפוליטי של הרשויות המקומיות החרדיות"
+ },
+ {
+  "file": "data/meta/families/russian-speaking-immigrant.json",
+  "source": "haredi-society",
+  "field": "publicationDate",
+  "after": "2024-02-11"
+ },
+ {
+  "file": "data/meta/families/russian-speaking-immigrant.json",
+  "source": "radical",
+  "field": "publisher",
+  "before": "Israel Democracy Institute",
+  "after": "Israel Democracy Institute, Assaf Shapira, 6 February 2021: The joint-lists phenomenon (in Hebrew)"
+ },
+ {
+  "file": "data/meta/families/russian-speaking-immigrant.json",
+  "source": "radical",
+  "field": "publisherHe",
+  "before": "המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה, אסף שפירא, 6 בפברואר 2021: «תופעת הרשימות המשותפות»"
+ },
+ {
+  "file": "data/meta/families/russian-speaking-immigrant.json",
+  "source": "radical",
+  "field": "publicationDate",
+  "after": "2021-02-06"
+ }
+]

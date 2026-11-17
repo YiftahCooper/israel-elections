@@ -50,7 +50,7 @@
     },
     "government-research-3": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=GovernmentNum%20eq%2025",
-      "publisher": "Knesset OData (ParliamentInfo)",
+      "publisher": "Knesset open data",
       "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-04",
@@ -128,14 +128,14 @@
     },
     "gov25-odata": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2025&$format=json",
-      "publisher": "Knesset OData",
+      "publisher": "Knesset open data",
       "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-06"
     },
     "dissolution-law": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_IsraelLaw?$filter=IsraelLawID%20eq%202000623&$format=json",
-      "publisher": "Knesset OData",
+      "publisher": "Knesset open data",
       "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-06"
@@ -165,9 +165,10 @@
     },
     "role-roster-25": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2025%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "outside-support-history": {
       "url": "https://www.972mag.com/palestinian-citizens-israel-coalition-elections/",
@@ -178,9 +179,10 @@
     },
     "role-roster-26": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2026%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, formation-day cabinet appointments",
+      "publisher": "Knesset open data: ministers at formation",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: השרים בהקמת הממשלה"
     },
     "local-call-2022": {
       "url": "https://www.mekomit.co.il/המפלגות-הערביות-ממליצות-על-מועמדים-כב/",
@@ -362,8 +364,8 @@
       ],
       "notes": [
         "No complete per-faction recommendation record was recovered by the existing research. A 61-seat blocking bloc is not a recommendation tally. Unknown is not an explicit decision to recommend nobody.",
-        "2026-11-07: Tsomet is now independently corroborated by IDI p.599 and a contemporary Amigoe scan. The other nine entries remain unknown; aggregate tally arithmetic is not per-faction evidence. Amigoe also reports Shas approval, while the later Walla account attributes discretion to the religious parties: Shas requires the original consultation record, not promotion from either alone.",
-        "7 November policy pass: Meretz (Amigoe, contemporary) and Hadash and ADP (Local Call 2022, retrospective) are provisional Rabin recommendations. Shas stays unknown: Amigoe reports its approval of Rabin, but Herzog’s memorandum as quoted by Amir Oren (Walla, October 2019) says the religious movements left the decision to him. Labor, Likud, NRP, UTJ and Moledet stay unknown; the memorandum’s aggregate (69 Rabin, 32 Shamir, three none) is not per-faction evidence."
+        "2026-11-07: Tsomet is now independently corroborated by Israel Democracy Institute p.599 and a contemporary Amigoe scan. The other nine entries remain unknown; aggregate tally arithmetic is not per-faction evidence. Amigoe also reports Shas approval, while the later Walla account attributes discretion to the religious parties: Shas requires the original consultation record, not promotion from either alone.",
+        "Meretz (Amigoe, contemporary) and Hadash and ADP (Local Call 2022, retrospective) are provisional Rabin recommendations. Shas stays unknown: Amigoe reports its approval of Rabin, but Herzog’s memorandum as quoted by Amir Oren (Walla, October 2019) says the religious movements left the decision to him. Labor, Likud, NRP, UTJ and Moledet stay unknown; the memorandum’s aggregate (69 Rabin, 32 Shamir, three none) is not per-faction evidence."
       ]
     }
   ],
@@ -596,7 +598,7 @@
       {
         "label": "National Health Insurance Law",
         "date": "1994-06",
-        "why": "Knesset history selects enactment, while MFA timeline selects entry into force in 1995. These are different acts: a direct enactment date and an independent chronology selecting enactment remain needed."
+        "why": "Knesset history selects enactment, while Ministry of Foreign Affairs timeline selects entry into force in 1995. These are different acts: a direct enactment date and an independent chronology selecting enactment remain needed."
       }
     ],
     "endedBy": {
@@ -616,7 +618,7 @@
         }
       ],
       "notes": [
-        "Month precision for the early-election decision is retained. Publication on 27 February is distinct from the approval date (26 February)."
+        "The early-election decision is dated to the month only. Publication on 27 February is not the approval date (26 February)."
       ]
     }
   },
@@ -680,7 +682,8 @@
           {
             "source": "role-roster-25",
             "quote": "PersonToPositionID 4124; PersonID 2634; PositionID 39; StartDate 1992-07-13T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. שמעון שטרית; faction join: מפלגת העבודה הישראלית, מפלגת העבודה הישראלית"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: שמעון שטרית; faction: מפלגת העבודה הישראלית, מפלגת העבודה הישראלית.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: שמעון שטרית; סיעה: מפלגת העבודה הישראלית, מפלגת העבודה הישראלית."
           }
         ]
       },
@@ -693,7 +696,8 @@
           {
             "source": "role-roster-25",
             "quote": "PersonToPositionID 4249; PersonID 510; PositionID 39; StartDate 1992-07-13T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. אמנון רובינשטיין; faction join: מרצ, מרצ"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: אמנון רובינשטיין; faction: מרצ, מרצ.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אמנון רובינשטיין; סיעה: מרצ, מרצ."
           }
         ]
       },
@@ -706,7 +710,8 @@
           {
             "source": "role-roster-25",
             "quote": "PersonToPositionID 4076; PersonID 2291; PositionID 39; StartDate 1992-07-13T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. אריה מכלוף דרעי; faction join: התאחדות הספרדים שומרי תורה - תנועת ש\"ס"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: אריה מכלוף דרעי; faction: התאחדות הספרדים שומרי תורה - תנועת ש\"ס.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אריה מכלוף דרעי; סיעה: התאחדות הספרדים שומרי תורה - תנועת ש\"ס."
           }
         ]
       },
@@ -790,7 +795,9 @@
     "cites": [
       {
         "source": "government-research-3",
-        "quote": "KNS_PersonToPosition, GovernmentNum 25: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1992-07-13: דרעי אריה מכלוף, שטרית שמעון, צור יעקב, שוחט אברהם-בייגה, שחל משה, רבין יצחק, רובינשטיין אמנון, פרס שמעון, רמון חיים, צבן יאיר, קיסר ישראל, ליבאי דוד, בן-אליעזר בנימין, נמיר אורה, חריש מיכאל, ברעם עוזי, אלוני שולמית"
+        "quote": "KNS_PersonToPosition, GovernmentNum 25: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1992-07-13: דרעי אריה מכלוף, שטרית שמעון, צור יעקב, שוחט אברהם-בייגה, שחל משה, רבין יצחק, רובינשטיין אמנון, פרס שמעון, רמון חיים, צבן יאיר, קיסר ישראל, ליבאי דוד, בן-אליעזר בנימין, נמיר אורה, חריש מיכאל, ברעם עוזי, אלוני שולמית",
+        "note": "The Knesset’s list of the ministers appointed on the government’s first day, 13 July 1992.",
+        "noteHe": "רשימת השרים שמונו ביום הראשון של הממשלה, 13 ביולי 1992, לפי רישומי הכנסת."
       },
       {
         "source": "jta1992vote",
@@ -798,7 +805,9 @@
       },
       {
         "source": "gov25-odata",
-        "quote": "PersonToPositionID 4318: PersonID 456, PositionID 45, GovernmentNum 25, StartDate 1995-11-05T00:00:00, FinishDate 1995-11-22T00:00:00 (field extraction)."
+        "quote": "PersonToPositionID 4318: PersonID 456, PositionID 45, GovernmentNum 25, StartDate 1995-11-05T00:00:00, FinishDate 1995-11-22T00:00:00 (field extraction).",
+        "note": "The Knesset’s official record of this appointment, 5 to 22 November 1995.",
+        "noteHe": "הרישום הרשמי של הכנסת על המינוי, 5 עד 22 בנובמבר 1995."
       },
       {
         "source": "coalition-agreements",
@@ -821,10 +830,11 @@
               {
                 "source": "role-roster-26",
                 "quote": "PersonToPositionID 3754; PersonID 2622; PositionID 39; StartDate 1995-11-22T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 27900. גונן שגב"
+                "note": "Official appointment of גונן שגב; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של גונן שגב; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
             "factionNameEn": "Yi'ud"
           },
           {
@@ -836,10 +846,11 @@
               {
                 "source": "role-roster-26",
                 "quote": "PersonToPositionID 3784; PersonID 454; PositionID 39; StartDate 1995-11-22T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 27871. אפרים סנה"
+                "note": "Official appointment of אפרים סנה; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של אפרים סנה; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
             "letters": "אמת"
           },
           {
@@ -851,10 +862,11 @@
               {
                 "source": "role-roster-26",
                 "quote": "PersonToPositionID 4251; PersonID 510; PositionID 39; StartDate 1995-11-22T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 27895. אמנון רובינשטיין"
+                "note": "Official appointment of אמנון רובינשטיין; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של אמנון רובינשטיין; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead."
           }
         ],
         "cites": [

@@ -17,7 +17,7 @@
     },
     "recommendations-1": {
       "url": "https://www.jta.org/archive/shazar-finishes-consultations-with-all-parties-told-all-support-mrs-meir-for-premier",
-      "publisher": "Jewish Telegraphic Agency (JTA) Daily News Bulletin archive",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin archive",
       "kind": "secondary",
       "accessed": "2026-11-05",
       "note": "Bulletin dated 1969-11-10. Its headline ('told all support Mrs. Meir') is broader than its text; the text is used."
@@ -38,7 +38,7 @@
     },
     "coalition-1": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2015&$format=json",
-      "publisher": "Knesset OData (ParliamentInfo)",
+      "publisher": "Knesset open data",
       "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-06",
@@ -109,21 +109,22 @@
     },
     "idf-attrition-history": {
       "url": "https://www.idf.il/en/mini-sites/wars-and-operations/the-war-of-attrition/",
-      "publisher": "IDF, What Was the War of Attrition? (1967–1970), post-war chronology",
+      "publisher": "Israel Defense Forces, What Was the War of Attrition? (1967–1970), post-war chronology",
       "kind": "official",
       "accessed": "2026-11-05"
     },
     "consultations-start": {
       "url": "https://www.jta.org/archive/mrs-meir-other-labor-leaders-striving-to-reconcile-opposing-factions",
-      "publisher": "JTA Daily News Bulletin, 6 November 1969",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin, 6 November 1969",
       "kind": "secondary",
       "accessed": "2026-11-06"
     },
     "role-roster-15": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2015%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "boim-1979": {
       "url": "https://openlibrary.org/works/OL17851764W",
@@ -299,7 +300,7 @@
         }
       ],
       "notes": [
-        "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
+        "Conditions set in the consultations are not counted as recommendations. “Unknown” does not mean that no recommendation was made.",
         "Start date inferred from “last Saturday” in JTA’s 6 November bulletin (1 November). End date unknown: the 10 November bulletin says “today”; its dispatch date is not independently established, so no 9 November date is asserted.",
         "104 seats rests on a reportedly qualified JTA statement about the outgoing-government factions, identified in the official government 14 record; medium confidence."
       ],
@@ -389,7 +390,8 @@
           {
             "source": "role-roster-15",
             "quote": "PersonToPositionID 3612; PersonID 2668; PositionID 39; StartDate 1969-12-15T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. זאב שרף; faction join: מערך"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: זאב שרף; faction: מערך.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: זאב שרף; סיעה: מערך."
           }
         ]
       },
@@ -402,10 +404,11 @@
           {
             "source": "role-roster-15",
             "quote": "PersonToPositionID 3868; PersonID 2512; PositionID 39; StartDate 1969-12-15T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יוסף ספיר; faction join: גוש חרות ליברלים"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יוסף ספיר; faction: גוש חרות ליברלים.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יוסף ספיר; סיעה: גוש חרות ליברלים."
           }
         ],
-        "note": "A ministry is expected from previous research, but its representing party has not been verified against the appointment; do not infer it."
+        "note": "Earlier research suggests a ministry, but the appointment record does not confirm which party held it, so it is not assumed."
       },
       {
         "letters": "ב",
@@ -416,7 +419,8 @@
           {
             "source": "role-roster-15",
             "quote": "PersonToPositionID 3937; PersonID 2325; PositionID 39; StartDate 1969-12-15T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. זרח ורהפטיג; faction join: מפלגה דתית לאומית"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: זרח ורהפטיג; faction: מפלגה דתית לאומית.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: זרח ורהפטיג; סיעה: מפלגה דתית לאומית."
           }
         ]
       },
@@ -429,7 +433,8 @@
           {
             "source": "role-roster-15",
             "quote": "PersonToPositionID 3835; PersonID 2575; PositionID 39; StartDate 1969-12-15T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. משה קול; faction join: ליברלים עצמאיים"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: משה קול; faction: ליברלים עצמאיים.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: משה קול; סיעה: ליברלים עצמאיים."
           }
         ]
       },
@@ -444,7 +449,7 @@
             "quote": "הממשלה המוצעת תכלול שש סיעות, המייצגות ביחד 102 חברי כנסת"
           }
         ],
-        "note": "Named in the governing presentation; no cabinet minister from this faction in the official formation-day roster. Deputy ministry is not a cabinet ministry."
+        "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister."
       },
       {
         "letters": "יא",
@@ -457,7 +462,7 @@
             "quote": "הממשלה המוצעת תכלול שש סיעות, המייצגות ביחד 102 חברי כנסת"
           }
         ],
-        "note": "Named in the governing presentation; no cabinet minister from this faction in the official formation-day roster. Deputy ministry is not a cabinet ministry."
+        "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister."
       }
     ],
     "coalitionSeats": 102,
@@ -482,7 +487,8 @@
           {
             "source": "coalition-1",
             "quote": "FinishDate: 1970-08-06T00:00:00",
-            "note": "All six Gahal ministers: PersonID 2179 (Begin), 2320 (Weizman), 2442 (Landau), 2512 (Yosef Sapir), 2609 (Rimalt), 3257 (Dulzin). All started on 1969-12-15; retained official response k7-government-15-positions."
+            "note": "All six Gahal ministers (Begin, Weizman, Landau, Yosef Sapir, Rimalt and Dulzin) took office on 15 December 1969.",
+            "noteHe": "כל ששת שרי גח״ל (בגין, ויצמן, לנדאו, יוסף ספיר, רימלט ודולצין) נכנסו לתפקידם ב־15 בדצמבר 1969."
           }
         ],
         "scope": "mid-term",
@@ -497,7 +503,8 @@
               {
                 "source": "role-roster-15",
                 "quote": "PersonToPositionID 3612; PersonID 2668; PositionID 39; StartDate 1969-12-15T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. זאב שרף; faction join: מערך"
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: זאב שרף; faction: מערך.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: זאב שרף; סיעה: מערך."
               }
             ]
           },
@@ -510,7 +517,8 @@
               {
                 "source": "role-roster-15",
                 "quote": "PersonToPositionID 3937; PersonID 2325; PositionID 39; StartDate 1969-12-15T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. זרח ורהפטיג; faction join: מפלגה דתית לאומית"
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: זרח ורהפטיג; faction: מפלגה דתית לאומית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: זרח ורהפטיג; סיעה: מפלגה דתית לאומית."
               }
             ]
           },
@@ -523,7 +531,8 @@
               {
                 "source": "role-roster-15",
                 "quote": "PersonToPositionID 3835; PersonID 2575; PositionID 39; StartDate 1969-12-15T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. משה קול; faction join: ליברלים עצמאיים"
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: משה קול; faction: ליברלים עצמאיים.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: משה קול; סיעה: ליברלים עצמאיים."
               }
             ]
           },
@@ -713,7 +722,7 @@
         ],
         "confidence": "high",
         "notes": [
-          "The onset action is described, without a broader causal claim. No single endDate is assigned: ceasefire resolutions and their implementation differed across fronts. Original selection retained, supplemented by CFR/UN chronology.",
+          "The onset action is described, without a broader causal claim. No single endDate is assigned: ceasefire resolutions and their implementation differed across fronts. The original selection stands, with the Council on Foreign Relations and UN chronologies added.",
           "The UN Security Council called for a ceasefire on 22 October, reaffirmed it on 23 October and demanded compliance on 25 October after further fighting; these are not one verified cessation date.",
           "מועצת הביטחון קראה להפסקת אש ב־22 באוקטובר, אישרה אותה שוב ב־23 באוקטובר ודרשה את קיומה ב־25 באוקטובר לאחר שהלחימה נמשכה."
         ]

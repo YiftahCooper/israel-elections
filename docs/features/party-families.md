@@ -85,7 +85,7 @@ the applied definition. Sorting lists by seats is preserved.
 
 ## Personal presets and relationships
 
-Every built-in edit forks a personal definition. Save as my preset freezes the whole
+Every built-in edit forks a personal definition. Save as my version freezes the whole
 definition, revision, membership and policy. Hide is a separate catalogue preference;
 Manage presets restores it. Definitions live under `israel-elections:families:v1`,
 separately from scenario logs, with export/import. Storage failure is reported and

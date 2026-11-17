@@ -58,15 +58,17 @@
     },
     "coalition-3": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum eq 35",
-      "publisher": "Knesset OData (KNS_PersonToPosition, GovernmentNum)",
+      "publisher": "Knesset open data",
       "kind": "official",
-      "accessed": "2026-11-04"
+      "accessed": "2026-11-04",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח"
     },
     "coalition-4": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum eq 23 and FactionID ne null",
-      "publisher": "Knesset OData (KNS_PersonToPosition / KNS_Faction)",
+      "publisher": "Knesset open data",
       "kind": "official",
-      "accessed": "2026-11-04"
+      "accessed": "2026-11-04",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח"
     },
     "commons-2021": {
       "url": "https://researchbriefings.files.parliament.uk/documents/CBP-9189/CBP-9189.pdf",
@@ -100,7 +102,7 @@
     },
     "idf-guardian-history": {
       "url": "https://www.idf.il/28664",
-      "publisher": "IDF, Operation Guardian of the Walls, 14 June 2021",
+      "publisher": "Israel Defense Forces, Operation Guardian of the Walls, 14 June 2021",
       "kind": "official",
       "accessed": "2026-11-05"
     },
@@ -124,9 +126,10 @@
     },
     "role-roster-35": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2035%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "investiture-roll-32531": {
       "url": "https://knesset.gov.il/OdataV4/ParliamentInfo/KNS_PlenumVoteResult?%24filter=VoteID%20eq%2032531&%24count=true",
@@ -443,7 +446,7 @@
         ],
         "confidence": "high",
         "notes": [
-          "The Commons Library dates budget expiry to 23 December; the deadline-night sitting was on 22 December. IDI independently confirms automatic dissolution for failure to pass the budget."
+          "The Commons Library dates budget expiry to 23 December; the deadline-night sitting was on 22 December. Israel Democracy Institute independently confirms automatic dissolution for failure to pass the budget."
         ]
       },
       {
@@ -474,7 +477,7 @@
         "endDate": "2021-05-21",
         "notes": [
           "During the outgoing 35th government’s caretaker tenure, before the 36th government took office. Reuters chronology published Thursday 20 May dates the ceasefire to Friday. Not duplicated as a k24 term event.",
-          "Sequence is supported by both chronologies; no broader cause or claim that either action was unprovoked is asserted. CFR also discusses Jerusalem unrest; the row is not a full conflict history."
+          "Sequence is supported by both chronologies; no broader cause or claim that either action was unprovoked is asserted. Council on Foreign Relations also discusses Jerusalem unrest; the row is not a full conflict history."
         ]
       }
     ],
@@ -487,7 +490,7 @@
       {
         "label": "Budget deadline extension",
         "date": "2020-08",
-        "why": "The IDI 2021 retrospective selects the August postponement; a second qualifying chronology selecting the extension is missing."
+        "why": "The Israel Democracy Institute 2021 retrospective selects the August postponement; a second qualifying chronology selecting the extension is missing."
       },
       {
         "label": "Second national lockdown",
@@ -497,7 +500,7 @@
       {
         "label": "Vaccination campaign began",
         "date": "2020-12",
-        "why": "IPU’s 2021 election narrative selects the vaccination rollout but does not date its launch; no second qualifying launch chronology inspected."
+        "why": "Inter-Parliamentary Union’s 2021 election narrative selects the vaccination rollout but does not date its launch; no second qualifying launch chronology inspected."
       }
     ],
     "start": "2020-05-17",
@@ -557,7 +560,8 @@
           {
             "source": "role-roster-35",
             "quote": "PersonToPositionID 21838; PersonID 965; PositionID 45; StartDate 2020-05-17T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. בנימין נתניהו; faction join: הליכוד"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: בנימין נתניהו; faction: הליכוד.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בנימין נתניהו; סיעה: הליכוד."
           }
         ]
       },
@@ -570,7 +574,8 @@
           {
             "source": "role-roster-35",
             "quote": "PersonToPositionID 21851; PersonID 2291; PositionID 39; StartDate 2020-05-17T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. אריה מכלוף דרעי; faction join: ש\"ס"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: אריה מכלוף דרעי; faction: ש\"ס.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אריה מכלוף דרעי; סיעה: ש\"ס."
           }
         ]
       },
@@ -583,7 +588,8 @@
           {
             "source": "role-roster-35",
             "quote": "PersonToPositionID 21856; PersonID 528; PositionID 39; StartDate 2020-05-17T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יעקב ליצמן; faction join: יהדות התורה והשבת אגודת ישראל - דגל התורה"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יעקב ליצמן; faction: יהדות התורה והשבת אגודת ישראל - דגל התורה.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יעקב ליצמן; סיעה: יהדות התורה והשבת אגודת ישראל - דגל התורה."
           }
         ]
       },
@@ -598,7 +604,8 @@
           {
             "source": "role-roster-35",
             "quote": "PersonToPositionID 21840; PersonID 30657; PositionID 39; StartDate 2020-05-17T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. בנימין גנץ; faction join: כחול לבן"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: בנימין גנץ; faction: כחול לבן.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בנימין גנץ; סיעה: כחול לבן."
           }
         ]
       },
@@ -613,7 +620,8 @@
           {
             "source": "role-roster-35",
             "quote": "PersonToPositionID 21871; PersonID 557; PositionID 39; StartDate 2020-05-17T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. עמיר פרץ; faction join: העבודה הישראלית"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: עמיר פרץ; faction: העבודה הישראלית.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: עמיר פרץ; סיעה: העבודה הישראלית."
           }
         ]
       },
@@ -628,7 +636,8 @@
           {
             "source": "role-roster-35",
             "quote": "PersonToPositionID 21858; PersonID 30716; PositionID 39; StartDate 2020-05-17T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. רפי פרץ; faction join: ימינה"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: רפי פרץ; faction: ימינה.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: רפי פרץ; סיעה: ימינה."
           }
         ]
       }
@@ -649,7 +658,7 @@
       }
     ],
     "notes": [
-      "Coalition portions reuse the rank-level first-government scheme, derived from Knesset faction membership. Election-list totals checked against public/data/k23.json.",
+      "Each list’s part in the coalition follows the first-government grouping by candidate rank, from Knesset faction membership. Election-list totals checked against the official results.",
       "Gantz was alternate prime minister; the planned November 2021 rotation did not happen and is not recorded as an actual prime-minister tenure."
     ],
     "confidenceVote": {
@@ -679,7 +688,7 @@
     "reconciliation": {
       "status": "exact",
       "expectedFor": 73,
-      "note": "73 member seats = 73 for; 46 against, zero abstentions, one non-participant (Miki Levy, Yesh Atid–Telem, person 23632). The complete official roll call agrees with all 73 members in the retained first-government rank scheme. Labor faction: Peretz and Shmuli for, Michaeli against; Yamina faction: Rafi Peretz for, the other five against. Those split-faction exclusions are already excluded from the 73, not extra subtractions. The protocol corrects 72 for to 73 after adding Dichter’s uncaptured vote. A vote alone does not prove continuing coalition membership."
+      "note": "73 member seats = 73 for; 46 against, zero abstentions, one non-participant (Miki Levy, Yesh Atid–Telem). The complete official roll call agrees with all 73 members of the first-government grouping. Labor faction: Peretz and Shmuli for, Michaeli against; Yamina faction: Rafi Peretz for, the other five against. Those split-faction exclusions are already excluded from the 73, not extra subtractions. The protocol corrects 72 for to 73 after adding Dichter’s uncaptured vote. A vote alone does not prove continuing coalition membership."
     },
     "knownMemberSeats": 73
   },

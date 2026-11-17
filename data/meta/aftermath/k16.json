@@ -18,7 +18,7 @@
     },
     "knesset-history": {
       "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-sixteenth-knesset-2003-2006",
-      "publisher": "Knesset-credited history via Jewish Virtual Library (mirror, not official host)",
+      "publisher": "Knesset history, copy at the Jewish Virtual Library",
       "kind": "secondary",
       "accessed": "2026-11-05",
       "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=16"
@@ -51,7 +51,7 @@
     },
     "government-research-3": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=GovernmentNum%20eq%2030",
-      "publisher": "Knesset OData (ParliamentInfo)",
+      "publisher": "Knesset open data",
       "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-04",
@@ -111,15 +111,16 @@
     },
     "dissolution-gazette": {
       "url": "https://olaw.org.il/yalkut/yalkut-5467.pdf",
-      "publisher": "Reshumot YP 5467, 8 December 2005, p.728 (official document via mirror)",
+      "publisher": "Reshumot, Yalkut HaPirsumim 5467, 8 December 2005, p.728 (copy at olaw.org.il)",
       "kind": "official",
       "accessed": "2026-11-06"
     },
     "role-roster-30": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2030%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "basic-law-government-2001": {
       "url": "https://fs.knesset.gov.il//15/law/15_lsr_300337.pdf",
@@ -130,14 +131,14 @@
     },
     "dr-events-gov30": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=GovernmentNum%20eq%2030&%24format=json&%24top=1000",
-      "publisher": "Knesset OData, government 30 appointments",
+      "publisher": "Knesset open data: appointments in government 30",
       "publisherHe": "הכנסת, מאגר המינויים של הממשלה ה־30",
       "kind": "official",
       "accessed": "2026-11-13"
     },
     "dr-events-factions16": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum%20eq%2016%20and%20PositionID%20eq%2054&%24format=json&%24top=1000",
-      "publisher": "Knesset OData, 16th-Knesset faction memberships",
+      "publisher": "Knesset open data: faction membership in the 16th Knesset",
       "publisherHe": "הכנסת, מאגר החברות בסיעות של הכנסת ה־16",
       "kind": "official",
       "accessed": "2026-11-13"
@@ -343,29 +344,29 @@
         "about": "Tasking date",
         "values": [
           {
-            "value": "9 February (existing contemporary Haaretz/INN recommendation research)",
+            "value": "9 February (Haaretz and Israel National News at the time)",
             "source": "recommendations-research-3"
           },
           {
-            "value": "10 February (IPU narrative)",
+            "value": "10 February (Inter-Parliamentary Union account)",
             "source": "ipu2003"
           }
         ],
-        "resolution": "Use 9 February as in the contemporary research; retain IPU’s one-day disagreement."
+        "resolution": "9 February is used, as in the reports of the time; the Inter-Parliamentary Union’s date, one day later, is noted here."
       },
       {
         "about": "Government 30 formation date",
         "values": [
           {
-            "value": "27 February (official OData minister StartDate and IPU)",
+            "value": "27 February (the ministers’ start date in the Knesset’s official record, and the Inter-Parliamentary Union)",
             "source": "government-research-3"
           },
           {
-            "value": "28 February (first-government scheme / labelled Hebrew Wikipedia)",
+            "value": "28 February (Hebrew Wikipedia)",
             "source": "government-research-1"
           }
         ],
-        "resolution": "Use official 27 February in both the overlay and first-government scheme; retain the superseded secondary disagreement."
+        "resolution": "The official 27 February is used throughout; the secondary source’s date is noted here."
       }
     ]
   },
@@ -453,7 +454,7 @@
         ],
         "confidence": "high",
         "notes": [
-          "IPU 2006 misdates the incapacitating stroke to December 2005. The exact date and acting status follow CRS, not that IPU passage."
+          "Inter-Parliamentary Union 2006 misdates the incapacitating stroke to December 2005. The exact date and acting status follow Congressional Research Service, not that Inter-Parliamentary Union passage."
         ]
       }
     ],
@@ -461,12 +462,12 @@
       {
         "label": "Road Map accepted",
         "date": "2003-05",
-        "why": "MFA history dates acceptance to 25 May 2003. Neither the retrieved Knesset history nor IPU 2003/2006 selects this acceptance. A second independent qualifying chronology is needed."
+        "why": "Ministry of Foreign Affairs history dates acceptance to 25 May 2003. Neither the retrieved Knesset history nor Inter-Parliamentary Union 2003/2006 selects this acceptance. A second independent qualifying chronology is needed."
       },
       {
         "label": "2005 budget and coalition changes",
         "date": "2004-12",
-        "why": "Knesset history and IPU 2006 cover coalition changes, but the candidate combines budget passage with changes over several months. A defined act and direct date evidence are still required."
+        "why": "Knesset history and Inter-Parliamentary Union 2006 cover coalition changes, but the candidate combines budget passage with changes over several months. A defined act and direct date evidence are still required."
       }
     ],
     "endedBy": {
@@ -482,7 +483,7 @@
         }
       ],
       "notes": [
-        "Date identifies publication in YP 5467, not immediate termination of the Knesset’s tenure. The IPU’s 24 November date is superseded by the official order."
+        "Date identifies publication in Yalkut HaPirsumim 5467, not immediate termination of the Knesset’s tenure. The Inter-Parliamentary Union’s 24 November date is superseded by the official order."
       ]
     }
   },
@@ -568,7 +569,8 @@
           {
             "source": "role-roster-30",
             "quote": "PersonToPositionID 3692; PersonID 482; PositionID 45; StartDate 2003-02-27T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. אריאל שרון; faction join: הליכוד"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: אריאל שרון; faction: הליכוד.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אריאל שרון; סיעה: הליכוד."
           }
         ]
       },
@@ -581,7 +583,8 @@
           {
             "source": "role-roster-30",
             "quote": "PersonToPositionID 3695; PersonID 517; PositionID 39; StartDate 2003-02-27T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יוסף (טומי) לפיד; faction join: שינוי התנועה החילונית"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יוסף (טומי) לפיד; faction: שינוי התנועה החילונית.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יוסף (טומי) לפיד; סיעה: שינוי התנועה החילונית."
           }
         ]
       },
@@ -594,7 +597,8 @@
           {
             "source": "role-roster-30",
             "quote": "PersonToPositionID 3699; PersonID 405; PositionID 39; StartDate 2003-02-27T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. בנימין אלון; faction join: האיחוד הלאומי - ישראל ביתנו - מולדת - תקומה"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: בנימין אלון; faction: האיחוד הלאומי - ישראל ביתנו - מולדת - תקומה.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בנימין אלון; סיעה: האיחוד הלאומי - ישראל ביתנו - מולדת - תקומה."
           }
         ]
       },
@@ -658,7 +662,9 @@
       },
       {
         "source": "government-research-3",
-        "quote": "KNS_PersonToPosition, GovernmentNum 30: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 2003-02-27: מופז שאול, שרון אריאל, אולמרט אהוד, לפיד יוסף (טומי), שלום סילבן, אלון בנימין, הנגבי צחי, זנדברג אליעזר, כץ ישראל, לבנת לימור, ליברמן אביגדור, לנדאו עוזי, נאות יהודית, נוה דני, נתניהו בנימין, פורז אברהם, פריצקי יוסף יצחק, שטרית מאיר, לבני ציפי, עזרא גדעון"
+        "quote": "KNS_PersonToPosition, GovernmentNum 30: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 2003-02-27: מופז שאול, שרון אריאל, אולמרט אהוד, לפיד יוסף (טומי), שלום סילבן, אלון בנימין, הנגבי צחי, זנדברג אליעזר, כץ ישראל, לבנת לימור, ליברמן אביגדור, לנדאו עוזי, נאות יהודית, נוה דני, נתניהו בנימין, פורז אברהם, פריצקי יוסף יצחק, שטרית מאיר, לבני ציפי, עזרא גדעון",
+        "note": "The Knesset’s list of the ministers appointed on the government’s first day, 27 February 2003.",
+        "noteHe": "רשימת השרים שמונו ביום הראשון של הממשלה, 27 בפברואר 2003, לפי רישומי הכנסת."
       },
       {
         "source": "vote2006",
@@ -678,52 +684,62 @@
           {
             "source": "dr-events-gov30",
             "quote": "{\"PersonToPositionID\":3695,\"PersonID\":517,\"PositionID\":39,\"KnessetNum\":16,\"StartDate\":\"2003-02-27T00:00:00\",\"FinishDate\":\"2004-12-04T00:00:00\",\"GovMinistryID\":869,\"GovMinistryName\":\"משרד המשפטים\",\"DutyDesc\":\"שר המשפטים\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":30,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-03-20T12:03:09\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-factions16",
             "quote": "{\"PersonToPositionID\":28439,\"PersonID\":517,\"PositionID\":54,\"KnessetNum\":16,\"StartDate\":\"2003-02-17T00:00:00\",\"FinishDate\":\"2005-05-18T00:00:00\",\"GovMinistryID\":null,\"GovMinistryName\":null,\"DutyDesc\":null,\"FactionID\":43,\"FactionName\":\"שינוי התנועה החילונית\",\"GovernmentNum\":null,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2022-01-27T14:12:00\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-gov30",
             "quote": "{\"PersonToPositionID\":3709,\"PersonID\":519,\"PositionID\":39,\"KnessetNum\":16,\"StartDate\":\"2003-02-27T00:00:00\",\"FinishDate\":\"2004-12-04T00:00:00\",\"GovMinistryID\":747,\"GovMinistryName\":\"משרד הפנים\",\"DutyDesc\":\"שר הפנים\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":30,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-03-20T12:03:09\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-factions16",
             "quote": "{\"PersonToPositionID\":28475,\"PersonID\":519,\"PositionID\":54,\"KnessetNum\":16,\"StartDate\":\"2003-02-17T00:00:00\",\"FinishDate\":\"2005-05-18T00:00:00\",\"GovMinistryID\":null,\"GovMinistryName\":null,\"DutyDesc\":null,\"FactionID\":43,\"FactionName\":\"שינוי התנועה החילונית\",\"GovernmentNum\":null,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2022-01-27T14:12:00\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-gov30",
             "quote": "{\"PersonToPositionID\":3719,\"PersonID\":567,\"PositionID\":39,\"KnessetNum\":16,\"StartDate\":\"2004-07-19T00:00:00\",\"FinishDate\":\"2004-12-04T00:00:00\",\"GovMinistryID\":1198,\"GovMinistryName\":\"משרד התשתיות הלאומיות\",\"DutyDesc\":\"שר התשתיות הלאומיות\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":30,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-03-20T12:03:09\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-factions16",
             "quote": "{\"PersonToPositionID\":28378,\"PersonID\":567,\"PositionID\":54,\"KnessetNum\":16,\"StartDate\":\"2003-02-17T00:00:00\",\"FinishDate\":\"2005-05-18T00:00:00\",\"GovMinistryID\":null,\"GovMinistryName\":null,\"DutyDesc\":null,\"FactionID\":43,\"FactionName\":\"שינוי התנועה החילונית\",\"GovernmentNum\":null,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2022-01-27T14:12:00\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-gov30",
             "quote": "{\"PersonToPositionID\":3727,\"PersonID\":513,\"PositionID\":39,\"KnessetNum\":16,\"StartDate\":\"2004-11-29T00:00:00\",\"FinishDate\":\"2004-12-04T00:00:00\",\"GovMinistryID\":1060,\"GovMinistryName\":\"משרד המדע והטכנולוגיה\",\"DutyDesc\":\"שר המדע והטכנולוגיה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":30,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-03-20T12:03:09\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-factions16",
             "quote": "{\"PersonToPositionID\":28335,\"PersonID\":513,\"PositionID\":54,\"KnessetNum\":16,\"StartDate\":\"2003-02-17T00:00:00\",\"FinishDate\":\"2005-05-18T00:00:00\",\"GovMinistryID\":null,\"GovMinistryName\":null,\"DutyDesc\":null,\"FactionID\":43,\"FactionName\":\"שינוי התנועה החילונית\",\"GovernmentNum\":null,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2022-01-27T14:12:00\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-gov30",
             "quote": "{\"PersonToPositionID\":3743,\"PersonID\":1046,\"PositionID\":39,\"KnessetNum\":16,\"StartDate\":\"2004-11-29T00:00:00\",\"FinishDate\":\"2004-12-04T00:00:00\",\"GovMinistryID\":1324,\"GovMinistryName\":\"המשרד לאיכות הסביבה\",\"DutyDesc\":\"שר לאיכות הסביבה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":30,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-03-20T12:03:09\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-factions16",
             "quote": "{\"PersonToPositionID\":28511,\"PersonID\":1046,\"PositionID\":54,\"KnessetNum\":16,\"StartDate\":\"2003-02-17T00:00:00\",\"FinishDate\":\"2005-05-18T00:00:00\",\"GovMinistryID\":null,\"GovMinistryName\":null,\"DutyDesc\":null,\"FactionID\":43,\"FactionName\":\"שינוי התנועה החילונית\",\"GovernmentNum\":null,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2022-01-27T14:12:00\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           }
         ]
       },
@@ -739,82 +755,98 @@
           {
             "source": "dr-events-gov30",
             "quote": "{\"PersonToPositionID\":3736,\"PersonID\":433,\"PositionID\":57,\"KnessetNum\":16,\"StartDate\":\"2005-01-10T00:00:00\",\"FinishDate\":\"2005-11-23T00:00:00\",\"GovMinistryID\":611,\"GovMinistryName\":\"משרד התקשורת\",\"DutyDesc\":\"שרת התקשורת\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":30,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-03-20T12:03:09\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-factions16",
             "quote": "{\"PersonToPositionID\":28300,\"PersonID\":433,\"PositionID\":54,\"KnessetNum\":16,\"StartDate\":\"2003-02-17T00:00:00\",\"FinishDate\":\"2005-05-23T00:00:00\",\"GovMinistryID\":null,\"GovMinistryName\":null,\"DutyDesc\":null,\"FactionID\":42,\"FactionName\":\"העבודה-מימד בראשות מצנע\",\"GovernmentNum\":null,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2022-01-27T14:12:00\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-gov30",
             "quote": "{\"PersonToPositionID\":3738,\"PersonID\":1044,\"PositionID\":39,\"KnessetNum\":16,\"StartDate\":\"2005-01-10T00:00:00\",\"FinishDate\":\"2005-11-23T00:00:00\",\"GovMinistryID\":1139,\"GovMinistryName\":\"משרד הבינוי והשיכון\",\"DutyDesc\":\"שר הבינוי והשיכון\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":30,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-03-20T12:03:09\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-factions16",
             "quote": "{\"PersonToPositionID\":28365,\"PersonID\":1044,\"PositionID\":54,\"KnessetNum\":16,\"StartDate\":\"2003-02-17T00:00:00\",\"FinishDate\":\"2005-05-23T00:00:00\",\"GovMinistryID\":null,\"GovMinistryName\":null,\"DutyDesc\":null,\"FactionID\":42,\"FactionName\":\"העבודה-מימד בראשות מצנע\",\"GovernmentNum\":null,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2022-01-27T14:12:00\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-gov30",
             "quote": "{\"PersonToPositionID\":3740,\"PersonID\":456,\"PositionID\":39,\"KnessetNum\":16,\"StartDate\":\"2005-01-10T00:00:00\",\"FinishDate\":\"2005-11-23T00:00:00\",\"GovMinistryID\":1392,\"GovMinistryName\":\"המשנה לראש הממשלה\",\"DutyDesc\":\"המשנה לראש הממשלה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":30,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2020-11-10T19:24:55.333\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-factions16",
             "quote": "{\"PersonToPositionID\":28485,\"PersonID\":456,\"PositionID\":54,\"KnessetNum\":16,\"StartDate\":\"2003-02-17T00:00:00\",\"FinishDate\":\"2005-05-23T00:00:00\",\"GovMinistryID\":null,\"GovMinistryName\":null,\"DutyDesc\":null,\"FactionID\":42,\"FactionName\":\"העבודה-מימד בראשות מצנע\",\"GovernmentNum\":null,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2022-01-27T14:12:00\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-gov30",
             "quote": "{\"PersonToPositionID\":3741,\"PersonID\":455,\"PositionID\":39,\"KnessetNum\":16,\"StartDate\":\"2005-01-10T00:00:00\",\"FinishDate\":\"2005-11-23T00:00:00\",\"GovMinistryID\":747,\"GovMinistryName\":\"משרד הפנים\",\"DutyDesc\":\"שר הפנים\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":30,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-03-20T12:03:09\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-factions16",
             "quote": "{\"PersonToPositionID\":28478,\"PersonID\":455,\"PositionID\":54,\"KnessetNum\":16,\"StartDate\":\"2003-02-17T00:00:00\",\"FinishDate\":\"2005-05-23T00:00:00\",\"GovMinistryID\":null,\"GovMinistryName\":null,\"DutyDesc\":null,\"FactionID\":42,\"FactionName\":\"העבודה-מימד בראשות מצנע\",\"GovernmentNum\":null,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2022-01-27T14:12:00\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-gov30",
             "quote": "{\"PersonToPositionID\":3742,\"PersonID\":435,\"PositionID\":39,\"KnessetNum\":16,\"StartDate\":\"2005-01-10T00:00:00\",\"FinishDate\":\"2005-11-23T00:00:00\",\"GovMinistryID\":1198,\"GovMinistryName\":\"משרד התשתיות הלאומיות\",\"DutyDesc\":\"שר התשתיות הלאומיות\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":30,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-03-20T12:03:09\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-factions16",
             "quote": "{\"PersonToPositionID\":28320,\"PersonID\":435,\"PositionID\":54,\"KnessetNum\":16,\"StartDate\":\"2003-02-17T00:00:00\",\"FinishDate\":\"2005-05-23T00:00:00\",\"GovMinistryID\":null,\"GovMinistryName\":null,\"DutyDesc\":null,\"FactionID\":42,\"FactionName\":\"העבודה-מימד בראשות מצנע\",\"GovernmentNum\":null,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2022-01-27T14:12:00\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-gov30",
             "quote": "{\"PersonToPositionID\":3746,\"PersonID\":461,\"PositionID\":39,\"KnessetNum\":16,\"StartDate\":\"2005-01-10T00:00:00\",\"FinishDate\":\"2005-11-23T00:00:00\",\"GovMinistryID\":1324,\"GovMinistryName\":\"המשרד לאיכות הסביבה\",\"DutyDesc\":\"שר לאיכות הסביבה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":30,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2020-11-16T16:51:32.303\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-factions16",
             "quote": "{\"PersonToPositionID\":28515,\"PersonID\":461,\"PositionID\":54,\"KnessetNum\":16,\"StartDate\":\"2003-02-17T00:00:00\",\"FinishDate\":\"2005-05-23T00:00:00\",\"GovMinistryID\":null,\"GovMinistryName\":null,\"DutyDesc\":null,\"FactionID\":42,\"FactionName\":\"העבודה-מימד בראשות מצנע\",\"GovernmentNum\":null,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2022-01-27T14:12:00\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-gov30",
             "quote": "{\"PersonToPositionID\":4502,\"PersonID\":458,\"PositionID\":39,\"KnessetNum\":16,\"StartDate\":\"2005-01-10T00:00:00\",\"FinishDate\":\"2005-11-23T00:00:00\",\"GovMinistryID\":561,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"בלי תיק\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":30,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-03-20T12:03:09\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-factions16",
             "quote": "{\"PersonToPositionID\":28497,\"PersonID\":458,\"PositionID\":54,\"KnessetNum\":16,\"StartDate\":\"2003-02-17T00:00:00\",\"FinishDate\":\"2005-05-23T00:00:00\",\"GovMinistryID\":null,\"GovMinistryName\":null,\"DutyDesc\":null,\"FactionID\":42,\"FactionName\":\"העבודה-מימד בראשות מצנע\",\"GovernmentNum\":null,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2022-01-27T14:12:00\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-gov30",
             "quote": "{\"PersonToPositionID\":4503,\"PersonID\":1067,\"PositionID\":39,\"KnessetNum\":16,\"StartDate\":\"2005-01-10T00:00:00\",\"FinishDate\":\"2005-08-28T00:00:00\",\"GovMinistryID\":561,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"בלי תיק\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":30,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-03-20T12:03:09\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           },
           {
             "source": "dr-events-factions16",
             "quote": "{\"PersonToPositionID\":28373,\"PersonID\":1067,\"PositionID\":54,\"KnessetNum\":16,\"StartDate\":\"2003-02-17T00:00:00\",\"FinishDate\":\"2005-05-23T00:00:00\",\"GovMinistryID\":null,\"GovMinistryName\":null,\"DutyDesc\":null,\"FactionID\":42,\"FactionName\":\"העבודה-מימד בראשות מצנע\",\"GovernmentNum\":null,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2022-01-27T14:12:00\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded)."
+            "note": "The Knesset’s official record.",
+            "noteHe": "הרישום הרשמי של הכנסת."
           }
         ]
       },

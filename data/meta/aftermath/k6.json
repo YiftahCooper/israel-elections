@@ -50,20 +50,20 @@
     },
     "recommendations-jta": {
       "url": "https://www.jta.org/archive/formation-of-new-cabinet-by-eshkol-proposed-by-opposition-parties",
-      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin (reused recommendation research)",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
     "coalition-1": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2013&$format=json",
-      "publisher": "Knesset OData (ParliamentInfo)",
+      "publisher": "Knesset open data",
       "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-04"
     },
     "term-history": {
       "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-sixth-knesset-1965-1969",
-      "publisher": "Jewish Virtual Library, attributed reproduction of Knesset history (mirror provenance not independently certified)",
+      "publisher": "Knesset history, copy at the Jewish Virtual Library",
       "kind": "secondary",
       "accessed": "2026-11-05",
       "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=6"
@@ -127,21 +127,23 @@
     },
     "consultations-jta-start": {
       "url": "https://www.jta.org/archive/israel-president-starts-talks-today-on-formation-of-new-cabinet",
-      "publisher": "JTA bulletin, 24 November 1965",
+      "publisher": "Jewish Telegraphic Agency, bulletin, 24 November 1965",
       "kind": "secondary",
       "accessed": "2026-11-06"
     },
     "role-roster-13": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2013%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "role-roster-14": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2014%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, formation-day cabinet appointments",
+      "publisher": "Knesset open data: ministers at formation",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: השרים בהקמת הממשלה"
     },
     "galnoor-blander-2018": {
       "url": "https://doi.org/10.1017/9781316160978",
@@ -277,7 +279,7 @@
         }
       ],
       "notes": [
-        "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
+        "Conditions set in the consultations are not counted as recommendations. “Unknown” does not mean that no recommendation was made.",
         "Month precision: 24 November JTA bulletin says consultations will start tomorrow; title says today. 26 November bulletin reports recommendations today. Bulletin and meeting dates are not assumed identical; exact start/end days remain unestablished."
       ],
       "endDate": "1965-11"
@@ -420,7 +422,9 @@
         "cites": [
           {
             "source": "coalition-1",
-            "quote": "PersonID 2173: ראש הממשלה, 1966-01-12–1969-02-26; PersonID 2142: ראש הממשלה בפועל, 1969-02-26–1969-03-17 (structured OData fields)."
+            "quote": "PersonID 2173: ראש הממשלה, 1966-01-12–1969-02-26; PersonID 2142: ראש הממשלה בפועל, 1969-02-26–1969-03-17 (structured OData fields).",
+            "note": "The Knesset’s official record: prime minister from 12 January 1966 to 26 February 1969; acting prime minister from 26 February to 17 March 1969.",
+            "noteHe": "הרישום הרשמי של הכנסת: ראש הממשלה מ־12 בינואר 1966 עד 26 בפברואר 1969; ראש הממשלה בפועל מ־26 בפברואר עד 17 במרץ 1969."
           }
         ]
       }
@@ -436,7 +440,8 @@
           {
             "source": "role-roster-13",
             "quote": "PersonToPositionID 3776; PersonID 2669; PositionID 39; StartDate 1966-01-12T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. אליהו ששון; faction join: מערך"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: אליהו ששון; faction: מערך.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אליהו ששון; סיעה: מערך."
           }
         ]
       },
@@ -449,7 +454,8 @@
           {
             "source": "role-roster-13",
             "quote": "PersonToPositionID 3788; PersonID 2661; PositionID 39; StartDate 1966-01-12T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. חיים משה שפירא; faction join: מפלגה דתית לאומית"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים משה שפירא; faction: מפלגה דתית לאומית.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים משה שפירא; סיעה: מפלגה דתית לאומית."
           }
         ]
       },
@@ -462,7 +468,8 @@
           {
             "source": "role-roster-13",
             "quote": "PersonToPositionID 3995; PersonID 2220; PositionID 39; StartDate 1966-01-12T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. ישראל ברזילי; faction join: "
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: ישראל ברזילי.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: ישראל ברזילי."
           },
           {
             "source": "galnoor-blander-2018",
@@ -483,7 +490,8 @@
           {
             "source": "role-roster-13",
             "quote": "PersonToPositionID 3834; PersonID 2575; PositionID 39; StartDate 1966-01-12T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. משה קול; faction join: "
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: משה קול.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: משה קול."
           },
           {
             "source": "galnoor-blander-2018",
@@ -506,7 +514,7 @@
             "quote": "ממשלה חדשה הכוללת את הסיעות: המערך לאחדות פועלי ארץ ישראל, המפלגה הדתית-לאומית, מפלגת הפועלים המאוחדת, המפלגה הליברלית העצמאית ומפלגת פועלי אגודת ישראל."
           }
         ],
-        "note": "Named in the governing presentation; no cabinet minister from this faction in the official formation-day roster. Deputy ministry is not a cabinet ministry."
+        "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister."
       },
       {
         "letters": "רא",
@@ -514,7 +522,7 @@
         "role": "other",
         "certainty": "unknown",
         "cites": [],
-        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+        "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
       },
       {
         "letters": "יא",
@@ -522,7 +530,7 @@
         "role": "other",
         "certainty": "unknown",
         "cites": [],
-        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+        "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
       }
     ],
     "coalitionSeats": null,
@@ -542,7 +550,9 @@
       },
       {
         "source": "coalition-1",
-        "quote": "PersonID 2173: ראש הממשלה, 1966-01-12–1969-02-26; PersonID 2142: ראש הממשלה בפועל, 1969-02-26–1969-03-17 (structured OData fields)."
+        "quote": "PersonID 2173: ראש הממשלה, 1966-01-12–1969-02-26; PersonID 2142: ראש הממשלה בפועל, 1969-02-26–1969-03-17 (structured OData fields).",
+        "note": "The Knesset’s official record: prime minister from 12 January 1966 to 26 February 1969; acting prime minister from 26 February to 17 March 1969.",
+        "noteHe": "הרישום הרשמי של הכנסת: ראש הממשלה מ־12 בינואר 1966 עד 26 בפברואר 1969; ראש הממשלה בפועל מ־26 בפברואר עד 17 במרץ 1969."
       }
     ],
     "changes": [
@@ -579,10 +589,11 @@
               {
                 "source": "role-roster-14",
                 "quote": "PersonToPositionID 3549; PersonID 2669; PositionID 39; StartDate 1969-03-17T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 26742. אליהו ששון"
+                "note": "Official appointment of אליהו ששון; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של אליהו ששון; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
             "factionNameEn": "Alignment"
           },
           {
@@ -594,10 +605,11 @@
               {
                 "source": "role-roster-14",
                 "quote": "PersonToPositionID 3890; PersonID 2512; PositionID 39; StartDate 1969-03-17T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 26673. יוסף ספיר"
+                "note": "Official appointment of יוסף ספיר; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של יוסף ספיר; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
             "letters": "חל"
           },
           {
@@ -609,10 +621,11 @@
               {
                 "source": "role-roster-14",
                 "quote": "PersonToPositionID 22419; PersonID 2187; PositionID 39; StartDate 1969-03-17T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 26766. יוסף בורג"
+                "note": "Official appointment of יוסף בורג; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של יוסף בורג; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
             "letters": "ב"
           }
         ],
@@ -738,7 +751,7 @@
         "confidence": "high",
         "endDate": "1967-06-10",
         "notes": [
-          "Knesset and IDI retain independent event selection; MFA supplies the blockade context and Israeli account of the preemptive strike, CFR corroborates onset, and the UN report supplies the final-front ceasefire.",
+          "Knesset and Israel Democracy Institute retain independent event selection; Ministry of Foreign Affairs supplies the blockade context and Israeli account of the preemptive strike, Council on Foreign Relations corroborates onset, and the UN report supplies the final-front ceasefire.",
           "The UN Secretary-General’s 10 June report records Israeli and Syrian acceptance of a ceasefire at 16:30 GMT; the final-front cessation supplies the ending.",
           "דוח מזכ״ל האו״ם מ־10 ביוני מתעד את הסכמת ישראל וסוריה להפסקת אש ב־16:30 לפי שעון גריניץ׳."
         ]

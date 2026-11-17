@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
-import { reviewedAftermath, recommendationPieces, visibleTermEvents, completePolls, chronological, termEndFact, sourceLabel, pageSources, type Aftermath, type Cite, type DatedFact, type HistorySource, type RecommendationRound } from '../../data/aftermath-runtime.ts';
+import { reviewedAftermath, recommendationPieces, visibleTermEvents, completePolls, chronological, termEndFact, sourceLabel, pageSources, isFieldRecord, type Aftermath, type Cite, type Conflict, type DatedFact, type HistorySource, type RecommendationRound } from '../../data/aftermath-runtime.ts';
 import type { GovernmentSupport, GovernmentParticipant, GovernmentIndividual } from '../../data/aftermath.ts';
 import { supportRoleGroups, participantName, listsBelowTheirSeats, type SupportGroup } from '../governmentSupport.ts';
 import type { ElectionDataset } from '../../data/schema.ts';
@@ -92,12 +92,17 @@ function LocatorText({ locator }: { locator: string }) {
   if (page && lang === 'he') return <>עמ׳ <bdi dir="ltr">{page[1]}</bdi></>;
   return <HistoryText text={locator} verbatim />;
 }
-function Evidence({ data, cites = [], notes = [], explanation }: { data: Aftermath; cites?: Cite[]; notes?: string[]; explanation?: ReactNode }) {
+/** Sources that disagree: each one's account with its source, then how the record settles it (research language). */
+function ConflictText({ data, conflict }: { data: Aftermath; conflict: Conflict }) {
+  const lang = useLang();
+  return <div className="after-conflict" dir="auto"><p><b><HistoryText text={conflict.about} verbatim /></b></p><ul>{conflict.values.map((v, i) => { const s = data.sources[v.source]; return <li key={i}><HistoryText text={v.value} verbatim />{s && <> · <a href={s.url} target="_blank" rel="noreferrer"><bdi><HistoryText text={sourceLabel(s, lang)} /></bdi></a></>}</li>; })}</ul><p><HistoryText text={conflict.resolution} verbatim /></p></div>;
+}
+function Evidence({ data, cites = [], notes = [], explanation }: { data: Aftermath; cites?: Cite[]; notes?: (string | ReactNode)[]; explanation?: ReactNode }) {
   const L = useL(); const lang = useLang(); const kind = useKindLabel();
   return <Info title={L('Sources & qualifications', 'מקורות וסייגים')}>
     {explanation && <p>{explanation}</p>}
-    {cites.map((c, i) => { const s = data.sources[c.source]; return s && <div key={i} className="after-evidence"><a href={s.url} target="_blank" rel="noreferrer"><bdi><HistoryText text={sourceLabel(s, lang)} /></bdi></a> · {kind(s)} · <DateRun date={s.accessed} /><blockquote dir="auto"><HistoryText text={c.quote} verbatim /></blockquote>{c.locator && <p dir="auto"><LocatorText locator={c.locator} /></p>}{(lang === 'he' ? c.noteHe ?? c.note : c.note) && <p dir="auto"><HistoryText text={(lang === 'he' ? c.noteHe ?? c.note : c.note)!} verbatim /></p>}</div>; })}
-    {notes.length > 0 && <details><summary>{L('Research notes · original language', 'הערות מחקר · בשפת המקור')}</summary>{notes.map((n, i) => <p key={i} dir="auto"><HistoryText text={n} verbatim /></p>)}</details>}
+    {cites.map((c, i) => { const s = data.sources[c.source]; return s && <div key={i} className="after-evidence"><a href={s.url} target="_blank" rel="noreferrer"><bdi><HistoryText text={sourceLabel(s, lang)} /></bdi></a> · {kind(s)} · <DateRun date={s.accessed} />{!isFieldRecord(c.quote) && <blockquote dir="auto"><HistoryText text={c.quote} verbatim /></blockquote>}{c.locator && <p dir="auto"><LocatorText locator={c.locator} /></p>}{(lang === 'he' ? c.noteHe ?? c.note : c.note) && <p dir="auto"><HistoryText text={(lang === 'he' ? c.noteHe ?? c.note : c.note)!} verbatim /></p>}</div>; })}
+    {notes.length > 0 && <details><summary>{L('Research notes · original language', 'הערות מחקר · בשפת המקור')}</summary>{notes.map((n, i) => typeof n === 'string' ? <p key={i} dir="auto"><HistoryText text={n} verbatim /></p> : n)}</details>}
   </Info>;
 }
 function FactRows({ data, events }: { data: Aftermath; events: DatedFact[] }) {
@@ -169,7 +174,7 @@ function Formation({ data }: { data: Aftermath }) {
   const lineEnd = open && data.reviewedAt > events.at(-1)!.date ? data.reviewedAt : events.at(-1)!.date;
   const first = Date.parse(data.results.electionDate); const last = Date.parse(lineEnd);
   const pos = (date: string) => (Date.parse(date) - first) / Math.max(last - first, 86400000) * 100;
-  return <section><h3><span className="after-help-anchor">{L('Government formation', 'הרכבת הממשלה')}{data.formation.conflicts?.length ? <> <Evidence data={data} notes={data.formation.conflicts.map(c => JSON.stringify(c))} /></> : null}</span></h3><div className="after-formation" dir="ltr" aria-hidden="true"><div className="after-date-line"><span><DateRun date={data.results.electionDate} /></span><span>{lineEnd !== events.at(-1)!.date && <>{L('Checked', 'נבדק')} </>}<DateRun date={lineEnd} /></span>{events.map((e, i) => <i key={i} style={{ left: `${pos(e.date)}%` }} title={`${formatDate(e.date, lang)} · ${lang === 'he' ? e.textHe : e.textEn}`} />)}</div>{mandates.map(({ e, close }, i) => {
+  return <section><h3><span className="after-help-anchor">{L('Government formation', 'הרכבת הממשלה')}{data.formation.conflicts?.length ? <> <Evidence data={data} cites={data.formation.conflicts.flatMap(c => c.cites ?? [])} notes={data.formation.conflicts.map((c, i) => <ConflictText key={i} data={data} conflict={c} />)} /></> : null}</span></h3><div className="after-formation" dir="ltr" aria-hidden="true"><div className="after-date-line"><span><DateRun date={data.results.electionDate} /></span><span>{lineEnd !== events.at(-1)!.date && <>{L('Checked', 'נבדק')} </>}<DateRun date={lineEnd} /></span>{events.map((e, i) => <i key={i} style={{ left: `${pos(e.date)}%` }} title={`${formatDate(e.date, lang)} · ${lang === 'he' ? e.textHe : e.textEn}`} />)}</div>{mandates.map(({ e, close }, i) => {
     const running = open && i === mandates.length - 1;
     const end = close?.date ?? lineEnd;
     const nominee = e.person ? nominees[e.person] : undefined;

@@ -1,0 +1,74 @@
+[
+ {
+  "candidateId": "24-ב#3",
+  "field": "en",
+  "before": "Declared elected in YP 9511 §4; announced on 5 April 2021 that he would not take the seat. Idit Silman (#8) sat from the first sitting on 6 April.",
+  "after": "Declared elected in Yalkut HaPirsumim 9511 §4; announced on 5 April 2021 that he would not take the seat. Idit Silman (#8) sat from the first sitting on 6 April."
+ },
+ {
+  "candidateId": "15-שס#18",
+  "field": "en",
+  "before": "The 1999 candidate and elected notices print גאגולה איסק (surname first). Knesset OData PersonID 485 uses יצחק גאגולה. The gazetted form is retained.",
+  "after": "The 1999 candidate and elected notices print גאגולה איסק (surname first). The Knesset’s records use יצחק גאגולה. The name as printed in the gazette is kept."
+ },
+ {
+  "candidateId": "15-שס#18",
+  "field": "he",
+  "before": "בהודעות המועמדים והנבחרים מ־1999 נדפס „גאגולה איסק”; במאגר הכנסת (485) מופיע „יצחק גאגולה”. נשמר השם כפי שנדפס ברשומות.",
+  "after": "בהודעות המועמדים והנבחרים מ־1999 נדפס „גאגולה איסק”; ברישומי הכנסת מופיע „יצחק גאגולה”. נשמר השם כפי שנדפס ברשומות."
+ },
+ {
+  "candidateId": "14-מחל#23",
+  "field": "en",
+  "before": "Membership ended 1996-09-01; ריבלין ראובן began serving on that date (retained Knesset OData, Knesset 14). The election-day roster is preserved.",
+  "after": "Membership ended 1996-09-01; ריבלין ראובן began serving on that date (the Knesset’s records, 14th Knesset). The election-day roster is preserved."
+ },
+ {
+  "candidateId": "14-אמת#21",
+  "field": "en",
+  "before": "Membership ended 1996-10-15; כבל איתן began serving on that date (retained Knesset OData, Knesset 14). The election-day roster is preserved.",
+  "after": "Membership ended 1996-10-15; כבל איתן began serving on that date (the Knesset’s records, 14th Knesset). The election-day roster is preserved."
+ },
+ {
+  "candidateId": "14-ב#8",
+  "field": "en",
+  "before": "Membership ended 1997-05-12; סלומינסקי ניסן began serving on that date (retained Knesset OData, Knesset 14). The election-day roster is preserved.",
+  "after": "Membership ended 1997-05-12; סלומינסקי ניסן began serving on that date (the Knesset’s records, 14th Knesset). The election-day roster is preserved."
+ },
+ {
+  "candidateId": "14-ב#1",
+  "field": "en",
+  "before": "Membership ended 1998-01-20; גבאי אליהו began serving on that date (retained Knesset OData, Knesset 14). The election-day roster is preserved.",
+  "after": "Membership ended 1998-01-20; גבאי אליהו began serving on that date (the Knesset’s records, 14th Knesset). The election-day roster is preserved."
+ },
+ {
+  "candidateId": "14-אמת#24",
+  "field": "en",
+  "before": "Membership ended 1998-03-20; חג' יחיא רפיק began serving on that date (retained Knesset OData, Knesset 14). The election-day roster is preserved.",
+  "after": "Membership ended 1998-03-20; חג' יחיא רפיק began serving on that date (the Knesset’s records, 14th Knesset). The election-day roster is preserved."
+ },
+ {
+  "candidateId": "14-ג#4",
+  "field": "en",
+  "before": "Membership ended 1998-10-23; לייזרזון אברהם יוסף began serving on that date (retained Knesset OData, Knesset 14). The election-day roster is preserved.",
+  "after": "Membership ended 1998-10-23; לייזרזון אברהם יוסף began serving on that date (the Knesset’s records, 14th Knesset). The election-day roster is preserved."
+ },
+ {
+  "candidateId": "14-מחל#10",
+  "field": "en",
+  "before": "Membership ended 1998-11-18; כץ ישראל began serving on that date (retained Knesset OData, Knesset 14). The election-day roster is preserved.",
+  "after": "Membership ended 1998-11-18; כץ ישראל began serving on that date (the Knesset’s records, 14th Knesset). The election-day roster is preserved."
+ },
+ {
+  "candidateId": "14-מחל#31",
+  "field": "en",
+  "before": "Membership ended 1998-11-30; שמואלי דורון began serving on that date (retained Knesset OData, Knesset 14). The election-day roster is preserved.",
+  "after": "Membership ended 1998-11-30; שמואלי דורון began serving on that date (the Knesset’s records, 14th Knesset). The election-day roster is preserved."
+ },
+ {
+  "candidateId": "4-מ#1",
+  "field": "en",
+  "before": "The results notice misprints Meir Ya’ari as יערי יעקב. YP 724 p.501 formally corrects it to יערי מאיר.",
+  "after": "The results notice misprints Meir Ya’ari as יערי יעקב. Yalkut HaPirsumim 724 p. 501 formally corrects it to יערי מאיר."
+ }
+]

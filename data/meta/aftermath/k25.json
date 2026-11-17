@@ -131,13 +131,13 @@
     },
     "crs-regional-2024": {
       "url": "https://www.everycrsreport.com/files/2024-12-05_R44245_a229591d75ea86d8bb24dec2e3ceeade83e5cbc9.html",
-      "publisher": "Congressional Research Service, Israel: Major Issues and U.S. Relations, 5 December 2024, pp.5,18–19 (EveryCRSReport reproduction)",
+      "publisher": "Congressional Research Service, Israel: Major Issues and U.S. Relations, 5 December 2024, pp.5,18–19 (copy at EveryCRSReport.com)",
       "kind": "official",
       "accessed": "2026-11-05"
     },
     "crs-war-2024": {
       "url": "https://www.everycrsreport.com/reports/R47828.html",
-      "publisher": "Congressional Research Service, Israel and Hamas Conflict In Brief, 4 October 2024 (EveryCRSReport reproduction)",
+      "publisher": "Congressional Research Service, Israel and Hamas Conflict In Brief, 4 October 2024 (copy at EveryCRSReport.com)",
       "kind": "official",
       "accessed": "2026-11-05"
     },
@@ -192,7 +192,7 @@
     },
     "crs-election-2026": {
       "url": "https://www.everycrsreport.com/reports/IN12751.html",
-      "publisher": "Congressional Research Service, Israel: 2026 Elections and Government Formation, 30 October 2026 (EveryCRSReport reproduction)",
+      "publisher": "Congressional Research Service, Israel: 2026 Elections and Government Formation, 30 October 2026 (copy at EveryCRSReport.com)",
       "kind": "official",
       "accessed": "2026-11-05"
     },
@@ -217,13 +217,13 @@
     },
     "idf-hamas-history": {
       "url": "https://www.idf.il/en/mini-sites/hamas/",
-      "publisher": "IDF, Hamas: Terror Infrastructure, October 7 Massacre and the Threat to Israel, updated July 2026",
+      "publisher": "Israel Defense Forces, Hamas: Terror Infrastructure, October 7 Massacre and the Threat to Israel, updated July 2026",
       "kind": "official",
       "accessed": "2026-11-05"
     },
     "idf-northern-arrows": {
       "url": "https://www.idf.il/en/mini-sites/idf-press-releases-israel-at-war/the-northern-front/operation-northern-arrows-by-the-numbers/",
-      "publisher": "IDF, Operation Northern Arrows by the Numbers, 29 November 2024",
+      "publisher": "Israel Defense Forces, Operation Northern Arrows by the Numbers, 29 November 2024",
       "kind": "official",
       "accessed": "2026-11-05"
     },
@@ -279,7 +279,7 @@
     },
     "president-icj-2024": {
       "url": "https://www.gov.il/en/departments/news/president-herzog-addresses-icj-ruling-28-jan-2024",
-      "publisher": "President’s Spokesperson / MFA, President Herzog addresses ICJ Ruling, 28 January 2024",
+      "publisher": "President’s Spokesperson / Ministry of Foreign Affairs, President Herzog addresses ICJ Ruling, 28 January 2024",
       "kind": "official",
       "accessed": "2026-11-16",
       "retrieval": {
@@ -305,20 +305,21 @@
     },
     "role-roster-37": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2037%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "knesset-term-boundary-2026": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_KnessetDates?$filter=KnessetNum%20eq%2026&$format=json",
-      "publisher": "Knesset OData, KNS_KnessetDates 169",
+      "publisher": "Knesset open data: Knesset term dates",
       "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-12"
     },
     "odata-government37": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=GovernmentNum%20eq%2037&%24format=json&%24top=1000",
-      "publisher": "Knesset OData, government 37 appointment register",
+      "publisher": "Knesset open data: appointments in government 37",
       "kind": "official",
       "accessed": "2026-11-12",
       "publisherHe": "הכנסת, מאגר המינויים של הממשלה ה־37",
@@ -604,7 +605,7 @@
         ],
         "confidence": "high",
         "notes": [
-          "IDI’s October 2024 retrospective and Reuters’s timeline independently select the announcement and protests. Only the dated acts are used, without adopting either source’s evaluation of the proposals.",
+          "Israel Democracy Institute’s October 2024 retrospective and Reuters’s timeline independently select the announcement and protests. Only the dated acts are used, without adopting either source’s evaluation of the proposals.",
           "סקירת המכון הישראלי לדמוקרטיה וציר הזמן של רויטרס מתעדים את ההכרזה ואת המחאות; ההערכות הפוליטיות שבמקורות אינן מאומצות כאן."
         ]
       },
@@ -639,7 +640,7 @@
         "confidence": "high",
         "endDate": "2024-01-01",
         "notes": [
-          "The amendment excluded judicial review of the reasonableness of decisions by the government, prime minister and ministers, including appointments and non-exercise of authority. Knesset enactment notice and Court abstract anchor the acts; IDI and CNN retain independent chronological selection. IPF’s advocacy tracker was removed as unnecessary. No political assessment of enactment or annulment is adopted.",
+          "The amendment excluded judicial review of the reasonableness of decisions by the government, prime minister and ministers, including appointments and non-exercise of authority. Knesset enactment notice and Court abstract anchor the acts; Israel Democracy Institute and CNN retain independent chronological selection. Israel Policy Forum’s advocacy tracker was removed as unnecessary. No political assessment of enactment or annulment is adopted.",
           "התיקון מנע ביקורת שיפוטית בעילת הסבירות על החלטות הממשלה, ראש הממשלה והשרים, לרבות מינויים והימנעות מהפעלת סמכות; ההודעה הרשמית של הכנסת ותקציר בית המשפט מעגנים את החקיקה ואת ביטולה."
         ]
       },
@@ -693,9 +694,9 @@
         ],
         "confidence": "high",
         "notes": [
-          "Selection: Knesset first-twenty-week chronology and CFR, independently corroborated by CRS; IDF’s Israeli chronology anchors the terrorism terminology. MFA’s October 2025 account reports over 1,200 people killed and 251 abducted; these are dated, attributed figures, not a civilian-only death count. No Gaza health-ministry total is retained.",
+          "Selection: Knesset first-twenty-week chronology and Council on Foreign Relations, independently corroborated by Congressional Research Service; IDF’s Israeli chronology anchors the terrorism terminology. Ministry of Foreign Affairs’s October 2025 account reports over 1,200 people killed and 251 abducted; these are dated, attributed figures, not a civilian-only death count. No Gaza health-ministry total is given.",
           "לפי סקירת משרד החוץ מאוקטובר 2025, יותר מ־1,200 בני אדם נהרגו ו־251 נחטפו; זהו מניין מיוחס ומתוארך, ולא מניין של אזרחים בלבד.",
-          "PMO announced war authorization on 8 October 2023; IDI dates its effect from 7 October. Section 40(a) governs the decision; 40(a)(1) permits delegation to the security cabinet. Airstrikes began on 7 October and the ground offensive on 27 October, per the cited chronology. No war end is inferred.",
+          "Prime Minister’s Office announced war authorization on 8 October 2023; Israel Democracy Institute dates its effect from 7 October. Section 40(a) governs the decision; 40(a)(1) permits delegation to the security cabinet. Airstrikes began on 7 October and the ground offensive on 27 October, per the cited chronology. No war end is inferred.",
           "משרד ראש הממשלה הודיע על אישור מצב המלחמה ב־8 באוקטובר; לפי המכון הישראלי לדמוקרטיה, תוקפו מ־7 באוקטובר. התקיפות האוויריות החלו ב־7 באוקטובר והתמרון הקרקעי ב־27 באוקטובר; לא נקבע כאן מועד לסיום המלחמה."
         ]
       },
@@ -733,8 +734,8 @@
         ],
         "confidence": "high",
         "notes": [
-          "27 November is the effective date; 26 November is agreement approval. This describes the 2023–24 phase, not a permanent end of northern-front fighting; CFR reports renewed hostilities in 2026.",
-          "Hezbollah began attacks on 8 October 2023; Israeli ground operations began on 1 October 2024. INSS and the IDF supply the Israeli operation name; UI, Commons and CRS remain corroborating chronologies.",
+          "27 November is the effective date; 26 November is agreement approval. This describes the 2023–24 phase, not a permanent end of northern-front fighting; Council on Foreign Relations reports renewed hostilities in 2026.",
+          "Hezbollah began attacks on 8 October 2023; Israeli ground operations began on 1 October 2024. Institute for National Security Studies and the IDF supply the Israeli operation name; Swedish Institute of International Affairs, Commons and Congressional Research Service remain corroborating chronologies.",
           "חזבאללה החל לתקוף ב־8 באוקטובר 2023; הפעולה הקרקעית של צה״ל החלה ב־1 באוקטובר 2024. הפסקת האש נכנסה לתוקף ב־27 בנובמבר, לאחר אישורה ב־26 בנובמבר."
         ]
       },
@@ -780,8 +781,8 @@
         ],
         "confidence": "high",
         "notes": [
-          "Grouped agreement milestones, not one continuous ceasefire. Each phase has its own chronology pair: November 2023 Commons/Reuters; January–March 2025 Commons/UI; October 2025 UI/CFR (CNN supplies implementation date). This is not a finding that the war permanently ended; CFR reports subsequent violations. Commons CBP-10235’s web summary dates the October agreement to 13 October, the living-hostage release day, and its January agreement to 18 January; not used for effective dates. CBP-10085 gives 19 January and CNN gives 10 October.",
-          "The November pause ran from 24 November to 1 December 2023. The January agreement took effect on 19 January 2025; Israel resumed military action on 18 March. The later agreement was implemented on 10 October 2025, per CNN. INSS corroborates the first two ceasefire phases, not the later October agreement.",
+          "Grouped agreement milestones, not one continuous ceasefire. Each phase has its own chronology pair: November 2023 Commons/Reuters; January–March 2025 Commons/Swedish Institute of International Affairs; October 2025 Swedish Institute of International Affairs/Council on Foreign Relations (CNN supplies implementation date). This is not a finding that the war permanently ended; Council on Foreign Relations reports subsequent violations. Commons CBP-10235’s web summary dates the October agreement to 13 October, the living-hostage release day, and its January agreement to 18 January; not used for effective dates. CBP-10085 gives 19 January and CNN gives 10 October.",
+          "The November pause ran from 24 November to 1 December 2023. The January agreement took effect on 19 January 2025; Israel resumed military action on 18 March. The later agreement was implemented on 10 October 2025, per CNN. Institute for National Security Studies corroborates the first two ceasefire phases, not the later October agreement.",
           "ההפוגה הראשונה נמשכה מ־24 בנובמבר עד 1 בדצמבר 2023; ההסכם הבא נכנס לתוקף ב־19 בינואר 2025, וישראל חידשה את הפעולה הצבאית ב־18 במרס. לפי CNN, ההסכם המאוחר יותר נכנס לתוקף ב־10 באוקטובר 2025."
         ]
       },
@@ -789,7 +790,7 @@
         "id": "international-court-proceedings",
         "date": "2024-01-26",
         "category": "foreign-relations",
-        "textEn": "The ICJ ordered provisional measures in South Africa’s case against Israel; the ICC later issued arrest warrants for Netanyahu, Gallant and Deif.",
+        "textEn": "The International Court of Justice ordered provisional measures in South Africa’s case against Israel; the International Criminal Court later issued arrest warrants for Netanyahu, Gallant and Deif.",
         "textHe": "בית הדין הבינלאומי לצדק הורה על סעדים זמניים בתביעת דרום אפריקה נגד ישראל; בית הדין הפלילי הבינלאומי הוציא בהמשך צווי מעצר לנתניהו, לגלנט ולדף.",
         "cites": [
           {
@@ -819,8 +820,8 @@
         ],
         "confidence": "high",
         "notes": [
-          "ICJ provisional measures are not a merits judgment that genocide occurred. ICC warrants concern allegations, not convictions. Two selection pairs: Commons/Reuters (ICJ); CRS/CNN (ICC). The official retrospective reports identify the original court orders; original ICC retrieval returned 403.",
-          "The ICJ order was issued on 26 January 2024 in South Africa’s Genocide Convention case. On 21 November 2024 the ICC issued warrants for Benjamin Netanyahu, Yoav Gallant and Hamas terrorist commander Mohammed Deif, alleging war crimes and crimes against humanity; no convictions are asserted. Israeli institutional statements corroborate the proceedings, without adopting their political characterizations.",
+          "International Court of Justice provisional measures are not a merits judgment that genocide occurred. International Criminal Court warrants concern allegations, not convictions. Two selection pairs: Commons/Reuters (International Court of Justice); Congressional Research Service/CNN (International Criminal Court). The official retrospective reports identify the original court orders; original International Criminal Court retrieval returned 403.",
+          "The International Court of Justice order was issued on 26 January 2024 in South Africa’s Genocide Convention case. On 21 November 2024 the International Criminal Court issued warrants for Benjamin Netanyahu, Yoav Gallant and Hamas terrorist commander Mohammed Deif, alleging war crimes and crimes against humanity; no convictions are asserted. Israeli institutional statements corroborate the proceedings, without adopting their political characterizations.",
           "בית הדין הבינלאומי לצדק נתן את הצו ב־26 בינואר 2024 בתביעת דרום אפריקה לפי האמנה למניעת רצח עם; אין זו הכרעה שנעשה רצח עם. ב־21 בנובמבר 2024 הוציא בית הדין הפלילי הבינלאומי צווים נגד בנימין נתניהו, יואב גלנט ומפקד הטרור של חמאס מוחמד דף, בחשד לפשעי מלחמה ולפשעים נגד האנושות; אין מדובר בהרשעות."
         ]
       },
@@ -874,9 +875,9 @@
         ],
         "confidence": "high",
         "notes": [
-          "April and October exchanges are selected by UI and the CRS regional retrospective (Reuters independently selects April). No claim that an April ceasefire was signed. UI selects June onset; AP and Commons give day precision and the US intervention. Commons dates Trump’s announcement 23 June (US time), AP labels it 24 June; preserve the difference. A 2026 Iran war is outside this grouped 2024–25 row and remains pending.",
-          "No shared causal explanation for April is asserted: Reuters links it to the Damascus embassy-compound strike, but UI’s selection timeline does not. PMO’s dated 24 June statement supplies the effective ceasefire day separately from the announcement-date conflict.",
-          "Iran attacked Israel with missiles and drones on 13 April 2024; Reuters attributes the 19 April Isfahan strike to Israel as a presumption. Further direct exchanges followed in October. MFA supplies the June operation’s name and launch; INSS independently dates the June war. Iran struck Israel during that war, and the US attacked Iranian nuclear sites on 22 June.",
+          "April and October exchanges are selected by Swedish Institute of International Affairs and the Congressional Research Service regional retrospective (Reuters independently selects April). No claim that an April ceasefire was signed. Swedish Institute of International Affairs selects June onset; AP and Commons give day precision and the US intervention. Commons dates Trump’s announcement 23 June (US time), AP labels it 24 June; preserve the difference. A 2026 Iran war is outside this grouped 2024–25 row and remains pending.",
+          "No shared causal explanation for April is asserted: Reuters links it to the Damascus embassy-compound strike, but Swedish Institute of International Affairs’s selection timeline does not. Prime Minister’s Office’s dated 24 June statement supplies the effective ceasefire day separately from the announcement-date conflict.",
+          "Iran attacked Israel with missiles and drones on 13 April 2024; Reuters attributes the 19 April Isfahan strike to Israel as a presumption. Further direct exchanges followed in October. Ministry of Foreign Affairs supplies the June operation’s name and launch; Institute for National Security Studies independently dates the June war. Iran struck Israel during that war, and the US attacked Iranian nuclear sites on 22 June.",
           "איראן תקפה את ישראל בטילים ובכטב״מים ב־13 באפריל 2024; רויטרס ייחסה לישראל את התקיפה ליד אספהאן ב־19 באפריל כהערכה. באוקטובר היו חילופי תקיפות נוספים. במבצע עם כלביא תקפה איראן את ישראל, וארה״ב תקפה אתרי גרעין באיראן ב־22 ביוני; הפסקת האש נכנסה לתוקף ב־24 ביוני 2025."
         ]
       },
@@ -902,8 +903,8 @@
         ],
         "confidence": "high",
         "notes": [
-          "Retrospective selection by CRS corroborates LoC’s pre-election institutional chronology. No results, seats or government end date imported. LoC calls 17 July dissolution; Globes distinguishes that date from legal continuity and recess. Enacted dissolution law/date needs original Knesset or Gazette verification and is retained pending.",
-          "The CEC’s Hebrew operational calendar anchors the scheduled date; CRS’s post-election retrospective supports that the election occurred. The CEC schedule alone is not evidence of completed voting."
+          "Retrospective selection by Congressional Research Service corroborates Library of Congress’s pre-election institutional chronology. No results, seats or government end date imported. Library of Congress calls 17 July dissolution; Globes distinguishes that date from legal continuity and recess. The enacted dissolution law and its date still need checking in the Knesset record or the Gazette.",
+          "The Central Elections Committee’s Hebrew operational calendar anchors the scheduled date; Congressional Research Service’s post-election retrospective supports that the election occurred. The Central Elections Committee schedule alone is not evidence of completed voting."
         ]
       }
     ],
@@ -916,12 +917,12 @@
       {
         "label": "Enacted dissolution law / legal status of 17 July 2026",
         "date": "2026-07-17",
-        "why": "LoC election explainer calls 17 July dissolution; Globes 12 July explains continuity and pre-election recess. June 2 Knesset notice is first reading only and proposes an earlier election window. No enacted law/Gazette inspected; do not convert first reading or recess into legal dissolution."
+        "why": "Library of Congress election explainer calls 17 July dissolution; Globes 12 July explains continuity and pre-election recess. June 2 Knesset notice is first reading only and proposes an earlier election window. No enacted law or Gazette notice was checked; a first reading or a recess is not a legal dissolution."
       },
       {
         "label": "Renewed Iran war and Lebanon fighting in 2026",
         "date": "2026",
-        "why": "CFR chronology selects renewed Lebanon fighting after US–Israel attacks on Iran in 2026; no fully inspected independent second chronology for the 2026 phase assembled. INSS dashboard returned 403; not treated as read."
+        "why": "Council on Foreign Relations chronology selects renewed Lebanon fighting after US–Israel attacks on Iran in 2026; no fully inspected independent second chronology for the 2026 phase assembled. Institute for National Security Studies dashboard returned 403; not treated as read."
       }
     ],
     "start": "2022-12-29",
@@ -936,7 +937,8 @@
         {
           "source": "knesset-term-boundary-2026",
           "quote": "KnessetDateID: 169; KnessetNum: 26; PlenumStart: 2026-11-10T00:00:00; IsCurrent: true",
-          "note": "Project extraction of official fields, not a prose quotation. All 120 final k25 member records have FinishDate 2026-11-10T00:00:00; retained in data/raw/k25/knesset-odata-members.json."
+          "note": "Fields of the Knesset’s official record, not a quoted sentence: the membership of all 120 members of the 25th Knesset ends on 10 November 2026.",
+          "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: החברות של כל 120 חברי הכנסת ה־25 מסתיימת ב־10 בנובמבר 2026."
         }
       ]
     }
@@ -978,7 +980,8 @@
           {
             "source": "role-roster-37",
             "quote": "PersonToPositionID 30679; PersonID 965; PositionID 45; StartDate 2022-12-29T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. בנימין נתניהו; faction join: הליכוד "
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: בנימין נתניהו; faction: הליכוד.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בנימין נתניהו; סיעה: הליכוד."
           }
         ]
       },
@@ -991,7 +994,8 @@
           {
             "source": "role-roster-37",
             "quote": "PersonToPositionID 30691; PersonID 30811; PositionID 39; StartDate 2022-12-29T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. איתמר בן גביר; faction join: עוצמה יהודית בראשות איתמר בן גביר"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: איתמר בן גביר; faction: עוצמה יהודית בראשות איתמר בן גביר.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: איתמר בן גביר; סיעה: עוצמה יהודית בראשות איתמר בן גביר."
           }
         ]
       },
@@ -1004,7 +1008,8 @@
           {
             "source": "role-roster-37",
             "quote": "PersonToPositionID 30687; PersonID 30804; PositionID 39; StartDate 2022-12-29T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. חיים ביטון; faction join: התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים ביטון; faction: התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים ביטון; סיעה: התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל."
           }
         ]
       },
@@ -1017,7 +1022,8 @@
           {
             "source": "role-roster-37",
             "quote": "PersonToPositionID 30682; PersonID 30846; PositionID 39; StartDate 2022-12-29T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יצחק גולדקנופ; faction join: יהדות התורה"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק גולדקנופ; faction: יהדות התורה.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק גולדקנופ; סיעה: יהדות התורה."
           }
         ]
       }
@@ -1030,7 +1036,7 @@
       }
     ],
     "notes": [
-      "Coalition weights are election-list seats, checked against public/data/k25.json and its first-government scheme. Religious Zionism, Otzma Yehudit and Noam share ballot ט; do not double-count their factions.",
+      "Coalition weights are election-list seats, checked against the official results and the first-government grouping. Religious Zionism, Otzma Yehudit and Noam shared ballot ט; their factions are counted once.",
       "The government continued after the next election; no unverified end date is supplied."
     ],
     "confidenceVote": {
@@ -1070,7 +1076,8 @@
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":30798,\"PersonID\":30814,\"PositionID\":40,\"KnessetNum\":25,\"StartDate\":\"2023-01-03T00:00:00\",\"FinishDate\":\"2023-03-01T00:00:00\",\"GovMinistryID\":568,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"סגן שר במשרד ראש הממשלה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-03-03T05:45:34.657\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30814 is אבי מעוז (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: אבי מעוז.",
+            "noteHe": "הרישום הרשמי של הכנסת: אבי מעוז."
           }
         ],
         "notes": [
@@ -1086,7 +1093,8 @@
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31626,\"PersonID\":30814,\"PositionID\":40,\"KnessetNum\":25,\"StartDate\":\"2023-06-05T00:00:00\",\"FinishDate\":\"2025-03-26T00:00:00\",\"GovMinistryID\":568,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"סגן שר במשרד ראש הממשלה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-03-27T13:01:50.76\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30814 is אבי מעוז (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: אבי מעוז.",
+            "noteHe": "הרישום הרשמי של הכנסת: אבי מעוז."
           }
         ],
         "notes": [
@@ -1102,27 +1110,32 @@
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31713,\"PersonID\":30657,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2024-06-13T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שר\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-06-13T10:16:18.113\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30657 is בנימין גנץ (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: בנימין גנץ.",
+            "noteHe": "הרישום הרשמי של הכנסת: בנימין גנץ."
           },
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31714,\"PersonID\":30836,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2024-06-13T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שר\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-06-13T10:14:52.787\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30836 is גדי איזנקוט (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: גדי איזנקוט.",
+            "noteHe": "הרישום הרשמי של הכנסת: גדי איזנקוט."
           },
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31715,\"PersonID\":1027,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2024-03-27T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שר\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-03-28T09:18:26.863\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 1027 is גדעון סער (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: גדעון סער.",
+            "noteHe": "הרישום הרשמי של הכנסת: גדעון סער."
           },
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31716,\"PersonID\":30683,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2024-06-13T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שר\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-06-13T10:15:48.637\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30683 is חילי טרופר (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: חילי טרופר.",
+            "noteHe": "הרישום הרשמי של הכנסת: חילי טרופר."
           },
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31717,\"PersonID\":30082,\"PositionID\":57,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2024-03-27T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שרה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-03-28T09:19:43.95\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30082 is יפעת שאשא ביטון (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: יפעת שאשא ביטון.",
+            "noteHe": "הרישום הרשמי של הכנסת: יפעת שאשא ביטון."
           }
         ],
         "notes": [
@@ -1138,16 +1151,18 @@
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31715,\"PersonID\":1027,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2024-03-27T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שר\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-03-28T09:18:26.863\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 1027 is גדעון סער (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: גדעון סער.",
+            "noteHe": "הרישום הרשמי של הכנסת: גדעון סער."
           },
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31717,\"PersonID\":30082,\"PositionID\":57,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2024-03-27T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שרה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-03-28T09:19:43.95\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30082 is יפעת שאשא ביטון (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: יפעת שאשא ביטון.",
+            "noteHe": "הרישום הרשמי של הכנסת: יפעת שאשא ביטון."
           }
         ],
         "notes": [
-          "OData service endpoint; the party exit was announced on 25 March according to the retained event record. Distinguish political announcement from formal service end."
+          "The date is the end of the appointments in the Knesset’s record; the party announced its exit on 25 March. The announcement and the formal end are different dates."
         ]
       },
       {
@@ -1159,21 +1174,24 @@
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31713,\"PersonID\":30657,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2024-06-13T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שר\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-06-13T10:16:18.113\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30657 is בנימין גנץ (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: בנימין גנץ.",
+            "noteHe": "הרישום הרשמי של הכנסת: בנימין גנץ."
           },
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31714,\"PersonID\":30836,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2024-06-13T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שר\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-06-13T10:14:52.787\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30836 is גדי איזנקוט (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: גדי איזנקוט.",
+            "noteHe": "הרישום הרשמי של הכנסת: גדי איזנקוט."
           },
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31716,\"PersonID\":30683,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2024-06-13T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שר\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-06-13T10:15:48.637\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30683 is חילי טרופר (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: חילי טרופר.",
+            "noteHe": "הרישום הרשמי של הכנסת: חילי טרופר."
           }
         ],
         "notes": [
-          "The retained press event dates the National Unity exit announcement to 9 June. Official register gives 13 June endpoints; original resignation letters/effective timestamps were not fetched. Preserve this discrepancy; do not silently change 9 June to 13 June as the political departure date."
+          "A press report dates National Unity’s exit announcement to 9 June. The Knesset’s record ends the appointments on 13 June; the resignation letters were not checked. Both dates are kept: 9 June for the announcement, 13 June for the formal end."
         ]
       },
       {
@@ -1185,7 +1203,8 @@
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":32020,\"PersonID\":1027,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2024-09-30T00:00:00\",\"FinishDate\":\"2024-11-08T00:00:00\",\"GovMinistryID\":1434,\"GovMinistryName\":\"בלי תיק\",\"DutyDesc\":\"שר בלי תיק\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2024-11-09T20:00:16.94\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 1027 is גדעון סער (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: גדעון סער.",
+            "noteHe": "הרישום הרשמי של הכנסת: גדעון סער."
           }
         ]
       },
@@ -1198,21 +1217,24 @@
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":30691,\"PersonID\":30811,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2022-12-29T00:00:00\",\"FinishDate\":\"2025-01-21T00:00:00\",\"GovMinistryID\":1361,\"GovMinistryName\":\"המשרד לביטחון לאומי\",\"DutyDesc\":\"השר לביטחון לאומי\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-01-21T10:05:35.967\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30811 is איתמר בן גביר (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: איתמר בן גביר.",
+            "noteHe": "הרישום הרשמי של הכנסת: איתמר בן גביר."
           },
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31261,\"PersonID\":30847,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2022-12-29T00:00:00\",\"FinishDate\":\"2025-01-21T00:00:00\",\"GovMinistryID\":844,\"GovMinistryName\":\"משרד הנגב, הגליל והחוסן הלאומי\",\"DutyDesc\":\"שר הנגב, הגליל והחוסן הלאומי\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-01-21T10:04:15.577\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30847 is יצחק שמעון וסרלאוף (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: יצחק שמעון וסרלאוף.",
+            "noteHe": "הרישום הרשמי של הכנסת: יצחק שמעון וסרלאוף."
           },
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31463,\"PersonID\":30857,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2022-12-29T00:00:00\",\"FinishDate\":\"2025-01-21T00:00:00\",\"GovMinistryID\":884,\"GovMinistryName\":\"משרד המורשת\",\"DutyDesc\":\"שר המורשת\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-01-21T10:06:21.743\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30857 is עמיחי אליהו (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: עמיחי אליהו.",
+            "noteHe": "הרישום הרשמי של הכנסת: עמיחי אליהו."
           }
         ],
         "notes": [
-          "The retained event dates Otzma Yehudit’s announcement and submission of resignation letters to 19 January; these official office endpoints are two days later."
+          "Reports date Otzma Yehudit’s announcement and resignation letters to 19 January; the official end of the appointments is two days later."
         ]
       },
       {
@@ -1224,17 +1246,20 @@
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":32164,\"PersonID\":30811,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2025-03-19T00:00:00\",\"FinishDate\":\"2026-11-10T00:00:00\",\"GovMinistryID\":1361,\"GovMinistryName\":\"המשרד לביטחון לאומי\",\"DutyDesc\":\"השר לביטחון לאומי\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2026-11-04T10:00:52.987\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30811 is איתמר בן גביר (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: איתמר בן גביר.",
+            "noteHe": "הרישום הרשמי של הכנסת: איתמר בן גביר."
           },
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":32165,\"PersonID\":30847,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2025-03-19T00:00:00\",\"FinishDate\":\"2026-11-10T00:00:00\",\"GovMinistryID\":844,\"GovMinistryName\":\"משרד הנגב, הגליל והחוסן הלאומי\",\"DutyDesc\":\"שר הנגב, הגליל והחוסן הלאומי\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2026-11-04T10:00:52.987\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30847 is יצחק שמעון וסרלאוף (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: יצחק שמעון וסרלאוף.",
+            "noteHe": "הרישום הרשמי של הכנסת: יצחק שמעון וסרלאוף."
           },
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":32166,\"PersonID\":30857,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2025-03-19T00:00:00\",\"FinishDate\":\"2026-11-10T00:00:00\",\"GovMinistryID\":884,\"GovMinistryName\":\"משרד המורשת\",\"DutyDesc\":\"שר המורשת\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2026-11-04T10:00:52.987\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30857 is עמיחי אליהו (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: עמיחי אליהו.",
+            "noteHe": "הרישום הרשמי של הכנסת: עמיחי אליהו."
           }
         ]
       },
@@ -1247,7 +1272,8 @@
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31626,\"PersonID\":30814,\"PositionID\":40,\"KnessetNum\":25,\"StartDate\":\"2023-06-05T00:00:00\",\"FinishDate\":\"2025-03-26T00:00:00\",\"GovMinistryID\":568,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"סגן שר במשרד ראש הממשלה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-03-27T13:01:50.76\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30814 is אבי מעוז (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: אבי מעוז.",
+            "noteHe": "הרישום הרשמי של הכנסת: אבי מעוז."
           }
         ],
         "notes": [
@@ -1263,7 +1289,8 @@
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":30682,\"PersonID\":30846,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2022-12-29T00:00:00\",\"FinishDate\":\"2025-06-15T00:00:00\",\"GovMinistryID\":1146,\"GovMinistryName\":\"משרד הבינוי והשיכון\",\"DutyDesc\":\"שר הבינוי והשיכון\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-02T10:33:43.193\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30846 is יצחק גולדקנופ (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: יצחק גולדקנופ.",
+            "noteHe": "הרישום הרשמי של הכנסת: יצחק גולדקנופ."
           }
         ],
         "notes": [
@@ -1279,12 +1306,14 @@
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":30803,\"PersonID\":11835,\"PositionID\":40,\"KnessetNum\":25,\"StartDate\":\"2023-01-03T00:00:00\",\"FinishDate\":\"2025-07-16T00:00:00\",\"GovMinistryID\":568,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"סגן שר במשרד ראש הממשלה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-17T00:19:08.56\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 11835 is אורי מקלב (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: אורי מקלב.",
+            "noteHe": "הרישום הרשמי של הכנסת: אורי מקלב."
           },
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":30804,\"PersonID\":11835,\"PositionID\":40,\"KnessetNum\":25,\"StartDate\":\"2023-01-03T00:00:00\",\"FinishDate\":\"2025-07-16T00:00:00\",\"GovMinistryID\":686,\"GovMinistryName\":\"משרד התחבורה והבטיחות בדרכים\",\"DutyDesc\":\"סגן שר במשרד התחבורה והבטיחות בדרכים\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-17T00:19:37.923\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 11835 is אורי מקלב (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: אורי מקלב.",
+            "noteHe": "הרישום הרשמי של הכנסת: אורי מקלב."
           }
         ],
         "notes": [
@@ -1300,12 +1329,14 @@
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31012,\"PersonID\":563,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-01-23T00:00:00\",\"FinishDate\":\"2025-07-17T00:00:00\",\"GovMinistryID\":583,\"GovMinistryName\":\"משרד ירושלים ומסורת ישראל\",\"DutyDesc\":\"השר לירושלים ומסורת ישראל\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-17T00:26:05.377\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 563 is מאיר פרוש (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: מאיר פרוש.",
+            "noteHe": "הרישום הרשמי של הכנסת: מאיר פרוש."
           },
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":30802,\"PersonID\":30671,\"PositionID\":40,\"KnessetNum\":25,\"StartDate\":\"2023-01-03T00:00:00\",\"FinishDate\":\"2025-07-17T00:00:00\",\"GovMinistryID\":589,\"GovMinistryName\":\"משרד התרבות והספורט\",\"DutyDesc\":\"סגן שר במשרד התרבות והספורט\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-17T00:29:32.98\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30671 is יעקב טסלר (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: יעקב טסלר.",
+            "noteHe": "הרישום הרשמי של הכנסת: יעקב טסלר."
           }
         ],
         "notes": [
@@ -1321,36 +1352,42 @@
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":30687,\"PersonID\":30804,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2022-12-29T00:00:00\",\"FinishDate\":\"2025-07-20T00:00:00\",\"GovMinistryID\":1004,\"GovMinistryName\":\"משרד החינוך\",\"DutyDesc\":\"שר בלי תיק במשרד החינוך\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-20T10:51:16.473\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30804 is חיים ביטון (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: חיים ביטון.",
+            "noteHe": "הרישום הרשמי של הכנסת: חיים ביטון."
           },
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":30699,\"PersonID\":30470,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2022-12-29T00:00:00\",\"FinishDate\":\"2025-07-20T00:00:00\",\"GovMinistryID\":1283,\"GovMinistryName\":\"המשרד לשירותי דת\",\"DutyDesc\":\"השר לשירותי דת\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-20T10:59:33.477\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30470 is מיכאל מלכיאלי (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: מיכאל מלכיאלי.",
+            "noteHe": "הרישום הרשמי של הכנסת: מיכאל מלכיאלי."
           },
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31010,\"PersonID\":1056,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2022-12-29T00:00:00\",\"FinishDate\":\"2025-07-20T00:00:00\",\"GovMinistryID\":711,\"GovMinistryName\":\"משרד הרווחה והביטחון החברתי\",\"DutyDesc\":\"שר הרווחה והביטחון החברתי\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-20T10:57:27.803\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 1056 is יעקב מרגי (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: יעקב מרגי.",
+            "noteHe": "הרישום הרשמי של הכנסת: יעקב מרגי."
           },
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31042,\"PersonID\":28513,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-01-30T00:00:00\",\"FinishDate\":\"2025-07-20T00:00:00\",\"GovMinistryID\":830,\"GovMinistryName\":\"משרד העבודה\",\"DutyDesc\":\"שר העבודה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-20T10:42:26.743\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 28513 is יואב בן צור (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: יואב בן צור.",
+            "noteHe": "הרישום הרשמי של הכנסת: יואב בן צור."
           },
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31712,\"PersonID\":30765,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-10-12T00:00:00\",\"FinishDate\":\"2025-07-20T00:00:00\",\"GovMinistryID\":1112,\"GovMinistryName\":\"משרד הבריאות\",\"DutyDesc\":\"שר הבריאות\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-20T14:36:49.72\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30765 is אוריאל בוסו (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: אוריאל בוסו.",
+            "noteHe": "הרישום הרשמי של הכנסת: אוריאל בוסו."
           },
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":30801,\"PersonID\":30749,\"PositionID\":40,\"KnessetNum\":25,\"StartDate\":\"2023-01-03T00:00:00\",\"FinishDate\":\"2025-07-20T00:00:00\",\"GovMinistryID\":967,\"GovMinistryName\":\"משרד החקלאות וביטחון המזון\",\"DutyDesc\":\"סגן שר במשרד החקלאות וביטחון המזון\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-20T14:35:58.843\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30749 is משה אבוטבול (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: משה אבוטבול.",
+            "noteHe": "הרישום הרשמי של הכנסת: משה אבוטבול."
           }
         ],
         "notes": [
-          "Shas announced cabinet withdrawal on 16 July in the retained event. Do not infer that Shas ended all parliamentary coalition support. Interior Minister Moshe Arbel is recorded separately."
+          "Shas announced on 16 July that it was leaving the cabinet. That does not mean it ended all support for the coalition in the Knesset. Interior Minister Moshe Arbel is recorded separately."
         ]
       },
       {
@@ -1362,7 +1399,8 @@
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31464,\"PersonID\":30660,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-04-19T00:00:00\",\"FinishDate\":\"2025-07-22T00:00:00\",\"GovMinistryID\":754,\"GovMinistryName\":\"משרד הפנים\",\"DutyDesc\":\"שר הפנים\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-23T10:40:03.003\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 30660 is משה ארבל (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: משה ארבל.",
+            "noteHe": "הרישום הרשמי של הכנסת: משה ארבל."
           }
         ]
       },
@@ -1375,7 +1413,8 @@
           {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":33678,\"PersonID\":1057,\"PositionID\":40,\"KnessetNum\":25,\"StartDate\":\"2026-01-19T00:00:00\",\"FinishDate\":\"2026-11-10T00:00:00\",\"GovMinistryID\":618,\"GovMinistryName\":\"משרד התקשורת\",\"DutyDesc\":\"סגן שר במשרד התקשורת\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2026-11-11T14:34:30.607\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 1057 is ישראל אייכלר (data/research/knesset-member-changes/k25.json)."
+            "note": "The Knesset’s official record: ישראל אייכלר.",
+            "noteHe": "הרישום הרשמי של הכנסת: ישראל אייכלר."
           },
           {
             "source": "plenum-2026-01-19",

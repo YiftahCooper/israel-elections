@@ -174,6 +174,6 @@ describe('k16 — released national and locality datasets; explicit roster limit
     expect(ds.lists.reduce((s, l) => s + l.votes, 0)).toBe(ds.totals.valid);
     expect(ds.totals).toMatchObject({ registered: 4_720_075, votesCast: 3_200_773, valid: 3_148_364, invalid: 52_409, ballotBoxes: 7885, localities: 1171 });
     expect(loc.rows.reduce((s, r) => s + r.votesCast, 0)).toBe(ds.totals.votesCast - 0);
-    expect(ds.status.noteEn).toMatch(/CBS/);
+    expect(ds.status.noteEn).toMatch(/Central Bureau of Statistics/);
   });
 });

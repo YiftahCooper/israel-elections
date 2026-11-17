@@ -1,0 +1,1775 @@
+[
+ {
+  "id": "k26-ballots-csv",
+  "field": "description",
+  "before": "26th Knesset complete CEC count by polling station (קלפי); updated 4 November 2026; national totals agree with the results notice (k26-results-gazette)",
+  "after": "26th Knesset complete Central Elections Committee count by polling station (קלפי); updated 4 November 2026; national totals agree with the results notice"
+ },
+ {
+  "id": "k26-localities-csv",
+  "field": "description",
+  "before": "26th Knesset complete CEC count by locality (יישוב); updated 4 November 2026; national totals agree with the results notice (k26-results-gazette)",
+  "after": "26th Knesset complete Central Elections Committee count by locality (יישוב); updated 4 November 2026; national totals agree with the results notice"
+ },
+ {
+  "id": "k25-surplus-press",
+  "field": "description",
+  "before": "CEC press release listing the surplus-vote agreements filed for the 25th Knesset",
+  "after": "Central Elections Committee press release listing the surplus-vote agreements filed for the 25th Knesset"
+ },
+ {
+  "id": "k25-ballots-datagov",
+  "field": "publisher",
+  "before": "ועדת הבחירות המרכזית via data.gov.il (dataset votes-knesset)",
+  "after": "ועדת הבחירות המרכזית via data.gov.il"
+ },
+ {
+  "id": "k25-ballots-datagov",
+  "field": "publisherEn",
+  "before": "Central Elections Committee via data.gov.il (dataset votes-knesset)",
+  "after": "Central Elections Committee via data.gov.il"
+ },
+ {
+  "id": "k25-localities-datagov",
+  "field": "publisher",
+  "before": "ועדת הבחירות המרכזית via data.gov.il (dataset votes-knesset)",
+  "after": "ועדת הבחירות המרכזית via data.gov.il"
+ },
+ {
+  "id": "k25-localities-datagov",
+  "field": "publisherEn",
+  "before": "Central Elections Committee via data.gov.il (dataset votes-knesset)",
+  "after": "Central Elections Committee via data.gov.il"
+ },
+ {
+  "id": "law-elections",
+  "field": "description",
+  "before": "Sections 81–83 (threshold, general quota, Bader–Ofer, surplus agreements, lottery tie-break). Text quoted in docs/ELECTORAL-LAW.md.",
+  "after": "Sections 81–83 (threshold, general quota, Bader–Ofer, surplus agreements, lottery tie-break)."
+ },
+ {
+  "id": "k20-candidates-gazette",
+  "field": "note",
+  "before": "YP 7000 pp3938–3952: complete registered rosters. Rank 10 for יץ is encoded as 01 in the PDF text. Resignation notices in YP7001 are labelled in list notes (decision 0030).",
+  "after": "Yalkut HaPirsumim 7000 pp3938–3952: complete registered rosters. Rank 10 for יץ is encoded as 01 in the PDF text. Resignation notices in Yalkut HaPirsumim 7001 are labelled in list notes."
+ },
+ {
+  "id": "k21-candidates-gazette",
+  "field": "note",
+  "before": "YP 8168 pp9022–9046: complete registered rosters. Identical printed duplicates at אמת #100 and שס #70 are coalesced; end ranks are audited per list (decision 0030).",
+  "after": "Yalkut HaPirsumim 8168 pp9022–9046: complete registered rosters. Identical printed duplicates at אמת #100 and שס #70 are coalesced; end ranks are audited per list."
+ },
+ {
+  "id": "k20-surplus-gazette",
+  "field": "publisher",
+  "before": "Reshumot / Central Elections Committee (olaw.org.il mirror)",
+  "after": "Reshumot / Central Elections Committee (copy at olaw.org.il)"
+ },
+ {
+  "id": "k20-surplus-gazette",
+  "field": "note",
+  "before": "Primary statutory notice, YP7001 p3954, retrieved from the olaw.org.il mirror. Complete numbered notice (1)–(4), reading the right column then the top of the left. Also contains candidate resignation notices.",
+  "after": "Primary statutory notice, Yalkut HaPirsumim 7001 p3954, retrieved from the olaw.org.il mirror. Complete numbered notice (1)–(4), reading the right column then the top of the left. Also contains candidate resignation notices."
+ },
+ {
+  "id": "k21-surplus-gazette",
+  "field": "publisher",
+  "before": "Reshumot / Central Elections Committee (olaw.org.il mirror)",
+  "after": "Reshumot / Central Elections Committee (copy at olaw.org.il)"
+ },
+ {
+  "id": "k21-surplus-gazette",
+  "field": "note",
+  "before": "Primary statutory notice, YP8178 p9310, retrieved from the olaw.org.il mirror. Complete numbered notice (1)–(6), including ףץ–ףז.",
+  "after": "Primary statutory notice, Yalkut HaPirsumim 8178 p9310, retrieved from the olaw.org.il mirror. Complete numbered notice (1)–(6), including ףץ–ףז."
+ },
+ {
+  "id": "k23-surplus-gazette",
+  "field": "publisher",
+  "before": "Reshumot / Central Elections Committee (olaw.org.il mirror)",
+  "after": "Reshumot / Central Elections Committee (copy at olaw.org.il)"
+ },
+ {
+  "id": "k20-results-gazette",
+  "field": "note",
+  "before": "YP 7010 pp4370–4373: votes, invalid ballots, seats and elected members. Registered voters are not published in this notice; the official locality and polling-station tables both aggregate to 5,881,696 (decision 0030).",
+  "after": "Yalkut HaPirsumim 7010 pp4370–4373: votes, invalid ballots, seats and elected members. Registered voters are not published in this notice; the official locality and polling-station tables both aggregate to 5,881,696."
+ },
+ {
+  "id": "k16-surplus-gazette",
+  "field": "publisher",
+  "before": "Reshumot / Yalkut HaPirsumim 5151 (olaw.org.il mirror)",
+  "after": "Reshumot / Yalkut HaPirsumim 5151 (copy at olaw.org.il)"
+ },
+ {
+  "id": "k16-cbs-national-summary",
+  "field": "note",
+  "before": " Release uses this official CBS table for registered voters only. National valid/invalid totals come from the results gazette; cast is their sum. CBS/polling 2006 cast is nine below that sum; no authoritative explanation is known.",
+  "after": " Release uses this official Central Bureau of Statistics table for registered voters only. National valid/invalid totals come from the results gazette; cast is their sum. Central Bureau of Statistics/polling 2006 cast is nine below that sum; no authoritative explanation is known."
+ },
+ {
+  "id": "k16-national-reviewed",
+  "field": "publisher",
+  "before": "Project transcription of official CEC / Reshumot scans",
+  "after": "Project transcription of official Central Elections Committee / Reshumot scans"
+ },
+ {
+  "id": "k17-surplus-gazette",
+  "field": "publisher",
+  "before": "Reshumot / Yalkut HaPirsumim 5510 (olaw.org.il mirror)",
+  "after": "Reshumot / Yalkut HaPirsumim 5510 (copy at olaw.org.il)"
+ },
+ {
+  "id": "k17-cbs-national-summary",
+  "field": "note",
+  "before": " Release uses this official CBS table for registered voters only. National valid/invalid totals come from the results gazette; cast is their sum. CBS/polling 2006 cast is nine below that sum; no authoritative explanation is known.",
+  "after": " Release uses this official Central Bureau of Statistics table for registered voters only. National valid/invalid totals come from the results gazette; cast is their sum. Central Bureau of Statistics/polling 2006 cast is nine below that sum; no authoritative explanation is known."
+ },
+ {
+  "id": "k17-national-reviewed",
+  "field": "publisher",
+  "before": "Project transcription of official CEC / Reshumot scans",
+  "after": "Project transcription of official Central Elections Committee / Reshumot scans"
+ },
+ {
+  "id": "k16-reconciliation-reviewed",
+  "field": "publisher",
+  "before": "Project derivation of official CEC polling-station data",
+  "after": "Project derivation of official Central Elections Committee polling-station data"
+ },
+ {
+  "id": "k17-reconciliation-reviewed",
+  "field": "publisher",
+  "before": "Project derivation of official CEC polling-station data",
+  "after": "Project derivation of official Central Elections Committee polling-station data"
+ },
+ {
+  "id": "k22-surplus-gazette",
+  "field": "publisher",
+  "before": "Reshumot — Yalkut HaPirsumim 8430 (official statutory notice, mirrored by olaw.org.il)",
+  "after": "Reshumot — Yalkut HaPirsumim 8430 (official notice, copy at olaw.org.il)"
+ },
+ {
+  "id": "k24-surplus-gazette",
+  "field": "publisher",
+  "before": "Reshumot — Yalkut HaPirsumim 9478 (official statutory notice, mirrored by olaw.org.il)",
+  "after": "Reshumot — Yalkut HaPirsumim 9478 (official notice, copy at olaw.org.il)"
+ },
+ {
+  "id": "k18-surplus-gazette",
+  "field": "publisher",
+  "before": "Reshumot / Central Elections Committee (olaw.org.il mirror)",
+  "after": "Reshumot / Central Elections Committee (copy at olaw.org.il)"
+ },
+ {
+  "id": "k18-surplus-gazette",
+  "field": "description",
+  "before": "YP 5912 p. 2254: complete eight-pair surplus notice; primary statutory publication retrieved from mirror",
+  "after": "Yalkut HaPirsumim 5912 p. 2254: complete eight-pair surplus notice; primary statutory publication retrieved from mirror"
+ },
+ {
+  "id": "k19-surplus-gazette",
+  "field": "publisher",
+  "before": "Reshumot / Central Elections Committee (olaw.org.il mirror)",
+  "after": "Reshumot / Central Elections Committee (copy at olaw.org.il)"
+ },
+ {
+  "id": "k19-surplus-gazette",
+  "field": "description",
+  "before": "YP 6530 p. 2156: complete seven-pair surplus notice; primary statutory publication retrieved from mirror",
+  "after": "Yalkut HaPirsumim 6530 p. 2156: complete seven-pair surplus notice; primary statutory publication retrieved from mirror"
+ },
+ {
+  "id": "k18-allocation-memorandum",
+  "field": "description",
+  "before": "CEC allocation memorandum: electorate, valid/invalid/cast totals, votes per list, threshold and quota",
+  "after": "Central Elections Committee allocation memorandum: electorate, valid/invalid/cast totals, votes per list, threshold and quota"
+ },
+ {
+  "id": "k19-final-results-capture",
+  "field": "description",
+  "before": "Numeric capture of the CEC final official national results page, all 32 participating lists; manual transcription, not original HTML",
+  "after": "Numeric capture of the Central Elections Committee final official national results page, all 32 participating lists; manual transcription, not original HTML"
+ },
+ {
+  "id": "k15-results-gazette",
+  "field": "description",
+  "before": "Prime Minister and Knesset final results, elected members, and separate Deri resignation notice; YP 4757 pp.3376–3378.",
+  "after": "Prime Minister and Knesset final results, elected members, and separate Deri resignation notice; Yalkut HaPirsumim 4757 pp.3376–3378."
+ },
+ {
+  "id": "k14-agreements-gazette",
+  "field": "publisher",
+  "before": "State of Israel / Central Elections Committee (olaw.org.il mirror)",
+  "after": "State of Israel / Central Elections Committee (copy at olaw.org.il)"
+ },
+ {
+  "id": "k14-agreements-gazette",
+  "field": "description",
+  "before": "Complete six-pair statutory agreement notice, YP 4411 p.3398; official publication on disclosed olaw.org.il mirror; candidate resignations and whole-list Moreshet Avot withdrawal, p.3398",
+  "after": "Complete six-pair statutory agreement notice, Yalkut HaPirsumim 4411 p.3398; official publication on disclosed olaw.org.il mirror; candidate resignations and whole-list Moreshet Avot withdrawal, p.3398"
+ },
+ {
+  "id": "k13-k15-cbs-national-totals",
+  "field": "description",
+  "before": "Official CBS table 27.2: supplemental electorate and turnout, not a list-vote source",
+  "after": "Official Central Bureau of Statistics table 27.2: supplemental electorate and turnout, not a list-vote source"
+ },
+ {
+  "id": "k15-agreements-gazette",
+  "field": "publisher",
+  "before": "State of Israel / Central Elections Committee (olaw.org.il mirror)",
+  "after": "State of Israel / Central Elections Committee (copy at olaw.org.il)"
+ },
+ {
+  "id": "k15-agreements-gazette",
+  "field": "description",
+  "before": "Complete nine-pair statutory agreement notice, YP 4755 p.3305; official publication on disclosed third-party mirror",
+  "after": "Complete nine-pair statutory agreement notice, Yalkut HaPirsumim 4755 p.3305; official publication on disclosed third-party mirror"
+ },
+ {
+  "id": "k8-results-gazette",
+  "field": "description",
+  "before": "Official results gazette for Knesset 8; retained research source. Government-hosted original.",
+  "after": "Official results gazette for Knesset 8. Government-hosted original."
+ },
+ {
+  "id": "k8-candidates-gazette",
+  "field": "description",
+  "before": "Official candidates gazette for Knesset 8; retained research source. Government-hosted original.",
+  "after": "Official candidates gazette for Knesset 8. Government-hosted original."
+ },
+ {
+  "id": "k8-national-reviewed",
+  "field": "audit",
+  "after": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file."
+ },
+ {
+  "id": "k8-national-reviewed",
+  "field": "description",
+  "before": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
+  "after": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין."
+ },
+ {
+  "id": "k8-national-reviewed",
+  "field": "descriptionEn",
+  "after": "Each list’s votes and seats, typed in from the official results gazette and checked by eye."
+ },
+ {
+  "id": "k9-results-gazette",
+  "field": "description",
+  "before": "Official results gazette for Knesset 9; retained research source. Government-hosted original.",
+  "after": "Official results gazette for Knesset 9. Government-hosted original."
+ },
+ {
+  "id": "k9-candidates-gazette",
+  "field": "description",
+  "before": "Official candidates gazette for Knesset 9; retained research source. Government-hosted original.",
+  "after": "Official candidates gazette for Knesset 9. Government-hosted original."
+ },
+ {
+  "id": "k9-national-reviewed",
+  "field": "audit",
+  "after": "Released national evidence: six official agreements, exact inferred-cap reproduction, all 120 elected names checked; Ratz supplemented by official opening-date Knesset OData."
+ },
+ {
+  "id": "k9-national-reviewed",
+  "field": "description",
+  "before": "Released national evidence: six official agreements, exact inferred-cap reproduction, all 120 elected names checked; Ratz supplemented by official opening-date Knesset OData.",
+  "after": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין; חברת הכנסת שנבחרה מטעם רצ לפי רישומי הכנסת."
+ },
+ {
+  "id": "k9-national-reviewed",
+  "field": "descriptionEn",
+  "after": "Each list’s votes and seats, typed in from the official results gazette and checked by eye; Ratz’s elected member from the Knesset’s records."
+ },
+ {
+  "id": "k9-candidates-reviewed",
+  "field": "audit",
+  "after": "Official winning-list leading ranks, all 120 elected-name comparisons (119 results gazette plus Ratz official opening-date Knesset OData), page references and explicit spelling variants."
+ },
+ {
+  "id": "k9-candidates-reviewed",
+  "field": "description",
+  "before": "Official winning-list leading ranks, all 120 elected-name comparisons (119 results gazette plus Ratz official opening-date Knesset OData), page references and explicit spelling variants.",
+  "after": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו."
+ },
+ {
+  "id": "k9-candidates-reviewed",
+  "field": "descriptionEn",
+  "after": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name."
+ },
+ {
+  "id": "k10-results-gazette",
+  "field": "description",
+  "before": "Official results gazette for Knesset 10; retained research source. Government-hosted original.",
+  "after": "Official results gazette for Knesset 10. Government-hosted original."
+ },
+ {
+  "id": "k10-candidates-gazette",
+  "field": "description",
+  "before": "Official candidates gazette for Knesset 10; retained research source. Government-hosted original.",
+  "after": "Official candidates gazette for Knesset 10. Government-hosted original."
+ },
+ {
+  "id": "k10-national-reviewed",
+  "field": "audit",
+  "after": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file."
+ },
+ {
+  "id": "k10-national-reviewed",
+  "field": "description",
+  "before": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
+  "after": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין."
+ },
+ {
+  "id": "k10-national-reviewed",
+  "field": "descriptionEn",
+  "after": "Each list’s votes and seats, typed in from the official results gazette and checked by eye."
+ },
+ {
+  "id": "k11-results-gazette",
+  "field": "description",
+  "before": "Official results gazette for Knesset 11; retained research source. Government-hosted original.",
+  "after": "Official results gazette for Knesset 11. Government-hosted original."
+ },
+ {
+  "id": "k11-candidates-gazette",
+  "field": "publisher",
+  "before": "Central Elections Committee / Reshumot (olaw.org.il mirror)",
+  "after": "Central Elections Committee / Reshumot (copy at olaw.org.il)"
+ },
+ {
+  "id": "k11-candidates-gazette",
+  "field": "description",
+  "before": "Official candidates gazette for Knesset 11; retained research source. olaw.org.il mirror of Reshumot; not an independent secondary account.",
+  "after": "Official candidates gazette for Knesset 11. olaw.org.il mirror of Reshumot; not an independent secondary account."
+ },
+ {
+  "id": "k11-national-reviewed",
+  "field": "audit",
+  "after": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file."
+ },
+ {
+  "id": "k11-national-reviewed",
+  "field": "description",
+  "before": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
+  "after": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין."
+ },
+ {
+  "id": "k11-national-reviewed",
+  "field": "descriptionEn",
+  "after": "Each list’s votes and seats, typed in from the official results gazette and checked by eye."
+ },
+ {
+  "id": "k11-candidates-reviewed",
+  "field": "audit",
+  "after": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained."
+ },
+ {
+  "id": "k11-candidates-reviewed",
+  "field": "description",
+  "before": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
+  "after": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו."
+ },
+ {
+  "id": "k11-candidates-reviewed",
+  "field": "descriptionEn",
+  "after": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name."
+ },
+ {
+  "id": "k12-results-gazette",
+  "field": "description",
+  "before": "Official results gazette for Knesset 12; retained research source. Government-hosted original.",
+  "after": "Official results gazette for Knesset 12. Government-hosted original."
+ },
+ {
+  "id": "k12-candidates-gazette",
+  "field": "description",
+  "before": "Official candidates gazette for Knesset 12; retained research source. Government-hosted original.",
+  "after": "Official candidates gazette for Knesset 12. Government-hosted original."
+ },
+ {
+  "id": "k12-national-reviewed",
+  "field": "audit",
+  "after": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file."
+ },
+ {
+  "id": "k12-national-reviewed",
+  "field": "description",
+  "before": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
+  "after": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין."
+ },
+ {
+  "id": "k12-national-reviewed",
+  "field": "descriptionEn",
+  "after": "Each list’s votes and seats, typed in from the official results gazette and checked by eye."
+ },
+ {
+  "id": "k8-k12-cbs-national-totals",
+  "field": "description",
+  "before": "CBS table 27.2 (4 July 2024), source CEC; national electorate, cast and valid totals for k8–k12.",
+  "after": "Central Bureau of Statistics table 27.2 (4 July 2024), source Central Elections Committee; national electorate, cast and valid totals for k8–k12."
+ },
+ {
+  "id": "k10-agreements-gazette",
+  "field": "publisher",
+  "before": "Reshumot / CEC (olaw.org.il mirror)",
+  "after": "Reshumot / Central Elections Committee (copy at olaw.org.il)"
+ },
+ {
+  "id": "k10-agreements-gazette",
+  "field": "description",
+  "before": "Official YP2720 p.2027, 21 June 1981; complete three-pair surplus-agreement notice, read through signature. Mirror hosting disclosed.",
+  "after": "Official Yalkut HaPirsumim 2720 p.2027, 21 June 1981; complete three-pair surplus-agreement notice, read through signature. Mirror hosting disclosed."
+ },
+ {
+  "id": "k16-candidates-reviewed",
+  "field": "audit",
+  "after": "Reviewed manual candidate-scan transcription with complete or elected-prefix coverage, page references, independent section 4 results-notice names and explicit printed-name variants; non-winning unavailable rosters and prior membership/reserve checks retained"
+ },
+ {
+  "id": "k16-candidates-reviewed",
+  "field": "description",
+  "before": "Reviewed manual candidate-scan transcription with complete or elected-prefix coverage, page references, independent section 4 results-notice names and explicit printed-name variants; non-winning unavailable rosters and prior membership/reserve checks retained",
+  "after": "רשימות המועמדים (במלואן, או עד הנבחר האחרון), כפי שהוקלדו מהסריקות הרשמיות, וכל נבחר נבדק בשמו."
+ },
+ {
+  "id": "k16-candidates-reviewed",
+  "field": "descriptionEn",
+  "after": "Candidate lists (complete, or up to the last elected member), typed in from the official scans, with every elected member checked by name."
+ },
+ {
+  "id": "k16-localities-reviewed",
+  "field": "audit",
+  "after": "Retained locality sums from official polling stations; null missing metadata; excludes envelope electorate"
+ },
+ {
+  "id": "k16-localities-reviewed",
+  "field": "description",
+  "before": "Retained locality sums from official polling stations; null missing metadata; excludes envelope electorate",
+  "after": "תוצאות לפי יישוב, בסיכום תוצאות הקלפיות הרשמיות; בלי קולות המעטפות הכפולות."
+ },
+ {
+  "id": "k16-localities-reviewed",
+  "field": "descriptionEn",
+  "after": "Results by locality, added up from the official polling-station results; double-envelope votes are not included."
+ },
+ {
+  "id": "k16-membership-odata",
+  "field": "publisher",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "Knesset open data"
+ },
+ {
+  "id": "k17-candidates-reviewed",
+  "field": "audit",
+  "after": "Reviewed manual candidate-scan transcription with complete or elected-prefix coverage, page references, independent section 4 results-notice names and explicit printed-name variants; non-winning unavailable rosters and prior membership/reserve checks retained"
+ },
+ {
+  "id": "k17-candidates-reviewed",
+  "field": "description",
+  "before": "Reviewed manual candidate-scan transcription with complete or elected-prefix coverage, page references, independent section 4 results-notice names and explicit printed-name variants; non-winning unavailable rosters and prior membership/reserve checks retained",
+  "after": "רשימות המועמדים (במלואן, או עד הנבחר האחרון), כפי שהוקלדו מהסריקות הרשמיות, וכל נבחר נבדק בשמו."
+ },
+ {
+  "id": "k17-candidates-reviewed",
+  "field": "descriptionEn",
+  "after": "Candidate lists (complete, or up to the last elected member), typed in from the official scans, with every elected member checked by name."
+ },
+ {
+  "id": "k17-localities-reviewed",
+  "field": "audit",
+  "after": "Retained locality sums from official polling stations; null missing metadata; excludes envelope electorate"
+ },
+ {
+  "id": "k17-localities-reviewed",
+  "field": "description",
+  "before": "Retained locality sums from official polling stations; null missing metadata; excludes envelope electorate",
+  "after": "תוצאות לפי יישוב, בסיכום תוצאות הקלפיות הרשמיות; בלי קולות המעטפות הכפולות."
+ },
+ {
+  "id": "k17-localities-reviewed",
+  "field": "descriptionEn",
+  "after": "Results by locality, added up from the official polling-station results; double-envelope votes are not included."
+ },
+ {
+  "id": "k17-membership-odata",
+  "field": "publisher",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "Knesset open data"
+ },
+ {
+  "id": "k17-candidates-archive-crosscheck",
+  "field": "publisher",
+  "before": "Project capture of primary CEC archive pages",
+  "after": "Project capture of primary Central Elections Committee archive pages"
+ },
+ {
+  "id": "k17-candidates-archive-crosscheck",
+  "field": "description",
+  "before": "Verbatim candidate-name lines from eight archived official CEC pages, used to resolve scan glyphs and line wrapping. Each list includes its actual official URL. Project capture; not a new official publication.",
+  "after": "Verbatim candidate-name lines from eight archived official Central Elections Committee pages, used to resolve scan glyphs and line wrapping. Each list includes its actual official URL. Project capture; not a new official publication."
+ },
+ {
+  "id": "k1-national-reviewed",
+  "field": "audit",
+  "after": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements."
+ },
+ {
+  "id": "k1-national-reviewed",
+  "field": "description",
+  "before": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
+  "after": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה."
+ },
+ {
+  "id": "k1-national-reviewed",
+  "field": "descriptionEn",
+  "after": "Each list’s votes and seats, typed in from the official results gazette and checked by eye; national totals from the Central Bureau of Statistics."
+ },
+ {
+  "id": "k2-national-reviewed",
+  "field": "audit",
+  "after": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements."
+ },
+ {
+  "id": "k2-national-reviewed",
+  "field": "description",
+  "before": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
+  "after": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה."
+ },
+ {
+  "id": "k2-national-reviewed",
+  "field": "descriptionEn",
+  "after": "Each list’s votes and seats, typed in from the official results gazette and checked by eye; national totals from the Central Bureau of Statistics."
+ },
+ {
+  "id": "k3-results-gazette",
+  "field": "description",
+  "before": "Official results gazette for Knesset 3; government-hosted primary publication; YP 432 (8 August 1955), pp.1137–1139, signed 4 August 1955.",
+  "after": "Official results gazette for Knesset 3; government-hosted primary publication; Yalkut HaPirsumim 432 (8 August 1955), pp.1137–1139, signed 4 August 1955."
+ },
+ {
+  "id": "k3-national-reviewed",
+  "field": "audit",
+  "after": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements."
+ },
+ {
+  "id": "k3-national-reviewed",
+  "field": "description",
+  "before": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
+  "after": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה."
+ },
+ {
+  "id": "k3-national-reviewed",
+  "field": "descriptionEn",
+  "after": "Each list’s votes and seats, typed in from the official results gazette and checked by eye; national totals from the Central Bureau of Statistics."
+ },
+ {
+  "id": "k4-national-reviewed",
+  "field": "audit",
+  "after": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements."
+ },
+ {
+  "id": "k4-national-reviewed",
+  "field": "description",
+  "before": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
+  "after": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה."
+ },
+ {
+  "id": "k4-national-reviewed",
+  "field": "descriptionEn",
+  "after": "Each list’s votes and seats, typed in from the official results gazette and checked by eye; national totals from the Central Bureau of Statistics."
+ },
+ {
+  "id": "k5-national-reviewed",
+  "field": "audit",
+  "after": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements."
+ },
+ {
+  "id": "k5-national-reviewed",
+  "field": "description",
+  "before": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
+  "after": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה."
+ },
+ {
+  "id": "k5-national-reviewed",
+  "field": "descriptionEn",
+  "after": "Each list’s votes and seats, typed in from the official results gazette and checked by eye; national totals from the Central Bureau of Statistics."
+ },
+ {
+  "id": "k6-national-reviewed",
+  "field": "audit",
+  "after": "Visually reviewed national votes and published seats; YP 1225 first partner corrected to רא after fresh primary-scan inspection (0069a). Winning-prefix and elected-name release requirements met; no inferred agreements."
+ },
+ {
+  "id": "k6-national-reviewed",
+  "field": "description",
+  "before": "Visually reviewed national votes and published seats; YP 1225 first partner corrected to רא after fresh primary-scan inspection (0069a). Winning-prefix and elected-name release requirements met; no inferred agreements.",
+  "after": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה."
+ },
+ {
+  "id": "k6-national-reviewed",
+  "field": "descriptionEn",
+  "after": "Each list’s votes and seats, typed in from the official results gazette and checked by eye; national totals from the Central Bureau of Statistics."
+ },
+ {
+  "id": "k7-results-gazette",
+  "field": "publisher",
+  "before": "Central Elections Committee / Reshumot (olaw.org.il mirror)",
+  "after": "Central Elections Committee / Reshumot (copy at olaw.org.il)"
+ },
+ {
+  "id": "k7-national-reviewed",
+  "field": "audit",
+  "after": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements."
+ },
+ {
+  "id": "k7-national-reviewed",
+  "field": "description",
+  "before": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
+  "after": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה."
+ },
+ {
+  "id": "k7-national-reviewed",
+  "field": "descriptionEn",
+  "after": "Each list’s votes and seats, typed in from the official results gazette and checked by eye; national totals from the Central Bureau of Statistics."
+ },
+ {
+  "id": "k1-k7-cbs-national-totals",
+  "field": "description",
+  "before": "Official CBS table 27.2; all early electorate/cast/valid totals cross-checked visually.",
+  "after": "Official Central Bureau of Statistics table 27.2; all early electorate/cast/valid totals cross-checked visually."
+ },
+ {
+  "id": "k6-agreements-gazette",
+  "field": "publisher",
+  "before": "Reshumot / Yalkut HaPirsumim 1225, via olaw.org.il mirror",
+  "after": "Reshumot / Yalkut HaPirsumim 1225, copy at olaw.org.il"
+ },
+ {
+  "id": "k6-agreements-gazette",
+  "field": "description",
+  "before": "Primary statutory connected-list notice; mirror disclosed. Fresh visual review confirms את–רא (Alignment–Progress and Development), NOT את–יא, and כא–כס; all pairs retained. See decision 0069a.",
+  "after": "Primary statutory connected-list notice; mirror disclosed. Fresh visual review confirms את–רא (Alignment–Progress and Development), NOT את–יא, and כא–כס; all pairs retained."
+ },
+ {
+  "id": "k7-agreements-gazette",
+  "field": "publisher",
+  "before": "Reshumot / Yalkut HaPirsumim 1565, via olaw.org.il mirror",
+  "after": "Reshumot / Yalkut HaPirsumim 1565, copy at olaw.org.il"
+ },
+ {
+  "id": "k1-k7-law-1948-312737",
+  "field": "description",
+  "before": "1948 electoral statute or amendment; allocation-clause inspection recorded in decision 0060.",
+  "after": "1948 electoral statute or amendment."
+ },
+ {
+  "id": "k1-k7-law-1948",
+  "field": "description",
+  "before": "1948 electoral statute or amendment; allocation-clause inspection recorded in decision 0060.",
+  "after": "1948 electoral statute or amendment."
+ },
+ {
+  "id": "k1-k7-law-1951",
+  "field": "description",
+  "before": "1951 electoral statute or amendment; allocation-clause inspection recorded in decision 0060.",
+  "after": "1951 electoral statute or amendment."
+ },
+ {
+  "id": "k1-k7-law-1955",
+  "field": "description",
+  "before": "1955 electoral statute or amendment; allocation-clause inspection recorded in decision 0060.",
+  "after": "1955 electoral statute or amendment."
+ },
+ {
+  "id": "k1-k7-law-1959",
+  "field": "description",
+  "before": "1959 electoral statute or amendment; allocation-clause inspection recorded in decision 0060.",
+  "after": "1959 electoral statute or amendment."
+ },
+ {
+  "id": "k1-k7-law-1969",
+  "field": "description",
+  "before": "1969 electoral statute or amendment; allocation-clause inspection recorded in decision 0060.",
+  "after": "1969 electoral statute or amendment."
+ },
+ {
+  "id": "k13-candidates-yp4017-idi-6891",
+  "field": "publisher",
+  "before": "Reshumot / Central Elections Committee (facsimile hosted by IDI)",
+  "after": "Reshumot / Central Elections Committee (facsimile at the Israel Democracy Institute)"
+ },
+ {
+  "id": "k13-candidates-yp4017-idi-6891",
+  "field": "description",
+  "before": "YP 4017 official roster facsimile for מחל; printed type only, handwritten annotations ignored. Fills pages absent from the gov.il/olaw scan.",
+  "after": "Yalkut HaPirsumim 4017 official roster facsimile for מחל; printed type only, handwritten annotations ignored. Fills pages absent from the gov.il/olaw scan."
+ },
+ {
+  "id": "k13-candidates-yp4017-idi-6695",
+  "field": "publisher",
+  "before": "Reshumot / Central Elections Committee (facsimile hosted by IDI)",
+  "after": "Reshumot / Central Elections Committee (facsimile at the Israel Democracy Institute)"
+ },
+ {
+  "id": "k13-candidates-yp4017-idi-6695",
+  "field": "description",
+  "before": "YP 4017 official roster facsimile for מרצ; printed type only, handwritten annotations ignored. Fills pages absent from the gov.il/olaw scan.",
+  "after": "Yalkut HaPirsumim 4017 official roster facsimile for מרצ; printed type only, handwritten annotations ignored. Fills pages absent from the gov.il/olaw scan."
+ },
+ {
+  "id": "k13-candidates-yp4017-idi-6731",
+  "field": "publisher",
+  "before": "Reshumot / Central Elections Committee (facsimile hosted by IDI)",
+  "after": "Reshumot / Central Elections Committee (facsimile at the Israel Democracy Institute)"
+ },
+ {
+  "id": "k13-candidates-yp4017-idi-6731",
+  "field": "description",
+  "before": "YP 4017 official roster facsimile for ץ; printed type only, handwritten annotations ignored. Fills pages absent from the gov.il/olaw scan.",
+  "after": "Yalkut HaPirsumim 4017 official roster facsimile for ץ; printed type only, handwritten annotations ignored. Fills pages absent from the gov.il/olaw scan."
+ },
+ {
+  "id": "k13-candidates-yp4017-idi-6654",
+  "field": "publisher",
+  "before": "Reshumot / Central Elections Committee (facsimile hosted by IDI)",
+  "after": "Reshumot / Central Elections Committee (facsimile at the Israel Democracy Institute)"
+ },
+ {
+  "id": "k13-candidates-yp4017-idi-6654",
+  "field": "description",
+  "before": "YP 4017 official roster facsimile for ב; printed type only, handwritten annotations ignored. Fills pages absent from the gov.il/olaw scan.",
+  "after": "Yalkut HaPirsumim 4017 official roster facsimile for ב; printed type only, handwritten annotations ignored. Fills pages absent from the gov.il/olaw scan."
+ },
+ {
+  "id": "k13-candidates-yp4017-idi-6809",
+  "field": "publisher",
+  "before": "Reshumot / Central Elections Committee (facsimile hosted by IDI)",
+  "after": "Reshumot / Central Elections Committee (facsimile at the Israel Democracy Institute)"
+ },
+ {
+  "id": "k13-candidates-yp4017-idi-6809",
+  "field": "description",
+  "before": "YP 4017 official roster facsimile for שס; printed type only, handwritten annotations ignored. Fills pages absent from the gov.il/olaw scan.",
+  "after": "Yalkut HaPirsumim 4017 official roster facsimile for שס; printed type only, handwritten annotations ignored. Fills pages absent from the gov.il/olaw scan."
+ },
+ {
+  "id": "k13-candidates-yp4017-idi-6558",
+  "field": "publisher",
+  "before": "Reshumot / Central Elections Committee (facsimile hosted by IDI)",
+  "after": "Reshumot / Central Elections Committee (facsimile at the Israel Democracy Institute)"
+ },
+ {
+  "id": "k13-candidates-yp4017-idi-6558",
+  "field": "description",
+  "before": "YP 4017 official roster facsimile for ג; printed type only, handwritten annotations ignored. Fills pages absent from the gov.il/olaw scan.",
+  "after": "Yalkut HaPirsumim 4017 official roster facsimile for ג; printed type only, handwritten annotations ignored. Fills pages absent from the gov.il/olaw scan."
+ },
+ {
+  "id": "k13-candidates-yp4017-idi-6608",
+  "field": "publisher",
+  "before": "Reshumot / Central Elections Committee (facsimile hosted by IDI)",
+  "after": "Reshumot / Central Elections Committee (facsimile at the Israel Democracy Institute)"
+ },
+ {
+  "id": "k13-candidates-yp4017-idi-6608",
+  "field": "description",
+  "before": "YP 4017 official roster facsimile for ע; printed type only, handwritten annotations ignored. Fills pages absent from the gov.il/olaw scan.",
+  "after": "Yalkut HaPirsumim 4017 official roster facsimile for ע; printed type only, handwritten annotations ignored. Fills pages absent from the gov.il/olaw scan."
+ },
+ {
+  "id": "k13-national-reviewed",
+  "field": "description",
+  "before": "Reviewed national transcription; source and printed page references retained in JSON.",
+  "after": "Reviewed national transcription, with source and printed page references."
+ },
+ {
+  "id": "k13-rosters-reviewed",
+  "field": "description",
+  "before": "Reviewed rosters transcription; source and printed page references retained in JSON.",
+  "after": "Reviewed rosters transcription, with source and printed page references."
+ },
+ {
+  "id": "k13-elected-reviewed",
+  "field": "description",
+  "before": "Reviewed elected transcription; source and printed page references retained in JSON.",
+  "after": "Reviewed elected transcription, with source and printed page references."
+ },
+ {
+  "id": "k14-national-reviewed",
+  "field": "description",
+  "before": "Reviewed national transcription; source and printed page references retained in JSON.",
+  "after": "Reviewed national transcription, with source and printed page references."
+ },
+ {
+  "id": "k14-rosters-reviewed",
+  "field": "description",
+  "before": "Reviewed rosters transcription; source and printed page references retained in JSON.",
+  "after": "Reviewed rosters transcription, with source and printed page references."
+ },
+ {
+  "id": "k14-elected-reviewed",
+  "field": "description",
+  "before": "Reviewed elected transcription; source and printed page references retained in JSON.",
+  "after": "Reviewed elected transcription, with source and printed page references."
+ },
+ {
+  "id": "k15-national-reviewed",
+  "field": "description",
+  "before": "Reviewed national transcription; source and printed page references retained in JSON.",
+  "after": "Reviewed national transcription, with source and printed page references."
+ },
+ {
+  "id": "k15-rosters-reviewed",
+  "field": "description",
+  "before": "Reviewed rosters transcription; source and printed page references retained in JSON.",
+  "after": "Reviewed rosters transcription, with source and printed page references."
+ },
+ {
+  "id": "k15-elected-reviewed",
+  "field": "description",
+  "before": "Reviewed elected transcription; source and printed page references retained in JSON.",
+  "after": "Reviewed elected transcription, with source and printed page references."
+ },
+ {
+  "id": "k10-candidates-reviewed",
+  "field": "audit",
+  "after": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained."
+ },
+ {
+  "id": "k10-candidates-reviewed",
+  "field": "description",
+  "before": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
+  "after": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו."
+ },
+ {
+  "id": "k10-candidates-reviewed",
+  "field": "descriptionEn",
+  "after": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name."
+ },
+ {
+  "id": "k12-candidates-reviewed",
+  "field": "audit",
+  "after": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained."
+ },
+ {
+  "id": "k12-candidates-reviewed",
+  "field": "description",
+  "before": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
+  "after": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו."
+ },
+ {
+  "id": "k12-candidates-reviewed",
+  "field": "descriptionEn",
+  "after": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name."
+ },
+ {
+  "id": "k8-search-reviewed",
+  "field": "audit",
+  "after": "1973 complete surplus-agreement notice — bounded search scope, retrieval hashes and evidence gaps."
+ },
+ {
+  "id": "k8-search-reviewed",
+  "field": "description",
+  "before": "1973 complete surplus-agreement notice — bounded search scope, retrieval hashes and evidence gaps.",
+  "after": "תיעוד החיפוש אחר ההודעה המלאה על הסכמי העודפים של 1973: היכן חיפשו ומה עדיין חסר."
+ },
+ {
+  "id": "k8-search-reviewed",
+  "field": "descriptionEn",
+  "after": "A record of the search for the complete 1973 surplus-vote agreement notice: where it was looked for and what is still missing."
+ },
+ {
+  "id": "k9-search-reviewed",
+  "field": "audit",
+  "after": "Legal basis of the 1977 unfillable seat and missing Ratz elected-member paragraph — bounded search scope, retrieval hashes and evidence gaps."
+ },
+ {
+  "id": "k9-search-reviewed",
+  "field": "description",
+  "before": "Legal basis of the 1977 unfillable seat and missing Ratz elected-member paragraph — bounded search scope, retrieval hashes and evidence gaps.",
+  "after": "תיעוד החיפוש אחר הבסיס החוקי למושב שלא אויש ב־1977 ואחר הפסקה החסרה על רצ בהודעת התוצאות."
+ },
+ {
+  "id": "k9-search-reviewed",
+  "field": "descriptionEn",
+  "after": "A record of the search for the legal basis of the seat left unfilled in 1977 and for the missing paragraph on Ratz in the results notice."
+ },
+ {
+  "id": "k9-ratz-odata",
+  "field": "publisher",
+  "before": "Knesset, official ParliamentInfo OData API",
+  "after": "Knesset open data"
+ },
+ {
+  "id": "k9-ratz-odata",
+  "field": "description",
+  "before": "Official Knesset opening-date confirmation: Shulamit Aloni (PersonID2143), MK record997 and Ratz faction record27111 from 13 June 1977. Supplements the omitted Ratz paragraph in YP2326; matches registered rank1 in YP2319 p1330.",
+  "after": "Official Knesset opening-date confirmation: Shulamit Aloni  from 13 June 1977. Supplements the omitted Ratz paragraph in Yalkut HaPirsumim 2326; matches registered rank1 in Yalkut HaPirsumim 2319 p1330."
+ },
+ {
+  "id": "k9-odata-positions",
+  "field": "publisher",
+  "before": "Knesset, official ParliamentInfo OData API",
+  "after": "Knesset open data"
+ },
+ {
+  "id": "k9-odata-positions",
+  "field": "description",
+  "before": "Official OData position definitions: 61 female MK, 43 male MK, 54 faction member; used to interpret the Ratz confirmation.",
+  "after": "Official Knesset open data position definitions: 61 female MK, 43 male MK, 54 faction member; used to interpret the Ratz confirmation."
+ },
+ {
+  "id": "k4-agreements-gazette",
+  "field": "description",
+  "before": "Three signed connected-list notices, YP 709 pp. 125–126 (PDF pp.1–2): א–רא, יא–ע, תו–שת. The third pair is inactive below threshold. Official issue reproduced by olaw.org.il.",
+  "after": "Three signed connected-list notices, Yalkut HaPirsumim 709 pp. 125–126 (PDF pp.1–2): א–רא, יא–ע, תו–שת. The third pair is inactive below threshold. Official issue reproduced by olaw.org.il."
+ },
+ {
+  "id": "k3-candidates-mirror",
+  "field": "description",
+  "before": "Byte-identical mirror of the candidate gazette (same scan, not independent evidence); spelling also checked against YP 432.",
+  "after": "Byte-identical mirror of the candidate gazette (same scan, not independent evidence); spelling also checked against Yalkut HaPirsumim 432."
+ },
+ {
+  "id": "k1-rosters-reviewed",
+  "field": "audit",
+  "after": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed."
+ },
+ {
+  "id": "k1-rosters-reviewed",
+  "field": "description",
+  "before": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
+  "after": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו."
+ },
+ {
+  "id": "k1-rosters-reviewed",
+  "field": "descriptionEn",
+  "after": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name."
+ },
+ {
+  "id": "k2-rosters-reviewed",
+  "field": "audit",
+  "after": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed."
+ },
+ {
+  "id": "k2-rosters-reviewed",
+  "field": "description",
+  "before": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
+  "after": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו."
+ },
+ {
+  "id": "k2-rosters-reviewed",
+  "field": "descriptionEn",
+  "after": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name."
+ },
+ {
+  "id": "k3-rosters-reviewed",
+  "field": "audit",
+  "after": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed."
+ },
+ {
+  "id": "k3-rosters-reviewed",
+  "field": "description",
+  "before": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
+  "after": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו."
+ },
+ {
+  "id": "k3-rosters-reviewed",
+  "field": "descriptionEn",
+  "after": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name."
+ },
+ {
+  "id": "k4-rosters-reviewed",
+  "field": "audit",
+  "after": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed."
+ },
+ {
+  "id": "k4-rosters-reviewed",
+  "field": "description",
+  "before": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
+  "after": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו."
+ },
+ {
+  "id": "k4-rosters-reviewed",
+  "field": "descriptionEn",
+  "after": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name."
+ },
+ {
+  "id": "k5-rosters-reviewed",
+  "field": "audit",
+  "after": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed."
+ },
+ {
+  "id": "k5-rosters-reviewed",
+  "field": "description",
+  "before": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
+  "after": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו."
+ },
+ {
+  "id": "k5-rosters-reviewed",
+  "field": "descriptionEn",
+  "after": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name."
+ },
+ {
+  "id": "k7-rosters-reviewed",
+  "field": "audit",
+  "after": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed."
+ },
+ {
+  "id": "k7-rosters-reviewed",
+  "field": "description",
+  "before": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
+  "after": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו."
+ },
+ {
+  "id": "k7-rosters-reviewed",
+  "field": "descriptionEn",
+  "after": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name."
+ },
+ {
+  "id": "k6-rosters-reviewed",
+  "field": "audit",
+  "after": "Winning-list registered prefixes from YP 1222, cross-checked against all 120 elected names in YP 1230; page references and truncation explicit."
+ },
+ {
+  "id": "k6-rosters-reviewed",
+  "field": "description",
+  "before": "Winning-list registered prefixes from YP 1222, cross-checked against all 120 elected names in YP 1230; page references and truncation explicit.",
+  "after": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו."
+ },
+ {
+  "id": "k6-rosters-reviewed",
+  "field": "descriptionEn",
+  "after": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name."
+ },
+ {
+  "id": "k8-cec-memorandum-appendix",
+  "field": "publisher",
+  "before": "Central Elections Committee for the 8th Knesset (gov.il host; Imagestore scan)",
+  "after": "Central Elections Committee for the 8th Knesset (gov.il)"
+ },
+ {
+  "id": "k8-cec-memorandum-appendix",
+  "field": "description",
+  "before": "Official CEC Form 30 (regulation 125), 'נספח לזכרון דברים על תוצאות הבחירות לכנסת השמינית (פרטי חישוב של חלוקת המנדטים)'. Section ז, printed pp.10–11: six connections ב+גד, חל טעם+ער, סנ+ענ, קנ+ז, רא+עא, לע+רצ; section יב pp.16–18 pair re-division; section יג p.22 final seats. Retained file is an unaltered-page EXTRACT of source PDF pages 1,2,6,7,12,13,14,18 (printed cover, 3, 10, 11, 16, 17, 18, 22). Full original: 24 PDF pages, 28,395,623 bytes, sha256 38fd80b493f0c8fb9591bab873c5ac0f46404de0d842c10123d6d8ca3f62b3b6 (exceeds the 10 MB retention limit).",
+  "after": "Official Central Elections Committee Form 30 (regulation 125), 'נספח לזכרון דברים על תוצאות הבחירות לכנסת השמינית (פרטי חישוב של חלוקת המנדטים)'. Section ז, printed pp.10–11: six connections ב+גד, חל טעם+ער, סנ+ענ, קנ+ז, רא+עא, לע+רצ; section יב pp.16–18 pair re-division; section יג p.22 final seats. Retained file is an unaltered-page EXTRACT of source PDF pages 1,2,6,7,12,13,14,18 (printed cover, 3, 10, 11, 16, 17, 18, 22). Full original: 24 PDF pages, 28,395,623 bytes, sha256 38fd80b493f0c8fb9591bab873c5ac0f46404de0d842c10123d6d8ca3f62b3b6 (exceeds the 10 MB retention limit)."
+ },
+ {
+  "id": "k8-candidates-reviewed",
+  "field": "audit",
+  "after": "Official winning-list leading ranks from YP1954 (printed pp.88–97) for all 10 seat-winning lists (Ratz complete 8/8), with name-by-name elected cross-check against YP1979 section 4 (pp.609–610), printed page references and 8 explicit spelling variants. No notSeated cases. Uses corrected letters (לע)."
+ },
+ {
+  "id": "k8-candidates-reviewed",
+  "field": "description",
+  "before": "Official winning-list leading ranks from YP1954 (printed pp.88–97) for all 10 seat-winning lists (Ratz complete 8/8), with name-by-name elected cross-check against YP1979 section 4 (pp.609–610), printed page references and 8 explicit spelling variants. No notSeated cases. Uses corrected letters (לע).",
+  "after": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו."
+ },
+ {
+  "id": "k8-candidates-reviewed",
+  "field": "descriptionEn",
+  "after": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name."
+ },
+ {
+  "id": "k8-cec-elected-appendix",
+  "field": "publisher",
+  "before": "Central Elections Committee for the 8th Knesset (gov.il host; Imagestore scan)",
+  "after": "Central Elections Committee for the 8th Knesset (gov.il)"
+ },
+ {
+  "id": "k8-cec-elected-appendix",
+  "field": "description",
+  "before": "Official CEC Form 30 appendix, section יד 'שמות הנבחרים', printed pp.23–28: handwritten list of the 120 elected members in list order, citing YP1954 p.88. Unaltered-page EXTRACT of source PDF pages 19–24 (pixel-identical at 72 dpi). Full original: 24 PDF pages, 28,395,623 bytes, sha256 38fd80b493f0c8fb9591bab873c5ac0f46404de0d842c10123d6d8ca3f62b3b6 (re-downloaded 2026-11-04, HTTP 200). Companion to k8-cec-memorandum-appendix (other pages).",
+  "after": "Official Central Elections Committee Form 30 appendix, section יד 'שמות הנבחרים', printed pp.23–28: handwritten list of the 120 elected members in list order, citing Yalkut HaPirsumim 1954 p.88. Extract of source pages 19–24 (pixel-identical at 72 dpi). Full original: 24 PDF pages, 28,395,623 bytes, sha256 38fd80b493f0c8fb9591bab873c5ac0f46404de0d842c10123d6d8ca3f62b3b6 (re-downloaded 2026-11-04, HTTP 200). Companion to k8-cec-memorandum-appendix (other pages)."
+ },
+ {
+  "id": "k8-opening-membership-cross-check-reviewed",
+  "field": "publisher",
+  "before": "Project reviewed extraction from official Knesset OData",
+  "after": "Project reviewed extraction from official Knesset open data"
+ },
+ {
+  "id": "k24-results-gazette",
+  "field": "publisher",
+  "before": "Central Elections Committee / Reshumot (public mirror)",
+  "after": "Central Elections Committee / Reshumot (public copy)"
+ },
+ {
+  "id": "k24-results-gazette",
+  "field": "description",
+  "before": "Reshumot YP 9511, 31 March 2021, pp. 4620–4629: final results and elected members",
+  "after": "Reshumot Yalkut HaPirsumim 9511, 31 March 2021, pp. 4620–4629: final results and elected members"
+ },
+ {
+  "id": "k24-cec-protocol",
+  "field": "publisher",
+  "before": "Central Elections Committee / Reshumot (public mirror)",
+  "after": "Central Elections Committee / Reshumot (public copy)"
+ },
+ {
+  "id": "k24-cec-protocol",
+  "field": "description",
+  "before": "CEC statutory determination, 30 March 2021; p.4 records cancellation of Demokratit after all candidates resigned",
+  "after": "Central Elections Committee statutory determination, 30 March 2021; p.4 records cancellation of Demokratit after all candidates resigned"
+ },
+ {
+  "id": "k26-official-results",
+  "field": "description",
+  "before": "CEC official final allocation; agrees with the results notice, Yalkut HaPirsumim 15100 (k26-results-gazette), found on 9 November. Knesset English summary independently agrees on seats but has older valid votes 5,691,396 (CEC 5,691,426); latest primary CEC count wins.",
+  "after": "Central Elections Committee official final allocation; agrees with the results notice, Yalkut HaPirsumim 15100, found on 9 November. Knesset English summary independently agrees on seats but has older valid votes 5,691,396 (Central Elections Committee 5,691,426); latest primary Central Elections Committee count wins."
+ },
+ {
+  "id": "k19-results-correction",
+  "field": "publisher",
+  "before": "Reshumot — YP 6546, 12 February 2013, p.2874 (via olaw.org.il mirror)",
+  "after": "Reshumot — Yalkut HaPirsumim 6546, 12 February 2013, p.2874, copy at olaw.org.il"
+ },
+ {
+  "id": "k21-resignations-8172",
+  "field": "publisherEn",
+  "before": "Reshumot — YP 8172, 2019-03-26, pp. 9194–9195; olaw.org.il mirror",
+  "after": "Reshumot — Yalkut HaPirsumim 8172, 2019-03-26, pp. 9194–9195; copy at olaw.org.il"
+ },
+ {
+  "id": "k21-resignations-8186",
+  "field": "publisherEn",
+  "before": "Reshumot — YP 8186, 2019-04-04, pp. 9542; olaw.org.il mirror",
+  "after": "Reshumot — Yalkut HaPirsumim 8186, 2019-04-04, pp. 9542; copy at olaw.org.il"
+ },
+ {
+  "id": "k21-resignations-8196",
+  "field": "publisherEn",
+  "before": "Reshumot — YP 8196, 2019-04-10, pp. 9858; olaw.org.il mirror",
+  "after": "Reshumot — Yalkut HaPirsumim 8196, 2019-04-10, pp. 9858; copy at olaw.org.il"
+ },
+ {
+  "id": "k21-results-gazette",
+  "field": "publisherEn",
+  "before": "Reshumot — YP 8208, 2019-04-17, pp. 10062–10066; olaw.org.il mirror",
+  "after": "Reshumot — Yalkut HaPirsumim 8208, 2019-04-17, pp. 10062–10066; copy at olaw.org.il"
+ },
+ {
+  "id": "k15-withdrawals-yp4751",
+  "field": "publisher",
+  "before": "State of Israel / CEC (olaw.org.il mirror)",
+  "after": "State of Israel / Central Elections Committee (copy at olaw.org.il)"
+ },
+ {
+  "id": "k15-withdrawals-yp4751",
+  "field": "description",
+  "before": "Statutory resignation notice; YP 4751 p.3184 קול הסביבה",
+  "after": "Statutory resignation notice; Yalkut HaPirsumim 4751 p.3184 קול הסביבה"
+ },
+ {
+  "id": "k15-withdrawals-yp4754",
+  "field": "publisher",
+  "before": "State of Israel / CEC (olaw.org.il mirror)",
+  "after": "State of Israel / Central Elections Committee (copy at olaw.org.il)"
+ },
+ {
+  "id": "k15-withdrawals-yp4754",
+  "field": "description",
+  "before": "Statutory resignation notice; YP 4754 p.3269 מנהיגות יהודית לישראל",
+  "after": "Statutory resignation notice; Yalkut HaPirsumim 4754 p.3269 מנהיגות יהודית לישראל"
+ },
+ {
+  "id": "k4-results-correction-0724",
+  "field": "description",
+  "before": "Formal correction to YP 717: במקום יערי יעקב צ״ל יערי מאיר. Primary Gazette reproduced by olaw.org.il.",
+  "after": "Formal correction to Yalkut HaPirsumim 717: במקום יערי יעקב צ״ל יערי מאיר. Primary Gazette reproduced by olaw.org.il."
+ },
+ {
+  "id": "k5-withdrawals-gazette",
+  "field": "publisher",
+  "before": "Reshumot — YP 866, 10 August 1961, p.1847 (olaw mirror)",
+  "after": "Reshumot — Yalkut HaPirsumim 866, 10 August 1961, p.1847 (copy at olaw.org.il)"
+ },
+ {
+  "id": "k24-cec-station-breakdown",
+  "field": "description",
+  "before": "CEC annual report 2021 pp.7–8; retained text excerpt with parent PDF hash; physical-station categories and exclusions.",
+  "after": "Central Elections Committee annual report 2021 pp.7–8; physical-station categories and exclusions."
+ },
+ {
+  "id": "k16-national-reviewed",
+  "field": "audit",
+  "after": "Reviewed national evidence for the released k16 dataset; remaining roster gaps and gazette vote discrepancies are explicitly disclosed."
+ },
+ {
+  "id": "k16-national-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k16-national-reviewed",
+  "field": "description",
+  "before": "Reviewed national evidence for the released k16 dataset; remaining roster gaps and gazette vote discrepancies are explicitly disclosed.",
+  "after": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין."
+ },
+ {
+  "id": "k16-national-reviewed",
+  "field": "descriptionEn",
+  "after": "Each list’s votes and seats, typed in from the official results gazette and checked by eye."
+ },
+ {
+  "id": "k17-national-reviewed",
+  "field": "audit",
+  "after": "Partial reviewed national and agreement transcription. Historical partial transcription, now an input to the released k17 dataset; preserves unresolved source discrepancies."
+ },
+ {
+  "id": "k17-national-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k17-national-reviewed",
+  "field": "description",
+  "before": "Partial reviewed national and agreement transcription. Historical partial transcription, now an input to the released k17 dataset; preserves unresolved source discrepancies.",
+  "after": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין."
+ },
+ {
+  "id": "k17-national-reviewed",
+  "field": "descriptionEn",
+  "after": "Each list’s votes and seats, typed in from the official results gazette and checked by eye."
+ },
+ {
+  "id": "k16-reconciliation-reviewed",
+  "field": "audit",
+  "after": "Reviewed polling sums and SHA-256 of derived research locality rows; missing fields remain null, not application data."
+ },
+ {
+  "id": "k16-reconciliation-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k16-reconciliation-reviewed",
+  "field": "description",
+  "before": "Reviewed polling sums and SHA-256 of derived research locality rows; missing fields remain null, not application data.",
+  "after": "תוצאות הקלפיות, מסוכמות ונבדקות מול הסיכומים הארציים."
+ },
+ {
+  "id": "k16-reconciliation-reviewed",
+  "field": "descriptionEn",
+  "after": "Polling-station results, added up and checked against the national totals."
+ },
+ {
+  "id": "k17-reconciliation-reviewed",
+  "field": "audit",
+  "after": "Reviewed polling sums and SHA-256 of derived research locality rows; missing fields remain null, not application data."
+ },
+ {
+  "id": "k17-reconciliation-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k17-reconciliation-reviewed",
+  "field": "description",
+  "before": "Reviewed polling sums and SHA-256 of derived research locality rows; missing fields remain null, not application data.",
+  "after": "תוצאות הקלפיות, מסוכמות ונבדקות מול הסיכומים הארציים."
+ },
+ {
+  "id": "k17-reconciliation-reviewed",
+  "field": "descriptionEn",
+  "after": "Polling-station results, added up and checked against the national totals."
+ },
+ {
+  "id": "k8-national-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k9-national-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k9-candidates-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k10-national-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k11-national-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k11-candidates-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k12-national-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k16-candidates-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k16-localities-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k17-candidates-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k17-localities-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k17-candidates-archive-crosscheck",
+  "field": "audit",
+  "after": "Verbatim candidate-name lines from eight archived official Central Elections Committee pages, used to resolve scan glyphs and line wrapping. Each list includes its actual official URL. Project capture; not a new official publication."
+ },
+ {
+  "id": "k17-candidates-archive-crosscheck",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k17-candidates-archive-crosscheck",
+  "field": "description",
+  "before": "Verbatim candidate-name lines from eight archived official Central Elections Committee pages, used to resolve scan glyphs and line wrapping. Each list includes its actual official URL. Project capture; not a new official publication.",
+  "after": "שמות מועמדים שהועתקו משמונה עמודים שמורים באתר ועדת הבחירות המרכזית, כדי לפענח אותיות לא ברורות בסריקות."
+ },
+ {
+  "id": "k17-candidates-archive-crosscheck",
+  "field": "descriptionEn",
+  "after": "Candidate names copied from eight archived pages of the Central Elections Committee site, used to read unclear letters in the scans."
+ },
+ {
+  "id": "k1-national-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k2-national-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k3-national-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k4-national-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k5-national-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k6-national-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k7-national-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k13-national-reviewed",
+  "field": "audit",
+  "after": "Reviewed national transcription, with source and printed page references."
+ },
+ {
+  "id": "k13-national-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k13-national-reviewed",
+  "field": "description",
+  "before": "Reviewed national transcription, with source and printed page references.",
+  "after": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין."
+ },
+ {
+  "id": "k13-national-reviewed",
+  "field": "descriptionEn",
+  "after": "Each list’s votes and seats, typed in from the official results gazette and checked by eye."
+ },
+ {
+  "id": "k13-rosters-reviewed",
+  "field": "audit",
+  "after": "Reviewed rosters transcription, with source and printed page references."
+ },
+ {
+  "id": "k13-rosters-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k13-rosters-reviewed",
+  "field": "description",
+  "before": "Reviewed rosters transcription, with source and printed page references.",
+  "after": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו."
+ },
+ {
+  "id": "k13-rosters-reviewed",
+  "field": "descriptionEn",
+  "after": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name."
+ },
+ {
+  "id": "k13-elected-reviewed",
+  "field": "audit",
+  "after": "Reviewed elected transcription, with source and printed page references."
+ },
+ {
+  "id": "k13-elected-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k13-elected-reviewed",
+  "field": "description",
+  "before": "Reviewed elected transcription, with source and printed page references.",
+  "after": "הנבחרים מכל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות."
+ },
+ {
+  "id": "k13-elected-reviewed",
+  "field": "descriptionEn",
+  "after": "The elected members of each list, typed in from the official results gazette."
+ },
+ {
+  "id": "k14-national-reviewed",
+  "field": "audit",
+  "after": "Reviewed national transcription, with source and printed page references."
+ },
+ {
+  "id": "k14-national-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k14-national-reviewed",
+  "field": "description",
+  "before": "Reviewed national transcription, with source and printed page references.",
+  "after": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין."
+ },
+ {
+  "id": "k14-national-reviewed",
+  "field": "descriptionEn",
+  "after": "Each list’s votes and seats, typed in from the official results gazette and checked by eye."
+ },
+ {
+  "id": "k14-rosters-reviewed",
+  "field": "audit",
+  "after": "Reviewed rosters transcription, with source and printed page references."
+ },
+ {
+  "id": "k14-rosters-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k14-rosters-reviewed",
+  "field": "description",
+  "before": "Reviewed rosters transcription, with source and printed page references.",
+  "after": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו."
+ },
+ {
+  "id": "k14-rosters-reviewed",
+  "field": "descriptionEn",
+  "after": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name."
+ },
+ {
+  "id": "k14-elected-reviewed",
+  "field": "audit",
+  "after": "Reviewed elected transcription, with source and printed page references."
+ },
+ {
+  "id": "k14-elected-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k14-elected-reviewed",
+  "field": "description",
+  "before": "Reviewed elected transcription, with source and printed page references.",
+  "after": "הנבחרים מכל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות."
+ },
+ {
+  "id": "k14-elected-reviewed",
+  "field": "descriptionEn",
+  "after": "The elected members of each list, typed in from the official results gazette."
+ },
+ {
+  "id": "k15-national-reviewed",
+  "field": "audit",
+  "after": "Reviewed national transcription, with source and printed page references."
+ },
+ {
+  "id": "k15-national-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k15-national-reviewed",
+  "field": "description",
+  "before": "Reviewed national transcription, with source and printed page references.",
+  "after": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין."
+ },
+ {
+  "id": "k15-national-reviewed",
+  "field": "descriptionEn",
+  "after": "Each list’s votes and seats, typed in from the official results gazette and checked by eye."
+ },
+ {
+  "id": "k15-rosters-reviewed",
+  "field": "audit",
+  "after": "Reviewed rosters transcription, with source and printed page references."
+ },
+ {
+  "id": "k15-rosters-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k15-rosters-reviewed",
+  "field": "description",
+  "before": "Reviewed rosters transcription, with source and printed page references.",
+  "after": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו."
+ },
+ {
+  "id": "k15-rosters-reviewed",
+  "field": "descriptionEn",
+  "after": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name."
+ },
+ {
+  "id": "k15-elected-reviewed",
+  "field": "audit",
+  "after": "Reviewed elected transcription, with source and printed page references."
+ },
+ {
+  "id": "k15-elected-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k15-elected-reviewed",
+  "field": "description",
+  "before": "Reviewed elected transcription, with source and printed page references.",
+  "after": "הנבחרים מכל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות."
+ },
+ {
+  "id": "k15-elected-reviewed",
+  "field": "descriptionEn",
+  "after": "The elected members of each list, typed in from the official results gazette."
+ },
+ {
+  "id": "k10-candidates-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k12-candidates-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k8-search-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k9-search-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k1-rosters-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k2-rosters-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k3-rosters-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k4-rosters-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k5-rosters-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k7-rosters-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k6-rosters-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k8-candidates-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k8-opening-membership-cross-check-reviewed",
+  "field": "audit",
+  "after": "K8 opening-date (1974-01-21) membership cross-check: 120 MKs/120 faction members, every paginated request URL/hash, 102 exact normalized matches and 18 reading-based same-faction pairings; cross-check only, no names substituted."
+ },
+ {
+  "id": "k8-opening-membership-cross-check-reviewed",
+  "field": "own",
+  "after": true
+ },
+ {
+  "id": "k8-opening-membership-cross-check-reviewed",
+  "field": "description",
+  "before": "K8 opening-date (1974-01-21) membership cross-check: 120 MKs/120 faction members, every paginated request URL/hash, 102 exact normalized matches and 18 reading-based same-faction pairings; cross-check only, no names substituted.",
+  "after": "120 חברי הכנסת בפתיחת הכנסת ה־8, שנבדקו מול רישומי הכנסת."
+ },
+ {
+  "id": "k8-opening-membership-cross-check-reviewed",
+  "field": "descriptionEn",
+  "after": "The 120 members at the opening of the 8th Knesset, checked against the Knesset’s records."
+ },
+ {
+  "id": "k26-candidates-gazette",
+  "field": "note",
+  "before": "Official publication retrieved from the public mirror olaw.org.il, not a government host. Government-path attempt returned HTTP 404; no official-host byte comparison. PDF pages 8, 25, 22, 36, 33 respectively.",
+  "after": "Official publication, copy at olaw.org.il (the government site’s copy could not be found, so the two were not compared). PDF pages 8, 25, 22, 36, 33 respectively."
+ },
+ {
+  "id": "k20-surplus-gazette",
+  "field": "description",
+  "before": "Yalkut HaPirsumim 7001: primary statutory surplus-agreement notice; retrieved from mirror",
+  "after": "Yalkut HaPirsumim 7001: primary statutory surplus-agreement notice; copy at olaw.org.il"
+ },
+ {
+  "id": "k20-surplus-gazette",
+  "field": "note",
+  "before": "Primary statutory notice, Yalkut HaPirsumim 7001 p3954, retrieved from the olaw.org.il mirror. Complete numbered notice (1)–(4), reading the right column then the top of the left. Also contains candidate resignation notices.",
+  "after": "Primary statutory notice, Yalkut HaPirsumim 7001 p3954, copy at olaw.org.il. Complete numbered notice (1)–(4), reading the right column then the top of the left. Also contains candidate resignation notices."
+ },
+ {
+  "id": "k21-surplus-gazette",
+  "field": "description",
+  "before": "Yalkut HaPirsumim 8178: primary statutory surplus-agreement notice; retrieved from mirror",
+  "after": "Yalkut HaPirsumim 8178: primary statutory surplus-agreement notice; copy at olaw.org.il"
+ },
+ {
+  "id": "k21-surplus-gazette",
+  "field": "note",
+  "before": "Primary statutory notice, Yalkut HaPirsumim 8178 p9310, retrieved from the olaw.org.il mirror. Complete numbered notice (1)–(6), including ףץ–ףז.",
+  "after": "Primary statutory notice, Yalkut HaPirsumim 8178 p9310, copy at olaw.org.il. Complete numbered notice (1)–(6), including ףץ–ףז."
+ },
+ {
+  "id": "k23-surplus-gazette",
+  "field": "description",
+  "before": "Yalkut HaPirsumim 8708: primary statutory surplus-agreement notice; retrieved from mirror",
+  "after": "Yalkut HaPirsumim 8708: primary statutory surplus-agreement notice; copy at olaw.org.il"
+ },
+ {
+  "id": "k22-surplus-gazette",
+  "field": "description",
+  "before": "Complete notice of registered surplus-vote agreements for Knesset 22; original statutory publication hosted on a non-government mirror. Also contains candidate resignation notices where present.",
+  "after": "Complete notice of registered surplus-vote agreements for Knesset 22; official publication, copy at olaw.org.il. Also contains candidate resignation notices where present."
+ },
+ {
+  "id": "k24-surplus-gazette",
+  "field": "description",
+  "before": "Complete notice of registered surplus-vote agreements for Knesset 24; original statutory publication hosted on a non-government mirror. Also contains candidate resignation notices where present.",
+  "after": "Complete notice of registered surplus-vote agreements for Knesset 24; official publication, copy at olaw.org.il. Also contains candidate resignation notices where present."
+ },
+ {
+  "id": "k18-surplus-gazette",
+  "field": "description",
+  "before": "Yalkut HaPirsumim 5912 p. 2254: complete eight-pair surplus notice; primary statutory publication retrieved from mirror",
+  "after": "Yalkut HaPirsumim 5912 p. 2254: complete eight-pair surplus notice; official publication, copy at olaw.org.il"
+ },
+ {
+  "id": "k19-surplus-gazette",
+  "field": "description",
+  "before": "Yalkut HaPirsumim 6530 p. 2156: complete seven-pair surplus notice; primary statutory publication retrieved from mirror",
+  "after": "Yalkut HaPirsumim 6530 p. 2156: complete seven-pair surplus notice; official publication, copy at olaw.org.il"
+ },
+ {
+  "id": "k14-agreements-gazette",
+  "field": "description",
+  "before": "Complete six-pair statutory agreement notice, Yalkut HaPirsumim 4411 p.3398; official publication on disclosed olaw.org.il mirror; candidate resignations and whole-list Moreshet Avot withdrawal, p.3398",
+  "after": "Complete six-pair statutory agreement notice, Yalkut HaPirsumim 4411 p.3398; official publication, copy at olaw.org.il; candidate resignations and whole-list Moreshet Avot withdrawal, p.3398"
+ },
+ {
+  "id": "k15-agreements-gazette",
+  "field": "description",
+  "before": "Complete nine-pair statutory agreement notice, Yalkut HaPirsumim 4755 p.3305; official publication on disclosed third-party mirror",
+  "after": "Complete nine-pair statutory agreement notice, Yalkut HaPirsumim 4755 p.3305; official publication, copy at olaw.org.il"
+ },
+ {
+  "id": "k11-candidates-gazette",
+  "field": "description",
+  "before": "Official candidates gazette for Knesset 11. olaw.org.il mirror of Reshumot; not an independent secondary account.",
+  "after": "Official candidates gazette for Knesset 11. Copy of the Reshumot publication at olaw.org.il, not a secondary account."
+ },
+ {
+  "id": "k7-results-gazette",
+  "field": "description",
+  "before": "Official results gazette for Knesset 7; primary document via olaw.org.il mirror",
+  "after": "Official results gazette for Knesset 7; official document, copy at olaw.org.il"
+ },
+ {
+  "id": "k6-agreements-gazette",
+  "field": "description",
+  "before": "Primary statutory connected-list notice; mirror disclosed. Fresh visual review confirms את–רא (Alignment–Progress and Development), NOT את–יא, and כא–כס; all pairs retained.",
+  "after": "Primary statutory connected-list notice; copy at olaw.org.il. Fresh visual review confirms את–רא (Alignment–Progress and Development), NOT את–יא, and כא–כס; all pairs retained."
+ },
+ {
+  "id": "k7-agreements-gazette",
+  "field": "description",
+  "before": "Primary statutory connected-list notice; mirror disclosed. Read through signature, all pairs retained.",
+  "after": "Primary statutory connected-list notice; copy at olaw.org.il. Read through signature, all pairs retained."
+ },
+ {
+  "id": "k3-candidates-mirror",
+  "field": "description",
+  "before": "Byte-identical mirror of the candidate gazette (same scan, not independent evidence); spelling also checked against Yalkut HaPirsumim 432.",
+  "after": "Identical copy of the candidate gazette (same scan, not independent evidence); spelling also checked against Yalkut HaPirsumim 432."
+ },
+ {
+  "id": "pm2001-gazette",
+  "field": "description",
+  "before": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+  "after": "Central Elections Committee / Reshumot, Yalkut HaPirsumim 4960 p.1628 (official publication, copy at olaw.org.il)"
+ },
+ {
+  "id": "k15-cec-dissolution",
+  "field": "description",
+  "before": "CEC chair decision 1/04, 3 March 2004, pp.26–27, historical dissolution act on 5 November 2002; third-party mirror",
+  "after": "Decision 1/04 of the Central Elections Committee chair, 3 March 2004, pp.26–27, on the dissolution of 5 November 2002 (copy at lacuna.co.il)"
+ }
+]

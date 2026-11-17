@@ -105,9 +105,10 @@
     },
     "hewiki-knesset9": {
       "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%99%D7%A2%D7%99%D7%AA",
-      "publisher": "Wikipedia (he), \"הכנסת התשיעית\"",
+      "publisher": "Hebrew Wikipedia, \"הכנסת התשיעית\"",
       "kind": "secondary",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-05",
+      "publisherHe": "ויקיפדיה העברית, \"הכנסת התשיעית\""
     },
     "mfa-history": {
       "url": "https://www.gov.il/BlobFolder/generalpage/facts-about-israel-history/en/English_SiteTransfer_DOCUMENTS_History2010.pdf",
@@ -149,14 +150,14 @@
     },
     "opening-odata": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_KnessetDates?$filter=KnessetNum%20eq%209&$format=json",
-      "publisher": "Knesset OData",
+      "publisher": "Knesset open data",
       "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-06"
     },
     "dmc-odata": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2018%20and%20StartDate%20eq%20datetime'1977-10-24T00:00:00'&$format=json",
-      "publisher": "Knesset OData",
+      "publisher": "Knesset open data",
       "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-06"
@@ -169,9 +170,10 @@
     },
     "role-roster-18": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2018%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "plenum-254065": {
       "url": "https://fs.knesset.gov.il//9/Plenum/9_ptm_254065.pdf",
@@ -484,7 +486,7 @@
             "source": "jta-1977-06-21"
           }
         ],
-        "resolution": "Both are consistent with a sitting that began on 20 June and ended after midnight. UI uses 20 June (the sitting date) with an (i) note."
+        "resolution": "Both are consistent with a sitting that began on 20 June and ended after midnight. 20 June, the sitting date, is used, with this note."
       }
     ]
   },
@@ -514,7 +516,8 @@
           {
             "source": "role-roster-18",
             "quote": "PersonToPositionID 4065; PersonID 2179; PositionID 45; StartDate 1977-06-20T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. מנחם בגין; faction join: הליכוד"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: מנחם בגין; faction: הליכוד.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: מנחם בגין; סיעה: הליכוד."
           }
         ]
       },
@@ -528,7 +531,8 @@
           {
             "source": "role-roster-18",
             "quote": "PersonToPositionID 4258; PersonID 482; PositionID 39; StartDate 1977-06-20T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. אריאל שרון; faction join: שלומציון"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: אריאל שרון; faction: שלומציון.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אריאל שרון; סיעה: שלומציון."
           }
         ]
       },
@@ -541,7 +545,8 @@
           {
             "source": "role-roster-18",
             "quote": "PersonToPositionID 3506; PersonID 2119; PositionID 39; StartDate 1977-06-20T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. אהרן אבוחצירא; faction join: מפלגה דתית לאומית"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: אהרן אבוחצירא; faction: מפלגה דתית לאומית.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אהרן אבוחצירא; סיעה: מפלגה דתית לאומית."
           }
         ]
       },
@@ -611,11 +616,13 @@
         "cites": [
           {
             "source": "dmc-odata",
-            "quote": "StartDate: 1977-10-24T00:00:00; PersonID 2676 (Justice), 3260 (Welfare), 2527 (Transport and Communications)."
+            "quote": "StartDate: 1977-10-24T00:00:00; PersonID 2676 (Justice), 3260 (Welfare), 2527 (Transport and Communications).",
+            "note": "The Knesset’s official record: three ministers took office on 24 October 1977.",
+            "noteHe": "הרישום הרשמי של הכנסת: שלושה שרים נכנסו לתפקידם ב־24 באוקטובר 1977."
           }
         ],
         "notes": [
-          "Official ministerial accession date wins over Hebrew Wikipedia’s 25 October; the disagreement is retained here."
+          "The official date of taking office is used, not Hebrew Wikipedia’s 25 October; the difference is noted here."
         ]
       }
     ],
@@ -809,8 +816,8 @@
           }
         ],
         "notes": [
-          "The official plenum record confirms 84–19–17. Month precision retained: the sitting dated 27 September ran overnight and ended at 03:32.",
-          "MFA independently selects the accords/treaty as a national event; the Knesset history supplies the parliamentary approval act. MFA is not evidence for the approval vote or its tally."
+          "The official plenum record confirms 84–19–17. Dated to the month: the sitting dated 27 September ran overnight and ended at 03:32.",
+          "Ministry of Foreign Affairs independently selects the accords/treaty as a national event; the Knesset history supplies the parliamentary approval act. Ministry of Foreign Affairs is not evidence for the approval vote or its tally."
         ]
       },
       {
@@ -834,7 +841,7 @@
           }
         ],
         "notes": [
-          "MFA independently selects the accords/treaty as a national event; the Knesset history supplies the parliamentary approval act. MFA is not evidence for the approval vote or its tally."
+          "Ministry of Foreign Affairs independently selects the accords/treaty as a national event; the Knesset history supplies the parliamentary approval act. Ministry of Foreign Affairs is not evidence for the approval vote or its tally."
         ]
       },
       {
@@ -872,12 +879,12 @@
       {
         "label": "Economic liberalisation (October 1977)",
         "date": "1977-10",
-        "why": "The full Knesset history does discuss Simha Erlich’s foreign-currency liberalization; IDI 1981 also discusses liberalizing measures. Exact October 1977 policy act/date has not been inspected."
+        "why": "The full Knesset history does discuss Simha Erlich’s foreign-currency liberalization; Israel Democracy Institute 1981 also discusses liberalizing measures. Exact October 1977 policy act/date has not been inspected."
       },
       {
         "label": "Basic Law: Jerusalem",
         "date": "1980-07-30",
-        "why": "MFA timeline selects the Jerusalem law under 1980, but the retrieved Knesset history does not. A second qualifying chronology remains needed."
+        "why": "Ministry of Foreign Affairs timeline selects the Jerusalem law under 1980, but the retrieved Knesset history does not. A second qualifying chronology remains needed."
       }
     ],
     "endedBy": {

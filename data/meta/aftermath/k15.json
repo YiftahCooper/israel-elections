@@ -17,7 +17,7 @@
     },
     "knesset-history": {
       "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-fifteenth-knesset-1999-2003",
-      "publisher": "Knesset historical text, reproduced by Jewish Virtual Library (mirror)",
+      "publisher": "Knesset history, copy at the Jewish Virtual Library",
       "kind": "official",
       "accessed": "2026-11-05",
       "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=15"
@@ -50,7 +50,7 @@
     },
     "government-research-3": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=GovernmentNum%20eq%2028",
-      "publisher": "Knesset OData (ParliamentInfo)",
+      "publisher": "Knesset open data",
       "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-04",
@@ -108,7 +108,7 @@
     },
     "cec-dissolution": {
       "url": "https://lacuna.co.il/posts/election_date/04-1.pdf",
-      "publisher": "CEC chair, decision 1/04, 3 March 2004, pp.26–27 (third-party mirror)",
+      "publisher": "Central Elections Committee chair, decision 1/04, 3 March 2004, pp.26–27 (unofficial copy)",
       "kind": "official",
       "accessed": "2026-11-06",
       "evidenceFamily": "institution:cec"
@@ -137,15 +137,17 @@
     },
     "role-roster-28": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2028%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "role-roster-29": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2029%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, formation-day cabinet appointments",
+      "publisher": "Knesset open data: ministers at formation",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: השרים בהקמת הממשלה"
     },
     "plenum-2001-10-17": {
       "url": "https://fs.knesset.gov.il//15/Plenum/15_ptm_532934.docx",
@@ -316,7 +318,7 @@
         "about": "Coalition seats at formation versus later snapshot",
         "values": [
           {
-            "value": "75 (JTA formation report, matching the seven ballot lists)",
+            "value": "75 (Jewish Telegraphic Agency report at formation, matching the seven election lists)",
             "source": "jta1999vote"
           },
           {
@@ -324,7 +326,7 @@
             "source": "ipu1999"
           }
         ],
-        "resolution": "Use 75 for the formation ballot-list card. Retain IPU’s later 73-seat snapshot as a different point in time; do not change the official election seats."
+        "resolution": "75 seats at formation, from the election lists. The Inter-Parliamentary Union’s 73 seats describe a later date; the official election seats are unchanged."
       }
     ]
   },
@@ -425,7 +427,7 @@
         ],
         "confidence": "high",
         "notes": [
-          "No casualty figure is copied: the Knesset text calls all 13 victims Israeli Arabs, whereas IDI distinguishes twelve Israeli Arabs."
+          "No casualty figure is copied: the Knesset text calls all 13 victims Israeli Arabs, whereas Israel Democracy Institute distinguishes twelve Israeli Arabs."
         ]
       },
       {
@@ -484,7 +486,7 @@
         ],
         "confidence": "high",
         "notes": [
-          "Selected by both chronologies (Knesset history, which misdates it to 23 October 2000, and the Foreign Ministry history, under 2001). The day and the description of the perpetrators follow the Knesset record of 17 October 2001; his Knesset membership ends that day in the official register (data/research/knesset-member-changes/k15.json). No person or organisation is named beyond what that record says."
+          "Selected by both chronologies (Knesset history, which misdates it to 23 October 2000, and the Foreign Ministry history, under 2001). The day and the description of the perpetrators follow the Knesset record of 17 October 2001; his Knesset membership ends that day in the official register. No person or organisation is named beyond what that record says."
         ]
       },
       {
@@ -523,7 +525,7 @@
       {
         "label": "Barak resignation and calling the special election",
         "date": "2000-12",
-        "why": "MFA history dates resignation to December 2000; the Knesset history selects the 2001 special election, already included. The bundled resignation/calling act still needs a second chronology and direct resignation record."
+        "why": "Ministry of Foreign Affairs history dates resignation to December 2000; the Knesset history selects the 2001 special election, already included. The bundled resignation/calling act still needs a second chronology and direct resignation record."
       }
     ],
     "endedBy": {
@@ -586,7 +588,8 @@
           {
             "source": "role-roster-28",
             "quote": "PersonToPositionID 3448; PersonID 433; PositionID 57; StartDate 1999-07-06T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. דליה איציק; faction join: ישראל אחת"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: דליה איציק; faction: ישראל אחת.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דליה איציק; סיעה: ישראל אחת."
           }
         ]
       },
@@ -599,7 +602,8 @@
           {
             "source": "role-roster-28",
             "quote": "PersonToPositionID 3533; PersonID 500; PositionID 39; StartDate 1999-07-06T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. אליהו סויסה; faction join: ש\"ס"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: אליהו סויסה; faction: ש\"ס.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אליהו סויסה; סיעה: ש\"ס."
           }
         ]
       },
@@ -612,7 +616,8 @@
           {
             "source": "role-roster-28",
             "quote": "PersonToPositionID 4490; PersonID 507; PositionID 39; StartDate 1999-07-06T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. רן כהן; faction join: מרצ"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: רן כהן; faction: מרצ.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: רן כהן; סיעה: מרצ."
           }
         ]
       },
@@ -625,7 +630,8 @@
           {
             "source": "role-roster-28",
             "quote": "PersonToPositionID 4500; PersonID 535; PositionID 39; StartDate 1999-07-06T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. נתן שרנסקי; faction join: ישראל בעלייה"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: נתן שרנסקי; faction: ישראל בעלייה.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: נתן שרנסקי; סיעה: ישראל בעלייה."
           }
         ]
       },
@@ -638,7 +644,8 @@
           {
             "source": "role-roster-28",
             "quote": "PersonToPositionID 3532; PersonID 2468; PositionID 39; StartDate 1999-07-06T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יצחק מרדכי; faction join: מפלגת המרכז"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק מרדכי; faction: מפלגת המרכז.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק מרדכי; סיעה: מפלגת המרכז."
           }
         ]
       },
@@ -651,7 +658,8 @@
           {
             "source": "role-roster-28",
             "quote": "PersonToPositionID 4493; PersonID 765; PositionID 39; StartDate 1999-07-06T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יצחק לוי; faction join: מפלגה דתית לאומית"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק לוי; faction: מפלגה דתית לאומית.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק לוי; סיעה: מפלגה דתית לאומית."
           }
         ]
       },
@@ -692,7 +700,9 @@
       },
       {
         "source": "government-research-3",
-        "quote": "KNS_PersonToPosition, GovernmentNum 28: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1999-07-06: איציק דליה, ביילין יוסי, מרדכי יצחק, סויסה אליהו, פרס שמעון, בן-עמי שלמה, ברק אהוד, בן-אליעזר בנימין, בניזרי שלמה, ישי אליהו, כהן יצחק, כהן רן, לוי דוד, לוי יצחק, שריד יוסי, שרנסקי נתן, רמון חיים, שוחט אברהם-בייגה"
+        "quote": "KNS_PersonToPosition, GovernmentNum 28: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1999-07-06: איציק דליה, ביילין יוסי, מרדכי יצחק, סויסה אליהו, פרס שמעון, בן-עמי שלמה, ברק אהוד, בן-אליעזר בנימין, בניזרי שלמה, ישי אליהו, כהן יצחק, כהן רן, לוי דוד, לוי יצחק, שריד יוסי, שרנסקי נתן, רמון חיים, שוחט אברהם-בייגה",
+        "note": "The Knesset’s list of the ministers appointed on the government’s first day, 6 July 1999.",
+        "noteHe": "רשימת השרים שמונו ביום הראשון של הממשלה, 6 ביולי 1999, לפי רישומי הכנסת."
       },
       {
         "source": "jta1999vote",
@@ -713,7 +723,7 @@
       }
     ],
     "notes": [
-      "IDI independently confirms seven founding factions / 75 seats and UTJ leaving in September 1999; exact day not independently established. Quote: היא עזבה את הקואליציה כבר בספטמבר 1999. https://www.idi.org.il/articles/8082"
+      "Israel Democracy Institute independently confirms seven founding factions / 75 seats and UTJ leaving in September 1999; exact day not independently established. Quote: היא עזבה את הקואליציה כבר בספטמבר 1999. https://www.idi.org.il/articles/8082"
     ],
     "changes": [
       {
@@ -731,10 +741,11 @@
               {
                 "source": "role-roster-29",
                 "quote": "PersonToPositionID 2054; PersonID 494; PositionID 50; StartDate 2001-03-07T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 28162. אליהו ישי"
+                "note": "Official appointment of אליהו ישי; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של אליהו ישי; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
             "letters": "שס"
           },
           {
@@ -746,10 +757,11 @@
               {
                 "source": "role-roster-29",
                 "quote": "PersonToPositionID 3624; PersonID 435; PositionID 39; StartDate 2001-03-07T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 28108. בנימין בן-אליעזר"
+                "note": "Official appointment of בנימין בן-אליעזר; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של בנימין בן-אליעזר; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead."
           },
           {
             "factionNameHe": "הליכוד",
@@ -760,10 +772,11 @@
               {
                 "source": "role-roster-29",
                 "quote": "PersonToPositionID 3641; PersonID 469; PositionID 57; StartDate 2001-03-07T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 28179. ציפי לבני"
+                "note": "Official appointment of ציפי לבני; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של ציפי לבני; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead."
           },
           {
             "factionNameHe": "האיחוד הלאומי - ישראל ביתנו",
@@ -774,10 +787,11 @@
               {
                 "source": "role-roster-29",
                 "quote": "PersonToPositionID 3646; PersonID 427; PositionID 39; StartDate 2001-03-07T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 28187. אביגדור ליברמן"
+                "note": "Official appointment of אביגדור ליברמן; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של אביגדור ליברמן; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
             "factionNameEn": "National Union–Yisrael Beiteinu"
           },
           {
@@ -789,10 +803,11 @@
               {
                 "source": "role-roster-29",
                 "quote": "PersonToPositionID 3681; PersonID 535; PositionID 39; StartDate 2001-03-07T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 28277. נתן שרנסקי"
+                "note": "Official appointment of נתן שרנסקי; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של נתן שרנסקי; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
             "letters": "כן"
           }
         ],
@@ -841,7 +856,7 @@
     "supportSeats": 0,
     "reconciliation": {
       "status": "vote-unavailable",
-      "note": "No sourced investiture tally retained for this snapshot; do not substitute membership seats."
+      "note": "No source gives the investiture vote for this government; member seats are not used in its place."
     },
     "knownMemberSeats": 75
   },

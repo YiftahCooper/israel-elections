@@ -158,15 +158,16 @@
     },
     "haredi-society": {
       "url": "https://en.idi.org.il/articles/52891",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute, Ariel Finkelstein, 11 February 2024: The Political Structure of Haredi Local Authorities and Its Influence on How They Operate",
       "kind": "secondary",
       "accessed": "2026-11-04",
+      "publicationDate": "2024-02-11",
       "support": "Aguda, Degel and Shas identified as parties of main Haredi communities.",
       "retrieval": {
         "status": 200,
         "sha256": "127091a1745989fe918709a61dd4c48a9286614ec8a1a312186240efb0dff0f3"
       },
-      "publisherHe": "המכון הישראלי לדמוקרטיה"
+      "publisherHe": "המכון הישראלי לדמוקרטיה, אריאל פינקלשטיין, 11 בפברואר 2024: מאמר באנגלית על המבנה הפוליטי של הרשויות המקומיות החרדיות"
     },
     "power2009": {
       "url": "https://www.walla.co.il/news/israel/1416821",
@@ -304,21 +305,22 @@
     },
     "radical": {
       "url": "https://www.idi.org.il/articles/33649",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute, Assaf Shapira, 6 February 2021: The joint-lists phenomenon (in Hebrew)",
       "kind": "secondary",
       "accessed": "2026-11-04",
+      "publicationDate": "2021-02-06",
       "support": "Historical party profile/context for radical; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
       "retrieval": {
         "status": 200,
         "sha256": "8eab19d2bd2c69d097c84f844dd6c54d20d5dcf73fe0e44dbf7bdcba573d58ec"
       },
-      "publisherHe": "המכון הישראלי לדמוקרטיה"
+      "publisherHe": "המכון הישראלי לדמוקרטיה, אסף שפירא, 6 בפברואר 2021: «תופעת הרשימות המשותפות»"
     },
     "k1": {
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k1.json",
-      "sha256": "5d454fb1d39b028540ab7c96c669975399b11c5ae8832db4011fe29252494039",
+      "sha256": "388615c0664f7eab3d23f0ab6fe364a9951bd7eab0efc514fa3f64ea0f6427a6",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -326,7 +328,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k2.json",
-      "sha256": "9ecde3af2281faaf26325bef818fa1c9ce3f0375d6a4c8c119099d59368a6381",
+      "sha256": "137c41e59c503e55c86d04392f0a1133a6f1cac7948ec29bbea60293022c27f1",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -334,7 +336,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k3.json",
-      "sha256": "0ea276983d486d1c150baf61f979dab3fdee11a42b6b49367a479e235680ffd4",
+      "sha256": "eb8c0994fce998f2db16730eaa77d98e437dda065820b6927359a2940d3ada7c",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -342,7 +344,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k4.json",
-      "sha256": "6ed37514fbe07806fd7a70efaca96cb7cc94e297ee85d3375c32d807e6214feb",
+      "sha256": "964325114c3090f4d2bf0c75f87b32f016d829ee10783160729f4f244c2e64d1",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -350,7 +352,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k5.json",
-      "sha256": "6754fff9d6c21a627dcec0faafbc0ed07f340693f19f090993a372db90a3ddbd",
+      "sha256": "803bcb0999421a4decb2b3414850e2ad1948f643ca1fd952bd573f83e40d2cb9",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -358,7 +360,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k6.json",
-      "sha256": "54361492a836f80d19796af13c36d4702526d9b9955e5c1102b7f3d8b2e8e6f1",
+      "sha256": "cfd746df20cdff620f710ecfdf0381650cb86758a94fe6a196dae1f4c7b51be0",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -366,7 +368,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k7.json",
-      "sha256": "ccfead1d8d5d13388a294fe5ff10b30fb27bde85700543d2c0daf5f931bb7944",
+      "sha256": "f1563ce4526576ef05e2b66b51a2bc3a336c46e9d7e98828bfc0fa1a0fd112ce",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -374,7 +376,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k8.json",
-      "sha256": "64eb31c830a8b90e01891943fce406db916aada82fbb735095591c20ab5d0f9e",
+      "sha256": "bf15902471b3402f3e8f87ac9fe45a4042b881c6113c2a9eae7bab7cd5e28a77",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -382,7 +384,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k9.json",
-      "sha256": "7bbcb4e7e3b2b3d14dd5c6eefce7353186559965502d1aa4dde7eb44f5f7914d",
+      "sha256": "c33a874b41801af00e7d0794c1dc9cd2475209a0f647484b2a019a7ff3751057",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -406,7 +408,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k12.json",
-      "sha256": "aea0f0d5c4628155da7d9c9556fd71b148d380d458bccb2ee58ee0113edb6b18",
+      "sha256": "fb8da86e1042620126ff57b0150ce69c62dd9e13d3b1c01e18441c7423500dea",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -414,7 +416,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k13.json",
-      "sha256": "28d35cd7d3f45c62fdccbe13e0f5d2f7f9d6e931b9bbbeab2583b4a6f0c225d7",
+      "sha256": "b214286c80210e4a3e5aca7942cfa1eaf3048192278d3c832e72d215ef8344d3",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -422,7 +424,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k14.json",
-      "sha256": "6fb8ffa61cd06226cc6d183a1a9b128a7cedc4d399ad2fb5c6ee7dc14b68344a",
+      "sha256": "6eb199a981f461bd04941c2856b7e4879ce1c242d9592eb1cf3759e3e0c36945",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -430,7 +432,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k15.json",
-      "sha256": "aea3072a9b0ead45f679ab79f9d0446e074361e714b7bc40f24a3e39c3bbe1e9",
+      "sha256": "0636650ae66491832eadc371509db4e3973d8b891c37e33000bef732fc8bebe0",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -438,7 +440,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k16.json",
-      "sha256": "662cd88566878c3f8935c69a98a3915f166b8fc5b1570b7ce70205c27596eeb7",
+      "sha256": "da12b389402eb9c33d1dd306dec6416076cb5bd8a5e895379a3cfaa8135e05ba",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -446,7 +448,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k17.json",
-      "sha256": "9d91fd4f33e821625446b2341fce661be47ec298f9b31ad2b764732ec5afc61b",
+      "sha256": "d3c7353a0e0367816fe33cb90f501ebe4e379ee0071a42681617c0f57382cf13",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -454,7 +456,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k18.json",
-      "sha256": "76aff819f833bb2a38d74be75a550310b663c1ec1d5c79e67888a00239914e92",
+      "sha256": "549e9bd4ed2f47f88231e9e7cbd2830d88ebba872e19d25e6bc33150d30f9dd1",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -462,7 +464,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k19.json",
-      "sha256": "7760183e75b97aba156d45efd52b170769e05962c8e0e2862907839682b4a4af",
+      "sha256": "3fd20a84d1fbe7289bdb272e954fa6b1df24c600993c98bf8855d52d473c341a",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -470,7 +472,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k20.json",
-      "sha256": "4d991d557d7e9819af4724137620bee25f5766315517389ac1a74dc7ac8d368d",
+      "sha256": "f1e36162e23f536259ed30d54a91d47d89b54382425e3bdbf1139a708ce588be",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -486,7 +488,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k22.json",
-      "sha256": "64e572d1c1878e310a7a5c26ff35d81fe64da82dd10c8dbf54d55e32ec73f452",
+      "sha256": "c306ca7abd9bc670e948883e01f867ac5cd24e98320c70023c43f9d5b3e13805",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -494,7 +496,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k23.json",
-      "sha256": "4bc87f04079f0c801cacb3d3ec64a91d737e9043cc2c83c0483193810f671ba9",
+      "sha256": "531cf03ea45e6d6602e1d18d411077d21f46bc43b8dfd09977a82acde2315f20",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -502,7 +504,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k24.json",
-      "sha256": "42c1bf78590a125dee97a78162b39e08754a638e4276e975bcd6e3ffcee4611b",
+      "sha256": "4bbfa8142a4af7e161cb795a2f8f049df0d4ba3b83c25fcc7c03a375c1f7399a",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -536,12 +538,12 @@
       "electionId": "k1",
       "electionDate": "1949-01-25",
       "datasetPath": "public/data/k1.json",
-      "datasetSha256": "5d454fb1d39b028540ab7c96c669975399b11c5ae8832db4011fe29252494039",
+      "datasetSha256": "388615c0664f7eab3d23f0ab6fe364a9951bd7eab0efc514fa3f64ea0f6427a6",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
-        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. הדרגות הרשומות כוללות מועמדים שהתפטרו; מיפוי דרגות הנבחרים נשמר ברשומת הבדיקה. ראו החלטה 0063. יש שוויון במודדים השלמים במושבים 118–119; שתי תוצאות ההגרלה נותנות אותה הקצאה סופית, אך הסדר ההיסטורי אינו ידוע.",
-        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. Registered ranks include withdrawals; the elected-rank mappings are retained in the reviewed roster record. See decision 0063. Integer quotients tie at seats 118–119; both lottery choices give the same final seats, but the historical order is unknown."
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. הדרגות הרשומות כוללות מועמדים שהתפטרו. יש שוויון במודדים השלמים במושבים 118–119; שתי תוצאות ההגרלה נותנות אותה הקצאה סופית, אך הסדר ההיסטורי אינו ידוע.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. Registered ranks include candidates who withdrew. Integer quotients tie at seats 118–119; both lottery choices give the same final seats, but the historical order is unknown."
       },
       "validVotes": 434684,
       "voteSourceIds": [
@@ -717,12 +719,12 @@
       "electionId": "k2",
       "electionDate": "1951-07-30",
       "datasetPath": "public/data/k2.json",
-      "datasetSha256": "9ecde3af2281faaf26325bef818fa1c9ce3f0375d6a4c8c119099d59368a6381",
+      "datasetSha256": "137c41e59c503e55c86d04392f0a1133a6f1cac7948ec29bbea60293022c27f1",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-06",
-        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ברשימות הזוכות לא תומללו. שתי הרשימות ללא מושבים תומללו במלואן (34 ו־16 מועמדים). ללא נתוני יישובים. ראו החלטה 0064.",
-        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks of winning lists are untranscribed. Both losing-list rosters are transcribed in full (34 and 16 candidates). No locality dataset. See decision 0064."
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ברשימות הזוכות לא תומללו. שתי הרשימות ללא מושבים תומללו במלואן (34 ו־16 מועמדים). ללא נתוני יישובים.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks of winning lists are untranscribed. Both losing-list rosters are transcribed in full (34 and 16 candidates). No locality dataset."
       },
       "validVotes": 687492,
       "voteSourceIds": [
@@ -902,12 +904,12 @@
       "electionId": "k3",
       "electionDate": "1955-07-26",
       "datasetPath": "public/data/k3.json",
-      "datasetSha256": "0ea276983d486d1c150baf61f979dab3fdee11a42b6b49367a479e235680ffd4",
+      "datasetSha256": "eb8c0994fce998f2db16730eaa77d98e437dda065820b6927359a2940d3ada7c",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-06",
-        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0065.",
-        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0065."
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset."
       },
       "validVotes": 853219,
       "voteSourceIds": [
@@ -1030,12 +1032,12 @@
       "electionId": "k4",
       "electionDate": "1959-11-03",
       "datasetPath": "public/data/k4.json",
-      "datasetSha256": "6ed37514fbe07806fd7a70efaca96cb7cc94e297ee85d3375c32d807e6214feb",
+      "datasetSha256": "964325114c3090f4d2bf0c75f87b32f016d829ee10783160729f4f244c2e64d1",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
-        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0066.",
-        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0066."
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset."
       },
       "validVotes": 969337,
       "voteSourceIds": [
@@ -1155,12 +1157,12 @@
       "electionId": "k5",
       "electionDate": "1961-08-15",
       "datasetPath": "public/data/k5.json",
-      "datasetSha256": "6754fff9d6c21a627dcec0faafbc0ed07f340693f19f090993a372db90a3ddbd",
+      "datasetSha256": "803bcb0999421a4decb2b3414850e2ad1948f643ca1fd952bd573f83e40d2cb9",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
-        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. התוצאות הרשמיות מוציאות את מועמדי הליברלים בדרגות 9 ו־11; הנבחרים כוללים מחליפים עד דרגה 19. ראו החלטה 0067.",
-        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. The official results exclude Liberal registered ranks 9 and 11; elected ranks include replacements through rank 19. See decision 0067."
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. התוצאות הרשמיות מוציאות את מועמדי הליברלים בדרגות 9 ו־11; הנבחרים כוללים מחליפים עד דרגה 19.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. The official results exclude Liberal registered ranks 9 and 11; elected ranks include replacements through rank 19."
       },
       "validVotes": 1006964,
       "voteSourceIds": [
@@ -1309,12 +1311,12 @@
       "electionId": "k6",
       "electionDate": "1965-11-02",
       "datasetPath": "public/data/k6.json",
-      "datasetSha256": "54361492a836f80d19796af13c36d4702526d9b9955e5c1102b7f3d8b2e8e6f1",
+      "datasetSha256": "cfd746df20cdff620f710ecfdf0381650cb86758a94fe6a196dae1f4c7b51be0",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-06",
-        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. ילקוט הפרסומים 1225 מחבר את המערך (את) לקדמה ופתוח (רא); התמלול הקודם יא היה שגוי. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0069a.",
-        "noteEn": "Official national votes, agreements and all 120 seats verified. YP 1225 connects Alignment (את) to Progress and Development (רא); the earlier יא transcription was incorrect. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0069a."
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. ילקוט הפרסומים 1225 מחבר את המערך (את) לקדמה ופתוח (רא); התמלול הקודם יא היה שגוי. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. Yalkut HaPirsumim 1225 connects Alignment (את) to Progress and Development (רא); the earlier יא transcription was incorrect. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset."
       },
       "validVotes": 1206728,
       "voteSourceIds": [
@@ -1463,12 +1465,12 @@
       "electionId": "k7",
       "electionDate": "1969-10-28",
       "datasetPath": "public/data/k7.json",
-      "datasetSha256": "ccfead1d8d5d13388a294fe5ff10b30fb27bde85700543d2c0daf5f931bb7944",
+      "datasetSha256": "f1563ce4526576ef05e2b66b51a2bc3a336c46e9d7e98828bfc0fa1a0fd112ce",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
-        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0069.",
-        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0069."
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset."
       },
       "validVotes": 1367743,
       "voteSourceIds": [
@@ -1617,10 +1619,10 @@
       "electionId": "k8",
       "electionDate": "1973-12-31",
       "datasetPath": "public/data/k8.json",
-      "datasetSha256": "64eb31c830a8b90e01891943fce406db916aada82fbb735095591c20ab5d0f9e",
+      "datasetSha256": "bf15902471b3402f3e8f87ac9fe45a4042b881c6113c2a9eae7bab7cd5e28a77",
       "datasetStatus": {
         "stage": "official-final",
-        "noteEn": "National results; every published seat reproduced with the six official list connections from the Central Elections Committee’s calculation record (Form 30 appendix; three had no effect). All 120 elected names transcribed from the official candidate notice (YP 1954) and cross-checked against the results notice (YP 1979) and the committee record. Later ranks truncated (Ratz complete); nonwinning rosters untranscribed. Three ballot letters and four list names corrected from the notices. Full amendment chain unverified; no localities.",
+        "noteEn": "National results; every published seat reproduced with the six official list connections from the Central Elections Committee’s calculation record (Form 30 appendix; three had no effect). All 120 elected names transcribed from the official candidate notice (Yalkut HaPirsumim 1954) and cross-checked against the results notice (Yalkut HaPirsumim 1979) and the committee record. Later ranks truncated (Ratz complete); nonwinning rosters untranscribed. Three ballot letters and four list names corrected from the notices. Full amendment chain unverified; no localities.",
         "noteHe": "תוצאות ארציות; כל המנדטים שפורסמו משוחזרים עם שש ההתקשרויות הרשמיות מרשומת החישוב של ועדת הבחירות המרכזית (נספח טופס 30; לשלוש מהן לא הייתה השפעה). שמות כל 120 הנבחרים תומללו מהודעת המועמדים הרשמית (י״פ 1954) והוצלבו עם הודעת התוצאות (י״פ 1979) ועם רשומת הוועדה. דרגות מאוחרות חלקיות (רצ מלאה); רשימות לא זוכות לא תומללו. שלוש אותיות רשימה וארבעה שמות רשימות תוקנו לפי ההודעות. שרשרת התיקונים המלאה לא אומתה; אין נתוני יישובים.",
         "asOf": "2026-11-04"
       },
@@ -1746,11 +1748,11 @@
       "electionId": "k9",
       "electionDate": "1977-05-17",
       "datasetPath": "public/data/k9.json",
-      "datasetSha256": "7bbcb4e7e3b2b3d14dd5c6eefce7353186559965502d1aa4dde7eb44f5f7914d",
+      "datasetSha256": "c33a874b41801af00e7d0794c1dc9cd2475209a0f647484b2a019a7ff3751057",
       "datasetStatus": {
         "stage": "official-final",
-        "noteEn": "National results; all seats reproduce with six official agreements and the k9-only candidate cap (Flatto-Sharon 1, Sheli 2). The Knesset’s 1 November 1977 appeal determination confirms the initial cap and six surplus seats under section 81(d). All 120 winning ranks are cross-checked: 119 names in YP 2326; Ratz’s rank 1 Shulamit Aloni confirmed by official Knesset OData membership and faction records from the first session, 13 June 1977 (the notice omits her paragraph). Later ranks truncated; nonwinning rosters untranscribed. Full amendment chain and unknown full-roster counterfactual capacities unverified; no localities.",
-        "noteHe": "תוצאות ארציות; כל המנדטים משוחזרים עם ששת ההסכמים הרשמיים והגבלת מספר המועמדים המופעלת רק לשנת 1977 (פלאטו שרון 1, שלי 2). הכרעת הכנסת בערעור מיום 1 בנובמבר 1977 מאשרת את ההגבלה בחלוקה הראשונה ואת חלוקת ששת המנדטים העודפים לפי סעיף 81(ד). כל 120 הדרגות הזוכות הוצלבו: 119 שמות בי״פ 2326; שולמית אלוני, דרגה 1 ברצ, אומתה ברישומי החברות בכנסת ובסיעה בממשק OData הרשמי של הכנסת מיום הישיבה הראשונה, 13 ביוני 1977 (פסקתה חסרה בהודעה). דרגות מאוחרות חלקיות ורשימות לא זוכות לא תומללו. שרשרת התיקונים ומגבלות רשימות שמספר מועמדיהן המלא אינו ידוע בתרחישים חלופיים לא אומתו; אין נתוני יישובים.",
+        "noteEn": "National results; all seats reproduce with six official agreements and the candidate cap that applied only in 1977 (Flatto-Sharon 1, Sheli 2). The Knesset’s 1 November 1977 appeal determination confirms the initial cap and six surplus seats under section 81(d). All 120 winning ranks are cross-checked: 119 names in Yalkut HaPirsumim 2326; Ratz’s rank 1 Shulamit Aloni confirmed by the Knesset’s official membership and faction records from the first session, 13 June 1977 (the notice omits her paragraph). Later ranks truncated; nonwinning rosters untranscribed. Full amendment chain and unknown full-roster counterfactual capacities unverified; no localities.",
+        "noteHe": "תוצאות ארציות; כל המנדטים משוחזרים עם ששת ההסכמים הרשמיים והגבלת מספר המועמדים המופעלת רק לשנת 1977 (פלאטו שרון 1, שלי 2). הכרעת הכנסת בערעור מיום 1 בנובמבר 1977 מאשרת את ההגבלה בחלוקה הראשונה ואת חלוקת ששת המנדטים העודפים לפי סעיף 81(ד). כל 120 הדרגות הזוכות הוצלבו: 119 שמות בי״פ 2326; שולמית אלוני, דרגה 1 ברצ, אומתה ברישומי החברות והסיעות הרשמיים של הכנסת מיום הישיבה הראשונה, 13 ביוני 1977 (פסקתה חסרה בהודעה). דרגות מאוחרות חלקיות ורשימות לא זוכות לא תומללו. שרשרת התיקונים ומגבלות רשימות שמספר מועמדיהן המלא אינו ידוע בתרחישים חלופיים לא אומתו; אין נתוני יישובים.",
         "asOf": "2026-11-06"
       },
       "validVotes": 1747820,
@@ -2245,10 +2247,10 @@
       "electionId": "k12",
       "electionDate": "1988-11-01",
       "datasetPath": "public/data/k12.json",
-      "datasetSha256": "aea0f0d5c4628155da7d9c9556fd71b148d380d458bccb2ee58ee0113edb6b18",
+      "datasetSha256": "fb8da86e1042620126ff57b0150ce69c62dd9e13d3b1c01e18441c7423500dea",
       "datasetStatus": {
         "stage": "official-final",
-        "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 121 retained candidate entries (120 declared elected) across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
+        "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 121 candidate entries (120 declared elected) across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
         "noteHe": "תוצאות ארציות בלבד; כל המנדטים הרשמיים שוחזרו. 121 מועמדים נשמרו (120 הוכרזו נבחרים) מפרסום הרשימות הרשמי בכל 15 הרשימות הזוכות; שמות כל 120 הנבחרים הוצלבו עם הודעת התוצאות. דרגות מאוחרות לא תומללו; רשימות חלקיות ורשימות לא זוכות שלא תומללו מסומנות במפורש. אין נתוני יישובים. שרשרת התיקונים המלאה למועד הבחירות ושינויים מאוחרים ברשימות טרם אומתו; אלה מגבלות מתועדות.",
         "asOf": "2026-11-06"
       },
@@ -2494,10 +2496,10 @@
       "electionId": "k13",
       "electionDate": "1992-06-23",
       "datasetPath": "public/data/k13.json",
-      "datasetSha256": "28d35cd7d3f45c62fdccbe13e0f5d2f7f9d6e931b9bbbeab2583b4a6f0c225d7",
+      "datasetSha256": "b214286c80210e4a3e5aca7942cfa1eaf3048192278d3c832e72d215ef8344d3",
       "datasetStatus": {
         "stage": "official-final",
-        "noteEn": "Rosters: everyone elected is included and cross-checked; no full rosters; later ranks of winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. The 1992 agreement notice was not found; agreements that did not affect seats may be missing. Empty agreements reproduce every published seat.",
+        "noteEn": "Rosters: everyone elected is included and cross-checked; no full rosters; later ranks of winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order kept, with omissions in the elected notice explicitly reconciled. No locality data. The 1992 agreement notice was not found; agreements that did not affect seats may be missing. Empty agreements reproduce every published seat.",
         "noteHe": "מועמדים: כל הנבחרים נכללו ונבדקו מול הודעת התוצאות; אין רשימות מלאות; מקומות מאוחרים בשאר הרשימות הזוכות לא תועתקו. רשימות ללא מנדטים אינן מתועתקות. סדר המועמדים הרשום נשמר וההשמטות בהודעת הנבחרים תועדו. אין נתוני יישובים. הודעת ההתקשרויות משנת 1992 לא אותרה; ייתכן שחסרים הסכמים שלא השפיעו על חלוקת המנדטים. כל המנדטים שוחזרו ללא הסכמים.",
         "asOf": "2026-11-03"
       },
@@ -2711,10 +2713,10 @@
       "electionId": "k14",
       "electionDate": "1996-05-29",
       "datasetPath": "public/data/k14.json",
-      "datasetSha256": "6fb8ffa61cd06226cc6d183a1a9b128a7cedc4d399ad2fb5c6ee7dc14b68344a",
+      "datasetSha256": "6eb199a981f461bd04941c2856b7e4879ce1c242d9592eb1cf3759e3e0c36945",
       "datasetStatus": {
         "stage": "official-final",
-        "noteEn": "Rosters: everyone elected is included and cross-checked; no full rosters; Third Way retains 12 of 52 registered candidates; later ranks of winning lists not transcribed. Zero-seat rosters unavailable; registered Moreshet Avot withdrew before polling (21 registered lists, 20 contested). Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. Complete 6-pair agreement notice verified; every published seat reproduced.",
+        "noteEn": "Rosters: everyone elected is included and cross-checked; no full rosters; Third Way retains 12 of 52 registered candidates; later ranks of winning lists not transcribed. Zero-seat rosters unavailable; registered Moreshet Avot withdrew before polling (21 registered lists, 20 contested). Registered rank order kept, with omissions in the elected notice explicitly reconciled. No locality data. Complete 6-pair agreement notice verified; every published seat reproduced.",
         "noteHe": "מועמדים: כל הנבחרים נכללו ונבדקו מול הודעת התוצאות; אין רשימות מלאות; בדרך השלישית תועתקו 12 מתוך 52 מועמדים רשומים; מקומות מאוחרים ברשימות הזוכות לא תועתקו. רשימות ללא מנדטים אינן מתועתקות; מורשת-אבות פרשה לפני ההצבעה (21 רשימות רשומות, 20 התמודדו). סדר המועמדים הרשום נשמר וההשמטות בהודעת הנבחרים תועדו. אין נתוני יישובים. הודעת ההתקשרויות המלאה (6 זוגות) אומתה וכל המנדטים שוחזרו.",
         "asOf": "2026-11-03"
       },
@@ -2955,10 +2957,10 @@
       "electionId": "k15",
       "electionDate": "1999-05-17",
       "datasetPath": "public/data/k15.json",
-      "datasetSha256": "aea3072a9b0ead45f679ab79f9d0446e074361e714b7bc40f24a3e39c3bbe1e9",
+      "datasetSha256": "0636650ae66491832eadc371509db4e3973d8b891c37e33000bef732fc8bebe0",
       "datasetStatus": {
         "stage": "official-final",
-        "noteEn": "Rosters: everyone elected is included and cross-checked; no full winning-list rosters; later ranks of winning lists not transcribed. Contesting zero-seat rosters unavailable; two withdrawn registrations retained. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. Complete 9-pair agreement notice verified; every published seat reproduced.",
+        "noteEn": "Rosters: everyone elected is included and cross-checked; no full winning-list rosters; later ranks of winning lists not transcribed. Contesting zero-seat rosters unavailable; two withdrawn registrations kept. Registered rank order kept, with omissions in the elected notice explicitly reconciled. No locality data. Complete 9-pair agreement notice verified; every published seat reproduced.",
         "noteHe": "מועמדים: כל הנבחרים נכללו ונבדקו מול הודעת התוצאות; אין רשימות זוכות מלאות; מקומות מאוחרים בשאר הרשימות הזוכות לא תועתקו. רשימות שהתמודדו ולא זכו במנדטים אינן מתועתקות; נשמרו שתי רשימות שפרשו. סדר המועמדים הרשום נשמר וההשמטות בהודעת הנבחרים תועדו. אין נתוני יישובים. הודעת ההתקשרויות המלאה (9 זוגות) אומתה וכל המנדטים שוחזרו.",
         "asOf": "2026-11-03"
       },
@@ -3214,7 +3216,7 @@
       "electionId": "k16",
       "electionDate": "2003-01-28",
       "datasetPath": "public/data/k16.json",
-      "datasetSha256": "662cd88566878c3f8935c69a98a3915f166b8fc5b1570b7ce70205c27596eeb7",
+      "datasetSha256": "da12b389402eb9c33d1dd306dec6416076cb5bd8a5e895379a3cfaa8135e05ba",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -3506,7 +3508,7 @@
       "electionId": "k17",
       "electionDate": "2006-03-28",
       "datasetPath": "public/data/k17.json",
-      "datasetSha256": "9d91fd4f33e821625446b2341fce661be47ec298f9b31ad2b764732ec5afc61b",
+      "datasetSha256": "d3c7353a0e0367816fe33cb90f501ebe4e379ee0071a42681617c0f57382cf13",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -3739,12 +3741,12 @@
       "electionId": "k18",
       "electionDate": "2009-02-10",
       "datasetPath": "public/data/k18.json",
-      "datasetSha256": "76aff819f833bb2a38d74be75a550310b663c1ec1d5c79e67888a00239914e92",
+      "datasetSha256": "549e9bd4ed2f47f88231e9e7cbd2830d88ebba872e19d25e6bc33150d30f9dd1",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2009-02-17",
-        "noteHe": "תוצאות רשמיות. פסולים ובעלי זכות בחירה לפי זכרון הדברים של ועדת הבחירות, השונה ממספר הפסולים ברשומות. נתוני היישובים נגזרו מסיכום הקלפיות; ועדה אזורית אינה ידועה (0). המועמדים לפי הפרסום המקורי; שינויים מאוחרים אינם מוחלים. ראו החלטה 0040.",
-        "noteEn": "Official results. Invalid ballots and electorate follow the CEC allocation memorandum, differing from the gazette invalid count. Localities are derived from polling stations, not independently sourced; committee is unknown (0). Candidate rosters are the original gazette snapshot; subsequent changes are not applied. See decision 0040."
+        "noteHe": "תוצאות רשמיות. פסולים ובעלי זכות בחירה לפי זכרון הדברים של ועדת הבחירות, השונה ממספר הפסולים ברשומות. נתוני היישובים נגזרו מסיכום הקלפיות; ועדה אזורית אינה ידועה (0). המועמדים לפי הפרסום המקורי; שינויים מאוחרים אינם מוחלים.",
+        "noteEn": "Official results. Invalid ballots and electorate follow the Central Elections Committee allocation memorandum, differing from the gazette invalid count. Localities are derived from polling stations, not independently sourced; committee is unknown (0). Candidate rosters are the original gazette snapshot; subsequent changes are not applied."
       },
       "validVotes": 3373490,
       "voteSourceIds": [
@@ -4004,7 +4006,7 @@
       "electionId": "k19",
       "electionDate": "2013-01-22",
       "datasetPath": "public/data/k19.json",
-      "datasetSha256": "7760183e75b97aba156d45efd52b170769e05962c8e0e2862907839682b4a4af",
+      "datasetSha256": "3fd20a84d1fbe7289bdb272e954fa6b1df24c600993c98bf8855d52d473c341a",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2013-01-30",
@@ -4253,12 +4255,12 @@
       "electionId": "k20",
       "electionDate": "2015-03-17",
       "datasetPath": "public/data/k20.json",
-      "datasetSha256": "4d991d557d7e9819af4724137620bee25f5766315517389ac1a74dc7ac8d368d",
+      "datasetSha256": "f1e36162e23f536259ed30d54a91d47d89b54382425e3bdbf1139a708ce588be",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2015-03-25",
-        "noteHe": "תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות. 10,414 רשומות התוצאות כוללות 10,119 קלפיות רגילות ו־295 רשומות ספירה מרכזית של מעטפות חיצוניות. במידע לבוחר של ועדת הבחירות נמנו 10,372 קלפיות בארץ (10,119 רגילות, 196 בבתי חולים, 57 בבתי סוהר), ועוד 98 בנציגויות בחו״ל. מספר היישובים מונה שורות תוצאות. ראו data-puzzles-1107.md.",
-        "noteEn": "Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled. The 10,414 polling-result rows comprise 10,119 ordinary stations and 295 central double-envelope counting rows. CEC voter information lists 10,372 domestic voting stations (10,119 ordinary, 196 hospital, 57 prison), plus 98 overseas stations. Locality counts describe results-table rows. See data-puzzles-1107.md."
+        "noteHe": "תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות. 10,414 רשומות התוצאות כוללות 10,119 קלפיות רגילות ו־295 רשומות ספירה מרכזית של מעטפות חיצוניות. במידע לבוחר של ועדת הבחירות נמנו 10,372 קלפיות בארץ (10,119 רגילות, 196 בבתי חולים, 57 בבתי סוהר), ועוד 98 בנציגויות בחו״ל. מספר היישובים מונה שורות תוצאות.",
+        "noteEn": "Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled. The 10,414 polling-result rows comprise 10,119 ordinary stations and 295 central double-envelope counting rows. Central Elections Committee voter information lists 10,372 domestic voting stations (10,119 ordinary, 196 hospital, 57 prison), plus 98 overseas stations. Locality counts describe results-table rows."
       },
       "validVotes": 4210884,
       "voteSourceIds": [
@@ -4776,12 +4778,12 @@
       "electionId": "k22",
       "electionDate": "2019-09-17",
       "datasetPath": "public/data/k22.json",
-      "datasetSha256": "64e572d1c1878e310a7a5c26ff35d81fe64da82dd10c8dbf54d55e32ec73f452",
+      "datasetSha256": "c306ca7abd9bc670e948883e01f867ac5cd24e98320c70023c43f9d5b3e13805",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
-        "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. National electorate 6,394,030; locality/polling electorate 6,391,218 (difference 2,812). National total takes precedence; cause unverified. See ADR 0020. YP 8454 prints 126,704 invalid votes in error (the below-threshold valid-vote total); CEC national and locality totals reconcile at 28,362.",
-        "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. מספר בעלי זכות הבחירה הארצי הוא 6,394,030, לעומת 6,391,218 בקובצי היישובים והקלפיות. הפער 2,812; סיבתו לא אומתה. ראו החלטה 0020. בילקוט הפרסומים 8454 נדפסו בטעות 126,704 קולות פסולים (סך הקולות הכשרים מתחת לאחוז החסימה); נתוני ועדת הבחירות הארציים והיישוביים מתיישבים על 28,362."
+        "noteEn": "Official final Central Elections Committee votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. National electorate 6,394,030; locality/polling electorate 6,391,218 (difference 2,812). National total takes precedence; cause unverified. Yalkut HaPirsumim 8454 prints 126,704 invalid votes in error (the below-threshold valid-vote total); Central Elections Committee national and locality totals reconcile at 28,362.",
+        "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. מספר בעלי זכות הבחירה הארצי הוא 6,394,030, לעומת 6,391,218 בקובצי היישובים והקלפיות. הפער 2,812; סיבתו לא אומתה. בילקוט הפרסומים 8454 נדפסו בטעות 126,704 קולות פסולים (סך הקולות הכשרים מתחת לאחוז החסימה); נתוני ועדת הבחירות הארציים והיישוביים מתיישבים על 28,362."
       },
       "validVotes": 4436806,
       "voteSourceIds": [
@@ -4989,11 +4991,11 @@
       "electionId": "k23",
       "electionDate": "2020-03-02",
       "datasetPath": "public/data/k23.json",
-      "datasetSha256": "4bc87f04079f0c801cacb3d3ec64a91d737e9043cc2c83c0483193810f671ba9",
+      "datasetSha256": "531cf03ea45e6d6602e1d18d411077d21f46bc43b8dfd09977a82acde2315f20",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
-        "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations.",
+        "noteEn": "Official final Central Elections Committee votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations.",
         "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות."
       },
       "validVotes": 4590062,
@@ -5184,12 +5186,12 @@
       "electionId": "k24",
       "electionDate": "2021-03-23",
       "datasetPath": "public/data/k24.json",
-      "datasetSha256": "42c1bf78590a125dee97a78162b39e08754a638e4276e975bcd6e3ffcee4611b",
+      "datasetSha256": "4bbfa8142a4af7e161cb795a2f8f049df0d4ba3b83c25fcc7c03a375c1f7399a",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
-        "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. 38 lists contested; Demokratit withdrew (CEC protocol, 30 March 2021, p.4). The 12,926 polling-result rows comprise 12,127 ordinary stations and 799 central double-envelope counting rows. They are not a physical-station total. The CEC 2021 annual report counts 13,756 voting stations including overseas and excluding army bases; its history summary gives 13,685. See data-puzzles-1107.md.",
-        "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. 38 רשימות התמודדו; דמוקרטית פרשה (זכרון דברים של ועדת הבחירות, 30 במרס 2021, עמ׳ 4). 12,926 רשומות התוצאות כוללות 12,127 קלפיות רגילות ו־799 רשומות ספירה מרכזית של מעטפות חיצוניות; זה אינו מספר הקלפיות הפיזיות. בדוח השנתי של ועדת הבחירות לשנת 2021 נמנו 13,756 קלפיות, כולל נציגויות בחו״ל וללא מחנות צה״ל; בסקירה ההיסטורית מופיע 13,685. ראו data-puzzles-1107.md."
+        "noteEn": "Official final Central Elections Committee votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. 38 lists contested; Demokratit withdrew (CEC protocol, 30 March 2021, p.4). The 12,926 polling-result rows comprise 12,127 ordinary stations and 799 central double-envelope counting rows. They are not a physical-station total. The CEC 2021 annual report counts 13,756 voting stations including overseas and excluding army bases; its history summary gives 13,685. See data-puzzles-1107.md.",
+        "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. 38 רשימות התמודדו; דמוקרטית פרשה (זכרון דברים של ועדת הבחירות, 30 במרס 2021, עמ׳ 4). 12,926 רשומות התוצאות כוללות 12,127 קלפיות רגילות ו־799 רשומות ספירה מרכזית של מעטפות חיצוניות; זה אינו מספר הקלפיות הפיזיות. בדוח השנתי של ועדת הבחירות לשנת 2021 נמנו 13,756 קלפיות, כולל נציגויות בחו״ל וללא מחנות צה״ל; בסקירה ההיסטורית מופיע 13,685."
       },
       "validVotes": 4410052,
       "voteSourceIds": [
@@ -5632,12 +5634,12 @@
       "electionId": "k26",
       "electionDate": "2026-10-27",
       "datasetPath": "public/data/k26.json",
-      "datasetSha256": "a4ab2bfda4dddf2fba8e53d7a386eb6a870f110eb62c2a755d1a453528fa62cc",
+      "datasetSha256": "6db8964d6c80d19a3b229664d825883f67e7c9f303add0193de6cb15de816826",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-09",
         "noteHe": "תוצאות סופיות רשמיות: ההודעה בדבר תוצאות הבחירות, ילקוט הפרסומים 15100 (4.11.2026). כל סיכומי הקולות והמנדטים תואמים את נתוני הוועדה.",
-        "noteEn": "Official final results: the results notice, Yalkut HaPirsumim 15100 (4 Nov 2026). Every vote and seat total agrees with the CEC count."
+        "noteEn": "Official final results: the results notice, Yalkut HaPirsumim 15100 (4 Nov 2026). Every vote and seat total agrees with the Central Elections Committee count."
       },
       "validVotes": 5691426,
       "voteSourceIds": [

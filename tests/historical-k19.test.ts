@@ -32,7 +32,7 @@ describe('k19 — official 2013 result', () => {
     const ds: ElectionDataset = JSON.parse(readFileSync('public/data/k19.json', 'utf8'));
     expect(ds.sourceIds).toContain('k19-results-correction');
     expect(ds.buildInfo.rawSha256['k19-results-correction']).toBe('997628f9f5b6d556b62e2547489cbc9b6fbd64fa721c6eff687577ae1074cc24');
-    expect(ds.status.noteEn).toContain('YP 6546');
+    expect(ds.status.noteEn).toContain('Yalkut HaPirsumim 6546');
     expect(ds.lists.find(l => l.letters === 'ד')?.nameHe).toBe('בל"ד - אלתג\'מוע אלווטני אלדמוקרטי');
     for (const letters of ['צפ', 'ו']) expect(ds.lists.find(l => l.letters === letters)?.logo).toBeUndefined();
     expect(ds.lists.find(l => l.letters === 'מרצ')?.logo?.file).toBe('logos/meretz-2013-k19-print.png');

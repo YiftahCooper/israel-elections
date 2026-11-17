@@ -1,0 +1,242 @@
+[
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. Registered ranks include withdrawals; the elected-rank mappings are retained in the reviewed roster record. See decision 0063. Integer quotients tie at seats 118–119; both lottery choices give the same final seats, but the historical order is unknown.\",",
+  "after": "\"noteEn\": \"Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. Registered ranks include candidates who withdrew. Integer quotients tie at seats 118–119; both lottery choices give the same final seats, but the historical order is unknown.\","
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteHe\": \"הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. הדרגות הרשומות כוללות מועמדים שהתפטרו; מיפוי דרגות הנבחרים נשמר ברשומת הבדיקה. ראו החלטה 0063. יש שוויון במודדים השלמים במושבים 118–119; שתי תוצאות ההגרלה נותנות אותה הקצאה סופית, אך הסדר ההיסטורי אינו ידוע.\"",
+  "after": "\"noteHe\": \"הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. הדרגות הרשומות כוללות מועמדים שהתפטרו. יש שוויון במודדים השלמים במושבים 118–119; שתי תוצאות ההגרלה נותנות אותה הקצאה סופית, אך הסדר ההיסטורי אינו ידוע.\""
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks of winning lists are untranscribed. Both losing-list rosters are transcribed in full (34 and 16 candidates). No locality dataset. See decision 0064.\",",
+  "after": "\"noteEn\": \"Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks of winning lists are untranscribed. Both losing-list rosters are transcribed in full (34 and 16 candidates). No locality dataset.\","
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteHe\": \"הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ברשימות הזוכות לא תומללו. שתי הרשימות ללא מושבים תומללו במלואן (34 ו־16 מועמדים). ללא נתוני יישובים. ראו החלטה 0064.\"",
+  "after": "\"noteHe\": \"הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ברשימות הזוכות לא תומללו. שתי הרשימות ללא מושבים תומללו במלואן (34 ו־16 מועמדים). ללא נתוני יישובים.\""
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0065.\",",
+  "after": "\"noteEn\": \"Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset.\","
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteHe\": \"הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0065.\"",
+  "after": "\"noteHe\": \"הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים.\""
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0066.\",",
+  "after": "\"noteEn\": \"Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset.\","
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteHe\": \"הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0066.\"",
+  "after": "\"noteHe\": \"הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים.\""
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. The official results exclude Liberal registered ranks 9 and 11; elected ranks include replacements through rank 19. See decision 0067.\",",
+  "after": "\"noteEn\": \"Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. The official results exclude Liberal registered ranks 9 and 11; elected ranks include replacements through rank 19.\","
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteHe\": \"הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. התוצאות הרשמיות מוציאות את מועמדי הליברלים בדרגות 9 ו־11; הנבחרים כוללים מחליפים עד דרגה 19. ראו החלטה 0067.\"",
+  "after": "\"noteHe\": \"הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. התוצאות הרשמיות מוציאות את מועמדי הליברלים בדרגות 9 ו־11; הנבחרים כוללים מחליפים עד דרגה 19.\""
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"Official national votes, agreements and all 120 seats verified. YP 1225 connects Alignment (את) to Progress and Development (רא); the earlier יא transcription was incorrect. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0069a.\",",
+  "after": "\"noteEn\": \"Official national votes, agreements and all 120 seats verified. Yalkut HaPirsumim 1225 connects Alignment (את) to Progress and Development (רא); the earlier יא transcription was incorrect. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset.\","
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteHe\": \"הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. ילקוט הפרסומים 1225 מחבר את המערך (את) לקדמה ופתוח (רא); התמלול הקודם יא היה שגוי. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0069a.\"",
+  "after": "\"noteHe\": \"הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. ילקוט הפרסומים 1225 מחבר את המערך (את) לקדמה ופתוח (רא); התמלול הקודם יא היה שגוי. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים.\""
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0069.\",",
+  "after": "\"noteEn\": \"Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset.\","
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteHe\": \"הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0069.\"",
+  "after": "\"noteHe\": \"הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים.\""
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"National results; every published seat reproduced with the six official list connections from the Central Elections Committee’s calculation record (Form 30 appendix; three had no effect). All 120 elected names transcribed from the official candidate notice (YP 1954) and cross-checked against the results notice (YP 1979) and the committee record. Later ranks truncated (Ratz complete); nonwinning rosters untranscribed. Three ballot letters and four list names corrected from the notices. Full amendment chain unverified; no localities.\",",
+  "after": "\"noteEn\": \"National results; every published seat reproduced with the six official list connections from the Central Elections Committee’s calculation record (Form 30 appendix; three had no effect). All 120 elected names transcribed from the official candidate notice (Yalkut HaPirsumim 1954) and cross-checked against the results notice (Yalkut HaPirsumim 1979) and the committee record. Later ranks truncated (Ratz complete); nonwinning rosters untranscribed. Three ballot letters and four list names corrected from the notices. Full amendment chain unverified; no localities.\","
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"National results; all seats reproduce with six official agreements and the k9-only candidate cap (Flatto-Sharon 1, Sheli 2). The Knesset’s 1 November 1977 appeal determination confirms the initial cap and six surplus seats under section 81(d). All 120 winning ranks are cross-checked: 119 names in YP 2326; Ratz’s rank 1 Shulamit Aloni confirmed by official Knesset OData membership and faction records from the first session, 13 June 1977 (the notice omits her paragraph). Later ranks truncated; nonwinning rosters untranscribed. Full amendment chain and unknown full-roster counterfactual capacities unverified; no localities.\",",
+  "after": "\"noteEn\": \"National results; all seats reproduce with six official agreements and the candidate cap that applied only in 1977 (Flatto-Sharon 1, Sheli 2). The Knesset’s 1 November 1977 appeal determination confirms the initial cap and six surplus seats under section 81(d). All 120 winning ranks are cross-checked: 119 names in Yalkut HaPirsumim 2326; Ratz’s rank 1 Shulamit Aloni confirmed by the Knesset’s official membership and faction records from the first session, 13 June 1977 (the notice omits her paragraph). Later ranks truncated; nonwinning rosters untranscribed. Full amendment chain and unknown full-roster counterfactual capacities unverified; no localities.\","
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteHe\": \"תוצאות ארציות; כל המנדטים משוחזרים עם ששת ההסכמים הרשמיים והגבלת מספר המועמדים המופעלת רק לשנת 1977 (פלאטו שרון 1, שלי 2). הכרעת הכנסת בערעור מיום 1 בנובמבר 1977 מאשרת את ההגבלה בחלוקה הראשונה ואת חלוקת ששת המנדטים העודפים לפי סעיף 81(ד). כל 120 הדרגות הזוכות הוצלבו: 119 שמות בי״פ 2326; שולמית אלוני, דרגה 1 ברצ, אומתה ברישומי החברות בכנסת ובסיעה בממשק OData הרשמי של הכנסת מיום הישיבה הראשונה, 13 ביוני 1977 (פסקתה חסרה בהודעה). דרגות מאוחרות חלקיות ורשימות לא זוכות לא תומללו. שרשרת התיקונים ומגבלות רשימות שמספר מועמדיהן המלא אינו ידוע בתרחישים חלופיים לא אומתו; אין נתוני יישובים.\"",
+  "after": "\"noteHe\": \"תוצאות ארציות; כל המנדטים משוחזרים עם ששת ההסכמים הרשמיים והגבלת מספר המועמדים המופעלת רק לשנת 1977 (פלאטו שרון 1, שלי 2). הכרעת הכנסת בערעור מיום 1 בנובמבר 1977 מאשרת את ההגבלה בחלוקה הראשונה ואת חלוקת ששת המנדטים העודפים לפי סעיף 81(ד). כל 120 הדרגות הזוכות הוצלבו: 119 שמות בי״פ 2326; שולמית אלוני, דרגה 1 ברצ, אומתה ברישומי החברות והסיעות הרשמיים של הכנסת מיום הישיבה הראשונה, 13 ביוני 1977 (פסקתה חסרה בהודעה). דרגות מאוחרות חלקיות ורשימות לא זוכות לא תומללו. שרשרת התיקונים ומגבלות רשימות שמספר מועמדיהן המלא אינו ידוע בתרחישים חלופיים לא אומתו; אין נתוני יישובים.\""
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"National results only; every published seat reproduced. Official candidate gazette: 121 retained candidate entries (120 declared elected) across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.\",",
+  "after": "\"noteEn\": \"National results only; every published seat reproduced. Official candidate gazette: 121 candidate entries (120 declared elected) across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.\","
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"Rosters: everyone elected is included and cross-checked; no full rosters; later ranks of winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. The 1992 agreement notice was not found; agreements that did not affect seats may be missing. Empty agreements reproduce every published seat.\",",
+  "after": "\"noteEn\": \"Rosters: everyone elected is included and cross-checked; no full rosters; later ranks of winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order kept, with omissions in the elected notice explicitly reconciled. No locality data. The 1992 agreement notice was not found; agreements that did not affect seats may be missing. Empty agreements reproduce every published seat.\","
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"Rosters: everyone elected is included and cross-checked; no full rosters; Third Way retains 12 of 52 registered candidates; later ranks of winning lists not transcribed. Zero-seat rosters unavailable; registered Moreshet Avot withdrew before polling (21 registered lists, 20 contested). Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. Complete 6-pair agreement notice verified; every published seat reproduced.\",",
+  "after": "\"noteEn\": \"Rosters: everyone elected is included and cross-checked; no full rosters; Third Way retains 12 of 52 registered candidates; later ranks of winning lists not transcribed. Zero-seat rosters unavailable; registered Moreshet Avot withdrew before polling (21 registered lists, 20 contested). Registered rank order kept, with omissions in the elected notice explicitly reconciled. No locality data. Complete 6-pair agreement notice verified; every published seat reproduced.\","
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"Rosters: everyone elected is included and cross-checked; no full winning-list rosters; later ranks of winning lists not transcribed. Contesting zero-seat rosters unavailable; two withdrawn registrations retained. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. Complete 9-pair agreement notice verified; every published seat reproduced.\",",
+  "after": "\"noteEn\": \"Rosters: everyone elected is included and cross-checked; no full winning-list rosters; later ranks of winning lists not transcribed. Contesting zero-seat rosters unavailable; two withdrawn registrations kept. Registered rank order kept, with omissions in the elected notice explicitly reconciled. No locality data. Complete 9-pair agreement notice verified; every published seat reproduced.\","
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"National seats verified; derived polling-station localities. All elected ranks checked against the official results notice; 10 winning rosters truncated and 3 non-winning rosters unavailable. CBS electorate; gazette valid/invalid totals; documented source discrepancies.\",",
+  "after": "\"noteEn\": \"National seats verified; derived polling-station localities. All elected ranks checked against the official results notice; 10 winning rosters truncated and 3 non-winning rosters unavailable. Central Bureau of Statistics electorate; gazette valid/invalid totals; documented source discrepancies.\","
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteHe\": \"המנדטים הארציים אומתו; נתוני יישובים נגזרו מקלפיות. כל המקומות שנבחרו הוצלבו עם הודעת התוצאות הרשמית; 10 רשימות זוכות קטועות ו-3 רשימות שלא זכו במנדטים חסרות. בעלי זכות בחירה מלמ״ס; כשרים ופסולים מהילקוט; פערי המקורות מתועדים.\"",
+  "after": "\"noteHe\": \"המנדטים הארציים אומתו; נתוני יישובים נגזרו מקלפיות. כל המקומות שנבחרו הוצלבו עם הודעת התוצאות הרשמית; 10 רשימות זוכות קטועות ו-3 רשימות שלא זכו במנדטים חסרות. בעלי זכות בחירה מהלשכה המרכזית לסטטיסטיקה; כשרים ופסולים מהילקוט; פערי המקורות מתועדים.\""
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"National seats verified; derived polling-station localities. All elected ranks checked against the official results notice; 7 winning rosters truncated and 5 non-winning rosters unavailable. CBS electorate; gazette valid/invalid totals; documented source discrepancies.\",",
+  "after": "\"noteEn\": \"National seats verified; derived polling-station localities. All elected ranks checked against the official results notice; 7 winning rosters truncated and 5 non-winning rosters unavailable. Central Bureau of Statistics electorate; gazette valid/invalid totals; documented source discrepancies.\","
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteHe\": \"המנדטים הארציים אומתו; נתוני יישובים נגזרו מקלפיות. כל המקומות שנבחרו הוצלבו עם הודעת התוצאות הרשמית; 7 רשימות זוכות קטועות ו-5 רשימות שלא זכו במנדטים חסרות. בעלי זכות בחירה מלמ״ס; כשרים ופסולים מהילקוט; פערי המקורות מתועדים.\"",
+  "after": "\"noteHe\": \"המנדטים הארציים אומתו; נתוני יישובים נגזרו מקלפיות. כל המקומות שנבחרו הוצלבו עם הודעת התוצאות הרשמית; 7 רשימות זוכות קטועות ו-5 רשימות שלא זכו במנדטים חסרות. בעלי זכות בחירה מהלשכה המרכזית לסטטיסטיקה; כשרים ופסולים מהילקוט; פערי המקורות מתועדים.\""
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"Verified seats, gazette rosters and eight agreement pairs. Localities derived from polling stations. Invalid-ballot total follows the CEC allocation memorandum; see decision 0040.\",",
+  "after": "\"noteEn\": \"Verified seats, gazette rosters and eight agreement pairs. Localities derived from polling stations. Invalid-ballot total follows the Central Elections Committee allocation memorandum;\","
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteHe\": \"המנדטים, רשימות המועמדים ושמונה הסכמי עודפים אומתו. היישובים נגזרו מסיכום הקלפיות; הפסולים לפי זכרון הדברים הרשמי. ראו החלטה 0040.\"",
+  "after": "\"noteHe\": \"המנדטים, רשימות המועמדים ושמונה הסכמי עודפים אומתו. היישובים נגזרו מסיכום הקלפיות; הפסולים לפי זכרון הדברים הרשמי.\""
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"Official CEC results; every seat reproduced. List votes follow the declared result in the gazette; the CEC final results differ slightly for three lists, so the 2013 map differs from the main table by up to 109 votes. The gazette's printed valid total, 270 lower than its own list counts, was formally corrected. Seats are identical either way. See decisions 0041, 0042 and 0094.\",",
+  "after": "\"noteEn\": \"Official Central Elections Committee results; every seat reproduced. List votes follow the declared result in the gazette; the Central Elections Committee final results differ slightly for three lists, so the 2013 map differs from the main table by up to 109 votes. The gazette's printed valid total, 270 lower than its own list counts, was formally corrected. Seats are identical either way.\","
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. No default blocs assigned. National electorate 6,394,030; locality/polling electorate 6,391,218 (difference 2,812). National total takes precedence; cause unverified. See ADR 0020.\",",
+  "after": "\"noteEn\": \"Official final Central Elections Committee votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. No default blocs assigned. National electorate 6,394,030; locality/polling electorate 6,391,218 (difference 2,812). National total takes precedence; cause unverified.\","
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteHe\": \"תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. ללא שיוך לגושים. מספר בעלי זכות הבחירה הארצי הוא 6,394,030, לעומת 6,391,218 בקובצי היישובים והקלפיות. הפער 2,812; סיבתו לא אומתה. ראו החלטה 0020.\"",
+  "after": "\"noteHe\": \"תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. ללא שיוך לגושים. מספר בעלי זכות הבחירה הארצי הוא 6,394,030, לעומת 6,391,218 בקובצי היישובים והקלפיות. הפער 2,812; סיבתו לא אומתה.\""
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. No default blocs assigned.\",",
+  "after": "\"noteEn\": \"Official final Central Elections Committee votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. No default blocs assigned.\","
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. No default blocs assigned.\",",
+  "after": "\"noteEn\": \"Official final Central Elections Committee votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. No default blocs assigned.\","
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteEn\": \"Official final results: the results notice, Yalkut HaPirsumim 15100 (4 Nov 2026). Every vote and seat total agrees with the CEC count.\"",
+  "after": "\"noteEn\": \"Official final results: the results notice, Yalkut HaPirsumim 15100 (4 Nov 2026). Every vote and seat total agrees with the Central Elections Committee count.\""
+ },
+ {
+  "file": "scripts/lib/historical/k16-k17-common.ts",
+  "before": "ds.status.noteEn = `Registered voters: official CBS table 27.2; valid and invalid votes: results gazette; cast = valid + invalid. ${n === 16 ? 'Mafdal and Lider use polling sums; printed gazette figures exceed its own valid total by 410.' : 'Polling-station cast votes are 9 below the gazette-derived national cast total; no authoritative explanation is known.'} Localities are summed polling rows. Every winning list includes all elected ranks, checked name by name against section 4 of the official results notice; literal name variants are documented. ${truncated} winning rosters are truncated to verified elected prefixes; ${missing} non-winning rosters remain unavailable. Later ranks on truncated lists are unverified.`;",
+  "after": "ds.status.noteEn = `Registered voters: Central Bureau of Statistics table 27.2; valid and invalid votes: results gazette; cast = valid + invalid. ${n === 16 ? 'Mafdal and Lider use polling sums; printed gazette figures exceed its own valid total by 410.' : 'Polling-station cast votes are 9 below the gazette-derived national cast total; no authoritative explanation is known.'} Localities are summed polling rows. Every winning list includes all elected ranks, checked name by name against section 4 of the official results notice; literal name variants are documented. ${truncated} winning rosters are truncated to verified elected prefixes; ${missing} non-winning rosters remain unavailable. Later ranks on truncated lists are unverified.`;"
+ },
+ {
+  "file": "scripts/lib/historical/k16-k17-common.ts",
+  "before": "ds.status.noteHe = `בעלי זכות בחירה: לוח למ״ס 27.2; קולות כשרים ופסולים: ילקוט הפרסומים; מצביעים = כשרים + פסולים. ${n === 16 ? 'קולות המפד״ל ולידר לפי סיכומי הקלפיות; הנתונים המודפסים עולים ב-410 על סך הכשרים שבילקוט עצמו.' : 'מספר המצביעים בסיכומי הקלפיות נמוך ב-9 מהסכום הארצי הנגזר מהילקוט; לא ידוע הסבר מוסמך.'} נתוני היישובים סוכמו מקלפיות. בכל רשימה שזכתה במנדטים נכללים כל המקומות שנבחרו, בהצלבה שמית עם סעיף 4 בהודעת התוצאות הרשמית; הבדלי הכתיב מתועדים. ${truncated} רשימות זוכות כוללות רק תחילית מאומתת ומסומנות כקטועות; ${missing} רשימות שלא זכו במנדטים עדיין חסרות. יתר המקומות ברשימות הקטועות טרם אומתו.`;",
+  "after": "ds.status.noteHe = `בעלי זכות בחירה: לוח 27.2 של הלשכה המרכזית לסטטיסטיקה; קולות כשרים ופסולים: ילקוט הפרסומים; מצביעים = כשרים + פסולים. ${n === 16 ? 'קולות המפד״ל ולידר לפי סיכומי הקלפיות; הנתונים המודפסים עולים ב-410 על סך הכשרים שבילקוט עצמו.' : 'מספר המצביעים בסיכומי הקלפיות נמוך ב-9 מהסכום הארצי הנגזר מהילקוט; לא ידוע הסבר מוסמך.'} נתוני היישובים סוכמו מקלפיות. בכל רשימה שזכתה במנדטים נכללים כל המקומות שנבחרו, בהצלבה שמית עם סעיף 4 בהודעת התוצאות הרשמית; הבדלי הכתיב מתועדים. ${truncated} רשימות זוכות כוללות רק תחילית מאומתת ומסומנות כקטועות; ${missing} רשימות שלא זכו במנדטים עדיין חסרות. יתר המקומות ברשימות הקטועות טרם אומתו.`;"
+ },
+ {
+  "file": "scripts/lib/historical/k18.ts",
+  "before": "noteHe: 'תוצאות רשמיות. פסולים ובעלי זכות בחירה לפי זכרון הדברים של ועדת הבחירות, השונה ממספר הפסולים ברשומות. נתוני היישובים נגזרו מסיכום הקלפיות; ועדה אזורית אינה ידועה (0). המועמדים לפי הפרסום המקורי; שינויים מאוחרים אינם מוחלים. ראו החלטה 0040.',",
+  "after": "noteHe: 'תוצאות רשמיות. פסולים ובעלי זכות בחירה לפי זכרון הדברים של ועדת הבחירות, השונה ממספר הפסולים ברשומות. נתוני היישובים נגזרו מסיכום הקלפיות; ועדה אזורית אינה ידועה (0). המועמדים לפי הפרסום המקורי; שינויים מאוחרים אינם מוחלים.',"
+ },
+ {
+  "file": "scripts/lib/historical/k18.ts",
+  "before": "noteEn: 'Official results. Invalid ballots and electorate follow the CEC allocation memorandum, differing from the gazette invalid count. Localities are derived from polling stations, not independently sourced; committee is unknown (0). Candidate rosters are the original gazette snapshot; subsequent changes are not applied. See decision 0040.',",
+  "after": "noteEn: 'Official results. Invalid ballots and electorate follow the Central Elections Committee allocation memorandum, differing from the gazette invalid count. Localities are derived from polling stations, not independently sourced; committee is unknown (0). Candidate rosters are the original gazette snapshot; subsequent changes are not applied.',"
+ },
+ {
+  "file": "scripts/lib/historical/k19.ts",
+  "before": "noteHe: 'תוצאות רשמיות של ועדת הבחירות. קולות הרשימות לפי התוצאה המוכרזת בהודעה ברשומות (י\"פ 6540), שלפיה חולקו המנדטים; סך הכשרים המודפס בה, 3,792,472, תוקן רשמית ל־3,792,742 בי\"פ 6546 (12 בפברואר 2013, עמ׳ 2874). בתוצאות הסופיות באתר ועדת הבחירות, המתואמות עם כל הקלפיות, שלוש רשימות שונות במעט (הליכוד ביתנו 109+, קדימה 107−, הישראלים 2−), ולכן סיכומי המפה ורשימת היישובים שונים מהטבלה הראשית בעד 109 קולות. אותם מנדטים בדיוק בשתי הגרסאות. מעטפות חיצוניות (875) נגזרו מהקלפיות. המועמדים לפי הפרסום המקורי; שינויים מאוחרים אינם מוחלים. ראו החלטות 0041, 0042 ו־0094.',",
+  "after": "noteHe: 'תוצאות רשמיות של ועדת הבחירות. קולות הרשימות לפי התוצאה המוכרזת בהודעה ברשומות (י\"פ 6540), שלפיה חולקו המנדטים; סך הכשרים המודפס בה, 3,792,472, תוקן רשמית ל־3,792,742 בי\"פ 6546 (12 בפברואר 2013, עמ׳ 2874). בתוצאות הסופיות באתר ועדת הבחירות, המתואמות עם כל הקלפיות, שלוש רשימות שונות במעט (הליכוד ביתנו 109+, קדימה 107−, הישראלים 2−), ולכן סיכומי המפה ורשימת היישובים שונים מהטבלה הראשית בעד 109 קולות. אותם מנדטים בדיוק בשתי הגרסאות. מעטפות חיצוניות (875) נגזרו מהקלפיות. המועמדים לפי הפרסום המקורי; שינויים מאוחרים אינם מוחלים.',"
+ },
+ {
+  "file": "scripts/lib/historical/k19.ts",
+  "before": "noteEn: 'Official CEC results. List votes follow the declared result in the gazette notice (YP 6540), by which the seats were handed out; its printed valid total, 3,792,472, was formally corrected to 3,792,742 by YP 6546 (12 February 2013, p.2874). In the CEC final results, which reconcile with every polling station, three lists differ slightly (Likud–Yisrael Beiteinu +109, Kadima −107, Hayisraelim −2), so the map and the list of places differ from the main table by up to 109 votes. Both versions give exactly the same seats. External envelopes (code 875) are derived from polling rows. Candidate rosters are the original gazette snapshot; later changes are not applied. See decisions 0041, 0042 and 0094.',",
+  "after": "noteEn: 'Official Central Elections Committee results. List votes follow the declared result in the gazette notice (Yalkut HaPirsumim 6540), by which the seats were handed out; its printed valid total, 3,792,472, was formally corrected to 3,792,742 by Yalkut HaPirsumim 6546 (12 February 2013, p.2874). In the Central Elections Committee final results, which reconcile with every polling station, three lists differ slightly (Likud–Yisrael Beiteinu +109, Kadima −107, Hayisraelim −2), so the map and the list of places differ from the main table by up to 109 votes. Both versions give exactly the same seats. External envelopes (code 875) are derived from polling rows. Candidate rosters are the original gazette snapshot; later changes are not applied.',"
+ },
+ {
+  "file": "scripts/lib/historical/k20-k21-common.ts",
+  "before": "ds.status.noteEn += ' The 10,414 polling-result rows comprise 10,119 ordinary stations and 295 central double-envelope counting rows. CEC voter information lists 10,372 domestic voting stations (10,119 ordinary, 196 hospital, 57 prison), plus 98 overseas stations. Locality counts describe results-table rows. See data-puzzles-1107.md.';",
+  "after": "ds.status.noteEn += ' The 10,414 polling-result rows comprise 10,119 ordinary stations and 295 central double-envelope counting rows. Central Elections Committee voter information lists 10,372 domestic voting stations (10,119 ordinary, 196 hospital, 57 prison), plus 98 overseas stations. Locality counts describe results-table rows.';"
+ },
+ {
+  "file": "scripts/lib/historical/k20-k21-common.ts",
+  "before": "ds.status.noteHe += ' 10,414 רשומות התוצאות כוללות 10,119 קלפיות רגילות ו־295 רשומות ספירה מרכזית של מעטפות חיצוניות. במידע לבוחר של ועדת הבחירות נמנו 10,372 קלפיות בארץ (10,119 רגילות, 196 בבתי חולים, 57 בבתי סוהר), ועוד 98 בנציגויות בחו״ל. מספר היישובים מונה שורות תוצאות. ראו data-puzzles-1107.md.';",
+  "after": "ds.status.noteHe += ' 10,414 רשומות התוצאות כוללות 10,119 קלפיות רגילות ו־295 רשומות ספירה מרכזית של מעטפות חיצוניות. במידע לבוחר של ועדת הבחירות נמנו 10,372 קלפיות בארץ (10,119 רגילות, 196 בבתי חולים, 57 בבתי סוהר), ועוד 98 בנציגויות בחו״ל. מספר היישובים מונה שורות תוצאות.';"
+ },
+ {
+  "file": "scripts/lib/historical/k22.ts",
+  "before": "noteEn: \"National electorate 6,394,030; locality/polling electorate 6,391,218 (difference 2,812). National total takes precedence; cause unverified. See ADR 0020. YP 8454 prints 126,704 invalid votes in error (the below-threshold valid-vote total); CEC national and locality totals reconcile at 28,362.\",",
+  "after": "noteEn: \"National electorate 6,394,030; locality/polling electorate 6,391,218 (difference 2,812). National total takes precedence; cause unverified. Yalkut HaPirsumim 8454 prints 126,704 invalid votes in error (the below-threshold valid-vote total); Central Elections Committee national and locality totals reconcile at 28,362.\","
+ },
+ {
+  "file": "scripts/lib/historical/k22.ts",
+  "before": "noteHe: \"מספר בעלי זכות הבחירה הארצי הוא 6,394,030, לעומת 6,391,218 בקובצי היישובים והקלפיות. הפער 2,812; סיבתו לא אומתה. ראו החלטה 0020. בילקוט הפרסומים 8454 נדפסו בטעות 126,704 קולות פסולים (סך הקולות הכשרים מתחת לאחוז החסימה); נתוני ועדת הבחירות הארציים והיישוביים מתיישבים על 28,362.\",",
+  "after": "noteHe: \"מספר בעלי זכות הבחירה הארצי הוא 6,394,030, לעומת 6,391,218 בקובצי היישובים והקלפיות. הפער 2,812; סיבתו לא אומתה. בילקוט הפרסומים 8454 נדפסו בטעות 126,704 קולות פסולים (סך הקולות הכשרים מתחת לאחוז החסימה); נתוני ועדת הבחירות הארציים והיישוביים מתיישבים על 28,362.\","
+ },
+ {
+  "file": "scripts/lib/historical/k22-k24-common.ts",
+  "before": "noteEn:`Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. ${config.noteEn??''}`.trim(),",
+  "after": "noteEn:`Official final Central Elections Committee votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. ${config.noteEn??''}`.trim(),"
+ },
+ {
+  "file": "scripts/lib/historical/k24.ts",
+  "before": "noteEn: '38 lists contested; Demokratit withdrew (CEC protocol, 30 March 2021, p.4). The 12,926 polling-result rows comprise 12,127 ordinary stations and 799 central double-envelope counting rows. They are not a physical-station total. The CEC 2021 annual report counts 13,756 voting stations including overseas and excluding army bases; its history summary gives 13,685. See data-puzzles-1107.md.',",
+  "after": "noteEn: '38 lists contested; Demokratit withdrew (Central Elections Committee minutes, 30 March 2021, p.4). The 12,926 polling-result rows comprise 12,127 ordinary stations and 799 central double-envelope counting rows. They are not a physical-station total. The Central Elections Committee 2021 annual report counts 13,756 voting stations including overseas and excluding army bases; its history summary gives 13,685.',"
+ },
+ {
+  "file": "scripts/lib/historical/k24.ts",
+  "before": "noteHe: '38 רשימות התמודדו; דמוקרטית פרשה (זכרון דברים של ועדת הבחירות, 30 במרס 2021, עמ׳ 4). 12,926 רשומות התוצאות כוללות 12,127 קלפיות רגילות ו־799 רשומות ספירה מרכזית של מעטפות חיצוניות; זה אינו מספר הקלפיות הפיזיות. בדוח השנתי של ועדת הבחירות לשנת 2021 נמנו 13,756 קלפיות, כולל נציגויות בחו״ל וללא מחנות צה״ל; בסקירה ההיסטורית מופיע 13,685. ראו data-puzzles-1107.md.',",
+  "after": "noteHe: '38 רשימות התמודדו; דמוקרטית פרשה (זכרון דברים של ועדת הבחירות, 30 במרס 2021, עמ׳ 4). 12,926 רשומות התוצאות כוללות 12,127 קלפיות רגילות ו־799 רשומות ספירה מרכזית של מעטפות חיצוניות; זה אינו מספר הקלפיות הפיזיות. בדוח השנתי של ועדת הבחירות לשנת 2021 נמנו 13,756 קלפיות, כולל נציגויות בחו״ל וללא מחנות צה״ל; בסקירה ההיסטורית מופיע 13,685.',"
+ },
+ {
+  "file": "scripts/lib/historical/k26.ts",
+  "before": "noteEn: 'Official final results: the results notice, Yalkut HaPirsumim 15100 (4 Nov 2026). Every vote and seat total agrees with the CEC count.',",
+  "after": "noteEn: 'Official final results: the results notice, Yalkut HaPirsumim 15100 (4 Nov 2026). Every vote and seat total agrees with the Central Elections Committee count.',"
+ },
+ {
+  "file": "public/data/elections.json",
+  "before": "\"noteHe\": \"תוצאות רשמיות; כל המנדטים שוחזרו. קולות הרשימות לפי התוצאה המוכרזת ברשומות; בתוצאות הסופיות של ועדת הבחירות שלוש רשימות שונות במעט, ולכן מפת 2013 שונה מהטבלה הראשית בעד 109 קולות. סך הכשרים שהודפס ברשומות, נמוך ב-270 מסכום הרשימות, תוקן רשמית. המנדטים זהים בשתי הגרסאות. ראו החלטות 0041, 0042 ו-0094.\"",
+  "after": "\"noteHe\": \"תוצאות רשמיות; כל המנדטים שוחזרו. קולות הרשימות לפי התוצאה המוכרזת ברשומות; בתוצאות הסופיות של ועדת הבחירות שלוש רשימות שונות במעט, ולכן מפת 2013 שונה מהטבלה הראשית בעד 109 קולות. סך הכשרים שהודפס ברשומות, נמוך ב-270 מסכום הרשימות, תוקן רשמית. המנדטים זהים בשתי הגרסאות.\""
+ }
+]

@@ -44,7 +44,7 @@
     },
     "government-research-3": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=GovernmentNum%20eq%2031",
-      "publisher": "Knesset OData (ParliamentInfo)",
+      "publisher": "Knesset open data",
       "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-04",
@@ -84,7 +84,7 @@
     },
     "recommendations-research-6": {
       "url": "https://he.wikipedia.org/wiki/%D7%94%D7%98%D7%9C%D7%AA_%D7%94%D7%9E%D7%A0%D7%93%D7%98_%D7%9C%D7%94%D7%A7%D7%9E%D7%AA_%D7%9E%D7%9E%D7%A9%D7%9C%D7%94_%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
-      "publisher": "Wikipedia (he)",
+      "publisher": "Hebrew Wikipedia",
       "publisherHe": "ויקיפדיה העברית",
       "kind": "secondary",
       "accessed": "2026-11-05"
@@ -129,9 +129,10 @@
     },
     "lieberman-official": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2031%20and%20PersonID%20eq%20427&$format=json",
-      "publisher": "Knesset OData, PersonToPositionID 3385 / 4613 / 4622",
+      "publisher": "Knesset open data: three appointment records",
       "kind": "official",
-      "accessed": "2026-11-06"
+      "accessed": "2026-11-06",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: שלוש רשומות מינוי"
     },
     "wp2006-confidence": {
       "url": "https://www.washingtonpost.com/archive/politics/2006/05/05/olmert-sworn-in-restates-goal-span-classbankheadevacuation-of-west-bank-settlements-to-proceed-israeli-premier-confirmsspan/464722e2-2117-4829-ab53-94729342b0d9/",
@@ -151,9 +152,10 @@
     },
     "role-roster-31": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2031%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "plenum-129769": {
       "url": "https://fs.knesset.gov.il//17/Plenum/17_ptm_129769.doc",
@@ -405,7 +407,7 @@
         "confidence": "high",
         "endDate": "2006-08-14",
         "notes": [
-          "Both selection accounts identify the capture preceding the war. MFA links the conclusion to Resolution 1701 adopted 11 August; CRS gives cessation on 14 August. Adoption and effective cessation are distinct dates."
+          "Both selection accounts identify the capture preceding the war. Ministry of Foreign Affairs links the conclusion to Resolution 1701 adopted 11 August; Congressional Research Service gives cessation on 14 August. Adoption and effective cessation are distinct dates."
         ]
       },
       {
@@ -471,7 +473,7 @@
         "confidence": "high",
         "endDate": "2009-01-18",
         "notes": [
-          "MFA’s historical chronology supplies the rocket-attack context and operation dates, independently selected by IPU; CRS corroborates the endpoint. The operation ending is not a peace treaty.",
+          "Ministry of Foreign Affairs’s historical chronology supplies the rocket-attack context and operation dates, independently selected by Inter-Parliamentary Union; Congressional Research Service corroborates the endpoint. The operation ending is not a peace treaty.",
           "ציר הזמן של משרד החוץ מתאר את המבצע כמענה לירי רקטות ופצצות מרגמה מרצועת עזה; סיום המבצע אינו הסכם שלום."
         ]
       }
@@ -480,12 +482,12 @@
       {
         "label": "Annapolis conference",
         "date": "2007-11",
-        "why": "CRS independently selects and dates Annapolis (27 November 2007), but the retrieved MFA history, IPU 2009 and IDI 2009 do not select it. A second qualifying chronology is still needed."
+        "why": "Congressional Research Service independently selects and dates Annapolis (27 November 2007), but the retrieved Ministry of Foreign Affairs history, Inter-Parliamentary Union 2009 and Israel Democracy Institute 2009 do not select it. A second qualifying chronology is still needed."
       },
       {
         "label": "Olmert resignation and Livni tasking/extension",
         "date": "2008-09",
-        "why": "IDI 2009 and IPU 2009 select the resignation/failed replacement sequence. A formal failed-formation entry already exists in government.changes. Exact resignation, tasking and extension notices have not been inspected; this bundled candidate is not duplicated as a term event."
+        "why": "Israel Democracy Institute 2009 and Inter-Parliamentary Union 2009 select the resignation/failed replacement sequence. A formal failed-formation entry already exists in government.changes. Exact resignation, tasking and extension notices have not been inspected; this bundled candidate is not duplicated as a term event."
       }
     ],
     "endedBy": {
@@ -544,7 +546,8 @@
           {
             "source": "role-roster-31",
             "quote": "PersonToPositionID 3362; PersonID 458; PositionID 39; StartDate 2006-05-04T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. חיים רמון; faction join: קדימה-עם אהוד אולמרט לראשות הממשלה"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים רמון; faction: קדימה-עם אהוד אולמרט לראשות הממשלה.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים רמון; סיעה: קדימה-עם אהוד אולמרט לראשות הממשלה."
           }
         ]
       },
@@ -557,7 +560,8 @@
           {
             "source": "role-roster-31",
             "quote": "PersonToPositionID 3363; PersonID 455; PositionID 39; StartDate 2006-05-04T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. אופיר פינס-פז; faction join: העבודה-מימד בראשות עמיר פרץ"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: אופיר פינס-פז; faction: העבודה-מימד בראשות עמיר פרץ.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אופיר פינס-פז; סיעה: העבודה-מימד בראשות עמיר פרץ."
           }
         ]
       },
@@ -570,7 +574,8 @@
           {
             "source": "role-roster-31",
             "quote": "PersonToPositionID 3500; PersonID 494; PositionID 50; StartDate 2006-05-04T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. אליהו ישי; faction join: ש\"ס-התאחדות הספרדים העולמית שומרי תורה"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: אליהו ישי; faction: ש\"ס-התאחדות הספרדים העולמית שומרי תורה.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אליהו ישי; סיעה: ש\"ס-התאחדות הספרדים העולמית שומרי תורה."
           }
         ]
       },
@@ -583,7 +588,8 @@
           {
             "source": "role-roster-31",
             "quote": "PersonToPositionID 3611; PersonID 4298; PositionID 39; StartDate 2006-05-04T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. רפי איתן; faction join: גיל-גימלאי ישראל לכנסת"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: רפי איתן; faction: גיל-גימלאי ישראל לכנסת.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: רפי איתן; סיעה: גיל-גימלאי ישראל לכנסת."
           }
         ]
       }
@@ -601,7 +607,9 @@
       },
       {
         "source": "government-research-3",
-        "quote": "KNS_PersonToPosition, GovernmentNum 31: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 2006-05-04: רמון חיים, פינס-פז אופיר, אולמרט אהוד, כבל איתן, לבני ציפי, פרץ עמיר, ישי אליהו, מופז שאול, נהרי משולם, כהן יצחק, בוים זאב, בר-און רוני, אדרי יעקב, פרס שמעון, בן-אליעזר בנימין, אטיאס אריאל, איתן רפי, הרצוג יצחק, שמחון שלום, שטרית מאיר, הירשזון אברהם, בן-יזרי יעקב, דיכטר אבי, עזרא גדעון, תמיר יולי"
+        "quote": "KNS_PersonToPosition, GovernmentNum 31: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 2006-05-04: רמון חיים, פינס-פז אופיר, אולמרט אהוד, כבל איתן, לבני ציפי, פרץ עמיר, ישי אליהו, מופז שאול, נהרי משולם, כהן יצחק, בוים זאב, בר-און רוני, אדרי יעקב, פרס שמעון, בן-אליעזר בנימין, אטיאס אריאל, איתן רפי, הרצוג יצחק, שמחון שלום, שטרית מאיר, הירשזון אברהם, בן-יזרי יעקב, דיכטר אבי, עזרא גדעון, תמיר יולי",
+        "note": "The Knesset’s list of the ministers appointed on the government’s first day, 4 May 2006.",
+        "noteHe": "רשימת השרים שמונו ביום הראשון של הממשלה, 4 במאי 2006, לפי רישומי הכנסת."
       },
       {
         "source": "ipu2006",
@@ -622,7 +630,8 @@
           {
             "source": "lieberman-official",
             "quote": "\"PersonToPositionID\":4613,\"PersonID\":427,\"PositionID\":50,\"StartDate\":\"2006-10-30T00:00:00\",\"FinishDate\":\"2008-01-18T00:00:00\",\"DutyDesc\":\"סגן ראש הממשלה\",\"GovernmentNum\":31",
-            "note": "Selected fields transcribed from the live official record."
+            "note": "The Knesset’s official record: Deputy Prime Minister, 30 October 2006 to 18 January 2008.",
+            "noteHe": "הרישום הרשמי של הכנסת: סגן ראש הממשלה, 30 באוקטובר 2006 עד 18 בינואר 2008."
           }
         ],
         "scope": "mid-term",
@@ -637,7 +646,8 @@
           {
             "source": "lieberman-official",
             "quote": "\"PersonToPositionID\":4613,\"PersonID\":427,\"PositionID\":50,\"StartDate\":\"2006-10-30T00:00:00\",\"FinishDate\":\"2008-01-18T00:00:00\",\"DutyDesc\":\"סגן ראש הממשלה\",\"GovernmentNum\":31",
-            "note": "Selected fields transcribed from the live official record."
+            "note": "The Knesset’s official record: Deputy Prime Minister, 30 October 2006 to 18 January 2008.",
+            "noteHe": "הרישום הרשמי של הכנסת: סגן ראש הממשלה, 30 באוקטובר 2006 עד 18 בינואר 2008."
           }
         ],
         "scope": "mid-term",

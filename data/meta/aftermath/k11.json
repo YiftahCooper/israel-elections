@@ -50,7 +50,7 @@
     },
     "government-research-3": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=GovernmentNum%20eq%2021",
-      "publisher": "Knesset OData (ParliamentInfo)",
+      "publisher": "Knesset open data",
       "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-04",
@@ -70,7 +70,7 @@
     },
     "recommendations-research-3": {
       "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%90%D7%97%D7%AA_%D7%A2%D7%A9%D7%A8%D7%94",
-      "publisher": "Wikipedia (he)",
+      "publisher": "Hebrew Wikipedia",
       "publisherHe": "ויקיפדיה העברית",
       "kind": "secondary",
       "accessed": "2026-11-05"
@@ -146,9 +146,10 @@
     },
     "role-roster-21": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2021%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "pmo-role21": {
       "url": "https://www.gov.il/BlobFolder/generalpage/gov21/he/part21.pdf",
@@ -158,13 +159,14 @@
     },
     "role-roster-22": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2022%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, formation-day cabinet appointments",
+      "publisher": "Knesset open data: ministers at formation",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: השרים בהקמת הממשלה"
     },
     "jta-opponents21": {
       "url": "https://www.jta.org/archive/peres-defends-new-government",
-      "publisher": "JTA, 17 September 1984 (retained earlier research)",
+      "publisher": "Jewish Telegraphic Agency, 17 September 1984",
       "kind": "archival",
       "accessed": "2026-11-07"
     },
@@ -532,7 +534,7 @@
             "source": "jta1984vote"
           }
         ],
-        "resolution": "Use 13 September for the sitting and official government start; JTA reports completion after midnight."
+        "resolution": "13 September is used for the sitting and the government’s official start; the Jewish Telegraphic Agency reports that it ended after midnight."
       }
     ]
   },
@@ -571,7 +573,7 @@
         ],
         "confidence": "high",
         "notes": [
-          "The Knesset’s unqualified withdrawal wording is bounded by MFA and IDI: forces remained in the southern security zone. Year precision; the stages and final withdrawal day are not asserted."
+          "The Knesset’s unqualified withdrawal wording is bounded by Ministry of Foreign Affairs and Israel Democracy Institute: forces remained in the southern security zone. Year precision; the stages and final withdrawal day are not asserted."
         ]
       },
       {
@@ -596,7 +598,7 @@
         ],
         "confidence": "high",
         "notes": [
-          "Month precision follows the Bank of Israel annual report. The retained excerpt preserves its PDF text-layer typo “aj”; no inflation figures or causal claims are copied."
+          "Dated to the month, as in the Bank of Israel annual report. The quoted text keeps the report’s own typo “aj”; no inflation figures or causes are copied."
         ]
       },
       {
@@ -626,12 +628,12 @@
       {
         "label": "Operation Moses",
         "date": "1984-11",
-        "why": "MFA history/timeline select Operation Moses (one evidence family); the retrieved Knesset history does not select it. A second independent chronology and precise operation dates are needed."
+        "why": "Ministry of Foreign Affairs history/timeline select Operation Moses (one evidence family); the retrieved Knesset history does not select it. A second independent chronology and precise operation dates are needed."
       },
       {
-        "label": "Bus 300 / GSS affair",
+        "label": "Bus 300 / General Security Service affair",
         "date": "1986",
-        "why": "Knesset history selects the GSS aftermath; MFA timeline selects the bus hijacking in 1984, a different act in k10. A second independent chronology of the 1986 affair is needed."
+        "why": "Knesset history selects the General Security Service aftermath; Ministry of Foreign Affairs timeline selects the bus hijacking in 1984, a different act in k10. A second independent chronology of the 1986 affair is needed."
       }
     ],
     "endedBy": {
@@ -685,7 +687,8 @@
           {
             "source": "role-roster-21",
             "quote": "PersonToPositionID 3474; PersonID 2451; PositionID 39; StartDate 1984-09-13T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יצחק מודעי; faction join: הליכוד"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק מודעי; faction: הליכוד.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק מודעי; סיעה: הליכוד."
           }
         ]
       },
@@ -699,7 +702,8 @@
           {
             "source": "role-roster-21",
             "quote": "PersonToPositionID 4142; PersonID 2568; PositionID 39; StartDate 1984-09-13T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יעקב צור; faction join: מערך"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יעקב צור; faction: מערך.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יעקב צור; סיעה: מערך."
           }
         ],
         "electionListSeats": 44
@@ -726,7 +730,8 @@
           {
             "source": "role-roster-21",
             "quote": "PersonToPositionID 22883; PersonID 2187; PositionID 39; StartDate 1984-09-13T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יוסף בורג; faction join: מפלגה דתית לאומית"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יוסף בורג; faction: מפלגה דתית לאומית.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יוסף בורג; סיעה: מפלגה דתית לאומית."
           }
         ]
       },
@@ -739,7 +744,8 @@
           {
             "source": "role-roster-21",
             "quote": "PersonToPositionID 4253; PersonID 510; PositionID 39; StartDate 1984-09-13T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. אמנון רובינשטיין; faction join: שינוי"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: אמנון רובינשטיין; faction: שינוי.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אמנון רובינשטיין; סיעה: שינוי."
           }
         ]
       },
@@ -752,7 +758,8 @@
           {
             "source": "role-roster-21",
             "quote": "PersonToPositionID 4188; PersonID 2559; PositionID 39; StartDate 1984-09-13T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יצחק-חיים פרץ; faction join: התאחדות הספרדים שומרי תורה - תנועת ש\"ס"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק-חיים פרץ; faction: התאחדות הספרדים שומרי תורה - תנועת ש\"ס.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק-חיים פרץ; סיעה: התאחדות הספרדים שומרי תורה - תנועת ש\"ס."
           }
         ]
       },
@@ -779,7 +786,8 @@
           {
             "source": "role-roster-21",
             "quote": "PersonToPositionID 4166; PersonID 2320; PositionID 39; StartDate 1984-09-13T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. עזר ויצמן; faction join: יחד"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: עזר ויצמן; faction: יחד.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: עזר ויצמן; סיעה: יחד."
           }
         ]
       },
@@ -792,7 +800,8 @@
           {
             "source": "role-roster-21",
             "quote": "PersonToPositionID 4253; PersonID 510; PositionID 39; StartDate 1984-09-13T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. אמנון רובינשטיין; faction join: שינוי"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: אמנון רובינשטיין; faction: שינוי.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אמנון רובינשטיין; סיעה: שינוי."
           }
         ]
       }
@@ -809,7 +818,9 @@
       },
       {
         "source": "government-research-3",
-        "quote": "KNS_PersonToPosition, GovernmentNum 21: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1984-09-13: מודעי יצחק, צור יעקב, שחל משה, ויצמן עזר, רבין יצחק, פרץ יצחק-חיים, ארנס משה, נסים משה, קצב משה, נבון יצחק, לוי דוד, קורפו חיים, שמיר יצחק, רובינשטיין אמנון, נחמקין אריה, יעקבי גד, פרס שמעון, בר-לב חיים, שפירא יוסף, שריר אברהם, שרון אריאל, גור מרדכי, הורביץ יגאל, בורג יוסף, פת גדעון"
+        "quote": "KNS_PersonToPosition, GovernmentNum 21: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1984-09-13: מודעי יצחק, צור יעקב, שחל משה, ויצמן עזר, רבין יצחק, פרץ יצחק-חיים, ארנס משה, נסים משה, קצב משה, נבון יצחק, לוי דוד, קורפו חיים, שמיר יצחק, רובינשטיין אמנון, נחמקין אריה, יעקבי גד, פרס שמעון, בר-לב חיים, שפירא יוסף, שריר אברהם, שרון אריאל, גור מרדכי, הורביץ יגאל, בורג יוסף, פת גדעון",
+        "note": "The Knesset’s list of the ministers appointed on the government’s first day, 13 September 1984.",
+        "noteHe": "רשימת השרים שמונו ביום הראשון של הממשלה, 13 בספטמבר 1984, לפי רישומי הכנסת."
       },
       {
         "source": "government22",
@@ -843,10 +854,11 @@
               {
                 "source": "role-roster-22",
                 "quote": "PersonToPositionID 4171; PersonID 2451; PositionID 39; StartDate 1986-10-20T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 27512. יצחק מודעי"
+                "note": "Official appointment of יצחק מודעי; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של יצחק מודעי; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead."
           },
           {
             "factionNameHe": "מערך",
@@ -857,10 +869,11 @@
               {
                 "source": "role-roster-22",
                 "quote": "PersonToPositionID 4181; PersonID 2595; PositionID 39; StartDate 1986-10-20T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 27548. יצחק רבין"
+                "note": "Official appointment of יצחק רבין; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של יצחק רבין; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
             "letters": "אמת"
           },
           {
@@ -872,10 +885,11 @@
               {
                 "source": "role-roster-22",
                 "quote": "PersonToPositionID 4518; PersonID 2559; PositionID 39; StartDate 1986-10-20T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 27537. יצחק-חיים פרץ"
+                "note": "Official appointment of יצחק-חיים פרץ; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של יצחק-חיים פרץ; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
             "letters": "שס"
           },
           {
@@ -887,10 +901,11 @@
               {
                 "source": "role-roster-22",
                 "quote": "PersonToPositionID 4583; PersonID 2300; PositionID 39; StartDate 1986-10-20T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 27478. זבולון המר"
+                "note": "Official appointment of זבולון המר; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של זבולון המר; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
             "letters": "ב"
           },
           {
@@ -902,10 +917,11 @@
               {
                 "source": "role-roster-22",
                 "quote": "PersonToPositionID 22884; PersonID 2294; PositionID 39; StartDate 1986-10-20T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 27474. יגאל הורביץ"
+                "note": "Official appointment of יגאל הורביץ; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של יגאל הורביץ; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead."
           },
           {
             "factionNameHe": "שינוי",
@@ -916,10 +932,11 @@
               {
                 "source": "role-roster-22",
                 "quote": "PersonToPositionID 22902; PersonID 510; PositionID 39; StartDate 1986-10-20T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 27549. אמנון רובינשטיין"
+                "note": "Official appointment of אמנון רובינשטיין; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של אמנון רובינשטיין; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead."
           }
         ],
         "coalitionSeats": null,
@@ -930,7 +947,7 @@
         "roleGap": "Only positively identified cabinet factions are recorded here. Factions without ministers, individual crossings, effective faction sizes and the complete roll call still need the investiture record and deposited agreements. An empty or incomplete row set is not zero support.",
         "reconciliation": {
           "status": "vote-unavailable",
-          "note": "No sourced 1986 investiture tally retained; predecessor membership is not copied."
+          "note": "No source gives the 1986 investiture vote; the earlier government’s membership is not copied."
         },
         "knownMemberSeats": 0
       }

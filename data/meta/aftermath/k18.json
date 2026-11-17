@@ -15,13 +15,13 @@
     },
     "recommendations-2": {
       "url": "https://www.jta.org/?p=428589",
-      "publisher": "JTA",
+      "publisher": "Jewish Telegraphic Agency",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
     "recommendations-3": {
       "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%A9%D7%AA%D7%99%D7%99%D7%9D",
-      "publisher": "Wikipedia (he)",
+      "publisher": "Hebrew Wikipedia",
       "publisherHe": "ויקיפדיה העברית",
       "kind": "secondary",
       "accessed": "2026-11-04"
@@ -47,7 +47,7 @@
     },
     "jta-investiture": {
       "url": "https://www.jta.org/2009/03/31/israel/bibi-speaks-of-comprehensive-peace-at-swearing-in-rite",
-      "publisher": "JTA",
+      "publisher": "Jewish Telegraphic Agency",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
@@ -89,7 +89,7 @@
     },
     "idf-pillar-history": {
       "url": "https://www.idf.il/en/mini-sites/wars-and-operations/operation-pillar-of-defence/operation-pillar-of-defense/",
-      "publisher": "IDF, Operation Pillar of Defense",
+      "publisher": "Israel Defense Forces, Operation Pillar of Defense",
       "kind": "official",
       "accessed": "2026-11-05"
     },
@@ -113,13 +113,14 @@
     },
     "role-roster-32": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2032%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "appointments-32": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=GovernmentNum%20eq%2032&%24format=json&%24top=1000",
-      "publisher": "Knesset OData, government 32 appointment register",
+      "publisher": "Knesset open data: appointments in government 32",
       "publisherHe": "הכנסת, מאגר המינויים של הממשלה ה־32",
       "kind": "official",
       "accessed": "2026-11-12",
@@ -362,18 +363,18 @@
     ],
     "conflicts": [
       {
-        "about": "Coalition membership in the IPU summary",
+        "about": "Coalition membership in the Inter-Parliamentary Union summary",
         "values": [
           {
-            "value": "IPU names National Union and UTJ as coalition members",
+            "value": "The Inter-Parliamentary Union names the National Union and United Torah Judaism as coalition members",
             "source": "ipu-2009"
           },
           {
-            "value": "IDI lists Jewish Home in the five-party, 69-seat formation coalition, with UTJ still prospective",
+            "value": "The Israel Democracy Institute lists the Jewish Home in the five-party, 69-seat coalition at formation, with United Torah Judaism still to join",
             "source": "idi-coalition"
           }
         ],
-        "resolution": "The Knesset’s list of ministers for the government sworn in on 31 March 2009 has five parties: Likud, Yisrael Beiteinu, Labor, Shas and the Jewish Home, as the Israel Democracy Institute says. The National Union voted against the government. United Torah Judaism joined a day later, one book says. The introduction to The Elections in Israel 2009 lists it among the parties right after the swearing-in; the Knesset’s record takes precedence. IPU’s list is wrong on both parties.",
+        "resolution": "The Knesset’s list of ministers for the government sworn in on 31 March 2009 has five parties: Likud, Yisrael Beiteinu, Labor, Shas and the Jewish Home, as the Israel Democracy Institute says. The National Union voted against the government. United Torah Judaism joined a day later, one book says. The introduction to The Elections in Israel 2009 lists it among the parties right after the swearing-in; the Knesset’s record takes precedence. The Inter-Parliamentary Union’s list is wrong on both parties.",
         "status": "resolved",
         "cites": [
           {
@@ -487,7 +488,7 @@
       {
         "label": "Social protests",
         "date": "2011-07",
-        "why": "IDI’s Hebrew 2013 election retrospective explicitly selects the social protests of summer 2011. The credited Knesset/JVL 18th-term URL returned no history body. A second independent qualifying chronology and direct launch-date source remain unverified."
+        "why": "Israel Democracy Institute’s Hebrew 2013 election retrospective explicitly selects the social protests of summer 2011. The credited Knesset/JVL 18th-term URL returned no history body. A second independent qualifying chronology and direct launch-date source remain unverified."
       },
       {
         "label": "Kadima entered the coalition",
@@ -523,7 +524,7 @@
         }
       ],
       "notes": [
-        "The sitting began on 15 October 2012 and the vote came after midnight, on 16 October; the law took effect on 15 October. IPU and two books (Michal Shamir, 2015; Manfred Gerstenfeld, 2016) give 15 October, the day of the sitting. The law is the record of the vote."
+        "The sitting began on 15 October 2012 and the vote came after midnight, on 16 October; the law took effect on 15 October. Inter-Parliamentary Union and two books (Michal Shamir, 2015; Manfred Gerstenfeld, 2016) give 15 October, the day of the sitting. The law is the record of the vote."
       ]
     }
   },
@@ -563,7 +564,8 @@
           {
             "source": "role-roster-32",
             "quote": "PersonToPositionID 3371; PersonID 479; PositionID 39; StartDate 2009-03-31T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. סילבן שלום; faction join: הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: סילבן שלום; faction: הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: סילבן שלום; סיעה: הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה."
           }
         ]
       },
@@ -576,7 +578,8 @@
           {
             "source": "role-roster-32",
             "quote": "PersonToPositionID 3464; PersonID 471; PositionID 39; StartDate 2009-03-31T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. עוזי לנדאו; faction join: ישראל ביתנו בראשות אביגדור ליברמן"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: עוזי לנדאו; faction: ישראל ביתנו בראשות אביגדור ליברמן.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: עוזי לנדאו; סיעה: ישראל ביתנו בראשות אביגדור ליברמן."
           }
         ]
       },
@@ -589,7 +592,8 @@
           {
             "source": "role-roster-32",
             "quote": "PersonToPositionID 3372; PersonID 435; PositionID 39; StartDate 2009-03-31T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. בנימין בן-אליעזר; faction join: העבודה בראשות אהוד ברק"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: בנימין בן-אליעזר; faction: העבודה בראשות אהוד ברק.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בנימין בן-אליעזר; סיעה: העבודה בראשות אהוד ברק."
           }
         ]
       },
@@ -602,7 +606,8 @@
           {
             "source": "role-roster-32",
             "quote": "PersonToPositionID 3543; PersonID 4417; PositionID 39; StartDate 2009-03-31T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. אריאל אטיאס; faction join: התאחדות הספרדים העולמית שומרי תורה"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: אריאל אטיאס; faction: התאחדות הספרדים העולמית שומרי תורה.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אריאל אטיאס; סיעה: התאחדות הספרדים העולמית שומרי תורה."
           }
         ]
       },
@@ -615,7 +620,8 @@
           {
             "source": "role-roster-32",
             "quote": "PersonToPositionID 23329; PersonID 12946; PositionID 39; StartDate 2009-03-31T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. דניאל הרשקוביץ; faction join: הבית היהודי - מפד\"ל החדשה"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: דניאל הרשקוביץ; faction: הבית היהודי - מפד\"ל החדשה.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דניאל הרשקוביץ; סיעה: הבית היהודי - מפד\"ל החדשה."
           },
           {
             "source": "diskin-2011",
@@ -635,7 +641,7 @@
     ],
     "notes": [
       "Formation-day coalition is 69, matching the first-government scheme dated 31 March. UTJ signed on 1 April 2009 (74 seats after accession).",
-      "Seat weights checked against public/data/k18.json. The 69-seat coalition weight is not a reconstructed individual roll-call vote: the JTA report separately records 69–45–5."
+      "Seats checked against the official results. The 69 coalition seats are not a count of how each MK voted: the Jewish Telegraphic Agency report gives the vote separately, 69–45–5."
     ],
     "confidenceVote": {
       "for": 69,
@@ -670,32 +676,38 @@
           {
             "source": "appointments-32",
             "quote": "{\"PersonToPositionID\":3372,\"PersonID\":435,\"PositionID\":39,\"KnessetNum\":18,\"StartDate\":\"2009-03-31T00:00:00\",\"FinishDate\":\"2011-01-19T00:00:00\",\"GovMinistryID\":917,\"GovMinistryName\":\"משרד התעשיה, המסחר והתעסוקה\",\"DutyDesc\":\"שר התעשיה המסחר והתעסוקה \",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-03-20T12:03:09\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 435 is בנימין בן-אליעזר, העבודה (data/research/knesset-member-changes/k18.json)."
+            "note": "The Knesset’s official record: בנימין בן-אליעזר, העבודה.",
+            "noteHe": "הרישום הרשמי של הכנסת: בנימין בן-אליעזר, העבודה."
           },
           {
             "source": "appointments-32",
             "quote": "{\"PersonToPositionID\":3373,\"PersonID\":1044,\"PositionID\":39,\"KnessetNum\":18,\"StartDate\":\"2009-03-31T00:00:00\",\"FinishDate\":\"2011-01-19T00:00:00\",\"GovMinistryID\":708,\"GovMinistryName\":\"משרד הרווחה והשירותים החברתיים\",\"DutyDesc\":\"שר הרווחה והשירותים החברתיים \",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-03-20T12:03:09\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 1044 is יצחק הרצוג, העבודה (data/research/knesset-member-changes/k18.json)."
+            "note": "The Knesset’s official record: יצחק הרצוג, העבודה.",
+            "noteHe": "הרישום הרשמי של הכנסת: יצחק הרצוג, העבודה."
           },
           {
             "source": "appointments-32",
             "quote": "{\"PersonToPositionID\":3374,\"PersonID\":4407,\"PositionID\":39,\"KnessetNum\":18,\"StartDate\":\"2009-03-31T00:00:00\",\"FinishDate\":\"2011-01-19T00:00:00\",\"GovMinistryID\":563,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"השר המופקד על ענייני המיעוטים \",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-19T17:48:22.727\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 4407 is אבישי ברוורמן, העבודה (data/research/knesset-member-changes/k18.json)."
+            "note": "The Knesset’s official record: אבישי ברוורמן, העבודה.",
+            "noteHe": "הרישום הרשמי של הכנסת: אבישי ברוורמן, העבודה."
           },
           {
             "source": "appointments-32",
             "quote": "{\"PersonToPositionID\":3510,\"PersonID\":461,\"PositionID\":39,\"KnessetNum\":18,\"StartDate\":\"2011-01-19T00:00:00\",\"FinishDate\":\"2013-02-05T00:00:00\",\"GovMinistryID\":917,\"GovMinistryName\":\"משרד התעשיה, המסחר והתעסוקה\",\"DutyDesc\":\"שר התעשיה, המסחר והתעסוקה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2020-11-26T11:17:46.517\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 461 is שלום שמחון, העצמאות מ־17 בינואר 2011 (data/research/knesset-member-changes/k18.json)."
+            "note": "The Knesset’s official record: שלום שמחון, העצמאות מ־17 בינואר 2011.",
+            "noteHe": "הרישום הרשמי של הכנסת: שלום שמחון, העצמאות מ־17 בינואר 2011."
           },
           {
             "source": "appointments-32",
             "quote": "{\"PersonToPositionID\":3581,\"PersonID\":865,\"PositionID\":57,\"KnessetNum\":18,\"StartDate\":\"2011-01-19T00:00:00\",\"FinishDate\":\"2013-02-05T00:00:00\",\"GovMinistryID\":962,\"GovMinistryName\":\"משרד החקלאות ופיתוח הכפר\",\"DutyDesc\":\"שרת החקלאות ופיתוח הכפר\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2020-11-26T11:07:14.08\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 865 is אורית נוקד, העצמאות מ־17 בינואר 2011 (data/research/knesset-member-changes/k18.json)."
+            "note": "The Knesset’s official record: אורית נוקד, העצמאות מ־17 בינואר 2011.",
+            "noteHe": "הרישום הרשמי של הכנסת: אורית נוקד, העצמאות מ־17 בינואר 2011."
           },
           {
             "source": "appointments-32",
             "quote": "{\"PersonToPositionID\":3582,\"PersonID\":1067,\"PositionID\":39,\"KnessetNum\":18,\"StartDate\":\"2011-01-19T00:00:00\",\"FinishDate\":\"2012-08-15T00:00:00\",\"GovMinistryID\":1315,\"GovMinistryName\":\"המשרד להגנת העורף\",\"DutyDesc\":\"השר להגנת העורף\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2020-11-26T09:15:04.28\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 1067 is מתן וילנאי, העצמאות מ־17 בינואר 2011 (data/research/knesset-member-changes/k18.json)."
+            "note": "The Knesset’s official record: מתן וילנאי, העצמאות מ־17 בינואר 2011.",
+            "noteHe": "הרישום הרשמי של הכנסת: מתן וילנאי, העצמאות מ־17 בינואר 2011."
           }
         ],
         "scope": "mid-term",
@@ -714,12 +726,14 @@
           {
             "source": "appointments-32",
             "quote": "{\"PersonToPositionID\":3430,\"PersonID\":949,\"PositionID\":31,\"KnessetNum\":18,\"StartDate\":\"2012-05-09T00:00:00\",\"FinishDate\":\"2012-07-19T00:00:00\",\"GovMinistryID\":563,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"המשנה לראש הממשלה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-19T17:42:08.14\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 949 is שאול מופז, קדימה (data/research/knesset-member-changes/k18.json)."
+            "note": "The Knesset’s official record: שאול מופז, קדימה.",
+            "noteHe": "הרישום הרשמי של הכנסת: שאול מופז, קדימה."
           },
           {
             "source": "appointments-32",
             "quote": "{\"PersonToPositionID\":3560,\"PersonID\":949,\"PositionID\":39,\"KnessetNum\":18,\"StartDate\":\"2012-05-09T00:00:00\",\"FinishDate\":\"2012-07-19T00:00:00\",\"GovMinistryID\":563,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"שר במשרד ראש הממשלה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-19T17:45:34.343\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 949 is שאול מופז, קדימה (data/research/knesset-member-changes/k18.json)."
+            "note": "The Knesset’s official record: שאול מופז, קדימה.",
+            "noteHe": "הרישום הרשמי של הכנסת: שאול מופז, קדימה."
           }
         ],
         "scope": "mid-term",
@@ -735,12 +749,14 @@
           {
             "source": "appointments-32",
             "quote": "{\"PersonToPositionID\":3430,\"PersonID\":949,\"PositionID\":31,\"KnessetNum\":18,\"StartDate\":\"2012-05-09T00:00:00\",\"FinishDate\":\"2012-07-19T00:00:00\",\"GovMinistryID\":563,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"המשנה לראש הממשלה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-19T17:42:08.14\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 949 is שאול מופז, קדימה (data/research/knesset-member-changes/k18.json)."
+            "note": "The Knesset’s official record: שאול מופז, קדימה.",
+            "noteHe": "הרישום הרשמי של הכנסת: שאול מופז, קדימה."
           },
           {
             "source": "appointments-32",
             "quote": "{\"PersonToPositionID\":3560,\"PersonID\":949,\"PositionID\":39,\"KnessetNum\":18,\"StartDate\":\"2012-05-09T00:00:00\",\"FinishDate\":\"2012-07-19T00:00:00\",\"GovMinistryID\":563,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"שר במשרד ראש הממשלה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-19T17:45:34.343\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 949 is שאול מופז, קדימה (data/research/knesset-member-changes/k18.json)."
+            "note": "The Knesset’s official record: שאול מופז, קדימה.",
+            "noteHe": "הרישום הרשמי של הכנסת: שאול מופז, קדימה."
           }
         ],
         "scope": "mid-term",

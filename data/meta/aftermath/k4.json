@@ -30,7 +30,7 @@
     },
     "recommendations-1": {
       "url": "https://www.jta.org/archive/israel-president-appoints-ben-gurion-to-form-a-new-government",
-      "publisher": "Jewish Telegraphic Agency (JTA) Daily News Bulletin archive",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin archive",
       "kind": "secondary",
       "accessed": "2026-11-05",
       "note": "Bulletin dated 1959-12-09, reporting the President's action 'today'."
@@ -50,7 +50,7 @@
     },
     "coalition-1": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%209&$format=json",
-      "publisher": "Knesset OData (ParliamentInfo)",
+      "publisher": "Knesset open data",
       "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-04"
@@ -113,27 +113,30 @@
     },
     "faction-split": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%204%20and%20PositionID%20eq%2054&$format=json",
-      "publisher": "Knesset OData faction membership",
+      "publisher": "Knesset open data: faction membership",
       "kind": "official",
-      "accessed": "2026-11-06"
+      "accessed": "2026-11-06",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: החברות בסיעות"
     },
     "results-gazette": {
       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset4-results.pdf",
-      "publisher": "Reshumot YP 717 pp.263–265",
+      "publisher": "Reshumot, Yalkut HaPirsumim 717 pp.263–265",
       "kind": "official",
       "accessed": "2026-11-06"
     },
     "opening-sitting": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PlenumSession(490220)?$format=json",
-      "publisher": "Knesset OData plenum sessions",
+      "publisher": "Knesset open data: plenum sessions",
       "kind": "official",
-      "accessed": "2026-11-06"
+      "accessed": "2026-11-06",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: ישיבות המליאה"
     },
     "role-roster-9": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%209%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "idi-lavon-1961": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1961/",
@@ -144,7 +147,7 @@
     },
     "dr-events-jta-lavon": {
       "url": "https://www.jta.org/archive/ben-gurion-resigns-premiership-disagrees-with-cabinet-on-lavon",
-      "publisher": "JTA, Ben-Gurion Resigns Premiership; Disagrees with Cabinet on Lavon",
+      "publisher": "Jewish Telegraphic Agency, Ben-Gurion Resigns Premiership; Disagrees with Cabinet on Lavon",
       "kind": "archival",
       "accessed": "2026-11-13"
     }
@@ -346,7 +349,7 @@
         }
       ],
       "notes": [
-        "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
+        "Conditions set in the consultations are not counted as recommendations. “Unknown” does not mean that no recommendation was made.",
         "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved.",
         "120 seats rests on one JTA blanket report, not 12 separately verified statements; medium confidence. The date is tasking day, not a recovered consultation schedule."
       ],
@@ -431,7 +434,8 @@
           {
             "source": "role-roster-9",
             "quote": "PersonToPositionID 3820; PersonID 2639; PositionID 39; StartDate 1959-12-17T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. בכור-שלום שיטרית; faction join: מפלגת פועלי ארץ-ישראל"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: בכור-שלום שיטרית; faction: מפלגת פועלי ארץ-ישראל.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בכור-שלום שיטרית; סיעה: מפלגת פועלי ארץ-ישראל."
           }
         ]
       },
@@ -444,7 +448,8 @@
           {
             "source": "role-roster-9",
             "quote": "PersonToPositionID 3384; PersonID 2661; PositionID 39; StartDate 1959-12-17T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. חיים משה שפירא; faction join: מפלגה דתית לאומית"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים משה שפירא; faction: מפלגה דתית לאומית.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים משה שפירא; סיעה: מפלגה דתית לאומית."
           }
         ]
       },
@@ -457,7 +462,8 @@
           {
             "source": "role-roster-9",
             "quote": "PersonToPositionID 3994; PersonID 2220; PositionID 39; StartDate 1959-12-17T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. ישראל ברזילי; faction join: מפלגת פועלים מאוחדת"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: ישראל ברזילי; faction: מפלגת פועלים מאוחדת.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: ישראל ברזילי; סיעה: מפלגת פועלים מאוחדת."
           }
         ]
       },
@@ -470,7 +476,8 @@
           {
             "source": "role-roster-9",
             "quote": "PersonToPositionID 4018; PersonID 2194; PositionID 39; StartDate 1959-12-17T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יצחק בן-אהרן; faction join: אחדות העבודה - פועלי ציון"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק בן-אהרן; faction: אחדות העבודה - פועלי ציון.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק בן-אהרן; סיעה: אחדות העבודה - פועלי ציון."
           }
         ]
       },
@@ -483,7 +490,8 @@
           {
             "source": "role-roster-9",
             "quote": "PersonToPositionID 3855; PersonID 2600; PositionID 39; StartDate 1959-12-17T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. פנחס רוזן; faction join: מפלגה פרוגרסיבית"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: פנחס רוזן; faction: מפלגה פרוגרסיבית.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: פנחס רוזן; סיעה: מפלגה פרוגרסיבית."
           }
         ]
       },
@@ -493,7 +501,7 @@
         "role": "other",
         "certainty": "unknown",
         "cites": [],
-        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+        "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
       },
       {
         "letters": "יא",
@@ -501,7 +509,7 @@
         "role": "other",
         "certainty": "unknown",
         "cites": [],
-        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+        "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
       },
       {
         "letters": "ע",
@@ -509,7 +517,7 @@
         "role": "other",
         "certainty": "unknown",
         "cites": [],
-        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+        "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
       }
     ],
     "coalitionSeats": null,
@@ -541,11 +549,15 @@
           },
           {
             "source": "coalition-1",
-            "quote": "PersonID 2462, GovernmentNum 9, DutyDesc שר הדואר, StartDate 1960-07-18, FinishDate 1961-05-30 (project transcription of official API fields)."
+            "quote": "PersonID 2462, GovernmentNum 9, DutyDesc שר הדואר, StartDate 1960-07-18, FinishDate 1961-05-30 (project transcription of official API fields).",
+            "note": "The Knesset’s official record: Minister of Posts, 18 July 1960 to 30 May 1961.",
+            "noteHe": "הרישום הרשמי של הכנסת: שר הדואר, 18 ביולי 1960 עד 30 במאי 1961."
           },
           {
             "source": "faction-split",
-            "quote": "Faction 215 / 233: StartDate 1960-08-09; opening constituents 3 Agudat Yisrael and 3 Poalei Agudat Yisrael."
+            "quote": "Faction 215 / 233: StartDate 1960-08-09; opening constituents 3 Agudat Yisrael and 3 Poalei Agudat Yisrael.",
+            "note": "The Knesset’s faction records: the faction began on 9 August 1960; at the Knesset’s opening it had three Agudat Yisrael and three Poalei Agudat Yisrael members.",
+            "noteHe": "רישומי הסיעות של הכנסת: הסיעה החלה ב־9 באוגוסט 1960; בפתיחת הכנסת היו בה שלושה חברי אגודת ישראל ושלושה חברי פועלי אגודת ישראל."
           }
         ],
         "governmentNumber": 9,
@@ -573,7 +585,7 @@
           {
             "source": "idi-lavon-1961",
             "quote": "כ-21 חודשים לאחר הבחירות הקודמות נקראו אזרחי ישראל לקלפיות פעם נוספת, הפעם בשל פרשת לבון. הפרשה עמדה במוקד מערכת הבחירות",
-            "locator": "opening paragraph; retained copy data/raw/research/idi-1961.html"
+            "locator": "opening paragraph"
           },
           {
             "source": "idi-lavon-1961",

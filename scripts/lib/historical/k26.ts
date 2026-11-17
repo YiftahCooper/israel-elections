@@ -205,7 +205,7 @@ export async function buildK26() {
     status: {
       stage: 'official-final', asOf: '2026-11-09',
       noteHe: 'תוצאות סופיות רשמיות: ההודעה בדבר תוצאות הבחירות, ילקוט הפרסומים 15100 (4.11.2026). כל סיכומי הקולות והמנדטים תואמים את נתוני הוועדה.',
-      noteEn: 'Official final results: the results notice, Yalkut HaPirsumim 15100 (4 Nov 2026). Every vote and seat total agrees with the CEC count.',
+      noteEn: 'Official final results: the results notice, Yalkut HaPirsumim 15100 (4 Nov 2026). Every vote and seat total agrees with the Central Elections Committee count.',
     },
     ruleSetId: 'il-2014-bader-ofer-3.25',
     totals: { registered: locTot.registered, votesCast: locTot.votesCast, invalid: locTot.invalid, valid: locTot.valid, ballotBoxes: ballotRows.length, ...geographyTotals(locRows) },

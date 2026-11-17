@@ -16,6 +16,7 @@ import { mixHex } from '../src/data/colour.ts';
 import { compileHistoryRuntime } from './party-history-runtime.ts';
 import { shownRows } from './lib/faction-rows.ts';
 import { displayNameEn, knessetMemberSure } from './lib/build/bios.ts';
+import { isOwnRepository, sourceName } from './lib/source-names.ts';
 
 /** How a run ended. elected: within the list's seats at the election. first: not within the seats but sat from the
  *  first sitting. later: entered during that Knesset. out: did not enter that Knesset. declined: within the seats but
@@ -115,7 +116,7 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
     for (const run of r.runs) {
       if (run.status !== 'confirmed') continue;
       const out: [string, string][] = [];
-      const add = (publisher: string | undefined, url: string | undefined) => { if (url && /^https:\/\//.test(url) && !out.some((x) => x[1] === url)) out.push([publisher ?? new URL(url).hostname, url]); };
+      const add = (publisher: string | undefined, url: string | undefined) => { if (url && /^https:\/\//.test(url) && !isOwnRepository(url) && !out.some((x) => x[1] === url)) out.push([sourceName(publisher, url), url]); };
       for (const id of new Set([...run.sourceIds ?? [], ...run.supportingSourceIds ?? []])) { const src = r.sources[id]; if (!src) continue; add(src.publisher, src.url); add(src.corroboration?.publisher, src.corroboration?.url); }
       for (const url of run.finding?.match(/https:\/\/\S+?(?=\s|$)/g) ?? []) add(undefined, url.replace(/[.,;)]+$/, ''));
       if (out.length) researched.set(run.candidateId, out);
@@ -326,7 +327,7 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
       // person-specific acts only; faction moves and seat replacements come from the membership records; votes are point-in-time
       if (!who.length || who.length > 3 || e.kind === 'faction-membership-change' || e.kind === 'member-replacement' || /vote|sworn|term-|rotation/.test(e.kind)) continue;
       if (e.classification === 'does not count' || !['confirmed', 'probable', 'provisional'].includes(e.certainty)) continue;
-      const src = e.sources.filter((s) => s.url && /^https:\/\//.test(s.url)).map((s) => [s.publisher ?? new URL(s.url!).hostname, s.url!] as const);
+      const src = e.sources.filter((s) => s.url && /^https:\/\//.test(s.url) && !isOwnRepository(s.url)).map((s) => [sourceName(s.publisher, s.url!), s.url!] as const);
       for (const p of who) if (terms.has(p)) (events.get(p) ?? events.set(p, []).get(p)!).push([e.date, e.kind, k, e.summary.en, e.summary.he, e.evidenceClass ?? '', src]);
     }
   }

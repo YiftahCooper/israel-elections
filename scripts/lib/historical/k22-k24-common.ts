@@ -222,7 +222,7 @@ export async function buildHistorical(config:BuildConfig){
   const ds:ElectionDataset={schemaVersion:1,id:`k${n}`,knesset:n,electionDate:config.date,
     nameHe:`הבחירות לכנסת ה-${n}`,nameEn:`Election to the ${n}${n===22?'nd':n===23?'rd':'th'} Knesset`,
     status:{stage:'official-final',asOf:'2026-11-03',
-      noteEn:`Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. ${config.noteEn??''}`.trim(),
+      noteEn:`Official final Central Elections Committee votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. ${config.noteEn??''}`.trim(),
       noteHe:`תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. ${config.noteHe??''}`.trim()},
     ruleSetId:'il-2014-bader-ofer-3.25',totals:{...national.totals,ballotBoxes:record.pollingStations,...geographyTotals(rows)},
     lists,agreements:agreementRecords(n,pairs,`k${n}-surplus-gazette`),blocs:[],

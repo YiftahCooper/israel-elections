@@ -12,6 +12,7 @@ import { useHoverIntent } from '../hoverIntent.ts';
 import { Info, Slip } from './ui.tsx';
 import { entryWords, reasonWords } from '../../history/reasons.ts';
 import { ListKeyItem } from './Hemicycle.tsx';
+import { publisherIn } from '../publisherName.ts';
 import './TermTimeline.css';
 
 type List = ElectionDataset['lists'][number];
@@ -158,13 +159,13 @@ function TextWithInfo({ text, info }: { text: string; info: ReactNode }) {
 }
 
 function Sources({ it }: { it: TimelineItem }) {
-  const L = useL();
+  const L = useL(); const lang = useLang();
   const sure = it.certainty === 'confirmed' ? L('Confirmed from official records', 'מאומת ברשומות רשמיות') : it.certainty === 'probable' ? L('Probable: still to be checked against official records', 'סביר: טרם נבדק מול רשומות רשמיות')
     : it.certainty === 'disputed' ? L('Sources disagree', 'המקורות חלוקים') : it.certainty ? L('Provisional: from press reports, still to be checked', 'זמני: מדיווחים בעיתונות, טרם נבדק') : null;
   return <Info title={L('Sources & how sure', 'מקורות ומידת ודאות')}>
     {it.type === 'seat' && !it.sources.length ? <p>{L('From the Knesset’s membership records: who left and who entered on this date. Which seat a newcomer took is our pairing within the list.', 'מרשומות החברות של הכנסת: מי עזב ומי נכנס בתאריך זה. איזה מושב תפס מי שנכנס: השיוך שלנו, בתוך הרשימה.')}</p> : null}
     {sure && <p>{sure}</p>}
-    {it.sources.map(([publisher, url], i) => <div key={i}><a href={url} target="_blank" rel="noreferrer"><bdi>{publisher}</bdi></a></div>)}
+    {it.sources.map(([publisher, url, he], i) => <div key={i}><a href={url} target="_blank" rel="noreferrer"><bdi>{publisherIn(lang, publisher, he)}</bdi></a></div>)}
   </Info>;
 }
 

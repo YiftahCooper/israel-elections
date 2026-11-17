@@ -191,8 +191,8 @@ export function Localities({ s }: { s: Scenario }) {
       </span>
       {view === 'map' ? <LocalityMap key={s.electionId} s={s} data={data} historicalLists={histLists} locations={locations} names={names} locationError={locationError} retryLocations={retryLocations} /> : <>
       <p className="small ink2">{L('Historical locality results', 'תוצאות היסטוריות לפי יישוב')} <Info title={L('Locality results', 'תוצאות לפי יישוב')}>{LOCALITIES_SUMMED_FROM_STATIONS.has(data.id)
-        ? L(`Official CEC polling-station results, summed by locality (${fmtInt(localityCount)} localities), plus double-envelope votes. No official locality table exists for this election. These are the historical figures; your scenario changes are national and are not distributed to localities.`, `תוצאות הקלפיות הרשמיות של ועדת הבחירות, מסוכמות לפי יישוב (${fmtInt(localityCount)} יישובים), ולמעטפות החיצוניות. לבחירות אלה אין טבלת יישובים רשמית. אלה הנתונים ההיסטוריים; שינויי התרחיש הם ארציים ואינם מחולקים ליישובים.`)
-        : L(`Official CEC results for ${fmtInt(localityCount)} localities plus double-envelope votes. These are the historical figures; your scenario changes are national and are not distributed to localities.`, `תוצאות רשמיות של ועדת הבחירות ל־${fmtInt(localityCount)} יישובים ולמעטפות החיצוניות. אלה הנתונים ההיסטוריים; שינויי התרחיש הם ארציים ואינם מחולקים ליישובים.`)}</Info></p>
+        ? L(`Official Central Elections Committee polling-station results, summed by locality (${fmtInt(localityCount)} localities), plus double-envelope votes. No official locality table exists for this election. These are the historical figures; your scenario changes are national and are not distributed to localities.`, `תוצאות הקלפיות הרשמיות של ועדת הבחירות, מסוכמות לפי יישוב (${fmtInt(localityCount)} יישובים), ולמעטפות החיצוניות. לבחירות אלה אין טבלת יישובים רשמית. אלה הנתונים ההיסטוריים; שינויי התרחיש הם ארציים ואינם מחולקים ליישובים.`)
+        : L(`Official Central Elections Committee results for ${fmtInt(localityCount)} localities plus double-envelope votes. These are the historical figures; your scenario changes are national and are not distributed to localities.`, `תוצאות רשמיות של ועדת הבחירות ל־${fmtInt(localityCount)} יישובים ולמעטפות החיצוניות. אלה הנתונים ההיסטוריים; שינויי התרחיש הם ארציים ואינם מחולקים ליישובים.`)}</Info></p>
       {data.id === 'k17' ? <Locality2006Note /> : (data.noteEn || data.noteHe) && <p className="small callout">{lang === 'he' ? data.noteHe ?? data.noteEn : data.noteEn ?? data.noteHe}</p>}
       <div className="row" style={{ marginBottom: 8 }}>
         <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder={L('Locality name or code', 'שם יישוב או סמל')} aria-label={L('Search localities', 'חיפוש יישוב')} />
@@ -234,14 +234,13 @@ export function Localities({ s }: { s: Scenario }) {
 
 // ------------------------------------------------------------------ sources
 
-interface Src { id: string; url: string; publisher: string; publisherEn?: string; official: boolean; description: string; descriptionEn?: string; retrievedAt?: string; sha256?: string; bytes?: number; note?: string; method: string; file: string }
+interface Src { id: string; url: string; publisher: string; publisherEn?: string; official: boolean; description: string; descriptionEn?: string; retrievedAt?: string; sha256?: string; bytes?: number; note?: string; method: string; file: string; own?: boolean }
 
-/** A source's address: a link for a web address (any words after it stay plain text); a project
- *  record (no web address) is named by its retained file, never as a dead link. */
+/** A source's address: a link for a web address (any words after it stay plain text). The project's own records are
+ *  not sources and are listed apart, by what they are, never by a file name (17 Nov 2026). */
 function SourceAddress({ x }: { x: Src }) {
-  const L = useL();
   const [href, ...rest] = x.url.split(' ');
-  if (!/^https?:\/\//.test(href)) return <span className="muted" style={{ display: 'block' }}>{L('Project record', 'רשומת הפרויקט')}: <bdi dir="ltr">{x.file && !x.file.startsWith('..') ? `data/raw/${x.file}` : x.url.replace(/^(local|project):/, '')}</bdi></span>;
+  if (!/^https?:\/\//.test(href)) return null;
   return <span dir="ltr" style={{ display: 'block', wordBreak: 'break-all' }}><a href={href} target="_blank" rel="noreferrer">{href}</a>{rest.length ? ` ${rest.join(' ')}` : ''}</span>;
 }
 
@@ -279,7 +278,9 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
   const byId = new Map((src ?? []).map((x) => [x.id, x]));
   const listed = ds.sourceIds.flatMap((id) => byId.get(id) ?? []);
   // "official sources first": the list keeps that promise; the dataset's order is kept within each group
-  const used = [...listed.filter((x) => x.official), ...listed.filter((x) => !x.official)];
+  const used = [...listed.filter((x) => x.official && !x.own), ...listed.filter((x) => !x.official && !x.own)];
+  // what this project typed in or added up from those sources: not a source itself
+  const own = listed.filter((x) => x.own);
   const englishSourceText = (text: string) => ds.lists.reduce((out, l) => [l.nameHe, l.shortHe].filter(Boolean).sort((a, b) => b.length - a.length).reduce((t, name) => t.replaceAll(name, listLabel(l, 'en')), out), text).replace(/\s*\([א-ת״׳]+\)/g, '');
   const noLocalities = !ds.totals.ballotBoxes && !ds.totals.localities;
   return (
@@ -304,7 +305,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
         </div>
         <p className="small"><Download className="icon sm" aria-hidden style={{ verticalAlign: '-2px', marginInlineEnd: 4 }} />{L('Download', 'הורדה')}:{' '}
           <a href={`data/${ds.id}.json`} download>{L('election data', 'נתוני הבחירות')}</a>
-          {!noLocalities && <> · <button className="table-action" onClick={exportLocalities}>{L('localities', 'יישובים')}</button> · <a href={`data/${ds.id}-localities.json`} download>{L('original CEC names', 'שמות מקוריים מוועדת הבחירות')}</a></>}
+          {!noLocalities && <> · <button className="table-action" onClick={exportLocalities}>{L('localities', 'יישובים')}</button> · <a href={`data/${ds.id}-localities.json`} download>{L('original Central Elections Committee names', 'שמות מקוריים מוועדת הבחירות')}</a></>}
           {' · '}<a href="data/sources.json" download>{L('all sources', 'כל המקורות')}</a> <span className="muted">(JSON)</span></p>
         {exportError && <p className="bad" role="status">{L('Could not export localities.', 'לא ניתן לייצא יישובים.')}</p>}
         <h3 style={{ marginTop: 14 }}>{L('Sources', 'מקורות')}</h3>
@@ -322,7 +323,11 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
             </li>
           ))}
         </ul>}
-        <p className="small muted">{L('Names, colours and blocs', 'שמות, צבעים וגושים')} <Info title={L('App annotations', 'נתונים של האפליקציה')}>{L('Short and English list names are assigned by this application. Colours are the colours associated with each party where a source supports it, otherwise an app colour; blocs follow the sources given for each grouping (see decision 0087). None of these is official election data.', 'השמות המקוצרים והאנגליים של הרשימות נקבעו באפליקציה זו. הצבעים הם הצבעים המזוהים עם כל מפלגה כשיש לכך מקור, ואחרת צבע של האפליקציה; הגושים לפי המקורות של כל חלוקה (ראו החלטה 0087). אף אחד מאלה אינו נתון בחירות רשמי.')}</Info></p>
+        {!failed && own.length > 0 && <div className="sources-own small">
+          <h4>{L('Typed in by this project', 'הוקלד בפרויקט')}</h4>
+          <ul className="credits" style={{ paddingInlineStart: 18 }}>{own.map((x) => <li key={x.id} style={{ marginBottom: 6 }}>{lang === 'en' ? x.descriptionEn ?? x.description : x.description}{/^https?:\/\//.test(x.url) && <> · <a href={x.url.split(' ')[0]} target="_blank" rel="noreferrer">{L('official original', 'המקור הרשמי')}</a></>}</li>)}</ul>
+        </div>}
+        <p className="small muted">{L('Names, colours and blocs', 'שמות, צבעים וגושים')} <Info title={L('App annotations', 'נתונים של האפליקציה')}>{L('Short and English list names are assigned by this application. Colours are the colours associated with each party where a source supports it, otherwise an app colour; blocs follow the sources given for each grouping. None of these is official election data.', 'השמות המקוצרים והאנגליים של הרשימות נקבעו באפליקציה זו. הצבעים הם הצבעים המזוהים עם כל מפלגה כשיש לכך מקור, ואחרת צבע של האפליקציה; הגושים לפי המקורות של כל חלוקה. אף אחד מאלה אינו נתון בחירות רשמי.')}</Info></p>
         <h3 style={{ marginTop: 14 }}>{L('Method and limits', 'שיטה ומגבלות')}</h3>
         <ul className="small" style={{ paddingInlineStart: 18 }}>
           <li>{L('Seats are computed by deterministic code implementing sections 81–82 of the Knesset Elections Law with exact integer arithmetic. Automated tests check that it reproduces the officially published seats of every list in every election offered here.', 'המנדטים מחושבים בקוד דטרמיניסטי המממש את סעיפים 81–82 לחוק הבחירות בחשבון שלמים מדויק. בדיקות אוטומטיות מוודאות שהוא משחזר את המנדטים שפורסמו רשמית לכל רשימה בכל מערכת בחירות המוצגת כאן.')}</li>
@@ -336,7 +341,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
       <div>
         <details><summary>{L('English list names', 'שמות הרשימות באנגלית')}</summary>
           <p className="small">{L('Existing common-use English labels are app annotations. The entries below are unofficial shortened transliterations, not verified official English names. Other names, including names you type, are spelled letter by letter and are unofficial.', 'השמות האנגליים המקובלים הם נתוני תצוגה של האפליקציה. הרשומות להלן הן תעתיקים מקוצרים לא רשמיים, לא שמות רשמיים באנגלית שאומתו. לשמות אחרים, גם לשמות שאתם מקלידים, מוצג תעתיק לא רשמי, אות באות.')}</p>
-          <ul className="small">{ds.lists.filter(l => l.englishName).map(l => <li key={l.id}>{listLabel(l, lang)} · {L('Unofficial transliteration', 'תעתיק לא רשמי')} · {l.englishName!.sourceId}</li>)}</ul>
+          <ul className="small">{ds.lists.filter(l => l.englishName).map(l => <li key={l.id}>{listLabel(l, lang)} · {L('Unofficial transliteration', 'תעתיק לא רשמי')}{byId.get(l.englishName!.sourceId) && <> · {L('Hebrew name from ', 'השם העברי מתוך ')}<bdi dir="auto">{datesInText(lang === 'en' ? byId.get(l.englishName!.sourceId)!.publisherEn ?? byId.get(l.englishName!.sourceId)!.publisher : byId.get(l.englishName!.sourceId)!.publisher)}</bdi></>}</li>)}</ul>
         </details>
         {(() => {
           // Logos keep their licence or fair-use notice and attribution with the images. One entry per image

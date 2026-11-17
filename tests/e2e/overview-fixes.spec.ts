@@ -153,8 +153,8 @@ test('Sensitivity under Large text on a phone: the chosen row is brought just un
   // the chosen row carries .sel; before any choice, the row of the current result
   const state = () => page.evaluate(() => {
     const box = document.querySelector('.sweep-tbl')!.parentElement as HTMLElement, b = box.getBoundingClientRect();
-    const row = (box.querySelector('tbody tr.sel') ?? box.querySelector('tbody tr[aria-current="true"]'))!.getBoundingClientRect();
-    return { top: row.top - b.top, bottom: row.bottom - b.top, head: box.querySelector('thead th')!.getBoundingClientRect().bottom - b.top, height: b.height, max: parseFloat(box.style.maxHeight) * 1.15 };
+    const tr = (box.querySelector('tbody tr.sel') ?? box.querySelector('tbody tr[aria-current="true"]'))!, row = tr.getBoundingClientRect();
+    return { top: row.top - b.top, bottom: row.bottom - b.top, head: box.querySelector('thead th')!.getBoundingClientRect().bottom - b.top, height: b.height, max: parseFloat(box.style.maxHeight) * 1.15, index: [...box.querySelectorAll('tbody tr')].indexOf(tr) };
   });
   const check = async (what: string, last = false) => {
     const st = await state();
@@ -163,8 +163,19 @@ test('Sensitivity under Large text on a phone: the chosen row is brought just un
     if (last) expect(Math.abs(st.bottom - st.height), what).toBeLessThan(6);
     else expect(Math.abs(st.top - st.head), what).toBeLessThan(3);
   };
-  await expect.poll(async () => { const st = await state(); return Math.abs(st.top - st.head) < 3; }, { timeout: 5_000 }).toBe(true);
+  // the table scrolls smoothly, and under a busy parallel run that takes longer: wait for the row to settle, then check
+  const settled = (what: string, last = false) => expect.poll(async () => {
+    const st = await state();
+    return last ? Math.abs(st.bottom - st.height) : Math.abs(st.top - st.head);
+  }, { message: `${what}: the row settles`, timeout: 5_000 }).toBeLessThan(last ? 6 : 3);
+  await settled('the current row');
   await check('the current row');
   await page.locator('.sweep-tbl tbody tr[tabindex="0"]').focus();
-  for (const key of ['End', 'Home', 'ArrowDown', 'ArrowDown', 'ArrowDown']) { await page.keyboard.press(key); await page.waitForTimeout(250); await check(key, key === 'End'); }
+  for (const key of ['End', 'Home', 'ArrowDown', 'ArrowDown', 'ArrowDown']) {
+    const from = (await state()).index;
+    await page.keyboard.press(key);
+    await expect.poll(async () => (await state()).index, { message: `${key}: the choice moves` }).not.toBe(from);
+    await settled(key, key === 'End');
+    await check(key, key === 'End');
+  }
 });
