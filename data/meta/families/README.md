@@ -52,6 +52,16 @@ editorial assessment even when the underlying party identity is documented.
 
 ## Evidence and limits
 
+What a reader sees (17 Nov 2026): names, `definition`/`definitionHe`, `limitations`/
+`limitationsHe`, each placement's `claim`/`claimHe`, each review's `reason`/`reasonHe`,
+and the cited sources by `publisher`/`publisherHe`, a printed page (`p. 98`) and `quote`.
+Those are plain words in both languages; a source is named by who published it. The rest
+is audit, never displayed: `support`, other locators, `revision`, and `projectReading`,
+which marks a placement resting on this project's own reading (the `proposal` record).
+Such a placement says so in its claim ("Placed here by this project, from the sources
+below"); the project is never listed as a source. `tests/reader-text-families.test.ts`
+keeps it so, here and in `../parties.json` and `../party-lineage.json`.
+
 The proposal's matrix is the retained claim-level decision record; `proposal`
 source references inherit that review, not independent corroboration. IDI sources
 provide historical context; they do not endorse our presets. Rows separately cite

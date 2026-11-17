@@ -72,14 +72,12 @@ const dateText = (r: Relation) => r.dateTo ? `${year(r.date)}–${year(r.dateTo)
 
 function Evidence({ r }: { r: Relation }) {
   const L = useL(), lang = useLang();
-  const expert = useOn('historySources');
   return <Info title={L('Evidence', 'ראיות')} label={L(`Evidence: ${eventText(r, 'en')}`, `ראיות: ${eventText(r, 'he')}`)}>
     <span className="ph-why">
       <span>{eventText(r, lang)} · <CertChip c={r.certainty} /></span>
-      {r.sources.length > 0 && <span className="ph-src">{r.sources.map((s) => <span key={s.id}>{s.url ? <a href={s.url} target="_blank" rel="noreferrer">{(lang === 'he' && s.publisherHe) || s.publisher || s.url}</a> : (s.publisher ?? s.locator ?? s.id)}
-        <PageAndQuote locator={s.locator} quote={s.quote} />
-        {expert && lang === 'en' && s.support ? <span className="tiny muted"> · {s.support}</span> : null}</span>)}</span>}
-      {!r.sources.some((s) => s.url) && <span className="tiny muted">{L('Recorded in this project’s data files.', 'רשום בקובצי הנתונים של הפרויקט.')}</span>}
+      {r.sources.length > 0 && <span className="ph-src">{r.sources.map((s) => <span key={s.id}>{sourceName(s, lang)}
+        <PageAndQuote locator={s.locator} quote={s.quote} /></span>)}</span>}
+      {!r.sources.length && <span className="tiny muted">{L('Recorded in this project’s data files.', 'רשום בקובצי הנתונים של הפרויקט.')}</span>}
     </span>
   </Info>;
 }
@@ -88,7 +86,13 @@ function Evidence({ r }: { r: Relation }) {
 export function EvidenceLinks({ r }: { r: Relation }) {
   const L = useL(), lang = useLang();
   if (!r.sources.length) return <span className="tiny muted">{L('Recorded in this project’s data files.', 'רשום בקובצי הנתונים של הפרויקט.')}</span>;
-  return <span className="tiny ph-srcline">{L('Sources: ', 'מקורות: ')}{r.sources.map((s, k) => <span key={s.id}>{k ? '; ' : ''}{s.url ? <a href={s.url} target="_blank" rel="noreferrer">{(lang === 'he' && s.publisherHe) || s.publisher || s.url}</a> : (s.publisher ?? s.locator ?? s.id)}<PageAndQuote locator={s.locator} /></span>)}</span>;
+  return <span className="tiny ph-srcline">{L('Sources: ', 'מקורות: ')}{r.sources.map((s, k) => <span key={s.id}>{k ? '; ' : ''}{sourceName(s, lang)}<PageAndQuote locator={s.locator} /></span>)}</span>;
+}
+/** A relation's source as a reader sees it: who published it, linked when it has a link. The research note kept with a
+ *  source (`support`), its file locator and its id are never shown. */
+function sourceName(s: Relation['sources'][number], lang: Lang) {
+  const name = (lang === 'he' && s.publisherHe) || s.publisher || (lang === 'he' ? 'מקור' : 'Source');
+  return s.url ? <a href={s.url} target="_blank" rel="noreferrer">{name}</a> : name;
 }
 /** "Labor (4 seats) and Meretz (0 seats)": the whole earlier lists a comparison counts, with their seats. */
 export function countedText(c: Comparison, lang: Lang): string {
@@ -399,7 +403,7 @@ export function ComparisonWhy({ c }: { c: Comparison }) {
       ? L(`The ${py} list was divided among several lists, so they are compared together. Votes are never split between parties.`, `הרשימה ${hebrewPrefix('מ', py)} התחלקה בין כמה רשימות, ולכן הן מושוות יחד. הקולות אינם מפוצלים בין מפלגות.`)
       : L(`Compared with whole ${py} lists whose parties all ran on this list. Votes are never split between parties.`, `מושווה לרשימות ${hebrewPrefix('מ', py)} במלואן, שכל מפלגותיהן רצו ברשימה זו. הקולות אינם מפוצלים בין מפלגות.`)}</span>
     <span className="ph-why-lists">{c.counted.map((l) => { const h = prevList(c, l.id); return <span key={l.id}><bdi>{h ? listShort(h, lang) : l.id}</bdi> {py}: {L(seatsText(l.seats, 'en'), seatsText(l.seats, 'he'))} · <bdi dir="ltr">{fmtInt(l.votes)}</bdi> {L('votes', 'קולות')}</span>; })}</span>
-    {c.relations.map((r) => <span key={r.id}>{eventText(r, lang)} ({year(r.date)}) · <CertChip c={r.certainty} />{expert && r.sources.length > 0 && <span className="tiny muted"> · {r.sources.map((s) => s.publisher ?? s.id).join('; ')}</span>}</span>)}
+    {c.relations.map((r) => <span key={r.id}>{eventText(r, lang)} ({year(r.date)}) · <CertChip c={r.certainty} />{expert && r.sources.length > 0 && <span className="tiny muted"> · {r.sources.map((s) => (lang === 'he' && s.publisherHe) || s.publisher || L('Source', 'מקור')).join('; ')}</span>}</span>)}
     {c.newParties.length > 0 && c.kind !== 'group' && <span className="muted">{L(`No earlier list: ${names(c.newParties, 'en')}.`, `ללא רשימה קודמת: ${names(c.newParties, 'he')}.`)}</span>}
   </span>;
 }

@@ -215,3 +215,15 @@ test('the family’s Scale action sits under its charts, above the exact figures
  const plots=await page.locator('.family-plots').boundingBox();
  expect(scale!.y).toBeGreaterThan(plots!.y+plots!.height-1);expect(scale!.y).toBeLessThan(exact!.y);
 });
+test('family sources are named by who published them; the project never cites itself (reader text, 17 Nov)',async({page})=>{
+ const jargon=/proposal §|local compilation|research compilation|inputs;|scoped in|taxonomy|preset|Revision:|\bIDI\b|Israeli Elections Explorer/i;
+ await start(page);await page.locator('.family-chip',{hasText:'Radical right'}).click();
+ await page.getByRole('button',{name:'Definition, sources and limitations',exact:true}).click();const sheet=page.locator('dialog.family-sheet');
+ await expect(sheet.locator('.family-evidence')).toContainText('Lists are placed in this family by this project, from the sources below.');await expect(sheet.locator('.family-evidence')).toContainText('Official results, Central Elections Committee');
+ expect(await sheet.locator('.family-evidence').innerText()).not.toMatch(jargon);await sheet.getByRole('button',{name:'Close',exact:true}).click();
+ const exact=page.locator('details.family-exact');if(await exact.getAttribute('open')===null)await exact.locator('summary').click();
+ await page.locator('.family-table tbody tr').nth(12).locator('th button').click();
+ const art=sheet.locator('.family-point-lists article').filter({has:page.locator('strong',{hasText:/^Moledet$/})});await art.locator('.info button').click();
+ const pop=page.locator('.pop').last();await expect(pop).toContainText('Official results, Central Elections Committee');await expect(pop).toContainText('Israel Democracy Institute, Yair Sheleg, 15 October 2020');
+ expect(await pop.innerText()).not.toMatch(jargon);
+});

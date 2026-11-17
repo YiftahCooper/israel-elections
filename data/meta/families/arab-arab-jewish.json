@@ -16,8 +16,8 @@
   },
   "author": "Israeli Elections Explorer research compilation",
   "publisher": "Israeli Elections Explorer",
-  "definitionHe": "רשימות ערביות ורשימות ערביות־יהודיות. פרשנות מערכתית לפי סעיף 2 בהצעת המחקר; תיתכן חפיפה למשפחות אחרות. אין הסקה על זהות המצביעים.",
-  "definition": "Arab and Arab–Jewish lists. Editorial interpretation under proposal §2; overlap with other presets is allowed. No inference about voters.",
+  "definitionHe": "רשימות ערביות ורשימות ערביות־יהודיות. הפרויקט שיבץ את הרשימות במשפחה הזאת לפי המקורות שלהלן. רשימה יכולה להיות ביותר ממשפחה אחת.",
+  "definition": "Arab and Arab–Jewish lists. Lists are placed in this family by this project, from the sources below. A list can be in more than one family.",
   "criteria": {
     "include": "Explicit non-pending matrix selections with cited historical context.",
     "exclude": "Question-mark entries remain outside totals; unreviewed lists are unselected, not classified as opposing.",
@@ -31,167 +31,185 @@
   "sources": {
     "aguda": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/agudat-israel/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Agudat Yisrael",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Party profile: Haredi identity and electoral history.",
       "retrieval": {
         "status": 200,
         "sha256": "6dce84aee9500b5f9fc264457d7474511c26ca1feaab7d7e32f311db9e3c40e5"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: אגודת ישראל"
     },
     "pai": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/poalei-agudat-yisrael/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Poalei Agudat Yisrael",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Haredi workers party, independent runs and Religious Torah Front alliances.",
       "retrieval": {
         "status": 200,
         "sha256": "6ddb77216e35e3df1d67aa677fea051756e1b43532310f3d66b0efd3e8c286d3"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: פועלי אגודת ישראל"
     },
     "degel": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/degel-hatora/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Degel HaTorah",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Haredi party founded in 1988 following split with Aguda.",
       "retrieval": {
         "status": 200,
         "sha256": "854da668b9b220dfe41948199832127c59232db628d089459355c38123ae6bd7"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: דגל התורה"
     },
     "shas": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/shas/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Shas",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "National party from 1984; Sephardi Haredi organisation, broader electorate.",
       "retrieval": {
         "status": 200,
         "sha256": "136f01f64368f99abd53809199bf6b22c81869f8557854717ac94ce9d693de77"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: ש״ס"
     },
     "utj": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/united-torah-judaism/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: United Torah Judaism",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Alliance of Aguda and Degel from 1992.",
       "retrieval": {
         "status": 200,
         "sha256": "0726c07cb397ed54ef45201cec0532445ad1d490142a5d116764c342034e6380"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: יהדות התורה"
     },
     "joint": {
       "url": "https://www.idi.org.il/articles/32955",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: joint lists, 1949–2021",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Election-specific joint-list constituent table, 1949–2021.",
       "retrieval": {
         "status": 200,
         "sha256": "e5ec5df81751ddf75b36b24d709c5379d2a093029eb444357b540edf427a6cb3"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: רשימות משותפות, 1949–2021"
     },
     "morasha": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/morasha/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Morasha",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "1984 alliance of Matzad and Poalei Agudat Yisrael.",
       "retrieval": {
         "status": 200,
         "sha256": "b6ee790d542aff15aef7867f4ae118b87b7526c9a811a3860598164645c83c3f"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: מורשה"
     },
     "yachad": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/yachad/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Yachad",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Yachad itself bridges Sephardi Haredi and Hardal national religious groups.",
       "retrieval": {
         "status": 200,
         "sha256": "c17b6094f30ff496afc23fc3b8614bb889b03c846dec4a97c059c0d48e86e948"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: יחד"
     },
     "shas-study": {
       "url": "https://www.idi.org.il/media/10320/a-flock-with-no-shepherd-shas-leadership-the-day-after-rabbi-ovadia-yosef.pdf",
-      "publisher": "Ettinger and Leon / IDI, 2018",
+      "publisher": "Israel Democracy Institute, Ettinger and Leon, 2018",
       "kind": "academic",
       "accessed": "2026-11-04",
-      "support": "PDF pp.35–36 (printed pp.109–110): Azran 1996, Ahavat Israel 2003, Am Shalem and Koach Lehashpia 2013."
+      "support": "PDF pp.35–36 (printed pp.109–110): Azran 1996, Ahavat Israel 2003, Am Shalem and Koach Lehashpia 2013.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה, אטינגר ולאון, 2018"
     },
     "geula": {
       "url": "https://www.jta.org/archive/the-israeli-elections-from-communists-to-cab-drivers-array-of-choices-awaits-voters",
-      "publisher": "JTA, 1992",
+      "publisher": "Jewish Telegraphic Agency, 1992",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Geulat Yisrael is an ultra-Orthodox list led by Eliezer Mizrachi; opened with required User-Agent."
     },
     "kn-splits": {
       "url": "https://main.knesset.gov.il/en/mk/apps/faction/general/split-merge",
-      "publisher": "Knesset",
+      "publisher": "Knesset: faction splits and mergers",
       "kind": "official",
       "accessed": "2026-11-04",
-      "support": "Geulat Yisrael split from Aguda. Parliamentary events do not allocate election votes."
+      "support": "Geulat Yisrael split from Aguda. Parliamentary events do not allocate election votes.",
+      "publisherHe": "הכנסת: פילוגים ואיחודים של סיעות"
     },
     "yishai": {
       "url": "https://library.mevaker.gov.il/sites/DigitalLibrary/Pages/Reports/2359-1.aspx",
       "publisher": "State Comptroller",
       "kind": "official",
       "accessed": "2026-11-04",
-      "support": "1988 Yishai led by Shimon Ben-Shlomo; lineage interpretation requires separate evidence."
+      "support": "1988 Yishai led by Shimon Ben-Shlomo; lineage interpretation requires separate evidence.",
+      "publisherHe": "מבקר המדינה"
     },
     "haredi-society": {
       "url": "https://en.idi.org.il/articles/52891",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Aguda, Degel and Shas identified as parties of main Haredi communities.",
       "retrieval": {
         "status": 200,
         "sha256": "127091a1745989fe918709a61dd4c48a9286614ec8a1a312186240efb0dff0f3"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה"
     },
     "power2009": {
       "url": "https://www.walla.co.il/news/israel/1416821",
-      "publisher": "Walla, 2009-01-13",
+      "publisher": "Walla News, 13 January 2009",
       "kind": "secondary",
       "accessed": "2026-11-04",
-      "support": "2009 Koach Lehashpia campaigns on disability rights; do not infer 2013 identity from name."
+      "support": "2009 Koach Lehashpia campaigns on disability rights; do not infer 2013 identity from name.",
+      "publisherHe": "וואלה חדשות, 13 בינואר 2009"
     },
     "cec26": {
       "url": "https://www.gov.il/he/pages/candidates-lists-26",
-      "publisher": "CEC; retained extraction in data/raw/k26/govil-list-pages.exa.json",
+      "publisher": "Central Elections Committee: candidate lists, 2026",
       "kind": "official",
       "accessed": "2026-11-04",
-      "support": "2026 registered names and sponsoring parties. Self-description is evidence of claim, not external validation."
+      "support": "2026 registered names and sponsoring parties. Self-description is evidence of claim, not external validation.",
+      "publisherHe": "ועדת הבחירות המרכזית: רשימות המועמדים, 2026"
     },
     "local-dataset": {
       "kind": "repository-dataset",
       "locator": "public/data/k{n}.json; data/raw/SOURCES.json",
-      "support": "Registered names, votes and sponsor fields only; not external ideological validation."
+      "support": "Registered names, votes and sponsor fields only; not external ideological validation.",
+      "publisher": "Official results, Central Elections Committee",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "yishai-lineage": {
       "url": "https://www.idi.org.il/media/17403/political-parties-in-israel-draft.pdf?isExternal=true",
-      "publisher": "Kenig and Rahat / IDI, draft of Parties in Israel 1992–2021",
+      "publisher": "Israel Democracy Institute, Ofer Kenig and Gideon Rahat, Parties in Israel 1992–2021 (draft)",
       "kind": "academic",
       "accessed": "2026-11-04",
-      "support": "PDF p.230 (printed 231), Shas chapter: Shimon Ben-Shlomo left Shas and ran Yishai in 1988, presenting it as representing Yemenite Jews. This proves ancestry, not a universal Haredi label."
+      "support": "PDF p.230 (printed 231), Shas chapter: Shimon Ben-Shlomo left Shas and ran Yishai in 1988, presenting it as representing Yemenite Jews. This proves ancestry, not a universal Haredi label.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה, עופר קניג וגדעון רהט, המפלגות בישראל 1992–2021 (טיוטה)"
     },
     "noam-hardal": {
       "url": "https://en.idi.org.il/articles/31683",
-      "publisher": "Yair Sheleg / IDI, 2020-10-15",
+      "publisher": "Israel Democracy Institute, Yair Sheleg, 15 October 2020",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Author identifies Noam as the party put forward by the Hardal current; editorial commentary rather than official taxonomy.",
       "retrieval": {
         "status": 200,
         "sha256": "92def3a3e6613e52fd5747d3d27b6589ff00adc3067e6cac4aa876bb79ac0e6d"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה, יאיר שלג, 15 באוקטובר 2020"
     },
     "proposal": {
       "kind": "secondary",
@@ -202,273 +220,307 @@
     },
     "mergers": {
       "url": "https://en.idi.org.il/articles/54874",
-      "publisher": "Assaf Shapira / IDI",
+      "publisher": "Israel Democracy Institute, Assaf Shapira",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Historical mergers; 2024 Democrats intention and deferred legal unification. Sections Not technically an electoral bloc and How will the merger be carried out.",
       "retrieval": {
         "status": 200,
         "sha256": "e041ee09cd515b86bc7228fae2d810ec25c5ebcc2c843ed29e4a2ccc98331cf4"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה, אסף שפירא"
     },
     "arab": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/hadash/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Hadash",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Historical party profile/context for arab; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
       "retrieval": {
         "status": 200,
         "sha256": "c9c93f508c7c2b25bdfd3d0461dc6284fb3aa8078288ef018910598ae2fc4961"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: חד״ש"
     },
     "national": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/national-religious-party/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: National Religious Party",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Historical party profile/context for national; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
       "retrieval": {
         "status": 200,
         "sha256": "f0ff9a075a945a573620c23cc4c9da4016f923297f1d860b08369f417226d19b"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: המפד״ל"
     },
     "labour": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/labor-party/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Labor",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Historical party profile/context for labour; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
       "retrieval": {
         "status": 200,
         "sha256": "9e4b4be509566e8fde1dbfd033bc50b3112b0131bbcd111690d84ca7fb28b65e"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: העבודה"
     },
     "revisionist": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/likud/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Likud",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Historical party profile/context for revisionist; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
       "retrieval": {
         "status": 200,
         "sha256": "a61db730add74d3b7761b37a6f6fd790b6187b394ed5b945330de4cb7bfe35d8"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: הליכוד"
     },
     "centre": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/shinui/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Shinui",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Historical party profile/context for centre; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
       "retrieval": {
         "status": 200,
         "sha256": "f9592deb91a044baa28f75fccc1f56cc3e2ffa74bd35354f2f161192b1f21216"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: שינוי"
     },
     "immigrant": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/yisrael-beytenu/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Yisrael Beiteinu",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Historical party profile/context for immigrant; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
       "retrieval": {
         "status": 200,
         "sha256": "f7eee648108c9cda6078365361fb5917fadbd0a1ce565ca30d6ae7012b1181ad"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: ישראל ביתנו"
     },
     "radical": {
       "url": "https://www.idi.org.il/articles/33649",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Historical party profile/context for radical; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
       "retrieval": {
         "status": 200,
         "sha256": "8eab19d2bd2c69d097c84f844dd6c54d20d5dcf73fe0e44dbf7bdcba573d58ec"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה"
     },
     "k1": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k1.json",
       "sha256": "5d454fb1d39b028540ab7c96c669975399b11c5ae8832db4011fe29252494039",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k2": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k2.json",
       "sha256": "9ecde3af2281faaf26325bef818fa1c9ce3f0375d6a4c8c119099d59368a6381",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k3": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k3.json",
       "sha256": "0ea276983d486d1c150baf61f979dab3fdee11a42b6b49367a479e235680ffd4",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k4": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k4.json",
       "sha256": "6ed37514fbe07806fd7a70efaca96cb7cc94e297ee85d3375c32d807e6214feb",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k5": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k5.json",
       "sha256": "6754fff9d6c21a627dcec0faafbc0ed07f340693f19f090993a372db90a3ddbd",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k6": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k6.json",
       "sha256": "54361492a836f80d19796af13c36d4702526d9b9955e5c1102b7f3d8b2e8e6f1",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k7": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k7.json",
       "sha256": "ccfead1d8d5d13388a294fe5ff10b30fb27bde85700543d2c0daf5f931bb7944",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k8": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k8.json",
       "sha256": "64eb31c830a8b90e01891943fce406db916aada82fbb735095591c20ab5d0f9e",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k9": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k9.json",
       "sha256": "7bbcb4e7e3b2b3d14dd5c6eefce7353186559965502d1aa4dde7eb44f5f7914d",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k10": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k10.json",
       "sha256": "082a0ec32dcc124a65955bedb6cf540e27f012ae780219bf9fa9ffc12e1b57ad",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k11": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k11.json",
       "sha256": "fc4f096478fdc38e217018796356410e6dbb8566d653c2b9862ff3d066e5e191",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k12": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k12.json",
       "sha256": "aea0f0d5c4628155da7d9c9556fd71b148d380d458bccb2ee58ee0113edb6b18",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k13": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k13.json",
       "sha256": "28d35cd7d3f45c62fdccbe13e0f5d2f7f9d6e931b9bbbeab2583b4a6f0c225d7",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k14": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k14.json",
       "sha256": "6fb8ffa61cd06226cc6d183a1a9b128a7cedc4d399ad2fb5c6ee7dc14b68344a",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k15": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k15.json",
       "sha256": "aea3072a9b0ead45f679ab79f9d0446e074361e714b7bc40f24a3e39c3bbe1e9",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k16": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k16.json",
       "sha256": "662cd88566878c3f8935c69a98a3915f166b8fc5b1570b7ce70205c27596eeb7",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k17": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k17.json",
       "sha256": "9d91fd4f33e821625446b2341fce661be47ec298f9b31ad2b764732ec5afc61b",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k18": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k18.json",
       "sha256": "76aff819f833bb2a38d74be75a550310b663c1ec1d5c79e67888a00239914e92",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k19": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k19.json",
       "sha256": "7760183e75b97aba156d45efd52b170769e05962c8e0e2862907839682b4a4af",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k20": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k20.json",
       "sha256": "4d991d557d7e9819af4724137620bee25f5766315517389ac1a74dc7ac8d368d",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k21": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k21.json",
       "sha256": "a45e22836c95b11200635b8b0b2a0117d90b95db7961536916314c321ea2a3da",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k22": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k22.json",
       "sha256": "64e572d1c1878e310a7a5c26ff35d81fe64da82dd10c8dbf54d55e32ec73f452",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k23": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k23.json",
       "sha256": "4bc87f04079f0c801cacb3d3ec64a91d737e9043cc2c83c0483193810f671ba9",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k24": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k24.json",
       "sha256": "42c1bf78590a125dee97a78162b39e08754a638e4276e975bcd6e3ffcee4611b",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k25": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k25.json",
       "sha256": "c9ae7dbd7a323c2a7152d4a9af1f0b14a3789720eb50c415815ae7ebe765d130",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k26": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k26.json",
       "sha256": "4fa00a632f3cb78277a338505b39d2be912ebb8189c423f8b9e17129f0786742",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     }
   },
   "elections": [
@@ -516,11 +568,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k1",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -545,11 +598,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k1",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -574,11 +628,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k1",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -664,11 +719,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k2",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -693,11 +749,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k2",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -722,11 +779,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k2",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -751,11 +809,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k2",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -842,11 +901,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k3",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -871,11 +931,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k3",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -900,11 +961,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k3",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -929,11 +991,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k3",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -1019,11 +1082,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k4",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -1048,11 +1112,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k4",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -1077,11 +1142,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k4",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -1106,11 +1172,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k4",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -1135,11 +1202,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k4",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -1154,7 +1222,8 @@
             "k4"
           ],
           "treatment": "review",
-          "reason": "YP 717 p.263 explicitly identifies an Arab list; omitted from the original editorial selection. Review candidate, not a verified ideological continuity claim."
+          "reason": "Not counted. The official results (Reshumot, Yalkut HaPirsumim 717, p. 263) name it as an Arab list, but this project has not yet placed it.",
+          "reasonHe": "לא נספרת. בתוצאות הרשמיות (רשומות, ילקוט הפרסומים 717, עמ׳ 263) היא מופיעה כרשימה ערבית, אך הפרויקט טרם שיבץ אותה."
         },
         {
           "listId": "4-שת",
@@ -1165,7 +1234,8 @@
             "k4"
           ],
           "treatment": "review",
-          "reason": "YP 717 p.263 explicitly identifies an Arab list; omitted from the original editorial selection. Review candidate, not a verified ideological continuity claim."
+          "reason": "Not counted. The official results (Reshumot, Yalkut HaPirsumim 717, p. 263) name it as an Arab list, but this project has not yet placed it.",
+          "reasonHe": "לא נספרת. בתוצאות הרשמיות (רשומות, ילקוט הפרסומים 717, עמ׳ 263) היא מופיעה כרשימה ערבית, אך הפרויקט טרם שיבץ אותה."
         }
       ],
       "computed": {
@@ -1248,11 +1318,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k5",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -1277,11 +1348,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k5",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -1306,11 +1378,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k5",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -1335,11 +1408,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k5",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -1425,11 +1499,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k6",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -1454,11 +1529,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k6",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -1483,11 +1559,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k6",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -1503,11 +1580,12 @@
           "treatment": "exclude-pending-or-contested",
           "evidenceStatus": "unresolved",
           "sourceIds": [
-            "proposal",
             "k6",
             "arab"
           ],
-          "reason": "Proposal marks this extension pending; no votes counted. Contemporary classification or boundary review required."
+          "reason": "Not counted: whether this list belongs here is still being checked.",
+          "projectReading": "proposal",
+          "reasonHe": "לא נספרת: עדיין בודקים אם הרשימה שייכת למשפחה הזאת."
         }
       ],
       "computed": {
@@ -1590,11 +1668,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k7",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -1619,11 +1698,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k7",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -1648,11 +1728,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k7",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -1668,11 +1749,12 @@
           "treatment": "exclude-pending-or-contested",
           "evidenceStatus": "unresolved",
           "sourceIds": [
-            "proposal",
             "k7",
             "arab"
           ],
-          "reason": "Proposal marks this extension pending; no votes counted. Contemporary classification or boundary review required."
+          "reason": "Not counted: whether this list belongs here is still being checked.",
+          "projectReading": "proposal",
+          "reasonHe": "לא נספרת: עדיין בודקים אם הרשימה שייכת למשפחה הזאת."
         }
       ],
       "computed": {
@@ -1759,11 +1841,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k8",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -1788,11 +1871,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k8",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -1817,11 +1901,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k8",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -1838,11 +1923,12 @@
           "treatment": "exclude-pending-or-contested",
           "evidenceStatus": "unresolved",
           "sourceIds": [
-            "proposal",
             "k8",
             "arab"
           ],
-          "reason": "Proposal marks this extension pending; no votes counted. Contemporary classification or boundary review required."
+          "reason": "Not counted: whether this list belongs here is still being checked.",
+          "projectReading": "proposal",
+          "reasonHe": "לא נספרת: עדיין בודקים אם הרשימה שייכת למשפחה הזאת."
         }
       ],
       "computed": {
@@ -1932,11 +2018,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k9",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -1961,11 +2048,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k9",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -1990,11 +2078,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k9",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -2083,11 +2172,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k10",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -2112,11 +2202,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k10",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -2204,11 +2295,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k11",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -2233,11 +2325,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k11",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -2325,11 +2418,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k12",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -2354,11 +2448,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k12",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -2383,11 +2478,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k12",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -2481,11 +2577,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k13",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -2510,11 +2607,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k13",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -2539,11 +2637,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k13",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -2633,11 +2732,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k14",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -2666,11 +2766,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k14",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -2695,11 +2796,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k14",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -2791,11 +2893,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k15",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -2820,11 +2923,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k15",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -2851,11 +2955,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k15",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -2880,11 +2985,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k15",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -2900,11 +3006,12 @@
           "treatment": "exclude-pending-or-contested",
           "evidenceStatus": "unresolved",
           "sourceIds": [
-            "proposal",
             "k15",
             "arab"
           ],
-          "reason": "Proposal marks this extension pending; no votes counted. Contemporary classification or boundary review required."
+          "reason": "Not counted: whether this list belongs here is still being checked.",
+          "projectReading": "proposal",
+          "reasonHe": "לא נספרת: עדיין בודקים אם הרשימה שייכת למשפחה הזאת."
         }
       ],
       "computed": {
@@ -2994,11 +3101,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k16",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -3023,11 +3131,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k16",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -3056,11 +3165,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k16",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -3156,11 +3266,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k17",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -3185,11 +3296,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k17",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -3214,11 +3326,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k17",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -3304,11 +3417,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k18",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -3333,11 +3447,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k18",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -3362,11 +3477,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k18",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -3391,11 +3507,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k18",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -3486,11 +3603,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k19",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -3515,11 +3633,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k19",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -3544,11 +3663,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k19",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -3573,11 +3693,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k19",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -3668,11 +3789,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k20",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -3701,11 +3823,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k20",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -3721,11 +3844,12 @@
           "treatment": "exclude-pending-or-contested",
           "evidenceStatus": "unresolved",
           "sourceIds": [
-            "proposal",
             "k20",
             "arab"
           ],
-          "reason": "Proposal marks this extension pending; no votes counted. Contemporary classification or boundary review required."
+          "reason": "Not counted: whether this list belongs here is still being checked.",
+          "projectReading": "proposal",
+          "reasonHe": "לא נספרת: עדיין בודקים אם הרשימה שייכת למשפחה הזאת."
         }
       ],
       "computed": {
@@ -3809,11 +3933,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k21",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -3840,11 +3965,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k21",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -3869,11 +3995,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k21",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -3898,11 +4025,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k21",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -3918,11 +4046,12 @@
           "treatment": "exclude-pending-or-contested",
           "evidenceStatus": "unresolved",
           "sourceIds": [
-            "proposal",
             "k21",
             "arab"
           ],
-          "reason": "Proposal marks this extension pending; no votes counted. Contemporary classification or boundary review required."
+          "reason": "Not counted: whether this list belongs here is still being checked.",
+          "projectReading": "proposal",
+          "reasonHe": "לא נספרת: עדיין בודקים אם הרשימה שייכת למשפחה הזאת."
         }
       ],
       "computed": {
@@ -4010,11 +4139,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k22",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -4039,11 +4169,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k22",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -4134,11 +4265,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k23",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -4163,11 +4295,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k23",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -4256,11 +4389,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k24",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -4285,11 +4419,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k24",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -4314,11 +4449,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k24",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -4403,11 +4539,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k25",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -4434,11 +4571,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k25",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -4463,11 +4601,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k25",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -4554,11 +4693,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k26",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -4587,11 +4727,12 @@
           "classificationEvidence": {
             "status": "inferred",
             "sourceIds": [
-              "proposal",
               "k26",
               "arab"
             ],
-            "claim": "Original editorial selection under Arab and Arab–Jewish lists; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Placed here by this project, from the sources below. The whole list counts.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -4607,11 +4748,12 @@
           "treatment": "exclude-pending-or-contested",
           "evidenceStatus": "unresolved",
           "sourceIds": [
-            "proposal",
             "k26",
             "arab"
           ],
-          "reason": "Proposal marks this extension pending; no votes counted. Contemporary classification or boundary review required."
+          "reason": "Not counted: whether this list belongs here is still being checked.",
+          "projectReading": "proposal",
+          "reasonHe": "לא נספרת: עדיין בודקים אם הרשימה שייכת למשפחה הזאת."
         },
         {
           "listId": "26-בד",
@@ -4623,11 +4765,12 @@
           "treatment": "exclude-pending-or-contested",
           "evidenceStatus": "unresolved",
           "sourceIds": [
-            "proposal",
             "k26",
             "arab"
           ],
-          "reason": "Proposal marks this extension pending; no votes counted. Contemporary classification or boundary review required."
+          "reason": "Not counted: whether this list belongs here is still being checked.",
+          "projectReading": "proposal",
+          "reasonHe": "לא נספרת: עדיין בודקים אם הרשימה שייכת למשפחה הזאת."
         }
       ],
       "computed": {
@@ -4669,7 +4812,11 @@
     }
   ],
   "limitations": [
-    "Draft inherits the source-scoped matrix review. Classification is inferred, never an official taxonomy.",
-    "Remaining minor-list identities and ideological boundaries require review; see reviewCandidates and registry conflicts."
+    "The grouping rests on the sources reviewed for this project. It is an interpretation, not an official classification.",
+    "Small lists whose identity is not settled, and borderline cases, still need checking; they are listed as excluded or contested."
+  ],
+  "limitationsHe": [
+    "הסיווג מבוסס על המקורות שנסקרו במחקר. הוא פרשנות, לא סיווג רשמי.",
+    "רשימות קטנות שזהותן לא הוכרעה, ומקרי גבול מבחינה רעיונית, עוד דורשים בדיקה; הם מפורטים ברשימת המקרים שהוצאו ובמחלוקות."
   ]
 }

@@ -7,7 +7,7 @@
   "labelHe": "חרדים",
   "nameHe": "מפלגות חרדיות — פרשנות היסטורית",
   "nameEn": "Haredi parties — historical interpretation",
-  "definition": "Organisational Haredi lineage: Aguda, Poalei Aguda, Degel, Shas and documented related lists. This measures ballots for selected lists, not the religion of voters. Separate self-description, contested extensions and mixed alliances.",
+  "definition": "Haredi parties: Agudat Yisrael, Poalei Agudat Yisrael, Degel HaTorah, Shas and lists the sources link to them. Lists are placed in this family by this project, from the sources below. A list can be in more than one family.",
   "defaultMixedPolicy": "separate-segment",
   "shareDenominator": "dataset.totals.valid",
   "rounding": "Exact integer votes and rational percent (100 * numerator / denominator); displayPct rounded to 6 decimals only.",
@@ -18,127 +18,145 @@
   "sources": {
     "aguda": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/agudat-israel/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Agudat Yisrael",
       "kind": "secondary",
       "accessed": "2026-11-04",
-      "support": "Party profile: Haredi identity and electoral history."
+      "support": "Party profile: Haredi identity and electoral history.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה: אגודת ישראל"
     },
     "pai": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/poalei-agudat-yisrael/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Poalei Agudat Yisrael",
       "kind": "secondary",
       "accessed": "2026-11-04",
-      "support": "Haredi workers party, independent runs and Religious Torah Front alliances."
+      "support": "Haredi workers party, independent runs and Religious Torah Front alliances.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה: פועלי אגודת ישראל"
     },
     "degel": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/degel-hatora/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Degel HaTorah",
       "kind": "secondary",
       "accessed": "2026-11-04",
-      "support": "Haredi party founded in 1988 following split with Aguda."
+      "support": "Haredi party founded in 1988 following split with Aguda.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה: דגל התורה"
     },
     "shas": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/shas/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Shas",
       "kind": "secondary",
       "accessed": "2026-11-04",
-      "support": "National party from 1984; Sephardi Haredi organisation, broader electorate."
+      "support": "National party from 1984; Sephardi Haredi organisation, broader electorate.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה: ש״ס"
     },
     "utj": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/united-torah-judaism/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: United Torah Judaism",
       "kind": "secondary",
       "accessed": "2026-11-04",
-      "support": "Alliance of Aguda and Degel from 1992."
+      "support": "Alliance of Aguda and Degel from 1992.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה: יהדות התורה"
     },
     "joint": {
       "url": "https://www.idi.org.il/articles/32955",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: joint lists, 1949–2021",
       "kind": "secondary",
       "accessed": "2026-11-04",
-      "support": "Election-specific joint-list constituent table, 1949–2021."
+      "support": "Election-specific joint-list constituent table, 1949–2021.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה: רשימות משותפות, 1949–2021"
     },
     "morasha": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/morasha/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Morasha",
       "kind": "secondary",
       "accessed": "2026-11-04",
-      "support": "1984 alliance of Matzad and Poalei Agudat Yisrael."
+      "support": "1984 alliance of Matzad and Poalei Agudat Yisrael.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה: מורשה"
     },
     "yachad": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/yachad/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Yachad",
       "kind": "secondary",
       "accessed": "2026-11-04",
-      "support": "Yachad itself bridges Sephardi Haredi and Hardal national religious groups."
+      "support": "Yachad itself bridges Sephardi Haredi and Hardal national religious groups.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה: יחד"
     },
     "shas-study": {
       "url": "https://www.idi.org.il/media/10320/a-flock-with-no-shepherd-shas-leadership-the-day-after-rabbi-ovadia-yosef.pdf",
-      "publisher": "Ettinger and Leon / IDI, 2018",
+      "publisher": "Israel Democracy Institute, Ettinger and Leon, 2018",
       "kind": "academic",
       "accessed": "2026-11-04",
-      "support": "PDF pp.35–36 (printed pp.109–110): Azran 1996, Ahavat Israel 2003, Am Shalem and Koach Lehashpia 2013."
+      "support": "PDF pp.35–36 (printed pp.109–110): Azran 1996, Ahavat Israel 2003, Am Shalem and Koach Lehashpia 2013.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה, אטינגר ולאון, 2018"
     },
     "geula": {
       "url": "https://www.jta.org/archive/the-israeli-elections-from-communists-to-cab-drivers-array-of-choices-awaits-voters",
-      "publisher": "JTA, 1992",
+      "publisher": "Jewish Telegraphic Agency, 1992",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Geulat Yisrael is an ultra-Orthodox list led by Eliezer Mizrachi; opened with required User-Agent."
     },
     "kn-splits": {
       "url": "https://main.knesset.gov.il/en/mk/apps/faction/general/split-merge",
-      "publisher": "Knesset",
+      "publisher": "Knesset: faction splits and mergers",
       "kind": "official",
       "accessed": "2026-11-04",
-      "support": "Geulat Yisrael split from Aguda. Parliamentary events do not allocate election votes."
+      "support": "Geulat Yisrael split from Aguda. Parliamentary events do not allocate election votes.",
+      "publisherHe": "הכנסת: פילוגים ואיחודים של סיעות"
     },
     "yishai": {
       "url": "https://library.mevaker.gov.il/sites/DigitalLibrary/Pages/Reports/2359-1.aspx",
       "publisher": "State Comptroller",
       "kind": "official",
       "accessed": "2026-11-04",
-      "support": "1988 Yishai led by Shimon Ben-Shlomo; lineage interpretation requires separate evidence."
+      "support": "1988 Yishai led by Shimon Ben-Shlomo; lineage interpretation requires separate evidence.",
+      "publisherHe": "מבקר המדינה"
     },
     "haredi-society": {
       "url": "https://en.idi.org.il/articles/52891",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute",
       "kind": "secondary",
       "accessed": "2026-11-04",
-      "support": "Aguda, Degel and Shas identified as parties of main Haredi communities."
+      "support": "Aguda, Degel and Shas identified as parties of main Haredi communities.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה"
     },
     "power2009": {
       "url": "https://www.walla.co.il/news/israel/1416821",
-      "publisher": "Walla, 2009-01-13",
+      "publisher": "Walla News, 13 January 2009",
       "kind": "secondary",
       "accessed": "2026-11-04",
-      "support": "2009 Koach Lehashpia campaigns on disability rights; do not infer 2013 identity from name."
+      "support": "2009 Koach Lehashpia campaigns on disability rights; do not infer 2013 identity from name.",
+      "publisherHe": "וואלה חדשות, 13 בינואר 2009"
     },
     "cec26": {
       "url": "https://www.gov.il/he/pages/candidates-lists-26",
-      "publisher": "CEC; retained extraction in data/raw/k26/govil-list-pages.exa.json",
+      "publisher": "Central Elections Committee: candidate lists, 2026",
       "kind": "official",
       "accessed": "2026-11-04",
-      "support": "2026 registered names and sponsoring parties. Self-description is evidence of claim, not external validation."
+      "support": "2026 registered names and sponsoring parties. Self-description is evidence of claim, not external validation.",
+      "publisherHe": "ועדת הבחירות המרכזית: רשימות המועמדים, 2026"
     },
     "local-dataset": {
       "kind": "repository-dataset",
       "locator": "public/data/k{n}.json; data/raw/SOURCES.json",
-      "support": "Registered names, votes and sponsor fields only; not external ideological validation."
+      "support": "Registered names, votes and sponsor fields only; not external ideological validation.",
+      "publisher": "Official results, Central Elections Committee",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "yishai-lineage": {
       "url": "https://www.idi.org.il/media/17403/political-parties-in-israel-draft.pdf?isExternal=true",
-      "publisher": "Kenig and Rahat / IDI, draft of Parties in Israel 1992–2021",
+      "publisher": "Israel Democracy Institute, Ofer Kenig and Gideon Rahat, Parties in Israel 1992–2021 (draft)",
       "kind": "academic",
       "accessed": "2026-11-04",
-      "support": "PDF p.230 (printed 231), Shas chapter: Shimon Ben-Shlomo left Shas and ran Yishai in 1988, presenting it as representing Yemenite Jews. This proves ancestry, not a universal Haredi label."
+      "support": "PDF p.230 (printed 231), Shas chapter: Shimon Ben-Shlomo left Shas and ran Yishai in 1988, presenting it as representing Yemenite Jews. This proves ancestry, not a universal Haredi label.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה, עופר קניג וגדעון רהט, המפלגות בישראל 1992–2021 (טיוטה)"
     },
     "noam-hardal": {
       "url": "https://en.idi.org.il/articles/31683",
-      "publisher": "Yair Sheleg / IDI, 2020-10-15",
+      "publisher": "Israel Democracy Institute, Yair Sheleg, 15 October 2020",
       "kind": "secondary",
       "accessed": "2026-11-04",
-      "support": "Author identifies Noam as the party put forward by the Hardal current; editorial commentary rather than official taxonomy."
+      "support": "Author identifies Noam as the party put forward by the Hardal current; editorial commentary rather than official taxonomy.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה, יאיר שלג, 15 באוקטובר 2020"
     }
   },
   "elections": [
@@ -189,7 +207,8 @@
               "haredi-society",
               "local-dataset"
             ],
-            "claim": "Official registered list name explicitly says Haredim; inclusion is editorial, organisational ancestry unverified."
+            "claim": "Placed here by this project, from the sources below. Its registered name says Haredim; a link to earlier Haredi parties is not confirmed.",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. בשמה הרשום מופיעה המילה חרדים; קשר למפלגות חרדיות קודמות לא אומת."
           },
           "constituentVotes": null
         },
@@ -223,7 +242,8 @@
               "aguda",
               "pai"
             ],
-            "claim": "United Religious Front also includes Mizrachi and Hapoel HaMizrachi; local metadata additionally has non-party-religious-union."
+            "claim": "The United Religious Front also included Mizrachi, Hapoel HaMizrachi and non-party religious members, so this is a mixed list.",
+            "claimHe": "בחזית הדתית המאוחדת היו גם המזרחי, הפועל המזרחי ודתיים בלתי מפלגתיים, ולכן זו רשימה מעורבת."
           },
           "constituentVotes": null
         }
@@ -238,7 +258,8 @@
           "sourceIds": [
             "local-dataset"
           ],
-          "reason": "Traditional Judaism: name alone does not establish Haredi organisation."
+          "reason": "Not counted: its name alone does not show that it is a Haredi party.",
+          "reasonHe": "לא נספרת: השם לבדו אינו מעיד שזו מפלגה חרדית."
         },
         {
           "listId": "1-פד",
@@ -249,7 +270,8 @@
           "sourceIds": [
             "local-dataset"
           ],
-          "reason": "Religious or Jerusalem-focused label is insufficient evidence of Haredi organisational membership; review before any exhaustive religious-family classification."
+          "reason": "Not counted: a religious or Jerusalem name alone does not show that it is a Haredi party.",
+          "reasonHe": "לא נספרת: שם דתי או ירושלמי לבדו אינו מעיד שזו מפלגה חרדית."
         },
         {
           "listId": "1-ש",
@@ -260,7 +282,8 @@
           "sourceIds": [
             "local-dataset"
           ],
-          "reason": "Religious or Jerusalem-focused label is insufficient evidence of Haredi organisational membership; review before any exhaustive religious-family classification."
+          "reason": "Not counted: a religious or Jerusalem name alone does not show that it is a Haredi party.",
+          "reasonHe": "לא נספרת: שם דתי או ירושלמי לבדו אינו מעיד שזו מפלגה חרדית."
         },
         {
           "listId": "1-ט",
@@ -271,7 +294,8 @@
           "sourceIds": [
             "local-dataset"
           ],
-          "reason": "Religious or Jerusalem-focused label is insufficient evidence of Haredi organisational membership; review before any exhaustive religious-family classification."
+          "reason": "Not counted: a religious or Jerusalem name alone does not show that it is a Haredi party.",
+          "reasonHe": "לא נספרת: שם דתי או ירושלמי לבדו אינו מעיד שזו מפלגה חרדית."
         }
       ],
       "computed": {
@@ -349,7 +373,8 @@
             "sourceIds": [
               "aguda"
             ],
-            "claim": "Independent Aguda run."
+            "claim": "Agudat Yisrael ran on its own.",
+            "claimHe": "אגודת ישראל התמודדה לבדה."
           },
           "constituentVotes": null
         },
@@ -376,7 +401,8 @@
             "sourceIds": [
               "pai"
             ],
-            "claim": "Independent Poalei Aguda run; includes below-threshold 1981."
+            "claim": "Poalei Agudat Yisrael ran on its own.",
+            "claimHe": "פועלי אגודת ישראל התמודדה לבדה."
           },
           "constituentVotes": null
         }
@@ -468,7 +494,8 @@
               "pai",
               "joint"
             ],
-            "claim": "Religious Torah Front, both constituents in family; whole list counted once."
+            "claim": "Religious Torah Front: both its parties, Agudat Yisrael and Poalei Agudat Yisrael, are in this family, so the whole list counts once.",
+            "claimHe": "חזית דתית תורתית: שתי מפלגותיה, אגודת ישראל ופועלי אגודת ישראל, במשפחה הזאת, ולכן הרשימה כולה נספרת פעם אחת."
           },
           "constituentVotes": null
         }
@@ -559,7 +586,8 @@
               "pai",
               "joint"
             ],
-            "claim": "Religious Torah Front, both constituents in family; whole list counted once."
+            "claim": "Religious Torah Front: both its parties, Agudat Yisrael and Poalei Agudat Yisrael, are in this family, so the whole list counts once.",
+            "claimHe": "חזית דתית תורתית: שתי מפלגותיה, אגודת ישראל ופועלי אגודת ישראל, במשפחה הזאת, ולכן הרשימה כולה נספרת פעם אחת."
           },
           "constituentVotes": null
         }
@@ -647,7 +675,8 @@
             "sourceIds": [
               "aguda"
             ],
-            "claim": "Independent Aguda run."
+            "claim": "Agudat Yisrael ran on its own.",
+            "claimHe": "אגודת ישראל התמודדה לבדה."
           },
           "constituentVotes": null
         },
@@ -674,7 +703,8 @@
             "sourceIds": [
               "pai"
             ],
-            "claim": "Independent Poalei Aguda run; includes below-threshold 1981."
+            "claim": "Poalei Agudat Yisrael ran on its own.",
+            "claimHe": "פועלי אגודת ישראל התמודדה לבדה."
           },
           "constituentVotes": null
         }
@@ -762,7 +792,8 @@
             "sourceIds": [
               "aguda"
             ],
-            "claim": "Independent Aguda run."
+            "claim": "Agudat Yisrael ran on its own.",
+            "claimHe": "אגודת ישראל התמודדה לבדה."
           },
           "constituentVotes": null
         },
@@ -789,7 +820,8 @@
             "sourceIds": [
               "pai"
             ],
-            "claim": "Independent Poalei Aguda run; includes below-threshold 1981."
+            "claim": "Poalei Agudat Yisrael ran on its own.",
+            "claimHe": "פועלי אגודת ישראל התמודדה לבדה."
           },
           "constituentVotes": null
         }
@@ -877,7 +909,8 @@
             "sourceIds": [
               "aguda"
             ],
-            "claim": "Independent Aguda run."
+            "claim": "Agudat Yisrael ran on its own.",
+            "claimHe": "אגודת ישראל התמודדה לבדה."
           },
           "constituentVotes": null
         },
@@ -904,7 +937,8 @@
             "sourceIds": [
               "pai"
             ],
-            "claim": "Independent Poalei Aguda run; includes below-threshold 1981."
+            "claim": "Poalei Agudat Yisrael ran on its own.",
+            "claimHe": "פועלי אגודת ישראל התמודדה לבדה."
           },
           "constituentVotes": null
         }
@@ -999,7 +1033,8 @@
               "pai",
               "joint"
             ],
-            "claim": "Religious Torah Front, both constituents in family; whole list counted once."
+            "claim": "Religious Torah Front: both its parties, Agudat Yisrael and Poalei Agudat Yisrael, are in this family, so the whole list counts once.",
+            "claimHe": "חזית דתית תורתית: שתי מפלגותיה, אגודת ישראל ופועלי אגודת ישראל, במשפחה הזאת, ולכן הרשימה כולה נספרת פעם אחת."
           },
           "constituentVotes": null
         }
@@ -1090,7 +1125,8 @@
             "sourceIds": [
               "aguda"
             ],
-            "claim": "Independent Aguda run."
+            "claim": "Agudat Yisrael ran on its own.",
+            "claimHe": "אגודת ישראל התמודדה לבדה."
           },
           "constituentVotes": null
         },
@@ -1117,7 +1153,8 @@
             "sourceIds": [
               "pai"
             ],
-            "claim": "Independent Poalei Aguda run; includes below-threshold 1981."
+            "claim": "Poalei Agudat Yisrael ran on its own.",
+            "claimHe": "פועלי אגודת ישראל התמודדה לבדה."
           },
           "constituentVotes": null
         }
@@ -1206,7 +1243,8 @@
             "sourceIds": [
               "aguda"
             ],
-            "claim": "Independent Aguda run."
+            "claim": "Agudat Yisrael ran on its own.",
+            "claimHe": "אגודת ישראל התמודדה לבדה."
           },
           "constituentVotes": null
         },
@@ -1233,7 +1271,8 @@
             "sourceIds": [
               "pai"
             ],
-            "claim": "Independent Poalei Aguda run; includes below-threshold 1981."
+            "claim": "Poalei Agudat Yisrael ran on its own and did not pass the threshold.",
+            "claimHe": "פועלי אגודת ישראל התמודדה לבדה ולא עברה את אחוז החסימה."
           },
           "constituentVotes": null
         }
@@ -1322,7 +1361,8 @@
               "aguda",
               "joint"
             ],
-            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+            "claim": "Agudat Yisrael / United Torah Judaism: the whole list counts once.",
+            "claimHe": "אגודת ישראל / יהדות התורה: הרשימה כולה נספרת פעם אחת."
           },
           "constituentVotes": null
         },
@@ -1350,7 +1390,8 @@
               "shas",
               "haredi-society"
             ],
-            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+            "claim": "Shas is a Sephardi Haredi party; this says nothing about its voters.",
+            "claimHe": "ש״ס היא מפלגה חרדית ספרדית; אין בכך קביעה על מצביעיה."
           },
           "constituentVotes": null
         },
@@ -1378,7 +1419,8 @@
             "sourceIds": [
               "morasha"
             ],
-            "claim": "Morasha also contains national religious Matzad."
+            "claim": "Morasha also included Matzad, a religious Zionist party, so this is a mixed list.",
+            "claimHe": "במורשה הייתה גם מצ״ד, מפלגה דתית־לאומית, ולכן זו רשימה מעורבת."
           },
           "constituentVotes": null
         }
@@ -1469,7 +1511,8 @@
               "aguda",
               "joint"
             ],
-            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+            "claim": "Agudat Yisrael / United Torah Judaism: the whole list counts once.",
+            "claimHe": "אגודת ישראל / יהדות התורה: הרשימה כולה נספרת פעם אחת."
           },
           "constituentVotes": null
         },
@@ -1497,7 +1540,8 @@
               "shas",
               "haredi-society"
             ],
-            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+            "claim": "Shas is a Sephardi Haredi party; this says nothing about its voters.",
+            "claimHe": "ש״ס היא מפלגה חרדית ספרדית; אין בכך קביעה על מצביעיה."
           },
           "constituentVotes": null
         },
@@ -1524,7 +1568,8 @@
             "sourceIds": [
               "degel"
             ],
-            "claim": "Independent Degel run."
+            "claim": "Degel HaTorah ran on its own.",
+            "claimHe": "דגל התורה התמודדה לבדה."
           },
           "constituentVotes": null
         },
@@ -1552,7 +1597,8 @@
               "yishai",
               "yishai-lineage"
             ],
-            "claim": "Former Shas representative Shimon Ben-Shlomo; included as a Shas-offshoot interpretation, not the similarly named local list."
+            "claim": "Placed here by this project, from the sources below. Led by Shimon Ben-Shlomo after he left Shas.",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. בראשות שמעון בן־שלמה, לאחר שפרש מש״ס."
           },
           "constituentVotes": null
         }
@@ -1653,7 +1699,8 @@
               "utj",
               "haredi-society"
             ],
-            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+            "claim": "Agudat Yisrael / United Torah Judaism: the whole list counts once.",
+            "claimHe": "אגודת ישראל / יהדות התורה: הרשימה כולה נספרת פעם אחת."
           },
           "constituentVotes": null
         },
@@ -1681,7 +1728,8 @@
               "shas",
               "haredi-society"
             ],
-            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+            "claim": "Shas is a Sephardi Haredi party; this says nothing about its voters.",
+            "claimHe": "ש״ס היא מפלגה חרדית ספרדית; אין בכך קביעה על מצביעיה."
           },
           "constituentVotes": null
         },
@@ -1709,7 +1757,8 @@
               "geula",
               "kn-splits"
             ],
-            "claim": "Haredi Aguda offshoot."
+            "claim": "A Haredi list that split from Agudat Yisrael.",
+            "claimHe": "רשימה חרדית שפרשה מאגודת ישראל."
           },
           "constituentVotes": null
         }
@@ -1802,7 +1851,8 @@
               "utj",
               "haredi-society"
             ],
-            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+            "claim": "Agudat Yisrael / United Torah Judaism: the whole list counts once.",
+            "claimHe": "אגודת ישראל / יהדות התורה: הרשימה כולה נספרת פעם אחת."
           },
           "constituentVotes": null
         },
@@ -1830,7 +1880,8 @@
               "shas",
               "haredi-society"
             ],
-            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+            "claim": "Shas is a Sephardi Haredi party; this says nothing about its voters.",
+            "claimHe": "ש״ס היא מפלגה חרדית ספרדית; אין בכך קביעה על מצביעיה."
           },
           "constituentVotes": null
         },
@@ -1857,7 +1908,8 @@
             "sourceIds": [
               "shas-study"
             ],
-            "claim": "Yosef Azran Haredi-Mizrahi offshoot; identity matched to the dataset list name."
+            "claim": "Led by Yosef Azran after he left Shas; a Haredi list with Mizrahi roots.",
+            "claimHe": "בראשות יוסף עזרן, לאחר שפרש מש״ס; רשימה חרדית מזרחית."
           },
           "constituentVotes": null
         }
@@ -1950,7 +2002,8 @@
               "utj",
               "haredi-society"
             ],
-            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+            "claim": "Agudat Yisrael / United Torah Judaism: the whole list counts once.",
+            "claimHe": "אגודת ישראל / יהדות התורה: הרשימה כולה נספרת פעם אחת."
           },
           "constituentVotes": null
         },
@@ -1978,7 +2031,8 @@
               "shas",
               "haredi-society"
             ],
-            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+            "claim": "Shas is a Sephardi Haredi party; this says nothing about its voters.",
+            "claimHe": "ש״ס היא מפלגה חרדית ספרדית; אין בכך קביעה על מצביעיה."
           },
           "constituentVotes": null
         }
@@ -2074,7 +2128,8 @@
               "utj",
               "haredi-society"
             ],
-            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+            "claim": "Agudat Yisrael / United Torah Judaism: the whole list counts once.",
+            "claimHe": "אגודת ישראל / יהדות התורה: הרשימה כולה נספרת פעם אחת."
           },
           "constituentVotes": null
         },
@@ -2102,7 +2157,8 @@
               "shas",
               "haredi-society"
             ],
-            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+            "claim": "Shas is a Sephardi Haredi party; this says nothing about its voters.",
+            "claimHe": "ש״ס היא מפלגה חרדית ספרדית; אין בכך קביעה על מצביעיה."
           },
           "constituentVotes": null
         },
@@ -2129,7 +2185,8 @@
             "sourceIds": [
               "shas-study"
             ],
-            "claim": "Kaduri-linked Shas challenger."
+            "claim": "A list organised around Rabbi Yitzhak Kaduri that ran against Shas.",
+            "claimHe": "רשימה שהתארגנה סביב הרב יצחק כדורי והתמודדה מול ש״ס."
           },
           "constituentVotes": null
         }
@@ -2224,7 +2281,8 @@
               "utj",
               "haredi-society"
             ],
-            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+            "claim": "Agudat Yisrael / United Torah Judaism: the whole list counts once.",
+            "claimHe": "אגודת ישראל / יהדות התורה: הרשימה כולה נספרת פעם אחת."
           },
           "constituentVotes": null
         },
@@ -2252,7 +2310,8 @@
               "shas",
               "haredi-society"
             ],
-            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+            "claim": "Shas is a Sephardi Haredi party; this says nothing about its voters.",
+            "claimHe": "ש״ס היא מפלגה חרדית ספרדית; אין בכך קביעה על מצביעיה."
           },
           "constituentVotes": null
         }
@@ -2341,7 +2400,8 @@
               "utj",
               "haredi-society"
             ],
-            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+            "claim": "Agudat Yisrael / United Torah Judaism: the whole list counts once.",
+            "claimHe": "אגודת ישראל / יהדות התורה: הרשימה כולה נספרת פעם אחת."
           },
           "constituentVotes": null
         },
@@ -2369,7 +2429,8 @@
               "shas",
               "haredi-society"
             ],
-            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+            "claim": "Shas is a Sephardi Haredi party; this says nothing about its voters.",
+            "claimHe": "ש״ס היא מפלגה חרדית ספרדית; אין בכך קביעה על מצביעיה."
           },
           "constituentVotes": null
         }
@@ -2383,7 +2444,8 @@
           "sourceIds": [
             "power2009"
           ],
-          "reason": "Disability-rights list; name alone does not establish identity with 2013."
+          "reason": "Not counted: a disability-rights list. Sharing a name with the 2013 list does not make them one party.",
+          "reasonHe": "לא נספרת: רשימה למען זכויות אנשים עם מוגבלות. השם המשותף לרשימה של 2013 אינו הופך אותן למפלגה אחת."
         }
       ],
       "computed": {
@@ -2470,7 +2532,8 @@
               "utj",
               "haredi-society"
             ],
-            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+            "claim": "Agudat Yisrael / United Torah Judaism: the whole list counts once.",
+            "claimHe": "אגודת ישראל / יהדות התורה: הרשימה כולה נספרת פעם אחת."
           },
           "constituentVotes": null
         },
@@ -2498,7 +2561,8 @@
               "shas",
               "haredi-society"
             ],
-            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+            "claim": "Shas is a Sephardi Haredi party; this says nothing about its voters.",
+            "claimHe": "ש״ס היא מפלגה חרדית ספרדית; אין בכך קביעה על מצביעיה."
           },
           "constituentVotes": null
         },
@@ -2525,7 +2589,8 @@
             "sourceIds": [
               "shas-study"
             ],
-            "claim": "Amnon Yitzhak list; distinct from 2009."
+            "claim": "Rabbi Amnon Yitzhak’s list; not the list of the same name in 2009.",
+            "claimHe": "הרשימה של הרב אמנון יצחק; לא הרשימה באותו שם ב־2009."
           },
           "constituentVotes": null
         }
@@ -2540,7 +2605,8 @@
           "sourceIds": [
             "shas-study"
           ],
-          "reason": "Am Shalem: Shas ancestry documented, but self-consciously challenges Haredi establishment; excluded from organisational preset, optional Shas-lineage extension."
+          "reason": "Not counted. Am Shalem came out of Shas but set itself against the Haredi leadership. It can be added in Edit membership.",
+          "reasonHe": "לא נספרת. עם שלם יצאה מש״ס, אך התייצבה מול ההנהגה החרדית. אפשר להוסיף אותה בעריכת חברות."
         },
         {
           "listId": "19-פץ",
@@ -2551,7 +2617,8 @@
           "sourceIds": [
             "local-dataset"
           ],
-          "reason": "Na Nach: Breslov association is not enough to establish organisational membership; optional broader religious-subculture preset."
+          "reason": "Not counted: the list’s link to Breslov Hasidism is not enough to make it a Haredi party.",
+          "reasonHe": "לא נספרת: הקשר של הרשימה לחסידות ברסלב אינו מספיק כדי לראות בה מפלגה חרדית."
         }
       ],
       "computed": {
@@ -2638,7 +2705,8 @@
               "utj",
               "haredi-society"
             ],
-            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+            "claim": "Agudat Yisrael / United Torah Judaism: the whole list counts once.",
+            "claimHe": "אגודת ישראל / יהדות התורה: הרשימה כולה נספרת פעם אחת."
           },
           "constituentVotes": null
         },
@@ -2666,7 +2734,8 @@
               "shas",
               "haredi-society"
             ],
-            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+            "claim": "Shas is a Sephardi Haredi party; this says nothing about its voters.",
+            "claimHe": "ש״ס היא מפלגה חרדית ספרדית; אין בכך קביעה על מצביעיה."
           },
           "constituentVotes": null
         },
@@ -2694,7 +2763,8 @@
               "haredi-society",
               "local-dataset"
             ],
-            "claim": "Registered name says Haredi women making change; include independently of establishment recognition."
+            "claim": "Placed here by this project, from the sources below. Its registered name says it is a list of Haredi women; it counts whether or not the Haredi leadership accepts it.",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. בשמה הרשום היא רשימה של נשים חרדיות; היא נספרת בין שההנהגה החרדית מקבלת אותה ובין שלא."
           },
           "constituentVotes": null
         },
@@ -2722,7 +2792,8 @@
             "sourceIds": [
               "yachad"
             ],
-            "claim": "Yachad bridges Haredi and Hardal constituencies and jointly runs with Otzma Yehudit; all votes indivisible."
+            "claim": "Yachad drew Haredi and Hardal (Haredi-nationalist) voters and ran together with Otzma Yehudit, so this is a mixed list.",
+            "claimHe": "יחד פנתה לחרדים ולחרד״לים והתמודדה יחד עם עוצמה יהודית, ולכן זו רשימה מעורבת."
           },
           "constituentVotes": null
         }
@@ -2737,7 +2808,8 @@
           "sourceIds": [
             "local-dataset"
           ],
-          "reason": "Na Nach: same unresolved organisational boundary."
+          "reason": "Not counted: the list’s link to Breslov Hasidism is not enough to make it a Haredi party.",
+          "reasonHe": "לא נספרת: הקשר של הרשימה לחסידות ברסלב אינו מספיק כדי לראות בה מפלגה חרדית."
         }
       ],
       "computed": {
@@ -2824,7 +2896,8 @@
               "utj",
               "haredi-society"
             ],
-            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+            "claim": "Agudat Yisrael / United Torah Judaism: the whole list counts once.",
+            "claimHe": "אגודת ישראל / יהדות התורה: הרשימה כולה נספרת פעם אחת."
           },
           "constituentVotes": null
         },
@@ -2852,7 +2925,8 @@
               "shas",
               "haredi-society"
             ],
-            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+            "claim": "Shas is a Sephardi Haredi party; this says nothing about its voters.",
+            "claimHe": "ש״ס היא מפלגה חרדית ספרדית; אין בכך קביעה על מצביעיה."
           },
           "constituentVotes": null
         }
@@ -2867,7 +2941,8 @@
           "sourceIds": [
             "local-dataset"
           ],
-          "reason": "Na Nach: same unresolved organisational boundary."
+          "reason": "Not counted: the list’s link to Breslov Hasidism is not enough to make it a Haredi party.",
+          "reasonHe": "לא נספרת: הקשר של הרשימה לחסידות ברסלב אינו מספיק כדי לראות בה מפלגה חרדית."
         },
         {
           "listId": "21-זנ",
@@ -2878,7 +2953,8 @@
           "sourceIds": [
             "local-dataset"
           ],
-          "reason": "Yachad withdrawn; zero votes, no redistribution to UTJ assumed."
+          "reason": "Not counted: Yachad withdrew before the vote and got no votes. Nothing is moved to United Torah Judaism.",
+          "reasonHe": "לא נספרת: יחד פרשה לפני הבחירות ולא קיבלה קולות. דבר אינו מועבר ליהדות התורה."
         }
       ],
       "computed": {
@@ -2965,7 +3041,8 @@
               "utj",
               "haredi-society"
             ],
-            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+            "claim": "Agudat Yisrael / United Torah Judaism: the whole list counts once.",
+            "claimHe": "אגודת ישראל / יהדות התורה: הרשימה כולה נספרת פעם אחת."
           },
           "constituentVotes": null
         },
@@ -2993,7 +3070,8 @@
               "shas",
               "haredi-society"
             ],
-            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+            "claim": "Shas is a Sephardi Haredi party; this says nothing about its voters.",
+            "claimHe": "ש״ס היא מפלגה חרדית ספרדית; אין בכך קביעה על מצביעיה."
           },
           "constituentVotes": null
         }
@@ -3083,7 +3161,8 @@
               "utj",
               "haredi-society"
             ],
-            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+            "claim": "Agudat Yisrael / United Torah Judaism: the whole list counts once.",
+            "claimHe": "אגודת ישראל / יהדות התורה: הרשימה כולה נספרת פעם אחת."
           },
           "constituentVotes": null
         },
@@ -3111,7 +3190,8 @@
               "shas",
               "haredi-society"
             ],
-            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+            "claim": "Shas is a Sephardi Haredi party; this says nothing about its voters.",
+            "claimHe": "ש״ס היא מפלגה חרדית ספרדית; אין בכך קביעה על מצביעיה."
           },
           "constituentVotes": null
         }
@@ -3201,7 +3281,8 @@
               "utj",
               "haredi-society"
             ],
-            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+            "claim": "Agudat Yisrael / United Torah Judaism: the whole list counts once.",
+            "claimHe": "אגודת ישראל / יהדות התורה: הרשימה כולה נספרת פעם אחת."
           },
           "constituentVotes": null
         },
@@ -3229,7 +3310,8 @@
               "shas",
               "haredi-society"
             ],
-            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+            "claim": "Shas is a Sephardi Haredi party; this says nothing about its voters.",
+            "claimHe": "ש״ס היא מפלגה חרדית ספרדית; אין בכך קביעה על מצביעיה."
           },
           "constituentVotes": null
         }
@@ -3244,7 +3326,8 @@
           "sourceIds": [
             "shas-study"
           ],
-          "reason": "Am Shalem: contested extension; do not equate Shas ancestry with unchanged Haredi character."
+          "reason": "Not counted: Am Shalem came out of Shas, but that alone does not make it Haredi.",
+          "reasonHe": "לא נספרת: עם שלם יצאה מש״ס, אך אין בכך לבדו כדי לקבוע שהיא חרדית."
         }
       ],
       "computed": {
@@ -3331,7 +3414,8 @@
               "utj",
               "haredi-society"
             ],
-            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+            "claim": "Agudat Yisrael / United Torah Judaism: the whole list counts once.",
+            "claimHe": "אגודת ישראל / יהדות התורה: הרשימה כולה נספרת פעם אחת."
           },
           "constituentVotes": null
         },
@@ -3359,7 +3443,8 @@
               "shas",
               "haredi-society"
             ],
-            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+            "claim": "Shas is a Sephardi Haredi party; this says nothing about its voters.",
+            "claimHe": "ש״ס היא מפלגה חרדית ספרדית; אין בכך קביעה על מצביעיה."
           },
           "constituentVotes": null
         }
@@ -3454,7 +3539,8 @@
               "haredi-society",
               "cec26"
             ],
-            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+            "claim": "Agudat Yisrael / United Torah Judaism: the whole list counts once.",
+            "claimHe": "אגודת ישראל / יהדות התורה: הרשימה כולה נספרת פעם אחת."
           },
           "constituentVotes": null
         },
@@ -3482,7 +3568,8 @@
               "shas",
               "haredi-society"
             ],
-            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+            "claim": "Shas is a Sephardi Haredi party; this says nothing about its voters.",
+            "claimHe": "ש״ס היא מפלגה חרדית ספרדית; אין בכך קביעה על מצביעיה."
           },
           "constituentVotes": null
         },
@@ -3510,7 +3597,8 @@
               "cec26",
               "local-dataset"
             ],
-            "claim": "Registered name explicitly says Haredi public; no unverified predecessor asserted."
+            "claim": "Placed here by this project, from the sources below. Its registered name says it speaks for the Haredi public. No earlier party is linked to it.",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. בשמה הרשום היא מציגה את עצמה כרשימה של הציבור החרדי. לא קושרה אליה מפלגה קודמת."
           },
           "constituentVotes": null
         },
@@ -3538,7 +3626,8 @@
               "cec26",
               "local-dataset"
             ],
-            "claim": "Registered name explicitly says general Haredi party; sponsor is Machane Israel, not a proved historic continuity."
+            "claim": "Placed here by this project, from the sources below. Its registered name calls it a general Haredi party. Machane Israel submitted it; no link to an earlier party is shown.",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. בשמה הרשום היא מוגדרת מפלגה כלל־חרדית. מחנה ישראל הגישה אותה; לא הוכח קשר למפלגה קודמת."
           },
           "constituentVotes": null
         }
@@ -3553,7 +3642,8 @@
           "sourceIds": [
             "local-dataset"
           ],
-          "reason": "Black Colour / protector of Torah world: suggestive name, insufficient independent classification; uncounted review candidate."
+          "reason": "Not counted: its name suggests a Haredi list, but no independent source places it.",
+          "reasonHe": "לא נספרת: שמה מרמז על רשימה חרדית, אך אין מקור בלתי תלוי שמשבץ אותה."
         },
         {
           "listId": "26-צבי",
@@ -3564,7 +3654,8 @@
           "sourceIds": [
             "local-dataset"
           ],
-          "reason": "Achi: withdrawn, zero votes; no automatic relation to the national religious ahi id."
+          "reason": "Not counted: Achi withdrew and got no votes. It is not taken to be Ahi, the religious Zionist party.",
+          "reasonHe": "לא נספרת: אחי פרשה ולא קיבלה קולות. אין להניח שהיא אח״י, המפלגה הדתית־לאומית."
         },
         {
           "listId": "26-ני",
@@ -3576,7 +3667,8 @@
             "noam-hardal",
             "local-dataset"
           ],
-          "reason": "IDI identifies Noam with Hardal national religious politics; treating the 2026 alliance as Haredi is not implied by the Hardal label. Excluded by editorial rule."
+          "reason": "Not counted: the Israel Democracy Institute links Noam to the Hardal (Haredi-nationalist) stream of religious Zionism; that does not make its 2026 list Haredi.",
+          "reasonHe": "לא נספרת: המכון הישראלי לדמוקרטיה מקשר את נעם לזרם החרד״לי בציונות הדתית; אין בכך כדי להפוך את הרשימה שלה ב־2026 לחרדית."
         }
       ],
       "computed": {
@@ -3618,11 +3710,16 @@
     }
   ],
   "limitations": [
-    "All k1–k26 files inspected; no assertion of exhaustive ideological classification of every minor list. Candidates requiring more evidence are explicitly recorded, not silently included.",
-    "1949 has no separable vote total for Aguda/Poalei Aguda; core-only votes are null, not zero.",
-    "k26 uses the CEC official final results, gazetted in Yalkut HaPirsumim 15100 (4 November 2026).",
-    "Existing constituent ids are preserved even where roster completeness is uncertain. Proposed singleton ids do not yet exist in public datasets.",
-    "proposedPartyIds means ids requiring a list appearance mapping, including existing canonical ids missing from this singleton list; it does not mean every id is new to the project."
+    "All 26 elections were checked, but not every small list has been classified. Lists that need more evidence are listed separately and not counted.",
+    "In 1949 there is no separate vote count for Agudat Yisrael and Poalei Agudat Yisrael: their own votes are unknown, not zero.",
+    "The 2026 figures are the Central Elections Committee’s final official results, as published in Reshumot (Yalkut HaPirsumim 15100, 4 November 2026).",
+    "Parties already recorded on a list stay there even where it is not clear that the candidate list is complete."
   ],
-  "definitionHe": "שושלות ארגוניות חרדיות: אגודת ישראל, פועלי אגודת ישראל, דגל התורה, ש״ס ורשימות קשורות מתועדות. נספרים פתקים לרשימות נבחרות, לא דתם של המצביעים. בריתות מעורבות מוצגות בנפרד."
+  "definitionHe": "מפלגות חרדיות: אגודת ישראל, פועלי אגודת ישראל, דגל התורה, ש״ס ורשימות שהמקורות קושרים אליהן. הפרויקט שיבץ את הרשימות במשפחה הזאת לפי המקורות שלהלן. רשימה יכולה להיות ביותר ממשפחה אחת.",
+  "limitationsHe": [
+    "נבדקו נתוני כל 26 מערכות הבחירות, אך לא כל רשימה קטנה סווגה. רשימות שדרושות עליהן עוד ראיות רשומות בנפרד ואינן נספרות.",
+    "ב־1949 אין מספר קולות נפרד לאגודת ישראל ולפועלי אגודת ישראל; הקולות של המפלגות עצמן אינם ידועים, והם אינם אפס.",
+    "נתוני 2026 מבוססים על התוצאות הסופיות הרשמיות של ועדת הבחירות, כפי שפורסמו ברשומות (ילקוט הפרסומים 15100, 4.11.2026).",
+    "מפלגות שכבר רשומות כחלק מרשימה נשארות כך גם כשלא ברור שרשימת המועמדים שלמה."
+  ]
 }
