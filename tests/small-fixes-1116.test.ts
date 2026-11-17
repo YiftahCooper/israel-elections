@@ -32,7 +32,7 @@ test('a party register already read says what it found, so it is never shown as 
   expect(dem.partyIds).toContain('democrats');
   expect(dem.certainty).toBe('disputed');
   expect(dem.checkedAt).toBe('2026-11-16');
-  expect(dem.summaryEn).toMatch(/^Registered name and legal change date remain unresolved/);
+  expect(dem.summaryEn).toMatch(/^The registered name and the date of the legal change are not yet known/);
   expect(dem.summaryHe).toMatch(/^שם הרישום/);
   const lineage = JSON.parse(readFileSync('data/meta/party-lineage.json', 'utf8')) as { pending: { id: string; registerCheckedAt?: string; summaryEn?: string; partyIds?: string[]; from?: string[] }[] };
   for (const p of lineage.pending.filter((p) => p.partyIds?.length && !p.from && p.registerCheckedAt && p.summaryEn))

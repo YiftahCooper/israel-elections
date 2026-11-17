@@ -5,167 +5,185 @@
   "sources": {
     "aguda": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/agudat-israel/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Agudat Yisrael",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Party profile: Haredi identity and electoral history.",
       "retrieval": {
         "status": 200,
         "sha256": "6dce84aee9500b5f9fc264457d7474511c26ca1feaab7d7e32f311db9e3c40e5"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: אגודת ישראל"
     },
     "pai": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/poalei-agudat-yisrael/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Poalei Agudat Yisrael",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Haredi workers party, independent runs and Religious Torah Front alliances.",
       "retrieval": {
         "status": 200,
         "sha256": "6ddb77216e35e3df1d67aa677fea051756e1b43532310f3d66b0efd3e8c286d3"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: פועלי אגודת ישראל"
     },
     "degel": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/degel-hatora/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Degel HaTorah",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Haredi party founded in 1988 following split with Aguda.",
       "retrieval": {
         "status": 200,
         "sha256": "854da668b9b220dfe41948199832127c59232db628d089459355c38123ae6bd7"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: דגל התורה"
     },
     "shas": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/shas/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Shas",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "National party from 1984; Sephardi Haredi organisation, broader electorate.",
       "retrieval": {
         "status": 200,
         "sha256": "136f01f64368f99abd53809199bf6b22c81869f8557854717ac94ce9d693de77"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: ש״ס"
     },
     "utj": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/united-torah-judaism/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: United Torah Judaism",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Alliance of Aguda and Degel from 1992.",
       "retrieval": {
         "status": 200,
         "sha256": "0726c07cb397ed54ef45201cec0532445ad1d490142a5d116764c342034e6380"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: יהדות התורה"
     },
     "joint": {
       "url": "https://www.idi.org.il/articles/32955",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: joint lists, 1949–2021",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Election-specific joint-list constituent table, 1949–2021.",
       "retrieval": {
         "status": 200,
         "sha256": "e5ec5df81751ddf75b36b24d709c5379d2a093029eb444357b540edf427a6cb3"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: רשימות משותפות, 1949–2021"
     },
     "morasha": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/morasha/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Morasha",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "1984 alliance of Matzad and Poalei Agudat Yisrael.",
       "retrieval": {
         "status": 200,
         "sha256": "b6ee790d542aff15aef7867f4ae118b87b7526c9a811a3860598164645c83c3f"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: מורשה"
     },
     "yachad": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/yachad/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Yachad",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Yachad itself bridges Sephardi Haredi and Hardal national religious groups.",
       "retrieval": {
         "status": 200,
         "sha256": "c17b6094f30ff496afc23fc3b8614bb889b03c846dec4a97c059c0d48e86e948"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: יחד"
     },
     "shas-study": {
       "url": "https://www.idi.org.il/media/10320/a-flock-with-no-shepherd-shas-leadership-the-day-after-rabbi-ovadia-yosef.pdf",
-      "publisher": "Ettinger and Leon / IDI, 2018",
+      "publisher": "Israel Democracy Institute, Ettinger and Leon, 2018",
       "kind": "academic",
       "accessed": "2026-11-04",
-      "support": "PDF pp.35–36 (printed pp.109–110): Azran 1996, Ahavat Israel 2003, Am Shalem and Koach Lehashpia 2013."
+      "support": "PDF pp.35–36 (printed pp.109–110): Azran 1996, Ahavat Israel 2003, Am Shalem and Koach Lehashpia 2013.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה, אטינגר ולאון, 2018"
     },
     "geula": {
       "url": "https://www.jta.org/archive/the-israeli-elections-from-communists-to-cab-drivers-array-of-choices-awaits-voters",
-      "publisher": "JTA, 1992",
+      "publisher": "Jewish Telegraphic Agency, 1992",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Geulat Yisrael is an ultra-Orthodox list led by Eliezer Mizrachi; opened with required User-Agent."
     },
     "kn-splits": {
       "url": "https://main.knesset.gov.il/en/mk/apps/faction/general/split-merge",
-      "publisher": "Knesset",
+      "publisher": "Knesset: faction splits and mergers",
       "kind": "official",
       "accessed": "2026-11-04",
-      "support": "Geulat Yisrael split from Aguda. Parliamentary events do not allocate election votes."
+      "support": "Geulat Yisrael split from Aguda. Parliamentary events do not allocate election votes.",
+      "publisherHe": "הכנסת: פילוגים ואיחודים של סיעות"
     },
     "yishai": {
       "url": "https://library.mevaker.gov.il/sites/DigitalLibrary/Pages/Reports/2359-1.aspx",
       "publisher": "State Comptroller",
       "kind": "official",
       "accessed": "2026-11-04",
-      "support": "1988 Yishai led by Shimon Ben-Shlomo; lineage interpretation requires separate evidence."
+      "support": "1988 Yishai led by Shimon Ben-Shlomo; lineage interpretation requires separate evidence.",
+      "publisherHe": "מבקר המדינה"
     },
     "haredi-society": {
       "url": "https://en.idi.org.il/articles/52891",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Aguda, Degel and Shas identified as parties of main Haredi communities.",
       "retrieval": {
         "status": 200,
         "sha256": "127091a1745989fe918709a61dd4c48a9286614ec8a1a312186240efb0dff0f3"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה"
     },
     "power2009": {
       "url": "https://www.walla.co.il/news/israel/1416821",
-      "publisher": "Walla, 2009-01-13",
+      "publisher": "Walla News, 13 January 2009",
       "kind": "secondary",
       "accessed": "2026-11-04",
-      "support": "2009 Koach Lehashpia campaigns on disability rights; do not infer 2013 identity from name."
+      "support": "2009 Koach Lehashpia campaigns on disability rights; do not infer 2013 identity from name.",
+      "publisherHe": "וואלה חדשות, 13 בינואר 2009"
     },
     "cec26": {
       "url": "https://www.gov.il/he/pages/candidates-lists-26",
-      "publisher": "CEC; retained extraction in data/raw/k26/govil-list-pages.exa.json",
+      "publisher": "Central Elections Committee: candidate lists, 2026",
       "kind": "official",
       "accessed": "2026-11-04",
-      "support": "2026 registered names and sponsoring parties. Self-description is evidence of claim, not external validation."
+      "support": "2026 registered names and sponsoring parties. Self-description is evidence of claim, not external validation.",
+      "publisherHe": "ועדת הבחירות המרכזית: רשימות המועמדים, 2026"
     },
     "local-dataset": {
       "kind": "repository-dataset",
       "locator": "public/data/k{n}.json; data/raw/SOURCES.json",
-      "support": "Registered names, votes and sponsor fields only; not external ideological validation."
+      "support": "Registered names, votes and sponsor fields only; not external ideological validation.",
+      "publisher": "Official results, Central Elections Committee",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "yishai-lineage": {
       "url": "https://www.idi.org.il/media/17403/political-parties-in-israel-draft.pdf?isExternal=true",
-      "publisher": "Kenig and Rahat / IDI, draft of Parties in Israel 1992–2021",
+      "publisher": "Israel Democracy Institute, Ofer Kenig and Gideon Rahat, Parties in Israel 1992–2021 (draft)",
       "kind": "academic",
       "accessed": "2026-11-04",
-      "support": "PDF p.230 (printed 231), Shas chapter: Shimon Ben-Shlomo left Shas and ran Yishai in 1988, presenting it as representing Yemenite Jews. This proves ancestry, not a universal Haredi label."
+      "support": "PDF p.230 (printed 231), Shas chapter: Shimon Ben-Shlomo left Shas and ran Yishai in 1988, presenting it as representing Yemenite Jews. This proves ancestry, not a universal Haredi label.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה, עופר קניג וגדעון רהט, המפלגות בישראל 1992–2021 (טיוטה)"
     },
     "noam-hardal": {
       "url": "https://en.idi.org.il/articles/31683",
-      "publisher": "Yair Sheleg / IDI, 2020-10-15",
+      "publisher": "Israel Democracy Institute, Yair Sheleg, 15 October 2020",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Author identifies Noam as the party put forward by the Hardal current; editorial commentary rather than official taxonomy.",
       "retrieval": {
         "status": 200,
         "sha256": "92def3a3e6613e52fd5747d3d27b6589ff00adc3067e6cac4aa876bb79ac0e6d"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה, יאיר שלג, 15 באוקטובר 2020"
     },
     "proposal": {
       "kind": "secondary",
@@ -176,303 +194,340 @@
     },
     "mergers": {
       "url": "https://en.idi.org.il/articles/54874",
-      "publisher": "Assaf Shapira / IDI",
+      "publisher": "Israel Democracy Institute, Assaf Shapira",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Historical mergers; 2024 Democrats intention and deferred legal unification. Sections Not technically an electoral bloc and How will the merger be carried out.",
       "retrieval": {
         "status": 200,
         "sha256": "e041ee09cd515b86bc7228fae2d810ec25c5ebcc2c843ed29e4a2ccc98331cf4"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה, אסף שפירא"
     },
     "arab": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/hadash/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Hadash",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Historical party profile/context for arab; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
       "retrieval": {
         "status": 200,
         "sha256": "c9c93f508c7c2b25bdfd3d0461dc6284fb3aa8078288ef018910598ae2fc4961"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: חד״ש"
     },
     "national": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/national-religious-party/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: National Religious Party",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Historical party profile/context for national; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
       "retrieval": {
         "status": 200,
         "sha256": "f0ff9a075a945a573620c23cc4c9da4016f923297f1d860b08369f417226d19b"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: המפד״ל"
     },
     "labour": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/labor-party/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Labor",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Historical party profile/context for labour; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
       "retrieval": {
         "status": 200,
         "sha256": "9e4b4be509566e8fde1dbfd033bc50b3112b0131bbcd111690d84ca7fb28b65e"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: העבודה"
     },
     "revisionist": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/likud/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Likud",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Historical party profile/context for revisionist; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
       "retrieval": {
         "status": 200,
         "sha256": "a61db730add74d3b7761b37a6f6fd790b6187b394ed5b945330de4cb7bfe35d8"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: הליכוד"
     },
     "centre": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/shinui/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Shinui",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Historical party profile/context for centre; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
       "retrieval": {
         "status": 200,
         "sha256": "f9592deb91a044baa28f75fccc1f56cc3e2ffa74bd35354f2f161192b1f21216"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: שינוי"
     },
     "immigrant": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/yisrael-beytenu/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Yisrael Beiteinu",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Historical party profile/context for immigrant; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
       "retrieval": {
         "status": 200,
         "sha256": "f7eee648108c9cda6078365361fb5917fadbd0a1ce565ca30d6ae7012b1181ad"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: ישראל ביתנו"
     },
     "radical": {
       "url": "https://www.idi.org.il/articles/33649",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Historical party profile/context for radical; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
       "retrieval": {
         "status": 200,
         "sha256": "8eab19d2bd2c69d097c84f844dd6c54d20d5dcf73fe0e44dbf7bdcba573d58ec"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה"
     },
     "k1": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k1.json",
       "sha256": "5d454fb1d39b028540ab7c96c669975399b11c5ae8832db4011fe29252494039",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k2": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k2.json",
       "sha256": "9ecde3af2281faaf26325bef818fa1c9ce3f0375d6a4c8c119099d59368a6381",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k3": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k3.json",
       "sha256": "0ea276983d486d1c150baf61f979dab3fdee11a42b6b49367a479e235680ffd4",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k4": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k4.json",
       "sha256": "6ed37514fbe07806fd7a70efaca96cb7cc94e297ee85d3375c32d807e6214feb",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k5": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k5.json",
       "sha256": "6754fff9d6c21a627dcec0faafbc0ed07f340693f19f090993a372db90a3ddbd",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k6": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k6.json",
       "sha256": "54361492a836f80d19796af13c36d4702526d9b9955e5c1102b7f3d8b2e8e6f1",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k7": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k7.json",
       "sha256": "ccfead1d8d5d13388a294fe5ff10b30fb27bde85700543d2c0daf5f931bb7944",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k8": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k8.json",
       "sha256": "64eb31c830a8b90e01891943fce406db916aada82fbb735095591c20ab5d0f9e",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k9": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k9.json",
       "sha256": "7bbcb4e7e3b2b3d14dd5c6eefce7353186559965502d1aa4dde7eb44f5f7914d",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k10": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k10.json",
       "sha256": "082a0ec32dcc124a65955bedb6cf540e27f012ae780219bf9fa9ffc12e1b57ad",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k11": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k11.json",
       "sha256": "fc4f096478fdc38e217018796356410e6dbb8566d653c2b9862ff3d066e5e191",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k12": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k12.json",
       "sha256": "aea0f0d5c4628155da7d9c9556fd71b148d380d458bccb2ee58ee0113edb6b18",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k13": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k13.json",
       "sha256": "28d35cd7d3f45c62fdccbe13e0f5d2f7f9d6e931b9bbbeab2583b4a6f0c225d7",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k14": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k14.json",
       "sha256": "6fb8ffa61cd06226cc6d183a1a9b128a7cedc4d399ad2fb5c6ee7dc14b68344a",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k15": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k15.json",
       "sha256": "aea3072a9b0ead45f679ab79f9d0446e074361e714b7bc40f24a3e39c3bbe1e9",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k16": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k16.json",
       "sha256": "662cd88566878c3f8935c69a98a3915f166b8fc5b1570b7ce70205c27596eeb7",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k17": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k17.json",
       "sha256": "9d91fd4f33e821625446b2341fce661be47ec298f9b31ad2b764732ec5afc61b",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k18": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k18.json",
       "sha256": "76aff819f833bb2a38d74be75a550310b663c1ec1d5c79e67888a00239914e92",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k19": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k19.json",
       "sha256": "7760183e75b97aba156d45efd52b170769e05962c8e0e2862907839682b4a4af",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k20": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k20.json",
       "sha256": "4d991d557d7e9819af4724137620bee25f5766315517389ac1a74dc7ac8d368d",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k21": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k21.json",
       "sha256": "a45e22836c95b11200635b8b0b2a0117d90b95db7961536916314c321ea2a3da",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k22": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k22.json",
       "sha256": "64e572d1c1878e310a7a5c26ff35d81fe64da82dd10c8dbf54d55e32ec73f452",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k23": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k23.json",
       "sha256": "4bc87f04079f0c801cacb3d3ec64a91d737e9043cc2c83c0483193810f671ba9",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k24": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k24.json",
       "sha256": "42c1bf78590a125dee97a78162b39e08754a638e4276e975bcd6e3ffcee4611b",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k25": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k25.json",
       "sha256": "72f345f527f33d9226debf3b0347400a20b9208b586e83e3efe3d333943fb199",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "k26": {
       "kind": "repository-dataset",
-      "publisher": "CEC/Reshumot inputs; local compilation",
+      "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k26.json",
       "sha256": "a4ab2bfda4dddf2fba8e53d7a386eb6a870f110eb62c2a755d1a453528fa62cc",
-      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
+      "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
     "religious-islamist": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/raam/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Raam",
       "kind": "secondary",
       "accessed": "2026-11-04",
-      "support": "Raam founded by southern Islamic Movement; religious Muslim organisational criterion. Not a classification of all Arab lists."
+      "support": "Raam founded by southern Islamic Movement; religious Muslim organisational criterion. Not a classification of all Arab lists.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה: רע״ם"
     },
     "independent-liberals-profile": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/independent-liberals/",
-      "publisher": "IDI",
+      "publisher": "Israel Democracy Institute: Independent Liberals",
       "kind": "secondary",
       "accessed": "2026-11-04",
       "support": "Profile opening history: members left Liberals in 1965 in opposition to the Gahal alliance; moderate civil-liberal positions.",
       "retrieval": {
         "status": 200,
         "sha256": "4cd05f42cc6aed5f388953ff1b923891a114d54746423a1fedccabb8dcadc793"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: הליברלים העצמאיים"
     },
     "gesher-distinct-2018": {
       "url": "https://www.idi.org.il/media/20997/המפלגות-בישראל-2021-1992.pdf",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute, Ofer Kenig and Gideon Rahat, Parties in Israel 1992–2021 (2023)",
       "kind": "secondary",
       "accessed": "2026-11-06",
       "support": "Printed p.534 (PDF p.536): new party registered December 2018; reused the old name, not organisational continuity.",
-      "quote": "המפלגה החדשה (עם השם הישן) כדין אצל רשם המפלגות."
+      "quote": "המפלגה החדשה (עם השם הישן) כדין אצל רשם המפלגות.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה, עופר קניג וגדעון רהט, המפלגות בישראל 1992–2021 (2023)"
     },
     "democrats-identity": {
       "url": "https://www.idi.org.il/articles/54838",
-      "publisher": "IDI / Assaf Shapira, 4 July 2024",
+      "publisher": "Israel Democracy Institute, Assaf Shapira, 4 July 2024",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-08",
@@ -481,11 +536,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "7e033f389a3967cf153abd75cf43cee631d505f308a5fa90cc2c6e0755258b0c"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה, אסף שפירא, 4 ביולי 2024"
     },
     "democrats-approval": {
       "url": "https://news.walla.co.il/item/3677233",
-      "publisher": "Walla / Tal Shalev, 12 July 2024",
+      "publisher": "Walla News, Tal Shalev, 12 July 2024",
       "kind": "secondary",
       "tier": "contemporary",
       "accessed": "2026-11-08",
@@ -494,11 +550,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "55d9a5c8838af4aff79bd5873bad454e6c999a2e511181b3148a9d4874274c9e"
-      }
+      },
+      "publisherHe": "וואלה חדשות, טל שלו, 12 ביולי 2024"
     },
     "communist-history": {
       "url": "https://www.idi.org.il/media/20997/%D7%94%D7%9E%D7%A4%D7%9C%D7%92%D7%95%D7%AA-%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C-2021-1992.pdf",
-      "publisher": "IDI / Ofer Kenig and Gideon Rahat, 2023",
+      "publisher": "Israel Democracy Institute, Ofer Kenig and Gideon Rahat, Parties in Israel 1992–2021 (2023)",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-08",
@@ -507,11 +564,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "7e23484b949649305bf37dd85cc9e826a2453c80f50a681def34e2a3cbfb339b"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה, עופר קניג וגדעון רהט, המפלגות בישראל 1992–2021 (2023)"
     },
     "nrp-continuity": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/mafdal/",
-      "publisher": "IDI party profile",
+      "publisher": "Israel Democracy Institute: National Religious Party",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-08",
@@ -520,11 +578,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "c444665895de08a5c95c84efbe8b3221eb8f38b753c3ba2a5fb4271078c2f0b4"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: המפד״ל"
     },
     "rafi-history": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/rafi/",
-      "publisher": "IDI party profile",
+      "publisher": "Israel Democracy Institute: Rafi",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-08",
@@ -533,11 +592,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "0d87e15ff2a4cf956163bc8de0b020ccac45ee58b317b17148e9ec0eb10fd8a0"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: רפ״י"
     },
     "maki-history": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/maki/",
-      "publisher": "IDI party profile",
+      "publisher": "Israel Democracy Institute: Maki",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-08",
@@ -546,11 +606,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "58ab1aad608e583f1d72a5867e8bf440014f29cd3a0ece2734d4517ce01a60ac"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: מק״י"
     },
     "shinui-history": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/shinui/",
-      "publisher": "IDI party profile",
+      "publisher": "Israel Democracy Institute: Shinui",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-08",
@@ -559,11 +620,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "03a81f92922022430a8f12bf753cde71fde983b4b2c7d48c12bc30705253dfe5"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: שינוי"
     },
     "tehiya-history": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/tehiya/",
-      "publisher": "IDI party profile",
+      "publisher": "Israel Democracy Institute: Tehiya",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-08",
@@ -572,11 +634,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "fb36f6295bb776df9f4162d10759905ad94ffe6979386bfb6a73ac1967b0ebfa"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: התחייה"
     },
     "mada-history": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/arab-democratic-party/",
-      "publisher": "IDI party profile",
+      "publisher": "Israel Democracy Institute: Arab Democratic Party",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-08",
@@ -585,11 +648,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "f7c74593e2bdbfcd544c3c84c34108cea9b9ebe247eca4080ffc52a369f3a906"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: המפלגה הדמוקרטית הערבית"
     },
     "third-way-history": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/third-way/",
-      "publisher": "IDI party profile",
+      "publisher": "Israel Democracy Institute: The Third Way",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-08",
@@ -598,11 +662,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "de23f1336ea065a0b959074f4919efeb4c594d6bbcc095af2baac1c273fba27d"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: הדרך השלישית"
     },
     "am-ehad-history": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/am-ehad/",
-      "publisher": "IDI party profile",
+      "publisher": "Israel Democracy Institute: Am Ehad",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-08",
@@ -611,11 +676,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "3a91a880a0821f73c96d4857beb0caaea4d40987fa7951376699e4244587b819"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: עם אחד"
     },
     "kadima-history": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/kadima/",
-      "publisher": "IDI party profile",
+      "publisher": "Israel Democracy Institute: Kadima",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-08",
@@ -624,11 +690,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "79d7c29d5879278d7cc2342b6b01560d75ef8405855042f54c67088b3ee79a33"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: קדימה"
     },
     "tami-continuity": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/tami/",
-      "publisher": "IDI party profile",
+      "publisher": "Israel Democracy Institute: Tami",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-08",
@@ -637,11 +704,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "4926fc5825a21158b0bd28b2093a06d3bbcec64220165b2fafa545c820fb0c84"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: תמ״י"
     },
     "haolam-continuity": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/haolam-hazeh/",
-      "publisher": "IDI party profile",
+      "publisher": "Israel Democracy Institute: HaOlam HaZeh",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-08",
@@ -650,11 +718,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "a416d9171c1d90dedca27e6cb946fb68809a4c75377c473ccdf6bd8b06a832f5"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: העולם הזה"
     },
     "yemenite-continuity": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/yemenite-association/",
-      "publisher": "IDI party profile",
+      "publisher": "Israel Democracy Institute: Yemenite Association",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-08",
@@ -663,11 +732,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "f9a2eb439ab966a26d86f6bf62c0dff64901928b1d9e33e988f02a8767d0753a"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: התאחדות התימנים"
     },
     "sephardi-continuity": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/sephardim-and-oriental-communities/",
-      "publisher": "IDI party profile",
+      "publisher": "Israel Democracy Institute: Sephardim and Oriental Communities",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-08",
@@ -676,11 +746,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "6288d5e0db3bca22190bd976920763f70b5e447ef2a007e92adacf85fa7ee21e"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: הספרדים ועדות המזרח"
     },
     "hadash-continuity": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/hadash/",
-      "publisher": "IDI party profile",
+      "publisher": "Israel Democracy Institute: Hadash",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-08",
@@ -689,331 +760,364 @@
       "retrieval": {
         "status": 200,
         "sha256": "4b66023cb69086042c10583190cf8132a24a55990041beed499fe69d31db3873"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: חד״ש"
     },
     "odata-k2-positions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+2+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: members and their factions, 2nd Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k2.json",
-      "support": "Official Knesset OData fields retained in k2: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+      "support": "Official Knesset OData fields retained in k2: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: חברי הכנסת ה־2 וסיעותיהם"
     },
     "odata-k2-factions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+2&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: factions of the 2nd Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k2.json",
-      "support": "Official Knesset OData fields retained in k2: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+      "support": "Official Knesset OData fields retained in k2: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: סיעות הכנסת ה־2"
     },
     "odata-k5-positions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+5+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: members and their factions, 5th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k5.json",
-      "support": "Official Knesset OData fields retained in k5: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+      "support": "Official Knesset OData fields retained in k5: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: חברי הכנסת ה־5 וסיעותיהם"
     },
     "odata-k5-factions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+5&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: factions of the 5th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k5.json",
-      "support": "Official Knesset OData fields retained in k5: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+      "support": "Official Knesset OData fields retained in k5: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: סיעות הכנסת ה־5"
     },
     "odata-k6-positions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+6+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: members and their factions, 6th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k6.json",
-      "support": "Official Knesset OData fields retained in k6: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+      "support": "Official Knesset OData fields retained in k6: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: חברי הכנסת ה־6 וסיעותיהם"
     },
     "odata-k6-factions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+6&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: factions of the 6th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k6.json",
-      "support": "Official Knesset OData fields retained in k6: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+      "support": "Official Knesset OData fields retained in k6: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: סיעות הכנסת ה־6"
     },
     "odata-k9-positions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+9+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: members and their factions, 9th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k9.json",
-      "support": "Official Knesset OData fields retained in k9: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+      "support": "Official Knesset OData fields retained in k9: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: חברי הכנסת ה־9 וסיעותיהם"
     },
     "odata-k9-factions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+9&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: factions of the 9th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k9.json",
-      "support": "Official Knesset OData fields retained in k9: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+      "support": "Official Knesset OData fields retained in k9: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: סיעות הכנסת ה־9"
     },
     "odata-k11-positions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+11+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: members and their factions, 11th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k11.json",
-      "support": "Official Knesset OData fields retained in k11: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+      "support": "Official Knesset OData fields retained in k11: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: חברי הכנסת ה־11 וסיעותיהם"
     },
     "odata-k11-factions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+11&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: factions of the 11th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k11.json",
-      "support": "Official Knesset OData fields retained in k11: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+      "support": "Official Knesset OData fields retained in k11: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: סיעות הכנסת ה־11"
     },
     "odata-k13-positions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+13+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: members and their factions, 13th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k13.json",
-      "support": "Official Knesset OData fields retained in k13: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+      "support": "Official Knesset OData fields retained in k13: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: חברי הכנסת ה־13 וסיעותיהם"
     },
     "odata-k13-factions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+13&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: factions of the 13th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k13.json",
-      "support": "Official Knesset OData fields retained in k13: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+      "support": "Official Knesset OData fields retained in k13: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: סיעות הכנסת ה־13"
     },
     "odata-k14-positions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+14+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: members and their factions, 14th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k14.json",
-      "support": "Official Knesset OData fields retained in k14: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+      "support": "Official Knesset OData fields retained in k14: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: חברי הכנסת ה־14 וסיעותיהם"
     },
     "odata-k14-factions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+14&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: factions of the 14th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k14.json",
-      "support": "Official Knesset OData fields retained in k14: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+      "support": "Official Knesset OData fields retained in k14: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: סיעות הכנסת ה־14"
     },
     "odata-k16-positions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+16+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: members and their factions, 16th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k16.json",
-      "support": "Official Knesset OData fields retained in k16: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+      "support": "Official Knesset OData fields retained in k16: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: חברי הכנסת ה־16 וסיעותיהם"
     },
     "odata-k16-factions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+16&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: factions of the 16th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k16.json",
-      "support": "Official Knesset OData fields retained in k16: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+      "support": "Official Knesset OData fields retained in k16: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: סיעות הכנסת ה־16"
     },
     "odata-k17-positions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+17+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: members and their factions, 17th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k17.json",
-      "support": "Official Knesset OData fields retained in k17: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+      "support": "Official Knesset OData fields retained in k17: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: חברי הכנסת ה־17 וסיעותיהם"
     },
     "odata-k17-factions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+17&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: factions of the 17th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k17.json",
-      "support": "Official Knesset OData fields retained in k17: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+      "support": "Official Knesset OData fields retained in k17: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: סיעות הכנסת ה־17"
     },
     "odata-k18-positions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+18+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: members and their factions, 18th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k18.json",
-      "support": "Official Knesset OData fields retained in k18: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+      "support": "Official Knesset OData fields retained in k18: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: חברי הכנסת ה־18 וסיעותיהם"
     },
     "odata-k18-factions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+18&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: factions of the 18th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k18.json",
-      "support": "Official Knesset OData fields retained in k18: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+      "support": "Official Knesset OData fields retained in k18: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: סיעות הכנסת ה־18"
     },
     "odata-k19-positions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+19+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: members and their factions, 19th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k19.json",
-      "support": "Official Knesset OData fields retained in k19: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+      "support": "Official Knesset OData fields retained in k19: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: חברי הכנסת ה־19 וסיעותיהם"
     },
     "odata-k19-factions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+19&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: factions of the 19th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k19.json",
-      "support": "Official Knesset OData fields retained in k19: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+      "support": "Official Knesset OData fields retained in k19: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: סיעות הכנסת ה־19"
     },
     "odata-k20-positions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+20+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: members and their factions, 20th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k20.json",
-      "support": "Official Knesset OData fields retained in k20: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+      "support": "Official Knesset OData fields retained in k20: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: חברי הכנסת ה־20 וסיעותיהם"
     },
     "odata-k20-factions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+20&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: factions of the 20th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k20.json",
-      "support": "Official Knesset OData fields retained in k20: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+      "support": "Official Knesset OData fields retained in k20: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: סיעות הכנסת ה־20"
     },
     "odata-k21-positions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+21+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: members and their factions, 21st Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k21.json",
-      "support": "Official Knesset OData fields retained in k21: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+      "support": "Official Knesset OData fields retained in k21: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: חברי הכנסת ה־21 וסיעותיהם"
     },
     "odata-k21-factions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+21&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: factions of the 21st Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k21.json",
-      "support": "Official Knesset OData fields retained in k21: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+      "support": "Official Knesset OData fields retained in k21: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: סיעות הכנסת ה־21"
     },
     "odata-k22-positions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+22+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: members and their factions, 22nd Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k22.json",
-      "support": "Official Knesset OData fields retained in k22: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+      "support": "Official Knesset OData fields retained in k22: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: חברי הכנסת ה־22 וסיעותיהם"
     },
     "odata-k22-factions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+22&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: factions of the 22nd Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k22.json",
-      "support": "Official Knesset OData fields retained in k22: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+      "support": "Official Knesset OData fields retained in k22: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: סיעות הכנסת ה־22"
     },
     "odata-k23-positions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+23+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: members and their factions, 23rd Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k23.json",
-      "support": "Official Knesset OData fields retained in k23: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+      "support": "Official Knesset OData fields retained in k23: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: חברי הכנסת ה־23 וסיעותיהם"
     },
     "odata-k23-factions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+23&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: factions of the 23rd Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k23.json",
-      "support": "Official Knesset OData fields retained in k23: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+      "support": "Official Knesset OData fields retained in k23: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: סיעות הכנסת ה־23"
     },
     "odata-k24-positions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+24+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: members and their factions, 24th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k24.json",
-      "support": "Official Knesset OData fields retained in k24: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+      "support": "Official Knesset OData fields retained in k24: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: חברי הכנסת ה־24 וסיעותיהם"
     },
     "odata-k24-factions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+24&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: factions of the 24th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k24.json",
-      "support": "Official Knesset OData fields retained in k24: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+      "support": "Official Knesset OData fields retained in k24: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: סיעות הכנסת ה־24"
     },
     "democrats-announcement": {
       "url": "https://www.walla.co.il/news/politics/3674415",
-      "publisher": "Walla / Tal Shalev, 30 June 2024",
+      "publisher": "Walla News, Tal Shalev, 30 June 2024",
       "kind": "secondary",
       "tier": "contemporary",
       "evidenceFamily": "walla",
@@ -1022,12 +1126,13 @@
       "retrieval": {
         "status": 200,
         "sha256": "0fe1f3784c781787831e5c8a6c61868371b1309cdc274edeee2fdead12e8e2b6"
-      }
+      },
+      "publisherHe": "וואלה חדשות, טל שלו, 30 ביוני 2024"
     },
     "registrar-2026-11-08": {
       "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=1dbfc053-e92f-4354-92d6-1b99aadb20d7&limit=500",
       "locator": "data/raw/registrar/parties-2026-11-08.json#/records",
-      "publisher": "Ministry of Justice – Registrar of Parties via data.gov.il",
+      "publisher": "Registrar of Parties, Ministry of Justice (open data)",
       "kind": "official",
       "tier": "primary",
       "evidenceFamily": "justice-registrar-parties",
@@ -1037,11 +1142,12 @@
         "status": 200,
         "sha256": "8919b7cf44e8e252cd16b210ea2af1e0d090d0bb98059b77bbecbc6e464be51d",
         "transformation": "Only party name, number, registration date and objectives retained; address, email and internal _id columns omitted. Contact phone/email prefix in objectives for 59-900147-6 removed up to מטרות המפלגה:. All other retained cells verbatim, including source tildes and anomalous dates."
-      }
+      },
+      "publisherHe": "רשם המפלגות, משרד המשפטים (מידע פתוח)"
     },
     "meretz-unification-book": {
       "url": "https://www.idi.org.il/media/20997/%D7%94%D7%9E%D7%A4%D7%9C%D7%92%D7%95%D7%AA-%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C-2021-1992.pdf",
-      "publisher": "IDI / Ofer Kenig and Gideon Rahat, 2023",
+      "publisher": "Israel Democracy Institute, Ofer Kenig and Gideon Rahat, Parties in Israel 1992–2021 (2023)",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-08",
@@ -1050,20 +1156,22 @@
       "retrieval": {
         "status": 200,
         "sha256": "7e23484b949649305bf37dd85cc9e826a2453c80f50a681def34e2a3cbfb339b"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה, עופר קניג וגדעון רהט, המפלגות בישראל 1992–2021 (2023)"
     },
     "sheli-continuity": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/sheli/",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute: Sheli",
       "kind": "academic",
       "tier": "scholarship",
       "evidenceFamily": "idi",
       "accessed": "2026-11-09",
-      "support": "History and election table: Sheli formed in 1977 as a front; the same front contested 1981 and failed to cross the threshold. Does not establish a legal merger of its components."
+      "support": "History and election table: Sheli formed in 1977 as a front; the same front contested 1981 and failed to cross the threshold. Does not establish a legal merger of its components.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה: של״י"
     },
     "settle-democratic-list-nazareth": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/democratic-list-of-nazareth/",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute: Democratic List of Nazareth",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-09",
@@ -1072,11 +1180,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "ee8204041ce696d146758c0669bac79153f41a04b515f689527de75ca02176fe"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: הרשימה הדמוקרטית לנצרת"
     },
     "settle-democratic-list-israeli-arabs": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/hareshima-hademocratit/",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute: Democratic List for Israeli Arabs",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-09",
@@ -1085,11 +1194,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "21166a386ba3b37d52d38009a182f566820a40c37c9f5aebc74726555f733aab"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: הרשימה הדמוקרטית לערביי ישראל"
     },
     "settle-progress-and-work": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/progress-and-work/",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute: Progress and Work",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-09",
@@ -1098,11 +1208,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "a2084a3c4c12371434424695c7b7a014c545c61b6460ce05ad236299e358bfe2"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: קידמה ועבודה"
     },
     "settle-agriculture-and-development": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/agriculture-and-development/",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute: Agriculture and Development",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-09",
@@ -1111,11 +1222,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "ecd162ef76feea7308ddd8513975f32ac6329350e57fd3829e5798fa55e7817e"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: חקלאות ופיתוח"
     },
     "settle-progress-and-development": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/progress-and-development/",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute: Progress and Development",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-09",
@@ -1124,11 +1236,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "f08ceb7faeb93b3af3dbfd16412ef87234e90208dc9bd87d28730b4bcbc7c5bb"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: קידמה ופיתוח"
     },
     "settle-cooperation-and-brotherhood": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/shituf-ve-ahva/",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute: Cooperation and Brotherhood",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-09",
@@ -1137,11 +1250,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "9d0a0b8b26392624b303df83ec465207ef99a93d24d296c6a586b2e20dbfe75b"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: שיתוף ואחווה"
     },
     "settle-kach": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/kach/",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute: Kach",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-09",
@@ -1150,11 +1264,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "dc49162be2ff84a9d05c5867b0dbf8bbf98d56da29c9284f7e3997f5107940a3"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: כ״ך"
     },
     "settle-dash": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/dash/",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute: Dash",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-09",
@@ -1163,11 +1278,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "cdd9212c06a343073cb59cc4f578b940c529138b2e6395dc50e31ee9abc7f93d"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: ד״ש"
     },
     "settle-sheli": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/sheli/",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute: Sheli",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-09",
@@ -1176,11 +1292,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "0afc938e8eae4aad49b2e35837ae9571c2717a867a9ed8b46e165f488034369e"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: של״י"
     },
     "settle-shas": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/shas/",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute: Shas",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-09",
@@ -1189,11 +1306,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "739ccca71ea2ff83062c7aed9961b3a3bfab218e65ea34d7ec59649ae6a145ff"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: ש״ס"
     },
     "settle-progressive-list-peace": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/hareshima-hamitkademet-leshalom/",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute: Progressive List for Peace",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-09",
@@ -1202,11 +1320,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "4622e526362e7bff11b3d6809668102d915ade0bf2dea1069c7a1d79b5912f56"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: הרשימה המתקדמת לשלום"
     },
     "settle-centre-party": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/center-party/",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute: Centre Party",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-09",
@@ -1215,11 +1334,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "0c4d44dcf6f692a66c0cbd5e313ce142588ff1743825525f9f2050b4132c1ae8"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: מפלגת המרכז"
     },
     "shas-departures-book": {
       "url": "https://www.idi.org.il/media/20997/%D7%94%D7%9E%D7%A4%D7%9C%D7%92%D7%95%D7%AA-%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C-2021-1992.pdf",
-      "publisher": "IDI / Ofer Kenig and Gideon Rahat, 2023",
+      "publisher": "Israel Democracy Institute, Ofer Kenig and Gideon Rahat, Parties in Israel 1992–2021 (2023)",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-08",
@@ -1228,7 +1348,8 @@
       "retrieval": {
         "status": 200,
         "sha256": "7e23484b949649305bf37dd85cc9e826a2453c80f50a681def34e2a3cbfb339b"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה, עופר קניג וגדעון רהט, המפלגות בישראל 1992–2021 (2023)"
     },
     "house-committee-k12-departures": {
       "url": "https://www.knesset.gov.il/committees/heb/docs/knesset12.pdf",
@@ -1241,20 +1362,22 @@
       "retrieval": {
         "status": 200,
         "sha256": "7b4e06fcd146705a92c1506333ee972c422d4c10a70edb0ae2d7fc4ea8c95659"
-      }
+      },
+      "publisherHe": "ועדת הכנסת"
     },
     "yahad-absorption": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/yahad-1984/",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute: Yahad (1984)",
       "kind": "academic",
       "tier": "scholarship",
       "evidenceFamily": "idi",
       "accessed": "2026-11-09",
-      "support": "Profile: Yahad founded before 1984, joined Alignment faction shortly after election, and merged into Labor during the 11th Knesset. No exact party-merger effective date supplied."
+      "support": "Profile: Yahad founded before 1984, joined Alignment faction shortly after election, and merged into Labor during the 11th Knesset. No exact party-merger effective date supplied.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה: יחד (1984)"
     },
     "state-list-profile": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/state-list/",
-      "publisher": "IDI party profile",
+      "publisher": "Israel Democracy Institute: State List",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-12",
@@ -1263,11 +1386,12 @@
       "retrieval": {
         "status": 200,
         "sha256": "6e381a7fb6ca6eff622bfee8c96f9171b83b725474cf0f5c932b4d0ae5907e69"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: הרשימה הממלכתית"
     },
     "likud-1973-profile": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/likud/",
-      "publisher": "IDI party profile",
+      "publisher": "Israel Democracy Institute: Likud",
       "kind": "academic",
       "tier": "scholarship",
       "accessed": "2026-11-12",
@@ -1276,100 +1400,110 @@
       "retrieval": {
         "status": 200,
         "sha256": "ac410204b2465e971c2aa41e5747f3f71b8659aca3b721a72704a90a757a81b6"
-      }
+      },
+      "publisherHe": "המכון הישראלי לדמוקרטיה: הליכוד"
     },
     "odata-k7-positions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+7+and+%28PositionID+eq+43+or+PositionID+eq+61+or+PositionID+eq+54%29&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: members and their factions, 7th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k7.json",
-      "support": "Official Knesset OData fields retained in k7: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts."
+      "support": "Official Knesset OData fields retained in k7: tenures[].factions[]; record IDs identify the observed membership transitions, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: חברי הכנסת ה־7 וסיעותיהם"
     },
     "odata-k7-factions": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+7&%24format=json",
-      "publisher": "Knesset",
+      "publisher": "Knesset open data: factions of the 7th Knesset",
       "accessed": "2026-11-07",
       "kind": "official",
       "evidenceFamily": "knesset-parliament-info",
       "tier": "primary",
       "locator": "data/research/knesset-member-changes/k7.json",
-      "support": "Official Knesset OData fields retained in k7: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts."
+      "support": "Official Knesset OData fields retained in k7: factionRegistry[]; record IDs identify parliamentary faction start/end dates, not party registration acts.",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: סיעות הכנסת ה־7"
     },
     "r7-gil-profile": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/gil/",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute: Gil (Pensioners)",
       "kind": "secondary",
       "tier": "scholarship",
       "accessed": "2026-11-16",
       "inspection": "opened; relevant history and election table read",
       "evidenceFamily": "r7-gil-profile",
-      "support": "One party history explicitly covers the 1996, 2006 and 2009 elections; Rafi Eitan replaced Nava Arad. A later new pensioners organisation is outside this continuity claim."
+      "support": "One party history explicitly covers the 1996, 2006 and 2009 elections; Rafi Eitan replaced Nava Arad. A later new pensioners organisation is outside this continuity claim.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה: גיל"
     },
     "r7-gil-report": {
       "url": "https://www.ynet.co.il/articles/0,7340,L-3888467,00.html",
-      "publisher": "Attila Somfalvi / Ynet",
+      "publisher": "Ynet, Attila Somfalvi",
       "kind": "secondary",
       "tier": "retrospective",
       "accessed": "2026-11-16",
       "inspection": "opened; relevant history and election table read",
       "evidenceFamily": "r7-gil-report",
       "support": "Opening paragraph explicitly connects the 2006 success and 2009 defeat of Gil. Reports creation of a NEW organisation in May 2010, which must not be silently joined to Gil.",
-      "publicationDate": "2010-05-12"
+      "publicationDate": "2010-05-12",
+      "publisherHe": "ynet, אטילה שומפלבי"
     },
     "r7-greens-profile": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/hayerukim/",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute: The Greens",
       "kind": "secondary",
       "tier": "scholarship",
       "accessed": "2026-11-16",
       "inspection": "opened; relevant history and election table read",
       "evidenceFamily": "r7-greens-profile",
-      "support": "One party founded in 1997; electoral table covers 1999, 2003, 2006, 2009, 2013 and 2015. Not the Green Movement."
+      "support": "One party founded in 1997; electoral table covers 1999, 2003, 2006, 2009, 2013 and 2015. Not the Green Movement.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה: הירוקים"
     },
     "r7-ale-yarok-profile": {
       "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/green-leaf",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute: Ale Yarok",
       "kind": "secondary",
       "tier": "scholarship",
       "accessed": "2026-11-16",
       "inspection": "opened; relevant history and election table read",
       "evidenceFamily": "r7-ale-yarok-profile",
-      "support": "One party founded in 1999, ran every election through 2015; describes the separate Holocaust Survivors with Veterans of Ale Yarok split before 2009."
+      "support": "One party founded in 1999, ran every election through 2015; describes the separate Holocaust Survivors with Veterans of Ale Yarok split before 2009.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה: עלה ירוק"
     },
     "r7-panthers-profile": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/hapanterim-hashorim/",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute: Black Panthers",
       "kind": "secondary",
       "tier": "scholarship",
       "accessed": "2026-11-16",
       "inspection": "opened; relevant history and election table read",
       "evidenceFamily": "r7-panthers-profile",
-      "support": "1973 majority group led by Charlie Bitton ran as Black Panthers, 13,332 votes; a minority ran separately as Panthers Blue and White. A Panthers faction joined Hadash in 1977. This is not identity with the rival Blue and White list."
+      "support": "1973 majority group led by Charlie Bitton ran as Black Panthers, 13,332 votes; a minority ran separately as Panthers Blue and White. A Panthers faction joined Hadash in 1977. This is not identity with the rival Blue and White list.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה: הפנתרים השחורים"
     },
     "r7-tzomet-profile": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/tzomet/",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute: Tzomet",
       "kind": "secondary",
       "tier": "scholarship",
       "accessed": "2026-11-16",
       "evidenceFamily": "idi-tzomet-history",
-      "support": "IDI explicitly states continued operation and contests in 1999, 2003, 2006, 2009, and return in April/September 2019."
+      "support": "IDI explicitly states continued operation and contests in 1999, 2003, 2006, 2009, and return in April/September 2019.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה: צומת"
     },
     "r7-flatto-profile": {
       "url": "https://www.idi.org.il/policy/parties-and-elections/parties/plato-sharon/",
-      "publisher": "Israel Democracy Institute",
+      "publisher": "Israel Democracy Institute: Flatto-Sharon",
       "kind": "secondary",
       "tier": "scholarship",
       "accessed": "2026-11-16",
       "evidenceFamily": "idi-flatto-history",
-      "support": "IDI identifies the same Flatto-Sharon organisation in its 1977 and 1981 history and results table."
+      "support": "IDI identifies the same Flatto-Sharon organisation in its 1977 and 1981 history and results table.",
+      "publisherHe": "המכון הישראלי לדמוקרטיה: פלטו שרון"
     },
     "collector-r7-registrar-599002110": {
       "url": "https://www.gov.il/he/departments/dynamiccollectors/parties-db?skip=0&Name=%D7%9C%D7%9E%D7%A2%D7%9F%20%D7%90%D7%97",
-      "publisher": "Ministry of Justice – Registrar of Parties",
+      "publisher": "Registrar of Parties, Ministry of Justice",
       "kind": "official",
       "accessed": "2026-11-16",
       "retainedArtifact": "data/raw/collector-r7/registrar-599002110.reviewed.json",
@@ -1378,7 +1512,8 @@
         "sha256": "9d7cd2be71f1b99e959868a678f6a62a7684f0c7b9afb7e25a3688c8a1cdfb46"
       },
       "note": "Filtered live result confirms legal name, number and year only.",
-      "support": "The Registrar of Parties lists the party’s legal name, registration number 599002110 and registration year 2026; it gives no exact date or predecessor."
+      "support": "The Registrar of Parties lists the party’s legal name, registration number 599002110 and registration year 2026; it gives no exact date or predecessor.",
+      "publisherHe": "רשם המפלגות, משרד המשפטים"
     },
     "arian1985-p143": {
       "url": "https://openlibrary.org/works/OL2633027W",
@@ -1642,13 +1777,13 @@
       "datePrecision": "year",
       "effectiveFor": "organisation",
       "sources": [
-        "proposal",
         "mergers"
       ],
       "evidence": {
         "status": "documented",
         "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
-      }
+      },
+      "projectReading": "proposal"
     },
     {
       "id": "independent-liberals-1965",
@@ -5914,7 +6049,7 @@
         "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
       },
       "certainty": "unknown",
-      "summaryEn": "The register was checked; whether the 2009 and 2013 lists used the same legal party remains unresolved.",
+      "summaryEn": "The register was checked; it is still not known whether the 2009 and 2013 lists were submitted by the same registered party.",
       "summaryHe": "הרישום נבדק; טרם הוברר אם הרשימות ב־2009 וב־2013 הוגשו מטעם אותה מפלגה רשומה.",
       "registerCheckedAt": "2026-11-16"
     },
@@ -5933,7 +6068,7 @@
         "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
       },
       "certainty": "unknown",
-      "summaryEn": "Submitting party matched: אחריות – לב אחד ורוח חדשה, 59-900082-5; the registration date is blank.",
+      "summaryEn": "The party that submitted the list is in the register: אחריות – לב אחד ורוח חדשה, 59-900082-5; no registration date is given.",
       "summaryHe": "המפלגה שהגישה את הרשימה זוהתה במאגר: אחריות – לב אחד ורוח חדשה, 59-900082-5; תאריך הרישום חסר.",
       "registerCheckedAt": "2026-11-16"
     },
@@ -5953,7 +6088,7 @@
         "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted. Live Registrar capture confirms name למען אחיי מפלגת כלל ישראל, number 599002110 and registration year 2026; no exact date or succession established."
       },
       "certainty": "unknown",
-      "summaryEn": "The live Registrar confirms למען אחיי מפלגת כלל ישראל, number 599002110, registered in 2026. Its exact registration date and organisational ancestry remain unverified.",
+      "summaryEn": "The Registrar of Parties lists למען אחיי מפלגת כלל ישראל, number 599002110, registered in 2026. Its exact registration date and earlier history are not yet confirmed.",
       "summaryHe": "במאגר רשם המפלגות מופיעה למען אחיי מפלגת כלל ישראל, מספר 599002110, שנרשמה בשנת 2026. תאריך הרישום המדויק וההיסטוריה הארגונית עדיין אינם מאומתים.",
       "registerCheckedAt": "2026-11-16"
     },
@@ -5972,7 +6107,7 @@
         "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
       },
       "certainty": "unknown",
-      "summaryEn": "Submitting party matched: מחנה ישראל, 59-900153-4; the registration date is blank.",
+      "summaryEn": "The party that submitted the list is in the register: מחנה ישראל, 59-900153-4; no registration date is given.",
       "summaryHe": "המפלגה שהגישה את הרשימה זוהתה במאגר: מחנה ישראל, 59-900153-4; תאריך הרישום חסר.",
       "registerCheckedAt": "2026-11-16"
     },
@@ -5994,7 +6129,7 @@
         "status": "unresolved",
         "interpretation": "The accessible official register was inspected: Labor 59-900001-5 and Meretz 59-900065-0 are separate; Labor name conflicts with the 2026 CEC submitting-party name. Legal rename date remains unknown (empty date); no completed legal merger established. Meretz convention approval date is not a registration field and remains unverified."
       },
-      "summaryEn": "Registered name and legal change date remain unresolved: Labor / The Democrats; Meretz approval date still unverified.",
+      "summaryEn": "The registered name and the date of the legal change are not yet known: Labor / The Democrats. The date Meretz approved the union is not yet confirmed.",
       "summaryHe": "שם הרישום ומועד השינוי המשפטי טרם הובררו: העבודה / הדמוקרטים; מועד אישור האיחוד במרצ טרם אומת.",
       "registerCheckedAt": "2026-11-16"
     },
@@ -6015,7 +6150,7 @@
         "status": "unresolved",
         "interpretation": "Register has only כח להשפיע 59-900087-4, with disability-rights objectives consistent with the 2009 campaign, but no second entry naming Amnon Yitzhak. It cannot assign different numbers to the 2009 and 2013 appearances or exclude reuse of a legal platform; legal identity remains unknown."
       },
-      "summaryEn": "The register was checked; whether the 2009 and 2013 lists used the same legal party remains unresolved.",
+      "summaryEn": "The register was checked; it is still not known whether the 2009 and 2013 lists were submitted by the same registered party.",
       "summaryHe": "הרישום נבדק; טרם הוברר אם הרשימות ב־2009 וב־2013 הוגשו מטעם אותה מפלגה רשומה.",
       "registerCheckedAt": "2026-11-16"
     },
@@ -6035,7 +6170,7 @@
         "status": "unresolved",
         "interpretation": "Register identifies historic אח~י - ארץ חברה יהדות (former name ציונות לאומית דתית מתחדשת), 59-900067-6. CEC 2026 list 26-צבי submits through חוזרים לשורשים, absent from this 170-row snapshot. אחי ישראלי 59-900115-3 is a third name, not evidence for that vehicle. No pair of registration numbers can be established; identity remains unknown."
       },
-      "summaryEn": "The register was checked; the link between historic Ahi and the 2026 submitting party remains unresolved.",
+      "summaryEn": "The register was checked; the link between the historic Ahi and the party that submitted the 2026 list is still not known.",
       "summaryHe": "הרישום נבדק; הקשר בין אח״י ההיסטורית למפלגה שהגישה את הרשימה ב־2026 טרם הוברר.",
       "registerCheckedAt": "2026-11-16"
     },

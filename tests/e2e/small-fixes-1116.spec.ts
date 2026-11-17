@@ -61,7 +61,7 @@ test('the Democrats: the party register check says what was found, never "not ye
   await listRow(page, 'The Democrats').click();
   await page.locator('aside .ph-sec').getByRole('button', { name: 'Full history', exact: true }).click();
   const events = page.locator('dialog[open].ph-sheet .ph-events');
-  await expect(events).toContainText('Party register checked: Registered name and legal change date remain unresolved');
+  await expect(events).toContainText('Party register checked: The registered name and the date of the legal change are not yet known');
   await expect(events).not.toContainText('not yet checked');
 });
 
