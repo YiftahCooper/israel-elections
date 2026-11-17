@@ -55,8 +55,8 @@ describe('k9 — released national data with a documented candidate-cap procedur
     expect(ds.sourceIds).toContain('k9-ratz-odata');
     expect(ds.status.noteEn).toContain('appeal determination confirms the initial cap');
     expect(ds.status.noteHe).toContain('הכרעת הכנסת בערעור');
-    expect(ds.status.noteEn).toContain('Knesset OData');
-    expect(ds.status.noteHe).toContain('OData');
+    expect(ds.status.noteEn).toContain('the Knesset’s official membership and faction records');
+    expect(ds.status.noteHe).toContain('ברישומי החברות והסיעות הרשמיים של הכנסת');
     const result = allocate(toEngineInput(scenarioFromDataset(committed)));
     for (const l of result.lists) expect(l.seats, l.id).toBe(published[committed.lists.find((x: {id: string}) => x.id === l.id).letters] ?? 0);
     for (const l of ds.lists) {

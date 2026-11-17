@@ -18,8 +18,8 @@ test('hero charts, collapsed table, policy view, k26 tooltip is official',async(
  await page.getByRole('group',{name:'Mixed-list policy',exact:true}).getByRole('button',{name:'Leave out',exact:true}).click();await expect(page.locator('.family-table tbody tr').first()).toContainText('2,835');await expect(page.locator('.family-table tbody tr').first()).toContainText('Mixed lists left out: 52,982');
 });
 test('fork, save, hide, restore and cross-election membership persists',async({page})=>{
- await start(page);await edit(page);await editor(page).getByRole('button',{name:'Save as my preset',exact:true}).click();await expect(page.locator('.family-profile')).toContainText('Personal copy');
- const input=editor(page).getByRole('textbox',{name:'Preset name',exact:true});await input.fill('My family');await input.press('Tab');await expect(page.locator('.family-profile h2')).toHaveText('My family');
+ await start(page);await edit(page);await editor(page).getByRole('button',{name:'Save as my version',exact:true}).click();await expect(page.locator('.family-profile')).toContainText('Personal copy');
+ const input=editor(page).getByRole('textbox',{name:'Name',exact:true});await input.fill('My family');await input.press('Tab');await expect(page.locator('.family-profile h2')).toHaveText('My family');
  await choose(editor(page).getByRole('button',{name:'Membership election',exact:true}),'k12');await expect(editor(page).getByRole('button',{name:'Membership election',exact:true})).toHaveAttribute('data-value','k12');await expect(editor(page).locator('.family-picker')).toContainText('Degel');
  await editor(page).getByRole('button',{name:'Close',exact:true}).click();
  await page.getByRole('button',{name:'Manage',exact:true}).click();await page.getByRole('checkbox',{name:'My family',exact:true}).uncheck();await expect(page.locator('.family-chip')).toHaveCount(9);
@@ -88,7 +88,7 @@ test('even axis ticks, scale down with a seat delta, distinct copies and delete'
  await page.getByRole('button',{name:'−10%',exact:true}).click();await expect(page.getByRole('textbox',{name:'Scale value',exact:true})).toHaveValue('-10');
  await expect(page.locator('.family-seat-count em')).toHaveText(/^(?:▼\s*)?[−±]/);await expect(page.locator('.family-consequence')).toContainText('623,349 → 561,014');
  await page.getByRole('textbox',{name:'Scale value',exact:true}).fill('-101');await expect(page.locator('.family-unavailable')).toContainText('−100%');
- await edit(page);await editor(page).getByRole('button',{name:'Save as my preset',exact:true}).click();await editor(page).getByRole('button',{name:'Close',exact:true}).click();
+ await edit(page);await editor(page).getByRole('button',{name:'Save as my version',exact:true}).click();await editor(page).getByRole('button',{name:'Close',exact:true}).click();
  await expect(page.getByRole('button',{name:'Haredi (mine)',exact:true})).toBeVisible();await expect(page.getByRole('button',{name:'Haredi',exact:true})).toBeVisible();
  await page.getByRole('button',{name:'Manage',exact:true}).click();await page.getByRole('button',{name:'Delete Haredi (mine)',exact:true}).click();await page.getByRole('button',{name:'Delete permanently',exact:true}).click();
  await page.getByRole('dialog').getByRole('button',{name:'Close',exact:true}).click();await expect(page.locator('.family-chip')).toHaveCount(9);await expect(page.getByText('Choose a family above to explore its history.')).toBeVisible();
@@ -172,7 +172,7 @@ test('loading another membership election never moves the sections below',async(
  await page.route('**/data/k25.json',async r=>{await new Promise(f=>setTimeout(f,600));await r.continue();});
  await editor(page).getByRole('button',{name:'Earlier membership election',exact:true}).click();await expect(picker).toHaveAttribute('aria-busy','true');const loading=await bottom();
  await expect(picker).toHaveAttribute('aria-busy','false');await expect(picker.locator('label').first()).toBeVisible();expect(await bottom()).toBe(loading);
- await expect(editor(page).getByRole('textbox',{name:'Preset name',exact:true})).toHaveAttribute('type','text');
+ await expect(editor(page).getByRole('textbox',{name:'Name',exact:true})).toHaveAttribute('type','text');
 });
 test('Hebrew quick percentages read left to right like the stepper',async({page})=>{
  await start(page,'he');const q=page.locator('.family-scale .quick-actions button');
@@ -216,7 +216,7 @@ test('the family’s Scale action sits under its charts, above the exact figures
  expect(scale!.y).toBeGreaterThan(plots!.y+plots!.height-1);expect(scale!.y).toBeLessThan(exact!.y);
 });
 test('family sources are named by who published them; the project never cites itself (reader text, 17 Nov)',async({page})=>{
- const jargon=/proposal §|local compilation|research compilation|inputs;|scoped in|taxonomy|preset|Revision:|\bIDI\b|Israeli Elections Explorer/i;
+ const jargon=/proposal §|local compilation|research compilation|inputs;|scoped in|taxonomy|preset|Revision:|\bIDI\b|\bCEC\b|\bYP \d|OData|data\/raw|\.json\b|Israeli Elections Explorer/i;
  await start(page);await page.locator('.family-chip',{hasText:'Radical right'}).click();
  await page.getByRole('button',{name:'Definition, sources and limitations',exact:true}).click();const sheet=page.locator('dialog.family-sheet');
  await expect(sheet.locator('.family-evidence')).toContainText('Lists are placed in this family by this project, from the sources below.');await expect(sheet.locator('.family-evidence')).toContainText('Official results, Central Elections Committee');

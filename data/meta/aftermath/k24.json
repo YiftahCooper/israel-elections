@@ -157,9 +157,10 @@
     },
     "hewiki-mandate": {
       "url": "https://he.wikipedia.org/wiki/%D7%94%D7%98%D7%9C%D7%AA_%D7%94%D7%9E%D7%A0%D7%93%D7%98_%D7%9C%D7%94%D7%A7%D7%9E%D7%AA_%D7%9E%D7%9E%D7%A9%D7%9C%D7%94_%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
-      "publisher": "Wikipedia (he), \"הטלת המנדט להקמת ממשלה בישראל\"",
+      "publisher": "Hebrew Wikipedia, \"הטלת המנדט להקמת ממשלה בישראל\"",
       "kind": "secondary",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-05",
+      "publisherHe": "ויקיפדיה העברית, \"הטלת המנדט להקמת ממשלה בישראל\""
     },
     "idi-voice-2021-05": {
       "url": "https://en.idi.org.il/media/16382/israeli_voice_index_data_2105_eng-first.pdf",
@@ -222,27 +223,30 @@
     },
     "k24-cec-protocol": {
       "url": "https://www.emess.co.il/wp-content/uploads/2021/03/%D7%96%D7%9B%D7%A8%D7%95%D7%9F-%D7%93%D7%91%D7%A8%D7%99%D7%9D-24.pdf",
-      "title": "CEC statutory determination, 30 March 2021; retained data/raw/k24/protocol.pdf",
+      "title": "Central Elections Committee, determination of 30 March 2021",
       "kind": "official",
       "accessed": "2026-11-06"
     },
     "k24-results-gazette": {
       "url": "https://olaw.org.il/yalkut/yalkut-9511.pdf",
-      "title": "YP 9511, 31 March 2021, pp.4620–4629; retained data/raw/k24/results.pdf",
+      "title": "Reshumot, Yalkut HaPirsumim 9511, 31 March 2021, pp.4620–4629",
       "kind": "official",
-      "accessed": "2026-11-06"
+      "accessed": "2026-11-06",
+      "publisherHe": "רשומות, ילקוט הפרסומים 9511, 31 במרץ 2021, עמ׳ 4620–4629"
     },
     "role-roster-36": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2036%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "deputies36": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2036%20and%20PositionID%20eq%2040&$format=json",
-      "publisher": "Knesset OData, all government 36 deputy-minister appointments",
+      "publisher": "Knesset open data: deputy ministers in government 36",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: סגני השרים בממשלה ה־36"
     },
     "cec-chikli-2022": {
       "url": "https://www.gov.il/BlobFolder/generalpage/pm3_25-4_25/he/candidates_disqualification_pm1_25_pm_1-25_2-25_4-25.pdf",
@@ -699,7 +703,7 @@
             "source": "jpost-2021-06-03"
           }
         ],
-        "resolution": "Not resolved; UI shows the date only."
+        "resolution": "Not resolved; only the date is shown."
       }
     ]
   },
@@ -737,7 +741,8 @@
           {
             "source": "role-roster-36",
             "quote": "PersonToPositionID 24075; PersonID 23594; PositionID 39; StartDate 2021-06-13T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יאיר לפיד; faction join: יש עתיד"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יאיר לפיד; faction: יש עתיד.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יאיר לפיד; סיעה: יש עתיד."
           }
         ]
       },
@@ -750,7 +755,8 @@
           {
             "source": "role-roster-36",
             "quote": "PersonToPositionID 24086; PersonID 30685; PositionID 57; StartDate 2021-06-13T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. אורית פרקש הכהן; faction join: כחול לבן"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: אורית פרקש הכהן; faction: כחול לבן.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אורית פרקש הכהן; סיעה: כחול לבן."
           }
         ]
       },
@@ -763,12 +769,14 @@
           {
             "source": "role-roster-36",
             "quote": "PersonToPositionID 24071; PersonID 23511; PositionID 45; StartDate 2021-06-13T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. נפתלי בנט; faction join: ימינה בראשות נפתלי בנט"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: נפתלי בנט; faction: ימינה בראשות נפתלי בנט.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: נפתלי בנט; סיעה: ימינה בראשות נפתלי בנט."
           },
           {
             "source": "cec-chikli-2022",
             "quote": "62 → 61",
-            "note": "Project extraction of the retained reviewed section 39/p.24 locator; nominal 62 reduced by Chikli opposition. Original PDF could not be reopened this round. Not a verbatim quotation."
+            "note": "Not a quotation: under section 39 (p. 24) of the decision, Chikli was in the opposition from the start, so the coalition’s 62 seats are 61.",
+            "noteHe": "לא ציטוט: לפי סעיף 39 (עמ׳ 24) בהחלטה, שיקלי היה באופוזיציה מההתחלה, ולכן 62 המנדטים של הקואליציה הם 61."
           }
         ],
         "note": "Six continuing coalition members; the elected Yamina list had seven seats. Chikli opposed the government from formation and is excluded, not merely subtracted from the investiture vote."
@@ -782,7 +790,8 @@
           {
             "source": "role-roster-36",
             "quote": "PersonToPositionID 24097; PersonID 23565; PositionID 57; StartDate 2021-06-13T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. מרב מיכאלי; faction join: העבודה"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: מרב מיכאלי; faction: העבודה.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: מרב מיכאלי; סיעה: העבודה."
           }
         ]
       },
@@ -795,7 +804,8 @@
           {
             "source": "role-roster-36",
             "quote": "PersonToPositionID 24085; PersonID 427; PositionID 39; StartDate 2021-06-13T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. אביגדור ליברמן; faction join: ישראל ביתנו"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: אביגדור ליברמן; faction: ישראל ביתנו.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אביגדור ליברמן; סיעה: ישראל ביתנו."
           }
         ]
       },
@@ -808,7 +818,8 @@
           {
             "source": "role-roster-36",
             "quote": "PersonToPositionID 24077; PersonID 1027; PositionID 39; StartDate 2021-06-13T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. גדעון סער; faction join: תקווה חדשה"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: גדעון סער; faction: תקווה חדשה.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: גדעון סער; סיעה: תקווה חדשה."
           }
         ]
       },
@@ -821,7 +832,8 @@
           {
             "source": "role-roster-36",
             "quote": "PersonToPositionID 24099; PersonID 12947; PositionID 39; StartDate 2021-06-13T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. ניצן הורוביץ; faction join: מרצ"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: ניצן הורוביץ; faction: מרצ.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: ניצן הורוביץ; סיעה: מרצ."
           }
         ]
       },
@@ -844,7 +856,8 @@
           {
             "source": "deputies36",
             "quote": "PositionID: 40",
-            "note": "Project tabulation: all 11 returned appointments, 7 distinct people, no Raam MK. See retained government36Deputies."
+            "note": "Counted from the Knesset’s record: 11 appointments of 7 people, none of them a Ra’am MK.",
+            "noteHe": "נספר מתוך רישום הכנסת: 11 מינויים של 7 אנשים, ואף אחד מהם אינו חבר כנסת מרע״ם."
           }
         ],
         "note": "Coalition member, no cabinet minister. Contrary to some reports, no Raam deputy-minister appointment appears anywhere in the complete official government-36 deputy roster. Proposed office and deputy speaker are different facts.",
@@ -917,7 +930,8 @@
           {
             "source": "cec-chikli-2022",
             "quote": "62 → 61",
-            "note": "Project extraction of the retained reviewed section 39/p.24 locator; nominal 62 reduced by Chikli opposition. Original PDF could not be reopened this round. Not a verbatim quotation."
+            "note": "Not a quotation: under section 39 (p. 24) of the decision, Chikli was in the opposition from the start, so the coalition’s 62 seats are 61.",
+            "noteHe": "לא ציטוט: לפי סעיף 39 (עמ׳ 24) בהחלטה, שיקלי היה באופוזיציה מההתחלה, ולכן 62 המנדטים של הקואליציה הם 61."
           },
           {
             "source": "plenum-601944",
@@ -1010,7 +1024,7 @@
         ],
         "confidence": "high",
         "notes": [
-          "Exception to the official-contemporary-source rule: contemporary Zman reporting, Ynet chronology and academic chronology corroborate the departure; no official contemporary record was readable. IDI independently selects the loss of majority. IPF advocacy timeline excluded."
+          "Exception to the official-contemporary-source rule: contemporary Zman reporting, Ynet chronology and academic chronology corroborate the departure; no official contemporary record was readable. Israel Democracy Institute independently selects the loss of majority. Israel Policy Forum advocacy timeline excluded."
         ]
       },
       {
@@ -1067,7 +1081,7 @@
       {
         "label": "Operation Guardian of the Walls (Gaza)",
         "date": "2021-05-10/2021-05-21",
-        "why": "10–21 May 2021 precedes this record’s 13 June government-term start. It belongs to k23’s caretaker interval; do not duplicate it here."
+        "why": "10–21 May 2021 precedes this record’s 13 June government-term start. It belongs to the caretaker period of the 23rd Knesset, not here."
       },
       {
         "label": "Mount Meron disaster",
@@ -1082,7 +1096,7 @@
       {
         "label": "Wave of attacks, spring 2022",
         "date": "2022-03/2022-05",
-        "why": "The retrieved IDI/IPF political retrospectives do not select this broad event; needs a dated scope and two qualifying chronologies."
+        "why": "The retrieved Israel Democracy Institute/Israel Policy Forum political retrospectives do not select this broad event; it needs clear dates and two qualifying chronologies."
       },
       {
         "label": "US President Biden's visit",
@@ -1144,7 +1158,7 @@
           },
           {
             "labelEn": "Fighting corruption",
-            "pct": 8.0
+            "pct": 8
           },
           {
             "labelEn": "Investing in and advancing the Arab population",

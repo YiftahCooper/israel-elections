@@ -21,6 +21,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { shownRows } from './lib/faction-rows.ts';
 import { applyEventReasons } from './lib/replacement-reasons.ts';
+import { isOwnRepository, sourceName } from './lib/source-names.ts';
 
 export type Importance = 'simple' | 'standard' | 'expert';
 export type Marker = 'D2' | 'D3' | 'D4' | 'replacement';
@@ -55,7 +56,8 @@ export interface TimelineItem {
    *  faction moves (the app writes them from the names and the factions below) */
   en: string | null; he: string | null;
   certainty: string | null; evidenceClass: string | null;
-  sources: readonly (readonly [string, string])[];
+  /** [name, address, Hebrew name where the record gives one] */
+  sources: readonly (readonly [string, string, string?])[];
   /** the marks this item draws at its own step */
   marks: readonly (readonly [number, MarkKind])[];
   /** seats this item moved between the sides (they glow) */
@@ -96,7 +98,7 @@ type KEvent = {
    *  written {f:id}, so the app names it as every other screen does (audit 12 Nov 2026, c-screens-people-04) */
   line?: { en?: string; he?: string };
   classification?: string; certainty?: string; evidenceClass?: string; seatsAfter?: { coalition: number | null; opposition: number | null } | null;
-  sources?: { url?: string; publisher?: string }[]; vote?: Vote;
+  sources?: { url?: string; publisher?: string; publisherHe?: string }[]; vote?: Vote;
   importance?: Importance; marker?: Marker | null; markerDirection?: string; direction?: string;
   /** false: held out of the steps (duplicate evidence, routine failed motions, unresolved leads) */
   timelineEligible?: boolean;
@@ -133,7 +135,7 @@ export const FORMATION_IMPORTANCE: Record<string, Importance> = {
   'extension': 'expert', 'mandate-extended': 'expert', 'knesset-21-days': 'expert', 'consultations': 'expert',
 };
 type AftermathFact = { date: string; type: string; textEn: string; textHe: string; cites?: { source: string }[] };
-type Aftermath = { formation?: { outcome?: string; events?: AftermathFact[] }; term?: { endedBy?: AftermathFact }; sources?: Record<string, { url?: string; publisher?: string }> };
+type Aftermath = { formation?: { outcome?: string; events?: AftermathFact[] }; term?: { endedBy?: AftermathFact }; sources?: Record<string, { url?: string; publisher?: string; publisherHe?: string }> };
 
 /** The formation steps and the dissolution from the After the election data, as timeline events (each with its sources). */
 function aftermathEvents(k: number, a: Aftermath): KEvent[] {
@@ -143,7 +145,7 @@ function aftermathEvents(k: number, a: Aftermath): KEvent[] {
   return facts.filter((f) => FORMATION_IMPORTANCE[f.type]).map((f, i) => ({
     id: `k${k}-aftermath-${i}`, date: f.date, kind: `formation-${f.type}`, who: {}, summary: { en: f.textEn, he: f.textHe },
     importance: FORMATION_IMPORTANCE[f.type], marker: null, byRule: true,
-    sources: [...new Set((f.cites ?? []).map((c) => c.source))].map((s) => a.sources?.[s]).filter((s): s is { url?: string; publisher?: string } => !!s),
+    sources: [...new Set((f.cites ?? []).map((c) => c.source))].map((s) => a.sources?.[s]).filter((s): s is { url?: string; publisher?: string; publisherHe?: string } => !!s),
   }));
 }
 
@@ -431,6 +433,7 @@ function compileSteps(k: number, opening: string, end: string, seats: SeatRuntim
   return { steps, firstGovernment };
 }
 
-function srcs(e: KEvent | undefined): (readonly [string, string])[] {
-  return (e?.sources ?? []).filter((s) => s.url && /^https:\/\//.test(s.url)).map((s) => [s.publisher ?? new URL(s.url!).hostname, s.url!] as const);
+function srcs(e: KEvent | undefined): (readonly [string, string, string?])[] {
+  return (e?.sources ?? []).filter((s) => s.url && /^https:\/\//.test(s.url) && !isOwnRepository(s.url))
+    .map((s) => s.publisherHe ? [sourceName(s.publisher, s.url!), s.url!, s.publisherHe] as const : [sourceName(s.publisher, s.url!), s.url!] as const);
 }

@@ -20,7 +20,7 @@ export const TOOL_FEATURES = [
 export const FEATURES = [...TOOL_FEATURES,
   // Side by side opens from the comparison strip, not as a tab, at every level (owner, 12 Nov 2026, C5b)
   ['compare', 'Analyse', 'Side by side', 'זו לצד זו', 'simple'],
-  ['familyEdit', 'Edit', 'Family definitions and presets', 'הגדרות משפחות ותבניות', 'standard'],
+  ['familyEdit', 'Edit', 'Family definitions and your versions', 'הגדרות משפחות והגרסאות שלכם', 'standard'],
   ['familyScale', 'Edit', 'Scale family votes', 'שינוי קולות למשפחה', 'standard'],
   ['familyGrouping', 'Edit', 'Apply family grouping', 'קיבוץ לפי משפחה', 'standard'],
   // Merge & split → Merge lists: the merged list's name, letters, candidate order and colour (the id is historical)
@@ -87,7 +87,7 @@ export const featureLevel = (id: FeatureId): Preset => FEATURES.find(f => f[0] =
 /** Short previews for the visibility cards, in the same order as their bilingual labels. */
 export const FEATURE_PREVIEWS: Record<FeatureId, readonly [string, string]> = {
   families: ['Seats and votes across elections, with sourced membership', 'מנדטים וקולות לאורך הבחירות עם חברות מנומקת'],
-  familyEdit: ['Select lists, link partners and save a personal preset', 'בחירת רשימות, קישור שותפים ושמירת תבנית אישית'],
+  familyEdit: ['Select lists, link partners and save your own version', 'בחירת רשימות, קישור שותפים ושמירת גרסה משלכם'],
   familyScale: ['Proportional vote changes in one election', 'שינוי יחסי בקולות במערכת בחירות אחת'],
   familyGrouping: ['Family, mixed lists and everyone else', 'משפחה, רשימות מעורבות וכל השאר'],
   after: ['Recommendations, government and dated history', 'המלצות, ממשלה והיסטוריה מתוארכת'],

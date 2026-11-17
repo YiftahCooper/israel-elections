@@ -92,7 +92,9 @@ for (const lang of ['he', 'en'] as const) test(`localised history, isolated rang
   await expect(formation.locator(':scope > .info')).toHaveCount(0);
   await expect(formation.locator('h3 .info')).toHaveCount(1);
   await formation.locator('h3 .info > button').click();
-  await expect(formation.locator('h3 .pop')).toContainText('jpost-2021-06-03'); // research source IDs remain verbatim
+  // a recorded disagreement names each source by its publisher, never by a record id (reader text, 17 Nov)
+  await expect(formation.locator('h3 .pop .after-conflict')).toContainText('The Jerusalem Post');
+  await expect(formation.locator('h3 .pop')).not.toContainText(/jpost-2021-06-03|"values"|"resolution"/);
   await page.keyboard.press('Escape');
   await expect(history).not.toContainText(/\d{4}-\d{2}/);
   await expect(history).not.toContainText(/[⚖▣◎◇●]/);

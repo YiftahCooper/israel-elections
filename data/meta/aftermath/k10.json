@@ -50,7 +50,7 @@
     },
     "government-research-3": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=GovernmentNum%20eq%2019",
-      "publisher": "Knesset OData (ParliamentInfo)",
+      "publisher": "Knesset open data",
       "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-04",
@@ -58,13 +58,13 @@
     },
     "recommendations-research-1": {
       "url": "https://www.upi.com/Archives/1981/07/14/Begin-asked-to-form-new-Israeli-government/8570363931200/",
-      "publisher": "UPI Archives",
+      "publisher": "United Press International archives",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
     "recommendations-research-2": {
       "url": "https://www.upi.com/Archives/1981/07/14/Navon-to-ask-Begin-to-form-government/1036363931200/",
-      "publisher": "UPI Archives",
+      "publisher": "United Press International archives",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
@@ -164,25 +164,27 @@
     },
     "role-roster-19": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2019%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "role-roster-20": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2020%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, formation-day cabinet appointments",
+      "publisher": "Knesset open data: ministers at formation",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: השרים בהקמת הממשלה"
     },
     "jta1981announcement": {
       "url": "https://www.jta.org/archive/navon-says-he-will-invite-begin-to-form-a-new-government",
-      "publisher": "JTA Daily Bulletin, 15 July 1981",
+      "publisher": "Jewish Telegraphic Agency, Daily Bulletin, 15 July 1981",
       "kind": "archival",
       "accessed": "2026-11-07"
     },
     "upi-19810804": {
       "url": "https://cdn.manchesterhistory.org/News/Manchester%20Evening%20Hearld_1981-08-04.pdf",
-      "publisher": "UPI, Begin on schedule, in Manchester Herald, 4 August 1981, p.2",
+      "publisher": "United Press International, Begin on schedule, in Manchester Herald, 4 August 1981, p.2",
       "kind": "archival",
       "accessed": "2026-11-07",
       "via": "Read by the 7 November research helper; a direct re-fetch returned HTTP 403 and was not retried. UPI wire: not independent of other UPI copies."
@@ -437,11 +439,11 @@
         "about": "Begin tasking date",
         "values": [
           {
-            "value": "15 July 1981 in the existing JTA/UPI research",
+            "value": "15 July 1981, in reports of the time (Jewish Telegraphic Agency, United Press International)",
             "source": "jta1981task"
           },
           {
-            "value": "16 July 1981 presidential letter in the State Archives account",
+            "value": "16 July 1981: the President’s letter, in the State Archives’ account",
             "source": "recommendations-research-4"
           },
           {
@@ -449,7 +451,7 @@
             "source": "upi-19810804"
           }
         ],
-        "resolution": "Two different acts, not two dates for one act. Two reports of the time (JTA and UPI) say Navon asked Begin to form a government on 15 July 1981; the State Archives dates Navon’s letter to Begin 16 July. The request date is probable: the letter itself (State Archives file נ-571/13) and the President’s diary (נ-224/4) have not been seen.",
+        "resolution": "Two different acts, not two dates for one act. Two reports of the time (Jewish Telegraphic Agency and United Press International) say Navon asked Begin to form a government on 15 July 1981; the State Archives dates Navon’s letter to Begin 16 July. The request date is probable: the letter itself (State Archives file נ-571/13) and the President’s diary (נ-224/4) have not been seen.",
         "status": "resolved"
       }
     ],
@@ -513,7 +515,7 @@
         ],
         "confidence": "high",
         "notes": [
-          "MFA’s chronology identifies PLO terrorist strongholds used for attacks against northern Israel. Its 1985 withdrawal is described separately under k11 and retained a security zone; no single ceasefire endpoint is inferred.",
+          "Ministry of Foreign Affairs’s chronology identifies PLO terrorist strongholds used for attacks against northern Israel. Its 1985 withdrawal is described separately under the 11th Knesset and retained a security zone; no single ceasefire endpoint is inferred.",
           "לפי ציר הזמן של משרד החוץ, בסיסי הטרור של אש״ף שימשו לתקיפות על צפון ישראל. הנסיגה ב־1985, תוך השארת רצועת ביטחון, מתוארת בנפרד בכנסת ה־11 ואינה מוצגת כמועד הפסקת אש."
         ]
       },
@@ -544,12 +546,12 @@
       {
         "label": "Sabra and Shatila massacre and Kahan inquiry",
         "date": "1982-09",
-        "why": "Both Knesset history and MFA timeline select the massacre and inquiry. The candidate bundles September 1982 killings with the 1983 report. Knesset history also misdates appointment of the inquiry to November 1982. Split the acts and inspect direct dates before promotion."
+        "why": "Both Knesset history and Ministry of Foreign Affairs timeline select the massacre and inquiry. The candidate bundles September 1982 killings with the 1983 report. Knesset history also misdates appointment of the inquiry to November 1982. Split the acts and inspect direct dates before promotion."
       },
       {
         "label": "Bus 300 affair",
         "date": "1984-04",
-        "why": "Both Knesset history and MFA timeline select the 1984 bus affair/hijacking. The candidate needs to distinguish the hijacking from the later killing/disclosure acts and verify their direct dates."
+        "why": "Both Knesset history and Ministry of Foreign Affairs timeline select the 1984 bus affair/hijacking. The candidate needs to distinguish the hijacking from the later killing/disclosure acts and verify their direct dates."
       },
       {
         "label": "Golan Heights Law",
@@ -614,7 +616,8 @@
           {
             "source": "role-roster-19",
             "quote": "PersonToPositionID 3888; PersonID 2573; PositionID 39; StartDate 1981-08-05T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. מרדכי צפורי-הנדין; faction join: הליכוד"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: מרדכי צפורי-הנדין; faction: הליכוד.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: מרדכי צפורי-הנדין; סיעה: הליכוד."
           }
         ]
       },
@@ -640,7 +643,8 @@
           {
             "source": "role-roster-19",
             "quote": "PersonToPositionID 4229; PersonID 2187; PositionID 39; StartDate 1981-08-05T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יוסף בורג; faction join: חזית דתית לאומית"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יוסף בורג; faction: חזית דתית לאומית.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יוסף בורג; סיעה: חזית דתית לאומית."
           }
         ]
       },
@@ -653,7 +657,8 @@
           {
             "source": "role-roster-19",
             "quote": "PersonToPositionID 4354; PersonID 2119; PositionID 39; StartDate 1981-08-05T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. אהרן אבוחצירא; faction join: תנועה למסורת ישראל"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: אהרן אבוחצירא; faction: תנועה למסורת ישראל.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אהרן אבוחצירא; סיעה: תנועה למסורת ישראל."
           }
         ]
       }
@@ -675,7 +680,9 @@
       },
       {
         "source": "government-research-3",
-        "quote": "KNS_PersonToPosition, GovernmentNum 19: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1981-08-05: צפורי-הנדין מרדכי, מרידור יעקב, ארליך שמחה, בגין מנחם, ברמן יצחק, מודעי יצחק, נסים משה, קורפו חיים, בורג יוסף, לוי דוד, שרון אריאל, פת גדעון, ארידור יורם, המר זבולון, שריר אברהם, אבוחצירא אהרן, שוסטק אליעזר, שמיר יצחק"
+        "quote": "KNS_PersonToPosition, GovernmentNum 19: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1981-08-05: צפורי-הנדין מרדכי, מרידור יעקב, ארליך שמחה, בגין מנחם, ברמן יצחק, מודעי יצחק, נסים משה, קורפו חיים, בורג יוסף, לוי דוד, שרון אריאל, פת גדעון, ארידור יורם, המר זבולון, שריר אברהם, אבוחצירא אהרן, שוסטק אליעזר, שמיר יצחק",
+        "note": "The Knesset’s list of the ministers appointed on the government’s first day, 5 August 1981.",
+        "noteHe": "רשימת השרים שמונו ביום הראשון של הממשלה, 5 באוגוסט 1981, לפי רישומי הכנסת."
       },
       {
         "source": "plenum1983",
@@ -728,10 +735,11 @@
               {
                 "source": "role-roster-20",
                 "quote": "PersonToPositionID 3410; PersonID 2475; PositionID 39; StartDate 1983-10-10T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 27373. יובל נאמן"
+                "note": "Official appointment of יובל נאמן; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של יובל נאמן; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
             "letters": "ת"
           },
           {
@@ -743,10 +751,11 @@
               {
                 "source": "role-roster-20",
                 "quote": "PersonToPositionID 4175; PersonID 2451; PositionID 39; StartDate 1983-10-10T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 27368. יצחק מודעי"
+                "note": "Official appointment of יצחק מודעי; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של יצחק מודעי; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead."
           },
           {
             "factionNameHe": "תנועה למסורת ישראל",
@@ -757,10 +766,11 @@
               {
                 "source": "role-roster-20",
                 "quote": "PersonToPositionID 4199; PersonID 2129; PositionID 39; StartDate 1983-10-10T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 27291. אהרן אוזן"
+                "note": "Official appointment of אהרן אוזן; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של אהרן אוזן; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
             "letters": "ני"
           },
           {
@@ -772,10 +782,11 @@
               {
                 "source": "role-roster-20",
                 "quote": "PersonToPositionID 4542; PersonID 2206; PositionID 39; StartDate 1983-10-10T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 27314. מרדכי בן-פורת"
+                "note": "Official appointment of מרדכי בן-פורת; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של מרדכי בן-פורת; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
             "factionNameEn": "Movement for Social Zionist Renewal"
           },
           {
@@ -787,10 +798,11 @@
               {
                 "source": "role-roster-20",
                 "quote": "PersonToPositionID 4582; PersonID 2300; PositionID 39; StartDate 1983-10-10T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 27336. זבולון המר"
+                "note": "Official appointment of זבולון המר; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של זבולון המר; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
             "letters": "ב"
           }
         ],

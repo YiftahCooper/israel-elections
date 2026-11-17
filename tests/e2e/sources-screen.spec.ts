@@ -19,15 +19,40 @@ test('k1: no zero counts for missing localities, no dead project links, secondar
   await expect(panel.getByText('Not in the data', { exact: true })).toBeVisible();
   await expect(panel.getByText('Lists', { exact: true })).toBeVisible();
   await expect(panel.locator('a[href^="local:"], a[href^="project:"]')).toHaveCount(0);
-  await expect(panel.getByText(/^Project record: data\/raw\/k1\//).first()).toBeVisible();
+  // the project's own transcriptions are listed apart, in plain words, with no file path
+  const own = panel.locator('.sources-own');
+  await expect(own.getByRole('heading', { name: 'Typed in by this project' })).toBeVisible();
+  await expect(own.locator('li').first()).toContainText('typed in from the official results gazette');
+  for (const list of [panel.locator('ul.credits').first(), own]) await expect(list).not.toContainText(/data\/raw\/|Project record|decision \d{4}|\bCEC\b|\bYP \d|OData|mirror/);
   await expect(panel.locator('.chip.secondary', { hasText: 'secondary' }).first()).toBeVisible();
-  // official sources are listed before secondary ones
+  // 1949's sources are all official; its secondary records were the project's own transcriptions, now listed apart
   const kinds = await panel.locator('ul.credits').first().locator('> li .chip').allInnerTexts();
-  expect(kinds.indexOf('secondary')).toBeGreaterThan(-1);
-  expect(kinds.slice(kinds.indexOf('secondary')).every(k => k === 'secondary')).toBe(true);
+  expect(kinds.length).toBeGreaterThan(3);
+  expect(kinds.every(k => k === 'official')).toBe(true);
   // the locality download is offered only where locality data exists
   await expect(panel.getByRole('button', { name: 'localities', exact: true })).toHaveCount(0);
-  await expect(panel.getByRole('link', { name: 'original CEC names', exact: true })).toHaveCount(0);
+  await expect(panel.getByRole('link', { name: 'original Central Elections Committee names', exact: true })).toHaveCount(0);
+});
+
+test('k9: official sources are listed before secondary ones', async ({ page }) => {
+  await open(page, 'en', 'k9');
+  await sourcesTab(page, 'en');
+  const list = page.locator('#analysis-panel ul.credits').first();
+  await expect(list.locator('> li .chip').first()).toBeVisible();
+  const kinds = await list.locator('> li .chip').allInnerTexts();
+  expect(kinds.indexOf('secondary')).toBeGreaterThan(-1);
+  expect(kinds.slice(kinds.indexOf('secondary')).every(k => k === 'secondary')).toBe(true);
+});
+
+test('k1 in Hebrew: the project’s own transcriptions are described in Hebrew, apart from the sources', async ({ page }) => {
+  await open(page, 'he', 'k1');
+  await sourcesTab(page, 'he');
+  const panel = page.locator('#analysis-panel');
+  const own = panel.locator('.sources-own');
+  await expect(own.getByRole('heading', { name: 'הוקלד בפרויקט' })).toBeVisible();
+  await expect(own.locator('li').first()).toContainText('כפי שהוקלדו מהפרסום הרשמי של התוצאות');
+  await expect(own).not.toContainText(/[A-Za-z]{4}/);
+  await expect(panel.locator('ul.credits').first()).not.toContainText(/data\/raw\/|ראו החלטה|OData/);
 });
 
 test('k26 in English: English publishers, one credit per logo, downloads served, no English Wikipedia', async ({ page }) => {
@@ -46,7 +71,7 @@ test('k26 in English: English publishers, one credit per logo, downloads served,
   expect(credits.length).toBeGreaterThan(10);
   for (const c of credits) expect(c, c).toMatch(/^[^\u0590-\u05FF\u0600-\u06FF]*[A-Za-z]/);
   await expect(page.locator('a[href*="en.wikipedia.org"], a[href*="en.m.wikipedia.org"]')).toHaveCount(0);
-  for (const name of ['election data', 'original CEC names', 'all sources']) {
+  for (const name of ['election data', 'original Central Elections Committee names', 'all sources']) {
     const href = await panel.getByRole('link', { name, exact: true }).getAttribute('href');
     expect((await page.request.get(href!)).ok(), href!).toBe(true);
   }

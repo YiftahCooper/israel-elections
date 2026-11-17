@@ -27,7 +27,7 @@
     },
     "toi-extension": {
       "url": "https://www.timesofisrael.com/president-rivlin-grants-netanyahu-more-time-to-negotiate-new-government/",
-      "publisher": "The Times of Israel / AFP",
+      "publisher": "The Times of Israel / Agence France-Presse",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
@@ -245,7 +245,7 @@
         "type": "mandate-expired",
         "person": "netanyahu",
         "notes": [
-          "Deadline from the 13 May notice; failure to form is evidenced by the subsequent dissolution and the IDI historical survey. No mandate-return event is inferred."
+          "Deadline from the 13 May notice; failure to form is evidenced by the subsequent dissolution and the Israel Democracy Institute historical survey. No mandate-return event is inferred."
         ],
         "textEn": "Netanyahu’s extended formation period reached its deadline without a new government.",
         "textHe": "התקופה המוארכת שניתנה לנתניהו להרכבת הממשלה הגיעה לסיומה ללא ממשלה חדשה.",
@@ -292,7 +292,7 @@
       {
         "label": "Gaza fighting",
         "date": "2019-05",
-        "why": "SIPRI’s 2019 chronology selects escalation on 4–5 May; no second inspected qualifying chronology selecting this round was recovered. The AP timeline locator returned a cache miss; contemporary reporting alone does not meet the rule.",
+        "why": "SIPRI’s 2019 chronology selects escalation on 4–5 May; no second inspected qualifying chronology selecting this round was recovered. The Associated Press timeline could not be retrieved; contemporary reporting alone does not meet the rule.",
         "cites": [
           {
             "source": "sipri-2019",

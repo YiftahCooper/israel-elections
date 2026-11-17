@@ -24,21 +24,21 @@
     },
     "recommendations-1": {
       "url": "https://www.jta.org/archive/official-moves-begun-by-katzir-to-form-new-government",
-      "publisher": "Jewish Telegraphic Agency (JTA) Daily News Bulletin archive",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin archive",
       "kind": "secondary",
       "accessed": "2026-11-05",
       "note": "Archive heading 17 January 1974; original bulletin p.3 dateline explicitly 16 January. Rechecked 6 November 2026."
     },
     "recommendations-2": {
       "url": "https://www.jta.org/archive/mrs-meir-accepts-task-of-forming-new-govt-efforts-so-far-deadlocked",
-      "publisher": "Jewish Telegraphic Agency (JTA) Daily News Bulletin archive",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin archive",
       "kind": "secondary",
       "accessed": "2026-11-05",
       "note": "Bulletin dated 1974-01-31."
     },
     "coalition-1": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2016&$format=json",
-      "publisher": "Knesset OData (ParliamentInfo)",
+      "publisher": "Knesset open data",
       "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-04"
@@ -116,21 +116,23 @@
     },
     "recommendations-bulletin": {
       "url": "http://pdfs.jta.org/1974/1974-01-17_012.pdf",
-      "publisher": "JTA Daily News Bulletin, 17 January 1974, p.3 (dateline 16 January)",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin, 17 January 1974, p.3 (dateline 16 January)",
       "kind": "secondary",
       "accessed": "2026-11-06"
     },
     "role-roster-16": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2016%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "role-roster-17": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2017%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "plenum-253635": {
       "url": "https://fs.knesset.gov.il//8/Plenum/8_ptm_253635.pdf",
@@ -273,7 +275,7 @@
         }
       ],
       "notes": [
-        "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
+        "Conditions set in the consultations are not counted as recommendations. “Unknown” does not mean that no recommendation was made.",
         "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved.",
         "Consultation day confirmed as 16 January by the original JTA bulletin (17 January 1974, p.3), whose dateline is JERUSALEM, Jan. 16 and says met separately today. This is reported contemporary press evidence, not an official consultation transcript."
       ],
@@ -431,7 +433,8 @@
           {
             "source": "role-roster-16",
             "quote": "PersonToPositionID 3452; PersonID 2595; PositionID 39; StartDate 1974-03-10T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יצחק רבין; faction join: מערך"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק רבין; faction: מערך.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק רבין; סיעה: מערך."
           }
         ]
       },
@@ -444,7 +447,8 @@
           {
             "source": "role-roster-16",
             "quote": "PersonToPositionID 3863; PersonID 2615; PositionID 39; StartDate 1974-03-10T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יצחק רפאל; faction join: מפלגה דתית לאומית"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק רפאל; faction: מפלגה דתית לאומית.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק רפאל; סיעה: מפלגה דתית לאומית."
           }
         ]
       },
@@ -457,7 +461,8 @@
           {
             "source": "role-roster-16",
             "quote": "PersonToPositionID 3836; PersonID 2575; PositionID 39; StartDate 1974-03-10T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. משה קול; faction join: ליברלים עצמאיים"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: משה קול; faction: ליברלים עצמאיים.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: משה קול; סיעה: ליברלים עצמאיים."
           }
         ]
       },
@@ -467,7 +472,7 @@
         "role": "other",
         "certainty": "unknown",
         "cites": [],
-        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+        "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
       },
       {
         "letters": "עא",
@@ -475,7 +480,7 @@
         "role": "other",
         "certainty": "unknown",
         "cites": [],
-        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
+        "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
       }
     ],
     "coalitionSeats": null,
@@ -522,7 +527,8 @@
               {
                 "source": "role-roster-17",
                 "quote": "PersonToPositionID 3365; PersonID 2520; PositionID 39; StartDate 1974-06-03T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. אברהם עופר; faction join: מערך"
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אברהם עופר; faction: מערך.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אברהם עופר; סיעה: מערך."
               }
             ]
           },
@@ -535,7 +541,8 @@
               {
                 "source": "role-roster-17",
                 "quote": "PersonToPositionID 3837; PersonID 2575; PositionID 39; StartDate 1974-06-03T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. משה קול; faction join: "
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: משה קול.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: משה קול."
               },
               {
                 "source": "rubinstein-1979",
@@ -559,10 +566,11 @@
               {
                 "source": "role-roster-17",
                 "quote": "PersonToPositionID 4392; PersonID 2143; PositionID 57; StartDate 1974-06-03T00:00:00",
-                "note": "Project extraction of official fields, not prose quotation. שולמית אלוני; faction join: ר\"ץ"
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: שולמית אלוני; faction: ר\"ץ.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: שולמית אלוני; סיעה: ר\"ץ."
               }
             ],
-            "note": "A ministry is expected from previous research, but its representing party has not been verified against the appointment; do not infer it."
+            "note": "Earlier research suggests a ministry, but the appointment record does not confirm which party held it, so it is not assumed."
           },
           {
             "letters": "רא",
@@ -575,7 +583,7 @@
                 "quote": "המערך סיעות משתתפות הכנסת לאישור היום מפלגת העבודה, מפ\"ם והרשימות הערביות"
               }
             ],
-            "note": "Named in the governing presentation; no cabinet minister from this faction in the official formation-day roster. Deputy ministry is not a cabinet ministry."
+            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister."
           },
           {
             "letters": "עא",
@@ -588,7 +596,7 @@
                 "quote": "המערך סיעות משתתפות הכנסת לאישור היום מפלגת העבודה, מפ\"ם והרשימות הערביות"
               }
             ],
-            "note": "Named in the governing presentation; no cabinet minister from this faction in the official formation-day roster. Deputy ministry is not a cabinet ministry."
+            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister."
           }
         ],
         "coalitionSeats": 61,
@@ -743,7 +751,7 @@
         ],
         "confidence": "high",
         "notes": [
-          "MFA timeline misnumbers the resolution as 3375; the number and adoption date follow the resolution itself. The text describes the Assembly’s determination, not an editorial endorsement."
+          "Ministry of Foreign Affairs timeline misnumbers the resolution as 3375; the number and adoption date follow the resolution itself. The text describes the Assembly’s determination, not an editorial endorsement."
         ]
       },
       {

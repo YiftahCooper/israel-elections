@@ -47,7 +47,7 @@
     },
     "jta-investiture": {
       "url": "https://www.jta.org/2013/03/18/israel/israels-knesset-approves-new-government",
-      "publisher": "JTA",
+      "publisher": "Jewish Telegraphic Agency",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
@@ -96,13 +96,13 @@
     },
     "ocha-ceasefire-2014": {
       "url": "https://www.ochaopt.org/content/concerns-about-violations-international-humanitarian-law-conduct-hostilities",
-      "publisher": "UN OCHA, Monthly Humanitarian Bulletin, 31 August 2014",
+      "publisher": "UN Office for the Coordination of Humanitarian Affairs, Monthly Humanitarian Bulletin, 31 August 2014",
       "kind": "official",
       "accessed": "2026-11-05"
     },
     "idf-protective-edge-history": {
       "url": "https://www.idf.il/en/mini-sites/wars-and-operations/operation-protective-edge/operation-protective-edge/",
-      "publisher": "IDF, Operation Protective Edge, 8 July–26 August 2014",
+      "publisher": "Israel Defense Forces, Operation Protective Edge, 8 July–26 August 2014",
       "kind": "official",
       "accessed": "2026-11-05"
     },
@@ -120,13 +120,14 @@
     },
     "role-roster-33": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2033%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "appointments-33": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=GovernmentNum%20eq%2033&%24format=json&%24top=1000",
-      "publisher": "Knesset OData, government 33 appointment register",
+      "publisher": "Knesset open data: appointments in government 33",
       "publisherHe": "הכנסת, מאגר המינויים של הממשלה ה־33",
       "kind": "official",
       "accessed": "2026-11-12",
@@ -476,12 +477,12 @@
       {
         "label": "Israeli–Palestinian negotiations resumed",
         "date": "2013-07",
-        "why": "The CFR chronology selects the restart on 30 July 2013; a second inspected qualifying chronology is missing."
+        "why": "The Council on Foreign Relations chronology selects the restart on 30 July 2013; a second inspected qualifying chronology is missing."
       },
       {
         "label": "Conscription and electoral-threshold legislation",
         "date": "2014-03",
-        "why": "IDI and IPU retrospectively select the threshold change, but not both elements of this bundled candidate; the exact enactment record and separately scoped conscription evidence remain missing."
+        "why": "Israel Democracy Institute and Inter-Parliamentary Union retrospectively select the threshold change, but not both elements of this bundled candidate; the exact enactment record and separately scoped conscription evidence remain missing."
       },
       {
         "label": "Abduction and killing of three Israeli teenagers",
@@ -491,7 +492,7 @@
       {
         "label": "Killing of Muhammad Abu Khdeir",
         "date": "2014-07",
-        "why": "No pair of inspected qualifying chronologies selecting this event was recovered; do not infer inclusion from the adjacent war chronology."
+        "why": "No pair of inspected qualifying chronologies selecting this event was recovered; inclusion is not inferred from the war chronology next to it."
       }
     ],
     "start": "2013-03-18",
@@ -549,7 +550,8 @@
           {
             "source": "role-roster-33",
             "quote": "PersonToPositionID 3421; PersonID 965; PositionID 45; StartDate 2013-03-18T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. בנימין נתניהו; faction join: הליכוד - ישראל ביתנו "
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: בנימין נתניהו; faction: הליכוד - ישראל ביתנו.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בנימין נתניהו; סיעה: הליכוד - ישראל ביתנו."
           }
         ]
       },
@@ -562,7 +564,8 @@
           {
             "source": "role-roster-33",
             "quote": "PersonToPositionID 3552; PersonID 23594; PositionID 39; StartDate 2013-03-18T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יאיר לפיד; faction join: יש עתיד בראשות יאיר לפיד"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יאיר לפיד; faction: יש עתיד בראשות יאיר לפיד.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יאיר לפיד; סיעה: יש עתיד בראשות יאיר לפיד."
           }
         ]
       },
@@ -575,7 +578,8 @@
           {
             "source": "role-roster-33",
             "quote": "PersonToPositionID 3477; PersonID 12956; PositionID 39; StartDate 2013-03-18T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. אורי אורבך; faction join: הבית היהודי מייסודם של האיחוד הלאומי והמפד\"ל החדשה"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: אורי אורבך; faction: הבית היהודי מייסודם של האיחוד הלאומי והמפד\"ל החדשה.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אורי אורבך; סיעה: הבית היהודי מייסודם של האיחוד הלאומי והמפד\"ל החדשה."
           }
         ]
       },
@@ -588,7 +592,8 @@
           {
             "source": "role-roster-33",
             "quote": "PersonToPositionID 3513; PersonID 557; PositionID 39; StartDate 2013-03-18T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. עמיר פרץ; faction join: התנועה בראשות ציפי לבני"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: עמיר פרץ; faction: התנועה בראשות ציפי לבני.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: עמיר פרץ; סיעה: התנועה בראשות ציפי לבני."
           }
         ]
       }
@@ -601,7 +606,7 @@
       }
     ],
     "notes": [
-      "Election-list seats at formation, checked against public/data/k19.json."
+      "Election-list seats at formation, checked against the official results."
     ],
     "confidenceVote": {
       "for": 68,
@@ -642,32 +647,38 @@
           {
             "source": "appointments-33",
             "quote": "{\"PersonToPositionID\":3552,\"PersonID\":23594,\"PositionID\":39,\"KnessetNum\":19,\"StartDate\":\"2013-03-18T00:00:00\",\"FinishDate\":\"2014-12-04T00:00:00\",\"GovMinistryID\":1233,\"GovMinistryName\":\"משרד האוצר\",\"DutyDesc\":\"שר האוצר\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":33,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2019-02-04T14:29:20.55\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 23594 is יאיר לפיד, יש עתיד (data/research/knesset-member-changes/k19.json)."
+            "note": "The Knesset’s official record: יאיר לפיד, יש עתיד.",
+            "noteHe": "הרישום הרשמי של הכנסת: יאיר לפיד, יש עתיד."
           },
           {
             "source": "appointments-33",
             "quote": "{\"PersonToPositionID\":4635,\"PersonID\":23595,\"PositionID\":39,\"KnessetNum\":19,\"StartDate\":\"2013-03-18T00:00:00\",\"FinishDate\":\"2014-12-04T00:00:00\",\"GovMinistryID\":1000,\"GovMinistryName\":\"משרד החינוך\",\"DutyDesc\":\"שר החינוך\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":33,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-19T16:12:37.9\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 23595 is שי פירון, יש עתיד (data/research/knesset-member-changes/k19.json)."
+            "note": "The Knesset’s official record: שי פירון, יש עתיד.",
+            "noteHe": "הרישום הרשמי של הכנסת: שי פירון, יש עתיד."
           },
           {
             "source": "appointments-33",
             "quote": "{\"PersonToPositionID\":4637,\"PersonID\":23596,\"PositionID\":57,\"KnessetNum\":19,\"StartDate\":\"2013-03-18T00:00:00\",\"FinishDate\":\"2014-12-04T00:00:00\",\"GovMinistryID\":1108,\"GovMinistryName\":\"משרד הבריאות\",\"DutyDesc\":\"שרת הבריאות\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":33,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-19T15:59:06.963\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 23596 is יעל גרמן, יש עתיד (data/research/knesset-member-changes/k19.json)."
+            "note": "The Knesset’s official record: יעל גרמן, יש עתיד.",
+            "noteHe": "הרישום הרשמי של הכנסת: יעל גרמן, יש עתיד."
           },
           {
             "source": "appointments-33",
             "quote": "{\"PersonToPositionID\":23374,\"PersonID\":23598,\"PositionID\":39,\"KnessetNum\":19,\"StartDate\":\"2013-03-18T00:00:00\",\"FinishDate\":\"2014-12-04T00:00:00\",\"GovMinistryID\":1063,\"GovMinistryName\":\"משרד המדע, הטכנולוגיה והחלל\",\"DutyDesc\":\"שר המדע, הטכנולוגיה והחלל\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":33,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-10-18T19:45:02.44\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 23598 is יעקב פרי, יש עתיד (data/research/knesset-member-changes/k19.json)."
+            "note": "The Knesset’s official record: יעקב פרי, יש עתיד.",
+            "noteHe": "הרישום הרשמי של הכנסת: יעקב פרי, יש עתיד."
           },
           {
             "source": "appointments-33",
             "quote": "{\"PersonToPositionID\":4636,\"PersonID\":469,\"PositionID\":57,\"KnessetNum\":19,\"StartDate\":\"2013-03-18T00:00:00\",\"FinishDate\":\"2014-12-04T00:00:00\",\"GovMinistryID\":872,\"GovMinistryName\":\"משרד המשפטים\",\"DutyDesc\":\"שרת המשפטים\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":33,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-19T16:31:45.077\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 469 is ציפי לבני, התנועה (data/research/knesset-member-changes/k19.json)."
+            "note": "The Knesset’s official record: ציפי לבני, התנועה.",
+            "noteHe": "הרישום הרשמי של הכנסת: ציפי לבני, התנועה."
           },
           {
             "source": "appointments-33",
             "quote": "{\"PersonToPositionID\":4638,\"PersonID\":23597,\"PositionID\":39,\"KnessetNum\":19,\"StartDate\":\"2013-03-18T00:00:00\",\"FinishDate\":\"2014-12-05T00:00:00\",\"GovMinistryID\":709,\"GovMinistryName\":\"משרד הרווחה והשירותים החברתיים\",\"DutyDesc\":\"שר הרווחה והשירותים החברתיים\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":33,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-19T17:27:29.6\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 23597 is מאיר כהן, יש עתיד (data/research/knesset-member-changes/k19.json)."
+            "note": "The Knesset’s official record: מאיר כהן, יש עתיד.",
+            "noteHe": "הרישום הרשמי של הכנסת: מאיר כהן, יש עתיד."
           },
           {
             "source": "idi-dismissal-date",

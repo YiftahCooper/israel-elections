@@ -1,0 +1,907 @@
+[
+ {
+  "path": ".events[10].source.publisher",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "Israel Democracy Institute"
+ },
+ {
+  "path": ".events[10].source.publisherHe",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה"
+ },
+ {
+  "path": ".events[11].source.publisher",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "Israel Democracy Institute"
+ },
+ {
+  "path": ".events[11].source.publisherHe",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה"
+ },
+ {
+  "path": ".events[12].source.publisher",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "Israel Democracy Institute"
+ },
+ {
+  "path": ".events[12].source.publisherHe",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה"
+ },
+ {
+  "path": ".events[13].source.publisher",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "Israel Democracy Institute"
+ },
+ {
+  "path": ".events[13].source.publisherHe",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה"
+ },
+ {
+  "path": ".events[14].source.publisher",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "Israel Democracy Institute"
+ },
+ {
+  "path": ".events[14].source.publisherHe",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה"
+ },
+ {
+  "path": ".events[15].source.publisher",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "Israel Democracy Institute"
+ },
+ {
+  "path": ".events[15].source.publisherHe",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה"
+ },
+ {
+  "path": ".events[16].source.publisher",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "Israel Democracy Institute"
+ },
+ {
+  "path": ".events[16].source.publisherHe",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה"
+ },
+ {
+  "path": ".events[17].source.publisher",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "Israel Democracy Institute"
+ },
+ {
+  "path": ".events[17].source.publisherHe",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה"
+ },
+ {
+  "path": ".events[18].source.publisher",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "Israel Democracy Institute"
+ },
+ {
+  "path": ".events[18].source.publisherHe",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה"
+ },
+ {
+  "path": ".events[19].source.publisher",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "Israel Democracy Institute"
+ },
+ {
+  "path": ".events[19].source.publisherHe",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה"
+ },
+ {
+  "path": ".events[20].source.publisher",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "Israel Democracy Institute"
+ },
+ {
+  "path": ".events[20].source.publisherHe",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה"
+ },
+ {
+  "path": ".events[21].source.publisher",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "Israel Democracy Institute"
+ },
+ {
+  "path": ".events[21].source.publisherHe",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה"
+ },
+ {
+  "path": ".events[22].source.publisher",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "Israel Democracy Institute"
+ },
+ {
+  "path": ".events[22].source.publisherHe",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה"
+ },
+ {
+  "path": ".events[23].source.publisher",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "Israel Democracy Institute"
+ },
+ {
+  "path": ".events[23].source.publisherHe",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה"
+ },
+ {
+  "path": ".events[24].source.publisher",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "Israel Democracy Institute"
+ },
+ {
+  "path": ".events[24].source.publisherHe",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה"
+ },
+ {
+  "path": ".events[25].source.publisher",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "Israel Democracy Institute"
+ },
+ {
+  "path": ".events[25].source.publisherHe",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה"
+ },
+ {
+  "path": ".events[26].source.publisher",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "Israel Democracy Institute"
+ },
+ {
+  "path": ".events[26].source.publisherHe",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה"
+ },
+ {
+  "path": ".events[27].source.publisher",
+  "before": "CEC / Reshumot YP 9476 p.4248, case 1156/21 (28 February 2021)",
+  "after": "Central Elections Committee / Reshumot, Yalkut HaPirsumim 9476 p.4248, case 1156/21 (28 February 2021)"
+ },
+ {
+  "path": ".events[28].source.publisher",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "Israel Democracy Institute"
+ },
+ {
+  "path": ".events[28].source.publisherHe",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה"
+ },
+ {
+  "path": ".events[29].source.publisher",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "Israel Democracy Institute"
+ },
+ {
+  "path": ".events[29].source.publisherHe",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה"
+ },
+ {
+  "path": ".events[30].source.publisher",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "Israel Democracy Institute"
+ },
+ {
+  "path": ".events[30].source.publisherHe",
+  "before": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+  "after": "המכון הישראלי לדמוקרטיה"
+ },
+ {
+  "path": ".events[37].source.publisherHe",
+  "before": "Central Elections Committee / Reshumot",
+  "after": "ועדת הבחירות המרכזית / רשומות"
+ },
+ {
+  "path": ".events[39].source.publisher",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "Knesset open data"
+ },
+ {
+  "path": ".events[39].source.publisherHe",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "הכנסת, מאגר המידע הפתוח"
+ },
+ {
+  "path": ".events[39].relatedSources[0].publisher",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "Central Elections Committee / Reshumot (gov.il)"
+ },
+ {
+  "path": ".events[39].relatedSources[0].publisherHe",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "ועדת הבחירות המרכזית / רשומות (gov.il)"
+ },
+ {
+  "path": ".events[39].relatedSources[1].publisher",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "Central Elections Committee / Reshumot (gov.il)"
+ },
+ {
+  "path": ".events[39].relatedSources[1].publisherHe",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "ועדת הבחירות המרכזית / רשומות (gov.il)"
+ },
+ {
+  "path": ".events[40].source.publisher",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "Knesset open data"
+ },
+ {
+  "path": ".events[40].source.publisherHe",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "הכנסת, מאגר המידע הפתוח"
+ },
+ {
+  "path": ".events[40].relatedSources[0].publisherHe",
+  "before": "Central Elections Committee / Reshumot",
+  "after": "ועדת הבחירות המרכזית / רשומות"
+ },
+ {
+  "path": ".events[40].relatedSources[1].publisherHe",
+  "before": "Central Elections Committee / Reshumot",
+  "after": "ועדת הבחירות המרכזית / רשומות"
+ },
+ {
+  "path": ".events[41].source.publisher",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "Knesset open data"
+ },
+ {
+  "path": ".events[41].source.publisherHe",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "הכנסת, מאגר המידע הפתוח"
+ },
+ {
+  "path": ".events[41].relatedSources[0].publisherHe",
+  "before": "Central Elections Committee / Reshumot",
+  "after": "ועדת הבחירות המרכזית / רשומות"
+ },
+ {
+  "path": ".events[41].relatedSources[1].publisherHe",
+  "before": "Central Elections Committee / Reshumot",
+  "after": "ועדת הבחירות המרכזית / רשומות"
+ },
+ {
+  "path": ".events[42].source.publisher",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "Knesset open data"
+ },
+ {
+  "path": ".events[42].source.publisherHe",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "הכנסת, מאגר המידע הפתוח"
+ },
+ {
+  "path": ".events[42].relatedSources[0].publisherHe",
+  "before": "Central Elections Committee / Reshumot",
+  "after": "ועדת הבחירות המרכזית / רשומות"
+ },
+ {
+  "path": ".events[43].source.publisher",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "Knesset open data"
+ },
+ {
+  "path": ".events[43].source.publisherHe",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "הכנסת, מאגר המידע הפתוח"
+ },
+ {
+  "path": ".events[43].relatedSources[0].publisherHe",
+  "before": "Central Elections Committee / Reshumot",
+  "after": "ועדת הבחירות המרכזית / רשומות"
+ },
+ {
+  "path": ".events[43].relatedSources[1].publisher",
+  "before": "CEC / Reshumot YP 9511 §4",
+  "after": "Central Elections Committee / Reshumot, Yalkut HaPirsumim 9511 §4 (copy at olaw.org.il)"
+ },
+ {
+  "path": ".events[43].relatedSources[1].publisherHe",
+  "before": "ועדת הבחירות / רשומות",
+  "after": "ועדת הבחירות / רשומות, ילקוט הפרסומים 9511 סעיף 4 (עותק באתר olaw.org.il)"
+ },
+ {
+  "path": ".events[44].source.publisher",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "Central Elections Committee / Reshumot (gov.il)"
+ },
+ {
+  "path": ".events[44].source.publisherHe",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "ועדת הבחירות המרכזית / רשומות (gov.il)"
+ },
+ {
+  "path": ".events[44].relatedSources[0].publisher",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "Central Elections Committee / Reshumot (gov.il)"
+ },
+ {
+  "path": ".events[44].relatedSources[0].publisherHe",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "ועדת הבחירות המרכזית / רשומות (gov.il)"
+ },
+ {
+  "path": ".events[44].relatedSources[1].publisher",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "Knesset open data"
+ },
+ {
+  "path": ".events[44].relatedSources[1].publisherHe",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "הכנסת, מאגר המידע הפתוח"
+ },
+ {
+  "path": ".events[45].source.publisher",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "Central Elections Committee / Reshumot (gov.il)"
+ },
+ {
+  "path": ".events[45].source.publisherHe",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "ועדת הבחירות המרכזית / רשומות (gov.il)"
+ },
+ {
+  "path": ".events[45].relatedSources[0].publisher",
+  "before": "Reshumot / IDI-hosted facsimile, YP 4017 p. 3636",
+  "after": "Reshumot, Yalkut HaPirsumim 4017 p. 3636 (facsimile at the Israel Democracy Institute)"
+ },
+ {
+  "path": ".events[45].relatedSources[0].publisherHe",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "רשומות, ילקוט הפרסומים 4017 עמ׳ 3636 (עותק במכון הישראלי לדמוקרטיה)"
+ },
+ {
+  "path": ".events[45].relatedSources[1].publisher",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "Knesset open data"
+ },
+ {
+  "path": ".events[45].relatedSources[1].publisherHe",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "הכנסת, מאגר המידע הפתוח"
+ },
+ {
+  "path": ".events[46].source.publisher",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "Central Elections Committee / Reshumot (gov.il)"
+ },
+ {
+  "path": ".events[46].source.publisherHe",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "ועדת הבחירות המרכזית / רשומות (gov.il)"
+ },
+ {
+  "path": ".events[46].relatedSources[0].publisher",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "Central Elections Committee / Reshumot (gov.il)"
+ },
+ {
+  "path": ".events[46].relatedSources[0].publisherHe",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "ועדת הבחירות המרכזית / רשומות (gov.il)"
+ },
+ {
+  "path": ".events[46].relatedSources[1].publisher",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "Knesset open data"
+ },
+ {
+  "path": ".events[46].relatedSources[1].publisherHe",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "הכנסת, מאגר המידע הפתוח"
+ },
+ {
+  "path": ".events[46].relatedSources[2].publisher",
+  "before": "CEC / Reshumot, YP 4411 p.3398 (disclosed mirror)",
+  "after": "Central Elections Committee / Reshumot, Yalkut HaPirsumim 4411 p.3398 (copy at olaw.org.il)"
+ },
+ {
+  "path": ".events[46].relatedSources[2].publisherHe",
+  "before": "ועדת הבחירות המרכזית / רשומות, י״פ 4411 עמ׳ 3398 (אתר מראה)",
+  "after": "ועדת הבחירות המרכזית / רשומות, י״פ 4411 עמ׳ 3398 (עותק באתר olaw.org.il)"
+ },
+ {
+  "path": ".events[47].source.publisher",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "Central Elections Committee / Reshumot (gov.il)"
+ },
+ {
+  "path": ".events[47].source.publisherHe",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "ועדת הבחירות המרכזית / רשומות (gov.il)"
+ },
+ {
+  "path": ".events[47].relatedSources[0].publisher",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "Central Elections Committee / Reshumot (gov.il)"
+ },
+ {
+  "path": ".events[47].relatedSources[0].publisherHe",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "ועדת הבחירות המרכזית / רשומות (gov.il)"
+ },
+ {
+  "path": ".events[47].relatedSources[1].publisher",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "Knesset open data"
+ },
+ {
+  "path": ".events[47].relatedSources[1].publisherHe",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "הכנסת, מאגר המידע הפתוח"
+ },
+ {
+  "path": ".events[48].source.publisher",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "Central Elections Committee / Reshumot (gov.il)"
+ },
+ {
+  "path": ".events[48].source.publisherHe",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "ועדת הבחירות המרכזית / רשומות (gov.il)"
+ },
+ {
+  "path": ".events[48].relatedSources[0].publisher",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "Central Elections Committee / Reshumot (gov.il)"
+ },
+ {
+  "path": ".events[48].relatedSources[0].publisherHe",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "ועדת הבחירות המרכזית / רשומות (gov.il)"
+ },
+ {
+  "path": ".events[48].relatedSources[1].publisher",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "Knesset open data"
+ },
+ {
+  "path": ".events[48].relatedSources[1].publisherHe",
+  "before": "Knesset (official OData API, ParliamentInfo.svc)",
+  "after": "הכנסת, מאגר המידע הפתוח"
+ },
+ {
+  "path": ".events[49].source.publisher",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "Central Elections Committee / Reshumot (gov.il)"
+ },
+ {
+  "path": ".events[49].source.publisherHe",
+  "before": "Central Elections Committee / Reshumot (gov.il host)",
+  "after": "ועדת הבחירות המרכזית / רשומות (gov.il)"
+ },
+ {
+  "path": ".events[49].relatedSources[0].publisher",
+  "before": "Central Elections Committee / Reshumot (olaw.org.il mirror)",
+  "after": "Central Elections Committee / Reshumot (copy at olaw.org.il)"
+ },
+ {
+  "path": ".events[49].relatedSources[0].publisherHe",
+  "before": "Central Elections Committee / Reshumot (olaw.org.il mirror)",
+  "after": "ועדת הבחירות המרכזית / רשומות (עותק באתר olaw.org.il)"
+ },
+ {
+  "path": ".events[50].source.publisher",
+  "before": "CEC / Reshumot",
+  "after": "Central Elections Committee / Reshumot"
+ },
+ {
+  "path": ".events[51].source.publisherHe",
+  "before": "Central Elections Committee / Reshumot",
+  "after": "ועדת הבחירות המרכזית / רשומות"
+ },
+ {
+  "path": ".events[51].relatedSources[0].publisher",
+  "before": "Project derivation of official CEC polling-station data",
+  "after": "Central Elections Committee, polling-station results (data.gov.il)"
+ },
+ {
+  "path": ".events[51].relatedSources[0].publisherHe",
+  "before": "Project derivation of official CEC polling-station data",
+  "after": "ועדת הבחירות המרכזית, תוצאות הקלפיות (data.gov.il)"
+ },
+ {
+  "path": ".events[52].source.publisherHe",
+  "before": "Central Elections Committee / Reshumot",
+  "after": "ועדת הבחירות המרכזית / רשומות"
+ },
+ {
+  "path": ".events[52].relatedSources[0].publisher",
+  "before": "Project derivation of official CEC polling-station data",
+  "after": "Central Elections Committee, polling-station results (data.gov.il)"
+ },
+ {
+  "path": ".events[52].relatedSources[0].publisherHe",
+  "before": "Project derivation of official CEC polling-station data",
+  "after": "ועדת הבחירות המרכזית, תוצאות הקלפיות (data.gov.il)"
+ },
+ {
+  "path": ".events[53].source.publisherHe",
+  "before": "Central Elections Committee / Reshumot",
+  "after": "ועדת הבחירות המרכזית / רשומות"
+ },
+ {
+  "path": ".events[53].relatedSources[0].publisherHe",
+  "before": "Central Elections Committee",
+  "after": "ועדת הבחירות המרכזית"
+ },
+ {
+  "path": ".events[54].source.publisherHe",
+  "before": "Central Elections Committee / Reshumot",
+  "after": "ועדת הבחירות המרכזית / רשומות"
+ },
+ {
+  "path": ".events[54].relatedSources[0].publisherHe",
+  "before": "Central Elections Committee",
+  "after": "ועדת הבחירות המרכזית"
+ },
+ {
+  "path": ".events[54].relatedSources[1].publisher",
+  "before": "Reshumot — YP 6546 p.2874",
+  "after": "Reshumot — Yalkut HaPirsumim 6546 p.2874"
+ },
+ {
+  "path": ".events[55].source.publisher",
+  "before": "Knesset Research and Information Center / מרכז המחקר והמידע של הכנסת",
+  "after": "Knesset Research and Information Center"
+ },
+ {
+  "path": ".events[55].source.publisherHe",
+  "before": "Knesset Research and Information Center / מרכז המחקר והמידע של הכנסת",
+  "after": "מרכז המחקר והמידע של הכנסת"
+ },
+ {
+  "path": ".events[56].source.publisher",
+  "before": "Knesset Research and Information Center / מרכז המחקר והמידע של הכנסת",
+  "after": "Knesset Research and Information Center"
+ },
+ {
+  "path": ".events[56].source.publisherHe",
+  "before": "Knesset Research and Information Center / מרכז המחקר והמידע של הכנסת",
+  "after": "מרכז המחקר והמידע של הכנסת"
+ },
+ {
+  "path": ".events[57].source.publisher",
+  "before": "Knesset Research and Information Center / מרכז המחקר והמידע של הכנסת",
+  "after": "Knesset Research and Information Center"
+ },
+ {
+  "path": ".events[57].source.publisherHe",
+  "before": "Knesset Research and Information Center / מרכז המחקר והמידע של הכנסת",
+  "after": "מרכז המחקר והמידע של הכנסת"
+ },
+ {
+  "path": ".events[58].source.publisherHe",
+  "before": "Central Elections Committee / Reshumot",
+  "after": "ועדת הבחירות המרכזית / רשומות"
+ },
+ {
+  "path": ".events[58].relatedSources[0].publisher",
+  "before": "Project derivation of official CEC polling-station data",
+  "after": "Central Elections Committee, polling-station results (data.gov.il)"
+ },
+ {
+  "path": ".events[58].relatedSources[0].publisherHe",
+  "before": "Project derivation of official CEC polling-station data",
+  "after": "ועדת הבחירות המרכזית, תוצאות הקלפיות (data.gov.il)"
+ },
+ {
+  "path": ".events[59].source.publisherHe",
+  "before": "Central Elections Committee / Reshumot",
+  "after": "ועדת הבחירות המרכזית / רשומות"
+ },
+ {
+  "path": ".events[59].relatedSources[0].publisherHe",
+  "before": "Central Elections Committee",
+  "after": "ועדת הבחירות המרכזית"
+ },
+ {
+  "path": ".events[59].relatedSources[1].publisher",
+  "before": "Reshumot — YP 6546 p.2874",
+  "after": "Reshumot — Yalkut HaPirsumim 6546 p.2874"
+ },
+ {
+  "path": ".events[60].source.publisherHe",
+  "before": "Central Elections Committee / Reshumot",
+  "after": "ועדת הבחירות המרכזית / רשומות"
+ },
+ {
+  "path": ".events[60].relatedSources[0].publisherHe",
+  "before": "Central Elections Committee",
+  "after": "ועדת הבחירות המרכזית"
+ },
+ {
+  "path": ".events[60].relatedSources[1].publisher",
+  "before": "Reshumot — YP 6546 p.2874",
+  "after": "Reshumot — Yalkut HaPirsumim 6546 p.2874"
+ },
+ {
+  "path": ".events[67].source.publisher",
+  "before": "CEC / Reshumot, YP 4411 p.3398 (disclosed mirror)",
+  "after": "Central Elections Committee / Reshumot, Yalkut HaPirsumim 4411 p.3398 (copy at olaw.org.il)"
+ },
+ {
+  "path": ".events[67].source.publisherHe",
+  "before": "ועדת הבחירות המרכזית / רשומות, י״פ 4411 עמ׳ 3398 (אתר מראה)",
+  "after": "ועדת הבחירות המרכזית / רשומות, י״פ 4411 עמ׳ 3398 (עותק באתר olaw.org.il)"
+ },
+ {
+  "path": ".events[68].source.publisher",
+  "before": "CEC / Reshumot, YP 4411 p.3398 (disclosed mirror)",
+  "after": "Central Elections Committee / Reshumot, Yalkut HaPirsumim 4411 p.3398 (copy at olaw.org.il)"
+ },
+ {
+  "path": ".events[68].source.publisherHe",
+  "before": "ועדת הבחירות המרכזית / רשומות, י״פ 4411 עמ׳ 3398 (אתר מראה)",
+  "after": "ועדת הבחירות המרכזית / רשומות, י״פ 4411 עמ׳ 3398 (עותק באתר olaw.org.il)"
+ },
+ {
+  "path": ".events[69].source.publisher",
+  "before": "CEC / Reshumot, YP 4411 p.3398 (disclosed mirror)",
+  "after": "Central Elections Committee / Reshumot, Yalkut HaPirsumim 4411 p.3398 (copy at olaw.org.il)"
+ },
+ {
+  "path": ".events[69].source.publisherHe",
+  "before": "ועדת הבחירות המרכזית / רשומות, י״פ 4411 עמ׳ 3398 (אתר מראה)",
+  "after": "ועדת הבחירות המרכזית / רשומות, י״פ 4411 עמ׳ 3398 (עותק באתר olaw.org.il)"
+ },
+ {
+  "path": ".events[70].source.publisher",
+  "before": "CEC / Reshumot, YP 4411 p.3398 (disclosed mirror)",
+  "after": "Central Elections Committee / Reshumot, Yalkut HaPirsumim 4411 p.3398 (copy at olaw.org.il)"
+ },
+ {
+  "path": ".events[70].source.publisherHe",
+  "before": "ועדת הבחירות המרכזית / רשומות, י״פ 4411 עמ׳ 3398 (אתר מראה)",
+  "after": "ועדת הבחירות המרכזית / רשומות, י״פ 4411 עמ׳ 3398 (עותק באתר olaw.org.il)"
+ },
+ {
+  "path": ".events[71].source.publisher",
+  "before": "CEC / Reshumot, YP 4411 p.3398 (disclosed mirror)",
+  "after": "Central Elections Committee / Reshumot, Yalkut HaPirsumim 4411 p.3398 (copy at olaw.org.il)"
+ },
+ {
+  "path": ".events[71].source.publisherHe",
+  "before": "ועדת הבחירות המרכזית / רשומות, י״פ 4411 עמ׳ 3398 (אתר מראה)",
+  "after": "ועדת הבחירות המרכזית / רשומות, י״פ 4411 עמ׳ 3398 (עותק באתר olaw.org.il)"
+ },
+ {
+  "path": ".events[72].source.publisher",
+  "before": "Reshumot, YP 866 p.1847, notices signed 8 August 1961",
+  "after": "Reshumot, Yalkut HaPirsumim 866 p.1847, notices signed 8 August 1961"
+ },
+ {
+  "path": ".pmContests[1].candidates[2].source.publisher",
+  "before": "CEC / Reshumot, YP 4755 p.3305: PM withdrawals 16 May 1999 (mirror)",
+  "after": "Central Elections Committee / Reshumot, Yalkut HaPirsumim 4755 p.3305: candidates for Prime Minister who withdrew, 16 May 1999 (copy at olaw.org.il)"
+ },
+ {
+  "path": ".pmContests[1].candidates[3].source.publisher",
+  "before": "CEC / Reshumot, YP 4755 p.3305: PM withdrawals 16 May 1999 (mirror)",
+  "after": "Central Elections Committee / Reshumot, Yalkut HaPirsumim 4755 p.3305: candidates for Prime Minister who withdrew, 16 May 1999 (copy at olaw.org.il)"
+ },
+ {
+  "path": ".pmContests[1].candidates[4].source.publisher",
+  "before": "CEC / Reshumot, YP 4755 p.3305: PM withdrawals 16 May 1999 (mirror)",
+  "after": "Central Elections Committee / Reshumot, Yalkut HaPirsumim 4755 p.3305: candidates for Prime Minister who withdrew, 16 May 1999 (copy at olaw.org.il)"
+ },
+ {
+  "path": ".events[2].textEn",
+  "before": "Flatto-Sharon had one candidate, 35,049 votes and one published seat. The Knesset’s 1 November 1977 appeal determination confirms the CEC’s one-seat initial cap, 114 initial seats and six surplus seats under section 81(d).",
+  "after": "Flatto-Sharon had one candidate, 35,049 votes and one published seat. The Knesset’s 1 November 1977 appeal determination confirms the Central Elections Committee’s one-seat initial cap, 114 initial seats and six surplus seats under section 81(d)."
+ },
+ {
+  "path": ".events[10].textEn",
+  "before": "Election-day eligibility: Socialist List. The list was excluded; the Supreme Court rejected the appeal. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+  "after": "Election-day eligibility: Socialist List. The list was excluded; the Supreme Court rejected the appeal. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date."
+ },
+ {
+  "path": ".events[11].textEn",
+  "before": "Election-day eligibility: Kach. The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+  "after": "Election-day eligibility: Kach. The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date."
+ },
+ {
+  "path": ".events[12].textEn",
+  "before": "Election-day eligibility: Progressive List for Peace. The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+  "after": "Election-day eligibility: Progressive List for Peace. The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date."
+ },
+ {
+  "path": ".events[13].textEn",
+  "before": "Election-day eligibility: Kach. The list was excluded; the Supreme Court rejected the appeal. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+  "after": "Election-day eligibility: Kach. The list was excluded; the Supreme Court rejected the appeal. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date."
+ },
+ {
+  "path": ".events[14].textEn",
+  "before": "Election-day eligibility: Kach and Kahane Chai. Both lists were excluded; the Supreme Court rejected the appeals. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+  "after": "Election-day eligibility: Kach and Kahane Chai. Both lists were excluded; the Supreme Court rejected the appeals. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date."
+ },
+ {
+  "path": ".events[15].textEn",
+  "before": "Election-day eligibility: Balad. The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+  "after": "Election-day eligibility: Balad. The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date."
+ },
+ {
+  "path": ".events[16].textEn",
+  "before": "Election-day eligibility: Azmi Bishara (candidate). The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+  "after": "Election-day eligibility: Azmi Bishara (candidate). The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date."
+ },
+ {
+  "path": ".events[17].textEn",
+  "before": "Election-day eligibility: Ahmad Tibi (candidate). The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+  "after": "Election-day eligibility: Ahmad Tibi (candidate). The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date."
+ },
+ {
+  "path": ".events[18].textEn",
+  "before": "Election-day eligibility: Balad. The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+  "after": "Election-day eligibility: Balad. The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date."
+ },
+ {
+  "path": ".events[19].textEn",
+  "before": "Election-day eligibility: Ra’am–Ta’al. The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+  "after": "Election-day eligibility: Ra’am–Ta’al. The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date."
+ },
+ {
+  "path": ".events[20].textEn",
+  "before": "Election-day eligibility: Hanin Zoabi (candidate). The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+  "after": "Election-day eligibility: Hanin Zoabi (candidate). The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date."
+ },
+ {
+  "path": ".events[21].textEn",
+  "before": "Election-day eligibility: Hanin Zoabi (candidate). The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+  "after": "Election-day eligibility: Hanin Zoabi (candidate). The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date."
+ },
+ {
+  "path": ".events[22].textEn",
+  "before": "Election-day eligibility: Baruch Marzel (candidate). The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+  "after": "Election-day eligibility: Baruch Marzel (candidate). The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date."
+ },
+ {
+  "path": ".events[23].textEn",
+  "before": "Election-day eligibility: Ra’am–Balad. The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+  "after": "Election-day eligibility: Ra’am–Balad. The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date."
+ },
+ {
+  "path": ".events[24].textEn",
+  "before": "Election-day eligibility: Ofer Cassif (candidate). The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+  "after": "Election-day eligibility: Ofer Cassif (candidate). The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date."
+ },
+ {
+  "path": ".events[25].textEn",
+  "before": "Election-day eligibility: Heba Yazbak (candidate). The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+  "after": "Election-day eligibility: Heba Yazbak (candidate). The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date."
+ },
+ {
+  "path": ".events[26].textEn",
+  "before": "Election-day eligibility: Mishpat Tzedek. The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+  "after": "Election-day eligibility: Mishpat Tzedek. The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date."
+ },
+ {
+  "path": ".events[28].textEn",
+  "before": "Election-day eligibility: Balad. The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+  "after": "Election-day eligibility: Balad. The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date."
+ },
+ {
+  "path": ".events[29].textEn",
+  "before": "Election-day eligibility: Michael Ben Ari disqualified by the Supreme Court after the CEC had approved the candidacy. This excluded individual candidates, not their entire list. IDI secondary account; date denotes election-day status.",
+  "after": "Election-day eligibility: Michael Ben Ari disqualified by the Supreme Court after the Central Elections Committee had approved the candidacy. This excluded individual candidates, not their entire list. Israel Democracy Institute, secondary account; date denotes election-day status."
+ },
+ {
+  "path": ".events[30].textEn",
+  "before": "Election-day eligibility: Baruch Marzel and Bentzi Gopstein disqualified by the Supreme Court after the CEC had approved the candidacy. This excluded individual candidates, not their entire list. IDI secondary account; date denotes election-day status.",
+  "after": "Election-day eligibility: Baruch Marzel and Bentzi Gopstein disqualified by the Supreme Court after the Central Elections Committee had approved the candidacy. This excluded individual candidates, not their entire list. Israel Democracy Institute, secondary account; date denotes election-day status."
+ },
+ {
+  "path": ".events[31].textEn",
+  "before": "CEC excluded this list under Basic Law: The Knesset §7A; an appeal followed.",
+  "after": "The Central Elections Committee excluded this list under Basic Law: The Knesset §7A; an appeal followed."
+ },
+ {
+  "path": ".events[33].textEn",
+  "before": "The CEC excluded Sami Abu Shehadeh (#3) and Ofer Cassif (#6), subject to Supreme Court approval. This was a candidate decision, separate from the list exclusion.",
+  "after": "The Central Elections Committee excluded Sami Abu Shehadeh (#3) and Ofer Cassif (#6), subject to Supreme Court approval. This was a candidate decision, separate from the list exclusion."
+ },
+ {
+  "path": ".events[35].textEn",
+  "before": "CEC excluded this list under Basic Law: The Knesset §7A; an appeal followed.",
+  "after": "The Central Elections Committee excluded this list under Basic Law: The Knesset §7A; an appeal followed."
+ },
+ {
+  "path": ".events[37].textEn",
+  "before": "Tzomet did not participate after all ten candidates resigned: nine on 19 February 2020 and Avi-Chen Shashua on 20 February (YP 8708, p.4468).",
+  "after": "Tzomet did not participate after all ten candidates resigned: nine on 19 February 2020 and Avi-Chen Shashua on 20 February (Yalkut HaPirsumim 8708, p.4468)."
+ },
+ {
+  "path": ".events[42].textEn",
+  "before": "Opening-day snapshot: Yael German was registered at #13; Idan Roll (#34) served at opening. No retained CEC notice names the elected members for this election. Registered rank, declaration and opening membership are different snapshots; list seats do not change. The records do not establish the exact replacement date.",
+  "after": "Opening-day snapshot: Yael German was registered at #13; Idan Roll (#34) served at opening. No Central Elections Committee notice found names the elected members for this election. Registered rank, declaration and opening membership are different snapshots; list seats do not change. The records do not establish the exact replacement date."
+ },
+ {
+  "path": ".events[43].textEn",
+  "before": "Alon Davidi (#3) was declared elected in YP 9511 (31 March 2021, §4). He announced on 5 April that he would remain mayor of Sderot and not take the seat (Davar). Idit Silman (#8) served from the opening on 6 April (Knesset OData). Registered rank, declaration and opening membership are distinct; list seats do not change.",
+  "after": "Alon Davidi (#3) was declared elected in Yalkut HaPirsumim 9511 (31 March 2021, §4). He announced on 5 April that he would remain mayor of Sderot and not take the seat (Davar). Idit Silman (#8) served from the opening on 6 April (Knesset OData). Registered rank, declaration and opening membership are distinct; list seats do not change."
+ },
+ {
+  "path": ".events[46].textEn",
+  "before": "Ora Namir (#18) resigned from the registered Labor list on 21 May 1996 (YP 4411 p.3398). She is absent from the gazetted elected names; the original ranks are preserved and this rank is skipped.",
+  "after": "Ora Namir (#18) resigned from the registered Labor list on 21 May 1996 (Yalkut HaPirsumim 4411 p.3398). She is absent from the gazetted elected names; the original ranks are preserved and this rank is skipped."
+ },
+ {
+  "path": ".events[50].textEn",
+  "before": "The gazetted results (YP 4414) govern this dataset. CBS corroborates the national totals. Differing secondary/MFA report values do not override the statutory notice; no later formal correction has been verified.",
+  "after": "The gazetted results (Yalkut HaPirsumim 4414) govern this dataset. Central Bureau of Statistics corroborates the national totals. Differing secondary or Ministry of Foreign Affairs report values do not override the statutory notice; no later formal correction has been verified."
+ },
+ {
+  "path": ".events[53].textEn",
+  "before": "Source comparison reviewed 4 November 2026 (not a historical correction date): The gazette prints 49,684 invalid votes; the CEC memorandum and polling data give 43,097. Valid list votes agree. The dataset uses the latter invalid total; no formal erratum has been located.",
+  "after": "Source comparison reviewed 4 November 2026 (not a historical correction date): The gazette prints 49,684 invalid votes; the Central Elections Committee memorandum and polling data give 43,097. Valid list votes agree. The dataset uses the latter invalid total; no formal erratum has been located."
+ },
+ {
+  "path": ".events[54].textEn",
+  "before": "Source comparison reviewed 4 November 2026 (not a historical correction date): The gazette prints 3,792,472 valid votes, but its list counts sum to 3,792,742, matching the final CEC total. Final versus gazetted list totals differ by +109 Likud–Yisrael Beiteinu, −107 Kadima and −2 Hayisraelim; seats are unchanged. YP 6546 (12 February 2013, p.2874) formally corrected only the grand total to 3,792,742. The three list differences remain unresolved.",
+  "after": "Source comparison reviewed 4 November 2026 (not a historical correction date): The gazette prints 3,792,472 valid votes, but its list counts sum to 3,792,742, matching the final Central Elections Committee total. Final versus gazetted list totals differ by +109 Likud–Yisrael Beiteinu, −107 Kadima and −2 Hayisraelim; seats are unchanged. Yalkut HaPirsumim 6546 (12 February 2013, p.2874) formally corrected only the grand total to 3,792,742. The three list differences remain unresolved."
+ },
+ {
+  "path": ".events[59].textEn",
+  "before": "Source comparison reviewed 4 November 2026 (not a historical correction date): The gazette prints 3,792,472 valid votes, but its list counts sum to 3,792,742, matching the final CEC total. Final versus gazetted list totals differ by +109 Likud–Yisrael Beiteinu, −107 Kadima and −2 Hayisraelim; seats are unchanged. YP 6546 (12 February 2013, p.2874) formally corrected only the grand total to 3,792,742. The three list differences remain unresolved.",
+  "after": "Source comparison reviewed 4 November 2026 (not a historical correction date): The gazette prints 3,792,472 valid votes, but its list counts sum to 3,792,742, matching the final Central Elections Committee total. Final versus gazetted list totals differ by +109 Likud–Yisrael Beiteinu, −107 Kadima and −2 Hayisraelim; seats are unchanged. Yalkut HaPirsumim 6546 (12 February 2013, p.2874) formally corrected only the grand total to 3,792,742. The three list differences remain unresolved."
+ },
+ {
+  "path": ".events[60].textEn",
+  "before": "Source comparison reviewed 4 November 2026 (not a historical correction date): The gazette prints 3,792,472 valid votes, but its list counts sum to 3,792,742, matching the final CEC total. Final versus gazetted list totals differ by +109 Likud–Yisrael Beiteinu, −107 Kadima and −2 Hayisraelim; seats are unchanged. YP 6546 (12 February 2013, p.2874) formally corrected only the grand total to 3,792,742. The three list differences remain unresolved.",
+  "after": "Source comparison reviewed 4 November 2026 (not a historical correction date): The gazette prints 3,792,472 valid votes, but its list counts sum to 3,792,742, matching the final Central Elections Committee total. Final versus gazetted list totals differ by +109 Likud–Yisrael Beiteinu, −107 Kadima and −2 Hayisraelim; seats are unchanged. Yalkut HaPirsumim 6546 (12 February 2013, p.2874) formally corrected only the grand total to 3,792,742. The three list differences remain unresolved."
+ },
+ {
+  "path": ".events[61].textEn",
+  "before": "The CEC page records that Yonatan Bahat (#15) was not included in the list approved on 27 September 2026 following candidate eligibility checks under Elections Law §§62B/63 (as specified on that page). This is separate from ideological exclusion under Basic Law §7A and does not exclude the entire list.",
+  "after": "The Central Elections Committee page records that Yonatan Bahat (#15) was not included in the list approved on 27 September 2026 following candidate eligibility checks under Elections Law §§62B/63 (as specified on that page). This is separate from ideological exclusion under Basic Law §7A and does not exclude the entire list."
+ },
+ {
+  "path": ".events[62].textEn",
+  "before": "The CEC page records that Ahmad Hassan (#34) was not included in the list approved on 27 September 2026 following candidate eligibility checks under Elections Law §63. This is separate from ideological exclusion under Basic Law §7A and does not exclude the entire list.",
+  "after": "The Central Elections Committee page records that Ahmad Hassan (#34) was not included in the list approved on 27 September 2026 following candidate eligibility checks under Elections Law §63. This is separate from ideological exclusion under Basic Law §7A and does not exclude the entire list."
+ },
+ {
+  "path": ".events[63].textEn",
+  "before": "The CEC page records that Ori Michaelov (#21) and Golan Ashton (#24) were not included in the list approved on 27 September 2026 following candidate eligibility checks under Elections Law §§62B/63 (as specified on that page). This is separate from ideological exclusion under Basic Law §7A and does not exclude the entire list.",
+  "after": "The Central Elections Committee page records that Ori Michaelov (#21) and Golan Ashton (#24) were not included in the list approved on 27 September 2026 following candidate eligibility checks under Elections Law §§62B/63 (as specified on that page). This is separate from ideological exclusion under Basic Law §7A and does not exclude the entire list."
+ },
+ {
+  "path": ".events[64].textEn",
+  "before": "The CEC page records that Yehuda Aryeh Fovitz (#22) was not included in the list approved on 27 September 2026 following candidate eligibility checks under Elections Law §§62B/63 (as specified on that page). This is separate from ideological exclusion under Basic Law §7A and does not exclude the entire list.",
+  "after": "The Central Elections Committee page records that Yehuda Aryeh Fovitz (#22) was not included in the list approved on 27 September 2026 following candidate eligibility checks under Elections Law §§62B/63 (as specified on that page). This is separate from ideological exclusion under Basic Law §7A and does not exclude the entire list."
+ },
+ {
+  "path": ".events[65].textEn",
+  "before": "The CEC page records that Michael Eisenstein (#9) was not included in the list approved on 27 September 2026 following candidate eligibility checks under Elections Law §§62B/63 (as specified on that page). This is separate from ideological exclusion under Basic Law §7A and does not exclude the entire list.",
+  "after": "The Central Elections Committee page records that Michael Eisenstein (#9) was not included in the list approved on 27 September 2026 following candidate eligibility checks under Elections Law §§62B/63 (as specified on that page). This is separate from ideological exclusion under Basic Law §7A and does not exclude the entire list."
+ },
+ {
+  "path": ".pmContests[0].noteEn",
+  "before": "Shares are printed as 50.49% / 49.51% in YP 4414 p.3483; rounding the vote ratios gives 50.50% / 49.50%. A winner needed more than half the valid PM votes. Cast and invalid totals are corroborated by Torgovnik (2000), p.97 note f; the earlier MFA citation was not retrieved.",
+  "after": "Shares are printed as 50.49% / 49.51% in Yalkut HaPirsumim 4414 p.3483; rounding the vote ratios gives 50.50% / 49.50%. A winner needed more than half the valid PM votes. Cast and invalid totals are corroborated by Torgovnik (2000), p.97 note f; the earlier Ministry of Foreign Affairs citation was not retrieved."
+ },
+ {
+  "path": ".pmContests[2].noteEn",
+  "before": "Official gazette content retained from a public mirror; government-host availability is unverified.",
+  "after": "Official gazette text, copy at olaw.org.il; whether the government site still has it was not checked."
+ }
+]

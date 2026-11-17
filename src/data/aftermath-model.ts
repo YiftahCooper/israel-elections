@@ -15,7 +15,9 @@ export interface PrimeMinister { nameEn: string; nameHe: string; from: string; t
 export type GovernmentChange = DatedFact & Partial<GovernmentSupport> & { number?: number; coalitionSeatsNote?: string; roleGap?: string };
 export interface Government extends GovernmentSupport { number: number; nameEn: string; nameHe: string; startDate: string; endDate?: string; primeMinisters: PrimeMinister[]; coalitionSeatsNote?: string; roleGap?: string; cites: Cite[]; endDateCites?: Cite[]; changes?: GovernmentChange[]; notes?: string[] }
 export interface Poll { date?: string; timing?: string; sourceId: string; questionEn?: string; questionHe?: string; populationEn?: string; populationHe?: string; fieldDates?: { from: string; to: string }; answers: { labelEn: string; labelHe?: string; pct: number }[]; cites?: Cite[] }
-export interface Aftermath { schemaVersion: number; electionId: ElectionId; status: string; reviewedAt: string; sources: Record<string, HistorySource>; results: { electionDate: string }; recommendationRounds: RecommendationRound[]; formation: { events: DatedFact[]; conflicts?: unknown[]; people?: Record<string, { nameEn: string; nameHe: string }> }; government?: Government; reaction?: { items: DatedFact[] }; term: { events: DatedFact[]; candidatesPending: { label: string; date?: string; why: string }[]; endedBy?: DatedFact & { nextElection?: ElectionId }; inclusionRule?: string }; issuePolling?: { status: string; items?: Poll[] } }
+/** Sources that disagree on a formation fact: what each says, and how the record settles it. */
+export interface Conflict { about: string; values: { value: string; source: string }[]; resolution: string; status?: string; cites?: Cite[] }
+export interface Aftermath { schemaVersion: number; electionId: ElectionId; status: string; reviewedAt: string; sources: Record<string, HistorySource>; results: { electionDate: string }; recommendationRounds: RecommendationRound[]; formation: { events: DatedFact[]; conflicts?: Conflict[]; people?: Record<string, { nameEn: string; nameHe: string }> }; government?: Government; reaction?: { items: DatedFact[] }; term: { events: DatedFact[]; candidatesPending: { label: string; date?: string; why: string }[]; endedBy?: DatedFact & { nextElection?: ElectionId }; inclusionRule?: string }; issuePolling?: { status: string; items?: Poll[] } }
 export function recommendationPieces(round: RecommendationRound) {
   return round.entries.flatMap(e => (e.split ?? [{ nominee: e.nominee, status: e.status, seats: e.seats }]).map(p => ({ ...p, letters: e.letters, group: p.nominee ?? p.status ?? 'unknown', cites: e.cites ?? round.cites })));
 }
@@ -97,3 +99,7 @@ export function validateAftermath(data: Aftermath, ds: ElectionDataset): string[
   for (const source of Object.values(data.sources)) if (new URL(source.url).hostname === 'en.wikipedia.org') errors.push('Forbidden source');
   return errors;
 }
+
+/** A quote that is a list of database fields (record ids, field names) rather than a sentence: its plain note says what
+ *  the record holds, and the fields stay in the data for checking (reader-text pass, 17 Nov 2026). */
+export const isFieldRecord = (quote: string) => /^[{"]*(?:PersonToPositionID|PersonID|PositionID|KnessetDateID|KNS_PersonToPosition|StartDate|Faction \d)/.test(quote);

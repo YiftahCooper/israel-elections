@@ -17,7 +17,7 @@
     },
     "knesset-history": {
       "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-twelfth-knesset-1988-1992",
-      "publisher": "Knesset, history of the 12th Knesset (credited text) (mirror of Knesset history; not an official host)",
+      "publisher": "Knesset history of the 12th Knesset, copy at the Jewish Virtual Library",
       "kind": "secondary",
       "accessed": "2026-11-05",
       "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=12"
@@ -50,7 +50,7 @@
     },
     "government-research-3": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=GovernmentNum%20eq%2023",
-      "publisher": "Knesset OData (ParliamentInfo)",
+      "publisher": "Knesset open data",
       "publisherHe": "הכנסת, מאגר המידע הפתוח",
       "kind": "official",
       "accessed": "2026-11-04",
@@ -58,13 +58,13 @@
     },
     "recommendations-research-1": {
       "url": "https://www.latimes.com/archives/la-xpm-1988-11-14-mn-244-story.html",
-      "publisher": "Los Angeles Times (UPI)",
+      "publisher": "Los Angeles Times (United Press International)",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
     "recommendations-research-2": {
       "url": "https://www.upi.com/Archives/1988/11/14/President-Chaim-Herzog-asked-Prime-Minister-Yitzhak-Shamir-to/7730595486800/",
-      "publisher": "UPI Archives",
+      "publisher": "United Press International archives",
       "kind": "secondary",
       "accessed": "2026-11-05"
     },
@@ -125,15 +125,17 @@
     },
     "role-roster-23": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2023%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "publisher": "Knesset open data: ministerial appointments",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי שרים"
     },
     "role-roster-24": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2024%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
-      "publisher": "Knesset OData, formation-day cabinet appointments",
+      "publisher": "Knesset open data: ministers at formation",
       "kind": "official",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: השרים בהקמת הממשלה"
     },
     "local-call-2022": {
       "url": "https://www.mekomit.co.il/המפלגות-הערביות-ממליצות-על-מועמדים-כב/",
@@ -160,7 +162,7 @@
     },
     "appointments-23": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=GovernmentNum%20eq%2023&%24format=json&%24top=1000",
-      "publisher": "Knesset OData, government 23 appointment register",
+      "publisher": "Knesset open data: appointments in government 23",
       "publisherHe": "הכנסת, מאגר המינויים של הממשלה ה־23",
       "kind": "official",
       "accessed": "2026-11-12",
@@ -175,7 +177,7 @@
     },
     "dr-events-jta-shamir": {
       "url": "https://www.jta.org/archive/shamir-given-turn-to-form-coalition-says-he-would-not-accept-baker-plan",
-      "publisher": "JTA, Shamir, Given Turn to Form Coalition, Says He Would Not Accept Baker Plan",
+      "publisher": "Jewish Telegraphic Agency, Shamir, Given Turn to Form Coalition, Says He Would Not Accept Baker Plan",
       "kind": "archival",
       "accessed": "2026-11-13"
     },
@@ -412,7 +414,7 @@
       ],
       "notes": [
         "Contemporary reporting gives aggregate support of 63 for Shamir and 55 for Peres; that agreement is a consistency check, not evidence of any single list. JTA (9 November) names the non-Arab parties’ choices. Hadash, PLP and ADP rest on one retrospective account (Local Call, 2022); Degel HaTorah on l’Unità (14 November 1988) and UPI.",
-        "7 November policy pass (docs/source-policy.md): Degel is none (probable: l’Unità 14 November 1988 and UPI, independent contemporary reports). Hadash, PLP and ADP recommended Peres conditionally (provisional: one retrospective, Local Call 2022). The President’s House consultation file for 7–13 November 1988 remains the deciding record. The totals now match the contemporary 63–55 report; that agreement is a consistency check, not evidence."
+        "Degel HaTorah recommended no one (probable: l’Unità, 14 November 1988, and United Press International, independent reports of the time). Hadash, the Progressive List for Peace and the Arab Democratic Party recommended Peres on conditions (provisional: one later account, Local Call 2022). The President’s consultation file for 7–13 November 1988 would decide it. The totals now match the contemporary 63–55 report; that agreement is a consistency check, not evidence."
       ]
     }
   ],
@@ -659,7 +661,7 @@
       {
         "label": "Immigration from the Soviet Union",
         "date": "1989",
-        "why": "Knesset history and MFA history select immigration from the Soviet Union, but it is a multi-year process, not a single dated event. MFA history marks a start in 1989; MFA timeline uses 1990. Define a bounded row and resolve that scope before promotion."
+        "why": "Knesset history and Ministry of Foreign Affairs history select immigration from the Soviet Union, but it is a multi-year process, not a single dated event. Ministry of Foreign Affairs history marks a start in 1989; Ministry of Foreign Affairs timeline uses 1990. Define a bounded row and resolve that scope before promotion."
       },
       {
         "label": "Temple Mount killings",
@@ -718,7 +720,8 @@
           {
             "source": "role-roster-23",
             "quote": "PersonToPositionID 4176; PersonID 2451; PositionID 39; StartDate 1988-12-22T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יצחק מודעי; faction join: הליכוד"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק מודעי; faction: הליכוד.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק מודעי; סיעה: הליכוד."
           }
         ]
       },
@@ -731,7 +734,8 @@
           {
             "source": "role-roster-23",
             "quote": "PersonToPositionID 4145; PersonID 2568; PositionID 39; StartDate 1988-12-22T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יעקב צור; faction join: מערך"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יעקב צור; faction: מערך.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יעקב צור; סיעה: מערך."
           }
         ]
       },
@@ -754,7 +758,8 @@
           {
             "source": "appointments-23",
             "quote": "{\"PersonToPositionID\":4089,\"PersonID\":2541,\"PositionID\":40,\"KnessetNum\":12,\"StartDate\":\"1988-12-26T00:00:00\",\"FinishDate\":\"1989-10-15T00:00:00\",\"GovMinistryID\":820,\"GovMinistryName\":\"משרד העבודה והרווחה\",\"DutyDesc\":\"סגן שר העבודה והרווחה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":23,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2020-09-22T18:18:53.1\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 2541 is משה-זאב פלדמן, אגודת ישראל (data/research/knesset-member-changes/k12.json)."
+            "note": "The Knesset’s official record: משה-זאב פלדמן, אגודת ישראל.",
+            "noteHe": "הרישום הרשמי של הכנסת: משה-זאב פלדמן, אגודת ישראל."
           },
           {
             "source": "diskin-1991",
@@ -780,12 +785,14 @@
           {
             "source": "appointments-23",
             "quote": "{\"PersonToPositionID\":4340,\"PersonID\":2300,\"PositionID\":39,\"KnessetNum\":12,\"StartDate\":\"1988-12-27T00:00:00\",\"FinishDate\":\"1990-06-11T00:00:00\",\"GovMinistryID\":1268,\"GovMinistryName\":\"המשרד לענייני דתות\",\"DutyDesc\":\"השר לענייני דתות\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":23,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2020-09-22T17:33:16.01\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 2300 is זבולון המר, מפלגה דתית לאומית (data/research/knesset-member-changes/k12.json)."
+            "note": "The Knesset’s official record: זבולון המר, מפלגה דתית לאומית.",
+            "noteHe": "הרישום הרשמי של הכנסת: זבולון המר, מפלגה דתית לאומית."
           },
           {
             "source": "appointments-23",
             "quote": "{\"PersonToPositionID\":4591,\"PersonID\":2620,\"PositionID\":39,\"KnessetNum\":12,\"StartDate\":\"1988-12-27T00:00:00\",\"FinishDate\":\"1990-06-11T00:00:00\",\"GovMinistryID\":553,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"שר בלי תיק\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":23,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2020-09-22T17:44:45.993\"}",
-            "note": "Official register record (JSON, Hebrew shown decoded). PersonID 2620 is אבנר-חי שאקי, מפלגה דתית לאומית (data/research/knesset-member-changes/k12.json)."
+            "note": "The Knesset’s official record: אבנר-חי שאקי, מפלגה דתית לאומית.",
+            "noteHe": "הרישום הרשמי של הכנסת: אבנר-חי שאקי, מפלגה דתית לאומית."
           }
         ],
         "note": "Role on the investiture day, 22 December 1988: Shamir told the Knesset the NRP had joined the government and the coalition and would name its ministers within days. Its two ministers took office on 27 December 1988.",
@@ -801,7 +808,8 @@
           {
             "source": "role-roster-23",
             "quote": "PersonToPositionID 4190; PersonID 2559; PositionID 39; StartDate 1988-12-22T00:00:00",
-            "note": "Project extraction of official fields, not prose quotation. יצחק-חיים פרץ; faction join: התאחדות הספרדים שומרי תורה - תנועת ש\"ס"
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק-חיים פרץ; faction: התאחדות הספרדים שומרי תורה - תנועת ש\"ס.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק-חיים פרץ; סיעה: התאחדות הספרדים שומרי תורה - תנועת ש\"ס."
           }
         ]
       }
@@ -819,7 +827,9 @@
       },
       {
         "source": "government-research-3",
-        "quote": "KNS_PersonToPosition, GovernmentNum 23: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1988-12-22: דרעי אריה מכלוף, צור יעקב, שחל משה, ויצמן עזר, מודעי יצחק, רבין יצחק, נבון יצחק, פרץ יצחק-חיים, גור מרדכי, נסים משה, קצב משה, לוי דוד, שרון אריאל, יעקבי גד, פת גדעון, פרס שמעון, שמיר יצחק, מרידור דן, כץ-עוז אברהם, אולמרט אהוד, מילוא רוני, אדרי רפאל, בר-לב חיים, ארנס משה"
+        "quote": "KNS_PersonToPosition, GovernmentNum 23: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1988-12-22: דרעי אריה מכלוף, צור יעקב, שחל משה, ויצמן עזר, מודעי יצחק, רבין יצחק, נבון יצחק, פרץ יצחק-חיים, גור מרדכי, נסים משה, קצב משה, לוי דוד, שרון אריאל, יעקבי גד, פת גדעון, פרס שמעון, שמיר יצחק, מרידור דן, כץ-עוז אברהם, אולמרט אהוד, מילוא רוני, אדרי רפאל, בר-לב חיים, ארנס משה",
+        "note": "The Knesset’s list of the ministers appointed on the government’s first day, 22 December 1988.",
+        "noteHe": "רשימת השרים שמונו ביום הראשון של הממשלה, 22 בדצמבר 1988, לפי רישומי הכנסת."
       },
       {
         "source": "jta1990vote",
@@ -884,10 +894,11 @@
               {
                 "source": "role-roster-24",
                 "quote": "PersonToPositionID 3364; PersonID 546; PositionID 39; StartDate 1990-06-11T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 27695. דן מרידור"
+                "note": "Official appointment of דן מרידור; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של דן מרידור; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead."
           },
           {
             "factionNameHe": "מפלגה לקידום הרעיון הציוני",
@@ -898,10 +909,11 @@
               {
                 "source": "role-roster-24",
                 "quote": "PersonToPositionID 4172; PersonID 2451; PositionID 39; StartDate 1990-06-11T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 27683. יצחק מודעי"
+                "note": "Official appointment of יצחק מודעי; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של יצחק מודעי; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
             "factionNameEn": "Party for the Advancement of the Zionist Idea"
           },
           {
@@ -913,10 +925,11 @@
               {
                 "source": "role-roster-24",
                 "quote": "PersonToPositionID 4343; PersonID 2300; PositionID 39; StartDate 1990-06-11T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 27641. זבולון המר"
+                "note": "Official appointment of זבולון המר; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של זבולון המר; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
             "letters": "ב"
           },
           {
@@ -928,10 +941,11 @@
               {
                 "source": "role-roster-24",
                 "quote": "PersonToPositionID 4384; PersonID 2138; PositionID 39; StartDate 1990-06-11T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 27580. רפאל איתן"
+                "note": "Official appointment of רפאל איתן; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של רפאל איתן; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead."
           },
           {
             "factionNameHe": "התאחדות הספרדים שומרי תורה - תנועת ש\"ס",
@@ -942,10 +956,11 @@
               {
                 "source": "role-roster-24",
                 "quote": "PersonToPositionID 4388; PersonID 2545; PositionID 39; StartDate 1990-06-11T00:00:00",
-                "note": "Official appointment linked to retained faction-membership record 27715. רפאל פנחסי"
+                "note": "Official appointment of רפאל פנחסי; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של רפאל פנחסי; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted.",
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
             "letters": "שס"
           }
         ],
