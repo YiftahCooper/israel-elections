@@ -223,14 +223,15 @@
       "kind": "archival",
       "accessed": "2026-11-17",
       "evidenceFamily": "newspaper:hadashot",
-      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "via": "National Library of Israel newspaper archive. Checked against the printed page in a copy of the whole issue on 17 November 2026; the archive’s computer-read text is kept beside each cite.",
       "retrieval": {
         "status": 200,
         "sha256": "fd0850e233959117d3971a4ecde8a34762a7b4dbc936c955459a30cad731a502",
         "method": "owner-browser-page-collector",
         "retrievedAt": "2026-11-17T06:48:39.418Z"
       },
-      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1754-www.nli.org.il/page.html"
+      "retainedArtifact": "owner’s private copy of the whole issue (National Library of Israel PDF)",
+      "computerReadArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1754-www.nli.org.il/page.html"
     },
     "maariv-1988-11-08-p3": {
       "url": "https://www.nli.org.il/en/newspapers/mar/1988/11/08/01/page/3",
@@ -255,14 +256,15 @@
       "kind": "archival",
       "accessed": "2026-11-17",
       "evidenceFamily": "newspaper:maariv",
-      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "via": "National Library of Israel newspaper archive. Checked against the printed page in a copy of the whole issue on 17 November 2026; the archive’s computer-read text is kept beside each cite.",
       "retrieval": {
         "status": 200,
         "sha256": "c6b33bcdfe206afa7ada48d7b8ec3b88fd7362d1a1f5555ee8418cd9f8ed2be1",
         "method": "owner-browser-page-collector",
         "retrievedAt": "2026-11-17T06:50:09.890Z"
       },
-      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1759-www.nli.org.il/page.html"
+      "retainedArtifact": "owner’s private copy of the whole issue (National Library of Israel PDF)",
+      "computerReadArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1759-www.nli.org.il/page.html"
     }
   },
   "results": {
@@ -325,7 +327,8 @@
             {
               "source": "hadashot-1988-11-11-p3",
               "quote": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל.",
-              "ocr": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל."
+              "ocr": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל.",
+              "scanChecked": true
             }
           ]
         },
@@ -366,12 +369,14 @@
             {
               "source": "hadashot-1988-11-11-p3",
               "quote": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל.",
-              "ocr": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל."
+              "ocr": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל.",
+              "scanChecked": true
             },
             {
               "source": "maariv-1988-11-11-p4",
-              "quote": "",
-              "ocr": "השבוע הודיעו נציגי הליכוד, התחיה, המפד\"ל, מולדת וצומת כי הם ממליצים על יצחק שמיו."
+              "quote": "השבוע הודיעו נציגי הליכוד, התחיה, המפד\"ל, מולדת וצומת כי הם ממליצים על יצחק שמיר.",
+              "ocr": "השבוע הודיעו נציגי הליכוד, התחיה, המפד\"ל, מולדת וצומת כי הם ממליצים על יצחק שמיו.",
+              "scanChecked": true
             }
           ]
         },
@@ -400,12 +405,14 @@
             {
               "source": "hadashot-1988-11-11-p3",
               "quote": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל.",
-              "ocr": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל."
+              "ocr": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל.",
+              "scanChecked": true
             },
             {
               "source": "maariv-1988-11-11-p4",
-              "quote": "",
-              "ocr": "השבוע הודיעו נציגי הליכוד, התחיה, המפד\"ל, מולדת וצומת כי הם ממליצים על יצחק שמיו."
+              "quote": "השבוע הודיעו נציגי הליכוד, התחיה, המפד\"ל, מולדת וצומת כי הם ממליצים על יצחק שמיר.",
+              "ocr": "השבוע הודיעו נציגי הליכוד, התחיה, המפד\"ל, מולדת וצומת כי הם ממליצים על יצחק שמיו.",
+              "scanChecked": true
             }
           ]
         },
@@ -434,12 +441,14 @@
             {
               "source": "hadashot-1988-11-11-p3",
               "quote": "נפגש הנשיא עם רפאל איתן מצומת, שהמליץ למנות את שמיר.",
-              "ocr": "אחה״צ נפגש הנשיא עם רפאל איתן מצומת, שהמליץ למנות את שמיר."
+              "ocr": "אחה״צ נפגש הנשיא עם רפאל איתן מצומת, שהמליץ למנות את שמיר.",
+              "scanChecked": true
             },
             {
               "source": "maariv-1988-11-11-p4",
               "quote": "רפאל איתן ויואש צידון מצומת, שהמליצו להטיל את הרכבת הממשלה על שמיר.",
-              "ocr": "בשעות הערב באו למשכן הושיא רפאל איתן ויואש צידון מצומת, שהמליצו להטיל את הרכבת הממשלה על שמיר."
+              "ocr": "בשעות הערב באו למשכן הושיא רפאל איתן ויואש צידון מצומת, שהמליצו להטיל את הרכבת הממשלה על שמיר.",
+              "scanChecked": true
             }
           ]
         },
@@ -468,12 +477,14 @@
             {
               "source": "hadashot-1988-11-11-p3",
               "quote": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל.",
-              "ocr": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל."
+              "ocr": "על יצחק שמיר המליצו 52 ח״כים מהליכוד, התחיה, צומת, מולדת ומפד״ל.",
+              "scanChecked": true
             },
             {
               "source": "maariv-1988-11-11-p4",
-              "quote": "",
-              "ocr": "השבוע הודיעו נציגי הליכוד, התחיה, המפד\"ל, מולדת וצומת כי הם ממליצים על יצחק שמיו."
+              "quote": "השבוע הודיעו נציגי הליכוד, התחיה, המפד\"ל, מולדת וצומת כי הם ממליצים על יצחק שמיר.",
+              "ocr": "השבוע הודיעו נציגי הליכוד, התחיה, המפד\"ל, מולדת וצומת כי הם ממליצים על יצחק שמיו.",
+              "scanChecked": true
             }
           ]
         },
@@ -501,13 +512,15 @@
             },
             {
               "source": "hadashot-1988-11-11-p3",
-              "quote": "הח״כים שהמליצו על פרס הם אנשי המערך, מפ״ם, שינוי,",
-              "ocr": "הח״כים שהמליצו על פרס הם אנשי המערך, מפ״ם, שינוי, ו־צ, חד״ש, דראושה והרשימה המתקדמת."
+              "quote": "הח״כים שהמליצו על פרס הם אנשי המערך, מפ״ם, שינוי, רצ, חד״ש, דראושה והרשימה המתקדמת.",
+              "ocr": "הח״כים שהמליצו על פרס הם אנשי המערך, מפ״ם, שינוי, ו־צ, חד״ש, דראושה והרשימה המתקדמת.",
+              "scanChecked": true
             },
             {
               "source": "maariv-1988-11-11-p4",
-              "quote": "",
-              "ocr": "לעומת זאת הוויעו נציגי המערך, רצ, תו\"ש, המוכז־שינוי, המפלגה הרמוקרטית הערבית, מפ\"ם והרשימה המתקדמת לשלום על תמיכתם בפרס."
+              "quote": "לעומת זאת הודיעו נציגי המערך, רצ, חד\"ש, המרכז־שינוי, המפלגה הדמוקרטית הערבית, מפ\"ם והרשימה המתקדמת לשלום על תמיכתם בפרס.",
+              "ocr": "לעומת זאת הוויעו נציגי המערך, רצ, תו\"ש, המוכז־שינוי, המפלגה הרמוקרטית הערבית, מפ\"ם והרשימה המתקדמת לשלום על תמיכתם בפרס.",
+              "scanChecked": true
             }
           ]
         },
@@ -535,13 +548,15 @@
             },
             {
               "source": "hadashot-1988-11-11-p3",
-              "quote": "",
-              "ocr": "הח״כים שהמליצו על פרס הם אנשי המערך, מפ״ם, שינוי, ו־צ, חד״ש, דראושה והרשימה המתקדמת."
+              "quote": "הח״כים שהמליצו על פרס הם אנשי המערך, מפ״ם, שינוי, רצ, חד״ש, דראושה והרשימה המתקדמת.",
+              "ocr": "הח״כים שהמליצו על פרס הם אנשי המערך, מפ״ם, שינוי, ו־צ, חד״ש, דראושה והרשימה המתקדמת.",
+              "scanChecked": true
             },
             {
               "source": "maariv-1988-11-11-p4",
-              "quote": "",
-              "ocr": "לעומת זאת הוויעו נציגי המערך, רצ, תו\"ש, המוכז־שינוי, המפלגה הרמוקרטית הערבית, מפ\"ם והרשימה המתקדמת לשלום על תמיכתם בפרס."
+              "quote": "לעומת זאת הודיעו נציגי המערך, רצ, חד\"ש, המרכז־שינוי, המפלגה הדמוקרטית הערבית, מפ\"ם והרשימה המתקדמת לשלום על תמיכתם בפרס.",
+              "ocr": "לעומת זאת הוויעו נציגי המערך, רצ, תו\"ש, המוכז־שינוי, המפלגה הרמוקרטית הערבית, מפ\"ם והרשימה המתקדמת לשלום על תמיכתם בפרס.",
+              "scanChecked": true
             }
           ]
         },
@@ -553,13 +568,15 @@
           "cites": [
             {
               "source": "hadashot-1988-11-11-p3",
-              "quote": "",
-              "ocr": "הח״כים שהמליצו על פרס הם אנשי המערך, מפ״ם, שינוי, ו־צ, חד״ש, דראושה והרשימה המתקדמת."
+              "quote": "הח״כים שהמליצו על פרס הם אנשי המערך, מפ״ם, שינוי, רצ, חד״ש, דראושה והרשימה המתקדמת.",
+              "ocr": "הח״כים שהמליצו על פרס הם אנשי המערך, מפ״ם, שינוי, ו־צ, חד״ש, דראושה והרשימה המתקדמת.",
+              "scanChecked": true
             },
             {
               "source": "maariv-1988-11-11-p4",
-              "quote": "",
-              "ocr": "לעומת זאת הוויעו נציגי המערך, רצ, תו\"ש, המוכז־שינוי, המפלגה הרמוקרטית הערבית, מפ\"ם והרשימה המתקדמת לשלום על תמיכתם בפרס."
+              "quote": "לעומת זאת הודיעו נציגי המערך, רצ, חד\"ש, המרכז־שינוי, המפלגה הדמוקרטית הערבית, מפ\"ם והרשימה המתקדמת לשלום על תמיכתם בפרס.",
+              "ocr": "לעומת זאת הוויעו נציגי המערך, רצ, תו\"ש, המוכז־שינוי, המפלגה הרמוקרטית הערבית, מפ\"ם והרשימה המתקדמת לשלום על תמיכתם בפרס.",
+              "scanChecked": true
             }
           ]
         },
@@ -588,12 +605,14 @@
             {
               "source": "hadashot-1988-11-11-p3",
               "quote": "מאוחר יותר הגיעו למשכן הנשיא נציגי מפ״ם, בראשות ח״כ יאיר צבן, שהמליצו על פרס.",
-              "ocr": "מאוחר יותר הגיעו למשכן הנשיא נציגי מפ״ם, בראשות ח״כ יאיר צבן, שהמליצו על פרס."
+              "ocr": "מאוחר יותר הגיעו למשכן הנשיא נציגי מפ״ם, בראשות ח״כ יאיר צבן, שהמליצו על פרס.",
+              "scanChecked": true
             },
             {
               "source": "maariv-1988-11-11-p4",
-              "quote": "",
-              "ocr": "לעומת זאת הוויעו נציגי המערך, רצ, תו\"ש, המוכז־שינוי, המפלגה הרמוקרטית הערבית, מפ\"ם והרשימה המתקדמת לשלום על תמיכתם בפרס."
+              "quote": "לעומת זאת הודיעו נציגי המערך, רצ, חד\"ש, המרכז־שינוי, המפלגה הדמוקרטית הערבית, מפ\"ם והרשימה המתקדמת לשלום על תמיכתם בפרס.",
+              "ocr": "לעומת זאת הוויעו נציגי המערך, רצ, תו\"ש, המוכז־שינוי, המפלגה הרמוקרטית הערבית, מפ\"ם והרשימה המתקדמת לשלום על תמיכתם בפרס.",
+              "scanChecked": true
             }
           ]
         },
@@ -621,15 +640,19 @@
             },
             {
               "source": "hadashot-1988-11-11-p3",
-              "quote": "הח״כים שהמליצו על פרס הם אנשי המערך, מפ״ם, שינוי,",
-              "ocr": "הח״כים שהמליצו על פרס הם אנשי המערך, מפ״ם, שינוי, ו־צ, חד״ש, דראושה והרשימה המתקדמת."
+              "quote": "הח״כים שהמליצו על פרס הם אנשי המערך, מפ״ם, שינוי, רצ, חד״ש, דראושה והרשימה המתקדמת.",
+              "ocr": "הח״כים שהמליצו על פרס הם אנשי המערך, מפ״ם, שינוי, ו־צ, חד״ש, דראושה והרשימה המתקדמת.",
+              "scanChecked": true
             },
             {
               "source": "maariv-1988-11-11-p4",
               "quote": "אמנון רובינשטיין ואברהם פורז ממרכז־שינוי, שהמליצו להטיל את תפקיד הרכבת הממשלה על שמעון פרס.",
-              "ocr": "אמנון רובינשטיין ואברהם פורז ממרכז־שינוי, שהמליצו להטיל את תפקיד הרכבת הממשלה על שמעון פרס."
+              "ocr": "אמנון רובינשטיין ואברהם פורז ממרכז־שינוי, שהמליצו להטיל את תפקיד הרכבת הממשלה על שמעון פרס.",
+              "scanChecked": true
             }
-          ]
+          ],
+          "noteEn": "Recommended Peres. Both newspapers add that it preferred a government of the Alignment and Likud alone, without the small parties.",
+          "noteHe": "המליצה על פרס. שני העיתונים מוסיפים שהעדיפה ממשלה של המערך והליכוד בלבד, בלי המפלגות הקטנות."
         },
         {
           "letters": "פ",
@@ -639,12 +662,14 @@
             {
               "source": "hadashot-1988-11-11-p3",
               "quote": "הוא נמנע מלהציע מפורשות את פרס.",
-              "ocr": "הוא נמנע מלהציע מפורשות את פרס."
+              "ocr": "הוא נמנע מלהציע מפורשות את פרס.",
+              "scanChecked": true
             },
             {
               "source": "maariv-1988-11-11-p4",
-              "quote": "והמועמד שלנו הוא איש המערך",
-              "ocr": "אין לנו כל דרך אתרת והמועמד שלנו הוא איש המערך"
+              "quote": "אין לנו כל דרך אחרת והמועמד שלנו הוא איש המערך",
+              "ocr": "אין לנו כל דרך אתרת והמועמד שלנו הוא איש המערך",
+              "scanChecked": true
             }
           ],
           "noteEn": "Muhammad Miari backed the Alignment’s candidate but did not name Peres. Both newspapers count the list among Peres’s supporters in their summaries; their own accounts of the meeting say he named no person.",
@@ -658,13 +683,15 @@
           "cites": [
             {
               "source": "hadashot-1988-11-11-p3",
-              "quote": "",
-              "ocr": "ח״כ דראושה, שהגיע למשכן הנשיא עם קבוצה גדולה של אנשי תנועתו, המליץ כאמור להטיל את פרם את הרכבת הממשלה."
+              "quote": "ח״כ דראושה, שהגיע למשכן הנשיא עם קבוצה גדולה של אנשי תנועתו, המליץ כאמור להטיל את פרס את הרכבת הממשלה.",
+              "ocr": "ח״כ דראושה, שהגיע למשכן הנשיא עם קבוצה גדולה של אנשי תנועתו, המליץ כאמור להטיל את פרם את הרכבת הממשלה.",
+              "scanChecked": true
             },
             {
               "source": "maariv-1988-11-11-p4",
               "quote": "ח\"כ דראושה, שהמליץ לנשיא להטיל על פרס את הרכבת הממשלה.",
-              "ocr": "אתר־כך נועד הנשיא עם ח\"כ דראושה, שהמליץ לנשיא להטיל על פרס את הרכבת הממשלה."
+              "ocr": "אתר־כך נועד הנשיא עם ח\"כ דראושה, שהמליץ לנשיא להטיל על פרס את הרכבת הממשלה.",
+              "scanChecked": true
             }
           ],
           "noteEn": "Abdulwahab Darawshe recommended Peres. He set his own conditions for joining a Peres government: an international conference with the PLO and full equal rights for Arab citizens.",
@@ -715,7 +742,7 @@
       ],
       "notes": [
         "Reports of the time give 63 Knesset members for Shamir and 55 for Peres; the 55 count the Progressive List for Peace, which named the Alignment’s candidate rather than Peres. A total does not show what any single list said, so it is not split among the lists. Degel HaTorah rests on l’Unità (14 November 1988) and United Press International.",
-        "Hadashot (11 November 1988, p. 3, by Ronit Antler) and Maariv (8 and 11 November 1988, by Arieh Bender) name the lists for each candidate; they are written separately and credit no news agency. Hadash and the Arab Democratic Party recommended Peres (both newspapers). Maariv’s computer-read text misspells Hadash, but the name stands in its list of the seven lists that backed Peres, the same seven as Hadashot’s, and the same misreadings occur elsewhere on that page, so it is counted as Hadash.",
+        "Hadashot (11 November 1988, p. 3, by Ronit Antler) and Maariv (8 and 11 November 1988, by Arieh Bender) name the lists for each candidate; they are written separately and credit no news agency. Hadash and the Arab Democratic Party recommended Peres (both newspapers).",
         "Degel HaTorah recommended no one (probable: l’Unità, 14 November 1988, and United Press International, independent reports of the time). The President’s consultation file for 7–13 November 1988 would settle what each list said."
       ],
       "pagesRead": [

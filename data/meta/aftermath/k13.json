@@ -222,14 +222,15 @@
       "kind": "archival",
       "accessed": "2026-11-17",
       "evidenceFamily": "newspaper:hadashot",
-      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "via": "National Library of Israel newspaper archive. Checked against the printed page in a copy of the whole issue on 17 November 2026; the archive’s computer-read text is kept beside each cite.",
       "retrieval": {
         "status": 200,
         "sha256": "4986bd5dcdb0f5bba1b29faacd2f25a143f9c2c48477d36b33832e1edd446baa",
         "method": "owner-browser-page-collector",
         "retrievedAt": "2026-11-17T06:46:46.017Z"
       },
-      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1746-www.nli.org.il/page.html"
+      "retainedArtifact": "owner’s private copy of the whole issue (National Library of Israel PDF)",
+      "computerReadArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1746-www.nli.org.il/page.html"
     },
     "hadashot-1992-07-01-p7": {
       "url": "https://www.nli.org.il/en/newspapers/hadashot/1992/07/01/01/page/7",
@@ -238,14 +239,15 @@
       "kind": "archival",
       "accessed": "2026-11-17",
       "evidenceFamily": "newspaper:hadashot",
-      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "via": "National Library of Israel newspaper archive. Checked against the printed page in a copy of the whole issue on 17 November 2026; the archive’s computer-read text is kept beside each cite.",
       "retrieval": {
         "status": 200,
         "sha256": "54fc444932e020011f41406cf8d36e88a7ce57f164009b466f9b26a9c47c3bbc",
         "method": "owner-browser-page-collector",
         "retrievedAt": "2026-11-17T06:50:22.541Z"
       },
-      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1760-www.nli.org.il/page.html"
+      "retainedArtifact": "owner’s private copy of the whole issue (National Library of Israel PDF)",
+      "computerReadArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1760-www.nli.org.il/page.html"
     }
   },
   "results": {
@@ -290,7 +292,8 @@
             {
               "source": "hadashot-1992-07-01-p7",
               "quote": "שבחרו לא לנקוב בשמו של מועמד מסוים להרכבת ממשלה.",
-              "ocr": "נציגי המפ־ ד״ל, שבחרו לא לנקוב בשמו של מועמד מסוים להרכבת ממשלה."
+              "ocr": "נציגי המפ־ ד״ל, שבחרו לא לנקוב בשמו של מועמד מסוים להרכבת ממשלה.",
+              "scanChecked": true
             }
           ],
           "noteEn": "Named no candidate and left the choice to the President.",
@@ -304,11 +307,12 @@
             {
               "source": "hadashot-1992-07-01-p7",
               "quote": "המליצו להרצוג להטיל את התפקיד על המועמד בעל הסיכויים הטובים ביותר, והדגישו שלא נקבו בשם מסוים.",
-              "ocr": "המליצו להרצוג להטיל את התפקיד על המועמד בעל הסיכויים הטובים ביותר, והדגישו שלא נקבו בשם מסוים."
+              "ocr": "המליצו להרצוג להטיל את התפקיד על המועמד בעל הסיכויים הטובים ביותר, והדגישו שלא נקבו בשם מסוים.",
+              "scanChecked": true
             }
           ],
-          "noteEn": "Asked for the candidate with the best chances and stressed that it named no one.",
-          "noteHe": "ביקשה את המועמד בעל הסיכויים הטובים ביותר והדגישה שלא נקבה בשם."
+          "noteEn": "Asked for the candidate with the best chances and stressed that it named no one. Later, on army radio, Avraham Ravitz of Degel HaTorah said that as he read it this meant Rabin.",
+          "noteHe": "ביקשה את המועמד בעל הסיכויים הטובים ביותר והדגישה שלא נקבה בשם. מאוחר יותר אמר אברהם רביץ מדגל התורה בגלי צה״ל שלפי פרשנותו מדובר ברבין."
         },
         {
           "letters": "ו",
@@ -318,8 +322,9 @@
           "cites": [
             {
               "source": "hadashot-1992-07-01-p7",
-              "quote": "הבאים בתור היו נציגי חד״ש, אשר המליצו להטיל את התפקיד על יצחק רבין - אבל תוך הסתייגויות.",
-              "ocr": "הבאים בתור היו נציגי חד״ש, אשר המליצו להטיל את התפקיד על יצחק רבין - אבל תוך הסתייגויות."
+              "quote": "הבאים בתור היו נציגי חד״ש, אשר המליצו להטיל את התפקיד על יצחק רבין – אבל תוך הסתייגויות.",
+              "ocr": "הבאים בתור היו נציגי חד״ש, אשר המליצו להטיל את התפקיד על יצחק רבין - אבל תוך הסתייגויות.",
+              "scanChecked": true
             }
           ],
           "noteEn": "Recommended Rabin with reservations: its support depended on the government’s make-up, its guidelines and its positions.",
@@ -333,7 +338,8 @@
             {
               "source": "hadashot-1992-07-01-p7",
               "quote": "אמר כי לא המליץ לנשיא הרצוג על מי להטיל את הרכבת הממשלה.",
-              "ocr": "אמר כי לא המליץ לנשיא הרצוג על מי להטיל את הרכבת הממשלה."
+              "ocr": "אמר כי לא המליץ לנשיא הרצוג על מי להטיל את הרכבת הממשלה.",
+              "scanChecked": true
             }
           ],
           "noteEn": "Rehavam Ze’evi said he had recommended no one.",
@@ -348,7 +354,8 @@
             {
               "source": "hadashot-1992-06-30-p5",
               "quote": "הם המליצו לנשיא לבחור ביצחק שמיר להקים ממשלת אחדות.",
-              "ocr": "הם המליצו לנשיא לבחור ביצחק שמיר להקים ממשלת אחדות."
+              "ocr": "הם המליצו לנשיא לבחור ביצחק שמיר להקים ממשלת אחדות.",
+              "scanChecked": true
             }
           ],
           "noteEn": "Recommended Shamir, to form a unity government.",
@@ -369,7 +376,8 @@
             {
               "source": "hadashot-1992-06-30-p5",
               "quote": "יש להטיל על יצחק רבין להקים את הממשלה הבאה, מהר ככל האפשר.",
-              "ocr": "יש להטיל על יצחק רבין להקים את הממשלה הבאה, מהר ככל האפשר."
+              "ocr": "יש להטיל על יצחק רבין להקים את הממשלה הבאה, מהר ככל האפשר.",
+              "scanChecked": true
             }
           ]
         },
@@ -382,7 +390,8 @@
             {
               "source": "hadashot-1992-07-01-p7",
               "quote": "היתה רשימתו של ח״כ דראושה, שהמליצו על רבין.",
-              "ocr": "הרשימה האחרונה שהתק- בלה אצל הנשיא אתמול היתה רשימתו של ח״כ דראושה, שהמליצו על רבין. דראושה הסביר, כי בחירה זו תהיה בתנאי שיובטח שיויון זכויות לאוכלו־ סיה הערבית, קידום השלום וגישור על הפערים"
+              "ocr": "הרשימה האחרונה שהתק- בלה אצל הנשיא אתמול היתה רשימתו של ח״כ דראושה, שהמליצו על רבין. דראושה הסביר, כי בחירה זו תהיה בתנאי שיובטח שיויון זכויות לאוכלו־ סיה הערבית, קידום השלום וגישור על הפערים",
+              "scanChecked": true
             }
           ],
           "noteEn": "Recommended Rabin on conditions: equal rights for the Arab population, progress towards peace and closing the social gaps.",
@@ -407,7 +416,8 @@
             {
               "source": "hadashot-1992-06-30-p5",
               "quote": "גם צומת המליצה להטיל את התפקיד על רבין.",
-              "ocr": "גם צומת המליצה להטיל את התפקיד על רבין."
+              "ocr": "גם צומת המליצה להטיל את התפקיד על רבין.",
+              "scanChecked": true
             }
           ]
         },
@@ -420,7 +430,8 @@
             {
               "source": "hadashot-1992-06-30-p5",
               "quote": "ומשלחת ש״ס לא המליצה לנשיא על מי להטיל את התפקיד.",
-              "ocr": "ומשלחת ש״ס לא המליצה לנשיא על מי להטיל את התפקיד."
+              "ocr": "ומשלחת ש״ס לא המליצה לנשיא על מי להטיל את התפקיד.",
+              "scanChecked": true
             },
             {
               "source": "amigoe-19920630",

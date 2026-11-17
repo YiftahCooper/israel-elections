@@ -159,14 +159,15 @@
       "kind": "archival",
       "accessed": "2026-11-17",
       "evidenceFamily": "newspaper:davar",
-      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "via": "National Library of Israel newspaper archive. Checked against the printed page in a copy of the whole issue on 17 November 2026; the archive’s computer-read text is kept beside each cite.",
       "retrieval": {
         "status": 200,
         "sha256": "9017b42ca1ac0e9392a389aec6009a56bfa3baae2dd294f12b80cff96590e191",
         "method": "owner-browser-page-collector",
         "retrievedAt": "2026-11-17T06:54:10.104Z"
       },
-      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1774-www.nli.org.il/page.html"
+      "retainedArtifact": "owner’s private copy of the whole issue (National Library of Israel PDF)",
+      "computerReadArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1774-www.nli.org.il/page.html"
     }
   },
   "results": {
@@ -256,8 +257,9 @@
           "cites": [
             {
               "source": "davar-1965-11-26-p2",
-              "quote": "",
-              "ocr": "הציעה לנשיא להטיל את הרכנת הממשלה על מועמד ;שיוכל לנצע. תכניה, אשר תחולל י . תמורה במדיניותה הרשמית של ישראל"
+              "quote": "הציעה לנשיא להטיל את הרכבת הממשלה על מועמד „שיוכל לבצע תכנית, אשר תחולל תמורה במדיניותה הרשמית של ישראל״",
+              "ocr": "הציעה לנשיא להטיל את הרכנת הממשלה על מועמד ;שיוכל לנצע. תכניה, אשר תחולל י . תמורה במדיניותה הרשמית של ישראל",
+              "scanChecked": true
             }
           ],
           "noteEn": "Proposed a candidate who would change Israel’s official policy; named no one.",
@@ -271,8 +273,9 @@
           "cites": [
             {
               "source": "davar-1965-11-26-p2",
-              "quote": "",
-              "ocr": "שהציעו להטיל את הרכנת הממשלה על לוי אשכול."
+              "quote": "שהציעו להטיל את הרכבת הממשלה על לוי אשכול.",
+              "ocr": "שהציעו להטיל את הרכנת הממשלה על לוי אשכול.",
+              "scanChecked": true
             }
           ]
         },
@@ -284,8 +287,9 @@
           "cites": [
             {
               "source": "davar-1965-11-26-p2",
-              "quote": "",
-              "ocr": "עט הסיעות, שהציעו להטיל את הרכבת הממשלה על לוי אשנול נמנתה גט סיעת"
+              "quote": "עם הסיעות, שהציעו להטיל את הרכבת הממשלה על לוי אשכול נמנתה גם סיעת „פועלי אגודת ישראל״",
+              "ocr": "עט הסיעות, שהציעו להטיל את הרכבת הממשלה על לוי אשנול נמנתה גט סיעת",
+              "scanChecked": true
             }
           ]
         },

@@ -2,10 +2,11 @@ import type { ElectionDataset, ElectionId } from './schema.ts';
 import type { GovernmentSupport } from './aftermath.ts';
 /** `noteHe` is the Hebrew wording of `note`, for the few notes written for readers in both languages. `citesRecord`
  *  names the official record a scholarly passage itself cites (docs/source-policy.md); the build's certainty check reads it.
- *  `ocr` marks a newspaper passage taken from the archive's computer-read text of the scan and not yet checked against the
- *  printed page; it keeps that text, never shown, so a later scan check can find it. Such a cite shows `quote` (an exact
- *  part of `ocr`) only where the text reads cleanly; otherwise `quote` is empty and readers get the paper, date and page. */
-export interface Cite { source: string; quote: string; locator?: string; note?: string; noteHe?: string; citesRecord?: string; ocr?: string }
+ *  `ocr` keeps a newspaper passage as the archive's computer-read text of the scan gave it, never shown, so a scan check
+ *  can find it and compare. Until checked, such a cite shows `quote` (an exact part of `ocr`) only where the text reads
+ *  cleanly; otherwise `quote` is empty and readers get the paper, date and page. `scanChecked` (never shown) marks a newspaper cite read from the printed page image: its `quote` is the printed
+ *  wording and `ocr` stays as the archive read it (docs/source-policy.md). */
+export interface Cite { source: string; quote: string; locator?: string; note?: string; noteHe?: string; citesRecord?: string; ocr?: string; scanChecked?: boolean }
 export interface HistorySource { url: string; publisher?: string; publisherHe?: string; title?: string; kind: string; accessed: string; via?: string; evidenceFamily?: string }
 /** `orderDate`/`orderSeq` place an event among others of the same date, or a month- or year-only event among the days
  *  in it, from what the record's own sources say (`orderBasis`); they are never shown and never change `date`. */

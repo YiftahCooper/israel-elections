@@ -131,14 +131,15 @@
       "kind": "archival",
       "accessed": "2026-11-17",
       "evidenceFamily": "newspaper:davar",
-      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "via": "National Library of Israel newspaper archive. Checked against the printed page in a copy of the whole issue on 17 November 2026; the archive’s computer-read text is kept beside each cite.",
       "retrieval": {
         "status": 200,
         "sha256": "c197fc704064d41df218f926152a4b393e10285f0a5b1f752183ca69e02cafe5",
         "method": "owner-browser-page-collector",
         "retrievedAt": "2026-11-17T06:51:06.052Z"
       },
-      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1763-www.nli.org.il/page.html"
+      "retainedArtifact": "owner’s private copy of the whole issue (National Library of Israel PDF)",
+      "computerReadArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1763-www.nli.org.il/page.html"
     },
     "davar-1955-08-18-p1": {
       "url": "https://www.nli.org.il/en/newspapers/dav/1955/08/18/01/page/1",
@@ -206,8 +207,9 @@
           "cites": [
             {
               "source": "davar-1955-08-17-p1",
-              "quote": "",
-              "ocr": "המ הצי־ *ו לנשיא להטיל את הרכבת הממ - שלה על ד. בן גוריון"
+              "quote": "הם הציעו לנשיא להטיל את הרכבת הממשלה על ד. בן גוריון",
+              "ocr": "המ הצי־ *ו לנשיא להטיל את הרכבת הממ - שלה על ד. בן גוריון",
+              "scanChecked": true
             }
           ]
         },
@@ -251,8 +253,9 @@
             },
             {
               "source": "davar-1955-08-17-p1",
-              "quote": "",
-              "ocr": "הם הבי־ עו תמיכתם _במועמדות גן־גוייון כראש הממשלה."
+              "quote": "הם הביעו תמיכתם במועמדות בן־גוריון כראש הממשלה.",
+              "ocr": "הם הבי־ עו תמיכתם _במועמדות גן־גוייון כראש הממשלה.",
+              "scanChecked": true
             }
           ],
           "noteEn": "Sources disagree. Davar says the Hapoel HaMizrachi delegation supported Ben-Gurion as prime minister; the Jewish Telegraphic Agency says the Front asked that the largest party be tasked, naming no one. The President’s consultation record would settle it.",

@@ -206,14 +206,15 @@
       "kind": "archival",
       "accessed": "2026-11-17",
       "evidenceFamily": "newspaper:davar",
-      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "via": "National Library of Israel newspaper archive. Checked against the printed page in a copy of the whole issue on 17 November 2026; the archive’s computer-read text is kept beside each cite.",
       "retrieval": {
         "status": 200,
         "sha256": "6fbb1793fc91ff4be0bcb48c5915bdf56096a138f64db5120f976904a0129184",
         "method": "owner-browser-page-collector",
         "retrievedAt": "2026-11-17T06:54:52.560Z"
       },
-      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1777-www.nli.org.il/page.html"
+      "retainedArtifact": "owner’s private copy of the whole issue (National Library of Israel PDF)",
+      "computerReadArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1777-www.nli.org.il/page.html"
     },
     "davar-1977-06-03-p2": {
       "url": "https://www.nli.org.il/en/newspapers/dav/1977/06/03/01/page/2",
@@ -222,14 +223,15 @@
       "kind": "archival",
       "accessed": "2026-11-17",
       "evidenceFamily": "newspaper:davar",
-      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "via": "National Library of Israel newspaper archive. Checked against the printed page in a copy of the whole issue on 17 November 2026; the archive’s computer-read text is kept beside each cite.",
       "retrieval": {
         "status": 200,
         "sha256": "97b8ee558d3135321b7547b7cb1e4fccd75be6de015fea91fa3dc258a343a02d",
         "method": "owner-browser-page-collector",
         "retrievedAt": "2026-11-17T07:01:54.629Z"
       },
-      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1785-www.nli.org.il/page.html"
+      "retainedArtifact": "owner’s private copy of the whole issue (National Library of Israel PDF)",
+      "computerReadArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1785-www.nli.org.il/page.html"
     },
     "davar-1977-06-06-p1": {
       "url": "https://www.nli.org.il/en/newspapers/dav/1977/06/06/01/page/1",
@@ -345,8 +347,9 @@
             },
             {
               "source": "davar-1977-06-03-p1",
-              "quote": "",
-              "ocr": "ביקשה מהנשיא להטיל את תפקיד הרכב הממשלה על \" חבר כנסת שפוי\" מבין סיעות הבית, כולל המערך."
+              "quote": "ביקשה מהנשיא להטיל את תפקיד הרכב הממשלה על „חבר כנסת שפוי״ מבין סיעות הבית, כולל המערך.",
+              "ocr": "ביקשה מהנשיא להטיל את תפקיד הרכב הממשלה על \" חבר כנסת שפוי\" מבין סיעות הבית, כולל המערך.",
+              "scanChecked": true
             }
           ],
           "noteEn": "Named no candidate: asked for “a sane Knesset member” from any faction, the Alignment included, and opposed a Begin government.",
@@ -364,8 +367,9 @@
             },
             {
               "source": "davar-1977-06-03-p1",
-              "quote": "",
-              "ocr": "והציעה לנשיא לטהיל את הרכבת הממשלה על מנחם בגין"
+              "quote": "הרכבת הממשלה על מנחם בגין אך יחד עם זאת הביע משאלה להקמת ממשלת ליכוד לאומי, כולל המערך.",
+              "ocr": "והציעה לנשיא לטהיל את הרכבת הממשלה על מנחם בגין",
+              "scanChecked": true
             }
           ]
         },
@@ -381,8 +385,9 @@
             },
             {
               "source": "davar-1977-06-03-p1",
-              "quote": "",
-              "ocr": "שרון ביקש מפרופסור קציר כי יטיל את מלאכת ‭,. ‬ ־ מרכבי• על מנחש בגין."
+              "quote": "שרון ביקש מפרופסור קציר כי יטיל את מלאכת ההרכבה על מנחם בגין",
+              "ocr": "שרון ביקש מפרופסור קציר כי יטיל את מלאכת ‭,. ‬ ־ מרכבי• על מנחש בגין.",
+              "scanChecked": true
             }
           ]
         },
@@ -397,8 +402,9 @@
             },
             {
               "source": "davar-1977-06-03-p2",
-              "quote": "",
-              "ocr": "המשלחת הביע בפני הנשיא את התנגדותה להקמת ממשלה בראשותו של מנחם, בגין."
+              "quote": "המשלחת הביע בפני הנשיא את התנגדותה להקמת ממשלה בראשותו של מנחם בגין.",
+              "ocr": "המשלחת הביע בפני הנשיא את התנגדותה להקמת ממשלה בראשותו של מנחם, בגין.",
+              "scanChecked": true
             }
           ],
           "noteEn": "Asked for “a moderate statesman” and gave two Alignment MKs as examples; opposed a Begin government.",

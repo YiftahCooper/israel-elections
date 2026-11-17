@@ -84,9 +84,9 @@ describe('After the election: rules over all records', () => {
     expect(groupingDisagreements(k12 as never, [stale])).toEqual(expect.arrayContaining([expect.stringContaining('r1/פ: round says other, grouping says peres'), expect.stringContaining('r1/peres: grouping has 55 seats, round 54')]));
   });
   it('newspapers read from scans: a quote is an exact part of the computer-read text, sources are dated pages, notes are in both languages (17 Nov 2026)', () => {
-    let ocrCites = 0;
+    let ocrCites = 0, checkedCites = 0;
     for (const record of Object.values(aftermathRecords)) {
-      const sources = (record as { sources?: Record<string, { url?: string; evidenceFamily?: string; publisher?: string; publisherHe?: string }> }).sources ?? {};
+      const sources = (record as { sources?: Record<string, { url?: string; evidenceFamily?: string; publisher?: string; publisherHe?: string; retainedArtifact?: string }> }).sources ?? {};
       for (const [id, src] of Object.entries(sources)) {
         if (!src.evidenceFamily?.startsWith('newspaper:')) continue;
         expect(src.url, id).toMatch(/^https:\/\/www\.nli\.org\.il\/en\/newspapers\/[a-z]+\/\d{4}\/\d{2}\/\d{2}\/01\/page\/\d+$/);
@@ -94,7 +94,7 @@ describe('After the election: rules over all records', () => {
         expect(src.publisherHe, id).toMatch(/, עמ׳ \d+$/);
       }
       for (const round of record.recommendationRounds ?? []) {
-        for (const e of round.entries as { letters: string; status?: string; certainty?: string; noteEn?: string; noteHe?: string; cites?: { source: string; quote?: string; ocr?: string }[] }[]) {
+        for (const e of round.entries as { letters: string; status?: string; certainty?: string; noteEn?: string; noteHe?: string; cites?: { source: string; quote?: string; ocr?: string; scanChecked?: boolean }[] }[]) {
           const where = `${record.electionId}/${round.id}/${e.letters}`;
           expect(Boolean(e.noteEn), `${where} has a note in both languages`).toBe(Boolean(e.noteHe));
           if (e.status === 'disputed') expect(e.certainty, where).toBe('disputed');
@@ -102,12 +102,20 @@ describe('After the election: rules over all records', () => {
             if (c.ocr === undefined) { expect(c.quote, `${where}: a cite without computer-read text has a quote`).toBeTruthy(); continue; }
             ocrCites++;
             expect(sources[c.source]?.evidenceFamily, `${where}: computer-read text comes from a newspaper page`).toMatch(/^newspaper:/);
-            if (c.quote) expect(c.ocr, where).toContain(c.quote);
+            if (c.scanChecked) {
+              // read from the printed page: the quote is the printed wording, ≤ about 25 words; ocr stays as the archive read it
+              checkedCites++;
+              expect(c.scanChecked, where).toBe(true);
+              expect(c.quote, `${where}: a cite checked against the printed page has a quote`).toBeTruthy();
+              expect(c.quote!.split(/\s+/).length, where).toBeLessThanOrEqual(25);
+              expect(sources[c.source]?.retainedArtifact, where).toBe('owner’s private copy of the whole issue (National Library of Israel PDF)');
+            } else if (c.quote) expect(c.ocr, where).toContain(c.quote);
           }
         }
       }
     }
     expect(ocrCites).toBeGreaterThanOrEqual(40);
+    expect(checkedCites).toBeGreaterThanOrEqual(46);
   });
   it('c-aftermath-04: a tally with a key the screen does not read fails validation', () => {
     expect(validTally({ for: 69, against: 45, abstained: 5 })).toBe(false);

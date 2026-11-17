@@ -271,8 +271,11 @@ export function recommendationSearches(root = ROOT) {
   const out: { election: string; round: string; pages: string[]; stillUnknown: string[]; note?: string }[] = [];
   for (const file of filesUnder(root, 'data/meta/aftermath').filter(f => /\/k\d+\.json$/.test(f))) {
     const d = read(root, file);
+    // pages whose cites were checked against the printed page (`scanChecked`), not only the archive's computer-read text
+    const checked = new Set<string>((d.recommendationRounds ?? []).flatMap((r: Obj) => (r.entries ?? []).flatMap((e: Obj) => (e.cites ?? [])
+      .filter((c: Obj) => c.scanChecked).map((c: Obj) => d.sources?.[c.source]?.url)).filter(Boolean)));
     for (const r of d.recommendationRounds ?? []) if (r.pagesRead?.length || r.searchNote)
-      out.push({ election: d.electionId, round: r.id, pages: (r.pagesRead ?? []).map((p: Obj) => `${p.paper}, ${day(p.date)}${p.page ? `, p. ${p.page}` : ''}`),
+      out.push({ election: d.electionId, round: r.id, pages: (r.pagesRead ?? []).map((p: Obj) => `${p.paper}, ${day(p.date)}${p.page ? `, p. ${p.page}` : ''}${checked.has(p.url) ? ' (printed page checked)' : ''}`),
         stillUnknown: (r.entries ?? []).filter((e: Obj) => e.status === 'unknown').map((e: Obj) => e.letters), ...(r.searchNote ? { note: r.searchNote } : {}) });
   }
   return out.sort((a, b) => Number(a.election.slice(1)) - Number(b.election.slice(1)) || a.round.localeCompare(b.round, 'en'));
@@ -422,7 +425,7 @@ export function renderMarkdown(register: Summary): string {
     'Display metadata, candidate trivia, raw-dump fields and provenance housekeeping.', '',
     register.low.map(r => `${escapeCell(r.area)} ${r.count}${r.open !== r.count ? ` (${r.open} open)` : ''}`).join('; ') + '.', '',
     '## Recommendation searches already done', '',
-    'Newspaper pages and articles already read for the recommendations to the President, with the lists still not known after reading them. Read other pages, or the President’s consultation record, before reading these again. Quotes taken from these pages are the archive’s computer-read text, not yet checked against the printed page.', '',
+    'Newspaper pages and articles already read for the recommendations to the President, with the lists still not known after reading them. Read other pages, or the President’s consultation record, before reading these again. Quotes taken from these pages are the archive’s computer-read text, except on pages marked “printed page checked”, whose quotes were read from the page image.', '',
     ...register.searches.map(s => `- **${s.election} ${s.round}**: ${escapeCell(s.pages.join('; ') || 'none')}. Still not known: ${s.stillUnknown.length ? s.stillUnknown.join(', ') : 'none'}.${s.note ? ` ${escapeCell(s.note)}` : ''}`), '',
     '## Certainty of recorded claims', '',
     'Every claim in these families, not only gaps. Derived from each claim’s own sources; explicit values never exceed that ceiling (validated by `npm run data:build`).', '',

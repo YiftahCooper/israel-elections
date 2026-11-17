@@ -212,14 +212,15 @@
       "kind": "archival",
       "accessed": "2026-11-17",
       "evidenceFamily": "newspaper:davar",
-      "via": "National Library of Israel newspaper archive. Read from the archive’s computer-read text of the page; not yet checked against the printed page.",
+      "via": "National Library of Israel newspaper archive. Checked against the printed page in a copy of the whole issue on 17 November 2026; the archive’s computer-read text is kept beside each cite.",
       "retrieval": {
         "status": 200,
         "sha256": "5272979cda8064eeee4b46eb90cd13a1c2e511116d0556e46f01d1c4e4237515",
         "method": "owner-browser-page-collector",
         "retrievedAt": "2026-11-17T06:53:42.763Z"
       },
-      "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1772-www.nli.org.il/page.html"
+      "retainedArtifact": "owner’s private copy of the whole issue (National Library of Israel PDF)",
+      "computerReadArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1772-www.nli.org.il/page.html"
     }
   },
   "results": {
@@ -321,8 +322,9 @@
           "cites": [
             {
               "source": "davar-1981-07-15-p1",
-              "quote": "אמרה לנשיא שלא תתמוך בשום ממשלה",
-              "ocr": "אמרה לנשיא שלא תתמוך בשום ממשלה _ותתנגד לממשלת אחדות לאומית בראשות הליכוד."
+              "quote": "אמרה לנשיא שלא תתמוך בשום ממשלה ותתנגד לממשלת אחדות לאומית בראשות הליכוד.",
+              "ocr": "אמרה לנשיא שלא תתמוך בשום ממשלה _ותתנגד לממשלת אחדות לאומית בראשות הליכוד.",
+              "scanChecked": true
             }
           ],
           "noteEn": "Told the President it would support no government and would oppose a Likud-led unity government; the report names no candidate.",
@@ -335,8 +337,9 @@
           "cites": [
             {
               "source": "davar-1981-07-15-p1",
-              "quote": "",
-              "ocr": "תומכת בהקמת ממשלת אחדות לאומית אם תנאי היסוד שלה יהיר!פתיחת הסכמי קמפ דייוויד."
+              "quote": "תומכת בהקמת ממשלת אחדות לאומית אם תנאי היסוד שלה יהיה פתיחת הסכמי קמפ דייוויד.",
+              "ocr": "תומכת בהקמת ממשלת אחדות לאומית אם תנאי היסוד שלה יהיר!פתיחת הסכמי קמפ דייוויד.",
+              "scanChecked": true
             }
           ],
           "noteEn": "Supported a national unity government on condition that it reopen the Camp David Accords; named no one.",
@@ -349,8 +352,9 @@
           "cites": [
             {
               "source": "davar-1981-07-15-p1",
-              "quote": "",
-              "ocr": "המליצו על הקפת ממשלת ליכוד לאומי בשל חומרת המצב החברתי והכלכלי."
+              "quote": "המליצו על הקמת ממשלת ליכוד לאומי בשל חומרת המצב החברתי והכלכלי.",
+              "ocr": "המליצו על הקפת ממשלת ליכוד לאומי בשל חומרת המצב החברתי והכלכלי.",
+              "scanChecked": true
             }
           ],
           "noteEn": "Recommended a national unity government and named no one. A wire report the same week says Telem leaned towards Labour.",
@@ -364,8 +368,9 @@
           "cites": [
             {
               "source": "davar-1981-07-15-p1",
-              "quote": "",
-              "ocr": "אנשישינויי ורייצ הביעו תמיכה \" בהקמת ממשלה בראשות שמעון פרפ."
+              "quote": "אנשי „שינוי״ ור״צ הביעו תמיכה בהקמת ממשלה בראשות שמעון פרס.",
+              "ocr": "אנשישינויי ורייצ הביעו תמיכה \" בהקמת ממשלה בראשות שמעון פרפ.",
+              "scanChecked": true
             }
           ],
           "noteEn": "Expressed support for a government headed by Peres.",
@@ -379,8 +384,9 @@
           "cites": [
             {
               "source": "davar-1981-07-15-p1",
-              "quote": "",
-              "ocr": "אנשישינויי ורייצ הביעו תמיכה \" בהקמת ממשלה בראשות שמעון פרפ."
+              "quote": "אנשי „שינוי״ ור״צ הביעו תמיכה בהקמת ממשלה בראשות שמעון פרס.",
+              "ocr": "אנשישינויי ורייצ הביעו תמיכה \" בהקמת ממשלה בראשות שמעון פרפ.",
+              "scanChecked": true
             }
           ],
           "noteEn": "Expressed support for a government headed by Peres.",

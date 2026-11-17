@@ -206,6 +206,10 @@ The National Library of Israel's newspaper archive holds them as page scans with
 - **Computer-read text is not a quote until checked.** A quote is shown only where the computer-read text is clean.
   Otherwise the source is named by paper, date and page ("Davar, 17 August 1955, p. 1") with no quote. The passage as
   the archive read it is kept beside the cite, hidden, until someone checks it against the printed page.
+- **Checked against the printed page.** Whoever reads the page image (a copy of the whole issue) gives the quote the
+  printed wording, at most about 25 words in the original spelling, with words broken at a line end joined. Such a
+  cite is marked as checked, and a quote the computer-read text garbled may then be shown. The computer-read text stays
+  beside it, hidden, as the record of what the archive read.
 - **A condition stays with the recommendation.** A party that named a person with a condition ("Ben-Gurion, and
   Begin if he fails") is counted for that person, and the row's note states the condition.
 - **No person, no recommendation.** A party that named only a party, a type of government or no one is not counted
@@ -314,6 +318,9 @@ pointer.
 **Newspapers from scans.** Each National Library page is its own source with `evidenceFamily:
 "newspaper:<paper>"` (all pages share one web host, so the family is what keeps papers apart). A cite read from
 computer-read text carries `ocr`, the passage as the archive read it; its `quote` is empty or an exact part of `ocr`.
+A cite checked against the printed page also carries `scanChecked: true` (never shown); its `quote` is the printed
+wording and need not match `ocr`, which stays as the archive read it. The page's source then says in `via` that it was
+checked, and `retainedArtifact` names the owner's private copy of the whole issue, never a personal path.
 A recommendation round lists the pages read in `pagesRead` and may explain a search in `searchNote`; the gaps register
 shows both. An entry whose papers disagree has status `disputed` and `certainty: "disputed"`.
 
