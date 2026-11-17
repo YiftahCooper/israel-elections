@@ -225,6 +225,15 @@
               "kind": "secondary",
               "quote": "5 מנדטים (מתוך 6 לרשימה כולה): יוסי שריד, חיים אורון, רן כהן, זהבה גלאון, אבשלום וילן",
               "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://doi.org/10.4324/9780203086919",
+              "publisher": "Vladimir (Ze’ev) Khanin, “The Israeli ‘Russian’ Community and Immigrants Party Politics in the 2003 Elections”, in Shmuel Sandler, Manfred Gerstenfeld and Jonathan Rynhold (eds.), Israel at the Polls 2003 (Routledge, 2005)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:khanin",
+              "quote": "Bronfman himself became an MK on the joint Meretz-Habehira Hademocratit-Makhar ticket",
+              "locator": "p. 149"
             }
           ],
           "confidence": "medium",
@@ -250,6 +259,15 @@
               "kind": "secondary",
               "quote": "מנדט אחד (מתוך 6 לרשימה כולה): רומן ברונפמן",
               "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://doi.org/10.4324/9780203086919",
+              "publisher": "Vladimir (Ze’ev) Khanin, “The Israeli ‘Russian’ Community and Immigrants Party Politics in the 2003 Elections”, in Shmuel Sandler, Manfred Gerstenfeld and Jonathan Rynhold (eds.), Israel at the Polls 2003 (Routledge, 2005)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:khanin",
+              "quote": "merged with the Meretz list on the eve of the 2003 elections",
+              "locator": "p. 149"
             }
           ],
           "confidence": "medium"

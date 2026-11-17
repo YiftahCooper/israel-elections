@@ -187,6 +187,24 @@
               "kind": "secondary",
               "quote": "דגל התורה: אברהם רביץ, משה גפני",
               "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://openlibrary.org/works/OL19596623W",
+              "publisher": "Etta Bick, “Fragmentation and Realignment: Israel’s Nationalist Parties in the 1992 Elections”, in Daniel J. Elazar and Shmuel Sandler (eds.), Israel at the Polls, 1992 (Rowman & Littlefield, 1995)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:bick",
+              "quote": "In the 1992 elections, Aguda united with the Degel HaTorah party, under the tutelage of Rabbi Shach",
+              "locator": "p. 85"
+            },
+            {
+              "url": "https://openlibrary.org/works/OL18956337W",
+              "publisher": "Eliezer Don-Yehiya, “Religion, Ethnicity and Electoral Reform: The Religious Parties and the 1996 Elections”, in Daniel J. Elazar and Shmuel Sandler (eds.), Israel at the Polls, 1996 (Frank Cass, 1998)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:don-yehiya",
+              "quote": "composed of two factions — Agudat Israel and Degel Ha-torah.",
+              "locator": "p. 77"
             }
           ],
           "confidence": "medium",

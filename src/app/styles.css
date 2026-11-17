@@ -276,6 +276,9 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .info .pop { display: block; position: fixed; z-index: 40; inset-block-start: 22px; inset-inline-start: -8px; width: 300px; max-width: calc(80vw / var(--text-zoom, 1)); padding: 10px 12px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--rule); box-shadow: var(--shadow-pop); color: var(--ink); font-size: 13px; font-weight: 400; text-align: start; white-space: normal; }
 .info .pop b { display: block; margin-bottom: 3px; }
 .info .pop .glossary-link { display: block; margin-top: 6px; font-size: 12.5px; }
+/* one cited source per line; a book's quoted passage sits under its link (FamilyPoint, PartyHistory) */
+.info .pop .book-source { display: block; margin-block: 4px; }
+.source-quote { margin: 2px 0 4px; padding-inline-start: 8px; border-inline-start: 2px solid var(--rule); font-size: 12px; color: var(--muted); }
 
 /* ---------- ballot slip / logo tile */
 .slip { flex: none; display: inline-grid; place-items: center; width: 58px; height: 32px; padding: 0 3px; background: var(--slip); color: #111; border: 1.5px solid var(--c, #888); border-radius: 4px; font-weight: 700; font-size: 15px; line-height: 1; letter-spacing: .01em; }

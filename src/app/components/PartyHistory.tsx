@@ -16,6 +16,7 @@ import { Info, Slip } from './ui.tsx';
 import { SeatDelta } from './SeatDelta.tsx';
 import { percent, rationalPoints } from './Percentage.tsx';
 import './party-history.css';
+import { PageAndQuote } from './BookQuote.tsx';
 import { openModal } from '../focusReturn.ts';
 import { partyDisplayColor } from '../partyDisplayColor.ts';
 
@@ -75,7 +76,8 @@ function Evidence({ r }: { r: Relation }) {
   return <Info title={L('Evidence', 'ראיות')} label={L(`Evidence: ${eventText(r, 'en')}`, `ראיות: ${eventText(r, 'he')}`)}>
     <span className="ph-why">
       <span>{eventText(r, lang)} · <CertChip c={r.certainty} /></span>
-      {r.sources.length > 0 && <span className="ph-src">{r.sources.map((s) => <span key={s.id}>{s.url ? <a href={s.url} target="_blank" rel="noreferrer">{s.publisher ?? s.url}</a> : (s.publisher ?? s.locator ?? s.id)}
+      {r.sources.length > 0 && <span className="ph-src">{r.sources.map((s) => <span key={s.id}>{s.url ? <a href={s.url} target="_blank" rel="noreferrer">{(lang === 'he' && s.publisherHe) || s.publisher || s.url}</a> : (s.publisher ?? s.locator ?? s.id)}
+        <PageAndQuote locator={s.locator} quote={s.quote} />
         {expert && lang === 'en' && s.support ? <span className="tiny muted"> · {s.support}</span> : null}</span>)}</span>}
       {!r.sources.some((s) => s.url) && <span className="tiny muted">{L('Recorded in this project’s data files.', 'רשום בקובצי הנתונים של הפרויקט.')}</span>}
     </span>
@@ -84,9 +86,9 @@ function Evidence({ r }: { r: Relation }) {
 
 /** A relation's sources as links (the same evidence as its (i)), for places that are already inside a popover. */
 export function EvidenceLinks({ r }: { r: Relation }) {
-  const L = useL();
+  const L = useL(), lang = useLang();
   if (!r.sources.length) return <span className="tiny muted">{L('Recorded in this project’s data files.', 'רשום בקובצי הנתונים של הפרויקט.')}</span>;
-  return <span className="tiny ph-srcline">{L('Sources: ', 'מקורות: ')}{r.sources.map((s, k) => <span key={s.id}>{k ? '; ' : ''}{s.url ? <a href={s.url} target="_blank" rel="noreferrer">{s.publisher ?? s.url}</a> : (s.publisher ?? s.locator ?? s.id)}</span>)}</span>;
+  return <span className="tiny ph-srcline">{L('Sources: ', 'מקורות: ')}{r.sources.map((s, k) => <span key={s.id}>{k ? '; ' : ''}{s.url ? <a href={s.url} target="_blank" rel="noreferrer">{(lang === 'he' && s.publisherHe) || s.publisher || s.url}</a> : (s.publisher ?? s.locator ?? s.id)}<PageAndQuote locator={s.locator} /></span>)}</span>;
 }
 /** "Labor (4 seats) and Meretz (0 seats)": the whole earlier lists a comparison counts, with their seats. */
 export function countedText(c: Comparison, lang: Lang): string {

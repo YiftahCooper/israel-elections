@@ -469,6 +469,127 @@
       "locator": "public/data/k26.json",
       "sha256": "4fa00a632f3cb78277a338505b39d2be912ebb8189c423f8b9e17129f0786742",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "bick1995-p98": {
+      "url": "https://openlibrary.org/works/OL19596623W",
+      "publisher": "Etta Bick, “Fragmentation and Realignment: Israel’s Nationalist Parties in the 1992 Elections”, in Daniel J. Elazar and Shmuel Sandler (eds.), Israel at the Polls, 1992 (Rowman & Littlefield, 1995)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:bick",
+      "locator": "p. 98",
+      "quote": "Kach, the extremist right party founded by Rabbi Meir Kahane, was represented in the 11th Knesset and later disqualified",
+      "support": "Book passage quoted; the page is given."
+    },
+    "shamir-weinshall2015-p66": {
+      "url": "https://doi.org/10.4324/9781351295840-5",
+      "publisher": "Michal Shamir and Keren Weinshall-Margel, “‘Your Honor, Restrain Us’: The Political Dynamics of the Right to Be Elected in the Israeli Democracy”, in Michal Shamir (ed.), The Elections in Israel 2013 (Transaction, 2015)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:shamir",
+      "locator": "p. 66",
+      "quote": "primarily restricting the right of extremist right-wing groups to be elected",
+      "support": "Book passage quoted; the page is given."
+    },
+    "rahat2008-p161": {
+      "url": "https://doi.org/10.1353/book10210",
+      "publisher": "Gideon Rahat, The Politics of Regime Structure Reform in Democracies: Israel in Comparative and Theoretical Perspective (SUNY Press, 2008)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:shamir",
+      "locator": "p. 161",
+      "quote": "the other extreme right-wing parties (Tehiya and Moledet)",
+      "support": "Book passage quoted; the page is given."
+    },
+    "mendilow2003-p142": {
+      "url": "https://doi.org/10.1515/9780791487501",
+      "publisher": "Jonathan Mendilow, Ideology, Party Change, and Electoral Campaigns in Israel, 1965–2001 (SUNY Press, 2003)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:mendilow",
+      "locator": "p. 142",
+      "quote": "the far right Tehiya and Moledet parties",
+      "support": "Book passage quoted; the page is given."
+    },
+    "pedahzur2001-p40": {
+      "url": "https://doi.org/10.1201/9781315038865-4",
+      "publisher": "Ami Pedahzur, “The Downfall of the National Camp?”, in Daniel J. Elazar and M. Ben Mollov (eds.), Israel at the Polls 1999 (Frank Cass, 2001)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:pedahzur",
+      "locator": "p. 40",
+      "quote": "Moledet, the most extreme right-wing party in Israel's parliament since 1988",
+      "support": "Book passage quoted; the page is given."
+    },
+    "rahat2002-p255": {
+      "url": "https://doi.org/10.1515/9780791488812-013",
+      "publisher": "Gideon Rahat, “Candidate Selection in a Sea of Changes: Unsuccessfully Trying to Adapt?”, in Asher Arian and Michal Shamir (eds.), The Elections in Israel 1999 (SUNY Press, 2002)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:shamir",
+      "locator": "p. 255",
+      "quote": "Moledet, an extreme right-wing party whose representatives in the joint list included its own two MKs",
+      "support": "Book passage quoted; the page is given."
+    },
+    "bick2008-p186": {
+      "url": "https://doi.org/10.4324/9781315869513",
+      "publisher": "Etta Bick, “A Clash of Authority: Lay Leaders and Rabbis in the National Religious Party”, in Shmuel Sandler, Manfred Gerstenfeld and Hillel Frisch (eds.), Israel at the Polls 2006 (Routledge, 2008)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:bick",
+      "locator": "p. 186",
+      "quote": "in a one-issue far-right nationalist party on the margins of Israeli politics.",
+      "support": "Book passage quoted; the page is given."
+    },
+    "leon2016-p65": {
+      "url": "https://doi.org/10.4324/9781315671109",
+      "publisher": "Nissim Leon, “An Uneasy Stability: The Haredi Parties’ Emergency Campaign for the 2013 Elections”, in Eithan Orkibi and Manfred Gerstenfeld (eds.), Israel at the Polls 2013 (Routledge, 2016)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:leon",
+      "locator": "p. 65",
+      "quote": "1278 voters preferred the extreme right-wing party, Otzma le-Yisrael, continuing the Chabad trend of voting for such parties",
+      "support": "Book passage quoted; the page is given."
+    },
+    "gerstenfeld2017-p15": {
+      "url": "https://doi.org/10.4324/9781315205649-2",
+      "publisher": "Manfred Gerstenfeld, “The Run-up to Israel’s 2015 Elections: A Political History”, in Eithan Orkibi and Manfred Gerstenfeld (eds.), Israel at the Polls 2015 (Routledge, 2017)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:gerstenfeld",
+      "locator": "p. 15",
+      "quote": "Yahad Ha’am Itanu presented a united list together with the extreme right-wing Otzma Yehudit.",
+      "support": "Book passage quoted; the page is given."
+    },
+    "shamir-rahat2017-p14": {
+      "url": "https://www.idi.org.il/books/12910",
+      "publisher": "Michal Shamir and Gideon Rahat, introduction (Hebrew), in Michal Shamir and Gideon Rahat (eds.), The Elections in Israel 2015 (Israel Democracy Institute, 2017)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:shamir",
+      "locator": "p. 14",
+      "quote": "הבית היהודי - ברית של מפלגת הבית היהודי, ממשיכתה של המפלגה הדתית־לאומית ותקומה הימנית קיצונית",
+      "support": "Book passage quoted; the page is given.",
+      "publisherHe": "מיכל שמיר וגדעון רהט, מבוא, בתוך מיכל שמיר וגדעון רהט (עורכים), הבחירות בישראל 2015 (המכון הישראלי לדמוקרטיה, 2017)"
+    },
+    "peled1990-p95": {
+      "url": "https://doi.org/10.4324/9780429310409-6",
+      "publisher": "Yoav Peled, “Labor Market Segmentation and Ethnic Conflict: The Social Basis of Right-Wing Politics in Israel”, in Asher Arian and Michal Shamir (eds.), The Elections in Israel 1988 (Westview, 1990)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:peled",
+      "locator": "p. 95",
+      "quote": "three extreme right-wing parties (Tehiya, Tzomet and Moledet)",
+      "support": "Book passage quoted; the page is given."
+    },
+    "mendilow1995-p227": {
+      "url": "https://openlibrary.org/works/OL19596832W",
+      "publisher": "Jonathan Mendilow, “The 1992 Campaign: Valence and Position Dimensions”, in Asher Arian and Michal Shamir (eds.), The Elections in Israel 1992 (SUNY Press, 1995)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:mendilow",
+      "locator": "p. 227",
+      "quote": "now that Tsomet has become a party of the center, chiefly concerned with good government and education",
+      "support": "Book passage quoted; the page is given."
     }
   },
   "elections": [
@@ -939,14 +1060,17 @@
             "locator": "public/data/k8.json#/lists/14"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k8",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "bick1995-p98",
+              "shamir-weinshall2015-p66"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Two studies describe Kach as an extremist right-wing party.",
+            "claimHe": "שני מחקרים מתארים את כ\"ך כמפלגת ימין קיצוני."
           },
           "constituentVotes": null
         }
@@ -1033,14 +1157,17 @@
             "locator": "public/data/k9.json#/lists/17"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k9",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "bick1995-p98",
+              "shamir-weinshall2015-p66"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Two studies describe Kach as an extremist right-wing party.",
+            "claimHe": "שני מחקרים מתארים את כ\"ך כמפלגת ימין קיצוני."
           },
           "constituentVotes": null
         }
@@ -1125,14 +1252,17 @@
             "locator": "public/data/k10.json#/lists/7"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k10",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "rahat2008-p161",
+              "mendilow2003-p142"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Two studies call Tehiya a far-right party.",
+            "claimHe": "שני מחקרים מכנים את התחייה מפלגת ימין קיצוני."
           },
           "constituentVotes": null
         },
@@ -1155,14 +1285,17 @@
             "locator": "public/data/k10.json#/lists/24"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k10",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "bick1995-p98",
+              "shamir-weinshall2015-p66"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Two studies describe Kach as an extremist right-wing party.",
+            "claimHe": "שני מחקרים מתארים את כ\"ך כמפלגת ימין קיצוני."
           },
           "constituentVotes": null
         }
@@ -1248,14 +1381,17 @@
             "locator": "public/data/k11.json#/lists/8"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k11",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "rahat2008-p161",
+              "mendilow2003-p142"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Two studies call Tehiya a far-right party. Tzomet, its partner on this list, is not described this way.",
+            "claimHe": "שני מחקרים מכנים את התחייה מפלגת ימין קיצוני. צומת, שותפתה ברשימה, אינה מתוארת כך."
           },
           "constituentVotes": null
         },
@@ -1278,14 +1414,17 @@
             "locator": "public/data/k11.json#/lists/23"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k11",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "bick1995-p98",
+              "shamir-weinshall2015-p66"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Two studies describe Kach as an extremist right-wing party.",
+            "claimHe": "שני מחקרים מתארים את כ\"ך כמפלגת ימין קיצוני."
           },
           "constituentVotes": null
         }
@@ -1369,14 +1508,17 @@
             "locator": "public/data/k12.json#/lists/8"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k12",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "rahat2008-p161",
+              "mendilow2003-p142"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Two studies call Tehiya a far-right party.",
+            "claimHe": "שני מחקרים מכנים את התחייה מפלגת ימין קיצוני."
           },
           "constituentVotes": null
         },
@@ -1399,14 +1541,17 @@
             "locator": "public/data/k12.json#/lists/10"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k12",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "pedahzur2001-p40",
+              "mendilow2003-p142"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Two studies call Moledet an extreme right-wing party.",
+            "claimHe": "שני מחקרים מכנים את מולדת מפלגת ימין קיצוני."
           },
           "constituentVotes": null
         },
@@ -1558,14 +1703,17 @@
             "locator": "public/data/k13.json#/lists/8"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k13",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "pedahzur2001-p40",
+              "mendilow2003-p142"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Two studies call Moledet an extreme right-wing party.",
+            "claimHe": "שני מחקרים מכנים את מולדת מפלגת ימין קיצוני."
           },
           "constituentVotes": null
         },
@@ -1588,14 +1736,17 @@
             "locator": "public/data/k13.json#/lists/10"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k13",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "rahat2008-p161",
+              "mendilow2003-p142"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Two studies call Tehiya a far-right party.",
+            "claimHe": "שני מחקרים מכנים את התחייה מפלגת ימין קיצוני."
           },
           "constituentVotes": null
         }
@@ -1699,14 +1850,17 @@
             "locator": "public/data/k14.json#/lists/10"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k14",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "pedahzur2001-p40",
+              "mendilow2003-p142"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Two studies call Moledet an extreme right-wing party.",
+            "claimHe": "שני מחקרים מכנים את מולדת מפלגת ימין קיצוני."
           },
           "constituentVotes": null
         },
@@ -1731,14 +1885,18 @@
             "locator": "public/data/k14.json#/lists/1"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k14",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "peled1990-p95",
+              "mendilow1995-p227"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Some partners fall outside this definition; all list votes stay in mixed segment."
+            "claim": "Sources disagree. This list is in the family only through Tzomet. A 1988 study groups Tzomet with the extreme right; a study of the 1992 campaign says it had become a centre party.",
+            "claimHe": "המקורות חלוקים. הרשימה במשפחה רק בזכות צומת. מחקר על 1988 מונה את צומת עם הימין הקיצוני; מחקר על מערכת 1992 כותב שהפכה למפלגת מרכז.",
+            "certainty": "disputed"
           },
           "constituentVotes": null
         }
@@ -1846,14 +2004,17 @@
             "locator": "public/data/k15.json#/lists/10"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k15",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "pedahzur2001-p40",
+              "rahat2002-p255"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Two studies call Moledet, a party on this joint list, an extreme right-wing party. No book places the whole list.",
+            "claimHe": "שני מחקרים מכנים את מולדת, מפלגה ברשימה המשותפת, מפלגת ימין קיצוני. אף ספר אינו מסווג כך את הרשימה כולה."
           },
           "constituentVotes": null
         }
@@ -1945,14 +2106,17 @@
             "locator": "public/data/k16.json#/lists/4"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k16",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "pedahzur2001-p40",
+              "rahat2002-p255"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Yisrael Beiteinu, which shared this ballot, is a partner (as in the Russian-speaking family); all list votes stay in mixed segment."
+            "claim": "Two studies call Moledet, a party on this joint list, an extreme right-wing party. No book places the whole list.",
+            "claimHe": "שני מחקרים מכנים את מולדת, מפלגה ברשימה המשותפת, מפלגת ימין קיצוני. אף ספר אינו מסווג כך את הרשימה כולה."
           },
           "constituentVotes": null
         }
@@ -2044,14 +2208,18 @@
             "locator": "public/data/k17.json#/lists/5"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k17",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "bick2008-p186",
+              "pedahzur2001-p40",
+              "rahat2002-p255"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Some partners fall outside this definition; all list votes stay in mixed segment."
+            "claim": "One study calls this 2006 joint list a far-right nationalist party; two call its Moledet component extreme right-wing.",
+            "claimHe": "מחקר אחד מכנה את הרשימה המשותפת של 2006 מפלגת ימין קיצוני לאומנית; שניים מכנים את מולדת שבה מפלגת ימין קיצוני."
           },
           "constituentVotes": null
         }
@@ -2139,14 +2307,17 @@
             "locator": "public/data/k18.json#/lists/7"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k18",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "pedahzur2001-p40",
+              "rahat2002-p255"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Two studies call Moledet, a party on this joint list, an extreme right-wing party. No book places the whole list.",
+            "claimHe": "שני מחקרים מכנים את מולדת, מפלגה ברשימה המשותפת, מפלגת ימין קיצוני. אף ספר אינו מסווג כך את הרשימה כולה."
           },
           "constituentVotes": null
         }
@@ -2229,14 +2400,17 @@
             "locator": "public/data/k19.json#/lists/12"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k19",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "leon2016-p65",
+              "gerstenfeld2017-p15"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Two studies call Otzma an extreme right-wing party.",
+            "claimHe": "שני מחקרים מכנים את עוצמה מפלגת ימין קיצוני."
           },
           "constituentVotes": null
         }
@@ -2256,9 +2430,11 @@
             "proposal",
             "k19",
             "radical",
-            "noam-hardal"
+            "noam-hardal",
+            "shamir-rahat2017-p14"
           ],
-          "reason": "Proposal marks this extension pending; no votes counted. Contemporary classification or boundary review required."
+          "reason": "Not counted. One study calls Tkuma, a party on this list, extreme right-wing; no book describes the Jewish Home itself this way.",
+          "reasonHe": "לא נספרת. מחקר אחד מכנה את תקומה, מפלגה ברשימה, ימין קיצוני; אף ספר אינו מתאר כך את הבית היהודי עצמו."
         }
       ],
       "computed": {
@@ -2339,14 +2515,17 @@
             "locator": "public/data/k20.json#/lists/10"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k20",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "gerstenfeld2017-p15",
+              "leon2016-p65"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Some partners fall outside this definition; all list votes stay in mixed segment."
+            "claim": "Counted through Otzma Yehudit only: two studies call it an extreme right-wing party. The rest of the list is not described this way.",
+            "claimHe": "נספרת דרך עוצמה יהודית בלבד: שני מחקרים מכנים אותה מפלגת ימין קיצוני. שאר הרשימה אינה מתוארת כך."
           },
           "constituentVotes": null
         }
@@ -2366,9 +2545,11 @@
             "proposal",
             "k20",
             "radical",
-            "noam-hardal"
+            "noam-hardal",
+            "shamir-rahat2017-p14"
           ],
-          "reason": "Proposal marks this extension pending; no votes counted. Contemporary classification or boundary review required."
+          "reason": "Not counted. One study calls Tkuma, a party on this list, extreme right-wing; no book describes the Jewish Home itself this way.",
+          "reasonHe": "לא נספרת. מחקר אחד מכנה את תקומה, מפלגה ברשימה, ימין קיצוני; אף ספר אינו מתאר כך את הבית היהודי עצמו."
         }
       ],
       "computed": {
@@ -2451,14 +2632,17 @@
             "locator": "public/data/k21.json#/lists/7"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k21",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "gerstenfeld2017-p15",
+              "leon2016-p65"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Some partners fall outside this definition; all list votes stay in mixed segment."
+            "claim": "Counted through Otzma Yehudit only: two studies call it an extreme right-wing party. The rest of the list is not described this way.",
+            "claimHe": "נספרת דרך עוצמה יהודית בלבד: שני מחקרים מכנים אותה מפלגת ימין קיצוני. שאר הרשימה אינה מתוארת כך."
           },
           "constituentVotes": null
         },
@@ -2590,14 +2774,17 @@
             "locator": "public/data/k22.json#/lists/9"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k22",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "gerstenfeld2017-p15",
+              "leon2016-p65"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Two studies call Otzma an extreme right-wing party.",
+            "claimHe": "שני מחקרים מכנים את עוצמה מפלגת ימין קיצוני."
           },
           "constituentVotes": null
         },
@@ -2622,14 +2809,16 @@
             "locator": "public/data/k22.json#/lists/6"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k22",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "shamir-rahat2017-p14"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Some partners fall outside this definition; all list votes stay in mixed segment."
+            "claim": "Counted through Tkuma only: one study calls it extreme right-wing.",
+            "claimHe": "נספרת דרך תקומה בלבד: מחקר אחד מכנה אותה ימין קיצוני."
           },
           "constituentVotes": null
         }
@@ -2730,14 +2919,17 @@
             "locator": "public/data/k23.json#/lists/8"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k23",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "gerstenfeld2017-p15",
+              "leon2016-p65"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Two studies call Otzma an extreme right-wing party.",
+            "claimHe": "שני מחקרים מכנים את עוצמה מפלגת ימין קיצוני."
           },
           "constituentVotes": null
         },
@@ -2763,14 +2955,16 @@
             "locator": "public/data/k23.json#/lists/7"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k23",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "shamir-rahat2017-p14"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Some partners fall outside this definition; all list votes stay in mixed segment."
+            "claim": "Counted through Tkuma only: one study calls it extreme right-wing.",
+            "claimHe": "נספרת דרך תקומה בלבד: מחקר אחד מכנה אותה ימין קיצוני."
           },
           "constituentVotes": null
         }
@@ -2857,14 +3051,17 @@
             "locator": "public/data/k24.json#/lists/8"
           },
           "classificationEvidence": {
-            "status": "inferred",
+            "status": "documented",
             "sourceIds": [
               "proposal",
               "k24",
               "radical",
-              "noam-hardal"
+              "noam-hardal",
+              "gerstenfeld2017-p15",
+              "leon2016-p65"
             ],
-            "claim": "Original editorial selection under Radical right — broad contested interpretation; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+            "claim": "Counted through Otzma Yehudit only: two studies call it an extreme right-wing party. The rest of the list is not described this way.",
+            "claimHe": "נספרת דרך עוצמה יהודית בלבד: שני מחקרים מכנים אותה מפלגת ימין קיצוני. שאר הרשימה אינה מתוארת כך."
           },
           "constituentVotes": null
         }

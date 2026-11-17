@@ -1379,6 +1379,230 @@
       },
       "note": "Filtered live result confirms legal name, number and year only.",
       "support": "The Registrar of Parties lists the party’s legal name, registration number 599002110 and registration year 2026; it gives no exact date or predecessor."
+    },
+    "arian1985-p143": {
+      "url": "https://openlibrary.org/works/OL2633027W",
+      "publisher": "Asher Arian, Politics in Israel: The Second Generation (Chatham House, 1985)",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:shamir",
+      "locator": "p. 143",
+      "quote": "But in the 1984 elections, Tami fell to only one seat.",
+      "support": "Book passage quoted; the page is given."
+    },
+    "greilsammer1990-p74": {
+      "url": "https://openlibrary.org/works/OL8203513W",
+      "publisher": "Ilan Greilsammer, “The Religious Parties”, in Daniel J. Elazar and Shmuel Sandler (eds.), Israel’s Odd Couple: The 1984 Knesset Elections and the National Unity Government (Wayne State University Press, 1990)",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:greilsammer",
+      "locator": "p. 74",
+      "quote": "relative collapse in the national elections of July 1984",
+      "support": "Book passage quoted; the page is given."
+    },
+    "galnoor-p337": {
+      "url": "https://doi.org/10.1017/9781316160978",
+      "publisher": "Itzhak Galnoor and Dana Blander, The Handbook of Israel’s Political System (Cambridge University Press, 2018)",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:galnoor",
+      "locator": "p. 337",
+      "quote": "such as WIZO (1949), Haolam Hazeh (1965, 1969), Flatto Sharon (1977)",
+      "support": "Book passage quoted; the page is given."
+    },
+    "yishai1998-p168": {
+      "url": "https://openlibrary.org/works/OL18415398W",
+      "publisher": "Yael Yishai, “Parties and Social Movements: Merger or Separation?” (Hebrew), in Dani Koren (ed.), The End of Parties: Israeli Democracy in Distress (Hebrew; Hakibbutz Hameuchad, 1998)",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:yishai",
+      "locator": "p. 168",
+      "quote": "העולם הזה - כח חדש הצליחה אומנם להכפיל את נציגותה הפרלמנטרית בבחירות 1969",
+      "support": "Book passage quoted; the page is given.",
+      "publisherHe": "יעל ישי, «מפלגות ותנועות חברתיות: מיזוג או בידול?», בתוך דני קורן (עורך), קץ המפלגות: הדמוקרטיה הישראלית במצוקה (הקיבוץ המאוחד, 1998)"
+    },
+    "goldberg2018-p6": {
+      "url": "https://doi.org/10.1080/13537121.2018.1530435",
+      "publisher": "Giora Goldberg, “Historical Perspective on the Ideological Dimension of the 1977 Political Turnover in Israel”, Israel Affairs (online, 2018)",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:goldberg",
+      "locator": "p. 6",
+      "quote": "Immediately prior to the 1973 elections, Begin integrated remnants of the State List that had been formed by Ben-Gurion in 1969.",
+      "support": "Book passage quoted; the page is given."
+    },
+    "arian1983-p286": {
+      "url": "https://openlibrary.org/works/OL18241717W",
+      "publisher": "Glossary, in Asher Arian (ed.), The Elections in Israel 1981 (Ramot, 1983)",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:shamir",
+      "locator": "p. 286",
+      "quote": "A small group of Rafi members who opposed the realignment formed the State List, which in 1973 formed La’am.",
+      "support": "Book passage quoted; the page is given."
+    },
+    "doron1990-p116": {
+      "url": "https://openlibrary.org/works/OL8203513W",
+      "publisher": "Gideon Doron, “The Political-Economic Scheme for Electoral Financing”, in Daniel J. Elazar and Shmuel Sandler (eds.), Israel’s Odd Couple: The 1984 Knesset Elections and the National Unity Government (Wayne State University Press, 1990)",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:doron",
+      "locator": "p. 116",
+      "quote": "The Sephardi and Eastern Communities List and the Yemenite Association appeared three times (First, Second, and Third Knessets).",
+      "support": "Book passage quoted; the page is given."
+    },
+    "goldstein2006-p329": {
+      "url": "https://ebooks.psik.io/book/14022",
+      "publisher": "Amir Goldstein, “The Decline of the General Zionists and the Failure of the Liberal Alternative, 1959–1961” (Hebrew), Iyunim Bitkumat Israel 16 (2006)",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:goldstein-amir",
+      "locator": "p. 329",
+      "quote": "לצורך זה הוקמה רשימת עולים מתימן שטענה כי היא ממשיכה את התאחדות התימנים שהשתמשה באות ל' במערכות הבחירות הראשונות.",
+      "support": "Book passage quoted; the page is given.",
+      "publisherHe": "אמיר גולדשטיין, «שקיעת הציונים הכלליים וכישלון האלטרנטיבה הליברלית, 1959–1961», עיונים בתקומת ישראל 16 (2006)"
+    },
+    "yishai2011-p129": {
+      "url": "https://doi.org/10.4324/9781351297608-7",
+      "publisher": "Yael Yishai, “The Losers: Who Didn’t Make It into the Knesset?”, in Asher Arian and Michal Shamir (eds.), The Elections in Israel 2009 (Transaction, 2011)",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:yishai",
+      "locator": "p. 129",
+      "quote": "Not only did it fail in 2009 to replicate its previous attainment, it indeed was left out of the Knesset altogether.",
+      "support": "Book passage quoted; the page is given."
+    },
+    "galnoor-p337-2": {
+      "url": "https://doi.org/10.1017/9781316160978",
+      "publisher": "Itzhak Galnoor and Dana Blander, The Handbook of Israel’s Political System (Cambridge University Press, 2018)",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:galnoor",
+      "locator": "p. 337",
+      "quote": "Gil Pensioners’ Party in 2006 won a surprising seven seats, but then disappeared in the 2009 election",
+      "support": "Book passage quoted; the page is given."
+    },
+    "galnoor-p459": {
+      "url": "https://doi.org/10.1017/9781316160978",
+      "publisher": "Itzhak Galnoor and Dana Blander, The Handbook of Israel’s Political System (Cambridge University Press, 2018)",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:galnoor",
+      "locator": "p. 459",
+      "quote": "the Greens, who ran for the Knesset continuously after 1999 and did not pass the electoral threshold",
+      "support": "Book passage quoted; the page is given."
+    },
+    "susser-goldberg2005-p650": {
+      "url": "https://doi.org/10.1080/13537120500233771",
+      "publisher": "Bernard Susser and Giora Goldberg, “Escapist Parties in Israeli Politics”, Israel Affairs 11:4 (2005)",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:goldberg",
+      "locator": "p. 650",
+      "quote": "Green Leaf had its start in the 1999 elections",
+      "support": "Book passage quoted; the page is given."
+    },
+    "galnoor-p377": {
+      "url": "https://doi.org/10.1017/9781316160978",
+      "publisher": "Itzhak Galnoor and Dana Blander, The Handbook of Israel’s Political System (Cambridge University Press, 2018)",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:galnoor",
+      "locator": "p. 377",
+      "quote": "for the Green Leaf party (3% more than the general public)",
+      "support": "Book passage quoted; the page is given."
+    },
+    "galnoor-p361": {
+      "url": "https://doi.org/10.1017/9781316160978",
+      "publisher": "Itzhak Galnoor and Dana Blander, The Handbook of Israel’s Political System (Cambridge University Press, 2018)",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:galnoor",
+      "locator": "p. 361",
+      "quote": "In 2006, the Green Party and the Green Leaf Party would have been represented in the Knesset with a 1 percent electoral threshold",
+      "support": "Book passage quoted; the page is given."
+    },
+    "susser-goldberg2005-p648": {
+      "url": "https://doi.org/10.1080/13537120500233771",
+      "publisher": "Bernard Susser and Giora Goldberg, “Escapist Parties in Israeli Politics”, Israel Affairs 11:4 (2005)",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:goldberg",
+      "locator": "p. 648",
+      "quote": "In 1981, he failed in his attempt to enter the Knesset once again.",
+      "support": "Book passage quoted; the page is given."
+    },
+    "penniman-elazar1986-p270": {
+      "url": "https://openlibrary.org/works/OL9357518W",
+      "publisher": "Glossary of political parties, in Howard R. Penniman and Daniel J. Elazar (eds.), Israel at the Polls, 1981 (Indiana University Press, 1986)",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:elazar",
+      "locator": "p. 270",
+      "quote": "Successor of the one-man list of Shmuel Flatto-Sharon",
+      "support": "Book passage quoted; the page is given."
+    },
+    "penniman1979-p320": {
+      "url": "https://openlibrary.org/works/OL17851764W",
+      "publisher": "Glossary of political parties, in Howard R. Penniman (ed.), Israel at the Polls: The Knesset Elections of 1977 (American Enterprise Institute, 1979)",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:elazar",
+      "locator": "p. 320",
+      "quote": "After gaining two seats in the Ninth Knesset, Shlomzion joined the Herut wing of the Likud.",
+      "support": "Book passage quoted; the page is given."
+    },
+    "goldberg2006-p386": {
+      "url": "https://doi.org/10.1080/13537120600744594",
+      "publisher": "Giora Goldberg, “The Growing Militarization of the Israeli Political System”, Israel Affairs 12:3 (2006)",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:goldberg",
+      "locator": "p. 386",
+      "quote": "Sharon founded the Shlomzion Party, which received two seats and immediately after the elections was swallowed up into the large Herut",
+      "support": "Book passage quoted; the page is given."
+    },
+    "koren1998-p283": {
+      "url": "https://openlibrary.org/works/OL18415398W",
+      "publisher": "Glossary, in Dani Koren (ed.), The End of Parties: Israeli Democracy in Distress (Hebrew; Hakibbutz Hameuchad, 1998)",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:koren",
+      "locator": "p. 283",
+      "quote": "וב-1988 הצטרפה לליכוד.",
+      "support": "Book passage quoted; the page is given.",
+      "publisherHe": "מילון מונחים, דני קורן (עורך), קץ המפלגות: הדמוקרטיה הישראלית במצוקה (הקיבוץ המאוחד, 1998)"
+    },
+    "yishai1998-p171": {
+      "url": "https://openlibrary.org/works/OL18415398W",
+      "publisher": "Yael Yishai, “Parties and Social Movements: Merger or Separation?” (Hebrew), in Dani Koren (ed.), The End of Parties: Israeli Democracy in Distress (Hebrew; Hakibbutz Hameuchad, 1998)",
+      "kind": "academic",
+      "tier": "scholarship",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:yishai",
+      "locator": "p. 171",
+      "quote": "ונבלעה בליכוד ב-1988",
+      "support": "Book passage quoted; the page is given.",
+      "publisherHe": "יעל ישי, «מפלגות ותנועות חברתיות: מיזוג או בידול?», בתוך דני קורן (עורך), קץ המפלגות: הדמוקרטיה הישראלית במצוקה (הקיבוץ המאוחד, 1998)"
     }
   },
   "edges": [
@@ -4482,12 +4706,15 @@
       "datePrecision": "day",
       "effectiveFor": "organisation",
       "sources": [
-        "tami-continuity"
+        "tami-continuity",
+        "arian1985-p143",
+        "greilsammer1990-p74"
       ],
-      "certainty": "probable",
+      "certainty": "confirmed",
       "evidence": {
         "status": "documented",
-        "interpretation": "Same Tami organisation in the 1981 and 1984 elections."
+        "interpretation": "The same Tami party ran in 1981 and 1984.",
+        "interpretationHe": "אותה מפלגת תמ\"י התמודדה ב־1981 וב־1984."
       }
     },
     {
@@ -4503,12 +4730,15 @@
       "datePrecision": "day",
       "effectiveFor": "organisation",
       "sources": [
-        "haolam-continuity"
+        "haolam-continuity",
+        "galnoor-p337",
+        "yishai1998-p168"
       ],
-      "certainty": "probable",
+      "certainty": "confirmed",
       "evidence": {
         "status": "documented",
-        "interpretation": "Same HaOlam HaZeh movement in the 1965 and 1969 elections."
+        "interpretation": "The same Haolam Hazeh movement ran in 1965 and 1969.",
+        "interpretationHe": "אותה תנועת העולם הזה התמודדה ב־1965 וב־1969."
       }
     },
     {
@@ -4528,12 +4758,15 @@
         "likud-1973-profile",
         "odata-k7-factions",
         "k7",
-        "k8"
+        "k8",
+        "goldberg2018-p6",
+        "arian1983-p286"
       ],
-      "certainty": "probable",
+      "certainty": "confirmed",
       "evidence": {
         "status": "documented",
-        "interpretation": "The 1969 list רשימה ממלכתית and the הרשימה הממלכתית inside the 1973 Likud list are one party. IDI gives the State List's founding in 1969 and its 1969 result (42,654 votes, 4 seats, the same as list 7-עמ), and names the National List among the parties of the 1973 Likud list. The Knesset record has the party's faction הרשימה הממלכתית (339) through the whole Seventh Knesset, 17 Nov 1969 to 21 Jan 1974. The link rests on IDI scholarship, not on an official register entry, so it is probable, not confirmed."
+        "interpretation": "The State List of 1969 is the State List inside the 1973 Likud list.",
+        "interpretationHe": "הרשימה הממלכתית של 1969 היא הרשימה הממלכתית שבתוך רשימת הליכוד של 1973."
       }
     },
     {
@@ -4573,7 +4806,8 @@
       "datePrecision": "day",
       "effectiveFor": "organisation",
       "sources": [
-        "sephardi-continuity"
+        "sephardi-continuity",
+        "doron1990-p116"
       ],
       "certainty": "probable",
       "evidence": {
@@ -4594,12 +4828,15 @@
       "datePrecision": "day",
       "effectiveFor": "organisation",
       "sources": [
-        "yemenite-continuity"
+        "yemenite-continuity",
+        "doron1990-p116",
+        "goldstein2006-p329"
       ],
-      "certainty": "probable",
+      "certainty": "confirmed",
       "evidence": {
         "status": "documented",
-        "interpretation": "Same Yemenite Association in the first two elections."
+        "interpretation": "The same Yemenite Association ran in the first two elections.",
+        "interpretationHe": "אותה התאחדות התימנים התמודדה בשתי הבחירות הראשונות."
       }
     },
     {
@@ -5268,12 +5505,15 @@
       "effectiveFor": "organisation",
       "sources": [
         "r7-gil-profile",
-        "r7-gil-report"
+        "r7-gil-report",
+        "yishai2011-p129",
+        "galnoor-p337-2"
       ],
-      "certainty": "probable",
+      "certainty": "confirmed",
       "evidence": {
         "status": "documented",
-        "interpretation": "Same Gil party in 2006 and 2009, explicitly connected by IDI and dated Ynet reporting. Later 2010 replacement is not included. Scholarship plus a retrospective report supports probable under the evidence policy; no Registrar number is asserted."
+        "interpretation": "The same Gil party ran in 2006 and 2009.",
+        "interpretationHe": "אותה מפלגת גיל התמודדה ב־2006 וב־2009."
       }
     },
     {
@@ -5310,7 +5550,8 @@
       "datePrecision": "day",
       "effectiveFor": "organisation",
       "sources": [
-        "r7-greens-profile"
+        "r7-greens-profile",
+        "galnoor-p459"
       ],
       "certainty": "probable",
       "evidence": {
@@ -5352,7 +5593,9 @@
       "datePrecision": "day",
       "effectiveFor": "organisation",
       "sources": [
-        "r7-ale-yarok-profile"
+        "r7-ale-yarok-profile",
+        "susser-goldberg2005-p650",
+        "galnoor-p377"
       ],
       "certainty": "probable",
       "evidence": {
@@ -5373,7 +5616,9 @@
       "datePrecision": "day",
       "effectiveFor": "organisation",
       "sources": [
-        "r7-ale-yarok-profile"
+        "r7-ale-yarok-profile",
+        "galnoor-p377",
+        "galnoor-p361"
       ],
       "certainty": "probable",
       "evidence": {
@@ -5521,12 +5766,61 @@
       "datePrecision": "day",
       "effectiveFor": "organisation",
       "sources": [
-        "r7-flatto-profile"
+        "r7-flatto-profile",
+        "susser-goldberg2005-p648",
+        "penniman-elazar1986-p270"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Flatto-Sharon’s list ran again in 1981.",
+        "interpretationHe": "רשימת פלטו־שרון התמודדה שוב ב־1981."
+      }
+    },
+    {
+      "id": "r7-shlomzion-herut-1977",
+      "from": [
+        "vehicle-9-כנ"
+      ],
+      "to": [
+        "herut"
+      ],
+      "relation": "absorbed-into",
+      "date": "1977",
+      "datePrecision": "year",
+      "effectiveFor": "organisation",
+      "sources": [
+        "penniman1979-p320",
+        "goldberg2006-p386"
+      ],
+      "certainty": "confirmed",
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Shlomzion joined Herut, within the Likud, right after the 1977 election.",
+        "interpretationHe": "שלומציון הצטרפה לחרות, בתוך הליכוד, מיד אחרי בחירות 1977."
+      }
+    },
+    {
+      "id": "r7-ometz-likud-1988",
+      "from": [
+        "vehicle-11-יש"
+      ],
+      "to": [
+        "likud"
+      ],
+      "relation": "absorbed-into",
+      "date": "1988",
+      "datePrecision": "year",
+      "effectiveFor": "organisation",
+      "sources": [
+        "koren1998-p283",
+        "yishai1998-p171"
       ],
       "certainty": "probable",
       "evidence": {
         "status": "documented",
-        "interpretation": "Explicit organisational continuity in opened IDI history, checked against the election-specific vote table; not inferred from leader or list name alone."
+        "interpretation": "Ometz joined the Likud in 1988.",
+        "interpretationHe": "אומץ הצטרפה לליכוד ב־1988."
       }
     }
   ],

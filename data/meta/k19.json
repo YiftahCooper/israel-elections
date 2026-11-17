@@ -447,6 +447,24 @@
        "kind": "academic",
        "quote": "יעקב ליצמן (אגודת ישראל–גור); משה גפני (דגל התורה); מאיר פרוש (אגודת ישראל–ש״א); אורי מקלב (דגל התורה); מנחם מוזס (אגודת ישראל–ויז׳ניץ); ישראל אייכלר (אגודת ישראל–בעלז); יעקב אשר (דגל התורה)",
        "accessed": "2026-11-06"
+      },
+      {
+       "url": "https://doi.org/10.1017/9781316160978",
+       "publisher": "Itzhak Galnoor and Dana Blander, The Handbook of Israel’s Political System (Cambridge University Press, 2018)",
+       "kind": "academic",
+       "accessed": "2026-11-17",
+       "evidenceFamily": "author:galnoor",
+       "quote": "since 1992 as Torah Judaism (Agudat Yisrael and Degel Hatorah), which together usually win six seats.",
+       "locator": "p. 382"
+      },
+      {
+       "url": "https://doi.org/10.4324/9781315671109",
+       "publisher": "Nissim Leon, “An Uneasy Stability: The Haredi Parties’ Emergency Campaign for the 2013 Elections”, in Eithan Orkibi and Manfred Gerstenfeld (eds.), Israel at the Polls 2013 (Routledge, 2016)",
+       "kind": "academic",
+       "accessed": "2026-11-17",
+       "evidenceFamily": "author:leon",
+       "quote": "United Torah Judaism is comprised of two factions. The first is the veteran Agudath Yisrael",
+       "locator": "p. 56"
       }
      ],
      "confidence": "medium"
@@ -467,6 +485,24 @@
        "kind": "academic",
        "quote": "יעקב ליצמן (אגודת ישראל–גור); משה גפני (דגל התורה); מאיר פרוש (אגודת ישראל–ש״א); אורי מקלב (דגל התורה); מנחם מוזס (אגודת ישראל–ויז׳ניץ); ישראל אייכלר (אגודת ישראל–בעלז); יעקב אשר (דגל התורה)",
        "accessed": "2026-11-06"
+      },
+      {
+       "url": "https://doi.org/10.1017/9781316160978",
+       "publisher": "Itzhak Galnoor and Dana Blander, The Handbook of Israel’s Political System (Cambridge University Press, 2018)",
+       "kind": "academic",
+       "accessed": "2026-11-17",
+       "evidenceFamily": "author:galnoor",
+       "quote": "since 1992 as Torah Judaism (Agudat Yisrael and Degel Hatorah), which together usually win six seats.",
+       "locator": "p. 382"
+      },
+      {
+       "url": "https://doi.org/10.4324/9781315671109",
+       "publisher": "Nissim Leon, “An Uneasy Stability: The Haredi Parties’ Emergency Campaign for the 2013 Elections”, in Eithan Orkibi and Manfred Gerstenfeld (eds.), Israel at the Polls 2013 (Routledge, 2016)",
+       "kind": "academic",
+       "accessed": "2026-11-17",
+       "evidenceFamily": "author:leon",
+       "quote": "The other faction is the relatively newer Degel ha-Torah, founded in 1988",
+       "locator": "p. 56"
       }
      ],
      "confidence": "medium"

@@ -380,9 +380,9 @@ describe('one party, one history', () => {
     expect(identityOf('vehicle-7-עמ').ids).toContain('state-list');
     expect(strip('state-list', 'en')).toEqual(['k7–k7 National List', 'k8–k8 State List']);
     expect(strip('state-list', 'he')).toEqual(['k7–k7 רשימה ממלכתית', 'k8–k8 הרשימה הממלכתית']);
-    // same organisation is not drawn as an event; the link rests on IDI scholarship, so it is probable
+    // same organisation is not drawn as an event; two books with no shared author confirm the link (books batch 4, 17 Nov 2026)
     expect(eventsOf(identityOf('state-list')).map((r) => r.id)).not.toContain('state-list-1969-1973');
-    expect(edge('state-list-1969-1973').certainty).toBe('probable');
+    expect(edge('state-list-1969-1973').certainty).toBe('confirmed');
   });
   it('HaOlam HaZeh became Meri: faction renamed 3 Jul 1973 in the Knesset record', () => {
     expect(identityOf('meri').ids).toEqual(expect.arrayContaining(['vehicle-6-ש', 'vehicle-7-ש', 'meri']));

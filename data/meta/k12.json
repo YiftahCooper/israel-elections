@@ -203,6 +203,24 @@
               "kind": "secondary",
               "quote": "מועמדי המפלגה לכנסת ה-12 (1988) במסגרת \"מפלגת המרכז - שינוי\"",
               "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://doi.org/10.4324/9780203086919-10",
+              "publisher": "Ephrat Knoller, “Change (Shinui) in the Centre”, in Shmuel Sandler, Manfred Gerstenfeld and Jonathan Rynhold (eds.), Israel at the Polls 2003 (Routledge, 2005)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:knoller",
+              "quote": "it formed together with Shinui the Shinui-Centre party in the 1988 elections",
+              "locator": "p. 94"
+            },
+            {
+              "url": "https://openlibrary.org/works/OL8323366W",
+              "publisher": "Asher Arian, Politics in Israel: The Second Republic, 2nd ed. (CQ Press, 2005)",
+              "kind": "academic",
+              "accessed": "2026-11-17",
+              "evidenceFamily": "author:shamir",
+              "quote": "They accepted the third place in the centrist Shinui (Change) list for the 1988 elections",
+              "locator": "p. 150"
             }
           ],
           "confidence": "medium",
