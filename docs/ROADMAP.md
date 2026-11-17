@@ -21,7 +21,9 @@ register (`docs/data-gaps.md`).
   fits: "member" says too much and "outside support" too little. So their 30 rows in governments 1–17 stay unknown
   (books batch 1, 16 Nov 2026). Needed: a role for this, chosen by the owner, then the rows filled from the handbook.
   The 1949 Nazareth list, stored today as a probable member partly on the same book, should be read again at the same
-  time; the Hebrew original (Am Oved, 2013) would show what "official members" means.
+  time. The Hebrew original (Am Oved and the Israel Democracy Institute, 2013, chapter 12, note to table 12.2, p. 604,
+  free from the Institute) says «בהרכב הקואליציה נמנו גם מפלגות או ח"כים שלא היו חברים רשמיים בממשלה»: counted in the
+  coalition's make-up, though not formal members of the government (17 Nov 2026).
 
 ## Features
 
