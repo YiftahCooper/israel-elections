@@ -16,6 +16,7 @@ import { EditMarker } from './EditMarker.tsx';
 import { percent, percentNum, points } from './Percentage.tsx';
 import { Info } from './ui.tsx';
 import { TURNOUT_FIELD_DIGITS } from './TurnoutSteps.tsx';
+import { TileEditPopup, TileEditedMark, tileEditable, type TileField } from './TileEdit.tsx';
 import { useReference } from '../compare/mode.ts';
 import { refLabel } from '../compare/useRefRows.ts';
 import { CopyOtherButton } from '../compare/CopyOtherButton.tsx';
@@ -36,9 +37,12 @@ function PointDelta({ value, digits }: { value: number; digits: number }) {
   return <span className="seat-delta tn-delta" data-sign={Math.sign(value)}><bdi dir="ltr">{arrow(value)}{points(value, digits)}</bdi> {L(...PP)}</span>;
 }
 
-function Fact({ id, k, info, v, d, since, copy }: { id: string; k: string; info?: ReactNode; v: ReactNode; d?: ReactNode; since?: ReactNode; copy?: ReactNode }) {
-  return <div className="tn-fact" data-fact={id}>
-    <dt>{k}{info}</dt>
+/** edit: the number this tile changes, in a window under the tile (TileEdit.tsx); its pencil sits in the corner */
+function Fact({ id, k, info, v, d, since, copy, edit }: { id: string; k: string; info?: ReactNode; v: ReactNode; d?: ReactNode; since?: ReactNode; copy?: ReactNode; edit?: { s: Scenario; field: TileField } }) {
+  const tile = useRef<HTMLDivElement>(null);
+  const editable = !!edit && tileEditable(edit.s, edit.field);
+  return <div ref={tile} className={`tn-fact${editable ? ' tile-editable' : ''}`} data-fact={id}>
+    <dt>{k}{info}{editable && <TileEditPopup s={edit!.s} field={edit!.field} tile={tile} />}</dt>
     <dd className="tn-v">{v}</dd>
     {d && <dd className="tn-d">{d}</dd>}
     {since && <dd className="tn-since">{since}</dd>}
@@ -76,13 +80,13 @@ export function TurnoutFacts({ s }: { s: Scenario }) {
       <Fact id="registered" k={L('Eligible voters', 'בעלי זכות בחירה')} info={<Info term="registered-voters" />}
         v={<><bdi dir="ltr">{fmtInt(s.registered)}</bdi><EditMarker s={s} path={['registered']} /></>}
         since={prev && sinceWords(<CountDelta now={s.registered} before={prev.registered} digits={digits} />)}
-        copy={copy('registered', 'eligible voters', 'מספר בעלי זכות הבחירה')} />
+        copy={copy('registered', 'eligible voters', 'מספר בעלי זכות הבחירה')} edit={{ s, field: 'registered' }} />
       <Fact id="turnout" k={L('Turnout', 'שיעור ההצבעה')} info={<Info term="turnout" />}
         // as precise as the turnout field under it (two decimals), so one number never shows at two precisions
-        v={percent(cast, s.registered, TURNOUT_FIELD_DIGITS)}
+        v={<>{percent(cast, s.registered, TURNOUT_FIELD_DIGITS)}<TileEditedMark s={s} field="turnout" /></>}
         d={!standard || castEdited ? <>{!standard && <><bdi dir="ltr">{fmtInt(cast)}</bdi> {L('votes cast', 'מצביעים')}</>}{castEdited && <>{!standard && ' · '}{officialName} {percent(official.votesCast, official.registered, digits)}</>}</> : undefined}
         since={prev && sinceWords(<PointDelta value={pct - turnoutPct(prev.votesCast, prev.registered)} digits={digits} />)}
-        copy={copy('turnout', 'turnout', 'שיעור ההצבעה')} />
+        copy={copy('turnout', 'turnout', 'שיעור ההצבעה')} edit={{ s, field: 'turnout' }} />
       {standard && <Fact id="cast" k={L('Votes cast', 'מצביעים')}
         info={<Info title={L('Votes cast', 'מצביעים')}>{L('Every ballot in the box, valid and invalid.', 'כל הפתקים בקלפי, כשרים ופסולים.')}</Info>}
         v={<bdi dir="ltr">{fmtInt(cast)}</bdi>}
@@ -92,11 +96,11 @@ export function TurnoutFacts({ s }: { s: Scenario }) {
         v={<bdi dir="ltr">{fmtInt(valid)}</bdi>} />}
       {standard && <Fact id="invalid" k={L('Invalid ballots', 'קולות פסולים')} info={<Info term="invalid-votes" />}
         v={<><bdi dir="ltr">{fmtInt(s.invalid)}</bdi><EditMarker s={s} path={['invalid']} /></>} d={<>{percent(s.invalid, cast, digits)} {L('of votes cast', 'מהמצביעים')}</>}
-        copy={expert && copy('invalid', 'invalid ballots', 'מספר הקולות הפסולים')} />}
+        copy={expert && copy('invalid', 'invalid ballots', 'מספר הקולות הפסולים')} edit={{ s, field: 'invalid' }} />}
       {standard && (noThreshold
-        ? <Fact id="threshold" k={L('Threshold', 'אחוז החסימה')} info={<Info term="threshold" />} v={L('None', 'אין')} d={L('No percentage threshold', 'ללא אחוז חסימה')} />
+        ? <Fact id="threshold" k={L('Threshold', 'אחוז החסימה')} info={<Info term="threshold" />} v={<>{L('None', 'אין')}<EditMarker s={s} path={['rules', 'thresholdPct']} outlet="turnout-tile" /></>} d={L('No percentage threshold', 'ללא אחוז חסימה')} edit={{ s, field: 'threshold' }} />
         : <Fact id="threshold" k={L('Threshold', 'אחוז החסימה')} info={<Info term="threshold" />}
-          v={<><bdi dir="ltr">{fmtInt(r.thresholdVotes)}</bdi> {L('votes', 'קולות')}</>} d={<>{trimDecimal(s.rules.thresholdPct)}% {L('of valid votes', 'מהקולות הכשרים')}</>} />)}
+          v={<><bdi dir="ltr">{fmtInt(r.thresholdVotes)}</bdi> {L('votes', 'קולות')}<EditMarker s={s} path={['rules', 'thresholdPct']} outlet="turnout-tile" /></>} d={<>{trimDecimal(s.rules.thresholdPct)}% {L('of valid votes', 'מהקולות הכשרים')}</>} edit={{ s, field: 'threshold' }} />)}
       {expert && <Fact id="boxes" k={L('Polling-station results', 'תוצאות קלפי')} info={<Info term="polling-station"><span>{L('Rows in the official results table, which can include central double-envelope counts; not the number of physical polling stations.', 'שורות בטבלת התוצאות הרשמית, שעשויות לכלול ספירה מרכזית של מעטפות חיצוניות; אין זה מספר הקלפיות הפיזיות.')}</span></Info>}
         v={official.ballotBoxes === null ? '—' : <bdi dir="ltr">{fmtInt(official.ballotBoxes)}</bdi>}
         d={official.ballotBoxes === null ? L('Not in the source for this election', 'לא מופיע במקור לבחירות אלה') : undefined}

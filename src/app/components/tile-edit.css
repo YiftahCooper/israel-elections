@@ -1,0 +1,17 @@
+/* A number changed on its own tile (TileEdit.tsx): the pencil on the tile, the tile while its window is open, and the
+   window itself, placed beside the tile by useFloating. */
+.tile-pop { margin: 0; padding: 12px; border: 1px solid var(--rule-2); border-radius: var(--radius); background: var(--surface); color: var(--ink); box-shadow: var(--shadow-pop); font-size: 13px; width: min(380px, calc((100vw - 24px) / var(--text-zoom, 1))); overflow-y: auto; overscroll-behavior: contain; }
+.tile-editor { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.tile-editor-title { display: inline-flex; align-items: center; gap: 4px; font-size: 14px; }
+.tile-editor-more, .tile-editor-foot { gap: 8px; flex-wrap: wrap; }
+.tile-editor .era-thresholds { margin-block-start: 0; }
+.fig .more .tile-editor { margin-block-end: 10px; padding-block-end: 10px; border-block-end: 1px solid var(--rule); inline-size: 100%; }
+/* the Turnout tab's tiles: the pencil sits at the end of the tile's name; the whole tile opens the window */
+.tn-fact.tile-editable { cursor: pointer; position: relative; }
+.tn-fact.tile-editable:hover { background: var(--surface-2); }
+.tn-fact.tile-editable dt { padding-inline-end: 30px; }
+/* in the corner, so an editable tile's number sits level with its neighbours' */
+.tn-fact .tile-pencil { position: absolute; inset-block-start: 4px; inset-inline-end: 4px; inline-size: 30px; block-size: 30px; }
+.tn-fact.editing { border-color: var(--shell); background: var(--open); }
+.fig .tile-pencil-mark { flex: none; }
+.edit-marker.tile-mark { cursor: pointer; }

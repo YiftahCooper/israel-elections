@@ -18,7 +18,8 @@ type Option = Choice & { action: StartAction };
 /** Section reset/copy controls. Only choices that would change the section appear:
  * "Official …" when the section differs from the official result, "Copy from…" for sourced
  * presets and same-election saved scenarios whose section differs, and a named clear action. */
-export function StartFrom({ s: shown, part, listId }: { s: Scenario; part: Part; listId?: string }) {
+/** copyOnly: only the copy choices (a tile's window has its own Reset and its own edit mark) */
+export function StartFrom({ s: shown, part, listId, copyOnly = false }: { s: Scenario; part: Part; listId?: string; copyOnly?: boolean }) {
   const L = useL(), lang = useLang();
   // a drag or hover preview never adds or removes these buttons, so nothing moves under the pointer
   const committed = useStore(st => st.scenario), preview = useStore(st => st.preview);
@@ -66,9 +67,10 @@ export function StartFrom({ s: shown, part, listId }: { s: Scenario; part: Part;
     if (name) dispatch({ type: 'startPart', part: 'blocs', source: 'blank', name });
   };
   const single = others.length === 1 && !others[0].disabled && !others[0].group ? others[0] : null;
+  if (copyOnly && !(single || others.length > 0)) return null;
   return <div className="row start-from">
-    <EditMarker s={s} path={['parts', part, ...(listId ? [listId] : [])]} outlet={part==='blocs'?'bloc-panel':part==='coalitions'?'coalition-panel':undefined} />
-    {official && <button type="button" className="btn small" title={L(`Restore ${partName} as officially published`, `שחזור ${partName} לפי הפרסום הרשמי`)} onClick={() => dispatch(official)}>
+    {!copyOnly && <EditMarker s={s} path={['parts', part, ...(listId ? [listId] : [])]} outlet={part==='blocs'?'bloc-panel':part==='coalitions'?'coalition-panel':undefined} />}
+    {official && !copyOnly && <button type="button" className="btn small" title={L(`Restore ${partName} as officially published`, `שחזור ${partName} לפי הפרסום הרשמי`)} onClick={() => dispatch(official)}>
       <RotateCcw className="icon sm" aria-hidden />{L(...officialLabel[part])}</button>}
     {single && <button type="button" className="btn small" onClick={() => dispatch(single.action)}>{single.label}</button>}
     {!single && others.length > 0 && <ChoicePicker label={L(`Copy ${partName} from…`, `העתקת ${partName} מ…`)} placeholder={L('Copy from…', 'העתקה מ…')} value="" options={others}

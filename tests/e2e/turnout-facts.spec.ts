@@ -68,8 +68,12 @@ test('Expert: polling-station results and double envelopes where the source has 
 
 test('a what-if turnout shows in the facts, with the official value beside it', async ({ page }) => {
   const facts = await open(page, { election: 'k25' });
-  await page.locator('.turnout-national').getByRole('button', { name: 'Increase Turnout %', exact: true }).click();
-  await expect(fact(facts, 'turnout').locator('.tn-v')).toHaveText('70.73%');
+  await fact(facts, 'turnout').locator('.tile-pencil').click();
+  await page.locator('.tile-pop').getByRole('button', { name: 'Increase Turnout %', exact: true }).click();
+  await page.keyboard.press('Escape');
+  await expect(fact(facts, 'turnout').locator('.tn-v')).toHaveText(/^70\.73%/);
+  // marked as an edit, like every other changed number
+  await expect(fact(facts, 'turnout').locator('.tn-v .edit-marker')).toHaveText('Edited');
   await expect(fact(facts, 'turnout').locator('.tn-d')).toContainText('70.63%');
   await expect(fact(facts, 'cast').locator('.tn-d')).toContainText('4,794,593');
   // the chart and table keep the official figures

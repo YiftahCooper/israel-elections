@@ -26,17 +26,14 @@ test('R1 R2 R3 R4 T1 T2: explanations stay live, edits stay put and labels are r
   for (const info of await fields.locator('.info button').all()) { await expect(info).toBeEnabled(); }
   await expect(fields.getByRole('textbox', { name: 'Threshold %', exact: true })).toBeDisabled();
   await steady(page.getByRole('button', { name: 'Experimental', exact: true }));
-  await steady(page.getByRole('button', { name: 'Increase Turnout %', exact: true }));
+  // turnout, eligible voters and invalid ballots are changed on their tiles: Rules says where, with no fields of its own
+  await expect(page.locator('.rules-page').getByRole('button', { name: 'Increase Turnout %', exact: true })).toHaveCount(0);
+  await page.locator('.rules-page').getByRole('button', { name: 'Change on the Turnout tab →', exact: true }).click();
+  await expect(page.locator('#tab-turnout')).toHaveAttribute('aria-selected', 'true');
+  await page.locator('[data-fact="turnout"] .tile-pencil').click();
+  await steady(page.locator('.tile-pop').getByRole('button', { name: 'Increase Turnout %', exact: true }));
   await expect(page.locator('.band').getByRole('button', { name: /^Undo:/ })).toHaveAccessibleName(/Turnout set to \d+\.\d{2}%/);
-  await expect(page.getByRole('button', { name: '0.1 pp', exact: true })).toBeVisible();
-  await steady(page.getByRole('button', { name: 'Increase Registered voters', exact: true }));
-  const rulesSteps = (await page.locator('.rules-turnout .seg').boundingBox())!;
-  const picker = (await page.getByRole('button', { name: 'Use another election’s turnout', exact: true }).boundingBox())!;
-  const field = (await page.locator('.rules-turnout .stepper-controls').boundingBox())!;
-  expect(Math.abs(picker.y - field.y)).toBeLessThanOrEqual(1);
-  await tab(page, 'Turnout');
-  const turnoutSteps = (await page.locator('.turnout-national .numeric-stepper .seg').boundingBox())!;
-  expect(turnoutSteps.width).toBe(rulesSteps.width);
+  await expect(page.locator('.tile-pop').getByRole('button', { name: '0.1 pp', exact: true })).toBeVisible();
 });
 for (const lang of ['en', 'he']) test(`FA1 FA2: stable family scale and explicit navigation (${lang})`, async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 }); await start(page, lang);
@@ -101,7 +98,9 @@ test('turnout step choices stay on one line on a Hebrew phone', async ({ page })
   await page.setViewportSize({ width: 390, height: 844 });
   await start(page, 'he');
   await tab(page, 'שיעור הצבעה');
-  const steps = page.locator('.numeric-stepper .seg button');
+  // the steps are in the turnout tile's window
+  await page.locator('[data-fact="turnout"] .tile-pencil').click();
+  const steps = page.locator('.tile-pop .numeric-stepper .seg button');
   await expect(steps.first()).toBeVisible();
   // one line of text in each (a phone's step buttons are 44 px tall for touch, so height alone no longer tells)
   for (const b of await steps.all()) {

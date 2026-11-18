@@ -5,7 +5,7 @@ import { AfterElectionSources } from './AfterElection.tsx';
 import { factLog, isFactAction } from '../../model/actionClassification.ts';
 import { Download } from 'lucide-react';
 import { NumericStepper } from './NumericStepper.tsx';
-import { TurnoutSteps } from './TurnoutSteps.tsx';
+import { thresholdEras } from './TileEdit.tsx';
 import { StartFrom } from './StartFrom.tsx';
 import { PartEdits } from './PartEdits.tsx';
 import { describe } from '../actionDescription.ts';
@@ -19,7 +19,7 @@ import { Fragment, useEffect, useId, useMemo, useState, type ReactNode } from 'r
 import { isEnvelopeRow, type ElectionDataset, type LocalityDataset } from '../../data/schema.ts';
 import { RULESETS } from '../../engine/rules.ts';
 import type { AllocationResult } from '../../engine/types.ts';
-import { electionRuleSetId, historicalRules, type Scenario } from '../../model/scenario.ts';
+import { electionRuleSetId, type Scenario } from '../../model/scenario.ts';
 import { historyChangesLabels, baselineOf, listLabel, methodOf } from '../derive.ts';
 import { GLOSSARY, useL, useLang } from '../i18n.ts';
 import { download, fmtInt } from '../format.ts';
@@ -31,19 +31,7 @@ import { GlossaryLink, Info, TextField } from './ui.tsx';
 
 const DIVISOR_METHODS = ['sainte-lague', 'dhondt', 'modified-sainte-lague'];
 
-/** Each statutory threshold with the election years it applied in, from the election index (none typed by hand). */
-function thresholdEras(elections: { id: string; date: string }[]) {
-  const years = new Map<string, number[]>();
-  for (const e of elections) {
-    let id: string;
-    try { id = electionRuleSetId(e.id as Scenario['electionId']); } catch { continue; }
-    const pct = historicalRules(id).thresholdPct;
-    years.set(pct, [...(years.get(pct) ?? []), Number(e.date.slice(0, 4))]);
-  }
-  return [...years].map(([pct, ys]) => ({ pct, from: Math.min(...ys), to: Math.max(...ys) })).sort((a, b) => a.from - b.from);
-}
-
-export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
+export function Rules({ s }: { s: Scenario; base: Scenario }) {
   const L = useL();
   const lang = useLang();
   const elections = useStore(st => st.elections);
@@ -129,15 +117,11 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
         </fieldset>
         <span className="row"><PartEdits s={s} prefix={['rules']} /><StartFrom s={s} part="rules" /></span>
         <hr />
-        <div className="row electorate-heading" style={{ justifyContent: 'space-between' }}>
+        {/* turnout, eligible voters and invalid ballots are changed on their own tiles, on the Turnout tab and the
+            Overview (TileEdit.tsx): this says where, instead of a second set of fields */}
+        <div className="row electorate-heading">
           <h3>{L('Electorate', 'ציבור הבוחרים')}</h3>
-          {(s.registered !== base.registered || s.invalid !== base.invalid) && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'totals' })}>{L('Restore historical', 'שחזור הנתונים ההיסטוריים')}</button>}
-        </div>
-        {/* sized like its sibling steppers below */}
-        <div className="rules-turnout"><TurnoutSteps s={s} /></div>
-        <div className="grid2">
-          <div className="field"><span>{L('Registered voters', 'בעלי זכות בחירה')}<EditMarker s={s} path={['registered']} /></span><NumericStepper value={s.registered} onCommit={(n) => { if (n !== s.registered) dispatch({ type: 'setTotals', registered: n }); }} label={L('Registered voters', 'בעלי זכות בחירה')} steps={[{ id: '1k', label: '1k', amount: 1000 }, { id: '10k', label: '10k', amount: 10000 }]} /></div>
-          <div className="field"><span>{L('Invalid ballots', 'קולות פסולים')}<EditMarker s={s} path={['invalid']} /></span><NumericStepper value={s.invalid} onCommit={(n) => { if (n !== s.invalid) dispatch({ type: 'setTotals', invalid: n }); }} label={L('Invalid ballots', 'קולות פסולים')} steps={[{ id: '1k', label: '1k', amount: 1000 }, { id: '10k', label: '10k', amount: 10000 }]} /></div>
+          <button className="table-action" onClick={() => { setState({ tool: 'turnout' }); window.scrollTo({ top: 0 }); }}>{L('Change on the Turnout tab →', 'שינוי בלשונית שיעור הצבעה ←')}</button>
         </div>
         <hr />
         <div className="row" style={{ justifyContent: 'space-between' }}>
