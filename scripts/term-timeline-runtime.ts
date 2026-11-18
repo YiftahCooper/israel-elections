@@ -22,6 +22,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { shownRows } from './lib/faction-rows.ts';
 import { applyEventReasons } from './lib/replacement-reasons.ts';
 import { isOwnRepository, sourceName } from './lib/source-names.ts';
+import { knessetGender } from './lib/knesset-gender.ts';
 
 export type Importance = 'simple' | 'standard' | 'expert';
 export type Marker = 'D2' | 'D3' | 'D4' | 'replacement';
@@ -155,12 +156,12 @@ function speakerEvents(root: string, k: number, opening: string, end: string): K
   const path = `${root}/data/research/knesset-speakers.json`;
   if (!existsSync(path)) return [];
   const doc = JSON.parse(readFileSync(path, 'utf8')) as { sources: { publisher: string; url: string; positionId: number }[]; intervals: { knesset: number; personId: number; start: string; newOfficeholder: boolean; positionId: number }[] };
-  const women = new Set((JSON.parse(readFileSync(`${root}/data/raw/bios/knesset-odata-persons.json`, 'utf8')) as { PersonID: number; GenderDesc: string }[]).filter((p) => p.GenderDesc === 'נקבה').map((p) => p.PersonID));
+  const genderOf = knessetGender(root);
   return doc.intervals.filter((x) => x.knesset === k && x.newOfficeholder && x.start > opening && x.start < end).map((x) => {
-    const f = women.has(x.personId);
+    const g = genderOf(x.personId);
     const src = doc.sources.find((s) => s.positionId === x.positionId);
     return { id: `k${k}-speaker-${x.start}`, date: x.start, kind: 'speaker-elected', who: { personIds: [x.personId] },
-      summary: { en: `{p:${x.personId}} becomes Speaker of the Knesset.`, he: f ? `{p:${x.personId}} נבחרה ליושבת ראש הכנסת.` : `{p:${x.personId}} נבחר ליושב ראש הכנסת.` },
+      summary: { en: `{p:${x.personId}} becomes Speaker of the Knesset.`, he: g === 'f' ? `{p:${x.personId}} נבחרה ליושבת ראש הכנסת.` : g === 'm' ? `{p:${x.personId}} נבחר ליושב ראש הכנסת.` : `בחירת {p:${x.personId}} לראשות הכנסת.` },
       importance: 'standard', marker: null, certainty: 'confirmed', evidenceClass: 'Official record', sources: src ? [{ url: src.url.replace(/ /g, '%20'), publisher: src.publisher }] : [] };
   });
 }

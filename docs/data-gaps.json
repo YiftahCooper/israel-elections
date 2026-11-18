@@ -1,11 +1,11 @@
 {
   "schemaVersion": 3,
-  "total": 12415,
+  "total": 12416,
   "counts": {
     "unknown": 7355,
     "missing-field": 283,
     "conflict": 19,
-    "single-source": 2934,
+    "single-source": 2935,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1173,
@@ -15,7 +15,7 @@
   "countsByStatus": {
     "inferred-not-verified": 1034,
     "needs-current-status-review": 319,
-    "open": 11062
+    "open": 11063
   },
   "countsByImportance": {
     "high": {
@@ -41,10 +41,10 @@
       }
     },
     "low": {
-      "total": 7153,
+      "total": 7154,
       "confirmed": 572,
       "probable": 0,
-      "provisional": 802,
+      "provisional": 803,
       "disputed": 0,
       "unknown": 5779
     }
@@ -563,15 +563,15 @@
     },
     {
       "election": "cross-election",
-      "total": 1540,
+      "total": 1541,
       "highOpen": 3,
       "mediumOpen": 280,
-      "low": 1085,
+      "low": 1086,
       "counts": {
         "unknown": 1071,
         "missing-field": 35,
         "conflict": 5,
-        "single-source": 363,
+        "single-source": 364,
         "low-confidence": 0,
         "release-hold": 0,
         "inferred": 8,
@@ -1100,6 +1100,7 @@
     {"area":"data/raw/bios/knesset-odata-mk-positions.json FactionName","count":1,"open":1},
     {"area":"data/raw/bios/knesset-odata-mk-positions.json FinishDate","count":1,"open":1},
     {"area":"data/raw/bios/knesset-odata-mk-positions.json KnessetNum","count":1,"open":1},
+    {"area":"data/raw/bios/knesset-person-gender.json record","count":1,"open":1},
     {"area":"data/raw/bios/party-sources.reviewed.json links","count":1,"open":1},
     {"area":"data/raw/bios/party-sources.reviewed.json spotChecks","count":1,"open":1},
     {"area":"data/raw/bios/wikidata-israeli-parties.json dissolved","count":1,"open":1},

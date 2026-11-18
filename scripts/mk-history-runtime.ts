@@ -2,7 +2,8 @@
  *  Only people who sat in the Knesset (or were elected to the 26th) get a history. Everything comes from files already
  *  in the repository:
  *  - terms and factions: the Knesset database (data/research/knesset-member-changes/kN.json);
- *  - names and gender: Knesset OData persons, the Knesset website's English names (data/raw/bios);
+ *  - names: Knesset OData persons and the Knesset website's English names; gender: the Knesset's current person record
+ *    (data/raw/bios/knesset-person-gender.json), null where it has none (data/raw/bios);
  *  - runs: the official candidate lists (public/data/kN.json), tied to a person by the Knesset member ID
  *    (data/meta/bios/kN.json, confidence "high") or, for a run that did not win a seat, by the name check below;
  *  - dated events naming the person: data/research/knesset-events/kN.json (with their sources).
@@ -17,6 +18,7 @@ import { compileHistoryRuntime } from './party-history-runtime.ts';
 import { shownRows } from './lib/faction-rows.ts';
 import { displayNameEn, knessetMemberSure } from './lib/build/bios.ts';
 import { isOwnRepository, sourceName } from './lib/source-names.ts';
+import { knessetGender, type Gender } from './lib/knesset-gender.ts';
 
 /** How a run ended. elected: within the list's seats at the election. first: not within the seats but sat from the
  *  first sitting. later: entered during that Knesset. out: did not enter that Knesset. declined: within the seats but
@@ -40,7 +42,9 @@ export type PackedTerm = readonly [number, string, string | null, readonly Packe
 /** [date, kind, Knesset number, English, Hebrew, evidence class, sources [publisher, url][]] */
 export type PackedEvent = readonly [string, string, number, string, string, string, readonly (readonly [string, string])[]];
 export interface MkPerson {
-  he: string; en: string | null; female: boolean;
+  he: string; en: string | null;
+  /** 'f' or 'm' from the Knesset's own record of the person; null: no record, so the wording is neutral */
+  gender: Gender;
   /** the Knesset website's member id (the official member page), or null */
   site: number | null;
   /** the Hebrew Wikipedia article's title (a secondary source), or null */
@@ -93,7 +97,8 @@ export function electedOf(l: ElectionDataset['lists'][number], seats: number): S
 
 export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRuntime {
   const read = (path: string) => JSON.parse(readFileSync(`${root}/${path}`, 'utf8'));
-  const persons = new Map((read('data/raw/bios/knesset-odata-persons.json') as { PersonID: number; FirstName: string; LastName: string; GenderDesc: string }[]).map((p) => [p.PersonID, p]));
+  const persons = new Map((read('data/raw/bios/knesset-odata-persons.json') as { PersonID: number; FirstName: string; LastName: string }[]).map((p) => [p.PersonID, p]));
+  const genderOf = knessetGender(root);
   const siteOf = new Map((read('data/raw/bios/knesset-odata-mk-site-codes.json') as { KnsID: number; SiteId: number }[]).map((s) => [s.KnsID, s.SiteId]));
   // English names as the lists show them (scripts/lib/build/bios.ts): the site's, in display form, or a reviewed spelling
   // where the site misprints it (data/meta/bios displayNameEn: "Moseh Zeev Feldman" → Moshe, "Yeushua Sagi" → Yehoshua)
@@ -364,7 +369,7 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
     const bioRec = rs.map((r) => bios.get(r.k)![r.candidateId]).find((b) => b?.hewiki?.title);
     const enCand = rs.map((r) => ds.get(r.k)!.lists.find((l) => l.id === r.listId)?.candidates.find((c) => c.id === r.candidateId)?.nameEn).filter(Boolean).pop() ?? null;
     out.people[p] = {
-      he: normName(`${x.FirstName} ${x.LastName}`), en: (site != null ? enOfSite.get(site) : undefined) ?? enCand, female: x.GenderDesc === 'נקבה',
+      he: normName(`${x.FirstName} ${x.LastName}`), en: (site != null ? enOfSite.get(site) : undefined) ?? enCand, gender: genderOf(p),
       site, wiki: bioRec?.hewiki?.title ?? null,
       terms: ts, runs: packed, events: (events.get(p) ?? []).sort((a, b) => a[0].localeCompare(b[0])),
     };

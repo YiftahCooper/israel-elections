@@ -33,8 +33,12 @@ function inkOn(hex: string | null): string {
   const c = [1, 3, 5].map((i) => { const v = parseInt(hex.slice(i, i + 2), 16) / 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; });
   return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2] > 0.33 ? '#15171a' : '#ffffff';
 }
-/** gendered Hebrew: [masculine, feminine] */
-const g = (female: boolean, m: string, f: string) => female ? f : m;
+/** Gendered words only where the Knesset's own record of the person gives the gender (v.gender, from KNS_Person);
+ *  otherwise the neutral form. Never from a name. Hebrew: masculine, feminine, neutral. */
+type Gender = MkView['gender'];
+const g = (gender: Gender, m: string, f: string, n: string) => gender === 'f' ? f : gender === 'm' ? m : n;
+/** English pronouns the same way: they/them/their when the record has none */
+const pro = (gender: Gender) => gender === 'f' ? { s: 'she', o: 'her', p: 'her', was: 'was' } : gender === 'm' ? { s: 'he', o: 'him', p: 'his', was: 'was' } : { s: 'they', o: 'them', p: 'their', was: 'were' };
 
 // ---------- entry points ----------
 /** True when this candidacy is shown on someone's history and the scenario still has the official name. */
@@ -62,9 +66,9 @@ export function MkSeatLink({ candidate }: { candidate: { id: string; nameHe: str
   const id = usePersonOf(candidate);
   const rt = useMkRuntime();
   if (id === null || !rt) return null;
-  const female = rt.people[id]?.female ?? false;
+  const gender = rt.people[id]?.gender ?? null;
   return <button type="button" className="btn small ghost mk-seatlink" onClick={() => openMkHistory(id)}>
-    <History className="icon sm" aria-hidden />{L(female ? 'Her history' : 'His history', female ? 'המסלול שלה בכנסת' : 'המסלול שלו בכנסת')}</button>;
+    <History className="icon sm" aria-hidden />{L(g(gender, 'His history', 'Her history', 'MK history'), g(gender, 'המסלול שלו בכנסת', 'המסלול שלה בכנסת', 'המסלול בכנסת'))}</button>;
 }
 
 // ---------- the card ----------
@@ -104,7 +108,7 @@ function MkHistoryDialog({ rt, id }: { rt: MkRuntime; id: number }) {
     </ol>
     <p className="tiny muted mk-note">{coverageText(v, L)} <Info title={L('What is shown', 'מה מוצג')}>
       {L('Terms, factions and entry and leaving dates: the Knesset’s own records. Places on the lists: the official candidate lists. A candidacy is linked to a member by the Knesset member ID; a list that did not win them a seat is linked by the name, letter for letter, and only when no one else could be meant. Anything uncertain is left out. Events: dated reports and records, each with its source.',
-        'תקופות כהונה, סיעות ומועדי כניסה ויציאה: רישומי הכנסת. מקומות ברשימות: רשימות המועמדים הרשמיות. מועמדות מקושרת לחבר כנסת לפי מספר חבר הכנסת; רשימה שלא הכניסה אותו לכנסת מקושרת לפי השם, אות באות, ורק כשאין אפשרות לאדם אחר. מה שאינו ודאי אינו מוצג. אירועים: רשומות ודיווחים מתוארכים, כל אחד עם מקורו.')}
+        'תקופות כהונה, סיעות ומועדי כניסה ויציאה: רישומי הכנסת. מקומות ברשימות: רשימות המועמדים הרשמיות. מועמדות מקושרת לחבר כנסת לפי מספר חבר הכנסת; מועמדות שלא הובילה למושב מקושרת לפי השם, אות באות, ורק כשאין אפשרות לאדם אחר. מה שאינו ודאי אינו מוצג. אירועים: רשומות ודיווחים מתוארכים, כל אחד עם מקורו.')}
     </Info></p>
   </dialog>;
 }
@@ -112,14 +116,14 @@ function MkHistoryDialog({ rt, id }: { rt: MkRuntime; id: number }) {
 /** What each part of a row draws (owner, 16 Nov 2026: why the bars differ in length and are not all full). */
 function MkKey({ v }: { v: MkView }) {
   const L = useL();
-  const f = v.female;
+  const f = v.gender, e = pro(f);
   return <div className="mk-key tiny ink2" role="note">
-    <span><svg className="mk-key-places" width="34" height="14" viewBox="0 0 34 14" aria-hidden><rect x="1" y="4" width="6" height="9" className="mk-key-fill" /><rect x="9" y="4" width="6" height="9" className="mk-key-fill" /><rect x="17" y="4" width="6" height="9" className="mk-key-empty" /><rect x="25" y="4" width="6" height="9" className="mk-key-empty" /><path d="M16.5 0 L23.5 0 L20 4.5 Z" className="mk-key-pin" /><rect x="19.1" y="3" width="1.8" height="11" className="mk-key-pin" /></svg>{L(`List places: filled won a seat; the pin is ${f ? 'her' : 'his'} place`, `מקומות ברשימה: מלא – זכה במושב; הסיכה – ${g(f, 'מקומו', 'מקומה')}`)}</span>
-    <span><i className="mk-key-track" aria-hidden><i className="mk-key-seg" /></i>{L(`Bar: the whole Knesset; coloured: ${f ? 'her' : 'his'} time in it`, `פס: הכנסת כולה; הצבוע – ${g(f, 'הזמן שלו', 'הזמן שלה')} בה`)}</span>
+    <span><svg className="mk-key-places" width="34" height="14" viewBox="0 0 34 14" aria-hidden><rect x="1" y="4" width="6" height="9" className="mk-key-fill" /><rect x="9" y="4" width="6" height="9" className="mk-key-fill" /><rect x="17" y="4" width="6" height="9" className="mk-key-empty" /><rect x="25" y="4" width="6" height="9" className="mk-key-empty" /><path d="M16.5 0 L23.5 0 L20 4.5 Z" className="mk-key-pin" /><rect x="19.1" y="3" width="1.8" height="11" className="mk-key-pin" /></svg>{L(`List places: filled won a seat; the pin is ${e.p} place`, `מקומות ברשימה: מלא – זכה במושב; הסיכה – ${g(f, 'מקומו', 'מקומה', 'המקום האישי')}`)}</span>
+    <span><i className="mk-key-track" aria-hidden><i className="mk-key-seg" /></i>{L(`Bar: the whole Knesset; coloured: ${e.p} time in it`, `פס: הכנסת כולה; הצבוע – ${g(f, 'הזמן שלו', 'הזמן שלה', 'זמן הכהונה')} בה`)}</span>
     <span><i className="mk-key-mark" aria-hidden />{L('A recorded event', 'אירוע מתועד')}</span>
     <Info title={L('How to read the rows', 'איך לקרוא את השורות')}>{L(
-      `One row per Knesset. On the left, the election and the list ${f ? 'she' : 'he'} ran on: each small square is one place on that list, filled for the places that won a seat, and the pin marks ${f ? 'her' : 'his'} own place. The bar is that whole Knesset, from its first sitting to its end. Every row uses one scale, so a Knesset that lasted less time (one dissolved early) has a shorter bar. The coloured part is the time ${f ? 'she' : 'he'} sat in it, in the colour of ${f ? 'her' : 'his'} faction; a change of colour is a change of faction. The pale part is time ${f ? 'she' : 'he'} was not a member: ${f ? 'she' : 'he'} entered later, left early, or did not sit in that Knesset at all. A striped part: the Knesset’s records give no faction for those days. A small triangle above the bar is a recorded event, listed under the row with its date.`,
-      `שורה לכל כנסת. בצד: הבחירות והרשימה ש${g(f, 'בה רץ', 'בה רצה')}. כל ריבוע קטן הוא מקום אחד ברשימה, מלא במקומות שזכו במושב, והסיכה מסמנת את ${g(f, 'מקומו', 'מקומה')}. הפס הוא הכנסת כולה, מהישיבה הראשונה ועד סופה. כל השורות באותו קנה מידה, ולכן כנסת שכיהנה זמן קצר יותר (למשל כזו שהתפזרה מוקדם) מקבלת פס קצר יותר. החלק הצבוע הוא הזמן ש${g(f, 'כיהן', 'כיהנה')} בה, בצבע ${g(f, 'סיעתו', 'סיעתה')}; שינוי צבע הוא מעבר סיעה. החלק הבהיר הוא זמן ש${g(f, 'לא היה חבר', 'לא הייתה חברה')} בה: ${g(f, 'נכנס מאוחר יותר, עזב מוקדם', 'נכנסה מאוחר יותר, עזבה מוקדם')}, או ${g(f, 'לא כיהן', 'לא כיהנה')} בכנסת זו כלל. חלק מפוספס: ברישומי הכנסת אין סיעה לימים אלה. משולש קטן מעל הפס הוא אירוע מתועד, המופיע מתחת לשורה עם תאריכו.`)}</Info>
+      `One row per Knesset. On the left, the election and the list ${e.s} ran on: each small square is one place on that list, filled for the places that won a seat, and the pin marks ${e.p} own place. The bar is that whole Knesset, from its first sitting to its end. Every row uses one scale, so a Knesset that lasted less time (one dissolved early) has a shorter bar. The coloured part is the time ${e.s} sat in it, in the colour of ${e.p} faction; a change of colour is a change of faction. The pale part is time ${e.s} ${e.was} not a member: ${e.s} entered later, left early, or did not sit in that Knesset at all. A striped part: the Knesset’s records give no faction for those days. A small triangle above the bar is a recorded event, listed under the row with its date.`,
+      `שורה לכל כנסת. בצד: הבחירות והרשימה ${g(f, 'שבה רץ', 'שבה רצה', 'של המועמדות')}. כל ריבוע קטן הוא מקום אחד ברשימה, מלא במקומות שזכו במושב, והסיכה מסמנת את ${g(f, 'מקומו', 'מקומה', 'המקום האישי')}. הפס הוא הכנסת כולה, מהישיבה הראשונה ועד סופה. כל השורות באותו קנה מידה, ולכן כנסת שכיהנה זמן קצר יותר (למשל כזו שהתפזרה מוקדם) מקבלת פס קצר יותר. החלק הצבוע הוא ${g(f, 'הזמן שכיהן', 'הזמן שכיהנה', 'זמן הכהונה')} בה, בצבע ${g(f, 'סיעתו', 'סיעתה', 'הסיעה')}; שינוי צבע הוא מעבר סיעה. החלק הבהיר הוא ${g(f, 'זמן שלא היה חבר', 'זמן שלא הייתה חברה', 'זמן ללא חברות')} בה: ${g(f, 'נכנס מאוחר יותר, עזב מוקדם', 'נכנסה מאוחר יותר, עזבה מוקדם', 'כניסה מאוחרת, עזיבה מוקדמת')}, או ${g(f, 'לא כיהן', 'לא כיהנה', 'היעדר כהונה')} בכנסת זו כלל. חלק מפוספס: ברישומי הכנסת אין סיעה לימים אלה. משולש קטן מעל הפס הוא אירוע מתועד, המופיע מתחת לשורה עם תאריכו.`)}</Info>
   </div>;
 }
 
@@ -131,7 +135,7 @@ function summary(v: MkView, L: T, lang: Lang): string {
   const span = first && last && first !== last ? `${first}\u2060–\u2060${last}` : first ?? ''; // word joiners: the range never breaks at the dash
   const parts = [
     knessets ? L(`${servedText(v.daysServed, 'en')} in the Knesset, in ${knessets === 1 ? 'one Knesset' : `${knessets} Knessets`}`,
-      `${servedText(v.daysServed, 'he')} בכנסת, ${knessets === 1 ? 'בכנסת אחת' : `ב־${knessets} כנסות`}`) : L('Elected to the 26th Knesset', g(v.female, 'נבחר לכנסת ה־26', 'נבחרה לכנסת ה־26')),
+      `${servedText(v.daysServed, 'he')} בכנסת, ${knessets === 1 ? 'בכנסת אחת' : `ב־${knessets} כנסות`}`) : L('Elected to the 26th Knesset', g(v.gender, 'נבחר לכנסת ה־26', 'נבחרה לכנסת ה־26', 'בין הנבחרים לכנסת ה־26')),
     v.runs ? L(`on a list in ${v.runs === 1 ? 'one election' : `${v.runs} elections`}${span ? `, ${span}` : ''}`, `${v.runs === 1 ? 'ברשימה במערכת בחירות אחת' : `ברשימות ב־${v.runs} מערכות בחירות`}${span ? `, ${span}` : ''}`) : '',
   ];
   void lang;
@@ -140,8 +144,8 @@ function summary(v: MkView, L: T, lang: Lang): string {
 
 function coverageText(v: MkView, L: T): string {
   const partial = v.coverage.partial.join(L(' and ', ' ו־'));
-  return L(`Elections where a list did not win ${v.female ? 'her' : 'him'} a seat are shown from ${v.coverage.from} on${partial ? `, and in ${partial} for the lists whose full candidate list we have` : ''}. Before that, only those elected are known.`,
-    `בחירות שבהן הרשימה לא הכניסה ${g(v.female, 'אותו', 'אותה')} לכנסת מוצגות מ־${v.coverage.from} ואילך${partial ? `, וב־${partial} ברשימות שהרשימה המלאה שלהן בידינו` : ''}. לפני כן ידועים רק הנבחרים.`);
+  return L(`Elections where a list did not win ${pro(v.gender).o} a seat are shown from ${v.coverage.from} on${partial ? `, and in ${partial} for the lists whose full candidate list we have` : ''}. Before that, only those elected are known.`,
+    `בחירות ${g(v.gender, 'שבהן הרשימה לא הכניסה אותו לכנסת', 'שבהן הרשימה לא הכניסה אותה לכנסת', 'שבהן המקום ברשימה לא הספיק למושב')} מוצגות מ־${v.coverage.from} ואילך${partial ? `, וב־${partial} ברשימות שהרשימה המלאה שלהן בידינו` : ''}. לפני כן ידועים רק הנבחרים.`);
 }
 
 /** An element's drawn width, to decide which labels fit. */
@@ -181,11 +185,11 @@ function Row({ r, v }: { r: MkRow; v: MkView }) {
 
 function eventText(e: MkEvent, v: MkView, L: T, lang: Lang): ReactNode {
   switch (e.kind) {
-    case 'entered': return L('Entered the Knesset', g(v.female, 'נכנס לכנסת', 'נכנסה לכנסת'));
+    case 'entered': return L('Entered the Knesset', g(v.gender, 'נכנס לכנסת', 'נכנסה לכנסת', 'כניסה לכנסת'));
     // the Knesset records no reason for an end (a resignation, an appointment, a death in office): the words claim none
     // (audit 12 Nov 2026, c-famous-late-07: Rabin and Ze'evi read "Left the Knesset"), unless the research records one
     // with its source (owner, 16 Nov 2026: the reason wherever a source records it)
-    case 'left': { const why = reasonWords(e.reason, v.female, lang); return `${L('Membership ended', 'הכהונה הסתיימה')}${why ? ` · ${why}` : ''}`; }
+    case 'left': { const why = reasonWords(e.reason, v.gender, lang); return `${L('Membership ended', 'הכהונה הסתיימה')}${why ? ` · ${why}` : ''}`; }
     case 'faction': return L(`Faction: ${factionMoveName(e.faction!.now, lang)} (until then ${factionMoveName(e.faction!.was, lang)})`, `סיעה: ${factionMoveName(e.faction!.now, lang)} (עד אז ${factionMoveName(e.faction!.was, lang)})`);
     // the Knesset's record gives no faction for these days: none is shown, and the line says so (audit 12 Nov 2026, cx-factions-05)
     case 'unrecorded': return L(`Faction not recorded until ${formatDate(e.until!, 'en')}`, `הסיעה לא תועדה עד ${formatDate(e.until!, 'he')}`);
@@ -208,26 +212,26 @@ function EventSource({ e }: { e: MkEvent }) {
 
 function Result({ r, v }: { r: MkRow; v: MkView }) {
   const L = useL(), lang = useLang();
-  const run = r.run, f = v.female;
+  const run = r.run, f = v.gender, e = pro(f);
   const notes = run?.notes.length ? <Info title={L('Official note', 'הערה רשמית')}>{run.notes.map(([en, he], i) => <span key={i} className="mk-why">{lang === 'he' ? he : en}</span>)}</Info> : null;
   const basis = run?.basis === 'name' && run.via ? <Info title={L('How this list is linked', 'איך הרשימה מקושרת')}>{L(
-    `The list has this name letter for letter, as on the list of ${monthYear(v.rows.find((x) => x.k === run.via)?.electionDate ?? '', 'en')}, where the Knesset member ID identifies ${f ? 'her' : 'him'}. No other member of the Knesset has this name.`,
-    `השם ברשימה זהה, אות באות, לשם ברשימה של ${monthYear(v.rows.find((x) => x.k === run.via)?.electionDate ?? '', 'he')}, שבה מספר חבר הכנסת מזהה ${g(f, 'אותו', 'אותה')}. לאף חבר כנסת אחר אין שם זה.`)}</Info> : null;
+    `The list has this name letter for letter, as on the list of ${monthYear(v.rows.find((x) => x.k === run.via)?.electionDate ?? '', 'en')}, where the Knesset member ID identifies ${e.o}. No other member of the Knesset has this name.`,
+    `השם ברשימה זהה, אות באות, לשם ברשימה של ${monthYear(v.rows.find((x) => x.k === run.via)?.electionDate ?? '', 'he')}, ${g(f, 'שבה מספר חבר הכנסת מזהה אותו', 'שבה מספר חבר הכנסת מזהה אותה', 'שבה הזיהוי לפי מספר חבר הכנסת')}. לאף חבר כנסת אחר אין שם זה.`)}</Info> : null;
   // a run that research tied to the person: the sources that tie it (owner, 16 Nov 2026), instead of the name rule
   const researched = run?.research?.length ? <Info title={L('How this list is linked', 'איך הרשימה מקושרת')} label={L('Source', 'מקור')}>
-    <span className="mk-why">{L(`A report or biography from the time names ${f ? 'her' : 'him'} on this list:`, `דיווח או ביוגרפיה מאותה עת ${g(f, 'מציינים אותו', 'מציינים אותה')} ברשימה זו:`)}</span>
+    <span className="mk-why">{L(`A report or biography from the time names ${e.o} on this list:`, `דיווח או ביוגרפיה מאותה עת ${g(f, 'מציינים אותו', 'מציינים אותה', 'מזכירים את השם')} ברשימה זו:`)}</span>
     <span className="mk-src">{run.research.map(([pub, url]) => <a key={url} href={url} target="_blank" rel="noreferrer" hrefLang={/he\.wikipedia\.org/.test(url) ? 'he' : undefined}>{/he\.wikipedia\.org/.test(url) ? L('Hebrew Wikipedia (a secondary source)', 'ויקיפדיה העברית (מקור משני)') : publisherIn(lang, pub)}</a>)}</span>
   </Info> : null;
   const linked = researched ?? basis;
   if (!run) {
     const t = r.terms[0];
-    return <span>{t && t.start !== r.opening ? L(`Entered on ${formatDate(t.start, 'en')}`, `${g(f, 'נכנס', 'נכנסה')} ב־${formatDate(t.start, 'he')}`) : L('Sat from the first sitting', g(f, 'כיהן מהישיבה הראשונה', 'כיהנה מהישיבה הראשונה'))}</span>;
+    return <span>{t && t.start !== r.opening ? L(`Entered on ${formatDate(t.start, 'en')}`, `${g(f, 'נכנס', 'נכנסה', 'כניסה')} ב־${formatDate(t.start, 'he')}`) : L('Sat from the first sitting', g(f, 'כיהן מהישיבה הראשונה', 'כיהנה מהישיבה הראשונה', 'כהונה מהישיבה הראשונה'))}</span>;
   }
   switch (run.outcome) {
-    case 'elected': return <span>{L('Elected', g(f, 'נבחר', 'נבחרה'))}</span>;
-    case 'first': return <span>{L('Sat from the first sitting', g(f, 'כיהן מהישיבה הראשונה', 'כיהנה מהישיבה הראשונה'))} {notes}</span>;
-    case 'later': return <span>{L(`Entered on ${formatDate(r.terms[0]?.start ?? '', 'en')}`, `${g(f, 'נכנס', 'נכנסה')} ב־${formatDate(r.terms[0]?.start ?? '', 'he')}`)}</span>;
-    case 'declined': return <span>{L('Elected; did not sit', g(f, 'נבחר; לא כיהן', 'נבחרה; לא כיהנה'))} {notes}{linked}</span>;
+    case 'elected': return <span>{L('Elected', g(f, 'נבחר', 'נבחרה', 'בין הנבחרים'))}</span>;
+    case 'first': return <span>{L('Sat from the first sitting', g(f, 'כיהן מהישיבה הראשונה', 'כיהנה מהישיבה הראשונה', 'כהונה מהישיבה הראשונה'))} {notes}</span>;
+    case 'later': return <span>{L(`Entered on ${formatDate(r.terms[0]?.start ?? '', 'en')}`, `${g(f, 'נכנס', 'נכנסה', 'כניסה')} ב־${formatDate(r.terms[0]?.start ?? '', 'he')}`)}</span>;
+    case 'declined': return <span>{L('Elected; did not sit', g(f, 'נבחר; לא כיהן', 'נבחרה; לא כיהנה', 'בין הנבחרים; ללא כהונה'))} {notes}{linked}</span>;
     case 'withdrawn': return <span className="mk-out">{L('The list withdrew before the election', 'הרשימה פרשה לפני הבחירות')} {linked}</span>;
     default: {
       const short = run.rank - run.seats;
@@ -235,7 +239,7 @@ function Result({ r, v }: { r: MkRow; v: MkView }) {
         ? L(`The list got ${run.share}%, below the ${run.threshold}% threshold`, `הרשימה קיבלה ${run.share}%, מתחת לאחוז החסימה (${run.threshold}%)`)
         : run.seats === 0 ? L('The list won no seats', 'הרשימה לא זכתה במנדטים')
         : L(short === 1 ? '1 place short' : `${short} places short`, short === 1 ? 'חסר מקום אחד' : `חסרו ${short} מקומות`);
-      return <span className="mk-out">{L('Not elected', g(f, 'לא נבחר', 'לא נבחרה'))} {linked}<span className="tiny ink2 mk-block">{sub}</span></span>;
+      return <span className="mk-out">{L('Not elected', g(f, 'לא נבחר', 'לא נבחרה', 'לא בין הנבחרים'))} {linked}<span className="tiny ink2 mk-block">{sub}</span></span>;
     }
   }
 }
@@ -261,14 +265,14 @@ function TermBar({ r, v }: { r: MkRow; v: MkView }) {
   if (!r.opening) return <span className="tiny muted">{L('This Knesset has not yet opened', 'הכנסת טרם נפתחה')}</span>;
   // opened, but its member records are not yet in the data (the 26th, from 10 Nov 2026): the date, and no bar
   // a candidate who did not win a seat was not in it, records or not
-  if (!r.end && r.run && !['elected', 'first', 'later'].includes(r.run.outcome)) return <span className="tiny muted">{L(`Not in this Knesset (from ${monthYear(r.opening, 'en')})`, `לא ${g(v.female, 'כיהן', 'כיהנה')} בכנסת זו (מ־${monthYear(r.opening, 'he')})`)}</span>;
+  if (!r.end && r.run && !['elected', 'first', 'later'].includes(r.run.outcome)) return <span className="tiny muted">{L(`Not in this Knesset (from ${monthYear(r.opening, 'en')})`, `${g(v.gender, 'לא כיהן', 'לא כיהנה', 'ללא כהונה')} בכנסת זו (מ־${monthYear(r.opening, 'he')})`)}</span>;
   if (!r.end) return <span className="tiny muted mk-pending">{L(`Opened on ${formatDate(r.opening, 'en')}; time in it not yet in our records`, `נפתחה ב־${formatDate(r.opening, 'he')}; רישומי הכהונה בה טרם נאספו`)}</span>;
   const len = Math.max(1, daysBetween(r.opening, r.end));
   // one scale for every row (the longest Knesset is the full width), so a short Knesset draws a short bar
   const W = 100 * Math.min(1, len / v.longest), x = (d: string) => (daysBetween(r.opening!, d) / len) * W;
   const caption = r.terms.length
     ? r.terms.map((t) => t.ongoing ? L(`from ${formatDate(t.start, 'en')}`, `מ־${formatDate(t.start, 'he')}`) : `${formatDate(t.start, lang)} – ${formatDate(t.end, lang)}`).join(' · ')
-    : L(`Not in this Knesset (${monthYear(r.opening, 'en')} – ${monthYear(r.end, 'en')})`, `לא ${g(v.female, 'כיהן', 'כיהנה')} בכנסת זו (${monthYear(r.opening, 'he')} – ${monthYear(r.end, 'he')})`);
+    : L(`Not in this Knesset (${monthYear(r.opening, 'en')} – ${monthYear(r.end, 'en')})`, `${g(v.gender, 'לא כיהן', 'לא כיהנה', 'ללא כהונה')} בכנסת זו (${monthYear(r.opening, 'he')} – ${monthYear(r.end, 'he')})`);
   const marks = r.events.filter((e) => e.kind === 'recorded');
   return <>
     <div className="mk-bar" dir="ltr" ref={ref} style={{ inlineSize: `${W}%` }} role="img" aria-label={caption}>

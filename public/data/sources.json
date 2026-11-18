@@ -3234,6 +3234,18 @@
   "sha256": "e675db4027639710214af6ecc1e0beb0328357f98ac5024e2db829daad7e7d8f"
  },
  {
+  "id": "bios-odata-person-gender",
+  "file": "bios/knesset-person-gender.json",
+  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person",
+  "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+  "official": true,
+  "description": "Gender as the Knesset records it (GenderDesc) for every person in KNS_Person (1,235: 204 נקבה, 1,031 זכר), as PersonID lists. All 13 odata.nextLink pages of $select=PersonID,FirstName,LastName,GenderID,GenderDesc read on 19 Nov 2026. The MK history uses it for gendered Hebrew and English wording; a person not in it gets neutral wording. Replaces the 4 Nov snapshot's GenderDesc for this use (one value there, PersonID 30951, is out of date).",
+  "method": "http",
+  "retrievedAt": "2026-11-19",
+  "bytes": 6752,
+  "sha256": "12b42732fa8dce8751acf1cbc8e7ffc03ae0b10741315c46a4761232290c1616"
+ },
+ {
   "id": "bios-odata-mk-positions",
   "file": "bios/knesset-odata-mk-positions.json",
   "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=PositionID eq 43 or PositionID eq 61",

@@ -1,5 +1,9 @@
 # Changelog
 
+## 19 November 2026
+
+- Numbers changed on their own tiles (19 Nov): turnout, eligible voters, invalid ballots and, under Experimental rules, the threshold open a small window under their tile (pencil or a tap; Done, Escape or a tap outside closes it; Reset back to the official figure), on the Turnout tab and the Overview; the separate fields on the Turnout and Rules tabs are gone. Buttons that open or add something have a thin solid edge on a pale fill. MK history words a person as he or she only where the Knesset's own person record (read 19 Nov) gives the gender, and neutrally otherwise ("MK history"); Maha Karkabi Sabbah is now worded as the record has her.
+
 ## 17 November 2026
 
 - Mapai's affiliated Arab lists (17 Nov): the Arab lists affiliated with Mapai and the Alignment are coalition members without ministries in governments 1–17, confirmed by two independent books (Galnoor and Blander's coalition table, whose note names the lists, and Kenig and Rahat). The 30 rows that were unknown now have this role, and the 1949 Nazareth list rises from probable to confirmed. Where every row has a role and the rows match the book's total, the coalition's seats are now shown: 73 in governments 1 and 2, 65 in 3, 80 in 7 and 8, 86 in 9, 68 in 10 and 12, 75 in 13 and 68 in 16. Governments 4, 5 and 6 still show only the known seats; government 14 is unchanged. 1981: Davar's printed page has Tami proposing Begin, its row cites it, and it stays confirmed. 1984: The New York Times of 6 August is a second report of the 60–54–5 totals and of Kach not being invited.
