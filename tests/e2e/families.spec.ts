@@ -233,3 +233,7 @@ test('family scale: people who stayed home leave eligible voters alone; new citi
  await choose(pick,'new');await expect(pick).toHaveAttribute('data-value','new');await expect(scale.getByRole('status')).toContainText('Turnout rises; eligible voters unchanged');
  await choose(pick,'citizens');await expect(pick).toHaveAttribute('data-value','citizens');await expect(scale.getByRole('status')).toContainText('Family votes: 623,349 → 685,684 · Eligible voters +62,335');
 });
+test('family scale vote source in Hebrew: new citizens',async({page})=>{
+ await start(page,'he');const scale=page.locator('.family-scale'),pick=scale.getByRole('button',{name:'מקור הקולות',exact:true});
+ await choose(pick,'citizens');await expect(pick).toHaveAttribute('data-value','citizens');await expect(scale.getByRole('status')).toContainText('בעלי זכות הבחירה +62,335');
+});
