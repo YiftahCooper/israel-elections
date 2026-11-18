@@ -1,8 +1,8 @@
 # Data gaps register
 
-12415 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
+12422 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
 
-- High importance: 779 (confirmed 410, probable 44, provisional 138, disputed 11, unknown 176).
+- High importance: 786 (confirmed 420, probable 43, provisional 138, disputed 11, unknown 174).
 - Medium importance: 4483 (confirmed 1035, probable 248, provisional 182, disputed 8, unknown 2422, family placements: follows scholarship 103, the project’s own judgement 385, sources disagree 15, not yet checked 85).
 - Low importance: 7153 (confirmed 572, provisional 802, unknown 5779).
 
@@ -189,10 +189,10 @@ Could change seats, votes, a government’s composition, recommendation totals o
 ### k6
 
 - [Recommendations](../data/meta/aftermath/k6.json) ×13: provisional 5, unknown 8. חל, כא, ו, רא, ד, את, ב, מ, לע, ג, יא, ש, ק
-- [Later governments](../data/meta/aftermath/k6.json) ×6: unknown 6. חל, ב
 - [Government roles](../data/meta/aftermath/k6.json) ×2: probable 2. מ, לע
 - [Formation events](../data/meta/aftermath/k6.json) ×1: provisional 1. consultations 1965-11
 - [Investiture reconciliation](../data/meta/aftermath/k6.json) ×1: unknown 1
+- [Later governments](../data/meta/aftermath/k6.json) ×1: unknown 1
 - [Recommendation rounds](../data/meta/aftermath/k6.json) ×1: provisional 1. r1
 
 ### k5
@@ -219,9 +219,8 @@ Could change seats, votes, a government’s composition, recommendation totals o
 ### k2
 
 - [Recommendations](../data/meta/aftermath/k2.json) ×15: unknown 15. א, צ, מ, ו, ח, ק, פ, יד, ג, סצ, ב, ד, נ, ל +1
-- [Later governments](../data/meta/aftermath/k2.json) ×6: probable 1, unknown 5. ב, ל
+- [Later governments](../data/meta/aftermath/k2.json) ×9: probable 1, unknown 8. benjamin-sassoon, coalition-change 1954-02-01, ב, coalition-withdrawal 1952-09-18, david-livschitz, eliahu-eliashar, hannah-lamdan, shimon-garidi
 - [Formation events](../data/meta/aftermath/k2.json) ×1: provisional 1. consultations 1951-08
-- [Government roles](../data/meta/aftermath/k2.json) ×1: probable 1. ד
 - [Investiture reconciliation](../data/meta/aftermath/k2.json) ×1: unknown 1
 - [Recommendation rounds](../data/meta/aftermath/k2.json) ×1: provisional 1. r1
 
@@ -259,11 +258,11 @@ Shown in Standard/Expert views or the After-the-election tab, in the same order.
 - **k9**: Family classifications 38 (unknown 25, family placements: the project’s own judgement 13); data/research/knesset-events/kN.json events 33 (unknown 33); Published lists 21 (unknown 21); Party appearances 9 (probable 1, unknown 8); Term events 7 (probable 7); data/meta/election-context.json events 2 (provisional 2); List metadata 2 (unknown 2); data/raw/kN/search.reviewed.json capResolution 1 (provisional 1); data/research/round7/history-display.json pointNotes 1 (unknown 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1).
 - **k8**: Family classifications 35 (unknown 23, family placements: the project’s own judgement 11, not yet checked 1); data/research/knesset-events/kN.json events 21 (unknown 21); Published lists 20 (unknown 20); Party appearances 10 (unknown 10); Term events 4 (probable 4); data/meta/election-context.json events 1 (provisional 1); Government 1 (unknown 1); Issue polling 1 (unknown 1); List metadata 1 (unknown 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
 - **k7**: Family classifications 35 (unknown 23, family placements: the project’s own judgement 11, not yet checked 1); Published lists 16 (unknown 16); data/research/knesset-events/kN.json events 6 (unknown 6); Party appearances 3 (unknown 3); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Government 1 (unknown 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1); Term events 1 (probable 1).
-- **k6**: Family classifications 37 (unknown 24, family placements: the project’s own judgement 12, not yet checked 1); Published lists 17 (unknown 17); data/research/knesset-events/kN.json events 14 (unknown 14); Party appearances 4 (unknown 4); Government 2 (unknown 2); Term events 2 (probable 2); data/meta/election-context.json events 1 (probable 1); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
+- **k6**: Family classifications 37 (unknown 24, family placements: the project’s own judgement 12, not yet checked 1); Published lists 17 (unknown 17); data/research/knesset-events/kN.json events 14 (unknown 14); Party appearances 4 (unknown 4); Term events 2 (probable 2); data/meta/election-context.json events 1 (probable 1); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Government 1 (unknown 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
 - **k5**: Family classifications 37 (unknown 24, family placements: the project’s own judgement 13); Published lists 14 (unknown 14); data/research/knesset-events/kN.json events 6 (unknown 6); Party appearances 3 (unknown 3); Term events 3 (probable 3); Government 2 (unknown 2); Recommendation rounds 2 (unknown 2); data/meta/election-context.json events 1 (provisional 1); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Formation 1 (probable 1); Membership records 1 (unknown 1); Reactions 1 (unknown 1).
 - **k4**: Family classifications 42 (unknown 24, family placements: the project’s own judgement 14, not yet checked 4); Published lists 24 (unknown 24); Party appearances 11 (unknown 11); data/research/knesset-events/kN.json events 4 (unknown 4); Term events 2 (probable 2); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Government 1 (unknown 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
 - **k3**: Family classifications 36 (unknown 23, family placements: the project’s own judgement 13); Published lists 19 (unknown 19); Party appearances 7 (unknown 7); data/research/knesset-events/kN.json events 3 (unknown 3); Government 2 (unknown 2); Term events 2 (probable 2); data/meta/election-context.json events 1 (provisional 1); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); List metadata 1 (unknown 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
-- **k2**: Family classifications 41 (unknown 26, family placements: the project’s own judgement 15); Published lists 15 (unknown 15); data/research/knesset-events/kN.json events 9 (unknown 9); Party appearances 3 (probable 1, unknown 2); Government 2 (unknown 2); Term events 2 (probable 2); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Membership records 1 (unknown 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
+- **k2**: Family classifications 41 (unknown 26, family placements: the project’s own judgement 15); Published lists 15 (unknown 15); data/research/knesset-events/kN.json events 9 (unknown 9); Government 3 (unknown 3); Party appearances 3 (probable 1, unknown 2); Term events 2 (probable 2); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Membership records 1 (unknown 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
 - **k1**: Family classifications 58 (unknown 31, family placements: the project’s own judgement 11, not yet checked 16); Published lists 21 (unknown 21); Party appearances 9 (probable 1, unknown 8); data/research/knesset-events/kN.json events 2 (unknown 2); List metadata 2 (probable 1, unknown 1); Term events 2 (probable 2); data/meta/election-context.json events 1 (provisional 1); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Government 1 (unknown 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
 
 ## Low importance: counts only
@@ -298,7 +297,7 @@ Every claim in these families, not only gaps. Derived from each claim’s own so
 | Claims | confirmed | probable | provisional | disputed | unknown | Total |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Recommendations | 80 | 68 | 78 | 2 | 78 | 306 |
-| Government roles | 220 | 8 | 3 | 3 | 2 | 236 |
+| Government roles | 258 | 7 | 3 | 3 | 0 | 271 |
 | Formation events | 75 | 13 | 37 | 0 | 0 | 125 |
 | Term events | 36 | 49 | 0 | 0 | 0 | 85 |
 | Candidate identity links | 3245 | 42 | 535 | 0 | 0 | 3822 |
@@ -307,18 +306,18 @@ Party-family placements are the project’s classification, not facts, so they c
 
 ## Counts
 
-By kind: unknown: 7355; missing-field: 283; conflict: 19; single-source: 2934; low-confidence: 101; release-hold: 0; inferred: 1173; pending: 357; unconfirmed: 193.
+By kind: unknown: 7353; missing-field: 283; conflict: 19; single-source: 2942; low-confidence: 101; release-hold: 0; inferred: 1173; pending: 357; unconfirmed: 194.
 
-By status: inferred-not-verified: 1034; needs-current-status-review: 319; open: 11062.
+By status: inferred-not-verified: 1034; needs-current-status-review: 319; open: 11069.
 
 | Election | High open | Medium open | Low | Total |
 | --- | ---: | ---: | ---: | ---: |
 | k1 | 18 | 99 | 177 | 330 |
-| k2 | 25 | 76 | 152 | 293 |
-| k3 | 15 | 74 | 160 | 285 |
+| k2 | 27 | 77 | 152 | 307 |
+| k3 | 15 | 74 | 160 | 286 |
 | k4 | 13 | 87 | 170 | 294 |
 | k5 | 26 | 72 | 152 | 288 |
-| k6 | 24 | 80 | 161 | 309 |
+| k6 | 19 | 79 | 161 | 301 |
 | k7 | 15 | 66 | 160 | 274 |
 | k8 | 18 | 96 | 174 | 355 |
 | k9 | 21 | 116 | 197 | 409 |

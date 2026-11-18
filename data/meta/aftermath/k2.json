@@ -246,6 +246,45 @@
       "kind": "academic",
       "accessed": "2026-11-17",
       "evidenceFamily": "author:kenig-rahat"
+    },
+    "factions-k2": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%202%20and%20PositionID%20eq%2054&$format=json",
+      "publisher": "Knesset open data: faction membership",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: החברות בסיעות",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "jta-1952-09-19": {
+      "url": "https://www.jta.org/archive/new-israel-cabinet-crisis-follows-withdrawal-of-agudists",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin, 19 September 1952",
+      "kind": "newspaper",
+      "accessed": "2026-11-19"
+    },
+    "jta-1952-12-26": {
+      "url": "https://www.jta.org/archive/new-five-party-cabinet-is-broadest-in-israels-history",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin, 26 December 1952",
+      "kind": "newspaper",
+      "accessed": "2026-11-19"
+    },
+    "jta-1953-05-26": {
+      "url": "https://www.jta.org/archive/government-crisis-in-israel-general-zionists-quit-cabinet",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin, 26 May 1953",
+      "kind": "newspaper",
+      "accessed": "2026-11-19"
+    },
+    "jta-1953-05-27": {
+      "url": "https://www.jta.org/archive/ben-gurion-takes-over-ministries-of-resigned-cabinet-members",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin, 27 May 1953",
+      "kind": "newspaper",
+      "accessed": "2026-11-19"
+    },
+    "plenum-250727": {
+      "url": "https://fs.knesset.gov.il/2/Plenum/2_ptm_250727.pdf",
+      "publisher": "Knesset, Divrei HaKnesset, 3 June 1953",
+      "publisherHe": "הכנסת, דברי הכנסת, 3 ביוני 1953",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-19"
     }
   },
   "results": {
@@ -645,9 +684,9 @@
         "cites": [
           {
             "source": "role-roster-3",
-            "quote": "PersonToPositionID 3799; PersonID 2661; PositionID 39; StartDate 1951-10-08T00:00:00",
-            "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים משה שפירא; faction: הפועל המזרחי.",
-            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים משה שפירא; סיעה: הפועל המזרחי."
+            "quote": "PersonToPositionID 3881; PersonID 2546; PositionID 39; StartDate 1951-10-08T00:00:00",
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: דוד-צבי פנקס; faction: מזרחי.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דוד-צבי פנקס; סיעה: מזרחי."
           }
         ]
       },
@@ -669,17 +708,27 @@
         "letters": "ד",
         "seats": 2,
         "role": "member-without-ministries",
-        "certainty": "probable",
+        "certainty": "confirmed",
         "cites": [
+          {
+            "source": "jta-1952-09-19",
+            "quote": "The two parties were represented in the Cabinet by Minister of Welfare Rabbi L Lewin and Deputy Education Minister Rabbi Kalman Kahane."
+          },
+          {
+            "source": "galnoor-blander-2018-table",
+            "quote": "Mapai + affiliates, Hapoel Ha-Mizrahi, Mizrahi, Agudat Yisrael, Poalei Agudat Yisrael",
+            "locator": "p. 406",
+            "note": "The book’s table row for this government (10/51, Ben-Gurion, 65 seats)."
+          },
           {
             "source": "goldberg-1998",
             "quote": "Agudat Yisrael and Poalei Agudat Yisrael, participated in the governing coalitions from statehood until 1952.",
             "locator": "p. 212"
           }
         ],
-        "note": "Probable: one study (Giora Goldberg, 1998) says Poalei Agudat Yisrael was in the governing coalitions from 1948 until 1952. Still to find: a record of the time.",
-        "noteEn": "One study says it was in the governing coalitions until 1952.",
-        "noteHe": "מחקר אחד אומר שהייתה בקואליציות עד 1952."
+        "note": "Coalition member without a ministry: a report of the time (JTA, 19 September 1952) says the party left the coalition then and was represented by a deputy minister, Kalman Kahana; Galnoor and Blander’s table and Goldberg (1998) list it among the partners. A deputy minister is not a cabinet minister.",
+        "noteEn": "In the coalition until September 1952; its deputy minister is not a cabinet minister.",
+        "noteHe": "בקואליציה עד ספטמבר 1952; סגן השר מטעמה אינו חבר בממשלה."
       },
       {
         "letters": "יד",
@@ -838,7 +887,10 @@
                 "note": "Fields of the Knesset’s official record, not a quoted sentence: יוסף סרלין; faction: ציונים כלליים.",
                 "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יוסף סרלין; סיעה: ציונים כלליים."
               }
-            ]
+            ],
+            "note": "The General Zionists’ faction had 23 MKs: the 20 elected on its list (counted here) and three who joined it on 10 September 1951 (listed with the individuals).",
+            "noteEn": "Its faction had 23 MKs: 20 elected on its list and 3 who joined it in 1951.",
+            "noteHe": "בסיעה ישבו 23 חברי כנסת: 20 שנבחרו ברשימה ו־3 שהצטרפו אליה ב־1951."
           },
           {
             "letters": "ו",
@@ -858,15 +910,24 @@
             "letters": "ב",
             "seats": 2,
             "role": "member-without-ministries",
-            "certainty": "probable",
+            "certainty": "confirmed",
             "cites": [
               {
                 "source": "galnoor-blander-2018",
                 "quote": "After the government won the Knesset’s vote of confidence, Mizrahi and Ha-Mizrahi also joined, based on a promise",
                 "locator": "p. 413"
+              },
+              {
+                "source": "jta-1952-12-26",
+                "quote": "The new government, originally composed of the Mapai, General Zionist and Progressive Parties, was widened yesterday by the entrance of the Mizrachi and Poale Mizarchi Parties."
+              },
+              {
+                "source": "presentation-gov5",
+                "quote": "ארבע מחמש הסיעות שהיוו את הקואליציה הקודמת : מפלגת פועלי ארץ - ישראל , הציונים הכלליים , הפועל המזרחי והמזרחי",
+                "note": "Sharett presenting government 5, 25 January 1954, PDF p. 1: Mizrahi was one of the five factions of the preceding coalition."
               }
             ],
-            "note": "Probable: one book (Galnoor and Blander, 2018) says Mizrahi joined right after the government won the Knesset’s confidence vote. Still to find: a record of the time.",
+            "note": "Joined right after the government won the confidence vote (Galnoor and Blander; JTA, 26 December 1952). Sharett’s presentation of government 5 names it among the factions of this coalition. No minister from this faction in this government’s official record.",
             "noteEn": "Joined right after the government won the confidence vote.",
             "noteHe": "הצטרפה מיד אחרי שהממשלה זכתה באמון הכנסת."
           },
@@ -891,6 +952,12 @@
             "certainty": "confirmed",
             "cites": [
               {
+                "source": "plenum-250692",
+                "quote": "הצעה זו הוגשה על־ידי סיעת מפלגת פועלי ארץ־ישראל, סיעת הציונים הכלליים, סיעת המפלגה הפרוגרסיבית, והסיעות הערביות",
+                "locator": "p. 333",
+                "note": "Meir Argov (Mapai) naming the factions that moved the confidence motion, 23 December 1952; read from the printed page."
+              },
+              {
                 "source": "galnoor-blander-2018-table",
                 "quote": "we included parties or MKs that were not official members of the government, such as the Arab lists affiliated with Mapai in the years 1949–73",
                 "locator": "p. 408, note to Table 11.2",
@@ -908,7 +975,7 @@
                 "locator": "p. 386, note 22"
               }
             ],
-            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table counts 87 seats for this government), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table’s 87 seats for this government equal the rows recorded here with the three MKs who sat with the General Zionists), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
             "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
             "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
           },
@@ -918,6 +985,12 @@
             "role": "member-without-ministries",
             "certainty": "confirmed",
             "cites": [
+              {
+                "source": "plenum-250692",
+                "quote": "הצעה זו הוגשה על־ידי סיעת מפלגת פועלי ארץ־ישראל, סיעת הציונים הכלליים, סיעת המפלגה הפרוגרסיבית, והסיעות הערביות",
+                "locator": "p. 333",
+                "note": "Meir Argov (Mapai) naming the factions that moved the confidence motion, 23 December 1952; read from the printed page."
+              },
               {
                 "source": "galnoor-blander-2018-table",
                 "quote": "we included parties or MKs that were not official members of the government, such as the Arab lists affiliated with Mapai in the years 1949–73",
@@ -936,7 +1009,7 @@
                 "locator": "p. 386, note 22"
               }
             ],
-            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table counts 87 seats for this government), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table’s 87 seats for this government equal the rows recorded here with the three MKs who sat with the General Zionists), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
             "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
             "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
           },
@@ -946,6 +1019,12 @@
             "role": "member-without-ministries",
             "certainty": "confirmed",
             "cites": [
+              {
+                "source": "plenum-250692",
+                "quote": "הצעה זו הוגשה על־ידי סיעת מפלגת פועלי ארץ־ישראל, סיעת הציונים הכלליים, סיעת המפלגה הפרוגרסיבית, והסיעות הערביות",
+                "locator": "p. 333",
+                "note": "Meir Argov (Mapai) naming the factions that moved the confidence motion, 23 December 1952; read from the printed page."
+              },
               {
                 "source": "galnoor-blander-2018-table",
                 "quote": "we included parties or MKs that were not official members of the government, such as the Arab lists affiliated with Mapai in the years 1949–73",
@@ -964,12 +1043,12 @@
                 "locator": "p. 386, note 22"
               }
             ],
-            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table counts 87 seats for this government), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table’s 87 seats for this government equal the rows recorded here with the three MKs who sat with the General Zionists), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
             "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
             "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
           }
         ],
-        "coalitionSeats": null,
+        "coalitionSeats": 87,
         "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
         "confidenceVote": {
           "for": 63,
@@ -986,13 +1065,87 @@
             "locator": "p. 333"
           }
         ],
-        "membershipCoverage": "partial",
-        "supportSeats": null,
+        "membershipCoverage": "complete",
+        "supportSeats": 0,
         "reconciliation": {
           "status": "unresolved",
-          "note": "Every list recorded here has a role, but the total stays open: Galnoor and Blander count 87 seats, 3 more than these rows (84). The Knesset’s faction records show the two Sephardim MKs and the Yemenite MK joining the General Zionists’ faction on 10 September 1951, which would give it 23 seats rather than its 20 election seats; that is not yet recorded here. The record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 63 for, 24 against, abstentions not recorded."
+          "note": "The coalition held 87 seats once Hapoel HaMizrahi and Mizrahi joined on 24 December 1952, as Galnoor and Blander also count; the factions that moved the confidence motion on 23 December held 77. 63 MKs voted for and 24 against; abstentions were not recorded. The record does not say how each MK voted, so which coalition MKs did not vote for is unknown."
         },
-        "knownMemberSeats": 84
+        "knownMemberSeats": 87,
+        "individuals": [
+          {
+            "id": "eliahu-eliashar",
+            "nameEn": "Eliahu Eliashar",
+            "nameHe": "אליהו אלישר",
+            "fromLetters": "סצ",
+            "countedInFactionSeats": false,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "vote": "unknown",
+            "cites": [
+              {
+                "source": "factions-k2",
+                "quote": "PersonToPositionID 25862; PersonID 2149; PositionID 54; FactionID 155; StartDate 1951-09-10T00:00:00; FinishDate 1955-08-15T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אליהו אלישר; faction: ציונים כלליים, 1951-09-10 to 1955-08-15.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אליהו אלישר; סיעה: ציונים כלליים, 1951-09-10 עד 1955-08-15."
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "the General Zionists (twenty MKs in the 1951 election and another three who joined them)",
+                "locator": "p. 413"
+              }
+            ],
+            "note": "Elected on the Sephardim and Oriental Communities list; sat in the General Zionists’ faction from 10 September 1951, so counted with its coalition seats. Not a minister personally. How this MK voted on confidence is not recorded."
+          },
+          {
+            "id": "benjamin-sassoon",
+            "nameEn": "Charles Benjamin (Silach) Sassoon",
+            "nameHe": "בנימין ששון-סילס",
+            "fromLetters": "סצ",
+            "countedInFactionSeats": false,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "vote": "unknown",
+            "cites": [
+              {
+                "source": "factions-k2",
+                "quote": "PersonToPositionID 26000; PersonID 2670; PositionID 54; FactionID 155; StartDate 1951-09-10T00:00:00; FinishDate 1955-08-15T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: בנימין ששון-סילס; faction: ציונים כלליים, 1951-09-10 to 1955-08-15.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בנימין ששון-סילס; סיעה: ציונים כלליים, 1951-09-10 עד 1955-08-15."
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "the General Zionists (twenty MKs in the 1951 election and another three who joined them)",
+                "locator": "p. 413"
+              }
+            ],
+            "note": "Elected on the Sephardim and Oriental Communities list; sat in the General Zionists’ faction from 10 September 1951, so counted with its coalition seats. Not a minister personally. How this MK voted on confidence is not recorded."
+          },
+          {
+            "id": "shimon-garidi",
+            "nameEn": "Shimon Garidi",
+            "nameHe": "שמעון גרידי",
+            "fromLetters": "ל",
+            "countedInFactionSeats": false,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "vote": "unknown",
+            "cites": [
+              {
+                "source": "factions-k2",
+                "quote": "PersonToPositionID 25901; PersonID 2263; PositionID 54; FactionID 155; StartDate 1951-09-10T00:00:00; FinishDate 1955-06-29T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: שמעון גרידי; faction: ציונים כלליים, 1951-09-10 to 1955-06-29.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: שמעון גרידי; סיעה: ציונים כלליים, 1951-09-10 עד 1955-06-29."
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "the General Zionists (twenty MKs in the 1951 election and another three who joined them)",
+                "locator": "p. 413"
+              }
+            ],
+            "note": "Elected on the Yemenite Association list; sat in the General Zionists’ faction from 10 September 1951, so counted with its coalition seats. Not a minister personally. How this MK voted on confidence is not recorded."
+          }
+        ]
       },
       {
         "date": "1954-01-26",
@@ -1028,7 +1181,10 @@
                 "note": "Fields of the Knesset’s official record, not a quoted sentence: פרץ נפתלי; faction: מפלגת פועלי ארץ-ישראל.",
                 "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: פרץ נפתלי; סיעה: מפלגת פועלי ארץ-ישראל."
               }
-            ]
+            ],
+            "note": "Mapai’s faction had 47 MKs from 13 January 1954: the 45 elected on its list (counted here) and two former Mapam MKs (listed with the individuals).",
+            "noteEn": "Its faction had 47 MKs: 45 elected on its list and 2 who joined it in January 1954.",
+            "noteHe": "בסיעה ישבו 47 חברי כנסת: 45 שנבחרו ברשימה ו־2 שהצטרפו אליה בינואר 1954."
           },
           {
             "letters": "צ",
@@ -1042,7 +1198,10 @@
                 "note": "Fields of the Knesset’s official record, not a quoted sentence: ישראל רוקח; faction: ציונים כלליים.",
                 "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: ישראל רוקח; סיעה: ציונים כלליים."
               }
-            ]
+            ],
+            "note": "The General Zionists’ faction had 23 MKs: the 20 elected on its list (counted here) and three who joined it on 10 September 1951 (listed with the individuals).",
+            "noteEn": "Its faction had 23 MKs: 20 elected on its list and 3 who joined it in 1951.",
+            "noteHe": "בסיעה ישבו 23 חברי כנסת: 20 שנבחרו ברשימה ו־3 שהצטרפו אליה ב־1951."
           },
           {
             "letters": "ו",
@@ -1061,10 +1220,15 @@
           {
             "letters": "ב",
             "seats": 2,
-            "role": "other",
-            "certainty": "unknown",
-            "cites": [],
-            "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "presentation-gov5",
+                "quote": "הממשלה שיש לי הכבוד להציג לפני הבית נתמכת על - ידי ארבע מחמש הסיעות שהיוו את הקואליציה הקודמת : מפלגת פועלי ארץ - ישראל , הציונים הכלליים , הפועל המזרחי והמזרחי"
+              }
+            ],
+            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister."
           },
           {
             "letters": "יד",
@@ -1090,7 +1254,7 @@
                 "locator": "p. 386, note 22"
               }
             ],
-            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table counts 87 seats for this government), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table counts 87 seats for this government, with the Progressives who joined on 1 February 1954), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
             "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
             "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
           },
@@ -1118,7 +1282,7 @@
                 "locator": "p. 386, note 22"
               }
             ],
-            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table counts 87 seats for this government), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table counts 87 seats for this government, with the Progressives who joined on 1 February 1954), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
             "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
             "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
           },
@@ -1146,12 +1310,12 @@
                 "locator": "p. 386, note 22"
               }
             ],
-            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table counts 87 seats for this government), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table counts 87 seats for this government, with the Progressives who joined on 1 February 1954), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
             "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
             "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
           }
         ],
-        "coalitionSeats": null,
+        "coalitionSeats": 85,
         "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
         "confidenceVote": {
           "for": 75,
@@ -1164,13 +1328,125 @@
             "quote": "הצבעה 7 5 לממשלה בעד ההצעה להביע אמון 23 איאמון לממשלה בעד ההצעה להביע 5 נמנעים היו\"ר ז. שפר: בזה החליטה הכנסת על הבעת אמון לממשלה. השרים של אמונים הצהרת .4 היו\"ר ז. שפר:"
           }
         ],
-        "membershipCoverage": "partial",
-        "supportSeats": null,
+        "membershipCoverage": "complete",
+        "supportSeats": 0,
         "reconciliation": {
           "status": "unresolved",
-          "note": "Not every member of the coalition is known (those known hold 78 seats): Mizrahi’s role is open, and Galnoor and Blander also list the Progressives in this government, who are not recorded here; the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 75 for, 23 against, 5 abstaining."
+          "note": "At formation the coalition held 85 seats: the four factions Sharett named, including the five MKs who had joined Mapai and the General Zionists, and the three Arab lists affiliated with Mapai. The Progressive Party stayed out until 1 February 1954. Galnoor and Blander count 87 because they include a party that joined within a month and count Mapai at its 45 election seats. 75 MKs voted for, 23 against, 5 abstained; the record does not say how each MK voted."
         },
-        "knownMemberSeats": 78
+        "knownMemberSeats": 85,
+        "individuals": [
+          {
+            "id": "eliahu-eliashar",
+            "nameEn": "Eliahu Eliashar",
+            "nameHe": "אליהו אלישר",
+            "fromLetters": "סצ",
+            "countedInFactionSeats": false,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "vote": "unknown",
+            "cites": [
+              {
+                "source": "factions-k2",
+                "quote": "PersonToPositionID 25862; PersonID 2149; PositionID 54; FactionID 155; StartDate 1951-09-10T00:00:00; FinishDate 1955-08-15T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אליהו אלישר; faction: ציונים כלליים, 1951-09-10 to 1955-08-15.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אליהו אלישר; סיעה: ציונים כלליים, 1951-09-10 עד 1955-08-15."
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "the General Zionists (twenty MKs in the 1951 election and another three who joined them)",
+                "locator": "p. 413"
+              }
+            ],
+            "note": "Elected on the Sephardim and Oriental Communities list; sat in the General Zionists’ faction from 10 September 1951, so counted with its coalition seats. Not a minister personally. How this MK voted on confidence is not recorded."
+          },
+          {
+            "id": "benjamin-sassoon",
+            "nameEn": "Charles Benjamin (Silach) Sassoon",
+            "nameHe": "בנימין ששון-סילס",
+            "fromLetters": "סצ",
+            "countedInFactionSeats": false,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "vote": "unknown",
+            "cites": [
+              {
+                "source": "factions-k2",
+                "quote": "PersonToPositionID 26000; PersonID 2670; PositionID 54; FactionID 155; StartDate 1951-09-10T00:00:00; FinishDate 1955-08-15T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: בנימין ששון-סילס; faction: ציונים כלליים, 1951-09-10 to 1955-08-15.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בנימין ששון-סילס; סיעה: ציונים כלליים, 1951-09-10 עד 1955-08-15."
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "the General Zionists (twenty MKs in the 1951 election and another three who joined them)",
+                "locator": "p. 413"
+              }
+            ],
+            "note": "Elected on the Sephardim and Oriental Communities list; sat in the General Zionists’ faction from 10 September 1951, so counted with its coalition seats. Not a minister personally. How this MK voted on confidence is not recorded."
+          },
+          {
+            "id": "shimon-garidi",
+            "nameEn": "Shimon Garidi",
+            "nameHe": "שמעון גרידי",
+            "fromLetters": "ל",
+            "countedInFactionSeats": false,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "vote": "unknown",
+            "cites": [
+              {
+                "source": "factions-k2",
+                "quote": "PersonToPositionID 25901; PersonID 2263; PositionID 54; FactionID 155; StartDate 1951-09-10T00:00:00; FinishDate 1955-06-29T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: שמעון גרידי; faction: ציונים כלליים, 1951-09-10 to 1955-06-29.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: שמעון גרידי; סיעה: ציונים כלליים, 1951-09-10 עד 1955-06-29."
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "the General Zionists (twenty MKs in the 1951 election and another three who joined them)",
+                "locator": "p. 413"
+              }
+            ],
+            "note": "Elected on the Yemenite Association list; sat in the General Zionists’ faction from 10 September 1951, so counted with its coalition seats. Not a minister personally. How this MK voted on confidence is not recorded."
+          },
+          {
+            "id": "david-livschitz",
+            "nameEn": "David Livschitz",
+            "nameHe": "דוד ליבשיץ",
+            "fromLetters": "מ",
+            "countedInFactionSeats": false,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "vote": "unknown",
+            "cites": [
+              {
+                "source": "factions-k2",
+                "quote": "PersonToPositionID 25943; PersonID 2434; PositionID 54; FactionID 149; StartDate 1954-01-13T00:00:00; FinishDate 1955-08-15T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: דוד ליבשיץ; faction: מפלגת פועלי ארץ-ישראל, 1954-01-13 to 1955-08-15.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דוד ליבשיץ; סיעה: מפלגת פועלי ארץ-ישראל, 1954-01-13 עד 1955-08-15."
+              }
+            ],
+            "note": "Elected on the Mapam list; left Mapam in January 1953 and sat in Mapai’s faction from 13 January 1954, so counted with its coalition seats. Not a minister personally. How this MK voted on confidence is not recorded."
+          },
+          {
+            "id": "hannah-lamdan",
+            "nameEn": "Hannah Lamdan",
+            "nameHe": "חנה למדן",
+            "fromLetters": "מ",
+            "countedInFactionSeats": false,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "vote": "unknown",
+            "cites": [
+              {
+                "source": "factions-k2",
+                "quote": "PersonToPositionID 25946; PersonID 2441; PositionID 54; FactionID 149; StartDate 1954-01-13T00:00:00; FinishDate 1955-08-15T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: חנה למדן; faction: מפלגת פועלי ארץ-ישראל, 1954-01-13 to 1955-08-15.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חנה למדן; סיעה: מפלגת פועלי ארץ-ישראל, 1954-01-13 עד 1955-08-15."
+              }
+            ],
+            "note": "Elected on the Mapam list; left Mapam in January 1953 and sat in Mapai’s faction from 13 January 1954, so counted with its coalition seats. Not a minister personally. How this MK voted on confidence is not recorded."
+          }
+        ]
       },
       {
         "date": "1955-06-29",
@@ -1206,7 +1482,10 @@
                 "note": "Fields of the Knesset’s official record, not a quoted sentence: משה שרת; faction: מפלגת פועלי ארץ-ישראל.",
                 "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: משה שרת; סיעה: מפלגת פועלי ארץ-ישראל."
               }
-            ]
+            ],
+            "note": "Mapai’s faction had 47 MKs from 13 January 1954: the 45 elected on its list (counted here) and two former Mapam MKs (listed with the individuals).",
+            "noteEn": "Its faction had 47 MKs: 45 elected on its list and 2 who joined it in January 1954.",
+            "noteHe": "בסיעה ישבו 47 חברי כנסת: 45 שנבחרו ברשימה ו־2 שהצטרפו אליה בינואר 1954."
           },
           {
             "letters": "ו",
@@ -1273,7 +1552,7 @@
                 "locator": "p. 386, note 22"
               }
             ],
-            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table’s 64 seats for this government equal the rows recorded here), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table counts 64 seats for this government, with Mapai at its 45 election seats and without the Yemenite MK), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
             "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
             "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
           },
@@ -1301,7 +1580,7 @@
                 "locator": "p. 386, note 22"
               }
             ],
-            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table’s 64 seats for this government equal the rows recorded here), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table counts 64 seats for this government, with Mapai at its 45 election seats and without the Yemenite MK), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
             "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
             "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
           },
@@ -1329,20 +1608,35 @@
                 "locator": "p. 386, note 22"
               }
             ],
-            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table’s 64 seats for this government equal the rows recorded here), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table counts 64 seats for this government, with Mapai at its 45 election seats and without the Yemenite MK), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
             "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
             "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
           },
           {
             "letters": "ל",
             "seats": 1,
-            "role": "other",
-            "certainty": "unknown",
-            "cites": [],
-            "note": "Grouped with the government’s supporters. That does not show formal coalition membership or an outside-support agreement; the agreement or the investiture statement would."
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-gov6",
+                "quote": "רצוני להודיע בזה על הצטרפותי לקואליציה וכי אצביע בעד אמון לממשלה המוצעת",
+                "locator": "p. 19",
+                "note": "Shimon Garidi, the list’s only MK, in the confidence debate of 29 June 1955 (PDF page; line breaks normalised)."
+              },
+              {
+                "source": "factions-k2",
+                "quote": "PersonToPositionID 25902; PersonID 2263; PositionID 54; FactionID 179; StartDate 1955-06-29T00:00:00; FinishDate 1955-08-15T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: שמעון גרידי; faction: התאחדות התימנים בישראל, 1955-06-29 to 1955-08-15.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: שמעון גרידי; סיעה: התאחדות התימנים בישראל, 1955-06-29 עד 1955-08-15."
+              }
+            ],
+            "note": "Its only MK, Shimon Garidi, announced in the confidence debate that he was joining the coalition and would vote for the government; that day he left the General Zionists’ faction for his own list’s faction. No minister.",
+            "noteEn": "Its only MK announced he was joining the coalition; no minister.",
+            "noteHe": "חבר הכנסת היחיד שלה הודיע שהוא מצטרף לקואליציה; בלי שר."
           }
         ],
-        "coalitionSeats": null,
+        "coalitionSeats": 67,
         "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
         "confidenceVote": {
           "for": 66,
@@ -1355,13 +1649,53 @@
             "quote": "הצבעה בעד הבעת אמון לממשלה שהורכבה והוצגה 66 חברהכנסת משה שרת עלידי 32 נגד הבעת אמון לממשלה 3 נמנעו היו\"ר י. שפרינצק: שלושיםושנים אישרה הכנסת בשישיםוששה קולות נגד חברהכנסת עלידי את הממשלה של מדינת ישראל, שהוצגה שרת. משה הצהרת אמונים של השרים ג."
           }
         ],
-        "membershipCoverage": "partial",
-        "supportSeats": null,
+        "membershipCoverage": "complete",
+        "supportSeats": 0,
         "reconciliation": {
           "status": "unresolved",
-          "note": "Not every member of the coalition is known: the Yemenite Association’s role is open (those known hold 64 seats, the total Galnoor and Blander give); the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 66 for, 32 against, 3 abstaining."
+          "note": "The coalition held 67 seats, with the Yemenite MK and Mapai’s two former Mapam MKs; Galnoor and Blander count 64. 66 MKs voted for, 32 against, 3 abstained. Poalei Agudat Yisrael, not a member, said it would not withhold its confidence. The record does not say how each MK voted."
         },
-        "knownMemberSeats": 64
+        "knownMemberSeats": 67,
+        "individuals": [
+          {
+            "id": "david-livschitz",
+            "nameEn": "David Livschitz",
+            "nameHe": "דוד ליבשיץ",
+            "fromLetters": "מ",
+            "countedInFactionSeats": false,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "vote": "unknown",
+            "cites": [
+              {
+                "source": "factions-k2",
+                "quote": "PersonToPositionID 25943; PersonID 2434; PositionID 54; FactionID 149; StartDate 1954-01-13T00:00:00; FinishDate 1955-08-15T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: דוד ליבשיץ; faction: מפלגת פועלי ארץ-ישראל, 1954-01-13 to 1955-08-15.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דוד ליבשיץ; סיעה: מפלגת פועלי ארץ-ישראל, 1954-01-13 עד 1955-08-15."
+              }
+            ],
+            "note": "Elected on the Mapam list; left Mapam in January 1953 and sat in Mapai’s faction from 13 January 1954, so counted with its coalition seats. Not a minister personally. How this MK voted on confidence is not recorded."
+          },
+          {
+            "id": "hannah-lamdan",
+            "nameEn": "Hannah Lamdan",
+            "nameHe": "חנה למדן",
+            "fromLetters": "מ",
+            "countedInFactionSeats": false,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "vote": "unknown",
+            "cites": [
+              {
+                "source": "factions-k2",
+                "quote": "PersonToPositionID 25946; PersonID 2441; PositionID 54; FactionID 149; StartDate 1954-01-13T00:00:00; FinishDate 1955-08-15T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: חנה למדן; faction: מפלגת פועלי ארץ-ישראל, 1954-01-13 to 1955-08-15.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חנה למדן; סיעה: מפלגת פועלי ארץ-ישראל, 1954-01-13 עד 1955-08-15."
+              }
+            ],
+            "note": "Elected on the Mapam list; left Mapam in January 1953 and sat in Mapai’s faction from 13 January 1954, so counted with its coalition seats. Not a minister personally. How this MK voted on confidence is not recorded."
+          }
+        ]
       },
       {
         "date": "1955-06-29",
@@ -1373,6 +1707,530 @@
             "quote": "לפיכך הודעתי הבוקר בישיבה שלא מן המני י ן של הממשלה על החלטתי להתפטר ובצהרים הגשתי א ת התפטרותי לנשיא המדינה למען תת לו האפשרות , בהתאם לחוק המעבר , להטיל את משימת הרכבת הממשלה על חבר - כנסת שימצאנו ראוי לדבר , תוך תקווה ואמונה כי כתוצאה מנ י סיון חדש זה תקום ממשלה בישראל שתקיים באמונה את עקרונות הפעולה המשותפת והאחריות הקיבוצית . כבוד הנשיא קיבל את ההתפטרות ועל - ידי כך נסתיימה תקופת חייה של הממשלה שהיה לי הכבוד להציגה בפני הכנסת ביום כ\"א בשבט תשי\"ד, 25 בינואר 1954 ."
           }
         ]
+      },
+      {
+        "date": "1952-09-18",
+        "type": "coalition-withdrawal",
+        "scope": "mid-term",
+        "governmentNumber": 3,
+        "textEn": "Agudat Yisrael and Poalei Agudat Yisrael left the coalition, saying their religious demands had not been met. Yitzhak-Meir Levin’s term as Minister of Welfare ended on 18 September 1952. The coalition fell from 65 to 60 seats.",
+        "textHe": "אגודת ישראל ופועלי אגודת ישראל פרשו מהקואליציה בטענה שדרישותיהן הדתיות לא מולאו. כהונתו של יצחק־מאיר לוין כשר הסעד הסתיימה ב־18 בספטמבר 1952. מושבי הקואליציה ירדו מ־65 ל־60.",
+        "cites": [
+          {
+            "source": "jta-1952-09-19",
+            "quote": "two religious parties, the Agudath Israel and the Agudath Israel Workers, withdrew from the coalition charging non-fulfillment of their religious demands."
+          },
+          {
+            "source": "role-roster-3",
+            "quote": "PersonToPositionID 3925; PersonID 2427; PositionID 39; StartDate 1951-10-08T00:00:00; FinishDate 1952-09-18T00:00:00",
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק-מאיר לוין; faction: אגודת ישראל.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק-מאיר לוין; סיעה: אגודת ישראל."
+          },
+          {
+            "source": "presentation-gov4",
+            "quote": "ב - 7 באוקטובר 1951 הוקמה הממשלה וב - 19 בדצמבר 1952 התפטרה לאחר ששתיים מסיעותיה פרשו ממנה",
+            "note": "Ben-Gurion presenting government 4, 22 December 1952, PDF p. 2."
+          }
+        ],
+        "notes": [
+          "The date is the last day of the Agudat Yisrael minister’s term in the Knesset’s record; the report of the time is dated the next day. The exact day each party’s withdrawal took effect was not recovered."
+        ],
+        "coalition": [
+          {
+            "letters": "א",
+            "seats": 45,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-3",
+                "quote": "PersonToPositionID 3767; PersonID 2114; PositionID 39; StartDate 1951-10-08T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: משה שרת; faction: מפלגת פועלי ארץ-ישראל.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: משה שרת; סיעה: מפלגת פועלי ארץ-ישראל."
+              }
+            ]
+          },
+          {
+            "letters": "ו",
+            "seats": 8,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-3",
+                "quote": "PersonToPositionID 3799; PersonID 2661; PositionID 39; StartDate 1951-10-08T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים משה שפירא; faction: הפועל המזרחי.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים משה שפירא; סיעה: הפועל המזרחי."
+              }
+            ]
+          },
+          {
+            "letters": "ב",
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "probable",
+            "cites": [
+              {
+                "source": "jta-1952-09-19",
+                "quote": "A surprise development here tonight was the refusal of the Mizrachi and the Mizrachi Workers parties, which with the two Agudah groups composed the Religious Bloc, to follow suit and leave the government."
+              },
+              {
+                "source": "role-roster-3",
+                "quote": "PersonToPositionID 3881; PersonID 2546; PositionID 39; StartDate 1951-10-08T00:00:00; FinishDate 1952-08-14T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: דוד-צבי פנקס; faction: מזרחי.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דוד-צבי פנקס; סיעה: מזרחי."
+              },
+              {
+                "source": "role-roster-3",
+                "quote": "PersonToPositionID 4153; PersonID 2478; PositionID 39; StartDate 1952-11-03T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: מרדכי נורוק; faction: מזרחי.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: מרדכי נורוק; סיעה: מזרחי."
+              }
+            ],
+            "note": "Probable: a report of the time says Mizrahi stayed in the government when the Agudat parties left. The Knesset’s record shows its minister David-Zvi Pinkas until his death on 14 August 1952 and its next minister, Mordechai Nurock, from 3 November 1952, so it had no minister on this date. No record of the time states its membership on the day itself.",
+            "noteEn": "Stayed in the government; no minister between 14 August and 3 November 1952.",
+            "noteHe": "נשארה בממשלה; בלי שר בין 14 באוגוסט ל־3 בנובמבר 1952."
+          },
+          {
+            "letters": "יד",
+            "seats": 3,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "galnoor-blander-2018-table",
+                "quote": "we included parties or MKs that were not official members of the government, such as the Arab lists affiliated with Mapai in the years 1949–73",
+                "locator": "p. 408, note to Table 11.2",
+                "note": "The book’s table (p. 406) gives this government as “10/51 · Ben-Gurion · Mapai + affiliates, Hapoel Ha-Mizrahi, Mizrahi, Agudat Yisrael, Poalei Agudat Yisrael · 65”: 65 seats, the same total as the rows recorded here.",
+                "noteHe": "בלוח בספר (עמ׳ 406) רשומה הממשלה הזאת כך: “10/51 · Ben-Gurion · Mapai + affiliates, Hapoel Ha-Mizrahi, Mizrahi, Agudat Yisrael, Poalei Agudat Yisrael · 65”; 65 מנדטים, כסכום השורות כאן."
+              },
+              {
+                "source": "galnoor-blander-2013-ch12",
+                "quote": "בהרכב הקואליציה נמנו גם … הרשימות הערביות הנלוות למפא\"י שנבחרו לכנסת בין 1949 ל־1973 בשמות שונים: … רשימה דמוקרטית לערביי ישראל …",
+                "locator": "p. 604, note to table 12.2"
+              },
+              {
+                "source": "kenig-rahat-2023",
+                "quote": "פוליטיקאים ערבים ודרוזים מהמפלגות הציוניות (או מהרשימות הנלוות של מפא\"י) היו כמובן שותפים בקואליציות",
+                "locator": "p. 386, note 22"
+              }
+            ],
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table counts this government at formation), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
+          },
+          {
+            "letters": "נ",
+            "seats": 1,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "galnoor-blander-2018-table",
+                "quote": "we included parties or MKs that were not official members of the government, such as the Arab lists affiliated with Mapai in the years 1949–73",
+                "locator": "p. 408, note to Table 11.2",
+                "note": "The book’s table (p. 406) gives this government as “10/51 · Ben-Gurion · Mapai + affiliates, Hapoel Ha-Mizrahi, Mizrahi, Agudat Yisrael, Poalei Agudat Yisrael · 65”: 65 seats, the same total as the rows recorded here.",
+                "noteHe": "בלוח בספר (עמ׳ 406) רשומה הממשלה הזאת כך: “10/51 · Ben-Gurion · Mapai + affiliates, Hapoel Ha-Mizrahi, Mizrahi, Agudat Yisrael, Poalei Agudat Yisrael · 65”; 65 מנדטים, כסכום השורות כאן."
+              },
+              {
+                "source": "galnoor-blander-2013-ch12",
+                "quote": "בהרכב הקואליציה נמנו גם … הרשימות הערביות הנלוות למפא\"י שנבחרו לכנסת בין 1949 ל־1973 בשמות שונים: … קידמה ועבודה …",
+                "locator": "p. 604, note to table 12.2"
+              },
+              {
+                "source": "kenig-rahat-2023",
+                "quote": "פוליטיקאים ערבים ודרוזים מהמפלגות הציוניות (או מהרשימות הנלוות של מפא\"י) היו כמובן שותפים בקואליציות",
+                "locator": "p. 386, note 22"
+              }
+            ],
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table counts this government at formation), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
+          },
+          {
+            "letters": "ע",
+            "seats": 1,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "galnoor-blander-2018-table",
+                "quote": "we included parties or MKs that were not official members of the government, such as the Arab lists affiliated with Mapai in the years 1949–73",
+                "locator": "p. 408, note to Table 11.2",
+                "note": "The book’s table (p. 406) gives this government as “10/51 · Ben-Gurion · Mapai + affiliates, Hapoel Ha-Mizrahi, Mizrahi, Agudat Yisrael, Poalei Agudat Yisrael · 65”: 65 seats, the same total as the rows recorded here.",
+                "noteHe": "בלוח בספר (עמ׳ 406) רשומה הממשלה הזאת כך: “10/51 · Ben-Gurion · Mapai + affiliates, Hapoel Ha-Mizrahi, Mizrahi, Agudat Yisrael, Poalei Agudat Yisrael · 65”; 65 מנדטים, כסכום השורות כאן."
+              },
+              {
+                "source": "galnoor-blander-2013-ch12",
+                "quote": "בהרכב הקואליציה נמנו גם … הרשימות הערביות הנלוות למפא\"י שנבחרו לכנסת בין 1949 ל־1973 בשמות שונים: … חקלאות ופיתוח …",
+                "locator": "p. 604, note to table 12.2"
+              },
+              {
+                "source": "kenig-rahat-2023",
+                "quote": "פוליטיקאים ערבים ודרוזים מהמפלגות הציוניות (או מהרשימות הנלוות של מפא\"י) היו כמובן שותפים בקואליציות",
+                "locator": "p. 386, note 22"
+              }
+            ],
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table counts this government at formation), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
+          }
+        ],
+        "coalitionSeats": 60,
+        "supportSeats": 0,
+        "knownMemberSeats": 60,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No new investiture vote is documented for this withdrawal; the 56–40–4 vote belongs to 8 October 1951. The report of the time says the withdrawal left the Knesset split 60–60."
+        }
+      },
+      {
+        "date": "1953-05-25",
+        "type": "coalition-change",
+        "scope": "mid-term",
+        "governmentNumber": 4,
+        "textEn": "The four General Zionist ministers resigned, and Ben-Gurion took over their ministries for the time being.",
+        "textHe": "ארבעת שרי הציונים הכלליים התפטרו, ובן־גוריון קיבל עליו את משרדיהם באופן זמני.",
+        "cites": [
+          {
+            "source": "jta-1953-05-26",
+            "quote": "the four General Zionist Ministers handed their resignations to Premier David Ben Gurion"
+          },
+          {
+            "source": "jta-1953-05-27",
+            "quote": "Premier David Ben Gurion will temporarily assume responsibility for the four ministries held by the General Zionist Cabinet members who resigned yesterday"
+          },
+          {
+            "source": "plenum-250727",
+            "quote": "מה ראו שרי הציונים הכלליים להזדרז ולהתפטר בצורה כה נמהרת, ביום שני בבוקר, י\"א בסיון תשי\"ג",
+            "locator": "p. 1498",
+            "note": "Yizhar Harari (Progressive Party) in the Knesset, 3 June 1953; 11 Sivan 5713 was Monday 25 May 1953. Read from the printed page."
+          }
+        ],
+        "notes": [
+          "The Knesset’s ministerial record shows the four ministers’ terms without a break. Galnoor and Blander (p. 408) say their table does not count this short departure as a new coalition. No coalition snapshot is recorded for the nine days."
+        ]
+      },
+      {
+        "date": "1953-06-03",
+        "type": "coalition-change",
+        "scope": "mid-term",
+        "governmentNumber": 4,
+        "textEn": "The Knesset approved the return of the four General Zionist ministers to the government.",
+        "textHe": "הכנסת אישרה את שובם של ארבעת שרי הציונים הכלליים לממשלה.",
+        "cites": [
+          {
+            "source": "plenum-250727",
+            "quote": "לפני שבוע ימים הודעתי בכנסת, לרגל התפטרות ארבעת השרים של הציונים הכלליים",
+            "locator": "p. 1481",
+            "note": "Ben-Gurion’s statement under the heading “The resignation of four ministers and their return to the government”; read from the printed page."
+          }
+        ]
+      },
+      {
+        "date": "1954-02-01",
+        "type": "coalition-change",
+        "scope": "mid-term",
+        "governmentNumber": 5,
+        "textEn": "The Progressive Party joined the coalition: Pinhas Rosen became Minister of Justice. The coalition grew from 85 to 89 seats.",
+        "textHe": "המפלגה הפרוגרסיבית הצטרפה לקואליציה: פנחס רוזן מונה לשר המשפטים. מושבי הקואליציה גדלו מ־85 ל־89.",
+        "cites": [
+          {
+            "source": "role-roster-5",
+            "quote": "PersonToPositionID 3851; PersonID 2600; PositionID 39; StartDate 1954-02-01T00:00:00",
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: פנחס רוזן; faction: מפלגה פרוגרסיבית.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: פנחס רוזן; סיעה: מפלגה פרוגרסיבית."
+          },
+          {
+            "source": "presentation-gov5",
+            "quote": "הנני לציין כי המפלגה הפרוגרסיבית לא ראתה לעת עתה אפשרות להיכנס לקואליציה המחודשת",
+            "note": "Sharett, 25 January 1954, PDF p. 2: the Progressives were outside when the government was formed."
+          }
+        ],
+        "coalition": [
+          {
+            "letters": "א",
+            "seats": 45,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-5",
+                "quote": "PersonToPositionID 3573; PersonID 2493; PositionID 39; StartDate 1954-01-26T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: פרץ נפתלי; faction: מפלגת פועלי ארץ-ישראל.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: פרץ נפתלי; סיעה: מפלגת פועלי ארץ-ישראל."
+              }
+            ],
+            "note": "Mapai’s faction had 47 MKs from 13 January 1954: the 45 elected on its list (counted here) and two former Mapam MKs (listed with the individuals).",
+            "noteEn": "Its faction had 47 MKs: 45 elected on its list and 2 who joined it in January 1954.",
+            "noteHe": "בסיעה ישבו 47 חברי כנסת: 45 שנבחרו ברשימה ו־2 שהצטרפו אליה בינואר 1954."
+          },
+          {
+            "letters": "צ",
+            "seats": 20,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-5",
+                "quote": "PersonToPositionID 3859; PersonID 2605; PositionID 39; StartDate 1954-01-26T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: ישראל רוקח; faction: ציונים כלליים.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: ישראל רוקח; סיעה: ציונים כלליים."
+              }
+            ],
+            "note": "The General Zionists’ faction had 23 MKs: the 20 elected on its list (counted here) and three who joined it on 10 September 1951 (listed with the individuals).",
+            "noteEn": "Its faction had 23 MKs: 20 elected on its list and 3 who joined it in 1951.",
+            "noteHe": "בסיעה ישבו 23 חברי כנסת: 20 שנבחרו ברשימה ו־3 שהצטרפו אליה ב־1951."
+          },
+          {
+            "letters": "ו",
+            "seats": 8,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-5",
+                "quote": "PersonToPositionID 3795; PersonID 2661; PositionID 39; StartDate 1954-01-26T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים משה שפירא; faction: הפועל המזרחי.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים משה שפירא; סיעה: הפועל המזרחי."
+              }
+            ]
+          },
+          {
+            "letters": "ב",
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "presentation-gov5",
+                "quote": "הממשלה שיש לי הכבוד להציג לפני הבית נתמכת על - ידי ארבע מחמש הסיעות שהיוו את הקואליציה הקודמת : מפלגת פועלי ארץ - ישראל , הציונים הכלליים , הפועל המזרחי והמזרחי"
+              }
+            ],
+            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister."
+          },
+          {
+            "letters": "יד",
+            "seats": 3,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "galnoor-blander-2018-table",
+                "quote": "we included parties or MKs that were not official members of the government, such as the Arab lists affiliated with Mapai in the years 1949–73",
+                "locator": "p. 408, note to Table 11.2",
+                "note": "The book’s table (p. 406) gives this government as “01/54 · Sharett · Mapai + affiliates, Hapoel Ha-Mizrahi, Mizrahi, Progressives, General Zionists · 87”.",
+                "noteHe": "בלוח בספר (עמ׳ 406) רשומה הממשלה הזאת כך: “01/54 · Sharett · Mapai + affiliates, Hapoel Ha-Mizrahi, Mizrahi, Progressives, General Zionists · 87”."
+              },
+              {
+                "source": "galnoor-blander-2013-ch12",
+                "quote": "בהרכב הקואליציה נמנו גם … הרשימות הערביות הנלוות למפא\"י שנבחרו לכנסת בין 1949 ל־1973 בשמות שונים: … רשימה דמוקרטית לערביי ישראל …",
+                "locator": "p. 604, note to table 12.2"
+              },
+              {
+                "source": "kenig-rahat-2023",
+                "quote": "פוליטיקאים ערבים ודרוזים מהמפלגות הציוניות (או מהרשימות הנלוות של מפא\"י) היו כמובן שותפים בקואליציות",
+                "locator": "p. 386, note 22"
+              }
+            ],
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table counts 87 seats for this government, with the Progressives who joined on 1 February 1954), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
+          },
+          {
+            "letters": "נ",
+            "seats": 1,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "galnoor-blander-2018-table",
+                "quote": "we included parties or MKs that were not official members of the government, such as the Arab lists affiliated with Mapai in the years 1949–73",
+                "locator": "p. 408, note to Table 11.2",
+                "note": "The book’s table (p. 406) gives this government as “01/54 · Sharett · Mapai + affiliates, Hapoel Ha-Mizrahi, Mizrahi, Progressives, General Zionists · 87”.",
+                "noteHe": "בלוח בספר (עמ׳ 406) רשומה הממשלה הזאת כך: “01/54 · Sharett · Mapai + affiliates, Hapoel Ha-Mizrahi, Mizrahi, Progressives, General Zionists · 87”."
+              },
+              {
+                "source": "galnoor-blander-2013-ch12",
+                "quote": "בהרכב הקואליציה נמנו גם … הרשימות הערביות הנלוות למפא\"י שנבחרו לכנסת בין 1949 ל־1973 בשמות שונים: … קידמה ועבודה …",
+                "locator": "p. 604, note to table 12.2"
+              },
+              {
+                "source": "kenig-rahat-2023",
+                "quote": "פוליטיקאים ערבים ודרוזים מהמפלגות הציוניות (או מהרשימות הנלוות של מפא\"י) היו כמובן שותפים בקואליציות",
+                "locator": "p. 386, note 22"
+              }
+            ],
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table counts 87 seats for this government, with the Progressives who joined on 1 February 1954), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
+          },
+          {
+            "letters": "ע",
+            "seats": 1,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "galnoor-blander-2018-table",
+                "quote": "we included parties or MKs that were not official members of the government, such as the Arab lists affiliated with Mapai in the years 1949–73",
+                "locator": "p. 408, note to Table 11.2",
+                "note": "The book’s table (p. 406) gives this government as “01/54 · Sharett · Mapai + affiliates, Hapoel Ha-Mizrahi, Mizrahi, Progressives, General Zionists · 87”.",
+                "noteHe": "בלוח בספר (עמ׳ 406) רשומה הממשלה הזאת כך: “01/54 · Sharett · Mapai + affiliates, Hapoel Ha-Mizrahi, Mizrahi, Progressives, General Zionists · 87”."
+              },
+              {
+                "source": "galnoor-blander-2013-ch12",
+                "quote": "בהרכב הקואליציה נמנו גם … הרשימות הערביות הנלוות למפא\"י שנבחרו לכנסת בין 1949 ל־1973 בשמות שונים: … חקלאות ופיתוח …",
+                "locator": "p. 604, note to table 12.2"
+              },
+              {
+                "source": "kenig-rahat-2023",
+                "quote": "פוליטיקאים ערבים ודרוזים מהמפלגות הציוניות (או מהרשימות הנלוות של מפא\"י) היו כמובן שותפים בקואליציות",
+                "locator": "p. 386, note 22"
+              }
+            ],
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table counts 87 seats for this government, with the Progressives who joined on 1 February 1954), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
+          },
+          {
+            "letters": "פ",
+            "seats": 4,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-5",
+                "quote": "PersonToPositionID 3851; PersonID 2600; PositionID 39; StartDate 1954-02-01T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: פנחס רוזן; faction: מפלגה פרוגרסיבית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: פנחס רוזן; סיעה: מפלגה פרוגרסיבית."
+              }
+            ]
+          }
+        ],
+        "individuals": [
+          {
+            "id": "eliahu-eliashar",
+            "nameEn": "Eliahu Eliashar",
+            "nameHe": "אליהו אלישר",
+            "fromLetters": "סצ",
+            "countedInFactionSeats": false,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "vote": "unknown",
+            "cites": [
+              {
+                "source": "factions-k2",
+                "quote": "PersonToPositionID 25862; PersonID 2149; PositionID 54; FactionID 155; StartDate 1951-09-10T00:00:00; FinishDate 1955-08-15T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אליהו אלישר; faction: ציונים כלליים, 1951-09-10 to 1955-08-15.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אליהו אלישר; סיעה: ציונים כלליים, 1951-09-10 עד 1955-08-15."
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "the General Zionists (twenty MKs in the 1951 election and another three who joined them)",
+                "locator": "p. 413"
+              }
+            ],
+            "note": "Elected on the Sephardim and Oriental Communities list; sat in the General Zionists’ faction from 10 September 1951, so counted with its coalition seats. Not a minister personally. How this MK voted on confidence is not recorded."
+          },
+          {
+            "id": "benjamin-sassoon",
+            "nameEn": "Charles Benjamin (Silach) Sassoon",
+            "nameHe": "בנימין ששון-סילס",
+            "fromLetters": "סצ",
+            "countedInFactionSeats": false,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "vote": "unknown",
+            "cites": [
+              {
+                "source": "factions-k2",
+                "quote": "PersonToPositionID 26000; PersonID 2670; PositionID 54; FactionID 155; StartDate 1951-09-10T00:00:00; FinishDate 1955-08-15T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: בנימין ששון-סילס; faction: ציונים כלליים, 1951-09-10 to 1955-08-15.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בנימין ששון-סילס; סיעה: ציונים כלליים, 1951-09-10 עד 1955-08-15."
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "the General Zionists (twenty MKs in the 1951 election and another three who joined them)",
+                "locator": "p. 413"
+              }
+            ],
+            "note": "Elected on the Sephardim and Oriental Communities list; sat in the General Zionists’ faction from 10 September 1951, so counted with its coalition seats. Not a minister personally. How this MK voted on confidence is not recorded."
+          },
+          {
+            "id": "shimon-garidi",
+            "nameEn": "Shimon Garidi",
+            "nameHe": "שמעון גרידי",
+            "fromLetters": "ל",
+            "countedInFactionSeats": false,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "vote": "unknown",
+            "cites": [
+              {
+                "source": "factions-k2",
+                "quote": "PersonToPositionID 25901; PersonID 2263; PositionID 54; FactionID 155; StartDate 1951-09-10T00:00:00; FinishDate 1955-06-29T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: שמעון גרידי; faction: ציונים כלליים, 1951-09-10 to 1955-06-29.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: שמעון גרידי; סיעה: ציונים כלליים, 1951-09-10 עד 1955-06-29."
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "the General Zionists (twenty MKs in the 1951 election and another three who joined them)",
+                "locator": "p. 413"
+              }
+            ],
+            "note": "Elected on the Yemenite Association list; sat in the General Zionists’ faction from 10 September 1951, so counted with its coalition seats. Not a minister personally. How this MK voted on confidence is not recorded."
+          },
+          {
+            "id": "david-livschitz",
+            "nameEn": "David Livschitz",
+            "nameHe": "דוד ליבשיץ",
+            "fromLetters": "מ",
+            "countedInFactionSeats": false,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "vote": "unknown",
+            "cites": [
+              {
+                "source": "factions-k2",
+                "quote": "PersonToPositionID 25943; PersonID 2434; PositionID 54; FactionID 149; StartDate 1954-01-13T00:00:00; FinishDate 1955-08-15T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: דוד ליבשיץ; faction: מפלגת פועלי ארץ-ישראל, 1954-01-13 to 1955-08-15.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דוד ליבשיץ; סיעה: מפלגת פועלי ארץ-ישראל, 1954-01-13 עד 1955-08-15."
+              }
+            ],
+            "note": "Elected on the Mapam list; left Mapam in January 1953 and sat in Mapai’s faction from 13 January 1954, so counted with its coalition seats. Not a minister personally. How this MK voted on confidence is not recorded."
+          },
+          {
+            "id": "hannah-lamdan",
+            "nameEn": "Hannah Lamdan",
+            "nameHe": "חנה למדן",
+            "fromLetters": "מ",
+            "countedInFactionSeats": false,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "vote": "unknown",
+            "cites": [
+              {
+                "source": "factions-k2",
+                "quote": "PersonToPositionID 25946; PersonID 2441; PositionID 54; FactionID 149; StartDate 1954-01-13T00:00:00; FinishDate 1955-08-15T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: חנה למדן; faction: מפלגת פועלי ארץ-ישראל, 1954-01-13 to 1955-08-15.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חנה למדן; סיעה: מפלגת פועלי ארץ-ישראל, 1954-01-13 עד 1955-08-15."
+              }
+            ],
+            "note": "Elected on the Mapam list; left Mapam in January 1953 and sat in Mapai’s faction from 13 January 1954, so counted with its coalition seats. Not a minister personally. How this MK voted on confidence is not recorded."
+          }
+        ],
+        "coalitionSeats": 89,
+        "supportSeats": 0,
+        "knownMemberSeats": 89,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No new investiture vote is documented for this accession; the 75–23–5 vote belongs to 26 January 1954."
+        }
       }
     ],
     "endDateCites": [
@@ -1494,7 +2352,7 @@
     "Reaction statements are not collected.",
     "Mid-term consultation positions, mandate deadlines and extensions are incomplete unless an explicit step below records them.",
     "Closing date is the next election, not dissolution day. The governing dissolution/election-date law has not been retrieved; regular versus early termination is not inferred from term length.",
-    "Replacement-coalition snapshots for governments 4–6 use election-list seat weights, not reconstructed current faction sizes after splits and defections.",
+    "Coalition snapshots for governments 3–6 count each list at its election seats and list separately the MKs who sat in another list’s faction (Knesset faction records); other splits and defections are not reconstructed. The General Zionists’ nine-day exit in May–June 1953 is recorded as two dated steps, not as a snapshot.",
     "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
   ],
   "supportSchemaVersion": 1

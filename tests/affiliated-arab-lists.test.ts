@@ -20,7 +20,7 @@ describe("Mapai's affiliated Arab lists", () => {
       expect(r.noteEn).toMatch(/affiliated with Mapai/);
       expect(r.noteHe).toMatch(/הנלוות למפא״י/);
     }
-    expect(n).toBe(39);
+    expect(n).toBe(47);
   });
   it('rows settled from the books cite both independent works', () => {
     for (const [k, letters] of Object.entries(AFFILIATED)) {
@@ -31,10 +31,10 @@ describe("Mapai's affiliated Arab lists", () => {
       }
     }
   });
-  it('publishes a member total only where every row has a role and the rows match the book', () => {
+  it('publishes a member total only where every row has a role and the seats are counted', () => {
     const totals: Record<number, number | null> = {};
     for (const k of Object.keys(AFFILIATED)) for (const g of snapshots(load(k))) if (g.number) totals[g.number] = g.coalitionSeats;
-    expect(totals).toMatchObject({ 1: 73, 2: 73, 3: 65, 4: null, 5: null, 6: null, 7: 80, 8: 80, 9: 86, 10: 68, 11: 68, 12: 68, 13: 75, 14: null, 15: 102, 16: 68, 17: 61 });
+    expect(totals).toMatchObject({ 1: 73, 2: 73, 3: 65, 4: 87, 5: 85, 6: 67, 7: 80, 8: 80, 9: 86, 10: 68, 11: 68, 12: 68, 13: 75, 14: 106, 15: 102, 16: 68, 17: 61 });
   });
 });
 

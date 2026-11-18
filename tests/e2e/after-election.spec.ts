@@ -168,12 +168,13 @@ for (const lang of ['he', 'en'] as const) test(`support roles and honest unknown
   await expect(history.locator('.after-government-change .after-members-total').first()).toHaveText(lang === 'he' ? 'לא ידוע' : 'Unknown');
   await choose(election, 'k2');
   // 17 Nov 2026: Mapai's three affiliated Arab lists are members without ministries (two independent books), so the
-  // first government's total is published (65, as Galnoor and Blander count); a later one with an open role stays unknown
+  // first government's total is published (65, as Galnoor and Blander count). 19 Nov 2026: every later snapshot of the
+  // Second Knesset is counted from the Knesset's faction records, the first being the Agudat parties' exit (60)
   await expect(history.locator('.after-members-total').first()).toHaveText('65');
   await expect(history.locator('[data-support-role="member-without-ministries"]').first().locator('.after-party')).toHaveCount(4);
   await history.getByText(lang === 'he' ? 'שינויים בממשלה' : 'Government changes', { exact: true }).click();
-  await expect(history.locator('.after-government-change .after-members-total').first()).toHaveText(lang === 'he' ? 'לא ידוע' : 'Unknown');
-  await expect(history.locator('.after-government-change [data-support-role="unknown"]')).not.toHaveCount(0);
+  await expect(history.locator('.after-government-change .after-members-total').first()).toHaveText('60');
+  await expect(history.locator('.after-government-change [data-support-role="unknown"]')).toHaveCount(0);
   await expect(history.locator('[data-support-role="member-with-ministries"] [data-support-role="unknown"]')).toHaveCount(0);
   await choose(election, 'k15');
   await expect(history.locator('.after-confidence-vote').first()).toHaveText(lang === 'he' ? 'לא ידוע' : 'Unknown');
@@ -232,7 +233,7 @@ test('later-government rows name every faction in English, never transliterated'
   for (const [id, name] of [['k6', 'Alignment'], ['k15', 'Yisrael BaAliyah'], ['k13', "Yi'ud"]] as const) {
     await choose(page.getByRole('button', { name: 'Election', exact: true }), id);
     await history.getByText('Government changes', { exact: true }).click();
-    await expect(history.locator('.after-government-change .after-coalition').last()).toContainText(name);
+    await expect(history.locator('.after-government-change .after-coalition').filter({ hasText: name })).not.toHaveCount(0);
   }
   // no row anywhere on the screen falls back to the neutral colour for want of a name
   await expect(history.locator('.after-party-name[lang="he"]')).toHaveCount(0);

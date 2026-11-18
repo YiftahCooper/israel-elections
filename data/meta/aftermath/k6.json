@@ -192,6 +192,13 @@
       "kind": "academic",
       "accessed": "2026-11-17",
       "evidenceFamily": "author:kenig-rahat"
+    },
+    "factions-k6": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%206%20and%20PositionID%20eq%2054&$format=json",
+      "publisher": "Knesset open data: faction membership",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: החברות בסיעות",
+      "kind": "official",
+      "accessed": "2026-11-19"
     }
   },
   "results": {
@@ -713,42 +720,69 @@
         "coalition": [
           {
             "factionNameHe": "מערך",
-            "seats": null,
+            "seats": 63,
             "role": "member-with-ministries",
             "certainty": "confirmed",
             "cites": [
+              {
+                "source": "presentation-gov14",
+                "quote": "הממשלה החדשה , הכוללת את סיעת המערך ( מפלגת העבודה הישראלית – מפ \" ם ) , גוש חירות – ליברלים , המפלגה הדתית - ל אומית , המפלגה הליברלית העצמאית , מפלגת פועלי אגודת ישראל , סיעת הקידמה והפיתוח , סיעת השיתוף והאחווה , הסיעה הדרוזית הישראלית וסיעת האחווה הערבית - יהודית",
+                "note": "Meir presenting the government, 17 March 1969, PDF p. 2."
+              },
               {
                 "source": "role-roster-14",
                 "quote": "PersonToPositionID 3549; PersonID 2669; PositionID 39; StartDate 1969-03-17T00:00:00",
                 "note": "Official appointment of אליהו ששון; the faction is from the Knesset’s membership records.",
                 "noteHe": "מינוי רשמי של אליהו ששון; הסיעה לפי רישומי החברות של הכנסת."
+              },
+              {
+                "source": "factions-k6",
+                "quote": "PersonToPositionID 26497; PersonID 2332; PositionID 54; FactionID 299; StartDate 1969-01-28T00:00:00; FinishDate 1969-11-17T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: עבדול-עזיז זועבי; faction: מערך, 1969-01-28 to 1969-11-17.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: עבדול-עזיז זועבי; סיעה: מערך, 1969-01-28 עד 1969-11-17."
               }
             ],
-            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
+            "note": "The Alignment’s faction (Labour and Mapam) had 63 MKs on 17 March 1969 (Knesset faction records); it had ministers in the cabinet. Galnoor and Blander list Mapam separately.",
             "factionNameEn": "Alignment"
           },
           {
             "factionNameHe": "גוש חרות ליברלים",
-            "seats": null,
+            "seats": 22,
             "role": "member-with-ministries",
             "certainty": "confirmed",
             "cites": [
+              {
+                "source": "presentation-gov14",
+                "quote": "הממשלה החדשה , הכוללת את סיעת המערך ( מפלגת העבודה הישראלית – מפ \" ם ) , גוש חירות – ליברלים , המפלגה הדתית - ל אומית , המפלגה הליברלית העצמאית , מפלגת פועלי אגודת ישראל , סיעת הקידמה והפיתוח , סיעת השיתוף והאחווה , הסיעה הדרוזית הישראלית וסיעת האחווה הערבית - יהודית",
+                "note": "Meir presenting the government, 17 March 1969, PDF p. 2."
+              },
               {
                 "source": "role-roster-14",
                 "quote": "PersonToPositionID 3890; PersonID 2512; PositionID 39; StartDate 1969-03-17T00:00:00",
                 "note": "Official appointment of יוסף ספיר; the faction is from the Knesset’s membership records.",
                 "noteHe": "מינוי רשמי של יוסף ספיר; הסיעה לפי רישומי החברות של הכנסת."
+              },
+              {
+                "source": "factions-k6",
+                "quote": "PersonToPositionID 26631; PersonID 2402; FactionID 307 (המרכז החופשי); StartDate 1969-02-11T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: שלמה כהן-צידון; faction: המרכז החופשי from 11 February 1969.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: שלמה כהן-צידון; סיעה: המרכז החופשי מ־11 בפברואר 1969."
               }
             ],
-            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
+            "note": "Gahal’s faction had 22 MKs on 17 March 1969 (Knesset faction records; Shlomo Cohen-Tzidon had left it for the Free Centre on 11 February 1969); it had ministers in the cabinet.",
             "letters": "חל"
           },
           {
             "factionNameHe": "מפלגה דתית לאומית",
-            "seats": null,
+            "seats": 11,
             "role": "member-with-ministries",
             "certainty": "confirmed",
             "cites": [
+              {
+                "source": "presentation-gov14",
+                "quote": "הממשלה החדשה , הכוללת את סיעת המערך ( מפלגת העבודה הישראלית – מפ \" ם ) , גוש חירות – ליברלים , המפלגה הדתית - ל אומית , המפלגה הליברלית העצמאית , מפלגת פועלי אגודת ישראל , סיעת הקידמה והפיתוח , סיעת השיתוף והאחווה , הסיעה הדרוזית הישראלית וסיעת האחווה הערבית - יהודית",
+                "note": "Meir presenting the government, 17 March 1969, PDF p. 2."
+              },
               {
                 "source": "role-roster-14",
                 "quote": "PersonToPositionID 22419; PersonID 2187; PositionID 39; StartDate 1969-03-17T00:00:00",
@@ -756,8 +790,146 @@
                 "noteHe": "מינוי רשמי של יוסף בורג; הסיעה לפי רישומי החברות של הכנסת."
               }
             ],
-            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
+            "note": "The National Religious Party’s faction had 11 MKs on 17 March 1969 (Knesset faction records); it had ministers in the cabinet.",
             "letters": "ב"
+          },
+          {
+            "letters": "לע",
+            "seats": 4,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "presentation-gov14",
+                "quote": "הממשלה החדשה , הכוללת את סיעת המערך ( מפלגת העבודה הישראלית – מפ \" ם ) , גוש חירות – ליברלים , המפלגה הדתית - ל אומית , המפלגה הליברלית העצמאית , מפלגת פועלי אגודת ישראל , סיעת הקידמה והפיתוח , סיעת השיתוף והאחווה , הסיעה הדרוזית הישראלית וסיעת האחווה הערבית - יהודית",
+                "note": "Meir presenting the government, 17 March 1969, PDF p. 2."
+              },
+              {
+                "source": "role-roster-14",
+                "quote": "PersonToPositionID 22427; PersonID 2575; PositionID 39; StartDate 1969-03-17T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: משה קול, Minister of Tourism (not a sitting MK on this date).",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: משה קול, שר התיירות (לא כיהן אז כחבר כנסת)."
+              },
+              {
+                "source": "factions-k6",
+                "quote": "PersonToPositionID 26712; PersonID 2575; PositionID 54; FactionID 305; StartDate 1965-11-22T00:00:00; FinishDate 1966-01-11T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: משה קול; faction: ליברלים עצמאיים, 1965-11-22 to 1966-01-11.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: משה קול; סיעה: ליברלים עצמאיים, 1965-11-22 עד 1966-01-11."
+              },
+              {
+                "source": "factions-k6",
+                "quote": "PersonToPositionID 26591; PersonID 2314; PositionID 54; FactionID 299; StartDate 1969-01-28T00:00:00; FinishDate 1969-11-17T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: יזהר הררי; faction: מערך, 1969-01-28 to 1969-11-17.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יזהר הררי; סיעה: מערך, 1969-01-28 עד 1969-11-17."
+              }
+            ],
+            "note": "Named by Meir as a coalition faction. Its minister, Moshe Kol, sat for the Independent Liberals in the Knesset until he became a minister in January 1966 (and again from November 1969). Its faction had 4 MKs on 17 March 1969: Yizhar Harari, elected on its list, had moved to the Alignment’s faction on 28 January 1969."
+          },
+          {
+            "letters": "ד",
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "presentation-gov14",
+                "quote": "הממשלה החדשה , הכוללת את סיעת המערך ( מפלגת העבודה הישראלית – מפ \" ם ) , גוש חירות – ליברלים , המפלגה הדתית - ל אומית , המפלגה הליברלית העצמאית , מפלגת פועלי אגודת ישראל , סיעת הקידמה והפיתוח , סיעת השיתוף והאחווה , הסיעה הדרוזית הישראלית וסיעת האחווה הערבית - יהודית",
+                "note": "Meir presenting the government, 17 March 1969, PDF p. 2."
+              }
+            ],
+            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister."
+          },
+          {
+            "seats": 1,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "presentation-gov14",
+                "quote": "הממשלה החדשה , הכוללת את סיעת המערך ( מפלגת העבודה הישראלית – מפ \" ם ) , גוש חירות – ליברלים , המפלגה הדתית - ל אומית , המפלגה הליברלית העצמאית , מפלגת פועלי אגודת ישראל , סיעת הקידמה והפיתוח , סיעת השיתוף והאחווה , הסיעה הדרוזית הישראלית וסיעת האחווה הערבית - יהודית",
+                "note": "Meir presenting the government, 17 March 1969, PDF p. 2."
+              },
+              {
+                "source": "factions-k6",
+                "quote": "PersonToPositionID 26495; PersonID 2144; PositionID 54; FactionID 988; StartDate 1967-01-01T00:00:00; FinishDate 1969-11-17T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: סיף-אלדין אלזועבי; faction: קידמה ופיתוח, 1967-01-01 to 1969-11-17.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: סיף-אלדין אלזועבי; סיעה: קידמה ופיתוח, 1967-01-01 עד 1969-11-17."
+              }
+            ],
+            "note": "Coalition member without a ministry: named by Meir when she presented the government, the official record. It had one MK on 17 March 1969 (Knesset faction records); the list’s other MK sat in a faction of his own.",
+            "letters": "רא",
+            "factionNameHe": "קידמה ופיתוח",
+            "noteEn": "One of the Arab lists affiliated with Mapai and the Alignment: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י ולמערך: נמנתה בקואליציה, בלי שר."
+          },
+          {
+            "seats": 1,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "presentation-gov14",
+                "quote": "הממשלה החדשה , הכוללת את סיעת המערך ( מפלגת העבודה הישראלית – מפ \" ם ) , גוש חירות – ליברלים , המפלגה הדתית - ל אומית , המפלגה הליברלית העצמאית , מפלגת פועלי אגודת ישראל , סיעת הקידמה והפיתוח , סיעת השיתוף והאחווה , הסיעה הדרוזית הישראלית וסיעת האחווה הערבית - יהודית",
+                "note": "Meir presenting the government, 17 March 1969, PDF p. 2."
+              },
+              {
+                "source": "factions-k6",
+                "quote": "PersonToPositionID 26683; PersonID 2518; PositionID 54; FactionID 989; StartDate 1967-01-01T00:00:00; FinishDate 1969-11-17T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: דיאב עוביד; faction: שיתוף ואחווה, 1967-01-01 to 1969-11-17.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דיאב עוביד; סיעה: שיתוף ואחווה, 1967-01-01 עד 1969-11-17."
+              }
+            ],
+            "note": "Coalition member without a ministry: named by Meir when she presented the government, the official record. It had one MK on 17 March 1969 (Knesset faction records); the list’s other MK sat in a faction of his own.",
+            "letters": "יא",
+            "factionNameHe": "שיתוף ואחווה",
+            "noteEn": "One of the Arab lists affiliated with Mapai and the Alignment: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י ולמערך: נמנתה בקואליציה, בלי שר."
+          },
+          {
+            "seats": 1,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "presentation-gov14",
+                "quote": "הממשלה החדשה , הכוללת את סיעת המערך ( מפלגת העבודה הישראלית – מפ \" ם ) , גוש חירות – ליברלים , המפלגה הדתית - ל אומית , המפלגה הליברלית העצמאית , מפלגת פועלי אגודת ישראל , סיעת הקידמה והפיתוח , סיעת השיתוף והאחווה , הסיעה הדרוזית הישראלית וסיעת האחווה הערבית - יהודית",
+                "note": "Meir presenting the government, 17 March 1969, PDF p. 2."
+              },
+              {
+                "source": "factions-k6",
+                "quote": "PersonToPositionID 26649; PersonID 2454; PositionID 54; FactionID 987; StartDate 1967-04-11T00:00:00; FinishDate 1969-11-17T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: ג'בר מועדי; faction: הסיעה הדרוזית הישראלית, 1967-04-11 to 1969-11-17.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: ג'בר מועדי; סיעה: הסיעה הדרוזית הישראלית, 1967-04-11 עד 1969-11-17."
+              }
+            ],
+            "note": "Coalition member without a ministry: named by Meir when she presented the government, the official record. A one-MK faction formed during the term (Knesset faction records); its MK was elected on a list affiliated with Mapai and the Alignment.",
+            "factionNameHe": "הסיעה הדרוזית הישראלית",
+            "factionNameEn": "Israeli Druze Faction",
+            "noteEn": "A one-MK faction split from a list affiliated with Mapai and the Alignment: in the coalition, with no minister.",
+            "noteHe": "סיעת יחיד שפרשה מרשימה הנלווית למפא״י ולמערך: בקואליציה, בלי שר."
+          },
+          {
+            "seats": 1,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "presentation-gov14",
+                "quote": "הממשלה החדשה , הכוללת את סיעת המערך ( מפלגת העבודה הישראלית – מפ \" ם ) , גוש חירות – ליברלים , המפלגה הדתית - ל אומית , המפלגה הליברלית העצמאית , מפלגת פועלי אגודת ישראל , סיעת הקידמה והפיתוח , סיעת השיתוף והאחווה , הסיעה הדרוזית הישראלית וסיעת האחווה הערבית - יהודית",
+                "note": "Meir presenting the government, 17 March 1969, PDF p. 2."
+              },
+              {
+                "source": "factions-k6",
+                "quote": "PersonToPositionID 26659; PersonID 2480; PositionID 54; FactionID 297; StartDate 1968-10-22T00:00:00; FinishDate 1969-11-17T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אליאס נחלה; faction: אחווה יהודית - ערבית, 1968-10-22 to 1969-11-17.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אליאס נחלה; סיעה: אחווה יהודית - ערבית, 1968-10-22 עד 1969-11-17."
+              }
+            ],
+            "note": "Coalition member without a ministry: named by Meir when she presented the government, the official record. A one-MK faction formed during the term (Knesset faction records); its MK was elected on a list affiliated with Mapai and the Alignment.",
+            "factionNameHe": "אחווה יהודית - ערבית",
+            "factionNameEn": "Jewish–Arab Brotherhood",
+            "noteEn": "A one-MK faction split from a list affiliated with Mapai and the Alignment: in the coalition, with no minister.",
+            "noteHe": "סיעת יחיד שפרשה מרשימה הנלווית למפא״י ולמערך: בקואליציה, בלי שר."
           }
         ],
         "cites": [
@@ -766,8 +938,7 @@
             "quote": "בעד ההצעה להביע אמון לממשלה המיועדת — 84; נגד — 12; נמנע — 1 (page 1982, visually read)."
           }
         ],
-        "membershipCoverage": "partial",
-        "roleGap": "Only positively identified cabinet factions are recorded here. Factions without ministers, individual crossings, effective faction sizes and the complete roll call still need the investiture record and deposited agreements. An empty or incomplete row set is not zero support.",
+        "membershipCoverage": "complete",
         "confidenceVote": {
           "for": 84,
           "against": 12,
@@ -779,14 +950,14 @@
             "quote": "בעד ההצעה להביע אמון לממשלה המיועדת — 84; נגד — 12; נמנע — 1 (page 1982, visually read)."
           }
         ],
-        "coalitionSeats": null,
-        "supportSeats": null,
+        "coalitionSeats": 106,
+        "supportSeats": 0,
         "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
         "reconciliation": {
           "status": "unresolved",
-          "note": "Not every member of the coalition is known, and its seats at this date have not been counted; the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 84 for, 12 against, 1 abstaining."
+          "note": "The coalition held 106 seats: the nine factions Meir named, counted from the Knesset’s faction records on 17 March 1969. Galnoor and Blander count 107 and list Mapam separately; their worksheet is not published, so the one-seat difference is not explained. 84 MKs voted for, 12 against, 1 abstained; the record does not say how each MK voted."
         },
-        "knownMemberSeats": 0
+        "knownMemberSeats": 106
       }
     ],
     "endDateCites": [
@@ -940,7 +1111,7 @@
     "Reaction statements are not collected.",
     "Mid-term consultation positions, mandate deadlines and extensions are incomplete unless an explicit step below records them.",
     "The closing entry uses the IPU account; the original election-date/dissolution law is not transcribed.",
-    "Replacement-coalition snapshots are partial: government 14’s faction splits and current seat counts require a separate audit.",
+    "Government 14 (Meir, March 1969) is counted by Knesset faction on its first day, not by election list; Galnoor and Blander’s 107 for the same government is not reconciled.",
     "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
   ],
   "supportSchemaVersion": 1

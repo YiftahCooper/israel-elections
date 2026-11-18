@@ -15,15 +15,14 @@ register (`docs/data-gaps.md`).
   facts because several official sites refuse automated reading. The page collector (a browser extension that fetches
   pages from the owner's own browser) is meant to close most of this; each fetched batch is checked against the stored
   data, and the register is updated.
-- **Governments 4, 5, 6 and 14: what still keeps their member totals open.** Found while settling Mapai's affiliated
-  Arab lists (17 Nov 2026). Government 4 (1952): the General Zionists row keeps its 20 election seats, but the Knesset's
-  faction records show the Sephardim's two MKs and the Yemenite MK joining that faction on 10 September 1951 (23
-  seats, which would match Galnoor and Blander's 87). Government 5 (1954): the Progressives are missing from the rows,
-  though Galnoor and Blander list them, and Mizrahi's role is open. Government 6 (1955): the Yemenite Association's
-  role is open. Government 14 (1969): only the parties with ministers are recorded; by then the two affiliated lists
-  had split into four one-MK factions (one became the Israeli Druze Faction), so which of them the book's
-  "affiliates" means needs a source. Needed: the faction seats from the Knesset's records, and a source for each open
-  role.
+- **Early governments: what is still open after the faction count of 19 Nov 2026.** Meir's government of March 1969
+  has 106 members by the Knesset's faction records; Galnoor and Blander count 107 and list Mapam separately, and
+  their worksheet would show which extra MK they count. The General Zionists' exit of 25 May to 3 June 1953 and the
+  Progressives' of 13 to 28 February 1956 are shown as dated steps only: the day each took legal effect (the
+  resignation letters and the government's notices) is needed before either becomes a snapshot. Mizrahi's membership
+  between Pinkas's death (14 August 1952) and Nurock's appointment (3 November 1952) rests on one report of the time
+  (probable). Government 13 (1966): the Independent Liberals' and Mapam's rows are probable; the Knesset's faction
+  records show Moshe Kol as an Independent Liberals MK until he became a minister, which may settle the first.
 
 ## Features
 

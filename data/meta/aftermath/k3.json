@@ -196,6 +196,14 @@
       "kind": "academic",
       "accessed": "2026-11-17",
       "evidenceFamily": "author:kenig-rahat"
+    },
+    "plenum-251016": {
+      "url": "https://fs.knesset.gov.il/3/Plenum/3_ptm_251016.pdf",
+      "publisher": "Knesset, Divrei HaKnesset, 28 February 1956",
+      "publisherHe": "הכנסת, דברי הכנסת, 28 בפברואר 1956",
+      "kind": "official",
+      "tier": "primary",
+      "accessed": "2026-11-19"
     }
   },
   "results": {
@@ -862,6 +870,47 @@
           "note": "The coalition held 80 seats, as Galnoor and Blander also count, but 76 MKs voted for (33 against); which 4 did not is unknown, as the record does not say how each MK voted. Do not assume every coalition MK voted for."
         },
         "knownMemberSeats": 80
+      },
+      {
+        "date": "1956-02-13",
+        "type": "coalition-change",
+        "scope": "mid-term",
+        "governmentNumber": 7,
+        "textEn": "Pinhas Rosen of the Progressive Party resigned as Minister of Justice.",
+        "textHe": "פנחס רוזן מהמפלגה הפרוגרסיבית התפטר מתפקיד שר המשפטים.",
+        "cites": [
+          {
+            "source": "role-roster-7",
+            "quote": "PersonToPositionID 3853; PersonID 2600; PositionID 39; StartDate 1955-11-03T00:00:00; FinishDate 1956-02-13T00:00:00",
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: פנחס רוזן; faction: מפלגה פרוגרסיבית.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: פנחס רוזן; סיעה: מפלגה פרוגרסיבית."
+          }
+        ],
+        "notes": [
+          "Whether the Progressive faction itself left the coalition for these fifteen days is not settled by a record of its own; speakers in the 28 February debate describe it as having left. No coalition snapshot is recorded."
+        ]
+      },
+      {
+        "date": "1956-02-28",
+        "type": "coalition-change",
+        "scope": "mid-term",
+        "governmentNumber": 7,
+        "textEn": "The Knesset approved Pinhas Rosen’s return as Minister of Justice.",
+        "textHe": "הכנסת אישרה את שובו של פנחס רוזן לתפקיד שר המשפטים.",
+        "cites": [
+          {
+            "source": "plenum-251016",
+            "quote": "נעים לי להודיע שהממשלה החליטה פה־אחד לצרף את חבר־הכנסת פנחס רוזן כחבר הממשלה להיות שר המשפטים במקומי",
+            "locator": "p. 1199",
+            "note": "Ben-Gurion in the Knesset, 28 February 1956; read from the printed page."
+          },
+          {
+            "source": "role-roster-7",
+            "quote": "PersonToPositionID 22189; PersonID 2600; PositionID 39; StartDate 1956-02-28T00:00:00",
+            "note": "Fields of the Knesset’s official record, not a quoted sentence: פנחס רוזן; faction: מפלגה פרוגרסיבית.",
+            "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: פנחס רוזן; סיעה: מפלגה פרוגרסיבית."
+          }
+        ]
       }
     ],
     "endDateCites": [

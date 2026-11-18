@@ -1,5 +1,9 @@
 # Changelog
 
+## 19 November 2026
+
+- Early governments counted from the Knesset's faction records (19 Nov): government 4 now has 87 members (three MKs elected on the Sephardim and Yemenite lists sat with the General Zionists), government 5 has 85 at formation and 89 once the Progressives joined on 1 February 1954, government 6 has 67 with the Yemenite Association as a member, and Meir's government of March 1969 has all nine factions she named, 106 seats, including the four one-MK partners. Government 3 now shows the two Agudat parties leaving in September 1952 (60 seats), with Mizrahi's own minister cited; the General Zionists' short exit in 1953 and Rosen's in 1956 are dated steps.
+
 ## 17 November 2026
 
 - Mapai's affiliated Arab lists (17 Nov): the Arab lists affiliated with Mapai and the Alignment are coalition members without ministries in governments 1–17, confirmed by two independent books (Galnoor and Blander's coalition table, whose note names the lists, and Kenig and Rahat). The 30 rows that were unknown now have this role, and the 1949 Nazareth list rises from probable to confirmed. Where every row has a role and the rows match the book's total, the coalition's seats are now shown: 73 in governments 1 and 2, 65 in 3, 80 in 7 and 8, 86 in 9, 68 in 10 and 12, 75 in 13 and 68 in 16. Governments 4, 5 and 6 still show only the known seats; government 14 is unchanged. 1981: Davar's printed page has Tami proposing Begin, its row cites it, and it stays confirmed. 1984: The New York Times of 6 August is a second report of the 60–54–5 totals and of Kach not being invited.
