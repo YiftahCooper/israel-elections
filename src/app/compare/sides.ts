@@ -122,7 +122,7 @@ export async function openComparisonFromHash(): Promise<boolean> {
   // the data of a side could not be loaded: the link stays, nothing changed, and Try again opens the comparison
   if (!(await openComparison(c))) {
     const e = getState().loadError;
-    if (e && !e.kept) setState({ loadError: { ...e, retry: () => void openComparisonFromHash() } });
+    if (e && !e.kept) setState({ loadError: { ...e, retry: () => void openComparisonFromHash(), link: true } });
     return true;
   }
   history.replaceState(null, '', location.pathname + location.search);

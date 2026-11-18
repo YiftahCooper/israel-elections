@@ -35,6 +35,8 @@ export interface State {
   datasets: Partial<Record<ElectionId, ElectionDataset>>;
   /** every election the project knows about (public/data/elections.json), newest first */
   elections: ElectionIndexEntry[];
+  /** the election index could not be loaded: only the built-in two are listed, and the election list says so */
+  electionIndexFailed?: boolean;
   electionId: ElectionId;
   scenario: Scenario | null;
   /** a live, unlogged preview of the scenario while a control is being dragged (committed on release) */
@@ -62,7 +64,9 @@ export interface State {
   /** the last election that failed to load, and why (the previous election stays open): the cause (the connection, or
    *  an app and data of different versions), what Try again retries (what was asked for: a link, a saved scenario, the
    *  last visit's work), and whether unsaved work waits on it, kept until it loads */
-  loadError: { id: ElectionId; message: string; kind?: LoadErrorKind; retry?: () => void; kept?: boolean } | null;
+  /** kept: last visit's work on that election waits for it; link: a share link's scenario or comparison does (it stays in
+   *  the address bar). Either keeps the message up while another election is opened, until Try again opens it. */
+  loadError: { id: ElectionId; message: string; kind?: LoadErrorKind; retry?: () => void; kept?: boolean; link?: boolean } | null;
   notice: string | null;
   /** how every vote edit on a list is balanced (shared by all vote controls) */
   voteSource: SourceChoice;
@@ -92,15 +96,14 @@ const FALLBACK_INDEX: ElectionIndexEntry[] = [
   { id: 'k25', knesset: 25, date: '2022-11-01', nameHe: 'הבחירות לכנסת ה-25', nameEn: 'Election to the 25th Knesset', available: true, status: { stage: 'official-final' } },
 ];
 
-/** Loads the election index; keeps the fallback if it is missing or malformed. */
+/** Loads the election index; keeps the fallback if it is missing or malformed, and says so in the election list. */
 export async function loadElectionIndex() {
   try {
     const res = await fetch('data/elections.json');
-    if (!res.ok) return;
-    const rows = (await res.json()) as ElectionIndexEntry[];
-    if (!Array.isArray(rows) || !rows.some((r) => r.available)) return;
-    setState({ elections: [...rows].sort((a, b) => b.date.localeCompare(a.date)) });
-  } catch { /* keep the fallback */ }
+    const rows = res.ok ? (await res.json()) as ElectionIndexEntry[] : null;
+    if (!Array.isArray(rows) || !rows.some((r) => r.available)) { setState({ electionIndexFailed: true }); return; }
+    setState({ elections: [...rows].sort((a, b) => b.date.localeCompare(a.date)), electionIndexFailed: false });
+  } catch { setState({ electionIndexFailed: true }); }
 }
 // Browser storage is outside the app's control (another version, an extension, a hand edit): every stored value is
 // checked before use. Anything malformed falls back to its default so the app always starts; what could not be read is
@@ -537,7 +540,7 @@ export async function openElection(id: ElectionId, from?: { id?: string; name: s
     }
     delete sessions[id];
     // a banner for last visit's work that could not be reopened stays until that work is
-    setState({ electionId: id, scenario, reference, past, future, sessions, ...(kept ? { scenarioDrafts: { ...state.scenarioDrafts, ...kept } } : {}), selectedListId: null, blocPanel: null, loadError: state.loadError?.kept ? state.loadError : null, notice, compare: { ...state.compare, chamber: 'work' } });
+    setState({ electionId: id, scenario, reference, past, future, sessions, ...(kept ? { scenarioDrafts: { ...state.scenarioDrafts, ...kept } } : {}), selectedListId: null, blocPanel: null, loadError: state.loadError?.kept || (state.loadError?.link && !from) ? state.loadError : null, notice, compare: { ...state.compare, chamber: 'work' } });
     if (kept) keptToast();
     return true;
   } catch (e) {
@@ -688,7 +691,7 @@ export async function openSharedFromHash(): Promise<boolean> {
       if (!(e instanceof DataLoadError)) sh = null;
       else { // its data could not be loaded: the link stays in the address bar, and Try again opens it
         const id = sh.electionId;
-        setState({ loadError: { id, message: e.message, kind: e.kind, retry: () => void openSharedFromHash() } });
+        setState({ loadError: { id, message: e.message, kind: e.kind, retry: () => void openSharedFromHash(), link: true } });
         return true;
       }
     }
@@ -704,7 +707,7 @@ export async function openSharedFromHash(): Promise<boolean> {
   const name = sh.name || (state.lang === 'he' ? 'תרחיש משותף' : 'Shared scenario');
   if (await openElection(sh.electionId, { ...sh, name })) { history.replaceState(null, '', location.pathname + location.search); noteGalleryOpened(sh.electionId); }
   // its data could not be loaded: Try again opens the link (still in the address bar), not the plain election
-  else if (state.loadError?.id === sh.electionId && !state.loadError.kept) setState({ loadError: { ...state.loadError, retry: () => void openSharedFromHash() } });
+  else if (state.loadError?.id === sh.electionId && !state.loadError.kept) setState({ loadError: { ...state.loadError, retry: () => void openSharedFromHash(), link: true } });
   return true;
 }
 

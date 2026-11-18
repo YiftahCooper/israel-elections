@@ -172,21 +172,35 @@ function Shell() {
   }, [ready, level]);
 
   // what failed, said as it is: the connection, or an app and data of different versions (reloading fetches both again);
-  // Try again asks again for what was asked for, and closing the banner with nothing open opens the newest election
-  const loadBanner = loadError && ((e) => (
+  // Try again asks again for what was asked for. Nothing else is ever opened in its place (owner, 19 Nov 2026): with an
+  // election open the message is a banner over it; with none, it is the whole page, which offers another election only
+  // as the reader's own choice. A shared link or last visit's work waiting for that election is said to be kept.
+  const failedName = loadError && ((x) => x ? electionLabel(x, elections, lang) : loadError.id)(elections.find((x) => x.id === loadError.id));
+  const failedWhy = loadError && <>{loadError.kind === 'version'
+    ? L(`The app and the ${failedName} election data are of different versions. Reload the page to fetch both again.`, `האתר ונתוני הבחירות ${failedName} הם מגרסאות שונות. טענו מחדש את הדף כדי להביא את שניהם מחדש.`)
+    : L(`Could not load the ${failedName} election data. Check the connection and try again.`, `טעינת נתוני הבחירות ${failedName} נכשלה. בדקו את החיבור ונסו שוב.`)}
+    {loadError.kept && <> {L('Your unsaved work on this election is not lost.', 'העבודה שלא נשמרה על הבחירות האלה לא אבדה.')}</>}
+    {loadError.link && !loadError.kept && <> {L('The shared scenario is not lost: it opens once this election loads.', 'התרחיש ששותף לא אבד: הוא ייפתח כשהבחירות האלה ייטענו.')}</>}</>;
+  const failedRetry = loadError && (loadError.kind === 'version'
+    ? <button className="btn small" onClick={() => location.reload()}>{L('Reload', 'טעינה מחדש')}</button>
+    : <button className="btn small" onClick={() => (loadError.retry ?? (() => void openElection(loadError.id)))()}>{L('Try again', 'נסו שוב')}</button>);
+  const loadBanner = loadError && (
     <div className="banner err" role="alert">
-      <span className="banner-text">{loadError.kind === 'version'
-        ? L(`The app and the ${e} election data are of different versions. Reload the page to fetch both again.`, `האתר ונתוני הבחירות ${e} הם מגרסאות שונות. טענו מחדש את הדף כדי להביא את שניהם מחדש.`)
-        : L(`Could not load the ${e} election data. Check the connection and try again.`, `טעינת נתוני הבחירות ${e} נכשלה. בדקו את החיבור ונסו שוב.`)}
-        {loadError.kept && <> {L('Your unsaved work on this election is not lost.', 'העבודה שלא נשמרה על הבחירות האלה לא אבדה.')}</>}{' '}
-        <bdi dir="ltr" className="tiny muted">{loadError.message}</bdi></span>
-      {loadError.kind === 'version'
-        ? <button className="btn small" onClick={() => location.reload()}>{L('Reload', 'טעינה מחדש')}</button>
-        : <button className="btn small" onClick={() => (loadError.retry ?? (() => void openElection(loadError.id)))()}>{L('Try again', 'נסו שוב')}</button>}
-      <button className="btn small ghost icon-only" onClick={() => { setState({ loadError: null }); if (!getState().scenario) void openElection('k26'); }} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button>
+      <span className="banner-text">{failedWhy}{' '}<bdi dir="ltr" className="tiny muted">{loadError.message}</bdi></span>
+      {failedRetry}
+      <button className="btn small ghost icon-only" onClick={() => setState({ loadError: null })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button>
     </div>
-  ))(((x) => x ? electionLabel(x, elections, lang) : loadError.id)(elections.find((x) => x.id === loadError.id)));
-  if (!committed || !ds) return <div className="app"><TopBar s={null} r={null} ds={undefined} baseR={null} />{loadBanner || <p style={{ padding: 20 }} className="muted">{L('Loading election data…', 'טוען נתוני בחירות…')}</p>}</div>;
+  );
+  if (!committed || !ds) return <div className="app"><TopBar s={null} r={null} ds={undefined} baseR={null} />{loadError
+    ? <main className="work"><section className="panel load-failed" role="alert" aria-labelledby="load-failed-title">
+        <h2 id="load-failed-title">{L(`${failedName} could not be loaded`, `הבחירות ${failedName} לא נטענו`)}</h2>
+        <p>{failedWhy}</p>
+        <p className="tiny muted"><bdi dir="ltr">{loadError.message}</bdi></p>
+        <div className="row">{failedRetry}
+          {/* the election list in the top bar: another election only when the reader picks one */}
+          <button className="btn small ghost" onClick={() => document.querySelector<HTMLButtonElement>('.band .election-navigation .choice-trigger')?.click()}>{L('Open another election', 'פתיחת בחירות אחרות')}</button></div>
+      </section></main>
+    : <p style={{ padding: 20 }} className="muted">{L('Loading election data…', 'טוען נתוני בחירות…')}</p>}</div>;
 
   // the board shows a live preview while a slider is dragged; tools and history use the committed scenario
   const s = preview ?? committed;

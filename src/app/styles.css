@@ -122,6 +122,11 @@ input, textarea { caret-color: var(--focus); }
 .banner.err { background: var(--err-bg); }
 .banner.note { background: var(--surface-2); } /* not .info: that class styles the (i) popover and would shrink banner buttons to icon size */
 .banner > .banner-text { flex: 1 1 14rem; min-inline-size: 0; } /* a dismiss button stays beside the text */
+/* an election that could not be loaded with nothing open: the whole page is the message (App.tsx) */
+.load-failed { max-inline-size: 40rem; margin: 32px auto; padding: 20px 24px; border-inline-start: 4px solid var(--bad); background: var(--err-bg); }
+.load-failed h2 { margin: 0 0 8px; font-size: 18px; }
+.load-failed p { margin: 0 0 8px; }
+.load-failed .row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 /* One fixed line, present from the start: edits never change its height (no page jump); overflow scrolls sideways
    behind a trailing fade, and History is a popover. Sticky under the tools strip on desktops (beside the sticky lists and panel). */
 .session { background: var(--surface); border-block-end: 1px solid var(--rule); padding: 0 16px; display: flex; align-items: center; flex-wrap: nowrap; gap: 14px; font-size: 13.5px; block-size: 41px; box-sizing: border-box; white-space: nowrap; }
@@ -1092,6 +1097,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .election-dialog { inline-size: min(520px, calc((100vw - 24px) / var(--text-zoom, 1))); padding-block-start: 0; }
 .timeline-search { display: flex; gap: 8px; position: sticky; inset-block-start: 0; z-index: 1; padding-block: 12px 6px; background: var(--surface); }
 .timeline-search input { min-inline-size: 0; flex: 1; }
+.election-index-failed { margin: 0 0 8px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .election-row .choice-option { gap: 12px; }
 .election-row .result-preview { inline-size: 100px; block-size: 10px; }
 .election-current-mark { inline-size: 12px; }
