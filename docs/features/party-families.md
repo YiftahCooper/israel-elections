@@ -50,15 +50,26 @@ Both the chart and table remain keyboard-operable. There is no animation.
 
 One short definition line and a quiet sourced-draft label replace repeated headings.
 The info button opens the full definition, sources and limitations on demand. Mixed
-lists (family + other parties) use Show hatched / Count if family heads it / Count all /
+lists (family + other parties) use Estimate by seats / Count if family heads it / Count all /
 Leave out next to the charts, each with the mark it produces on the chart. It is a
 per-family view remembered in this browser, not a membership edit, so it never forks.
 Hover reports without taking the pointer or loading anything (list names and mixed-list
 compositions are in the compact runtime): the change since the previous election, the
-counted lists, and each hatched list with the family's own parties in bold.
-Under Separate the line shows whole lists only and a hatched bar stacked on it shows how
-far mixed lists could add (one legend states this once); an election where the family
-ran only inside mixed lists breaks the line instead of plotting zero. Lists left out by
+counted lists, and each mixed list with the family's own parties in bold.
+Under Estimate by seats (the default, 19 Nov 2026: the owner's Design 2) the solid line is
+an estimate: whole lists count in full and each mixed list adds its votes in proportion to
+the family's own elected members on it (Likud 2013: 20 of Likud Yisrael Beiteinu's 31
+seats, so 20/31 of its votes). A mixed list that won no seat adds nothing to it. A dashed
+line counts every mixed list whole, and the gap between the two is shaded: the real
+figure lies in it. One legend names the three marks, with the rule behind its (i). The
+line no longer breaks where the family ran only inside mixed lists. Stripes on Party
+families mean partners' seats only.
+
+A list counts as mixed only when one of its elected members is from outside the family,
+or when it won no seat; when every elected member is the family's own, the whole list
+counts (19 Nov 2026; enforced by `scripts/validate-families.ts`). Likud with Ahi (2009)
+therefore counts whole, as do the Union of Right-Wing Parties (April 2019) and Religious
+Zionism (2022) in the families where every elected member was their own. Lists left out by
 Exclude, by the user or as contested read "not counted", never "did not contest". Axis
 ticks are round values and decades (every 20 years on phones);
 with grouping and Edit membership beside them. Editing still forks a built-in.

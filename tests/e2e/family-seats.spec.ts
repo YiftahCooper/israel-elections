@@ -70,7 +70,7 @@ test('election breakdown: the family’s seats and their change are the seats ch
  await start(page,'en','expert');await only(page,'Likud lineage');
  const group=page.getByRole('group',{name:'Mixed-list policy',exact:true}),dialog=page.getByRole('dialog',{name:'Election breakdown',exact:true});
  const own=async(i:number)=>{const m=(await bar(page,i).getAttribute('aria-label'))!.match(/ · (\d+) seats?(?: · |$)/)??(await bar(page,i).getAttribute('aria-label'))!.match(/ · (1) seat(?: · |$)/);return m?Number(m[1]):null;};
- for(const policy of ['Count all','Show hatched','Count if family heads it','Leave out']){
+ for(const policy of ['Count all','Estimate by seats','Count if family heads it','Leave out']){
   await group.getByRole('button',{name:policy,exact:true}).click();
   let before:number|null=null;
   for(let i=0;i<26;i++){
