@@ -41,6 +41,8 @@ export interface FamilyBundle {
   registry: Registry; lineage: { sources: Sources; edges: Edge[]; pending?: Pending[] }; families: Family[];
   datasets: Record<string, ElectionDataset>; hashes: Record<string, string>;
 }
+/** Foreign government and parliament papers are no authority on where an Israeli party stands (decided 19 Nov 2026). */
+const FOREIGN_GOVERNMENT = /congressional research service|everycrsreport\.com|crsreports\.congress\.gov|state\.gov|commonslibrary\.parliament\.uk/i;
 function check(value: unknown, message: string): asserts value { if (!value) throw new Error(message); }
 const hash = (raw: string) => createHash('sha256').update(raw).digest('hex');
 export function readFamilyBundle(root = process.cwd()): FamilyBundle {
@@ -110,6 +112,7 @@ export function validateFamilies(bundle: FamilyBundle): void {
       check(d.lists.reduce((s, l) => s + BigInt(l.votes), 0n) === valid, `${d.id}: vote reconciliation`);
       const seen = new Set<string>(); let core = 0n, included = 0n, mixed = 0n;
       for (const m of r.members) {
+        for (const id of m.classificationEvidence.sourceIds) check(!FOREIGN_GOVERNMENT.test(`${f.sources[id]?.url ?? ''} ${(f.sources[id] as { publisher?: string } | undefined)?.publisher ?? ''}`), `${m.listId}: a foreign government paper is not a basis for a family placement (${id})`);
         check(!seen.has(m.listId), `${f.id}: duplicate list ${m.listId}`); seen.add(m.listId);
         const index = d.lists.findIndex(l => l.id === m.listId), l = d.lists[index];
         check(l, `unknown list ${m.listId}`);
@@ -120,7 +123,15 @@ export function validateFamilies(bundle: FamilyBundle): void {
         const actual = appearances.get(`${d.id}/${m.listId}`)!;
         for (const id of [...m.partyIds, ...m.proposedPartyIds]) { party(id); check(actual.has(canonical(id)), `${m.listId}: party not on ballot ${id}`); }
         const selected = new Set(m.partyIds.map(canonical));
-        if ([...actual].some(id => !selected.has(id))) check(m.treatment === 'separate-segment', `${m.listId}: cross-family list must be mixed`);
+        // A list shared with a party outside the family is mixed when one of its elected members is from outside the
+        // family, or when it won no seat (no member to judge by); when every elected member is the family's own, the
+        // whole list counts (decided 19 Nov 2026).
+        if ([...actual].some(id => !selected.has(id))) {
+          const seats = d.officialSeats?.[l.id] ?? 0, elected = l.candidates.filter(c => !c.notSeated).slice(0, seats);
+          const outsideMember = seats === 0 || elected.length < seats || elected.some(c => !c.partyId || !selected.has(canonical(c.partyId)));
+          check(m.treatment === (outsideMember ? 'separate-segment' : 'include'), `${m.listId}: cross-family list must be ${outsideMember ? 'mixed' : 'whole (no elected member from outside the family)'}`);
+          check(outsideMember === (m.scope === 'mixed'), `${m.listId}: mixed scope`);
+        }
         check(m.constituentVotes === null, `${m.listId}: invented constituent votes`);
         refs(m.classificationEvidence.sourceIds, f.sources);
         check(m.classificationEvidence.status && m.classificationEvidence.claim, `${m.listId}: evidence missing`);

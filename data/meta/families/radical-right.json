@@ -3205,8 +3205,8 @@
             "eretz-yisrael-shelanu"
           ],
           "proposedPartyIds": [],
-          "scope": "mixed",
-          "treatment": "separate-segment",
+          "scope": "core",
+          "treatment": "include",
           "identityEvidence": {
             "status": "observed-local-dataset",
             "locator": "public/data/k25.json#/lists/1"
@@ -3218,9 +3218,9 @@
               "radical",
               "noam-hardal"
             ],
-            "claim": "Placed here by this project, from the sources below. Some of its parties are outside this family, so it is a mixed list.",
+            "claim": "Placed here by this project, from the sources below. Some of its parties are outside this family, but none of their candidates was elected, so the whole list counts.",
             "projectReading": "proposal",
-            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. חלק ממפלגותיה אינן במשפחה הזאת, ולכן זו רשימה מעורבת."
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. חלק ממפלגותיה אינן במשפחה הזאת, אבל איש ממועמדיהן לא נבחר, ולכן הרשימה כולה נספרת."
           },
           "constituentVotes": null
         }
@@ -3228,28 +3228,28 @@
       "reviewCandidates": [],
       "computed": {
         "coreOnly": {
-          "votes": 0,
-          "percent": {
-            "numerator": 0,
-            "denominator": 4764742
-          },
-          "displayPct": 0.0
-        },
-        "includedUnmixed": {
-          "votes": 0,
-          "percent": {
-            "numerator": 0,
-            "denominator": 4764742
-          },
-          "displayPct": 0.0
-        },
-        "mixedWholeLists": {
           "votes": 516470,
           "percent": {
             "numerator": 51647000,
             "denominator": 4764742
           },
           "displayPct": 10.839412
+        },
+        "includedUnmixed": {
+          "votes": 516470,
+          "percent": {
+            "numerator": 51647000,
+            "denominator": 4764742
+          },
+          "displayPct": 10.839412
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 4764742
+          },
+          "displayPct": 0.0
         },
         "wholeListInclusionAlternative": {
           "votes": 516470,

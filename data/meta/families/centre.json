@@ -543,17 +543,6 @@
       "accessed": "2026-11-12",
       "support": "Party affiliation (השתייכות מפלגתית) of every candidate on list רק: of the 12 elected, places 2, 4, 6, 9 and 12 were nominated by Yesh Atid and places 1, 3, 5, 7, 8, 10 and 11 by Together (Bennett). Retained copy: data/raw/k26/yp15023-candidates.pdf.",
       "publisherHe": "רשומות, ילקוט הפרסומים 15023, 13 באוקטובר 2026, עמ׳ 863–866 (עותק ציבורי)"
-    },
-    "crs-in12751": {
-      "url": "https://www.everycrsreport.com/files/2026-10-30_IN12751_9721e1fb9efa295a5078f5461d9b952ec1254e8a.pdf",
-      "publisher": "Congressional Research Service (Jim Zanotti), Insight IN12751, 30 October 2026",
-      "kind": "secondary",
-      "accessed": "2026-11-16",
-      "support": "p. 1: the bloc of 48 seats was “led by the centrist Yashar party headed by Gadi Eisenkot”. An independent analysis placing Yashar in the centre; it names no family for Yashar's partner Yesodot Yisrael.",
-      "retrieval": {
-        "status": 200,
-        "sha256": "21b9e48f1d34d8c469fdf14767d413486b1bea9d536c12ed2651ef3d6eb765d1"
-      }
     }
   },
   "elections": [
@@ -3621,36 +3610,50 @@
             "locator": "public/data/k26.json#/lists/5"
           },
           "classificationEvidence": {
-            "status": "documented",
+            "status": "inferred",
             "sourceIds": [
-              "crs-in12751",
-              "k26"
+              "k26",
+              "centre"
             ],
-            "claim": "An independent analysis (the US Congressional Research Service) calls Yashar! (Eisenkot) a centrist party. The sources found place its partner, Yesodot Yisrael, in no family, so this is a mixed list.",
-            "claimHe": "ניתוח בלתי תלוי (שירות המחקר של הקונגרס האמריקאי) מכנה את ישר! (איזנקוט) מפלגת מרכז. המקורות שנמצאו אינם משבצים את שותפתה, יסודות ישראל, באף משפחה, ולכן זו רשימה מעורבת."
+            "claim": "Placed here by this project, from the sources below. Its partner, Yesodot Yisrael, is placed in no family, so this is a mixed list.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. שותפתה, יסודות ישראל, אינה משובצת באף משפחה, ולכן זו רשימה מעורבת."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "26-די",
+          "letters": "די",
+          "nameHe": "המילואימניקים והכלכלית בראשות יועז הנדל וירון זליכה",
+          "votes": 155199,
+          "partyIds": [
+            "reservists"
+          ],
+          "datasetPartyIds": [
+            "reservists",
+            "new-economic"
+          ],
+          "proposedPartyIds": [],
+          "scope": "mixed",
+          "treatment": "separate-segment",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k26.json#/lists/11"
+          },
+          "classificationEvidence": {
+            "status": "inferred",
+            "sourceIds": [
+              "k26",
+              "centre"
+            ],
+            "claim": "Placed here by this project, from the sources below. The Reservists (Yoaz Hendel) count as this family’s party; their partner, the New Economic Party (Yaron Zelekha), is placed in no family, so this is a mixed list. The list won no seat.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. המילואימניקים (יועז הנדל) נספרים כמפלגת המשפחה; שותפתם, המפלגה הכלכלית החדשה (ירון זליכה), אינה משובצת באף משפחה, ולכן זו רשימה מעורבת. הרשימה לא זכתה במנדט."
           },
           "constituentVotes": null
         }
       ],
       "reviewCandidates": [
-        {
-          "listId": "26-די",
-          "nameHe": "המילואימניקים והכלכלית בראשות יועז הנדל וירון זליכה",
-          "votes": 155199,
-          "partyIds": [
-            "reservists",
-            "new-economic"
-          ],
-          "treatment": "exclude-pending-or-contested",
-          "evidenceStatus": "unresolved",
-          "sourceIds": [
-            "k26",
-            "centre"
-          ],
-          "reason": "Not counted: whether this list belongs here is still being checked.",
-          "projectReading": "proposal",
-          "reasonHe": "לא נספרת: עדיין בודקים אם הרשימה שייכת למשפחה הזאת."
-        },
         {
           "listId": "26-כן",
           "nameHe": "כחול לבן בראשות בני גנץ",
@@ -3687,20 +3690,20 @@
           "displayPct": 0.0
         },
         "mixedWholeLists": {
-          "votes": 1445647,
+          "votes": 1600846,
           "percent": {
-            "numerator": 144564700,
+            "numerator": 160084600,
             "denominator": 5691426
           },
-          "displayPct": 25.400436
+          "displayPct": 28.127327
         },
         "wholeListInclusionAlternative": {
-          "votes": 1445647,
+          "votes": 1600846,
           "percent": {
-            "numerator": 144564700,
+            "numerator": 160084600,
             "denominator": 5691426
           },
-          "displayPct": 25.400436
+          "displayPct": 28.127327
         },
         "mixedHarediVotes": null,
         "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
