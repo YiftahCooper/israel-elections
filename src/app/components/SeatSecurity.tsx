@@ -113,6 +113,12 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
   const unknown = shown.some((f) => f.value === null && !f.exact && f.reason !== 'infeasible' && f.reason !== 'already');
   const bounded = shown.some((f) => f.value === null && f.exact && f.reason === 'limit');
   const tied = shown.some((f) => f.exact && f.lotteryFrom !== undefined);
+  // the * line in full (owner, 19 Nov 2026), by the law of the election: from 1973 (and in 1949) the Central Elections
+  // Committee draws lots; 1951–1969 had no rule. "One vote fewer" only when that is so for every starred figure here.
+  const oneBefore = shown.filter((f) => f.exact && f.lotteryFrom !== undefined).every((f) => f.value !== null && f.lotteryFrom === f.value - 1);
+  const tieLine = (oneBefore ? L('* One vote fewer than the figure ties with another list for this seat', '* בקול אחד פחות מהמספר יש שוויון עם רשימה אחרת על המנדט הזה')
+    : L('* Fewer votes than the figure already tie with another list for this seat (point at it for the count)', '* כבר בפחות קולות מהמספר יש שוויון עם רשימה אחרת על המנדט הזה (הצביעו עליו לראות ממתי)'))
+    + (policy === 'unspecified' ? L('; the law of the time set no rule for a tie.', '; החוק של אז לא קבע כלל לשוויון.') : L('; the Central Elections Committee then decides by lot.', '; ועדת הבחירות המרכזית מכריעה אז בהגרלה.'));
 
   const tightest = busy ? [] : above
     .filter((x) => x.item.seats > 0 && fig(x.l.id, 'gain')?.exact && fig(x.l.id, 'lose')?.exact)
@@ -190,8 +196,8 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
       )}
       {(sampled || unknown || bounded || tied) && (
         <p className="small muted" style={{ marginBottom: 0 }}>
-          {[tied && (policy === 'unspecified' ? L('* fewer votes could already tie for the seat (no rule in the law)', '* כבר בפחות קולות ייתכן שוויון על המנדט (אין לו כלל בחוק)') : L('* fewer votes could already tie for the seat (decided by lot)', '* כבר בפחות קולות ייתכן שוויון על המנדט (מוכרע בהגרלה)')),
-            sampled && L('≤ found by sampling', '≤ נמצא בדגימה'), bounded && L('> none within the search limit', '> לא נמצא בגבול החיפוש'), unknown && L('? sampling found none', '? הדגימה לא מצאה')].filter(Boolean).join(' · ')}
+          {tied && <>{tieLine}{(sampled || bounded || unknown) && <br />}</>}
+          {[sampled && L('≤ found by sampling', '≤ נמצא בדגימה'), bounded && L('> none within the search limit', '> לא נמצא בגבול החיפוש'), unknown && L('? sampling found none', '? הדגימה לא מצאה')].filter(Boolean).join(' · ')}
         </p>
       )}
     </div>
@@ -294,7 +300,8 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
       <span className="maj" style={{ insetInlineStart: `${(majority / total) * 100}%` }}>{big && <em>{majority}</em>}</span>
     </div>
   );
-  /** "56 members + 5 outside support = 61", each term keyed to its bar pattern (only when roles beyond members
+  /** "56 members + 5 outside support = 61" (the roles' seats: an MK voting apart changes the votes for, not this sum),
+   *  each term keyed to its bar pattern (only when roles beyond members
    *  exist), then both tests with ✓/✗ and words: the confidence vote (more for than against) and the 61
    *  majority in the app's usual "n / 120 · above 61" form. */
   const Vote = ({ ids }: { ids: string[] }) => {
@@ -302,7 +309,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     const term = (cls: string, n: number, what: string) => <span className="coal-term"><i className={`coal-key ${cls}`} aria-hidden /><b>{n}</b> {what}</span>;
     const mark = (ok: boolean) => <><span className="coal-mark" aria-hidden>{ok ? '✓' : '✗'}</span><span className="sr-only">{ok ? L('Yes: ', 'כן: ') : L('No: ', 'לא: ')}</span></>;
     return <div className="coal-vote">
-      {(support > 0 || abstain > 0) && <span className="coal-sum">{term('', v.members, roleNames.in[2])}{support > 0 && <> + {term('coal-support', support, roleNames.support[2])} <span className="coal-part">= <b>{v.votesFor}</b></span></>}</span>}
+      {(support > 0 || abstain > 0) && <span className="coal-sum">{term('', v.members, roleNames.in[2])}{support > 0 && <> + {term('coal-support', support, roleNames.support[2])} <span className="coal-part">= <b>{v.members + support}</b></span></>}</span>}
       {abstain > 0 && <span className="coal-sum">{term('coal-abstain', abstain, abstain === 1 ? L('abstaining', 'נמנע') : roleNames.abstain[2])}</span>}
       {v.apart > 0 && <span className="coal-sum coal-apart-sum">{L(`${v.apart} ${v.apart === 1 ? 'MK votes' : 'MKs vote'} apart from their list`, v.apart === 1 ? 'חבר כנסת אחד מצביע בנפרד מרשימתו' : `${v.apart} חברי כנסת מצביעים בנפרד מרשימתם`)}</span>}
       <span className="coal-tests">
