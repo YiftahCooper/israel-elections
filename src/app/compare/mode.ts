@@ -128,8 +128,9 @@ export function useReference(work: Scenario | null): ReferenceState {
   return state;
 }
 
-/** Turns comparing on: the previous election (Settings → Compare with can make it the official result once you have
- *  changed something). Not an undo step. */
+/** Turns comparing on: once the work has a tangible edit, this election's official result, so you see what your edits
+ *  did; unedited, the previous election (owner, 19 Nov 2026). Settings → Compare with: "Previous election" keeps the
+ *  previous election either way. Not an undo step. */
 export function startComparing() {
   const st = getState();
   const s = st.scenario;

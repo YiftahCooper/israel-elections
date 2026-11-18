@@ -47,6 +47,8 @@ export interface SettingValues {
   hoverPreviews: boolean;
   communityScenarios: boolean;
   compareWith: 'previous' | 'official';
+  /** false: a one-list copy with a default method and source happens at once (the box's "Don't ask again") */
+  copyAskEachTime: boolean;
   optionPreviews: boolean;
   turnoutHistoryLine: boolean;
   textSize: 'normal' | 'large';
@@ -158,6 +160,9 @@ export const SETTINGS: readonly SettingRow[] = [
   { id: 'copyMode', group: 'editing', control: 'choice', min: 'standard', label: ['Copy votes: default method', 'העתקת קולות: שיטת ברירת המחדל'],
     info: ['Where the Copy votes box starts. Eligible voters: the same share of everyone entitled to vote. Valid votes: the same share of the votes cast. Number: the same count. Ask: no default, the box starts on eligible voters. Simple offers eligible voters only.', 'מאיפה מתחיל חלון העתקת הקולות. בעלי זכות בחירה: אותו חלק מכל מי שזכאי להצביע. קולות כשרים: אותו חלק מהקולות שהוטלו. מספר: אותו מספר קולות. לשאול: אין ברירת מחדל, והחלון מתחיל בבעלי זכות הבחירה. ברמה הבסיסית מוצגים בעלי זכות הבחירה בלבד.'],
     synonyms: 'copy compare share count eligible registered elections ask default remember העתקה השוואה שיעור מספר בעלי זכות בחירה בחירות לשאול ברירת מחדל זכירה' },
+  { id: 'copyAskEachTime', group: 'editing', control: 'toggle', min: 'standard', feature: 'compare', label: ['Copy votes: ask each time', 'העתקת קולות: לשאול בכל פעם'],
+    info: ['On: every copy opens the Copy votes box. Off: copying one list happens at once, with your default method and source; Undo takes it back. The box’s “Don’t ask again” turns this off.', 'פעיל: כל העתקה פותחת את חלון העתקת הקולות. כבוי: העתקה של רשימה אחת מתבצעת מיד, בשיטה ובמקור שקבעתם כברירת מחדל; ביטול מחזיר אותה. „לא לשאול שוב” בחלון מכבה את זה.'],
+    synonyms: 'copy compare ask again default box dialog העתקה השוואה לשאול שוב ברירת מחדל חלון' },
   { id: 'confirmStartOver', group: 'editing', control: 'toggle', min: 'simple', label: ['Confirm start over', 'אישור לפני התחלה מחדש'],
     info: ['Asks before clearing all changes. Undo can always restore them.', 'שאלה לפני מחיקת כל השינויים. תמיד אפשר לשחזר עם ביטול.'], synonyms: 'reset confirm start over dialog איפוס אישור התחלה' },
   { id: 'hoverPreviews', group: 'editing', control: 'toggle', min: 'standard', label: ['Hover previews', 'תצוגה מקדימה בריחוף'],
@@ -166,8 +171,8 @@ export const SETTINGS: readonly SettingRow[] = [
     info: ['Loads the community list on the Scenarios page. Off: your own saves and links only.', 'טעינת רשימת הקהילה בעמוד התרחישים. כבוי: רק השמירות והקישורים שלכם.'], synonyms: 'gallery community shared network גלריה קהילה רשת' },
 
   { id: 'compareWith', group: 'analysis', control: 'seg', min: 'standard', feature: 'compare', label: ['Compare with', 'השוואה עם'],
-    info: ['What Compare shows on the other side when it opens. You can change it there.', 'מה מוצג בצד השני כשההשוואה נפתחת. אפשר לשנות שם.'],
-    options: [o('previous', 'Previous election', 'הבחירות הקודמות'), o('official', 'Official result', 'התוצאה הרשמית')], synonyms: 'compare comparison previous official השוואה קודמות רשמית' },
+    info: ['What Compare opens on. Official result once edited: the previous election until you change something, then this election’s official result, so you see what your changes did. Previous election: always that. You can switch in Compare.', 'במה ההשוואה נפתחת. התוצאה הרשמית אחרי עריכה: הבחירות הקודמות עד שמשנים משהו, ואז התוצאה הרשמית של הבחירות האלה, כדי לראות מה עשו השינויים. הבחירות הקודמות: תמיד הן. אפשר להחליף בתוך ההשוואה.'],
+    options: [o('official', 'Official result once edited', 'התוצאה הרשמית אחרי עריכה'), o('previous', 'Previous election', 'הבחירות הקודמות')], synonyms: 'compare comparison previous official השוואה קודמות רשמית' },
   { id: 'optionPreviews', group: 'analysis', control: 'toggle', min: 'standard', label: ['Option previews', 'תצוגה מקדימה באפשרויות'],
     info: ['Small seat charts beside choices such as groupings. Off: names only, faster on slow phones.', 'תרשימי מושבים קטנים ליד אפשרויות כמו חלוקות. כבוי: שמות בלבד, מהיר יותר בטלפונים איטיים.'], synonyms: 'thumbnails mini charts previews תמונות ממוזערות תרשימים' },
   { id: 'turnoutHistoryLine', group: 'analysis', control: 'toggle', min: 'expert', feature: 'turnout', label: ['Turnout line on Turnout', 'קו שיעור ההצבעה בעמוד ההצבעה'],
@@ -212,7 +217,7 @@ export function settingDefault<K extends SettingId>(id: K, level: Preset): Setti
     listOrder: 'seats', voteCounts: level !== 'simple', lastTimeRows: false, compareBars: true, allCandidates: false,
     chamberLayout: 'hemicycle', seatColour: 'list', blocShading: true, referenceChamber: true, chamberKey: true, dimUnselected: true,
     decimals: level === 'expert' ? 3 : level === 'standard' ? 2 : 1, splitWarning: true,
-    confirmStartOver: true, hoverPreviews: true, communityScenarios: true, compareWith: 'previous', optionPreviews: true, turnoutHistoryLine: true,
+    confirmStartOver: true, hoverPreviews: true, communityScenarios: true, compareWith: 'official', copyAskEachTime: true, optionPreviews: true, turnoutHistoryLine: true,
     textSize: 'normal', reduceMotion: false, hoverPopups: true, preferTables: false, keepMessages: false,
     timelineSeatChanges: level === 'simple' ? 'off' : level === 'standard' ? 'important' : 'all', seatStepsNorwegian: true, seatStepsLeft: true, seatStepsUnrecorded: true,
     mapLines: true, mapLinesOff: NO_LINES_OFF,

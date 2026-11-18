@@ -47,6 +47,10 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   const jointListParties = useSetting('jointListParties');
   // while comparing (compare/mode.ts): every list's line in the reference, and its striped bar unless Settings turns it off
   const cmp = useRefRows(s);
+  // while comparing, a row's only seat change is the comparison line's, which names what it compares with; the mark
+  // under the seats and the bar's change segment (both against this election's official result, or the scenario
+  // opened) are hidden, so a row never shows two changes against two different things (owner, 19 Nov 2026)
+  const comparing = !!useStore((st) => st.comparing);
   const refBars = useSetting('compareBars') && !!cmp;
   const elections = useStore((st) => st.elections);
   const committed = useStore(st => st.scenario);
@@ -121,7 +125,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   const row = ({ l, lr, was }: (typeof rows)[number]) => {
     const family = familyRows.find(x => x.id === l.id)?.family;
     const open = selected === l.id;
-    const d = was === null ? 0 : lr.seats - was;
+    const d = was === null || comparing ? 0 : lr.seats - was;
     const agr = marks ? s.agreements.find((a) => a.members.includes(l.id) && a.enabled) : undefined;
     const partner = agr ? s.lists.find((x) => x.id === agr.members.find((m) => m !== l.id)) : undefined;
     const out = !lr.qualified;
@@ -144,7 +148,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
                 ? <><i className="thr-fill" style={{ width: `${Math.min(100, (l.votes / Math.max(1, thr)) * 100)}%`, background: l.color }} /><span className="thr-tick" /></>
                 : <><i style={{ width: `${(lr.seats / scale) * 100}%`, background: barFill(l) }} />{d !== 0 && <span className="delta-segment" style={{ insetInlineStart: `${(Math.min(lr.seats, was ?? 0) / scale) * 100}%`, width: `${(Math.abs(d) / scale) * 100}%` }} />}{d !== 0 && <span className="was" style={{ width: `${((was ?? 0) / scale) * 100}%` }} />}</>}
             </span>
-            {out && (was ?? 0) > 0 && <span className="lb-bar" aria-hidden title={baseLabel.seats}>
+            {out && !comparing && (was ?? 0) > 0 && <span className="lb-bar" aria-hidden title={baseLabel.seats}>
               <span className="was" style={{width:`${(was ?? 0)/scale*100}%`}} />
               <span className="delta-segment" style={{insetInlineStart:0,width:`${(was ?? 0)/scale*100}%`}} />
             </span>}
