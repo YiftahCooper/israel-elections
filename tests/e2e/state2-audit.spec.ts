@@ -52,7 +52,8 @@ for (const lang of ['en', 'he'] as const) test(`c-robustness-11: last visit's wo
   let down = true;
   await page.route('**/data/k25.json', (route) => (down ? route.fulfill({ status: 503, body: '' }) : route.continue()));
   await page.goto('/');
-  const banner = page.locator('.banner.err');
+  // the visit's first election failed: the error screen alone, nothing in its place
+  const banner = page.locator('.load-failed');
   await expect(banner).toContainText(lang === 'en' ? 'Your unsaved work on this election is not lost.' : 'העבודה שלא נשמרה על הבחירות האלה לא אבדה.');
   if (OUT) await banner.screenshot({ path: `${OUT}/chk-startup-kept-${lang}.png` });
   await page.waitForTimeout(600);

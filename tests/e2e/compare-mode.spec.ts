@@ -62,6 +62,9 @@ test('Swap makes 2022 your work and keeps 2026 as an unsaved draft; Swap again b
   await page.keyboard.press('Escape');
   await expect(page.locator('.lb-row').first()).toContainText('29');
   await turnOn(page);
+  // edited work opens on this election's official result; compare with 2022 for the swap
+  await expect(picker(page)).toHaveAttribute('data-value', 'official');
+  await choose(picker(page), 'prev');
   await strip(page).getByRole('button', { name: 'Swap', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Election', exact: true })).toContainText('2022');
   await expect(page.locator('.lb-row').first()).toContainText('Likud');
@@ -183,13 +186,13 @@ test('Copy votes at Simple is one sentence; at Expert the two edit-copying metho
   await expect(methods.nth(3)).toContainText('Only when 2022 was edited');
 });
 
-test('Copy votes for every list from the top of the Lists panel; Always makes the method the default', async ({ page }) => {
+test('Copy votes for every list from the top of the Lists panel; Set as default makes the method the default', async ({ page }) => {
   await start(page);
   await turnOn(page);
   await page.locator('.cmpm-copy-all').click();
   await expect(box(page).locator('.cmpm-copy-ticks input')).not.toHaveCount(0);
   await box(page).getByRole('radio', { name: /Same number of votes/ }).check();
-  await box(page).getByRole('radio', { name: 'Always' }).check();
+  await box(page).getByRole('radio', { name: 'Set as default' }).check();
   await box(page).getByRole('button', { name: 'Copy into 2026' }).click();
   await expect(page.locator('.toast, [role="status"]').filter({ hasText: 'Votes copied from 2022 for' }).first()).toBeVisible();
   // one step: Undo puts every list back
