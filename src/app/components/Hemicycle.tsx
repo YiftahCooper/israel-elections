@@ -15,7 +15,8 @@ import { changedSeatKeys } from '../graphics.ts';
 import { useGraphicReference } from '../useGraphicReference.ts';
 import { useDisclosure } from './Feature.tsx';
 import { BlocMajorities } from './Majority.tsx';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
+import { LangLabel, nameProps } from './LangLabel.tsx';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
 import { allocationOf, listLabel, methodOf, seatBlocsOf, seatedOrder, seatCandidate, candidateName, memberNameGivenFirst, referenceLabel, comparisonGroups, groupingLabel, majorityText } from '../derive.ts';
@@ -368,9 +369,10 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     </g>;
   };
   /** a seat as one keyboard control: the tab stop moves with the arrow keys (see onSeatKey) */
+  const seatId = useId();
   const seatButton = (i: number) => ({
     'data-seat-pos': i, className: 'seat-btn', role: 'button', tabIndex: i === Math.min(stop, seats.length - 1) ? 0 : -1,
-    'aria-label': seatNames[i], 'aria-haspopup': 'dialog' as const, 'aria-expanded': hover?.seat === seats[i],
+    ...nameProps(seatNames[i], lang, `${seatId}-${i}`), 'aria-haspopup': 'dialog' as const, 'aria-expanded': hover?.seat === seats[i],
     onKeyDown: (e: React.KeyboardEvent<SVGGElement>) => onSeatKey(e, i), onFocus: (e: React.FocusEvent<SVGGElement>) => { setStop(i); setRing(e.currentTarget.matches(':focus-visible') ? i : null); },
     onBlur: (e: React.FocusEvent) => { setRing(null); onSeatsBlur(e); },
   });
@@ -464,11 +466,13 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       {compactProp && <BlocMajorities s={s} r={r} />}
       {!compactProp && mkEntries.length > 0 && <FindMk entries={mkEntries} query={findQ} onQuery={setFindQ} pick={findPick} onPick={setFindPick} />}
       {body}
+      {/* spoken seat names with a Hebrew name on an English page (or the reverse) are marked with the name's language */}
+      {seatNames.map((n, i) => <LangLabel key={i} id={`${seatId}-${i}`} text={n} />)}
       {/* the card comes next in the page, so Tab goes from a seat into its card (its links) */}
       {/* the per-list seat changes are said once, in the change line under the tools strip */}
       {hover && hv && (
         <Floating onPointerEnter={hoverBridge.keep} onPointerLeave={hoverBridge.leave} className="tip" preferAbove anchor={() => hover.anchor.getBoundingClientRect()}
-          role="dialog" label={seatNames[seats.indexOf(hover.seat)] ?? seatLabel(hover.seat)}><div ref={card} onBlur={onSeatsBlur}>
+          role="dialog" label={seatNames[seats.indexOf(hover.seat)] ?? seatLabel(hover.seat)} labelledBy={'aria-labelledby' in nameProps(seatNames[seats.indexOf(hover.seat)] ?? '', lang, '') ? `${seatId}-${seats.indexOf(hover.seat)}` : undefined}><div ref={card} onBlur={onSeatsBlur}>
           <div className="row"><Slip {...hv} name={listLabel(hv, lang)} size="sm" /><b>{listLabel(hv, lang)}</b> <span className="muted">({hv.letters})</span></div>
           {cand ? <div><b><CandidateName candidate={cand} text={hoverCandidateName} /></b> · {L('rank', 'מקום')} {candPlace}{cand.notes?.map((n, k) => <div key={k} className="muted small">{lang === 'he' ? n.he : n.en}</div>)}</div>
             : hv.rosterUnavailable || hv.rosterTruncated ? <div className="muted">{L(`Seat ${hover.seat.idx + 1} of the list; candidate names are not available for this election`, `מושב ${hover.seat.idx + 1} של הרשימה; שמות המועמדים אינם זמינים לבחירות אלה`)}</div>

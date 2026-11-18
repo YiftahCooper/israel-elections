@@ -5,7 +5,8 @@ import { MkName } from './MkHistory.tsx';
 import {romanize} from '../../data/names.ts';
 import { StartFrom } from './StartFrom.tsx';
 import { useDisclosure } from './Feature.tsx';
-import { useMemo, useState, type ReactNode } from 'react';
+import { useId, useMemo, useState, type ReactNode } from 'react';
+import { LangLabel, nameProps } from './LangLabel.tsx';
 import { ArrowDown, ArrowUp, Pencil, Plus, X } from 'lucide-react';
 import type { CandidateBio, ElectionDataset } from '../../data/schema.ts';
 import type { SimCandidate, SimList } from '../../model/scenario.ts';
@@ -135,12 +136,13 @@ const safe = (u: string | undefined) => (u && /^https:\/\//.test(u) ? u : undefi
  *  archived from the campaign where possible) and Hebrew Wikipedia (a secondary source). English Wikipedia
  *  is never linked. A "probable" match was made by name under stated rules, not by an official id. */
 function BioLinks({ bio, name }: { bio: CandidateBio; name: string }) {
-  const L = useL();
+  const L = useL(), lang = useLang(), labelId = useId();
   const knesset = safe(bio.knesset), party = safe(bio.party?.url), wiki = safe(bio.hewiki?.url);
   if (!knesset && !party && !wiki) return null;
   const year = bio.party?.archivedAt?.slice(0, 4);
   return (
-    <span className="bio-links tiny" role="group" aria-label={L(`About ${name}`, `על ${name}`)}>
+    <span className="bio-links tiny" role="group" {...nameProps(L(`About ${name}`, `על ${name}`), lang, labelId)}>
+      <LangLabel id={labelId} text={L(`About ${name}`, `על ${name}`)} />
       {knesset && <a href={knesset} target="_blank" rel="noreferrer" title={L('Official member page, Knesset website', 'דף חבר הכנסת הרשמי, אתר הכנסת')}>{L('Knesset', 'הכנסת')}</a>}
       {party && <a href={party} target="_blank" rel="noreferrer" title={L('The party’s own page (partisan)', 'הדף של המפלגה עצמה (מקור מפלגתי)') + (year ? L(`, archived ${year}`, `, ארכיון ${year}`) : '')}>
         {L('Party', 'מפלגה')}{year ? ` ${year}` : ''}</a>}

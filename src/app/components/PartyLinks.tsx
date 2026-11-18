@@ -4,11 +4,13 @@
 import type { PartyLink } from '../../data/schema.ts';
 import { useL, useLang } from '../i18n.ts';
 import { datesInText, formatDate } from '../dateFormat.ts';
+import { useId } from 'react';
+import { LangLabel, nameProps } from './LangLabel.tsx';
 
 const safe = (u: string) => /^https:\/\//.test(u);
 
 export function PartyLinks({ links, name }: { links?: PartyLink[]; name: string }) {
-  const L = useL(); const lang = useLang();
+  const L = useL(); const lang = useLang(); const labelId = useId();
   const ok = (links ?? []).filter((x) => safe(x.url));
   if (!ok.length) return null;
   const label = (x: PartyLink) => {
@@ -31,7 +33,8 @@ export function PartyLinks({ links, name }: { links?: PartyLink[]; name: string 
     x.confidence === 'medium' ? L('probable match', 'התאמה סבירה') : ''].filter(Boolean).join(' · ');
   const group = (kind: PartyLink['kind']) => ok.filter((x) => x.kind === kind);
   return (
-    <span className="party-links tiny" role="group" aria-label={L(`About ${name}`, `על ${name}`)}>
+    <span className="party-links tiny" role="group" {...nameProps(L(`About ${name}`, `על ${name}`), lang, labelId)}>
+      <LangLabel id={labelId} text={L(`About ${name}`, `על ${name}`)} />
       {(['partisan', 'neutral'] as const).map((k) => group(k).length > 0 && (
         <span key={k} className="pl-group">
           <span className="muted">{k === 'partisan' ? L('Partisan:', 'מפלגתי:') : L('Neutral:', 'ניטרלי:')}</span>
