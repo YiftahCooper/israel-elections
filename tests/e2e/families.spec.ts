@@ -122,7 +122,7 @@ test('family aggregates open details without navigating; hover never moves plots
  for(const i of [0,18,25]){await marks.nth(i).hover();expect(await page.locator('.family-plots').evaluate(e=>e.getBoundingClientRect().top)).toBe(top);}
  await marks.nth(18).focus();await page.keyboard.press('Enter');
  const detail=page.getByRole('dialog',{name:'Election breakdown',exact:true});await expect(detail).toBeVisible();
- await expect(detail).toContainText('Likud');await expect(detail).toContainText('Yisrael Beiteinu');await expect(detail).toContainText('885,054');await expect(detail.locator('.family-point-delta')).toContainText('≈−158,051 votes · −6.56 pp · ▼ −7 seats');await expect(detail).not.toContainText('0 counted votes');await expect(detail).toContainText('Since');
+ await expect(detail).toContainText('Likud');await expect(detail).toContainText('Yisrael Beiteinu');await expect(detail).toContainText('885,054');await expect(detail.locator('.family-point-delta')).toContainText('≈−158,051 votes · −6.56 pp · ▼ −7 seats');await expect(detail).not.toContainText('0 counted votes');await expect(detail.locator('.family-point-estimate')).toContainText('Estimate by seats: ≈571,003 · ≈15.06%');await expect(detail).toContainText('Since');
  await expect(page.getByRole('tab',{name:'Party families',exact:true})).toHaveAttribute('aria-selected','true');
  await detail.getByRole('button',{name:'Open this election',exact:true}).click();await expect(page.locator('.family-treatment')).toContainText('Likud lineage');
 });
@@ -226,4 +226,10 @@ test('family sources are named by who published them; the project never cites it
  const art=sheet.locator('.family-point-lists article').filter({has:page.locator('strong',{hasText:/^Moledet$/})});await art.locator('.info button').click();
  const pop=page.locator('.pop').last();await expect(pop).toContainText('Official results, Central Elections Committee');await expect(pop).toContainText('Israel Democracy Institute, Yair Sheleg, 15 October 2020');
  expect(await pop.innerText()).not.toMatch(jargon);
+});
+test('family scale: people who stayed home leave eligible voters alone; new citizens raise them',async({page})=>{
+ await start(page);const scale=page.locator('.family-scale'),pick=scale.getByRole('button',{name:'Votes come from',exact:true});
+ await expect(scale.getByRole('status')).toContainText('Valid total conserved exactly');
+ await choose(pick,'new');await expect(pick).toHaveAttribute('data-value','new');await expect(scale.getByRole('status')).toContainText('Turnout rises; eligible voters unchanged');
+ await choose(pick,'citizens');await expect(pick).toHaveAttribute('data-value','citizens');await expect(scale.getByRole('status')).toContainText('Family votes: 623,349 → 685,684 · Eligible voters +62,335');
 });
