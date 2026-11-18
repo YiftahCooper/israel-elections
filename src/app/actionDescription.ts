@@ -31,7 +31,7 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
       return parts.length ? `${he ? 'קואליציה' : 'Coalition'}: ${parts.join(' · ')}` : (he ? 'בחירת הקואליציה נוקתה' : 'Coalition choices cleared');
     }
     case 'startPart': return `${PARTS[a.part][lang]}: ${a.name ?? (a.source === 'official' ? (he ? 'התוצאה הרשמית' : 'official result') : a.source === 'blank' ? (he ? 'ריק' : 'blank') : (a.source === 'preset' ? (a.part === 'rules' ? (a.presetId && RULESETS[a.presetId] ? ruleEraLabel(RULESETS[a.presetId], lang) : (he ? 'כללים ממקור מתועד' : 'Sourced rules')) : ((g) => g ? groupingName(g, lang) : undefined)(s.blocSchemes?.find(g => g.id === a.presetId)) ?? (he ? 'חלוקה ממקור מתועד' : 'Sourced grouping')) : (he ? 'תרחיש שמור' : 'saved scenario')))}`;
-    case 'setVotes': return he ? `${n(a.listId)}: ${fmtInt(a.votes)} קולות` : `${n(a.listId)}: set to ${fmtInt(a.votes)} votes`;
+    case 'setVotes': return (he ? `${n(a.listId)}: ${fmtInt(a.votes)} קולות` : `${n(a.listId)}: set to ${fmtInt(a.votes)} votes`) + (a.citizens ? (he ? ' (אזרחים חדשים)' : ' (new citizens)') : '');
     case 'transfer': return he ? `העברת ${fmtInt(a.votes)} קולות ${hebrewPrefix('מ', n(a.from))} ${hebrewPrefixName('ל', n(a.to))}` : `Moved ${fmtInt(a.votes)} votes from ${n(a.from)} to ${n(a.to)}`;
     case 'addVoters': { const n = a.allocations.reduce((t, x) => t + x.votes, 0) + a.invalid, k = fmtInt(Math.abs(n)), why = a.label && !a.label.startsWith('[') ? ` (${a.label})` : '';
       return n < 0 ? (he ? `הוסרו ${k} מצביעים${why}` : `Removed ${k} voters${why}`) : he ? `נוספו ${k} מצביעים${why}` : `Added ${k} voters${why}`; }

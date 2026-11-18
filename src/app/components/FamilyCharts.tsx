@@ -65,9 +65,11 @@ function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;m
  const at=historyElections.findIndex(d=>d.id===cursor),color=familyColor(f);
  const num=(v:bigint,e:HistoryElection)=>metric==='share'?<>{percent(v,e.totals.valid,digits)} · {Number(v).toLocaleString('en-US')} {L('votes','קולות')}</>:`${Number(v).toLocaleString('en-US')} ${L('votes','קולות')}`;
  const estOf=(e:HistoryElection)=>est[historyElections.indexOf(e)];
- const estimateText=(e:HistoryElection)=>{const v=estOf(e);if(!v||!(v.high>v.estimate&&v.estimate>v.low))return null;return `${L('Estimate by seats','הערכה לפי מנדטים')}: ${metric==='share'?fmtPctNum(v.estimate*100/e.totals.valid,digits)+' · ':''}${Math.round(v.estimate).toLocaleString('en-US')} ${L('votes','קולות')}`;};
+ const estimated=(e:HistoryElection)=>{const v=estOf(e);return v&&v.high>v.estimate&&v.estimate>v.low?v:null;};
+ const estimateText=(e:HistoryElection)=>{const est=estimated(e);return est?`${L('Estimate by seats','הערכה לפי מנדטים')}: ${metric==='share'?fmtPctNum(est.estimate*100/e.totals.valid,digits)+' · ':''}${Math.round(est.estimate).toLocaleString('en-US')} ${L('votes','קולות')}`:null;};
+ const estimateRich=(e:HistoryElection)=>{const est=estimated(e);return est?<b>{L('Estimate by seats','הערכה לפי מנדטים')}: {metric==='share'&&<>{percentNum(est.estimate*100/e.totals.valid,digits)} · </>}{Math.round(est.estimate).toLocaleString('en-US')} {L('votes','קולות')}</b>:null;};
  const describeRich=(a:Agg,e:HistoryElection)=>{const status=familyStatus(a,L);const parts: React.ReactNode[]=[familyDate(e,lang)];
-  if(status)parts.push(status);const estimate=estimateText(e);if(estimate)parts.push(<b>{estimate}</b>);if(a.votes!==null&&a.status==='observed'&&!onlyMixed(a))parts.push(<>{estimate?L('Whole lists','רשימות שלמות')+': ':''}{num(a.votes,e)}</>);
+  if(status)parts.push(status);const estimate=estimateRich(e);if(estimate)parts.push(estimate);if(a.votes!==null&&a.status==='observed'&&!onlyMixed(a))parts.push(<>{estimate?L('Whole lists','רשימות שלמות')+': ':''}{num(a.votes,e)}</>);
   if(a.mixed)parts.push(<>{onlyMixed(a)?'':L('Mixed lists','רשימות מעורבות')+': '}{num(a.mixed,e)}</>);
   if(a.excluded&&a.status==='observed')parts.push(`${L('Mixed lists left out','רשימות מעורבות שהושמטו')}: ${Number(a.excluded).toLocaleString('en-US')}`);
   const note=reviewNote(a,L);if(note)parts.push(note);

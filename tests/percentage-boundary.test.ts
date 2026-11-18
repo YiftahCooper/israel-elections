@@ -11,6 +11,7 @@ const ALLOWED: { file: string; has: string; why: string }[] = [
   { file: 'Families.tsx', has: ".toFixed(digits):'10')", why: 'the editable text of a number input' },
   { file: 'FamilyCharts.tsx', has: '+v.toFixed(1)}%', why: 'axis ticks: round values, shown in full' },
   { file: 'FamilyCharts.tsx', has: "fmtPct(v,e.totals.valid,digits)+' · '", why: 'aria-label text for a chart point; its tooltip uses Percentage' },
+  { file: 'FamilyCharts.tsx', has: "fmtPctNum(est.estimate*100/e.totals.valid,digits)+' · '", why: 'aria-label text for a chart point (the estimate); its tooltip uses Percentage' },
   { file: 'LocalityMap.tsx', has: 'near.km.toFixed(1)', why: 'a distance, not a percentage' },
   { file: 'LocalityMap.tsx', has: 'fmtPoints(w.margin / Math.max(1, p.row.valid) * 100, digits, true)', why: 'a map hover tooltip (not interactive), never a lead as 0; selecting the dot shows the margin with Percentage' },
   { file: 'Turnout.tsx', has: 'nonZeroFixed(Math.abs(d.change), digits)', why: 'an entered change in the action label, never a change as 0' },

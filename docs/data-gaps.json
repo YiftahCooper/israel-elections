@@ -8,14 +8,14 @@
     "single-source": 2934,
     "low-confidence": 101,
     "release-hold": 0,
-    "inferred": 1173,
-    "pending": 357,
+    "inferred": 1174,
+    "pending": 356,
     "unconfirmed": 193
   },
   "countsByStatus": {
-    "inferred-not-verified": 1034,
+    "inferred-not-verified": 1035,
     "needs-current-status-review": 319,
-    "open": 11062
+    "open": 11061
   },
   "countsByImportance": {
     "high": {
@@ -35,9 +35,9 @@
       "unknown": 2422,
       "placements": {
         "scholarship": 103,
-        "project": 385,
+        "project": 386,
         "disputed": 15,
-        "not-checked": 85
+        "not-checked": 84
       }
     },
     "low": {
@@ -88,7 +88,7 @@
   },
   "familyPlacements": {
     "scholarship": 85,
-    "project": 381,
+    "project": 382,
     "disputed": 1,
     "not-checked": 0
   },
@@ -556,8 +556,8 @@
         "single-source": 143,
         "low-confidence": 6,
         "release-hold": 0,
-        "inferred": 102,
-        "pending": 31,
+        "inferred": 103,
+        "pending": 30,
         "unconfirmed": 0
       }
     },
@@ -778,7 +778,7 @@
     {"election":"cross-election","area":"data/research/round7/history-display.json partyNames","count":1,"certainty":{"probable":1}},
     {"election":"cross-election","area":"data/research/round7/knesset/README.md","count":1,"certainty":{"unknown":1}},
     {"election":"cross-election","area":"data/research/round7/reader-text-rest/idi-titles-before-after.json record","count":1,"certainty":{"unknown":1}},
-    {"election":"k26","area":"Family classifications","count":85,"certainty":{"unknown":45},"placements":{"project":22,"disputed":1,"not-checked":17}},
+    {"election":"k26","area":"Family classifications","count":85,"certainty":{"unknown":45},"placements":{"project":23,"disputed":1,"not-checked":16}},
     {"election":"k26","area":"Party appearances","count":21,"certainty":{"unknown":21}},
     {"election":"k26","area":"data/meta/election-context.json events","count":7,"certainty":{"provisional":7}},
     {"election":"k26","area":"List metadata","count":6,"certainty":{"probable":6}},

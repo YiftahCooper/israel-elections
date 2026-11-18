@@ -177,7 +177,8 @@ export type Action =
   | { type: 'setIdentityColor'; color: string }
   | { type: 'setCoalition'; coalition: CoalitionChoices }
   | { type: 'startPart'; part: Part; source: 'official' | 'saved' | 'blank' | 'preset'; snapshot?: PartSnapshot; name?: string; presetId?: string; listId?: string }
-  | { type: 'setVotes'; listId: string; votes: number }
+  /** citizens: the change is people added to (or leaving) the country: eligible voters change by the same number */
+  | { type: 'setVotes'; listId: string; votes: number; citizens?: boolean }
   | { type: 'transfer'; from: string; to: string; votes: number }
   /** demographic:true allows signed deltas; resulting counts must remain nonnegative. */
   | { type: 'addVoters'; demographic?: boolean; allocations: { listId: string; votes: number }[]; invalid: number; label?: string }
@@ -412,14 +413,14 @@ const copyProvenance = shape({ electionId: oneOf(...ELECTION_IDS), sourceName: s
   mode: optional(oneOf('count', 'share', 'change', 'eligible', 'ratio')), policy: optional(string), sourceListIds: optional(strings), targetListIds: optional(strings),
   value: optional(string), paths: array(strings) });
 const actionFields: Record<Action['type'], Check> = {
-  familyOperation: (x) => record(x) && validFamily(x.definition) && (x.operation === 'group' ? optional(string)(x.name) && record(x.placements) && Object.values(x.placements).every(v => ['selected','mixed','other'].includes(String(v))) : x.operation === 'scale' && array(shape({listId:string,before:whole,votes:whole}))(x.allocations) && signedWhole(x.registeredDelta) && whole(x.target) && shape({kind:oneOf('new','proportional','transfer'),listId:optional(string)})(x.source)),
+  familyOperation: (x) => record(x) && validFamily(x.definition) && (x.operation === 'group' ? optional(string)(x.name) && record(x.placements) && Object.values(x.placements).every(v => ['selected','mixed','other'].includes(String(v))) : x.operation === 'scale' && array(shape({listId:string,before:whole,votes:whole}))(x.allocations) && signedWhole(x.registeredDelta) && whole(x.target) && shape({kind:oneOf('new','citizens','proportional','transfer'),listId:optional(string)})(x.source)),
   setBlocAppearance: shape({ blocs: array(bloc) }),
   setPartyColor: shape({ listId: string, partyId: string, color: string }),
   resetColors: shape({ only: optional(partial({ list: string, party: string, bloc: string })) }),
   setIdentityColor: shape({ color: isHexColour }),
   setCoalition: shape({ coalition }),
   startPart: shape({ part: oneOf('votes', 'identity', 'structure', 'agreements', 'blocs', 'coalitions', 'candidates', 'rules', 'totals'), source: oneOf('official', 'saved', 'blank', 'preset'), snapshot: optional(partSnapshotCheck), name: optional(string), presetId: optional(string), listId: optional(string) }),
-  setVotes: shape({ listId: string, votes: whole }),
+  setVotes: shape({ listId: string, votes: whole, citizens: optional(boolean) }),
   transfer: shape({ from: string, to: string, votes: whole }),
   addVoters: (x) => record(x) && (x.demographic === true
     ? shape({ allocations: array(shape({ listId: string, votes: signedWhole })), invalid: signedWhole, label: string, demographic: boolean })(x)

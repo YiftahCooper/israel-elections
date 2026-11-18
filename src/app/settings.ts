@@ -150,7 +150,7 @@ export const SETTINGS: readonly SettingRow[] = [
 
   { id: 'splitWarning', group: 'editing', control: 'toggle', min: 'standard', label: ['Joint-list split warning', 'אזהרה בפיצול רשימה משותפת'], info: ['When splitting a joint list, remind that the split is an assumption for the scenario. Turn on to see it again.', 'בפיצול רשימה משותפת, תזכורת שהפיצול הוא הנחה לתרחיש. הפעילו כדי לראות אותה שוב.'], synonyms: 'split warning remember assumption פיצול אזהרה הנחה' },
   { id: 'voteSource', group: 'editing', control: 'choice', min: 'simple', label: ['Votes come from', 'מקור הקולות'],
-    info: ['Other lists: from all, in proportion; turnout stays. New voters: turnout changes. Ask: you choose at each edit.', 'שאר הרשימות: מכולן, באופן יחסי; ההצבעה לא משתנה. מצביעים חדשים: ההצבעה משתנה. לשאול: בוחרים בכל עריכה.'],
+    info: ['Other lists: from all, in proportion; turnout stays. People who stayed home: turnout changes. New citizens: eligible voters change too. Ask: you choose at each edit.', 'שאר הרשימות: מכולן, באופן יחסי; ההצבעה לא משתנה. מי שלא הצביעו: שיעור ההצבעה משתנה. אזרחים חדשים: גם מספר בעלי זכות הבחירה משתנה. לשאול: בוחרים בכל עריכה.'],
     synonyms: 'source donor ask default remember balance מקור תורם לשאול ברירת מחדל זכירה' },
   { id: 'markChanges', group: 'editing', control: 'choice', min: 'simple', label: ['Mark changes since', 'סימון שינויים מאז'],
     info: ['Opened scenario: only your newer changes are marked. Official result: every difference is marked.', 'התרחיש שנפתח: מסומנים רק השינויים החדשים. התוצאה הרשמית: מסומן כל הבדל.'],
