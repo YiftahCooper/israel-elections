@@ -128,13 +128,15 @@ export function useReference(work: Scenario | null): ReferenceState {
   return state;
 }
 
-/** Turns comparing on: once the work has a tangible edit, this election's official result, so you see what your edits
+/** Turns comparing on: once an edit makes the work differ from this election’s official result, that result, so you see what your edits
  *  did; unedited, the previous election (owner, 19 Nov 2026). Settings → Compare with: "Previous election" keeps the
  *  previous election either way. Not an undo step. */
 export function startComparing() {
   const st = getState();
   const s = st.scenario;
-  const edited = !!s && !!st.datasets[s.electionId] && resultChanges(s, baselineOf(st.datasets[s.electionId]!)).length > 0;
+  // edited: anything that makes the official result differ from the work; an edit that leaves it the same (a bloc
+  // grouping) keeps the previous election, since the official result would be nothing to compare
+  const edited = !!s && !!st.datasets[s.electionId] && !sameVotes(baselineOf(st.datasets[s.electionId]!), s);
   setState({ comparing: getSetting('compareWith') === 'official' && edited ? 'official' : 'prev', compare: { ...st.compare, chamber: 'work' } });
 }
 export function stopComparing() {
