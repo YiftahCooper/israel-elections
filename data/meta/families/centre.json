@@ -543,6 +543,61 @@
       "accessed": "2026-11-12",
       "support": "Party affiliation (השתייכות מפלגתית) of every candidate on list רק: of the 12 elected, places 2, 4, 6, 9 and 12 were nominated by Yesh Atid and places 1, 3, 5, 7, 8, 10 and 11 by Together (Bennett). Retained copy: data/raw/k26/yp15023-candidates.pdf.",
       "publisherHe": "רשומות, ילקוט הפרסומים 15023, 13 באוקטובר 2026, עמ׳ 863–866 (עותק ציבורי)"
+    },
+    "idi-haredi-ballot-2026": {
+      "url": "https://www.idi.org.il/media/33113/the-ultra-orthodox-ballot-box.pdf#page=24",
+      "publisher": "Israel Democracy Institute, Gabriel Gordon and Ariel Karlinsky, November 2026",
+      "publisherHe": "המכון הישראלי לדמוקרטיה, גבריאל גורדון ואריאל קרלינסקי, נובמבר 2026",
+      "kind": "secondary",
+      "accessed": "2026-11-19",
+      "locator": "p. 24, Appendix 3, 2026 row under מרכז",
+      "quote": "ישר, ביחד, המילואימניקים והכלכלית",
+      "support": "The authors group whole 2026 ballots for a study of Haredi voting; Yashar! and the Reservists–New Economic list are under Centre. Not a split between a list's parties."
+    },
+    "ynet-eisenkot-2026": {
+      "url": "https://www.ynet.co.il/news/article/ryp10r5xmg",
+      "publisher": "Ynet, Moran Azulay, 1 June 2026",
+      "publisherHe": "ynet, מורן אזולאי, 1 ביוני 2026",
+      "kind": "secondary",
+      "accessed": "2026-11-19",
+      "quote": "מרכז ממלכתי שיודע להתחבר לימין ליברלי ולשמאל ציוני, עם גישה אקטיביסטית",
+      "support": "Gadi Eisenkot's own description of Yashar!'s place during the campaign."
+    },
+    "mako-compass-yashar-2026": {
+      "url": "https://electionsvote.mako.co.il/",
+      "publisher": "Mako Election Compass, with the Tachlith Institute, 2026",
+      "publisherHe": "מצפן הבחירות של mako, עם מכון תכלית, 2026",
+      "kind": "secondary",
+      "accessed": "2026-11-19",
+      "quote": "מפלגת מרכז שהוקמה לקראת הבחירות ע\"י הרמטכ\"ל לשעבר איזנקוט",
+      "support": "An Israeli election guide describes Yashar! as a centre party."
+    },
+    "mako-compass-reservists-2026": {
+      "url": "https://electionsvote.mako.co.il/",
+      "publisher": "Mako Election Compass, with the Tachlith Institute, 2026",
+      "publisherHe": "מצפן הבחירות של mako, עם מכון תכלית, 2026",
+      "kind": "secondary",
+      "accessed": "2026-11-19",
+      "quote": "רשימת מרכז-ימין",
+      "support": "An Israeli election guide describes the Reservists–New Economic list as centre-right."
+    },
+    "jpost-guide-2026": {
+      "url": "https://www.jpost.com/israel-election-2026/article-912590",
+      "publisher": "The Jerusalem Post, election guide, 27 October 2026",
+      "publisherHe": "ג'רוזלם פוסט, מדריך הבחירות, 27 באוקטובר 2026",
+      "kind": "secondary",
+      "accessed": "2026-11-19",
+      "quote": "a right-leaning Zionist and security agenda with an emphasis on economic reform",
+      "support": "An Israeli election guide describes the Reservists–New Economic list's agenda as right-leaning."
+    },
+    "inn-hendel-2026": {
+      "url": "https://www.inn.co.il/news/707482",
+      "publisher": "Arutz Sheva, Uzi Baruch, interview with Yoaz Hendel, 1 October 2026",
+      "publisherHe": "ערוץ 7, אוזי ברוך, ראיון עם יועז הנדל, 1 באוקטובר 2026",
+      "kind": "secondary",
+      "accessed": "2026-11-19",
+      "quote": "אני ימני, חד-משמעית, וגם המפלגה שלנו היא מפלגה ימנית",
+      "support": "Yoaz Hendel's own description of himself and his party in the final campaign."
     }
   },
   "elections": [
@@ -3613,11 +3668,13 @@
             "status": "inferred",
             "sourceIds": [
               "k26",
-              "centre"
+              "idi-haredi-ballot-2026",
+              "ynet-eisenkot-2026",
+              "mako-compass-yashar-2026"
             ],
-            "claim": "Placed here by this project, from the sources below. Its partner, Yesodot Yisrael, is placed in no family, so this is a mixed list.",
+            "claim": "Placed here by this project, from the sources below. An Israel Democracy Institute study puts its joint list in Centre, and Eisenkot described his approach as centrist. Its partner, Yesodot Yisrael, is placed in no family and three of its candidates were elected, so this is a mixed list.",
             "projectReading": "proposal",
-            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. שותפתה, יסודות ישראל, אינה משובצת באף משפחה, ולכן זו רשימה מעורבת."
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. מחקר של המכון הישראלי לדמוקרטיה שיבץ את הרשימה המשותפת במרכז, ואיזנקוט תיאר את דרכו כדרך של מרכז ממלכתי. שותפתה, יסודות ישראל, אינה משובצת באף משפחה ושלושה ממועמדיה נבחרו, ולכן זו רשימה מעורבת."
           },
           "constituentVotes": null
         },
@@ -3644,11 +3701,14 @@
             "status": "inferred",
             "sourceIds": [
               "k26",
-              "centre"
+              "idi-haredi-ballot-2026",
+              "mako-compass-reservists-2026",
+              "jpost-guide-2026",
+              "inn-hendel-2026"
             ],
-            "claim": "Placed here by this project, from the sources below. The Reservists (Yoaz Hendel) count as this family’s party; their partner, the New Economic Party (Yaron Zelekha), is placed in no family, so this is a mixed list. The list won no seat.",
+            "claim": "Placed here by this project, from the sources below. The Reservists (Yoaz Hendel) count as this family’s party. An Israel Democracy Institute study groups the joint list under Centre; Israeli election guides call it centre-right or right-leaning, and Hendel described his party as right-wing. Its partner, the New Economic Party (Yaron Zelekha), is placed in no family, so this is a mixed list. The list won no seat.",
             "projectReading": "proposal",
-            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. המילואימניקים (יועז הנדל) נספרים כמפלגת המשפחה; שותפתם, המפלגה הכלכלית החדשה (ירון זליכה), אינה משובצת באף משפחה, ולכן זו רשימה מעורבת. הרשימה לא זכתה במנדט."
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. המילואימניקים (יועז הנדל) נספרים כמפלגת המשפחה. מחקר של המכון הישראלי לדמוקרטיה שיבץ את הרשימה המשותפת במרכז; מדריכי בחירות בישראל תיארו אותה כרשימת מרכז־ימין או כנוטה ימינה, והנדל תיאר את מפלגתו כמפלגת ימין. שותפתם, המפלגה הכלכלית החדשה (ירון זליכה), אינה משובצת באף משפחה, ולכן זו רשימה מעורבת. הרשימה לא זכתה במנדט."
           },
           "constituentVotes": null
         }
