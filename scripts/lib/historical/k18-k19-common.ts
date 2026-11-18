@@ -208,7 +208,7 @@ export async function buildHistorical(o: BuildOptions): Promise<{ ds: ElectionDa
   const rawSha256 = verifySources(sourceIds, check, { allowMissingFile: true });
   // The retained fingerprint covers the original election evidence, before additive demographic metadata.
   // Rebuild that exact object; new metadata is verified and reattached by the top-level builder.
-  const { groups: _groups, demographicNoteEn: _en, demographicNoteHe: _he, ...loc } =
+  const { groups: _groups, demographicNoteEn: _en, demographicNoteHe: _he, noteEn: _noteEn, noteHe: _noteHe, ...loc } =
     JSON.parse(readFileSync(join(ROOT, `public/data/k${n}-localities.json`), 'utf8')) as Omit<LocalityDataset, 'rows'> & { rows: LocRow[] };
   for (const w of corrections.withdrawn) {
     const i = loc.listIds.indexOf(`${n}-${w.letters}`);
@@ -274,8 +274,13 @@ export async function buildHistorical(o: BuildOptions): Promise<{ ds: ElectionDa
     for (const value of ['5,278,985', '3,416,587', '43,097', '3,373,490']) check(memorandum.includes(value), `k18: CEC memorandum lacks ${value}`);
   }
   checkReproducesOfficialSeats(check, ds);
-  return { ds, loc };
+  // 2009 has no official locality table: say in the file, as the screen does, that the rows are polling-station sums
+  return { ds, loc: n === 18 ? { ...loc, noteEn: K18_LOCALITIES_NOTE.en, noteHe: K18_LOCALITIES_NOTE.he } : loc };
 }
+const K18_LOCALITIES_NOTE = {
+  en: 'Rows are summed from official polling-station results because no official locality table exists for this election.',
+  he: 'השורות סוכמו מתוצאות הקלפיות הרשמיות משום שלא קיימת טבלת יישובים רשמית לבחירות אלה.',
+};
 
 /** Explicit maintenance command; ordinary builds never bless changed locality hashes.
  * Recover scratch with fetch-sources.ts first, then regenerate and review the diff.

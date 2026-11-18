@@ -132,7 +132,7 @@ for k in range(26,0,-1):
    links=[e for e in links if e['kind']!='neutral']
    # From 2019 the official record is the CEC results web page, not a gazetted results notice (audits k21–k23).
    webpage=re.match(r'https://votes\d+\.bechirot\.gov\.il/',cec[ds['id']])
-   links.append({'kind':'neutral','url':cec[ds['id']],'titleHe':f"{l['shortHe']} — "+(f'תוצאות ועדת הבחירות לכנסת {k}' if webpage else f'הודעת התוצאות לכנסת {k}'),'titleEn':'Official election results record (whole-election document)','publisher':f'ועדת הבחירות המרכזית לכנסת ה-{k}'+(' (עותק באירוח אתר אוסף חוק ומשפט)' if k==7 else ''),'sourceType':'cec','confidence':'high'})
+   links.append({'kind':'neutral','url':cec[ds['id']],'titleHe':f"{l['shortHe']} — "+(f'תוצאות ועדת הבחירות לכנסת {k}' if webpage else f'הודעת התוצאות לכנסת {k}'),'titleEn':'Official election results record (whole-election document)','publisher':f'ועדת הבחירות המרכזית לכנסת ה-{k}'+(' (עותק באתר olaw.org.il)' if k==7 else ''),'sourceType':'cec','confidence':'high'})
   lists[l['id']]=links
   for p in l.get('parties',[]):
    name=p['nameHe'];links=platforms(name,k)+neutral(name,k)
