@@ -343,7 +343,9 @@ const EXPECTED: Record<Family, string> = {
   // no recommendation and other replace 'Not stated in source'; k12: Hadash and ADP back to Peres, PLP to 'other'). The
   // published k8, k10 and k12 differ only in blocSchemes[1] and builtAt; restoring HEAD's three datasets (with their
   // hash pins) reproduces 689cc589… and all four other digests.
-  model: '0c6ad35ee88acb6e86c31fcd55ed75533dbf283700108aee58c8de3919f92f9b',
+  // Copies named (19 Nov): link publishers of official documents saved from olaw.org.il say so. The published k5, k7 and
+  // k15 differ only in lists[].links[].publisher and builtAt; the other four digests are unchanged.
+  model: 'd871b512ddb152ef92488ac8b36b44e2b3db3f59c028b0ca1fbf202af2329845',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };
