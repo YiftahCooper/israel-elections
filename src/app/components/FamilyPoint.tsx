@@ -9,7 +9,7 @@ import type {ElectionDataset,ElectionId} from '../../data/schema.ts';
 import {aggregate,membership,type Family} from '../../families/model.ts';
 import {fullDefinition} from '../../families/catalogue.ts';
 import {familyColor,historyElections,shortFamilyName} from '../../families/runtime.ts';
-import {familySeatSummary} from '../../families/seatBars.ts';
+import {familyEstimate,familySeatSummary} from '../../families/seatBars.ts';
 import {appearances,canonicalParty,partyLabel} from '../../families/registry.ts';
 import lineage from '../../../data/meta/party-lineage.json';
 import {loadDataset,useDigits} from '../store.ts';
@@ -46,18 +46,21 @@ export function FamilyPoint({family:f,electionId}:{family:Family;electionId:Elec
  const seatsWord=(n:number)=>n===1?L('1 seat','מנדט אחד'):`${n} ${L('seats','מנדטים')}`;
  const counted=a.votes!==null&&!(a.votes===0n&&a.mixed),prevCounted=!!prev&&prev.votes!==null&&!(prev.votes===0n&&prev.mixed);
  const share=(v:bigint,d:ElectionDataset)=>Number(v)*100/d.totals.valid;
- const status=familyStatus(a,L),mixedDelta=a.mixed!==null&&prev?.mixed!==null&&prev?.mixed!==undefined?a.mixed-prev.mixed:null;
+ const status=familyStatus(a,L),mixedDelta=a.mixed&&prev?.mixed?a.mixed-prev.mixed:null;
+ // The change follows the vote chart's solid line: exact when neither election has a mixed list, otherwise the estimate by seats.
+ const exact=counted&&prevCounted&&!a.mixed&&!prev?.mixed,est=!exact&&before&&previous?[familyEstimate(f,electionId),familyEstimate(f,before.id)] as const:null;
+ const voteChange=exact?{approx:false,votes:Number(a.votes!-prev!.votes!),pp:share(a.votes!,ds)-share(prev!.votes!,previous!)}:est?.[0]&&est[1]?{approx:est.some(v=>v!.high>v!.estimate&&v!.estimate>v!.low),votes:Math.round(est[0].estimate-est[1].estimate),pp:est[0].estimate*100/ds.totals.valid-est[1].estimate*100/previous!.totals.valid}:null;
  const signed=(n:number|bigint,digits?:number)=>{const x=Number(n);return <bdi dir="ltr">{digits===undefined?<>{x>0?'+':x<0?'−':'±'}{Math.abs(x).toLocaleString('en-US')}</>:points(x,digits)}</bdi>;};
  const relation=(s:string)=>({'merged-into':L('Merged','מיזוג'),'split-from':L('Split','פיצול'),'renamed-to':L('Renamed','שינוי שם')}[s]??s);
  // a source is named by who published it; one without a link (the official results the app holds) is plain text, never a file name or id
  const source=(id:string,s:Family['sources'][string])=>{const text=<>{s.kind==='secondary'?L('Secondary source','מקור משני'):L('Source','מקור')}{((lang==='he'&&s.publisherHe)||s.publisher)&&<> · {(lang==='he'&&s.publisherHe)||s.publisher}</>}</>;return <span key={id} className="book-source">{s.url?<a href={s.url} target="_blank" rel="noreferrer">{text}</a>:<span>{text}</span>}<PageAndQuote locator={s.locator} quote={s.quote}/></span>;};
- // Counted lists first, then the hatched mixed lists, then lists named but not counted.
+ // Counted lists first, then the mixed lists estimated by seats, then lists named but not counted.
  const rank=(id:string)=>m.selected.has(id)?0:m.mixed.has(id)?1:2;
  const lists=ds.lists.filter(l=>ids.has(l.id)).sort((x,y)=>rank(x.id)-rank(y.id)||y.votes-x.votes);
  return <div className="family-point" style={{['--family-color' as string]:familyColor(f)}}>
   <h3>{shortFamilyName(f,lang)} · {familyDate(historyElections[at],lang)}</h3>
   <div className="family-point-total">{status&&<span>{status}</span>}{counted&&<span><b>{Number(a.votes).toLocaleString('en-US')} {L('votes','קולות')}</b> · <bdi dir="ltr">{percentNum(share(a.votes!,ds),digits)}</bdi></span>}{seat.known&&<span className="family-point-seats"><b>{seatsWord(seat.own)}</b>{seat.partners>0&&<> <bdi dir="ltr">+{seat.partners}</bdi> {seat.partners===1?L('partner','שותפה'):L('partners','שותפות')}</>}</span>}{!!a.mixed&&<span className="family-point-mixed"><i className="family-key-mixed" aria-hidden/><span>{L('Mixed lists','רשימות מעורבות')}: {Number(a.mixed).toLocaleString('en-US')} · <bdi dir="ltr">{percentNum(share(a.mixed,ds),digits)}</bdi></span></span>}{reviewNote(a,L)&&<span className="family-point-review">{reviewNote(a,L)}</span>}</div>
-  {before&&previous&&prev&&(counted&&prevCounted||seat.change!==null||mixedDelta!==null&&(!!a.mixed||!!prev.mixed))&&<p className="family-point-delta">{L('Since','מאז')} {familyDate(before,lang)}: {counted&&prevCounted&&<>{signed(a.votes!-prev.votes!)} {L('votes','קולות')} · {signed(share(a.votes!,ds)-share(prev.votes!,previous),digits)} {L(...PP)}</>}{seat.change!==null&&<>{counted&&prevCounted?' · ':''}<SeatDelta value={seat.change} /> {L('seats','מנדטים')}</>}{!!(a.mixed||prev.mixed)&&mixedDelta!==null&&<>{counted&&prevCounted||seat.change!==null?' · ':''}{L('mixed lists','רשימות מעורבות')} {signed(mixedDelta)}</>}</p>}
+  {before&&previous&&prev&&(voteChange||seat.change!==null||mixedDelta!==null)&&<p className="family-point-delta">{L('Since','מאז')} {familyDate(before,lang)}: {voteChange&&<>{voteChange.approx&&<span title={L('Estimate by seats','הערכה לפי מנדטים')}>≈</span>}{signed(voteChange.votes)} {L('votes','קולות')} · {signed(voteChange.pp,digits)} {L(...PP)}</>}{seat.change!==null&&<>{voteChange?' · ':''}<SeatDelta value={seat.change} /> {L('seats','מנדטים')}</>}{mixedDelta!==null&&<>{voteChange||seat.change!==null?' · ':''}{L('mixed lists','רשימות מעורבות')} {signed(mixedDelta)}</>}</p>}
   {!ds.officialSeats&&<p className="small muted">{L('Calculated seats · Gazette not yet verified','מנדטים מחושבים · הפרסום ברשומות טרם אומת')} <Info title={L('Seat counts','ספירת מנדטים')}>{L('Calculated from the published vote counts under this election’s rules. Gazetted seat counts are unavailable.','חושב מספירת הקולות שפורסמה לפי כללי הבחירות האלה. ספירת מנדטים שפורסמה ברשומות אינה זמינה.')}</Info></p>}
   <div className="family-point-lists">{lists.map(l=>{const member=row?.members.find(x=>x.listId===l.id),review=row?.reviewCandidates.find(x=>x.listId===l.id),mixed=member?.scope==='mixed',isCounted=m.selected.has(l.id),separate=m.mixed.has(l.id);
    const ownParty=(id:string)=>!!member?.partyIds.some(x=>canonicalParty(x)===canonicalParty(id));

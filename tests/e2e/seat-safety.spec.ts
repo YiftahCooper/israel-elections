@@ -83,8 +83,8 @@ test('the vote source is named before use and switches the figures', async ({ pa
   await done(page);
   const likud = panel(page).locator('.sec-row').filter({ hasText: 'Likud' }).locator('.sec-r');
   const before = await likud.innerText();
-  await source.getByRole('button', { name: 'New voters' }).click();
-  await expect(source.getByRole('button', { name: 'New voters' })).toHaveAttribute('aria-pressed', 'true');
+  await source.getByRole('button', { name: 'People who stayed home' }).click();
+  await expect(source.getByRole('button', { name: 'People who stayed home' })).toHaveAttribute('aria-pressed', 'true');
   await done(page);
   await expect(likud).not.toHaveText(before);
   // going back is instant: the first figures are remembered
