@@ -64,7 +64,7 @@ test('mixed-only elections are not plotted as zero; mixed policy is a persistent
  // 2013: Likud ran jointly with Yisrael Beiteinu (20 of 31 seats), a real partnership, so Likud lineage is mixed-only there
  await start(page);await choose(page.getByRole('button',{name:'Election',exact:true}),'k19');await page.getByRole('tab',{name:'Party families',exact:true}).click();
  await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
- await expect(page.locator('.family-plots .family-legend')).toHaveCount(1);await expect(page.locator('.family-plots .family-legend')).toContainText('Mixed lists (up to)');
+ await expect(page.locator('.family-plots .family-legend')).toHaveCount(1);await expect(page.locator('.family-plots .family-legend')).toContainText('Estimate by seats');
  const share=page.locator('.family-plots section').first();await share.locator('[role=button]').nth(18).focus();
  await expect(page.getByRole('tooltip')).toContainText('Only in mixed lists');await expect(page.getByRole('tooltip')).not.toContainText('0 votes');
  await expect(page.locator('.family-scale')).toContainText('only mixed lists in this election');
@@ -73,7 +73,7 @@ test('mixed-only elections are not plotted as zero; mixed policy is a persistent
  await expect(page.locator('.family-chip')).toHaveCount(9);await expect(page.locator('.family-profile')).toContainText('Sourced draft interpretation');
  await page.reload();await page.getByRole('tab',{name:'Party families',exact:true}).click();await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
  await expect(page.getByRole('group',{name:'Mixed-list policy',exact:true}).getByRole('button',{name:'Leave out',exact:true})).toHaveAttribute('aria-pressed','true');
- // Centre 2026: Yesh Atid's 5 seats inside Together, with Bennett's 7 as partners; Yashar!'s list; the Reservists still under review.
+ // Centre 2026: Yesh Atid's 5 seats inside Together, with Bennett's 7 as partners; Yashar!'s list; the Reservists' list is mixed; the withdrawn Blue and White still under review.
  await page.getByRole('button',{name:'Centre',exact:true}).click();await page.getByText('Exact figures (26 elections)',{exact:true}).click();
  const last=page.locator('.family-table tbody tr').last();await expect(last).toContainText('23 seats +10 partners');await expect(last).toContainText('Some lists not yet classified');await expect(last).not.toContainText('Did not contest');
  // Russian-speaking: no list is classified before 1981; the aliyah lists of 1981 and 1984 await review; in 1992 DA is counted
@@ -100,7 +100,7 @@ test('Hebrew scaling keeps signs and arrows in reading order',async({page})=>{
 test('head-party counting is explicit, remembered and one-list overrides keep the view policy',async({page})=>{
  await start(page);await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
  const policies=page.getByRole('group',{name:'Mixed-list policy',exact:true});
- await expect(policies.getByRole('button',{name:'Show hatched',exact:true})).toHaveAttribute('aria-pressed','true');
+ await expect(policies.getByRole('button',{name:'Estimate by seats',exact:true})).toHaveAttribute('aria-pressed','true');
  await page.locator('.family-plots [role=button]').last().click();await expect(page.getByRole('dialog')).toContainText('Family heads this list');await page.getByRole('dialog').getByRole('button',{name:'Close',exact:true}).click();
  await policies.getByRole('button',{name:'Count if family heads it',exact:true}).click();
  await expect(page.locator('.family-chip')).toHaveCount(9);
@@ -122,7 +122,7 @@ test('family aggregates open details without navigating; hover never moves plots
  for(const i of [0,18,25]){await marks.nth(i).hover();expect(await page.locator('.family-plots').evaluate(e=>e.getBoundingClientRect().top)).toBe(top);}
  await marks.nth(18).focus();await page.keyboard.press('Enter');
  const detail=page.getByRole('dialog',{name:'Election breakdown',exact:true});await expect(detail).toBeVisible();
- await expect(detail).toContainText('Likud');await expect(detail).toContainText('Yisrael Beiteinu');await expect(detail).toContainText('885,054');await expect(detail).toContainText('+156,000');await expect(detail).not.toContainText('0 counted votes');await expect(detail).toContainText('Since');
+ await expect(detail).toContainText('Likud');await expect(detail).toContainText('Yisrael Beiteinu');await expect(detail).toContainText('885,054');await expect(detail.locator('.family-point-delta')).toContainText('≈−158,051 votes · −6.56 pp · ▼ −7 seats');await expect(detail).not.toContainText('0 counted votes');await expect(detail.locator('.family-point-estimate')).toContainText('Estimate by seats: ≈571,003 · ≈15.06%');await expect(detail).toContainText('Since');
  await expect(page.getByRole('tab',{name:'Party families',exact:true})).toHaveAttribute('aria-selected','true');
  await detail.getByRole('button',{name:'Open this election',exact:true}).click();await expect(page.locator('.family-treatment')).toContainText('Likud lineage');
 });
@@ -155,14 +155,14 @@ test('breakdown marks the family’s own parties in a mixed list and only they c
  await start(page);await page.locator('.family-plots section').first().locator('g[role=button]').nth(19).scrollIntoViewIfNeeded();const y=await page.evaluate(()=>scrollY);
  await page.locator('.family-plots section').first().locator('g[role=button]').nth(19).click();
  const d=page.getByRole('dialog',{name:'Election breakdown',exact:true});await expect(d.locator('.family-point-delta')).toContainText('Since 22 Jan 2013: −102,251 votes · −3.88 pp · ▼ −5 seats');
- const mixed=d.locator('article[data-state=mixed]');await expect(mixed).toHaveCount(1);await expect(mixed.locator('[data-own] b')).toHaveText('Yachad');await expect(mixed).toContainText('Shown hatched, not counted');
+ const mixed=d.locator('article[data-state=mixed]');await expect(mixed).toHaveCount(1);await expect(mixed.locator('[data-own] b')).toHaveText('Yachad');await expect(mixed).toContainText('Estimated by seats');
  await expect(d.locator('.family-point-changes')).toContainText("Now represented: Yachad · U'Bizchutan");await expect(d.locator('.family-point-changes')).not.toContainText('Otzma');
  await expect(d.locator('article').first()).toHaveAttribute('data-state','counted');
  await d.getByRole('button',{name:'Close',exact:true}).click();expect(await page.evaluate(()=>scrollY)).toBe(y);
 });
 test('each mixed-list choice is named by its effect and shows its chart mark',async({page})=>{
  await start(page);const group=page.getByRole('group',{name:'Mixed-list policy',exact:true});
- for(const name of ['Show hatched','Count if family heads it','Count all','Leave out'])await expect(group.getByRole('button',{name,exact:true})).toHaveCount(1);
+ for(const name of ['Estimate by seats','Count if family heads it','Count all','Leave out'])await expect(group.getByRole('button',{name,exact:true})).toHaveCount(1);
  expect(await group.locator('.family-policy-icon').evaluateAll(es=>es.map(e=>(e as HTMLElement).dataset.policy))).toEqual(['separate-segment','include-headed-list','include-whole-list','exclude']);
  await expect(page.locator('.family-policy')).toContainText('(family + other parties)');
  expect(await group.locator('.family-policy-icon[data-policy=exclude]').evaluate(e=>getComputedStyle(e).borderTopColor)).not.toBe('rgb(255, 255, 255)');
@@ -226,4 +226,14 @@ test('family sources are named by who published them; the project never cites it
  const art=sheet.locator('.family-point-lists article').filter({has:page.locator('strong',{hasText:/^Moledet$/})});await art.locator('.info button').click();
  const pop=page.locator('.pop').last();await expect(pop).toContainText('Official results, Central Elections Committee');await expect(pop).toContainText('Israel Democracy Institute, Yair Sheleg, 15 October 2020');
  expect(await pop.innerText()).not.toMatch(jargon);
+});
+test('family scale: people who stayed home leave eligible voters alone; new citizens raise them',async({page})=>{
+ await start(page);const scale=page.locator('.family-scale'),pick=scale.getByRole('button',{name:'Votes come from',exact:true});
+ await expect(scale.getByRole('status')).toContainText('Valid total conserved exactly');
+ await choose(pick,'new');await expect(pick).toHaveAttribute('data-value','new');await expect(scale.getByRole('status')).toContainText('Turnout rises; eligible voters unchanged');
+ await choose(pick,'citizens');await expect(pick).toHaveAttribute('data-value','citizens');await expect(scale.getByRole('status')).toContainText('Family votes: 623,349 → 685,684 · Eligible voters +62,335');
+});
+test('family scale vote source in Hebrew: new citizens',async({page})=>{
+ await start(page,'he');const scale=page.locator('.family-scale'),pick=scale.getByRole('button',{name:'מקור הקולות',exact:true});
+ await choose(pick,'citizens');await expect(pick).toHaveAttribute('data-value','citizens');await expect(scale.getByRole('status')).toContainText('בעלי זכות הבחירה +62,335');
 });

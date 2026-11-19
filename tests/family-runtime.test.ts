@@ -32,7 +32,9 @@ test('target share, fixed donor, impossible targets and new voters',()=>{
   const s=scenarioFromDataset(ds(25)); const a=scaleAction(f,s,'share','20',{kind:'proportional'});expect(a.operation==='scale'&&a.target).toBe(952948);
   expect(()=>scaleAction(f,s,'share','101',{kind:'proportional'})).toThrow();
   expect(()=>scaleAction(f,s,'multiplier','10000',{kind:'transfer',listId:s.lists.at(-1)!.id})).toThrow();
-  const n=applyAction(s,scaleAction(f,s,'multiplier','10',{kind:'new'}));expect(n.registered-s.registered).toBe(67316);
+  // people who stayed home leave eligible voters unchanged; new citizens add them (19 Nov 2026)
+  const n=applyAction(s,scaleAction(f,s,'multiplier','10',{kind:'new'}));expect(n.registered-s.registered).toBe(0);
+  const c=applyAction(s,scaleAction(f,s,'multiplier','10',{kind:'citizens'}));expect(c.registered-s.registered).toBe(67316);
 });
 test('merged mixed list remains mixed and withdrawn lists cannot donate',()=>{
   const s=scenarioFromDataset(ds(25));s.lists[0]={...s.lists[0],originIds:['25-ג','25-מחל']};expect(resolve(f,s)[0].family).toBe('mixed');

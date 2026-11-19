@@ -214,7 +214,7 @@ export function HistoryChart({ bars, eras, events, selected, onSelect, compact, 
           <title>{b.label}</title>
           <rect x={x(b.i) - slotW / 2} y={mt} width={slotW} height={H} fill="transparent" />
           {!b.absent && b.value > 0 && <g className="ph-barbody">
-            {h - sh > 0.5 && <rect x={x(b.i) - bw / 2 + 0.6} y={y(b.value) + 0.6} width={bw - 1.2} height={Math.max(0, h - sh - 0.6)} fill={`url(#${pid}-${b.i})`} stroke={b.color} strokeWidth={1.2} strokeDasharray={b.inside ? '3 2' : undefined} />}
+            {h - sh > 0.5 && <rect x={x(b.i) - bw / 2 + 0.6} y={y(b.value) + 0.6} width={bw - 1.2} height={Math.max(0, h - sh - 0.6)} fill={unit === 'share' ? undefined : `url(#${pid}-${b.i})`} style={unit === 'share' ? { fill: `color-mix(in srgb, ${b.color} 35%, #fff)` } : undefined} className={unit === 'share' ? 'ph-wholelist' : undefined} stroke={b.color} strokeWidth={1.2} strokeDasharray={b.inside ? '3 2' : undefined} />}
             {sh > 0 && <rect x={x(b.i) - bw / 2} y={y(0) - sh} width={bw} height={sh} fill={b.color} />}
           </g>}
           {!b.absent && b.value === 0 && <rect x={x(b.i) - bw / 2} y={y(0) - 2} width={bw} height={2} className="ph-zero" />}
@@ -253,7 +253,8 @@ function useHistory(partyId: string, metric: 'seats' | 'share') {
       if (!p.list) return { i: p.i, absent: true, value: 0, solid: 0, inside: false, color: 'var(--muted)', label: `${yearLabel(p.i, lang)}: ${L('did not run', 'לא התמודדה')}` };
       const share = p.valid ? (p.votes / p.valid) * 100 : 0;
       const value = metric === 'seats' ? p.seats : share;
-      // seats: the party's own elected members solid, partners' hatched (Q1, 8 Nov); vote share: whole list, hatched when joint
+      // seats: the party's own elected members solid, partners' striped (Q1, 8 Nov); vote share: whole list, a light tint
+      // when joint (stripes mean partners' seats only, 19 Nov 2026)
       const solid = metric === 'seats' ? (p.role === 'alone' ? p.seats : p.own ?? 0) : p.role === 'alone' ? share : 0;
       const ownColour = p.list.color;
       const own = metric === 'seats' && p.role !== 'alone' && p.own !== null ? L(` (own members ${p.own})`, ` (חברי המפלגה ${p.own})`) : '';
@@ -467,7 +468,7 @@ export function PartyHistorySection({ s, r, listId }: { s: Scenario; r: Allocati
         <HistoryChart compact bars={h.bars} eras={h.eras} events={h.chartEvents} selected={k} onSelect={() => setOpen(true)} width={width} height={96} unit="seats"
           label={L(`${partyShort(active, 'en')}: seats at each election`, `${partyShort(active, 'he')}: מנדטים בכל בחירות`)} />
       </button>
-      <Legend compact events={h.chartEvents} />
+      <Legend compact events={h.chartEvents} colour={keyColour(h.bars, k)} />
     </div>}
     <ComparisonLine c={c} />
     <button type="button" className="btn small ph-full" onClick={() => setOpen(true)}>{L('Full history', 'היסטוריה מלאה')} <span aria-hidden>{lang === 'he' ? '‹' : '›'}</span></button>
@@ -475,32 +476,35 @@ export function PartyHistorySection({ s, r, listId }: { s: Scenario; r: Allocati
   </section>;
 }
 
+/** The colour the bars use for this party on screen: the selected election's list, else the latest list it ran in. */
+const keyColour = (bars: Bar[], at: number | null) => (at !== null && bars[at] && !bars[at].absent ? bars[at] : [...bars].reverse().find((b) => !b.absent))?.color;
+
 /** What the chart's marks mean, in words: every mark the chart can draw is named here (owner, 16 Nov 2026: each line and
  *  display explains itself), with the longer explanations behind (i). */
-function Legend({ compact, metric = 'seats', events = [], inside = false, eras = false }: { compact?: boolean; metric?: 'seats' | 'share'; events?: ChartEvent[]; inside?: boolean; eras?: boolean }) {
+function Legend({ compact, metric = 'seats', events = [], inside = false, eras = false, colour }: { compact?: boolean; metric?: 'seats' | 'share'; events?: ChartEvent[]; inside?: boolean; eras?: boolean; colour?: string }) {
   const L = useL();
   const weak = events.some((e) => certRank[e.certainty] < certRank.probable);
-  return <div className={`ph-legend ${compact ? 'tiny' : 'small'}`}>
+  return <div className={`ph-legend ${compact ? 'tiny' : 'small'}`} style={colour ? { ['--ph-sw' as string]: colour } : undefined}>
     {metric === 'seats' ? <>
       <span><i className="ph-sw solid" />{L('Own members', 'חברי המפלגה')}</span>
       <span><i className="ph-sw hatch" />{L('Partners’ members', 'חברי השותפות')}</span>
       {inside && !compact && <span><i className="ph-sw dash" />{L('Inside another’s list', 'בתוך רשימה אחרת')}</span>}
     </> : <>
       <span><i className="ph-sw solid" />{L('Ran alone', 'רצה לבדה')}</span>
-      <span><i className="ph-sw hatch" />{L('Joint list (whole list)', 'רשימה משותפת (כולה)')}</span>
-      <span><i className="ph-sw dash" />{L('Inside another’s list', 'בתוך רשימה אחרת')}</span>
+      <span><i className="ph-sw tint" />{L('Joint list (whole list)', 'רשימה משותפת (כולה)')}</span>
+      <span><i className="ph-sw tint dash" />{L('Inside another’s list', 'בתוך רשימה אחרת')}</span>
     </>}
     <span><b className="ph-gapkey" aria-hidden>·</b> {L('Did not run', 'לא התמודדה')}</span>
     {!compact && <span><i className="ph-sw selband" />{L('Election you are looking at', 'הבחירות שבהן אתם צופים')}</span>}
     {!compact && eras && <span><i className="ph-sw era" />{L('Name at the time', 'השם באותה תקופה')}</span>}
     {events.length > 0 && (compact
       ? <span className="ph-evkey"><i className="ph-sw evline" />{L('Merger, split or new name', 'איחוד, פילוג או שם חדש')}</span>
-      : <span className="ph-evkey"><i className="ph-sw evnum" aria-hidden>1</i>{L('Merger, split or new name: its number in Events below', 'איחוד, פילוג או שם חדש: מספרו ברשימת האירועים למטה')}
+      : <span className="ph-evkey"><i className="ph-sw evnum" aria-hidden>#</i>{L('Merger, split or new name: its number in Events below', 'איחוד, פילוג או שם חדש: מספרו ברשימת האירועים למטה')}
         <Info title={L('Where events are drawn', 'היכן מסומנים אירועים')}>{L('Bars are elections, evenly spaced. This is not a time scale: Knessets last different lengths. Each line sits between the two elections the event fell between, at the same point of that gap as in time. Example: Kadima split from Likud on 23 Nov 2005, 89% of the way from the 2003 election to the 2006 one. A date known only by its year is placed in mid-year. Events too close to tell apart share one mark (“5,6,7”).', 'העמודות הן מערכות בחירות, במרווחים שווים. זה אינו ציר זמן: משך כל כנסת שונה. כל קו נמצא בין שתי הבחירות שביניהן אירע האירוע, באותה נקודה בפער כמו בזמן. לדוגמה: קדימה התפצלה מהליכוד ב־23 בנובמבר 2005, 89% מהדרך בין בחירות 2003 לבחירות 2006. תאריך שידועה בו רק השנה מסומן באמצע השנה. אירועים קרובים מדי זה לזה חולקים סימן אחד („5,6,7”).')}</Info></span>)}
     {weak && <span><i className="ph-sw evline weak" />{L('Dashed: not yet established', 'מקווקו: טרם בוסס')}</span>}
     {!compact && <Info title={L('Party history', 'היסטוריית מפלגה')} label={L('How to read this chart', 'איך לקרוא את התרשים')}>{L(
-      'Each bar is one election: the whole list the party ran in, in that list’s own colour at that election, so the colour changes when the list changed. The number above a bar is its seats (or its share of the valid votes). Seats: the solid part is the party’s own elected members, the striped part its partners’ on a joint list (official candidate lists and Knesset records). A dashed outline: the party ran inside another party’s list. Vote share: a joint list’s votes belong to the whole list and are never divided. A dot: the party did not run that year. The strip under the years gives the name the party had in each period. The shaded column is the election you are looking at; click any bar, or use the arrow keys, to read that election in the box below.',
-      'כל עמודה היא מערכת בחירות אחת: הרשימה כולה שבה רצה המפלגה, בצבע של אותה רשימה באותן בחירות, ולכן הצבע משתנה כשהרשימה השתנתה. המספר מעל העמודה הוא מספר המנדטים (או שיעור הקולות הכשרים). מנדטים: החלק המלא הוא חברי המפלגה שנבחרו, החלק המפוספס – חברי השותפות ברשימה משותפת (רשימות המועמדים ורשומות הכנסת). מסגרת מקווקוות: המפלגה רצה בתוך רשימה של מפלגה אחרת. שיעור קולות: קולות רשימה משותפת שייכים לרשימה כולה ואינם מחולקים. נקודה: המפלגה לא התמודדה באותה שנה. הפס שמתחת לשנים מציג את שם המפלגה בכל תקופה. העמודה המוצללת היא הבחירות שבהן אתם צופים; לחיצה על עמודה, או מקשי החצים, מציגה את אותן בחירות בתיבה שמתחת.')}</Info>}
+      'Each bar is one election: the whole list the party ran in, in that list’s own colour at that election, so the colour changes when the list changed. The number above a bar is its seats (or its share of the valid votes). Seats: the solid part is the party’s own elected members, the striped part its partners’ on a joint list (official candidate lists and Knesset records). A dashed outline: the party ran inside another party’s list. Vote share: a joint list’s votes belong to the whole list and are never divided, so its bar is a light tint of the list’s colour. A dot: the party did not run that year. The strip under the years gives the name the party had in each period. The shaded column is the election you are looking at; click any bar, or use the arrow keys, to read that election in the box below.',
+      'כל עמודה היא מערכת בחירות אחת: הרשימה כולה שבה רצה המפלגה, בצבע של אותה רשימה באותן בחירות, ולכן הצבע משתנה כשהרשימה השתנתה. המספר מעל העמודה הוא מספר המנדטים (או שיעור הקולות הכשרים). מנדטים: החלק המלא הוא חברי המפלגה שנבחרו, החלק המפוספס – חברי השותפות ברשימה משותפת (רשימות המועמדים ורשומות הכנסת). מסגרת מקווקוות: המפלגה רצה בתוך רשימה של מפלגה אחרת. שיעור קולות: קולות רשימה משותפת שייכים לרשימה כולה ואינם מחולקים, ולכן העמודה שלה בגוון בהיר של צבע הרשימה. נקודה: המפלגה לא התמודדה באותה שנה. הפס שמתחת לשנים מציג את שם המפלגה בכל תקופה. העמודה המוצללת היא הבחירות שבהן אתם צופים; לחיצה על עמודה, או מקשי החצים, מציגה את אותן בחירות בתיבה שמתחת.')}</Info>}
   </div>;
 }
 
@@ -563,7 +567,7 @@ export function HistorySheet({ parties, colours = {}, initial, electionIdx, onCl
       <HistoryChart bars={h.bars} eras={h.eras} events={h.chartEvents} selected={sel} onSelect={setSel} width={width} height={phone ? 230 : 290} unit={metric} phone={phone}
         label={L(`${partyShort(pid, 'en')}: ${metric === 'seats' ? 'seats' : 'vote share'} at each election. Arrow keys move between elections.`, `${partyShort(pid, 'he')}: ${metric === 'seats' ? 'מנדטים' : 'שיעור קולות'} בכל בחירות. מקשי החצים עוברים בין בחירות.`)} />
     </div>
-    <Legend metric={metric} events={h.chartEvents} inside={h.bars.some((b) => b.inside)} eras={h.eras.length > 0} />
+    <Legend metric={metric} events={h.chartEvents} inside={h.bars.some((b) => b.inside)} eras={h.eras.length > 0} colour={keyColour(h.bars, sel)} />
     {cur && <PointCard p={cur} identity={h.identity} />}
     {(h.events.length > 0 || open.length > 0) && <>
       <h3>{L('Events', 'אירועים')}</h3>

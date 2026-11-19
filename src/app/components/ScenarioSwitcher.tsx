@@ -28,13 +28,13 @@ export function ScenarioSwitcher({ s, ds, onPicked }: { s: Scenario; ds: Electio
   const markerBase = official;
   const details = (x: Scenario, date: string, status: string) => {
     const action = [...x.log].reverse().map(e => e.action).find(a => ['setVotes', 'redistribute', 'transfer', 'addVoters', 'scaleAll', 'setTurnout'].includes(a.type));
-    const source = !action ? L('Official votes', 'קולות רשמיים') : action.type === 'setVotes' || action.type === 'addVoters' ? voteSourceLabel({ kind: 'new' }, x, lang) : action.type === 'redistribute' ? L('Lists balanced proportionally', 'איזון יחסי בין הרשימות') : describe(action, x, lang);
+    const source = !action ? L('Official votes', 'קולות רשמיים') : action.type === 'setVotes' || action.type === 'addVoters' ? voteSourceLabel({ kind: action.type === 'setVotes' && action.citizens ? 'citizens' : 'new' }, x, lang) : action.type === 'redistribute' ? L('Lists balanced proportionally', 'איזון יחסי בין הרשימות') : describe(action, x, lang);
     const rules = resultChanges(x, markerBase).filter(p => p[0] === 'rules'||p[0]==='parts'&&p[1]==='rules').map(p => `${editPathLabel(x, p, lang, markerBase)}: ${changeText(x, p, lang)}`);
     // count the user's edits, not the fields they touched: one balanced vote edit is one edit, not dozens of lists
     const count = factLog(x).length;
     const changedVotes = x.lists.some(l => l.votes !== markerBase.lists.find(y => y.id === l.id)?.votes);
     const referenceAction = [...markerBase.log].reverse().map(e => e.action).find(a => ['setVotes', 'redistribute', 'transfer', 'addVoters', 'scaleAll', 'setTurnout'].includes(a.type));
-    const sourceKey = (a: typeof action) => !a || a.type === 'redistribute' ? 'proportional' : a.type === 'setVotes' || a.type === 'addVoters' ? 'new' : a.type === 'transfer' ? `transfer:${a.from}:${a.to}` : a.type;
+    const sourceKey = (a: typeof action) => !a || a.type === 'redistribute' ? 'proportional' : a.type === 'setVotes' && a.citizens ? 'citizens' : a.type === 'setVotes' || a.type === 'addVoters' ? 'new' : a.type === 'transfer' ? `transfer:${a.from}:${a.to}` : a.type;
     const exceptional = action && changedVotes && sourceKey(action) !== sourceKey(referenceAction);
     return [formatDate(date, lang), count ? changesLabel(count, null, lang, true) : '', count && groupingOnly(x, markerBase) ? unchangedResultNote(lang) : '', status.includes('could not') || status.includes('לא הוחלו') ? status : '', exceptional ? source : '', ...rules].filter(Boolean).join(' · ');
   };

@@ -130,13 +130,13 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
     <div className="sec">
       <div className="sec-controls">
         <span className="small ink2">{L('Votes come from', 'מקור הקולות')}</span>
-        <Seg label={L('Votes come from', 'מקור הקולות')} value={kind} onChange={setKind} options={[{ v: 'proportional', label: L('Other lists', 'שאר הרשימות') }, { v: 'new', label: L('New voters', 'מצביעים חדשים') }]} />
+        <Seg label={L('Votes come from', 'מקור הקולות')} value={kind} onChange={setKind} options={[{ v: 'proportional', label: L('Other lists', 'שאר הרשימות') }, { v: 'new', label: L('People who stayed home', 'מי שלא הצביעו') }]} />
         <Info title={L('How this is computed', 'איך זה מחושב')}>
           {L('Each figure is the fewest votes a list must lose or gain to change its seats for certain, found by recomputing the whole election.', 'כל מספר הוא הכי מעט קולות שרשימה צריכה לאבד או להוסיף כדי שמספר המנדטים שלה ישתנה בוודאות, לפי חישוב מחדש של כל הבחירות.')}{' '}
           {policy === 'unspecified'
             ? L('* marks a figure where fewer votes could already bring an exact tie for the seat, for which the law of the time set no rule; point at it for the count.', '* מסמן מספר שכבר בפחות קולות ממנו ייתכן שוויון מדויק על המנדט, שהחוק של אז לא קבע לו כלל; הצביעו עליו כדי לראות את מספר הקולות.')
             : L('* marks a figure where fewer votes could already bring an exact tie for the seat, decided by lot; point at it for the count.', '* מסמן מספר שכבר בפחות קולות ממנו ייתכן שוויון מדויק על המנדט, שמוכרע בהגרלה; הצביעו עליו כדי לראות את מספר הקולות.')}{' '}
-          {L('Other lists: votes move to or from all other lists in proportion; turnout stays the same. New voters: votes come from new voters, or are lost to voters staying home, so the threshold moves too.', 'שאר הרשימות: הקולות עוברים מכל שאר הרשימות או אליהן, באופן יחסי; שיעור ההצבעה לא משתנה. מצביעים חדשים: הקולות באים ממצביעים חדשים, או אובדים כשבוחרים לא מצביעים, ולכן גם אחוז החסימה בקולות זז.')}{' '}
+          {L('Other lists: votes move to or from all other lists in proportion; turnout stays the same. People who stayed home: votes come from people who did not vote, or are lost to people staying home, so the threshold moves too.', 'שאר הרשימות: הקולות עוברים מכל שאר הרשימות או אליהן, באופן יחסי; שיעור ההצבעה לא משתנה. מי שלא הצביעו: הקולות באים ממי שלא הצביעו, או אובדים כשבוחרים נשארים בבית, ולכן גם אחוז החסימה בקולות זז.')}{' '}
           {L('Bars use a fixed square-root scale, capped at 1.25 seats’ worth of votes; numbers show the full margin. ≤ marks a figure found by sampling: the smallest may be lower. > means none was found within the search limit; ? that sampling found none.', 'הפסים בסקאלת שורש קבועה, עד קולות בשווי 1.25 מנדטים; המספרים מציגים את הפער המלא. ≤ מסמן מספר שנמצא בדגימה: הקטן ביותר עשוי להיות נמוך יותר. > פירושו שלא נמצא בגבול החיפוש; ? שהדגימה לא מצאה.')}
         </Info>
       </div>

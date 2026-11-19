@@ -97,7 +97,7 @@ test('Simple asks where added votes come from too, with each answer’s effect i
   // the two answers Simple offers, each with its consequence; no single-list transfers at Simple
   await expect(ask.locator('.source-consequences li')).toHaveCount(2);
   await expect(ask.locator('.source-consequences')).toContainText('Turnout stays the same');
-  await expect(ask.locator('.source-consequences')).toContainText('Turnout changes');
+  await expect(ask.locator('.source-consequences')).toContainText('so turnout changes');
   for (const scope of ['Just this once', 'For this list', 'Always']) await expect(ask.getByRole('radio', { name: scope, exact: true })).toBeVisible();
   const pick = ask.locator('.choice-trigger').first();
   await pick.click();
@@ -105,7 +105,7 @@ test('Simple asks where added votes come from too, with each answer’s effect i
   // no groups of single lists at Simple
   await expect(options.locator('.choice-era')).toHaveCount(0);
   await options.locator('[data-choice-value="new"]').click();
-  await expect(ask.locator('.source-consequences li[data-chosen]')).toContainText('New voters');
+  await expect(ask.locator('.source-consequences li[data-chosen]')).toContainText('People who stayed home');
   await ask.getByRole('button', { name: 'Apply', exact: true }).click();
   await expect(votes).toHaveValue('1,300,000');
   // new voters leave the other lists' votes alone

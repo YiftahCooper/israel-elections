@@ -5,17 +5,21 @@ import {englishLabel} from '../data/names.ts';
 import type { VoteSource } from '../engine/analysis.ts';
 import { votesCast, type Action, type Scenario, type SimList } from '../model/scenario.ts';
 
-export type SourceChoice = { kind: 'new' } | { kind: 'transfer'; listId: string } | { kind: 'proportional' };
+/** `new`: people who stayed home now vote (eligible voters unchanged, turnout rises). `citizens`: people added to the
+ *  country, who all vote (eligible voters rise by the same number, marked as an edit; 19 Nov 2026). */
+export type SourceChoice = { kind: 'new' } | { kind: 'citizens' } | { kind: 'transfer'; listId: string } | { kind: 'proportional' };
+/** Both kinds of added voters leave the other lists' votes alone. */
+export const addsVoters = (c: SourceChoice) => c.kind === 'new' || c.kind === 'citizens';
 
 /** Registered voters who did not vote: the most that "new voters" can add before turnout would pass 100%. */
 export const stayingHome = (s: Scenario): number => Math.max(0, s.registered - votesCast(s));
 
 /** The engine's form of a source. New voters need the scenario: they are capped at the voters staying home. */
-export function toVoteSource(c: Exclude<SourceChoice, { kind: 'new' }>): VoteSource;
+export function toVoteSource(c: Exclude<SourceChoice, { kind: 'new' } | { kind: 'citizens' }>): VoteSource;
 export function toVoteSource(c: SourceChoice, s: Scenario): VoteSource;
 export function toVoteSource(c: SourceChoice, s?: Scenario): VoteSource {
   if (c.kind === 'proportional') return { kind: 'proportional', listIds: [] };
-  return c.kind === 'new' ? { kind: 'new', max: BigInt(stayingHome(s!)) } : c;
+  return c.kind === 'new' ? { kind: 'new', max: BigInt(stayingHome(s!)) } : c.kind === 'citizens' ? { kind: 'new' } : c;
 }
 
 /** The action that changes `l` by `delta` votes, taking/returning them per `src`. */
@@ -23,6 +27,7 @@ export function deltaAction(s: Scenario, l: SimList, delta: number, src: SourceC
   if (!Number.isFinite(delta) || delta === 0) return null;
   delta = Math.round(delta);
   if (src.kind === 'new') return { type: 'setVotes', listId: l.id, votes: Math.max(0, l.votes + delta) };
+  if (src.kind === 'citizens') return { type: 'setVotes', listId: l.id, votes: Math.max(0, l.votes + delta), citizens: true };
   if (src.kind === 'transfer') {
     const other = s.lists.find((x) => x.id === src.listId);
     if (!other || other.id === l.id) return null;
@@ -45,6 +50,7 @@ export function deltaAction(s: Scenario, l: SimList, delta: number, src: SourceC
  *  New voters come from those staying home, so turnout never passes 100%. */
 export function maxGain(s: Scenario, l: SimList, src: SourceChoice): number {
   if (src.kind === 'new') return stayingHome(s);
+  if (src.kind === 'citizens') return Number.MAX_SAFE_INTEGER - l.votes - s.registered;
   if (src.kind === 'transfer') return s.lists.find((x) => x.id === src.listId)?.votes ?? 0;
   return s.lists.filter((x) => x.id !== l.id && !x.withdrawn).reduce((t, x) => t + x.votes, 0);
 }
@@ -57,7 +63,7 @@ export function votesForShare(s: Scenario, l: SimList, pct: number, src: SourceC
   const V = s.lists.reduce((t, x) => t + x.votes, 0);
   const p = pct / 100;
   // rounded up, so the list reaches at least the requested share (e.g. 3.25% means passing the threshold)
-  if (src.kind === 'new') return Math.ceil((p * (V - l.votes)) / (1 - p) - 1e-9);
+  if (addsVoters(src)) return Math.ceil((p * (V - l.votes)) / (1 - p) - 1e-9);
   return Math.ceil(p * V - 1e-9);
 }
 
@@ -69,7 +75,8 @@ export function clampTarget(s: Scenario, l: SimList, target: number, src: Source
 }
 
 export function voteSourceLabel(src: SourceChoice, s: Scenario, lang: 'he' | 'en'): string {
-  if (src.kind === 'new') return lang === 'he' ? 'מצביעים חדשים / מי שלא הצביעו' : 'new voters / voters staying home';
+  if (src.kind === 'new') return lang === 'he' ? 'מצביעים חדשים (מי שלא הצביעו)' : 'new voters (people who stayed home)';
+  if (src.kind === 'citizens') return lang === 'he' ? 'אזרחים חדשים' : 'new citizens';
   if (src.kind === 'proportional') return lang === 'he' ? 'שאר הרשימות באופן יחסי' : 'other lists proportionally';
   const l = s.lists.find(l => l.id === src.listId);
   return l ? (lang === 'he' ? l.shortHe : englishLabel(l.shortEn,l.shortHe)) : lang === 'he' ? 'רשימה אחרת' : 'another list';

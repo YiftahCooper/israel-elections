@@ -15,9 +15,10 @@
 .family-policy {display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;}
 .family-policy .seg button {min-block-size:32px;display:inline-flex;align-items:center;gap:6px;}
 .family-policy-label small {color:var(--muted);font-size:inherit;}
-/* Each counting choice carries the mark it produces on the chart: hatched, solid if the family heads the list, solid, or nothing. */
+/* Each counting choice carries the mark it produces on the chart: a shaded gap under a dashed edge (estimate by seats),
+   solid if the family heads the list, solid, or nothing. Stripes on Party families mean partners' seats only (19 Nov 2026). */
 .family-policy-icon {display:inline-grid;place-items:center;inline-size:11px;block-size:13px;flex-shrink:0;border:1px solid var(--family-color);border-radius:2px;font-size:9px;font-style:normal;font-weight:700;line-height:1;color:var(--family-ink);}
-.family-policy-icon[data-policy=separate-segment] {background:repeating-linear-gradient(45deg,var(--family-color) 0 1.2px,transparent 1.2px 3.5px);}
+.family-policy-icon[data-policy=separate-segment] {background:color-mix(in srgb,var(--family-color) 30%,transparent);border-block-start-style:dashed;}
 .family-policy-icon[data-policy=include-headed-list],.family-policy-icon[data-policy=include-whole-list] {background:var(--family-color);}
 .family-policy-icon[data-policy=exclude] {border:1.5px dashed var(--ink-2);}
 .family-policy [aria-pressed=true] .family-policy-icon {box-shadow:0 0 0 1px var(--shell-ink);}
@@ -39,12 +40,15 @@
 .family-vote-tools {grid-column:1/-1;}
 .family-end-label {font-size:11px;font-weight:600;fill:var(--ink-2);}
 .family-empty {fill:var(--muted);font-size:13px;paint-order:stroke;stroke:var(--surface-2);stroke-width:6px;}
-.family-mixed {stroke-opacity:1;opacity:1;}
+/* Design 2 (19 Nov 2026): the gap between the estimate and the dashed whole-list line, shaded in the family's colour */
+.family-gap {fill-opacity:.22;stroke:none;pointer-events:none;}
+.family-upper {pointer-events:none;}
 .family-plot-head {display:flex;justify-content:space-between;align-items:center;min-block-size:22px;gap:4px 12px;flex-wrap:wrap;}
-.family-legend {display:flex;gap:12px;font-size:12px;color:var(--ink-2);}
+.family-legend {display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;font-size:12px;color:var(--ink-2);margin:0;}
 .family-legend span {display:inline-flex;align-items:center;gap:5px;}
-.family-key-line {inline-size:16px;block-size:2.5px;background:var(--ink-2);border-radius:2px;}
-.family-key-mixed {inline-size:7px;block-size:12px;border:1px solid var(--ink-2);background:repeating-linear-gradient(45deg,var(--ink-2) 0 1.2px,transparent 1.2px 3.5px);}
+.family-key-line {inline-size:16px;block-size:2.5px;background:var(--key,var(--ink-2));border-radius:2px;}
+.family-key-dashed {inline-size:16px;block-size:0;border-block-start:2px dashed var(--key,var(--ink-2));}
+.family-key-mixed {inline-size:14px;block-size:10px;border-block-start:1.5px dashed var(--key,var(--ink-2));background:color-mix(in srgb,var(--key,var(--ink-2)) 22%,transparent);}
 .family-plot g[role=button] {cursor:pointer;}
 .family-plot g[role=button]:focus-visible {outline:2px solid var(--focus);}
 .family-tooltip {display:grid;gap:3px;position:fixed;inset-block-start:8px;inline-size:min(330px,calc((100vw - 16px) / var(--text-zoom, 1)));font-size:12px;line-height:1.4;background:var(--surface);border:1px solid var(--rule-2);box-shadow:var(--shadow-pop);padding:7px 10px;border-radius:5px;color:var(--ink);pointer-events:none;}
@@ -52,7 +56,7 @@
 .family-tooltip .ft-row {display:flex;gap:6px;align-items:flex-start;}
 .family-tooltip .ft-row>i {flex-shrink:0;margin-block-start:3px;}
 .family-tooltip .family-key-line {margin-block-start:7px;background:var(--family-color);}
-.family-tooltip .family-key-mixed {border-color:var(--family-color);background:repeating-linear-gradient(45deg,var(--family-color) 0 1.2px,transparent 1.2px 3.5px);}
+.family-tooltip .family-key-mixed {border-color:var(--family-color);background:color-mix(in srgb,var(--family-color) 22%,transparent);}
 .family-tooltip .ft-row b {font-weight:700;}
 .family-tooltip .ft-delta {font-weight:600;}
 .family-tooltip .ft-hint {color:var(--muted);}
@@ -74,7 +78,7 @@
 .family-seat-strip {position:relative;display:flex;gap:2px;block-size:18px;}
 .family-seat-strip i {display:grid;place-items:center;min-inline-size:2px;border-radius:2px;background:var(--rule-2);color:#fff;font-size:11px;font-style:normal;font-weight:600;font-variant-numeric:tabular-nums;overflow:hidden;}
 .family-seat-strip i[data-part=selected] {background:var(--family-color);}
-.family-seat-strip i[data-part=mixed] {background:repeating-linear-gradient(45deg,#b8a78a 0 3px,color-mix(in srgb,#b8a78a 55%,var(--surface)) 3px 6px);color:var(--ink);}
+.family-seat-strip i[data-part=mixed] {background:color-mix(in srgb,#b8a78a 55%,var(--surface));box-shadow:inset 0 0 0 1px #b8a78a;color:var(--ink);}
 .family-majority {position:absolute;inset-block:-3px;inline-size:0;border-inline-start:1.5px dashed var(--ink-2);}
 .family-seat-count {font-variant-numeric:tabular-nums;white-space:nowrap;}
 .family-seat-count b {font-size:14px;}
@@ -112,7 +116,7 @@
 .lb li[data-family=selected],.lb li[data-family=mixed] {border-inline-start:2px solid var(--rule-2);}
 .family-row-label {display:block;font-size:11px;color:var(--ink-2);font-weight:600;line-height:1.2;}
 .lb-row[data-family=selected] {background:var(--open);}
-.lb-row[data-family=mixed] {background:repeating-linear-gradient(135deg,transparent,transparent 5px,var(--rule) 5px,var(--rule) 6px);}
+.lb-row[data-family=mixed] {background:color-mix(in srgb,var(--open) 45%,transparent);}
 @media(min-width:1200px){.family-plots{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media(max-width:700px){.families{gap:14px;}.family-profile{display:grid;gap:6px;}.family-profile>.small{white-space:normal;}.family-top{gap:6px;}.family-chip{font-size:12px;padding:6px 9px;}.family-scale{grid-template-columns:minmax(0,1fr);}.family-chart-toolbar{gap:12px;}.family-plots{gap:16px;}.family-sheet{inline-size:100%;}.family-definition{font-size:12px;}.family-chart-toolbar .row{flex-wrap:wrap;}.family-sheet .choice-picker{max-inline-size:100%;}}
 @media(max-width:700px){.family-chips{flex-wrap:nowrap;overflow-x:auto;padding-block:2px 8px;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);padding-inline-end:24px;}[dir=rtl] .family-chips{-webkit-mask-image:linear-gradient(270deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(270deg,#000 calc(100% - 28px),transparent);}.family-chip{white-space:nowrap;flex-shrink:0;}.family-top{min-inline-size:0;}.family-chips{min-inline-size:0;}.family-top>.btn{flex-shrink:0;}}
@@ -126,13 +130,13 @@
 .family-point-total {display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;}
 .family-point-mixed {display:inline-flex;align-items:center;gap:6px;}
 .family-point-review {color:var(--muted);font-size:13px;}
-.family-point-mixed .family-key-mixed,.family-point-total .family-key-mixed {border-color:var(--family-color);background:repeating-linear-gradient(45deg,var(--family-color) 0 1.2px,transparent 1.2px 3.5px);}
+.family-point-mixed .family-key-mixed,.family-point-total .family-key-mixed {border-color:var(--family-color);background:color-mix(in srgb,var(--family-color) 22%,transparent);}
 .family-point-delta {font-weight:600;font-size:13px;}
 .family-point-lists article {position:relative;padding-inline-start:10px;}
-/* Counted lists carry the family's solid line, mixed lists its hatching, so the sheet reads like the chart. */
+/* Counted lists carry the family's solid line, mixed lists its shaded gap, so the sheet reads like the chart. */
 .family-point-lists article[data-state]::before {content:'';position:absolute;inset-inline-start:0;inset-block:0 12px;inline-size:3px;border-radius:2px;}
 .family-point-lists article[data-state=counted]::before {background:var(--family-color);}
-.family-point-lists article[data-state=mixed]::before {inline-size:5px;background:repeating-linear-gradient(45deg,var(--family-color) 0 1.5px,transparent 1.5px 4px);box-shadow:inset 0 0 0 1px var(--family-color);}
+.family-point-lists article[data-state=mixed]::before {inline-size:5px;background:color-mix(in srgb,var(--family-color) 30%,transparent);border-inline-start:1.5px dashed var(--family-color);}
 .family-own-dot {inline-size:8px;block-size:8px;border-radius:50%;background:var(--family-color);flex-shrink:0;}
 .family-point-changes h3 {display:flex;align-items:center;gap:6px;}
 .family-point-lists {display:grid;gap:12px;}

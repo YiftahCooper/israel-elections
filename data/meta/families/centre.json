@@ -544,16 +544,60 @@
       "support": "Party affiliation (השתייכות מפלגתית) of every candidate on list רק: of the 12 elected, places 2, 4, 6, 9 and 12 were nominated by Yesh Atid and places 1, 3, 5, 7, 8, 10 and 11 by Together (Bennett). Retained copy: data/raw/k26/yp15023-candidates.pdf.",
       "publisherHe": "רשומות, ילקוט הפרסומים 15023, 13 באוקטובר 2026, עמ׳ 863–866 (עותק ציבורי)"
     },
-    "crs-in12751": {
-      "url": "https://www.everycrsreport.com/files/2026-10-30_IN12751_9721e1fb9efa295a5078f5461d9b952ec1254e8a.pdf",
-      "publisher": "Congressional Research Service (Jim Zanotti), Insight IN12751, 30 October 2026",
+    "idi-haredi-ballot-2026": {
+      "url": "https://www.idi.org.il/media/33113/the-ultra-orthodox-ballot-box.pdf#page=24",
+      "publisher": "Israel Democracy Institute, Gabriel Gordon and Ariel Karlinsky, November 2026",
+      "publisherHe": "המכון הישראלי לדמוקרטיה, גבריאל גורדון ואריאל קרלינסקי, נובמבר 2026",
       "kind": "secondary",
-      "accessed": "2026-11-16",
-      "support": "p. 1: the bloc of 48 seats was “led by the centrist Yashar party headed by Gadi Eisenkot”. An independent analysis placing Yashar in the centre; it names no family for Yashar's partner Yesodot Yisrael.",
-      "retrieval": {
-        "status": 200,
-        "sha256": "21b9e48f1d34d8c469fdf14767d413486b1bea9d536c12ed2651ef3d6eb765d1"
-      }
+      "accessed": "2026-11-19",
+      "locator": "p. 24, Appendix 3, 2026 row under מרכז",
+      "quote": "ישר, ביחד, המילואימניקים והכלכלית",
+      "support": "The authors group whole 2026 ballots for a study of Haredi voting; Yashar! and the Reservists–New Economic list are under Centre. Not a split between a list's parties."
+    },
+    "ynet-eisenkot-2026": {
+      "url": "https://www.ynet.co.il/news/article/ryp10r5xmg",
+      "publisher": "Ynet, Moran Azulay, 1 June 2026",
+      "publisherHe": "ynet, מורן אזולאי, 1 ביוני 2026",
+      "kind": "secondary",
+      "accessed": "2026-11-19",
+      "quote": "מרכז ממלכתי שיודע להתחבר לימין ליברלי ולשמאל ציוני, עם גישה אקטיביסטית",
+      "support": "Gadi Eisenkot's own description of Yashar!'s place during the campaign."
+    },
+    "mako-compass-yashar-2026": {
+      "url": "https://electionsvote.mako.co.il/",
+      "publisher": "Mako Election Compass, with the Tachlith Institute, 2026",
+      "publisherHe": "מצפן הבחירות של mako, עם מכון תכלית, 2026",
+      "kind": "secondary",
+      "accessed": "2026-11-19",
+      "quote": "מפלגת מרכז שהוקמה לקראת הבחירות ע\"י הרמטכ\"ל לשעבר איזנקוט",
+      "support": "An Israeli election guide describes Yashar! as a centre party."
+    },
+    "mako-compass-reservists-2026": {
+      "url": "https://electionsvote.mako.co.il/",
+      "publisher": "Mako Election Compass, with the Tachlith Institute, 2026",
+      "publisherHe": "מצפן הבחירות של mako, עם מכון תכלית, 2026",
+      "kind": "secondary",
+      "accessed": "2026-11-19",
+      "quote": "רשימת מרכז-ימין",
+      "support": "An Israeli election guide describes the Reservists–New Economic list as centre-right."
+    },
+    "jpost-guide-2026": {
+      "url": "https://www.jpost.com/israel-election-2026/article-912590",
+      "publisher": "The Jerusalem Post, election guide, 27 October 2026",
+      "publisherHe": "ג'רוזלם פוסט, מדריך הבחירות, 27 באוקטובר 2026",
+      "kind": "secondary",
+      "accessed": "2026-11-19",
+      "quote": "a right-leaning Zionist and security agenda with an emphasis on economic reform",
+      "support": "An Israeli election guide describes the Reservists–New Economic list's agenda as right-leaning."
+    },
+    "inn-hendel-2026": {
+      "url": "https://www.inn.co.il/news/707482",
+      "publisher": "Arutz Sheva, Uzi Baruch, interview with Yoaz Hendel, 1 October 2026",
+      "publisherHe": "ערוץ 7, אוזי ברוך, ראיון עם יועז הנדל, 1 באוקטובר 2026",
+      "kind": "secondary",
+      "accessed": "2026-11-19",
+      "quote": "אני ימני, חד-משמעית, וגם המפלגה שלנו היא מפלגה ימנית",
+      "support": "Yoaz Hendel's own description of himself and his party in the final campaign."
     }
   },
   "elections": [
@@ -3621,36 +3665,55 @@
             "locator": "public/data/k26.json#/lists/5"
           },
           "classificationEvidence": {
-            "status": "documented",
+            "status": "inferred",
             "sourceIds": [
-              "crs-in12751",
-              "k26"
+              "k26",
+              "idi-haredi-ballot-2026",
+              "ynet-eisenkot-2026",
+              "mako-compass-yashar-2026"
             ],
-            "claim": "An independent analysis (the US Congressional Research Service) calls Yashar! (Eisenkot) a centrist party. The sources found place its partner, Yesodot Yisrael, in no family, so this is a mixed list.",
-            "claimHe": "ניתוח בלתי תלוי (שירות המחקר של הקונגרס האמריקאי) מכנה את ישר! (איזנקוט) מפלגת מרכז. המקורות שנמצאו אינם משבצים את שותפתה, יסודות ישראל, באף משפחה, ולכן זו רשימה מעורבת."
+            "claim": "Placed here by this project, from the sources below. An Israel Democracy Institute study puts its joint list in Centre, and Eisenkot described his approach as centrist. Its partner, Yesodot Yisrael, is placed in no family and three of its candidates were elected, so this is a mixed list.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. מחקר של המכון הישראלי לדמוקרטיה שיבץ את הרשימה המשותפת במרכז, ואיזנקוט תיאר את דרכו כדרך של מרכז ממלכתי. שותפתה, יסודות ישראל, אינה משובצת באף משפחה ושלושה ממועמדיה נבחרו, ולכן זו רשימה מעורבת."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "26-די",
+          "letters": "די",
+          "nameHe": "המילואימניקים והכלכלית בראשות יועז הנדל וירון זליכה",
+          "votes": 155199,
+          "partyIds": [
+            "reservists"
+          ],
+          "datasetPartyIds": [
+            "reservists",
+            "new-economic"
+          ],
+          "proposedPartyIds": [],
+          "scope": "mixed",
+          "treatment": "separate-segment",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k26.json#/lists/11"
+          },
+          "classificationEvidence": {
+            "status": "inferred",
+            "sourceIds": [
+              "k26",
+              "idi-haredi-ballot-2026",
+              "mako-compass-reservists-2026",
+              "jpost-guide-2026",
+              "inn-hendel-2026"
+            ],
+            "claim": "Placed here by this project, from the sources below. The Reservists (Yoaz Hendel) count as this family’s party. An Israel Democracy Institute study groups the joint list under Centre; Israeli election guides call it centre-right or right-leaning, and Hendel described his party as right-wing. Its partner, the New Economic Party (Yaron Zelekha), is placed in no family, so this is a mixed list. The list won no seat.",
+            "projectReading": "proposal",
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. המילואימניקים (יועז הנדל) נספרים כמפלגת המשפחה. מחקר של המכון הישראלי לדמוקרטיה שיבץ את הרשימה המשותפת במרכז; מדריכי בחירות בישראל תיארו אותה כרשימת מרכז־ימין או כנוטה ימינה, והנדל תיאר את מפלגתו כמפלגת ימין. שותפתם, המפלגה הכלכלית החדשה (ירון זליכה), אינה משובצת באף משפחה, ולכן זו רשימה מעורבת. הרשימה לא זכתה במנדט."
           },
           "constituentVotes": null
         }
       ],
       "reviewCandidates": [
-        {
-          "listId": "26-די",
-          "nameHe": "המילואימניקים והכלכלית בראשות יועז הנדל וירון זליכה",
-          "votes": 155199,
-          "partyIds": [
-            "reservists",
-            "new-economic"
-          ],
-          "treatment": "exclude-pending-or-contested",
-          "evidenceStatus": "unresolved",
-          "sourceIds": [
-            "k26",
-            "centre"
-          ],
-          "reason": "Not counted: whether this list belongs here is still being checked.",
-          "projectReading": "proposal",
-          "reasonHe": "לא נספרת: עדיין בודקים אם הרשימה שייכת למשפחה הזאת."
-        },
         {
           "listId": "26-כן",
           "nameHe": "כחול לבן בראשות בני גנץ",
@@ -3687,20 +3750,20 @@
           "displayPct": 0.0
         },
         "mixedWholeLists": {
-          "votes": 1445647,
+          "votes": 1600846,
           "percent": {
-            "numerator": 144564700,
+            "numerator": 160084600,
             "denominator": 5691426
           },
-          "displayPct": 25.400436
+          "displayPct": 28.127327
         },
         "wholeListInclusionAlternative": {
-          "votes": 1445647,
+          "votes": 1600846,
           "percent": {
-            "numerator": 144564700,
+            "numerator": 160084600,
             "denominator": 5691426
           },
-          "displayPct": 25.400436
+          "displayPct": 28.127327
         },
         "mixedHarediVotes": null,
         "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."

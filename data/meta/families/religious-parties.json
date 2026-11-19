@@ -4619,8 +4619,8 @@
             "otzma-yehudit"
           ],
           "proposedPartyIds": [],
-          "scope": "mixed",
-          "treatment": "separate-segment",
+          "scope": "core",
+          "treatment": "include",
           "identityEvidence": {
             "status": "observed-local-dataset",
             "locator": "public/data/k21.json#/lists/7"
@@ -4632,9 +4632,9 @@
               "national",
               "haredi-society"
             ],
-            "claim": "Placed here by this project, from the sources below. A Haredi, religious Zionist or Islamic party is on this list; if parties outside this family share it, it is a mixed list.",
+            "claim": "Placed here by this project, from the sources below. Some of its parties are outside this family, but none of their candidates was elected, so the whole list counts.",
             "projectReading": "proposal",
-            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. ברשימה יש מפלגה חרדית, דתית־לאומית או אסלאמית; אם מפלגות מחוץ למשפחה שותפות בה, זו רשימה מעורבת."
+            "claimHe": "הפרויקט שיבץ אותה כאן, לפי המקורות שלהלן. חלק ממפלגותיה אינן במשפחה הזאת, אבל איש ממועמדיהן לא נבחר, ולכן הרשימה כולה נספרת."
           },
           "constituentVotes": null
         },
@@ -4739,28 +4739,28 @@
       ],
       "computed": {
         "coreOnly": {
-          "votes": 507324,
+          "votes": 666792,
           "percent": {
-            "numerator": 50732400,
+            "numerator": 66679200,
             "denominator": 4309270
           },
-          "displayPct": 11.772852
+          "displayPct": 15.473433
         },
         "includedUnmixed": {
-          "votes": 507324,
+          "votes": 666792,
           "percent": {
-            "numerator": 50732400,
+            "numerator": 66679200,
             "denominator": 4309270
           },
-          "displayPct": 11.772852
+          "displayPct": 15.473433
         },
         "mixedWholeLists": {
-          "votes": 303134,
+          "votes": 143666,
           "percent": {
-            "numerator": 30313400,
+            "numerator": 14366600,
             "denominator": 4309270
           },
-          "displayPct": 7.034463
+          "displayPct": 3.333883
         },
         "wholeListInclusionAlternative": {
           "votes": 810458,

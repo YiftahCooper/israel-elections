@@ -45,7 +45,7 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
   const modes: CopyMode[] = [...basic, ...(expert ? ['change', 'ratio'] as const : [])];
   const rem = remembered(to.sc, one, cross);
   const [mode, setMode] = useState<CopyMode>(() => { const m = rem.mode ?? COPY_MODE_DEFAULT; return basic.includes(m) ? m : basic[0]; });
-  const [source, setSource] = useState<SourceChoice>(() => { const v = rem.source ?? voteSource; return v.kind === 'transfer' && dst.includes(v.listId) ? { kind: 'proportional' } : v; });
+  const [source, setSource] = useState<SourceChoice>(() => { const v = rem.source ?? voteSource; return v.kind === 'transfer' && dst.includes(v.listId) ? { kind: 'proportional' } : v.kind === 'citizens' ? { kind: 'new' } : v; });
   const [scope, setScope] = useState<'once' | 'item' | 'always'>('once');
   const plans = useMemo(() => Object.fromEntries(modes.map((m) => [m, (m === 'change' || m === 'ratio') && !edited ? null
     : planVotes({ from: sourceOf(from), to: to.sc, ctx: { base: to.base }, units, mode: m, policy: source })])) as Record<CopyMode, Plan | null>,

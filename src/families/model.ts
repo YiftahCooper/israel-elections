@@ -81,19 +81,23 @@ export function distribute(total: bigint, weights: bigint[]): number[] {
 }
 export function decimal(x: string) { if (!/^-?\d+(\.\d{1,6})?$/.test(x)) throw new Error('Invalid decimal'); const [a,b='']=x.split('.'); return { n:BigInt(a+b), d:10n**BigInt(b.length) }; }
 export function scaleAction(f: Family, s: Scenario, mode: 'multiplier'|'share', value: string, source: SourceChoice): Extract<Action, {type:'familyOperation';operation:'scale'}> {
+  // New voters (people who stayed home) and new citizens both add votes without taking any; only new citizens raise the
+  // number of eligible voters, and new voters are capped at the people who stayed home (19 Nov 2026).
+  const adds=source.kind==='new'||source.kind==='citizens';
   const lists=resolve(f,s), members=lists.filter(l=>l.family==='selected'&&!l.withdrawn);
   const current=members.reduce((a,l)=>a+BigInt(l.votes),0n), valid=s.lists.reduce((a,l)=>a+BigInt(l.votes),0n);
   if (!current) throw new Error('zero-family');
   const {n,d}=decimal(value); let target: bigint;
   // A negative percentage lowers the family (−100% removes all its votes); a target share is never negative.
   if (mode==='multiplier') { if (n < -100n*d) throw new Error('target'); target=(current*(100n*d+n)+50n*d)/(100n*d); }
-  else { if (n<0n || n>100n*d) throw new Error('target'); target=source.kind==='new' ? (n===100n*d ? -1n : (n*(valid-current)+(100n*d-n)-1n)/(100n*d-n)) : (valid*n+50n*d)/(100n*d); }
+  else { if (n<0n || n>100n*d) throw new Error('target'); target=adds ? (n===100n*d ? -1n : (n*(valid-current)+(100n*d-n)-1n)/(100n*d-n)) : (valid*n+50n*d)/(100n*d); }
   const donors=lists.filter(l=>l.family!=='selected'&&!l.withdrawn&&(source.kind!=='transfer'||l.id===source.listId));
   const donorTotal=donors.reduce((a,l)=>a+BigInt(l.votes),0n), delta=target-current;
-  if (target<0n || source.kind!=='new' && (donorTotal<delta || donorTotal===0n && delta!==0n)) throw new Error('donors');
+  if (target<0n || !adds && (donorTotal<delta || donorTotal===0n && delta!==0n)) throw new Error('donors');
+  if (source.kind==='new' && delta>BigInt(Math.max(0,s.registered-s.invalid))-valid) throw new Error('home');
   const allocations=members.map((l,i)=>({listId:l.id,before:l.votes,votes:distribute(target,members.map(l=>BigInt(l.votes)))[i]}));
-  if(source.kind!=='new') { const shares=distribute(donorTotal-delta,donors.map(l=>BigInt(l.votes))); donors.forEach((l,i)=>allocations.push({listId:l.id,before:l.votes,votes:shares[i]})); }
-  return { type:'familyOperation', definition:structuredClone(f), operation:'scale', allocations, source, target:Number(target), registeredDelta:source.kind==='new'?Number(delta):0 };
+  if(!adds) { const shares=distribute(donorTotal-delta,donors.map(l=>BigInt(l.votes))); donors.forEach((l,i)=>allocations.push({listId:l.id,before:l.votes,votes:shares[i]})); }
+  return { type:'familyOperation', definition:structuredClone(f), operation:'scale', allocations, source, target:Number(target), registeredDelta:source.kind==='citizens'?Number(delta):0 };
 }
 export function groupingAction(f: Family,s: Scenario,lang: 'he'|'en' = 'he'): Action {
   return {type:'familyOperation',definition:structuredClone(f),operation:'group', name:familyLabel(f,lang), placements:Object.fromEntries(resolve(f,s).map(l=>[l.id,l.family]))};

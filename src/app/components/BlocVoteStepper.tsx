@@ -20,12 +20,12 @@ export function BlocVoteStepper({ s, r, bloc }: { s: Scenario; r: AllocationResu
   const plan = (from: SourceChoice) => {
     const outside = s.lists.filter(l => !l.withdrawn && !ids.has(l.id) && (from.kind !== 'transfer' || l.id === from.listId));
     const pool = outside.reduce((t, l) => t + l.votes, 0);
-    const possible = from.kind === 'new' || (from.kind === 'transfer' ? outside.length > 0 : pool > 0);
-    const max = !total || !possible ? total : from.kind === 'new' ? total + stayingHome(s) : total + pool;
+    const possible = from.kind === 'new' || from.kind === 'citizens' || (from.kind === 'transfer' ? outside.length > 0 : pool > 0);
+    const max = !total || !possible ? total : from.kind === 'new' ? total + stayingHome(s) : from.kind === 'citizens' ? Number.MAX_SAFE_INTEGER - s.registered : total + pool;
     const actionsFor = (target: number): Action[] => {
       const delta = Math.round(target) - total;
       if (!total || !delta || !possible) return [];
-      if (from.kind === 'new') return apportion(Math.round(target), members.map(l => l.votes)).map((votes, i) => ({ type: 'setVotes', listId: members[i].id, votes }));
+      if (from.kind === 'new' || from.kind === 'citizens') return apportion(Math.round(target), members.map(l => l.votes)).map((votes, i) => ({ type: 'setVotes', listId: members[i].id, votes, ...(from.kind === 'citizens' ? { citizens: true } : {}) }));
       return [{ type: 'redistribute', from: (delta > 0 ? outside : members).map(l => l.id), to: (delta > 0 ? members : outside).map(l => ({ listId: l.id, share: from.kind === 'transfer' && delta < 0 ? 1 : l.votes })), votes: Math.abs(delta) }];
     };
     return { outside, pool, possible, max, actionsFor };

@@ -190,17 +190,20 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         const donors=resolved.filter(l=>l.family!=='selected'&&!l.withdrawn&&(action.source.kind!=='transfer'||l.id===action.source.listId));
         const expectedMembers=distribute(BigInt(action.target),members.map(l=>BigInt(l.votes)));
         const memberBefore=sumVotes(members.map(l=>l.votes)), delta=action.target-memberBefore;
-        need(members.length>0 && ids.length===members.length+(action.source.kind==='new'?0:donors.length),'family',M.invalid);
+        const adds=action.source.kind==='new'||action.source.kind==='citizens';
+        need(members.length>0 && ids.length===members.length+(adds?0:donors.length),'family',M.invalid);
         members.forEach((l,i)=>need(action.allocations.find(a=>a.listId===l.id)?.votes===expectedMembers[i],'family',M.invalid));
-        if(action.source.kind!=='new') {
+        if(!adds) {
           const donorTarget=sumVotes(donors.map(l=>l.votes))-delta;
           need(donorTarget>=0,'family',M.donorsShort);
           const shares=distribute(BigInt(donorTarget),donors.map(l=>BigInt(l.votes)));
           donors.forEach((l,i)=>need(action.allocations.find(a=>a.listId===l.id)?.votes===shares[i],'family',M.invalid));
         }
         const before=sumVotes(action.allocations.map(a=>a.before)), after=sumVotes(action.allocations.map(a=>a.votes));
-        need(after-before===action.registeredDelta && (action.source.kind==='new' || action.registeredDelta===0),'family',M.invalid);
+        // new citizens raise eligible voters by the votes they add; people who stayed home leave them unchanged (19 Nov 2026)
+        need(action.registeredDelta===(action.source.kind==='citizens'?after-before:0),'family',M.invalid);
         s={...s,familyDefinition:definition,registered:s.registered+action.registeredDelta,lists:s.lists.map(l=>({...l,votes:action.allocations.find(a=>a.listId===l.id)?.votes??l.votes}))};
+        if(action.source.kind==='new'&&after>before)need(addVotes(sumVotes(s.lists.map(l=>l.votes)),s.invalid)<=s.registered,'turnout',M.turnoutOver);
       }
       break;
     }
@@ -316,6 +319,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
     case 'setVotes':
       need(isWhole(action.votes), 'votes', M.votesWhole);
       notWithdrawn(s, action.listId);
+      if (action.citizens) { const was = listById(s, action.listId).votes; need(s.registered + action.votes - was >= 0, 'registered', M.invalid); s = { ...s, registered: s.registered + action.votes - was }; }
       s = replaceList(s, action.listId, (l) => ({ ...l, votes: action.votes }));
       listById(s, action.listId);
       break;

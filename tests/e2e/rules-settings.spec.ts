@@ -41,7 +41,7 @@ test('a "For this list" answer is listed in Settings and Ask again makes the edi
   await page.locator('[data-setting="voteSource"]').getByRole('button', { name: 'Remembered for 1' }).click();
   const items = page.getByRole('list', { name: 'Votes come from · For one list or bloc' });
   await expect(items.getByRole('listitem')).toHaveCount(1);
-  await expect(items).toContainText('Likud (2026 · 26th Knesset): New voters');
+  await expect(items).toContainText('Likud (2026 · 26th Knesset): People who stayed home');
   await expect(page.getByRole('group', { name: 'Votes come from', exact: true }).getByRole('button', { name: 'Ask', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await items.getByRole('button', { name: /^Ask again for Likud/ }).click();
   await expect(items).toHaveCount(0);

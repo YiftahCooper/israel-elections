@@ -4,10 +4,10 @@
  * seats reach, by the party each represented). Nothing is estimated and no rule of ours decides which partners are
  * shown: every partner on every joint list the family ran on that year is listed.
  *
- * The mixed-list vote policy (Show hatched / Count all / …) does not apply here: it exists because votes cannot be
+ * The mixed-list vote policy (Estimate by seats / Count all / …) does not apply here: it exists because votes cannot be
  * split between a joint list's parties, while seats can. A personal copy's edits do apply: a disabled list is left out
  * and an added list counts whole for the family. */
-import type {Family} from './model.ts';
+import {aggregate,membership,type Family} from './model.ts';
 import {historyElections,jointParts} from './runtime.ts';
 
 export interface SeatPart {
@@ -115,4 +115,22 @@ export function stackBar(own:number,partners:readonly number[],g:SeatGeometry):B
   y=y1;return {y0,y1,cut:y1<full-1e-9};
  });
  return {scale,own:ownTop,parts,clipped:true,fadeFrom:Z};
+}
+
+/** The vote chart's estimate of a family's votes at one election (owner's Design 2, 19 Nov 2026): whole lists count in
+ * full, and each mixed list adds its votes in proportion to the family's own elected members on it (Likud won 20 of
+ * Likud Yisrael Beiteinu's 31 seats in 2013, so 20/31 of the list's votes count). A mixed list that won no seat adds
+ * nothing. `low`/`high` are the whole lists alone and with every mixed list counted whole; the real figure lies between.
+ * Null when the family's votes are unknown, or a mixed list's seats are not published. Follows the mixed-list policy:
+ * a list the policy counts whole is whole here too, and a list it leaves out is not counted. */
+export function familyEstimate(f:Family,electionId:string):{estimate:number;low:number;high:number}|null {
+ const e=historyElections.find(d=>d.id===electionId);if(!e)return null;
+ const a=aggregate(f,e);if(a.votes===null||a.mixed===null)return null;
+ const low=Number(a.votes),high=low+Number(a.mixed),mixed=membership(f,e.id).mixed;
+ if(!a.mixed)return {estimate:low,low,high};
+ if(!e.seats)return null;
+ const row=familySeatRow(f,electionId);if(row.status!=='observed')return null;
+ let estimate=low;
+ for(const id of mixed){const n=e.seats[id]??0,votes=e.lists.find(l=>l.id===id)?.votes??0,own=row.ownLists.find(l=>l.listId===id)?.seats??0;if(n>0)estimate+=votes*own/n;}
+ return {estimate,low,high};
 }

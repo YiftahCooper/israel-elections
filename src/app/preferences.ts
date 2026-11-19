@@ -4,7 +4,8 @@ export const PREFERENCES = {
     label: ['Votes come from', 'מקור הקולות'],
     options: [
       { value: 'proportional', label: ['Other lists', 'שאר הרשימות'] },
-      { value: 'new', label: ['New voters', 'מצביעים חדשים'] },
+      { value: 'new', label: ['People who stayed home', 'מי שלא הצביעו'] },
+      { value: 'citizens', label: ['New citizens', 'אזרחים חדשים'] },
     ],
   },
   jointSeats: {
@@ -39,7 +40,7 @@ export type PreferenceAsk = {
   run: (answer: string) => void; cancel?: () => void;
 };
 export const sourceValue = (src: import('./voteEdit.ts').SourceChoice) => src.kind === 'transfer' ? `t:${src.listId}` : src.kind;
-export const sourceChoice = (v: string): import('./voteEdit.ts').SourceChoice => v.startsWith('t:') ? { kind: 'transfer', listId: v.slice(2) } : { kind: v === 'new' ? 'new' : 'proportional' };
+export const sourceChoice = (v: string): import('./voteEdit.ts').SourceChoice => v.startsWith('t:') ? { kind: 'transfer', listId: v.slice(2) } : { kind: v === 'new' ? 'new' : v === 'citizens' ? 'citizens' : 'proportional' };
 export function validAnswers(value: unknown): PreferenceAnswers {
   if (!value || typeof value !== 'object') return {};
   const answers: PreferenceAnswers = {};

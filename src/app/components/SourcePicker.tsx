@@ -26,11 +26,11 @@ export function SourcePicker({ s, l }: { s: Scenario; l: SimList }) {
     <div>
       <div className="field">
         <span className="row" style={{ gap: 6 }}><span>{L('Votes come from', 'מקור הקולות')}</span>
-          <Info title={L('Where the votes come from', 'מאיפה באים הקולות')}>{L('Taking votes from all other lists keeps turnout and the valid total fixed. New voters (or voters staying home) change the valid total, and so the threshold in votes. A transfer moves votes from or to one list — if that list is below the threshold, those votes stop being wasted. These give different seat results.', 'לקיחה מכל שאר הרשימות שומרת על ההצבעה ועל סך הכשרים. מצביעים חדשים (או בוחרים שלא מצביעים) משנים את סך הכשרים ולכן את אחוז החסימה בקולות. מעבר מזיז קולות מול רשימה אחת — אם היא מתחת לחסימה, הקולות מפסיקים להתבזבז. התוצאות שונות.')}</Info>
+          <Info title={L('Where the votes come from', 'מאיפה באים הקולות')}>{L('Taking votes from all other lists keeps turnout and the valid total fixed. People who stayed home and now vote change the valid total, and so the threshold in votes; eligible voters stay the same, so turnout rises. New citizens are people added to the country, who all vote: eligible voters rise by the same number, marked as a change. A transfer moves votes from or to one list — if that list is below the threshold, those votes stop being wasted. These give different seat results.', 'לקיחה מכל שאר הרשימות שומרת על ההצבעה ועל סך הכשרים. מי שלא הצביעו ומצביעים הפעם משנים את סך הכשרים ולכן את אחוז החסימה בקולות; מספר בעלי זכות הבחירה לא משתנה, ולכן שיעור ההצבעה עולה. אזרחים חדשים הם אנשים שנוספו למדינה, וכולם מצביעים: מספר בעלי זכות הבחירה גדל באותו מספר, ומסומן כשינוי. מעבר מזיז קולות מול רשימה אחת — אם היא מתחת לחסימה, הקולות מפסיקים להתבזבז. התוצאות שונות.')}</Info>
         </span>
         <ChoicePicker label={L('Votes come from', 'מקור הקולות')} value={src.kind === 'transfer' ? `t:${src.listId}` : src.kind} onChange={(v) =>
-          chooseSource(`list:${l.id}`, v === 'new' ? { kind: 'new' } : v === 'proportional' ? { kind: 'proportional' } : { kind: 'transfer', listId: v.slice(2) })}
-          options={[{ value: 'proportional', label: L('Other lists', 'שאר הרשימות') }, { value: 'new', label: L('New voters / staying home', 'מצביעים חדשים / מי שלא הצביעו') },
+          chooseSource(`list:${l.id}`, v === 'new' ? { kind: 'new' } : v === 'citizens' ? { kind: 'citizens' } : v === 'proportional' ? { kind: 'proportional' } : { kind: 'transfer', listId: v.slice(2) })}
+          options={[{ value: 'proportional', label: L('Other lists', 'שאר הרשימות') }, { value: 'new', label: L('People who stayed home', 'מי שלא הצביעו') }, { value: 'citizens', label: L('New citizens', 'אזרחים חדשים') },
             ...[...others].sort((a, b) => b.votes - a.votes).map((x) => listChoice(x, lang, { value: `t:${x.id}`, detail: fmtInt(x.votes), group: L('One specific list (transfer)', 'רשימה אחת מסוימת (מעבר)') }))]} />
       </div>
     </div>
@@ -62,18 +62,19 @@ export function SourceDialog() {
     onClick={e => { if (e.target === e.currentTarget) cancel(); }}>
     <p className="small" style={{ margin: 0 }}><b>{ask?.title}</b>{' '}
       <Info title={label}>{id === 'voteSource'
-        ? L('Other lists: taken from all, in proportion; turnout unchanged. New voters: turnout changes. One list: only that list gives or takes. A remembered donor is asked again if unavailable or part of the edited group.', 'שאר הרשימות: מכולן, באופן יחסי; ההצבעה ללא שינוי. מצביעים חדשים: ההצבעה משתנה. רשימה אחת: רק היא נותנת או מקבלת. אם הרשימה ששמרתם אינה זמינה או שייכת לקבוצה הנערכת, השאלה תוצג שוב.')
+        ? L('Other lists: taken from all, in proportion; turnout unchanged. People who stayed home: turnout changes. New citizens: eligible voters change too. One list: only that list gives or takes. A remembered donor is asked again if unavailable or part of the edited group.', 'שאר הרשימות: מכולן, באופן יחסי; ההצבעה ללא שינוי. מי שלא הצביעו: שיעור ההצבעה משתנה. אזרחים חדשים: גם מספר בעלי זכות הבחירה משתנה. רשימה אחת: רק היא נותנת או מקבלת. אם הרשימה ששמרתם אינה זמינה או שייכת לקבוצה הנערכת, השאלה תוצג שוב.')
         : L('Opened scenario: only your newer changes are marked. Official result: every difference is marked.', 'התרחיש שנפתח: מסומנים רק השינויים החדשים. התוצאה הרשמית: מסומן כל הבדל.')}</Info></p>
     <form onSubmit={e => { e.preventDefault(); if (value) answerPreference(value, scope); }}>
       <label className="field">{label}
         <ChoicePicker label={label} placeholder={L('Choose…', 'בחירה…')} value={value} onChange={setValue}
-          options={[...PREFERENCES[id].options.map(o => ({ value: o.value, label: L(o.label[0], o.label[1]) })),
+          options={[...PREFERENCES[id].options.filter(o => !(simple && o.value === 'citizens')).map(o => ({ value: o.value, label: L(o.label[0], o.label[1]) })),
             ...(id === 'voteSource' && !simple ? others.map(x => listChoice(x, lang, { value: sourceValue({ kind: 'transfer', listId: x.id }), group: L('One list', 'רשימה אחת') })) : [])]} />
       </label>
       {/* what each answer does, always in view (the chosen one in bold), so the dialog never changes height */}
       {id === 'voteSource' && <ul className="tiny source-consequences">
         <li data-chosen={value === 'proportional' || undefined}><b>{L('Other lists', 'שאר הרשימות')}:</b> {L('taken from all of them, by size. Turnout stays the same.', 'נלקחים מכולן, לפי גודלן. שיעור ההצבעה לא משתנה.')}</li>
-        <li data-chosen={value === 'new' || undefined}><b>{L('New voters', 'מצביעים חדשים')}:</b> {L('more people vote (or fewer). Turnout changes; other lists keep their votes.', 'יותר אנשים מצביעים (או פחות). שיעור ההצבעה משתנה; לשאר הרשימות אותם קולות.')}</li>
+        <li data-chosen={value === 'new' || undefined}><b>{L('People who stayed home', 'מי שלא הצביעו')}:</b> {L('they vote now (or more stay home). Eligible voters stay the same, so turnout changes; other lists keep their votes.', 'הם מצביעים הפעם (או שיותר נשארים בבית). מספר בעלי זכות הבחירה לא משתנה, ולכן שיעור ההצבעה משתנה; לשאר הרשימות אותם קולות.')}</li>
+        {!simple && <li data-chosen={value === 'citizens' || undefined}><b>{L('New citizens', 'אזרחים חדשים')}:</b> {L('people added to the country, who all vote. Eligible voters rise by the same number, marked as a change.', 'אנשים שנוספו למדינה, וכולם מצביעים. מספר בעלי זכות הבחירה גדל באותו מספר, ומסומן כשינוי.')}</li>}
         {!simple && <li data-chosen={value.startsWith('t:') || undefined}><b>{L('One list', 'רשימה אחת')}:</b> {L('only that list gives or takes the votes.', 'רק היא נותנת או מקבלת את הקולות.')}</li>}
       </ul>}
       <fieldset className="preference-scope">
