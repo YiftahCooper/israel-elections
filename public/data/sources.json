@@ -1755,11 +1755,32 @@
   "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
   "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
   "official": true,
-  "description": "Provisional identity cross-check of Knesset 26: at retrieval OData had no MK positions (PositionID 43/61), only 120 faction memberships (PositionID 54) starting on the scheduled opening day, 2026-11-10. Those persons were compared with the app's elected members; see docs/research/elected-names-odata-audit.md. Not proof of the sworn-in membership.",
+  "description": "Opening membership of Knesset 26, refreshed after the first sitting (10 Nov 2026): 120 MK positions (PositionID 43/61), all starting 2026-11-10, their faction memberships (PositionID 54) and person names. Replaces the provisional pre-opening snapshot of 4 Nov 2026, which had no MK positions and listed Aryeh Deri (2291) and Dror David Amos (30989) where the opening records have Uriel Busso (30765) and Yosef Taieb (30770); the elected names of the results notice are unchanged (data/meta/candidate-notes.json). Faction registry, sitting dates and opening-session documents: data/raw/research/k26-opening.json.",
   "method": "http",
-  "retrievedAt": "2026-11-04",
-  "bytes": 46638,
-  "sha256": "7e7d48ac808eb4b37df18353c5743630c47a42a1918efbfcfdbc350bcfc0fa46"
+  "retrievedAt": "2026-11-19T02:12:54.810598+00:00",
+  "bytes": 73213,
+  "sha256": "8d43a800e010e7f25658bdb8f253719566e8615c5bb810c465faf3285935cca0"
+ },
+ {
+  "id": "k26-opening-protocol",
+  "file": "k26/26_ptm_16099073.doc",
+  "url": "https://fs.knesset.gov.il/26/Plenum/26_ptm_16099073.doc",
+  "publisher": "Knesset — Divrei HaKnesset (official record of the plenum)",
+  "official": true,
+  "description": "Official record (דברי הכנסת) of the 26th Knesset's first sitting, 10 Nov 2026: the Knesset Secretary's roll call of oaths. Uriel Busso and Yosef Taieb make the declaration of allegiance; Aryeh Deri and Dror David Amos, declared elected in Yalkut HaPirsumim 15100, are not called. Listed for plenum session 2245487 in KNS_DocumentPlenumSession (data/raw/research/k26-opening.json).",
+  "method": "http",
+  "retrievedAt": "2026-11-19T02:11:31Z",
+  "bytes": 57642,
+  "sha256": "8ba1857446fecc0a648607a8500070258b151b7087f10ee8afc1b3df3d723121"
+ },
+ {
+  "id": "k26-shas-withdrawals",
+  "url": "https://www.israelhayom.co.il/news/politics/article/21806640",
+  "publisher": "Israel Hayom / Yaakov Hershkovitz; also Ynet / Amir Ettinger (https://www.ynet.co.il/news/article/rkrQKWRpGg) and Kikar HaShabbat / Yishai Cohen (https://www.kikar.co.il/haredim-news/to6tpn)",
+  "official": false,
+  "description": "8 November 2026 reports by three outlets: Shas chairman Aryeh Deri (No. 1), Dror Amos (No. 6) and Moshe Abutbul (No. 7) withdrew from the Shas list for the 26th Knesset; Uriel Busso (No. 8) and Yosef Taieb (No. 9) would be sworn in on 10 November. The reason and the date of the withdrawals; no official notice of them (section 87(a) of the Elections Law) was found on 19 Nov 2026.",
+  "method": "manual-capture",
+  "retrievedAt": "2026-11-19"
  },
  {
   "id": "k16-sharansky-withdrawal",
@@ -3350,9 +3371,9 @@
   "description": "Reviewed decision (Knesset PersonID or left out, with the evidence) for every elected member whose dataset name the name rules of scripts/research/build-bios.py cannot match.",
   "method": "manual-review",
   "retrievedAt": "2026-11-04",
-  "note": "Hash and size re-recorded 12 Nov 2026 after reviewed decisions were added (aaa474fb and 7eab7202, 9 Nov), and 13 Nov 2026 after the 1999 Shas rank 1 (Aryeh Deri, YP 4757 p.3378) was added.",
-  "bytes": 29802,
-  "sha256": "d9083c08960fc1b73badcb2aa2322ceb4b25684f5b9ef0d448ab8f903f83e2f6"
+  "note": "Hash and size re-recorded 12 Nov 2026 after reviewed decisions were added (aaa474fb and 7eab7202, 9 Nov), and 13 Nov 2026 after the 1999 Shas rank 1 (Aryeh Deri, YP 4757 p.3378) was added, and 19 Nov 2026 after the 2026 Shas ranks 1 and 6 (Aryeh Deri, Dror David Amos; YP 15100 §4) were added.",
+  "bytes": 31637,
+  "sha256": "36783938de967bab35fcf5a7836b1cb660a390cae4c89bd332efb3fa52c07fde"
  },
  {
   "id": "bios-party-sources",

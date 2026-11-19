@@ -301,14 +301,14 @@
  },
  "k26": {
   "candidates": 1351,
-  "withLink": 165,
+  "withLink": 166,
   "elected": 120,
   "electedKnesset": 73,
   "electedPersonId": 120,
-  "otherKnesset": 47,
-  "hewiki": 123,
+  "otherKnesset": 48,
+  "hewiki": 124,
   "hewikiNonMk": 9,
   "party": 76,
-  "medium": 66
+  "medium": 65
  }
 }

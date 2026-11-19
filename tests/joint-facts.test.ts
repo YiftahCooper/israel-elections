@@ -15,10 +15,14 @@ test('biography website IDs never join the OData PersonID namespace',()=>{
  const snapshot={positions:[{PersonID:7,StartDate:'2000-01-01'},{PersonID:8,StartDate:'2000-01-01'}],persons:[{PersonID:7,LastName:'Wrong',FirstName:'Person'},{PersonID:8,LastName:'Correct',FirstName:'Person'}],factionMemberships:[{PersonID:7,FactionID:1,FactionName:'Wrong faction',StartDate:'2000-01-01'},{PersonID:8,FactionID:2,FactionName:'Correct faction',StartDate:'2000-01-01'}]};
  expect(deriveJointList(l as any,1,snapshot,[]).parties[0].factions).toEqual([{id:2,nameHe:'Correct faction',seats:1}]);
 });
-test('retained generated facts reproduce exactly and 2026 opening stays unknown',async()=>{
+test('retained generated facts reproduce exactly and the 2026 lists resolve to their opening factions',async()=>{
  const {compileJointFacts}=await import('../scripts/joint-facts.ts');const {readFileSync}=await import('node:fs');
  const facts=compileJointFacts();expect(facts).toEqual(JSON.parse(readFileSync('data/meta/joint-facts.json','utf8')));
- expect(facts).toHaveLength(108);expect(facts.filter(f=>f.listId.startsWith('26-')).every(f=>f.openingDate===null&&f.parties.every(p=>p.factions.length===0))).toBe(true);
+ expect(facts).toHaveLength(108);const k26=facts.filter(f=>f.listId.startsWith('26-'));
+ // The Knesset opened on 10 Nov 2026; every elected member of a joint list is matched to an opening-day faction.
+ expect(k26.every(f=>f.openingDate==='2026-11-10'&&f.unresolved.length===0&&f.parties.every(p=>p.unknownFaction===0))).toBe(true);
+ const rz26=facts.find(f=>f.listId==='26-ט')!;expect(rz26.parties.map(p=>p.elected)).toEqual([4,1,1]);
+ expect(new Set(rz26.parties.flatMap(p=>p.factions.map(x=>x.id))).size).toBe(1);
  const religious=facts.find(f=>f.listId==='25-ט')!;expect(religious.parties.slice(0,3).map(p=>p.elected)).toEqual([7,6,1]);
  expect(religious.parties.flatMap(p=>p.factions).every(f=>f.nameHe==='הציונות הדתית')).toBe(true);
 });

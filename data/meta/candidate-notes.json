@@ -57,6 +57,44 @@
       ]
     },
     {
+      "candidateId": "26-שס#1",
+      "en": "Aryeh Deri (#1) was declared elected in Yalkut HaPirsumim 15100 §4 and withdrew from the Shas list on 8 November 2026 (Israel Hayom, Ynet, Kikar HaShabbat), as did Nos. 6 and 7, Dror David Amos and Moshe Abutbul. Uriel Busso (#8) and Yosef Taieb (#9) sat from the first sitting on 10 November.",
+      "he": "אריה דרעי (מס׳ 1) הוכרז כנבחר בילקוט הפרסומים 15100 סעיף 4, וב־8 בנובמבר 2026 פרש מרשימת ש״ס (ישראל היום, ynet, כיכר השבת); כך גם מס׳ 6 ומס׳ 7, דרור דוד עמוס ומשה אבוטבול. אוריאל בוסו (מס׳ 8) ויוסף טייב (מס׳ 9) כיהנו מהישיבה הראשונה ב־10 בנובמבר.",
+      "sources": [
+        "Yalkut HaPirsumim 15100 §4 p. 1645 (data/raw/k26/yp15100-results.pdf)",
+        "Knesset OData opening membership, retrieved 19 Nov 2026 (data/raw/k26/knesset-odata-members.json)",
+        "Divrei HaKnesset, 26th Knesset, first sitting, 10 Nov 2026, roll call of oaths (data/raw/k26/26_ptm_16099073.doc; https://fs.knesset.gov.il/26/Plenum/26_ptm_16099073.doc)",
+        "https://www.israelhayom.co.il/news/politics/article/21806640",
+        "https://www.ynet.co.il/news/article/rkrQKWRpGg",
+        "https://www.kikar.co.il/haredim-news/to6tpn"
+      ]
+    },
+    {
+      "candidateId": "26-שס#6",
+      "en": "Declared elected in Yalkut HaPirsumim 15100 §4. Withdrew from the Shas list on 8 November 2026, before the Knesset opened (Israel Hayom, Ynet, Kikar HaShabbat); Uriel Busso (#8) and Yosef Taieb (#9) took the two seats.",
+      "he": "בין הנבחרים לפי ילקוט הפרסומים 15100 סעיף 4. פרישה מרשימת ש״ס ב־8 בנובמבר 2026, לפני פתיחת הכנסת (ישראל היום, ynet, כיכר השבת); את שני המושבים קיבלו אוריאל בוסו (8) ויוסף טייב (9).",
+      "sources": [
+        "Yalkut HaPirsumim 15100 §4 p. 1645 (data/raw/k26/yp15100-results.pdf)",
+        "Knesset OData opening membership, retrieved 19 Nov 2026 (data/raw/k26/knesset-odata-members.json)",
+        "Divrei HaKnesset, 26th Knesset, first sitting, 10 Nov 2026, roll call of oaths (data/raw/k26/26_ptm_16099073.doc; https://fs.knesset.gov.il/26/Plenum/26_ptm_16099073.doc)",
+        "https://www.israelhayom.co.il/news/politics/article/21806640",
+        "https://www.ynet.co.il/news/article/rkrQKWRpGg",
+        "https://www.kikar.co.il/haredim-news/to6tpn"
+      ]
+    },
+    {
+      "candidateId": "26-שס#7",
+      "en": "Withdrew from the Shas list on 8 November 2026, before the Knesset opened (Israel Hayom, Ynet, Kikar HaShabbat), so the seats of Nos. 1 and 6 went to Nos. 8 and 9.",
+      "he": "ב־8 בנובמבר 2026, לפני פתיחת הכנסת, פרש מרשימת ש״ס (ישראל היום, ynet, כיכר השבת), ולכן מושבי מס׳ 1 ומס׳ 6 עברו למס׳ 8 ומס׳ 9.",
+      "sources": [
+        "Knesset OData opening membership, retrieved 19 Nov 2026 (data/raw/k26/knesset-odata-members.json)",
+        "Divrei HaKnesset, 26th Knesset, first sitting, 10 Nov 2026, roll call of oaths (data/raw/k26/26_ptm_16099073.doc; https://fs.knesset.gov.il/26/Plenum/26_ptm_16099073.doc)",
+        "https://www.israelhayom.co.il/news/politics/article/21806640",
+        "https://www.ynet.co.il/news/article/rkrQKWRpGg",
+        "https://www.kikar.co.il/haredim-news/to6tpn"
+      ]
+    },
+    {
       "candidateId": "24-צכ#15",
       "en": "Resigned from the candidate list on 2021-03-03, before polling day; the registered roster is preserved.",
       "he": "התפטר מרשימת המועמדים ב־2021-03-03, לפני יום הבחירות; הרשימה הרשומה נשמרת.",

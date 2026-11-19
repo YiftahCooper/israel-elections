@@ -348,7 +348,10 @@ const EXPECTED: Record<Family, string> = {
   // (with its hash pins) reproduces 0c6ad35e… and all four other digests.
   // Copies named (19 Nov): link publishers of official documents saved from olaw.org.il say so. The published k5, k7 and
   // k15 differ only in lists[].links[].publisher and builtAt; the other four digests are unchanged.
-  model: 'd0443fc743acd7687b927b2d0e841d6f00190bdb65e32684ee4d3bc5ceff022d',
+  // 26th Knesset opening records (19 Nov): Shas Nos. 1, 6 and 7 get withdrawal notes and Nos. 8 and 9 their member
+  // identities. The published k26 differs only in those five candidates of lists[2] and builtAt; the other four
+  // digests are unchanged.
+  model: '6194bb6e08bb5906136765784c5fdaedaf1b98066b12c83cd1d9bbe2f85ff073',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

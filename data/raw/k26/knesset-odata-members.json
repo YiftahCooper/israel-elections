@@ -1,13 +1,1213 @@
 {
  "source": "Knesset OData ParliamentInfo.svc",
- "retrievedAt": "2026-11-04",
+ "retrievedAt": "2026-11-19T02:12:54.810598+00:00",
  "queries": [
-  "KNS_PersonToPosition?$filter=KnessetNum eq 26 and (PositionID eq 43 or PositionID eq 61)",
-  "KNS_PersonToPosition?$filter=KnessetNum eq 26 and PositionID eq 54",
-  "KNS_Person?$filter=PersonID eq … (every MK PersonID above, or every faction-member PersonID when there are no MK positions, in batches of 25)"
+  "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+26&%24orderby=PersonToPositionID&%24format=json",
+  "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person?%24filter=PersonID+eq+427+or+PersonID+eq+468+or+PersonID+eq+556+or+PersonID+eq+560+or+PersonID+eq+563+or+PersonID+eq+860+or+PersonID+eq+965+or+PersonID+eq+1025+or+PersonID+eq+1027+or+PersonID+eq+12938+or+PersonID+eq+12951+or+PersonID+eq+12959+or+PersonID+eq+23511+or+PersonID+eq+23551+or+PersonID+eq+23556+or+PersonID+eq+23558+or+PersonID+eq+23560+or+PersonID+eq+23564+or+PersonID+eq+23591+or+PersonID+eq+23594+or+PersonID+eq+23641+or+PersonID+eq+23653+or+PersonID+eq+28513+or+PersonID+eq+30055+or+PersonID+eq+30057&%24select=PersonID%2CLastName%2CFirstName%2CGenderDesc%2CIsCurrent%2CLastUpdatedDate&%24format=json"
  ],
- "note": "No Knesset-member positions (PositionID 43/61) exist yet for this Knesset at retrieval. The 120 faction-membership rows (PositionID 54) all start 2026-11-10, the scheduled opening; they are a provisional, pre-opening record of the members, and persons are those PersonIDs.",
- "positions": [],
+ "note": "PositionID 43/61 = Knesset member. All 120 start on 2026-11-10, the first sitting, and are the opening membership. PositionID 54 rows (factionMemberships) give each member's faction (FactionName) and its dates. Replaces the provisional pre-opening snapshot of 4 Nov 2026, which had no member positions and listed Aryeh Deri (2291) and Dror David Amos (30989) where the opening records have Uriel Busso (30765) and Yosef Taieb (30770).",
+ "positions": [
+  {
+   "PersonToPositionID": 34139,
+   "PersonID": 30300,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34140,
+   "PersonID": 23564,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34141,
+   "PersonID": 23558,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34142,
+   "PersonID": 30835,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34143,
+   "PersonID": 30700,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34144,
+   "PersonID": 1025,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34145,
+   "PersonID": 30058,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34146,
+   "PersonID": 30083,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34147,
+   "PersonID": 30701,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34148,
+   "PersonID": 556,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34149,
+   "PersonID": 468,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34150,
+   "PersonID": 12951,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34151,
+   "PersonID": 965,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34152,
+   "PersonID": 30853,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34153,
+   "PersonID": 30702,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34154,
+   "PersonID": 30057,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34155,
+   "PersonID": 30704,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34156,
+   "PersonID": 12959,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34157,
+   "PersonID": 30786,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34158,
+   "PersonID": 23551,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34159,
+   "PersonID": 30055,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34160,
+   "PersonID": 30812,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34161,
+   "PersonID": 30601,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34162,
+   "PersonID": 30804,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34163,
+   "PersonID": 28513,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34165,
+   "PersonID": 30470,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34166,
+   "PersonID": 23641,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34167,
+   "PersonID": 30846,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34168,
+   "PersonID": 30672,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34169,
+   "PersonID": 563,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34170,
+   "PersonID": 427,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34171,
+   "PersonID": 23560,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34172,
+   "PersonID": 12938,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34173,
+   "PersonID": 30121,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34174,
+   "PersonID": 30867,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34175,
+   "PersonID": 30840,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34176,
+   "PersonID": 30758,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34177,
+   "PersonID": 30752,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34178,
+   "PersonID": 30713,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34179,
+   "PersonID": 23511,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34180,
+   "PersonID": 23594,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34181,
+   "PersonID": 30924,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34182,
+   "PersonID": 30102,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34183,
+   "PersonID": 30925,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34184,
+   "PersonID": 30926,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34185,
+   "PersonID": 30927,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34186,
+   "PersonID": 30693,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34187,
+   "PersonID": 30686,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34188,
+   "PersonID": 30928,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34189,
+   "PersonID": 30743,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34190,
+   "PersonID": 30106,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34191,
+   "PersonID": 30807,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34192,
+   "PersonID": 30808,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34193,
+   "PersonID": 30929,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34194,
+   "PersonID": 30818,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34195,
+   "PersonID": 30930,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34196,
+   "PersonID": 23653,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34197,
+   "PersonID": 30935,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34198,
+   "PersonID": 30938,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34199,
+   "PersonID": 30939,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34200,
+   "PersonID": 30941,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34201,
+   "PersonID": 23556,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34202,
+   "PersonID": 30948,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34203,
+   "PersonID": 30947,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34204,
+   "PersonID": 30833,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34205,
+   "PersonID": 860,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34206,
+   "PersonID": 1027,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34207,
+   "PersonID": 30069,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34208,
+   "PersonID": 30949,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34209,
+   "PersonID": 560,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34210,
+   "PersonID": 30719,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34211,
+   "PersonID": 30951,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34212,
+   "PersonID": 30950,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34213,
+   "PersonID": 30558,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34215,
+   "PersonID": 30955,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34216,
+   "PersonID": 30953,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34217,
+   "PersonID": 30954,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34218,
+   "PersonID": 30836,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34219,
+   "PersonID": 30960,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34220,
+   "PersonID": 30958,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34221,
+   "PersonID": 30965,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34222,
+   "PersonID": 30961,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34223,
+   "PersonID": 30963,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34224,
+   "PersonID": 30968,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34225,
+   "PersonID": 30971,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34226,
+   "PersonID": 30683,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34227,
+   "PersonID": 30967,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34228,
+   "PersonID": 30957,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34229,
+   "PersonID": 30662,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34230,
+   "PersonID": 30959,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34231,
+   "PersonID": 30084,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34232,
+   "PersonID": 30970,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34233,
+   "PersonID": 30685,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34234,
+   "PersonID": 30966,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34235,
+   "PersonID": 23591,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34236,
+   "PersonID": 30962,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34237,
+   "PersonID": 30974,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34238,
+   "PersonID": 30975,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34239,
+   "PersonID": 30857,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34240,
+   "PersonID": 30811,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34241,
+   "PersonID": 30860,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34242,
+   "PersonID": 30981,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34243,
+   "PersonID": 30847,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34244,
+   "PersonID": 30849,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34245,
+   "PersonID": 30695,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34246,
+   "PersonID": 30964,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34247,
+   "PersonID": 30969,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34248,
+   "PersonID": 30936,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34249,
+   "PersonID": 30990,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34250,
+   "PersonID": 30691,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34251,
+   "PersonID": 30991,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34252,
+   "PersonID": 30992,
+   "PositionID": 61,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34253,
+   "PersonID": 30993,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34254,
+   "PersonID": 30994,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34255,
+   "PersonID": 30843,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34256,
+   "PersonID": 30995,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34257,
+   "PersonID": 30996,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34258,
+   "PersonID": 30997,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34265,
+   "PersonID": 30765,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 34267,
+   "PersonID": 30770,
+   "PositionID": 43,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  }
+ ],
  "persons": [
   {
    "PersonID": 427,
@@ -61,12 +1261,6 @@
    "PersonID": 1027,
    "LastName": "סער",
    "FirstName": "גדעון",
-   "GenderDesc": "זכר"
-  },
-  {
-   "PersonID": 2291,
-   "LastName": "דרעי",
-   "FirstName": "אריה מכלוף",
    "GenderDesc": "זכר"
   },
   {
@@ -334,6 +1528,18 @@
    "GenderDesc": "נקבה"
   },
   {
+   "PersonID": 30765,
+   "LastName": "בוסו",
+   "FirstName": "אוריאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30770,
+   "LastName": "טייב",
+   "FirstName": "יוסף",
+   "GenderDesc": "זכר"
+  },
+  {
    "PersonID": 30786,
    "LastName": "שיקלי",
    "FirstName": "עמיחי",
@@ -449,7 +1655,7 @@
   },
   {
    "PersonID": 30924,
-   "LastName": "טרנר אייל",
+   "LastName": "טרנר",
    "FirstName": "קרן",
    "GenderDesc": "נקבה"
   },
@@ -462,25 +1668,25 @@
   {
    "PersonID": 30926,
    "LastName": "תיבון",
-   "FirstName": "נעם משה",
+   "FirstName": "נעם",
    "GenderDesc": "זכר"
   },
   {
    "PersonID": 30927,
-   "LastName": "הירש נגרי",
-   "FirstName": "מיכל טליה",
+   "LastName": "נגרי",
+   "FirstName": "מיכל",
    "GenderDesc": "נקבה"
   },
   {
    "PersonID": 30928,
    "LastName": "שלו",
-   "FirstName": "יהונתן",
+   "FirstName": "יונתן",
    "GenderDesc": "זכר"
   },
   {
    "PersonID": 30929,
    "LastName": "פינק",
-   "FirstName": "יאיר",
+   "FirstName": "יאיא (יאיר)",
    "GenderDesc": "זכר"
   },
   {
@@ -492,7 +1698,7 @@
   {
    "PersonID": 30935,
    "LastName": "גואילי",
-   "FirstName": "טלי",
+   "FirstName": "טליק",
    "GenderDesc": "נקבה"
   },
   {
@@ -528,7 +1734,7 @@
   {
    "PersonID": 30948,
    "LastName": "איתם",
-   "FirstName": "איתמר מרדכי",
+   "FirstName": "איתמר",
    "GenderDesc": "זכר"
   },
   {
@@ -547,24 +1753,24 @@
    "PersonID": 30951,
    "LastName": "כרכבי סבאח",
    "FirstName": "מהא",
-   "GenderDesc": "זכר"
+   "GenderDesc": "נקבה"
   },
   {
    "PersonID": 30953,
    "LastName": "רוזנטל",
-   "FirstName": "משה עזריאל",
+   "FirstName": "משה",
    "GenderDesc": "זכר"
   },
   {
    "PersonID": 30954,
    "LastName": "שטארק",
-   "FirstName": "אלי",
+   "FirstName": "אליקים",
    "GenderDesc": "זכר"
   },
   {
    "PersonID": 30955,
    "LastName": "וויספיש",
-   "FirstName": "יהודה לייב",
+   "FirstName": "יהודה",
    "GenderDesc": "זכר"
   },
   {
@@ -588,7 +1794,7 @@
   {
    "PersonID": 30960,
    "LastName": "איפרגן",
-   "FirstName": "תאיר סולי",
+   "FirstName": "תאיר",
    "GenderDesc": "נקבה"
   },
   {
@@ -606,7 +1812,7 @@
   {
    "PersonID": 30963,
    "LastName": "הרוש גיטי",
-   "FirstName": "עינבר",
+   "FirstName": "ענבר",
    "GenderDesc": "נקבה"
   },
   {
@@ -629,7 +1835,7 @@
   },
   {
    "PersonID": 30967,
-   "LastName": "יחזקאלי בליליוס",
+   "LastName": "יחזקאלי",
    "FirstName": "ענבר",
    "GenderDesc": "נקבה"
   },
@@ -672,13 +1878,7 @@
   {
    "PersonID": 30981,
    "LastName": "דורפמן",
-   "FirstName": "חנמאל שיראי",
-   "GenderDesc": "זכר"
-  },
-  {
-   "PersonID": 30989,
-   "LastName": "עמוס",
-   "FirstName": "דרור דוד",
+   "FirstName": "חנמאל",
    "GenderDesc": "זכר"
   },
   {
@@ -720,7 +1920,7 @@
   {
    "PersonID": 30996,
    "LastName": "מסרי",
-   "FirstName": "עבד אל כרים",
+   "FirstName": "עבד אלכרים",
    "GenderDesc": "זכר"
   },
   {
@@ -732,184 +1932,14 @@
  ],
  "factionMemberships": [
   {
-   "PersonToPositionID": 33977,
-   "PersonID": 427,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1119,
-   "FactionName": "ישראל ביתנו"
-  },
-  {
-   "PersonToPositionID": 33943,
-   "PersonID": 468,
+   "PersonToPositionID": 33929,
+   "PersonID": 30300,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
    "FinishDate": null,
    "FactionID": 1113,
    "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
-  },
-  {
-   "PersonToPositionID": 33942,
-   "PersonID": 556,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1113,
-   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
-  },
-  {
-   "PersonToPositionID": 34036,
-   "PersonID": 560,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1115,
-   "FactionName": "הרשימה המשותפת"
-  },
-  {
-   "PersonToPositionID": 33975,
-   "PersonID": 563,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1117,
-   "FactionName": "יהדות התורה והשבת אגודת ישראל - דגל התורה"
-  },
-  {
-   "PersonToPositionID": 34031,
-   "PersonID": 860,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1113,
-   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
-  },
-  {
-   "PersonToPositionID": 33945,
-   "PersonID": 965,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1113,
-   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
-  },
-  {
-   "PersonToPositionID": 33937,
-   "PersonID": 1025,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1113,
-   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
-  },
-  {
-   "PersonToPositionID": 34032,
-   "PersonID": 1027,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1113,
-   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
-  },
-  {
-   "PersonToPositionID": 33966,
-   "PersonID": 2291,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1116,
-   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
-  },
-  {
-   "PersonToPositionID": 33980,
-   "PersonID": 12938,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1119,
-   "FactionName": "ישראל ביתנו"
-  },
-  {
-   "PersonToPositionID": 33944,
-   "PersonID": 12951,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1113,
-   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
-  },
-  {
-   "PersonToPositionID": 33950,
-   "PersonID": 12959,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1113,
-   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
-  },
-  {
-   "PersonToPositionID": 33995,
-   "PersonID": 23511,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1111,
-   "FactionName": "ביחד בראשות נפתלי בנט"
-  },
-  {
-   "PersonToPositionID": 33958,
-   "PersonID": 23551,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1114,
-   "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ וזהות בראשות משה פייגלין"
-  },
-  {
-   "PersonToPositionID": 34027,
-   "PersonID": 23556,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1114,
-   "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ וזהות בראשות משה פייגלין"
-  },
-  {
-   "PersonToPositionID": 33933,
-   "PersonID": 23558,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1113,
-   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
-  },
-  {
-   "PersonToPositionID": 33978,
-   "PersonID": 23560,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1119,
-   "FactionName": "ישראל ביתנו"
   },
   {
    "PersonToPositionID": 33931,
@@ -922,428 +1952,8 @@
    "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
   },
   {
-   "PersonToPositionID": 34064,
-   "PersonID": 23591,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1118,
-   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
-  },
-  {
-   "PersonToPositionID": 33996,
-   "PersonID": 23594,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1111,
-   "FactionName": "ביחד בראשות נפתלי בנט"
-  },
-  {
-   "PersonToPositionID": 33971,
-   "PersonID": 23641,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1117,
-   "FactionName": "יהדות התורה והשבת אגודת ישראל - דגל התורה"
-  },
-  {
-   "PersonToPositionID": 34012,
-   "PersonID": 23653,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1112,
-   "FactionName": "הדמוקרטים בראשות יאיר גולן"
-  },
-  {
-   "PersonToPositionID": 33965,
-   "PersonID": 28513,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1116,
-   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
-  },
-  {
-   "PersonToPositionID": 33959,
-   "PersonID": 30055,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1114,
-   "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ וזהות בראשות משה פייגלין"
-  },
-  {
-   "PersonToPositionID": 33948,
-   "PersonID": 30057,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1113,
-   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
-  },
-  {
-   "PersonToPositionID": 33939,
-   "PersonID": 30058,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1113,
-   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
-  },
-  {
-   "PersonToPositionID": 34034,
-   "PersonID": 30069,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1115,
-   "FactionName": "הרשימה המשותפת"
-  },
-  {
-   "PersonToPositionID": 33940,
-   "PersonID": 30083,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1113,
-   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
-  },
-  {
-   "PersonToPositionID": 34060,
-   "PersonID": 30084,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1118,
-   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
-  },
-  {
-   "PersonToPositionID": 33998,
-   "PersonID": 30102,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1111,
-   "FactionName": "ביחד בראשות נפתלי בנט"
-  },
-  {
-   "PersonToPositionID": 34006,
-   "PersonID": 30106,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1112,
-   "FactionName": "הדמוקרטים בראשות יאיר גולן"
-  },
-  {
-   "PersonToPositionID": 33981,
-   "PersonID": 30121,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1119,
-   "FactionName": "ישראל ביתנו"
-  },
-  {
-   "PersonToPositionID": 33929,
-   "PersonID": 30300,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1113,
-   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
-  },
-  {
-   "PersonToPositionID": 33969,
-   "PersonID": 30470,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1116,
-   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
-  },
-  {
-   "PersonToPositionID": 34040,
-   "PersonID": 30558,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1115,
-   "FactionName": "הרשימה המשותפת"
-  },
-  {
-   "PersonToPositionID": 33962,
-   "PersonID": 30601,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1116,
-   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
-  },
-  {
-   "PersonToPositionID": 34058,
-   "PersonID": 30662,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1118,
-   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
-  },
-  {
-   "PersonToPositionID": 33974,
-   "PersonID": 30672,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1117,
-   "FactionName": "יהדות התורה והשבת אגודת ישראל - דגל התורה"
-  },
-  {
-   "PersonToPositionID": 34055,
-   "PersonID": 30683,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1118,
-   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
-  },
-  {
-   "PersonToPositionID": 34062,
-   "PersonID": 30685,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1118,
-   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
-  },
-  {
-   "PersonToPositionID": 34003,
-   "PersonID": 30686,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1111,
-   "FactionName": "ביחד בראשות נפתלי בנט"
-  },
-  {
-   "PersonToPositionID": 34092,
-   "PersonID": 30691,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1111,
-   "FactionName": "ביחד בראשות נפתלי בנט"
-  },
-  {
-   "PersonToPositionID": 34002,
-   "PersonID": 30693,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1111,
-   "FactionName": "ביחד בראשות נפתלי בנט"
-  },
-  {
-   "PersonToPositionID": 34085,
-   "PersonID": 30695,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1123,
-   "FactionName": "רע\"מ"
-  },
-  {
-   "PersonToPositionID": 33935,
-   "PersonID": 30700,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1113,
-   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
-  },
-  {
-   "PersonToPositionID": 33941,
-   "PersonID": 30701,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1113,
-   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
-  },
-  {
-   "PersonToPositionID": 33947,
-   "PersonID": 30702,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1113,
-   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
-  },
-  {
-   "PersonToPositionID": 33949,
-   "PersonID": 30704,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1113,
-   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
-  },
-  {
-   "PersonToPositionID": 33993,
-   "PersonID": 30713,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1123,
-   "FactionName": "רע\"מ"
-  },
-  {
-   "PersonToPositionID": 34037,
-   "PersonID": 30719,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1115,
-   "FactionName": "הרשימה המשותפת"
-  },
-  {
-   "PersonToPositionID": 34005,
-   "PersonID": 30743,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1112,
-   "FactionName": "הדמוקרטים בראשות יאיר גולן"
-  },
-  {
-   "PersonToPositionID": 33992,
-   "PersonID": 30752,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1123,
-   "FactionName": "רע\"מ"
-  },
-  {
-   "PersonToPositionID": 33991,
-   "PersonID": 30758,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1123,
-   "FactionName": "רע\"מ"
-  },
-  {
-   "PersonToPositionID": 33951,
-   "PersonID": 30786,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1113,
-   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
-  },
-  {
-   "PersonToPositionID": 33964,
-   "PersonID": 30804,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1116,
-   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
-  },
-  {
-   "PersonToPositionID": 34007,
-   "PersonID": 30807,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1112,
-   "FactionName": "הדמוקרטים בראשות יאיר גולן"
-  },
-  {
-   "PersonToPositionID": 34008,
-   "PersonID": 30808,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1112,
-   "FactionName": "הדמוקרטים בראשות יאיר גולן"
-  },
-  {
-   "PersonToPositionID": 34075,
-   "PersonID": 30811,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1121,
-   "FactionName": "עוצמה יהודית"
-  },
-  {
-   "PersonToPositionID": 33960,
-   "PersonID": 30812,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1114,
-   "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ וזהות בראשות משה פייגלין"
-  },
-  {
-   "PersonToPositionID": 34010,
-   "PersonID": 30818,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1112,
-   "FactionName": "הדמוקרטים בראשות יאיר גולן"
-  },
-  {
-   "PersonToPositionID": 34030,
-   "PersonID": 30833,
+   "PersonToPositionID": 33933,
+   "PersonID": 23558,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
@@ -1362,64 +1972,94 @@
    "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
   },
   {
-   "PersonToPositionID": 34046,
-   "PersonID": 30836,
+   "PersonToPositionID": 33935,
+   "PersonID": 30700,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
    "FinishDate": null,
-   "FactionID": 1118,
-   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
+   "FactionID": 1113,
+   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
   },
   {
-   "PersonToPositionID": 33990,
-   "PersonID": 30840,
+   "PersonToPositionID": 33937,
+   "PersonID": 1025,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
    "FinishDate": null,
-   "FactionID": 1123,
-   "FactionName": "רע\"מ"
+   "FactionID": 1113,
+   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
   },
   {
-   "PersonToPositionID": 34097,
-   "PersonID": 30843,
+   "PersonToPositionID": 33939,
+   "PersonID": 30058,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
    "FinishDate": null,
-   "FactionID": 1123,
-   "FactionName": "רע\"מ"
+   "FactionID": 1113,
+   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
   },
   {
-   "PersonToPositionID": 33972,
-   "PersonID": 30846,
+   "PersonToPositionID": 33940,
+   "PersonID": 30083,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
    "FinishDate": null,
-   "FactionID": 1117,
-   "FactionName": "יהדות התורה והשבת אגודת ישראל - דגל התורה"
+   "FactionID": 1113,
+   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
   },
   {
-   "PersonToPositionID": 34079,
-   "PersonID": 30847,
+   "PersonToPositionID": 33941,
+   "PersonID": 30701,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
    "FinishDate": null,
-   "FactionID": 1121,
-   "FactionName": "עוצמה יהודית"
+   "FactionID": 1113,
+   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
   },
   {
-   "PersonToPositionID": 34080,
-   "PersonID": 30849,
+   "PersonToPositionID": 33942,
+   "PersonID": 556,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
    "FinishDate": null,
-   "FactionID": 1121,
-   "FactionName": "עוצמה יהודית"
+   "FactionID": 1113,
+   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 33943,
+   "PersonID": 468,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1113,
+   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 33944,
+   "PersonID": 12951,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1113,
+   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 33945,
+   "PersonID": 965,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1113,
+   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
   },
   {
    "PersonToPositionID": 33946,
@@ -1432,24 +2072,204 @@
    "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
   },
   {
-   "PersonToPositionID": 34074,
-   "PersonID": 30857,
+   "PersonToPositionID": 33947,
+   "PersonID": 30702,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
    "FinishDate": null,
-   "FactionID": 1121,
-   "FactionName": "עוצמה יהודית"
+   "FactionID": 1113,
+   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
   },
   {
-   "PersonToPositionID": 34076,
-   "PersonID": 30860,
+   "PersonToPositionID": 33948,
+   "PersonID": 30057,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
    "FinishDate": null,
-   "FactionID": 1121,
-   "FactionName": "עוצמה יהודית"
+   "FactionID": 1113,
+   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 33949,
+   "PersonID": 30704,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1113,
+   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 33950,
+   "PersonID": 12959,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1113,
+   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 33951,
+   "PersonID": 30786,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1113,
+   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 33958,
+   "PersonID": 23551,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1114,
+   "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ וזהות בראשות משה פייגלין"
+  },
+  {
+   "PersonToPositionID": 33959,
+   "PersonID": 30055,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1114,
+   "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ וזהות בראשות משה פייגלין"
+  },
+  {
+   "PersonToPositionID": 33960,
+   "PersonID": 30812,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1114,
+   "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ וזהות בראשות משה פייגלין"
+  },
+  {
+   "PersonToPositionID": 33962,
+   "PersonID": 30601,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1116,
+   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
+  },
+  {
+   "PersonToPositionID": 33964,
+   "PersonID": 30804,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1116,
+   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
+  },
+  {
+   "PersonToPositionID": 33965,
+   "PersonID": 28513,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1116,
+   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
+  },
+  {
+   "PersonToPositionID": 33969,
+   "PersonID": 30470,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1116,
+   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
+  },
+  {
+   "PersonToPositionID": 33971,
+   "PersonID": 23641,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1117,
+   "FactionName": "יהדות התורה והשבת אגודת ישראל - דגל התורה"
+  },
+  {
+   "PersonToPositionID": 33972,
+   "PersonID": 30846,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1117,
+   "FactionName": "יהדות התורה והשבת אגודת ישראל - דגל התורה"
+  },
+  {
+   "PersonToPositionID": 33974,
+   "PersonID": 30672,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1117,
+   "FactionName": "יהדות התורה והשבת אגודת ישראל - דגל התורה"
+  },
+  {
+   "PersonToPositionID": 33975,
+   "PersonID": 563,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1117,
+   "FactionName": "יהדות התורה והשבת אגודת ישראל - דגל התורה"
+  },
+  {
+   "PersonToPositionID": 33977,
+   "PersonID": 427,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1119,
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
+  },
+  {
+   "PersonToPositionID": 33978,
+   "PersonID": 23560,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1119,
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
+  },
+  {
+   "PersonToPositionID": 33980,
+   "PersonID": 12938,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1119,
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
+  },
+  {
+   "PersonToPositionID": 33981,
+   "PersonID": 30121,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1119,
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
   },
   {
    "PersonToPositionID": 33989,
@@ -1459,11 +2279,81 @@
    "StartDate": "2026-11-10T00:00:00",
    "FinishDate": null,
    "FactionID": 1121,
-   "FactionName": "עוצמה יהודית"
+   "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
+  },
+  {
+   "PersonToPositionID": 33990,
+   "PersonID": 30840,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1123,
+   "FactionName": "רע\"מ"
+  },
+  {
+   "PersonToPositionID": 33991,
+   "PersonID": 30758,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1123,
+   "FactionName": "רע\"מ"
+  },
+  {
+   "PersonToPositionID": 33992,
+   "PersonID": 30752,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1123,
+   "FactionName": "רע\"מ"
+  },
+  {
+   "PersonToPositionID": 33993,
+   "PersonID": 30713,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1123,
+   "FactionName": "רע\"מ"
+  },
+  {
+   "PersonToPositionID": 33995,
+   "PersonID": 23511,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1111,
+   "FactionName": "ביחד בראשות נפתלי בנט"
+  },
+  {
+   "PersonToPositionID": 33996,
+   "PersonID": 23594,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1111,
+   "FactionName": "ביחד בראשות נפתלי בנט"
   },
   {
    "PersonToPositionID": 33997,
    "PersonID": 30924,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1111,
+   "FactionName": "ביחד בראשות נפתלי בנט"
+  },
+  {
+   "PersonToPositionID": 33998,
+   "PersonID": 30102,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
@@ -1502,6 +2392,26 @@
    "FactionName": "ביחד בראשות נפתלי בנט"
   },
   {
+   "PersonToPositionID": 34002,
+   "PersonID": 30693,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1111,
+   "FactionName": "ביחד בראשות נפתלי בנט"
+  },
+  {
+   "PersonToPositionID": 34003,
+   "PersonID": 30686,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1111,
+   "FactionName": "ביחד בראשות נפתלי בנט"
+  },
+  {
    "PersonToPositionID": 34004,
    "PersonID": 30928,
    "PositionID": 54,
@@ -1512,8 +2422,58 @@
    "FactionName": "ביחד בראשות נפתלי בנט"
   },
   {
+   "PersonToPositionID": 34005,
+   "PersonID": 30743,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1112,
+   "FactionName": "הדמוקרטים בראשות יאיר גולן"
+  },
+  {
+   "PersonToPositionID": 34006,
+   "PersonID": 30106,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1112,
+   "FactionName": "הדמוקרטים בראשות יאיר גולן"
+  },
+  {
+   "PersonToPositionID": 34007,
+   "PersonID": 30807,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1112,
+   "FactionName": "הדמוקרטים בראשות יאיר גולן"
+  },
+  {
+   "PersonToPositionID": 34008,
+   "PersonID": 30808,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1112,
+   "FactionName": "הדמוקרטים בראשות יאיר גולן"
+  },
+  {
    "PersonToPositionID": 34009,
    "PersonID": 30929,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1112,
+   "FactionName": "הדמוקרטים בראשות יאיר גולן"
+  },
+  {
+   "PersonToPositionID": 34010,
+   "PersonID": 30818,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
@@ -1532,18 +2492,18 @@
    "FactionName": "הדמוקרטים בראשות יאיר גולן"
   },
   {
-   "PersonToPositionID": 34017,
-   "PersonID": 30935,
+   "PersonToPositionID": 34012,
+   "PersonID": 23653,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
    "FinishDate": null,
-   "FactionID": 1113,
-   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
+   "FactionID": 1112,
+   "FactionName": "הדמוקרטים בראשות יאיר גולן"
   },
   {
-   "PersonToPositionID": 34090,
-   "PersonID": 30936,
+   "PersonToPositionID": 34017,
+   "PersonID": 30935,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
@@ -1582,8 +2542,8 @@
    "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
   },
   {
-   "PersonToPositionID": 34029,
-   "PersonID": 30947,
+   "PersonToPositionID": 34027,
+   "PersonID": 23556,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
@@ -1602,8 +2562,88 @@
    "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ וזהות בראשות משה פייגלין"
   },
   {
+   "PersonToPositionID": 34029,
+   "PersonID": 30947,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1114,
+   "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ וזהות בראשות משה פייגלין"
+  },
+  {
+   "PersonToPositionID": 34030,
+   "PersonID": 30833,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1113,
+   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 34031,
+   "PersonID": 860,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1113,
+   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 34032,
+   "PersonID": 1027,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1113,
+   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 34034,
+   "PersonID": 30069,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1115,
+   "FactionName": "הרשימה המשותפת"
+  },
+  {
    "PersonToPositionID": 34035,
    "PersonID": 30949,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1115,
+   "FactionName": "הרשימה המשותפת"
+  },
+  {
+   "PersonToPositionID": 34036,
+   "PersonID": 560,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1115,
+   "FactionName": "הרשימה המשותפת"
+  },
+  {
+   "PersonToPositionID": 34037,
+   "PersonID": 30719,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1115,
+   "FactionName": "הרשימה המשותפת"
+  },
+  {
+   "PersonToPositionID": 34038,
+   "PersonID": 30951,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
@@ -1622,14 +2662,24 @@
    "FactionName": "הרשימה המשותפת"
   },
   {
-   "PersonToPositionID": 34038,
-   "PersonID": 30951,
+   "PersonToPositionID": 34040,
+   "PersonID": 30558,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
    "FinishDate": null,
    "FactionID": 1115,
    "FactionName": "הרשימה המשותפת"
+  },
+  {
+   "PersonToPositionID": 34042,
+   "PersonID": 30955,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1117,
+   "FactionName": "יהדות התורה והשבת אגודת ישראל - דגל התורה"
   },
   {
    "PersonToPositionID": 34044,
@@ -1652,38 +2702,8 @@
    "FactionName": "יהדות התורה והשבת אגודת ישראל - דגל התורה"
   },
   {
-   "PersonToPositionID": 34042,
-   "PersonID": 30955,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1117,
-   "FactionName": "יהדות התורה והשבת אגודת ישראל - דגל התורה"
-  },
-  {
-   "PersonToPositionID": 34057,
-   "PersonID": 30957,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1118,
-   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
-  },
-  {
-   "PersonToPositionID": 34048,
-   "PersonID": 30958,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1118,
-   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
-  },
-  {
-   "PersonToPositionID": 34059,
-   "PersonID": 30959,
+   "PersonToPositionID": 34046,
+   "PersonID": 30836,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
@@ -1702,38 +2722,8 @@
    "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
   },
   {
-   "PersonToPositionID": 34050,
-   "PersonID": 30961,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1118,
-   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
-  },
-  {
-   "PersonToPositionID": 34065,
-   "PersonID": 30962,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1118,
-   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
-  },
-  {
-   "PersonToPositionID": 34051,
-   "PersonID": 30963,
-   "PositionID": 54,
-   "KnessetNum": 26,
-   "StartDate": "2026-11-10T00:00:00",
-   "FinishDate": null,
-   "FactionID": 1118,
-   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
-  },
-  {
-   "PersonToPositionID": 34086,
-   "PersonID": 30964,
+   "PersonToPositionID": 34048,
+   "PersonID": 30958,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
@@ -1752,8 +2742,8 @@
    "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
   },
   {
-   "PersonToPositionID": 34063,
-   "PersonID": 30966,
+   "PersonToPositionID": 34050,
+   "PersonID": 30961,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
@@ -1762,8 +2752,8 @@
    "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
   },
   {
-   "PersonToPositionID": 34056,
-   "PersonID": 30967,
+   "PersonToPositionID": 34051,
+   "PersonID": 30963,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
@@ -1782,8 +2772,68 @@
    "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
   },
   {
-   "PersonToPositionID": 34087,
-   "PersonID": 30969,
+   "PersonToPositionID": 34054,
+   "PersonID": 30971,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1118,
+   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
+  },
+  {
+   "PersonToPositionID": 34055,
+   "PersonID": 30683,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1118,
+   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
+  },
+  {
+   "PersonToPositionID": 34056,
+   "PersonID": 30967,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1118,
+   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
+  },
+  {
+   "PersonToPositionID": 34057,
+   "PersonID": 30957,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1118,
+   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
+  },
+  {
+   "PersonToPositionID": 34058,
+   "PersonID": 30662,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1118,
+   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
+  },
+  {
+   "PersonToPositionID": 34059,
+   "PersonID": 30959,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1118,
+   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
+  },
+  {
+   "PersonToPositionID": 34060,
+   "PersonID": 30084,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
@@ -1802,8 +2852,38 @@
    "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
   },
   {
-   "PersonToPositionID": 34054,
-   "PersonID": 30971,
+   "PersonToPositionID": 34062,
+   "PersonID": 30685,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1118,
+   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
+  },
+  {
+   "PersonToPositionID": 34063,
+   "PersonID": 30966,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1118,
+   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
+  },
+  {
+   "PersonToPositionID": 34064,
+   "PersonID": 23591,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1118,
+   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
+  },
+  {
+   "PersonToPositionID": 34065,
+   "PersonID": 30962,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
@@ -1819,7 +2899,7 @@
    "StartDate": "2026-11-10T00:00:00",
    "FinishDate": null,
    "FactionID": 1119,
-   "FactionName": "ישראל ביתנו"
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
   },
   {
    "PersonToPositionID": 34072,
@@ -1829,7 +2909,37 @@
    "StartDate": "2026-11-10T00:00:00",
    "FinishDate": null,
    "FactionID": 1119,
-   "FactionName": "ישראל ביתנו"
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
+  },
+  {
+   "PersonToPositionID": 34074,
+   "PersonID": 30857,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1121,
+   "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
+  },
+  {
+   "PersonToPositionID": 34075,
+   "PersonID": 30811,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1121,
+   "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
+  },
+  {
+   "PersonToPositionID": 34076,
+   "PersonID": 30860,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1121,
+   "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
   },
   {
    "PersonToPositionID": 34078,
@@ -1839,21 +2949,81 @@
    "StartDate": "2026-11-10T00:00:00",
    "FinishDate": null,
    "FactionID": 1121,
-   "FactionName": "עוצמה יהודית"
+   "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
   },
   {
-   "PersonToPositionID": 34041,
-   "PersonID": 30989,
+   "PersonToPositionID": 34079,
+   "PersonID": 30847,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
    "FinishDate": null,
-   "FactionID": 1116,
-   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
+   "FactionID": 1121,
+   "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
+  },
+  {
+   "PersonToPositionID": 34080,
+   "PersonID": 30849,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1121,
+   "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
+  },
+  {
+   "PersonToPositionID": 34085,
+   "PersonID": 30695,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1123,
+   "FactionName": "רע\"מ"
+  },
+  {
+   "PersonToPositionID": 34086,
+   "PersonID": 30964,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1118,
+   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
+  },
+  {
+   "PersonToPositionID": 34087,
+   "PersonID": 30969,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1118,
+   "FactionName": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל"
+  },
+  {
+   "PersonToPositionID": 34090,
+   "PersonID": 30936,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1113,
+   "FactionName": "הליכוד עם בנימין נתניהו לראשות הממשלה"
   },
   {
    "PersonToPositionID": 34091,
    "PersonID": 30990,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1111,
+   "FactionName": "ביחד בראשות נפתלי בנט"
+  },
+  {
+   "PersonToPositionID": 34092,
+   "PersonID": 30691,
    "PositionID": 54,
    "KnessetNum": 26,
    "StartDate": "2026-11-10T00:00:00",
@@ -1902,6 +3072,16 @@
    "FactionName": "הרשימה המשותפת"
   },
   {
+   "PersonToPositionID": 34097,
+   "PersonID": 30843,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1123,
+   "FactionName": "רע\"מ"
+  },
+  {
    "PersonToPositionID": 34098,
    "PersonID": 30995,
    "PositionID": 54,
@@ -1929,7 +3109,27 @@
    "StartDate": "2026-11-10T00:00:00",
    "FinishDate": null,
    "FactionID": 1119,
-   "FactionName": "ישראל ביתנו"
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
+  },
+  {
+   "PersonToPositionID": 34266,
+   "PersonID": 30765,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1116,
+   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
+  },
+  {
+   "PersonToPositionID": 34268,
+   "PersonID": 30770,
+   "PositionID": 54,
+   "KnessetNum": 26,
+   "StartDate": "2026-11-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1116,
+   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
   }
  ]
 }

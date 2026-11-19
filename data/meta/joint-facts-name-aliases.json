@@ -28,6 +28,20 @@
       "personId": 30683,
       "source": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person(30683)",
       "note": "Reviewed against retained data/raw/k23/knesset-odata-members.json: טרופר חילי; retained data/meta/bios/k23.json identity: elected; reviewed decision: טרופר יחיאל משה = טרופר חילי (Hili Tropper).. Candidate-scoped full-name variant, never a global nickname substitution."
+    },
+    {
+      "candidateId": "26-מחל#9",
+      "nameHe": "גואילי טלי",
+      "personId": 30935,
+      "source": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person(30935)",
+      "note": "Reviewed 2026-11-19 against retained data/raw/k26/knesset-odata-members.json: גואילי טליק (the provisional 4 Nov 2026 record had גואילי טלי); retained data/meta/bios/k26.json identity: elected; Knesset 26 member, name identical. Candidate-scoped full-name variant, never a global nickname substitution."
+    },
+    {
+      "candidateId": "26-מחל#21",
+      "nameHe": "ביסמוט בעז",
+      "personId": 30835,
+      "source": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person(30835)",
+      "note": "Reviewed 2026-11-19 against retained data/raw/k26/knesset-odata-members.json: ביסמוט בועז (full spelling of the same name); retained data/meta/bios/k26.json identity: elected; Knesset 26 member, name matches (2.5). Candidate-scoped full-name variant, never a global nickname substitution."
     }
   ]
 }

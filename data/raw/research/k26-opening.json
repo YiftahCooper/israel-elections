@@ -1,0 +1,412 @@
+{
+  "source": "Knesset OData ParliamentInfo.svc",
+  "retrievedAt": "2026-11-19T02:12:54.810598+00:00",
+  "knesset": 26,
+  "note": "The 26th Knesset's opening: its sitting dates, faction registry and first plenum sessions as the Knesset recorded them on retrieval; with data/raw/k26/knesset-odata-members.json the input of data/research/knesset-member-changes/k26.json (scripts/research/build-member-changes.py --opening 26).",
+  "dates": [
+    {
+      "KnessetDateID": 169,
+      "KnessetNum": 26,
+      "Name": "העשרים ושש",
+      "Assembly": 1,
+      "Plenum": 1,
+      "PlenumStart": "2026-11-10T00:00:00",
+      "PlenumFinish": null,
+      "IsCurrent": true,
+      "LastUpdatedDate": "2026-08-17T15:49:29.313"
+    }
+  ],
+  "factions": [
+    {
+      "FactionID": 1111,
+      "Name": "ביחד בראשות נפתלי בנט",
+      "KnessetNum": 26,
+      "StartDate": "2026-11-10T00:00:00",
+      "FinishDate": null,
+      "IsCurrent": true,
+      "LastUpdatedDate": "2026-10-14T22:16:15.187"
+    },
+    {
+      "FactionID": 1112,
+      "Name": "הדמוקרטים בראשות יאיר גולן",
+      "KnessetNum": 26,
+      "StartDate": "2026-11-10T00:00:00",
+      "FinishDate": null,
+      "IsCurrent": true,
+      "LastUpdatedDate": "2026-11-01T17:33:22.033"
+    },
+    {
+      "FactionID": 1113,
+      "Name": "הליכוד עם בנימין נתניהו לראשות הממשלה",
+      "KnessetNum": 26,
+      "StartDate": "2026-11-10T00:00:00",
+      "FinishDate": null,
+      "IsCurrent": true,
+      "LastUpdatedDate": "2026-11-10T14:58:09.653"
+    },
+    {
+      "FactionID": 1114,
+      "Name": "הציונות הדתית בראשות בצלאל סמוטריץ וזהות בראשות משה פייגלין",
+      "KnessetNum": 26,
+      "StartDate": "2026-11-10T00:00:00",
+      "FinishDate": null,
+      "IsCurrent": true,
+      "LastUpdatedDate": "2026-11-10T14:58:25.543"
+    },
+    {
+      "FactionID": 1115,
+      "Name": "הרשימה המשותפת",
+      "KnessetNum": 26,
+      "StartDate": "2026-11-10T00:00:00",
+      "FinishDate": null,
+      "IsCurrent": true,
+      "LastUpdatedDate": "2026-11-10T14:58:37.857"
+    },
+    {
+      "FactionID": 1116,
+      "Name": "התאחדות הספרדים העולמית שומרי תורה",
+      "KnessetNum": 26,
+      "StartDate": "2026-11-10T00:00:00",
+      "FinishDate": null,
+      "IsCurrent": true,
+      "LastUpdatedDate": "2026-11-10T14:59:56.023"
+    },
+    {
+      "FactionID": 1117,
+      "Name": "יהדות התורה והשבת אגודת ישראל - דגל התורה",
+      "KnessetNum": 26,
+      "StartDate": "2026-11-10T00:00:00",
+      "FinishDate": null,
+      "IsCurrent": true,
+      "LastUpdatedDate": "2026-11-10T14:58:52.247"
+    },
+    {
+      "FactionID": 1118,
+      "Name": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל",
+      "KnessetNum": 26,
+      "StartDate": "2026-11-10T00:00:00",
+      "FinishDate": null,
+      "IsCurrent": true,
+      "LastUpdatedDate": "2026-10-14T22:29:13.04"
+    },
+    {
+      "FactionID": 1119,
+      "Name": "ישראל ביתנו בראשות אביגדור ליברמן",
+      "KnessetNum": 26,
+      "StartDate": "2026-11-10T00:00:00",
+      "FinishDate": null,
+      "IsCurrent": true,
+      "LastUpdatedDate": "2026-11-11T12:55:21.463"
+    },
+    {
+      "FactionID": 1121,
+      "Name": "עוצמה יהודית בראשות איתמר בן גביר",
+      "KnessetNum": 26,
+      "StartDate": "2026-11-10T00:00:00",
+      "FinishDate": null,
+      "IsCurrent": true,
+      "LastUpdatedDate": "2026-11-11T12:55:00.367"
+    },
+    {
+      "FactionID": 1123,
+      "Name": "רע\"מ",
+      "KnessetNum": 26,
+      "StartDate": "2026-11-10T00:00:00",
+      "FinishDate": null,
+      "IsCurrent": true,
+      "LastUpdatedDate": "2026-11-10T14:59:43.51"
+    }
+  ],
+  "plenumSessions": [
+    {
+      "PlenumSessionID": 2245487,
+      "Number": 1,
+      "KnessetNum": 26,
+      "Name": "ישיבת מליאה בתאריך 10/11/2026 בשעה 16:00",
+      "StartDate": "2026-11-10T16:00:00",
+      "FinishDate": "2026-11-10T16:53:45.627",
+      "IsSpecialMeeting": false,
+      "LastUpdatedDate": "2026-11-10T16:54:36.537"
+    },
+    {
+      "PlenumSessionID": 2245727,
+      "Number": 2,
+      "KnessetNum": 26,
+      "Name": "ישיבת מליאה בתאריך 11/11/2026 בשעה 11:00",
+      "StartDate": "2026-11-11T11:00:00",
+      "FinishDate": "2026-11-11T17:20:26.25",
+      "IsSpecialMeeting": false,
+      "LastUpdatedDate": "2026-11-11T17:21:28.907"
+    },
+    {
+      "PlenumSessionID": 2246403,
+      "Number": 3,
+      "KnessetNum": 26,
+      "Name": "ישיבת מליאה בתאריך 16/11/2026 בשעה 16:00",
+      "StartDate": "2026-11-16T16:00:00",
+      "FinishDate": "2026-11-16T17:37:35.653",
+      "IsSpecialMeeting": false,
+      "LastUpdatedDate": "2026-11-16T17:38:07.087"
+    },
+    {
+      "PlenumSessionID": 2246405,
+      "Number": 4,
+      "KnessetNum": 26,
+      "Name": "ישיבת מליאה בתאריך 17/11/2026 בשעה 16:00",
+      "StartDate": "2026-11-17T16:00:00",
+      "FinishDate": "2026-11-18T09:22:03.44",
+      "IsSpecialMeeting": false,
+      "LastUpdatedDate": "2026-11-18T09:22:38.183"
+    },
+    {
+      "PlenumSessionID": 2246406,
+      "Number": 5,
+      "KnessetNum": 26,
+      "Name": "ישיבת מליאה בתאריך 18/11/2026 בשעה 11:00",
+      "StartDate": "2026-11-18T11:00:00",
+      "FinishDate": "2026-11-18T18:27:10.6",
+      "IsSpecialMeeting": false,
+      "LastUpdatedDate": "2026-11-18T18:28:12.317"
+    }
+  ],
+  "openingSessionDocuments": [
+    {
+      "DocumentPlenumSessionID": "16097767",
+      "PlenumSessionID": 2245487,
+      "GroupTypeID": 31,
+      "GroupTypeDesc": "תור מליאה",
+      "ApplicationID": 1,
+      "ApplicationDesc": "DOC",
+      "FilePath": "https://fs.knesset.gov.il/26/Plenum/26_tor_16097767.doc",
+      "LastUpdatedDate": "2026-11-10T17:00:37.21"
+    },
+    {
+      "DocumentPlenumSessionID": "16097793",
+      "PlenumSessionID": 2245487,
+      "GroupTypeID": 31,
+      "GroupTypeDesc": "תור מליאה",
+      "ApplicationID": 1,
+      "ApplicationDesc": "DOC",
+      "FilePath": "https://fs.knesset.gov.il/26/Plenum/26_tor_16097793.doc",
+      "LastUpdatedDate": "2026-11-10T17:02:44.597"
+    },
+    {
+      "DocumentPlenumSessionID": "16098069",
+      "PlenumSessionID": 2245487,
+      "GroupTypeID": 31,
+      "GroupTypeDesc": "תור מליאה",
+      "ApplicationID": 1,
+      "ApplicationDesc": "DOC",
+      "FilePath": "https://fs.knesset.gov.il/26/Plenum/26_tor_16098069.doc",
+      "LastUpdatedDate": "2026-11-10T17:24:46.363"
+    },
+    {
+      "DocumentPlenumSessionID": "16098245",
+      "PlenumSessionID": 2245487,
+      "GroupTypeID": 31,
+      "GroupTypeDesc": "תור מליאה",
+      "ApplicationID": 1,
+      "ApplicationDesc": "DOC",
+      "FilePath": "https://fs.knesset.gov.il/26/Plenum/26_tor_16098245.doc",
+      "LastUpdatedDate": "2026-11-10T17:38:28.677"
+    },
+    {
+      "DocumentPlenumSessionID": "16098596",
+      "PlenumSessionID": 2245487,
+      "GroupTypeID": 31,
+      "GroupTypeDesc": "תור מליאה",
+      "ApplicationID": 1,
+      "ApplicationDesc": "DOC",
+      "FilePath": "https://fs.knesset.gov.il/26/Plenum/26_tor_16098596.doc",
+      "LastUpdatedDate": "2026-11-10T18:08:45.997"
+    },
+    {
+      "DocumentPlenumSessionID": "16099072",
+      "PlenumSessionID": 2245487,
+      "GroupTypeID": 30,
+      "GroupTypeDesc": "תוכן עניינים",
+      "ApplicationID": 1,
+      "ApplicationDesc": "DOC",
+      "FilePath": "https://fs.knesset.gov.il/26/Plenum/26_toc_16099072.doc",
+      "LastUpdatedDate": "2026-11-10T18:46:40.13"
+    },
+    {
+      "DocumentPlenumSessionID": "16099073",
+      "PlenumSessionID": 2245487,
+      "GroupTypeID": 28,
+      "GroupTypeDesc": "דברי הכנסת",
+      "ApplicationID": 1,
+      "ApplicationDesc": "DOC",
+      "FilePath": "https://fs.knesset.gov.il/26/Plenum/26_ptm_16099073.doc",
+      "LastUpdatedDate": "2026-11-12T08:58:00"
+    },
+    {
+      "DocumentPlenumSessionID": "16099074",
+      "PlenumSessionID": 2245487,
+      "GroupTypeID": 43,
+      "GroupTypeDesc": "סטנוגרמה\t",
+      "ApplicationID": 1,
+      "ApplicationDesc": "DOC",
+      "FilePath": "https://fs.knesset.gov.il/26/plenum/26_st_16099074.doc",
+      "LastUpdatedDate": "2026-11-10T18:46:40.303"
+    }
+  ],
+  "queries": {
+    "positions26": [
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=KnessetNum+eq+26&%24orderby=PersonToPositionID&%24format=json",
+        "accessedAt": "2026-11-19T02:06:13.993941+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "b488ddd31570ec488adcdd13f79d3ce0253607f7536a926c779a6dada681e8ca",
+        "file": "positions26-001.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2026&$orderby=PersonToPositionID&$skiptoken=34064,34064&$format=json",
+        "accessedAt": "2026-11-19T02:06:15.560210+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "3ee803bbf0996542bca90297849d582e0341073d4f3708b6914ad742afb6f262",
+        "file": "positions26-002.json",
+        "rows": 100
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2026&$orderby=PersonToPositionID&$skiptoken=34180,34180&$format=json",
+        "accessedAt": "2026-11-19T02:06:17.098374+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "406dccd5ecdcce81b824d8e47029a06532738c3b6c9c69c7f2a77ad976eac3e1",
+        "file": "positions26-003.json",
+        "rows": 99
+      }
+    ],
+    "factions26": [
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Faction?%24filter=KnessetNum+eq+26&%24orderby=FactionID&%24format=json",
+        "accessedAt": "2026-11-19T02:06:18.620915+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "c33b72e091d1f5e21ffc9195b50e91aeef6971d1ce8e5fec27716ba8040b5c58",
+        "file": "factions26-001.json",
+        "rows": 11
+      }
+    ],
+    "dates": [
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_KnessetDates?%24filter=KnessetNum+ge+25&%24orderby=KnessetDateID&%24format=json",
+        "accessedAt": "2026-11-19T02:06:20.103672+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "a0120ece8cb5a33872d52da8fc747a2476bf9cfb4e741f027542002a6781bb70",
+        "file": "dates-001.json",
+        "rows": 9
+      }
+    ],
+    "persons26": [
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person?%24filter=PersonID+eq+427+or+PersonID+eq+468+or+PersonID+eq+556+or+PersonID+eq+560+or+PersonID+eq+563+or+PersonID+eq+860+or+PersonID+eq+965+or+PersonID+eq+1025+or+PersonID+eq+1027+or+PersonID+eq+12938+or+PersonID+eq+12951+or+PersonID+eq+12959+or+PersonID+eq+23511+or+PersonID+eq+23551+or+PersonID+eq+23556+or+PersonID+eq+23558+or+PersonID+eq+23560+or+PersonID+eq+23564+or+PersonID+eq+23591+or+PersonID+eq+23594+or+PersonID+eq+23641+or+PersonID+eq+23653+or+PersonID+eq+28513+or+PersonID+eq+30055+or+PersonID+eq+30057&%24select=PersonID%2CLastName%2CFirstName%2CGenderDesc%2CIsCurrent%2CLastUpdatedDate&%24format=json",
+        "accessedAt": "2026-11-19T02:12:48.816373+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "8694c9ae528274952b16bc59aba9d8a3bdd0effbd2e43212ee68bcfa8a4a4d52",
+        "file": "persons26-b1-001.json",
+        "rows": 25
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person?%24filter=PersonID+eq+30058+or+PersonID+eq+30069+or+PersonID+eq+30083+or+PersonID+eq+30084+or+PersonID+eq+30102+or+PersonID+eq+30106+or+PersonID+eq+30121+or+PersonID+eq+30300+or+PersonID+eq+30470+or+PersonID+eq+30558+or+PersonID+eq+30601+or+PersonID+eq+30662+or+PersonID+eq+30672+or+PersonID+eq+30683+or+PersonID+eq+30685+or+PersonID+eq+30686+or+PersonID+eq+30691+or+PersonID+eq+30693+or+PersonID+eq+30695+or+PersonID+eq+30700+or+PersonID+eq+30701+or+PersonID+eq+30702+or+PersonID+eq+30704+or+PersonID+eq+30713+or+PersonID+eq+30719&%24select=PersonID%2CLastName%2CFirstName%2CGenderDesc%2CIsCurrent%2CLastUpdatedDate&%24format=json",
+        "accessedAt": "2026-11-19T02:12:50.353062+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "c5eee0d5031f7ad3c913fc5bc7acced56cd55a2e4da7ceeb20a31e9f66e861d7",
+        "file": "persons26-b2-001.json",
+        "rows": 25
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person?%24filter=PersonID+eq+30743+or+PersonID+eq+30752+or+PersonID+eq+30758+or+PersonID+eq+30765+or+PersonID+eq+30770+or+PersonID+eq+30786+or+PersonID+eq+30804+or+PersonID+eq+30807+or+PersonID+eq+30808+or+PersonID+eq+30811+or+PersonID+eq+30812+or+PersonID+eq+30818+or+PersonID+eq+30833+or+PersonID+eq+30835+or+PersonID+eq+30836+or+PersonID+eq+30840+or+PersonID+eq+30843+or+PersonID+eq+30846+or+PersonID+eq+30847+or+PersonID+eq+30849+or+PersonID+eq+30853+or+PersonID+eq+30857+or+PersonID+eq+30860+or+PersonID+eq+30867+or+PersonID+eq+30924&%24select=PersonID%2CLastName%2CFirstName%2CGenderDesc%2CIsCurrent%2CLastUpdatedDate&%24format=json",
+        "accessedAt": "2026-11-19T02:12:51.830229+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "604b0a4dcf03bd3198bb607afa7b66453479338e04a628cbb2d4471c0d9cdbf8",
+        "file": "persons26-b3-001.json",
+        "rows": 25
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person?%24filter=PersonID+eq+30925+or+PersonID+eq+30926+or+PersonID+eq+30927+or+PersonID+eq+30928+or+PersonID+eq+30929+or+PersonID+eq+30930+or+PersonID+eq+30935+or+PersonID+eq+30936+or+PersonID+eq+30938+or+PersonID+eq+30939+or+PersonID+eq+30941+or+PersonID+eq+30947+or+PersonID+eq+30948+or+PersonID+eq+30949+or+PersonID+eq+30950+or+PersonID+eq+30951+or+PersonID+eq+30953+or+PersonID+eq+30954+or+PersonID+eq+30955+or+PersonID+eq+30957+or+PersonID+eq+30958+or+PersonID+eq+30959+or+PersonID+eq+30960+or+PersonID+eq+30961+or+PersonID+eq+30962&%24select=PersonID%2CLastName%2CFirstName%2CGenderDesc%2CIsCurrent%2CLastUpdatedDate&%24format=json",
+        "accessedAt": "2026-11-19T02:12:53.322606+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "22fe1d286786d73afdc8508d7401a5624c48d5182b88dc266f46be866df2097e",
+        "file": "persons26-b4-001.json",
+        "rows": 25
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person?%24filter=PersonID+eq+30963+or+PersonID+eq+30964+or+PersonID+eq+30965+or+PersonID+eq+30966+or+PersonID+eq+30967+or+PersonID+eq+30968+or+PersonID+eq+30969+or+PersonID+eq+30970+or+PersonID+eq+30971+or+PersonID+eq+30974+or+PersonID+eq+30975+or+PersonID+eq+30981+or+PersonID+eq+30990+or+PersonID+eq+30991+or+PersonID+eq+30992+or+PersonID+eq+30993+or+PersonID+eq+30994+or+PersonID+eq+30995+or+PersonID+eq+30996+or+PersonID+eq+30997&%24select=PersonID%2CLastName%2CFirstName%2CGenderDesc%2CIsCurrent%2CLastUpdatedDate&%24format=json",
+        "accessedAt": "2026-11-19T02:12:54.810598+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "36f5a50ed7869a99a53e715cc6eb5586333cd8ebdf9bbe897898f45714971ead",
+        "file": "persons26-b5-001.json",
+        "rows": 20
+      }
+    ],
+    "plenum26": [
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PlenumSession?%24filter=KnessetNum+eq+26&%24orderby=PlenumSessionID&%24format=json",
+        "accessedAt": "2026-11-19T02:11:21.921315+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "d1b87338442a8b20d3a735171bbfdacbcc3dd8e87416635b6bb324d831ec9430",
+        "file": "plenum26-001.json",
+        "rows": 5
+      }
+    ],
+    "plenumdocs26-1": [
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_DocumentPlenumSession?%24filter=PlenumSessionID+eq+2245487&%24format=json",
+        "accessedAt": "2026-11-19T02:11:26.631604+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "db6b1a3ee1346336230d59c1bbd67049fa8c4c8b65b33517988b8e989d91c1ee",
+        "file": "plenumdocs26-1-001.json",
+        "rows": 8
+      }
+    ]
+  },
+  "missingPerson": {
+    "personId": 30989,
+    "requests": [
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person(30989)?%24format=json",
+        "accessedAt": "2026-11-19T02:13:00.255225+00:00",
+        "publisher": "Knesset",
+        "status": 404,
+        "retryAfter": null,
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?%24filter=PersonID+eq+30989&%24format=json",
+        "accessedAt": "2026-11-19T02:13:01.709116+00:00",
+        "publisher": "Knesset",
+        "status": 200,
+        "retryAfter": null,
+        "sha256": "08e504e6c6eec5234897cd0ebe4b00b97652616bf82c1a61e2ae046d5db881bd",
+        "file": "positions-30989-001.json",
+        "rows": 0
+      }
+    ],
+    "note": "Dror David Amos (Shas no. 6, declared elected in Yalkut HaPirsumim 15100): the person record returns HTTP 404 and the person has no position rows."
+  }
+}

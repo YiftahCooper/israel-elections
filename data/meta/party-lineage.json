@@ -494,7 +494,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k26.json",
-      "sha256": "6db8964d6c80d19a3b229664d825883f67e7c9f303add0193de6cb15de816826",
+      "sha256": "38a90546ba0085187f16174911ff779b1b0176553fff0542781566cfbbe9b849",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },

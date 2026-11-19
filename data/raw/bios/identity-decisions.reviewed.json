@@ -605,6 +605,20 @@
    "confidence": "high",
    "reason": "Zehut No.2 in April 2019 is the former Shas MK Haim Amsalem, explicitly identified in Ynet 21 Feb 2019 and independently corroborated by Zman Israel 4 Jan 2021. Sources: https://www.ynet.co.il/articles/0,7340,L-5467161,00.html ; https://www.zman.co.il/live/185871/ (data/raw/research/mk-runs-1109.reviewed.json).",
    "basis": "not elected; reviewed decision: Zehut No.2 in April 2019 is the former Shas MK Haim Amsalem, explicitly identified in Ynet 21 Feb 2019 and independently corroborated by Zman Israel 4 Jan 2021. Sources: https://www.ynet.co.il/articles/0,7340,L-5467161,00.html ; https://www.zman.co.il/live/185871/ (data/raw/research/mk-runs-1109.reviewed.json)."
+  },
+  {
+   "candidateId": "26-שס#1",
+   "personId": 2291,
+   "confidence": "high",
+   "reason": "The 2026 results notice declares the Shas list's rank 1, \"אריה מכלוף דרעי\", elected (Yalkut HaPirsumim 15100 §4, p.1645; data/raw/k26/yp15100-results.pdf). He is not in the Knesset's opening membership of 10 Nov 2026 (data/raw/k26/knesset-odata-members.json, retrieved 19 Nov 2026: no 26th-Knesset position for PersonID 2291), and the opening sitting's roll call has no oath from him. The same name, given and middle names included, is Knesset member PersonID 2291 (Aryeh Machluf Deri), tied by ID to Shas rank 1 in 2022 (25-שס#1). Lane D1, 19 Nov 2026.",
+   "basis": "elected; reviewed decision: rank 1 of the Shas list, declared elected in Yalkut HaPirsumim 15100 §4; did not take the seat (not in the Knesset's opening membership of 10 Nov 2026); Knesset member PersonID 2291."
+  },
+  {
+   "candidateId": "26-שס#6",
+   "personId": 30989,
+   "confidence": "high",
+   "reason": "The 2026 results notice declares the Shas list's rank 6, \"דרור דוד עמוס\", elected (Yalkut HaPirsumim 15100 §4, p.1645). The Knesset's pre-opening record of 4 Nov 2026 had PersonID 30989, \"דרור דוד עמוס\", in the Shas faction (the earlier data/raw/k26/knesset-odata-members.json, git history); on 19 Nov 2026 that person record returns HTTP 404 and has no positions (data/raw/research/k26-opening.json), and the opening membership of 10 Nov 2026 does not include it. The person never sat; the ID is kept only to tie the candidacy. Lane D1, 19 Nov 2026.",
+   "basis": "elected; reviewed decision: rank 6 of the Shas list, declared elected in Yalkut HaPirsumim 15100 §4; did not take the seat (not in the Knesset's opening membership of 10 Nov 2026); Knesset person record 30989 of 4 Nov 2026, since removed."
   }
  ]
 }

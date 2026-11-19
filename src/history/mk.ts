@@ -69,7 +69,7 @@ export interface MkRun {
 }
 /** One Knesset in the person's path: the election they ran in for it (if any) and their time in it. */
 export interface MkRow {
-  k: number; electionDate: string; opening: string | null; end: string | null;
+  k: number; electionDate: string; opening: string | null; end: string | null; /** still sitting: `end` is the date of our records */ ongoing?: boolean;
   run: MkRun | null;
   /** time in this Knesset: one entry per continuous period; `unrecorded`: the days in it no faction record covers */
   terms: { start: string; end: string; ongoing: boolean; segments: MkSegment[]; unrecorded: { start: string; end: string }[]; reason?: string }[];
@@ -181,7 +181,7 @@ export function mkView(rt: MkRuntime, id: number): MkView | null {
     for (const ev of p.events.filter((x) => x[2] === k)) events.push({ date: ev[0], kind: 'recorded', text: { en: ev[3], he: ev[4] }, evidence: ev[5], sources: ev[6] });
     // by date only: the sort keeps the path's order within a day (the faction that continues comes last)
     events.sort((a, b) => a.date.localeCompare(b.date));
-    return { k, electionDate: e.date, opening: e.opening, end: e.end, run, terms, events };
+    return { k, electionDate: e.date, opening: e.opening, end: e.end, ...(e.ongoing ? { ongoing: true } : {}), run, terms, events };
   });
   const full = rt.failedRunCoverage.full.slice().sort((a, b) => a - b);
   const from = rt.elections[full[0]]?.date.slice(0, 4) ?? '';

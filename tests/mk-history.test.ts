@@ -21,9 +21,12 @@ beforeAll(() => { rt = compileMkHistory(process.cwd(), review); });
 describe('who gets a history', () => {
   it('everyone who sat in the Knesset, and those elected to the 26th', () => {
     const served = new Set<number>();
-    for (let k = 1; k <= 25; k++) for (const t of JSON.parse(readFileSync(`data/research/knesset-member-changes/k${k}.json`, 'utf8')).tenures) served.add(t.personId);
+    for (let k = 1; k <= 26; k++) for (const t of JSON.parse(readFileSync(`data/research/knesset-member-changes/k${k}.json`, 'utf8')).tenures) served.add(t.personId);
     for (const p of served) expect(rt.people[p], `person ${p}`).toBeDefined();
-    for (const [id, p] of Object.entries(rt.people)) if (!served.has(Number(id))) expect(p.runs.some((r) => r[0] === 26 && r[3] === 'elected'), `person ${id}`).toBe(true);
+    // the 26th Knesset's member records are in (19 Nov 2026): the one person who never sat is Dror David Amos, Shas No. 6,
+    // declared elected and withdrawn before the opening
+    const never = Object.entries(rt.people).filter(([id]) => !served.has(Number(id)));
+    expect(never.map(([id, p]) => [Number(id), p.runs.map((r) => [r[0], r[1], r[2], r[3]])])).toEqual([[30989, [[26, '26-שס', 6, 'declined']]]]);
     expect(review.anomalies).toEqual([]);
   });
   it('a candidacy belongs to at most one person', () => {
@@ -279,7 +282,11 @@ describe('factions shown equal the Knesset record', () => {
     expect([237, 575, 615, 9, 49].map((f) => [reg.get(f), rt.factions[f][1]])).toEqual(Array(5).fill(['מפלגה דתית לאומית', 'National Religious Party']));
     // Left as they are: the list labels' own conventions, which belong to the lists ("United Arab List" and "Ra'am";
     // straight and curly apostrophes in Hadash–Ta’al and Ra’am–Ta’al).
-    const LIST_CONVENTION = new Set(['רע״ם', 'חד״ש–תע״ל', 'רע״ם–תע״ל']);
+    // Also left: ביחד, two different bodies with one short name, kept apart on purpose (see Bennett above): the 2022
+    // faction recorded as ביחד ("Beyahad") and the 2026 faction recorded as ביחד בראשות נפתלי בנט, shown under its list's
+    // label ביחד ("Together (Bennett)") since the 26th Knesset's member records arrived (19 Nov 2026).
+    const LIST_CONVENTION = new Set(['רע״ם', 'חד״ש–תע״ל', 'רע״ם–תע״ל', 'ביחד']);
+    expect([1086, 1111].map((f) => rt.factions[f].slice(0, 2))).toEqual([['ביחד', 'Beyahad'], ['ביחד', 'Together (Bennett)']]);
     const byShown = new Map<string, Set<string>>();
     for (const [, [he, en]] of Object.entries(rt.factions)) {
       if (LIST_CONVENTION.has(he) || !en) continue;
@@ -463,8 +470,13 @@ describe('the end of a Knesset', () => {
     for (let k = 1; k <= 25; k++) expect(rt.elections[k].end, `k${k}`).toBe(rt.elections[k + 1].opening);
     expect(tenures(25).every((t) => t.end !== null)).toBe(true);
     expect(rt.elections[25].end).toBe('2026-11-10');
-    // the 26th opened as the 25th ended (owner, 16 Nov 2026); its member records are not yet in the data, so it has no end
-    expect(rt.elections[26]).toMatchObject({ opening: '2026-11-10', end: null, recordsPending: true });
+    // the 26th opened as the 25th ended (owner, 16 Nov 2026); its member records are in since 19 Nov 2026, so it runs to
+    // their as-of date while it sits
+    expect(rt.elections[26]).toMatchObject({ opening: '2026-11-10', end: '2026-11-19' });
+    expect(rt.elections[26].recordsPending).toBeUndefined();
+    // still sitting: the 19 Nov end is only the date of the records, so the card gives no closing month
+    expect(rt.elections[26].ongoing).toBe(true);
+    expect(rt.elections[25].ongoing).toBeUndefined();
   });
   it('a member who served to the end of the 25th has no end line; one who left early still has it', () => {
     const last = tenures(25).filter((t) => t.end === '2026-11-10').map((t) => t.personId);

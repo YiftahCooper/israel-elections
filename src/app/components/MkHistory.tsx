@@ -275,7 +275,10 @@ function TermBar({ r, v, nums }: { r: MkRow; v: MkView; nums: Map<MkEvent, numbe
   const W = 100 * Math.min(1, len / v.longest), x = (d: string) => (daysBetween(r.opening!, d) / len) * W;
   const caption = r.terms.length
     ? r.terms.map((t) => t.ongoing ? L(`from ${formatDate(t.start, 'en')}`, `מ־${formatDate(t.start, 'he')}`) : `${formatDate(t.start, lang)} – ${formatDate(t.end, lang)}`).join(' · ')
-    : L(`Not in this Knesset (${monthYear(r.opening, 'en')} – ${monthYear(r.end, 'en')})`, `${g(v.gender, 'לא כיהן', 'לא כיהנה', 'ללא כהונה')} בכנסת זו (${monthYear(r.opening, 'he')} – ${monthYear(r.end, 'he')})`);
+    : r.ongoing
+      // the Knesset still sits: no closing month (19 Nov 2026, the 26th)
+      ? L(`Not in this Knesset (from ${monthYear(r.opening, 'en')})`, `${g(v.gender, 'לא כיהן', 'לא כיהנה', 'ללא כהונה')} בכנסת זו (מ־${monthYear(r.opening, 'he')})`)
+      : L(`Not in this Knesset (${monthYear(r.opening, 'en')} – ${monthYear(r.end, 'en')})`, `${g(v.gender, 'לא כיהן', 'לא כיהנה', 'ללא כהונה')} בכנסת זו (${monthYear(r.opening, 'he')} – ${monthYear(r.end, 'he')})`);
   const marks = r.events.filter((e) => e.kind === 'recorded');
   // events too close to number apart (Eichler: 15 and 19 Jan 2026) share one line, numbered "1–2"
   const near: MkEvent[][] = [];

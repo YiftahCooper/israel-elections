@@ -149,12 +149,17 @@ factions = collections.defaultdict(lambda: collections.defaultdict(list))  # Kne
 for r in load('knesset-odata-faction-positions.json'):
     if r['KnessetNum'] is not None:
         factions[r['KnessetNum']][r['PersonID']].append((r['StartDate'] or '', r['FactionID'], (r['FactionName'] or '').strip()))
-# The 26th Knesset has no MK positions before its opening (10 Nov 2026); its faction rows are the
-# provisional membership retained in data/raw/k26/knesset-odata-members.json (decision 0088).
+# The 26th Knesset is not in the bios position snapshots: its members and factions are those retained in
+# data/raw/k26/knesset-odata-members.json. Since the refresh of 19 Nov 2026 that is the opening membership of
+# 10 Nov 2026 (MK positions); before it, a provisional pre-opening faction snapshot (decision 0088), whose faction rows
+# also sit in knesset-odata-faction-positions.json and are replaced here by the retained ones.
 k26 = json.loads((ROOT / 'data/raw/k26/knesset-odata-members.json').read_text('utf8'))
 if 26 not in members:
-    for r in k26['factionMemberships']:
+    for r in k26['positions'] or k26['factionMemberships']:
         members[26][r['PersonID']] = r['StartDate']
+    factions[26] = collections.defaultdict(list)
+    for r in k26['factionMemberships']:
+        factions[26][r['PersonID']].append((r['StartDate'] or '', r['FactionID'], (r['FactionName'] or '').strip()))
 served = collections.defaultdict(set)
 for n, m in members.items():
     for pid in m:

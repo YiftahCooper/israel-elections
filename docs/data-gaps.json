@@ -1,30 +1,30 @@
 {
   "schemaVersion": 3,
-  "total": 12424,
+  "total": 12438,
   "counts": {
-    "unknown": 7351,
-    "missing-field": 283,
+    "unknown": 7363,
+    "missing-field": 285,
     "conflict": 19,
-    "single-source": 2945,
+    "single-source": 2946,
     "low-confidence": 101,
     "release-hold": 0,
-    "inferred": 1174,
+    "inferred": 1173,
     "pending": 356,
     "unconfirmed": 195
   },
   "countsByStatus": {
-    "inferred-not-verified": 1035,
+    "inferred-not-verified": 1034,
     "needs-current-status-review": 319,
-    "open": 11070
+    "open": 11085
   },
   "countsByImportance": {
     "high": {
-      "total": 787,
+      "total": 786,
       "confirmed": 420,
       "probable": 44,
       "provisional": 140,
       "disputed": 11,
-      "unknown": 172
+      "unknown": 171
     },
     "medium": {
       "total": 4483,
@@ -41,12 +41,12 @@
       }
     },
     "low": {
-      "total": 7154,
+      "total": 7169,
       "confirmed": 572,
       "probable": 0,
-      "provisional": 803,
+      "provisional": 802,
       "disputed": 0,
-      "unknown": 5779
+      "unknown": 5795
     }
   },
   "claimCertainty": {
@@ -79,9 +79,9 @@
       "unknown": 0
     },
     "Candidate identity links": {
-      "confirmed": 3245,
+      "confirmed": 3247,
       "probable": 42,
-      "provisional": 535,
+      "provisional": 534,
       "disputed": 0,
       "unknown": 0
     }
@@ -545,31 +545,31 @@
     },
     {
       "election": "k26",
-      "total": 642,
+      "total": 655,
       "highOpen": 2,
       "mediumOpen": 122,
-      "low": 452,
+      "low": 465,
       "counts": {
-        "unknown": 360,
+        "unknown": 373,
         "missing-field": 0,
         "conflict": 0,
-        "single-source": 143,
+        "single-source": 144,
         "low-confidence": 6,
         "release-hold": 0,
-        "inferred": 103,
+        "inferred": 102,
         "pending": 30,
         "unconfirmed": 0
       }
     },
     {
       "election": "cross-election",
-      "total": 1541,
-      "highOpen": 3,
+      "total": 1542,
+      "highOpen": 2,
       "mediumOpen": 280,
-      "low": 1086,
+      "low": 1088,
       "counts": {
-        "unknown": 1071,
-        "missing-field": 35,
+        "unknown": 1070,
+        "missing-field": 37,
         "conflict": 5,
         "single-source": 364,
         "low-confidence": 0,
@@ -581,7 +581,6 @@
     }
   ],
   "high": [
-    {"election":"cross-election","area":"data/meta/joint-facts.json openingDate","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/joint-facts.json"},
     {"election":"cross-election","area":"data/meta/joint-facts.json record","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/joint-facts.json"},
     {"election":"cross-election","area":"data/meta/joint-facts.json unresolved.personId","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/joint-facts.json"},
     {"election":"k26","area":"Bloc schemes","count":2,"certainty":{"provisional":2},"kinds":{"single-source":2},"labels":["outgoing-government","pre-election-blocs"],"file":"data/meta/k26.json"},
@@ -1062,8 +1061,8 @@
     {"election":"k1","area":"Recommendation rounds","count":1,"certainty":{"unknown":1}}
   ],
   "low": [
-    {"area":"data/meta/bios/kN.json candidates","count":4154,"open":4154},
-    {"area":"Published lists","count":799,"open":567},
+    {"area":"data/meta/bios/kN.json candidates","count":4155,"open":4155},
+    {"area":"Published lists","count":798,"open":566},
     {"area":"data/meta/parties.json parties","count":567,"open":459},
     {"area":"data/meta/kN.json colours","count":442,"open":442},
     {"area":"docs (prose)","count":300,"open":300},
@@ -1071,18 +1070,19 @@
     {"area":"data/raw/research/ckan-election-search.json result","count":164,"open":164},
     {"area":"data/raw/research/ckan-votes-knesset.json result","count":102,"open":102},
     {"area":"data/raw/votes-knesset.catalogue.json result","count":102,"open":102},
-    {"area":"data/raw/kN/knesset-odata-members.json positions","count":50,"open":50},
+    {"area":"data/raw/kN/knesset-odata-members.json positions","count":53,"open":53},
     {"area":"data/raw/research/odata-elections-catalog.json result","count":41,"open":41},
     {"area":"data/raw/kN/knesset-odata-members.json record","count":26,"open":26},
     {"area":"data/meta/logos/kN.json logos","count":21,"open":21},
     {"area":"data/raw/polls/kN/coverage.json candidates","count":18,"open":18},
-    {"area":"data/raw/SOURCES.json sha256","count":17,"open":17},
+    {"area":"data/raw/SOURCES.json sha256","count":18,"open":18},
+    {"area":"data/raw/SOURCES.json file","count":17,"open":17},
     {"area":"data/raw/party-links/overlay-corrections.reviewed.json entries","count":16,"open":16},
-    {"area":"data/raw/SOURCES.json file","count":16,"open":16},
     {"area":"data/raw/kN/knesset-odata-factions.json factionMemberships","count":12,"open":12},
     {"area":"data/raw/kN/ratz-odata.json value","count":9,"open":9},
     {"area":"data/raw/research/knesset-speakers/kns-person-to-position-122.json value","count":9,"open":9},
     {"area":"data/raw/research/knesset-speakers/kns-person-to-position-123.json value","count":7,"open":7},
+    {"area":"data/raw/research/kN-opening.json queries","count":6,"open":6},
     {"area":"data/raw/bios/party-sources.reviewed.json sources","count":5,"open":5},
     {"area":"data/raw/kN/government-15-positions.json value","count":4,"open":4},
     {"area":"data/raw/research/mk-runs-1109.reviewed.json runs","count":4,"open":4},
@@ -1110,6 +1110,10 @@
     {"area":"data/raw/kN/knesset-odata-members.json factionMemberships","count":1,"open":1},
     {"area":"data/raw/party-links/overlay-corrections.reviewed.json aliases","count":1,"open":1},
     {"area":"data/raw/party-links/overlay-corrections.reviewed.json overlayReviewedAt","count":1,"open":1},
+    {"area":"data/raw/research/kN-opening.json dates","count":1,"open":1},
+    {"area":"data/raw/research/kN-opening.json factions","count":1,"open":1},
+    {"area":"data/raw/research/kN-opening.json missingPerson","count":1,"open":1},
+    {"area":"data/raw/research/kN-opening.json record","count":1,"open":1},
     {"area":"data/raw/research/kN-term-boundary.json dates","count":1,"open":1},
     {"area":"data/raw/research/kN-term-boundary.json eventSources","count":1,"open":1},
     {"area":"data/raw/research/kN-term-boundary.json record","count":1,"open":1},

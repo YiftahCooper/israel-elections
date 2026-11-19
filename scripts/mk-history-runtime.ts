@@ -55,7 +55,7 @@ export interface MkRuntime {
   version: 1;
   /** per election number: date, opening of that Knesset (null before it opens), the day it ended (or the records'
    *  as-of date while it sits), threshold in percent */
-  elections: Record<number, { date: string; opening: string | null; end: string | null; threshold: number; recordsPending?: true }>;
+  elections: Record<number, { date: string; opening: string | null; end: string | null; threshold: number; recordsPending?: true; ongoing?: true }>;
   /** per list id: [short Hebrew, short English or null, colour, seats, valid-vote share in percent (2 decimals)] */
   lists: Record<string, readonly [string, string | null, string, number, number]>;
   /** faction id → [Hebrew, English or null, colour or null], and for a faction shown under its list's name whose recorded
@@ -153,6 +153,8 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
   for (const k of K) {
     const closed = closedOn(k);
     out.elections[k].end = out.elections[k].recordsPending ? null : out.elections[k + 1]?.opening ?? closed ?? (out.elections[k].opening ? (changes.get(k) as Changes & { asOf?: string }).asOf ?? null : null);
+    // still sitting: the end is only the date of our records, not the end of the Knesset
+    if (out.elections[k].end && !out.elections[k + 1]?.opening && !closed) out.elections[k].ongoing = true;
   }
   const covered = (k: number, listId: string) => out.failedRunCoverage.full.includes(k) ? !(out.failedRunCoverage.excluded[k] ?? []).includes(listId) : (out.failedRunCoverage.partial[k] ?? []).includes(listId);
 
@@ -354,7 +356,8 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
       if (l.withdrawn) o = 'withdrawn';
       else if (inSeats && r.notSeated) o = 'declined';
       // elected but never sat in that Knesset (the candidate notes give the official record, e.g. withdrew before the first sitting)
-      else if (inSeats && r.elected && !inK.length && r.k !== 26) o = 'declined';
+      // (not while that Knesset's member records are pending: then no one has a term in it yet)
+      else if (inSeats && r.elected && !inK.length && !e.recordsPending) o = 'declined';
       else if (inSeats && r.elected) o = 'elected';
       else if (r.elected || inK.some((t) => t[1] === e.opening)) o = 'first';
       else if (inK.length) o = 'later';
