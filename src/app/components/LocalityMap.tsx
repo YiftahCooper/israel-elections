@@ -342,7 +342,12 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     // open fitted to this election's localities (once per election, so a user's own zoom is kept while editing); at
     // once, not by a slide from the default view (at the same zoom Leaflet would otherwise animate the pan)
     if (placed.length && fittedFor.current !== data) {
+      // in quarter steps: at whole zoom levels a tall frame showed the country as a thin strip with Sinai, Jordan and
+      // open sea around it (V2 fault L2, 19 Nov 2026); the zoom buttons still move a whole level
+      m.options.zoomSnap = 0.25;
       m.fitBounds(Leaflet.latLngBounds(placed.map((p) => [p.lat, p.lon] as [number, number])), { padding: [12, 12], animate: false });
+      m.options.zoomSnap = 1;
+      container.current?.setAttribute('data-fit-zoom', String(m.getZoom()));
       fittedFor.current = data;
     }
     // the chosen place keeps its box open (it is how a tap, or a choice from the search, shows the name on the map)

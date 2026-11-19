@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- Localities on a wide screen (19 Nov): the map opens framed on the country, in quarter zoom steps, instead of a whole level out that showed Israel as a thin strip with Sinai, Jordan and open sea around it.
 - Breaks in a family's line (19 Nov): where a family's line breaks because that election's lists are not yet classified (the Centre in 1992), the chart marks the break with a "?" and a note under it names the year.
 - Dark theme on Party families (19 Nov): the shading for "the real figure lies between" is stronger in the dark theme, where it was barely visible against the panel; its key swatches match.
 - Party families on a phone (19 Nov): Manage now sits on its own line above the family chips, so it no longer covers one of them.

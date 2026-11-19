@@ -347,3 +347,16 @@ test('double envelopes show no registered count, not 0', async ({ page }) => {
   await expect(facts).toContainText('בעלי זכות —');
   await expect(facts).not.toContainText(/בעלי זכות 0\b/);
 });
+
+// V2 fault L2: on a wide screen the map opened at a whole zoom level that showed Israel as a thin strip, with Sinai,
+// Jordan and open sea around it. It now opens fitted in quarter steps, closer than the old whole level.
+test('desktop: the map opens framed on the country, not a whole zoom level out', async ({ page }) => {
+  await page.addInitScript(() => { if (!sessionStorage.getItem('seeded')) { sessionStorage.setItem('seeded', '1'); localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'expert', hintDismissed: true })); localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false } })); } });
+  await page.route('https://tiles.openfreemap.org/**', route => route.abort());
+  await page.setViewportSize({ width: 1500, height: 1000 });
+  await page.goto('/');
+  await page.getByRole('tab', { name: 'Localities', exact: true }).click();
+  const map = page.locator('.locality-map-canvas');
+  await expect(map).toHaveAttribute('data-fit-zoom', /\d/);
+  expect(Number(await map.getAttribute('data-fit-zoom'))).toBeGreaterThan(7);
+});
