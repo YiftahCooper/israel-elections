@@ -361,7 +361,15 @@ const EXPECTED: Record<Family, string> = {
   // 26th Knesset in English (19 Nov, Knesset site codes and English member pages): its 46 newcomers gain nameEn and
   // their member page; six of their 2021/2022 candidacies gain the page by the existing name rule (medium). Only nameEn,
   // bio and builtAt differ.
-  model: 'c4f9d5fabf55259990854a160458c039c4d98b609a42b2957655c002f101f8b9',
+  // Neutral candidate notes (19 Nov, FV5): the Hebrew of eight notes on k18, k20 and k24 candidates with no Knesset
+  // record, and Davidi's in both languages; only note text changes, the other four digests are unchanged.
+  // Candidate notes (19 Nov, FV5): the eight 14th-Knesset replacement notes name the newcomer in English (Hebrew given
+  // name first), and Hebrew notes use straight quotation marks; note text only, the other four digests are unchanged.
+  // Names (19 Nov, FV5): the Knesset English spellings (Liberman, Penina Rosenblum, New Hope – The United Right), the
+  // 16th and 17th elections called "Election to the Nth Knesset"; names only, the other four digests are unchanged.
+  // Merge of the 19 Nov lanes (D2, FV1, FV3, PF1 with FV5): the published datasets carry both sets of changes above, so
+  // the digest is neither lane's own; the other four digests are unchanged.
+  model: 'e28bfb9c7966d7d5b297b85968dbb250d98f5292d5bb151b645daabee1a9600b',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

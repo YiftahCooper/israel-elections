@@ -326,7 +326,7 @@
       "effectiveDate": "2009-02-10",
       "contestType": "knesset",
       "type": "disqualification",
-      "textEn": "Election-day eligibility: Ra’am–Ta’al. The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date.",
+      "textEn": "Election-day eligibility: Ra'am–Ta'al. The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date.",
       "textHe": "מעמד ביום הבחירות: רע״מ–תע״ל. בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
       "source": {
         "url": "https://www.idi.org.il/articles/65951",
@@ -394,7 +394,7 @@
       "effectiveDate": "2019-04-09",
       "contestType": "knesset",
       "type": "disqualification",
-      "textEn": "Election-day eligibility: Ra’am–Balad. The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date.",
+      "textEn": "Election-day eligibility: Ra'am–Balad. The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date.",
       "textHe": "מעמד ביום הבחירות: רע״מ–בל״ד. בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
       "source": {
         "url": "https://www.idi.org.il/articles/65951",
@@ -732,8 +732,8 @@
       "effectiveDate": "2015-03-31",
       "contestType": "knesset",
       "type": "membership-snapshot",
-      "textEn": "Opening-day snapshot: Ilan Shohat (#4) is declared elected in the results notice; Robert Ilatov (#7) served at opening. Registered rank, declaration and opening membership are different snapshots; list seats do not change. Shohat announced on 24 March 2015 that he would remain mayor of Safed; this announcement does not date the formal replacement instrument.",
-      "textHe": "תמונת מצב ביום הפתיחה: אילן שוחט (4) מופיע כנבחר בהודעת התוצאות; רוברט אילטוב (7) כיהן בפתיחה. הדירוג הרשום, הכרזת הבחירה והכהונה בפתיחה הם מצבים נפרדים; מספר המנדטים של הרשימה אינו משתנה. ב־24 במרס 2015 הודיע שוחט שיישאר ראש עיריית צפת; ההודעה אינה קובעת את מועד מסמך ההחלפה הרשמי.",
+      "textEn": "Opening-day snapshot: Ilan Shohat (#4) is declared elected in the results notice; Robert Ilatov (#7) served at opening. Registered rank, declaration and opening membership are different snapshots; list seats do not change. On 24 March 2015 Shohat announced staying on as mayor of Safed; this announcement does not date the formal replacement instrument.",
+      "textHe": "תמונת מצב ביום הפתיחה: שמו של אילן שוחט (4) מופיע בין הנבחרים בהודעת התוצאות; רוברט אילטוב (7) כיהן בפתיחה. הדירוג הרשום, הכרזת הבחירה והכהונה בפתיחה הם מצבים נפרדים; מספר המנדטים של הרשימה אינו משתנה. הודעת שוחט מ־24 במרס 2015: המשך הכהונה כראש עיריית צפת; ההודעה אינה קובעת את מועד מסמך ההחלפה הרשמי.",
       "source": {
         "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2020%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
         "publisher": "Knesset open data",
@@ -799,8 +799,8 @@
       "effectiveDate": "2021-04-06",
       "contestType": "knesset",
       "type": "membership-snapshot",
-      "textEn": "Alon Davidi (#3) was declared elected in Yalkut HaPirsumim 9511 (31 March 2021, §4). He announced on 5 April that he would remain mayor of Sderot and not take the seat (Davar). Idit Silman (#8) served from the opening on 6 April (Knesset OData). Registered rank, declaration and opening membership are distinct; list seats do not change.",
-      "textHe": "אלון דוידי (3) הוכרז כנבחר בילקוט הפרסומים 9511 (31 במרס 2021, סעיף 4). ב־5 באפריל הודיע שיישאר ראש עיריית שדרות ולא ייכנס לכנסת (דבר). עידית סילמן (8) כיהנה מהפתיחה ב־6 באפריל (נתוני הכנסת). הדירוג הרשום, הכרזת הבחירה והכהונה בפתיחה הם מצבים נפרדים; מספר המנדטים אינו משתנה.",
+      "textEn": "Alon Davidi (#3) was declared elected in Yalkut HaPirsumim 9511 (31 March 2021, §4). On 5 April Davidi announced staying on as mayor of Sderot and not taking the seat (Davar). Idit Silman (#8) served from the opening on 6 April (Knesset OData). Registered rank, declaration and opening membership are distinct; list seats do not change.",
+      "textHe": "שמו של אלון דוידי (3) הופיע בין הנבחרים בילקוט הפרסומים 9511 (31 במרס 2021, סעיף 4). הודעת דוידי מ־5 באפריל: המשך הכהונה כראש עיריית שדרות, בלי כניסה לכנסת (דבר). עידית סילמן (8) כיהנה מהפתיחה ב־6 באפריל (נתוני הכנסת). הדירוג הרשום, הכרזת הבחירה והכהונה בפתיחה הם מצבים נפרדים; מספר המנדטים אינו משתנה.",
       "source": {
         "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2024%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
         "publisher": "Knesset open data",
@@ -1020,7 +1020,7 @@
       "contestType": "knesset",
       "type": "correction",
       "textEn": "Source comparison reviewed 4 November 2026 (not a historical correction date): The candidate notice misprints Eliahu Speiser (#16) as שפירא אליהו; the results notice prints שפייזר אליהו. Both readings are preserved; this is not a verified separate erratum.",
-      "textHe": "השוואת מקורות שנבדקה ב־4 בנובמבר 2026 (לא מועד תיקון היסטורי): בהודעת המועמדים נדפס שמו של אליהו שפייזר (16) כ״שפירא אליהו״; בהודעת התוצאות נדפס ״שפייזר אליהו״. שתי הגרסאות נשמרות; לא אומתה הודעת תיקון נפרדת.",
+      "textHe": "השוואת מקורות שנבדקה ב־4 בנובמבר 2026 (לא מועד תיקון היסטורי): בהודעת המועמדים נדפס שמו של אליהו שפייזר (16) כ\"שפירא אליהו\"; בהודעת התוצאות נדפס \"שפייזר אליהו\". שתי הגרסאות נשמרות; לא אומתה הודעת תיקון נפרדת.",
       "source": {
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset11-results.pdf",
         "publisher": "Central Elections Committee / Reshumot (gov.il)",
@@ -1186,7 +1186,7 @@
       "effectiveDate": "2019-03-24",
       "contestType": "knesset",
       "type": "counting-context",
-      "textEn": "Retrospective account published 24 March 2019: the Knesset research paper says adding double-envelope votes in the 2013 election shifted one provisional seat from Ra’am–Ta’al to Jewish Home. The final dataset already includes these votes. The paper does not give the exact count-change date; this is not evidence of a court correction.",
+      "textEn": "Retrospective account published 24 March 2019: the Knesset research paper says adding double-envelope votes in the 2013 election shifted one provisional seat from Ra'am–Ta'al to Jewish Home. The final dataset already includes these votes. The paper does not give the exact count-change date; this is not evidence of a court correction.",
       "textHe": "תיאור בדיעבד שפורסם ב־24 במרס 2019: לפי מסמך המחקר של הכנסת, צירוף המעטפות הכפולות בבחירות 2013 העביר מנדט זמני אחד מרע״מ–תע״ל לבית היהודי. התוצאות הסופיות כבר כוללות קולות אלה. המסמך אינו מציין את מועד השינוי המדויק; זו אינה ראיה לתיקון בצו בית משפט.",
       "source": {
         "url": "https://fs.knesset.gov.il/globaldocs/MMM/2e5ce5ea-ec1e-e911-80e1-00155d0a98a9/2_2e5ce5ea-ec1e-e911-80e1-00155d0a98a9_11_10970.pdf",
@@ -1203,7 +1203,7 @@
       "effectiveDate": "2019-03-24",
       "contestType": "knesset",
       "type": "counting-context",
-      "textEn": "Retrospective account published 24 March 2019: the Knesset research paper says adding double-envelope votes in the 2013 election shifted one provisional seat from Ra’am–Ta’al to Jewish Home. The final dataset already includes these votes. The paper does not give the exact count-change date; this is not evidence of a court correction.",
+      "textEn": "Retrospective account published 24 March 2019: the Knesset research paper says adding double-envelope votes in the 2013 election shifted one provisional seat from Ra'am–Ta'al to Jewish Home. The final dataset already includes these votes. The paper does not give the exact count-change date; this is not evidence of a court correction.",
       "textHe": "תיאור בדיעבד שפורסם ב־24 במרס 2019: לפי מסמך המחקר של הכנסת, צירוף המעטפות הכפולות בבחירות 2013 העביר מנדט זמני אחד מרע״מ–תע״ל לבית היהודי. התוצאות הסופיות כבר כוללות קולות אלה. המסמך אינו מציין את מועד השינוי המדויק; זו אינה ראיה לתיקון בצו בית משפט.",
       "source": {
         "url": "https://fs.knesset.gov.il/globaldocs/MMM/2e5ce5ea-ec1e-e911-80e1-00155d0a98a9/2_2e5ce5ea-ec1e-e911-80e1-00155d0a98a9_11_10970.pdf",
@@ -1652,7 +1652,7 @@
         },
         {
           "id": "mordechai",
-          "nameEn": "Yitzhak Mordechai",
+          "nameEn": "Itzchak Mordechay",
           "nameHe": "יצחק מרדכי",
           "status": "withdrawn",
           "source": {

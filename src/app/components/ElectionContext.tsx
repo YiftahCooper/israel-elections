@@ -9,7 +9,7 @@ import { setState, useDigits, useShown, useStore } from '../store.ts';
 import { useEffect, useRef, useState } from 'react';
 import { useCloseOnFocusAway } from '../focusReturn.ts';
 import { listLabel } from '../derive.ts';
-import { formatDate } from '../dateFormat.ts';
+import { datesInText, formatDate } from '../dateFormat.ts';
 
 
 export function EvidenceLink({ source }: { source: ContextSource }) {
@@ -83,9 +83,9 @@ export function PMResult({ contest, onKnesset }: { contest: PMContest; onKnesset
         <dl>{(['valid', 'invalid', 'cast'] as const).map(key => <div key={key}><dt>{key === 'valid' ? L('Valid', 'כשרים') : key === 'invalid' ? L('Invalid', 'פסולים') : L('Cast', 'מצביעים')}</dt><dd>{num(contest.totals[key].value)} · <EvidenceLink source={contest.totals[key].source} /></dd></div>)}</dl>
         {contest.candidates.some(c => c.publishedPercent) && <p className="pm-published">{L('Shares printed in the official results notice', 'השיעורים שנדפסו בהודעת התוצאות הרשמית')}: {contest.candidates.filter(c => c.publishedPercent).map((c, i) => <span key={c.id}>{i ? ' · ' : ''}{lang === 'he' ? c.nameHe : c.nameEn} <bdi dir="ltr">{c.publishedPercent!.value}%</bdi></span>)} · <EvidenceLink source={contest.candidates.find(c => c.publishedPercent)!.publishedPercent!.source} /></p>}
         <p>{lang === 'he' ? b.textHe : b.textEn} <EvidenceLink source={b.source} /></p>
-        {contest.noteEn && <p>{lang === 'he' ? contest.noteHe : contest.noteEn}</p>}
+        {contest.noteEn && <p>{datesInText((lang === 'he' ? contest.noteHe : contest.noteEn) ?? '')}</p>}
       </details>
-      {contest.candidates.some(c => c.status === 'withdrawn') && <details><summary>{L('Withdrawn nominees', 'מועמדים שפרשו')} ({contest.candidates.filter(c => c.status === 'withdrawn').length})</summary><ul>{contest.candidates.filter(c => c.status === 'withdrawn').map(c => <li key={c.id}>{lang === 'he' ? c.nameHe : c.nameEn} · {L('Withdrawn before polling', 'פרש לפני ההצבעה')} · <EvidenceLink source={c.source!} /></li>)}</ul></details>}
+      {contest.candidates.some(c => c.status === 'withdrawn') && <details><summary>{L('Withdrawn nominees', 'מועמדים שפרשו')} ({contest.candidates.filter(c => c.status === 'withdrawn').length})</summary><ul>{contest.candidates.filter(c => c.status === 'withdrawn').map(c => <li key={c.id}>{lang === 'he' ? c.nameHe : c.nameEn} · {L('Withdrawn before polling', 'פרישה לפני ההצבעה')} · <EvidenceLink source={c.source!} /></li>)}</ul></details>}
     </div>
   </section>;
 }

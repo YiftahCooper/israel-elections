@@ -129,7 +129,7 @@ test('a run tied by research shows the sources that tie it', async ({ page }) =>
   await row.getByRole('button', { name: 'Source' }).click();
   const pop = page.getByRole('link', { name: /idi|Israel Democracy/i });
   await expect(pop.first()).toBeVisible();
-  await expect(page.getByText('Hebrew Wikipedia (a secondary source)').first()).toBeVisible();
+  await expect(page.getByText('Hebrew Wikipedia (secondary)').first()).toBeVisible();
 });
 
 // 19 Nov 2026: the Knesset's records of the 26th Knesset's opening are in the data, so the time in it is drawn.

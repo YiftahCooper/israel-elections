@@ -30,7 +30,7 @@ export function FamilyEditor({f,initialElection,onEdit,onSave}: {f:Family;initia
   <label>{L('Name','שם')}<input type="text" key={`${f.id}-${lang}`} defaultValue={familyLabel(f,lang)} onBlur={e=>{const v=e.target.value.trim();if(v&&v!==(familyLabel(f,lang)))onEdit(x=>({...x,[lang==='he'?'nameHe':'nameEn']:v,[lang==='he'?'labelHe':'labelEn']:v}));}}/></label>
   <div className="family-election-stepper" role="group" aria-label={L('Membership election','בחירות לעריכת חברות')}>
    <button className="btn" disabled={at===0} aria-label={L('Earlier membership election','בחירות קודמות לעריכת חברות')} onClick={()=>setElection(historyElections[at-1].id)}>‹</button>
-   <ChoicePicker label={L('Membership election','בחירות לעריכת חברות')} value={election} options={historyElections.map(d=>({value:d.id,label:new Date(d.electionDate+'T12:00:00').toLocaleDateString(lang==='he'?'he-IL':'en-GB')}))} onChange={id=>setElection(id as ElectionId)}/>
+   <ChoicePicker label={L('Membership election','בחירות לעריכת חברות')} value={election} options={historyElections.map(d=>({value:d.id,label:formatDate(d.electionDate,lang)}))} onChange={id=>setElection(id as ElectionId)}/>
    <button className="btn" disabled={at===25} aria-label={L('Later membership election','בחירות הבאות לעריכת חברות')} onClick={()=>setElection(historyElections[at+1].id)}>›</button>
   </div>
   <label>{L('Search lists and aliases','חיפוש רשימות וכינויים')}<input type="search" value={search} onChange={e=>setSearch(e.target.value)}/></label>

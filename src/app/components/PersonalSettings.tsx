@@ -151,7 +151,7 @@ function PartRow({ id }: { id: FeatureId }) {
     {own && <span className="sr-only">{L('Your choice: ', 'הבחירה שלכם: ')}</span>}
     <span className="ps-label-text">{label}</span>
   </>;
-  const info = <Info title={label} label={L(`About ${label}`, `הסבר: ${label}`)}>{L(...FEATURE_PREVIEWS[id])}. {from === 'simple' ? L('Part of Simple, Standard and Expert.', 'חלק מכל הרמות.') : L(`Part of ${LEVEL_LABELS[from][0]}${from === 'expert' ? '' : ' and Expert'}.`, `חלק מרמת "${LEVEL_LABELS[from][1]}"${from === 'expert' ? '' : ' ו"מומחה"'}.`)}</Info>;
+  const info = <Info title={label} label={L(`About ${label}`, `הסבר: ${label}`)}>{L(...FEATURE_PREVIEWS[id])}. {from === 'simple' ? L('Part of Simple, Standard and Expert.', 'חלק מ"פשוט", "רגיל" ו"מומחה".') : L(`Part of ${LEVEL_LABELS[from][0]}${from === 'expert' ? '' : ' and Expert'}.`, `חלק מ"${LEVEL_LABELS[from][1]}"${from === 'expert' ? '' : ' ומ"מומחה"'}.`)}</Info>;
   if (twoWay) return <div className="ps-row is-toggle" data-setting={`part:${id}`} data-part={id}>
     <label className="ps-label switch-row"><span className="ps-label-inner">{head}</span>
       <span className="switch"><input type="checkbox" aria-label={label} checked={shownAs(id, value) === 'show'} onChange={e => setFeature(id, e.target.checked ? 'show' : PRESETS[level][id] === 'show' ? 'hidden' : PRESETS[level][id])} /></span></label>
@@ -178,9 +178,9 @@ function OwnChoices() {
   const undo = (only?: FeatureId[]) => { const before = snapshot(); resetFeatures(only); toast('info', L('Your choices cleared', 'הבחירות שלכם נוקו'), { label: L('Undo', 'ביטול'), run: () => restore(before) }); };
   return <section className="ps-own" aria-labelledby="ps-own-title" data-setting="own" data-active={active ? '' : undefined}>
     <h4 id="ps-own-title">{L(`${CUSTOM_LABEL[0]}: ${LEVEL_LABELS[base][0]} with your choices`, `${CUSTOM_LABEL[1]}: "${LEVEL_LABELS[base][1]}" עם הבחירות שלכם`)}
-      <Info title={L(...CUSTOM_LABEL)}>{L('Tools and details you added or took away. Simple, Standard and Expert stay as they are; Custom starts from the one in use.', 'כלים ופרטים שהוספתם או הורדתם. "פשוט", "רגיל" ו"מומחה" נשארים כמו שהם; "מותאם אישית" מתחיל מהרמה שבשימוש.')}</Info>
+      <Info title={L(...CUSTOM_LABEL)}>{L('Tools and details you added or took away. Simple, Standard and Expert stay as they are; Custom starts from the one in use.', 'כלים ופרטים שהוספתם או הורדתם. "פשוט", "רגיל" ו"מומחה" נשארים כמו שהם; "מותאם אישית" מתחיל מרמת המורכבות שבשימוש.')}</Info>
       <button type="button" className="link-btn ps-reset" onClick={() => undo()}>{L('Clear all', 'ניקוי הכול')}</button></h4>
-    {!active && <p className="ps-own-off small"><span className="ink2">{L(`Not in use: you are on ${LEVEL_LABELS[level][0]}.`, `לא בשימוש: אתם ברמת "${LEVEL_LABELS[level][1]}".`)}</span> <button type="button" className="btn small" onClick={setCustom}>{L(`Use ${CUSTOM_LABEL[0]}`, `מעבר ל"${CUSTOM_LABEL[1]}"`)}</button></p>}
+    {!active && <p className="ps-own-off small"><span className="ink2">{L(`Not in use: you are on ${LEVEL_LABELS[level][0]}.`, `לא בשימוש: אתם ב"${LEVEL_LABELS[level][1]}".`)}</span> <button type="button" className="btn small" onClick={setCustom}>{L(`Use ${CUSTOM_LABEL[0]}`, `מעבר ל"${CUSTOM_LABEL[1]}"`)}</button></p>}
     <ul className="ps-own-list">{ids.map(id => <li key={id}><span>{L(...featureLabel(id))} · <span className="ink2">{word(id)}</span></span>
       <button type="button" className="btn small ghost icon-only" aria-label={L(`Undo: ${featureLabel(id)[0]}`, `ביטול: ${featureLabel(id)[1]}`)} onClick={() => undo([id])}>×</button></li>)}</ul>
   </section>;

@@ -75,7 +75,7 @@ test('family colours are stable, chromatic and distinct for the nine presets',as
 
 test('short labels survive runtime and full-definition export, with full-name fallback when a label is absent',async()=>{
  const {builtins,shortFamilyName}=await import('../src/families/runtime.ts');const {familyLabel}=await import('../src/families/labels.ts');
- expect(builtins.map(f=>f.labelEn)).toEqual(['Haredi','Arab & Arab–Jewish','Centre','Likud lineage','Labour & left','Religious Zionist','Radical right','Religious','Russian-speaking']);
+ expect(builtins.map(f=>f.labelEn)).toEqual(['Haredi','Arab & Arab–Jewish','Centre','Likud lineage','Labor & left','Religious Zionist','Radical right','Religious','Russian-speaking']);
  for(const p of builtins){expect(shortFamilyName(p,'he')).toBe(p.labelHe);expect(parseFamily(readFileSync(`data/meta/families/${p.id}.json`,'utf8')).labelEn).toBe(p.labelEn);}
  expect(familyLabel({...f,labelEn:undefined},'en')).toBe(f.nameEn);expect(()=>parseFamily(JSON.stringify({...f,labelEn:123}))).toThrow();
 });

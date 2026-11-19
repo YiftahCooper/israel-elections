@@ -32,6 +32,8 @@ import { Info, Seg } from './ui.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { FindMk, foundSeat, type MkEntry } from './FindMk.tsx';
 import { ResultPreview } from './ResultPreview.tsx';
+import { datesInText } from '../dateFormat.ts';
+import { IsolatedText } from '../bidiRuns.tsx';
 
 export interface SeatInfo { listId: string; idx: number; color: string; innerColor?: string; partyColor?: string; partyId?: string; remainder: boolean; bloc: string | null; holder: string }
 
@@ -582,7 +584,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         <Floating onPointerEnter={hoverBridge.keep} onPointerLeave={hoverBridge.leave} className="tip" preferAbove anchor={() => hover.anchor.getBoundingClientRect()}
           role="dialog" label={seatNames[seats.indexOf(hover.seat)] ?? seatLabel(hover.seat)} labelledBy={'aria-labelledby' in nameProps(seatNames[seats.indexOf(hover.seat)] ?? '', lang, '') ? `${seatId}-${seats.indexOf(hover.seat)}` : undefined}><div ref={card} onBlur={onSeatsBlur}>
           <div className="row"><SlipName list={hv} name={listLabel(hv, lang)} /></div>
-          {cand ? <div><b><CandidateName candidate={cand} text={hoverCandidateName} /></b> · {L('rank', 'מקום')} {candPlace}{cand.notes?.map((n, k) => <div key={k} className="muted small">{lang === 'he' ? n.he : n.en}</div>)}</div>
+          {cand ? <div><b><CandidateName candidate={cand} text={hoverCandidateName} /></b> · {L('rank', 'מקום')} {candPlace}{cand.notes?.map((n, k) => <div key={k} className="muted small"><IsolatedText text={datesInText(lang === 'he' ? n.he : n.en)} /></div>)}</div>
             : hv.rosterUnavailable || hv.rosterTruncated ? <div className="muted">{L(`Seat ${hover.seat.idx + 1} of the list; candidate names are not available for this election`, `מושב ${hover.seat.idx + 1} של הרשימה; שמות המועמדים אינם זמינים לבחירות אלה`)}</div>
             : <div className="bad">{L('Vacant — the list has too few candidates', 'מושב ריק — אין די מועמדים ברשימה')}</div>}
           {(hover.seat.partyId || cand?.partyHe) && <div className="muted small row">{hover.seat.partyColor && <PartyKey hover partyId={hover.seat.partyId} color={hover.seat.partyColor} ring={hover.seat.innerColor ? hv.color : undefined}/>}{seatLabel(hover.seat)}</div>}

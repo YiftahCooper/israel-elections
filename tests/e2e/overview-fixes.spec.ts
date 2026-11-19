@@ -87,7 +87,7 @@ for (const lang of ['en', 'he'] as const) test(`the exported chamber names its g
   // a shortened name ends at a whole word; a party sits under its list's heading, so its line names the party only
   const cut = texts.filter(t => t.includes('…'));
   for (const t of cut) expect(t).toMatch(/[^\s(]…/);
-  expect(texts.some(t => t.startsWith(lang === 'he' ? 'תקווה חדשה ' : 'New Hope – the National Right '))).toBe(true);
+  expect(texts.some(t => t.startsWith(lang === 'he' ? 'תקווה חדשה ' : 'New Hope – The United Right '))).toBe(true);
 });
 
 test('the step-size switch has one size everywhere and never wraps', async ({ page }) => {
@@ -113,7 +113,7 @@ test('the seats waffle keys every party colour of a list counted by party', asyn
   await page.locator('#tab-charts').click();
   const legend = page.locator('[data-waffle]').first().locator('../..').locator('.legend');
   await expect(legend).toContainText('Meretz · The Democrats 1');
-  await expect(legend).toContainText('New Hope – the National Right · Likud 1');
+  await expect(legend).toContainText('New Hope – The United Right · Likud 1');
 });
 
 test('an edited list carries the mark at its votes in the lists column with the panel closed; the walkthrough keeps a gap', async ({ page }) => {

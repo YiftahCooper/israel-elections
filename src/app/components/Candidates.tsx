@@ -14,6 +14,8 @@ import { useL, useLang } from '../i18n.ts';
 import { candidateName, shownName } from '../derive.ts';
 import { Info } from './ui.tsx';
 import { dispatch, useOn, useSetting, useStore } from '../store.ts';
+import { HEWIKI_LABEL } from '../hewiki.ts';
+import { IsolatedText } from '../bidiRuns.tsx';
 
 /** The reason each candidate was "not seated", by candidate id: the note of their own list (also after a merge moved
  *  them) that names them or their place on the roster. A candidate with a note of their own (one who did not take the
@@ -96,18 +98,18 @@ export function Candidates({ l, seats, baseSeats, baseCandidates, notSeatedWhy =
               <span className="rk">{i + 1}</span>
               <span style={{ minWidth: 0 }}>
                 {editing === x.id ? (
-                  <input type="text" autoFocus value={draft} style={{ width: `${Math.max(8, draft.length + 3)}ch` }} onChange={(e) => setDraft(e.target.value)} aria-label={L('Candidate name', 'שם המועמד')}
+                  <input type="text" autoFocus value={draft} style={{ width: `${Math.max(8, draft.length + 3)}ch` }} onChange={(e) => setDraft(e.target.value)} aria-label={L('Candidate name', 'שם ברשימה')}
                     onBlur={() => { if (draft.trim() && draft !== x.nameHe) commit(c.map((y) => (y.id === x.id ? { ...y, nameHe: draft.trim(), displayNameHe: undefined, nameEn: undefined } : y)), `rename ${shownName(x)}`); setEditing(null); }}
                     onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape') { if (draft !== x.nameHe) { e.preventDefault(); e.stopPropagation(); } setDraft(x.nameHe); setEditing(null); } }} />
                 ) : (
                   lang === 'en' && x.nameEn ? <><MkName candidate={x}><CandidateName candidate={x} note={false} /></MkName> <bdi className="muted tiny" lang="he" dir="rtl">{shownName(x)}</bdi></> : <MkName candidate={x}><CandidateName candidate={x} note={false} /></MkName>
                 )}
-                {x.notes?.map((n, k) => <span key={k} className="muted tiny cand-note"> · {datesInText(lang === 'he' ? n.he : n.en)}</span>)}
+                {x.notes?.map((n, k) => <span key={k} className="muted tiny cand-note"> · <IsolatedText text={datesInText(lang === 'he' ? n.he : n.en)} /></span>)}
                 {(() => { const p = x.partyId ? l.parties?.find((q) => q.id === x.partyId) : undefined;
                   return p ? <span className="muted tiny"> · {lang === 'he' ? p.nameHe : p.nameEn}</span>
                     : x.partyHe && l.sponsorsHe.includes(';') ? <span className="muted tiny"> · {lang === 'he' ? x.partyHe : romanize(x.partyHe)}</span> : null; })()}
-                {x.originListId && x.originListId !== l.id && !l.originIds.includes(x.originListId) && <span className="muted tiny"> · {L('moved', 'הועבר')}</span>}
-                {changed && <span className={`tiny ${elected ? 'up' : 'down'}`}> · {elected ? L('enters', 'נכנס') : L('leaves', 'יוצא')}</span>}
+                {x.originListId && x.originListId !== l.id && !l.originIds.includes(x.originListId) && <span className="muted tiny"> · {L('moved', 'מרשימה אחרת')}</span>}
+                {changed && <span className={`tiny ${elected ? 'up' : 'down'}`}> · {elected ? L('enters', 'כניסה') : L('leaves', 'יציאה')}</span>}
                 {x.bio && <BioLinks bio={x.bio} name={candidateName(x, lang)} />}
               </span>
               {advanced ? (
@@ -147,7 +149,7 @@ function BioLinks({ bio, name }: { bio: CandidateBio; name: string }) {
       {knesset && <a href={knesset} target="_blank" rel="noreferrer" title={L('Official member page, Knesset website', 'דף חבר הכנסת הרשמי, אתר הכנסת')}>{L('Knesset', 'הכנסת')}</a>}
       {party && <a href={party} target="_blank" rel="noreferrer" title={L('The party’s own page (partisan)', 'הדף של המפלגה עצמה (מקור מפלגתי)') + (year ? L(`, archived ${year}`, `, ארכיון ${year}`) : '')}>
         {L('Party', 'מפלגה')}{year ? ` ${year}` : ''}</a>}
-      {wiki && <a href={wiki} target="_blank" rel="noreferrer" hrefLang="he" title={L('Hebrew Wikipedia: a secondary source', 'ויקיפדיה העברית: מקור משני')}>{L('Wikipedia (he)', 'ויקיפדיה')}</a>}
+      {wiki && <a href={wiki} target="_blank" rel="noreferrer" hrefLang="he" title={L('Hebrew Wikipedia: a secondary source', 'ויקיפדיה העברית: מקור משני')}>{L(...HEWIKI_LABEL)}</a>}
       {bio.probable && (bio.memberConfirmed
         // the Knesset page is tied by the official member record; only the other links were matched by name
         ? <span className="muted" title={L('The Knesset page: by the official member record. The other links: matched by name, not by an official identifier', 'דף הכנסת: לפי רישום חבר הכנסת הרשמי. שאר הקישורים: הותאמו לפי שם, לא לפי מזהה רשמי')}>{L('(other links probable)', '(שאר הקישורים: התאמה סבירה)')}</span>

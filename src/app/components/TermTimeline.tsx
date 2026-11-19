@@ -14,6 +14,7 @@ import { entryWords, reasonWords } from '../../history/reasons.ts';
 import { ListKeyItem } from './Hemicycle.tsx';
 import { publisherIn } from '../publisherName.ts';
 import './TermTimeline.css';
+import { sourceLinkText } from '../hewiki.ts';
 
 type List = ElectionDataset['lists'][number];
 const COAL = '#2f6db5', REST = '#a8782f';
@@ -168,7 +169,7 @@ function Sources({ it }: { it: TimelineItem }) {
   return <Info title={L('Sources & how sure', 'מקורות ומידת ודאות')}>
     {it.type === 'seat' && !it.sources.length ? <p>{L('From the Knesset’s membership records: who left and who entered on this date. Which seat a newcomer took is our pairing within the list.', 'מרשומות החברות של הכנסת: מי עזב ומי נכנס בתאריך זה. איזה מושב תפס מי שנכנס: השיוך שלנו, בתוך הרשימה.')}</p> : null}
     {sure && <p>{sure}</p>}
-    {it.sources.map(([publisher, url, he], i) => <div key={i}><a href={url} target="_blank" rel="noreferrer"><bdi>{publisherIn(lang, publisher, he)}</bdi></a></div>)}
+    {it.sources.map(([publisher, url, he], i) => <div key={i}><a href={url} target="_blank" rel="noreferrer"><bdi>{sourceLinkText(url, publisherIn(lang, publisher, he), lang)}</bdi></a></div>)}
   </Info>;
 }
 
@@ -290,7 +291,7 @@ function SeatHolderList({ term, holders, now, mk }: { term: TermRuntime; holders
   const factionName = (f: number) => mk ? factionLabel(mk, f, lang) : '';
   const line = (h: PackedHolder): ReactNode => {
     const gen = genderOf(mk, h[0]);
-    const came = h[3] === 'o' ? L('From the first sitting', 'מהישיבה הראשונה') : h[3] === 'r' ? L('Returned', gw(gen, 'חזר לכנסת', 'חזרה לכנסת', 'חזרה לכנסת')) : L('Entered', gw(gen, 'נכנס לכנסת', 'נכנסה לכנסת', 'כניסה לכנסת'));
+    const came = h[3] === 'o' ? L('From the first sitting', 'מהישיבה הראשונה') : h[3] === 'r' ? L('Returned', gw(gen, 'חזר לכנסת', 'חזרה לכנסת', 'שיבה לכנסת')) : L('Entered', gw(gen, 'נכנס לכנסת', 'נכנסה לכנסת', 'כניסה לכנסת'));
     const why = entryWords(h[5], lang);
     const ended = h[2] !== null && h[2] < term.end;
     // as MK history words it: the Knesset records no reason for most ends, and the words claim none (fx-tlnames)

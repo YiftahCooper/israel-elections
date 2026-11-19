@@ -344,7 +344,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k4.json",
-      "sha256": "964325114c3090f4d2bf0c75f87b32f016d829ee10783160729f4f244c2e64d1",
+      "sha256": "4bd5ef53c1ecb254f6d6803bb073e0664e760789ba54d48001e9cc41bf1ef6e8",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -376,7 +376,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k8.json",
-      "sha256": "8aad055a1d94ddc63e802c329863e5348577b4339646d7dbd694674b110d281e",
+      "sha256": "2616434307080cc19d47321917f4e52a970e42b2d5811a9bdf44d774af9bd2f5",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -400,7 +400,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k11.json",
-      "sha256": "fc4f096478fdc38e217018796356410e6dbb8566d653c2b9862ff3d066e5e191",
+      "sha256": "fd0303a795482e78821567c645868c43212bf6258520f48a7aa33b1602476d35",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -424,7 +424,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k14.json",
-      "sha256": "6eb199a981f461bd04941c2856b7e4879ce1c242d9592eb1cf3759e3e0c36945",
+      "sha256": "4e4bdc31b9ea40088493357e92dc0d10fa25309c8a541b78ab269958f610cb90",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -432,7 +432,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k15.json",
-      "sha256": "0e32e369f8e04c08661b40c480f2d5515250da0228f1c5500e8c7b7f0266e7d1",
+      "sha256": "48b392401eaa38738cc362f22207cc4521297c2dbfcabbffef69750071408f54",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -440,7 +440,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k16.json",
-      "sha256": "4bcb25bfb9577babb4b3f2f70785859a5f5576888ffc845afb3d1ac076cf75e6",
+      "sha256": "cdc3f1209339874ccee2d8be8214d52065e77d14f48d885cbda6bf4cdacfe5fe",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -448,7 +448,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k17.json",
-      "sha256": "640efb84c42860285337bd21e6d36e0fdc47884fdc3df1c1a5b48f332323e4ac",
+      "sha256": "55f058a864861b0e62a8c147525a1d4111ba1ed37447a6028e6a444be9c028b1",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -456,7 +456,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k18.json",
-      "sha256": "0bff6c8491f5ecf1bd4abbd91edbb2c2e97bd469cfa404fff3fc512ae70d1ba5",
+      "sha256": "798f23fca45b7bd78f42c316d2341b89a5b87eeb871a1aaa1935fe8118be18ec",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -472,7 +472,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k20.json",
-      "sha256": "911cf475ae933919ffc621262aaeb0c0dd7f9d17b4a98ae5755eb6a3645bb759",
+      "sha256": "de35a5a195c1a516022a2ab3e6dc56478db5c0b519abe06a38f290108bc58be7",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -504,7 +504,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k24.json",
-      "sha256": "0bdc6fea2418bca37fd067132141e871ef4e02e4112e1d3a276a2e280b74fcaf",
+      "sha256": "7d24f4aeb831d5dcaf3a646e76ad8bb18a23021d70ff2f1994810169a7242be9",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -808,7 +808,7 @@
       "electionId": "k4",
       "electionDate": "1959-11-03",
       "datasetPath": "public/data/k4.json",
-      "datasetSha256": "964325114c3090f4d2bf0c75f87b32f016d829ee10783160729f4f244c2e64d1",
+      "datasetSha256": "4bd5ef53c1ecb254f6d6803bb073e0664e760789ba54d48001e9cc41bf1ef6e8",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -1180,7 +1180,7 @@
       "electionId": "k8",
       "electionDate": "1973-12-31",
       "datasetPath": "public/data/k8.json",
-      "datasetSha256": "8aad055a1d94ddc63e802c329863e5348577b4339646d7dbd694674b110d281e",
+      "datasetSha256": "2616434307080cc19d47321917f4e52a970e42b2d5811a9bdf44d774af9bd2f5",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results; every published seat reproduced with the six official list connections from the Central Elections Committee’s calculation record (Form 30 appendix; three had no effect). All 120 elected names transcribed from the official candidate notice (Yalkut HaPirsumim 1954) and cross-checked against the results notice (Yalkut HaPirsumim 1979) and the committee record. Later ranks truncated (Ratz complete); nonwinning rosters untranscribed. Three ballot letters and four list names corrected from the notices. Full amendment chain unverified; no localities.",
@@ -1482,7 +1482,7 @@
       "electionId": "k11",
       "electionDate": "1984-07-23",
       "datasetPath": "public/data/k11.json",
-      "datasetSha256": "fc4f096478fdc38e217018796356410e6dbb8566d653c2b9862ff3d066e5e191",
+      "datasetSha256": "fd0303a795482e78821567c645868c43212bf6258520f48a7aa33b1602476d35",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 196 transcribed ranks across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted except the complete 120-name K11 Alignment roster; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
@@ -1576,7 +1576,7 @@
       "electionId": "k12",
       "electionDate": "1988-11-01",
       "datasetPath": "public/data/k12.json",
-      "datasetSha256": "58712bc3107372a884452bc39ad2fc8f774218d08a79a2045d1b3a9a0ada2280",
+      "datasetSha256": "2e8a7dca8a5baf0880c231dee534901c772819bc884b81efb038e0b914dbfdd2",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 121 candidate entries (120 declared elected) across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
@@ -1768,7 +1768,7 @@
       "electionId": "k14",
       "electionDate": "1996-05-29",
       "datasetPath": "public/data/k14.json",
-      "datasetSha256": "6eb199a981f461bd04941c2856b7e4879ce1c242d9592eb1cf3759e3e0c36945",
+      "datasetSha256": "4e4bdc31b9ea40088493357e92dc0d10fa25309c8a541b78ab269958f610cb90",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "Rosters: everyone elected is included and cross-checked; no full rosters; Third Way retains 12 of 52 registered candidates; later ranks of winning lists not transcribed. Zero-seat rosters unavailable; registered Moreshet Avot withdrew before polling (21 registered lists, 20 contested). Registered rank order kept, with omissions in the elected notice explicitly reconciled. No locality data. Complete 6-pair agreement notice verified; every published seat reproduced.",
@@ -1864,7 +1864,7 @@
       "electionId": "k15",
       "electionDate": "1999-05-17",
       "datasetPath": "public/data/k15.json",
-      "datasetSha256": "0e32e369f8e04c08661b40c480f2d5515250da0228f1c5500e8c7b7f0266e7d1",
+      "datasetSha256": "48b392401eaa38738cc362f22207cc4521297c2dbfcabbffef69750071408f54",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "Rosters: everyone elected is included and cross-checked; no full winning-list rosters; later ranks of winning lists not transcribed. Contesting zero-seat rosters unavailable; two withdrawn registrations kept. Registered rank order kept, with omissions in the elected notice explicitly reconciled. No locality data. Complete 9-pair agreement notice verified; every published seat reproduced.",
@@ -1958,7 +1958,7 @@
       "electionId": "k16",
       "electionDate": "2003-01-28",
       "datasetPath": "public/data/k16.json",
-      "datasetSha256": "4bcb25bfb9577babb4b3f2f70785859a5f5576888ffc845afb3d1ac076cf75e6",
+      "datasetSha256": "cdc3f1209339874ccee2d8be8214d52065e77d14f48d885cbda6bf4cdacfe5fe",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -2055,7 +2055,7 @@
       "electionId": "k17",
       "electionDate": "2006-03-28",
       "datasetPath": "public/data/k17.json",
-      "datasetSha256": "640efb84c42860285337bd21e6d36e0fdc47884fdc3df1c1a5b48f332323e4ac",
+      "datasetSha256": "55f058a864861b0e62a8c147525a1d4111ba1ed37447a6028e6a444be9c028b1",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -2151,7 +2151,7 @@
       "electionId": "k18",
       "electionDate": "2009-02-10",
       "datasetPath": "public/data/k18.json",
-      "datasetSha256": "0bff6c8491f5ecf1bd4abbd91edbb2c2e97bd469cfa404fff3fc512ae70d1ba5",
+      "datasetSha256": "798f23fca45b7bd78f42c316d2341b89a5b87eeb871a1aaa1935fe8118be18ec",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2009-02-17",
@@ -2334,7 +2334,7 @@
       "electionId": "k20",
       "electionDate": "2015-03-17",
       "datasetPath": "public/data/k20.json",
-      "datasetSha256": "911cf475ae933919ffc621262aaeb0c0dd7f9d17b4a98ae5755eb6a3645bb759",
+      "datasetSha256": "de35a5a195c1a516022a2ab3e6dc56478db5c0b519abe06a38f290108bc58be7",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2015-03-25",
@@ -2701,7 +2701,7 @@
       "electionId": "k24",
       "electionDate": "2021-03-23",
       "datasetPath": "public/data/k24.json",
-      "datasetSha256": "0bdc6fea2418bca37fd067132141e871ef4e02e4112e1d3a276a2e280b74fcaf",
+      "datasetSha256": "7d24f4aeb831d5dcaf3a646e76ad8bb18a23021d70ff2f1994810169a7242be9",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -2884,7 +2884,7 @@
       "electionId": "k26",
       "electionDate": "2026-10-27",
       "datasetPath": "public/data/k26.json",
-      "datasetSha256": "bd36390806250c20b7d248d2a4c7eedaa9b24d1b55b89cf719de4cc6e1fcd0cc",
+      "datasetSha256": "7fe76cbbc9d8be1b37769598e3cb1e0449f97e35f604f6902a6672635966ad83",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-09",

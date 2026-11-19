@@ -235,7 +235,7 @@ for (const lang of ['en', 'he'] as const) {
     let tl = await openTimeline(page, lang);
     await stepTo(tl, '2024-03-13', lang);
     await expect(tl.locator('.tl-lines li[data-item="k25-faction-3"]')).toContainText(lang === 'he'
-      ? 'רישום החברות עבר מסיעת המחנה הממלכתי לסיעת הימין הממלכתי (4 ח״כים).' : '4 MKs recorded moving from National Unity to National Right.');
+      ? 'רישום החברות עבר מסיעת המחנה הממלכתי לסיעת הימין הממלכתי (4 ח״כים).' : '4 MKs recorded moving from National Unity to New Hope – The United Right.');
     await page.getByRole('button', { name: lang === 'he' ? 'מומחה' : 'Expert', exact: true }).first().click();
     await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k24');
     tl = await openTimeline(page, lang);

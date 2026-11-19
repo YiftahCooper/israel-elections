@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { mkdirSync, readFileSync } from 'node:fs';
 import { choose } from './choices.ts';
+import { datesInText } from '../../src/app/dateFormat.ts';
 import { openSideBySide } from './sideBySide.ts';
 
 test.describe.configure({ mode: 'parallel' });
@@ -39,7 +40,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     await expect(info).toBeVisible();
     await expect(info.locator('..').locator('..')).toHaveText(lang === 'en' ? 'Official final results i' : 'תוצאות סופיות רשמיות i');
     await info.hover();
-    await expect(page.locator('.pop')).toContainText(dataset('k26').status[lang === 'en' ? 'noteEn' : 'noteHe'].replace('Gazette publication unverified', 'Gazette publication not yet verified').replace('הפרסום ברשומות לא אומת', 'הפרסום ברשומות טרם אומת'));
+    await expect(page.locator('.pop')).toContainText(datesInText(dataset('k26').status[lang === 'en' ? 'noteEn' : 'noteHe'].replace('Gazette publication unverified', 'Gazette publication not yet verified').replace('הפרסום ברשומות לא אומת', 'הפרסום ברשומות טרם אומת')));
     await info.click();
     await page.screenshot({ path: `.backup-scratch/owner-answers/screenshots/status-${lang}-${theme}-${width}.png` });
     await page.mouse.move(0, 0);
@@ -48,7 +49,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     // Also retain historical limitations rather than deleting them in the concise summary.
     await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), 'k17');
     await info.click();
-    await expect(page.locator('.pop')).toContainText(dataset('k17').status[lang === 'en' ? 'noteEn' : 'noteHe']);
+    await expect(page.locator('.pop')).toContainText(datesInText(dataset('k17').status[lang === 'en' ? 'noteEn' : 'noteHe']));
     // Exercise the seat-hover path when a candidate has no English spelling.
     // The fixture removes only nameEn; identity, ranks and votes stay unchanged.
     await page.route('**/data/k26.json', async route => {
@@ -88,7 +89,8 @@ for (const lang of ['en', 'he']) test(`all 26 status notes retained in ${lang}`,
     await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), `k${n}`);
     const info = page.getByRole('button', { name: lang === 'en' ? 'Data status details' : 'פירוט מצב הנתונים', exact: true });
     await info.click();
-    const expected = dataset(`k${n}`).status[lang === 'en' ? 'noteEn' : 'noteHe'].replace('Gazette publication unverified', 'Gazette publication not yet verified').replace('הפרסום ברשומות לא אומת', 'הפרסום ברשומות טרם אומת');
+    // the screen writes dates in the app's format ("4 Nov 2026", not 4.11.2026)
+    const expected = datesInText(dataset(`k${n}`).status[lang === 'en' ? 'noteEn' : 'noteHe'].replace('Gazette publication unverified', 'Gazette publication not yet verified').replace('הפרסום ברשומות לא אומת', 'הפרסום ברשומות טרם אומת'));
     await expect(page.locator('.pop')).toContainText(expected);
     await page.keyboard.press('Escape');
   }

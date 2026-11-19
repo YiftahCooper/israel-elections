@@ -315,7 +315,7 @@ describe('names at each election', () => {
     expect(strip('israel-resilience', 'en')).toEqual(['k21–k23 Israel Resilience', 'k24–k25 Blue and White']); // 2026: the list withdrew
     expect(strip('otzma-yehudit', 'en')).toEqual(['k19–k19 Otzma Leyisrael', 'k20–k26 Otzma Yehudit']);
     expect(strip('ahi', 'en')).toEqual(['k17–k17 Renewed Religious National Zionism', 'k18–k23 Ahi']);
-    expect(strip('new-hope', 'en')).toEqual(['k24–k25 New Hope', 'k26–k26 New Hope – the National Right']);
+    expect(strip('new-hope', 'en')).toEqual(['k24–k25 New Hope', 'k26–k26 New Hope – The United Right']);
   });
   // audit 12 Nov 2026, c-famous-late-10: the English and Hebrew of one election named different things (Tkuma 2021–26:
   // "Religious Zionist Party" beside האיחוד הלאומי – תקומה)

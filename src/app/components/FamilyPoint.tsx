@@ -1,7 +1,7 @@
 import { percentNum, points } from './Percentage.tsx';
 import { PP } from '../format.ts';
 import { partyDisplayColor } from '../partyDisplayColor.ts';
-import { formatDate } from '../dateFormat.ts';
+import { datesInText, formatDate } from '../dateFormat.ts';
 import { SeatDelta } from './SeatDelta.tsx';
 import {englishLabel} from '../../data/names.ts';
 import {useEffect,useState} from 'react';
@@ -83,7 +83,7 @@ export function FamilyPoint({family:f,electionId}:{family:Family;electionId:Elec
    {previous&&<details><summary>{L('Previous ballot lists','הרשימות בבחירות הקודמות')}</summary>{previous.lists.filter(l=>{const m=membership(f,previous.id);return m.selected.has(l.id)||m.mixed.has(l.id)||m.excluded.has(l.id);}).map(l=><p key={l.id}>{listLabel(l,lang)} · {l.votes.toLocaleString('en-US')} {L('votes','קולות')}</p>)}</details>}
 
   </section>}
-  <details><summary>{L('Election notes and sources','הערות ומקורות לבחירות')}</summary><p>{lang==='he'?ds.status.noteHe:ds.status.noteEn}</p>{Object.entries(full.sources).filter(([id])=>(row?.voteSourceIds as string[]|undefined)?.includes(id)).map(([id,s])=>source(id,s))}</details>
+  <details><summary>{L('Election notes and sources','הערות ומקורות לבחירות')}</summary><p>{datesInText(lang==='he'?ds.status.noteHe:ds.status.noteEn)}</p>{Object.entries(full.sources).filter(([id])=>(row?.voteSourceIds as string[]|undefined)?.includes(id)).map(([id,s])=>source(id,s))}</details>
   <button className="btn primary" onClick={()=>void openFamilyElection(electionId,f)}>{L('Open this election','פתיחת הבחירות האלה')}</button>
  </div>;
 }

@@ -248,7 +248,7 @@ function MapTo({ row, early, late, earlyIds, lateIds, onPick }: { row: MatchRow;
   return <div className="cmp-mapto">
     <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder={L('Find a list…', 'חיפוש רשימה…')} aria-label={L('Find a list', 'חיפוש רשימה')} />
     <ul>{ranked.map(({ l, n }) => <li key={l.id}><button type="button" className="btn small ghost" onClick={() => onPick(l.id)}><ListMark list={l} lang={lang} /> <bdi>{listLabel(l, lang)}</bdi>
-      {n > 0 && <span className="muted"> · {L(`${n} shared candidates`, `${n} מועמדים משותפים`)}</span>}</button></li>)}</ul>
+      {n > 0 && <span className="muted"> · {n === 1 ? L('1 shared candidate', 'מועמד משותף אחד') : L(`${n} shared candidates`, `${n} מועמדים משותפים`)}</span>}</button></li>)}</ul>
   </div>;
 }
 

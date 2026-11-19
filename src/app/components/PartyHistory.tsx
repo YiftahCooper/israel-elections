@@ -19,6 +19,7 @@ import './party-history.css';
 import { PageAndQuote } from './BookQuote.tsx';
 import { openModal } from '../focusReturn.ts';
 import { partyDisplayColor } from '../partyDisplayColor.ts';
+import { sourceLinkText } from '../hewiki.ts';
 
 type Lang = 'he' | 'en';
 /** A Hebrew prefix on a name: after ל, ב or כ the definite article ה is absorbed (לדמוקרטים, לעבודה); מ and ו keep it. */
@@ -92,7 +93,7 @@ export function EvidenceLinks({ r }: { r: Relation }) {
  *  source (`support`), its file locator and its id are never shown. */
 function sourceName(s: Relation['sources'][number], lang: Lang) {
   const name = (lang === 'he' && s.publisherHe) || s.publisher || (lang === 'he' ? 'מקור' : 'Source');
-  return s.url ? <a href={s.url} target="_blank" rel="noreferrer">{name}</a> : name;
+  return s.url ? <a href={s.url} target="_blank" rel="noreferrer">{sourceLinkText(s.url, name, lang)}</a> : name;
 }
 /** "Labor (4 seats) and Meretz (0 seats)": the whole earlier lists a comparison counts, with their seats. */
 export function countedText(c: Comparison, lang: Lang): string {
@@ -500,7 +501,7 @@ function Legend({ compact, metric = 'seats', events = [], inside = false, eras =
     {events.length > 0 && (compact
       ? <span className="ph-evkey"><i className="ph-sw evline" />{L('Merger, split or new name', 'איחוד, פילוג או שם חדש')}</span>
       : <span className="ph-evkey"><i className="ph-sw evnum" aria-hidden>#</i>{L('Merger, split or new name: its number in Events below', 'איחוד, פילוג או שם חדש: מספרו ברשימת האירועים למטה')}
-        <Info title={L('Where events are drawn', 'היכן מסומנים אירועים')}>{L('Bars are elections, evenly spaced. This is not a time scale: Knessets last different lengths. Each line sits between the two elections the event fell between, at the same point of that gap as in time. Example: Kadima split from Likud on 23 Nov 2005, 89% of the way from the 2003 election to the 2006 one. A date known only by its year is placed in mid-year. Events too close to tell apart share one mark (“5,6,7”).', 'העמודות הן מערכות בחירות, במרווחים שווים. זה אינו ציר זמן: משך כל כנסת שונה. כל קו נמצא בין שתי הבחירות שביניהן אירע האירוע, באותה נקודה בפער כמו בזמן. לדוגמה: קדימה התפצלה מהליכוד ב־23 בנובמבר 2005, 89% מהדרך בין בחירות 2003 לבחירות 2006. תאריך שידועה בו רק השנה מסומן באמצע השנה. אירועים קרובים מדי זה לזה חולקים סימן אחד („5,6,7”).')}</Info></span>)}
+        <Info title={L('Where events are drawn', 'היכן מסומנים אירועים')}>{L('Bars are elections, evenly spaced. This is not a time scale: Knessets last different lengths. Each line sits between the two elections the event fell between, at the same point of that gap as in time. Example: Kadima split from Likud on 23 Nov 2005, 89% of the way from the 2003 election to the 2006 one. A date known only by its year is placed in mid-year. Events too close to tell apart share one mark (“5,6,7”).', 'העמודות הן מערכות בחירות, במרווחים שווים. זה אינו ציר זמן: משך כל כנסת שונה. כל קו נמצא בין שתי הבחירות שביניהן אירע האירוע, באותה נקודה בפער כמו בזמן. לדוגמה: קדימה התפצלה מהליכוד ב־23 בנובמבר 2005, 89% מהדרך בין בחירות 2003 לבחירות 2006. תאריך שידועה בו רק השנה מסומן באמצע השנה. אירועים קרובים מדי זה לזה חולקים סימן אחד ("5,6,7").')}</Info></span>)}
     {weak && <span><i className="ph-sw evline weak" />{L('Dashed: not yet established', 'מקווקו: טרם בוסס')}</span>}
     {!compact && <Info title={L('Party history', 'היסטוריית מפלגה')} label={L('How to read this chart', 'איך לקרוא את התרשים')}>{L(
       'Each bar is one election: the whole list the party ran in, in that list’s own colour at that election, so the colour changes when the list changed. The number above a bar is its seats (or its share of the valid votes). Seats: the solid part is the party’s own elected members, the striped part its partners’ on a joint list (official candidate lists and Knesset records). A dashed outline: the party ran inside another party’s list. Vote share: a joint list’s votes belong to the whole list and are never divided, so its bar is a light tint of the list’s colour. A dot: the party did not run that year. The strip under the years gives the name the party had in each period. The shaded column is the election you are looking at; click any bar, or use the arrow keys, to read that election in the box below.',
@@ -553,7 +554,7 @@ export function HistorySheet({ parties, colours = {}, initial, electionIdx, onCl
       <div className="ph-head-text">
         <h2>{lang === 'he' ? <>היסטוריה · {title}</> : <>{title} <span className="small muted">history</span></>}</h2>
         {h.eras.length > 1 && <div className="small ink2">{h.eras.map((e) => e.name).filter((n, i, a) => a.indexOf(n) === i).join(lang === 'he' ? ' ← ' : ' → ')}</div>}
-        <div className="small muted">{!ran.length ? NEVER(L) : L(`Ran in ${ran.length} of ${h.points.length - h.firstRun} elections${since} · won seats in ${won}${unknown ? ` (unknown in ${unknown})` : ''}`, `התמודדה ב־${ran.length} מתוך ${h.points.length - h.firstRun} בחירות${since} · זכתה במנדטים ב־${won}${unknown ? ` (לא ידוע ב־${unknown})` : ''}`)}{best ? L(` · most: ${best.own} (${yearLabel(best.i, 'en')})`, ` · שיא: ${best.own} (${yearLabel(best.i, 'he')})`) : ''}</div>
+        <div className="small muted">{!ran.length ? NEVER(L) : h.points.length - h.firstRun === 1 ? L(`Ran in 1 election${since} · ${unknown ? 'seats unknown' : won ? 'won seats' : 'no seats'}`, `התמודדה במערכת בחירות אחת${since} · ${unknown ? 'המנדטים לא ידועים' : won ? 'זכתה במנדטים' : 'ללא מנדטים'}`) : L(`Ran in ${ran.length} of ${h.points.length - h.firstRun} elections${since} · won seats in ${won}${unknown ? ` (unknown in ${unknown})` : ''}`, `התמודדה ב־${ran.length} מתוך ${h.points.length - h.firstRun} בחירות${since} · זכתה במנדטים ב־${won}${unknown ? ` (לא ידוע ב־${unknown})` : ''}`)}{best ? L(` · most: ${best.own} (${yearLabel(best.i, 'en')})`, ` · שיא: ${best.own} (${yearLabel(best.i, 'he')})`) : ''}</div>
       </div>
       <button type="button" className="btn ghost" onClick={onClose} aria-label={L('Close', 'סגירה')}>×</button>
     </div>
@@ -588,7 +589,7 @@ export function HistorySheet({ parties, colours = {}, initial, electionIdx, onCl
       </ul>
     </>}
     <details className="ph-exact" open={expert || preferTables}>
-      <summary>{L(`Exact figures (${ran.length} elections)`, `נתונים מדויקים (${ran.length} בחירות)`)}</summary>
+      <summary>{ran.length === 1 ? L('Exact figures (1 election)', 'נתונים מדויקים (מערכת בחירות אחת)') : L(`Exact figures (${ran.length} elections)`, `נתונים מדויקים (${ran.length} בחירות)`)}</summary>
       <div className="tablewrap"><table className="ph-table">
         <thead><tr><th>{L('Election', 'בחירות')}</th><th>{L('List', 'רשימה')}</th><th className="n">{L('Seats', 'מנדטים')}</th><th className="n">{L('Own elected', 'נבחרי המפלגה')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('Share', 'שיעור')}</th></tr></thead>
         <tbody>{ran.map((p) => <tr key={p.i} className={p.i === sel ? 'sel' : ''}>

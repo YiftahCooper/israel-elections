@@ -13,6 +13,8 @@ import { formatDate } from '../dateFormat.ts';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { personNames, rotationFor, statutory, type RotationAgreement } from '../../data/rotations.ts';
 import './AfterElection.css';
+import { sourceLinkText } from '../hewiki.ts';
+import { latinQuotesInHebrew } from '../bidiRuns.tsx';
 
 /** Ranges follow the reader: start on the right in Hebrew, on the left in English. */
 function DateRun({ date, end }: { date: string; end?: string }) {
@@ -37,7 +39,7 @@ function Rotation({ number }: { number: number }) {
   const shown = a.sources.filter((s) => s.url && s.inspection !== 'search-snippet-only');
   const info = <Info title={L('Rotation agreement', 'הסכם רוטציה')}>
     <RotationWhy a={a} name={name} />
-    {shown.length > 0 && <span className="after-rotation-src">{shown.map((s) => <a key={s.url} href={s.url} target="_blank" rel="noreferrer">{s.publisher ?? s.url}{s.date ? <> · {date(s.date)}</> : null}</a>)}</span>}
+    {shown.length > 0 && <span className="after-rotation-src">{shown.map((s) => <a key={s.url} href={s.url} target="_blank" rel="noreferrer">{sourceLinkText(s.url, s.publisher ?? s.url ?? '', lang)}{s.date ? <> · {date(s.date)}</> : null}</a>)}</span>}
   </Info>;
   // the line wraps on a phone; only its last words keep the (i) beside them
   const parts = [plan, outcome].filter(Boolean);
@@ -57,7 +59,11 @@ function RotationWhy({ a, name }: { a: RotationAgreement; name: (en: string) => 
 
 /** Covers numbers and embedded ISO dates in all 26 records, including future prose additions.
  * Verbatim source quotations retain their exact text, with bidi isolation only. */
-function HistoryText({ text, verbatim = false }: { text: string; verbatim?: boolean }) {
+function HistoryText({ text, verbatim = false }: { text: string; verbatim?: boolean }): ReactNode {
+  // An English quotation inside Hebrew ("03/49 · Ben-Gurion · … · 73") is one left-to-right island, so its numbers and
+  // the Hebrew numbers beside it cannot swap places across the change of direction.
+  const quoted = latinQuotesInHebrew(text);
+  if (quoted.length > 1) return <>{quoted.map((q, i) => q.latin ? <bdi key={i} dir="ltr">{q.text}</bdi> : <HistoryText key={i} text={q.text} verbatim={verbatim} />)}</>;
   const runs = text.split(/(\d{4}-\d{2}(?:-\d{2})?(?:\s+[–-]\s+\d{4}-\d{2}(?:-\d{2})?)?|\d+(?:[,.]\d+)*(?:\s*[–−/:\-]\s*\d+(?:[,.]\d+)*)*%?)/g);
   return <>{runs.map((run, i) => {
     if (!/^\d/.test(run)) return run;
@@ -207,7 +213,7 @@ function GovernmentComposition({ data, ds, government: g, investiture = true }: 
     ? L('The relationship has not been established. It is not counted as membership.', 'המעמד טרם הוברר. אין לראות בו חברות בקואליציה.')
     : entry.certainty === 'provisional' ? L('Provisional classification; the original terms are not fully authenticated.', 'סיווג זמני; תנאי ההסדר המקוריים טרם אומתו במלואם.')
     : entry.certainty === 'disputed' ? L('Sources disagree; both sides are cited below.', 'המקורות חלוקים; שני הצדדים מובאים להלן.') : undefined;
-  const votes = { for: L('For', 'בעד'), against: L('Against', 'נגד'), abstain: L('Abstained', 'נמנע'), absent: L('Absent', 'נעדר'), unknown: L('Vote unknown', 'הצבעה לא ידועה') };
+  const votes = { for: L('For', 'בעד'), against: L('Against', 'נגד'), abstain: L('Abstained', 'הימנעות'), absent: L('Absent', 'היעדרות'), unknown: L('Vote unknown', 'הצבעה לא ידועה') };
   const reconciliation = g.reconciliation.status === 'unresolved' ? L('The difference has not been reconciled.', 'הפער טרם הוסבר.')
     : g.reconciliation.status === 'explained' ? L('The recorded participation and individual votes explain the difference.', 'רישומי ההשתתפות וההצבעות האישיות מסבירים את הפער.')
     : g.reconciliation.status === 'vote-unavailable' ? L('The investiture vote has not been recovered.', 'הצבעת האמון טרם אותרה.')
@@ -237,7 +243,7 @@ function GovernmentComposition({ data, ds, government: g, investiture = true }: 
       return <div className="after-individual" key={person.id} data-individual={person.id}>
         <bdi>{lang === 'he' ? person.nameHe : person.nameEn}</bdi>
         <span className="muted small">{L('Elected on', 'מרשימת')} <bdi>{origin ? listLabel(origin, lang) : person.fromLetters}</bdi></span>
-        {!person.countedInFactionSeats && <span className="small">{role === 'member-with-ministries' ? L('Member', 'חבר בקואליציה') : L(...SUPPORT_LABELS[role])}</span>}
+        {!person.countedInFactionSeats && <span className="small">{role === 'member-with-ministries' ? L('Member', 'חברות בקואליציה') : L(...SUPPORT_LABELS[role])}</span>}
         <span className="after-help-anchor">{votes[person.vote]} <Evidence data={data} cites={person.cites} explanation={person.countedInFactionSeats ? L('Already included in the list seat count. The faction role does not establish a personal ministerial appointment or support.', 'כלול כבר במנדטים של הרשימה. מעמד הסיעה אינו מעיד על מינוי אישי לשר או על תמיכה אישית.'): qualification(person)} notes={person.note ? [person.note] : []} /></span>
       </div>;
     })}</div>}
