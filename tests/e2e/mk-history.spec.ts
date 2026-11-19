@@ -183,7 +183,8 @@ test('Eichler: numbered event lines match the lines under the row; days without 
   expect(bg).not.toContain('linear-gradient');
   const key = c.locator('.mk-key');
   await expect(key).toContainText('No faction recorded');
-  await expect(key).toContainText('A recorded event, by its number under the row');
+  await expect(key).toContainText('A recorded event; its number is listed under the row');
+  await expect(key.locator('.mk-key-mark')).toHaveText('');
   await expect(key.locator('.mk-key-seg.mk-unrec')).toHaveCount(1);
 });
 

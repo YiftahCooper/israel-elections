@@ -69,7 +69,6 @@
 .mk-key-track, .mk-key-seg { font-style: normal; }
 .mk-key-mark { display: inline-flex; align-items: center; gap: 3px; font-style: normal; }
 .mk-key-mark::after, .mk-enum > i { content: ''; display: inline-block; inline-size: 2px; block-size: 14px; background: var(--ink); }
-.mk-key-mark > b { font-size: 11px; color: var(--ink); }
 /* the event's number in the lines under the row, beside the same ink line as on the bar */
 .mk-enum { display: inline-flex; align-items: center; gap: 4px; min-inline-size: 22px; font-weight: 700; color: var(--ink); }
 .mk-enum > i { block-size: 12px; }
