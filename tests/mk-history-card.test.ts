@@ -56,4 +56,16 @@ describe('MK history card', () => {
     }
     expect(both).toBeGreaterThanOrEqual(2); // 2026 Shas Nos. 7 and 15 (Abutbul, Moshiashvili) at least
   });
+
+  // anyone the Knesset has no gender record for gets neutral words, in both languages, never from a name (Round 8 card
+  // mk-career wording). No one in the data lacks the record since Dror David Amos left the seats (review V3 F8), so a
+  // real card is drawn with the gender taken away: Aryeh Deri, 2026, elected and did not sit.
+  it('neutral words where the Knesset records no gender', () => {
+    const v = { ...mkView(rt, 2291)!, gender: null }, r = v.rows.find((x) => x.k === 26)!;
+    const inLang = (lang: 'en' | 'he', el: ReturnType<typeof createElement>) => renderToStaticMarkup(createElement(LangContext.Provider, { value: lang }, el));
+    expect(inLang('en', createElement(Result, { r, v }))).toContain('Elected; did not sit');
+    expect(inLang('he', createElement(Result, { r, v }))).toContain('בין הנבחרים; ללא כהונה');
+    expect(inLang('en', createElement(MkKey, { v }))).toContain('their time in it');
+    expect(inLang('he', createElement(MkKey, { v }))).toContain('הצבוע – זמן הכהונה בה');
+  });
 });
