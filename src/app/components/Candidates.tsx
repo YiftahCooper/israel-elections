@@ -14,6 +14,7 @@ import { useL, useLang } from '../i18n.ts';
 import { candidateName, shownName } from '../derive.ts';
 import { Info } from './ui.tsx';
 import { dispatch, useOn, useSetting, useStore } from '../store.ts';
+import { HEWIKI_LABEL } from '../hewiki.ts';
 
 /** The reason each candidate was "not seated", by candidate id: the note of their own list (also after a merge moved
  *  them) that names them or their place on the roster. */
@@ -146,7 +147,7 @@ function BioLinks({ bio, name }: { bio: CandidateBio; name: string }) {
       {knesset && <a href={knesset} target="_blank" rel="noreferrer" title={L('Official member page, Knesset website', 'דף חבר הכנסת הרשמי, אתר הכנסת')}>{L('Knesset', 'הכנסת')}</a>}
       {party && <a href={party} target="_blank" rel="noreferrer" title={L('The party’s own page (partisan)', 'הדף של המפלגה עצמה (מקור מפלגתי)') + (year ? L(`, archived ${year}`, `, ארכיון ${year}`) : '')}>
         {L('Party', 'מפלגה')}{year ? ` ${year}` : ''}</a>}
-      {wiki && <a href={wiki} target="_blank" rel="noreferrer" hrefLang="he" title={L('Hebrew Wikipedia: a secondary source', 'ויקיפדיה העברית: מקור משני')}>{L('Wikipedia (he)', 'ויקיפדיה')}</a>}
+      {wiki && <a href={wiki} target="_blank" rel="noreferrer" hrefLang="he" title={L('Hebrew Wikipedia: a secondary source', 'ויקיפדיה העברית: מקור משני')}>{L(...HEWIKI_LABEL)}</a>}
       {bio.probable && (bio.memberConfirmed
         // the Knesset page is tied by the official member record; only the other links were matched by name
         ? <span className="muted" title={L('The Knesset page: by the official member record. The other links: matched by name, not by an official identifier', 'דף הכנסת: לפי רישום חבר הכנסת הרשמי. שאר הקישורים: הותאמו לפי שם, לא לפי מזהה רשמי')}>{L('(other links probable)', '(שאר הקישורים: התאמה סבירה)')}</span>

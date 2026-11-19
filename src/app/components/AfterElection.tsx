@@ -13,6 +13,7 @@ import { formatDate } from '../dateFormat.ts';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { personNames, rotationFor, statutory, type RotationAgreement } from '../../data/rotations.ts';
 import './AfterElection.css';
+import { sourceLinkText } from '../hewiki.ts';
 
 /** Ranges follow the reader: start on the right in Hebrew, on the left in English. */
 function DateRun({ date, end }: { date: string; end?: string }) {
@@ -37,7 +38,7 @@ function Rotation({ number }: { number: number }) {
   const shown = a.sources.filter((s) => s.url && s.inspection !== 'search-snippet-only');
   const info = <Info title={L('Rotation agreement', 'הסכם רוטציה')}>
     <RotationWhy a={a} name={name} />
-    {shown.length > 0 && <span className="after-rotation-src">{shown.map((s) => <a key={s.url} href={s.url} target="_blank" rel="noreferrer">{s.publisher ?? s.url}{s.date ? <> · {date(s.date)}</> : null}</a>)}</span>}
+    {shown.length > 0 && <span className="after-rotation-src">{shown.map((s) => <a key={s.url} href={s.url} target="_blank" rel="noreferrer">{sourceLinkText(s.url, s.publisher ?? s.url ?? '', lang)}{s.date ? <> · {date(s.date)}</> : null}</a>)}</span>}
   </Info>;
   // the line wraps on a phone; only its last words keep the (i) beside them
   const parts = [plan, outcome].filter(Boolean);

@@ -62,3 +62,24 @@ describe('words about a person follow the Knesset record, else neutral', () => {
     expect(texts.filter((l) => /\b(he|his|him)\b|הודיע|מופיע כנבחר|הוכרז כנבחר|יישאר|ייכנס/i.test(l))).toEqual([]);
   });
 });
+
+describe('Hebrew Wikipedia is labelled secondary in the link text', () => {
+  it('no link text names Wikipedia without the label', () => {
+    // the bare names that were link text: "Wikipedia (he)", "ויקיפדיה", "Hebrew Wikipedia (a secondary source)"
+    const hits = srcStrings().filter(({ s }) => /^['"`](Wikipedia \(he\)|ויקיפדיה|ויקיפדיה העברית|Hebrew Wikipedia|Hebrew Wikipedia \(a secondary source\))['"`]$/.test(s))
+      .filter(({ at }) => !/publisherName\.ts/.test(at)).map(({ at, s }) => `${at} ${s}`);
+    expect(hits).toEqual([]);
+  });
+  it('every component that links a source by its publisher runs the name through sourceLinkText', () => {
+    // a source link shows its publisher's name; a Hebrew Wikipedia address must show the labelled name instead
+    const LINK_BY_NAME = /<a [^>]*href=\{(s\.url|url)\}[^>]*>\{?(?!sourceLinkText)(name|publisherIn|s\.publisher|name\(s\))/;
+    const hits = files('src/app/components', /\.tsx$/).filter((f) => LINK_BY_NAME.test(readFileSync(f, 'utf8')));
+    expect(hits).toEqual([]);
+  });
+  it('labels a Hebrew Wikipedia address whatever the record calls it', async () => {
+    const { sourceLinkText } = await import('../src/app/hewiki.ts');
+    expect(sourceLinkText('https://he.wikipedia.org/wiki/x', 'Wikipedia (he)', 'en')).toBe('Hebrew Wikipedia (secondary)');
+    expect(sourceLinkText('https://he.m.wikipedia.org/wiki/x', 'ויקיפדיה העברית', 'he')).toBe('ויקיפדיה העברית (משני)');
+    expect(sourceLinkText('https://www.ynet.co.il/x', 'Ynet', 'en')).toBe('Ynet');
+  });
+});

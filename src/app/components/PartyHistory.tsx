@@ -19,6 +19,7 @@ import './party-history.css';
 import { PageAndQuote } from './BookQuote.tsx';
 import { openModal } from '../focusReturn.ts';
 import { partyDisplayColor } from '../partyDisplayColor.ts';
+import { sourceLinkText } from '../hewiki.ts';
 
 type Lang = 'he' | 'en';
 /** A Hebrew prefix on a name: after ל, ב or כ the definite article ה is absorbed (לדמוקרטים, לעבודה); מ and ו keep it. */
@@ -92,7 +93,7 @@ export function EvidenceLinks({ r }: { r: Relation }) {
  *  source (`support`), its file locator and its id are never shown. */
 function sourceName(s: Relation['sources'][number], lang: Lang) {
   const name = (lang === 'he' && s.publisherHe) || s.publisher || (lang === 'he' ? 'מקור' : 'Source');
-  return s.url ? <a href={s.url} target="_blank" rel="noreferrer">{name}</a> : name;
+  return s.url ? <a href={s.url} target="_blank" rel="noreferrer">{sourceLinkText(s.url, name, lang)}</a> : name;
 }
 /** "Labor (4 seats) and Meretz (0 seats)": the whole earlier lists a comparison counts, with their seats. */
 export function countedText(c: Comparison, lang: Lang): string {

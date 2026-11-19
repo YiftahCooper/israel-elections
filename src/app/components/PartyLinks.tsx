@@ -6,6 +6,7 @@ import { useL, useLang } from '../i18n.ts';
 import { datesInText, formatDate } from '../dateFormat.ts';
 import { useId } from 'react';
 import { LangLabel, nameProps } from './LangLabel.tsx';
+import { HEWIKI_LABEL } from '../hewiki.ts';
 
 const safe = (u: string) => /^https:\/\//.test(u);
 
@@ -22,7 +23,7 @@ export function PartyLinks({ links, name }: { links?: PartyLink[]; name: string 
       case 'party-newspaper': return year ? L(`Party newspaper, ${year}`, `עיתון המפלגה, ${year}`) : L('Party newspaper', 'עיתון המפלגה');
       case 'repo-scan': return L('Scan (this project)', 'סריקה (בפרויקט זה)');
       case 'knesset': return L('Knesset', 'הכנסת');
-      case 'hewiki': return L('Wikipedia (he)', 'ויקיפדיה');
+      case 'hewiki': return L(...HEWIKI_LABEL);
       case 'cec': return L('Elections Committee', 'ועדת הבחירות');
       // the publisher is stored as published (in Hebrew); the one research institute linked has an official English name
       case 'academic': return x.publisher === 'המכון הישראלי לדמוקרטיה' ? L('Israel Democracy Institute', x.publisher) : L('Research', x.publisher);
