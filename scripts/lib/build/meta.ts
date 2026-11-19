@@ -131,11 +131,18 @@ export function applyMeta(ds: ElectionDataset, localities?:Pick<LocalityDataset,
   const research = join(META, 'aftermath', `${ds.id}.json`);
   const government = existsSync(research) ? JSON.parse(readFileSync(research, 'utf8')).government as { firstGovernmentSchemeRef?: string; coalition?: { letters?: string; role: string }[] } | undefined : undefined;
   const opening = government && schemes.find((s) => s.id === (government.firstGovernmentSchemeRef ?? 'first-government'));
-  if (opening) for (const [role, group] of [['outside-support', 'outside-support'], ['abstained-by-arrangement', 'abstained-by-arrangement']] as const) {
+  if (opening) for (const [role, group] of [['outside-support', 'outside-support'], ['abstained-by-arrangement', 'abstained-by-arrangement'], ['confidence-vote-only', 'confidence-vote-only']] as const) {
     const recorded = (government!.coalition ?? []).filter((r) => r.role === role && r.letters).map((r) => listId(r.letters!));
     const held = opening.blocs.find((b) => b.id === group)?.lists ?? [];
     for (const id of recorded) if (!held.includes(id)) fail(`scheme ${opening.id}: ${id} is researched as ${role} but not in group ${group}`);
     for (const id of held) if (!recorded.includes(id)) fail(`scheme ${opening.id}: ${id} is in group ${group} without that researched role`);
+  }
+  // and the coalition group holds no list the research records in another role (1949: WIZO and the Yemenites voted
+  // confidence only, so the coalition is 73, as the government record says, not 75)
+  if (opening) {
+    const member = new Set((government!.coalition ?? []).filter((r) => r.letters && r.role.startsWith('member')).map((r) => listId(r.letters!)));
+    const researched = new Set((government!.coalition ?? []).filter((r) => r.letters).map((r) => listId(r.letters!)));
+    for (const id of opening.blocs.find((b) => b.id === 'coalition')?.lists ?? []) if (researched.has(id) && !member.has(id)) fail(`scheme ${opening.id}: ${id} is in the coalition group but researched in another role`);
   }
   // default (decision 0087): the first government formed after this election, else its pre-election blocs,
   // else any other sourced grouping (e.g. an outgoing government, or recommendations to the President)
@@ -143,7 +150,7 @@ export function applyMeta(ds: ElectionDataset, localities?:Pick<LocalityDataset,
   // a list's colour never follows a researched support role: lists in an outside-support or arranged-abstention
   // group are separated in the place they hold without that group (the opposition side), so adding the group
   // recolours no list (party colour stability itself is decided elsewhere; this only keeps bloc data out of it)
-  const roleGroups = new Set(['outside-support', 'abstained-by-arrangement']);
+  const roleGroups = new Set(['outside-support', 'abstained-by-arrangement', 'confidence-vote-only']);
   const colourScheme = pick && pick.blocs.some((b) => roleGroups.has(b.id)) ? (() => {
     const rest = pick.blocs.filter((b) => !roleGroups.has(b.id)), moved = pick.blocs.filter((b) => roleGroups.has(b.id));
     const side = rest.find((b) => b.id === 'opposition') ?? rest[rest.length - 1];

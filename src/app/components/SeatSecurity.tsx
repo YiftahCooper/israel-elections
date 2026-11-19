@@ -259,7 +259,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
   const shown = sorted.slice(0, 24);
   const blocName = (b: { nameHe: string; nameEn: string; appDefined?: boolean }) => groupingName(b, lang);
   // a bloc fills members; a sourced government grouping's outside-support or abstention group is not a member set
-  const startFrom = s.blocs.filter((b) => b.id !== 'outside-support' && b.id !== 'abstained-by-arrangement').map((b) => ({ b, ids: seated.filter((x) => x.l.bloc === b.id).map((x) => x.l.id) })).filter((x) => x.ids.length);
+  const startFrom = s.blocs.filter((b) => b.id !== 'outside-support' && b.id !== 'abstained-by-arrangement' && b.id !== 'confidence-vote-only').map((b) => ({ b, ids: seated.filter((x) => x.l.bloc === b.id).map((x) => x.l.id) })).filter((x) => x.ids.length);
   /** The researched first government (data/meta/aftermath, docs/source-policy.md) as roles: members In, outside
    *  support Support, arranged abstention Abstain. A confidence vote alone, or an unknown relationship, is not an
    *  arrangement and stays Any. Each row keeps its recorded certainty; nothing is upgraded. */

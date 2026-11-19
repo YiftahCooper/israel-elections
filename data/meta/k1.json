@@ -717,7 +717,7 @@
           "nameHe": "קואליציה",
           "nameEn": "Coalition",
           "color": "#3A6EA5",
-          "seats": 75,
+          "seats": 73,
           "members": [
             {
               "letters": "א"
@@ -733,12 +733,23 @@
             },
             {
               "letters": "יד"
+            }
+          ]
+        },
+        {
+          "id": "confidence-vote-only",
+          "nameHe": "הצבעת אמון בלבד",
+          "nameEn": "Voted confidence only",
+          "color": "#93BCE3",
+          "seats": 2,
+          "members": [
+            {
+              "letters": "נ",
+              "note": "voted confidence only, disputed (data/meta/aftermath/k1.json)"
             },
             {
-              "letters": "נ"
-            },
-            {
-              "letters": "ל"
+              "letters": "ל",
+              "note": "voted confidence only, disputed (data/meta/aftermath/k1.json)"
             }
           ]
         },
