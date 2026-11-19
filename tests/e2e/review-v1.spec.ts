@@ -200,3 +200,20 @@ test('Save & share: the unsaved mark sits beside the name; saving with no name k
   await page.getByRole('button', { name: 'Save & share' }).click();
   await expect(page.locator('.menu-pop').getByRole('button', { name: /\(2026\)/ })).toHaveText(/^Untitled scenario \(2026\)/);
 });
+
+test('a failed load in Hebrew: the browser\'s own English words are named as a technical detail', async ({ page }) => {
+  await page.addInitScript(() => {
+    if (sessionStorage.getItem('seeded')) return;
+    sessionStorage.setItem('seeded', '1');
+    localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'he', level: 'standard' }));
+    localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false } }));
+  });
+  await page.route('**/data/k26.json', (r) => r.abort('failed'));
+  await page.goto('/');
+  const error = page.locator('.load-failed');
+  await expect(error).toBeVisible();
+  const detail = error.locator('p.tiny');
+  await expect(detail).toContainText('פרט טכני: ');
+  // nothing but the browser's message is left in English, and it follows its Hebrew label
+  expect((await detail.innerText()).startsWith('פרט טכני: ')).toBe(true);
+});

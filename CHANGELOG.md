@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- Failed load (19 Nov): the browser's own error words ("Failed to fetch", in the browser's language) are introduced as "Technical detail:" in the app's language, so in Hebrew they no longer pass for part of the app's message.
 - What if… 2026 (19 Nov): the row that removes Likud's surplus agreement names its partner by the list's own name, "No agreement between Likud and Religious Zionism–Zehut" (it said "Religious Zionism").
 - Save & share and unnamed scenarios (19 Nov): the unsaved mark (*) sits beside the scenario name instead of alone on a line under it; a scenario saved, copied or exported without a name is called "Untitled scenario", the words its empty name field shows (it was saved as "Scenario").
 - Side by side and Swap (19 Nov): no filter counts more rows than All ("Unmatched 54" beside "All 16"): every filter obeys "Lists with no seats"; on a phone, comparing with this election's own result names each list once, in full, without a "Same" tag on every row; after Swap, an unedited result is called "Official result", never "Your work" or "historical".
