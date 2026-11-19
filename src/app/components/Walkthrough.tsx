@@ -182,7 +182,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
                 <span className="walk-seat-colour" style={{ background: colours(st.st.winnerUnitId).length > 1 ? `linear-gradient(135deg, ${colours(st.st.winnerUnitId)[0]} 50%, ${colours(st.st.winnerUnitId)[1]} 50%)` : colours(st.st.winnerUnitId)[0] }} />{r.initialSeatsTotal + st.st.step}
               </button>
             : st.kind === 'internal' && current === 'internal'
-              ? <button key={k} className={`btn small ${k === i ? 'primary' : ''}`} aria-current={k === i ? 'step' : undefined} onClick={() => go(k)}>{swatches(st.unitId)} {name(st.unitId)}</button>
+              ? <button key={k} className={`btn small names ${k === i ? 'primary' : ''}`} aria-current={k === i ? 'step' : undefined} onClick={() => go(k)}>{swatches(st.unitId)} {name(st.unitId)}</button>
               : null)}
         </div>
       )}
@@ -309,7 +309,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
                 {L('Exact tie between ', 'שוויון מדויק בין ')}{step.st.tie.tiedUnitIds.map(name).join(', ')}. {s.rules.tiePolicy === 'unspecified' ? L('The sources checked state no tie rule for this era; the outcome shown is provisional.', 'במקורות שנבדקו לא אותר כלל הכרעה לתקופה זו; התוצאה המוצגת זמנית.') : L('The law requires a lottery by the Central Elections Committee.', 'החוק מחייב הגרלה של ועדת הבחירות.')} <Info term="tie-lottery" />
                 {!step.st.tie.forced && <div><b>{L('Not yet decided — showing the first list.', 'טרם הוכרע — מוצגת הרשימה הראשונה.')}</b></div>}
                 <div className="row" style={{ marginTop: 4 }}>
-                  {s.rules.tiePolicy === 'unspecified' ? L('Outcome:', 'תוצאה:') : L('Lottery winner:', 'זוכה בהגרלה:')} {step.st.tie.tiedUnitIds.map((u) => <button key={u} className={`btn small ${step.st.tie!.forced && step.st.tie!.chosen === u ? 'primary' : ''}`} onClick={() => dispatch({ type: 'setLottery', key: step.st.tie!.key, winner: u })}>{name(u)}</button>)}
+                  {s.rules.tiePolicy === 'unspecified' ? L('Outcome:', 'תוצאה:') : L('Lottery winner:', 'זוכה בהגרלה:')} {step.st.tie.tiedUnitIds.map((u) => <button key={u} className={`btn small names ${step.st.tie!.forced && step.st.tie!.chosen === u ? 'primary' : ''}`} onClick={() => dispatch({ type: 'setLottery', key: step.st.tie!.key, winner: u })}>{name(u)}</button>)}
                 </div>
               </div>
             )}
@@ -363,7 +363,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
                       {st.tie && <tr><td colSpan={members.length + 2}><div className="callout small">
                         {s.rules.tiePolicy === 'unspecified' ? L('Exact tie inside the pair: the sources checked state no tie rule for this era; the outcome shown is provisional.', 'שוויון מדויק בתוך הצמד: במקורות שנבדקו לא אותר כלל הכרעה לתקופה זו; התוצאה המוצגת זמנית.') : L('Exact tie inside the pair: the law requires a lottery by the Central Elections Committee.', 'שוויון מדויק בתוך הצמד: החוק מחייב הגרלה של ועדת הבחירות.')}{' '}
                         {!st.tie.forced && <b>{L('Not yet decided — showing the first list.', 'טרם הוכרע — מוצגת הרשימה הראשונה.')}</b>}
-                        <div className="row" style={{ marginTop: 4 }}>{s.rules.tiePolicy === 'unspecified' ? L('Outcome:', 'תוצאה:') : L('Lottery winner:', 'זוכה בהגרלה:')} {st.tie.tiedUnitIds.map((u) => <button key={u} className={`btn small ${st.tie!.forced && st.tie!.chosen === u ? 'primary' : ''}`} onClick={() => dispatch({ type: 'setLottery', key: st.tie!.key, winner: u })}>{name(u)}</button>)}</div>
+                        <div className="row" style={{ marginTop: 4 }}>{s.rules.tiePolicy === 'unspecified' ? L('Outcome:', 'תוצאה:') : L('Lottery winner:', 'זוכה בהגרלה:')} {st.tie.tiedUnitIds.map((u) => <button key={u} className={`btn small names ${st.tie!.forced && st.tie!.chosen === u ? 'primary' : ''}`} onClick={() => dispatch({ type: 'setLottery', key: st.tie!.key, winner: u })}>{name(u)}</button>)}</div>
                       </div></td></tr>}
                     </Fragment>
                   ))}</tbody>

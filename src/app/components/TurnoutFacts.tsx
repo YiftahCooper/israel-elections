@@ -1,7 +1,7 @@
 // The Turnout tab's facts block and its 26-election chart (owner, 8 Nov). Simple: eligible voters and turnout with
 // their change since the previous election. Standard adds votes cast, valid and invalid votes, the threshold in votes
 // and the chart. Expert adds ballot boxes and double-envelope votes, where the source reports them.
-import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import type { Scenario } from '../../model/scenario.ts';
 import { votesCast } from '../../model/scenario.ts';
 import type { ElectionId } from '../../data/schema.ts';
@@ -116,8 +116,12 @@ export function TurnoutFacts({ s }: { s: Scenario }) {
 function useWidth<T extends HTMLElement>(fallback: number) {
   const ref = useRef<T>(null);
   const [w, setW] = useState(fallback);
-  useEffect(() => {
-    const el = ref.current; if (!el || typeof ResizeObserver === 'undefined') return;
+  // measured before the first paint: drawn first at the fallback width, a phone showed one frame of a 720 px chart and
+  // the page scrolled sideways (found by Bombadil, 19 Nov 2026)
+  useLayoutEffect(() => {
+    const el = ref.current; if (!el) return;
+    const now = el.getBoundingClientRect().width; if (now > 0) setW(Math.max(240, Math.floor(now)));
+    if (typeof ResizeObserver === 'undefined') return;
     const ro = new ResizeObserver(([e]) => setW(Math.max(240, Math.floor(e.contentRect.width))));
     ro.observe(el); return () => ro.disconnect();
   }, []);

@@ -124,8 +124,12 @@
 .cmp-mapto .btn { justify-content: flex-start; width: 100%; }
 .seg-row { display: flex; gap: 4px; flex-wrap: wrap; }
 
-.cmp-sheet-sides { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cmp-sheet-sides { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .cmp-sheet-side { display: grid; gap: 2px; border: 1px solid var(--rule); border-radius: 6px; padding: 8px; }
+/* a side that joins several lists (Herut + General Zionists + Progressives) carries a logo for each: on a phone the
+   logos wrap above the name, which wraps too, so both sides stay on the screen */
+.cmp-sheet-side .list-name-marked { flex-wrap: wrap; }
+.cmp-sheet-side .list-name-marked > bdi { min-inline-size: 0; overflow-wrap: anywhere; }
 .cmp-sheet-actions { display: grid; gap: 4px; }
 .cmp-sheet-actions .cmp-menu-item { min-height: 44px; border-color: var(--rule-2); background: var(--surface); }
 .cmp-sheet-actions hr { border: 0; border-top: 1px solid var(--rule); margin: 4px 0; }

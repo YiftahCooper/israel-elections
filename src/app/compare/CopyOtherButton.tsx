@@ -11,7 +11,7 @@ export function CopyOtherButton({ refr, what, what_en, what_he, text }: { refr: 
   const L = useL(), lang = useLang();
   const where = refr.same ? refr.name : refr.year;
   const label = L(refr.same ? `Copy the ${what_en} from ${where}` : `Copy ${where}'s ${what_en}`, `העתקת ${what_he} ${hebrewPrefix('מ', where)}`);
-  return <button type="button" className="btn small cmpm-copy-other" data-copy={what} aria-label={label}
+  return <button type="button" className="btn small names cmpm-copy-other" data-copy={what} aria-label={label}
     onClick={() => { void import('./copyOther.ts').then((m) => m.copyOther(refr, what, lang)); }}>
     {text ?? L(refr.same ? `Copy from ${where}` : `Copy ${where}'s`, `העתקה ${hebrewPrefix('מ', where)}`)}
   </button>;

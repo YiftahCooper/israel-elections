@@ -239,6 +239,8 @@ details > summary { cursor: pointer; }
 [data-theme="dark"] .btn.primary { background: #2c5d9b; border-color: #2c5d9b; color: #fff; }
 [data-theme="dark"] .btn.primary:hover:not(:disabled) { background: #3a6fb3; border-color: #3a6fb3; }
 .btn.ghost { border-color: transparent; background: transparent; }
+/* a button whose words carry a name (a list, a pair, a scenario): it wraps inside its box instead of running off it */
+.btn.names { max-inline-size: 100%; white-space: normal; overflow-wrap: anywhere; text-align: start; }
 .btn.ghost:hover:not(:disabled) { background: var(--surface-2); border-color: transparent; }
 .btn.small { padding: 2px 8px; min-height: 28px; font-size: 13px; }
 /* beside a 32px field in the same row, a small button takes the field's height so their edges line up */

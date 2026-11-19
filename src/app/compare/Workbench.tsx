@@ -99,6 +99,12 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
   const [sheet, setSheet] = useState<MatchRow | null>(null);
   const [matching, setMatching] = useState(false);
   const [saving, setSaving] = useState(false);
+  // a row's menu, sheet or dialog belongs to the two elections it was opened on: the top bar stays usable while a
+  // menu is open, and once either side is another election its lists are gone, so all of them close
+  const scope = `${left.sc.electionId}|${right.sc.electionId}`;
+  const [openedFor, setOpenedFor] = useState(scope);
+  const stale = openedFor !== scope;
+  if (stale) { setOpenedFor(scope); setMenu(null); setSheet(null); setCopyReq(null); setWholeReq(null); setEditing(null); }
   const [focusSide, setFocusSide] = useState<'main' | 'other' | null>(null);
 
   const view = (row: MatchRow) => ({ l: cellsOf(left, row.left), r: cellsOf(right, row.right) });
@@ -333,17 +339,17 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
     {!cross && <People left={left} right={right} />}
     {cross && <p className="small muted">{L('Lists are paired from party records', 'הרשימות מותאמות לפי רישומי המפלגות')} <Info title={L('Pairing lists', 'התאמת רשימות')}>{L('Pairs come from the party registry and documented lineage, never from names or ballot letters. A copy is a snapshot: later edits on the other side don’t change it. Seats are always recalculated.', 'ההתאמות לפי מרשם המפלגות והשושלת המתועדת, לעולם לא לפי שמות או אותיות. העתקה היא תמונת מצב: עריכות מאוחרות בצד השני אינן משנות אותה. המנדטים תמיד מחושבים מחדש.')}</Info></p>}
 
-    {menu && createPortal(<Floating id={menuId} anchor={() => menu.anchor.getBoundingClientRect()} className="cmp-menu" role="dialog" label={L('Row actions', 'פעולות לשורה')}>
+    {!stale && menu && createPortal(<Floating id={menuId} anchor={() => menu.anchor.getBoundingClientRect()} className="cmp-menu" role="dialog" label={L('Row actions', 'פעולות לשורה')}>
       <span ref={menuRef} className="cmp-menu-in" onKeyDown={(e) => { if (e.key === 'Escape') { e.stopPropagation(); setMenu(null); menu.anchor.focus(); } }}>
         {'row' in menu ? menuItems(menu.row, () => setMenu(null)) : bandItems(menu.field, menu.label, () => setMenu(null))}
         <button type="button" className="btn small ghost cmp-menu-item" onClick={() => setMenu(null)}>{L('Close', 'סגירה')}</button>
       </span>
     </Floating>, document.body)}
-    {copyReq && <CopyVotesBox req={copyReq} onClose={() => setCopyReq(null)} onDone={(plan, req, auto) => { if (commit(plan, req.to, L(`Votes copied to ${nameOf(req.to)}.`, `הקולות הועתקו ${hebrewPrefix('ל', nameOf(req.to))}.`), auto) || auto) setCopyReq(null); }} />}
-    {wholeReq && <WholeListDialog req={wholeReq} onClose={() => setWholeReq(null)} onDone={(plan, text) => { if (commit(plan, wholeReq.to, text + '.')) setWholeReq(null); }} />}
-    {editing && <VotesEditor side={editing.side} listId={editing.listId} onClose={() => setEditing(null)} />}
+    {!stale && copyReq && <CopyVotesBox req={copyReq} onClose={() => setCopyReq(null)} onDone={(plan, req, auto) => { if (commit(plan, req.to, L(`Votes copied to ${nameOf(req.to)}.`, `הקולות הועתקו ${hebrewPrefix('ל', nameOf(req.to))}.`), auto) || auto) setCopyReq(null); }} />}
+    {!stale && wholeReq && <WholeListDialog req={wholeReq} onClose={() => setWholeReq(null)} onDone={(plan, text) => { if (commit(plan, wholeReq.to, text + '.')) setWholeReq(null); }} />}
+    {!stale && editing && <VotesEditor side={editing.side} listId={editing.listId} onClose={() => setEditing(null)} />}
     {matching && <MatchingPanel rows={order} flip={flip} left={left} right={right} overrides={overrides} setOverrides={(o) => setOverrides(pair, o)} onClose={() => setMatching(false)} />}
-    {sheet && <RowSheet row={sheet} left={left} right={right} why={why(sheet)} onClose={() => setSheet(null)} actions={<>{menuItems(sheet, () => setSheet(null))}</>} />}
+    {!stale && sheet && <RowSheet row={sheet} left={left} right={right} why={why(sheet)} onClose={() => setSheet(null)} actions={<>{menuItems(sheet, () => setSheet(null))}</>} />}
     {saving && <SaveDialog suggested={`${nameOf(left)} ↔ ${nameOf(right)}`} onClose={() => setSaving(false)} onSave={(name) => {
       if (saveComparison(name, comparisonOf(main.sc, other.sc, overrides))) { toast('info', L('Comparison saved in this browser (see Scenarios).', 'ההשוואה נשמרה בדפדפן זה (ראו תרחישים).')); setSaving(false); }
       else toast('error', L('The browser refused to save (storage full or blocked).', 'הדפדפן סירב לשמור (האחסון מלא או חסום).'));
