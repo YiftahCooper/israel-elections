@@ -100,7 +100,7 @@ test('the Lists panel shows each list in 2022: a striped bar and a line; new and
   await expect(page.locator('.cmpm-legend')).toContainText('2026');
   await expect(row(page, 'Likud')).toContainText(/2022: 32 ▼ [−-]5 · Likud/);
   await expect(row(page, 'Likud').locator('.cmpm-refbar')).toHaveCount(1);
-  await expect(row(page, 'Together (Bennett)')).toContainText('Yesh Atid (joined)');
+  await expect(row(page, 'Beyachad')).toContainText('Yesh Atid (joined)');
   await expect(row(page, 'Yashar!')).toContainText('2022: no list of its own (new)');
   await expect(row(page, 'Yashar!').locator('.cmpm-refbar')).toHaveCount(0);
   const only = page.locator('.cmpm-only');

@@ -368,7 +368,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k7.json",
-      "sha256": "affd491ed311c3bbfcd28f378bce402e95daa99c5bca486e87a9e8d7bb346811",
+      "sha256": "d8b22f55ed899d5f05612a5377b899a26117573f0aa8b63232e54962b7863e3a",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -1465,7 +1465,7 @@
       "electionId": "k7",
       "electionDate": "1969-10-28",
       "datasetPath": "public/data/k7.json",
-      "datasetSha256": "affd491ed311c3bbfcd28f378bce402e95daa99c5bca486e87a9e8d7bb346811",
+      "datasetSha256": "d8b22f55ed899d5f05612a5377b899a26117573f0aa8b63232e54962b7863e3a",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -5634,7 +5634,7 @@
       "electionId": "k26",
       "electionDate": "2026-10-27",
       "datasetPath": "public/data/k26.json",
-      "datasetSha256": "38a90546ba0085187f16174911ff779b1b0176553fff0542781566cfbbe9b849",
+      "datasetSha256": "2cc5e0e2d6eddaa14d889f890ba3215a26444f4b7194077271537a84f4e09b23",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-09",

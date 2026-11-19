@@ -11,13 +11,13 @@ const row = (page: Page, title: string) => page.locator('.wi-row').filter({ hasT
 
 test('a merger that moves no seat shows the joint list as the sum of its parts', async ({ page }) => {
   await start(page);
-  const r = row(page, 'Together (Bennett) and Yashar! on one list');
+  const r = row(page, 'Beyachad and Yashar! on one list');
   await expect(r.locator('.wi-a')).toContainText('No seat changes');
-  await expect(r.locator('.wi-a')).toContainText('Together (Bennett)–Yashar! 33 = 12 + 21');
+  await expect(r.locator('.wi-a')).toContainText('Beyachad–Yashar! 33 = 12 + 21');
   // nothing further to show, so the title does not pretend to expand
   await expect(r.locator('.wi-q')).toBeDisabled();
-  await r.getByRole('button', { name: 'Assumptions: Together (Bennett) and Yashar! on one list' }).click();
-  await expect(page.getByRole('tooltip')).toContainText('Their surplus agreements end: Together (Bennett) with Yisrael Beiteinu; Yashar! with The Democrats.');
+  await r.getByRole('button', { name: 'Assumptions: Beyachad and Yashar! on one list' }).click();
+  await expect(page.getByRole('tooltip')).toContainText('Their surplus agreements end: Beyachad with Yisrael Beiteinu; Yashar! with The Democrats.');
 });
 
 test('the unhelpful uniform-turnout question is absent', async ({ page }) => {

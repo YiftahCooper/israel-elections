@@ -244,10 +244,10 @@ for (const lang of ['en', 'he'] as const) {
     await stepTo(tl, '2022-08-15', lang);
     const lines = tl.locator('.tl-lines');
     if (lang === 'en') {
-      await expect(lines.locator('li[data-item="k24-committee-2022-08-15-18"]')).toContainText('Yamina splits into Yamina and National Unity; National Unity then splits into National Unity and Beyahad (Bennett); New Hope splits into New Hope – Unity for Israel and Derekh Eretz.');
+      await expect(lines.locator('li[data-item="k24-committee-2022-08-15-18"]')).toContainText('Yamina splits into Yamina and National Unity; National Unity then splits into National Unity and Beyachad (Bennett); New Hope splits into New Hope – Unity for Israel and Derekh Eretz.');
       await expect(lines.locator('li[data-item="k24-committee-2022-08-15-16"]')).toContainText('United Torah Judaism faction splits into Degel HaTorah and Agudat Yisrael.');
       await expect(lines).not.toContainText('National Camp');
-      await expect(lines).not.toContainText('Beyachad');
+      await expect(lines).not.toContainText('Beyahad'); // one spelling of ביחד everywhere (owner, fac-english)
     } else {
       await expect(lines.locator('li[data-item="k24-committee-2022-08-15-18"]')).toContainText('אושרו התפלגויות ימינה, המחנה הממלכתי ותקווה חדשה.');
       await expect(lines.locator('li[data-item="k24-committee-2022-08-15-17"]')).toContainText('אושרה התפלגות סיעת הציונות הדתית לסיעות הציונות הדתית ונעם - בראשות חה״כ אבי מעוז.');

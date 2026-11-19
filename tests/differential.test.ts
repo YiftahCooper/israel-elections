@@ -351,7 +351,7 @@ const EXPECTED: Record<Family, string> = {
   // 26th Knesset opening records (19 Nov): Shas Nos. 1, 6 and 7 get withdrawal notes and Nos. 8 and 9 their member
   // identities. The published k26 differs only in those five candidates of lists[2] and builtAt; the other four
   // digests are unchanged.
-  model: '6194bb6e08bb5906136765784c5fdaedaf1b98066b12c83cd1d9bbe2f85ff073',
+  model: '6ecda54780b7c8301baaf1a85143a1087e920c774da16f77dc3a2cbf98ff39be',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

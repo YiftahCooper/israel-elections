@@ -342,7 +342,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k7.json",
-      "sha256": "affd491ed311c3bbfcd28f378bce402e95daa99c5bca486e87a9e8d7bb346811",
+      "sha256": "d8b22f55ed899d5f05612a5377b899a26117573f0aa8b63232e54962b7863e3a",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -494,7 +494,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k26.json",
-      "sha256": "38a90546ba0085187f16174911ff779b1b0176553fff0542781566cfbbe9b849",
+      "sha256": "2cc5e0e2d6eddaa14d889f890ba3215a26444f4b7194077271537a84f4e09b23",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -5015,13 +5015,13 @@
       "id": "vehicle-7-עמ",
       "entityType": "electoral-vehicle",
       "nameHe": "רשימה ממלכתית",
-      "nameEn": "National List",
+      "nameEn": "State List",
       "names": [
         {
           "date": "1969-10-28",
           "datePrecision": "day",
           "nameHe": "רשימה ממלכתית",
-          "nameEn": "National List",
+          "nameEn": "State List",
           "sources": [
             "k7",
             "proposal"
@@ -22791,13 +22791,13 @@
       "id": "together-bennett",
       "entityType": "party",
       "nameHe": "ביחד בראשות בנט",
-      "nameEn": "Together (Bennett)",
+      "nameEn": "Beyachad (Bennett)",
       "names": [
         {
           "date": "2026-10-27",
           "datePrecision": "day",
           "nameHe": "ביחד בראשות בנט",
-          "nameEn": "Together (Bennett)",
+          "nameEn": "Beyachad (Bennett)",
           "sources": [
             "k26",
             "proposal"
@@ -22823,13 +22823,13 @@
       "id": "vehicle-26-רק",
       "entityType": "alliance",
       "nameHe": "ביחד בראשות נפתלי בנט",
-      "nameEn": "Together (Bennett)",
+      "nameEn": "Beyachad",
       "names": [
         {
           "date": "2026-10-27",
           "datePrecision": "day",
           "nameHe": "ביחד בראשות נפתלי בנט",
-          "nameEn": "Together (Bennett)",
+          "nameEn": "Beyachad",
           "sources": [
             "k26"
           ],

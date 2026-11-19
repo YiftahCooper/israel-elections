@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { comparableFor, comparablePredecessor, officialFacts } from '../src/history/compare.ts';
 import { RELATIONS, readRelations, type Relation } from '../src/history/relations.ts';
 import { HISTORY, electionIndex, electionPosition, historyList, partyNameAt } from '../src/history/runtime.ts';
-import { erasOf, eventsOf, identityOf, ownSeatRecord, partySeries } from '../src/history/identity.ts';
+import { erasOf, sameNameShown, eventsOf, identityOf, ownSeatRecord, partySeries } from '../src/history/identity.ts';
 import { compileHistoryRuntime, formOf, nameAtElection } from '../scripts/party-history-runtime.ts';
 import { certaintyCeiling } from '../src/data/evidence.ts';
 
@@ -47,7 +47,7 @@ describe('the 2026 comparison table (docs/features/party-history.md §1.4)', () 
     expect(c.notCounted).toEqual([{ partyId: 'new-hope', listId: '25-כן' }]);
     expect([c.before.seats, c.after.seats]).toEqual([32, 27]);
   });
-  it('Together (Bennett): Yesh Atid 24 → 12, its own party new', () => {
+  it('Beyachad: Yesh Atid 24 → 12, its own party new', () => {
     const c = k26('רק');
     expect(c.kind).toBe('same');
     expect(c.counted.map((l) => l.id)).toEqual(['25-פה']);
@@ -333,7 +333,7 @@ describe('names at each election', () => {
       for (const p of partySeries(identityOf(id))) {
         if (!p.era) continue;
         const h = partyNameAt(p.era, p.i, 'he'), e = partyNameAt(p.era, p.i, 'en');
-        if (he && (h !== he) !== (e !== en) && !open.has(`${p.era} ${HISTORY[p.i].id}`)) differ.push(`${id} ${HISTORY[p.i].id}: ${he} → ${h}, ${en} → ${e}`);
+        if (he && !sameNameShown(h, he, 'he') !== (e !== en) && !open.has(`${p.era} ${HISTORY[p.i].id}`)) differ.push(`${id} ${HISTORY[p.i].id}: ${he} → ${h}, ${en} → ${e}`);
         he = h; en = e;
       }
     }
@@ -378,8 +378,8 @@ describe('one party, one history', () => {
   it('the State List: its own list in 1969, inside Likud in 1973', () => {
     expect(identityOf('state-list').ids).toEqual(expect.arrayContaining(['vehicle-7-עמ', 'state-list']));
     expect(identityOf('vehicle-7-עמ').ids).toContain('state-list');
-    expect(strip('state-list', 'en')).toEqual(['k7–k7 National List', 'k8–k8 State List']);
-    expect(strip('state-list', 'he')).toEqual(['k7–k7 רשימה ממלכתית', 'k8–k8 הרשימה הממלכתית']);
+    expect(strip('state-list', 'en')).toEqual(['k7–k8 State List']);
+    expect(strip('state-list', 'he')).toEqual(['k7–k8 רשימה ממלכתית']);
     // same organisation is not drawn as an event; two books with no shared author confirm the link (books batch 4, 17 Nov 2026)
     expect(eventsOf(identityOf('state-list')).map((r) => r.id)).not.toContain('state-list-1969-1973');
     expect(edge('state-list-1969-1973').certainty).toBe('confirmed');

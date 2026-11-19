@@ -53,7 +53,7 @@ describe('2026 mergers that move no seat', () => {
   }
   it('a merger states what happens to the partners’ surplus agreements', () => {
     const body = (id: string) => results.find((x) => x.p.id === id)!.body;
-    expect(body('bennett-yashar')).toContain('Their surplus agreements end: Together (Bennett) with Yisrael Beiteinu; Yashar! with The Democrats.');
+    expect(body('bennett-yashar')).toContain('Their surplus agreements end: Beyachad with Yisrael Beiteinu; Yashar! with The Democrats.');
     expect(body('arab-joint')).toContain('already shared surplus votes');
     expect(body('otzma-rz')).toMatch(/^As in 2022\..*Religious Zionism–Zehut with Likud/);
   });

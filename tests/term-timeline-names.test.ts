@@ -105,8 +105,8 @@ describe('the steps the audit named', () => {
     expect(line(25, 'k25-faction-3', 'en')).toBe('4 MKs recorded moving from National Unity to National Right.');
     expect(line(25, 'k25-faction-3', 'he')).toBe('רישום החברות עבר מסיעת המחנה הממלכתי לסיעת הימין הממלכתי (4 ח״כים).');
   });
-  test('24th Knesset, 15 Aug 2022: the splits name National Unity and Beyahad, as the seat cards do', () => {
-    expect(line(24, 'k24-committee-2022-08-15-18', 'en')).toBe('Yamina splits into Yamina and National Unity; National Unity then splits into National Unity and Beyahad (Bennett); New Hope splits into New Hope – Unity for Israel and Derekh Eretz.');
+  test('24th Knesset, 15 Aug 2022: the splits name National Unity and Beyachad, as the seat cards do', () => {
+    expect(line(24, 'k24-committee-2022-08-15-18', 'en')).toBe('Yamina splits into Yamina and National Unity; National Unity then splits into National Unity and Beyachad (Bennett); New Hope splits into New Hope – Unity for Israel and Derekh Eretz.');
     expect(line(24, 'k24-committee-2022-08-15-18', 'he')).toBe('אושרו התפלגויות ימינה, המחנה הממלכתי ותקווה חדשה.');
     expect(line(24, 'k24-committee-2022-08-15-16', 'en')).toBe('United Torah Judaism faction splits into Degel HaTorah and Agudat Yisrael.');
   });
