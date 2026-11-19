@@ -499,7 +499,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           const dim = dimOthers && selected && selected !== st.listId;
           return (
             <g key={i} {...seatButton(i)}><circle className={`seat ${dim ? 'dim' : ''} ${i === found ? 'found' : ''}`} cx={cx + p.x * R} cy={cy + p.y * R} r={rad * R} fill={st.color}
-              data-seat="" data-bloc={st.bloc ?? "__none"} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? "var(--ink)" : "var(--ink-2)"} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`) ? 4 : 1}
+              data-seat="" data-bloc={st.bloc ?? "__none"} data-gained={changes.gained.has(`${st.listId}:${st.idx}`) ? '' : undefined} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? "var(--ink)" : "var(--ink-2)"} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`) ? 4 : 1}
               onMouseEnter={(e) => { if (hoverPopups && !touchPress.current) onSeatHover(st, e); }} {...seatPointer}
               onClick={(e) => onSeatClick(st, e)}><title>{seatLabel(st)}</title></circle>
             {st.innerColor && <PartyDot partyId={st.partyId} x={cx+p.x*R} y={cy+p.y*R} r={rad*R} color={st.innerColor} className={dim?'seat dim':'seat'}/>}
@@ -526,7 +526,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         const [x, y] = trayCell(i, tray.cols), c = TRAY.cell;
         const dim = dimOthers && selected && selected !== st.listId;
         return <g key={i} {...seatButton(i)}>
-          <rect data-seat="" data-bloc={st.bloc ?? "__none"} className={`seat ${dim ? 'dim' : ''} ${i === found ? 'found' : ''}`} x={x} y={y} width={c} height={c} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--ink-2)'} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`)?4:1}
+          <rect data-seat="" data-bloc={st.bloc ?? "__none"} data-gained={changes.gained.has(`${st.listId}:${st.idx}`) ? '' : undefined} className={`seat ${dim ? 'dim' : ''} ${i === found ? 'found' : ''}`} x={x} y={y} width={c} height={c} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--ink-2)'} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`)?4:1}
             onMouseEnter={e => { if (hoverPopups && !touchPress.current) onSeatHover(st,e); }} {...seatPointer} onClick={e => onSeatClick(st, e)}><title>{seatLabel(st)}</title></rect>
           {st.innerColor && <PartyDot partyId={st.partyId} x={x+c/2} y={y+c/2} r={c/2} square={{rx:4}} color={st.innerColor} className={dim ? 'seat dim' : 'seat'}/>}
         </g>;

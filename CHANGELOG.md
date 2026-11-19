@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- Seats in dark theme (19 Nov): every seat has a thin light ring, so dark list colours (Yesh Atid, Likud, Shas, Ra'am) stand out from the bloc backgrounds on phones too; the list colours are unchanged.
 - Tap a seat on a phone (19 Nov): on a touch screen a tap on a seat opens its seat card (who sits there, their MK history), and the card's "List details" opens the list; before, the tap opened the list's full-screen sheet over the card, so no MK could be reached from the chamber. A mouse click still selects the list.
 - 26th Knesset in English (19 Nov): the 46 members first seated in November now show their English name and member page from the Knesset's own English site (they had only their Hebrew name).
 - Seat card, letters once (19 Nov): the ballot letters follow the list's name only where its slip shows a logo; where the slip already shows them, they are no longer repeated ("Yamina (ב)" beside a ב slip).

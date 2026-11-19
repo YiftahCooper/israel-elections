@@ -352,6 +352,10 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 /* Neutral, opaque borders remain distinct even for user-chosen very pale bloc colours. */
 .chamber, .blocs { --wedge-mix: 14%; --bloc-border: var(--ink-2); }
 [data-theme="dark"] .chamber, [data-theme="dark"] .blocs { --wedge-mix: 22%; }
+/* dark: a dark list colour on its bloc background fell to 1.15:1 (review V3 F12, 19 Nov 2026), and a seat's one-unit
+   outline draws at about 0.4 px on a phone. Each seat gets a light ring of a fixed on-screen width, at 3:1 or more
+   against any bloc background, keeping the list colours; a seat gained keeps its own heavier outline. */
+[data-theme="dark"] .chamber [data-seat]:not([data-gained]) { stroke: var(--ink-2); stroke-width: 1.25px; vector-effect: non-scaling-stroke; }
 .chamber .wedge, .bloc-swatch {
   fill: color-mix(in srgb, var(--bc) var(--wedge-mix), var(--surface));
   fill-opacity: 1;
