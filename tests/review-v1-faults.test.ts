@@ -50,3 +50,24 @@ describe('the line of changes names a withdrawal', () => {
     expect(nonSeatChanges(s0, s1, 'en')).toEqual(['list back in the race']);
   });
 });
+
+describe('What if… rows name each list by its own short name', () => {
+  it('a row that removes an agreement or merges lists names those lists as the election does (V1 F17: 2026 "Religious Zionism–Zehut")', async () => {
+    const { presetsFor } = await import('../src/app/whatIf.ts');
+    for (const id of ['k25', 'k26']) {
+      const s = scenarioFromDataset(load(id));
+      for (const p of presetsFor(id)) {
+        const actions = p.actions(s) ?? [];
+        const ids = actions.flatMap((a) => a.type === 'merge' ? a.ids : a.type === 'removeAgreement' ? s.agreements.find((x) => x.id === a.id)!.members : []);
+        // the rows that remove every agreement or change the rules name no list
+        if (!ids.length || actions.filter((a) => a.type === 'removeAgreement').length > 1) continue;
+        for (const lid of ids) {
+          const l = s.lists.find((x) => x.id === lid)!;
+          if (p.id === 'arab-joint' && id === 'k25') continue; // names the parties, as they ran in 2015–2020
+          expect(p.titleEn, `${id} ${p.id}`).toContain(l.shortEn);
+          expect(p.titleHe, `${id} ${p.id}`).toContain(l.shortHe);
+        }
+      }
+    }
+  });
+});

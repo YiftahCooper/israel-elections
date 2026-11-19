@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- What if… 2026 (19 Nov): the row that removes Likud's surplus agreement names its partner by the list's own name, "No agreement between Likud and Religious Zionism–Zehut" (it said "Religious Zionism").
 - Save & share and unnamed scenarios (19 Nov): the unsaved mark (*) sits beside the scenario name instead of alone on a line under it; a scenario saved, copied or exported without a name is called "Untitled scenario", the words its empty name field shows (it was saved as "Scenario").
 - Side by side and Swap (19 Nov): no filter counts more rows than All ("Unmatched 54" beside "All 16"): every filter obeys "Lists with no seats"; on a phone, comparing with this election's own result names each list once, in full, without a "Same" tag on every row; after Swap, an unedited result is called "Official result", never "Your work" or "historical".
 - Copy votes box (19 Nov): "Lists to copy" counts lists, as the message after the copy does (12 of 12 in 2026, where one row holds Religious Zionism–Zehut, Otzma Yehudit and Noam); a row whose lists came from differently named ones says so ("from 2022: Religious Zionism"); each method's vote total and its seat changes are two lines, with no dangling "·"; a list the copy leaves unchanged reads "Shas 9 (unchanged)", not "9 → 9"; long names in the tick list no longer overlap.
