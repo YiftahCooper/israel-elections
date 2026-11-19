@@ -131,3 +131,35 @@ test('All elections: the open election is shaded with its year in bold; the (i) 
   await history.locator('h4').getByRole('button').click();
   await expect(page.locator('.info .pop')).toContainText('evenly spaced: this is not a time scale');
 });
+
+// The All-elections charts take the width they are given before they are first drawn: drawn first at a 720 px
+// fallback, a phone showed a frame of a chart wider than the screen and the page scrolled sideways (found by Bombadil,
+// 19 Nov 2026).
+test('on a phone the All elections chart is never drawn wider than the screen, not even for a frame', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.addInitScript(() => {
+    if (sessionStorage.getItem('started')) return;
+    sessionStorage.setItem('started', '1');
+    localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'he', level: 'expert' }));
+    localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false } }));
+  });
+  await page.goto('/');
+  await expect(page.locator('.lb-row').first()).toBeVisible();
+  // every frame from now on: the chart's drawn width and the page's width
+  await page.evaluate(() => {
+    const w = window as unknown as { frames_: string[] }; w.frames_ = [];
+    let n = 0;
+    const tick = () => {
+      const svg = document.querySelector('.tn-chart');
+      if (svg) w.frames_.push(`${svg.getAttribute('width')}/${document.documentElement.scrollWidth}`);
+      if (++n < 60) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+  await openTool(page, 'turnout');
+  await expect(page.locator('.tn-chart').first()).toBeAttached();
+  await expect.poll(() => page.evaluate(() => (window as unknown as { frames_: string[] }).frames_.length)).toBeGreaterThan(5);
+  const frames = await page.evaluate(() => (window as unknown as { frames_: string[] }).frames_);
+  const wide = frames.filter(f => f.split('/').map(Number).some(n => n > 390));
+  expect(wide, `frames drawn wider than the screen (chart/page): ${[...new Set(frames)].join(', ')}`).toEqual([]);
+});

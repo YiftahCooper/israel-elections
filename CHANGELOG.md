@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- Turnout charts on a phone (19 Nov): opening the Turnout tab no longer draws the All elections chart at desktop width for a moment, which made the page jump sideways; it is drawn at the screen's width from the start.
 - Side by side row details on a phone (19 Nov): a row pairing one list with several (Likud in 2026 with Herut, the General Zionists and the Progressives in 1955) shows a logo for each; the logos now wrap above the name and both sides stay on the screen, instead of the joined name running off its edge.
 - Side by side and the Election menu (19 Nov): picking another election while a row's "⋯" menu was open in Side by side left the menu naming lists the new election does not have, and the page fell to its error screen; the menu (and any row sheet or dialog) now closes when either side changes election.
 - Long names on buttons (19 Nov): in "How seats were allocated", a pair named by two long lists (1973: "Progress and Development + Arab List for Bedouin and Villagers") and the lottery-winner choices now wrap inside the panel; on a phone the pair button ran off the screen.
