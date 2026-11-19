@@ -515,7 +515,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       <p className="small ink2 locality-map-facts">
         <span>{L('Turnout ', 'הצבעה ')}<b className="tabnum">{selected.registered ? percent(selected.votesCast, selected.registered, digits) : '—'}</b></span>
         <span>{L('Valid ', 'כשרים ')}<b className="tabnum">{fmtInt(selected.valid)}</b></span>
-        <span>{L('Registered ', 'בעלי זכות ')}<b className="tabnum">{selected.registered === null ? '—' : fmtInt(selected.registered)}</b></span>
+        <span>{L('Registered ', 'בעלי זכות ')}<b className="tabnum">{selected.registered ? fmtInt(selected.registered) : '—'}</b></span>
         <span>{L('Invalid ', 'פסולים ')}<b className="tabnum">{fmtInt(selected.invalid)}</b></span>
         <Info title={L('Location and turnout', 'מיקום והצבעה')}><p>{localityNameSource(names, selected, selectedIndex!, lang)}</p>{(() => { const a = placed.find(p => p.index === selectedIndex)?.approx; return a && <p>{lang === 'he' ? a.he : a.en}</p>; })()}{L('Turnout excludes double-envelope votes. Coordinates are CBS locality reference points, not polling stations.', 'ההצבעה אינה כוללת מעטפות חיצוניות. המיקום הוא נקודת ייחוס של הלמ״ס ליישוב ולא מיקום קלפי.')}</Info>
       </p>

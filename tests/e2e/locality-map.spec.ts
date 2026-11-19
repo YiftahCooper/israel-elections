@@ -333,3 +333,17 @@ for (const lang of ['en', 'he'] as const) test(`phone: the map comes before the 
   const wide = await page.getByRole('searchbox', { name: lang === 'he' ? 'חיפוש יישוב' : 'Find a locality' }).boundingBox();
   expect(wide!.y).toBeLessThan((await page.locator('.locality-map-legend').boundingBox())!.y);
 });
+
+// Review fault L7: the double-envelope count (registered 0: envelope voters are registered in their home localities)
+// read "Registered 0" beside 450,074 valid votes. A zero registered count shows a dash, as Turnout already does.
+test('double envelopes show no registered count, not 0', async ({ page }) => {
+  await page.addInitScript(() => { if (!sessionStorage.getItem('seeded')) { sessionStorage.setItem('seeded', '1'); localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'he', level: 'expert', hintDismissed: true })); localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false } })); } });
+  await page.route('https://tiles.openfreemap.org/**', route => route.abort());
+  await page.goto('/');
+  await page.getByRole('tab', { name: 'יישובים', exact: true }).click();
+  await page.getByRole('searchbox', { name: 'חיפוש יישוב', exact: true }).fill('מעטפות');
+  await page.locator('.locality-map-matches button').first().click();
+  const facts = page.locator('.locality-map-facts');
+  await expect(facts).toContainText('בעלי זכות —');
+  await expect(facts).not.toContainText(/בעלי זכות 0\b/);
+});

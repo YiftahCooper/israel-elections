@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- Double envelopes (19 Nov): the double-envelope count's box shows a dash for Registered, as it already did for Turnout, instead of "Registered 0" beside some 450,000 valid votes; envelope voters are registered in their home towns.
 - Localities on a phone (19 Nov): Find a locality now sits under the map, and the note on hidden lines lies over the map's lower edge instead of leaving an empty band above it.
 - Plain wording after the election (19 Nov): two lines used the project's research terms; 1961's dissolution no longer adds "The selection window ends on election day", and 1970 says the coalition's lists went from 102 to 76 seats.
 - Joining and leaving mid-term (19 Nov): After the election now shows the new member list, dated, under a government change where a party joined or left partway through a term: Poalei Agudat Yisrael joining in 1960, the Democratic Movement for Change in October 1977, Yisrael Beiteinu joining and leaving in 2006–2008 and again in 2016–2018, and Yesh Atid and Hatnuah leaving in December 2014. Joins and exits whose member list is not yet sourced are listed as research gaps, not guessed.
