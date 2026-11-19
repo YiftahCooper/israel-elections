@@ -244,3 +244,14 @@ test('family scale vote source in Hebrew: new citizens',async({page})=>{
  await start(page,'he');const scale=page.locator('.family-scale'),pick=scale.getByRole('button',{name:'מקור הקולות',exact:true});
  await choose(pick,'citizens');await expect(pick).toHaveAttribute('data-value','citizens');await expect(scale.getByRole('status')).toContainText('בעלי זכות הבחירה +62,335');
 });
+
+// V2 fault F1: on a phone the Manage button sat beside the scrolling chips and covered one, so the row read as two or
+// three families. Manage now has its own line; no chip lies under it.
+for (const lang of ['en','he'] as const) test(`phone: Manage covers no family chip (${lang})`, async ({page}) => {
+ await page.setViewportSize({width:390,height:844});
+ await start(page,lang);
+ const manage=page.getByRole('button',{name:lang==='he'?'ניהול':'Manage',exact:true});
+ const m=(await manage.boundingBox())!;
+ const chips=await page.locator('.family-chip').evaluateAll(els=>els.map(e=>{const r=e.getBoundingClientRect();return {t:r.top,b:r.bottom};}));
+ for (const c of chips) expect(c.t>=m.y+m.height-1||c.b<=m.y+1).toBe(true);
+});
