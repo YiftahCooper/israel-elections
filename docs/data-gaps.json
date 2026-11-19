@@ -1,11 +1,11 @@
 {
   "schemaVersion": 3,
-  "total": 12510,
+  "total": 12518,
   "counts": {
-    "unknown": 7374,
+    "unknown": 7378,
     "missing-field": 285,
     "conflict": 19,
-    "single-source": 2996,
+    "single-source": 3000,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1179,
@@ -15,16 +15,16 @@
   "countsByStatus": {
     "inferred-not-verified": 1040,
     "needs-current-status-review": 319,
-    "open": 11151
+    "open": 11159
   },
   "countsByImportance": {
     "high": {
-      "total": 871,
-      "confirmed": 470,
+      "total": 879,
+      "confirmed": 474,
       "probable": 48,
       "provisional": 140,
       "disputed": 11,
-      "unknown": 202
+      "unknown": 206
     },
     "medium": {
       "total": 4483,
@@ -58,7 +58,7 @@
       "unknown": 76
     },
     "Government roles": {
-      "confirmed": 334,
+      "confirmed": 343,
       "probable": 11,
       "provisional": 3,
       "disputed": 3,
@@ -311,15 +311,15 @@
     },
     {
       "election": "k13",
-      "total": 323,
-      "highOpen": 20,
+      "total": 331,
+      "highOpen": 24,
       "mediumOpen": 116,
       "low": 146,
       "counts": {
-        "unknown": 204,
+        "unknown": 208,
         "missing-field": 12,
         "conflict": 1,
-        "single-source": 60,
+        "single-source": 64,
         "low-confidence": 2,
         "release-hold": 0,
         "inferred": 26,
@@ -648,7 +648,7 @@
     {"election":"k14","area":"Investiture reconciliation","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k14.json"},
     {"election":"k14","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k14.json"},
     {"election":"k13","area":"Recommendations","count":9,"certainty":{"probable":1,"provisional":6,"disputed":1,"unknown":1},"kinds":{"unknown":1,"conflict":1,"single-source":6,"unconfirmed":1},"labels":["שס","ב","ג","ו","ט","מחל","ע","מרצ","אמת"],"disputed":["Sources disagree. Hadashot says Shas recommended no one, because Rabin had not invited it into his government; Amigoe re"],"file":"data/meta/aftermath/k13.json"},
-    {"election":"k13","area":"Later governments","count":6,"certainty":{"provisional":1,"unknown":5},"kinds":{"unknown":5,"single-source":1},"labels":["אמת"],"file":"data/meta/aftermath/k13.json"},
+    {"election":"k13","area":"Later governments","count":10,"certainty":{"provisional":1,"unknown":9},"kinds":{"unknown":9,"single-source":1},"labels":["אמת","coalition-change 1995-01-09","coalition-withdrawal 1993-09-14"],"file":"data/meta/aftermath/k13.json"},
     {"election":"k13","area":"Formation events","count":2,"certainty":{"probable":1,"provisional":1},"kinds":{"single-source":1,"unconfirmed":1},"labels":["consultations 1992-06-28","mandate-given 1992-07-02"],"file":"data/meta/aftermath/k13.json"},
     {"election":"k13","area":"data/raw/kN/national.reviewed.json agreements.sourceId","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k13/national.reviewed.json"},
     {"election":"k13","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k13.json"},

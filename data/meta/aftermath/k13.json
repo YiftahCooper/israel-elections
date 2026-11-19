@@ -248,6 +248,35 @@
       },
       "retainedArtifact": "owner’s private copy of the whole issue (National Library of Israel PDF)",
       "computerReadArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1760-www.nli.org.il/page.html"
+    },
+    "positions-gov25": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$format=json&$filter=GovernmentNum%20eq%2025",
+      "publisher": "Knesset open data: appointments in government 25",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויים בממשלה ה־25",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "factions-k13": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2013%20and%20PositionID%20eq%2054&$format=json",
+      "publisher": "Knesset open data: faction membership",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: החברות בסיעות",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-1995-01-09": {
+      "url": "https://fs.knesset.gov.il//13/Plenum/13_ptm_532393.docx",
+      "publisher": "Knesset, Divrei HaKnesset, 9 January 1995",
+      "publisherHe": "הכנסת, דברי הכנסת, 9 בינואר 1995",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "kenig-rahat-2023": {
+      "url": "https://www.idi.org.il/media/20997/המפלגות-בישראל-2021-1992.pdf",
+      "publisher": "Ofer Kenig and Gideon Rahat, Parties in Israel 1992–2021 (Israel Democracy Institute, 2023)",
+      "publisherHe": "עופר קניג וגדעון רהט, המפלגות בישראל 1992–2021 (המכון הישראלי לדמוקרטיה, 2023)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:kenig-rahat"
     }
   },
   "results": {
@@ -780,7 +809,9 @@
     "Formation timeline is a sourced subset; missing steps must not be inferred from statutory maximum periods.",
     "The Knesset history dates Oslo II to Taba on 27 September; the Washington signing ceremony is a different step. This pass does not conflate them.",
     "Official results publication: 1 July 1992 (YP 4021); first sitting: 13 July 1992 (official transcript). No earlier certification act inferred. Government 25 tenure and Peres succession checked against official OData on 6 November 2026.",
-    "Recommendations of Hadash and the Arab Democratic Party (June 1992): no usable source yet. Search Hebrew newspapers of 28 June–1 July 1992 (Davar, Al HaMishmar, Maariv, Haaretz via JPress) and the President’s consultation file."
+    "Recommendations of Hadash and the Arab Democratic Party (June 1992): no usable source yet. Search Hebrew newspapers of 28 June–1 July 1992 (Davar, Al HaMishmar, Maariv, Haaretz via JPress) and the President’s consultation file.",
+    "Shas, September 1993: the date of the faction’s own decision to leave the coalition is not recorded. The member list changes on 14 September 1993, when its ministers’ and deputy ministers’ terms ended (deputy minister Gamliel’s on 9 September); a party or faction decision, or Deri’s signed letter (dated 12 September by Kenig and Rahat), would settle it.",
+    "Yi'ud, 1994: a coalition agreement reported signed on 12 July 1994 (JTA, 14 July 1994) is one report; the agreement text and the day it took effect are not found. The member list changes on 9 January 1995, when Gonen Segev became minister."
   ],
   "government": {
     "number": 25,
@@ -957,6 +988,310 @@
       }
     ],
     "changes": [
+      {
+        "date": "1993-09-14",
+        "textEn": "Shas left the coalition: the resignations of Aryeh Deri as Interior Minister and of its deputy ministers took effect, leaving a minority government.",
+        "textHe": "ש״ס פרשה מהקואליציה: התפטרותו של אריה דרעי משר הפנים והתפטרות סגני השרים מטעמה נכנסו לתוקף, והממשלה נותרה ממשלת מיעוט.",
+        "cites": [
+          {
+            "source": "positions-gov25",
+            "quote": "PersonToPositionID 4077, PersonID 2291, PositionID 39, FinishDate 1993-09-14; PersonToPositionID 4389, PersonID 2545, PositionID 40, FinishDate 1993-09-14; PersonToPositionID 22988, PersonID 2447, PositionID 40, FinishDate 1993-09-14; PersonToPositionID 4120, PersonID 486, PositionID 40, FinishDate 1993-09-09",
+            "note": "The Knesset’s appointment records: the terms of Interior Minister Aryeh Deri and deputy ministers Rafael Pinchasi and Moshe Maya ended on 14 September 1993, the day Shas’s departure took effect; deputy minister Aryeh Gamliel’s had ended on 9 September.",
+            "noteHe": "רישומי המינויים של הכנסת: כהונתם של שר הפנים אריה דרעי ושל סגני השרים רפאל פנחסי ומשה מאיה הסתיימה ב־14 בספטמבר 1993, היום שבו נכנסה פרישת ש״ס לתוקף; כהונתו של סגן השר אריה גמליאל הסתיימה ב־9 בספטמבר."
+          },
+          {
+            "source": "kenig-rahat-2023",
+            "quote": "ש\"ס פרשה מהקואליציה והותירה אותה כקואליציית מיעוט",
+            "locator": "p. 236",
+            "note": "The book dates Deri’s letter of resignation to the cabinet meeting on the eve of the Oslo signing (12 September 1993). No record found dates the faction’s own decision to leave.",
+            "noteHe": "הספר מתארך את מכתב ההתפטרות של דרעי לישיבת הממשלה ערב החתימה על הסכם אוסלו (12 בספטמבר 1993). לא נמצא רישום המתארך את החלטת הסיעה עצמה לפרוש."
+          },
+          {
+            "source": "factions-k13",
+            "quote": "Faction 577 (התאחדות הספרדים שומרי תורה - תנועת ש\"ס): 6 members on 1993-09-14, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 6 members of Shas on 14 September 1993.",
+            "noteHe": "רישומי הסיעות של הכנסת: 6 חברים בסיעת ש״ס ב־14 בספטמבר 1993."
+          }
+        ],
+        "type": "coalition-withdrawal",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 25,
+        "coalition": [
+          {
+            "letters": "אמת",
+            "seats": 44,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-25",
+                "quote": "PersonToPositionID 4124; PersonID 2634; PositionID 39; StartDate 1992-07-13T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: שמעון שטרית; faction: מפלגת העבודה הישראלית, מפלגת העבודה הישראלית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: שמעון שטרית; סיעה: מפלגת העבודה הישראלית, מפלגת העבודה הישראלית."
+              }
+            ]
+          },
+          {
+            "letters": "מרצ",
+            "seats": 12,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-25",
+                "quote": "PersonToPositionID 4249; PersonID 510; PositionID 39; StartDate 1992-07-13T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אמנון רובינשטיין; faction: מרצ, מרצ.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אמנון רובינשטיין; סיעה: מרצ, מרצ."
+              }
+            ]
+          },
+          {
+            "letters": "ו",
+            "seats": 3,
+            "role": "outside-support",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "jta1992vote",
+                "quote": "Darousha said his two-man faction had decided to support the government, rather than abstain"
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "both parties agreeing to support the Rabin government without being members of it.",
+                "locator": "p. 650"
+              },
+              {
+                "source": "galnoor-oxford-2021",
+                "quote": "coalition agreements with Hadash and the Arab Democratic Party (July 9, 1992), both Arab parties agreed to support the Rabin government without being coalition members",
+                "locator": "p. 157",
+                "note": "Note 12; it cites the agreements Labor signed with Hadash and the Arab Democratic Party on 9 July 1992.",
+                "noteHe": "הערה 12; היא מסתמכת על ההסכמים שחתמה מפלגת העבודה עם חד״ש ועם המפלגה הדמוקרטית הערבית ב־9 ביולי 1992.",
+                "citesRecord": "Labor Party coalition agreements with Hadash and the Arab Democratic Party, 9 July 1992 (published in The Basic Principles of the Government and Coalition Agreements, 1992)"
+              },
+              {
+                "source": "navot-swaid-khalaily-2023",
+                "quote": "along the lines of the second Rabin government, when Mada and Hadash supported the coalition without joining it",
+                "locator": "p. 247"
+              }
+            ],
+            "note": "Several independent studies say both parties supported the Rabin government from outside the coalition; one cites the agreements Labor signed with them on 9 July 1992. One book (Assaf Meydani, 2009, p. 109) counts them in the coalition, citing nothing.",
+            "noteEn": "One book counts them in the coalition; the others, one citing the agreements signed on 9 July 1992, say they supported it from outside.",
+            "noteHe": "ספר אחד מונה אותן בקואליציה; האחרים, ואחד מהם מסתמך על ההסכמים שנחתמו ב־9 ביולי 1992, אומרים שתמכו בממשלה מבחוץ."
+          },
+          {
+            "letters": "ע",
+            "seats": 2,
+            "role": "outside-support",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "jta1992vote",
+                "quote": "Darousha said his two-man faction had decided to support the government, rather than abstain"
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "both parties agreeing to support the Rabin government without being members of it.",
+                "locator": "p. 650"
+              },
+              {
+                "source": "galnoor-oxford-2021",
+                "quote": "coalition agreements with Hadash and the Arab Democratic Party (July 9, 1992), both Arab parties agreed to support the Rabin government without being coalition members",
+                "locator": "p. 157",
+                "note": "Note 12; it cites the agreements Labor signed with Hadash and the Arab Democratic Party on 9 July 1992.",
+                "noteHe": "הערה 12; היא מסתמכת על ההסכמים שחתמה מפלגת העבודה עם חד״ש ועם המפלגה הדמוקרטית הערבית ב־9 ביולי 1992.",
+                "citesRecord": "Labor Party coalition agreements with Hadash and the Arab Democratic Party, 9 July 1992 (published in The Basic Principles of the Government and Coalition Agreements, 1992)"
+              },
+              {
+                "source": "navot-swaid-khalaily-2023",
+                "quote": "along the lines of the second Rabin government, when Mada and Hadash supported the coalition without joining it",
+                "locator": "p. 247"
+              }
+            ],
+            "note": "Several independent studies say both parties supported the Rabin government from outside the coalition; one cites the agreements Labor signed with them on 9 July 1992. One book (Assaf Meydani, 2009, p. 109) counts them in the coalition, citing nothing.",
+            "noteEn": "One book counts them in the coalition; the others, one citing the agreements signed on 9 July 1992, say they supported it from outside.",
+            "noteHe": "ספר אחד מונה אותן בקואליציה; האחרים, ואחד מהם מסתמך על ההסכמים שנחתמו ב־9 ביולי 1992, אומרים שתמכו בממשלה מבחוץ."
+          }
+        ],
+        "coalitionSeats": 56,
+        "supportSeats": 5,
+        "knownMemberSeats": 56,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "1995-01-09",
+        "textEn": "Two of Yi'ud’s three MKs joined the government: the Knesset approved Gonen Segev as minister.",
+        "textHe": "שניים משלושת חברי יעוד בכנסת הצטרפו לממשלה: הכנסת אישרה את גונן שגב כשר.",
+        "cites": [
+          {
+            "source": "plenum-1995-01-09",
+            "quote": "הודעת הממשלה על צירופו של חבר הכנסת גונן שגב לממשלה בתפקיד שר האנרגיה והתשתית במקומו של השר משה שחל – תוצאות ההצבעה האישית שערכנו כאן הן: 61 תומכים, 41 מתנגדים.",
+            "note": "The Knesset approved Gonen Segev as minister on 9 January 1995, 61 for and 41 against, and his term began that day. Alex Goldfarb had been deputy minister from 2 January 1995.",
+            "noteHe": "הכנסת אישרה את גונן שגב כשר ב־9 בינואר 1995, 61 בעד ו־41 נגד, ובו ביום החלה כהונתו. אלכס גולדפרב כיהן כסגן שר מ־2 בינואר 1995."
+          },
+          {
+            "source": "positions-gov25",
+            "quote": "PersonToPositionID 3753, PersonID 2622, PositionID 39, StartDate 1995-01-09; PersonToPositionID 3778, PersonID 2239, PositionID 40, StartDate 1995-01-02",
+            "note": "The Knesset’s appointment records: Gonen Segev, minister from 9 January 1995; Alex Goldfarb, deputy minister from 2 January 1995.",
+            "noteHe": "רישומי המינויים של הכנסת: גונן שגב, שר מ־9 בינואר 1995; אלכס גולדפרב, סגן שר מ־2 בינואר 1995."
+          },
+          {
+            "source": "kenig-rahat-2023",
+            "quote": "הצטרפו לקואליציה שניים מתוך קבוצה בת שלושה חברי כנסת שפרשו מצומת (סיעת יעוד)",
+            "locator": "p. 161"
+          }
+        ],
+        "type": "coalition-change",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 25,
+        "coalition": [
+          {
+            "letters": "אמת",
+            "seats": 44,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-25",
+                "quote": "PersonToPositionID 4124; PersonID 2634; PositionID 39; StartDate 1992-07-13T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: שמעון שטרית; faction: מפלגת העבודה הישראלית, מפלגת העבודה הישראלית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: שמעון שטרית; סיעה: מפלגת העבודה הישראלית, מפלגת העבודה הישראלית."
+              }
+            ]
+          },
+          {
+            "letters": "מרצ",
+            "seats": 12,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-25",
+                "quote": "PersonToPositionID 4249; PersonID 510; PositionID 39; StartDate 1992-07-13T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אמנון רובינשטיין; faction: מרצ, מרצ.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אמנון רובינשטיין; סיעה: מרצ, מרצ."
+              }
+            ]
+          },
+          {
+            "letters": "ו",
+            "seats": 3,
+            "role": "outside-support",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "jta1992vote",
+                "quote": "Darousha said his two-man faction had decided to support the government, rather than abstain"
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "both parties agreeing to support the Rabin government without being members of it.",
+                "locator": "p. 650"
+              },
+              {
+                "source": "galnoor-oxford-2021",
+                "quote": "coalition agreements with Hadash and the Arab Democratic Party (July 9, 1992), both Arab parties agreed to support the Rabin government without being coalition members",
+                "locator": "p. 157",
+                "note": "Note 12; it cites the agreements Labor signed with Hadash and the Arab Democratic Party on 9 July 1992.",
+                "noteHe": "הערה 12; היא מסתמכת על ההסכמים שחתמה מפלגת העבודה עם חד״ש ועם המפלגה הדמוקרטית הערבית ב־9 ביולי 1992.",
+                "citesRecord": "Labor Party coalition agreements with Hadash and the Arab Democratic Party, 9 July 1992 (published in The Basic Principles of the Government and Coalition Agreements, 1992)"
+              },
+              {
+                "source": "navot-swaid-khalaily-2023",
+                "quote": "along the lines of the second Rabin government, when Mada and Hadash supported the coalition without joining it",
+                "locator": "p. 247"
+              }
+            ],
+            "note": "Several independent studies say both parties supported the Rabin government from outside the coalition; one cites the agreements Labor signed with them on 9 July 1992. One book (Assaf Meydani, 2009, p. 109) counts them in the coalition, citing nothing.",
+            "noteEn": "One book counts them in the coalition; the others, one citing the agreements signed on 9 July 1992, say they supported it from outside.",
+            "noteHe": "ספר אחד מונה אותן בקואליציה; האחרים, ואחד מהם מסתמך על ההסכמים שנחתמו ב־9 ביולי 1992, אומרים שתמכו בממשלה מבחוץ."
+          },
+          {
+            "letters": "ע",
+            "seats": 2,
+            "role": "outside-support",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "jta1992vote",
+                "quote": "Darousha said his two-man faction had decided to support the government, rather than abstain"
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "both parties agreeing to support the Rabin government without being members of it.",
+                "locator": "p. 650"
+              },
+              {
+                "source": "galnoor-oxford-2021",
+                "quote": "coalition agreements with Hadash and the Arab Democratic Party (July 9, 1992), both Arab parties agreed to support the Rabin government without being coalition members",
+                "locator": "p. 157",
+                "note": "Note 12; it cites the agreements Labor signed with Hadash and the Arab Democratic Party on 9 July 1992.",
+                "noteHe": "הערה 12; היא מסתמכת על ההסכמים שחתמה מפלגת העבודה עם חד״ש ועם המפלגה הדמוקרטית הערבית ב־9 ביולי 1992.",
+                "citesRecord": "Labor Party coalition agreements with Hadash and the Arab Democratic Party, 9 July 1992 (published in The Basic Principles of the Government and Coalition Agreements, 1992)"
+              },
+              {
+                "source": "navot-swaid-khalaily-2023",
+                "quote": "along the lines of the second Rabin government, when Mada and Hadash supported the coalition without joining it",
+                "locator": "p. 247"
+              }
+            ],
+            "note": "Several independent studies say both parties supported the Rabin government from outside the coalition; one cites the agreements Labor signed with them on 9 July 1992. One book (Assaf Meydani, 2009, p. 109) counts them in the coalition, citing nothing.",
+            "noteEn": "One book counts them in the coalition; the others, one citing the agreements signed on 9 July 1992, say they supported it from outside.",
+            "noteHe": "ספר אחד מונה אותן בקואליציה; האחרים, ואחד מהם מסתמך על ההסכמים שנחתמו ב־9 ביולי 1992, אומרים שתמכו בממשלה מבחוץ."
+          },
+          {
+            "factionNameHe": "יעוד",
+            "factionNameEn": "Yi'ud",
+            "seats": 2,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-1995-01-09",
+                "quote": "הודעת הממשלה על צירופו של חבר הכנסת גונן שגב לממשלה בתפקיד שר האנרגיה והתשתית במקומו של השר משה שחל – תוצאות ההצבעה האישית שערכנו כאן הן: 61 תומכים, 41 מתנגדים.",
+                "note": "The Knesset approved Gonen Segev as minister on 9 January 1995, 61 for and 41 against, and his term began that day. Alex Goldfarb had been deputy minister from 2 January 1995.",
+                "noteHe": "הכנסת אישרה את גונן שגב כשר ב־9 בינואר 1995, 61 בעד ו־41 נגד, ובו ביום החלה כהונתו. אלכס גולדפרב כיהן כסגן שר מ־2 בינואר 1995."
+              },
+              {
+                "source": "positions-gov25",
+                "quote": "PersonToPositionID 3753, PersonID 2622, PositionID 39, StartDate 1995-01-09; PersonToPositionID 3778, PersonID 2239, PositionID 40, StartDate 1995-01-02",
+                "note": "The Knesset’s appointment records: Gonen Segev, minister from 9 January 1995; Alex Goldfarb, deputy minister from 2 January 1995.",
+                "noteHe": "רישומי המינויים של הכנסת: גונן שגב, שר מ־9 בינואר 1995; אלכס גולדפרב, סגן שר מ־2 בינואר 1995."
+              },
+              {
+                "source": "kenig-rahat-2023",
+                "quote": "הצטרפו לקואליציה שניים מתוך קבוצה בת שלושה חברי כנסת שפרשו מצומת (סיעת יעוד)",
+                "locator": "p. 161"
+              },
+              {
+                "source": "factions-k13",
+                "quote": "Faction 593 (יעוד): 3 members on 1995-01-09, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 3 members of Yi'ud on 9 January 1995.",
+                "noteHe": "רישומי הסיעות של הכנסת: 3 חברים בסיעת יעוד ב־9 בינואר 1995."
+              }
+            ],
+            "noteEn": "Two of the faction’s three MKs, Gonen Segev and Alex Goldfarb; the third, Esther Salmovitz, did not join.",
+            "noteHe": "שניים משלושת חברי הסיעה בכנסת, גונן שגב ואלכס גולדפרב; השלישית, אסתר סלמוביץ, לא הצטרפה."
+          }
+        ],
+        "coalitionSeats": 58,
+        "supportSeats": 5,
+        "knownMemberSeats": 58,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
       {
         "date": "1995-11-22",
         "number": 26,
