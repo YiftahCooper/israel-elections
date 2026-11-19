@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- Side by side and the Election menu (19 Nov): picking another election while a row's "⋯" menu was open in Side by side left the menu naming lists the new election does not have, and the page fell to its error screen; the menu (and any row sheet or dialog) now closes when either side changes election.
 - Long names on buttons (19 Nov): in "How seats were allocated", a pair named by two long lists (1973: "Progress and Development + Arab List for Bedouin and Villagers") and the lottery-winner choices now wrap inside the panel; on a phone the pair button ran off the screen.
 - Copy buttons on the Turnout tab while comparing (19 Nov): a "Copy from …" button naming a saved scenario with a long name now wraps inside its card, instead of running over the next card and off the page (the page scrolled sideways).
 - Withdrawing a list (19 Nov): ticking "Withdrawn from the race" while the list's Scale, share & transfer section was open closed the list panel with an error; the panel now stays open and hides the transfer step, whose buttons a withdrawn list cannot use.

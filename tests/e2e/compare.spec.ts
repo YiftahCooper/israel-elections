@@ -434,3 +434,25 @@ test('the two 2019 elections are told apart on a saved comparison card', async (
   await expect(saved.locator('.scn-title b')).toHaveText(/September 2019 ↔ April 2019/);
   await expect(saved).not.toContainText('2019 ↔ 2019');
 });
+
+// A row's "⋯" menu does not block the top bar: opening another election with the menu still open closed nothing and
+// the menu named lists the new election does not have, so the page fell to its error screen (found by Bombadil,
+// 19 Nov 2026). The menu now closes once either side is another election.
+test('opening another election while a row menu is open closes the menu and keeps the page working', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
+  await start(page, 'en', 'k4');
+  await page.locator('#tab-board').click();
+  await page.locator('.compare-on').click();
+  await choose(picker(page), 'election:k26');
+  await openSideBySide(page);
+  await page.locator('tr.cmp-row .cmp-more-btn').first().click();
+  await expect(page.locator('.cmp-menu')).toBeVisible();
+  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k1');
+  await expect(card(page, 'main')).toContainText('1949');
+  await expect(page.locator('.cmp-menu')).toHaveCount(0);
+  await expect(page.locator('tr.cmp-row').first()).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
