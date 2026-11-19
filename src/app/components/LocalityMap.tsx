@@ -119,13 +119,24 @@ const GREY = MAP_UNASSIGNED_COLOUR;
 const OTHER = '#9aa1a9';
 // a share in the result box; `pad` keeps a column's decimal points in line (invisible zeros), as in every other table
 const share = (v: number, whole: number, digits: number) => whole > 0 ? percent(v, whole, digits, undefined, { pad: digits }) : '—';
-let measure: CanvasRenderingContext2D | null = null;
-const textWidth = (text: string) => {
-  measure ??= document.createElement('canvas').getContext('2d');
-  if (!measure) return text.length * 7;
-  measure.font = '600 12px "IBM Plex Sans Hebrew", "Segoe UI", sans-serif';
-  return measure.measureText(text).width;
+// A place name's width as the page draws it. The room a name gets (and the room the envelope island leaves for Tel
+// Aviv's) is measured on hidden copies of the map's own name labels, so it holds for whatever font the device ends up
+// using: the web font, or a fallback while it loads or where it never arrives. (A fixed font list once measured one
+// face while the page drew another, and a name could run over its neighbour.) Cleared whenever a font finishes loading.
+const widths = new Map<string, number>();
+const measureNames = (texts: readonly string[], host: HTMLElement, rtl: boolean) => {
+  const missing = [...new Set(texts)].filter(t => !widths.has(t));
+  if (!missing.length) return;
+  const box = document.createElement('div');
+  box.setAttribute('aria-hidden', 'true');
+  box.style.cssText = 'position:absolute;left:0;top:0;visibility:hidden;pointer-events:none;contain:layout';
+  const spans = missing.map(t => { const el = document.createElement('span'); el.className = rtl ? 'locality-map-label rtl' : 'locality-map-label'; el.style.position = 'absolute'; el.textContent = t; return el; });
+  box.append(...spans); host.append(box);
+  // (nothing is kept from a map that is not laid out: a zero width would hold until the next font change)
+  spans.forEach((el, i) => { const w = el.getBoundingClientRect().width; if (w > 0) widths.set(missing[i], w); });
+  box.remove();
 };
+const textWidth = (text: string, host: HTMLElement, rtl: boolean) => { measureNames([text], host, rtl); return widths.get(text) ?? text.length * 7; };
 
 export function LocalityMap({ s, data, historicalLists, locations, names, locationError, retryLocations }: { s: Scenario; data: LocalityDataset; historicalLists: (SimList | null)[]; locations: LocalityLocations; names: LocalityNames; locationError: boolean; retryLocations: () => void }) {
   const L = useL(), lang = useLang();
@@ -157,6 +168,14 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   const [tilesFailed, setTilesFailed] = useState(false);
   const mounted = useRef(true);
   useEffect(() => { mounted.current = true; return () => { mounted.current = false; }; }, []);
+  // a font that finishes loading changes how wide the names are drawn: measure again, place the names again
+  const [fontEpoch, setFontEpoch] = useState(0);
+  useEffect(() => {
+    const fonts = document.fonts; if (!fonts) return;
+    const changed = () => { widths.clear(); setFontEpoch(e => e + 1); };
+    fonts.addEventListener('loadingdone', changed);
+    return () => fonts.removeEventListener('loadingdone', changed);
+  }, []);
   const nameOf = (i: number) => localityName(names, data.rows[i], i, lang);
   const placed = useMemo(() => data.rows.flatMap((row, index) => {
     if (isEnvelopeRow(row)) return [];
@@ -203,8 +222,8 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     const taName = ta ? localityName(names, ta.row, ta.index, lang) : '';
     return { lat: 32.0, lon: 34.62, valid, parts: partsOf(votes), winner: localityWinner(s, data.listIds, votes, mode).color,
       title: localityName(names, data.rows[first], first, lang), sub: L(`${fmtInt(valid)} valid votes`, `${fmtInt(valid)} קולות כשרים`),
-      keepClear: ta && taName ? { lat: ta.lat, lon: ta.lon, width: Math.ceil(textWidth(taName)) + 4, rtl: lang === 'he' } : null };
-  }, [envelopeRows, placed, data, s, mode, names, lang, seated]);
+      keepClear: ta && taName ? { lat: ta.lat, lon: ta.lon, width: Math.ceil(textWidth(taName, container.current ?? document.body, lang === 'he')) + 4, rtl: lang === 'he' } : null };
+  }, [envelopeRows, placed, data, s, mode, names, lang, seated, fontEpoch]);
   const fittedFor = useRef<unknown>(null);
   useEffect(() => {
     if (!container.current) return;
@@ -318,9 +337,10 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       if (p.approx) Leaflet.circleMarker([p.lat,p.lon], {radius:8.5, color:dark?'#f2f4f7':'#111418',weight:1.4,dashArray:'2 2',fill:false,interactive:false,className:'locality-map-approx'}).addTo(group);
     });
     else hoverTip.remove();
-    // open fitted to this election's localities (once per election, so a user's own zoom is kept while editing)
+    // open fitted to this election's localities (once per election, so a user's own zoom is kept while editing); at
+    // once, not by a slide from the default view (at the same zoom Leaflet would otherwise animate the pan)
     if (placed.length && fittedFor.current !== data) {
-      m.fitBounds(Leaflet.latLngBounds(placed.map((p) => [p.lat, p.lon] as [number, number])), { padding: [12, 12] });
+      m.fitBounds(Leaflet.latLngBounds(placed.map((p) => [p.lat, p.lon] as [number, number])), { padding: [12, 12], animate: false });
       fittedFor.current = data;
     }
     // the chosen place keeps its box open (it is how a tap, or a choice from the search, shows the name on the map)
@@ -344,10 +364,12 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       const z = m.getZoom();
       const min = z <= 7 ? 150_000 : z === 8 ? 50_000 : z === 9 ? 15_000 : z === 10 ? 4_000 : z === 11 ? 1_000 : 0;
       let shown = 0;
+      // every name that may be shown at this zoom, measured in one go
+      measureNames(ranked.filter(x => x.weight >= min).map(x => x.name), m.getContainer(), rtl);
       for (const { p, name, weight } of ranked) {
         if (weight < min || shown >= 90) break;
         const mark = layer.marks.get(p.index); if (!mark) continue;
-        const w = Math.ceil(textWidth(name)) + 4, h = 16, spot = placeName(grid, mark, w, h, rtl);
+        const w = Math.ceil(textWidth(name, m.getContainer(), rtl)) + 4, h = 16, spot = placeName(grid, mark, w, h, rtl);
         if (!spot) continue;
         shown++;
         const { box, leader } = spot;
@@ -361,7 +383,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     };
     draw(); layer.on('drawn', draw);
     return () => { layer.off('drawn', draw); group.remove(); };
-  }, [placed, names, lang, dark]);
+  }, [placed, names, lang, dark, fontEpoch]);
   const selected = selectedIndex === null ? null : data.rows[selectedIndex] ?? null;
   // ring the selected locality so the map and the results below it visibly refer to the same place
   useEffect(() => {

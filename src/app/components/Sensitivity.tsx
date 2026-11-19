@@ -44,11 +44,13 @@ const seatsOf = (r: AllocationResult) => Object.fromEntries(r.lists.filter((x) =
 function SeatChanges({ seats, now, skip = null, s }: { seats: Record<string, number>; now: Record<string, number>; skip?: string | null; s: Scenario }) {
   return Object.keys({ ...now, ...seats }).filter(id => id !== skip && (seats[id] ?? 0) !== (now[id] ?? 0)).map(id => <span key={id} style={{ display: 'inline-block', marginInlineEnd: 8 }}><PartyName s={s} id={id} /> <SeatDelta value={(seats[id] ?? 0) - (now[id] ?? 0)} /></span>);
 }
-/** scrolls a table's container (never the page) so the row sits just under the sticky header */
+/** scrolls a table's container (never the page) so the row sits just under the sticky header, on the next frame;
+ *  returns that frame, for the caller to cancel when its row is no longer the chosen one (a reveal left pending for
+ *  the previous row once ran after a quick key press and scrolled the table away from the new row) */
 function revealRow(row: HTMLElement | null) {
   const box = row?.closest('.tablewrap') as HTMLElement | null;
-  if (!row || !box) return;
-  requestAnimationFrame(() => {
+  if (!row || !box) return 0;
+  return requestAnimationFrame(() => {
     // screen distances are zoomed under Large text; scrollTop, clientHeight and offsetHeight are not
     const z = textZoom();
     const head = (box.querySelector('thead')?.getBoundingClientRect().height ?? 0) / z;
@@ -110,11 +112,12 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
   useEffect(() => {
     const row = table.current?.children[active] as HTMLElement | undefined;
     if (!row) return;
-    const update = () => revealRow(row);
+    let frame = 0;
+    const update = () => { cancelAnimationFrame(frame); frame = revealRow(row); };
     update();
     const observer = new ResizeObserver(update);
     observer.observe(table.current!);
-    return () => observer.disconnect();
+    return () => { observer.disconnect(); cancelAnimationFrame(frame); };
   }, [shown, active]);
 
   const maxSeats = Math.max(1, ...segs.map((x) => x.seats[sid] ?? 0));
@@ -235,11 +238,12 @@ function ThresholdSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
   useEffect(() => {
     const row = table.current?.children[curRow] as HTMLElement | undefined;
     if (!row) return;
-    const update = () => revealRow(row);
+    let frame = 0;
+    const update = () => { cancelAnimationFrame(frame); frame = revealRow(row); };
     update();
     const observer = new ResizeObserver(update);
     observer.observe(table.current!);
-    return () => observer.disconnect();
+    return () => { observer.disconnect(); cancelAnimationFrame(frame); };
   }, [out, curRow]);
   return (
     <div>

@@ -165,19 +165,62 @@ test('Sensitivity under Large text on a phone: the chosen row is brought just un
     if (last) expect(Math.abs(st.bottom - st.height), what).toBeLessThan(6);
     else expect(Math.abs(st.top - st.head), what).toBeLessThan(3);
   };
-  // the table scrolls smoothly, and under a busy parallel run that takes longer: wait for the row to settle, then check
-  const settled = (what: string, last = false) => expect.poll(async () => {
-    const st = await state();
-    return last ? Math.abs(st.bottom - st.height) : Math.abs(st.top - st.head);
-  }, { message: `${what}: the row settles`, timeout: 5_000 }).toBeLessThan(last ? 6 : 3);
-  await settled('the current row');
+  // the table is scrolled a frame after a choice (and again when it changes size), so a check straight after a key
+  // press can catch it half done; wait until the table's scroll and the chosen row have stood still for several
+  // frames, however slow the frames are under a busy parallel run, then check
+  const settled = () => page.evaluate(async () => {
+    const box = document.querySelector('.sweep-tbl')!.parentElement as HTMLElement;
+    const at = () => { const tr = box.querySelector('tbody tr.sel') ?? box.querySelector('tbody tr[aria-current="true"]'); return `${box.scrollTop}|${box.style.paddingBottom}|${tr ? [...box.querySelectorAll('tbody tr')].indexOf(tr) : -1}|${tr?.getBoundingClientRect().top}`; };
+    let last = at(), still = 0;
+    for (let i = 0; i < 600 && still < 6; i++) { await new Promise(r => requestAnimationFrame(r)); const now = at(); still = now === last ? still + 1 : 0; last = now; }
+    if (still < 6) throw new Error('the table did not come to rest');
+  });
+  await settled();
   await check('the current row');
   await page.locator('.sweep-tbl tbody tr[tabindex="0"]').focus();
   for (const key of ['End', 'Home', 'ArrowDown', 'ArrowDown', 'ArrowDown']) {
     const from = (await state()).index;
     await page.keyboard.press(key);
     await expect.poll(async () => (await state()).index, { message: `${key}: the choice moves` }).not.toBe(from);
-    await settled(key, key === 'End');
+    await settled();
     await check(key, key === 'End');
   }
+});
+
+// A choice made before the table's previous reveal has run (a quick key press, or a slow frame under load) once ended
+// with the old row's reveal running last and the table scrolled away from the new row: the last row 61 px above the
+// table's bottom (FX2, 19 Nov 2026). The key is pressed here at the worst moment, between the two reveals the table
+// asks for when it first appears.
+test('Sensitivity: a key press before the previous reveal has run still ends on the chosen row', async ({ page }) => {
+  await start(page, { settings: { textSize: 'large' }, width: 390 });
+  await page.evaluate(() => {
+    const w = window as unknown as { __pressed?: boolean };
+    const watch = new MutationObserver(() => {
+      const body = document.querySelector('.sweep-tbl tbody'); if (!body?.querySelector('tr[aria-current]')) return;
+      watch.disconnect();
+      // this observer reports after the table's own, which has just asked for its second reveal
+      let once = false;
+      new ResizeObserver(() => {
+        if (once) return; once = true;
+        setTimeout(() => {
+          const row = body.querySelector<HTMLElement>('tr[tabindex="0"]')!; row.focus();
+          row.dispatchEvent(new KeyboardEvent('keydown', { key: 'End', bubbles: true, cancelable: true }));
+          w.__pressed = true;
+        });
+      }).observe(body);
+    });
+    watch.observe(document.body, { subtree: true, childList: true });
+  });
+  await page.locator('#tab-sens').click();
+  await expect.poll(() => page.evaluate(() => (window as unknown as { __pressed?: boolean }).__pressed === true), { timeout: 60_000 }).toBe(true);
+  const st = await page.evaluate(async () => {
+    const box = document.querySelector('.sweep-tbl')!.parentElement as HTMLElement;
+    let last = '', still = 0;
+    while (still < 6) { await new Promise(r => requestAnimationFrame(r)); const now = `${box.scrollTop}|${box.style.paddingBottom}`; still = now === last ? still + 1 : 0; last = now; }
+    const b = box.getBoundingClientRect(), rows = [...box.querySelectorAll('tbody tr')], tr = box.querySelector('tbody tr.sel')!;
+    return { index: rows.indexOf(tr), last: rows.length - 1, bottom: tr.getBoundingClientRect().bottom - b.top, height: b.height };
+  });
+  expect(st.index, 'End chose the last row').toBe(st.last);
+  // the last row is shown where End put it, at the table's bottom, not scrolled away by the old row's reveal
+  expect(Math.abs(st.bottom - st.height)).toBeLessThan(6);
 });

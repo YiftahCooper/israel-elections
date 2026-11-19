@@ -3,6 +3,7 @@
 // approximate.
 import { expect, test, type Page } from '@playwright/test';
 import { choose } from './choices.ts';
+import { mapLayout, settleMap } from './map-settle.ts';
 
 const seed = (page: Page, lang: 'en' | 'he') => page.addInitScript((lang) => {
   if (sessionStorage.getItem('seeded')) return; sessionStorage.setItem('seeded', '1');
@@ -40,16 +41,18 @@ test('opens on the Winner dots; the Vote mix switch in the key is remembered on 
 
 test('the double-envelope island sits off Tel Aviv, clear of its name, and selects the envelope votes', async ({ page }) => {
   await openMap(page, 'he');
-  const canvas = page.locator('.vote-mix-canvas');
-  await expect(canvas).toHaveAttribute('data-island', /\d/);
-  const [x0, y0, x1, y1] = (await canvas.getAttribute('data-island'))!.split(',').map(Number);
-  const map = (await page.locator('.locality-map-canvas').boundingBox())!;
-  const ta = (await page.locator('.locality-map-label').filter({ hasText: 'תל אביב' }).boundingBox())!;
+  await expect(page.locator('.vote-mix-canvas')).toHaveAttribute('data-island', /\d/);
+  // read once the map has come to rest, and in one step (FX2: three separate reads once straddled a slide of the map)
+  await settleMap(page);
+  const { island, labels } = await mapLayout(page);
+  const ta = labels.find(l => l.name.includes('תל אביב'));
   expect(ta, 'Tel Aviv keeps its name').toBeTruthy();
-  // the name goes to whichever side of its dot is clear (F1, 19 Nov 2026): never onto the island
-  const apart = map.x + x1 <= ta.x || ta.x + ta.width <= map.x + x0 || map.y + y1 <= ta.y || ta.y + ta.height <= map.y + y0;
-  expect(apart, 'the island and Tel Aviv\'s name do not overlap').toBe(true);
-  await page.mouse.click(map.x + (x0 + x1) / 2, map.y + (y0 + y1) / 2);
+  // the name goes to whichever side of its dot is clear (F1, 19 Nov 2026): never onto the island, as drawn
+  for (const b of [ta!.box, ta!.text]) {
+    const apart = island[2] <= b[0] || b[2] <= island[0] || island[3] <= b[1] || b[3] <= island[1];
+    expect(apart, 'the island and Tel Aviv\'s name do not overlap').toBe(true);
+  }
+  await page.mouse.click((island[0] + island[2]) / 2, (island[1] + island[3]) / 2);
   const results = page.getByRole('region', { name: 'תוצאות היישוב הנבחר' });
   await expect(results.getByRole('heading')).toContainText('מעטפות');
   await expect(results).toContainText('458,714');
