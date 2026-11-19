@@ -199,6 +199,20 @@
       "publisherHe": "הכנסת, מאגר המידע הפתוח: החברות בסיעות",
       "kind": "official",
       "accessed": "2026-11-19"
+    },
+    "positions-gov13": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$format=json&$filter=GovernmentNum%20eq%2013",
+      "publisher": "Knesset open data: appointments in government 13",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויים בממשלה ה־13",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-1967-06-05": {
+      "url": "https://fs.knesset.gov.il//6/Plenum/6_ptm_252528.pdf",
+      "publisher": "Knesset, Divrei HaKnesset, 5 June 1967",
+      "publisherHe": "הכנסת, דברי הכנסת, 5 ביוני 1967",
+      "kind": "official",
+      "accessed": "2026-11-19"
     }
   },
   "results": {
@@ -694,6 +708,263 @@
       }
     ],
     "changes": [
+      {
+        "date": "1967-06-05",
+        "textEn": "Gahal and Rafi joined the government: the Knesset approved Menachem Begin and Yosef Sapir (Gahal) and Moshe Dayan (Rafi) as ministers.",
+        "textHe": "גח״ל ורפ״י הצטרפו לממשלה: הכנסת אישרה את מנחם בגין ויוסף ספיר (גח״ל) ואת משה דיין (רפ״י) כשרים.",
+        "cites": [
+          {
+            "source": "plenum-1967-06-05",
+            "quote": "הכנסת כולה הצביעה בעד אישור הודעת ראש הממשלה, לעומת שלושה חברי כנסת שהצביעו נגדה.",
+            "note": "The Knesset approved the three new ministers on 5 June 1967; their terms began that day. Gahal and Rafi had agreed to join on 1 June 1967.",
+            "noteHe": "הכנסת אישרה את שלושת השרים החדשים ב־5 ביוני 1967, ובו ביום החלה כהונתם. גח״ל ורפ״י הסכימו להצטרף כבר ב־1 ביוני 1967."
+          },
+          {
+            "source": "plenum-1967-06-05",
+            "quote": "הצעתי לסיעות גח\"ל ורפ\"י להשתתף בממשלה"
+          },
+          {
+            "source": "positions-gov13",
+            "quote": "PersonToPositionID 4067, PersonID 2179, PositionID 39, StartDate 1967-06-05; PersonToPositionID 3889, PersonID 2512, PositionID 39, StartDate 1967-06-05; PersonToPositionID 3977, PersonID 2277, PositionID 39, StartDate 1967-06-05",
+            "note": "The Knesset’s appointment records: Menachem Begin and Yosef Sapir (Gahal) and Moshe Dayan (Rafi), ministers from 5 June 1967.",
+            "noteHe": "רישומי המינויים של הכנסת: מנחם בגין ויוסף ספיר (גח״ל) ומשה דיין (רפ״י), שרים מ־5 ביוני 1967."
+          }
+        ],
+        "type": "coalition-change",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 13,
+        "coalition": [
+          {
+            "letters": "את",
+            "seats": 45,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-13",
+                "quote": "PersonToPositionID 3776; PersonID 2669; PositionID 39; StartDate 1966-01-12T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אליהו ששון; faction: מערך.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אליהו ששון; סיעה: מערך."
+              }
+            ]
+          },
+          {
+            "letters": "ב",
+            "seats": 11,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-13",
+                "quote": "PersonToPositionID 3788; PersonID 2661; PositionID 39; StartDate 1966-01-12T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים משה שפירא; faction: מפלגה דתית לאומית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים משה שפירא; סיעה: מפלגה דתית לאומית."
+              }
+            ]
+          },
+          {
+            "letters": "מ",
+            "seats": 8,
+            "role": "member-with-ministries",
+            "certainty": "probable",
+            "cites": [
+              {
+                "source": "role-roster-13",
+                "quote": "PersonToPositionID 3995; PersonID 2220; PositionID 39; StartDate 1966-01-12T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: ישראל ברזילי.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: ישראל ברזילי."
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "Alignment + affiliates, NRP, Poalei Agudat Yisrael, Independent Liberals, Mapam",
+                "locator": "p. 406",
+                "note": "The book’s table of the parties in each government.",
+                "noteHe": "טבלה בספר של המפלגות בכל ממשלה."
+              }
+            ],
+            "note": "The official roster records the appointment of Israel Barzilai, who was not a sitting MK. That he came from Mapam rests on one book’s table of the parties in each government, so it is probable until a record of the time names his party."
+          },
+          {
+            "letters": "לע",
+            "seats": 5,
+            "role": "member-with-ministries",
+            "certainty": "probable",
+            "cites": [
+              {
+                "source": "role-roster-13",
+                "quote": "PersonToPositionID 3834; PersonID 2575; PositionID 39; StartDate 1966-01-12T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: משה קול.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: משה קול."
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "Alignment + affiliates, NRP, Poalei Agudat Yisrael, Independent Liberals, Mapam",
+                "locator": "p. 406",
+                "note": "The book’s table of the parties in each government.",
+                "noteHe": "טבלה בספר של המפלגות בכל ממשלה."
+              }
+            ],
+            "note": "The official roster records the appointment of Moshe Kol, who was not a sitting MK. That he came from the Independent Liberals rests on one book’s table of the parties in each government, so it is probable until a record of the time names his party."
+          },
+          {
+            "letters": "ד",
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "presentation-gov13",
+                "quote": "ממשלה חדשה הכוללת את הסיעות: המערך לאחדות פועלי ארץ ישראל, המפלגה הדתית-לאומית, מפלגת הפועלים המאוחדת, המפלגה הליברלית העצמאית ומפלגת פועלי אגודת ישראל."
+              }
+            ],
+            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister."
+          },
+          {
+            "letters": "רא",
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "galnoor-blander-2018-table",
+                "quote": "we included parties or MKs that were not official members of the government, such as the Arab lists affiliated with Mapai in the years 1949–73",
+                "locator": "p. 408, note to Table 11.2",
+                "note": "The book’s table (p. 406) gives this government as “01/66 · Eshkol · Alignment + affiliates, NRP, Poalei Agudat Yisrael, Independent Liberals, Mapam · 75”: 75 seats, the same total as the rows recorded here.",
+                "noteHe": "בלוח בספר (עמ׳ 406) רשומה הממשלה הזאת כך: \"01/66 · Eshkol · Alignment + affiliates, NRP, Poalei Agudat Yisrael, Independent Liberals, Mapam · 75\"; 75 מנדטים, כסכום השורות כאן."
+              },
+              {
+                "source": "galnoor-blander-2013-ch12",
+                "quote": "בהרכב הקואליציה נמנו גם … הרשימות הערביות הנלוות למפא\"י שנבחרו לכנסת בין 1949 ל־1973 בשמות שונים: … קידמה ופיתוח …",
+                "locator": "p. 604, note to table 12.2"
+              },
+              {
+                "source": "kenig-rahat-2023",
+                "quote": "פוליטיקאים ערבים ודרוזים מהמפלגות הציוניות (או מהרשימות הנלוות של מפא\"י) היו כמובן שותפים בקואליציות",
+                "locator": "p. 386, note 22"
+              }
+            ],
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai and the Alignment. Galnoor and Blander count it among the coalition partners (their note names the list; their table’s 75 seats for this government equal the rows recorded here), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "noteEn": "One of the Arab lists affiliated with Mapai and the Alignment: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י ולמערך: נמנתה בקואליציה, בלי שר."
+          },
+          {
+            "letters": "יא",
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "galnoor-blander-2018-table",
+                "quote": "we included parties or MKs that were not official members of the government, such as the Arab lists affiliated with Mapai in the years 1949–73",
+                "locator": "p. 408, note to Table 11.2",
+                "note": "The book’s table (p. 406) gives this government as “01/66 · Eshkol · Alignment + affiliates, NRP, Poalei Agudat Yisrael, Independent Liberals, Mapam · 75”: 75 seats, the same total as the rows recorded here.",
+                "noteHe": "בלוח בספר (עמ׳ 406) רשומה הממשלה הזאת כך: \"01/66 · Eshkol · Alignment + affiliates, NRP, Poalei Agudat Yisrael, Independent Liberals, Mapam · 75\"; 75 מנדטים, כסכום השורות כאן."
+              },
+              {
+                "source": "galnoor-blander-2013-ch12",
+                "quote": "בהרכב הקואליציה נמנו גם … הרשימות הערביות הנלוות למפא\"י שנבחרו לכנסת בין 1949 ל־1973 בשמות שונים: … שיתוף ואחווה …",
+                "locator": "p. 604, note to table 12.2"
+              },
+              {
+                "source": "kenig-rahat-2023",
+                "quote": "פוליטיקאים ערבים ודרוזים מהמפלגות הציוניות (או מהרשימות הנלוות של מפא\"י) היו כמובן שותפים בקואליציות",
+                "locator": "p. 386, note 22"
+              }
+            ],
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai and the Alignment. Galnoor and Blander count it among the coalition partners (their note names the list; their table’s 75 seats for this government equal the rows recorded here), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "noteEn": "One of the Arab lists affiliated with Mapai and the Alignment: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י ולמערך: נמנתה בקואליציה, בלי שר."
+          },
+          {
+            "letters": "חל",
+            "seats": 23,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-1967-06-05",
+                "quote": "הכנסת כולה הצביעה בעד אישור הודעת ראש הממשלה, לעומת שלושה חברי כנסת שהצביעו נגדה.",
+                "note": "The Knesset approved the three new ministers on 5 June 1967; their terms began that day. Gahal and Rafi had agreed to join on 1 June 1967.",
+                "noteHe": "הכנסת אישרה את שלושת השרים החדשים ב־5 ביוני 1967, ובו ביום החלה כהונתם. גח״ל ורפ״י הסכימו להצטרף כבר ב־1 ביוני 1967."
+              },
+              {
+                "source": "positions-gov13",
+                "quote": "PersonToPositionID 4067, PersonID 2179, PositionID 39, StartDate 1967-06-05; PersonToPositionID 3889, PersonID 2512, PositionID 39, StartDate 1967-06-05; PersonToPositionID 3977, PersonID 2277, PositionID 39, StartDate 1967-06-05",
+                "note": "The Knesset’s appointment records: Menachem Begin and Yosef Sapir (Gahal) and Moshe Dayan (Rafi), ministers from 5 June 1967.",
+                "noteHe": "רישומי המינויים של הכנסת: מנחם בגין ויוסף ספיר (גח״ל) ומשה דיין (רפ״י), שרים מ־5 ביוני 1967."
+              },
+              {
+                "source": "factions-k6",
+                "quote": "Faction 287 (גוש חרות ליברלים): 23 members on 1967-06-05, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 23 members of Gahal on 5 June 1967.",
+                "noteHe": "רישומי הסיעות של הכנסת: 23 חברים בסיעת גח״ל ב־5 ביוני 1967."
+              }
+            ],
+            "noteEn": "Counted at its 23 members that day: three of the 26 elected had left Gahal for the Free Center on 29 March 1967.",
+            "noteHe": "נספרים 23 חבריה באותו יום: שלושה מ־26 הנבחרים עזבו את גח״ל למרכז החופשי ב־29 במרץ 1967."
+          },
+          {
+            "letters": "כא",
+            "seats": 10,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-1967-06-05",
+                "quote": "הכנסת כולה הצביעה בעד אישור הודעת ראש הממשלה, לעומת שלושה חברי כנסת שהצביעו נגדה.",
+                "note": "The Knesset approved the three new ministers on 5 June 1967; their terms began that day. Gahal and Rafi had agreed to join on 1 June 1967.",
+                "noteHe": "הכנסת אישרה את שלושת השרים החדשים ב־5 ביוני 1967, ובו ביום החלה כהונתם. גח״ל ורפ״י הסכימו להצטרף כבר ב־1 ביוני 1967."
+              },
+              {
+                "source": "positions-gov13",
+                "quote": "PersonToPositionID 4067, PersonID 2179, PositionID 39, StartDate 1967-06-05; PersonToPositionID 3889, PersonID 2512, PositionID 39, StartDate 1967-06-05; PersonToPositionID 3977, PersonID 2277, PositionID 39, StartDate 1967-06-05",
+                "note": "The Knesset’s appointment records: Menachem Begin and Yosef Sapir (Gahal) and Moshe Dayan (Rafi), ministers from 5 June 1967.",
+                "noteHe": "רישומי המינויים של הכנסת: מנחם בגין ויוסף ספיר (גח״ל) ומשה דיין (רפ״י), שרים מ־5 ביוני 1967."
+              },
+              {
+                "source": "factions-k6",
+                "quote": "Faction 289 (רשימת פועלים ישראלית): 10 members on 1967-06-05, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 10 members of Rafi on 5 June 1967.",
+                "noteHe": "רישומי הסיעות של הכנסת: 10 חברים בסיעת רפ״י ב־5 ביוני 1967."
+              }
+            ]
+          }
+        ],
+        "coalitionSeats": 108,
+        "supportSeats": 0,
+        "knownMemberSeats": 108,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "1968-01-23",
+        "type": "faction-merger",
+        "textEn": "Rafi merged into the new Israeli Labor Party, with nine of its ten MKs; Moshe Dayan stayed Minister of Defense. David Ben-Gurion sat as a one-member faction.",
+        "textHe": "רפ״י התמזגה במפלגת העבודה הישראלית החדשה, עם תשעה מעשרת חבריה בכנסת; משה דיין נשאר שר הביטחון. דוד בן־גוריון ישב כסיעת יחיד.",
+        "cites": [
+          {
+            "source": "factions-k6",
+            "quote": "Faction 289 (רשימת פועלים ישראלית): rows end 1968-01-23; faction 986 (מפלגת העבודה הישראלית): 54 members from 1968-01-23, 9 of them from faction 289; faction 984 (חה\"כ דוד בן גוריון) from 1968-01-23",
+            "note": "The Knesset’s faction records: Rafi’s membership ends on 23 January 1968, the day nine of its MKs join the Israeli Labor Party faction (54 members) and David Ben-Gurion becomes a faction of one.",
+            "noteHe": "רישומי הסיעות של הכנסת: החברות ברפ״י מסתיימת ב־23 בינואר 1968, ביום שבו תשעה מחבריה בכנסת מצטרפים לסיעת מפלגת העבודה הישראלית (54 חברים) ודוד בן־גוריון נעשה סיעת יחיד."
+          },
+          {
+            "source": "positions-gov13",
+            "quote": "PersonToPositionID 3977, PersonID 2277, PositionID 39, StartDate 1967-06-05",
+            "note": "The Knesset’s appointment record: Moshe Dayan, Minister of Defense from 5 June 1967 to 17 March 1969.",
+            "noteHe": "רישום המינוי של הכנסת: משה דיין, שר הביטחון מ־5 ביוני 1967 עד 17 במרץ 1969."
+          }
+        ],
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 13
+      },
       {
         "date": "1969-03-17",
         "number": 14,
