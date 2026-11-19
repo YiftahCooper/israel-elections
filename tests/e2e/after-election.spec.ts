@@ -480,3 +480,11 @@ for (const lang of ['en', 'he'] as const) test(`a split recommendation names the
   await expect(rows.filter({ hasText: lang === 'he' ? '(בל״ד)' : '(Balad)' })).toHaveCount(1);
   await expect(rows.filter({ hasText: lang === 'he' ? '(בל״ד)' : '(Balad)' })).toContainText('3');
 });
+
+// V2 fault A7: an MK elected on a coalition list who stood outside it read "Other participation".
+for (const lang of ['en', 'he'] as const) test(`an MK outside the coalition is said to be so: ${lang}`, async ({ page }) => {
+  const history = await openAfter(page, 'k24', lang);
+  const chikli = history.locator('[data-individual="amichai-chikli"]').first();
+  await expect(chikli).toContainText(lang === 'he' ? 'מחוץ לקואליציה' : 'Not in the coalition');
+  await expect(history.locator('.after-individuals').first()).not.toContainText(lang === 'he' ? 'השתתפות אחרת' : 'Other participation');
+});

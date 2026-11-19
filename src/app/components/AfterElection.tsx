@@ -239,7 +239,9 @@ function GovernmentComposition({ data, ds, government: g, investiture = true }: 
       return <div className="after-individual" key={person.id} data-individual={person.id}>
         <bdi>{lang === 'he' ? person.nameHe : person.nameEn}</bdi>
         <span className="muted small">{L('Elected on', 'מרשימת')} <bdi>{origin ? listLabel(origin, lang) : person.fromLetters}</bdi></span>
-        {!person.countedInFactionSeats && <span className="small">{role === 'member-with-ministries' ? L('Member', 'חבר בקואליציה') : L(...SUPPORT_LABELS[role])}</span>}
+        {/* an MK elected on a coalition list whose part is "other" stood outside the coalition (Mapam's six in 1984,
+            Chikli in 2021): said in those words, not "Other participation" (V2 fault A7) */}
+        {!person.countedInFactionSeats && <span className="small">{role === 'member-with-ministries' ? L('Member', 'חבר בקואליציה') : role === 'other' ? L('Not in the coalition', 'מחוץ לקואליציה') : L(...SUPPORT_LABELS[role])}</span>}
         <span className="after-help-anchor">{votes[person.vote]} <Evidence data={data} cites={person.cites} explanation={person.countedInFactionSeats ? L('Already included in the list seat count. The faction role does not establish a personal ministerial appointment or support.', 'כלול כבר במנדטים של הרשימה. מעמד הסיעה אינו מעיד על מינוי אישי לשר או על תמיכה אישית.'): qualification(person)} notes={person.note ? [person.note] : []} /></span>
       </div>;
     })}</div>}
