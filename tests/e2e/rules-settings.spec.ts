@@ -121,12 +121,12 @@ test('Hebrew: the tab and settings are named in Hebrew and the era timeline stil
 test('re-choosing what is already in force is not an edit', async ({ page }) => {
   await start(page); await openRules(page);
   const mode = page.getByRole('group', { name: 'Simulation mode' });
-  const undo = page.locator('.band').getByRole('button', { name: /^Undo/ });
+  const undo = page.locator('.session').getByRole('button', { name: /^Undo/ });
   await mode.getByRole('button', { name: 'Historically valid', exact: true }).click();
   await expect(undo).toBeDisabled();
   await mode.getByRole('button', { name: 'Experimental', exact: true }).click();
   await expect(undo).toHaveAccessibleName(/^Undo: /);
-  const log = () => page.evaluate(() => document.querySelector('.band button[aria-label^="Undo"]')?.getAttribute('aria-label'));
+  const log = () => page.evaluate(() => document.querySelector('.session button[aria-label^="Undo"]')?.getAttribute('aria-label'));
   const before = await log();
   await mode.getByRole('button', { name: 'Experimental', exact: true }).click();
   await page.getByRole('button', { name: '3.25% (2015–2026)' }).click();

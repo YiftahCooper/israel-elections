@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { choose } from './choices.ts';
+import { barLanguage } from './barMenu.ts';
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'expert', hintDismissed: true })));
   await page.goto('/');
@@ -64,7 +65,7 @@ test('saved official snapshots stay neutral; edited scenarios get distinct ident
 });
 test('threshold goal stays under the pointer when its consequence appears', async ({ page }) => {
   await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
-  await page.getByRole('button', { name: 'עברית', exact: true }).click();
+  await barLanguage(page, 'he');
   await page.getByRole('region', { name: 'הרשימות', exact: true }).getByRole('button', { name: 'מרצ', exact: true }).click();
   const panel = page.locator('.side-panel');
   const cross = panel.getByRole('button', { name: 'מעבר אחוז החסימה', exact: true });

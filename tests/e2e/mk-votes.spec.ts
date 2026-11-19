@@ -33,7 +33,7 @@ test('June 2021 at Expert: the recorded first government counts Chikli against a
   await expect(section.locator('li').filter({ hasText: 'one MK' })).toContainText('Edited');
   await expect(now.locator('.coal-test').first()).toContainText('59 for · 60 against');
   await expect(now.locator('.majority-readout bdi[dir="ltr"]')).toHaveText('60 / 120');
-  await page.locator('.band').getByRole('button', { name: /^Undo: Coalition: .* 3 apart from their list$/ }).click();
+  await page.locator('.session').getByRole('button', { name: /^Undo: Coalition: .* 3 apart from their list$/ }).click();
   await expect(now.locator('.coal-test').first()).toContainText('60 for · 59 against');
 });
 

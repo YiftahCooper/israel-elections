@@ -83,13 +83,13 @@ test('B5 prose commits are individually undoable and leave coalition selection a
   await expect(page.getByRole('button', { name: 'Undo: Scenario description changed', exact: true })).toBeVisible();
   // the coalition role is the one change; the description is not
   await expect(page.locator('.session')).toContainText('1 change from the official result');
-  await page.locator('.band').getByRole('button', { name: 'Undo: Scenario description changed', exact: true }).click();
+  await page.locator('.session').getByRole('button', { name: 'Undo: Scenario description changed', exact: true }).click();
   await expect(description).toHaveValue('');
   await page.getByRole('tab', { name: 'Coalitions', exact: true }).click();
   await expect(choice.getByRole('button', { name: 'In', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await page.getByRole('tab', { name: 'Scenarios', exact: true }).click();
   await description.fill('Second description'); await description.press('Enter');
-  await page.locator('.band').getByRole('button', { name: 'Undo: Scenario description changed', exact: true }).click();
+  await page.locator('.session').getByRole('button', { name: 'Undo: Scenario description changed', exact: true }).click();
   await expect(description).toHaveValue('');
 });
 
