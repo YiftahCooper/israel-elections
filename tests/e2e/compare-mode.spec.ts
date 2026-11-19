@@ -2,6 +2,7 @@
 // chart switch and the Copy votes box while comparing; Side by side opened from the strip.
 import { expect, test, type Page } from '@playwright/test';
 import { choose } from './choices.ts';
+import { openTool } from './openTool.ts';
 
 export async function start(page: Page, lang: 'en' | 'he' = 'en', level = 'standard', width = 1500, values: Record<string, unknown> = {}) {
   await page.setViewportSize({ width, height: width < 800 ? 844 : 1000 });
@@ -239,4 +240,27 @@ test('Rules (Expert) copies the threshold, the rules or the surplus agreements; 
   await page.locator('.coal-choice').first().getByRole('button', { name: 'In', exact: true }).click();
   await expect(page.locator('.coal-partners li').filter({ hasText: 'Likud' }).locator('.cmpm-coal-ref')).toHaveText('2022: 32');
   await expect(page.locator('.cmpm-coal-total').first()).toContainText('Their lists in 2022: 32');
+});
+
+// A "Copy from …" button names what it copies from, and a saved scenario's name can be long: the words wrap inside
+// their card instead of running over the next card and off the page (found by Bombadil, 19 Nov 2026).
+for (const [lang, width] of [['en', 1024], ['he', 390]] as const) test(`a long reference name on the Turnout copy buttons wraps inside its card, with no sideways scroll (${lang}, ${width} px)`, async ({ page }) => {
+    await start(page, lang, 'expert', width);
+    await page.evaluate(() => {
+      const raw = JSON.parse(localStorage.getItem('israel-elections:v1') ?? '{}');
+      raw.saved = [{ id: 'long', name: 'Turnout at seventy-five per cent across the whole country', electionId: 'k26', savedAt: '2026-11-19T00:00:00Z', baseBuiltAt: '', log: [{ type: 'setTurnout', pct: 75 }] }];
+      localStorage.setItem('israel-elections:v1', JSON.stringify(raw));
+    });
+    await page.reload();
+    await turnOn(page);
+    await choose(strip(page).getByRole('button', { name: lang === 'en' ? 'Compare with' : 'השוואה עם', exact: true }), 'saved:long');
+    await openTool(page, 'turnout');
+    const buttons = page.locator('.tn-facts .cmpm-copy-other');
+    await expect(buttons.first()).toBeVisible();
+    for (const b of await buttons.all()) {
+      const [own, card] = await b.evaluate((e) => [e.getBoundingClientRect(), e.closest('.tn-fact')!.getBoundingClientRect()].map((r) => ({ left: r.left, right: r.right })));
+      expect(own.left).toBeGreaterThanOrEqual(card.left - 0.5);
+      expect(own.right).toBeLessThanOrEqual(card.right + 0.5);
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
 });
