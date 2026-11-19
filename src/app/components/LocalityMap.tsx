@@ -302,8 +302,9 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     m.attributionControl.addAttribution(credit);
     return () => { m.attributionControl.removeAttribution(credit); };
   }, [mix, lang]);
-  // the Winner dots, for the names to keep clear of (outer radius: the 5 px dot and its white outline; Hebron's dashed ring)
-  const dots = useMemo<Dot[]>(() => mix ? [] : placed.map(p => ({ index: p.index, lat: p.lat, lon: p.lon, r: p.approx ? 9.5 : 7 })), [mix, placed]);
+  // the Winner dots, for the names to keep clear of (outer radius: the 5 px dot and its white outline; Hebron's dashed ring),
+  // plus half a pixel for the edge's smoothing: at the fitted quarter-step zoom a dot sits between pixels (V2 fault L2)
+  const dots = useMemo<Dot[]>(() => mix ? [] : placed.map(p => ({ index: p.index, lat: p.lat, lon: p.lon, r: p.approx ? 10 : 7.5 })), [mix, placed]);
   useEffect(() => { areas.current?.set(areaPlaces, view, dark, selectedIndex, island, dots); }, [areaPlaces, view, dark, selectedIndex, island, dots]);
   useEffect(() => {
     const m = map.current; if (!m || !lineData.features.length) return;
