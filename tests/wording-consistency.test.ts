@@ -170,3 +170,68 @@ describe('one English spelling per name, where the Knesset English data gives on
     expect(odd).toEqual([]);
   });
 });
+
+describe('Hebrew prefixes, quotation marks and geresh', () => {
+  it('ב, ל and כ replace the article of the app\'s own definite names, and leave a typed name whole', async () => {
+    const { hebrewPrefix, APP_DEFINITE_NAMES } = await import('../src/app/hebrewPrefix.ts');
+    expect(hebrewPrefix('ב', 'התוצאה הרשמית')).toBe('בתוצאה הרשמית');
+    expect(hebrewPrefix('ל', 'העבודה שלכם')).toBe('לעבודה שלכם');
+    expect(hebrewPrefix('כ', 'התוצאה הרשמית')).toBe('כתוצאה הרשמית');
+    expect(hebrewPrefix('ב', 'השארית הגדולה ביותר (מכסת הייר)')).toBe('בשארית הגדולה ביותר (מכסת הייר)');
+    expect(hebrewPrefix('ב', '⁧התוצאה הרשמית⁩')).toBe('ב⁧תוצאה הרשמית⁩');
+    for (const n of APP_DEFINITE_NAMES) expect(hebrewPrefix('ב', n)).toBe(`ב${n.slice(1)}`);
+    // מ, ש and ו keep the article; a name a reader typed keeps its ה; a longer word is not the app's name
+    expect(hebrewPrefix('מ', 'התוצאה הרשמית')).toBe('מהתוצאה הרשמית');
+    expect(hebrewPrefix('ב', 'הסכם')).toBe('בהסכם');
+    expect(hebrewPrefix('ב', 'הכנסתי')).toBe('בהכנסתי');
+  });
+
+  // Data text the app itself writes (quotations, OCR, source titles and official names keep their source's marks).
+  const VERBATIM = /quote|ocr|title|attribution|locator|url|excerpt|verbatim|raw|original/i;
+  const strings = (o: unknown, key = ''): { key: string; s: string }[] => typeof o === 'string' ? [{ key, s: o }]
+    : Array.isArray(o) ? o.flatMap((v) => strings(v, key)) : o && typeof o === 'object' ? Object.entries(o).flatMap(([k, v]) => strings(v, k)) : [];
+  const dataText = () => files('data/meta', /\.json$/).flatMap((f) => strings(JSON.parse(readFileSync(f, 'utf8')))
+    .filter(({ key, s }) => !VERBATIM.test(key) && /[א-ת]/.test(s)).map((x) => ({ ...x, f })));
+  /** Quotation marks in Hebrew text, each classed as an acronym mark (מפד״ל), an opening or a closing mark. */
+  const quoteFaults = (s: string): string[] => {
+    const he = /[א-ת]/, word = /[א-תA-Za-z0-9]/, out: string[] = [];
+    const marks = [...s.matchAll(/["״„“”]/g)].map((m) => {
+      const i = m.index!, b = s[i - 1] ?? ' ', a = s[i + 1] ?? ' ';
+      const lone = /[בלמוכשה]/.test(b) && !he.test(s[i - 2] ?? ' '); // ל"…": a prefix letter, then a quotation
+      const kind = he.test(b) && he.test(a) ? (lone ? 'lone' : 'acr') : word.test(a) && !word.test(b) ? 'open' : /[^\s(]/.test(b) && !word.test(a) ? 'close' : '?';
+      return { ch: m[0], kind };
+    }).map((m, j, all) => m.kind === 'lone' ? { ...m, kind: all.slice(j + 1).some((x) => x.kind === 'close') ? 'open' : 'acr' } : m);
+    const pairs: Record<string, string> = { '"': '"', '„': '”“', '“': '”' };
+    let open: string | null = null;
+    for (const { ch, kind } of marks) {
+      if ((kind === 'open' || kind === 'close') && ch === '״') out.push('gershayim used as a quotation mark');
+      if (kind === 'open') open = ch;
+      else if (kind === 'close' && open !== null) { if (!pairs[open]?.includes(ch)) out.push(`opens ${open}, closes ${ch}`); open = null; }
+    }
+    return out;
+  };
+  it('pairs every Hebrew quotation mark with one of its own style', () => {
+    expect(quoteFaults('תיקון חוק "מיהו יהודי״, אי־נסיגה')).not.toEqual([]);
+    expect(quoteFaults('נדפס כ״שפירא אליהו״')).not.toEqual([]);
+    expect(quoteFaults('תוקן ל"יערי מאיר". המפד״ל, ש״ס, כ״ך ושינוי – ל״ע')).toEqual([]);
+    const hits = dataText().flatMap(({ f, key, s }) => quoteFaults(s).map((p) => `${f} ${key}: ${p}`));
+    expect(hits).toEqual([]);
+  });
+  it('writes the geresh (׳), not an ASCII apostrophe, in the Hebrew text the app writes', () => {
+    // Official names (lists, candidates, parties) keep the election committee's typing; see the FV5 report.
+    const NAMES = /^(nameHe|shortHe|givenHe|familyHe|memberNameHe|submissionHe|FactionName.*)$/;
+    const geresh = (s: string) => s.replace(/'[^'\n]*[א-ת][^'\n]*'/g, '').match(/[א-ת]'/g) ?? []; // drop '…' quotations first
+    expect(geresh("ג'רוזלם פוסט")).toHaveLength(1);
+    expect(geresh("the slogan 'משהו חדש מתחיל'")).toHaveLength(0);
+    // data/meta/bios holds the name-matching research (never shown), which quotes official names as typed
+    const data = dataText().filter(({ f, key }) => !NAMES.test(key) && !f.includes('/bios/')).filter(({ s }) => geresh(s).length).map(({ f, key, s }) => `${f} ${key}: ${s.slice(0, 60)}`);
+    expect(data).toEqual([]);
+    // src/data holds official locality names (CBS), which keep their own typing like the other official names
+    const code = srcStrings().filter(({ at, s }) => !at.startsWith('src/data/') && s.startsWith('"') && geresh(s).length).map(({ at }) => at);
+    expect(code).toEqual([]);
+  });
+  it('spells The Jerusalem Post one way in Hebrew', () => {
+    const forms = new Set(dataText().flatMap(({ s }) => s.match(/ג.רוזלם פוסט/g) ?? []));
+    expect([...forms]).toEqual(['ג׳רוזלם פוסט']);
+  });
+});

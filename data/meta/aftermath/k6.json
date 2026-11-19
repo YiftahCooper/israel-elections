@@ -898,8 +898,8 @@
               {
                 "source": "factions-k6",
                 "quote": "PersonToPositionID 26649; PersonID 2454; PositionID 54; FactionID 987; StartDate 1967-04-11T00:00:00; FinishDate 1969-11-17T00:00:00",
-                "note": "Fields of the Knesset’s official record, not a quoted sentence: ג'בר מועדי; faction: הסיעה הדרוזית הישראלית, 1967-04-11 to 1969-11-17.",
-                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: ג'בר מועדי; סיעה: הסיעה הדרוזית הישראלית, 1967-04-11 עד 1969-11-17."
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: ג׳בר מועדי; faction: הסיעה הדרוזית הישראלית, 1967-04-11 to 1969-11-17.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: ג׳בר מועדי; סיעה: הסיעה הדרוזית הישראלית, 1967-04-11 עד 1969-11-17."
               }
             ],
             "note": "Coalition member without a ministry: named by Meir when she presented the government, the official record. A one-MK faction formed during the term (Knesset faction records); its MK was elected on a list affiliated with Mapai and the Alignment.",
