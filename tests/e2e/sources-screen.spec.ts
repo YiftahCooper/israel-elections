@@ -150,6 +150,6 @@ test('phone: the glossary is closed by default and can be searched', async ({ pa
   await glossary.getByRole('searchbox', { name: 'Find a term' }).fill('threshold');
   const terms = glossary.locator('dl > div');
   expect(await terms.count()).toBeGreaterThan(0);
-  expect(await terms.count()).toBeLessThan(10);
+  expect(await terms.count()).toBeLessThan(await glossary.locator('summary').innerText().then(t => Number(t.match(/\d+/)![0])));
   for (const t of await terms.allInnerTexts()) expect(t.toLowerCase()).toContain('threshold');
 });

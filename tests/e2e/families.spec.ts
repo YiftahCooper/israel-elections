@@ -139,7 +139,10 @@ for(const lang of ['he','en'])test(`family detail sheet keyboard and official se
 
 test('1988 changes name constituents in English and retain the sourced split',async({page})=>{
  await start(page);await page.locator('.family-plots section').first().locator('g[role=button]').nth(11).focus();await page.keyboard.press('Enter');
- const changes=page.locator('.family-point-changes');await expect(changes).toBeVisible({timeout:15000});await expect(changes).toContainText('Split · 1988');await expect(changes).toContainText('Degel HaTorah');expect(await changes.innerText()).not.toMatch(/[א-ת]/);
+ const changes=page.locator('.family-point-changes');await expect(changes).toBeVisible({timeout:15000});await expect(changes).toContainText('Split · 1988');await expect(changes).toContainText('Degel HaTorah');
+ // a party with no recorded English name (Yishai, 1988) shows its Hebrew name inside an isolate, never spelled letter by
+ // letter (F4, 19 Nov 2026); outside the isolates the text is English
+ expect((await changes.innerText()).replace(/\u2067[^\u2069]*\u2069/g,'')).not.toMatch(/[א-ת]/);
 });
 
 test('hover box names hatched lists’ parties, states the change, never grows or takes the pointer',async({page})=>{
@@ -279,7 +282,7 @@ for (const lang of ['en','he'] as const) test(`a break where lists are not yet c
  await start(page,lang);
  const centre=page.locator('.family-chip').filter({hasText:lang==='he'?'מרכז':'Centre'}).first();
  if ((await centre.getAttribute('aria-pressed'))!=='true') await centre.click();
- const plot=page.locator('.family-plot').filter({has:page.locator(`svg[aria-label^="${lang==='he'?'מרכז':'Centre'}"]`)}).first();
+ const plot=page.locator('.family-plot:not(.family-seat-plot)').filter({has:page.locator(`svg[aria-label^="${lang==='he'?'מרכז':'Centre'}"]`)}).first();
  await expect(plot.locator('.family-unclassified')).toHaveCount(1);
  await expect(plot.locator('.family-unclassified-note')).toContainText(lang==='he'?'רשימות שטרם סווגו: 1992':'Lists not yet classified: 1992');
 });

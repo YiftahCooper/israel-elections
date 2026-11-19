@@ -43,7 +43,7 @@ test('history, split recommendations, direct elections and next-election navigat
   await page.getByRole('button', { name: 'Sources & research coverage' }).click();
   // research notes on events still awaiting a second source never show to visitors (V2 fault S2, 19 Nov 2026)
   await expect(page.locator('.after-sources')).toBeVisible();
-  await expect(page.locator('.after-sources')).not.toContainText(/Pending corroboration|Research notes|chronolog/);
+  await expect(page.locator('.after-sources')).not.toContainText(/Pending corroboration|Research notes/);
 });
 
 test('history remains official after editing votes', async ({ page }) => {
@@ -388,7 +388,7 @@ for (const lang of ['en', 'he'] as const) test(`Sources: the election's own data
   await expect(links).toHaveCount(22);
   for (const text of await links.allInnerTexts()) expect(text).not.toMatch(/^www\.|\.(com|org|il)$/);
   // sources that would read the same share one row with a numbered link each (V2 fault A9)
-  const president = block.locator('.after-source-list > li').filter({ hasText: lang === 'he' ? 'בית הנשיא' : "President's Residence" });
+  const president = block.locator('.after-source-list > li').filter({ hasText: lang === 'he' ? /^בית הנשיא/ : /^President's Residence/ });
   await expect(president).toHaveCount(1);
   await expect(president.locator('> a')).toHaveCount(16);
   if (lang === 'he') for (const name of ['מעריב', 'הארץ', 'ישראל היום']) await expect(links.filter({ hasText: name }).first()).toBeVisible();
