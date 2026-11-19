@@ -7,7 +7,7 @@ import { FEATURES, featureLabel, FEATURE_PREVIEWS, TOOL_FEATURES, type FeatureId
 type Bi = readonly [string, string];
 export type GroupId = 'top' | 'general' | 'tools' | 'lists' | 'colours' | 'chamber' | 'numbers' | 'editing' | 'analysis' | 'history' | 'access';
 export const GROUPS: { id: GroupId; label: Bi }[] = [
-  { id: 'top', label: ['Detail level', 'רמת פירוט'] },
+  { id: 'top', label: ['Language, theme and complexity', 'שפה, ערכת צבעים ורמת מורכבות'] },
   { id: 'general', label: ['General', 'כללי'] },
   { id: 'tools', label: ['Tools', 'כלים'] },
   { id: 'lists', label: ['Lists & parties', 'רשימות ומפלגות'] },
@@ -82,14 +82,14 @@ export const DECIMAL_CHOICES = [0, 1, 2, 3] as const;
 const o = (value: string, en: string, he: string) => ({ value, label: [en, he] as Bi });
 /** Registry order is display order. */
 export const SETTINGS: readonly SettingRow[] = [
-  { id: 'level', group: 'top', control: 'level', min: 'simple', label: ['Detail level', 'רמת פירוט'],
-    info: ['Decides which tools and details are shown. Under each level below you can add a part of another level to yours, or take one away; a level change keeps those choices. Hidden edits and settings keep working.', 'קובעת אילו כלים ופרטים מוצגים. מתחת לכל רמה למטה אפשר להוסיף לרמה שלכם חלק מרמה אחרת, או להוריד חלק; מעבר רמה שומר על הבחירות האלה. עריכות והגדרות מוסתרות ממשיכות לפעול.'],
-    options: [o('simple', 'Simple', 'פשוט'), o('standard', 'Standard', 'רגיל'), o('expert', 'Expert', 'מומחה')], synonyms: 'mode level complexity custom מצב רמה מורכבות מותאם' },
-
-  { id: 'lang', group: 'general', control: 'lang', min: 'simple', label: ['Language', 'שפה'], options: [o('he', 'עברית', 'עברית'), o('en', 'English', 'English')], synonyms: 'language hebrew english שפה עברית אנגלית' },
-  { id: 'theme', group: 'general', control: 'seg', min: 'simple', label: ['Theme', 'ערכת צבעים'],
+  { id: 'lang', group: 'top', control: 'lang', min: 'simple', label: ['Language', 'שפה'], options: [o('he', 'עברית', 'עברית'), o('en', 'English', 'English')], synonyms: 'language hebrew english שפה עברית אנגלית' },
+  { id: 'theme', group: 'top', control: 'seg', min: 'simple', label: ['Theme', 'ערכת צבעים'],
     info: ['Device follows your phone or computer, also when it changes at night.', 'לפי המכשיר: כמו בטלפון או במחשב, גם כשזה משתנה בלילה.'],
     options: [o('device', 'Device', 'לפי המכשיר'), o('light', 'Light', 'בהיר'), o('dark', 'Dark', 'כהה')], synonyms: 'dark night light mode colours theme כהה לילה בהיר מצב' },
+  { id: 'level', group: 'top', control: 'level', min: 'simple', label: ['Complexity', 'רמת מורכבות'],
+    info: ['Decides which tools and details are shown. Simple, Standard and Expert are always as they come. Anything you add or take away below makes Custom, your own: the complexity you were on, with your choices. Hidden edits and settings keep working.', 'קובעת אילו כלים ופרטים מוצגים. "פשוט", "רגיל" ו"מומחה" תמיד נשארים כמו שהם. כל מה שתוסיפו או תורידו למטה יוצר את "מותאם אישית", משלכם: הרמה שהייתם בה, עם הבחירות שלכם. עריכות והגדרות מוסתרות ממשיכות לפעול.'],
+    options: [o('simple', 'Simple', 'פשוט'), o('standard', 'Standard', 'רגיל'), o('expert', 'Expert', 'מומחה'), o('custom', 'Custom', 'מותאם אישית')], synonyms: 'mode level detail view complexity custom own מצב רמה פירוט תצוגה מורכבות מותאם אישית' },
+
   { id: 'density', group: 'general', control: 'seg', min: 'simple', label: ['Spacing', 'ריווח'],
     info: ['Comfortable adds space between rows. Touch targets stay large in both.', 'מרווח מוסיף רווח בין השורות. יעדי המגע נשארים גדולים בשני המצבים.'],
     options: [o('compact', 'Compact', 'צפוף'), o('comfortable', 'Comfortable', 'מרווח')], synonyms: 'density dense padding compact צפיפות צפוף מרווח' },

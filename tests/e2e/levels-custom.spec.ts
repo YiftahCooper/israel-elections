@@ -16,7 +16,7 @@ const start = async (page: Page, app: Record<string, unknown>, settings: Record<
   await expect(page.locator(ready).first()).toBeVisible();
 };
 const he = (page: Page) => page.evaluate(() => document.documentElement.lang === 'he');
-const levelGroup = (page: Page) => page.locator('.band').getByRole('group', { name: /^(Detail level|רמת פירוט)$/ });
+const levelGroup = (page: Page) => page.locator('.band').getByRole('group', { name: /^(Complexity|רמת מורכבות)$/ });
 const listButton = (page: Page, name: string) => page.getByRole('region', { name: /^(Lists|הרשימות)$/ }).getByRole('button', { name, exact: true });
 const details = (page: Page) => page.getByRole('region', { name: /^(List details|פרטי רשימה)$/ });
 
@@ -57,40 +57,46 @@ test('c-levels-03: a hidden tool has no way in (About, Save & share, a saved com
 });
 
 for (const lang of ['en', 'he'] as const) {
-  test(`c-levels-04: a level change keeps the own choices and says nothing (${lang})`, async ({ page }) => {
+  test(`c-levels-04: own choices are Custom; choosing a named complexity keeps them and says nothing (${lang})`, async ({ page }) => {
     const custom = { security: 'show', agreements: 'hidden' };
     await start(page, { lang, level: 'simple', customFeatures: custom });
     const H = await he(page);
-    await expect(page.locator('.band-own')).toHaveText(H ? '+2 משלכם' : '+2 own');
+    // stored choices open as Custom (19 Nov 2026): Simple itself is never changed
+    await expect(levelGroup(page).getByRole('button', { name: H ? 'מותאם אישית' : 'Custom', exact: true })).toHaveAttribute('aria-pressed', 'true');
+    await expect(page.locator('.band-own')).toHaveText('+2');
     await levelGroup(page).getByRole('button', { name: H ? 'רגיל' : 'Standard', exact: true }).click();
     await expect(levelGroup(page).getByRole('button', { name: H ? 'רגיל' : 'Standard', exact: true })).toHaveAttribute('aria-pressed', 'true');
     await expect(page.locator('.toast')).toHaveCount(0);
     const stored = await page.evaluate(() => JSON.parse(localStorage.getItem('israel-elections:v1')!));
     expect(stored.level).toBe('standard');
+    expect(stored.custom).toBe(false);
     expect(stored.customFeatures).toEqual(custom);
   });
 }
 
-test('c-levels-04: a level change with no Custom choices says nothing', async ({ page }) => {
+test('c-levels-04: a level change with no Custom choices says nothing, and offers no Custom', async ({ page }) => {
   await start(page, { level: 'simple' });
+  await expect(levelGroup(page).getByRole('button', { name: 'Custom', exact: true })).toHaveCount(0);
   await levelGroup(page).getByRole('button', { name: 'Standard', exact: true }).click();
   await expect(levelGroup(page).getByRole('button', { name: 'Standard', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await expect(page.locator('.toast')).toHaveCount(0);
 });
 
-test('c-levels-08: Settings shows the level pressed, and the own choices right under it', async ({ page }) => {
+test('c-levels-08: Settings shows Custom pressed and its choices right under it; Simple stays Simple', async ({ page }) => {
   await start(page, { level: 'simple', customFeatures: { security: 'show' } });
   await page.getByRole('button', { name: 'Settings', exact: true }).click();
-  const row = page.getByRole('dialog').getByRole('group', { name: 'Detail level', exact: true });
-  await expect(row.getByRole('button', { name: 'Simple', exact: true })).toHaveAttribute('aria-pressed', 'true');
-  await expect(row.getByRole('button', { name: /^Custom/ })).toHaveCount(0);
-  await expect(page.locator('.ps-own')).toContainText('Your choices for Simple');
-  // at Standard the same tool is the level's own, so nothing is listed; back at Simple the choice is still there
+  const row = page.getByRole('dialog').getByRole('group', { name: 'Complexity', exact: true });
+  await expect(row.getByRole('button', { name: 'Custom', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('.ps-own')).toContainText('Custom: Simple with your choices');
+  // at Standard the same tool is Standard's own, so nothing is listed; back at Simple the choice waits, not in use
   await row.getByRole('button', { name: 'Standard', exact: true }).click();
   await expect(page.locator('.toast')).toHaveCount(0);
   await expect(page.locator('.ps-own')).toHaveCount(0);
   await row.getByRole('button', { name: 'Simple', exact: true }).click();
-  await expect(page.locator('.ps-own')).toContainText('Your choices for Simple');
+  await expect(row.getByRole('button', { name: 'Simple', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('.ps-own')).toContainText('Not in use: you are on Simple.');
+  await page.locator('.ps-own').getByRole('button', { name: 'Use Custom', exact: true }).click();
+  await expect(row.getByRole('button', { name: 'Custom', exact: true })).toHaveAttribute('aria-pressed', 'true');
 });
 
 test('c-levels-05: Open on Last tool reopens After the election', async ({ page }) => {

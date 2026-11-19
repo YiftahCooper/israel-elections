@@ -34,8 +34,8 @@ test('1992 recreated: 62 members + 5 outside support = 67, the recorded 67–53'
   await expect(page.locator('.coal-head .analysis-edits')).toHaveCount(1);
   await expect(page.locator('.session')).toContainText('5 changes from the official result');
   await expect(page.locator('.session')).toContainText('Votes and seats unchanged');
-  await expect(page.locator('.band').getByRole('button', { name: 'Undo: Coalition: 3 in · 2 outside support', exact: true })).toBeVisible();
-  await page.locator('.band').getByRole('button', { name: 'Undo: Coalition: 3 in · 2 outside support', exact: true }).click();
+  await expect(page.locator('.session').getByRole('button', { name: 'Undo: Coalition: 3 in · 2 outside support', exact: true })).toBeVisible();
+  await page.locator('.session').getByRole('button', { name: 'Undo: Coalition: 3 in · 2 outside support', exact: true }).click();
   await expect(card(page, 'Arab Democratic Party').getByRole('button', { name: 'Any', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await expect(card(page, 'Hadash').getByRole('button', { name: 'Support', exact: true })).toHaveAttribute('aria-pressed', 'true');
   // the session keeps the roles across a reload

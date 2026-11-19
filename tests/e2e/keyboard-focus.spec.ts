@@ -221,10 +221,13 @@ for (const lang of ['en', 'he'] as const) {
   test(`text in the other language is marked, and the page has one h1 · ${lang}`, async ({ page }) => {
     await open(page, lang);
     await expect(page.locator('h1')).toHaveCount(1);
-    const he = page.locator('.band').getByRole('button', { name: 'עברית', exact: true });
-    const en = page.locator('.band').getByRole('button', { name: 'English', exact: true });
-    await expect(he).toHaveAttribute('lang', 'he'); await expect(he).toHaveText('עב');
-    await expect(en).toHaveAttribute('lang', 'en'); await expect(en).toHaveText('EN');
+    // the language is first in Settings (19 Nov 2026), each name in its own script and marked as such
+    await page.locator('.band .band-settings').click();
+    const he = page.locator('.personal-settings').getByRole('button', { name: 'עברית', exact: true });
+    const en = page.locator('.personal-settings').getByRole('button', { name: 'English', exact: true });
+    await expect(he).toHaveAttribute('lang', 'he'); await expect(en).toHaveAttribute('lang', 'en');
+    await expect(page.locator('.personal-settings .ps-lang-label [lang]')).toHaveText(lang === 'en' ? 'שפה' : 'Language');
+    await page.keyboard.press('Escape');
     if (lang === 'en') {
       // a glossary term's Hebrew name follows its English name, marked as Hebrew, and stays out of the (i)'s name
       await page.locator('#tab-rules').click();

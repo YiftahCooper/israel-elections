@@ -3,6 +3,7 @@ import { choose } from './choices.ts';
 // against the 2022 election. Each step asserts the engine-backed result, not just that a control exists.
 import { expect, test, type Page } from '@playwright/test';
 import { openSideBySide } from './sideBySide.ts';
+import { barLanguage } from './barMenu.ts';
 
 const lists = (page: Page) => page.getByRole('region', { name: 'Lists' });
 const listButton = (page: Page, name: string) => lists(page).getByRole('button', { name, exact: true });
@@ -15,7 +16,7 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('/');
-  await page.getByRole('button', { name: 'English', exact: true }).click();
+  await barLanguage(page, 'en');
   await page.getByRole('button', { name: 'Expert', exact: true }).click();
   await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
   await expect(listButton(page, 'Yesh Atid')).toBeVisible();
@@ -92,7 +93,7 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
   const before = await validVotes(page).getAttribute('data-valid-votes');
   const p2 = await page.context().newPage();
   await p2.goto(link);
-  await p2.getByRole('button', { name: 'English', exact: true }).click();
+  await barLanguage(p2, 'en');
   await expect(validVotes(p2)).toHaveAttribute('data-valid-votes', before!);
   expect(errors).toEqual([]);
 });

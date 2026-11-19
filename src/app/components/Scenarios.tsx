@@ -10,7 +10,7 @@ import { errorText } from '../../model/messages.ts';
 // Scenarios as first-class things: the current one with its name and description, and every saved one as a
 // card with its result drawn, to open, compare, export, share or delete. Built-in "What if" questions open here
 // as named scenarios too.
-import { SCENARIO_PALETTE, savedColor, liveScenarioColor, scenarioColor } from '../scenarioIdentity.ts';
+import { SCENARIO_COLOUR_NAMES, SCENARIO_PALETTE, savedColor, liveScenarioColor, scenarioColor } from '../scenarioIdentity.ts';
 import { dispatch } from '../store.ts';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Check, Copy, Download, FolderOpen, GitCompare, Link2, RotateCcw, Save, Trash2, Upload } from 'lucide-react';
@@ -95,7 +95,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
             <ScenarioText multiline value={s.description ?? ''} label={L('Description', 'תיאור')} placeholder={L('What does this scenario explore, and why?', 'מה התרחיש בודק, ולמה?')} onCommit={(description) => dispatch({ type: 'setDescription', description })} /></label>
         </div>
         <details className="scn-options"><summary>{L('Colour & comparison', 'צבע והשוואה')}</summary><div className="scn-form">
-          <ColourPicker label={L('Scenario colour','צבע התרחיש')} value={liveScenarioColor(s,saved)} onChange={color=>dispatch({type:'setIdentityColor',color})} minDeltaE={20} others={saved.filter(x=>x.id!==s.id).map(x=>({color:savedColor(x.log),name:x.name}))} options={SCENARIO_PALETTE.map((color,i)=>({color,label:L(['Violet','Slate','Ochre','Mauve','Sage','Blue','Clay','Olive'][i],['סגול','כחלחל','אוכרה','סגלגל','מרווה','כחול','חרס','זית'][i])}))}/>
+          <ColourPicker label={L('Scenario colour','צבע התרחיש')} value={liveScenarioColor(s,saved)} onChange={color=>dispatch({type:'setIdentityColor',color})} minDeltaE={20} others={saved.filter(x=>x.id!==s.id).map(x=>({color:savedColor(x.log),name:x.name}))} options={SCENARIO_PALETTE.map((color,i)=>({color,label:L(...SCENARIO_COLOUR_NAMES[i])}))}/>
         <button className="btn small" onClick={() => setState({ settingsOpen: true, settingsFocus: 'markChanges' })}>{L('Settings…', 'הגדרות…')}</button>
         </div></details>
         <ResultBar s={s} r={allocationOf(s)} />

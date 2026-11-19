@@ -32,7 +32,7 @@ test('R1 R2 R3 R4 T1 T2: explanations stay live, edits stay put and labels are r
   await expect(page.locator('#tab-turnout')).toHaveAttribute('aria-selected', 'true');
   await page.locator('[data-fact="turnout"] .tile-pencil').click();
   await steady(page.locator('.tile-pop').getByRole('button', { name: 'Increase Turnout %', exact: true }));
-  await expect(page.locator('.band').getByRole('button', { name: /^Undo:/ })).toHaveAccessibleName(/Turnout set to \d+\.\d{2}%/);
+  await expect(page.locator('.session').getByRole('button', { name: /^Undo:/ })).toHaveAccessibleName(/Turnout set to \d+\.\d{2}%/);
   await expect(page.locator('.tile-pop').getByRole('button', { name: '0.1 pp', exact: true })).toBeVisible();
 });
 for (const lang of ['en', 'he']) test(`FA1 FA2: stable family scale and explicit navigation (${lang})`, async ({ page }) => {

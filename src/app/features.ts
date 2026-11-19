@@ -63,6 +63,10 @@ export type FeatureId = typeof FEATURES[number][0];
 /** The one source of every tool and section name (tab strip, Custom page, disclosures) and of level names. */
 export const featureLabel = (id: FeatureId): readonly [string, string] => { const f = FEATURES.find(x => x[0] === id)!; return [f[2], f[3]]; };
 export const LEVEL_LABELS: Record<Preset, readonly [string, string]> = { simple: ['Simple', 'פשוט'], standard: ['Standard', 'רגיל'], expert: ['Expert', 'מומחה'] };
+/** The user's own fourth complexity: a named one plus the user's choices (owner, 19 Nov 2026). */
+export const CUSTOM_LABEL: readonly [string, string] = ['Custom', 'מותאם אישית'];
+/** What the three (four) are called as a whole (owner, 19 Nov 2026: "complexity"). */
+export const COMPLEXITY_LABEL: readonly [string, string] = ['Complexity', 'רמת מורכבות'];
 export const RANK: Record<Preset, number> = { simple: 0, standard: 1, expert: 2 };
 export const PRESETS = Object.fromEntries((['simple', 'standard', 'expert'] as const).map(level =>
   [level, Object.fromEntries(FEATURES.map(([id,,,, min]) => [id, RANK[level] >= RANK[min] ? 'show' : 'collapsed']))])) as Record<Preset, Record<FeatureId, Visibility>>;

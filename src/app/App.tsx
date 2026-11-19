@@ -12,7 +12,7 @@ import { X } from 'lucide-react';
 import { createPortal } from 'react-dom';
 import { allocationOf, baselineOf, ruleChanges, scenarioIssues, tieAffectsSeats, warningText } from './derive.ts';
 import { LangContext, useL } from './i18n.ts';
-import { dispatch, getState, loadElectionIndex, openElection, openSharedFromHash, redo, restoreWorkspace, setSetting, setState, storageLossText, undo, useSetting, useStore } from './store.ts';
+import { activeFeatures, dispatch, getState, loadElectionIndex, openElection, openSharedFromHash, redo, restoreWorkspace, setSetting, setState, storageLossText, undo, useSetting, useStore } from './store.ts';
 import { Figures as FiguresView } from './components/Figures.tsx';
 import { BlocBar as BlocBarView } from './components/Blocs.tsx';
 import { ListBars as ListBarsView } from './components/ListBars.tsx';
@@ -145,7 +145,7 @@ function Shell() {
   const storageLoss = useStore((st) => st.storageLoss);
   const lang = useStore((st) => st.lang);
   const level = useStore((st) => st.level);
-  const customFeatures = useStore(st => st.customFeatures);
+  const customFeatures = useStore(st => activeFeatures(st));
   const toolPick = useStore((st) => st.tool) as Tab | null;
   const selectedListId = useStore((st) => st.selectedListId);
   const blocPanel = useStore((st) => st.blocPanel);

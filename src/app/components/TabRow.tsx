@@ -7,7 +7,7 @@ import { motionReduced } from '../store.ts';
 import './tab-row.css';
 import { textZoom } from '../textScale.ts';
 
-/** `muted`: not shown at this level, by the level itself or by a Custom choice of Collapsed (featureVisibility). */
+/** `muted`: not shown at this complexity, by the complexity itself or by a Custom choice of Collapsed (featureVisibility). */
 type Tool = { id: string; level: Preset; muted: boolean };
 /** The tools strip: every tool by name under three small headings ("Your scenario", "What happened", "How it
  *  works"). Each heading names a tab list of its own; the strip as a whole is still one Tab stop, and the arrow keys

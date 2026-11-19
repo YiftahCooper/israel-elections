@@ -1,6 +1,7 @@
 // Round 7 calculator fixes: the election list downloads nothing to draw its strips; list pickers show each list's mark.
 import { expect, test, type Page } from '@playwright/test';
 import { choose } from './choices.ts';
+import { barLanguage } from './barMenu.ts';
 
 async function start(page: Page, level = 'standard') {
   await page.addInitScript((level) => { if (sessionStorage.getItem('seeded')) return; sessionStorage.setItem('seeded', '1');
@@ -46,7 +47,7 @@ test('a bloc name typed in one language is its name in both', async ({ page }) =
   await input.fill('My bloc'); await input.press('Enter');
   await page.keyboard.press('Escape');
   await expect(page.locator('.blocs')).toContainText('My bloc');
-  await page.getByRole('button', { name: 'עברית' }).click();
+  await barLanguage(page, 'he');
   await expect(page.locator('.blocs')).toContainText('My bloc');
   await expect(page.locator('.board-choices .choice-trigger')).toContainText('גושים מותאמים');
 });

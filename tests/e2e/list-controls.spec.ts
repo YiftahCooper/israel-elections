@@ -135,7 +135,7 @@ test('a list\'s seat count can be typed: the fewest votes that give it are moved
   await expect(seats).toHaveValue('35', { timeout: 30000 });
   await expect(votes).not.toHaveValue('1,115,336');
   await expect(panel.locator('.sp-seats b')).toHaveText('35');
-  await page.locator('.band').getByRole('button', { name: /^Undo: /i }).click();
+  await page.locator('.session').getByRole('button', { name: /^Undo: /i }).click();
   await expect(seats).toHaveValue('32');
   // one seat down uses the search already shown beside the goals
   await expect(panel.getByRole('button', { name: 'Decrease Seats', exact: true })).toBeEnabled({ timeout: 30000 });

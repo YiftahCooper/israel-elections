@@ -1,14 +1,16 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useL, useLang } from '../i18n.ts';
-import { getState, setFeature, setLevel, setMapLines, setPreference, setSetting, setState, settingChanged, toast, useStore } from '../store.ts';
+import { activeFeatures, getState, setCustom, setFeature, setMapLines, setPreference, setSetting, setState, settingChanged, toast, useStore } from '../store.ts';
 import { CHOICE, resetFeatures, resetRows, restore, snapshot } from '../settingsReset.ts';
 import { DECIMAL_CHOICES, FEATURE_GROUP, FEATURE_ROWS, GROUPS, SETTINGS, TIERS, featureMatches, textMatches, isExternal, rowMatches, rowTier, rowVisible, settingValue, type GroupId, type SettingId, type SettingRow } from '../settings.ts';
-import { FEATURE_PREVIEWS, LEVEL_LABELS, PRESETS, SHOW_OR_HIDE, TOOL_FEATURES, featureLabel, featureLevel, ownChoices, shownAs, type FeatureId, type Preset, type Visibility } from '../features.ts';
+import { CUSTOM_LABEL, FEATURE_PREVIEWS, LEVEL_LABELS, PRESETS, SHOW_OR_HIDE, TOOL_FEATURES, featureLabel, featureLevel, ownChoices, shownAs, type FeatureId, type Preset, type Visibility } from '../features.ts';
 import { PREFERENCES } from '../preferences.ts';
 import { listLabel } from '../derive.ts';
 import { RememberedAnswers } from './SourcePicker.tsx';
 import { ColourChanges } from './ColourChanges.tsx';
 import { Info, Seg } from './ui.tsx';
+import { Complexity } from './Complexity.tsx';
+import { Languages } from 'lucide-react';
 import './personal-settings.css';
 import { textZoom } from '../textScale.ts';
 
@@ -48,7 +50,7 @@ function SettingsContent({ close }: { close: () => void }) {
   const [query, setQuery] = useState('');
   const body = useRef<HTMLDivElement>(null);
   const searching = query.trim() !== '';
-  // every level shows every setting (owner, 9 Nov 2026), ordered by complexity: the Detail level row, then the Simple
+  // every level shows every setting (owner, 9 Nov 2026), ordered by complexity: the Complexity row, then the Simple
   // settings, then a "Standard" separator and its settings, then "Expert". Search filters within the same layout.
   const shown = useMemo(() => SETTINGS.filter(r => rowVisible(r, level) && rowMatches(r, query)), [query, level]);
   // the tools and sections of each level, beside the settings of the same group and tier (owner, 16 Nov 2026)
@@ -107,7 +109,7 @@ function SettingsContent({ close }: { close: () => void }) {
       </div>)}
       <footer className="ps-foot">
         <button type="button" className="btn small" onClick={resetAll}>{L('Reset all settings', 'איפוס כל ההגדרות')}</button>
-        <Info title={L('Reset all settings', 'איפוס כל ההגדרות')}>{L('Back to the defaults, with Undo. Questions answered with “Always” are asked again, and every tool and detail follows the level again. Language, detail level and answers remembered for one list, bloc or scenario stay.', 'חזרה לברירות המחדל, עם ביטול. שאלות שנענו ב"תמיד" יישאלו שוב, וכל כלי ופרט חוזרים לפי הרמה. השפה, רמת הפירוט והתשובות השמורות לרשימה, לגוש או לתרחיש אחד נשארות.')}</Info>
+        <Info title={L('Reset all settings', 'איפוס כל ההגדרות')}>{L('Back to the defaults, with Undo. Questions answered with “Always” are asked again, Custom is cleared, and every tool and detail follows its complexity again. Language, complexity and answers remembered for one list, bloc or scenario stay.', 'חזרה לברירות המחדל, עם ביטול. שאלות שנענו ב"תמיד" יישאלו שוב, "מותאם אישית" מתנקה וכל כלי ופרט חוזרים לפי רמת המורכבות. השפה, רמת המורכבות והתשובות השמורות לרשימה, לגוש או לתרחיש אחד נשארות.')}</Info>
       </footer>
     </div>
   </>;
@@ -118,7 +120,7 @@ function Group({ id, tier, rows, parts = [], first = true }: { id: GroupId; tier
   const g = GROUPS.find(x => x.id === id)!;
   const resettable = rows.filter(r => r.id !== 'lang' && r.id !== 'level');
   const anyChanged = useStore(st => resettable.some(r => { const q = CHOICE[r.id]; return q === 'jointSeats' ? st.preferences.jointSeats === 'off' : q ? st.preferences[q] !== undefined : !isExternal(r.id) && settingChanged(st, r.id as SettingId); })
-    || ownChoices(st.customFeatures, st.level).some(x => parts.includes(x)));
+    || (st.custom && ownChoices(st.customFeatures, st.level).some(x => parts.includes(x))));
   const reset = () => { const before = snapshot(); resetRows(resettable); resetFeatures(parts); toast('info', L(`${g.label[0]} reset`, `${g.label[1]}: ההגדרות אופסו`), { label: L('Undo', 'ביטול'), run: () => restore(before) }); };
   const hid = `ps-g-${tier}-${id}`;
   // data-group marks a group's first appearance (the chips scroll there); data-tier-group names each one
@@ -138,18 +140,18 @@ const TOOL_IDS: readonly string[] = TOOL_FEATURES.map(f => f[0]);
 function PartRow({ id }: { id: FeatureId }) {
   const L = useL();
   const level = useStore(st => st.level);
-  const value = useStore(st => st.customFeatures?.[id] ?? PRESETS[st.level][id]);
-  const own = useStore(st => ownChoices(st.customFeatures, st.level).includes(id));
+  const value = useStore(st => activeFeatures(st)?.[id] ?? PRESETS[st.level][id]);
+  const own = useStore(st => st.custom && ownChoices(st.customFeatures, st.level).includes(id));
   const label = L(...featureLabel(id));
   const twoWay = SHOW_OR_HIDE.includes(id);
   const tool = TOOL_IDS.includes(id);
   const from = featureLevel(id);
   const head = <>
-    <span className="ps-dot" aria-hidden={!own} title={own ? L('Your choice for this level', 'הבחירה שלכם לרמה הזו') : undefined}>{own ? '•' : ''}</span>
+    <span className="ps-dot" aria-hidden={!own} title={own ? L('Your choice in Custom', 'הבחירה שלכם ב"מותאם אישית"') : undefined}>{own ? '•' : ''}</span>
     {own && <span className="sr-only">{L('Your choice: ', 'הבחירה שלכם: ')}</span>}
     <span className="ps-label-text">{label}</span>
   </>;
-  const info = <Info title={label} label={L(`About ${label}`, `הסבר: ${label}`)}>{L(...FEATURE_PREVIEWS[id])}. {from === 'simple' ? L('Part of every level.', 'חלק מכל הרמות.') : L(`Part of ${LEVEL_LABELS[from][0]}${from === 'expert' ? '' : ' and Expert'}.`, `חלק מרמת "${LEVEL_LABELS[from][1]}"${from === 'expert' ? '' : ' ו"מומחה"'}.`)}</Info>;
+  const info = <Info title={label} label={L(`About ${label}`, `הסבר: ${label}`)}>{L(...FEATURE_PREVIEWS[id])}. {from === 'simple' ? L('Part of Simple, Standard and Expert.', 'חלק מכל הרמות.') : L(`Part of ${LEVEL_LABELS[from][0]}${from === 'expert' ? '' : ' and Expert'}.`, `חלק מרמת "${LEVEL_LABELS[from][1]}"${from === 'expert' ? '' : ' ו"מומחה"'}.`)}</Info>;
   if (twoWay) return <div className="ps-row is-toggle" data-setting={`part:${id}`} data-part={id}>
     <label className="ps-label switch-row"><span className="ps-label-inner">{head}</span>
       <span className="switch"><input type="checkbox" aria-label={label} checked={shownAs(id, value) === 'show'} onChange={e => setFeature(id, e.target.checked ? 'show' : PRESETS[level][id] === 'show' ? 'hidden' : PRESETS[level][id])} /></span></label>
@@ -163,19 +165,22 @@ function PartRow({ id }: { id: FeatureId }) {
   </div>;
 }
 
-/** The one place that lists the user's own choices for the level: each one named, with its own undo, and all at once. */
+/** Custom, the user's own complexity (owner, 19 Nov 2026): the one place that lists its choices, each named, with its
+ *  own undo, and all at once. While a named complexity is in use the choices wait here, with a button to use them. */
 function OwnChoices() {
   const L = useL();
   const level = useStore(st => st.level);
+  const active = useStore(st => st.custom);
   const custom = useStore(st => st.customFeatures);
   const ids = ownChoices(custom, level);
   if (!ids.length) return null;
   const word = (id: FeatureId) => { const v = shownAs(id, custom![id]!); return v === 'show' ? L('added', 'נוסף') : v === 'hidden' ? L('hidden', 'מוסתר') : TOOL_IDS.includes(id) ? L('greyed out', 'באפור') : L('folded', 'מקופל'); };
   const undo = (only?: FeatureId[]) => { const before = snapshot(); resetFeatures(only); toast('info', L('Your choices cleared', 'הבחירות שלכם נוקו'), { label: L('Undo', 'ביטול'), run: () => restore(before) }); };
-  return <section className="ps-own" aria-labelledby="ps-own-title" data-setting="own">
-    <h4 id="ps-own-title">{L(`Your choices for ${LEVEL_LABELS[level][0]}`, `הבחירות שלכם לרמת "${LEVEL_LABELS[level][1]}"`)}
-      <Info title={L('Your choices', 'הבחירות שלכם')}>{L('Tools and details you added to this level or took from it. They stay when you change level.', 'כלים ופרטים שהוספתם לרמה הזו או הורדתם ממנה. הם נשארים גם כשמחליפים רמה.')}</Info>
+  return <section className="ps-own" aria-labelledby="ps-own-title" data-setting="own" data-active={active ? '' : undefined}>
+    <h4 id="ps-own-title">{L(`${CUSTOM_LABEL[0]}: ${LEVEL_LABELS[level][0]} with your choices`, `${CUSTOM_LABEL[1]}: "${LEVEL_LABELS[level][1]}" עם הבחירות שלכם`)}
+      <Info title={L(...CUSTOM_LABEL)}>{L('Tools and details you added or took away. Simple, Standard and Expert stay as they are; Custom starts from the one in use.', 'כלים ופרטים שהוספתם או הורדתם. "פשוט", "רגיל" ו"מומחה" נשארים כמו שהם; "מותאם אישית" מתחיל מהרמה שבשימוש.')}</Info>
       <button type="button" className="link-btn ps-reset" onClick={() => undo()}>{L('Clear all', 'ניקוי הכול')}</button></h4>
+    {!active && <p className="ps-own-off small"><span className="ink2">{L(`Not in use: you are on ${LEVEL_LABELS[level][0]}.`, `לא בשימוש: אתם ברמת "${LEVEL_LABELS[level][1]}".`)}</span> <button type="button" className="btn small" onClick={setCustom}>{L(`Use ${CUSTOM_LABEL[0]}`, `מעבר ל"${CUSTOM_LABEL[1]}"`)}</button></p>}
     <ul className="ps-own-list">{ids.map(id => <li key={id}><span>{L(...featureLabel(id))} · <span className="ink2">{word(id)}</span></span>
       <button type="button" className="btn small ghost icon-only" aria-label={L(`Undo: ${featureLabel(id)[0]}`, `ביטול: ${featureLabel(id)[1]}`)} onClick={() => undo([id])}>×</button></li>)}</ul>
   </section>;
@@ -187,10 +192,11 @@ function Row({ row }: { row: SettingRow }) {
   const changed = useChanged(row);
   const label = L(...row.label);
   const isToggle = row.control === 'toggle' || row.id === 'jointByParty';
+  // the language is found by someone who cannot read the one on screen: a globe, and its name in both scripts
   const head: ReactNode = <>
     <span className="ps-dot" aria-hidden={!changed} title={changed ? L('Changed from the default', 'שונה מברירת המחדל') : undefined}>{changed ? '•' : ''}</span>
     {changed && <span className="sr-only">{L('Changed: ', 'שונה: ')}</span>}
-    <span className="ps-label-text">{label}</span>
+    {row.id === 'lang' ? <span className="ps-label-text ps-lang-label"><Languages className="icon sm" aria-hidden />{label} · <span lang={L('he', 'en')}>{L('שפה', 'Language')}</span></span> : <span className="ps-label-text">{label}</span>}
   </>;
   // named apart from the control it explains, so the two never share a name
   const info = row.info && <Info title={label} label={L(`About ${label}`, `הסבר: ${label}`)}>{L(...row.info)}</Info>;
@@ -217,11 +223,8 @@ function ToggleControl({ row, label }: { row: SettingRow; label: string }) {
 function Control({ row, label }: { row: SettingRow; label: string }) {
   const L = useL();
   const lang = useLang();
-  const level = useStore(st => st.level);
   const store = useStore(st => st);
-  if (row.control === 'level') return <span className="ps-level">
-    <Seg<Preset> label={label} value={level} onChange={v => setLevel(v)} options={(['simple', 'standard', 'expert'] as const).map(v => ({ v, label: L(...LEVEL_LABELS[v]) }))} />
-  </span>;
+  if (row.control === 'level') return <span className="ps-level"><Complexity count={false} /></span>;
   if (row.control === 'lang') return <Seg label={label} value={store.lang} onChange={v => setState({ lang: v as 'he' | 'en' })} options={row.options!.map(o => ({ v: o.value as 'he' | 'en', label: o.label[0], lang: o.value }))} />;
   if (row.control === 'choice') {
     const q = CHOICE[row.id]!;

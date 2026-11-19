@@ -1,0 +1,70 @@
+/* The top bar on tablets and computers (owner, 19 Nov 2026). Two groups: what is on screen (the election, its About,
+   the scenario and Save & share) and how it is shown (complexity, Settings). One row when everything fits; otherwise
+   two, the election and Settings on the first and the scenario and complexity on the second, each row with a group at
+   either end. TopBar measures which (useBandLayout) and sets data-rows and data-brand; the phone bar is
+   topbar-phone.css. Selectors start with .band.band-desk, so they outrank the older .band rules in styles.css. */
+.band.band-desk { --band-group-gap: 17px; display: flex; flex-wrap: wrap; align-items: center; column-gap: 8px; row-gap: 8px; padding: 9px 16px; min-block-size: 52px; box-sizing: border-box; }
+.band.band-desk > * { flex-shrink: 0; }
+.band.band-desk > .band-tools-btn { order: 0; }
+.band.band-desk > .brand { order: 1; position: relative; margin: 0; font-size: 15px; }
+.band.band-desk > .election { order: 2; }
+.band.band-desk > .election-about { order: 3; }
+.band.band-desk > .band-break { order: 5; }
+.band.band-desk > .scenario-switcher { order: 6; flex: 0 1 240px; min-inline-size: 170px; max-inline-size: 300px; }
+.band.band-desk > .band-share { order: 7; position: relative; }
+.band.band-desk > .spacer { order: 8; flex: 1 1 0; min-inline-size: 0; }
+.band.band-desk > .complexity { order: 9; }
+.band.band-desk > .band-settings { order: 10; }
+
+/* the brand: both names stay laid out, so the bar can measure either; the one not shown takes no room */
+.band.band-desk .brand-full, .band.band-desk .brand-short { display: inline; }
+.band.band-desk:not([data-brand="full"]) .brand-full, .band.band-desk[data-brand="full"] .brand-short { position: absolute; inset-inline-start: 0; visibility: hidden; pointer-events: none; white-space: nowrap; }
+
+/* one row: a quiet rule between the election and the scenario */
+.band.band-desk:not([data-rows="2"]) > .band-break { inline-size: 1px; block-size: 24px; margin-inline: 4px; background: color-mix(in srgb, var(--shell-ink) 28%, transparent); }
+
+/* two rows: the election and Settings on the first, the scenario, Save & share and complexity on the second */
+.band.band-desk[data-rows="2"] { row-gap: 0; }
+.band.band-desk[data-rows="2"] > .band-break { flex-basis: 100%; block-size: 8px; } /* the break is the gap between the two rows */
+.band.band-desk[data-rows="2"] > .band-settings { order: 4; margin-inline-start: auto; }
+.band.band-desk[data-rows="2"] > .scenario-switcher { flex: 0 1 260px; }
+
+/* one height for every control in the bar (36px), so each row is one even line */
+.band.band-desk :is(.tool, .choice-trigger, .election-about summary) { box-sizing: border-box; min-block-size: 36px; block-size: 36px; padding-block: 0; }
+.band.band-desk .election-about summary { line-height: 34px; }
+.band.band-desk .seg button { box-sizing: border-box; min-block-size: 34px; }
+.band.band-desk .band-own { min-block-size: 36px; }
+
+/* Save & share keeps its words (a share icon alone is ambiguous) until the bar is narrow */
+.band.band-desk .band-share .tool .label { display: inline; }
+.band.band-desk .complexity { gap: 6px; }
+
+@media (max-width: 760px) {
+  .band.band-desk { padding: 8px 10px; column-gap: 6px; }
+  .band.band-desk > .election { flex: 1 1 240px; min-inline-size: 190px; max-inline-size: 330px; }
+  .band.band-desk > .election .choice-trigger { inline-size: 100%; min-inline-size: 0; }
+  .band.band-desk > .election .choice-current { min-inline-size: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .band.band-desk > .scenario-switcher { flex: 1 1 200px; min-inline-size: 150px; }
+  .band.band-desk .band-share .tool .label { display: none; }
+}
+
+/* Undo, Redo and Start over on the line of changes (owner, 19 Nov 2026) */
+.session-undo { display: inline-flex; flex: none; align-items: center; gap: 2px; padding-inline-start: 10px; border-inline-start: 1px solid var(--rule); }
+.session-undo .btn { min-block-size: 30px; }
+.session-undo .btn.icon-only { min-inline-size: 30px; padding-inline: 4px; }
+.session-undo .btn:disabled { opacity: .4; }
+[dir="rtl"] .session-undo .rtl-mirror { transform: scaleX(-1); }
+.session > .session-undo { margin-inline-start: 0; }
+@media (max-width: 900px) { .session-undo .session-start-over .label { display: none; } }
+
+/* the scenario's own colour, beside its name in the Save & share box and the Save as box */
+.scenario-colour { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding-block: 4px 6px; }
+.scenario-colour-label { font-size: 12.5px; color: var(--ink-2); margin-inline-end: 2px; }
+.scenario-colour-swatch { position: relative; inline-size: 24px; block-size: 24px; padding: 0; border: 2px solid transparent; border-radius: 50%; box-shadow: inset 0 0 0 1px #0003; cursor: pointer; }
+.scenario-colour-swatch[aria-pressed="true"] { outline: 2px solid var(--ink); outline-offset: 2px; }
+.scenario-colour-swatch[data-used]::after { content: ''; position: absolute; inset-block-end: -5px; inset-inline-start: 50%; inline-size: 4px; block-size: 4px; margin-inline-start: -2px; border-radius: 50%; background: var(--ink-2); }
+.scenario-colour-swatch:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+@media (pointer: coarse) { .scenario-colour-swatch { inline-size: 32px; block-size: 32px; } }
+
+/* Settings: the language row's globe sits apart from its two-script label */
+.ps-lang-label { display: inline-flex; align-items: center; gap: 6px; }

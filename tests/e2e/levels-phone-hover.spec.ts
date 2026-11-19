@@ -66,9 +66,9 @@ test.describe('parties under a joint list: Simple none, Standard with seats, Exp
     await open(page, { level: 'simple', settings: { decimals: 2 }, preferences: { voteSource: 'proportional', comparison: 'reference' } });
     await pick2022(page);
     await expect(rz(page)).toHaveCount(0);
-    await page.getByRole('group', { name: 'Detail level' }).getByRole('button', { name: 'Standard', exact: true }).click();
+    await page.getByRole('group', { name: 'Complexity' }).getByRole('button', { name: 'Standard', exact: true }).click();
     await expect(rz(page).getByRole('listitem')).toHaveCount(3);
-    await page.getByRole('group', { name: 'Detail level' }).getByRole('button', { name: 'Expert', exact: true }).click();
+    await page.getByRole('group', { name: 'Complexity' }).getByRole('button', { name: 'Expert', exact: true }).click();
     await expect(rz(page).getByRole('listitem')).toHaveCount(5);
     await expect(rz(page)).toContainText('Atid Ehad');
     // a choice in Settings wins at any level
@@ -141,20 +141,20 @@ test.describe('phone top bar (390 × 844)', () => {
     await expect(band.locator('.election-arrow')).toHaveCount(0);
     await expect(band.getByRole('button', { name: new RegExp(`^${L('Undo', 'ביטול')}`) })).toBeVisible();
     await expect(band.getByRole('button', { name: new RegExp(`^${L('Redo', 'ביצוע מחדש')}`) })).toBeVisible();
-    await expect(band.getByRole('group', { name: L('Detail level', 'רמת פירוט') })).toHaveCount(0);
+    await expect(band.getByRole('group', { name: L('Complexity', 'רמת מורכבות') })).toHaveCount(0);
     const status = band.locator('.band-status');
     await expect(status).toHaveText(L('Official', 'רשמי'));
     await band.locator('.band-menu-btn').click();
     const menu = page.locator('#app-menu');
     await expect(menu).toBeVisible();
-    for (const name of [L('Detail level', 'רמת פירוט'), L('Language', 'שפה'), L('Theme', 'ערכת צבעים')]) await expect(menu.getByRole('group', { name, exact: true })).toBeVisible();
+    for (const name of [L('Complexity', 'רמת מורכבות'), L('Language', 'שפה'), L('Theme', 'ערכת צבעים')]) await expect(menu.getByRole('group', { name, exact: true })).toBeVisible();
     await expect(menu.getByRole('button', { name: L('Settings', 'הגדרות'), exact: true })).toBeVisible();
     await expect(menu.locator('.election-about')).toBeVisible();
     await expect(menu.locator('.scenario-switcher')).toHaveCount(0);
     await expect(menu.getByRole('button', { name: L('Start over', 'התחלה מחדש'), exact: true })).toHaveCount(0);
     // switching level from the menu works and the menu stays open
-    await menu.getByRole('group', { name: L('Detail level', 'רמת פירוט') }).getByRole('button', { name: L('Expert', 'מומחה'), exact: true }).click();
-    await expect(menu.getByRole('group', { name: L('Detail level', 'רמת פירוט') }).getByRole('button', { name: L('Expert', 'מומחה'), exact: true })).toHaveAttribute('aria-pressed', 'true');
+    await menu.getByRole('group', { name: L('Complexity', 'רמת מורכבות') }).getByRole('button', { name: L('Expert', 'מומחה'), exact: true }).click();
+    await expect(menu.getByRole('group', { name: L('Complexity', 'רמת מורכבות') }).getByRole('button', { name: L('Expert', 'מומחה'), exact: true })).toHaveAttribute('aria-pressed', 'true');
     await page.keyboard.press('Escape');
     await expect(menu).toHaveCount(0);
     // the status label opens the scenario: switcher, Start over, and Save & share shown in full
@@ -163,7 +163,7 @@ test.describe('phone top bar (390 × 844)', () => {
     await expect(scenario.locator('.scenario-switcher')).toBeVisible();
     await expect(scenario.getByRole('button', { name: L('Start over', 'התחלה מחדש'), exact: true })).toBeVisible();
     await expect(scenario.getByText(L('Save & share', 'שמירה ושיתוף'), { exact: true })).toBeVisible();
-    await expect(scenario.getByRole('group', { name: L('Detail level', 'רמת פירוט') })).toHaveCount(0);
+    await expect(scenario.getByRole('group', { name: L('Complexity', 'רמת מורכבות') })).toHaveCount(0);
     await page.keyboard.press('Escape');
     await expect(scenario).toHaveCount(0);
     // an edit makes the label name the scenario and count its changes (mark every edit)
@@ -180,7 +180,7 @@ test.describe('phone top bar (390 × 844)', () => {
     await page.setViewportSize({ width: 1024, height: 900 });
     await open(page);
     await expect(page.locator('.band .election-arrow')).toHaveCount(2);
-    await expect(page.locator('.band').getByRole('group', { name: 'Detail level' })).toBeVisible();
+    await expect(page.locator('.band').getByRole('group', { name: 'Complexity' })).toBeVisible();
     await expect(page.locator('.band .band-menu-btn')).toHaveCount(0);
   });
 });

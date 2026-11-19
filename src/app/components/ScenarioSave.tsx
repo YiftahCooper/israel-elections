@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { useL } from '../i18n.ts';
 import { nextCopyName } from '../scenarioDocument.ts';
 import { getState, saveCurrent, toast, useStore } from '../store.ts';
+import { ScenarioColour } from './ScenarioColour.tsx';
 
 /** One save flow for the page and header. Native dialog retains focus and Escape behavior. */
 export function ScenarioSave({ as = false, disabled = false, className = 'btn', children, onSaved }: {
@@ -31,6 +32,7 @@ export function ScenarioSave({ as = false, disabled = false, className = 'btn', 
         <button className="choice-option" onClick={() => setCollision(false)}>{L('Choose another name', 'בחירת שם אחר')}</button>
       </div> : <form onSubmit={e => { e.preventDefault(); if (match) setCollision(true); else finish({ newIdentity: as }); }}>
         <label className="field">{L('Name', 'שם')}<input autoFocus value={name} onChange={e => setName(e.target.value)} /></label>
+        <ScenarioColour />
         <button className="btn primary" disabled={!name.trim()}>{L('Save', 'שמירה')}</button>
       </form>}
     </dialog>
