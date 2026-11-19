@@ -265,6 +265,21 @@
       },
       "retainedArtifact": "owner’s private copy of the whole issue (National Library of Israel PDF)",
       "computerReadArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1759-www.nli.org.il/page.html"
+    },
+    "lat1990-peres-ap": {
+      "url": "https://www.latimes.com/archives/la-xpm-1990-03-20-mn-808-story.html",
+      "publisher": "Associated Press, in the Los Angeles Times, 20 March 1990",
+      "kind": "archival",
+      "accessed": "2026-11-19",
+      "via": "Associated Press story printed by the Los Angeles Times; body read 19 November 2026."
+    },
+    "lat1990-peres-williams": {
+      "url": "https://www.latimes.com/archives/la-xpm-1990-03-21-mn-626-story.html",
+      "publisher": "Daniel Williams / Los Angeles Times, 21 March 1990",
+      "kind": "archival",
+      "accessed": "2026-11-19",
+      "evidenceFamily": "lat1990-peres-williams",
+      "via": "Bylined Times staff reporting from Jerusalem, distinct from the Associated Press story of 20 March; body read 19 November 2026."
     }
   },
   "results": {
@@ -862,6 +877,33 @@
         }
       },
       {
+        "date": "1990-03-20",
+        "type": "mandate-given",
+        "person": "peres",
+        "days": 21,
+        "scope": "mid-term",
+        "textEn": "Herzog tasked Peres with forming a government.",
+        "textHe": "הרצוג הטיל על פרס להרכיב ממשלה.",
+        "certainty": "probable",
+        "cites": [
+          {
+            "source": "lat1990-peres-ap",
+            "quote": "President Chaim Herzog today named Labor Party leader Shimon Peres as Israel’s prime minister-designate"
+          },
+          {
+            "source": "lat1990-peres-williams",
+            "quote": "Labor Party leader Shimon Peres won the chance Tuesday to form a new Israeli government"
+          },
+          {
+            "source": "lat1990-peres-williams",
+            "quote": "Herzog gave him 21 days to succeed"
+          }
+        ],
+        "notes": [
+          "Two reports of the time give the day (Tuesday 20 March 1990). The President’s signed letter, which would settle it as a record, has not been retrieved."
+        ]
+      },
+      {
         "date": "1990-04-26",
         "type": "mandate-returned",
         "textEn": "Peres returned the mandate to Herzog without forming a government.",
@@ -873,10 +915,7 @@
           }
         ],
         "person": "peres",
-        "scope": "mid-term",
-        "notes": [
-          "Not yet recorded: the date Herzog tasked Peres after the March 1990 no-confidence vote. The JTA article dated 21 March has no readable body; its linked original bulletin failed to fetch. Shamir’s 27 April tasking is separately established by his primary presentation letter."
-        ]
+        "scope": "mid-term"
       },
       {
         "date": "1990-04-27",
@@ -1073,7 +1112,7 @@
     "Formation timeline is a sourced subset; missing steps must not be inferred from statutory maximum periods.",
     "Opening Degel status settled by Ravitz in the primary plenum debate p.238: opposition despite confidence support. A complete set of signed coalition agreements remains uncollected.",
     "Recommendation evidence and caveats are inherited from docs/research/pm-recommendations-1977-2006.md; a source quoting the President is not an original presidential record.",
-    "1990 Peres/Shamir tasking dates and extensions need the primary letters or verified contemporary texts; not reconstructed from prospective reports. Government 24 coalition splits are not represented by the first-government card.",
+    "Peres’s 20 March 1990 tasking rests on two reports of the time (probable); the President’s signed letter is not retrieved. The 1990 extensions are not transcribed. Government 24 coalition splits are not represented by the first-government card.",
     "Recommendations of Hadash, the Progressive List for Peace and the Arab Democratic Party (November 1988): no usable source yet. Search Hebrew newspapers of 8–14 November 1988 (Davar, Al HaMishmar, Maariv, Haaretz via JPress) and the President’s consultation file."
   ],
   "government": {

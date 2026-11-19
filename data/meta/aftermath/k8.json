@@ -218,6 +218,26 @@
       "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויי ג׳בר מועדי לסגן שר",
       "kind": "official",
       "accessed": "2026-11-17"
+    },
+    "jpost-1974-01-18-p2": {
+      "url": "https://archive.org/download/TheJerusalemPost1974IsraelEnglish/Jan%2018%201974%2C%20The%20Jerusalem%20Post%2C%20%2313998%2C%20Israel%20%28en%29_text.pdf#page=2",
+      "publisher": "The Jerusalem Post, 18 January 1974, p. 2",
+      "publisherHe": "ג׳רוזלם פוסט, 18 בינואר 1974, עמ׳ 2",
+      "kind": "archival",
+      "accessed": "2026-11-19",
+      "evidenceFamily": "the-jerusalem-post",
+      "via": "Internet Archive copy of the whole issue (The Jerusalem Post, 1974 collection). Checked against the printed page on 19 November 2026.",
+      "retainedArtifact": "private archive (israel-elections-private): scratch/night-1119/R5/jp74-jan18-page2.png"
+    },
+    "jpost-1974-01-28-p1": {
+      "url": "https://archive.org/download/TheJerusalemPost1974IsraelEnglish/Jan%2028%201974%2C%20The%20Jerusalem%20Post%2C%20%2314006%2C%20Israel%20%28en%29_text.pdf#page=1",
+      "publisher": "The Jerusalem Post, 28 January 1974, p. 1",
+      "publisherHe": "ג׳רוזלם פוסט, 28 בינואר 1974, עמ׳ 1",
+      "kind": "archival",
+      "accessed": "2026-11-19",
+      "evidenceFamily": "the-jerusalem-post",
+      "via": "Internet Archive copy of the whole issue (The Jerusalem Post, 1974 collection). Checked against the printed page on 19 November 2026.",
+      "retainedArtifact": "private archive (israel-elections-private): scratch/night-1119/R5/jp74-jan28-page1.png"
     }
   },
   "results": {
@@ -290,7 +310,17 @@
         {
           "letters": "ב",
           "seats": 10,
-          "status": "unknown"
+          "status": "recommended",
+          "nominee": "meir",
+          "cites": [
+            {
+              "source": "jpost-1974-01-18-p2",
+              "quote": "urged the President at noon to charge Mrs. Golda Meir with forming a new Government, since she heads the largest party.",
+              "scanChecked": true
+            }
+          ],
+          "noteEn": "On 17 January the National Religious Party asked the President to task Golda Meir, as head of the largest party, with a national unity government. Its conditions for joining the government (amending the “Who is a Jew” law, no withdrawal from Judea and Samaria) are not part of the recommendation.",
+          "noteHe": "ב־17 בינואר ביקשה המפד״ל מהנשיא להטיל על גולדה מאיר, כראש המפלגה הגדולה, להרכיב ממשלת אחדות לאומית. תנאיה להצטרפות לממשלה (תיקון חוק „מיהו יהודי״, אי־נסיגה מיהודה ושומרון) אינם חלק מההמלצה."
         },
         {
           "letters": "ו",
@@ -305,7 +335,17 @@
         {
           "letters": "עא",
           "seats": 1,
-          "status": "unknown"
+          "status": "recommended",
+          "nominee": "meir",
+          "cites": [
+            {
+              "source": "jpost-1974-01-28-p1",
+              "quote": "Sheikh Abu Rabi’a said his party wanted Mrs. Meir to form the next government.",
+              "scanChecked": true
+            }
+          ],
+          "noteEn": "Sheikh Hammad Abu Rabi’a’s delegation, the last the President received, said the list wanted Golda Meir to form the next government. The report does not give the day of the meeting.",
+          "noteHe": "משלחתו של השייח׳ חמאד אבו רביעה, האחרונה שקיבל הנשיא, אמרה שהרשימה רוצה שגולדה מאיר תרכיב את הממשלה הבאה. הכתבה אינה מציינת את יום הפגישה."
         },
         {
           "letters": "רא",
@@ -319,10 +359,10 @@
         }
       ],
       "totals": {
-        "meir": 51,
+        "meir": 62,
         "other": 5,
         "none": 39,
-        "unknown": 25
+        "unknown": 14
       },
       "cites": [
         {
@@ -370,8 +410,21 @@
           "date": "1974-01-21",
           "page": 2,
           "url": "https://www.nli.org.il/en/newspapers/mar/1974/01/21/01/page/2"
+        },
+        {
+          "paper": "The Jerusalem Post",
+          "date": "1974-01-18",
+          "page": 2,
+          "url": "https://archive.org/download/TheJerusalemPost1974IsraelEnglish/Jan%2018%201974%2C%20The%20Jerusalem%20Post%2C%20%2313998%2C%20Israel%20%28en%29_text.pdf#page=2"
+        },
+        {
+          "paper": "The Jerusalem Post",
+          "date": "1974-01-28",
+          "page": 1,
+          "url": "https://archive.org/download/TheJerusalemPost1974IsraelEnglish/Jan%2028%201974%2C%20The%20Jerusalem%20Post%2C%20%2314006%2C%20Israel%20%28en%29_text.pdf#page=1"
         }
-      ]
+      ],
+      "searchNote": "The Jerusalem Post of 15–31 January 1974 was also read in the archive’s computer-read text of every issue; snow postponed several meetings, and no candidate is reported for the lists still not known."
     }
   ],
   "formation": {

@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- The Jerusalem Post of 1974 and Peres's 1990 tasking (19 Nov): the National Religious Party and the Arab List for Bedouin and Villagers named Golda Meir in January 1974 (The Jerusalem Post, 18 and 28 January, read from the printed page); one paper each, so both are provisional, and Meir's recommended group is 62 seats with 14 not known. The NRP's conditions for joining the government stay in its note, apart from the recommendation. Herzog tasked Peres with forming a government on 20 March 1990 (two reports of the time, probable until the President's letter is seen); the 1984 Hadash and Progressive List rows were checked against Kol Yisrael's reports and stay as they are.
 - Early governments counted from the Knesset's faction records (19 Nov): government 4 now has 87 members (three MKs elected on the Sephardim and Yemenite lists sat with the General Zionists), government 5 has 85 at formation and 89 once the Progressives joined on 1 February 1954, government 6 has 67 with the Yemenite Association as a member, and Meir's government of March 1969 has all nine factions she named, 106 seats, including the four one-MK partners. Government 3 now shows the two Agudat parties leaving in September 1952 (60 seats), with Mizrahi's own minister cited; the General Zionists' short exit in 1953 and Rosen's in 1956 are dated steps.
 
 ## 17 November 2026

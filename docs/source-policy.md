@@ -322,7 +322,9 @@ A cite checked against the printed page also carries `scanChecked: true` (never 
 wording and need not match `ocr`, which stays as the archive read it. The page's source then says in `via` that it was
 checked, and `retainedArtifact` names the owner's private copy of the whole issue, never a personal path.
 A recommendation round lists the pages read in `pagesRead` and may explain a search in `searchNote`; the gaps register
-shows both. An entry whose papers disagree has status `disputed` and `certainty: "disputed"`.
+shows both. An entry whose papers disagree has status `disputed` and `certainty: "disputed"`. A paper read from another archive's copy of the whole issue (The Jerusalem Post of 1974 on the Internet Archive) keeps
+the family its paper has elsewhere in the data (`the-jerusalem-post`); a cite checked against its printed page carries
+`scanChecked: true` without `ocr`, and `retainedArtifact` names the page image in the private archive.
 
 **Independence.** The wire agency is read from the publisher (Reuters, AP, UPI, JTA, AFP). A mirror, quotation or
 reproduction declares its original with `evidenceFamily`.

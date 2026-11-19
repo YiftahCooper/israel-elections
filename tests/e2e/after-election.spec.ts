@@ -271,6 +271,16 @@ test('records added in this pass: the Lavon affair, the 1988 recommendations, Go
   await expect(history.locator('.after-government-change')).toHaveCount(15);
 });
 
+// 19 Nov 2026: The Jerusalem Post (18 and 28 January 1974) puts the NRP and the Bedouin and Villagers list with Meir
+// (51 → 62, not documented 25 → 14); two reports of the time date Herzog's 1990 tasking of Peres to 20 March
+test('1974 recommendations from The Jerusalem Post, and Peres’s 1990 mandate on the formation line', async ({ page }) => {
+  const history = await openAfter(page, 'k8', 'en');
+  await expect(history.locator('.after-key')).toContainText('Golda Meir 62');
+  await expect(history.locator('.after-key')).toContainText('Not documented 14');
+  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k12');
+  await expect(history.locator('.after-mandate small')).toHaveText(['Yitzhak Shamir', 'Shimon Peres', 'Yitzhak Shamir']);
+});
+
 // Fix lane fx-after2 (audit 12 Nov 2026, second pass)
 for (const lang of ['en', 'he'] as const) test(`each recommendation group is named under its own run of the bar, left to right: ${lang}`, async ({ page }) => {
   const history = await openAfter(page, 'k26', lang);
