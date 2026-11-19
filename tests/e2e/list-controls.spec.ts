@@ -126,11 +126,12 @@ test('a list\'s seat count can be typed: the fewest votes that give it are moved
   const votes = panel.getByRole('textbox', { name: 'Votes', exact: true });
   await expect(seats).toHaveValue('32');
   await seats.fill('35'); await seats.press('Enter');
-  // the first seat edit asks where the votes come from; Remember stops asking
+  // the first seat edit asks where the votes come from; Set as default with Don't ask again stops asking
   const ask = page.getByRole('dialog', { name: 'Votes come from' });
   await expect(ask).toContainText('Likud');
   await choose(ask.locator('.choice-trigger').first(), 'proportional');
-  await ask.getByRole('radio', { name: 'Always', exact: true }).check();
+  await ask.getByRole('radio', { name: 'Set as default', exact: true }).check();
+  await ask.getByRole('checkbox', { name: 'Don’t ask again', exact: true }).check();
   await ask.getByRole('button', { name: 'Apply', exact: true }).click();
   await expect(seats).toHaveValue('35', { timeout: 30000 });
   await expect(votes).not.toHaveValue('1,115,336');
@@ -153,7 +154,7 @@ test('a list\'s seat count can be typed: the fewest votes that give it are moved
   await page.locator('.band').getByRole('button', { name: 'Settings', exact: true }).click();
   const setting = page.getByRole('group', { name: 'Votes come from' });
   await expect(setting.getByRole('button', { name: 'Other lists', exact: true })).toHaveAttribute('aria-pressed', 'true');
-  await setting.getByRole('button', { name: 'Ask', exact: true }).click();
+  await setting.getByRole('button', { name: 'None', exact: true }).click();
   await page.keyboard.press('Escape');
   await page.getByRole('tab', { name: 'Overview', exact: true }).click();
   await open(page, 'Likud');

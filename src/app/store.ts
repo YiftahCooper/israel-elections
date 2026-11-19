@@ -2,7 +2,7 @@ import { carryEditScopes, inputDiffs } from '../model/editScopes.ts';
 import { nextCopyName, scenarioDirty } from './scenarioDocument.ts';
 import { ACTION_CLASSIFICATION, isFactAction, hasAppearance, factLog } from '../model/actionClassification.ts';
 import { baselineOf, freshScenario, factionDefault, setFactionDefault } from './factionDefaults.ts';
-import { validItemAnswers, validAnswers, sourceChoice, sourceValue, type PreferenceAnswers, type PreferenceAsk, type PreferenceId } from './preferences.ts';
+import { validItemAnswers, validAnswers, sourceChoice, sourceValue, defaultAnswer, asksEachTime, storedDefault, PREFERENCES, type PreferenceAnswers, type PreferenceAsk, type PreferenceId } from './preferences.ts';
 import type { Family } from '../families/model.ts';
 import { nextScenarioColor } from './scenarioIdentity.ts';
 import { PRESETS, TOOL_FEATURES, type FeatureId, type Visibility } from './features.ts';
@@ -275,7 +275,7 @@ function takeIn(kept: Kept) {
   for (const k of ['level', 'customFeatures', 'markOfficial', 'saved', 'settings', 'preferences', 'preferenceFor'] as const) if (state[k] !== kept[k]) (patch as Record<string, unknown>)[k] = kept[k];
   if (!Object.keys(patch).length) return false;
   if (patch.preferences && (patch.preferences.jointSeats !== 'off') !== (state.preferences.jointSeats !== 'off')) applyJointSeats(patch.preferences.jointSeats !== 'off');
-  if (patch.preferences) patch.voteSource = sourceChoice(patch.preferences.voteSource ?? 'proportional');
+  if (patch.preferences) patch.voteSource = sourceChoice(defaultAnswer(patch.preferences.voteSource) ?? 'proportional');
   state = { ...state, ...patch, theme: resolvedTheme(settingValue(patch.settings ?? state.settings, 'theme', patch.level ?? state.level)) };
   return true;
 }
@@ -827,15 +827,42 @@ function preferenceKey(id: PreferenceId, key: string) {
 export function askPreference(ask: PreferenceAsk) {
   const st = getState();
   if (st.preferenceAsk) return;
-  const saved = st.preferences[ask.id];
+  // a default is used without asking only after "Don't ask again"; otherwise the question opens on it
+  const stored = st.preferences[ask.id], saved = asksEachTime(stored) ? undefined : stored;
   const item = st.preferenceFor?.[preferenceKey(ask.id, ask.key)];
   const target = ask.key.startsWith('list:') ? st.scenario?.lists.some(l => l.id === ask.key.slice(5))
     : ask.key.startsWith('bloc:') ? ask.key === 'bloc:null' || st.scenario?.blocs.some(b => b.id === ask.key.slice(5)) : true;
   const answer = (target !== false ? item : undefined) ?? saved;
   // A named donor cannot be reused when absent, withdrawn or part of the edited target.
   const compatible = answer && (!answer.startsWith('t:') || st.scenario?.lists.some(l => l.id === answer.slice(2) && !l.withdrawn && !ask.exclude?.includes(l.id)));
-  if (compatible) return ask.run(answer);
+  if (compatible) {
+    const said = state.toast;
+    ask.run(answer);
+    // a message the answer itself caused (a refused edit, a note) is never covered; the note waits for the next time
+    if (answer === saved && answer !== item && (state.toast === said || !state.toast)) answeredByDefault(ask.id, answer);
+    return;
+  }
   setState({ preferenceAsk: ask });
+}
+/** Questions answered by their default this session: the first time, a message says so and offers to ask next time
+ *  (the way back at the point of use, as Copy votes has; Settings has the other). Once a session, so a run of edits is
+ *  not a run of messages. */
+const toldDefault = new Set<PreferenceId>();
+function answeredByDefault(id: PreferenceId, answer: string) {
+  if (toldDefault.has(id) || state.toast?.kind === 'error') return;
+  toldDefault.add(id);
+  const he = state.lang === 'he', q = PREFERENCES[id];
+  const option = q.options.find((o) => o.value === answer);
+  const list = answer.startsWith('t:') ? state.scenario?.lists.find((l) => l.id === answer.slice(2)) : undefined;
+  const name = option ? option.label[he ? 1 : 0] : list ? listLabel(list, state.lang) : answer;
+  toast('info', he ? `${q.label[1]}: ${name}, לפי ברירת המחדל שלכם, בלי לשאול.` : `${q.label[0]}: ${name}, your default, without asking.`,
+    { label: he ? 'לשאול בפעם הבאה' : 'Ask next time', run: () => askAgain(id) });
+}
+/** "Ask next time": the default stays, and the question is asked again, starting on it. */
+export function askAgain(id: PreferenceId) {
+  toldDefault.delete(id); // a later "Don't ask again" is said once more
+  const v = defaultAnswer(state.preferences[id]);
+  if (v) setPreference(id, storedDefault(v, true));
 }
 export function setPreference(id: PreferenceId, value?: string) {
   if (id === 'jointSeats') applyJointSeats(value !== 'off'); // no answer is the default, which is On
@@ -843,7 +870,8 @@ export function setPreference(id: PreferenceId, value?: string) {
   if (value) preferences[id] = value; else delete preferences[id];
   // Answers remembered for one list, bloc or scenario are kept: the more specific answer still wins, and they are
   // cleared only by Ask again or Forget all (israel-elections-private docs/design/settings.md §5), never silently.
-  setState({ preferences, ...(id === 'voteSource' && value ? { voteSource: sourceChoice(value) } : {}), ...(id === 'comparison' && value ? { markOfficial: value === 'official' } : {}) });
+  const answer = defaultAnswer(value);
+  setState({ preferences, ...(id === 'voteSource' && answer ? { voteSource: sourceChoice(answer) } : {}), ...(id === 'comparison' && answer ? { markOfficial: answer === 'official' } : {}) });
 }
 /** Counting joint lists by party on or off: every scenario of the session is replayed under the new baseline. */
 function applyJointSeats(on: boolean) {
@@ -865,9 +893,10 @@ function applyJointSeats(on: boolean) {
       sessions: Object.fromEntries(Object.entries(state.sessions).map(([k, x]) => [k, session(x!)])),
       scenarioDrafts: Object.fromEntries(Object.entries(state.scenarioDrafts).map(([k, x]) => [k, session(x)])) };
 }
-export function answerPreference(value: string, scope: 'once' | 'item' | 'always') {
+/** `dontAsk`: with "Set as default", the default is then used without asking (owner, 19 Nov 2026). */
+export function answerPreference(value: string, scope: 'once' | 'item' | 'default', dontAsk = false) {
   const ask = state.preferenceAsk; if (!ask) return;
-  if (scope === 'always') setPreference(ask.id, value);
+  if (scope === 'default') setPreference(ask.id, storedDefault(value, !dontAsk));
   setState({ preferenceAsk: null, preferenceFor: scope === 'item' ? { ...state.preferenceFor, [preferenceKey(ask.id, ask.key)]: value } : state.preferenceFor });
   ask.run(value);
 }
@@ -880,7 +909,7 @@ export function withSource(key: string, title: string, exclude: string[], run: (
 }
 /** Choosing the inline source is already an explicit answer for the current target. */
 export function chooseSource(key: string, src: SourceChoice) {
-  if (state.preferences.voteSource) setPreference('voteSource', sourceValue(src));
+  if (state.preferences.voteSource) setPreference('voteSource', storedDefault(sourceValue(src), asksEachTime(state.preferences.voteSource)));
   setState({ voteSource: src, preferenceFor: { ...state.preferenceFor, [preferenceKey('voteSource', key)]: sourceValue(src) } });
 }
 

@@ -15,6 +15,7 @@ import { getSetting, setSetting, setState, toast, useDigits, useOn, useStore } f
 import { PREFERENCES } from '../preferences.ts';
 import { stayingHome, type SourceChoice } from '../voteEdit.ts';
 import { Info } from '../components/ui.tsx';
+import { ScopeChoice, type Scope } from '../components/ScopeChoice.tsx';
 import { ListMark } from '../components/ListMark.tsx';
 import { COPY_MODE_DEFAULT, isDefaultCopyMode, planVotes, ratioText, type CopyMode, type CopyUnit, type Plan } from './copy.ts';
 import { remember, remembered } from './answers.ts';
@@ -62,7 +63,7 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
   const [source, setSource] = useState<SourceChoice>(() => { const v = rem.source ?? voteSource; return v.kind === 'transfer' && dst.includes(v.listId) ? { kind: 'proportional' } : v.kind === 'citizens' ? { kind: 'new' } : v; });
   // "Don't ask again" is on while Settings → Copy votes: ask each time is off; the box then opens on "Set as default"
   const [dontAsk, setDontAsk] = useState(() => !getSetting('copyAskEachTime'));
-  const [scope, setScope] = useState<'once' | 'item' | 'always'>(() => dontAsk && !simple ? 'always' : 'once');
+  const [scope, setScope] = useState<Scope>(() => dontAsk && !simple ? 'default' : 'once');
   const plans = useMemo(() => Object.fromEntries(modes.map((m) => [m, (m === 'change' || m === 'ratio') && !edited ? null
     : planVotes({ from: sourceOf(from), to: to.sc, ctx: { base: to.base }, units, mode: m, policy: source })])) as Record<CopyMode, Plan | null>,
   [source, req, ticked, expert, simple, edited]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -129,7 +130,7 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
   const storable = !cross || isDefaultCopyMode(mode);
   return <Modal label={req.title} onClose={onClose} className="cmp-ask cmpm-copy">
     <form onSubmit={(e) => { e.preventDefault(); if (!plan?.ok) return; remember(to.sc, one, cross, mode, source, simple ? 'once' : scope);
-      if (!simple && scope === 'always' && storable) setSetting('copyAskEachTime', !dontAsk);
+      if (!simple && scope === 'default' && storable) setSetting('copyAskEachTime', !dontAsk);
       onDone(plan, { ...req, units }); }}>
       <p className="cmp-ask-title"><b>{req.title}</b> <Info title={L('How copying votes works', 'איך העתקת קולות עובדת')}>{L(
         `Only votes are copied; seats are always recalculated by the rules of ${to.year}. Share of eligible voters: the list's votes ÷ everyone entitled to vote in ${where} × everyone entitled to vote here. Share of the valid votes: the list's votes ÷ the valid votes in ${where} × the valid votes here. Number of votes: the same count. Rounded to the nearest vote, never across the threshold.`,
@@ -159,14 +160,9 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
       {/* asked at every level (owner, 9 Nov 2026) */}
       {<SourceSelect dest={to.sc} exclude={dst} value={source} onChange={setSource} label={L('Extra votes come from', 'מקור הקולות הנוספים')}
         info={<Info title={L('Extra votes come from', 'מקור הקולות הנוספים')}>{fromText}</Info>} />}
-      {!simple && <fieldset className="preference-scope"><legend>{L('Use this choice', 'שימוש בבחירה')}</legend>
-        {([['once', L('Just this once', 'רק הפעם')], ...(one ? [['item', L('For this list', 'לרשימה זו')]] : []), ['always', L('Set as default', 'קביעה כברירת מחדל')]] as [typeof scope, string][]).map(([v, t]) =>
-          <label key={v}><input type="radio" name="cmp-scope" value={v} checked={scope === v} onChange={() => setScope(v)} />{t}</label>)}
-        {/* a second tick under the default: later one-list copies happen at once (Undo takes them back) */}
-        <span className="cmpm-dont-ask" data-off={scope !== 'always' || !storable ? '' : undefined}><label><input type="checkbox" checked={dontAsk && scope === 'always' && storable} disabled={scope !== 'always' || !storable} onChange={(e) => setDontAsk(e.target.checked)} />{L('Don’t ask again', 'לא לשאול שוב')}</label>
-          {' '}<Info title={L('Don’t ask again', 'לא לשאול שוב')}>{L('Copying one list then happens at once, with this method and source, and Undo takes it back. To be asked again: “Ask next time” in the message after a copy, or Settings → Editing → Copy votes: ask each time.', 'העתקה של רשימה אחת תתבצע אז מיד, בשיטה ובמקור האלה, וביטול מחזיר אותה. כדי שתישאלו שוב: „לשאול בפעם הבאה” בהודעה שאחרי ההעתקה, או הגדרות ← עריכה ← העתקת קולות: לשאול בכל פעם.')}</Info></span>
-        {scope === 'always' && <span className="tiny muted">{isDefaultCopyMode(mode) && cross ? L('Every Copy votes box will start on this method and source. Settings → Editing can change it.', 'כל חלון העתקת קולות יתחיל בשיטה ובמקור האלה. אפשר לשנות בהגדרות ← עריכה.') : L('Every Copy votes box will start on this source. Settings → Editing can change it.', 'כל חלון העתקת קולות יתחיל במקור הזה. אפשר לשנות בהגדרות ← עריכה.')}</span>}
-      </fieldset>}
+      {!simple && <ScopeChoice name="cmp-scope" scope={scope} onScope={setScope} item={one ? L('For this list', 'לרשימה זו') : undefined} dontAsk={dontAsk} onDontAsk={setDontAsk} storable={storable}
+        dontAskInfo={L('Copying one list then happens at once, with this method and source, and Undo takes it back. To be asked again: “Ask next time” in the message after a copy, or Settings → Editing → Copy votes: ask each time.', 'העתקה של רשימה אחת תתבצע אז מיד, בשיטה ובמקור האלה, וביטול מחזיר אותה. כדי שתישאלו שוב: „לשאול בפעם הבאה” בהודעה שאחרי ההעתקה, או הגדרות ← עריכה ← העתקת קולות: לשאול בכל פעם.')}
+        note={scope === 'default' && <span className="tiny muted">{isDefaultCopyMode(mode) && cross ? L('Every Copy votes box will start on this method and source. Settings → Editing can change it.', 'כל חלון העתקת קולות יתחיל בשיטה ובמקור האלה. אפשר לשנות בהגדרות ← עריכה.') : L('Every Copy votes box will start on this source. Settings → Editing can change it.', 'כל חלון העתקת קולות יתחיל במקור הזה. אפשר לשנות בהגדרות ← עריכה.')}</span>} />}
       <p className="tiny muted"><button type="button" className="link-btn" onClick={() => { onClose(); setState({ settingsOpen: true, settingsFocus: cross ? 'copyMode' : 'voteSource' }); }}>{L('Change the default in Settings', 'שינוי ברירת המחדל בהגדרות')}</button></p>
       <div className="row"><button type="submit" className="btn small primary" disabled={!plan?.ok}>{to.year !== from.year ? L(`Copy into ${to.year}`, `העתקה ${hebrewPrefix('ל', to.year)}`) : to.role === 'main' ? L('Copy into your work', 'העתקה לעבודה שלכם') : L(`Copy into ${to.name}`, `העתקה ${hebrewPrefix('ל', to.name)}`)}</button>
         <button type="button" className="btn small ghost" onClick={onClose}>{L('Cancel', 'ביטול')}</button></div>

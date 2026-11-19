@@ -78,3 +78,6 @@
 .ps-colour-list input[type="color"] { inline-size: 32px; block-size: 26px; padding: 0; border: 1px solid var(--rule-2); border-radius: 3px; background: none; }
 .ps-colour-name { flex: 1; min-inline-size: 0; }
 .ps-colours > .btn { justify-self: start; }
+/* "Ask each time" beside a question's default (voteSource, markChanges): greyed while there is no default */
+.personal-settings .ps-ask-each { display: inline-flex; gap: 4px; align-items: center; margin-inline-start: 10px; font-size: 13px; white-space: nowrap; }
+.personal-settings .ps-ask-each[data-off] { color: var(--muted); }

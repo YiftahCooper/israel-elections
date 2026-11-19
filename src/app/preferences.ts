@@ -41,12 +41,24 @@ export type PreferenceAsk = {
 };
 export const sourceValue = (src: import('./voteEdit.ts').SourceChoice) => src.kind === 'transfer' ? `t:${src.listId}` : src.kind;
 export const sourceChoice = (v: string): import('./voteEdit.ts').SourceChoice => v.startsWith('t:') ? { kind: 'transfer', listId: v.slice(2) } : { kind: v === 'new' ? 'new' : v === 'citizens' ? 'citizens' : 'proportional' };
+/** A question's default answer is stored plain when it is used without asking ("Set as default" with "Don't ask
+ *  again"), and as `ask:<answer>` when the question is still asked each time, starting on that answer (owner,
+ *  19 Nov 2026: the default and not asking are two separate choices). */
+export const ASK_PREFIX = 'ask:';
+/** The default answer, whether or not it is still asked. */
+export const defaultAnswer = (v: string | undefined): string | undefined => (v?.startsWith(ASK_PREFIX) ? v.slice(ASK_PREFIX.length) : v);
+/** Whether the question is asked: always without a default, and with one unless "Don't ask again" was chosen. */
+export const asksEachTime = (v: string | undefined): boolean => !v || v.startsWith(ASK_PREFIX);
+/** The stored form of a default answer. */
+export const storedDefault = (answer: string, ask: boolean): string => (ask ? ASK_PREFIX : '') + answer;
 export function validAnswers(value: unknown): PreferenceAnswers {
   if (!value || typeof value !== 'object') return {};
   const answers: PreferenceAnswers = {};
   for (const id of Object.keys(PREFERENCES) as PreferenceId[]) {
-    const v = (value as Record<string, unknown>)[id];
-    if (typeof v === 'string' && (PREFERENCES[id].options.some(o => o.value === v) || (id === 'voteSource' && v.startsWith('t:') && v.length > 2))) answers[id] = v;
+    const raw = (value as Record<string, unknown>)[id];
+    // joint lists by party is a switch, never asked
+    const v = typeof raw === 'string' && id !== 'jointSeats' ? defaultAnswer(raw) : raw;
+    if (typeof v === 'string' && (PREFERENCES[id].options.some(o => o.value === v) || (id === 'voteSource' && v.startsWith('t:') && v.length > 2))) answers[id] = raw as string;
   }
   return answers;
 }
