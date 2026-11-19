@@ -3,6 +3,7 @@ import {MAP_UNASSIGNED_COLOUR} from '../locality-map-model.ts';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import {MapLineText} from './MapLineText.tsx';
 import { Info } from './ui.tsx';
+import { usePhone } from './UndoGroup.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { ResultPreview } from './ResultPreview.tsx';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -152,6 +153,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   const [hiddenLines, setHiddenLines] = useState(0);
   const { value: lineData, error: lineError, retry: retryLines } = useJson(`${import.meta.env.BASE_URL}data/map-lines.geojson`, NO_LINES);
   const digits = useDigits();
+  const phone = usePhone();
   const container = useRef<HTMLDivElement>(null), map = useRef<Leaflet.Map | null>(null);
   const [mode, setMode] = useState<'bloc' | 'list'>('bloc');
   const [view, setViewState] = useState<MapView>(readView);
@@ -433,18 +435,23 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   const legend = mode === 'bloc' ? s.blocs.map(b => ({ id: b.id, color: b.color, label: groupingName(b, lang), title: b.appDefined ? appGroupingExplanation(lang) : undefined }))
     : s.lists.filter(l => mix ? seated.has(l.id) : winners.some(w => w.key === l.id)).map(l => ({ id: l.id, color: l.color, label: listLabel(l, lang), title: undefined }));
   const shareBar = (v: number, top: number, color: string) => <span className="locality-share"><span><i style={{ width: `${v / (top || 1) * 100}%`, background: color }} /></span><span className="tabnum">{share(v, selected!.valid, digits)}</span></span>;
+  // On a phone the map comes first: the locality search sits under it, and the note on hidden lines lies over the
+  // map's lower edge instead of holding an empty band above it (owner, loc-phone; review fault L1).
+  const findField = <label className="field">{L('Find a locality ', 'חיפוש יישוב ')}<input type="search" value={q} onChange={e=>setQ(e.target.value)} placeholder={L('Hebrew, English or code','עברית, אנגלית או סמל')} /></label>;
+  const findMatches = normalizeLocalityName(q) ? <div className="locality-map-matches" aria-label={L('Matching localities','יישובים תואמים')}>
+      {matches.slice(0,30).map(i=><button className="btn small" key={i} onClick={()=>choose(i)} dir="auto">{nameOf(i)} ({data.rows[i].code ?? '—'})</button>)}
+      <p className="small" role="status">{countOf(matches.length, lang, ['match', 'matches'], ['התאמה אחת', 'התאמות'])}{matches.length > 30 ? L('; the first 30 are shown.', '; מוצגות 30 הראשונות.') : '.'}</p>
+    </div> : null;
+  const limitNote = <p className={`small locality-boundary-limit${phone ? ' on-map' : ''}`} style={{visibility:hiddenLines>0?'visible':'hidden'}} aria-hidden={hiddenLines===0} role={hiddenLines>0?'status':undefined}><span>{L('Some approximate lines are hidden at this zoom. Zoom out to see them.', 'חלק מהקווים המקורבים מוסתרים בהגדלה זו. להצגתם, הקטינו את המפה.')} <Info title={L('Line detail limits','מגבלות פירוט הקווים')}>{L('Each layer stops at its source precision. Measured source differences are limited to roughly 20 screen pixels; outlines whose precision is unknown are shown only at overview zooms. Locality dots and names remain available. Each layer’s explanation states its uncertainty.', 'כל שכבה נעצרת לפי דיוק המקור. פערי המקורות שנמדדו מוגבלים לכ־20 פיקסלים במסך; תוואים שדיוקם אינו ידוע מוצגים רק בקנה מידה כללי. נקודות ושמות היישובים ממשיכים להופיע. אי־הוודאות מצוינת בהסבר של כל שכבה.')}</Info></span></p>;
   return <div className="locality-map-tool">
     <p className="small ink2">{L('Historical votes · current grouping', 'קולות היסטוריים · חלוקה נוכחית')} <Info title={L('Map assumptions', 'הנחות המפה')}>{L('Historical local votes; colours follow your current scenario grouping. National vote edits are not distributed geographically. Split lists use national vote proportions; split blocs use elected-seat proportions, an estimate rather than measured party votes. English place names are CBS locality names; a few localities missing from CBS lists have this project’s transliteration (dotted underline).', 'קולות היסטוריים ביישובים; הצבעים לפי חלוקת הגושים הנוכחית. שינויי קולות ארציים אינם מחולקים גאוגרפית. רשימות שפוצלו מחולקות לפי יחס הקולות הארצי; גושים בתוך רשימה לפי יחס המושבים הנבחרים — אומדן ולא קולות מפלגתיים שנמדדו.')}</Info></p>
     {data.id !== 'k17' && (data.noteEn || data.noteHe) && <p className="small callout">{lang === 'he' ? data.noteHe ?? data.noteEn : data.noteEn ?? data.noteHe}</p>}
     {split && mode === 'bloc' && <p className="callout small">{L('A list spans several blocs: its locality votes are apportioned by its current elected members’ blocs.', 'רשימה משויכת לכמה גושים: קולותיה ביישוב מחולקים לפי שיוך חבריה הנבחרים כיום.')}</p>}
     <div className="row">
       <ChoicePicker label={L('Colour by', 'צביעה לפי')} value={mode} options={[{ value: 'bloc', label: mix ? L('Blocs', 'גושים') : L('Winning bloc', 'הגוש המוביל'), preview: <ResultPreview s={s} /> }, { value: 'list', label: mix ? L('Lists', 'רשימות') : L('Winning list', 'הרשימה המובילה'), preview: <ResultPreview s={s} blocs={false} /> }]} onChange={v => setMode(v as typeof mode)} />
-      <label className="field">{L('Find a locality ', 'חיפוש יישוב ')}<input type="search" value={q} onChange={e=>setQ(e.target.value)} placeholder={L('Hebrew, English or code','עברית, אנגלית או סמל')} /></label>
+      {!phone && findField}
     </div>
-    {normalizeLocalityName(q) && <div className="locality-map-matches" aria-label={L('Matching localities','יישובים תואמים')}>
-      {matches.slice(0,30).map(i=><button className="btn small" key={i} onClick={()=>choose(i)} dir="auto">{nameOf(i)} ({data.rows[i].code ?? '—'})</button>)}
-      <p className="small" role="status">{countOf(matches.length, lang, ['match', 'matches'], ['התאמה אחת', 'התאמות'])}{matches.length > 30 ? L('; the first 30 are shown.', '; מוצגות 30 הראשונות.') : '.'}</p>
-    </div>}
+    {!phone && findMatches}
     <form className="locality-map-address" onSubmit={e=>{e.preventDefault();void searchAddress();}}>
       <label className="field">{L('Nearest locality to an address ', 'היישוב הקרוב לכתובת ')}<input type="text" value={address} onChange={e=>setAddress(e.target.value)} /></label>
       <button className="btn" disabled={busy || !address.trim()} title={busy ? L('Search in progress', 'החיפוש מתבצע') : !address.trim() ? L('Enter an address first', 'תחילה הזינו כתובת') : undefined}>{busy?L('Searching…','מחפש…'):L('Find address','חיפוש כתובת')}</button>
@@ -489,9 +496,11 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
         </Info>
       </span>)}
     </fieldset></details>
-    {<p className="small locality-boundary-limit" style={{visibility:hiddenLines>0?'visible':'hidden'}} aria-hidden={hiddenLines===0} role={hiddenLines>0?'status':undefined}>{L('Some approximate lines are hidden at this zoom. Zoom out to see them.', 'חלק מהקווים המקורבים מוסתרים בהגדלה זו. להצגתם, הקטינו את המפה.')} <Info title={L('Line detail limits','מגבלות פירוט הקווים')}>{L('Each layer stops at its source precision. Measured source differences are limited to roughly 20 screen pixels; outlines whose precision is unknown are shown only at overview zooms. Locality dots and names remain available. Each layer’s explanation states its uncertainty.', 'כל שכבה נעצרת לפי דיוק המקור. פערי המקורות שנמדדו מוגבלים לכ־20 פיקסלים במסך; תוואים שדיוקם אינו ידוע מוצגים רק בקנה מידה כללי. נקודות ושמות היישובים ממשיכים להופיע. אי־הוודאות מצוינת בהסבר של כל שכבה.')}</Info></p>}
+    {!phone && limitNote}
     {lineError && <p className="small bad" role="status">{L('Boundary data could not load.', 'נתוני הקווים לא נטענו.')} <button className="btn small" onClick={retryLines}>{L('Try again', 'נסו שוב')}</button></p>}
     <div ref={container} className="locality-map-canvas" role="region" aria-label={L('Locality results map; use search or table for keyboard selection','מפת תוצאות ביישובים; לבחירה במקלדת השתמשו בחיפוש או בטבלה')} />
+    {phone && limitNote}
+    {phone && <div className="locality-find">{findField}{findMatches}</div>}
     {tilesFailed && <p className="small bad">{L('The background map could not load; the locality dots still work.', 'מפת הרקע לא נטענה; נקודות היישובים עדיין פעילות.')}</p>}
     {selected && <section className="locality-map-results" aria-live="polite" aria-label={L('Selected locality results','תוצאות היישוב הנבחר')}>
       <h3><LocalityName names={names} row={selected} index={selectedIndex!} /></h3>

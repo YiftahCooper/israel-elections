@@ -80,3 +80,10 @@
 .locality-share i { box-shadow: inset 0 0 0 1px var(--ink-2); }
 /* "All lines and areas": one box over the single lines, on a line of its own */
 .locality-boundary-all { flex-basis: 100%; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; min-height: 28px; font-size: 12.5px; font-weight: 600; padding-block-end: 6px; border-block-end: 1px solid var(--rule); }
+/* phone: the note on hidden lines lies over the map's lower edge, above the attribution, instead of an empty band
+   above the map; the paragraph takes no height, so nothing below it moves when the note appears */
+.locality-boundary-limit.on-map { position: relative; z-index: 500; height: 0; margin: 0; }
+.locality-boundary-limit.on-map > span { position: absolute; inset-inline: 8px; bottom: 58px; padding: 4px 8px; border-radius: 6px; background: var(--surface); box-shadow: 0 1px 4px rgb(0 0 0 / .25); }
+.locality-find { margin-block: 4px 10px; }
+.locality-find > .field { display: block; }
+.locality-find .field input { width: 100%; }

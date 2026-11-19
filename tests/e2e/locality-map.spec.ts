@@ -313,3 +313,23 @@ test('Hebrew corrected names agree in nearest-locality messages and downloaded d
   expect(row.cecNameHe).toBe('קודייראת אצאנעשבט');
   expect(row.nameSource.source).toBe('cbs');
 });
+
+// Review fault L1 (owner, loc-phone): on a phone the locality search goes below the map, and no empty band sits above it.
+for (const lang of ['en', 'he'] as const) test(`phone: the map comes before the locality search, with no empty band above it (${lang})`, async ({ page }) => {
+  await page.addInitScript(l => { if (!sessionStorage.getItem('seeded')) { sessionStorage.setItem('seeded', '1'); localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: l, level: 'expert', hintDismissed: true })); localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false } })); } }, lang);
+  await page.route('https://tiles.openfreemap.org/**', route => route.abort());
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  await page.getByRole('tab', { name: lang === 'he' ? 'יישובים' : 'Localities', exact: true }).click();
+  const map = page.getByRole('region', { name: lang === 'he' ? /מפת תוצאות ביישובים/ : /Locality results map/ });
+  await expect(map).toBeVisible();
+  const search = page.getByRole('searchbox', { name: lang === 'he' ? 'חיפוש יישוב' : 'Find a locality' });
+  const [m, s, lines] = await Promise.all([map.boundingBox(), search.boundingBox(), page.locator('.locality-boundary-disclosure').boundingBox()]);
+  expect(s!.y).toBeGreaterThan(m!.y + m!.height);
+  expect(m!.y - (lines!.y + lines!.height)).toBeLessThanOrEqual(24);
+  await search.fill(lang === 'he' ? 'חיפה' : 'Haifa');
+  await expect(page.locator('.locality-find .locality-map-matches button').first()).toBeVisible();
+  await page.setViewportSize({ width: 1500, height: 1000 });
+  const wide = await page.getByRole('searchbox', { name: lang === 'he' ? 'חיפוש יישוב' : 'Find a locality' }).boundingBox();
+  expect(wide!.y).toBeLessThan((await page.locator('.locality-map-legend').boundingBox())!.y);
+});
