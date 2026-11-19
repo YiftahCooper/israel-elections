@@ -237,6 +237,7 @@ for (const lang of ['en', 'he'] as const) {
       await expect(page.locator('.pop b [lang="he"]')).toHaveText(/[\u0590-\u05FF]/);
       await page.keyboard.press('Escape');
       await page.locator('#tab-sources').click();
+      await page.locator('.sources-glossary > summary').click(); // closed by default (V2 fault S3)
       await expect(page.locator('dl dt [lang="he"]').first()).toBeVisible();
     }
   });

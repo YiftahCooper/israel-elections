@@ -135,3 +135,21 @@ test('k26 in English: no fetch notes on the Sources tab', async ({ page }) => {
     await expect(panel).not.toContainText(text);
   await expect(panel).toContainText('Official notice of the election results');
 });
+
+// V2 fault S3: on a phone Sources was one 12,000-pixel column, most of it the glossary laid out open.
+test('phone: the glossary is closed by default and can be searched', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await open(page, 'en', 'k26');
+  await sourcesTab(page, 'en');
+  const panel = page.locator('#analysis-panel');
+  await expect(panel.locator('ul.credits').first().locator('> li').first()).toBeVisible();
+  const glossary = panel.locator('.sources-glossary');
+  await expect(glossary).not.toHaveAttribute('open', '');
+  expect(await page.evaluate(() => document.documentElement.scrollHeight)).toBeLessThan(9000);
+  await glossary.locator('summary').click();
+  await glossary.getByRole('searchbox', { name: 'Find a term' }).fill('threshold');
+  const terms = glossary.locator('dl > div');
+  expect(await terms.count()).toBeGreaterThan(0);
+  expect(await terms.count()).toBeLessThan(10);
+  for (const t of await terms.allInnerTexts()) expect(t.toLowerCase()).toContain('threshold');
+});

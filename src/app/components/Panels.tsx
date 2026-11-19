@@ -362,10 +362,26 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
             </Fragment>)}
           </> : null;
         })()}
-        <h3>{L('Glossary', 'מונחים')}</h3>
-        <dl className="small">{GLOSSARY.map((g) => <div key={g.id} id={`term-${g.id}`} style={{ marginBottom: 10 }}><dt><b>{lang === 'he' ? g.nameHe : g.nameEn}</b>{lang === 'he' ? '' : <span className="muted"> · <span lang="he">{g.nameHe}</span></span>}</dt><dd style={{ margin: 0 }}>{lang === 'he' ? g.defHe : g.defEn}<br /><GlossaryLink g={g} lang={lang} /></dd></div>)}</dl>
+        <Glossary />
       </div>
     </div>
+  );
+}
+
+/** The glossary, closed by default with a search box: laid out open it made Sources a 12,000-pixel page on a phone
+ *  (V2 fault S3, 19 Nov 2026). */
+function Glossary() {
+  const L = useL(), lang = useLang();
+  const [q, setQ] = useState('');
+  const key = (t: string) => t.normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase();
+  const terms = GLOSSARY.filter((g) => !q.trim() || [g.nameEn, g.nameHe, lang === 'he' ? g.defHe : g.defEn].some((t) => key(t).includes(key(q.trim()))));
+  return (
+    <details className="sources-glossary">
+      <summary><h3 style={{ display: 'inline' }}>{L('Glossary', 'מונחים')}</h3> <span className="muted small">({GLOSSARY.length})</span></summary>
+      <label className="field small">{L('Find a term ', 'חיפוש מונח ')}<input type="search" value={q} onChange={(e) => setQ(e.target.value)} /></label>
+      {terms.length === 0 && <p className="small muted" role="status">{L('No term matches.', 'אין מונח מתאים.')}</p>}
+        <dl className="small">{terms.map((g) => <div key={g.id} id={`term-${g.id}`} style={{ marginBottom: 10 }}><dt><b>{lang === 'he' ? g.nameHe : g.nameEn}</b>{lang === 'he' ? '' : <span className="muted"> · <span lang="he">{g.nameHe}</span></span>}</dt><dd style={{ margin: 0 }}>{lang === 'he' ? g.defHe : g.defEn}<br /><GlossaryLink g={g} lang={lang} /></dd></div>)}</dl>
+    </details>
   );
 }
 
