@@ -156,6 +156,9 @@ input, textarea { caret-color: var(--focus); }
   .session > .info { grid-area: 1 / 2; margin-inline-start: -6px; }
   .session > .btn { grid-area: 1 / 4; }
   .session-changes { grid-area: 2 / 1 / 3 / -1; }
+  /* nothing changed: one line centred in the same height, so no blank strip, and nothing moves at the first change */
+  .session.idle { grid-template-rows: 28px; }
+  .session.idle .session-changes { display: none; }
 }
 
 /* Edits change content above the viewport; browser anchoring must not move the editing surface. */
