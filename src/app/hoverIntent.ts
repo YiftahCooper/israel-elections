@@ -22,11 +22,15 @@ export class HoverIntent {
   private openTimer: unknown = null;
   private closeTimer: unknown = null;
   private pending: (() => void) | null = null;
+  private requests = 0;
   constructor(private readonly hide: () => void, private readonly clock: HoverClock = realClock) {}
   get isShown() { return shown === this; }
+  /** Counts the pointer's requests; a render notes it, so a late "closed" from that render can see a newer request. */
+  get stamp() { return this.requests; }
   /** The pointer rests on a trigger; `show` opens (or updates) the box. Repeated calls (a pointer moving over a
    *  chart) update an open box at once and only refresh what a pending one will show. */
   enter(show: () => void) {
+    this.requests++;
     this.stopClose();
     if (shown === this) { show(); return; }
     if (shown || this.clock.now() - lastClosed < HOVER_SKIP_WINDOW) { this.open(show); return; }
@@ -47,8 +51,12 @@ export class HoverIntent {
     shown = null; lastClosed = this.clock.now();
     this.hide();
   }
-  /** The box was closed some other way (Escape, a press outside, a click): forget it without calling hide. */
-  closed() {
+  /** The box was closed some other way (Escape, a press outside, a click): forget it without calling hide.
+   *  `since`: the stamp of the render that showed it closed. If the pointer asked for a box after that render (it
+   *  reached the next trigger before React ran the render's effects, which a slow machine makes likely), that newer
+   *  request stands: forgetting it would leave a box open for good, or cancel one still waiting to open. */
+  closed(since?: number) {
+    if (since !== undefined && since !== this.requests) return;
     this.stopOpen(); this.stopClose();
     if (shown === this) { shown = null; lastClosed = this.clock.now(); }
   }
@@ -73,7 +81,10 @@ export function useHoverIntent(hide: () => void, open: boolean): HoverIntent {
   const ref = useRef<HoverIntent | null>(null);
   if (!ref.current) ref.current = new HoverIntent(() => latest.current());
   const intent = ref.current;
-  useEffect(() => { if (!open) intent.closed(); }, [open, intent]);
+  // the stamp of this render: the effect runs after the commit, and the pointer may have asked for a box since. It is
+  // left out of the dependencies on purpose: rerunning on a new stamp would close that newer request.
+  const stamp = intent.stamp;
+  useEffect(() => { if (!open) intent.closed(stamp); }, [open, intent]);
   useEffect(() => () => intent.dispose(), [intent]);
   return intent;
 }
