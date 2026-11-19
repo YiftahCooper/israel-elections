@@ -255,3 +255,20 @@ for (const lang of ['en','he'] as const) test(`phone: Manage covers no family ch
  const chips=await page.locator('.family-chip').evaluateAll(els=>els.map(e=>{const r=e.getBoundingClientRect();return {t:r.top,b:r.bottom};}));
  for (const c of chips) expect(c.t>=m.y+m.height-1||c.b<=m.y+1).toBe(true);
 });
+
+// V2 fault F2: in the dark theme the shaded "real figure lies between" gap was barely distinguishable from the panel.
+test('dark theme: the shaded gap stands out from the panel', async ({page}) => {
+ await start(page,'en','dark');
+ for (const chip of await page.locator('.family-chip').all()) if ((await chip.getAttribute('aria-pressed'))!=='true') await chip.click();
+ const gaps=page.locator('.family-gap');
+ await expect(gaps.first()).toBeAttached();
+ const ratios=await gaps.evaluateAll(els=>{
+  const rgb=(s:string)=>s.match(/[\d.]+/g)!.slice(0,3).map(Number);
+  const lum=(c:number[])=>{const [r,g,b]=c.map(v=>{v/=255;return v<=0.03928?v/12.92:((v+0.055)/1.055)**2.4;});return 0.2126*r+0.7152*g+0.0722*b;};
+  const hex=getComputedStyle(document.documentElement).getPropertyValue('--surface').trim();
+  const bg=[1,3,5].map(k=>parseInt(hex.slice(k,k+2),16));
+  return els.map(e=>{const cs=getComputedStyle(e),a=Number(cs.fillOpacity),f=rgb(cs.fill);const m=f.map((v,i)=>bg[i]*(1-a)+v*a);const l1=lum(m),l2=lum(bg);return (Math.max(l1,l2)+0.05)/(Math.min(l1,l2)+0.05);});
+ });
+ expect(ratios.length).toBeGreaterThan(0);
+ for (const r of ratios) expect(r).toBeGreaterThanOrEqual(1.5);
+});

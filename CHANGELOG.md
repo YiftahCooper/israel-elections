@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- Dark theme on Party families (19 Nov): the shading for "the real figure lies between" is stronger in the dark theme, where it was barely visible against the panel; its key swatches match.
 - Party families on a phone (19 Nov): Manage now sits on its own line above the family chips, so it no longer covers one of them.
 - One row per source (19 Nov): on After the election's sources, sources that read the same (several pages of the President's Residence, two queries of the Knesset's open data in 1949) share one row with a numbered link each, instead of the same line repeated.
 - The 61 line (19 Nov): on a recommendations bar the majority line no longer runs through a list's ballot letters; the list it crosses sets its letters in its larger part, or leaves them out where that part is too narrow (2021's first round, Yesh Atid).

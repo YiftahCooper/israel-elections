@@ -42,6 +42,11 @@
 .family-empty {fill:var(--muted);font-size:13px;paint-order:stroke;stroke:var(--surface-2);stroke-width:6px;}
 /* Design 2 (19 Nov 2026): the gap between the estimate and the dashed whole-list line, shaded in the family's colour */
 .family-gap {fill-opacity:.22;stroke:none;pointer-events:none;}
+/* dark theme: at 22% the shaded gap all but vanished on the near-black panel (V2 fault F2); 42% keeps every family's
+   shading at least as distinct from the panel as the light theme's */
+[data-theme="dark"] .family-gap {fill-opacity:.42;}
+[data-theme="dark"] .family-key-mixed {background:color-mix(in srgb,var(--key,var(--ink-2)) 42%,transparent);}
+[data-theme="dark"] .family-tooltip .family-key-mixed,[data-theme="dark"] .family-point-mixed .family-key-mixed,[data-theme="dark"] .family-point-total .family-key-mixed {background:color-mix(in srgb,var(--family-color) 42%,transparent);}
 .family-upper {pointer-events:none;}
 .family-plot-head {display:flex;justify-content:space-between;align-items:center;min-block-size:22px;gap:4px 12px;flex-wrap:wrap;}
 .family-legend {display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;font-size:12px;color:var(--ink-2);margin:0;}
