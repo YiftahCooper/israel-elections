@@ -1,5 +1,8 @@
 // The Localities map's "Vote mix" view and the double-envelope island, drawn on one canvas over the map.
 //
+// Colours only (19 Nov 2026): no list names or shares are written on the map, where they hid the colours and could be
+// taken for place names; a place's lists and shares are in its hover box, on a tap, and in the key.
+//
 // Vote mix: far away each place is a circle whose area follows its valid votes, cut into slices by list; close up
 // (zoom above SWITCH) each place with an outline (CBS 2022 statistical areas, joined per locality code) is filled with
 // small tiles, grouped into one block per list: the place's tiles are cut in two along their longer side, by votes,
@@ -12,13 +15,16 @@
 // colour, like a dot; in the Vote mix view, with tiles like a town.
 import * as Leaflet from 'leaflet';
 import { apportion, circleR, groupCells, MIN_TILES, tileSize, type Cell } from '../voteMix.ts';
+import { MarkGrid, type Mark } from '../mapNames.ts';
 
 export type MapView = 'winner' | 'mix';
 export const SWITCH = 10.5; // circles at zoom <= SWITCH, tiles above
 export interface Part { key: string; color: string; votes: number; label: string }
 export interface AreaPlace { index: number; name: string; lat: number | null; lon: number | null; valid: number; parts: Part[]; geom: number[][][][] | null }
-/** `keepClear`: a place whose name must stay readable (Tel Aviv): the island keeps west of its dot and, in Hebrew, of
- *  the name that reads westward from it. */
+/** `keepClear`: a place whose name must stay readable (Tel Aviv): the island keeps west of its dot and of room for its
+ *  name on the dot's west side. */
+/** A Winner dot (drawn by Leaflet), for the names to keep clear of: `r` is its outer radius. */
+export interface Dot { index: number; lat: number; lon: number; r: number }
 export interface Island { lat: number; lon: number; valid: number; parts: Part[]; winner: string; title: string; sub: string;
   keepClear: { lat: number; lon: number; width: number; rtl: boolean } | null }
 
@@ -33,12 +39,18 @@ const inside = (rings: ArrayLike<number>[], x: number, y: number) => {
 };
 export class AreasLayer extends Leaflet.Layer {
   places: AreaPlace[] = []; view: MapView = 'winner'; dark = false; selected: number | null = null; island: Island | null = null;
-  canvas: HTMLCanvasElement | null = null; cache = new Map<string, unknown>(); token = 0; islandBox: number[] | null = null;
+  canvas: HTMLCanvasElement | null = null; cache = new Map<string, unknown>(); islandBox: number[] | null = null;
+  dots: Dot[] = [];
+  /** Every coloured mark on screen after the last redraw (names keep off them; the pointer finds its place in them)
+   *  and each place's own mark, to put its name beside. Fires 'drawn' when they are ready. */
+  grid: MarkGrid | null = null; marks = new Map<number, Mark>();
   /** Whether a point on the map (container pixels) is on the island. */
   onIsland(pt: { x: number; y: number }) { const b = this.islandBox; return !!b && pt.x >= b[0] && pt.x <= b[2] && pt.y >= b[1] && pt.y <= b[3]; }
-  set(places: AreaPlace[], view: MapView, dark: boolean, selected: number | null, island: Island | null) {
+  /** The place whose circle or tiles are drawn at a point (container pixels), or null. */
+  hit(pt: { x: number; y: number }) { return this.grid?.at(pt.x, pt.y) ?? null; }
+  set(places: AreaPlace[], view: MapView, dark: boolean, selected: number | null, island: Island | null, dots: Dot[] = []) {
     if (places !== this.places) this.cache.clear();
-    this.places = places; this.view = view; this.dark = dark; this.selected = selected; this.island = island; this.redraw();
+    this.places = places; this.view = view; this.dark = dark; this.selected = selected; this.island = island; this.dots = dots; this.redraw();
   }
   onAdd(map: Leaflet.Map) {
     const pane = map.getPane('vote-mix') ?? map.createPane('vote-mix'); pane.style.zIndex = '340'; pane.style.pointerEvents = 'none';
@@ -80,12 +92,13 @@ export class AreasLayer extends Leaflet.Layer {
     const vis = (b: [number, number, number, number]) => b[2] >= o.x - 50 && b[0] <= o.x + size.x + 50 && b[3] >= o.y - 50 && b[1] <= o.y + size.y + 50;
     const path = (pr: Proj) => { const P = new Path2D(); for (const r of pr.rings) { P.moveTo(r[0] - o.x, r[1] - o.y); for (let i = 2; i < r.length; i += 2) P.lineTo(r[i] - o.x, r[i + 1] - o.y); P.closePath(); } return P; };
     const sumOf = (ps: Part[]) => ps.reduce((a, q) => a + q.votes, 0) || 1;
-    const pct = (v: number, s: number) => `${Math.round(v / s * 100)}%`;
-    const cands: { full: string; short: string; pts: { x: number; y: number }[]; room: number; area: number }[] = [];
-    const LABEL_SHARE = 0.08, LABEL_AREA = 1800;
-    const pie = (p: { lat: number | null; lon: number | null; parts: Part[] }, r: number, dashed = false) => {
+    const grid = new MarkGrid(size.x, size.y), marks = new Map<number, Mark>();
+    this.grid = grid; this.marks = marks;
+    const pie = (p: AreaPlace, r: number, dashed = false) => {
       if (p.lat === null || p.lon === null) return;
       const c = map.latLngToContainerPoint([p.lat, p.lon]); if (c.x < -r || c.y < -r || c.x > size.x + r || c.y > size.y + r) return;
+      const outer = r + (dashed ? 2.8 : r > 6 ? 1.3 : 0.5);
+      grid.circle(c.x, c.y, outer, p.index); marks.set(p.index, { kind: 'circle', x: c.x, y: c.y, r: outer });
       const sum = sumOf(p.parts); let a0 = -Math.PI / 2; ctx.globalAlpha = 0.95;
       for (const q of p.parts) { const a1 = a0 + q.votes / sum * Math.PI * 2; ctx.beginPath(); ctx.moveTo(c.x, c.y); ctx.arc(c.x, c.y, r, a0, a1); ctx.closePath(); ctx.fillStyle = q.color; ctx.fill(); a0 = a1; }
       ctx.globalAlpha = 1; ctx.beginPath(); ctx.arc(c.x, c.y, r, 0, Math.PI * 2); ctx.lineWidth = r > 6 ? 1.2 : 0.9; ctx.strokeStyle = ringCol; ctx.stroke();
@@ -95,9 +108,9 @@ export class AreasLayer extends Leaflet.Layer {
     // a town's border: a light halo under a strong dark line, so its blocks are clearly its own
     const border = (P: Path2D) => { ctx.globalAlpha = 1; ctx.lineJoin = 'round'; ctx.lineWidth = 4; ctx.strokeStyle = ringCol; ctx.stroke(P); ctx.lineWidth = 2; ctx.strokeStyle = ink; ctx.stroke(P); };
     const faint = (P: Path2D) => { ctx.globalAlpha = 1; ctx.lineWidth = 0.8; ctx.strokeStyle = pale; ctx.stroke(P); };
-    /** Fills grouped tiles, draws a seam between lists and offers each block big enough for its text a label. */
+    /** Fills grouped tiles and draws a seam between lists. */
     const drawTiles = (cells: Cell[], parts: Part[], T: number, clip: Path2D | null, alpha: number) => {
-      const sum = sumOf(parts), at = new Map<string, number>(); cells.forEach(c => at.set(`${c.i},${c.j}`, c.g));
+      const at = new Map<string, number>(); cells.forEach(c => at.set(`${c.i},${c.j}`, c.g));
       ctx.save(); if (clip) ctx.clip(clip); ctx.globalAlpha = alpha;
       for (const c of cells) { ctx.fillStyle = parts[c.g]?.color ?? '#999'; ctx.fillRect(c.i * T - o.x + 0.5, c.j * T - o.y + 0.5, T - 1, T - 1); }
       // seams between lists, so the blocks separate without relying on colour
@@ -109,14 +122,6 @@ export class AreasLayer extends Leaflet.Layer {
         if (d !== undefined && d !== c.g) { ctx.moveTo(x, y + T); ctx.lineTo(x + T, y + T); }
       }
       ctx.stroke(); ctx.restore();
-      const counts = parts.map(() => 0), sx = parts.map(() => 0), sy = parts.map(() => 0);
-      cells.forEach(c => { counts[c.g]++; sx[c.g] += c.i; sy[c.g] += c.j; });
-      parts.forEach((q, g) => {
-        const area = counts[g] * T * T; if (!counts[g] || q.votes / sum < LABEL_SHARE || area < LABEL_AREA) return;
-        const mx = sx[g] / counts[g], my = sy[g] / counts[g];
-        const own = cells.filter(c => c.g === g).map(c => ({ c, e: (c.i - mx) ** 2 + (c.j - my) ** 2 })).sort((a, b) => a.e - b.e).slice(0, 80);
-        cands.push({ full: `${q.label} ${pct(q.votes, sum)}`, short: pct(q.votes, sum), room: Math.sqrt(area) * 1.6, area, pts: own.filter((_, k) => k % 4 === 0).map(({ c }) => ({ x: c.i * T + T / 2 - o.x, y: c.j * T + T / 2 - o.y })) });
-      });
     };
     if (mix) {
       if (!close) {
@@ -130,17 +135,30 @@ export class AreasLayer extends Leaflet.Layer {
           if (cells.length < MIN_TILES) { small.push({ p, dashed: false }); faint(P); continue; }
           drawTiles(cells, p.parts, T, P, this.dark ? 0.8 : 0.72);
           border(P);
+          // the town's tiles and the border round them (2 px each side) are its own on screen
+          for (const c of cells) grid.rect([c.i * T - o.x - 2, c.j * T - o.y - 2, (c.i + 1) * T - o.x + 2, (c.j + 1) * T - o.y + 2], p.index);
+          const box: [number, number, number, number] = [pr.bbox[0] - o.x - 2, pr.bbox[1] - o.y - 2, pr.bbox[2] - o.x + 2, pr.bbox[3] - o.y + 2];
+          const pt = p.lat !== null && p.lon !== null ? map.latLngToContainerPoint([p.lat, p.lon]) : { x: (box[0] + box[2]) / 2, y: (box[1] + box[3]) / 2 };
+          marks.set(p.index, { kind: 'area', x: pt.x, y: pt.y, box });
         }
         small.sort((a, b) => b.p.valid - a.p.valid).forEach(({ p, dashed }) => pie(p, circleR(z, p.valid), dashed));
       }
+    } else {
+      // the Winner dots are Leaflet's own; they are marked here so names keep off them (the chosen place's ring is wider)
+      for (const d of this.dots) {
+        const c = map.latLngToContainerPoint([d.lat, d.lon]), r = d.index === this.selected ? Math.max(d.r, 12) : d.r;
+        if (c.x < -r || c.y < -r || c.x > size.x + r || c.y > size.y + r) continue;
+        grid.circle(c.x, c.y, r, d.index); marks.set(d.index, { kind: 'circle', x: c.x, y: c.y, r });
+      }
     }
     // the double-envelope island
-    const isl = this.island; const islandBoxes: number[][] = []; this.islandBox = null; delete cv.dataset.island;
+    const isl = this.island; this.islandBox = null; delete cv.dataset.island;
     if (isl) {
       const c = map.latLngToContainerPoint([isl.lat, isl.lon]), r = circleR(Math.max(z, 7), isl.valid), area = Math.PI * r * r;
-      // anchored by its east edge, so it grows out to sea, and kept clear of Tel Aviv's dot and name
+      // anchored by its east edge, so it grows out to sea, and kept clear of Tel Aviv's dot and of room for its name
+      // west of the dot (in either language: a name goes to whichever side of its place is clear)
       let east = c.x;
-      if (isl.keepClear) { const k = map.latLngToContainerPoint([isl.keepClear.lat, isl.keepClear.lon]); east = Math.min(east, k.x - 12 - (isl.keepClear.rtl ? isl.keepClear.width + 6 : 0)); }
+      if (isl.keepClear) { const k = map.latLngToContainerPoint([isl.keepClear.lat, isl.keepClear.lon]); east = Math.min(east, k.x - 12 - isl.keepClear.width - 6); }
       const w = Math.round(Math.sqrt(area * 2)), h = Math.round(area / w), x0 = east - w, y0 = c.y - h / 2;
       this.islandBox = [x0 - 4, y0 - 4, x0 + w + 4, y0 + h + 4];
       cv.dataset.island = this.islandBox.map(Math.round).join(','); // where the island is, for tests
@@ -151,11 +169,11 @@ export class AreasLayer extends Leaflet.Layer {
           drawTiles(this.tiles(`island@${z}@${T}@${w}x${h}`, null, bx, isl.parts, T), isl.parts, T, null, 0.95);
         } else { ctx.fillStyle = isl.winner; ctx.fillRect(x0, y0, w, h); }
         ctx.globalAlpha = 1; ctx.setLineDash([5, 3]); ctx.lineWidth = 1.6; ctx.strokeStyle = ink; ctx.strokeRect(x0 - 4, y0 - 4, w + 8, h + 8); ctx.setLineDash([]);
-        islandBoxes.push([x0 - 6, y0 - 6, x0 + w + 6, y0 + h + 6]);
+        grid.rect([x0 - 6, y0 - 6, x0 + w + 6, y0 + h + 6]);
         ctx.textAlign = 'right'; ctx.textBaseline = 'top';
         // the label hangs to the west (out to sea) from the island's east edge, so it never runs onto the coast's names
         for (const [t, dy, f] of (close ? [[isl.title, 8, '700 12px'], [isl.sub, 24, '600 11px']] : [[isl.title, -h - 40, '700 12px'], [isl.sub, -h - 24, '600 11px']]) as [string, number, string][]) {
-          ctx.font = `${f} "IBM Plex Sans Hebrew", "Segoe UI", system-ui, sans-serif`; const tw = ctx.measureText(t).width, tx = tw <= w + 8 ? x0 + w / 2 + tw / 2 : Math.max(tw + 4, x0 + w + 4); islandBoxes.push([tx - tw - 2, y0 + h + dy - 2, tx + 2, y0 + h + dy + 15]);
+          ctx.font = `${f} "IBM Plex Sans Hebrew", "Segoe UI", system-ui, sans-serif`; const tw = ctx.measureText(t).width, tx = tw <= w + 8 ? x0 + w / 2 + tw / 2 : Math.max(tw + 4, x0 + w + 4); grid.rect([tx - tw - 2, y0 + h + dy - 2, tx + 2, y0 + h + dy + 15]);
           ctx.lineWidth = 3.5; ctx.strokeStyle = halo; ctx.lineJoin = 'round'; ctx.strokeText(t, tx, y0 + h + dy); ctx.fillStyle = textCol; ctx.fillText(t, tx, y0 + h + dy);
         }
       }
@@ -165,30 +183,6 @@ export class AreasLayer extends Leaflet.Layer {
       if (p && pr && close) { const P = path(pr); ctx.globalAlpha = 1; ctx.lineWidth = 6; ctx.strokeStyle = ringCol; ctx.stroke(P); ctx.lineWidth = 3; ctx.strokeStyle = this.dark ? '#ffffff' : '#111418'; ctx.stroke(P); }
     }
     ctx.globalAlpha = 1;
-    const token = ++this.token;
-    // labels last, once the app's own place names are laid out: never over a place name, the island or each other
-    setTimeout(() => {
-      if (token !== this.token || !this._map) return;
-      const host = this._map.getContainer().getBoundingClientRect(), taken: number[][] = [[0, 0, 52, 82]];
-      this._map.getContainer().querySelectorAll('.locality-map-label').forEach(el => { const r = el.getBoundingClientRect(), b = [r.left - host.left, r.top - host.top, r.right - host.left, r.bottom - host.top]; (el as HTMLElement).style.visibility = islandBoxes.some(q => b[0] < q[2] && b[2] > q[0] && b[1] < q[3] && b[3] > q[1]) ? 'hidden' : ''; });
-      taken.push(...islandBoxes);
-      this._map.getContainer().querySelectorAll('.locality-map-label, .leaflet-control-attribution').forEach(el => { if ((el as HTMLElement).style.visibility === 'hidden') return; const r = el.getBoundingClientRect(); taken.push([r.left - host.left - 2, r.top - host.top - 1, r.right - host.left + 2, r.bottom - host.top + 1]); });
-      ctx.save(); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round'; ctx.globalAlpha = 1;
-      ctx.font = '700 11.5px "IBM Plex Sans Hebrew", "Segoe UI", system-ui, sans-serif';
-      for (const c of cands.sort((a, b) => b.area - a.area)) {
-        let done = false;
-        for (const text of [c.full, c.short]) {
-          const w = ctx.measureText(text).width + 6, h = 15; if (w > c.room) continue;
-          for (const p of c.pts) {
-            const box = [p.x - w / 2, p.y - h / 2, p.x + w / 2, p.y + h / 2];
-            if (box[0] < 2 || box[1] < 2 || box[2] > size.x - 2 || box[3] > size.y - 2) continue;
-            if (taken.some(b => box[0] < b[2] && box[2] > b[0] && box[1] < b[3] && box[3] > b[1])) continue;
-            taken.push(box); ctx.lineWidth = 3.5; ctx.strokeStyle = halo; ctx.strokeText(text, p.x, p.y); ctx.fillStyle = textCol; ctx.fillText(text, p.x, p.y); done = true; break;
-          }
-          if (done) break;
-        }
-      }
-      ctx.restore();
-    }, 120);
+    this.fire('drawn');
   }
 }

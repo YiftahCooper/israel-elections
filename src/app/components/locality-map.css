@@ -24,7 +24,11 @@
 }
 @media (max-width: 999px) { .locality-map-canvas { height: 72vh; } }
 .locality-map-results { border: 1px solid var(--rule, #dde2e7); border-radius: 6px; padding: 10px 12px; }
-.locality-share { display: grid; grid-template-columns: minmax(70px, 1fr) 48px; align-items: center; gap: 6px; min-width: 140px; }
+/* the share column fits "100.000%" and is right-aligned, so with the padded decimals the points line up row to row */
+.locality-share { display: grid; grid-template-columns: minmax(70px, 1fr) 8.5ch; align-items: center; gap: 6px; min-width: 140px; }
+.locality-share > .tabnum { text-align: right; }
+/* on a phone the bar gives way first, so the share itself is never cut off at the table's edge */
+@media (max-width: 480px) { .locality-share { grid-template-columns: minmax(36px, 1fr) 8.5ch; min-width: 0; } }
 .locality-share i { display: block; height: 10px; border-radius: 2px; min-width: 2px; }
 /* data graphics read left to right in Hebrew too: share bars grow from the left */
 .locality-share { direction: ltr; }
@@ -41,6 +45,10 @@
   text-shadow: 0 0 2px var(--surface), 0 0 3px var(--surface), 0 0 5px var(--surface); }
 .locality-map-label.rtl { direction: rtl; text-align: right; }
 .locality-map-canvas .leaflet-tooltip .locality-map-tip { display: grid; gap: 1px; }
+/* a place's box opens above it and wraps, so on a phone it stays inside the map */
+.locality-map-canvas .leaflet-tooltip { white-space: normal; width: max-content; max-width: min(320px, calc(100vw - 72px));
+  /* Leaflet places it by transform from its static position, which in a right-to-left page is the right edge */
+  left: 0; top: 0; }
 .locality-map-results h3 { margin-block: 0 4px; }
 .locality-verdict { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; margin-block: 0 8px; }
 .locality-map-facts { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; margin-block: 8px; }
@@ -50,6 +58,8 @@
 [data-theme="dark"] .locality-map-canvas .leaflet-tooltip { color: var(--ink); background: var(--surface); border-color: var(--rule-2); }
 [data-theme="dark"] .locality-map-canvas .leaflet-tooltip-right::before { border-right-color: var(--surface); }
 [data-theme="dark"] .locality-map-canvas .leaflet-tooltip-left::before { border-left-color: var(--surface); }
+[data-theme="dark"] .locality-map-canvas .leaflet-tooltip-top::before { border-top-color: var(--surface); }
+[data-theme="dark"] .locality-map-canvas .leaflet-tooltip-bottom::before { border-bottom-color: var(--surface); }
 .locality-map-tool details ul { list-style: none; padding: 0; margin-block: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
 .locality-map-tool details > summary { padding-block: 4px; min-height: 24px; cursor: pointer; }
 
