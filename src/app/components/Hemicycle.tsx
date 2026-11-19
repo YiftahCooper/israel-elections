@@ -445,6 +445,8 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     const name = memberName(c);
     return [{ seat: i, names: [candidateName(c, 'he'), candidateName(c, 'en'), name], label: L(`${name} · ${listLabel(l, lang)} #${place}`, `${name} · ${listLabel(l, lang)}, מקום ${place}`) }];
   }), [seats, lang, originalDataset]); // eslint-disable-line react-hooks/exhaustive-deps
+  // the chart's members, so Find an MK can tell who entered after the first sitting (FindMk laterMembers)
+  const seatedIds = useMemo(() => seats.flatMap((st) => { const c = seatedOrder(listOf(st.listId))[st.idx]; return c ? [c.id] : []; }), [seats]); // eslint-disable-line react-hooks/exhaustive-deps
   const found = foundSeat(mkEntries, findQ, findPick);
   const foundLabel = found === null ? null : mkEntries.find((e) => e.seat === found)!.label;
   /** The found seat's ring and its name over it (under it in the top row), kept inside the drawing [x0, x1]. */
@@ -554,7 +556,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       </div>}
       {/* on the board the bloc bar directly below already carries this line; Compare's chambers stand alone */}
       {compactProp && <BlocMajorities s={s} r={r} />}
-      {!compactProp && mkEntries.length > 0 && <FindMk entries={mkEntries} query={findQ} onQuery={setFindQ} pick={findPick} onPick={setFindPick} />}
+      {!compactProp && mkEntries.length > 0 && <FindMk entries={mkEntries} query={findQ} onQuery={setFindQ} pick={findPick} onPick={setFindPick} knesset={Number(s.electionId.slice(1))} seatedCandidateIds={seatedIds} />}
       {body}
       {/* spoken seat names with a Hebrew name on an English page (or the reverse) are marked with the name's language */}
       {seatNames.map((n, i) => <LangLabel key={i} id={`${seatId}-${i}`} text={n} />)}

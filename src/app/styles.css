@@ -371,6 +371,9 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .find-mk input { width: 14em; max-width: 100%; min-height: 44px; }
 @media (max-width: 600px) { .find-mk-choices .btn { min-height: 44px; } }
 .find-mk-result { color: var(--ink); font-weight: 600; }
+/* someone who entered after the first sitting: the dates in plain weight on a line of their own, with the history button */
+.find-mk-result:has(.find-mk-later) { flex-basis: 100%; }
+.find-mk-later { font-weight: 400; }
 .find-mk-choices { display: flex; flex-wrap: wrap; gap: 4px; flex-basis: 100%; }
 .chamber svg.finding :is(.seat, .seat-btn image):not(.found) { opacity: .2; }
 .chamber .found-mark circle, .chamber .found-mark rect { fill: none; stroke: var(--ink); stroke-width: 4px; }
