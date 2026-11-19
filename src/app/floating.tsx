@@ -30,8 +30,14 @@ export function useFloating(ref: RefObject<HTMLElement | null>, anchor: () => Fl
   useLayoutEffect(() => {
     const el = ref.current;
     if (!el || !open) return;
-    if (managePopover) { el.popover = 'manual'; if (!el.matches(':popover-open')) el.showPopover(); }
     const place = () => { const a = latestAnchor.current(); if (a) positionFloating(el, a, preferAbove); };
+    if (managePopover) {
+      el.popover = 'manual';
+      const show = () => { if (el.isConnected && !el.matches(':popover-open')) el.showPopover(); };
+      // a popup asked for while another one is still opening or closing (a pointer left resting where a closing
+      // window was) is shown a frame later: the browser refuses two at once, and the refusal must not break the screen
+      try { show(); } catch { requestAnimationFrame(() => { try { show(); place(); } catch { /* gone or refused: nothing to show */ } }); }
+    }
     place();
     const observer = new ResizeObserver(place); observer.observe(el);
     addEventListener('scroll', place, true); addEventListener('resize', place);

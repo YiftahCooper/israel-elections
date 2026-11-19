@@ -504,6 +504,29 @@ describe('researched runs and recorded reasons', () => {
     expect(silman.events.find((e) => e.kind === 'left')).toMatchObject({ date: '2022-09-13', reason: 'ordinary-resignation' });
     const codes = new Set(Object.values(rt.people).flatMap((p) => p.terms.map((t) => t[4]).filter((r): r is string => !!r)));
     expect(codes.size).toBeGreaterThan(1);
-    for (const c of codes) for (const lang of ['en', 'he'] as const) expect(reasonWords(c, false, lang), `${c} ${lang}`).not.toBeNull();
+    for (const c of codes) for (const g of ['f', 'm', null] as const) for (const lang of ['en', 'he'] as const) expect(reasonWords(c, g, lang), `${c} ${g} ${lang}`).not.toBeNull();
+  });
+});
+
+describe('gender comes only from the Knesset’s own record of the person', () => {
+  it('every person with a history who is in the Knesset’s current person table has its gender; anyone else has none', () => {
+    const doc = JSON.parse(readFileSync('data/raw/bios/knesset-person-gender.json', 'utf8')) as { female: number[]; male: number[] };
+    const f = new Set(doc.female), m = new Set(doc.male);
+    for (const [id, p] of Object.entries(rt.people)) expect(p.gender, `person ${id}`).toBe(f.has(Number(id)) ? 'f' : m.has(Number(id)) ? 'm' : null);
+    const known = Object.values(rt.people).filter((p) => p.gender !== null).length;
+    expect(known).toBeGreaterThanOrEqual(1149);
+  });
+  it('Maha Karkabi Sabbah is recorded female (the 4 Nov snapshot said male); Dror David Amos has no current record: neutral', () => {
+    expect(rt.people[30951].gender).toBe('f');
+    expect(mkView(rt, 30951)!.gender).toBe('f');
+    expect(rt.people[30989]?.gender ?? null).toBeNull();
+    expect(rt.people[SHAKED].gender).toBe('f');
+    expect(rt.people[BEN_GURION].gender).toBe('m');
+  });
+  it('a reason has a neutral Hebrew form for someone the record gives no gender for', () => {
+    expect(reasonWords('ordinary-resignation', 'f', 'he')).toBe('התפטרה');
+    expect(reasonWords('ordinary-resignation', 'm', 'he')).toBe('התפטר');
+    expect(reasonWords('ordinary-resignation', null, 'he')).toBe('התפטרות');
+    expect(reasonWords('death', null, 'he')).toBe('פטירה בעת הכהונה');
   });
 });

@@ -90,9 +90,10 @@ for (const max of [0, 3]) test(`the turnout figure takes its field's precision o
   expect(await positions()).toEqual(before); expect(await page.evaluate(() => scrollY)).toBe(y);
   await page.keyboard.press('Escape');
   await expect(value).toHaveText(max === 0 ? '78%' : '77.979%');
-  // the Turnout tab: the field is always under the tile
+  // the Turnout tab: its tile reads at the field's precision (the field is in the tile's own window)
   await page.locator('#tab-turnout').click();
   await expect(page.locator('.turnout')).toBeVisible();
-  await expect(page.locator('.turnout-national').getByRole('textbox', { name: 'Turnout %' })).toHaveValue('77.98');
   await expect(page.locator('.turnout [data-fact="turnout"] .tn-v')).toHaveText('77.98%');
+  await page.locator('.turnout [data-fact="turnout"] .tile-pencil').click();
+  await expect(page.locator('.tile-pop').getByRole('textbox', { name: 'Turnout %' })).toHaveValue('77.98');
 });

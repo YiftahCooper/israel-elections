@@ -139,3 +139,24 @@ test('an MK elected in 2026: the 26th Knesset opened on 10 Nov 2026, the time in
   const k26 = card(page).locator('.mk-rows > li').filter({ hasText: '26th Knesset' });
   await expect(k26.locator('.mk-pending')).toHaveText('Opened on 10 Nov 2026; time in it not yet in our records');
 });
+
+// Round 8, 19 Nov 2026 (card mk-career wording): "Her history" / "His history" only where the Knesset's own record of
+// the person gives the gender; anyone it has no record for gets neutral words, in both languages. Never from a name.
+test('the seat button is gendered only from the Knesset’s record: Karkabi Sabbah hers, Amos neutral', async ({ page }) => {
+  await start(page, { k: 'k26' });
+  await hoverSeat(page, 'Joint List', 7);
+  await expect(page.locator('.tip').getByRole('button', { name: 'Her history' })).toBeVisible();
+  await hoverSeat(page, 'Shas', 6);
+  const neutral = page.locator('.tip').getByRole('button', { name: 'MK history' });
+  await expect(neutral).toBeVisible();
+  await neutral.click();
+  await expect(card(page).locator('.mk-rows > li').first()).toContainText('Elected');
+  await expect(card(page).locator('.mk-key')).toContainText('their time in it');
+});
+test('Hebrew: neutral words for someone without a Knesset record', async ({ page }) => {
+  await start(page, { lang: 'he', k: 'k26' });
+  await hoverSeat(page, 'ש״ס', 6, 'מקום');
+  await page.locator('.tip').getByRole('button', { name: 'המסלול בכנסת', exact: true }).click();
+  await expect(card(page).locator('.mk-rows > li').first()).toContainText('בין הנבחרים');
+  await expect(card(page).locator('.mk-key')).toContainText('הצבוע – זמן הכהונה בה');
+});

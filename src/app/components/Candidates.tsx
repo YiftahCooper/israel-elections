@@ -71,8 +71,8 @@ export function Candidates({ l, seats, baseSeats, baseCandidates, notSeatedWhy =
       {l.rosterTruncated && !l.rosterUnavailable && <p className="small callout">{L(`Only the first ${c.length} candidates of this list’s official roster are available here (everyone elected is included); later names were not transcribed.`, `כאן זמינים רק ${c.length} המועמדים הראשונים ברשימה הרשמית (כולל כל הנבחרים); השמות שאחריהם לא הוקלדו.`)}</p>}
       {!simple && !l.rosterUnavailable && <div className="kv small" style={{ marginBottom: 8 }}>
         <span>{l.rosterTruncated ? L('Candidates available', 'מועמדים זמינים') : L('Registered candidates', 'מועמדים ברשימה')}</span><span>{c.length}</span>
-        <span>{L('Last elected', 'האחרון שנבחר')}</span><span>{lastIn ? <><MkName candidate={lastIn}><CandidateName candidate={lastIn} note={false} /></MkName> <span className="muted">(#{c.indexOf(lastIn) + 1})</span></> : '—'}</span>
-        <span>{L('Next in line', 'הבא בתור')}</span><span>{nextIn ? <><MkName candidate={nextIn}><CandidateName candidate={nextIn} note={false} /></MkName> <span className="muted">(#{c.indexOf(nextIn) + 1})</span></> : l.rosterTruncated ? L('not available', 'לא זמין') : L('none', 'אין')}</span>
+        <span>{L('Last elected', 'המקום האחרון שנבחר')}</span><span>{lastIn ? <><MkName candidate={lastIn}><CandidateName candidate={lastIn} note={false} /></MkName> <span className="muted">(#{c.indexOf(lastIn) + 1})</span></> : '—'}</span>
+        <span>{L('Next in line', 'המקום הבא בתור')}</span><span>{nextIn ? <><MkName candidate={nextIn}><CandidateName candidate={nextIn} note={false} /></MkName> <span className="muted">(#{c.indexOf(nextIn) + 1})</span></> : l.rosterTruncated ? L('not available', 'לא זמין') : L('none', 'אין')}</span>
       </div>}
       {baseCandidates && JSON.stringify(baseCandidates) !== JSON.stringify(c) && <button className="btn small" style={{ marginBottom: 6 }} onClick={() => dispatch({ type: 'resetCandidates', listId: l.id })}>{L('Restore the registered candidate list', 'שחזור רשימת המועמדים הרשומה')}</button>}
       {seats > seated.length && !l.rosterUnavailable && !l.rosterTruncated && <p className="bad small">{L(`The list has only ${seated.length === 1 ? '1 candidate' : `${seated.length} candidates`} for ${seats} seats.`, `ברשימה ${seated.length === 1 ? 'מועמד אחד בלבד' : `רק ${seated.length} מועמדים`} ל־${seats} מנדטים.`)}</p>}
@@ -117,7 +117,7 @@ export function Candidates({ l, seats, baseSeats, baseCandidates, notSeatedWhy =
                   <button className="btn small ghost icon-only" aria-label={L('Insert candidate below', 'הוספת מועמד מתחת')} onClick={() => { const next = [...c]; next.splice(i + 1, 0, { id: `new-${Date.now().toString(36)}`, nameHe: L('New candidate', 'מועמד חדש') }); commit(next, 'insert'); }}><Plus className="icon sm" aria-hidden /></button>
                   <button className="btn small ghost danger icon-only" aria-label={L('Remove', 'הסרה')} onClick={() => commit(c.filter((y) => y.id !== x.id), `remove ${x.nameHe}`)}><X className="icon sm" aria-hidden /></button>
                 </span>
-              ) : <span className="tiny muted">{x.notSeated ? <>{L('not seated', 'לא כיהן')}{notSeatedWhy[x.id] && <> <Info label={L('Why not seated', 'למה לא כיהן')} title={L('Not seated', 'לא כיהן')}><span lang="he" dir="rtl">{notSeatedWhy[x.id]}</span></Info></>}</> : elected ? <span className="sr-only">{L('elected', 'נבחר')}</span> : x === nextIn ? L('next in line', 'הבא בתור') : ''}</span>}
+              ) : <span className="tiny muted">{x.notSeated ? <>{L('not seated', 'ללא כהונה')}{notSeatedWhy[x.id] && <> <Info label={L('Why not seated', 'למה אין כהונה')} title={L('Not seated', 'ללא כהונה')}><span lang="he" dir="rtl">{notSeatedWhy[x.id]}</span></Info></>}</> : elected ? <span className="sr-only">{L('elected', 'בין הנבחרים')}</span> : x === nextIn ? L('next in line', 'המקום הבא בתור') : ''}</span>}
             </li>
           );
         })}

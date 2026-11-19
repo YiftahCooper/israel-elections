@@ -120,8 +120,8 @@ for (const lang of ['en', 'he'] as const) {
     await expect(details(page).getByRole('heading', { name: H ? 'הערות על המקורות' : 'Notes on the sources (in Hebrew)', exact: true })).toBeVisible();
     await expect(details(page).locator('.disclosure-toggle')).not.toContainText([H ? 'הערות רשמיות לרשימה' : 'Official list notes']);
     const dayan = details(page).locator('.cands li').filter({ hasText: 'דיין משה' });
-    await expect(dayan).toContainText(H ? 'לא כיהן' : 'not seated');
-    await dayan.getByRole('button', { name: H ? 'למה לא כיהן' : 'Why not seated', exact: true }).click();
+    await expect(dayan).toContainText(H ? 'ללא כהונה' : 'not seated');
+    await dayan.getByRole('button', { name: H ? 'למה אין כהונה' : 'Why not seated', exact: true }).click();
     await expect(page.locator('.pop').filter({ hasText: 'אינו מופיע בין הנבחרים' })).toBeVisible();
   });
 

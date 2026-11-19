@@ -10,15 +10,16 @@ async function open(page: Page, lang: 'en' | 'he', election = 'k25') {
   return page.locator('#analysis-panel');
 }
 
-test('section reset appears only when it would change something', async ({ page }) => {
+test('the turnout tile\'s Reset appears only when it would change something', async ({ page }) => {
   const panel = await open(page, 'en');
-  const national = panel.locator('.turnout-national');
-  await expect(national.locator('.start-from button')).toHaveCount(0); // nothing to reset or copy yet
-  await national.getByRole('button', { name: 'Increase Turnout %', exact: true }).click();
-  const reset = national.getByRole('button', { name: 'Official turnout', exact: true });
+  await panel.locator('[data-fact="turnout"] .tile-pencil').click();
+  const pop = page.locator('.tile-pop');
+  await expect(pop.getByRole('button', { name: /^Reset/ })).toHaveCount(0); // nothing to reset yet
+  await pop.getByRole('button', { name: 'Increase Turnout %', exact: true }).click();
+  const reset = pop.getByRole('button', { name: /^Reset/ });
   await expect(reset).toBeVisible();
   await reset.click();
-  await expect(national.locator('.start-from button')).toHaveCount(0);
+  await expect(pop.getByRole('button', { name: /^Reset/ })).toHaveCount(0);
 });
 
 test('a sourced voter group adds measured voters, saves, exports and imports', async ({ page }) => {

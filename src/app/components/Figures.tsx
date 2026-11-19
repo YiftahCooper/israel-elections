@@ -5,8 +5,9 @@ import { useFloating } from '../floating.tsx';
 import { useDisclosure } from './Feature.tsx';
 import { EditMarker } from './EditMarker.tsx';
 // Each figure opens the same independent popover without resizing the board.
-import { useId, useRef, useState, type ReactNode } from 'react';
-import { ChevronDown, ChevronUp, X } from 'lucide-react';
+import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
+import { ChevronDown, ChevronUp, Pencil, X } from 'lucide-react';
+import { holdHeight, TileEditor, TileEditedMark, tileEditable, type TileField } from './TileEdit.tsx';
 import { useCloseOnFocusAway } from '../focusReturn.ts';
 import type { ElectionDataset } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
@@ -14,12 +15,13 @@ import { votesCast, type Scenario } from '../../model/scenario.ts';
 import { listLabel, methodOf, quotaFormula, referenceLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat } from '../format.ts';
-import { dispatch, setState, useDigits, useShown } from '../store.ts';
-import { DecimalInput, Info } from './ui.tsx';
+import { setState, useDigits, useShown } from '../store.ts';
+import { Info } from './ui.tsx';
 import { TURNOUT_FIELD_DIGITS } from './TurnoutSteps.tsx';
 
-/** vOpen: the value while the popover is open, when the popover holds a field for it (lay-turnout) */
-function Fig({ k, term, v, vOpen, d, children }: { k: string; term?: string; v: ReactNode; vOpen?: ReactNode; d?: ReactNode; children?: ReactNode }) {
+/** vOpen: the value while the popover is open, when the popover holds a field for it (lay-turnout).
+ *  edit: the number this tile changes; its window then opens with the field (TileEdit.tsx), and a pencil marks it. */
+function Fig({ k, term, v, vOpen, d, edit, children }: { k: string; term?: string; v: ReactNode; vOpen?: ReactNode; d?: ReactNode; edit?: { s: Scenario; field: TileField }; children?: ReactNode }) {
   const L = useL();
   const popoverId = useId();
   const pop = useRef<HTMLDivElement>(null);
@@ -29,15 +31,18 @@ function Fig({ k, term, v, vOpen, d, children }: { k: string; term?: string; v: 
   // that has focus; read from the element, since its toggle event comes a moment after the press
   useCloseOnFocusAway(true, t => !pop.current?.matches(':popover-open') || pop.current.contains(t) || !!trigger.current?.contains(t), () => pop.current?.hidePopover());
   useFloating(pop, () => trigger.current?.getBoundingClientRect(), isOpen, false);
-  if (!children) return <div className="fig static"><span className="k"><span>{k}</span></span><span className="v"><bdi dir="ltr">{v}</bdi></span>{d && <span className="d">{d}</span>}</div>;
+  const editable = !!edit && tileEditable(edit.s, edit.field);
+  // with a mouse or keyboard the field takes focus at once; on a touch screen it waits for a tap (no keyboard yet)
+  useEffect(() => { if (isOpen && editable && matchMedia('(pointer: fine)').matches) pop.current?.querySelector<HTMLInputElement>('.tile-editor input')?.focus({ preventScroll: true }); }, [isOpen, editable]);
+  if (!children && !editable) return <div className="fig static"><span className="k"><span>{k}</span></span><span className="v"><bdi dir="ltr">{v}</bdi></span>{d && <span className="d">{d}</span>}</div>;
   return (
-    <div className={`fig ${isOpen ? 'open' : ''}`}>
-      <button ref={trigger} type="button" aria-expanded={isOpen} aria-controls={popoverId} popoverTarget={popoverId}>
-        <span className="k"><span>{k}</span>{isOpen ? <ChevronUp className="icon sm" aria-hidden /> : <ChevronDown className="icon sm" aria-hidden />}</span>
+    <div className={`fig ${isOpen ? 'open' : ''}${editable ? ' tile-editable' : ''}`}>
+      <button ref={trigger} type="button" aria-expanded={isOpen} aria-controls={popoverId} popoverTarget={popoverId} aria-description={editable ? L('Can be changed', 'ניתן לשינוי') : undefined}>
+        <span className="k"><span>{k}</span>{editable ? <Pencil className="icon sm tile-pencil-mark" aria-hidden /> : isOpen ? <ChevronUp className="icon sm" aria-hidden /> : <ChevronDown className="icon sm" aria-hidden />}</span>
         <span className="v"><bdi dir="ltr">{isOpen && vOpen !== undefined ? vOpen : v}</bdi></span>
         {d && <span className="d">{d}</span>}
       </button>
-      <div id={popoverId} ref={pop} className="more" popover="auto" onToggle={e => { setOpen(e.newState === 'open'); }}><div className="more-head"><b>{k}</b><button className="btn ghost icon-only" aria-label={L('Close', 'סגירה')} onClick={() => pop.current?.hidePopover()}><X className="icon sm" aria-hidden /></button></div>{children}{term && <div className="row small ink2" style={{ marginTop: 8, gap: 4 }}>{L('Definition and source', 'הגדרה ומקור')} <Info term={term} label={`${k}: ${L('definition and source', 'הגדרה ומקור')}`} /></div>}</div>
+      <div id={popoverId} ref={pop} className="more" popover="auto" onToggle={e => { setOpen(e.newState === 'open'); if (editable) holdHeight(trigger.current, e.newState === 'open'); }}><div className="more-head"><b>{k}</b><button className="btn ghost icon-only" aria-label={L('Close', 'סגירה')} onClick={() => pop.current?.hidePopover()}><X className="icon sm" aria-hidden /></button></div>{editable && isOpen && <TileEditor s={edit!.s} field={edit!.field} title={false} close={() => { pop.current?.hidePopover(); trigger.current?.focus({ preventScroll: true }); }} />}{children}{term && <div className="row small ink2" style={{ marginTop: 8, gap: 4 }}>{L('Definition and source', 'הגדרה ומקור')} <Info term={term} label={`${k}: ${L('definition and source', 'הגדרה ומקור')}`} /></div>}</div>
     </div>
   );
 }
@@ -67,8 +72,8 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
   return (
     <div className="figures" data-valid-votes={fmtInt(r.totalValid)}>
       {noThreshold
-        ? <Fig k={L('Threshold', 'אחוז החסימה')} v={L('None', 'אין')}><p className="small">{L('No percentage threshold in this election.', 'בבחירות אלה לא נקבע אחוז חסימה.')}</p></Fig>
-        : <Fig k={L('Threshold', 'אחוז החסימה')} term="threshold" v={fmtInt(r.thresholdVotes)} d={`${thrPct}% ${L('of valid votes', 'מהכשרים')}`}>
+        ? <Fig k={L('Threshold', 'אחוז החסימה')} v={<>{L('None', 'אין')}<EditMarker s={s} path={['rules', 'thresholdPct']} outlet="figures" /></>} edit={{ s, field: 'threshold' }}><p className="small">{L('No percentage threshold in this election.', 'בבחירות אלה לא נקבע אחוז חסימה.')}</p></Fig>
+        : <Fig k={L('Threshold', 'אחוז החסימה')} term="threshold" v={<>{fmtInt(r.thresholdVotes)}<EditMarker s={s} path={['rules', 'thresholdPct']} outlet="figures" /></>} d={`${thrPct}% ${L('of valid votes', 'מהכשרים')}`} edit={{ s, field: 'threshold' }}>
             {expert && <div className="formula" style={{ marginBottom: 8 }}>⌈{thrPct}% × {fmtInt(r.totalValid)}⌉ = {fmtInt(r.thresholdVotes)}</div>}
             {near.length ? <table className="tbl"><thead><tr><th>{L('Lists near the threshold', 'רשימות סביב החסימה')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('Distance', 'מרחק')}</th></tr></thead>
               <tbody>{near.map(({ l }) => <tr key={l.id} ><td><button className="table-action" onClick={() => select(l.id)}>{listLabel(l, lang)}</button></td><td className="n">{fmtInt(l.votes)}</td><td className="n">{signed(l.votes - thr)}</td></tr>)}</tbody></table>
@@ -92,16 +97,11 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
         <p className="small" style={{ margin: '4px 0 0' }}>{noThreshold ? <QualifyingNoThreshold s={s} r={r} seatlessVotes={seatlessVotes} /> : <>{L(`${r.lists.filter(x => x.qualified).length} qualifying lists`, `${r.lists.filter(x => x.qualified).length} רשימות משתתפות`)} <Info title={L('Qualifying votes', 'קולות משתתפים')}>{L(`The votes of the ${r.lists.filter((x) => x.qualified).length} lists that passed the threshold; only these share the seats. ${fmtInt(r.unrepresentedVotes)} valid votes went to lists that did not.`, `הקולות של ${r.lists.filter((x) => x.qualified).length} הרשימות שעברו את החסימה; רק הן מתחלקות במנדטים. ${fmtInt(r.unrepresentedVotes)} קולות כשרים ניתנו לרשימות שלא עברו.`)}</Info></>}</p></div>}
       </Fig>
 
-      <Fig k={L('Turnout', 'שיעור ההצבעה')} term="turnout" v={percent(cast, s.registered, digits)} vOpen={percent(cast, s.registered, TURNOUT_FIELD_DIGITS)} d={fmtPct(cast, s.registered, digits) === fmtPct(ds.totals.votesCast, ds.totals.registered, digits) ? `${fmtInt(cast)} ${L('ballots cast', 'מצביעים')}` : <>{referenceLabel(null, lang).name} {percent(ds.totals.votesCast, ds.totals.registered, digits)}</>}>
-        <div className="row">
-          <label className="row small">{L('Set turnout to', 'קביעת שיעור ההצבעה ל-')}
-            <DecimalInput value={s.registered ? (cast / s.registered) * 100 : 0} digits={TURNOUT_FIELD_DIGITS} width={86} label={L('Turnout %', 'שיעור הצבעה %')} onCommit={(p) => dispatch({ type: 'setTurnout', pct: p })} />% <Info title={L('Proportional turnout', 'הצבעה יחסית')}>{L('Every list, and the invalid ballots, grows or shrinks in proportion.', 'כל הרשימות, והקולות הפסולים, גדלים או קטנים באופן יחסי.')}</Info></label>
-          {Math.abs(cast - ds.totals.votesCast) > 0 && s.registered === ds.totals.registered && <button className="btn small" onClick={() => dispatch({ type: 'setTurnout', pct: (ds.totals.votesCast / ds.totals.registered) * 100 })}>{L('Restore turnout', 'שחזור ההצבעה')}</button>}
-        </div>
+      <Fig k={L('Turnout', 'שיעור ההצבעה')} term="turnout" v={<>{percent(cast, s.registered, digits)}<TileEditedMark s={s} field="turnout" /></>} vOpen={<>{percent(cast, s.registered, TURNOUT_FIELD_DIGITS)}<TileEditedMark s={s} field="turnout" /></>} d={fmtPct(cast, s.registered, digits) === fmtPct(ds.totals.votesCast, ds.totals.registered, digits) ? `${fmtInt(cast)} ${L('ballots cast', 'מצביעים')}` : <>{referenceLabel(null, lang).name} {percent(ds.totals.votesCast, ds.totals.registered, digits)}</>} edit={{ s, field: 'turnout' }}>
         <div className="kv small"><span>{L('Registered voters', 'בעלי זכות בחירה')}</span><span>{fmtInt(s.registered)}</span><span>{L('Ballots cast', 'מצביעים')}</span><span>{fmtInt(cast)}</span><span>{L('Invalid ballots', 'קולות פסולים')}</span><span>{fmtInt(s.invalid)}</span></div>
       </Fig>
 
-      {standard && <Fig k={L('Invalid ballots', 'קולות פסולים')} term="invalid-votes" v={<>{fmtInt(s.invalid)}<EditMarker s={s} path={['invalid']} /></>} d={<>{percent(s.invalid, cast, digits)} {L('of ballots cast', 'מהמצביעים')}</>}>
+      {standard && <Fig k={L('Invalid ballots', 'קולות פסולים')} term="invalid-votes" v={<>{fmtInt(s.invalid)}<EditMarker s={s} path={['invalid']} /></>} d={<>{percent(s.invalid, cast, digits)} {L('of ballots cast', 'מהמצביעים')}</>} edit={{ s, field: 'invalid' }}>
         {/* the valid votes are the complement of this card, so they are its breakdown rather than a card beside it */}
         <p className="small" style={{ margin: 0 }}><Info title={L('Invalid ballots', 'קולות פסולים')}>{L('Ballots the polling committees disqualified. They count towards turnout but not towards the threshold or the seats.', 'פתקים שוועדות הקלפי פסלו. הם נספרים בשיעור ההצבעה אך לא באחוז החסימה ובמנדטים.')}</Info>{s.invalid !== ds.totals.invalid && ` ${referenceLabel(null, lang).name}: ${fmtInt(ds.totals.invalid)}.`}</p>
         <div className="kv small"><span>{L('Ballots cast', 'מצביעים')}</span><span>{fmtInt(cast)}</span><span>{L('Invalid ballots', 'קולות פסולים')}</span><span>{fmtInt(s.invalid)}</span><span><b>{L('Valid votes', 'קולות כשרים')}</b></span><span><b>{fmtInt(r.totalValid)}</b></span></div>

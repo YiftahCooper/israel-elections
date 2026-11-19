@@ -23,6 +23,8 @@ const ALLOWED: { file: string; has: string; why: string }[] = [
   { file: 'PartyHistory.tsx', has: 'fmtPct(p.votes, p.valid, digits)}${own}`', why: 'aria-label and title of a history bar; the selected-election card and the table use Percentage' },
   { file: 'TurnoutFacts.tsx', has: "${L('turnout', 'הצבעה')} ${fmtPct(", why: 'aria-label of a chart column; the readout and the table beside it use Percentage' },
   { file: 'Figures.tsx', has: 'd={fmtPct(cast, s.registered, digits) === fmtPct(', why: 'a comparison of two rounded strings, not output' },
+  { file: 'TileEdit.tsx', has: '`${official.toFixed(TURNOUT_FIELD_DIGITS)}%` : `${trimDecimal(', why: 'Reset’s official value beside the field it resets, at the field’s own digits' },
+  { file: 'TileEdit.tsx', has: "const text = field === 'turnout' ? `${official.toFixed(TURNOUT_FIELD_DIGITS)}%`", why: 'hover text of the edit mark: the official value at the field’s digits' },
 ];
 const TOKEN = /\bfmtPct\(|\bfmtPctNum\(|\bfmtPoints\(|\bnonZeroFixed\(|\.toFixed\(/;
 
