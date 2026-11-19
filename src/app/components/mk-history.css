@@ -31,7 +31,7 @@
 .mk-bar.has-marks { margin-block-start: 13px; }
 /* a recorded event: a short ink line across the bar, its number over it (owner, 19 Nov 2026: no arrow) */
 .mk-mark { position: absolute; inset-block: -5px -3px; inline-size: 2px; background: var(--ink); transform: translateX(-1px); z-index: 1; }
-.mk-mark > b { position: absolute; inset-block-end: 100%; inset-inline-start: 50%; transform: translateX(-50%); font-size: 11px; line-height: 1; font-weight: 700; color: var(--ink); }
+.mk-mark > b { position: absolute; inset-block-end: 100%; inset-inline-start: 50%; transform: translateX(-50%); font-size: 11px; line-height: 1; font-weight: 700; color: var(--ink); white-space: nowrap; }
 .mk-res { min-inline-size: 0; }
 .mk-row.out .mk-res, .mk-row.out .mk-list b, .mk-row.withdrawn .mk-res, .mk-row.withdrawn .mk-list b { color: var(--ink-2); }
 .mk-block { display: block; }

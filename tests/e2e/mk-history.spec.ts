@@ -169,7 +169,8 @@ test('Eichler: numbered event lines match the lines under the row; days without 
   await page.locator('.tip').getByRole('button', { name: 'His history' }).click();
   const c = card(page), row = c.locator('.mk-rows > li').filter({ hasText: '25th Knesset' });
   await expect(c).not.toContainText('▼');
-  await expect(row.locator('.mk-mark b')).toHaveText(['1', '2']);
+  // four days apart: one line, numbered 1–2, never two numbers drawn over each other
+  await expect(row.locator('.mk-mark b')).toHaveText(['1–2']);
   await expect(row.locator('.mk-events .mk-enum[aria-label]')).toHaveText(['1', '2']);
   await expect(row.locator('.mk-events li').filter({ has: page.getByLabel('Event 1', { exact: true }) })).toContainText('15 Jan 2026');
   const unrec = row.locator('.mk-unrec');

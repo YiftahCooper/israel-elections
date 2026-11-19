@@ -277,6 +277,10 @@ function TermBar({ r, v, nums }: { r: MkRow; v: MkView; nums: Map<MkEvent, numbe
     ? r.terms.map((t) => t.ongoing ? L(`from ${formatDate(t.start, 'en')}`, `מ־${formatDate(t.start, 'he')}`) : `${formatDate(t.start, lang)} – ${formatDate(t.end, lang)}`).join(' · ')
     : L(`Not in this Knesset (${monthYear(r.opening, 'en')} – ${monthYear(r.end, 'en')})`, `${g(v.gender, 'לא כיהן', 'לא כיהנה', 'ללא כהונה')} בכנסת זו (${monthYear(r.opening, 'he')} – ${monthYear(r.end, 'he')})`);
   const marks = r.events.filter((e) => e.kind === 'recorded');
+  // events too close to number apart (Eichler: 15 and 19 Jan 2026) share one line, numbered "1–2"
+  const near: MkEvent[][] = [];
+  for (const e of marks) { const last = near.at(-1); if (last && ((x(e.date) - x(last[0].date)) / W) * px < 22) last.push(e); else near.push([e]); }
+  const numbered = (es: MkEvent[]) => { const n = es.map((e) => nums.get(e) ?? 0); return n.length === 1 ? `${n[0]}` : n.every((k, i) => !i || k === n[i - 1] + 1) ? `${n[0]}–${n.at(-1)}` : n.join(','); };
   return <>
     <div className={`mk-bar${marks.length ? ' has-marks' : ''}`} dir="ltr" ref={ref} style={{ inlineSize: `${W}%` }} role="img" aria-label={caption}>
       {r.terms.flatMap((t) => t.unrecorded).map((g, i) => <span key={`u${i}`} className="mk-seg mk-unrec" title={L('Faction not recorded', 'הסיעה לא תועדה')}
@@ -289,7 +293,8 @@ function TermBar({ r, v, nums }: { r: MkRow; v: MkView; nums: Map<MkEvent, numbe
           title={name}>{fits && <span className="mk-segname">{name}</span>}</span>;
       })}
       {/* a recorded event: a short ink line across the bar, numbered as in the lines under the row (owner, 19 Nov 2026: no arrow) */}
-      {marks.map((e, i) => <span key={i} className="mk-mark" style={{ insetInlineStart: `${(x(e.date) / W) * 100}%` }} title={`${nums.get(e) ?? ''} · ${formatDate(e.date, lang)}: ${lang === 'he' ? e.text!.he : e.text!.en}`}><b>{nums.get(e)}</b></span>)}
+      {near.map((es, i) => <span key={i} className="mk-mark" style={{ insetInlineStart: `${(x(es[0].date) / W) * 100}%` }}
+        title={es.map((e) => `${nums.get(e) ?? ''} · ${formatDate(e.date, lang)}: ${lang === 'he' ? e.text!.he : e.text!.en}`).join('\n')}><b>{numbered(es)}</b></span>)}
     </div>
     <span className="tiny ink2 mk-block">{caption}</span>
   </>;
