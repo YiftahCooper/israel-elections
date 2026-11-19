@@ -5,3 +5,8 @@ export function ResultPreview({ s, blocs = true, party = false }: { s: Scenario;
   const pieces = party ? blocPieces(s, r).map(p => ({ color: p.color, n: p.n })) : blocs ? blocPieces(s, r).map(p => ({ color: s.blocs.find(b => b.id === p.bloc)?.color ?? 'var(--muted)', n: p.n })) : r.lists.map(l => ({ color: s.lists.find(x => x.id === l.id)!.color, n: l.seats }));
   return <span className="result-preview" aria-hidden>{pieces.filter(p => p.n > 0).map((p, i) => <i key={i} style={{ background: p.color, flex: p.n }} />)}</span>;
 }
+/** A preview whose scenario is worked out only when it is drawn (the picker draws the chosen option's strip on its
+ *  button, and the others only while its list is open), not for every option on every edit. */
+export function ScenarioPreview({ make, ...rest }: { make: () => Scenario; blocs?: boolean; party?: boolean }) {
+  return <ResultPreview s={make()} {...rest} />;
+}
