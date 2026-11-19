@@ -66,10 +66,10 @@ test('k26 in English: English publishers, one credit per logo, downloads served,
   for (const p of publishers) expect(p, p).toMatch(/[A-Za-z]{4}/);
   await expect(panel.locator('li', { hasText: /^Likud:/ })).toHaveCount(1);
   await expect(panel.getByText('Wikimedia Commons', { exact: true })).toBeVisible();
-  // logo credits lead with English; a Hebrew or Arabic name may follow only as a secondary note
-  const credits = await panel.locator('ul.credits li > bdi > a').allInnerTexts();
+  // logo credits say who and where in plain English: no project id, file name or processing note (S1/S2, 19 Nov)
+  const credits = await panel.locator('ul.credits li > a').allInnerTexts();
   expect(credits.length).toBeGreaterThan(10);
-  for (const c of credits) expect(c, c).toMatch(/^[^\u0590-\u05FF\u0600-\u06FF]*[A-Za-z]/);
+  for (const c of credits) expect(c, c).not.toMatch(/^[a-z]+(-[a-z]+)* —|File:|Resized|resized|PD-/);
   await expect(page.locator('a[href*="en.wikipedia.org"], a[href*="en.m.wikipedia.org"]')).toHaveCount(0);
   for (const name of ['election data', 'original Central Elections Committee names', 'all sources']) {
     const href = await panel.getByRole('link', { name, exact: true }).getAttribute('href');
@@ -109,4 +109,29 @@ test('Hebrew: the page does not move when the source list arrives late', async (
   await page.waitForTimeout(1200);
   expect((await note.boundingBox())!.y).toBe(before);
   await expect(panel.locator('ul.credits').first().locator('> li').first()).toBeVisible();
+});
+
+// Review faults S1/S2 (19 Nov): the Hebrew tab showed English source descriptions, publishers and logo licences, and
+// some descriptions were the project's fetch notes. Each source now has display text in both languages.
+test('k26 in Hebrew: sources and logo licences in Hebrew, no fetch notes; in English no fetch notes either', async ({ page }) => {
+  await open(page, 'he', 'k26');
+  await sourcesTab(page, 'he');
+  const panel = page.locator('#analysis-panel');
+  const list = panel.locator('ul.credits').first();
+  await expect(list.locator('> li').first()).toBeVisible();
+  await expect(list).toContainText('הודעה רשמית על תוצאות הבחירות');
+  await expect(list).toContainText('ועדת הבחירות המרכזית');
+  for (const text of ['Official per-list pages', 'Refuses connections', 'HTTP 403', 'Notice of the results', '26th Knesset complete', '(38 per-list pages)'])
+    await expect(panel).not.toContainText(text);
+  await expect(panel.getByText('שימוש הוגן לזיהוי; הזכויות שמורות לבעליהן').first()).toBeVisible();
+  for (const text of ['Copyright retained', 'Public domain', 'fair-use identification']) await expect(panel).not.toContainText(text);
+});
+test('k26 in English: no fetch notes on the Sources tab', async ({ page }) => {
+  await open(page, 'en', 'k26');
+  await sourcesTab(page, 'en');
+  const panel = page.locator('#analysis-panel');
+  await expect(panel.locator('ul.credits').first().locator('> li').first()).toBeVisible();
+  for (const text of ['Refuses connections', 'HTTP 403', 'scripted clients', 'Every list total', '(38 per-list pages)', 'yesh-atid —', 'Resized to'])
+    await expect(panel).not.toContainText(text);
+  await expect(panel).toContainText('Official notice of the election results');
 });

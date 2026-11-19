@@ -7,6 +7,7 @@ import type { SyntheticIdentity } from '../../model/scenario.ts';
 import type { LogoRef } from '../../data/schema.ts';
 import { parseIntInput } from '../format.ts';
 import { useSetting } from '../store.ts';
+import { logoLicence } from '../logoCredit.ts';
 
 /** Accessible info popover: opens on hover (after the shared hover delay), focus or click; Escape closes. */
 export function Info({ title, children, term, label }: { title?: string; children?: ReactNode; term?: string; /** the button's name when the title alone would repeat a neighbouring control's */ label?: string }) {
@@ -73,7 +74,7 @@ export function Slip({ letters, color, size, logo: logoIn, name, synthetic }: { 
   // as its accessible name and a small caption, and the credit travels with the image
   if (logo) return (
     <span className={`slip logo ${size ?? ''} ${logo.background === 'dark' ? 'on-dark' : ''}`} style={{ ['--c' as string]: color }} aria-label={label}
-      title={`${label} · ${logo.licence}`}>
+      title={`${label} · ${logoLicence(logo, lang)}`}>
       <img src={logo.file} alt="" loading="lazy" decoding="async" />
       <span className="slip-letters" lang="he" dir="rtl" aria-hidden>{name ? '' : letters}</span>
     </span>

@@ -45,7 +45,7 @@ import { buildK25 } from './lib/historical/k25.ts';
 import { buildK26 } from './lib/historical/k26.ts';
 import { writeIfChanged } from './lib/build/output.ts';
 import { finalizeDataset } from './lib/build/finalize.ts';
-import { manifest, OUT } from './lib/build/sources.ts';
+import { manifest, OUT, ROOT, readJson } from './lib/build/sources.ts';
 
 interface Built { ds: ElectionDataset; loc?: LocalityDataset | null; warnings?: string[] }
 type Job = () => Built | Promise<Built>;
@@ -133,7 +133,10 @@ if (!isMainThread) {
       console.log(`${ds.id}: ${ds.lists.length} lists, ${cands} candidates, ${ds.agreements.length} agreements, valid ${ds.totals.valid}, ${loc?.rows.length ?? 0} locality rows`);
     }
   }
-  write('sources.json', manifest().map(({ id, ...rest }) => ({ id, ...rest })), v => JSON.stringify(v, null, 1));
+  // What the Sources tab shows for each official or secondary source, in both languages (data/meta/source-display.json);
+  // the research description and notes stay in the record for the download.
+  const shown: Record<string, { en: string; he: string; publisherHe?: string }> = readJson(join(ROOT, 'data/meta/source-display.json'));
+  write('sources.json', manifest().map(({ id, ...rest }) => ({ id, ...rest, ...(shown[id] ? { shownEn: shown[id].en, shownHe: shown[id].he, ...(shown[id].publisherHe ? { publisherHe: shown[id].publisherHe } : {}) } : {}) })), v => JSON.stringify(v, null, 1));
   for (const w of warnings) console.warn(w);
   console.log(`public/data: ${written} file(s) written, ${unchanged} unchanged (${jobs} build thread${jobs > 1 ? 's' : ''})`);
 }

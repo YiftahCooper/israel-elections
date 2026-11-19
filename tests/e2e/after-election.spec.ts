@@ -41,7 +41,9 @@ test('history, split recommendations, direct elections and next-election navigat
   await expect(history).toContainText('Not documented');
   await expect(history).toContainText('Government 1');
   await page.getByRole('button', { name: 'Sources & research coverage' }).click();
-  await expect(page.locator('.after-sources')).toContainText('Pending corroboration');
+  // research notes on events still awaiting a second source never show to visitors (V2 fault S2, 19 Nov 2026)
+  await expect(page.locator('.after-sources')).toBeVisible();
+  await expect(page.locator('.after-sources')).not.toContainText(/Pending corroboration|Research notes|chronolog/);
 });
 
 test('history remains official after editing votes', async ({ page }) => {

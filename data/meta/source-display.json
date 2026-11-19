@@ -1,0 +1,692 @@
+{
+ "_about": "What the Sources tab says about each official or secondary source, in English and Hebrew. The research description and notes stay in data/raw/SOURCES.json and the downloadable sources.json.",
+ "law-elections": {
+  "en": "Knesset Elections Law, sections 81–83: threshold, seat allocation, surplus-vote agreements and ties",
+  "he": "חוק הבחירות לכנסת, סעיפים 81–83: אחוז החסימה, חלוקת המנדטים, הסכמי עודפים ושוויון"
+ },
+ "k1-allocation-appendix": {
+  "en": "Official calculation of the seat allocation (appendix)",
+  "he": "החישוב הרשמי של חלוקת המנדטים (נספח)"
+ },
+ "k1-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k1-k7-cbs-national-totals": {
+  "en": "Central Bureau of Statistics, table 27.2: registered voters and turnout",
+  "he": "הלשכה המרכזית לסטטיסטיקה, לוח 27.2: בעלי זכות בחירה ושיעור ההצבעה",
+  "publisherHe": "הלשכה המרכזית לסטטיסטיקה"
+ },
+ "k1-k7-law-1948": {
+  "en": "Election legislation of 1948",
+  "he": "חקיקת הבחירות משנת 1948",
+  "publisherHe": "הכנסת / רשומות, חקיקה ראשית"
+ },
+ "k1-k7-law-1948-312737": {
+  "en": "Election legislation of 1948",
+  "he": "חקיקת הבחירות משנת 1948",
+  "publisherHe": "הכנסת / רשומות, חקיקה ראשית"
+ },
+ "k1-k7-law-1951": {
+  "en": "Election legislation of 1951",
+  "he": "חקיקת הבחירות משנת 1951",
+  "publisherHe": "הכנסת / רשומות, חקיקה ראשית"
+ },
+ "k1-k7-law-1955": {
+  "en": "Election legislation of 1955",
+  "he": "חקיקת הבחירות משנת 1955",
+  "publisherHe": "הכנסת / רשומות, חקיקה ראשית"
+ },
+ "k1-k7-law-1959": {
+  "en": "Election legislation of 1959",
+  "he": "חקיקת הבחירות משנת 1959",
+  "publisherHe": "הכנסת / רשומות, חקיקה ראשית"
+ },
+ "k1-k7-law-1969": {
+  "en": "Election legislation of 1969",
+  "he": "חקיקת הבחירות משנת 1969",
+  "publisherHe": "הכנסת / רשומות, חקיקה ראשית"
+ },
+ "k1-results-gazette": {
+  "en": "Official notice of the election results",
+  "he": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k2-agreements-gazette": {
+  "en": "Official notice of the surplus-vote agreements",
+  "he": "הודעה רשמית על הסכמי העודפים"
+ },
+ "k2-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k2-results-gazette": {
+  "en": "Official notice of the election results",
+  "he": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k3-agreements-gazette": {
+  "en": "Official notice of the surplus-vote agreements",
+  "he": "הודעה רשמית על הסכמי העודפים"
+ },
+ "k3-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k3-candidates-mirror": {
+  "en": "A second copy of the candidate-lists notice (the same scan)",
+  "he": "עותק נוסף של ההודעה על רשימות המועמדים (אותה סריקה)"
+ },
+ "k3-results-gazette": {
+  "en": "Official notice of the election results, Yalkut HaPirsumim 432",
+  "he": "הודעה רשמית על תוצאות הבחירות, ילקוט הפרסומים 432",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k3-withdrawals-gazette": {
+  "en": "Official notice of candidates who withdrew",
+  "he": "הודעה רשמית על מועמדים שפרשו"
+ },
+ "k4-agreements-gazette": {
+  "en": "Official notice of the surplus-vote agreements, Yalkut HaPirsumim 709",
+  "he": "הודעה רשמית על הסכמי העודפים, ילקוט הפרסומים 709"
+ },
+ "k4-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k4-results-correction-0724": {
+  "en": "Official correction to the results notice: Meir Yaari, not Yaakov Yaari",
+  "he": "תיקון רשמי להודעה על התוצאות: יערי מאיר במקום יערי יעקב",
+  "publisherHe": "רשומות — ילקוט הפרסומים 724, 10 בדצמבר 1959, עמ׳ 501 (עותק באתר olaw.org.il)"
+ },
+ "k4-results-gazette": {
+  "en": "Official notice of the election results",
+  "he": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k5-agreements-gazette": {
+  "en": "Official notice of the surplus-vote agreements",
+  "he": "הודעה רשמית על הסכמי העודפים"
+ },
+ "k5-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k5-results-gazette": {
+  "en": "Official notice of the election results",
+  "he": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k5-withdrawals-gazette": {
+  "en": "Official notice of candidates who withdrew",
+  "he": "הודעה רשמית על מועמדים שפרשו",
+  "publisherHe": "רשומות — ילקוט הפרסומים 866, 10 באוגוסט 1961, עמ׳ 1847 (עותק באתר olaw.org.il)"
+ },
+ "k6-agreements-gazette": {
+  "en": "Official notice of the surplus-vote agreements",
+  "he": "הודעה רשמית על הסכמי העודפים",
+  "publisherHe": "רשומות / ילקוט הפרסומים 1225, עותק באתר olaw.org.il"
+ },
+ "k6-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k6-results-gazette": {
+  "en": "Official notice of the election results",
+  "he": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k7-agreements-gazette": {
+  "en": "Official notice of the surplus-vote agreements",
+  "he": "הודעה רשמית על הסכמי העודפים",
+  "publisherHe": "רשומות / ילקוט הפרסומים 1565, עותק באתר olaw.org.il"
+ },
+ "k7-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k7-results-gazette": {
+  "en": "Official notice of the election results",
+  "he": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (עותק באתר olaw.org.il)"
+ },
+ "k8-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k8-cec-elected-appendix": {
+  "en": "Central Elections Committee report on the results, appendix: the names of the 120 elected members",
+  "he": "זיכרון הדברים של ועדת הבחירות המרכזית על התוצאות, נספח: שמות 120 הנבחרים",
+  "publisherHe": "ועדת הבחירות המרכזית לכנסת ה־8 (gov.il)"
+ },
+ "k8-cec-memorandum-appendix": {
+  "en": "Central Elections Committee report on the results, appendix: how the seats were divided",
+  "he": "זיכרון הדברים של ועדת הבחירות המרכזית על התוצאות, נספח: פרטי חישוב חלוקת המנדטים",
+  "publisherHe": "ועדת הבחירות המרכזית לכנסת ה־8 (gov.il)"
+ },
+ "k8-k12-cbs-national-totals": {
+  "en": "Central Bureau of Statistics, table 27.2: registered voters and turnout",
+  "he": "הלשכה המרכזית לסטטיסטיקה, לוח 27.2: בעלי זכות בחירה ושיעור ההצבעה",
+  "publisherHe": "הלשכה המרכזית לסטטיסטיקה"
+ },
+ "k8-k12-law-1969": {
+  "en": "Knesset Elections Law (consolidated version), 1969",
+  "he": "חוק הבחירות לכנסת [נוסח משולב], 1969",
+  "publisherHe": "הכנסת / רשומות"
+ },
+ "k8-k12-law-1973": {
+  "en": "Elections Law amendment no. 4 (1973): the Bader–Ofer method",
+  "he": "תיקון מס׳ 4 לחוק הבחירות (1973): שיטת בדר–עופר",
+  "publisherHe": "מדינת ישראל / הכנסת (רשומות)"
+ },
+ "k8-results-gazette": {
+  "en": "Official notice of the election results",
+  "he": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k9-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k9-cap-appeal-protocol": {
+  "en": "Minutes of 1 November 1977: the decision on a list that won more seats than it had candidates",
+  "he": "פרוטוקול מ־1 בנובמבר 1977: ההחלטה על רשימה שזכתה ביותר מנדטים ממספר מועמדיה",
+  "publisherHe": "הכנסת"
+ },
+ "k9-odata-positions": {
+  "en": "Knesset open data: the codes for members’ positions",
+  "he": "המידע הפתוח של הכנסת: קודי התפקידים של חברי הכנסת",
+  "publisherHe": "המידע הפתוח של הכנסת"
+ },
+ "k9-ratz-odata": {
+  "en": "Knesset open data: Shulamit Aloni a member from 13 June 1977",
+  "he": "המידע הפתוח של הכנסת: שולמית אלוני חברת כנסת מ־13 ביוני 1977",
+  "publisherHe": "המידע הפתוח של הכנסת"
+ },
+ "k9-results-gazette": {
+  "en": "Official notice of the election results",
+  "he": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k10-agreements-gazette": {
+  "en": "Official notice of the surplus-vote agreements, Yalkut HaPirsumim 2720",
+  "he": "הודעה רשמית על הסכמי העודפים, ילקוט הפרסומים 2720",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (עותק באתר olaw.org.il)"
+ },
+ "k10-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k10-results-gazette": {
+  "en": "Official notice of the election results",
+  "he": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k11-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (עותק באתר olaw.org.il)"
+ },
+ "k11-results-gazette": {
+  "en": "Official notice of the election results",
+  "he": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k12-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k12-results-gazette": {
+  "en": "Official notice of the election results",
+  "he": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k13-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k13-candidates-yp4017-idi-6558": {
+  "en": "Candidate list ⁧ג⁩ from the official notice (Yalkut HaPirsumim 4017), a copy kept by the Israel Democracy Institute",
+  "he": "רשימת המועמדים ג מתוך ההודעה הרשמית (ילקוט הפרסומים 4017), עותק במכון הישראלי לדמוקרטיה",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (צילום במכון הישראלי לדמוקרטיה)"
+ },
+ "k13-candidates-yp4017-idi-6608": {
+  "en": "Candidate list ⁧ע⁩ from the official notice (Yalkut HaPirsumim 4017), a copy kept by the Israel Democracy Institute",
+  "he": "רשימת המועמדים ע מתוך ההודעה הרשמית (ילקוט הפרסומים 4017), עותק במכון הישראלי לדמוקרטיה",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (צילום במכון הישראלי לדמוקרטיה)"
+ },
+ "k13-candidates-yp4017-idi-6654": {
+  "en": "Candidate list ⁧ב⁩ from the official notice (Yalkut HaPirsumim 4017), a copy kept by the Israel Democracy Institute",
+  "he": "רשימת המועמדים ב מתוך ההודעה הרשמית (ילקוט הפרסומים 4017), עותק במכון הישראלי לדמוקרטיה",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (צילום במכון הישראלי לדמוקרטיה)"
+ },
+ "k13-candidates-yp4017-idi-6695": {
+  "en": "Candidate list ⁧מרצ⁩ from the official notice (Yalkut HaPirsumim 4017), a copy kept by the Israel Democracy Institute",
+  "he": "רשימת המועמדים מרצ מתוך ההודעה הרשמית (ילקוט הפרסומים 4017), עותק במכון הישראלי לדמוקרטיה",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (צילום במכון הישראלי לדמוקרטיה)"
+ },
+ "k13-candidates-yp4017-idi-6731": {
+  "en": "Candidate list ⁧ץ⁩ from the official notice (Yalkut HaPirsumim 4017), a copy kept by the Israel Democracy Institute",
+  "he": "רשימת המועמדים ץ מתוך ההודעה הרשמית (ילקוט הפרסומים 4017), עותק במכון הישראלי לדמוקרטיה",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (צילום במכון הישראלי לדמוקרטיה)"
+ },
+ "k13-candidates-yp4017-idi-6809": {
+  "en": "Candidate list ⁧שס⁩ from the official notice (Yalkut HaPirsumim 4017), a copy kept by the Israel Democracy Institute",
+  "he": "רשימת המועמדים שס מתוך ההודעה הרשמית (ילקוט הפרסומים 4017), עותק במכון הישראלי לדמוקרטיה",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (צילום במכון הישראלי לדמוקרטיה)"
+ },
+ "k13-candidates-yp4017-idi-6891": {
+  "en": "Candidate list ⁧מחל⁩ from the official notice (Yalkut HaPirsumim 4017), a copy kept by the Israel Democracy Institute",
+  "he": "רשימת המועמדים מחל מתוך ההודעה הרשמית (ילקוט הפרסומים 4017), עותק במכון הישראלי לדמוקרטיה",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (צילום במכון הישראלי לדמוקרטיה)"
+ },
+ "k13-k15-bader-ofer-amendment": {
+  "en": "Elections Law amendment no. 4 (1973): the Bader–Ofer method",
+  "he": "תיקון מס׳ 4 לחוק הבחירות (1973): שיטת בדר–עופר",
+  "publisherHe": "מדינת ישראל / הכנסת (רשומות)"
+ },
+ "k13-k15-cbs-national-totals": {
+  "en": "Central Bureau of Statistics, table 27.2: registered voters and turnout",
+  "he": "הלשכה המרכזית לסטטיסטיקה, לוח 27.2: בעלי זכות בחירה ושיעור ההצבעה",
+  "publisherHe": "הלשכה המרכזית לסטטיסטיקה"
+ },
+ "k13-k15-threshold-amendment": {
+  "en": "Elections Law amendment no. 23 (1991): a threshold of 1.5%",
+  "he": "תיקון מס׳ 23 לחוק הבחירות (1991): אחוז חסימה של 1.5%",
+  "publisherHe": "מדינת ישראל / הכנסת (רשומות)"
+ },
+ "k13-results-gazette": {
+  "en": "Official notice of the election results",
+  "he": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k14-agreements-gazette": {
+  "en": "Official notice of the surplus-vote agreements and of candidates who withdrew, Yalkut HaPirsumim 4411",
+  "he": "הודעה רשמית על הסכמי העודפים ועל מועמדים שפרשו, ילקוט הפרסומים 4411",
+  "publisherHe": "מדינת ישראל / ועדת הבחירות המרכזית (עותק באתר olaw.org.il)"
+ },
+ "k14-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k14-results-gazette": {
+  "en": "Official notice of the election results",
+  "he": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k15-agreements-gazette": {
+  "en": "Official notice of the surplus-vote agreements, Yalkut HaPirsumim 4755",
+  "he": "הודעה רשמית על הסכמי העודפים, ילקוט הפרסומים 4755",
+  "publisherHe": "מדינת ישראל / ועדת הבחירות המרכזית (עותק באתר olaw.org.il)"
+ },
+ "k15-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k15-results-gazette": {
+  "en": "Official notice of the results for Prime Minister and the Knesset, Yalkut HaPirsumim 4757",
+  "he": "הודעה רשמית על תוצאות הבחירות לראשות הממשלה ולכנסת, ילקוט הפרסומים 4757",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
+ },
+ "k15-withdrawals-yp4751": {
+  "en": "Official notice of candidates who withdrew, Yalkut HaPirsumim 4751",
+  "he": "הודעה רשמית על מועמדים שפרשו, ילקוט הפרסומים 4751",
+  "publisherHe": "מדינת ישראל / ועדת הבחירות המרכזית (עותק באתר olaw.org.il)"
+ },
+ "k15-withdrawals-yp4754": {
+  "en": "Official notice of candidates who withdrew, Yalkut HaPirsumim 4754",
+  "he": "הודעה רשמית על מועמדים שפרשו, ילקוט הפרסומים 4754",
+  "publisherHe": "מדינת ישראל / ועדת הבחירות המרכזית (עותק באתר olaw.org.il)"
+ },
+ "k16-ballots-datagov": {
+  "en": "Final results of the election to the 16th Knesset by polling station",
+  "he": "תוצאות האמת של הבחירות לכנסת ה־16 לפי קלפיות",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
+ },
+ "k16-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
+ },
+ "k16-cbs-national-summary": {
+  "en": "Central Bureau of Statistics, table 27.2: registered voters and turnout",
+  "he": "הלשכה המרכזית לסטטיסטיקה, לוח 27.2: בעלי זכות בחירה ושיעור ההצבעה",
+  "publisherHe": "הלשכה המרכזית לסטטיסטיקה; המקור: ועדת הבחירות המרכזית"
+ },
+ "k16-knesset-vote-crosscheck": {
+  "en": "Knesset table of past election results",
+  "he": "טבלת תוצאות הבחירות של הכנסת",
+  "publisherHe": "הכנסת"
+ },
+ "k16-membership-odata": {
+  "en": "Knesset open data: the members at the opening of the Knesset",
+  "he": "המידע הפתוח של הכנסת: חברי הכנסת בפתיחתה",
+  "publisherHe": "המידע הפתוח של הכנסת"
+ },
+ "k16-results-gazette": {
+  "en": "Official notice of the election results",
+  "he": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
+ },
+ "k16-sharansky-withdrawal": {
+  "en": "Report of 29 January 2003: Natan Sharansky withdrew after the election and Marina Solodkin replaced him",
+  "he": "דיווח מ־29 בינואר 2003: נתן שרנסקי פרש לאחר הבחירות ומרינה סולודקין באה במקומו",
+  "publisherHe": "Ynet / Hanan Greenberg"
+ },
+ "k16-surplus-gazette": {
+  "en": "Official notice of the surplus-vote agreements",
+  "he": "הודעה רשמית על הסכמי העודפים",
+  "publisherHe": "רשומות / ילקוט הפרסומים 5151 (עותק באתר olaw.org.il)"
+ },
+ "k17-ballots-datagov": {
+  "en": "Final results of the election to the 17th Knesset by polling station",
+  "he": "תוצאות האמת של הבחירות לכנסת ה־17 לפי קלפיות",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
+ },
+ "k17-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
+ },
+ "k17-cbs-national-summary": {
+  "en": "Central Bureau of Statistics, table 27.2: registered voters and turnout",
+  "he": "הלשכה המרכזית לסטטיסטיקה, לוח 27.2: בעלי זכות בחירה ושיעור ההצבעה",
+  "publisherHe": "הלשכה המרכזית לסטטיסטיקה; המקור: ועדת הבחירות המרכזית"
+ },
+ "k17-membership-odata": {
+  "en": "Knesset open data: the members at the opening of the Knesset",
+  "he": "המידע הפתוח של הכנסת: חברי הכנסת בפתיחתה",
+  "publisherHe": "המידע הפתוח של הכנסת"
+ },
+ "k17-results-gazette": {
+  "en": "Official notice of the election results",
+  "he": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
+ },
+ "k17-surplus-gazette": {
+  "en": "Official notice of the surplus-vote agreements",
+  "he": "הודעה רשמית על הסכמי העודפים",
+  "publisherHe": "רשומות / ילקוט הפרסומים 5510 (עותק באתר olaw.org.il)"
+ },
+ "k18-allocation-memorandum": {
+  "en": "Central Elections Committee report on the seat allocation",
+  "he": "זיכרון הדברים של ועדת הבחירות המרכזית על חלוקת המנדטים",
+  "publisherHe": "ועדת הבחירות המרכזית"
+ },
+ "k18-ballots-datagov": {
+  "en": "Final results of the election to the 18th Knesset by polling station",
+  "he": "תוצאות האמת של הבחירות לכנסת ה־18 לפי קלפיות",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
+ },
+ "k18-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
+ },
+ "k18-results-gazette": {
+  "en": "Official notice of the election results",
+  "he": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
+ },
+ "k18-surplus-gazette": {
+  "en": "Official notice of the surplus-vote agreements, Yalkut HaPirsumim 5912",
+  "he": "הודעה רשמית על הסכמי העודפים, ילקוט הפרסומים 5912",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (עותק באתר olaw.org.il)"
+ },
+ "k19-ballots-datagov": {
+  "en": "Final results of the election to the 19th Knesset by polling station",
+  "he": "תוצאות האמת של הבחירות לכנסת ה־19 לפי קלפיות",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
+ },
+ "k19-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
+ },
+ "k19-final-results-capture": {
+  "en": "Central Elections Committee final national results, copied by hand from its results page",
+  "he": "התוצאות הארציות הסופיות של ועדת הבחירות המרכזית, שהועתקו ידנית מדף התוצאות",
+  "publisherHe": "ועדת הבחירות המרכזית"
+ },
+ "k19-localities-datagov": {
+  "en": "Final results of the election to the 19th Knesset by locality",
+  "he": "תוצאות האמת של הבחירות לכנסת ה־19 לפי יישובים",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
+ },
+ "k19-results-correction": {
+  "en": "Official correction to the results notice: the total of valid votes",
+  "he": "תיקון רשמי להודעה על התוצאות: סך הקולות הכשרים",
+  "publisherHe": "רשומות — ילקוט הפרסומים 6546, 12 בפברואר 2013, עמ׳ 2874, עותק באתר olaw.org.il"
+ },
+ "k19-results-gazette": {
+  "en": "Official notice of the election results",
+  "he": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
+ },
+ "k19-surplus-gazette": {
+  "en": "Official notice of the surplus-vote agreements, Yalkut HaPirsumim 6530",
+  "he": "הודעה רשמית על הסכמי העודפים, ילקוט הפרסומים 6530",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (עותק באתר olaw.org.il)"
+ },
+ "k20-ballots-datagov": {
+  "en": "Final results of the election to the 20th Knesset by polling station",
+  "he": "תוצאות האמת של הבחירות לכנסת ה־20 לפי קלפיות",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
+ },
+ "k20-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
+ },
+ "k20-localities-datagov": {
+  "en": "Final results of the election to the 20th Knesset by locality",
+  "he": "תוצאות האמת של הבחירות לכנסת ה־20 לפי יישובים",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
+ },
+ "k20-results-gazette": {
+  "en": "Official notice of the election results",
+  "he": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
+ },
+ "k20-surplus-gazette": {
+  "en": "Official notice of the surplus-vote agreements, Yalkut HaPirsumim 7001",
+  "he": "הודעה רשמית על הסכמי העודפים, ילקוט הפרסומים 7001",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (עותק באתר olaw.org.il)"
+ },
+ "k21-ballots-datagov": {
+  "en": "Final results of the election to the 21st Knesset by polling station",
+  "he": "תוצאות האמת של הבחירות לכנסת ה־21 לפי קלפיות",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
+ },
+ "k21-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
+ },
+ "k21-localities-datagov": {
+  "en": "Final results of the election to the 21st Knesset by locality",
+  "he": "תוצאות האמת של הבחירות לכנסת ה־21 לפי יישובים",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
+ },
+ "k21-national-html": {
+  "en": "Central Elections Committee: final national results",
+  "he": "ועדת הבחירות המרכזית: התוצאות הארציות הסופיות",
+  "publisherHe": "ועדת הבחירות המרכזית"
+ },
+ "k21-resignations-8172": {
+  "en": "Official notice of candidates who withdrew",
+  "he": "הודעה רשמית על מועמדים שפרשו"
+ },
+ "k21-resignations-8186": {
+  "en": "Official notice of candidates who withdrew",
+  "he": "הודעה רשמית על מועמדים שפרשו"
+ },
+ "k21-resignations-8196": {
+  "en": "Official notice of candidates who withdrew",
+  "he": "הודעה רשמית על מועמדים שפרשו"
+ },
+ "k21-results-gazette": {
+  "en": "Official notice of the election results",
+  "he": "הודעה רשמית על תוצאות הבחירות"
+ },
+ "k21-surplus-gazette": {
+  "en": "Official notice of the surplus-vote agreements, Yalkut HaPirsumim 8178",
+  "he": "הודעה רשמית על הסכמי העודפים, ילקוט הפרסומים 8178",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (עותק באתר olaw.org.il)"
+ },
+ "k22-ballots-datagov": {
+  "en": "Final results of the election to the 22nd Knesset by polling station",
+  "he": "תוצאות האמת של הבחירות לכנסת ה־22 לפי קלפיות",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
+ },
+ "k22-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
+ },
+ "k22-localities-datagov": {
+  "en": "Final results of the election to the 22nd Knesset by locality",
+  "he": "תוצאות האמת של הבחירות לכנסת ה־22 לפי יישובים",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
+ },
+ "k22-national-html": {
+  "en": "Central Elections Committee: final national results",
+  "he": "ועדת הבחירות המרכזית: התוצאות הארציות הסופיות",
+  "publisherHe": "ועדת הבחירות המרכזית"
+ },
+ "k22-surplus-gazette": {
+  "en": "Official notice of the surplus-vote agreements",
+  "he": "הודעה רשמית על הסכמי העודפים",
+  "publisherHe": "רשומות — ילקוט הפרסומים 8430 (הודעה רשמית, עותק באתר olaw.org.il)"
+ },
+ "k23-ballots-datagov": {
+  "en": "Final results of the election to the 23rd Knesset by polling station",
+  "he": "תוצאות האמת של הבחירות לכנסת ה־23 לפי קלפיות",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
+ },
+ "k23-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
+ },
+ "k23-localities-datagov": {
+  "en": "Final results of the election to the 23rd Knesset by locality",
+  "he": "תוצאות האמת של הבחירות לכנסת ה־23 לפי יישובים",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
+ },
+ "k23-national-html": {
+  "en": "Central Elections Committee: final national results",
+  "he": "ועדת הבחירות המרכזית: התוצאות הארציות הסופיות",
+  "publisherHe": "ועדת הבחירות המרכזית"
+ },
+ "k23-surplus-gazette": {
+  "en": "Official notice of the surplus-vote agreements, Yalkut HaPirsumim 8708",
+  "he": "הודעה רשמית על הסכמי העודפים, ילקוט הפרסומים 8708",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (עותק באתר olaw.org.il)"
+ },
+ "k24-ballots-datagov": {
+  "en": "Final results of the election to the 24th Knesset by polling station",
+  "he": "תוצאות האמת של הבחירות לכנסת ה־24 לפי קלפיות",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
+ },
+ "k24-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
+ },
+ "k24-cec-protocol": {
+  "en": "Central Elections Committee decision of 30 March 2021: the Demokratit list cancelled after all its candidates withdrew",
+  "he": "החלטת ועדת הבחירות המרכזית מ־30 במרץ 2021: ביטול רשימת דמוקרטית לאחר שכל מועמדיה פרשו",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (עותק באתר emess.co.il)"
+ },
+ "k24-cec-station-breakdown": {
+  "en": "Central Elections Committee annual report 2021, pp. 7–8: the kinds of polling stations",
+  "he": "הדוח השנתי של ועדת הבחירות המרכזית לשנת 2021, עמ׳ 7–8: סוגי הקלפיות"
+ },
+ "k24-localities-datagov": {
+  "en": "Final results of the election to the 24th Knesset by locality",
+  "he": "תוצאות האמת של הבחירות לכנסת ה־24 לפי יישובים",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
+ },
+ "k24-national-html": {
+  "en": "Central Elections Committee: final national results",
+  "he": "ועדת הבחירות המרכזית: התוצאות הארציות הסופיות",
+  "publisherHe": "ועדת הבחירות המרכזית"
+ },
+ "k24-results-gazette": {
+  "en": "Official notice of the election results, Yalkut HaPirsumim 9511",
+  "he": "הודעה רשמית על תוצאות הבחירות, ילקוט הפרסומים 9511",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (עותק באתר olaw.org.il)"
+ },
+ "k24-surplus-gazette": {
+  "en": "Official notice of the surplus-vote agreements",
+  "he": "הודעה רשמית על הסכמי העודפים",
+  "publisherHe": "רשומות — ילקוט הפרסומים 9478 (הודעה רשמית, עותק באתר olaw.org.il)"
+ },
+ "k25-ballots-datagov": {
+  "en": "Final results of the election to the 25th Knesset by polling station",
+  "he": "תוצאות האמת של הבחירות לכנסת ה־25 לפי קלפיות"
+ },
+ "k25-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים"
+ },
+ "k25-localities-datagov": {
+  "en": "Final results of the election to the 25th Knesset by locality",
+  "he": "תוצאות האמת של הבחירות לכנסת ה־25 לפי יישובים"
+ },
+ "k25-national-html": {
+  "en": "Central Elections Committee: final national results",
+  "he": "ועדת הבחירות המרכזית: התוצאות הארציות הסופיות"
+ },
+ "k25-surplus-press": {
+  "en": "Central Elections Committee press release: the surplus-vote agreements",
+  "he": "הודעה לעיתונות של ועדת הבחירות המרכזית: הסכמי העודפים"
+ },
+ "k26-ballots-csv": {
+  "en": "Final results of the election to the 26th Knesset by polling station",
+  "he": "תוצאות האמת של הבחירות לכנסת ה־26 לפי קלפיות"
+ },
+ "k26-candidates-gazette": {
+  "en": "Official notice of the candidate lists",
+  "he": "הודעה רשמית על רשימות המועמדים"
+ },
+ "k26-list-pages": {
+  "en": "Central Elections Committee page for each list: name, letters, parties and candidates",
+  "he": "דף ועדת הבחירות המרכזית לכל רשימה: שם, אותיות, מפלגות ומועמדים"
+ },
+ "k26-localities-csv": {
+  "en": "Final results of the election to the 26th Knesset by locality",
+  "he": "תוצאות האמת של הבחירות לכנסת ה־26 לפי יישובים"
+ },
+ "k26-national-snapshot": {
+  "en": "Central Elections Committee results site (an early count, used only to match names to ballot letters)",
+  "he": "אתר התוצאות של ועדת הבחירות המרכזית (ספירה מוקדמת, ששימשה רק להתאמת שמות לאותיות הפתק)"
+ },
+ "k26-official-results": {
+  "en": "Central Elections Committee final seat allocation",
+  "he": "חלוקת המנדטים הסופית של ועדת הבחירות המרכזית"
+ },
+ "k26-results-gazette": {
+  "en": "Official notice of the election results",
+  "he": "הודעה רשמית על תוצאות הבחירות"
+ },
+ "k26-surplus-gazette": {
+  "en": "Official notice of the surplus-vote agreements",
+  "he": "הודעה רשמית על הסכמי העודפים"
+ }
+}

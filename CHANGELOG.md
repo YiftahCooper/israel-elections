@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- Sources in Hebrew, without research notes (19 Nov): on the Hebrew Sources tab every source now has a Hebrew description and publisher, and logo credits and licences read in Hebrew ("שימוש הוגן לזיהוי", "נחלת הכלל"); in both languages the tab no longer shows how a page was fetched or checked ("HTTP 403 to scripted clients" and the like), logo credits name who and where without file names or processing notes, and After the election no longer lists research notes on events awaiting a second source. The research records stay in the downloadable sources file.
 - Double envelopes (19 Nov): the double-envelope count's box shows a dash for Registered, as it already did for Turnout, instead of "Registered 0" beside some 450,000 valid votes; envelope voters are registered in their home towns.
 - Localities on a phone (19 Nov): Find a locality now sits under the map, and the note on hidden lines lies over the map's lower edge instead of leaving an empty band above it.
 - Plain wording after the election (19 Nov): two lines used the project's research terms; 1961's dissolution no longer adds "The selection window ends on election day", and 1970 says the coalition's lists went from 102 to 76 seats.

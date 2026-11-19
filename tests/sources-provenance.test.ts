@@ -10,8 +10,10 @@ const index: { id: string; available: boolean; status: any }[] = load('public/da
 const datasets = index.filter(e => e.available && !e.id.startsWith('pm')).map(e => load(`public/data/${e.id}.json`));
 const hebrewOnly = (t: string) => /[֐-׿]/.test(t) && !/[A-Za-z]{4}/.test(t.replace(/\b(gov\.il|data\.gov\.il|via|dataset|votes-knesset)\b/g, ''));
 
-it('the published source list is the provenance manifest', () => {
-  expect(manifest).toEqual(load('data/raw/SOURCES.json'));
+it('the published source list is the provenance manifest, with the Sources tab’s display text added (S1/S2, 19 Nov 2026)', () => {
+  const shown: Record<string, { en: string; he: string; publisherHe?: string }> = load('data/meta/source-display.json');
+  expect(manifest).toEqual(load('data/raw/SOURCES.json').map((s: { id: string }) => shown[s.id]
+    ? { ...s, shownEn: shown[s.id].en, shownHe: shown[s.id].he, ...(shown[s.id].publisherHe ? { publisherHe: shown[s.id].publisherHe } : {}) } : s));
 });
 
 it('every source an election lists has an English publisher and description', () => {

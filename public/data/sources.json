@@ -11,7 +11,9 @@
   "method": "http",
   "retrievedAt": "2026-11-11T22:54:22.312622+00:00",
   "bytes": 556370,
-  "sha256": "ab9f431dd593925bf464df3b323be97033b0db8347cbe0d32366dab9293a1e0b"
+  "sha256": "ab9f431dd593925bf464df3b323be97033b0db8347cbe0d32366dab9293a1e0b",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים"
  },
  {
   "id": "k26-ballots-csv",
@@ -25,7 +27,9 @@
   "retrievedAt": "2026-11-05",
   "bytes": 1837659,
   "sha256": "70b27cc42be8f0e122923c704c291dadb14c6b33d72041d83e38d02f4a7a65f7",
-  "lastModified": "Wed, 04 Nov 2026 09:42:14 GMT"
+  "lastModified": "Wed, 04 Nov 2026 09:42:14 GMT",
+  "shownEn": "Final results of the election to the 26th Knesset by polling station",
+  "shownHe": "תוצאות האמת של הבחירות לכנסת ה־26 לפי קלפיות"
  },
  {
   "id": "k26-localities-csv",
@@ -39,7 +43,9 @@
   "retrievedAt": "2026-11-05",
   "bytes": 153414,
   "sha256": "bf7db01f96e1afceb4f22039d16e5f616dc001e4901a9ef2194ba92645837e8a",
-  "lastModified": "Wed, 04 Nov 2026 09:42:15 GMT"
+  "lastModified": "Wed, 04 Nov 2026 09:42:15 GMT",
+  "shownEn": "Final results of the election to the 26th Knesset by locality",
+  "shownHe": "תוצאות האמת של הבחירות לכנסת ה־26 לפי יישובים"
  },
  {
   "id": "k26-surplus-gazette",
@@ -53,7 +59,9 @@
   "retrievedAt": "2026-11-03T12:52:27.622Z",
   "bytes": 112989,
   "sha256": "5ca51a0c4c0d4030d08b7364ad204e17f64d26ebe333077eae03f3d08857d270",
-  "lastModified": "Sun, 25 Oct 2026 15:05:26 GMT"
+  "lastModified": "Sun, 25 Oct 2026 15:05:26 GMT",
+  "shownEn": "Official notice of the surplus-vote agreements",
+  "shownHe": "הודעה רשמית על הסכמי העודפים"
  },
  {
   "id": "k25-national-html",
@@ -67,7 +75,9 @@
   "retrievedAt": "2026-11-03T12:52:29.807Z",
   "bytes": 31127,
   "sha256": "2306a810c945d2b51462043f650bb67eb66a4b1a4a62f6c3a89dc94d88044e05",
-  "lastModified": "Tue, 03 Nov 2026 12:52:32 GMT"
+  "lastModified": "Tue, 03 Nov 2026 12:52:32 GMT",
+  "shownEn": "Central Elections Committee: final national results",
+  "shownHe": "ועדת הבחירות המרכזית: התוצאות הארציות הסופיות"
  },
  {
   "id": "k25-candidates-gazette",
@@ -81,7 +91,9 @@
   "retrievedAt": "2026-11-03T12:52:29.899Z",
   "bytes": 461874,
   "sha256": "473a2e1da24875a54fadf022aae13e290de62d80cddb907582870edbec7beffd",
-  "lastModified": "Mon, 02 Jan 2023 09:43:31 GMT"
+  "lastModified": "Mon, 02 Jan 2023 09:43:31 GMT",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים"
  },
  {
   "id": "k25-surplus-press",
@@ -95,7 +107,9 @@
   "retrievedAt": "2026-11-03T12:52:29.965Z",
   "bytes": 157681,
   "sha256": "46341e177f3dbfe4c1555dfbec60b14a6345658479b66ec7eafa38240922efc8",
-  "lastModified": "Sun, 23 Oct 2022 18:53:03 GMT"
+  "lastModified": "Sun, 23 Oct 2022 18:53:03 GMT",
+  "shownEn": "Central Elections Committee press release: the surplus-vote agreements",
+  "shownHe": "הודעה לעיתונות של ועדת הבחירות המרכזית: הסכמי העודפים"
  },
  {
   "id": "k25-ballots-datagov",
@@ -109,7 +123,9 @@
   "retrievedAt": "2026-11-03T12:52:34.531Z",
   "bytes": 7093509,
   "sha256": "21eabcbdf5519e028112d64d40ed8829831e9e7e25cc831b2371cead02fd85bf",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Final results of the election to the 25th Knesset by polling station",
+  "shownHe": "תוצאות האמת של הבחירות לכנסת ה־25 לפי קלפיות"
  },
  {
   "id": "k25-localities-datagov",
@@ -123,7 +139,9 @@
   "retrievedAt": "2026-11-03T12:52:34.857Z",
   "bytes": 616569,
   "sha256": "203e3967d6301f0725f58f32e38732f8a0dffffa858279c274d3bea5200c71e2",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Final results of the election to the 25th Knesset by locality",
+  "shownHe": "תוצאות האמת של הבחירות לכנסת ה־25 לפי יישובים"
  },
  {
   "id": "k26-list-pages",
@@ -137,7 +155,9 @@
   "note": "gov.il returns HTTP 403 to scripted clients; captured on 2026-11-03 through the Exa page-fetch service, whose text extraction is stored verbatim. Each page carries its own \"תאריך עדכון\". Two pages (בי, כן) failed to render; their rosters now come from the official gazette, Yalkut HaPirsumim 15023. The Tzeva Shahor page was checked again on 2026-11-16: the list withdrew on 22 October, leaving a final roster of 17. The other pages are from the earlier capture.",
   "retrievedAt": "2026-11-03",
   "bytes": 132969,
-  "sha256": "587e305db4014a6d19c6b6279b2f0ae693b8ae2fd213d3523ab8420c626a79c8"
+  "sha256": "587e305db4014a6d19c6b6279b2f0ae693b8ae2fd213d3523ab8420c626a79c8",
+  "shownEn": "Central Elections Committee page for each list: name, letters, parties and candidates",
+  "shownHe": "דף ועדת הבחירות המרכזית לכל רשימה: שם, אותיות, מפלגות ומועמדים"
  },
  {
   "id": "k26-secondary-fyi",
@@ -158,7 +178,9 @@
   "publisherEn": "Central Elections Committee for the 26th Knesset",
   "official": true,
   "description": "Official results site. Refuses connections from outside Israel; a cached early-count snapshot was read only to confirm the list-name/letter mapping and the statement that final results will be published in Reshumot by 4 Nov 2026. No vote figures are taken from it.",
-  "retrievedAt": "2026-11-03"
+  "retrievedAt": "2026-11-03",
+  "shownEn": "Central Elections Committee results site (an early count, used only to match names to ballot letters)",
+  "shownHe": "אתר התוצאות של ועדת הבחירות המרכזית (ספירה מוקדמת, ששימשה רק להתאמת שמות לאותיות הפתק)"
  },
  {
   "id": "law-elections",
@@ -169,7 +191,9 @@
   "publisherEn": "Knesset Elections Law [Consolidated Version], 5729–1969",
   "official": true,
   "description": "Sections 81–83 (threshold, general quota, Bader–Ofer, surplus agreements, lottery tie-break).",
-  "retrievedAt": "2026-11-03"
+  "retrievedAt": "2026-11-03",
+  "shownEn": "Knesset Elections Law, sections 81–83: threshold, seat allocation, surplus-vote agreements and ties",
+  "shownHe": "חוק הבחירות לכנסת, סעיפים 81–83: אחוז החסימה, חלוקת המנדטים, הסכמי עודפים ושוויון"
  },
  {
   "id": "datagov-catalogue",
@@ -195,7 +219,10 @@
   "retrievedAt": "2026-11-03T15:06:15.564Z",
   "bytes": 667686,
   "sha256": "91b93e0838f45963d3ceb321f25334c07900820d10651f3a3ba31f797e1e8923",
-  "lastModified": "Tue, 15 Sep 2026 10:19:39 GMT"
+  "lastModified": "Tue, 15 Sep 2026 10:19:39 GMT",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
  },
  {
   "id": "k17-candidates-gazette",
@@ -208,7 +235,10 @@
   "retrievedAt": "2026-11-03T15:06:15.661Z",
   "bytes": 597278,
   "sha256": "c2586c422d274787f090f4feb7bcb46c30dd14e8cdfd0d9ada2dbf62116e5881",
-  "lastModified": "Tue, 15 Sep 2026 10:19:40 GMT"
+  "lastModified": "Tue, 15 Sep 2026 10:19:40 GMT",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
  },
  {
   "id": "k18-candidates-gazette",
@@ -221,7 +251,10 @@
   "retrievedAt": "2026-11-03T15:06:15.723Z",
   "bytes": 233065,
   "sha256": "722d98f8779980882051ea5a624385b0a790744e1f6a695bf8f8468d7797b2d2",
-  "lastModified": "Tue, 15 Sep 2026 10:19:39 GMT"
+  "lastModified": "Tue, 15 Sep 2026 10:19:39 GMT",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
  },
  {
   "id": "k19-candidates-gazette",
@@ -234,7 +267,10 @@
   "retrievedAt": "2026-11-03T15:06:15.827Z",
   "bytes": 704447,
   "sha256": "4d4f5404a109d4d6a15b49507d3419918c3f89008d79de85fd16a031da549aa2",
-  "lastModified": "Tue, 15 Sep 2026 10:19:39 GMT"
+  "lastModified": "Tue, 15 Sep 2026 10:19:39 GMT",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
  },
  {
   "id": "k20-candidates-gazette",
@@ -248,7 +284,10 @@
   "bytes": 115669,
   "sha256": "d8784521ece3d7f81a3a35f54c5821ef3f52a2ab1b785972cbdd8e8a63bd43fb",
   "lastModified": "Tue, 15 Sep 2026 10:19:39 GMT",
-  "note": "Yalkut HaPirsumim 7000 pp3938–3952: complete registered rosters. Rank 10 for יץ is encoded as 01 in the PDF text. Resignation notices in Yalkut HaPirsumim 7001 are labelled in list notes."
+  "note": "Yalkut HaPirsumim 7000 pp3938–3952: complete registered rosters. Rank 10 for יץ is encoded as 01 in the PDF text. Resignation notices in Yalkut HaPirsumim 7001 are labelled in list notes.",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
  },
  {
   "id": "k21-candidates-gazette",
@@ -262,7 +301,10 @@
   "bytes": 2400212,
   "sha256": "ed3c03f79ee9976f9d5e776e2eeba8fd2b1eb4c3fd9f4c1374ac9fd41a288db2",
   "lastModified": "Tue, 15 Sep 2026 10:19:40 GMT",
-  "note": "Yalkut HaPirsumim 8168 pp9022–9046: complete registered rosters. Identical printed duplicates at אמת #100 and שס #70 are coalesced; end ranks are audited per list."
+  "note": "Yalkut HaPirsumim 8168 pp9022–9046: complete registered rosters. Identical printed duplicates at אמת #100 and שס #70 are coalesced; end ranks are audited per list.",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
  },
  {
   "id": "k21-national-html",
@@ -275,7 +317,10 @@
   "retrievedAt": "2026-11-03T15:06:16.222Z",
   "bytes": 31313,
   "sha256": "15141335fc826659e5fcdf4c0af7b8e89de5afde1aae72b68c871ca9e703f754",
-  "lastModified": "Tue, 03 Nov 2026 15:06:18 GMT"
+  "lastModified": "Tue, 03 Nov 2026 15:06:18 GMT",
+  "shownEn": "Central Elections Committee: final national results",
+  "shownHe": "ועדת הבחירות המרכזית: התוצאות הארציות הסופיות",
+  "publisherHe": "ועדת הבחירות המרכזית"
  },
  {
   "id": "k22-candidates-gazette",
@@ -288,7 +333,10 @@
   "retrievedAt": "2026-11-03T15:06:16.325Z",
   "bytes": 496808,
   "sha256": "abcdbca3e43095cc37613d0660c108bbff7f95cc9935e1d3ca2ded2d31b5428b",
-  "lastModified": "Tue, 15 Sep 2026 10:19:41 GMT"
+  "lastModified": "Tue, 15 Sep 2026 10:19:41 GMT",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
  },
  {
   "id": "k22-national-html",
@@ -301,7 +349,10 @@
   "retrievedAt": "2026-11-03T15:06:16.473Z",
   "bytes": 26182,
   "sha256": "ef809c556d0d661b059568d01a1459279aaa4ff28dfa3f5b2e96e0b92d651211",
-  "lastModified": "Tue, 03 Nov 2026 15:06:19 GMT"
+  "lastModified": "Tue, 03 Nov 2026 15:06:19 GMT",
+  "shownEn": "Central Elections Committee: final national results",
+  "shownHe": "ועדת הבחירות המרכזית: התוצאות הארציות הסופיות",
+  "publisherHe": "ועדת הבחירות המרכזית"
  },
  {
   "id": "k23-candidates-gazette",
@@ -314,7 +365,10 @@
   "retrievedAt": "2026-11-03T15:06:16.568Z",
   "bytes": 519551,
   "sha256": "900921998691e2888eba3461cf54da4df0359c0207ba5dcbda3d6128d2b83611",
-  "lastModified": "Tue, 15 Sep 2026 10:19:40 GMT"
+  "lastModified": "Tue, 15 Sep 2026 10:19:40 GMT",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
  },
  {
   "id": "k23-national-html",
@@ -327,7 +381,10 @@
   "retrievedAt": "2026-11-03T15:06:16.747Z",
   "bytes": 25127,
   "sha256": "ca42f185750295316e0cba38834048b365a9823c54d48f5c6de6477c33d293a6",
-  "lastModified": "Tue, 03 Nov 2026 15:06:19 GMT"
+  "lastModified": "Tue, 03 Nov 2026 15:06:19 GMT",
+  "shownEn": "Central Elections Committee: final national results",
+  "shownHe": "ועדת הבחירות המרכזית: התוצאות הארציות הסופיות",
+  "publisherHe": "ועדת הבחירות המרכזית"
  },
  {
   "id": "k24-candidates-gazette",
@@ -340,7 +397,10 @@
   "retrievedAt": "2026-11-03T15:06:16.828Z",
   "bytes": 560493,
   "sha256": "08a1558dd6e4b972c143665402c5b21598b13c80699270a0e52d62eb153d42a1",
-  "lastModified": "Tue, 15 Sep 2026 10:19:40 GMT"
+  "lastModified": "Tue, 15 Sep 2026 10:19:40 GMT",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
  },
  {
   "id": "k24-national-html",
@@ -353,7 +413,10 @@
   "retrievedAt": "2026-11-03T15:06:17.004Z",
   "bytes": 29856,
   "sha256": "e31ce3b85b448a76100636c8b3d6d186df69afc44c54455fdabf7060037c8db3",
-  "lastModified": "Tue, 03 Nov 2026 15:06:19 GMT"
+  "lastModified": "Tue, 03 Nov 2026 15:06:19 GMT",
+  "shownEn": "Central Elections Committee: final national results",
+  "shownHe": "ועדת הבחירות המרכזית: התוצאות הארציות הסופיות",
+  "publisherHe": "ועדת הבחירות המרכזית"
  },
  {
   "id": "k16-ballots-datagov",
@@ -367,7 +430,10 @@
   "retrievedAt": "2026-11-03T15:43:46.956Z",
   "bytes": 3268493,
   "sha256": "4079e77b978cc68d7f4b085f2549a309f5ae241ebe1653a1d041aa243a180473",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Final results of the election to the 16th Knesset by polling station",
+  "shownHe": "תוצאות האמת של הבחירות לכנסת ה־16 לפי קלפיות",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
  },
  {
   "id": "k17-ballots-datagov",
@@ -381,7 +447,10 @@
   "retrievedAt": "2026-11-03T15:43:48.917Z",
   "bytes": 3518955,
   "sha256": "28c9b00394a850bef6c3b5ee381fab63d6ffb8e889f70516366752466852f1a0",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Final results of the election to the 17th Knesset by polling station",
+  "shownHe": "תוצאות האמת של הבחירות לכנסת ה־17 לפי קלפיות",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
  },
  {
   "id": "k18-ballots-datagov",
@@ -395,7 +464,10 @@
   "retrievedAt": "2026-11-03T15:26:14.538Z",
   "bytes": 4557118,
   "sha256": "50c6aee30ba047f19d44c45430e2b5c6b19c9ff560b382dff2c4fb18374f7d05",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Final results of the election to the 18th Knesset by polling station",
+  "shownHe": "תוצאות האמת של הבחירות לכנסת ה־18 לפי קלפיות",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
  },
  {
   "id": "k19-localities-datagov",
@@ -409,7 +481,10 @@
   "retrievedAt": "2026-11-03T15:06:22.370Z",
   "bytes": 616670,
   "sha256": "bc59f09d6ac33e329f302ead926d6cbfba7b58ebe9194f294f9b43c551286006",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Final results of the election to the 19th Knesset by locality",
+  "shownHe": "תוצאות האמת של הבחירות לכנסת ה־19 לפי יישובים",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
  },
  {
   "id": "k19-ballots-datagov",
@@ -423,7 +498,10 @@
   "retrievedAt": "2026-11-03T15:26:15.924Z",
   "bytes": 5493001,
   "sha256": "2234ec729a7db119e17f627b3d2c9eb088ad2e8b8ff0e2cd5edf3dd525866cb0",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Final results of the election to the 19th Knesset by polling station",
+  "shownHe": "תוצאות האמת של הבחירות לכנסת ה־19 לפי קלפיות",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
  },
  {
   "id": "k20-localities-datagov",
@@ -437,7 +515,10 @@
   "retrievedAt": "2026-11-03T15:06:23.942Z",
   "bytes": 523084,
   "sha256": "86fde4ed049f6723660647267fa2d7dd0d7da7b474aa8b3e7f602eabf726e199",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Final results of the election to the 20th Knesset by locality",
+  "shownHe": "תוצאות האמת של הבחירות לכנסת ה־20 לפי יישובים",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
  },
  {
   "id": "k20-ballots-datagov",
@@ -451,7 +532,10 @@
   "retrievedAt": "2026-11-03T15:25:46.503Z",
   "bytes": 4805645,
   "sha256": "8670b4c65b723d9da00090eb07f8eb35cd2329737713710bd9dde40b283cd541",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Final results of the election to the 20th Knesset by polling station",
+  "shownHe": "תוצאות האמת של הבחירות לכנסת ה־20 לפי קלפיות",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
  },
  {
   "id": "k21-localities-datagov",
@@ -465,7 +549,10 @@
   "retrievedAt": "2026-11-03T15:06:25.965Z",
   "bytes": 633383,
   "sha256": "dd0275a92a90f814edac7bd9e01591a1aa87743a69d08d69dc98cba921d16cc8",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Final results of the election to the 21st Knesset by locality",
+  "shownHe": "תוצאות האמת של הבחירות לכנסת ה־21 לפי יישובים",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
  },
  {
   "id": "k21-ballots-datagov",
@@ -479,7 +566,10 @@
   "retrievedAt": "2026-11-03T15:25:48.680Z",
   "bytes": 5846331,
   "sha256": "93298bef525db230f5dda511b689ac8913cf8f08747227e2c01ec20cecf45036",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Final results of the election to the 21st Knesset by polling station",
+  "shownHe": "תוצאות האמת של הבחירות לכנסת ה־21 לפי קלפיות",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
  },
  {
   "id": "k22-localities-datagov",
@@ -493,7 +583,10 @@
   "retrievedAt": "2026-11-03T15:06:27.777Z",
   "bytes": 541220,
   "sha256": "3c76fdb8fc83033fc601e79a28123cd3763fa2a38fc4e4fecbd870383081dab6",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Final results of the election to the 22nd Knesset by locality",
+  "shownHe": "תוצאות האמת של הבחירות לכנסת ה־22 לפי יישובים",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
  },
  {
   "id": "k22-ballots-datagov",
@@ -507,7 +600,10 @@
   "retrievedAt": "2026-11-03T15:06:29.010Z",
   "bytes": 5489758,
   "sha256": "ff48e9451b7b1d6bd7fe6d86842f910398b0821aca2ceaeda6b9c874d8912f93",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Final results of the election to the 22nd Knesset by polling station",
+  "shownHe": "תוצאות האמת של הבחירות לכנסת ה־22 לפי קלפיות",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
  },
  {
   "id": "k23-localities-datagov",
@@ -521,7 +617,10 @@
   "retrievedAt": "2026-11-03T15:06:29.770Z",
   "bytes": 517423,
   "sha256": "f766a5cc582c1aa98cf54d49becf48ac742f554f5b43b2963e7623b5fb074921",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Final results of the election to the 23rd Knesset by locality",
+  "shownHe": "תוצאות האמת של הבחירות לכנסת ה־23 לפי יישובים",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
  },
  {
   "id": "k23-ballots-datagov",
@@ -535,7 +634,10 @@
   "retrievedAt": "2026-11-03T15:06:31.121Z",
   "bytes": 5420677,
   "sha256": "149c5b303dcee93f86b514dec3b02fd19b0724443e7dcb41d1536389b4c2bbe7",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Final results of the election to the 23rd Knesset by polling station",
+  "shownHe": "תוצאות האמת של הבחירות לכנסת ה־23 לפי קלפיות",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
  },
  {
   "id": "k24-localities-datagov",
@@ -549,7 +651,10 @@
   "retrievedAt": "2026-11-03T15:06:31.472Z",
   "bytes": 612878,
   "sha256": "976bd537412f6e552eb38391f8211f0df2fbf6c51b00faad456a6465465e357b",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Final results of the election to the 24th Knesset by locality",
+  "shownHe": "תוצאות האמת של הבחירות לכנסת ה־24 לפי יישובים",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
  },
  {
   "id": "k24-ballots-datagov",
@@ -563,7 +668,10 @@
   "retrievedAt": "2026-11-03T15:06:32.891Z",
   "bytes": 7278488,
   "sha256": "71e6d4900c23fcdfc1ba7caff84a808f29cd0e340459eff84e75dc81ca6e02e5",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Final results of the election to the 24th Knesset by polling station",
+  "shownHe": "תוצאות האמת של הבחירות לכנסת ה־24 לפי קלפיות",
+  "publisherHe": "ועדת הבחירות המרכזית, דרך data.gov.il"
  },
  {
   "id": "k20-surplus-gazette",
@@ -576,7 +684,10 @@
   "retrievedAt": "2026-11-03T15:11:41.323Z",
   "bytes": 622285,
   "sha256": "04135694ed193e7250b27e9cde09a5045ac83915df01227d94d35b973a5e6949",
-  "note": "Primary statutory notice, Yalkut HaPirsumim 7001 p3954, copy at olaw.org.il. Complete numbered notice (1)–(4), reading the right column then the top of the left. Also contains candidate resignation notices."
+  "note": "Primary statutory notice, Yalkut HaPirsumim 7001 p3954, copy at olaw.org.il. Complete numbered notice (1)–(4), reading the right column then the top of the left. Also contains candidate resignation notices.",
+  "shownEn": "Official notice of the surplus-vote agreements, Yalkut HaPirsumim 7001",
+  "shownHe": "הודעה רשמית על הסכמי העודפים, ילקוט הפרסומים 7001",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (עותק באתר olaw.org.il)"
  },
  {
   "id": "k21-surplus-gazette",
@@ -589,7 +700,10 @@
   "retrievedAt": "2026-11-03T15:11:43.575Z",
   "bytes": 876791,
   "sha256": "ad242e01902ab56fb46be6db7003f523a31e8d7576d3ce5e19776ec74847131c",
-  "note": "Primary statutory notice, Yalkut HaPirsumim 8178 p9310, copy at olaw.org.il. Complete numbered notice (1)–(6), including ףץ–ףז."
+  "note": "Primary statutory notice, Yalkut HaPirsumim 8178 p9310, copy at olaw.org.il. Complete numbered notice (1)–(6), including ףץ–ףז.",
+  "shownEn": "Official notice of the surplus-vote agreements, Yalkut HaPirsumim 8178",
+  "shownHe": "הודעה רשמית על הסכמי העודפים, ילקוט הפרסומים 8178",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (עותק באתר olaw.org.il)"
  },
  {
   "id": "k23-surplus-gazette",
@@ -601,7 +715,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:11:47.384Z",
   "bytes": 209578,
-  "sha256": "6188ccc44500efa1f4433931366c10ffbae3ecb0a586a70ff06dcc7c58e97b97"
+  "sha256": "6188ccc44500efa1f4433931366c10ffbae3ecb0a586a70ff06dcc7c58e97b97",
+  "shownEn": "Official notice of the surplus-vote agreements, Yalkut HaPirsumim 8708",
+  "shownHe": "הודעה רשמית על הסכמי העודפים, ילקוט הפרסומים 8708",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (עותק באתר olaw.org.il)"
  },
  {
   "id": "k16-results-gazette",
@@ -614,7 +731,10 @@
   "retrievedAt": "2026-11-03T15:14:04.549Z",
   "bytes": 179562,
   "sha256": "7c94fce923d169a395b497fb14a83a9e23169fcb239ba33bd8df4d8bff025edb",
-  "lastModified": "Tue, 15 Sep 2026 10:19:39 GMT"
+  "lastModified": "Tue, 15 Sep 2026 10:19:39 GMT",
+  "shownEn": "Official notice of the election results",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
  },
  {
   "id": "k17-results-gazette",
@@ -627,7 +747,10 @@
   "retrievedAt": "2026-11-03T15:14:04.621Z",
   "bytes": 162297,
   "sha256": "29db16146ea44e8acf17df8b4a2654423b5b3bf6e260f812735dff0c9d31c363",
-  "lastModified": "Tue, 15 Sep 2026 10:19:39 GMT"
+  "lastModified": "Tue, 15 Sep 2026 10:19:39 GMT",
+  "shownEn": "Official notice of the election results",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
  },
  {
   "id": "k18-results-gazette",
@@ -640,7 +763,10 @@
   "retrievedAt": "2026-11-03T15:14:04.676Z",
   "bytes": 169732,
   "sha256": "b5cec83949dd34a892d44d02ebfa7256a25751621923774e9e9ad80805661d6e",
-  "lastModified": "Tue, 15 Sep 2026 10:19:39 GMT"
+  "lastModified": "Tue, 15 Sep 2026 10:19:39 GMT",
+  "shownEn": "Official notice of the election results",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
  },
  {
   "id": "k19-results-gazette",
@@ -653,7 +779,10 @@
   "retrievedAt": "2026-11-03T15:14:04.715Z",
   "bytes": 114946,
   "sha256": "ceff1522bdb9165cf126443b692183efcbf55a877d381bfd3301f81a44186f9e",
-  "lastModified": "Tue, 15 Sep 2026 10:19:39 GMT"
+  "lastModified": "Tue, 15 Sep 2026 10:19:39 GMT",
+  "shownEn": "Official notice of the election results",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
  },
  {
   "id": "k20-results-gazette",
@@ -667,7 +796,10 @@
   "bytes": 118151,
   "sha256": "19ba7a5dfce76f60a41fd1e5509ea16c4495271777dca65ed1247b3f181c5d49",
   "lastModified": "Tue, 15 Sep 2026 10:19:40 GMT",
-  "note": "Yalkut HaPirsumim 7010 pp4370–4373: votes, invalid ballots, seats and elected members. Registered voters are not published in this notice; the official locality and polling-station tables both aggregate to 5,881,696."
+  "note": "Yalkut HaPirsumim 7010 pp4370–4373: votes, invalid ballots, seats and elected members. Registered voters are not published in this notice; the official locality and polling-station tables both aggregate to 5,881,696.",
+  "shownEn": "Official notice of the election results",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות"
  },
  {
   "id": "k16-surplus-gazette",
@@ -679,7 +811,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:31:36.320940+00:00",
   "bytes": 221023,
-  "sha256": "f9384f5e3adeb038eb84d4f1fd509e89a2c36eb2c59407a23b17fa94ca8a3f81"
+  "sha256": "f9384f5e3adeb038eb84d4f1fd509e89a2c36eb2c59407a23b17fa94ca8a3f81",
+  "shownEn": "Official notice of the surplus-vote agreements",
+  "shownHe": "הודעה רשמית על הסכמי העודפים",
+  "publisherHe": "רשומות / ילקוט הפרסומים 5151 (עותק באתר olaw.org.il)"
  },
  {
   "id": "k16-cbs-national-summary",
@@ -692,7 +827,10 @@
   "retrievedAt": "2026-11-03T15:31:36.321123+00:00",
   "bytes": 123365,
   "sha256": "d72d79f8e8f30ae85281e0b7a9a24245ba4a7fa0e50ca0165990d99b8e0b6a12",
-  "note": "This official Central Bureau of Statistics table for registered voters only. National valid/invalid totals come from the results gazette; cast is their sum. Central Bureau of Statistics/polling 2006 cast is nine below that sum; no authoritative explanation is known."
+  "note": "This official Central Bureau of Statistics table for registered voters only. National valid/invalid totals come from the results gazette; cast is their sum. Central Bureau of Statistics/polling 2006 cast is nine below that sum; no authoritative explanation is known.",
+  "shownEn": "Central Bureau of Statistics, table 27.2: registered voters and turnout",
+  "shownHe": "הלשכה המרכזית לסטטיסטיקה, לוח 27.2: בעלי זכות בחירה ושיעור ההצבעה",
+  "publisherHe": "הלשכה המרכזית לסטטיסטיקה; המקור: ועדת הבחירות המרכזית"
  },
  {
   "id": "k16-national-reviewed",
@@ -719,7 +857,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:31:36.321271+00:00",
   "bytes": 223337,
-  "sha256": "6449cf9a909c041d038c89fb272620c4b8eb8d01b3e866cb0d5dbe037671bb65"
+  "sha256": "6449cf9a909c041d038c89fb272620c4b8eb8d01b3e866cb0d5dbe037671bb65",
+  "shownEn": "Official notice of the surplus-vote agreements",
+  "shownHe": "הודעה רשמית על הסכמי העודפים",
+  "publisherHe": "רשומות / ילקוט הפרסומים 5510 (עותק באתר olaw.org.il)"
  },
  {
   "id": "k17-cbs-national-summary",
@@ -732,7 +873,10 @@
   "retrievedAt": "2026-11-03T15:31:36.321383+00:00",
   "bytes": 123365,
   "sha256": "d72d79f8e8f30ae85281e0b7a9a24245ba4a7fa0e50ca0165990d99b8e0b6a12",
-  "note": "This official Central Bureau of Statistics table for registered voters only. National valid/invalid totals come from the results gazette; cast is their sum. Central Bureau of Statistics/polling 2006 cast is nine below that sum; no authoritative explanation is known."
+  "note": "This official Central Bureau of Statistics table for registered voters only. National valid/invalid totals come from the results gazette; cast is their sum. Central Bureau of Statistics/polling 2006 cast is nine below that sum; no authoritative explanation is known.",
+  "shownEn": "Central Bureau of Statistics, table 27.2: registered voters and turnout",
+  "shownHe": "הלשכה המרכזית לסטטיסטיקה, לוח 27.2: בעלי זכות בחירה ושיעור ההצבעה",
+  "publisherHe": "הלשכה המרכזית לסטטיסטיקה; המקור: ועדת הבחירות המרכזית"
  },
  {
   "id": "k17-national-reviewed",
@@ -790,7 +934,10 @@
   "retrievedAt": "2026-11-03T15:34:52.062928Z",
   "bytes": 180330,
   "sha256": "e799d4dcc8ea2df69263c32cd3c776696a5a0d72fb418567d102f551ef41ff16",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Official notice of the surplus-vote agreements",
+  "shownHe": "הודעה רשמית על הסכמי העודפים",
+  "publisherHe": "רשומות — ילקוט הפרסומים 8430 (הודעה רשמית, עותק באתר olaw.org.il)"
  },
  {
   "id": "k24-surplus-gazette",
@@ -803,7 +950,10 @@
   "retrievedAt": "2026-11-03T15:34:52.063210Z",
   "bytes": 211786,
   "sha256": "5f0c3da2c59b8697e95f2f977774ef425259274376743cef0803199ca729bcfa",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Official notice of the surplus-vote agreements",
+  "shownHe": "הודעה רשמית על הסכמי העודפים",
+  "publisherHe": "רשומות — ילקוט הפרסומים 9478 (הודעה רשמית, עותק באתר olaw.org.il)"
  },
  {
   "id": "k18-surplus-gazette",
@@ -815,7 +965,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:35:16.568Z",
   "bytes": 238377,
-  "sha256": "671ded7a7c4b6d68588cf00cdd9de592941c2ae6d4be2c9263d0f4be788cad33"
+  "sha256": "671ded7a7c4b6d68588cf00cdd9de592941c2ae6d4be2c9263d0f4be788cad33",
+  "shownEn": "Official notice of the surplus-vote agreements, Yalkut HaPirsumim 5912",
+  "shownHe": "הודעה רשמית על הסכמי העודפים, ילקוט הפרסומים 5912",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (עותק באתר olaw.org.il)"
  },
  {
   "id": "k19-surplus-gazette",
@@ -827,7 +980,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:35:16.568Z",
   "bytes": 99921,
-  "sha256": "432045d8b01b8d3816554582efde50b992e37995350226c88abc0be739a32e72"
+  "sha256": "432045d8b01b8d3816554582efde50b992e37995350226c88abc0be739a32e72",
+  "shownEn": "Official notice of the surplus-vote agreements, Yalkut HaPirsumim 6530",
+  "shownHe": "הודעה רשמית על הסכמי העודפים, ילקוט הפרסומים 6530",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (עותק באתר olaw.org.il)"
  },
  {
   "id": "k18-allocation-memorandum",
@@ -839,7 +995,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:35:16.568Z",
   "bytes": 344851,
-  "sha256": "a4750a896d9b6e85d7b925c33f71b668b2e65791eee270ae205592e19debaa07"
+  "sha256": "a4750a896d9b6e85d7b925c33f71b668b2e65791eee270ae205592e19debaa07",
+  "shownEn": "Central Elections Committee report on the seat allocation",
+  "shownHe": "זיכרון הדברים של ועדת הבחירות המרכזית על חלוקת המנדטים",
+  "publisherHe": "ועדת הבחירות המרכזית"
  },
  {
   "id": "k19-final-results-capture",
@@ -851,7 +1010,10 @@
   "method": "manual-capture",
   "retrievedAt": "2026-11-03T15:35:30.386918+00:00",
   "bytes": 2921,
-  "sha256": "60adf4ca79cc188336624204cd09ce443c7a73193a3dc651bc2780d838db67ad"
+  "sha256": "60adf4ca79cc188336624204cd09ce443c7a73193a3dc651bc2780d838db67ad",
+  "shownEn": "Central Elections Committee final national results, copied by hand from its results page",
+  "shownHe": "התוצאות הארציות הסופיות של ועדת הבחירות המרכזית, שהועתקו ידנית מדף התוצאות",
+  "publisherHe": "ועדת הבחירות המרכזית"
  },
  {
   "id": "k19-decisions-book",
@@ -875,7 +1037,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:27:21.751915+00:00",
   "bytes": 173940,
-  "sha256": "34f6b7dd77c72fde5885e9b1208c37760129d93091f084590aac8ed6b5696b4a"
+  "sha256": "34f6b7dd77c72fde5885e9b1208c37760129d93091f084590aac8ed6b5696b4a",
+  "shownEn": "Official notice of the election results",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k14-results-gazette",
@@ -887,7 +1052,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:27:21.792397+00:00",
   "bytes": 365900,
-  "sha256": "e803fd2a85fd908367ddff5cd1a92d4d893c0cbaadf8e66447c9713b7bf80c1a"
+  "sha256": "e803fd2a85fd908367ddff5cd1a92d4d893c0cbaadf8e66447c9713b7bf80c1a",
+  "shownEn": "Official notice of the election results",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k15-results-gazette",
@@ -899,7 +1067,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:27:21.833266+00:00",
   "bytes": 175416,
-  "sha256": "8dd75faf9c4446113f70a5931a6f4d8bb71451859b299fedece2981687045839"
+  "sha256": "8dd75faf9c4446113f70a5931a6f4d8bb71451859b299fedece2981687045839",
+  "shownEn": "Official notice of the results for Prime Minister and the Knesset, Yalkut HaPirsumim 4757",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות לראשות הממשלה ולכנסת, ילקוט הפרסומים 4757",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k13-candidates-gazette",
@@ -911,7 +1082,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:27:21.751566+00:00",
   "bytes": 451146,
-  "sha256": "727acb19589ca12516dd1c8cc96e3bf4811ff8d5a512acce7f1fa753c1165943"
+  "sha256": "727acb19589ca12516dd1c8cc96e3bf4811ff8d5a512acce7f1fa753c1165943",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k14-candidates-gazette",
@@ -923,7 +1097,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:27:21.831043+00:00",
   "bytes": 1222755,
-  "sha256": "a48a1e90a94ae606ae48fc652dbd8300721201fb29f583e7d45f6f6d256be74a"
+  "sha256": "a48a1e90a94ae606ae48fc652dbd8300721201fb29f583e7d45f6f6d256be74a",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k15-candidates-gazette",
@@ -935,7 +1112,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:27:21.909532+00:00",
   "bytes": 775934,
-  "sha256": "05ca16363cfab1bd1cb609449b8e5f4479c6e2a8c1c9434cc237f7f331822991"
+  "sha256": "05ca16363cfab1bd1cb609449b8e5f4479c6e2a8c1c9434cc237f7f331822991",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k14-agreements-gazette",
@@ -947,7 +1127,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:32:59.650817+00:00",
   "bytes": 176289,
-  "sha256": "46df695d5a71111d7375444c8f4440b62c31cf88e511a5bb93f30160ffab2f11"
+  "sha256": "46df695d5a71111d7375444c8f4440b62c31cf88e511a5bb93f30160ffab2f11",
+  "shownEn": "Official notice of the surplus-vote agreements and of candidates who withdrew, Yalkut HaPirsumim 4411",
+  "shownHe": "הודעה רשמית על הסכמי העודפים ועל מועמדים שפרשו, ילקוט הפרסומים 4411",
+  "publisherHe": "מדינת ישראל / ועדת הבחירות המרכזית (עותק באתר olaw.org.il)"
  },
  {
   "id": "k13-k15-cbs-national-totals",
@@ -959,7 +1142,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:27:22.052262+00:00",
   "bytes": 123088,
-  "sha256": "18359d3efbb89d375a7e87a3433d07eff712dd6da958303d1ef16e49ac29ac8b"
+  "sha256": "18359d3efbb89d375a7e87a3433d07eff712dd6da958303d1ef16e49ac29ac8b",
+  "shownEn": "Central Bureau of Statistics, table 27.2: registered voters and turnout",
+  "shownHe": "הלשכה המרכזית לסטטיסטיקה, לוח 27.2: בעלי זכות בחירה ושיעור ההצבעה",
+  "publisherHe": "הלשכה המרכזית לסטטיסטיקה"
  },
  {
   "id": "k13-k15-bader-ofer-amendment",
@@ -971,7 +1157,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:31:36.151612+00:00",
   "bytes": 54296,
-  "sha256": "4fa5d8c759a039f64f7adcdf736b91b1bb15450d0059c32329abf15908662302"
+  "sha256": "4fa5d8c759a039f64f7adcdf736b91b1bb15450d0059c32329abf15908662302",
+  "shownEn": "Elections Law amendment no. 4 (1973): the Bader–Ofer method",
+  "shownHe": "תיקון מס׳ 4 לחוק הבחירות (1973): שיטת בדר–עופר",
+  "publisherHe": "מדינת ישראל / הכנסת (רשומות)"
  },
  {
   "id": "k13-k15-threshold-amendment",
@@ -983,7 +1172,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:29:35.659600+00:00",
   "bytes": 87073,
-  "sha256": "017dbe1288d04325f2cf46958c691dbfe3c7dbdb8b8dd43808e5d4053f2c4fae"
+  "sha256": "017dbe1288d04325f2cf46958c691dbfe3c7dbdb8b8dd43808e5d4053f2c4fae",
+  "shownEn": "Elections Law amendment no. 23 (1991): a threshold of 1.5%",
+  "shownHe": "תיקון מס׳ 23 לחוק הבחירות (1991): אחוז חסימה של 1.5%",
+  "publisherHe": "מדינת ישראל / הכנסת (רשומות)"
  },
  {
   "id": "k15-agreements-gazette",
@@ -995,7 +1187,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T16:04:25.462173+00:00",
   "bytes": 2448858,
-  "sha256": "55aab1e4e53bf6aefa18187c5ad9b33c0e8ff572be9bc04e4d21a04f2a24433c"
+  "sha256": "55aab1e4e53bf6aefa18187c5ad9b33c0e8ff572be9bc04e4d21a04f2a24433c",
+  "shownEn": "Official notice of the surplus-vote agreements, Yalkut HaPirsumim 4755",
+  "shownHe": "הודעה רשמית על הסכמי העודפים, ילקוט הפרסומים 4755",
+  "publisherHe": "מדינת ישראל / ועדת הבחירות המרכזית (עותק באתר olaw.org.il)"
  },
  {
   "id": "k13-agreement-search-yp4014",
@@ -1124,7 +1319,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:32:03.815712+00:00",
   "bytes": 147529,
-  "sha256": "8c6aa3727a4fad52cc401038c8b9ed83ba739882b85e967eb3b092f047ef5ad8"
+  "sha256": "8c6aa3727a4fad52cc401038c8b9ed83ba739882b85e967eb3b092f047ef5ad8",
+  "shownEn": "Official notice of the election results",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k8-candidates-gazette",
@@ -1136,7 +1334,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:32:03.919640+00:00",
   "bytes": 437259,
-  "sha256": "e5a3fc474e67411c5ec2cdd2edf62d53ae013d5c61a34e29d63b6f34f8f9f07d"
+  "sha256": "e5a3fc474e67411c5ec2cdd2edf62d53ae013d5c61a34e29d63b6f34f8f9f07d",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k8-national-reviewed",
@@ -1163,7 +1364,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:32:03.896384+00:00",
   "bytes": 171588,
-  "sha256": "91280ceeefd634e75ac360dad1eb49fb5b7a8a570b9ce8913adc945e26fa5dd6"
+  "sha256": "91280ceeefd634e75ac360dad1eb49fb5b7a8a570b9ce8913adc945e26fa5dd6",
+  "shownEn": "Official notice of the election results",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k9-candidates-gazette",
@@ -1175,7 +1379,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:32:03.877538+00:00",
   "bytes": 574072,
-  "sha256": "bae3e6e7b001bbc6fe7d2b15645ea2c25c319bf86443808a5f7727ff640800b5"
+  "sha256": "bae3e6e7b001bbc6fe7d2b15645ea2c25c319bf86443808a5f7727ff640800b5",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k9-national-reviewed",
@@ -1217,7 +1424,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:32:03.886378+00:00",
   "bytes": 152326,
-  "sha256": "71045f34ff411c634fba1a5ecab1c121820c9eb1d1fa6e4e4dac80653c7150ad"
+  "sha256": "71045f34ff411c634fba1a5ecab1c121820c9eb1d1fa6e4e4dac80653c7150ad",
+  "shownEn": "Official notice of the election results",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k10-candidates-gazette",
@@ -1229,7 +1439,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:32:03.961622+00:00",
   "bytes": 922974,
-  "sha256": "8d67fd3c41dd37845d0a050a3749e82bc96393a6d0c31c6b602e8373a3e2fcf0"
+  "sha256": "8d67fd3c41dd37845d0a050a3749e82bc96393a6d0c31c6b602e8373a3e2fcf0",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k10-national-reviewed",
@@ -1256,7 +1469,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:27:21.677018+00:00",
   "bytes": 170958,
-  "sha256": "1ce31396beb02189439842e8871a590ac029f74583cb4e18d0ef8ae1f3791119"
+  "sha256": "1ce31396beb02189439842e8871a590ac029f74583cb4e18d0ef8ae1f3791119",
+  "shownEn": "Official notice of the election results",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k11-candidates-gazette",
@@ -1268,7 +1484,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:36:06.842486+00:00",
   "bytes": 602615,
-  "sha256": "3b2626bfd77f5c42b8ac74a38013e6663e89ea5755298e8d7a84e807b042e8a4"
+  "sha256": "3b2626bfd77f5c42b8ac74a38013e6663e89ea5755298e8d7a84e807b042e8a4",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (עותק באתר olaw.org.il)"
  },
  {
   "id": "k11-national-reviewed",
@@ -1310,7 +1529,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:27:21.851132+00:00",
   "bytes": 1674624,
-  "sha256": "a6e6b1102c35c2e2cde077d5c7f2085ad04da3453e92a4e34e91684adea8f806"
+  "sha256": "a6e6b1102c35c2e2cde077d5c7f2085ad04da3453e92a4e34e91684adea8f806",
+  "shownEn": "Official notice of the election results",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k12-candidates-gazette",
@@ -1322,7 +1544,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:27:21.789848+00:00",
   "bytes": 1157056,
-  "sha256": "8d45736c0d0a77db85a6470c53520b175abee6bab707a45c9c2eb0471ba4317d"
+  "sha256": "8d45736c0d0a77db85a6470c53520b175abee6bab707a45c9c2eb0471ba4317d",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k12-national-reviewed",
@@ -1349,7 +1574,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:27:22.052262+00:00",
   "bytes": 123088,
-  "sha256": "18359d3efbb89d375a7e87a3433d07eff712dd6da958303d1ef16e49ac29ac8b"
+  "sha256": "18359d3efbb89d375a7e87a3433d07eff712dd6da958303d1ef16e49ac29ac8b",
+  "shownEn": "Central Bureau of Statistics, table 27.2: registered voters and turnout",
+  "shownHe": "הלשכה המרכזית לסטטיסטיקה, לוח 27.2: בעלי זכות בחירה ושיעור ההצבעה",
+  "publisherHe": "הלשכה המרכזית לסטטיסטיקה"
  },
  {
   "id": "k8-k12-law-1973",
@@ -1361,7 +1589,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:31:36.151612+00:00",
   "bytes": 54296,
-  "sha256": "4fa5d8c759a039f64f7adcdf736b91b1bb15450d0059c32329abf15908662302"
+  "sha256": "4fa5d8c759a039f64f7adcdf736b91b1bb15450d0059c32329abf15908662302",
+  "shownEn": "Elections Law amendment no. 4 (1973): the Bader–Ofer method",
+  "shownHe": "תיקון מס׳ 4 לחוק הבחירות (1973): שיטת בדר–עופר",
+  "publisherHe": "מדינת ישראל / הכנסת (רשומות)"
  },
  {
   "id": "k8-k12-law-1969",
@@ -1373,7 +1604,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
   "bytes": 1506931,
-  "sha256": "a4be295db50db6601f2a989050263ec809441cca9481b76e23b266b29770d1e9"
+  "sha256": "a4be295db50db6601f2a989050263ec809441cca9481b76e23b266b29770d1e9",
+  "shownEn": "Knesset Elections Law (consolidated version), 1969",
+  "shownHe": "חוק הבחירות לכנסת [נוסח משולב], 1969",
+  "publisherHe": "הכנסת / רשומות"
  },
  {
   "id": "k10-agreements-gazette",
@@ -1385,7 +1619,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
   "bytes": 1044408,
-  "sha256": "4c1af5a77ffe086c94c252fe08b2519e0a28cf9c66f16e00d9913ccb5f3bd34f"
+  "sha256": "4c1af5a77ffe086c94c252fe08b2519e0a28cf9c66f16e00d9913ccb5f3bd34f",
+  "shownEn": "Official notice of the surplus-vote agreements, Yalkut HaPirsumim 2720",
+  "shownHe": "הודעה רשמית על הסכמי העודפים, ילקוט הפרסומים 2720",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (עותק באתר olaw.org.il)"
  },
  {
   "id": "k16-candidates-reviewed",
@@ -1428,7 +1665,10 @@
   "retrievedAt": "2026-11-04",
   "bytes": 47290,
   "sha256": "fc0d1cf10d5b668260c43e7c4e3d1094a64a70f74525e785ebce3e204d8ed11a",
-  "note": "Replaces an English Wikipedia list used as the fallback cross-check on 3 November 2026; the owner does not accept English Wikipedia as a source."
+  "note": "Replaces an English Wikipedia list used as the fallback cross-check on 3 November 2026; the owner does not accept English Wikipedia as a source.",
+  "shownEn": "Knesset open data: the members at the opening of the Knesset",
+  "shownHe": "המידע הפתוח של הכנסת: חברי הכנסת בפתיחתה",
+  "publisherHe": "המידע הפתוח של הכנסת"
  },
  {
   "id": "k17-candidates-reviewed",
@@ -1471,7 +1711,10 @@
   "retrievedAt": "2026-11-04",
   "bytes": 45880,
   "sha256": "0ff469efe572fba7a4b1207f8d8c2756cfb5bbaf9bec246a677275557c60410d",
-  "note": "Replaces an English Wikipedia list used as the fallback cross-check on 3 November 2026; the owner does not accept English Wikipedia as a source."
+  "note": "Replaces an English Wikipedia list used as the fallback cross-check on 3 November 2026; the owner does not accept English Wikipedia as a source.",
+  "shownEn": "Knesset open data: the members at the opening of the Knesset",
+  "shownHe": "המידע הפתוח של הכנסת: חברי הכנסת בפתיחתה",
+  "publisherHe": "המידע הפתוח של הכנסת"
  },
  {
   "id": "k1-membership-odata",
@@ -1789,7 +2032,10 @@
   "official": false,
   "description": "29 January 2003 report: Sharansky withdrew after the election; rank 3 Marina Solodkin replaces him. Cross-check of the inauguration exception, not a replacement registered roster.",
   "method": "manual-capture",
-  "retrievedAt": "2026-11-03"
+  "retrievedAt": "2026-11-03",
+  "shownEn": "Report of 29 January 2003: Natan Sharansky withdrew after the election and Marina Solodkin replaced him",
+  "shownHe": "דיווח מ־29 בינואר 2003: נתן שרנסקי פרש לאחר הבחירות ומרינה סולודקין באה במקומו",
+  "publisherHe": "Ynet / Hanan Greenberg"
  },
  {
   "id": "k16-knesset-vote-crosscheck",
@@ -1798,7 +2044,10 @@
   "official": true,
   "description": "Official historical election table corroborates Mafdal 132,370, valid 3,148,364, threshold 47,226 and quota 25,138. Search-index text inspected; direct page returned no readable body.",
   "method": "manual-capture",
-  "retrievedAt": "2026-11-03"
+  "retrievedAt": "2026-11-03",
+  "shownEn": "Knesset table of past election results",
+  "shownHe": "טבלת תוצאות הבחירות של הכנסת",
+  "publisherHe": "הכנסת"
  },
  {
   "id": "k16-knesset-membership-attempt",
@@ -1935,7 +2184,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:32:03.743527+00:00",
   "bytes": 238721,
-  "sha256": "b8a1e3f8e74346c19d9ed18532e0b53e08b07da678df3c464b4cdc9c6a4ece5b"
+  "sha256": "b8a1e3f8e74346c19d9ed18532e0b53e08b07da678df3c464b4cdc9c6a4ece5b",
+  "shownEn": "Official notice of the election results",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k1-candidates-gazette",
@@ -1947,7 +2199,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:32:03.803847+00:00",
   "bytes": 1110763,
-  "sha256": "a74abe1d50ae1ee3417648ebea049af0120c4ab2b6d3270a2d0a4a5ebbd1893e"
+  "sha256": "a74abe1d50ae1ee3417648ebea049af0120c4ab2b6d3270a2d0a4a5ebbd1893e",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k1-national-reviewed",
@@ -1974,7 +2229,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:32:04.182651+00:00",
   "bytes": 3788300,
-  "sha256": "ba90a26a4e7a1d350e5afcdfba20f8fd574b088c60f39dc89722c9653a1d1988"
+  "sha256": "ba90a26a4e7a1d350e5afcdfba20f8fd574b088c60f39dc89722c9653a1d1988",
+  "shownEn": "Official notice of the election results",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k2-candidates-gazette",
@@ -1986,7 +2244,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:32:59.753716+00:00",
   "bytes": 807540,
-  "sha256": "4dca7c4eded942b957081079584c0afa0e358e562ce1d50e27e25cd619f4e995"
+  "sha256": "4dca7c4eded942b957081079584c0afa0e358e562ce1d50e27e25cd619f4e995",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k2-national-reviewed",
@@ -2013,7 +2274,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:32:04.218633+00:00",
   "bytes": 3631315,
-  "sha256": "c62ac4d1b6c9b843f38c137fa4bacaac1999e70eb399d09c09975374d4f1875f"
+  "sha256": "c62ac4d1b6c9b843f38c137fa4bacaac1999e70eb399d09c09975374d4f1875f",
+  "shownEn": "Official notice of the election results, Yalkut HaPirsumim 432",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות, ילקוט הפרסומים 432",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k3-candidates-gazette",
@@ -2025,7 +2289,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:32:59.821097+00:00",
   "bytes": 818680,
-  "sha256": "25a334b5df28fef5c5fea0662e03cab50da94281b365fab18f464b6d37a9df19"
+  "sha256": "25a334b5df28fef5c5fea0662e03cab50da94281b365fab18f464b6d37a9df19",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k3-national-reviewed",
@@ -2052,7 +2319,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:32:03.736809+00:00",
   "bytes": 151251,
-  "sha256": "1a148be5180a0a2b59ef8c3ab46c159e6dfab7a415127b40d0b67608307d9c19"
+  "sha256": "1a148be5180a0a2b59ef8c3ab46c159e6dfab7a415127b40d0b67608307d9c19",
+  "shownEn": "Official notice of the election results",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k4-candidates-gazette",
@@ -2064,7 +2334,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:32:03.813722+00:00",
   "bytes": 996060,
-  "sha256": "ccb60ea8af3dbde35ff49fa899b517146c24064c521bf4fc1af3a2986d572c16"
+  "sha256": "ccb60ea8af3dbde35ff49fa899b517146c24064c521bf4fc1af3a2986d572c16",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k4-national-reviewed",
@@ -2091,7 +2364,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:32:03.736940+00:00",
   "bytes": 162937,
-  "sha256": "2c9f3b81bfb3aa5c7d10079eb422c162f49cc4392fefc8fc74213c2319a78579"
+  "sha256": "2c9f3b81bfb3aa5c7d10079eb422c162f49cc4392fefc8fc74213c2319a78579",
+  "shownEn": "Official notice of the election results",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k5-candidates-gazette",
@@ -2103,7 +2379,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:32:03.773315+00:00",
   "bytes": 954690,
-  "sha256": "99837fef2b04831907b96d820afd5754092352b3787024e17a083a89e9daf060"
+  "sha256": "99837fef2b04831907b96d820afd5754092352b3787024e17a083a89e9daf060",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k5-national-reviewed",
@@ -2130,7 +2409,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:27:21.526540+00:00",
   "bytes": 171244,
-  "sha256": "44d56ab6bb2c00be7f2c202f079ad78bf369c02224455b8404d2dcf0fd9bc6e2"
+  "sha256": "44d56ab6bb2c00be7f2c202f079ad78bf369c02224455b8404d2dcf0fd9bc6e2",
+  "shownEn": "Official notice of the election results",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k6-candidates-gazette",
@@ -2142,7 +2424,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:27:21.505565+00:00",
   "bytes": 1030152,
-  "sha256": "c9268c72680610757e5021d1a24de5ad25fdb665dacd9a2f9a867a0e6418cf2c"
+  "sha256": "c9268c72680610757e5021d1a24de5ad25fdb665dacd9a2f9a867a0e6418cf2c",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k6-national-reviewed",
@@ -2169,7 +2454,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:30:45.756114+00:00",
   "bytes": 157445,
-  "sha256": "3d4fff867b15373c179617492e2d500bd1e75855ef7b1abdf305751123ec82f2"
+  "sha256": "3d4fff867b15373c179617492e2d500bd1e75855ef7b1abdf305751123ec82f2",
+  "shownEn": "Official notice of the election results",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (עותק באתר olaw.org.il)"
  },
  {
   "id": "k7-candidates-gazette",
@@ -2181,7 +2469,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:27:21.521316+00:00",
   "bytes": 857417,
-  "sha256": "122ac35dd77bd4a46af84ce353aa4454660176e989c09c309a0ba8030d380959"
+  "sha256": "122ac35dd77bd4a46af84ce353aa4454660176e989c09c309a0ba8030d380959",
+  "shownEn": "Official notice of the candidate lists",
+  "shownHe": "הודעה רשמית על רשימות המועמדים",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (באתר gov.il)"
  },
  {
   "id": "k7-national-reviewed",
@@ -2208,7 +2499,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T15:27:22.052262+00:00",
   "bytes": 123088,
-  "sha256": "18359d3efbb89d375a7e87a3433d07eff712dd6da958303d1ef16e49ac29ac8b"
+  "sha256": "18359d3efbb89d375a7e87a3433d07eff712dd6da958303d1ef16e49ac29ac8b",
+  "shownEn": "Central Bureau of Statistics, table 27.2: registered voters and turnout",
+  "shownHe": "הלשכה המרכזית לסטטיסטיקה, לוח 27.2: בעלי זכות בחירה ושיעור ההצבעה",
+  "publisherHe": "הלשכה המרכזית לסטטיסטיקה"
  },
  {
   "id": "k6-agreements-gazette",
@@ -2220,7 +2514,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T18:20:00Z",
   "bytes": 88102,
-  "sha256": "73f7d7ba1be0a209876addf8de3af08d44e29bd05200b39d84b1159ed0d45bb2"
+  "sha256": "73f7d7ba1be0a209876addf8de3af08d44e29bd05200b39d84b1159ed0d45bb2",
+  "shownEn": "Official notice of the surplus-vote agreements",
+  "shownHe": "הודעה רשמית על הסכמי העודפים",
+  "publisherHe": "רשומות / ילקוט הפרסומים 1225, עותק באתר olaw.org.il"
  },
  {
   "id": "k7-agreements-gazette",
@@ -2232,7 +2529,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T18:20:00Z",
   "bytes": 242955,
-  "sha256": "8663033ade03519e3065ef82b53a1475f5d1be153e19dba0ced692a22d5a76c0"
+  "sha256": "8663033ade03519e3065ef82b53a1475f5d1be153e19dba0ced692a22d5a76c0",
+  "shownEn": "Official notice of the surplus-vote agreements",
+  "shownHe": "הודעה רשמית על הסכמי העודפים",
+  "publisherHe": "רשומות / ילקוט הפרסומים 1565, עותק באתר olaw.org.il"
  },
  {
   "id": "k1-k7-law-1948-312717",
@@ -2292,7 +2592,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T16:11:28.911893+00:00",
   "bytes": 59060,
-  "sha256": "fdd39358b0fc0265717d34c4b1331de49c8125a4f69c417553145092cdbb9712"
+  "sha256": "fdd39358b0fc0265717d34c4b1331de49c8125a4f69c417553145092cdbb9712",
+  "shownEn": "Election legislation of 1948",
+  "shownHe": "חקיקת הבחירות משנת 1948",
+  "publisherHe": "הכנסת / רשומות, חקיקה ראשית"
  },
  {
   "id": "k1-k7-law-1948-312748",
@@ -2316,7 +2619,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T16:07:35.803930+00:00",
   "bytes": 396268,
-  "sha256": "45af37888e7cc721d4613092a07f6452f874db1a1fdfe3b1325cba57006cbef4"
+  "sha256": "45af37888e7cc721d4613092a07f6452f874db1a1fdfe3b1325cba57006cbef4",
+  "shownEn": "Election legislation of 1948",
+  "shownHe": "חקיקת הבחירות משנת 1948",
+  "publisherHe": "הכנסת / רשומות, חקיקה ראשית"
  },
  {
   "id": "k1-k7-law-1951-208019",
@@ -2376,7 +2682,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T16:10:27.468059+00:00",
   "bytes": 869514,
-  "sha256": "f6cc2bf8b07d709739b03aa6052f0b7eacfd62f5ec04d60d5e826950c42f321f"
+  "sha256": "f6cc2bf8b07d709739b03aa6052f0b7eacfd62f5ec04d60d5e826950c42f321f",
+  "shownEn": "Election legislation of 1951",
+  "shownHe": "חקיקת הבחירות משנת 1951",
+  "publisherHe": "הכנסת / רשומות, חקיקה ראשית"
  },
  {
   "id": "k1-k7-law-1955-208024",
@@ -2400,7 +2709,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T16:06:32.222144+00:00",
   "bytes": 997572,
-  "sha256": "18e3e22e8a103ee18d13ab07b11088ffa6080c61dbf77e6cbc8867a74288f946"
+  "sha256": "18e3e22e8a103ee18d13ab07b11088ffa6080c61dbf77e6cbc8867a74288f946",
+  "shownEn": "Election legislation of 1955",
+  "shownHe": "חקיקת הבחירות משנת 1955",
+  "publisherHe": "הכנסת / רשומות, חקיקה ראשית"
  },
  {
   "id": "k1-k7-law-1959-208028",
@@ -2436,7 +2748,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T16:08:47.450110+00:00",
   "bytes": 880814,
-  "sha256": "a464d0e6afc1d229845a4fc0231da96008b9039568a831a6f123002d0be1731f"
+  "sha256": "a464d0e6afc1d229845a4fc0231da96008b9039568a831a6f123002d0be1731f",
+  "shownEn": "Election legislation of 1959",
+  "shownHe": "חקיקת הבחירות משנת 1959",
+  "publisherHe": "הכנסת / רשומות, חקיקה ראשית"
  },
  {
   "id": "k1-k7-law-1961-208030",
@@ -2520,7 +2835,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T16:06:05.982150+00:00",
   "bytes": 1506931,
-  "sha256": "a4be295db50db6601f2a989050263ec809441cca9481b76e23b266b29770d1e9"
+  "sha256": "a4be295db50db6601f2a989050263ec809441cca9481b76e23b266b29770d1e9",
+  "shownEn": "Election legislation of 1969",
+  "shownHe": "חקיקת הבחירות משנת 1969",
+  "publisherHe": "הכנסת / רשומות, חקיקה ראשית"
  },
  {
   "id": "k1-k7-law-1951-211818",
@@ -2664,7 +2982,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T16:27:46.598Z",
   "bytes": 766750,
-  "sha256": "8ee92081160887b8edbc6c9a5bfa54e7d35a0fa6a217bd7fe10cc88ac6b92586"
+  "sha256": "8ee92081160887b8edbc6c9a5bfa54e7d35a0fa6a217bd7fe10cc88ac6b92586",
+  "shownEn": "Candidate list ⁧מחל⁩ from the official notice (Yalkut HaPirsumim 4017), a copy kept by the Israel Democracy Institute",
+  "shownHe": "רשימת המועמדים מחל מתוך ההודעה הרשמית (ילקוט הפרסומים 4017), עותק במכון הישראלי לדמוקרטיה",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (צילום במכון הישראלי לדמוקרטיה)"
  },
  {
   "id": "k13-candidates-yp4017-idi-6695",
@@ -2676,7 +2997,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T16:27:47.382Z",
   "bytes": 756259,
-  "sha256": "a0fbca5508a451fc9d52e48db55ef75d71aa6c679b38cc854453fbec2dd05959"
+  "sha256": "a0fbca5508a451fc9d52e48db55ef75d71aa6c679b38cc854453fbec2dd05959",
+  "shownEn": "Candidate list ⁧מרצ⁩ from the official notice (Yalkut HaPirsumim 4017), a copy kept by the Israel Democracy Institute",
+  "shownHe": "רשימת המועמדים מרצ מתוך ההודעה הרשמית (ילקוט הפרסומים 4017), עותק במכון הישראלי לדמוקרטיה",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (צילום במכון הישראלי לדמוקרטיה)"
  },
  {
   "id": "k13-candidates-yp4017-idi-6731",
@@ -2688,7 +3012,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T16:27:48.126Z",
   "bytes": 386221,
-  "sha256": "4ca2828389666d3e3ac3eca23be2ddd8a49ff36e5a61e9ddc315a6106a0ade58"
+  "sha256": "4ca2828389666d3e3ac3eca23be2ddd8a49ff36e5a61e9ddc315a6106a0ade58",
+  "shownEn": "Candidate list ⁧ץ⁩ from the official notice (Yalkut HaPirsumim 4017), a copy kept by the Israel Democracy Institute",
+  "shownHe": "רשימת המועמדים ץ מתוך ההודעה הרשמית (ילקוט הפרסומים 4017), עותק במכון הישראלי לדמוקרטיה",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (צילום במכון הישראלי לדמוקרטיה)"
  },
  {
   "id": "k13-candidates-yp4017-idi-6654",
@@ -2700,7 +3027,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T16:27:48.994Z",
   "bytes": 1564793,
-  "sha256": "f6a9457a03c1d285086cda79161a66da24bed17f28a4fde5f24aa9bfc7d54337"
+  "sha256": "f6a9457a03c1d285086cda79161a66da24bed17f28a4fde5f24aa9bfc7d54337",
+  "shownEn": "Candidate list ⁧ב⁩ from the official notice (Yalkut HaPirsumim 4017), a copy kept by the Israel Democracy Institute",
+  "shownHe": "רשימת המועמדים ב מתוך ההודעה הרשמית (ילקוט הפרסומים 4017), עותק במכון הישראלי לדמוקרטיה",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (צילום במכון הישראלי לדמוקרטיה)"
  },
  {
   "id": "k13-candidates-yp4017-idi-6809",
@@ -2712,7 +3042,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T16:27:49.506Z",
   "bytes": 674465,
-  "sha256": "b2b58de2c669bff9a559e9ad4aafb6d94ebb373c26efb7661fcfd46b4f6c2f45"
+  "sha256": "b2b58de2c669bff9a559e9ad4aafb6d94ebb373c26efb7661fcfd46b4f6c2f45",
+  "shownEn": "Candidate list ⁧שס⁩ from the official notice (Yalkut HaPirsumim 4017), a copy kept by the Israel Democracy Institute",
+  "shownHe": "רשימת המועמדים שס מתוך ההודעה הרשמית (ילקוט הפרסומים 4017), עותק במכון הישראלי לדמוקרטיה",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (צילום במכון הישראלי לדמוקרטיה)"
  },
  {
   "id": "k13-candidates-yp4017-idi-6558",
@@ -2724,7 +3057,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T16:27:50.322Z",
   "bytes": 1177633,
-  "sha256": "15161da422970f17efbc41c2ce96d30d198fece4d7b42774825c8a978de8d6be"
+  "sha256": "15161da422970f17efbc41c2ce96d30d198fece4d7b42774825c8a978de8d6be",
+  "shownEn": "Candidate list ⁧ג⁩ from the official notice (Yalkut HaPirsumim 4017), a copy kept by the Israel Democracy Institute",
+  "shownHe": "רשימת המועמדים ג מתוך ההודעה הרשמית (ילקוט הפרסומים 4017), עותק במכון הישראלי לדמוקרטיה",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (צילום במכון הישראלי לדמוקרטיה)"
  },
  {
   "id": "k13-candidates-yp4017-idi-6608",
@@ -2736,7 +3072,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T16:27:51.138Z",
   "bytes": 726699,
-  "sha256": "50dda88ca998e9e2c3bf9dc6ac185f1d2a8d3db9232c9f93ebbbbd578f426c3a"
+  "sha256": "50dda88ca998e9e2c3bf9dc6ac185f1d2a8d3db9232c9f93ebbbbd578f426c3a",
+  "shownEn": "Candidate list ⁧ע⁩ from the official notice (Yalkut HaPirsumim 4017), a copy kept by the Israel Democracy Institute",
+  "shownHe": "רשימת המועמדים ע מתוך ההודעה הרשמית (ילקוט הפרסומים 4017), עותק במכון הישראלי לדמוקרטיה",
+  "publisherHe": "רשומות / ועדת הבחירות המרכזית (צילום במכון הישראלי לדמוקרטיה)"
  },
  {
   "id": "k13-national-reviewed",
@@ -2943,7 +3282,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T16:58:39.222721+00:00",
   "bytes": 1342,
-  "sha256": "2778cda9792ea5f9869f419c3fb7095fefd3527f4af59084e594fc6386831a9c"
+  "sha256": "2778cda9792ea5f9869f419c3fb7095fefd3527f4af59084e594fc6386831a9c",
+  "shownEn": "Knesset open data: Shulamit Aloni a member from 13 June 1977",
+  "shownHe": "המידע הפתוח של הכנסת: שולמית אלוני חברת כנסת מ־13 ביוני 1977",
+  "publisherHe": "המידע הפתוח של הכנסת"
  },
  {
   "id": "k9-odata-positions",
@@ -2955,7 +3297,10 @@
   "method": "http",
   "retrievedAt": "2026-11-03T16:58:39.222721+00:00",
   "bytes": 5655,
-  "sha256": "64feefdb712896eece447f8e34930854262732a0a2710bf2494a5249de36b42a"
+  "sha256": "64feefdb712896eece447f8e34930854262732a0a2710bf2494a5249de36b42a",
+  "shownEn": "Knesset open data: the codes for members’ positions",
+  "shownHe": "המידע הפתוח של הכנסת: קודי התפקידים של חברי הכנסת",
+  "publisherHe": "המידע הפתוח של הכנסת"
  },
  {
   "id": "k9-opening-membership-cross-check-reviewed",
@@ -2981,7 +3326,9 @@
   "retrievedAt": "2026-11-03",
   "bytes": 27567306,
   "sha256": "37a1235d1d2a4628df615cce09e7954b4de65b5952d39dd23ec4af34165be847",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Official calculation of the seat allocation (appendix)",
+  "shownHe": "החישוב הרשמי של חלוקת המנדטים (נספח)"
  },
  {
   "id": "k2-agreements-gazette",
@@ -2995,7 +3342,9 @@
   "retrievedAt": "2026-11-03",
   "bytes": 1476823,
   "sha256": "ffe25a0fbb4d3fcef529508b3cefb3d13433722b6584a21b6d9bdaa9e69bef22",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Official notice of the surplus-vote agreements",
+  "shownHe": "הודעה רשמית על הסכמי העודפים"
  },
  {
   "id": "k3-agreements-gazette",
@@ -3009,7 +3358,9 @@
   "retrievedAt": "2026-11-03",
   "bytes": 140330,
   "sha256": "3d6be9d25aa85d147c83fdb8d20a33c0e687f8681e48fcb3919f39083341733e",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Official notice of the surplus-vote agreements",
+  "shownHe": "הודעה רשמית על הסכמי העודפים"
  },
  {
   "id": "k4-agreements-gazette",
@@ -3023,7 +3374,9 @@
   "retrievedAt": "2026-11-03",
   "bytes": 138468,
   "sha256": "833fc801518621a224745860f69db72d2d3862ec7e186506e705b5c6ffc181cf",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Official notice of the surplus-vote agreements, Yalkut HaPirsumim 709",
+  "shownHe": "הודעה רשמית על הסכמי העודפים, ילקוט הפרסומים 709"
  },
  {
   "id": "k5-agreements-gazette",
@@ -3037,7 +3390,9 @@
   "retrievedAt": "2026-11-03",
   "bytes": 110172,
   "sha256": "51b753717e79bedea5b3e47c8ff81cad18ce35ae7060c6a490f3a7d5385d0946",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "Official notice of the surplus-vote agreements",
+  "shownHe": "הודעה רשמית על הסכמי העודפים"
  },
  {
   "id": "k3-candidates-mirror",
@@ -3051,7 +3406,9 @@
   "retrievedAt": "2026-11-03",
   "bytes": 818680,
   "sha256": "25a334b5df28fef5c5fea0662e03cab50da94281b365fab18f464b6d37a9df19",
-  "lastModified": null
+  "lastModified": null,
+  "shownEn": "A second copy of the candidate-lists notice (the same scan)",
+  "shownHe": "עותק נוסף של ההודעה על רשימות המועמדים (אותה סריקה)"
  },
  {
   "id": "k1-rosters-reviewed",
@@ -3174,7 +3531,10 @@
   "method": "http+page-extract",
   "retrievedAt": "2026-11-03T22:01:39+00:00",
   "bytes": 9580705,
-  "sha256": "d87b9f3d66a6e5f0a9f50a86f6b85c18686a325ddc4a56735f03ca215e013b98"
+  "sha256": "d87b9f3d66a6e5f0a9f50a86f6b85c18686a325ddc4a56735f03ca215e013b98",
+  "shownEn": "Central Elections Committee report on the results, appendix: how the seats were divided",
+  "shownHe": "זיכרון הדברים של ועדת הבחירות המרכזית על התוצאות, נספח: פרטי חישוב חלוקת המנדטים",
+  "publisherHe": "ועדת הבחירות המרכזית לכנסת ה־8 (gov.il)"
  },
  {
   "id": "k8-hewiki-agreements",
@@ -3225,7 +3585,10 @@
   "method": "http+page-extract",
   "retrievedAt": "2026-11-04T00:00:00+00:00",
   "bytes": 7215843,
-  "sha256": "77c288ec2e92ef5cfc63cc9b31716779e03ea83c48f0027811c8cd78c8d580c7"
+  "sha256": "77c288ec2e92ef5cfc63cc9b31716779e03ea83c48f0027811c8cd78c8d580c7",
+  "shownEn": "Central Elections Committee report on the results, appendix: the names of the 120 elected members",
+  "shownHe": "זיכרון הדברים של ועדת הבחירות המרכזית על התוצאות, נספח: שמות 120 הנבחרים",
+  "publisherHe": "ועדת הבחירות המרכזית לכנסת ה־8 (gov.il)"
  },
  {
   "id": "k8-opening-membership-cross-check-reviewed",
@@ -6219,7 +6582,10 @@
   "method": "http",
   "retrievedAt": "2026-11-06",
   "bytes": 257990,
-  "sha256": "a961842ae86030a591274516acebc96030743d4e84e7989719e5715b23873a50"
+  "sha256": "a961842ae86030a591274516acebc96030743d4e84e7989719e5715b23873a50",
+  "shownEn": "Official notice of the election results, Yalkut HaPirsumim 9511",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות, ילקוט הפרסומים 9511",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (עותק באתר olaw.org.il)"
  },
  {
   "id": "k24-cec-protocol",
@@ -6231,7 +6597,10 @@
   "method": "http",
   "retrievedAt": "2026-11-06",
   "bytes": 63005,
-  "sha256": "014168de56d61251c086a4025631255fd4e1ca42d88f128b98c14219d0954d1c"
+  "sha256": "014168de56d61251c086a4025631255fd4e1ca42d88f128b98c14219d0954d1c",
+  "shownEn": "Central Elections Committee decision of 30 March 2021: the Demokratit list cancelled after all its candidates withdrew",
+  "shownHe": "החלטת ועדת הבחירות המרכזית מ־30 במרץ 2021: ביטול רשימת דמוקרטית לאחר שכל מועמדיה פרשו",
+  "publisherHe": "ועדת הבחירות המרכזית / רשומות (עותק באתר emess.co.il)"
  },
  {
   "id": "k24-davidi-resignation-press",
@@ -6256,7 +6625,9 @@
   "method": "manual-capture",
   "retrievedAt": "2026-11-06",
   "bytes": 3652,
-  "sha256": "b129f0bf362a01fcd4ea40372d0bc4323036edf9dec9113d5c6f199d015abbed"
+  "sha256": "b129f0bf362a01fcd4ea40372d0bc4323036edf9dec9113d5c6f199d015abbed",
+  "shownEn": "Central Elections Committee final seat allocation",
+  "shownHe": "חלוקת המנדטים הסופית של ועדת הבחירות המרכזית"
  },
  {
   "id": "k26-results-gazette",
@@ -6270,7 +6641,9 @@
   "retrievedAt": "2026-11-09T10:17:56Z",
   "bytes": 300787,
   "sha256": "1ac702b7b1c23e94d99818f23d278ab42762c2c76b2f56fbab6554d1bbf2488a",
-  "note": "Every list total, valid 5,691,426, invalid 25,971 and the 120 seats are checked against this notice by the k26 builder. The notice prints no quota."
+  "note": "Every list total, valid 5,691,426, invalid 25,971 and the 120 seats are checked against this notice by the k26 builder. The notice prints no quota.",
+  "shownEn": "Official notice of the election results",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות"
  },
  {
   "id": "k20-shohat-globes",
@@ -6307,7 +6680,10 @@
   "method": "http",
   "retrievedAt": "2026-11-06",
   "bytes": 466905,
-  "sha256": "997628f9f5b6d556b62e2547489cbc9b6fbd64fa721c6eff687577ae1074cc24"
+  "sha256": "997628f9f5b6d556b62e2547489cbc9b6fbd64fa721c6eff687577ae1074cc24",
+  "shownEn": "Official correction to the results notice: the total of valid votes",
+  "shownHe": "תיקון רשמי להודעה על התוצאות: סך הקולות הכשרים",
+  "publisherHe": "רשומות — ילקוט הפרסומים 6546, 12 בפברואר 2013, עמ׳ 2874, עותק באתר olaw.org.il"
  },
  {
   "id": "k21-resignations-8172",
@@ -6320,7 +6696,9 @@
   "method": "http",
   "retrievedAt": "2026-11-06",
   "bytes": 431337,
-  "sha256": "588c0bd7295b28e22d69b228d3a54c929aecf2b0b0dbf4cbe5c61345d3581538"
+  "sha256": "588c0bd7295b28e22d69b228d3a54c929aecf2b0b0dbf4cbe5c61345d3581538",
+  "shownEn": "Official notice of candidates who withdrew",
+  "shownHe": "הודעה רשמית על מועמדים שפרשו"
  },
  {
   "id": "k21-resignations-8186",
@@ -6333,7 +6711,9 @@
   "method": "http",
   "retrievedAt": "2026-11-06",
   "bytes": 362557,
-  "sha256": "fd4d59182a1b89b64d58e2ffbb54a9c37a7203d277e5f21809e3614a2b22231f"
+  "sha256": "fd4d59182a1b89b64d58e2ffbb54a9c37a7203d277e5f21809e3614a2b22231f",
+  "shownEn": "Official notice of candidates who withdrew",
+  "shownHe": "הודעה רשמית על מועמדים שפרשו"
  },
  {
   "id": "k21-resignations-8196",
@@ -6346,7 +6726,9 @@
   "method": "http",
   "retrievedAt": "2026-11-06",
   "bytes": 426096,
-  "sha256": "78050c0b8b696a53226b479ef0068d2b0508ed1c9cbe57fae2dba28fc91a9cf4"
+  "sha256": "78050c0b8b696a53226b479ef0068d2b0508ed1c9cbe57fae2dba28fc91a9cf4",
+  "shownEn": "Official notice of candidates who withdrew",
+  "shownHe": "הודעה רשמית על מועמדים שפרשו"
  },
  {
   "id": "k21-results-gazette",
@@ -6359,7 +6741,9 @@
   "method": "http",
   "retrievedAt": "2026-11-06",
   "bytes": 378817,
-  "sha256": "1c55879fd58cacdd1398ac41a6b9382e95d539b0744ea4f03dab6531680b9b09"
+  "sha256": "1c55879fd58cacdd1398ac41a6b9382e95d539b0744ea4f03dab6531680b9b09",
+  "shownEn": "Official notice of the election results",
+  "shownHe": "הודעה רשמית על תוצאות הבחירות"
  },
  {
   "id": "k16-dissolution-gazette",
@@ -6393,7 +6777,10 @@
   "method": "http",
   "retrievedAt": "2026-11-06",
   "bytes": 1475197,
-  "sha256": "94b7df52b2ed4eaaba4fbc50b60009778e2ad134442a37ca6a2d407870956caf"
+  "sha256": "94b7df52b2ed4eaaba4fbc50b60009778e2ad134442a37ca6a2d407870956caf",
+  "shownEn": "Official notice of candidates who withdrew, Yalkut HaPirsumim 4751",
+  "shownHe": "הודעה רשמית על מועמדים שפרשו, ילקוט הפרסומים 4751",
+  "publisherHe": "מדינת ישראל / ועדת הבחירות המרכזית (עותק באתר olaw.org.il)"
  },
  {
   "id": "k15-withdrawals-yp4754",
@@ -6405,7 +6792,10 @@
   "method": "http",
   "retrievedAt": "2026-11-06",
   "bytes": 1491677,
-  "sha256": "ff922eeb33c59ef8524a34f943bdbcd25d387c95e230df488051b07720fd71c9"
+  "sha256": "ff922eeb33c59ef8524a34f943bdbcd25d387c95e230df488051b07720fd71c9",
+  "shownEn": "Official notice of candidates who withdrew, Yalkut HaPirsumim 4754",
+  "shownHe": "הודעה רשמית על מועמדים שפרשו, ילקוט הפרסומים 4754",
+  "publisherHe": "מדינת ישראל / ועדת הבחירות המרכזית (עותק באתר olaw.org.il)"
  },
  {
   "id": "k15-gov28-tenure",
@@ -6439,7 +6829,10 @@
   "description": "1 November 1977, p.237: accepted determination rejecting Gross appeal; initial one-seat cap, 114 initial seats and six surplus seats under section 81(d).",
   "retrievedAt": "2026-11-06",
   "sha256": "1cf2999f7a715175d5d722a910a8fefd637361ac2de00d844d93a84d45bb110c",
-  "bytes": 2971615
+  "bytes": 2971615,
+  "shownEn": "Minutes of 1 November 1977: the decision on a list that won more seats than it had candidates",
+  "shownHe": "פרוטוקול מ־1 בנובמבר 1977: ההחלטה על רשימה שזכתה ביותר מנדטים ממספר מועמדיה",
+  "publisherHe": "הכנסת"
  },
  {
   "id": "k7-government-15-positions",
@@ -6482,7 +6875,9 @@
   "retrievedAt": "2026-11-06",
   "bytes": 106573,
   "sha256": "ac285b71c7cffdee37e3321b36f39ed7d8a3c186688498c86ae61df18ddc22ac",
-  "publisherEn": "Reshumot — Yalkut HaPirsumim 429 (24 July 1955), pp.1087–1088 (copy at olaw.org.il)"
+  "publisherEn": "Reshumot — Yalkut HaPirsumim 429 (24 July 1955), pp.1087–1088 (copy at olaw.org.il)",
+  "shownEn": "Official notice of candidates who withdrew",
+  "shownHe": "הודעה רשמית על מועמדים שפרשו"
  },
  {
   "id": "k4-results-correction-0724",
@@ -6494,7 +6889,10 @@
   "method": "http",
   "retrievedAt": "2026-11-06",
   "bytes": 1803336,
-  "sha256": "1c47743293a95775aec55a441e19c00d363a439d53e71686dfac22829c2b0f15"
+  "sha256": "1c47743293a95775aec55a441e19c00d363a439d53e71686dfac22829c2b0f15",
+  "shownEn": "Official correction to the results notice: Meir Yaari, not Yaakov Yaari",
+  "shownHe": "תיקון רשמי להודעה על התוצאות: יערי מאיר במקום יערי יעקב",
+  "publisherHe": "רשומות — ילקוט הפרסומים 724, 10 בדצמבר 1959, עמ׳ 501 (עותק באתר olaw.org.il)"
  },
  {
   "id": "k5-withdrawals-gazette",
@@ -6506,7 +6904,10 @@
   "method": "http",
   "retrievedAt": "2026-11-06",
   "sha256": "73da772795c054c9c3a25407256ad0e6b0a62746cb391f5c95075d5556afe31e",
-  "bytes": 1751291
+  "bytes": 1751291,
+  "shownEn": "Official notice of candidates who withdrew",
+  "shownHe": "הודעה רשמית על מועמדים שפרשו",
+  "publisherHe": "רשומות — ילקוט הפרסומים 866, 10 באוגוסט 1961, עמ׳ 1847 (עותק באתר olaw.org.il)"
  },
  {
   "id": "k24-cec-station-breakdown",
@@ -6519,7 +6920,9 @@
   "method": "http; retained excerpt",
   "retrievedAt": "2026-11-07",
   "bytes": 4228,
-  "sha256": "79a2399c8f8d7bb0e2925221775b7c0e209955cb32997978497f12c3790049f9"
+  "sha256": "79a2399c8f8d7bb0e2925221775b7c0e209955cb32997978497f12c3790049f9",
+  "shownEn": "Central Elections Committee annual report 2021, pp. 7–8: the kinds of polling stations",
+  "shownHe": "הדוח השנתי של ועדת הבחירות המרכזית לשנת 2021, עמ׳ 7–8: סוגי הקלפיות"
  },
  {
   "id": "k19-seat-allocation-appendix",

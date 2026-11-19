@@ -26,6 +26,8 @@ import { download, fmtInt } from '../format.ts';
 import { dispatch, getState, redo, replay, setState, undo, useStore, useDigits, useSetting } from '../store.ts';
 import { LocalitiesFailed, useLocalities } from './Turnout.tsx';
 import { GlossaryLink, Info, TextField } from './ui.tsx';
+import { isCommons, logoCredit, logoLicence } from '../logoCredit.ts';
+import { englishLabel } from '../../data/names.ts';
 
 // ------------------------------------------------------------------ rules
 
@@ -218,14 +220,17 @@ export function Localities({ s }: { s: Scenario }) {
 
 // ------------------------------------------------------------------ sources
 
-interface Src { id: string; url: string; publisher: string; publisherEn?: string; official: boolean; description: string; descriptionEn?: string; retrievedAt?: string; sha256?: string; bytes?: number; note?: string; method: string; file: string; own?: boolean }
+/** A source record (data/sources.json). `shownEn`/`shownHe` and `publisherHe` are what the tab says about it; the
+ *  research `description` and `note` (how a page was fetched, what was cross-checked) stay in the download (S1/S2, 19 Nov 2026). */
+interface Src { id: string; url: string; publisher: string; publisherEn?: string; publisherHe?: string; official: boolean; description: string; descriptionEn?: string; shownEn?: string; shownHe?: string; retrievedAt?: string; sha256?: string; bytes?: number; note?: string; method: string; file: string; own?: boolean }
 
 /** A source's address: a link for a web address (any words after it stay plain text). The project's own records are
  *  not sources and are listed apart, by what they are, never by a file name (17 Nov 2026). */
 function SourceAddress({ x }: { x: Src }) {
-  const [href, ...rest] = x.url.split(' ');
+  // only the address: words recorded after it are research notes in English ("(38 per-list pages)")
+  const [href] = x.url.split(' ');
   if (!/^https?:\/\//.test(href)) return null;
-  return <span dir="ltr" style={{ display: 'block', wordBreak: 'break-all' }}><a href={href} target="_blank" rel="noreferrer">{href}</a>{rest.length ? ` ${rest.join(' ')}` : ''}</span>;
+  return <span dir="ltr" style={{ display: 'block', wordBreak: 'break-all' }}><a href={href} target="_blank" rel="noreferrer">{href}</a></span>;
 }
 
 /** The manifest is fetched once per page load and kept, so a return visit to Sources renders at once. */
@@ -300,10 +305,10 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
             <li key={x.id} style={{ marginBottom: 8 }}>
               {/* source records are written in English (Hebrew originals keep an English publisher for English
                   pages); each runs in its own direction inside a Hebrew page */}
-              <b dir="auto">{datesInText(lang === 'en' ? x.publisherEn ?? x.publisher : x.publisher)}</b> {x.official ? <span className="chip ok">{L('official', 'רשמי')}</span> : <span className="chip secondary">{L('secondary', 'משני')}</span>}<br />
-              <span dir="auto" style={{ display: 'block' }}>{datesInText(lang === 'en' ? englishSourceText(x.descriptionEn ?? x.description) : x.description)}</span>
+              <b dir="auto">{datesInText(lang === 'en' ? x.publisherEn ?? x.publisher : x.publisherHe ?? x.publisher)}</b> {x.official ? <span className="chip ok">{L('official', 'רשמי')}</span> : <span className="chip secondary">{L('secondary', 'משני')}</span>}<br />
+              <span dir="auto" style={{ display: 'block' }}>{datesInText(lang === 'en' ? x.shownEn ?? englishSourceText(x.descriptionEn ?? x.description) : x.shownHe ?? x.description)}</span>
               <SourceAddress x={x} />
-              <div className="muted tiny">{x.retrievedAt && <>{L('Retrieved', 'נשלף')} <bdi dir="ltr">{formatDate(x.retrievedAt, lang)}</bdi></>}{x.sha256 && <>{x.retrievedAt ? ' · ' : ''}<bdi dir="ltr">SHA-256 {x.sha256.slice(0, 16)}…</bdi></>}{x.note ? <> · <bdi dir="auto">{datesInText(x.note)}</bdi></> : ''}</div>
+              <div className="muted tiny">{x.retrievedAt && <>{L('Retrieved', 'נשלף')} <bdi dir="ltr">{formatDate(x.retrievedAt, lang)}</bdi></>}{x.sha256 && <>{x.retrievedAt ? ' · ' : ''}<bdi dir="ltr">SHA-256 {x.sha256.slice(0, 16)}…</bdi></>}</div>
             </li>
           ))}
         </ul>}
@@ -332,42 +337,28 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
           // file: a joint list and its party often share one logo, and the credit is the same.
           const byFile = new Map<string, { names: string[]; logo: NonNullable<ElectionDataset['lists'][number]['logo']> }>();
           for (const l of ds.lists) for (const x of [...(l.logo ? [{ name: listLabel(l, lang), logo: l.logo }] : []),
-            ...(l.parties ?? []).filter((p) => p.logo).map((p) => ({ name: lang === 'he' ? p.nameHe : p.nameEn, logo: p.logo! }))]) {
+            ...(l.parties ?? []).filter((p) => p.logo).map((p) => ({ name: lang === 'he' ? p.nameHe : englishLabel(p.nameEn, p.nameHe), logo: p.logo! }))]) {
             const e = byFile.get(x.logo.file);
             if (!e) byFile.set(x.logo.file, { names: [x.name], logo: x.logo });
             else if (!e.names.includes(x.name)) e.names.push(x.name);
           }
           const logos = [...byFile.values()];
-          // the credit line, without repeating the licence shown beside it; in English the party's Hebrew
-          // name that opens an official-mark credit is dropped (the English name already leads the row)
-          // The credit line, without repeating the licence shown beside it. In English the credit leads with its
-          // English part; a Hebrew or Arabic opening (the party's own name, a credited uploader) moves to a
-          // quiet note at the end of the row rather than being dropped.
-          const nonLatin = /[\u0590-\u05FF\u0600-\u06FF]/;
-          const credit = (a: string, licence: string): { main: string; original?: string } => {
-            const c = a.replace(`; ${licence}.`, '.');
-            if (lang !== 'en' || !nonLatin.test(c)) return { main: c };
-            const parts = c.split(/(; | — )/);
-            let i = 0;
-            while (i < parts.length && (nonLatin.test(parts[i]) || /^(; | — )$/.test(parts[i]))) i++;
-            if (i >= parts.length) return { main: 'Rights holder credit', original: c };
-            if (i === 0) return { main: c };
-            return { main: parts.slice(i).join(''), original: parts.slice(0, i).join('').replace(/(; | — )$/, '') };
+          // The credit and licence in the page's language (logoCredit.ts): who the image is credited to and where it
+          // was found. The stored attribution is a research record (ids, processing notes) and stays in the data.
+          const item = (x: typeof logos[number], inCommons: boolean) => {
+            const c = logoCredit(x.logo, lang);
+            const text = inCommons ? c.by ?? L('Author not named', 'היוצר לא צוין') : c.by ? `${c.by} · ${c.where}` : c.where;
+            return <li key={x.logo.file}><b>{x.names.join(' · ')}</b>: <a href={x.logo.sourceUrl} target="_blank" rel="noreferrer"><bdi>{text}</bdi></a> · {logoLicence(x.logo, lang)}</li>;
           };
-          const commons = (url: string) => { try { return new URL(url).hostname.endsWith('wikimedia.org'); } catch { return false; } };
-          // a credit runs in the direction of most of its letters, so a Hebrew uploader name before a Latin
-          // file name does not reorder the line
-          const dir = (t: string) => (t.match(/[A-Za-z]/g)?.length ?? 0) >= (t.match(/[\u0590-\u05FF\u0600-\u06FF]/g)?.length ?? 0) ? 'ltr' : 'rtl';
-          const item = (x: typeof logos[number]) => { const c = credit(datesInText(x.logo.attribution), x.logo.licence); return <li key={x.logo.file}><b>{x.names.join(' · ')}</b>: <bdi dir={dir(c.main)}><a href={x.logo.sourceUrl} target="_blank" rel="noreferrer">{c.main}</a></bdi> · <bdi dir="auto">{x.logo.licence}</bdi>{c.original && <> · <bdi className="muted" dir="rtl" lang={/[\u0600-\u06FF]/.test(c.original) ? 'ar' : 'he'}>{c.original}</bdi></>}</li>; };
           // the secondary label is said once, for the Commons group, not on every row
-          const groups = [{ id: 'party', title: L('From the parties', 'מהמפלגות'), secondary: false, rows: logos.filter((x) => !commons(x.logo.sourceUrl)) },
-            { id: 'commons', title: 'Wikimedia Commons', secondary: true, rows: logos.filter((x) => commons(x.logo.sourceUrl)) }].filter((g) => g.rows.length);
+          const groups = [{ id: 'party', title: L('From the parties', 'מהמפלגות'), secondary: false, rows: logos.filter((x) => !isCommons(x.logo)) },
+            { id: 'commons', title: L('Wikimedia Commons', 'ויקישיתוף'), secondary: true, rows: logos.filter((x) => isCommons(x.logo)) }].filter((g) => g.rows.length);
           return logos.length ? <>
             <h3>{L('Party logos', 'סמלי המפלגות')}</h3>
             <p className="small ink2">{L('Separate licences', 'רישיונות נפרדים')} <Info title={L('Logo licences', 'רישיונות הסמלים')}>{L('Verified party marks from official sources or Wikimedia Commons (secondary). Logos are shown only with evidence for this election. Rights and credits are separate from the app licence.', 'סמלים ממקורות רשמיים או מוויקישיתוף (משני). סמלים מוצגים רק עם ראיות לשימוש בבחירות האלה. הזכויות והייחוס נפרדים מרישיון האפליקציה.')}</Info></p>
             {groups.map((g) => <Fragment key={g.id}>
               <p className="small" style={{ margin: '8px 0 2px', fontWeight: 600 }}><bdi>{g.title}</bdi>{g.secondary && <> <span className="chip secondary">{L('secondary', 'משני')}</span></>}</p>
-              <ul className="small credits" style={{ paddingInlineStart: 18, marginTop: 2 }}>{g.rows.map(item)}</ul>
+              <ul className="small credits" style={{ paddingInlineStart: 18, marginTop: 2 }}>{g.rows.map((x) => item(x, g.secondary))}</ul>
             </Fragment>)}
           </> : null;
         })()}
