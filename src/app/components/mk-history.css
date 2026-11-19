@@ -46,7 +46,11 @@
   /* the screen's height at any text size (Large text zooms the page, so viewport units divide by it) */
   .mk-sheet[open] { inset: 0; inline-size: 100%; max-inline-size: none; block-size: calc(100dvh / var(--text-zoom, 1)); max-block-size: none; border-radius: 0; padding: 12px 14px; }
   .mk-head { flex-wrap: wrap; }
-  .mk-acts { order: -1; inline-size: 100%; justify-content: flex-end; }
+  /* a long link ("Hebrew Wikipedia (secondary)") wraps inside the row, so Large text never widens the sheet and Close
+     keeps its corner */
+  .mk-acts { order: -1; inline-size: 100%; justify-content: flex-end; white-space: normal; }
+  .mk-acts a { text-align: end; }
+  .mk-acts a:not([hreflang]) { white-space: nowrap; }
   .mk-row { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "when res" "list list" "term term" "ev ev"; gap: 4px 10px; padding: 10px 0; }
   .mk-when { grid-area: when; display: flex; gap: 8px; align-items: baseline; }
   .mk-res { grid-area: res; text-align: end; }
