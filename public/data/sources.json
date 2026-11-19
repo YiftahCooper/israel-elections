@@ -3136,8 +3136,8 @@
   "description": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו.",
   "method": "visual-primary-review",
   "retrievedAt": "2026-11-03",
-  "bytes": 23478,
-  "sha256": "d067a7f8fb84a10b9ee74a98fb077b85460535b76456904939906a99f0935a9e",
+  "bytes": 23830,
+  "sha256": "f8b69cb2cf5cd50ebeb46cc67a16c4570c0743a7308226845001ff0aeeb5665b",
   "lastModified": null,
   "audit": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
   "descriptionEn": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name.",
@@ -3338,11 +3338,11 @@
   "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_MkSiteCode",
   "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
   "official": true,
-  "description": "KNS_MkSiteCode: KnsID (= PersonID) to SiteId, the member id of the Knesset website (main.knesset.gov.il/mk/apps/mk/mk-personal-details/{SiteId}); 1,116 rows, one per person.",
+  "description": "KNS_MkSiteCode: KnsID (= PersonID) to SiteId, the member id of the Knesset website (main.knesset.gov.il/mk/apps/mk/mk-personal-details/{SiteId}); 1,162 rows, one per person (the 46 members first seated in the 26th Knesset added 19 Nov 2026).",
   "method": "http",
   "retrievedAt": "2026-11-04",
-  "bytes": 53784,
-  "sha256": "8530fbe65f436f21228559fc8cb275480b093817898ed8a70c2a0275aa38f891"
+  "bytes": 56130,
+  "sha256": "851110743680de5f1dc21220c858c6202cc9906960fa19c2838e8d87e4b8a67b"
  },
  {
   "id": "bios-knesset-site-names-en",
@@ -3350,12 +3350,12 @@
   "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkDetailsHeader?mkId={siteId}&languageKey=en",
   "publisher": "Knesset (official website, English member pages)",
   "official": true,
-  "description": "The English name (field Name) of every Knesset member the candidate bios link to, keyed by the Knesset website member id (KNS_MkSiteCode.SiteId); 1,116 members. The site shows each member's current name, which can differ from the name on an old ballot. Fetched by scripts/research/fetch-mk-names-en.py.",
+  "description": "The English name (field Name) of every Knesset member the candidate bios link to, keyed by the Knesset website member id (KNS_MkSiteCode.SiteId); 1,162 members (the 26th Knesset's 46 newcomers added 19 Nov 2026). The site shows each member's current name, which can differ from the name on an old ballot. Fetched by scripts/research/fetch-mk-names-en.py.",
   "method": "http",
   "retrievedAt": "2026-11-05",
   "note": "Hash and size re-recorded 12 Nov 2026 after two later edits: doubled spaces normalised with the site value kept as nameEnRaw (bc397d38, 6 Nov) and 66 more members fetched from the same API (470d78cf, 11 Nov).",
-  "bytes": 50362,
-  "sha256": "f07116ca402d916b33c79599ecfbfa2162344b0605356ac7a91f98eb64fbc3a6"
+  "bytes": 52457,
+  "sha256": "6e22ae7effa7b05fe3d56e1a85329991cbab08712cc1056bcb83ab599f1507ad"
  },
  {
   "id": "bios-wikidata-p9770",
@@ -3414,8 +3414,8 @@
   "method": "manual-review",
   "retrievedAt": "2026-11-04",
   "note": "Hash and size re-recorded 12 Nov 2026 after reviewed decisions were added (aaa474fb and 7eab7202, 9 Nov), and 13 Nov 2026 after the 1999 Shas rank 1 (Aryeh Deri, YP 4757 p.3378) was added, and 19 Nov 2026 after the 2026 Shas ranks 1 and 6 (Aryeh Deri, Dror David Amos; YP 15100 §4) were added.",
-  "bytes": 31637,
-  "sha256": "36783938de967bab35fcf5a7836b1cb660a390cae4c89bd332efb3fa52c07fde"
+  "bytes": 37398,
+  "sha256": "5a4e7fdc29ba40a553ef18e8a1429b5a4f2002a8178316559a0520e06f253a37"
  },
  {
   "id": "bios-party-sources",

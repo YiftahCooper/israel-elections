@@ -33,7 +33,8 @@ for (const lang of ['he', 'en'] as const) test(`2026: Find an MK names a new mem
   await box.fill(lang === 'he' ? 'יורם' : 'יורם כהן');
   const mark = page.locator('.chamber .found-mark text');
   await expect(mark).toHaveCount(1);
-  await expect(mark).toContainText('יורם כהן');
+  // in English, his name from the Knesset's English site since it gives one (review V3 F10, 19 Nov 2026)
+  await expect(mark).toContainText(lang === 'he' ? 'יורם כהן' : 'Yoram Cohen');
   await expect(mark).not.toContainText('כהן יורם');
   // a returning member reads the same way (the Knesset records him as גד)
   await box.fill(lang === 'he' ? 'איזנקוט' : 'Eisenkot');

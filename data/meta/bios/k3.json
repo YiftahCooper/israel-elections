@@ -1857,7 +1857,7 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; reviewed decision: קול משה (Moshe Kol, Progressive Party leader) is named elected in the results notice but was replaced by Idov Cohen before the opening (decision 0088 item 4). The link is to Kol himself, the only MK of that name (Knessets 0, 2, 4–8, Progressive and Independent Liberals)."
+   "basis": "not elected; reviewed decision: קול משה (Moshe Kol, Progressive Party leader) is named elected in the results notice but was replaced by Idov Cohen before the opening (decision 0088 item 4). The link is to Kol himself, the only MK of that name (Knessets 0, 2, 4–8, Progressive and Independent Liberals)."
   },
   "3-פ#3": {
    "knessetPersonId": 2314,
@@ -1902,6 +1902,22 @@
     "title": "גרשום שוקן",
     "url": "https://he.wikipedia.org/wiki/%D7%92%D7%A8%D7%A9%D7%95%D7%9D_%D7%A9%D7%95%D7%A7%D7%9F",
     "via": "wikidata Q2909083"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 3 member, name identical (3)"
+  },
+  "3-פ#6": {
+   "knessetPersonId": 2390,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/442",
+    "siteId": 442,
+    "verified": "official KNS_MkSiteCode PersonID/SiteId mapping checked 2026-11-06; destination page not verified"
+   },
+   "hewiki": {
+    "title": "אידוב כהן",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%99%D7%93%D7%95%D7%91_%D7%9B%D7%94%D7%9F",
+    "via": "wikidata Q2778256"
    },
    "party": null,
    "confidence": "high",

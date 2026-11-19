@@ -144,24 +144,22 @@ test('an MK elected in 2026: the 26th Knesset opened on 10 Nov 2026 and the time
 
 // Round 8, 19 Nov 2026 (card mk-career wording): "Her history" / "His history" only where the Knesset's own record of
 // the person gives the gender; anyone it has no record for gets neutral words, in both languages. Never from a name.
-test('the seat button is gendered only from the Knesset’s record: Karkabi Sabbah hers, Amos neutral', async ({ page }) => {
+test('the seat button is gendered only from the Knesset’s record: Karkabi Sabbah hers, Busso his', async ({ page }) => {
   await start(page, { k: 'k26' });
   await hoverSeat(page, 'Joint List', 7);
   await expect(page.locator('.tip').getByRole('button', { name: 'Her history' })).toBeVisible();
-  await hoverSeat(page, 'Shas', 6);
-  const neutral = page.locator('.tip').getByRole('button', { name: 'MK history' });
-  await expect(neutral).toBeVisible();
-  await neutral.click();
-  // elected by the count, withdrew before the opening (Shas No. 6)
-  await expect(card(page).locator('.mk-rows > li').first()).toContainText('Elected; did not sit');
-  await expect(card(page).locator('.mk-key')).toContainText('their time in it');
+  // Shas No. 8 sat from the first sitting in place of those who resigned from the list (Nos. 1, 6 and 7); since the
+  // seat-takers rule (review V3 F8) No. 6, Dror David Amos, who never sat and has no Knesset record, holds no seat and has
+  // no MK history, so the neutral wording is covered by tests/mk-history-card.test.ts
+  await hoverSeat(page, 'Shas', 8);
+  await page.locator('.tip').getByRole('button', { name: 'His history' }).click();
+  await expect(card(page).locator('.mk-rows > li').filter({ hasText: '26th Knesset' })).toContainText('Sat from the first sitting');
 });
-test('Hebrew: neutral words for someone without a Knesset record', async ({ page }) => {
+test('Hebrew: the seat button is gendered from the Knesset’s record', async ({ page }) => {
   await start(page, { lang: 'he', k: 'k26' });
-  await hoverSeat(page, 'ש״ס', 6, 'מקום');
-  await page.locator('.tip').getByRole('button', { name: 'המסלול בכנסת', exact: true }).click();
-  await expect(card(page).locator('.mk-rows > li').first()).toContainText('בין הנבחרים; ללא כהונה');
-  await expect(card(page).locator('.mk-key')).toContainText('הצבוע – זמן הכהונה בה');
+  await hoverSeat(page, 'ש״ס', 8, 'מקום');
+  await page.locator('.tip').getByRole('button', { name: 'המסלול שלו בכנסת', exact: true }).click();
+  await expect(card(page).locator('.mk-rows > li').filter({ hasText: 'הכנסת ה־26' })).toContainText('כיהן מהישיבה הראשונה');
 });
 
 // Owner, 19 Nov 2026: an event is a short ink line with a number, not an arrow; days with no faction recorded are
@@ -183,7 +181,8 @@ test('Eichler: numbered event lines match the lines under the row; days without 
   expect(bg).not.toContain('linear-gradient');
   const key = c.locator('.mk-key');
   await expect(key).toContainText('No faction recorded');
-  await expect(key).toContainText('A recorded event, by its number under the row');
+  await expect(key).toContainText('A recorded event; its number is listed under the row');
+  await expect(key.locator('.mk-key-mark')).toHaveText('');
   await expect(key.locator('.mk-key-seg.mk-unrec')).toHaveCount(1);
 });
 

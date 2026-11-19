@@ -1,7 +1,7 @@
 import {PartyDot,PartyKey,PARTY_SHARE,type JointLook}from'./PartyDot.tsx';
 import { partyDisplayColor } from '../partyDisplayColor.ts';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
-import { Slip } from './ui.tsx';
+import { Slip, SlipName } from './ui.tsx';
 import './chamber-key.css';
 import { syntheticIconSvg } from '../syntheticIcon.ts';
 import { factLog } from '../../model/actionClassification.ts';
@@ -188,7 +188,11 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   const svgRef = useRef<SVGSVGElement>(null);
   // on a phone the arc fills the width without labels; the legend below names the lists instead
 
-  const [hover, setHover] = useState<{ seat: SeatInfo; anchor: Element } | null>(null);
+  // `touch`: opened by a tap, so the card itself offers the list (a tap does not open the list's sheet over it)
+  const [hover, setHover] = useState<{ seat: SeatInfo; anchor: Element; touch?: boolean } | null>(null);
+  // the last press on a seat was a finger (review V3 F13, 19 Nov 2026: on a touch phone a tap fired the hover and the
+  // click, and the click opened the list's full-screen sheet over the seat card, so no MK could be reached from a seat)
+  const touchPress = useRef(false);
   const seats = useMemo(() => seatOrder(s, r, colorBy, jointLook), [s, r, colorBy, jointLook]);
   const { base, result: br, labelReference } = useGraphicReference(s, reference);
   const changes = useMemo(() => changedSeatKeys(s, r, base, br), [s, r, base, br]);
@@ -224,10 +228,21 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
 
   const hoverBridge = useHoverIntent(() => setHover(null), !!hover);
   /** click and the keyboard open the seat card at once; a resting mouse opens it after the shared hover delay */
-  const onSeat = (st: SeatInfo, evt: React.MouseEvent | React.KeyboardEvent) => {
+  const onSeat = (st: SeatInfo, evt: React.MouseEvent | React.KeyboardEvent, touch = false) => {
     hoverBridge.keep();
     void loadTermRuntime();
-    setHover({ seat: st, anchor: evt.currentTarget });
+    setHover({ seat: st, anchor: evt.currentTarget, touch });
+  };
+  /** A seat pressed: a tap opens its card (a second tap on it closes it) and the card opens the list; a mouse click
+   *  selects the list, with the card at once where Popups on hover is off. */
+  const onSeatClick = (st: SeatInfo, evt: React.MouseEvent) => {
+    if (touchPress.current) { if (hover?.seat === st) setHover(null); else onSeat(st, evt, true); return; }
+    if (!hoverPopups) onSeat(st, evt);
+    setState({ selectedListId: selected === st.listId ? null : st.listId });
+  };
+  const seatPointer = {
+    onPointerDown: (e: React.PointerEvent) => { touchPress.current = e.pointerType === 'touch'; },
+    onMouseLeave: () => { if (!touchPress.current) hoverBridge.leave(); },
   };
   // The keyboard reaches the seats as one tab stop (the seat last focused); arrow keys move between seats in the order
   // they are drawn, left to right, also in Hebrew, since the chamber is never mirrored. Enter or Space opens the seat
@@ -446,6 +461,8 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     const name = memberName(c);
     return [{ seat: i, names: [candidateName(c, 'he'), candidateName(c, 'en'), name], label: L(`${name} · ${listLabel(l, lang)} #${place}`, `${name} · ${listLabel(l, lang)}, מקום ${place}`) }];
   }), [seats, lang, originalDataset]); // eslint-disable-line react-hooks/exhaustive-deps
+  // the chart's members, so Find an MK can tell who entered after the first sitting (FindMk laterMembers)
+  const seatedIds = useMemo(() => seats.flatMap((st) => { const c = seatedOrder(listOf(st.listId))[st.idx]; return c ? [c.id] : []; }), [seats]); // eslint-disable-line react-hooks/exhaustive-deps
   const found = foundSeat(mkEntries, findQ, findPick);
   const foundLabel = found === null ? null : mkEntries.find((e) => e.seat === found)!.label;
   /** The found seat's ring and its name over it (under it in the top row), kept inside the drawing [x0, x1]. */
@@ -483,9 +500,9 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           const dim = dimOthers && selected && selected !== st.listId;
           return (
             <g key={i} {...seatButton(i)}><circle className={`seat ${dim ? 'dim' : ''} ${i === found ? 'found' : ''}`} cx={cx + p.x * R} cy={cy + p.y * R} r={rad * R} fill={st.color}
-              data-seat="" data-bloc={st.bloc ?? "__none"} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? "var(--ink)" : "var(--ink-2)"} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`) ? 4 : 1}
-              onMouseEnter={(e) => { if (hoverPopups) onSeatHover(st, e); }} onMouseLeave={hoverBridge.leave}
-              onClick={(e) => { if (!hoverPopups) onSeat(st, e); setState({ selectedListId: selected === st.listId ? null : st.listId }); }}><title>{seatLabel(st)}</title></circle>
+              data-seat="" data-bloc={st.bloc ?? "__none"} data-gained={changes.gained.has(`${st.listId}:${st.idx}`) ? '' : undefined} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? "var(--ink)" : "var(--ink-2)"} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`) ? 4 : 1}
+              onMouseEnter={(e) => { if (hoverPopups && !touchPress.current) onSeatHover(st, e); }} {...seatPointer}
+              onClick={(e) => onSeatClick(st, e)}><title>{seatLabel(st)}</title></circle>
             {st.innerColor && <PartyDot partyId={st.partyId} x={cx+p.x*R} y={cy+p.y*R} r={rad*R} color={st.innerColor} className={dim?'seat dim':'seat'}/>}
             </g>
           );
@@ -510,8 +527,8 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         const [x, y] = trayCell(i, tray.cols), c = TRAY.cell;
         const dim = dimOthers && selected && selected !== st.listId;
         return <g key={i} {...seatButton(i)}>
-          <rect data-seat="" data-bloc={st.bloc ?? "__none"} className={`seat ${dim ? 'dim' : ''} ${i === found ? 'found' : ''}`} x={x} y={y} width={c} height={c} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--ink-2)'} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`)?4:1}
-            onMouseEnter={e => { if (hoverPopups) onSeatHover(st,e); }} onMouseLeave={hoverBridge.leave} onClick={e => { if (!hoverPopups) onSeat(st,e); setState({ selectedListId: selected === st.listId ? null : st.listId }); }}><title>{seatLabel(st)}</title></rect>
+          <rect data-seat="" data-bloc={st.bloc ?? "__none"} data-gained={changes.gained.has(`${st.listId}:${st.idx}`) ? '' : undefined} className={`seat ${dim ? 'dim' : ''} ${i === found ? 'found' : ''}`} x={x} y={y} width={c} height={c} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--ink-2)'} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`)?4:1}
+            onMouseEnter={e => { if (hoverPopups && !touchPress.current) onSeatHover(st,e); }} {...seatPointer} onClick={e => onSeatClick(st, e)}><title>{seatLabel(st)}</title></rect>
           {st.innerColor && <PartyDot partyId={st.partyId} x={x+c/2} y={y+c/2} r={c/2} square={{rx:4}} color={st.innerColor} className={dim ? 'seat dim' : 'seat'}/>}
         </g>;
       })}
@@ -555,7 +572,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       </div>}
       {/* on the board the bloc bar directly below already carries this line; Compare's chambers stand alone */}
       {compactProp && <BlocMajorities s={s} r={r} />}
-      {!compactProp && mkEntries.length > 0 && <FindMk entries={mkEntries} query={findQ} onQuery={setFindQ} pick={findPick} onPick={setFindPick} />}
+      {!compactProp && mkEntries.length > 0 && <FindMk entries={mkEntries} query={findQ} onQuery={setFindQ} pick={findPick} onPick={setFindPick} knesset={Number(s.electionId.slice(1))} seatedCandidateIds={seatedIds} />}
       {body}
       {/* spoken seat names with a Hebrew name on an English page (or the reverse) are marked with the name's language */}
       {seatNames.map((n, i) => <LangLabel key={i} id={`${seatId}-${i}`} text={n} />)}
@@ -564,7 +581,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       {hover && hv && (
         <Floating onPointerEnter={hoverBridge.keep} onPointerLeave={hoverBridge.leave} className="tip" preferAbove anchor={() => hover.anchor.getBoundingClientRect()}
           role="dialog" label={seatNames[seats.indexOf(hover.seat)] ?? seatLabel(hover.seat)} labelledBy={'aria-labelledby' in nameProps(seatNames[seats.indexOf(hover.seat)] ?? '', lang, '') ? `${seatId}-${seats.indexOf(hover.seat)}` : undefined}><div ref={card} onBlur={onSeatsBlur}>
-          <div className="row"><Slip {...hv} name={listLabel(hv, lang)} size="sm" /><b>{listLabel(hv, lang)}</b> <span className="muted">({hv.letters})</span></div>
+          <div className="row"><SlipName list={hv} name={listLabel(hv, lang)} /></div>
           {cand ? <div><b><CandidateName candidate={cand} text={hoverCandidateName} /></b> · {L('rank', 'מקום')} {candPlace}{cand.notes?.map((n, k) => <div key={k} className="muted small">{lang === 'he' ? n.he : n.en}</div>)}</div>
             : hv.rosterUnavailable || hv.rosterTruncated ? <div className="muted">{L(`Seat ${hover.seat.idx + 1} of the list; candidate names are not available for this election`, `מושב ${hover.seat.idx + 1} של הרשימה; שמות המועמדים אינם זמינים לבחירות אלה`)}</div>
             : <div className="bad">{L('Vacant — the list has too few candidates', 'מושב ריק — אין די מועמדים ברשימה')}</div>}
@@ -572,6 +589,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           <div className="muted small">{hover.seat.remainder ? remainderHow : L('Seat won by whole quota', 'מנדט שהושג במודד שלם')}</div>
           <MkSeatLink candidate={cand} />
           {!factLog(s).length && <SeatHolders electionId={s.electionId} candidate={cand} />}
+          {hover.touch && <button type="button" className="btn small" onClick={() => { setHover(null); setState({ selectedListId: hover.seat.listId }); }}>{L('List details', 'פרטי הרשימה')}</button>}
         </div></Floating>
       )}
       {hasChanges && referenceChamber && <div className="baseline-mini">

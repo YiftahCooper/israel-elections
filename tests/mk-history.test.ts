@@ -23,10 +23,10 @@ describe('who gets a history', () => {
     const served = new Set<number>();
     for (let k = 1; k <= 26; k++) for (const t of JSON.parse(readFileSync(`data/research/knesset-member-changes/k${k}.json`, 'utf8')).tenures) served.add(t.personId);
     for (const p of served) expect(rt.people[p], `person ${p}`).toBeDefined();
-    // the 26th Knesset's member records are in (19 Nov 2026): the one person who never sat is Dror David Amos, Shas No. 6,
-    // declared elected and withdrawn before the opening
+    // the 26th Knesset's member records are in (19 Nov 2026), so no one gets a history without a term: Dror David Amos,
+    // Shas No. 6, declared elected but not at the opening, is "not seated" like Alon Davidi in 2021 (seat-takers.ts)
     const never = Object.entries(rt.people).filter(([id]) => !served.has(Number(id)));
-    expect(never.map(([id, p]) => [Number(id), p.runs.map((r) => [r[0], r[1], r[2], r[3]])])).toEqual([[30989, [[26, '26-שס', 6, 'declined']]]]);
+    expect(never.map(([id]) => Number(id))).toEqual([]);
     expect(review.anomalies).toEqual([]);
   });
   it('a candidacy belongs to at most one person', () => {
@@ -50,8 +50,14 @@ describe('runs that did not win a seat', () => {
     // left out in the review as "a two-word name on a list of another party"; the gazette sponsor line has since shown the
     // list is Yachad's own (data/meta/parties.json, yachad-filing-2019), so the name rule ties it as for Feiglin's 22-זן
     const sinceSameParty: Record<string, number> = { '21-זנ#1': 494 };
+    // left "unknown" in the review on the name alone; the Knesset record has him entering the 25th Knesset mid-term, which
+    // only a candidate of a 2022 list can, and he is the only one of that name (identity decision, review V3 F9)
+    const sinceReplacement: Record<string, number> = { '25-כן#16': 22151 };
     for (const r of audit.runs) {
-      if (sinceSameParty[r.candidateId]) {
+      if (sinceReplacement[r.candidateId]) {
+        expect(r.status).toBe('unknown');
+        expect(rt.people[sinceReplacement[r.candidateId]].runs.find((run) => `${run[1]}#${run[2]}` === r.candidateId)?.slice(3, 5)).toEqual(['later', 'id']);
+      } else if (sinceSameParty[r.candidateId]) {
         expect(r.status).toBe('unknown');
         expect(personOfCandidate(rt, r.candidateId)).toBe(sinceSameParty[r.candidateId]);
         expect(rt.people[sinceSameParty[r.candidateId]].runs.find((run) => `${run[1]}#${run[2]}` === r.candidateId)?.slice(3, 5)).toEqual(['withdrawn', 'name']);
@@ -369,8 +375,6 @@ describe('a move line never reads “X (until then X)”', () => {
 describe('every elected member has their run', () => {
   it('every member who sat from a Knesset’s opening has a run in that election (all 25 Knessets)', () => {
     const allowed: Record<string, string> = {
-      // no candidacy of the 1955 lists is tied to him in data/meta/bios/k3.json
-      'k3 2390': 'Idov Cohen',
       // the 1977 Likud ranks 21 and 24 are both printed כהן יגאל; which rank is which person is medium-confidence evidence
       'k9 2394': 'Yigal Cohen', 'k9 2399': 'Yigal Cohen-Orgad',
       // the notice prints אמסלם אמיל at Shas #11; the given-name difference is not explained by an official source

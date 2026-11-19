@@ -88,10 +88,15 @@ test('c-levels-08: Settings shows Custom pressed and its choices right under it;
   const row = page.getByRole('dialog').getByRole('group', { name: 'Complexity', exact: true });
   await expect(row.getByRole('button', { name: 'Custom', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await expect(page.locator('.ps-own')).toContainText('Custom: Simple with your choices');
-  // at Standard the same tool is Standard's own, so nothing is listed; back at Simple the choice waits, not in use
+  // Custom is built on Simple and stays so (review V3 F11): at Standard it waits, still "Simple with your choices", and
+  // choosing it from there brings back Simple with the choice
   await row.getByRole('button', { name: 'Standard', exact: true }).click();
   await expect(page.locator('.toast')).toHaveCount(0);
-  await expect(page.locator('.ps-own')).toHaveCount(0);
+  await expect(page.locator('.ps-own')).toContainText('Custom: Simple with your choices');
+  await expect(page.locator('.ps-own')).toContainText('Not in use: you are on Standard.');
+  await page.locator('.ps-own').getByRole('button', { name: 'Use Custom', exact: true }).click();
+  await expect(row.getByRole('button', { name: 'Custom', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('.ps-own')).toContainText('Custom: Simple with your choices');
   await row.getByRole('button', { name: 'Simple', exact: true }).click();
   await expect(row.getByRole('button', { name: 'Simple', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await expect(page.locator('.ps-own')).toContainText('Not in use: you are on Simple.');

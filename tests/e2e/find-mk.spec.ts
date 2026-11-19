@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { choose } from './choices.ts';
 
 // Find an MK over the seat chart (owner card "seat", 16 Nov 2026): typing a name rings that member's seat and names it,
 // the other seats fade; several matches are offered as buttons; it works in both layouts and both languages.
@@ -63,4 +64,19 @@ test('on a phone the box is a full-size tap target', async ({ page }) => {
   const bb = (await box(page).boundingBox())!;
   expect(bb.height).toBeGreaterThanOrEqual(44);
   expect(bb.x + bb.width).toBeLessThanOrEqual(390);
+});
+
+// Review V3 F2 (19 Nov 2026): every replacement got "No MK by that name in this Knesset". Someone who entered after the
+// first sitting is found, with the day they entered, and their history opens from there; no seat is ringed.
+for (const lang of ['en', 'he'] as const) test(`someone who entered later is found, with the day, and opens their history: ${lang}`, async ({ page }) => {
+  await open(page, { lang });
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k24');
+  await expect(page.locator('.chamber [data-seat]').first()).toBeVisible();
+  await box(page).fill(lang === 'en' ? 'Starkmann' : 'שטרקמן');
+  const later = page.locator('.chamber .find-mk-later');
+  await expect(later).toContainText(lang === 'en' ? 'in the Knesset from 13 Sept 2022, after the first sitting' : 'בכנסת מ־13 בספט׳ 2022, אחרי הישיבה הראשונה');
+  await expect(page.locator('.chamber .find-mk-result')).not.toContainText(lang === 'en' ? 'No MK by that name' : 'אין ח״כ');
+  await expect(page.locator('.chamber .found-mark')).toHaveCount(0);
+  await later.getByRole('button').click();
+  await expect(page.locator('dialog[open].mk-sheet')).toContainText(lang === 'en' ? 'Starkmann' : 'שטרקמן');
 });

@@ -57,10 +57,12 @@ test('ambiguous names and conflicting aliases stay unknown, never fuzzy matched'
  expect(matchMember(c,{...snapshot,persons:[]},{[c.id]:{knessetPersonId:1,confidence:'high'}}).reason).toContain('absent');
 });
 
-test('historical residuals are limited to duplicate names and the documented pre-opening resignation',async()=>{
+// Yael German (2020, No. 13) no longer counts: she did not take her seat, and Idan Roll (No. 34) who did is elected
+// (scripts/lib/build/seat-takers.ts)
+test('historical residuals are limited to duplicate names',async()=>{
  const {compileJointFacts}=await import('../scripts/joint-facts.ts');
  const unresolved=compileJointFacts().filter(l=>!l.listId.startsWith('26-')).flatMap(l=>l.unresolved);
- expect(unresolved.map(c=>c.candidateId)).toEqual(['9-מחל#24','9-מחל#21','23-פה#13']);
+ expect(unresolved.map(c=>c.candidateId)).toEqual(['9-מחל#24','9-מחל#21']);
 });
 
 

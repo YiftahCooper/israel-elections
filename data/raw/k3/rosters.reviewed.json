@@ -685,6 +685,10 @@
         {
           "rank": 5,
           "nameHe": "שוקן גרשום"
+        },
+        {
+          "rank": 6,
+          "nameHe": "כהן אידוב"
         }
       ],
       "electedNames": [
@@ -702,9 +706,13 @@
         4,
         5
       ],
+      "excludedCandidateRanks": [
+        6
+      ],
       "resultsPdfPages": [
         3
-      ]
+      ],
+      "readingNote": "Rank 6 (Idov Cohen) transcribed on 19 Nov 2026 from the same page (YP 425 p. 1018): he took No. 2 Moshe Kol's seat at the first sitting (Knesset opening membership), so the roster runs to him."
     },
     {
       "letters": "צ",

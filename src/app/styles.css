@@ -357,6 +357,10 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 /* Neutral, opaque borders remain distinct even for user-chosen very pale bloc colours. */
 .chamber, .blocs { --wedge-mix: 14%; --bloc-border: var(--ink-2); }
 [data-theme="dark"] .chamber, [data-theme="dark"] .blocs { --wedge-mix: 22%; }
+/* dark: a dark list colour on its bloc background fell to 1.15:1 (review V3 F12, 19 Nov 2026), and a seat's one-unit
+   outline draws at about 0.4 px on a phone. Each seat gets a light ring of a fixed on-screen width, at 3:1 or more
+   against any bloc background, keeping the list colours; a seat gained keeps its own heavier outline. */
+[data-theme="dark"] .chamber [data-seat]:not([data-gained]) { stroke: var(--ink-2); stroke-width: 1.25px; vector-effect: non-scaling-stroke; }
 .chamber .wedge, .bloc-swatch {
   fill: color-mix(in srgb, var(--bc) var(--wedge-mix), var(--surface));
   fill-opacity: 1;
@@ -376,6 +380,9 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .find-mk input { width: 14em; max-width: 100%; min-height: 44px; }
 @media (max-width: 600px) { .find-mk-choices .btn { min-height: 44px; } }
 .find-mk-result { color: var(--ink); font-weight: 600; }
+/* someone who entered after the first sitting: the dates in plain weight on a line of their own, with the history button */
+.find-mk-result:has(.find-mk-later) { flex-basis: 100%; }
+.find-mk-later { font-weight: 400; }
 .find-mk-choices { display: flex; flex-wrap: wrap; gap: 4px; flex-basis: 100%; }
 .chamber svg.finding :is(.seat, .seat-btn image):not(.found) { opacity: .2; }
 .chamber .found-mark circle, .chamber .found-mark rect { fill: none; stroke: var(--ink); stroke-width: 4px; }

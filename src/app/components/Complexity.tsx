@@ -9,11 +9,11 @@ type Choice = Preset | 'custom';
  *  there are choices, their count opens them in Settings (owner, 16 Nov 2026: one place to see and undo them). */
 export function Complexity({ count = true, before }: { count?: boolean; before?: () => void }) {
   const L = useL();
-  const level = useStore(st => st.level), custom = useStore(st => st.custom);
-  const own = useStore(st => ownChoices(st.customFeatures, st.level).length);
+  const level = useStore(st => st.level), custom = useStore(st => st.custom), base = useStore(st => st.customBase);
+  const own = useStore(st => ownChoices(st.customFeatures, st.customBase).length);
   const value: Choice = custom && own ? 'custom' : level;
   const named = (['simple', 'standard', 'expert'] as const).map(v => ({ v: v as Choice, label: L(...LEVEL_LABELS[v]) }));
-  const customTitle = L(`${LEVEL_LABELS[level][0]} and ${own === 1 ? 'one choice' : `${own} choices`} of your own`, `"${LEVEL_LABELS[level][1]}" ועוד ${own === 1 ? 'בחירה אחת' : `${own} בחירות`} שלכם`);
+  const customTitle = L(`${LEVEL_LABELS[base][0]} and ${own === 1 ? 'one choice' : `${own} choices`} of your own`, `"${LEVEL_LABELS[base][1]}" ועוד ${own === 1 ? 'בחירה אחת' : `${own} בחירות`} שלכם`);
   const options = own ? [...named, { v: 'custom' as Choice, label: L(...CUSTOM_LABEL), title: customTitle }] : named;
   return <span className="band-levels complexity" data-custom={value === 'custom' ? '' : undefined}>
     <Seg<Choice> label={L(...COMPLEXITY_LABEL)} value={value} options={options} onChange={v => v === 'custom' ? setCustom() : setLevel(v)} />

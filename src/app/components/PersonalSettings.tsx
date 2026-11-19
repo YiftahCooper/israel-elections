@@ -169,15 +169,15 @@ function PartRow({ id }: { id: FeatureId }) {
  *  own undo, and all at once. While a named complexity is in use the choices wait here, with a button to use them. */
 function OwnChoices() {
   const L = useL();
-  const level = useStore(st => st.level);
+  const level = useStore(st => st.level), base = useStore(st => st.customBase);
   const active = useStore(st => st.custom);
   const custom = useStore(st => st.customFeatures);
-  const ids = ownChoices(custom, level);
+  const ids = ownChoices(custom, base);
   if (!ids.length) return null;
   const word = (id: FeatureId) => { const v = shownAs(id, custom![id]!); return v === 'show' ? L('added', 'נוסף') : v === 'hidden' ? L('hidden', 'מוסתר') : TOOL_IDS.includes(id) ? L('greyed out', 'באפור') : L('folded', 'מקופל'); };
   const undo = (only?: FeatureId[]) => { const before = snapshot(); resetFeatures(only); toast('info', L('Your choices cleared', 'הבחירות שלכם נוקו'), { label: L('Undo', 'ביטול'), run: () => restore(before) }); };
   return <section className="ps-own" aria-labelledby="ps-own-title" data-setting="own" data-active={active ? '' : undefined}>
-    <h4 id="ps-own-title">{L(`${CUSTOM_LABEL[0]}: ${LEVEL_LABELS[level][0]} with your choices`, `${CUSTOM_LABEL[1]}: "${LEVEL_LABELS[level][1]}" עם הבחירות שלכם`)}
+    <h4 id="ps-own-title">{L(`${CUSTOM_LABEL[0]}: ${LEVEL_LABELS[base][0]} with your choices`, `${CUSTOM_LABEL[1]}: "${LEVEL_LABELS[base][1]}" עם הבחירות שלכם`)}
       <Info title={L(...CUSTOM_LABEL)}>{L('Tools and details you added or took away. Simple, Standard and Expert stay as they are; Custom starts from the one in use.', 'כלים ופרטים שהוספתם או הורדתם. "פשוט", "רגיל" ו"מומחה" נשארים כמו שהם; "מותאם אישית" מתחיל מהרמה שבשימוש.')}</Info>
       <button type="button" className="link-btn ps-reset" onClick={() => undo()}>{L('Clear all', 'ניקוי הכול')}</button></h4>
     {!active && <p className="ps-own-off small"><span className="ink2">{L(`Not in use: you are on ${LEVEL_LABELS[level][0]}.`, `לא בשימוש: אתם ברמת "${LEVEL_LABELS[level][1]}".`)}</span> <button type="button" className="btn small" onClick={setCustom}>{L(`Use ${CUSTOM_LABEL[0]}`, `מעבר ל"${CUSTOM_LABEL[1]}"`)}</button></p>}

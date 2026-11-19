@@ -989,7 +989,7 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; reviewed decision: Yael German (#13) was replaced by Idan Roll before the opening (decision 0088 item 4). The link is to German herself (PersonID 23596, Knessets 19–22)."
+   "basis": "not elected; reviewed decision: Yael German (#13) was replaced by Idan Roll before the opening (decision 0088 item 4). The link is to German herself (PersonID 23596, Knessets 19–22)."
   },
   "23-פה#14": {
    "knessetPersonId": 30684,
@@ -1325,7 +1325,7 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "not elected at the election; entered Knesset 23 in the list's faction (name score 2.5)"
+   "basis": "elected; Knesset 23 member, name matches (2.5)"
   },
   "23-פה#35": {
    "knessetPersonId": 30720,
@@ -1342,6 +1342,70 @@
    "party": null,
    "confidence": "medium",
    "basis": "not elected; identical name, the only person with it who served as MK; Knesset 22 faction \"כחול לבן\" shares \"כחול\""
+  },
+  "23-פה#36": {
+   "knessetPersonId": 30762,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1036",
+    "siteId": 1036,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מיכל קוטלר-וונש",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%99%D7%9B%D7%9C_%D7%A7%D7%95%D7%98%D7%9C%D7%A8-%D7%95%D7%95%D7%A0%D7%A9",
+    "via": "wikidata Q96357579"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected; reviewed decision: Listed וונש מיכל at Blue and White No. 36; Knesset person 30762, מיכל וונש (identical name, the only MK named וונש), entered the 23rd Knesset on 19 Jun 2020 in the Blue and White faction, formed by the list's members after the Yesh Atid–Telem split. Lane FV3, 19 Nov 2026 (review V3 F9: the replacement could not be reached from the list)."
+  },
+  "23-פה#37": {
+   "knessetPersonId": 30763,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1037",
+    "siteId": 1037,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "עינב קאבלה",
+    "url": "https://he.wikipedia.org/wiki/%D7%A2%D7%99%D7%A0%D7%91_%D7%A7%D7%90%D7%91%D7%9C%D7%94",
+    "via": "wikidata Q96475403"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected; reviewed decision: Listed קאבלה עינב at Blue and White No. 37; Knesset person 30763, עינב קאבלה (identical name, the only MK named קאבלה), entered the 23rd Knesset on 19 Jun 2020 in the Blue and White faction, formed by the list's members after the Yesh Atid–Telem split. Lane FV3, 19 Nov 2026 (review V3 F9: the replacement could not be reached from the list)."
+  },
+  "23-פה#38": {
+   "knessetPersonId": 30764,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1038",
+    "siteId": 1038,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "תהלה פרידמן",
+    "url": "https://he.wikipedia.org/wiki/%D7%AA%D7%94%D7%9C%D7%94_%D7%A4%D7%A8%D7%99%D7%93%D7%9E%D7%9F",
+    "via": "wikidata Q56751585"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected; reviewed decision: Listed פרידמן תהלה נעמה at Blue and White No. 38; Knesset person 30764, תהלה פרידמן (the only MK named תהלה פרידמן; the list adds a middle name), entered the 23rd Knesset on 19 Jun 2020. The list's other Friedmans (Nos. 83 and 102) have other given names. Lane FV3, 19 Nov 2026 (review V3 F9: the replacement could not be reached from the list)."
+  },
+  "23-פה#39": {
+   "knessetPersonId": 30766,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1040",
+    "siteId": 1040,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "הילה שי-וזאן",
+    "url": "https://he.wikipedia.org/wiki/%D7%94%D7%99%D7%9C%D7%94_%D7%A9%D7%99-%D7%95%D7%96%D7%90%D7%9F",
+    "via": "wikidata Q96357582"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected; reviewed decision: Listed וזאן הילה at Blue and White No. 39; Knesset person 30766, הילה שי וזאן (the only MK named וזאן; the record adds שי to the family name), entered the 23rd Knesset on 21 Jun 2020 and sat until 2 Feb 2021. Lane FV3, 19 Nov 2026 (review V3 F9: the replacement could not be reached from the list)."
   },
   "23-פה#40": {
    "knessetPersonId": 30775,
@@ -1390,6 +1454,22 @@
    "party": null,
    "confidence": "medium",
    "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"כחול לבן\" shares \"כחול\""
+  },
+  "23-פה#44": {
+   "knessetPersonId": 30779,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1053",
+    "siteId": 1053,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "ענת כנפו",
+    "url": "https://he.wikipedia.org/wiki/%D7%A2%D7%A0%D7%AA_%D7%9B%D7%A0%D7%A4%D7%95",
+    "via": "wikidata Q105235745"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected; reviewed decision: Listed כנפו ענת at Blue and White No. 44; Knesset person 30779, ענת כנפו (identical name, the only MK named כנפו), entered the 23rd Knesset on 2 Feb 2021 in the Yesh Atid–Telem faction, formed by the list's members. Lane FV3, 19 Nov 2026 (review V3 F9: the replacement could not be reached from the list)."
   },
   "23-פה#53": {
    "knessetPersonId": 30916,

@@ -351,10 +351,17 @@ const EXPECTED: Record<Family, string> = {
   // 26th Knesset opening records (19 Nov): Shas Nos. 1, 6 and 7 get withdrawal notes and Nos. 8 and 9 their member
   // identities. The published k26 differs only in those five candidates of lists[2] and builtAt; the other four
   // digests are unchanged.
-  // 1949 coalition (19 Nov, FV1): WIZO and the Yemenite Association move from the first-government coalition to their
-  // own 'Voted confidence only' group (75 → 73, as the government record). The published k1 differs only in
-  // blocSchemes[0].blocs and builtAt; the other four digests are unchanged.
-  model: '08ef5653ef6e7418f7c16d61e573d573fd132dcbc351657dbbfce6c3208bda92',
+  // Official resignation notices (19 Nov, YP 15107, 15121, 15139): the notes on Shas Nos. 1, 6 and 7 cite YP 15121, and
+  // Shas Nos. 11, 13, 15 and Otzma Yehudit No. 11 get resignation notes. Only those notes and builtAt differ.
+  // Who took the seat (19 Nov, seat-takers.ts): candidates declared elected who were not at the Knesset's opening are
+  // "not seated" in 1955, 2003, 2015, 2020, 2021 and 2026, so the seat goes to whoever sat; 1955 Progressive No. 6
+  // transcribed. Seat counts are unchanged (the engine digest stands); only who holds them differs.
+  // Replacement MKs linked (19 Nov, identity decisions): twelve candidates of 2006-2022 who entered mid-term gain their
+  // Knesset name, English name and profile link (memberNameHe, nameEn, bio). Only those fields and builtAt differ.
+  // 26th Knesset in English (19 Nov, Knesset site codes and English member pages): its 46 newcomers gain nameEn and
+  // their member page; six of their 2021/2022 candidacies gain the page by the existing name rule (medium). Only nameEn,
+  // bio and builtAt differ.
+  model: 'c4f9d5fabf55259990854a160458c039c4d98b609a42b2957655c002f101f8b9',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };
