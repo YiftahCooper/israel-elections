@@ -27,9 +27,9 @@ export function ToolLevelAsk({ tool, toolLevel, name, onOpen, onClose }: {
     onCancel={e => { e.preventDefault(); onClose(); }} onClick={e => { if (e.target === e.currentTarget) onClose(); }} onKeyDown={e => e.stopPropagation()}>
     <h2 id="tool-ask-title">{name}</h2>
     {above ? <>
-      <p id="tool-ask-text">{L(`Part of ${en}.`, `חלק מרמת "${he}".`)}</p>
+      <p id="tool-ask-text">{L(`Part of ${en}.`, `חלק מ"${he}".`)}</p>
       <div className="tool-ask-actions">
-        <button type="button" className="btn primary" autoFocus onClick={() => done(() => setLevel(toolLevel))}>{L(`Switch to ${en}`, `מעבר לרמת "${he}"`)}</button>
+        <button type="button" className="btn primary" autoFocus onClick={() => done(() => setLevel(toolLevel))}>{L(`Switch to ${en}`, `מעבר ל"${he}"`)}</button>
         <button type="button" className="btn" onClick={() => done(() => setFeature(tool as FeatureId, 'show'))}>{L(`Add to ${cEn}`, `הוספה ל"${cHe}"`)}</button>
         <button type="button" className="btn ghost" onClick={onClose}>{L('Cancel', 'ביטול')}</button>
       </div>
