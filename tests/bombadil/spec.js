@@ -119,7 +119,8 @@ const listSeats = extract((state) => {
   for (const table of doc.querySelectorAll("table.tbl")) {
     const heads = [...table.querySelectorAll("thead th")].map((th) => th.textContent.trim());
     const col = heads.findIndex((h) => h === "Seats" || h === "מנדטים");
-    if (col < 0 || !["List", "רשימה"].includes(heads[0])) continue;
+    // only the results table (it has a "% seats" column); the walkthrough's tables count seats part of the way
+    if (col < 0 || !["List", "רשימה"].includes(heads[0]) || !heads.some((h) => h === "% seats" || h === "% מנדטים")) continue;
     const seats = [...table.querySelectorAll("tbody tr")].map((tr) => Number(tr.children[col]?.textContent.trim()));
     if (seats.length && seats.every(Number.isFinite)) sums.push({ where: "table", sum: seats.reduce((a, b) => a + b, 0) });
   }
