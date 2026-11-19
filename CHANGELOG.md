@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- Seat card, letters once (19 Nov): the ballot letters follow the list's name only where its slip shows a logo; where the slip already shows them, they are no longer repeated ("Yamina (ב)" beside a ב slip).
 - MK history, one name per faction (19 Nov): a one-member faction is named on the bar as in the line under the row ("single-member faction of Moshe Dayan", not "MK Moshe Dayan" on the bar).
 - MK history, one (i) per result (19 Nov): a "Not elected" or "Elected; did not sit" row with both an official note and a note on how the list is linked (2026 Shas: Aryeh Deri, Dror David Amos, Moshe Abutbul, Moshe Moshiashvili) had two identical (i) side by side; one (i) now holds both.
 - MK history key (19 Nov): the line that explains numbered event marks appears only on a card that has one, and is drawn without a number, so it no longer reads as "only event 1 is this".

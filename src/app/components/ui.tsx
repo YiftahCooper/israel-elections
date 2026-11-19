@@ -85,6 +85,15 @@ export function Slip({ letters, color, size, logo: logoIn, name, synthetic }: { 
   return <span title={fallbackLabel} className={`slip ${size ?? ''} ${letters.length > 4 ? 'long' : ''}`} style={{ ['--c' as string]: color }} aria-label={fallbackLabel} lang="he" dir="rtl">{letters}</span>;
 }
 
+/** A list's slip, then its name; the ballot letters are written after the name only where the slip does not show them
+ *  (a logo, or a merged list's icon, which shows the letters of the lists merged): never twice side by side (review V3
+ *  F5, 19 Nov 2026: "[ב] Yamina (ב)"). */
+export function SlipName({ list, name }: { list: { letters: string; color: string; logo?: LogoRef; synthetic?: SyntheticIdentity }; name: string }) {
+  const symbol = useSetting('listSymbol');
+  const ownLetters = !!list.letters && !syntheticIconUrl(list) && (!list.logo || symbol === 'letters');
+  return <><Slip {...list} name={name} size="sm" /><b>{name}</b>{!ownLetters && list.letters && <> <span className="muted">({list.letters})</span></>}</>;
+}
+
 /** `lang` marks an option written in another language than the page (a language's own name); `name` is its spoken
  *  name when the label is short ("עב" → "עברית"). */
 export function Seg<T extends string>({ value, options, onChange, label }: { value: T; options: { v: T; label: string; title?: string; lang?: string; name?: string }[]; onChange: (v: T) => void; label: string }) {
