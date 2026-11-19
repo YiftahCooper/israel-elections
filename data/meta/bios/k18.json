@@ -1715,6 +1715,22 @@
    "confidence": "high",
    "basis": "not elected at the election; entered Knesset 18 in the list's faction (name score 3)"
   },
+  "18-אמת#16": {
+   "knessetPersonId": 10555,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/812",
+    "siteId": 812,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "שכיב שנאן",
+    "url": "https://he.wikipedia.org/wiki/%D7%A9%D7%9B%D7%99%D7%91_%D7%A9%D7%A0%D7%90%D7%9F",
+    "via": "wikidata Q2331073"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected; reviewed decision: Listed שנאן שכיב at Labor No. 16; Knesset person 10555, שכיב מוראד שנאן (the only MK named שנאן; the given name matches, the record adds a middle name), entered the 18th Knesset on 14 Feb 2012 in the Independence faction, which Labor members formed in 2011. Other candidates named שנאן in 2009 (וליד, שאוקי, יחזקאל שלמה) have other given names and ran on other lists. Lane FV3, 19 Nov 2026 (review V3 F9: the replacement could not be reached from the list)."
+  },
   "18-אמת#17": {
    "knessetPersonId": 4403,
    "knesset": {

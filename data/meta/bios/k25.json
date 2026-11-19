@@ -1097,6 +1097,18 @@
    "confidence": "medium",
    "basis": "not elected; identical name, the only person with it who served as MK; Knesset 26 faction \"עוצמה יהודית בראשות איתמר בן גביר\" shares \"איתמר\""
   },
+  "25-ט#16": {
+   "knessetPersonId": 30874,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1121",
+    "siteId": 1121,
+    "verified": "pattern"
+   },
+   "hewiki": null,
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected; reviewed decision: Listed סוכות צבי ידידיה at Religious Zionism No. 16; Knesset person 30874, צבי ידידיה סוכות (identical name, the only MK named סוכות), entered the 25th Knesset on 7 Feb 2023 and again on 6 Apr 2025. Lane FV3, 19 Nov 2026 (review V3 F9: the replacement could not be reached from the list)."
+  },
   "25-שס#1": {
    "knessetPersonId": 2291,
    "knesset": {
@@ -1949,6 +1961,22 @@
    "confidence": "medium",
    "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 3); Hebrew Wikipedia via Wikidata Q140983928: identical Hebrew label, party \"יש עתיד\" (shares \"עתיד\"), born 1983; the article places the person in this election"
   },
+  "25-פה#31": {
+   "knessetPersonId": 30923,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1135",
+    "siteId": 1135,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "רוני מלכאי",
+    "url": "https://he.wikipedia.org/wiki/%D7%A8%D7%95%D7%A0%D7%99_%D7%9E%D7%9C%D7%9B%D7%90%D7%99",
+    "via": "wikidata Q141402001"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected; reviewed decision: Listed איריש מלכאי רוני at Yesh Atid No. 31; Knesset person 30923, רוני מלכאי (the same given name; the only MK, and the only 2022 candidate, named מלכאי), entered the 25th Knesset on 9 Sep 2026 in the Yesh Atid faction. Lane FV3, 19 Nov 2026 (review V3 F9: the replacement could not be reached from the list)."
+  },
   "25-אמת#1": {
    "knessetPersonId": 23565,
    "knesset": {
@@ -2354,6 +2382,22 @@
    "party": null,
    "confidence": "high",
    "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 3)"
+  },
+  "25-כן#16": {
+   "knessetPersonId": 22151,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/854",
+    "siteId": 854,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אכרם חסון",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%9B%D7%A8%D7%9D_%D7%97%D7%A1%D7%95%D7%9F",
+    "via": "wikidata Q2917373"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected; reviewed decision: Listed חסון אכרם at National Unity No. 16; Knesset person 22151, אכרם חסון (identical name, the only MK of that name), entered the 25th Knesset on 10 Jul 2025 in the Statist Right faction, which the list's New Hope members formed in 2024. A replacement takes the seat from the same list's candidates, and he is the only candidate of that name on any 2022 list; this supersedes the November research review's \"unknown\" (data/raw/research/mk-runs-1109.reviewed.json), which had only the name to go on. Lane FV3, 19 Nov 2026 (review V3 F9: the replacement could not be reached from the list)."
   },
   "25-כן#19": {
    "knessetPersonId": 30816,

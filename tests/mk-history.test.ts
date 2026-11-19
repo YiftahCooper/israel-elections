@@ -50,8 +50,14 @@ describe('runs that did not win a seat', () => {
     // left out in the review as "a two-word name on a list of another party"; the gazette sponsor line has since shown the
     // list is Yachad's own (data/meta/parties.json, yachad-filing-2019), so the name rule ties it as for Feiglin's 22-זן
     const sinceSameParty: Record<string, number> = { '21-זנ#1': 494 };
+    // left "unknown" in the review on the name alone; the Knesset record has him entering the 25th Knesset mid-term, which
+    // only a candidate of a 2022 list can, and he is the only one of that name (identity decision, review V3 F9)
+    const sinceReplacement: Record<string, number> = { '25-כן#16': 22151 };
     for (const r of audit.runs) {
-      if (sinceSameParty[r.candidateId]) {
+      if (sinceReplacement[r.candidateId]) {
+        expect(r.status).toBe('unknown');
+        expect(rt.people[sinceReplacement[r.candidateId]].runs.find((run) => `${run[1]}#${run[2]}` === r.candidateId)?.slice(3, 5)).toEqual(['later', 'id']);
+      } else if (sinceSameParty[r.candidateId]) {
         expect(r.status).toBe('unknown');
         expect(personOfCandidate(rt, r.candidateId)).toBe(sinceSameParty[r.candidateId]);
         expect(rt.people[sinceSameParty[r.candidateId]].runs.find((run) => `${run[1]}#${run[2]}` === r.candidateId)?.slice(3, 5)).toEqual(['withdrawn', 'name']);

@@ -1571,6 +1571,22 @@
    "confidence": "high",
    "basis": "not elected at the election; entered Knesset 24 in the list's faction (name score 3)"
   },
+  "24-ב#14": {
+   "knessetPersonId": 30794,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1089",
+    "siteId": 1089,
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
+   },
+   "hewiki": {
+    "title": "אורנה שטרקמן",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%95%D7%A8%D7%A0%D7%94_%D7%A9%D7%98%D7%A8%D7%A7%D7%9E%D7%9F",
+    "via": "wikidata Q113954249"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected; reviewed decision: Listed שטרקמן אורנה at Yamina No. 14; Knesset person 30794, אורנה שטרקמן (identical name, the only MK named שטרקמן), entered the 24th Knesset on 13 Sep 2022 in the Yamina faction. Lane FV3, 19 Nov 2026 (review V3 F9: the replacement could not be reached from the list)."
+  },
   "24-אמת#1": {
    "knessetPersonId": 23565,
    "knesset": {
