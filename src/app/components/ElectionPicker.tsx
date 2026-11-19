@@ -1,6 +1,7 @@
 import { formatDate } from '../dateFormat.ts';
 import { ChevronsUpDown } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { flushSync } from 'react-dom';
 import { electionContext } from '../../data/electionContext.ts';
 import type { ElectionDataset, ElectionIndexEntry } from '../../data/schema.ts';
 import { scenarioFromDataset } from '../../model/scenario.ts';
@@ -40,9 +41,9 @@ export function ElectionPicker({ elections, value, onChange, arrows = true }: { 
   }, [open, previewKey]); // the opened timeline keeps its election snapshot while previews arrive
   return <span className="election choice-picker election-navigation">
     {arrows && <button className="tool election-arrow" aria-label={L('Previous election', 'הבחירות הקודמות')} disabled={at < 0 || at >= options.length - 1 || options[at + 1]?.disabled} onClick={() => onChange(options[at + 1].value)}><span aria-hidden>‹</span></button>}
-    <button ref={trigger} className="btn choice-trigger" aria-label={L('Election', 'בחירות')} aria-haspopup="dialog" data-value={value} onClick={() => { setQuery(''); setOpen(true); dialog.current?.showModal(); dialog.current?.querySelector<HTMLInputElement>('input')?.focus(); requestAnimationFrame(() => dialog.current?.querySelector<HTMLElement>(`[data-choice-value="${value}"]`)?.scrollIntoView({ block: 'nearest' })); }}><CurrentElection label={options[at]?.label ?? ''} date={options[at]?.date ?? ''} lang={lang} /><ChevronsUpDown className="icon sm picker-affordance" aria-hidden /></button>
+    <button ref={trigger} className="btn choice-trigger" aria-label={L('Election', 'בחירות')} aria-haspopup="dialog" data-value={value} onClick={() => { flushSync(() => { setQuery(''); setOpen(true); }); dialog.current?.showModal(); dialog.current?.querySelector<HTMLInputElement>('input')?.focus(); requestAnimationFrame(() => dialog.current?.querySelector<HTMLElement>(`[data-choice-value="${value}"]`)?.scrollIntoView({ block: 'nearest' })); }}><CurrentElection label={options[at]?.label ?? ''} date={options[at]?.date ?? ''} lang={lang} /><ChevronsUpDown className="icon sm picker-affordance" aria-hidden /></button>
     {arrows && <button className="tool election-arrow" aria-label={L('Next election', 'הבחירות הבאות')} disabled={at <= 0 || options[at - 1]?.disabled} onClick={() => onChange(options[at - 1].value)}><span aria-hidden>›</span></button>}
-    <dialog ref={dialog} className="choice-dialog election-dialog" aria-label={L('Election', 'בחירות')} onKeyDown={e => { if (e.key === 'Escape') e.stopPropagation(); }} onCancel={e => { e.preventDefault(); close(); }} onClick={e => { if (e.target === e.currentTarget) close(); }}>
+    <dialog ref={dialog} className="choice-dialog election-dialog" aria-label={L('Election', 'בחירות')} onKeyDown={e => { if (e.key === 'Escape') e.stopPropagation(); }} onCancel={e => { e.preventDefault(); close(); }} onClick={e => { if (e.target === e.currentTarget) close(); }} onClose={() => setOpen(false)}>
       <div className="timeline-search"><input autoFocus type="search" value={query} aria-label={L('Search choices', 'חיפוש אפשרויות')} placeholder={L('Year, Knesset or date…', 'שנה, כנסת או תאריך…')} onChange={e => setQuery(e.target.value)} onKeyDown={e => { if (e.key === 'ArrowDown') { e.preventDefault(); dialog.current?.querySelector<HTMLButtonElement>('.choice-option:not(:disabled)')?.focus(); } }} /><button className="btn" aria-label={L('Close', 'סגירה')} onClick={close}>×</button></div>
       {/* never a silent short list: the built-in two elections are all there is until the index loads */}
       {indexFailed && <p className="small bad election-index-failed" role="status">{L('The full list of elections could not be loaded; only these are offered.', 'רשימת הבחירות המלאה לא נטענה; מוצגות רק אלה.')} <button type="button" className="btn small" onClick={() => void loadElectionIndex()}>{L('Try again', 'נסו שוב')}</button></p>}
@@ -53,7 +54,8 @@ export function ElectionPicker({ elections, value, onChange, arrows = true }: { 
         if (!['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(e.key)) return;
         e.preventDefault(); buttons[e.key === 'Home' ? 0 : e.key === 'End' ? buttons.length - 1 : (i + (e.key === 'ArrowDown' ? 1 : -1) + buttons.length) % buttons.length]?.focus();
       }}>
-        {matches.map((o, i) => <div key={o.value} className={`election-row ${o.pm ? 'pm-only' : ''}`}>
+        {/* drawn only while open (a closed dialog shows nothing): the 27 rows and their strips were redrawn on every edit */}
+        {open && matches.map((o, i) => <div key={o.value} className={`election-row ${o.pm ? 'pm-only' : ''}`}>
           {o.group !== matches[i - 1]?.group && <h3 className="choice-era">{o.group}</h3>}
           <button className="choice-option" data-choice-value={o.value} aria-label={o.label} aria-description={formatDate(o.date, lang)} aria-current={o.value === value ? 'true' : undefined} disabled={o.disabled} onClick={() => commit(o.value)}>
             <span className="choice-copy"><b>{o.label}</b><small><time dateTime={o.date}>{formatDate(o.date, lang)}</time>{o.disabled ? L(' · unavailable', ' · לא זמין') : ''}</small></span>
@@ -61,7 +63,7 @@ export function ElectionPicker({ elections, value, onChange, arrows = true }: { 
             <span className="election-current-mark" aria-hidden>{o.value === value ? '✓' : ''}</span>
           </button>
         </div>)}
-        {!matches.length && <p>{L('No matches', 'אין תוצאות')}</p>}
+        {open && !matches.length && <p>{L('No matches', 'אין תוצאות')}</p>}
       </div>
     </dialog>
   </span>;
