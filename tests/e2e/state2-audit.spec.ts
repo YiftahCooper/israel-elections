@@ -52,7 +52,8 @@ for (const lang of ['en', 'he'] as const) test(`c-robustness-11: last visit's wo
   let down = true;
   await page.route('**/data/k25.json', (route) => (down ? route.fulfill({ status: 503, body: '' }) : route.continue()));
   await page.goto('/');
-  const banner = page.locator('.banner.err');
+  // the visit's first election failed: the error screen alone, nothing in its place
+  const banner = page.locator('.load-failed');
   await expect(banner).toContainText(lang === 'en' ? 'Your unsaved work on this election is not lost.' : 'העבודה שלא נשמרה על הבחירות האלה לא אבדה.');
   if (OUT) await banner.screenshot({ path: `${OUT}/chk-startup-kept-${lang}.png` });
   await page.waitForTimeout(600);
@@ -121,7 +122,8 @@ for (const lang of ['en', 'he'] as const) test(`c-results-engine-02: Seat safety
   const row = page.locator('.sec-row', { has: page.locator('.sec-r .sec-tie[title*="5,825"]') });
   await expect(row.locator('.sec-r')).toContainText('5,826');
   await expect(row.locator('.sec-r .sec-tie')).toHaveAttribute('title', lang === 'en' ? 'A tie decided by lot is possible from 5,825 votes' : 'שוויון שמוכרע בהגרלה אפשרי החל מ־5,825 קולות');
-  await expect(page.locator('.sec')).toContainText(lang === 'en' ? '* fewer votes could already tie for the seat (decided by lot)' : '* כבר בפחות קולות ייתכן שוויון על המנדט (מוכרע בהגרלה)');
+  // the * line in full, with the rule of the time (2026: the Central Elections Committee draws lots)
+  await expect(page.locator('.sec')).toContainText(lang === 'en' ? /\* (One vote fewer|Fewer votes) than the figure .*tie.* with another list for this seat.*; the Central Elections Committee then decides by lot\./ : /\* (בקול אחד פחות|כבר בפחות קולות) מהמספר יש שוויון עם רשימה אחרת על המנדט הזה.*; ועדת הבחירות המרכזית מכריעה אז בהגרלה\./);
   await page.waitForFunction(() => !document.querySelector('.sec [role="status"]'));
   if (OUT) await page.locator('.sec').screenshot({ path: `${OUT}/chk-seat-safety-tie-${lang}.png` });
   // the list's own details say it in words

@@ -43,7 +43,10 @@ export function Fact({ f, lang, full }: { f: WhatIfFact; lang: Lang; full?: bool
     case 'quota': return <span>{he ? 'קולות למנדט' : 'Votes per seat'} {arrow(fmtInt(f.before), fmtInt(f.after))}</span>;
     case 'seatless': return <span>{he ? 'קולות ללא מנדט' : 'Votes with no seat'} {arrow(fmtInt(f.before), fmtInt(f.after))}</span>;
     // the Coalitions tool's totals line, then the confidence vote for–against
-    case 'government': { const v = f.vote; return <span>{v.support ? <bdi>{v.members} {he ? 'בקואליציה' : 'members'} + {v.support} {he ? 'תמיכה מבחוץ' : 'outside support'} = <b>{v.votesFor}</b></bdi> : <bdi><b>{v.members}</b> {he ? 'בקואליציה' : 'members'}</bdi>} · {he ? `${v.votesFor} בעד · ${v.against} נגד` : `${v.votesFor} for · ${v.against} against`}</span>; }
+    // the total is written once when it is the votes for (owner, 19 Nov 2026): "48 members + 19 outside support = 67 for"
+    case 'government': { const v = f.vote, sum = v.members + v.support, against = he ? `${v.against} נגד` : `${v.against} against`;
+      if (v.support && sum === v.votesFor) return <span><bdi>{v.members} {he ? 'בקואליציה' : 'members'} + {v.support} {he ? 'תמיכה מבחוץ' : 'outside support'} = <b>{sum}</b> {he ? 'בעד' : 'for'}</bdi> · {against}</span>;
+      return <span>{v.support ? <bdi>{v.members} {he ? 'בקואליציה' : 'members'} + {v.support} {he ? 'תמיכה מבחוץ' : 'outside support'} = <b>{sum}</b></bdi> : <bdi><b>{v.members}</b> {he ? 'בקואליציה' : 'members'}</bdi>} · {he ? `${v.votesFor} בעד` : `${v.votesFor} for`} · {against}</span>; }
   }
 }
 

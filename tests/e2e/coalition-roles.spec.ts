@@ -72,7 +72,7 @@ for (const lang of ['en', 'he'] as const) test(`What if…: a minority governmen
   await page.getByRole('tab', { name: lang === 'he' ? 'מה אם…' : 'What if…', exact: true }).click();
   const q = page.locator('.wi-row').filter({ hasText: lang === 'he' ? 'ממשלת מיעוט בתמיכה מבחוץ' : 'A minority government with outside support' });
   await expect(q).toHaveCount(1);
-  await expect(q.locator('.wi-a')).toContainText(lang === 'he' ? '48 בקואליציה + 19 תמיכה מבחוץ = 67 · 67 בעד · 53 נגד' : '48 members + 19 outside support = 67 · 67 for · 53 against');
+  await expect(q.locator('.wi-a')).toContainText(lang === 'he' ? '48 בקואליציה + 19 תמיכה מבחוץ = 67 בעד · 53 נגד' : '48 members + 19 outside support = 67 for · 53 against');
   await q.getByRole('button', { name: lang === 'he' ? 'פתיחה כתרחיש' : 'Open as a scenario', exact: true }).click();
   await expect(page.getByRole('tab', { name: lang === 'he' ? 'קואליציות' : 'Coalitions', exact: true })).toHaveAttribute('aria-selected', 'true');
   await expect(page.locator('.coal-now .coal-sum')).toHaveText(lang === 'he' ? '48 בקואליציה + 19 תמיכה מבחוץ = 67' : '48 members + 19 outside support = 67');

@@ -53,10 +53,11 @@ export function LocalitiesFailed({ retry }: { retry: () => void }) {
 }
 
 type Source = { id: string; publisher?: string; url?: string; official?: boolean };
-let sourcesP: Promise<Source[]> | null = null;
+let sourcesP: Promise<Source[] | null> | null = null;
+/** The source list; null when it could not be loaded (said where its links would be, never an empty list) */
 function useSources() {
-  const [src, setSrc] = useState<Source[]>([]);
-  useEffect(() => { (sourcesP ??= fetch('data/sources.json').then((r) => r.json()).catch(() => [])).then(setSrc); }, []);
+  const [src, setSrc] = useState<Source[] | null>([]);
+  useEffect(() => { (sourcesP ??= fetch('data/sources.json').then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.json(); }).catch(() => { sourcesP = null; return null; })).then(setSrc); }, []);
   return src;
 }
 
@@ -206,7 +207,8 @@ export function Turnout({ s }: { s: Scenario }) {
               {(lang === 'he' ? <>{fmtInt(f.localities!)}{" יישובים · "}{fmtInt(f.electorate)}{" בעלי זכות · הצבעה "}{percentNum(curPct, digits)}{" · פסולים "}{percentNum(f.cast ? 100 * f.invalid / f.cast : 0, digits)}</> : <>{fmtInt(f.localities!)}{" localities · "}{fmtInt(f.electorate)}{" registered · turnout "}{percentNum(curPct, digits)}{" · invalid "}{percentNum(f.cast ? 100 * f.invalid / f.cast : 0, digits)}</>)}{' '}
               <Info title={L('Definition and source', 'הגדרה ומקור')}>
                 {sg ? <>{lang === 'he' ? sg.definitionHe : sg.definitionEn} {L(`Classification year ${sg.classificationYear}.`, `שנת סיווג ${sg.classificationYear}.`)}{' '}
-                  {sg.sourceIds.map((id) => sources.find((x) => x.id === id)).filter((x) => x?.official && x.url).map((x) => <a key={x!.id} href={x!.url} target="_blank" rel="noreferrer">{x!.publisher} </a>)}</>
+                  {sources === null ? <span className="bad">{L('The source links could not be loaded.', 'קישורי המקורות לא נטענו.')} </span>
+                    : sg.sourceIds.map((id) => sources.find((x) => x.id === id)).filter((x) => x?.official && x.url).map((x) => <a key={x!.id} href={x!.url} target="_blank" rel="noreferrer">{x!.publisher} </a>)}</>
                   : L('Measured from this election’s official results by locality.', 'נמדד מהתוצאות הרשמיות של בחירות אלה לפי יישובים.')}
                 {' '}{(lang === 'he' ? data?.demographicNoteHe : data?.demographicNoteEn) ?? L('Places, not people. Envelopes excluded.', 'מקומות, לא אנשים. המעטפות החיצוניות אינן כלולות.')}
               </Info></p>}

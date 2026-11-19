@@ -43,6 +43,7 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
   const baseLabel = referenceLabel(reference, lang);
   const ref = useRef<HTMLElement>(null);
   const l = s.lists.find((x) => x.id === listId);
+  const comparing = !!useStore((st) => st.comparing);
   const lr = l ? r.lists.find((x) => x.id === l.id) : undefined;
   const previewing = useStore(st => st.preview) === s;
   const previousSeats = useRef({ id: listId, seats: lr?.seats });
@@ -73,7 +74,8 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
         </div>
         <div className="sp-seats">
           <b key={lr.seats} className={previousSeats.current.id === listId && previousSeats.current.seats !== lr.seats ? 'tick' : ''}>{lr.seats}</b><span className="small ink2">{L('seats', 'מנדטים')}</span>
-          {d !== 0 && <small dir="ltr"><SeatDelta value={d} /></small>}
+          {/* while comparing, the comparison below is the one change shown (as on the list's row) */}
+          {d !== 0 && !comparing && <small dir="ltr"><SeatDelta value={d} /></small>}
         </div>
         <button className="btn ghost icon-only" aria-label={L('Close', 'סגירה')} onClick={() => setState({ selectedListId: null })}><X className="icon" aria-hidden /></button>
       </header>

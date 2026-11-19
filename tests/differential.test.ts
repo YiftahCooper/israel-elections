@@ -346,7 +346,9 @@ const EXPECTED: Record<Family, string> = {
   // The Jerusalem Post, 1974 (19 Nov): the NRP and the Arab List for Bedouin and Villagers move from 'Not stated in
   // source' to Meir's group (51 → 62). The published k8 differs only in blocSchemes[1] and builtAt; restoring HEAD's k8
   // (with its hash pins) reproduces 0c6ad35e… and all four other digests.
-  model: 'd688156c80dbf0814abe7c15f86b955ea255684c42234d8f225cad9b6cfc3164',
+  // Copies named (19 Nov): link publishers of official documents saved from olaw.org.il say so. The published k5, k7 and
+  // k15 differ only in lists[].links[].publisher and builtAt; the other four digests are unchanged.
+  model: 'd0443fc743acd7687b927b2d0e841d6f00190bdb65e32684ee4d3bc5ceff022d',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

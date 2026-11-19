@@ -80,7 +80,7 @@ export function TurnoutFacts({ s }: { s: Scenario }) {
       <Fact id="turnout" k={L('Turnout', 'שיעור ההצבעה')} info={<Info term="turnout" />}
         // as precise as the turnout field under it (two decimals), so one number never shows at two precisions
         v={percent(cast, s.registered, TURNOUT_FIELD_DIGITS)}
-        d={!standard || castEdited ? <>{!standard && <><bdi dir="ltr">{fmtInt(cast)}</bdi> {L('votes cast', 'מצביעים')}</>}{castEdited && <>{!standard && ' · '}{officialName} {percent(official.votesCast, official.registered, digits)}</>}</> : undefined}
+        d={!standard || castEdited ? <>{!standard && <><bdi dir="ltr">{fmtInt(cast)}</bdi> {L('votes cast', 'מצביעים')}</>}{castEdited && <>{!standard && ' · '}{officialName} {percent(official.votesCast, official.registered, TURNOUT_FIELD_DIGITS)}</>}</> : undefined}
         since={prev && sinceWords(<PointDelta value={pct - turnoutPct(prev.votesCast, prev.registered)} digits={digits} />)}
         copy={copy('turnout', 'turnout', 'שיעור ההצבעה')} />
       {standard && <Fact id="cast" k={L('Votes cast', 'מצביעים')}
@@ -125,7 +125,7 @@ function useWidth<T extends HTMLElement>(fallback: number) {
  *  hovered or current election, in a reserved line so nothing moves. */
 // compared: the election Compare has on the other side, shaded grey in both charts (owner, 16 Nov 2026)
 function TurnoutHistory({ current, compared }: { current: ElectionId; compared: ElectionId | null }) {
-  const L = useL(), lang = useLang(), digits = useDigits();
+  const L = useL(), lang = useLang();
   const preferTables = useSetting('preferTables');
   const showLine = useSetting('turnoutHistoryLine');
   const index = useStore((st) => st.elections);
@@ -150,7 +150,7 @@ function TurnoutHistory({ current, compared }: { current: ElectionId; compared: 
   const tick = (i: number) => i === n - 1 || (i % every === 0 && n - 1 - i >= every);
   const go = (i: number) => { if (rows[i].id !== current) void openElection(rows[i].id as ElectionId); };
   const name = (t: ElectionTotalsRow) => { const e = index.find((x) => x.id === t.id); return e ? electionLabel(e, index, lang) : electionWhen(t, lang); };
-  const label = (i: number) => `${name(rows[i])}: ${L('eligible voters', 'בעלי זכות בחירה')} ${fmtInt(rows[i].registered)}, ${L('turnout', 'הצבעה')} ${fmtPct(rows[i].votesCast, rows[i].registered, digits)}`;
+  const label = (i: number) => `${name(rows[i])}: ${L('eligible voters', 'בעלי זכות בחירה')} ${fmtInt(rows[i].registered)}, ${L('turnout', 'הצבעה')} ${fmtPct(rows[i].votesCast, rows[i].registered, TURNOUT_FIELD_DIGITS)}`;
   const columns = (chart: 'reg' | 'pct') => rows.map((t, i) => <rect key={t.id} className="tn-hit" x={ml + i * slot} y={0} width={slot} height={top + H + axisH}
     onPointerEnter={(e) => { if (e.pointerType === 'touch') setHover(i); else intent.enter(() => setHover(i)); }} onPointerLeave={(e) => { if (e.pointerType !== 'touch') intent.leave(); if (!intent.isShown) setHover((h) => (h === i ? null : h)); }} onClick={() => go(i)} data-chart={chart} />);
   // the open election's year is always shown, in bold; regular ticks too close to it give way. The compared election's
@@ -158,10 +158,11 @@ function TurnoutHistory({ current, compared }: { current: ElectionId; compared: 
   const years = rows.map((t, i) => (i === cur || i === cmp && !(cur >= 0 && Math.abs(i - cur) * slot < 24) || tick(i) && !(cur >= 0 && Math.abs(i - cur) * slot < 24) && !(cmp >= 0 && Math.abs(i - cmp) * slot < 24)) && <text key={t.id} x={x(i)} y={top + H + 13} className={`tn-axis ${i === cur || i === cmp ? 'cur' : ''}`} textAnchor="middle">{`’${t.date.slice(2, 4)}`}</text>);
   const band = (i: number) => <rect x={ml + i * slot + 0.5} y={top - 4} width={Math.max(1, slot - 1)} height={H + axisH + 4} rx={3} className={i === cur ? 'tn-cur' : i === cmp ? 'tn-cmp' : 'tn-hov'} />;
 
+  // turnout is written with the turnout field's two decimals everywhere on this tab, like the figure above (owner, 19 Nov 2026)
   return <div className="tn-history">
     <h4>{L('All elections', 'כל הבחירות')} <Info title={L('All elections', 'כל הבחירות')}>{L('Official national totals of each election. Choose an election to open it. Columns are elections, evenly spaced: this is not a time scale, since Knessets last different lengths. The shaded column is the open election.', 'הסיכומים הארציים הרשמיים של כל בחירות. בחירה בבחירות פותחת אותן. העמודות הן מערכות בחירות, במרווחים שווים: זה אינו ציר זמן, כי משך כל כנסת שונה. העמודה המוצללת היא הבחירות הפתוחות.')}</Info></h4>
     <p className="tn-readout small" aria-live="polite">
-      <b>{name(shown)}</b> · {L('Eligible', 'בעלי זכות')} <bdi dir="ltr">{fmtInt(shown.registered)}</bdi> · {L('Turnout', 'הצבעה')} {percentNum(pcts[rows.indexOf(shown)], digits)}
+      <b>{name(shown)}</b> · {L('Eligible', 'בעלי זכות')} <bdi dir="ltr">{fmtInt(shown.registered)}</bdi> · {L('Turnout', 'הצבעה')} {percentNum(pcts[rows.indexOf(shown)], TURNOUT_FIELD_DIGITS)}
     </p>
     {cmp >= 0 && cur >= 0 && <p className="tn-key small ink2">
       <span><i className="tn-sw cur" aria-hidden />{L(`${name(rows[cur])} · open`, `${name(rows[cur])} · פתוחות`)}</span>
@@ -206,7 +207,7 @@ function TurnoutHistory({ current, compared }: { current: ElectionId; compared: 
       <div className="tn-table-wrap"><table className="tbl small">
         <thead><tr><th>{L('Election', 'בחירות')}</th><th className="n">{L('Eligible voters', 'בעלי זכות בחירה')}</th><th className="n">{L('Votes cast', 'מצביעים')}</th><th className="n">{L('Turnout', 'הצבעה')}</th><th className="n">{L('Valid', 'כשרים')}</th><th className="n">{L('Invalid', 'פסולים')}</th><th className="n">{L('Threshold (votes)', 'אחוז החסימה (קולות)')}</th></tr></thead>
         <tbody>{rows.map((t, i) => { const thr = officialThreshold(t); return <tr key={t.id} aria-current={i === cur ? 'true' : undefined}>
-          <td>{name(t)}</td><td className="n">{fmtInt(t.registered)}</td><td className="n">{fmtInt(t.votesCast)}</td><td className="n">{percent(t.votesCast, t.registered, digits)}</td>
+          <td>{name(t)}</td><td className="n">{fmtInt(t.registered)}</td><td className="n">{fmtInt(t.votesCast)}</td><td className="n">{percent(t.votesCast, t.registered, TURNOUT_FIELD_DIGITS)}</td>
           <td className="n">{fmtInt(t.valid)}</td><td className="n">{fmtInt(t.invalid)}</td><td className="n">{thr ? fmtInt(thr.votes) : L('None', 'אין')}</td></tr>; })}</tbody>
       </table></div>
     </details>

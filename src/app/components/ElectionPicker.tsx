@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { electionContext } from '../../data/electionContext.ts';
 import type { ElectionDataset, ElectionIndexEntry } from '../../data/schema.ts';
 import { scenarioFromDataset } from '../../model/scenario.ts';
-import { loadDataset, useStore } from '../store.ts';
+import { loadDataset, loadElectionIndex, useStore } from '../store.ts';
 import { useL, useLang } from '../i18n.ts';
 import { electionLabel } from '../electionLabel.ts';
 import { ResultPreview } from './ResultPreview.tsx';
@@ -18,7 +18,7 @@ function IndexPreview({ pieces }: { pieces: [string, number][] }) {
 }
 /** `arrows`: the ‹ › previous/next buttons beside the picker (not on the phone bar, owner 9 Nov 2026). */
 export function ElectionPicker({ elections, value, onChange, arrows = true }: { elections: ElectionIndexEntry[]; value: string; onChange: (value: string) => void; arrows?: boolean }) {
-  const L = useL(), lang = useLang(), datasets = useStore(st => st.datasets);
+  const L = useL(), lang = useLang(), datasets = useStore(st => st.datasets), indexFailed = useStore(st => !!st.electionIndexFailed);
   const dialog = useRef<HTMLDialogElement>(null), trigger = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false), [query, setQuery] = useState('');
   const era = (date: string) => Number(date.slice(0, 4)) >= 2015 ? '2015–2026' : Number(date.slice(0, 4)) >= 2003 ? '2003–2013' : Number(date.slice(0, 4)) >= 1992 ? '1992–2001' : '1949–1988';
@@ -44,6 +44,8 @@ export function ElectionPicker({ elections, value, onChange, arrows = true }: { 
     {arrows && <button className="tool election-arrow" aria-label={L('Next election', 'הבחירות הבאות')} disabled={at <= 0 || options[at - 1]?.disabled} onClick={() => onChange(options[at - 1].value)}><span aria-hidden>›</span></button>}
     <dialog ref={dialog} className="choice-dialog election-dialog" aria-label={L('Election', 'בחירות')} onKeyDown={e => { if (e.key === 'Escape') e.stopPropagation(); }} onCancel={e => { e.preventDefault(); close(); }} onClick={e => { if (e.target === e.currentTarget) close(); }}>
       <div className="timeline-search"><input autoFocus type="search" value={query} aria-label={L('Search choices', 'חיפוש אפשרויות')} placeholder={L('Year, Knesset or date…', 'שנה, כנסת או תאריך…')} onChange={e => setQuery(e.target.value)} onKeyDown={e => { if (e.key === 'ArrowDown') { e.preventDefault(); dialog.current?.querySelector<HTMLButtonElement>('.choice-option:not(:disabled)')?.focus(); } }} /><button className="btn" aria-label={L('Close', 'סגירה')} onClick={close}>×</button></div>
+      {/* never a silent short list: the built-in two elections are all there is until the index loads */}
+      {indexFailed && <p className="small bad election-index-failed" role="status">{L('The full list of elections could not be loaded; only these are offered.', 'רשימת הבחירות המלאה לא נטענה; מוצגות רק אלה.')} <button type="button" className="btn small" onClick={() => void loadElectionIndex()}>{L('Try again', 'נסו שוב')}</button></p>}
       <div className="choice-options" onKeyDown={e => {
         const buttons = [...e.currentTarget.querySelectorAll<HTMLButtonElement>('.choice-option:not(:disabled)')]; const i = buttons.indexOf(document.activeElement as HTMLButtonElement);
         const focused = document.activeElement?.getAttribute('data-choice-value');

@@ -22,11 +22,11 @@ import { CandidateName } from '../components/CandidateName.tsx';
 import { MkName } from '../components/MkHistory.tsx';
 import { Info, Slip } from '../components/ui.tsx';
 import { matchRows, mirrorRows, copyUnit, groupIds, inOf, type MatchRow } from './match.ts';
-import { alreadySame, duplicatePeople, planAgreements, planColour, planRoster, planRules, planTotals, type CopyField, type CopyUnit, type Plan } from './copy.ts';
+import { alreadySame, duplicatePeople, planAgreements, planColour, planRoster, planRules, planTotals, type CopyField, type CopyMode, type CopyUnit, type Plan } from './copy.ts';
 import { COPY_ARROWS, copyComparisonLink, comparisonOf, openComparison, pairKey, saveComparison, useSavedComparisons, setOverrides } from './sides.ts';
 import { cellsOf, listMarks, sourceOf, unitsFor, type Cells, type SideModel } from './model.ts';
 import { MatchingPanel, PairingWhy, RowSheet, SaveDialog, VotesEditor, WholeListDialog, tagText, type WholeRequest } from './dialogs.tsx';
-import { CopyVotesBox, type CopyRequest } from './CopyVotesBox.tsx';
+import { copiedAtOnce, CopyVotesBox, type CopyRequest } from './CopyVotesBox.tsx';
 import { markerLead } from './copyText.ts';
 import { ChoicePicker } from '../components/ChoicePicker.tsx';
 import { partyLabel as partyName } from '../../families/registry.ts';
@@ -119,14 +119,15 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
   const toCheck = rows.filter((r) => r.tag === 'check').length;
 
   // ---- copies
-  const commit = (plan: Plan & { ok: true }, to: SideModel, text: string) => {
+  const commit = (plan: Plan & { ok: true }, to: SideModel, text: string, auto?: CopyMode) => {
     if (!to.apply(plan.action)) return false;
     setFocusSide(to.role);
     const seats = allocationOf(plan.result);
     const ids = plan.targets.map((t) => t.listId);
     const n = (id: string) => { const l = plan.result.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : ''; };
     // announced politely (the toast is a status region): "Votes copied to 2026. Likud 30 seats."
-    toast('info', `${text}${ids.length === 1 ? ` ${n(ids[0])} ${seats.lists.find((x) => x.id === ids[0])?.seats ?? 0} ${L('seats', 'מנדטים')}.` : ''}`);
+    const quick = auto ? copiedAtOnce(lang, auto) : null;
+    toast('info', `${text}${ids.length === 1 ? ` ${n(ids[0])} ${seats.lists.find((x) => x.id === ids[0])?.seats ?? 0} ${L('seats', 'מנדטים')}.` : ''}${quick ? ` ${quick.note}` : ''}`, quick?.action);
     return true;
   };
   const votesTitle = (units: CopyUnit[], from: SideModel, to: SideModel) => {
@@ -136,7 +137,7 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
   const copyVotes = (units: CopyUnit[], d: Dir) => {
     const { from, to } = sideOf(d);
     const title = votesTitle(units, from, to);
-    // the box always opens, starting on the remembered method (owner, 12 Nov 2026): every method shows its result first
+    // the box opens on the remembered method (owner, 12 Nov 2026), or copies at once after "Don't ask again" (19 Nov)
     setCopyReq({ from, to, units, title, cross });
   };
   const direct = (plan: Plan, to: SideModel, text: string) => {
@@ -336,7 +337,7 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
         <button type="button" className="btn small ghost cmp-menu-item" onClick={() => setMenu(null)}>{L('Close', 'סגירה')}</button>
       </span>
     </Floating>, document.body)}
-    {copyReq && <CopyVotesBox req={copyReq} onClose={() => setCopyReq(null)} onDone={(plan, req) => { if (commit(plan, req.to, L(`Votes copied to ${nameOf(req.to)}.`, `הקולות הועתקו ${hebrewPrefix('ל', nameOf(req.to))}.`))) setCopyReq(null); }} />}
+    {copyReq && <CopyVotesBox req={copyReq} onClose={() => setCopyReq(null)} onDone={(plan, req, auto) => { if (commit(plan, req.to, L(`Votes copied to ${nameOf(req.to)}.`, `הקולות הועתקו ${hebrewPrefix('ל', nameOf(req.to))}.`), auto) || auto) setCopyReq(null); }} />}
     {wholeReq && <WholeListDialog req={wholeReq} onClose={() => setWholeReq(null)} onDone={(plan, text) => { if (commit(plan, wholeReq.to, text + '.')) setWholeReq(null); }} />}
     {editing && <VotesEditor side={editing.side} listId={editing.listId} onClose={() => setEditing(null)} />}
     {matching && <MatchingPanel rows={order} flip={flip} left={left} right={right} overrides={overrides} setOverrides={(o) => setOverrides(pair, o)} onClose={() => setMatching(false)} />}

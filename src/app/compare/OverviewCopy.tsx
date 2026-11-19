@@ -12,7 +12,7 @@ import { askCopy, type CopyAsk } from './copyAsk.ts';
 import { copyUnit, type MatchRow } from './match.ts';
 import { pairedRows } from './listRows.ts';
 import { useReference, yearOf, type Reference } from './mode.ts';
-import { CopyVotesBox, type CopyChoice } from './CopyVotesBox.tsx';
+import { copiedAtOnce, CopyVotesBox, type CopyChoice } from './CopyVotesBox.tsx';
 import type { SideModel } from './model.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import type { CopyUnit } from './copy.ts';
@@ -73,13 +73,15 @@ export function OverviewCopy({ ask }: { ask: CopyAsk }) {
   const valid = s.lists.reduce((n, l) => n + l.votes, 0);
   const notCopied = unit ? [] : s.lists.filter((l) => !l.withdrawn && l.votes >= valid * 0.005 && !offer.unitOf(l.id)).sort((a, b) => b.votes - a.votes).map((l) => listLabel(l, lang));
   return <CopyVotesBox req={{ from, to, units: unit ? [unit] : [], title, cross: !ref.same, ...(unit ? {} : { choices: offer.choices, notCopied }) }} onClose={close}
-    onDone={(plan) => {
+    onDone={(plan, _req, auto) => {
       dispatch(plan.action);
+      const quick = auto ? copiedAtOnce(lang, auto) : null;
       const after = allocationOf(plan.result);
       const ids = plan.targets.map((t) => t.listId);
       const one = ids.length === 1 ? plan.result.lists.find((l) => l.id === ids[0]) : undefined;
-      toast('info', one ? L(`Votes copied from ${where}. ${listLabel(one, lang)} ${after.lists.find((x) => x.id === one.id)?.seats ?? 0} seats.`, `הקולות הועתקו ${hebrewPrefix('מ', where)}. ${listLabel(one, lang)} ${after.lists.find((x) => x.id === one.id)?.seats ?? 0} מנדטים.`)
-        : L(`Votes copied from ${where} for ${ids.length} lists.`, `הקולות הועתקו ${hebrewPrefix('מ', where)} עבור ${ids.length} רשימות.`));
+      const text = one ? L(`Votes copied from ${where}. ${listLabel(one, lang)} ${after.lists.find((x) => x.id === one.id)?.seats ?? 0} seats.`, `הקולות הועתקו ${hebrewPrefix('מ', where)}. ${listLabel(one, lang)} ${after.lists.find((x) => x.id === one.id)?.seats ?? 0} מנדטים.`)
+        : L(`Votes copied from ${where} for ${ids.length} lists.`, `הקולות הועתקו ${hebrewPrefix('מ', where)} עבור ${ids.length} רשימות.`);
+      toast('info', quick ? `${text} ${quick.note}` : text, quick?.action);
       close();
     }} />;
 }

@@ -27,8 +27,9 @@ test.describe('Settings: every setting at every level, by complexity', () => {
     // the same settings at every level (only the Simple starter tip is Simple's alone); no "more settings" line
     // (16 Nov: each level's tools and parts have rows of their own, data-part, counted apart from the settings)
     const rows = await settings(page).locator('[data-setting]:not([data-part]):not([data-setting="own"])').count();
-    // 12 Nov: + the Localities map's lines switch, + Bars for the compared result; 16 Nov (lane U1): + Turnout line on Turnout
-    expect(rows).toBe(level === 'simple' ? 44 : 43);
+    // 12 Nov: + the Localities map's lines switch, + Bars for the compared result; 16 Nov (lane U1): + Turnout line on Turnout;
+    // 19 Nov: + Copy votes: ask each time
+    expect(rows).toBe(level === 'simple' ? 45 : 44);
     await expect(settings(page).getByText(/more settings in Standard/)).toHaveCount(0);
     await expect(settings(page).locator('[data-tier="simple"] [data-setting="voteSource"]')).toHaveCount(1);
     await expect(settings(page).locator('[data-tier="expert"] [data-setting="chamberLayout"]')).toHaveCount(1);

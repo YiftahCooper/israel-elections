@@ -352,7 +352,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k5.json",
-      "sha256": "803bcb0999421a4decb2b3414850e2ad1948f643ca1fd952bd573f83e40d2cb9",
+      "sha256": "79440efa46fd0806450a78f5564793ba3e66290131c96645f93bf620a8e1d5b1",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -368,7 +368,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k7.json",
-      "sha256": "f1563ce4526576ef05e2b66b51a2bc3a336c46e9d7e98828bfc0fa1a0fd112ce",
+      "sha256": "affd491ed311c3bbfcd28f378bce402e95daa99c5bca486e87a9e8d7bb346811",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -432,7 +432,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k15.json",
-      "sha256": "0636650ae66491832eadc371509db4e3973d8b891c37e33000bef732fc8bebe0",
+      "sha256": "0e32e369f8e04c08661b40c480f2d5515250da0228f1c5500e8c7b7f0266e7d1",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -538,11 +538,11 @@
     },
     "k26-candidates-gazette": {
       "url": "https://olaw.org.il/yalkut/yalkut-15023.pdf",
-      "publisher": "Reshumot, Yalkut HaPirsumim 15023, 13 October 2026, pp. 863–866 (public copy)",
+      "publisher": "Reshumot, Yalkut HaPirsumim 15023, 13 October 2026, pp. 863–866 (copy at olaw.org.il)",
       "kind": "official",
       "accessed": "2026-11-12",
       "support": "Party affiliation (השתייכות מפלגתית) of every candidate on list רק: of the 12 elected, places 2, 4, 6, 9 and 12 were nominated by Yesh Atid and places 1, 3, 5, 7, 8, 10 and 11 by Together (Bennett). Retained copy: data/raw/k26/yp15023-candidates.pdf.",
-      "publisherHe": "רשומות, ילקוט הפרסומים 15023, 13 באוקטובר 2026, עמ׳ 863–866 (עותק ציבורי)"
+      "publisherHe": "רשומות, ילקוט הפרסומים 15023, 13 באוקטובר 2026, עמ׳ 863–866 (עותק באתר olaw.org.il)"
     },
     "idi-haredi-ballot-2026": {
       "url": "https://www.idi.org.il/media/33113/the-ultra-orthodox-ballot-box.pdf#page=24",
@@ -1091,7 +1091,7 @@
       "electionId": "k5",
       "electionDate": "1961-08-15",
       "datasetPath": "public/data/k5.json",
-      "datasetSha256": "803bcb0999421a4decb2b3414850e2ad1948f643ca1fd952bd573f83e40d2cb9",
+      "datasetSha256": "79440efa46fd0806450a78f5564793ba3e66290131c96645f93bf620a8e1d5b1",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -1274,7 +1274,7 @@
       "electionId": "k7",
       "electionDate": "1969-10-28",
       "datasetPath": "public/data/k7.json",
-      "datasetSha256": "f1563ce4526576ef05e2b66b51a2bc3a336c46e9d7e98828bfc0fa1a0fd112ce",
+      "datasetSha256": "affd491ed311c3bbfcd28f378bce402e95daa99c5bca486e87a9e8d7bb346811",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -2188,7 +2188,7 @@
       "electionId": "k15",
       "electionDate": "1999-05-17",
       "datasetPath": "public/data/k15.json",
-      "datasetSha256": "0636650ae66491832eadc371509db4e3973d8b891c37e33000bef732fc8bebe0",
+      "datasetSha256": "0e32e369f8e04c08661b40c480f2d5515250da0228f1c5500e8c7b7f0266e7d1",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "Rosters: everyone elected is included and cross-checked; no full winning-list rosters; later ranks of winning lists not transcribed. Contesting zero-seat rosters unavailable; two withdrawn registrations kept. Registered rank order kept, with omissions in the elected notice explicitly reconciled. No locality data. Complete 9-pair agreement notice verified; every published seat reproduced.",

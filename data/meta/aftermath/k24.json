@@ -229,10 +229,10 @@
     },
     "k24-results-gazette": {
       "url": "https://olaw.org.il/yalkut/yalkut-9511.pdf",
-      "title": "Reshumot, Yalkut HaPirsumim 9511, 31 March 2021, pp.4620–4629",
+      "title": "Reshumot, Yalkut HaPirsumim 9511, 31 March 2021, pp.4620–4629 (copy at olaw.org.il)",
       "kind": "official",
       "accessed": "2026-11-06",
-      "publisherHe": "רשומות, ילקוט הפרסומים 9511, 31 במרץ 2021, עמ׳ 4620–4629"
+      "publisherHe": "רשומות, ילקוט הפרסומים 9511, 31 במרץ 2021, עמ׳ 4620–4629 (עותק באתר olaw.org.il)"
     },
     "role-roster-36": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2036%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",

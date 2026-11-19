@@ -130,9 +130,9 @@ test('summary, graphics and Compare default follow the same reference setting',a
       expect(Math.max(...x)).toBeLessThan(650);
     }
     await openSideBySide(page);
-    // comparing starts on the previous election whichever reference marks the changes
+    // the scenario's result differs from the official one, so comparing starts on it whichever reference marks the changes
     const target=page.locator('.cmpm-strip').getByRole('button',{name:'Compare with',exact:true});
-    await expect(target).toHaveAttribute('data-value', 'prev');
+    await expect(target).toHaveAttribute('data-value', 'official');
     // the open scenario's chamber keeps the No bloc seats
     if(changed) await expect(page.locator('.cmp-card[data-role="main"] [data-seat][data-bloc="__none"]').first()).toBeAttached();
   }

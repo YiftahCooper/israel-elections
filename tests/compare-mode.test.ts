@@ -33,6 +33,20 @@ describe('what the screen is compared with', () => {
     stopComparing();
     expect(resolved().status).toBe('off');
   });
+  it('starts on this election\'s official result once an edit changes the result; a bloc move alone keeps the previous election', () => {
+    setState({ scenario: edited });
+    startComparing();
+    expect(getState().comparing).toBe('official');
+    stopComparing();
+    const party = k26.lists.flatMap((l) => l.parties ?? [])[0].id;
+    setState({ scenario: applyAction(k26, { type: 'setPartyBloc', partyId: party, bloc: k26.blocs[k26.blocs.length - 1].id }, undefined, { base: k26 }) });
+    startComparing();
+    expect(getState().comparing).toBe('prev');
+    stopComparing();
+    setState({ scenario: edited, settings: { compareWith: 'previous' } });
+    startComparing();
+    expect(getState().comparing).toBe('prev');
+  });
   it('has no earlier election for the first Knesset', () => {
     setState({ comparing: 'prev' });
     expect(resolved(baselineOf(datasets.k1))).toEqual({ status: 'none', key: 'prev', why: 'first' });

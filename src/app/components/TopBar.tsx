@@ -45,6 +45,8 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
   const L = useL();
   const lang = useLang();
   const electionId = useStore((st) => st.electionId);
+  // with nothing open, the election that could not be loaded (its page says so), never another one
+  const failedId = useStore((st) => (!st.scenario ? st.loadError?.id : undefined));
   const index = useStore((st) => st.elections);
   // the open election always has a correctly labelled option, even if the index lacks it
   const elections = ds && !index.some((e) => e.id === ds.id)
@@ -140,7 +142,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
   const undoRedo = <>
       <button className="tool" onClick={undo} disabled={!canUndo} title={undoName + ' (Ctrl+Z)'} aria-label={undoName}><Undo2 className="icon rtl-mirror" aria-hidden /></button>
       <button className="tool" onClick={redo} disabled={!canRedo} title={redoName + ' (Ctrl+Y)'} aria-label={redoName}><Redo2 className="icon rtl-mirror" aria-hidden /></button></>;
-  const pickElection = (arrows: boolean) => <ElectionPicker arrows={arrows} elections={elections} value={pmContestId ?? electionId} onChange={async value => { const pm = electionContext.pmContests.find(c => c.id === value && c.contestType === 'prime-minister-only'); if (await openElection(pm?.electionId ?? value as ElectionId)) onContestChange?.(pm?.id ?? null); }} />;
+  const pickElection = (arrows: boolean) => <ElectionPicker arrows={arrows} elections={elections} value={pmContestId ?? failedId ?? electionId} onChange={async value => { const pm = electionContext.pmContests.find(c => c.id === value && c.contestType === 'prime-minister-only'); if (await openElection(pm?.electionId ?? value as ElectionId)) onContestChange?.(pm?.id ?? null); }} />;
   /** Custom, naming the level it is based on (bar and phone menu alike) */
   /** the user's own choices for this level, named and counted beside the level; it opens them in Settings (owner,
    *  16 Nov 2026: one place to see and undo them). Nothing shows while there are none. */

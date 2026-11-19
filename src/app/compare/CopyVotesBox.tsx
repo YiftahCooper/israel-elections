@@ -1,15 +1,18 @@
 // The Copy votes box (owner, 12 Nov 2026): one box wherever votes are copied from the compared result into your work, on
 // the Overview and in Side by side. Each method says plainly what stays the same, with its figure, and shows what it
 // would do before anything changes; the box also says where extra votes come from. By level: Simple offers the one
-// method as a sentence; Standard three; Expert also the two that copy an edit. The box always opens; a remembered
-// method is only where it starts. Every figure is the engine's, computed on a scratch copy.
-import { useMemo, useState, type ReactNode } from 'react';
+// method as a sentence; Standard three; Expert also the two that copy an edit. A remembered method is where the box
+// starts; with "Set as default" and "Don't ask again" (owner, 19 Nov 2026) a one-list copy happens at once instead, said
+// in a toast whose "Ask next time" (like Settings → Copy votes: ask each time) brings the box back. Every figure is the
+// engine's, computed on a scratch copy.
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { percent, rationalPoints } from '../components/Percentage.tsx';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, PP } from '../format.ts';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
-import { setState, useDigits, useOn, useStore } from '../store.ts';
+import { getSetting, setSetting, setState, toast, useDigits, useOn, useStore } from '../store.ts';
+import { PREFERENCES } from '../preferences.ts';
 import { stayingHome, type SourceChoice } from '../voteEdit.ts';
 import { Info } from '../components/ui.tsx';
 import { ListMark } from '../components/ListMark.tsx';
@@ -27,7 +30,18 @@ export interface CopyRequest { from: SideModel; to: SideModel; units: CopyUnit[]
 const votes = (x: SideModel['sc'], ids: string[]) => ids.reduce((t, id) => t + (x.lists.find((l) => l.id === id)?.votes ?? 0), 0);
 const valid = (x: SideModel['sc']) => x.lists.reduce((t, l) => t + l.votes, 0);
 
-export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClose: () => void; onDone: (plan: Plan & { ok: true }, req: CopyRequest) => void }) {
+/** The words a toast adds after a copy made without the box: which default was used, that Undo takes it back, and a way
+ *  to be asked again. */
+export function copiedAtOnce(lang: 'he' | 'en', mode: CopyMode): { note: string; action: { label: string; run: () => void } } {
+  const method = PREFERENCES.copyMode.options.find((o) => o.value === mode)?.label[lang === 'he' ? 1 : 0] ?? '';
+  return {
+    note: lang === 'he' ? `הועתק מיד, לפי ברירת המחדל שלכם (${method}). ביטול מחזיר את זה.` : `Copied at once with your default (${method}). Undo takes it back.`,
+    action: { label: lang === 'he' ? 'לשאול בפעם הבאה' : 'Ask next time', run: () => { setSetting('copyAskEachTime', true); toast('info', lang === 'he' ? 'העתקת קולות תשאל שוב בכל פעם.' : 'Copy votes will ask each time again.'); } },
+  };
+}
+
+/** onDone's `auto`: the copy was made at once with the remembered default, without showing the box */
+export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClose: () => void; onDone: (plan: Plan & { ok: true }, req: CopyRequest, auto?: CopyMode) => void }) {
   const L = useL(), lang = useLang(), digits = useDigits();
   const simple = !useOn('copyMethods'), expert = useOn('copyChangeMethods');
   const voteSource = useStore((st) => st.voteSource);
@@ -46,11 +60,21 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
   const rem = remembered(to.sc, one, cross);
   const [mode, setMode] = useState<CopyMode>(() => { const m = rem.mode ?? COPY_MODE_DEFAULT; return basic.includes(m) ? m : basic[0]; });
   const [source, setSource] = useState<SourceChoice>(() => { const v = rem.source ?? voteSource; return v.kind === 'transfer' && dst.includes(v.listId) ? { kind: 'proportional' } : v.kind === 'citizens' ? { kind: 'new' } : v; });
-  const [scope, setScope] = useState<'once' | 'item' | 'always'>('once');
+  // "Don't ask again" is on while Settings → Copy votes: ask each time is off; the box then opens on "Set as default"
+  const [dontAsk, setDontAsk] = useState(() => !getSetting('copyAskEachTime'));
+  const [scope, setScope] = useState<'once' | 'item' | 'always'>(() => dontAsk && !simple ? 'always' : 'once');
   const plans = useMemo(() => Object.fromEntries(modes.map((m) => [m, (m === 'change' || m === 'ratio') && !edited ? null
     : planVotes({ from: sourceOf(from), to: to.sc, ctx: { base: to.base }, units, mode: m, policy: source })])) as Record<CopyMode, Plan | null>,
   [source, req, ticked, expert, simple, edited]); // eslint-disable-line react-hooks/exhaustive-deps
   const plan = plans[mode];
+  // copy at once: one list, a remembered method this level offers and a remembered source, "Don't ask again" ticked
+  const [auto] = useState(() => dontAsk && !req.choices && units.length === 1 && rem.mode !== null && rem.source !== null && basic.includes(rem.mode));
+  const done = useRef(false);
+  useEffect(() => {
+    if (!auto || done.current || !plan?.ok) return;
+    done.current = true;
+    onDone(plan, { ...req, units }, mode);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   const target = (p: Plan | null) => p?.ok ? p.targets.reduce((t, x) => t + x.after, 0) : null;
 
   // what stays the same, with its figure when one list (or one joined row) is copied
@@ -99,8 +123,14 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
     {p.ok && n !== null && <span className="muted"><bdi dir="ltr">{fmtInt(n)}</bdi> {L('votes', 'קולות')} · </span>}<Outcome plan={p} to={to} focus={dst} />
   </> : <span className="muted">{disabledWhy}</span>; };
 
+  // a copy made at once shows nothing (a refused one still opens the box, which says why)
+  if (auto && plan?.ok) return null;
+  // the default a "Don't ask again" stands on: a method that can be remembered (the two that copy an edit cannot)
+  const storable = !cross || isDefaultCopyMode(mode);
   return <Modal label={req.title} onClose={onClose} className="cmp-ask cmpm-copy">
-    <form onSubmit={(e) => { e.preventDefault(); if (!plan?.ok) return; remember(to.sc, one, cross, mode, source, simple ? 'once' : scope); onDone(plan, { ...req, units }); }}>
+    <form onSubmit={(e) => { e.preventDefault(); if (!plan?.ok) return; remember(to.sc, one, cross, mode, source, simple ? 'once' : scope);
+      if (!simple && scope === 'always' && storable) setSetting('copyAskEachTime', !dontAsk);
+      onDone(plan, { ...req, units }); }}>
       <p className="cmp-ask-title"><b>{req.title}</b> <Info title={L('How copying votes works', 'איך העתקת קולות עובדת')}>{L(
         `Only votes are copied; seats are always recalculated by the rules of ${to.year}. Share of eligible voters: the list's votes ÷ everyone entitled to vote in ${where} × everyone entitled to vote here. Share of the valid votes: the list's votes ÷ the valid votes in ${where} × the valid votes here. Number of votes: the same count. Rounded to the nearest vote, never across the threshold.`,
         `מועתקים רק קולות; המנדטים מחושבים תמיד מחדש לפי הכללים של ${to.year}. חלק מבעלי זכות הבחירה: קולות הרשימה ÷ כל בעלי זכות הבחירה ${inWhere(where)} × כל בעלי זכות הבחירה כאן. חלק מהקולות הכשרים: קולות הרשימה ÷ הקולות הכשרים ${inWhere(where)} × הקולות הכשרים כאן. מספר קולות: אותו מספר. מעוגל לקול הקרוב, ולעולם לא מעבר לאחוז החסימה.`)}</Info></p>
@@ -130,8 +160,11 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
       {<SourceSelect dest={to.sc} exclude={dst} value={source} onChange={setSource} label={L('Extra votes come from', 'מקור הקולות הנוספים')}
         info={<Info title={L('Extra votes come from', 'מקור הקולות הנוספים')}>{fromText}</Info>} />}
       {!simple && <fieldset className="preference-scope"><legend>{L('Use this choice', 'שימוש בבחירה')}</legend>
-        {([['once', L('Just this once', 'רק הפעם')], ...(one ? [['item', L('For this list', 'לרשימה זו')]] : []), ['always', L('Always', 'תמיד')]] as [typeof scope, string][]).map(([v, t]) =>
+        {([['once', L('Just this once', 'רק הפעם')], ...(one ? [['item', L('For this list', 'לרשימה זו')]] : []), ['always', L('Set as default', 'קביעה כברירת מחדל')]] as [typeof scope, string][]).map(([v, t]) =>
           <label key={v}><input type="radio" name="cmp-scope" value={v} checked={scope === v} onChange={() => setScope(v)} />{t}</label>)}
+        {/* a second tick under the default: later one-list copies happen at once (Undo takes them back) */}
+        <span className="cmpm-dont-ask" data-off={scope !== 'always' || !storable ? '' : undefined}><label><input type="checkbox" checked={dontAsk && scope === 'always' && storable} disabled={scope !== 'always' || !storable} onChange={(e) => setDontAsk(e.target.checked)} />{L('Don’t ask again', 'לא לשאול שוב')}</label>
+          {' '}<Info title={L('Don’t ask again', 'לא לשאול שוב')}>{L('Copying one list then happens at once, with this method and source, and Undo takes it back. To be asked again: “Ask next time” in the message after a copy, or Settings → Editing → Copy votes: ask each time.', 'העתקה של רשימה אחת תתבצע אז מיד, בשיטה ובמקור האלה, וביטול מחזיר אותה. כדי שתישאלו שוב: „לשאול בפעם הבאה” בהודעה שאחרי ההעתקה, או הגדרות ← עריכה ← העתקת קולות: לשאול בכל פעם.')}</Info></span>
         {scope === 'always' && <span className="tiny muted">{isDefaultCopyMode(mode) && cross ? L('Every Copy votes box will start on this method and source. Settings → Editing can change it.', 'כל חלון העתקת קולות יתחיל בשיטה ובמקור האלה. אפשר לשנות בהגדרות ← עריכה.') : L('Every Copy votes box will start on this source. Settings → Editing can change it.', 'כל חלון העתקת קולות יתחיל במקור הזה. אפשר לשנות בהגדרות ← עריכה.')}</span>}
       </fieldset>}
       <p className="tiny muted"><button type="button" className="link-btn" onClick={() => { onClose(); setState({ settingsOpen: true, settingsFocus: cross ? 'copyMode' : 'voteSource' }); }}>{L('Change the default in Settings', 'שינוי ברירת המחדל בהגדרות')}</button></p>

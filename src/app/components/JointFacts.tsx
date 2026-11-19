@@ -7,8 +7,10 @@ type Fact=(typeof facts)[number];
 let loaded:Promise<Fact[]>|undefined;
 /** Official baseline facts remain distinct from a simulated allocation. Loaded only at point of use. */
 export function JointFacts({listId,showListName=false,compact=false}:{listId:string;showListName?:boolean;compact?:boolean}) {
- const L=useL(),lang=useLang(),[all,setAll]=useState<Fact[]>([]);
- useEffect(()=>{let live=true;loaded??=import('../../../data/meta/joint-facts.json').then(m=>m.default);loaded.then(x=>{if(live)setAll(x);}).catch(()=>{});return()=>{live=false;};},[]);
+ const L=useL(),lang=useLang(),[all,setAll]=useState<Fact[]>([]),[failed,setFailed]=useState(false),[attempt,setAttempt]=useState(0);
+ // a failed download says so, with Try again; the facts are never silently left out
+ useEffect(()=>{let live=true;setFailed(false);loaded??=import('../../../data/meta/joint-facts.json').then(m=>m.default);loaded.then(x=>{if(live)setAll(x);}).catch(()=>{loaded=undefined;if(live)setFailed(true);});return()=>{live=false;};},[attempt]);
+ if(failed)return <span className="joint-facts small bad" role="status">{L('The joint-list facts could not be loaded.','העובדות על הרשימה המשותפת לא נטענו.')} <button type="button" className="btn small" onClick={()=>setAttempt(a=>a+1)}>{L('Try again','נסו שוב')}</button></span>;
  const f=all.find(f=>f.listId===listId);if(!f)return null;
  const name=(p:Fact['parties'][number])=>lang==='he'?p.nameHe:p.nameEn;
  const head=f.parties.find(p=>p.id===f.headPartyId);
