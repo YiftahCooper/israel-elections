@@ -1,14 +1,16 @@
 // The Shas seats of the 26th Knesset. The results notice (YP 15100 §4) declared Nos. 1–6 elected, but Nos. 1
-// (Aryeh Deri) and 6 (Dror David Amos) withdrew before the opening and Nos. 8 (Uriel Busso) and 9 (Yosef Taieb)
-// sat from the first sitting on 10 Nov 2026 (Knesset OData, opening protocol). The app shows both: who was
-// elected by the count, and who took the seat.
+// (Aryeh Deri), 6 (Dror David Amos) and 7 (Moshe Abutbul) resigned from the list on 8 Nov 2026 (YP 15121 p. 1890,
+// section 87(b), signed 9 Nov) and Nos. 8 (Uriel Busso) and 9 (Yosef Taieb) sat from the first sitting on
+// 10 Nov 2026 (Knesset OData, opening protocol). The app shows both: who was elected by the count, and who took
+// the seat. Two more post-election resignations (YP 15107, YP 15139) are below the seats and change none.
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { electedOf } from '../src/app/derive.ts';
 import { scenarioFromDataset } from '../src/model/scenario.ts';
 import { compileMkHistory, type MkReview, type MkRuntime } from '../scripts/mk-history-runtime.ts';
 
-const DERI = 2291, AMOS = 30989, BUSSO = 30765, TAIEB = 30770;
+const DERI = 2291, AMOS = 30989, BUSSO = 30765, TAIEB = 30770, ABUTBUL = 30749, MOSHIASHVILI = 30872;
 const ds = JSON.parse(readFileSync('public/data/k26.json', 'utf8'));
 const shas = ds.lists.find((l: { id: string }) => l.id === '26-שס');
 const note = (rank: number) => shas.candidates.find((c: { rank: number }) => c.rank === rank).notes?.[0];
@@ -39,10 +41,39 @@ describe('26th Knesset, Shas seats', () => {
     for (const rank of [1, 6, 7]) {
       expect(note(rank)?.en, `#${rank}`).toContain('8 November 2026');
       expect(note(rank)?.he, `#${rank}`).toContain('8 בנובמבר 2026');
+      // the basis is the official notice, not the press
+      expect(note(rank)?.en, `#${rank}`).toContain('Yalkut HaPirsumim 15121, p. 1890, signed 9 November 2026');
+      expect(note(rank)?.he, `#${rank}`).toContain('ילקוט הפרסומים 15121, עמ׳ 1890, שנחתמה ב־9 בנובמבר 2026');
+      expect(`${note(rank)?.en} ${note(rank)?.he}`, `#${rank}`).not.toMatch(/Israel Hayom|Ynet|Kikar|ישראל היום|כיכר השבת/i);
     }
     expect(note(1).en).toMatch(/Aryeh Deri.*Uriel Busso \(#8\) and Yosef Taieb \(#9\)/);
-    // Amos's gender is not on record: the note never says he or she
+    // Amos's gender is not on record: the note never says he or she, and the Hebrew uses no gendered verb
     expect(note(6).en).not.toMatch(/\b(he|she|his|her)\b/i);
+    expect(note(6).he).not.toMatch(/התפטר(?!ות)|התפטרה|פרש|פרשה/);
+  });
+
+  it('the official notice is retained and registered: YP 15121, section 87(b), all three names, 8 Nov 2026', () => {
+    const src = (JSON.parse(readFileSync('data/raw/SOURCES.json', 'utf8')) as { id: string; file?: string; url?: string; sha256?: string; official?: boolean }[]);
+    const s = src.find((x) => x.id === 'k26-withdrawals-yp15121')!;
+    expect(s).toMatchObject({ file: 'k26/yp15121-withdrawals.pdf', url: 'https://reshumot.justice.gov.il/officialGazette/publicNotices/15121', official: true });
+    expect(createHash('sha256').update(readFileSync(`data/raw/${s.file}`)).digest('hex')).toBe(s.sha256);
+    for (const id of ['k26-withdrawals-yp15107', 'k26-withdrawals-yp15139']) expect(src.find((x) => x.id === id)?.official, id).toBe(true);
+  });
+
+  it('later resignations below the seats: noted on the candidates, roster and seats unchanged', () => {
+    const otzma = ds.lists.find((l: { id: string }) => l.id === '26-ב');
+    expect(ds.officialSeats['26-ב']).toBe(7);
+    const cases: [typeof shas, number, string, string][] = [
+      [shas, 11, '2 November 2026', '15107'], [shas, 13, '3 November 2026', '15107'], [shas, 15, '2 November 2026', '15107'], [otzma, 11, '10 November 2026', '15139']];
+    for (const [l, rank, date, issue] of cases) {
+      const c = l.candidates.find((x: { rank: number }) => x.rank === rank);
+      expect(c.notes?.[0]?.en, `${l.id}#${rank}`).toContain(`Resigned from the candidate list on ${date}, after polling day (Yalkut HaPirsumim ${issue}`);
+      expect(c.notes?.[0]?.he, `${l.id}#${rank}`).toMatch(/^התפטרות מרשימת המועמדים/);
+      expect(c.notSeated, `${l.id}#${rank}`).toBeUndefined();
+    }
+    // the next in line by the count is unchanged: No. 7 for Shas, No. 8 for Otzma Yehudit
+    expect(shas.candidates.filter((c: { notSeated?: boolean }) => !c.notSeated)[6].rank).toBe(7);
+    expect(otzma.candidates.filter((c: { notSeated?: boolean }) => !c.notSeated)[7].rank).toBe(8);
   });
 
   it('MK history: Nos. 1 and 6 elected but did not sit, Nos. 8 and 9 sat from the opening', () => {
@@ -53,5 +84,9 @@ describe('26th Knesset, Shas seats', () => {
     expect(k26(TAIEB).slice(0, 4)).toEqual([26, '26-שס', 9, 'first']);
     for (const p of [BUSSO, TAIEB]) expect(rt.people[p].terms.find((t) => t[0] === 26)?.[1]).toBe('2026-11-10');
     expect(rt.people[AMOS].gender ?? null).toBeNull();
+    // the official notes reach MK history: on the rows of those who did not sit, and of those below the seats
+    for (const p of [DERI, AMOS, ABUTBUL, MOSHIASHVILI]) expect(k26(p)[6].map(([en]) => en).join(' '), `person ${p}`).toContain('Yalkut HaPirsumim 151');
+    expect(k26(ABUTBUL)[3]).toBe('out');
+    expect(k26(MOSHIASHVILI).slice(1, 4)).toEqual(['26-שס', 13, 'out']);
   });
 });

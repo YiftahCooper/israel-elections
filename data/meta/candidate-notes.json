@@ -58,40 +58,66 @@
     },
     {
       "candidateId": "26-שס#1",
-      "en": "Aryeh Deri (#1) was declared elected in Yalkut HaPirsumim 15100 §4 and withdrew from the Shas list on 8 November 2026 (Israel Hayom, Ynet, Kikar HaShabbat), as did Nos. 6 and 7, Dror David Amos and Moshe Abutbul. Uriel Busso (#8) and Yosef Taieb (#9) sat from the first sitting on 10 November.",
-      "he": "אריה דרעי (מס׳ 1) הוכרז כנבחר בילקוט הפרסומים 15100 סעיף 4, וב־8 בנובמבר 2026 פרש מרשימת ש״ס (ישראל היום, ynet, כיכר השבת); כך גם מס׳ 6 ומס׳ 7, דרור דוד עמוס ומשה אבוטבול. אוריאל בוסו (מס׳ 8) ויוסף טייב (מס׳ 9) כיהנו מהישיבה הראשונה ב־10 בנובמבר.",
+      "en": "Aryeh Deri (#1) was declared elected in Yalkut HaPirsumim 15100 §4 and resigned from the Shas candidate list on 8 November 2026, as did Nos. 6 and 7, Dror David Amos and Moshe Abutbul (Yalkut HaPirsumim 15121, p. 1890, signed 9 November 2026). Uriel Busso (#8) and Yosef Taieb (#9) sat from the first sitting on 10 November.",
+      "he": "אריה דרעי (מס׳ 1) הוכרז כנבחר בילקוט הפרסומים 15100 סעיף 4, וב־8 בנובמבר 2026 התפטר מרשימת המועמדים של ש״ס; כך גם מס׳ 6 ומס׳ 7, דרור דוד עמוס ומשה אבוטבול (הודעה בילקוט הפרסומים 15121, עמ׳ 1890, שנחתמה ב־9 בנובמבר 2026). אוריאל בוסו (מס׳ 8) ויוסף טייב (מס׳ 9) כיהנו מהישיבה הראשונה ב־10 בנובמבר.",
       "sources": [
         "Yalkut HaPirsumim 15100 §4 p. 1645 (data/raw/k26/yp15100-results.pdf)",
+        "Yalkut HaPirsumim 15121 p. 1890, notice of the Central Elections Committee chair under section 87(b) of the Elections Law, signed 9 Nov 2026 (data/raw/k26/yp15121-withdrawals.pdf; https://reshumot.justice.gov.il/officialGazette/publicNotices/15121)",
         "Knesset OData opening membership, retrieved 19 Nov 2026 (data/raw/k26/knesset-odata-members.json)",
-        "Divrei HaKnesset, 26th Knesset, first sitting, 10 Nov 2026, roll call of oaths (data/raw/k26/26_ptm_16099073.doc; https://fs.knesset.gov.il/26/Plenum/26_ptm_16099073.doc)",
-        "https://www.israelhayom.co.il/news/politics/article/21806640",
-        "https://www.ynet.co.il/news/article/rkrQKWRpGg",
-        "https://www.kikar.co.il/haredim-news/to6tpn"
+        "Divrei HaKnesset, 26th Knesset, first sitting, 10 Nov 2026, roll call of oaths (data/raw/k26/26_ptm_16099073.doc; https://fs.knesset.gov.il/26/Plenum/26_ptm_16099073.doc)"
       ]
     },
     {
       "candidateId": "26-שס#6",
-      "en": "Declared elected in Yalkut HaPirsumim 15100 §4. Withdrew from the Shas list on 8 November 2026, before the Knesset opened (Israel Hayom, Ynet, Kikar HaShabbat); Uriel Busso (#8) and Yosef Taieb (#9) took the two seats.",
-      "he": "בין הנבחרים לפי ילקוט הפרסומים 15100 סעיף 4. פרישה מרשימת ש״ס ב־8 בנובמבר 2026, לפני פתיחת הכנסת (ישראל היום, ynet, כיכר השבת); את שני המושבים קיבלו אוריאל בוסו (8) ויוסף טייב (9).",
+      "en": "Declared elected in Yalkut HaPirsumim 15100 §4. Resigned from the Shas candidate list on 8 November 2026, before the Knesset opened (Yalkut HaPirsumim 15121, p. 1890, signed 9 November 2026); Uriel Busso (#8) and Yosef Taieb (#9) took the two seats.",
+      "he": "בין הנבחרים לפי ילקוט הפרסומים 15100 סעיף 4. התפטרות מרשימת המועמדים של ש״ס ב־8 בנובמבר 2026, לפני פתיחת הכנסת (הודעה בילקוט הפרסומים 15121, עמ׳ 1890, שנחתמה ב־9 בנובמבר 2026); את שני המושבים קיבלו אוריאל בוסו (8) ויוסף טייב (9).",
       "sources": [
         "Yalkut HaPirsumim 15100 §4 p. 1645 (data/raw/k26/yp15100-results.pdf)",
+        "Yalkut HaPirsumim 15121 p. 1890, notice of the Central Elections Committee chair under section 87(b) of the Elections Law, signed 9 Nov 2026 (data/raw/k26/yp15121-withdrawals.pdf; https://reshumot.justice.gov.il/officialGazette/publicNotices/15121)",
         "Knesset OData opening membership, retrieved 19 Nov 2026 (data/raw/k26/knesset-odata-members.json)",
-        "Divrei HaKnesset, 26th Knesset, first sitting, 10 Nov 2026, roll call of oaths (data/raw/k26/26_ptm_16099073.doc; https://fs.knesset.gov.il/26/Plenum/26_ptm_16099073.doc)",
-        "https://www.israelhayom.co.il/news/politics/article/21806640",
-        "https://www.ynet.co.il/news/article/rkrQKWRpGg",
-        "https://www.kikar.co.il/haredim-news/to6tpn"
+        "Divrei HaKnesset, 26th Knesset, first sitting, 10 Nov 2026, roll call of oaths (data/raw/k26/26_ptm_16099073.doc; https://fs.knesset.gov.il/26/Plenum/26_ptm_16099073.doc)"
       ]
     },
     {
       "candidateId": "26-שס#7",
-      "en": "Withdrew from the Shas list on 8 November 2026, before the Knesset opened (Israel Hayom, Ynet, Kikar HaShabbat), so the seats of Nos. 1 and 6 went to Nos. 8 and 9.",
-      "he": "ב־8 בנובמבר 2026, לפני פתיחת הכנסת, פרש מרשימת ש״ס (ישראל היום, ynet, כיכר השבת), ולכן מושבי מס׳ 1 ומס׳ 6 עברו למס׳ 8 ומס׳ 9.",
+      "en": "Resigned from the Shas candidate list on 8 November 2026, before the Knesset opened (Yalkut HaPirsumim 15121, p. 1890, signed 9 November 2026), so the seats of Nos. 1 and 6 went to Nos. 8 and 9.",
+      "he": "ב־8 בנובמבר 2026, לפני פתיחת הכנסת, התפטר מרשימת המועמדים של ש״ס (הודעה בילקוט הפרסומים 15121, עמ׳ 1890, שנחתמה ב־9 בנובמבר 2026), ולכן מושבי מס׳ 1 ומס׳ 6 עברו למס׳ 8 ומס׳ 9.",
       "sources": [
+        "Yalkut HaPirsumim 15121 p. 1890, notice of the Central Elections Committee chair under section 87(b) of the Elections Law, signed 9 Nov 2026 (data/raw/k26/yp15121-withdrawals.pdf; https://reshumot.justice.gov.il/officialGazette/publicNotices/15121)",
         "Knesset OData opening membership, retrieved 19 Nov 2026 (data/raw/k26/knesset-odata-members.json)",
-        "Divrei HaKnesset, 26th Knesset, first sitting, 10 Nov 2026, roll call of oaths (data/raw/k26/26_ptm_16099073.doc; https://fs.knesset.gov.il/26/Plenum/26_ptm_16099073.doc)",
-        "https://www.israelhayom.co.il/news/politics/article/21806640",
-        "https://www.ynet.co.il/news/article/rkrQKWRpGg",
-        "https://www.kikar.co.il/haredim-news/to6tpn"
+        "Divrei HaKnesset, 26th Knesset, first sitting, 10 Nov 2026, roll call of oaths (data/raw/k26/26_ptm_16099073.doc; https://fs.knesset.gov.il/26/Plenum/26_ptm_16099073.doc)"
+      ]
+    },
+    {
+      "candidateId": "26-שס#11",
+      "en": "Resigned from the candidate list on 2 November 2026, after polling day (Yalkut HaPirsumim 15107, p. 1702, signed 4 November 2026); the registered roster is preserved.",
+      "he": "התפטרות מרשימת המועמדים ב־2 בנובמבר 2026, אחרי יום הבחירות (הודעה בילקוט הפרסומים 15107, עמ׳ 1702, שנחתמה ב־4 בנובמבר 2026); הרשימה הרשומה נשמרת.",
+      "sources": [
+        "Yalkut HaPirsumim 15107 p. 1702, notice of the Central Elections Committee chair under section 87(b) of the Elections Law, signed 4 Nov 2026 (data/raw/k26/yp15107-withdrawals.pdf; https://reshumot.justice.gov.il/officialGazette/publicNotices/15107)"
+      ]
+    },
+    {
+      "candidateId": "26-שס#13",
+      "en": "Resigned from the candidate list on 3 November 2026, after polling day (Yalkut HaPirsumim 15107, p. 1702, signed 4 November 2026); the registered roster is preserved.",
+      "he": "התפטרות מרשימת המועמדים ב־3 בנובמבר 2026, אחרי יום הבחירות (הודעה בילקוט הפרסומים 15107, עמ׳ 1702, שנחתמה ב־4 בנובמבר 2026); הרשימה הרשומה נשמרת.",
+      "sources": [
+        "Yalkut HaPirsumim 15107 p. 1702, notice of the Central Elections Committee chair under section 87(b) of the Elections Law, signed 4 Nov 2026 (data/raw/k26/yp15107-withdrawals.pdf; https://reshumot.justice.gov.il/officialGazette/publicNotices/15107)"
+      ]
+    },
+    {
+      "candidateId": "26-שס#15",
+      "en": "Resigned from the candidate list on 2 November 2026, after polling day (Yalkut HaPirsumim 15107, p. 1702, signed 4 November 2026); the registered roster is preserved.",
+      "he": "התפטרות מרשימת המועמדים ב־2 בנובמבר 2026, אחרי יום הבחירות (הודעה בילקוט הפרסומים 15107, עמ׳ 1702, שנחתמה ב־4 בנובמבר 2026); הרשימה הרשומה נשמרת.",
+      "sources": [
+        "Yalkut HaPirsumim 15107 p. 1702, notice of the Central Elections Committee chair under section 87(b) of the Elections Law, signed 4 Nov 2026 (data/raw/k26/yp15107-withdrawals.pdf; https://reshumot.justice.gov.il/officialGazette/publicNotices/15107)"
+      ]
+    },
+    {
+      "candidateId": "26-ב#11",
+      "en": "Resigned from the candidate list on 10 November 2026, after polling day (Yalkut HaPirsumim 15139, p. 2054, notice of the Knesset Secretary signed 15 November 2026); the registered roster is preserved.",
+      "he": "התפטרות מרשימת המועמדים ב־10 בנובמבר 2026, אחרי יום הבחירות (הודעת מזכיר הכנסת בילקוט הפרסומים 15139, עמ׳ 2054, שנחתמה ב־15 בנובמבר 2026); הרשימה הרשומה נשמרת.",
+      "sources": [
+        "Yalkut HaPirsumim 15139 p. 2054, notice of the Knesset Secretary under section 87(a) of the Elections Law, signed 15 Nov 2026 (data/raw/k26/yp15139-withdrawal.pdf; https://reshumot.justice.gov.il/officialGazette/publicNotices/15139)"
       ]
     },
     {

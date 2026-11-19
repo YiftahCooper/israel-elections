@@ -362,8 +362,9 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
       else if (r.elected || inK.some((t) => t[1] === e.opening)) o = 'first';
       else if (inK.length) o = 'later';
       else o = 'out';
-      // the official notes on the candidates whose places explain it (their own, or those above who did not sit)
-      const notes = o === 'declined' ? l.candidates.find((c) => c.id === r.candidateId)?.notes ?? []
+      // the official notes on the candidates whose places explain it (their own, or those above who did not sit);
+      // a candidate below the seats keeps their own note too (e.g. a resignation from the list after polling day)
+      const notes = o === 'declined' || o === 'out' ? l.candidates.find((c) => c.id === r.candidateId)?.notes ?? []
         : o === 'first' ? l.candidates.filter((c) => c.rank <= out.lists[r.listId][3]).flatMap((c) => c.notes ?? []).filter((n) => /first sitting/.test(n.en)) : [];
       const research = researched.get(r.candidateId);
       return research ? [r.k, r.listId, r.rank, o, r.basis, r.via, notes.map((n) => [n.en, n.he] as const), research] : [r.k, r.listId, r.rank, o, r.basis, r.via, notes.map((n) => [n.en, n.he] as const)];

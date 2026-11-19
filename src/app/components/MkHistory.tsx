@@ -242,7 +242,7 @@ function Result({ r, v }: { r: MkRow; v: MkView }) {
         ? L(`The list got ${run.share}%, below the ${run.threshold}% threshold`, `הרשימה קיבלה ${run.share}%, מתחת לאחוז החסימה (${run.threshold}%)`)
         : run.seats === 0 ? L('The list won no seats', 'הרשימה לא זכתה במנדטים')
         : L(short === 1 ? '1 place short' : `${short} places short`, short === 1 ? 'חסר מקום אחד' : `חסרו ${short} מקומות`);
-      return <span className="mk-out">{L('Not elected', g(f, 'לא נבחר', 'לא נבחרה', 'לא בין הנבחרים'))} {linked}<span className="tiny ink2 mk-block">{sub}</span></span>;
+      return <span className="mk-out">{L('Not elected', g(f, 'לא נבחר', 'לא נבחרה', 'לא בין הנבחרים'))} {notes}{linked}<span className="tiny ink2 mk-block">{sub}</span></span>;
     }
   }
 }
