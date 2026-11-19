@@ -181,3 +181,18 @@ test('Standard does not show the Committee-sheet note', async ({ page }) => {
   await expect(panel(page)).toContainText('113 seats allocated; 7 remain.');
   await expect(panel(page).locator('.walk-cec-note')).toHaveCount(0);
 });
+
+// A pair is named by both its lists, which can be long ("Progress and Development + Arab List for Bedouin and
+// Villagers", 1973): on a phone its button wraps inside the panel instead of running off the screen (found by
+// Bombadil, 19 Nov 2026).
+test('on a phone the Within pairs buttons wrap long pair names inside the panel', async ({ page }) => {
+  await start(page, 'k8', 'en', 390);
+  await walk(page);
+  await stage(page, 'Within pairs');
+  const pairs = panel(page).getByRole('button', { name: /\+/ });
+  await expect(pairs.first()).toBeVisible();
+  expect(await pairs.count()).toBeGreaterThan(1);
+  const box = await panel(page).evaluate((e) => e.getBoundingClientRect().right);
+  for (const b of await pairs.all()) expect(await b.evaluate((e) => e.getBoundingClientRect().right)).toBeLessThanOrEqual(box + 0.5);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
+});

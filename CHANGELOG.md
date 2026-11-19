@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- Long names on buttons (19 Nov): in "How seats were allocated", a pair named by two long lists (1973: "Progress and Development + Arab List for Bedouin and Villagers") and the lottery-winner choices now wrap inside the panel; on a phone the pair button ran off the screen.
 - Copy buttons on the Turnout tab while comparing (19 Nov): a "Copy from …" button naming a saved scenario with a long name now wraps inside its card, instead of running over the next card and off the page (the page scrolled sideways).
 - Withdrawing a list (19 Nov): ticking "Withdrawn from the race" while the list's Scale, share & transfer section was open closed the list panel with an error; the panel now stays open and hides the transfer step, whose buttons a withdrawn list cannot use.
 - Map names and the Sensitivity table under any font or load (19 Nov): the Localities map keeps room for a place name as the page actually draws it, so on a device without the app's font (or before it arrives) a name no longer runs onto a dot, a circle, another name or the double-envelope island; the map opens straight on its fitted view instead of sliding there; in Sensitivity, a quick key press no longer leaves the table scrolled to the previous row.

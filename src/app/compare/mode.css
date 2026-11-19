@@ -79,9 +79,6 @@
 /* "Copy 2022's" beside a key number (Turnout, Rules) */
 .tn-copy { margin: 4px 0 0; }
 .cmpm-copy-other { font-size: 12px; padding: 2px 8px; }
-/* it names what it copies from (a saved scenario's name can be long): the words wrap inside the card (.btn alone
-   keeps a button on one line) */
-.btn.cmpm-copy-other { max-inline-size: 100%; white-space: normal; overflow-wrap: anywhere; text-align: start; }
 .cmpm-rules-copy { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 4px 0 8px; }
 
 /* Blocs while comparing: the compared result's bloc bar under yours, same scale and majority line */
