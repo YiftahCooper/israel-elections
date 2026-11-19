@@ -269,7 +269,7 @@ function Places({ rank, seats, color }: { rank: number; seats: number; color: st
 }
 
 /** Time in one Knesset: the faint track is the whole Knesset, coloured parts are the time served (by faction). */
-function TermBar({ r, v, nums }: { r: MkRow; v: MkView; nums: Map<MkEvent, number> }) {
+export function TermBar({ r, v, nums }: { r: MkRow; v: MkView; nums: Map<MkEvent, number> }) {
   const L = useL(), lang = useLang();
   const [ref, px] = useWidth();
   if (!r.opening) return <span className="tiny muted">{L('This Knesset has not yet opened', 'הכנסת טרם נפתחה')}</span>;
@@ -296,7 +296,8 @@ function TermBar({ r, v, nums }: { r: MkRow; v: MkView; nums: Map<MkEvent, numbe
       {r.terms.flatMap((t) => t.unrecorded).map((g, i) => <span key={`u${i}`} className="mk-seg mk-unrec" title={L('Faction not recorded', 'הסיעה לא תועדה')}
         style={{ insetInlineStart: `${(x(g.start) / W) * 100}%`, inlineSize: `${Math.max(0.6, ((x(g.end) - x(g.start)) / W) * 100)}%` }} />)}
       {r.terms.flatMap((t) => t.segments).map((s, i) => {
-        const a = x(s.start), b = x(s.end), name = factionName(s, lang);
+        // named as the lines under the row name it, so one faction has one name on the card (review V3 F4)
+        const a = x(s.start), b = x(s.end), name = factionMoveName(s, lang);
         // the faction is named inside its part of the bar only where the whole name fits
         const fits = ((b - a) / W) * px > name.length * 6.4 + 12;
         return <span key={i} className="mk-seg" style={{ insetInlineStart: `${(a / W) * 100}%`, inlineSize: `${Math.max(0.6, ((b - a) / W) * 100)}%`, background: s.color ?? 'var(--muted)', color: inkOn(s.color) }}

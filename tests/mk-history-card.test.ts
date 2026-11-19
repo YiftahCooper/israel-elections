@@ -6,7 +6,8 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 import { compileMkHistory, type MkReview } from '../scripts/mk-history-runtime.ts';
 import { mkView, type MkRuntime } from '../src/history/mk.ts';
-import { MkKey, Result } from '../src/app/components/MkHistory.tsx';
+import { MkKey, Result, TermBar } from '../src/app/components/MkHistory.tsx';
+import { LangContext } from '../src/app/i18n.ts';
 
 const rt = compileMkHistory(process.cwd(), { leftOut: [], anomalies: [] } as MkReview) as unknown as MkRuntime;
 const byRun = (list: string, rank: number) => Number(Object.entries(rt.people).find(([, p]) => p.runs.some((r) => r[1] === list && r[2] === rank))![0]);
@@ -26,6 +27,20 @@ describe('MK history card', () => {
     }
     expect(seen.with).toBeGreaterThan(0);
     expect(seen.without).toBeGreaterThan(0);
+  });
+
+  // review V3 F4: the bar named Moshe Dayan's 1977 faction "MK Moshe Dayan", the line under it "single-member faction of
+  // Moshe Dayan"; one faction gets one name on a card
+  it('a one-member faction has the same name on the bar as in the line under the row', () => {
+    for (const [lang, solo, record] of [['en', /^single-member faction of /, /^MK /], ['he', /^סיעת היחיד של /, /^חה["״]כ /]] as const) {
+      for (const [id, k] of [[byName('משה דיין'), 9], [byName('עמיחי שיקלי'), 24]] as const) {
+        const v = mkView(rt, id)!, r = v.rows.find((x) => x.k === k)!;
+        const html = renderToStaticMarkup(createElement(LangContext.Provider, { value: lang }, createElement(TermBar, { r, v, nums: new Map() })));
+        const titles = [...html.matchAll(/class="mk-seg"[^>]*title="([^"]*)"/g)].map((m) => m[1]);
+        expect(titles.some((t) => solo.test(t)), `${lang} ${v.he}: ${titles.join(' | ')}`).toBe(true);
+        expect(titles.some((t) => record.test(t))).toBe(false);
+      }
+    }
   });
 
   it('an official note and how the list is linked share one (i)', () => {
