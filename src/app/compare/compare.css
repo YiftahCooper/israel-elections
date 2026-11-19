@@ -164,6 +164,10 @@
   .cmp-table tr.cmp-row > .cmp-lname { grid-area: ln; text-align: start; font-size: 12px; color: var(--muted); }
   .cmp-table tr.cmp-row > .cmp-lname::before { content: attr(data-year) ": "; }
   .cmp-table tr.cmp-row > .cmp-lname .slip { display: none; }
+  /* a phone row's names wrap instead of being cut; within one election both sides are the same list, named once */
+  .cmp-table tr.cmp-row .cmp-list-name { white-space: normal; overflow: visible; }
+  .cmp-table.is-same tr.cmp-row > .cmp-lname { display: none; }
+  .cmp-table.is-same tr.cmp-row > .cmp-rname { grid-row: 1 / 3; }
   .cmp-table tr.cmp-row > .cmp-ls { grid-area: ls; }
   .cmp-table tr.cmp-row > .cmp-rs { grid-area: rs; }
   .cmp-table tr.cmp-row > .cmp-mid { grid-area: mid; width: auto; min-width: min-content; }

@@ -140,3 +140,46 @@ test('Copy votes box: counts lists as the message does, names where a row\'s vot
   await expect(count).toContainText('Shas 9 (unchanged)');
   await expect(count).not.toContainText('9 → 9');
 });
+
+const filterCount = async (page: Page, name: string) => Number(await page.locator('.cmp-filters button', { hasText: name }).locator('.cmp-count').innerText());
+
+test('Side by side: no filter counts more rows than All; Unmatched obeys "Lists with no seats"', async ({ page }) => {
+  await start(page, 'k26', { level: 'expert' });
+  await page.locator('.compare-on').first().click();
+  await page.locator('.cmpm-strip').getByRole('button', { name: 'Side by side' }).click();
+  await expect(page.locator('.cmp-filters')).toBeVisible();
+  const all = await filterCount(page, 'All');
+  for (const f of ['Different', 'Edited', 'Unmatched']) expect(await filterCount(page, f)).toBeLessThanOrEqual(all);
+  await page.locator('.cmp-filters button', { hasText: 'Unmatched' }).click();
+  // no 2022 list without seats (Economic Freedom and the like) while "Lists with no seats" is off
+  await expect(page.locator('.cmp-table tbody')).not.toContainText('Economic Freedom');
+  await page.getByLabel('Lists with no seats').check();
+  await expect(page.locator('.cmp-table tbody')).toContainText('Economic Freedom');
+});
+
+test('phone Side by side within one election: each list named once, in full, with no "Same" tag', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await start(page, 'k26');
+  await editVotes(page, 'Likud', '1247591');
+  await page.keyboard.press('Escape');
+  await page.locator('.compare-on').first().click();
+  await page.locator('.cmpm-strip').getByRole('button', { name: 'Side by side' }).click();
+  const row = page.locator('.cmp-table tr.cmp-row', { hasText: 'Yisrael Beiteinu' }).first();
+  await expect(row).toBeVisible();
+  await expect(row.locator('.cmp-lname')).toBeHidden();
+  await expect(page.locator('.cmp-table .cmp-tag.tag-same')).toHaveCount(0);
+  const name = row.locator('.cmp-rname .cmp-list-name').first();
+  expect(await name.evaluate((el) => el.scrollWidth <= el.clientWidth + 1)).toBe(true);
+});
+
+test('Swap and Swap back: an unedited result is called "Official result", never "historical" or "Your work"', async ({ page }) => {
+  await start(page, 'k26');
+  await page.locator('.compare-on').first().click();
+  const picker = page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true });
+  await expect(picker).toContainText('2022 · 25th Knesset · Official result');
+  await page.locator('.cmpm-strip').getByRole('button', { name: 'Swap', exact: true }).click();
+  await expect(picker).toContainText('2026 · 26th Knesset · Official result');
+  await page.locator('.cmpm-strip').getByRole('button', { name: 'Swap', exact: true }).click();
+  await expect(picker).toContainText('2022 · 25th Knesset · Official result');
+  await expect(page.locator('.cmpm-strip')).not.toContainText('historical');
+});

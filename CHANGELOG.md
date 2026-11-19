@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- Side by side and Swap (19 Nov): no filter counts more rows than All ("Unmatched 54" beside "All 16"): every filter obeys "Lists with no seats"; on a phone, comparing with this election's own result names each list once, in full, without a "Same" tag on every row; after Swap, an unedited result is called "Official result", never "Your work" or "historical".
 - Copy votes box (19 Nov): "Lists to copy" counts lists, as the message after the copy does (12 of 12 in 2026, where one row holds Religious Zionism–Zehut, Otzma Yehudit and Noam); a row whose lists came from differently named ones says so ("from 2022: Religious Zionism"); each method's vote total and its seat changes are two lines, with no dangling "·"; a list the copy leaves unchanged reads "Shas 9 (unchanged)", not "9 → 9"; long names in the tick list no longer overlap.
 - Line of changes (19 Nov): when the line is longer than its row, a small › at its fade shows the rest, and the mouse wheel scrolls it sideways; seats in no bloc are listed ("No bloc 4"), so the blocs always add up to 120; a withdrawn list is "list withdrawn", not "votes changed"; in Hebrew a bloc's change keeps its space after the seat count.
 - Turnout with two decimals everywhere (19 Nov): the Overview's Turnout tile reads 77.98% at Simple, Standard and Expert and no longer changes when its window opens (it read 78% at Simple and 77.979% at Expert); the official figure under an edited turnout and the Compare turnout row use the same two decimals.

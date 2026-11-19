@@ -27,6 +27,9 @@ export function useReferenceChoices(s: Scenario): Choice[] {
   const elections = useStore((st) => st.elections), saved = useStore((st) => st.saved);
   const swapped = useStore((st) => st.compare.swapped), ds = useStore((st) => st.datasets[s.electionId]);
   const edited = !!ds && resultChanges(s, baselineOf(ds)).length > 0;
+  const swappedDs = useStore((st) => st.compare.swapped ? st.datasets[st.compare.swapped.scenario.electionId] : undefined);
+  // the work Swap set aside, called what the strip calls it: the official result when it has no changes
+  const swappedEdited = !!swapped && (!swappedDs || resultChanges(swapped.scenario, baselineOf(swappedDs)).length > 0);
   return useMemo(() => {
     const label = (id: string) => { const e = elections.find((x) => x.id === id); return e ? electionLabel(e, elections, lang) : id; };
     const prev = previousElection(elections, s.electionId);
@@ -35,11 +38,11 @@ export function useReferenceChoices(s: Scenario): Choice[] {
       ...(prev ? [{ value: 'prev', label: `${label(prev.id)} · ${official}`, detail: L('The previous election; follows the election you open', 'הבחירות הקודמות; מתעדכן לפי הבחירות שפותחים'), group: L('The previous election', 'הבחירות הקודמות') }] : []),
       ...(edited ? [{ value: 'official', label: `${label(s.electionId)} · ${official}`, detail: L('This election, without your changes', 'הבחירות האלה, בלי השינויים שלכם'), group: L('This election', 'הבחירות האלה') }] : []),
       { value: 'snapshot', label: L('Your work as it is now', 'העבודה שלכם כפי שהיא עכשיו'), detail: L('A frozen copy: keep editing and see what changed', 'עותק מוקפא: המשיכו לערוך וראו מה השתנה'), group: L('This election', 'הבחירות האלה') },
-      ...(swapped ? [{ value: 'swapped', label: `${label(swapped.scenario.electionId)} · ${swapped.scenario.name || L('Your work', 'העבודה שלכם')}`, detail: L('Set aside by Swap, unsaved', 'הועבר הצידה בהחלפה, לא נשמר'), group: L('Set aside by Swap', 'הועבר הצידה בהחלפה') }] : []),
+      ...(swapped ? [{ value: 'swapped', label: `${label(swapped.scenario.electionId)} · ${swappedEdited ? swapped.scenario.name || L('Your work', 'העבודה שלכם') : official}`, detail: L('Set aside by Swap, unsaved', 'הועבר הצידה בהחלפה, לא נשמר'), group: L('Set aside by Swap', 'הועבר הצידה בהחלפה') }] : []),
       ...saved.map((x) => ({ value: `saved:${x.id}`, label: x.name, detail: label(x.electionId), group: L('Saved scenarios', 'תרחישים שמורים') })),
       ...elections.filter((e) => e.available && e.id !== s.electionId && e.id !== prev?.id).map((e) => ({ value: `election:${e.id}`, label: `${label(e.id)} · ${official}`, group: L('Other elections', 'בחירות אחרות') })),
     ];
-  }, [elections, saved, swapped, lang, s.electionId, edited]); // eslint-disable-line react-hooks/exhaustive-deps -- L follows lang
+  }, [elections, saved, swapped, lang, s.electionId, edited, swappedEdited]); // eslint-disable-line react-hooks/exhaustive-deps -- L follows lang
 }
 
 /** The strip itself; nothing while comparing is off. */
