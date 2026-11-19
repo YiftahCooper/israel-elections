@@ -187,7 +187,11 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   const svgRef = useRef<SVGSVGElement>(null);
   // on a phone the arc fills the width without labels; the legend below names the lists instead
 
-  const [hover, setHover] = useState<{ seat: SeatInfo; anchor: Element } | null>(null);
+  // `touch`: opened by a tap, so the card itself offers the list (a tap does not open the list's sheet over it)
+  const [hover, setHover] = useState<{ seat: SeatInfo; anchor: Element; touch?: boolean } | null>(null);
+  // the last press on a seat was a finger (review V3 F13, 19 Nov 2026: on a touch phone a tap fired the hover and the
+  // click, and the click opened the list's full-screen sheet over the seat card, so no MK could be reached from a seat)
+  const touchPress = useRef(false);
   const seats = useMemo(() => seatOrder(s, r, colorBy, jointLook), [s, r, colorBy, jointLook]);
   const { base, result: br, labelReference } = useGraphicReference(s, reference);
   const changes = useMemo(() => changedSeatKeys(s, r, base, br), [s, r, base, br]);
@@ -223,10 +227,21 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
 
   const hoverBridge = useHoverIntent(() => setHover(null), !!hover);
   /** click and the keyboard open the seat card at once; a resting mouse opens it after the shared hover delay */
-  const onSeat = (st: SeatInfo, evt: React.MouseEvent | React.KeyboardEvent) => {
+  const onSeat = (st: SeatInfo, evt: React.MouseEvent | React.KeyboardEvent, touch = false) => {
     hoverBridge.keep();
     void loadTermRuntime();
-    setHover({ seat: st, anchor: evt.currentTarget });
+    setHover({ seat: st, anchor: evt.currentTarget, touch });
+  };
+  /** A seat pressed: a tap opens its card (a second tap on it closes it) and the card opens the list; a mouse click
+   *  selects the list, with the card at once where Popups on hover is off. */
+  const onSeatClick = (st: SeatInfo, evt: React.MouseEvent) => {
+    if (touchPress.current) { if (hover?.seat === st) setHover(null); else onSeat(st, evt, true); return; }
+    if (!hoverPopups) onSeat(st, evt);
+    setState({ selectedListId: selected === st.listId ? null : st.listId });
+  };
+  const seatPointer = {
+    onPointerDown: (e: React.PointerEvent) => { touchPress.current = e.pointerType === 'touch'; },
+    onMouseLeave: () => { if (!touchPress.current) hoverBridge.leave(); },
   };
   // The keyboard reaches the seats as one tab stop (the seat last focused); arrow keys move between seats in the order
   // they are drawn, left to right, also in Hebrew, since the chamber is never mirrored. Enter or Space opens the seat
@@ -485,8 +500,8 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           return (
             <g key={i} {...seatButton(i)}><circle className={`seat ${dim ? 'dim' : ''} ${i === found ? 'found' : ''}`} cx={cx + p.x * R} cy={cy + p.y * R} r={rad * R} fill={st.color}
               data-seat="" data-bloc={st.bloc ?? "__none"} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? "var(--ink)" : "var(--ink-2)"} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`) ? 4 : 1}
-              onMouseEnter={(e) => { if (hoverPopups) onSeatHover(st, e); }} onMouseLeave={hoverBridge.leave}
-              onClick={(e) => { if (!hoverPopups) onSeat(st, e); setState({ selectedListId: selected === st.listId ? null : st.listId }); }}><title>{seatLabel(st)}</title></circle>
+              onMouseEnter={(e) => { if (hoverPopups && !touchPress.current) onSeatHover(st, e); }} {...seatPointer}
+              onClick={(e) => onSeatClick(st, e)}><title>{seatLabel(st)}</title></circle>
             {st.innerColor && <PartyDot partyId={st.partyId} x={cx+p.x*R} y={cy+p.y*R} r={rad*R} color={st.innerColor} className={dim?'seat dim':'seat'}/>}
             </g>
           );
@@ -512,7 +527,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         const dim = dimOthers && selected && selected !== st.listId;
         return <g key={i} {...seatButton(i)}>
           <rect data-seat="" data-bloc={st.bloc ?? "__none"} className={`seat ${dim ? 'dim' : ''} ${i === found ? 'found' : ''}`} x={x} y={y} width={c} height={c} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--ink-2)'} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`)?4:1}
-            onMouseEnter={e => { if (hoverPopups) onSeatHover(st,e); }} onMouseLeave={hoverBridge.leave} onClick={e => { if (!hoverPopups) onSeat(st,e); setState({ selectedListId: selected === st.listId ? null : st.listId }); }}><title>{seatLabel(st)}</title></rect>
+            onMouseEnter={e => { if (hoverPopups && !touchPress.current) onSeatHover(st,e); }} {...seatPointer} onClick={e => onSeatClick(st, e)}><title>{seatLabel(st)}</title></rect>
           {st.innerColor && <PartyDot partyId={st.partyId} x={x+c/2} y={y+c/2} r={c/2} square={{rx:4}} color={st.innerColor} className={dim ? 'seat dim' : 'seat'}/>}
         </g>;
       })}
@@ -573,6 +588,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           <div className="muted small">{hover.seat.remainder ? remainderHow : L('Seat won by whole quota', 'מנדט שהושג במודד שלם')}</div>
           <MkSeatLink candidate={cand} />
           {!factLog(s).length && <SeatHolders electionId={s.electionId} candidate={cand} />}
+          {hover.touch && <button type="button" className="btn small" onClick={() => { setHover(null); setState({ selectedListId: hover.seat.listId }); }}>{L('List details', 'פרטי הרשימה')}</button>}
         </div></Floating>
       )}
       {hasChanges && referenceChamber && <div className="baseline-mini">
