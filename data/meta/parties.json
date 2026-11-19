@@ -478,7 +478,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k24.json",
-      "sha256": "7c55444f7dad0b73b81ff495221fa07a3a2bfad429ce7d41a0dbe71767fae9a2",
+      "sha256": "0bdc6fea2418bca37fd067132141e871ef4e02e4112e1d3a276a2e280b74fcaf",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -486,7 +486,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k25.json",
-      "sha256": "80adf61e905c4a9e61332324c9a01be95c154581b6ea1aaec758ca51fb46f909",
+      "sha256": "6441c4ce9758c903967d51e5d94238da053fe190a0ad8fafa66379945c9b15b7",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -494,7 +494,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k26.json",
-      "sha256": "bb26e840b0ea2a51e66f7d8166eddea9616c06e9305b23f49473b29ade176a0b",
+      "sha256": "bd36390806250c20b7d248d2a4c7eedaa9b24d1b55b89cf719de4cc6e1fcd0cc",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },

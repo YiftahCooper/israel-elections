@@ -721,6 +721,18 @@
    "confidence": "medium",
    "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"הליכוד בהנהגת בנימין נתניהו לראשות הממשלה\" shares \"בנימינ\""
   },
+  "25-מחל#47": {
+   "knessetPersonId": 30941,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1182",
+    "siteId": 1182,
+    "verified": "pattern"
+   },
+   "hewiki": null,
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 26 faction \"הליכוד עם בנימין נתניהו לראשות הממשלה\" shares \"בנימינ\""
+  },
   "25-מחל#48": {
    "knessetPersonId": 30703,
    "knesset": {
@@ -2073,6 +2085,18 @@
    "confidence": "medium",
    "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"העבודה\" shares \"העבודה\""
   },
+  "25-אמת#7": {
+   "knessetPersonId": 30929,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1173",
+    "siteId": 1173,
+    "verified": "pattern"
+   },
+   "hewiki": null,
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 26 faction of list אמת"
+  },
   "25-אמת#8": {
    "knessetPersonId": 30813,
    "knesset": {
@@ -2694,6 +2718,30 @@
    "party": null,
    "confidence": "high",
    "basis": "elected; Knesset 25 member, name identical (3)"
+  },
+  "25-עם#6": {
+   "knessetPersonId": 30996,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1167",
+    "siteId": 1167,
+    "verified": "pattern"
+   },
+   "hewiki": null,
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 26 faction of list עם"
+  },
+  "25-עם#73": {
+   "knessetPersonId": 30995,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1141",
+    "siteId": 1141,
+    "verified": "pattern"
+   },
+   "hewiki": null,
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 26 faction of list עם"
   },
   "25-עם#120": {
    "knessetPersonId": 30803,

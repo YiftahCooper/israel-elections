@@ -358,7 +358,10 @@ const EXPECTED: Record<Family, string> = {
   // transcribed. Seat counts are unchanged (the engine digest stands); only who holds them differs.
   // Replacement MKs linked (19 Nov, identity decisions): twelve candidates of 2006-2022 who entered mid-term gain their
   // Knesset name, English name and profile link (memberNameHe, nameEn, bio). Only those fields and builtAt differ.
-  model: 'f7a85d07e78fdf89fbb3a4810e101d95463f830039dc2d4bbb3d72f3f2ce8daa',
+  // 26th Knesset in English (19 Nov, Knesset site codes and English member pages): its 46 newcomers gain nameEn and
+  // their member page; six of their 2021/2022 candidacies gain the page by the existing name rule (medium). Only nameEn,
+  // bio and builtAt differ.
+  model: '5ded36e46a05b234ff0d22d9a3d1b142c99a04381ac282bead900e89d4a603f0',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

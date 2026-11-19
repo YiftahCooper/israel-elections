@@ -3338,11 +3338,11 @@
   "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_MkSiteCode",
   "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
   "official": true,
-  "description": "KNS_MkSiteCode: KnsID (= PersonID) to SiteId, the member id of the Knesset website (main.knesset.gov.il/mk/apps/mk/mk-personal-details/{SiteId}); 1,116 rows, one per person.",
+  "description": "KNS_MkSiteCode: KnsID (= PersonID) to SiteId, the member id of the Knesset website (main.knesset.gov.il/mk/apps/mk/mk-personal-details/{SiteId}); 1,162 rows, one per person (the 46 members first seated in the 26th Knesset added 19 Nov 2026).",
   "method": "http",
   "retrievedAt": "2026-11-04",
-  "bytes": 53784,
-  "sha256": "8530fbe65f436f21228559fc8cb275480b093817898ed8a70c2a0275aa38f891"
+  "bytes": 56130,
+  "sha256": "851110743680de5f1dc21220c858c6202cc9906960fa19c2838e8d87e4b8a67b"
  },
  {
   "id": "bios-knesset-site-names-en",
@@ -3350,12 +3350,12 @@
   "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkDetailsHeader?mkId={siteId}&languageKey=en",
   "publisher": "Knesset (official website, English member pages)",
   "official": true,
-  "description": "The English name (field Name) of every Knesset member the candidate bios link to, keyed by the Knesset website member id (KNS_MkSiteCode.SiteId); 1,116 members. The site shows each member's current name, which can differ from the name on an old ballot. Fetched by scripts/research/fetch-mk-names-en.py.",
+  "description": "The English name (field Name) of every Knesset member the candidate bios link to, keyed by the Knesset website member id (KNS_MkSiteCode.SiteId); 1,162 members (the 26th Knesset's 46 newcomers added 19 Nov 2026). The site shows each member's current name, which can differ from the name on an old ballot. Fetched by scripts/research/fetch-mk-names-en.py.",
   "method": "http",
   "retrievedAt": "2026-11-05",
   "note": "Hash and size re-recorded 12 Nov 2026 after two later edits: doubled spaces normalised with the site value kept as nameEnRaw (bc397d38, 6 Nov) and 66 more members fetched from the same API (470d78cf, 11 Nov).",
-  "bytes": 50362,
-  "sha256": "f07116ca402d916b33c79599ecfbfa2162344b0605356ac7a91f98eb64fbc3a6"
+  "bytes": 52457,
+  "sha256": "6e22ae7effa7b05fe3d56e1a85329991cbab08712cc1056bcb83ab599f1507ad"
  },
  {
   "id": "bios-wikidata-p9770",

@@ -2373,6 +2373,18 @@
    "confidence": "medium",
    "basis": "not elected; identical name, the only person with it who served as MK; Knesset 26 faction \"הרשימה המשותפת\" shares \"המשותפת\"; surname unique among MKs"
   },
+  "24-ודעם#81": {
+   "knessetPersonId": 30993,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1143",
+    "siteId": 1143,
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
+   },
+   "hewiki": null,
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 26 faction \"הרשימה המשותפת\" shares \"המשותפת\"; surname unique among MKs"
+  },
   "24-ודעם#116": {
    "knessetPersonId": 30714,
    "knesset": {
@@ -2802,6 +2814,18 @@
    "party": null,
    "confidence": "medium",
    "basis": "not elected; identical name, the only person with it who served as MK; Knesset 25 faction of list עם"
+  },
+  "24-עם#71": {
+   "knessetPersonId": 30995,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1141",
+    "siteId": 1141,
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
+   },
+   "hewiki": null,
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 26 faction of list עם; surname unique among MKs"
   },
   "24-רף#1": {
    "knessetPersonId": 4418,

@@ -40,10 +40,10 @@ doubtful cases are listed here.
 | k21 2019 | 1,580 | 203 | 120/120 | 55 | 199 (24) | 38 | 76 |
 | k22 2019 | 1,205 | 191 | 120/120 | 57 | 189 (14) | 0 | 69 |
 | k23 2020 | 1,097 | 173 | 120/120 | 51 | 170 (2) | 0 | 35 |
-| k24 2021 | 1,406 | 178 | 120/120 | 51 | 173 (7) | 0 | 30 |
-| k25 2022 | 1,420 | 195 | 120/120 | 63 | 185 (12) | 0 | 64 |
-| k26 2026 | 1,351 | 166 | 74/120 | 47 | 124 (9) | 76 | 65 |
-| **all** | 15,641 | 3,807 | 3,074/3,120 | 540 | 3,736 (148) | 164 | 566 |
+| k24 2021 | 1,406 | 180 | 120/120 | 53 | 173 (7) | 0 | 32 |
+| k25 2022 | 1,420 | 199 | 120/120 | 67 | 185 (12) | 0 | 68 |
+| k26 2026 | 1,351 | 194 | 120/120 | 47 | 124 (9) | 76 | 65 |
+| **all** | 15,641 | 3,841 | 3,120/3,120 | 546 | 3,736 (148) | 164 | 572 |
 <!-- coverage:end -->
 
 Elected members: 3,118 of 3,120 are tied to a Knesset PersonID and 3,071 have a Knesset page link. The gap is the 47 new members of the 26th Knesset (PersonID known, no website id yet) and the two members left out below. "Other MKs" are non-elected candidates who served as MKs (replacements, or MKs of other Knessets). "Medium" counts entries with at least one medium-confidence link.

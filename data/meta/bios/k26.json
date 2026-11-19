@@ -199,7 +199,11 @@
   },
   "26-מחל#9": {
    "knessetPersonId": 30935,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1147",
+    "siteId": 1147,
+    "verified": "pattern"
+   },
    "hewiki": {
     "title": "טלי גואילי",
     "url": "https://he.wikipedia.org/wiki/%D7%98%D7%9C%D7%99_%D7%92%D7%95%D7%90%D7%99%D7%9C%D7%99",
@@ -243,7 +247,11 @@
   },
   "26-מחל#11": {
    "knessetPersonId": 30936,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1146",
+    "siteId": 1146,
+    "verified": "pattern"
+   },
    "hewiki": {
     "title": "יעקב ברדוגו",
     "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A2%D7%A7%D7%91_%D7%91%D7%A8%D7%93%D7%95%D7%92%D7%95",
@@ -333,7 +341,11 @@
   },
   "26-מחל#15": {
    "knessetPersonId": 30938,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1165",
+    "siteId": 1165,
+    "verified": "pattern"
+   },
    "hewiki": {
     "title": "אלישע מדן",
     "url": "https://he.wikipedia.org/wiki/%D7%90%D7%9C%D7%99%D7%A9%D7%A2_%D7%9E%D7%93%D7%9F",
@@ -353,7 +365,11 @@
   },
   "26-מחל#16": {
    "knessetPersonId": 30939,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1172",
+    "siteId": 1172,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": {
     "url": "https://www.likud.org.il/#leadership",
@@ -609,7 +625,11 @@
   },
   "26-מחל#27": {
    "knessetPersonId": 30941,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1182",
+    "siteId": 1182,
+    "verified": "pattern"
+   },
    "hewiki": {
     "title": "ארז תדמור (איש תקשורת)",
     "url": "https://he.wikipedia.org/wiki/%D7%90%D7%A8%D7%96_%D7%AA%D7%93%D7%9E%D7%95%D7%A8_(%D7%90%D7%99%D7%A9_%D7%AA%D7%A7%D7%A9%D7%95%D7%A8%D7%AA)",
@@ -957,7 +977,11 @@
   },
   "26-ב#7": {
    "knessetPersonId": 30981,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1151",
+    "siteId": 1151,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -1209,7 +1233,11 @@
   },
   "26-ג#5": {
    "knessetPersonId": 30953,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1175",
+    "siteId": 1175,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -1217,7 +1245,11 @@
   },
   "26-ג#6": {
    "knessetPersonId": 30954,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1178",
+    "siteId": 1178,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -1225,7 +1257,11 @@
   },
   "26-ג#7": {
    "knessetPersonId": 30955,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1155",
+    "siteId": 1155,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -1361,7 +1397,11 @@
   },
   "26-ט#5": {
    "knessetPersonId": 30947,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1166",
+    "siteId": 1166,
+    "verified": "pattern"
+   },
    "hewiki": {
     "title": "צביקה מור",
     "url": "https://he.wikipedia.org/wiki/%D7%A6%D7%91%D7%99%D7%A7%D7%94_%D7%9E%D7%95%D7%A8",
@@ -1373,7 +1413,11 @@
   },
   "26-ט#6": {
    "knessetPersonId": 30948,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1140",
+    "siteId": 1140,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": {
     "url": "https://zionutdatit.org.il/moamadim/",
@@ -1481,7 +1525,11 @@
   },
   "26-דרך#2": {
    "knessetPersonId": 30957,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1162",
+    "siteId": 1162,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -1505,7 +1553,11 @@
   },
   "26-דרך#4": {
    "knessetPersonId": 30958,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1142",
+    "siteId": 1142,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -1547,7 +1599,11 @@
   },
   "26-דרך#7": {
    "knessetPersonId": 30959,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1168",
+    "siteId": 1168,
+    "verified": "pattern"
+   },
    "hewiki": {
     "title": "שאול מרידור",
     "url": "https://he.wikipedia.org/wiki/%D7%A9%D7%90%D7%95%D7%9C_%D7%9E%D7%A8%D7%99%D7%93%D7%95%D7%A8",
@@ -1559,7 +1615,11 @@
   },
   "26-דרך#8": {
    "knessetPersonId": 30960,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1139",
+    "siteId": 1139,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -1567,7 +1627,11 @@
   },
   "26-דרך#9": {
    "knessetPersonId": 30961,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1150",
+    "siteId": 1150,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -1575,7 +1639,11 @@
   },
   "26-דרך#10": {
    "knessetPersonId": 30962,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1180",
+    "siteId": 1180,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -1583,7 +1651,11 @@
   },
   "26-דרך#11": {
    "knessetPersonId": 30963,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1154",
+    "siteId": 1154,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -1607,7 +1679,11 @@
   },
   "26-דרך#13": {
    "knessetPersonId": 30964,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1136",
+    "siteId": 1136,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -1615,7 +1691,11 @@
   },
   "26-דרך#14": {
    "knessetPersonId": 30965,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1144",
+    "siteId": 1144,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -1623,7 +1703,11 @@
   },
   "26-דרך#15": {
    "knessetPersonId": 30966,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1177",
+    "siteId": 1177,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -1631,7 +1715,11 @@
   },
   "26-דרך#16": {
    "knessetPersonId": 30967,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1161",
+    "siteId": 1161,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -1655,7 +1743,11 @@
   },
   "26-דרך#18": {
    "knessetPersonId": 30968,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1158",
+    "siteId": 1158,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -1663,7 +1755,11 @@
   },
   "26-דרך#19": {
    "knessetPersonId": 30969,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1138",
+    "siteId": 1138,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -1671,7 +1767,11 @@
   },
   "26-דרך#20": {
    "knessetPersonId": 30970,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1174",
+    "siteId": 1174,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -1679,7 +1779,11 @@
   },
   "26-דרך#21": {
    "knessetPersonId": 30971,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1159",
+    "siteId": 1159,
+    "verified": "pattern"
+   },
    "hewiki": {
     "title": "יפה טבג'ה",
     "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A4%D7%94_%D7%98%D7%91%D7%92%27%D7%94",
@@ -1755,7 +1859,11 @@
   },
   "26-אמת#5": {
    "knessetPersonId": 30929,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1173",
+    "siteId": 1173,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -1779,7 +1887,11 @@
   },
   "26-אמת#7": {
    "knessetPersonId": 30930,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1176",
+    "siteId": 1176,
+    "verified": "pattern"
+   },
    "hewiki": {
     "title": "עמרי רונן (פעיל חברתי)",
     "url": "https://he.wikipedia.org/wiki/%D7%A2%D7%9E%D7%A8%D7%99_%D7%A8%D7%95%D7%A0%D7%9F_(%D7%A4%D7%A2%D7%99%D7%9C_%D7%97%D7%91%D7%A8%D7%AA%D7%99)",
@@ -1971,7 +2083,11 @@
   },
   "26-רק#3": {
    "knessetPersonId": 30924,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1160",
+    "siteId": 1160,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -2003,7 +2119,11 @@
   },
   "26-רק#5": {
    "knessetPersonId": 30925,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1137",
+    "siteId": 1137,
+    "verified": "pattern"
+   },
    "hewiki": {
     "title": "לירן אבישר בן חורין",
     "url": "https://he.wikipedia.org/wiki/%D7%9C%D7%99%D7%A8%D7%9F_%D7%90%D7%91%D7%99%D7%A9%D7%A8_%D7%91%D7%9F_%D7%97%D7%95%D7%A8%D7%99%D7%9F",
@@ -2015,7 +2135,11 @@
   },
   "26-רק#6": {
    "knessetPersonId": 30926,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1183",
+    "siteId": 1183,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -2023,7 +2147,11 @@
   },
   "26-רק#7": {
    "knessetPersonId": 30927,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1153",
+    "siteId": 1153,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -2071,7 +2199,11 @@
   },
   "26-רק#10": {
    "knessetPersonId": 30928,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1179",
+    "siteId": 1179,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -2079,7 +2211,11 @@
   },
   "26-רק#11": {
    "knessetPersonId": 30990,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1169",
+    "siteId": 1169,
+    "verified": "pattern"
+   },
    "hewiki": {
     "title": "ברוריה נעים ארמן",
     "url": "https://he.wikipedia.org/wiki/%D7%91%D7%A8%D7%95%D7%A8%D7%99%D7%94_%D7%A0%D7%A2%D7%99%D7%9D_%D7%90%D7%A8%D7%9E%D7%9F",
@@ -2366,7 +2502,11 @@
   },
   "26-ל#2": {
    "knessetPersonId": 30997,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1145",
+    "siteId": 1145,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": {
     "url": "https://beytenu.org.il/kneset-member/%D7%A8%D7%A4%D7%99-%D7%91%D7%9F-%D7%A9%D7%98%D7%A8%D7%99%D7%AA/",
@@ -2381,7 +2521,11 @@
   },
   "26-ל#3": {
    "knessetPersonId": 30974,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1164",
+    "siteId": 1164,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": {
     "url": "https://beytenu.org.il/kneset-member/%D7%98%D7%9C%D7%99%D7%94-%D7%9C%D7%A0%D7%A7%D7%A8%D7%99/",
@@ -2442,7 +2586,11 @@
   },
   "26-ל#6": {
    "knessetPersonId": 30975,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1181",
+    "siteId": 1181,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": {
     "url": "https://beytenu.org.il/kneset-member/%D7%A9%D7%A8%D7%95%D7%9F-%D7%A9%D7%A8%D7%A2%D7%91%D7%99/",
@@ -2779,7 +2927,11 @@
   },
   "26-עם#7": {
    "knessetPersonId": 30995,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1141",
+    "siteId": 1141,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -2787,7 +2939,11 @@
   },
   "26-עם#8": {
    "knessetPersonId": 30996,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1167",
+    "siteId": 1167,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -2835,7 +2991,11 @@
   },
   "26-ודם#3": {
    "knessetPersonId": 30949,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1149",
+    "siteId": 1149,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": {
     "url": "https://hadash.org.il/list",
@@ -2851,7 +3011,11 @@
   },
   "26-ודם#4": {
    "knessetPersonId": 30950,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1170",
+    "siteId": 1170,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -2907,7 +3071,11 @@
   },
   "26-ודם#7": {
    "knessetPersonId": 30951,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1163",
+    "siteId": 1163,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -2915,7 +3083,11 @@
   },
   "26-ודם#8": {
    "knessetPersonId": 30991,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1152",
+    "siteId": 1152,
+    "verified": "pattern"
+   },
    "hewiki": {
     "title": "אחמד דראושה",
     "url": "https://he.wikipedia.org/wiki/%D7%90%D7%97%D7%9E%D7%93_%D7%93%D7%A8%D7%90%D7%95%D7%A9%D7%94",
@@ -2927,7 +3099,11 @@
   },
   "26-ודם#9": {
    "knessetPersonId": 30992,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1156",
+    "siteId": 1156,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": {
     "url": "https://hadash.org.il/list",
@@ -2943,7 +3119,11 @@
   },
   "26-ודם#10": {
    "knessetPersonId": 30993,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1143",
+    "siteId": 1143,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
@@ -2951,7 +3131,11 @@
   },
   "26-ודם#11": {
    "knessetPersonId": 30994,
-   "knesset": null,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1157",
+    "siteId": 1157,
+    "verified": "pattern"
+   },
    "hewiki": null,
    "party": null,
    "confidence": "high",
