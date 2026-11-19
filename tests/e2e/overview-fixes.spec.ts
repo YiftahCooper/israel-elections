@@ -40,7 +40,8 @@ test('1977 counted by party: the key and the Hadash rows add up to every seat, t
   // one swatch type: every key row starts with a seat dot, in chamber order (Likud 40 before Shinui 2 in 1988)
   await expect(page.locator('.chamber .legend button:not(.key-group-head):not(:has(.component-key))')).toHaveCount(0);
   await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k12');
-  const names = await page.locator('.chamber .legend button').allTextContents();
+  // the names as read out: a list's ballot-letter mark beside a name is hidden from the reading
+  const names = await page.locator('.chamber .legend button').evaluateAll(bs => bs.map(b => { const c = b.cloneNode(true) as Element; c.querySelectorAll('[aria-hidden="true"]').forEach(x => x.remove()); return c.textContent!.trim(); }));
   expect(names.findIndex(n => n.startsWith('Likud'))).toBeLessThan(names.findIndex(n => n.startsWith('Shinui')));
 });
 
