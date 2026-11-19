@@ -13,7 +13,7 @@ import { X } from 'lucide-react';
 import type { ElectionDataset } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
-import { blocPieces, comparisonGroups, groupingLabel, listLabel, officialSeatsFor } from '../derive.ts';
+import { blocPieces, comparisonGroups, groupingLabel, listLabel, officialSeatsFor, seeksMajority } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { setState, useStore } from '../store.ts';
 import { ListDetail } from './ListDetail.tsx';
@@ -82,7 +82,7 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
       <div className="phone-result-strip" role="status">
         <span>{d !== 0 ? <><bdi dir="ltr"><SeatDelta value={d} /></bdi> </> : L('No change ', 'ללא שינוי ')}{baseLabel.since}{changed > 0 && <> · {(changed === 1 ? L('1 list changed seats', 'רשימה אחת שינתה מנדטים') : L(`${changed} lists changed seats`, `${changed} רשימות שינו מנדטים`))}</>}</span>
         <span className="tiny muted">{groupingLabel(s, lang)}</span>
-        {blocs.map(b => <span key={b.id} title={b.appDefined ? appGroupingExplanation(lang) : undefined}>{groupingName(b, lang, s.blocSchemes?.find(g => g.id === s.blocSchemeId))}: <Majority n={pieces.filter(p => p.bloc === b.id).reduce((n,p) => n+p.n,0)} total={s.rules.seats} /></span>)}
+        {blocs.map(b => <span key={b.id} title={b.appDefined ? appGroupingExplanation(lang) : undefined}>{groupingName(b, lang, s.blocSchemes?.find(g => g.id === s.blocSchemeId))}: <Majority n={pieces.filter(p => p.bloc === b.id).reduce((n,p) => n+p.n,0)} total={s.rules.seats} side={seeksMajority(b.id)} /></span>)}
         {!assignedBlocs.length && <span>{L('No bloc assigned', 'ללא שיוך לגוש')}</span>}
       </div>
       <SidePanelCompare s={s} r={r} listId={listId} />

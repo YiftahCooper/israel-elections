@@ -11,7 +11,7 @@ import { useEffect, useMemo, useRef } from 'react';
 import { Pencil } from 'lucide-react';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
-import { blocPieces, groupingBaseline, allocationOf, referenceLabel, groupingLabel, majorityText } from '../derive.ts';
+import { blocPieces, groupingBaseline, allocationOf, referenceLabel, groupingLabel, majorityText, seeksMajority } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { setState, useSetting, useStore } from '../store.ts';
 import { Info } from './ui.tsx';
@@ -76,11 +76,11 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
       <div ref={stripRef} className={`strip ${namesFit ? '' : 'names-below'}`} data-names={namesFit ? 'in-bands' : 'below'} role="group" aria-label={`${groupingLabel(s, lang)}: ${groups.map(g => `${g.contextLabel} ${g.n}`).join(', ')}`}>
         {groups.map((g) => (
           <button key={g.key} type="button" className={`corridor ${g.id === null ? "no-bloc" : ""}`} style={{ flexGrow: g.n, flexBasis: 0, ['--bc' as string]: g.color }}
-            aria-pressed={panel === g.key} title={(g.appDefined ? appGroupingExplanation(lang) + " " : "") + L(`${g.label}: ${g.n}${g.id !== null ? ` (${consequence(g.n)})` : ''}. Edit this bloc`, `${g.label}: ${g.n}${g.id !== null ? ` (${consequence(g.n)})` : ''}. עריכת הגוש`)} onClick={() => openPanel(g.key)}>
+            aria-pressed={panel === g.key} title={(g.appDefined ? appGroupingExplanation(lang) + " " : "") + L(`${g.label}: ${g.n}${seeksMajority(g.id) ? ` (${consequence(g.n)})` : ''}. Edit this bloc`, `${g.label}: ${g.n}${seeksMajority(g.id) ? ` (${consequence(g.n)})` : ''}. עריכת הגוש`)} onClick={() => openPanel(g.key)}>
             <span className="pieces" aria-hidden>
               {g.pieces.map((p, i) => <i key={i} className={selected && selected !== p.listId ? 'dim' : ''} style={{ flexGrow: p.n, background: jointLook !== 'list' && (s.factionSplits ?? []).includes(p.listId) ? p.color : s.lists.find(l=>l.id===p.listId)?.color ?? p.color, marginInlineStart: i && jointLook !== 'list' && g.pieces[i - 1].listId === p.listId && (s.factionSplits ?? []).includes(p.listId) ? 2 : undefined }} />)}
             </span>
-            <span className="label"><span className="clip">{g.shortLabel}</span>{g.showMarker && <small className="app-grouping-tag">· {appGroupingTag(lang)}</small>} <b key={g.n >= majority ? 'majority' : 'minority'} className={g.id !== null && previous.current.election === s.electionId && previous.current.scheme === s.blocSchemeId && previous.current.seats.has(g.id) && ((previous.current.seats.get(g.id)! >= majority) !== (g.n >= majority)) ? 'tick' : ''}>{g.n}</b>{g.id !== null && <> <bdi className="consequence">{consequence(g.n)}</bdi></>}{g.n >= majority && <span className="sr-only">{L(' (majority)', ' (רוב)')}</span>}</span>
+            <span className="label"><span className="clip">{g.shortLabel}</span>{g.showMarker && <small className="app-grouping-tag">· {appGroupingTag(lang)}</small>} <b key={g.n >= majority ? 'majority' : 'minority'} className={g.id !== null && previous.current.election === s.electionId && previous.current.scheme === s.blocSchemeId && previous.current.seats.has(g.id) && ((previous.current.seats.get(g.id)! >= majority) !== (g.n >= majority)) ? 'tick' : ''}>{g.n}</b>{seeksMajority(g.id) && <> <bdi className="consequence">{consequence(g.n)}</bdi></>}{g.n >= majority && <span className="sr-only">{L(' (majority)', ' (רוב)')}</span>}</span>
           </button>
         ))}
         <span className="milestone" aria-hidden style={{ left: `${(majority / total) * 100}%` }}><span>{majority}</span></span>
@@ -88,7 +88,7 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
       <RefBlocs s={s} />
       {/* when a band is too short for its whole name (always on narrow screens), the names are listed in full beneath */}
       <div className={`strip-legend ${namesFit ? '' : 'shown'}`} aria-hidden>
-        {groups.map((g) => <span key={g.key} title={g.appDefined ? appGroupingExplanation(lang) : undefined}><span className={`swatch bloc-swatch ${g.id === null ? 'unassigned' : ''}`} style={{ ['--bc' as string]: g.color }} />{g.contextLabel} <b key={g.n >= majority ? 'majority' : 'minority'} className={g.id !== null && previous.current.election === s.electionId && previous.current.scheme === s.blocSchemeId && previous.current.seats.has(g.id) && ((previous.current.seats.get(g.id)! >= majority) !== (g.n >= majority)) ? 'tick' : ''}>{g.n}</b>{g.id !== null && <> <bdi className="consequence">{consequence(g.n)}</bdi></>}</span>)}
+        {groups.map((g) => <span key={g.key} title={g.appDefined ? appGroupingExplanation(lang) : undefined}><span className={`swatch bloc-swatch ${g.id === null ? 'unassigned' : ''}`} style={{ ['--bc' as string]: g.color }} />{g.contextLabel} <b key={g.n >= majority ? 'majority' : 'minority'} className={g.id !== null && previous.current.election === s.electionId && previous.current.scheme === s.blocSchemeId && previous.current.seats.has(g.id) && ((previous.current.seats.get(g.id)! >= majority) !== (g.n >= majority)) ? 'tick' : ''}>{g.n}</b>{seeksMajority(g.id) && <> <bdi className="consequence">{consequence(g.n)}</bdi></>}</span>)}
       </div>
     </section>
   );

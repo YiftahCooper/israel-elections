@@ -224,22 +224,28 @@ export interface BlocPiece { bloc: string | null; listId: string; partyId: strin
 
 /** Seats grouped by bloc (in the scenario's bloc order, unassigned last), then by list order, then party. */
 export function blocPieces(s: Scenario, r: AllocationResult): BlocPiece[] {
-  const pieces: BlocPiece[] = [];
-  for (const l of s.lists) {
+  // one entry per seat; within a list and bloc, a party's seats sit together in the list's party order, as on the
+  // seat chart (Hemicycle seatOrder), so a joint list never reads as a barcode of its parties (V1 F3)
+  const seatsIn: { bloc: string | null; listId: string; partyId: string | null; color: string; list: number; party: number; k: number }[] = [];
+  s.lists.forEach((l, li) => {
     const seats = r.lists.find((x) => x.id === l.id)?.seats ?? 0;
-    if (!seats) continue;
+    if (!seats) return;
     const blocs = seatBlocsOf(s, l, seats);
     const elected = electedOf(l, seats);
     blocs.forEach((b, i) => {
       const partyId = elected[i]?.partyId ?? null;
-      const party = partyId ? l.parties?.find((p) => p.id === partyId) : undefined;
-      const last = pieces[pieces.length - 1];
-      if (last && last.listId === l.id && last.bloc === b && last.partyId === partyId) last.n++;
-      else pieces.push({ bloc: b, listId: l.id, partyId, color: party ? partyDisplayColor(l, party.id) : l.color, n: 1 });
+      const partyIndex = partyId ? l.parties?.findIndex((p) => p.id === partyId) ?? -1 : -1;
+      seatsIn.push({ bloc: b, listId: l.id, partyId, color: partyIndex >= 0 ? partyDisplayColor(l, partyId!) : l.color, list: li, party: partyIndex, k: seatsIn.length });
     });
-  }
+  });
   const rank = (b: string | null) => { const i = s.blocs.findIndex((x) => x.id === b); return i < 0 ? s.blocs.length : i; };
-  return pieces.map((p, i) => ({ p, i })).sort((a, b) => rank(a.p.bloc) - rank(b.p.bloc) || a.i - b.i).map(({ p }) => p);
+  const pieces: BlocPiece[] = [];
+  for (const x of seatsIn.sort((a, b) => rank(a.bloc) - rank(b.bloc) || a.list - b.list || a.party - b.party || a.k - b.k)) {
+    const last = pieces[pieces.length - 1];
+    if (last && last.listId === x.listId && last.bloc === x.bloc && last.partyId === x.partyId) last.n++;
+    else pieces.push({ bloc: x.bloc, listId: x.listId, partyId: x.partyId, color: x.color, n: 1 });
+  }
+  return pieces;
 }
 
 /** Who holds seats in the Knesset as factions: one entry per list, except a joint list whose faction has split
@@ -314,9 +320,15 @@ export function groupingLabel(s: Scenario, lang: Lang): string {
 }
 export function majorityText(n: number, total: number, lang: Lang): string {
   const m = Math.floor(total / 2) + 1;
-  return lang === 'he' ? `${n} / ${total} · ${n < m ? `חסרים ${m-n} ל־${m}` : `${n-m} מעל ${m}`}`
-    : `${n} / ${total} · ${n < m ? `${m-n} short of ${m}` : `${n-m} above ${m}`}`;
+  // a bare majority is said as such, never "0 above 61"
+  return lang === 'he' ? `${n} / ${total} · ${n < m ? `חסרים ${m-n} ל־${m}` : n === m ? `בדיוק ${m}` : `${n-m} מעל ${m}`}`
+    : `${n} / ${total} · ${n < m ? `${m-n} short of ${m}` : n === m ? `exactly ${m}` : `${n-m} above ${m}`}`;
 }
+/** Groups of a sourced grouping that are not a side seeking a majority: lists that supported a government from
+ *  outside, abstained by arrangement or voted confidence only, and recommendation groups such as "No
+ *  recommendation" or "Not stated in source". How far such a group is from 61 means nothing, so it is not shown. */
+const NOT_A_SIDE = new Set(['outside-support', 'abstained-by-arrangement', 'confidence-vote-only', 'none', 'unstated', 'other', 'not-invited', 'rest']);
+export function seeksMajority(blocId: string | null): boolean { return blocId !== null && !NOT_A_SIDE.has(blocId); }
 
 export function nonSeatChanges(s: Scenario, base: Scenario, lang: Lang): string[] {
   const he = lang === 'he';
