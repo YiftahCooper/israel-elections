@@ -6,11 +6,12 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 import { compileMkHistory, type MkReview } from '../scripts/mk-history-runtime.ts';
 import { mkView, type MkRuntime } from '../src/history/mk.ts';
-import { MkKey } from '../src/app/components/MkHistory.tsx';
+import { MkKey, Result } from '../src/app/components/MkHistory.tsx';
 
 const rt = compileMkHistory(process.cwd(), { leftOut: [], anomalies: [] } as MkReview) as unknown as MkRuntime;
 const byRun = (list: string, rank: number) => Number(Object.entries(rt.people).find(([, p]) => p.runs.some((r) => r[1] === list && r[2] === rank))![0]);
 const byName = (he: string) => Number(Object.entries(rt.people).find(([, p]) => p.he === he)![0]);
+const infoButtons = (html: string) => (html.match(/<button/g) ?? []).length;
 
 describe('MK history card', () => {
   it('the key explains numbered marks only on a card that has them, and with no number', () => {
@@ -27,4 +28,17 @@ describe('MK history card', () => {
     expect(seen.without).toBeGreaterThan(0);
   });
 
+  it('an official note and how the list is linked share one (i)', () => {
+    let both = 0;
+    for (const [id, p] of Object.entries(rt.people)) {
+      for (const run of p.runs) {
+        const v = mkView(rt, Number(id))!, r = v.rows.find((x) => x.k === run[0])!;
+        if (!r.run?.notes.length || !(r.run.basis === 'name' && r.run.via || r.run.research?.length)) continue;
+        both++;
+        const html = renderToStaticMarkup(createElement(Result, { r, v }));
+        expect(infoButtons(html), `${p.he} ${run[1]}#${run[2]}`).toBe(1);
+      }
+    }
+    expect(both).toBeGreaterThanOrEqual(2); // 2026 Shas Nos. 7 and 15 (Abutbul, Moshiashvili) at least
+  });
 });

@@ -214,19 +214,25 @@ function EventSource({ e }: { e: MkEvent }) {
   return <Info title={kind} label={L('Source', 'מקור')}><span className="mk-src">{e.sources.map(([pub, url]) => <a key={url} href={url} target="_blank" rel="noreferrer">{publisherIn(lang, pub)}</a>)}</span></Info>;
 }
 
-function Result({ r, v }: { r: MkRow; v: MkView }) {
+export function Result({ r, v }: { r: MkRow; v: MkView }) {
   const L = useL(), lang = useLang();
   const run = r.run, f = v.gender, e = pro(f);
-  const notes = run?.notes.length ? <Info title={L('Official note', 'הערה רשמית')}>{run.notes.map(([en, he], i) => <span key={i} className="mk-why">{lang === 'he' ? he : en}</span>)}</Info> : null;
-  const basis = run?.basis === 'name' && run.via ? <Info title={L('How this list is linked', 'איך הרשימה מקושרת')}>{L(
+  const noteText = run?.notes.length ? run.notes.map(([en, he], i) => <span key={i} className="mk-why">{lang === 'he' ? he : en}</span>) : null;
+  const basisText = run?.basis === 'name' && run.via ? <span className="mk-why">{L(
     `The list has this name letter for letter, as on the list of ${monthYear(v.rows.find((x) => x.k === run.via)?.electionDate ?? '', 'en')}, where the Knesset member ID identifies ${e.o}. No other member of the Knesset has this name.`,
-    `השם ברשימה זהה, אות באות, לשם ברשימה של ${monthYear(v.rows.find((x) => x.k === run.via)?.electionDate ?? '', 'he')}, ${g(f, 'שבה מספר חבר הכנסת מזהה אותו', 'שבה מספר חבר הכנסת מזהה אותה', 'שבה הזיהוי לפי מספר חבר הכנסת')}. לאף חבר כנסת אחר אין שם זה.`)}</Info> : null;
+    `השם ברשימה זהה, אות באות, לשם ברשימה של ${monthYear(v.rows.find((x) => x.k === run.via)?.electionDate ?? '', 'he')}, ${g(f, 'שבה מספר חבר הכנסת מזהה אותו', 'שבה מספר חבר הכנסת מזהה אותה', 'שבה הזיהוי לפי מספר חבר הכנסת')}. לאף חבר כנסת אחר אין שם זה.`)}</span> : null;
   // a run that research tied to the person: the sources that tie it (owner, 16 Nov 2026), instead of the name rule
-  const researched = run?.research?.length ? <Info title={L('How this list is linked', 'איך הרשימה מקושרת')} label={L('Source', 'מקור')}>
+  const researchText = run?.research?.length ? <>
     <span className="mk-why">{L(`A report or biography from the time names ${e.o} on this list:`, `דיווח או ביוגרפיה מאותה עת ${g(f, 'מציינים אותו', 'מציינים אותה', 'מזכירים את השם')} ברשימה זו:`)}</span>
     <span className="mk-src">{run.research.map(([pub, url]) => <a key={url} href={url} target="_blank" rel="noreferrer" hrefLang={/he\.wikipedia\.org/.test(url) ? 'he' : undefined}>{/he\.wikipedia\.org/.test(url) ? L('Hebrew Wikipedia (a secondary source)', 'ויקיפדיה העברית (מקור משני)') : publisherIn(lang, pub)}</a>)}</span>
-  </Info> : null;
-  const linked = researched ?? basis;
+  </> : null;
+  const linkText = researchText ?? basisText;
+  const linkTitle = L('How this list is linked', 'איך הרשימה מקושרת');
+  const notes = noteText ? <Info title={L('Official note', 'הערה רשמית')}>{noteText}</Info> : null;
+  const linked = linkText ? <Info title={linkTitle} label={researchText ? L('Source', 'מקור') : undefined}>{linkText}</Info> : null;
+  // the official note and how the list is linked share one (i): two identical buttons side by side could not be told
+  // apart (review D2, 19 Nov 2026: Abutbul, Moshiashvili, Deri and Amos in 2026)
+  const notesAndLink = noteText && linkText ? <Info title={L('Official note', 'הערה רשמית')}>{noteText}<b className="mk-why mk-info-sub">{linkTitle}</b>{linkText}</Info> : (notes ?? linked);
   if (!run) {
     const t = r.terms[0];
     return <span>{t && t.start !== r.opening ? L(`Entered on ${formatDate(t.start, 'en')}`, `${g(f, 'נכנס', 'נכנסה', 'כניסה')} ב־${formatDate(t.start, 'he')}`) : L('Sat from the first sitting', g(f, 'כיהן מהישיבה הראשונה', 'כיהנה מהישיבה הראשונה', 'כהונה מהישיבה הראשונה'))}</span>;
@@ -235,7 +241,7 @@ function Result({ r, v }: { r: MkRow; v: MkView }) {
     case 'elected': return <span>{L('Elected', g(f, 'נבחר', 'נבחרה', 'בין הנבחרים'))}</span>;
     case 'first': return <span>{L('Sat from the first sitting', g(f, 'כיהן מהישיבה הראשונה', 'כיהנה מהישיבה הראשונה', 'כהונה מהישיבה הראשונה'))} {notes}</span>;
     case 'later': return <span>{L(`Entered on ${formatDate(r.terms[0]?.start ?? '', 'en')}`, `${g(f, 'נכנס', 'נכנסה', 'כניסה')} ב־${formatDate(r.terms[0]?.start ?? '', 'he')}`)}</span>;
-    case 'declined': return <span>{L('Elected; did not sit', g(f, 'נבחר; לא כיהן', 'נבחרה; לא כיהנה', 'בין הנבחרים; ללא כהונה'))} {notes}{linked}</span>;
+    case 'declined': return <span>{L('Elected; did not sit', g(f, 'נבחר; לא כיהן', 'נבחרה; לא כיהנה', 'בין הנבחרים; ללא כהונה'))} {notesAndLink}</span>;
     case 'withdrawn': return <span className="mk-out">{L('The list withdrew before the election', 'הרשימה פרשה לפני הבחירות')} {linked}</span>;
     default: {
       const short = run.rank - run.seats;
@@ -243,7 +249,7 @@ function Result({ r, v }: { r: MkRow; v: MkView }) {
         ? L(`The list got ${run.share}%, below the ${run.threshold}% threshold`, `הרשימה קיבלה ${run.share}%, מתחת לאחוז החסימה (${run.threshold}%)`)
         : run.seats === 0 ? L('The list won no seats', 'הרשימה לא זכתה במנדטים')
         : L(short === 1 ? '1 place short' : `${short} places short`, short === 1 ? 'חסר מקום אחד' : `חסרו ${short} מקומות`);
-      return <span className="mk-out">{L('Not elected', g(f, 'לא נבחר', 'לא נבחרה', 'לא בין הנבחרים'))} {notes}{linked}<span className="tiny ink2 mk-block">{sub}</span></span>;
+      return <span className="mk-out">{L('Not elected', g(f, 'לא נבחר', 'לא נבחרה', 'לא בין הנבחרים'))} {notesAndLink}<span className="tiny ink2 mk-block">{sub}</span></span>;
     }
   }
 }

@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- MK history, one (i) per result (19 Nov): a "Not elected" or "Elected; did not sit" row with both an official note and a note on how the list is linked (2026 Shas: Aryeh Deri, Dror David Amos, Moshe Abutbul, Moshe Moshiashvili) had two identical (i) side by side; one (i) now holds both.
 - MK history key (19 Nov): the line that explains numbered event marks appears only on a card that has one, and is drawn without a number, so it no longer reads as "only event 1 is this".
 - Custom comes back as built (19 Nov): Custom remembers the complexity it was built on, so after a visit to Simple or Expert, choosing Custom again gives back the same tools (Standard with your choices stays Standard with your choices); the bar and Settings name that complexity even while another is in use.
 - Replacement MKs on their lists (19 Nov): twelve members who entered a Knesset mid-term from further down their list are now linked to their list place, with their Knesset name, English name and member page: Yehoshua Menachem Pollack (2006), Shakib Shanan (2009), Leon Litinetsky (2013), Michal Wunsh, Einav Kabla, Tehila Friedman, Hila Shay Vazan and Anat Knafo (2020), Orna Starkmann (2021), Akram Hasson, Zvi Sukkot and Roni Malkai (2022). Their MK history now shows the list and place they entered from.
