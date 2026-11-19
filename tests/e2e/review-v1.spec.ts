@@ -226,3 +226,9 @@ test('compared with 2022, a list from a split shows the split\'s figure as the g
   // never this list's own 7 against the group's 14 without saying so
   for (const t of await line.allInnerTexts()) expect(t).toMatch(/together now 13/);
 });
+
+test('Sensitivity says where the votes come from, on screen', async ({ page }) => {
+  await start(page, 'k26', { level: 'expert' });
+  await page.getByRole('tab', { name: 'Sensitivity', exact: true }).click();
+  await expect(page.getByText('Votes come from: people who stayed home', { exact: true })).toBeVisible();
+});
