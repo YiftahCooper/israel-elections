@@ -8,7 +8,26 @@ import { activeFeatures, clearOwnChoices, featureVisibility, getState, setCustom
 import { scenarioFromDataset } from '../src/model/scenario.ts';
 import { applyAction } from '../src/model/actions.ts';
 
-afterEach(() => { setState({ level: 'simple', custom: false, customFeatures: null }); });
+afterEach(() => { setState({ level: 'simple', custom: false, customBase: 'simple', customFeatures: null }); });
+
+// review V3 F11, 19 Nov 2026: Custom built on Standard, then Simple pressed and Custom pressed again, came back as Simple
+// with the choices (Merge & split and Seat safety greyed out), and Settings renamed it "Custom: Simple with your choices"
+it('Custom comes back exactly as built after a visit to another complexity', () => {
+  setState({ level: 'standard', custom: false, customBase: 'standard', customFeatures: null });
+  const built = (['charts', 'structure', 'security', 'sens', 'rules'] as const).map((id) => featureVisibility(id));
+  setFeature('charts', 'hidden');
+  const custom = (['charts', 'structure', 'security', 'sens', 'rules'] as const).map((id) => featureVisibility(id));
+  expect(custom).toEqual(['hidden', ...built.slice(1)]);
+  setLevel('simple');
+  expect(getState()).toMatchObject({ level: 'simple', custom: false, customBase: 'standard' });
+  setLevel('expert');
+  setCustom();
+  expect(getState()).toMatchObject({ level: 'standard', custom: true, customBase: 'standard' });
+  expect((['charts', 'structure', 'security', 'sens', 'rules'] as const).map((id) => featureVisibility(id))).toEqual(custom);
+  // the choices are counted against Standard even while Simple is in use
+  setLevel('simple');
+  expect(ownChoices(getState().customFeatures, getState().customBase)).toEqual(['charts']);
+});
 
 it('adding a tool on Simple makes Custom; Simple itself stays as it was', () => {
   setState({ level: 'simple', custom: false, customFeatures: null });

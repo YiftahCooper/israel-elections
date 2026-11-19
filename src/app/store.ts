@@ -60,6 +60,10 @@ export interface State {
    *  `customFeatures` are the user's own choices on top of it. The named complexities never change; any choice of a tool
    *  or detail lands here. Off: the named complexity alone, the choices kept for when Custom is chosen again. */
   custom: boolean;
+  /** The named complexity Custom is built on. Custom comes back on it after a visit to another complexity (review V3
+   *  F11, 19 Nov 2026: pressing Simple and then Custom gave Simple with the choices, not the Standard set the user built).
+   *  While Custom is in use, `level` is this. */
+  customBase: Level;
   customFeatures: Partial<Record<FeatureId, Visibility>> | null;
   /** personal settings the user set (settings.ts); the rest follow their defaults */
   settings: Partial<SettingValues>;
@@ -170,6 +174,7 @@ const rememberedSettings = (() => {
 const deviceDark = () => globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches === true;
 const resolvedTheme = (pref: SettingValues['theme']): 'light' | 'dark' => pref === 'device' ? (deviceDark() ? 'dark' : 'light') : pref;
 const initialLevel: Level = LEVELS.includes(persisted.level as Level) ? persisted.level as Level : 'simple';
+const initialBase: Level = LEVELS.includes(persisted.customBase as Level) ? persisted.customBase as Level : initialLevel;
 // every tool can be the one reopened (After the election was once left out of a hand-written copy of this list)
 const TOOL_IDS = new Set<string>(TOOL_FEATURES.map(f => f[0]));
 const persistedSaved = Array.isArray(persisted.saved) ? persisted.saved.filter(validSaved) : [];
@@ -179,6 +184,7 @@ if (persisted.saved !== undefined) {
 }
 if ((persisted.lang !== undefined && persisted.lang !== 'he' && persisted.lang !== 'en')
   || (persisted.level !== undefined && !LEVELS.includes(persisted.level as Level))
+  || (persisted.customBase !== undefined && !LEVELS.includes(persisted.customBase as Level))
   || (persisted.tool !== undefined && persisted.tool !== null && !TOOL_IDS.has(persisted.tool as string))
   || (persisted.markOfficial !== undefined && typeof persisted.markOfficial !== 'boolean')
   || (persisted.customFeatures !== undefined && persisted.customFeatures !== null
@@ -188,7 +194,7 @@ let state: State = {
   datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, reference: null, markOfficial: persisted.markOfficial === true, past: [], future: [], selectedListId: null, blocPanel: null,
   tool: settingValue(rememberedSettings, 'openOn', initialLevel) === 'last' && TOOL_IDS.has(persisted.tool as string) ? persisted.tool as string : null, comparing: null,
   lang: persisted.lang === 'en' ? 'en' : 'he', theme: resolvedTheme(settingValue(rememberedSettings, 'theme', initialLevel)),
-  level: initialLevel, custom: typeof persisted.custom === 'boolean' ? persisted.custom && !!persistedFeatures : !!persistedFeatures && Object.keys(persistedFeatures).length > 0, customFeatures: persistedFeatures, settings: rememberedSettings,
+  level: initialLevel, custom: typeof persisted.custom === 'boolean' ? persisted.custom && !!persistedFeatures : !!persistedFeatures && Object.keys(persistedFeatures).length > 0, customBase: initialBase, customFeatures: persistedFeatures, settings: rememberedSettings,
   saved: persistedSaved, toast: null, loadError: null, notice: null, voteSource: sourceChoice(rememberedPreferences.voteSource ?? 'proportional'), preferences: rememberedPreferences, preferenceAsk: null, preferenceFor: rememberedItems, sessions: {}, scenarioDrafts: {},
   compare: { drafts: {}, overrides: {}, snapshot: null, swapped: null, chamber: 'work', back: null },
   storageLoss: Object.keys(startupLoss).length ? startupLoss : null,
@@ -202,8 +208,8 @@ const emit = () => { for (const l of listeners) l(); };
 // the language, the level with its Custom choices, Mark changes since and the last open tool are each one value. Changes
 // made in another tab are also taken in as they happen (the 'storage' event), except the language and the open tool,
 // which stay as this tab shows them (the stored value is the one any tab chose last).
-type Kept = Pick<State, 'lang' | 'level' | 'custom' | 'customFeatures' | 'markOfficial' | 'tool' | 'saved' | 'settings' | 'preferences' | 'preferenceFor'>;
-const keptOf = (st: Kept): Kept => ({ lang: st.lang, level: st.level, custom: st.custom, customFeatures: st.customFeatures, markOfficial: st.markOfficial, tool: st.tool, saved: st.saved, settings: st.settings, preferences: st.preferences, preferenceFor: st.preferenceFor });
+type Kept = Pick<State, 'lang' | 'level' | 'custom' | 'customBase' | 'customFeatures' | 'markOfficial' | 'tool' | 'saved' | 'settings' | 'preferences' | 'preferenceFor'>;
+const keptOf = (st: Kept): Kept => ({ lang: st.lang, level: st.level, custom: st.custom, customBase: st.customBase, customFeatures: st.customFeatures, markOfficial: st.markOfficial, tool: st.tool, saved: st.saved, settings: st.settings, preferences: st.preferences, preferenceFor: st.preferenceFor });
 /** what this tab last read from storage or wrote to it */
 let synced: Kept = keptOf(state);
 const same = (a: unknown, b: unknown) => a === b || JSON.stringify(a) === JSON.stringify(b);
@@ -222,7 +228,7 @@ function storedKept(): Partial<Kept> {
   const x = storedMain();
   if (x) {
     if (x.lang === 'he' || x.lang === 'en') out.lang = x.lang;
-    if (LEVELS.includes(x.level as Level) && (x.customFeatures === null || isRecord(x.customFeatures))) { out.level = x.level as Level; out.customFeatures = featuresOf(x.customFeatures); out.custom = typeof x.custom === 'boolean' ? x.custom && !!out.customFeatures : !!out.customFeatures && Object.keys(out.customFeatures).length > 0; }
+    if (LEVELS.includes(x.level as Level) && (x.customFeatures === null || isRecord(x.customFeatures))) { out.level = x.level as Level; out.customFeatures = featuresOf(x.customFeatures); out.custom = typeof x.custom === 'boolean' ? x.custom && !!out.customFeatures : !!out.customFeatures && Object.keys(out.customFeatures).length > 0; out.customBase = LEVELS.includes(x.customBase as Level) ? x.customBase as Level : out.level; }
     if (typeof x.markOfficial === 'boolean') out.markOfficial = x.markOfficial;
     if (x.tool === null || TOOL_IDS.has(x.tool as string)) out.tool = x.tool as string | null;
     if (Array.isArray(x.saved)) out.saved = x.saved.filter(validSaved);
@@ -238,12 +244,12 @@ function storedKept(): Partial<Kept> {
 /** This tab's changes (`mine` against `base`) on top of what is stored (`theirs`); where nothing is stored, this tab's. */
 function mergeKept(mine: Kept, base: Kept, theirs: Partial<Kept>): Kept {
   const one = <K extends keyof Kept>(k: K): Kept[K] => (theirs[k] === undefined || !same(mine[k], base[k]) ? mine[k] : theirs[k]!);
-  const levelMine = !same([mine.level, mine.custom, mine.customFeatures], [base.level, base.custom, base.customFeatures]) || theirs.level === undefined;
+  const levelMine = !same([mine.level, mine.custom, mine.customBase, mine.customFeatures], [base.level, base.custom, base.customBase, base.customFeatures]) || theirs.level === undefined;
   const byId = (xs: SavedScenario[]) => Object.fromEntries(xs.map((x) => [x.id, x]));
   const saved = theirs.saved === undefined ? mine.saved
     : Object.values(mergeKeys(byId(mine.saved), byId(base.saved), byId(theirs.saved))).sort((a, b) => b.savedAt.localeCompare(a.savedAt));
   return {
-    lang: one('lang'), level: levelMine ? mine.level : theirs.level!, custom: levelMine ? mine.custom : theirs.custom!, customFeatures: levelMine ? mine.customFeatures : theirs.customFeatures!,
+    lang: one('lang'), level: levelMine ? mine.level : theirs.level!, custom: levelMine ? mine.custom : theirs.custom!, customBase: levelMine ? mine.customBase : theirs.customBase!, customFeatures: levelMine ? mine.customFeatures : theirs.customFeatures!,
     markOfficial: one('markOfficial'), tool: one('tool'),
     saved: same(saved, mine.saved) ? mine.saved : saved,
     settings: theirs.settings === undefined ? mine.settings : mergeKeys(mine.settings, base.settings, theirs.settings) as Kept['settings'],
@@ -265,7 +271,7 @@ const persist = (): boolean => {
   return true;
 };
 function writeKept(kept: Kept) {
-  setRoomy(LS, JSON.stringify({ lang: kept.lang, level: kept.level, custom: kept.custom, customFeatures: kept.customFeatures, markOfficial: kept.markOfficial, tool: kept.tool, saved: kept.saved }));
+  setRoomy(LS, JSON.stringify({ lang: kept.lang, level: kept.level, custom: kept.custom, customBase: kept.customBase, customFeatures: kept.customFeatures, markOfficial: kept.markOfficial, tool: kept.tool, saved: kept.saved }));
   setRoomy(SETTINGS_KEY, JSON.stringify({ v: 2, values: kept.settings }));
   // its own key, so the answer survives independently of the other settings
   setRoomy(PREFERENCES_KEY, JSON.stringify(kept.preferences));
@@ -276,7 +282,7 @@ if (Object.keys(startupLoss).length) try { writeKept(synced); } catch { /* stora
 /** Shows what another tab stored (merged with this tab's own changes, which win), without writing anything. */
 function takeIn(kept: Kept) {
   const patch: Partial<State> = {};
-  for (const k of ['level', 'custom', 'customFeatures', 'markOfficial', 'saved', 'settings', 'preferences', 'preferenceFor'] as const) if (state[k] !== kept[k]) (patch as Record<string, unknown>)[k] = kept[k];
+  for (const k of ['level', 'custom', 'customBase', 'customFeatures', 'markOfficial', 'saved', 'settings', 'preferences', 'preferenceFor'] as const) if (state[k] !== kept[k]) (patch as Record<string, unknown>)[k] = kept[k];
   if (!Object.keys(patch).length) return false;
   if (patch.preferences && (patch.preferences.jointSeats !== 'off') !== (state.preferences.jointSeats !== 'off')) applyJointSeats(patch.preferences.jointSeats !== 'off');
   if (patch.preferences) patch.voteSource = sourceChoice(defaultAnswer(patch.preferences.voteSource) ?? 'proportional');
@@ -964,9 +970,10 @@ export function useLevel() {
 export function setLevel(level: Level) {
   setState({ level, custom: false });
 }
-/** Custom: the user's own choices on top of the named complexity in use. */
+/** Custom: the user's own choices on top of the named complexity they were made on, as built (a visit to another
+ *  complexity never changes it). */
 export function setCustom() {
-  if (state.customFeatures && Object.keys(state.customFeatures).length) setState({ custom: true });
+  if (state.customFeatures && Object.keys(state.customFeatures).length) setState({ custom: true, level: state.customBase });
 }
 /** The user's own choices in force: Custom's, or none on a named complexity. */
 export const activeFeatures = (st: Pick<State, 'custom' | 'customFeatures'>) => st.custom ? st.customFeatures : null;
@@ -981,13 +988,14 @@ export function setFeature(id: FeatureId, visibility: Visibility) {
   const next = visibility === PRESETS[state.level][id] ? rest : { ...rest, [id]: visibility };
   const any = Object.keys(next).length > 0;
   // a choice made on a named complexity opens Custom; one that changes nothing leaves the complexity as it is
-  const before = state.customFeatures, wasCustom = state.custom;
+  const before = state.customFeatures, wasCustom = state.custom, baseBefore = state.customBase;
   const custom = any && ownChoices(next, state.level).length > 0 && (wasCustom || visibility !== PRESETS[state.level][id]);
-  setState({ customFeatures: any ? next : null, custom });
+  // Custom is now built on the complexity in use (the same one while Custom is in use)
+  setState({ customFeatures: any ? next : null, custom, ...(custom ? { customBase: state.level } : {}) });
   // said once, as it happens, so the named complexity no longer being pressed is never a surprise
   if (custom && !wasCustom) {
     const he = state.lang === 'he', [en, hb] = LEVEL_LABELS[state.level];
-    toast('info', he ? `עברתם ל"מותאם אישית": "${hb}" עם הבחירות שלכם` : `Now Custom: ${en} with your choices`, { label: he ? 'ביטול' : 'Undo', run: () => setState({ customFeatures: before, custom: false }) });
+    toast('info', he ? `עברתם ל"מותאם אישית": "${hb}" עם הבחירות שלכם` : `Now Custom: ${en} with your choices`, { label: he ? 'ביטול' : 'Undo', run: () => setState({ customFeatures: before, custom: false, customBase: baseBefore }) });
   }
 }
 /** "Keep this visible" beside a folded section, and "Add to Custom" for a tool of another complexity. */
