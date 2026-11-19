@@ -1,0 +1,6 @@
+/* The seat chart's key: a joint list counted by party is one framed group, headed by the list's own ballot letters or
+   logo, its name and its seats, with its parties inside (owner, 19 Nov 2026). */
+.chamber .legend .key-group { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 2px 12px; max-width: 100%;
+  box-sizing: border-box; padding: 1px 10px; border: 1px solid var(--rule-2); border-radius: 8px; }
+.chamber .legend .key-group-head strong { font-weight: 700; }
+.chamber .legend .key-group > button:not(.key-group-head) .slip { width: 36px; height: 20px; }

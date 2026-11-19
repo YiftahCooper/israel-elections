@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest';
 import { scenarioFromDataset } from '../src/model/scenario.ts';
 import { allocationOf, seatHolders } from '../src/app/derive.ts';
-import { chamberKeyRows, seatOrder } from '../src/app/components/Hemicycle.tsx';
+import { chamberKeyGroups, chamberKeyRows, ownPartyLogo, seatOrder } from '../src/app/components/Hemicycle.tsx';
 import { dataset } from './graphics-cases.ts';
 
 // Audit c-screens-overview-02 and c-design-principles-06: the chamber's key names every seat drawn, in the order the
@@ -39,4 +39,34 @@ test('1977 Hadash counted by party: Rakah 3, Black Panthers 1, Jewish and Arab p
   const rows = chamberKeyRows(s, seatOrder(s, r, 'list', 'both'), 'both').filter(x => x.l.id === hadash.id);
   expect(rows.map(x => [x.p?.nameEn ?? null, x.n]).sort()).toEqual([['Black Panthers', 1], ['Jewish and Arab public circles', 1], ['Rakah', 3]]);
   expect(rows.reduce((t, x) => t + x.n, 0)).toBe(5);
+});
+
+// Owner, 19 Nov 2026: a joint list counted by party is one key entry, under its list's own ballot letters or logo; its
+// parties never borrow ballot letters, and show only a logo of their own that is not the list's.
+test('every election: the key groups a joint list counted by party under its list, once, with its seats', () => {
+  for (let n = 1; n <= 26; n++) {
+    const base = scenarioFromDataset(dataset(n), '', true), r = allocationOf(base);
+    for (const look of looks) {
+      const rows = chamberKeyRows(base, seatOrder(base, r, 'list', look), look), groups = chamberKeyGroups(rows);
+      const at = `k${n} ${look}`;
+      expect(new Set(groups.map(g => g.l.id)).size, at).toBe(groups.length);
+      expect(groups.reduce((t, g) => t + g.n, 0), at).toBe(r.seatsAllocated);
+      for (const g of groups) {
+        expect(g.rows.every(x => x.l.id === g.l.id && x.byParty === g.byParty), at).toBe(true);
+        expect(g.n, at).toBe(r.lists.find(x => x.id === g.l.id)!.seats);
+        if (!g.byParty) expect(g.rows, at).toHaveLength(1);
+        expect(g.l.letters, `${at} ${g.l.nameHe}`).toBeTruthy();
+        for (const x of g.rows) { const own = ownPartyLogo(g.l, x.p); if (own) expect(own.file).not.toBe(g.l.logo?.file); }
+      }
+      if (look === 'list') expect(groups.every(g => !g.byParty), at).toBe(true);
+    }
+  }
+});
+
+test('2026: Likud heads Likud 26 and New Hope 1, with New Hope\'s own logo and none repeated for Likud', () => {
+  const s = scenarioFromDataset(dataset(26), '', true), r = allocationOf(s);
+  const likud = chamberKeyGroups(chamberKeyRows(s, seatOrder(s, r, 'list', 'both'), 'both')).find(g => g.l.shortEn === 'Likud')!;
+  expect(likud.byParty).toBe(true);
+  expect(likud.rows.map(x => [x.p?.nameEn, x.n])).toEqual([['Likud', 26], ['New Hope – the National Right', 1]]);
+  expect(likud.rows.map(x => ownPartyLogo(likud.l, x.p)?.file)).toEqual([undefined, 'logos/newhope-2026.png']);
 });

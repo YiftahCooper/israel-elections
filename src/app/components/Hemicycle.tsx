@@ -2,6 +2,7 @@ import {PartyDot,PartyKey,PARTY_SHARE,type JointLook}from'./PartyDot.tsx';
 import { partyDisplayColor } from '../partyDisplayColor.ts';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { Slip } from './ui.tsx';
+import './chamber-key.css';
 import { syntheticIconSvg } from '../syntheticIcon.ts';
 import { factLog } from '../../model/actionClassification.ts';
 import { CandidateName } from './CandidateName.tsx';
@@ -110,6 +111,59 @@ export function chamberKeyRows(s: Scenario, seats: SeatInfo[], look: JointLook):
   return [...rows.values()];
 }
 
+/** A ballot slip drawn into an exported picture: the list's letters, its logo, or its scenario artwork. */
+export interface ExportMark { letters: string; color: string; logo?: SimList['logo']; synthetic?: string }
+const SVG_NS = 'http://www.w3.org/2000/svg';
+const asDataUrl = (file: string) => fetch(new URL(file, document.baseURI)).then(r => (r.ok ? r.blob() : Promise.reject(new Error(String(r.status)))))
+  .then(b => new Promise<string>((done, fail) => { const f = new FileReader(); f.onload = () => done(String(f.result)); f.onerror = fail; f.readAsDataURL(b); }));
+/** Each mark as a 44 × 24 tile, the size of the key's slips. Logos are embedded as data, so the downloaded SVG and the
+ *  PNG drawn from it stand alone; a logo that cannot be read falls back to the ballot letters. */
+export async function exportMarks(marks: ExportMark[], symbol: 'logo' | 'letters'): Promise<Map<ExportMark, (id: string) => SVGSVGElement>> {
+  const slipFill = getComputedStyle(document.body).getPropertyValue('--slip').trim() || '#fff';
+  const files = [...new Set(marks.flatMap(m => (m.logo && !m.synthetic && !(symbol === 'letters' && m.letters) ? [m.logo.file] : [])))];
+  const data = new Map(await Promise.all(files.map(f => asDataUrl(f).then(u => [f, u] as const, () => [f, ''] as const))));
+  const tile = (fill: string, stroke: string) => {
+    const svg = document.createElementNS(SVG_NS, 'svg'); svg.setAttribute('width', '44'); svg.setAttribute('height', '24'); svg.setAttribute('viewBox', '0 0 44 24');
+    const box = document.createElementNS(SVG_NS, 'rect');
+    for (const [k, v] of [['x', '0.75'], ['y', '0.75'], ['width', '42.5'], ['height', '22.5'], ['rx', '3'], ['fill', fill], ['stroke', stroke], ['stroke-width', '1.5']]) box.setAttribute(k, v);
+    svg.appendChild(box); return svg;
+  };
+  return new Map(marks.map(m => [m, (id: string) => {
+    if (m.synthetic) {
+      const art = new DOMParser().parseFromString(m.synthetic, 'image/svg+xml').documentElement as unknown as SVGSVGElement;
+      art.innerHTML = art.innerHTML.replaceAll('id="tile"', `id="tile-${id}"`).replaceAll('url(#tile)', `url(#tile-${id})`);
+      art.setAttribute('width', '44'); art.setAttribute('height', '24'); return art;
+    }
+    const url = m.logo && data.get(m.logo.file);
+    if (m.logo && url) {
+      const svg = tile(m.logo.background === 'dark' ? '#1d2430' : '#fff', m.color), img = document.createElementNS(SVG_NS, 'image');
+      for (const [k, v] of [['x', '3'], ['y', '2.5'], ['width', '38'], ['height', '19'], ['preserveAspectRatio', 'xMidYMid meet'], ['href', url]]) img.setAttribute(k, v);
+      svg.appendChild(img); return svg;
+    }
+    const svg = tile(slipFill, m.color), t = document.createElementNS(SVG_NS, 'text');
+    for (const [k, v] of [['x', '22'], ['y', '12.5'], ['text-anchor', 'middle'], ['dominant-baseline', 'central'], ['direction', 'rtl'], ['fill', '#111'], ['font-weight', '700'], ['font-size', m.letters.length > 4 ? '9' : '12']]) t.setAttribute(k, v);
+    t.textContent = m.letters; svg.appendChild(t); return svg;
+  }]));
+}
+
+/** The key's entries: one per list, at its first row. A joint list counted by party is one group, headed by the
+ *  list's own ballot letters or logo, with its party rows inside: the parties of a joint list had no ballot letters of
+ *  their own in that election, so each sits under its list's mark (owner, 19 Nov 2026). */
+export interface ChamberKeyGroup { l: SimList; byParty: boolean; n: number; rows: ChamberKeyRow[] }
+export function chamberKeyGroups(rows: ChamberKeyRow[]): ChamberKeyGroup[] {
+  const groups = new Map<string, ChamberKeyGroup>();
+  for (const row of rows) {
+    let g = groups.get(row.l.id);
+    if (!g) groups.set(row.l.id, g = { l: row.l, byParty: row.byParty, n: 0, rows: [] });
+    g.n += row.n; g.rows.push(row);
+  }
+  return [...groups.values()];
+}
+
+/** A party's own logo at this election, when the app holds one that is not its list's logo (a party that shares its
+ *  list's logo would show the same picture twice). Never ballot letters: a party inside a joint list had none. */
+export const ownPartyLogo = (l: SimList, p: ChamberKeyRow['p']) => (p?.logo && p.logo.file !== l.logo?.file ? p.logo : undefined);
+
 /** `paired`: drawn beside its reference chamber (Compare), so the small reference chamber and change list are not repeated. */
 export function Hemicycle({ s, r, compact: compactProp = false, title, reference, paired = false }: { s: Scenario; r: AllocationResult; compact?: boolean; title?: string; reference?: Scenario; paired?: boolean }) {
   const L = useL();
@@ -121,7 +175,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   // A hidden setting keeps working, so they apply at every level.
   const layout = useSetting('chamberLayout');
   const colorBy = useSetting('seatColour');
-  const jointLook = useSetting('jointListSeats');
+  const jointLook = useSetting('jointListSeats'), symbol = useSetting('listSymbol');
   const blocShading = useSetting('blocShading'), referenceChamber = useSetting('referenceChamber'), chamberKey = useSetting('chamberKey');
   const dimOthers = useSetting('dimUnselected'), hoverPopups = useSetting('hoverPopups');
   const previewing = useStore(st => st.preview) === s;
@@ -219,7 +273,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   // that grew after opening could slide under the resting pointer and close itself
   const onSeatHover = (st: SeatInfo, evt: React.MouseEvent) => { const anchor = evt.currentTarget; void loadTermRuntime(); hoverBridge.enter(() => setHover({ seat: st, anchor })); };
 
-  const exportSvg = (kind: 'svg' | 'png') => {
+  const exportSvg = async (kind: 'svg' | 'png') => {
     const el = svgRef.current; if (!el) return;
     const clone = el.cloneNode(true) as SVGSVGElement;
     clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
@@ -260,39 +314,74 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       clone.appendChild(svgText(colStart(0), vb.y+vb.height+16, 14, referenceLabel(labelReference,lang).name));
       clone.appendChild(inset);
     }
-    // the legend in chamber order, each list with its seat colour(s), and old → new only where the seats changed
+    // the legend in chamber order, as on screen: each list with its seat colour(s), its ballot letters or logo, and
+    // old → new only where the seats changed; a joint list counted by party is one framed group under its list's mark,
+    // its parties inside with their own logo where the app holds one (owner, 19 Nov 2026)
     const groupsNow = comparisonGroups(s,r,base,br);
-    const rowsY = vb.y+vb.height+extra+20;
-    const exportRows = keyRows.map(({l,p,byParty,n,colors})=>({l,n,byParty,colors:p && jointLook==='both' ? [l.color] : colors,label:exportName(l,p,byParty),
-      inner:p && jointLook==='both' ? partyDisplayColor(l,p.id) : undefined as string | undefined}));
-    exportRows.forEach(({l,n,byParty,colors,label,inner},i) => {
-      const x = colStart(i % 2), y = rowsY + Math.floor(i/2)*32, dir = rtlText ? -1 : 1;
-      colors.forEach((c,k)=>{
+    const rowsY = vb.y+vb.height+extra+20, LINE = 32, colWidth = vb.width / 2 - 24;
+    type Line = { l: SimList; dots: { c: string; inner?: string }[]; mark?: ExportMark; label: string; n: number; delta: number; head?: boolean; indent?: boolean; group?: number };
+    const deltaOf = (l: SimList) => { const g = groupsNow.find(g=>g.bIds.includes(l.id)); return g?.bIds.length===1 ? g.seatsB-g.seatsA : 0; };
+    const listMark = (l: SimList): ExportMark => ({ letters: l.letters, color: l.color, logo: l.logo, synthetic: syntheticIconSvg(l) ?? undefined });
+    const dotsOf = (row: ChamberKeyRow) => row.p && jointLook==='both' ? [{ c: row.l.color, inner: partyDisplayColor(row.l,row.p.id) }] : row.colors.map(c => ({ c }));
+    const lines: Line[][] = keyGroups.map(({ l, byParty, n, rows }, gi) => {
+      if (!byParty || rows.length === 1) return [{ l, dots: dotsOf(rows[0]), mark: listMark(l), label: exportName(l, rows[0].p, byParty), n, delta: deltaOf(l) }];
+      return [{ l, dots: [], mark: listMark(l), label: clipWords(listLabel(l, lang), 40), n, delta: deltaOf(l), head: true, group: gi },
+        ...rows.map(row => { const own = ownPartyLogo(l, row.p);
+          return { l, dots: dotsOf(row), mark: own && row.p ? { letters: '', color: partyDisplayColor(l, row.p.id), logo: own } : undefined, indent: true, group: gi, n: row.n, delta: 0,
+            label: clipWords(row.p ? partyName(row.p) : L('Party not recorded', 'מפלגה לא מתועדת'), own ? 34 : 40) }; })];
+    });
+    // two columns, a group never split between them; the first column takes the first half of the lines
+    const totalLines = lines.reduce((t, g) => t + g.length, 0);
+    // a framed group keeps a small gap above and below, so neighbouring frames never touch
+    const GAP = 8;
+    let col = 0, lineNo = 0, y = 0;
+    const colEnd = [0, 0];
+    const placed: { line: Line; col: number; y: number }[] = [];
+    for (const g of lines) {
+      if (col === 0 && lineNo > 0 && lineNo + g.length / 2 > totalLines / 2) { col = 1; lineNo = 0; y = 0; }
+      const framed = g.length > 1;
+      if (framed && y > 0) y += GAP;
+      g.forEach(line => { placed.push({ line, col, y }); y += LINE; lineNo++; });
+      if (framed) y += GAP;
+      colEnd[col] = y;
+    }
+    const marks = await exportMarks(placed.map(x => x.line.mark).filter((m): m is ExportMark => !!m), symbol);
+    const dir = rtlText ? -1 : 1;
+    // the frame of a joint list's group, under its lines
+    for (const g of new Set(placed.filter(x => x.line.group !== undefined).map(x => x.line.group!))) {
+      const mine = placed.filter(x => x.line.group === g), top = rowsY + mine[0].y - 25, bottom = rowsY + mine[mine.length - 1].y + 11;
+      const frame = document.createElementNS(NS, 'rect'), x0 = colStart(mine[0].col) - 8 * dir;
+      frame.setAttribute('x', String(rtlText ? x0 - colWidth : x0)); frame.setAttribute('y', String(top)); frame.setAttribute('width', String(colWidth)); frame.setAttribute('height', String(bottom - top));
+      frame.setAttribute('rx', '8'); frame.setAttribute('fill', 'none'); frame.setAttribute('stroke', css.getPropertyValue('--rule-2').trim() || '#bbb'); frame.setAttribute('stroke-width', '1');
+      clone.appendChild(frame);
+    }
+    placed.forEach(({ line, col, y: at }, i) => {
+      const y = rowsY + at;
+      let x = colStart(col) + (line.indent ? 22 * dir : 0);
+      for (const { c, inner } of line.dots) {
         const dot = document.createElementNS(NS,'circle');
-        dot.setAttribute('cx',String(x+dir*(7+k*16))); dot.setAttribute('cy',String(y-5)); dot.setAttribute('r','7'); dot.setAttribute('fill',c); clone.appendChild(dot);
+        dot.setAttribute('cx',String(x+dir*7)); dot.setAttribute('cy',String(y-5)); dot.setAttribute('r','7'); dot.setAttribute('fill',c); clone.appendChild(dot);
         if(inner) { const fill=dot.cloneNode() as SVGCircleElement;fill.setAttribute('r',String(7*PARTY_SHARE));fill.setAttribute('fill',inner);clone.appendChild(fill); }
-      });
-      const artwork = syntheticIconSvg(l);
-      if (artwork && !byParty) {
-        const tile = new DOMParser().parseFromString(artwork, 'image/svg+xml').documentElement;
-        tile.innerHTML = tile.innerHTML.replaceAll('id="tile"', `id="tile-${i}"`).replaceAll('url(#tile)', `url(#tile-${i})`);
-        tile.setAttribute('x', String(rtlText ? x - 44 : x)); tile.setAttribute('y', String(y - 19));
-        tile.setAttribute('width', '44'); tile.setAttribute('height', '24'); clone.appendChild(tile);
+        x += dir * 16;
       }
-      const g = groupsNow.find(g=>g.bIds.includes(l.id));
-      const delta = !byParty && g?.bIds.length===1 ? g.seatsB-g.seatsA : 0;
-      const numbers = delta && g ? `${g.seatsA} → ${g.seatsB}` : String(n);
-      const legend = svgText(x+dir*(artwork ? 50 : 8+colors.length*16),y,16,`${label} \u2066${numbers}\u2069`);
-      if (delta) {
+      if (line.mark) {
+        const tile = marks.get(line.mark)!(`k${i}`);
+        tile.setAttribute('x', String(rtlText ? x - 44 - 2 : x + 2)); tile.setAttribute('y', String(y - 17));
+        clone.appendChild(tile); x += dir * 50;
+      } else x += dir * 4;
+      const numbers = line.delta ? `${line.n - line.delta} → ${line.n}` : String(line.n);
+      const legend = svgText(x,y,16,`${line.label} \u2066${numbers}\u2069`);
+      if (line.head) legend.setAttribute('font-weight', '700');
+      if (line.delta) {
         const change = document.createElementNS(NS, 'tspan');
-        change.textContent = ` \u2066(${seatDeltaText(delta)})\u2069`;
-        change.setAttribute('fill', css.getPropertyValue(delta > 0 ? '--seat-gain' : '--seat-loss').trim());
+        change.textContent = ` \u2066(${seatDeltaText(line.delta)})\u2069`;
+        change.setAttribute('fill', css.getPropertyValue(line.delta > 0 ? '--seat-gain' : '--seat-loss').trim());
         legend.appendChild(change);
       }
       clone.appendChild(legend);
     });
     const entry = elections.find(e=>e.id===s.electionId);
-    const captionY = rowsY + Math.ceil(exportRows.length/2)*32 + 8;
+    const captionY = rowsY + Math.max(...colEnd, LINE) + 8;
     clone.appendChild(svgText(colStart(0), captionY, 13, `${entry ? electionLabel(entry, elections, lang) : ''}${entry ? ' · ' : ''}${factLog(s).length ? s.name || L('Scenario', 'תרחיש') : L('Official result', 'התוצאה הרשמית')}`));
     // the picture leaves the app, so it names the grouping its seats are arranged (and shaded) by, and each bloc with
     // its seats, as the bloc bar does on the board (audit c-screens-overview-12)
@@ -432,7 +521,8 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
 
   // lists in the order their seats are drawn (blocs left to right, No bloc between their halves), each with the colours
   // its seats actually carry in the chosen colour mode
-  const keyRows = chamberKeyRows(s, seats, jointLook);
+  const keyRows = chamberKeyRows(s, seats, jointLook), keyGroups = chamberKeyGroups(keyRows);
+  const partyName = (p: NonNullable<ChamberKeyRow['p']>) => (lang === 'he' ? p.nameHe : p.nameEn);
   // an exported key line has room for about 42 characters: a party row shortens its party's name first, so the list's
   // name stays whole, and a cut falls between words
   const exportName = (l: SimList, p: ChamberKeyRow['p'], byParty: boolean) => {
@@ -501,11 +591,18 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       {!compactProp && (
         <div className="legend" data-key-off={chamberKey ? undefined : ''} role="group" aria-label={L('Lists in the Knesset', 'הרשימות בכנסת')} style={{ marginTop: 6 }}>
           {seats.some(st=>st.bloc===null) && <span className="row no-bloc-legend"><span className="swatch bloc-swatch unassigned" style={{['--bc' as string]:'var(--muted)'}} />{L('No bloc','ללא גוש')}</span>}
-          {keyRows.map(({ key, l, p, byParty, n, colors }) => {
+          {keyGroups.map(({ l, byParty, n: total, rows }) => {
             const pick = () => setState({ selectedListId: selected === l.id ? null : l.id });
-            return byParty
-              ? <button key={key} aria-pressed={selected === l.id} onClick={pick}>{p ? <PartyKey partyId={p.id} color={partyDisplayColor(l, p.id)} ring={jointLook === 'both' ? l.color : undefined} /> : <PartyKey color={l.color} />}{keyName(l, p, true)} <b className="tabnum"><bdi dir="ltr">{n}</bdi></b></button>
-              : <ListKeyItem key={key} list={l} seats={n} seatColors={colors} pressed={selected === l.id} onPick={pick} />;
+            if (!byParty) return <ListKeyItem key={l.id} list={l} seats={total} seatColors={rows[0].colors} pressed={selected === l.id} onPick={pick} />;
+            const dot = (p: ChamberKeyRow['p']) => p ? <PartyKey partyId={p.id} color={partyDisplayColor(l, p.id)} ring={jointLook === 'both' ? l.color : undefined} /> : <PartyKey color={l.color} />;
+            const logo = (p: ChamberKeyRow['p']) => { const own = ownPartyLogo(l, p); return own && p ? <span aria-hidden="true"><Slip letters="" name={partyName(p)} color={partyDisplayColor(l, p.id)} logo={own} size="sm" /></span> : null; };
+            const listMark = <span aria-hidden="true"><Slip {...l} name={listLabel(l, lang)} size="sm" /></span>;
+            // a joint list whose seats all went to one party: one entry, its seat dot beside the list's mark
+            if (rows.length === 1) return <button key={l.id} aria-pressed={selected === l.id} onClick={pick}>{dot(rows[0].p)}{listMark}{keyName(l, rows[0].p, true)} <b className="tabnum"><bdi dir="ltr">{total}</bdi></b></button>;
+            return <span key={l.id} className="key-group" role="group" aria-label={listLabel(l, lang)} style={{ ['--lc' as string]: l.color }}>
+              <button className="key-group-head" aria-pressed={selected === l.id} onClick={pick}>{listMark}<strong>{listLabel(l, lang)}</strong> <b className="tabnum key-total"><bdi dir="ltr">{total}</bdi></b></button>
+              {rows.map(({ key, p, n }) => <button key={key} aria-pressed={selected === l.id} onClick={pick}>{dot(p)}{logo(p)}{p ? partyName(p) : L('Party not recorded', 'מפלגה לא מתועדת')} <b className="tabnum"><bdi dir="ltr">{n}</bdi></b></button>)}
+            </span>;
           })}
         </div>
       )}
