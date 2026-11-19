@@ -2,14 +2,15 @@
 import { choose } from './choices.ts';
 import { expect, test, type Page } from '@playwright/test';
 
-async function start(page: Page, election: string, { lang = 'en', level = 'standard', prefs = '' } = {}) {
-  await page.addInitScript(([lang, level, prefs]) => {
+async function start(page: Page, election: string, { lang = 'en', level = 'standard', prefs = '', levelDecimals = false } = {}) {
+  await page.addInitScript(([lang, level, prefs, levelDecimals]) => {
     if (sessionStorage.getItem('seeded')) return;
     sessionStorage.setItem('seeded', '1');
     localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, level }));
-    localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false, decimals: 2 } }));
+    // older figures were drawn at two decimals; levelDecimals keeps each complexity's own decimal places
+    localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false, ...(levelDecimals ? {} : { decimals: 2 }) } }));
     if (prefs) localStorage.setItem('israel-elections:preferences', prefs);
-  }, [lang, level, prefs]);
+  }, [lang, level, prefs, levelDecimals] as const);
   await page.goto('/');
   const lists = page.getByRole('region', { name: lang === 'he' ? 'הרשימות' : 'Lists', exact: true });
   await expect(lists).toBeVisible();
@@ -81,4 +82,16 @@ test('Start over asks in the app\'s own box; Undo and Redo then name it "Start o
   await line.getByRole('button', { name: 'Start over', exact: true }).click();
   await box.getByRole('button', { name: 'Cancel', exact: true }).click();
   await expect(line).toContainText('2 changes');
+});
+
+for (const level of ['simple', 'standard', 'expert']) test(`the Turnout tile reads 77.98% at ${level}, open or closed`, async ({ page }) => {
+  // the owner's turnout digits: two decimals at every complexity, the same as the field (TURNOUT_FIELD_DIGITS)
+  await start(page, 'k26', { level, levelDecimals: true });
+  const tile = page.locator('.fig').filter({ has: page.locator('.k', { hasText: /^Turnout$/ }) }).first();
+  await expect(tile.locator('.v')).toHaveText('77.98%');
+  if (level === 'expert') {
+    await tile.locator('button').first().click();
+    await expect(page.locator('.tile-editor input').first()).toHaveValue('77.98');
+    await expect(tile.locator('.v')).toHaveText('77.98%');
+  }
 });

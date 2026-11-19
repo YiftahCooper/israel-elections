@@ -83,8 +83,8 @@ export function TurnoutFacts({ s }: { s: Scenario }) {
         copy={copy('registered', 'eligible voters', 'מספר בעלי זכות הבחירה')} edit={{ s, field: 'registered' }} />
       <Fact id="turnout" k={L('Turnout', 'שיעור ההצבעה')} info={<Info term="turnout" />}
         // as precise as the turnout field under it (two decimals), so one number never shows at two precisions
-        v={<>{percent(cast, s.registered, TURNOUT_FIELD_DIGITS)}<TileEditedMark s={s} field="turnout" /></>}
-        d={!standard || castEdited ? <>{!standard && <><bdi dir="ltr">{fmtInt(cast)}</bdi> {L('votes cast', 'מצביעים')}</>}{castEdited && <>{!standard && ' · '}{officialName} {percent(official.votesCast, official.registered, TURNOUT_FIELD_DIGITS)}</>}</> : undefined}
+        v={<><span data-fixed-digits>{percent(cast, s.registered, TURNOUT_FIELD_DIGITS)}</span><TileEditedMark s={s} field="turnout" /></>}
+        d={!standard || castEdited ? <>{!standard && <><bdi dir="ltr">{fmtInt(cast)}</bdi> {L('votes cast', 'מצביעים')}</>}{castEdited && <>{!standard && ' · '}{officialName} <span data-fixed-digits>{percent(official.votesCast, official.registered, TURNOUT_FIELD_DIGITS)}</span></>}</> : undefined}
         since={prev && sinceWords(<PointDelta value={pct - turnoutPct(prev.votesCast, prev.registered)} digits={digits} />)}
         copy={copy('turnout', 'turnout', 'שיעור ההצבעה')} edit={{ s, field: 'turnout' }} />
       {standard && <Fact id="cast" k={L('Votes cast', 'מצביעים')}

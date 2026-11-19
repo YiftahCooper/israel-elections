@@ -4,7 +4,8 @@ import { openSideBySide } from './sideBySide.ts';
 
 // Settings → Max decimal places bounds every percentage and percentage-point figure on screen. Exempt: a threshold
 // set in law (3.25%, 1.5%) is a rule, shown exactly; anything inside [data-exact], where a screen is about precision;
-// and a share next to a threshold, which shows one more digit rather than look like it is on the other side. Separately, no number on any screen may have five or more decimals (an unbounded float).
+// a share next to a threshold, which shows one more digit rather than look like it is on the other side; and a
+// national turnout ([data-fixed-digits]), which the owner fixed at its field's two decimals (18-19 Nov 2026). Separately, no number on any screen may have five or more decimals (an unbounded float).
 const LAW = new Set(['3.25', '1.5']);
 const THRESHOLDS = [1, 1.5, 2, 3.25];
 async function open(page: Page, max: number, election: string) {
@@ -24,7 +25,7 @@ const offenders = (page: Page, max: number) => page.evaluate(([max, law, THRESHO
   const bad: string[] = [];
   for (let n = walker.nextNode(); n; n = walker.nextNode()) {
     const el = n.parentElement!;
-    if (el.closest('[data-exact], script, style, [hidden]') || !el.getClientRects().length) continue;
+    if (el.closest('[data-exact], [data-fixed-digits], script, style, [hidden]') || !el.getClientRects().length) continue;
     const text = n.textContent!;
     for (const m of text.matchAll(/(\d+)\.(\d+)\s?(%|pp\b|נק׳|points)/g)) {
       if (m[2].length <= max || (law as string[]).includes(`${m[1]}.${m[2]}`)) continue;
@@ -73,13 +74,13 @@ for (const max of [0, 1]) test(`a split's shares and their sum · k25 · max ${m
   expect(await offenders(page, max)).toEqual([]);
 });
 
-// Owner, 16 Nov 2026 (lay-turnout): "the tile reads 77.98% when the field is on screen". The turnout field shows two
-// decimals; a turnout figure beside it shows the same, and Max decimal places governs it wherever the field is not shown.
-for (const max of [0, 3]) test(`the turnout figure takes its field's precision only while the field is on screen · max ${max}`, async ({ page }) => {
+// Owner, 18-19 Nov 2026 (turnout digits): the Turnout tile reads 77.98%, the same as its field, at every complexity and
+// whatever Max decimal places says, open or closed (it no longer changes when its window opens).
+for (const max of [0, 3]) test(`the turnout figure always has its field's two decimals · max ${max}`, async ({ page }) => {
   await open(page, max, 'k26');
   const tile = page.locator('.fig').filter({ has: page.locator('.k', { hasText: /^Turnout/ }) });
   const value = tile.locator(':scope > button .v');
-  await expect(value).toHaveText(max === 0 ? '78%' : '77.979%');
+  await expect(value).toHaveText('77.98%');
   const positions = () => page.locator('.fig').evaluateAll(els => els.map(el => { const r = el.getBoundingClientRect(); return [r.x, r.y, r.width, r.height]; }));
   await page.locator('.figures').scrollIntoViewIfNeeded();
   const before = await positions(), y = await page.evaluate(() => scrollY);
@@ -89,7 +90,7 @@ for (const max of [0, 3]) test(`the turnout figure takes its field's precision o
   await expect(value).toHaveText('77.98%');
   expect(await positions()).toEqual(before); expect(await page.evaluate(() => scrollY)).toBe(y);
   await page.keyboard.press('Escape');
-  await expect(value).toHaveText(max === 0 ? '78%' : '77.979%');
+  await expect(value).toHaveText('77.98%');
   // the Turnout tab: its tile reads at the field's precision (the field is in the tile's own window)
   await page.locator('#tab-turnout').click();
   await expect(page.locator('.turnout')).toBeVisible();
