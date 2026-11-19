@@ -96,3 +96,48 @@ describe('a count of one reads as one, in both languages', () => {
     expect(hits).toEqual([]);
   });
 });
+
+describe('one date format per language, one Hebrew quotation mark, isolated English in Hebrew', () => {
+  it('writes day.month.year dates like every other date on screen', async () => {
+    const { datesInText } = await import('../src/app/dateFormat.ts');
+    expect(datesInText('ynet, 29.1.2003.')).toBe('ynet, 29 Jan 2003.');
+    expect(datesInText('המקור: ynet, 29.1.2003, ילקוט 15100 (4.11.2026).')).toBe('המקור: ynet, 29 בינו׳ 2003, ילקוט 15100 (4 בנוב׳ 2026).');
+    expect(datesInText('כל 18 המועמדים התפטרו בימים 1–8.4.2019')).toBe('כל 18 המועמדים התפטרו בימים 1–8 באפר׳ 2019');
+    expect(datesInText('Membership ended 1996-10-15; x')).toBe('Membership ended 15 Oct 1996; x');
+    expect(datesInText('https://x/jabo/12.06.2013/2468.jpg')).toBe('https://x/jabo/12.06.2013/2468.jpg');
+    expect(datesInText('32.1.2000 and 1.13.2000')).toBe('32.1.2000 and 1.13.2000');
+  });
+  it('never writes a numeric date (no toLocaleDateString without a style)', () => {
+    const hits = files('src').flatMap((f) => readFileSync(f, 'utf8').split('\n').map((l, i) => ({ l, at: `${f}:${i + 1}` })))
+      .filter(({ l }) => /toLocaleDateString\((?:[^(),]|\([^()]*\))*\)/.test(l)).map(({ at }) => at);
+    expect(hits).toEqual([]);
+  });
+  it('runs every shown note through datesInText (the seat hover read 1996-10-15)', () => {
+    const NOTE = /\{(?:lang === 'he' \? (?:n\.he : n\.en|ds\.status\.noteHe|data\.noteHe|contest\.noteHe)|lang==='he'\?ds\.status\.noteHe)/;
+    const hits = files('src/app/components', /\.tsx$/).flatMap((f) => readFileSync(f, 'utf8').split('\n').map((l, i) => ({ l, at: `${f}:${i + 1}` })))
+      .filter(({ l }) => NOTE.test(l) && !/datesInText\(\(?lang/.test(l)).map(({ at }) => at);
+    expect(hits).toEqual([]);
+  });
+  it('dates in glossary sources are written out', () => {
+    expect(readFileSync('src/app/glossary-data.ts', 'utf8')).not.toMatch(/(?<![\d./])\d{1,2}\.\d{1,2}\.\d{4}(?![\d/])/);
+  });
+  it('Hebrew uses straight quotation marks ("…"), the style most of the app already uses', () => {
+    const code = srcStrings().filter(({ at, s }) => !/bidiRuns/.test(at) && /[א-ת]/.test(s) && /[„“”]/.test(s)
+      && !/[A-Za-z]{3,}/.test(s.replace(/\$\{[^}]*\}/g, ''))).map(({ at }) => at);
+    expect(code).toEqual([]);
+    const data = files('data/meta', /\.json$/).flatMap((f) => readFileSync(f, 'utf8').split('\n').map((l, i) => ({ l, at: `${f}:${i + 1}` })))
+      .filter(({ l }) => /^\s*"(noteHe|he|textHe|labelHe|definitionHe|summaryHe)": "/.test(l) && /[א-ת]/.test(l) && /[„“”]/.test(l)).map(({ at }) => at);
+    expect(data).toEqual([]);
+  });
+  it('English candidate notes name people in English', () => {
+    const notes = JSON.parse(readFileSync('data/meta/candidate-notes.json', 'utf8')).notes as { en: string }[];
+    expect(notes.filter((n) => /[א-ת]+ began serving/.test(n.en)).map((n) => n.en.slice(0, 60))).toEqual([]);
+  });
+  it('isolates an English quotation inside Hebrew as one run', async () => {
+    const { latinQuotesInHebrew } = await import('../src/app/bidiRuns.tsx');
+    expect(latinQuotesInHebrew('בלוח בספר רשומה הממשלה כך: "03/49 · Ben-Gurion · Mapai · 73"; 73 מנדטים.'))
+      .toEqual([{ text: 'בלוח בספר רשומה הממשלה כך: ', latin: false }, { text: '"03/49 · Ben-Gurion · Mapai · 73"', latin: true }, { text: '; 73 מנדטים.', latin: false }]);
+    expect(latinQuotesInHebrew('חלק מ"פשוט", "רגיל" ו"מומחה".')).toEqual([{ text: 'חלק מ"פשוט", "רגיל" ו"מומחה".', latin: false }]);
+    expect(latinQuotesInHebrew('An English "quote" stays whole')).toHaveLength(1);
+  });
+});

@@ -28,7 +28,7 @@ export function ScenarioSave({ as = false, disabled = false, className = 'btn', 
       <div className="choice-head"><b>{collision ? L('Name already exists', 'השם כבר קיים') : L('Save as…', 'שמירה בשם…')}</b><button className="btn" aria-label={L('Close', 'סגירה')} onClick={() => dialog.current?.close()}>×</button></div>
       {collision ? <div className="choice-options">
         <button className="choice-option" onClick={() => match && finish({ overwriteId: match.id })}>{L('Overwrite', 'החלפה')}</button>
-        <button className="choice-option" onClick={() => finish({ newIdentity: true }, nextCopyName(name.trim(), saved.map(x => x.name)))}>{L('Save as copy', 'שמירה כעותק')} “{nextCopyName(name.trim(), saved.map(x => x.name))}”</button>
+        <button className="choice-option" onClick={() => finish({ newIdentity: true }, nextCopyName(name.trim(), saved.map(x => x.name)))}>{L('Save as copy', 'שמירה כעותק')} {L('“', '"')}{nextCopyName(name.trim(), saved.map(x => x.name))}{L('”', '"')}</button>
         <button className="choice-option" onClick={() => setCollision(false)}>{L('Choose another name', 'בחירת שם אחר')}</button>
       </div> : <form onSubmit={e => { e.preventDefault(); if (match) setCollision(true); else finish({ newIdentity: as }); }}>
         <label className="field">{L('Name', 'שם')}<input autoFocus value={name} onChange={e => setName(e.target.value)} /></label>

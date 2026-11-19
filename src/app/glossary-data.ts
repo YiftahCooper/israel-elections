@@ -87,7 +87,7 @@ const KNESSET_LAW: GlossaryLink = { title: 'חוק הכנסת, התשנ"ד-1994,
 // the texts behind the glossary's statements, kept in data/raw (audit 12 Nov 2026, cx-law)
 const LAW_EXTRACT = 'data/raw/law/elections-law-consolidated-extract.txt';
 const ORDINANCE_1948: GlossaryLink = { title: 'פקודת הבחירות לאסיפה המכוננת, תש"ט-1948, ס\' 16(ג)', publisher: 'הכנסת – ארכיון החקיקה', url: 'https://fs.knesset.gov.il/0/law/0_lsr_312706.pdf' };
-const ORDINANCE_1948_AMENDMENT: GlossaryLink = { title: 'פקודת הבחירות לאסיפה המכוננת (תיקון), תש"ט-1948 (עיתון רשמי 40, 31.12.1948), ס\' 1(ג)', publisher: 'הכנסת – ארכיון החקיקה', url: 'https://fs.knesset.gov.il/0/law/0_lsr_312720.pdf' };
+const ORDINANCE_1948_AMENDMENT: GlossaryLink = { title: 'פקודת הבחירות לאסיפה המכוננת (תיקון), תש"ט-1948 (עיתון רשמי 40, 31 בדצמ׳ 1948), ס\' 1(ג)', publisher: 'הכנסת – ארכיון החקיקה', url: 'https://fs.knesset.gov.il/0/law/0_lsr_312720.pdf' };
 const BL_GOV_1992: GlossaryLink = { title: 'חוק-יסוד: הממשלה, 1992 (הנוסח המקורי)', publisher: 'הכנסת – ארכיון החקיקה', url: 'https://fs.knesset.gov.il/12/law/12_lsr_210707.pdf' };
 const LAW_1949: GlossaryLink = { title: 'פקודת הבחירות לאספה המכוננת (עיתון רשמי 33, תוספת א\'), ס\' 30–31', publisher: 'הכנסת – ארכיון החקיקה', url: 'https://fs.knesset.gov.il/0/law/0_lsr_312706.pdf' };
 const LAW_1951: GlossaryLink = { title: 'חוק הבחירות לכנסת, 1951 (ס"ח 74 עמ\' 116), ס\' 38–40', publisher: 'הכנסת – ארכיון החקיקה', url: 'https://fs.knesset.gov.il/1/law/1_lsr_208018.pdf' };
@@ -221,7 +221,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     defEn: 'A list takes part in seat allocation only with at least a fixed share of all valid votes (section 81(a)): 3.25% since 2015, 2% in 2006–2013, 1.5% in 1992–2003 and 1% in 1951–1988. In 1949 no percentage was set, but a list needed one whole quota (about 0.83%). The number of votes required changes with the valid total.',
     linkHe: H.seats, linkEn: E.threshold,
     sources: [
-      src(L.s81, 'he', 'law', 's.81(a) and amendment history on the page: 1% → 1.5% (Amendment 23, 1991) → 2% (Amendment 51, in force 27.5.2004) → 3.25% (Amendment 62, 19.3.2014)'),
+      src(L.s81, 'he', 'law', 's.81(a) and amendment history on the page: 1% → 1.5% (Amendment 23, 1991) → 2% (Amendment 51, in force 27 May 2004) → 3.25% (Amendment 62, 19 Mar 2014)'),
       src(LAW_1951, 'he', 'law', '1951 law: 1% threshold'),
       src(LAW_1949, 'he', 'law', '1949 ordinance: no percentage threshold; only lists with a whole quota compete for further seats'),
       src(H.y1949, 'he', 'institute', 'IDI lists the 1949 "threshold" as 0.83%, the effective one-quota barrier (1/121)'),

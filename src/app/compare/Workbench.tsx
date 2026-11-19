@@ -239,7 +239,7 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
   return <div className="cmp-wb" data-arrows={COPY_ARROWS} onKeyDown={onKey}>
     <div className="row cmp-panel-head">
       <span className="cmp-head-actions">
-        {savedList.length > 0 && <ChoicePicker label={L('Saved comparisons', 'השוואות שמורות')} placeholder={L('Saved comparisons', 'השוואות שמורות')} value="" options={savedList.map((c) => ({ value: c.id, label: c.name, detail: new Date(c.savedAt).toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB') }))} onChange={(id) => { const c = savedList.find((x) => x.id === id); if (c) void openComparison(c.link); }} />}
+        {savedList.length > 0 && <ChoicePicker label={L('Saved comparisons', 'השוואות שמורות')} placeholder={L('Saved comparisons', 'השוואות שמורות')} value="" options={savedList.map((c) => ({ value: c.id, label: c.name, detail: new Date(c.savedAt).toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB', { dateStyle: 'medium' }) }))} onChange={(id) => { const c = savedList.find((x) => x.id === id); if (c) void openComparison(c.link); }} />}
         <button type="button" className="btn small" onClick={() => setSaving(true)}>{L('Save comparison', 'שמירת ההשוואה')}</button>
         <button type="button" className="btn small" onClick={() => void share()}>{L('Copy link', 'העתקת קישור')}</button>
       </span>

@@ -15,6 +15,7 @@ import { candidateName, shownName } from '../derive.ts';
 import { Info } from './ui.tsx';
 import { dispatch, useOn, useSetting, useStore } from '../store.ts';
 import { HEWIKI_LABEL } from '../hewiki.ts';
+import { IsolatedText } from '../bidiRuns.tsx';
 
 /** The reason each candidate was "not seated", by candidate id: the note of their own list (also after a merge moved
  *  them) that names them or their place on the roster. */
@@ -102,7 +103,7 @@ export function Candidates({ l, seats, baseSeats, baseCandidates, notSeatedWhy =
                 ) : (
                   lang === 'en' && x.nameEn ? <><MkName candidate={x}><CandidateName candidate={x} note={false} /></MkName> <bdi className="muted tiny" lang="he" dir="rtl">{shownName(x)}</bdi></> : <MkName candidate={x}><CandidateName candidate={x} note={false} /></MkName>
                 )}
-                {x.notes?.map((n, k) => <span key={k} className="muted tiny cand-note"> · {datesInText(lang === 'he' ? n.he : n.en)}</span>)}
+                {x.notes?.map((n, k) => <span key={k} className="muted tiny cand-note"> · <IsolatedText text={datesInText(lang === 'he' ? n.he : n.en)} /></span>)}
                 {(() => { const p = x.partyId ? l.parties?.find((q) => q.id === x.partyId) : undefined;
                   return p ? <span className="muted tiny"> · {lang === 'he' ? p.nameHe : p.nameEn}</span>
                     : x.partyHe && l.sponsorsHe.includes(';') ? <span className="muted tiny"> · {lang === 'he' ? x.partyHe : romanize(x.partyHe)}</span> : null; })()}

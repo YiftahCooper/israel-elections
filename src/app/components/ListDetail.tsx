@@ -38,6 +38,8 @@ import { ChoicePicker } from './ChoicePicker.tsx';
 import { listChoice } from './ListMark.tsx';
 import { DecimalInput, Info, TextField } from './ui.tsx';
 import { SourcePicker } from './SourcePicker.tsx';
+import { datesInText } from '../dateFormat.ts';
+import { IsolatedText } from '../bidiRuns.tsx';
 
 const niceCeil = (n: number) => { const p = 10 ** Math.max(0, Math.floor(Math.log10(Math.max(1, n))) - 1); return Math.ceil(n / p) * p; };
 
@@ -378,7 +380,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
       {notes.length > 0 && <section>
         {/* written by this project's data build about the official publications (not text of the Elections Committee); Hebrew only so far */}
         <h3>{L('Notes on the sources (in Hebrew)', 'הערות על המקורות')}</h3>
-        {notes.map((n, i) => <p key={i} className="small" lang="he" dir="rtl" style={{ margin: '0 0 4px' }}>{n}</p>)}
+        {notes.map((n, i) => <p key={i} className="small" lang="he" dir="rtl" style={{ margin: '0 0 4px' }}><IsolatedText text={datesInText(n)} /></p>)}
       </section>}
 
       <section className="wide">

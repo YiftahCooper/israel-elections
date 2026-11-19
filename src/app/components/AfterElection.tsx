@@ -14,6 +14,7 @@ import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { personNames, rotationFor, statutory, type RotationAgreement } from '../../data/rotations.ts';
 import './AfterElection.css';
 import { sourceLinkText } from '../hewiki.ts';
+import { latinQuotesInHebrew } from '../bidiRuns.tsx';
 
 /** Ranges follow the reader: start on the right in Hebrew, on the left in English. */
 function DateRun({ date, end }: { date: string; end?: string }) {
@@ -58,7 +59,11 @@ function RotationWhy({ a, name }: { a: RotationAgreement; name: (en: string) => 
 
 /** Covers numbers and embedded ISO dates in all 26 records, including future prose additions.
  * Verbatim source quotations retain their exact text, with bidi isolation only. */
-function HistoryText({ text, verbatim = false }: { text: string; verbatim?: boolean }) {
+function HistoryText({ text, verbatim = false }: { text: string; verbatim?: boolean }): ReactNode {
+  // An English quotation inside Hebrew ("03/49 · Ben-Gurion · … · 73") is one left-to-right island, so its numbers and
+  // the Hebrew numbers beside it cannot swap places across the change of direction.
+  const quoted = latinQuotesInHebrew(text);
+  if (quoted.length > 1) return <>{quoted.map((q, i) => q.latin ? <bdi key={i} dir="ltr">{q.text}</bdi> : <HistoryText key={i} text={q.text} verbatim={verbatim} />)}</>;
   const runs = text.split(/(\d{4}-\d{2}(?:-\d{2})?(?:\s+[–-]\s+\d{4}-\d{2}(?:-\d{2})?)?|\d+(?:[,.]\d+)*(?:\s*[–−/:\-]\s*\d+(?:[,.]\d+)*)*%?)/g);
   return <>{runs.map((run, i) => {
     if (!/^\d/.test(run)) return run;

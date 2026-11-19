@@ -13,5 +13,13 @@ export function formatDate(value: string, lang: Lang): string {
  *  identifier ("…-2022-10-23.pdf") is left alone. */
 export function datesInText(text: string): string {
   const lang: Lang = (text.match(/[֐-׿]/g)?.length ?? 0) > (text.match(/[A-Za-z]/g)?.length ?? 0) ? 'he' : 'en';
-  return text.replace(/(?<![\w./-])\d{4}-\d{2}-\d{2}(?![\w/]|-\w|\.\w)/g, (d) => formatDate(d, lang));
+  return text.replace(/(?<![\w./-])\d{4}-\d{2}-\d{2}(?![\w/]|-\w|\.\w)/g, (d) => formatDate(d, lang))
+    // a date written the Israeli way, day.month.year ("ynet, 29.1.2003", "בימים 1–8.4.2019"), reads like every other
+    // date on screen (one date format per language); a day range keeps its first day. Never inside an address or a
+    // file name, and only for a real day and month.
+    .replace(/(?<![\w./%-])(?:(\d{1,2})[–-])?(\d{1,2})\.(\d{1,2})\.(\d{4})(?![\w/%]|\.\w)/g, (all, from, d, m, y) => {
+      if (+m < 1 || +m > 12 || +d < 1 || +d > 31 || (from && (+from < 1 || +from >= +d))) return all;
+      const day = formatDate(`${y}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`, lang);
+      return from ? `${from}–${day}` : day;
+    });
 }
