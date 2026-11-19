@@ -456,3 +456,21 @@ test('opening another election while a row menu is open closes the menu and keep
   expect(errors).toEqual([]);
 });
 
+// A row that pairs one list with several (Likud in 2026 with Herut, the General Zionists and the Progressives in 1955)
+// shows every list's logo beside the joined name; on a phone the sheet's two sides still fit the screen (found by
+// Bombadil, 19 Nov 2026).
+test('phone, Hebrew: a row sheet with three lists on one side fits the screen', async ({ page }) => {
+  await start(page, 'he', 'k3', 390);
+  await page.locator('#tab-board').click();
+  await page.locator('.compare-on').click();
+  await choose(page.locator('.cmpm-strip').getByRole('button', { name: 'השוואה עם', exact: true }), 'election:k26');
+  await openSideBySide(page);
+  await row(page, 'חרות').locator('.cmp-lname, .cmp-rname').first().click();
+  const sheet = page.locator('dialog[open].cmp-sheet');
+  await expect(sheet).toContainText('הפרוגרסיבים');
+  const sides = await sheet.locator('.cmp-sheet-side').evaluateAll(els => els.map(e => { const r = e.getBoundingClientRect(); return [Math.round(r.left), Math.round(r.right)]; }));
+  for (const [l, r] of sides) { expect(l).toBeGreaterThanOrEqual(0); expect(r).toBeLessThanOrEqual(390); }
+  const names = await sheet.locator('.cmp-sheet-side bdi').evaluateAll(els => els.map(e => { const r = e.getBoundingClientRect(); return [Math.round(r.left), Math.round(r.right)]; }));
+  for (const [l, r] of names) { expect(l).toBeGreaterThanOrEqual(0); expect(r).toBeLessThanOrEqual(390); }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(0);
+});
