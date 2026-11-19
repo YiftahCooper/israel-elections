@@ -6,8 +6,9 @@ import type { ElectionId } from '../../data/schema.ts';
 import { baselineOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt } from '../format.ts';
-import { answerPreference, chooseSource, loadDataset, setState, useOn, useStore, useVoteSource } from '../store.ts';
-import { PREFERENCES, sourceValue, type PreferenceId } from '../preferences.ts';
+import { answerPreference, chooseSource, getState, loadDataset, setState, useOn, useStore, useVoteSource } from '../store.ts';
+import { PREFERENCES, defaultAnswer, sourceValue, type PreferenceId } from '../preferences.ts';
+import { ScopeChoice, type Scope } from './ScopeChoice.tsx';
 import { Info } from './ui.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { listChoice } from './ListMark.tsx';
@@ -46,11 +47,15 @@ export function SourceDialog() {
   // asked at every level (owner, 9 Nov 2026); Simple offers the two main answers, the higher levels also one list
   const simple = !useOn('oneListSource');
   const [value, setValue] = useState('');
-  const [scope, setScope] = useState<'once' | 'item' | 'always'>('once');
+  const [scope, setScope] = useState<Scope>('once');
+  const [dontAsk, setDontAsk] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     const d = dialog.current; if (!d) return;
-    if (ask && !d.open) { setValue(''); setScope('once'); d.showModal(); d.focus({ preventScroll: true }); }
+    // a default set without "Don't ask again" is where the question starts (a list it names, if not offered now, is not)
+    const preset = ask ? defaultAnswer(getState().preferences[ask.id]) ?? '' : '';
+    const offered = !preset.startsWith('t:') || (getState().scenario?.lists.some(l => l.id === preset.slice(2) && !l.withdrawn && !ask?.exclude?.includes(l.id)) && !simple);
+    if (ask && !d.open) { setValue(offered && !(simple && preset === 'citizens') ? preset : ''); setScope('once'); setDontAsk(false); d.showModal(); d.focus({ preventScroll: true }); }
     if (!ask && d.open) d.close();
   }, [ask]);
   const cancel = () => { ask?.cancel?.(); setState({ preferenceAsk: null }); };
@@ -64,7 +69,7 @@ export function SourceDialog() {
       <Info title={label}>{id === 'voteSource'
         ? L('Other lists: taken from all, in proportion; turnout unchanged. People who stayed home: turnout changes. New citizens: eligible voters change too. One list: only that list gives or takes. A remembered donor is asked again if unavailable or part of the edited group.', 'שאר הרשימות: מכולן, באופן יחסי; ההצבעה ללא שינוי. מי שלא הצביעו: שיעור ההצבעה משתנה. אזרחים חדשים: גם מספר בעלי זכות הבחירה משתנה. רשימה אחת: רק היא נותנת או מקבלת. אם הרשימה ששמרתם אינה זמינה או שייכת לקבוצה הנערכת, השאלה תוצג שוב.')
         : L('Opened scenario: only your newer changes are marked. Official result: every difference is marked.', 'התרחיש שנפתח: מסומנים רק השינויים החדשים. התוצאה הרשמית: מסומן כל הבדל.')}</Info></p>
-    <form onSubmit={e => { e.preventDefault(); if (value) answerPreference(value, scope); }}>
+    <form onSubmit={e => { e.preventDefault(); if (value) answerPreference(value, scope, dontAsk); }}>
       <label className="field">{label}
         <ChoicePicker label={label} placeholder={L('Choose…', 'בחירה…')} value={value} onChange={setValue}
           options={[...PREFERENCES[id].options.filter(o => !(simple && o.value === 'citizens')).map(o => ({ value: o.value, label: L(o.label[0], o.label[1]) })),
@@ -77,14 +82,11 @@ export function SourceDialog() {
         {!simple && <li data-chosen={value === 'citizens' || undefined}><b>{L('New citizens', 'אזרחים חדשים')}:</b> {L('people added to the country, who all vote. Eligible voters rise by the same number, marked as a change.', 'אנשים שנוספו למדינה, וכולם מצביעים. מספר בעלי זכות הבחירה גדל באותו מספר, ומסומן כשינוי.')}</li>}
         {!simple && <li data-chosen={value.startsWith('t:') || undefined}><b>{L('One list', 'רשימה אחת')}:</b> {L('only that list gives or takes the votes.', 'רק היא נותנת או מקבלת את הקולות.')}</li>}
       </ul>}
-      <fieldset className="preference-scope">
-        <legend>{L('Use this choice', 'שימוש בבחירה')}</legend>
-        {([
-          ['once', L('Just this once', 'רק הפעם')],
-          ['item', id === 'comparison' ? L('For this scenario', 'לתרחיש זה') : ask?.key.startsWith('bloc:') ? L('For this bloc', 'לגוש זה') : L('For this list', 'לרשימה זו')],
-          ['always', L('Always', 'תמיד')],
-        ] as const).map(([v, text]) => <label key={v}><input type="radio" name="preference-scope" value={v} checked={scope === v} onChange={() => setScope(v)} />{text}</label>)}
-      </fieldset>
+      <ScopeChoice name="preference-scope" scope={scope} onScope={setScope} dontAsk={dontAsk} onDontAsk={setDontAsk}
+        item={id === 'comparison' ? L('For this scenario', 'לתרחיש זה') : ask?.key.startsWith('bloc:') ? L('For this bloc', 'לגוש זה') : L('For this list', 'לרשימה זו')}
+        dontAskInfo={id === 'comparison'
+          ? L('Opening a saved scenario then uses this answer at once. To be asked again: “Ask next time” in the message that says so, or Settings → Editing → Mark changes since: Ask each time.', 'פתיחת תרחיש שמור תשתמש אז בתשובה הזו מיד. כדי שתישאלו שוב: „לשאול בפעם הבאה” בהודעה שאומרת זאת, או הגדרות ← עריכה ← סימון שינויים מאז: לשאול בכל פעם.')
+          : L('Each vote edit then takes its votes this way at once; Undo takes an edit back. To be asked again: “Ask next time” in the message that says so, or Settings → Editing → Votes come from: Ask each time.', 'כל עריכת קולות תיקח אז את הקולות כך, מיד; ביטול מחזיר עריכה. כדי שתישאלו שוב: „לשאול בפעם הבאה” בהודעה שאומרת זאת, או הגדרות ← עריכה ← מקור הקולות: לשאול בכל פעם.')} />
       <p className="tiny muted"><button type="button" className="link-btn" onClick={() => { cancel(); setState({ settingsOpen: true, settingsFocus: id === 'comparison' ? 'markChanges' : 'voteSource' }); }}>{L('Change in Settings', 'שינוי בהגדרות')}</button></p>
       <div className="row">
         <button type="submit" className="btn small primary" disabled={!value}>{L('Apply', 'החלה')}</button>
@@ -153,7 +155,7 @@ export function RememberedAnswers({ id }: { id: PreferenceId }) {
   return <div className="pref-remembered">
     <button type="button" className="btn small ghost pref-disclosure" aria-expanded={open} onClick={() => setOpen(o => !o)}>
       {L(`Remembered for ${items.length}`, `נשמר ל־${items.length}`)} <span aria-hidden>{open ? '▾' : '▸'}</span></button>
-    <Info title={L('Remembered answers', 'תשובות שמורות')}>{L('An answer chosen with “For this list”, “For this bloc” or “For this scenario”. It wins over the default above, only for that item and election.', 'תשובה שנבחרה עם "לרשימה זו", "לגוש זה" או "לתרחיש זה". היא קודמת לברירת המחדל, רק לפריט ולבחירות האלה.')}</Info>
+    <Info title={L('Remembered answers', 'תשובות שמורות')}>{L('An answer chosen with “For this list”, “For this bloc” or “For this scenario”. It wins over the default above, only for that item and election, and is used without asking.', 'תשובה שנבחרה עם "לרשימה זו", "לגוש זה" או "לתרחיש זה". היא קודמת לברירת המחדל, רק לפריט ולבחירות האלה, ומשמשת בלי לשאול.')}</Info>
     {open && <>
       <ul className="pref-items small" aria-label={L(PREFERENCES[id].label[0], PREFERENCES[id].label[1]) + ' · ' + title}>
         {items.map(([k, v]) => { const [, election, ...rest] = k.split(':'); const name = itemLabel(election, rest.join(':'));

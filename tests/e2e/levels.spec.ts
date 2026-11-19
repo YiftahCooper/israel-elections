@@ -98,7 +98,8 @@ test('Simple asks where added votes come from too, with each answer’s effect i
   await expect(ask.locator('.source-consequences li')).toHaveCount(2);
   await expect(ask.locator('.source-consequences')).toContainText('Turnout stays the same');
   await expect(ask.locator('.source-consequences')).toContainText('so turnout changes');
-  for (const scope of ['Just this once', 'For this list', 'Always']) await expect(ask.getByRole('radio', { name: scope, exact: true })).toBeVisible();
+  for (const scope of ['Just this once', 'For this list', 'Set as default']) await expect(ask.getByRole('radio', { name: scope, exact: true })).toBeVisible();
+  await expect(ask.getByRole('checkbox', { name: 'Don’t ask again', exact: true })).toBeDisabled();
   const pick = ask.locator('.choice-trigger').first();
   await pick.click();
   const options = page.locator(`[id="${await pick.getAttribute('aria-controls')}"]`);

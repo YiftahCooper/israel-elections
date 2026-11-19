@@ -29,17 +29,19 @@ for (const lang of ['en', 'he'] as const) test(`1999 Shas: the first seat's card
 
 test('1977 counted by party: the key and the Hadash rows add up to every seat, the public circles seat included', async ({ page }) => {
   await start(page, { election: 'k9' });
-  const nums = await page.locator('.chamber .legend button b').allTextContents();
+  // party rows (not the joint lists' headings, which carry their list's total) add up to every seat
+  const nums = await page.locator('.chamber .legend button:not(.key-group-head) b').allTextContents();
   expect(nums.reduce((t, n) => t + Number(n), 0)).toBe(120);
-  await expect(page.locator('.chamber .legend')).toContainText('Jewish and Arab public circles · Hadash 1');
+  await expect(page.locator('.chamber .legend').getByRole('group', { name: 'Hadash', exact: true })).toContainText('Jewish and Arab public circles 1');
   const hadash = page.locator('.lbars li').filter({ has: page.locator('.lb-parties li', { hasText: 'Jewish and Arab public circles' }) });
   await expect(hadash.locator('[data-party-rest]')).toHaveCount(0);
   const rows = await hadash.locator('.lb-parties li b').allTextContents();
   expect(rows.reduce((t, n) => t + Number(n), 0)).toBe(Number(await hadash.locator('.lb-seats b').textContent()));
   // one swatch type: every key row starts with a seat dot, in chamber order (Likud 40 before Shinui 2 in 1988)
-  await expect(page.locator('.chamber .legend button:not(:has(.component-key))')).toHaveCount(0);
+  await expect(page.locator('.chamber .legend button:not(.key-group-head):not(:has(.component-key))')).toHaveCount(0);
   await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k12');
-  const names = await page.locator('.chamber .legend button').allTextContents();
+  // the names as read out: a list's ballot-letter mark beside a name is hidden from the reading
+  const names = await page.locator('.chamber .legend button').evaluateAll(bs => bs.map(b => { const c = b.cloneNode(true) as Element; c.querySelectorAll('[aria-hidden="true"]').forEach(x => x.remove()); return c.textContent!.trim(); }));
   expect(names.findIndex(n => n.startsWith('Likud'))).toBeLessThan(names.findIndex(n => n.startsWith('Shinui')));
 });
 
@@ -82,10 +84,10 @@ for (const lang of ['en', 'he'] as const) test(`the exported chamber names its g
   const texts = await page.evaluate(x => [...new DOMParser().parseFromString(x, 'image/svg+xml').querySelectorAll('text')].map(t => t.textContent ?? ''), xml);
   expect(texts).toContain(lang === 'he' ? 'גושים לפני הבחירות · 27 באוק׳ 2026' : 'Pre-election blocs · 27 Oct 2026');
   expect(texts.filter(t => /⁦\d+ \/ 120⁩ · /.test(t))).toHaveLength(3);
-  // a shortened name ends at a whole word and keeps the list's name after it
+  // a shortened name ends at a whole word; a party sits under its list's heading, so its line names the party only
   const cut = texts.filter(t => t.includes('…'));
-  expect(cut.length).toBeGreaterThan(0);
-  for (const t of cut) expect(t).toMatch(/[^\s(]… · \S/);
+  for (const t of cut) expect(t).toMatch(/[^\s(]…/);
+  expect(texts.some(t => t.startsWith(lang === 'he' ? 'תקווה חדשה ' : 'New Hope – the National Right '))).toBe(true);
 });
 
 test('the step-size switch has one size everywhere and never wraps', async ({ page }) => {

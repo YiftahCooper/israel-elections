@@ -70,9 +70,6 @@
 .cmpm-copy .cmpm-copy-ticks { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 2px 12px; max-block-size: 12rem; overflow: auto; }
 .cmpm-copy .cmpm-copy-ticks label { display: flex; gap: 6px; align-items: center; min-block-size: 28px; }
 .cmpm-copy .cmpm-copy-lists .row { display: flex; gap: 12px; }
-/* "Don't ask again": a second tick under "Set as default", indented under it, greyed while another scope is chosen */
-.cmpm-copy .preference-scope .cmpm-dont-ask { display: inline-flex; align-items: center; gap: 4px; padding-inline-start: 24px; }
-.cmpm-copy .preference-scope .cmpm-dont-ask[data-off] { color: var(--muted); }
 .cmpm-copy-sentence { margin: 0; line-height: 1.5; }
 
 /* the Side by side page: its name and Close, which returns to the screen you came from, still comparing */

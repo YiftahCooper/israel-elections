@@ -1,7 +1,7 @@
 // The copy question's remembered answers: the existing vote-source question plus the copy mode, with the usual scopes
-// (Just this once / For this list / Always). Item answers are per destination list, like every vote edit's.
+// (Just this once / For this list / Set as default). Item answers are per destination list, like every vote edit's.
 import { getState, setPreference, setState } from '../store.ts';
-import { sourceChoice, sourceValue } from '../preferences.ts';
+import { asksEachTime, defaultAnswer, sourceChoice, sourceValue, storedDefault } from '../preferences.ts';
 import type { SourceChoice } from '../voteEdit.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { isDefaultCopyMode, type CopyMode } from './copy.ts';
@@ -11,7 +11,7 @@ const itemKey = (id: 'voteSource' | 'copyMode', dest: Scenario, listId: string) 
 /** What is already decided for a copy into `listId` (null: nothing remembered, so ask). */
 export function remembered(dest: Scenario, listId: string | null, cross: boolean): { mode: CopyMode | null; source: SourceChoice | null } {
   const st = getState();
-  const item = (id: 'voteSource' | 'copyMode') => (listId ? st.preferenceFor?.[itemKey(id, dest, listId)] : undefined) ?? st.preferences[id];
+  const item = (id: 'voteSource' | 'copyMode') => (listId ? st.preferenceFor?.[itemKey(id, dest, listId)] : undefined) ?? defaultAnswer(st.preferences[id]);
   const m = cross ? item('copyMode') : 'count';
   const v = item('voteSource');
   // a remembered donor is asked again when it is absent, withdrawn or the destination itself
@@ -19,10 +19,13 @@ export function remembered(dest: Scenario, listId: string | null, cross: boolean
   return { mode: isDefaultCopyMode(m) ? m : null, source: ok ? sourceChoice(v!) : null };
 }
 
-export function remember(dest: Scenario, listId: string | null, cross: boolean, mode: CopyMode, source: SourceChoice, scope: 'once' | 'item' | 'always') {
+export function remember(dest: Scenario, listId: string | null, cross: boolean, mode: CopyMode, source: SourceChoice, scope: 'once' | 'item' | 'default') {
   if (scope === 'once') { setState({ voteSource: source }); return; }
-  if (scope === 'always') {
-    setPreference('voteSource', sourceValue(source));
+  if (scope === 'default') {
+    // the source becomes the vote edits' default too, but whether vote edits ask stays as it was: Copy votes' own
+    // "Don't ask again" is Settings → Copy votes: ask each time
+    const was = getState().preferences.voteSource;
+    setPreference('voteSource', storedDefault(sourceValue(source), asksEachTime(was)));
     if (cross && isDefaultCopyMode(mode)) setPreference('copyMode', mode);
     return;
   }

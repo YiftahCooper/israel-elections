@@ -4,7 +4,7 @@ import { activeFeatures, getState, setCustom, setFeature, setMapLines, setPrefer
 import { CHOICE, resetFeatures, resetRows, restore, snapshot } from '../settingsReset.ts';
 import { DECIMAL_CHOICES, FEATURE_GROUP, FEATURE_ROWS, GROUPS, SETTINGS, TIERS, featureMatches, textMatches, isExternal, rowMatches, rowTier, rowVisible, settingValue, type GroupId, type SettingId, type SettingRow } from '../settings.ts';
 import { CUSTOM_LABEL, FEATURE_PREVIEWS, LEVEL_LABELS, PRESETS, SHOW_OR_HIDE, TOOL_FEATURES, featureLabel, featureLevel, ownChoices, shownAs, type FeatureId, type Preset, type Visibility } from '../features.ts';
-import { PREFERENCES } from '../preferences.ts';
+import { PREFERENCES, asksEachTime, defaultAnswer, storedDefault } from '../preferences.ts';
 import { listLabel } from '../derive.ts';
 import { RememberedAnswers } from './SourcePicker.tsx';
 import { ColourChanges } from './ColourChanges.tsx';
@@ -109,7 +109,7 @@ function SettingsContent({ close }: { close: () => void }) {
       </div>)}
       <footer className="ps-foot">
         <button type="button" className="btn small" onClick={resetAll}>{L('Reset all settings', 'איפוס כל ההגדרות')}</button>
-        <Info title={L('Reset all settings', 'איפוס כל ההגדרות')}>{L('Back to the defaults, with Undo. Questions answered with “Always” are asked again, Custom is cleared, and every tool and detail follows its complexity again. Language, complexity and answers remembered for one list, bloc or scenario stay.', 'חזרה לברירות המחדל, עם ביטול. שאלות שנענו ב"תמיד" יישאלו שוב, "מותאם אישית" מתנקה וכל כלי ופרט חוזרים לפי רמת המורכבות. השפה, רמת המורכבות והתשובות השמורות לרשימה, לגוש או לתרחיש אחד נשארות.')}</Info>
+        <Info title={L('Reset all settings', 'איפוס כל ההגדרות')}>{L('Back to the defaults, with Undo. Questions answered with “Set as default” are asked again, Custom is cleared, and every tool and detail follows its complexity again. Language, complexity and answers remembered for one list, bloc or scenario stay.', 'חזרה לברירות המחדל, עם ביטול. שאלות שנענו ב"קביעה כברירת מחדל" יישאלו שוב, "מותאם אישית" מתנקה וכל כלי ופרט חוזרים לפי רמת המורכבות. השפה, רמת המורכבות והתשובות השמורות לרשימה, לגוש או לתרחיש אחד נשארות.')}</Info>
       </footer>
     </div>
   </>;
@@ -228,12 +228,18 @@ function Control({ row, label }: { row: SettingRow; label: string }) {
   if (row.control === 'lang') return <Seg label={label} value={store.lang} onChange={v => setState({ lang: v as 'he' | 'en' })} options={row.options!.map(o => ({ v: o.value as 'he' | 'en', label: o.label[0], lang: o.value }))} />;
   if (row.control === 'choice') {
     const q = CHOICE[row.id]!;
-    const value = store.preferences[q] ?? 'ask';
+    // the default answer ("None": no default, so the question is asked), and apart from it whether it is still asked
+    // each time (owner, 19 Nov 2026: as the Copy votes box's "Set as default" and "Don't ask again")
+    const stored = store.preferences[q], value = defaultAnswer(stored) ?? 'ask', asks = asksEachTime(stored);
     const remembered = value.startsWith('t:') ? store.scenario?.lists.find(l => l.id === value.slice(2)) : undefined;
-    const options = [{ v: 'ask', label: L('Ask', 'לשאול') }, ...PREFERENCES[q].options.map(o => ({ v: o.value as string, label: L(o.label[0], o.label[1]) })),
-      // a list remembered for Always is shown as a fourth, pressed segment: the state is never hidden
+    const options = [{ v: 'ask', label: L('None', 'ללא') }, ...PREFERENCES[q].options.map(o => ({ v: o.value as string, label: L(o.label[0], o.label[1]) })),
+      // a list remembered as the default is shown as a fourth, pressed segment: the state is never hidden
       ...(value.startsWith('t:') ? [{ v: value, label: remembered ? listLabel(remembered, lang) : L('One list', 'רשימה אחת') }] : [])];
-    return <Seg label={label} value={value} onChange={v => setPreference(q, v === 'ask' ? undefined : v)} options={options} />;
+    const seg = <Seg label={label} value={value} onChange={v => setPreference(q, v === 'ask' ? undefined : storedDefault(v, asks || stored === undefined))} options={options} />;
+    // Copy votes has its own row for this (Copy votes: ask each time)
+    if (q !== 'voteSource' && q !== 'comparison') return seg;
+    return <>{seg} <label className="ps-ask-each" data-off={value === 'ask' ? '' : undefined}><input type="checkbox" checked={asks} disabled={value === 'ask'} aria-label={L(`${label}: ask each time`, `${label}: לשאול בכל פעם`)}
+      onChange={e => setPreference(q, storedDefault(value, e.target.checked))} />{L('Ask each time', 'לשאול בכל פעם')}</label></>;
   }
   if (row.control === 'decimals') {
     const value = settingValueOf(store, 'decimals') as number;

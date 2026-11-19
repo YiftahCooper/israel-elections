@@ -1,0 +1,3 @@
+/* "Don't ask again" sits under "Set as default", indented, and greys out without it (ScopeChoice.tsx) */
+.preference-scope .scope-dont-ask { flex-basis: 100%; display: inline-flex; align-items: center; gap: 4px; padding-inline-start: 24px; }
+.preference-scope .scope-dont-ask[data-off] { color: var(--muted); }

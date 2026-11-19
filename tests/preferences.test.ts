@@ -1,6 +1,7 @@
 import { beforeEach, expect, test, vi } from 'vitest';
 import { answerPreference, askPreference, chooseSource, getState, setPreference, setState, withSource } from '../src/app/store.ts';
 import { validItemAnswers, validAnswers } from '../src/app/preferences.ts';
+import { askAgain } from '../src/app/store.ts';
 beforeEach(() => setState({ preferences: {}, preferenceAsk: null, preferenceFor: null }));
 test('storage accepts only supported answers', () => {
   expect(validAnswers({ comparison: 'invalid', voteSource: 'new', surprise: 'yes' })).toEqual({ voteSource: 'new' });
@@ -10,10 +11,10 @@ test('one pending question; selecting scope commits exactly once', () => {
   askPreference({ id: 'comparison', key: 'a', title: 'A', run });
   askPreference({ id: 'comparison', key: 'b', title: 'B', run: second });
   expect(run).not.toHaveBeenCalled();
-  answerPreference('official', 'always');
+  answerPreference('official', 'default', true);
   expect(run).toHaveBeenCalledExactlyOnceWith('official');
   expect(second).not.toHaveBeenCalled();
-  answerPreference('reference', 'always');
+  answerPreference('reference', 'default', true);
   expect(run).toHaveBeenCalledTimes(1);
   askPreference({ id: 'comparison', key: 'c', title: 'C', run });
   expect(run).toHaveBeenLastCalledWith('official');
@@ -30,7 +31,7 @@ test('local answer holds for the current target, changing targets asks again', (
 });
 test('Ask each time clears the previous target answer too', () => {
   const run = vi.fn();
-  withSource('list:a', 'A', [], run); answerPreference('new', 'always');
+  withSource('list:a', 'A', [], run); answerPreference('new', 'default', true);
   setPreference('voteSource');
   withSource('list:a', 'A', [], run);
   expect(getState().preferenceAsk).not.toBeNull();
@@ -100,4 +101,42 @@ test('the unassigned group keeps its remembered source without a named bloc', ()
   expect(run).toHaveBeenCalledTimes(2);
   expect(getState().preferenceAsk).toBeNull();
   setState({ scenario: null });
+});
+
+// Owner, 19 Nov 2026: "Set as default" and "Don't ask again" are two choices, as in the Copy votes box.
+test.each(['voteSource', 'comparison'] as const)('Set as default alone keeps asking %s, starting on the default', id => {
+  const run = vi.fn(), answer = id === 'voteSource' ? 'new' : 'official';
+  askPreference({ id, key: 'a', title: 'A', run });
+  answerPreference(answer, 'default');
+  expect(getState().preferences[id]).toBe(`ask:${answer}`);
+  askPreference({ id, key: 'b', title: 'B', run });
+  expect(getState().preferenceAsk?.key).toBe('b');
+  expect(run).toHaveBeenCalledTimes(1);
+});
+test('Set as default with Don\'t ask again answers at once, says so once, and Ask next time asks again', () => {
+  setState({ toast: null }); askAgain('voteSource'); // the once-a-session note starts afresh
+  const run = vi.fn();
+  withSource('list:a', 'A', [], run); answerPreference('new', 'default', true);
+  expect(getState().preferences.voteSource).toBe('new');
+  withSource('list:b', 'B', [], run);
+  expect(getState().preferenceAsk).toBeNull();
+  expect(run).toHaveBeenLastCalledWith({ kind: 'new' });
+  const note = getState().toast;
+  expect(note?.action?.label).toBe('לשאול בפעם הבאה'); // Hebrew is the default language
+  setState({ toast: null });
+  withSource('list:c', 'C', [], run);
+  expect(getState().toast).toBeNull(); // once a session
+  note!.action!.run();
+  expect(getState().preferences.voteSource).toBe('ask:new');
+  withSource('list:d', 'D', [], run);
+  expect(getState().preferenceAsk?.key).toBe('list:d');
+  askAgain('voteSource');
+  expect(getState().preferences.voteSource).toBe('ask:new');
+});
+test('a stored default that still asks is valid storage, and its answer is the vote source', () => {
+  expect(validAnswers({ voteSource: 'ask:new', comparison: 'ask:official', copyMode: 'ask:bogus', jointSeats: 'ask:on' })).toEqual({ voteSource: 'ask:new', comparison: 'ask:official' });
+  setPreference('voteSource', 'ask:new');
+  expect(getState().voteSource).toEqual({ kind: 'new' });
+  chooseSource('list:a', { kind: 'proportional' });
+  expect(getState().preferences.voteSource).toBe('ask:proportional');
 });
