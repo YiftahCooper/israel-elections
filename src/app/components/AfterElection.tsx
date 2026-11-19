@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { reviewedAftermath, recommendationPieces, visibleTermEvents, completePolls, chronological, termEndFact, termWithEnd, sourceLabel, pageSources, isFieldRecord, type Aftermath, type Cite, type Conflict, type DatedFact, type HistorySource, type RecommendationRound } from '../../data/aftermath-runtime.ts';
 import type { GovernmentSupport, GovernmentParticipant, GovernmentIndividual } from '../../data/aftermath.ts';
-import { supportRoleGroups, participantName, listsBelowTheirSeats, type SupportGroup } from '../governmentSupport.ts';
+import { supportRoleGroups, participantName, listsBelowTheirSeats, majorityCrossing, type SupportGroup } from '../governmentSupport.ts';
 import type { ElectionDataset } from '../../data/schema.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
@@ -154,9 +154,13 @@ function Recommendations({ data, ds, round }: { data: Aftermath; ds: ElectionDat
   const tail = (key: string) => key === 'unknown' ? 4 : key === 'disputed' ? 3 : key === 'none' ? 2 : key === 'other' || key === 'knesset' ? 1 : 0;
   const groups = Object.entries(round.totals).sort(([a, x], [b, y]) => tail(a) - tail(b) || y - x);
   const list = (letters: string) => ds.lists.find(l => l.letters === letters)!;
+  // the 61 line must not run through a list's letters (V2 fault A8): the piece it crosses sets its letters in its larger
+  // part, away from the line; where that part is too narrow (under 5 seats, or any crossed piece on a phone) it leaves them out
+  const ordered = groups.flatMap(([key]) => pieces.filter(p => p.group === key));
+  const crossing = majorityCrossing(ordered.map(p => p.seats));
   return <div className="after-round">
     <h4><span className="after-help-anchor"><DateRun date={round.date} end={round.endDate} /> <Evidence data={data} cites={round.cites} notes={round.notes} /></span></h4>
-    <div className="after-bar-wrap"><div className="after-bar" dir="ltr" aria-hidden="true">{groups.map(([key, total]) => <div key={key} className="after-group" style={{ flex: total }}>{pieces.filter(p => p.group === key).map((p, i) => <span key={i} className={key === 'unknown' ? 'after-unknown' : ''} style={{ flex: p.seats, backgroundColor: key === 'unknown' ? undefined : list(p.letters).color }} title={`${p.letters} · ${listLabel(list(p.letters), lang)}${p.partEn ? ` (${lang === 'he' ? p.partHe : p.partEn})` : ''} · ${p.seats}`}>{p.seats >= 6 && <bdi className={p.seats < 10 ? 'after-small-slip' : undefined} lang="he">{p.letters}</bdi>}</span>)}</div>)}<i className="after-majority">61</i></div></div>
+    <div className="after-bar-wrap"><div className="after-bar" dir="ltr" aria-hidden="true">{groups.map(([key, total]) => <div key={key} className="after-group" style={{ flex: total }}>{pieces.filter(p => p.group === key).map((p, i) => <span key={i} className={[key === 'unknown' ? 'after-unknown' : '', crossing?.index === ordered.indexOf(p) ? `after-crossed ${crossing.side}${crossing.room < 5 ? ' tight' : ''}` : ''].filter(Boolean).join(' ') || undefined} style={{ flex: p.seats, backgroundColor: key === 'unknown' ? undefined : list(p.letters).color }} title={`${p.letters} · ${listLabel(list(p.letters), lang)}${p.partEn ? ` (${lang === 'he' ? p.partHe : p.partEn})` : ''} · ${p.seats}`}>{p.seats >= 6 && <bdi className={p.seats < 10 ? 'after-small-slip' : undefined} lang="he">{p.letters}</bdi>}</span>)}</div>)}<i className="after-majority">61</i></div></div>
     <GroupKey groups={groups} label={groupLabel} />
     <details className="after-breakdown"><summary>{L('Lists & recommendations', 'רשימות והמלצות')}</summary><table><thead><tr><th>{L('List', 'רשימה')}</th><th>{L('Recommendation', 'המלצה')}</th><th>{L('Seats', 'מנדטים')}</th></tr></thead><tbody>{groups.flatMap(([key]) => pieces.filter(p => p.group === key).map((p, i) => <tr key={`${key}-${i}`}><td><span className="after-party" style={{ '--party': list(p.letters).color } as CSSProperties}><bdi lang="he">{p.letters}</bdi> <bdi>{listLabel(list(p.letters), lang)}</bdi>{p.partEn && <> <bdi>({lang === 'he' ? p.partHe : p.partEn})</bdi></>}</span></td><td><HelpText data={data} text={groupLabel(key)} cites={p.cites} explanation={lang === 'he' ? p.noteHe : p.noteEn} /></td><td><bdi dir="ltr">{p.seats}</bdi></td></tr>))}</tbody></table></details>
   </div>;

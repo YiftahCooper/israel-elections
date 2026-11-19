@@ -488,3 +488,17 @@ for (const lang of ['en', 'he'] as const) test(`an MK outside the coalition is s
   await expect(chikli).toContainText(lang === 'he' ? 'מחוץ לקואליציה' : 'Not in the coalition');
   await expect(history.locator('.after-individuals').first()).not.toContainText(lang === 'he' ? 'השתתפות אחרת' : 'Other participation');
 });
+
+// V2 fault A8: the 61 line ran through Yesh Atid's letters in 2021's first round, at 1500 and 390 px.
+for (const width of [1500, 390]) test(`the 61 line crosses no list's letters (${width} px)`, async ({ page }) => {
+  await page.setViewportSize({ width, height: 900 });
+  const history = await openAfter(page, 'k24', 'en');
+  const bars = history.locator('.after-bar');
+  await expect(bars.first()).toBeVisible();
+  for (let b = 0; b < await bars.count(); b++) {
+    const bar = bars.nth(b);
+    const line = (await bar.locator('.after-majority').boundingBox())!;
+    const boxes = await bar.locator('.after-group bdi').evaluateAll(els => els.filter(e => getComputedStyle(e).display !== 'none').map(e => { const r = e.getBoundingClientRect(); return { l: r.left, r: r.right, t: e.textContent }; }));
+    for (const x of boxes) expect(x.l > line.x + 2 || x.r < line.x, `${x.t} at ${x.l}–${x.r}, line at ${line.x}`).toBe(true);
+  }
+});

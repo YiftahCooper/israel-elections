@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- The 61 line (19 Nov): on a recommendations bar the majority line no longer runs through a list's ballot letters; the list it crosses sets its letters in its larger part, or leaves them out where that part is too narrow (2021's first round, Yesh Atid).
 - Outside the coalition (19 Nov): an MK elected on a coalition list who stood outside it, such as Amichai Chikli in 2021, now reads "Not in the coalition" instead of "Other participation".
 - Split recommendations (19 Nov): where a list's MKs recommended differently, the part that split off is named, so the list no longer appears twice under one name: Balad of the Joint List in September 2019 and in 2021's second round, and Gesher in 2020.
 - Coalition sizes not on record (19 Nov): where the size of each faction at the time is not recorded, a government's Members reads "at least" the seats that are known, or a dash, with one sentence saying why, instead of "Unknown" beside a column of "Unknown" seats; outside support shows only when known, and a party row matched to its election list keeps its ballot letters (Likud's מחל in 1990).

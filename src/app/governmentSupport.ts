@@ -30,3 +30,17 @@ export function listsBelowTheirSeats(rows: GovernmentParticipant[], counted: num
   }
   return won > counted && lists.length ? { won, lists } : null;
 }
+
+/** Which piece of a recommendation bar the 61 line crosses, and on which side of the line its larger part lies. The bar
+ *  is drawn over all its seats (120); the line stands at 61 of 120 of its width. `room`: the larger part, in seats.
+ *  Null when the line falls on a boundary. */
+export function majorityCrossing(seats: readonly number[]): { index: number; side: 'start' | 'end'; room: number } | null {
+  const total = seats.reduce((a, b) => a + b, 0), x = total * 61 / 120;
+  let at = 0;
+  for (let i = 0; i < seats.length; i++) {
+    const end = at + seats[i];
+    if (at < x && x < end) return { index: i, side: x - at >= end - x ? 'start' : 'end', room: Math.max(x - at, end - x) };
+    at = end;
+  }
+  return null;
+}
