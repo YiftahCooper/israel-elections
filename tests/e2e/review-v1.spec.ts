@@ -121,3 +121,22 @@ test('withdrawing a list: the line says so and counts the seats in no bloc (2022
   await expect(line).not.toContainText('votes changed');
   await expect(line).toContainText('No bloc 4 (▲ +4)');
 });
+
+test('Copy votes box: counts lists as the message does, names where a row\'s votes come from, no dangling dot, unchanged said so', async ({ page }) => {
+  await start(page, 'k26');
+  await editVotes(page, 'Likud', '1247591');
+  await page.locator('.session').getByRole('button', { name: 'Compare' }).click();
+  await choose(page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true }), 'prev');
+  await page.getByRole('button', { name: 'Copy votes…' }).first().click();
+  const box = page.locator('.cmpm-copy');
+  // one row holds three 2026 lists (Religious Zionism–Zehut, Otzma Yehudit and Noam)
+  await expect(box.locator('legend').first()).toHaveText('Lists to copy (12 of 12)');
+  await expect(box.locator('.cmpm-copy-ticks')).toContainText('Religious Zionism–Zehut + Otzma Yehudit + Noamfrom 2022: Religious Zionism');
+  for (const t of await box.locator('.cmp-mode').allInnerTexts()) expect(t).not.toMatch(/votes ·\s*$/m);
+  await box.getByRole('button', { name: 'Copy into 2026' }).click();
+  await expect(page.locator('.toast').last()).toContainText('for 12 lists');
+  await page.locator("xpath=//button[normalize-space()='Copy votes…'][preceding::*[contains(@class,'lb-row')][1][contains(., 'Shas')]]").first().click();
+  const count = box.locator('.cmp-mode[data-mode="count"]');
+  await expect(count).toContainText('Shas 9 (unchanged)');
+  await expect(count).not.toContainText('9 → 9');
+});

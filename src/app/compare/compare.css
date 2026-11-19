@@ -105,6 +105,8 @@
 .cmp-mode { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px; align-items: start; padding: 4px 2px; }
 .cmp-mode.refused { color: var(--muted); }
 .cmp-outcome { display: inline-flex; flex-wrap: wrap; gap: 2px 10px; font-size: 13px; }
+.cmp-copy-votes { display: block; }
+.cmpm-copy-tick-name small { display: block; }
 .cmp-refused { color: var(--bad); font-size: 13px; }
 .cmp-capped { color: var(--warn-ink); background: var(--warn-bg); padding: 0 4px; border-radius: 3px; }
 .cmp-whole-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
