@@ -121,7 +121,7 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
   const seatsOf = (x: SideModel, ids: string[]) => ids.reduce((n, id) => n + (x.r.lists.find((l) => l.id === id)?.seats ?? 0), 0);
   const names = units.map((x) => x.dst.map((id) => { const l = to.sc.lists.find((y) => y.id === id); return l ? listLabel(l, lang) : id; }).join(' + '));
   const result = (m: CopyMode) => { const p = plans[m]; const n = target(p); return p ? <>
-    {p.ok && n !== null && <span className="muted"><bdi dir="ltr">{fmtInt(n)}</bdi> {L('votes', 'קולות')} · </span>}<Outcome plan={p} to={to} focus={dst} />
+    {p.ok && n !== null && <span className="muted cmp-copy-votes"><bdi dir="ltr">{fmtInt(n)}</bdi> {L('votes', 'קולות')}</span>}<Outcome plan={p} to={to} focus={dst} />
   </> : <span className="muted">{disabledWhy}</span>; };
 
   // a copy made at once shows nothing (a refused one still opens the box, which says why)
@@ -138,11 +138,12 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
       {u && <p className="small cmpm-copy-fromto"><span><bdi>{nameList(from, u.src)}</bdi> · {from.year}, {from.name}: <bdi dir="ltr">{fmtInt(s)}</bdi> {L('votes', 'קולות')}, {seatsOf(from, u.src)} {L('seats', 'מנדטים')}</span>
         <span aria-hidden> {lang === 'he' ? '←' : '→'} </span><span className="sr-only">{L('into', 'אל')}</span>
         <span><bdi>{nameList(to, u.dst)}</bdi> · {to.year}, {to.role === 'main' ? L('your work', 'העבודה שלכם') : to.name}: <bdi dir="ltr">{fmtInt(votes(to.sc, u.dst))}</bdi> {L('votes', 'קולות')}, {seatsOf(to, u.dst)} {L('seats', 'מנדטים')}</span></p>}
-      {req.choices && req.choices.length > 1 && <fieldset className="cmpm-copy-lists"><legend>{L(`Lists to copy (${ticked.size} of ${req.choices.length})`, `רשימות להעתקה (${ticked.size} מתוך ${req.choices.length})`)}</legend>
+      {req.choices && req.choices.length > 1 && <fieldset className="cmpm-copy-lists"><legend>{(() => { const n = req.choices!.filter((c) => ticked.has(c.key)).reduce((t, c) => t + c.unit.dst.length, 0), all = req.choices!.reduce((t, c) => t + c.unit.dst.length, 0);
+          return L(`Lists to copy (${n} of ${all})`, `רשימות להעתקה (${n} מתוך ${all})`); })()}</legend>
         <div className="row"><button type="button" className="link-btn" onClick={() => setTicked(new Set(req.choices!.map((c) => c.key)))}>{L('All', 'הכול')}</button>
           <button type="button" className="link-btn" onClick={() => setTicked(new Set())}>{L('None', 'אף אחת')}</button></div>
         <div className="cmpm-copy-ticks">{req.choices.map((c) => <label key={c.key}><input type="checkbox" checked={ticked.has(c.key)}
-          onChange={(e) => { const n = new Set(ticked); if (e.target.checked) n.add(c.key); else n.delete(c.key); setTicked(n); }} />{(() => { const l = req.to.sc.lists.find((x) => x.id === c.unit.dst[0]); return l ? <ListMark list={l} lang={lang} /> : null; })()}<bdi>{c.name}</bdi></label>)}</div>
+          onChange={(e) => { const n = new Set(ticked); if (e.target.checked) n.add(c.key); else n.delete(c.key); setTicked(n); }} />{(() => { const l = req.to.sc.lists.find((x) => x.id === c.unit.dst[0]); return l ? <ListMark list={l} lang={lang} /> : null; })()}<span className="cmpm-copy-tick-name"><bdi>{c.name}</bdi>{nameList(from, c.unit.src) !== c.name && <small className="muted">{L('from ', 'מ־')}{where}: <bdi>{nameList(from, c.unit.src)}</bdi></small>}</span></label>)}</div>
       </fieldset>}
       {!units.length ? <p className="muted">{L('Tick at least one list.', 'סמנו לפחות רשימה אחת.')}</p>
         : simple ? <p className="cmpm-copy-sentence" data-mode={mode}>

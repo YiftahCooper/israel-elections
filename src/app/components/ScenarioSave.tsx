@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { useL } from '../i18n.ts';
-import { nextCopyName } from '../scenarioDocument.ts';
+import { nextCopyName, untitledName } from '../scenarioDocument.ts';
 import { getState, saveCurrent, toast, useStore } from '../store.ts';
 import { ScenarioColour } from './ScenarioColour.tsx';
 
@@ -19,7 +19,7 @@ export function ScenarioSave({ as = false, disabled = false, className = 'btn', 
   return <>
     <button className={className} disabled={disabled} onClick={() => {
       const s = getState().scenario; if (!s) return;
-      const n = s.name || L('Scenario', 'תרחיש'); setName(n);
+      const n = s.name || untitledName(getState().lang); setName(n);
       const exists = saved.some(x => x.name === n && (as || x.id !== s.id));
       if (!as && !exists) { if (saveCurrent(n)) { toast('info', L('Saved in this browser.', 'נשמר בדפדפן זה.')); onSaved?.(); } return; }
       setCollision(exists); dialog.current?.showModal();

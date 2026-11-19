@@ -36,13 +36,15 @@ describe('k1: reconciled 1949 source facts', () => {
     for (const [id, nameHe] of Object.entries(names)) expect(candidates.find((c: { id: string }) => c.id === id)?.nameHe).toBe(nameHe);
     for (const id of ['1-ח#10', '1-ח#16']) expect(candidates.find((c: { id: string }) => c.id === id)?.notSeated).toBe(true);
   });
-  it('distinguishes 75 supporting-list seats from the 73–45 vote and bounds consultations honestly', async () => {
+  it('counts the coalition as the government record does (73; WIZO and the Yemenites voted confidence only) and bounds consultations honestly', async () => {
     const { readFileSync } = await import('node:fs');
     const meta = JSON.parse(readFileSync('data/meta/k1.json', 'utf8'));
     const aftermath = JSON.parse(readFileSync('data/meta/aftermath/k1.json', 'utf8'));
     const blocs = meta.blocSchemes.find((s: { id: string }) => s.id === 'first-government').blocs;
-    expect(blocs.map((b: { seats: number }) => b.seats)).toEqual([75, 45]);
-    expect(blocs[0].members.map((m: { letters: string }) => m.letters)).toEqual(['א', 'ב', 'פ', 'ס', 'יד', 'נ', 'ל']);
+    expect(blocs.map((b: { seats: number }) => b.seats)).toEqual([73, 2, 45]);
+    expect(blocs[0].members.map((m: { letters: string }) => m.letters)).toEqual(['א', 'ב', 'פ', 'ס', 'יד']);
+    expect(blocs[1].id).toBe('confidence-vote-only');
+    expect(blocs[1].members.map((m: { letters: string }) => m.letters)).toEqual(['נ', 'ל']);
     // 7 November source-policy pass: Nazareth (2) is a probable member without ministries (Galnoor–Blander; IDI).
     expect(aftermath.government.coalitionSeats).toBe(73);
     expect(aftermath.government.coalition.filter((r: { role: string }) => r.role === 'confidence-vote-only').reduce((sum: number, r: { seats: number }) => sum + r.seats, 0)).toBe(2);

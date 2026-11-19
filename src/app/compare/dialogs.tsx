@@ -75,7 +75,7 @@ export function Outcome({ plan, to, focus }: { plan: Plan; to: SideModel; focus?
   const after = allocationOf(plan.result);
   const changed = plan.result.lists.map((l) => ({ l, a: to.r.lists.find((x) => x.id === l.id)?.seats ?? 0, b: after.lists.find((x) => x.id === l.id)?.seats ?? 0 }))
     .filter((x) => x.a !== x.b || focus?.includes(x.l.id)).sort((x, y) => Number(focus?.includes(y.l.id)) - Number(focus?.includes(x.l.id)) || Math.abs(y.b - y.a) - Math.abs(x.b - x.a));
-  return <span className="cmp-outcome">{changed.length ? changed.slice(0, 4).map(({ l, a, b }) => <span key={l.id}><bdi>{listLabel(l, lang)}</bdi> <bdi dir="ltr">{a} → {b}</bdi> {a !== b && <SeatDelta value={b - a} />}</span>) : L('Seats unchanged', 'המנדטים ללא שינוי')}
+  return <span className="cmp-outcome">{changed.length ? changed.slice(0, 4).map(({ l, a, b }) => <span key={l.id}><bdi>{listLabel(l, lang)}</bdi> {a !== b ? <><bdi dir="ltr">{a} → {b}</bdi> <SeatDelta value={b - a} /></> : <>{a} <span className="muted">{L('(unchanged)', '(ללא שינוי)')}</span></>}</span>) : L('Seats unchanged', 'המנדטים ללא שינוי')}
     {plan.capped !== undefined && <span className="cmp-capped">{L(`Capped at ${fmtInt(plan.capped)} voters staying home`, `מוגבל ל־${fmtInt(plan.capped)} שלא הצביעו`)}</span>}</span>;
 }
 

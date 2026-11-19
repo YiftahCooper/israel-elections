@@ -106,7 +106,8 @@ const K25: WhatIfPreset[] = [
 ];
 
 const K26: WhatIfPreset[] = [
-  { id: 'no-likud-rz', titleEn: 'No Likud–Religious Zionism agreement', titleHe: 'בלי הסכם הליכוד–הציונות הדתית', body: removeAgreementBody('26-מחל'), actions: (s) => { const a = agreementWith(s, '26-מחל'); return a ? [{ type: 'removeAgreement', id: a.id }] : null; } },
+  // the 2026 partner is the list's own short name, Religious Zionism–Zehut (two dashes in a row would read as three lists)
+  { id: 'no-likud-rz', titleEn: 'No agreement between Likud and Religious Zionism–Zehut', titleHe: 'בלי הסכם בין הליכוד לבין הציונות הדתית–זהות', body: removeAgreementBody('26-מחל'), actions: (s) => { const a = agreementWith(s, '26-מחל'); return a ? [{ type: 'removeAgreement', id: a.id }] : null; } },
   { id: 'reservists-in', titleEn: 'Reservists & New Economic passes', titleHe: 'המילואימניקים והכלכלית עוברת', body: newVotersBody('26-די'), actions: (s) => (has(s, '26-די') ? toPass(s, '26-די') : null) },
   // as in 2022, when Otzma Yehudit ran on the Religious Zionism list headed by Smotrich (the 2022 dataset's list name and order)
   { id: 'otzma-rz', titleEn: 'Religious Zionism–Zehut and Otzma Yehudit on one list', titleHe: 'הציונות הדתית–זהות ועוצמה יהודית ברשימה אחת', body: (s, lang) => `${t(lang, 'As in 2022.', 'כמו ב־2022.')} ${mergeBody(['26-ט', '26-ב'])(s, lang)}`, actions: (s) => merge(s, ['26-ט', '26-ב']) },

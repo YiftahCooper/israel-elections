@@ -19,9 +19,8 @@ import { setState, useDigits, useShown } from '../store.ts';
 import { Info } from './ui.tsx';
 import { TURNOUT_FIELD_DIGITS } from './TurnoutSteps.tsx';
 
-/** vOpen: the value while the popover is open, when the popover holds a field for it (lay-turnout).
- *  edit: the number this tile changes; its window then opens with the field (TileEdit.tsx), and a pencil marks it. */
-function Fig({ k, term, v, vOpen, d, edit, children }: { k: string; term?: string; v: ReactNode; vOpen?: ReactNode; d?: ReactNode; edit?: { s: Scenario; field: TileField }; children?: ReactNode }) {
+/** edit: the number this tile changes; its window then opens with the field (TileEdit.tsx), and a pencil marks it. */
+function Fig({ k, term, v, d, edit, children }: { k: string; term?: string; v: ReactNode; d?: ReactNode; edit?: { s: Scenario; field: TileField }; children?: ReactNode }) {
   const L = useL();
   const popoverId = useId();
   const pop = useRef<HTMLDivElement>(null);
@@ -39,7 +38,7 @@ function Fig({ k, term, v, vOpen, d, edit, children }: { k: string; term?: strin
     <div className={`fig ${isOpen ? 'open' : ''}${editable ? ' tile-editable' : ''}`}>
       <button ref={trigger} type="button" aria-expanded={isOpen} aria-controls={popoverId} popoverTarget={popoverId} aria-description={editable ? L('Can be changed', 'ניתן לשינוי') : undefined}>
         <span className="k"><span>{k}</span>{editable ? <Pencil className="icon sm tile-pencil-mark" aria-hidden /> : isOpen ? <ChevronUp className="icon sm" aria-hidden /> : <ChevronDown className="icon sm" aria-hidden />}</span>
-        <span className="v"><bdi dir="ltr">{isOpen && vOpen !== undefined ? vOpen : v}</bdi></span>
+        <span className="v"><bdi dir="ltr">{v}</bdi></span>
         {d && <span className="d">{d}</span>}
       </button>
       <div id={popoverId} ref={pop} className="more" popover="auto" onToggle={e => { setOpen(e.newState === 'open'); if (editable) holdHeight(trigger.current, e.newState === 'open'); }}><div className="more-head"><b>{k}</b><button className="btn ghost icon-only" aria-label={L('Close', 'סגירה')} onClick={() => pop.current?.hidePopover()}><X className="icon sm" aria-hidden /></button></div>{editable && isOpen && <TileEditor s={edit!.s} field={edit!.field} title={false} close={() => { pop.current?.hidePopover(); trigger.current?.focus({ preventScroll: true }); }} />}{children}{term && <div className="row small ink2" style={{ marginTop: 8, gap: 4 }}>{L('Definition and source', 'הגדרה ומקור')} <Info term={term} label={`${k}: ${L('definition and source', 'הגדרה ומקור')}`} /></div>}</div>
@@ -97,7 +96,8 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
         <p className="small" style={{ margin: '4px 0 0' }}>{noThreshold ? <QualifyingNoThreshold s={s} r={r} seatlessVotes={seatlessVotes} /> : <>{L(`${r.lists.filter(x => x.qualified).length} qualifying lists`, `${r.lists.filter(x => x.qualified).length} רשימות משתתפות`)} <Info title={L('Qualifying votes', 'קולות משתתפים')}>{L(`The votes of the ${r.lists.filter((x) => x.qualified).length} lists that passed the threshold; only these share the seats. ${fmtInt(r.unrepresentedVotes)} valid votes went to lists that did not.`, `הקולות של ${r.lists.filter((x) => x.qualified).length} הרשימות שעברו את החסימה; רק הן מתחלקות במנדטים. ${fmtInt(r.unrepresentedVotes)} קולות כשרים ניתנו לרשימות שלא עברו.`)}</Info></>}</p></div>}
       </Fig>
 
-      <Fig k={L('Turnout', 'שיעור ההצבעה')} term="turnout" v={<>{percent(cast, s.registered, digits)}<TileEditedMark s={s} field="turnout" /></>} vOpen={<>{percent(cast, s.registered, TURNOUT_FIELD_DIGITS)}<TileEditedMark s={s} field="turnout" /></>} d={fmtPct(cast, s.registered, digits) === fmtPct(ds.totals.votesCast, ds.totals.registered, digits) ? `${fmtInt(cast)} ${L('ballots cast', 'מצביעים')}` : <>{referenceLabel(null, lang).name} {percent(ds.totals.votesCast, ds.totals.registered, digits)}</>} edit={{ s, field: 'turnout' }}>
+      {/* turnout reads with its field's two decimals at every complexity, open or closed (owner, 18-19 Nov 2026) */}
+      <Fig k={L('Turnout', 'שיעור ההצבעה')} term="turnout" v={<><span data-fixed-digits>{percent(cast, s.registered, TURNOUT_FIELD_DIGITS)}</span><TileEditedMark s={s} field="turnout" /></>} d={fmtPct(cast, s.registered, TURNOUT_FIELD_DIGITS) === fmtPct(ds.totals.votesCast, ds.totals.registered, TURNOUT_FIELD_DIGITS) ? `${fmtInt(cast)} ${L('ballots cast', 'מצביעים')}` : <>{referenceLabel(null, lang).name} <span data-fixed-digits>{percent(ds.totals.votesCast, ds.totals.registered, TURNOUT_FIELD_DIGITS)}</span></>} edit={{ s, field: 'turnout' }}>
         <div className="kv small"><span>{L('Registered voters', 'בעלי זכות בחירה')}</span><span>{fmtInt(s.registered)}</span><span>{L('Ballots cast', 'מצביעים')}</span><span>{fmtInt(cast)}</span><span>{L('Invalid ballots', 'קולות פסולים')}</span><span>{fmtInt(s.invalid)}</span></div>
       </Fig>
 

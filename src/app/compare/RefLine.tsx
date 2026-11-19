@@ -15,7 +15,8 @@ export function RefLine({ line, label, r }: { line: Line; label: string; r: Allo
   if (line.kind === 'new') return <span className="cmpm-line" data-kind="new"><bdi>{label}</bdi>: {L('no list of its own (new)', 'ללא רשימה משלה (חדשה)')}</span>;
   if (line.kind === 'check') return <span className="cmpm-line" data-kind="check"><bdi>{label}</bdi>: <span className="ph-cert ph-cert-unknown">{L('To verify', 'לבדיקה')}</span> · <bdi>{line.names}</bdi></span>;
   return <>
-    <span className="cmpm-line" data-kind={line.tag}><bdi>{label}</bdi>: <b>{line.seats}</b> <SeatDelta value={now(line, r) - line.seats} />
+    {/* a split is counted as a whole: the change is the successors' together, said so, never this list's own 7 against 14 */}
+    <span className="cmpm-line" data-kind={line.tag}><bdi>{label}</bdi>: <b>{line.seats}</b>{line.together.length > 1 && <> · {L('together now', 'יחד עכשיו')} <b>{now(line, r)}</b></>} <SeatDelta value={now(line, r) - line.seats} />
       {(line.names || line.how) && <span className="muted"> · {line.names && <bdi>{line.names}</bdi>}{line.names && line.how ? ' ' : ''}{line.how}</span>}</span>
     {line.notCounted.length > 0 && <span className="cmpm-line tiny muted">{line.notCounted.join(' ')}</span>}
   </>;
@@ -28,8 +29,9 @@ export function refLineText(line: Line, label: string, r: AllocationResult, lang
   if (line.kind === 'check') return en ? `, ${label}: to verify, ${line.names}` : `, ${label}: לבדיקה, ${line.names}`;
   const d = now(line, r) - line.seats;
   const change = d === 0 ? (en ? 'unchanged' : 'ללא שינוי') : en ? `${Math.abs(d)} ${d > 0 ? 'more' : 'fewer'}` : `${Math.abs(d)} ${d > 0 ? 'יותר' : 'פחות'}`;
-  return en ? `, ${label}: ${seatsText(line.seats, 'en')} (${change})${line.names ? `, compared with ${line.names}` : ''}${line.how ? ` ${line.how}` : ''}`
-    : `, ${label}: ${seatsText(line.seats, 'he')} (${change})${line.names ? `, בהשוואה ${hebrewPrefixName('ל', line.names)}` : ''}${line.how ? ` ${line.how}` : ''}`;
+  const together = line.together.length > 1 ? (en ? `, ${seatsText(now(line, r), 'en')} together now` : `, ${seatsText(now(line, r), 'he')} יחד עכשיו`) : '';
+  return en ? `, ${label}: ${seatsText(line.seats, 'en')}${together} (${change})${line.names ? `, compared with ${line.names}` : ''}${line.how ? ` ${line.how}` : ''}`
+    : `, ${label}: ${seatsText(line.seats, 'he')}${together} (${change})${line.names ? `, בהשוואה ${hebrewPrefixName('ל', line.names)}` : ''}${line.how ? ` ${line.how}` : ''}`;
 }
 
 /** "▬ 2026 ▨ 2022" above the lists, when the reference bars are drawn. */

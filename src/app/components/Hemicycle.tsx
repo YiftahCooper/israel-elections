@@ -20,8 +20,9 @@ import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { LangLabel, nameProps } from './LangLabel.tsx';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
-import { allocationOf, listLabel, methodOf, seatBlocsOf, seatedOrder, seatCandidate, candidateName, memberNameGivenFirst, referenceLabel, comparisonGroups, groupingLabel, majorityText } from '../derive.ts';
+import { allocationOf, listLabel, methodOf, seatBlocsOf, seatedOrder, seatCandidate, candidateName, memberNameGivenFirst, referenceLabel, comparisonGroups, groupingLabel, majorityText, seeksMajority } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
+import { untitledName } from '../scenarioDocument.ts';
 import { arcLayout, annularRegions } from '../layout.ts';
 import { arcSeatSlots, frontRowFirst, trayBlocRegions, trayCell, trayShape, TRAY } from '../blocLine.ts';
 import { download, isolate, seatDeltaText } from '../format.ts';
@@ -382,13 +383,13 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     });
     const entry = elections.find(e=>e.id===s.electionId);
     const captionY = rowsY + Math.max(...colEnd, LINE) + 8;
-    clone.appendChild(svgText(colStart(0), captionY, 13, `${entry ? electionLabel(entry, elections, lang) : ''}${entry ? ' · ' : ''}${factLog(s).length ? s.name || L('Scenario', 'תרחיש') : L('Official result', 'התוצאה הרשמית')}`));
+    clone.appendChild(svgText(colStart(0), captionY, 13, `${entry ? electionLabel(entry, elections, lang) : ''}${entry ? ' · ' : ''}${factLog(s).length ? s.name || untitledName(lang) : L('Official result', 'התוצאה הרשמית')}`));
     // the picture leaves the app, so it names the grouping its seats are arranged (and shaded) by, and each bloc with
     // its seats, as the bloc bar does on the board (audit c-screens-overview-12)
     const scheme = s.blocSchemes?.find(g => g.id === s.blocSchemeId);
     const groupingLines = s.blocs.length ? [groupingLabel(s, lang), ...blocDisplayOrder(s).map(id => {
       const n = seats.filter(st => st.bloc === id).length, b = s.blocs.find(x => x.id === id);
-      return !n && !b ? '' : `${b ? groupingName(b, lang, scheme) : L('No bloc', 'ללא גוש')}: ${b ? majorityText(n, total, lang).replace(/^(\d+ \/ \d+)/, '\u2066$1\u2069') : n}`;
+      return !n && !b ? '' : `${b ? groupingName(b, lang, scheme) : L('No bloc', 'ללא גוש')}: ${b && seeksMajority(id) ? majorityText(n, total, lang).replace(/^(\d+ \/ \d+)/, '\u2066$1\u2069') : n}`;
     }).filter(Boolean)] : [];
     groupingLines.forEach((line, i) => clone.appendChild(svgText(colStart(0), captionY + 22 * (i + 1), 13, line)));
     if (scheme?.appDefined || s.blocs.some(b => b.appDefined)) {

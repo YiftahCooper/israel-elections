@@ -1,6 +1,7 @@
 import { Redo2, RotateCcw, Undo2 } from 'lucide-react';
+import { askConfirm } from '../askDialog.ts';
 import { useSyncExternalStore } from 'react';
-import { describe } from '../actionDescription.ts';
+import { stepName } from '../actionDescription.ts';
 import { useL, useLang } from '../i18n.ts';
 import { getSetting, redo, resetAll, undo, useStore } from '../store.ts';
 
@@ -12,7 +13,7 @@ export const usePhone = () => useSyncExternalStore(subscribePhone, () => globalT
 export function useStartOver() {
   const L = useL();
   const s = useStore(st => st.scenario);
-  return { can: !!s?.log.length, run: () => { if (!s?.log.length || !getSetting('confirmStartOver') || confirm(L('Start over from the official result? (Undo can restore it.)', 'להתחיל מחדש מהתוצאה הרשמית? (ניתן לבטל)'))) resetAll(); } };
+  return { can: !!s?.log.length, run: async () => { if (!s?.log.length) return; if (getSetting('confirmStartOver') && !(await askConfirm({ title: L('Start over from the official result?', 'להתחיל מחדש מהתוצאה הרשמית?'), text: L('Undo can restore it.', 'אפשר לשחזר בביטול.'), yes: L('Start over', 'התחלה מחדש'), no: L('Cancel', 'ביטול') }))) return; resetAll(); } };
 }
 
 /** Undo and Redo, each named by the step it takes (Ctrl+Z, Ctrl+Y and Ctrl+Shift+Z work anywhere). Always present, and
@@ -21,10 +22,11 @@ export function UndoRedo({ className = 'tool' }: { className?: string }) {
   const L = useL(), lang = useLang();
   const s = useStore(st => st.scenario);
   const canUndo = useStore(st => st.past.length > 0), canRedo = useStore(st => st.future.length > 0);
-  const future = useStore(st => st.future);
-  const last = s?.log.at(-1), next = future.at(-1)?.log.at(-1);
-  const undoName = last && s ? L('Undo: ', 'ביטול: ') + describe(last.action, s, lang) : L('Undo', 'ביטול');
-  const redoName = next && s ? L('Redo: ', 'ביצוע מחדש: ') + describe(next.action, future.at(-1)!, lang) : L('Redo', 'ביצוע מחדש');
+  // the step itself, from the state before it to the state after it (Start over is "Start over", not its last entry)
+  const before = useStore(st => st.past.at(-1)), after = useStore(st => st.future[0]);
+  const undoStep = before && s ? stepName(before, s, lang) : null, redoStep = after && s ? stepName(s, after, lang) : null;
+  const undoName = undoStep ? L('Undo: ', 'ביטול: ') + undoStep : L('Undo', 'ביטול');
+  const redoName = redoStep ? L('Redo: ', 'ביצוע מחדש: ') + redoStep : L('Redo', 'ביצוע מחדש');
   return <>
     <button type="button" className={`${className} undo-btn`} onClick={undo} disabled={!canUndo} title={undoName + ' (Ctrl+Z)'} aria-label={undoName}><Undo2 className="icon rtl-mirror" aria-hidden /></button>
     <button type="button" className={`${className} redo-btn`} onClick={redo} disabled={!canRedo} title={redoName + ' (Ctrl+Y)'} aria-label={redoName}><Redo2 className="icon rtl-mirror" aria-hidden /></button>

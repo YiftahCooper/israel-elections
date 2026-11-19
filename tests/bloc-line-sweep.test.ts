@@ -65,7 +65,9 @@ test('every election and grouping: seats on their own side, few bends, determini
   // smooth: most lines straight or one or two gentle turns, no sharp corner anywhere
   expect(bends.filter((b) => b <= 2).length / bends.length).toBeGreaterThanOrEqual(0.75);
   expect(Math.max(...bends)).toBeLessThanOrEqual(12);
-  expect(at(sharp, 0.9)).toBeLessThan(0.7);
+  // 0.9, not 0.7, since 1949's government grouping has its 2-seat "Voted confidence only" pocket between the halves
+  // (as 1977's outside support): its two lines turn at 1.40, which moves the 90th line from 0.66 to the 0.87 group
+  expect(at(sharp, 0.9)).toBeLessThan(0.9);
   expect(Math.max(...sharp)).toBeLessThan(1.7);
 }, 120000);
 

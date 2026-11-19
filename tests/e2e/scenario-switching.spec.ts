@@ -55,6 +55,7 @@ test('deleting the open saved scenario keeps it open as unsaved work', async ({ 
   await expect(chip(page)).toHaveText('Doomed');
   await page.getByRole('button', { name: 'Save & share' }).click();
   await page.locator('#scenarios-menu').getByRole('button', { name: 'Delete Doomed', exact: true }).click();
+  await page.locator('dialog.app-ask').getByRole('button', { name: 'Delete', exact: true }).click();
   await expect(chip(page)).toHaveText('Doomed *');
   // switching away keeps it in the switcher
   await page.keyboard.press('Escape');

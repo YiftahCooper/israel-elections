@@ -11,8 +11,10 @@ async function start(page: Page, lang = 'en', theme = 'light') {
 test('blank grouping names and unassigns all seats, with undo', async ({ page }) => {
   await start(page);
   await page.getByRole('button', { name: 'Edit blocs', exact: true }).click();
-  page.once('dialog', d => d.accept('Unity government'));
   await page.getByRole('button', { name: 'New grouping', exact: true }).click();
+  // the app's own question (never the browser's prompt box)
+  await page.locator('dialog.app-ask').getByRole('textbox').fill('Unity government');
+  await page.locator('dialog.app-ask').getByRole('button', { name: 'Create', exact: true }).click();
   await expect(page.locator('.bloc-panel')).toContainText('Unity government');
   await expect(page.locator('.bp-card')).toHaveCount(3);
   const cards = page.locator('.bp-card');

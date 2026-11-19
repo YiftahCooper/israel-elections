@@ -140,6 +140,23 @@ describe('the recorded first government as roles', () => {
     expect(kinds11.filter((x) => x === 'individual')).toHaveLength(7);
     expect(kinds11).toContain('partial');
   });
+  it('the first-government coalition group agrees with the government record (1949: 73, not 75)', () => {
+    // WIZO and the Yemenite Association voted confidence only (data/meta/aftermath/k1.json); their two seats sit in
+    // their own group, never inside the coalition
+    const k1 = load('k1'), g = k1.blocSchemes!.find((x) => x.id === 'first-government')!;
+    const seats = (id: string) => g.blocs.find((b) => b.id === id)!.lists.reduce((t, l) => t + (k1.officialSeats![l] ?? 0), 0);
+    expect(g.blocs.map((b) => b.id)).toEqual(['coalition', 'confidence-vote-only', 'opposition']);
+    expect([seats('coalition'), seats('confidence-vote-only'), seats('opposition')]).toEqual([73, 2, 45]);
+    expect(seats('coalition')).toBe(aftermathRecords.k1!.government!.coalitionSeats);
+    // every election: no list researched in a non-member role sits in the coalition group
+    for (let k = 1; k <= 26; k++) {
+      const gov = aftermathRecords[`k${k}` as keyof typeof aftermathRecords]?.government; if (!gov) continue;
+      const ds = load(`k${k}`), scheme = ds.blocSchemes?.find((x) => x.id === 'first-government'); if (!scheme) continue;
+      const coalition = scheme.blocs.find((b) => b.id === 'coalition')?.lists ?? [];
+      const other = (gov.coalition ?? []).filter((r) => r.letters && !r.role.startsWith('member')).map((r) => `${k}-${r.letters}`);
+      expect(coalition.filter((id) => other.includes(id)), `k${k}`).toEqual([]);
+    }
+  });
   it('the first-government grouping holds outside support as its own group', () => {
     const g = load('k13').blocSchemes!.find((x) => x.id === 'first-government')!;
     expect(g.blocs.map((b) => [b.id, b.lists.length])).toEqual([['coalition', 3], ['outside-support', 2], ['opposition', 5]]);

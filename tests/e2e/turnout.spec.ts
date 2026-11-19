@@ -39,8 +39,9 @@ test('a sourced voter group adds measured voters, saves, exports and imports', a
   await expect(page.getByText(/Added 93,840 voters \(Arab localities \+10 pp\)/).first()).toBeVisible();
   await page.keyboard.press('Escape');
 
-  page.once('dialog', d => d.accept('Arab turnout +10'));
   await panel.getByRole('button', { name: 'Save', exact: true }).click();
+  await page.locator('dialog.app-ask').getByRole('textbox').fill('Arab turnout +10');
+  await page.locator('dialog.app-ask').getByRole('button', { name: 'Save', exact: true }).click();
   await expect(panel.getByRole('button', { name: 'Voter group', exact: true })).toHaveText(/Arab turnout \+10/);
   const download = page.waitForEvent('download');
   await panel.getByRole('button', { name: 'Export', exact: true }).click();

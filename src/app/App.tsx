@@ -183,12 +183,14 @@ function Shell() {
     : L(`Could not load the ${failedName} election data. Check the connection and try again.`, `טעינת נתוני הבחירות ${failedName} נכשלה. בדקו את החיבור ונסו שוב.`)}
     {loadError.kept && <> {L('Your unsaved work on this election is not lost.', 'העבודה שלא נשמרה על הבחירות האלה לא אבדה.')}</>}
     {loadError.link && !loadError.kept && <> {L('The shared scenario is not lost: it opens once this election loads.', 'התרחיש ששותף לא אבד: הוא ייפתח כשהבחירות האלה ייטענו.')}</>}</>;
+  // the browser's own words come in the browser's language: named as such, so they never pass for the app's message
+  const browserSaid = L('Technical detail: ', 'פרט טכני: ');
   const failedRetry = loadError && (loadError.kind === 'version'
     ? <button className="btn small" onClick={() => location.reload()}>{L('Reload', 'טעינה מחדש')}</button>
     : <button className="btn small" onClick={() => (loadError.retry ?? (() => void openElection(loadError.id)))()}>{L('Try again', 'נסו שוב')}</button>);
   const loadBanner = loadError && (
     <div className="banner err" role="alert">
-      <span className="banner-text">{failedWhy(false)}{' '}<bdi dir="ltr" className="tiny muted">{loadError.message}</bdi></span>
+      <span className="banner-text">{failedWhy(false)}{loadError.message && <>{' '}<span className="tiny muted">{browserSaid}<bdi dir="ltr">{loadError.message}</bdi></span></>}</span>
       {failedRetry}
       <button className="btn small ghost icon-only" onClick={() => setState({ loadError: null })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button>
     </div>
@@ -197,7 +199,7 @@ function Shell() {
     ? <main className="work"><section className="panel load-failed" role="alert" aria-labelledby="load-failed-title">
         <h2 id="load-failed-title">{L(`${failedName} could not be loaded`, `הבחירות ${failedName} לא נטענו`)}</h2>
         <p>{failedWhy(true)}</p>
-        <p className="tiny muted"><bdi dir="ltr">{loadError.message}</bdi></p>
+        {loadError.message && <p className="tiny muted">{browserSaid}<bdi dir="ltr">{loadError.message}</bdi></p>}
         <div className="row">{failedRetry}
           {/* the election list in the top bar: another election only when the reader picks one */}
           <button className="btn small ghost" onClick={() => document.querySelector<HTMLButtonElement>('.band .election-navigation .choice-trigger')?.click()}>{L('Open another election', 'פתיחת בחירות אחרות')}</button></div>

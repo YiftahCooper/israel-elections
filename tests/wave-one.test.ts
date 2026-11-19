@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { allocationOf, blocPieces, comparisonGroups, groupingBaseline, majorityText, nonSeatChanges } from '../src/app/derive.ts';
+import { allocationOf, blocPieces, comparisonGroups, groupingBaseline, majorityText, nonSeatChanges, seeksMajority } from '../src/app/derive.ts';
 import { applyAction } from '../src/model/actions.ts';
 import { scenarioFromDataset, toEngineInput } from '../src/model/scenario.ts';
 import { listSearch } from '../src/app/analysisTasks.ts';
@@ -20,9 +20,16 @@ it('custom grouping has no fabricated official counterpart', () => {
 });
 it('majority wording covers below, at and above in both languages and other chamber sizes', () => {
   expect(majorityText(60,120,'en')).toBe('60 / 120 · 1 short of 61');
-  expect(majorityText(61,120,'en')).toBe('61 / 120 · 0 above 61');
+  // a bare majority is said plainly, never "0 above 61" (V1 F2)
+  expect(majorityText(61,120,'en')).toBe('61 / 120 · exactly 61');
+  expect(majorityText(61,120,'he')).toBe('61 / 120 · בדיוק 61');
   expect(majorityText(64,120,'he')).toBe('64 / 120 · 3 מעל 61');
-  expect(majorityText(6,10,'en')).toBe('6 / 10 · 0 above 6');
+  expect(majorityText(6,10,'en')).toBe('6 / 10 · exactly 6');
+});
+it('groups that are not a side seeking a majority get no distance from 61 (V1 F2)', () => {
+  for (const id of ['outside-support', 'confidence-vote-only', 'abstained-by-arrangement', 'none', 'unstated', 'not-invited']) expect(seeksMajority(id)).toBe(false);
+  expect(seeksMajority(null)).toBe(false);
+  for (const id of ['coalition', 'opposition', 'netanyahu', 'b-abc123']) expect(seeksMajority(id)).toBe(true);
 });
 it('reports non-seat changes even when an agreement changes no seats', () => {
   const s = applyAction(base, {type:'removeAgreement', id:base.agreements[0].id});

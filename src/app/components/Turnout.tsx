@@ -1,4 +1,5 @@
 import { percentNum } from './Percentage.tsx';
+import { askConfirm, askText } from '../askDialog.ts';
 import { SeatDelta } from './SeatDelta.tsx';
 import './turnout.css';
 import { TurnoutFacts } from './TurnoutFacts.tsx';
@@ -150,14 +151,14 @@ export function Turnout({ s }: { s: Scenario }) {
             {L('Change one group’s turnout and see the national result. The change is your assumption, not an official result. Locality groups describe places, not individual voters, and double-envelope votes are not attributed to localities.', 'שנו את שיעור ההצבעה של קבוצה אחת וראו את התוצאה הארצית. השינוי הוא הנחה שלכם ואינו תוצאה רשמית. קבוצות יישובים מתארות מקומות ולא מצביעים יחידים, וקולות המעטפות החיצוניות אינם משויכים ליישובים.')}</Info></h3>
           <ChoicePicker label={L('Voter group', 'קבוצת מצביעים')} placeholder={L('Choose a group…', 'בחירת קבוצה…')} value={value} options={options} onChange={choose} />
           <span className="vg-files">
-            {d.members && <button type="button" className="btn small" onClick={() => {
-              const name = prompt(L('Name this voter group', 'שם לקבוצת המצביעים'), d.name)?.trim(); if (!name) return;
+            {d.members && <button type="button" className="btn small" onClick={async () => {
+              const name = await askText({ title: L('Name this voter group', 'שם לקבוצת המצביעים'), label: L('Name', 'שם'), value: d.name, yes: L('Save', 'שמירה'), no: L('Cancel', 'ביטול') }); if (!name) return;
               const p = preset()!; const next = { ...p, name, id: d.savedId ?? p.id }; saveVoterGroup(next); load(next); toast('info', L('Voter group saved in this browser.', 'קבוצת המצביעים נשמרה בדפדפן זה.'));
             }}><Save className="icon sm" aria-hidden />{d.savedId ? L('Save changes', 'שמירת השינויים') : L('Save', 'שמירה')}</button>}
             {d.members && <button type="button" className="btn small" onClick={() => exportVoterGroup(preset()!)}><Download className="icon sm" aria-hidden />{L('Export', 'ייצוא')}</button>}
             <button type="button" className="btn small" onClick={() => file.current?.click()}><Upload className="icon sm" aria-hidden />{L('Import', 'ייבוא')}</button>
-            {d.savedId && <button type="button" className="btn small ghost" aria-label={L('Delete saved group', 'מחיקת הקבוצה השמורה')} title={L('Delete saved group', 'מחיקת הקבוצה השמורה')} onClick={() => {
-              if (!confirm(L(`Delete “${d.name}” from this browser?`, `למחוק את "${d.name}" מדפדפן זה?`))) return;
+            {d.savedId && <button type="button" className="btn small ghost" aria-label={L('Delete saved group', 'מחיקת הקבוצה השמורה')} title={L('Delete saved group', 'מחיקת הקבוצה השמורה')} onClick={async () => {
+              if (!(await askConfirm({ title: L(`Delete “${d.name}” from this browser?`, `למחוק את "${d.name}" מדפדפן זה?`), yes: L('Delete', 'מחיקה'), no: L('Cancel', 'ביטול'), danger: true }))) return;
               deleteVoterGroup(d.savedId!); set({ savedId: undefined });
             }}><Trash2 className="icon sm" aria-hidden /></button>}
           </span>

@@ -23,7 +23,7 @@ import { electionRuleSetId, type Scenario } from '../../model/scenario.ts';
 import { historyChangesLabels, baselineOf, listLabel, methodOf } from '../derive.ts';
 import { GLOSSARY, useL, useLang } from '../i18n.ts';
 import { download, fmtInt } from '../format.ts';
-import { dispatch, getState, redo, replay, setState, undo, useStore, useDigits, useSetting } from '../store.ts';
+import { dispatch, getState, replay, setState, useStore, useDigits, useSetting } from '../store.ts';
 import { LocalitiesFailed, useLocalities } from './Turnout.tsx';
 import { GlossaryLink, Info, TextField } from './ui.tsx';
 
@@ -384,21 +384,16 @@ export function History({ s, r, ds, reference = null }: { s: Scenario; r: Alloca
   const L = useL();
   const lang = useLang();
   const counts = historyChangesLabels(s, reference, lang, baselineOf(ds));
-  const past = useStore((st) => st.past.length), future = useStore((st) => st.future);
-  const last = s.log.at(-1);
-  const next = future.at(-1)?.log.at(-1);
-  const undoName = last ? L('Undo: ', 'ביטול: ') + describe(last.action, s, lang) : L('Undo', 'ביטול');
-  const redoName = next ? L('Redo: ', 'ביצוע מחדש: ') + describe(next.action, future.at(-1)!, lang) : L('Redo', 'ביצוע מחדש');
   void r;
+  // Undo and Redo sit on the line of changes (and the phone's bar), right beside this menu: not repeated here
   const revertTo = (n: number) => {
+    if (n >= s.log.length) return;
     const { scenario } = replay(ds, s.name, s.log.slice(0, n).map((e) => e.action), s.factionSplitBaseline ?? false);
     setState({ scenario: { ...scenario, id: s.id }, past: [...getState().past, s], future: [] });
   };
   return (
     <div>
       <div className="row" style={{ marginBottom: 8 }}>
-        <button className="btn small" onClick={undo} disabled={!past}>{undoName}</button>
-        <button className="btn small" onClick={redo} disabled={!future.length}>{redoName}</button>
         {(reference || factLog(s).length > 0) && <span className="muted small history-counts"><bdi>{counts.active}</bdi>{counts.official !== null && <>{' · '}<bdi>{counts.official}</bdi></>}{counts.note && <>{' · '}<span className="history-note">{counts.note}</span></>}</span>}
       </div>
       {factLog(s).length === 0 ? <p className="muted">{reference ? L('History is empty.', 'ההיסטוריה ריקה.') : L('No changes — this is the official result.', 'אין שינויים — זו התוצאה הרשמית.')}</p> : (
@@ -406,7 +401,8 @@ export function History({ s, r, ds, reference = null }: { s: Scenario; r: Alloca
           {s.log.map((e, i) => !isFactAction(e.action) ? null : (
             <li key={i} style={{ marginBottom: 3 }}>
               <span className="muted tiny">{new Date(e.at).toLocaleTimeString(lang === 'he' ? 'he-IL' : 'en-GB')}</span> {describe(e.action, s, lang)}{' '}
-              <button className="btn small ghost" onClick={() => revertTo(i + 1)}>{L('revert to here', 'חזרה לכאן')}</button>
+              {/* the newest change is where you already are: nothing to go back to */}
+              {i < s.log.findLastIndex((e) => isFactAction(e.action)) && <button className="btn small ghost" onClick={() => revertTo(i + 1)}>{L('revert to here', 'חזרה לכאן')}</button>}
             </li>
           ))}
         </ol>

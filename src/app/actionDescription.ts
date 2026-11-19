@@ -11,6 +11,7 @@ import type { Lang } from './i18n.ts';
 import { listLabel, editPathLabel } from './derive.ts';
 import { fmtInt, fmtPctNum, signed } from './format.ts';
 import { getSetting } from './store.ts';
+import { factLog } from '../model/actionClassification.ts';
 import { describeCopy } from './compare/copyText.ts';
 export function describe(a: Action, s: Scenario, lang: Lang): string {
   const n = (id: string) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : (lang === 'he' ? 'רשימה שהוסרה' : 'Removed list'); };
@@ -86,3 +87,17 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
   }
 }
 
+
+/** What one Undo or Redo step does, going from `from` to `to` (the state the step made). A step that added changes is
+ *  named by the last of them; Start over and History's "revert to here" replace the list of changes, so they are named
+ *  as what they are, never by a colour step that happens to end the new list (V1 review, 19 Nov). Null when the two
+ *  states are not one step of this kind apart (another scenario or election). */
+export function stepName(from: Scenario, to: Scenario, lang: Lang): string | null {
+  const he = lang === 'he';
+  const same = (a: Scenario['log'], b: Scenario['log']) => a.every((e, i) => JSON.stringify(e.action) === JSON.stringify(b[i]?.action));
+  if (from.electionId !== to.electionId) return null;
+  if (to.log.length > from.log.length && same(from.log, to.log)) return describe(to.log.at(-1)!.action, to, lang);
+  if (factLog(from).length && !factLog(to).length) return he ? 'התחלה מחדש' : 'Start over';
+  if (to.log.length < from.log.length && same(to.log, from.log)) return he ? 'חזרה לשינוי קודם' : 'Back to an earlier change';
+  return null;
+}

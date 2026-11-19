@@ -1,4 +1,5 @@
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
+import { askText } from '../askDialog.ts';
 import { useMemo } from 'react';
 import { Plus, RotateCcw } from 'lucide-react';
 import { EditMarker } from './EditMarker.tsx';
@@ -62,8 +63,8 @@ export function StartFrom({ s: shown, part, listId, copyOnly = false }: { s: Sce
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [s, part, listId, saved, ds, lang]);
-  const newGrouping = () => {
-    const name = prompt(L('Grouping name', 'שם החלוקה'))?.trim();
+  const newGrouping = async () => {
+    const name = await askText({ title: L('New grouping', 'חלוקה חדשה'), label: L('Grouping name', 'שם החלוקה'), yes: L('Create', 'יצירה'), no: L('Cancel', 'ביטול') });
     if (name) dispatch({ type: 'startPart', part: 'blocs', source: 'blank', name });
   };
   const single = others.length === 1 && !others[0].disabled && !others[0].group ? others[0] : null;

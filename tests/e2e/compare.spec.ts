@@ -337,8 +337,8 @@ test('saved comparisons are listed on the Scenarios page with Open, Copy link an
   await expect(page.locator('.cmp-wb')).toBeVisible();
   await page.locator('.cmpm-strip .cmpm-side').click(); // the strip's toggle closes it
   await page.getByRole('tab', { name: 'Scenarios', exact: true }).click();
-  page.once('dialog', (d) => d.accept());
   await page.locator('.scn-comparisons .scn-card').getByRole('button', { name: /^Delete / }).click();
+  await page.locator('dialog.app-ask').getByRole('button', { name: 'Delete', exact: true }).click();
   await expect(page.locator('.scn-comparisons')).toHaveCount(0);
 });
 

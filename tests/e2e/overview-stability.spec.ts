@@ -49,7 +49,8 @@ test('History opens over the page and Escape closes it without closing the open 
   const chamber = await top(page, '.chamber-panel');
   await page.locator('.session').getByRole('button', { name: /^History/ }).click();
   await expect(page.locator('.session .history')).toBeVisible();
-  await expect(page.locator('.session .history')).toContainText('Undo:');
+  // the menu lists the change (its Undo and Redo sit beside it on the line of changes, not inside it)
+  await expect(page.locator('.session .history')).toContainText('1 change from the official result');
   expect(await top(page, '.chamber-panel')).toBe(chamber);
   await page.keyboard.press('Escape');
   await expect(page.locator('.session .history')).toBeHidden();

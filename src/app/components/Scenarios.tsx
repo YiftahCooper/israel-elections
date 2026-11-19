@@ -1,4 +1,5 @@
 import { compareWith } from '../compare/mode.ts';
+import { askConfirm } from '../askDialog.ts';
 import {ColourPicker} from './ColourPicker.tsx';
 import { scenarioDirty } from '../scenarioDocument.ts';
 import { ScenarioSave, UnsavedMark } from './ScenarioSave.tsx';
@@ -110,7 +111,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
           <button className="btn" disabled={official} title={official ? L('Change something first', 'תחילה שנו משהו') : undefined} onClick={() => { duplicateCurrent(); toast('info', L('Saved as a copy in this browser.', 'נשמר עותק בדפדפן זה.')); }}><Copy className="icon sm" aria-hidden />{L('Duplicate', 'שכפול')}</button>
           <button className="btn" onClick={() => exportJson(s)}><Download className="icon sm" aria-hidden />{L('Export', 'ייצוא')}</button>
           <button className="btn" onClick={() => fileRef.current?.click()}><Upload className="icon sm" aria-hidden />{L('Import', 'ייבוא')}</button>
-          <button className="btn ghost" disabled={!s.log.length} title={!s.log.length ? L('Already at the official result', 'כבר בתוצאה הרשמית') : undefined} onClick={() => { if (!getSetting('confirmStartOver') || confirm(L('Start over from the official result? (Undo can restore it.)', 'להתחיל מחדש מהתוצאה הרשמית? (ניתן לבטל)'))) resetAll(); }}><RotateCcw className="icon sm" aria-hidden />{L('Start over', 'התחלה מחדש')}</button>
+          <button className="btn ghost" disabled={!s.log.length} title={!s.log.length ? L('Already at the official result', 'כבר בתוצאה הרשמית') : undefined} onClick={async () => { if (getSetting('confirmStartOver') && !(await askConfirm({ title: L('Start over from the official result?', 'להתחיל מחדש מהתוצאה הרשמית?'), text: L('Undo can restore it.', 'אפשר לשחזר בביטול.'), yes: L('Start over', 'התחלה מחדש'), no: L('Cancel', 'ביטול') }))) return; resetAll(); }}><RotateCcw className="icon sm" aria-hidden />{L('Start over', 'התחלה מחדש')}</button>
         </div>
         {link && <input type="text" readOnly value={link} aria-label={L('Share link', 'קישור שיתוף')} onFocus={(e) => e.target.select()} style={{ width: '100%', marginTop: 8 }} />}
         <input ref={fileRef} type="file" accept="application/json,.json" hidden onChange={async (e) => {
@@ -138,7 +139,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
                   <button className="btn small" disabled={x.id === s.id} onClick={() => { compareWith(`saved:${x.id}`); setState({ tool: 'board' }); }}><GitCompare className="icon sm" aria-hidden />{L('Compare', 'השוואה')}</button>
                   {res && <button className="btn small ghost" onClick={() => exportJson(res.sc)}><Download className="icon sm" aria-hidden />{L('Export', 'ייצוא')}</button>}
                   <span className="spacer" />
-                  <button className="btn small ghost danger icon-only" aria-label={L(`Delete ${x.name}`, `מחיקת ${x.name}`)} onClick={() => { if (confirm(L(`Delete “${x.name}” from this browser?`, `למחוק את "${x.name}" מהדפדפן?`))) deleteSaved(x.id); }}><Trash2 className="icon sm" aria-hidden /></button>
+                  <button className="btn small ghost danger icon-only" aria-label={L(`Delete ${x.name}`, `מחיקת ${x.name}`)} onClick={async () => { if (await askConfirm({ title: L(`Delete “${x.name}” from this browser?`, `למחוק את "${x.name}" מהדפדפן?`), yes: L('Delete', 'מחיקה'), no: L('Cancel', 'ביטול'), danger: true })) deleteSaved(x.id); }}><Trash2 className="icon sm" aria-hidden /></button>
                 </div>
               </li>
             );

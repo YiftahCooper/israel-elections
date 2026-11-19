@@ -150,6 +150,8 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
           </span>
         </span>
         {custom?.id === id && <button className="btn" onClick={() => setCustom(null)} title={L('Back to the default range', 'חזרה לטווח ברירת המחדל')}>{L('Reset', 'איפוס')}</button>}
+        {/* where the votes come from, on screen and in the words the list panel uses, since other screens may take them from other lists */}
+        <span className="small ink2 sens-source">{L('Votes come from: people who stayed home', 'מקור הקולות: מי שלא הצביעו')}</span>
       </div>
       {/* one status line of fixed height: computing, cancelled or an invalid range never moves the chart */}
       <p className="small muted row sens-status" role="status">

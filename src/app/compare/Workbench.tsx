@@ -1,4 +1,5 @@
 import { percent, rationalPoints } from '../components/Percentage.tsx';
+import { TURNOUT_FIELD_DIGITS } from '../components/TurnoutSteps.tsx';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { ordinalEn } from '../electionLabel.ts';
 // The Compare workbench (israel-elections-private docs/design/compare-workbench.md): two live sides pinned left → right in both languages,
@@ -113,8 +114,9 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
     return (l?.seats ?? 0) > 0 || (r?.seats ?? 0) > 0 || !!inGroup || notable || row.right.some((id) => listMarks(right, id).length) || row.left.some((id) => listMarks(left, id).length); };
   const matchesQuery = (row: MatchRow) => !query.trim() || [...row.left.map((id) => left.sc.lists.find((l) => l.id === id)), ...row.right.map((id) => right.sc.lists.find((l) => l.id === id))]
     .some((l) => l && `${l.nameHe} ${l.shortHe} ${l.shortEn ?? ''}`.toLowerCase().includes(query.trim().toLowerCase()));
-  const counts = Object.fromEntries((['all', 'different', 'edited', 'unmatched'] as Filter[]).map((f) => [f, order.filter((r) => qualifies(r, f) && (f === 'unmatched' || zero || hasSeats(r))).length])) as Record<Filter, number>;
-  const visible = order.filter((row) => (qualifies(row, filter) || kept.has(row.key)) && (zero || filter === 'unmatched' || hasSeats(row)) && matchesQuery(row));
+  // every filter obeys "Lists with no seats" as All does, so a part is never counted larger than the whole (V1 review)
+  const counts = Object.fromEntries((['all', 'different', 'edited', 'unmatched'] as Filter[]).map((f) => [f, order.filter((r) => qualifies(r, f) && (zero || hasSeats(r))).length])) as Record<Filter, number>;
+  const visible = order.filter((row) => (qualifies(row, filter) || kept.has(row.key)) && (zero || hasSeats(row)) && matchesQuery(row));
   const pickFilter = (f: Filter) => { setFilter(f); setKept(new Set()); };
   const toCheck = rows.filter((r) => r.tag === 'check').length;
 
@@ -272,7 +274,7 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
     </div>; })()}
 
     <div className="tablewrap cmp-tablewrap" role="region" aria-label={L('Lists side by side', 'הרשימות זו מול זו')} tabIndex={0}>
-      <table className={`cmp-table ${simple ? 'is-simple' : ''}`} dir="ltr">
+      <table className={`cmp-table ${simple ? 'is-simple' : ''} ${cross ? '' : 'is-same'}`} dir="ltr">
         <thead><tr>
           {!simple && <th className="cmp-tick"><span className="sr-only">{L('Select', 'בחירה')}</span></th>}
           <th className="cmp-name cmp-lname" dir={lang === 'he' ? 'rtl' : 'ltr'}>{nameOf(left)}</th><th className="n cmp-v">{L('Votes', 'קולות')}</th><th className="n cmp-s">{L('Share', 'שיעור')}</th><th className="n">{L('Seats', 'מנדטים')}</th>
@@ -303,7 +305,7 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
                   <span className="cmp-delta">
                     {grouped ? <span className="tiny muted">{L('see group', 'ראו קבוצה')}</span> : d !== null ? <SeatDelta value={d} /> : <span className="muted">—</span>}
                     {!simple && shareD && shareD.num !== 0n && <span className="tiny muted cmp-pp" dir={lang === 'he' ? 'rtl' : 'ltr'}><bdi dir="ltr">{rationalPoints(shareD, digits)}</bdi> {L(...PP)}</span>}
-                    <span className="cmp-tagwhy"><span className={`cmp-tag tag-${row.tag}`}>{tagText(row.tag, L)}</span><Info title={L('This pairing', 'ההתאמה הזו')} label={L(`Why this pairing: ${what}`, `למה ההתאמה הזו: ${what}`)}>{why(row)}</Info></span>
+                    {(cross || row.tag !== 'same') && <span className="cmp-tagwhy"><span className={`cmp-tag tag-${row.tag}`}>{tagText(row.tag, L)}</span><Info title={L('This pairing', 'ההתאמה הזו')} label={L(`Why this pairing: ${what}`, `למה ההתאמה הזו: ${what}`)}>{why(row)}</Info></span>}
                   </span>
                   {/* the row's actions, centred between the two columns: Copy into your work, then "⋯" for the rest */}
                   <span className="cmp-acts">
@@ -474,7 +476,7 @@ function GroupLine({ group, rows, left, right, simple, copy, nameOf }: { group: 
  *  between the two figures, and "⋯" with both directions in words; results never copy. same: whether a copy would change nothing (judged on the copied value, not the figure shown). */
 function KeyBand({ left, right, simple, expert, toWork, copy, nameOf, same, menuKey, onMore }: { left: SideModel; right: SideModel; simple: boolean; expert: boolean; toWork: Dir; copy: (f: CopyField, d: Dir) => void; nameOf: (x: SideModel) => string; same: (f: CopyField, d: Dir) => boolean; menuKey: string | null; onMore: (f: CopyField, label: string, anchor: HTMLElement) => void }) {
   const L = useL(), lang = useLang(), digits = useDigits(), uid = useId();
-  const turnout = (x: SideModel) => x.sc.registered ? percent(x.sc.lists.reduce((t, l) => t + l.votes, 0) + x.sc.invalid, x.sc.registered, digits) : '—';
+  const turnout = (x: SideModel) => x.sc.registered ? <span data-fixed-digits>{percent(x.sc.lists.reduce((t, l) => t + l.votes, 0) + x.sc.invalid, x.sc.registered, TURNOUT_FIELD_DIGITS)}</span> : '—';
   const thrVotes = (x: SideModel) => Number(x.sc.rules.thresholdPct) === 0 ? L('None', 'אין') : fmtInt(x.r.thresholdVotes);
   const method = (x: SideModel) => `${METHODS[x.sc.rules.remainderMethod]?.[lang] ?? x.sc.rules.remainderMethod} · ${x.sc.rules.seats}${x.sc.mode === 'experimental' ? L(' · experimental', ' · ניסיוני') : ''}`;
   type Row = { k: string; label: string; l: React.ReactNode; r: React.ReactNode; field?: 'turnout' | 'registered' | 'invalid' | 'threshold' | 'rules' | 'agreements'; show: boolean };

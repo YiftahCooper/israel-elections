@@ -175,7 +175,9 @@ export function swapWithReference(ref: Reference): boolean {
   const draft = st.compare.drafts[ref.id];
   const incoming: ScenarioSession = ref.key === 'swapped'
     ? (draft ? { ...draft, reference: st.compare.swapped!.reference } : st.compare.swapped!)
-    : { scenario: ref.sc, past: draft?.past ?? [], future: draft?.future ?? [], reference: ref.saved ? ref.initial : ref.key === 'snapshot' ? st.reference : null };
+    // an official result arrives as your work without the official result's internal name ('historical'), so it is
+    // called what any unedited work is called, never 'historical'
+    : { scenario: ref.saved || ref.key === 'snapshot' ? ref.sc : { ...ref.sc, name: '' }, past: draft?.past ?? [], future: draft?.future ?? [], reference: ref.saved ? ref.initial : ref.key === 'snapshot' ? st.reference : null };
   const drafts = { ...st.compare.drafts }; delete drafts[ref.id]; delete drafts.swapped;
   const target = incoming.scenario.electionId;
   // unsaved work already waiting for that election stays reachable from the scenario switcher, never overwritten

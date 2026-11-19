@@ -67,7 +67,7 @@
 @media (max-width: 760px) { .cmpm-copy-row .btn { min-block-size: 44px; } }
 .cmpm-sp { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; padding: 6px 14px; border-block-end: 1px solid var(--rule); font-size: 13px; }
 .cmpm-sp > .cmpm-line { flex: 1 1 14rem; }
-.cmpm-copy .cmpm-copy-ticks { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 2px 12px; max-block-size: 12rem; overflow: auto; }
+.cmpm-copy .cmpm-copy-ticks { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); grid-auto-rows: max-content; gap: 2px 12px; max-block-size: 16rem; overflow: auto; }
 .cmpm-copy .cmpm-copy-ticks label { display: flex; gap: 6px; align-items: center; min-block-size: 28px; }
 .cmpm-copy .cmpm-copy-lists .row { display: flex; gap: 12px; }
 .cmpm-copy-sentence { margin: 0; line-height: 1.5; }

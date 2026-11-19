@@ -9,6 +9,10 @@ export function scenarioDirty(s: Scenario, reference: Scenario): boolean {
     s.identityColor !== reference.identityColor;
 }
 
+/** What a scenario without a name is called, the words the empty name field shows: saved, copied or exported under
+ *  the same words (V1 review). */
+export const untitledName = (lang: string) => lang === 'he' ? 'תרחיש ללא שם' : 'Untitled scenario';
+
 export function nextCopyName(name: string, names: readonly string[]): string {
   const base = name.replace(/ \(\d+\)$/, '');
   let n = 1;
