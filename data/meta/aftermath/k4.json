@@ -666,7 +666,198 @@
         ],
         "governmentNumber": 9,
         "scope": "mid-term",
-        "formalStep": true
+        "formalStep": true,
+        "coalition": [
+          {
+            "letters": "א",
+            "seats": 47,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-9",
+                "quote": "PersonToPositionID 3820; PersonID 2639; PositionID 39; StartDate 1959-12-17T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: בכור-שלום שיטרית; faction: מפלגת פועלי ארץ-ישראל.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בכור-שלום שיטרית; סיעה: מפלגת פועלי ארץ-ישראל."
+              }
+            ]
+          },
+          {
+            "letters": "ב",
+            "seats": 12,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-9",
+                "quote": "PersonToPositionID 3384; PersonID 2661; PositionID 39; StartDate 1959-12-17T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים משה שפירא; faction: מפלגה דתית לאומית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים משה שפירא; סיעה: מפלגה דתית לאומית."
+              }
+            ]
+          },
+          {
+            "letters": "מ",
+            "seats": 9,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-9",
+                "quote": "PersonToPositionID 3994; PersonID 2220; PositionID 39; StartDate 1959-12-17T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: ישראל ברזילי; faction: מפלגת פועלים מאוחדת.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: ישראל ברזילי; סיעה: מפלגת פועלים מאוחדת."
+              }
+            ]
+          },
+          {
+            "letters": "תו",
+            "seats": 7,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-9",
+                "quote": "PersonToPositionID 4018; PersonID 2194; PositionID 39; StartDate 1959-12-17T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק בן-אהרן; faction: אחדות העבודה - פועלי ציון.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק בן-אהרן; סיעה: אחדות העבודה - פועלי ציון."
+              }
+            ]
+          },
+          {
+            "letters": "פ",
+            "seats": 6,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-9",
+                "quote": "PersonToPositionID 3855; PersonID 2600; PositionID 39; StartDate 1959-12-17T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: פנחס רוזן; faction: מפלגה פרוגרסיבית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: פנחס רוזן; סיעה: מפלגה פרוגרסיבית."
+              }
+            ]
+          },
+          {
+            "letters": "רא",
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "galnoor-blander-2018-table",
+                "quote": "we included parties or MKs that were not official members of the government, such as the Arab lists affiliated with Mapai in the years 1949–73",
+                "locator": "p. 408, note to Table 11.2",
+                "note": "The book’s table (p. 406) gives this government as “12/59 · Ben-Gurion · Mapai + affiliates, NRP, Progressives, Ahdut Ha’avoda, Mapam, Religious Front · 86”: 86 seats, the same total as the rows recorded here.",
+                "noteHe": "בלוח בספר (עמ׳ 406) רשומה הממשלה הזאת כך: “12/59 · Ben-Gurion · Mapai + affiliates, NRP, Progressives, Ahdut Ha’avoda, Mapam, Religious Front · 86”; 86 מנדטים, כסכום השורות כאן."
+              },
+              {
+                "source": "galnoor-blander-2013-ch12",
+                "quote": "בהרכב הקואליציה נמנו גם … הרשימות הערביות הנלוות למפא\"י שנבחרו לכנסת בין 1949 ל־1973 בשמות שונים: … קידמה ופיתוח …",
+                "locator": "p. 604, note to table 12.2"
+              },
+              {
+                "source": "kenig-rahat-2023",
+                "quote": "פוליטיקאים ערבים ודרוזים מהמפלגות הציוניות (או מהרשימות הנלוות של מפא\"י) היו כמובן שותפים בקואליציות",
+                "locator": "p. 386, note 22"
+              }
+            ],
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table’s 86 seats for this government equal the rows recorded here), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
+          },
+          {
+            "letters": "יא",
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "galnoor-blander-2018-table",
+                "quote": "we included parties or MKs that were not official members of the government, such as the Arab lists affiliated with Mapai in the years 1949–73",
+                "locator": "p. 408, note to Table 11.2",
+                "note": "The book’s table (p. 406) gives this government as “12/59 · Ben-Gurion · Mapai + affiliates, NRP, Progressives, Ahdut Ha’avoda, Mapam, Religious Front · 86”: 86 seats, the same total as the rows recorded here.",
+                "noteHe": "בלוח בספר (עמ׳ 406) רשומה הממשלה הזאת כך: “12/59 · Ben-Gurion · Mapai + affiliates, NRP, Progressives, Ahdut Ha’avoda, Mapam, Religious Front · 86”; 86 מנדטים, כסכום השורות כאן."
+              },
+              {
+                "source": "galnoor-blander-2013-ch12",
+                "quote": "בהרכב הקואליציה נמנו גם … הרשימות הערביות הנלוות למפא\"י שנבחרו לכנסת בין 1949 ל־1973 בשמות שונים: … שיתוף ואחווה …",
+                "locator": "p. 604, note to table 12.2"
+              },
+              {
+                "source": "kenig-rahat-2023",
+                "quote": "פוליטיקאים ערבים ודרוזים מהמפלגות הציוניות (או מהרשימות הנלוות של מפא\"י) היו כמובן שותפים בקואליציות",
+                "locator": "p. 386, note 22"
+              }
+            ],
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table’s 86 seats for this government equal the rows recorded here), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
+          },
+          {
+            "letters": "ע",
+            "seats": 1,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "galnoor-blander-2018-table",
+                "quote": "we included parties or MKs that were not official members of the government, such as the Arab lists affiliated with Mapai in the years 1949–73",
+                "locator": "p. 408, note to Table 11.2",
+                "note": "The book’s table (p. 406) gives this government as “12/59 · Ben-Gurion · Mapai + affiliates, NRP, Progressives, Ahdut Ha’avoda, Mapam, Religious Front · 86”: 86 seats, the same total as the rows recorded here.",
+                "noteHe": "בלוח בספר (עמ׳ 406) רשומה הממשלה הזאת כך: “12/59 · Ben-Gurion · Mapai + affiliates, NRP, Progressives, Ahdut Ha’avoda, Mapam, Religious Front · 86”; 86 מנדטים, כסכום השורות כאן."
+              },
+              {
+                "source": "galnoor-blander-2013-ch12",
+                "quote": "בהרכב הקואליציה נמנו גם … הרשימות הערביות הנלוות למפא\"י שנבחרו לכנסת בין 1949 ל־1973 בשמות שונים: … חקלאות ופיתוח …",
+                "locator": "p. 604, note to table 12.2"
+              },
+              {
+                "source": "kenig-rahat-2023",
+                "quote": "פוליטיקאים ערבים ודרוזים מהמפלגות הציוניות (או מהרשימות הנלוות של מפא\"י) היו כמובן שותפים בקואליציות",
+                "locator": "p. 386, note 22"
+              }
+            ],
+            "note": "Coalition member without a ministry: one of the Arab lists affiliated with Mapai. Galnoor and Blander count it among the coalition partners (their note names the list; their table’s 86 seats for this government equal the rows recorded here), and Kenig and Rahat state that Mapai’s affiliated lists were coalition partners: two independent scholarly works. No accession agreement was recovered; it would be the deciding record.",
+            "noteEn": "One of the Arab lists affiliated with Mapai: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י: נמנתה בקואליציה, בלי שר."
+          },
+          {
+            "seats": 3,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-july",
+                "quote": "הממשלה החליטה על צירוף חבר-הכנסת בנימין מינץ כחבר הממשלה בתפקיד שר הדואר."
+              },
+              {
+                "source": "coalition-1",
+                "quote": "PersonID 2462, GovernmentNum 9, DutyDesc שר הדואר, StartDate 1960-07-18, FinishDate 1961-05-30 (project transcription of official API fields).",
+                "note": "The Knesset’s official record: Minister of Posts, 18 July 1960 to 30 May 1961.",
+                "noteHe": "הרישום הרשמי של הכנסת: שר הדואר, 18 ביולי 1960 עד 30 במאי 1961."
+              },
+              {
+                "source": "faction-split",
+                "quote": "Faction 215 / 233: StartDate 1960-08-09; opening constituents 3 Agudat Yisrael and 3 Poalei Agudat Yisrael.",
+                "note": "The Knesset’s faction records: the faction began on 9 August 1960; at the Knesset’s opening it had three Agudat Yisrael and three Poalei Agudat Yisrael members.",
+                "noteHe": "רישומי הסיעות של הכנסת: הסיעה החלה ב־9 באוגוסט 1960; בפתיחת הכנסת היו בה שלושה חברי אגודת ישראל ושלושה חברי פועלי אגודת ישראל."
+              }
+            ],
+            "factionNameHe": "פועלי אגודת ישראל",
+            "factionNameEn": "Poalei Agudat Yisrael"
+          }
+        ],
+        "coalitionSeats": 89,
+        "supportSeats": 0,
+        "knownMemberSeats": 89,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "Each list counts at its election seats, as in the government above; later moves between factions are not added.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated record cited."
+        }
       },
       {
         "date": "1961-01-31",

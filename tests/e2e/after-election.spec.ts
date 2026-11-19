@@ -154,7 +154,7 @@ for (const lang of ['he', 'en'] as const) test(`support roles and honest unknown
   await expect(history.locator('[data-support-role="member-without-ministries"]').first()).toContainText(lang === 'he' ? 'אגודת ישראל' : 'Agudat');
   // Flatto-Sharon supported the government from outside (probable since 16 Nov 2026), not by his vote alone
   await expect(history.locator('[data-support-role="outside-support"]').first()).toContainText(lang === 'he' ? 'פלאטו' : 'Flatto');
-  await expect(history.locator('[data-individual="moshe-dayan"]')).toContainText(lang === 'he' ? 'משה דיין' : 'Moshe Dayan');
+  await expect(history.locator('[data-individual="moshe-dayan"]').first()).toContainText(lang === 'he' ? 'משה דיין' : 'Moshe Dayan');
   await expect(history.locator('.after-members-total').first()).toHaveText('62');
   await expect(history.locator('.after-support-total').first()).toHaveText('1');
   await expect(history.locator('.after-confidence-vote').first()).toContainText(lang === 'he' ? '63 בעד · 53 נגד' : '63 for · 53 against');
@@ -434,4 +434,18 @@ for (const lang of ['en', 'he'] as const) test(`the coalition count names the li
   const pop = page.locator('.pop').filter({ hasText: lang === 'he' ? 'מקורות וסייגים' : 'Sources & qualifications' });
   await expect(pop).toContainText(lang === 'he' ? 'רשימות הקואליציה זכו ב־98 מנדטים; 73 מחבריהן נספרים' : 'The coalition’s lists won 98 seats; 73 of their members are counted');
   await expect(pop).toContainText(lang === 'he' ? 'כחול לבן 17 מתוך 33' : 'Blue and White 17 of 33');
+});
+
+// Review fault A1: a party that joins or leaves partway through a term changes the member list, dated, under its change.
+for (const lang of ['en', 'he'] as const) test(`a mid-term join or exit shows the new member list under its change (${lang})`, async ({ page }) => {
+  const history = await openAfter(page, 'k9', lang);
+  await history.getByText(lang === 'he' ? 'שינויים בממשלה' : 'Government changes', { exact: true }).click();
+  const dmc = history.locator('.after-government-change').filter({ has: page.locator('time[datetime="1977-10-24"]') });
+  await expect(dmc.locator('[data-support-role="member-with-ministries"] .after-coalition')).toContainText(lang === 'he' ? 'ד״ש' : 'Democratic Movement for Change');
+  await expect(dmc.locator('.after-members-total')).toHaveText('77');
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k19');
+  await history.getByText(lang === 'he' ? 'שינויים בממשלה' : 'Government changes', { exact: true }).click();
+  const out = history.locator('.after-government-change').filter({ has: page.locator('time[datetime="2014-12-04"]') });
+  await expect(out.locator('.after-members-total')).toHaveText('43');
+  await expect(out.locator('.after-coalition').first()).not.toContainText(lang === 'he' ? 'יש עתיד' : 'Yesh Atid');
 });

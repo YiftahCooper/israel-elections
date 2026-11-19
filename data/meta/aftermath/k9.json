@@ -732,7 +732,137 @@
         ],
         "notes": [
           "The official date of taking office is used, not Hebrew Wikipedia’s 25 October; the difference is noted here."
-        ]
+        ],
+        "type": "coalition-change",
+        "scope": "mid-term",
+        "governmentNumber": 18,
+        "coalition": [
+          {
+            "letters": "מחל",
+            "seats": 43,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-18",
+                "quote": "PersonToPositionID 4065; PersonID 2179; PositionID 45; StartDate 1977-06-20T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: מנחם בגין; faction: הליכוד.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: מנחם בגין; סיעה: הליכוד."
+              }
+            ]
+          },
+          {
+            "letters": "כנ",
+            "seats": 2,
+            "note": "Merged into the Likud faction after the election.",
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-18",
+                "quote": "PersonToPositionID 4258; PersonID 482; PositionID 39; StartDate 1977-06-20T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אריאל שרון; faction: שלומציון.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אריאל שרון; סיעה: שלומציון."
+              }
+            ]
+          },
+          {
+            "letters": "ב",
+            "seats": 12,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-18",
+                "quote": "PersonToPositionID 3506; PersonID 2119; PositionID 39; StartDate 1977-06-20T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אהרן אבוחצירא; faction: מפלגה דתית לאומית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אהרן אבוחצירא; סיעה: מפלגה דתית לאומית."
+              }
+            ]
+          },
+          {
+            "letters": "ג",
+            "seats": 4,
+            "note": "Aguda declares coalition accession; official formation-day roster contains no Aguda cabinet minister.",
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "knesset-plenum-1977-06-20",
+                "quote": "הצטרפנו לקואליציה אך לא",
+                "locator": "Agudat Yisrael speaker in the investiture debate; continuation concerns cabinet participation"
+              }
+            ]
+          },
+          {
+            "letters": "פש",
+            "seats": 1,
+            "note": "Probable: one study (Elyakim Rubinstein, 1979) says he supported the government from outside the coalition; another (Gregory Mahler, 1981) says only that he would vote with it without formally joining. No agreement of the time has been found.",
+            "role": "outside-support",
+            "certainty": "probable",
+            "cites": [
+              {
+                "source": "jta-1977-06-21",
+                "quote": "Voting for the government were Likud, the National Religious Party (NRP) and Aguda bloc, Moshe Dayan and Samuel Flatto-Sharon."
+              },
+              {
+                "source": "rubinstein-1979",
+                "quote": "After the election Flatto-Sharon supported the government, without formally entering the coalition.",
+                "locator": "p. 196"
+              },
+              {
+                "source": "mahler-1981",
+                "quote": "An independent MK, Samuel Flatto-Sharon, indicated that he would vote with the Government, even though he was not formally a part of the coalition.",
+                "locator": "p. 219"
+              }
+            ],
+            "noteEn": "Supported the government without joining the coalition.",
+            "noteHe": "תמך בממשלה בלי להצטרף לקואליציה."
+          },
+          {
+            "letters": "יש",
+            "seats": 15,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "dmc-odata",
+                "quote": "StartDate: 1977-10-24T00:00:00; PersonID 2676 (Justice), 3260 (Welfare), 2527 (Transport and Communications).",
+                "note": "The Knesset’s official record: three ministers took office on 24 October 1977.",
+                "noteHe": "הרישום הרשמי של הכנסת: שלושה שרים נכנסו לתפקידם ב־24 באוקטובר 1977."
+              }
+            ]
+          }
+        ],
+        "individuals": [
+          {
+            "id": "moshe-dayan",
+            "nameEn": "Moshe Dayan",
+            "nameHe": "משה דיין",
+            "fromLetters": "אמת",
+            "countedInFactionSeats": false,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "vote": "for",
+            "cites": [
+              {
+                "source": "knesset-plenum-1977-06-20",
+                "quote": "משה דיין – שר החוץ"
+              }
+            ],
+            "note": "Elected on Alignment; joined as Foreign Minister individually. Alignment is not counted as a coalition faction."
+          }
+        ],
+        "coalitionSeats": 77,
+        "supportSeats": 1,
+        "knownMemberSeats": 77,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "Each list counts at its election seats, as in the government above; later moves between factions are not added.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated record cited."
+        }
       }
     ],
     "confidenceVote": {
