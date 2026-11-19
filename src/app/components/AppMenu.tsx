@@ -4,7 +4,7 @@ import { X } from 'lucide-react';
 import { PRESETS, RANK, TOOL_FEATURES, featureLabel, type Preset } from '../features.ts';
 import { useL } from '../i18n.ts';
 import { groupTabs } from '../tabGroups.ts';
-import { setState, useStore } from '../store.ts';
+import { activeFeatures, setState, useStore } from '../store.ts';
 import { useCloseOnFocusAway } from '../focusReturn.ts';
 import { ToolLevelAsk } from './ToolLevelAsk.tsx';
 import './app-menu.css';
@@ -12,7 +12,7 @@ import './app-menu.css';
 type Tool = { id: string; level: Preset; muted: boolean };
 /** Every tool not hidden, as the tab row lists them: this level's first under each heading, then the greyed ones. */
 export function useToolList(): Tool[] {
-  const level = useStore(st => st.level), custom = useStore(st => st.customFeatures);
+  const level = useStore(st => st.level), custom = useStore(st => activeFeatures(st));
   return TOOL_FEATURES.map(([id,,,, min]) => ({ id, level: min as Preset, v: id === 'board' ? 'show' : custom?.[id] ?? PRESETS[level][id] }))
     .filter(t => t.v !== 'hidden').map(({ id, level: l, v }) => ({ id, level: l, muted: v !== 'show' }));
 }

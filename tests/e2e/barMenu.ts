@@ -38,7 +38,13 @@ export async function closeBarMenu(page: Page) {
 /** Language and theme from the bar at any width (the phone panel names them in full). */
 export async function barLanguage(page: Page, lang: 'en' | 'he') {
   if (await openBarMenu(page)) { await page.locator('#app-menu').getByRole('button', { name: lang === 'he' ? 'עברית' : 'English', exact: true }).click(); await closeBarMenu(page); }
-  else await page.getByRole('button', { name: lang === 'he' ? 'עברית' : 'English', exact: true }).click();
+  else {
+    // tablets and computers: the language is first in Settings (19 Nov 2026), opened from the bar's gear
+    await page.locator('.band .band-settings').click();
+    await page.locator('dialog.personal-settings').getByRole('button', { name: lang === 'he' ? 'עברית' : 'English', exact: true }).click();
+    await page.keyboard.press('Escape');
+    await expect(page.locator('dialog.personal-settings')).toBeHidden();
+  }
 }
 
 /** Settings from the bar's gear (desktop, tablet) or the three-lines panel (phone). */

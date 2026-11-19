@@ -76,8 +76,10 @@ test('fallback slips use the same identity in the list and inspector', async ({ 
 
 
 test('Hebrew phone values, names, grouping and shared name wrapping stay readable', async ({ page }) => {
-  await page.getByRole('button', { name: 'עברית', exact: true }).click();
-  await page.getByRole('button', { name: 'מצב כהה', exact: true }).click();
+  await barLanguage(page, 'he');
+  await page.locator('.band .band-settings').click();
+  await page.locator('.personal-settings [data-setting="theme"]').getByRole('button', { name: 'כהה', exact: true }).click();
+  await page.keyboard.press('Escape');
   await page.setViewportSize({ width: 390, height: 1000 });
   const sum = page.locator('.fig .v bdi').last();
   await expect(sum).toHaveAttribute('dir', 'ltr');
@@ -141,13 +143,13 @@ for (const width of [390, 1024, 1500]) test(`Hebrew header stays stable across e
 test('own choices keep the phone bar compact and are counted in the three-lines panel', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 1000 });
   const before = (await page.locator('.band').boundingBox())!.height;
-  // 16 Nov 2026: the Custom level became own choices, counted by a chip beside the level buttons
+  // 19 Nov 2026: own choices make Custom, counted by a chip beside the complexity buttons
   await openBarMenu(page);
   await page.locator('#app-menu').getByRole('button', { name: 'Settings', exact: true }).click();
   await page.locator('[data-part="charts"]').getByRole('group', { name: 'Charts', exact: true }).getByRole('button', { name: 'Hidden', exact: true }).click();
   await page.keyboard.press('Escape');
   await openBarMenu(page);
-  await expect(page.locator('#app-menu .band-own')).toHaveText('+1 own');
+  await expect(page.locator('#app-menu .band-own')).toHaveText('+1');
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
   expect((await page.locator('.band').boundingBox())!.height).toBe(before);
 });

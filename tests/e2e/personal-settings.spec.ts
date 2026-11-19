@@ -52,7 +52,7 @@ for (const [width, election] of [[1500, 'k26'], [1024, 'k25'], [390, 'k1']] as c
     const phone = width === 390, menuBtn = page.locator('.band .band-menu-btn');
     for (const [level, tab] of [['simple', 'board'], ['standard', 'coal'], ['expert', 'rules']]) {
       if (phone) await menuBtn.click();
-      await page.getByRole('group', { name: lang === 'en' ? 'Detail level' : 'רמת פירוט' }).getByRole('button', { name: lang === 'en' ? ({ simple: 'Simple', standard: 'Standard', expert: 'Expert' }[level]!) : ({ simple: 'פשוט', standard: 'רגיל', expert: 'מומחה' }[level]!), exact: true }).click();
+      await page.getByRole('group', { name: lang === 'en' ? 'Complexity' : 'רמת מורכבות' }).getByRole('button', { name: lang === 'en' ? ({ simple: 'Simple', standard: 'Standard', expert: 'Expert' }[level]!) : ({ simple: 'פשוט', standard: 'רגיל', expert: 'מומחה' }[level]!), exact: true }).click();
       if (phone) { await page.keyboard.press('Escape'); await expect(page.locator('#app-menu')).toHaveCount(0); }
       const target = page.locator(`#tab-${tab}`); if (await target.count()) await target.click();
       const gear = phone ? menuBtn : page.locator('.band').getByRole('button', { name: lang === 'en' ? 'Settings' : 'הגדרות', exact: true });

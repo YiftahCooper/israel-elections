@@ -23,6 +23,7 @@ import type { Scenario } from '../../model/scenario.ts';
 import { blocPieces, groupingBaseline, groupingLabel, nonSeatChanges, comparisonGroups, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { CompareButton } from '../compare/CompareStrip.tsx';
+import { SessionUndo, usePhone } from './UndoGroup.tsx';
 
 const History = lazy(() => import('./Panels.tsx').then((m) => ({ default: m.History })));
 const MAX_MOVES = 5;
@@ -95,6 +96,8 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
   const holder = blocs?.find((x) => x.n >= majority);
   const name = (b: { nameHe: string; nameEn: string; appDefined?: boolean }) => groupingName(b, lang, s.blocSchemes?.find(g => g.id === s.blocSchemeId));
   const shown = moves.slice(0, MAX_MOVES);
+  // phones keep Undo and Redo in their pinned bar, and Start over in the scenario panel (this line scrolls away there)
+  const phone = usePhone();
 
   return (
     <div ref={line} className={`session ${edited ? '' : 'idle'}`} role="status" aria-live="polite">
@@ -126,6 +129,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
       <div id={historyId} ref={pop} className="history" popover="auto" onToggle={(e) => setOpen(e.newState === 'open')}>
         {open && <Suspense fallback={<p className="muted small">{L('Loading…', 'טוען…')}</p>}><History s={s} r={r} ds={ds} reference={reference} /></Suspense>}
       </div>
+      {!phone && <SessionUndo />}
     </div>
   );
 }

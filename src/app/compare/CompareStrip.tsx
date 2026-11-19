@@ -7,7 +7,7 @@ import { baselineOf } from '../factionDefaults.ts';
 import { resultChanges } from '../derive.ts';
 import { electionLabel } from '../electionLabel.ts';
 import { useL, useLang } from '../i18n.ts';
-import { useStore } from '../store.ts';
+import { activeFeatures, useStore } from '../store.ts';
 import { ChoicePicker, type Choice } from '../components/ChoicePicker.tsx';
 import { Info } from '../components/ui.tsx';
 import { closeSideBySide, compareWith, openSideBySide, previousElection, startComparing, stopComparing, swapWithReference, useReference } from './mode.ts';
@@ -46,7 +46,7 @@ export function useReferenceChoices(s: Scenario): Choice[] {
 export function CompareStrip({ s }: { s: Scenario }) {
   const L = useL(), lang = useLang();
   // Side by side at every level, as the Compare tab was (owner, 12 Nov 2026: it must be part of the app); Custom can hide it
-  const sideShown = useStore((st) => st.customFeatures?.compare) !== 'hidden';
+  const sideShown = useStore((st) => activeFeatures(st)?.compare) !== 'hidden';
   const comparing = useStore((st) => st.comparing);
   const tool = useStore((st) => st.tool);
   const state = useReference(s);

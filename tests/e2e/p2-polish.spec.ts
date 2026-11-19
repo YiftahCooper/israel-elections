@@ -62,17 +62,19 @@ test.describe('theme: Device, Light or Dark', () => {
     await page.locator('.band .band-menu-btn').click();
     await expect(page.locator('#app-menu').getByRole('group', { name: 'ערכת צבעים', exact: true }).getByRole('button')).toHaveText(['לפי המכשיר', 'בהיר', 'כהה']);
   });
-  test('desktop: the sun/moon button flips the theme; flipping back to the device’s theme follows the device again', async ({ page }) => {
+  test('desktop: the theme is near the top of Settings (19 Nov 2026); choosing Device follows the device again', async ({ page }) => {
     await open(page);
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
-    await page.locator('.band').getByRole('button', { name: 'Light theme', exact: true }).click();
+    await expect(page.locator('.band').getByRole('button', { name: /^(Light|Dark) theme$/ })).toHaveCount(0);
+    await page.locator('.band').getByRole('button', { name: 'Settings', exact: true }).click();
+    const theme = page.locator('.personal-settings [data-setting="theme"]');
+    await theme.getByRole('button', { name: 'Light', exact: true }).click();
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
     expect(await storedTheme(page)).toBe('light');
-    await page.locator('.band').getByRole('button', { name: 'Dark theme', exact: true }).click();
+    await theme.getByRole('button', { name: 'Device', exact: true }).click();
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
     expect(await storedTheme(page)).toBe('device');
-    await page.locator('.band').getByRole('button', { name: 'Settings', exact: true }).click();
-    await expect(page.locator('.personal-settings [data-setting="theme"]').getByRole('button', { name: 'Device', exact: true })).toHaveAttribute('aria-pressed', 'true');
+    await expect(theme.getByRole('button', { name: 'Device', exact: true })).toHaveAttribute('aria-pressed', 'true');
   });
 });
 

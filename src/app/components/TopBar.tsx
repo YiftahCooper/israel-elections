@@ -15,29 +15,27 @@ import { electionContext } from '../../data/electionContext.ts';
 import { exportAnnotations } from '../scenarioExport.ts';
 import { baselineOf, changeCount, editPathLabel, markerReference, referenceChanges, resultChanges } from '../derive.ts';
 import { liveScenarioColor, savedColor } from '../scenarioIdentity.ts';
-import { describe } from '../actionDescription.ts';
-import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { ElectionDataset, ElectionId } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { csvEscape, download } from '../format.ts';
-import { deleteSaved, dispatch, getSetting, setLevel, setSetting, toggleTheme, useSetting, duplicateCurrent, importScenarioJson, openElection, openImported, openSaved, replay, redo, resetAll, scenarioKey, setState, shareLink, toast, undo, useShown, useStore } from '../store.ts';
+import { deleteSaved, dispatch, setSetting, useSetting, duplicateCurrent, importScenarioJson, openElection, openImported, openSaved, replay, scenarioKey, setState, shareLink, toast, useShown, useStore } from '../store.ts';
 import { compareWith } from '../compare/mode.ts';
-import { ChevronDown, Copy, Download, FolderOpen, Link2, Menu, Moon, Redo2, RotateCcw, Save, Share2, Sun, Table2, Trash2, Undo2, Upload, Settings, X } from 'lucide-react';
+import { ChevronDown, Copy, Download, FolderOpen, Link2, Menu, RotateCcw, Save, Share2, Table2, Trash2, Upload, Settings, X } from 'lucide-react';
 import { PersonalSettings } from './PersonalSettings.tsx';
 import { AppMenu } from './AppMenu.tsx';
 import { Seg } from './ui.tsx';
 import './topbar-phone.css';
-import { LEVEL_LABELS, ownChoices } from '../features.ts';
+import { COMPLEXITY_LABEL } from '../features.ts';
+import { Complexity } from './Complexity.tsx';
+import { UndoRedo, usePhone, useStartOver } from './UndoGroup.tsx';
+import './topbar.css';
 
 export { electionLabel } from '../electionLabel.ts';
 import { ElectionPicker } from './ElectionPicker.tsx';
 
-/** Phones get their own one-row bar (owner, 9 Nov 2026): width alone decides, the same breakpoint as styles.css. */
-const PHONE = '(max-width: 600px)';
-const subscribePhone = (fn: () => void) => { const m = globalThis.matchMedia?.(PHONE); m?.addEventListener('change', fn); return () => m?.removeEventListener('change', fn); };
-const usePhone = () => useSyncExternalStore(subscribePhone, () => globalThis.matchMedia?.(PHONE).matches === true, () => false);
 
 const fileName = (n: string) => (n || 'scenario').replace(/[^\p{L}\p{N}]+/gu, '_').replace(/^_+|_+$/g, '').slice(0, 60) || 'scenario';
 
@@ -51,18 +49,8 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
     ? [...index, { id: ds.id, knesset: ds.knesset, date: ds.electionDate, nameHe: ds.nameHe, nameEn: ds.nameEn, available: true, status: { stage: ds.status.stage } }].sort((a, b) => b.date.localeCompare(a.date))
     : index;
   const { markerReference: reference } = useActiveReference();
-  const theme = useStore((st) => st.theme);
   const themeChoice = useSetting('theme');
-  const custom = useStore(st => st.customFeatures);
   const scenariosShown = useShown('scenarios');
-  const level = useStore((st) => st.level);
-  const canUndo = useStore((st) => st.past.length > 0);
-  const canRedo = useStore((st) => st.future.length > 0);
-  const future = useStore(st => st.future);
-  const last = s?.log.at(-1);
-  const next = future.at(-1)?.log.at(-1);
-  const undoName = last && s ? L('Undo: ', 'ביטול: ') + describe(last.action, s, lang) : L('Undo', 'ביטול');
-  const redoName = next && s ? L('Redo: ', 'ביצוע מחדש: ') + describe(next.action, future.at(-1)!, lang) : L('Redo', 'ביצוע מחדש');
   const saved = useStore((st) => st.saved);
   const dirty = useStore(st => { const key = scenarioKey(st); return !!key && key !== 'official' && !st.saved.some(x => x.id === key); });
   const fileRef = useRef<HTMLInputElement>(null);
@@ -126,6 +114,8 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
   };
 
   const phone = usePhone();
+  const layoutRef = useBandLayout(!phone);
+  const bandRef = (el: HTMLElement | null) => { layoutRef.current = el; trackBandHeight(el); };
   const [phoneMenu, setPhoneMenu] = useState(false);
   const [scenarioPanel, setScenarioPanel] = useState(false);
   const [toolsPanel, setToolsPanel] = useState(false);
@@ -136,28 +126,16 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
     } catch (err) { toast('error', errorText(err, lang)); }
     e.target.value = ''; setMenu(false); setPhoneMenu(false); setScenarioPanel(false);
   }} />;
-  const startOver = () => { if (!s?.log.length || !getSetting('confirmStartOver') || confirm(L('Start over from the official result? (Undo can restore it.)', 'להתחיל מחדש מהתוצאה הרשמית? (ניתן לבטל)'))) resetAll(); };
-  const undoRedo = <>
-      <button className="tool" onClick={undo} disabled={!canUndo} title={undoName + ' (Ctrl+Z)'} aria-label={undoName}><Undo2 className="icon rtl-mirror" aria-hidden /></button>
-      <button className="tool" onClick={redo} disabled={!canRedo} title={redoName + ' (Ctrl+Y)'} aria-label={redoName}><Redo2 className="icon rtl-mirror" aria-hidden /></button></>;
+  const startOver = useStartOver();
   const pickElection = (arrows: boolean) => <ElectionPicker arrows={arrows} elections={elections} value={pmContestId ?? electionId} onChange={async value => { const pm = electionContext.pmContests.find(c => c.id === value && c.contestType === 'prime-minister-only'); if (await openElection(pm?.electionId ?? value as ElectionId)) onContestChange?.(pm?.id ?? null); }} />;
-  /** Custom, naming the level it is based on (bar and phone menu alike) */
-  /** the user's own choices for this level, named and counted beside the level; it opens them in Settings (owner,
-   *  16 Nov 2026: one place to see and undo them). Nothing shows while there are none. */
-  const own = ownChoices(custom, level).length;
-  const ownChip = (before?: () => void) => own > 0 && <button type="button" className="btn small band-custom band-own" aria-haspopup="dialog"
-    title={L(`${own} of your own choices for ${LEVEL_LABELS[level][0]}: open in Settings`, `${own} בחירות שלכם לרמת "${LEVEL_LABELS[level][1]}": פתיחה בהגדרות`)}
-    aria-label={L(`${own} of your own choices for ${LEVEL_LABELS[level][0]}`, `${own} בחירות שלכם לרמת "${LEVEL_LABELS[level][1]}"`)}
-    onClick={() => { before?.(); setState({ settingsOpen: true, settingsFocus: 'own' }); }}><span><bdi dir="ltr">+{own}</bdi> {L('own', 'משלכם')}</span></button>;
   const settingsPortal = createPortal(<PersonalSettings />, document.body);
 
   // the View controls, in the three-lines panel on a phone (the bar has no room for them there)
   const phoneView = <section aria-labelledby="pm-view">
           <h2 id="pm-view">{L('View', 'תצוגה')}</h2>
-          <div className="phone-menu-field"><span>{L('Detail level', 'רמת פירוט')}</span>
-            <span className="band-levels"><Seg<'simple' | 'standard' | 'expert'> label={L('Detail level', 'רמת פירוט')} value={level} onChange={setLevel} options={(['simple', 'standard', 'expert'] as const).map(v => ({ v, label: L(...LEVEL_LABELS[v]) }))} />
-              {ownChip(() => { document.querySelector<HTMLElement>('.band-menu-btn')?.focus({ preventScroll: true }); setPhoneMenu(false); })}</span></div>
-          <div className="phone-menu-field"><span>{L('Language', 'שפה')}</span>
+          <div className="phone-menu-field"><span>{L(...COMPLEXITY_LABEL)}</span>
+            <Complexity before={() => { document.querySelector<HTMLElement>('.band-menu-btn')?.focus({ preventScroll: true }); setPhoneMenu(false); }} /></div>
+          <div className="phone-menu-field"><span>{L('Language', 'שפה')} · <span lang={L('he', 'en')}>{L('שפה', 'Language')}</span></span>
             <Seg label={L('Language', 'שפה')} value={lang} onChange={(v) => setState({ lang: v })} options={[{ v: 'he', label: 'עברית', lang: 'he' }, { v: 'en', label: 'English', lang: 'en' }]} /></div>
           <div className="phone-menu-field"><span>{L('Theme', 'ערכת צבעים')}</span>
             <Seg label={L('Theme', 'ערכת צבעים')} value={themeChoice} onChange={(v) => setSetting('theme', v)} options={[{ v: 'device', label: L('Device', 'לפי המכשיר') }, { v: 'light', label: L('Light', 'בהיר') }, { v: 'dark', label: L('Dark', 'כהה') }]} /></div>
@@ -175,7 +153,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
         onClick={() => { setScenarioPanel(false); setPhoneMenu(m => !m); }}>{phoneMenu ? <X className="icon" aria-hidden /> : <Menu className="icon" aria-hidden />}{publicationPending(ds) && !phoneMenu && <span className="band-menu-flag" aria-hidden>!</span>}</button>
       {pickElection(false)}
       {!pmContestId && s && <PhoneStatus s={s} ds={ds} open={scenarioPanel} onOpen={() => { setPhoneMenu(false); setScenarioPanel(o => !o); }} />}
-      {!pmContestId && s && <span className="band-undo">{undoRedo}</span>}
+      {!pmContestId && s && <span className="band-undo"><UndoRedo /></span>}
       {phoneMenu && <AppMenu onClose={() => setPhoneMenu(false)}>
         {phoneView}
         {ds && !pmContestId && <section aria-labelledby="pm-about"><h2 id="pm-about">{L('This election', 'הבחירות האלה')}</h2><ElectionAbout electionId={ds.id} /></section>}
@@ -185,7 +163,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
           <h2 id="pm-scenario">{L('Scenario', 'תרחיש')}</h2>
           <ScenarioSwitcher s={s} ds={ds} onPicked={() => setScenarioPanel(false)} />
           <div className="phone-menu-row">
-            <button className="btn small" onClick={() => { startOver(); }} disabled={!s.log.length}><RotateCcw className="icon sm" aria-hidden />{L('Start over', 'התחלה מחדש')}</button>
+            <button className="btn small" onClick={startOver.run} disabled={!startOver.can}><RotateCcw className="icon sm" aria-hidden />{L('Start over', 'התחלה מחדש')}</button>
           </div>
           <div className="phone-menu-share"><h2>{L('Save & share', 'שמירה ושיתוף')}</h2>
             <div className="phone-menu-share-items">{shareItems(() => setScenarioPanel(false))}</div></div>
@@ -196,25 +174,23 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
     </header>
   );
 
+  // Settings is reached by its icon, which every visitor knows; its name also says Language in the other script, so a
+  // visitor who cannot read the language on screen still finds the language choice, first in Settings (owner, 19 Nov 2026)
+  const settingsName = L('Settings and language · הגדרות ושפה', 'הגדרות ושפה · Settings and language');
   return (
-    <header className="band" ref={trackBandHeight}>
+    <header className="band band-desk" ref={bandRef}>
       {/* short or narrow screens: the tools in a side panel, since the tab rows scroll away or are cut there */}
       <button type="button" className="tool band-tools-btn" aria-label={L('Tools', 'כלים')} title={L('Tools', 'כלים')} aria-expanded={toolsPanel} aria-controls="app-menu" onClick={() => setToolsPanel(o => !o)}><Menu className="icon" aria-hidden /></button>
       {toolsPanel && <AppMenu onClose={() => setToolsPanel(false)} />}
       <h1 className="brand" aria-label={L('Israeli Elections Explorer', 'סייר הבחירות לכנסת')}><span className="brand-full">{L('Israeli Elections Explorer', 'סייר הבחירות לכנסת')}</span><span className="brand-short">{L('Elections', 'סייר הבחירות')}</span></h1>
       {pickElection(true)}
       {ds && !pmContestId && <ElectionAbout electionId={ds.id} />}
+      {/* the bar's two groups: what is on screen (election, scenario) and how it is shown (complexity, settings); on
+          two rows, the election and Settings on the first, the scenario and complexity on the second */}
+      <span className="band-break" aria-hidden />
       {s && ds && <ScenarioSwitcher s={s} ds={ds} />}
-
-      <span className="band-levels"><Seg<'simple' | 'standard' | 'expert'> label={L('Detail level', 'רמת פירוט')} value={level} onChange={setLevel} options={(['simple', 'standard', 'expert'] as const).map(v => ({ v, label: L(...LEVEL_LABELS[v]) }))} />{ownChip()}</span>
-      <span className="spacer" />
-      <div className="band-actions">
       {/* scenario tools need a scenario: hidden while an election loads or after it failed to load */}
-      {!pmContestId && s && <>
-      {undoRedo}
-      <button className="tool" aria-label={L('Start over', 'התחלה מחדש')} title={L('Start over', 'התחלה מחדש')} onClick={startOver} disabled={!s?.log.length}>
-        <RotateCcw className="icon" aria-hidden /><span className="label">{L('Start over', 'התחלה מחדש')}</span></button>
-      <div style={{ position: 'relative' }} ref={menuRef}>
+      {!pmContestId && s && <div className="band-share" ref={menuRef}>
         <button className="tool" aria-label={L('Save & share', 'שמירה ושיתוף')} title={L('Save & share', 'שמירה ושיתוף')} ref={menuButton} aria-expanded={menu} aria-controls="scenarios-menu" onClick={() => setMenu((m) => !m)}>
           <Share2 className="icon" aria-hidden /><span className="label">{L('Save & share', 'שמירה ושיתוף')}</span><ChevronDown className="icon sm" aria-hidden /></button>
         {menu && (
@@ -223,17 +199,48 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
           </div>
         )}
         {fileInput}
-      </div>
-      </>}
-      <button className="tool" aria-haspopup="dialog" title={L('Settings', 'הגדרות')} aria-label={L('Settings', 'הגדרות')} onClick={() => setState({ settingsOpen: true })}><Settings className="icon" aria-hidden /></button>
+      </div>}
+      <span className="spacer" />
+      <Complexity />
+      <button className="tool band-settings" aria-haspopup="dialog" title={settingsName} aria-label={L('Settings', 'הגדרות')} onClick={() => setState({ settingsOpen: true })}><Settings className="icon" aria-hidden /></button>
       {/* outside the dark top bar, so none of the bar's own control styles reach the popup */}
       {settingsPortal}
-      <Seg label={L('Language', 'שפה')} value={lang} onChange={(v) => setState({ lang: v })} options={[{ v: 'he', label: 'עב', lang: 'he', name: 'עברית' }, { v: 'en', label: 'EN', lang: 'en', name: 'English' }]} />
-      <button className="tool" title={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} aria-label={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} onClick={toggleTheme}>
-        {theme === 'dark' ? <Sun className="icon" aria-hidden /> : <Moon className="icon" aria-hidden />}</button>
-      </div>
     </header>
   );
+}
+
+/** The bar takes one row when everything fits and two when it does not (owner, 19 Nov 2026): measured, not guessed from
+ *  the screen width, so browser zoom, Large text, both languages and Custom all decide it the same way. Each item keeps
+ *  the width it has on one row (a shrinkable item counts its basis), so the choice never flips back and forth. The
+ *  brand is written out in full where there is room for it. */
+function useBandLayout(active: boolean) {
+  const ref = useRef<HTMLElement | null>(null);
+  useLayoutEffect(() => {
+    const band = ref.current; if (!active || !band) return;
+    const measure = () => {
+      const cs = getComputedStyle(band), gap = parseFloat(cs.columnGap) || 0;
+      const room = band.clientWidth - (parseFloat(cs.paddingInlineStart) || 0) - (parseFloat(cs.paddingInlineEnd) || 0);
+      const width = (el: Element) => { const e = el as HTMLElement, b = parseFloat(getComputedStyle(e).flexBasis); return Math.max(Number.isFinite(b) ? b : 0, e.offsetWidth); };
+      const items = [...band.children].filter(el => !el.matches('.band-break, .spacer, input, dialog') && getComputedStyle(el).display !== 'none' && getComputedStyle(el).position !== 'fixed');
+      const sum = (els: Element[]) => els.reduce((n, el) => n + width(el) + gap, -gap) + (parseFloat(getComputedStyle(band).getPropertyValue('--band-group-gap')) || 0);
+      const brand = band.querySelector('.brand'), full = band.querySelector<HTMLElement>('.brand-full'), short = band.querySelector<HTMLElement>('.brand-short');
+      const withBrand = (fullBrand: boolean) => (brand ? (fullBrand ? full!.offsetWidth : short!.offsetWidth) - brand.clientWidth : 0);
+      const one = sum(items);
+      const rows = one + withBrand(false) <= room ? 1 : 2;
+      const firstRow = items.filter(el => el.matches('.band-tools-btn, .brand, .election, .election-about, .band-settings'));
+      const fullFits = rows === 1 ? one + withBrand(true) <= room : sum(firstRow) + withBrand(true) <= room;
+      band.dataset.rows = String(rows);
+      band.dataset.brand = fullFits ? 'full' : 'short';
+    };
+    measure();
+    const o = new ResizeObserver(measure);
+    o.observe(band);
+    for (const el of band.children) o.observe(el);
+    const m = new MutationObserver(() => { o.disconnect(); o.observe(band); for (const el of band.children) o.observe(el); measure(); });
+    m.observe(band, { childList: true });
+    return () => { o.disconnect(); m.disconnect(); };
+  }, [active]);
+  return ref;
 }
 
 /** The tools strip sticks directly under the band, whose height grows when its tools wrap (tablets). */

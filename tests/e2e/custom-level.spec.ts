@@ -13,8 +13,9 @@ test('Simple opens agreement editing in place and keeps it across reload', async
   await page.getByRole('button',{name:'More options: Agreement editing',exact:true}).click();
   await expect(page.getByRole('button',{name:'Agreement partner',exact:true})).toBeVisible();
   await page.locator('.feature-disclosure').filter({has:page.getByRole('button',{name:'More options: Agreement editing',exact:true})}).getByRole('button',{name:'Keep this visible',exact:true}).click();
-  // 16 Nov: an own choice for the level, counted beside the level buttons (there is no Custom level any more)
-  await expect(page.locator('.band .band-own')).toHaveText('+1 own');
+  // 19 Nov: an own choice makes Custom (Simple itself is unchanged), counted beside the complexity buttons
+  await expect(page.locator('.band').getByRole('group', { name: 'Complexity' }).getByRole('button', { name: 'Custom', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('.band .band-own')).toHaveText('+1');
   expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(60);
   await page.reload();
   await page.getByRole('region',{name:'Lists',exact:true}).getByRole('button',{name:'Likud',exact:true}).click();

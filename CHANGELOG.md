@@ -1,5 +1,9 @@
 # Changelog
 
+## 19 November 2026
+
+- Top bar, complexity and colours (19 Nov): “detail level” is now “complexity” (Hebrew רמת מורכבות); every “add this” lands in Custom, a fourth complexity of your own, so Simple, Standard and Expert never change; language and theme are the first rows of Settings (the gear names Settings and language in both scripts); Undo, Redo and Start over sit on the line of changes, shown greyed when there is nothing to undo; the desktop bar takes one row when it fits and two deliberate rows when it does not; a shared or imported scenario shows your own colours wherever you set one, without counting as an edit; and a scenario's colour can be picked where it is saved.
+
 ## 17 November 2026
 
 - Mapai's affiliated Arab lists (17 Nov): the Arab lists affiliated with Mapai and the Alignment are coalition members without ministries in governments 1–17, confirmed by two independent books (Galnoor and Blander's coalition table, whose note names the lists, and Kenig and Rahat). The 30 rows that were unknown now have this role, and the 1949 Nazareth list rises from probable to confirmed. Where every row has a role and the rows match the book's total, the coalition's seats are now shown: 73 in governments 1 and 2, 65 in 3, 80 in 7 and 8, 86 in 9, 68 in 10 and 12, 75 in 13 and 68 in 16. Governments 4, 5 and 6 still show only the known seats; government 14 is unchanged. 1981: Davar's printed page has Tami proposing Begin, its row cites it, and it stays confirmed. 1984: The New York Times of 6 August is a second report of the 60–54–5 totals and of Kach not being invited.

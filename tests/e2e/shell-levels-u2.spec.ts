@@ -19,32 +19,41 @@ const start = async (page: Page, { app = {}, settings = {}, preferences = { vote
   await page.goto('/' + hash);
   await expect(page.locator('.lb-row').first()).toBeVisible();
 };
-const level = (page: Page, name: string) => page.locator('.band').getByRole('group', { name: 'Detail level' }).getByRole('button', { name, exact: true });
+const level = (page: Page, name: string) => page.locator('.band').getByRole('group', { name: 'Complexity' }).getByRole('button', { name, exact: true });
 const openSettings = (page: Page) => page.locator('.band').getByRole('button', { name: 'Settings', exact: true }).click();
 
-test('a level change keeps the user\'s own choices, and says nothing was cleared', async ({ page }) => {
+test('a level change keeps the user\'s own choices in Custom, and says nothing was cleared', async ({ page }) => {
   await start(page, { app: { level: 'simple', customFeatures: { rules: 'show' } } });
   await expect(page.locator('#tab-rules')).not.toHaveClass(/locked/);
-  await expect(page.locator('.band .band-own')).toHaveText('+1 own');
+  await expect(page.locator('.band .band-own')).toHaveText('+1');
   await level(page, 'Standard').click();
+  // Simple is Simple as it comes; the choice waits in Custom
   await level(page, 'Simple').click();
+  await expect(page.locator('#tab-rules')).toHaveClass(/locked/);
+  await level(page, 'Custom').click();
   await expect(page.locator('#tab-rules')).not.toHaveClass(/locked/);
   await expect(page.locator('.toast')).toHaveCount(0);
   // the words "More in other levels" are gone: greyed tools ask instead
   await expect(page.locator('.toolbar .more-label')).toHaveCount(0);
 });
 
-test('a greyed-out tool asks: switch level, or add it to this level', async ({ page }) => {
+test('a greyed-out tool asks: switch complexity, or add it to Custom (never to Simple)', async ({ page }) => {
   await start(page, { app: { level: 'simple' } });
   await expect(page.locator('#tab-sens')).toHaveClass(/locked/);
   await page.locator('#tab-sens').click();
   const ask = page.getByRole('dialog', { name: 'Sensitivity' });
-  await expect(ask).toContainText('Part of the Expert level.');
-  await ask.getByRole('button', { name: 'Add to Simple' }).click();
+  await expect(ask).toContainText('Part of Expert.');
+  await expect(ask.getByRole('button', { name: 'Add to Simple' })).toHaveCount(0);
+  await ask.getByRole('button', { name: 'Add to Custom' }).click();
   await expect(ask).toHaveCount(0);
   await expect(page.locator('#tab-sens')).toHaveAttribute('aria-selected', 'true');
   await expect(page.locator('#tab-sens')).not.toHaveClass(/locked/);
-  await expect(level(page, 'Simple')).toHaveAttribute('aria-pressed', 'true');
+  await expect(level(page, 'Custom')).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('.toast')).toContainText('Now Custom: Simple with your choices');
+  // Simple itself still greys Sensitivity out
+  await level(page, 'Simple').click();
+  await expect(page.locator('#tab-sens')).toHaveClass(/locked/);
+  await level(page, 'Custom').click();
   // the chip opens Settings at the list of own choices, where one press undoes it
   await page.locator('.band .band-own').click();
   const own = page.locator('.ps-own');
@@ -60,19 +69,21 @@ test('a greyed-out tool asks: switch level, or add it to this level', async ({ p
   await expect(page.locator('#tab-charts')).toHaveAttribute('aria-selected', 'true');
 });
 
-test('Settings lists every part under its level; a Standard detail can be added to Simple', async ({ page }) => {
+test('Settings lists every part under its complexity; adding a Standard detail on Simple makes Custom', async ({ page }) => {
   await start(page, { app: { level: 'simple' } });
   await expect(page.locator('.lb-key')).toHaveCount(0); // the agreement mark is a Standard detail
   await openSettings(page);
   const standard = page.locator('.ps-tier[data-tier="standard"]');
   await expect(standard.locator('[data-part="charts"]')).toBeVisible();
   await expect(page.locator('.ps-tier[data-tier="expert"] [data-part="turnoutCounts"]')).toBeVisible();
-  // the Custom choice is gone from the level row: the parts are right below it
+  // no Custom until there is a choice of one's own; the parts are right below the row
   await expect(page.locator('.ps-level').getByRole('button')).toHaveCount(3);
   await standard.locator('[data-part="agreementMarks"]').getByRole('checkbox', { name: 'Agreement marks' }).check();
+  // the choice makes Custom, pressed in the same row
+  await expect(page.locator('.ps-level').getByRole('button', { name: 'Custom', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await page.keyboard.press('Escape');
   await expect(page.locator('.lb-key')).toBeVisible();
-  await expect(page.locator('.band .band-own')).toHaveText('+1 own');
+  await expect(page.locator('.band .band-own')).toHaveText('+1');
 });
 
 test('Reset all settings also forgets "Always" answers and own choices, with one Undo', async ({ page }) => {
@@ -93,7 +104,7 @@ test('phone: the three lines open the tools and view; the scenario button opens 
   await page.locator('.band-menu-btn').click();
   const menu = page.locator('#app-menu');
   await expect(menu.getByRole('navigation', { name: 'Tools' }).getByRole('button', { name: 'Coalitions' })).toBeVisible();
-  await expect(menu.getByRole('group', { name: 'Detail level' })).toBeVisible();
+  await expect(menu.getByRole('group', { name: 'Complexity' })).toBeVisible();
   await expect(menu.locator('.scenario-switcher')).toHaveCount(0);
   await menu.getByRole('button', { name: 'Coalitions' }).click();
   await expect(menu).toHaveCount(0);
@@ -102,7 +113,7 @@ test('phone: the three lines open the tools and view; the scenario button opens 
   const scenario = page.getByRole('dialog', { name: 'Scenario' });
   await expect(scenario.locator('.scenario-switcher')).toBeVisible();
   await expect(scenario.getByRole('button', { name: 'Copy a share link' })).toBeVisible(); // not folded away
-  await expect(scenario.getByRole('group', { name: 'Detail level' })).toHaveCount(0);
+  await expect(scenario.getByRole('group', { name: 'Complexity' })).toHaveCount(0);
   await expect(page.locator('#app-menu')).toHaveCount(0);
 });
 

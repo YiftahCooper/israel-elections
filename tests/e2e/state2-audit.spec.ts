@@ -136,7 +136,7 @@ for (const lang of ['en', 'he'] as const) test(`c-robustness-05: an error no pan
   // for this test only, the app's main code is served with one top-bar label replaced by an error (outside every panel)
   await page.route(/\/assets\/index-[^/]+\.js$/, async (route) => {
     const res = await route.fetch();
-    const body = (await res.text()).replaceAll('`Detail level`', '(()=>{throw new Error(`A test error in the top bar`)})()');
+    const body = (await res.text()).replaceAll('`Settings and language · הגדרות ושפה`', '(()=>{throw new Error(`A test error in the top bar`)})()');
     return route.fulfill({ response: res, body });
   });
   await page.goto('/');
