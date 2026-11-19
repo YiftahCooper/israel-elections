@@ -96,9 +96,20 @@ export function Locality2006Note() {
 
 // Leaflet's zoom buttons refocus the map with a plain focus(), which scrolls a partly visible map into view: the
 // page jumped by up to 54px on each zoom click. Same control, refocusing without scrolling.
+type ZoomControl = Leaflet.Control & { _map?: Leaflet.Map; _disabled?: boolean };
 const ZoomInPlace = Leaflet.Control.Zoom.extend({
-  _refocusOnMap(this: Leaflet.Control & { _map?: Leaflet.Map }, e?: MouseEvent) {
+  _refocusOnMap(this: ZoomControl, e?: MouseEvent) {
     if (this._map && e && e.screenX > 0 && e.screenY > 0) this._map.getContainer().focus({ preventScroll: true });
+  },
+  // the map opens at a fitted quarter-step zoom (V2 fault L2); the buttons go to the next whole level from there, so
+  // one press from 7.5 is 8, not 8.5 rounded up to 9
+  _zoomIn(this: ZoomControl, e: MouseEvent) {
+    const m = this._map; if (this._disabled || !m || m.getZoom() >= m.getMaxZoom()) return;
+    m.setZoom(Math.floor(m.getZoom() + 1e-6) + (e.shiftKey ? 3 : 1));
+  },
+  _zoomOut(this: ZoomControl, e: MouseEvent) {
+    const m = this._map; if (this._disabled || !m || m.getZoom() <= m.getMinZoom()) return;
+    m.setZoom(Math.ceil(m.getZoom() - 1e-6) - (e.shiftKey ? 3 : 1));
   },
 });
 
@@ -368,7 +379,9 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       if (!layer.grid) return;
       const grid = layer.grid.clone(), host = m.getContainer().getBoundingClientRect();
       m.getContainer().querySelectorAll('.leaflet-control-zoom, .leaflet-control-attribution').forEach(el => { const r = el.getBoundingClientRect(); grid.rect([r.left - host.left - 2, r.top - host.top - 2, r.right - host.left + 2, r.bottom - host.top + 2]); });
-      const z = m.getZoom();
+      // the thresholds are per whole level: at the fitted quarter-step zoom (7.5, say) an exact test matched none of
+      // them and every town was named, crowded (V2 fault L2)
+      const z = Math.floor(m.getZoom() + 1e-6);
       const min = z <= 7 ? 150_000 : z === 8 ? 50_000 : z === 9 ? 15_000 : z === 10 ? 4_000 : z === 11 ? 1_000 : 0;
       let shown = 0;
       // every name that may be shown at this zoom, measured in one go
