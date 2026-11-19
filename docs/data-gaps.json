@@ -1,30 +1,30 @@
 {
   "schemaVersion": 3,
-  "total": 12518,
+  "total": 12621,
   "counts": {
-    "unknown": 7378,
+    "unknown": 7449,
     "missing-field": 285,
     "conflict": 19,
-    "single-source": 3000,
+    "single-source": 3031,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1179,
     "pending": 357,
-    "unconfirmed": 199
+    "unconfirmed": 200
   },
   "countsByStatus": {
     "inferred-not-verified": 1040,
     "needs-current-status-review": 319,
-    "open": 11159
+    "open": 11262
   },
   "countsByImportance": {
     "high": {
-      "total": 879,
-      "confirmed": 474,
-      "probable": 48,
+      "total": 982,
+      "confirmed": 503,
+      "probable": 49,
       "provisional": 140,
       "disputed": 11,
-      "unknown": 206
+      "unknown": 279
     },
     "medium": {
       "total": 4483,
@@ -58,11 +58,11 @@
       "unknown": 76
     },
     "Government roles": {
-      "confirmed": 343,
-      "probable": 11,
+      "confirmed": 385,
+      "probable": 12,
       "provisional": 3,
       "disputed": 3,
-      "unknown": 1
+      "unknown": 7
     },
     "Formation events": {
       "confirmed": 75,
@@ -347,20 +347,20 @@
     },
     {
       "election": "k15",
-      "total": 396,
-      "highOpen": 27,
+      "total": 499,
+      "highOpen": 101,
       "mediumOpen": 153,
       "low": 160,
       "counts": {
-        "unknown": 218,
+        "unknown": 289,
         "missing-field": 20,
         "conflict": 1,
-        "single-source": 103,
+        "single-source": 134,
         "low-confidence": 4,
         "release-hold": 0,
         "inferred": 30,
         "pending": 15,
-        "unconfirmed": 5
+        "unconfirmed": 6
       }
     },
     {
@@ -634,7 +634,7 @@
     {"election":"k16","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k16.json"},
     {"election":"k16","area":"Outside-support seat total","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k16.json"},
     {"election":"k15","area":"Formation conflicts","count":2,"certainty":{"provisional":1,"disputed":1},"kinds":{"conflict":1,"single-source":1},"labels":[],"disputed":["Coalition seats at formation versus later snapshot"],"file":"data/meta/aftermath/k15.json"},
-    {"election":"k15","area":"Later governments","count":7,"certainty":{"provisional":1,"unknown":6},"kinds":{"unknown":6,"single-source":1},"labels":["שס","כן"],"file":"data/meta/aftermath/k15.json"},
+    {"election":"k15","area":"Later governments","count":81,"certainty":{"probable":1,"provisional":1,"unknown":79},"kinds":{"unknown":77,"single-source":3,"unconfirmed":1},"labels":["שס","כן","מרצ","coalition-change 2000-06-24","coalition-change 2002-04-08","coalition-change 2002-06-03","coalition-withdrawal 1999-09","coalition-withdrawal 2000-07-11","coalition-withdrawal 2000-07-12","אמת","coalition-withdrawal 2000-08-04","coalition-withdrawal 2002-03-14","coalition-withdrawal 2002-05-23","coalition-withdrawal 2002-11-02","ministerial-change 2002-07-30"],"file":"data/meta/aftermath/k15.json"},
     {"election":"k15","area":"data/meta/election-context.json pmContests.candidates","count":6,"certainty":{"provisional":6},"kinds":{"single-source":6},"labels":["barak","begin","bishara","mordechai","netanyahu","sharon"],"file":"data/meta/election-context.json"},
     {"election":"k15","area":"data/meta/election-context.json pmContests.totals","count":6,"certainty":{"probable":2,"provisional":4},"kinds":{"single-source":6},"labels":["pm1999","pm2001"],"file":"data/meta/election-context.json"},
     {"election":"k15","area":"data/meta/election-context.json pmContests","count":2,"certainty":{"provisional":2},"kinds":{"single-source":2},"labels":["pm1999","pm2001"],"file":"data/meta/election-context.json"},

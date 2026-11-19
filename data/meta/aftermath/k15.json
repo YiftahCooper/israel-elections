@@ -195,6 +195,92 @@
       "tier": "primary",
       "accessed": "2026-11-17",
       "via": "Public copy of the official Reshumot issue: the Central Elections Committee chair’s notice of the results of the special election for prime minister."
+    },
+    "positions-gov28": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$format=json&$filter=GovernmentNum%20eq%2028",
+      "publisher": "Knesset open data: appointments in government 28",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויים בממשלה ה־28",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "positions-gov29": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$format=json&$filter=GovernmentNum%20eq%2029",
+      "publisher": "Knesset open data: appointments in government 29",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויים בממשלה ה־29",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "factions-k15": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2015%20and%20PositionID%20eq%2054&$format=json",
+      "publisher": "Knesset open data: faction membership",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: החברות בסיעות",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-2000-06-26": {
+      "url": "https://fs.knesset.gov.il//15/Plenum/15_ptm_532773.docx",
+      "publisher": "Knesset, Divrei HaKnesset, 26 June 2000",
+      "publisherHe": "הכנסת, דברי הכנסת, 26 ביוני 2000",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-2000-06-27": {
+      "url": "https://fs.knesset.gov.il//15/Plenum/15_ptm_532786.docx",
+      "publisher": "Knesset, Divrei HaKnesset, 27 June 2000",
+      "publisherHe": "הכנסת, דברי הכנסת, 27 ביוני 2000",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-2000-07-10": {
+      "url": "https://fs.knesset.gov.il//15/Plenum/15_ptm_532761.docx",
+      "publisher": "Knesset, Divrei HaKnesset, 10 July 2000",
+      "publisherHe": "הכנסת, דברי הכנסת, 10 ביולי 2000",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-2002-05-27": {
+      "url": "https://fs.knesset.gov.il//15/Plenum/15_ptm_532997.docx",
+      "publisher": "Knesset, Divrei HaKnesset, 27 May 2002",
+      "publisherHe": "הכנסת, דברי הכנסת, 27 במאי 2002",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-2002-06-03": {
+      "url": "https://fs.knesset.gov.il//15/Plenum/15_ptm_533000.docx",
+      "publisher": "Knesset, Divrei HaKnesset, 3 June 2002",
+      "publisherHe": "הכנסת, דברי הכנסת, 3 ביוני 2002",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-2002-11-04": {
+      "url": "https://fs.knesset.gov.il//15/Plenum/15_ptm_533072.docx",
+      "publisher": "Knesset, Divrei HaKnesset, 4 November 2002",
+      "publisherHe": "הכנסת, דברי הכנסת, 4 בנובמבר 2002",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "idi-kenig-2010": {
+      "url": "https://www.idi.org.il/articles/8082",
+      "publisher": "Ofer Kenig, Ten years since Ehud Barak’s minority government (Israel Democracy Institute)",
+      "publisherHe": "עופר קניג, עשור לממשלת המיעוט של אהוד ברק (המכון הישראלי לדמוקרטיה)",
+      "kind": "academic",
+      "accessed": "2026-11-19",
+      "evidenceFamily": "author:kenig"
+    },
+    "kenig-rahat-2023": {
+      "url": "https://www.idi.org.il/media/20997/המפלגות-בישראל-2021-1992.pdf",
+      "publisher": "Ofer Kenig and Gideon Rahat, Parties in Israel 1992–2021 (Israel Democracy Institute, 2023)",
+      "publisherHe": "עופר קניג וגדעון רהט, המפלגות בישראל 1992–2021 (המכון הישראלי לדמוקרטיה, 2023)",
+      "kind": "academic",
+      "accessed": "2026-11-17",
+      "evidenceFamily": "author:kenig-rahat"
+    },
+    "jta-2000-06-26": {
+      "url": "https://www.jta.org/archive/israeli-prime-minister-ehud-baraks-chances-of-saving",
+      "publisher": "Jewish Telegraphic Agency, news brief, June 2000",
+      "publisherHe": "סוכנות הידיעות היהודית (JTA), ידיעה קצרה, יוני 2000",
+      "kind": "secondary",
+      "accessed": "2026-11-19"
     }
   },
   "results": {
@@ -561,7 +647,11 @@
     "First-government coalition membership is reused from the existing first-government scheme, whose party membership evidence includes labelled Hebrew Wikipedia; a complete independent primary coalition agreement cross-check remains pending.",
     "Knesset history mirror misdates Ze’evi’s assassination; the inaccurate date remains excluded. Government 29 faction membership and intermediate Barak-to-Sharon formal acts remain incomplete; membership snapshots alone do not establish the legal effective time of resignation.",
     "Government 28 tenure independently checked against retained official gov28.pdf p.120: 6 July 1999–7 March 2001. Intermediate formal resignation/caretaker acts remain incomplete.",
-    "The UPI photo caption indexes a 75–29 confidence vote, but the original returned 403. The tally is held out until an inspectable original is obtained; coalition size 75 is independently verified by JTA."
+    "The UPI photo caption indexes a 75–29 confidence vote, but the original returned 403. The tally is held out until an inspectable original is obtained; coalition size 75 is independently verified by JTA.",
+    "United Torah Judaism left Barak’s coalition in September 1999 (IDI; Kenig and Rahat); the day is not recorded, so the member list is dated by month only. A faction announcement or a Knesset notice would settle it.",
+    "Meretz after its ministers resigned (24 June 2000): whether and when the faction formally left the coalition is not recorded (a Meretz MK spoke for the coalition on 26 June 2000; IDI says it decided to leave). Shown with an unknown role, not counted.",
+    "Roman Bronfman and Alexander Tsinker left the Yisrael BaAliyah faction on 20 July 1999 (Democratic Choice from 18 October 1999); their place in the coalition until July 2000 is not recorded. The member lists count them within Yisrael BaAliyah’s 6 seats, as IDI does.",
+    "Gesher after David Levy’s term as minister ended (30 July 2002): whether the faction stayed in Sharon’s coalition is not recorded."
   ],
   "government": {
     "number": 28,
@@ -727,6 +817,601 @@
     ],
     "changes": [
       {
+        "date": "1999-09",
+        "textEn": "United Torah Judaism left the coalition after the government had a power-station turbine moved on the Sabbath.",
+        "textHe": "יהדות התורה פרשה מהקואליציה לאחר שהממשלה הורתה להעביר טורבינה של חברת החשמל בשבת.",
+        "cites": [
+          {
+            "source": "idi-kenig-2010",
+            "quote": "היא עזבה את הקואליציה כבר בספטמבר 1999 עקב \"פרשת המשחן\" - שינוע טורבינה גדולה של חברת החשמל בשבת.",
+            "note": "The month the faction left; no record found gives the day. United Torah Judaism had no ministers or deputy ministers in this government.",
+            "noteHe": "החודש שבו פרשה הסיעה; לא נמצא רישום שמציין את היום. ליהדות התורה לא היו שרים או סגני שרים בממשלה זו."
+          },
+          {
+            "source": "kenig-rahat-2023",
+            "quote": "הפעם היחידה שבה היא מימשה את איומה ופרשה מהקואליציה הייתה בממשלתו של אהוד ברק",
+            "locator": "p. 435"
+          }
+        ],
+        "type": "coalition-withdrawal",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 28,
+        "coalition": [
+          {
+            "letters": "אמת",
+            "seats": 26,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 3448; PersonID 433; PositionID 57; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: דליה איציק; faction: ישראל אחת.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דליה איציק; סיעה: ישראל אחת."
+              }
+            ]
+          },
+          {
+            "letters": "שס",
+            "seats": 17,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 3533; PersonID 500; PositionID 39; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אליהו סויסה; faction: ש\"ס.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אליהו סויסה; סיעה: ש\"ס."
+              }
+            ]
+          },
+          {
+            "letters": "מרצ",
+            "seats": 10,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 4490; PersonID 507; PositionID 39; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: רן כהן; faction: מרצ.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: רן כהן; סיעה: מרצ."
+              }
+            ]
+          },
+          {
+            "letters": "כן",
+            "seats": 6,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 4500; PersonID 535; PositionID 39; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: נתן שרנסקי; faction: ישראל בעלייה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: נתן שרנסקי; סיעה: ישראל בעלייה."
+              }
+            ]
+          },
+          {
+            "letters": "פה",
+            "seats": 6,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 3532; PersonID 2468; PositionID 39; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק מרדכי; faction: מפלגת המרכז.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק מרדכי; סיעה: מפלגת המרכז."
+              }
+            ]
+          },
+          {
+            "letters": "ב",
+            "seats": 5,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 4493; PersonID 765; PositionID 39; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק לוי; faction: מפלגה דתית לאומית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק לוי; סיעה: מפלגה דתית לאומית."
+              }
+            ]
+          }
+        ],
+        "coalitionSeats": 70,
+        "supportSeats": 0,
+        "knownMemberSeats": 70,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "2000-06-24",
+        "textEn": "The resignations of Meretz’s three ministers took effect. A Meretz MK said two days later that Meretz still belonged to the coalition.",
+        "textHe": "התפטרויותיהם של שלושת שרי מרצ נכנסו לתוקף. חברת כנסת ממרצ אמרה יומיים אחר כך שמרצ עדיין שייכת לקואליציה.",
+        "cites": [
+          {
+            "source": "plenum-2000-06-27",
+            "quote": "כהונתם בממשלה נפסקה במוצאי שבת, כ\"א בסיוון התש\"ס, 24 ביוני 2000, בשעה 23:30.",
+            "note": "The day the resignations of Yossi Sarid, Ran Cohen and Haim Oron took effect, as the Government told the Knesset on 27 June 2000.",
+            "noteHe": "היום שבו נכנסו לתוקף התפטרויותיהם של יוסי שריד, רן כהן וחיים אורון, כפי שהודיעה הממשלה לכנסת ב־27 ביוני 2000."
+          },
+          {
+            "source": "positions-gov28",
+            "quote": "PersonToPositionID 4490, PersonID 507, PositionID 39, FinishDate 2000-06-24; PersonToPositionID 4499, PersonID 512, PositionID 39, FinishDate 2000-06-24; PersonToPositionID 3447, PersonID 1065, PositionID 39, FinishDate 2000-06-24",
+            "note": "The Knesset’s appointment records: Yossi Sarid, Ran Cohen and Haim Oron, ministers until 24 June 2000.",
+            "noteHe": "רישומי המינויים של הכנסת: יוסי שריד, רן כהן וחיים אורון, שרים עד 24 ביוני 2000."
+          },
+          {
+            "source": "plenum-2000-06-26",
+            "quote": "אני מדברת כנציגת מרצ בשם הקואליציה",
+            "note": "Anat Maor of Meretz, two days after the resignations.",
+            "noteHe": "ענת מאור ממרצ, יומיים אחרי ההתפטרויות."
+          },
+          {
+            "source": "idi-kenig-2010",
+            "quote": "החליטה מרצ לפרוש מהקואליציה"
+          }
+        ],
+        "type": "coalition-change",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 28,
+        "coalition": [
+          {
+            "letters": "אמת",
+            "seats": 26,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 3448; PersonID 433; PositionID 57; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: דליה איציק; faction: ישראל אחת.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דליה איציק; סיעה: ישראל אחת."
+              }
+            ]
+          },
+          {
+            "letters": "שס",
+            "seats": 17,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 3533; PersonID 500; PositionID 39; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אליהו סויסה; faction: ש\"ס.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אליהו סויסה; סיעה: ש\"ס."
+              }
+            ]
+          },
+          {
+            "letters": "מרצ",
+            "seats": 10,
+            "role": "member-without-ministries",
+            "certainty": "unknown",
+            "cites": [
+              {
+                "source": "plenum-2000-06-26",
+                "quote": "אני מדברת כנציגת מרצ בשם הקואליציה",
+                "note": "Anat Maor of Meretz, two days after the resignations.",
+                "noteHe": "ענת מאור ממרצ, יומיים אחרי ההתפטרויות."
+              },
+              {
+                "source": "idi-kenig-2010",
+                "quote": "החליטה מרצ לפרוש מהקואליציה"
+              },
+              {
+                "source": "jta-2000-06-26",
+                "quote": "Meretz said it would still support Barak in Knesset votes"
+              },
+              {
+                "source": "factions-k15",
+                "quote": "Faction 6 (מרצ): 10 members on 2000-06-24, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 10 members of Meretz on 24 June 2000.",
+                "noteHe": "רישומי הסיעות של הכנסת: 10 חברים בסיעת מרצ ב־24 ביוני 2000."
+              }
+            ],
+            "note": "After its ministers resigned, a Meretz MK told the Knesset on 26 June 2000 that Meretz belonged to the coalition and JTA reported it would still support Barak, while IDI says Meretz decided to leave the coalition. When, or whether, the faction formally left is not recorded, so it is not counted.",
+            "noteEn": "Its ministers resigned; whether Meretz stayed a coalition member is not recorded.",
+            "noteHe": "שריה התפטרו; לא תועד אם מרצ נשארה חברה בקואליציה."
+          },
+          {
+            "letters": "כן",
+            "seats": 6,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 4500; PersonID 535; PositionID 39; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: נתן שרנסקי; faction: ישראל בעלייה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: נתן שרנסקי; סיעה: ישראל בעלייה."
+              }
+            ]
+          },
+          {
+            "letters": "פה",
+            "seats": 6,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 3532; PersonID 2468; PositionID 39; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק מרדכי; faction: מפלגת המרכז.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק מרדכי; סיעה: מפלגת המרכז."
+              }
+            ]
+          },
+          {
+            "letters": "ב",
+            "seats": 5,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 4493; PersonID 765; PositionID 39; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק לוי; faction: מפלגה דתית לאומית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק לוי; סיעה: מפלגה דתית לאומית."
+              }
+            ]
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "knownMemberSeats": 60,
+        "membershipCoverage": "partial",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "2000-07-11",
+        "textEn": "Shas and Yisrael BaAliyah left the coalition: the resignations of their ministers took effect.",
+        "textHe": "ש״ס וישראל בעלייה פרשו מהקואליציה: התפטרויות השרים שלהן נכנסו לתוקף.",
+        "cites": [
+          {
+            "source": "positions-gov28",
+            "quote": "PersonToPositionID 4478, PersonID 484, PositionID 39, FinishDate 2000-07-11; PersonToPositionID 4488, PersonID 494, PositionID 39, FinishDate 2000-07-11; PersonToPositionID 3533, PersonID 500, PositionID 39, FinishDate 2000-07-11; PersonToPositionID 4489, PersonID 580, PositionID 39, FinishDate 2000-07-11; PersonToPositionID 4500, PersonID 535, PositionID 39, FinishDate 2000-07-11",
+            "note": "The Knesset’s appointment records: the terms of Shas’s four ministers and of Natan Sharansky (Yisrael BaAliyah) ended on 11 July 2000, the day their resignations took effect.",
+            "noteHe": "רישומי המינויים של הכנסת: כהונתם של ארבעת שרי ש״ס ושל נתן שרנסקי (ישראל בעלייה) הסתיימה ב־11 ביולי 2000, היום שבו נכנסו התפטרויותיהם לתוקף."
+          },
+          {
+            "source": "plenum-2000-07-10",
+            "quote": "בהתפטרות שרי ש\"ס, מפד\"ל וישראל בעלייה",
+            "note": "The Knesset debated the resignations, already tendered, on 10 July 2000.",
+            "noteHe": "הכנסת דנה בהתפטרויות, שכבר הוגשו, ב־10 ביולי 2000."
+          },
+          {
+            "source": "idi-kenig-2010",
+            "quote": "פרשו מהקואליציה גם ש\"ס, ישראל בעלייה והמפד\"ל",
+            "note": "Before the Camp David summit, July 2000.",
+            "noteHe": "ערב ועידת קמפ דייוויד, יולי 2000."
+          },
+          {
+            "source": "factions-k15",
+            "quote": "Faction 5 (ש\"ס): 17 members on 2000-07-11, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 17 members of Shas on 11 July 2000.",
+            "noteHe": "רישומי הסיעות של הכנסת: 17 חברים בסיעת ש״ס ב־11 ביולי 2000."
+          },
+          {
+            "source": "factions-k15",
+            "quote": "Faction 11 (ישראל בעלייה): 4 members on 2000-07-11, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 4 members of Yisrael BaAliyah on 11 July 2000.",
+            "noteHe": "רישומי הסיעות של הכנסת: 4 חברים בסיעת ישראל בעלייה ב־11 ביולי 2000."
+          }
+        ],
+        "type": "coalition-withdrawal",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 28,
+        "coalition": [
+          {
+            "letters": "אמת",
+            "seats": 26,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 3448; PersonID 433; PositionID 57; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: דליה איציק; faction: ישראל אחת.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דליה איציק; סיעה: ישראל אחת."
+              }
+            ]
+          },
+          {
+            "letters": "מרצ",
+            "seats": 10,
+            "role": "member-without-ministries",
+            "certainty": "unknown",
+            "cites": [
+              {
+                "source": "plenum-2000-06-26",
+                "quote": "אני מדברת כנציגת מרצ בשם הקואליציה",
+                "note": "Anat Maor of Meretz, two days after the resignations.",
+                "noteHe": "ענת מאור ממרצ, יומיים אחרי ההתפטרויות."
+              },
+              {
+                "source": "idi-kenig-2010",
+                "quote": "החליטה מרצ לפרוש מהקואליציה"
+              },
+              {
+                "source": "jta-2000-06-26",
+                "quote": "Meretz said it would still support Barak in Knesset votes"
+              },
+              {
+                "source": "factions-k15",
+                "quote": "Faction 6 (מרצ): 10 members on 2000-06-24, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 10 members of Meretz on 24 June 2000.",
+                "noteHe": "רישומי הסיעות של הכנסת: 10 חברים בסיעת מרצ ב־24 ביוני 2000."
+              }
+            ],
+            "note": "After its ministers resigned, a Meretz MK told the Knesset on 26 June 2000 that Meretz belonged to the coalition and JTA reported it would still support Barak, while IDI says Meretz decided to leave the coalition. When, or whether, the faction formally left is not recorded, so it is not counted.",
+            "noteEn": "Its ministers resigned; whether Meretz stayed a coalition member is not recorded.",
+            "noteHe": "שריה התפטרו; לא תועד אם מרצ נשארה חברה בקואליציה."
+          },
+          {
+            "letters": "פה",
+            "seats": 6,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 3532; PersonID 2468; PositionID 39; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק מרדכי; faction: מפלגת המרכז.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק מרדכי; סיעה: מפלגת המרכז."
+              }
+            ]
+          },
+          {
+            "letters": "ב",
+            "seats": 5,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 4493; PersonID 765; PositionID 39; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק לוי; faction: מפלגה דתית לאומית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק לוי; סיעה: מפלגה דתית לאומית."
+              }
+            ]
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "knownMemberSeats": 37,
+        "membershipCoverage": "partial",
+        "coalitionSeatsNote": "Shas leaves with 17 members on the day in the Knesset’s faction records; Yisrael BaAliyah leaves with the 6 seats the list above counted for it, as IDI counts them, though its faction had 4 members that day (two had left it on 20 July 1999). The other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "2000-07-12",
+        "textEn": "The National Religious Party left the coalition: Yitzhak Levy’s resignation as minister took effect.",
+        "textHe": "המפד״ל פרשה מהקואליציה: התפטרותו של השר יצחק לוי נכנסה לתוקף.",
+        "cites": [
+          {
+            "source": "positions-gov28",
+            "quote": "PersonToPositionID 4493, PersonID 765, PositionID 39, FinishDate 2000-07-12",
+            "note": "The Knesset’s appointment record: Yitzhak Levy, minister until 12 July 2000, the day his resignation took effect.",
+            "noteHe": "רישום המינוי של הכנסת: יצחק לוי, שר עד 12 ביולי 2000, היום שבו נכנסה התפטרותו לתוקף."
+          },
+          {
+            "source": "plenum-2000-07-10",
+            "quote": "בהתפטרות שרי ש\"ס, מפד\"ל וישראל בעלייה",
+            "note": "The Knesset debated the resignations, already tendered, on 10 July 2000.",
+            "noteHe": "הכנסת דנה בהתפטרויות, שכבר הוגשו, ב־10 ביולי 2000."
+          },
+          {
+            "source": "idi-kenig-2010",
+            "quote": "פרשו מהקואליציה גם ש\"ס, ישראל בעלייה והמפד\"ל",
+            "note": "Before the Camp David summit, July 2000.",
+            "noteHe": "ערב ועידת קמפ דייוויד, יולי 2000."
+          },
+          {
+            "source": "factions-k15",
+            "quote": "Faction 9 (מפלגה דתית לאומית): 5 members on 2000-07-12, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 5 members of the National Religious Party on 12 July 2000.",
+            "noteHe": "רישומי הסיעות של הכנסת: 5 חברים בסיעת המפד״ל ב־12 ביולי 2000."
+          }
+        ],
+        "type": "coalition-withdrawal",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 28,
+        "coalition": [
+          {
+            "letters": "אמת",
+            "seats": 26,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 3448; PersonID 433; PositionID 57; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: דליה איציק; faction: ישראל אחת.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דליה איציק; סיעה: ישראל אחת."
+              }
+            ]
+          },
+          {
+            "letters": "מרצ",
+            "seats": 10,
+            "role": "member-without-ministries",
+            "certainty": "unknown",
+            "cites": [
+              {
+                "source": "plenum-2000-06-26",
+                "quote": "אני מדברת כנציגת מרצ בשם הקואליציה",
+                "note": "Anat Maor of Meretz, two days after the resignations.",
+                "noteHe": "ענת מאור ממרצ, יומיים אחרי ההתפטרויות."
+              },
+              {
+                "source": "idi-kenig-2010",
+                "quote": "החליטה מרצ לפרוש מהקואליציה"
+              },
+              {
+                "source": "jta-2000-06-26",
+                "quote": "Meretz said it would still support Barak in Knesset votes"
+              },
+              {
+                "source": "factions-k15",
+                "quote": "Faction 6 (מרצ): 10 members on 2000-06-24, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 10 members of Meretz on 24 June 2000.",
+                "noteHe": "רישומי הסיעות של הכנסת: 10 חברים בסיעת מרצ ב־24 ביוני 2000."
+              }
+            ],
+            "note": "After its ministers resigned, a Meretz MK told the Knesset on 26 June 2000 that Meretz belonged to the coalition and JTA reported it would still support Barak, while IDI says Meretz decided to leave the coalition. When, or whether, the faction formally left is not recorded, so it is not counted.",
+            "noteEn": "Its ministers resigned; whether Meretz stayed a coalition member is not recorded.",
+            "noteHe": "שריה התפטרו; לא תועד אם מרצ נשארה חברה בקואליציה."
+          },
+          {
+            "letters": "פה",
+            "seats": 6,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 3532; PersonID 2468; PositionID 39; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק מרדכי; faction: מפלגת המרכז.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק מרדכי; סיעה: מפלגת המרכז."
+              }
+            ]
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "knownMemberSeats": 32,
+        "membershipCoverage": "partial",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "2000-08-04",
+        "textEn": "David Levy’s resignation as Foreign Minister took effect, and Gesher’s MKs in the One Israel faction left the coalition with him.",
+        "textHe": "התפטרותו של דוד לוי משר החוץ נכנסה לתוקף, וחברי הכנסת של גשר בסיעת ישראל אחת פרשו עמו מהקואליציה.",
+        "cites": [
+          {
+            "source": "positions-gov28",
+            "quote": "PersonToPositionID 4491, PersonID 536, PositionID 39, FinishDate 2000-08-04; PersonToPositionID 3601, PersonID 536, PositionID 50, FinishDate 2000-08-04",
+            "note": "The Knesset’s appointment records: David Levy, Foreign Minister and Deputy Prime Minister until 4 August 2000, the day his resignation took effect.",
+            "noteHe": "רישומי המינויים של הכנסת: דוד לוי, שר החוץ וסגן ראש הממשלה עד 4 באוגוסט 2000, היום שבו נכנסה התפטרותו לתוקף."
+          },
+          {
+            "source": "idi-kenig-2010",
+            "quote": "סיעת ישראל אחת התפרקה באוגוסט 2000, כאשר שר החוץ דוד לוי וחברי הכנסת מגשר פרשו אף הם"
+          }
+        ],
+        "type": "coalition-withdrawal",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 28,
+        "coalition": [
+          {
+            "letters": "אמת",
+            "seats": 24,
+            "role": "member-with-ministries",
+            "certainty": "probable",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 3448; PersonID 433; PositionID 57; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: דליה איציק; faction: ישראל אחת.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דליה איציק; סיעה: ישראל אחת."
+              },
+              {
+                "source": "idi-kenig-2010",
+                "quote": "כאשר שר החוץ דוד לוי וחברי הכנסת מגשר פרשו אף הם"
+              }
+            ],
+            "note": "Counted without the Gesher MKs, who left the coalition with David Levy (IDI). Which MKs those were is inferred: the two One Israel MKs who formed the Gesher faction on 7 March 2001, David Levy and Maxim Levy (faction records).",
+            "noteEn": "Without its two Gesher MKs, David Levy and Maxim Levy; that these were Gesher’s MKs is inferred from the faction they formed in March 2001.",
+            "noteHe": "בלי שני חברי הכנסת מגשר, דוד לוי ומקסים לוי; שאלה היו חברי גשר הוסק מהסיעה שהקימו במרץ 2001."
+          },
+          {
+            "letters": "מרצ",
+            "seats": 10,
+            "role": "member-without-ministries",
+            "certainty": "unknown",
+            "cites": [
+              {
+                "source": "plenum-2000-06-26",
+                "quote": "אני מדברת כנציגת מרצ בשם הקואליציה",
+                "note": "Anat Maor of Meretz, two days after the resignations.",
+                "noteHe": "ענת מאור ממרצ, יומיים אחרי ההתפטרויות."
+              },
+              {
+                "source": "idi-kenig-2010",
+                "quote": "החליטה מרצ לפרוש מהקואליציה"
+              },
+              {
+                "source": "jta-2000-06-26",
+                "quote": "Meretz said it would still support Barak in Knesset votes"
+              },
+              {
+                "source": "factions-k15",
+                "quote": "Faction 6 (מרצ): 10 members on 2000-06-24, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 10 members of Meretz on 24 June 2000.",
+                "noteHe": "רישומי הסיעות של הכנסת: 10 חברים בסיעת מרצ ב־24 ביוני 2000."
+              }
+            ],
+            "note": "After its ministers resigned, a Meretz MK told the Knesset on 26 June 2000 that Meretz belonged to the coalition and JTA reported it would still support Barak, while IDI says Meretz decided to leave the coalition. When, or whether, the faction formally left is not recorded, so it is not counted.",
+            "noteEn": "Its ministers resigned; whether Meretz stayed a coalition member is not recorded.",
+            "noteHe": "שריה התפטרו; לא תועד אם מרצ נשארה חברה בקואליציה."
+          },
+          {
+            "letters": "פה",
+            "seats": 6,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 3532; PersonID 2468; PositionID 39; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק מרדכי; faction: מפלגת המרכז.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק מרדכי; סיעה: מפלגת המרכז."
+              }
+            ]
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "knownMemberSeats": 30,
+        "membershipCoverage": "partial",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
         "date": "2001-03-07",
         "number": 29,
         "textEn": "The Knesset approved Sharon’s 29th government, 72 for · 21 against.",
@@ -843,6 +1528,678 @@
           "note": "Not every member of the coalition is known, and its seats at this date have not been counted; the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 72 for, 21 against, abstentions not recorded."
         },
         "knownMemberSeats": 0
+      },
+      {
+        "date": "2002-03-14",
+        "textEn": "National Union–Yisrael Beiteinu left the government: the resignations of Avigdor Liberman and Binyamin Elon took effect.",
+        "textHe": "האיחוד הלאומי – ישראל ביתנו פרש מהממשלה: התפטרויותיהם של אביגדור ליברמן ובנימין אלון נכנסו לתוקף.",
+        "cites": [
+          {
+            "source": "positions-gov29",
+            "quote": "PersonToPositionID 3646, PersonID 427, PositionID 39, FinishDate 2002-03-14; PersonToPositionID 3656, PersonID 405, PositionID 39, FinishDate 2002-03-14",
+            "note": "The Knesset’s appointment records: Avigdor Liberman and Binyamin Elon, ministers until 14 March 2002, the day their resignations took effect.",
+            "noteHe": "רישומי המינויים של הכנסת: אביגדור ליברמן ובנימין אלון, שרים עד 14 במרץ 2002, היום שבו נכנסו התפטרויותיהם לתוקף."
+          },
+          {
+            "source": "factions-k15",
+            "quote": "Faction 7 (האיחוד הלאומי - ישראל ביתנו): 7 members on 2002-03-14, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 7 members of National Union–Yisrael Beiteinu on 14 March 2002.",
+            "noteHe": "רישומי הסיעות של הכנסת: 7 חברים בסיעת האיחוד הלאומי – ישראל ביתנו ב־14 במרץ 2002."
+          }
+        ],
+        "type": "coalition-withdrawal",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 29,
+        "coalition": [
+          {
+            "factionNameHe": "ש\"ס",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 2054; PersonID 494; PositionID 50; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of אליהו ישי; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של אליהו ישי; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
+            "letters": "שס"
+          },
+          {
+            "factionNameHe": "ישראל אחת",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3624; PersonID 435; PositionID 39; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of בנימין בן-אליעזר; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של בנימין בן-אליעזר; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead."
+          },
+          {
+            "factionNameHe": "הליכוד",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3641; PersonID 469; PositionID 57; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of ציפי לבני; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של ציפי לבני; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead."
+          },
+          {
+            "factionNameHe": "ישראל בעלייה",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3681; PersonID 535; PositionID 39; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of נתן שרנסקי; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של נתן שרנסקי; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
+            "letters": "כן"
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "knownMemberSeats": null,
+        "membershipCoverage": "partial",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "2002-04-08",
+        "textEn": "Gesher joined the government: David Levy became minister without portfolio.",
+        "textHe": "גשר הצטרפה לממשלה: דוד לוי מונה לשר בלי תיק.",
+        "cites": [
+          {
+            "source": "positions-gov29",
+            "quote": "PersonToPositionID 3658, PersonID 536, PositionID 39, StartDate 2002-04-08",
+            "note": "The Knesset’s appointment record: David Levy, minister without portfolio from 8 April 2002, the day his term began.",
+            "noteHe": "רישום המינוי של הכנסת: דוד לוי, שר בלי תיק מ־8 באפריל 2002, היום שבו החלה כהונתו."
+          },
+          {
+            "source": "factions-k15",
+            "quote": "Faction 12 (גשר): 3 members on 2002-04-08, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 3 members of Gesher on 8 April 2002.",
+            "noteHe": "רישומי הסיעות של הכנסת: 3 חברים בסיעת גשר ב־8 באפריל 2002."
+          }
+        ],
+        "type": "coalition-change",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 29,
+        "coalition": [
+          {
+            "factionNameHe": "ש\"ס",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 2054; PersonID 494; PositionID 50; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of אליהו ישי; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של אליהו ישי; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
+            "letters": "שס"
+          },
+          {
+            "factionNameHe": "ישראל אחת",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3624; PersonID 435; PositionID 39; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of בנימין בן-אליעזר; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של בנימין בן-אליעזר; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead."
+          },
+          {
+            "factionNameHe": "הליכוד",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3641; PersonID 469; PositionID 57; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of ציפי לבני; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של ציפי לבני; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead."
+          },
+          {
+            "factionNameHe": "ישראל בעלייה",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3681; PersonID 535; PositionID 39; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of נתן שרנסקי; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של נתן שרנסקי; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
+            "letters": "כן"
+          },
+          {
+            "factionNameHe": "גשר",
+            "factionNameEn": "Gesher",
+            "seats": 3,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "positions-gov29",
+                "quote": "PersonToPositionID 3658, PersonID 536, PositionID 39, StartDate 2002-04-08",
+                "note": "The Knesset’s appointment record: David Levy, minister without portfolio from 8 April 2002, the day his term began.",
+                "noteHe": "רישום המינוי של הכנסת: דוד לוי, שר בלי תיק מ־8 באפריל 2002, היום שבו החלה כהונתו."
+              },
+              {
+                "source": "factions-k15",
+                "quote": "Faction 12 (גשר): 3 members on 2002-04-08, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 3 members of Gesher on 8 April 2002.",
+                "noteHe": "רישומי הסיעות של הכנסת: 3 חברים בסיעת גשר ב־8 באפריל 2002."
+              }
+            ]
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "knownMemberSeats": null,
+        "membershipCoverage": "partial",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "2002-05-23",
+        "textEn": "Shas’s four ministers were dismissed by the Prime Minister and left the government.",
+        "textHe": "ראש הממשלה פיטר את ארבעת שרי ש״ס, והם יצאו מהממשלה.",
+        "cites": [
+          {
+            "source": "plenum-2002-05-27",
+            "quote": "ראש הממשלה החליט ביום 20 במאי 2002 ... להעביר מכהונתם את השרים הבאים: אליהו ישי, שר הפנים, שלמה בניזרי, שר העבודה והרווחה, נסים דהן, שר הבריאות, אליהו סויסה, שר בלי תיק. הפסקת כהונתם נכנסה לתוקף ביום 23 במאי 2002",
+            "note": "The day the dismissals took effect; the Prime Minister decided on 20 May 2002.",
+            "noteHe": "היום שבו נכנסו הפיטורים לתוקף; ראש הממשלה החליט עליהם ב־20 במאי 2002."
+          },
+          {
+            "source": "positions-gov29",
+            "quote": "PersonToPositionID 3633, PersonID 484, PositionID 39, FinishDate 2002-05-23; PersonToPositionID 3634, PersonID 487, PositionID 39, FinishDate 2002-05-23; PersonToPositionID 3635, PersonID 494, PositionID 39, FinishDate 2002-05-23; PersonToPositionID 3494, PersonID 500, PositionID 39, FinishDate 2002-05-23",
+            "note": "The Knesset’s appointment records: the four Shas ministers until 23 May 2002.",
+            "noteHe": "רישומי המינויים של הכנסת: ארבעת שרי ש״ס עד 23 במאי 2002."
+          }
+        ],
+        "type": "coalition-withdrawal",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 29,
+        "coalition": [
+          {
+            "factionNameHe": "ישראל אחת",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3624; PersonID 435; PositionID 39; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of בנימין בן-אליעזר; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של בנימין בן-אליעזר; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead."
+          },
+          {
+            "factionNameHe": "הליכוד",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3641; PersonID 469; PositionID 57; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of ציפי לבני; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של ציפי לבני; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead."
+          },
+          {
+            "factionNameHe": "ישראל בעלייה",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3681; PersonID 535; PositionID 39; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of נתן שרנסקי; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של נתן שרנסקי; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
+            "letters": "כן"
+          },
+          {
+            "factionNameHe": "גשר",
+            "factionNameEn": "Gesher",
+            "seats": 3,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "positions-gov29",
+                "quote": "PersonToPositionID 3658, PersonID 536, PositionID 39, StartDate 2002-04-08",
+                "note": "The Knesset’s appointment record: David Levy, minister without portfolio from 8 April 2002, the day his term began.",
+                "noteHe": "רישום המינוי של הכנסת: דוד לוי, שר בלי תיק מ־8 באפריל 2002, היום שבו החלה כהונתו."
+              },
+              {
+                "source": "factions-k15",
+                "quote": "Faction 12 (גשר): 3 members on 2002-04-08, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 3 members of Gesher on 8 April 2002.",
+                "noteHe": "רישומי הסיעות של הכנסת: 3 חברים בסיעת גשר ב־8 באפריל 2002."
+              }
+            ]
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "knownMemberSeats": null,
+        "membershipCoverage": "partial",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "2002-06-03",
+        "textEn": "Shas returned to the government: its four ministers were appointed again.",
+        "textHe": "ש״ס חזרה לממשלה: ארבעת שריה מונו מחדש.",
+        "cites": [
+          {
+            "source": "plenum-2002-06-03",
+            "quote": "החלטתי לצרף כשרים לממשלה את חבר הכנסת אליהו ישי"
+          },
+          {
+            "source": "positions-gov29",
+            "quote": "PersonToPositionID 3659, PersonID 484, PositionID 39, StartDate 2002-06-03; PersonToPositionID 3660, PersonID 494, PositionID 39, StartDate 2002-06-03; PersonToPositionID 3661, PersonID 487, PositionID 39, StartDate 2002-06-03; PersonToPositionID 3402, PersonID 500, PositionID 39, StartDate 2002-06-03",
+            "note": "The Knesset’s appointment records: the four Shas ministers again from 3 June 2002, the day their terms began.",
+            "noteHe": "רישומי המינויים של הכנסת: ארבעת שרי ש״ס שוב מ־3 ביוני 2002, היום שבו החלה כהונתם."
+          }
+        ],
+        "type": "coalition-change",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 29,
+        "coalition": [
+          {
+            "factionNameHe": "ישראל אחת",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3624; PersonID 435; PositionID 39; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of בנימין בן-אליעזר; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של בנימין בן-אליעזר; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead."
+          },
+          {
+            "factionNameHe": "הליכוד",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3641; PersonID 469; PositionID 57; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of ציפי לבני; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של ציפי לבני; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead."
+          },
+          {
+            "factionNameHe": "ישראל בעלייה",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3681; PersonID 535; PositionID 39; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of נתן שרנסקי; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של נתן שרנסקי; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
+            "letters": "כן"
+          },
+          {
+            "factionNameHe": "גשר",
+            "factionNameEn": "Gesher",
+            "seats": 3,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "positions-gov29",
+                "quote": "PersonToPositionID 3658, PersonID 536, PositionID 39, StartDate 2002-04-08",
+                "note": "The Knesset’s appointment record: David Levy, minister without portfolio from 8 April 2002, the day his term began.",
+                "noteHe": "רישום המינוי של הכנסת: דוד לוי, שר בלי תיק מ־8 באפריל 2002, היום שבו החלה כהונתו."
+              },
+              {
+                "source": "factions-k15",
+                "quote": "Faction 12 (גשר): 3 members on 2002-04-08, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 3 members of Gesher on 8 April 2002.",
+                "noteHe": "רישומי הסיעות של הכנסת: 3 חברים בסיעת גשר ב־8 באפריל 2002."
+              }
+            ]
+          },
+          {
+            "factionNameHe": "ש\"ס",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "positions-gov29",
+                "quote": "PersonToPositionID 3659, PersonID 484, PositionID 39, StartDate 2002-06-03; PersonToPositionID 3660, PersonID 494, PositionID 39, StartDate 2002-06-03; PersonToPositionID 3661, PersonID 487, PositionID 39, StartDate 2002-06-03; PersonToPositionID 3402, PersonID 500, PositionID 39, StartDate 2002-06-03",
+                "note": "The Knesset’s appointment records: the four Shas ministers again from 3 June 2002, the day their terms began.",
+                "noteHe": "רישומי המינויים של הכנסת: ארבעת שרי ש״ס שוב מ־3 ביוני 2002, היום שבו החלה כהונתם."
+              },
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 2054; PersonID 494; PositionID 50; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of אליהו ישי; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של אליהו ישי; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
+            "letters": "שס"
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "knownMemberSeats": null,
+        "membershipCoverage": "partial",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "2002-07-30",
+        "textEn": "David Levy’s term as minister ended; Gesher had no other minister.",
+        "textHe": "כהונתו של דוד לוי כשר הסתיימה; לגשר לא היה שר אחר.",
+        "cites": [
+          {
+            "source": "positions-gov29",
+            "quote": "PersonToPositionID 3658, PersonID 536, PositionID 39, FinishDate 2002-07-30",
+            "note": "The Knesset’s appointment record: David Levy, minister without portfolio until 30 July 2002.",
+            "noteHe": "רישום המינוי של הכנסת: דוד לוי, שר בלי תיק עד 30 ביולי 2002."
+          },
+          {
+            "source": "factions-k15",
+            "quote": "Faction 12 (גשר): 2 members on 2002-07-30, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 2 members of Gesher on 30 July 2002.",
+            "noteHe": "רישומי הסיעות של הכנסת: 2 חברים בסיעת גשר ב־30 ביולי 2002."
+          }
+        ],
+        "type": "ministerial-change",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 29,
+        "coalition": [
+          {
+            "factionNameHe": "ישראל אחת",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3624; PersonID 435; PositionID 39; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of בנימין בן-אליעזר; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של בנימין בן-אליעזר; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead."
+          },
+          {
+            "factionNameHe": "הליכוד",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3641; PersonID 469; PositionID 57; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of ציפי לבני; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של ציפי לבני; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead."
+          },
+          {
+            "factionNameHe": "ישראל בעלייה",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3681; PersonID 535; PositionID 39; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of נתן שרנסקי; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של נתן שרנסקי; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
+            "letters": "כן"
+          },
+          {
+            "factionNameHe": "גשר",
+            "factionNameEn": "Gesher",
+            "seats": 2,
+            "role": "member-with-ministries",
+            "certainty": "unknown",
+            "cites": [
+              {
+                "source": "factions-k15",
+                "quote": "Faction 12 (גשר): 2 members on 2002-07-30, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 2 members of Gesher on 30 July 2002.",
+                "noteHe": "רישומי הסיעות של הכנסת: 2 חברים בסיעת גשר ב־30 ביולי 2002."
+              }
+            ],
+            "note": "David Levy’s term as minister ended on 30 July 2002; whether Gesher stayed in the coalition afterwards is not recorded.",
+            "noteEn": "Its minister’s term ended; whether Gesher stayed in the coalition is not recorded.",
+            "noteHe": "כהונת השר שלה הסתיימה; לא תועד אם גשר נשארה בקואליציה."
+          },
+          {
+            "factionNameHe": "ש\"ס",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "positions-gov29",
+                "quote": "PersonToPositionID 3659, PersonID 484, PositionID 39, StartDate 2002-06-03; PersonToPositionID 3660, PersonID 494, PositionID 39, StartDate 2002-06-03; PersonToPositionID 3661, PersonID 487, PositionID 39, StartDate 2002-06-03; PersonToPositionID 3402, PersonID 500, PositionID 39, StartDate 2002-06-03",
+                "note": "The Knesset’s appointment records: the four Shas ministers again from 3 June 2002, the day their terms began.",
+                "noteHe": "רישומי המינויים של הכנסת: ארבעת שרי ש״ס שוב מ־3 ביוני 2002, היום שבו החלה כהונתם."
+              },
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 2054; PersonID 494; PositionID 50; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of אליהו ישי; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של אליהו ישי; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
+            "letters": "שס"
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "knownMemberSeats": null,
+        "membershipCoverage": "partial",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "2002-11-02",
+        "textEn": "Labor–Meimad left the government: the resignations of its six ministers took effect.",
+        "textHe": "העבודה–מימד פרשה מהממשלה: התפטרויות ששת שריה נכנסו לתוקף.",
+        "cites": [
+          {
+            "source": "plenum-2002-11-04",
+            "quote": "כהונתם של השרים שלהלן נפסקה במוצאי שבת, כ\"ז בחשוון התשס\"ג, 2 בנובמבר 2002, לאחר שהגישו לראש הממשלה כתבי התפטרות מן הממשלה",
+            "note": "The day the six Labor–Meimad ministers’ resignations took effect, as the Government told the Knesset on 4 November 2002.",
+            "noteHe": "היום שבו נכנסו לתוקף התפטרויותיהם של ששת שרי העבודה–מימד, כפי שהודיעה הממשלה לכנסת ב־4 בנובמבר 2002."
+          },
+          {
+            "source": "positions-gov29",
+            "quote": "PersonToPositionID 3624, PersonID 435, PositionID 39, FinishDate 2002-11-02; PersonToPositionID 3625, PersonID 433, PositionID 57, FinishDate 2002-11-02; PersonToPositionID 3627, PersonID 454, PositionID 39, FinishDate 2002-11-02; PersonToPositionID 3628, PersonID 456, PositionID 39, FinishDate 2002-11-02; PersonToPositionID 3629, PersonID 461, PositionID 39, FinishDate 2002-11-02; PersonToPositionID 3651, PersonID 1067, PositionID 39, FinishDate 2002-11-02",
+            "note": "The Knesset’s appointment records: the six Labor–Meimad ministers until 2 November 2002.",
+            "noteHe": "רישומי המינויים של הכנסת: ששת שרי העבודה–מימד עד 2 בנובמבר 2002."
+          },
+          {
+            "source": "factions-k15",
+            "quote": "Faction 23 (העבודה - מימד): 25 members on 2002-11-02, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 25 members of Labor–Meimad on 2 November 2002.",
+            "noteHe": "רישומי הסיעות של הכנסת: 25 חברים בסיעת העבודה–מימד ב־2 בנובמבר 2002."
+          }
+        ],
+        "type": "coalition-withdrawal",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 29,
+        "coalition": [
+          {
+            "factionNameHe": "הליכוד",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3641; PersonID 469; PositionID 57; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of ציפי לבני; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של ציפי לבני; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead."
+          },
+          {
+            "factionNameHe": "ישראל בעלייה",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3681; PersonID 535; PositionID 39; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of נתן שרנסקי; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של נתן שרנסקי; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
+            "letters": "כן"
+          },
+          {
+            "factionNameHe": "גשר",
+            "factionNameEn": "Gesher",
+            "seats": 2,
+            "role": "member-with-ministries",
+            "certainty": "unknown",
+            "cites": [
+              {
+                "source": "factions-k15",
+                "quote": "Faction 12 (גשר): 2 members on 2002-07-30, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 2 members of Gesher on 30 July 2002.",
+                "noteHe": "רישומי הסיעות של הכנסת: 2 חברים בסיעת גשר ב־30 ביולי 2002."
+              }
+            ],
+            "note": "David Levy’s term as minister ended on 30 July 2002; whether Gesher stayed in the coalition afterwards is not recorded.",
+            "noteEn": "Its minister’s term ended; whether Gesher stayed in the coalition is not recorded.",
+            "noteHe": "כהונת השר שלה הסתיימה; לא תועד אם גשר נשארה בקואליציה."
+          },
+          {
+            "factionNameHe": "ש\"ס",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "positions-gov29",
+                "quote": "PersonToPositionID 3659, PersonID 484, PositionID 39, StartDate 2002-06-03; PersonToPositionID 3660, PersonID 494, PositionID 39, StartDate 2002-06-03; PersonToPositionID 3661, PersonID 487, PositionID 39, StartDate 2002-06-03; PersonToPositionID 3402, PersonID 500, PositionID 39, StartDate 2002-06-03",
+                "note": "The Knesset’s appointment records: the four Shas ministers again from 3 June 2002, the day their terms began.",
+                "noteHe": "רישומי המינויים של הכנסת: ארבעת שרי ש״ס שוב מ־3 ביוני 2002, היום שבו החלה כהונתם."
+              },
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 2054; PersonID 494; PositionID 50; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment of אליהו ישי; the faction is from the Knesset’s membership records.",
+                "noteHe": "מינוי רשמי של אליהו ישי; הסיעה לפי רישומי החברות של הכנסת."
+              }
+            ],
+            "note": "It had ministers in the cabinet. Its faction’s seats at the time, and the full coalition (including factions without ministers), are not known; election-list totals are not used instead.",
+            "letters": "שס"
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "knownMemberSeats": null,
+        "membershipCoverage": "partial",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
       }
     ],
     "confidenceVote": null,

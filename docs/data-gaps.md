@@ -1,8 +1,8 @@
 # Data gaps register
 
-12518 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
+12621 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
 
-- High importance: 879 (confirmed 474, probable 48, provisional 140, disputed 11, unknown 206).
+- High importance: 982 (confirmed 503, probable 49, provisional 140, disputed 11, unknown 279).
 - Medium importance: 4483 (confirmed 1035, probable 248, provisional 182, disputed 8, unknown 2422, family placements: follows scholarship 103, the project’s own judgement 386, sources disagree 15, not yet checked 84).
 - Low importance: 7156 (confirmed 572, provisional 808, unknown 5776).
 
@@ -101,7 +101,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 ### k15
 
 - [Formation conflicts](../data/meta/aftermath/k15.json) ×2: provisional 1, disputed 1. Disputed: Coalition seats at formation versus later snapshot
-- [Later governments](../data/meta/aftermath/k15.json) ×7: provisional 1, unknown 6. שס, כן
+- [Later governments](../data/meta/aftermath/k15.json) ×81: probable 1, provisional 1, unknown 79. שס, כן, מרצ, coalition-change 2000-06-24, coalition-change 2002-04-08, coalition-change 2002-06-03, coalition-withdrawal 1999-09, coalition-withdrawal 2000-07-11, coalition-withdrawal 2000-07-12, אמת, coalition-withdrawal 2000-08-04, coalition-withdrawal 2002-03-14, coalition-withdrawal 2002-05-23, coalition-withdrawal 2002-11-02 +1
 - [data/meta/election-context.json pmContests.candidates](../data/meta/election-context.json) ×6: provisional 6. barak, begin, bishara, mordechai, netanyahu, sharon
 - [data/meta/election-context.json pmContests.totals](../data/meta/election-context.json) ×6: probable 2, provisional 4. pm1999, pm2001
 - [data/meta/election-context.json pmContests](../data/meta/election-context.json) ×2: provisional 2. pm1999, pm2001
@@ -302,7 +302,7 @@ Every claim in these families, not only gaps. Derived from each claim’s own so
 | Claims | confirmed | probable | provisional | disputed | unknown | Total |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Recommendations | 80 | 68 | 80 | 2 | 76 | 306 |
-| Government roles | 343 | 11 | 3 | 3 | 1 | 361 |
+| Government roles | 385 | 12 | 3 | 3 | 7 | 410 |
 | Formation events | 75 | 14 | 37 | 0 | 0 | 126 |
 | Term events | 36 | 49 | 0 | 0 | 0 | 85 |
 | Candidate identity links | 3245 | 57 | 540 | 0 | 0 | 3842 |
@@ -311,9 +311,9 @@ Party-family placements are the project’s classification, not facts, so they c
 
 ## Counts
 
-By kind: unknown: 7378; missing-field: 285; conflict: 19; single-source: 3000; low-confidence: 101; release-hold: 0; inferred: 1179; pending: 357; unconfirmed: 199.
+By kind: unknown: 7449; missing-field: 285; conflict: 19; single-source: 3031; low-confidence: 101; release-hold: 0; inferred: 1179; pending: 357; unconfirmed: 200.
 
-By status: inferred-not-verified: 1040; needs-current-status-review: 319; open: 11159.
+By status: inferred-not-verified: 1040; needs-current-status-review: 319; open: 11262.
 
 | Election | High open | Medium open | Low | Total |
 | --- | ---: | ---: | ---: | ---: |
@@ -331,7 +331,7 @@ By status: inferred-not-verified: 1040; needs-current-status-review: 319; open: 
 | k12 | 22 | 122 | 183 | 392 |
 | k13 | 24 | 116 | 146 | 331 |
 | k14 | 10 | 126 | 148 | 338 |
-| k15 | 27 | 153 | 160 | 396 |
+| k15 | 101 | 153 | 160 | 499 |
 | k16 | 11 | 159 | 218 | 458 |
 | k17 | 9 | 137 | 230 | 434 |
 | k18 | 3 | 91 | 345 | 480 |
