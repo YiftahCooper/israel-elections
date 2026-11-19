@@ -52,6 +52,6 @@ export function RefOnly({ rows, label }: { rows: RefRows; label: string }) {
       {rows.only.map((x) => <li key={x.id}><bdi className="cmpm-only-name">{x.name}</bdi>
         <span className="muted" dir="ltr">{fmtInt(x.votes)}</span><b>{x.seats}</b></li>)}
     </ul>
-    {rows.onlySmall > 0 && <p className="tiny muted">{lang === 'he' ? `ועוד ${rows.onlySmall} רשימות קטנות (פחות מ־0.5% ובלי מנדט).` : `And ${rows.onlySmall} smaller lists (under 0.5%, no seat).`}</p>}
+    {rows.onlySmall > 0 && <p className="tiny muted">{rows.onlySmall === 1 ? (lang === 'he' ? 'ועוד רשימה קטנה אחת (פחות מ־0.5% ובלי מנדט).' : 'And 1 smaller list (under 0.5%, no seat).') : lang === 'he' ? `ועוד ${rows.onlySmall} רשימות קטנות (פחות מ־0.5% ובלי מנדט).` : `And ${rows.onlySmall} smaller lists (under 0.5%, no seat).`}</p>}
   </details>;
 }

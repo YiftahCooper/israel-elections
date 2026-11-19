@@ -178,7 +178,7 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
       {below.length > 0 && (
         <section className="sec-below" aria-label={L('Below the threshold', 'מתחת לאחוז החסימה')}>
           <h3 className="small">{L('Below the threshold', 'מתחת לאחוז החסימה')} <span className="muted tabnum" style={{ fontWeight: 400 }}>· {fmtInt(thr)} {L('votes', 'קולות')}</span></h3>
-          {near.length < below.length && <DisclosureToggle open={allBelow} onToggle={() => setAllBelow(!allBelow)} more={L(`${below.length - near.length} smaller lists`, `עוד ${below.length - near.length} רשימות קטנות`)} fewer={L('Fewer', 'פחות')} />}
+          {near.length < below.length && <DisclosureToggle open={allBelow} onToggle={() => setAllBelow(!allBelow)} more={below.length - near.length === 1 ? L('1 smaller list', 'עוד רשימה קטנה אחת') : L(`${below.length - near.length} smaller lists`, `עוד ${below.length - near.length} רשימות קטנות`)} fewer={L('Fewer', 'פחות')} />}
           <ul>
             {belowShown.map(({ l }) => {
               const q = fig(l.id, 'qualify');
@@ -380,8 +380,8 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
       <Info title={L('Why the recorded vote differs', 'למה ההצבעה המתועדת שונה')}>
         {people.length > 0 && <>{L('MKs recorded apart from their list (not modelled yet): ', 'חברי כנסת שתועדו בנפרד מרשימתם (עדיין לא ממודלים): ')}{groups.map(([key, inds], i) => <span key={key}>{i > 0 && '; '}{listOf(inds[0].fromLetters)}, {voteWord[inds[0].vote]}{cert(inds[0].certainty)}: {inds.map((x) => (lang === 'he' ? x.nameHe : x.nameEn)).join(', ')}</span>)}. </>}
         {anyRows.length > 0 && <>{L('Left as Any: ', 'נשארות ב"כל אפשרות": ')}{anyRows.map(({ kind, row }, i) => <span key={i}>{i > 0 && ', '}{rowName(row)} ({kind === 'vote-only' ? L('voted for at investiture only', 'הצביעה בעד באמון בלבד') : L('role unknown', 'התפקיד לא ידוע')})</span>)}. </>}
-        {partial.length > 0 && <>{partial.map(({ row, whole }, i) => <span key={i}>{i > 0 && '; '}{rowName(row)}: {L(`${row.seats} of its ${whole} seats took part, counted whole here`, `${row.seats} מתוך ${whole} מנדטיה השתתפו, נספרת כאן במלואה`)}</span>)}. </>}
-        {absent && <>{L(`${absent.n} MKs voted neither for nor against (absent or abstaining); here every seat votes.`, `${absent.n} חברי כנסת לא הצביעו בעד או נגד (נעדרו או נמנעו); כאן כל מנדט מצביע.`)} </>}
+        {partial.length > 0 && <>{partial.map(({ row, whole }, i) => <span key={i}>{i > 0 && '; '}{rowName(row)}: {row.seats === 1 ? L(`1 of its ${whole} seats took part, counted whole here`, `מנדט אחד מתוך ${whole} מנדטיה השתתף, נספרת כאן במלואה`) : L(`${row.seats} of its ${whole} seats took part, counted whole here`, `${row.seats} מתוך ${whole} מנדטיה השתתפו, נספרת כאן במלואה`)}</span>)}. </>}
+        {absent && <>{absent.n === 1 ? L('One MK voted neither for nor against (absent or abstaining); here every seat votes.', 'הצבעה אחת לא הייתה בעד או נגד (היעדרות או הימנעות); כאן כל מנדט מצביע.') : L(`${absent.n} MKs voted neither for nor against (absent or abstaining); here every seat votes.`, `${absent.n} חברי כנסת לא הצביעו בעד או נגד (נעדרו או נמנעו); כאן כל מנדט מצביע.`)} </>}
         {({ exact: L('The research reconciles the recorded vote exactly.', 'המחקר מיישב את ההצבעה המתועדת במדויק.'), explained: L('The research explains the full difference.', 'המחקר מסביר את מלוא ההפרש.'), unresolved: L('The research has not fully reconciled it.', 'המחקר עדיין לא יישב את ההפרש במלואו.'), 'vote-unavailable': '' })[gap.status]}
       </Info>.
     </p>;
@@ -400,7 +400,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
             {formatDate(record.startDate, lang)}.{' '}
             {([['in', L('In', 'בפנים')], ['support', L('Outside support', 'תמיכה מבחוץ')], ['abstain', L('Abstains by arrangement', 'נמנעת בהסדר')], [null, L('Left as Any', 'נשארות ב"כל אפשרות"')]] as const).map(([role, label]) => {
               const rows = recorded.filter((x) => x.role === role);
-              return rows.length > 0 && <span key={role ?? 'any'}>{label}: {rows.map((x, i) => <span key={i}>{i > 0 && ', '}{x.name}{x.r.certainty !== 'confirmed' && ` (${certaintyName(x.r.certainty)})`}{role === null && ` · ${x.r.certainty === 'unknown' ? L('relationship unknown', 'המעמד לא ידוע') : x.r.role === 'confidence-vote-only' ? L('voted for at investiture only', 'הצביעה בעד באמון בלבד') : L('other relationship', 'מעמד אחר')}`}{x.r.seats !== null && x.list && x.r.seats < sumOf(x.units) && ` · ${L(`${x.r.seats} of its seats took part, counted whole here`, `${x.r.seats} ממנדטיה השתתפו, נספרת כאן במלואה`)}`}</span>)}. </span>;
+              return rows.length > 0 && <span key={role ?? 'any'}>{label}: {rows.map((x, i) => <span key={i}>{i > 0 && ', '}{x.name}{x.r.certainty !== 'confirmed' && ` (${certaintyName(x.r.certainty)})`}{role === null && ` · ${x.r.certainty === 'unknown' ? L('relationship unknown', 'המעמד לא ידוע') : x.r.role === 'confidence-vote-only' ? L('voted for at investiture only', 'הצביעה בעד באמון בלבד') : L('other relationship', 'מעמד אחר')}`}{x.r.seats !== null && x.list && x.r.seats < sumOf(x.units) && ` · ${x.r.seats === 1 ? L('1 of its seats took part, counted whole here', 'מנדט אחד ממנדטיה השתתף, נספרת כאן במלואה') : L(`${x.r.seats} of its seats took part, counted whole here`, `${x.r.seats} ממנדטיה השתתפו, נספרת כאן במלואה`)}`}</span>)}. </span>;
             })}
             {L('Certainty follows the project’s source policy; a role is never shown as surer than its sources.', 'הוודאות לפי מדיניות המקורות של הפרויקט; תפקיד אינו מוצג ודאי יותר ממקורותיו.')}
           </Info>

@@ -554,7 +554,7 @@ export function HistorySheet({ parties, colours = {}, initial, electionIdx, onCl
       <div className="ph-head-text">
         <h2>{lang === 'he' ? <>היסטוריה · {title}</> : <>{title} <span className="small muted">history</span></>}</h2>
         {h.eras.length > 1 && <div className="small ink2">{h.eras.map((e) => e.name).filter((n, i, a) => a.indexOf(n) === i).join(lang === 'he' ? ' ← ' : ' → ')}</div>}
-        <div className="small muted">{!ran.length ? NEVER(L) : L(`Ran in ${ran.length} of ${h.points.length - h.firstRun} elections${since} · won seats in ${won}${unknown ? ` (unknown in ${unknown})` : ''}`, `התמודדה ב־${ran.length} מתוך ${h.points.length - h.firstRun} בחירות${since} · זכתה במנדטים ב־${won}${unknown ? ` (לא ידוע ב־${unknown})` : ''}`)}{best ? L(` · most: ${best.own} (${yearLabel(best.i, 'en')})`, ` · שיא: ${best.own} (${yearLabel(best.i, 'he')})`) : ''}</div>
+        <div className="small muted">{!ran.length ? NEVER(L) : h.points.length - h.firstRun === 1 ? L(`Ran in 1 election${since} · ${unknown ? 'seats unknown' : won ? 'won seats' : 'no seats'}`, `התמודדה במערכת בחירות אחת${since} · ${unknown ? 'המנדטים לא ידועים' : won ? 'זכתה במנדטים' : 'ללא מנדטים'}`) : L(`Ran in ${ran.length} of ${h.points.length - h.firstRun} elections${since} · won seats in ${won}${unknown ? ` (unknown in ${unknown})` : ''}`, `התמודדה ב־${ran.length} מתוך ${h.points.length - h.firstRun} בחירות${since} · זכתה במנדטים ב־${won}${unknown ? ` (לא ידוע ב־${unknown})` : ''}`)}{best ? L(` · most: ${best.own} (${yearLabel(best.i, 'en')})`, ` · שיא: ${best.own} (${yearLabel(best.i, 'he')})`) : ''}</div>
       </div>
       <button type="button" className="btn ghost" onClick={onClose} aria-label={L('Close', 'סגירה')}>×</button>
     </div>
@@ -589,7 +589,7 @@ export function HistorySheet({ parties, colours = {}, initial, electionIdx, onCl
       </ul>
     </>}
     <details className="ph-exact" open={expert || preferTables}>
-      <summary>{L(`Exact figures (${ran.length} elections)`, `נתונים מדויקים (${ran.length} בחירות)`)}</summary>
+      <summary>{ran.length === 1 ? L('Exact figures (1 election)', 'נתונים מדויקים (מערכת בחירות אחת)') : L(`Exact figures (${ran.length} elections)`, `נתונים מדויקים (${ran.length} בחירות)`)}</summary>
       <div className="tablewrap"><table className="ph-table">
         <thead><tr><th>{L('Election', 'בחירות')}</th><th>{L('List', 'רשימה')}</th><th className="n">{L('Seats', 'מנדטים')}</th><th className="n">{L('Own elected', 'נבחרי המפלגה')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('Share', 'שיעור')}</th></tr></thead>
         <tbody>{ran.map((p) => <tr key={p.i} className={p.i === sel ? 'sel' : ''}>

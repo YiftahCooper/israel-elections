@@ -220,7 +220,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
                   {above.map(row)}
                   {below.length > 0 && <tr className="walk-cut"><td colSpan={3}><span>{quotaGate ? L(`▲ One quota: ${fmtInt(r.quota.num / r.quota.den)} votes ▼ no seat`, `▲ מודד אחד: ${fmtInt(r.quota.num / r.quota.den)} קולות ▼ ללא מנדט`) : L(`▲ Pass: ${fmtInt(r.thresholdVotes)} votes or more ▼ Below the threshold`, `▲ עוברות: ${fmtInt(r.thresholdVotes)} קולות ומעלה ▼ מתחת לאחוז החסימה`)}</span></td></tr>}
                   {shown.map(row)}
-                  {shown.length < below.length && <tr><td colSpan={3}><button className="table-action" onClick={() => setAllBelow(true)}>{L(`Show ${below.length - shown.length} more lists below`, `הצגת עוד ${below.length - shown.length} רשימות מתחת`)}</button></td></tr>}
+                  {shown.length < below.length && <tr><td colSpan={3}><button className="table-action" onClick={() => setAllBelow(true)}>{below.length - shown.length === 1 ? L('Show 1 more list below', 'הצגת עוד רשימה אחת מתחת') : L(`Show ${below.length - shown.length} more lists below`, `הצגת עוד ${below.length - shown.length} רשימות מתחת`)}</button></td></tr>}
                 </tbody>
               </table>
             </div>

@@ -18,8 +18,8 @@ export function Complexity({ count = true, before }: { count?: boolean; before?:
   return <span className="band-levels complexity" data-custom={value === 'custom' ? '' : undefined}>
     <Seg<Choice> label={L(...COMPLEXITY_LABEL)} value={value} options={options} onChange={v => v === 'custom' ? setCustom() : setLevel(v)} />
     {count && own > 0 && <button type="button" className="btn small band-custom band-own" aria-haspopup="dialog"
-      title={L(`Custom: ${own} of your own choices. Open in Settings`, `מותאם אישית: ${own} בחירות שלכם. פתיחה בהגדרות`)}
-      aria-label={L(`Custom: ${own} of your own choices`, `מותאם אישית: ${own} בחירות שלכם`)}
+      title={own === 1 ? L('Custom: one choice of your own. Open in Settings', 'מותאם אישית: בחירה אחת שלכם. פתיחה בהגדרות') : L(`Custom: ${own} choices of your own. Open in Settings`, `מותאם אישית: ${own} בחירות שלכם. פתיחה בהגדרות`)}
+      aria-label={own === 1 ? L('Custom: one choice of your own', 'מותאם אישית: בחירה אחת שלכם') : L(`Custom: ${own} choices of your own`, `מותאם אישית: ${own} בחירות שלכם`)}
       onClick={() => { before?.(); setState({ settingsOpen: true, settingsFocus: 'own' }); }}><bdi dir="ltr">+{own}</bdi></button>}
   </span>;
 }

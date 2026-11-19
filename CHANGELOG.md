@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- A count of one (19 Nov): the Custom chip ("מותאם אישית: בחירה אחת שלכם"), Seat safety, the seat walkthrough, Compare, the Scenarios gallery and Party history now say "1 smaller list", "1 scenario", "Ran in 1 election" and so on in both languages, instead of a number glued to a plural.
 - Hebrew Wikipedia says it is secondary (19 Nov): every link to it, on candidate lists, MK history, party links, the timeline, family evidence and party history, now reads "Hebrew Wikipedia (secondary)" / "ויקיפדיה העברית (משני)" in the link itself, not only in a tooltip a phone never shows.
 - Words about a person (19 Nov): where the Knesset keeps no record of someone's gender, Hebrew labels about them are now neutral nouns: an edited candidate list says כניסה / יציאה / מרשימה אחרת, a named MK's vote reads ההצבעה with הימנעות, an individual's vote after an election reads הימנעות or היעדרות, a withdrawn prime-minister nominee פרישה לפני ההצבעה and a timeline return שיבה לכנסת; the notes on Alon Davidi (2021), Ilan Shohat (2015) and seven candidates who resigned before polling day no longer say "he".
 - Complexity in Hebrew (19 Nov): the greyed-tool box, every tool's (i) in Settings and the Settings notes on Custom, Copy votes and seat changes now name the complexity itself ("חלק מ"מומחה"", "מעבר ל"מומחה"") or say רמת מורכבות, instead of רמה; Simple is פשוט everywhere.

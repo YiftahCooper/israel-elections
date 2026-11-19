@@ -83,3 +83,16 @@ describe('Hebrew Wikipedia is labelled secondary in the link text', () => {
     expect(sourceLinkText('https://www.ynet.co.il/x', 'Ynet', 'en')).toBe('Ynet');
   });
 });
+
+describe('a count of one reads as one, in both languages', () => {
+  // "מותאם אישית: 1 בחירות שלכם", "1 smaller lists": every count that can be 1 has its own whole sentence for one.
+  // Each pattern below is a plural phrase after a number; the code before it on the line must test for one.
+  const PLURALS = [/\$\{[^}]+\} בחירות שלכם/, /\$\{[^}]+\} רשימות קטנות/, /\$\{[^}]+\} רשימות מתחת/, /\$\{[^}]+\} מועמדים משותפים/,
+    /: L\(`\$\{entries\.length\} scenarios`/, /\$\{[^}]+\} חברי כנסת לא הצביעו/, /\$\{[^}]+\} (מ|מתוך \$\{whole\} )?מנדטיה השתתפו/,
+    /\$\{ran\.length\} בחירות\)/, /מתוך \$\{h\.points\.length - h\.firstRun\} בחירות/];
+  it('guards every such phrase with a branch for one', () => {
+    const hits = files('src').flatMap((f) => readFileSync(f, 'utf8').split('\n').map((line, i) => ({ line, at: `${f}:${i + 1}` })))
+      .flatMap(({ line, at }) => PLURALS.flatMap((p) => { const m = p.exec(line); return m && !/=== 1 \?/.test(line.slice(0, m.index)) ? [`${at} ${m[0]}`] : []; }));
+    expect(hits).toEqual([]);
+  });
+});
