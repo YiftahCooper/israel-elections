@@ -324,7 +324,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
       </div>
       <div>
         <details><summary>{L('English list names', 'שמות הרשימות באנגלית')}</summary>
-          <p className="small">{L('Existing common-use English labels are app annotations. The entries below are unofficial shortened transliterations, not verified official English names. Other names, including names you type, are spelled letter by letter and are unofficial.', 'השמות האנגליים המקובלים הם נתוני תצוגה של האפליקציה. הרשומות להלן הן תעתיקים מקוצרים לא רשמיים, לא שמות רשמיים באנגלית שאומתו. לשמות אחרים, גם לשמות שאתם מקלידים, מוצג תעתיק לא רשמי, אות באות.')}</p>
+          <p className="small">{L('Existing common-use English labels are app annotations. The entries below are unofficial shortened transliterations, not verified official English names. Other names, including names you type, are shown in Hebrew.', 'השמות האנגליים המקובלים הם נתוני תצוגה של האפליקציה. הרשומות להלן הן תעתיקים מקוצרים לא רשמיים, לא שמות רשמיים באנגלית שאומתו. שמות אחרים, גם שמות שאתם מקלידים, מוצגים בעברית.')}</p>
           <ul className="small">{ds.lists.filter(l => l.englishName).map(l => <li key={l.id}>{listLabel(l, lang)} · {L('Unofficial transliteration', 'תעתיק לא רשמי')}{byId.get(l.englishName!.sourceId) && <> · {L('Hebrew name from ', 'השם העברי מתוך ')}<bdi dir="auto">{datesInText(lang === 'en' ? byId.get(l.englishName!.sourceId)!.publisherEn ?? byId.get(l.englishName!.sourceId)!.publisher : byId.get(l.englishName!.sourceId)!.publisher)}</bdi></>}</li>)}</ul>
         </details>
         {(() => {

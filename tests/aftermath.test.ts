@@ -52,7 +52,7 @@ describe('reviewed aftermath history', () => {
 // Fix lane fx-after (audit 12 Nov 2026): rules that hold for every record, not only the example the audit found.
 import { groupingDisagreements, validTally, validateAftermathRecords } from '../scripts/lib/build/aftermath.ts';
 import { participantName } from '../src/app/governmentSupport.ts';
-import { romanize } from '../src/data/names.ts';
+import { romanize } from './letter-by-letter.ts';
 import { firstGovernmentComparison, recordedRoles } from '../src/app/coalitions.ts';
 import { scenarioFromDataset, toEngineInput } from '../src/model/scenario.ts';
 import { allocate } from '../src/engine/allocate.ts';

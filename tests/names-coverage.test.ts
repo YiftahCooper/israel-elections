@@ -15,8 +15,9 @@ describe('complete English list identity',()=>{
    for(const p of l.parties??[])expect(p.nameEn,p.id).not.toMatch(/[\u0590-\u05ff]/);
   }
  });
- it('does not leak Hebrew from legacy saves without English labels',()=>{
-  expect(listLabel({shortHe:'מרצ',shortEn:null},'en')).toBe('mrtz');
+ // a name with no English label shows in Hebrew, isolated right to left: never spelled letter by letter (review F4, 19 Nov)
+ it('names a list without an English label in Hebrew, never letter by letter',()=>{
+  expect(listLabel({shortHe:'מרצ',shortEn:null},'en')).toBe('\u2067מרצ\u2069');
   expect(listLabel({shortHe:'מרצ',shortEn:null},'he')).toBe('מרצ');
  });
  it('keeps Meretz identity without borrowing its 2013 logo after splitting the Democrats',()=>{

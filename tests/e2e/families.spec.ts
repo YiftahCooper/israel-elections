@@ -151,12 +151,19 @@ test('hover box names hatched lists’ parties, states the change, never grows o
  await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
  await page.locator('.family-plots section').first().locator('g[role=button]').nth(22).hover();await expect(page.getByRole('tooltip')).toContainText('Likud: Likud + Kulanu');
 });
+// Review fault F4: a party with no English name shows in Hebrew, never spelled letter by letter; a relation is in words, never its data code.
+for(const lang of ['en','he'] as const)test(`2026 Haredi breakdown names parties without English in Hebrew and no data code (${lang})`,async({page})=>{
+ await start(page,lang);await page.locator('.family-plots section').first().locator('g[role=button]').last().click();
+ const d=page.getByRole('dialog',{name:lang==='he'?'פירוט הבחירות':'Election breakdown',exact:true}),changes=d.locator('.family-point-changes');
+ await expect(changes).toContainText('הציבור החרדי בראשות מוטי ליטנר');await expect(changes).not.toContainText('htzybvr');await expect(changes).not.toContainText('faction-split');
+ await expect(changes).toContainText(lang==='he'?'פילוג סיעה בכנסת':'Knesset faction split');
+});
 test('breakdown marks the family’s own parties in a mixed list and only they count as represented',async({page})=>{
  await start(page);await page.locator('.family-plots section').first().locator('g[role=button]').nth(19).scrollIntoViewIfNeeded();const y=await page.evaluate(()=>scrollY);
  await page.locator('.family-plots section').first().locator('g[role=button]').nth(19).click();
  const d=page.getByRole('dialog',{name:'Election breakdown',exact:true});await expect(d.locator('.family-point-delta')).toContainText('Since 22 Jan 2013: −102,251 votes · −3.88 pp · ▼ −5 seats');
  const mixed=d.locator('article[data-state=mixed]');await expect(mixed).toHaveCount(1);await expect(mixed.locator('[data-own] b')).toHaveText('Yachad');await expect(mixed).toContainText('Estimated by seats');
- await expect(d.locator('.family-point-changes')).toContainText("Now represented: Yachad · U'Bizchutan");await expect(d.locator('.family-point-changes')).not.toContainText('Otzma');
+ await expect(d.locator('.family-point-changes')).toContainText("New on its lists: Yachad · U'Bizchutan");await expect(d.locator('.family-point-changes')).not.toContainText('Otzma');
  await expect(d.locator('article').first()).toHaveAttribute('data-state','counted');
  await d.getByRole('button',{name:'Close',exact:true}).click();expect(await page.evaluate(()=>scrollY)).toBe(y);
 });

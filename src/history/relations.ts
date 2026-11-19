@@ -13,6 +13,13 @@ export type RelationKind =
   | 'same-organisation' | 'not-same-organisation' | 'electoral-partner' | 'leader-moved-to';
 /** A merger's progress: announced, approved by the parties' bodies, registered with the Registrar of Parties. */
 export type MergerStage = 'announced' | 'approved' | 'registered';
+/** Each kind in a word or two, English and Hebrew, for any screen that names a relation: never its data code. */
+export const RELATION_WORD: Record<RelationKind, readonly [string, string]> = {
+  'renamed-to': ['Renamed', 'שינוי שם'], 'merged-into': ['Merged', 'מיזוג'], 'absorbed-into': ['Joined', 'הצטרפות'],
+  'split-from': ['Split', 'פיצול'], 'faction-split': ['Knesset faction split', 'פילוג סיעה בכנסת'],
+  'same-organisation': ['Same organisation', 'אותו ארגון'], 'not-same-organisation': ['Not the same organisation', 'לא אותו ארגון'],
+  'electoral-partner': ['Joint list', 'רשימה משותפת'], 'leader-moved-to': ['Leader moved', 'מעבר מנהיג'],
+};
 export const RELATION_KINDS: readonly RelationKind[] = ['renamed-to', 'merged-into', 'absorbed-into', 'split-from', 'faction-split', 'same-organisation', 'not-same-organisation', 'electoral-partner', 'leader-moved-to'];
 
 export interface RelationSource { id: string; publisher?: string; publisherHe?: string; url?: string; locator?: string; quote?: string; support?: string }
