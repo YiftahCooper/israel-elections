@@ -1,4 +1,5 @@
 // The Vote mix's arithmetic, apart from the map layer that draws it (src/app/components/mapAreas.ts).
+import { fmtPct } from './format.ts';
 /** Largest-remainder split of `total` units over the parts' votes. */
 export function apportion(parts: { votes: number }[], total: number): number[] {
   const sum = parts.reduce((a, p) => a + p.votes, 0) || 1;
@@ -30,4 +31,11 @@ export function groupCells(cells: Cell[], counts: number[]): void {
     rec(cs.slice(0, nA), A); rec(cs.slice(nA), B);
   };
   if (counts.length) rec(cells, counts.map((_, g) => g));
+}
+
+/** A place's biggest parts with their shares of its votes, as text for the map's hover box ("Likud 16.2%"), at most
+ *  `digits` decimals like every share in the app (fmtPct). */
+export function topShares(parts: { label: string; votes: number }[], digits: number, n = 3): string[] {
+  const sum = parts.reduce((a, q) => a + q.votes, 0);
+  return [...parts].sort((a, b) => b.votes - a.votes).slice(0, n).map(q => `${q.label} ${sum > 0 ? fmtPct(q.votes, sum, digits) : '—%'}`);
 }

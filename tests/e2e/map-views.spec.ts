@@ -46,7 +46,9 @@ test('the double-envelope island sits off Tel Aviv, clear of its name, and selec
   const map = (await page.locator('.locality-map-canvas').boundingBox())!;
   const ta = (await page.locator('.locality-map-label').filter({ hasText: 'תל אביב' }).boundingBox())!;
   expect(ta, 'Tel Aviv keeps its name').toBeTruthy();
-  expect(map.x + x1).toBeLessThanOrEqual(ta.x);
+  // the name goes to whichever side of its dot is clear (F1, 19 Nov 2026): never onto the island
+  const apart = map.x + x1 <= ta.x || ta.x + ta.width <= map.x + x0 || map.y + y1 <= ta.y || ta.y + ta.height <= map.y + y0;
+  expect(apart, 'the island and Tel Aviv\'s name do not overlap').toBe(true);
   await page.mouse.click(map.x + (x0 + x1) / 2, map.y + (y0 + y1) / 2);
   const results = page.getByRole('region', { name: 'תוצאות היישוב הנבחר' });
   await expect(results.getByRole('heading')).toContainText('מעטפות');
@@ -60,7 +62,8 @@ test('Hebron has a dot, marked approximate, and is no longer a row without a loc
   const results = page.getByRole('region', { name: 'Selected locality results' });
   await expect(results.getByRole('heading')).toContainText('Hebron');
   await results.getByRole('button', { name: 'Location and turnout', exact: true }).click();
-  await expect(page.getByText(/^Approximate position: the Jewish quarter of Hebron/)).toBeVisible();
+  // (the chosen place's box on the map says it too)
+  await expect(results.getByText(/^Approximate position: the Jewish quarter of Hebron/)).toBeVisible();
   await page.keyboard.press('Escape');
   const missing = page.locator('.locality-map-tool details').filter({ has: page.getByText('Rows without a mapped location', { exact: true }) });
   await missing.locator('summary').click();

@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- Localities map, colours only (19 Nov): the Vote mix no longer writes list names and shares on its tiles; hover over or tap a town (or choose it in the search) for its name and biggest shares, which no longer read "[object Object]". Place names sit beside their dot, circle or tiles and never over one, in both views and languages; where none fits, the name is in the town's box. The result box's share column keeps its decimal points in line.
 - Early governments counted from the Knesset's faction records (19 Nov): government 4 now has 87 members (three MKs elected on the Sephardim and Yemenite lists sat with the General Zionists), government 5 has 85 at formation and 89 once the Progressives joined on 1 February 1954, government 6 has 67 with the Yemenite Association as a member, and Meir's government of March 1969 has all nine factions she named, 106 seats, including the four one-MK partners. Government 3 now shows the two Agudat parties leaving in September 1952 (60 seats), with Mizrahi's own minister cited; the General Zionists' short exit in 1953 and Rosen's in 1956 are dated steps.
 
 ## 17 November 2026

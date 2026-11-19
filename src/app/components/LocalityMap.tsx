@@ -25,7 +25,9 @@ import { basemapAttribution } from '../locality-basemap-style.ts';
 import { countOf, fmtInt, fmtPoints, PP } from '../format.ts';
 import { useDigits } from '../store.ts';
 import { manualPoint } from '../../data/locality-manual-points.ts';
-import { AreasLayer, type AreaPlace, type Island, type MapView, type Part } from './mapAreas.ts';
+import { AreasLayer, type AreaPlace, type Dot, type Island, type MapView, type Part } from './mapAreas.ts';
+import { topShares } from '../voteMix.ts';
+import { placeName } from '../mapNames.ts';
 
 function useJson<T>(url: string | null, empty: T) {
   const [value, setValue] = useState<T>(empty);
@@ -115,7 +117,8 @@ interface PhotonFeature { geometry: { coordinates: [number, number] }; propertie
 const GREY = MAP_UNASSIGNED_COLOUR;
 // the vote mix's grey for votes outside the shown blocs or seated lists; black would read as a list of its own
 const OTHER = '#9aa1a9';
-const share = (v: number, whole: number, digits: number) => whole > 0 ? percent(v, whole, digits) : '—';
+// a share in the result box; `pad` keeps a column's decimal points in line (invisible zeros), as in every other table
+const share = (v: number, whole: number, digits: number) => whole > 0 ? percent(v, whole, digits, undefined, { pad: digits }) : '—';
 let measure: CanvasRenderingContext2D | null = null;
 const textWidth = (text: string) => {
   measure ??= document.createElement('canvas').getContext('2d');
@@ -228,12 +231,36 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     return () => controller.abort();
   }, [dark]);
   const areas = useRef<AreasLayer | null>(null);
+  // one hover box for the vote mix (its circles and tiles are drawn on a canvas, not as Leaflet markers)
+  const [hoverTip] = useState(() => Leaflet.tooltip({ direction: 'top', offset: [0, -10], className: 'locality-map-hover' }));
+  // the Winner dots' own markers, to open the chosen place's box
+  const dotMarkers = useRef(new Map<number, Leaflet.CircleMarker>());
+  const tipRef = useRef<(index: number) => HTMLElement>(() => document.createElement('span'));
+  /** Opens the chosen place's box at its point (a tap, a click, or a choice from the search). */
+  const openTipRef = useRef<(index: number) => void>(() => {});
+  /** With the pointer off the places: the chosen place's box stays open, else none. */
+  const restTipRef = useRef<() => void>(() => {});
   useEffect(() => {
     const m = map.current; if (!m) return;
     const layer = new AreasLayer(); layer.addTo(m); areas.current = layer;
-    const click = (e: Leaflet.LeafletMouseEvent) => { if (layer.onIsland(e.containerPoint)) setSelectedIndex(envelopeRowsRef.current[0] ?? null); };
-    m.on('click', click);
-    return () => { m.off('click', click); layer.remove(); areas.current = null; };
+    // a click or tap: the island selects the envelope votes; in the vote mix, a circle or a town's tiles select that place
+    const click = (e: Leaflet.LeafletMouseEvent) => {
+      if (layer.onIsland(e.containerPoint)) { setSelectedIndex(envelopeRowsRef.current[0] ?? null); return; }
+      const hit = layer.view === 'mix' ? layer.hit(e.containerPoint) : null;
+      if (hit !== null) { setSelectedIndex(hit); openTipRef.current(hit); }
+    };
+    // the vote mix's hover box: whichever circle or tiles the pointer is on (the same marks that are drawn)
+    let shown: number | null = null;
+    const move = (e: Leaflet.LeafletMouseEvent) => {
+      if (layer.view !== 'mix') return;
+      const hit = layer.hit(e.containerPoint);
+      if (hit === shown && hit !== null) { hoverTip.setLatLng(e.latlng); return; }
+      shown = hit;
+      if (hit === null) restTipRef.current(); else { hoverTip.setContent(tipRef.current(hit)).setLatLng(e.latlng); if (!m.hasLayer(hoverTip)) hoverTip.addTo(m); }
+    };
+    const out = () => { shown = null; if (layer.view === 'mix') restTipRef.current(); };
+    m.on('click', click); m.on('mousemove', move); m.on('mouseout', out);
+    return () => { m.off('click', click); m.off('mousemove', move); m.off('mouseout', out); hoverTip.remove(); layer.remove(); areas.current = null; };
   }, []);
   const envelopeRowsRef = useRef(envelopeRows); envelopeRowsRef.current = envelopeRows;
   // CBS open-use licence: the outlines carry their source credit while the vote mix shows them
@@ -243,71 +270,98 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     m.attributionControl.addAttribution(credit);
     return () => { m.attributionControl.removeAttribution(credit); };
   }, [mix, lang]);
-  useEffect(() => { areas.current?.set(areaPlaces, view, dark, selectedIndex, island); }, [areaPlaces, view, dark, selectedIndex, island]);
+  // the Winner dots, for the names to keep clear of (outer radius: the 5 px dot and its white outline; Hebron's dashed ring)
+  const dots = useMemo<Dot[]>(() => mix ? [] : placed.map(p => ({ index: p.index, lat: p.lat, lon: p.lon, r: p.approx ? 9.5 : 7 })), [mix, placed]);
+  useEffect(() => { areas.current?.set(areaPlaces, view, dark, selectedIndex, island, dots); }, [areaPlaces, view, dark, selectedIndex, island, dots]);
   useEffect(() => {
     const m = map.current; if (!m || !lineData.features.length) return;
     return drawMapLines(m, lineData, lineIds, dark, setHiddenLines);
   }, [lineData, lineIds, dark]);
+  // A place's box: its name, then (Winner) who leads and by how much, or (Vote mix) its biggest lists with their shares.
+  const tipFor = (index: number) => {
+    const k = placed.findIndex(x => x.index === index), p = placed[k];
+    const tip = document.createElement('span'); tip.className = 'locality-map-tip';
+    if (!p) return tip;
+    const w = winners[k];
+    const title = document.createElement('strong'); title.dir = 'auto'; title.textContent = localityName(names, p.row, p.index, lang);
+    const why = document.createElement('span'); why.dir = 'auto';
+    why.textContent = mix ? topShares(areaPlaces.find(a => a.index === p.index)?.parts ?? [], digits).join(' · ')
+      : w.tied ? L('Tie', 'שוויון') : w.key === null ? L('Unassigned / no votes', 'ללא שיוך / ללא קולות')
+      : `${groupName(w.key)} \u2066+${fmtPoints(w.margin / Math.max(1, p.row.valid) * 100, digits, true)}\u2069 ${L(...PP)}`;
+    const source = document.createElement('span'); source.dir = 'auto'; source.textContent = localityNameSource(names, p.row, p.index, lang);
+    tip.append(title, why, source);
+    if (p.approx) { const note = document.createElement('span'); note.dir = 'auto'; note.textContent = lang === 'he' ? p.approx.he : p.approx.en; tip.append(note); }
+    return tip;
+  };
+  tipRef.current = tipFor;
+  openTipRef.current = (index: number) => {
+    const m = map.current, p = placed.find(x => x.index === index); if (!m) return;
+    if (!p) { hoverTip.remove(); return; } // the envelope votes have no place on the map
+    if (mix) { hoverTip.setContent(tipFor(index)).setLatLng([p.lat, p.lon]); if (!m.hasLayer(hoverTip)) hoverTip.addTo(m); }
+    else dotMarkers.current.get(index)?.openTooltip();
+  };
+  const selectedRef = useRef(selectedIndex); selectedRef.current = selectedIndex;
+  restTipRef.current = () => { if (selectedRef.current !== null && placed.some(x => x.index === selectedRef.current)) openTipRef.current(selectedRef.current); else hoverTip.remove(); };
   useEffect(() => {
     const m = map.current; if (!m) return;
     const group = Leaflet.layerGroup().addTo(m);
-    placed.forEach((p,i) => {
+    dotMarkers.current.clear();
+    // the vote mix draws its own circles and tiles; its hover box and taps go through the map (above)
+    if (!mix) placed.forEach((p,i) => {
       const w = winners[i];
-      // the tooltip says why the dot has its colour: who leads and by how much
-      const tip = document.createElement('span'); tip.className = 'locality-map-tip';
-      const title = document.createElement('strong'); title.dir = 'auto'; title.textContent = localityName(names, p.row, p.index, lang);
-      const why = document.createElement('span'); why.dir = 'auto';
-      // in the vote mix the tooltip gives the biggest shares; on the dots, who leads and by how much
-      const mixParts = mix ? areaPlaces.find(a => a.index === p.index)?.parts ?? [] : [];
-      const mixSum = mixParts.reduce((a, q) => a + q.votes, 0) || 1;
-      why.textContent = mix ? [...mixParts].sort((a, b) => b.votes - a.votes).slice(0, 3).map(q => `${q.label} ${share(q.votes, mixSum, 0)}`).join(' · ')
-        : w.tied ? L('Tie', 'שוויון') : w.key === null ? L('Unassigned / no votes', 'ללא שיוך / ללא קולות')
-        : `${groupName(w.key)} \u2066+${fmtPoints(w.margin / Math.max(1, p.row.valid) * 100, digits, true)}\u2069 ${L(...PP)}`;
-      const source = document.createElement('span'); source.dir = 'auto'; source.textContent = localityNameSource(names, p.row, p.index, lang);
-      tip.append(title, why, source);
-      if (p.approx) { const note = document.createElement('span'); note.dir = 'auto'; note.textContent = lang === 'he' ? p.approx.he : p.approx.en; tip.append(note); }
-      // the vote mix draws its own circles and tiles: the dot stays, unseen, for its tooltip and click
-      if (mix) { Leaflet.circleMarker([p.lat,p.lon], {radius:6, stroke:false, fillOpacity:0}).bindTooltip(tip).on('click',()=>setSelectedIndex(p.index)).addTo(group); return; }
       // a thin white outline separates neighbouring dots; a dark ring would darken every colour alike
       Leaflet.circleMarker([p.lat,p.lon], {radius:5, color:'#ffffff',weight:4,fill:false,interactive:false}).addTo(group);
-      Leaflet.circleMarker([p.lat,p.lon], {radius:5, color:'#111418',weight:1,fillColor:w.color,fillOpacity:1}).bindTooltip(tip).on('click',()=>setSelectedIndex(p.index)).addTo(group);
+      // the box says why the dot has its colour: who leads and by how much
+      const dot = Leaflet.circleMarker([p.lat,p.lon], {radius:5, color:'#111418',weight:1,fillColor:w.color,fillOpacity:1}).bindTooltip(() => tipRef.current(p.index), { direction: 'top', offset: [0, -6] }).on('click',()=>setSelectedIndex(p.index)).addTo(group);
+      dotMarkers.current.set(p.index, dot);
       // a place placed by hand (Hebron) has a dashed ring: its position is approximate
       if (p.approx) Leaflet.circleMarker([p.lat,p.lon], {radius:8.5, color:dark?'#f2f4f7':'#111418',weight:1.4,dashArray:'2 2',fill:false,interactive:false,className:'locality-map-approx'}).addTo(group);
     });
+    else hoverTip.remove();
     // open fitted to this election's localities (once per election, so a user's own zoom is kept while editing)
     if (placed.length && fittedFor.current !== data) {
       m.fitBounds(Leaflet.latLngBounds(placed.map((p) => [p.lat, p.lon] as [number, number])), { padding: [12, 12] });
       fittedFor.current = data;
     }
+    // the chosen place keeps its box open (it is how a tap, or a choice from the search, shows the name on the map)
+    if (selectedRef.current !== null) openTipRef.current(selectedRef.current);
     return () => { group.remove(); };
   }, [placed,winners,lang,data,names,digits,mix,areaPlaces,dark]);
-  // Same CBS/result keys as the table, both languages at every zoom. Larger localities first; no overlapping labels.
+  useEffect(() => { if (selectedIndex === null) hoverTip.remove(); else openTipRef.current(selectedIndex); }, [selectedIndex]);
+  // Same CBS/result keys as the table, both languages. Larger localities first. A name sits beside its own dot, circle
+  // or tiles and never over any of them, another name, the island or the map's controls (19 Nov 2026: a name over a
+  // circle hides both). Where the dots crowd, a name may be set a little further out with a thin line to its place;
+  // where nothing is clear it is left out, and a hover or tap on the place gives it.
   useEffect(() => {
-    const m = map.current, rtl = lang === 'he'; if (!m || (!rtl && !names.names.length)) return;
-    const layer = Leaflet.layerGroup().addTo(m);
+    const m = map.current, layer = areas.current, rtl = lang === 'he'; if (!m || !layer || (!rtl && !names.names.length)) return;
+    const group = Leaflet.layerGroup().addTo(m);
     const ranked = placed.map(p => ({ p, name: localityName(names, p.row, p.index, lang), weight: p.row.registered ?? p.row.votesCast })).filter(x => x.name).sort((a, b) => b.weight - a.weight);
     const draw = () => {
-      layer.clearLayers();
+      group.clearLayers();
+      if (!layer.grid) return;
+      const grid = layer.grid.clone(), host = m.getContainer().getBoundingClientRect();
+      m.getContainer().querySelectorAll('.leaflet-control-zoom, .leaflet-control-attribution').forEach(el => { const r = el.getBoundingClientRect(); grid.rect([r.left - host.left - 2, r.top - host.top - 2, r.right - host.left + 2, r.bottom - host.top + 2]); });
       const z = m.getZoom();
       const min = z <= 7 ? 150_000 : z === 8 ? 50_000 : z === 9 ? 15_000 : z === 10 ? 4_000 : z === 11 ? 1_000 : 0;
-      const view = m.getBounds().pad(0.05), size = m.getSize(), taken: number[][] = [];
+      let shown = 0;
       for (const { p, name, weight } of ranked) {
-        if (weight < min || taken.length >= 90) break;
-        if (!view.contains([p.lat, p.lon])) continue;
-        const pt = m.latLngToContainerPoint([p.lat, p.lon]), w = Math.ceil(textWidth(name)) + 4, h = 16;
-        // the label reads away from its dot: to the right in English, to the left in Hebrew
-        const box = rtl ? [pt.x - 6 - w, pt.y - h / 2, pt.x - 6, pt.y + h / 2] : [pt.x + 6, pt.y - h / 2, pt.x + 6 + w, pt.y + h / 2];
-        if (box[0] < 0 || box[2] > size.x - 4 || box[1] < 0 || box[3] > size.y) continue; // never cut off at the frame
-        if (taken.some(b => box[0] < b[2] && box[2] > b[0] && box[1] < b[3] && box[3] > b[1])) continue;
-        taken.push(box);
-        const icon = Leaflet.divIcon({ className: rtl ? 'locality-map-label rtl' : 'locality-map-label', html: '', iconSize: [w, h], iconAnchor: rtl ? [w + 6, h / 2] : [-6, h / 2] });
-        const marker = Leaflet.marker([p.lat, p.lon], { icon, interactive: false, keyboard: false }).addTo(layer);
+        if (weight < min || shown >= 90) break;
+        const mark = layer.marks.get(p.index); if (!mark) continue;
+        const w = Math.ceil(textWidth(name)) + 4, h = 16, spot = placeName(grid, mark, w, h, rtl);
+        if (!spot) continue;
+        shown++;
+        const { box, leader } = spot;
+        // a name set further out (no room right beside its place) has a thin line to its place
+        if (leader) Leaflet.polyline([m.containerPointToLatLng([leader[0], leader[1]]), m.containerPointToLatLng([leader[2], leader[3]])], { color: dark ? '#e6e9ed' : '#2b3138', weight: 1, opacity: 0.75, interactive: false, className: 'locality-map-leader' }).addTo(group);
+        // anchored to the place's point, so the name moves with the map while it pans
+        const icon = Leaflet.divIcon({ className: rtl ? 'locality-map-label rtl' : 'locality-map-label', html: '', iconSize: [w, h], iconAnchor: [mark.x - box[0], mark.y - box[1]] });
+        const marker = Leaflet.marker([p.lat, p.lon], { icon, interactive: false, keyboard: false }).addTo(group);
         const el = marker.getElement(); if (el) el.textContent = name;
       }
     };
-    draw(); m.on('zoomend moveend', draw);
-    return () => { m.off('zoomend moveend', draw); layer.remove(); };
-  }, [placed, names, lang]);
+    draw(); layer.on('drawn', draw);
+    return () => { layer.off('drawn', draw); group.remove(); };
+  }, [placed, names, lang, dark]);
   const selected = selectedIndex === null ? null : data.rows[selectedIndex] ?? null;
   // ring the selected locality so the map and the results below it visibly refer to the same place
   useEffect(() => {
@@ -387,7 +441,8 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
           <button type="button" aria-pressed={mix} onClick={() => setView('mix')}>{L('Vote mix', 'תמהיל קולות')}</button>
         </span>
         <Info title={L('Map view', 'תצוגת המפה')}><p>{L('Winner: one dot per place, in the colour of the bloc or list that came first there.', 'המוביל: נקודה לכל יישוב, בצבע הגוש או הרשימה שהגיעו ראשונים בו.')}</p>
-          <p>{L('Vote mix: from afar, a circle per place, its size by valid votes, cut by votes. Close up, each town is filled with small squares, one block per bloc or list, its share of the squares its share of the votes. The blocks show shares, not where in the town people voted. The order is the same in every town, bloc by bloc. Lists that won no seat are grey (Other). Double-envelope votes are the dashed island off Tel Aviv. The app remembers your choice on this device.', 'תמהיל קולות: מרחוק, עיגול לכל יישוב, גודלו לפי הקולות הכשרים, מחולק לפי הקולות. מקרוב, כל יישוב ממולא בריבועים קטנים, גוש אחד לכל גוש או רשימה, וחלקו בריבועים כחלקו בקולות. הגושים מראים חלקים, לא היכן ביישוב הצביעו. הסדר זהה בכל יישוב, גוש אחר גוש. רשימות שלא זכו במושב באפור (אחרות). קולות המעטפות הכפולות הם האי המקווקו מול תל אביב. האפליקציה זוכרת את הבחירה במכשיר הזה.')}</p></Info>
+          <p>{L('Vote mix: from afar, a circle per place, its size by valid votes, cut by votes. Close up, each town is filled with small squares, one block per bloc or list, its share of the squares its share of the votes. The blocks show shares, not where in the town people voted. The order is the same in every town, bloc by bloc. Lists that won no seat are grey (Other). Double-envelope votes are the dashed island off Tel Aviv. The app remembers your choice on this device.', 'תמהיל קולות: מרחוק, עיגול לכל יישוב, גודלו לפי הקולות הכשרים, מחולק לפי הקולות. מקרוב, כל יישוב ממולא בריבועים קטנים, גוש אחד לכל גוש או רשימה, וחלקו בריבועים כחלקו בקולות. הגושים מראים חלקים, לא היכן ביישוב הצביעו. הסדר זהה בכל יישוב, גוש אחר גוש. רשימות שלא זכו במושב באפור (אחרות). קולות המעטפות הכפולות הם האי המקווקו מול תל אביב. האפליקציה זוכרת את הבחירה במכשיר הזה.')}</p>
+          <p>{L('Hover over or tap a place for its name and its biggest shares.', 'ריחוף או הקשה על יישוב מציגים את שמו ואת החלקים הגדולים בו.')}</p></Info>
       </span>
       {legend.map(x=><span key={x.id} title={x.title}><i style={{background:x.color}} />{x.label}</span>)}<span><i style={{background:mix ? OTHER : GREY}}/>{mix ? (mode === 'bloc' ? L('No bloc', 'ללא גוש') : L('Other: lists without a seat', 'אחרות: רשימות ללא מושב')) : L('Tie / unassigned / no votes','שוויון / ללא שיוך / ללא קולות')}</span>
     </div>
