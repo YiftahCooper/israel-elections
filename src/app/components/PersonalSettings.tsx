@@ -50,7 +50,7 @@ function SettingsContent({ close }: { close: () => void }) {
   const [query, setQuery] = useState('');
   const body = useRef<HTMLDivElement>(null);
   const searching = query.trim() !== '';
-  // every level shows every setting (owner, 9 Nov 2026), ordered by complexity: the Detail level row, then the Simple
+  // every level shows every setting (owner, 9 Nov 2026), ordered by complexity: the Complexity row, then the Simple
   // settings, then a "Standard" separator and its settings, then "Expert". Search filters within the same layout.
   const shown = useMemo(() => SETTINGS.filter(r => rowVisible(r, level) && rowMatches(r, query)), [query, level]);
   // the tools and sections of each level, beside the settings of the same group and tier (owner, 16 Nov 2026)

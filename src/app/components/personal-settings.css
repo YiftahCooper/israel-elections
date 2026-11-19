@@ -57,6 +57,7 @@
   .personal-settings .ps-row.is-seg > .ps-control { justify-self: stretch; max-inline-size: none; }
   .personal-settings .ps-row.is-seg .seg, .personal-settings .ps-row.is-seg .ps-level { display: flex; inline-size: 100%; }
   .personal-settings .ps-row.is-seg .seg button { flex: 1; min-block-size: 44px; }
+  .personal-settings .ps-row.is-seg .ps-level > .complexity { display: flex; flex: 1; }
   .personal-settings .ps-row.is-seg .choice-picker, .personal-settings .ps-row.is-seg .choice-trigger { inline-size: 100%; }
   .personal-settings .ps-row.is-toggle { min-block-size: 44px; }
 }
