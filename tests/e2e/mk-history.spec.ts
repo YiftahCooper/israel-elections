@@ -160,3 +160,33 @@ test('Hebrew: neutral words for someone without a Knesset record', async ({ page
   await expect(card(page).locator('.mk-rows > li').first()).toContainText('בין הנבחרים');
   await expect(card(page).locator('.mk-key')).toContainText('הצבוע – זמן הכהונה בה');
 });
+
+// Owner, 19 Nov 2026: an event is a short ink line with a number, not an arrow; days with no faction recorded are
+// dotted, never striped (stripes mean only partners' seats on a joint list); the key explains both.
+test('Eichler: numbered event lines match the lines under the row; days without a faction are dotted', async ({ page }) => {
+  await start(page);
+  await hoverSeat(page, 'United Torah Judaism', 7);
+  await page.locator('.tip').getByRole('button', { name: 'His history' }).click();
+  const c = card(page), row = c.locator('.mk-rows > li').filter({ hasText: '25th Knesset' });
+  await expect(c).not.toContainText('▼');
+  await expect(row.locator('.mk-mark b')).toHaveText(['1', '2']);
+  await expect(row.locator('.mk-events .mk-enum[aria-label]')).toHaveText(['1', '2']);
+  await expect(row.locator('.mk-events li').filter({ has: page.getByLabel('Event 1', { exact: true }) })).toContainText('15 Jan 2026');
+  const unrec = row.locator('.mk-unrec');
+  expect(await unrec.count()).toBeGreaterThan(0);
+  const bg = await unrec.first().evaluate(el => getComputedStyle(el).backgroundImage);
+  expect(bg).toContain('radial-gradient');
+  expect(bg).not.toContain('linear-gradient');
+  const key = c.locator('.mk-key');
+  await expect(key).toContainText('No faction recorded');
+  await expect(key).toContainText('A recorded event, by its number under the row');
+  await expect(key.locator('.mk-key-seg.mk-unrec')).toHaveCount(1);
+});
+
+test('no key entry for unrecorded days when there are none: Silman', async ({ page }) => {
+  await start(page);
+  await hoverSeat(page, 'Likud', 16);
+  await page.locator('.tip').getByRole('button', { name: 'Her history' }).click();
+  await expect(card(page).locator('.mk-unrec')).toHaveCount(0);
+  await expect(card(page).locator('.mk-key')).not.toContainText('No faction recorded');
+});

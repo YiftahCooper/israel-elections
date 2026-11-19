@@ -83,6 +83,8 @@ function MkHistoryDialog({ rt, id }: { rt: MkRuntime; id: number }) {
   const L = useL(), lang = useLang();
   const ref = useRef<HTMLDialogElement>(null);
   const v = useMemo(() => mkView(rt, id), [rt, id]);
+  // recorded events are numbered down the card, so each mark on a bar matches its line under the row
+  const nums = useMemo(() => new Map((v?.rows ?? []).flatMap((r) => r.events.filter((e) => e.kind === 'recorded')).map((e, i) => [e, i + 1] as const)), [v]);
   // closing gives focus back to what opened it
   useEffect(() => openModal(ref.current), []);
   useEffect(() => { ref.current?.scrollTo({ top: 0 }); }, [id]);
@@ -104,7 +106,7 @@ function MkHistoryDialog({ rt, id }: { rt: MkRuntime; id: number }) {
     </header>
     <MkKey v={v} />
     <ol className="mk-rows" aria-label={L('Every Knesset, one by one', 'כל כנסת בנפרד')}>
-      {v.rows.map((r) => <Row key={r.k} r={r} v={v} />)}
+      {v.rows.map((r) => <Row key={r.k} r={r} v={v} nums={nums} />)}
     </ol>
     <p className="tiny muted mk-note">{coverageText(v, L)} <Info title={L('What is shown', 'מה מוצג')}>
       {L('Terms, factions and entry and leaving dates: the Knesset’s own records. Places on the lists: the official candidate lists. A candidacy is linked to a member by the Knesset member ID; a list that did not win them a seat is linked by the name, letter for letter, and only when no one else could be meant. Anything uncertain is left out. Events: dated reports and records, each with its source.',
@@ -120,10 +122,11 @@ function MkKey({ v }: { v: MkView }) {
   return <div className="mk-key tiny ink2" role="note">
     <span><svg className="mk-key-places" width="34" height="14" viewBox="0 0 34 14" aria-hidden><rect x="1" y="4" width="6" height="9" className="mk-key-fill" /><rect x="9" y="4" width="6" height="9" className="mk-key-fill" /><rect x="17" y="4" width="6" height="9" className="mk-key-empty" /><rect x="25" y="4" width="6" height="9" className="mk-key-empty" /><path d="M16.5 0 L23.5 0 L20 4.5 Z" className="mk-key-pin" /><rect x="19.1" y="3" width="1.8" height="11" className="mk-key-pin" /></svg>{L(`List places: filled won a seat; the pin is ${e.p} place`, `מקומות ברשימה: מלא – זכה במושב; הסיכה – ${g(f, 'מקומו', 'מקומה', 'המקום האישי')}`)}</span>
     <span><i className="mk-key-track" aria-hidden><i className="mk-key-seg" /></i>{L(`Bar: the whole Knesset; coloured: ${e.p} time in it`, `פס: הכנסת כולה; הצבוע – ${g(f, 'הזמן שלו', 'הזמן שלה', 'זמן הכהונה')} בה`)}</span>
-    <span><i className="mk-key-mark" aria-hidden />{L('A recorded event', 'אירוע מתועד')}</span>
+    {v.rows.some((r) => r.terms.some((t) => t.unrecorded.length)) && <span><i className="mk-key-track" aria-hidden><i className="mk-key-seg mk-unrec" /></i>{L('No faction recorded', 'לא תועדה סיעה')}</span>}
+    <span><i className="mk-key-mark" aria-hidden><b>1</b></i>{L('A recorded event, by its number under the row', 'אירוע מתועד, לפי מספרו מתחת לשורה')}</span>
     <Info title={L('How to read the rows', 'איך לקרוא את השורות')}>{L(
-      `One row per Knesset. On the left, the election and the list ${e.s} ran on: each small square is one place on that list, filled for the places that won a seat, and the pin marks ${e.p} own place. The bar is that whole Knesset, from its first sitting to its end. Every row uses one scale, so a Knesset that lasted less time (one dissolved early) has a shorter bar. The coloured part is the time ${e.s} sat in it, in the colour of ${e.p} faction; a change of colour is a change of faction. The pale part is time ${e.s} ${e.was} not a member: ${e.s} entered later, left early, or did not sit in that Knesset at all. A striped part: the Knesset’s records give no faction for those days. A small triangle above the bar is a recorded event, listed under the row with its date.`,
-      `שורה לכל כנסת. בצד: הבחירות והרשימה ${g(f, 'שבה רץ', 'שבה רצה', 'של המועמדות')}. כל ריבוע קטן הוא מקום אחד ברשימה, מלא במקומות שזכו במושב, והסיכה מסמנת את ${g(f, 'מקומו', 'מקומה', 'המקום האישי')}. הפס הוא הכנסת כולה, מהישיבה הראשונה ועד סופה. כל השורות באותו קנה מידה, ולכן כנסת שכיהנה זמן קצר יותר (למשל כזו שהתפזרה מוקדם) מקבלת פס קצר יותר. החלק הצבוע הוא ${g(f, 'הזמן שכיהן', 'הזמן שכיהנה', 'זמן הכהונה')} בה, בצבע ${g(f, 'סיעתו', 'סיעתה', 'הסיעה')}; שינוי צבע הוא מעבר סיעה. החלק הבהיר הוא ${g(f, 'זמן שלא היה חבר', 'זמן שלא הייתה חברה', 'זמן ללא חברות')} בה: ${g(f, 'נכנס מאוחר יותר, עזב מוקדם', 'נכנסה מאוחר יותר, עזבה מוקדם', 'כניסה מאוחרת, עזיבה מוקדמת')}, או ${g(f, 'לא כיהן', 'לא כיהנה', 'היעדר כהונה')} בכנסת זו כלל. חלק מפוספס: ברישומי הכנסת אין סיעה לימים אלה. משולש קטן מעל הפס הוא אירוע מתועד, המופיע מתחת לשורה עם תאריכו.`)}</Info>
+      `One row per Knesset. On the left, the election and the list ${e.s} ran on: each small square is one place on that list, filled for the places that won a seat, and the pin marks ${e.p} own place. The bar is that whole Knesset, from its first sitting to its end. Every row uses one scale, so a Knesset that lasted less time (one dissolved early) has a shorter bar. The coloured part is the time ${e.s} sat in it, in the colour of ${e.p} faction; a change of colour is a change of faction. The pale part is time ${e.s} ${e.was} not a member: ${e.s} entered later, left early, or did not sit in that Knesset at all. A dotted part: the Knesset’s records give no faction for those days. A short dark line across the bar, with a number over it, is a recorded event; the same number is listed under the row, with the date and what happened.`,
+      `שורה לכל כנסת. בצד: הבחירות והרשימה ${g(f, 'שבה רץ', 'שבה רצה', 'של המועמדות')}. כל ריבוע קטן הוא מקום אחד ברשימה, מלא במקומות שזכו במושב, והסיכה מסמנת את ${g(f, 'מקומו', 'מקומה', 'המקום האישי')}. הפס הוא הכנסת כולה, מהישיבה הראשונה ועד סופה. כל השורות באותו קנה מידה, ולכן כנסת שכיהנה זמן קצר יותר (למשל כזו שהתפזרה מוקדם) מקבלת פס קצר יותר. החלק הצבוע הוא ${g(f, 'הזמן שכיהן', 'הזמן שכיהנה', 'זמן הכהונה')} בה, בצבע ${g(f, 'סיעתו', 'סיעתה', 'הסיעה')}; שינוי צבע הוא מעבר סיעה. החלק הבהיר הוא ${g(f, 'זמן שלא היה חבר', 'זמן שלא הייתה חברה', 'זמן ללא חברות')} בה: ${g(f, 'נכנס מאוחר יותר, עזב מוקדם', 'נכנסה מאוחר יותר, עזבה מוקדם', 'כניסה מאוחרת, עזיבה מוקדמת')}, או ${g(f, 'לא כיהן', 'לא כיהנה', 'היעדר כהונה')} בכנסת זו כלל. חלק מנוקד: ברישומי הכנסת אין סיעה לימים אלה. קו כהה קצר לרוחב הפס, ומספר מעליו, הוא אירוע מתועד; אותו מספר מופיע מתחת לשורה, עם התאריך ומה שקרה.`)}</Info>
   </div>;
 }
 
@@ -161,7 +164,7 @@ function useWidth() {
 }
 
 // ---------- one Knesset ----------
-function Row({ r, v }: { r: MkRow; v: MkView }) {
+function Row({ r, v, nums }: { r: MkRow; v: MkView; nums: Map<MkEvent, number> }) {
   const L = useL(), lang = useLang();
   const run = r.run;
   // the result already says when they entered; the event line would only repeat it
@@ -176,9 +179,9 @@ function Row({ r, v }: { r: MkRow; v: MkView }) {
         <span className="tiny ink2">{L(`No. ${run.rank} · the list won ${run.seats}`, `מקום ${run.rank} · הרשימה זכתה ב־${run.seats}`)}</span>
       </>}
     </> : <span className="tiny muted">{L('Place on the list not in our data', 'המקום ברשימה אינו בנתונים')}</span>}</div>
-    <div className="mk-term"><TermBar r={r} v={v} /></div>
+    <div className="mk-term"><TermBar r={r} v={v} nums={nums} /></div>
     <div className="mk-res"><Result r={r} v={v} /></div>
-    {events.length > 0 && <ul className="mk-events">{events.map((e, i) => <li key={i}><span className="mk-edate">{formatDate(e.date, lang)}{e.time ? `, ${e.time}` : ''}</span><span>{eventText(e, v, L, lang)}</span>
+    {events.length > 0 && <ul className="mk-events">{events.map((e, i) => <li key={i}>{nums.has(e) ? <span className="mk-enum" aria-label={L(`Event ${nums.get(e)}`, `אירוע ${nums.get(e)}`)}>{nums.get(e)}<i aria-hidden /></span> : nums.size > 0 && <span className="mk-enum" aria-hidden />}<span className="mk-edate">{formatDate(e.date, lang)}{e.time ? `, ${e.time}` : ''}</span><span>{eventText(e, v, L, lang)}</span>
       {e.kind === 'recorded' && <EventSource e={e} />}{e.kind === 'unsettled' && <Unsettled />}</li>)}</ul>}
   </li>;
 }
@@ -259,7 +262,7 @@ function Places({ rank, seats, color }: { rank: number; seats: number; color: st
 }
 
 /** Time in one Knesset: the faint track is the whole Knesset, coloured parts are the time served (by faction). */
-function TermBar({ r, v }: { r: MkRow; v: MkView }) {
+function TermBar({ r, v, nums }: { r: MkRow; v: MkView; nums: Map<MkEvent, number> }) {
   const L = useL(), lang = useLang();
   const [ref, px] = useWidth();
   if (!r.opening) return <span className="tiny muted">{L('This Knesset has not yet opened', 'הכנסת טרם נפתחה')}</span>;
@@ -275,7 +278,7 @@ function TermBar({ r, v }: { r: MkRow; v: MkView }) {
     : L(`Not in this Knesset (${monthYear(r.opening, 'en')} – ${monthYear(r.end, 'en')})`, `${g(v.gender, 'לא כיהן', 'לא כיהנה', 'ללא כהונה')} בכנסת זו (${monthYear(r.opening, 'he')} – ${monthYear(r.end, 'he')})`);
   const marks = r.events.filter((e) => e.kind === 'recorded');
   return <>
-    <div className="mk-bar" dir="ltr" ref={ref} style={{ inlineSize: `${W}%` }} role="img" aria-label={caption}>
+    <div className={`mk-bar${marks.length ? ' has-marks' : ''}`} dir="ltr" ref={ref} style={{ inlineSize: `${W}%` }} role="img" aria-label={caption}>
       {r.terms.flatMap((t) => t.unrecorded).map((g, i) => <span key={`u${i}`} className="mk-seg mk-unrec" title={L('Faction not recorded', 'הסיעה לא תועדה')}
         style={{ insetInlineStart: `${(x(g.start) / W) * 100}%`, inlineSize: `${Math.max(0.6, ((x(g.end) - x(g.start)) / W) * 100)}%` }} />)}
       {r.terms.flatMap((t) => t.segments).map((s, i) => {
@@ -285,7 +288,8 @@ function TermBar({ r, v }: { r: MkRow; v: MkView }) {
         return <span key={i} className="mk-seg" style={{ insetInlineStart: `${(a / W) * 100}%`, inlineSize: `${Math.max(0.6, ((b - a) / W) * 100)}%`, background: s.color ?? 'var(--muted)', color: inkOn(s.color) }}
           title={name}>{fits && <span className="mk-segname">{name}</span>}</span>;
       })}
-      {marks.map((e, i) => <span key={i} className="mk-mark" style={{ insetInlineStart: `${(x(e.date) / W) * 100}%` }} title={`${formatDate(e.date, lang)}: ${lang === 'he' ? e.text!.he : e.text!.en}`} />)}
+      {/* a recorded event: a short ink line across the bar, numbered as in the lines under the row (owner, 19 Nov 2026: no arrow) */}
+      {marks.map((e, i) => <span key={i} className="mk-mark" style={{ insetInlineStart: `${(x(e.date) / W) * 100}%` }} title={`${nums.get(e) ?? ''} · ${formatDate(e.date, lang)}: ${lang === 'he' ? e.text!.he : e.text!.en}`}><b>{nums.get(e)}</b></span>)}
     </div>
     <span className="tiny ink2 mk-block">{caption}</span>
   </>;
